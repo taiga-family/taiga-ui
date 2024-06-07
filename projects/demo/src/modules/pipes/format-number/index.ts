@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiFormatNumberPipe, TuiLinkDirective} from '@taiga-ui/core';
@@ -28,5 +29,6 @@ import {NumberFormatDocumentationComponent} from '../../components/abstract/numb
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiNumberFormat {
+    protected readonly routes = DemoRoute;
     public readonly control = new FormControl(100);
 }

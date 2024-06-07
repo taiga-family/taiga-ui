@@ -8,8 +8,8 @@
         <tui-notification status="warning">
             If you need overlay and do not need image related functionality, it is recommended to use
             <a
-                routerLink="/components/sheet-dialog"
                 tuiLink
+                [routerLink]="routes.SheetDialog"
             >
                 SheetDialog
             </a>
@@ -61,8 +61,8 @@
             <tui-notification class="tui-space_bottom-4">
                 Using
                 <a
-                    routerLink="directives/elastic-sticky"
                     tuiLink
+                    [routerLink]="routes.ElasticSticky"
                 >
                     <code>ElasticSticky</code>
                 </a>

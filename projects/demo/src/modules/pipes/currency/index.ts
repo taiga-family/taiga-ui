@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiLinkDirective} from '@taiga-ui/core';
@@ -26,4 +27,5 @@ export default class PageComponent {
     protected currency = this.currencyVariants[0];
 
     protected readonly control = new FormControl(6432, Validators.required);
+    protected readonly routes = DemoRoute;
 }

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
@@ -46,6 +47,8 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
+
     protected editable = true;
 
     protected uniqueTags = true;

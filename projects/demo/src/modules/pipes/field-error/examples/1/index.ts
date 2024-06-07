@@ -5,6 +5,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiErrorComponent, TuiLabelDirective, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -46,6 +47,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     changeDetection,
 })
 export default class ExampleComponent {
+    protected readonly routes = DemoRoute;
     protected readonly testValue1 = new FormControl('', [
         Validators.required,
         passwordValidator,

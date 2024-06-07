@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiMobileCalendarComponent,
@@ -55,6 +56,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly dayVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2021, 2, 5),
