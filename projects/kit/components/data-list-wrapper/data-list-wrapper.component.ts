@@ -18,10 +18,9 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListAccessor,
     TuiDataList,
+    tuiInjectDataListSize,
     TuiLoaderComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -43,10 +42,7 @@ import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorp
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListAccessor(TuiDataListWrapperComponent),
-        TEXTFIELD_CONTROLLER_PROVIDER,
-    ],
+    providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -65,7 +61,7 @@ export class TuiDataListWrapperComponent<T> {
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    public size = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {optional: true})?.size || 'm';
+    public size = tuiInjectDataListSize();
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();

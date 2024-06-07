@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, tuiProvide} from '@taiga-ui/cdk';
-import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputYearModule} from '@taiga-ui/legacy';
+import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiInputYearModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

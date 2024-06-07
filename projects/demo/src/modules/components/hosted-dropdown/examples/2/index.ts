@@ -8,13 +8,15 @@ import {
     TuiButtonDirective,
     TuiDataListComponent,
     TuiGroupDirective,
-    TuiHostedDropdownComponent,
-    TuiHostedDropdownModule,
     TuiOptionComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
+    TuiSelectModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

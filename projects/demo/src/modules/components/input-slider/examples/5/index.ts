@@ -3,8 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputSliderModule} from '@taiga-ui/legacy';
+import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

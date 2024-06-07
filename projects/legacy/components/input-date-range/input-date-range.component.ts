@@ -43,12 +43,7 @@ import type {
     TuiSizeS,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {
-    TUI_DATE_FORMAT,
-    TUI_DEFAULT_DATE_FORMAT,
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiDayRangePeriod, TuiInputDateOptions} from '@taiga-ui/kit';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -58,6 +53,8 @@ import {
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';

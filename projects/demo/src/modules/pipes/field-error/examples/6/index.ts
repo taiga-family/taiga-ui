@@ -13,9 +13,9 @@ import {
     TuiThGroupComponent,
     TuiTrComponent,
 } from '@taiga-ui/addon-table';
-import {TuiHintDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHintDirective} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

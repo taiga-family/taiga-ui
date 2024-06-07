@@ -16,11 +16,10 @@ import {
     TuiHint,
     TuiNotificationComponent,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiComboBoxModule} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

@@ -10,9 +10,8 @@ import {
     TuiDataListDirective,
     TuiLoaderComponent,
     TuiOptionComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
 interface Python {

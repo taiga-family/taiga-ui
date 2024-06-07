@@ -3,15 +3,14 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButtonDirective,
-    TuiErrorComponent,
-    TuiLinkDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiErrorComponent, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLargeDirective} from '@taiga-ui/layout';
-import {TuiInputPhoneModule, TuiIslandDirective} from '@taiga-ui/legacy';
+import {
+    TuiInputPhoneModule,
+    TuiIslandDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

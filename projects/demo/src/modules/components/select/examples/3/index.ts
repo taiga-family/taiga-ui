@@ -10,9 +10,12 @@ import {
     TuiDataListDirective,
     TuiOptionComponent,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiSelectModule, TuiTextareaModule} from '@taiga-ui/legacy';
+import {
+    TuiSelectModule,
+    TuiTextareaModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

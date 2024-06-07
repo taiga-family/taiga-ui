@@ -7,8 +7,7 @@ import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputTagModule} from '@taiga-ui/legacy';
+import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

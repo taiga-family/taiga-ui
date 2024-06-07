@@ -19,13 +19,18 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_ICON_PADDINGS,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_OPTIONS,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
+import {
+    TUI_ICON_PADDINGS,
+    TuiTextfieldComponent,
+} from '@taiga-ui/legacy/components/primitive-textfield';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const DEFAULT_ROWS = 20;
@@ -53,8 +58,10 @@ export class TuiTextareaComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
-    @ContentChild(TuiTextfieldLegacyComponent, {read: ElementRef})
+    @ContentChild(TuiTextfieldComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
+
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
@@ -94,7 +101,7 @@ export class TuiTextareaComponent
 
     @HostBinding('class._label-outside')
     protected get labelOutside(): boolean {
-        return this.controller.labelOutside;
+        return this.options.appearance === 'table' || this.controller.labelOutside;
     }
 
     @HostBinding('attr.data-size')
@@ -137,7 +144,7 @@ export class TuiTextareaComponent
     }
 
     protected get appearance(): string {
-        return this.controller.appearance;
+        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
     }
 
     protected get hasCleaner(): boolean {

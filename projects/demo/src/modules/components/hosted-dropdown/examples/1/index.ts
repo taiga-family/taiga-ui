@@ -5,11 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButtonDirective,
     TuiDataListComponent,
-    TuiHostedDropdownComponent,
-    TuiHostedDropdownModule,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownComponent, TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

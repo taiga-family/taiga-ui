@@ -6,8 +6,12 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/legacy';
+import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {
+    TuiInputTagComponent,
+    TuiInputTagModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {
     tuiIsActive,
     TuiNativeInputPO,

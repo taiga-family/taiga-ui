@@ -19,9 +19,10 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
 

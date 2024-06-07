@@ -17,12 +17,10 @@ import {
     tuiAsFocusableItemAccessor,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiHintOptionsDirective,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {EMPTY, map, startWith} from 'rxjs';

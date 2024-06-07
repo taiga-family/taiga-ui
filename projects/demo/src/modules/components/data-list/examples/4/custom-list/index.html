@@ -1,17 +1,19 @@
-<tui-primitive-textfield
-    #input
-    tuiTextfieldIconLeft="tuiIconSearchLarge"
+<tui-textfield
+    iconLeft="tuiIconSearch"
     class="tui-space_all-2"
-    [tuiTextfieldLabelOutside]="true"
-    [(value)]="value"
 >
-    Search categories
-</tui-primitive-textfield>
+    <input
+        placeholder="Search categories"
+        tuiAutoFocus
+        tuiTextfield
+        [focused]="true"
+        [(ngModel)]="value"
+    />
+</tui-textfield>
 <hr />
 <tui-data-list
-    #list
     emptyContent="No results found"
-    (keydown)="onKeyDown($event.key, input.nativeFocusableElement)"
+    (keydown)="onKeyDown($event.key)"
 >
     <tui-opt-group *ngIf="!value">
         <button

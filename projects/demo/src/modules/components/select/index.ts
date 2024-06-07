@@ -16,10 +16,9 @@ import {
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

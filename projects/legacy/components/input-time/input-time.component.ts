@@ -31,14 +31,11 @@ import {
     TuiTime,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_SIZE,
-    tuiAsDataListHost,
-    tuiAsOptionContent,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map, timer} from 'rxjs';

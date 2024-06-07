@@ -11,14 +11,13 @@ import {
     tuiControlValue,
     TuiSwipeDirective,
 } from '@taiga-ui/cdk';
-import {
-    TuiAutoColorPipe,
-    TuiButtonDirective,
-    TuiInitialsPipe,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButtonDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
+import {
+    TuiInputComponent,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [

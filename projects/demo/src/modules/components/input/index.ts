@@ -13,10 +13,9 @@ import {
     TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

@@ -16,7 +16,6 @@ export * from './example/example.component';
 export * from './example/example.options';
 export * from './example/example-get-tabs.pipe';
 export * from './internal/header';
-export * from './internal/input-opacity';
 export * from './internal/see-also';
 export * from './internal/source-code/source-code.component';
 export * from './language-switcher';

@@ -3,14 +3,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
+import {TuiHintDirective, TuiSvgComponent} from '@taiga-ui/core';
 import {
-    TuiHintDirective,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
-    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
-} from '@taiga-ui/core';
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

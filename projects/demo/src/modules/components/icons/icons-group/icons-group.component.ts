@@ -12,14 +12,9 @@ import {
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
-import {
-    TuiAlertService,
-    TuiHint,
-    TuiTextfieldControllerModule,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core';
+import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import {TuiBadgeDirective} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 

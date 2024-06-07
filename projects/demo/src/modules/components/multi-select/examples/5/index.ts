@@ -8,9 +8,8 @@ import {
     TuiDataListDirective,
     TuiOptGroupDirective,
     TuiOptionComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

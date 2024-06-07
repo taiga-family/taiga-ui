@@ -4,14 +4,13 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiDataListDirective,
-    TuiHint,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHint, TuiRootComponent} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
-import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
+import {
+    TuiInputComponent,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {
     tuiActiveText,
     tuiDispatchOnActive,

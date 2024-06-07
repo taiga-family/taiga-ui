@@ -298,6 +298,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: {name: 'TuiWrapperModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiWrapperModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiPrimitiveTextfieldModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiPrimitiveTextfieldModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiTextfieldControllerModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiTextfieldControllerModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiTextfieldComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiTextfieldComponent', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
     },

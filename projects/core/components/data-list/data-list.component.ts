@@ -20,19 +20,30 @@ import {
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import type {TuiDataListAccessor} from '@taiga-ui/core/tokens';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-} from '@taiga-ui/core/directives';
-import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+    TUI_DATA_LIST_HOST,
+    TUI_NOTHING_FOUND_MESSAGE,
+    tuiAsDataListAccessor,
+} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-import {tuiAsDataListAccessor} from './data-list.tokens';
-import type {TuiDataListAccessor} from './data-list.types';
 import {TuiOptionComponent} from './option.component';
+
+/**
+ * @deprecated replace with inject(TUI_TEXTFIELD_OPTIONS).size || 'm'; when legacy is dropped
+ */
+export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
+    const sizes = ['s', 'm', 'l'] as const;
+    const size = inject<any>(TUI_DATA_LIST_HOST, {optional: true})?.size;
+
+    return sizes.includes(size) ? size : inject(TUI_TEXTFIELD_OPTIONS).size;
+}
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
@@ -43,10 +54,7 @@ import {TuiOptionComponent} from './option.component';
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListAccessor(TuiDataListComponent),
-        TEXTFIELD_CONTROLLER_PROVIDER,
-    ],
+    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
     host: {
         role: 'listbox',
     },
@@ -57,9 +65,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     private origin?: HTMLElement;
     private readonly el = tuiInjectElement();
-    private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
-        optional: true,
-    });
 
     protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
@@ -68,7 +73,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = this.controller?.size || 'm';
+    public size = tuiInjectDataListSize();
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])

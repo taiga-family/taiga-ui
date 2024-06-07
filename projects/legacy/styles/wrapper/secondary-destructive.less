@@ -1,0 +1,16 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='secondary-destructive'],
+[tuiWrapper][data-appearance='secondary-destructive'] {
+    background: var(--tui-error-bg);
+    color: var(--tui-negative);
+
+    .wrapper-hover({
+        background: var(--tui-error-bg-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-error-bg-hover);
+    });
+}

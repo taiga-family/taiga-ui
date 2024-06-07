@@ -8,10 +8,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk';
-import type {Observable} from 'rxjs';
+import type {TuiTextfieldOptions} from '@taiga-ui/core';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
@@ -28,15 +27,12 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     extends AbstractTuiController
-    implements AfterViewInit
+    implements AfterViewInit, TuiTextfieldOptions
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
 
     protected readonly stuck$ = inject(TUI_STUCK);
-    protected readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
-        IntersectionObserverService,
-    );
 
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];
@@ -53,6 +49,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
+
+    public readonly appearance = 'table';
+    public readonly cleaner = false;
 
     @Input()
     public sorter: TuiComparator<T> = () => 0;

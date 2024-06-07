@@ -15,11 +15,10 @@ import {
     TuiButtonDirective,
     TuiErrorComponent,
     TuiLabelDirective,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputPhoneModule} from '@taiga-ui/legacy';
+import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

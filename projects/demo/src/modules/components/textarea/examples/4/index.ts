@@ -9,10 +9,9 @@ import {
     TuiErrorComponent,
     TuiHintOptionsDirective,
     TuiLabelDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
+import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 const LONG_TEXT_EXAMPLE = `
 In Java: everything is an object.

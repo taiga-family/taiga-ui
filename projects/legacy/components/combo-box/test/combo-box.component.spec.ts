@@ -7,18 +7,14 @@ import {By} from '@angular/platform-browser';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiDataListDirective,
-    TuiHint,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHint, TuiRootComponent} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TUI_ARROW,
     TUI_ARROW_MODE,
     TuiComboBoxComponent,
     TuiComboBoxModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';

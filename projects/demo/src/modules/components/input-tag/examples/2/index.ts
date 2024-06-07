@@ -3,9 +3,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiInputTagModule} from '@taiga-ui/legacy';
+import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, of, startWith, Subject, switchMap} from 'rxjs';
 

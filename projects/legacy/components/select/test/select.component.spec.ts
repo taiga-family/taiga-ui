@@ -4,13 +4,13 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
-import {
-    TuiDataListDirective,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiRootComponent} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiSelectComponent,
+    TuiSelectModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

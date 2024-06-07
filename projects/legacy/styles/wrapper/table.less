@@ -1,0 +1,82 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='table'] {
+    border-radius: 0;
+    background: transparent;
+    color: var(--tui-text-01);
+
+    /* stylelint-disable meowtec/no-px */
+    &:before,
+    &[data-appearance='table']:after {
+        position: fixed;
+        top: -0.03125rem;
+        left: -1px;
+        right: -0.03125rem;
+        bottom: -1px;
+    }
+    /* stylelint-enable meowtec/no-px */
+
+    &:before {
+        .transition(background);
+
+        content: '';
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 0.5rem 0.5rem;
+    }
+
+    table &[data-appearance='table']:not(._focused):after {
+        border-width: 0;
+    }
+
+    table &._focused {
+        z-index: 1;
+    }
+
+    &[data-appearance='table']:after {
+        border-width: 1px;
+        color: var(--tui-base-04);
+    }
+
+    .wrapper-hover({
+        &:not(._focused):before {
+            background-color: var(--tui-clear);
+        }
+    });
+
+    .wrapper-focus({
+        background: transparent;
+    });
+
+    .wrapper-invalid({
+        &:before {
+            background-image: linear-gradient(to top right, transparent 0%, transparent 50%, var(--tui-error-fill) 50%, var(--tui-error-fill) 100%);
+        }
+
+        &:not(._focused):before {
+            background-color: var(--tui-error-bg);
+        }
+
+        .wrapper-hover({
+            &:not(._focused):before {
+                background-color: var(--tui-error-bg-hover);
+            }
+        });
+
+        .wrapper-disabled({
+            background: transparent;
+        });
+
+        .wrapper-focus({
+            background: transparent;
+
+            --tui-focus: var(--tui-error-fill);
+
+            &:after {
+                border-width: 1px;
+            }
+        });
+    });
+}

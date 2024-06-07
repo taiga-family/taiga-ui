@@ -9,11 +9,11 @@ import {
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from '@taiga-ui/core/tokens';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
-import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
-import type {TuiDataListHost} from './data-list.types';
 
 // TODO: Consider all use cases for aria roles
 @Component({

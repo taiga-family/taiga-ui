@@ -1,12 +1,8 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiDropdownOpenDirective,
-    TuiHostedDropdownComponent,
-    tuiSizeBigger,
-    TuiSvgComponent,
-} from '@taiga-ui/core';
+import {TuiDropdownOpenDirective, tuiSizeBigger, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

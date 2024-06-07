@@ -3,20 +3,18 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
 import {
-    TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
-    TuiTextfieldOptionsDirective,
-    tuiTextfieldOptionsProviderLegacy,
-} from '@taiga-ui/core';
+    tuiTextfieldOptionsProvider,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     selector: 'tui-primitive-textfield-example-2',
     imports: [
-        TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
         TuiPrimitiveTextfieldModule,
         TuiHintOptionsDirective,
@@ -25,7 +23,7 @@ import {
     encapsulation,
     changeDetection,
     providers: [
-        tuiTextfieldOptionsProviderLegacy({
+        tuiTextfieldOptionsProvider({
             iconCleaner: 'tuiIconEdit2',
             hintOnDisabled: true,
         }),

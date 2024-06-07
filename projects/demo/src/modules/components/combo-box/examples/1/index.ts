@@ -5,9 +5,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiInitialsPipe, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiComboBoxModule} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, filter, of, startWith, Subject, switchMap} from 'rxjs';
 
@@ -39,7 +39,6 @@ const databaseMockData: readonly User[] = [
         TuiTextfieldControllerModule,
         TuiAvatarComponent,
         TuiInitialsPipe,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

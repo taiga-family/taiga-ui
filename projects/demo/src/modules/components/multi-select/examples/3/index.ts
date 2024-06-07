@@ -8,10 +8,9 @@ import {
     TuiDataListComponent,
     TuiDataListDirective,
     TuiOptionComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Hero {
     readonly id: number;

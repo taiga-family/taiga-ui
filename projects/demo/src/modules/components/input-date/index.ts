@@ -14,13 +14,12 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
+import {TuiDropdownModule, TuiHint, TuiLinkDirective} from '@taiga-ui/core';
 import {
-    TuiDropdownModule,
-    TuiHint,
-    TuiLinkDirective,
+    TuiInputDateModule,
+    TuiNamedDay,
     TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/legacy';
+} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

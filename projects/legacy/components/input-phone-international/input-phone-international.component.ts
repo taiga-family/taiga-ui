@@ -23,16 +23,12 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
-    TUI_TEXTFIELD_SIZE,
     TuiAppearanceDirective,
     TuiDataList,
     TuiDropdownModule,
     TuiFlagPipe,
     TuiGroupDirective,
     TuiHint,
-    TuiPrimitiveTextfieldComponent,
-    TuiPrimitiveTextfieldModule,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
@@ -41,6 +37,14 @@ import {
     TuiInputPhoneComponent,
     TuiInputPhoneModule,
 } from '@taiga-ui/legacy/components/input-phone';
+import {
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+} from '@taiga-ui/legacy/components/primitive-textfield';
+import {
+    TUI_TEXTFIELD_SIZE,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy/directives';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
 import {TUI_COUNTRIES_MASKS} from '@taiga-ui/legacy/tokens';
 import {

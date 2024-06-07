@@ -1,5 +1,5 @@
 ```ts
-import {TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 // ...
 

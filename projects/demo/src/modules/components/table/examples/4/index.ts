@@ -24,10 +24,13 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiLoaderComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
-import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
+import {
+    TuiInputModule,
+    TuiInputNumberModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,

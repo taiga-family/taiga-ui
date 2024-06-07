@@ -11,17 +11,17 @@ import {
     TuiDayRange,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DATE_FORMAT,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit';
-import {TuiInputDateRangeComponent, TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {
+    TuiInputDateRangeComponent,
+    TuiInputDateRangeModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';

@@ -6,8 +6,12 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/legacy';
+import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {
+    TuiInputTimeComponent,
+    TuiInputTimeModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

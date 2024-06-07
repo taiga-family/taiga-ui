@@ -10,9 +10,9 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
+    TuiDropdownDirective,
     tuiFadeIn,
     tuiGetDuration,
-    TuiHostedDropdownComponent,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
@@ -32,7 +32,8 @@ import {
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiMobileCalendarDropdownComponent {
-    private readonly dropdown = inject(TuiHostedDropdownComponent);
+    // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
+    private readonly dropdown = inject(TuiDropdownDirective);
     private readonly keyboard = inject(TuiKeyboardService);
 
     @HostBinding('@tuiSlideInTop')
@@ -85,8 +86,7 @@ export class TuiMobileCalendarDropdownComponent {
     }
 
     protected close(): void {
-        this.dropdown.nativeFocusableElement?.focus();
-        this.dropdown.updateOpen(false);
+        this.dropdown.toggle(false);
         this.keyboard.show();
     }
 

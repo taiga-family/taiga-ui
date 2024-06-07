@@ -18,10 +18,9 @@ import {
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
     TuiLinkDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

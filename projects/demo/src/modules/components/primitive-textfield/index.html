@@ -1,9 +1,19 @@
 <tui-doc-page
     header="PrimitiveTextfield"
-    package="CORE"
+    package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification status="error">
+            This component is deprecated, use new
+            <a
+                tuiLink
+                [routerLink]="routes.Textfield"
+            >
+                Textfield
+            </a>
+            instead
+        </tui-notification>
         <p>
             PrimitiveTextfield is a flexible string input that can be used as a base for complex inputs. Use it as a
             basis for other components.

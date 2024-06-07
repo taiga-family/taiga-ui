@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
@@ -11,12 +12,13 @@ import {
     TuiHintOptionsDirective,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
-    TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -49,7 +51,6 @@ const CUSTOM_SVG_NAME = 'Bell';
         ExampleComponent2,
         TuiPrimitiveTextfieldModule,
         TuiHintOptionsDirective,
-        TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
         TuiAvatarComponent,
         TuiSvgComponent,
@@ -68,6 +69,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
         TuiContext<TuiSizeL | TuiSizeS>
     >;
 
+    protected readonly routes = DemoRoute;
     protected readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     protected theme = this.themes[0];
 

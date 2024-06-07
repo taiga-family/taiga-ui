@@ -6,14 +6,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe, TuiCurrency, TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLetDirective} from '@taiga-ui/cdk';
-import {
-    TuiDataList,
-    TuiInitialsPipe,
-    TuiTextfield,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 

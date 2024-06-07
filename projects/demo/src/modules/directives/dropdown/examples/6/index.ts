@@ -6,12 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile';
-import {
-    TuiButtonDirective,
-    TuiDropdownModule,
-    TuiTextfieldControllerModule,
-    TuiTitleDirective,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDropdownModule, TuiTitleDirective} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
     TuiDataListWrapper,
@@ -23,6 +18,7 @@ import {
     TuiInputNumberModule,
     TuiMultiSelectModule,
     TuiSelectModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
 interface User {

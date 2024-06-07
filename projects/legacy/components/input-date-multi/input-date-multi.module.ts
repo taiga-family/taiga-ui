@@ -3,16 +3,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiCalendarComponent, TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
+import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
-    TuiCalendarComponent,
-    TuiHostedDropdownModule,
-    TuiLinkDirective,
-    TuiPrimitiveTextfieldModule,
-    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
-} from '@taiga-ui/core';
-import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
+} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputDateMultiComponent} from './input-date-multi.component';

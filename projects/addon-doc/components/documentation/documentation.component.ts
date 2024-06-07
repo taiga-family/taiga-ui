@@ -36,15 +36,17 @@ import {
     TuiDropdownOptionsDirective,
     TuiGroupDirective,
     TuiNotificationComponent,
-    TuiPrimitiveTextfieldModule,
-    TuiTextfieldControllerModule,
+    TuiTextfield,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiDataListWrapper, TuiSwitchComponent} from '@taiga-ui/kit';
-import {TuiInputNumberModule, TuiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiInputNumberModule,
+    TuiSelectModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {merge, switchMap} from 'rxjs';
 
-import {TuiInputOpacityDirective} from '../internal/input-opacity';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
@@ -73,16 +75,14 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiTextfieldOptionsDirective,
         FormsModule,
         TuiDropdownOptionsDirective,
-        TuiTextfieldControllerModule,
         TuiShowCleanerPipe,
         TuiDataListWrapper,
         TuiInspectPipe,
         NgSwitch,
         NgSwitchCase,
         TuiSwitchComponent,
-        TuiPrimitiveTextfieldModule,
+        TuiTextfield,
         TuiGroupDirective,
-        TuiInputOpacityDirective,
         TuiGetOpacityPipe,
         TuiGetColorPipe,
         TuiInputNumberModule,
@@ -90,6 +90,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiNotificationComponent,
         AsyncPipe,
         TuiToArrayPipe,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],

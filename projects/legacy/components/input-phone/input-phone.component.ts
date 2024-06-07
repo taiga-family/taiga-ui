@@ -27,14 +27,10 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_CLEANER,
-    TUI_TEXTFIELD_SIZE,
-    tuiAsDataListHost,
-    TuiDataListDirective,
-    TuiHostedDropdownComponent,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {tuiAsDataListHost, TuiDataListDirective} from '@taiga-ui/core';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
