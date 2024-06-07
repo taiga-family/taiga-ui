@@ -149,6 +149,15 @@ describe('InputDateTime', () => {
                 '15.11.2018, '.length,
             );
         });
+
+        test('should time to pre-fill with zeros on blur', async ({page}) => {
+            await tuiGoto(page, '/components/input-date-time/API?timeMode=HH:MM:SS.MSS');
+
+            await inputDateTime.textfield.fill('07.06.2024, 23:59');
+            await inputDateTime.textfield.blur();
+
+            await expect(inputDateTime.textfield).toHaveValue('07.06.2024, 23:59:00.000');
+        });
     });
 
     describe('invalid date', () => {
