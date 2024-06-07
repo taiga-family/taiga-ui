@@ -2,13 +2,15 @@ import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
     inject,
     Input,
     Output,
+    signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
@@ -22,7 +24,6 @@ import {
     tuiAsFocusableItemAccessor,
     tuiIsInputEvent,
     tuiIsNativeFocused,
-    TuiLetDirective,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -31,7 +32,6 @@ import {
     tuiDropdownOptionsProvider,
     TuiFlagPipe,
     TuiGroupDirective,
-    TuiHint,
     TuiSelectDirective,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
@@ -39,11 +39,10 @@ import {
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiChevronDirective} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import {getCountryCallingCode} from 'libphonenumber-js/core';
-import {BehaviorSubject, combineLatest, distinctUntilChanged, map, skip} from 'rxjs';
+import {from, skip} from 'rxjs';
 
 import {TuiGetCountryCallingCodePipe} from './get-country-calling-code.pipe';
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
@@ -57,15 +56,12 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         CommonModule,
         FormsModule,
         MaskitoDirective,
-        PolymorpheusModule,
         TuiChevronDirective,
         TuiDataList,
         TuiDropdownModule,
         TuiFlagPipe,
         TuiGetCountryCallingCodePipe,
         TuiGroupDirective,
-        TuiHint,
-        TuiLetDirective,
         TuiTextfield,
     ],
     templateUrl: './input-phone-international.template.html',
@@ -92,10 +88,14 @@ export class TuiInputPhoneInternationalComponent
 {
     /* eslint-disable @typescript-eslint/member-ordering */
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly countryIsoCode$ = new BehaviorSubject(this.options.countryIsoCode);
-    protected readonly mask$ = new BehaviorSubject<MaskitoOptions | null>(null);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
+
+    protected readonly metadata = toSignal(from(this.options.metadata));
+    protected readonly countryIsoCode = signal(this.options.countryIsoCode);
+    protected readonly mask = computed(() =>
+        this.computeMask(this.countryIsoCode(), this.metadata()),
+    );
 
     protected open = false;
     protected textfieldValue = '';
@@ -110,14 +110,13 @@ export class TuiInputPhoneInternationalComponent
     public countries = this.options.countries;
 
     @Output()
-    public readonly countryIsoCodeChange = this.countryIsoCode$.pipe(
-        distinctUntilChanged(),
+    public readonly countryIsoCodeChange = toObservable(this.countryIsoCode).pipe(
         skip(1),
     );
 
     @Input('countryIsoCode')
     public set isoCode(code: TuiCountryIsoCode) {
-        this.countryIsoCode$.next(code);
+        this.countryIsoCode.set(code);
     }
 
     public get nativeFocusableElement(): HTMLElement | null {
@@ -134,7 +133,9 @@ export class TuiInputPhoneInternationalComponent
         );
     }
 
-    public onPaste(event: Event, phonesMetadata: MetadataJson | null): void {
+    public onPaste(event: Event): void {
+        const phonesMetadata = this.metadata();
+
         if (
             !tuiIsInputEvent(event) ||
             !phonesMetadata ||
@@ -155,30 +156,20 @@ export class TuiInputPhoneInternationalComponent
         const countryIsoCode = maskitoGetCountryFromNumber(prefixedValue, phonesMetadata);
 
         if (countryIsoCode) {
-            this.countryIsoCode$.next(countryIsoCode);
+            this.countryIsoCode.set(countryIsoCode);
         }
     }
 
     public onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
-        this.countryIsoCode$.next(isoCode);
+        this.countryIsoCode.set(isoCode);
         this.nativeFocusableElement?.focus();
-    }
-
-    constructor() {
-        super();
-        combineLatest([this.countryIsoCode$, this.options.metadata])
-            .pipe(
-                map(args => this.computeMask(...args)),
-                takeUntilDestroyed(),
-            )
-            .subscribe(this.mask$);
     }
 
     public override writeValue(unmaskedValue: string): void {
         super.writeValue(unmaskedValue);
 
-        const maskOptions = this.mask$.value;
+        const maskOptions = this.mask();
 
         this.textfieldValue = maskOptions
             ? maskitoTransform(unmaskedValue, maskOptions)
@@ -186,26 +177,19 @@ export class TuiInputPhoneInternationalComponent
         this.cdr.detectChanges();
     }
 
-    protected onActiveZone(active: boolean): void {
-        this.updateFocused(active);
-    }
+    protected onFocus(): void {
+        const phoneMetadata = this.metadata();
 
-    protected onFocus(phonesMetadata: MetadataJson): void {
-        const countryCallingCode = `${CHAR_PLUS + getCountryCallingCode(this.countryIsoCode$.value, phonesMetadata)} `;
-
-        if (!this.textfieldValue) {
-            this.textfieldValue = countryCallingCode;
+        if (!this.textfieldValue && phoneMetadata) {
+            this.textfieldValue = `${CHAR_PLUS + getCountryCallingCode(this.countryIsoCode(), phoneMetadata)} `;
         }
     }
 
-    protected onValueChange(
-        maskedValue: string,
-        phonesMetadata: MetadataJson | null,
-    ): void {
+    protected onValueChange(maskedValue: string): void {
         const unmaskedValue = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
+        const phonesMetadata = this.metadata();
         const countryCallingCode = phonesMetadata
-            ? CHAR_PLUS +
-              getCountryCallingCode(this.countryIsoCode$.value, phonesMetadata)
+            ? CHAR_PLUS + getCountryCallingCode(this.countryIsoCode(), phonesMetadata)
             : '';
 
         this.value = unmaskedValue === countryCallingCode ? '' : unmaskedValue;
@@ -217,8 +201,12 @@ export class TuiInputPhoneInternationalComponent
 
     private computeMask(
         countryIsoCode: TuiCountryIsoCode,
-        metadata: MetadataJson,
-    ): MaskitoOptions {
+        metadata?: MetadataJson,
+    ): MaskitoOptions | null {
+        if (!metadata) {
+            return null;
+        }
+
         const {plugins, ...restOptions} = maskitoPhoneOptionsGenerator({
             countryIsoCode,
             metadata,

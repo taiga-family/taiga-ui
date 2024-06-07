@@ -11,7 +11,7 @@ import {getCountryCallingCode} from 'libphonenumber-js/core';
 export class TuiGetCountryCallingCodePipe implements PipeTransform {
     public transform(
         countryIsoCode: TuiCountryIsoCode,
-        metadata: MetadataJson | null,
+        metadata?: MetadataJson | null,
     ): string {
         return metadata
             ? CHAR_PLUS + getCountryCallingCode(countryIsoCode, metadata)
