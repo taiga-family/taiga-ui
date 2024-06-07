@@ -35,7 +35,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null if no elements are found at the calculated points', () => {
             const {ownerDocument} = element;
-            const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
+            const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint.mockReturnValue(null);
             expect(tuiGetElementObscures(element)).toEqual([]);
@@ -44,7 +44,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null if there are no obscuring elements', () => {
             const {ownerDocument} = element;
-            const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
+            const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint
                 .mockReturnValueOnce(element)
@@ -98,7 +98,7 @@ describe('tuiGetElementObscures', () => {
 
             others.forEach(el => document.body.appendChild(el));
 
-            const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
+            const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint
                 .mockReturnValueOnce(others[0])
@@ -122,7 +122,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null', () => {
             const {ownerDocument} = element;
-            const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
+            const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint.mockReturnValue(null);
             expect(tuiGetElementObscures(element)).toBeNull();
@@ -131,7 +131,7 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null anyway', () => {
             const {ownerDocument} = element;
-            const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
+            const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint
                 .mockReturnValueOnce(element)
