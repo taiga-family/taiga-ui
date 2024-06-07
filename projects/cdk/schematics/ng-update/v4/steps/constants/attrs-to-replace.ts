@@ -110,6 +110,24 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: '(openChange)',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {
+            attrName: '(tuiDropdownOpenChange)',
+        },
+    },
+    {
+        from: {
+            attrName: '(focusedChange)',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {
+            attrName: '(tuiActiveZoneChange)',
+        },
+    },
+    {
+        from: {
             attrName: 'tuiHostedDropdownHost',
             withTagNames: ['*'],
         },

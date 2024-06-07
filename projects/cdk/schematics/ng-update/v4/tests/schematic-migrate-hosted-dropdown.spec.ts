@@ -49,6 +49,8 @@ const TEMPLATE_BEFORE = `
 
 <tui-hosted-dropdown
   [content]="template"
+  (focusedChange)="onFocused($event)"
+  (openChange)="onOpen($event)"
 >
   <button>One</button>
 </tui-hosted-dropdown>
@@ -69,6 +71,8 @@ const TEMPLATE_AFTER = `
 
 <div tuiDropdownOpen
   [tuiDropdown]="template"
+  (tuiActiveZoneChange)="onFocused($event)"
+  (tuiDropdownOpenChange)="onOpen($event)"
 >
   <button>One</button>
 </div>
