@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[61744],{80703:e=>{e.exports='```html\n<div (tuiSwipe)="..."></div>\n```\n'}}]);
