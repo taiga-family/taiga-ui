@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/
 import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {
+    AbstractTuiControl,
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
@@ -16,11 +17,6 @@ import {
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
-import {
-    TuiInputDateComponent,
-    TuiInputDateMultiComponent,
-    TuiInputDateRangeComponent,
-} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -46,40 +42,33 @@ export class TuiMobileCalendarDropdownComponent {
         },
     };
 
-    protected readonly single = inject(TuiInputDateComponent, {optional: true});
-    protected readonly multi = inject(TuiInputDateMultiComponent, {optional: true});
-    protected readonly range = inject(TuiInputDateRangeComponent, {optional: true});
+    // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
+    protected readonly control: any = inject(AbstractTuiControl, {optional: true});
+    protected readonly single = this.is('tui-input-date:not([multiple])');
+    protected readonly multi = this.is('tui-input-date[multiple]');
+    protected readonly range = this.is('tui-input-date-range');
     protected readonly zone = inject(TuiActiveZoneDirective);
 
-    protected readonly min =
-        this.single?.min ||
-        this.multi?.min ||
-        (this.range &&
-            TUI_DAY_CAPS_MAPPER(
-                this.range.min,
-                this.range.value,
-                this.range.maxLength,
-                true,
-            )) ||
-        TUI_FIRST_DAY;
+    protected readonly min = this.range
+        ? TUI_DAY_CAPS_MAPPER(
+              this.control.min,
+              this.control.value,
+              this.control.maxLength,
+              true,
+          )
+        : this.control?.min || TUI_FIRST_DAY;
 
-    protected readonly max =
-        this.single?.max ||
-        this.multi?.max ||
-        (this.range &&
-            TUI_DAY_CAPS_MAPPER(
-                this.range.max,
-                this.range.value,
-                this.range.maxLength,
-                false,
-            )) ||
-        TUI_LAST_DAY;
+    protected readonly max = this.range
+        ? TUI_DAY_CAPS_MAPPER(
+              this.control.max,
+              this.control.value,
+              this.control.maxLength,
+              false,
+          )
+        : this.control?.max || TUI_LAST_DAY;
 
     protected readonly disabledItemHandler =
-        this.single?.disabledItemHandler ||
-        this.multi?.disabledItemHandler ||
-        this.range?.disabledItemHandler ||
-        TUI_FALSE_HANDLER;
+        this.control?.disabledItemHandler || TUI_FALSE_HANDLER;
 
     constructor() {
         this.keyboard.hide();
@@ -91,13 +80,15 @@ export class TuiMobileCalendarDropdownComponent {
     }
 
     protected confirm(value: any): void {
-        const control = this.single || this.multi || this.range;
-
-        if (control) {
-            control.value = value;
+        if (this.control) {
+            this.control.value = value;
         }
 
         this.close();
+    }
+
+    private is(selector: string): boolean {
+        return !!this.dropdown.el.closest(selector);
     }
 }
 

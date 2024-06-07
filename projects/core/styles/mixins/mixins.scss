@@ -311,7 +311,7 @@
 
     &:hover {
         @include shadow(5);
-        transform: translateY(-$space);
+        transform: translateY(-0.25rem);
     }
 }
 
@@ -352,33 +352,33 @@
 //spaces
 @mixin tui-space($direction, $size) {
     @if ($direction == all) {
-        margin: $space * $size;
+        margin: 0.25rem * $size;
     }
 
     @if ($direction == top) {
-        margin-top: $space * $size;
+        margin-top: 0.25rem * $size;
     }
 
     @if ($direction == bottom) {
-        margin-bottom: $space * $size;
+        margin-bottom: 0.25rem * $size;
     }
 
     @if ($direction == vertical) {
-        margin-top: $space * $size;
-        margin-bottom: $space * $size;
+        margin-top: 0.25rem * $size;
+        margin-bottom: 0.25rem * $size;
     }
 
     @if ($direction == left) {
-        margin-left: $space * $size;
+        margin-left: 0.25rem * $size;
     }
 
     @if ($direction == right) {
-        margin-right: $space * $size;
+        margin-right: 0.25rem * $size;
     }
 
     @if ($direction == horizontal) {
-        margin-right: $space * $size;
-        margin-left: $space * $size;
+        margin-right: 0.25rem * $size;
+        margin-left: 0.25rem * $size;
     }
 }
 

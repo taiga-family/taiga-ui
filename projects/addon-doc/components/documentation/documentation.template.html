@@ -142,23 +142,6 @@
                                 [tuiTextfieldLabelOutside]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event || 0)"
                             />
-
-                            <!--                            <ng-container *ngSwitchCase="'PolymorpheusContent'">-->
-                            <!--                                <tui-primitive-textfield-->
-                            <!--                                    *ngIf="-->
-                            <!--                                        propertyConnector.documentationPropertyValue-->
-                            <!--                                            | tuiIsPrimitivePolymorpheusContentPipe-->
-                            <!--                                    "-->
-                            <!--                                    tuiTextfieldSize="m"-->
-                            <!--                                    [nativeId]="propertyConnector.attrName"-->
-                            <!--                                    [tuiTextfieldCleaner]="true"-->
-                            <!--                                    [tuiTextfieldLabelOutside]="true"-->
-                            <!--                                    [value]="propertyConnector.documentationPropertyValue.toString()"-->
-                            <!--                                    (valueChange)="propertyConnector.onValueChange($event)"-->
-                            <!--                                >-->
-                            <!--                                    Default content-->
-                            <!--                                </tui-primitive-textfield>-->
-                            <!--                            </ng-container>-->
                         </ng-container>
                     </ng-template>
                 </ng-container>

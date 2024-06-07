@@ -38,7 +38,6 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly ngControl = inject(NgControl, {self: true});
     private readonly refresh$ = new Subject<void>();
 
-    protected onTouched = EMPTY_FUNCTION;
     protected onChange = EMPTY_FUNCTION;
 
     protected readonly destroyRef = inject(DestroyRef);
@@ -66,6 +65,8 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         // eslint-disable-next-line no-nested-ternary
         this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
     );
+
+    public onTouched = EMPTY_FUNCTION;
 
     constructor() {
         effect(() => this.onChange(this.value()), {allowSignalWrites: true});
