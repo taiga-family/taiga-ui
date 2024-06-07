@@ -18,9 +18,9 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
-    TUI_TEXTFIELD_OPTIONS,
     tuiAsDataListAccessor,
     TuiDataList,
+    tuiGetDataListSize,
     TuiLoaderComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -61,7 +61,7 @@ export class TuiDataListWrapperComponent<T> {
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    public size = inject(TUI_TEXTFIELD_OPTIONS).size || 'm';
+    public size = tuiGetDataListSize();
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();

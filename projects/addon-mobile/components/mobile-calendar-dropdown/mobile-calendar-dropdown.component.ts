@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
-    TuiDropdownOpenDirective,
+    TuiDropdownDirective,
     tuiFadeIn,
     tuiGetDuration,
     tuiSlideInTop,
@@ -32,7 +32,8 @@ import {
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiMobileCalendarDropdownComponent {
-    private readonly dropdown = inject(TuiDropdownOpenDirective);
+    // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
+    private readonly dropdown = inject(TuiDropdownDirective);
     private readonly keyboard = inject(TuiKeyboardService);
 
     @HostBinding('@tuiSlideInTop')

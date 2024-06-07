@@ -22,13 +22,28 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import type {TuiDataListAccessor} from '@taiga-ui/core/tokens';
-import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
+import {
+    TUI_NOTHING_FOUND_MESSAGE,
+    TUI_TEXTFIELD_HOST,
+    tuiAsDataListAccessor,
+} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 import {TuiOptionComponent} from './option.component';
+
+/**
+ * @deprecated replace with inject(TUI_TEXTFIELD_OPTIONS).size || 'm'; when legacy is dropped
+ */
+export function tuiGetDataListSize(): TuiSizeL | TuiSizeS {
+    const sizes = ['s', 'm', 'l'] as const;
+    const size = inject<any>(TUI_TEXTFIELD_HOST).size;
+
+    return sizes.includes(size) ? size : inject(TUI_TEXTFIELD_OPTIONS).size;
+}
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
@@ -58,7 +73,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = inject(TUI_TEXTFIELD_OPTIONS).size || 'm';
+    public size = tuiGetDataListSize();
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
