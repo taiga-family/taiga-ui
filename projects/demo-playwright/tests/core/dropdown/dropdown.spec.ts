@@ -79,4 +79,18 @@ test.describe('Dropdown', () => {
         await page.locator('tui-dropdown').locator('tui-scrollbar .t-thumb').click();
         await expect(page).toHaveScreenshot('11-dropdown.png');
     });
+
+    test('Dropdown selection', async ({page}) => {
+        await tuiGoto(page, '/directives/dropdown-selection');
+
+        const textarea = new TuiDocumentationPagePO(page)
+            .getExample('#textarea')
+            .locator('textarea');
+
+        await textarea.clear();
+        await textarea.press('@');
+        await textarea.press('Backspace');
+
+        await expect(page.locator('tui-dropdown')).not.toBeVisible();
+    });
 });

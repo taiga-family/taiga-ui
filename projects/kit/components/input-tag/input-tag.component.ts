@@ -356,6 +356,7 @@ export class TuiInputTagComponent
 
         event.preventDefault();
         this.focusInput();
+        this.scrollTo();
     }
 
     onFieldKeyDownBackspace(event: Event): void {
