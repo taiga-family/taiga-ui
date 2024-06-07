@@ -46,7 +46,7 @@ export class TuiInputCopyComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly isCopied$ = new BehaviorSubject<boolean>(false);
+    private readonly copied$ = new BehaviorSubject<boolean>(false);
     private readonly doc = inject(DOCUMENT);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly options = inject(TUI_INPUT_COPY_OPTIONS);
@@ -84,13 +84,13 @@ export class TuiInputCopyComponent
     protected get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
             switchMap(texts =>
-                this.isCopied$.pipe(
-                    switchMap(isCopied => {
-                        if (!isCopied) {
+                this.copied$.pipe(
+                    switchMap(copied => {
+                        if (!copied) {
                             return of(texts[0]);
                         }
 
-                        this.isCopied$.next(false);
+                        this.copied$.next(false);
 
                         return merge(
                             of(this.successMessage || texts[1]),
@@ -117,7 +117,7 @@ export class TuiInputCopyComponent
 
         this.textfield.nativeFocusableElement.select();
         this.doc.execCommand('copy');
-        this.isCopied$.next(true);
+        this.copied$.next(true);
     }
 
     protected getFallbackValue(): string {
