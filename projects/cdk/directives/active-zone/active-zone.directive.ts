@@ -17,7 +17,7 @@ import {distinctUntilChanged, map, skip, startWith, tap} from 'rxjs';
     },
 })
 export class TuiActiveZoneDirective implements OnDestroy {
-    private readonly control = inject(NgControl, {optional: true, self: true});
+    private readonly control: any = inject(NgControl, {optional: true, self: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
     private readonly el = tuiInjectElement();
@@ -35,8 +35,8 @@ export class TuiActiveZoneDirective implements OnDestroy {
         distinctUntilChanged(),
         skip(1),
         tap(active => {
-            if (!active && this.control) {
-                this.control.control?.markAsTouched();
+            if (!active && typeof this.control?.valueAccessor.onTouched === 'function') {
+                this.control.valueAccessor.onTouched();
             }
         }),
         tuiZoneOptimized(this.zone),

@@ -4,6 +4,7 @@
         <tui-chip
             *ngIf="!!deprecated || deprecated === ''"
             appearance="custom"
+            size="xs"
             class="t-tag t-tag_deprecated"
         >
             deprecated
@@ -11,6 +12,7 @@
         <tui-chip
             *ngIf="package"
             appearance="custom"
+            size="xs"
             class="t-tag t-tag_package"
             [style.background]="package | tuiAutoColor"
         >

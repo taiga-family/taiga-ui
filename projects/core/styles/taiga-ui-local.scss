@@ -1,13 +1,6 @@
-/**
- * @deprecated remove in 4.0
- */
-$space: 0.25rem;
-
 @import 'mixins/browsers.scss';
 @import 'mixins/mixins.scss';
 @import 'mixins/picker.scss';
 @import 'mixins/slider.scss';
-@import 'mixins/textfield.scss';
-@import 'mixins/wrapper.scss';
 @import 'mixins/appearance.scss';
 @import 'variables/media.scss';
