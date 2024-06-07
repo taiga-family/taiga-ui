@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
@@ -42,6 +43,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     ],
 })
 export default class PageComponent extends AbstractExampleTuiNumberFormat {
+    protected readonly routes = DemoRoute;
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
     protected min = this.minVariants[0];

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
@@ -49,6 +50,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export default class ExampleComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),

@@ -3,6 +3,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
@@ -51,6 +52,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
+    protected readonly routes = DemoRoute;
     protected placeholder = 'Field placeholder';
 
     public readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];

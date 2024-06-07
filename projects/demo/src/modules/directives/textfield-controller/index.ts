@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -51,4 +52,5 @@ export default class PageComponent {
     protected maxLength: number | null = null;
 
     protected readonly control = new FormControl('111', Validators.required);
+    protected readonly routes = DemoRoute;
 }

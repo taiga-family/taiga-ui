@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
 import {
@@ -50,6 +51,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
 export default class PageComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
+    protected readonly routes = DemoRoute;
     protected readonly minVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
