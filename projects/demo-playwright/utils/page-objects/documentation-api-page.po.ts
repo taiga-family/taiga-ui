@@ -103,7 +103,6 @@ export class TuiDocumentationApiPagePO {
 
     public async focusOnBody(): Promise<void> {
         await this.page.locator('body').click({position: {x: 0, y: 0}});
-        await this.page.waitForTimeout(300);
     }
 
     public async getCleaner(select: Locator): Promise<Locator | null> {
