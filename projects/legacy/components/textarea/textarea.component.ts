@@ -18,7 +18,11 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiGetBorder, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    tuiGetBorder,
+    TuiHintOptionsDirective,
+} from '@taiga-ui/core';
 import {
     TUI_ICON_PADDINGS,
     TuiTextfieldComponent,
@@ -56,6 +60,8 @@ export class TuiTextareaComponent
 
     @ContentChild(TuiTextfieldComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
+
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
@@ -95,7 +101,7 @@ export class TuiTextareaComponent
 
     @HostBinding('class._label-outside')
     protected get labelOutside(): boolean {
-        return this.controller.labelOutside;
+        return this.options.appearance === 'table' || this.controller.labelOutside;
     }
 
     @HostBinding('attr.data-size')
@@ -138,7 +144,7 @@ export class TuiTextareaComponent
     }
 
     protected get appearance(): string {
-        return this.controller.appearance;
+        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
     }
 
     protected get hasCleaner(): boolean {

@@ -23,8 +23,8 @@ import {
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import type {TuiDataListAccessor} from '@taiga-ui/core/tokens';
 import {
+    TUI_DATA_LIST_HOST,
     TUI_NOTHING_FOUND_MESSAGE,
-    TUI_TEXTFIELD_HOST,
     tuiAsDataListAccessor,
 } from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -40,7 +40,7 @@ import {TuiOptionComponent} from './option.component';
  */
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
-    const size = inject<any>(TUI_TEXTFIELD_HOST, {optional: true})?.size;
+    const size = inject<any>(TUI_DATA_LIST_HOST, {optional: true})?.size;
 
     return sizes.includes(size) ? size : inject(TUI_TEXTFIELD_OPTIONS).size;
 }

@@ -55,7 +55,8 @@ export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     ],
     host: {
         '[class._autofilled]': 'autofilled',
-        '[class._label-outside]': 'controller.labelOutside',
+        '[class._label-outside]':
+            'options.appearance === "table" || controller.labelOutside',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -66,12 +67,12 @@ export class TuiPrimitiveTextfieldComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     private readonly legacyOptions = inject(LEGACY_OPTIONS);
-    private readonly options = inject(OPTIONS);
     private readonly el = tuiInjectElement();
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     protected readonly content?: QueryList<unknown>;
 
+    protected readonly options = inject(OPTIONS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected autofilled = false;
