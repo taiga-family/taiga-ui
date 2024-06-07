@@ -27,7 +27,6 @@
         "@ng-web-apis/resize-observer": "^3.0.6",
         "@taiga-ui/cdk": "^3.59.0",
         "@taiga-ui/core": "^3.59.0",
-        "@taiga-ui/design-tokens": "^0.76.0",
         "@taiga-ui/i18n": "^3.59.0",
         "@tinkoff/ng-polymorpheus": "^4.3.0",
         "rxjs": ">=7.0.0",
