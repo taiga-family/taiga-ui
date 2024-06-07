@@ -23,7 +23,7 @@ import {
 } from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {map, merge, of, startWith, Subject, switchMap, timer} from 'rxjs';
+import {BehaviorSubject, map, merge, of, switchMap, timer} from 'rxjs';
 
 import type {TuiInputCopyOptions} from './input-copy.options';
 import {TUI_INPUT_COPY_OPTIONS} from './input-copy.options';
@@ -46,7 +46,7 @@ export class TuiInputCopyComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly copy$ = new Subject<void>();
+    private readonly copied$ = new BehaviorSubject<boolean>(false);
     private readonly doc = inject(DOCUMENT);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly options = inject(TUI_INPUT_COPY_OPTIONS);
@@ -84,14 +84,19 @@ export class TuiInputCopyComponent
     protected get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
             switchMap(texts =>
-                this.copy$.pipe(
-                    switchMap(() =>
-                        merge(
+                this.copied$.pipe(
+                    switchMap(copied => {
+                        if (!copied) {
+                            return of(texts[0]);
+                        }
+
+                        this.copied$.next(false);
+
+                        return merge(
                             of(this.successMessage || texts[1]),
                             timer(3000).pipe(map(() => texts[0])),
-                        ),
-                    ),
-                    startWith(texts[0]),
+                        );
+                    }),
                 ),
             ),
         );
@@ -112,7 +117,7 @@ export class TuiInputCopyComponent
 
         this.textfield.nativeFocusableElement.select();
         this.doc.execCommand('copy');
-        this.copy$.next();
+        this.copied$.next(true);
     }
 
     protected getFallbackValue(): string {
