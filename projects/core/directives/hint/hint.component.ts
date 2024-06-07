@@ -108,7 +108,7 @@ export class TuiHintComponent<C = any> {
     @HostListener('document:click', ['$event.target'])
     protected onClick(target: HTMLElement): void {
         if (
-            (!this.el.contains(target) && !this.hover.el.contains(target)) ||
+            (!target.closest('tui-hint') && !this.hover.el.contains(target)) ||
             tuiIsObscured(this.hover.el)
         ) {
             this.hover.toggle(false);

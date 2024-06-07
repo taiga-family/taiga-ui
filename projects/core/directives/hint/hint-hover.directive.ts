@@ -58,6 +58,11 @@ export class TuiHintHoverDirective extends TuiDriver {
         }),
     );
 
+    private readonly parent = inject(TuiHintHoverDirective, {
+        optional: true,
+        skipSelf: true,
+    });
+
     @Input()
     public tuiHintShowDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
@@ -76,5 +81,6 @@ export class TuiHintHoverDirective extends TuiDriver {
 
     public toggle(visible = !this.visible): void {
         this.toggle$.next(visible);
+        this.parent?.toggle(visible);
     }
 }

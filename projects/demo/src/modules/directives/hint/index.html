@@ -27,6 +27,13 @@
                 directive so that dependency injection works properly
             </tui-notification>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="nested"
+            heading="Nested"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
     </ng-template>
 
     <ng-template pageTab>
