@@ -172,6 +172,15 @@ test.describe('InputDateTime', () => {
                 '03-timeMode=HH:MM.SS.MSS.png',
             );
         });
+
+        test('should time to pre-fill with zeros on blur', async ({page}) => {
+            await tuiGoto(page, '/components/input-date-time/API?timeMode=HH:MM:SS.MSS');
+
+            await inputDateTime.textfield.fill('07.06.2024, 23:59');
+            await inputDateTime.textfield.blur();
+
+            await expect(inputDateTime.textfield).toHaveValue('07.06.2024, 23:59:00.000');
+        });
     });
 
     test.describe('invalid date', () => {
