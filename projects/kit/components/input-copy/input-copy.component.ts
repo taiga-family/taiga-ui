@@ -29,8 +29,8 @@ import {
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Observable, of, Subject, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, merge, Observable, of, timer} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
 
 import {TUI_INPUT_COPY_OPTIONS, TuiInputCopyOptions} from './input-copy.options';
 
@@ -52,7 +52,7 @@ export class TuiInputCopyComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly copy$ = new Subject<void>();
+    private readonly copied$ = new BehaviorSubject<boolean>(false);
 
     @Input()
     successMessage = this.options.successMessage;
@@ -87,14 +87,19 @@ export class TuiInputCopyComponent
     get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
             switchMap(texts =>
-                this.copy$.pipe(
-                    switchMap(() =>
-                        merge(
+                this.copied$.pipe(
+                    switchMap(copied => {
+                        if (!copied) {
+                            return of(texts[0]);
+                        }
+
+                        this.copied$.next(false);
+
+                        return merge(
                             of(this.successMessage || texts[1]),
                             timer(3000).pipe(map(() => texts[0])),
-                        ),
-                    ),
-                    startWith(texts[0]),
+                        );
+                    }),
                 ),
             ),
         );
@@ -129,7 +134,7 @@ export class TuiInputCopyComponent
 
         this.textfield.nativeFocusableElement.select();
         this.doc.execCommand('copy');
-        this.copy$.next();
+        this.copied$.next(true);
     }
 
     protected getFallbackValue(): string {
