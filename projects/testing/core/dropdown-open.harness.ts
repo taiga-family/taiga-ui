@@ -1,8 +1,8 @@
 import {TestKey} from '@angular/cdk/testing';
 import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 
-export class TuiHostedDropdownHarness extends TuiContentContainerComponentHarness {
-    public static hostSelector = 'tui-hosted-dropdown';
+export class TuiDropdownOpenHarness extends TuiContentContainerComponentHarness {
+    public static hostSelector = '[tuiDropdownOpen]';
 
     public async sendSpaceKey(): Promise<void> {
         return (await this.host()).sendKeys(' ');

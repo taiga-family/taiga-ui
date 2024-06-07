@@ -37,11 +37,11 @@ import {
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
+    TuiDropdownOpenDirective,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
-import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
@@ -68,8 +68,8 @@ export class TuiComboBoxComponent<T>
     @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
     private readonly accessor?: TuiDataListAccessor<T>;
 
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+    @ViewChild(TuiDropdownOpenDirective)
+    private readonly dropdown?: TuiDropdownOpenDirective;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -111,8 +111,7 @@ export class TuiComboBoxComponent<T>
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            !!this.hostedDropdown?.focused
+            tuiIsNativeFocused(this.nativeFocusableElement) || !!this.dropdown?.focused
         );
     }
 
@@ -158,12 +157,12 @@ export class TuiComboBoxComponent<T>
 
         // Clearing sets the empty value, the dropdown should not be opened on clear.
         if (this.search !== '') {
-            this.hostedDropdown?.updateOpen(true);
+            this.open = true;
         }
     }
 
     public toggle(): void {
-        this.hostedDropdown?.updateOpen(!this.open);
+        this.open = !this.open;
     }
 
     @HostBinding('attr.data-size')
@@ -210,7 +209,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private close(): void {
-        this.hostedDropdown?.updateOpen(false);
+        this.open = false;
     }
 
     private updateSearch(search: string | null): void {

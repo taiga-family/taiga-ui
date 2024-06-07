@@ -1,9 +1,9 @@
 <ng-container *ngIf="hintOptions?.change$ | async" />
-<tui-hosted-dropdown
+<div
     class="t-hosted"
-    [canOpen]="canOpen"
-    [content]="datalist || ''"
-    [(open)]="open"
+    [tuiDropdown]="datalist || ''"
+    [tuiDropdownEnabled]="canOpen"
+    [(tuiDropdownOpen)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div
@@ -157,4 +157,4 @@
             />
         </ng-template>
     </div>
-</tui-hosted-dropdown>
+</div>

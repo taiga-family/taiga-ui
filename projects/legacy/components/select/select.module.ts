@@ -1,10 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdownModule} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -25,9 +23,8 @@ import {TuiSelectDirective} from './select.directive';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiActiveZoneDirective,
         TuiPrimitiveTextfieldModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiSelectOptionModule,
         TuiArrowComponent,
         TuiWrapperModule,

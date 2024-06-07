@@ -107,6 +107,10 @@ export class TuiDropdownOpenDirective implements OnChanges {
         return this.directive?.dropdownBoxRef?.location.nativeElement;
     }
 
+    public get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
+    }
+
     public ngOnChanges(): void {
         this.drive();
     }
@@ -168,10 +172,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
             : tuiGetClosestFocusable({initial, root: this.el});
 
         return this.dropdownHost?.nativeElement || focusable || this.el;
-    }
-
-    private get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
     }
 
     private get editable(): boolean {

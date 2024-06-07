@@ -3,12 +3,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZoneDirective, TuiDay} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
-import {
-    TuiHostedDropdownModule,
-    TuiInputDateModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiButtonDirective, TuiDropdownModule} from '@taiga-ui/core';
+import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -16,7 +12,7 @@ import {
         TuiInputDateModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiButtonDirective,
         TuiActiveZoneDirective,
     ],
