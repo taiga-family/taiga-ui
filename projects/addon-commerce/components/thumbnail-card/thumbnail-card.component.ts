@@ -6,8 +6,8 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiIconComponent} from '@taiga-ui/core';

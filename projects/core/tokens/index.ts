@@ -2,7 +2,6 @@ export * from './animations-speed';
 export * from './common-icon';
 export * from './date-format';
 export * from './day-type-handler';
-export * from './element-ref';
 export * from './first-day-of-week';
 export * from './i18n';
 export * from './icon-resolver';

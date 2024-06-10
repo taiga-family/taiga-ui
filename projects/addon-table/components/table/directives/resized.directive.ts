@@ -1,7 +1,11 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Output} from '@angular/core';
-import {tuiInjectElement, tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TUI_ELEMENT_REF} from '@taiga-ui/core';
+import {
+    EMPTY_CLIENT_RECT,
+    tuiInjectElement,
+    tuiPreventDefault,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
@@ -11,14 +15,13 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 export class TuiResizedDirective {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
-    private readonly parentRef: HTMLTableCellElement =
-        inject(TUI_ELEMENT_REF).nativeElement;
 
     @Output()
     public readonly tuiResized = tuiTypedFromEvent(this.el, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
-            const {width, right} = this.parentRef.getBoundingClientRect();
+            const {width, right} =
+                this.el.closest('th')?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
 
             return tuiTypedFromEvent(this.doc, 'mousemove').pipe(
                 distinctUntilChanged(),

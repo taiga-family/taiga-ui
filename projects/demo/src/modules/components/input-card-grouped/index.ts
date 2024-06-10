@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
+import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {
     TuiInputCardGroupedComponent,
     TuiThumbnailCardComponent,
@@ -52,9 +52,9 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected exampleText = '0000 0000 0000 0000';
 
-    protected readonly codeLengthVariants: TuiCodeCVCLength[] = [3, 4];
+    protected readonly codeLengthVariants = [3, 4] as const;
 
-    protected codeLength: TuiCodeCVCLength = this.codeLengthVariants[0];
+    protected codeLength: 3 | 4 = this.codeLengthVariants[0];
 
     protected pseudoInvalid: boolean | null = null;
 

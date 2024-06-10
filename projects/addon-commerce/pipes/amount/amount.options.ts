@@ -1,12 +1,14 @@
 import type {Provider} from '@angular/core';
-import type {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
+import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection} from '@taiga-ui/core';
+
+import type {TuiAmountSign} from './amount.types';
 
 export interface TuiAmountOptions {
     readonly currency: TuiCurrencyVariants;
     readonly currencyAlign: TuiHorizontalDirection;
-    readonly sign: TuiMoneySign;
+    readonly sign: TuiAmountSign;
 }
 
 export const TUI_AMOUNT_DEFAULT_OPTIONS: TuiAmountOptions = {
