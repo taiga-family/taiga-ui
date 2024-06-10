@@ -14,8 +14,3 @@ export function tuiQueryListChanges<T>(
         map(() => tuiGetOriginalArrayFromQueryList(queryList)),
     );
 }
-
-/**
- * @deprecated An alias, use {@link tuiQueryListChanges} instead
- */
-export const tuiItemsQueryListObservable = tuiQueryListChanges;
