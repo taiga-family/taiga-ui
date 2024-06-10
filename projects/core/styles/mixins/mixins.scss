@@ -185,47 +185,6 @@
     }
 }
 
-// shadow
-@mixin shadow($mode: 1) {
-    // Default
-    @if ($mode == 1) {
-        box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12);
-    }
-
-    // Dropdown
-    @if ($mode == 2) {
-        box-shadow:
-            0 1.5rem 1rem rgba(0, 0, 0, 0.03),
-            0 0.75rem 0.75rem rgba(0, 0, 0, 0.04),
-            0 0.25rem 0.375rem rgba(0, 0, 0, 0.05);
-    }
-
-    // Modal
-    @if ($mode == 3) {
-        box-shadow: 0 1.125rem 1.875rem rgba(0, 0, 0, 0.48);
-    }
-
-    // Sidebar
-    @if ($mode == 4) {
-        box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.12);
-    }
-
-    // Hover
-    @if ($mode == 5) {
-        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.2);
-    }
-
-    // Navigation
-    @if ($mode == 6) {
-        box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.08);
-    }
-
-    // Modal mobile
-    @if ($mode == 7) {
-        box-shadow: 0 -1rem 1.75rem rgba(0, 0, 0, 0.24);
-    }
-}
-
 @mixin inset-border($direction: bottom, $mode: none) {
     @if ($direction == bottom) {
         box-shadow: inset 0 -1px var(--tui-base-03);
@@ -303,14 +262,14 @@
 }
 
 @mixin hoverable-with-shadow() {
-    @include shadow();
     @include transition(all);
     cursor: pointer;
+    box-shadow: var(--tui-shadow);
     transition-property: transform, box-shadow;
     will-change: transform, box-shadow;
 
     &:hover {
-        @include shadow(5);
+        box-shadow: var(--tui-shadow-hover);
         transform: translateY(-0.25rem);
     }
 }
