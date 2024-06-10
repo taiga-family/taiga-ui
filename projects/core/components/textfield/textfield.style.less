@@ -222,6 +222,14 @@
     ::ng-deep select:not([data-mode='readonly']) {
         cursor: pointer;
     }
+
+    ::ng-deep input {
+        .ios-only({
+            &:active {
+                font-size: 1rem;
+            }
+        });
+    }
 }
 
 .t-content {

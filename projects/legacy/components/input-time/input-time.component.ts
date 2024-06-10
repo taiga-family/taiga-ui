@@ -86,6 +86,11 @@ export class TuiInputTimeComponent
     @Input()
     public mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
@@ -144,11 +149,6 @@ export class TuiInputTimeComponent
         const time = TuiTime.fromString(value);
 
         this.value = this.strict ? this.findNearestTimeFromItems(time) : time;
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get canOpen(): boolean {

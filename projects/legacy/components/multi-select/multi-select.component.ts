@@ -134,6 +134,11 @@ export class TuiMultiSelectComponent<T>
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.controller.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
@@ -167,11 +172,6 @@ export class TuiMultiSelectComponent<T>
         this.value =
             index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
         this.updateSearch(null);
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.controller.size;
     }
 
     protected get arrow(): PolymorpheusContent<

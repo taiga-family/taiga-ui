@@ -20,29 +20,22 @@ import {
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
-import type {TuiDataListAccessor} from '@taiga-ui/core/tokens';
-import {
-    TUI_DATA_LIST_HOST,
-    TUI_NOTHING_FOUND_MESSAGE,
-    tuiAsDataListAccessor,
-} from '@taiga-ui/core/tokens';
+import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
+import type {TuiDataListAccessor} from './data-list.tokens';
+import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
 import {TuiOptionComponent} from './option.component';
 
-/**
- * @deprecated replace with inject(TUI_TEXTFIELD_OPTIONS).size || 'm'; when legacy is dropped
- */
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
-    const size = inject<any>(TUI_DATA_LIST_HOST, {optional: true})?.size;
+    const size = inject(TUI_DATA_LIST_HOST, {optional: true})?.size;
 
-    return sizes.includes(size) ? size : inject(TUI_TEXTFIELD_OPTIONS).size;
+    return size && sizes.includes(size) ? size : 'l';
 }
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation

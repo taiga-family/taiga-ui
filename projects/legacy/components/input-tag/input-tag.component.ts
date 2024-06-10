@@ -175,6 +175,11 @@ export class TuiInputTagComponent
         return size === 's' || labelOutside;
     }
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.controller.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.focusableElement || this.computedDisabled
             ? null
@@ -235,11 +240,6 @@ export class TuiInputTagComponent
     public override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.controller.size;
     }
 
     @HostBinding('class._icon-left')

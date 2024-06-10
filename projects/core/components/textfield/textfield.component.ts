@@ -20,15 +20,16 @@ import {
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLabelDirective} from '@taiga-ui/core/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
+    TuiDropdownDirective,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
@@ -61,6 +62,13 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     },
     hostDirectives: [
         TuiNativeValidatorDirective,
+        TuiDropdownDirective,
+        TuiWithDataList,
+        {
+            directive: TuiDropdownOpenDirective,
+            inputs: ['tuiDropdownOpen: open'],
+            outputs: ['tuiDropdownOpenChange: openChange'],
+        },
         {
             directive: TuiIconsDirective,
             inputs: ['iconLeft', 'iconRight'],

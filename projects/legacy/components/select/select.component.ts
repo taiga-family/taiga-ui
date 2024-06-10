@@ -93,6 +93,11 @@ export class TuiSelectComponent<T>
     @Input()
     public valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
@@ -116,11 +121,6 @@ export class TuiSelectComponent<T>
         this.focusInput();
         this.value = option;
         this.hostedDropdown?.updateOpen(false);
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get arrow(): PolymorpheusContent<
