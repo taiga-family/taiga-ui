@@ -9,7 +9,6 @@ import {
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiResized]',
 })
 export class TuiResizedDirective {

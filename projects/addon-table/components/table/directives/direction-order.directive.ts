@@ -4,7 +4,6 @@ import {map} from 'rxjs';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    standalone: true,
     selector: 'table[tuiTable][tuiDirectionOrder]',
 })
 export class TuiDirectionOrderDirective<T> {

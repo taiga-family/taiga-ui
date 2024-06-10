@@ -4,15 +4,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {
-    TuiCellDirective,
-    TuiTableDirective,
-    TuiTbodyComponent,
-    TuiTdComponent,
-    TuiThComponent,
-    TuiThGroupComponent,
-    TuiTrComponent,
-} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiHintDirective} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -20,14 +12,8 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiTableDirective,
-        TuiThGroupComponent,
-        TuiThComponent,
-        TuiTbodyComponent,
+        TuiTable,
         NgForOf,
-        TuiTrComponent,
-        TuiCellDirective,
-        TuiTdComponent,
         TuiInputNumberModule,
         TuiHintDirective,
         ReactiveFormsModule,

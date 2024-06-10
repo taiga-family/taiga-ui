@@ -8,7 +8,6 @@ import type {TuiRowContext} from '@taiga-ui/addon-table/types';
  * TODO v4.0 delete it.
  */
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiRow]',
 })
 export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
