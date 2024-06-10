@@ -24,8 +24,3 @@ export const TUI_PULL_TO_REFRESH_THRESHOLD = tuiCreateToken(50);
 export const TUI_PULL_TO_REFRESH_COMPONENT = tuiCreateTokenFromFactory<
     PolymorpheusContent<TuiContext<number>>
 >(() => (inject(TUI_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER));
-
-/**
- * @deprecated renamed to {@link TUI_PULL_TO_REFRESH_LOADED}
- */
-export const TUI_LOADED = TUI_PULL_TO_REFRESH_LOADED;
