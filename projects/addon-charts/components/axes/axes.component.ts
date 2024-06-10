@@ -1,8 +1,12 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+
+export const TUI_ALWAYS_DASHED: TuiLineHandler = () => 'dashed';
+export const TUI_ALWAYS_DOTTED: TuiLineHandler = () => 'dotted';
+export const TUI_ALWAYS_SOLID: TuiLineHandler = () => 'solid';
+export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 
 @Component({
     standalone: true,

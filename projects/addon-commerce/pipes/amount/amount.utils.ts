@@ -1,10 +1,11 @@
-import type {TuiMoneySign, TuiMoneySignSymbol} from '@taiga-ui/addon-commerce/types';
 import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
+
+import type {TuiAmountSign, TuiAmountSignSymbol} from './amount.types';
 
 export function tuiFormatSignSymbol(
     value: number,
-    sign: TuiMoneySign,
-): TuiMoneySignSymbol {
+    sign: TuiAmountSign,
+): TuiAmountSignSymbol {
     if (sign === 'never' || !value || (sign === 'negative-only' && value > 0)) {
         return '';
     }

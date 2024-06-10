@@ -3,7 +3,7 @@ import {Component, inject, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
+import {TuiMobileCalendarDropdownComponent} from '@taiga-ui/addon-mobile';
 import type {TuiDayRange} from '@taiga-ui/cdk';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
@@ -28,7 +28,7 @@ export default class ExampleComponent {
 
     private readonly dialog$: Observable<TuiDayRange> = this.dialogs.open(
         new PolymorpheusComponent(
-            TuiMobileCalendarDialogComponent,
+            TuiMobileCalendarDropdownComponent,
             Injector.create({
                 providers: [
                     {

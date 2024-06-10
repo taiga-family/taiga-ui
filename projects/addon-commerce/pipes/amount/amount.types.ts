@@ -1,10 +1,10 @@
 import type {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 
-export type TuiMoneySign =
+export type TuiAmountSign =
     | 'always'
     | 'force-negative'
     | 'force-positive'
     | 'negative-only'
     | 'never';
 
-export type TuiMoneySignSymbol = typeof CHAR_MINUS | typeof CHAR_PLUS | '';
+export type TuiAmountSignSymbol = typeof CHAR_MINUS | typeof CHAR_PLUS | '';

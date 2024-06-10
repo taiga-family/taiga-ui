@@ -1,9 +1,6 @@
-import {Directive, inject, Input, Renderer2} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
-import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {TUI_IS_IOS, tuiInjectElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
 const STYLE = {
@@ -12,53 +9,58 @@ const STYLE = {
     background: 'rgba(146, 153, 162, 0.12)',
 } as const;
 
+export function tuiFindTouchIndex(touches: TouchList, id: number): number {
+    for (let i = 0; i < touches.length; i++) {
+        const {identifier} = touches[i];
+
+        if (identifier === id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 @Directive({
     standalone: true,
     selector: '[tuiTouchable]',
 })
 export class TuiTouchableDirective {
     private readonly isIOS = inject(TUI_IS_IOS);
-    private readonly renderer = inject(Renderer2);
     private readonly el = tuiInjectElement();
-    private readonly elementRef?: HTMLElement = inject(TUI_ELEMENT_REF, {optional: true})
-        ?.nativeElement;
 
     @Input()
-    public tuiTouchable: TuiTouchMode | '' = '';
+    public tuiTouchable: '' | 'background' | 'opacity' | 'transform' = '';
 
     constructor() {
         if (!this.isIOS) {
             return;
         }
 
-        const element = this.elementRef || this.el;
-
-        tuiTypedFromEvent(element, 'touchstart', {passive: true})
+        tuiTypedFromEvent(this.el, 'touchstart', {passive: true})
             .pipe(
-                tap(() => {
-                    this.onTouchStart(this.renderer, element);
-                }),
+                tap(() => this.onTouchStart()),
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
                     race(
-                        tuiTypedFromEvent(element, 'touchmove', {passive: true}).pipe(
+                        tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>
-                                this.hasTouchLeft(element, touches, identifier),
+                                this.hasTouchLeft(this.el, touches, identifier),
                             ),
                         ),
-                        tuiTypedFromEvent(element, 'touchend'),
+                        tuiTypedFromEvent(this.el, 'touchend'),
                     ).pipe(take(1)),
                 ),
                 takeUntilDestroyed(),
             )
             .subscribe(() => {
-                this.renderer.removeStyle(element, 'transform');
-                this.renderer.removeStyle(element, 'opacity');
-                this.renderer.removeStyle(element, 'background');
+                this.el.style.removeProperty('transform');
+                this.el.style.removeProperty('opacity');
+                this.el.style.removeProperty('background');
             });
     }
 
-    protected get style(): TuiTouchMode {
+    protected get style(): 'background' | 'opacity' | 'transform' {
         return this.tuiTouchable || 'transform';
     }
 
@@ -79,13 +81,13 @@ export class TuiTouchableDirective {
         return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
     }
 
-    private onTouchStart(renderer: Renderer2, element: HTMLElement): void {
+    private onTouchStart(): void {
         if (this.style !== 'transform') {
-            renderer.removeStyle(element, 'transition');
+            this.el.style.removeProperty('transition');
         } else {
-            renderer.setStyle(element, 'transition', 'transform 0.2s');
+            this.el.style.setProperty('transition', 'transform 0.2s');
         }
 
-        renderer.setStyle(element, this.style, STYLE[this.style]);
+        this.el.style.setProperty(this.style, STYLE[this.style]);
     }
 }

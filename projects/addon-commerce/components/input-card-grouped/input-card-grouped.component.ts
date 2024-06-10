@@ -20,12 +20,8 @@ import {
     TUI_MASK_EXPIRE,
 } from '@taiga-ui/addon-commerce/constants';
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
-import type {
-    TuiCard,
-    TuiCodeCVCLength,
-    TuiPaymentSystem,
-} from '@taiga-ui/addon-commerce/types';
-import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
+import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     TUI_NON_DIGIT_REGEXP,
     TuiActiveZoneDirective,
@@ -65,6 +61,12 @@ import {map, merge} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUPED_OPTIONS} from './input-card-grouped.options';
 import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
+
+export interface TuiCard {
+    card: string;
+    cvc: string;
+    expire: string;
+}
 
 @Component({
     standalone: true,
@@ -196,7 +198,7 @@ export class TuiInputCardGroupedComponent
     public readonly binChange = new EventEmitter<string | null>();
 
     @Input()
-    public set codeLength(length: TuiCodeCVCLength) {
+    public set codeLength(length: 3 | 4) {
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = TUI_MASK_CVC(length);
     }

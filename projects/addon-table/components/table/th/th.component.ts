@@ -3,15 +3,14 @@ import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     forwardRef,
     HostBinding,
     inject,
     Input,
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultSort, tuiProvide} from '@taiga-ui/cdk';
-import {TUI_ELEMENT_REF, TuiSvgComponent} from '@taiga-ui/core';
+import {tuiDefaultSort} from '@taiga-ui/cdk';
+import {TuiSvgComponent} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiResizedDirective} from '../directives/resized.directive';
@@ -25,7 +24,6 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiProvide(TUI_ELEMENT_REF, ElementRef)],
 })
 export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
