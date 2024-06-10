@@ -87,9 +87,3 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
         console.info('\x1B[32m%s\x1B[0m', '[preprocessed]:', file);
     }
 }
-
-/**
- * @deprecated:
- * use @{link tuiProcessIcons}
- */
-export const processIcons = tuiProcessIcons;
