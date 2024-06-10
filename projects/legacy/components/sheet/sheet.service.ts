@@ -8,10 +8,6 @@ import type {TuiSheet} from './sheet';
 import type {TuiSheetOptions} from './sheet-options';
 import {TUI_SHEET_OPTIONS} from './sheet-options';
 
-/**
- * @deprecated: use {@link TuiSheetDialogService}
- * drop in v4.0
- */
 @Injectable({
     providedIn: 'root',
 })

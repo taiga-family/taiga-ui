@@ -3,9 +3,6 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiSheet} from './sheet';
 
-/**
- * @deprecated: drop in v4.0
- */
 export interface TuiSheetOptions<I = undefined, O = unknown> {
     readonly closeable: boolean;
     readonly data: I;
@@ -17,9 +14,6 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
     readonly stops: readonly string[];
 }
 
-/**
- * @deprecated: drop in v4.0
- */
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     image: '',
     imageSlide: true,
@@ -30,10 +24,6 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     overlay: false,
 };
 
-/**
- * @deprecated: drop in v4.0
- * Default parameters for sheet component
- */
 export const TUI_SHEET_OPTIONS = tuiCreateToken<Omit<TuiSheetOptions, 'data'>>({
     ...TUI_SHEET_DEFAULT_OPTIONS,
 });
