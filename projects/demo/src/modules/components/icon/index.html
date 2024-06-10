@@ -1,15 +1,9 @@
 <tui-doc-page
     header="Icon"
-    package="EXPERIMENTAL"
+    package="CORE"
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="warning">
-            This code is
-            <strong>experimental</strong>
-            and is a subject to change. Expect final solution to be shipped in the next major version
-        </tui-notification>
-
         <p>A component to use icons and color them with CSS.</p>
 
         <tui-doc-example
@@ -35,5 +29,68 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-icon
+                [background]="backgroundIcon"
+                [icon]="icon"
+                [style.background]="backgroundColor"
+                [style.color]="color"
+                [style.height.px]="size"
+                [style.width.px]="size"
+            />
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="icon"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            />
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="background"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="backgroundIcon"
+            />
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.color"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="color"
+            />
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.background"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="backgroundColor"
+            />
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.height.px"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="size"
+            >
+                <code
+                    style="color: var(--tui-accent-active); font-family: monospace"
+                    class="tui-text_body-m"
+                >
+                    [style.width.px]
+                </code>
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>
