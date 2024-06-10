@@ -21,10 +21,3 @@ export class TuiThumbnailCardHarness extends TuiComponentHarness {
         return !!tuiSvg;
     }
 }
-
-/**
- * @deprecated use {@link TuiThumbnailCardHarness}
- */
-export class TuiCardHarness extends TuiThumbnailCardHarness {
-    public static override hostSelector = 'tui-card';
-}
