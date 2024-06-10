@@ -13,10 +13,9 @@ import {
 import {FormsModule} from '@angular/forms';
 import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     CHAR_PLUS,
     TUI_NON_DIGITS_REGEXP,
-    tuiAsControl,
+    TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -31,6 +30,7 @@ import {
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiInputPhoneComponent,
@@ -42,7 +42,6 @@ import {
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy/directives';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
@@ -77,8 +76,8 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiArrowComponent,
         TuiAppearanceDirective,
         TuiIsoToCountryCodePipe,
+        TuiActiveZoneDirective,
         TuiFlagPipe,
-        TuiLegacyDropdownOpenMonitorDirective,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],

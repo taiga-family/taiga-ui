@@ -19,19 +19,11 @@ import type {
     TuiFocusableElementAccessor,
     TuiInputMode,
 } from '@taiga-ui/cdk';
-import {
-    AbstractTuiControl,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import {tuiAsFocusableItemAccessor, tuiIsNativeFocused, tuiPure} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    tuiAsDataListHost,
-    TuiDataListDirective,
-    TuiDropdownOpenDirective,
-} from '@taiga-ui/core';
+import {tuiAsDataListHost, TuiDataListDirective} from '@taiga-ui/core';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
@@ -64,8 +56,8 @@ export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
-    @ViewChild(TuiDropdownOpenDirective)
-    private readonly dropdown?: TuiDropdownOpenDirective;
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly dropdown?: TuiHostedDropdownComponent;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -114,7 +106,8 @@ export class TuiInputPhoneComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) || !!this.dropdown?.focused
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
+            (!!this.dropdown && this.dropdown.focused)
         );
     }
 

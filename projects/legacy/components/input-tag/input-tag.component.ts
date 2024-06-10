@@ -22,12 +22,10 @@ import type {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiMultipleControl,
     EMPTY_QUERY,
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     tuiArrayRemove,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
@@ -41,11 +39,12 @@ import {
     TUI_COMMON_ICONS,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDropdownOpenDirective,
     TuiHintOptionsDirective,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
+import {AbstractTuiMultipleControl, tuiAsControl} from '@taiga-ui/legacy/classes';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -87,8 +86,8 @@ export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
-    @ViewChild(TuiDropdownOpenDirective)
-    private readonly dropdown?: TuiDropdownOpenDirective;
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
@@ -207,7 +206,7 @@ export class TuiInputTagComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el) || !!this.dropdown?.focused;
+        return tuiIsNativeFocusedIn(this.el) || !!this.hostedDropdown?.focused;
     }
 
     public onTagEdited(value: string, index: number): void {

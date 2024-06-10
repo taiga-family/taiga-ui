@@ -17,7 +17,6 @@ import type {
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiMultipleControl,
     changeDateSeparator,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
@@ -47,7 +46,11 @@ import {
     tuiDateStreamWithTransformer,
     tuiToggleDay,
 } from '@taiga-ui/kit';
-import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
+import {
+    AbstractTuiMultipleControl,
+    tuiAsControl as tuiAsLegacyControl,
+    TuiStringifiableItem,
+} from '@taiga-ui/legacy/classes';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
@@ -61,7 +64,8 @@ import {map} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputDateMultiComponent),
-        tuiAsControl(TuiInputDateMultiComponent),
+        tuiAsControl(TuiInputDateMultiComponent as any),
+        tuiAsLegacyControl(TuiInputDateMultiComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],

@@ -1,5 +1,6 @@
 import {Directive, inject} from '@angular/core';
-import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 

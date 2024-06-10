@@ -1,6 +1,7 @@
 import {Directive} from '@angular/core';
 import type {TuiTime, TuiTimeMode} from '@taiga-ui/cdk';
-import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {tuiAsTextfieldHost} from '@taiga-ui/core';
+import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 
 import type {TuiInputTimeComponent} from './input-time.component';
 

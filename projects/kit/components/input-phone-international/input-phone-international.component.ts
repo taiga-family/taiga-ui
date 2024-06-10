@@ -3,12 +3,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
     inject,
     Input,
     Output,
     signal,
-    ViewChild,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
@@ -16,14 +14,12 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     CHAR_PLUS,
     tuiAsControl,
-    tuiAsFocusableItemAccessor,
+    TuiControl,
+    tuiFallbackValueProvider,
     tuiIsInputEvent,
-    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -32,7 +28,6 @@ import {
     tuiDropdownOptionsProvider,
     TuiFlagPipe,
     TuiGroupDirective,
-    TuiSelectDirective,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
@@ -68,8 +63,8 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
         tuiAsControl(TuiInputPhoneInternationalComponent),
+        tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: false}),
     ],
     host: {
@@ -82,11 +77,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         }),
     ],
 })
-export class TuiInputPhoneInternationalComponent
-    extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor
-{
-    /* eslint-disable @typescript-eslint/member-ordering */
+export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
@@ -100,12 +91,6 @@ export class TuiInputPhoneInternationalComponent
     protected open = false;
     protected textfieldValue = '';
 
-    @ViewChild(MaskitoDirective, {read: ElementRef})
-    private readonly inputPhone?: ElementRef<HTMLInputElement>;
-
-    @ViewChild(TuiSelectDirective, {read: ElementRef})
-    private readonly countrySelect?: ElementRef<HTMLSelectElement>;
-
     @Input()
     public countries = this.options.countries;
 
@@ -117,20 +102,6 @@ export class TuiInputPhoneInternationalComponent
     @Input('countryIsoCode')
     public set isoCode(code: TuiCountryIsoCode) {
         this.countryIsoCode.set(code);
-    }
-
-    public get nativeFocusableElement(): HTMLElement | null {
-        return this.inputPhone && !this.computedDisabled
-            ? this.inputPhone.nativeElement
-            : null;
-    }
-
-    public get focused(): boolean {
-        return Boolean(
-            tuiIsNativeFocused(this.countrySelect?.nativeElement) ||
-                tuiIsNativeFocused(this.inputPhone?.nativeElement) ||
-                this.open,
-        );
     }
 
     public onPaste(event: Event): void {
@@ -163,7 +134,6 @@ export class TuiInputPhoneInternationalComponent
     public onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
         this.countryIsoCode.set(isoCode);
-        this.nativeFocusableElement?.focus();
     }
 
     public override writeValue(unmaskedValue: string): void {
@@ -192,11 +162,7 @@ export class TuiInputPhoneInternationalComponent
             ? CHAR_PLUS + getCountryCallingCode(this.countryIsoCode(), phonesMetadata)
             : '';
 
-        this.value = unmaskedValue === countryCallingCode ? '' : unmaskedValue;
-    }
-
-    protected getFallbackValue(): string {
-        return '';
+        this.value.set(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
     }
 
     private computeMask(

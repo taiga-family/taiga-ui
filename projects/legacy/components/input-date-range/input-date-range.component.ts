@@ -19,7 +19,6 @@ import type {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
@@ -53,6 +52,10 @@ import {
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import {
+    AbstractTuiNullableControl,
+    tuiAsControl as tuiAsLegacyControl,
+} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
@@ -66,7 +69,8 @@ import {map} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),
-        tuiAsControl(TuiInputDateRangeComponent),
+        tuiAsControl(TuiInputDateRangeComponent as any),
+        tuiAsLegacyControl(TuiInputDateRangeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],

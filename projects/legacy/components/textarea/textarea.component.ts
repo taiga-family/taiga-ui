@@ -10,19 +10,14 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {
-    AbstractTuiControl,
-    TUI_IS_IOS,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiAsFocusableItemAccessor, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiGetBorder,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {
     TUI_ICON_PADDINGS,
     TuiTextfieldComponent,

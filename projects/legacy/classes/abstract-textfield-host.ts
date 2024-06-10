@@ -1,6 +1,7 @@
 import {Directive, inject} from '@angular/core';
-import {AbstractTuiControl} from '@taiga-ui/cdk';
-import type {TuiTextfieldHost} from '@taiga-ui/core/types';
+import type {TuiTextfieldHost} from '@taiga-ui/core';
+
+import {AbstractTuiControl} from './control';
 
 /**
  * @deprecated

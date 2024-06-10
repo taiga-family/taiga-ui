@@ -2,6 +2,7 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     inject,
     Input,
     ViewChild,
@@ -13,10 +14,8 @@ import type {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     EMPTY_QUERY,
     TUI_IS_MOBILE,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiInjectElement,
@@ -29,6 +28,7 @@ import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TUI_FLOATING_PRECISION, TuiRangeComponent} from '@taiga-ui/kit';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -58,8 +58,8 @@ export class TuiInputRangeComponent
     @ViewChildren(TuiInputNumberComponent)
     private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
 
-    @ViewChild(TuiRangeComponent)
-    private readonly rangeRef: TuiRangeComponent | null = null;
+    @ViewChild(TuiRangeComponent, {read: ElementRef})
+    private readonly range?: ElementRef<HTMLElement>;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
@@ -127,7 +127,10 @@ export class TuiInputRangeComponent
         return Boolean(
             this.leftValueContent &&
                 !tuiIsNativeFocused(this.leftFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
+                !(
+                    tuiIsNativeFocusedIn(this.range?.nativeElement) &&
+                    this.lastActiveSide === 'left'
+                ),
         );
     }
 
@@ -135,7 +138,10 @@ export class TuiInputRangeComponent
         return Boolean(
             this.rightValueContent &&
                 !tuiIsNativeFocused(this.rightFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
+                !(
+                    tuiIsNativeFocusedIn(this.range?.nativeElement) &&
+                    this.lastActiveSide === 'right'
+                ),
         );
     }
 

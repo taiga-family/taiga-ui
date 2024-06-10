@@ -25,6 +25,7 @@ import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     TUI_NON_DIGIT_REGEXP,
     TuiActiveZoneDirective,
+    tuiAsControl,
     TuiControl,
     tuiDirectiveBinding,
     tuiHovered,
@@ -91,6 +92,7 @@ export interface TuiCard {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiInputCardGroupedComponent),
+        tuiAsControl(TuiInputCardGroupedComponent),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         TuiHoveredService,

@@ -49,7 +49,7 @@ export class TuiInputFilesComponent {
     public readonly input?: TuiInputFilesDirective;
 
     protected get fileDragged(): boolean {
-        return !!this.files && !this.input?.computedDisabled;
+        return !!this.files && !this.input?.disabled();
     }
 
     @HostListener('change', ['$event.target'])
@@ -65,7 +65,7 @@ export class TuiInputFilesComponent {
     protected onDropped({dataTransfer}: DragEvent): void {
         this.files = null;
 
-        if (dataTransfer?.files && !this.input?.computedDisabled) {
+        if (dataTransfer?.files && !this.input?.disabled()) {
             this.input?.process(dataTransfer.files);
         }
     }
