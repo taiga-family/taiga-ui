@@ -4,12 +4,12 @@
 <button
     *ngIf="closeable"
     appearance=""
-    shape="rounded"
     size="xs"
     tuiIconButton
     type="button"
     class="t-close"
     [icon]="icons.close"
+    [style.border-radius.%]="50"
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>
