@@ -8,7 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 
 @Component({
     standalone: true,

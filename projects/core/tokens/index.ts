@@ -1,6 +1,5 @@
 export * from './animations-speed';
 export * from './common-icon';
-export * from './data-list';
 export * from './date-format';
 export * from './day-type-handler';
 export * from './element-ref';

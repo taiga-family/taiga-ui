@@ -59,6 +59,11 @@ export class TuiInputComponent
 
     public open = false;
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.textfield
             ? null
@@ -82,11 +87,6 @@ export class TuiInputComponent
     public onValueChange(value: string): void {
         this.value = value;
         this.open = true;
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get canOpen(): boolean {

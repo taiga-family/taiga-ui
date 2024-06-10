@@ -105,6 +105,11 @@ export class TuiComboBoxComponent<T>
 
     public open = false;
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
@@ -164,11 +169,6 @@ export class TuiComboBoxComponent<T>
 
     public toggle(): void {
         this.hostedDropdown?.updateOpen(!this.open);
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get arrow(): PolymorpheusContent<

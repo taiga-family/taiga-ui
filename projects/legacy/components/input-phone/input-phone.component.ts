@@ -98,6 +98,11 @@ export class TuiInputPhoneComponent
         this.updateValueWithNewCountryCode(prevCountryCode, newCountryCode);
     }
 
+    @HostBinding('attr.data-size')
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
             ? null
@@ -159,11 +164,6 @@ export class TuiInputPhoneComponent
         super.writeValue(value);
         this.nativeValue = maskitoTransform(value || '', this.maskOptions);
         this.updateSearch('');
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get canOpen(): boolean {

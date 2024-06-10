@@ -2,6 +2,7 @@ import type {Provider, TemplateRef, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiDataListAccessor<T = unknown> {
@@ -14,6 +15,7 @@ export interface TuiDataListHost<T> {
     handleOption(option: T): void;
     readonly identityMatcher?: TuiIdentityMatcher<T>;
     readonly stringify?: TuiStringHandler<T>;
+    readonly size?: TuiSizeL | TuiSizeS;
 }
 
 /**
