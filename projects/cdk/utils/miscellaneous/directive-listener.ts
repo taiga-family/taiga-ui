@@ -1,4 +1,4 @@
-import type {ProviderToken, Signal} from '@angular/core';
+import type {InjectOptions, ProviderToken, Signal} from '@angular/core';
 import {inject, isSignal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import type {Observable} from 'rxjs';
@@ -13,8 +13,9 @@ type OutputTypeOf<T> =
 export function tuiDirectiveListener<T, K extends OutputKeysOf<T>>(
     token: ProviderToken<T>,
     key: K,
+    options: InjectOptions = {self: true},
 ): Signal<OutputTypeOf<T[K]>> {
-    const prop: any = inject(token, {self: true})[key];
+    const prop: any = inject(token, options)?.[key];
 
     return isSignal(prop) ? prop : toSignal<any>(prop);
 }

@@ -1,4 +1,4 @@
-import type {ProviderToken, Signal, WritableSignal} from '@angular/core';
+import type {InjectOptions, ProviderToken, Signal, WritableSignal} from '@angular/core';
 import {effect, inject, isSignal, signal} from '@angular/core';
 
 type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
@@ -13,14 +13,22 @@ export function tuiDirectiveBinding<
     token: ProviderToken<T>,
     key: G,
     initial: I,
+    options: InjectOptions = {self: true},
 ): I extends Signal<any> ? I : WritableSignal<I> {
     const result: any = isSignal(initial) ? initial : signal(initial);
-    const directive: any = inject(token, {self: true});
+    const directive: any = inject(token, options);
     const output = directive[`${key.toString()}Change`];
+
+    // TODO: Figure out why effects are executed all the time and not just when result changes (check with Angular 18)
+    let previous: any;
 
     effect(
         () => {
             const value: any = result();
+
+            if (previous === value) {
+                return;
+            }
 
             if (isSignal(directive[key])) {
                 directive[key].set(value);
@@ -30,6 +38,7 @@ export function tuiDirectiveBinding<
 
             directive.ngOnChanges?.({});
             output?.emit?.(value);
+            previous = value;
         },
         {allowSignalWrites: true},
     );

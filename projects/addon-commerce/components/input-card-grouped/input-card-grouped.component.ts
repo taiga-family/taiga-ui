@@ -4,12 +4,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChild,
     EventEmitter,
     inject,
     Input,
     Output,
-    TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -53,12 +51,12 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
-    TuiDataListDirective,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
     TuiIconComponent,
     TuiIconPipe,
+    TuiWithDataList,
 } from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -98,6 +96,7 @@ import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
     hostDirectives: [
         TuiAppearanceDirective,
         TuiDropdownDirective,
+        TuiWithDataList,
         {
             directive: TuiDropdownOpenDirective,
             inputs: ['tuiDropdownOpen: open'],
@@ -249,11 +248,6 @@ export class TuiInputCardGroupedComponent
         this.focusCard();
     }
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.setDropdown(template);
-    }
-
     protected get content(): PolymorpheusContent {
         const system = this.getPaymentSystem(this.card);
 
@@ -362,11 +356,6 @@ export class TuiInputCardGroupedComponent
     @tuiPure
     private getPaymentSystem(value: string): TuiPaymentSystem | null {
         return this.options.paymentSystemHandler(value);
-    }
-
-    @tuiPure
-    private setDropdown(template: PolymorpheusContent): void {
-        this.dropdown.tuiDropdown = template;
     }
 
     private updateBin(oldBin: string | null): void {
