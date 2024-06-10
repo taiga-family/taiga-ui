@@ -8,7 +8,6 @@ export * from './i18n';
 export * from './logo';
 export * from './page-loaded';
 export * from './pages';
-export * from './scroll-behavior';
 export * from './see-also';
 export * from './source-code';
 export * from './title';
