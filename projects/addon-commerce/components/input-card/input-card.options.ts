@@ -3,11 +3,10 @@ import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {
     readonly autocomplete: boolean;
-    cardSrc: PolymorpheusContent;
+    readonly icon: string | null;
     readonly paymentSystemHandler: TuiHandler<
         string | null | undefined,
         TuiPaymentSystem | null
@@ -15,7 +14,7 @@ export interface TuiInputCardOptions {
 }
 
 export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
-    cardSrc: '',
+    icon: null,
     paymentSystemHandler: tuiGetPaymentSystem,
     autocomplete: false,
 };

@@ -1,5 +1,4 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
-@import '@taiga-ui/legacy/styles/taiga-ui-local';
 
 @width-full: (472 / 16rem);
 @width-mobile: 18rem;
@@ -9,10 +8,12 @@
 @wrapper-offset-small: 4.125rem;
 
 :host {
+    position: relative;
     display: block;
     height: var(--tui-height-l);
     width: @width-full;
-    border-radius: var(--tui-radius-m);
+    border-radius: var(--tui-radius-l);
+    overflow: clip;
 
     :host-context(tui-root._mobile) {
         width: @width-mobile;
@@ -22,13 +23,6 @@
 .t-outline {
     height: 100%;
     width: 100%;
-}
-
-.t-common-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
 }
 
 .t-wrapper {
@@ -63,17 +57,17 @@
 .t-card {
     width: 2rem;
     height: 2rem;
-    margin-right: 0.5rem;
-    // Visa logo color
-    color: #1434cb;
 }
 
 .t-collapsed {
-    .textfield-input();
+    .fullsize();
 
-    border: 0;
-    padding-left: 1rem;
+    padding: 1.25rem var(--tui-padding-l) 0;
+    box-sizing: border-box;
+    font: var(--tui-font-text-s);
     line-height: 2.25rem;
+    color: var(--tui-text-01);
+    white-space: nowrap;
     pointer-events: none;
 
     &_enable-mask:before {
@@ -105,15 +99,19 @@
 }
 
 .t-input {
-    .textfield-input();
-    .transition(background);
+    .fullsize();
 
     border: 0;
-    padding: 0 1rem;
+    margin: 0;
+    padding: 1.25rem var(--tui-padding-l) 0;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-01);
 
     &::placeholder {
         color: var(--tui-text-03);
-        opacity: 1;
     }
 
     &&&_card {
@@ -151,17 +149,35 @@
 
 .t-icon-outlet {
     display: flex;
+    margin-right: 0.25rem;
 }
 
 .t-icon {
+    cursor: pointer;
     border: 0.25rem solid transparent;
 }
 
-.t-placeholder {
-    .textfield-label();
+.t-label {
+    .transition(all);
+    .text-overflow();
 
     margin: 1.125rem 1rem;
+    font: var(--tui-font-text-m);
     line-height: 1.25rem;
+    color: var(--tui-text-02);
+
+    &_raised {
+        font-size: 0.8156rem;
+        transform: translateY(-0.7em);
+    }
+
+    :host([data-mode='invalid']) & {
+        color: var(--tui-negative);
+    }
+
+    :host([data-focus='true']) & {
+        color: var(--tui-text-01);
+    }
 }
 
 .t-ghost {

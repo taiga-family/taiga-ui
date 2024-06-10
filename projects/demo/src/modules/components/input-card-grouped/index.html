@@ -22,16 +22,12 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-card-grouped
-                    [autocompleteEnabled]="autocompleteEnabled"
-                    [cardSrc]="cardSrc"
+                    [autocomplete]="autocomplete"
                     [codeLength]="codeLength"
                     [exampleText]="exampleText"
-                    [focusable]="focusable"
                     [formControl]="control"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [icon]="icon"
+                    [invalid]="pseudoInvalid"
                     [readOnly]="readOnly"
                     (binChange)="documentationPropertyBinChange.emitEvent($event)"
                 />
@@ -67,18 +63,18 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="autocompleteEnabled"
+                documentationPropertyName="autocomplete"
                 documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="autocompleteEnabled"
+                [(documentationPropertyValue)]="autocomplete"
             >
                 Browser autocomplete of card
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="cardSrc"
+                documentationPropertyName="icon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="getContentVariants(template)"
-                [(documentationPropertyValue)]="cardSrcSelected"
+                [(documentationPropertyValue)]="iconSelected"
             >
                 SVG card icon
             </ng-template>

@@ -1,16 +1,22 @@
+<button
+    tuiButton
+    class="tui-space_bottom-4"
+    (click)="open = !open"
+>
+    Toggle dropdown
+</button>
 <form [formGroup]="card">
     <tui-input-card-grouped
-        #component
         formControlName="meta"
+        [(open)]="open"
     >
         <tui-data-list
             *tuiDataList
             size="l"
-            (keydown.escape)="onEsc(component)"
         >
             <button
                 tuiOption
-                (click)="onClick(component)"
+                [value]="null"
             >
                 <tui-svg
                     src="tuiIconPlus"

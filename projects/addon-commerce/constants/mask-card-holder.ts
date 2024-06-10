@@ -37,7 +37,7 @@ function toEnglishUppercase(value: string): string {
         .join('');
 }
 
-export const TUI_CARD_HOLDER_MASK: MaskitoOptions = {
+export const TUI_MASK_CARD_HOLDER: MaskitoOptions = {
     mask: /^[a-z\s]+$/i,
     preprocessors: [
         ({elementState, data}) => {

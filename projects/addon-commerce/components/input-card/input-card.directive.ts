@@ -2,7 +2,7 @@ import type {OnInit} from '@angular/core';
 import {Directive, inject, Input, Output} from '@angular/core';
 import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
+import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import {tuiControlValue, tuiPure} from '@taiga-ui/cdk';
@@ -37,7 +37,7 @@ export class TuiInputCard implements OnInit {
     public autocomplete = this.options.autocomplete;
 
     @Input()
-    public icon: string | null = null;
+    public icon = this.options.icon;
 
     @Output()
     public readonly binChange = timer(0).pipe(
@@ -49,7 +49,7 @@ export class TuiInputCard implements OnInit {
     );
 
     public ngOnInit(): void {
-        this.mask.options = {mask: TUI_CARD_MASK};
+        this.mask.options = TUI_MASK_CARD;
         this.mask.ngOnChanges();
 
         if (!this.accessor) {

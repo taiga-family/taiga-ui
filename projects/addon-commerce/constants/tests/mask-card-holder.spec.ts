@@ -1,10 +1,10 @@
 // cspell:disable
 import {maskitoPipe} from '@maskito/core';
-import {TUI_CARD_HOLDER_MASK} from '@taiga-ui/addon-commerce';
+import {TUI_MASK_CARD_HOLDER} from '@taiga-ui/addon-commerce';
 
-describe('TUI_CARD_HOLDER_MASK', () => {
+describe('TUI_MASK_CARD_HOLDER', () => {
     describe('mask property', () => {
-        const re = TUI_CARD_HOLDER_MASK.mask as RegExp;
+        const re = TUI_MASK_CARD_HOLDER.mask as RegExp;
 
         it('accepts uppercase latin letters and space', () => {
             expect('NIKITA BARSUKOV'.match(re)).toBeTruthy();
@@ -21,7 +21,7 @@ describe('TUI_CARD_HOLDER_MASK', () => {
 
     describe('preprocessors property', () => {
         const preprocessor = (value: string): string => {
-            const process = maskitoPipe(TUI_CARD_HOLDER_MASK.preprocessors);
+            const process = maskitoPipe(TUI_MASK_CARD_HOLDER.preprocessors);
 
             return (
                 process(
