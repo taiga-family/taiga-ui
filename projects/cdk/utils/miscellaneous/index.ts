@@ -3,7 +3,6 @@ export * from './array-shallow-equals';
 export * from './array-toggle';
 export * from './change-date-separator';
 export * from './clean-object';
-export * from './create-options';
 export * from './create-token';
 export * from './default-sort';
 export * from './directive-binding';
