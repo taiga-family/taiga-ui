@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.83.0](https://github.com/taiga-family/taiga-ui/compare/v3.82.0...v3.83.0) (2024-06-10)
+
+### Bug Fixes
+
+- **core:** `DropdownSelection` fix selection error in textarea
+  ([#7626](https://github.com/taiga-family/taiga-ui/issues/7626))
+  ([22ee141](https://github.com/taiga-family/taiga-ui/commit/22ee14192513ece0d25f054793dc889976d48356))
+- **core:** `Hint` fix content vertical centering with reduced line-height
+  ([#7623](https://github.com/taiga-family/taiga-ui/issues/7623))
+  ([57288f8](https://github.com/taiga-family/taiga-ui/commit/57288f8ada25554bf6d3c334a0a2f5ae0c5b353d))
+- **core:** fix text selection in nested hint ([#7647](https://github.com/taiga-family/taiga-ui/issues/7647))
+  ([9b96c73](https://github.com/taiga-family/taiga-ui/commit/9b96c73d4ee38c4e44a848ee09b7732ad3fd92ac))
+- **kit:** `InputDateTime` should format textfield value on blur
+  ([#7659](https://github.com/taiga-family/taiga-ui/issues/7659))
+  ([505fe3e](https://github.com/taiga-family/taiga-ui/commit/505fe3ea342e4da93da33086f15875abf9dc5818))
+- **kit:** `InputDateTime` with `[min]` / `[max]` distorts value on click
+  ([#7636](https://github.com/taiga-family/taiga-ui/issues/7636))
+  ([7ac4291](https://github.com/taiga-family/taiga-ui/commit/7ac42914dc3eea51b4722e9b47e582e057cd3106))
+- **kit:** `InputTag` fix scrolling to input ([#7655](https://github.com/taiga-family/taiga-ui/issues/7655))
+  ([c3993da](https://github.com/taiga-family/taiga-ui/commit/c3993daf7ce339746028d3120c9c79c4a3c48491))
+- **kit:** fix `InputNumber` buttons styles priority for Safari
+  ([#7652](https://github.com/taiga-family/taiga-ui/issues/7652))
+  ([1d6c3cd](https://github.com/taiga-family/taiga-ui/commit/1d6c3cd892363952a31eae55656dfe07112e4781))
+- **kit:** fix incorrect copy hint in inputCopy ([#7674](https://github.com/taiga-family/taiga-ui/issues/7674))
+  ([fa57f78](https://github.com/taiga-family/taiga-ui/commit/fa57f7898dc187b6aca6de39f677577abbfba6b5))
+
 ## [3.82.0](https://github.com/taiga-family/taiga-ui/compare/v3.81.0...v3.82.0) (2024-06-03)
 
 ### Features
