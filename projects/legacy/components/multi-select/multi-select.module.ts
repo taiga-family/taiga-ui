@@ -13,6 +13,7 @@ import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/legacy/components/multi-select-option';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
@@ -45,6 +46,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiDataList,
         TuiTextfieldControllerModule,
         TuiStringifyContentPipe,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [
         TuiMultiSelectComponent,

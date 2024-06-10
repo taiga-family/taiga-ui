@@ -12,6 +12,7 @@ import {
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
@@ -34,6 +35,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiPrimitiveTextfieldModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputDateMultiComponent],
     exports: [TuiInputDateMultiComponent],

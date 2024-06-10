@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
@@ -32,6 +33,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiDataListWrapper,
         TuiDataList,
         TuiStringifyContentPipe,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [
         TuiSelectComponent,

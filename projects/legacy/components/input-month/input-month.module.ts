@@ -8,7 +8,10 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
+import {
+    TuiLegacyDropdownOpenMonitorDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy/directives';
 
 import {TuiInputMonthComponent} from './input-month.component';
 import {TuiInputMonthDirective} from './input-month.directive';
@@ -23,6 +26,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
         TuiMapperPipe,
         TuiTextfieldControllerModule,
         FormsModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputMonthComponent, TuiInputMonthDirective],
     exports: [TuiInputMonthComponent, TuiInputMonthDirective, TuiTextfieldComponent],

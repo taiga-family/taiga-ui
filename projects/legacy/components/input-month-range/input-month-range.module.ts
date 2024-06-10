@@ -7,7 +7,10 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
+import {
+    TuiLegacyDropdownOpenMonitorDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy/directives';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 import {TuiInputMonthRangeDirective} from './input-month-range.directive';
@@ -21,6 +24,7 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
         TuiSvgComponent,
         TuiMapperPipe,
         TuiTextfieldControllerModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputMonthRangeComponent, TuiInputMonthRangeDirective],
     exports: [

@@ -6,6 +6,7 @@ import {
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/legacy/directives';
@@ -20,6 +21,7 @@ import {TuiInputPhoneDirective} from './input-phone.directive';
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputPhoneComponent, TuiInputPhoneDirective],
     exports: [TuiInputPhoneComponent, TuiInputPhoneDirective, TuiTextfieldComponent],

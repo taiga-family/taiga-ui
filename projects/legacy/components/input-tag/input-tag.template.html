@@ -1,5 +1,6 @@
 <ng-container *ngIf="hintOptions?.change$ | async" />
 <div
+    tuiDropdownOpenMonitor
     class="t-hosted"
     [tuiDropdown]="datalist || ''"
     [tuiDropdownEnabled]="canOpen"

@@ -9,7 +9,10 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
-import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
+import {
+    TuiLegacyDropdownOpenMonitorDirective,
+    TuiWrapperModule,
+} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTagComponent} from './input-tag.component';
@@ -26,6 +29,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiDropdownModule,
         TuiTagModule,
         TuiWrapperModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],

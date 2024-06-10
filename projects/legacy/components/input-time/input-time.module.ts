@@ -5,6 +5,7 @@ import {TuiDataList, TuiDropdownModule, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
     TuiWrapperModule,
@@ -28,6 +29,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         TuiTextfieldControllerModule,
         TuiSvgComponent,
         PolymorpheusModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputTimeComponent, TuiNativeTimeComponent, TuiInputTimeDirective],
     exports: [TuiInputTimeComponent, TuiInputTimeDirective],

@@ -8,6 +8,7 @@ import {
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
@@ -27,6 +28,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [
         TuiComboBoxComponent,
