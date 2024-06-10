@@ -204,45 +204,6 @@
     }
 }
 
-// @TODO: remove in v4.0
-// shadow @deprecated
-.shadow(@mode: 1) {
-    // Default
-    & when (@mode = 1) {
-        box-shadow: var(--tui-shadow);
-    }
-
-    // Dropdown
-    & when (@mode = 2) {
-        box-shadow: var(--tui-shadow-dropdown);
-    }
-
-    // Modal
-    & when (@mode = 3) {
-        box-shadow: var(--tui-shadow-modal);
-    }
-
-    // Sidebar
-    & when (@mode = 4) {
-        box-shadow: var(--tui-shadow-sidebar);
-    }
-
-    // Hover
-    & when (@mode = 5) {
-        box-shadow: var(--tui-shadow-hover);
-    }
-
-    // Navigation
-    & when (@mode = 6) {
-        box-shadow: var(--tui-shadow-navigation);
-    }
-
-    // Modal mobile
-    & when (@mode = 7) {
-        box-shadow: var(--tui-shadow-sheet);
-    }
-}
-
 .inset-border(@direction: bottom, @mode: none) {
     & when (@direction = bottom) {
         box-shadow: inset 0 -1px var(--tui-base-03);
