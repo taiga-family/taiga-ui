@@ -11,9 +11,9 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.60.1
       - uses: taiga-family/ci/actions/setup/variables@v1.60.1
       - uses: taiga-family/ci/actions/setup/node@v1.60.1
-      - name: Copy design tokens icons
+      - name: Copy flags from design tokens icons
         run: |
-          mkdir -p ./projects/icons/src/flags
+          rm -rf ./projects/icons/src/flags && mkdir -p ./projects/icons/src/flags
           cp -R ./node_modules/@taiga-ui/design-tokens/icons/flags/* ./projects/icons/src/flags
           npx prettier ./projects/icons/src/flags --write
       - run: |
