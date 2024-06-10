@@ -1,13 +1,12 @@
 ```ts
-import {TuiActionsBarsHostComponent} from '@taiga-ui/kit';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiActionsBarDirective, TuiActionsBarComponent} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
-    TuiRootComponent,
-    TuiActionsBarsHostComponent,
+    TuiActionsBarDirective,
+    TuiActionsBarComponent,
     // ...
   ],
   // ...

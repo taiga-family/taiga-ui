@@ -1,6 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButtonDirective,
@@ -9,7 +8,7 @@ import {
     tuiHeightCollapse,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
@@ -30,13 +29,8 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
     },
 })
 export class TuiActionsBarComponent {
-    @Input()
-    public expanded = false;
-
-    protected readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
-    protected close(): void {
-        this.context.$implicit.complete();
-    }
+    @Input()
+    public expanded = false;
 }

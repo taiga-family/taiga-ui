@@ -1,7 +1,7 @@
 ```html
 <ng-template
   let-bar
-  [(tuiActionsBar)]="open"
+  [tuiActionsBar]="open"
 >
   <tui-actions-bar>// content</tui-actions-bar>
 </ng-template>

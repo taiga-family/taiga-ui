@@ -1,9 +1,9 @@
-import {AsyncPipe, KeyValuePipe, NgIf} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetDirective, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiBreakpointService,
     TuiButtonDirective,
@@ -29,12 +29,9 @@ import {map} from 'rxjs';
         AsyncPipe,
         TuiLetDirective,
         TuiChipDirective,
-        FormsModule,
-        TuiRepeatTimesDirective,
         TuiActionsBarDirective,
         TuiLinkDirective,
         ReactiveFormsModule,
-        KeyValuePipe,
         TuiFilterComponent,
         TuiIconComponent,
     ],
@@ -45,9 +42,7 @@ import {map} from 'rxjs';
 })
 export default class ExampleComponent {
     protected items = ['one', 'two', 'three'];
-
     protected control = new FormControl<string[]>([]);
-
     protected expanded = false;
 
     protected readonly isMobileRes$ = inject(TuiBreakpointService).pipe(

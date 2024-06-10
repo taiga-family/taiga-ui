@@ -4,11 +4,7 @@
     [items]="items"
 />
 
-<ng-template
-    let-bar
-    [tuiActionsBar]="open"
-    (tuiActionsBarChange)="close()"
->
+<ng-template [tuiActionsBar]="open">
     <tui-actions-bar
         *tuiLet="isMobileRes$ | async as isMobile"
         [expanded]="!!isMobile && expanded"
@@ -102,7 +98,7 @@
             size="m"
             tuiButton
             [disabled]="expanded"
-            (click)="bar.complete()"
+            (click)="close()"
         >
             Delete
         </button>
@@ -124,7 +120,7 @@
             iconLeft="tuiIconCloseLarge"
             size="m"
             tuiIconButton
-            (click)="bar.complete()"
+            (click)="close()"
         >
             Close
         </button>

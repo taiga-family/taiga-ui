@@ -2,26 +2,21 @@
     size="m"
     tuiButton
     type="button"
-    (click)="open()"
+    (click)="open = !open"
 >
     Show TableBar
 </button>
 
-<ng-template
-    #actionsBarTemplate
-    let-bar
->
-    <tui-actions-bar tuiTheme="light">
-        <span>Table bar opened</span>
+<tui-actions-bar *tuiActionsBar="open">
+    <span>Table bar opened</span>
 
-        <button
-            appearance="glass"
-            size="m"
-            tuiButton
-            type="button"
-            (click)="bar.complete()"
-        >
-            Close
-        </button>
-    </tui-actions-bar>
-</ng-template>
+    <button
+        appearance="glass"
+        size="m"
+        tuiButton
+        type="button"
+        (click)="open = false"
+    >
+        Close
+    </button>
+</tui-actions-bar>
