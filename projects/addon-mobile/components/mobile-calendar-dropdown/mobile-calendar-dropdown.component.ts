@@ -44,9 +44,9 @@ export class TuiMobileCalendarDropdownComponent {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
-    private readonly observer?: Observer<any> = inject(POLYMORPHEUS_CONTEXT).$implicit;
-    private readonly data: TuiMobileCalendarData =
-        inject(POLYMORPHEUS_CONTEXT).data || {};
+    private readonly context = inject(POLYMORPHEUS_CONTEXT, {optional: true});
+    private readonly observer?: Observer<any> = this.context?.$implicit;
+    private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
@@ -60,12 +60,10 @@ export class TuiMobileCalendarDropdownComponent {
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected readonly control: any = inject(AbstractTuiControl, {optional: true});
+    protected readonly range = this.is('tui-input-date-range');
+    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly single =
         this.data.single || this.is('tui-input-date:not([multiple])');
-
-    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
-    protected readonly range = this.is('tui-input-date-range');
-    protected readonly zone = inject(TuiActiveZoneDirective);
 
     protected readonly min =
         this.data.min ||
