@@ -137,10 +137,7 @@ export class TuiRangeComponent
         const newFractionValue = previousFraction + coefficient * this.fractionStep;
 
         this.processValue(this.toValue(newFractionValue), isRightThumb);
-
-        if (activeThumbElement) {
-            activeThumbElement.focus();
-        }
+        activeThumbElement?.focus();
     }
 
     protected toPercent(value: number): number {

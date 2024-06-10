@@ -3,10 +3,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    ElementRef,
     inject,
     Input,
     Output,
     signal,
+    ViewChild,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
@@ -78,6 +80,9 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     ],
 })
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
+    @ViewChild(MaskitoDirective, {read: ElementRef})
+    private readonly input?: ElementRef<HTMLInputElement>;
+
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
@@ -134,6 +139,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     public onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
         this.countryIsoCode.set(isoCode);
+        this.input?.nativeElement.focus();
     }
 
     public override writeValue(unmaskedValue: string): void {
