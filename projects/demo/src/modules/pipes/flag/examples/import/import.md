@@ -1,5 +1,5 @@
 ```ts
-import {TuiFlagPipeModule} from '@taiga-ui/core';
+import {TuiFlagPipe} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiFlagPipeModule} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiFlagPipeModule,
+    TuiFlagPipe,
   ],
   // ...
 })

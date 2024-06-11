@@ -7,11 +7,29 @@
         Pipe for getting source path to image with flag
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample: 'html,ts'"
         />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <img
+                alt=""
+                [src]="countryIsoCode | tuiFlag"
+            />
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="TuiCountryIsoCode"
+                [documentationPropertyValues]="countryIsoCodeVariants"
+                [(documentationPropertyValue)]="countryIsoCode"
+            >
+                <tui-doc-code [code]="apiCodeDemo" />
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <tui-setup *pageTab />
