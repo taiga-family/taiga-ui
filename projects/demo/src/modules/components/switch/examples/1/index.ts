@@ -24,7 +24,12 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent implements OnInit {
-    protected readonly platforms: readonly TuiPlatform[] = ['web', 'android', 'ios'];
+    protected readonly platforms: readonly TuiPlatform[] = [
+        'web',
+        'web',
+        'android',
+        'ios',
+    ];
 
     protected readonly invalidTrue = new FormControl(true, () => ({invalid: true}));
     protected readonly invalidFalse = new FormControl(false, () => ({invalid: true}));
