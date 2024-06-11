@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiDropdownModule, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
@@ -21,7 +21,6 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
         TuiCalendarMonthComponent,
         TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
-        TuiSvgComponent,
         TuiMapperPipe,
         TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,

@@ -20,14 +20,14 @@
 </tui-primitive-textfield>
 
 <ng-template #iconContent>
-    <tui-svg
+    <tui-icon
         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-        appearance="icon"
         automation-id="tui-copy__icon"
-        tuiWrapper
+        tuiAppearance="icon"
         class="t-icon"
-        [disabled]="!value"
-        [src]="src"
+        [class.t-icon_small]="size === 's'"
+        [icon]="src.toString()"
+        [tuiAppearanceState]="!value ? 'disabled' : null"
         [tuiHint]="hint"
         [tuiHintAppearance]="messageAppearance"
         [tuiHintDirection]="messageDirection"

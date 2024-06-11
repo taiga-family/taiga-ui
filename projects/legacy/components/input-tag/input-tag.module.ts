@@ -3,9 +3,10 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {
+    TuiAppearanceDirective,
     TuiDropdownModule,
+    TuiIconComponent,
     TuiScrollbarComponent,
-    TuiSvgComponent,
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
@@ -23,13 +24,14 @@ import {TuiInputTagComponent} from './input-tag.component';
         FormsModule,
         PolymorpheusModule,
         TuiHoveredDirective,
-        TuiSvgComponent,
         TuiScrollbarComponent,
         TuiTooltipModule,
         TuiDropdownModule,
         TuiTagModule,
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,
+        TuiAppearanceDirective,
+        TuiIconComponent,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],

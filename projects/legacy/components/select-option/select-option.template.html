@@ -1,9 +1,9 @@
 <ng-container [ngTemplateOutlet]="context.$implicit" />
-<tui-svg
+<tui-icon
     *ngIf="selected$ | async; else dummy"
     automation-id="tui-select-option__checkmark"
     class="t-checkmark"
-    [src]="icons.check"
+    [icon]="icons.check"
     [tuiScrollIntoView]="true"
 />
 <ng-template #dummy>

@@ -22,11 +22,11 @@
         [inheritColor]="true"
         [size]="loaderSize"
     />
-    <tui-svg
+    <tui-icon
         *ngIf="canRemove"
         automation-id="tui-tag__remove"
         class="t-icon"
-        [src]="icons.close"
+        [icon]="icons.close"
         (click)="remove($event)"
         (mousedown.stop.prevent.silent)="(0)"
     />

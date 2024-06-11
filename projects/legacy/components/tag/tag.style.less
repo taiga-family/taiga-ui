@@ -233,7 +233,7 @@
 }
 
 .t-icon {
-    width: 1rem;
+    font-size: 1rem;
     height: 100%;
     cursor: pointer;
     pointer-events: all;
@@ -247,10 +247,7 @@
 
     :host[data-size='s'] & {
         margin-inline-start: 0;
-
-        ::ng-deep svg {
-            transform: scale(0.75);
-        }
+        height: 0.75rem;
     }
 }
 

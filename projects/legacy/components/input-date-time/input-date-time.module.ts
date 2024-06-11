@@ -2,10 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
+    TuiAppearanceDirective,
     TuiCalendarComponent,
     TuiDropdownModule,
+    TuiIconComponent,
     TuiLinkDirective,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
@@ -15,7 +16,6 @@ import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
-    TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -28,15 +28,15 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         CommonModule,
         MaskitoDirective,
         PolymorpheusModule,
-        TuiWrapperModule,
         TuiCalendarComponent,
-        TuiSvgComponent,
         TuiLinkDirective,
         TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,
+        TuiIconComponent,
+        TuiAppearanceDirective,
     ],
     declarations: [
         TuiInputDateTimeComponent,

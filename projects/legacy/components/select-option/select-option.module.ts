@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiScrollIntoViewDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent, TuiScrollIntoViewDirective} from '@taiga-ui/core';
 
 import {TuiSelectOptionComponent} from './select-option.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgComponent, TuiScrollIntoViewDirective],
+    imports: [CommonModule, TuiScrollIntoViewDirective, TuiIconComponent],
     declarations: [TuiSelectOptionComponent],
     exports: [TuiSelectOptionComponent],
 })
