@@ -26,6 +26,6 @@ export class TuiFlagPipe implements PipeTransform {
             return null;
         }
 
-        return `${this.staticPath}/flags/${countryIsoCode}.svg`;
+        return `${this.staticPath}flags/${countryIsoCode}.svg`;
     }
 }
