@@ -9,7 +9,7 @@ import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/
 import {TuiButtonDirective, TuiErrorComponent, TuiLabelDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;

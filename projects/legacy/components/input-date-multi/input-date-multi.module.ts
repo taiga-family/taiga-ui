@@ -16,7 +16,7 @@ import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputDateMultiComponent} from './input-date-multi.component';
 
@@ -24,7 +24,8 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
     imports: [
         CommonModule,
         MaskitoDirective,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiCalendarComponent,
         TuiLinkDirective,
         TuiInputTagModule,

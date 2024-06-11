@@ -7,12 +7,18 @@ import {tuiClamp, TuiSwipeDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiPreview, TuiSwipeDirective, PolymorpheusModule],
+    imports: [
+        TuiButtonDirective,
+        TuiPreview,
+        TuiSwipeDirective,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

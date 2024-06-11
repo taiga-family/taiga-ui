@@ -5,7 +5,7 @@ import {TuiNumberFormatDirective} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputSliderComponent} from './input-slider.component';
 
@@ -13,7 +13,8 @@ import {TuiInputSliderComponent} from './input-slider.component';
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiInputNumberModule,
         TuiNumberFormatDirective,
         TuiSlider,

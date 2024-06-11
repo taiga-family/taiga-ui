@@ -11,14 +11,15 @@ import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
-    PolymorpheusModule,
-} from '@tinkoff/ng-polymorpheus';
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusModule],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <ng-container
             *polymorpheusOutlet="context.$implicit.content; context: context"

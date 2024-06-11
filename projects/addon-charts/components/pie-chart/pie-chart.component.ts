@@ -18,7 +18,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiHint, TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiPieChartDirective} from './pie-chart.directive';
 

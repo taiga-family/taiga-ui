@@ -1,7 +1,7 @@
 import {inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_IOS, tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {EMPTY} from 'rxjs';
 

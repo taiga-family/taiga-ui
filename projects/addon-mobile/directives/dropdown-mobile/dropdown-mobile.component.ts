@@ -25,7 +25,7 @@ import {
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownMobileDirective} from './dropdown-mobile.directive';
 
@@ -34,7 +34,13 @@ const GAP = 16;
 @Component({
     standalone: true,
     selector: 'tui-dropdown-mobile',
-    imports: [IntersectionObserverModule, TuiSwipeDirective, NgIf, PolymorpheusModule],
+    imports: [
+        IntersectionObserverModule,
+        TuiSwipeDirective,
+        NgIf,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+    ],
     templateUrl: './dropdown-mobile.template.html',
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,

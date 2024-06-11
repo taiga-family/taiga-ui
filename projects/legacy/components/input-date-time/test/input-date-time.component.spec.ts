@@ -11,10 +11,10 @@ import {
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {TuiInputDateTimeComponent, TuiInputDateTimeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputDateTime', () => {

@@ -7,8 +7,8 @@ import {
     TuiDropdownManualDirective,
     TuiRootComponent,
 } from '@taiga-ui/core';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 describe('TuiDropdownDirective', () => {
     @Component({
@@ -17,7 +17,8 @@ describe('TuiDropdownDirective', () => {
             TuiRootComponent,
             TuiDropdownDirective,
             TuiDropdownManualDirective,
-            PolymorpheusModule,
+            PolymorpheusOutlet,
+            PolymorpheusTemplate,
         ],
         template: `
             <tui-root>

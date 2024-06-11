@@ -14,7 +14,7 @@ import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputTagComponent} from './input-tag.component';
 
@@ -22,7 +22,8 @@ import {TuiInputTagComponent} from './input-tag.component';
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiHoveredDirective,
         TuiScrollbarComponent,
         TuiTooltipModule,

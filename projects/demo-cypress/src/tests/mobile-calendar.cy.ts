@@ -7,8 +7,8 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 

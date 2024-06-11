@@ -10,14 +10,18 @@ import {
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
     standalone: true,
     selector: 'tui-pdf-viewer',
-    imports: [PolymorpheusModule, TuiButtonDirective, AsyncPipe],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButtonDirective, AsyncPipe],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

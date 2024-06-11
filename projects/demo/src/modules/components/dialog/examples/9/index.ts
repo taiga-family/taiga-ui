@@ -11,7 +11,7 @@ import {
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
 

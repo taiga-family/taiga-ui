@@ -11,7 +11,11 @@ import {
     tuiSlideInRight,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import {TuiPushComponent} from './push.component';
 import {TuiPushDirective} from './push.directive';
@@ -21,7 +25,8 @@ import type {TuiPushOptions} from './push.options';
     standalone: true,
     imports: [
         NgIf,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiPushComponent,
         TuiIconComponent,
         TuiButtonDirective,

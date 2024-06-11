@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import type {OpenOptions, Project} from '@stackblitz/sdk';
 import stackblitz from '@stackblitz/sdk';
 import type {TuiCodeEditor} from '@taiga-ui/addon-doc';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';

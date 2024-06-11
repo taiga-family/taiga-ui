@@ -6,7 +6,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiIconComponent} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/legacy';
 import {TuiTagModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

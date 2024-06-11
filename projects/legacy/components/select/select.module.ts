@@ -13,7 +13,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiNativeSelectComponent} from './native-select/native-select.component';
 import {TuiNativeSelectGroupComponent} from './native-select/native-select-group.component';
@@ -23,7 +23,8 @@ import {TuiSelectDirective} from './select.directive';
 @NgModule({
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
         TuiDropdownModule,
         TuiSelectOptionModule,

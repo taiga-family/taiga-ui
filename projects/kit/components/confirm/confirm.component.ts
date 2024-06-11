@@ -4,12 +4,13 @@ import {TUI_IS_MOBILE, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
-    PolymorpheusModule,
-} from '@tinkoff/ng-polymorpheus';
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 export interface TuiConfirmData {
     readonly content?: PolymorpheusContent;
@@ -23,7 +24,8 @@ export interface TuiConfirmData {
     selector: 'tui-confirm',
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiButtonDirective,
         TuiAutoFocusDirective,
     ],

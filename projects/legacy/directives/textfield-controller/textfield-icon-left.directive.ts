@@ -6,7 +6,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(
     () => new TuiTextfieldIconLeftDirective(),

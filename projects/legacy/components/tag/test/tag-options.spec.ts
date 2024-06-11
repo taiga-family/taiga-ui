@@ -1,8 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tag component options', () => {
     let fixture: ComponentFixture<TestComponent>;

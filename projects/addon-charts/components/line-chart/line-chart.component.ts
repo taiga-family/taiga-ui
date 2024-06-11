@@ -27,7 +27,7 @@ import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, Subject} from 'rxjs';
 

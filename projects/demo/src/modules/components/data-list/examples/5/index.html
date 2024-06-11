@@ -51,7 +51,7 @@
             [tuiDropdown]="input"
             [tuiDropdownManual]="false"
         >
-            📧 Email: {{ testValue }}
+            📧 Email: {{ emailValue }}
         </button>
         <button
             automation-id="tui-data-list-range-option"
@@ -68,17 +68,16 @@
     </tui-data-list>
 
     <ng-template #money>
-        <form
-            class="form"
-            [formGroup]="moneyForm"
+        <tui-input
+            automation-id="tui-data-money-input"
+            [(ngModel)]="moneyValue"
         >
-            <tui-input
-                automation-id="tui-data-money-input"
-                formControlName="moneyValue"
-            >
-                RUB
-            </tui-input>
-        </form>
+            RUB
+            <input
+                name="moneyValue"
+                tuiTextfieldLegacy
+            />
+        </tui-input>
 
         <tui-data-list
             tuiDataListDropdownManager
@@ -107,17 +106,16 @@
     </ng-template>
 
     <ng-template #input>
-        <form
-            class="form"
-            [formGroup]="testForm"
+        <tui-input
+            automation-id="tui-data-list-email-field"
+            [(ngModel)]="emailValue"
         >
-            <tui-input
-                automation-id="tui-data-list-email-field"
-                formControlName="testValue"
-            >
-                Email
-            </tui-input>
-        </form>
+            Email
+            <input
+                name="emailValue"
+                tuiTextfieldLegacy
+            />
+        </tui-input>
     </ng-template>
 
     <ng-template #currency>
@@ -153,7 +151,7 @@
 </ng-template>
 
 <div class="example">
-    <p>Email: {{ testValue }}</p>
+    <p>Email: {{ emailValue }}</p>
     <p>Chosen date: {{ dateValue }}</p>
     <p>Range date: {{ rangeValue }}</p>
     <p>Dol - {{ dollar }}, Eur - {{ euro }}</p>

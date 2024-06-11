@@ -12,7 +12,7 @@ import {
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTextareaComponent} from './textarea.component';
 import {TuiTextareaDirective} from './textarea.directive';
@@ -25,11 +25,18 @@ import {TuiTextareaDirective} from './textarea.directive';
         TuiTooltipModule,
         TuiWrapperModule,
         TuiPrimitiveTextfieldModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiIconComponent,
         TuiAppearanceDirective,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
-    exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldComponent],
+    exports: [
+        TuiTextareaComponent,
+        TuiTextareaDirective,
+        TuiTextfieldComponent,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+    ],
 })
 export class TuiTextareaModule {}

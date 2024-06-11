@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiLazyLoadingDirective} from '@taiga-ui/kit';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('LazyLoading', () => {
     @Component({

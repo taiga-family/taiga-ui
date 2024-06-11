@@ -12,8 +12,9 @@ import {
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
-    PolymorpheusModule,
-} from '@tinkoff/ng-polymorpheus';
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 import {takeUntil} from 'rxjs';
 
 @Component({
@@ -31,7 +32,7 @@ class CustomLabelComponent {}
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusModule],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <h4>Start content</h4>
         <ng-container *polymorpheusOutlet="context.label as text; context: context">

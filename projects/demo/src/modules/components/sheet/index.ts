@@ -12,7 +12,7 @@ import {
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import type {TuiSheet, TuiSheetOptions} from '@taiga-ui/legacy';
 import {TUI_SHEET_DEFAULT_OPTIONS, TuiSheetModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

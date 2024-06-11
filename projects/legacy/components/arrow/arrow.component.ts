@@ -2,15 +2,25 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {TuiDropdownOpenDirective, TuiIconComponent, tuiSizeBigger} from '@taiga-ui/core';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    PolymorpheusComponent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import {TUI_ARROW_OPTIONS} from './arrow.options';
 
 @Component({
     standalone: true,
     selector: 'tui-arrow',
-    imports: [PolymorpheusModule, NgIf, AsyncPipe, TuiIconComponent],
+    imports: [
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+        NgIf,
+        AsyncPipe,
+        TuiIconComponent,
+    ],
     templateUrl: './arrow.template.html',
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

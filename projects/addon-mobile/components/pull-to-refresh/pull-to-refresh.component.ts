@@ -11,8 +11,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_IS_IOS, tuiPx, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
@@ -25,7 +25,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 @Component({
     standalone: true,
     selector: 'tui-pull-to-refresh',
-    imports: [AsyncPipe, NgStyle, PolymorpheusModule],
+    imports: [AsyncPipe, NgStyle, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './pull-to-refresh.template.html',
     styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

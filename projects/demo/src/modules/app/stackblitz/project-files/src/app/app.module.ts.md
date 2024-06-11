@@ -1,7 +1,7 @@
 ```ts
 import {NgModule} from '@angular/core';
 import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 
 import {ALL_TAIGA_UI_MODULES} from './@stackblitz/all-taiga-modules';
 import {AppComponent} from './app.component';

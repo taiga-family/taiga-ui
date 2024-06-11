@@ -4,7 +4,7 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiBreakpointService, TuiLinkDirective} from '@taiga-ui/core';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
 

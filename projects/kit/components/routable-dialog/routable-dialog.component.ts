@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, INJECTOR} from '@angular/cor
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {from, of, switchMap} from 'rxjs';
 
 @Component({

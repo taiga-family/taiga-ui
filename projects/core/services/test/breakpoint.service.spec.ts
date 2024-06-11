@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiBreakpointService} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {first} from 'rxjs';
 
 describe('TuiBreakpointService', () => {

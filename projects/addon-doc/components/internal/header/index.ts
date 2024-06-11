@@ -5,7 +5,7 @@ import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-do
 import {TuiSidebarComponent, TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TUI_FALSE_HANDLER, TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
 import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
@@ -19,7 +19,8 @@ import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
         TuiSidebarComponent,
         TuiSidebarDirective,
         AsyncPipe,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiDocNavigationComponent,
     ],
     templateUrl: './index.html',

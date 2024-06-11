@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {tuiGetNativeFocused, tuiIsHTMLElement} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 
 import type {TuiSheet} from './sheet';

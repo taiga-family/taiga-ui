@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAppearanceDirective, TuiIconComponent, TuiTooltipModule} from '@taiga-ui/core';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives/wrapper';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 import {TuiPrimitiveTextfieldDirective} from './primitive-textfield.directive';
@@ -14,7 +14,8 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiWrapperModule,
         TuiTooltipModule,
         TuiIconComponent,

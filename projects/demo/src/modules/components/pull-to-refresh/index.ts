@@ -2,7 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiNotificationComponent, TuiScrollbarComponent} from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    PolymorpheusComponent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -10,7 +14,8 @@ import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheu
         TuiDemo,
         TuiScrollbarComponent,
         TuiNotificationComponent,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

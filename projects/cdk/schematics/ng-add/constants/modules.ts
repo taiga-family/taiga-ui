@@ -34,6 +34,6 @@ export const SANITIZER_MODULES: readonly ImportingModule[] = [
     },
     {
         name: 'NgDompurifySanitizer',
-        packageName: '@tinkoff/ng-dompurify',
+        packageName: '@taiga-ui/dompurify',
     },
 ];

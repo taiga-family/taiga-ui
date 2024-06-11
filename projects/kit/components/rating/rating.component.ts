@@ -15,7 +15,7 @@ import {
     TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
 import {TuiIconComponent} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_RATING_OPTIONS} from './rating.options';
 
@@ -27,7 +27,8 @@ import {TUI_RATING_OPTIONS} from './rating.options';
         FormsModule,
         TuiIconComponent,
         TuiRepeatTimesDirective,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
     ],
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.style.less'],

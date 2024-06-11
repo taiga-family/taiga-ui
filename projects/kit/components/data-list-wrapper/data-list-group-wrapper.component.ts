@@ -2,7 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiElementDirective} from '@taiga-ui/cdk';
 import {tuiAsDataListAccessor, TuiDataList, TuiLoaderComponent} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
@@ -12,7 +12,8 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
     imports: [
         NgIf,
         NgForOf,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiDataList,
         TuiElementDirective,
         TuiLoaderComponent,

@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusModule],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
     `,

@@ -16,7 +16,7 @@ import {
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({

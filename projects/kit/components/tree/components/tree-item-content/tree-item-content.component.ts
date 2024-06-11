@@ -7,7 +7,7 @@ import {
     inject,
 } from '@angular/core';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';

@@ -1,6 +1,7 @@
 import {Directive, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiClamp} from '@taiga-ui/cdk';
+import {tuiClamp, tuiInjectElement} from '@taiga-ui/cdk';
 import {map} from 'rxjs';
 
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
@@ -10,28 +11,39 @@ const OFFSET = 10;
 
 @Directive({
     selector: '[tuiSheetTop]',
-    host: {
-        '[$.style.transform]': 'transform$',
-        '($.style.transform)': 'transform$',
-        '[$.class._rounded]': 'rounded$',
-        '($.class._rounded)': 'rounded$',
-        '[$.class._clickthrough]': 'clickthrough$',
-        '($.class._clickthrough)': 'clickthrough$',
-    },
 })
 export class TuiSheetTopDirective {
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
     private readonly component = inject(TUI_SHEET);
     private readonly win = inject(WINDOW);
+    private readonly el = tuiInjectElement();
 
-    protected readonly rounded$ = this.scroll$.pipe(map(y => y < this.stop + OFFSET));
-    protected readonly transform$ = this.scroll$.pipe(
-        map(y => `translateY(${this.getY(y)}%) scaleX(-1)`),
-    );
+    protected readonly rounded$ = this.scroll$
+        .pipe(map(y => y < this.stop + OFFSET))
+        .pipe(takeUntilDestroyed())
+        .subscribe(add =>
+            add
+                ? this.el.classList.add('_rounded')
+                : this.el.classList.remove('_rounded'),
+        );
 
-    protected readonly clickthrough$ = this.scroll$.pipe(
-        map(y => !!Math.round(this.getY(y))),
-    );
+    protected readonly transform$ = this.scroll$
+        .pipe(
+            map(y => `translateY(${this.getY(y)}%) scaleX(-1)`),
+            takeUntilDestroyed(),
+        )
+        .subscribe(transform => this.el.style.setProperty('transform', transform));
+
+    protected readonly clickthrough$ = this.scroll$
+        .pipe(
+            map(y => !!Math.round(this.getY(y))),
+            takeUntilDestroyed(),
+        )
+        .subscribe(add =>
+            add
+                ? this.el.classList.add('_clickthrough')
+                : this.el.classList.remove('_clickthrough'),
+        );
 
     @Input('tuiSheetTop')
     public stop = 0;

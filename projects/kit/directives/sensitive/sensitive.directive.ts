@@ -6,8 +6,9 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPx, tuiWithStyles} from '@taiga-ui/cdk';
 import {map} from 'rxjs';
 
 const rowsInSvg = 3;
@@ -30,21 +31,24 @@ class TuiSensitiveStyles {}
     providers: [ResizeObserverService],
     host: {
         '[style.--t-offset.px]': 'offset',
-        '[$.style.--t-mask-height.px]': 'height$',
-        '($.style.--t-mask-height.px)': 'height$',
         '[class.tui-sensitive]': 'tuiSensitive',
     },
 })
 export class TuiSensitiveDirective {
+    private readonly el = tuiInjectElement();
     protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
-    protected readonly height$ = inject(ResizeObserverService).pipe(
-        map(([{contentRect}]) => [
-            Math.max(2, Math.floor(contentRect.height / 16) + 1),
-            contentRect.height,
-        ]),
-        map(([rows, height]) => height * (rowsInSvg / rows)),
-    );
+
+    protected readonly height$ = inject(ResizeObserverService)
+        .pipe(
+            map(([{contentRect}]) => [
+                Math.max(2, Math.floor(contentRect.height / 16) + 1),
+                contentRect.height,
+            ]),
+            map(([rows, height]) => height * (rowsInSvg / rows)),
+            takeUntilDestroyed(),
+        )
+        .subscribe(value => this.el.style.setProperty('--t-mask-height', tuiPx(value)));
 
     @Input()
     public tuiSensitive: boolean | null = false;

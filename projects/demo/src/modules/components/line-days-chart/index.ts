@@ -5,7 +5,7 @@ import {TuiAxesComponent, TuiLineDaysChartComponent} from '@taiga-ui/addon-chart
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 

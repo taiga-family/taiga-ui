@@ -1,6 +1,6 @@
 import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * Source code link

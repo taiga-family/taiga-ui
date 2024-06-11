@@ -1,14 +1,14 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiParentAnimation} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_TABLE_BARS} from './table-bar.options';
 
 @Component({
     standalone: true,
     selector: 'tui-table-bars-host',
-    imports: [AsyncPipe, PolymorpheusModule, NgForOf],
+    imports: [AsyncPipe, PolymorpheusOutlet, PolymorpheusTemplate, NgForOf],
     template: `
         <div
             *ngFor="let item of bars$ | async"

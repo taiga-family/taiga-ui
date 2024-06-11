@@ -7,13 +7,13 @@ import {By} from '@angular/platform-browser';
 import {TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTimeComponent,
     TuiInputTimeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const TIMES = [
     new TuiTime(0, 0),

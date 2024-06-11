@@ -12,8 +12,8 @@ import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiIconComponent} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
@@ -26,7 +26,8 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
         TuiIconComponent,
         TuiButtonDirective,
         AsyncPipe,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
     ],
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],

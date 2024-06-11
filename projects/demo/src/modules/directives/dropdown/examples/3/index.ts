@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {interval, map} from 'rxjs';
 
 @Component({
@@ -16,7 +16,8 @@ import {interval, map} from 'rxjs';
         TuiInputModule,
         FormsModule,
         TuiSwitchComponent,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         NgIf,
         AsyncPipe,
     ],

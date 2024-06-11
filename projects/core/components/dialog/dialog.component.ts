@@ -10,8 +10,8 @@ import {
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
 

@@ -19,7 +19,7 @@ import {
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
 
 export interface TuiMobileCalendarData {

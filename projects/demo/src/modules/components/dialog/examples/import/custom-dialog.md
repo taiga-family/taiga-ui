@@ -1,5 +1,5 @@
 ```ts
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {TuiDialogContext} from '@taiga-ui/core';
 
 // ...

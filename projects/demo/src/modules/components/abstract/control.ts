@@ -7,7 +7,7 @@ import type {
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {TUI_DROPDOWN_DEFAULT_OPTIONS, TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
 import type {AbstractExampleTuiDropdown} from './dropdown';

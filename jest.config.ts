@@ -61,7 +61,9 @@ const config: JestConfigWithTsJest = {
             },
         ],
     },
-    transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito)'],
+    transformIgnorePatterns: [
+        'node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito|@taiga-ui\\/event-plugins|@taiga-ui\\/polymorpheus)',
+    ],
 
     /**
      * The glob patterns Jest uses to detect test files.

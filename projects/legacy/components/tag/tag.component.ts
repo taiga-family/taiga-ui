@@ -14,7 +14,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_COMMON_ICONS, tuiSizeBigger, tuiStringHashToHsl} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_TAG_OPTIONS} from './tag.options';
 

@@ -23,8 +23,8 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit/components/radio';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
@@ -34,7 +34,8 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     imports: [
         NgForOf,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiRadioComponent,
         TuiRadioDirective,
         TuiValidatorDirective,

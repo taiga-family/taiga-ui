@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {

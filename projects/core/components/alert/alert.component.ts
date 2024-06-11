@@ -8,7 +8,11 @@ import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animation
 import {TuiNotificationComponent} from '@taiga-ui/core/components/notification';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 
 import type {TuiAlertOptions} from './alert.interfaces';
@@ -17,7 +21,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alert',
-    imports: [TuiNotificationComponent, NgIf, PolymorpheusModule],
+    imports: [TuiNotificationComponent, NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

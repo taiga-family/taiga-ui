@@ -1,6 +1,6 @@
 import type {AbstractControl, ValidatorFn} from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export function tuiCreateUnfinishedValidator(
     element: HTMLInputElement,

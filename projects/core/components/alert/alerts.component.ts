@@ -11,7 +11,7 @@ import {
 import type {TuiMapper} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {identity} from 'rxjs';
 
 import {TUI_ALERTS_GROUPED} from './alert.tokens';

@@ -6,11 +6,17 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiAlertContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiButtonDirective, TuiAmountPipe, PolymorpheusModule],
+    imports: [
+        AsyncPipe,
+        TuiButtonDirective,
+        TuiAmountPipe,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

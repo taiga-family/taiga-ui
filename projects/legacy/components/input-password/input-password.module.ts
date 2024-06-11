@@ -7,7 +7,7 @@ import {
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputPasswordComponent} from './input-password.component';
 import {TuiInputPasswordDirective} from './input-password.directive';
@@ -16,7 +16,8 @@ import {TuiInputPasswordDirective} from './input-password.directive';
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiHint,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,

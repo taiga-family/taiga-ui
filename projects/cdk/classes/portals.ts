@@ -9,7 +9,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
-import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 /**
  * Abstract class for host element for dynamically created portals.

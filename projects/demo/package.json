@@ -15,7 +15,7 @@
         "@ng-web-apis/universal": "3.0.7",
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.10.0",
-        "@tinkoff/ng-dompurify": "4.0.0",
+        "@taiga-ui/dompurify": "4.1.0",
         "date-fns": "3.6.0",
         "rxjs": "7.5.0"
     },

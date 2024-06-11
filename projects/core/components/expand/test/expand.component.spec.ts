@@ -3,8 +3,8 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import type {TuiExpandComponent} from '@taiga-ui/core';
 import {TUI_EXPAND_LOADED, TuiExpand} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const ANIMATION_DELAY = 900;
 

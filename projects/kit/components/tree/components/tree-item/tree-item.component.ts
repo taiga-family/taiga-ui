@@ -9,7 +9,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiInjectElement, tuiProvide} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';

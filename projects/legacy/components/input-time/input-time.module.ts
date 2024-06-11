@@ -14,7 +14,7 @@ import {
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputTimeComponent} from './input-time.component';
 import {TuiInputTimeDirective} from './input-time.directive';
@@ -30,7 +30,8 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIconComponent,
         TuiAppearanceDirective,

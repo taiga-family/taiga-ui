@@ -3,9 +3,9 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 import {TuiIslandHarness} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Island', () => {
     @Component({

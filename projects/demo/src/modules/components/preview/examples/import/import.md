@@ -1,7 +1,7 @@
 ```ts
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {TuiPreviewDialogService} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiDialogContext} from '@taiga-ui/core';
 
 @Component({

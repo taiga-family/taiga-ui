@@ -12,8 +12,8 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
 import {TuiIconComponent} from '@taiga-ui/core/components/icon';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import type {TuiNotification} from './notification.options';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
@@ -21,7 +21,14 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 @Component({
     standalone: true,
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
-    imports: [TuiButtonDirective, PolymorpheusModule, NgIf, TuiIconComponent, AsyncPipe],
+    imports: [
+        TuiButtonDirective,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+        NgIf,
+        TuiIconComponent,
+        AsyncPipe,
+    ],
     templateUrl: './notification.template.html',
     styleUrls: ['./notification.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

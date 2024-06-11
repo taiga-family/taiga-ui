@@ -8,9 +8,9 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiLinkDirective} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const ITEMS = [
     {

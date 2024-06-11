@@ -3,7 +3,7 @@ import {Directive, inject} from '@angular/core';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiPopoverService} from '@taiga-ui/cdk/services';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, endWith, ignoreElements, share, Subject} from 'rxjs';
 
 @Directive()

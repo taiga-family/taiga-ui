@@ -14,15 +14,15 @@ import {
     tuiIsSafari,
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_LOADER_OPTIONS} from './loader.options';
 
 @Component({
     standalone: true,
     selector: 'tui-loader',
-    imports: [NgIf, PolymorpheusModule],
+    imports: [NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './loader.template.html',
     styleUrls: ['./loader.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

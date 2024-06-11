@@ -1,4 +1,4 @@
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiCodeEditor {
     readonly content?: PolymorpheusContent;
