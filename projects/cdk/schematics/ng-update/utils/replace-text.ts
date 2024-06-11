@@ -1,4 +1,4 @@
-import {getSourceFiles} from 'ng-morph';
+import {getSourceFiles} from '@taiga-ui/morph';
 
 import {ALL_FILES} from '../../constants';
 

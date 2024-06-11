@@ -1,4 +1,4 @@
-import {Node} from 'ng-morph';
+import {Node} from '@taiga-ui/morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {

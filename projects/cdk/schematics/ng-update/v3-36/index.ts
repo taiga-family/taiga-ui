@@ -5,7 +5,7 @@ import {
     getPackageJsonDependency,
     removePackageJsonDependency,
     saveActiveProject,
-} from 'ng-morph';
+} from '@taiga-ui/morph';
 
 import {ALL_TS_FILES} from '../../constants';
 import type {TuiSchema} from '../../ng-add/schema';

@@ -1,5 +1,5 @@
-import type {ObjectLiteralExpression} from 'ng-morph';
-import {Node} from 'ng-morph';
+import type {ObjectLiteralExpression} from '@taiga-ui/morph';
+import {Node} from '@taiga-ui/morph';
 
 export function pushToObjectArrayProperty(
     objectExpression: ObjectLiteralExpression,

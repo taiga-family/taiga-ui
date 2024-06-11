@@ -5,7 +5,7 @@ import {
     getPackageJsonDependency,
     NodeDependencyType,
     removePackageJsonDependency,
-} from 'ng-morph';
+} from '@taiga-ui/morph';
 
 import {MAIN_PACKAGES} from './constants/packages';
 import {

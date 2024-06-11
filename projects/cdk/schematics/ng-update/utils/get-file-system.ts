@@ -1,6 +1,6 @@
 import type {Tree} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import {createProject, setActiveProject} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
+import {createProject, setActiveProject} from '@taiga-ui/morph';
 
 import {ALL_FILES} from '../../constants';
 import {projectRoot} from '../../utils/project-root';

@@ -1,4 +1,4 @@
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 
 import {replaceInputPropertyByDirective} from '../../../utils/templates/ng-component-input-manipulations';
 import type {ReplacementAttributeToDirective, TemplateResource} from '../../interfaces';

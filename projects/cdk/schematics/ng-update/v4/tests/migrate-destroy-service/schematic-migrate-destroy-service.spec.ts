@@ -1,4 +1,4 @@
-import {resetActiveProject} from 'ng-morph';
+import {resetActiveProject} from '@taiga-ui/morph';
 
 import {runMigration} from './utils';
 

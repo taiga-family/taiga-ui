@@ -1,5 +1,5 @@
-import type {DevkitFileSystem} from 'ng-morph';
-import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
+import {createProject, saveActiveProject, setActiveProject} from '@taiga-ui/morph';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';

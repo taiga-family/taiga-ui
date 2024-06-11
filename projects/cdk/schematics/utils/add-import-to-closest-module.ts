@@ -4,7 +4,7 @@ import {
     findNgModule,
     getNgComponents,
     isStandaloneComponent,
-} from 'ng-morph';
+} from '@taiga-ui/morph';
 
 import {ALL_TS_FILES} from '../constants/file-globs';
 import {addUniqueImport} from './add-unique-import';

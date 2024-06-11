@@ -1,7 +1,7 @@
 import {performance} from 'node:perf_hooks';
 
-import type {CallExpression, Identifier} from 'ng-morph';
-import {Node, SyntaxKind} from 'ng-morph';
+import type {CallExpression, Identifier} from '@taiga-ui/morph';
+import {Node, SyntaxKind} from '@taiga-ui/morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {

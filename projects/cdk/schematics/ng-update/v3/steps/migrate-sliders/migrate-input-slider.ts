@@ -1,11 +1,11 @@
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 import {
     addMethods,
     createProject,
     getNgComponents,
     saveActiveProject,
     setActiveProject,
-} from 'ng-morph';
+} from '@taiga-ui/morph';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
 import type {TuiSchema} from '../../../../ng-add/schema';
@@ -100,7 +100,7 @@ export function migrateInputSlider(
 
     /**
      * We should update virtual file tree
-     * otherwise all following ng-morph commands will overwrite all previous template manipulations
+     * otherwise all following @taiga-ui/morph commands will overwrite all previous template manipulations
      * */
     fileSystem.commitEdits();
     saveActiveProject();
