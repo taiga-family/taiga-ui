@@ -1,4 +1,4 @@
-import type {QueryList} from '@angular/core';
+import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,6 +7,7 @@ import {
     HostBinding,
     HostListener,
     Input,
+    signal,
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -55,8 +56,10 @@ import {TuiRangeChangeDirective} from './range-change.directive';
 })
 export class TuiRangeComponent
     extends TuiControl<[number, number]>
-    implements TuiWithOptionalMinMax<number>
+    implements TuiWithOptionalMinMax<number>, OnChanges
 {
+    // TODO: workaround until we get signal inputs
+    private readonly changes = signal(1);
     private readonly el = tuiInjectElement();
 
     protected lastActiveThumb: 'left' | 'right' = 'right';
@@ -88,6 +91,10 @@ export class TuiRangeComponent
 
     public readonly left = computed(() => this.toPercent(this.value()[0]));
     public readonly right = computed(() => 100 - this.toPercent(this.value()[1]));
+
+    public ngOnChanges(): void {
+        this.changes.set(this.changes() + 1);
+    }
 
     public processValue(value: number, right: boolean): void {
         if (right) {
@@ -142,7 +149,9 @@ export class TuiRangeComponent
     }
 
     protected toPercent(value: number): number {
-        return tuiKeyStepValueToPercentage(value, this.computedKeySteps);
+        return (
+            this.changes() && tuiKeyStepValueToPercentage(value, this.computedKeySteps)
+        );
     }
 
     @tuiPure
