@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     CHAR_EM_DASH,
     CHAR_EN_DASH,
@@ -21,7 +22,7 @@ test.describe('InputNumber', () => {
         });
 
         test('Infinite precision', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?precision=Infinity');
+            await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=Infinity`);
             await input.focus();
             await input.fill('1,2345');
             await expect(example).toHaveScreenshot('01-input-number.png');
@@ -65,7 +66,7 @@ test.describe('InputNumber', () => {
 
     test.describe('Examples', () => {
         test('cursor position', async ({page}) => {
-            await tuiGoto(page, '/components/input-number');
+            await tuiGoto(page, `${DemoRoute.InputNumber}`);
 
             const example = new TuiDocumentationPagePO(page).getExample('#currency');
 
@@ -134,7 +135,7 @@ test.describe('InputNumber', () => {
 
         test.describe('if user tries to erase thousand separator, mask triggers caret navigation', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?decimalMode=not-zero');
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?decimalMode=not-zero`);
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -182,7 +183,7 @@ test.describe('InputNumber', () => {
     test.describe('[min] prop', () => {
         test.describe('[min] property is positive number', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?min=5');
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=5`);
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -211,7 +212,7 @@ test.describe('InputNumber', () => {
 
         test.describe('[min] property is negative number', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?min=-5');
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?min=-5`);
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -250,7 +251,7 @@ test.describe('InputNumber', () => {
     test.describe('[max] prop', () => {
         test.describe('[max] property is negative number', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?max=-5');
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?max=-5`);
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -275,7 +276,7 @@ test.describe('InputNumber', () => {
 
         test.describe('[max] property is positive number', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?max=12');
+                await tuiGoto(page, `${DemoRoute.InputNumber}/API?max=12`);
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -375,7 +376,7 @@ test.describe('InputNumber', () => {
         });
 
         test('Value 42,1 (precision=0) => 42', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?precision=0');
+            await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=0`);
 
             await input.fill('42,1');
             await expect(input).toHaveValue('42');

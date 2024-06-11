@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -17,7 +18,7 @@ test.describe('Select', () => {
     });
 
     test('native select value', async ({page}) => {
-        await tuiGoto(page, 'components/select');
+        await tuiGoto(page, DemoRoute.Select);
         const dropdown = page.locator('#native-select select').first();
 
         await dropdown.selectOption({index: 1});

@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -7,7 +8,7 @@ test.describe('MultiSelect', () => {
         let documentationPage: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, 'components/multi-select');
+            await tuiGoto(page, DemoRoute.MultiSelect);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
@@ -167,7 +168,7 @@ test.describe('MultiSelect', () => {
         test('checking that the arrow icon is rotated when enabled tuiTextfieldCleaner', async ({
             page,
         }) => {
-            await tuiGoto(page, 'components/multi-select/API?tuiTextfieldCleaner=true');
+            await tuiGoto(page, `${DemoRoute.MultiSelect}/API?tuiTextfieldCleaner=true`);
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
@@ -181,7 +182,7 @@ test.describe('MultiSelect', () => {
         });
 
         test('should scroll to end on focus', async ({page}) => {
-            await tuiGoto(page, 'components/multi-select/API?rows=1&sandboxWidth=350');
+            await tuiGoto(page, `${DemoRoute.MultiSelect}/API?rows=1&sandboxWidth=350`);
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);

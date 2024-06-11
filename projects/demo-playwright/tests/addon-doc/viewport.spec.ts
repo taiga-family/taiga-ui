@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -14,7 +15,7 @@ test.describe('Viewport', () => {
     ).forEach(([index, {width, height}]) => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
-            await tuiGoto(page, '/breakpoints', {hideHeader: true});
+            await tuiGoto(page, DemoRoute.Breakpoints, {hideHeader: true});
             const example = new TuiDocumentationPagePO(page).getExample('#usage');
 
             await expect(example).toHaveScreenshot(

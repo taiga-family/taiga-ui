@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -18,7 +19,7 @@ test.describe('Textarea', () => {
     });
 
     test('line break text', async ({page}) => {
-        await tuiGoto(page, 'components/textarea/API');
+        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const textAreaComponent = apiPageExample.locator('tui-textarea');
         const textarea = apiPageExample.getByRole('textbox').first();

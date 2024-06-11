@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
@@ -19,7 +20,7 @@ test.describe('InputCardGrouped', () => {
         });
 
         test('set value and clear after', async ({page}) => {
-            await tuiGoto(page, 'components/input-card-grouped/API');
+            await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API`);
 
             const {numberTextfield, cleanerIcon} = new TuiInputCardGroupedPO(
                 apiPageExample,
@@ -47,7 +48,7 @@ test.describe('InputCardGrouped', () => {
         });
 
         test('disabled input card grouped', async ({page}) => {
-            await tuiGoto(page, 'components/input-card-grouped/API?disabled=true');
+            await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API?disabled=true`);
 
             const {numberTextfield} = new TuiInputCardGroupedPO(apiPageExample);
 
@@ -62,7 +63,7 @@ test.describe('InputCardGrouped', () => {
         test.use({viewport: {width: 1280, height: 800}});
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, 'components/input-card-grouped');
+            await tuiGoto(page, DemoRoute.InputCardGrouped);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });

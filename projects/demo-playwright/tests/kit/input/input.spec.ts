@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -91,7 +92,7 @@ test.describe('Input', () => {
     });
 
     test('can be horizontally scrolled', async ({page}) => {
-        await tuiGoto(page, '/components/input/API?sandboxWidth=300');
+        await tuiGoto(page, `${DemoRoute.Input}/API?sandboxWidth=300`);
 
         const example = new TuiDocumentationPagePO(page).apiPageExample;
         const input = example.locator('input[tuiTextfieldLegacy]');
@@ -115,7 +116,7 @@ test.describe('Input', () => {
     });
 
     test('external mask works', async ({page}) => {
-        await tuiGoto(page, '/components/input');
+        await tuiGoto(page, DemoRoute.Input);
 
         const example = new TuiDocumentationPagePO(page).getExample('#mask');
         const inputs = example.locator('tui-input input[tuiTextfieldLegacy]');

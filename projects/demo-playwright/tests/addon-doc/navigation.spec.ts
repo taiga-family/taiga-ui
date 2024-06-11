@@ -1,10 +1,11 @@
+import {DemoRoute} from '@demo/routes';
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Navigation', () => {
     test.use({viewport: {width: 1080, height: 600}});
     test('getting started / [light mode]', async ({page}) => {
-        await tuiGoto(page, '/getting-started', {
+        await tuiGoto(page, DemoRoute.GettingStarted, {
             hideHeader: false,
             hideLanguageSwitcher: true,
             hideVersionManager: true,
@@ -18,7 +19,7 @@ test.describe('Navigation', () => {
     });
 
     test('getting started / [dark mode]', async ({page}) => {
-        await tuiGoto(page, '/getting-started', {
+        await tuiGoto(page, DemoRoute.GettingStarted, {
             hideHeader: false,
             enableNightMode: true,
             hideLanguageSwitcher: true,
@@ -34,18 +35,18 @@ test.describe('Navigation', () => {
 
     test.describe('anchor links navigation works', () => {
         test('scroll to "tui-doc-example"', async ({page}) => {
-            await tuiGoto(page, '/components/input#table');
+            await tuiGoto(page, `${DemoRoute.Input}#table`);
             await expect(page.locator('#table')).toBeInViewport();
         });
 
         test('scroll to "tui-doc-code"', async ({page}) => {
-            await tuiGoto(page, '/getting-started#icons');
+            await tuiGoto(page, `${DemoRoute.GettingStarted}#icons`);
             await expect(page.locator('#icons')).toBeVisible();
             await expect(page.locator('#icons')).toBeInViewport();
         });
 
         test('scroll after click on link with anchor', async ({page}) => {
-            await tuiGoto(page, '/getting-started');
+            await tuiGoto(page, DemoRoute.GettingStarted);
             await page.locator('a[fragment="root"]').click();
             await expect(page.locator('#root')).toBeInViewport();
         });

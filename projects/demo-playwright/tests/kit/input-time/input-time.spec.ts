@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputTimePO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -20,7 +21,7 @@ test.describe('InputTime', () => {
             ].entries(),
         ).forEach(([exampleIndex, id]) => {
             test(id, async ({page}) => {
-                await tuiGoto(page, 'components/input-time', {date: MOCK_DATE});
+                await tuiGoto(page, DemoRoute.InputTime, {date: MOCK_DATE});
 
                 documentationPage = new TuiDocumentationPagePO(page);
 
@@ -64,7 +65,7 @@ test.describe('InputTime', () => {
 
         test.describe('items are passed', () => {
             test('the dropdown is visible when the input is focused', async ({page}) => {
-                await tuiGoto(page, 'components/input-time/API?items$=1', {
+                await tuiGoto(page, `${DemoRoute.InputTime}/API?items$=1`, {
                     date: MOCK_DATE,
                 });
 
@@ -114,7 +115,7 @@ test.describe('InputTime', () => {
             test('strict forces to select the closest value from items', async ({
                 page,
             }) => {
-                await tuiGoto(page, 'components/input-time/API?strict=true&items$=1', {
+                await tuiGoto(page, `${DemoRoute.InputTime}/API?strict=true&items$=1`, {
                     date: MOCK_DATE,
                 });
 
@@ -128,7 +129,7 @@ test.describe('InputTime', () => {
 
         test.describe('Basic typing from keyboard', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, 'components/input-time/API?mode=HH:MM');
+                await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
                 await inputTime.textfield.clear();
 
                 await expect(inputTime.textfield).toHaveValue('');

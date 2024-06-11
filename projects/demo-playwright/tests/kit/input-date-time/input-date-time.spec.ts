@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
@@ -26,7 +27,7 @@ test.describe('InputDateTime', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-time/API?max$=1');
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=1`);
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -34,7 +35,7 @@ test.describe('InputDateTime', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-time/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=3`);
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -43,7 +44,7 @@ test.describe('InputDateTime', () => {
 
         test('[max] property cannot be bypassed via selection', async ({page}) => {
             // max = [tomorrow, {hours: 16, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, 'components/input-date-time/API?max$=4', {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=4`, {
                 date: new Date(2018, 10, 1),
             });
 
@@ -78,7 +79,7 @@ test.describe('InputDateTime', () => {
 
         test('[min] property cannot be bypassed via selection', async ({page}) => {
             // min = [yesterday, {hours: 12, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, 'components/input-date-time/API?min$=4', {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=4`, {
                 date: new Date(2018, 10, 1),
             });
 
@@ -123,7 +124,7 @@ test.describe('InputDateTime', () => {
         test('should place caret before time after selection of a new date via calendar', async ({
             page,
         }) => {
-            await tuiGoto(page, 'components/input-date-time/API');
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
 
             await inputDateTime.textfield.type('191120181235');
             await expect(inputDateTime.textfield).toHaveValue('19.11.2018, 12:35');
@@ -151,7 +152,7 @@ test.describe('InputDateTime', () => {
         });
 
         test('change filler on dynamic change of [timeMode] prop', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-time/API?timeMode=HH:MM');
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM`);
             await inputDateTime.textfield.focus();
             await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.png');
 
@@ -174,7 +175,7 @@ test.describe('InputDateTime', () => {
         });
 
         test('should time to pre-fill with zeros on blur', async ({page}) => {
-            await tuiGoto(page, '/components/input-date-time/API?timeMode=HH:MM:SS.MSS');
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM:SS.MSS`);
 
             await inputDateTime.textfield.fill('07.06.2024, 23:59');
             await inputDateTime.textfield.blur();
@@ -194,7 +195,7 @@ test.describe('InputDateTime', () => {
                     apiPageExample.locator('tui-input-date-time'),
                 );
 
-                await tuiGoto(page, 'components/input-date-time/API');
+                await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
             });
 
             test('does not accept day > 31', async () => {
@@ -233,7 +234,7 @@ test.describe('InputDateTime', () => {
                     example.locator('tui-input-date-time'),
                 );
 
-                await tuiGoto(page, 'components/input-date-time');
+                await tuiGoto(page, DemoRoute.InputDateTime);
                 await inputDateTime.textfield.clear();
             });
 

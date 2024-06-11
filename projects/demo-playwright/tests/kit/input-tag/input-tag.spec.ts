@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
@@ -7,7 +8,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('InputTag', () => {
     test.describe('Examples', () => {
-        test.beforeEach(async ({page}) => tuiGoto(page, '/components/input-tag'));
+        test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.InputTag));
 
         test('errors of invalid control are shown correctly', async ({page}) => {
             const example = new TuiDocumentationPagePO(page).getExample('#base');
@@ -28,7 +29,7 @@ test.describe('InputTag', () => {
             const example = new TuiDocumentationPagePO(page).getExample('#sizes');
 
             await expect(example).toHaveScreenshot('03-input-tag.png');
-            await tuiGoto(page, '/components/input-tag', {enableNightMode: true});
+            await tuiGoto(page, DemoRoute.InputTag, {enableNightMode: true});
             await expect(example).toHaveScreenshot('04-input-tag.png');
         });
 
@@ -46,7 +47,7 @@ test.describe('InputTag', () => {
 
     test.describe('API', () => {
         test('placeholder', async ({page}) => {
-            await tuiGoto(page, '/components/input-tag/API?placeholder=placeholder');
+            await tuiGoto(page, `${DemoRoute.InputTag}/API?placeholder=placeholder`);
 
             const api = new TuiDocumentationApiPagePO(page);
 

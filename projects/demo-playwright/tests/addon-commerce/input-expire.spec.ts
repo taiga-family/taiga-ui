@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -6,7 +7,7 @@ test.describe('InputExpire', () => {
     let expiryTextfield: Locator;
 
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, 'components/input-card');
+        await tuiGoto(page, DemoRoute.InputCard);
 
         expiryTextfield = new TuiInputCardPO(page).expiryTextfield;
         await expect(expiryTextfield).toBeEmpty();

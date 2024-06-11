@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -6,7 +7,7 @@ test.describe('Icons Customization', () => {
         let documentationPage: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, 'icons/customization');
+            await tuiGoto(page, DemoRoute.IconsCustomization);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });

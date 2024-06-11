@@ -1,8 +1,9 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('DropdownContext', () => {
-    test.beforeEach(async ({page}) => tuiGoto(page, '/directives/dropdown-context'));
+    test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.DropdownContext));
 
     test('opens dropdown on right click', async ({page}) => {
         const api = new TuiDocumentationPagePO(page);

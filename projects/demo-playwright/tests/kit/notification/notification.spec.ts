@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -8,7 +9,7 @@ test.describe('Notification', () => {
 
     test.describe('default', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, '/components/notification/API');
+            await tuiGoto(page, `${DemoRoute.Notification}/API`);
 
             example = new TuiDocumentationPagePO(page).apiPageExample;
         });

@@ -1,5 +1,6 @@
 import {join} from 'node:path';
 
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -13,7 +14,7 @@ test.describe('InputFiles', () => {
 
     ['english', 'dutch', 'russian'].forEach(language =>
         test(`Wrong file type (i18n: ${language})`, async ({page}) => {
-            await tuiGoto(page, '/components/input-files/API?accept=application/pdf', {
+            await tuiGoto(page, `${DemoRoute.InputFiles}/API?accept=application/pdf`, {
                 language,
             });
 

@@ -1,10 +1,11 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import type {TuiHintDirection} from '@taiga-ui/core';
 
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {
-        await tuiGoto(page, '/directives/hint');
+        await tuiGoto(page, DemoRoute.Hint);
         const example = new TuiDocumentationPagePO(page).getExample('#multiple');
 
         await example.locator('tui-avatar').hover();
@@ -92,7 +93,7 @@ test.describe('TuiHint', () => {
     });
 
     test('Tooltip horizontal direction', async ({page}) => {
-        await tuiGoto(page, '/components/tooltip');
+        await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample('#example-base');
 
         await example.locator('tui-tooltip').nth(0).hover();
@@ -101,7 +102,7 @@ test.describe('TuiHint', () => {
     });
 
     test('Tooltip vertical direction', async ({page}) => {
-        await tuiGoto(page, '/components/tooltip');
+        await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample(
             '#repeating-template',
         );

@@ -1,9 +1,10 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
 test.describe('TuiRange', () => {
-    test.beforeEach(async ({page}) => tuiGoto(page, '/components/range'));
+    test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.Range));
 
     test.describe('examples page', () => {
         let example: Locator;

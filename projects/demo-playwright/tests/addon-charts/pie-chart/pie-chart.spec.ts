@@ -1,9 +1,10 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('PieChart', () => {
     test('should be show hints on charts', async ({page}) => {
-        await tuiGoto(page, 'charts/pie-chart');
+        await tuiGoto(page, DemoRoute.PieChart);
 
         const example = new TuiDocumentationPagePO(page).getExample('#labels');
         const pieChartSegments = await example

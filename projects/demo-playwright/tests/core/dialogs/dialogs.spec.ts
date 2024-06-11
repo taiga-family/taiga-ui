@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -26,7 +27,7 @@ test.describe('Dialogs', () => {
         test.describe(`${width}x${height}`, () => {
             test.beforeEach(async ({page}) => {
                 await page.setViewportSize({width, height});
-                await tuiGoto(page, 'components/dialog');
+                await tuiGoto(page, DemoRoute.Dialog);
             });
 
             test('A dialog and a nested dialog are open correctly', async ({page}) => {
@@ -142,7 +143,10 @@ test.describe('Dialogs', () => {
 
     test.describe('dismissible & closeable', () => {
         test('closeable = true, dismissible = false', async ({page}) => {
-            await tuiGoto(page, 'components/dialog/API?closeable=true&dismissible=false');
+            await tuiGoto(
+                page,
+                `${DemoRoute.Dialog}/API?closeable=true&dismissible=false`,
+            );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
@@ -151,7 +155,10 @@ test.describe('Dialogs', () => {
         });
 
         test('closeable = false, dismissible = true', async ({page}) => {
-            await tuiGoto(page, 'components/dialog/API?closeable=false&dismissible=true');
+            await tuiGoto(
+                page,
+                `${DemoRoute.Dialog}/API?closeable=false&dismissible=true`,
+            );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
@@ -160,7 +167,10 @@ test.describe('Dialogs', () => {
         });
 
         test('closeable = true, dismissible = false and force close', async ({page}) => {
-            await tuiGoto(page, 'components/dialog/API?closeable=true&dismissible=false');
+            await tuiGoto(
+                page,
+                `${DemoRoute.Dialog}/API?closeable=true&dismissible=false`,
+            );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
@@ -173,7 +183,10 @@ test.describe('Dialogs', () => {
         });
 
         test('dismissible = true, fullscreen', async ({page}) => {
-            await tuiGoto(page, 'components/dialog/API?size=fullscreen&dismissible=true');
+            await tuiGoto(
+                page,
+                `${DemoRoute.Dialog}/API?size=fullscreen&dismissible=true`,
+            );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
@@ -185,7 +198,10 @@ test.describe('Dialogs', () => {
 
         test('dismissible = true, fullscreen, desktop', async ({page}) => {
             await page.setViewportSize({width: 1024, height: 900});
-            await tuiGoto(page, 'components/dialog/API?size=fullscreen&dismissible=true');
+            await tuiGoto(
+                page,
+                `${DemoRoute.Dialog}/API?size=fullscreen&dismissible=true`,
+            );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);

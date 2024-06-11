@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
@@ -25,7 +26,7 @@ test.describe('InputMonthRange', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-month-range/API?max$=1');
+            await tuiGoto(page, `${DemoRoute.InputMonthRange}/API?max$=1`);
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -33,7 +34,7 @@ test.describe('InputMonthRange', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-month-range/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputMonthRange}/API?min$=3`);
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
