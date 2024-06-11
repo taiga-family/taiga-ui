@@ -1,5 +1,4 @@
 import type {AbstractControl} from '@angular/forms';
-import type {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import type {
     TuiDropdownAlign,
     TuiDropdownWidth,
@@ -41,7 +40,7 @@ export abstract class AbstractExampleTuiControl
 
     public readonly hintAppearanceVariants = ['', 'error', 'dark'];
 
-    public readonly typeVariants: readonly TuiInputType[] = [
+    public readonly typeVariants: readonly string[] = [
         'text',
         'email',
         'password',
@@ -51,7 +50,7 @@ export abstract class AbstractExampleTuiControl
 
     public readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
-    public readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    public readonly inputModeVariants: readonly string[] = ['text', 'numeric'];
 
     public readonly customContentVariants: PolymorpheusContent[] = [
         '',
@@ -68,7 +67,7 @@ export abstract class AbstractExampleTuiControl
 
     public maxLength: TuiPossibleGenericType | null = null;
 
-    public type: TuiInputType = this.typeVariants[0];
+    public type = this.typeVariants[0];
 
     public cleaner = false;
 

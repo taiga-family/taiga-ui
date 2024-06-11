@@ -1,15 +1,7 @@
 import type {Provider} from '@angular/core';
-import {
-    ElementRef,
-    InjectionToken,
-    NgZone,
-    Optional,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {ElementRef, InjectionToken, NgZone, Renderer2} from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 
@@ -48,7 +40,6 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
     {
         provide: TUI_AUTOFOCUS_HANDLER,
         useFactory: (
-            focusable: TuiFocusableElementAccessor | null,
             el: ElementRef<HTMLElement>,
             animationFrame$: Observable<number>,
             renderer: Renderer2,
@@ -57,16 +48,8 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             isIos: boolean,
         ) =>
             isIos
-                ? new TuiIosAutofocusHandler(focusable, el, renderer, zone, win)
-                : new TuiDefaultAutofocusHandler(focusable, el, animationFrame$),
-        deps: [
-            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
-            ElementRef,
-            ANIMATION_FRAME,
-            Renderer2,
-            NgZone,
-            WINDOW,
-            TUI_IS_IOS,
-        ],
+                ? new TuiIosAutofocusHandler(el, renderer, zone, win)
+                : new TuiDefaultAutofocusHandler(el, animationFrame$),
+        deps: [ElementRef, ANIMATION_FRAME, Renderer2, NgZone, WINDOW, TUI_IS_IOS],
     },
 ];

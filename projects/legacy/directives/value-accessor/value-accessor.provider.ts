@@ -1,7 +1,7 @@
 import type {FactoryProvider} from '@angular/core';
 import {Optional, Self} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR} from '@taiga-ui/legacy/tokens';
 import {identity} from 'rxjs';
 
 export const TUI_VALUE_ACCESSOR_PROVIDER: FactoryProvider = {

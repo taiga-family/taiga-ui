@@ -1,4 +1,4 @@
-import {tuiGetBorder} from '../get-border';
+import {tuiGetBorder} from '@taiga-ui/legacy';
 
 describe('getBorder', () => {
     it('calculates all options', () => {

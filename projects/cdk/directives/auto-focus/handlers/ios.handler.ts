@@ -1,5 +1,4 @@
 import type {ElementRef, NgZone, Renderer2} from '@angular/core';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
@@ -19,13 +18,12 @@ const TEXTFIELD_ATTRS = [
 
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     constructor(
-        focusable: TuiFocusableElementAccessor | null,
         el: ElementRef<HTMLElement>,
         private readonly renderer: Renderer2,
         private readonly zone: NgZone,
         private readonly win: Window,
     ) {
-        super(focusable, el);
+        super(el);
         this.patchCssStyles();
     }
 

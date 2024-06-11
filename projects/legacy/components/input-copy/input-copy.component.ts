@@ -7,8 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
-import {tuiAsFocusableItemAccessor, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -17,6 +16,11 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_VALUE_ACCESSOR_PROVIDER,
 } from '@taiga-ui/legacy/directives';
+import type {
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map, merge, of, switchMap, timer} from 'rxjs';

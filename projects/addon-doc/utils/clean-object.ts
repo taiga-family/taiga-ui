@@ -1,11 +1,12 @@
-import type {TuiDeepPartial} from '@taiga-ui/cdk/types';
-
-import {tuiIsString} from './is-string';
+export type TuiDeepPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? TuiDeepPartial<T[K]> : T[K];
+};
 
 type EmptyValue = '' | null | undefined;
 
 function checkValueIsEmpty<T>(value: EmptyValue | T): value is EmptyValue {
-    const nextValue: any = tuiIsString(value) ? value.trim() : value;
+    // eslint-disable-next-line
+    const nextValue: any = typeof value === 'string' ? value.trim() : value;
 
     return [undefined, null, NaN, ''].includes(nextValue);
 }

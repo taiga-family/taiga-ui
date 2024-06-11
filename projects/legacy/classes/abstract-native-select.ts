@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
-import type {TuiTextfieldHost} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_HOST, TuiDataListDirective} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
+import type {TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
+import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 import {AbstractTuiControl} from './control';
 

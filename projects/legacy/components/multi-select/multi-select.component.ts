@@ -14,7 +14,6 @@ import type {
     TuiActiveZoneDirective,
     TuiBooleanHandler,
     TuiContext,
-    TuiFocusableElementAccessor,
     TuiMapper,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
@@ -23,7 +22,6 @@ import {
     TUI_IS_MOBILE,
     TUI_TRUE_HANDLER,
     tuiArrayToggle,
-    tuiAsFocusableItemAccessor,
     tuiIsNativeFocused,
     tuiIsString,
     tuiPure,
@@ -54,6 +52,8 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 

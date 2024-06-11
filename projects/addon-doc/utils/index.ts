@@ -1,3 +1,4 @@
+export * from './clean-object';
 export * from './coerce-boolean';
 export * from './coerce-value';
 export * from './inspect';

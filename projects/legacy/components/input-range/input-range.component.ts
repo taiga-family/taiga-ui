@@ -8,15 +8,10 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
-    tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiInjectElement,
     tuiIsNativeFocused,
@@ -24,7 +19,6 @@ import {
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
-import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TUI_FLOATING_PRECISION, TuiRangeComponent} from '@taiga-ui/kit';
@@ -34,6 +28,11 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -53,7 +52,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiInputRangeComponent
     extends AbstractTuiControl<[number, number]>
-    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChildren(TuiInputNumberComponent)
     private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;

@@ -4,6 +4,7 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import type {TuiExpandComponent} from '@taiga-ui/core';
 import {TUI_EXPAND_LOADED, TuiExpand} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const ANIMATION_DELAY = 900;
 
@@ -45,8 +46,7 @@ describe('expand', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TestComponent],
-            // TODO: why tests are failed with NG_EVENT_PLUGINS
-            // providers: [NG_EVENT_PLUGINS],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
@@ -148,7 +148,7 @@ describe('expand', () => {
      * JSDOM doesn't support native transitionend
      */
     function transitionend(): void {
-        const event = new Event('transitionend.self');
+        const event = new Event('transitionend');
 
         (event as any).propertyName = 'opacity';
         testComponent.expandElement.nativeElement.dispatchEvent(event);

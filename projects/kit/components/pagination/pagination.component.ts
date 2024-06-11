@@ -9,7 +9,7 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import type {TuiContext, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiClamp,
@@ -78,7 +78,7 @@ export class TuiPaginationComponent {
     @Output()
     public readonly indexChange = new EventEmitter<number>();
 
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): HTMLElement | null {
         if (this.disabled) {
             return null;
         }

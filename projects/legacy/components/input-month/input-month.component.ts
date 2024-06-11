@@ -6,27 +6,27 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiBooleanHandler,
-    TuiFocusableElementAccessor,
-    TuiYear,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiYear} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
-    tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiMonthPipe} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import {TUI_MONTH_FORMATTER, TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/legacy/tokens';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    TUI_MONTH_FORMATTER,
+    TUI_MONTH_FORMATTER_PROVIDER,
+    tuiAsFocusableItemAccessor,
+} from '@taiga-ui/legacy/tokens';
 
 @Component({
     selector: 'tui-input-month',
@@ -42,7 +42,7 @@ import {TUI_MONTH_FORMATTER, TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/legac
 })
 export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
-    implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;

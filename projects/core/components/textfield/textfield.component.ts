@@ -9,16 +9,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
-import {
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-    TuiNativeValidatorDirective,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
@@ -32,7 +24,6 @@ import {
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {EMPTY} from 'rxjs';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
@@ -49,7 +40,6 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsFocusableItemAccessor(TuiTextfieldComponent),
         tuiAsDataListHost(TuiTextfieldComponent),
         tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
@@ -75,9 +65,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         },
     ],
 })
-export class TuiTextfieldComponent<T>
-    implements TuiDataListHost<T>, TuiFocusableElementAccessor
-{
+export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     @ContentChild(TuiTextfieldDirective, {read: ElementRef})
     private readonly el?: ElementRef<HTMLInputElement>;
 
@@ -108,15 +96,12 @@ export class TuiTextfieldComponent<T>
     @Input()
     public content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
-    // TODO: Refactor
-    public readonly focusedChange = EMPTY;
+    public get input(): HTMLInputElement {
+        if (!this.el) {
+            throw new Error('[tuiTextfield] component is required');
+        }
 
-    public get nativeFocusableElement(): HTMLInputElement {
-        return this.input;
-    }
-
-    public get id(): string {
-        return this.input.id || '';
+        return this.el.nativeElement;
     }
 
     // TODO: Do not change to `this.input`, will be refactored
@@ -127,14 +112,6 @@ export class TuiTextfieldComponent<T>
     public handleOption(option: T): void {
         this.directive?.setValue(this.stringify(option));
         this.dropdown?.toggle(false);
-    }
-
-    protected get input(): HTMLInputElement {
-        if (!this.el) {
-            throw new Error('[tuiTextfield] component is required');
-        }
-
-        return this.el.nativeElement;
     }
 
     protected get computedFiller(): string {

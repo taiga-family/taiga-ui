@@ -21,7 +21,5 @@ export const EMPTY_ARRAY: [] = [];
 export const EMPTY_FUNCTION: (...args: any[]) => void = () => {};
 export const EMPTY_CLIENT_RECT: DOMRect = {
     ...rect,
-    toJSON() {
-        return rect;
-    },
+    toJSON: () => rect,
 };

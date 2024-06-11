@@ -8,16 +8,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiActiveZoneDirective,
-    TuiContext,
-    TuiFocusableElementAccessor,
-} from '@taiga-ui/cdk';
-import {
-    TUI_IS_MOBILE,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {
     TuiDataListHost,
     TuiSizeL,
@@ -42,6 +34,8 @@ import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 

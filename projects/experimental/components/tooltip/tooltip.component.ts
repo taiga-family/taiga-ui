@@ -42,7 +42,7 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     public context?: C;
 
     protected get id(): string {
-        return this.describeId || this.textfield?.id || '';
+        return this.describeId || this.textfield?.input.id || '';
     }
 
     protected get computedAppearance(): string {

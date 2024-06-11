@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputTimeDirective} from '../input-time.directive';
 

@@ -5,6 +5,4 @@ export * from './point';
 export * from './portal-item';
 export * from './range-state';
 export * from './size';
-export * from './textfield-host';
 export * from './value-content-context';
-export * from './with-optional-min-max';

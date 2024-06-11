@@ -24,7 +24,7 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TUI_COMMON_ICONS,
     TuiCalendarComponent,
@@ -53,9 +53,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarRangeComponent
-    implements OnChanges, TuiWithOptionalMinMax<TuiDay>
-{
+export class TuiCalendarRangeComponent implements OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected previousValue: TuiDayRange | null = null;

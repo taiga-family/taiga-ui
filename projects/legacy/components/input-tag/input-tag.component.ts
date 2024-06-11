@@ -15,18 +15,12 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {
-    TuiActiveZoneDirective,
-    TuiBooleanHandler,
-    TuiContext,
-    TuiFocusableElementAccessor,
-} from '@taiga-ui/cdk';
+import type {TuiActiveZoneDirective, TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     tuiArrayRemove,
-    tuiAsFocusableItemAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
     tuiInjectElement,
@@ -49,6 +43,8 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';

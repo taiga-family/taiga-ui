@@ -17,7 +17,6 @@ import {
     tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
-import type {TuiWithOptionalMinMax} from '@taiga-ui/core/types';
 
 import {
     TuiCalendarSheetComponent,
@@ -41,7 +40,7 @@ import {TuiCalendarYearComponent} from './calendar-year.component';
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
+export class TuiCalendarComponent {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     private view: 'month' | 'year' = 'month';

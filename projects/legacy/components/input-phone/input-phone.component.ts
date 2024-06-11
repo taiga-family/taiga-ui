@@ -13,13 +13,8 @@ import {
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
-import type {
-    TuiActiveZoneDirective,
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiInputMode,
-} from '@taiga-ui/cdk';
-import {tuiAsFocusableItemAccessor, tuiIsNativeFocused, tuiPure} from '@taiga-ui/cdk';
+import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused, tuiPure} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     tuiAsDataListHost,
@@ -29,6 +24,8 @@ import {
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
@@ -126,7 +123,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    public get inputMode(): TuiInputMode {
+    public get inputMode(): string {
         return this.allowText ? 'text' : 'numeric';
     }
 

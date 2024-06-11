@@ -1,6 +1,7 @@
 import {inject} from '@angular/core';
 import {NAVIGATOR} from '@ng-web-apis/common';
-import {tuiCreateTokenFromFactory, tuiIsApple} from '@taiga-ui/cdk/utils';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiIsApple} from '@taiga-ui/legacy/utils';
 
 /**
  * Apple(safari/webkit) detection
