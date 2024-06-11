@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconCloudUpload" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="lucide lucide-cloud-upload"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                    <path d="M12 12v9" />
+                    <path d="m16 16-4-4-4 4" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

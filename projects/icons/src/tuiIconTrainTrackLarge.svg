@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconTrainTrackLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path vector-effect="non-scaling-stroke" d="M2 17 17 2" />
+                    <path vector-effect="non-scaling-stroke" d="m2 14 8 8" />
+                    <path vector-effect="non-scaling-stroke" d="m5 11 8 8" />
+                    <path vector-effect="non-scaling-stroke" d="m8 8 8 8" />
+                    <path vector-effect="non-scaling-stroke" d="m11 5 8 8" />
+                    <path vector-effect="non-scaling-stroke" d="m14 2 8 8" />
+                    <path vector-effect="non-scaling-stroke" d="M7 22 22 7" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

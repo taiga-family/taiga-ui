@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconRadiusLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path vector-effect="non-scaling-stroke" d="M20.34 17.52a10 10 0 1 0-2.82 2.82" />
+                    <circle vector-effect="non-scaling-stroke" cx="19" cy="19" r="2" />
+                    <path vector-effect="non-scaling-stroke" d="m13.41 13.41 4.18 4.18" />
+                    <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="2" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

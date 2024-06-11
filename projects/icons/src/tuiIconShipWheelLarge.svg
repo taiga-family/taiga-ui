@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconShipWheelLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="8" />
+                    <path vector-effect="non-scaling-stroke" d="M12 2v7.5" />
+                    <path vector-effect="non-scaling-stroke" d="m19 5-5.23 5.23" />
+                    <path vector-effect="non-scaling-stroke" d="M22 12h-7.5" />
+                    <path vector-effect="non-scaling-stroke" d="m19 19-5.23-5.23" />
+                    <path vector-effect="non-scaling-stroke" d="M12 14.5V22" />
+                    <path vector-effect="non-scaling-stroke" d="M10.23 13.77 5 19" />
+                    <path vector-effect="non-scaling-stroke" d="M9.5 12H2" />
+                    <path vector-effect="non-scaling-stroke" d="M10.23 10.23 5 5" />
+                    <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="2.5" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

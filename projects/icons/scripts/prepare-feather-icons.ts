@@ -4,13 +4,7 @@ const fs = require('node:fs');
 const NO_FILL = ['check.svg'];
 
 (function main(): void {
-    const src = path.join(
-        process.cwd(),
-        'node_modules',
-        'feather-icons',
-        'dist',
-        'icons',
-    );
+    const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');
     const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 'src');
 
     fs.readdirSync(src).forEach((filename: string) => {
@@ -42,13 +36,7 @@ const NO_FILL = ['check.svg'];
                 '<$1 vector-effect="non-scaling-stroke"',
             ),
         );
-        fs.writeFileSync(
-            path.join(dest, processName(filename)),
-            filled
-                .replace('stroke-width="2"', 'stroke-width="3"')
-                .replace('width="24"', 'width="16"')
-                .replace('height="24"', 'height="16"'),
-        );
+        fs.writeFileSync(path.join(dest, processName(filename)), content);
     });
 })();
 

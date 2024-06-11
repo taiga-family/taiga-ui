@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconUtensilsCrossedLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        vector-effect="non-scaling-stroke"
+                        d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"
+                    />
+                    <path
+                        vector-effect="non-scaling-stroke"
+                        d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"
+                    />
+                    <path vector-effect="non-scaling-stroke" d="m2.1 21.8 6.4-6.3" />
+                    <path vector-effect="non-scaling-stroke" d="m19 5-7 7" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

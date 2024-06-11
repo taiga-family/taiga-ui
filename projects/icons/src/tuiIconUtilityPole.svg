@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em">
+    <g id="tuiIconUtilityPole" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+            <svg x="-12" y="-12">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="lucide lucide-utility-pole"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M12 2v20" />
+                    <path d="M2 5h20" />
+                    <path d="M3 3v2" />
+                    <path d="M7 3v2" />
+                    <path d="M17 3v2" />
+                    <path d="M21 3v2" />
+                    <path d="m19 5-7 7-7-7" />
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>
