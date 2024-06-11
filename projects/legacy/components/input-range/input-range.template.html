@@ -73,7 +73,7 @@
         [segments]="segments"
         [step]="step"
         (activeThumbChange)="onActiveThumbChange($event)"
+        (mousedown.prevent)="focusToTextInput()"
         (ngModelChange)="onExternalValueUpdate($event)"
-        (pointerdown)="focusToTextInput()"
     />
 </div>
