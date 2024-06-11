@@ -2,13 +2,11 @@ import type {TestElement} from '@angular/cdk/testing';
 import {TestKey} from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-import {TuiSvgHarness} from './svg.harness';
-
 export class TuiTagHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-tag';
 
-    public async getCrossIcon(): Promise<TuiSvgHarness | null> {
-        return this.locatorForOptional(TuiSvgHarness.with({selector: '.t-icon'}))();
+    public async getCrossIcon(): Promise<TestElement | null> {
+        return this.locatorForOptional('.t-icon')();
     }
 
     public async getBackgroundColor(): Promise<string> {
