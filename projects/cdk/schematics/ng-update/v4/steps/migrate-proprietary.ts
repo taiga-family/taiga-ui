@@ -1,12 +1,12 @@
 /// <reference lib="es2021" />
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 import {
     addPackageJsonDependency,
     getActiveProject,
     getPackageJsonDependency,
     removePackageJsonDependency,
     saveActiveProject,
-} from 'ng-morph';
+} from '@taiga-ui/morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
 import type {TuiSchema} from '../../../ng-add/schema';

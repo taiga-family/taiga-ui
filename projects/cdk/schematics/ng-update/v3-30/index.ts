@@ -1,5 +1,5 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {getPackageJsonDependency, saveActiveProject} from 'ng-morph';
+import {getPackageJsonDependency, saveActiveProject} from '@taiga-ui/morph';
 
 import type {TuiSchema} from '../../ng-add/schema';
 import {

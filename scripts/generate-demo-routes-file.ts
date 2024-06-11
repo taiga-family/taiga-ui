@@ -60,7 +60,7 @@ const EXCEPTIONS = [
              * ___
              * TODO: after solving of this issue https://github.com/taiga-family/taiga-ui/issues/6957
              * (all routes will be standardized)
-             * use ng-morph (DemoRoute + `app.routes.ts` file + `*pageTab` directive) to create more accurate algorithm.
+             * use @taiga-ui/morph (DemoRoute + `app.routes.ts` file + `*pageTab` directive) to create more accurate algorithm.
              *
              */
             route.match(

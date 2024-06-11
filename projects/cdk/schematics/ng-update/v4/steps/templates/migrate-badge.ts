@@ -1,5 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 

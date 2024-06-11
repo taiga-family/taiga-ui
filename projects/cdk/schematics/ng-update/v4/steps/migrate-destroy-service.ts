@@ -1,4 +1,4 @@
-import {Node, SyntaxKind} from 'ng-morph';
+import {Node, SyntaxKind} from '@taiga-ui/morph';
 import type {CallExpression} from 'ts-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';

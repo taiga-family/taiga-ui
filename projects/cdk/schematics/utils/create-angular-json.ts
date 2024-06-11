@@ -1,4 +1,4 @@
-import {createSourceFile} from 'ng-morph';
+import {createSourceFile} from '@taiga-ui/morph';
 
 export function createAngularJson(
     {stylesExist}: {stylesExist: boolean} = {stylesExist: false},

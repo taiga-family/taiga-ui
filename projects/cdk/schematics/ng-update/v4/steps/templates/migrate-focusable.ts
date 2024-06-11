@@ -1,5 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 import type {Attribute, Location} from 'parse5/dist/common/token';
 
 import {findElementsWithAttributeOnTag} from '../../../../utils/templates/elements';

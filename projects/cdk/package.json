@@ -40,7 +40,7 @@
         "@angular-devkit/core": ">=16.0.0",
         "@angular-devkit/schematics": ">=16.0.0",
         "@schematics/angular": ">=16.0.0",
-        "ng-morph": "^4.1.2",
+        "@taiga-ui/morph": "^4.3.2",
         "parse5": "^7.1.2"
     },
     "ng-update": {
@@ -62,7 +62,8 @@
             "@taiga-ui/layout",
             "@taiga-ui/experimental",
             "@taiga-ui/proprietary",
-            "@taiga-ui/legacy"
+            "@taiga-ui/legacy",
+            "@taiga-ui/morph"
         ]
     },
     "schematics": "./schematics/collection.json"

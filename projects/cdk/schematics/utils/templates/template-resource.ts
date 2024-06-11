@@ -1,4 +1,4 @@
-import type {DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from '@taiga-ui/morph';
 
 import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 

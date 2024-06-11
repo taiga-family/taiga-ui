@@ -1,5 +1,5 @@
-import type {ClassDeclaration, Node} from 'ng-morph';
-import {getImports, getNgComponents} from 'ng-morph';
+import type {ClassDeclaration, Node} from '@taiga-ui/morph';
+import {getImports, getNgComponents} from '@taiga-ui/morph';
 
 export function getComponentFromIdentifier(
     identifier: Node,
