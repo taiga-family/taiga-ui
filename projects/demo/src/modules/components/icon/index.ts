@@ -17,12 +17,12 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
     ],
 })
 export default class PageComponent {
-    protected readonly iconVariants = TUI_USED_ICONS;
-    protected readonly colorVariants = ['var(--tui-text-01)', 'red', '#3aa981'];
+    protected readonly iconVariants = ['', ...TUI_USED_ICONS];
+    protected readonly colorVariants = ['', 'var(--tui-text-01)', 'red', '#3aa981'];
 
     protected icon = 'tuiIconHeartLarge';
     protected backgroundIcon = '';
-    protected color = this.colorVariants[0];
-    protected backgroundColor = this.colorVariants[0];
+    protected color = this.colorVariants[1];
+    protected backgroundColor = '';
     protected size = 24;
 }
