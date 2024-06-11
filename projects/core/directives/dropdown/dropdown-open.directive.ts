@@ -80,7 +80,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
     // TODO: Remove optional after refactor is complete
     private readonly directive = inject(TuiDropdownDirective, {optional: true});
     private readonly el = tuiInjectElement();
-    private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 
     protected readonly sub = merge(
@@ -103,8 +102,16 @@ export class TuiDropdownOpenDirective implements OnChanges {
     @Output()
     public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
 
+    // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
+    public readonly driver = inject(TuiDropdownDriver);
+
     public get dropdown(): HTMLElement | undefined {
         return this.directive?.dropdownBoxRef?.location.nativeElement;
+    }
+
+    // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
+    public get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
     }
 
     public ngOnChanges(): void {
@@ -168,10 +175,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
             : tuiGetClosestFocusable({initial, root: this.el});
 
         return this.dropdownHost?.nativeElement || focusable || this.el;
-    }
-
-    private get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
     }
 
     private get editable(): boolean {

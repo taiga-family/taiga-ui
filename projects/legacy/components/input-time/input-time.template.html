@@ -1,10 +1,11 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-wrapper"
-    [canOpen]="canOpen && !nativeDatalist"
-    [content]="dropdownContent"
-    [open]="canOpen && open"
-    (focusedChange)="onFocused($event)"
-    (openChange)="onOpen($event)"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownEnabled]="canOpen && !nativeDatalist"
+    [tuiDropdownOpen]="canOpen && open"
+    (tuiActiveZoneChange)="onFocused($event)"
+    (tuiDropdownOpenChange)="onOpen($event)"
 >
     <tui-primitive-textfield
         tuiValueAccessor
@@ -31,7 +32,7 @@
             tuiTextfieldLegacy
         />
     </tui-primitive-textfield>
-</tui-hosted-dropdown>
+</div>
 <ng-template #dropdownContent>
     <tui-data-list
         automation-id="tui-input-time__dropdown"

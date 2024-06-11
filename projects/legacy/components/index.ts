@@ -1,6 +1,5 @@
 export * from '@taiga-ui/legacy/components/arrow';
 export * from '@taiga-ui/legacy/components/combo-box';
-export * from '@taiga-ui/legacy/components/hosted-dropdown';
 export * from '@taiga-ui/legacy/components/input';
 export * from '@taiga-ui/legacy/components/input-copy';
 export * from '@taiga-ui/legacy/components/input-date';

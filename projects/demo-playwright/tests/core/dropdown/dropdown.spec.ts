@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -32,7 +33,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Hosted dropdown', async ({page}) => {
-        await tuiGoto(page, '/components/hosted-dropdown');
+        await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#menu');
 
         await example.scrollIntoViewIfNeeded();
@@ -41,7 +42,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Hosted dropdown and custom position', async ({page}) => {
-        await tuiGoto(page, '/components/hosted-dropdown');
+        await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#position');
 
         await example.scrollIntoViewIfNeeded();
@@ -50,11 +51,11 @@ test.describe('Dropdown', () => {
     });
 
     test('Esc -> Hosted Dropdown', async ({page}) => {
-        await tuiGoto(page, '/components/hosted-dropdown');
+        await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('button[tuiHostedDropdownHost]').click();
+        await example.locator('button[tuiChevron]').click();
         await expect(page).toHaveScreenshot('06-dropdown.png');
 
         await page

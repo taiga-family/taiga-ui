@@ -19,8 +19,11 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiAsDataListHost, TuiDataListDirective} from '@taiga-ui/core';
-import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {
+    tuiAsDataListHost,
+    TuiDataListDirective,
+    TuiDropdownOpenDirective,
+} from '@taiga-ui/core';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TUI_TEXTFIELD_SIZE,
@@ -46,8 +49,8 @@ export class TuiInputComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+    @ViewChild(TuiDropdownOpenDirective)
+    private readonly dropdown?: TuiDropdownOpenDirective;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -72,8 +75,7 @@ export class TuiInputComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            (!!this.hostedDropdown && this.hostedDropdown.focused)
+            tuiIsNativeFocused(this.nativeFocusableElement) || !!this.dropdown?.focused
         );
     }
 

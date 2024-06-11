@@ -41,12 +41,12 @@ import {
     TUI_DATA_LIST_ACCESSOR,
     tuiAsDataListHost,
     TuiDataListDirective,
+    TuiDropdownOpenDirective,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
 import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
-import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -83,8 +83,8 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(AbstractTuiNativeMultiSelect, {static: true})
     private readonly nativeSelect?: AbstractTuiNativeMultiSelect<T>;
 
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+    @ViewChild(TuiDropdownOpenDirective)
+    private readonly dropdown?: TuiDropdownOpenDirective;
 
     @ViewChild(TuiInputTagComponent)
     private readonly input?: TuiInputTagComponent;
@@ -144,7 +144,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     public get focused(): boolean {
-        return !!this.input?.focused || !!this.hostedDropdown?.focused;
+        return !!this.input?.focused || !!this.dropdown?.focused;
     }
 
     public onValueChange(value: readonly T[]): void {
@@ -154,7 +154,7 @@ export class TuiMultiSelectComponent<T>
     public onSearch(search: string | null): void {
         // Clearing sets the empty value, the dropdown should not be opened on clear.
         if (search !== '') {
-            this.hostedDropdown?.updateOpen(true);
+            this.open = true;
         }
 
         this.updateSearch(search);
@@ -162,7 +162,7 @@ export class TuiMultiSelectComponent<T>
 
     public override setDisabledState(): void {
         super.setDisabledState();
-        this.hostedDropdown?.updateOpen(false);
+        this.open = false;
     }
 
     public handleOption(option: T): void {
@@ -232,7 +232,7 @@ export class TuiMultiSelectComponent<T>
         }
 
         if (!this.readOnly) {
-            this.hostedDropdown?.updateOpen(true);
+            this.open = true;
         }
     }
 
@@ -255,7 +255,7 @@ export class TuiMultiSelectComponent<T>
             nativeFocusableElement &&
             tuiIsNativeFocused(nativeFocusableElement)
         ) {
-            this.hostedDropdown?.updateOpen(!this.open);
+            this.open = !this.open;
         }
     }
 

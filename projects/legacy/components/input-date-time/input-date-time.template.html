@@ -1,9 +1,10 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="interactive && !showNativePicker"
-    [content]="dropdown"
-    [open]="open && interactive"
-    (openChange)="onOpenChange($event)"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="interactive && !showNativePicker"
+    [tuiDropdownOpen]="open && interactive"
+    (tuiDropdownOpenChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
         automation-id="tui-input-date-time__textfield"
@@ -60,4 +61,4 @@
             (mousedown.prevent.silent)="(0)"
         />
     </ng-template>
-</tui-hosted-dropdown>
+</div>

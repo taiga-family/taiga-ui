@@ -103,8 +103,7 @@ describe('MultiSelect', () => {
                     });
 
                     it('on search', () => {
-                        testComponent.component.onSearch('Marsi');
-                        fixture.detectChanges();
+                        inputPO.sendText('Marsi');
 
                         expect(getDropdown(pageObject)).not.toBeNull();
                     });

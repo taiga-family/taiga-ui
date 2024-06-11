@@ -1,9 +1,10 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="interactive && !nativePicker"
-    [content]="dropdown"
-    [open]="open && interactive"
-    (openChange)="onOpenChange($event)"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="interactive && !nativePicker"
+    [tuiDropdownOpen]="open && interactive"
+    (tuiDropdownOpenChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
         class="t-textfield"
@@ -49,4 +50,4 @@
             (yearChange)="activeYear = $event"
         />
     </ng-template>
-</tui-hosted-dropdown>
+</div>

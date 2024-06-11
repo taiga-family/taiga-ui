@@ -325,11 +325,6 @@ export const ROUTES: Routes = [
         title: 'Group',
     }),
     route({
-        path: DemoRoute.HostedDropdown,
-        loadComponent: async () => import('../components/hosted-dropdown'),
-        title: 'HostedDropdown',
-    }),
-    route({
         path: DemoRoute.Dropdown,
         loadComponent: async () => import('../directives/dropdown'),
         title: 'Dropdown',

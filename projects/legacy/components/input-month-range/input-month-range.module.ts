@@ -1,14 +1,16 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiActiveZoneDirective, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiDropdownModule, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
+import {
+    TuiLegacyDropdownOpenMonitorDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy/directives';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 import {TuiInputMonthRangeDirective} from './input-month-range.directive';
@@ -17,12 +19,12 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
     imports: [
         CommonModule,
         TuiCalendarMonthComponent,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiSvgComponent,
-        TuiActiveZoneDirective,
         TuiMapperPipe,
         TuiTextfieldControllerModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputMonthRangeComponent, TuiInputMonthRangeDirective],
     exports: [

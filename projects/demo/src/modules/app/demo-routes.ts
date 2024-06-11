@@ -60,7 +60,6 @@ export const DemoRoute = {
     FieldError: '/pipes/field-error',
     InputFiles: '/components/input-files',
     Group: '/components/group',
-    HostedDropdown: '/components/hosted-dropdown',
     Dropdown: '/directives/dropdown',
     DropdownOpen: '/directives/dropdown-open',
     DropdownContext: '/directives/dropdown-context',

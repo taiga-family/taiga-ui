@@ -1,14 +1,19 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZoneDirective, TuiLetDirective, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiDataList, TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiLetDirective, TuiMapperPipe} from '@taiga-ui/cdk';
+import {
+    TuiDataList,
+    TuiDropdownModule,
+    TuiLinkDirective,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/legacy/components/multi-select-option';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
@@ -28,12 +33,11 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         FormsModule,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiActiveZoneDirective,
         TuiArrowComponent,
         TuiLetDirective,
         TuiMapperPipe,
         TuiSvgComponent,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
         TuiDataListWrapper,
@@ -42,6 +46,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiDataList,
         TuiTextfieldControllerModule,
         TuiStringifyContentPipe,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [
         TuiMultiSelectComponent,

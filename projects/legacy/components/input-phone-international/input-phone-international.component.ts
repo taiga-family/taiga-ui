@@ -16,7 +16,6 @@ import {
     AbstractTuiControl,
     CHAR_PLUS,
     TUI_NON_DIGITS_REGEXP,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
@@ -43,6 +42,7 @@ import {
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TUI_TEXTFIELD_SIZE,
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy/directives';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
@@ -77,8 +77,8 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiArrowComponent,
         TuiAppearanceDirective,
         TuiIsoToCountryCodePipe,
-        TuiActiveZoneDirective,
         TuiFlagPipe,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],

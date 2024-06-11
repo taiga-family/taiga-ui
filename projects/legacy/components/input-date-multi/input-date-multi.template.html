@@ -1,9 +1,10 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="interactive"
-    [content]="dropdown"
-    [open]="open && interactive"
-    (openChange)="onOpenChange($event)"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="interactive"
+    [tuiDropdownOpen]="open && interactive"
+    (tuiDropdownOpenChange)="onOpenChange($event)"
 >
     <tui-input-tag
         #inputTag
@@ -71,4 +72,4 @@
             </button>
         </div>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

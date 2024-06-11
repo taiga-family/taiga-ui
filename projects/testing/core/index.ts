@@ -9,7 +9,7 @@ export * from './calendar-spin.harness';
 export * from './calendar-year.harness';
 export * from './card.harness';
 export * from './dialog.harness';
-export * from './hosted-dropdown.harness';
+export * from './dropdown-open.harness';
 export * from './island.harness';
 export * from './loader.harness';
 export * from './primitive-textfield.harness';

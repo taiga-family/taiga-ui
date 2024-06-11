@@ -310,12 +310,6 @@ export const pages: TuiDocPages = [
                 route: DemoRoute.DataListWrapper,
             },
             {
-                section: 'Components',
-                title: 'HostedDropdown',
-                keywords: 'dropdown, контекст, выпадашка, дропдаун, меню, menu',
-                route: DemoRoute.HostedDropdown,
-            },
-            {
                 section: 'Tools',
                 title: 'Dropdown',
                 keywords: 'dropdown, контекст, выпадашка, дропдаун, Context',

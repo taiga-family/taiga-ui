@@ -1,8 +1,9 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="canOpen"
-    [content]="datalist || ''"
-    [(open)]="open"
+    [tuiDropdown]="datalist || ''"
+    [tuiDropdownEnabled]="canOpen"
+    [(tuiDropdownOpen)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
@@ -26,4 +27,4 @@
             select="input"
         />
     </tui-primitive-textfield>
-</tui-hosted-dropdown>
+</div>

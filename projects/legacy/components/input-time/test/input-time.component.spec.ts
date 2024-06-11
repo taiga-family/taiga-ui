@@ -229,6 +229,7 @@ describe('InputTime', () => {
 
         it('Input filters items', () => {
             inputPO.sendText('03');
+            fixture.detectChanges();
 
             expect(pageObject.getAllByAutomationId('tui-input-time__item').length).toBe(
                 1,
@@ -237,6 +238,7 @@ describe('InputTime', () => {
 
         it('The value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('03');
+            fixture.detectChanges();
             pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();
 
             expect(testComponent.control.value?.toString().trim()).toBe(

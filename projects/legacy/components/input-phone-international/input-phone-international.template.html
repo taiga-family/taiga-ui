@@ -1,5 +1,6 @@
 <div
     *ngIf="countriesNames$ | async as countriesNames"
+    tuiDropdownOpenMonitor
     [tuiDropdown]="dropdown"
     [tuiDropdownEnabled]="!readOnly"
     [(tuiDropdownOpen)]="open"

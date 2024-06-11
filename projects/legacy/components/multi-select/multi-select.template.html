@@ -1,8 +1,9 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="interactive && !nativeDropdownMode"
-    [content]="datalist || ''"
-    [(open)]="open"
+    [tuiDropdown]="datalist || ''"
+    [tuiDropdownEnabled]="interactive && !nativeDropdownMode"
+    [(tuiDropdownOpen)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-input-tag
@@ -73,4 +74,4 @@
             </ng-container>
         </div>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

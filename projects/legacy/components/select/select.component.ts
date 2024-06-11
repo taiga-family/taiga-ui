@@ -31,12 +31,12 @@ import {
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
+    TuiDropdownOpenDirective,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
 import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
-import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
@@ -66,8 +66,8 @@ export class TuiSelectComponent<T>
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+    @ViewChild(TuiDropdownOpenDirective)
+    private readonly dropdown?: TuiDropdownOpenDirective;
 
     @ContentChild(AbstractTuiNativeSelect, {static: true})
     private readonly nativeSelect?: AbstractTuiNativeSelect;
@@ -82,6 +82,7 @@ export class TuiSelectComponent<T>
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected open = false;
 
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
@@ -104,8 +105,7 @@ export class TuiSelectComponent<T>
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            (!!this.hostedDropdown && this.hostedDropdown.focused)
+            tuiIsNativeFocused(this.nativeFocusableElement) || !!this.dropdown?.focused
         );
     }
 
@@ -120,7 +120,7 @@ export class TuiSelectComponent<T>
     public handleOption(option: T): void {
         this.focusInput();
         this.value = option;
-        this.hostedDropdown?.updateOpen(false);
+        this.open = false;
     }
 
     protected get arrow(): PolymorpheusContent<

@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {TuiDropdownModule} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
+    TuiLegacyDropdownOpenMonitorDirective,
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/legacy/directives';
@@ -18,10 +18,10 @@ import {TuiInputPhoneDirective} from './input-phone.directive';
     imports: [
         MaskitoDirective,
         TuiPrimitiveTextfieldModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiActiveZoneDirective,
         TuiValueAccessorModule,
+        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputPhoneComponent, TuiInputPhoneDirective],
     exports: [TuiInputPhoneComponent, TuiInputPhoneDirective, TuiTextfieldComponent],

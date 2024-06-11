@@ -1,16 +1,16 @@
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-import {TuiHostedDropdownHarness} from './hosted-dropdown.harness';
+import {TuiDropdownOpenHarness} from './dropdown-open.harness';
 
 export class TuiSelectHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-select';
-    private readonly hostedDropdown = this.locatorFor(TuiHostedDropdownHarness);
+    private readonly dropdown = this.locatorFor(TuiDropdownOpenHarness);
 
     public async sendSpaceKey(): Promise<void> {
-        return (await this.hostedDropdown()).sendSpaceKey();
+        return (await this.dropdown()).sendSpaceKey();
     }
 
     public async sendEscKey(): Promise<void> {
-        return (await this.hostedDropdown()).sendEscKey();
+        return (await this.dropdown()).sendEscKey();
     }
 }

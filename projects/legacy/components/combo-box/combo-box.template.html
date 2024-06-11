@@ -1,8 +1,9 @@
-<tui-hosted-dropdown
+<div
+    tuiDropdownOpenMonitor
     class="t-hosted"
-    [canOpen]="interactive && !!datalist"
-    [content]="datalist || ''"
-    [(open)]="open"
+    [tuiDropdown]="datalist || ''"
+    [tuiDropdownEnabled]="interactive && !!datalist"
+    [(tuiDropdownOpen)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
@@ -49,4 +50,4 @@
             <ng-container *polymorpheusOutlet="arrow" />
         </div>
     </ng-template>
-</tui-hosted-dropdown>
+</div>
