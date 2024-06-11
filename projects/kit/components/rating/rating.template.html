@@ -1,3 +1,14 @@
+<input
+    min="1"
+    type="range"
+    class="t-range"
+    [attr.aria-disabled]="readOnly()"
+    [disabled]="disabled()"
+    [max]="max"
+    [ngModel]="value()"
+    (blur)="onTouched()"
+    (ngModelChange)="onChange($event)"
+/>
 <div class="t-items">
     <div
         *tuiRepeatTimes="let index of max"
@@ -20,12 +31,3 @@
         />
     </div>
 </div>
-<input
-    min="1"
-    type="range"
-    class="t-range"
-    [attr.aria-disabled]="readOnly"
-    [disabled]="computedDisabled"
-    [max]="max"
-    [(ngModel)]="value"
-/>

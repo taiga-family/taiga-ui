@@ -12,18 +12,14 @@ import type {
     TuiContext,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    AbstractTuiControl,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import {tuiAsFocusableItemAccessor, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     tuiAsDataListHost,
     TuiDataListDirective,
     TuiDropdownOpenDirective,
 } from '@taiga-ui/core';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TUI_TEXTFIELD_SIZE,

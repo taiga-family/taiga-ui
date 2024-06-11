@@ -13,10 +13,8 @@ import {
 import {FormsModule} from '@angular/forms';
 import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     CHAR_PLUS,
     TUI_NON_DIGITS_REGEXP,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -31,6 +29,7 @@ import {
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiInputPhoneComponent,
@@ -77,8 +76,8 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiArrowComponent,
         TuiAppearanceDirective,
         TuiIsoToCountryCodePipe,
-        TuiFlagPipe,
         TuiLegacyDropdownOpenMonitorDirective,
+        TuiFlagPipe,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],

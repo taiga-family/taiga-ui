@@ -10,11 +10,11 @@
         tuiSlider
         type="range"
         class="t-thumb"
-        [disabled]="computedDisabled"
+        [disabled]="disabled()"
         [keySteps]="computedKeySteps"
         [max]="max"
         [min]="min"
-        [ngModel]="value[0]"
+        [ngModel]="value()[0]"
         [size]="size"
         [tabIndex]="focusable ? 0 : -1"
     />
@@ -25,11 +25,11 @@
         tuiSlider
         type="range"
         class="t-thumb"
-        [disabled]="computedDisabled"
+        [disabled]="disabled()"
         [keySteps]="computedKeySteps"
         [max]="max"
         [min]="min"
-        [ngModel]="value[1]"
+        [ngModel]="value()[1]"
         [size]="size"
         [tabIndex]="focusable ? 0 : -1"
     />

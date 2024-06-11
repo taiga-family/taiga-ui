@@ -19,12 +19,10 @@ import type {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiDateClamp,
@@ -45,6 +43,7 @@ import {
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';

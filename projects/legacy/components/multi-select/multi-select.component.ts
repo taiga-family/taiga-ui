@@ -19,12 +19,10 @@ import type {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiMultipleControl,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     TUI_TRUE_HANDLER,
     tuiArrayToggle,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiIsNativeFocused,
     tuiIsString,
@@ -45,7 +43,11 @@ import {
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
-import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
+import {
+    AbstractTuiMultipleControl,
+    tuiAsControl,
+    TuiStringifiableItem,
+} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import {

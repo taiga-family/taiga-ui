@@ -7,10 +7,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {AbstractTuiControl, TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiTextfieldHost} from '@taiga-ui/core';
 import {TUI_TEXTFIELD_HOST, TuiDataListDirective} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
+
+import {AbstractTuiControl} from './control';
 
 @Directive()
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {

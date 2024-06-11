@@ -10,17 +10,16 @@ import type {MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     MAX_YEAR,
     MIN_YEAR,
     TUI_FALSE_HANDLER,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 

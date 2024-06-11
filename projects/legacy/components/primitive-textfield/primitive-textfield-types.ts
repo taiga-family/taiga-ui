@@ -1,4 +1,5 @@
-import type {AbstractTuiInteractive, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {AbstractTuiInteractive} from '@taiga-ui/legacy/classes';
 
 export type TuiPrimitiveTextfield = AbstractTuiInteractive &
     TuiFocusableElementAccessor & {

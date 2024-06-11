@@ -1,11 +1,5 @@
 import {Directive, forwardRef, HostListener, inject, Input} from '@angular/core';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {
-    AbstractTuiControl,
-    tuiClamp,
-    tuiInjectElement,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import {tuiClamp, TuiControl, tuiFallbackValueProvider} from '@taiga-ui/cdk';
 
 import {TuiSliderComponent} from '../slider.component';
 import type {TuiKeySteps} from './key-steps';
@@ -14,32 +8,22 @@ import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-st
 @Directive({
     standalone: true,
     selector: 'input[tuiSlider][keySteps]',
+    providers: [tuiFallbackValueProvider(0)],
     host: {
-        '[attr.aria-valuenow]': 'safeCurrentValue',
+        '[attr.aria-valuenow]': 'value()',
         '[attr.aria-valuemin]': 'min',
         '[attr.aria-valuemax]': 'max',
-        '[disabled]': 'computedDisabled',
+        '[disabled]': 'disabled()',
+        '(blur)': 'onTouched()',
     },
 })
-export class TuiSliderKeyStepsDirective
-    extends AbstractTuiControl<number>
-    implements TuiFocusableElementAccessor
-{
-    private readonly el = tuiInjectElement<HTMLInputElement>();
+export class TuiSliderKeyStepsDirective extends TuiControl<number> {
     private readonly slider = inject<TuiSliderComponent>(
         forwardRef(() => TuiSliderComponent),
     );
 
     @Input()
     public keySteps!: TuiKeySteps;
-
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.computedDisabled ? null : this.el;
-    }
-
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
-    }
 
     public override writeValue(controlValue: number | null): void {
         if (controlValue === null) {
@@ -68,14 +52,9 @@ export class TuiSliderKeyStepsDirective
     @HostListener('input')
     @HostListener('change')
     protected updateControlValue(): void {
-        this.value = tuiPercentageToKeyStepValue(
-            this.slider.valuePercentage,
-            this.keySteps,
+        this.onChange(
+            tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
         );
-    }
-
-    protected getFallbackValue(): number {
-        return 0;
     }
 
     private transformToNativeValue(controlValue: number): number {

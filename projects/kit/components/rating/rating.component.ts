@@ -2,19 +2,16 @@ import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
     inject,
     Input,
-    ViewChild,
 } from '@angular/core';
-import {FormsModule, NgControl} from '@angular/forms';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {FormsModule} from '@angular/forms';
 import {
-    AbstractTuiControl,
     tuiClamp,
-    tuiIsNativeFocused,
+    TuiControl,
+    tuiFallbackValueProvider,
     TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
 import {TuiIconComponent} from '@taiga-ui/core';
@@ -35,14 +32,13 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiFallbackValueProvider(0)],
+    host: {
+        '[class._disabled]': 'disabled()',
+        '[class._readonly]': 'readOnly()',
+    },
 })
-export class TuiRatingComponent
-    extends AbstractTuiControl<number>
-    implements TuiFocusableElementAccessor
-{
-    @ViewChild(NgControl, {read: ElementRef, static: true})
-    private readonly input?: ElementRef<HTMLInputElement>;
-
+export class TuiRatingComponent extends TuiControl<number> {
     private readonly options = inject(TUI_RATING_OPTIONS);
 
     @HostBinding('class._active')
@@ -54,17 +50,9 @@ export class TuiRatingComponent
     @Input()
     public max = this.options.max;
 
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.computedDisabled ? null : this.input?.nativeElement || null;
-    }
-
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
-    }
-
     @HostListener('keydown.capture', ['$event'])
     protected onKeyDown(event: KeyboardEvent): void {
-        if (this.readOnly) {
+        if (this.readOnly()) {
             event.preventDefault();
         }
     }
@@ -78,25 +66,21 @@ export class TuiRatingComponent
 
     protected onClick(value: number): void {
         if (this.active) {
-            this.value = value;
+            this.onChange(value);
         }
     }
 
     protected isActive(index: number): boolean {
-        return Math.ceil(this.value) >= this.max - index;
+        return Math.ceil(this.value()) >= this.max - index;
     }
 
     protected isFraction(index: number): boolean {
-        return this.value > this.max - index - 1 && this.value < this.max - index;
+        return this.value() > this.max - index - 1 && this.value() < this.max - index;
     }
 
     protected getCut(index: number): number {
         return this.isFraction(index)
-            ? 100 * Math.max(this.max - index - this.value, 0)
+            ? 100 * Math.max(this.max - index - this.value(), 0)
             : 0;
-    }
-
-    protected getFallbackValue(): number {
-        return 0;
     }
 }

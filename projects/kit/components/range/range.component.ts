@@ -1,21 +1,22 @@
-import type {QueryList} from '@angular/core';
+import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
     HostBinding,
     HostListener,
     Input,
+    signal,
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     EMPTY_QUERY,
     tuiClamp,
+    TuiControl,
+    tuiFallbackValueProvider,
     tuiInjectElement,
-    tuiIsNativeFocusedIn,
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
@@ -45,13 +46,20 @@ import {TuiRangeChangeDirective} from './range-change.directive';
     ],
     host: {
         '[attr.tabindex]': '-1',
-        '[attr.aria-disabled]': 'computedDisabled',
+        '[attr.aria-disabled]': 'disabled()',
+        '[style.--left.%]': 'left()',
+        '[style.--right.%]': 'right()',
+        '[class._disabled]': 'disabled()',
+        '(focusout)': 'onTouched()',
     },
+    providers: [tuiFallbackValueProvider([0, 0])],
 })
 export class TuiRangeComponent
-    extends AbstractTuiControl<[number, number]>
-    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
+    extends TuiControl<[number, number]>
+    implements TuiWithOptionalMinMax<number>, OnChanges
 {
+    // TODO: workaround until we get signal inputs
+    private readonly changes = signal(1);
     private readonly el = tuiInjectElement();
 
     protected lastActiveThumb: 'left' | 'right' = 'right';
@@ -75,40 +83,17 @@ export class TuiRangeComponent
     @Input()
     public keySteps: TuiKeySteps | null = null;
 
+    @Input()
+    public focusable = true;
+
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    public slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    @HostBinding('style.--left.%')
-    public get left(): number {
-        return this.getPercentageFromValue(this.value[0]);
-    }
+    public readonly left = computed(() => this.toPercent(this.value()[0]));
+    public readonly right = computed(() => 100 - this.toPercent(this.value()[1]));
 
-    @HostBinding('style.--right.%')
-    public get right(): number {
-        return 100 - this.getPercentageFromValue(this.value[1]);
-    }
-
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
-
-        if (
-            this.computedDisabled ||
-            !this.focusable ||
-            !sliderLeftRef ||
-            !sliderRightRef
-        ) {
-            return null;
-        }
-
-        const isLeftThumbLocked = this.right === 100;
-
-        return isLeftThumbLocked
-            ? sliderRightRef.nativeElement
-            : sliderLeftRef.nativeElement;
-    }
-
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+    public ngOnChanges(): void {
+        this.changes.set(this.changes() + 1);
     }
 
     public processValue(value: number, right: boolean): void {
@@ -121,10 +106,11 @@ export class TuiRangeComponent
         this.lastActiveThumb = right ? 'right' : 'left';
     }
 
-    public getValueFromFraction(fraction: number): number {
-        const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
-
-        return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
+    public toValue(fraction: number): number {
+        return tuiPercentageToKeyStepValue(
+            tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1) * 100,
+            this.computedKeySteps,
+        );
     }
 
     protected get fractionStep(): number {
@@ -137,12 +123,6 @@ export class TuiRangeComponent
 
     protected get segmentWidthRatio(): number {
         return 1 / this.segments;
-    }
-
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
     }
 
     @HostListener('keydown.arrowUp.prevent', ['1', '$event.target'])
@@ -159,24 +139,19 @@ export class TuiRangeComponent
                 ? this.lastActiveThumb === 'right'
                 : target === rightThumbElement;
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
-        const previousValue = isRightThumb ? this.value[1] : this.value[0];
+        const previousValue = isRightThumb ? this.value()[1] : this.value()[0];
         /** @bad TODO think about a solution without twice conversion */
-        const previousFraction = this.getPercentageFromValue(previousValue) / 100;
+        const previousFraction = this.toPercent(previousValue) / 100;
         const newFractionValue = previousFraction + coefficient * this.fractionStep;
 
-        this.processValue(this.getValueFromFraction(newFractionValue), isRightThumb);
-
-        if (activeThumbElement) {
-            activeThumbElement.focus();
-        }
+        this.processValue(this.toValue(newFractionValue), isRightThumb);
+        activeThumbElement?.focus();
     }
 
-    protected getPercentageFromValue(value: number): number {
-        return tuiKeyStepValueToPercentage(value, this.computedKeySteps);
-    }
-
-    protected getFallbackValue(): [number, number] {
-        return [0, 0];
+    protected toPercent(value: number): number {
+        return (
+            this.changes() && tuiKeyStepValueToPercentage(value, this.computedKeySteps)
+        );
     }
 
     @tuiPure
@@ -194,10 +169,10 @@ export class TuiRangeComponent
     }
 
     private updateStart(value: number): void {
-        this.value = [Math.min(value, this.value[1]), this.value[1]];
+        this.onChange([Math.min(value, this.value()[1]), this.value()[1]]);
     }
 
     private updateEnd(value: number): void {
-        this.value = [this.value[0], Math.max(value, this.value[0])];
+        this.onChange([this.value()[0], Math.max(value, this.value()[0])]);
     }
 }

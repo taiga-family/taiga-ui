@@ -1,18 +1,19 @@
 <label
     *ngFor="let item of items; index as index"
     class="t-item"
-    [class.t-item_disabled]="disabled || disabledItemHandler(item)"
+    [class.t-item_disabled]="disabled() || disabledItemHandler(item)"
 >
     <input
         tuiRadio
         type="radio"
-        [disabled]="disabled || disabledItemHandler(item)"
+        [disabled]="disabled() || disabledItemHandler(item)"
         [identityMatcher]="identityMatcher"
         [name]="name"
+        [ngModel]="value()"
         [size]="size"
-        [tuiValidator]="validator"
+        [tuiValidator]="validator()"
         [value]="item"
-        [(ngModel)]="value"
+        (ngModelChange)="onChange($event)"
     />
     <ng-container *polymorpheusOutlet="itemContent as text; context: {$implicit: item, active: itemIsActive(item)}">
         {{ text }}

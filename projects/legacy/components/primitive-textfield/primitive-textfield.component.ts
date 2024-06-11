@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {
-    AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     tuiInjectElement,
     tuiIsNativeFocusedIn,
@@ -26,6 +25,7 @@ import {
     tuiGetBorder,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
+import {AbstractTuiInteractive} from '@taiga-ui/legacy/classes';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_OPTIONS as LEGACY_OPTIONS,

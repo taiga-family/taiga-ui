@@ -12,10 +12,8 @@ import type {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
@@ -25,6 +23,7 @@ import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TuiMonthPipe} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import {TUI_MONTH_FORMATTER, TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/legacy/tokens';

@@ -12,8 +12,6 @@ import type {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiIsNativeFocused,
@@ -28,6 +26,7 @@ import {
     TuiSliderComponent,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit';
+import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,

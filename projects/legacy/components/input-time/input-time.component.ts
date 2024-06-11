@@ -17,12 +17,10 @@ import type {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     TUI_FALSE_HANDLER,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
     TUI_STRICT_MATCHER,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiIsElement,
     tuiIsInput,
@@ -33,6 +31,7 @@ import {
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit';
+import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';

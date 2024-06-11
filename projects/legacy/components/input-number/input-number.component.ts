@@ -23,12 +23,10 @@ import type {
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     CHAR_HYPHEN,
     CHAR_MINUS,
     EMPTY_QUERY,
     TUI_IS_IOS,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiPure,
@@ -40,6 +38,7 @@ import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,
 } from '@taiga-ui/core';
+import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,

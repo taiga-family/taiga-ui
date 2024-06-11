@@ -14,9 +14,7 @@ import type {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
-    AbstractTuiNullableControl,
     TUI_IS_MOBILE,
-    tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -35,7 +33,11 @@ import {
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
-import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
+import {
+    AbstractTuiNativeSelect,
+    AbstractTuiNullableControl,
+    tuiAsControl,
+} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';

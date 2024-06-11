@@ -1,11 +1,11 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, forwardRef, inject, Output} from '@angular/core';
 import {
-    AbstractTuiNullableControl,
     EMPTY_ARRAY,
+    tuiAsControl,
+    TuiControl,
     tuiControlValue,
     tuiInjectElement,
-    tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiAppearanceOptions} from '@taiga-ui/core';
 import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
@@ -19,10 +19,13 @@ import {TuiInputFilesValidatorDirective} from './input-files-validator.directive
 @Directive({
     standalone: true,
     selector: 'input[tuiInputFiles]',
-    providers: [tuiAppearanceOptionsProvider(forwardRef(() => TuiInputFilesDirective))],
+    providers: [
+        tuiAsControl(TuiInputFilesDirective),
+        tuiAppearanceOptionsProvider(TuiInputFilesDirective),
+    ],
     host: {
         type: 'file',
-        '[disabled]': 'computedDisabled',
+        '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(click)': 'onClick($event)',
     },
@@ -42,29 +45,27 @@ import {TuiInputFilesValidatorDirective} from './input-files-validator.directive
     ],
 })
 export class TuiInputFilesDirective
-    extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
+    extends TuiControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiAppearanceOptions
 {
     protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
 
     @Output()
     public readonly reject = timer(0).pipe(
-        switchMap(() => tuiControlValue(this.control)),
-        map(() => tuiFilesRejected(this.control)),
+        switchMap(() => tuiControlValue(this.control.control)),
+        map(() => tuiFilesRejected(this.control.control)),
         filter(({length}) => !!length),
     );
 
     public readonly appearance = 'file';
     public readonly input = tuiInjectElement<HTMLInputElement>();
 
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.input);
-    }
-
     public process(files: FileList): void {
-        this.value = this.input.multiple
-            ? [...toArray(this.value), ...Array.from(files)]
-            : files[0] || null;
+        this.onChange(
+            this.input.multiple
+                ? [...toArray(this.value()), ...Array.from(files)]
+                : files[0] || null,
+        );
     }
 
     protected onClick(event: MouseEvent): void {

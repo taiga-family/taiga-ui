@@ -61,7 +61,7 @@ export class TuiRangeChangeDirective {
                 takeUntilDestroyed(),
             )
             .subscribe(fraction => {
-                const value = this.range.getValueFromFraction(fraction);
+                const value = this.range.toValue(fraction);
 
                 this.range.processValue(value, activeThumb === 'right');
             });
@@ -93,12 +93,12 @@ export class TuiRangeChangeDirective {
 
     private findNearestActiveThumb(clientX: number): 'left' | 'right' {
         const fraction = this.getFractionFromEvents(clientX);
-        const deltaLeft = fraction * 100 - this.range.left;
-        const deltaRight = fraction * 100 - 100 + this.range.right;
+        const deltaLeft = fraction * 100 - this.range.left();
+        const deltaRight = fraction * 100 - 100 + this.range.right();
 
         return Math.abs(deltaLeft) > Math.abs(deltaRight) ||
             deltaRight > 0 ||
-            (this.range.left === 0 && this.range.right === 100)
+            (this.range.left() === 0 && this.range.right() === 100)
             ? 'right'
             : 'left';
     }

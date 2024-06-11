@@ -10,11 +10,10 @@ import {
 import {FormsModule} from '@angular/forms';
 import type {TuiBooleanHandler, TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
-    AbstractTuiMultipleControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
-    tuiInjectElement,
-    tuiIsNativeFocusedIn,
+    TuiControl,
+    tuiFallbackValueProvider,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeDirective} from '@taiga-ui/kit/components/badge';
@@ -43,10 +42,9 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     templateUrl: './filter.template.html',
     styleUrls: ['./filter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiFallbackValueProvider([])],
 })
-export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
-    private readonly el = tuiInjectElement();
-
+export class TuiFilterComponent<T> extends TuiControl<readonly T[]> {
     @Input()
     public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
@@ -63,10 +61,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     @Output()
     public readonly toggledItem = new EventEmitter<T>();
 
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
-    }
-
     @Input()
     public content: PolymorpheusContent = ({$implicit}) => String($implicit);
 
@@ -75,9 +69,11 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
-        this.value = value
-            ? [...this.value, item]
-            : this.value.filter(arrItem => !this.identityMatcher(arrItem, item));
+        this.onChange(
+            value
+                ? [...this.value(), item]
+                : this.value().filter(arrItem => !this.identityMatcher(arrItem, item)),
+        );
     }
 
     protected get badgeSize(): TuiSizeS | TuiSizeXL {
@@ -85,6 +81,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     }
 
     protected isCheckboxEnabled(item: T): boolean {
-        return this.value.some(arrItem => this.identityMatcher(arrItem, item));
+        return this.value().some(arrItem => this.identityMatcher(arrItem, item));
     }
 }

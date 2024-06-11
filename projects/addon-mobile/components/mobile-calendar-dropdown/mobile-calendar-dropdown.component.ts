@@ -3,12 +3,12 @@ import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/
 import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {
-    AbstractTuiControl,
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiActiveZoneDirective,
     type TuiBooleanHandler,
+    TuiControl,
     type TuiDay,
 } from '@taiga-ui/cdk';
 import {
@@ -59,7 +59,7 @@ export class TuiMobileCalendarDropdownComponent {
     };
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
-    protected readonly control: any = inject(AbstractTuiControl, {optional: true});
+    protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly range = this.is('tui-input-date-range');
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly single =

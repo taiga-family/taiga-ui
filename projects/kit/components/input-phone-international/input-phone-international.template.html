@@ -3,9 +3,8 @@
     *ngIf="countriesNames$ | async as countriesNames"
     tuiGroup
     [tuiDropdown]="dropdown"
-    [tuiDropdownEnabled]="!readOnly"
-    [(tuiDropdownOpen)]="!computedDisabled && open"
-    (tuiActiveZoneChange)="updateFocused($event)"
+    [tuiDropdownEnabled]="interactive()"
+    [(tuiDropdownOpen)]="!disabled() && open"
 >
     <tui-textfield
         tuiChevron
@@ -15,8 +14,9 @@
         <select
             ngModel=""
             tuiTextfield
-            [disabled]="disabled"
-            [readOnly]="readOnly"
+            [disabled]="disabled()"
+            [focused]="open || null"
+            [readOnly]="readOnly()"
         ></select>
 
         <ng-template #flag>
@@ -32,16 +32,14 @@
         <input
             autocomplete="new-password"
             tuiTextfield
-            [disabled]="disabled"
-            [focused]="pseudoFocus"
-            [invalid]="computedInvalid"
+            [disabled]="disabled()"
+            [invalid]="invalid()"
             [maskito]="mask()"
-            [readOnly]="readOnly"
-            [state]="pseudoHover ? 'hover' : null"
-            [tabIndex]="focusable ? 0 : -1"
+            [readOnly]="readOnly()"
             [(ngModel)]="textfieldValue"
             (beforeinput.capture)="onPaste($event)"
-            (focus)="!readOnly && onFocus()"
+            (blur)="onTouched()"
+            (focus)="!readOnly() && onFocus()"
             (ngModelChange)="onValueChange($event)"
         />
 

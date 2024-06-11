@@ -3,7 +3,6 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiInjectElement,
     tuiIsPresent,
@@ -16,6 +15,7 @@ import {
     TuiDataListComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
+import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
