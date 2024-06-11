@@ -6,7 +6,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiErrorComponent} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {
+    TuiInputDateModule,
+    TuiTextfieldControllerModule,
+    TuiUnfinishedValidatorDirective,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -17,6 +21,7 @@ import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
         TuiFieldErrorPipe,
         ReactiveFormsModule,
         AsyncPipe,
+        TuiUnfinishedValidatorDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

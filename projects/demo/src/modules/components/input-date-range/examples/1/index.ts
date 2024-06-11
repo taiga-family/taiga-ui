@@ -3,8 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiUnfinishedValidatorDirective} from '@taiga-ui/kit';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TuiInputDateRangeModule, TuiUnfinishedValidatorDirective} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
