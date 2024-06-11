@@ -61,8 +61,37 @@ function replaceAttribute({
     const length = location.endOffset - location.startOffset;
 
     recorder.remove(startOffset, length);
+
+    const value = attr.value;
+
+    if (isBooleanLiteral(value)) {
+        recorder.insertRight(
+            templateOffset + startOffset,
+            `[tabIndex]="${value === 'true' ? '0' : '-1'}"`,
+        );
+
+        return;
+    }
+
+    if (isPropertyLike(value)) {
+        recorder.insertRight(
+            templateOffset + startOffset,
+            `[tabIndex]="${attr.value} ? 0 : -1"`,
+        );
+
+        return;
+    }
+
     recorder.insertRight(
         templateOffset + startOffset,
-        `[tabIndex]="${attr.value} ? 0 : -1"`,
+        `[tabIndex]="(${attr.value}) ? 0 : -1"`,
     );
+}
+
+function isPropertyLike(value: string): boolean {
+    return !value.includes(' ');
+}
+
+function isBooleanLiteral(value: string): value is 'false' | 'true' {
+    return value === 'false' || value === 'true';
 }
