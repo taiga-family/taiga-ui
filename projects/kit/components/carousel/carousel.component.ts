@@ -111,7 +111,7 @@ export class TuiCarouselComponent {
 
     onScroll(delta: number): void {
         if (!this.isMobile) {
-            this.updateIndex(this.index + delta);
+            delta > 0 ? this.next() : this.prev();
         }
     }
 
