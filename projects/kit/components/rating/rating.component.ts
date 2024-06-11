@@ -33,6 +33,10 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     styleUrls: ['./rating.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider(0)],
+    host: {
+        '[class._disabled]': 'disabled()',
+        '[class._readonly]': 'readOnly()',
+    },
 })
 export class TuiRatingComponent extends TuiControl<number> {
     private readonly options = inject(TUI_RATING_OPTIONS);

@@ -48,6 +48,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
         '[attr.aria-disabled]': 'disabled()',
         '[style.--left.%]': 'left()',
         '[style.--right.%]': 'right()',
+        '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
     },
     providers: [tuiFallbackValueProvider([0, 0])],

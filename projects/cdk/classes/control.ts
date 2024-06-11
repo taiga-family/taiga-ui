@@ -96,6 +96,10 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         this.refresh$.next();
 
         this.onChange = (value: T) => {
+            if (value === this.internal()) {
+                return;
+            }
+
             onChange(this.toControlValue(value));
             this.internal.set(value);
             this.update();
