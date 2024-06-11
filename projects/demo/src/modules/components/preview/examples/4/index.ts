@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButtonDirective, TuiLoaderComponent, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiIconComponent, TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxjs';
@@ -17,7 +17,7 @@ import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxj
         TuiPreview,
         AsyncPipe,
         NgIf,
-        TuiSvgComponent,
+        TuiIconComponent,
         TuiLoaderComponent,
     ],
     templateUrl: './index.html',

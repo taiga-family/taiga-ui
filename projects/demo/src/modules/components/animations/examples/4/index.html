@@ -8,9 +8,9 @@
         (click)="task.completed = !task.completed"
     >
         {{ task.title }}
-        <tui-svg
+        <tui-icon
             *ngIf="task.completed"
-            src="tuiIconCheck"
+            icon="tuiIconCheck"
             [@tuiScaleIn]="getAnimation((speed | async) || 0)"
         />
     </li>

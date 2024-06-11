@@ -9,8 +9,8 @@ import {
     TuiDropdownDirective,
     TuiDropdownOptionsDirective,
     TuiDropdownPositionSidedDirective,
+    TuiIconComponent,
     TuiOptionComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
 
@@ -22,7 +22,7 @@ import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
         TuiDropdownDirective,
         TuiDataListDropdownManagerDirective,
         TuiOptionComponent,
-        TuiSvgComponent,
+        TuiIconComponent,
         TuiDropdownPositionSidedDirective,
         TuiDropdownOptionsDirective,
         TuiDataListComponent,

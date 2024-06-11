@@ -1,14 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHintDirective} from '@taiga-ui/core';
 import type {TuiNativeFocusableElement} from '@taiga-ui/legacy';
 import {
     AbstractTuiControl,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
-    TuiWrapperModule,
 } from '@taiga-ui/legacy';
 
 @Component({
@@ -17,8 +16,7 @@ import {
     imports: [
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiSvgComponent,
-        TuiWrapperModule,
+        TuiButtonDirective,
         TuiHintDirective,
     ],
     templateUrl: './index.html',

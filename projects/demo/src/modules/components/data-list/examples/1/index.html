@@ -23,9 +23,11 @@
                 [routerLink]="item.routerLink"
             >
                 {{ item.label }}
-                <tui-svg
+                <tui-icon
                     *ngIf="rla.isActive"
-                    src="tuiIconCheck"
+                    icon="tuiIconCheck"
+                    [style.height.rem]="1"
+                    [style.width.rem]="1"
                 />
             </a>
         </tui-opt-group>

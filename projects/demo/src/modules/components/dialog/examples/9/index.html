@@ -22,9 +22,9 @@
         (click)="payByCard()"
     >
         <div class="icon-group">
-            <tui-svg src="tuiIconVisa" />
-            <tui-svg src="tuiIconMaestro" />
-            <tui-svg src="tuiIconMir" />
+            <img [src]="'tuiIconVisa' | tuiIcon" />
+            <img [src]="'tuiIconMaestro' | tuiIcon" />
+            <img [src]="'tuiIconMir' | tuiIcon" />
         </div>
         Pay
     </button>

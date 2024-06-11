@@ -690,11 +690,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/icons/icons-bundled'),
         title: 'Icons bundled',
     }),
-    route({
-        path: DemoRoute.IconsCustomization,
-        loadComponent: async () => import('../components/icons/customization'),
-        title: 'Icons customization',
-    }),
     // FILTER
     route({
         path: DemoRoute.Filter,

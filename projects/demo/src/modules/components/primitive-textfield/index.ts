@@ -10,9 +10,9 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_HINT_DIRECTIONS,
     TuiHintOptionsDirective,
+    TuiIconComponent,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {
@@ -43,7 +43,7 @@ import ExampleComponent2 from './examples/2';
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
         TuiAvatarComponent,
-        TuiSvgComponent,
+        TuiIconComponent,
         HintControllerDocumentationComponent,
         TextfieldControllerDocumentationComponent,
         InheritedDocumentationComponent,
