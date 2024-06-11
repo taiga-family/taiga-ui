@@ -73,7 +73,8 @@
                     "namedChunks": false,
                     "buildOptimizer": true,
                     "statsJson": false,
-                    "progress": false
+                    "progress": false,
+                    "baseHref": "/taiga-fork-for-debug-prerender/"
                 },
                 "development": {
                     "baseHref": "/"
