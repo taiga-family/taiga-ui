@@ -238,7 +238,7 @@ export class TuiInputCardGroupedComponent
             (!expire && this.inputExpire?.nativeElement) ||
             this.inputCVC?.nativeElement;
 
-        this.value.set({card, expire, cvc});
+        this.onChange({card, expire, cvc});
         this.updateBin(bin);
         this.open.set(false);
         this.expirePrefilled = !!expire;
@@ -248,7 +248,7 @@ export class TuiInputCardGroupedComponent
 
     public clear(): void {
         this.expirePrefilled = false;
-        this.value.set(null);
+        this.onChange(null);
         this.focusCard();
     }
 
@@ -376,9 +376,7 @@ export class TuiInputCardGroupedComponent
 
         newValue[propName] = value;
 
-        this.value.set(
-            newValue.expire || newValue.cvc || newValue.card ? newValue : null,
-        );
+        this.onChange(newValue.expire || newValue.cvc || newValue.card ? newValue : null);
     }
 
     private focusInput(): void {

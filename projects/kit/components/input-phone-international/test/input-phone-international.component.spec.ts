@@ -92,9 +92,6 @@ describe('InputPhoneInternational', () => {
             fixture.detectChanges();
             await fixture.whenStable();
 
-            fixture.detectChanges();
-            await fixture.whenStable();
-
             expect(testComponent.control.value).toBe('+3809110330102');
         });
     });

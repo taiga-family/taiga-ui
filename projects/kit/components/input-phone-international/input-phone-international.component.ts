@@ -168,7 +168,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             ? CHAR_PLUS + getCountryCallingCode(this.countryIsoCode(), phonesMetadata)
             : '';
 
-        this.value.set(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
+        this.onChange(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
     }
 
     private computeMask(

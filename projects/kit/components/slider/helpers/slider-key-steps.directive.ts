@@ -52,7 +52,7 @@ export class TuiSliderKeyStepsDirective extends TuiControl<number> {
     @HostListener('input')
     @HostListener('change')
     protected updateControlValue(): void {
-        this.value.set(
+        this.onChange(
             tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
         );
     }

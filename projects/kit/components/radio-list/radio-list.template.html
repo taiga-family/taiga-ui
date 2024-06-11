@@ -13,7 +13,7 @@
         [size]="size"
         [tuiValidator]="validator()"
         [value]="item"
-        (ngModelChange)="value.set($event)"
+        (ngModelChange)="onChange($event)"
     />
     <ng-container *polymorpheusOutlet="itemContent as text; context: {$implicit: item, active: itemIsActive(item)}">
         {{ text }}

@@ -62,7 +62,7 @@ export class TuiRatingComponent extends TuiControl<number> {
 
     protected onClick(value: number): void {
         if (this.active) {
-            this.value.set(value);
+            this.onChange(value);
         }
     }
 

@@ -159,10 +159,10 @@ export class TuiRangeComponent
     }
 
     private updateStart(value: number): void {
-        this.value.set([Math.min(value, this.value()[1]), this.value()[1]]);
+        this.onChange([Math.min(value, this.value()[1]), this.value()[1]]);
     }
 
     private updateEnd(value: number): void {
-        this.value.set([this.value()[0], Math.max(value, this.value()[0])]);
+        this.onChange([this.value()[0], Math.max(value, this.value()[0])]);
     }
 }

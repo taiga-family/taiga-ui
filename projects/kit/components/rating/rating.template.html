@@ -7,7 +7,7 @@
     [max]="max"
     [ngModel]="value()"
     (blur)="onTouched()"
-    (ngModelChange)="value.set($event)"
+    (ngModelChange)="onChange($event)"
 />
 <div class="t-items">
     <div

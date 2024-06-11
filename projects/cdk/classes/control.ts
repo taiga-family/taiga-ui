@@ -4,7 +4,6 @@ import {
     computed,
     DestroyRef,
     Directive,
-    effect,
     inject,
     Input,
     signal,
@@ -33,11 +32,11 @@ import {TuiValueTransformer} from './value-transformer';
  */
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
-    private readonly pseudoInvalid = signal<boolean | null>(null);
-
     private readonly refresh$ = new Subject<void>();
-
-    protected onChange: (value: T) => void = EMPTY_FUNCTION;
+    private readonly pseudoInvalid = signal<boolean | null>(null);
+    private readonly internal = signal(
+        inject(TUI_FALLBACK_VALUE, {self: true, optional: true}) as T,
+    );
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly destroyRef = inject(DestroyRef);
@@ -46,19 +45,16 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         optional: true,
     });
 
-    public readonly value = signal(
-        inject(TUI_FALLBACK_VALUE, {self: true, optional: true}) as T,
-    );
-
+    public readonly value = computed(() => this.internal());
     public readonly readOnly = signal(false);
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
     public readonly disabled = computed(() => this.status() === 'DISABLED');
     public readonly interactive = computed(() => !this.disabled() && !this.readOnly());
     public readonly invalid = computed(() =>
-        this.interactive() && this.pseudoInvalid() !== null
-            ? !!this.pseudoInvalid()
-            : this.touched() && this.status() === 'INVALID',
+        this.pseudoInvalid() !== null
+            ? !!this.pseudoInvalid() && this.interactive()
+            : this.interactive() && this.touched() && this.status() === 'INVALID',
     );
 
     public readonly mode = computed(() =>
@@ -67,9 +63,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     );
 
     public onTouched = EMPTY_FUNCTION;
+    public onChange: (value: T) => void = EMPTY_FUNCTION;
 
     constructor() {
-        effect(() => this.onChange(this.value()), {allowSignalWrites: true});
         this.control.valueAccessor = this;
         this.refresh$
             .pipe(
@@ -101,6 +97,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
         this.onChange = (value: T) => {
             onChange(this.toControlValue(value));
+            this.internal.set(value);
             this.update();
         };
     }
@@ -120,7 +117,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         // TODO: https://github.com/angular/angular/issues/14988
         const safe = this.control instanceof NgModel ? this.control.model : value;
 
-        this.value.set(this.fromControlValue(safe));
+        this.internal.set(this.fromControlValue(safe));
         this.update();
     }
 

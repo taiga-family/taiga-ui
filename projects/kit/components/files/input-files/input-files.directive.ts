@@ -61,7 +61,7 @@ export class TuiInputFilesDirective
     public readonly input = tuiInjectElement<HTMLInputElement>();
 
     public process(files: FileList): void {
-        this.value.set(
+        this.onChange(
             this.input.multiple
                 ? [...toArray(this.value()), ...Array.from(files)]
                 : files[0] || null,
