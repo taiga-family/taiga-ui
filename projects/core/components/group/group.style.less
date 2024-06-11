@@ -1,16 +1,12 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+// TODO: Refactor
 .tui-group {
     position: relative;
     display: flex;
     isolation: isolate;
 
     --t-radius: var(--tui-radius-m);
-
-    // TODO: Remove this hack after accordion redesign
-    tui-accordion& {
-        width: 100%;
-    }
 
     & > * {
         flex: 1 1 0;

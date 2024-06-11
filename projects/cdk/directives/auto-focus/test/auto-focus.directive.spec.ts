@@ -3,25 +3,19 @@ import {
     Component,
     ElementRef,
     NgZone,
-    Optional,
     Renderer2,
-    Self,
     ViewChild,
 } from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     TUI_AUTOFOCUS_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
-import {EMPTY} from 'rxjs';
 
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
@@ -61,74 +55,6 @@ describe('TuiAutoFocus directive', () => {
         }));
     });
 
-    describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
-        @Component({
-            standalone: true,
-            selector: 'focusable-component',
-            template: `
-                <p>
-                    <input
-                        #input
-                        value="test"
-                    />
-                </p>
-            `,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-            providers: [tuiAsFocusableItemAccessor(TestFocusableComponent)],
-        })
-        class TestFocusableComponent implements TuiFocusableElementAccessor {
-            @ViewChild('input')
-            public input?: ElementRef<HTMLInputElement>;
-
-            public focusedChange = EMPTY;
-
-            public get nativeFocusableElement(): HTMLInputElement | null {
-                return this.input?.nativeElement ?? null;
-            }
-
-            public get focused(): boolean {
-                return this.input
-                    ? document.activeElement === this.input.nativeElement
-                    : false;
-            }
-        }
-
-        @Component({
-            standalone: true,
-            imports: [TestFocusableComponent, TuiAutoFocusDirective],
-            template: `
-                <focusable-component tuiAutoFocus></focusable-component>
-            `,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-        })
-        class TestComponentWithTuiButton {
-            @ViewChild(TestFocusableComponent)
-            public focusable!: TestFocusableComponent;
-        }
-
-        let fixture: ComponentFixture<TestComponentWithTuiButton>;
-        let testComponent: TestComponentWithTuiButton;
-
-        beforeEach(() => {
-            TestBed.configureTestingModule({
-                imports: [TestComponentWithTuiButton, TestFocusableComponent],
-                providers: [NG_EVENT_PLUGINS],
-            });
-
-            fixture = TestBed.createComponent(TestComponentWithTuiButton);
-            testComponent = fixture.componentInstance;
-        });
-
-        it('Focuses native element of a TUI_FOCUSABLE_ITEM_ACCESSOR', fakeAsync(() => {
-            fixture.detectChanges();
-            tick(100);
-            expect(testComponent.focusable.focused).toBe(true);
-            expect(document.activeElement).toBe(
-                testComponent.focusable.nativeFocusableElement,
-            );
-        }));
-    });
-
     describe('works for iOS decoy method', () => {
         @Component({
             standalone: true,
@@ -155,26 +81,12 @@ describe('TuiAutoFocus directive', () => {
                         provide: TUI_AUTOFOCUS_HANDLER,
                         useClass: TuiIosAutofocusHandler,
                         useFactory: (
-                            focusable: TuiFocusableElementAccessor | null,
                             el: ElementRef<HTMLElement>,
                             renderer: Renderer2,
                             zone: NgZone,
                             win: Window,
-                        ) =>
-                            new TuiIosAutofocusHandler(
-                                focusable,
-                                el,
-                                renderer,
-                                zone,
-                                win,
-                            ),
-                        deps: [
-                            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
-                            ElementRef,
-                            Renderer2,
-                            NgZone,
-                            WINDOW,
-                        ],
+                        ) => new TuiIosAutofocusHandler(el, renderer, zone, win),
+                        deps: [ElementRef, Renderer2, NgZone, WINDOW],
                     },
                 ],
             });

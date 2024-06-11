@@ -6,19 +6,8 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
-import {
-    tuiAsFocusableItemAccessor,
-    tuiClamp,
-    tuiIsNativeFocused,
-    tuiPure,
-    tuiRound,
-} from '@taiga-ui/cdk';
-import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {tuiClamp, tuiIsNativeFocused, tuiPure, tuiRound} from '@taiga-ui/cdk';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {
@@ -32,6 +21,11 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -52,7 +46,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiInputSliderComponent
     extends AbstractTuiControl<number>
-    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiInputNumberComponent)
     private readonly inputNumberRef?: TuiInputNumberComponent;

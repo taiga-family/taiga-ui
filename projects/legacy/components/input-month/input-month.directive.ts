@@ -2,9 +2,8 @@ import type {DoCheck} from '@angular/core';
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiMonth} from '@taiga-ui/cdk';
-import {tuiAsTextfieldHost} from '@taiga-ui/core';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
-import {TUI_MONTH_FORMATTER} from '@taiga-ui/legacy/tokens';
+import {TUI_MONTH_FORMATTER, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import {distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthComponent} from './input-month.component';

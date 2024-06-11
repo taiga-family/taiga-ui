@@ -11,7 +11,6 @@ import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taiga-ui/cdk';
 import {TuiLinkDirective} from '@taiga-ui/core/components/link';
 import {TuiSpinButtonComponent} from '@taiga-ui/core/components/spin-button';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes';
-import type {TuiWithOptionalMinMax} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,
@@ -21,7 +20,7 @@ import type {TuiWithOptionalMinMax} from '@taiga-ui/core/types';
     styleUrls: ['./calendar-spin.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarSpinComponent implements TuiWithOptionalMinMax<TuiMonth> {
+export class TuiCalendarSpinComponent {
     @Input()
     public value = TuiMonth.currentLocal();
 

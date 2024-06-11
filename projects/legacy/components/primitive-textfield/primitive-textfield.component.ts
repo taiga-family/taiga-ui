@@ -13,24 +13,21 @@ import {
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {
-    tuiAsFocusableItemAccessor,
     tuiInjectElement,
     tuiIsNativeFocusedIn,
     tuiPure,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_OPTIONS as OPTIONS,
-    tuiGetBorder,
-    TuiHintOptionsDirective,
-} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS as OPTIONS, TuiHintOptionsDirective} from '@taiga-ui/core';
 import {AbstractTuiInteractive} from '@taiga-ui/legacy/classes';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_OPTIONS as LEGACY_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiGetBorder} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';

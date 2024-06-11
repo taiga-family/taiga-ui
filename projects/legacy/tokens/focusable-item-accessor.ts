@@ -1,7 +1,18 @@
 import type {Provider, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
+
+export interface TuiNativeFocusableElement extends Element, HTMLOrSVGElement {}
+
+/**
+ * Public interface for any focusable component or directive
+ */
+export interface TuiFocusableElementAccessor {
+    focused: boolean;
+    readonly focusedChange: Observable<boolean>;
+    nativeFocusableElement: TuiNativeFocusableElement | null;
+}
 
 /**
  * A component that can be focused

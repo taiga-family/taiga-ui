@@ -76,7 +76,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         tuiMoveFocus(elements.indexOf(current), elements, step);
     }
 
-    // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
     @HostListener('keydown.tab')

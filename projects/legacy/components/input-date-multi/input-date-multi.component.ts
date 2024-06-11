@@ -10,30 +10,19 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {
-    TuiBooleanHandler,
-    TuiFocusableElementAccessor,
-    TuiMapper,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiMapper, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     changeDateSeparator,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
-    tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
     tuiIsString,
     TuiMonth,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {
-    TuiMarkerHandler,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
@@ -54,6 +43,8 @@ import {
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -72,7 +63,7 @@ import {map} from 'rxjs';
 })
 export class TuiInputDateMultiComponent
     extends AbstractTuiMultipleControl<TuiDay>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;

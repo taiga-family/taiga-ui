@@ -5,19 +5,18 @@ import {
     inject,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiInputType,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiHintOptionsDirective} from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {EMPTY, map, startWith} from 'rxjs';
@@ -67,7 +66,7 @@ export class TuiInputPasswordComponent
         return !!this.textfield?.focused;
     }
 
-    public get inputType(): TuiInputType {
+    public get inputType(): string {
         return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 

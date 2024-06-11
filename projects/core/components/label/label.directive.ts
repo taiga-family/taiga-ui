@@ -27,7 +27,7 @@ class TuiLabelStyles {}
     standalone: true,
     selector: 'label[tuiLabel]',
     host: {
-        '[attr.for]': 'el.htmlFor || parent?.id',
+        '[attr.for]': 'el.htmlFor || parent?.input.id',
         '[class._textfield]': 'textfield',
     },
 })

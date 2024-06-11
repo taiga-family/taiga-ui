@@ -9,14 +9,10 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, tuiAsFocusableItemAccessor, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    tuiGetBorder,
-    TuiHintOptionsDirective,
-} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS, TuiHintOptionsDirective} from '@taiga-ui/core';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {
     TUI_ICON_PADDINGS,
@@ -26,6 +22,9 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiGetBorder} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const DEFAULT_ROWS = 20;

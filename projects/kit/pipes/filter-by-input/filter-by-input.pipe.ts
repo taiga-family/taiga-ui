@@ -1,13 +1,8 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    tuiIsPresent,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core';
+import {TUI_DEFAULT_MATCHER, tuiIsPresent, tuiPure} from '@taiga-ui/cdk';
+import {TUI_DATA_LIST_HOST, TuiTextfieldComponent} from '@taiga-ui/core';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 type TuiArrayElement<A> =
@@ -17,29 +12,30 @@ type TuiArrayElement<A> =
             : T
         : never;
 
-// TODO: Adapt for new MultiSelect
+// TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
     standalone: true,
     name: 'tuiFilterByInput',
     pure: false,
 })
 export class TuiFilterByInputPipe implements PipeTransform {
+    // TODO: Remove optional after legacy controls are dropped
+    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly host = inject(TUI_DATA_LIST_HOST);
-    // protected readonly multiSelect = inject(TuiMultiSelectDirective, {optional: true});
-    private readonly accessor = inject(TUI_FOCUSABLE_ITEM_ACCESSOR);
 
     public transform<T>(items: T, matcher?: TuiStringMatcher<TuiArrayElement<T>>): T;
     public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        return this.filter<T>(items, matcher, this.host.stringify || String, this.query);
-    }
-
-    private get query(): string {
-        return this.accessor.nativeFocusableElement
-            ? (this.accessor.nativeFocusableElement as HTMLInputElement).value || ''
-            : '';
+        return this.filter<T>(
+            items,
+            matcher,
+            this.host.stringify || String,
+            this.textfield?.input.value ||
+                (this.host as any).nativeFocusableElement?.value ||
+                '',
+        );
     }
 
     @tuiPure

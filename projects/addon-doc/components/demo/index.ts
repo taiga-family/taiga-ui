@@ -18,10 +18,9 @@ import {UrlSerializer} from '@angular/router';
 import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
-import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
+import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
     tuiClamp,
-    tuiCleanObject,
     tuiInjectElement,
     tuiPure,
     tuiPx,

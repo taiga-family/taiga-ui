@@ -1,8 +1,8 @@
 import type {DoCheck} from '@angular/core';
 import {Directive} from '@angular/core';
 import {tuiIsInput} from '@taiga-ui/cdk';
-import {tuiAsTextfieldHost} from '@taiga-ui/core';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
+import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputPasswordComponent} from './input-password.component';
 

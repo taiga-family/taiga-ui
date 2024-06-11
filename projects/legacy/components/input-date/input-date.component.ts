@@ -17,7 +17,6 @@ import type {
     TuiBooleanHandler,
     TuiContext,
     TuiDateMode,
-    TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
     changeDateSeparator,
@@ -25,7 +24,6 @@ import {
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
-    tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
     TuiMonth,
@@ -33,12 +31,7 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {
-    TuiMarkerHandler,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
@@ -56,6 +49,8 @@ import {
 } from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
@@ -75,7 +70,7 @@ import {map} from 'rxjs';
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;

@@ -22,7 +22,7 @@ import {
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
-import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiRangeState} from '@taiga-ui/core';
 import {
     TuiCalendarYearComponent,
     TuiLinkDirective,
@@ -51,7 +51,7 @@ const TODAY = TuiDay.currentLocal();
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
+export class TuiCalendarMonthComponent {
     protected isYearPickerShown = false;
     protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 

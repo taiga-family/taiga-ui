@@ -7,12 +7,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiActiveZoneDirective,
-    TuiContext,
-    TuiFocusableElementAccessor,
-} from '@taiga-ui/cdk';
-import {tuiAsFocusableItemAccessor, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     tuiAsDataListHost,
@@ -25,6 +21,8 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_VALUE_ACCESSOR_PROVIDER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 

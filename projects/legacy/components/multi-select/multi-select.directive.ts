@@ -1,8 +1,8 @@
 import {Directive} from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {tuiAsTextfieldHost} from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
+import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiMultiSelectComponent} from './multi-select.component';
 

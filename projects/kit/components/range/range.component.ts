@@ -20,7 +20,7 @@ import {
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
-import type {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     tuiKeyStepValueToPercentage,
@@ -54,10 +54,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
     },
     providers: [tuiFallbackValueProvider([0, 0])],
 })
-export class TuiRangeComponent
-    extends TuiControl<[number, number]>
-    implements TuiWithOptionalMinMax<number>, OnChanges
-{
+export class TuiRangeComponent extends TuiControl<[number, number]> implements OnChanges {
     // TODO: workaround until we get signal inputs
     private readonly changes = signal(1);
     private readonly el = tuiInjectElement();

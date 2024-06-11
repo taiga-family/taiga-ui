@@ -11,13 +11,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
-import type {
-    TuiBooleanHandler,
-    TuiDateMode,
-    TuiDay,
-    TuiDayLike,
-    TuiFocusableElementAccessor,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiDateMode, TuiDay, TuiDayLike} from '@taiga-ui/cdk';
 import {
     changeDateSeparator,
     DATE_FILLER_LENGTH,
@@ -28,7 +22,6 @@ import {
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     tuiAsControl,
-    tuiAsFocusableItemAccessor,
     TuiDayRange,
     tuiIsPresent,
     TuiMonth,
@@ -36,12 +29,7 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {
-    TuiMarkerHandler,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiDayRangePeriod, TuiInputDateOptions} from '@taiga-ui/kit';
 import {
@@ -58,6 +46,8 @@ import {
 } from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
@@ -77,7 +67,7 @@ import {map} from 'rxjs';
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;

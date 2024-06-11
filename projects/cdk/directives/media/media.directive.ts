@@ -12,6 +12,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     standalone: true,
     selector: 'video[tuiMedia], audio[tuiMedia]',
     exportAs: 'tuiMedia',
+    host: {'(durationchange)': '0'},
 })
 export class TuiMediaDirective {
     private readonly el = tuiInjectElement<HTMLMediaElement>();
@@ -61,7 +62,6 @@ export class TuiMediaDirective {
         return Boolean(this.el.paused);
     }
 
-    // @bad TODO: Make sure no other events can affect this like network issues etc.
     @HostListener('ended', ['true'])
     @HostListener('pause', ['true'])
     @HostListener('play', ['false'])
@@ -81,11 +81,6 @@ export class TuiMediaDirective {
     @HostListener('seeked')
     protected onCurrentTimeChange(): void {
         this.currentTimeChange.emit(this.currentTime);
-    }
-
-    @HostListener('durationchange')
-    protected changeDetectionTrigger(): void {
-        // @bad TODO: consider if other events need to trigger CD
     }
 
     private updatePlaybackRate(playbackRate: number): void {

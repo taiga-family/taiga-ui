@@ -41,7 +41,7 @@ export interface TuiIconError {
     readonly message: string;
 }
 
-// TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
+// TODO: Move to legacy along with all related infrastructure SvgService and SvgDefsHostComponent
 @Component({
     standalone: true,
     selector: 'tui-svg',
@@ -69,6 +69,7 @@ export class TuiSvgComponent {
     protected readonly innerHTML$: Observable<SafeHtml>;
 
     constructor() {
+        // TODO: Consider legacy mode where all icons are treated as external to support new icons
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
                 if (tuiIsString(this.icon)) {

@@ -8,7 +8,7 @@ import {
     inject,
     ViewChild,
 } from '@angular/core';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/cdk';
+import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/legacy/tokens';
 import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
 
 import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';

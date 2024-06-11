@@ -1,30 +1,40 @@
 <div>
     <div>
         Using
-        <strong>TUI_NUMBER_FORMAT</strong>
+        <strong>TUI_DATE_FORMAT</strong>
         injection token you can customize numbers formatting.
     </div>
-    <div>For example: 10 500,33</div>
-    <div>Can be customized as: 10/500.33</div>
+    <div>For example: 10.01.2024</div>
+    <div>Can be customized as: 2024/01/10</div>
+
+    <section>
+        <h3>Description:</h3>
+        <dl>
+            <dt>
+                <code>mode</code>
+            </dt>
+            <dd class="tui-space_bottom-5">
+                active date format (
+                <code>'DMY' | 'MDY' | 'YMD'</code>
+                )
+            </dd>
+            <dt>
+                <code>separator</code>
+            </dt>
+            <dd>single-character date's separator (dot, slash etc.)</dd>
+        </dl>
+    </section>
 
     <section>
         <h3>Defaults:</h3>
         <ul class="tui-list tui-list_small">
             <li class="tui-list__item">
-                decimalSeparator =
-                <code>,</code>
+                mode =
+                <code>DMY</code>
             </li>
             <li class="tui-list__item">
-                thousandSeparator =
-                <code>CHAR_NO_BREAK_SPACE</code>
-            </li>
-            <li class="tui-list__item">
-                zeroPadding =
-                <code>true</code>
-            </li>
-            <li class="tui-list__item">
-                rounding =
-                <code>truncate</code>
+                separator =
+                <code>.</code>
             </li>
         </ul>
     </section>
@@ -35,41 +45,33 @@
             <li class="tui-list__item">
                 <a
                     tuiLink
-                    [routerLink]="routes.Amount"
+                    [routerLink]="routes.InputDate"
                 >
-                    TuiAmount
+                    TuiInputDate
                 </a>
             </li>
             <li class="tui-list__item">
                 <a
                     tuiLink
-                    [routerLink]="routes.FormatNumber"
+                    [routerLink]="routes.InputDateRange"
                 >
-                    TuiFormatNumberPipe
+                    TuiInputDateRange
                 </a>
             </li>
             <li class="tui-list__item">
                 <a
                     tuiLink
-                    [routerLink]="routes.InputNumber"
+                    [routerLink]="routes.InputDateTime"
                 >
-                    TuiInputNumberComponent
+                    TuiInputDateTime
                 </a>
             </li>
             <li class="tui-list__item">
                 <a
                     tuiLink
-                    [routerLink]="routes.InputSlider"
+                    [routerLink]="routes.InputDateMulti"
                 >
-                    TuiInputSliderComponent
-                </a>
-            </li>
-            <li class="tui-list__item">
-                <a
-                    tuiLink
-                    [routerLink]="routes.InputRange"
-                >
-                    TuiInputRangeComponent
+                    TuiInputDateMulti
                 </a>
             </li>
         </ul>

@@ -17,17 +17,12 @@ import {
     maskitoNumberOptionsGenerator,
     maskitoParseNumber,
 } from '@maskito/kit';
-import type {
-    TuiFocusableElementAccessor,
-    TuiInputMode,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk';
+import type {TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     CHAR_HYPHEN,
     CHAR_MINUS,
     EMPTY_QUERY,
     TUI_IS_IOS,
-    tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiPure,
     tuiWatch,
@@ -45,6 +40,8 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiInputNumberOptions} from './input-number.options';
@@ -113,7 +110,7 @@ export class TuiInputNumberComponent
         return !!this.textfield?.focused;
     }
 
-    public get inputMode(): TuiInputMode {
+    public get inputMode(): string {
         if (this.isIOS && this.isNegativeAllowed) {
             // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
             return 'text';

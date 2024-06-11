@@ -4,7 +4,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -84,7 +84,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected iconLeft = '';
 
-    protected readonly typeVariants: readonly TuiInputType[] = [
+    protected readonly typeVariants: readonly string[] = [
         'text',
         'email',
         'password',
@@ -106,7 +106,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected maxLength = null;
 
-    protected readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    protected readonly inputModeVariants: readonly string[] = ['text', 'numeric'];
 
     protected inputMode = this.inputModeVariants[0];
 

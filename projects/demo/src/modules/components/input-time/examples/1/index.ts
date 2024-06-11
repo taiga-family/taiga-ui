@@ -3,8 +3,11 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
-import {TuiUnfinishedValidatorDirective} from '@taiga-ui/kit';
-import {TuiInputTimeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {
+    TuiInputTimeModule,
+    TuiTextfieldControllerModule,
+    TuiUnfinishedValidatorDirective,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -12,6 +15,7 @@ import {TuiInputTimeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
         ReactiveFormsModule,
         TuiInputTimeModule,
         TuiTextfieldControllerModule,
+        TuiUnfinishedValidatorDirective,
         TuiUnfinishedValidatorDirective,
     ],
     templateUrl: './index.html',

@@ -11,13 +11,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {
-    CHAR_PLUS,
-    TUI_NON_DIGITS_REGEXP,
-    tuiAsFocusableItemAccessor,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {CHAR_PLUS, TUI_NON_DIGITS_REGEXP, tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiAppearanceDirective,
@@ -45,7 +40,8 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy/directives';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
-import {TUI_COUNTRIES_MASKS} from '@taiga-ui/legacy/tokens';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
+import {TUI_COUNTRIES_MASKS, tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     tuiGetMaxAllowedPhoneLength,

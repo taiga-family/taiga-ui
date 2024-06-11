@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
-import type {TuiTextfieldHost} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
+import type {TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
+import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 @Component({
     selector: 'input[tuiTextfieldLegacy], textarea[tuiTextfieldLegacy]',

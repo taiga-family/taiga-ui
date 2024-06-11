@@ -2,7 +2,6 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from '@taiga-ui/morph';
 import type {Attribute} from 'parse5/dist/common/token';
 
-import {tuiCleanObject} from '../../../../../utils/miscellaneous/clean-object';
 import type {TemplateResource} from '../../../../ng-update/interfaces';
 import {removeAttrs} from '../../../../ng-update/v4/steps/utils/remove-attrs';
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
@@ -12,6 +11,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
+import {cleanObject} from '../utils/clean-object';
 
 export function migrateMoney({
     resource,
@@ -62,7 +62,7 @@ export function migrateMoney({
             );
 
             const format = JSON.stringify(
-                tuiCleanObject({
+                cleanObject({
                     decimal: decimalAttr?.value,
                     precision: precisionAttr?.value,
                 }),
