@@ -5,10 +5,10 @@
         "commands": [
             "echo 'TODO: workaround for https://github.com/npm/cli/issues/7019'",
             "rm -rf package-lock.json node_modules **/node_modules",
-            "npm i",
+            "npm i --workspaces --include-workspace-root",
             "echo '------------------'",
             "echo 'TODO: workaround for https://github.com/npm/cli/issues/6787#issuecomment-1751005219'",
-            "npm i"
+            "npm i --workspaces --include-workspace-root"
         ],
         "executionMode": "branch",
         "fileFilters": ["package-lock.json"]
