@@ -1,17 +1,17 @@
 <!-- @license lucide-static v0.394.0 - ISC -->
 <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="lucide lucide-workflow"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="3"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+  class="lucide lucide-workflow"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
 >
-    <rect x="3" y="3" width="8" height="8" rx="2" />
-    <path d="M7 11v4a2 2 0 0 0 2 2h4" />
-    <rect x="13" y="13" width="8" height="8" rx="2" />
+  <rect width="8" height="8" x="3" y="3" rx="2" />
+  <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+  <rect width="8" height="8" x="13" y="13" rx="2" />
 </svg>
