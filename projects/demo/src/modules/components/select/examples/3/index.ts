@@ -8,8 +8,8 @@ import {
     TuiButtonDirective,
     TuiDataListComponent,
     TuiDataListDirective,
+    TuiIconComponent,
     TuiOptionComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {
     TuiSelectModule,
@@ -27,7 +27,7 @@ import {
         TuiDataListDirective,
         NgIf,
         TuiOptionComponent,
-        TuiSvgComponent,
+        TuiIconComponent,
         NgForOf,
         TuiTextareaModule,
         TuiAutoFocusDirective,

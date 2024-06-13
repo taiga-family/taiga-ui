@@ -15,14 +15,14 @@
 </tui-primitive-textfield>
 
 <ng-template #iconContent>
-    <tui-svg
+    <button
         appearance="icon"
-        tuiWrapper
+        tuiIconButton
         class="icon"
-        [src]="icon"
+        [iconLeft]="icon"
         [tuiHint]="hintContent"
         (click)="togglePasswordVisibility()"
-    />
+    ></button>
 </ng-template>
 
 <ng-template #hintContent>{{ hint }}</ng-template>

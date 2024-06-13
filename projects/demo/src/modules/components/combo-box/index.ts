@@ -14,8 +14,8 @@ import {
 import {
     TuiDropdownModule,
     TuiHint,
+    TuiIconComponent,
     TuiNotificationComponent,
-    TuiSvgComponent,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
@@ -48,7 +48,7 @@ class Account {
         TuiDropdownModule,
         TuiHint,
         TuiTextfieldControllerModule,
-        TuiSvgComponent,
+        TuiIconComponent,
         InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',

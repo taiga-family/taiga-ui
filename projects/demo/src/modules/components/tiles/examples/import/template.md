@@ -5,10 +5,10 @@
     [width]="item.w"
     [height]="item.h"
   >
-    <tui-svg
+    <tui-icon
       tuiTileHandle
-      src="tuiIconDragLarge"
-    ></tui-svg>
+      icon="tuiIconDragLarge"
+    />
     {{ item.content }}
   </tui-tile>
 </tui-tiles>

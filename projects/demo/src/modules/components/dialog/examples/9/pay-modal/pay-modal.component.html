@@ -12,14 +12,15 @@
                         <div class="saved-card-preset__item__inner">
                             <div class="saved-card-preset__item__placeholder">Card number</div>
                             <div class="saved-card-preset__item__info">
-                                <tui-svg
+                                <img
                                     class="saved-card-preset__item__info__icon"
                                     [src]="
-                                        card.cardType === 'MasterCard'
+                                        (card.cardType === 'MasterCard'
                                             ? 'tuiIconMaestro'
                                             : card.cardType === 'Visa'
                                               ? 'tuiIconVisa'
                                               : 'tuiIconMir'
+                                        ) | tuiIcon
                                     "
                                 />
 

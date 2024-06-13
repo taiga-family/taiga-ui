@@ -8,8 +8,8 @@ import {tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
     TuiAlertService,
     tuiFormatNumber,
+    TuiIconComponent,
     TuiNotificationComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
@@ -23,7 +23,7 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
         TuiRingChartComponent,
         TuiAmountPipe,
         AsyncPipe,
-        TuiSvgComponent,
+        TuiIconComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

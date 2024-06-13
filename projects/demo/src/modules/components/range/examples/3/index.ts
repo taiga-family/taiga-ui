@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiRangeComponent} from '@taiga-ui/kit';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiRangeComponent} from '@taiga-ui/kit';
         NgForOf,
         NgIf,
         I18nPluralPipe,
-        TuiSvgComponent,
+        TuiIconComponent,
         JsonPipe,
     ],
     templateUrl: './index.html',

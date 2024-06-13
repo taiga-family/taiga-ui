@@ -1029,13 +1029,6 @@ export const pages: TuiDocPages = [
             'icons, icon, bundled, svg, SvgService, define, иконки, картинка, свг, иконка, графика',
         route: DemoRoute.IconsBundled,
     },
-    {
-        section: 'Icons',
-        title: 'Customization',
-        keywords:
-            'icons, icon, svg, customization, стили, иконки, картинка, свг, иконка, графика',
-        route: DemoRoute.IconsCustomization,
-    },
     // Navigation
     {
         section: 'Navigation',

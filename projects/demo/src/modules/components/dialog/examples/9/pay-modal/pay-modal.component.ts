@@ -21,10 +21,10 @@ import type {TuiDialogContext} from '@taiga-ui/core';
 import {
     TuiButtonDirective,
     TuiFormatNumberPipe,
+    TuiIconPipe,
     TuiLabelDirective,
     TuiLinkDirective,
     TuiLoaderComponent,
-    TuiSvgComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
@@ -42,7 +42,6 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
     imports: [
         ReactiveFormsModule,
         NgForOf,
-        TuiSvgComponent,
         NgIf,
         TuiLinkDirective,
         TuiButtonDirective,
@@ -56,6 +55,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiTextfieldOptionsDirective,
         TuiLabelDirective,
         TuiCheckboxComponent,
+        TuiIconPipe,
     ],
     templateUrl: './pay-modal.component.html',
     styleUrls: ['./pay-modal.component.less'],

@@ -1,5 +1,4 @@
 <tui-accordion
-    *ngIf="svgIcons.rubles | async as lazySvg"
     class="container"
     [rounded]="false"
 >
@@ -13,9 +12,9 @@
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
                     class="operation-icon"
-                    [src]="lazySvg?.default || ''"
                 />
             </div>
             <div class="operation-title">Get your money</div>
@@ -81,9 +80,9 @@
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
                     class="operation-icon"
-                    [src]="lazySvg?.default || ''"
                 />
             </div>
             <div class="operation-title">Get your money back</div>
@@ -149,9 +148,9 @@
                 <div class="operation-month">May</div>
             </div>
             <div class="operation-pic">
-                <tui-svg
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
                     class="operation-icon"
-                    [src]="lazySvg?.default || ''"
                 />
             </div>
             <div class="operation-title">Get your neighbor's money</div>

@@ -15,8 +15,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,
+    TuiIconComponent,
     TuiScrollbarComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
@@ -52,7 +52,7 @@ interface Item {
         TuiScrollbarComponent,
         TuiFormatNumberPipe,
         AsyncPipe,
-        TuiSvgComponent,
+        TuiIconComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

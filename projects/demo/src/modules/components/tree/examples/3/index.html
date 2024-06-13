@@ -14,9 +14,10 @@
         class="wrapper"
         [style.opacity]="1 / node.level"
     >
-        <tui-svg
+        <tui-icon
             *ngIf="value.icon"
-            [src]="value.icon"
+            class="t-icon"
+            [icon]="value.icon"
         />
         {{ value.text }}
     </div>
