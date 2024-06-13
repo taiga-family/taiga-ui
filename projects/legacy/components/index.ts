@@ -24,6 +24,7 @@ export * from '@taiga-ui/legacy/components/primitive-textfield';
 export * from '@taiga-ui/legacy/components/select';
 export * from '@taiga-ui/legacy/components/select-option';
 export * from '@taiga-ui/legacy/components/sheet';
+export * from '@taiga-ui/legacy/components/svg';
 export * from '@taiga-ui/legacy/components/table-bar';
 export * from '@taiga-ui/legacy/components/tag';
 export * from '@taiga-ui/legacy/components/textarea';

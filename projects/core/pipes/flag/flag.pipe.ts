@@ -1,7 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
-import {TUI_SVG_OPTIONS} from '@taiga-ui/core/components/svg';
-import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_ASSETS_PATH} from '@taiga-ui/core/tokens';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Pipe({
@@ -9,12 +8,7 @@ import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
     name: 'tuiFlag',
 })
 export class TuiFlagPipe implements PipeTransform {
-    private readonly svgOptions = inject(TUI_SVG_OPTIONS);
-
-    private readonly staticPath = this.svgOptions
-        .path('tuiIcon')
-        .replace('tuiIcon.svg#tuiIcon', '')
-        .replace(`tuiIcon.svg${TUI_CACHE_BUSTING_PAYLOAD}#tuiIcon`, '');
+    private readonly staticPath = inject(TUI_ASSETS_PATH);
 
     public transform(countryIsoCode: TuiCountryIsoCode | string): string;
     public transform(

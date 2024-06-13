@@ -20,15 +20,12 @@ import {
     tuiPure,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
-import {TuiSvgService} from '@taiga-ui/core/services';
-import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import {
-    TUI_CACHE_BUSTING_PAYLOAD,
-    tuiIsPresumedHTMLString,
-} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
+import {TUI_CACHE_BUSTING_PAYLOAD, tuiIsPresumedHTMLString} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {catchError, map, of, ReplaySubject, startWith, switchMap} from 'rxjs';
 
+import {TuiSvgService} from './svg.service';
 import type {TuiSvgInterceptorHandler, TuiSvgOptions} from './svg-options';
 import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS} from './svg-options';
 

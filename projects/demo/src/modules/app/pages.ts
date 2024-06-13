@@ -850,12 +850,6 @@ export const pages: TuiDocPages = [
         keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
         route: DemoRoute.Tree,
     },
-    {
-        section: 'Components',
-        title: 'Svg',
-        keywords: 'svg, свг',
-        route: `${DemoRoute.IconsOverview}/Component`,
-    },
     // Experimental
     {
         section: 'Layout',
@@ -1013,28 +1007,6 @@ export const pages: TuiDocPages = [
         title: 'RingChart',
         keywords: 'график, чарт, chart, graph, кольцо, круг, диаграмма',
         route: DemoRoute.RingChart,
-    },
-    // Icons
-    {
-        section: 'Icons',
-        title: 'Overview',
-        keywords:
-            'icons, icon, free, pack, markup, icons, image, картинка, свг, svg, графика',
-        route: DemoRoute.IconsOverview,
-    },
-    {
-        section: 'Icons',
-        title: 'Mapping',
-        keywords:
-            'icons, icon, mapping, mapped, mapper, material, svg, TUI_SVG_OPTIONS, tuiSvgOptionsProvider, иконки, картинка, свг, иконка, графика',
-        route: DemoRoute.IconsMapping,
-    },
-    {
-        section: 'Icons',
-        title: 'Bundled',
-        keywords:
-            'icons, icon, bundled, svg, SvgService, define, иконки, картинка, свг, иконка, графика',
-        route: DemoRoute.IconsBundled,
     },
     // Navigation
     {

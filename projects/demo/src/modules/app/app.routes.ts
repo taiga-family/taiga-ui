@@ -674,22 +674,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/tree'),
         title: 'Tree',
     }),
-    // ICONS
-    route({
-        path: DemoRoute.IconsOverview,
-        loadComponent: async () => import('../components/icons'),
-        title: 'Overview',
-    }),
-    route({
-        path: DemoRoute.IconsMapping,
-        loadComponent: async () => import('../components/icons/icons-mapping'),
-        title: 'Icons mapping',
-    }),
-    route({
-        path: DemoRoute.IconsBundled,
-        loadComponent: async () => import('../components/icons/icons-bundled'),
-        title: 'Icons bundled',
-    }),
     // FILTER
     route({
         path: DemoRoute.Filter,

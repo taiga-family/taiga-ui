@@ -1,12 +1,8 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiHint,
-    tuiSvgOptionsProvider,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core';
+import {TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import {tuiKitIcons} from '@taiga-ui/icons';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TuiInputDateRangeModule, tuiSvgOptionsProvider} from '@taiga-ui/legacy';
 
 const MAPPER: Record<string, string> = {
     ...tuiKitIcons,

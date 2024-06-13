@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiIconPipe, TuiNumberFormatDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconPipe, TuiNumberFormatDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -17,7 +17,6 @@ export interface MyAccount {
     standalone: true,
     selector: 'my-account',
     imports: [
-        TuiSvgComponent,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiNumberFormatDirective,
