@@ -3,7 +3,13 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdownModule, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {
+    TuiDropdownModule,
+    TuiHint,
+    TuiLink,
+    TuiNotificationComponent,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
@@ -22,16 +28,14 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiInputPhoneInternationalComponent,
         TuiTextfieldOptionsDirective,
         ReactiveFormsModule,
+        TuiLink,
+        TuiNotificationComponent,
     ],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         ['RU', 'KZ', 'UA', 'BY'],
         getCountries(),

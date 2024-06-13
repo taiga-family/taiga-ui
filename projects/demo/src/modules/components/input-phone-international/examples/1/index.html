@@ -1,16 +1,5 @@
-<form [formGroup]="testForm">
-    <tui-input-phone-international
-        formControlName="testValue"
-        [countries]="countries"
-        [(countryIsoCode)]="countryIsoCode"
-    />
-</form>
-
-<button
-    tuiButton
-    type="button"
-    class="tui-space_top-4"
-    (click)="patchValue()"
->
-    Patch value
-</button>
+<tui-input-phone-international
+    [countries]="countries"
+    [(countryIsoCode)]="countryIsoCode"
+    [(ngModel)]="value"
+/>

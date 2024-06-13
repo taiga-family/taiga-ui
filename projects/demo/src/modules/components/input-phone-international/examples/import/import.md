@@ -1,10 +1,10 @@
 ```ts
-import {FormControl, FormGroup} from '@angular/forms';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
-
-// ...
+import {ReactiveFormsModule} from '@angular/forms';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 
 @Component({
+  standalone: true,
+  imports: [ReactiveFormsModule, TuiInputPhoneInternationalComponent],
   // ...
 })
 export class MyComponent {
