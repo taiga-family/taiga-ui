@@ -1,11 +1,6 @@
-<div
-    *ngIf="expanded"
-    class="t-menu"
-    [@tuiFadeIn]="animation"
-    [@tuiHeightCollapse]="animation"
->
+<tui-expand [expanded]="expanded">
     <ng-content select="tui-data-list,[tuiMenu]" />
-</div>
+</tui-expand>
 
 <div class="t-content">
     <ng-content />

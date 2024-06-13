@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiActionBarComponent, TuiActionBarDirective} from '@taiga-ui/kit';
@@ -11,5 +11,5 @@ import {TuiActionBarComponent, TuiActionBarDirective} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected open = false;
+    protected open = signal(false);
 }

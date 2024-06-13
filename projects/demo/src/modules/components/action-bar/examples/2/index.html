@@ -2,12 +2,12 @@
     size="m"
     tuiButton
     type="button"
-    (click)="open = !open"
+    (click)="open.set(true)"
 >
     Show TableBar
 </button>
 
-<tui-actions-bar *tuiActionBar="open">
+<tui-action-bar *tuiActionBar="open()">
     <span>Table bar opened</span>
 
     <button
@@ -15,8 +15,8 @@
         size="m"
         tuiButton
         type="button"
-        (click)="open = false"
+        (click)="open.set(false)"
     >
         Close
     </button>
-</tui-actions-bar>
+</tui-action-bar>

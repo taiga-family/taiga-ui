@@ -1,28 +1,25 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     display: flex;
+    width: calc(100% - 2rem);
     box-sizing: border-box;
     min-height: 4rem;
     border-radius: var(--tui-radius-xl);
-    background: var(--tui-service-backdrop, rgba(0, 0, 0, 0.75));
+    background: rgba(0, 0, 0, 0.75);
     color: var(--tui-text-01);
     backdrop-filter: blur(2rem);
     margin: 0 1rem 1rem;
     flex-direction: column;
-    width: 100%;
     justify-content: center;
     padding: 0.625rem;
 
     ::ng-deep tui-data-list[data-size] {
-        padding-left: 0;
-        padding-bottom: 0.5rem;
+        padding: 0.25rem 0 0.5rem;
     }
-}
-
-.t-menu {
-    overflow: hidden;
 }
 
 .t-content {
@@ -30,7 +27,6 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 0.625rem;
-    margin: auto 0;
 }
 
 .t-actions {

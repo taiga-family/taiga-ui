@@ -4,9 +4,9 @@
     [items]="items"
 />
 
-<ng-template [tuiActionBar]="open">
-    <tui-actions-bar
-        *tuiLet="isMobileRes$ | async as isMobile"
+<ng-container *tuiLet="isMobileRes$ | async as isMobile">
+    <tui-action-bar
+        *tuiActionBar="open"
         [expanded]="!!isMobile && expanded"
     >
         <tui-data-list role="menu">
@@ -124,5 +124,5 @@
         >
             Close
         </button>
-    </tui-actions-bar>
-</ng-template>
+    </tui-action-bar>
+</ng-container>

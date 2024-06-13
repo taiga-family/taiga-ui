@@ -4,8 +4,9 @@ import {
     TUI_ANIMATIONS_SPEED,
     TuiButtonDirective,
     TuiDataListComponent,
+    TuiExpandComponent,
     tuiFadeIn,
-    tuiHeightCollapse,
+    tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -19,13 +20,16 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
         AsyncPipe,
         NgIf,
         TuiDataListComponent,
+        TuiExpandComponent,
     ],
     templateUrl: './action-bar.template.html',
     styleUrls: ['./action-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeIn, tuiHeightCollapse],
+    animations: [tuiFadeIn, tuiSlideInTop],
     host: {
         tuiTheme: 'dark',
+        '[@tuiFadeIn]': 'animation',
+        '[@tuiSlideInTop]': 'animation',
     },
 })
 export class TuiActionBarComponent {

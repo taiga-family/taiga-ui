@@ -1,8 +1,3 @@
 ```html
-<ng-template
-  let-bar
-  [tuiActionBar]="open"
->
-  <tui-actions-bar>// content</tui-actions-bar>
-</ng-template>
+<tui-action-bar *tuiActionBar="open">content</tui-action-bar>
 ```
