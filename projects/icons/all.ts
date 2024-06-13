@@ -996,6 +996,9 @@ const tuiIconDrag =
 const tuiIconDragLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12a1 1 0 1 0-2 0 1 1 0 0 0 2 0m8 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0M9 5a1 1 0 1 0-2 0 1 1 0 0 0 2 0m8 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0M9 19a1 1 0 1 0-2 0 1 1 0 0 0 2 0m8 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconDragOutline =
+    '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><path fill="currentColor" d="M10 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2M6 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconDribbble =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></svg></svg></g></svg>';
 
@@ -1648,6 +1651,9 @@ const tuiIconMastercard =
     '<svg focusable="false" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><g><path fill="#FBB735" d="M15.833 22.986c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378" vector-effect="non-scaling-stroke"/><path fill="#F03727" d="M15.833 9.378c-2.21 1.468-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378" vector-effect="non-scaling-stroke"/><path fill="#F6772D" d="M15.833 9.378c2.211 1.468 3.667 3.967 3.667 6.804s-1.456 5.336-3.667 6.804c-2.21-1.468-3.666-3.967-3.666-6.804s1.455-5.336 3.666-6.804" vector-effect="non-scaling-stroke"/></g></svg></svg></g></svg>';
 
 const tuiIconMastercardMono =
+    '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><path fill="currentColor" fill-rule="evenodd" d="M15.833 9.378c-2.21 1.467-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378m0 13.608c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378m0-12.37a7.14 7.14 0 0 0 0 11.13 7.14 7.14 0 0 0 0-11.13" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconMastercardMonoOutline =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><path fill="currentColor" fill-rule="evenodd" d="M15.833 9.378c-2.21 1.467-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378m0 13.608c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378m0-12.37a7.14 7.14 0 0 0 0 11.13 7.14 7.14 0 0 0 0-11.13" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconMastercardOutline =
@@ -2422,6 +2428,9 @@ const tuiIconSortDescendingOutline =
     '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" d="M4.1 10.665H12c.3 0 .5-.2.5-.5 0-.1 0-.2-.1-.3l-3.9-4.7c-.2-.2-.5-.2-.7-.1l-.1.1-4 4.7c-.2.2-.2.5 0 .7.1.1.3.1.4.1" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconSortOff =
+    '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M11.707 4.879a1 1 0 0 1-1.414 1.414L8 4 5.707 6.293a1 1 0 1 1-1.414-1.414l2.293-2.293a2 2 0 0 1 2.828 0zM4.293 10.707a1 1 0 0 1 1.414-1.414L8 11.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 13a2 2 0 0 1-2.828 0z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
+
+const tuiIconSortOffOutline =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M11.707 4.879a1 1 0 0 1-1.414 1.414L8 4 5.707 6.293a1 1 0 1 1-1.414-1.414l2.293-2.293a2 2 0 0 1 2.828 0zM4.293 10.707a1 1 0 0 1 1.414-1.414L8 11.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 13a2 2 0 0 1-2.828 0z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconSound =
@@ -3454,6 +3463,7 @@ export {
     tuiIconDraft,
     tuiIconDrag,
     tuiIconDragLarge,
+    tuiIconDragOutline,
     tuiIconDribbble,
     tuiIconDribbbleLarge,
     tuiIconDribbbleOutline,
@@ -3672,6 +3682,7 @@ export {
     tuiIconMapPinOutline,
     tuiIconMastercard,
     tuiIconMastercardMono,
+    tuiIconMastercardMonoOutline,
     tuiIconMastercardOutline,
     tuiIconMaximize,
     tuiIconMaximize2,
@@ -3930,6 +3941,7 @@ export {
     tuiIconSortDescending,
     tuiIconSortDescendingOutline,
     tuiIconSortOff,
+    tuiIconSortOffOutline,
     tuiIconSound,
     tuiIconSoundLarge,
     tuiIconSoundOff,

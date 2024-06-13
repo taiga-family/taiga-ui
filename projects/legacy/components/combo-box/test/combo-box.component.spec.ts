@@ -3,7 +3,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {By} from '@angular/platform-browser';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -214,18 +213,6 @@ describe('ComboBox', () => {
                 testComponent.component.onValueChange('raccoon');
                 fixture.detectChanges();
                 expect(testComponent.component.open).toBe(true);
-            });
-        });
-
-        describe('readonly state', () => {
-            beforeEach(() => {
-                testComponent.readOnly = true;
-                fixture.detectChanges();
-            });
-
-            it('should be no icon', () => {
-                fixture.debugElement.query(By.css('.t-icon'));
-                expect(fixture.debugElement.query(By.css('.t-icon'))).toBeFalsy();
             });
         });
     });

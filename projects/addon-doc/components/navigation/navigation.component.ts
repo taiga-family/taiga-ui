@@ -36,9 +36,9 @@ import {
     TUI_COMMON_ICONS,
     TuiDataList,
     TuiExpand,
+    TuiIconComponent,
     TuiLinkDirective,
     TuiScrollbarComponent,
-    TuiSvgComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
@@ -66,7 +66,7 @@ import {
         AsyncPipe,
         NgForOf,
         NgIf,
-        TuiSvgComponent,
+        TuiIconComponent,
         PolymorpheusModule,
         RouterLink,
         TuiScrollbarComponent,

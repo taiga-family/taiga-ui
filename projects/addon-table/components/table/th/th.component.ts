@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiResizedDirective} from '../directives/resized.directive';
@@ -20,7 +20,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 @Component({
     standalone: true,
     selector: 'th[tuiTh]',
-    imports: [TuiResizedDirective, NgIf, NgTemplateOutlet, TuiSvgComponent, AsyncPipe],
+    imports: [TuiResizedDirective, NgIf, NgTemplateOutlet, TuiIconComponent, AsyncPipe],
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

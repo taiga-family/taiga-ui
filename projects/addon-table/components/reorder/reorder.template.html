@@ -11,9 +11,9 @@
                 tuiTileHandle
                 class="t-draggable"
             >
-                <tui-svg
+                <tui-icon
                     class="t-icon"
-                    [src]="options.icons.drag"
+                    [icon]="options.icons.drag"
                 />
                 <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: index}">
                     {{ template }}
