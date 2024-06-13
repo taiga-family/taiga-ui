@@ -21,7 +21,8 @@ jobs:
 
       - name: Prepare demo before deploy from snapshots
         run: |
-          git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v4.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}/v3
           git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2
           git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
 
