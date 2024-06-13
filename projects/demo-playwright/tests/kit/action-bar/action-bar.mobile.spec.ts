@@ -23,7 +23,7 @@ test.describe('ActionBar', () => {
         const showActionBarButton = example.locator('input').first();
 
         await showActionBarButton.click();
-        const actionBarExample = page.locator('tui-actions-bar');
+        const actionBarExample = page.locator('tui-action-bar');
 
         await expect(actionBarExample).toHaveScreenshot('01-actions-bar-mobile.png');
 
