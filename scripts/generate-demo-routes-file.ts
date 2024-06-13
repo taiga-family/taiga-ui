@@ -13,6 +13,7 @@ const EXCEPTIONS = [
     `${DemoRoute.Breakpoints}/Setup`,
     `${DemoRoute.Colors}/Status`,
     `${DemoRoute.Colors}/Base_palette`,
+    `${DemoRoute.Colors}/Support_palette`,
     `${DemoRoute.Colors}/Setup`,
     `${DemoRoute.IconsOverview}/Component`,
     `${DemoRoute.DialogLazyRoutable}/Setup`,
@@ -21,6 +22,8 @@ const EXCEPTIONS = [
     `${DemoRoute.I18N}/Dynamic_loader`,
     `${DemoRoute.Portals}/Setup`,
     `${DemoRoute.Viewport}/Setup`,
+    `${DemoRoute.Surface}/Layers`,
+    `${DemoRoute.IconsOverview}/Setup`,
 ];
 
 /**

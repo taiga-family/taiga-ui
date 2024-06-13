@@ -570,7 +570,7 @@ export const pages: TuiDocPages = [
         section: 'Components',
         title: 'ColorPicker',
         keywords: 'color, picker, input, color',
-        route: 'https://taiga-family.github.io/tui-editor/color-picker',
+        route: 'https://taiga-family.github.io/editor/color-picker',
         target: '_blank',
     },
     {
