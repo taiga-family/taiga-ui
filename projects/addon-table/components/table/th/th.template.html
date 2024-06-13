@@ -7,9 +7,9 @@
 >
     <ng-container [ngTemplateOutlet]="content" />
     {{ table.change$ | async }}
-    <tui-svg
-        class="t-sort-icon"
-        [src]="icon"
+    <tui-icon
+        class="t-icon"
+        [icon]="icon"
     />
 </button>
 <ng-template #content>
