@@ -4,7 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
+import {tuiAssetsPathProvider, TuiRootComponent} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
@@ -53,9 +53,7 @@ describe('InputPhoneInternational', () => {
                 imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    tuiSvgOptionsProvider({
-                        path: (_: string) => 'path/tuiIcon.svg#tuiIcon',
-                    }),
+                    tuiAssetsPathProvider('path/'),
                     {
                         provide: TUI_LANGUAGE,
                         useValue: of(language),

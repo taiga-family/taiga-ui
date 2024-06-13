@@ -1,21 +1,18 @@
 import {TestBed} from '@angular/core/testing';
-import {TUI_SVG_DEFAULT_OPTIONS, TUI_SVG_OPTIONS, TuiFlagPipe} from '@taiga-ui/core';
+import {TUI_ASSETS_PATH, TuiFlagPipe} from '@taiga-ui/core';
 
 describe('tuiFlagPipe', () => {
     let pipe: TuiFlagPipe;
 
     beforeEach(() => {
-        TestBed.overrideProvider(TUI_SVG_OPTIONS, {
-            useValue: {
-                ...TUI_SVG_DEFAULT_OPTIONS,
-                path: (_: string) => 'path/tuiIcon.svg#tuiIcon',
-            },
+        TestBed.overrideProvider(TUI_ASSETS_PATH, {
+            useValue: 'path/',
         }).runInInjectionContext(() => {
             pipe = new TuiFlagPipe();
         });
     });
 
-    it('resolves path from TUI_SVG_OPTIONS', () => {
+    it('resolves path from TUI_ASSETS_PATH', () => {
         expect(pipe.transform('RU')).toContain('path/');
     });
 

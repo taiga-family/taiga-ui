@@ -66,7 +66,6 @@ export class TuiSvgComponent {
     protected readonly innerHTML$: Observable<SafeHtml>;
 
     constructor() {
-        // TODO: Consider legacy mode where all icons are treated as external to support new icons
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
                 if (tuiIsString(this.icon)) {
@@ -142,7 +141,11 @@ export class TuiSvgComponent {
     }
 
     private get isExternal(): boolean {
-        return this.isUrl || this.isCrossDomain;
+        return (
+            this.isUrl ||
+            this.isCrossDomain ||
+            (!this.isSrc && !this.svgService.getOriginal(String(this.icon)))
+        );
     }
 
     private get isUrl(): boolean {
@@ -184,8 +187,7 @@ export class TuiSvgComponent {
             this.onError(UNDEFINED_NAMED_ICON);
         }
 
-        // Empty line for innerHTML when icon is shown through USE tag
-        return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
+        return this.sanitize(icon || '');
     }
 
     private sanitize(src: TuiSafeHtml): TuiSafeHtml {
