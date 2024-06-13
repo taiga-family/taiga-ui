@@ -1,3 +1,4 @@
+export * from './migrate-all-country-iso-codes';
 export * from './migrate-destroy-service';
 export * from './migrate-legacy-mask';
 export * from './migrate-templates';
