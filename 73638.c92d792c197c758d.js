@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73638],{73638:e=>{e.exports='<img\n    [alt]="(countriesNames$ | async)?.[countryIsoCode]"\n    [src]="countryIsoCode | tuiFlag"\n/>\n'}}]);
