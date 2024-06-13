@@ -827,10 +827,10 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'ActionsBar',
+        title: 'ActionBar',
         keywords:
             'молекула, уведомление, нотификация, бабл, облачко, actions, alert, table, bar',
-        route: DemoRoute.ActionsBar,
+        route: DemoRoute.ActionBar,
     },
     {
         section: 'Components',

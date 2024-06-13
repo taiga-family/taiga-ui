@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/core';
 import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiActionsBarDirective} from './actions-bar.directive';
+import {TuiActionBarDirective} from './action-bar.directive';
 
 @Component({
     standalone: true,
@@ -38,7 +38,7 @@ import {TuiActionsBarDirective} from './actions-bar.directive';
     },
 })
 export class TuiActionsBarsComponent implements DoCheck {
-    private readonly directive = inject(TuiActionsBarDirective);
+    private readonly directive = inject(TuiActionBarDirective);
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     public ngDoCheck(): void {

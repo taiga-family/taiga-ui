@@ -17,9 +17,9 @@ import {TuiActionsBarsComponent} from './actions-bars.component';
 
 @Directive({
     standalone: true,
-    selector: 'ng-template[tuiActionsBar]',
+    selector: 'ng-template[tuiActionBar]',
 })
-export class TuiActionsBarDirective extends PolymorpheusTemplate implements OnDestroy {
+export class TuiActionBarDirective extends PolymorpheusTemplate implements OnDestroy {
     private readonly injector = inject(INJECTOR);
     private readonly portalService = inject(TuiDropdownService);
     private readonly component = new PolymorpheusComponent(

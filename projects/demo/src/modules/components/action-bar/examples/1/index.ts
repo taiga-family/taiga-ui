@@ -12,8 +12,8 @@ import {
     TuiLinkDirective,
 } from '@taiga-ui/core';
 import {
-    TuiActionsBarComponent,
-    TuiActionsBarDirective,
+    TuiActionBarComponent,
+    TuiActionBarDirective,
     TuiChipDirective,
     TuiFilterComponent,
 } from '@taiga-ui/kit';
@@ -23,13 +23,13 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [
         TuiButtonDirective,
-        TuiActionsBarComponent,
+        TuiActionBarComponent,
         TuiDataList,
         NgIf,
         AsyncPipe,
         TuiLetDirective,
         TuiChipDirective,
-        TuiActionsBarDirective,
+        TuiActionBarDirective,
         TuiLinkDirective,
         ReactiveFormsModule,
         TuiFilterComponent,

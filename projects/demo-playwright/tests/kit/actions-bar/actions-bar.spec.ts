@@ -1,7 +1,7 @@
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('ActionsBar', () => {
+test.describe('ActionBar', () => {
     test.use({
         viewport: {width: 1000, height: 720},
     });
@@ -9,11 +9,11 @@ test.describe('ActionsBar', () => {
     test('works', async ({page}) => {
         await tuiGoto(page, '/components/actions-bar');
         const example = page.locator('#base');
-        const showActionsBarButton = example.locator('input').first();
+        const showActionBarButton = example.locator('input').first();
 
-        await showActionsBarButton.click();
-        const actionsBarExample = page.locator('tui-actions-bar');
+        await showActionBarButton.click();
+        const actionBarExample = page.locator('tui-actions-bar');
 
-        await expect(actionsBarExample).toHaveScreenshot('01-actions-bar.png');
+        await expect(actionBarExample).toHaveScreenshot('01-actions-bar.png');
     });
 });

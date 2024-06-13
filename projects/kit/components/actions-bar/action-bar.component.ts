@@ -12,7 +12,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
-    selector: 'tui-actions-bar',
+    selector: 'tui-action-bar',
     imports: [
         PolymorpheusModule,
         TuiButtonDirective,
@@ -20,15 +20,15 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
         NgIf,
         TuiDataListComponent,
     ],
-    templateUrl: './actions-bar.template.html',
-    styleUrls: ['./actions-bar.style.less'],
+    templateUrl: './action-bar.template.html',
+    styleUrls: ['./action-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn, tuiHeightCollapse],
     host: {
         tuiTheme: 'dark',
     },
 })
-export class TuiActionsBarComponent {
+export class TuiActionBarComponent {
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()

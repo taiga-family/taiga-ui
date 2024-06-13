@@ -1007,9 +1007,9 @@ export const ROUTES: Routes = [
         title: 'ScrollService',
     }),
     route({
-        path: DemoRoute.ActionsBar,
-        loadComponent: async () => import('../components/actions-bar'),
-        title: 'ActionsBar',
+        path: DemoRoute.ActionBar,
+        loadComponent: async () => import('../components/action-bar'),
+        title: 'ActionBar',
     }),
     route({
         path: DemoRoute.TextfieldController,

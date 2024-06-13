@@ -4,7 +4,7 @@
     [items]="items"
 />
 
-<ng-template [tuiActionsBar]="open">
+<ng-template [tuiActionBar]="open">
     <tui-actions-bar
         *tuiLet="isMobileRes$ | async as isMobile"
         [expanded]="!!isMobile && expanded"

@@ -1,2 +1,2 @@
-export * from './actions-bar.component';
-export * from './actions-bar.directive';
+export * from './action-bar.component';
+export * from './action-bar.directive';
