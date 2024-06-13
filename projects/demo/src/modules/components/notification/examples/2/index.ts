@@ -11,7 +11,7 @@ import {TuiNotificationComponent, tuiNotificationOptionsProvider} from '@taiga-u
     changeDetection,
     providers: [
         tuiNotificationOptionsProvider({
-            icon: 'tuiIconHelpCircle',
+            icon: 'tuiIconCircleHelp',
             status: 'warning',
         }),
     ],

@@ -2,9 +2,9 @@ import {inject} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
-import * as allIcons from '@taiga-ui/icons';
+import {TUI_ALL_ICONS} from '@taiga-ui/icons';
 
-export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
+export type DemoTuiIcon = (typeof TUI_ALL_ICONS)[number];
 
 export type DemoTuiIconsList = ReadonlyArray<DemoTuiIcon | string>;
 
@@ -48,38 +48,29 @@ const COMMERCE_SERVICES: DemoTuiIcon[] = [
  * @description:
  * Algorithm: O(n), where `n` - count of icons
  */
-export function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
-    const large: DemoTuiIcon[] = [];
-    const normal: DemoTuiIcon[] = [];
+export function ensureIcons(): {COMMON: DemoTuiIcon[]} {
+    const common: DemoTuiIcon[] = [];
     const commerceSet = new Set([...COMMERCE_SYSTEMS, ...COMMERCE_SERVICES]);
 
-    for (const [icon] of Object.entries(allIcons)) {
-        const shouldSkip =
-            commerceSet.has(icon as DemoTuiIcon) ||
-            icon === 'tuiCoreIcons' ||
-            icon === 'tuiKitIcons';
+    for (const icon of TUI_ALL_ICONS) {
+        const shouldSkip = commerceSet.has(icon);
 
         if (shouldSkip) {
             continue;
         }
 
-        if (icon.includes('Large')) {
-            large.push(icon as DemoTuiIcon);
-        } else if (!icon.includes('Outline')) {
-            normal.push(icon as DemoTuiIcon);
-        }
+        common.push(icon);
     }
 
-    return {LARGE: large, NORMAL: normal};
+    return {COMMON: common};
 }
 
-export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => {
-    const {LARGE, NORMAL} = ensureIcons();
+export const ICONS = (_deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => {
+    const {COMMON} = ensureIcons();
 
     return {
         'Description and examples': {
-            'Normal / 16px': NORMAL.filter(icon => !deprecated(icon)),
-            'Large / 24px': LARGE.filter(icon => !deprecated(icon)),
+            Common: COMMON,
             'Payment systems': COMMERCE_SYSTEMS,
             'Payment services': COMMERCE_SERVICES,
         },

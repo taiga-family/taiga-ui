@@ -5,6 +5,7 @@ import {DemoRoute} from '@demo/routes';
 import {assets, TuiDemo} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {
+    TuiIconComponent,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiSvgComponent,
@@ -19,6 +20,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     imports: [
         TuiDemo,
         TuiSvgComponent,
+        TuiIconComponent,
         IconsGroupComponent,
         IconsGroupDirective,
         IntersectionObserverModule,
@@ -39,7 +41,7 @@ export default class PageComponent {
 
     protected readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
-        'tuiIconHelpCircle',
+        'tuiIconCircleHelp',
         `<svg xmlns="http://www.w3.org/2000/svg"
              width="24px"
              height="24px"

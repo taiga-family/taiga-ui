@@ -3,8 +3,8 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 const COMMON_ICONS: TuiCommonIcons = {
     check: 'tuiIconCheck',
-    close: 'tuiIconClose',
-    error: 'tuiIconAlertCircle',
+    close: 'tuiIconX',
+    error: 'tuiIconCircleAlert',
     more: 'tuiIconChevronRight',
 };
 

@@ -58,7 +58,7 @@ export default class ExampleComponent {
         </svg>
 `;
 
-    protected readonly tuiIconClockLarge =
+    protected readonly tuiIconClock =
         inject(DomSanitizer).bypassSecurityTrustHtml(tuiIconClockLarge);
 
     constructor() {

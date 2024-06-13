@@ -7,7 +7,7 @@
   >
     <tui-icon
       tuiTileHandle
-      icon="tuiIconDragLarge"
+      icon="tuiIconDrag"
     />
     {{ item.content }}
   </tui-tile>
