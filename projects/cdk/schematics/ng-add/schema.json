@@ -76,10 +76,6 @@
                         "label": "addon-table       Interactive table component and related utilities"
                     },
                     {
-                        "value": "addon-tablebars",
-                        "label": "addon-tablebars   Group action sliding toolbar"
-                    },
-                    {
                         "value": "layout",
                         "label": "layout            Layout components"
                     }

@@ -1,0 +1,22 @@
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Show TableBar
+</button>
+
+<tui-action-bar *tuiActionBar="open()">
+    <span>Table bar opened</span>
+
+    <button
+        appearance="glass"
+        size="m"
+        tuiButton
+        type="button"
+        (click)="open.set(false)"
+    >
+        Close
+    </button>
+</tui-action-bar>

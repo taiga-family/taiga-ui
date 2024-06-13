@@ -1,0 +1,28 @@
+<tui-doc-page
+    header="ActionBar"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
+            content.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="Customization"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

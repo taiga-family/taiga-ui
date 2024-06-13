@@ -1,0 +1,126 @@
+<tui-filter
+    size="s"
+    [formControl]="control"
+    [items]="items"
+/>
+
+<tui-action-bar
+    *tuiActionBar="open"
+    [expanded]="!!isMobile() && expanded"
+>
+    <tui-data-list role="menu">
+        <tui-opt-group>
+            <button
+                role="menuitem"
+                tuiOption
+            >
+                <span>
+                    <tui-icon
+                        icon="tuiIconSendLarge"
+                        class="tui-space_right-3"
+                    />
+                    Send
+                </span>
+            </button>
+            <button
+                role="menuitem"
+                tuiOption
+            >
+                <span>
+                    <tui-icon
+                        icon="tuiIconTrashLarge"
+                        class="tui-space_right-3"
+                    />
+                    Delete
+                </span>
+            </button>
+        </tui-opt-group>
+        <tui-opt-group>
+            <button
+                role="menuitem"
+                tuiOption
+                [disabled]="selected === items.length"
+                (click)="control.setValue(items)"
+            >
+                <span>
+                    <tui-icon
+                        icon="tuiIconGridLarge"
+                        class="tui-space_right-3"
+                    />
+                    Select all
+                </span>
+            </button>
+            <button
+                role="menuitem"
+                tuiOption
+                (click)="close()"
+            >
+                <span>
+                    <tui-icon
+                        icon="tuiIconCloseLarge"
+                        class="tui-space_right-3"
+                    />
+                    Select none and close
+                </span>
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+
+    <div>
+        Selected: {{ selected }} of {{ items.length }}
+
+        <button
+            *ngIf="!isMobile()"
+            appearance="icon"
+            tuiLink
+            class="tui-space_left-3"
+            [pseudo]="true"
+            (click)="toggleSelect()"
+        >
+            {{ selected < items.length ? 'Select all' : 'Select none' }}
+        </button>
+    </div>
+
+    <button
+        appearance="glass"
+        iconLeft="tuiIconSendLarge"
+        size="m"
+        tuiButton
+        [disabled]="expanded"
+    >
+        {{ isMobile() ? '' : 'Send' }}
+    </button>
+    <button
+        *ngIf="!isMobile()"
+        appearance="glass"
+        iconLeft="tuiIconTrashLarge"
+        size="m"
+        tuiButton
+        [disabled]="expanded"
+        (click)="close()"
+    >
+        Delete
+    </button>
+
+    <button
+        *ngIf="isMobile()"
+        appearance="glass"
+        iconLeft="tuiIconMoreHorizontalLarge"
+        size="m"
+        tuiIconButton
+        (click)="expanded = !expanded"
+    >
+        More
+    </button>
+
+    <button
+        *ngIf="!isMobile()"
+        appearance="icon"
+        iconLeft="tuiIconCloseLarge"
+        size="m"
+        tuiIconButton
+        (click)="close()"
+    >
+        Close
+    </button>
+</tui-action-bar>

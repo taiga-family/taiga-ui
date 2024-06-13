@@ -1,0 +1,11 @@
+<tui-expand [expanded]="expanded">
+    <ng-content select="tui-data-list,[tuiMenu]" />
+</tui-expand>
+
+<div class="t-content">
+    <ng-content />
+
+    <div class="t-actions">
+        <ng-content select="a,button,[tuiAction]" />
+    </div>
+</div>

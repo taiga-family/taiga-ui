@@ -827,6 +827,13 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'ActionBar',
+        keywords:
+            'молекула, уведомление, нотификация, бабл, облачко, actions, alert, table, bar',
+        route: DemoRoute.ActionBar,
+    },
+    {
+        section: 'Components',
         title: 'Tag',
         keywords: 'tag, тэг',
         route: DemoRoute.Tag,
@@ -1417,13 +1424,6 @@ export const pages: TuiDocPages = [
                 title: 'ScrollService',
                 keywords: 'scroll, прокрутка, скролл',
                 route: DemoRoute.ScrollService,
-            },
-            {
-                section: 'Tools',
-                title: 'TableBarsService',
-                keywords:
-                    'молекула, уведомление, нотификация, бабл, облачко, alert, table, bar',
-                route: DemoRoute.TableBarService,
             },
         ],
     },

@@ -1,4 +1,5 @@
 export * from '@taiga-ui/kit/components/accordion';
+export * from '@taiga-ui/kit/components/action-bar';
 export * from '@taiga-ui/kit/components/avatar';
 export * from '@taiga-ui/kit/components/badge';
 export * from '@taiga-ui/kit/components/badge-notification';

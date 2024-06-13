@@ -1067,7 +1067,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiTableBarsHostComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTableBarsService',
             moduleSpecifier: '@taiga-ui/addon-tablebars',
+        },
+        to: {
+            name: 'TuiTableBarsService',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {

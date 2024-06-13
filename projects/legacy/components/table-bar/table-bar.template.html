@@ -1,0 +1,28 @@
+<div
+    automation-id="tui-table-bar__bar"
+    class="t-container"
+    [attr.tuiTheme]="getTheme(context.mode || 'onDark')"
+    [class.t-container_adaptive]="context.adaptive"
+>
+    <div class="t-inner">
+        <div class="t-content">
+            <ng-container *polymorpheusOutlet="context.content as text; context: context">
+                {{ text }}
+            </ng-container>
+        </div>
+
+        <button
+            *ngIf="context.hasCloseButton"
+            appearance="icon"
+            automation-id="tui-table-bar__close-button"
+            size="xs"
+            tuiIconButton
+            type="button"
+            class="t-close-button"
+            [iconLeft]="icons.close"
+            (click)="close()"
+        >
+            {{ closeWord$ | async }}
+        </button>
+    </div>
+</div>
