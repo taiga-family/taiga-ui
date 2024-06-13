@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[17100],{17100:e=>{e.exports=".t-flag {\n    width: 1.75rem;\n    height: 1.25rem;\n    margin-right: 0.5rem;\n}\n"}}]);
