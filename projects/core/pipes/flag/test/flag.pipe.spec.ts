@@ -20,10 +20,10 @@ describe('tuiFlagPipe', () => {
     });
 
     it('calculates flag path from TUI_SVG_OPTIONS & isoCode', () => {
-        expect(pipe.transform('RU')).toBe('path/RU.png');
+        expect(pipe.transform('RU')).toBe('path/flags/RU.svg');
     });
 
     it('calculates flag path from isoCode', () => {
-        expect(pipe.transform('AD')).toBe('path/AD.png');
+        expect(pipe.transform('AD')).toBe('path/flags/AD.svg');
     });
 });

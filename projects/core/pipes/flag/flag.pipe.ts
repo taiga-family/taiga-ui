@@ -26,22 +26,6 @@ export class TuiFlagPipe implements PipeTransform {
             return null;
         }
 
-        switch (countryIsoCode) {
-            case 'BL':
-            case 'BQ':
-            case 'CW':
-            case 'GF':
-            case 'GP':
-            case 'MF':
-            case 'MQ':
-            case 'NC':
-            case 'RE':
-            case 'YT':
-                return `${this.staticPath}FR.png`;
-            case 'SX':
-                return `${this.staticPath}NL.png`;
-            default:
-                return `${this.staticPath}${countryIsoCode}.png`;
-        }
+        return `${this.staticPath}flags/${countryIsoCode}.svg`;
     }
 }

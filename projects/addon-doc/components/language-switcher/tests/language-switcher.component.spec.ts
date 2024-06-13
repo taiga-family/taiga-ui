@@ -38,7 +38,7 @@ describe('TuiLanguageSwitcherComponent', () => {
     it('should correct return path to icon flag', () => {
         TestBed.runInInjectionContext(() => {
             expect(new TuiFlagPipe().transform('CN')).toBe(
-                'assets/taiga-ui/icons/CN.png',
+                'assets/taiga-ui/icons/flags/CN.svg',
             );
         });
     });
