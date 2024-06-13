@@ -69,26 +69,24 @@
                 *ngIf="iconLeftContent"
                 class="t-icon t-icon_left t-textfield-icon"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                    appearance="icon"
-                    tuiWrapper
-                    [src]="src"
+                    tuiAppearance="icon"
+                    [icon]="src.toString()"
                 />
             </div>
             <ng-container *ngIf="hasCustomContent">
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="controller.customContent as src"
-                    [src]="src"
+                    [icon]="src"
                 />
             </ng-container>
             <ng-container *ngIf="hasCleaner">
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
-                    appearance="icon"
-                    tuiWrapper
+                    tuiAppearance="icon"
                     class="t-cleaner"
-                    [src]="src"
+                    [icon]="src.toString()"
                     (click.stop)="onValueChange('')"
                 />
             </ng-container>
@@ -102,11 +100,10 @@
                 *ngIf="iconContent"
                 class="t-icon t-textfield-icon"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    appearance="icon"
-                    tuiWrapper
-                    [src]="src"
+                    tuiAppearance="icon"
+                    [icon]="src.toString()"
                 />
             </div>
         </div>

@@ -41,3 +41,13 @@
         opacity: calc(0.5 * var(--tui-disabled-opacity));
     });
 }
+
+tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'] {
+    color: var(--tui-text-02);
+
+    [tuiTheme='dark'] & {
+        color: var(--tui-text-01);
+    }
+}

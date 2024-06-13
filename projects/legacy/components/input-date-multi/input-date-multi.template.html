@@ -37,12 +37,12 @@
     </tui-input-tag>
 
     <ng-template #iconContent>
-        <tui-svg
+        <tui-icon
             *polymorpheusOutlet="calendarIcon as src; context: {$implicit: size}"
-            appearance="icon"
-            tuiWrapper
+            tuiAppearance="icon"
+            [class.t-icon_small]="size === 's'"
             [class.t-icon]="!computedDisabled"
-            [src]="src"
+            [icon]="src.toString()"
             (click)="onIconClick()"
         />
     </ng-template>

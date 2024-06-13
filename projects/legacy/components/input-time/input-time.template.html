@@ -51,11 +51,11 @@
 </ng-template>
 
 <ng-template #iconContent>
-    <tui-svg
+    <tui-icon
         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-        appearance="icon"
-        tuiWrapper
-        [src]="src"
+        tuiAppearance="icon"
+        [class.t-icon_small]="size === 's'"
+        [icon]="src.toString()"
     />
     <input
         *ngIf="showNativePicker"

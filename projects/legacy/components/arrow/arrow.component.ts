@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {TuiDropdownOpenDirective, tuiSizeBigger, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiDropdownOpenDirective, TuiIconComponent, tuiSizeBigger} from '@taiga-ui/core';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -10,7 +10,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
 @Component({
     standalone: true,
     selector: 'tui-arrow',
-    imports: [TuiSvgComponent, PolymorpheusModule, NgIf, AsyncPipe],
+    imports: [PolymorpheusModule, NgIf, AsyncPipe, TuiIconComponent],
     templateUrl: './arrow.template.html',
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,10 +25,13 @@ export class TuiArrowComponent {
         return this.directive?.tuiDropdownOpen || false;
     }
 
+    @HostBinding('class._small')
+    protected get small(): boolean {
+        return !tuiSizeBigger(this.textfieldSize.size);
+    }
+
     protected get arrowIcon(): PolymorpheusContent {
-        return tuiSizeBigger(this.textfieldSize.size)
-            ? this.options.iconLarge
-            : this.options.iconSmall;
+        return !this.small ? this.options.iconLarge : this.options.iconSmall;
     }
 }
 

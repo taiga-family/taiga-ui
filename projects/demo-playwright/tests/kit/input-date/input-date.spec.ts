@@ -148,7 +148,7 @@ test.describe('InputDate', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await api.prepareBeforeScreenshot(':not(#base)');
-                await example.locator('tui-input-date .t-icon tui-svg').click();
+                await example.locator('tui-input-date .t-icon tui-icon').click();
                 await expect(page).toHaveScreenshot(`08-input-date-${language}.png`);
             });
         });

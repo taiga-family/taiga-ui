@@ -41,11 +41,10 @@
             *ngIf="iconLeftContent"
             class="t-icon t-icon_left t-textfield-icon"
         >
-            <tui-svg
+            <tui-icon
                 *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                appearance="icon"
-                tuiWrapper
-                [src]="src"
+                tuiAppearance="icon"
+                [icon]="src.toString()"
             />
         </div>
         <div class="t-wrapper">
@@ -75,10 +74,10 @@
                 automation-id="tui-primitive-textfield__custom-content"
                 class="t-custom-content"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="controller.customContent as src"
                     class="t-custom-icon"
-                    [src]="src"
+                    [icon]="src"
                 />
             </div>
             <span
@@ -89,12 +88,13 @@
                 class="t-cleaner"
                 (click.stop)="clear()"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="
                         iconCleaner || controller.options.iconCleaner as src;
                         context: {$implicit: size}
                     "
-                    [src]="src"
+                    [icon]="src.toString()"
+                    [style.border]="'0.25rem solid transparent'"
                 />
             </span>
             <tui-tooltip
@@ -108,11 +108,10 @@
                 *ngIf="iconContent"
                 class="t-icon t-textfield-icon"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    appearance="icon"
-                    tuiWrapper
-                    [src]="src"
+                    tuiAppearance="icon"
+                    [icon]="src.toString()"
                 />
             </div>
         </div>

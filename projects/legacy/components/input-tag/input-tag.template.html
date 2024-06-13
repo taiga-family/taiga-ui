@@ -23,11 +23,10 @@
                 *ngIf="iconLeft"
                 class="t-icon t-icon_left t-textfield-icon t-icon-wrapper"
             >
-                <tui-svg
+                <tui-icon
                     *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
-                    appearance="icon"
-                    tuiWrapper
-                    [src]="src"
+                    tuiAppearance="icon"
+                    [icon]="src.toString()"
                 />
             </div>
             <div class="t-wrapper">
@@ -120,14 +119,13 @@
                 class="t-icons t-icon-wrapper"
             >
                 <ng-container *ngIf="hasCleaner">
-                    <tui-svg
+                    <tui-icon
                         *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
                         #cleaner
-                        appearance="icon"
                         automation-id="tui-input-tag__cleaner"
-                        tuiWrapper
+                        tuiAppearance="icon"
                         class="t-cleaner"
-                        [src]="src"
+                        [icon]="src.toString()"
                         (click.stop)="onCleanerClick()"
                     />
                 </ng-container>
@@ -142,19 +140,18 @@
                     *ngIf="icon"
                     class="t-icon t-textfield-icon"
                 >
-                    <tui-svg
+                    <tui-icon
                         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-                        appearance="icon"
-                        tuiWrapper
-                        [src]="src"
+                        tuiAppearance="icon"
+                        [icon]="src.toString()"
                     />
                 </div>
             </div>
         </div>
         <ng-template #errorIcon>
-            <tui-svg
+            <tui-icon
                 class="t-error-icon"
-                [src]="icons.error"
+                [icon]="icons.error"
             />
         </ng-template>
     </div>
