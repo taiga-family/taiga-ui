@@ -6,7 +6,7 @@ test.describe('Dropdown', () => {
     test.use({viewport: {width: 720, height: 720}});
 
     test('base', async ({page}) => {
-        await tuiGoto(page, '/directives/dropdown');
+        await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.scrollIntoViewIfNeeded();
@@ -15,7 +15,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Interesting', async ({page}) => {
-        await tuiGoto(page, '/directives/dropdown');
+        await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#interesting');
 
         await example.scrollIntoViewIfNeeded();
@@ -24,7 +24,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Appearance', async ({page}) => {
-        await tuiGoto(page, '/directives/dropdown');
+        await tuiGoto(page, DemoRoute.Dropdown);
         const example = new TuiDocumentationPagePO(page).getExample('#appearance');
 
         await example.scrollIntoViewIfNeeded();
@@ -71,7 +71,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Scrollbar dropdown in active zone', async ({page}) => {
-        await tuiGoto(page, '/directives/dropdown/API?tuiDropdownMaxHeight=150');
+        await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`);
 
         const api = new TuiDocumentationPagePO(page).apiPageExample;
 
@@ -82,7 +82,7 @@ test.describe('Dropdown', () => {
     });
 
     test('Dropdown selection', async ({page}) => {
-        await tuiGoto(page, '/directives/dropdown-selection');
+        await tuiGoto(page, DemoRoute.DropdownSelection);
 
         const textarea = new TuiDocumentationPagePO(page)
             .getExample('#textarea')

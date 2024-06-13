@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -14,7 +15,7 @@ test.describe('InputDate', () => {
         });
 
         test('correct filler display for size', async ({page}) => {
-            await tuiGoto(page, '/components/input-date');
+            await tuiGoto(page, DemoRoute.InputDate);
 
             const api = new TuiDocumentationPagePO(page);
             const example = api.getExample('#sizes');
@@ -77,7 +78,7 @@ test.describe('InputDate', () => {
         });
 
         test('maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, '/components/input-date/API?max$=1');
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?max$=1`);
 
             await input.scrollIntoViewIfNeeded();
             await input.click();
@@ -86,7 +87,7 @@ test.describe('InputDate', () => {
         });
 
         test('minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, '/components/input-date/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?min$=3`);
 
             await input.scrollIntoViewIfNeeded();
             await input.click();
@@ -96,7 +97,7 @@ test.describe('InputDate', () => {
 
         test.describe('Invalid date cases', () => {
             test('does not accept day > 31', async ({page}) => {
-                await tuiGoto(page, '/components/input-date/API');
+                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('35');
@@ -106,7 +107,7 @@ test.describe('InputDate', () => {
             });
 
             test('does not accept month > 12', async ({page}) => {
-                await tuiGoto(page, '/components/input-date/API');
+                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('1715');
@@ -116,7 +117,7 @@ test.describe('InputDate', () => {
             });
 
             test('Type 999999 => 09.09.9999', async ({page}) => {
-                await tuiGoto(page, '/components/input-date/API');
+                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('999999');
@@ -141,7 +142,7 @@ test.describe('InputDate', () => {
 
         ['russian', 'english', 'spanish'].forEach(language => {
             test(`mobile calendar - ${language}`, async ({page}) => {
-                await tuiGoto(page, '/components/input-date', {language});
+                await tuiGoto(page, DemoRoute.InputDate, {language});
                 const api = new TuiDocumentationPagePO(page);
                 const example = api.getExample('#base');
 
@@ -153,7 +154,7 @@ test.describe('InputDate', () => {
         });
 
         test('native data picker', async ({page}) => {
-            await tuiGoto(page, '/components/input-date');
+            await tuiGoto(page, DemoRoute.InputDate);
             const example = new TuiDocumentationPagePO(page).getExample(
                 '#native-input-date',
             );

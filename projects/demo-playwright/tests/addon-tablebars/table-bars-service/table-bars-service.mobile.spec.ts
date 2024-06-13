@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -17,7 +18,7 @@ test.describe('TableBarsService', () => {
     });
 
     test('works', async ({page}) => {
-        await tuiGoto(page, '/services/table-bars-service');
+        await tuiGoto(page, DemoRoute.TableBarService);
         const example = page.locator('#base');
         const showTableBarButton = example.locator('button:has-text("Show TableBar")');
 

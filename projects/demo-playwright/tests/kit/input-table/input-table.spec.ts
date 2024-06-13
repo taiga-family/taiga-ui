@@ -1,9 +1,10 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('InputTable', () => {
     test('editing fields inside a table', async ({page}) => {
-        await tuiGoto(page, '/components/input');
+        await tuiGoto(page, DemoRoute.Input);
 
         const example = new TuiDocumentationPagePO(page).getExample('#table');
 

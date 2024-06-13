@@ -1,10 +1,11 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('DropdownSelection', () => {
     test.use({viewport: {width: 400, height: 400}});
 
-    test.beforeEach(async ({page}) => tuiGoto(page, '/directives/dropdown-selection'));
+    test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.DropdownSelection));
 
     test('current range must be a text node only', async ({page}) => {
         const api = new TuiDocumentationPagePO(page);

@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -5,7 +6,10 @@ test.describe('Calendars', () => {
     test.use({viewport: {width: 720, height: 700}});
 
     test('Calendar', async ({page}) => {
-        await tuiGoto(page, 'components/calendar/API?value$=2&maxViewedMonth$=1&max$=0');
+        await tuiGoto(
+            page,
+            `${DemoRoute.Calendar}/API?value$=2&maxViewedMonth$=1&max$=0`,
+        );
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar').first();
@@ -17,7 +21,7 @@ test.describe('Calendars', () => {
     });
 
     test('Open calendar from start value', async ({page}) => {
-        await tuiGoto(page, 'components/calendar/API?value$=2');
+        await tuiGoto(page, `${DemoRoute.Calendar}/API?value$=2`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar').first();
@@ -29,7 +33,7 @@ test.describe('Calendars', () => {
     });
 
     test('Set range between two days', async ({page}) => {
-        await tuiGoto(page, 'components/calendar/API?value$=1');
+        await tuiGoto(page, `${DemoRoute.Calendar}/API?value$=1`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar').first();
@@ -41,7 +45,7 @@ test.describe('Calendars', () => {
     });
 
     test('Month', async ({page}) => {
-        await tuiGoto(page, 'components/calendar-month/API?year$=1&value$=2');
+        await tuiGoto(page, `${DemoRoute.CalendarMonth}/API?year$=1&value$=2`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar-month').first();

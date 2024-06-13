@@ -1,9 +1,10 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('TuiError', () => {
     test('No extra space between content', async ({page}) => {
-        await tuiGoto(page, 'components/error#base');
+        await tuiGoto(page, `${DemoRoute.Error}#base`);
         const example = new TuiDocumentationPagePO(page).getExample('#base');
 
         const checkbox = example.locator('input[tuiSwitch]');

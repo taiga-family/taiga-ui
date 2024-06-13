@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -13,7 +14,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDateRange', async ({page}) => {
-        await tuiGoto(page, 'components/input-date-range/API', {date});
+        await tuiGoto(page, `${DemoRoute.InputDateRange}/API`, {date});
 
         await new TuiDocumentationPagePO(page).apiPageExample
             .locator('tui-input-date-range .t-icons')
@@ -36,7 +37,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDateMulti', async ({page}) => {
-        await tuiGoto(page, 'components/input-date-multi/API', {date});
+        await tuiGoto(page, `${DemoRoute.InputDateMulti}/API`, {date});
 
         await new TuiDocumentationPagePO(page).apiPageExample
             .locator('tui-input-date[multiple] .t-icons')
@@ -66,7 +67,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDate', async ({page}) => {
-        await tuiGoto(page, 'components/input-date/API', {date});
+        await tuiGoto(page, `${DemoRoute.InputDate}/API`, {date});
 
         await new TuiDocumentationPagePO(page).apiPageExample
             .locator('tui-input-date .t-icons')

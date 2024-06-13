@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
 import type {Locator} from '@playwright/test';
@@ -9,7 +10,7 @@ test.describe('Slider', () => {
     test.describe('correctly displays values with float percentage progress', () => {
         [4, 7, 13, 24, 39, 78].forEach(value => {
             test(`value = ${value}`, async ({page}) => {
-                await tuiGoto(page, 'components/slider/API?max=89&min=0&step=1');
+                await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
                 const slider = new TuiSliderPO(apiPageExample.getByRole('slider'));
@@ -38,7 +39,7 @@ test.describe('Slider', () => {
             test(`[inputStep]=${inputStep} & [prettifiedControlValue]=${expectedControlValue}`, async ({
                 page,
             }) => {
-                await tuiGoto(page, 'components/slider');
+                await tuiGoto(page, DemoRoute.Slider);
 
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
@@ -60,7 +61,7 @@ test.describe('Slider', () => {
     });
 
     test('with [min] > 0', async ({page}) => {
-        await tuiGoto(page, 'components/slider/API?min=1&max=10&segments=9');
+        await tuiGoto(page, `${DemoRoute.Slider}/API?min=1&max=10&segments=9`);
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
@@ -70,7 +71,7 @@ test.describe('Slider', () => {
     });
 
     test('with [min] < 0 && [max] > 0 ', async ({page}) => {
-        await tuiGoto(page, 'components/slider/API?min=-5&max=5&segments=5');
+        await tuiGoto(page, `${DemoRoute.Slider}/API?min=-5&max=5&segments=5`);
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
@@ -89,7 +90,7 @@ test.describe('Slider', () => {
             let minusButton!: Locator;
 
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, 'components/slider');
+                await tuiGoto(page, DemoRoute.Slider);
 
                 example = page.locator('#complex .t-example');
                 slider = new TuiSliderPO(example.getByRole('slider'));
@@ -150,7 +151,7 @@ test.describe('Slider', () => {
             let tickLabels!: Locator[];
 
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, 'components/slider');
+                await tuiGoto(page, DemoRoute.Slider);
 
                 const documentationPage = new TuiDocumentationPagePO(page);
 

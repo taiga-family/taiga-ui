@@ -1,10 +1,11 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
-        await tuiGoto(page, 'components/combo-box');
+        await tuiGoto(page, DemoRoute.ComboBox);
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#ignore-disabled');

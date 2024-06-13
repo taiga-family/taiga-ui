@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -5,7 +6,7 @@ test.describe('FieldError', () => {
     test('Errors of invalid control are shown correctly', async ({page}) => {
         const example = new TuiDocumentationPagePO(page).getExample('#base');
 
-        await tuiGoto(page, '/pipes/field-error');
+        await tuiGoto(page, DemoRoute.FieldError);
 
         const input = example.locator('input').first();
 
@@ -22,7 +23,7 @@ test.describe('FieldError', () => {
     test('Submit invalid form', async ({page}) => {
         const example = new TuiDocumentationPagePO(page).getExample('#patterns');
 
-        await tuiGoto(page, '/pipes/field-error');
+        await tuiGoto(page, DemoRoute.FieldError);
         await example.locator('button').click();
 
         await page.waitForTimeout(500);

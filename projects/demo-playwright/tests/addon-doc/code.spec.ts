@@ -1,9 +1,10 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Code blocks', () => {
     test('API page', async ({page}) => {
-        await tuiGoto(page, '/components/line-clamp/Setup');
+        await tuiGoto(page, `${DemoRoute.LineClamp}/Setup`);
 
         const locators = await page.locator('tui-doc-code').all();
 
@@ -15,7 +16,7 @@ test.describe('Code blocks', () => {
     });
 
     test('tabs', async ({page}) => {
-        await tuiGoto(page, '/components/line-clamp');
+        await tuiGoto(page, DemoRoute.LineClamp);
 
         const documentation = new TuiDocumentationPagePO(page);
 

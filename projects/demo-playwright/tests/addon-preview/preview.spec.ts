@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -10,7 +11,7 @@ test.describe('Preview', () => {
         let documentationPage!: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, 'components/preview');
+            await tuiGoto(page, DemoRoute.Preview);
             documentationPage = new TuiDocumentationPagePO(page);
         });
 

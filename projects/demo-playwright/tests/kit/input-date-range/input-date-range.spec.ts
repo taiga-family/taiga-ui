@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
@@ -18,7 +19,7 @@ test.describe('InputDateRange', () => {
     });
 
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, 'components/input-date-range');
+        await tuiGoto(page, DemoRoute.InputDateRange);
 
         example = new TuiDocumentationPagePO(page).apiPageExample;
 
@@ -70,7 +71,7 @@ test.describe('InputDateRange', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-range/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect(inputDateRange.textfield).toHaveScreenshot(
@@ -82,7 +83,7 @@ test.describe('InputDateRange', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-range/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect(page).toHaveScreenshot('06-input-date-range-minimum-month.png', {
@@ -92,7 +93,7 @@ test.describe('InputDateRange', () => {
 
         test.describe('prevents changes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
-                await tuiGoto(page, 'components/input-date-range/API');
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.type('32');
 
@@ -104,7 +105,7 @@ test.describe('InputDateRange', () => {
             });
 
             test('month > 12', async ({page}) => {
-                await tuiGoto(page, 'components/input-date-range/API');
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.type('2913');
 
@@ -115,7 +116,7 @@ test.describe('InputDateRange', () => {
             });
 
             test('pads date range if it is less than [minLength]', async ({page}) => {
-                await tuiGoto(page, 'components/input-date-range/API?minLength$=0'); // minLength = {day: 3}
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=0`); // minLength = {day: 3}
 
                 await inputDateRange.textfield.type('21052023-22052023');
 
@@ -125,7 +126,7 @@ test.describe('InputDateRange', () => {
             });
 
             test('cuts date range if it is more than [maxLength]', async ({page}) => {
-                await tuiGoto(page, 'components/input-date-range/API?maxLength$=0'); // maxLength = {day: 5}
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=0`); // maxLength = {day: 5}
 
                 await inputDateRange.textfield.type('20052023-29052023');
 

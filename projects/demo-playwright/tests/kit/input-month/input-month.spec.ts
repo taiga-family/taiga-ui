@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthPO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -19,7 +20,7 @@ test.describe('InputMonth', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-month/API?max$=1');
+            await tuiGoto(page, `${DemoRoute.InputMonth}/API?max$=1`);
             await inputMonth.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
@@ -27,7 +28,7 @@ test.describe('InputMonth', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, 'components/input-month/API?min$=3');
+            await tuiGoto(page, `${DemoRoute.InputMonth}/API?min$=3`);
             await inputMonth.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();

@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
@@ -10,7 +11,7 @@ test.describe('TablePagination', () => {
         test.use({viewport: {width: 600, height: 250}});
 
         test('Basic case', async ({page}) => {
-            await tuiGoto(page, '/components/table-pagination/API');
+            await tuiGoto(page, `${DemoRoute.TablePagination}/API`);
 
             const documentationPage = new TuiDocumentationPagePO(page);
 
@@ -43,7 +44,7 @@ test.describe('TablePagination', () => {
     });
 
     test('Custom size-option content', async ({page}) => {
-        await tuiGoto(page, '/components/table-pagination');
+        await tuiGoto(page, DemoRoute.TablePagination);
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#custom-size-option-content');
