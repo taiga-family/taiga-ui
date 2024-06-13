@@ -5,13 +5,13 @@ import {
     TuiButtonDirective,
     TuiDropdownContextDirective,
     TuiDropdownDirective,
-    TuiSvgComponent,
+    TuiIconComponent,
 } from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
-        TuiSvgComponent,
+        TuiIconComponent,
         TuiDropdownContextDirective,
         TuiDropdownDirective,
         TuiButtonDirective,

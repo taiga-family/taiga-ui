@@ -3,14 +3,14 @@ import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/legacy';
 import {TuiTagModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiTagModule, TuiSvgComponent],
+    imports: [TuiDemo, TuiTagModule, TuiIconComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -1,8 +1,9 @@
 <span class="icon">
-    <tui-svg
+    <img
         *polymorpheusOutlet="account.paymentSystem as src"
+        alt=""
         class="icon-content"
-        [src]="src"
+        [src]="src | tuiIcon"
     />
 </span>
 <span class="info">

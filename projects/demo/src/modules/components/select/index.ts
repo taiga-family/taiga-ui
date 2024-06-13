@@ -13,9 +13,9 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
+    TuiIconComponent,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -50,7 +50,7 @@ class Account {
         TuiTextfieldControllerModule,
         TuiDataListWrapperComponent,
         TuiDataListDirective,
-        TuiSvgComponent,
+        TuiIconComponent,
         TuiButtonDirective,
         InheritedDocumentationComponent,
     ],

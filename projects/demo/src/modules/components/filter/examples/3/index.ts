@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiFilterComponent} from '@taiga-ui/kit';
 
 const getIcon: Record<string, string> = {
@@ -16,7 +16,7 @@ const getIcon: Record<string, string> = {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiFilterComponent, TuiSvgComponent, JsonPipe],
+    imports: [ReactiveFormsModule, TuiFilterComponent, TuiIconComponent, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -28,8 +28,8 @@
                 [checked]="!item.disabled"
             />
             <span>{{ data[index] | tuiAmount: 'RUB' | async }}</span>
-            <tui-svg
-                src="tuiIconClose"
+            <tui-icon
+                icon="tuiIconClose"
                 class="disable"
                 [class.disable_rotated]="item.disabled"
                 (click.stop)="toggle(index)"

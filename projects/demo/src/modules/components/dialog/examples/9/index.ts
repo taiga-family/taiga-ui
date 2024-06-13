@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiDialogService,
     TuiHintOptionsDirective,
-    TuiSvgComponent,
+    TuiIconPipe,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -24,7 +24,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
         TuiTextfieldControllerModule,
         TuiHintOptionsDirective,
         TuiButtonDirective,
-        TuiSvgComponent,
+        TuiIconPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

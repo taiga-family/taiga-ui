@@ -7,9 +7,9 @@ import {
     TuiAlertService,
     TuiDataListComponent,
     TuiDataListDirective,
+    TuiIconComponent,
     TuiOptGroupDirective,
     TuiOptionComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import type {TuiSelectComponent} from '@taiga-ui/legacy';
 import {TuiSelectModule} from '@taiga-ui/legacy';
@@ -24,7 +24,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiOptGroupDirective,
         NgForOf,
         TuiOptionComponent,
-        TuiSvgComponent,
+        TuiIconComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
