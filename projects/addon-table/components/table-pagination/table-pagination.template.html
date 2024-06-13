@@ -33,10 +33,10 @@
                         >
                             {{ text }}
                         </ng-container>
-                        <tui-svg
+                        <tui-icon
                             *ngIf="item === size; else fakeIcon"
                             class="t-checkmark"
-                            [src]="commonIcons.check"
+                            [icon]="commonIcons.check"
                         />
 
                         <ng-template #fakeIcon>
