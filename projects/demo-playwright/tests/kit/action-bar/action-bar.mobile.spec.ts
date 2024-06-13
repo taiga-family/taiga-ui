@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -17,7 +18,7 @@ test.describe('ActionBar', () => {
     });
 
     test('works', async ({page}) => {
-        await tuiGoto(page, '/components/actions-bar');
+        await tuiGoto(page, DemoRoute.ActionBar);
         const example = page.locator('#base');
         const showActionBarButton = example.locator('input').first();
 

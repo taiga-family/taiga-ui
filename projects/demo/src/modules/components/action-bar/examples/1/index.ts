@@ -1,9 +1,9 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiBreakpointService,
     TuiButtonDirective,
@@ -11,25 +11,16 @@ import {
     TuiIconComponent,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import {
-    TuiActionBarComponent,
-    TuiActionBarDirective,
-    TuiChipDirective,
-    TuiFilterComponent,
-} from '@taiga-ui/kit';
+import {TuiActionBar, TuiFilterComponent} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
     standalone: true,
     imports: [
         TuiButtonDirective,
-        TuiActionBarComponent,
+        TuiActionBar,
         TuiDataList,
         NgIf,
-        AsyncPipe,
-        TuiLetDirective,
-        TuiChipDirective,
-        TuiActionBarDirective,
         TuiLinkDirective,
         ReactiveFormsModule,
         TuiFilterComponent,
@@ -45,8 +36,8 @@ export default class ExampleComponent {
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
-    protected readonly isMobileRes$ = inject(TuiBreakpointService).pipe(
-        map(size => size === 'mobile'),
+    protected readonly isMobile = toSignal(
+        inject(TuiBreakpointService).pipe(map(size => size === 'mobile')),
     );
 
     protected get value(): string[] {

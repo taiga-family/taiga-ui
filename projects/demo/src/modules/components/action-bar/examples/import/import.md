@@ -1,12 +1,11 @@
 ```ts
-import {TuiActionBarDirective, TuiActionBarComponent} from '@taiga-ui/kit';
+import {TuiActionBar} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
-    TuiActionBarDirective,
-    TuiActionBarComponent,
+    TuiActionBar,
     // ...
   ],
   // ...
