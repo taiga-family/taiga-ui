@@ -1653,11 +1653,11 @@ const tuiIconMastercard =
 const tuiIconMastercardMono =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><path fill="currentColor" fill-rule="evenodd" d="M15.833 9.378c-2.21 1.467-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378m0 13.608c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378m0-12.37a7.14 7.14 0 0 0 0 11.13 7.14 7.14 0 0 0 0-11.13" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
-const tuiIconMastercardOutline =
-    '<svg overflow="visible" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g><path fill="#FBB735" d="M15.833 22.986c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378"/><path fill="#F03727" d="M15.833 9.378c-2.21 1.468-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378"/><path fill="#F6772D" d="M15.833 9.378c2.211 1.468 3.667 3.967 3.667 6.804s-1.456 5.336-3.667 6.804c-2.21-1.468-3.666-3.967-3.666-6.804s1.455-5.336 3.666-6.804"/></g></svg>';
-
 const tuiIconMastercardMonoOutline =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><path fill="currentColor" fill-rule="evenodd" d="M15.833 9.378c-2.21 1.467-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378m0 13.608c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378m0-12.37a7.14 7.14 0 0 0 0 11.13 7.14 7.14 0 0 0 0-11.13" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconMastercardOutline =
+    '<svg overflow="visible" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g><path fill="#FBB735" d="M15.833 22.986c2.211-1.468 3.667-3.967 3.667-6.804s-1.456-5.336-3.667-6.804A8.26 8.26 0 0 1 20.417 8c4.556 0 8.25 3.663 8.25 8.182s-3.694 8.182-8.25 8.182a8.26 8.26 0 0 1-4.584-1.378"/><path fill="#F03727" d="M15.833 9.378c-2.21 1.468-3.666 3.967-3.666 6.804s1.455 5.336 3.666 6.804a8.26 8.26 0 0 1-4.583 1.378C6.694 24.364 3 20.7 3 16.182S6.694 8 11.25 8a8.26 8.26 0 0 1 4.583 1.378"/><path fill="#F6772D" d="M15.833 9.378c2.211 1.468 3.667 3.967 3.667 6.804s-1.456 5.336-3.667 6.804c-2.21-1.468-3.666-3.967-3.666-6.804s1.455-5.336 3.666-6.804"/></g></svg>';
 
 const tuiIconMaximize =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></svg></svg></g></svg>';
@@ -3682,8 +3682,8 @@ export {
     tuiIconMapPinOutline,
     tuiIconMastercard,
     tuiIconMastercardMono,
-    tuiIconMastercardOutline,
     tuiIconMastercardMonoOutline,
+    tuiIconMastercardOutline,
     tuiIconMaximize,
     tuiIconMaximize2,
     tuiIconMaximize2Large,
