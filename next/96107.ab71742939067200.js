@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[96107],{96107:t=>{t.exports='```html\n<tui-root>\n  \x3c!-- The rest of your application --\x3e\n  <tui-table-bars-host ngProjectAs="tuiOverContent"></tui-table-bars-host>\n</tui-root>\n```\n'}}]);
