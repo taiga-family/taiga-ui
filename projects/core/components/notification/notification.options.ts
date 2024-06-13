@@ -14,9 +14,9 @@ export interface TuiNotificationOptions {
 
 const STATUS_ICON = {
     info: 'tuiIconInfo',
-    success: 'tuiIconCheckCircle',
-    error: 'tuiIconXCircle',
-    warning: 'tuiIconAlertCircle',
+    success: 'tuiIconCircleCheck',
+    error: 'tuiIconCircleX',
+    warning: 'tuiIconCircleAlert',
     neutral: 'tuiIconInfo',
 } as const;
 
