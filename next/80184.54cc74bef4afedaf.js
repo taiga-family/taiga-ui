@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80184],{80184:n=>{n.exports="tui-icon {\n    width: 1rem;\n    height: 1rem;\n}\n\n.success {\n    color: var(--tui-success-fill);\n}\n\n.error {\n    color: var(--tui-error-fill);\n}\n"}}]);
