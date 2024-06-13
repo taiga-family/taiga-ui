@@ -31,6 +31,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
         NgIf,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
