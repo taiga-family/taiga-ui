@@ -1,4 +1,4 @@
-<!-- @license lucide-static v0.394.0 - ISC -->
+<!-- @license lucide-static v0.395.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     class="lucide lucide-pin"
@@ -11,9 +11,9 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <line vector-effect="non-scaling-stroke" x1="12" x2="12" y1="17" y2="22" />
+    <path vector-effect="non-scaling-stroke" d="M12 17v5" />
     <path
         vector-effect="non-scaling-stroke"
-        d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"
+        d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"
     />
 </svg>
