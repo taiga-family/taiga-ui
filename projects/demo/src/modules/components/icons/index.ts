@@ -4,7 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {assets, TuiDemo} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {
+    TuiIconComponent,
+    TuiLinkDirective,
+    TuiNotificationComponent,
+} from '@taiga-ui/core';
 import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
@@ -17,6 +21,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     imports: [
         TuiDemo,
         TuiSvgComponent,
+        TuiIconComponent,
         IconsGroupComponent,
         IconsGroupDirective,
         IntersectionObserverModule,
@@ -37,7 +42,7 @@ export default class PageComponent {
 
     protected readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
-        'tuiIconHelpCircle',
+        'tuiIconCircleHelp',
         `<svg xmlns="http://www.w3.org/2000/svg"
              width="24px"
              height="24px"

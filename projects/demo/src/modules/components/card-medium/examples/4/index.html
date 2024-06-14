@@ -6,7 +6,7 @@
         <tui-avatar
             *ngFor="let url of urls"
             size="s"
-            [src]="url | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+            [src]="url | tuiFallbackSrc: 'tuiIconUser' | async"
             [style.background]="url | tuiAutoColor"
         />
     </tui-avatar-stack>
@@ -30,7 +30,7 @@
         <tui-avatar
             *ngFor="let url of urls"
             size="s"
-            [src]="url | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+            [src]="url | tuiFallbackSrc: 'tuiIconUser' | async"
             [style.background]="url | tuiAutoColor"
         />
     </tui-avatar-stack>

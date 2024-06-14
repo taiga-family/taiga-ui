@@ -15,7 +15,7 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     successMessage: '',
     messageDirection: 'bottom-left',
     messageAppearance: '',
-    icon: ({$implicit}) => ($implicit === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge'),
+    icon: () => 'tuiIconCopy',
 };
 
 export const TUI_INPUT_COPY_OPTIONS = tuiCreateToken(TUI_INPUT_COPY_DEFAULT_OPTIONS);

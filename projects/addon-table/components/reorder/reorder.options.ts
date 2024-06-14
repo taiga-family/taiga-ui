@@ -13,7 +13,7 @@ export const TUI_REORDER_DEFAULT_OPTIONS: TuiReorderOptions = {
     icons: {
         hide: 'tuiIconEye',
         show: 'tuiIconEyeOff',
-        drag: 'tuiIconDrag',
+        drag: 'tuiIconGripVertical',
     },
 };
 

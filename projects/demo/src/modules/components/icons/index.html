@@ -9,34 +9,15 @@
         <tui-notification>
             Open source theme for Taiga UI uses processed
             <a
-                href="https://feathericons.com/"
+                href="https://lucide.dev/"
                 rel="noreferrer"
                 target="_blank"
                 tuiLink
             >
-                Feather Icons
+                Lucide Icons
             </a>
             as its icon pack with some custom made icons.
         </tui-notification>
-        <p>
-            These icons can be used by name in
-            <a
-                tuiLink
-                [routerLink]="routes.IconsOverview"
-            >
-                Svg
-            </a>
-            component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with
-            linear gradient you need to provide
-            <a
-                fragment="sanitizer"
-                tuiLink
-                [routerLink]="routes.IconsBundled"
-            >
-                TUI_SANITIZER
-            </a>
-            token, which is responsible for removing malicious code from the svg.
-        </p>
 
         <icons-group
             waIntersectionObserver
@@ -53,45 +34,15 @@
                     class="icon-place"
                     (waIntersectionObservee)="entry.isIntersecting = entry.isIntersecting || onIntersection($event)"
                 >
-                    <tui-svg
+                    <tui-icon
                         *ngIf="entry.isIntersecting"
                         class="icon"
-                        [src]="icon"
+                        [icon]="icon"
                         (click)="copyPath(icon)"
                     />
                 </div>
             </ng-template>
         </icons-group>
-    </ng-template>
-
-    <ng-template pageTab="Component">
-        <div>
-            <tui-svg
-                [src]="icon"
-                (tui-icon-error)="documentationPropertyIconErrorChange.emitEvent($event)"
-            />
-        </div>
-
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="src"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
-            >
-                SVG image code, link to a file, link to a segment or icon name. If you use name or segment, set icon
-                size with CSS
-            </ng-template>
-            <ng-template
-                #documentationPropertyIconErrorChange="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="tui-icon-error"
-                documentationPropertyType="CustomEvent<TuiIconError>"
-            >
-                CustomEvent of loading error
-            </ng-template>
-        </tui-doc-documentation>
     </ng-template>
 
     <tui-setup *pageTab />

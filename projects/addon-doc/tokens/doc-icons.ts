@@ -14,7 +14,7 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     light: 'tuiIconSun',
     dark: 'tuiIconMoon',
     code: 'tuiIconCode',
-    menu: 'tuiIconMenuLarge',
+    menu: 'tuiIconMenu',
 };
 
 export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);

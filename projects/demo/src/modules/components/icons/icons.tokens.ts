@@ -1,13 +1,8 @@
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import * as allIcons from '@taiga-ui/icons';
 
-export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
+export type DemoTuiIconsTabs = Record<string, Record<string, readonly string[]>>;
 
-export type DemoTuiIconsList = ReadonlyArray<DemoTuiIcon | string>;
-
-export type DemoTuiIconsTabs = Record<string, Record<string, DemoTuiIconsList>>;
-
-const COMMERCE_SYSTEMS: DemoTuiIcon[] = [
+const COMMERCE_SYSTEMS = [
     'tuiIconElectron',
     'tuiIconElectronMono',
     'tuiIconCirrus',
@@ -29,9 +24,9 @@ const COMMERCE_SYSTEMS: DemoTuiIcon[] = [
     'tuiIconRuPay',
     'tuiIconUzcard',
     'tuiIconVerve',
-];
+] as const;
 
-const COMMERCE_SERVICES: DemoTuiIcon[] = [
+const COMMERCE_SERVICES = [
     'tuiIconApplePay',
     'tuiIconGooglePay',
     'tuiIconSamsungPay',
@@ -39,48 +34,13 @@ const COMMERCE_SERVICES: DemoTuiIcon[] = [
     'tuiIconAliPay',
     'tuiIconAmazonPay',
     'tuiIconAndroidPay',
-];
+] as const;
 
-/**
- * @description:
- * Algorithm: O(n), where `n` - count of icons
- */
-export function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
-    const large: DemoTuiIcon[] = [];
-    const normal: DemoTuiIcon[] = [];
-    const commerceSet = new Set([...COMMERCE_SYSTEMS, ...COMMERCE_SERVICES]);
-
-    for (const [icon] of Object.entries(allIcons)) {
-        const shouldSkip =
-            commerceSet.has(icon as DemoTuiIcon) ||
-            icon === 'tuiCoreIcons' ||
-            icon === 'tuiKitIcons';
-
-        if (shouldSkip) {
-            continue;
-        }
-
-        if (icon.includes('Large')) {
-            large.push(icon as DemoTuiIcon);
-        } else if (!icon.includes('Outline')) {
-            normal.push(icon as DemoTuiIcon);
-        }
-    }
-
-    return {LARGE: large, NORMAL: normal};
-}
-
-export const ICONS = (): DemoTuiIconsTabs => {
-    const {LARGE, NORMAL} = ensureIcons();
-
-    return {
-        'Description and examples': {
-            'Normal / 16px': NORMAL,
-            'Large / 24px': LARGE,
-            'Payment systems': COMMERCE_SYSTEMS,
-            'Payment services': COMMERCE_SERVICES,
-        },
-    };
-};
+export const ICONS = (): DemoTuiIconsTabs => ({
+    'Description and examples': {
+        'Payment systems': COMMERCE_SYSTEMS,
+        'Payment services': COMMERCE_SERVICES,
+    },
+});
 
 export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(ICONS);

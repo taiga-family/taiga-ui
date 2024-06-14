@@ -28,26 +28,26 @@ export default class ExampleComponent {
     protected readonly items = [
         {
             text: 'Favorites',
-            icon: 'tuiIconHeartLarge',
+            icon: 'tuiIconHeart',
             badge: 3,
         },
         {
             text: 'Calls',
-            icon: 'tuiIconPhoneLarge',
+            icon: 'tuiIconPhone',
             badge: 1234,
         },
         {
             text: 'Profile',
-            icon: 'tuiIconUserLarge',
+            icon: 'tuiIconUser',
         },
         {
             text: 'Settings and configuration',
-            icon: 'tuiIconSettingsLarge',
+            icon: 'tuiIconSettings',
             badge: 100,
         },
         {
             text: 'More',
-            icon: 'tuiIconMoreHorizontalLarge',
+            icon: 'tuiIconEllipsis',
         },
     ];
 

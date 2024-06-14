@@ -44,7 +44,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
 })
 export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
-    protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+    protected readonly iconVariants = ['', 'tuiIconSearch', 'tuiIconCalendar'];
     protected icon = this.iconVariants[0];
     protected readonly rowsVariants: readonly number[] = [8, 15, 30];
     protected rows: number = this.rowsVariants[0];

@@ -14,23 +14,11 @@
                 "project": "{projectRoot}/ng-package.json"
             }
         },
-        "preprocess": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "ts-node ./{projectRoot}/scripts/prepare-feather-icons.ts && ts-node ./scripts/preprocess-icons.ts"
-            }
-        },
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./scripts/compile-icons.ts"
-            },
-            "dependsOn": [
-                {
-                    "target": "preprocess",
-                    "params": "forward"
-                }
-            ]
+                "command": "ts-node ./{projectRoot}/scripts/prepare-lucide-icons.ts"
+            }
         },
         "test": {
             "executor": "@nx/jest:jest",

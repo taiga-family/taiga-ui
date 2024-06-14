@@ -16,15 +16,15 @@ export default class ExampleComponent {
     protected readonly items = [
         {
             text: 'Home',
-            icon: 'tuiIconHomeLarge',
+            icon: 'tuiIconHome',
         },
         {
             text: 'Photos',
-            icon: 'tuiIconImageLarge',
+            icon: 'tuiIconImage',
         },
         {
             text: 'Navigation',
-            icon: 'tuiIconMapPinLarge',
+            icon: 'tuiIconMapPin',
         },
     ];
 }

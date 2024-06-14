@@ -21,7 +21,7 @@ export default class ExampleComponent {
             .open('This is <strong>heavy</strong>!', {
                 heading: 'Great Scott!',
                 type: 'Quote',
-                icon: 'tuiIconVideoLarge',
+                icon: 'tuiIconVideo',
                 buttons: ['Roads?', '1.21 Gigawatts!?!'],
             })
             .pipe(

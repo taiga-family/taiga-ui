@@ -1,23 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
-    <g id="tuiIconPenTool" xmlns="http://www.w3.org/2000/svg">
-        <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
-            <svg x="-8" y="-8">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M12 19l7-7 3 3-7 7-3-3z" />
-                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-                    <path d="M2 2l7.586 7.586" />
-                    <circle cx="11" cy="11" r="2" />
-                </svg>
-            </svg>
-        </svg>
-    </g>
+<!-- @license lucide-static v0.394.0 - ISC -->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="lucide lucide-pen-tool"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"
+    />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"
+    />
+    <path vector-effect="non-scaling-stroke" d="m2.3 2.3 7.286 7.286" />
+    <circle vector-effect="non-scaling-stroke" cx="11" cy="11" r="2" />
 </svg>

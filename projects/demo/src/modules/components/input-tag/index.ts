@@ -57,7 +57,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected separator = this.separatorVariants[0];
 
-    protected readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
+    protected readonly iconVariants: readonly string[] = ['tuiIconSearch'];
 
     protected icon = '';
 

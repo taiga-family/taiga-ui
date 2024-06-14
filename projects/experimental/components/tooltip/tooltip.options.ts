@@ -7,7 +7,7 @@ export interface TuiTooltipOptions {
 }
 
 export const TUI_TOOLTIP_DEFAULT_OPTIONS: TuiTooltipOptions = {
-    icons: 'tuiIconHelpCircle',
+    icons: 'tuiIconCircleHelp',
 };
 
 export const TUI_TOOLTIP_OPTIONS = tuiCreateToken(TUI_TOOLTIP_DEFAULT_OPTIONS);

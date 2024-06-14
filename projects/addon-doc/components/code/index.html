@@ -15,7 +15,7 @@
             appearance="icon"
             size="xs"
             class="t-copy-button"
-            [iconLeft]="(icon$ | async) || 'tuiIconCopyLarge'"
+            [iconLeft]="(icon$ | async) || 'tuiIconCopy'"
             [cdkCopyToClipboard]="content"
             (click)="copy$.next()"
         >

@@ -55,7 +55,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected placeholder = 'Field placeholder';
 
-    public readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+    public readonly iconVariants = ['', 'tuiIconSearch', 'tuiIconCalendar'];
 
     public icon = this.iconVariants[0];
 
@@ -65,8 +65,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public override readonly customContentVariants = [
         '',
-        'tuiIconSearchLarge',
-        'tuiIconCalendarLarge',
+        'tuiIconSearch',
+        'tuiIconCalendar',
         'tuiIconVisaMono',
         'tuiIconMastercardMono',
         LONG_TEXT_TEMPLATE,

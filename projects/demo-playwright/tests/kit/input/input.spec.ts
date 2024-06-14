@@ -18,7 +18,7 @@ test.describe('Input', () => {
     test('correctly aligns single custom content (as large icon)', async ({page}) => {
         await tuiGoto(
             page,
-            '/components/input/API?tuiTextfieldCustomContent=tuiIconCalendarLarge',
+            '/components/input/API?tuiTextfieldCustomContent=tuiIconCalendar',
         );
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
             '02-custom-large-icon-content.png',
@@ -30,7 +30,7 @@ test.describe('Input', () => {
     }) => {
         await tuiGoto(
             page,
-            '/components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearchLarge&tuiHintContent=Some%20content',
+            '/components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearch&tuiHintContent=Some%20content',
         );
 
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
@@ -133,7 +133,7 @@ test.describe('Input', () => {
             test(`size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input/API?tuiTextfieldIcon=tuiIconCalendarLarge&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
+                    `components/input/API?tuiTextfieldIcon=tuiIconCalendar&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
                 await expect(
                     new TuiDocumentationPagePO(page).apiPageExample,

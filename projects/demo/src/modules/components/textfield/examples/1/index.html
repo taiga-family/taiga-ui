@@ -1,6 +1,6 @@
 <tui-textfield
-    iconLeft="tuiIconSearchLarge"
-    iconRight="tuiIconSettingsLarge"
+    iconLeft="tuiIconSearch"
+    iconRight="tuiIconSettings"
 >
     <label tuiLabel>I am a label</label>
     <input
@@ -8,7 +8,7 @@
         tuiTextfield
         [(ngModel)]="value"
     />
-    <tui-icon icon="tuiIconBellLarge" />
+    <tui-icon icon="tuiIconBell" />
     <tui-tooltip content="I am a hint" />
 </tui-textfield>
 
@@ -16,8 +16,9 @@
     For long labels it is better to use label outside as it can wrap to multiple lines
     <tui-textfield
         #m
-        iconLeft="tuiIconSearchLarge"
-        iconRight="tuiIconSettingsLarge"
+        iconLeft="tuiIconSearch"
+        iconRight="tuiIconSettings"
+        tuiIconSettings
         tuiTextfieldSize="m"
     >
         <input
@@ -25,15 +26,15 @@
             [placeholder]="m.focused ? 'I am placeholder' : 'I am a label'"
             [(ngModel)]="value"
         />
-        <tui-icon icon="tuiIconBellLarge" />
+        <tui-icon icon="tuiIconBell" />
         <tui-tooltip content="I am a hint" />
     </tui-textfield>
 </label>
 
 <tui-textfield
     #s
-    iconLeft="tuiIconSearchLarge"
-    iconRight="tuiIconSettingsLarge"
+    iconLeft="tuiIconSearch"
+    iconRight="tuiIconSettings"
     tuiTextfieldSize="s"
 >
     <input
@@ -41,6 +42,6 @@
         [placeholder]="s.focused ? 'I am placeholder' : 'I am a label'"
         [(ngModel)]="value"
     />
-    <tui-icon icon="tuiIconBellLarge" />
+    <tui-icon icon="tuiIconBell" />
     <tui-tooltip content="I am a hint" />
 </tui-textfield>

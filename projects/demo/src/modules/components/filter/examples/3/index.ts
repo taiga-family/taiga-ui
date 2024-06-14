@@ -7,11 +7,11 @@ import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiFilterComponent} from '@taiga-ui/kit';
 
 const getIcon: Record<string, string> = {
-    Calendar: 'tuiIconCalendarLarge',
-    Favorite: 'tuiIconStarLarge',
-    Messages: 'tuiIconMessageSquareLarge',
-    FAQ: 'tuiIconHelpCircleLarge',
-    Settings: 'tuiIconSettingsLarge',
+    Calendar: 'tuiIconCalendar',
+    Favorite: 'tuiIconStar',
+    Messages: 'tuiIconMessageSquare',
+    FAQ: 'tuiIconCircleHelp',
+    Settings: 'tuiIconSettings',
 };
 
 @Component({

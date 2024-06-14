@@ -22,9 +22,9 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
     formatSize: tuiFormatSize,
     icons: {
         normal: ({$implicit}) =>
-            $implicit === 'l' ? 'tuiIconFileLarge' : 'tuiIconCheckCircleLarge',
-        error: 'tuiIconAlertCircleLarge',
-        deleted: 'tuiIconTrashLarge',
+            $implicit === 'l' ? 'tuiIconFile' : 'tuiIconCircleCheck',
+        error: 'tuiIconCircleAlert',
+        deleted: 'tuiIconTrash',
     },
 };
 
