@@ -13,9 +13,9 @@ import {tuiProvide} from '@taiga-ui/cdk/utils';
 @Directive({
     standalone: true,
     selector: '[tuiValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiValidatorDirective, true)],
+    providers: [tuiProvide(NG_VALIDATORS, TuiValidator, true)],
 })
-export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
+export class TuiValidator implements Validator, OnChanges, OnDestroy {
     private onChange = EMPTY_FUNCTION;
 
     @Input()

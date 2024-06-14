@@ -4,7 +4,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiComparator, TuiTablePaginationEvent} from '@taiga-ui/addon-table';
-import {TuiReorderComponent, TuiTable, TuiTablePagination} from '@taiga-ui/addon-table';
+import {TuiReorder, TuiTable, TuiTablePagination} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -15,7 +15,7 @@ import {
     TuiLet,
     tuiToInt,
 } from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiLoader} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiDropdownOpen, TuiLoader} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 import {
     TuiInputModule,
@@ -106,7 +106,7 @@ function getAge({dob}: User): number {
         TuiTextfieldControllerModule,
         TuiInputModule,
         TuiInputNumberModule,
-        TuiReorderComponent,
+        TuiReorder,
         TuiLoader,
         AsyncPipe,
         NgIf,
@@ -115,6 +115,7 @@ function getAge({dob}: User): number {
         TuiDropdown,
         TuiButton,
         TuiChevron,
+        TuiDropdownOpen,
         FormsModule,
         NgForOf,
         TuiLet,

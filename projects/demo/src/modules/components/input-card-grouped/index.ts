@@ -23,9 +23,9 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiInteractive {
+export default class Page extends AbstractExampleTuiInteractive {
     protected readonly examples = [
         'With validation',
         'With saved cards',

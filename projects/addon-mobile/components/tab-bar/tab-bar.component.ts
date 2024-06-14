@@ -11,22 +11,18 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
+import {EMPTY_QUERY, tuiIsElement} from '@taiga-ui/cdk';
 
-import {TuiTabBarItem} from './tab-bar-item.component';
+import {TuiTabBarItemComponent} from './tab-bar-item.component';
 
 @Component({
-    standalone: true,
     selector: 'nav[tuiTabBar]',
-    imports: [TuiRepeatTimes],
     templateUrl: './tab-bar.template.html',
     styleUrls: ['./tab-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarComponent {
-    @ContentChildren(forwardRef(() => TuiTabBarItem), {read: ElementRef})
+    @ContentChildren(forwardRef(() => TuiTabBarItemComponent), {read: ElementRef})
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()

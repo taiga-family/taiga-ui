@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {TuiDocCode} from '@taiga-ui/addon-doc';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
-describe('TuiDocCodeComponent', () => {
+describe('TuiDocCode', () => {
     let component: TuiDocCode;
     let fixture: ComponentFixture<TuiDocCode>;
 

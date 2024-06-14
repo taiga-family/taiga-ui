@@ -13,7 +13,7 @@ import {filter, fromEvent, map} from 'rxjs';
     standalone: true,
     selector: '[tuiClickOutside]',
 })
-export class TuiClickOutsideDirective {
+export class TuiClickOutside {
     private readonly zone = inject(NgZone);
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();

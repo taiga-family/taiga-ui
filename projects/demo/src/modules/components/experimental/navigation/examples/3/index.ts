@@ -10,22 +10,17 @@ import {
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiNavigation} from '@taiga-ui/experimental';
-import {
-    TuiAvatar,
-    TuiBreadcrumbsComponent,
-    TuiTabDirective,
-    TuiTabsHorizontalDirective,
-} from '@taiga-ui/kit';
+import {TuiNavigationModule} from '@taiga-ui/experimental';
+import {TuiAvatar, TuiBreadcrumbs, TuiTab, TuiTabsHorizontal} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiNavigation,
+        TuiNavigationModule,
         TuiIcon,
         TuiAvatar,
-        TuiBreadcrumbsComponent,
+        TuiBreadcrumbs,
         TuiItem,
         TuiLink,
         TuiAppearance,
@@ -33,8 +28,8 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiTitle,
         TuiButton,
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabsHorizontal,
+        TuiTab,
         TuiSurface,
         TuiRepeatTimes,
     ],

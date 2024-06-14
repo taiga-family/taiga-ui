@@ -6,7 +6,7 @@ import {By} from '@angular/platform-browser';
 import {TuiNgControl} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
-describe('TuiNgControl', () => {
+describe('TuiControl', () => {
     @Component({
         standalone: true,
         imports: [ReactiveFormsModule, TuiNgControl],

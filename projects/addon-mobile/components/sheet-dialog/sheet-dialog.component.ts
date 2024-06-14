@@ -10,19 +10,16 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiClickOutsideDirective} from '@taiga-ui/cdk/directives/click-outside';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiButton} from '@taiga-ui/core/components/button';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiClickOutside, tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+    TuiButton,
+    tuiGetDuration,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
 import {shouldCall} from '@taiga-ui/event-plugins';
 import {
     POLYMORPHEUS_CONTEXT,
@@ -34,7 +31,7 @@ import {BehaviorSubject} from 'rxjs';
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 
 // So we re-enter ngZone and trigger change detection
-function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
+function isCloseable(this: TuiSheetDialog<unknown>): boolean {
     return this.context.closeable;
 }
 
@@ -43,7 +40,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     selector: 'tui-sheet-dialog',
     imports: [
         NgForOf,
-        TuiClickOutsideDirective,
+        TuiClickOutside,
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
@@ -55,7 +52,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
 })
-export class TuiSheetDialogComponent<I> implements AfterViewInit {
+export class TuiSheetDialog<I> implements AfterViewInit {
     @ViewChild('sheet')
     private readonly sheet?: ElementRef<HTMLElement>;
 

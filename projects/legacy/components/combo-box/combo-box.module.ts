@@ -24,12 +24,12 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
+        TuiDropdown,
         TuiSelectOptionModule,
         TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,
-        ...TuiDropdown,
     ],
     declarations: [
         TuiComboBoxComponent,
@@ -41,7 +41,6 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiComboBoxStrictDirective,
         TuiComboBoxDirective,
         TuiTextfieldComponent,
-        ...TuiDropdown,
     ],
 })
 export class TuiComboBoxModule {}

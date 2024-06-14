@@ -4,7 +4,7 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {
         name: 'TUI_MOBILE_AWARE',
         message:
-            'TUI_MOBILE_AWARE has been deleted in 3.0, please use TuiMobileTabsDirective from @taiga-ui/addon-mobile',
+            'TUI_MOBILE_AWARE has been deleted in 3.0, please use TuiMobileTabs from @taiga-ui/addon-mobile',
     },
     {
         name: 'TUI_DATE_FILLER',

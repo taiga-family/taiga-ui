@@ -46,7 +46,7 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([])],
 })
-export class TuiFilterComponent<T> extends TuiControl<readonly T[]> {
+export class TuiFilter<T> extends TuiControl<readonly T[]> {
     @Input()
     public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 

@@ -6,9 +6,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDataListDirective, TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHintOptionsDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TUI_ARROW,
     TUI_ARROW_MODE,
@@ -51,9 +51,9 @@ describe('ComboBox', () => {
             TuiRoot,
             TuiComboBoxModule,
             ReactiveFormsModule,
-            TuiHint,
+            TuiHintOptionsDirective,
             TuiTextfieldControllerModule,
-            TuiDataListWrapperComponent,
+            TuiDataListWrapper,
             TuiDataListDirective,
         ],
         template: `

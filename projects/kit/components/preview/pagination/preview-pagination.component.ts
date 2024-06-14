@@ -16,7 +16,7 @@ import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPreviewPaginationComponent {
+export class TuiPreviewPagination {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
 

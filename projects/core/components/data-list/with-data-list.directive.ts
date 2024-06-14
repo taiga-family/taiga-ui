@@ -10,7 +10,7 @@ import {TuiDataListDirective} from './data-list.directive';
     standalone: true,
     selector: 'tui-data-list:is(never)',
 })
-export class TuiWithDataList {
+export class TuiWithDataListDirective {
     private readonly dataList: WritableSignal<PolymorpheusContent> = tuiDirectiveBinding(
         TuiDropdownDirective,
         'tuiDropdown',

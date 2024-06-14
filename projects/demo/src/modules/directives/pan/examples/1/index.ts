@@ -3,12 +3,12 @@ import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPanDirective} from '@taiga-ui/cdk';
+import {TuiPan} from '@taiga-ui/cdk';
 import {BehaviorSubject, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiPanDirective, AsyncPipe],
+    imports: [TuiPan, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

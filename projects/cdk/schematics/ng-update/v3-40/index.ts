@@ -61,12 +61,12 @@ function replaceTextareaReferenceTypes(
             to: 'TuiTextareaModule',
         },
         {
-            from: 'TuiTextAreaDirective',
-            to: 'TuiTextareaDirective',
+            from: 'TuiTextArea',
+            to: 'TuiTextarea',
         },
         {
-            from: 'TuiTextAreaComponent',
-            to: 'TuiTextareaComponent',
+            from: 'TuiTextArea',
+            to: 'TuiTextarea',
         },
     ]);
 

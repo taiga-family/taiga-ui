@@ -6,7 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTagComponent,
@@ -32,7 +32,7 @@ describe('InputTag', () => {
             TuiInputTagModule,
             NgIf,
             ReactiveFormsModule,
-            TuiHint,
+            TuiHintOptionsDirective,
             TuiTextfieldControllerModule,
         ],
         template: `

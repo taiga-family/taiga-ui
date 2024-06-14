@@ -1,7 +1,7 @@
-import type {TuiDocRoutePage, TuiDocRoutePageGroup} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPageGroup, TuiDocPageRoute} from '@taiga-ui/addon-doc/types';
 
-export function tuiIsRoutePageGroup(
-    page: TuiDocRoutePage | TuiDocRoutePageGroup,
-): page is TuiDocRoutePageGroup {
+export function tuiIsPageGroup(
+    page: TuiDocPageGroup | TuiDocPageRoute,
+): page is TuiDocPageGroup {
     return 'subPages' in page;
 }

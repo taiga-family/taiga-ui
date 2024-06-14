@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,26 +10,18 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
-import {
-    TuiGroupDirective,
-    tuiGroupOptionsProvider,
-} from '@taiga-ui/core/components/group';
+import {EMPTY_QUERY, TuiItem} from '@taiga-ui/cdk';
+import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-files',
-    imports: [CommonModule, TuiExpandComponent, TuiButton],
     templateUrl: './files.template.html',
     styleUrls: ['./files.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiGroupOptionsProvider({collapsed: true, orientation: 'vertical'})],
-    hostDirectives: [TuiGroupDirective],
+    hostDirectives: [TuiGroup],
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItem, {read: TemplateRef})

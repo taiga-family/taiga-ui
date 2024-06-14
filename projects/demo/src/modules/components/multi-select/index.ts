@@ -50,7 +50,7 @@ class Account {
     styleUrls: ['./index.less'],
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties([
             'tuiTextfieldPrefix',
             'tuiTextfieldPostfix',
@@ -59,7 +59,7 @@ class Account {
         ]),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly items = [
         new Account('Ruble', 500),
         new Account('Dollar', 500),

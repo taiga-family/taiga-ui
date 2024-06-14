@@ -5,11 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import {TuiInputInlineComponent} from '@taiga-ui/kit';
+import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiInputInlineComponent, TuiButton, TuiAutoFocus, FormsModule, NgIf],
+    imports: [TuiInputInline, TuiButton, TuiAutoFocus, FormsModule, NgIf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

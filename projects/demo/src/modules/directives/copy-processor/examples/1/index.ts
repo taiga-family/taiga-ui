@@ -4,14 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiCopyProcessorDirective} from '@taiga-ui/cdk';
+import {TuiCopyProcessor} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputNumberModule, TuiCopyProcessorDirective, FormsModule, AsyncPipe],
+    imports: [TuiInputNumberModule, TuiCopyProcessor, FormsModule, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

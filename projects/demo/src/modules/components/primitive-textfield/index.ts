@@ -1,12 +1,19 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_HINT_DIRECTIONS, TuiHint, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {
+    TUI_HINT_DIRECTIONS,
+    TuiHint,
+    TuiIcon,
+    TuiLink,
+    TuiNotification,
+} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
@@ -19,32 +26,34 @@ import {HintControllerDocumentation} from '../abstract/hint-controller-documenta
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 import {TextfieldControllerDocumentation} from '../abstract/textfield-controller-documentation';
-import ExampleComponent1 from './examples/1';
-import ExampleComponent2 from './examples/2';
+import Example1 from './examples/1';
+import Example2 from './examples/2';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
         TuiNotification,
+        RouterLink,
+        TuiLink,
         FormsModule,
-        ExampleComponent1,
-        ExampleComponent2,
+        Example1,
+        Example2,
         TuiPrimitiveTextfieldModule,
         TuiHint,
         TuiTextfieldControllerModule,
         TuiAvatar,
         TuiIcon,
-        InheritedDocumentation,
-        TextfieldControllerDocumentation,
         HintControllerDocumentation,
+        TextfieldControllerDocumentation,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiInteractive {
+export default class Page extends AbstractExampleTuiInteractive {
     @ViewChild('interactiveContent')
     private readonly interactiveIcon: PolymorpheusContent<
         TuiContext<TuiSizeL | TuiSizeS>

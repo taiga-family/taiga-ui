@@ -6,7 +6,7 @@ import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
-describe('TuiLanguageSwitcherComponent', () => {
+describe('TuiLanguageSwitcher', () => {
     let component: TuiLanguageSwitcher;
     let fixture: ComponentFixture<TuiLanguageSwitcher>;
 

@@ -6,7 +6,7 @@ import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constan
 import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.interfaces';
 
 /**
- * Controller for tracking value - TuiTreeItemComponent pairs
+ * Controller for tracking value - TuiTreeItem pairs
  */
 export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
     '[TUI_TREE_ACCESSOR]',

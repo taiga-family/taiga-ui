@@ -39,7 +39,7 @@ interface Items<T> {
     templateUrl: './index.html',
     changeDetection,
 })
-export class CustomListComponent<T> {
+export class CustomList<T> {
     @ViewChild(TuiTextfieldDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 

@@ -11,7 +11,7 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiLabel, TuiTextfield} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -21,6 +21,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     imports: [
         ReactiveFormsModule,
         NgForOf,
+        TuiLabel,
         TuiInputPhoneModule,
         TuiTextfield,
         TuiTextfieldControllerModule,

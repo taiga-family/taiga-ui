@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -7,7 +8,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiLink, TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -19,6 +20,8 @@ import {NumberFormatDocumentation} from '../abstract/number-format-documentation
     standalone: true,
     imports: [
         TuiDemo,
+        RouterLink,
+        TuiLink,
         TuiNotification,
         TuiInputRangeModule,
         ReactiveFormsModule,
@@ -29,11 +32,11 @@ import {NumberFormatDocumentation} from '../abstract/number-format-documentation
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties(['precision']),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiNumberFormat {
+export default class Page extends AbstractExampleTuiNumberFormat {
     protected readonly routes = DemoRoute;
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 

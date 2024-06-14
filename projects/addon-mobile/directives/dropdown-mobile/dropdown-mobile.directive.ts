@@ -6,7 +6,6 @@ import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownMobile]',
     providers: [
         {

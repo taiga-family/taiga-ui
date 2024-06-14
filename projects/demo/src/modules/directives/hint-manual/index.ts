@@ -13,9 +13,9 @@ import {InheritedDocumentation} from '../../components/abstract/inherited-docume
     imports: [TuiDemo, TuiButton, TuiHint, InheritedDocumentation],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class Page extends AbstractExampleTuiHint {
     protected show = false;
 
     protected sayHi(): void {

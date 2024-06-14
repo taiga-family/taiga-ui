@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHint, TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiHint, TuiLink, TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -15,6 +16,8 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     standalone: true,
     imports: [
         TuiDemo,
+        TuiLink,
+        RouterLink,
         TuiNotification,
         TuiInputNumberModule,
         ReactiveFormsModule,
@@ -25,9 +28,9 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiNumberFormat {
+export default class Page extends AbstractExampleTuiNumberFormat {
     protected readonly routes = DemoRoute;
     protected docPages = DemoRoute;
 

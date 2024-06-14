@@ -32,12 +32,7 @@ import {
     TuiToArrayPipe,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {
-    TuiDropdown,
-    TuiGroupDirective,
-    TuiNotification,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiGroup, TuiNotification, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
 import {
     TuiInputNumberModule,
@@ -80,7 +75,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         NgSwitchCase,
         TuiSwitch,
         TuiTextfield,
-        TuiGroupDirective,
+        TuiGroup,
         TuiGetOpacityPipe,
         TuiGetColorPipe,
         TuiInputNumberModule,

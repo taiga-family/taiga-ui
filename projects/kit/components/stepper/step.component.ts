@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,24 +7,21 @@ import {
     Input,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 
 import {TuiStepperComponent} from './stepper.component';
 
 @Component({
-    standalone: true,
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
-    imports: [NgIf, TuiIcon],
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiStepComponent {
+export class TuiStep {
     private readonly stepper = inject(TuiStepperComponent);
     private readonly el = tuiInjectElement();
     private readonly routerLinkActive$: Observable<boolean> =

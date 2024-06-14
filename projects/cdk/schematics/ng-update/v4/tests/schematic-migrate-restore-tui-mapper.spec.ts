@@ -15,7 +15,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
-const TUI_MAPPER_COMPONENT = `
+const TUI_MAPPER = `
 import { TuiMapper, TuiMapperPipeModule } from '@taiga-ui/cdk';
 
 @Component({
@@ -35,7 +35,7 @@ export class Test {
         string> = (a, b) => \`\${a() + b}\`;
 }`;
 
-const TUI_MAPPER_COMPONENT_AFTER = `
+const TUI_MAPPER_AFTER = `
 import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
@@ -55,7 +55,7 @@ export class Test {
         string> = (a, b) => \`\${a() + b}\`;
 }`;
 
-const TYPED_TUI_MAPPER_COMPONENT = `
+const TUI_TYPED_TUI_MAPPER = `
 import {TuiMapper, TuiTypedMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
 
 @Component({
@@ -77,7 +77,7 @@ export class Test {
     > = (a, b) => \`\${a() + b}\`;
 }`;
 
-const TYPED_TUI_MAPPER_COMPONENT_AFTER = `
+const TUI_TYPED_TUI_MAPPER_AFTER = `
 import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
@@ -131,7 +131,7 @@ describe('ng-update', () => {
 
         const componentBefore = tree.readContent('test/app/tui-mapper.component.ts');
 
-        expect(componentBefore).toEqual(TUI_MAPPER_COMPONENT_AFTER);
+        expect(componentBefore).toEqual(TUI_MAPPER_AFTER);
         expect(tree.readContent('test/app/tui-mapper.component.html')).toEqual(
             TEMPLATE_AFTER,
         );
@@ -145,7 +145,7 @@ describe('ng-update', () => {
         );
 
         expect(tree.readContent('test/app/tui-typed-mapper.component.ts')).toEqual(
-            TYPED_TUI_MAPPER_COMPONENT_AFTER,
+            TUI_TYPED_TUI_MAPPER_AFTER,
         );
         expect(tree.readContent('test/app/tui-typed-mapper.component.html')).toEqual(
             TEMPLATE_AFTER,
@@ -158,11 +158,8 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/tui-mapper.component.ts', TUI_MAPPER_COMPONENT);
-    createSourceFile(
-        'test/app/tui-typed-mapper.component.ts',
-        TYPED_TUI_MAPPER_COMPONENT,
-    );
+    createSourceFile('test/app/tui-mapper.component.ts', TUI_MAPPER);
+    createSourceFile('test/app/tui-typed-mapper.component.ts', TUI_TYPED_TUI_MAPPER);
     createSourceFile('test/app/tui-mapper.component.html', TEMPLATE_BEFORE);
     createSourceFile('test/app/tui-typed-mapper.component.html', TEMPLATE_BEFORE);
 

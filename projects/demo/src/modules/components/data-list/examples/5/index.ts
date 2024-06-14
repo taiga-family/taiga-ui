@@ -5,13 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiCalendarComponent,
-    TuiDataList,
-    TuiDropdown,
-    TuiGroupDirective,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCalendar, TuiDataList, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
@@ -23,8 +17,8 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
         TuiDataList,
         TuiDataListDropdownManager,
         TuiInputModule,
-        TuiCalendarComponent,
-        TuiGroupDirective,
+        TuiCalendar,
+        TuiGroup,
         FormsModule,
         TuiAmountPipe,
         AsyncPipe,

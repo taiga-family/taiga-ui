@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
-import {TuiHint, TuiNotification} from '@taiga-ui/core';
+import {TuiHint, TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -23,11 +24,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentation,
+        RouterLink,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties([
             'tuiTextfieldPrefix',
             'tuiTextfieldPostfix',
@@ -35,7 +38,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         ]),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected readonly iconVariants = ['', '@tui.search', '@tui.calendar'];
     protected icon = this.iconVariants[0];

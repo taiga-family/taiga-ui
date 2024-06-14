@@ -6,17 +6,14 @@ import type {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTreeController][map]',
     providers: [
-        tuiProvide(TUI_TREE_ACCESSOR, TuiTreeControllerDirective),
-        tuiProvide(TUI_TREE_CONTROLLER, TuiTreeControllerDirective),
+        tuiProvide(TUI_TREE_ACCESSOR, TuiTreeControllerImpl),
+        tuiProvide(TUI_TREE_CONTROLLER, TuiTreeControllerImpl),
     ],
     exportAs: 'tuiTreeController',
 })
-export class TuiTreeControllerDirective<T>
-    implements TuiTreeController, TuiTreeAccessor<T>
-{
+export class TuiTreeControllerImpl<T> implements TuiTreeController, TuiTreeAccessor<T> {
     protected readonly items = new Map<TuiTreeItem, T>();
 
     @Input('tuiTreeController')

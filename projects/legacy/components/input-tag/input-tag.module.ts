@@ -1,14 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
-import {TuiScrollService} from '@taiga-ui/cdk/services';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiHovered, TuiScrollService} from '@taiga-ui/cdk';
+import {
+    TuiAppearance,
+    TuiDropdown,
+    TuiIcon,
+    TuiScrollbar,
+    TuiTooltip,
+} from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
-import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
 import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiWrapperModule,
@@ -23,18 +24,18 @@ import {TuiInputTagComponent} from './input-tag.component';
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiHoveredDirective,
+        TuiHovered,
         TuiScrollbar,
         TuiTooltip,
+        TuiDropdown,
         TuiTagModule,
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiAppearance,
         TuiIcon,
-        ...TuiDropdown,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],
-    exports: [TuiInputTagComponent, ...TuiDropdown],
+    exports: [TuiInputTagComponent],
 })
 export class TuiInputTagModule {}

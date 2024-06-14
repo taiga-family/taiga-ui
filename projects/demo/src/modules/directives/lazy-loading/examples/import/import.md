@@ -1,5 +1,5 @@
 ```ts
-import {TuiLazyLoadingComponent} from '@taiga-ui/kit';
+import {TuiLazyLoading} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiLazyLoadingComponent} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiLazyLoadingComponent,
+    TuiLazyLoading,
   ],
   // ...
 })

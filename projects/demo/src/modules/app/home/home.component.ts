@@ -1,14 +1,25 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDemo} from '@demo/utils';
-import {TuiNotification} from '@taiga-ui/core';
+import {TuiDocCode, TuiDocTab} from '@taiga-ui/addon-doc';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabsModule, TuiAccordion, TuiNotification],
+    imports: [
+        TuiTabsModule,
+        TuiDocTab,
+        NgIf,
+        TuiDocCode,
+        TuiLink,
+        RouterLink,
+        TuiAccordion,
+        TuiNotification,
+    ],
     templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
     encapsulation,

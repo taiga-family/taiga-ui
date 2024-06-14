@@ -8,13 +8,14 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {
+    tuiControlValue,
+    tuiInjectElement,
+    tuiIsString,
+    TuiNativeValidator,
+} from '@taiga-ui/cdk';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearance} from '@taiga-ui/core';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
@@ -33,7 +34,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
                 'tuiAppearanceFocus',
             ],
         },
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
     ],
     host: {
         '[disabled]': '!control || control.disabled',
@@ -46,7 +47,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 export class TuiCheckbox implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
-    private readonly resolver = tuiInjectIconResolver();
+    private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 

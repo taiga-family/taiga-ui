@@ -2,18 +2,22 @@ import type {ValueProvider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import {TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {TUI_DAY_CAPS_MAPPER} from '@taiga-ui/kit/components/calendar-range';
-import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
+import type {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiActiveZone,
+    TuiControl,
+} from '@taiga-ui/cdk';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TuiDropdownDirective,
+    tuiFadeIn,
+    tuiGetDuration,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
+import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
 
@@ -36,7 +40,7 @@ export interface TuiMobileCalendarData {
     hostDirectives: [TuiActiveZone],
 })
 export class TuiMobileCalendarDropdown {
-    // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
+    // TODO: Rework to use TuiDropdownOpen so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
     private readonly context = inject(POLYMORPHEUS_CONTEXT, {optional: true});

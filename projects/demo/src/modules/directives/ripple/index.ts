@@ -8,4 +8,4 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Example {}
+export default class ExampleTuiRipple {}

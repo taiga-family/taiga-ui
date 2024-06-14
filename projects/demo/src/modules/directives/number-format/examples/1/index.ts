@@ -7,11 +7,12 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
+    selector: 'tui-number-format-example-1',
     imports: [TuiInputNumberModule, TuiNumberFormat, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class Example {
+export class TuiNumberFormatExample1 {
     protected readonly control = new FormControl(120.234);
 }

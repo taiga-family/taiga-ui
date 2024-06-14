@@ -26,7 +26,7 @@ import {toKebab} from './kebab.pipe';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocSetup {
+export class TuiSetup {
     private readonly page = inject(TuiDocPage);
 
     @Input()

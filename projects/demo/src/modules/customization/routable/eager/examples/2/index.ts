@@ -11,4 +11,4 @@ import {TuiButton} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class TuiPage2Example {}

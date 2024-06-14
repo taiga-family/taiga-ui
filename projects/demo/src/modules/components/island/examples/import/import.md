@@ -1,5 +1,5 @@
 ```ts
-import {TuiIslandDirective} from '@taiga-ui/legacy';
+import {TuiIsland} from '@taiga-ui/legacy';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiIslandDirective} from '@taiga-ui/legacy';
   standalone: true,
   imports: [
     // ...
-    TuiIslandDirective,
+    TuiIsland,
   ],
   // ...
 })

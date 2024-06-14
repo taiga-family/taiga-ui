@@ -15,7 +15,7 @@ import {
     TUI_LINE_CHART_OPTIONS,
     TuiLineChart,
     tuiLineChartDrivers,
-    TuiLineChartHintDirective,
+    TuiLineChartHint,
 } from '@taiga-ui/addon-charts/components/line-chart';
 import {EMPTY_ARRAY, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
@@ -29,7 +29,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
-import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
+import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];
 
@@ -43,17 +43,17 @@ const DUMMY: TuiPoint = [NaN, NaN];
     providers: [
         TuiHoveredService,
         {
-            provide: TuiLineChartHintDirective,
-            useExisting: TuiLineDaysChartComponent,
+            provide: TuiLineChartHint,
+            useExisting: TuiLineDaysChart,
         },
     ],
 })
-export class TuiLineDaysChartComponent implements AfterViewInit {
+export class TuiLineDaysChart implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly hintDirective = inject(TuiLineDaysChartHintDirective, {
+    private readonly hintDirective = inject(TuiLineDaysChartHint, {
         optional: true,
     });
 

@@ -1,13 +1,20 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDemo} from '@demo/utils';
+import {TuiComponentPipe, TuiExamplePipe, TuiSetup} from '@demo/utils';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 import {TuiTablePagination} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiTablePagination],
+    imports: [
+        TuiAddonDoc,
+        TuiTablePagination,
+        TuiSetup,
+        TuiComponentPipe,
+        TuiExamplePipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

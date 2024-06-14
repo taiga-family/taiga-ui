@@ -1,22 +1,24 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {NgModule} from '@angular/core';
 
-import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
-import {TuiSliderReadonlyDirective} from './helpers/slider-readonly.directive';
-import {TuiSliderThumbLabelComponent} from './helpers/slider-thumb-label.component';
+import {TuiSliderKeySteps} from './helpers/slider-key-steps.directive';
+import {TuiSliderReadonly} from './helpers/slider-readonly.directive';
+import {TuiSliderThumbLabel} from './helpers/slider-thumb-label.component';
 import {TuiSliderComponent} from './slider.component';
 
 @NgModule({
-    imports: [
+    imports: [NgIf, AsyncPipe],
+    declarations: [
         TuiSliderComponent,
-        TuiSliderThumbLabelComponent,
-        TuiSliderKeyStepsDirective,
-        TuiSliderReadonlyDirective,
+        TuiSliderThumbLabel,
+        TuiSliderKeySteps,
+        TuiSliderReadonly,
     ],
     exports: [
         TuiSliderComponent,
-        TuiSliderThumbLabelComponent,
-        TuiSliderKeyStepsDirective,
-        TuiSliderReadonlyDirective,
+        TuiSliderThumbLabel,
+        TuiSliderKeySteps,
+        TuiSliderReadonly,
     ],
 })
 export class TuiSlider {}

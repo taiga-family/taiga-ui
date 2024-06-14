@@ -2,7 +2,7 @@ import {Directive, HostBinding, HostListener, inject, Input} from '@angular/core
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
@@ -11,7 +11,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
 })
-export class TuiImgLazyLoading {
+export class TuiLazyLoading {
     private readonly el = tuiInjectElement<HTMLImageElement>();
     private readonly src$ = inject(TuiLazyLoadingService);
 

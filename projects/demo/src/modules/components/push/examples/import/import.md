@@ -1,5 +1,5 @@
 ```ts
-import {TuiPushComponent} from '@taiga-ui/kit';
+import {TuiPush} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiPushComponent} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiPushComponent,
+    TuiPush,
   ],
   // ...
 })

@@ -1,5 +1,5 @@
 ```ts
-import {TuiGroupDirective} from '@taiga-ui/core';
+import {TuiGroup} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiGroupDirective} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiGroupDirective,
+    TuiGroup,
   ],
   // ...
 })

@@ -1,4 +1,3 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {DoCheck, TrackByFunction} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -8,31 +7,18 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TuiTreeChildren} from '../../directives/tree-children.directive';
-import {TuiTreeNode} from '../../directives/tree-node.directive';
 import type {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-tree',
-    imports: [
-        TuiTreeItem,
-        TuiLet,
-        PolymorpheusOutlet,
-        NgIf,
-        NgForOf,
-        TuiTreeNode,
-        AsyncPipe,
-    ],
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

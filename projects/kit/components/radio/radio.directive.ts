@@ -4,7 +4,6 @@ import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 @Directive({
-    standalone: true,
     selector: 'input[type="radio"][tuiRadio][identityMatcher]',
 })
 export class TuiRadioDirective<T> {

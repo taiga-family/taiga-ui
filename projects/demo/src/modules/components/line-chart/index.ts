@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
@@ -8,7 +9,7 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, TuiLink, TuiAxes, TuiLineChart],
+    imports: [TuiDemo, TuiNotification, RouterLink, TuiLink, TuiAxes, TuiLineChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

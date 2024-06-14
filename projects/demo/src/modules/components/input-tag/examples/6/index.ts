@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiGroupDirective, TuiHint} from '@taiga-ui/core';
+import {TuiGroup, TuiHint} from '@taiga-ui/core';
 import {
     TuiInputModule,
     TuiInputTagModule,
@@ -12,7 +12,7 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiGroupDirective,
+        TuiGroup,
         TuiHint,
         TuiTextfieldControllerModule,
         TuiInputModule,

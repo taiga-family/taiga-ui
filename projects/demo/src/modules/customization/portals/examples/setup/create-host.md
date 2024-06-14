@@ -5,5 +5,5 @@
   styleUrls: ['./my-portal-host.style.less'],
   providers: [tuiAsPortal(MyPortalService)],
 })
-export class MyPortalHost extends TuiPortalsComponent {}
+export class MyPortalHost extends TuiPortals {}
 ```

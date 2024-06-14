@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {BehaviorSubject} from 'rxjs';
 
 export interface TuiTableBarOptions {

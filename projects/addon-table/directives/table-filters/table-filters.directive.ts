@@ -5,7 +5,6 @@ import {identity, map, merge, ReplaySubject, startWith, switchMap} from 'rxjs';
 import type {TuiTableFilter} from './table-filter';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTableFilters]',
 })
 export class TuiTableFiltersDirective<T> {

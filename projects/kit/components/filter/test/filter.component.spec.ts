@@ -6,7 +6,7 @@ import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiFilterComponent} from '@taiga-ui/kit';
+import {TuiFilter} from '@taiga-ui/kit';
 
 const BADGE_VALUE = 10;
 
@@ -34,7 +34,7 @@ const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge('Focused Zone', 0)];
 describe('Filter', () => {
     @Component({
         standalone: true,
-        imports: [TuiFilterComponent, ReactiveFormsModule],
+        imports: [TuiFilter, ReactiveFormsModule],
         template: `
             <tui-filter
                 [badgeHandler]="badgeHandler"
@@ -46,8 +46,8 @@ describe('Filter', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiFilterComponent, {static: true})
-        public component!: TuiFilterComponent<any>;
+        @ViewChild(TuiFilter, {static: true})
+        public component!: TuiFilter<any>;
 
         public disabledItemHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
 
@@ -62,7 +62,7 @@ describe('Filter', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiFilterComponent<ItemWithBadge | string>;
+    let component: TuiFilter<ItemWithBadge | string>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({

@@ -24,12 +24,12 @@ import { TuiButtonModule } from "@taiga-ui/kit";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiButton, TuiButtonLoadingComponent } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiButton, TuiButtonLoading } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButton, TuiButtonLoadingComponent]
+    imports: [TuiButton, TuiButtonLoading]
 })
 export class Test {
 }`;

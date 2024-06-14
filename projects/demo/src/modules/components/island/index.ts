@@ -1,16 +1,25 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiNotification} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 import {StylesInfo} from '../../app/styles-info';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, StylesInfo, TuiIslandDirective, TuiButton, TuiNotification],
+    imports: [
+        TuiDemo,
+        StylesInfo,
+        TuiButton,
+        TuiNotification,
+        TuiLink,
+        RouterLink,
+        TuiIslandDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

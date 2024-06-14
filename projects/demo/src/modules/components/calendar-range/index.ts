@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -13,14 +14,14 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
-import {TuiCalendarRangeComponent, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiCalendarRange, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLink],
+    imports: [TuiDemo, TuiCalendarRange, TuiLink, RouterLink],
     templateUrl: './index.html',
     changeDetection,
 })

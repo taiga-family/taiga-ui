@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
+import {
+    TUI_ANIMATIONS_SPEED,
+    tuiFadeIn,
+    tuiSlideInTop,
+    tuiToAnimationOptions,
+} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tui-action-bar',
-    imports: [TuiExpandComponent],
     templateUrl: './action-bar.template.html',
     styleUrls: ['./action-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

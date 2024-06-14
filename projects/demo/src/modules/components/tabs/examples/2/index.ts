@@ -4,18 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TuiTab, TuiTabsWithMore} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiTabsWithMoreComponent,
-        TuiItem,
-        TuiTabDirective,
-        TuiInputNumberModule,
-        FormsModule,
-    ],
+    imports: [TuiTabsWithMore, TuiItem, TuiTab, TuiInputNumberModule, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

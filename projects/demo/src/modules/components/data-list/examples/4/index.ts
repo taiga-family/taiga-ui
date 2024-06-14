@@ -6,7 +6,7 @@ import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/c
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
-import {CustomListComponent} from './custom-list';
+import {CustomList} from './custom-list';
 
 const INCOME = {
     name: 'Income',
@@ -35,7 +35,7 @@ const EXPENSES = {
 
 @Component({
     standalone: true,
-    imports: [TuiSelectModule, FormsModule, CustomListComponent, TuiDataList],
+    imports: [TuiSelectModule, FormsModule, CustomList, TuiDataList],
     templateUrl: './index.html',
     styles: [
         `

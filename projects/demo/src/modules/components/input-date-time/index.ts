@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -13,7 +14,7 @@ import {
     tuiProvide,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint, TuiLink, TuiNotification} from '@taiga-ui/core';
+import {TuiDropdownOpen, TuiHint, TuiLink, TuiNotification} from '@taiga-ui/core';
 import {
     TuiInputDateTimeModule,
     TuiNamedDay,
@@ -29,19 +30,20 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     imports: [
         TuiDemo,
         TuiLink,
+        RouterLink,
         TuiNotification,
         TuiInputDateTimeModule,
         ReactiveFormsModule,
-        TuiDropdown,
+        TuiDropdownOpen,
         TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
     protected readonly routes = DemoRoute;

@@ -39,7 +39,7 @@ class TuiTabsStyles {}
         '[attr.data-size]': 'size',
     },
 })
-export class TuiTabsDirective implements AfterViewChecked {
+export class TuiTabs implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
 

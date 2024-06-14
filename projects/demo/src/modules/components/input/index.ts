@@ -1,12 +1,20 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiTextCode} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint, TuiNotification, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiDropdown,
+    TuiHint,
+    TuiLink,
+    TuiNotification,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -20,6 +28,8 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
     standalone: true,
     imports: [
         TuiDemo,
+        TuiLink,
+        RouterLink,
         TuiNotification,
         TuiInputModule,
         ReactiveFormsModule,
@@ -29,13 +39,14 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
         TuiTextfieldControllerModule,
         TuiAmountPipe,
         InheritedDocumentation,
+        TuiTextCode,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 

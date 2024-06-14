@@ -3,11 +3,11 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
+import {TuiTab, TuiTabsVertical} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTabsVerticalDirective, RouterLinkActive, TuiTabDirective, RouterLink],
+    imports: [TuiTabsVertical, RouterLink, RouterLinkActive, TuiTab],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

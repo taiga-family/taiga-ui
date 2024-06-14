@@ -13,4 +13,4 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
         '[style.border-radius.rem]': '100',
     },
 })
-export class TuiPreviewActionDirective {}
+export class TuiPreviewAction {}

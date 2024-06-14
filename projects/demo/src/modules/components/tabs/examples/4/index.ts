@@ -4,14 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiIcon} from '@taiga-ui/core';
-import {TuiTabDirective, TuiTabsHorizontalDirective} from '@taiga-ui/kit';
+import {TuiTab, TuiTabsHorizontal} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabsHorizontal,
+        TuiTab,
         TuiIcon,
         NgIf,
         NgForOf,

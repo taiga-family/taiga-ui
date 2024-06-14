@@ -25,9 +25,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected countryCodes = ['+7', '+850', '+1', '+52'];
 
     protected countryCode = this.countryCodes[0];

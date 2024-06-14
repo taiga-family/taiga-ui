@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
-import type {TuiProgressBarComponent} from '@taiga-ui/kit';
+import type {TuiProgressBar} from '@taiga-ui/kit';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
@@ -20,7 +20,7 @@ export default class Page {
 
     protected examples = ['Basic', 'Sizes', 'Colors', 'With labels', 'No round corners'];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiProgressBarComponent['size']> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiProgressBar['size']> = [
         'xs',
         's',
         'm',
@@ -29,7 +29,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiProgressBarComponent['size'] = this.sizeVariants[2];
+    protected size: TuiProgressBar['size'] = this.sizeVariants[2];
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-primary)'],

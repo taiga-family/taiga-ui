@@ -1,10 +1,23 @@
-import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
+import {NgForOf, NgIf} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {TuiElement} from '@taiga-ui/cdk';
+import {TuiDataList, TuiLoader} from '@taiga-ui/core';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-import {TuiDataListGroupWrapperComponent} from './data-list-group-wrapper.component';
+import {TuiDataListGroupWrapper} from './data-list-group-wrapper.component';
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
-export const TuiDataListWrapper = [
-    TuiDataListWrapperComponent,
-    TuiDataListGroupWrapperComponent,
-    TuiDataListDirective,
-] as const;
+@NgModule({
+    imports: [
+        NgIf,
+        NgForOf,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+        TuiDataList,
+        TuiElement,
+        TuiLoader,
+    ],
+    declarations: [TuiDataListWrapperComponent, TuiDataListGroupWrapper],
+    exports: [TuiDataListWrapperComponent, TuiDataListGroupWrapper, TuiDataList],
+})
+export class TuiDataListWrapper {}

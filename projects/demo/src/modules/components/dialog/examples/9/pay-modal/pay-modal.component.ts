@@ -22,11 +22,12 @@ import {
     TuiButton,
     TuiFormatNumberPipe,
     TuiIconPipe,
+    TuiLabel,
     TuiLink,
     TuiLoader,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiButtonLoadingComponent, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiButtonLoading, TuiCheckbox} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
@@ -44,7 +45,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         NgIf,
         TuiLink,
         TuiButton,
-        TuiButtonLoadingComponent,
+        TuiButtonLoading,
         AsyncPipe,
         TuiFormatNumberPipe,
         TuiLet,
@@ -52,6 +53,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiLoader,
         TuiInputCardGroup,
         TuiTextfield,
+        TuiLabel,
         TuiCheckbox,
         TuiIconPipe,
     ],
@@ -59,7 +61,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
     styleUrls: ['./pay-modal.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PayModalComponent implements OnInit {
+export class PayModal implements OnInit {
     @ViewChild('cardGroupedInput')
     private readonly cardGroupedInput?: TuiInputCardGroup;
 

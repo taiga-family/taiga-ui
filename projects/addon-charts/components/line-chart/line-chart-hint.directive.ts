@@ -35,7 +35,7 @@ import {TuiLineChart} from './line-chart.component';
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
-export class TuiLineChartHintDirective implements AfterViewInit {
+export class TuiLineChartHint implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChart))
     private readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
 
@@ -62,12 +62,12 @@ export class TuiLineChartHintDirective implements AfterViewInit {
             });
     }
 
-    // _chart is required by TuiLineDaysChartComponent that impersonates this directive
+    // _chart is required by TuiLineDaysChart that impersonates this directive
     public getContext(index: number, _chart: TuiLineChart): readonly TuiPoint[] {
         return this.computeContext(...this.charts.map(({value}) => value))[index];
     }
 
-    // _chart is required by TuiLineDaysChartComponent that impersonates this directive
+    // _chart is required by TuiLineDaysChart that impersonates this directive
     public raise(index: number, _chart: TuiLineChart): void {
         const current = this.charts.map(chart => chart.value[index]);
         const sorted = [...current].sort((a, b) => a[1] - b[1]);

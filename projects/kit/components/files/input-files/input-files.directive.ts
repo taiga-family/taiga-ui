@@ -13,11 +13,10 @@ import {filter, map, switchMap, timer} from 'rxjs';
 
 import type {TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
-import {TuiInputFiles} from './input-files.component';
+import {TuiInputFilesComponent} from './input-files.component';
 import {TuiInputFilesValidator} from './input-files-validator.directive';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputFiles]',
     providers: [
         tuiAsControl(TuiInputFilesDirective),
@@ -48,7 +47,7 @@ export class TuiInputFilesDirective
     extends TuiControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiAppearanceOptions
 {
-    protected readonly host = inject(forwardRef(() => TuiInputFiles));
+    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
 
     @Output()
     public readonly reject = timer(0).pipe(

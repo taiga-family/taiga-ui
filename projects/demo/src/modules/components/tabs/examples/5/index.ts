@@ -5,15 +5,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TuiTab, TuiTabsWithMore} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
-        TuiTabsWithMoreComponent,
+        TuiTabsWithMore,
         TuiItem,
-        TuiTabDirective,
+        TuiTab,
         NgForOf,
         TuiIcon,
         TuiButton,

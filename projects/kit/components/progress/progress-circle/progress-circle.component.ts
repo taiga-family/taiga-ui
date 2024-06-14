@@ -8,7 +8,7 @@ import {delay, of} from 'rxjs';
     styleUrls: ['./progress-circle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiProgressCircleComponent {
+export class TuiProgressCircle {
     protected readonly animationDelay$ = of(true).pipe(delay(0));
 
     @Input()

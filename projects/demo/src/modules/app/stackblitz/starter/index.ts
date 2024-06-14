@@ -16,7 +16,7 @@ import {appPrefix} from '../utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })
-export default class PageComponent implements OnInit {
+export default class Page implements OnInit {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly stackblitz = inject(TuiStackblitzService);
 

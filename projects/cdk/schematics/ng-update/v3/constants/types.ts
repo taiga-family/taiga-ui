@@ -129,7 +129,7 @@ export const TYPES_TO_RENAME: readonly ReplacementType[] = [
     },
     {
         from: 'CodeComponent',
-        to: 'TuiCodeComponent',
+        to: 'TuiCode',
         moduleSpecifier: ['@taiga-ui/addon-doc'],
     },
     {

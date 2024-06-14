@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiFilterComponent} from '@taiga-ui/kit';
+import {TuiFilter} from '@taiga-ui/kit';
 
 const getIcon: Record<string, string> = {
     Calendar: '@tui.calendar',
@@ -16,7 +16,7 @@ const getIcon: Record<string, string> = {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiFilterComponent, TuiIcon, JsonPipe],
+    imports: [ReactiveFormsModule, TuiFilter, TuiIcon, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

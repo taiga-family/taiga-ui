@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_DATE_FORMAT, TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiHintOptionsDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {
@@ -23,7 +23,7 @@ describe('InputDate', () => {
             TuiRoot,
             TuiInputDateModule,
             ReactiveFormsModule,
-            TuiHint,
+            TuiHintOptionsDirective,
             TuiTextfieldControllerModule,
         ],
         template: `
@@ -332,7 +332,7 @@ describe('InputDate', () => {
                 TuiRoot,
                 TuiInputDateModule,
                 ReactiveFormsModule,
-                TuiHint,
+                TuiHintOptionsDirective,
                 TuiTextfieldControllerModule,
             ],
             template: `

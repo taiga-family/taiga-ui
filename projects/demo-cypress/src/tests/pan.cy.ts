@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TuiPanDirective} from '@taiga-ui/cdk';
+import {TuiPan} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiPan', () => {
@@ -21,7 +21,7 @@ describe('TuiPan', () => {
     beforeEach(() =>
         cy
             .mount(Test, {
-                imports: [TuiPanDirective],
+                imports: [TuiPan],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {

@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
@@ -55,17 +56,17 @@ class Account {
     styleUrls: ['./index.less'],
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties(['tuiTextfieldPrefix', 'tuiTextfieldPostfix']),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     @ViewChild('valueTemplateContent')
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
     >;
 
-    protected readonly example9 = {
+    protected readonly example9: TuiDocExampleRecord = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),

@@ -8,7 +8,6 @@ import type {TuiKeySteps} from './key-steps';
 import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-steps';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiSlider][keySteps]',
     providers: [tuiFallbackValueProvider(0)],
     host: {
@@ -19,7 +18,7 @@ import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-st
         '(blur)': 'onTouched()',
     },
 })
-export class TuiSliderKeyStepsDirective extends TuiControl<number> {
+export class TuiSliderKeySteps extends TuiControl<number> {
     private readonly slider = inject<TuiSliderComponent>(
         forwardRef(() => TuiSliderComponent),
     );

@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
@@ -44,7 +44,7 @@ describe('MultiSelect', () => {
                 TuiRoot,
                 TuiMultiSelectModule,
                 ReactiveFormsModule,
-                TuiDataListWrapperComponent,
+                TuiDataListWrapper,
                 TuiDataListDirective,
             ],
             template: `
@@ -257,7 +257,7 @@ describe('MultiSelect', () => {
                 TuiRoot,
                 TuiMultiSelectModule,
                 ReactiveFormsModule,
-                TuiDataListWrapperComponent,
+                TuiDataListWrapper,
                 TuiDataListDirective,
             ],
             template: `

@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiScrollbar} from '@taiga-ui/core';
+import {TuiDataList, TuiScrollable} from '@taiga-ui/core';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -16,7 +16,8 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiMultiSelectModule,
         FormsModule,
         CdkVirtualScrollViewport,
-        TuiScrollbar,
+        TuiDataList,
+        TuiScrollable,
         CdkFixedSizeVirtualScroll,
         TuiDataList,
         CdkVirtualForOf,

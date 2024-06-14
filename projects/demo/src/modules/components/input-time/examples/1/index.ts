@@ -6,7 +6,7 @@ import {TuiTime} from '@taiga-ui/cdk';
 import {
     TuiInputTimeModule,
     TuiTextfieldControllerModule,
-    TuiUnfinishedValidator,
+    TuiUnfinishedValidatorDirective,
 } from '@taiga-ui/legacy';
 
 @Component({
@@ -15,7 +15,7 @@ import {
         ReactiveFormsModule,
         TuiInputTimeModule,
         TuiTextfieldControllerModule,
-        TuiUnfinishedValidator,
+        TuiUnfinishedValidatorDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

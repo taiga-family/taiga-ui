@@ -14,7 +14,7 @@ type TuiArrayElement<A> =
             : T
         : never;
 
-// TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
+// TODO: Consider replacing TuiTextfield with proper token once we refactor textfields
 @Pipe({
     standalone: true,
     name: 'tuiFilterByInput',

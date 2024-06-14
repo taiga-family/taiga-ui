@@ -4,9 +4,9 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDataListDirective, TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHintOptionsDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -46,9 +46,9 @@ describe('Input', () => {
             TuiRoot,
             ReactiveFormsModule,
             TuiInputModule,
-            TuiHint,
+            TuiHintOptionsDirective,
             TuiTextfieldControllerModule,
-            TuiDataListWrapperComponent,
+            TuiDataListWrapper,
             TuiDataListDirective,
         ],
         template: `

@@ -2,8 +2,8 @@ import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
 import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {tuiPure} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 const PERCENT = 100;
 const EMPTY_ARRAY: readonly number[] = [];

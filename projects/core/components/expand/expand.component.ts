@@ -1,5 +1,4 @@
 import type {NgIfContext} from '@angular/common';
-import {NgIf, NgTemplateOutlet} from '@angular/common';
 import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -17,10 +16,9 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiValuesOf} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {timer} from 'rxjs';
 
-import {TuiExpandContentDirective} from './expand-content.directive';
+import {TuiExpandContent} from './expand-content.directive';
 
 const State = {
     Idle: 0,
@@ -33,14 +31,12 @@ const LOADER_HEIGHT = 48;
 
 /**
  * An event indicating that async data for expand has finished loading.
- * Dispatch to finish loading states for {@link TuiExpandComponent}.
+ * Dispatch to finish loading states for {@link TuiExpand}.
  */
 export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
 
 @Component({
-    standalone: true,
     selector: 'tui-expand',
-    imports: [TuiLoader, NgIf, NgTemplateOutlet],
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +50,7 @@ export class TuiExpandComponent {
     private readonly destroyRef = inject(DestroyRef);
     private state: TuiValuesOf<typeof State> = State.Idle;
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    @ContentChild(TuiExpandContent, {read: TemplateRef})
     protected content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding('class._expanded')

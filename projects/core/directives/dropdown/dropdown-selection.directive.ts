@@ -26,7 +26,6 @@ import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelection),

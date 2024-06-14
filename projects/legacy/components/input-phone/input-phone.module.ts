@@ -18,17 +18,12 @@ import {TuiInputPhoneDirective} from './input-phone.directive';
     imports: [
         MaskitoDirective,
         TuiPrimitiveTextfieldModule,
+        TuiDropdown,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
         TuiLegacyDropdownOpenMonitorDirective,
-        ...TuiDropdown,
     ],
     declarations: [TuiInputPhoneComponent, TuiInputPhoneDirective],
-    exports: [
-        TuiInputPhoneComponent,
-        TuiInputPhoneDirective,
-        TuiTextfieldComponent,
-        ...TuiDropdown,
-    ],
+    exports: [TuiInputPhoneComponent, TuiInputPhoneDirective, TuiTextfieldComponent],
 })
 export class TuiInputPhoneModule {}

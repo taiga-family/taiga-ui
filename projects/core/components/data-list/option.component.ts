@@ -1,4 +1,4 @@
-import type {OnDestroy, TemplateRef} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,13 +6,9 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
 import type {TuiDataListHost} from './data-list.tokens';
@@ -20,9 +16,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
 
 // TODO: Consider all use cases for aria roles
 @Component({
-    standalone: true,
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
-    imports: [PolymorpheusOutlet],
     template: `
         <ng-container *polymorpheusOutlet="content || t as text; context: {$implicit: t}">
             {{ text }}
@@ -47,7 +41,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
         '(mousemove.silent)': 'onMouseMove()',
     },
 })
-export class TuiOption<T = unknown> implements OnDestroy {
+export class TuiOptionDirective<T = unknown> implements OnDestroy {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly dataList = inject<TuiDataListComponent<T>>(
@@ -59,10 +53,7 @@ export class TuiOption<T = unknown> implements OnDestroy {
         optional: true,
     });
 
-    protected readonly content: PolymorpheusContent<
-        TuiContext<TemplateRef<Record<string, unknown>>>
-    > = inject(TUI_OPTION_CONTENT, {optional: true});
-
+    protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
     protected readonly dropdown = inject(TuiDropdownDirective, {
         self: true,
         optional: true,

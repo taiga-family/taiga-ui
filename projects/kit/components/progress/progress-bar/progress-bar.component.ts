@@ -7,7 +7,7 @@ import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
     styleUrls: ['./progress-bar.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiProgressBarComponent {
+export class TuiProgressBar {
     @Input()
     @HostBinding('style.--tui-progress-color')
     public color?: string;

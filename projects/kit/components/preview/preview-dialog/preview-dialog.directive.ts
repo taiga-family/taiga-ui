@@ -5,7 +5,6 @@ import {tuiAsPopover} from '@taiga-ui/cdk/services';
 import {TuiPreviewDialogService} from './preview-dialog.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPreviewDialog]',
     inputs: ['open: tuiPreviewDialog'],
     outputs: ['openChange: tuiPreviewDialogChange'],

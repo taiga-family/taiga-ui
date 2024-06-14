@@ -3,49 +3,43 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
-import {TuiPanDirective} from '@taiga-ui/cdk/directives/pan';
-import {TuiZoom} from '@taiga-ui/cdk/directives/zoom';
-import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
-import {
-    TuiSliderComponent,
-    TuiSliderThumbLabelComponent,
-} from '@taiga-ui/kit/components/slider';
+import {TuiPan, TuiZoom} from '@taiga-ui/cdk';
+import {TuiButton, TuiHint} from '@taiga-ui/core';
+import {TuiSlider} from '@taiga-ui/kit/components/slider';
 
-import {TuiPreviewPaginationComponent} from './pagination/preview-pagination.component';
+import {TuiPreviewPagination} from './pagination/preview-pagination.component';
 import {TuiPreviewComponent} from './preview.component';
-import {TuiPreviewActionDirective} from './preview-action/preview-action.directive';
-import {TuiPreviewTitleComponent} from './title/preview-title.component';
-import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
+import {TuiPreviewAction} from './preview-action/preview-action.directive';
+import {TuiPreviewTitle} from './title/preview-title.component';
+import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
 @NgModule({
     imports: [
         NgIf,
-        TuiPanDirective,
+        AsyncPipe,
+        TuiPan,
+        TuiZoom,
         MutationObserverDirective,
         ResizeObserverDirective,
-        TuiZoom,
-        AsyncPipe,
         TuiButton,
-        TuiSliderThumbLabelComponent,
-        PercentPipe,
-        TuiSliderComponent,
         FormsModule,
+        TuiSlider,
+        PercentPipe,
         ...TuiHint,
     ],
     declarations: [
         TuiPreviewComponent,
-        TuiPreviewTitleComponent,
-        TuiPreviewPaginationComponent,
-        TuiPreviewActionDirective,
-        TuiPreviewZoomComponent,
+        TuiPreviewTitle,
+        TuiPreviewPagination,
+        TuiPreviewAction,
+        TuiPreviewZoom,
     ],
     exports: [
         TuiPreviewComponent,
-        TuiPreviewActionDirective,
-        TuiPreviewTitleComponent,
-        TuiPreviewPaginationComponent,
-        TuiPreviewZoomComponent,
+        TuiPreviewAction,
+        TuiPreviewTitle,
+        TuiPreviewPagination,
+        TuiPreviewZoom,
         ...TuiHint,
     ],
 })

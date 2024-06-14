@@ -2,11 +2,11 @@ import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSegmentedComponent} from '@taiga-ui/kit';
+import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSegmentedComponent, NgFor],
+    imports: [TuiSegmented, NgFor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

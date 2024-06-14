@@ -1,4 +1,4 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import type {AfterViewInit, OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -6,34 +6,30 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import type {TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
-import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
-import {tuiInjectElement, tuiIsElement, tuiIsNodeIn} from '@taiga-ui/cdk/utils/dom';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import type {TuiSwipeEvent} from '@taiga-ui/cdk';
+import {
+    TuiActiveZone,
+    tuiGetNativeFocused,
+    tuiInjectElement,
+    tuiIsElement,
+    tuiIsNodeIn,
+    tuiPx,
+} from '@taiga-ui/cdk';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TuiDropdownDirective,
+    tuiFadeIn,
+    tuiGetDuration,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
 
-import {TuiDropdownMobile} from './dropdown-mobile.directive';
+import {TuiDropdownMobileDirective} from './dropdown-mobile.directive';
 
 const GAP = 16;
 
 @Component({
-    standalone: true,
     selector: 'tui-dropdown-mobile',
-    imports: [
-        IntersectionObserverModule,
-        TuiSwipe,
-        NgIf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-    ],
     templateUrl: './dropdown-mobile.template.html',
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -59,7 +55,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         this.refresh(this.doc.defaultView!.visualViewport!),
     );
 
-    protected readonly directive = inject(TuiDropdownMobile);
+    protected readonly directive = inject(TuiDropdownMobileDirective);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly animation = {
         value: '',

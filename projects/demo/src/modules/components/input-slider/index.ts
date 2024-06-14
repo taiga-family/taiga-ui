@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -20,6 +21,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     imports: [
         TuiDemo,
         TuiLink,
+        RouterLink,
         TuiNotification,
         TuiInputSliderModule,
         ReactiveFormsModule,
@@ -31,11 +33,11 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties(['precision']),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiNumberFormat {
+export default class Page extends AbstractExampleTuiNumberFormat {
     protected readonly routes = DemoRoute;
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 

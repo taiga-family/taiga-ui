@@ -12,15 +12,16 @@ import {
 } from '@angular/core';
 import type {ValidatorFn} from '@angular/forms';
 import {FormsModule, NgControl, Validators} from '@angular/forms';
-import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
-} from '@taiga-ui/cdk/constants';
-import {TuiValidatorDirective} from '@taiga-ui/cdk/directives/validator';
-import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core/types';
+    tuiAsControl,
+    TuiControl,
+    TuiValidator,
+} from '@taiga-ui/cdk';
+import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -32,11 +33,11 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     selector: 'tui-radio-list',
     imports: [
         NgForOf,
-        TuiRadio,
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiValidatorDirective,
+        TuiRadio,
+        TuiValidator,
     ],
     templateUrl: './radio-list.template.html',
     styleUrls: ['./radio-list.style.less'],

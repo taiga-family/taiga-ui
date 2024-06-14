@@ -1,5 +1,5 @@
 ```ts
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiNotificationComponent,
+    TuiNotification,
   ],
   // ...
 })

@@ -33,7 +33,7 @@ import {TuiCalendarYear} from './calendar-year.component';
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarComponent {
+export class TuiCalendar {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     private view: 'month' | 'year' = 'month';

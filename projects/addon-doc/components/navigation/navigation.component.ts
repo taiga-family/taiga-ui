@@ -22,9 +22,9 @@ import {
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPageRoute, TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
-import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
+import {TuiSidebar} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocus, tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
@@ -85,7 +85,7 @@ export class TuiDocNavigation {
     @HostBinding('class._open')
     protected menuOpen = false;
 
-    protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
+    protected readonly sidebar = inject(TuiSidebar, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
@@ -136,12 +136,12 @@ export class TuiDocNavigation {
         return (this.search.value?.length ?? 0) > 2;
     }
 
-    protected get itemsWithoutSections(): TuiDocRoutePages {
+    protected get itemsWithoutSections(): TuiDocPages {
         return this.items[this.items.length - 1];
     }
 
-    protected $pages(pages: any): readonly TuiDocRoutePage[] {
-        return pages as TuiDocRoutePage[];
+    protected $pages(pages: any): readonly TuiDocPageRoute[] {
+        return pages as TuiDocPageRoute[];
     }
 
     protected isActive(route: string): boolean {
@@ -165,9 +165,9 @@ export class TuiDocNavigation {
 
     @tuiPure
     private filterItems(
-        items: ReadonlyArray<readonly TuiDocRoutePage[]>,
+        items: ReadonlyArray<readonly TuiDocPageRoute[]>,
         search: string,
-    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
+    ): ReadonlyArray<readonly TuiDocPageRoute[]> {
         return items.map(section =>
             tuiUniqBy(
                 section.filter(({title, keywords = ''}) => {
@@ -193,12 +193,12 @@ export class TuiDocNavigation {
 
     @tuiPure
     private flattenSubPages(
-        items: readonly TuiDocRoutePages[],
-    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
-        return items.reduce<ReadonlyArray<readonly TuiDocRoutePage[]>>(
+        items: readonly TuiDocPages[],
+    ): ReadonlyArray<readonly TuiDocPageRoute[]> {
+        return items.reduce<ReadonlyArray<readonly TuiDocPageRoute[]>>(
             (array, item) => [
                 ...array,
-                item.reduce<readonly TuiDocRoutePage[]>(
+                item.reduce<readonly TuiDocPageRoute[]>(
                     (pages, page) =>
                         'subPages' in page
                             ? [...pages, ...page.subPages]

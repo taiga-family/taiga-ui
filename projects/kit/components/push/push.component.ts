@@ -21,7 +21,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
 })
-export class TuiPushComponent {
+export class TuiPush {
     protected readonly isString = tuiIsString;
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);

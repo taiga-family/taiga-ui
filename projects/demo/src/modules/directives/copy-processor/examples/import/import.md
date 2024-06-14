@@ -1,5 +1,5 @@
 ```ts
-import {TuiCopyProcessorDirective} from '@taiga-ui/core';
+import {TuiCopyProcessor} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiCopyProcessorDirective} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiCopyProcessorDirective,
+    TuiCopyProcessor,
   ],
   // ...
 })

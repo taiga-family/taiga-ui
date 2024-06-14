@@ -28,12 +28,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiCardLarge, TuiCardMedium } from "@taiga-ui/layout";
-import { TuiCheckboxComponent } from "@taiga-ui/kit";
+import { TuiCheckbox } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCheckboxComponent, TuiCardLarge, TuiCardMedium]
+    imports: [TuiCheckbox, TuiCardLarge, TuiCardMedium]
 })
 export class Test {
 }`;

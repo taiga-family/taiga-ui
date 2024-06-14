@@ -5,17 +5,11 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiNotification} from '@taiga-ui/core';
-import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TuiTab, TuiTabsWithMore} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiNotification,
-        TuiTabsWithMoreComponent,
-        TuiItem,
-        TuiTabDirective,
-    ],
+    imports: [TuiDemo, TuiNotification, TuiTabsWithMore, TuiItem, TuiTab],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],

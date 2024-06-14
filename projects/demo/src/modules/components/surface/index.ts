@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiNotification} from '@taiga-ui/core';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification],
+    imports: [TuiDemo, TuiLink, RouterLink, TuiNotification],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -20,7 +22,7 @@ export default class Example {
         'Spacing compensation',
     ];
 
-    protected readonly layerExample = {
+    protected readonly layerExample: TuiDocExampleRecord = {
         HTML: import('./examples/7/index.html?raw'),
         'surface.less': import('./examples/7/surface.less?raw'),
         LESS: import('./examples/7/index.less?raw'),

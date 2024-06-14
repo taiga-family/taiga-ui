@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 
-import {TuiTileComponent} from './tile.component';
-import {TuiTileHandleDirective} from './tile-handle.directive';
+import {TuiTile} from './tile.component';
+import {TuiTileHandle} from './tile-handle.directive';
 import {TuiTilesComponent} from './tiles.component';
 
 @NgModule({
-    imports: [TuiTilesComponent, TuiTileComponent, TuiTileHandleDirective],
-    exports: [TuiTilesComponent, TuiTileComponent, TuiTileHandleDirective],
+    declarations: [TuiTilesComponent, TuiTile, TuiTileHandle],
+    exports: [TuiTilesComponent, TuiTile, TuiTileHandle],
 })
 export class TuiTiles {}

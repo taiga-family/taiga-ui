@@ -15,8 +15,8 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
+            useExisting: forwardRef(() => Page),
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {}
+export default class Page extends AbstractExampleTuiDropdown {}

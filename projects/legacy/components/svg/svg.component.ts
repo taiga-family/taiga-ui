@@ -43,6 +43,7 @@ export interface TuiIconError {
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// eslint-disable-next-line @taiga-ui/experience/no-postfix-class
 export class TuiSvgComponent {
     private icon: TuiSafeHtml = '';
     private readonly doc = inject(DOCUMENT);

@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo, TuiDocSetup} from '@demo/utils';
+import {TuiDemo, TuiSetup} from '@demo/utils';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiDocSetup],
+    imports: [TuiDemo, TuiSetup],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -7,20 +7,19 @@ import {
     forwardRef,
     inject,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {TuiTableTd} from '@taiga-ui/addon-table/components';
+import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {map, ReplaySubject, switchMap} from 'rxjs';
 
 import {TuiTableCell} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTableTbody} from '../tbody/tbody.component';
-import {TuiTableTd} from '../td/td.component';
 
 @Component({
     standalone: true,
     selector: 'tr[tuiTr]',
-    imports: [NgIf, AsyncPipe, NgForOf, NgTemplateOutlet, TuiTableTd],
+    imports: [NgForOf, NgTemplateOutlet, NgIf, AsyncPipe, TuiTableTd],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],

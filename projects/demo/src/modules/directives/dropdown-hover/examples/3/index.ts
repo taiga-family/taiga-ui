@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiActiveZone} from '@taiga-ui/cdk';
+import {TuiButton, TuiDataList, TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -12,8 +13,10 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     imports: [
         TuiButton,
         TuiDropdown,
+        TuiDropdownOpen,
         TuiSelectModule,
         ReactiveFormsModule,
+        TuiActiveZone,
         TuiDataListWrapper,
         TuiDataList,
         NgForOf,

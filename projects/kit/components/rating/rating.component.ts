@@ -38,7 +38,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
         '[class._readonly]': 'readOnly()',
     },
 })
-export class TuiRatingComponent extends TuiControl<number> {
+export class TuiRating extends TuiControl<number> {
     private readonly options = inject(TUI_RATING_OPTIONS);
 
     @HostBinding('class._active')

@@ -1,27 +1,19 @@
-import {NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
-import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {
-    POLYMORPHEUS_CONTEXT,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 
 import type {TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-alert',
-    imports: [TuiNotification, NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +26,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
         '[@tuiHeightCollapse]': 'animation',
     },
 })
-export class TuiAlert<O, I> implements OnInit {
+export class TuiAlertComponent<O, I> implements OnInit {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
     protected readonly position = inject(TUI_ALERT_POSITION);

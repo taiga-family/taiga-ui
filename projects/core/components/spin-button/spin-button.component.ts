@@ -22,7 +22,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
         '(mousedown.silent.prevent)': '(0)',
     },
 })
-export class TuiSpinButtonComponent {
+export class TuiSpinButton {
     protected readonly icons = inject(TUI_SPIN_ICONS);
     protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 

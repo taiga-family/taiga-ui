@@ -6,7 +6,6 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 import {TuiPdfViewerService} from './pdf-viewer.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPdfViewer]',
     inputs: ['options: tuiPdfViewerOptions', 'open: tuiPdfViewer'],
     outputs: ['openChange: tuiPdfViewerChange'],

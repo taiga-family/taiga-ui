@@ -8,12 +8,12 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import {TuiTableResized} from '@taiga-ui/addon-table/components';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
 import {TuiTableHead} from '../directives/head.directive';
-import {TuiTableResized} from '../directives/resized.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 

@@ -1,18 +1,20 @@
 import type {DoCheck, OnInit, TemplateRef} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
+    TUI_DEFAULT_IDENTITY_MATCHER,
+    tuiInjectElement,
+    tuiIsPresent,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk';
+import type {TuiDataListHost} from '@taiga-ui/core';
+import {
+    TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TuiDataListComponent,
-    TuiOption,
-} from '@taiga-ui/core/components/data-list';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+    TuiOptionDirective,
+} from '@taiga-ui/core';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
@@ -29,7 +31,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     private readonly changeDetection$ = new Subject<void>();
     protected readonly abstractControl = inject(AbstractTuiControl<T>, {optional: true});
     protected readonly control = inject(NgControl);
-    protected readonly option = inject(TuiOption<T>);
+    protected readonly option = inject(TuiOptionDirective<T>);
     protected readonly dataList = inject(TuiDataListComponent<T>, {optional: true});
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context =

@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 
-import {TuiSheetDialogComponent} from './sheet-dialog.component';
+import {TuiSheetDialog} from './sheet-dialog.component';
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 import {TUI_SHEET_DIALOG_OPTIONS} from './sheet-dialog.options';
 
@@ -11,7 +11,7 @@ import {TUI_SHEET_DIALOG_OPTIONS} from './sheet-dialog.options';
     useFactory: () =>
         new TuiSheetDialogService(
             TUI_DIALOGS,
-            TuiSheetDialogComponent,
+            TuiSheetDialog,
             inject(TUI_SHEET_DIALOG_OPTIONS),
         ),
 })

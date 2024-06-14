@@ -12,13 +12,13 @@ import {
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
-import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 
-import {IconsGroup} from './icons-group.directive';
+import {IconsGroupDirective} from './icons-group.directive';
 
 @Component({
     standalone: true,
@@ -28,7 +28,7 @@ import {IconsGroup} from './icons-group.directive';
         TuiAutoFocus,
         TuiHint,
         ReactiveFormsModule,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         NgForOf,
         TuiKeysPipe,
@@ -42,15 +42,15 @@ import {IconsGroup} from './icons-group.directive';
     styleUrls: ['./icons-group.style.less'],
     changeDetection,
 })
-export class IconsGroupComponent implements OnInit {
+export class IconsGroup implements OnInit {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChild(IconsGroup)
-    protected readonly iconGroup?: IconsGroup;
+    @ContentChild(IconsGroupDirective)
+    protected readonly iconGroup?: IconsGroupDirective;
 
     protected matcher: (item: string, search: string) => boolean = TUI_DEFAULT_MATCHER;
 

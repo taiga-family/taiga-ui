@@ -25,7 +25,7 @@ class TuiProgressSegmentedStyles {}
         '[style.--t-segment-width]': '1 / segments',
     },
 })
-export class TuiProgressSegmentedDirective {
+export class TuiProgressSegmented {
     protected readonly nothing = tuiWithStyles(TuiProgressSegmentedStyles);
 
     @Input()

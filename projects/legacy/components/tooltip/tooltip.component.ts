@@ -7,8 +7,8 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives';
 
 @Component({
     selector: 'tui-tooltip',

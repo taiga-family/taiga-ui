@@ -4,7 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiHint} from '@taiga-ui/core';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     DEFAULT_ROWS,
@@ -23,7 +23,7 @@ const DEFAULT_HEIGHT = 108;
 describe('Textarea', () => {
     @Component({
         standalone: true,
-        imports: [TuiTextareaModule, ReactiveFormsModule, TuiHint],
+        imports: [TuiTextareaModule, ReactiveFormsModule, TuiHintOptionsDirective],
         template: `
             <tui-textarea
                 [expandable]="expandable"

@@ -10,12 +10,14 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused, TuiNativeValidator} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    TuiWithDataListDirective,
+} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
@@ -27,7 +29,7 @@ import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TuiTextfieldDirective} from './textfield.directive';
+import type {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
 
 export interface TuiTextfieldContext<T> extends TuiContext<T> {
@@ -53,9 +55,9 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         '[class._disabled]': 'input.disabled',
     },
     hostDirectives: [
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
         TuiDropdownDirective,
-        TuiWithDataList,
+        TuiWithDataListDirective,
         {
             directive: TuiDropdownOpen,
             inputs: ['tuiDropdownOpen: open'],
@@ -68,7 +70,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     ],
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiTextfieldComponent), {read: ElementRef})
     private readonly el?: ElementRef<HTMLInputElement>;
 
     private readonly dropdown = inject(TuiDropdownOpen, {
@@ -76,7 +78,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         self: true,
     });
 
-    @ContentChild(forwardRef(() => TuiTextfieldDirective))
+    @ContentChild(forwardRef(() => TuiTextfieldComponent))
     protected readonly directive?: TuiTextfieldDirective;
 
     @ContentChild(TuiLabel, {read: ElementRef})

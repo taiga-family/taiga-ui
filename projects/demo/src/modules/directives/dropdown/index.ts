@@ -1,9 +1,10 @@
 import {Component, forwardRef} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiNotification} from '@taiga-ui/core';
+import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown, TuiLink, TuiNotification} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
@@ -17,19 +18,21 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         TuiNotification,
         TuiActiveZone,
         TuiButton,
-        TuiObscuredDirective,
+        TuiObscured,
         DropdownDocumentation,
+        TuiLink,
+        RouterLink,
     ],
     templateUrl: './index.html',
     changeDetection,
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => PageComponent),
+            useExisting: forwardRef(() => Page),
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class Page extends AbstractExampleTuiDropdown {
     protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Basic',

@@ -1,13 +1,13 @@
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-export type TuiDocRoutePages = ReadonlyArray<TuiDocRoutePage | TuiDocRoutePageGroup>;
+export type TuiDocPages = ReadonlyArray<TuiDocPageGroup | TuiDocPageRoute>;
 
-export interface TuiDocRoutePageBase {
+export interface TuiDocPageBase {
     readonly section?: string;
     readonly title: string;
 }
 
-export interface TuiDocRoutePage extends TuiDocRoutePageBase {
+export interface TuiDocPageRoute extends TuiDocPageBase {
     readonly fragment?: string;
     readonly keywords?: string;
     readonly route: string;
@@ -16,8 +16,8 @@ export interface TuiDocRoutePage extends TuiDocRoutePageBase {
     readonly target?: HTMLAnchorElement['target'];
 }
 
-export interface TuiDocRoutePageGroup extends TuiDocRoutePageBase {
-    readonly subPages: readonly TuiDocRoutePage[];
+export interface TuiDocPageGroup extends TuiDocPageBase {
+    readonly subPages: readonly TuiDocPageRoute[];
 }
 
 export type TuiRawLoaderContent = Promise<{default: string}> | string;
@@ -27,3 +27,11 @@ export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
     LESS: 'LESS',
     HTML: 'HTML',
 } as const;
+
+export type TuiDocExampleRecord =
+    | Record<string, TuiRawLoaderContent>
+    | {
+          [TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML]?: string;
+          [TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS]?: string;
+          [TUI_EXAMPLE_PRIMARY_FILE_NAME.TS]?: string;
+      };

@@ -7,9 +7,9 @@ import type {TuiPoint} from '@taiga-ui/core/types';
 @Directive({
     standalone: true,
     selector: '[tuiLineClampPosition]',
-    providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
+    providers: [tuiAsPositionAccessor(TuiLineClampPosition)],
 })
-export class TuiLineClampPositionDirective extends TuiPositionAccessor {
+export class TuiLineClampPosition extends TuiPositionAccessor {
     private readonly accessor = inject<TuiRectAccessor>(TuiHintDirective);
     public readonly type = 'hint';
 

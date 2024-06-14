@@ -6,7 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTimeComponent,
@@ -32,7 +32,7 @@ describe('InputTime', () => {
             TuiRoot,
             TuiInputTimeModule,
             ReactiveFormsModule,
-            TuiHint,
+            TuiHintOptionsDirective,
             TuiTextfieldControllerModule,
         ],
         template: `

@@ -3,12 +3,12 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiChevron, TuiButton, TuiDropdown, TuiDataList, NgForOf],
+    imports: [TuiChevron, TuiButton, TuiDropdown, TuiDropdownOpen, TuiDataList, NgForOf],
     templateUrl: './index.html',
     styles: [
         `

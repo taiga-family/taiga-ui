@@ -4,17 +4,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent, TuiSortCountriesPipe} from '@taiga-ui/kit';
+import {TuiInputPhoneInternational, TuiSortCountriesPipe} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
     standalone: true,
-    imports: [
-        AsyncPipe,
-        TuiInputPhoneInternationalComponent,
-        TuiSortCountriesPipe,
-        FormsModule,
-    ],
+    imports: [AsyncPipe, TuiInputPhoneInternational, TuiSortCountriesPipe, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

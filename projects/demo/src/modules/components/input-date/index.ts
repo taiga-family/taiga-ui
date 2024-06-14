@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
@@ -38,17 +40,15 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiLink,
         ReactiveFormsModule,
         InheritedDocumentation,
+        RouterLink,
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent),
-        tuiProvideMobileCalendar(),
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Example), tuiProvideMobileCalendar()],
 })
-export default class ExampleComponent extends AbstractExampleTuiControl {
+export default class Example extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
-    protected readonly example5 = {
+    protected readonly example5: TuiDocExampleRecord = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         'native-date-transformer.directive.ts': import(

@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 import {TuiTablePagination} from '@taiga-ui/addon-table';
 
 describe('TablePagination', () => {
@@ -27,7 +26,7 @@ describe('TablePagination', () => {
         public page = 3;
         public size = 10;
 
-        protected update({page, size}: TuiTablePaginationEvent): void {
+        protected update({page, size}: TuiTablePagination): void {
             this.page = page;
             this.size = size;
         }

@@ -23,6 +23,8 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         CommonModule,
         MaskitoDirective,
         TuiSelectOptionModule,
+        TuiDataList,
+        TuiDropdown,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
@@ -31,15 +33,8 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
         TuiAppearance,
-        ...TuiDropdown,
-        ...TuiDataList,
     ],
     declarations: [TuiInputTimeComponent, TuiNativeTimeComponent, TuiInputTimeDirective],
-    exports: [
-        TuiInputTimeComponent,
-        TuiInputTimeDirective,
-        ...TuiDropdown,
-        ...TuiDataList,
-    ],
+    exports: [TuiInputTimeComponent, TuiInputTimeDirective],
 })
 export class TuiInputTimeModule {}

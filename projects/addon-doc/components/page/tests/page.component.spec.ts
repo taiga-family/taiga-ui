@@ -4,7 +4,7 @@ import {PAGE_SEE_ALSO, TuiDocPage} from '@taiga-ui/addon-doc';
 import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 
-describe('TuiDocPageComponent', () => {
+describe('TuiDocPage', () => {
     let component: TuiDocPage;
     let fixture: ComponentFixture<TuiDocPage>;
 
@@ -56,7 +56,7 @@ describe('TuiDocPageComponent', () => {
         expect(component.activeItemIndex).toBe(0);
     });
 
-    it('TuiDocPageTabConnectorDirective', () => {
+    it('TuiDocPageTabConnector', () => {
         expect(EMPTY_QUERY.dirty).toBe(true);
         expect(component.tabConnectors.dirty).toBe(false);
     });

@@ -20,7 +20,7 @@ import {TuiTableTh} from '../th/th.component';
 @Component({
     standalone: true,
     selector: 'tr[tuiThGroup]',
-    imports: [NgIf, TuiTableTh, NgTemplateOutlet, NgForOf, AsyncPipe],
+    imports: [NgIf, AsyncPipe, NgForOf, NgTemplateOutlet, TuiTableTh],
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],

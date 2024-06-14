@@ -22,6 +22,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// eslint-disable-next-line @taiga-ui/experience/no-postfix-class
 export class TuiArrowComponent {
     private readonly control: any = inject(AbstractTuiControl, {optional: true});
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);

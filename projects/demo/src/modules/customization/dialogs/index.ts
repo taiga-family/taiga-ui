@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc';
 
 import {TuiDialogsExample1} from './examples/1';
 
@@ -11,7 +12,7 @@ import {TuiDialogsExample1} from './examples/1';
     changeDetection,
 })
 export default class Page {
-    protected readonly example1 = {
+    protected readonly example1: TuiDocExampleRecord = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

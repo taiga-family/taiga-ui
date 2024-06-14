@@ -8,17 +8,19 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {EMPTY_QUERY, TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
-import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
+    EMPTY_QUERY,
+    TUI_DEFAULT_IDENTITY_MATCHER,
+    tuiControlValue,
     tuiGetOriginalArrayFromQueryList,
     tuiIsPresent,
     tuiPure,
-} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core/components/data-list';
-import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
+    tuiQueryListChanges,
+} from '@taiga-ui/cdk';
+import type {TuiDataListHost} from '@taiga-ui/core';
+import {TUI_DATA_LIST_HOST, TuiOptionDirective} from '@taiga-ui/core';
+import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
 
@@ -29,8 +31,8 @@ import {combineLatest, map} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectGroupComponent<T> {
-    @ContentChildren(TuiOption)
-    private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
+    @ContentChildren(TuiOptionDirective)
+    private readonly options: QueryList<TuiOptionDirective<T>> = EMPTY_QUERY;
 
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
     private readonly control = inject(NgControl);
@@ -113,7 +115,7 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     @tuiPure
-    private filter(items: ReadonlyArray<TuiOption<T>>): readonly T[] {
+    private filter(items: ReadonlyArray<TuiOptionDirective<T>>): readonly T[] {
         return items.map(({value}) => value).filter(tuiIsPresent);
     }
 }

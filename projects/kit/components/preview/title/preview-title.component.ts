@@ -8,4 +8,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     styleUrls: ['./preview-title.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPreviewTitleComponent {}
+export class TuiPreviewTitle {}

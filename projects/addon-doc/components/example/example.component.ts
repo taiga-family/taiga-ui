@@ -15,12 +15,12 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiItem, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton, TuiLoader} from '@taiga-ui/core';
-import {TUI_COPY_TEXTS, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TUI_COPY_TEXTS, TuiTab, TuiTabsWithMore} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     PolymorpheusComponent,
@@ -45,10 +45,10 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         RouterLink,
         AsyncPipe,
         TuiDocExampleGetTabsPipe,
-        TuiTabsWithMoreComponent,
+        TuiTabsWithMore,
         NgForOf,
         TuiItem,
-        TuiTabDirective,
+        TuiTab,
         TuiLoader,
         TuiMapperPipe,
         NgTemplateOutlet,
@@ -64,11 +64,7 @@ export class TuiDocExample {
     private readonly location = inject(LOCATION);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
-
-    private readonly rawLoader$$ = new BehaviorSubject<
-        Record<string, TuiRawLoaderContent>
-    >({});
-
+    private readonly rawLoader$$ = new BehaviorSubject<TuiDocExampleRecord>({});
     private readonly lazyLoader$$ = new ReplaySubject<Promise<{readonly default: any}>>(
         1,
     );
@@ -117,7 +113,7 @@ export class TuiDocExample {
     public componentName: string = this.location.pathname.slice(1);
 
     @Input()
-    public set content(content: Record<string, TuiRawLoaderContent>) {
+    public set content(content: TuiDocExampleRecord) {
         this.rawLoader$$.next(content);
     }
 

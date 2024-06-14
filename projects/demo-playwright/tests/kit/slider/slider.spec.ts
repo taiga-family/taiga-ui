@@ -23,7 +23,7 @@ test.describe('Slider', () => {
         });
     });
 
-    test.describe('correctly sets control value on input change (using TuiSliderKeyStepsDirective)', () => {
+    test.describe('correctly sets control value on input change (using TuiSliderKeySteps)', () => {
         const testsMeta = [
             {inputStep: 1, expectedControlValue: 14_500},
             {inputStep: 4, expectedControlValue: 43_000},

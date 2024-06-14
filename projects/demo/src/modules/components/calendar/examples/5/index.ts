@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDay, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DAY_TYPE_HANDLER, TuiCalendarComponent} from '@taiga-ui/core';
+import {TUI_DAY_TYPE_HANDLER, TuiCalendar} from '@taiga-ui/core';
 
 const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     if (day.day === 10) {
@@ -13,7 +13,7 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
 
 @Component({
     standalone: true,
-    imports: [TuiCalendarComponent],
+    imports: [TuiCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

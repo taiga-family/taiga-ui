@@ -30,6 +30,7 @@ import type {TuiTableBarOptions} from './table-bar.options';
         '[attr.data-appearance]': 'context.mode',
     },
 })
+// eslint-disable-next-line @taiga-ui/experience/no-postfix-class
 export class TuiTableBarComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);

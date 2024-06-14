@@ -7,12 +7,9 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {tuiInjectElement, tuiIsString, TuiNativeValidator} from '@taiga-ui/cdk';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearance} from '@taiga-ui/core';
 
 import {TUI_SWITCH_OPTIONS} from './switch.options';
 
@@ -31,7 +28,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
                 'tuiAppearanceFocus',
             ],
         },
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
     ],
     host: {
         role: 'switch',
@@ -43,7 +40,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
 })
 export class TuiSwitch implements DoCheck {
     private readonly appearance = inject(TuiAppearance);
-    private readonly resolver = tuiInjectIconResolver();
+    private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly options = inject(TUI_SWITCH_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 

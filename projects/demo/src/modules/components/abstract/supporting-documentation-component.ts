@@ -3,7 +3,7 @@ import type {AbstractExampleTuiHint} from './hint';
 import type {AbstractExampleTuiInteractive} from './interactive';
 import type {AbstractExampleTuiNumberFormat} from './number-format';
 
-export type TuiSupportingDocumentationComponent =
+export type TuiSupportingDocumentation =
     | AbstractExampleTuiControl
     | AbstractExampleTuiHint
     | AbstractExampleTuiInteractive

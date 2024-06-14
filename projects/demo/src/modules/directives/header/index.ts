@@ -1,12 +1,12 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
+import {TuiComponentPipe, TuiExamplePipe, TuiSetup} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [TuiExamplePipe, TuiComponentPipe, TuiAddonDoc, TuiSetup],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

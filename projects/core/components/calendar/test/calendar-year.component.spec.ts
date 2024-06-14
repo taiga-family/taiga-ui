@@ -5,7 +5,7 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarYear} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
-describe('TuiCalendarYearComponent', () => {
+describe('TuiCalendarYear', () => {
     @Component({
         standalone: true,
         imports: [TuiCalendarYear],

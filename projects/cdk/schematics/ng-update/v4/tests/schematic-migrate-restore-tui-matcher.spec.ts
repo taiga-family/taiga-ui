@@ -15,7 +15,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
-const TUI_MATCHER_COMPONENT = `
+const TUI_MATCHER = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
@@ -35,7 +35,7 @@ export class Test {
     > = items.filter(item => item().length % length);
 }`;
 
-const TUI_MATCHER_COMPONENT_AFTER = `
+const TUI_MATCHER_AFTER = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
@@ -55,7 +55,7 @@ export class Test {
     > = items.filter(item => item().length % length);
 }`;
 
-const TYPED_TUI_MATCHER_COMPONENT = `
+const TYPED_TUI_MATCHER = `
 import { TuiFilterPipe, TuiMatcher, TuiTypedMatcher } from '@taiga-ui/cdk';
 
 @Component({
@@ -77,7 +77,7 @@ export class Test {
       ]> = items.filter(item => item().length % length);
 }`;
 
-const TYPED_TUI_MATCHER_COMPONENT_AFTER = `
+const TUI_TYPED_TUI_MATCHER_AFTER = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
@@ -131,7 +131,7 @@ describe('ng-update', () => {
 
         const componentBefore = tree.readContent('test/app/tui-matcher.component.ts');
 
-        expect(componentBefore).toEqual(TUI_MATCHER_COMPONENT_AFTER);
+        expect(componentBefore).toEqual(TUI_MATCHER_AFTER);
         expect(tree.readContent('test/app/tui-matcher.component.html')).toEqual(
             TEMPLATE_AFTER,
         );
@@ -145,7 +145,7 @@ describe('ng-update', () => {
         );
 
         expect(tree.readContent('test/app/tui-typed-matcher.component.ts')).toEqual(
-            TYPED_TUI_MATCHER_COMPONENT_AFTER,
+            TUI_TYPED_TUI_MATCHER_AFTER,
         );
         expect(tree.readContent('test/app/tui-typed-matcher.component.html')).toEqual(
             TEMPLATE_AFTER,
@@ -158,11 +158,8 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/tui-matcher.component.ts', TUI_MATCHER_COMPONENT);
-    createSourceFile(
-        'test/app/tui-typed-matcher.component.ts',
-        TYPED_TUI_MATCHER_COMPONENT,
-    );
+    createSourceFile('test/app/tui-matcher.component.ts', TUI_MATCHER);
+    createSourceFile('test/app/tui-typed-matcher.component.ts', TYPED_TUI_MATCHER);
     createSourceFile('test/app/tui-matcher.component.html', TEMPLATE_BEFORE);
     createSourceFile('test/app/tui-typed-matcher.component.html', TEMPLATE_BEFORE);
 

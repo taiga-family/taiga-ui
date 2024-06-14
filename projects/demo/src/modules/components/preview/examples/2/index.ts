@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiPreview, TuiPreviewDialogDirective} from '@taiga-ui/kit';
+import {TuiPreview, TuiPreviewDialog} from '@taiga-ui/kit';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -14,7 +14,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
         TuiSwipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiPreviewDialogDirective,
+        TuiPreviewDialog,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

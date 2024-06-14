@@ -364,11 +364,11 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {
-            name: 'TuiAccountComponent',
+            name: 'TuiAccount',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiAccountComponent',
+            name: 'TuiAccount',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
     },
@@ -394,11 +394,11 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {
-            name: 'TuiAccountDelegateComponent',
+            name: 'TuiAccountDelegate',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiAccountDelegateComponent',
+            name: 'TuiAccountDelegate',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
     },

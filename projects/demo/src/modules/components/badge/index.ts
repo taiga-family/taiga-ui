@@ -1,8 +1,9 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiExamplePipe, TuiSetup} from '@demo/utils';
+import {TuiAddonDoc, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
@@ -16,7 +17,9 @@ import {TuiBadgeExample6} from './examples/6';
 @Component({
     standalone: true,
     imports: [
+        TuiExamplePipe,
         TuiBadge,
+        NgIf,
         TuiFade,
         TuiRadioList,
         FormsModule,
@@ -26,7 +29,8 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeExample4,
         TuiBadgeExample5,
         TuiBadgeExample6,
-        TuiDemo,
+        TuiAddonDoc,
+        TuiSetup,
     ],
     templateUrl: './index.html',
     changeDetection,

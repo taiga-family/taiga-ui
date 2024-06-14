@@ -3,11 +3,11 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiInputInlineComponent} from '@taiga-ui/kit';
+import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiInputInlineComponent, ReactiveFormsModule, TuiButton],
+    imports: [TuiInputInline, ReactiveFormsModule, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

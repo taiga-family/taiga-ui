@@ -13,7 +13,7 @@ import {
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 
-import {TuiPushComponent} from './push.component';
+import {TuiPush} from './push.component';
 import {TuiPushDirective} from './push.directive';
 import type {TuiPushOptions} from './push.options';
 
@@ -23,7 +23,7 @@ import type {TuiPushOptions} from './push.options';
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiPushComponent,
+        TuiPush,
         TuiIcon,
         TuiButton,
         TuiLink,
@@ -39,7 +39,7 @@ import type {TuiPushOptions} from './push.options';
         '[@tuiHeightCollapse]': 'options',
     },
 })
-export class TuiPushAlertComponent {
+export class TuiPushAlert {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiPopover<
         TuiPushOptions,

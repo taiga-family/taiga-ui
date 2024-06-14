@@ -4,19 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiRangeComponent,
-        FormsModule,
-        NgForOf,
-        NgIf,
-        I18nPluralPipe,
-        TuiIcon,
-        JsonPipe,
-    ],
+    imports: [TuiRange, FormsModule, NgForOf, NgIf, I18nPluralPipe, TuiIcon, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

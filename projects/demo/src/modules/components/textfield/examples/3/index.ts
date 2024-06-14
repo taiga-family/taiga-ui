@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiTextfield, TuiTooltip} from '@taiga-ui/core';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiTooltipModule} from '@taiga-ui/experimental';
 import {TuiChevron, TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 @Component({
@@ -11,7 +12,7 @@ import {TuiChevron, TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/ki
         FormsModule,
         TuiTextfield,
         TuiIcon,
-        TuiTooltip,
+        TuiTooltipModule,
         TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,

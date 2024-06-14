@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk/classes';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk';
 
 import {TuiDropdownService} from './dropdown.service';
 
 /**
- * Host element for dynamically created portals, for example using {@link TuiDropdownDirective}.
+ * Host element for dynamically created portals, for example using {@link TuiDropdown}.
  */
 @Component({
     standalone: true,
@@ -25,4 +25,4 @@ import {TuiDropdownService} from './dropdown.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
 })
-export class TuiDropdownsComponent extends TuiPortalsComponent {}
+export class TuiDropdowns extends TuiPortals {}

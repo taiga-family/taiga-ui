@@ -1,9 +1,8 @@
-import {CommonModule} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {NAVIGATOR} from '@ng-web-apis/common';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiNativeValidator, tuiProvide} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 import {TuiTextfieldDirective} from './textfield.directive';
@@ -11,7 +10,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
 @Component({
     standalone: true,
     selector: 'select[tuiTextfield]',
-    imports: [CommonModule],
+    imports: [NgIf, NgForOf],
     templateUrl: './select.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TuiTextfieldDirective, TuiSelectDirective)],
@@ -24,7 +23,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         '(keydown.control.c)': 'onCopy()',
         '(keydown.meta.c)': 'onCopy()',
     },
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
+    hostDirectives: [TuiNativeValidator, TuiAppearance],
 })
 export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly nav = inject(NAVIGATOR);

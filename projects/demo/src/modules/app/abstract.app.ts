@@ -16,7 +16,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 };
 
 @Directive()
-export abstract class AbstractDemoComponent implements OnInit {
+export abstract class AbstractDemo implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
 

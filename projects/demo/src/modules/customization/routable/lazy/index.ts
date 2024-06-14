@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiDocExampleRecord} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [TuiDemo, RouterOutlet],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    protected readonly example1 = {
+    protected readonly example1: TuiDocExampleRecord = {
         'page.routes.ts': import('./routes.ts?raw'),
         'page.template.html': import('./examples/1/index.html?raw'),
         'page.ts': import('./examples/1/index.ts?raw'),

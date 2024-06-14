@@ -5,11 +5,11 @@ import {TuiDemo} from '@demo/utils';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiNotification} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, TuiRangeComponent, ReactiveFormsModule],
+    imports: [TuiDemo, TuiNotification, TuiRange, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection,
 })

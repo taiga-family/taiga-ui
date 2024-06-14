@@ -1,7 +1,7 @@
 import {TestKey} from '@angular/cdk/testing';
-import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
+import {TuiContentContainerHarness} from '@taiga-ui/testing/utils';
 
-export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
+export class TuiAccordionItemHarness extends TuiContentContainerHarness {
     public static hostSelector = 'tui-accordion-item';
 
     private readonly header = this.locatorFor('.t-header');

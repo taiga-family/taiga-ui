@@ -13,8 +13,8 @@ import {InheritedDocumentation} from '../../components/abstract/inherited-docume
     imports: [TuiDemo, InheritedDocumentation, TuiHint],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiHint {
+export default class Page extends AbstractExampleTuiHint {
     protected id = '';
 }

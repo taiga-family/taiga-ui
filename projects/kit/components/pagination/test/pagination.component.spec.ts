@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiPagination} from '@taiga-ui/kit';
+import {TuiPagination, TuiPaginationModule} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 interface TuiPaginationParams {
@@ -16,10 +16,10 @@ interface TuiPaginationParams {
     readonly sidePadding?: number;
 }
 
-describe('TuiPaginationComponent', () => {
+describe('TuiPagination', () => {
     @Component({
         standalone: true,
-        imports: [TuiPagination],
+        imports: [TuiPaginationModule],
         template: `
             <tui-pagination
                 [activePadding]="activePadding"

@@ -11,18 +11,19 @@ import {
     ViewChild,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CHAR_PLUS, TUI_NON_DIGITS_REGEXP} from '@taiga-ui/cdk/constants';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroupDirective} from '@taiga-ui/core/components/group';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
-import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
-import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {CHAR_PLUS, TUI_NON_DIGITS_REGEXP, tuiPure} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiDataList,
+    TuiDropdown,
+    TuiFlagPipe,
+    TuiGroup,
+    TuiHint,
+} from '@taiga-ui/core';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {TUI_COUNTRIES} from '@taiga-ui/kit';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
@@ -63,7 +64,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiInputPhoneModule,
-        TuiGroupDirective,
+        TuiGroup,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHint,
@@ -85,6 +86,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
+// eslint-disable-next-line @taiga-ui/experience/no-postfix-class
 export class TuiInputPhoneInternationalComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor

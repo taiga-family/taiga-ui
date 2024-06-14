@@ -25,11 +25,11 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties(['tuiTextfieldPrefix', 'tuiTextfieldPostfix']),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     @ViewChild('customTemplate')
     protected customTemplate: PolymorpheusContent;
 

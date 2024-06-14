@@ -22,6 +22,7 @@ import {TUI_TABLE_BARS} from './table-bar.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
 })
+// eslint-disable-next-line @taiga-ui/experience/no-postfix-class
 export class TuiTableBarsHostComponent {
     protected bars$ = inject(TUI_TABLE_BARS);
 }

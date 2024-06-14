@@ -10,13 +10,8 @@ import {TuiInputComponent} from './input.component';
 import {TuiInputDirective} from './input.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiPrimitiveTextfieldModule, ...TuiDropdown],
+    imports: [CommonModule, TuiPrimitiveTextfieldModule, TuiDropdown],
     declarations: [TuiInputComponent, TuiInputDirective],
-    exports: [
-        TuiInputComponent,
-        TuiInputDirective,
-        TuiTextfieldComponent,
-        ...TuiDropdown,
-    ],
+    exports: [TuiInputComponent, TuiInputDirective, TuiTextfieldComponent],
 })
 export class TuiInputModule {}

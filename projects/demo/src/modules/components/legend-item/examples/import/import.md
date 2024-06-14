@@ -1,5 +1,5 @@
 ```ts
-import {TuiLegendItemComponent} from '@taiga-ui/addon-charts';
+import {TuiLegendItem} from '@taiga-ui/addon-charts';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiLegendItemComponent} from '@taiga-ui/addon-charts';
   standalone: true,
   imports: [
     // ...
-    TuiLegendItemComponent,
+    TuiLegendItem,
   ],
   // ...
 })

@@ -4,12 +4,12 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiSliderComponent, TuiSliderKeyStepsDirective} from '@taiga-ui/kit';
+import {TuiSlider, TuiSliderKeySteps} from '@taiga-ui/kit';
 
-describe('TuiSliderKeyStepsDirective', () => {
+describe('TuiSliderKeySteps', () => {
     @Component({
         standalone: true,
-        imports: [TuiSliderComponent, ReactiveFormsModule, TuiSliderKeyStepsDirective],
+        imports: [TuiSlider, ReactiveFormsModule, TuiSliderKeySteps],
         template: `
             <input
                 #slider

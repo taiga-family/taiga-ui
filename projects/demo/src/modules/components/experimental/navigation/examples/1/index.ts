@@ -9,30 +9,32 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
+    TuiDropdownOpen,
     TuiExpand,
     TuiIcon,
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiNavigation} from '@taiga-ui/experimental';
+import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiAvatar,
     TuiBadge,
     TuiBadgeNotification,
     TuiChevron,
     TuiFade,
-    TuiTabDirective,
-    TuiTabsHorizontalDirective,
+    TuiTab,
+    TuiTabsHorizontal,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiNavigation,
+        TuiNavigationModule,
         TuiButton,
         TuiIcon,
         TuiChevron,
+        TuiDropdownOpen,
         TuiDropdown,
         TuiFade,
         TuiDataList,
@@ -41,10 +43,11 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         RouterLink,
         RouterLinkActive,
         TuiAppearance,
+        TuiDropdown,
         TuiExpand,
         TuiBadge,
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabsHorizontal,
+        TuiTab,
         TuiRepeatTimes,
         TuiCardLarge,
         TuiHeader,

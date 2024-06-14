@@ -13,7 +13,7 @@ import {TuiObscuredService} from './obscured.service';
     selector: '[tuiObscured]',
     providers: [TuiObscuredService],
 })
-export class TuiObscuredDirective {
+export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly enabled$ = new Subject<boolean>();
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(

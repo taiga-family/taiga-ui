@@ -11,11 +11,9 @@ import {
     TuiRectAccessor,
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
-import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -29,9 +27,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
  * using default style of white rounded box with a shadow
  */
 @Component({
-    standalone: true,
     selector: 'tui-dropdown',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiScrollbar],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush
@@ -42,13 +38,13 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
     ],
-    animations: [tuiDropdownAnimation],
+    hostDirectives: [TuiActiveZone],
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme',
     },
-    hostDirectives: [TuiActiveZone],
+    animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {
     private readonly el = tuiInjectElement();

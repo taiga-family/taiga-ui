@@ -30,7 +30,7 @@ import {TuiSegmentedDirective} from './segmented.directive';
     hostDirectives: [TuiSegmentedDirective],
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
 })
-export class TuiSegmentedComponent implements OnChanges {
+export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
 
     protected readonly sub = inject(ResizeObserverService)

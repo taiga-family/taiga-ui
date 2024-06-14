@@ -13,7 +13,7 @@ import {
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {PayModalComponent} from './pay-modal/pay-modal.component';
+import {PayModal} from './pay-modal/pay-modal.component';
 
 @Component({
     standalone: true,
@@ -39,7 +39,7 @@ export default class Example {
 
     protected payByCard(): void {
         this.dialogs
-            .open(new PolymorpheusComponent(PayModalComponent), {
+            .open(new PolymorpheusComponent(PayModal), {
                 size: 'auto',
                 closeable: true,
                 data: {

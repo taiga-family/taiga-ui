@@ -1,9 +1,9 @@
 import {DemoRoute} from '@demo/routes';
-import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc';
+import type {TuiDocPageRoute, TuiDocPages} from '@taiga-ui/addon-doc';
 
-function flatPages(pages: TuiDocRoutePages): readonly TuiDocRoutePage[] {
+function flatPages(pages: TuiDocPages): readonly TuiDocPageRoute[] {
     return pages.reduce(
-        (prev: readonly TuiDocRoutePage[], next) => [
+        (prev: readonly TuiDocPageRoute[], next) => [
             ...prev,
             ...('subPages' in next ? next.subPages : [next]),
         ],
@@ -25,7 +25,7 @@ export const EXCLUDED_ROUTES = [
 ];
 
 export function tuiGetDemoPathsForE2E(
-    pages: TuiDocRoutePages,
+    pages: TuiDocPages,
     exclusionSection: string[] = EXCLUDED_SECTIONS,
     exclusionRoutes: string[] = EXCLUDED_ROUTES,
 ): string[] {

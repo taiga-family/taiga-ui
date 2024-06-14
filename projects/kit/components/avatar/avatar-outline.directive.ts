@@ -27,7 +27,7 @@ class TuiAvatarOutlineStyles {}
         '[class._outline]': 'value',
     },
 })
-export class TuiAvatarOutlineDirective {
+export class TuiAvatarOutline {
     protected readonly nothing = tuiWithStyles(TuiAvatarOutlineStyles);
 
     @Input()

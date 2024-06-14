@@ -4,34 +4,42 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiNavigation} from '@taiga-ui/experimental';
+import {
+    TuiButton,
+    TuiDropdown,
+    TuiDropdownOpen,
+    TuiIcon,
+    TuiSurface,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiBadge,
     TuiChevron,
     TuiFade,
     TuiSwitch,
-    TuiTabDirective,
-    TuiTabsHorizontalDirective,
+    TuiTab,
+    TuiTabsHorizontal,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiNavigation,
+        TuiNavigationModule,
         TuiSwitch,
         FormsModule,
         TuiButton,
         TuiChevron,
         TuiDropdown,
+        TuiDropdownOpen,
         TuiHeader,
         TuiTitle,
         TuiIcon,
         TuiFade,
         TuiBadge,
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabsHorizontal,
+        TuiTab,
         TuiRepeatTimes,
         TuiCardLarge,
         TuiSurface,

@@ -6,7 +6,7 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiAvatarStackComponent,
+    TuiAvatarStack,
     TuiBadge,
     TuiCheckbox,
     TuiProgressModule,
@@ -21,7 +21,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiProgressModule,
         TuiBadge,
         TuiAvatar,
-        TuiAvatarStackComponent,
+        TuiAvatarStack,
         TuiCheckbox,
         TuiThumbnailCard,
         FormsModule,

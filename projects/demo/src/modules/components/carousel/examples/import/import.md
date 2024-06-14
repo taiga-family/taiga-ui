@@ -1,4 +1,5 @@
 ```ts
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 // ...
@@ -7,6 +8,7 @@ import {TuiCarousel} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
+    TuiItem,
     TuiCarousel,
   ],
   // ...

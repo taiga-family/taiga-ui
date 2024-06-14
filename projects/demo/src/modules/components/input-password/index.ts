@@ -23,9 +23,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     public override readonly maxLengthVariants: readonly number[] = [10];
 
     public override maxLength = null;

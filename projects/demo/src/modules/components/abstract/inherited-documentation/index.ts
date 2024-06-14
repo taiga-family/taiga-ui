@@ -15,7 +15,7 @@ import {HintControllerDocumentation} from '../hint-controller-documentation';
 import {AbstractExampleTuiInteractive} from '../interactive';
 import {AbstractExampleTuiNumberFormat} from '../number-format';
 import {NumberFormatDocumentation} from '../number-format-documentation';
-import type {TuiSupportingDocumentationComponent} from '../supporting-documentation-component';
+import type {TuiSupportingDocumentation} from '../supporting-documentation-component';
 import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
 @Component({
@@ -49,25 +49,25 @@ export class InheritedDocumentation {
     public withTextFieldController = true;
 
     protected isTuiReactiveControl(
-        documentedComponent: TuiSupportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentation,
     ): documentedComponent is AbstractExampleTuiControl {
         return documentedComponent instanceof AbstractExampleTuiControl;
     }
 
     protected isTuiInteractive(
-        documentedComponent: TuiSupportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentation,
     ): documentedComponent is AbstractExampleTuiInteractive {
         return documentedComponent instanceof AbstractExampleTuiInteractive;
     }
 
     protected isTuiHint(
-        documentedComponent: TuiSupportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentation,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;
     }
 
     protected isTuiFormatNumber(
-        documentedComponent: TuiSupportingDocumentationComponent,
+        documentedComponent: TuiSupportingDocumentation,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiNumberFormat;
     }

@@ -1,5 +1,5 @@
 ```ts
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {TuiInputCardGrouped} from '@taiga-ui/addon-commerce';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
   standalone: true,
   imports: [
     // ...
-    TuiInputCardGroup,
+    TuiInputCardGrouped,
   ],
   // ...
 })

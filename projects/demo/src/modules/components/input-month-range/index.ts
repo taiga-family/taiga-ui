@@ -31,9 +31,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiMonth(2019, 2),

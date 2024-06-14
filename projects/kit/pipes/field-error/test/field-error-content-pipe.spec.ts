@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
+import {TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiFieldErrorContentPipe} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
@@ -13,12 +13,7 @@ describe('TuiFieldErrorContentPipe', () => {
 
     @Component({
         standalone: true,
-        imports: [
-            TuiRoot,
-            TuiHintDirective,
-            ReactiveFormsModule,
-            TuiFieldErrorContentPipe,
-        ],
+        imports: [TuiRoot, TuiHint, ReactiveFormsModule, TuiFieldErrorContentPipe],
         template: `
             <tui-root>
                 <input

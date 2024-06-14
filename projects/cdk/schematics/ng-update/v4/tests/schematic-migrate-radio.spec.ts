@@ -26,12 +26,12 @@ import { TuiRadioModule } from "@taiga-ui/experimental";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiRadioComponent } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiRadio } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiRadioComponent]
+    imports: [TuiRadio]
 })
 export class Test {
 }`;

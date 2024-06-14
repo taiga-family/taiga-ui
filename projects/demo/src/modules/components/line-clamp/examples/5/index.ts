@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective} from '@taiga-ui/core';
-import {TuiLineClampComponent} from '@taiga-ui/kit';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiLineClamp} from '@taiga-ui/kit';
 
 interface User {
     email: string;
@@ -13,7 +13,7 @@ interface User {
 
 @Component({
     standalone: true,
-    imports: [TuiLineClampComponent, TuiHintDirective],
+    imports: [TuiLineClamp, TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure} from '@taiga-ui/cdk';
 import {TuiFade} from '@taiga-ui/kit/directives';
 
 @Component({
@@ -28,7 +28,7 @@ import {TuiFade} from '@taiga-ui/kit/directives';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAvatarLabeledComponent {
+export class TuiAvatarLabeled {
     @Input()
     @HostBinding('attr.title')
     public label = '';

@@ -1,24 +1,24 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiSpinButtonComponent} from '@taiga-ui/core';
+import {TuiSpinButton} from '@taiga-ui/core';
 
 describe('primitiveSpinButton', () => {
     @Component({
         standalone: true,
-        imports: [TuiSpinButtonComponent],
+        imports: [TuiSpinButton],
         template: `
             <tui-spin-button>My button</tui-spin-button>
         `,
     })
     class Test {
-        @ViewChild(TuiSpinButtonComponent, {static: true})
-        public component!: TuiSpinButtonComponent;
+        @ViewChild(TuiSpinButton, {static: true})
+        public component!: TuiSpinButton;
     }
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiSpinButtonComponent;
+    let component: TuiSpinButton;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({

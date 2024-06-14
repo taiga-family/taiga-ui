@@ -11,7 +11,7 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -25,17 +25,17 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiDemo,
         TuiDropdown,
         TuiHint,
-        TuiInputPhoneInternationalComponent,
+        TuiInputPhoneInternational,
         TuiTextfield,
         ReactiveFormsModule,
-        TuiLink,
         TuiNotification,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         ['RU', 'KZ', 'UA', 'BY'],
         getCountries(),

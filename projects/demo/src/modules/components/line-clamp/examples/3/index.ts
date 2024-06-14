@@ -2,11 +2,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiLineClampComponent} from '@taiga-ui/kit';
+import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiLineClampComponent],
+    imports: [TuiLineClamp],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

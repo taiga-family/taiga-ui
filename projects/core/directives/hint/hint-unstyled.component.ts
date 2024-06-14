@@ -12,14 +12,13 @@ import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
     PolymorpheusOutlet,
-    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <ng-container
             *polymorpheusOutlet="context.$implicit.content; context: context"
@@ -34,7 +33,6 @@ class TuiHintUnstyledStyles {
 }
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiHint]',
     providers: [
         {

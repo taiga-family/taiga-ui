@@ -16,7 +16,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { TuiCardModule, TuiCardComponent } from '@taiga-ui/addon-commerce';
+import { TuiCardModule, TuiCard } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
@@ -24,8 +24,8 @@ import { TuiCardModule, TuiCardComponent } from '@taiga-ui/addon-commerce';
     imports: [TuiCardModule]
 })
 export class Test {
-    @ViewChild(TuiCardComponent)
-    card: TuiCardComponent;
+    @ViewChild(TuiCard)
+    card: TuiCard;
 }`;
 
 const COMPONENT_AFTER = `

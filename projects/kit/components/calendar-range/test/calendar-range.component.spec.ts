@@ -15,7 +15,7 @@ import {
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_CALENDAR_DATE_STREAM,
-    TuiCalendarRangeComponent,
+    TuiCalendarRange,
     tuiCreateDefaultDayRangePeriods,
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
@@ -26,7 +26,7 @@ import {of} from 'rxjs';
 describe('rangeCalendarComponent', () => {
     @Component({
         standalone: true,
-        imports: [TuiCalendarRangeComponent],
+        imports: [TuiCalendarRange],
         template: `
             <tui-calendar-range
                 [items]="items"
@@ -47,8 +47,8 @@ describe('rangeCalendarComponent', () => {
         ],
     })
     class Test {
-        @ViewChild(TuiCalendarRangeComponent)
-        public readonly component!: TuiCalendarRangeComponent;
+        @ViewChild(TuiCalendarRange)
+        public readonly component!: TuiCalendarRange;
 
         public readonly control = new FormControl(
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
@@ -68,7 +68,7 @@ describe('rangeCalendarComponent', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
     let pageObject: TuiPageObject<Test>;
-    let component: TuiCalendarRangeComponent;
+    let component: TuiCalendarRange;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({

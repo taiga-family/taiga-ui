@@ -11,11 +11,11 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 @Component({
     standalone: true,
     imports: [
+        TuiScrollbar,
+        TuiScrollable,
         CdkVirtualScrollViewport,
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
-        TuiScrollable,
-        TuiScrollbar,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

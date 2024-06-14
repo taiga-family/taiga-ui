@@ -14,13 +14,12 @@ import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-tile',
     templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiTileService],
 })
-export class TuiTileComponent implements OnDestroy, AfterViewInit {
+export class TuiTile implements OnDestroy, AfterViewInit {
     @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 

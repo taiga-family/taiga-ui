@@ -5,7 +5,7 @@ import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
     standalone: true,
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
 })
-export class TuiForDirective<T, K = unknown> implements OnChanges {
+export class TuiFor<T, K = unknown> implements OnChanges {
     private readonly vcr = inject(ViewContainerRef);
 
     private ref?: EmbeddedViewRef<unknown>;

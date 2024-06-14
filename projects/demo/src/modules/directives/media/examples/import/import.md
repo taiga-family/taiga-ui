@@ -1,5 +1,5 @@
 ```ts
-import {TuiMediaDirective} from '@taiga-ui/cdk';
+import {TuiMedia} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiMediaDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiMediaDirective,
+    TuiMedia,
   ],
   // ...
 })

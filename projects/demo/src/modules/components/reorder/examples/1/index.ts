@@ -2,11 +2,11 @@ import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiReorderComponent} from '@taiga-ui/addon-table';
+import {TuiReorder} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [TuiReorderComponent, JsonPipe],
+    imports: [TuiReorder, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

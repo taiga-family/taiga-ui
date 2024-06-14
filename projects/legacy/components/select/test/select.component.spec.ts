@@ -6,7 +6,7 @@ import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiSelectComponent,
     TuiSelectModule,
@@ -43,7 +43,7 @@ describe('Select', () => {
             TuiSelectModule,
             ReactiveFormsModule,
             TuiTextfieldControllerModule,
-            TuiDataListWrapperComponent,
+            TuiDataListWrapper,
             TuiDataListDirective,
         ],
         template: `

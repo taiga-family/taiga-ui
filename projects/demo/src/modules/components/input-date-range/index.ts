@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -31,6 +32,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     imports: [
         TuiDemo,
         InheritedDocumentation,
+        RouterLink,
         TuiLink,
         TuiNotification,
         TuiInputDateRangeModule,
@@ -41,12 +43,9 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
-        tuiProvideMobileCalendar(),
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page), tuiProvideMobileCalendar()],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected readonly dayVariants = [
         TUI_FIRST_DAY,

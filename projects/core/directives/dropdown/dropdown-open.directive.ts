@@ -11,21 +11,19 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {TuiObscuredDirective} from '@taiga-ui/cdk/directives/obscured';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {
+    TuiActiveZone,
     tuiGetActualTarget,
+    tuiGetClosestFocusable,
     tuiInjectElement,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
-} from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
-} from '@taiga-ui/cdk/utils/focus';
+    TuiObscured,
+    tuiWatch,
+} from '@taiga-ui/cdk';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
@@ -48,7 +46,7 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
     standalone: true,
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
     hostDirectives: [
-        TuiObscuredDirective,
+        TuiObscured,
         {
             directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],
@@ -64,7 +62,7 @@ export class TuiDropdownOpen implements OnChanges {
     // TODO: Remove optional after refactor is complete
     private readonly directive = inject(TuiDropdownDirective, {optional: true});
     private readonly el = tuiInjectElement();
-    private readonly obscured = inject(TuiObscuredDirective);
+    private readonly obscured = inject(TuiObscured);
 
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),

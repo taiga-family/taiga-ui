@@ -19,7 +19,7 @@ const STEP = 0.5;
     styleUrls: ['./preview-zoom.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPreviewZoomComponent {
+export class TuiPreviewZoom {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
 

@@ -16,23 +16,24 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
-import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroupDirective} from '@taiga-ui/core/components/group';
+import {
+    CHAR_PLUS,
+    tuiAsControl,
+    TuiControl,
+    tuiFallbackValueProvider,
+    tuiIsInputEvent,
+} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_OPTIONS,
-    TuiTextfield,
-    tuiTextfieldOptionsProvider,
-} from '@taiga-ui/core/components/textfield';
-import {
+    TuiDataList,
     TuiDropdown,
     tuiDropdownOptionsProvider,
-} from '@taiga-ui/core/directives/dropdown';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+    TuiFlagPipe,
+    TuiGroup,
+    TuiTextfield,
+    tuiTextfieldOptionsProvider,
+} from '@taiga-ui/core';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
@@ -57,14 +58,14 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiDropdown,
         TuiFlagPipe,
         TuiGetCountryCallingCodePipe,
-        TuiGroupDirective,
+        TuiGroup,
         TuiTextfield,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputPhoneInternationalComponent),
+        tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: false}),
     ],
@@ -78,7 +79,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         }),
     ],
 })
-export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
+export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 

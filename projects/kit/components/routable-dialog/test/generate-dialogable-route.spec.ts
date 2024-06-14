@@ -1,14 +1,14 @@
 import {tuiGenerateDialogableRoute} from '../generate-dialogable-route';
-import TuiRoutableDialogComponent from '../routable-dialog.component';
+import TuiRoutableDialog from '../routable-dialog.component';
 
 class DialogComponent {}
 
 describe('tuiGenerateDialogableRoute', () => {
-    it('generated route should have component: TuiRoutableDialogComponent', done => {
+    it('generated route should have component: TuiRoutableDialog', done => {
         const result = tuiGenerateDialogableRoute(DialogComponent);
 
         void Promise.resolve(result.loadComponent?.()).then((module: any) => {
-            expect(module.default).toBe(TuiRoutableDialogComponent);
+            expect(module.default).toBe(TuiRoutableDialog);
 
             done();
         });

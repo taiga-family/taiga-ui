@@ -51,7 +51,7 @@ export class TuiComponentHarness extends ComponentHarness {
     }
 }
 
-export class TuiContentContainerComponentHarness extends ContentContainerComponentHarness {
+export class TuiContentContainerHarness extends ContentContainerComponentHarness {
     public static with<T extends ComponentHarness>(
         this: ComponentHarnessConstructor<T>,
         options: BaseHarnessFilters,

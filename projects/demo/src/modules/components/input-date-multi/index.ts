@@ -12,7 +12,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiDropdownOpen, TuiHint} from '@taiga-ui/core';
 import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -25,7 +25,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiDemo,
         TuiInputDateMultiModule,
         ReactiveFormsModule,
-        TuiDropdown,
+        TuiDropdownOpen,
         TuiHint,
         TuiTextfieldControllerModule,
         TuiMobileCalendar,
@@ -34,12 +34,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
-        tuiProvideMobileCalendar(),
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page), tuiProvideMobileCalendar()],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),

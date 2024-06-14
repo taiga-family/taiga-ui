@@ -6,21 +6,20 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
     MAX_YEAR,
     MIN_YEAR,
+    TUI_FALSE_HANDLER,
+    TuiHovered,
+    tuiInRange,
+    tuiIsNumber,
+    TuiLet,
     TuiMonth,
     TuiMonthRange,
+    TuiRepeatTimes,
     TuiYear,
-} from '@taiga-ui/cdk/date-time';
-import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiInRange} from '@taiga-ui/cdk/utils/math';
-import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
+} from '@taiga-ui/cdk';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import type {TuiRangeState} from '@taiga-ui/core/types';
 
@@ -30,7 +29,7 @@ const ITEMS_IN_ROW = 4;
 @Component({
     standalone: true,
     selector: 'tui-calendar-year',
-    imports: [TuiHoveredDirective, TuiRepeatTimes, TuiLet, TuiScrollIntoView],
+    imports: [TuiHovered, TuiRepeatTimes, TuiLet, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

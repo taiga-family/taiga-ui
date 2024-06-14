@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,21 +10,17 @@ import {
 import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TuiLoader} from '@taiga-ui/core/components/loader';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
 import {
+    TUI_COMMON_ICONS,
     TuiAppearance,
     tuiAppearanceOptionsProvider,
-} from '@taiga-ui/core/directives/appearance';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL} from '@taiga-ui/core/types';
-import type {TuiLanguage} from '@taiga-ui/i18n/interfaces';
+} from '@taiga-ui/core';
+import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -33,16 +28,7 @@ import type {TuiFileLike, TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
-    imports: [
-        CommonModule,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiLoader,
-        TuiButton,
-        TuiIcon,
-    ],
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

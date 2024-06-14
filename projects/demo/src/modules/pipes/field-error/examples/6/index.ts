@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiHintDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -15,7 +15,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiTable,
         NgForOf,
         TuiInputNumberModule,
-        TuiHintDirective,
+        TuiHint,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiFieldErrorContentPipe,

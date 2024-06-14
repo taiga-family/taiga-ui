@@ -6,20 +6,14 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import {
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiInputFilesContent} from './input-files.content';
 import {TuiInputFilesDirective} from './input-files.directive';
 
 @Component({
-    standalone: true,
     selector: 'label[tuiInputFiles]',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <ng-content></ng-content>
         <span

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -7,7 +8,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -24,12 +25,14 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
+        TuiLink,
+        RouterLink,
         InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Page),
         tuiDocExcludeProperties([
             'tuiTextfieldPrefix',
             'tuiTextfieldPostfix',
@@ -37,7 +40,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         ]),
     ],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
+export default class Page extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
 
     protected editable = true;
