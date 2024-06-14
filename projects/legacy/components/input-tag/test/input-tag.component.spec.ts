@@ -7,6 +7,7 @@ import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTagComponent,
     TuiInputTagModule,
@@ -20,7 +21,6 @@ import {
     tuiTestPlaceholder,
     tuiTestTooltip,
 } from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const TAG = 'Tag';
 

@@ -19,7 +19,7 @@ import {
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;

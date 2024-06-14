@@ -6,6 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {
     TuiInputDateComponent,
@@ -13,7 +14,6 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputDate', () => {

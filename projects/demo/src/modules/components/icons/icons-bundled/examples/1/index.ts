@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import {TUI_SANITIZER, TuiSvgComponent, TuiSvgService} from '@taiga-ui/core';
+import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {tuiIconClockLarge, tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/icons';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {map, timer} from 'rxjs';
 
 @Component({

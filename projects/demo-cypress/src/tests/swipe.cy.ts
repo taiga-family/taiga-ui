@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import type {TuiSwipe} from '@taiga-ui/cdk';
 import {TuiSwipeDirective} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiSwipe', () => {
     let component: TestComponent;

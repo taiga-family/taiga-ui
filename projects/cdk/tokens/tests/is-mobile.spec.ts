@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TUI_IS_MOBILE', () => {
     describe('MacOS / iOS', () => {

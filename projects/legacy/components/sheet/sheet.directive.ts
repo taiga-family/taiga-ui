@@ -1,6 +1,6 @@
 import {Directive, inject, Input, Output} from '@angular/core';
 import {tuiIfMap} from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {endWith, ignoreElements, share, Subject} from 'rxjs';
 
 import type {TuiSheet} from './sheet';

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonDirective, TuiHint, TuiIconComponent} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTooltipComponent} from './tooltip.component';
 
@@ -11,7 +11,8 @@ import {TuiTooltipComponent} from './tooltip.component';
         TuiButtonDirective,
         TuiHint,
         TuiIconComponent,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
     ],
     declarations: [TuiTooltipComponent],
     exports: [TuiTooltipComponent],

@@ -1,5 +1,5 @@
 ```ts
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {TuiDialogService} from '@taiga-ui/core';
 
 import {MyDialogComponent} from './my-dialog.component.ts';

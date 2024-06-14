@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiIconComponent} from '@taiga-ui/core/components/icon';
 import {TuiAppearanceDirective} from '@taiga-ui/core/directives';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTooltipComponent} from './tooltip.component';
 
@@ -12,7 +12,8 @@ import {TuiTooltipComponent} from './tooltip.component';
         CommonModule,
         TuiIconComponent,
         TuiHint,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiAppearanceDirective,
     ],
     declarations: [TuiTooltipComponent],

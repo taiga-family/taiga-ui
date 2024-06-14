@@ -42,7 +42,7 @@ import {
 } from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import type {TuiInputNumberOptions} from './input-number.options';
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
@@ -76,7 +76,7 @@ export class TuiInputNumberComponent
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private unfinishedValue: string | null = '';
 
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    @ContentChildren(PolymorpheusOutlet, {descendants: true})
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     protected override readonly valueTransformer = inject<

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import type {TuiZoom} from '@taiga-ui/cdk';
 import {tuiFloor, TuiZoomDirective} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiZoom', () => {
     let component: TestComponent;

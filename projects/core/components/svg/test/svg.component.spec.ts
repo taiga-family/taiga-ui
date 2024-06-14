@@ -5,8 +5,8 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgService} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of, throwError} from 'rxjs';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"

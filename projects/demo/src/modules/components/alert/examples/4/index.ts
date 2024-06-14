@@ -11,7 +11,7 @@ import {
     TuiButtonDirective,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({

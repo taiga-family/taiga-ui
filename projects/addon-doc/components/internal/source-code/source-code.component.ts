@@ -7,12 +7,12 @@ import {
 import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-doc-source-code',
-    imports: [PolymorpheusModule, TuiButtonDirective],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButtonDirective],
     templateUrl: './source-code.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

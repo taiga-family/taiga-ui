@@ -32,8 +32,8 @@
         "@ng-web-apis/common": "^3.0.6",
         "@ng-web-apis/mutation-observer": "^3.1.0",
         "@ng-web-apis/resize-observer": "^3.0.6",
-        "@tinkoff/ng-event-plugins": "^3.2.0",
-        "@tinkoff/ng-polymorpheus": "^4.3.0",
+        "@taiga-ui/event-plugins": "^4.0.1",
+        "@taiga-ui/polymorpheus": "^4.6.3",
         "rxjs": ">=7.0.0"
     },
     "optionalDependencies": {

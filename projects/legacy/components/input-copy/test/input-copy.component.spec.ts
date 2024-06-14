@@ -4,13 +4,13 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputCopyComponent,
     TuiInputCopyModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputCopy', () => {
     @Component({

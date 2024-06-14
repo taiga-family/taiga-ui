@@ -8,8 +8,8 @@ import {
     TuiDialogService,
     TuiRootComponent,
 } from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDialogHarness} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({

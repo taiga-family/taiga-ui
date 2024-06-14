@@ -10,7 +10,7 @@ import {
     tuiSvgOptionsProvider,
     tuiSvgSrcInterceptors,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('SVG options', () => {
     @Component({

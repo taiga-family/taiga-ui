@@ -8,22 +8,27 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiTextfieldOptions} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core';
 
-import {TUI_STUCK} from '../providers/stuck.provider';
-import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 import {TUI_TABLE_OPTIONS} from '../table.options';
+import {TuiStuck} from './stuck.directive';
 
 @Directive({
     standalone: true,
     selector: 'table[tuiTable]',
-    providers: TUI_TABLE_PROVIDERS,
-    host: {
-        '($.class._stuck)': 'stuck$',
-        style: 'border-collapse: separate',
-    },
+    providers: [
+        {
+            provide: INTERSECTION_ROOT_MARGIN,
+            useValue: '10000px 10000px 10000px 0px',
+        },
+        tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
+    ],
+    hostDirectives: [TuiStuck],
+    host: {style: 'border-collapse: separate'},
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     extends AbstractTuiController
@@ -31,8 +36,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
-
-    protected readonly stuck$ = inject(TUI_STUCK);
 
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];

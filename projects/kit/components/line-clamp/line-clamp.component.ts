@@ -23,8 +23,8 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -48,7 +48,8 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     selector: 'tui-line-clamp',
     imports: [
         ResizeObserverModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiHint,
         TuiLetDirective,
         AsyncPipe,

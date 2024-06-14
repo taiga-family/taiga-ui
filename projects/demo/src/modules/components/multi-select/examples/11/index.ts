@@ -11,7 +11,7 @@ import {
     TuiTagModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

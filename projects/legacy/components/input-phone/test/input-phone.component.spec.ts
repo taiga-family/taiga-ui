@@ -3,9 +3,9 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputPhoneComponent, TuiInputPhoneModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputPhone', () => {
     @Component({

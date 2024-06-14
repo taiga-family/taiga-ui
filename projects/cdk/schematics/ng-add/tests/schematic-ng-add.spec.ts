@@ -11,12 +11,7 @@ import {
 } from '@taiga-ui/morph';
 
 import {createAngularJson} from '../../utils/create-angular-json';
-import {
-    DOMPURIFY_TYPES_VERSION,
-    DOMPURIFY_VERSION,
-    NG_DOMPURIFY_VERSION,
-    TAIGA_VERSION,
-} from '../constants/versions';
+import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from '../constants/versions';
 import type {TuiSchema} from '../schema';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -81,9 +76,6 @@ describe('ng-add', () => {
 
         expect(tree.readContent('package.json')).toBe(
             `{
-  "devDependencies": {
-    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
-  },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
     "@angular/core": "~13.0.0",
@@ -91,10 +83,9 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
-    "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
-    "dompurify": "${DOMPURIFY_VERSION}"
+    "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
 }`,
         );
@@ -115,9 +106,6 @@ describe('ng-add', () => {
 
         expect(tree.readContent('package.json')).toBe(
             `{
-  "devDependencies": {
-    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
-  },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
     "@angular/core": "~13.0.0",
@@ -125,11 +113,10 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@taiga-ui/styles": "${TAIGA_VERSION}",
-    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
-    "dompurify": "${DOMPURIFY_VERSION}"
+    "@taiga-ui/styles": "${TAIGA_VERSION}"
   }
 }`,
         );
@@ -266,7 +253,7 @@ describe('ng-add', () => {
         const tree = await runner.runSchematic('ng-add-setup-project', options, host);
 
         expect(tree.readContent('test/app/app.module.ts')).toBe(
-            `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
+            `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
 import { TuiRootComponent, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';

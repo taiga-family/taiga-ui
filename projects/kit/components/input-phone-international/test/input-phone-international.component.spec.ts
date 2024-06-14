@@ -6,6 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 import {
@@ -13,7 +14,6 @@ import {
     tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import metadata from 'libphonenumber-js/max/metadata';
 import {of} from 'rxjs';
 

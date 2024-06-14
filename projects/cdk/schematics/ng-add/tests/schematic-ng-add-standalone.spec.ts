@@ -11,12 +11,7 @@ import {
 } from '@taiga-ui/morph';
 
 import {createAngularJson} from '../../utils/create-angular-json';
-import {
-    DOMPURIFY_TYPES_VERSION,
-    DOMPURIFY_VERSION,
-    NG_DOMPURIFY_VERSION,
-    TAIGA_VERSION,
-} from '../constants/versions';
+import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from '../constants/versions';
 import type {TuiSchema} from '../schema';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -81,9 +76,6 @@ describe('ng-add [Standalone]', () => {
 
         expect(tree.readContent('package.json')).toBe(
             `{
-  "devDependencies": {
-    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
-  },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
     "@angular/core": "~13.0.0",
@@ -91,10 +83,9 @@ describe('ng-add [Standalone]', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
-    "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
-    "dompurify": "${DOMPURIFY_VERSION}"
+    "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
 }`,
         );
@@ -115,9 +106,6 @@ describe('ng-add [Standalone]', () => {
 
         expect(tree.readContent('package.json')).toBe(
             `{
-  "devDependencies": {
-    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
-  },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
     "@angular/core": "~13.0.0",
@@ -125,11 +113,10 @@ describe('ng-add [Standalone]', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@taiga-ui/styles": "${TAIGA_VERSION}",
-    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
-    "dompurify": "${DOMPURIFY_VERSION}"
+    "@taiga-ui/styles": "${TAIGA_VERSION}"
   }
 }`,
         );
@@ -266,7 +253,7 @@ describe('ng-add [Standalone]', () => {
         const tree = await runner.runSchematic('ng-add-setup-project', options, host);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(
-            `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
+            `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
 import { TuiRootComponent, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -305,7 +292,7 @@ export class AppComponent {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -332,7 +319,7 @@ bootstrapApplication(AppComponent, {
         );
 
         expect(tree.readContent('test/app/app.config.ts'))
-            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 
 import { ApplicationConfig } from '@angular/core';
 import {
@@ -358,7 +345,7 @@ export const appConfig: ApplicationConfig = {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,

@@ -9,6 +9,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
@@ -24,8 +25,12 @@ import {
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
-import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {shouldCall} from '@taiga-ui/event-plugins';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
@@ -42,7 +47,8 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
         NgForOf,
         TuiClickOutsideDirective,
         NgIf,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiButtonDirective,
         AsyncPipe,
     ],
@@ -50,10 +56,6 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
-    host: {
-        '[$.class._stuck]': 'stuck$',
-        '($.class._stuck)': 'stuck$',
-    },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChild('sheet')
@@ -76,7 +78,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         },
     };
 
-    protected stuck$ = new BehaviorSubject(false);
+    protected readonly stuck$ = new BehaviorSubject(false);
+
+    protected readonly stuck$$ = this.stuck$
+        .pipe(takeUntilDestroyed())
+        .subscribe(add =>
+            add ? this.el.classList.add('_stuck') : this.el.classList.remove('_stuck'),
+        );
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);

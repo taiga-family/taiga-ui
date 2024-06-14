@@ -6,7 +6,7 @@ import type {TuiDialogContext, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiButtonDirective, TuiDataListDirective, TuiDialogService} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

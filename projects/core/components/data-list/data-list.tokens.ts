@@ -3,7 +3,7 @@ import {InjectionToken} from '@angular/core';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiDataListAccessor<T = unknown> {
     getOptions(includeDisabled?: boolean): readonly T[];

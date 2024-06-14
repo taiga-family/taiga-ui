@@ -63,10 +63,10 @@ export class StackblitzDepsService {
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');
 
         return {
-            '@tinkoff/ng-dompurify': demoDeps['@tinkoff/ng-dompurify'],
-            '@tinkoff/ng-polymorpheus': cdkDeps['@tinkoff/ng-polymorpheus'],
+            '@taiga-ui/dompurify': demoDeps['@taiga-ui/dompurify'],
+            '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
-            '@tinkoff/ng-event-plugins': cdkDeps['@tinkoff/ng-event-plugins'],
+            '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
             '@ng-web-apis/intersection-observer':
                 kitDeps['@ng-web-apis/intersection-observer'],
             '@ng-web-apis/resize-observer': cdkDeps['@ng-web-apis/resize-observer'],
@@ -77,8 +77,8 @@ export class StackblitzDepsService {
             'zone.js': (await import('@angular/core/package.json')).peerDependencies[
                 'zone.js'
             ],
-            dompurify: (await import('@tinkoff/ng-dompurify/package.json'))
-                .peerDependencies.dompurify,
+            dompurify: (await import('@taiga-ui/dompurify/package.json')).peerDependencies
+                .dompurify,
             rxjs: rootDevDeps.rxjs,
         };
     }

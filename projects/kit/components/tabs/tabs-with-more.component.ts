@@ -29,8 +29,8 @@ import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit/directives';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {filter, map, tap} from 'rxjs';
 
 import {TuiTabDirective} from './tab.directive';
@@ -43,7 +43,8 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiDropdownModule,
         TuiTabDirective,
         TuiTabsHorizontalDirective,

@@ -7,7 +7,7 @@ import {
     TuiScrollControlsComponent,
     TuiScrollRefDirective,
 } from '@taiga-ui/core/components/scrollbar';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
 import {TUI_DIALOGS} from './dialog.tokens';
@@ -17,7 +17,8 @@ import {TUI_DIALOGS} from './dialog.tokens';
     selector: 'tui-dialogs',
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiScrollRefDirective,
         TuiScrollControlsComponent,
         TuiFocusTrapDirective,

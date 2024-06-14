@@ -13,7 +13,7 @@ import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart'
 import type {TuiContext, TuiDay} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, TuiHoveredService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';

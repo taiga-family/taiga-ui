@@ -4,7 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 const DEFAULT_TEST_COUNT = 3;
 

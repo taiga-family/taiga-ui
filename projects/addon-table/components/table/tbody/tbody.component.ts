@@ -14,8 +14,8 @@ import {
 import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
@@ -32,7 +32,8 @@ import {TuiTrComponent} from '../tr/tr.component';
         NgIf,
         NgTemplateOutlet,
         TuiMapperPipe,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiIconComponent,
         TuiChevronDirective,
     ],

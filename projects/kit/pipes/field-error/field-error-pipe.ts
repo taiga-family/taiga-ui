@@ -4,7 +4,7 @@ import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {ControlContainer, NgControl} from '@angular/forms';
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map, Observable, of} from 'rxjs';
 
 const EMPTY_RECORD = {};

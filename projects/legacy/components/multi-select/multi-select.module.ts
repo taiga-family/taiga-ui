@@ -12,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiHideSelectedPipe} from './hide-selected.pipe';
 import {TuiMultiSelectComponent} from './multi-select.component';
@@ -26,7 +26,8 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiWrapperModule,
         TuiArrowComponent,
         TuiLetDirective,

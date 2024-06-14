@@ -3,7 +3,7 @@ import type {
     TuiNotification,
     TuiNotificationOptions,
 } from '@taiga-ui/core/components/notification';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export type TuiAlertAutoClose = TuiHandler<TuiNotification, number> | number;
 

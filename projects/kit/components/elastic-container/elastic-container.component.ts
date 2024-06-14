@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
-import {shouldCall} from '@tinkoff/ng-event-plugins';
+import {shouldCall} from '@taiga-ui/event-plugins';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 

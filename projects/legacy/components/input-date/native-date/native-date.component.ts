@@ -1,11 +1,12 @@
 import {Directive, inject} from '@angular/core';
 import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
+import {TUI_TEXTFIELD_HOST, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputDateDirective} from '../input-date.directive';
+import {TuiInputDateDirective} from '../input-date.directive';
 
 @Directive({
     selector: 'input[tuiDate]',
+    providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
     host: {
         type: 'date',
         '[tabIndex]': '-1',

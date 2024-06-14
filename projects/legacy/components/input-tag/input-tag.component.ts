@@ -47,7 +47,7 @@ import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
@@ -146,6 +146,12 @@ export class TuiInputTagComponent
 
     @Input()
     public removable = true;
+
+    /**
+     * @deprecated hack
+     */
+    @Input()
+    public pseudoOpen = false;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =

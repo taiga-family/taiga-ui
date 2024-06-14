@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiValueChangesDirective} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiValueChangesDirective', () => {
     @Component({

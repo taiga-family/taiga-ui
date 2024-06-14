@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
@@ -12,6 +13,7 @@ import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 @NgModule({
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     declarations: [
         TuiTextfieldAppearanceDirective,
         TuiTextfieldCleanerDirective,
@@ -35,6 +37,8 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
         TuiTextfieldPrefixDirective,
         TuiTextfieldPostfixDirective,
         TuiTextfieldFillerDirective,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
     ],
 })
 export class TuiTextfieldControllerModule {}

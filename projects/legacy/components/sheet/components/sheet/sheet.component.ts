@@ -37,9 +37,6 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
         '[class._ios]': 'isIos',
-        // '[class._stuck]': 'true', // Initially disable snapping for Firefox
-        '[$.class._stuck]': 'stuck$',
-        '($.class._stuck)': 'stuck$',
     },
     animations: [tuiSlideInTop],
 })
@@ -64,6 +61,12 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     protected readonly stuck$ = this.scroll$.pipe(
         map(y => Math.floor(y) > this.contentTop),
     );
+
+    protected readonly stuck$$ = this.stuck$
+        .pipe(takeUntilDestroyed())
+        .subscribe(add =>
+            add ? this.el.classList.add('_stuck') : this.el.classList.remove('_stuck'),
+        );
 
     @Input()
     public item!: TuiSheet<T>;

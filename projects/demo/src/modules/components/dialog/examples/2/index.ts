@@ -2,7 +2,7 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 

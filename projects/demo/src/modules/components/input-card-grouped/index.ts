@@ -8,7 +8,7 @@ import {
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
 import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';

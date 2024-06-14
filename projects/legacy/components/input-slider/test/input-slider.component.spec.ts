@@ -6,13 +6,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputSliderComponent,
     TuiInputSliderModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 @Component({
     standalone: true,

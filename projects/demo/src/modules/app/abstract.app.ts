@@ -1,9 +1,10 @@
 import type {OnInit} from '@angular/core';
 import {Directive, ElementRef, HostBinding, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 import {TUI_SELECTED_VERSION_META} from './version-manager/version-manager.providers';
@@ -19,14 +20,14 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
 
+    private readonly element = tuiInjectElement();
+
     @HostBinding('attr.data-tui-major-version')
     protected readonly majorVersion = inject(TUI_SELECTED_VERSION_META)?.title;
 
-    @HostBinding('class._loaded')
-    protected readonly pageLoadedInit = '0';
-
-    @HostBinding('$.class._loaded')
-    protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED);
+    protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED)
+        .pipe(takeUntilDestroyed())
+        .subscribe(() => this.element.classList.add('_loaded'));
 
     public async ngOnInit(): Promise<void> {
         await this.replaceEnvInURI();

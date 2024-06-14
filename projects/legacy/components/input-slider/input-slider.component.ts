@@ -26,7 +26,7 @@ import type {
     TuiNativeFocusableElement,
 } from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-input-slider',

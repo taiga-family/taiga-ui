@@ -5,6 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiPx} from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     DEFAULT_ROWS,
     LINE_HEIGHT_L,
@@ -16,7 +17,6 @@ import {
     TuiPageObject,
     tuiTestFormControlState,
 } from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const DEFAULT_HEIGHT = 108;
 

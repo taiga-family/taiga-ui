@@ -13,7 +13,7 @@ import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -29,7 +29,12 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-dropdown',
-    imports: [PolymorpheusModule, TuiActiveZoneDirective, TuiScrollbarComponent],
+    imports: [
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+        TuiActiveZoneDirective,
+        TuiScrollbarComponent,
+    ],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush

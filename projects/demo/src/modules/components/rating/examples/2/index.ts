@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiRatingComponent} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

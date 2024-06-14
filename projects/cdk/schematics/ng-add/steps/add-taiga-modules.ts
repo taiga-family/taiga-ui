@@ -143,7 +143,7 @@ function addRootTuiProvidersToBootstrapFn(
         });
     }
 
-    [{name: 'NG_EVENT_PLUGINS', packageName: '@tinkoff/ng-event-plugins'}].forEach(
+    [{name: 'NG_EVENT_PLUGINS', packageName: '@taiga-ui/event-plugins'}].forEach(
         ({name, packageName}) => {
             addUniqueImport(
                 bootstrapOptions.getSourceFile().getFilePath(),

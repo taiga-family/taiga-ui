@@ -17,7 +17,7 @@ import {
     TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

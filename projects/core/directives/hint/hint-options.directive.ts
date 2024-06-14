@@ -2,7 +2,7 @@ import type {FactoryProvider} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {AbstractTuiController, tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export type TuiHintDirection =
     | 'bottom-left'

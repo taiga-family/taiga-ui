@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetComponent} from './components/sheet/sheet.component';
 import {TuiSheetBarComponent} from './components/sheet-bar/sheet-bar.component';
@@ -17,7 +17,8 @@ import {TuiSheetDirective} from './sheet.directive';
 @NgModule({
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiLetDirective,
         TuiButtonDirective,
         TuiScrollbarComponent,

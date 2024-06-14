@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputNumberComponent} from './input-number.component';
 import {TuiInputNumberDirective} from './input-number.directive';
@@ -22,7 +22,8 @@ import {TuiInputNumberDirective} from './input-number.directive';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiButtonDirective,
     ],
     declarations: [TuiInputNumberComponent, TuiInputNumberDirective],

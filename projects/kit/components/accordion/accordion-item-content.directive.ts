@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Directive({
     standalone: true,

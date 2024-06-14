@@ -10,8 +10,8 @@ import type {
 } from '@angular/router';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 

@@ -5,10 +5,10 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputPhoneInternational', () => {

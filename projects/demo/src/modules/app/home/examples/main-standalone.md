@@ -1,6 +1,6 @@
 ```ts
 // ...
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 bootstrapApplication(AppComponent, {
   providers: [

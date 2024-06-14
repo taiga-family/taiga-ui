@@ -1,9 +1,9 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiRangeComponent} from '@taiga-ui/kit';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiRange', () => {
     let component: TestComponent;

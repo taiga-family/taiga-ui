@@ -154,7 +154,7 @@ import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaskitoDirective} from '@maskito/angular';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 ${additionalModulesImports}
 
 export const ALL_TAIGA_UI_MODULES = [
@@ -164,7 +164,7 @@ export const ALL_TAIGA_UI_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    PolymorpheusModule,
+    PolymorpheusOutlet, PolymorpheusTemplate,
     MaskitoDirective,
     RouterModule.forRoot([]),
     /* CDK */

@@ -25,7 +25,7 @@ import {
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiGetBorder} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;

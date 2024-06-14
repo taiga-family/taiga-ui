@@ -9,7 +9,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputRangeComponent} from './input-range.component';
 
@@ -17,7 +17,8 @@ import {TuiInputRangeComponent} from './input-range.component';
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiActiveZoneDirective,
         TuiInputNumberModule,
         TuiRangeComponent,

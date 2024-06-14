@@ -5,8 +5,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiFilterComponent} from '@taiga-ui/kit';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const BADGE_VALUE = 10;
 

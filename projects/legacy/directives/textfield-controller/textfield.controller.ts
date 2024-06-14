@@ -1,6 +1,6 @@
 import type {TuiContext} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
 import type {TuiTextfieldOptions} from './textfield.options';

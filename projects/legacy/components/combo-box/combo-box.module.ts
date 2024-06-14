@@ -12,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 import {TuiComboBoxDirective} from './combo-box.directive';
@@ -21,7 +21,8 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
 @NgModule({
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
         TuiDropdownModule,
         TuiSelectOptionModule,

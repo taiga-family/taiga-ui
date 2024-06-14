@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import {TUI_TREE_CONTENT, TuiTree} from '@taiga-ui/kit';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {FoldersComponent} from './content';
 

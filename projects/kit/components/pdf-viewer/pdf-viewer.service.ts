@@ -3,7 +3,7 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import {TuiPopoverService} from '@taiga-ui/cdk';
 import {TUI_DIALOGS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
 import {TuiPdfViewerComponent} from './pdf-viewer.component';

@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogDirective} from '@taiga-ui/kit';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -12,7 +12,8 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
         TuiButtonDirective,
         TuiPreview,
         TuiSwipeDirective,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiPreviewDialogDirective,
     ],
     templateUrl: './index.html',

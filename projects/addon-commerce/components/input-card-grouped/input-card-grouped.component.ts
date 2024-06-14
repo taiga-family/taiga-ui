@@ -56,8 +56,8 @@ import {
     TuiWithDataList,
 } from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map, merge} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUPED_OPTIONS} from './input-card-grouped.options';
@@ -77,7 +77,8 @@ export interface TuiCard {
         FormsModule,
         MaskitoDirective,
         ResizeObserverModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiActiveZoneDirective,
         TuiFormatCardPipe,
         TuiMapperPipe,

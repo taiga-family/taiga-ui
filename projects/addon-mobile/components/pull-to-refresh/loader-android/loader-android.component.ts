@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiLoaderComponent} from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
 import {MICRO_OFFSET} from '../pull-to-refresh.service';

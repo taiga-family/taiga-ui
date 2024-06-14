@@ -21,8 +21,12 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiItemDirective, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    PolymorpheusComponent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
 
@@ -35,7 +39,8 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     selector: 'tui-doc-example',
     imports: [
         NgIf,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiButtonDirective,
         RouterLink,
         AsyncPipe,

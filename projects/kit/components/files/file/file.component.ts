@@ -24,8 +24,8 @@ import {
 } from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -37,7 +37,8 @@ import {TUI_FILE_OPTIONS} from './file.options';
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
     imports: [
         CommonModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiLoaderComponent,
         TuiButtonDirective,
         TuiIconComponent,

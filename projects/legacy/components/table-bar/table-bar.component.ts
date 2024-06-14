@@ -10,14 +10,24 @@ import {
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import type {TuiTableBarOptions} from './table-bar.options';
 
 @Component({
     standalone: true,
     selector: 'tui-table-bar',
-    imports: [PolymorpheusModule, TuiButtonDirective, AsyncPipe, NgIf],
+    imports: [
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+        TuiButtonDirective,
+        AsyncPipe,
+        NgIf,
+    ],
     templateUrl: './table-bar.template.html',
     styleUrls: ['./table-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

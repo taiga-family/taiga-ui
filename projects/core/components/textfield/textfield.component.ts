@@ -22,8 +22,8 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
@@ -35,7 +35,13 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [CommonModule, ResizeObserverModule, TuiButtonDirective, PolymorpheusModule],
+    imports: [
+        CommonModule,
+        ResizeObserverModule,
+        TuiButtonDirective,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
+    ],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

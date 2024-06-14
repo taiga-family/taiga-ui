@@ -5,9 +5,9 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiLoaderComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiLoaderHarness} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 describe('Loader', () => {
     @Component({

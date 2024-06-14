@@ -11,12 +11,16 @@ import {
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-preview-dialog',
-    imports: [PolymorpheusModule],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <ng-container *polymorpheusOutlet="context.content as text; context: context">
             {{ text }}

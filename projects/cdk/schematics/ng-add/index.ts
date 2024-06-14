@@ -3,17 +3,11 @@ import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schemati
 import {
     addPackageJsonDependency,
     getPackageJsonDependency,
-    NodeDependencyType,
     removePackageJsonDependency,
 } from '@taiga-ui/morph';
 
 import {MAIN_PACKAGES} from './constants/packages';
-import {
-    DOMPURIFY_TYPES_VERSION,
-    DOMPURIFY_VERSION,
-    NG_DOMPURIFY_VERSION,
-    TAIGA_VERSION,
-} from './constants/versions';
+import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from './constants/versions';
 import type {TuiSchema} from './schema';
 
 function addDependencies(tree: Tree, options: TuiSchema): void {
@@ -37,17 +31,8 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
 
     if (options.addSanitizer) {
         addPackageJsonDependency(tree, {
-            name: '@tinkoff/ng-dompurify',
+            name: '@taiga-ui/dompurify',
             version: NG_DOMPURIFY_VERSION,
-        });
-        addPackageJsonDependency(tree, {
-            name: 'dompurify',
-            version: DOMPURIFY_VERSION,
-        });
-        addPackageJsonDependency(tree, {
-            name: '@types/dompurify',
-            version: DOMPURIFY_TYPES_VERSION,
-            type: NodeDependencyType.Dev,
         });
     }
 

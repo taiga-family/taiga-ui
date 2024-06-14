@@ -47,8 +47,8 @@ import {
     tuiGetMaxAllowedPhoneLength,
     tuiIsoToCountryCode,
 } from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
@@ -61,7 +61,8 @@ const MASK_SYMBOLS = /[ \-_()]/g;
     imports: [
         CommonModule,
         FormsModule,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiInputPhoneModule,
         TuiGroupDirective,
         TuiPrimitiveTextfieldModule,

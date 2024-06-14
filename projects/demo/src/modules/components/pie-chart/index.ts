@@ -13,7 +13,7 @@ import {
     TuiLinkDirective,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

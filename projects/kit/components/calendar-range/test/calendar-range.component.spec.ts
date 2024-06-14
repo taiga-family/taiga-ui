@@ -12,6 +12,7 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRangeComponent,
@@ -19,7 +20,6 @@ import {
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import type {Observable} from 'rxjs';
 import {of} from 'rxjs';
 

@@ -84,10 +84,7 @@ test.describe('DataList', () => {
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('05-data-list.png');
 
-        const money = page
-            .locator('tui-dropdown')
-            .locator('[automation-id="tui-primitive-textfield__native-input"]')
-            .nth(0);
+        const money = page.locator('tui-dropdown').locator('[name="moneyValue"]').nth(0);
 
         await money.focus();
         await money.fill('');
@@ -99,7 +96,7 @@ test.describe('DataList', () => {
 
         const email = page
             .locator('[automation-id="tui-data-list-email-field"]')
-            .locator('[automation-id="tui-primitive-textfield__native-input"]')
+            .locator('[name="emailValue"]')
             .nth(0);
 
         await email.focus();

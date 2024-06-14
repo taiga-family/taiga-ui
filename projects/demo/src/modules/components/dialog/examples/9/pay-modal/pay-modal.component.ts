@@ -28,7 +28,7 @@ import {
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import type {AccountCard, DataForPayCardModal, FetchedCards} from '../helpers/models';

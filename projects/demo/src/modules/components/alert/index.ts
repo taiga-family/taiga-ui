@@ -12,8 +12,8 @@ import {
     TuiButtonDirective,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 import {AlertExampleWithDataComponent} from './examples/4';

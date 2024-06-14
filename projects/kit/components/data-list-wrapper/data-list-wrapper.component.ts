@@ -26,7 +26,11 @@ import {
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
-import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -34,7 +38,8 @@ import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorp
     imports: [
         NgIf,
         NgForOf,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         TuiDataList,
         TuiElementDirective,
         TuiLoaderComponent,

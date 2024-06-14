@@ -22,8 +22,8 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -42,7 +42,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 @Component({
     standalone: true,
     selector: 'tui-data-list',
-    imports: [NgIf, AsyncPipe, PolymorpheusModule],
+    imports: [NgIf, AsyncPipe, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,

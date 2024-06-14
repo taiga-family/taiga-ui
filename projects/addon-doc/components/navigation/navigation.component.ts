@@ -44,7 +44,7 @@ import {
 import {TuiAccordion} from '@taiga-ui/kit';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
 
 import {
@@ -67,7 +67,8 @@ import {
         NgForOf,
         NgIf,
         TuiIconComponent,
-        PolymorpheusModule,
+        PolymorpheusOutlet,
+        PolymorpheusTemplate,
         RouterLink,
         TuiScrollbarComponent,
         TuiAccordion,

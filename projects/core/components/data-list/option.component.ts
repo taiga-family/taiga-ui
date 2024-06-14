@@ -9,7 +9,7 @@ import {
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
 import type {TuiDataListHost} from './data-list.tokens';
@@ -19,7 +19,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
 @Component({
     standalone: true,
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
-    imports: [PolymorpheusModule],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <ng-container *polymorpheusOutlet="content || t as text; context: {$implicit: t}">
             {{ text }}

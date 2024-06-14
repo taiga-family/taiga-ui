@@ -28,8 +28,8 @@ import {
 } from '@taiga-ui/legacy/directives';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiGetBorder} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {fromEvent, map} from 'rxjs';
 
@@ -66,7 +66,7 @@ export class TuiPrimitiveTextfieldComponent
     private readonly legacyOptions = inject(LEGACY_OPTIONS);
     private readonly el = tuiInjectElement();
 
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    @ContentChildren(PolymorpheusOutlet, {descendants: true})
     protected readonly content?: QueryList<unknown>;
 
     protected readonly options = inject(OPTIONS);

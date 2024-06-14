@@ -31,7 +31,7 @@ export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
 ): (accessors: readonly T[] | null, fallback: T) => T {
     return (accessors, fallback) =>
-        accessors?.find(accessor => accessor !== fallback && accessor.type === type) ||
+        accessors?.find?.(accessor => accessor !== fallback && accessor.type === type) ||
         fallback;
 }
 

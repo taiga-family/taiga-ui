@@ -5,7 +5,7 @@ import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {TuiPdfViewerService} from '@taiga-ui/kit';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 import {ActionsContentComponent} from './actions-content';

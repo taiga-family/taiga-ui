@@ -1,5 +1,5 @@
 import {EMPTY_FUNCTION, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiTreeItemContentComponent} from '../components/tree-item-content/tree-item-content.component';
 import type {TuiTreeController} from './tree.interfaces';

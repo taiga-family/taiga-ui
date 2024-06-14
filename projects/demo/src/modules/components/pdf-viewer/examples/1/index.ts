@@ -6,7 +6,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {TuiPdfViewerService} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

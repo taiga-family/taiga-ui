@@ -4,7 +4,7 @@ import {EMPTY_FUNCTION, tuiArrayToggle} from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, tuiAsOptionContent} from '@taiga-ui/core';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/legacy/components/multi-select-option';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiMultiSelectComponent} from '../multi-select.component';
 

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiIfMap} from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
 
 import {TuiPushService} from './push.service';
