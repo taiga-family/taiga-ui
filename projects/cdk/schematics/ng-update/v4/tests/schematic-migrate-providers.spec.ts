@@ -9,7 +9,7 @@ import {
     resetActiveProject,
     saveActiveProject,
     setActiveProject,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 

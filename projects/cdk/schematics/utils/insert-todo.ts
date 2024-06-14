@@ -1,4 +1,4 @@
-import type {Node} from '@taiga-ui/morph';
+import type {Node} from 'ng-morph';
 
 export const TODO_MARK = 'TODO: (Taiga UI migration)';
 

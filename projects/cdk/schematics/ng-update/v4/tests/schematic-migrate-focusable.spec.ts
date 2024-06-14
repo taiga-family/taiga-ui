@@ -10,7 +10,7 @@ import {
     resetActiveProject,
     saveActiveProject,
     setActiveProject,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 

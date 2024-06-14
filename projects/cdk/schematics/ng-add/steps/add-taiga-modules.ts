@@ -7,7 +7,7 @@ import type {
     Identifier,
     ObjectLiteralExpression,
     PropertyAssignment,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 import {
     addImportToComponent,
     addImportToNgModule,
@@ -19,7 +19,7 @@ import {
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 import {ALL_FILES} from '../../constants';
 import {addUniqueImport} from '../../utils/add-unique-import';

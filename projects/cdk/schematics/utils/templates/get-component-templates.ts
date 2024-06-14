@@ -8,8 +8,8 @@ import type {
     PropertyAssignment,
     Query,
     StructureType,
-} from '@taiga-ui/morph';
-import {getClasses} from '@taiga-ui/morph';
+} from 'ng-morph';
+import {getClasses} from 'ng-morph';
 
 import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 

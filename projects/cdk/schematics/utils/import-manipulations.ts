@@ -1,4 +1,4 @@
-import type {ImportSpecifier} from '@taiga-ui/morph';
+import type {ImportSpecifier} from 'ng-morph';
 
 export function removeImport(specifier: ImportSpecifier): void {
     if (specifier.getImportDeclaration().getNamedImports().length === 1) {

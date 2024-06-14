@@ -1,4 +1,4 @@
-import {SyntaxKind} from '@taiga-ui/morph';
+import {SyntaxKind} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';

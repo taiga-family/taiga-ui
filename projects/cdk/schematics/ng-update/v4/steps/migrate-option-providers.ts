@@ -1,5 +1,5 @@
-import type {ObjectLiteralElementLike} from '@taiga-ui/morph';
-import {Node} from '@taiga-ui/morph';
+import type {ObjectLiteralElementLike} from 'ng-morph';
+import {Node} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {

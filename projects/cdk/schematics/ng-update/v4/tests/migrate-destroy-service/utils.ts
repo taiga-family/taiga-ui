@@ -7,7 +7,7 @@ import {
     createSourceFile,
     saveActiveProject,
     setActiveProject,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 import type {TuiSchema} from '../../../../ng-add/schema';
 

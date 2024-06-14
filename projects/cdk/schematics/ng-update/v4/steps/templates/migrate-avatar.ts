@@ -1,5 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from '@taiga-ui/morph';
+import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';

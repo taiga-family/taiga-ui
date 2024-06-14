@@ -1,4 +1,4 @@
-import type {DevkitFileSystem} from '@taiga-ui/morph';
+import type {DevkitFileSystem} from 'ng-morph';
 
 import type {TuiSchema} from '../../../../ng-add/schema';
 import {

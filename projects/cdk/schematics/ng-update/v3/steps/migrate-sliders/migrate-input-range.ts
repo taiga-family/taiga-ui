@@ -1,11 +1,11 @@
-import type {DevkitFileSystem} from '@taiga-ui/morph';
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     addMethods,
     createProject,
     getNgComponents,
     saveActiveProject,
     setActiveProject,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
 import type {TuiSchema} from '../../../../ng-add/schema';
@@ -82,7 +82,7 @@ function addMinMaxLabelMethod(
 
 /**
  * We should update virtual file tree after template manipulations
- * otherwise all following @taiga-ui/morph commands will overwrite all previous template manipulations
+ * otherwise all following ng-morph commands will overwrite all previous template manipulations
  * */
 function save(fileSystem: DevkitFileSystem): void {
     fileSystem.commitEdits();

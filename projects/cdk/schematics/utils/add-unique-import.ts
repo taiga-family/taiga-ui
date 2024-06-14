@@ -1,4 +1,4 @@
-import {addImports, editImports, getImports} from '@taiga-ui/morph';
+import {addImports, editImports, getImports} from 'ng-morph';
 
 export function addUniqueImport(
     filePath: string,
