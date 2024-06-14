@@ -19,7 +19,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         '(keydown.space.prevent)': '0',
         '(keydown.enter.prevent)': '0',
         '(keydown.backspace)': 'setValue("")',
-        '(pointerdown.prevent)': 'el.focus()',
+        '(mousedown.prevent)': 'focus()',
         '(keydown.control.c)': 'onCopy()',
         '(keydown.meta.c)': 'onCopy()',
     },
@@ -34,6 +34,12 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
 
     public override setValue(value: string): void {
         this.control.control?.setValue(value);
+    }
+
+    public focus(): void {
+        this.el.classList.add('_ios-fix');
+        this.el.focus();
+        this.el.classList.remove('_ios-fix');
     }
 
     protected get value(): string {
