@@ -31,7 +31,6 @@ import {filter, fromEvent, map, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
-import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 
 function shouldClose(
     this: TuiDropdownOpenDirective,
@@ -57,21 +56,7 @@ function shouldClose(
             outputs: ['tuiActiveZoneChange'],
         },
     ],
-    providers: [
-        TuiDropdownDriver,
-        tuiAsDriver(TuiDropdownDriver),
-        {
-            provide: TUI_DROPDOWN_CONTEXT,
-            deps: [TuiActiveZoneDirective, TuiDropdownOpenDirective],
-            useFactory: (
-                $implicit: TuiActiveZoneDirective,
-                self: TuiDropdownOpenDirective,
-            ) => ({
-                $implicit,
-                close: () => self.toggle.call(self, false),
-            }),
-        },
-    ],
+    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
 export class TuiDropdownOpenDirective implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
@@ -87,7 +72,9 @@ export class TuiDropdownOpenDirective implements OnChanges {
         inject(TuiActiveZoneDirective).tuiActiveZoneChange.pipe(filter(a => !a)),
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
-            filter(target => !this.host.contains(target)),
+            filter(
+                target => !this.host.contains(target) || !this.directive?.dropdownBoxRef,
+            ),
         ),
     )
         .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())

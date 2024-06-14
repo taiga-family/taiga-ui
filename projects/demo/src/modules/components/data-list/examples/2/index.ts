@@ -2,7 +2,7 @@ import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiButtonDirective,
@@ -24,7 +24,6 @@ import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListDropdownManagerDirective,
-        TuiActiveZoneDirective,
         TuiOptionComponent,
         TuiDataListComponent,
         TuiLetDirective,

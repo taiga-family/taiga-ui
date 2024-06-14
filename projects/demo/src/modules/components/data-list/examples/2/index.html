@@ -7,14 +7,10 @@
     [tuiDropdown]="content"
     [(tuiDropdownOpen)]="open"
 ></button>
-<ng-template
-    #content
-    let-activeZone
->
+<ng-template #content>
     <tui-data-list
         tuiDataListDropdownManager
         [size]="size"
-        [tuiActiveZoneParent]="activeZone"
     >
         <button
             *tuiLet="'French Fries' as item"
@@ -52,10 +48,7 @@
         </button>
     </tui-data-list>
     <ng-template #burgersTmp>
-        <tui-data-list
-            tuiDataListDropdownManager
-            [tuiActiveZoneParent]="activeZone"
-        >
+        <tui-data-list tuiDataListDropdownManager>
             <button
                 *ngFor="let burger of burgers"
                 tuiOption

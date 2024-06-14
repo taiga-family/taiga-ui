@@ -23,18 +23,9 @@
         Menu
     </button>
 </div>
-<ng-template
-    #dropdown
-    let-activeZone
->
-    <p class="margin">
-        There is
-        <code>let-activeZone</code>
-        in dropdown template context to work with nested dropdowns
-    </p>
+<ng-template #dropdown>
     <tui-select
         class="margin"
-        [tuiActiveZoneParent]="activeZone"
         [(ngModel)]="selected"
     >
         Nested Select

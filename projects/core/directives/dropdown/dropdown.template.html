@@ -1,10 +1,6 @@
-<tui-scrollbar
-    #activeZone="tuiActiveZone"
-    tuiActiveZone
-    class="t-scroll"
->
+<tui-scrollbar class="t-scroll">
     <div
-        *polymorpheusOutlet="directive.content as text; context: context || {$implicit: activeZone}"
+        *polymorpheusOutlet="directive.content as text; context: {$implicit: close}"
         class="t-primitive"
     >
         {{ text }}

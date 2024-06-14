@@ -3,7 +3,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListComponent,
@@ -26,7 +25,6 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiButtonDirective,
         TuiChevronDirective,
         TuiSelectModule,
-        TuiActiveZoneDirective,
         FormsModule,
         TuiDataListWrapper,
         TuiDataListComponent,

@@ -37,10 +37,9 @@
 <section class="content">Currently active: {{ activeElement }}</section>
 <ng-template
     #dropdown
-    let-activeZone
-    let-close="close"
+    let-close
 >
-    <tui-data-list [tuiActiveZoneParent]="activeZone">
+    <tui-data-list>
         <button
             *ngFor="let collaborator of collaborators"
             tuiOption
