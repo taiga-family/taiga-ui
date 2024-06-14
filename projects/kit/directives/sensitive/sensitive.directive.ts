@@ -1,14 +1,15 @@
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     Directive,
     inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiPx, tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWatch, tuiWithStyles} from '@taiga-ui/cdk';
 import {map} from 'rxjs';
 
 const rowsInSvg = 3;
@@ -31,24 +32,24 @@ class TuiSensitiveStyles {}
     providers: [ResizeObserverService],
     host: {
         '[style.--t-offset.px]': 'offset',
+        '[style.--t-mask-height.px]': 'height()',
         '[class.tui-sensitive]': 'tuiSensitive',
     },
 })
 export class TuiSensitiveDirective {
-    private readonly el = tuiInjectElement();
     protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
 
-    protected readonly height$ = inject(ResizeObserverService)
-        .pipe(
+    protected readonly height = toSignal(
+        inject(ResizeObserverService).pipe(
             map(([{contentRect}]) => [
                 Math.max(2, Math.floor(contentRect.height / 16) + 1),
                 contentRect.height,
             ]),
             map(([rows, height]) => height * (rowsInSvg / rows)),
-            takeUntilDestroyed(),
-        )
-        .subscribe(value => this.el.style.setProperty('--t-mask-height', tuiPx(value)));
+            tuiWatch(inject(ChangeDetectorRef)),
+        ),
+    );
 
     @Input()
     public tuiSensitive: boolean | null = false;

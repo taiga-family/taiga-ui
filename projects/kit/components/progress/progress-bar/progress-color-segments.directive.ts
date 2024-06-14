@@ -1,26 +1,27 @@
-import {Directive, inject, Input} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, Input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiTakeUntilDestroyed} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiWatch} from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     providers: [ResizeObserverService],
-    host: {'[style.--tui-progress-color]': '0'},
+    host: {'[style.--tui-progress-color]': 'color()'},
 })
 export class TuiProgressColorSegmentsDirective {
     private readonly colors$ = new BehaviorSubject<string[]>([]);
     private readonly el = tuiInjectElement<HTMLProgressElement>();
     private readonly resize$ = inject(ResizeObserverService);
 
-    protected readonly calcSegments$ = combineLatest([
-        this.colors$,
-        this.resize$.pipe(
-            map(() => this.el.offsetWidth),
-            distinctUntilChanged(),
-        ),
-    ])
-        .pipe(
+    protected readonly color = toSignal(
+        combineLatest([
+            this.colors$,
+            this.resize$.pipe(
+                map(() => this.el.offsetWidth),
+                distinctUntilChanged(),
+            ),
+        ]).pipe(
             map(([colors, width]) => {
                 const segmentWidth = Math.ceil(width / colors.length);
                 const colorsString = colors.reduce(
@@ -31,9 +32,9 @@ export class TuiProgressColorSegmentsDirective {
 
                 return `linear-gradient(to right ${colorsString})`;
             }),
-            tuiTakeUntilDestroyed(),
-        )
-        .subscribe(value => this.el.style.setProperty('--tui-progress-color', value));
+            tuiWatch(inject(ChangeDetectorRef)),
+        ),
+    );
 
     @Input('tuiProgressColorSegments')
     public set colors(colors: string[]) {

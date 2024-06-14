@@ -147,6 +147,12 @@ export class TuiInputTagComponent
     @Input()
     public removable = true;
 
+    /**
+     * @deprecated hack
+     */
+    @Input()
+    public pseudoOpen = false;
+
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         TUI_FALSE_HANDLER;
