@@ -5,37 +5,33 @@
 >
     <ng-template pageTab>
         <p>This module allows you to create various tables, both static and editable.</p>
-        <tui-doc-example
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
 
-        <!--        <tui-doc-example-->
-        <!--            *ngFor="let example of examples; let index = index"-->
-        <!--            [component]="index + 1 | tuiComponent"-->
-        <!--            [content]="index + 1 | tuiExample"-->
-        <!--            [description]="index === 4 ? cdkVirtualScrollDescription : null"-->
-        <!--            [fullsize]="index === 4 || index === 5"-->
-        <!--            [heading]="example"-->
-        <!--            [id]="example | tuiKebab"-->
-        <!--        >-->
-        <!--            <ng-template #cdkVirtualScrollDescription>-->
-        <!--                You can use-->
-        <!--                <code>Table</code>-->
-        <!--                with-->
-        <!--                <code>ScrollingModule</code>-->
-        <!--                from-->
-        <!--                <a-->
-        <!--                    href="https://material.angular.io/cdk/scrolling/overview"-->
-        <!--                    rel="noreferrer"-->
-        <!--                    target="_blank"-->
-        <!--                    tuiLink-->
-        <!--                >-->
-        <!--                    &#64;angular/cdk/scrolling-->
-        <!--                </a>-->
-        <!--                .-->
-        <!--            </ng-template>-->
-        <!--        </tui-doc-example>-->
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="index === 4 ? cdkVirtualScrollDescription : null"
+            [fullsize]="index === 4 || index === 5"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>Table</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
