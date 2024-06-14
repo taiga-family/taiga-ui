@@ -13,7 +13,7 @@ export const TUI_USED_ICONS = [
     'tuiIconPieChart',
     'tuiIconSend',
     'tuiIconTrash',
-    'tuiIconGrid',
+    'tuiIconLayoutGrid',
     'tuiIconX',
     'tuiIconEllipsis',
     'tuiIconButton',

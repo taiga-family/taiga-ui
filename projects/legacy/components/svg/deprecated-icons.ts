@@ -50,7 +50,7 @@ export const TUI_DEPRECATED_ICONS: Record<string, string> = {
     tuiIconSoundOff: 'tuiIconVolumeX',
     tuiIconStarFilled: 'tuiIconStar',
     tuiIconStop: 'tuiIconSquare',
-    tuiIconStructure: 'tuiIconGrid',
+    tuiIconStructure: 'tuiIconLayoutGrid',
     tuiIconTime: 'tuiIconClock',
     tuiIconTooltip: 'tuiIconHelpCircle',
     tuiIconViewList: 'tuiIconList',
