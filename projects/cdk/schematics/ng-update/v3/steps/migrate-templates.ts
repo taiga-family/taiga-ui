@@ -1,7 +1,7 @@
 /// <reference lib="es2021" />
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from '@taiga-ui/morph';
-import {addProviderToComponent, getNgComponents} from '@taiga-ui/morph';
+import type {DevkitFileSystem} from 'ng-morph';
+import {addProviderToComponent, getNgComponents} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';

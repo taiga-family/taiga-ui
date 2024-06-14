@@ -1,4 +1,4 @@
-import type {DevkitFileSystem, UpdateRecorder} from '@taiga-ui/morph';
+import type {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';

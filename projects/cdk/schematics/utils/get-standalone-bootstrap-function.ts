@@ -1,5 +1,5 @@
-import type {CallExpression} from '@taiga-ui/morph';
-import {Node} from '@taiga-ui/morph';
+import type {CallExpression} from 'ng-morph';
+import {Node} from 'ng-morph';
 
 import {getNamedImportReferences} from './get-named-import-references';
 

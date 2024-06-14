@@ -1,5 +1,5 @@
 import type {SchematicContext} from '@angular-devkit/schematics';
-import {getImports} from '@taiga-ui/morph';
+import {getImports} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
 import type {MigrationWarning} from '../interfaces/migration-warning';

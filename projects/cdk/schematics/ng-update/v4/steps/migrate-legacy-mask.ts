@@ -1,4 +1,4 @@
-import {Node} from '@taiga-ui/morph';
+import {Node} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';

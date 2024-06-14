@@ -3,7 +3,7 @@ import {performance} from 'node:perf_hooks';
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
-import {saveActiveProject} from '@taiga-ui/morph';
+import {saveActiveProject} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';

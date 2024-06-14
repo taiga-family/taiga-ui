@@ -1,5 +1,5 @@
-import type {TypeReferenceNode} from '@taiga-ui/morph';
-import {Node, SyntaxKind} from '@taiga-ui/morph';
+import type {TypeReferenceNode} from 'ng-morph';
+import {Node, SyntaxKind} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {

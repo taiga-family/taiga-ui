@@ -1,4 +1,4 @@
-import {getActiveProject} from '@taiga-ui/morph';
+import {getActiveProject} from 'ng-morph';
 
 import {DEPRECATED_BREAKPOINTS} from '../constants/breakpoints';
 

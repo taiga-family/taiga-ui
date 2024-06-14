@@ -1,13 +1,13 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
-import type {ClassDeclaration, Expression, Identifier} from '@taiga-ui/morph';
+import type {ClassDeclaration, Expression, Identifier} from 'ng-morph';
 import {
     createProject,
     getMainModule,
     Node,
     saveActiveProject,
     setActiveProject,
-} from '@taiga-ui/morph';
+} from 'ng-morph';
 
 import {ALL_FILES} from '../../constants';
 import {getComponentFromIdentifier} from '../../utils/get-component-from-identifier';

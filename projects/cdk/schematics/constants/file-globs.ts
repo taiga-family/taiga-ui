@@ -1,4 +1,4 @@
-import type {Pattern} from '@taiga-ui/morph';
+import type {Pattern} from 'ng-morph';
 
 const EXCLUDE_DIRECTORIES = [
     'e2e',

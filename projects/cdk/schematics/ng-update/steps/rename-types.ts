@@ -1,5 +1,5 @@
-import type {ImportSpecifier} from '@taiga-ui/morph';
-import {getImports, Node} from '@taiga-ui/morph';
+import type {ImportSpecifier} from 'ng-morph';
+import {getImports, Node} from 'ng-morph';
 import type {TypeNode} from 'ts-morph';
 
 import type {TuiSchema} from '../../ng-add/schema';

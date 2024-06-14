@@ -1,5 +1,5 @@
-import type {DevkitFileSystem} from '@taiga-ui/morph';
-import {coerceArray} from '@taiga-ui/morph';
+import type {DevkitFileSystem} from 'ng-morph';
+import {coerceArray} from 'ng-morph';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
