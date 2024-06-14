@@ -15,7 +15,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "markdown-it": "14.1.0",
-        "marked": "12.0.2",
+        "marked": "13.0.0",
         "ngx-highlightjs": "10.0.0"
     },
     "devDependencies": {
