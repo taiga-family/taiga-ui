@@ -3,7 +3,6 @@ import type {TuiInteractiveState} from '@taiga-ui/core';
 
 /**
  * @deprecated
- * TODO: Remove before v4.0
  */
 @Directive({
     selector: '[tuiWrapper]',

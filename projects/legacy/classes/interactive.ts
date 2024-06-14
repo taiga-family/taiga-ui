@@ -3,7 +3,6 @@ import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core
 const TUI = 'tui_interactive_';
 
 /**
- * TODO drop in 4.0
  * @deprecated
  */
 @Directive()

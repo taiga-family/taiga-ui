@@ -4,6 +4,9 @@ import type {Observable, Observer} from 'rxjs';
 
 import type {TuiSheetOptions} from './sheet-options';
 
+/**
+ * @deprecated
+ */
 export interface TuiSheet<O, I = undefined>
     extends TuiSheetOptions<I, O>,
         TuiContext<Observer<O>> {
@@ -12,6 +15,9 @@ export interface TuiSheet<O, I = undefined>
     readonly scroll$: Observable<number>;
 }
 
+/**
+ * @deprecated
+ */
 export interface TuiSheetRequiredProps<T = unknown> {
     item: TuiSheet<T>;
     stops: readonly number[];
