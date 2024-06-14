@@ -18,8 +18,8 @@ import {TuiInputPasswordModule} from '@taiga-ui/legacy';
       useValue: {
         ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
         icons: {
-          hide: 'tuiIconEyeOff',
-          show: 'tuiIconEye',
+          hide: '@tui.eye-off',
+          show: '@tui.eye',
         },
       },
     },

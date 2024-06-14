@@ -19,7 +19,7 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
         ),
     tabTitles: new Map(),
     fullsize: true,
-    linkIcon: 'tuiIconLink',
+    linkIcon: '@tui.link',
 };
 
 /**

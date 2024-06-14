@@ -11,7 +11,7 @@
 <section>
     <tui-chip
         *ngFor="let size of sizes"
-        iconLeft="tuiIconBell"
+        iconLeft="@tui.bell"
         [size]="size"
     >
         Single icon
@@ -21,8 +21,8 @@
 <section>
     <tui-chip
         *ngFor="let size of sizes"
-        iconLeft="tuiIconBell"
-        iconRight="tuiIconCircleHelp"
+        iconLeft="@tui.bell"
+        iconRight="@tui.circle-help"
         [size]="size"
         [style.border-radius.rem]="5"
     >
@@ -63,7 +63,7 @@
     <tui-chip size="m">
         Button
         <button
-            iconLeft="tuiIconX"
+            iconLeft="@tui.x"
             size="s"
             tuiIconButton
         >
@@ -76,7 +76,7 @@
     >
         Button
         <button
-            iconLeft="tuiIconX"
+            iconLeft="@tui.x"
             tuiIconButton
         >
             Remove

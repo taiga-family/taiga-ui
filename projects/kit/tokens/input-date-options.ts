@@ -17,7 +17,7 @@ export interface TuiInputDateOptions {
 }
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
-    icon: () => 'tuiIconCalendar',
+    icon: () => '@tui.calendar',
     min: TUI_FIRST_DAY,
     max: TUI_LAST_DAY,
     nativePicker: false,

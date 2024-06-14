@@ -98,7 +98,9 @@ function findTuiIconNames(
                 }
 
                 const fileContents = readFileSync(filePath, 'utf-8');
-                const tuiIconMatches = fileContents.match(/\btuiIcon\w+(?=\s|'|"|`)/g);
+                const tuiIconMatches = fileContents.match(
+                    /@tui\.[a-zA-Z0-9-]+(?=['"`])/g,
+                );
 
                 if (tuiIconMatches) {
                     tuiIconMatches.forEach(match => {

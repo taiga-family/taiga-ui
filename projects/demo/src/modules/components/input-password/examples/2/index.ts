@@ -16,8 +16,8 @@ import {of} from 'rxjs';
     providers: [
         tuiInputPasswordOptionsProvider({
             icons: {
-                hide: 'tuiIconLock',
-                show: 'tuiIconUnlock',
+                hide: '@tui.lock',
+                show: '@tui.unlock',
             },
         }),
         {

@@ -24,7 +24,7 @@
         />
 
         <button
-            iconLeft="tuiIconDownload"
+            iconLeft="@tui.download"
             tuiIconButton
             tuiPreviewAction
             type="button"
@@ -34,7 +34,7 @@
         </button>
 
         <button
-            iconLeft="tuiIconX"
+            iconLeft="@tui.x"
             tuiIconButton
             tuiPreviewAction
             type="button"
@@ -46,7 +46,7 @@
         <ng-container *ngIf="contentUnavailable$ | async">
             <div class="t-container">
                 <tui-icon
-                    icon="tuiIconFile"
+                    icon="@tui.file"
                     class="t-icon"
                 />
                 <div>Preview unavailable</div>

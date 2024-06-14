@@ -9,8 +9,8 @@ export interface TuiArrowOptions {
 
 /** Default values for arrow options */
 export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
-    iconSmall: 'tuiIconChevronDown',
-    iconLarge: 'tuiIconChevronDown',
+    iconSmall: '@tui.chevron-down',
+    iconLarge: '@tui.chevron-down',
 };
 
 /**

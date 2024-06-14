@@ -8,7 +8,7 @@ export interface TuiBreadcrumbsOptions {
 }
 
 export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {
-    icon: 'tuiIconChevronRight',
+    icon: '@tui.chevron-right',
     size: 'm',
 };
 

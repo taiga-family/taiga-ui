@@ -62,7 +62,7 @@ export class TuiAvatarComponent {
             return 'img';
         }
 
-        if (this.value.startsWith('tuiIcon') || this.value.endsWith('.svg')) {
+        if (this.value.startsWith('@tui.') || this.value.endsWith('.svg')) {
             return 'icon';
         }
 

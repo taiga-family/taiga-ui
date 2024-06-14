@@ -128,7 +128,7 @@ export default class ExampleComponent extends AbstractExampleTuiControl {
 
     public readonly control = new FormControl<Account | null>(null, Validators.required);
 
-    public readonly iconVariants = ['', 'tuiIconPieChart', 'tuiIconCreditCard'];
+    public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
     public override iconLeft = this.iconVariants[0];
 

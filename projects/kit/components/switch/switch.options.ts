@@ -13,7 +13,7 @@ export interface TuiSwitchOptions {
 export const TUI_SWITCH_DEFAULT_OPTIONS: TuiSwitchOptions = {
     showIcons: true,
     size: 'm',
-    icon: 'tuiIconCheck',
+    icon: '@tui.check',
     appearance: el => (el.checked ? 'primary' : 'secondary'),
 };
 

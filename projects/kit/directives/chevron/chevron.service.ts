@@ -6,6 +6,6 @@ import {Injectable} from '@angular/core';
 })
 export class TuiChevronService {
     public getHandler(_injector: Injector): () => string {
-        return () => 'tuiIconChevronDown';
+        return () => '@tui.chevron-down';
     }
 }

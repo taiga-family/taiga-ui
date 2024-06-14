@@ -3,7 +3,7 @@
     tuiDropdownAlign="right"
     tuiLink
     class="link"
-    [iconLeft]="ascending ? 'tuiIconChevronUp' : 'tuiIconChevronDown'"
+    [iconLeft]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'"
     [tuiDropdown]="dropdown"
     [(tuiDropdownOpen)]="open"
 >
@@ -22,7 +22,7 @@
                 {{ item }}
                 <tui-icon
                     *ngIf="itemIsActive(item)"
-                    icon="tuiIconCheck"
+                    icon="@tui.check"
                 />
             </button>
         </tui-opt-group>

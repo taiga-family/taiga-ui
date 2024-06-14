@@ -16,10 +16,10 @@
                                     class="saved-card-preset__item__info__icon"
                                     [src]="
                                         (card.cardType === 'MasterCard'
-                                            ? 'tuiIconMaestro'
+                                            ? '@tui.maestro'
                                             : card.cardType === 'Visa'
-                                              ? 'tuiIconVisa'
-                                              : 'tuiIconMir'
+                                              ? '@tui.visa'
+                                              : '@tui.mir'
                                         ) | tuiIcon
                                     "
                                 />
@@ -90,7 +90,7 @@
             class="form-block is--links"
         >
             <button
-                iconLeft="tuiIconPlus"
+                iconLeft="@tui.plus"
                 tuiLink
                 (click)="payByNewCard()"
             >

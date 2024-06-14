@@ -10,7 +10,7 @@
         {{ task.title }}
         <tui-icon
             *ngIf="task.completed"
-            icon="tuiIconCheck"
+            icon="@tui.check"
             [@tuiScaleIn]="getAnimation((speed | async) || 0)"
         />
     </li>

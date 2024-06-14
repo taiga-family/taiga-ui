@@ -79,7 +79,7 @@ export class TuiPrimitiveTextfieldComponent
 
     /**
      * @deprecated:
-     * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
+     * use `tuiTextfieldOptionsProvider({iconCleaner: `@tui.chevron-up`})`
      */
     @Input()
     public iconCleaner = this.legacyOptions.iconCleaner;

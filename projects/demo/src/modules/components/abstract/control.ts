@@ -55,10 +55,10 @@ export abstract class AbstractExampleTuiControl
     public readonly customContentVariants: PolymorpheusContent[] = [
         '',
         CUSTOM_SVG_NAME,
-        'tuiIconSearch',
-        'tuiIconCalendar',
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
+        '@tui.search',
+        '@tui.calendar',
+        '@tui.visa-mono',
+        '@tui.mastercard-mono',
     ];
 
     public customContentSelected = this.customContentVariants[0];
@@ -85,7 +85,7 @@ export abstract class AbstractExampleTuiControl
 
     public filler = '';
 
-    public readonly iconLeftVariants = ['', 'tuiIconMail', 'tuiIconPieChart'];
+    public readonly iconLeftVariants = ['', '@tui.mail', '@tui.pie-chart'];
 
     public iconLeft = this.iconLeftVariants[0];
 

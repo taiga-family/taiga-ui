@@ -41,7 +41,7 @@ export default class ExampleComponent extends AbstractTuiControl<string> {
     }
 
     protected get icon(): string {
-        return this.isPasswordHidden ? 'tuiIconEye' : 'tuiIconEyeOff';
+        return this.isPasswordHidden ? '@tui.eye' : '@tui.eye-off';
     }
 
     protected get hint(): string {

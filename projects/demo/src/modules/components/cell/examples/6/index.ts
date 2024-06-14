@@ -24,15 +24,15 @@ import {TuiCellDirective} from '@taiga-ui/layout';
 export default class ExampleComponent {
     protected readonly items = [
         {
-            icon: 'tuiIconPhone',
+            icon: '@tui.phone',
             toString: () => 'Call now',
         },
         {
-            icon: 'tuiIconStar',
+            icon: '@tui.star',
             toString: () => 'Add to favorites',
         },
         {
-            icon: 'tuiIconTrash',
+            icon: '@tui.trash',
             toString: () => 'Remove item',
         },
     ];

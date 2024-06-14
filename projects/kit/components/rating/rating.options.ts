@@ -9,7 +9,7 @@ export interface TuiRatingOptions {
 }
 
 export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
-    icon: 'tuiIconStar',
+    icon: '@tui.star',
     max: 5,
 };
 

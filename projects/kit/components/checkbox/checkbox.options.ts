@@ -16,8 +16,8 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
     size: 'm',
     appearance: el => (el.checked || el.indeterminate ? 'primary' : 'whiteblock'),
     icons: {
-        checked: () => 'tuiIconCheck',
-        indeterminate: () => 'tuiIconMinus',
+        checked: () => '@tui.check',
+        indeterminate: () => '@tui.minus',
     },
 };
 

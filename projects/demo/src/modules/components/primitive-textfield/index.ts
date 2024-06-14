@@ -63,10 +63,10 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     protected readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     protected theme = this.themes[0];
 
-    protected readonly iconVariants = ['', 'tuiIconSearch', 'Interactive content'];
+    protected readonly iconVariants = ['', '@tui.search', 'Interactive content'];
     protected selectedIcon = this.iconVariants[0];
 
-    protected readonly iconLeftVariants = ['', 'tuiIconPieChart', 'tuiIconCreditCard'];
+    protected readonly iconLeftVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
     protected iconLeft = '';
 
@@ -98,7 +98,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected readonly customContentVariants = [
         '',
-        'tuiIconBell',
+        '@tui.bell',
         '<span>LongTextContent</span>',
     ];
 
@@ -145,9 +145,9 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
             return '';
         }
 
-        return this.interactiveIcon && this.selectedIcon !== 'tuiIconSearch'
+        return this.interactiveIcon && this.selectedIcon !== '@tui.search'
             ? this.interactiveIcon
-            : 'tuiIconSearch';
+            : '@tui.search';
     }
 
     protected get isBootstrap(): boolean {

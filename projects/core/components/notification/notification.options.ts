@@ -13,11 +13,11 @@ export interface TuiNotificationOptions {
 }
 
 const STATUS_ICON = {
-    info: 'tuiIconInfo',
-    success: 'tuiIconCircleCheck',
-    error: 'tuiIconCircleX',
-    warning: 'tuiIconCircleAlert',
-    neutral: 'tuiIconInfo',
+    info: '@tui.info',
+    success: '@tui.circle-check',
+    error: '@tui.circle-x',
+    warning: '@tui.circle-alert',
+    neutral: '@tui.info',
 } as const;
 
 /** Default values for the notification options. */

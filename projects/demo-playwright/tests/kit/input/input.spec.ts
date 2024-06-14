@@ -18,7 +18,7 @@ test.describe('Input', () => {
     test('correctly aligns single custom content (as large icon)', async ({page}) => {
         await tuiGoto(
             page,
-            '/components/input/API?tuiTextfieldCustomContent=tuiIconCalendar',
+            '/components/input/API?tuiTextfieldCustomContent=@tui.calendar',
         );
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
             '02-custom-large-icon-content.png',
@@ -30,7 +30,7 @@ test.describe('Input', () => {
     }) => {
         await tuiGoto(
             page,
-            '/components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearch&tuiHintContent=Some%20content',
+            '/components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=@tui.search&tuiHintContent=Some%20content',
         );
 
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
@@ -43,7 +43,7 @@ test.describe('Input', () => {
     }) => {
         await tuiGoto(
             page,
-            'components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconVisaMono&tuiHintContent=Some%20content',
+            'components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=@tui.visa-mono&tuiHintContent=Some%20content',
         );
 
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
@@ -54,7 +54,7 @@ test.describe('Input', () => {
     test('input overflow due to placeholder', async ({page}) => {
         await tuiGoto(
             page,
-            'components/input/API?tuiTextfieldIconLeft=tuiIconSearch&pseudoFocus=true&placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore',
+            'components/input/API?tuiTextfieldIconLeft=@tui.search&pseudoFocus=true&placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore',
         );
 
         const example = new TuiDocumentationPagePO(page).apiPageExample;
@@ -133,7 +133,7 @@ test.describe('Input', () => {
             test(`size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input/API?tuiTextfieldIcon=tuiIconCalendar&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
+                    `components/input/API?tuiTextfieldIcon=@tui.calendar&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
                 await expect(
                     new TuiDocumentationPagePO(page).apiPageExample,

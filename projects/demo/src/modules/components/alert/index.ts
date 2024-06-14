@@ -76,7 +76,7 @@ export default class PageComponent {
 
     protected status = this.statusVariants[0];
 
-    protected readonly iconVariants = ['Default', 'tuiIconHeart'];
+    protected readonly iconVariants = ['Default', '@tui.heart'];
 
     protected icon = this.iconVariants[0];
 

@@ -2,7 +2,7 @@
 <div tuiCardMedium>
   <tui-avatar
     class="star"
-    src="tuiIconStar"
+    src="@tui.star"
   ></tui-avatar>
 
   <h2 tuiTitle>

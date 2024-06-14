@@ -29,7 +29,7 @@
             />
             <span>{{ data[index] | tuiAmount: 'RUB' | async }}</span>
             <tui-icon
-                icon="tuiIconX"
+                icon="@tui.x"
                 class="disable"
                 [class.disable_rotated]="item.disabled"
                 (click.stop)="toggle(index)"

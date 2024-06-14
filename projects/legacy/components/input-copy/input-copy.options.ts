@@ -15,7 +15,7 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     successMessage: '',
     messageDirection: 'bottom-left',
     messageAppearance: '',
-    icon: () => 'tuiIconCopy',
+    icon: () => '@tui.copy',
 };
 
 export const TUI_INPUT_COPY_OPTIONS = tuiCreateToken(TUI_INPUT_COPY_DEFAULT_OPTIONS);

@@ -96,7 +96,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TuiBooleanHandler<Account>
     > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
-    public readonly iconVariants = ['', 'tuiIconPieChart', 'tuiIconCreditCard'];
+    public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
     public override iconLeft = this.iconVariants[0];
 
