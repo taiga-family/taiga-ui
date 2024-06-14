@@ -191,7 +191,7 @@ export class TuiInputDateComponent
     }
 
     protected get nativePicker(): boolean {
-        return this.options.nativePicker;
+        return this.options.nativePicker && !!this.mobileCalendar && this.isMobile;
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
