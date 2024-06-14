@@ -7,6 +7,9 @@ import type {TuiSheet} from './sheet';
 import {TuiSheetService} from './sheet.service';
 import type {TuiSheetOptions} from './sheet-options';
 
+/**
+ * @deprecated: use {@link TuiSheetDialogDirective}
+ */
 @Directive({
     selector: 'ng-template[tuiSheet]',
 })

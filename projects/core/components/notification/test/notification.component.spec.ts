@@ -8,7 +8,6 @@ import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationComponent,
-    TuiSvgService,
 } from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
@@ -58,7 +57,7 @@ describe('Notification', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TestComponent],
-                providers: [TuiSvgService, NG_EVENT_PLUGINS],
+                providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
@@ -113,7 +112,6 @@ describe('Notification', () => {
             TestBed.configureTestingModule({
                 imports: [TestComponent],
                 providers: [
-                    TuiSvgService,
                     {
                         provide: TUI_NOTIFICATION_OPTIONS,
                         useValue: {

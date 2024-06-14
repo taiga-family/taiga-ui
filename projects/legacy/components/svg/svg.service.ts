@@ -2,13 +2,13 @@
 import {inject, Injectable, SecurityContext} from '@angular/core';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';
+import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
+import {tuiProcessIcon} from '@taiga-ui/legacy/utils';
 import {BehaviorSubject} from 'rxjs';
 
 /**
  * Service for reusing SVGs without inlining each instance
- * TODO: Move to legacy in 4.0
+ * @deprecated
  */
 @Injectable({
     providedIn: 'root',

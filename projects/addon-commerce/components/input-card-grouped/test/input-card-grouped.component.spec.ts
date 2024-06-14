@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
@@ -12,7 +12,7 @@ import {firstValueFrom, timer} from 'rxjs';
 describe('InputCardGrouped', () => {
     @Component({
         standalone: true,
-        imports: [TuiInputCardGroupedComponent, ReactiveFormsModule, TuiSvgComponent],
+        imports: [TuiInputCardGroupedComponent, ReactiveFormsModule, TuiIconComponent],
         template: `
             <tui-input-card-grouped
                 [formControl]="control"
@@ -20,7 +20,7 @@ describe('InputCardGrouped', () => {
             />
 
             <ng-template #customIconTemplate>
-                <tui-svg src="tuiIconVisa" />
+                <tui-icon icon="tuiIconVisa" />
             </ng-template>
         `,
     })

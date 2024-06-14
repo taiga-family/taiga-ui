@@ -1,7 +1,4 @@
-import {inject} from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
@@ -73,19 +70,17 @@ export function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     return {LARGE: large, NORMAL: normal};
 }
 
-export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => {
+export const ICONS = (): DemoTuiIconsTabs => {
     const {LARGE, NORMAL} = ensureIcons();
 
     return {
         'Description and examples': {
-            'Normal / 16px': NORMAL.filter(icon => !deprecated(icon)),
-            'Large / 24px': LARGE.filter(icon => !deprecated(icon)),
+            'Normal / 16px': NORMAL,
+            'Large / 24px': LARGE,
             'Payment systems': COMMERCE_SYSTEMS,
             'Payment services': COMMERCE_SERVICES,
         },
     };
 };
 
-export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
-    ICONS(inject(TUI_SVG_OPTIONS).deprecated),
-);
+export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(ICONS);

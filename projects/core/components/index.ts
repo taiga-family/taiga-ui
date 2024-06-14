@@ -14,7 +14,5 @@ export * from '@taiga-ui/core/components/notification';
 export * from '@taiga-ui/core/components/root';
 export * from '@taiga-ui/core/components/scrollbar';
 export * from '@taiga-ui/core/components/spin-button';
-export * from '@taiga-ui/core/components/svg';
-export * from '@taiga-ui/core/components/svg-defs-host';
 export * from '@taiga-ui/core/components/textfield';
 export * from '@taiga-ui/core/components/tooltip';

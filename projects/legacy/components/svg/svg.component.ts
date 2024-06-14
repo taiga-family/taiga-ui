@@ -20,15 +20,12 @@ import {
     tuiPure,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
-import {TuiSvgService} from '@taiga-ui/core/services';
-import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import {
-    TUI_CACHE_BUSTING_PAYLOAD,
-    tuiIsPresumedHTMLString,
-} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
+import {TUI_CACHE_BUSTING_PAYLOAD, tuiIsPresumedHTMLString} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {catchError, map, of, ReplaySubject, startWith, switchMap} from 'rxjs';
 
+import {TuiSvgService} from './svg.service';
 import type {TuiSvgInterceptorHandler, TuiSvgOptions} from './svg-options';
 import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS} from './svg-options';
 
@@ -69,7 +66,6 @@ export class TuiSvgComponent {
     protected readonly innerHTML$: Observable<SafeHtml>;
 
     constructor() {
-        // TODO: Consider legacy mode where all icons are treated as external to support new icons
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
                 if (tuiIsString(this.icon)) {
@@ -145,7 +141,11 @@ export class TuiSvgComponent {
     }
 
     private get isExternal(): boolean {
-        return this.isUrl || this.isCrossDomain;
+        return (
+            this.isUrl ||
+            this.isCrossDomain ||
+            (!this.isSrc && !this.svgService.getOriginal(String(this.icon)))
+        );
     }
 
     private get isUrl(): boolean {
@@ -187,8 +187,7 @@ export class TuiSvgComponent {
             this.onError(UNDEFINED_NAMED_ICON);
         }
 
-        // Empty line for innerHTML when icon is shown through USE tag
-        return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
+        return this.sanitize(icon || '');
     }
 
     private sanitize(src: TuiSafeHtml): TuiSafeHtml {

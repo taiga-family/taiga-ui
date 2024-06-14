@@ -14,6 +14,9 @@ import {TuiSheetTopDirective} from './directives/sheet-top/sheet-top.directive';
 import {TuiSheetWrapperDirective} from './directives/sheet-wrapper/sheet-wrapper.directive';
 import {TuiSheetDirective} from './sheet.directive';
 
+/**
+ * @deprecated: use {@link TuiSheetDialogModule}
+ */
 @NgModule({
     imports: [
         CommonModule,

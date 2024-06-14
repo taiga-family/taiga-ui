@@ -4,16 +4,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {assets, TuiDemo} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {
-    TuiLinkDirective,
-    TuiNotificationComponent,
-    TuiSvgComponent,
-} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
 import {IconsGroupComponent} from './icons-group/icons-group.component';
 import {IconsGroupDirective} from './icons-group/icons-group.directive';
 
+// TODO: Remove this entire section
 @Component({
     standalone: true,
     imports: [

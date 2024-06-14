@@ -1,4 +1,4 @@
-import {tuiIsPresumedHTMLString} from '../is-presumed-html-string';
+import {tuiIsPresumedHTMLString} from '@taiga-ui/legacy';
 
 describe('isPresumedHTMLString', () => {
     describe('returns false if', () => {

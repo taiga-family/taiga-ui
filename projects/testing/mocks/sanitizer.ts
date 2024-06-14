@@ -1,5 +1,5 @@
 import type {SecurityContext} from '@angular/core';
-import {TUI_SANITIZER} from '@taiga-ui/core';
+import {TUI_SANITIZER} from '@taiga-ui/legacy';
 
 export const TUI_SANITIZER_MOCK = {
     provide: TUI_SANITIZER,

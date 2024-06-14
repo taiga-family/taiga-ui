@@ -1,5 +1,5 @@
 ```ts
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 // ...
 

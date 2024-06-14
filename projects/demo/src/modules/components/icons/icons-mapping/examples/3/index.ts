@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
-import {TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

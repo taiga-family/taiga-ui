@@ -21,9 +21,6 @@ export const EXCLUDED_ROUTES = [
     DemoRoute.DialogLazyRoutable, // just buttons
     DemoRoute.SheetDialog, // just buttons
     DemoRoute.Error,
-    `${DemoRoute.IconsOverview}/Component`,
-    DemoRoute.IconsOverview,
-    DemoRoute.IconsMapping,
     DemoRoute.MobileCalendar, // TODO: flaky test, need investigate
 ];
 

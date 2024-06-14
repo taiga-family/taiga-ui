@@ -27,11 +27,11 @@ import {
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    TUI_SANITIZER,
 } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
+import {TUI_SANITIZER} from '@taiga-ui/legacy';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import {SEE_ALSO_GROUPS} from './app.const';
