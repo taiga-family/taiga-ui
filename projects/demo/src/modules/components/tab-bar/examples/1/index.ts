@@ -47,7 +47,7 @@ export default class ExampleComponent {
         },
         {
             text: 'More',
-            icon: 'tuiIconMoreHorizontal',
+            icon: 'tuiIconEllipsis',
         },
     ];
 
