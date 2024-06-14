@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11265],{11265:n=>{n.exports='```html\n<tui-push heading="1.21 Gigawatts!?!">\n  <tui-icon icon="tuiIconClock" />\n  This is heavy!\n  <button tuiLink>Great Scott!</button>\n</tui-push>\n```\n'}}]);
