@@ -5,10 +5,8 @@ import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {
-    TUI_ALL_COUNTRIES_ISO_CODES,
-    TuiInputPhoneInternationalComponent,
-} from '@taiga-ui/kit';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {getCountries} from 'libphonenumber-js';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -36,7 +34,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         ['RU', 'KZ', 'UA', 'BY'],
-        TUI_ALL_COUNTRIES_ISO_CODES,
+        getCountries(),
     ];
 
     protected countries = this.countriesVariants[0];

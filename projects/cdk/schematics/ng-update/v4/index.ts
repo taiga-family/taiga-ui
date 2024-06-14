@@ -13,6 +13,7 @@ import {removeModules, replaceEnums, replaceIdentifiers, showWarnings} from '../
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
+    migrateAllCountryIsoCodes,
     migrateDestroyService,
     migrateLegacyMask,
     migrateTemplates,
@@ -40,6 +41,7 @@ function main(options: TuiSchema): Rule {
         migrateLegacyMask(options);
         migrateDestroyService(options);
         migrateOptionProviders(options);
+        migrateAllCountryIsoCodes(options);
 
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateTemplates(fileSystem, options);

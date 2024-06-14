@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/kit';
+import {getCountries} from 'libphonenumber-js';
 
 @Component({
     standalone: true,
@@ -12,7 +12,7 @@ import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
-    protected countryIsoCodeVariants = TUI_ALL_COUNTRIES_ISO_CODES;
+    protected countryIsoCodeVariants = getCountries();
     protected countryIsoCode: TuiCountryIsoCode = 'FR';
 
     protected get apiCodeDemo(): string {
