@@ -112,7 +112,6 @@ describe('Notification', () => {
             TestBed.configureTestingModule({
                 imports: [TestComponent],
                 providers: [
-                    TuiSvgService,
                     {
                         provide: TUI_NOTIFICATION_OPTIONS,
                         useValue: {
