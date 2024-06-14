@@ -16,7 +16,7 @@ import {TuiInputTimeModule} from '@taiga-ui/legacy';
     {
       provide: TUI_INPUT_TIME_OPTIONS,
       useValue: {
-        icon: 'tuiIconCircleCheckLarge',
+        icon: 'tuiIconCircleCheck',
         mode: 'HH:MM:SS',
         itemSize: 's',
       },

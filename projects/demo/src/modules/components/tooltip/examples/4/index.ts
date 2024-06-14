@@ -11,7 +11,7 @@ import {tuiHintOptionsProvider, TuiTooltipModule} from '@taiga-ui/core';
     changeDetection,
     providers: [
         tuiHintOptionsProvider({
-            icon: 'tuiIconCameraLarge',
+            icon: 'tuiIconCamera',
         }),
     ],
 })

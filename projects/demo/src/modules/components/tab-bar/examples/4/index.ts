@@ -23,19 +23,19 @@ export default class ExampleComponent {
                 map(() => [
                     {
                         text: 'Favorites',
-                        icon: 'tuiIconHeartLarge',
+                        icon: 'tuiIconHeart',
                     },
                     {
                         text: 'Calls',
-                        icon: 'tuiIconPhoneLarge',
+                        icon: 'tuiIconPhone',
                     },
                     {
                         text: 'Profile',
-                        icon: 'tuiIconUserLarge',
+                        icon: 'tuiIconUser',
                     },
                     {
                         text: 'Settings and configuration',
-                        icon: 'tuiIconSettingsLarge',
+                        icon: 'tuiIconSettings',
                     },
                 ]),
                 startWith([]),

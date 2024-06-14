@@ -20,6 +20,6 @@ import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
 })
 export class FoldersComponent extends TuiTreeItemContentComponent {
     protected get icon(): string {
-        return this.isExpandable ? 'tuiIconFolderLarge' : 'tuiIconFileLarge';
+        return this.isExpandable ? 'tuiIconFolder' : 'tuiIconFile';
     }
 }
