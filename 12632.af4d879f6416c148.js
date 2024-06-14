@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12632],{12632:n=>{n.exports="```js\n// This example is only if you are running via node\n// $ node ./my-path-to-script/process-icons.js\nconst {globSync} = require('glob');\nconst {processIcons} = require('@taiga-ui/icons/scripts');\n\nprocessIcons(globSync('./my-path-to-icons/**/*.svg'));\n```\n"}}]);
