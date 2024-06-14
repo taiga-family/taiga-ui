@@ -17,7 +17,7 @@
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./{projectRoot}/scripts/prepare-lucide-icons.ts && ts-node ./{projectRoot}/scripts/generate-all-icons.ts"
+                "command": "ts-node ./{projectRoot}/scripts/prepare-lucide-icons.ts"
             }
         },
         "test": {

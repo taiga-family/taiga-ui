@@ -9,34 +9,15 @@
         <tui-notification>
             Open source theme for Taiga UI uses processed
             <a
-                href="https://feathericons.com/"
+                href="https://lucide.dev/"
                 rel="noreferrer"
                 target="_blank"
                 tuiLink
             >
-                Feather Icons
+                Lucide Icons
             </a>
             as its icon pack with some custom made icons.
         </tui-notification>
-        <p>
-            These icons can be used by name in
-            <a
-                tuiLink
-                [routerLink]="routes.IconsOverview"
-            >
-                Svg
-            </a>
-            component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with
-            linear gradient you need to provide
-            <a
-                fragment="sanitizer"
-                tuiLink
-                [routerLink]="routes.IconsBundled"
-            >
-                TUI_SANITIZER
-            </a>
-            token, which is responsible for removing malicious code from the svg.
-        </p>
 
         <icons-group
             waIntersectionObserver
