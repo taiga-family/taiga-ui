@@ -224,10 +224,16 @@
         cursor: pointer;
     }
 
-    ::ng-deep input {
+    ::ng-deep input,
+    ::ng-deep select {
         .ios-only({
             &:active {
                 font-size: 1rem;
+            }
+
+            &._ios-fix {
+                position: fixed;
+                left: 1000rem;
             }
         });
     }
