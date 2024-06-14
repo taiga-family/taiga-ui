@@ -1,21 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
-    <g id="tuiIconPin" xmlns="http://www.w3.org/2000/svg">
-        <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
-            <svg x="-8" y="-8">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path vector-effect="non-scaling-stroke" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle vector-effect="non-scaling-stroke" cx="12" cy="10" r="3" />
-                </svg>
-            </svg>
-        </svg>
-    </g>
+<!-- @license lucide-static v0.394.0 - ISC -->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="lucide lucide-pin"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <line vector-effect="non-scaling-stroke" x1="12" x2="12" y1="17" y2="22" />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"
+    />
 </svg>
