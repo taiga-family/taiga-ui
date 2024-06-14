@@ -7,7 +7,6 @@ import {TuiSortByDirective} from './sort-by.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    standalone: true,
     selector: 'th[tuiTh][tuiSortable]',
 })
 export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>

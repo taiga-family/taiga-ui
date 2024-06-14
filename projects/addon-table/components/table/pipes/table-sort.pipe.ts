@@ -6,7 +6,6 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {TuiTableDirective} from '../directives/table.directive';
 
 @Pipe({
-    standalone: true,
     name: 'tuiTableSort',
     pure: false,
 })
