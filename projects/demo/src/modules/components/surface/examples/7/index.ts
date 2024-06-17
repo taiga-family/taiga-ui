@@ -11,7 +11,7 @@ import {
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
-import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -24,7 +24,7 @@ import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiCellDirective,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         CommonModule,
         TuiScrollbarComponent,
         TuiTitleDirective,

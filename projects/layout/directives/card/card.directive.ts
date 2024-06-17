@@ -26,7 +26,7 @@ class TuiCardStyles {}
         tuiCardMedium: '',
     },
 })
-export class TuiCardMediumDirective {
+export class TuiCardMedium {
     protected readonly nothing = tuiWithStyles(TuiCardStyles);
 }
 
@@ -38,7 +38,7 @@ export class TuiCardMediumDirective {
         '[attr.data-space]': 'space || "normal"',
     },
 })
-export class TuiCardLargeDirective {
+export class TuiCardLarge {
     protected readonly nothing = tuiWithStyles(TuiCardStyles);
 
     @Input('tuiCardLarge')

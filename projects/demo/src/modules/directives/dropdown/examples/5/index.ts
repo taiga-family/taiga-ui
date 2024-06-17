@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownModule, TuiLabelDirective, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
-import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -12,7 +12,7 @@ import {TuiCardLargeDirective} from '@taiga-ui/layout';
         TuiDropdownModule,
         TuiLabelDirective,
         TuiSwitchComponent,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiSurfaceDirective,
         FormsModule,
     ],

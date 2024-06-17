@@ -27,7 +27,7 @@ import {
     TuiTabDirective,
     TuiTabsHorizontalDirective,
 } from '@taiga-ui/kit';
-import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -52,7 +52,7 @@ import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiTabsHorizontalDirective,
         TuiTabDirective,
         TuiRepeatTimes,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiHeaderDirective,
         TuiSurfaceDirective,
         TuiTitleDirective,

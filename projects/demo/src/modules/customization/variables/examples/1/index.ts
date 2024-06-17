@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLabelDirective, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
-import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
         TuiLabelDirective,
         TuiCheckboxComponent,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiSurfaceDirective,
     ],
     templateUrl: './index.html',

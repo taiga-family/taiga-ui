@@ -27,13 +27,13 @@ import { TuiCardModule } from "@taiga-ui/experimental";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiCardLargeDirective, TuiCardMediumDirective } from "@taiga-ui/layout";
+const COMPONENT_AFTER = `import { TuiCardLarge, TuiCardMedium } from "@taiga-ui/layout";
 import { TuiCheckboxComponent } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCheckboxComponent, TuiCardLargeDirective, TuiCardMediumDirective]
+    imports: [TuiCheckboxComponent, TuiCardLarge, TuiCardMedium]
 })
 export class Test {
 }`;

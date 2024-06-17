@@ -6,12 +6,12 @@ import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {TuiRippleDirective} from '@taiga-ui/addon-mobile';
 import {TuiIconPipe, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiFadeDirective} from '@taiga-ui/kit';
-import {TuiCardMediumDirective} from '@taiga-ui/layout';
+import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCardMediumDirective,
+        TuiCardMedium,
         TuiSurfaceDirective,
         TuiIconPipe,
         TuiThumbnailCardComponent,

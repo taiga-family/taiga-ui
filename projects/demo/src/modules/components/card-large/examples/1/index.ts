@@ -3,12 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatformDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLinkDirective, TuiSurfaceDirective} from '@taiga-ui/core';
-import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiSurfaceDirective,
         TuiButtonDirective,
         TuiLinkDirective,

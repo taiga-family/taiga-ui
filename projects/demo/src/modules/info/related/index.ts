@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiLinkDirective, TuiSurfaceDirective} from '@taiga-ui/core';
-import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-github-bot';
 
 @Component({
     standalone: true,
     selector: 'related',
-    imports: [TuiDemo, TuiLinkDirective, TuiCardLargeDirective, TuiSurfaceDirective],
+    imports: [TuiDemo, TuiLinkDirective, TuiCardLarge, TuiSurfaceDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
