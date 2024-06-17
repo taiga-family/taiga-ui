@@ -8,7 +8,7 @@ import {debounceTime, filter, ReplaySubject, switchMap} from 'rxjs';
     standalone: true,
     selector: '[tuiScrollIntoViewLink]',
 })
-export class TuiScrollIntoViewLinkDirective {
+export class TuiScrollIntoViewLink {
     private readonly scroll$ = new ReplaySubject<boolean>(1);
 
     constructor() {
