@@ -6,7 +6,7 @@
     <div tuiSubtitle>Subtitle</div>
   </h2>
 
-  <span>{{ amount }} | tuiAmount: 'USD' | async }}</span>
+  <span>{{ amount }} | tuiAmount: 'USD' }}</span>
   <span tuiAmountDescription>description</span>
   <span tuiComment>comment</span>
   <tui-badge appearance="neutral">Badge</tui-badge>

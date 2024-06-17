@@ -19,7 +19,7 @@ import {switchMap, takeUntil} from 'rxjs';
     imports: [AsyncPipe, TuiButtonDirective, TuiLinkDirective, TuiAmountPipe],
     template: `
         <em>Your balance:</em>
-        <span>{{ value | tuiAmount: 'RUB' | async }}</span>
+        <span>{{ value | tuiAmount: 'RUB' }}</span>
         <p [style.display]="'flex'">
             <button
                 appearance="whiteblock"

@@ -29,6 +29,6 @@
             [style.background]="getBackground(index)"
         ></span>
         <span class="name">{{ getSetName(index) }}</span>
-        <span>{{ item[setIndex] * 1000 | tuiAmount: 'RUB' | async }}</span>
+        <span>{{ item[setIndex] * 1000 | tuiAmount: 'RUB' }}</span>
     </p>
 </ng-template>

@@ -1,14 +1,14 @@
 <ol>
-    <li>{{ 10728.9 | tuiAmount | async }}</li>
-    <li>{{ 10728.9 | tuiAmount: 'RUB' | async }}</li>
-    <li>{{ 10728.9 | tuiAmount: 'EUR' | async }}</li>
-    <li>{{ 10728.9 | tuiAmount: 'USD' | async }}</li>
-    <li>{{ 10728.9 | tuiAmount: 'GBP' | async }}</li>
-    <li>{{ -12345.1 | tuiAmount: 'USD' : 'left' | async }}</li>
-    <li>{{ 100 | tuiAmount: '£' : 'left' | async }}</li>
-    <li>{{ 200 | tuiAmount: 'AED' : 'left' | async }}</li>
+    <li>{{ 10728.9 | tuiAmount }}</li>
+    <li>{{ 10728.9 | tuiAmount: 'RUB' }}</li>
+    <li>{{ 10728.9 | tuiAmount: 'EUR' }}</li>
+    <li>{{ 10728.9 | tuiAmount: 'USD' }}</li>
+    <li>{{ 10728.9 | tuiAmount: 'GBP' }}</li>
+    <li>{{ -12345.1 | tuiAmount: 'USD' : 'left' }}</li>
+    <li>{{ 100 | tuiAmount: '£' : 'left' }}</li>
+    <li>{{ 200 | tuiAmount: 'AED' : 'left' }}</li>
 </ol>
 
 <hr class="tui-space_top-1 tui-space_bottom-1" />
 
-<span>Remaining {{ 10728.9 | tuiAmount | async }} of {{ 11000 | tuiAmount | async }}</span>
+<span>Remaining {{ 10728.9 | tuiAmount }} of {{ 11000 | tuiAmount }}</span>

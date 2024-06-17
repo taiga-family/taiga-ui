@@ -3,7 +3,7 @@
         [value]="value"
         [(activeItemIndex)]="activeItemIndex"
     >
-        <span>{{ sum | tuiAmount: 'RUB' | async }}</span>
+        <span>{{ sum | tuiAmount: 'RUB' }}</span>
         <div>Total</div>
     </tui-ring-chart>
 
@@ -17,7 +17,7 @@
             [text]="label"
             (tuiHoveredChange)="onHover(index, $event)"
         >
-            <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
+            <span>{{ value[index] | tuiAmount: 'RUB' }}</span>
         </tui-legend-item>
     </div>
 </div>
