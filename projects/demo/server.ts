@@ -1,4 +1,3 @@
-import '@ng-web-apis/universal/mocks';
 import 'zone.js/node';
 
 import {existsSync} from 'node:fs';
@@ -10,16 +9,6 @@ import {ngExpressEngine} from '@nguniversal/express-engine';
 import express from 'express';
 
 import bootstrap from './src/main.server';
-
-/**
- * TODO: drop it after update to @ng-web-apis/resize-observer@4.0.0
- * @see https://github.com/taiga-family/ng-web-apis/pull/350
- */
-global.ResizeObserver = class {
-    public observe(): void {}
-    public unobserve(): void {}
-    public disconnect(): void {}
-};
 
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;

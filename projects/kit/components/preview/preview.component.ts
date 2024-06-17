@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
-import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
+import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
+import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
 import type {TuiZoomEvent} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -31,8 +31,8 @@ const ROTATION_ANGLE = 90;
     imports: [
         NgIf,
         TuiPanDirective,
-        MutationObserverModule,
-        ResizeObserverModule,
+        MutationObserverDirective,
+        ResizeObserverDirective,
         TuiZoom,
         AsyncPipe,
         TuiHint,

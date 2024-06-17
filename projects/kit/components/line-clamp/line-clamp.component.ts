@@ -13,7 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
+import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
 import {
     tuiInjectElement,
     tuiIsCurrentTarget,
@@ -47,7 +47,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     standalone: true,
     selector: 'tui-line-clamp',
     imports: [
-        ResizeObserverModule,
+        ResizeObserverDirective,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiHint,

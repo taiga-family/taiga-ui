@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
+import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
 
 @Component({
     standalone: true,
     selector: 'tui-swipe-actions',
-    imports: [ResizeObserverModule],
+    imports: [ResizeObserverDirective],
     templateUrl: './swipe-actions.template.html',
     styleUrls: ['./swipe-actions.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
