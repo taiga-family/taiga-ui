@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatformDirective} from '@taiga-ui/cdk';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
@@ -12,7 +12,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         TuiCardLarge,
         TuiSurfaceDirective,
-        TuiPlatformDirective,
+        TuiPlatform,
         TuiButton,
         TuiHeaderDirective,
     ],

@@ -1,7 +1,6 @@
 import {inject} from '@angular/core';
 import {NAVIGATOR, USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiPlatform} from '@taiga-ui/cdk/types';
 import {tuiCreateTokenFromFactory, tuiIsIos} from '@taiga-ui/cdk/utils';
 
 // https://stackoverflow.com/a/11381730/2706426 http://detectmobilebrowsers.com/
@@ -26,7 +25,7 @@ export const TUI_IS_WEBKIT = tuiCreateTokenFromFactory(
     () => !!inject<any>(WINDOW)?.webkitConvertPointFromNodeToPage,
 );
 
-export const TUI_PLATFORM = tuiCreateTokenFromFactory<TuiPlatform>(() => {
+export const TUI_PLATFORM = tuiCreateTokenFromFactory<'android' | 'ios' | 'web'>(() => {
     if (inject(TUI_IS_IOS)) {
         return 'ios';
     }
