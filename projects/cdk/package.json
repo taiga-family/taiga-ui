@@ -29,9 +29,9 @@
         "@angular/common": ">=16.0.0",
         "@angular/core": ">=16.0.0",
         "@angular/forms": ">=16.0.0",
-        "@ng-web-apis/common": "^3.0.6",
-        "@ng-web-apis/mutation-observer": "^3.1.0",
-        "@ng-web-apis/resize-observer": "^3.0.6",
+        "@ng-web-apis/common": "^4.0.0",
+        "@ng-web-apis/mutation-observer": "^4.0.0",
+        "@ng-web-apis/resize-observer": "^4.0.0",
         "@taiga-ui/event-plugins": "^4.0.1",
         "@taiga-ui/polymorpheus": "^4.6.3",
         "rxjs": ">=7.0.0"
