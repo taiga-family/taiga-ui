@@ -23,7 +23,7 @@ describe('TuiValueChangesDirective', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class TestComponent {
+    class Test {
         public readonly form = new FormGroup({
             control: new FormControl(),
         });
@@ -32,16 +32,16 @@ describe('TuiValueChangesDirective', () => {
         public controlSpy = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         testComponent.formSpy.mockClear();
         testComponent.controlSpy.mockClear();

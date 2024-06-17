@@ -6,8 +6,8 @@ import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiRangeComponent} from '@taiga-ui/kit';
 
 describe('TuiRange', () => {
-    let component: TestComponent;
-    let fixture: ComponentFixture<TestComponent>;
+    let component: Test;
+    let fixture: ComponentFixture<Test>;
 
     @Component({
         template: `
@@ -21,7 +21,7 @@ describe('TuiRange', () => {
             ></tui-range>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiRangeComponent, {static: true})
         protected component!: TuiRangeComponent;
 
@@ -37,7 +37,7 @@ describe('TuiRange', () => {
     }
 
     beforeEach(() => {
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiRangeComponent, ReactiveFormsModule],
             providers: [NG_EVENT_PLUGINS],
         }).then(wrapper => {
@@ -300,7 +300,7 @@ describe('TuiRange', () => {
         });
     });
 
-    function getFilledRangeOffset(component: TestComponent): {
+    function getFilledRangeOffset(component: Test): {
         left: string;
         right: string;
     } {

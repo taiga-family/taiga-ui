@@ -5,8 +5,8 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
 
 describe('Tag component options', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     @Component({
         standalone: true,
@@ -15,14 +15,14 @@ describe('Tag component options', () => {
             <tui-tag></tui-tag>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTagComponent, {static: true})
         public component!: TuiTagComponent;
     }
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiTagModule, TestComponent],
+            imports: [TuiTagModule, Test],
             providers: [
                 NG_EVENT_PLUGINS,
                 tuiTagOptionsProvider({
@@ -33,7 +33,7 @@ describe('Tag component options', () => {
             ],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

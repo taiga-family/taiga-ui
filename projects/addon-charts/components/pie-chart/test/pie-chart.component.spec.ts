@@ -13,16 +13,16 @@ describe('PieChart', () => {
             <tui-pie-chart [value]="value"></tui-pie-chart>
         `,
     })
-    class TestComponent {
+    class Test {
         public readonly value = [1, 2, 3];
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let pageObject: TuiPageObject<Test>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [
                 {
                     provide: Location,
@@ -33,7 +33,7 @@ describe('PieChart', () => {
             ],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         fixture.detectChanges();
     });

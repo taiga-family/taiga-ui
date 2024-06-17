@@ -59,7 +59,7 @@ describe('InputTag', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputTagComponent)
         public component!: TuiInputTagComponent;
 
@@ -75,10 +75,10 @@ describe('InputTag', () => {
         public tagValidator: TuiBooleanHandler<string> = TUI_TRUE_HANDLER;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputTagComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     let focusStealer: HTMLElement;
     let inputPO: TuiNativeInputPO;
 
@@ -102,11 +102,11 @@ describe('InputTag', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

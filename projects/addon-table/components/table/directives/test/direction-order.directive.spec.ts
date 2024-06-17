@@ -17,7 +17,7 @@ describe('TuiDirectionOrder directive', () => {
             ></table>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTableDirective)
         public readonly table!: TuiTableDirective<any>;
 
@@ -25,15 +25,15 @@ describe('TuiDirectionOrder directive', () => {
         public directionOrderChange = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
 
         fixture.detectChanges();

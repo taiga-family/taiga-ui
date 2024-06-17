@@ -30,7 +30,7 @@ describe('InputRange', () => {
             ></tui-input-range>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputRangeComponent, {static: true})
         public component!: TuiInputRangeComponent;
 
@@ -44,9 +44,9 @@ describe('InputRange', () => {
         public pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
 
     let leftInputWrapper: DebugElement;
     let rightInputWrapper: DebugElement;
@@ -71,11 +71,11 @@ describe('InputRange', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 

@@ -20,7 +20,7 @@ describe('TuiCalendarYearComponent', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiCalendarYearComponent, {static: true})
         public component!: TuiCalendarYearComponent;
 
@@ -31,10 +31,10 @@ describe('TuiCalendarYearComponent', () => {
         public disabledItemHandler = (day: number): boolean => day === 10;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiCalendarYearComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {
             return 'tui-calendar-year__';
@@ -42,9 +42,9 @@ describe('TuiCalendarYearComponent', () => {
     };
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         pageObject = new TuiPageObject(fixture);

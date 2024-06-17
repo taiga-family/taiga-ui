@@ -45,7 +45,7 @@ describe('Filter', () => {
             ></tui-filter>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiFilterComponent, {static: true})
         public component!: TuiFilterComponent<any>;
 
@@ -60,17 +60,17 @@ describe('Filter', () => {
         public badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiFilterComponent<ItemWithBadge | string>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();

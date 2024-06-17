@@ -28,7 +28,7 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
     templateUrl: './test.template.html',
     imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule]
 })
-export class TestComponent {
+export class Test {
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
@@ -41,7 +41,7 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
     templateUrl: './test.template.html',
     imports: [TuiBackComponent, TuiFeedItemComponent, TuiNavigationComponent, TuiIllustrationModePipe]
 })
-export class TestComponent {
+export class Test {
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 

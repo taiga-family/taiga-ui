@@ -19,21 +19,21 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
             <tui-root></tui-root>
         `,
     })
-    class TestComponent {}
+    class Test {}
 
     const closeable = false;
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let tuiDialogService: TuiDialogService;
     let loader: HarnessLoader;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         tuiDialogService = TestBed.inject(TuiDialogService);
     });

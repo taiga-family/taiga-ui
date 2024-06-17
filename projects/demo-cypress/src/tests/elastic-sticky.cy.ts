@@ -22,7 +22,7 @@ describe('ElasticSticky', () => {
             </div>
         `,
     })
-    class TestComponent {
+    class Test {
         @Output()
         public change = new EventEmitter<number>();
 
@@ -33,7 +33,7 @@ describe('ElasticSticky', () => {
     }
 
     beforeEach(() =>
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiElasticStickyDirective],
             providers: [NG_EVENT_PLUGINS],
             componentProperties: {

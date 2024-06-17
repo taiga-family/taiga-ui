@@ -35,7 +35,7 @@ describe('Textarea', () => {
             ></tui-textarea>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTextareaComponent, {static: true})
         public component!: TuiTextareaComponent;
 
@@ -52,9 +52,9 @@ describe('Textarea', () => {
         public hintContent: string | null = 'prompt';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
     let component: TuiTextareaComponent;
 
@@ -95,11 +95,11 @@ describe('Textarea', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

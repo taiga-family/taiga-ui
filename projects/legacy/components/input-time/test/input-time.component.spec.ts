@@ -50,7 +50,7 @@ describe('InputTime', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputTimeComponent, {static: true})
         public component!: TuiInputTimeComponent;
 
@@ -64,10 +64,10 @@ describe('InputTime', () => {
         public hintContent: string | null = 'prompt';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputTimeComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
     let input: HTMLInputElement;
 
@@ -77,11 +77,11 @@ describe('InputTime', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

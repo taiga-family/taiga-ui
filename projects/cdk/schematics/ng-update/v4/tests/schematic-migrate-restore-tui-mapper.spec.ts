@@ -23,7 +23,7 @@ import { TuiMapper, TuiMapperPipeModule } from '@taiga-ui/cdk';
     templateUrl: './tui-mapper.component.html',
     imports: [TuiMapperPipeModule]
 })
-export class TestComponent {
+export class Test {
     mapper1: TuiMapper<number, string> = (a, b) => \`\${a + b}\`;
     mapper2: TuiMapper<string, string> = (a, b) => \`\${a + b}\`;
     mapper3: TuiMapper<
@@ -43,7 +43,7 @@ import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
     templateUrl: './tui-mapper.component.html',
     imports: [TuiMapperPipe]
 })
-export class TestComponent {
+export class Test {
     mapper1: TuiMapper<[number, ...any], string> = (a, b) => \`\${a + b}\`;
     mapper2: TuiMapper<[string, ...any], string> = (a, b) => \`\${a + b}\`;
     mapper3: TuiMapper<
@@ -63,7 +63,7 @@ import {TuiMapper, TuiTypedMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
     templateUrl: './tui-typed-mapper.component.html',
     imports: [TuiMapperPipeModule]
 })
-export class TestComponent {
+export class Test {
     mapper1: TuiTypedMapper<[number, number], string> = (a, b) => \`\${a + b}\`;
     mapper2: TuiMapper<number, string> = (a, b) => \`\${a + b}\`;
     mapper3: TuiTypedMapper<[() => string, number], string> = (a, b) => \`\${a() + b}\`;
@@ -85,7 +85,7 @@ import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
     templateUrl: './tui-typed-mapper.component.html',
     imports: [TuiMapperPipe]
 })
-export class TestComponent {
+export class Test {
     mapper1: TuiMapper<[number, number], string> = (a, b) => \`\${a + b}\`;
     mapper2: TuiMapper<[number, ...any], string> = (a, b) => \`\${a + b}\`;
     mapper3: TuiMapper<[() => string, number], string> = (a, b) => \`\${a() + b}\`;

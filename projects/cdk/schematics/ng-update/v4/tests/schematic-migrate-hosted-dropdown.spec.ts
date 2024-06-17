@@ -22,7 +22,7 @@ import { TuiHostedDropdownModule } from "@taiga-ui/core";
     templateUrl: './test.template.html',
     imports: [TuiHostedDropdownModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiDropdownModule } from "@taiga-ui/core";
@@ -32,7 +32,7 @@ const COMPONENT_AFTER = `import { TuiDropdownModule } from "@taiga-ui/core";
     templateUrl: './test.template.html',
     imports: [TuiDropdownModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

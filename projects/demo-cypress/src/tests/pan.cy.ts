@@ -3,14 +3,14 @@ import {TuiPanDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiPan', () => {
-    let component: TestComponent;
+    let component: Test;
 
     @Component({
         template: `
             <section (tuiPan)="pan($event)"></section>
         `,
     })
-    class TestComponent {
+    class Test {
         public coords: readonly number[] = [0, 0];
 
         protected pan(delta: readonly [number, number]): void {
@@ -20,7 +20,7 @@ describe('TuiPan', () => {
 
     beforeEach(() =>
         cy
-            .mount(TestComponent, {
+            .mount(Test, {
                 imports: [TuiPanDirective],
                 providers: [NG_EVENT_PLUGINS],
             })

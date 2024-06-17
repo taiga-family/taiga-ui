@@ -22,7 +22,7 @@ import {createOutputSpy} from 'cypress/angular';
     `,
     providers: [provideAnimations()],
 })
-export class TestComponent implements OnInit {
+export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
     @Input()
@@ -53,7 +53,7 @@ describe('InputPhoneInternational', () => {
         beforeEach(() => {
             control = new FormControl('', {nonNullable: true});
 
-            cy.mount(TestComponent, {
+            cy.mount(Test, {
                 componentProperties: {
                     countryIsoCode: 'US',
                     control,
@@ -177,7 +177,7 @@ describe('InputPhoneInternational', () => {
             beforeEach(() => {
                 control = new FormControl('+12125552368', {nonNullable: true});
 
-                cy.mount(TestComponent, {
+                cy.mount(Test, {
                     componentProperties: {
                         countryIsoCode: 'US',
                         control,
@@ -203,7 +203,7 @@ describe('InputPhoneInternational', () => {
             beforeEach(() => {
                 control = new FormControl('', {nonNullable: true});
 
-                cy.mount(TestComponent, {
+                cy.mount(Test, {
                     componentProperties: {
                         countryIsoCode: 'KZ',
                         control,

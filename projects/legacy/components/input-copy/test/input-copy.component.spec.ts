@@ -24,7 +24,7 @@ describe('InputCopy', () => {
             ></tui-input-copy>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputCopyComponent, {static: true})
         public component!: TuiInputCopyComponent;
 
@@ -33,9 +33,9 @@ describe('InputCopy', () => {
         public size: TuiSizeL | TuiSizeS = 'm';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
 
     function getIcon(): DebugElement | null {
         return pageObject.getByAutomationId('tui-copy__icon');
@@ -43,11 +43,11 @@ describe('InputCopy', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 

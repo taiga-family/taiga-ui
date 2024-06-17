@@ -23,7 +23,7 @@ import { TuiBadgedContentModule } from "@taiga-ui/experimental";
     templateUrl: './test.template.html',
     imports: [TuiBadgedContentModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiInitialsPipe } from "@taiga-ui/core";
@@ -34,7 +34,7 @@ import { TuiBadgedContentComponent } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiBadgedContentComponent, TuiInitialsPipe]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

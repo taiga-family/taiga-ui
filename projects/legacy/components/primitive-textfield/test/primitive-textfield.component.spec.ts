@@ -44,19 +44,19 @@ describe('PrimitiveTextfield', () => {
             </tui-primitive-textfield>
         `,
     })
-    class TestComponent {
+    class Test {
         protected focused = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let loader: HarnessLoader;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
     });
 

@@ -23,7 +23,7 @@ import { TuiInputTagModule, TuiMultiSelectModule } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiInputTagModule, TuiMultiSelectModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

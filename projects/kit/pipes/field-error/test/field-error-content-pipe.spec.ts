@@ -50,21 +50,21 @@ describe('TuiFieldErrorContentPipe', () => {
             },
         ],
     })
-    class TestComponent {
+    class Test {
         public control = new FormControl(6, [Validators.min(10), Validators.max(max)]);
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

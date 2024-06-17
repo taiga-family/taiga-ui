@@ -21,16 +21,16 @@ describe('InputInline', () => {
             </tui-input-inline>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputInlineComponent, {static: true})
         public component!: TuiInputInlineComponent;
 
         public control = new FormControl('');
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {
             return 'tui-input-inline__';
@@ -39,11 +39,11 @@ describe('InputInline', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

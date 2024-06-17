@@ -78,7 +78,7 @@ describe('Input', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputComponent, {static: true})
         public component!: TuiInputComponent;
 
@@ -104,9 +104,9 @@ describe('Input', () => {
         }
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
     let updateSpy: any;
 
@@ -116,11 +116,11 @@ describe('Input', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
 

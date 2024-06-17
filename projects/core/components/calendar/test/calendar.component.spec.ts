@@ -36,7 +36,7 @@ describe('Calendar', () => {
             />
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiCalendarComponent, {static: true})
         public component!: TuiCalendarComponent;
 
@@ -53,18 +53,18 @@ describe('Calendar', () => {
         public hoveredItemChange: any = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let loader: HarnessLoader;
-    let testComponent: TestComponent;
+    let testComponent: Test;
     let component: TuiCalendarComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

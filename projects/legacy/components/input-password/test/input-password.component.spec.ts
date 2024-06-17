@@ -27,7 +27,7 @@ describe('InputPassword', () => {
             ></tui-input-password>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputPasswordComponent, {static: true})
         public component!: TuiInputPasswordComponent;
 
@@ -36,10 +36,10 @@ describe('InputPassword', () => {
         public size: TuiSizeL | TuiSizeS = 'm';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputPasswordComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
 
     function getIcon(): DebugElement | null {
         return pageObject.getByAutomationId('tui-password__icon');
@@ -47,11 +47,11 @@ describe('InputPassword', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

@@ -35,7 +35,7 @@ describe('InputPhoneInternational', () => {
             }),
         ],
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
         public component!: TuiInputPhoneInternationalComponent;
 
@@ -48,8 +48,8 @@ describe('InputPhoneInternational', () => {
         public readOnly = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputPhoneInternationalComponent;
     let inputPO: TuiNativeInputPO;
 
@@ -62,7 +62,7 @@ describe('InputPhoneInternational', () => {
                     ReactiveFormsModule,
                     NoopAnimationsModule,
                 ],
-                declarations: [TestComponent],
+                declarations: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -72,7 +72,7 @@ describe('InputPhoneInternational', () => {
                 ],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
             component = testComponent.component;
             fixture.detectChanges();

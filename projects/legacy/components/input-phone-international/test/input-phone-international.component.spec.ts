@@ -30,7 +30,7 @@ describe('InputPhoneInternational', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
         public component!: TuiInputPhoneInternationalComponent;
 
@@ -43,14 +43,14 @@ describe('InputPhoneInternational', () => {
         public readOnly = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputPhoneInternationalComponent;
 
     const initializeTestModule = (language: TuiLanguage = TUI_ENGLISH_LANGUAGE): void => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiAssetsPathProvider('path/'),
@@ -61,7 +61,7 @@ describe('InputPhoneInternational', () => {
                 ],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
             component = testComponent.component;
             fixture.detectChanges();

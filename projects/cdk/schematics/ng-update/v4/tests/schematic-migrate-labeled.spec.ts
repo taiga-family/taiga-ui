@@ -21,7 +21,7 @@ import { TuiCheckboxLabeledModule } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiCheckboxLabeledModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiCheckboxComponent, TuiRadioComponent } from "@taiga-ui/kit";
@@ -32,7 +32,7 @@ import { TuiLabelComponent } from "@taiga-ui/core";
     templateUrl: './test.template.html',
     imports: [TuiLabelComponent, TuiCheckboxComponent, TuiRadioComponent]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

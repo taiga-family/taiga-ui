@@ -23,7 +23,7 @@ import { TuiLinkModule } from "@taiga-ui/core";
     templateUrl: './test.template.html',
     imports: [TuiLinkModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiChevronDirective } from "@taiga-ui/kit";
@@ -34,7 +34,7 @@ import { TuiLinkDirective } from "@taiga-ui/core";
     templateUrl: './test.template.html',
     imports: [TuiLinkDirective, TuiChevronDirective]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

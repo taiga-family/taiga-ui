@@ -3,7 +3,7 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTabsModule} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
-    let component: TestComponent;
+    let component: Test;
 
     @Component({
         template: `
@@ -36,13 +36,13 @@ describe('Tabs', () => {
             </tui-tabs>
         `,
     })
-    class TestComponent {
+    class Test {
         public activeItemIndex = 0;
     }
 
     beforeEach(() =>
         cy
-            .mount(TestComponent, {
+            .mount(Test, {
                 imports: [TuiTabsModule],
                 providers: [NG_EVENT_PLUGINS],
             })

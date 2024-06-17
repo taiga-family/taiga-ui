@@ -22,21 +22,21 @@ describe('TuiControlDirective', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class TestComponent {
+    class Test {
         public readonly form = new FormGroup({
             control: new FormControl('value'),
         });
     }
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         fixture.detectChanges();
     });
 

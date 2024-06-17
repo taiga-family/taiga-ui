@@ -20,7 +20,7 @@ describe('Axes', () => {
             ></tui-axes>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild('defaultValues')
         public readonly defaultValues!: TuiAxesComponent;
 
@@ -38,13 +38,13 @@ describe('Axes', () => {
         public axisYSecondaryName = '';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

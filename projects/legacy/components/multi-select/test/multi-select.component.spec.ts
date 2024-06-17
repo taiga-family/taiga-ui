@@ -15,9 +15,9 @@ import {TUI_SANITIZER_MOCK, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/tes
 
 describe('MultiSelect', () => {
     describe('Basic', () => {
-        let fixture: ComponentFixture<TestComponent>;
-        let testComponent: TestComponent;
-        let pageObject: TuiPageObject<TestComponent>;
+        let fixture: ComponentFixture<Test>;
+        let testComponent: Test;
+        let pageObject: TuiPageObject<Test>;
         let inputPO: TuiNativeInputPO;
 
         class User {
@@ -62,7 +62,7 @@ describe('MultiSelect', () => {
                 </tui-root>
             `,
         })
-        class TestComponent {
+        class Test {
             @ViewChild(TuiMultiSelectComponent, {static: true})
             public component!: TuiMultiSelectComponent<User>;
 
@@ -75,11 +75,11 @@ describe('MultiSelect', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [TUI_SANITIZER_MOCK, NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 
@@ -233,9 +233,9 @@ describe('MultiSelect', () => {
     });
 
     describe('Change arrow mode', () => {
-        let fixture: ComponentFixture<TestComponent>;
-        let testComponent: TestComponent;
-        let pageObject: TuiPageObject<TestComponent>;
+        let fixture: ComponentFixture<Test>;
+        let testComponent: Test;
+        let pageObject: TuiPageObject<Test>;
 
         class User {
             constructor(
@@ -275,7 +275,7 @@ describe('MultiSelect', () => {
                 </tui-root>
             `,
         })
-        class TestComponent {
+        class Test {
             @ViewChild(TuiMultiSelectComponent, {static: true})
             public component!: TuiMultiSelectComponent<User>;
 
@@ -288,7 +288,7 @@ describe('MultiSelect', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -299,7 +299,7 @@ describe('MultiSelect', () => {
                 ],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
 

@@ -24,25 +24,25 @@ describe('Tag', () => {
             ></tui-tag>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTagComponent, {static: true})
         public component!: TuiTagComponent;
 
         public editedSpy = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let loader: HarnessLoader;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;
         testComponent.editedSpy.mockClear();

@@ -22,7 +22,7 @@ import { TuiProgressModule } from '@taiga-ui/kit';
     templateUrl: './test.template.html',
     imports: [TuiProgressModule, TuiProgressSegmentedModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `
@@ -33,7 +33,7 @@ import { TuiProgressModule } from '@taiga-ui/kit';
     templateUrl: './test.template.html',
     imports: [TuiProgressModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

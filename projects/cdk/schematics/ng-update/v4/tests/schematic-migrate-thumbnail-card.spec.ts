@@ -23,7 +23,7 @@ import { TuiCardModule, TuiCardComponent } from '@taiga-ui/addon-commerce';
     templateUrl: './test.template.html',
     imports: [TuiCardModule]
 })
-export class TestComponent {
+export class Test {
     @ViewChild(TuiCardComponent)
     card: TuiCardComponent;
 }`;
@@ -36,7 +36,7 @@ import { TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
     templateUrl: './test.template.html',
     imports: [TuiThumbnailCardComponent]
 })
-export class TestComponent {
+export class Test {
     @ViewChild(TuiThumbnailCardComponent)
     card: TuiThumbnailCardComponent;
 }`;

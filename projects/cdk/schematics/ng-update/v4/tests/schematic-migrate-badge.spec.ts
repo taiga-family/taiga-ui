@@ -23,7 +23,7 @@ import { TuiBadgeModule } from "@taiga-ui/experimental";
     templateUrl: './test.template.html',
     imports: [TuiBadgeModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiBadgeDirective } from "@taiga-ui/kit";
@@ -33,7 +33,7 @@ const COMPONENT_AFTER = `import { TuiBadgeDirective } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiBadgeDirective]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

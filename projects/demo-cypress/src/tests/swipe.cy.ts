@@ -4,7 +4,7 @@ import {TuiSwipeDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiSwipe', () => {
-    let component: TestComponent;
+    let component: Test;
 
     @Component({
         template: `
@@ -14,7 +14,7 @@ describe('TuiSwipe', () => {
             ></section>
         `,
     })
-    class TestComponent {
+    class Test {
         public swiped = '';
 
         protected onSwipe(swipe: TuiSwipe): void {
@@ -24,7 +24,7 @@ describe('TuiSwipe', () => {
 
     beforeEach(() =>
         cy
-            .mount(TestComponent, {
+            .mount(Test, {
                 imports: [TuiSwipeDirective],
                 providers: [NG_EVENT_PLUGINS],
             })

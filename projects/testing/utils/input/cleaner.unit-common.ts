@@ -12,10 +12,10 @@ interface TestParams {
     inputPO: TuiNativeInputPO;
     pageObject: TuiPageObject<unknown>;
     prefix: string;
-    testComponent: TestComponent;
+    testComponent: Test;
 }
 
-interface TestComponent {
+interface Test {
     cleaner: boolean;
     control?: FormControl;
     disabled?: boolean;
@@ -30,7 +30,7 @@ export function tuiTestCleaner(
 ): void {
     let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;
-    let testComponent: TestComponent;
+    let testComponent: Test;
     let inputPO: TuiNativeInputPO;
 
     describe('Cross for field cleaning', () => {

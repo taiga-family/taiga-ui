@@ -18,13 +18,13 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
             <tui-root></tui-root>
         `,
     })
-    class TestComponent {}
+    class Test {}
 
     const label = 'Test';
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let tuiPdfViewerService: TuiPdfViewerService;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     let sanitizer: DomSanitizer;
 
     function getLabelElement(): DebugElement {
@@ -33,11 +33,11 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [tuiPdfViewerOptionsProvider({label}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         tuiPdfViewerService = TestBed.inject(TuiPdfViewerService);
         pageObject = new TuiPageObject(fixture);
         sanitizer = TestBed.inject(DomSanitizer);

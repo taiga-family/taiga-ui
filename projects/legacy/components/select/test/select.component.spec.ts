@@ -62,7 +62,7 @@ describe('Select', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiSelectComponent, {static: true})
         public component!: TuiSelectComponent<Beast | string>;
 
@@ -72,19 +72,19 @@ describe('Select', () => {
         public identityMatcher: TuiIdentityMatcher<Beast> = TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

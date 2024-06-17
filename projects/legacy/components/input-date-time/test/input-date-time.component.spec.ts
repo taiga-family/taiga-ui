@@ -31,7 +31,7 @@ describe('InputDateTime', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputDateTimeComponent)
         public dateTimeComponent!: TuiInputDateTimeComponent;
 
@@ -43,10 +43,10 @@ describe('InputDateTime', () => {
         public max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
     let inputPO: TuiNativeInputPO;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
 
     const testContext = {
         get prefix() {
@@ -60,9 +60,7 @@ describe('InputDateTime', () => {
         },
     };
 
-    function initializeEnvironment(
-        componentClass: Type<TestComponent> = TestComponent,
-    ): void {
+    function initializeEnvironment(componentClass: Type<Test> = Test): void {
         fixture = TestBed.createComponent(componentClass);
         component = fixture.componentInstance;
         pageObject = new TuiPageObject(fixture);
@@ -72,7 +70,7 @@ describe('InputDateTime', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [TestComponent]});
+            TestBed.configureTestingModule({imports: [Test]});
             await TestBed.compileComponents();
             initializeEnvironment();
         });
@@ -228,7 +226,7 @@ describe('InputDateTime', () => {
     describe('InputDateTime + TUI_DATE_FORMAT="DMY" + TUI_DATE_SEPARATOR="/"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -269,7 +267,7 @@ describe('InputDateTime', () => {
     describe('InputDateTime + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -353,7 +351,7 @@ describe('InputDateTime', () => {
                 </tui-root>
             `,
         })
-        class TransformerTestComponent extends TestComponent {
+        class TransformerTest extends Test {
             public override control = new FormControl<
                 string | [TuiDay | null, TuiDay | null] | null
             >('19.01.2022, 12:33');
@@ -363,7 +361,7 @@ describe('InputDateTime', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent, TransformerTestComponent],
+                imports: [Test, TransformerTest],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -373,7 +371,7 @@ describe('InputDateTime', () => {
                 ],
             });
             await TestBed.compileComponents();
-            initializeEnvironment(TransformerTestComponent);
+            initializeEnvironment(TransformerTest);
         });
 
         it('correctly transforms initial value', () => {

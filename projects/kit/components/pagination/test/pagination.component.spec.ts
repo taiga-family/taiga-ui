@@ -29,7 +29,7 @@ describe('TuiPaginationComponent', () => {
             ></tui-pagination>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiPaginationComponent, {static: true})
         public component!: TuiPaginationComponent;
 
@@ -42,10 +42,10 @@ describe('TuiPaginationComponent', () => {
         public sidePadding = 1;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiPaginationComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {
             return 'tui-pagination__';
@@ -89,11 +89,11 @@ describe('TuiPaginationComponent', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

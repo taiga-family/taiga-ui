@@ -6,16 +6,16 @@ import type {TuiNativeInputPO} from '../native-input.page-object';
 interface TestParams {
     fixture: ComponentFixture<unknown>;
     inputPO: TuiNativeInputPO;
-    testComponent: TestComponent;
+    testComponent: Test;
 }
 
-interface TestComponent {
+interface Test {
     control: FormControl;
 }
 
 export function tuiTestFormControlState(context: TestParams): void {
     let fixture: ComponentFixture<unknown>;
-    let testComponent: TestComponent;
+    let testComponent: Test;
     let inputPO: TuiNativeInputPO;
 
     describe('FormControl state', () => {

@@ -29,15 +29,15 @@ describe('TuiHighlight directive', () => {
             </div>
         `,
     })
-    class TestComponent {}
+    class Test {}
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        const fixture = TestBed.createComponent(TestComponent);
+        const fixture = TestBed.createComponent(Test);
 
         fixture.detectChanges();
     });

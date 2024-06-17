@@ -42,13 +42,13 @@ describe('TuiDropdownDirective', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         public open = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let pageObject: TuiPageObject<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let pageObject: TuiPageObject<Test>;
+    let testComponent: Test;
     const testContext = {
         get prefix() {
             return 'tui-dropdown-directive__';
@@ -57,10 +57,10 @@ describe('TuiDropdownDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

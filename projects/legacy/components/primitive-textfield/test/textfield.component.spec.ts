@@ -26,7 +26,7 @@ describe('Textfield', () => {
             />
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild('auto', {read: ElementRef})
         public readonly auto!: ElementRef<HTMLElement>;
 
@@ -39,12 +39,12 @@ describe('Textfield', () => {
         public value = 'bind';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [
                 {
                     provide: TUI_TEXTFIELD_HOST,
@@ -55,7 +55,7 @@ describe('Textfield', () => {
             ],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -76,7 +76,7 @@ describe('ComboBox', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiComboBoxComponent, {static: true})
         public component!: TuiComboBoxComponent<Beast | string>;
 
@@ -97,14 +97,14 @@ describe('ComboBox', () => {
         }
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [
                 NG_EVENT_PLUGINS,
                 {
@@ -114,7 +114,7 @@ describe('ComboBox', () => {
             ],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

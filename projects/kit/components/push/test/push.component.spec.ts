@@ -17,13 +17,13 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
             <tui-root></tui-root>
         `,
     })
-    class TestComponent {}
+    class Test {}
 
     const heading = 'Test';
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let tuiPushService: TuiPushService;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
 
     function getLabelElement(): DebugElement {
         return pageObject.getByAutomationId('tui-push__heading')!;
@@ -31,11 +31,11 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [tuiPushOptionsProvider({heading}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         tuiPushService = TestBed.inject(TuiPushService);
         pageObject = new TuiPageObject(fixture);
     });
