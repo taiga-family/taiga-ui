@@ -7,7 +7,7 @@ import {
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataList,
     TuiIconComponent,
     TuiTitleDirective,
@@ -24,7 +24,7 @@ import {
         TuiThumbnailCardComponent,
         TuiTitleDirective,
         NgIf,
-        TuiButtonDirective,
+        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

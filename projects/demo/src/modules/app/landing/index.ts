@@ -21,14 +21,14 @@ import {
     tuiProvide,
     TuiRepeatTimes,
 } from '@taiga-ui/cdk';
-import {TuiButtonDirective, tuiFadeIn} from '@taiga-ui/core';
+import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
         NgIf,
         RouterLink,
-        TuiButtonDirective,
+        TuiButton,
         TuiAutoFocusDirective,
         TuiRepeatTimes,
         IntersectionObserverModule,

@@ -1,13 +1,13 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiButton, TuiScrollbarComponent} from '@taiga-ui/core';
 
 const SOME_OFFSET_CONST = 20;
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiScrollbarComponent],
+    imports: [TuiButton, TuiScrollbarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -8,13 +8,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,
     selector: 'tui-spin-button',
-    imports: [TuiButtonDirective, NgIf, AsyncPipe],
+    imports: [TuiButton, NgIf, AsyncPipe],
     templateUrl: './spin-button.template.html',
     styleUrls: ['./spin-button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

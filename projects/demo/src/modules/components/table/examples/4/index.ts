@@ -20,7 +20,7 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiLoader,
@@ -122,7 +122,7 @@ function getAge({dob}: User): number {
         TuiTablePaginationComponent,
         ReactiveFormsModule,
         TuiDropdownDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiChevronDirective,
         TuiDropdownOpenDirective,
         FormsModule,

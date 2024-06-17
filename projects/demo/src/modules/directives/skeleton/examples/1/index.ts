@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiLabelDirective,
     TuiSurfaceDirective,
     TuiTitleDirective,
@@ -25,7 +25,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         FormsModule,
         TuiAvatarComponent,
         TuiSkeletonDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiChipDirective,
         TuiBadgeDirective,
         TuiCardLarge,

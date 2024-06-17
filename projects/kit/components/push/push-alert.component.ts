@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
-    TuiButtonDirective,
+    TuiButton,
     tuiFadeIn,
     tuiHeightCollapse,
     TuiIconComponent,
@@ -29,7 +29,7 @@ import type {TuiPushOptions} from './push.options';
         PolymorpheusTemplate,
         TuiPushComponent,
         TuiIconComponent,
-        TuiButtonDirective,
+        TuiButton,
         TuiLink,
     ],
     templateUrl: './push-alert.template.html',

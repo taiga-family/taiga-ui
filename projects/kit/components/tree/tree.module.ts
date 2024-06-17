@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiExpandComponent} from '@taiga-ui/core';
+import {TuiButton, TuiExpandComponent} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiTreeComponent} from './components/tree/tree.component';
@@ -19,7 +19,7 @@ import {TuiTreeNodeDirective} from './directives/tree-node.directive';
         PolymorpheusTemplate,
         TuiExpandComponent,
         TuiLet,
-        TuiButtonDirective,
+        TuiButton,
     ],
     declarations: [
         TuiTreeComponent,

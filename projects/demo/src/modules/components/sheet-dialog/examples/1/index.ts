@@ -3,12 +3,12 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {Subject, switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

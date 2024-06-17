@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {mergeAll, Subject} from 'rxjs';
 
@@ -10,7 +10,7 @@ const MAX_CONCURRENT = 3;
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

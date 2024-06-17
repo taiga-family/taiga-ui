@@ -12,7 +12,7 @@ import type {
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListDirective,
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
@@ -51,7 +51,7 @@ class Account {
         TuiTextfieldControllerModule,
         TuiDataListWrapperComponent,
         TuiDataListDirective,
-        TuiButtonDirective,
+        TuiButton,
         InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',

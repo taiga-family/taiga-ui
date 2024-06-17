@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputPhoneModule, TuiButtonDirective, JsonPipe],
+    imports: [ReactiveFormsModule, TuiInputPhoneModule, TuiButton, JsonPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

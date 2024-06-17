@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDialogService,
     TuiDropdownDirective,
@@ -20,7 +20,7 @@ import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListDropdownManagerDirective,

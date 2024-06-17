@@ -2,12 +2,12 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
-import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

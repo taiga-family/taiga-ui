@@ -2,12 +2,12 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiMediaDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiMediaDirective, TuiButtonDirective, TuiLink, TuiSlider, FormsModule],
+    imports: [TuiMediaDirective, TuiButton, TuiLink, TuiSlider, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

@@ -14,7 +14,7 @@ import {
     tuiTypedFromEvent,
     TuiZoom,
 } from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHint, tuiSlideInTop} from '@taiga-ui/core';
+import {TuiButton, TuiHint, tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 
@@ -36,7 +36,7 @@ const ROTATION_ANGLE = 90;
         TuiZoom,
         AsyncPipe,
         TuiHint,
-        TuiButtonDirective,
+        TuiButton,
         TuiPreviewActionDirective,
         TuiPreviewZoomComponent,
     ],

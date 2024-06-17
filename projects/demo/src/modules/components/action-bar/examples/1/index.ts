@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiBreakpointService,
-    TuiButtonDirective,
+    TuiButton,
     TuiDataList,
     TuiIconComponent,
     TuiLink,
@@ -17,7 +17,7 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiActionBar,
         TuiDataList,
         NgIf,

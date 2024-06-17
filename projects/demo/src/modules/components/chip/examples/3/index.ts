@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiChipDirective} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiCheckboxComponent, TuiChipDirective} from '@taiga-ui/kit';
         TuiChipDirective,
         TuiRepeatTimes,
         FormsModule,
-        TuiButtonDirective,
+        TuiButton,
         TuiCheckboxComponent,
     ],
     templateUrl: './index.html',

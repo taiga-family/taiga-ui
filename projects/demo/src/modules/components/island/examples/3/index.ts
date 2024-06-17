@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective, TuiErrorComponent, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiErrorComponent, TuiLink} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {
@@ -24,7 +24,7 @@ import {
         AsyncPipe,
         TuiCardLarge,
         TuiAvatarComponent,
-        TuiButtonDirective,
+        TuiButton,
         TuiLink,
         NgIf,
     ],

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiButton, TuiScrollbarComponent} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetComponent} from './components/sheet/sheet.component';
@@ -23,7 +23,7 @@ import {TuiSheetDirective} from './sheet.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiLet,
-        TuiButtonDirective,
+        TuiButton,
         TuiScrollbarComponent,
     ],
     declarations: [

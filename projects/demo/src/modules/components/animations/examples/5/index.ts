@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDurationOptions} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
+    TuiButton,
     tuiSlideInBottom,
     tuiSlideInLeft,
     tuiSlideInRight,
@@ -16,7 +16,7 @@ import {AnimationState} from '../../state';
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiButtonDirective, AsyncPipe],
+    imports: [NgIf, TuiButton, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

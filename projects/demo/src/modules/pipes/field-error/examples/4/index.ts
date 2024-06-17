@@ -12,7 +12,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiErrorComponent,
     TuiLabelDirective,
     TuiTextfieldOptionsDirective,
@@ -30,7 +30,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiInputPhoneModule,
         TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
-        TuiButtonDirective,
+        TuiButton,
         TuiErrorComponent,
         TuiFieldErrorPipe,
         AsyncPipe,

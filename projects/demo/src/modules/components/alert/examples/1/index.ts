@@ -1,11 +1,11 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

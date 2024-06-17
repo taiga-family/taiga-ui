@@ -18,7 +18,7 @@ import {
     TUI_COMMON_ICONS,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-    TuiButtonDirective,
+    TuiButton,
     TuiIconComponent,
     TuiLoader,
 } from '@taiga-ui/core';
@@ -40,7 +40,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiLoader,
-        TuiButtonDirective,
+        TuiButton,
         TuiIconComponent,
     ],
     templateUrl: './file.template.html',

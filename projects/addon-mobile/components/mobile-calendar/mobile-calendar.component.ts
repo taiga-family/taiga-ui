@@ -39,7 +39,7 @@ import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
-    TuiButtonDirective,
+    TuiButton,
     tuiGetDuration,
     TuiLink,
     TuiMonthPipe,
@@ -82,7 +82,7 @@ import {
     standalone: true,
     selector: 'tui-mobile-calendar',
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         AsyncPipe,
         TuiRippleDirective,
         TuiLink,

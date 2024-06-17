@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIsPresentPipe, TuiLet} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, TuiLet, TuiIsPresentPipe, TuiButtonDirective],
+    imports: [CommonModule, TuiLet, TuiIsPresentPipe, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -5,7 +5,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownModule,
     TuiLink,
     TuiNotificationComponent,
@@ -22,7 +22,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
         TuiDropdownModule,
         TuiNotificationComponent,
         TuiActiveZoneDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiObscuredDirective,
         DropdownDocumentationComponent,
         TuiLink,

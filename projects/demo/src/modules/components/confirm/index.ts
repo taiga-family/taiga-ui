@@ -5,7 +5,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiAlertService,
-    TuiButtonDirective,
+    TuiButton,
     TuiDialogService,
     TuiLink,
     TuiNotificationComponent,
@@ -16,13 +16,7 @@ import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButtonDirective,
-        TuiLink,
-        RouterModule,
-        TuiNotificationComponent,
-        TuiDemo,
-    ],
+    imports: [TuiButton, TuiLink, RouterModule, TuiNotificationComponent, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -28,7 +28,7 @@ import {
     TuiResizerDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiExpand, TuiGroupDirective} from '@taiga-ui/core';
+import {TuiButton, TuiExpand, TuiGroupDirective} from '@taiga-ui/core';
 import {TuiChevronDirective, TuiDataListWrapper, TuiSwitchComponent} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -45,7 +45,7 @@ const MIN_WIDTH = 160;
         NgIf,
         ReactiveFormsModule,
         NgTemplateOutlet,
-        TuiButtonDirective,
+        TuiButton,
         TuiChevronDirective,
         TuiExpand,
         JsonPipe,

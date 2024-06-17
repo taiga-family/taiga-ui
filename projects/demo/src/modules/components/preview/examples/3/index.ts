@@ -3,12 +3,12 @@ import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiPreview],
+    imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

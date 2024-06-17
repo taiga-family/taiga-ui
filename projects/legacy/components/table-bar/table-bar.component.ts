@@ -5,7 +5,7 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButtonDirective,
+    TuiButton,
     tuiParentAnimation,
     tuiSlideInTop,
     tuiToAnimationOptions,
@@ -21,13 +21,7 @@ import type {TuiTableBarOptions} from './table-bar.options';
 @Component({
     standalone: true,
     selector: 'tui-table-bar',
-    imports: [
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiButtonDirective,
-        AsyncPipe,
-        NgIf,
-    ],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, AsyncPipe, NgIf],
     templateUrl: './table-bar.template.html',
     styleUrls: ['./table-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import type {TuiSheetOptions} from '@taiga-ui/legacy';
 import {TuiSheetModule} from '@taiga-ui/legacy';
 
@@ -10,7 +10,7 @@ const FRAMES = 166;
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiSheetModule, AsyncPipe],
+    imports: [TuiButton, TuiSheetModule, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

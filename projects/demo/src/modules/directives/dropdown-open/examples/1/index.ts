@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -16,7 +16,7 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
         TuiDropdownPositionSidedDirective,

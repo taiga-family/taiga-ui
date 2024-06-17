@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
@@ -17,7 +17,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownHoverDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,

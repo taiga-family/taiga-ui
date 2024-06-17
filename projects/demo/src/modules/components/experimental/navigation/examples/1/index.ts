@@ -6,7 +6,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -33,7 +33,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiNavigationModule,
-        TuiButtonDirective,
+        TuiButton,
         TuiIconComponent,
         TuiChevronDirective,
         TuiDropdownOpenDirective,

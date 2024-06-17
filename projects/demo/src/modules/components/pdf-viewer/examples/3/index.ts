@@ -3,12 +3,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiPdfViewerDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiPdfViewerDirective],
+    imports: [TuiButton, TuiPdfViewerDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

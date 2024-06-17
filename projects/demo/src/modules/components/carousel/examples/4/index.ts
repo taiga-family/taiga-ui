@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiDialogModule, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiDialogModule, TuiLink} from '@taiga-ui/core';
 import {
     TuiCarouselButtonsDirective,
     TuiCarouselComponent,
@@ -14,7 +14,7 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiDialogModule,
         TuiCarouselComponent,
         TuiLink,

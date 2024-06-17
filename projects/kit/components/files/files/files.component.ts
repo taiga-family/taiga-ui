@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiExpandComponent,
     TuiGroupDirective,
     tuiGroupOptionsProvider,
@@ -23,7 +23,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 @Component({
     standalone: true,
     selector: 'tui-files',
-    imports: [CommonModule, TuiExpandComponent, TuiButtonDirective],
+    imports: [CommonModule, TuiExpandComponent, TuiButton],
     templateUrl: './files.template.html',
     styleUrls: ['./files.styles.less'],
     encapsulation: ViewEncapsulation.None,

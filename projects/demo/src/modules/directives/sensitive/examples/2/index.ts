@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective, TuiLabelDirective} from '@taiga-ui/core';
+import {TuiButton, TuiLabelDirective} from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
     TuiSensitiveDirective,
@@ -13,7 +13,7 @@ import {
     standalone: true,
     imports: [
         TuiSensitiveDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiBadgeDirective,
         TuiLabelDirective,
         TuiSwitchComponent,

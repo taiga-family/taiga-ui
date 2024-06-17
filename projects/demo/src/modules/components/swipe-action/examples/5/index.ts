@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSwipeActionsComponent} from '@taiga-ui/addon-mobile';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -25,7 +25,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
         TuiSurfaceDirective,
         TuiAvatarComponent,
         TuiTitleDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownOpenDirective,
         TuiDropdownDirective,
         TuiDataListComponent,

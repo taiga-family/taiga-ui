@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
@@ -23,7 +23,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
         TuiDropdownDirective,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,
-        TuiButtonDirective,
+        TuiButton,
         DropdownDocumentationComponent,
     ],
     templateUrl: './index.html',

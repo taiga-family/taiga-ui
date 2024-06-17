@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInjectElement} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     type TuiPoint,
@@ -33,7 +33,7 @@ class TopRightDirective extends TuiPositionAccessor {
     imports: [
         TopRightDirective,
         TuiDropdownOpenDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownDirective,
     ],
     templateUrl: './index.html',

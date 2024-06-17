@@ -11,7 +11,7 @@ import {NgControl} from '@angular/forms';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiIsNativeFocused, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLabelDirective} from '@taiga-ui/core/components/label';
@@ -38,7 +38,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     imports: [
         CommonModule,
         ResizeObserverModule,
-        TuiButtonDirective,
+        TuiButton,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
     ],

@@ -1,6 +1,6 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiButtonGroupDirective} from '@taiga-ui/kit';
 // ...
 
@@ -8,7 +8,7 @@ import {TuiButtonGroupDirective} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiButtonDirective,
+    TuiButton,
     TuiButtonGroupDirective,
   ],
 })
