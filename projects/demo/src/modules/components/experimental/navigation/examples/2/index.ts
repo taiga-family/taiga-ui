@@ -21,7 +21,7 @@ import {
     TuiTabDirective,
     TuiTabsHorizontalDirective,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -33,7 +33,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiChevronDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
-        TuiHeaderDirective,
+        TuiHeader,
         TuiTitleDirective,
         TuiIcon,
         TuiFadeDirective,

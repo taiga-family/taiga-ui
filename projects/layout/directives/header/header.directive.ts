@@ -35,7 +35,7 @@ class TuiHeaderStyles {}
         '[attr.data-size]': 'size || "s"',
     },
 })
-export class TuiHeaderDirective {
+export class TuiHeader {
     protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 
     @Input('tuiHeader')

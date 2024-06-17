@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/layout';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiHeaderDirective,
+    TuiHeader,
   ],
 })
 export class MyComponent {}
