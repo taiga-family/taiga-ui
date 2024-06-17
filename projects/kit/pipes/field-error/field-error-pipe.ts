@@ -1,26 +1,34 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import type {Injector, PipeTransform, Signal} from '@angular/core';
+import {inject, INJECTOR, Pipe, signal, untracked} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {ControlContainer, NgControl} from '@angular/forms';
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, Observable, of} from 'rxjs';
+import {map, Observable, Subject, takeUntil} from 'rxjs';
 
 const EMPTY_RECORD = {};
 
 function unwrapObservable(
     content: Observable<PolymorpheusContent>,
     context: any,
-): Observable<TuiValidationError> {
-    return content.pipe(map(error => new TuiValidationError(error || '', context)));
+    injector: Injector,
+): Signal<TuiValidationError | null> {
+    return toSignal(
+        content.pipe(map(error => new TuiValidationError(error || '', context))),
+        {
+            initialValue: null,
+            injector,
+        },
+    );
 }
 
 function defaultError(
     content: PolymorpheusContent,
     context: any,
-): Observable<TuiValidationError> {
-    return of(new TuiValidationError(content || '', context));
+): Signal<TuiValidationError> {
+    return signal(new TuiValidationError(content || '', context));
 }
 
 @Pipe({
@@ -34,6 +42,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     private readonly self = inject(NgControl, {self: true, optional: true});
     private readonly container = inject(ControlContainer, {optional: true});
     private readonly validationErrors = inject(TUI_VALIDATION_ERRORS);
+    private readonly injector = inject(INJECTOR);
+    private readonly destroy$ = new Subject<void>();
 
     constructor() {
         if (this.self && !this.self.valueAccessor) {
@@ -41,7 +51,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         }
     }
 
-    public transform(order: readonly string[]): Observable<TuiValidationError | null> {
+    public transform(order: readonly string[]): TuiValidationError | null {
         this.order = order;
 
         return this.computedError;
@@ -55,11 +65,11 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
     public writeValue(): void {}
 
-    protected get computedError(): Observable<TuiValidationError | null> {
-        return (this.invalid && this.touched && this.error) || of(null);
+    protected get computedError(): TuiValidationError | null {
+        return (this.invalid && this.touched && this.error) || null;
     }
 
-    private get error(): Observable<TuiValidationError> | null {
+    private get error(): TuiValidationError | null {
         const {errorId} = this;
 
         if (!errorId) {
@@ -68,8 +78,9 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
         const firstError = this.controlErrors[errorId];
         const errorContent = this.validationErrors[errorId];
+        const error = untracked(() => this.getError(firstError, errorContent));
 
-        return this.getError(firstError, errorContent);
+        return error();
     }
 
     private get invalid(): boolean {
@@ -96,17 +107,23 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     private getError(
         context: any,
         content?: Observable<PolymorpheusContent> | PolymorpheusContent,
-    ): Observable<TuiValidationError> {
+    ): Signal<TuiValidationError | null> {
+        this.destroy$.next();
+
         if (context instanceof TuiValidationError) {
-            return of(context);
+            return signal(context);
         }
 
         if (content === undefined && tuiIsString(context)) {
-            return of(new TuiValidationError(context));
+            return signal(new TuiValidationError(context));
         }
 
         if (content instanceof Observable) {
-            return unwrapObservable(content, context);
+            return unwrapObservable(
+                content.pipe(takeUntil(this.destroy$)),
+                context,
+                this.injector,
+            );
         }
 
         if (content instanceof Function) {
@@ -115,7 +132,11 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
                 | PolymorpheusContent;
 
             return message instanceof Observable
-                ? unwrapObservable(message, context)
+                ? unwrapObservable(
+                      message.pipe(takeUntil(this.destroy$)),
+                      context,
+                      this.injector,
+                  )
                 : defaultError(message, context);
         }
 

@@ -40,7 +40,7 @@
                     </tui-input>
                     <tui-error
                         formControlName="nameValue"
-                        [error]="[] | tuiFieldError | async"
+                        [error]="[] | tuiFieldError"
                     />
                 </div>
                 <div class="tui-form__row">
@@ -54,7 +54,7 @@
                     </tui-input-date>
                     <tui-error
                         formControlName="periodValue"
-                        [error]="[] | tuiFieldError | async"
+                        [error]="[] | tuiFieldError"
                     />
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
@@ -62,7 +62,7 @@
                         <tui-input-password formControlName="passwordValue">Input password</tui-input-password>
                         <tui-error
                             formControlName="passwordValue"
-                            [error]="[] | tuiFieldError | async"
+                            [error]="[] | tuiFieldError"
                         />
                     </div>
                     <div class="tui-form__multi-field">
@@ -74,7 +74,7 @@
                         </tui-input-number>
                         <tui-error
                             formControlName="moneyValue"
-                            [error]="[] | tuiFieldError | async"
+                            [error]="[] | tuiFieldError"
                         />
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="tui-form__field-note">Some additional text</div>
                     <tui-error
                         formControlName="quantityValue"
-                        [error]="[] | tuiFieldError | async"
+                        [error]="[] | tuiFieldError"
                     />
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
@@ -118,14 +118,14 @@
                         </ng-template>
                         <tui-error
                             formControlName="personValue"
-                            [error]="[] | tuiFieldError | async"
+                            [error]="[] | tuiFieldError"
                         />
                     </div>
                     <div class="tui-form__multi-field">
                         <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
                         <tui-error
                             formControlName="phoneValue"
-                            [error]="[] | tuiFieldError | async"
+                            [error]="[] | tuiFieldError"
                         />
                     </div>
                 </div>

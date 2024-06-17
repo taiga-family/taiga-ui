@@ -33,14 +33,14 @@
         <ng-template #phoneErrorContent>Invalid phone number length</ng-template>
         <tui-error
             formControlName="{{ i }}"
-            [error]="[] | tuiFieldError | async"
+            [error]="[] | tuiFieldError"
         />
     </label>
 
     <tui-error
         formArrayName="phones"
         class="form-array-error"
-        [error]="[] | tuiFieldError | async"
+        [error]="[] | tuiFieldError"
     />
 
     <button

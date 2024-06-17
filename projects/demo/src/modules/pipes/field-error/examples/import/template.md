@@ -3,7 +3,7 @@
 <tui-input [formControl]="user">User</tui-input>
 <tui-error
   [formControl]="user"
-  [error]="[] | tuiFieldError | async"
+  [error]="[] | tuiFieldError"
 ></tui-error>
 // ...
 ```

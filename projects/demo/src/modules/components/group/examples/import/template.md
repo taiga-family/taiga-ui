@@ -17,7 +17,7 @@
     </tui-input>
     <tui-error
       formControlName="testValue"
-      [error]="[] | tuiFieldError | async"
+      [error]="[] | tuiFieldError"
     ></tui-error>
   </div>
   <div>
@@ -34,7 +34,7 @@
     </tui-input>
     <tui-error
       formControlName="testValue2"
-      [error]="[] | tuiFieldError | async"
+      [error]="[] | tuiFieldError"
     ></tui-error>
   </div>
   <div>
@@ -51,7 +51,7 @@
     </tui-input>
     <tui-error
       formControlName="testValue3"
-      [error]="[] | tuiFieldError | async"
+      [error]="[] | tuiFieldError"
     ></tui-error>
   </div>
 </div>
