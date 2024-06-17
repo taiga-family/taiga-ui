@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
@@ -29,7 +29,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],

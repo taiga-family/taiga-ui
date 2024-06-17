@@ -21,7 +21,7 @@ import {
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
-import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -66,7 +66,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
             outputs: ['tuiDropdownOpenChange: openChange'],
         },
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],

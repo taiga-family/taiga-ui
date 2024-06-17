@@ -11,7 +11,7 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_LINK_OPTIONS} from './link.options';
 
@@ -40,7 +40,7 @@ class TuiLinkStyles {}
             ],
         },
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
