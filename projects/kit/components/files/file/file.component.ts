@@ -20,7 +20,7 @@ import {
     tuiAppearanceOptionsProvider,
     TuiButtonDirective,
     TuiIconComponent,
-    TuiLoaderComponent,
+    TuiLoader,
 } from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
@@ -39,7 +39,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiLoaderComponent,
+        TuiLoader,
         TuiButtonDirective,
         TuiIconComponent,
     ],

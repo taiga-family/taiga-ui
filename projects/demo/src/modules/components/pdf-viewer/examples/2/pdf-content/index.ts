@@ -2,12 +2,12 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiLoader} from '@taiga-ui/core';
 import {map, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, AsyncPipe, TuiLoaderComponent],
+    imports: [NgIf, AsyncPipe, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

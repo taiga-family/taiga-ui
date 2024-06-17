@@ -21,7 +21,7 @@ import {
     tuiAsDataListAccessor,
     TuiDataList,
     tuiInjectDataListSize,
-    TuiLoaderComponent,
+    TuiLoader,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
@@ -42,7 +42,7 @@ import {
         PolymorpheusTemplate,
         TuiDataList,
         TuiElementDirective,
-        TuiLoaderComponent,
+        TuiLoader,
     ],
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],

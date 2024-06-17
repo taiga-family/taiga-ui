@@ -17,7 +17,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import {TuiLoaderComponent} from '@taiga-ui/core/components/loader';
+import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {timer} from 'rxjs';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
@@ -40,7 +40,7 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
 @Component({
     standalone: true,
     selector: 'tui-expand',
-    imports: [TuiLoaderComponent, NgIf, NgTemplateOutlet],
+    imports: [TuiLoader, NgIf, NgTemplateOutlet],
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

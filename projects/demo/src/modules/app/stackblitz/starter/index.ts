@@ -3,14 +3,14 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
-import {TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiLoader} from '@taiga-ui/core';
 
 import {TuiStackblitzService} from '../stackblitz.service';
 import {appPrefix} from '../utils';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLoaderComponent],
+    imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

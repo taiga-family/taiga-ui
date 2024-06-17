@@ -23,7 +23,7 @@ import {
     TuiButtonDirective,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
-    TuiLoaderComponent,
+    TuiLoader,
 } from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
 import {
@@ -116,7 +116,7 @@ function getAge({dob}: User): number {
         TuiInputModule,
         TuiInputNumberModule,
         TuiReorderComponent,
-        TuiLoaderComponent,
+        TuiLoader,
         AsyncPipe,
         NgIf,
         TuiTablePaginationComponent,

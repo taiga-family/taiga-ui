@@ -4,7 +4,7 @@ import {NgIf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiLoader} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiLoaderHarness} from '@taiga-ui/testing';
@@ -12,7 +12,7 @@ import {TuiLoaderHarness} from '@taiga-ui/testing';
 describe('Loader', () => {
     @Component({
         standalone: true,
-        imports: [TuiLoaderComponent, NgIf],
+        imports: [TuiLoader, NgIf],
         template: `
             <tui-loader
                 *ngIf="custom; else def"
@@ -26,8 +26,8 @@ describe('Loader', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiLoaderComponent, {static: true})
-        public component!: TuiLoaderComponent;
+        @ViewChild(TuiLoader, {static: true})
+        public component!: TuiLoader;
 
         @ViewChild('template', {static: true})
         public template: PolymorpheusContent;

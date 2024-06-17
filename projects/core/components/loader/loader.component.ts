@@ -27,7 +27,7 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     styleUrls: ['./loader.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLoaderComponent {
+export class TuiLoader {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly isIOS = inject(TUI_IS_IOS);

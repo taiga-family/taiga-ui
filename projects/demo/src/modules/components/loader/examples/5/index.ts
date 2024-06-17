@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLoaderComponent, tuiLoaderOptionsProvider} from '@taiga-ui/core';
+import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiLoaderComponent],
+    imports: [TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

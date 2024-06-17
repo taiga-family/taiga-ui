@@ -19,7 +19,7 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiItemDirective, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective, TuiLoader} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
@@ -49,7 +49,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         NgForOf,
         TuiItemDirective,
         TuiTabDirective,
-        TuiLoaderComponent,
+        TuiLoader,
         TuiMapperPipe,
         NgTemplateOutlet,
         TuiDocCodeComponent,
