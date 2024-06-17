@@ -9,7 +9,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiIcon,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
@@ -42,7 +42,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiTabDirective,
         TuiRepeatTimes,
         TuiCardLarge,
-        TuiSurfaceDirective,
+        TuiSurface,
     ],
     templateUrl: './index.html',
     encapsulation,

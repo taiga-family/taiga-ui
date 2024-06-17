@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiAppearance,
     TuiIcon,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -15,7 +15,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
     imports: [
         TuiCardLarge,
         TuiHeaderDirective,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiAvatarComponent,
         TuiIcon,
         TuiAppearance,

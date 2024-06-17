@@ -7,7 +7,7 @@ import {
     TuiButton,
     TuiIcon,
     TuiLink,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
@@ -35,7 +35,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiButton,
         TuiTabsHorizontalDirective,
         TuiTabDirective,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiRepeatTimes,
     ],
     templateUrl: './index.html',

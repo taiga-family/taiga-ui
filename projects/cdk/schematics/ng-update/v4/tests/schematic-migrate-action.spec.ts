@@ -26,13 +26,13 @@ import { TuiActionModule } from "@taiga-ui/kit";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiSurfaceDirective } from "@taiga-ui/core";
+const COMPONENT_AFTER = `import { TuiSurface } from "@taiga-ui/core";
 import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCardLarge, TuiSurfaceDirective]
+    imports: [TuiCardLarge, TuiSurface]
 })
 export class Test {
 }`;
