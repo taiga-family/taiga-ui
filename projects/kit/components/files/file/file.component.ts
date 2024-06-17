@@ -16,7 +16,7 @@ import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {
     TUI_COMMON_ICONS,
-    TuiAppearanceDirective,
+    TuiAppearance,
     tuiAppearanceOptionsProvider,
     TuiButton,
     TuiIcon,
@@ -47,7 +47,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
     styleUrls: ['./file.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
-    hostDirectives: [TuiAppearanceDirective],
+    hostDirectives: [TuiAppearance],
 })
 export class TuiFileComponent {
     private readonly sanitizer = inject(DomSanitizer);

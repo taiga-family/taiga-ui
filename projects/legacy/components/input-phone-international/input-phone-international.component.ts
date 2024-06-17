@@ -15,7 +15,7 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_PLUS, TUI_NON_DIGITS_REGEXP, tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiDataList,
     TuiDropdownModule,
     TuiFlagPipe,
@@ -71,7 +71,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiDropdownModule,
         TuiDataList,
         TuiArrowComponent,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiIsoToCountryCodePipe,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiFlagPipe,

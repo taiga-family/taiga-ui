@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiIcon,
     TuiScrollbarComponent,
     TuiTooltip,
@@ -28,7 +28,7 @@ import {TuiTextareaDirective} from './textarea.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiIcon,
-        TuiAppearanceDirective,
+        TuiAppearance,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
     exports: [

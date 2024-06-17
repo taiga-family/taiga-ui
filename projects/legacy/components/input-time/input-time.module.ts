@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiDataList,
     TuiDropdownModule,
     TuiIcon,
@@ -34,7 +34,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         PolymorpheusTemplate,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
-        TuiAppearanceDirective,
+        TuiAppearance,
     ],
     declarations: [TuiInputTimeComponent, TuiNativeTimeComponent, TuiInputTimeDirective],
     exports: [TuiInputTimeComponent, TuiInputTimeDirective],

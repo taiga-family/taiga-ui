@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiButton,
     TuiIcon,
     TuiLink,
@@ -28,7 +28,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiBreadcrumbsComponent,
         TuiItemDirective,
         TuiLink,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiCardLarge,
         TuiHeaderDirective,
         TuiTitleDirective,

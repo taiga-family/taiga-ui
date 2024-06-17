@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiIcon,
     TuiSurfaceDirective,
     TuiTitleDirective,
@@ -18,7 +18,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
         TuiSurfaceDirective,
         TuiAvatarComponent,
         TuiIcon,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiTitleDirective,
         TuiCellDirective,
     ],

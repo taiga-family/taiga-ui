@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidatorDirective, tuiProvide} from '@taiga-ui/cdk';
-import {TuiAppearanceDirective} from '@taiga-ui/core/directives/appearance';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 
@@ -23,7 +23,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         '(keydown.control.c)': 'onCopy()',
         '(keydown.meta.c)': 'onCopy()',
     },
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearanceDirective],
+    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
 })
 export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly nav = inject(NAVIGATOR);

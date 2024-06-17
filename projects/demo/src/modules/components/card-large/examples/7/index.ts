@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiDataList,
     TuiDropdownModule,
     TuiIcon,
@@ -26,7 +26,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
         NgForOf,
         TuiCellDirective,
         TuiLink,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiSurfaceDirective,
         TuiHeaderDirective,
     ],

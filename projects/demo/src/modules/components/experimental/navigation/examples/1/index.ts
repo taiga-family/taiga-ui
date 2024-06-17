@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
@@ -45,7 +45,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         RouterLink,
         RouterLinkActive,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiDropdownPositionSidedDirective,
         TuiExpand,
         TuiBadgeDirective,

@@ -45,7 +45,7 @@ import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     TUI_COMMON_ICONS,
     TUI_TEXTFIELD_OPTIONS,
-    TuiAppearanceDirective,
+    TuiAppearance,
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
     TuiDropdownDirective,
@@ -85,7 +85,7 @@ export interface TuiCard {
         TuiLet,
         TuiIcon,
         TuiChevronDirective,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiIconPipe,
     ],
     templateUrl: './input-card-grouped.template.html',
@@ -99,7 +99,7 @@ export interface TuiCard {
         TuiHoveredService,
     ],
     hostDirectives: [
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiDropdownDirective,
         TuiWithDataList,
         {
@@ -156,14 +156,14 @@ export class TuiInputCardGroupedComponent
     );
 
     protected readonly state = tuiDirectiveBinding(
-        TuiAppearanceDirective,
+        TuiAppearance,
         'tuiAppearanceState',
         // eslint-disable-next-line no-nested-ternary
         computed(() => (this.disabled() ? 'disabled' : this.hover() ? 'hover' : null)),
     );
 
     protected readonly focus = tuiDirectiveBinding(
-        TuiAppearanceDirective,
+        TuiAppearance,
         'tuiAppearanceFocus',
         computed(() => this.open() || this.focusedIn()),
     );

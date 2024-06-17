@@ -1,7 +1,7 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
 import {TuiIdService, tuiInjectElement, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiAppearanceDirective} from '@taiga-ui/core/directives/appearance';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TuiTextfieldComponent} from './textfield.component';
@@ -19,10 +19,10 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '(focusin)': '0',
         '(focusout)': '0',
     },
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearanceDirective],
+    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
 })
 export class TuiTextfieldDirective implements DoCheck {
-    private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
