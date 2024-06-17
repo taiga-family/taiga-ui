@@ -6,8 +6,8 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {MountResponse} from 'cypress/angular';
 
 describe('TuiHint', () => {
-    let component: TestComponent;
-    let wrapper: MountResponse<TestComponent>;
+    let component: Test;
+    let wrapper: MountResponse<Test>;
 
     @Component({
         standalone: true,
@@ -35,13 +35,13 @@ describe('TuiHint', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         public hide = false;
     }
 
     beforeEach(() =>
         cy
-            .mount(TestComponent, {
+            .mount(Test, {
                 imports: [NoopAnimationsModule, HostComponent],
                 providers: [NG_EVENT_PLUGINS],
             })

@@ -14,24 +14,24 @@ describe('InputMonthRange', () => {
             <tui-input-month-range [formControl]="control"></tui-input-month-range>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputMonthRangeComponent, {static: true})
         public component!: TuiInputMonthRangeComponent;
 
         public control = new FormControl<TuiMonthRange | null>(null);
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputMonthRangeComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();

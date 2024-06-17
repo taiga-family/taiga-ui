@@ -20,7 +20,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     standalone: true,
     providers: [tuiInputNumberOptionsProvider({precision: 0, decimal: 'always', max: 3})],
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `
@@ -31,7 +31,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 // TODO: (Taiga UI migration) "precision" and "decimal" options have been moved to FormatNumberOptions. See https://taiga-ui.dev/components/input-number#options
     providers: [tuiInputNumberOptionsProvider({max: 3})],
 })
-export class TestComponent {
+export class Test {
 }`;
 
 describe('ng-update', () => {

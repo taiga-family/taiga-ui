@@ -42,7 +42,7 @@ describe('InputDate', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputDateComponent)
         public readonly component!: TuiInputDateComponent;
 
@@ -61,9 +61,9 @@ describe('InputDate', () => {
         public hintContent: string | null = 'prompt';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
 
     const testContext = {
@@ -84,9 +84,7 @@ describe('InputDate', () => {
         },
     };
 
-    const initializeEnvironment = async (
-        component: Type<TestComponent> = TestComponent,
-    ): Promise<void> => {
+    const initializeEnvironment = async (component: Type<Test> = Test): Promise<void> => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
 
@@ -99,7 +97,7 @@ describe('InputDate', () => {
 
     describe('InputDate (base cases when TUI_DATE_FORMAT = DMY)', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [TestComponent]});
+            TestBed.configureTestingModule({imports: [Test]});
             await TestBed.compileComponents();
             await initializeEnvironment();
         });
@@ -181,7 +179,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT = YMD integration', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})},
@@ -231,7 +229,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT = MDY integration', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})},
@@ -281,7 +279,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -353,13 +351,13 @@ describe('InputDate', () => {
                 </tui-root>
             `,
         })
-        class TransformerTestComponent extends TestComponent {
+        class TransformerTest extends Test {
             public override control = new FormControl(new Date(2022, 0, 31));
         }
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent, TransformerTestComponent],
+                imports: [Test, TransformerTest],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -369,7 +367,7 @@ describe('InputDate', () => {
                 ],
             });
             await TestBed.compileComponents();
-            await initializeEnvironment(TransformerTestComponent);
+            await initializeEnvironment(TransformerTest);
         });
 
         it('correctly transforms initial value', () => {

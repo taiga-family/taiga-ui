@@ -73,7 +73,7 @@ describe('TuiActiveZoneDirective', () => {
             </div>
         `,
     })
-    class TestComponent {
+    class Test {
         public readonly control = new FormControl();
 
         public childActive = false;
@@ -93,7 +93,7 @@ describe('TuiActiveZoneDirective', () => {
         }
     }
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let el: HTMLElement;
 
     function getZoneInfo(selector: string): string {
@@ -102,11 +102,11 @@ describe('TuiActiveZoneDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         fixture.autoDetectChanges();
 
         el = fixture.debugElement.nativeElement;

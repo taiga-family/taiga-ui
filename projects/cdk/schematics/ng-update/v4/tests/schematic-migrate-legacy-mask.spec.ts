@@ -27,7 +27,7 @@ import {
     template: '',
     imports: [AModule, BModule, CModule],
 })
-export class TestComponent {
+export class Test {
     onClick(): void {
         const isEmpty = tuiMaskedMoneyValueIsEmpty('123,45');
         const parsedValue = tuiMaskedNumberStringToNumber('123,45', ',', ' ');
@@ -53,7 +53,7 @@ import {
     template: '',
     imports: [AModule, BModule, CModule],
 })
-export class TestComponent {
+export class Test {
     onClick(): void {
         const isEmpty = Number.isNaN(maskitoParseNumber('123,45', ','));
         const parsedValue = maskitoParseNumber('123,45', ',');

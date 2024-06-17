@@ -24,7 +24,7 @@ describe('InputCardGrouped', () => {
             </ng-template>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputCardGroupedComponent, {static: true})
         public component!: TuiInputCardGroupedComponent;
 
@@ -36,16 +36,16 @@ describe('InputCardGrouped', () => {
         public onBinChange: (event: string | null) => void = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let inputCardPO: TuiNativeInputPO;
     let inputExpirePO: TuiNativeInputPO;
     let inputCVCPO: TuiNativeInputPO;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         inputCardPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__card');

@@ -5,8 +5,8 @@ import {TuiLoaderComponent, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('Loader component options', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     @Component({
         standalone: true,
@@ -15,14 +15,14 @@ describe('Loader component options', () => {
             <tui-loader></tui-loader>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiLoaderComponent, {static: true})
         public component!: TuiLoaderComponent;
     }
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [
                 NG_EVENT_PLUGINS,
                 tuiLoaderOptionsProvider({
@@ -33,7 +33,7 @@ describe('Loader component options', () => {
             ],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

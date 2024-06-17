@@ -18,22 +18,22 @@ describe('TuiFor directive', () => {
             <ng-template #blank>Blank</ng-template>
         `,
     })
-    class TestComponent {
+    class Test {
         public readonly el = tuiInjectElement();
 
         public readonly items$ = new Subject<string[]>();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

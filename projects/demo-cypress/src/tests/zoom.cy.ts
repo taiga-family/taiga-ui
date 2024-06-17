@@ -4,7 +4,7 @@ import {tuiFloor, TuiZoomDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiZoom', () => {
-    let component: TestComponent;
+    let component: Test;
 
     @Component({
         template: `
@@ -14,7 +14,7 @@ describe('TuiZoom', () => {
             ></section>
         `,
     })
-    class TestComponent {
+    class Test {
         public scale = 1;
 
         protected onZoom({delta}: TuiZoom): void {
@@ -24,7 +24,7 @@ describe('TuiZoom', () => {
 
     beforeEach(() =>
         cy
-            .mount(TestComponent, {
+            .mount(Test, {
                 imports: [TuiZoomDirective],
                 providers: [NG_EVENT_PLUGINS],
             })

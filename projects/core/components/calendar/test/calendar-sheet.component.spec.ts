@@ -30,7 +30,7 @@ describe('CalendarSheet', () => {
             />
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiCalendarSheetComponent, {static: true})
         public component!: TuiCalendarSheetComponent;
 
@@ -43,19 +43,19 @@ describe('CalendarSheet', () => {
         public onDayClick(_: TuiDay): void {}
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiCalendarSheetComponent;
 
     describe('main case', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
             });
             await TestBed.compileComponents();
             tuiMockCurrentDate(new Date(2018, 1, today));
 
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
             component = testComponent.component;
 
@@ -207,13 +207,13 @@ describe('CalendarSheet', () => {
     });
 
     describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
-        let fixture: ComponentFixture<TestComponent>;
-        let testComponent: TestComponent;
+        let fixture: ComponentFixture<Test>;
+        let testComponent: Test;
 
         const createComponent: () => void = () => {
             tuiRestoreRealDate();
 
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
 
             testComponent.month = new TuiMonth(2021, 5);
@@ -223,7 +223,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TestComponent],
+                    imports: [Test],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
@@ -259,7 +259,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TestComponent],
+                    imports: [Test],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
@@ -295,7 +295,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TestComponent],
+                    imports: [Test],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,

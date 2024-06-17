@@ -25,7 +25,7 @@ describe('Loader', () => {
             <ng-template #template>Loading...</ng-template>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiLoaderComponent, {static: true})
         public component!: TuiLoaderComponent;
 
@@ -37,17 +37,17 @@ describe('Loader', () => {
         public content: PolymorpheusContent;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
     let loader: HarnessLoader;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         component = fixture.componentInstance;
         fixture.detectChanges();

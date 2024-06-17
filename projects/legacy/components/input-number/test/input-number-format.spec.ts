@@ -22,7 +22,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             </ng-container>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputNumberComponent)
         public component!: TuiInputNumberComponent;
 
@@ -33,19 +33,19 @@ describe('InputNumber - backward compatibility for separators', () => {
         public precision = 2;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputNumberComponent;
     let inputPO: TuiNativeInputPO;
 
     describe('Format - {d d d,d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
@@ -75,7 +75,7 @@ describe('InputNumber - backward compatibility for separators', () => {
     describe('Format - {d,d,d.d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiNumberFormatProvider({
@@ -85,7 +85,7 @@ describe('InputNumber - backward compatibility for separators', () => {
                 ],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;

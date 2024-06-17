@@ -23,7 +23,7 @@ import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
     templateUrl: './tui-matcher.component.html',
     imports: [TuiFilterPipe]
 })
-export class TestComponent {
+export class Test {
     array = [1, 2, 3, 4, 5, 6, 7];
     matcher1: TuiMatcher<number[]> = (items, reminder) => items.filter(item => item % reminder);
     matcher2: TuiMatcher<string[]> = (items, length) => items.filter(item => item.length % length);
@@ -43,7 +43,7 @@ import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
     templateUrl: './tui-matcher.component.html',
     imports: [TuiFilterPipe]
 })
-export class TestComponent {
+export class Test {
     array = [1, 2, 3, 4, 5, 6, 7];
     matcher1: TuiMatcher<[number[], ...any]> = (items, reminder) => items.filter(item => item % reminder);
     matcher2: TuiMatcher<[string[], ...any]> = (items, length) => items.filter(item => item.length % length);
@@ -63,7 +63,7 @@ import { TuiFilterPipe, TuiMatcher, TuiTypedMatcher } from '@taiga-ui/cdk';
     templateUrl: './tui-typed-matcher.component.html',
     imports: [TuiFilterPipe]
 })
-export class TestComponent {
+export class Test {
     array = [1, 2, 3, 4, 5, 6, 7];
     matcher1: TuiTypedMatcher<[number[], number]> = (items, reminder) => items.filter(item => item % reminder);
     matcher2: TuiMatcher<string[]> = (items, length) => items.filter(item => item.length % length);
@@ -85,7 +85,7 @@ import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
     templateUrl: './tui-typed-matcher.component.html',
     imports: [TuiFilterPipe]
 })
-export class TestComponent {
+export class Test {
     array = [1, 2, 3, 4, 5, 6, 7];
     matcher1: TuiMatcher<[number[], number]> = (items, reminder) => items.filter(item => item % reminder);
     matcher2: TuiMatcher<[string[], ...any]> = (items, length) => items.filter(item => item.length % length);

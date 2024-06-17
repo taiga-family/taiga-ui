@@ -18,26 +18,26 @@ describe('InputMonth', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputMonthComponent, {static: true})
         public component!: TuiInputMonthComponent;
 
         public control = new FormControl<TuiMonth | null>(null);
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let pageObject: TuiPageObject<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let pageObject: TuiPageObject<Test>;
+    let testComponent: Test;
     let component: TuiInputMonthComponent;
     let inputPO: TuiNativeInputPO;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

@@ -21,7 +21,7 @@ describe('CalendarMonth', () => {
             ></tui-calendar-month>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiCalendarMonthComponent, {static: true})
         public component!: TuiCalendarMonthComponent;
 
@@ -34,17 +34,17 @@ describe('CalendarMonth', () => {
         public disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiCalendarMonthComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();

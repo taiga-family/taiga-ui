@@ -23,7 +23,7 @@ describe('InputPhone', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputPhoneComponent, {static: true})
         public component!: TuiInputPhoneComponent;
 
@@ -34,18 +34,18 @@ describe('InputPhone', () => {
         public readOnly = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputPhoneComponent;
     let inputPO: TuiNativeInputPO;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();

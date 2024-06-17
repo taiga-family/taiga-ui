@@ -32,7 +32,7 @@ describe('Notification', () => {
                 </ng-template>
             `,
         })
-        class TestComponent {
+        class Test {
             @ViewChild(TuiNotificationComponent, {static: false})
             public component!: TuiNotificationComponent;
 
@@ -42,9 +42,9 @@ describe('Notification', () => {
             public onClose(): void {}
         }
 
-        let fixture: ComponentFixture<TestComponent>;
-        let testComponent: TestComponent;
-        let pageObject: TuiPageObject<TestComponent>;
+        let fixture: ComponentFixture<Test>;
+        let testComponent: Test;
+        let pageObject: TuiPageObject<Test>;
 
         function getIcon(): DebugElement {
             return pageObject.getByAutomationId('tui-notification__icon')!;
@@ -56,11 +56,11 @@ describe('Notification', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
@@ -94,15 +94,15 @@ describe('Notification', () => {
                 <tui-notification>Short simple informational message</tui-notification>
             `,
         })
-        class TestComponent {
+        class Test {
             @ViewChild(TuiNotificationComponent, {static: false})
             public component!: TuiNotificationComponent;
         }
 
         const status = 'error';
 
-        let fixture: ComponentFixture<TestComponent>;
-        let pageObject: TuiPageObject<TestComponent>;
+        let fixture: ComponentFixture<Test>;
+        let pageObject: TuiPageObject<Test>;
 
         function getIcon(): DebugElement {
             return pageObject.getByAutomationId('tui-notification__icon')!;
@@ -110,7 +110,7 @@ describe('Notification', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     {
                         provide: TUI_NOTIFICATION_OPTIONS,
@@ -124,7 +124,7 @@ describe('Notification', () => {
             });
             await TestBed.compileComponents();
 
-            fixture = TestBed.createComponent(TestComponent);
+            fixture = TestBed.createComponent(Test);
             pageObject = new TuiPageObject(fixture);
             fixture.detectChanges();
         });

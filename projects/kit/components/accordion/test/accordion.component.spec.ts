@@ -32,10 +32,10 @@ class Account {
 }
 
 describe('Accordion', () => {
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let loader: HarnessLoader;
     let accordion: TuiAccordionHarness;
-    let testComponent: TestComponent;
+    let testComponent: Test;
 
     @Component({
         standalone: true,
@@ -88,7 +88,7 @@ describe('Accordion', () => {
             </tui-accordion>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiAccordionDirective, {static: true})
         public component!: TuiAccordionDirective;
 
@@ -111,11 +111,11 @@ describe('Accordion', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
         accordion = await loader.getHarness(TuiAccordionHarness);
         testComponent = fixture.componentInstance;

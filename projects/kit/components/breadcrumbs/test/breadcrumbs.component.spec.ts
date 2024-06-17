@@ -54,7 +54,7 @@ describe('Breadcrumbs Wrapper', () => {
             </tui-breadcrumbs>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiBreadcrumbsComponent, {static: true})
         public component!: TuiBreadcrumbsComponent;
 
@@ -63,9 +63,9 @@ describe('Breadcrumbs Wrapper', () => {
         public size: TuiSizeL = 'm';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {
             return 'tui-breadcrumbs-wrapper__';
@@ -78,11 +78,11 @@ describe('Breadcrumbs Wrapper', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

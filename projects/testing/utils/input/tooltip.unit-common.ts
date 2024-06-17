@@ -8,10 +8,10 @@ interface TestParams {
     fixture: ComponentFixture<unknown>;
     pageObject: TuiPageObject<unknown>;
     prefix: string;
-    testComponent: TestComponent;
+    testComponent: Test;
 }
 
-interface TestComponent {
+interface Test {
     control?: FormControl;
     disabled?: boolean;
     hintContent: string | null;
@@ -22,7 +22,7 @@ interface TestComponent {
 export function tuiTestTooltip(context: TestParams): void {
     let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;
-    let testComponent: TestComponent;
+    let testComponent: Test;
 
     describe('Tooltip in a field', () => {
         beforeEach(() => {

@@ -18,7 +18,7 @@ describe('TuiValidator directive', () => {
             />
         `,
     })
-    class TestComponent {
+    class Test {
         public show = false;
 
         public readonly control = new FormControl();
@@ -26,16 +26,16 @@ describe('TuiValidator directive', () => {
         public readonly validator = Validators.required;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

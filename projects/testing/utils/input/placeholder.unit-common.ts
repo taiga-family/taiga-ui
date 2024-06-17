@@ -8,10 +8,10 @@ interface TestParams {
     fixture: ComponentFixture<unknown>;
     pageObject: TuiPageObject<unknown>;
     prefix: string;
-    testComponent: TestComponent;
+    testComponent: Test;
 }
 
-interface TestComponent {
+interface Test {
     control?: FormControl;
     labelOutside: boolean;
     size: 'l' | 'm' | 's';
@@ -25,7 +25,7 @@ export function tuiTestPlaceholder(
 ): void {
     let pageObject: TuiPageObject<unknown>;
     let fixture: ComponentFixture<unknown>;
-    let testComponent: TestComponent;
+    let testComponent: Test;
 
     describe('Placeholder', () => {
         beforeEach(() => {

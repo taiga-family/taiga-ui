@@ -23,7 +23,7 @@ import { TuiToggleModule } from "@taiga-ui/experimental";
     templateUrl: './test.template.html',
     imports: [TuiToggleModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiSwitchComponent } from "@taiga-ui/kit";
@@ -33,7 +33,7 @@ const COMPONENT_AFTER = `import { TuiSwitchComponent } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiSwitchComponent]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

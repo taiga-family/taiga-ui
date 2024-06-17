@@ -23,7 +23,7 @@ import { TuiAvatarModule } from "@taiga-ui/experimental";
     templateUrl: './test.template.html',
     imports: [TuiAvatarModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe } from "@taiga-ui/core";
@@ -34,7 +34,7 @@ import { TuiAvatarModule } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiAvatarModule, TuiFallbackSrcPipe, TuiInitialsPipe]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

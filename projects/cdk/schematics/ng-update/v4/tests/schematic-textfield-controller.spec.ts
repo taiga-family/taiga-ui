@@ -24,7 +24,7 @@ import { ArrayElement } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [CommonModule]
 })
-export class TestComponent {
+export class Test {
    some: ArrayElement<string>;
 }`;
 
@@ -38,7 +38,7 @@ import { CommonModule } from "@angular/common";
     templateUrl: './test.template.html',
     imports: [CommonModule, TuiTextfieldControllerModule]
 })
-export class TestComponent {
+export class Test {
    some: TuiArrayElement<string>;
 }`;
 

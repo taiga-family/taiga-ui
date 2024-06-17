@@ -46,7 +46,7 @@ describe('InputNumber', () => {
             </ng-container>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputNumberComponent)
         public component!: TuiInputNumberComponent;
 
@@ -64,19 +64,19 @@ describe('InputNumber', () => {
         public hintContent: string | null = 'prompt';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiInputNumberComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
     let inputPO: TuiNativeInputPO;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

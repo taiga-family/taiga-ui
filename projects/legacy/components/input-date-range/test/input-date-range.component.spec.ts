@@ -48,7 +48,7 @@ describe('InputDateRangeComponent', () => {
             </tui-root>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiInputDateRangeComponent)
         public readonly component!: TuiInputDateRangeComponent;
 
@@ -70,13 +70,13 @@ describe('InputDateRangeComponent', () => {
         public max = TUI_LAST_DAY;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: TuiPageObject<TestComponent>;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
+    let pageObject: TuiPageObject<Test>;
     let component: TuiInputDateRangeComponent;
     let inputPO: TuiNativeInputPO;
 
-    function initializeEnvironment(type: Type<TestComponent> = TestComponent): void {
+    function initializeEnvironment(type: Type<Test> = Test): void {
         fixture = TestBed.createComponent(type);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
@@ -88,7 +88,7 @@ describe('InputDateRangeComponent', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [TestComponent]});
+            TestBed.configureTestingModule({imports: [Test]});
             await TestBed.compileComponents();
             initializeEnvironment();
         });
@@ -182,7 +182,7 @@ describe('InputDateRangeComponent', () => {
     describe('InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -224,7 +224,7 @@ describe('InputDateRangeComponent', () => {
     describe('InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -344,7 +344,7 @@ describe('InputDateRangeComponent', () => {
                 </tui-root>
             `,
         })
-        class TransformerTestComponent extends TestComponent {
+        class TransformerTest extends Test {
             public override control = new FormControl<TuiDayRange | [Date, Date] | null>([
                 new Date(2022, 0, 31),
                 new Date(2022, 5, 14),
@@ -353,7 +353,7 @@ describe('InputDateRangeComponent', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponent, TransformerTestComponent],
+                imports: [Test, TransformerTest],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -368,7 +368,7 @@ describe('InputDateRangeComponent', () => {
                 ],
             });
             await TestBed.compileComponents();
-            initializeEnvironment(TransformerTestComponent);
+            initializeEnvironment(TransformerTest);
         });
 
         it('correctly transforms initial value', () => {

@@ -17,13 +17,13 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
             <tui-root></tui-root>
         `,
     })
-    class TestComponent {}
+    class Test {}
 
     const label = 'Test';
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let tuiMobileDialogService: TuiMobileDialogService;
-    let pageObject: TuiPageObject<TestComponent>;
+    let pageObject: TuiPageObject<Test>;
 
     function getLabelElement(): DebugElement {
         return pageObject.getByAutomationId('tui-mobile-dialog__label')!;
@@ -31,11 +31,11 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [tuiMobileDialogOptionsProvider({label})],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         tuiMobileDialogService = TestBed.inject(TuiMobileDialogService);
         pageObject = new TuiPageObject(fixture);
     });

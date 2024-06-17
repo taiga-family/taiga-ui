@@ -11,21 +11,21 @@ describe('primitiveSpinButton', () => {
             <tui-spin-button>My button</tui-spin-button>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiSpinButtonComponent, {static: true})
         public component!: TuiSpinButtonComponent;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let component: TuiSpinButtonComponent;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();

@@ -24,7 +24,7 @@ import { TuiPreventDefaultModule } from "@taiga-ui/cdk";
     templateUrl: './test.template.html',
     imports: [TuiPreventDefaultModule, CommonModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `
@@ -35,7 +35,7 @@ import { Component } from '@angular/core';
     templateUrl: './test.template.html',
     imports: [CommonModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

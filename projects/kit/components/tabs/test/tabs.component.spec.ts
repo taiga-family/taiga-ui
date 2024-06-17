@@ -25,7 +25,7 @@ describe('Tabs', () => {
             </tui-tabs>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTabsHorizontalDirective, {static: true})
         public tabsHorizontalDirective!: TuiTabsHorizontalDirective;
 
@@ -39,16 +39,16 @@ describe('Tabs', () => {
         public tabs = [1, 2, 3];
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

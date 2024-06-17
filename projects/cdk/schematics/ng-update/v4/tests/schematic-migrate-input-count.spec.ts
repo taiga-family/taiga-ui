@@ -24,7 +24,7 @@ import { Component } from "@angular/core";
     templateUrl: './test.template.html',
     imports: [TuiInputCountModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/kit";
@@ -36,7 +36,7 @@ import { Component } from "@angular/core";
     templateUrl: './test.template.html',
     imports: [TuiInputNumberModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

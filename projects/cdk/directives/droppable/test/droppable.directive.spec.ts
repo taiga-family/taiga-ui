@@ -19,22 +19,22 @@ describe('TuiDroppable Directive', () => {
             </div>
         `,
     })
-    class TestComponent {
+    class Test {
         public onDragOver: any = jest.fn();
         public onDropped: any = jest.fn();
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
     let directiveElement: HTMLElement;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
 
         directiveElement = fixture.debugElement.query(

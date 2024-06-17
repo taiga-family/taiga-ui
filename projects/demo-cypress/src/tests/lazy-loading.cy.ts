@@ -15,7 +15,7 @@ describe('LazyLoading', () => {
             <button (click)="updateSrc()">click</button>
         `,
     })
-    class TestComponent {
+    class Test {
         protected src = '';
 
         protected updateSrc(): void {
@@ -25,7 +25,7 @@ describe('LazyLoading', () => {
     }
 
     beforeEach(() =>
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiLazyLoadingDirective],
             providers: [NG_EVENT_PLUGINS],
             componentProperties: {

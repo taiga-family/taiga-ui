@@ -14,7 +14,7 @@ describe('BarChart', () => {
             ></tui-bar-chart>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiBarChartComponent)
         public readonly component!: TuiBarChartComponent;
 
@@ -26,13 +26,13 @@ describe('BarChart', () => {
         public max = NaN;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -39,21 +39,21 @@ describe('Island', () => {
             </tui-island>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiIslandDirective, {static: true})
         public component!: TuiIslandDirective;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<Test>;
     let loader: HarnessLoader;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         loader = TestbedHarnessEnvironment.loader(fixture);
 
         fixture.detectChanges();

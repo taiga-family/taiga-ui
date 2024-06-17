@@ -5,8 +5,8 @@ import type {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
 
 describe('TablePagination', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     @Component({
         standalone: true,
@@ -20,7 +20,7 @@ describe('TablePagination', () => {
             ></tui-table-pagination>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiTablePaginationComponent, {static: true})
         public component!: TuiTablePaginationComponent;
 
@@ -35,10 +35,10 @@ describe('TablePagination', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

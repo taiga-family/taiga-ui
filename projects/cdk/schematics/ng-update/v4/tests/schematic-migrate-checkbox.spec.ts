@@ -24,7 +24,7 @@ import { TuiCardModule } from "@taiga-ui/experimental";
     templateUrl: './test.template.html',
     imports: [TuiCheckboxModule, TuiCardModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiCardLargeDirective, TuiCardMediumDirective } from "@taiga-ui/layout";
@@ -35,7 +35,7 @@ import { TuiCheckboxComponent } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiCheckboxComponent, TuiCardLargeDirective, TuiCardMediumDirective]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

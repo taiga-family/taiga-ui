@@ -23,7 +23,7 @@ import { TuiActionModule } from "@taiga-ui/kit";
     templateUrl: './test.template.html',
     imports: [TuiActionModule]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiSurfaceDirective } from "@taiga-ui/core";
@@ -34,7 +34,7 @@ import { TuiCardLargeDirective } from "@taiga-ui/layout";
     templateUrl: './test.template.html',
     imports: [TuiCardLargeDirective, TuiSurfaceDirective]
 })
-export class TestComponent {
+export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `

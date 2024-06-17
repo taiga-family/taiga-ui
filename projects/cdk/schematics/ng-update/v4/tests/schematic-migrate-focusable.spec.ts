@@ -24,7 +24,7 @@ import {TuiFocusableModule} from '@taiga-ui/cdk';
     templateUrl: './test.template.html',
     imports: [TuiFocusableModule]
 })
-export class TestComponent {
+export class Test {
     focusable = true;
 }`;
 
@@ -34,7 +34,7 @@ const COMPONENT_AFTER = `
     templateUrl: './test.template.html',
     imports: []
 })
-export class TestComponent {
+export class Test {
     focusable = true;
 }`;
 

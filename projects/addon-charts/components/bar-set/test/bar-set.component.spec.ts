@@ -15,7 +15,7 @@ describe('BarSet', () => {
             ></tui-bar-set>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiBarSetComponent)
         public readonly component!: TuiBarSetComponent;
 
@@ -23,13 +23,13 @@ describe('BarSet', () => {
         public collapsed = false;
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [Test]});
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

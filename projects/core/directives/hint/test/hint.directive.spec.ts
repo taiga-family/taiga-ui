@@ -33,20 +33,20 @@ describe('Hint', () => {
             `,
         ],
     })
-    class TestComponent {
+    class Test {
         public hint: Hint = 'Tooltip text';
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

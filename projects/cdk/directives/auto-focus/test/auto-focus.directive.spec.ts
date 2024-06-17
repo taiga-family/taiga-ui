@@ -30,21 +30,21 @@ describe('TuiAutoFocus directive', () => {
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
-        class TestComponentWithDiv {
+        class TestWithDiv {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
         }
 
-        let fixture: ComponentFixture<TestComponentWithDiv>;
-        let testComponent: TestComponentWithDiv;
+        let fixture: ComponentFixture<TestWithDiv>;
+        let testComponent: TestWithDiv;
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponentWithDiv],
+                imports: [TestWithDiv],
                 providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponentWithDiv);
+            fixture = TestBed.createComponent(TestWithDiv);
             testComponent = fixture.componentInstance;
         });
 
@@ -64,17 +64,17 @@ describe('TuiAutoFocus directive', () => {
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
-        class TestComponentIos {
+        class TestIos {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
         }
 
-        let fixture: ComponentFixture<TestComponentIos>;
-        let testComponent: TestComponentIos;
+        let fixture: ComponentFixture<TestIos>;
+        let testComponent: TestIos;
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TestComponentIos],
+                imports: [TestIos],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -91,7 +91,7 @@ describe('TuiAutoFocus directive', () => {
                 ],
             });
             await TestBed.compileComponents();
-            fixture = TestBed.createComponent(TestComponentIos);
+            fixture = TestBed.createComponent(TestIos);
             testComponent = fixture.componentInstance;
         });
 
@@ -114,23 +114,23 @@ describe('TuiAutoFocus directive', () => {
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
-        class TestComponentWithFocusFlag {
+        class TestWithFocusFlag {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
 
             public autoFocus = false;
         }
 
-        let fixture: ComponentFixture<TestComponentWithFocusFlag>;
-        let testComponent: TestComponentWithFocusFlag;
+        let fixture: ComponentFixture<TestWithFocusFlag>;
+        let testComponent: TestWithFocusFlag;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [TestComponentWithFocusFlag],
+                imports: [TestWithFocusFlag],
                 providers: [NG_EVENT_PLUGINS],
             });
 
-            fixture = TestBed.createComponent(TestComponentWithFocusFlag);
+            fixture = TestBed.createComponent(TestWithFocusFlag);
             testComponent = fixture.componentInstance;
         });
 

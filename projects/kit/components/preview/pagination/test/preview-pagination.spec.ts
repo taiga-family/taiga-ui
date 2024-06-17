@@ -5,8 +5,8 @@ import {By} from '@angular/platform-browser';
 import {TuiPreview, TuiPreviewPaginationComponent} from '@taiga-ui/kit';
 
 describe('PreviewPagination', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     @Component({
         standalone: true,
@@ -18,7 +18,7 @@ describe('PreviewPagination', () => {
             ></tui-preview-pagination>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild(TuiPreviewPaginationComponent, {static: true})
         public component!: TuiPreviewPaginationComponent;
 
@@ -28,10 +28,10 @@ describe('PreviewPagination', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

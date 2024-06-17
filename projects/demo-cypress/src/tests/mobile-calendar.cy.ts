@@ -35,7 +35,7 @@ describe('Mobile calendar', () => {
             },
         ],
     })
-    class TestComponent {
+    class Test {
         protected min = TUI_FIRST_DAY;
         protected max = TUI_LAST_DAY;
         protected disabledItemHandler = TUI_FALSE_HANDLER;
@@ -49,7 +49,7 @@ describe('Mobile calendar', () => {
     }
 
     it('the back button emits a cancel event', () => {
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiMobileCalendarComponent],
             providers: [NG_EVENT_PLUGINS],
             componentProperties: {
@@ -62,7 +62,7 @@ describe('Mobile calendar', () => {
     });
 
     it('single === true', () => {
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiMobileCalendarComponent],
         });
 
@@ -73,7 +73,7 @@ describe('Mobile calendar', () => {
     });
 
     it('single === false', () => {
-        cy.mount(TestComponent, {
+        cy.mount(Test, {
             imports: [TuiMobileCalendarComponent],
             componentProperties: {
                 single: false,
@@ -88,7 +88,7 @@ describe('Mobile calendar', () => {
 
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
-            cy.mount(TestComponent, {
+            cy.mount(Test, {
                 imports: [TuiMobileCalendarComponent],
                 componentProperties: {
                     onConfirm: createOutputSpy('onConfirmSpy'),
@@ -103,7 +103,7 @@ describe('Mobile calendar', () => {
         });
 
         it('confirm event at selected interval', () => {
-            cy.mount(TestComponent, {
+            cy.mount(Test, {
                 imports: [TuiMobileCalendarComponent],
                 componentProperties: {
                     single: false,
@@ -122,7 +122,7 @@ describe('Mobile calendar', () => {
         });
 
         it('year selection scrolls through months', () => {
-            cy.mount(TestComponent, {
+            cy.mount(Test, {
                 imports: [TuiMobileCalendarComponent],
                 componentProperties: {
                     onConfirm: createOutputSpy('onConfirmSpy'),
