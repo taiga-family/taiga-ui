@@ -6,16 +6,16 @@ import {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiScrollableDirective, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiScrollableDirective, TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
-        TuiScrollbarComponent,
-        TuiScrollableDirective,
         CdkVirtualScrollViewport,
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
+        TuiScrollableDirective,
+        TuiScrollbar,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

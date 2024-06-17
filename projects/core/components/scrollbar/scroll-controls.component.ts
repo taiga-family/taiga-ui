@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
@@ -12,13 +12,13 @@ import {TuiScrollbarDirective} from './scrollbar.directive';
 @Component({
     standalone: true,
     selector: 'tui-scroll-controls',
-    imports: [CommonModule, TuiScrollbarDirective],
+    imports: [NgIf, AsyncPipe, TuiScrollbarDirective],
     templateUrl: './scroll-controls.template.html',
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
 })
-export class TuiScrollControlsComponent {
+export class TuiScrollControls {
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
 
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));

@@ -9,7 +9,7 @@ import {
     TuiRectAccessor,
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
-import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
@@ -29,7 +29,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-dropdown',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiScrollbarComponent],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiScrollbar],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush

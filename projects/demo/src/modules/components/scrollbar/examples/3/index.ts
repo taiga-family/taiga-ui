@@ -1,20 +1,20 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 
 const SOME_OFFSET_CONST = 20;
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiScrollbarComponent],
+    imports: [TuiButton, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
+    @ViewChild(TuiScrollbar, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
     protected SOME_OFFSET_CONST = SOME_OFFSET_CONST;

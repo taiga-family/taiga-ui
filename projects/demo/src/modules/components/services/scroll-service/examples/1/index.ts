@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElementDirective, TuiScrollService} from '@taiga-ui/cdk';
-import {TuiButton, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiInputNumberModule,
         FormsModule,
         TuiButton,
-        TuiScrollbarComponent,
+        TuiScrollbar,
         TuiElementDirective,
     ],
     templateUrl: './index.html',
