@@ -96,7 +96,7 @@
                     <tui-file
                         *tuiItem
                         state="error"
-                        [file]="(file | tuiFileRejected: validator | async) || file"
+                        [file]="(file | tuiFileRejected: validator) || file"
                         [showDelete]="showDelete"
                         [showSize]="showSize"
                         [size]="size"

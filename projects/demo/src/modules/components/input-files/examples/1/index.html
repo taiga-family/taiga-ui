@@ -11,7 +11,7 @@
 
 <tui-files class="tui-space_top-1">
     <tui-file
-        *ngIf="control.value | tuiFileRejected: {accept: 'image/*'} | async as file"
+        *ngIf="control.value | tuiFileRejected: {accept: 'image/*'} as file"
         state="error"
         [file]="file"
         (remove)="removeFile()"

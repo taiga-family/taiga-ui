@@ -14,7 +14,7 @@
     <tui-file
         *ngFor="let file of rejected"
         state="error"
-        [file]="(file | tuiFileRejected: validator | async) || file"
+        [file]="(file | tuiFileRejected: validator) || file"
         (remove)="onRemove(file)"
     />
     <tui-file
