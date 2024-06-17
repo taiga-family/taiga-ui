@@ -18,10 +18,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiMobileCalendarSheetComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
-import {
-    TuiRippleDirective,
-    TuiTouchableDirective,
-} from '@taiga-ui/addon-mobile/directives';
+import {TuiRippleDirective, TuiTouchable} from '@taiga-ui/addon-mobile/directives';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
 import {
     MONTHS_IN_YEAR,
@@ -89,7 +86,7 @@ import {
         AsyncPipe,
         TuiRippleDirective,
         TuiLinkDirective,
-        TuiTouchableDirective,
+        TuiTouchable,
         CdkFixedSizeVirtualScroll,
         CdkVirtualScrollViewport,
         CdkVirtualForOf,

@@ -25,7 +25,7 @@ export function tuiFindTouchIndex(touches: TouchList, id: number): number {
     standalone: true,
     selector: '[tuiTouchable]',
 })
-export class TuiTouchableDirective {
+export class TuiTouchable {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly el = tuiInjectElement();
 
