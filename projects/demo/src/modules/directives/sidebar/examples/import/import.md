@@ -1,5 +1,5 @@
 ```ts
-import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
+import {TuiSidebar} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 
 // ...
@@ -8,7 +8,7 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiSidebarDirective,
+    TuiSidebar,
     TuiActiveZoneDirective,
   ],
   // ...

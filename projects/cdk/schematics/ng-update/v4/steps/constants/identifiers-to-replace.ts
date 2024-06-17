@@ -1155,16 +1155,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiTabBarModule',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
-        to: [
-            {
-                name: 'TuiSidebarComponent',
-                moduleSpecifier: '@taiga-ui/addon-mobile',
-            },
-            {
-                name: 'TuiSidebarDirective',
-                moduleSpecifier: '@taiga-ui/addon-mobile',
-            },
-        ],
+        to: {
+            name: 'TuiSidebar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
     },
     {
         from: {
