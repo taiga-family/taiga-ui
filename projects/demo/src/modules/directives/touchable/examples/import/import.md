@@ -1,5 +1,5 @@
 ```ts
-import {TuiTouchableDirective} from '@taiga-ui/addon-mobile';
+import {TuiTouchable} from '@taiga-ui/addon-mobile';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiTouchableDirective} from '@taiga-ui/addon-mobile';
   standalone: true,
   imports: [
     // ...
-    TuiTouchableDirective,
+    TuiTouchable,
   ],
   // ...
 })
