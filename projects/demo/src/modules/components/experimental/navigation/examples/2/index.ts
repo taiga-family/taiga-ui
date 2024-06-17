@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDropdownDirective,
@@ -40,7 +40,7 @@ import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiBadgeDirective,
         TuiTabsHorizontalDirective,
         TuiTabDirective,
-        TuiRepeatTimesDirective,
+        TuiRepeatTimes,
         TuiCardLargeDirective,
         TuiSurfaceDirective,
     ],

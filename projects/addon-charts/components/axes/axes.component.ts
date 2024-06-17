@@ -1,7 +1,7 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
-import {CHAR_NO_BREAK_SPACE, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {CHAR_NO_BREAK_SPACE, TuiRepeatTimes} from '@taiga-ui/cdk';
 
 export const TUI_ALWAYS_DASHED: TuiLineHandler = () => 'dashed';
 export const TUI_ALWAYS_DOTTED: TuiLineHandler = () => 'dotted';
@@ -11,7 +11,7 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 @Component({
     standalone: true,
     selector: 'tui-axes',
-    imports: [NgIf, NgForOf, TuiRepeatTimesDirective],
+    imports: [NgIf, NgForOf, TuiRepeatTimes],
     templateUrl: './axes.template.html',
     styleUrls: ['./axes.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

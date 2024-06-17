@@ -18,7 +18,7 @@ import {
     TuiMapperPipe,
     TuiMonth,
     tuiNullableSame,
-    TuiRepeatTimesDirective,
+    TuiRepeatTimes,
 } from '@taiga-ui/cdk';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
@@ -33,7 +33,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
         CommonModule,
         TuiLet,
         TuiMapperPipe,
-        TuiRepeatTimesDirective,
+        TuiRepeatTimes,
         TuiHoveredDirective,
         TuiCalendarSheetPipe,
         TuiOrderWeekDaysPipe,

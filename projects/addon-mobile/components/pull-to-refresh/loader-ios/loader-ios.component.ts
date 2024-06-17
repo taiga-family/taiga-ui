@@ -1,7 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
@@ -12,7 +12,7 @@ const ROTATE_X_STEP = 30;
 @Component({
     standalone: true,
     selector: 'tui-mobile-ios-loader',
-    imports: [TuiRepeatTimesDirective, NgIf],
+    imports: [TuiRepeatTimes, NgIf],
     templateUrl: './loader-ios.template.html',
     styleUrls: ['./loader-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
