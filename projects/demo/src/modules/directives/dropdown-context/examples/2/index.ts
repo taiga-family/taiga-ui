@@ -12,7 +12,7 @@ import {
     TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
+import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -20,7 +20,7 @@ import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
         NgForOf,
         TuiDropdownContextDirective,
         TuiDropdownDirective,
-        TuiDataListDropdownManagerDirective,
+        TuiDataListDropdownManager,
         TuiOptionComponent,
         TuiIcon,
         TuiDropdownPositionSidedDirective,
