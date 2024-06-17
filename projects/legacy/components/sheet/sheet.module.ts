@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -22,7 +22,7 @@ import {TuiSheetDirective} from './sheet.directive';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiLetDirective,
+        TuiLet,
         TuiButtonDirective,
         TuiScrollbarComponent,
     ],

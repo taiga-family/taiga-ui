@@ -17,7 +17,7 @@ import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {
     tuiInjectElement,
     tuiIsCurrentTarget,
-    TuiLetDirective,
+    TuiLet,
     tuiPx,
     tuiTypedFromEvent,
     tuiZonefree,
@@ -51,7 +51,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiHint,
-        TuiLetDirective,
+        TuiLet,
         AsyncPipe,
         TuiLineClampPositionDirective,
     ],

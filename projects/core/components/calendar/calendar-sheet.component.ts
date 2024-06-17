@@ -14,7 +14,7 @@ import {
     TuiDay,
     TuiDayRange,
     TuiHoveredDirective,
-    TuiLetDirective,
+    TuiLet,
     TuiMapperPipe,
     TuiMonth,
     tuiNullableSame,
@@ -31,7 +31,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     selector: 'tui-calendar-sheet',
     imports: [
         CommonModule,
-        TuiLetDirective,
+        TuiLet,
         TuiMapperPipe,
         TuiRepeatTimesDirective,
         TuiHoveredDirective,

@@ -16,7 +16,7 @@ import {
     tuiGetDocumentOrShadowRoot,
     tuiInjectElement,
     tuiIsString,
-    TuiLetDirective,
+    TuiLet,
     tuiPure,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
@@ -42,7 +42,7 @@ export interface TuiIconError {
 @Component({
     standalone: true,
     selector: 'tui-svg',
-    imports: [TuiLetDirective, AsyncPipe, NgIf],
+    imports: [TuiLet, AsyncPipe, NgIf],
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

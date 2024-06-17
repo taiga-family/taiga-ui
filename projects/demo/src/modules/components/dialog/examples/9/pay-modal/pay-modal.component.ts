@@ -16,7 +16,7 @@ import {
     TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, TuiAutoFocusDirective, TuiLetDirective} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiAutoFocusDirective, TuiLet} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {
     TuiButtonDirective,
@@ -48,7 +48,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiButtonLoadingComponent,
         AsyncPipe,
         TuiFormatNumberPipe,
-        TuiLetDirective,
+        TuiLet,
         TuiAutoFocusDirective,
         TuiLoaderComponent,
         TuiInputCardGroupedComponent,

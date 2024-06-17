@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataListDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
@@ -37,7 +37,7 @@ const databaseMockData: readonly User[] = [
     standalone: true,
     imports: [
         TuiSelectModule,
-        TuiLetDirective,
+        TuiLet,
         AsyncPipe,
         FormsModule,
         TuiDataListWrapperComponent,

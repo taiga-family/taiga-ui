@@ -2,13 +2,13 @@ import type {ElementRef} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('Let', () => {
     @Component({
         standalone: true,
-        imports: [TuiLetDirective],
+        imports: [TuiLet],
         template: `
             <div
                 *tuiLet="getter as value"

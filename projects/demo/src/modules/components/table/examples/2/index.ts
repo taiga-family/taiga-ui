@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiChipDirective} from '@taiga-ui/kit';
 
@@ -25,7 +25,7 @@ interface User {
         TuiLinkDirective,
         NgIf,
         TuiButtonDirective,
-        TuiLetDirective,
+        TuiLet,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

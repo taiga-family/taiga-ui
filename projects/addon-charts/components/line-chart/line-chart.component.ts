@@ -16,7 +16,7 @@ import {
     EMPTY_QUERY,
     TuiIdService,
     tuiIsPresent,
-    TuiLetDirective,
+    TuiLet,
     tuiPure,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
@@ -37,7 +37,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 @Component({
     standalone: true,
     selector: 'tui-line-chart',
-    imports: [TuiLetDirective, AsyncPipe, NgIf, TuiHint, NgForOf],
+    imports: [TuiLet, AsyncPipe, NgIf, TuiHint, NgForOf],
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -14,7 +14,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiItemDirective, TuiLetDirective} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiItemDirective, TuiLet} from '@taiga-ui/cdk';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';
@@ -23,7 +23,7 @@ import {TuiMoreDirective} from './more.directive';
 @Component({
     standalone: true,
     selector: 'tui-items-with-more',
-    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiLetDirective],
+    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiLet],
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

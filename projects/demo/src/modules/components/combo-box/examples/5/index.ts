@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollableDirective} from '@taiga-ui/core';
 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
@@ -15,7 +15,7 @@ import {IndexChangeDirective} from './index-change.directive';
     selector: 'tui-combo-box-example-5',
     imports: [
         FormsModule,
-        TuiLetDirective,
+        TuiLet,
         TuiComboBoxModule,
         TuiDataList,
         TuiFilterByInputPipe,

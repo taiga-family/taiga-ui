@@ -2,13 +2,13 @@ import {Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiBadgeDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiLetDirective, TuiBadgeDirective],
+    imports: [TuiLet, TuiBadgeDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

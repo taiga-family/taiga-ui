@@ -1,12 +1,12 @@
 import type {TuiContext} from '@taiga-ui/cdk/types';
 
-import type {TuiLetDirective} from './let.directive';
+import type {TuiLet} from './let.directive';
 
 /**
  * @internal
  */
 export class TuiLetContext<T> implements TuiContext<T> {
-    constructor(private readonly internalDirectiveInstance: TuiLetDirective<T>) {}
+    constructor(private readonly internalDirectiveInstance: TuiLet<T>) {}
 
     public get $implicit(): T {
         return this.internalDirectiveInstance.tuiLet;

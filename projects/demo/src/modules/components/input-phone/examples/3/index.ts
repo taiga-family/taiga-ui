@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TUI_DEFAULT_MATCHER, TuiLetDirective, tuiPure} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiLet, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
     TuiDataListDirective,
@@ -53,7 +53,7 @@ const DATA: readonly User[] = [
     standalone: true,
     imports: [
         TuiInputPhoneModule,
-        TuiLetDirective,
+        TuiLet,
         AsyncPipe,
         TuiTextfieldControllerModule,
         FormsModule,

@@ -7,12 +7,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {
-    TuiDay,
-    tuiDefaultSort,
-    TuiLetDirective,
-    TuiValidatorDirective,
-} from '@taiga-ui/cdk';
+import {TuiDay, tuiDefaultSort, TuiLet, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,
     TuiIconComponent,
@@ -48,7 +43,7 @@ interface Item {
         TuiDataListWrapper,
         TuiSelectModule,
         NgForOf,
-        TuiLetDirective,
+        TuiLet,
         TuiScrollbarComponent,
         TuiFormatNumberPipe,
         AsyncPipe,
