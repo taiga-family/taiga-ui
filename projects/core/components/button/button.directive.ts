@@ -49,7 +49,7 @@ class TuiButtonStyles {}
         '[attr.data-size]': 'size',
     },
 })
-export class TuiButtonDirective {
+export class TuiButton {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(TuiButtonStyles);

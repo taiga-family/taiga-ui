@@ -2,11 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TuiButtonDirective,
-    TuiHintDirective,
-    TuiHintManualDirective,
-} from '@taiga-ui/core';
+import {TuiButton, TuiHintDirective, TuiHintManualDirective} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
@@ -16,7 +12,7 @@ import {InheritedDocumentationComponent} from '../../components/abstract/inherit
     standalone: true,
     imports: [
         TuiDemo,
-        TuiButtonDirective,
+        TuiButton,
         TuiHintDirective,
         TuiHintManualDirective,
         InheritedDocumentationComponent,

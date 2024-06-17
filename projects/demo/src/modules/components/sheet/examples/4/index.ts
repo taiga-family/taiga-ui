@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
-import {TuiButtonDirective, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiLink} from '@taiga-ui/core';
 import type {TuiSheetOptions} from '@taiga-ui/legacy';
 import {TuiSheetModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiSheetModule, TuiElasticStickyDirective, TuiLink],
+    imports: [TuiButton, TuiSheetModule, TuiElasticStickyDirective, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

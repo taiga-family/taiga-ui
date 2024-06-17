@@ -5,7 +5,7 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButtonDirective,
+    TuiButton,
     tuiFadeIn,
     tuiSlideInTop,
     tuiToAnimationOptions,
@@ -21,7 +21,7 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 @Component({
     standalone: true,
     selector: 'tui-pdf-viewer',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButtonDirective, AsyncPipe],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, AsyncPipe],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

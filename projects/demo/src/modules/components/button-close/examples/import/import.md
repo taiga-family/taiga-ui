@@ -1,15 +1,15 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiButtonDirective} from '@taiga-ui/core';
-import {TuiButtonCloseDirective} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiButtonClose} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiButtonDirective,
-    TuiButtonCloseDirective,
+    TuiButton,
+    TuiButtonClose,
   ],
 })
 export class MyComponent {}

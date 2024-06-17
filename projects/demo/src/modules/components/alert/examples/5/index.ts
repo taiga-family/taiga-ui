@@ -6,7 +6,7 @@ import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     type TuiAlertOptions,
     TuiAlertService,
-    TuiButtonDirective,
+    TuiButton,
     TuiIconComponent,
 } from '@taiga-ui/core';
 import {
@@ -50,7 +50,7 @@ class AlertExampleWithCustomLabelComponent {
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-5',
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

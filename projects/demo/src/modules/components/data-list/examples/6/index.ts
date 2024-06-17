@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -18,7 +18,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         TuiChevronDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownDirective,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiHintDescribeDirective,
     TuiHintDirective,
     TuiHintOptionsDirective,
@@ -13,7 +13,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiHintDirective,
         TuiHintDescribeDirective,
         TuiTooltip,

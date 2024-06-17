@@ -11,7 +11,7 @@ import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButtonDirective,
+    TuiButton,
     tuiButtonOptionsProvider,
     TuiFormatDatePipe,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-push',
-    imports: [NgIf, AsyncPipe, TuiButtonDirective, TuiFormatDatePipe],
+    imports: [NgIf, AsyncPipe, TuiButton, TuiFormatDatePipe],
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

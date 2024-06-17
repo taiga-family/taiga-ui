@@ -6,7 +6,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiErrorComponent, TuiLabelDirective} from '@taiga-ui/core';
+import {TuiButton, TuiErrorComponent, TuiLabelDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -25,7 +25,7 @@ const secretRegexTwelve = /^\d{12}$/;
         TuiFieldErrorPipe,
         AsyncPipe,
         TuiCheckboxComponent,
-        TuiButtonDirective,
+        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

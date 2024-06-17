@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, TuiItemDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -33,7 +33,7 @@ import {
         TuiMoreDirective,
         TuiDropdownOpenDirective,
         TuiDropdownOptionsDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownDirective,
         TuiBadgeDirective,
         TuiDataListComponent,

@@ -4,12 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialogDirective} from '@taiga-ui/addon-mobile';
-import {TuiButtonDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiTitleDirective} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiTitleDirective,
         TuiSheetDialogDirective,
         TuiAmountPipe,

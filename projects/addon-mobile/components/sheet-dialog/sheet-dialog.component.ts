@@ -21,7 +21,7 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButtonDirective,
+    TuiButton,
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
@@ -49,7 +49,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiButtonDirective,
+        TuiButton,
         AsyncPipe,
     ],
     templateUrl: './sheet-dialog.template.html',

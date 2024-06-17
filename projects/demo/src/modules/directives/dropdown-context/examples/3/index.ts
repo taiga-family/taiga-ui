@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownContextDirective,
     TuiDropdownDirective,
 } from '@taiga-ui/core';
@@ -16,7 +16,7 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
         TuiDropdownDirective,
         ReactiveFormsModule,
         TuiTextareaModule,
-        TuiButtonDirective,
+        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

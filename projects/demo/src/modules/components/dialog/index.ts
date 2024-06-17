@@ -8,7 +8,7 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
 import {
     TuiAlertService,
-    TuiButtonDirective,
+    TuiButton,
     TuiDialogService,
     TuiLink,
     TuiNotificationComponent,
@@ -23,7 +23,7 @@ import {switchMap} from 'rxjs';
         TuiLink,
         RouterLink,
         TuiNotificationComponent,
-        TuiButtonDirective,
+        TuiButton,
         TuiAccordion,
     ],
     templateUrl: './index.html',

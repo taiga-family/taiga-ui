@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIconComponent} from '@taiga-ui/core/components/icon';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -22,7 +22,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     standalone: true,
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         NgIf,

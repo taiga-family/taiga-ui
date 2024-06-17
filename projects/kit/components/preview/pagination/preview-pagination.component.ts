@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 
 import {TuiPreviewActionDirective} from '../preview-action/preview-action.directive';
@@ -17,7 +17,7 @@ import {TuiPreviewActionDirective} from '../preview-action/preview-action.direct
 @Component({
     standalone: true,
     selector: 'tui-preview-pagination',
-    imports: [NgIf, AsyncPipe, TuiButtonDirective, TuiPreviewActionDirective],
+    imports: [NgIf, AsyncPipe, TuiButton, TuiPreviewActionDirective],
     templateUrl: './preview-pagination.template.html',
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

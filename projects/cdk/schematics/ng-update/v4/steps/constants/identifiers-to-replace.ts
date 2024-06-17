@@ -667,14 +667,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {
-            name: 'TuiButtonDirective',
+            name: 'TuiButton',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
         from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
-            name: 'TuiButtonDirective',
+            name: 'TuiButton',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },

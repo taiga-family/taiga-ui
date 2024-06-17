@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
@@ -13,7 +13,7 @@ interface TreeNode {
 
 @Component({
     standalone: true,
-    imports: [TuiTree, TuiButtonDirective],
+    imports: [TuiTree, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

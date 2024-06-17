@@ -4,14 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
+import {TuiButton, TuiHint} from '@taiga-ui/core';
 import {TuiSliderComponent, TuiSliderThumbLabelComponent} from '@taiga-ui/kit';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiSliderThumbLabelComponent,
         TuiHint,
         PercentPipe,

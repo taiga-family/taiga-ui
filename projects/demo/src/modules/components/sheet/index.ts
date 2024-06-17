@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import type {TuiSheet, TuiSheetOptions} from '@taiga-ui/legacy';
 import {TUI_SHEET_DEFAULT_OPTIONS, TuiSheetModule} from '@taiga-ui/legacy';
@@ -17,7 +17,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiNotificationComponent,
         TuiLink,
         RouterLink,
-        TuiButtonDirective,
+        TuiButton,
         TuiAvatarComponent,
         TuiSheetModule,
     ],

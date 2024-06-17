@@ -5,14 +5,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiAlertContext} from '@taiga-ui/core';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     imports: [
         AsyncPipe,
-        TuiButtonDirective,
+        TuiButton,
         TuiAmountPipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,

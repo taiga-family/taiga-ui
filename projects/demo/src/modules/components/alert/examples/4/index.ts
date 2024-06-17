@@ -8,7 +8,7 @@ import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     type TuiAlertOptions,
     TuiAlertService,
-    TuiButtonDirective,
+    TuiButton,
     TuiLink,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -16,7 +16,7 @@ import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiButtonDirective, TuiLink, TuiAmountPipe],
+    imports: [AsyncPipe, TuiButton, TuiLink, TuiAmountPipe],
     template: `
         <em>Your balance:</em>
         <span>{{ value | tuiAmount: 'RUB' | async }}</span>
@@ -57,7 +57,7 @@ export class AlertExampleWithDataComponent {
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

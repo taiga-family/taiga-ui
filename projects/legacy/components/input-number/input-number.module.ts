@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -24,7 +24,7 @@ import {TuiInputNumberDirective} from './input-number.directive';
         TuiValueAccessorModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiButtonDirective,
+        TuiButton,
     ],
     declarations: [TuiInputNumberComponent, TuiInputNumberDirective],
     exports: [TuiInputNumberComponent, TuiInputNumberDirective, TuiTextfieldComponent],

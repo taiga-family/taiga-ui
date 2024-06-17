@@ -7,7 +7,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDialogService,
     TuiDropdownService,
     TuiNumberFormatDirective,
@@ -23,7 +23,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         AsyncPipe,
         TuiAvatarComponent,
         TuiElasticStickyDirective,
-        TuiButtonDirective,
+        TuiButton,
         NgIf,
     ],
     templateUrl: './index.html',

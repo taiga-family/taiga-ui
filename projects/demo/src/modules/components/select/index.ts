@@ -8,7 +8,7 @@ import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListDirective,
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
@@ -51,7 +51,7 @@ class Account {
         TuiDataListWrapperComponent,
         TuiDataListDirective,
         TuiIconComponent,
-        TuiButtonDirective,
+        TuiButton,
         InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',

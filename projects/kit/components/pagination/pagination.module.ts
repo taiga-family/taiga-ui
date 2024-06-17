@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiLet, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiPaginationComponent} from './pagination.component';
@@ -11,9 +11,9 @@ import {TuiPaginationComponent} from './pagination.component';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiLet,
         TuiRepeatTimes,
-        TuiButtonDirective,
+        TuiLet,
+        TuiButton,
     ],
     declarations: [TuiPaginationComponent],
     exports: [TuiPaginationComponent],

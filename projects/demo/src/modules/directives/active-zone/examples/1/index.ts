@@ -3,18 +3,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiActiveZoneDirective,
-        TuiInputModule,
-        ReactiveFormsModule,
-        TuiButtonDirective,
-    ],
+    imports: [TuiActiveZoneDirective, TuiInputModule, ReactiveFormsModule, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

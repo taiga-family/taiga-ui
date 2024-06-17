@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownContextDirective,
     TuiDropdownDirective,
     TuiIconComponent,
@@ -14,7 +14,7 @@ import {
         TuiIconComponent,
         TuiDropdownContextDirective,
         TuiDropdownDirective,
-        TuiButtonDirective,
+        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -4,7 +4,7 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -17,7 +17,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiChevronDirective,
         TuiDropdownOpenDirective,
         TuiDropdownDirective,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiHintDirective,
     TuiHintManualDirective,
     TuiLink,
@@ -11,7 +11,7 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiHintDirective,
         TuiHintManualDirective,
         RouterLink,

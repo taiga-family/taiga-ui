@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDialogService,
     TuiHintOptionsDirective,
     TuiIconPipe,
@@ -23,7 +23,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
         TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
         TuiHintOptionsDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiIconPipe,
     ],
     templateUrl: './index.html',

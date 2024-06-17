@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiIconComponent,
@@ -29,7 +29,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiNavigationModule,
         TuiSwitchComponent,
         FormsModule,
-        TuiButtonDirective,
+        TuiButton,
         TuiChevronDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,

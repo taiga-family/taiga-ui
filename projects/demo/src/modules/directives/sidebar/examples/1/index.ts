@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiActiveZoneDirective,
         TuiSidebarDirective,
         TuiAccordion,

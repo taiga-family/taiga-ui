@@ -11,7 +11,7 @@ import {
     tuiControlValue,
     TuiSwipe,
 } from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButtonDirective, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
@@ -42,7 +42,7 @@ const USERS = [
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiSheetDialogDirective,
         TuiInputModule,
         TuiTextfieldControllerModule,

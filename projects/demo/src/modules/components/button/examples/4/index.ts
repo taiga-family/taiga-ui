@@ -3,13 +3,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiButtonLoadingComponent} from '@taiga-ui/kit';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, AsyncPipe, TuiButtonLoadingComponent],
+    imports: [TuiButton, AsyncPipe, TuiButtonLoadingComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

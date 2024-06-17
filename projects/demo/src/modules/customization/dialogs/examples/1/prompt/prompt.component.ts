@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiDialogCloseService} from '@taiga-ui/core';
+import {TuiButton, TuiDialogCloseService} from '@taiga-ui/core';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusOutlet,
@@ -14,7 +14,7 @@ import type {PromptOptions} from './prompt-options';
 @Component({
     standalone: true,
     selector: 'prompt',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButtonDirective],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton],
     templateUrl: './prompt.template.html',
     styleUrls: ['./prompt.style.less'],
     changeDetection,

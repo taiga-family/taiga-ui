@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe, TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiErrorComponent,
     TuiGroupDirective,
     TuiLabelDirective,
@@ -75,7 +75,7 @@ class Account {
         TuiInputTimeModule,
         TuiLabelDirective,
         TuiCheckboxComponent,
-        TuiButtonDirective,
+        TuiButton,
         TuiAmountPipe,
     ],
     templateUrl: './index.html',

@@ -2,7 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
     TuiDropdownOptionsDirective,
@@ -19,7 +19,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
         TuiDropdownHoverDirective,
         TuiDropdownDirective,
         TuiDropdownOptionsDirective,
-        TuiButtonDirective,
+        TuiButton,
         DropdownDocumentationComponent,
     ],
     templateUrl: './index.html',

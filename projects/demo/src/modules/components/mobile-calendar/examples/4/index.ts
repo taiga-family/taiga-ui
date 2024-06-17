@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDropdownComponent} from '@taiga-ui/addon-mobile';
 import type {TuiDayRange} from '@taiga-ui/cdk';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
-import {TUI_MONTHS, TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
+import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
@@ -14,7 +14,7 @@ import {combineLatest, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, AsyncPipe],
+    imports: [TuiButton, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -4,18 +4,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButtonDirective,
-        TuiInputModule,
-        NgIf,
-        TuiAutoFocusDirective,
-        FormsModule,
-    ],
+    imports: [TuiButton, TuiInputModule, NgIf, TuiAutoFocusDirective, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

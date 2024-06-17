@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiCalendarComponent,
     TuiDataListComponent,
     TuiDropdownDirective,
@@ -23,7 +23,7 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButtonDirective,
+        TuiButton,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,

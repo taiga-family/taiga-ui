@@ -3,7 +3,7 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
         NgFor,
         TuiCarouselComponent,
         TuiPaginationModule,
-        TuiButtonDirective,
+        TuiButton,
         TuiItemDirective,
     ],
     templateUrl: './index.html',

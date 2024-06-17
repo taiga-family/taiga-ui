@@ -17,7 +17,7 @@ import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
         '[style.--tui-height-s.rem]': '1.875',
     },
 })
-export class TuiButtonCloseDirective {
+export class TuiButtonClose {
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     constructor() {

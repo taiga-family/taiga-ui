@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
-    TuiButtonDirective,
+    TuiButton,
     TuiIconComponent,
     TuiLink,
     TuiSurfaceDirective,
@@ -32,7 +32,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiCardLarge,
         TuiHeaderDirective,
         TuiTitleDirective,
-        TuiButtonDirective,
+        TuiButton,
         TuiTabsHorizontalDirective,
         TuiTabDirective,
         TuiSurfaceDirective,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_MOBILE, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
@@ -26,7 +26,7 @@ export interface TuiConfirmData {
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiButtonDirective,
+        TuiButton,
         TuiAutoFocusDirective,
     ],
     templateUrl: './confirm.template.html',

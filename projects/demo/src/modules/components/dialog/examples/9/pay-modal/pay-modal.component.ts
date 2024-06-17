@@ -19,7 +19,7 @@ import type {TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_IS_IOS, TuiAutoFocusDirective, TuiLet} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiFormatNumberPipe,
     TuiIconPipe,
     TuiLabelDirective,
@@ -44,7 +44,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         NgForOf,
         NgIf,
         TuiLink,
-        TuiButtonDirective,
+        TuiButton,
         TuiButtonLoadingComponent,
         AsyncPipe,
         TuiFormatNumberPipe,

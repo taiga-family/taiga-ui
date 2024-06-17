@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, TuiTabBar, AsyncPipe, NgForOf],
+    imports: [TuiButton, TuiTabBar, AsyncPipe, NgForOf],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

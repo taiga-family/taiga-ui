@@ -4,13 +4,13 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective, NgForOf],
+    imports: [TuiButton, NgForOf],
     template: `
         <p>Yes?</p>
         <button
@@ -34,7 +34,7 @@ export class AlertExampleComponent {
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
