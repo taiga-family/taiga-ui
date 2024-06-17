@@ -6,21 +6,11 @@
     [(tuiDropdownOpen)]="open"
 >
     Dropdown hover
-    <ng-template
-        #dropdown
-        let-activeZone
-    >
+    <ng-template #dropdown>
         <div [style.padding]="'0 1rem'">
-            <p>
-                There is
-                <code>let-activeZone</code>
-                in dropdown template context to work with nested dropdowns
-            </p>
-
             <tui-select
                 class="margin"
                 [formControl]="selected"
-                [tuiActiveZoneParent]="activeZone"
             >
                 Nested select
                 <tui-data-list-wrapper
@@ -36,7 +26,6 @@
                     tuiDropdownHover
                     tuiDropdownOpen
                     type="button"
-                    [tuiActiveZoneParent]="activeZone"
                     [tuiDropdown]="content"
                 >
                     Nested dropdown hover

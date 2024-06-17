@@ -12,14 +12,8 @@
     List of components
 </button>
 
-<ng-template
-    #content
-    let-activeZone
->
-    <tui-data-list
-        tuiDataListDropdownManager
-        [tuiActiveZoneParent]="activeZone"
-    >
+<ng-template #content>
+    <tui-data-list tuiDataListDropdownManager>
         <button
             iconRight="tuiIconChevronRight"
             tuiDropdownAlign="right"
@@ -79,10 +73,7 @@
             />
         </tui-input>
 
-        <tui-data-list
-            tuiDataListDropdownManager
-            [tuiActiveZoneParent]="activeZone"
-        >
+        <tui-data-list tuiDataListDropdownManager>
             <button
                 iconRight="tuiIconChevronRight"
                 tuiDropdownAlign="right"

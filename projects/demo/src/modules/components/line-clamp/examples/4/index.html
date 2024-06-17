@@ -13,14 +13,8 @@
     </button>
 </h3>
 
-<ng-template
-    #template
-    let-activeZone
->
-    <tui-data-list
-        tuiDataListDropdownManager
-        [tuiActiveZoneParent]="activeZone"
-    >
+<ng-template #template>
+    <tui-data-list tuiDataListDropdownManager>
         <tui-opt-group>
             <ng-container *ngFor="let text of texts">
                 <button

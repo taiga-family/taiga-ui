@@ -2,7 +2,6 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -40,7 +39,6 @@ function randomString(len: number): string {
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListDropdownManagerDirective,
-        TuiActiveZoneDirective,
         TuiOptGroupDirective,
         NgForOf,
         TuiOptionComponent,

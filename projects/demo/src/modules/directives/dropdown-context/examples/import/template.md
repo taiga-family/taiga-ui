@@ -8,7 +8,7 @@
 
 <ng-template
   #content
-  let-close="close"
+  let-close
 >
   Dropdown content
   <button (click)="close()"></button>

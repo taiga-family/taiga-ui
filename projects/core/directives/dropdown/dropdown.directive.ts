@@ -8,7 +8,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
@@ -61,12 +61,10 @@ export class TuiDropdownDirective
     );
 
     public dropdownBoxRef: ComponentRef<unknown> | null = null;
-    public content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    public content: PolymorpheusContent<TuiContext<() => void>>;
 
     @Input()
-    public set tuiDropdown(
-        content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>,
-    ) {
+    public set tuiDropdown(content: PolymorpheusContent<TuiContext<() => void>>) {
         this.content =
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
@@ -100,8 +98,10 @@ export class TuiDropdownDirective
         if (show && this.content && !this.dropdownBoxRef) {
             this.dropdownBoxRef = this.service.add(this.component);
         } else if (!show && this.dropdownBoxRef) {
-            this.service.remove(this.dropdownBoxRef);
+            const {dropdownBoxRef} = this;
+
             this.dropdownBoxRef = null;
+            this.service.remove(dropdownBoxRef);
         }
     }
 }

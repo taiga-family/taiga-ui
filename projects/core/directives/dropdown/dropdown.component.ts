@@ -29,12 +29,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-dropdown',
-    imports: [
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiActiveZoneDirective,
-        TuiScrollbarComponent,
-    ],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiScrollbarComponent],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush
@@ -50,6 +45,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme',
     },
+    hostDirectives: [TuiActiveZoneDirective],
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {
@@ -75,13 +71,15 @@ export class TuiDropdownComponent implements OnInit {
             if (this.directive.el.isConnected) {
                 this.update(top, left);
             } else {
-                this.directive.toggle(false);
+                this.close();
             }
         });
 
     public ngOnInit(): void {
         this.updateWidth(this.accessor.getClientRect().width);
     }
+
+    protected readonly close = (): void => this.directive.toggle(false);
 
     private update(top: number, left: number): void {
         const {style} = this.el;
