@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDateFormatDirective} from '@taiga-ui/core';
+import {TuiDateFormat} from '@taiga-ui/core';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputDateModule, TuiDateFormatDirective, ReactiveFormsModule],
+    imports: [TuiInputDateModule, TuiDateFormat, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
