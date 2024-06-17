@@ -10,12 +10,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [
-        TuiIcon,
-        TuiDropdownContextDirective,
-        TuiDropdownDirective,
-        TuiButton,
-    ],
+    imports: [TuiIcon, TuiDropdownContextDirective, TuiDropdownDirective, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

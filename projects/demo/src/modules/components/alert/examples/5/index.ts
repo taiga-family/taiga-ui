@@ -3,12 +3,7 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    type TuiAlertOptions,
-    TuiAlertService,
-    TuiButton,
-    TuiIcon,
-} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,

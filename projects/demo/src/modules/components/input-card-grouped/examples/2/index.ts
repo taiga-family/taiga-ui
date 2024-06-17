@@ -6,12 +6,7 @@ import {
     TuiInputCardGroupedComponent,
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiIcon,
-    TuiTitleDirective,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiIcon, TuiTitleDirective} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
