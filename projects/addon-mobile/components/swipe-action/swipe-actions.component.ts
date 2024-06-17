@@ -12,7 +12,7 @@ import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
         '[style.--t-actions-width]': 'actionsWidth',
     },
 })
-export class TuiSwipeActionsComponent {
+export class TuiSwipeActions {
     protected actionsWidth = 0;
 
     protected onResize({target}: ResizeObserverEntry): void {

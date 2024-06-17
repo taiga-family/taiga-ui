@@ -9,7 +9,7 @@ import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk';
         '(document:focusin.silent)': 'handleEvent($event)',
     },
 })
-export class TuiSwipeActionsAutoCloseDirective {
+export class TuiSwipeActionsAutoClose {
     private readonly el = tuiInjectElement();
 
     @Input()

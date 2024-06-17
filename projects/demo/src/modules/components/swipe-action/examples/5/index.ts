@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiSwipeActionsComponent} from '@taiga-ui/addon-mobile';
+import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
     TuiDataListComponent,
@@ -19,7 +19,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiSwipeActionsComponent,
+        TuiSwipeActions,
         TuiCardLarge,
         TuiCellDirective,
         TuiSurfaceDirective,

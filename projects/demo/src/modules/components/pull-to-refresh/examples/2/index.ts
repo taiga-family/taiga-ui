@@ -5,7 +5,7 @@ import {
     TUI_IOS_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
-    TuiPullToRefreshComponent,
+    TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
@@ -13,7 +13,7 @@ import {Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiPullToRefreshComponent, TuiButton],
+    imports: [TuiPullToRefresh, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
