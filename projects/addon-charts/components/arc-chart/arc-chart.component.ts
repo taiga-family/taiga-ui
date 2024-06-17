@@ -54,7 +54,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     styleUrls: ['./arc-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiArcChartComponent {
+export class TuiArcChart {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
