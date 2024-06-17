@@ -1,10 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    TUI_ICON_RESOLVER,
-    tuiButtonOptionsProvider,
-    TuiIcons,
-} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, tuiButtonOptionsProvider, TuiIcons} from '@taiga-ui/core';
 
 import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
 
