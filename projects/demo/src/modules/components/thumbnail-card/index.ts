@@ -11,7 +11,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected examples = ['Sizes', 'A cool one', 'Backgrounds'];
     protected iconVariants = ['', 'tuiIconLock', 'tuiIconCloud', 'tuiIconUser'];
     protected iconLeft = this.iconVariants[0];

@@ -11,4 +11,4 @@ import {TuiBarComponent} from '@taiga-ui/addon-charts';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

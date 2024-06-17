@@ -14,7 +14,7 @@ import {TuiButtonDirective} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
 
     protected get columns(): string[] {

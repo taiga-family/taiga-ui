@@ -22,7 +22,7 @@ interface Item {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected itemStringControl = new FormControl<string[]>([]);
     protected itemControl = new FormControl<Item[]>([]);
     protected itemStringGroupControl = new FormControl<string[]>([]);

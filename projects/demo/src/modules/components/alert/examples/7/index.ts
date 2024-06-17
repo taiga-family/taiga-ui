@@ -15,7 +15,7 @@ const MAX_CONCURRENT = 3;
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly queue$ = new Subject<Observable<unknown>>();
     private i = 0;

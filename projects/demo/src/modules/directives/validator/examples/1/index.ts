@@ -29,7 +29,7 @@ import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/le
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = ['Email', 'Phone'];
 
     protected type = this.items[0];

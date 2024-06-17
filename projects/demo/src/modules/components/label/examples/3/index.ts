@@ -12,7 +12,7 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),

@@ -30,7 +30,7 @@ import {
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = [
         {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Tinkoff'},
         {

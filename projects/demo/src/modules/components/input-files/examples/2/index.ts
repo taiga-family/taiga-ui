@@ -35,7 +35,7 @@ import {map} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
     protected readonly accepted$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),

@@ -82,7 +82,7 @@ class Account {
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly svgIcons = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',

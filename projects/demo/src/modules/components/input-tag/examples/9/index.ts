@@ -21,7 +21,7 @@ import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl<string[]>([]);
     protected readonly min = new Date(2000, 0, 1);
     protected readonly max = new Date(2025, 4, 10);

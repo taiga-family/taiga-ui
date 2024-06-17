@@ -12,7 +12,7 @@ import {TUI_DIALOGS, TuiLinkDirective} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly dialogs = inject(TUI_DIALOGS);
     protected readonly routes = DemoRoute;
 }

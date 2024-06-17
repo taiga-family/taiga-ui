@@ -35,7 +35,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = [
         {
             caption: 'Open Source',

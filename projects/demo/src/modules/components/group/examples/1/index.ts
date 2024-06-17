@@ -34,7 +34,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = ['Option 1', 'Option 2', 'Option 3'];
 
     protected testForm = new FormGroup({

@@ -22,7 +22,7 @@ import {TuiScrollableDirective, TuiScrollbarComponent} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
 
     protected add(): void {

@@ -13,7 +13,7 @@ const SOME_OFFSET_CONST = 20;
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 

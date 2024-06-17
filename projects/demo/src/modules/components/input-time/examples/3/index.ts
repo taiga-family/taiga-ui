@@ -20,7 +20,7 @@ import {TuiInputTimeModule, tuiInputTimeOptionsProvider} from '@taiga-ui/legacy'
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiTime | null>(null),
     });

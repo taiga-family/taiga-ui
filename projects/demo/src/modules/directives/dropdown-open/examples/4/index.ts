@@ -25,7 +25,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly form = new FormGroup({
         control: new FormControl<string[]>([]),
     });

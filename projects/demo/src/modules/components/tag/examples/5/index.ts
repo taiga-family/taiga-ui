@@ -16,6 +16,6 @@ import {TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected tag = 'Hello';
 }

@@ -22,7 +22,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly users = [
         'Alex Inkin',
         'Vladimir Potekhin',

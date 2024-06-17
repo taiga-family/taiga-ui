@@ -18,7 +18,7 @@ import {ExampleNativeDateTransformerDirective} from './native-date-transformer.d
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly nativeDateControl = new FormControl(new Date(2022, 0, 26));
     protected readonly defaultControl = new FormControl(new TuiDay(2022, 0, 26));
 }

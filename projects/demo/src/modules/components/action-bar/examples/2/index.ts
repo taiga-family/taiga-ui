@@ -10,6 +10,6 @@ import {TuiActionBar} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = signal(false);
 }

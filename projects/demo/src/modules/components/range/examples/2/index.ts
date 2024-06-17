@@ -22,7 +22,7 @@ import {TuiCardLargeDirective} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected smallRangeValue = [0, 40];
 
     protected readonly bigRangeControl = new FormControl([40, 60]);

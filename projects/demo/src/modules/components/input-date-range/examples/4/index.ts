@@ -76,7 +76,7 @@ export function getExampleDateRangeTransformer(
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl([
         new Date(2018, 2, 10),
         new Date(2018, 3, 20),

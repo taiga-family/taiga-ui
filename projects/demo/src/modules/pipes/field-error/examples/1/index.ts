@@ -46,7 +46,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly routes = DemoRoute;
     protected readonly testValue1 = new FormControl('', [
         Validators.required,

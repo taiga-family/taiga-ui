@@ -27,7 +27,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl(false),

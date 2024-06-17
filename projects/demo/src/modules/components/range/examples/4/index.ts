@@ -14,7 +14,7 @@ import {TuiRangeComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
     protected readonly segments = this.ticksLabels.length - 1;
 

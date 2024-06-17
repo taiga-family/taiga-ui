@@ -13,7 +13,7 @@ import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected toggle = false;
     protected text = '';
     protected money = 237;

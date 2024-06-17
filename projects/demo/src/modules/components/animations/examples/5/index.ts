@@ -23,7 +23,7 @@ import {AnimationState} from '../../state';
     changeDetection,
     animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
 })
-export default class ExampleComponent {
+export default class Example {
     protected speed = inject(AnimationState);
 
     protected isLeft = false;

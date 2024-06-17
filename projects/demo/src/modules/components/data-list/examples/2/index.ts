@@ -37,7 +37,7 @@ import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
 
     protected dropdownOpen = false;

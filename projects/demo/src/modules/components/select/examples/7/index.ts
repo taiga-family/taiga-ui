@@ -69,7 +69,7 @@ const CASH: Account = {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = EMPTY_ARRAY;
 
     protected readonly all = EMPTY_ARRAY;

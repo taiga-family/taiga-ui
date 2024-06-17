@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly array = Array.from(
         {length: 100},
         (_, i) => `https://picsum.photos/${250 + i}/200`,

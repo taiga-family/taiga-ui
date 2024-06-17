@@ -12,7 +12,7 @@ import type {TuiPoint} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly dotted: readonly TuiPoint[] = [
         [50, 50],
         [100, 75],

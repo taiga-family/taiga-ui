@@ -11,4 +11,4 @@ import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

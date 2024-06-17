@@ -13,7 +13,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly value = [451, 302, 203, 124, 65];
     protected readonly sum = this.value.reduce((a, b) => a + b, 0);
 }

@@ -56,7 +56,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly loading = inject(TUI_TREE_LOADING);
     protected readonly service = inject(TuiTreeService<Item>);
 

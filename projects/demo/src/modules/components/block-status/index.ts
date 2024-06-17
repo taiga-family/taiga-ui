@@ -10,7 +10,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected card = false;
 
     protected readonly examples = [

@@ -31,6 +31,6 @@ export class FormatService extends TuiFormatDateService {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly now = Date.now();
 }

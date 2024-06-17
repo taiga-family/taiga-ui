@@ -32,7 +32,7 @@ interface User {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
     protected users: readonly User[] = [

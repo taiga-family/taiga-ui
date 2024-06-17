@@ -11,7 +11,7 @@ import {TuiInputPasswordModule, TuiTextfieldControllerModule} from '@taiga-ui/le
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected testForm = new FormGroup({
         testValue: new FormControl('password', Validators.required),
     });

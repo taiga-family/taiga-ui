@@ -31,7 +31,7 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
     changeDetection,
     providers: [tuiItemsHandlersProvider({stringify: STRINGIFY_EMPLOYEE})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testValue = new FormControl<Employee | null>(null);
 
     protected readonly items: readonly Employee[] = [

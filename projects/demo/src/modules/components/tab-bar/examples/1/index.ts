@@ -20,7 +20,7 @@ interface Item {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     protected activeItemIndex = 1;

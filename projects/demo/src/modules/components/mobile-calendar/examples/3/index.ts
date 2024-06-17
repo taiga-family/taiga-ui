@@ -19,6 +19,6 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected min = TuiDay.currentLocal();
 }

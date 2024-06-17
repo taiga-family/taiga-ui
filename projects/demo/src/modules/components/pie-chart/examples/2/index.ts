@@ -14,7 +14,7 @@ import {TuiHint} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
 }

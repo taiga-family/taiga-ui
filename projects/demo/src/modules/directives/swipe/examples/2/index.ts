@@ -14,7 +14,7 @@ import {Subject} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly open$ = new Subject<boolean>();
 
     protected toggle(open: boolean): void {

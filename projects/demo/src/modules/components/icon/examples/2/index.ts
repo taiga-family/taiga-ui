@@ -16,4 +16,4 @@ import {TuiIconComponent, tuiIconResolverProvider} from '@taiga-ui/core';
         ),
     ],
 })
-export default class ExampleComponent {}
+export default class Example {}

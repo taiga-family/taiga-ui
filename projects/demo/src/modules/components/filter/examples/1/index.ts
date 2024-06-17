@@ -14,7 +14,7 @@ import {TuiFilterComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly form = new FormGroup({
         filters: new FormControl(['Food']),
     });

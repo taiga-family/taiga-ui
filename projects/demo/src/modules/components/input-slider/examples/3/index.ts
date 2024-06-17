@@ -14,7 +14,7 @@ import {TuiInputSliderModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl(10_000);
     protected readonly max = 1_000_000;
     protected readonly min = 0;

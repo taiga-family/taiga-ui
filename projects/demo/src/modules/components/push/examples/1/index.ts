@@ -12,7 +12,7 @@ import {TuiPushComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alert = inject(TuiAlertService);
 
     protected onClose(): void {

@@ -16,7 +16,7 @@ export interface Item {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items: readonly Item[] = [
         {
             name: 'Sword',

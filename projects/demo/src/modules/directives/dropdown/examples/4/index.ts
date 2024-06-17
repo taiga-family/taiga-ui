@@ -12,6 +12,6 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = false;
 }

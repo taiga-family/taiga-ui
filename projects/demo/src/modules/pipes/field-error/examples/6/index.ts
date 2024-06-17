@@ -36,7 +36,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
     protected latteControl = new FormControl<number | null>(null, [

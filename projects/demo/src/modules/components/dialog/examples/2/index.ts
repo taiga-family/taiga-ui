@@ -13,7 +13,7 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
 

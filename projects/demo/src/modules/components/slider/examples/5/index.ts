@@ -20,7 +20,7 @@ import {TuiSliderComponent, TuiSliderKeyStepsDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly labels: string[] = ['5 000', '100 000', '300 000', '1 000 000'];
     protected readonly formControl = new FormControl(720_000);
     protected readonly segments = this.labels.length - 1;

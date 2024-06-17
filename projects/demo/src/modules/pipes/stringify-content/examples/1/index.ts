@@ -27,7 +27,7 @@ interface User {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = null;
 
     protected readonly items = [

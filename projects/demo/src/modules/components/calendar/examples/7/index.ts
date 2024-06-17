@@ -13,7 +13,7 @@ import {TuiCalendarComponent} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value: TuiDay | null = null;
 
     protected onDayClick(day: TuiDay): void {

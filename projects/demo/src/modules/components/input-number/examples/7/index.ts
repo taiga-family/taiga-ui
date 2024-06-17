@@ -31,6 +31,6 @@ import {map, switchMap} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = 1234.56;
 }

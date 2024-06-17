@@ -11,7 +11,7 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = 4;
     protected formControl = new FormControl(60);
 }

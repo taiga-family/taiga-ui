@@ -25,7 +25,7 @@ export type Buttons = ReadonlyArray<
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly pdfService = inject(TuiPdfViewerService);
 

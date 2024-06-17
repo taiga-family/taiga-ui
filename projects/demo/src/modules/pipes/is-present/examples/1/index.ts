@@ -13,7 +13,7 @@ import {delayWhen, of, Subject} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly loadCountSubject = new Subject<void>();
 
     protected readonly count$ = of(0).pipe(delayWhen(() => this.loadCountSubject));

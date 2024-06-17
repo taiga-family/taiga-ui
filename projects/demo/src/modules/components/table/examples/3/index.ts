@@ -59,7 +59,7 @@ interface Item {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly options = {updateOn: 'blur'} as const;
 
     protected readonly units = ['items', 'kg', 'm'];

@@ -14,7 +14,7 @@ import {TuiHint} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly value: TuiPoint[] = [
         [50, 50],
         [100, 75],

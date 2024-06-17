@@ -24,7 +24,7 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected min = 0.5;
     protected max = 2;
     protected value = 1;

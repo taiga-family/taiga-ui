@@ -31,7 +31,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
     private readonly destroyRef = inject(DestroyRef);
 

@@ -8,7 +8,7 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly examples = [
         'Basic',
         'Avatar',

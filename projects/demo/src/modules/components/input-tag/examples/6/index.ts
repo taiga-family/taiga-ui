@@ -24,7 +24,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = ['not', 'unique', 'tags, with', 'custom', 'separator', 'separator'];
     protected customSeparator = ';';
 }

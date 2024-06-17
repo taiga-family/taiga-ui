@@ -40,7 +40,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
         tuiTextfieldOptionsProvider({cleaner: false}),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     protected readonly form = new FormGroup({

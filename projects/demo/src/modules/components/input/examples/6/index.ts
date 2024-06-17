@@ -31,7 +31,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = ['Black', 'Gold', 'Silver'];
     protected readonly form = new FormGroup({
         name: new FormControl('', Validators.required),

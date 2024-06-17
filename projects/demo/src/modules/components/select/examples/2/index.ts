@@ -45,7 +45,7 @@ class Account {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected cards = [
         new Card('Bitcoin', '*6713'),
         new Card('Money', '*4562'),

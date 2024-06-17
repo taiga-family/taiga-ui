@@ -13,7 +13,7 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly examples = [
         'Basic',
         'Label',

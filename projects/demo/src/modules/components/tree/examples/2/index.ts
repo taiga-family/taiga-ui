@@ -11,7 +11,7 @@ import {TuiTree} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data = [
         'Top level 1',
         ['Second level item', ['Third level 1', 'Third level 2', 'Third level 3']],

@@ -30,7 +30,7 @@ const ITEMS: readonly string[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected search: string | null = '';
 
     protected readonly control = new FormControl([ITEMS[0]]);

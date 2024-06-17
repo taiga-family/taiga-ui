@@ -22,7 +22,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly scrollService = inject(TuiScrollService);
     private readonly destroyRef = inject(DestroyRef);
 

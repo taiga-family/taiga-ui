@@ -16,6 +16,6 @@ import {TuiSwitchComponent, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
         tuiSwitchOptionsProvider({showIcons: false, appearance: () => 'primary'}),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = false;
 }

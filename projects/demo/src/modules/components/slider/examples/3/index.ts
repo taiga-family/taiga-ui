@@ -13,7 +13,7 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly labels: number[] = [0, 250, 500, 750, 1000];
     protected readonly formControl = new FormControl(250);
 

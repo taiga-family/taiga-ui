@@ -57,7 +57,7 @@ function tagValidator(tag: string): boolean {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected search = '';
 
     protected readonly tagValidator = tagValidator;

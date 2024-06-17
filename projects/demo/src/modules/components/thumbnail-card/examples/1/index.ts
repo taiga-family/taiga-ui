@@ -12,6 +12,6 @@ import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly sizes = ['s', 'm', 'l'] as const;
 }

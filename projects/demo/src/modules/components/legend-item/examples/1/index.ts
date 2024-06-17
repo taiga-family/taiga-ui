@@ -21,7 +21,7 @@ import {TuiHoveredDirective, tuiSum} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected activeItemIndex = NaN;
 
     protected readonly value = [13769, 12367, 10172, 3018, 2592];

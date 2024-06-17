@@ -34,7 +34,7 @@ import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly reviews = [
         {
             name: 'Alex Inkin',

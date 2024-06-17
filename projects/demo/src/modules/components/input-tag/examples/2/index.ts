@@ -32,7 +32,7 @@ const databaseMockData: readonly string[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly search$ = new Subject<string>();
 
     protected value = [];

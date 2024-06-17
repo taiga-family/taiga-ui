@@ -28,7 +28,7 @@ interface TreeNode {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [

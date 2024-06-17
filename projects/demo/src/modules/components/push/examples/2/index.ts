@@ -12,7 +12,7 @@ import {switchMap, take} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly push = inject(TuiPushService);
     protected readonly alert = inject(TuiAlertService);
 

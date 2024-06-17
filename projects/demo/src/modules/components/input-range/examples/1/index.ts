@@ -18,7 +18,7 @@ import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly min = 0;
     protected readonly max = 20;
     protected readonly sliderStep = 1;

@@ -14,7 +14,7 @@ import {BehaviorSubject, map} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);

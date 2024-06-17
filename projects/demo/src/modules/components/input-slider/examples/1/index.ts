@@ -12,7 +12,7 @@ import {TuiInputSliderModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly min = 5;
     protected readonly max = 20;
     protected readonly sliderStep = 1;

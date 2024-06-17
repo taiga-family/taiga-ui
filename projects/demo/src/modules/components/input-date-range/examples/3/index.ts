@@ -14,7 +14,7 @@ import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
     changeDetection,
     providers: [tuiDateFormatProvider({mode: 'YMD', separator: '/'})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl(
         new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
     );

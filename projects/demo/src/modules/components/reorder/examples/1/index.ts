@@ -12,7 +12,7 @@ import {TuiReorderComponent} from '@taiga-ui/addon-table';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected items: readonly string[] = [
         'John Cleese',
         'Eric Idle',

@@ -19,7 +19,7 @@ import {switchMap} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiMobileDialogService);
     private readonly alerts = inject(TuiAlertService);
 

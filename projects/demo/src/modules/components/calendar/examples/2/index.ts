@@ -14,7 +14,7 @@ import {TuiCalendarComponent} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

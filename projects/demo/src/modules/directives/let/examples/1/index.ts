@@ -13,7 +13,7 @@ import {interval, NEVER, startWith} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected timer$ = isPlatformBrowser(inject(PLATFORM_ID))
         ? interval(1000).pipe(startWith(0))
         : NEVER;

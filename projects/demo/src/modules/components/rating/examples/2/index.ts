@@ -16,7 +16,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = 0;
 
     protected readonly icon: PolymorpheusContent<TuiContext<number>> = ({$implicit}) => {

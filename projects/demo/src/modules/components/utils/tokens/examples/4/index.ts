@@ -9,6 +9,6 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 }

@@ -12,7 +12,7 @@ import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected control = new FormControl<TuiCard | null>({
         card: '',
         expire: '',

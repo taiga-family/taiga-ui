@@ -12,7 +12,7 @@ import {TuiDay} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected min = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 1);
     protected max = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 10);
 }

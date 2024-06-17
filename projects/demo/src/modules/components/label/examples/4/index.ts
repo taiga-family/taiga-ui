@@ -11,7 +11,7 @@ import {TuiTextfield} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected testForm = new FormGroup({
         testValue: new FormControl('Input value'),
     });

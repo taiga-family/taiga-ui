@@ -18,7 +18,7 @@ import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly itemsVariants = [
         [
             {

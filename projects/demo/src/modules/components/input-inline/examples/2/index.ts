@@ -21,7 +21,7 @@ import {TuiInputInlineComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     protected heading = 'Page heading';

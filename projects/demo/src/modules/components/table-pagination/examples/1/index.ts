@@ -11,7 +11,7 @@ import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected page = 3;
     protected size = 10;
 

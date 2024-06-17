@@ -12,7 +12,7 @@ import {TuiButtonDirective} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected hovered = false;
 
     protected onHovered(hovered: boolean): void {

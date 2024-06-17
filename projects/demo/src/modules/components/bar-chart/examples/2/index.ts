@@ -24,7 +24,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly value = [
         [1000, 8000, 4000, 3000, 4000],
         [6000, 2000, 4500, 7000, 5000],

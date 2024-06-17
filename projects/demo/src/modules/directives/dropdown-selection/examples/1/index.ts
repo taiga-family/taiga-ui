@@ -10,4 +10,4 @@ import {TuiDropdownDirective, TuiDropdownSelectionDirective} from '@taiga-ui/cor
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

@@ -13,7 +13,7 @@ import {TuiInputPhoneModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected testForm = new FormGroup({
         testValue: new FormControl('+77777777777', Validators.required),
     });

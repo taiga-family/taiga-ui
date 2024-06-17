@@ -29,7 +29,7 @@ const BENJI = 100;
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     protected readonly value: ReadonlyArray<[number, number, number, number]> = [

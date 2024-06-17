@@ -17,7 +17,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

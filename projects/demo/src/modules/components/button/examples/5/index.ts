@@ -11,4 +11,4 @@ import {TuiButtonDirective, tuiButtonOptionsProvider} from '@taiga-ui/core';
     changeDetection,
     providers: [tuiButtonOptionsProvider({size: 's'})],
 })
-export default class ExampleComponent {}
+export default class Example {}

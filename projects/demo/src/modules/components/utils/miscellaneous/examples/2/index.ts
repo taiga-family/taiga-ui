@@ -9,7 +9,7 @@ import {tuiFlatLength} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected get flatted(): number {
         return tuiFlatLength([
             [1, 2],

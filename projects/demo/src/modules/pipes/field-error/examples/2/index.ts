@@ -52,7 +52,7 @@ import {interval, map, of, scan, startWith} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testValue1 = new FormControl('', [
         Validators.minLength(4),
         Validators.maxLength(4),

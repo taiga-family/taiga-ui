@@ -35,7 +35,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly groups = [
         {
             label: 'Components',

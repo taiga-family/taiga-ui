@@ -59,7 +59,7 @@ const USERS = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChild(TuiInputComponent)
     private readonly input?: TuiInputComponent;
 

@@ -19,7 +19,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected default = '';
     protected custom = '';
 

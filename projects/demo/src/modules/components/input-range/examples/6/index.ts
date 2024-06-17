@@ -28,7 +28,7 @@ class AbsTransformer extends TuiValueTransformer<number | null, number | null> {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl([-30, 0]);
 
     // See https://angular.io/api/common/I18nPluralPipe

@@ -27,7 +27,7 @@ import {
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected total = 350;
     protected sizeOptions = [10, 50, 100, this.total];
 }

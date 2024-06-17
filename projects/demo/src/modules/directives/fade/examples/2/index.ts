@@ -14,7 +14,7 @@ import {TuiFadeDirective} from '@taiga-ui/kit';
     changeDetection,
     animations: [tuiFadeIn],
 })
-export default class ExampleComponent {
+export default class Example {
     protected expanded = false;
 
     protected toggle(): void {

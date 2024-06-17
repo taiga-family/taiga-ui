@@ -116,7 +116,7 @@ const USERS = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChild('avatar')
     private readonly avatar: PolymorpheusContent;
 

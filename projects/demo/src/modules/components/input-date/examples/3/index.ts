@@ -12,7 +12,7 @@ import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected from: TuiDay | null = null;
     protected to: TuiDay | null = null;
     protected min = new TuiDay(2017, 9, 4);

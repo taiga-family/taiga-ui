@@ -15,7 +15,7 @@ import {of, timer} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly animationDisabled =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 

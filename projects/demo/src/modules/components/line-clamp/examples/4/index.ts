@@ -51,7 +51,7 @@ function randomString(len: number): string {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = false;
     protected texts = [
         randomString(100),

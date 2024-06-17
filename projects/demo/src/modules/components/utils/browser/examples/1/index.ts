@@ -10,7 +10,7 @@ import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly userAgent = inject(USER_AGENT);
     private readonly el = tuiInjectElement();
 

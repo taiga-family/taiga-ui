@@ -12,4 +12,4 @@ import {TuiDocCopyComponent, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

@@ -33,7 +33,7 @@ interface Hero {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items: readonly Hero[] = [
         {id: 1, name: 'Luke Skywalker'},
         {id: 2, name: 'Leia Organa Solo'},

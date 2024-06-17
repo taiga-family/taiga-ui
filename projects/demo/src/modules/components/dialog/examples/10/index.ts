@@ -10,7 +10,7 @@ import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
 
     protected showDialog(): void {
