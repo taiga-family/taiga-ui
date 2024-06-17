@@ -11,7 +11,7 @@ import {
     TuiDataListDirective,
     TuiOptGroupDirective,
     TuiOptionComponent,
-    TuiTitleDirective,
+    TuiTitle,
 } from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -62,7 +62,7 @@ const CASH: Account = {
         TuiOptionComponent,
         TuiMultiSelectModule,
         NgForOf,
-        TuiTitleDirective,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

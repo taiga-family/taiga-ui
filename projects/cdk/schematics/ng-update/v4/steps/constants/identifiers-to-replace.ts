@@ -578,7 +578,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiTitleModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiTitleDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiTitle', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiHeaderModule', moduleSpecifier: '@taiga-ui/experimental'},

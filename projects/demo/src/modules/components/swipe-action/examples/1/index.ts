@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiSurface, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 
@@ -18,7 +18,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         TuiAmountPipe,
         AsyncPipe,
-        TuiTitleDirective,
+        TuiTitle,
         TuiButton,
     ],
     templateUrl: './index.html',

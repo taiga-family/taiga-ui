@@ -8,7 +8,7 @@ import {
     TuiLink,
     TuiScrollbarComponent,
     TuiSurface,
-    TuiTitleDirective,
+    TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
@@ -27,7 +27,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
         TuiCardLarge,
         CommonModule,
         TuiScrollbarComponent,
-        TuiTitleDirective,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],
