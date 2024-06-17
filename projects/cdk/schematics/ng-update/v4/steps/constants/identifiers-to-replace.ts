@@ -1166,7 +1166,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
-            name: 'TuiScrollIntoViewLinkDirective',
+            name: 'TuiScrollIntoViewLink',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
