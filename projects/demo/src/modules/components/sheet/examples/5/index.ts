@@ -16,7 +16,7 @@ const FRAMES = 166;
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = false;
 
     protected readonly options: Partial<TuiSheetOptions> = {

@@ -11,7 +11,7 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly arrayColors = [
         '#39b54a',
         '#ffd450',

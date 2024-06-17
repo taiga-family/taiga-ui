@@ -31,7 +31,7 @@ import {ExampleMyAccountComponent} from './account';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly accounts: MyAccount[] = [
         {
             name: 'Dollar deposit',

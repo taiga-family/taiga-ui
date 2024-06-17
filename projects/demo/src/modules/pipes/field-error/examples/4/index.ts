@@ -40,7 +40,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChild('phoneErrorContent')
     protected phoneErrorContent: PolymorpheusContent;
 

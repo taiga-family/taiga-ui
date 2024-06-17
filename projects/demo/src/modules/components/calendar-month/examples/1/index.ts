@@ -11,7 +11,7 @@ import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value: TuiMonth | null = null;
     protected hoveredMonth: TuiMonth | null = null;
 

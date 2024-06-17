@@ -18,7 +18,7 @@ import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl('+79777777777', Validators.required),
     });

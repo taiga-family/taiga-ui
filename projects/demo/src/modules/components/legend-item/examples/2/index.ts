@@ -30,7 +30,7 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private enabled = new Array(5).fill(true);
 

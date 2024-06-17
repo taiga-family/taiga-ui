@@ -11,6 +11,6 @@ import {DemoRoute} from '@demo/routes';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly routes = DemoRoute;
 }

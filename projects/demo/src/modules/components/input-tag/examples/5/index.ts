@@ -18,6 +18,6 @@ import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = ['گراهام چپمن', 'جان کلیز'];
 }

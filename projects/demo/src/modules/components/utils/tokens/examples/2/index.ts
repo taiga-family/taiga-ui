@@ -12,6 +12,6 @@ import {TuiLinkDirective} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly isAndroid = inject(TUI_IS_ANDROID);
 }

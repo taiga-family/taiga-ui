@@ -61,7 +61,7 @@ import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = false;
     protected expanded = false;
     protected submenu = false;

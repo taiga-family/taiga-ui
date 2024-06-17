@@ -33,7 +33,7 @@ function flatten(item: TreeNode): readonly TreeNode[] {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected map = new Map<TreeNode, boolean>();
 
     protected readonly data: TreeNode = {

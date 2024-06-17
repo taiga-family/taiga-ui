@@ -69,7 +69,7 @@ const DATA: readonly User[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly search$ = new Subject<string>();
 
     private readonly selected$ = new Subject<User>();

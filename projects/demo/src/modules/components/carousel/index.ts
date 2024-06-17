@@ -24,7 +24,7 @@ import {TuiCarouselComponent} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly examples = [
         'Single',
         'Multiple',

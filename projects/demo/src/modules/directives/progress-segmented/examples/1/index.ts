@@ -10,4 +10,4 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

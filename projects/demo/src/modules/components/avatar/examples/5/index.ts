@@ -11,4 +11,4 @@ import {TuiAvatarComponent, tuiAvatarOptionsProvider} from '@taiga-ui/kit';
     changeDetection,
     providers: [tuiAvatarOptionsProvider({size: 'l'})],
 })
-export default class ExampleComponent {}
+export default class Example {}

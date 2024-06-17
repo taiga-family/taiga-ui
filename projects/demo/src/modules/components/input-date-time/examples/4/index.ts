@@ -41,6 +41,6 @@ class ExampleDateTimeTransformer extends TuiValueTransformer<
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl('19.01.2022, 12:33');
 }

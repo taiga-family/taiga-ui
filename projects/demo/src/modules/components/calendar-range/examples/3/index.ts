@@ -10,6 +10,6 @@ import {TuiCalendarRangeComponent, tuiCreateDefaultDayRangePeriods} from '@taiga
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected items = tuiCreateDefaultDayRangePeriods();
 }

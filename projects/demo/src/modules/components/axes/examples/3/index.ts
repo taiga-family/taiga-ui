@@ -12,7 +12,7 @@ import {TuiAxesComponent, TuiBarComponent} from '@taiga-ui/addon-charts';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly axisXLabels = ['0', '25', '50', '75', '100'];
     protected readonly value = [50, 24, 36, 95];
     protected readonly largest = 100;

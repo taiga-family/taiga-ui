@@ -14,7 +14,7 @@ import {interval, map, startWith} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected isLoading$ = interval(2000).pipe(
         map(i => Boolean(i % 2)),
         startWith(true),

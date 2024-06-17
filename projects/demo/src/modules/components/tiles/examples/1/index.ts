@@ -13,7 +13,7 @@ import {TuiTiles} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected items = [
         {w: 1, h: 1, content: 'Item 1'},
         {w: 1, h: 1, content: 'Item 2'},

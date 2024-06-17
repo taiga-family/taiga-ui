@@ -14,7 +14,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
 
     protected money = 1000;

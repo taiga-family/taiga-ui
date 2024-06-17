@@ -22,4 +22,4 @@ export const calendarStream$ = of(
         },
     ],
 })
-export default class ExampleComponent {}
+export default class Example {}

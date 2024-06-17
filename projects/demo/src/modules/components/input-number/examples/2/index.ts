@@ -12,7 +12,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl<number | null>(null),
     });

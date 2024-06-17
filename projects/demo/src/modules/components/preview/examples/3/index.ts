@@ -14,7 +14,7 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')

@@ -33,7 +33,7 @@ interface Employee {
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testValue = new FormControl<Employee | null>(null);
 
     protected readonly items: readonly Employee[] = [

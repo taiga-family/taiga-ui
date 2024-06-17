@@ -11,7 +11,7 @@ import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value: TuiMonthRange | null = null;
 
     protected max = new TuiMonth(2024, 11);

@@ -26,7 +26,7 @@ import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly max = 50_000_001;
     protected readonly min = 5_001;
 

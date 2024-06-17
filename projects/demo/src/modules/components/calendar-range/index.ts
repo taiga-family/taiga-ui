@@ -25,7 +25,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly examples = ['Basic', 'With value', 'With ranges', 'Localization'];
 
     protected readonly minVariants = [

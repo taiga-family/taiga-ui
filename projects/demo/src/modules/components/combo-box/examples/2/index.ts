@@ -31,7 +31,7 @@ import {RequestService} from './request.service';
     changeDetection,
     providers: [RequestService],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly service = inject(RequestService);
 
     protected search: string | null = '';

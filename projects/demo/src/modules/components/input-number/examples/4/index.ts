@@ -19,6 +19,6 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     changeDetection,
     providers: [tuiNumberFormatProvider({decimalSeparator: '.', thousandSeparator: ','})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = 1234.56;
 }

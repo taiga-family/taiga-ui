@@ -38,7 +38,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = [
         'https://twitter.com/marsibarsi',
         'https://twitter.com/waterplea',

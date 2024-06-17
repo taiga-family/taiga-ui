@@ -14,7 +14,7 @@ import {TuiSlider} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected currentTime = 0;
     protected paused = true;
 

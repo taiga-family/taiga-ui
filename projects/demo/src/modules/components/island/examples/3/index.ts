@@ -33,7 +33,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected bannerImage =
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
 

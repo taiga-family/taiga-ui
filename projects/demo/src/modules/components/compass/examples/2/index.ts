@@ -11,7 +11,7 @@ import {TuiCompassComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChild(TuiCompassComponent, {read: ElementRef})
     private readonly compass?: ElementRef<HTMLElement>;
 

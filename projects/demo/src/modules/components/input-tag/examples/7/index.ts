@@ -11,7 +11,7 @@ import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = ['Use', 'space', 'button'];
     protected customSeparator = /[\s,]/; // Use space or comma to create new tag
 }

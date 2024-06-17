@@ -14,7 +14,7 @@ import {map, of, repeat, share, takeWhile, timer} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly max = 100;
 
     protected readonly value$ =

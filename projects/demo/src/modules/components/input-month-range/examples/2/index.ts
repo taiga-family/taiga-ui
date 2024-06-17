@@ -16,7 +16,7 @@ import {TuiInputMonthRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiMonthRange | null>(null),
     });

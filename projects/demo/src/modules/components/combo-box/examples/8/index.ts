@@ -38,7 +38,7 @@ const DICTIONARY: Dictionary[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl(3);
     protected readonly items = DICTIONARY.map(({id}) => id);
     protected readonly stringify = (id: number): string =>

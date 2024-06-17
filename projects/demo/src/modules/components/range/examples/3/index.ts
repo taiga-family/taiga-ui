@@ -22,7 +22,7 @@ import {TuiRangeComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly min = 0;
     protected readonly max = 1000;
     protected readonly step = 250;

@@ -31,7 +31,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
 
     protected readonly file: TuiFileLike = {

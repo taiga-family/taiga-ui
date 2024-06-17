@@ -13,7 +13,7 @@ import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected index = 0;
 
     protected readonly itemsCount = 3;

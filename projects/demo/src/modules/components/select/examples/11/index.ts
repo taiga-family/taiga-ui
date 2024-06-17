@@ -17,7 +17,7 @@ interface Item {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected itemStringControl = new FormControl<string | null>(null);
     protected itemGroupControl = new FormControl<string | null>(null);
     protected itemControl = new FormControl<Item | null>(null);

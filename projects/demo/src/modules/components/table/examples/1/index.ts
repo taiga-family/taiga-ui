@@ -13,7 +13,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data = [
         {
             name: 'Alex Inkin',

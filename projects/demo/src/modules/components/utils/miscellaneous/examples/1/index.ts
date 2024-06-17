@@ -8,7 +8,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected get assertResult(): string {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;

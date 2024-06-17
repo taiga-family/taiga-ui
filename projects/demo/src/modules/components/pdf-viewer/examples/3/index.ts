@@ -14,7 +14,7 @@ import {TuiPdfViewerDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';

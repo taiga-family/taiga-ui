@@ -30,7 +30,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
 
     protected open = false;

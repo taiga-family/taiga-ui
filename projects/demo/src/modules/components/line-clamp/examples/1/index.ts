@@ -15,7 +15,7 @@ import {map, timer} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly isE2E = inject(TUI_IS_E2E);
 
     protected value$ = timer(this.isE2E ? 0 : 4000).pipe(

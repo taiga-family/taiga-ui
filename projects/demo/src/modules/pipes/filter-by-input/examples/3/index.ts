@@ -18,7 +18,7 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = [
         'Luke Skywalker',
         'Leia Organa Solo',

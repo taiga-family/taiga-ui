@@ -18,7 +18,7 @@ import {AnimationState} from '../../state';
     changeDetection,
     animations: [tuiFadeIn],
 })
-export default class ExampleComponent {
+export default class Example {
     protected speed = inject(AnimationState);
 
     protected isShown$ = isPlatformBrowser(inject(PLATFORM_ID))

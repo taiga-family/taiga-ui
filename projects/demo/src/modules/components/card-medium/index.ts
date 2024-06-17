@@ -11,7 +11,7 @@ import {TuiLinkDirective} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly examples = [
         'Avatar and text',
         'Icon',

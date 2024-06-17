@@ -32,7 +32,7 @@ import {map, switchMap} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiDay(2017, 0, 15)),
     });

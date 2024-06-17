@@ -33,7 +33,7 @@ const DICTIONARY = [
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     // Server request emulation
     private readonly server$ = timer(5000).pipe(
         map(() => DICTIONARY),

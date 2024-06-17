@@ -10,7 +10,7 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly items = [
         'John Cleese',
         'Eric Idle',

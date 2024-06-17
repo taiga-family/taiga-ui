@@ -51,7 +51,7 @@ interface User {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected country = null;
     protected selected: readonly User[] = [];
     protected sum = null;

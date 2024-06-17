@@ -15,7 +15,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
     providers: [TuiConfirmService],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
 

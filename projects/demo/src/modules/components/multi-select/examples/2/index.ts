@@ -51,7 +51,7 @@ const databaseMockData: readonly User[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly search$ = new Subject<string | null>();
 
     protected readonly items$: Observable<readonly User[] | null> = this.search$.pipe(

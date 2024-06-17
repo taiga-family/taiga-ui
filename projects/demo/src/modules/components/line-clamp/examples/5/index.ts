@@ -19,7 +19,7 @@ interface User {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly user: User = {
         id: '5a006cb3-2b69-4b23',
         email: 'extremely.long.information@example.com',

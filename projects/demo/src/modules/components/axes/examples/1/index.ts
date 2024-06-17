@@ -12,7 +12,7 @@ import {TuiAxesComponent} from '@taiga-ui/addon-charts';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly axisXLabels = ['Jan 2019', 'Feb', 'Mar'];
     protected readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
     protected readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];

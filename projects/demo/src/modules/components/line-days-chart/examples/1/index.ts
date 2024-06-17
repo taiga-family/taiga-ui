@@ -26,7 +26,7 @@ import {map} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly isE2E = inject(TUI_IS_E2E);
     private readonly months$ = inject(TUI_MONTHS);
 

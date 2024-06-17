@@ -12,4 +12,4 @@ import {TuiLoaderComponent, tuiLoaderOptionsProvider} from '@taiga-ui/core';
     changeDetection,
     providers: [tuiLoaderOptionsProvider({size: 'xl'})],
 })
-export default class ExampleComponent {}
+export default class Example {}

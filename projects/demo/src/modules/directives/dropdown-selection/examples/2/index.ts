@@ -46,7 +46,7 @@ export interface User {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 

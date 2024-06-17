@@ -23,7 +23,7 @@ import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly control = new FormControl<TuiFileLike | null>(null);

@@ -20,6 +20,6 @@ import {TuiButtonDirective, TuiTitleDirective} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected open = false;
 }

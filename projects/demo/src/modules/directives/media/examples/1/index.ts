@@ -11,7 +11,7 @@ import {TuiHighDpiDirective, TuiMediaDirective} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected currentTime = 0;
     protected volume = 1;
     protected paused = true;

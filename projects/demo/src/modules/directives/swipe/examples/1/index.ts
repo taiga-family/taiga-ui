@@ -12,7 +12,7 @@ import {TuiSwipeDirective} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     @HostBinding('class')
     protected swiped = 'default';
 

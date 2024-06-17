@@ -22,7 +22,7 @@ const getIcon: Record<string, string> = {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
     protected form = new FormGroup({

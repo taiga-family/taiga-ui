@@ -22,7 +22,7 @@ import {
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiTime(10, 30)),
         testValue2: new FormControl(new TuiTime(10, 30, 0)),

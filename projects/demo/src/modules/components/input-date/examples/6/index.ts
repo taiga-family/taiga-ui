@@ -14,7 +14,7 @@ import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
     changeDetection,
     providers: [tuiInputDateOptionsProvider({nativePicker: true})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiDay(2017, 0, 15)),
     });

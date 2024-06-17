@@ -14,7 +14,7 @@ import {of, repeat, takeWhile, timer} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly max = 100;
     protected readonly value$ =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))

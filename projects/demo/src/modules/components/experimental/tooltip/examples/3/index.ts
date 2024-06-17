@@ -16,4 +16,4 @@ import {TuiTooltipModule, tuiTooltipOptionsProvider} from '@taiga-ui/experimenta
         }),
     ],
 })
-export default class ExampleComponent {}
+export default class Example {}

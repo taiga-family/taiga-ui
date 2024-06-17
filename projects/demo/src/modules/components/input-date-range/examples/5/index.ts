@@ -16,7 +16,7 @@ const yesterday = today.append({day: -1});
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl(new TuiDayRange(today, today));
 
     protected readonly items = [

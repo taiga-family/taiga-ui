@@ -25,7 +25,7 @@ import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxj
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')

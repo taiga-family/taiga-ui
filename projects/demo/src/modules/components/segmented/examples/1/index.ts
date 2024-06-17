@@ -18,6 +18,6 @@ import {TuiBadgeNotificationComponent, TuiSegmentedComponent} from '@taiga-ui/ki
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly sizes = ['s', 'm', 'l'] as const;
 }

@@ -29,7 +29,7 @@ import {TuiCardMediumDirective} from '@taiga-ui/layout';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly urls = [
         'https://avatars.githubusercontent.com/u/11832552',
         'https://avatars.githubusercontent.com/u/10106368',

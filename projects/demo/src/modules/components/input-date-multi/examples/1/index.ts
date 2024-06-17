@@ -12,7 +12,7 @@ import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/l
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl([
             new TuiDay(2017, 0, 7),

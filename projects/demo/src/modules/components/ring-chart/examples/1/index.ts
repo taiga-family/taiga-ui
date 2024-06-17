@@ -11,6 +11,6 @@ import {TuiRingChartComponent} from '@taiga-ui/addon-charts';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly value = [40, 30, 20, 10];
 }

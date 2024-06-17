@@ -74,7 +74,7 @@ function getAge({dob}: User): number {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data = DATA;
 
     protected readonly columns = ['name', 'dob', 'age'];

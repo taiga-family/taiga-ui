@@ -11,7 +11,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected numbers = [1, 2, 3, 4, 5] as const;
 
     protected readonly mapper: TuiMapper<[readonly number[], number], number[]> = (

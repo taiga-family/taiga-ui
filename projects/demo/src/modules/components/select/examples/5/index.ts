@@ -48,7 +48,7 @@ const ITEMS: readonly Python[] = [
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected value = 42;
 
     // Server request for items imitation

@@ -55,7 +55,7 @@ class AlertExampleWithCustomLabelComponent {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly router = inject(Router);
     private readonly alerts = inject(TuiAlertService);
 

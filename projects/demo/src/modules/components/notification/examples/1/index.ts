@@ -12,7 +12,7 @@ import {TuiHint, TuiIconComponent, TuiNotificationComponent} from '@taiga-ui/cor
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly statuses = [
         'neutral',
         'info',

@@ -10,7 +10,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly mapper = (amount: number, currencySymbol: string): string =>
         `Total: ${amount} ${currencySymbol}`;
 }

@@ -45,7 +45,7 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected dropdownOpen = false;
     protected dateValue: TuiDay = new TuiDay(2020, 0, 1);
     protected euro = 87; // 1 euro = 87 rub

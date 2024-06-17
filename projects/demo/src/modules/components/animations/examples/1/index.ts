@@ -17,7 +17,7 @@ import {AnimationState} from '../../state';
     changeDetection,
     animations: [tuiHeightCollapse],
 })
-export default class ExampleComponent {
+export default class Example {
     protected speed = inject(AnimationState);
     protected isOpen = false;
 

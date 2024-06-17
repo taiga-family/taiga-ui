@@ -20,7 +20,7 @@ import {getCountries} from 'libphonenumber-js';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl('', Validators.minLength(12)),
     });

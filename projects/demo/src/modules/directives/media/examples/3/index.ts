@@ -19,7 +19,7 @@ import {TuiSlider} from '@taiga-ui/kit';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected currentTime = 0;
     protected paused = true;
 

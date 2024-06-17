@@ -17,7 +17,7 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected testForm = new FormGroup({
         testValue1: new FormControl('A field', Validators.required),
     });

@@ -18,7 +18,7 @@ interface TreeNode {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [

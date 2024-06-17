@@ -13,7 +13,7 @@ import {SearchDialogExampleComponent} from './search-example/search-dialog-examp
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
 

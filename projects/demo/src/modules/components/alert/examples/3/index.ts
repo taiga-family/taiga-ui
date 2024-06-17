@@ -39,7 +39,7 @@ export class AlertExampleComponent {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly notification = this.alerts
         .open<boolean>(new PolymorpheusComponent(AlertExampleComponent), {

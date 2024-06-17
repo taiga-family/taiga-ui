@@ -18,4 +18,4 @@ import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce'
         }),
     ],
 })
-export default class ExampleComponent {}
+export default class Example {}

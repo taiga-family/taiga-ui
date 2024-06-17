@@ -13,7 +13,7 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly max = 100;
     protected readonly min = 0;
 

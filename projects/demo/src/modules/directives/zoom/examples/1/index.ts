@@ -14,7 +14,7 @@ import {map, scan, startWith, Subject} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly delta$ = new Subject<number>();
 
     protected readonly scale$ = this.delta$.pipe(

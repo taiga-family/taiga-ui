@@ -12,6 +12,6 @@ import {TuiAvatarComponent, TuiChipDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly sizes = ['m', 's', 'xs', 'xxs'] as const;
 }

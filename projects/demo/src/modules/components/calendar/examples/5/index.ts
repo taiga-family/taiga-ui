@@ -20,4 +20,4 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     changeDetection,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],
 })
-export default class ExampleComponent {}
+export default class Example {}

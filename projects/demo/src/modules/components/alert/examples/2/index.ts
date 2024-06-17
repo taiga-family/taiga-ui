@@ -21,7 +21,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     @ViewChild('withdrawTemplate')

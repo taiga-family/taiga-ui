@@ -25,6 +25,6 @@ import {TuiBlockDetailsDirective} from '@taiga-ui/layout';
     changeDetection,
     providers: [tuiAmountOptionsProvider({sign: 'always'})],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 }

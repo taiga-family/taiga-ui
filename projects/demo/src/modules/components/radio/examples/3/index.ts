@@ -19,7 +19,7 @@ import {TuiRadioListComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly form = new FormGroup({
         vertical: new FormControl(null, Validators.required),
     });

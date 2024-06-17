@@ -35,7 +35,7 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly fb = inject(UntypedFormBuilder);
 
     protected readonly form: FormGroup;

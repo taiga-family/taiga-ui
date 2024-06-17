@@ -9,4 +9,4 @@ import {TuiHint} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

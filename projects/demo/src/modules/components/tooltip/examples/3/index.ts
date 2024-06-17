@@ -17,4 +17,4 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class Example {}

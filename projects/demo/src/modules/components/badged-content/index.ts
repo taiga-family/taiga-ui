@@ -22,7 +22,7 @@ import {
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected radiusVariants = ['0.75rem', '50%'];
     protected radius = this.radiusVariants[0];
 

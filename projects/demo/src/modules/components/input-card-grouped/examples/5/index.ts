@@ -24,7 +24,7 @@ import {of} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl<Partial<TuiCard>>({
         card: '558620******2158',
         expire: '12/25',

@@ -14,7 +14,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected parametersForm = new FormGroup({
         value: new FormControl(123456.789),
         precision: new FormControl(2),
