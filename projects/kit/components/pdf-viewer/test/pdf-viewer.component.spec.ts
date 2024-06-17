@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -13,7 +13,7 @@ import {TuiPdfViewerService} from '../pdf-viewer.service';
 describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent],
+        imports: [TuiRoot],
         template: `
             <tui-root></tui-root>
         `,

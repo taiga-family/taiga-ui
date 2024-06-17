@@ -3,14 +3,14 @@ import {Component, DestroyRef, EventEmitter, inject, Input, Output} from '@angul
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
     standalone: true,
-    imports: [TuiRootComponent, ReactiveFormsModule, TuiInputPhoneInternationalComponent],
+    imports: [TuiRoot, ReactiveFormsModule, TuiInputPhoneInternationalComponent],
     template: `
         <tui-root>
             <tui-input-phone-international

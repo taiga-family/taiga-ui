@@ -11,7 +11,7 @@ import {
     TuiDayRange,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {
@@ -30,7 +30,7 @@ describe('InputDateRangeComponent', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRootComponent,
+            TuiRoot,
             TuiInputDateRangeModule,
             ReactiveFormsModule,
             TuiTextfieldControllerModule,
@@ -326,7 +326,7 @@ describe('InputDateRangeComponent', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRootComponent,
+                TuiRoot,
                 TuiInputDateRangeModule,
                 ReactiveFormsModule,
                 TuiTextfieldControllerModule,

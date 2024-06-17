@@ -3,7 +3,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataListDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
 import {
@@ -41,7 +41,7 @@ describe('MultiSelect', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRootComponent,
+                TuiRoot,
                 TuiMultiSelectModule,
                 ReactiveFormsModule,
                 TuiDataListWrapperComponent,
@@ -254,7 +254,7 @@ describe('MultiSelect', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRootComponent,
+                TuiRoot,
                 TuiMultiSelectModule,
                 ReactiveFormsModule,
                 TuiDataListWrapperComponent,

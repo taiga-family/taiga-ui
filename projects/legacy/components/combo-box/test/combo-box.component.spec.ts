@@ -6,7 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDataListDirective, TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
@@ -48,7 +48,7 @@ describe('ComboBox', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRootComponent,
+            TuiRoot,
             TuiComboBoxModule,
             ReactiveFormsModule,
             TuiHint,

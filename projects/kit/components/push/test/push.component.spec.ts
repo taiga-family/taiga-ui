@@ -2,7 +2,7 @@ import type {DebugElement} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -12,7 +12,7 @@ import {TuiPushService} from '../push.service';
 describe('Push with TUI_PUSH_OPTIONS', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent],
+        imports: [TuiRoot],
         template: `
             <tui-root></tui-root>
         `,

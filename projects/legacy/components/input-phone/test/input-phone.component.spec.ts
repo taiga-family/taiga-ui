@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputPhoneComponent, TuiInputPhoneModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
@@ -10,7 +10,7 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 describe('InputPhone', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent, TuiInputPhoneModule, ReactiveFormsModule],
+        imports: [TuiRoot, TuiInputPhoneModule, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-phone

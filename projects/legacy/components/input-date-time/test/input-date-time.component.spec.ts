@@ -10,7 +10,7 @@ import {
     TuiTime,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {TuiInputDateTimeComponent, TuiInputDateTimeModule} from '@taiga-ui/legacy';
@@ -20,7 +20,7 @@ import {of} from 'rxjs';
 describe('InputDateTime', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent, TuiInputDateTimeModule, ReactiveFormsModule],
+        imports: [TuiRoot, TuiInputDateTimeModule, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-date-time
@@ -340,7 +340,7 @@ describe('InputDateTime', () => {
 
         @Component({
             standalone: true,
-            imports: [TuiRootComponent, TuiInputDateTimeModule, ReactiveFormsModule],
+            imports: [TuiRoot, TuiInputDateTimeModule, ReactiveFormsModule],
             template: `
                 <tui-root>
                     <tui-input-date-time

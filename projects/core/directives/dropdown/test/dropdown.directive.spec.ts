@@ -2,11 +2,7 @@ import type {ElementRef} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {
-    TuiDropdownDirective,
-    TuiDropdownManualDirective,
-    TuiRootComponent,
-} from '@taiga-ui/core';
+import {TuiDropdownDirective, TuiDropdownManualDirective, TuiRoot} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -14,7 +10,7 @@ describe('TuiDropdownDirective', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRootComponent,
+            TuiRoot,
             TuiDropdownDirective,
             TuiDropdownManualDirective,
             PolymorpheusOutlet,

@@ -254,13 +254,13 @@ describe('ng-add [Standalone]', () => {
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(
             `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRootComponent, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
+import { TuiRoot, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, TuiRootComponent, TuiDialogModule, TuiAlertModule],
+  imports: [RouterModule, TuiRoot, TuiDialogModule, TuiAlertModule],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],

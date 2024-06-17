@@ -6,13 +6,13 @@ import {
     tuiMobileDialogOptionsProvider,
     TuiMobileDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent],
+        imports: [TuiRoot],
         template: `
             <tui-root></tui-root>
         `,

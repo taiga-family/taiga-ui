@@ -1,7 +1,7 @@
 import {NgIf} from '@angular/common';
 import {Component, Input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {MountResponse} from 'cypress/angular';
 
@@ -26,7 +26,7 @@ describe('TuiHint', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiRootComponent, HostComponent, TuiHintDirective],
+        imports: [TuiRoot, HostComponent, TuiHintDirective],
         template: `
             <tui-root>
                 <my-host [hideElement]="hide">
