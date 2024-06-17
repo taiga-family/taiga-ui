@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiAppearance,
-    TuiIcon,
-    TuiScrollbarComponent,
-    TuiTooltip,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiIcon, TuiScrollbarComponent, TuiTooltip} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,

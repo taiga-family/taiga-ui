@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {
-    TuiAppearance,
-    TuiDataList,
-    TuiDropdownModule,
-    TuiIcon,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiDataList, TuiDropdownModule, TuiIcon} from '@taiga-ui/core';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
