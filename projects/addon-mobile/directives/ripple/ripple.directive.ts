@@ -53,7 +53,7 @@ class TuiRippleStyles {}
     standalone: true,
     selector: '[tuiRipple]',
 })
-export class TuiRippleDirective {
+export class TuiRipple {
     private readonly document = inject(DOCUMENT);
     private readonly destroyRef = inject(DestroyRef);
     private readonly animationOptions = {
