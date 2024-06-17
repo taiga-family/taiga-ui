@@ -23,7 +23,7 @@ import {
     TuiItemDirective,
     TuiPanDirective,
     tuiPure,
-    TuiSwipeDirective,
+    TuiSwipe,
 } from '@taiga-ui/cdk';
 
 import {TuiCarouselDirective} from './carousel.directive';
@@ -41,7 +41,7 @@ import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
         NgTemplateOutlet,
         IntersectionObserverModule,
         TuiPanDirective,
-        TuiSwipeDirective,
+        TuiSwipe,
         TuiCarouselScrollDirective,
         TuiCarouselAutoscrollDirective,
     ],

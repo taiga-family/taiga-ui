@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import type {TuiSwipe} from '@taiga-ui/cdk';
+import type {TuiSwipeEvent} from '@taiga-ui/cdk';
 import {
     TuiActiveZoneDirective,
     tuiGetNativeFocused,
@@ -16,7 +16,7 @@ import {
     tuiIsElement,
     tuiIsNodeIn,
     tuiPx,
-    TuiSwipeDirective,
+    TuiSwipe,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -36,7 +36,7 @@ const GAP = 16;
     selector: 'tui-dropdown-mobile',
     imports: [
         IntersectionObserverModule,
-        TuiSwipeDirective,
+        TuiSwipe,
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
@@ -110,7 +110,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    protected onSwipe({direction}: TuiSwipe, el: HTMLElement): void {
+    protected onSwipe({direction}: TuiSwipeEvent, el: HTMLElement): void {
         if (
             direction === 'bottom' &&
             el.getBoundingClientRect().bottom > Number(this.doc.defaultView?.innerHeight)

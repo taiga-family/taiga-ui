@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import type {TuiSwipe} from '@taiga-ui/cdk';
-import {TuiSwipeDirective} from '@taiga-ui/cdk';
+import type {TuiSwipeEvent} from '@taiga-ui/cdk';
+import {TuiSwipe} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiSwipe', () => {
@@ -17,7 +17,7 @@ describe('TuiSwipe', () => {
     class Test {
         public swiped = '';
 
-        protected onSwipe(swipe: TuiSwipe): void {
+        protected onSwipe(swipe: TuiSwipeEvent): void {
             this.swiped = swipe.direction;
         }
     }
@@ -25,7 +25,7 @@ describe('TuiSwipe', () => {
     beforeEach(() =>
         cy
             .mount(Test, {
-                imports: [TuiSwipeDirective],
+                imports: [TuiSwipe],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {

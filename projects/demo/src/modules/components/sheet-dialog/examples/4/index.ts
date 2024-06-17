@@ -9,7 +9,7 @@ import {
     TUI_DEFAULT_MATCHER,
     TUI_WINDOW_SIZE,
     tuiControlValue,
-    TuiSwipeDirective,
+    TuiSwipe,
 } from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButtonDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -48,7 +48,7 @@ const USERS = [
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
         AsyncPipe,
-        TuiSwipeDirective,
+        TuiSwipe,
         NgForOf,
         TuiAvatarComponent,
         TuiInitialsPipe,

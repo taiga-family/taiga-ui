@@ -1,4 +1,4 @@
-export interface TuiSwipe {
+export interface TuiSwipeEvent {
     readonly direction: TuiSwipeDirection;
     readonly events: [TouchEvent, TouchEvent];
 }

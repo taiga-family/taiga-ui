@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSwipeDirective} from '@taiga-ui/cdk';
+import {TuiSwipe} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogDirective} from '@taiga-ui/kit';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -11,7 +11,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     imports: [
         TuiButtonDirective,
         TuiPreview,
-        TuiSwipeDirective,
+        TuiSwipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiPreviewDialogDirective,

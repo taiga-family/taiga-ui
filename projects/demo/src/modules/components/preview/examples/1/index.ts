@@ -2,8 +2,8 @@ import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiSwipe} from '@taiga-ui/cdk';
-import {tuiClamp, TuiSwipeDirective} from '@taiga-ui/cdk';
+import type {TuiSwipeEvent} from '@taiga-ui/cdk';
+import {tuiClamp, TuiSwipe} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
@@ -15,7 +15,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     imports: [
         TuiButtonDirective,
         TuiPreview,
-        TuiSwipeDirective,
+        TuiSwipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
     ],
@@ -58,7 +58,7 @@ export default class Example {
         this.alerts.open('Deleting...').subscribe();
     }
 
-    protected onSwipe(swipe: TuiSwipe): void {
+    protected onSwipe(swipe: TuiSwipeEvent): void {
         if (swipe.direction === 'left') {
             this.index = tuiClamp(this.index + 1, 0, this.length - 1);
         }
