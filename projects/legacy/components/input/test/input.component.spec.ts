@@ -4,7 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDataListDirective, TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
 import {
@@ -43,7 +43,7 @@ describe('Input', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRootComponent,
+            TuiRoot,
             ReactiveFormsModule,
             TuiInputModule,
             TuiHint,

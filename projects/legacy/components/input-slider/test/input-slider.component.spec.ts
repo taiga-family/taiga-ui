@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputSliderComponent,
@@ -17,7 +17,7 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 @Component({
     standalone: true,
     imports: [
-        TuiRootComponent,
+        TuiRoot,
         TuiInputSliderModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

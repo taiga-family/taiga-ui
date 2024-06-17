@@ -53,7 +53,7 @@ import {debounceTime, map, of} from 'rxjs';
         '(touchstart.passive.silent)': '0',
     },
 })
-export class TuiRootComponent {
+export class TuiRoot {
     private readonly dialogs$ = inject<Observable<readonly unknown[]>>(TUI_DIALOGS);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly breakpoint = inject(TuiBreakpointService);

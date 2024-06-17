@@ -2,14 +2,14 @@ import type {TemplateRef} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {TuiHint, TuiRoot} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
 describe('Hint', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent, TuiHint],
+        imports: [TuiRoot, TuiHint],
         template: `
             <tui-root>
                 <div

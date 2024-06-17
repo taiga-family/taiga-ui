@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
-import {TuiRootComponent} from '@taiga-ui/core';
+import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
@@ -11,7 +11,7 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 describe('InputMonth', () => {
     @Component({
         standalone: true,
-        imports: [TuiRootComponent, TuiInputMonthModule, ReactiveFormsModule],
+        imports: [TuiRoot, TuiInputMonthModule, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-month [formControl]="control"></tui-input-month>

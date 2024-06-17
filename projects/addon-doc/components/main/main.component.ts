@@ -9,7 +9,7 @@ import {RouterOutlet} from '@angular/router';
 import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiRoot} from '@taiga-ui/core';
 
 import {TuiDocHeaderComponent} from '../internal/header';
 import {TuiDocNavigationComponent} from '../navigation/navigation.component';
@@ -18,7 +18,7 @@ import {TuiDocNavigationComponent} from '../navigation/navigation.component';
     standalone: true,
     selector: 'tui-doc-main',
     imports: [
-        TuiRootComponent,
+        TuiRoot,
         AsyncPipe,
         RouterOutlet,
         TuiButtonDirective,

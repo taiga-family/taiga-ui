@@ -16,11 +16,7 @@ import {getProjects} from '../../utils/get-projects';
 import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
 import type {TuiSchema} from '../schema';
 
-function addTuiRootComponent(
-    filePath: string,
-    context: SchematicContext,
-    tree: Tree,
-): void {
+function addTuiRoot(filePath: string, context: SchematicContext, tree: Tree): void {
     const buffer = tree.read(filePath);
 
     if (!buffer) {
@@ -119,7 +115,7 @@ function getTemplateInitializer(
     return property.getInitializer();
 }
 
-export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
+export function wrapWithTuiRoot(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
@@ -149,6 +145,6 @@ export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
             return;
         }
 
-        addTuiRootComponent(appTemplatePath, context, tree);
+        addTuiRoot(appTemplatePath, context, tree);
     };
 }

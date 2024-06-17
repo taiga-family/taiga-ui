@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
-import {TuiDataListDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
@@ -39,7 +39,7 @@ describe('Select', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRootComponent,
+            TuiRoot,
             TuiSelectModule,
             ReactiveFormsModule,
             TuiTextfieldControllerModule,

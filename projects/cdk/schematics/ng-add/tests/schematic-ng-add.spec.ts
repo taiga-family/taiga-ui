@@ -254,13 +254,13 @@ describe('ng-add', () => {
 
         expect(tree.readContent('test/app/app.module.ts')).toBe(
             `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRootComponent, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
+import { TuiRoot, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @NgModule({declarations: [AppComponent],
-    imports: [BrowserAnimationsModule, TuiRootComponent, TuiDialogModule, TuiAlertModule],
+    imports: [BrowserAnimationsModule, TuiRoot, TuiDialogModule, TuiAlertModule],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
 export class AppModule {}
