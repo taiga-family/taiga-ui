@@ -33,7 +33,7 @@ class TuiIconsStyles {}
         '[style.--t-mask-right]': '"url(" + resolver(iconRight) + ")"',
     },
 })
-export class TuiIconsDirective {
+export class TuiIcons {
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 

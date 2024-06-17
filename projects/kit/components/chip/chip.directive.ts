@@ -12,7 +12,7 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     tuiButtonOptionsProvider,
-    TuiIconsDirective,
+    TuiIcons,
 } from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
@@ -55,7 +55,7 @@ class TuiChipStyles {}
             ],
         },
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],

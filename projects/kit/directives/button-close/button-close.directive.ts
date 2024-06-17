@@ -3,7 +3,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_ICON_RESOLVER,
     tuiButtonOptionsProvider,
-    TuiIconsDirective,
+    TuiIcons,
 } from '@taiga-ui/core';
 
 import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
@@ -21,6 +21,6 @@ export class TuiButtonClose {
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     constructor() {
-        inject(TuiIconsDirective).iconLeft = inject(TUI_BUTTON_CLOSE_ICON);
+        inject(TuiIcons).iconLeft = inject(TUI_BUTTON_CLOSE_ICON);
     }
 }

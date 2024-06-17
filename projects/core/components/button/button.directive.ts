@@ -11,7 +11,7 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
 
@@ -41,7 +41,7 @@ class TuiButtonStyles {}
             ],
         },
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],

@@ -10,7 +10,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-    TuiIconsDirective,
+    TuiIcons,
 } from '@taiga-ui/core';
 
 import {TUI_BADGE_OPTIONS} from './badge.options';
@@ -45,7 +45,7 @@ class TuiBadgeStyles {}
             ],
         },
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],

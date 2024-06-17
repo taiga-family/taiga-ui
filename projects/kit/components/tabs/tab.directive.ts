@@ -4,7 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement, tuiIsNativeFocused, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TuiIconsDirective} from '@taiga-ui/core';
+import {TuiIcons} from '@taiga-ui/core';
 import {EMPTY, filter, merge} from 'rxjs';
 
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
@@ -15,7 +15,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
     hostDirectives: [
         {
-            directive: TuiIconsDirective,
+            directive: TuiIcons,
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
