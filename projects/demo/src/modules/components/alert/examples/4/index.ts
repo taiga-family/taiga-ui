@@ -5,12 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    type TuiAlertOptions,
-    TuiAlertService,
-    TuiButton,
-    TuiLink,
-} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 

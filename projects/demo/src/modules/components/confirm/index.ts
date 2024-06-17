@@ -16,13 +16,7 @@ import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiLink,
-        RouterModule,
-        TuiNotificationComponent,
-        TuiDemo,
-    ],
+    imports: [TuiButton, TuiLink, RouterModule, TuiNotificationComponent, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -10,13 +10,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiHintDirective,
-        TuiHintManualDirective,
-        RouterLink,
-        TuiLink,
-    ],
+    imports: [TuiButton, TuiHintDirective, TuiHintManualDirective, RouterLink, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
