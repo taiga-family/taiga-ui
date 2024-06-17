@@ -3,7 +3,7 @@ import {Component, inject, Injectable} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
-import {TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiLoader} from '@taiga-ui/core';
 import {
     TUI_TREE_LOADER,
     TUI_TREE_LOADING,
@@ -39,7 +39,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
 
 @Component({
     standalone: true,
-    imports: [TuiTree, TuiLoaderComponent, NgIf, AsyncPipe],
+    imports: [TuiTree, TuiLoader, NgIf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

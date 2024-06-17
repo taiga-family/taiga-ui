@@ -24,7 +24,7 @@ import {
     TuiIconPipe,
     TuiLabelDirective,
     TuiLinkDirective,
-    TuiLoaderComponent,
+    TuiLoader,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
@@ -50,7 +50,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiFormatNumberPipe,
         TuiLet,
         TuiAutoFocusDirective,
-        TuiLoaderComponent,
+        TuiLoader,
         TuiInputCardGroupedComponent,
         TuiTextfieldOptionsDirective,
         TuiLabelDirective,

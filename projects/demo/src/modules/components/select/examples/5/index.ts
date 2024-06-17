@@ -8,7 +8,7 @@ import {TuiLet, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
     TuiDataListDirective,
-    TuiLoaderComponent,
+    TuiLoader,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -41,7 +41,7 @@ const ITEMS: readonly Python[] = [
         NgIf,
         TuiOptionComponent,
         NgForOf,
-        TuiLoaderComponent,
+        TuiLoader,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

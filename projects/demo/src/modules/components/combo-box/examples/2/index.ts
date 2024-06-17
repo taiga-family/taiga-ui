@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiDataList, TuiInitialsPipe, TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiDataList, TuiInitialsPipe, TuiLoader} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -22,7 +22,7 @@ import {RequestService} from './request.service';
         TuiComboBoxModule,
         TuiDataList,
         TuiAvatarComponent,
-        TuiLoaderComponent,
+        TuiLoader,
         TuiInitialsPipe,
         TuiTextfieldControllerModule,
     ],

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiLoaderComponent, tuiLoaderOptionsProvider} from '@taiga-ui/core';
+import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('Loader component options', () => {
@@ -10,14 +10,14 @@ describe('Loader component options', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiLoaderComponent],
+        imports: [TuiLoader],
         template: `
             <tui-loader></tui-loader>
         `,
     })
     class Test {
-        @ViewChild(TuiLoaderComponent, {static: true})
-        public component!: TuiLoaderComponent;
+        @ViewChild(TuiLoader, {static: true})
+        public component!: TuiLoader;
     }
 
     beforeEach(() => {

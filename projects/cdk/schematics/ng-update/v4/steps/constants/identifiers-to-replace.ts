@@ -139,7 +139,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiLoaderModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiLoaderComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiLoader', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiAccordionComponent', moduleSpecifier: '@taiga-ui/kit'},

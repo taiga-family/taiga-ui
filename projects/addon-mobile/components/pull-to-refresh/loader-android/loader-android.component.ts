@@ -1,7 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiLoader} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
@@ -14,7 +14,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
 @Component({
     standalone: true,
     selector: 'tui-mobile-android-loader',
-    imports: [NgIf, TuiLoaderComponent],
+    imports: [NgIf, TuiLoader],
     templateUrl: './loader-android.template.html',
     styleUrls: ['./loader-android.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
