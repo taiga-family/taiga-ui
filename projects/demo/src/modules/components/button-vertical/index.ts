@@ -15,7 +15,7 @@ import {TuiButtonLoadingComponent, TuiButtonVerticalDirective} from '@taiga-ui/k
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly examples = ['Basic', 'Custom'];
 
     protected readonly appearances = [

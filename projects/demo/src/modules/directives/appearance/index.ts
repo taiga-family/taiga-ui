@@ -10,7 +10,7 @@ import {TuiButtonDirective} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected appearances = ['primary', 'secondary', 'flat'];
     protected appearance = this.appearances[0];
 

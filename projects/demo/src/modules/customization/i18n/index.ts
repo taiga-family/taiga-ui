@@ -12,7 +12,7 @@ import {from, map} from 'rxjs';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly readme = from(
         import('../../../../../i18n/README.md?raw') as Promise<{
             default: string;

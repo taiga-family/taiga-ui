@@ -10,7 +10,7 @@ import {TuiPortalsExample1} from './examples/1';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected host = import('./examples/setup/create-host.md?raw');
     protected service = import('./examples/setup/create-service.md?raw');
     protected insert = import('./examples/setup/insert-host.md?raw');

@@ -9,4 +9,4 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {}
+export default class Page {}

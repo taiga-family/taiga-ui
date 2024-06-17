@@ -17,7 +17,7 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly control = new FormControl(1);
 

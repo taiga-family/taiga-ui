@@ -8,6 +8,6 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly provide = import('./examples/import/provide.md?raw');
 }

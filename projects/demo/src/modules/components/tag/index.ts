@@ -15,7 +15,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     @ViewChild('errorIcon')
     protected errorTemplate?: TemplateRef<Record<string, unknown>>;
 

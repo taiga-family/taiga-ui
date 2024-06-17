@@ -10,7 +10,7 @@ import {TuiTooltipModule} from '@taiga-ui/experimental';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly appearanceVariants = ['', 'error'];
 
     protected appearance = this.appearanceVariants[0];

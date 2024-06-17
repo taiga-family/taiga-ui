@@ -9,7 +9,7 @@ import {TUI_HINT_DIRECTIONS, TuiTooltipModule} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly appearanceVariants = ['', 'error'];
 
     protected appearance = this.appearanceVariants[0];

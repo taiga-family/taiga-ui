@@ -10,7 +10,7 @@ import {TuiPaginationModule} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected focusable = true;
     protected index = 0;
     protected length = 8;

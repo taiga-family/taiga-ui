@@ -9,6 +9,6 @@ import {TuiMarkdownPipe} from '@taiga-ui/addon-doc';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly changelog = import('../../../../../../CHANGELOG.md?raw');
 }

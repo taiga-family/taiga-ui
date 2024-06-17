@@ -10,7 +10,7 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly example1: TuiDocExample = {
         'page.routes.ts': import('./routes.ts?raw'),
         'page.template.html': import('./examples/1/index.html?raw'),

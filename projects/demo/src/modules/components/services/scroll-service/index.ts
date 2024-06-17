@@ -9,6 +9,6 @@ import {TuiDemo} from '@demo/utils';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly service = import('./examples/import/inject-service.md?raw');
 }

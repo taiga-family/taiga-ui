@@ -28,7 +28,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly valueVariants = [
         [0, 30, 20, 10],

@@ -18,7 +18,7 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected length = 64;
 
     protected index = 10;

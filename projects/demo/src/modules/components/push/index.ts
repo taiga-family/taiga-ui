@@ -14,7 +14,7 @@ import {TuiPushComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected heading = '';
     protected type = '';
 

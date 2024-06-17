@@ -23,7 +23,7 @@ import {AnimationState} from './state';
     changeDetection,
     providers: [AnimationState],
 })
-export default class PageComponent {
+export default class Page {
     protected speed = inject(AnimationState);
     protected readonly speedTicksLabels: number[] = [0, 600, 1200, 1800, 2400, 3000];
 }

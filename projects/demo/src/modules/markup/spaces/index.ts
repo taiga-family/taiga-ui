@@ -10,7 +10,7 @@ import {StylesInfoComponent} from '../../app/styles-info';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly exampleBasicImportsLess = import(
         './examples/import/basic-imports-less.md?raw'
     );

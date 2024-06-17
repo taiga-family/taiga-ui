@@ -21,7 +21,7 @@ import {TableComponent} from './examples/table/table.component';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly basicImportsLess = import(
         './examples/import/basic-imports-less.md?raw'
     );

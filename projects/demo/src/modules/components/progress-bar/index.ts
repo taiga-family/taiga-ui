@@ -12,7 +12,7 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected value = 6;
     protected max = 10;
 

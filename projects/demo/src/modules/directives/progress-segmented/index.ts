@@ -12,7 +12,7 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly routes = DemoRoute;
     protected value = 3;
     protected max = 5;

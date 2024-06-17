@@ -27,7 +27,7 @@ import {TuiAvatarComponent} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly exampleComponent = import('./examples/import/component.md?raw');
     protected readonly examples = ['String', 'Basic', 'Advanced', 'Sticky elements'];
 

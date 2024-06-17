@@ -15,4 +15,4 @@ import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
         },
     ],
 })
-export default class PageComponent {}
+export default class Page {}

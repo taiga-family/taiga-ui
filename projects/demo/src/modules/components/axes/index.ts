@@ -16,7 +16,7 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly examples = ['Cool one', 'With bars', 'With horizontal bars'];
 
     protected readonly lineVariants: readonly TuiLineType[] = [

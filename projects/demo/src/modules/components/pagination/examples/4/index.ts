@@ -10,6 +10,6 @@ import {TuiPaginationModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 }

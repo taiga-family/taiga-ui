@@ -11,7 +11,7 @@ import {getCountries} from 'libphonenumber-js';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected countryIsoCodeVariants = getCountries();
     protected countryIsoCode: TuiCountryIsoCode = 'FR';
 
