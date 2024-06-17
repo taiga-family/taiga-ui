@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.84.0](https://github.com/taiga-family/taiga-ui/compare/v3.83.0...v3.84.0) (2024-06-17)
+
+### Bug Fixes
+
+- **cdk:** visible control for `tui-scroll-controls` on iOS
+  ([#7741](https://github.com/taiga-family/taiga-ui/issues/7741))
+  ([c185d3b](https://github.com/taiga-family/taiga-ui/commit/c185d3b80cda9319c3fc2adeaa81220bbe9234e6))
+- **kit:** `Carousel` fix scrolling with touchpad when itemsCount more than 1
+  ([#7706](https://github.com/taiga-family/taiga-ui/issues/7706))
+  ([e9186ca](https://github.com/taiga-family/taiga-ui/commit/e9186cabbd0de571467fee2bc84d343b9b3f685d))
+- **kit:** `InputNumber` fix lost value ([#7751](https://github.com/taiga-family/taiga-ui/issues/7751))
+  ([90fdc93](https://github.com/taiga-family/taiga-ui/commit/90fdc93cad69a53efdfe8872ced2eb283884de9b))
+- **kit:** ignore native calendar for desktop ([#7734](https://github.com/taiga-family/taiga-ui/issues/7734))
+  ([ad99b73](https://github.com/taiga-family/taiga-ui/commit/ad99b73969f8991057ac39dc7e6960fd314fa348))
+- **kit:** round closable button ([#7700](https://github.com/taiga-family/taiga-ui/issues/7700))
+  ([2046723](https://github.com/taiga-family/taiga-ui/commit/2046723c80c3629d42c6904280614407411d0bda))
+
 ## [3.83.0](https://github.com/taiga-family/taiga-ui/compare/v3.82.0...v3.83.0) (2024-06-10)
 
 ### Bug Fixes
