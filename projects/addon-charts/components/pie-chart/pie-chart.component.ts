@@ -13,7 +13,7 @@ import {
     TuiHoveredDirective,
     TuiIdService,
     tuiPure,
-    TuiRepeatTimesDirective,
+    TuiRepeatTimes,
     tuiSum,
 } from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
@@ -40,12 +40,7 @@ const TRANSFORM = {
 @Component({
     standalone: true,
     selector: 'tui-pie-chart',
-    imports: [
-        TuiHint,
-        TuiRepeatTimesDirective,
-        TuiHoveredDirective,
-        TuiPieChartDirective,
-    ],
+    imports: [TuiHint, TuiRepeatTimes, TuiHoveredDirective, TuiPieChartDirective],
     templateUrl: './pie-chart.template.html',
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 const DEFAULT_TEST_COUNT = 3;
@@ -11,7 +11,7 @@ const DEFAULT_TEST_COUNT = 3;
 describe('TuiRepeatTimes directive', () => {
     @Component({
         standalone: true,
-        imports: [TuiRepeatTimesDirective],
+        imports: [TuiRepeatTimes],
         template: `
             <div
                 *tuiRepeatTimes="let index of count"

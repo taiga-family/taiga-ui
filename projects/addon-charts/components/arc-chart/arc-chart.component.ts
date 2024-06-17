@@ -12,7 +12,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiRepeatTimesDirective, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
+import {TuiRepeatTimes, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
 import type {TuiSizeXL} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {map, merge, ReplaySubject, startWith, switchMap, tap, timer} from 'rxjs';
@@ -49,7 +49,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 @Component({
     standalone: true,
     selector: 'tui-arc-chart',
-    imports: [TuiRepeatTimesDirective],
+    imports: [TuiRepeatTimes],
     templateUrl: './arc-chart.template.html',
     styleUrls: ['./arc-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

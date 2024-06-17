@@ -19,7 +19,7 @@ import {
     EMPTY_QUERY,
     TuiAutoFocusDirective,
     tuiProvide,
-    TuiRepeatTimesDirective,
+    TuiRepeatTimes,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective, tuiFadeIn} from '@taiga-ui/core';
 
@@ -30,7 +30,7 @@ import {TuiButtonDirective, tuiFadeIn} from '@taiga-ui/core';
         RouterLink,
         TuiButtonDirective,
         TuiAutoFocusDirective,
-        TuiRepeatTimesDirective,
+        TuiRepeatTimes,
         IntersectionObserverModule,
     ],
     templateUrl: './index.html',

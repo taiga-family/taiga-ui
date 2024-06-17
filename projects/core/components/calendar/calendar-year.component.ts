@@ -17,7 +17,7 @@ import {
     TuiLet,
     TuiMonth,
     TuiMonthRange,
-    TuiRepeatTimesDirective,
+    TuiRepeatTimes,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiScrollIntoViewDirective} from '@taiga-ui/core/components/scrollbar';
@@ -31,7 +31,7 @@ const ITEMS_IN_ROW = 4;
     selector: 'tui-calendar-year',
     imports: [
         TuiHoveredDirective,
-        TuiRepeatTimesDirective,
+        TuiRepeatTimes,
         TuiLet,
         TuiScrollIntoViewDirective,
     ],

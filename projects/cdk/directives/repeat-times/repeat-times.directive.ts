@@ -11,7 +11,7 @@ export class TuiRepeatTimesContext implements TuiContext<number> {
 /**
  * Directive similar to ngFor but using a number of repetitions rather than an array
  *
- * {@link TuiRepeatTimesDirective.tuiRepeatTimesOf requested number of times}.
+ * {@link TuiRepeatTimes.tuiRepeatTimesOf requested number of times}.
  * {@link TuiRepeatTimesContext context} for every instance of the template inherits outer context and stores
  * {@link TuiRepeatTimesContext.$implicit index} of a template instance.
  */
@@ -19,7 +19,7 @@ export class TuiRepeatTimesContext implements TuiContext<number> {
     standalone: true,
     selector: '[tuiRepeatTimes][tuiRepeatTimesOf]',
 })
-export class TuiRepeatTimesDirective {
+export class TuiRepeatTimes {
     private readonly viewContainer = inject(ViewContainerRef);
     private readonly templateRef = inject(TemplateRef<TuiRepeatTimesContext>);
 
