@@ -8,13 +8,7 @@ import {TuiCheckboxComponent, TuiChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiChip,
-        TuiRepeatTimes,
-        FormsModule,
-        TuiButton,
-        TuiCheckboxComponent,
-    ],
+    imports: [TuiChip, TuiRepeatTimes, FormsModule, TuiButton, TuiCheckboxComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
