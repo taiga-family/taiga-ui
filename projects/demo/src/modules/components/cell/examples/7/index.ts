@@ -30,17 +30,17 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 export default class Example {
     protected readonly items = [
         {
-            icon: 'tuiIconEye',
+            icon: '@tui.eye',
             title: 'Show more',
             subtitle: 'Ctrl + Shift + M',
         },
         {
-            icon: 'tuiIconMail',
+            icon: '@tui.mail',
             title: 'Send message',
             subtitle: 'Keep it short',
         },
         {
-            icon: 'tuiIconLock',
+            icon: '@tui.lock',
             title: 'Access',
             subtitle: 'Block your account',
         },

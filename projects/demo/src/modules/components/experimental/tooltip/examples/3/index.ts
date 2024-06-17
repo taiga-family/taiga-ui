@@ -12,7 +12,7 @@ import {TuiTooltipModule, tuiTooltipOptionsProvider} from '@taiga-ui/experimenta
     changeDetection,
     providers: [
         tuiTooltipOptionsProvider({
-            icons: 'tuiIconInfo',
+            icons: '@tui.info',
         }),
     ],
 })

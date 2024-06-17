@@ -38,7 +38,7 @@ export default class Page {
 
     protected readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
-        'tuiIconCircleHelp',
+        '@tui.circle-help',
         `<svg xmlns="http://www.w3.org/2000/svg"
              width="24px"
              height="24px"

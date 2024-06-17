@@ -32,7 +32,7 @@ export default class Page {
 
     protected appearance = this.appearances[0];
 
-    protected readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
+    protected readonly icons = ['', '@tui.search', '@tui.chevron-down'];
 
     protected iconLeft = this.icons[0];
 

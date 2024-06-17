@@ -9,7 +9,7 @@ const fs = require('node:fs');
         const content = fs.readFileSync(path.join(src, filename), 'utf-8');
 
         fs.writeFileSync(
-            path.join(dest, processName(filename)),
+            path.join(dest, filename),
             content.replaceAll(
                 /<(circle|ellipse|line|polygon|polyline|path|rect)/g,
                 '<$1 vector-effect="non-scaling-stroke"',
@@ -17,11 +17,3 @@ const fs = require('node:fs');
         );
     });
 })();
-
-function processName(name: string, postfix = ''): string {
-    return `tuiIcon${name
-        .replace('.svg', '')
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join('')}${postfix}.svg`;
-}

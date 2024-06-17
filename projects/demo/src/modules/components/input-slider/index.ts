@@ -88,8 +88,8 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
 
     public override readonly customContentVariants: string[] = [
         '',
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
+        '@tui.visa-mono',
+        '@tui.mastercard-mono',
     ];
 
     public override customContentSelected = this.customContentVariants[0];

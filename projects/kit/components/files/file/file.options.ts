@@ -21,10 +21,9 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
     appearance: 'outline',
     formatSize: tuiFormatSize,
     icons: {
-        normal: ({$implicit}) =>
-            $implicit === 'l' ? 'tuiIconFile' : 'tuiIconCircleCheck',
-        error: 'tuiIconCircleAlert',
-        deleted: 'tuiIconTrash',
+        normal: ({$implicit}) => ($implicit === 'l' ? '@tui.file' : '@tui.circle-check'),
+        error: '@tui.circle-alert',
+        deleted: '@tui.trash',
     },
 };
 

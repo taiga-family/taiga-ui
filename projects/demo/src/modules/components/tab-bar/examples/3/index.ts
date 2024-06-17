@@ -16,15 +16,15 @@ export default class Example {
     protected readonly items = [
         {
             text: 'Home',
-            icon: 'tuiIconHome',
+            icon: '@tui.home',
         },
         {
             text: 'Photos',
-            icon: 'tuiIconImage',
+            icon: '@tui.image',
         },
         {
             text: 'Navigation',
-            icon: 'tuiIconMapPin',
+            icon: '@tui.map-pin',
         },
     ];
 }

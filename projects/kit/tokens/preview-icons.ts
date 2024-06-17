@@ -11,12 +11,12 @@ export interface TuiPreviewIcons {
 }
 
 export const TUI_PREVIEW_ICONS_DEFAULT: TuiPreviewIcons = {
-    rotate: 'tuiIconRotateCcwSquare',
-    prev: 'tuiIconArrowLeft',
-    next: 'tuiIconArrowRight',
-    zoomIn: 'tuiIconPlus',
-    zoomOut: 'tuiIconMinus',
-    zoomReset: 'tuiIconMinimize',
+    rotate: '@tui.rotate-ccw-square',
+    prev: '@tui.arrow-left',
+    next: '@tui.arrow-right',
+    zoomIn: '@tui.plus',
+    zoomOut: '@tui.minus',
+    zoomReset: '@tui.minimize',
 };
 
 export const TUI_PREVIEW_ICONS = tuiCreateToken(TUI_PREVIEW_ICONS_DEFAULT);

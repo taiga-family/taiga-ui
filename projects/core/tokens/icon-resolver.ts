@@ -9,7 +9,10 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
     () => {
         const path = inject(TUI_ASSETS_PATH);
 
-        return icon => (!icon || icon.includes('/') ? icon : `${path}${icon}.svg`);
+        return icon =>
+            !icon || icon.includes('/')
+                ? icon
+                : `${path}${icon.replace('@tui.', '')}.svg`;
     },
 );
 

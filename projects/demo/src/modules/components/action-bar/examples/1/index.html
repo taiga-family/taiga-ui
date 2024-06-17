@@ -16,7 +16,7 @@
             >
                 <span>
                     <tui-icon
-                        icon="tuiIconSend"
+                        icon="@tui.send"
                         class="tui-space_right-3"
                     />
                     Send
@@ -28,7 +28,7 @@
             >
                 <span>
                     <tui-icon
-                        icon="tuiIconTrash"
+                        icon="@tui.trash"
                         class="tui-space_right-3"
                     />
                     Delete
@@ -44,7 +44,7 @@
             >
                 <span>
                     <tui-icon
-                        icon="tuiIconLayoutGrid"
+                        icon="@tui.layout-grid"
                         class="tui-space_right-3"
                     />
                     Select all
@@ -57,7 +57,7 @@
             >
                 <span>
                     <tui-icon
-                        icon="tuiIconX"
+                        icon="@tui.x"
                         class="tui-space_right-3"
                     />
                     Select none and close
@@ -83,7 +83,7 @@
 
     <button
         appearance="glass"
-        iconLeft="tuiIconSend"
+        iconLeft="@tui.send"
         size="m"
         tuiButton
         [disabled]="expanded"
@@ -93,7 +93,7 @@
     <button
         *ngIf="!isMobile()"
         appearance="glass"
-        iconLeft="tuiIconTrash"
+        iconLeft="@tui.trash"
         size="m"
         tuiButton
         [disabled]="expanded"
@@ -105,7 +105,7 @@
     <button
         *ngIf="isMobile()"
         appearance="glass"
-        iconLeft="tuiIconEllipsis"
+        iconLeft="@tui.ellipsis"
         size="m"
         tuiIconButton
         (click)="expanded = !expanded"
@@ -116,7 +116,7 @@
     <button
         *ngIf="!isMobile()"
         appearance="icon"
-        iconLeft="tuiIconX"
+        iconLeft="@tui.x"
         size="m"
         tuiIconButton
         (click)="close()"

@@ -10,14 +10,14 @@
     <button
       tuiIconButton
       tuiPreviewAction
-      icon="tuiIconTrash"
+      icon="@tui.trash"
       title="Delete"
       (click)="delete()"
     ></button>
     <button
       tuiIconButton
       tuiPreviewAction
-      icon="tuiIconDownload"
+      icon="@tui.download"
       title="Download"
       (click)="download()"
     ></button>

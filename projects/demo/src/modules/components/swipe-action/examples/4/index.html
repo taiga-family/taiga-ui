@@ -6,7 +6,7 @@
     >
         <tui-avatar
             appearance="primary"
-            src="tuiIconDollarSign"
+            src="@tui.dollar-sign"
         />
         <div tuiTitle>
             <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
@@ -16,7 +16,7 @@
 
     <button
         *ngIf="editButton"
-        iconLeft="tuiIconPencilLine"
+        iconLeft="@tui.pencil-line"
         size="m"
         tuiIconButton
         tuiSwipeAction
@@ -24,7 +24,7 @@
     <button
         *ngIf="shareButton"
         appearance="secondary"
-        iconLeft="tuiIconShare"
+        iconLeft="@tui.share"
         size="m"
         tuiIconButton
         tuiSwipeAction

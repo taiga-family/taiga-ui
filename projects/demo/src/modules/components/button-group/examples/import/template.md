@@ -4,7 +4,7 @@
   tuiSurface="elevated"
 >
   <button>
-    <tui-icon icon="tuiIconCirclePlus"></tui-icon>
+    <tui-icon icon="@tui.circle-plus"></tui-icon>
     Create a payment
   </button>
 </div>

@@ -13,7 +13,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 })
 export default class Example {
     protected examples = ['Sizes', 'A cool one', 'Backgrounds'];
-    protected iconVariants = ['', 'tuiIconLock', 'tuiIconCloud', 'tuiIconUser'];
+    protected iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
     protected iconLeft = this.iconVariants[0];
     protected iconRight = this.iconVariants[0];
 

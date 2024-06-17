@@ -37,19 +37,19 @@ export default class Example {
             name: 'Dollar deposit',
             amount: 237000,
             currency: TuiCurrency.Dollar,
-            paymentSystem: 'tuiIconVisa',
+            paymentSystem: '@tui.visa',
         },
         {
             name: 'Pound deposit',
             amount: 100,
             currency: TuiCurrency.Pound,
-            paymentSystem: 'tuiIconMastercard',
+            paymentSystem: '@tui.mastercard',
         },
         {
             name: 'Rouble deposit',
             amount: 1234567890,
             currency: TuiCurrency.Ruble,
-            paymentSystem: 'tuiIconMir',
+            paymentSystem: '@tui.mir',
         },
     ];
 

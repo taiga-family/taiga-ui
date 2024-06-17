@@ -3,7 +3,7 @@
   <div>Card content</div>
 
   <button
-    iconLeft="tuiIconEye"
+    iconLeft="@tui.eye"
     size="m"
     tuiIconButton
     tuiSwipeAction

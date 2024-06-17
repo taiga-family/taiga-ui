@@ -1403,7 +1403,7 @@ test.describe('InputPhone', () => {
         test('filler', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-phone/API?tuiTextfieldCustomContent=tuiIconMastercardMono&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23&tuiTextfieldCleaner=true&focusable=true&tuiTextfieldPrefix=&tuiTextfieldPostfix=&tuiTextfieldFiller=57567567&tuiTextfieldSize=l&search=q3e',
+                '/components/input-phone/API?tuiTextfieldCustomContent=@tui.mastercard-mono&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23&tuiTextfieldCleaner=true&focusable=true&tuiTextfieldPrefix=&tuiTextfieldPostfix=&tuiTextfieldFiller=57567567&tuiTextfieldSize=l&search=q3e',
             );
 
             const example = new TuiDocumentationApiPagePO(page).apiPageExample;

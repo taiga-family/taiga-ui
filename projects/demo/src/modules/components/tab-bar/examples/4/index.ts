@@ -23,19 +23,19 @@ export default class Example {
                 map(() => [
                     {
                         text: 'Favorites',
-                        icon: 'tuiIconHeart',
+                        icon: '@tui.heart',
                     },
                     {
                         text: 'Calls',
-                        icon: 'tuiIconPhone',
+                        icon: '@tui.phone',
                     },
                     {
                         text: 'Profile',
-                        icon: 'tuiIconUser',
+                        icon: '@tui.user',
                     },
                     {
                         text: 'Settings and configuration',
-                        icon: 'tuiIconSettings',
+                        icon: '@tui.settings',
                     },
                 ]),
                 startWith([]),

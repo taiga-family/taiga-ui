@@ -84,9 +84,9 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly iconVariants = [
         '',
-        'tuiIconSearch',
-        'tuiIconPieChart',
-        'tuiIconCreditCard',
+        '@tui.search',
+        '@tui.pie-chart',
+        '@tui.credit-card',
     ];
 
     protected stringifyVariants: Array<TuiStringHandler<Account | string>> = [

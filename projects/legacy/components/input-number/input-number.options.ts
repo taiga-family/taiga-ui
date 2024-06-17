@@ -14,8 +14,8 @@ export interface TuiInputNumberOptions {
 /** Default values for the input number options. */
 export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     icons: {
-        up: 'tuiIconPlus',
-        down: 'tuiIconMinus',
+        up: '@tui.plus',
+        down: '@tui.minus',
     },
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,

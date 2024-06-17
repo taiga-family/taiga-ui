@@ -40,7 +40,7 @@ export default class Page {
         'MW',
         'https://avatars.githubusercontent.com/u/11832552',
         'https://taiga-ui.dev/assets/images/test-not-found.png',
-        'tuiIconUser',
+        '@tui.user',
         this.sanitizer.bypassSecurityTrustResourceUrl(
             'https://avatars.githubusercontent.com/u/10106368',
         ),

@@ -23,7 +23,7 @@ import {takeUntil} from 'rxjs';
     template: `
         <label style="display: flex; align-items: center">
             <em>From custom label component with</em>
-            <tui-icon icon="tuiIconHeart" />
+            <tui-icon icon="@tui.heart" />
         </label>
     `,
     changeDetection,

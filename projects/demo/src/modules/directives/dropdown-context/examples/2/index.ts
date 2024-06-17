@@ -36,10 +36,10 @@ export default class Example {
     private readonly dialogs = inject(TuiDialogService);
 
     protected readonly menuItems = [
-        {title: 'View', iconName: 'tuiIconEye'},
-        {title: 'Copy', iconName: 'tuiIconCopy'},
-        {title: 'Delete', iconName: 'tuiIconTrash'},
-        {title: 'Move', iconName: 'tuiIconFolder'},
+        {title: 'View', iconName: '@tui.eye'},
+        {title: 'Copy', iconName: '@tui.copy'},
+        {title: 'Delete', iconName: '@tui.trash'},
+        {title: 'Move', iconName: '@tui.folder'},
     ] as const;
 
     protected readonly tableData = [

@@ -19,7 +19,7 @@ export default class Example {
     protected paused = true;
 
     protected get icon(): string {
-        return this.paused ? 'tuiIconPlay' : 'tuiIconPause';
+        return this.paused ? '@tui.play' : '@tui.pause';
     }
 
     protected getTime(time: number): string {

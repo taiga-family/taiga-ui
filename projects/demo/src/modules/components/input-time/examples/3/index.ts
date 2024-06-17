@@ -14,7 +14,7 @@ import {TuiInputTimeModule, tuiInputTimeOptionsProvider} from '@taiga-ui/legacy'
     changeDetection,
     providers: [
         tuiInputTimeOptionsProvider({
-            icon: 'tuiIconCircleCheck',
+            icon: '@tui.circle-check',
             mode: 'HH:MM:SS',
             itemSize: 's',
         }),

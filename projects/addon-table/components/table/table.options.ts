@@ -22,9 +22,9 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     size: 'm',
     direction: 1,
     sortIcons: {
-        asc: 'tuiIconChevronUp',
-        desc: 'tuiIconChevronDown',
-        off: 'tuiIconChevronsUpDown',
+        asc: '@tui.chevron-up',
+        desc: '@tui.chevron-down',
+        off: '@tui.chevrons-up-down',
     },
 };
 

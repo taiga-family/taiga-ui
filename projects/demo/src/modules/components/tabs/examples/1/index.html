@@ -1,6 +1,6 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
     <button
-        iconLeft="tuiIconCreditCard"
+        iconLeft="@tui.credit-card"
         tuiTab
         (click)="onClick('Maps')"
     >
@@ -8,14 +8,14 @@
     </button>
     <button
         disabled
-        iconLeft="tuiIconPhone"
+        iconLeft="@tui.phone"
         tuiTab
         (click)="onClick('Calls')"
     >
         Calls
     </button>
     <button
-        iconLeft="tuiIconSettings"
+        iconLeft="@tui.settings"
         tuiTab
         (click)="onClick('Settings')"
     >

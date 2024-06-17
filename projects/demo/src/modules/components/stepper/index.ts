@@ -22,7 +22,7 @@ export default class Page {
 
     protected orientation: TuiOrientation = this.orientationVariants[0];
 
-    protected readonly iconVariants = ['', 'tuiIconClock', 'tuiIconHeart'];
+    protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
 
     protected icon = this.iconVariants[0];
 

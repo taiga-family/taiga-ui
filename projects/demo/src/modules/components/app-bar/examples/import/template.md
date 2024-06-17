@@ -10,7 +10,7 @@
     Page title
     <button
       tuiIconButton
-      icon="tuiIconSettings"
+      icon="@tui.settings"
       title="settings"
       tuiSlot="right"
     ></button>

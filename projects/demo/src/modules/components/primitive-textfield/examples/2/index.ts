@@ -24,7 +24,7 @@ import {
     changeDetection,
     providers: [
         tuiTextfieldOptionsProvider({
-            iconCleaner: 'tuiIconPencil',
+            iconCleaner: '@tui.pencil',
             hintOnDisabled: true,
         }),
     ],

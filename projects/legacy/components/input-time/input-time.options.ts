@@ -22,7 +22,7 @@ export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
 };
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
-    icon: () => 'tuiIconClock',
+    icon: () => '@tui.clock',
     mode: 'HH:MM',
     maxValues: MAX_TIME_VALUES,
     itemSize: 'm',

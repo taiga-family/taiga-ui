@@ -30,7 +30,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
     changeDetection,
     providers: [
         tuiBreadcrumbsOptionsProvider({
-            icon: 'tuiIconArrowRight',
+            icon: '@tui.arrow-right',
             size: 'l',
         }),
     ],

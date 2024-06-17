@@ -20,7 +20,7 @@ export default class Page {
     protected readonly iconVariants = ['', ...TUI_USED_ICONS];
     protected readonly colorVariants = ['', 'var(--tui-text-01)', 'red', '#3aa981'];
 
-    protected icon = 'tuiIconHeart';
+    protected icon = '@tui.heart';
     protected backgroundIcon = '';
     protected color = this.colorVariants[1];
     protected backgroundColor = '';

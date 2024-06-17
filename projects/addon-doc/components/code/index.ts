@@ -35,8 +35,8 @@ export class TuiDocCodeComponent {
     protected readonly icon$ = this.copy$.pipe(
         switchMap(() =>
             timer(2000).pipe(
-                map(() => 'tuiIconCopy'),
-                startWith('tuiIconCheck'),
+                map(() => '@tui.copy'),
+                startWith('@tui.check'),
             ),
         ),
     );
