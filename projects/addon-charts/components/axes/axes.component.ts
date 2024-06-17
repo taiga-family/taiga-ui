@@ -16,7 +16,7 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     styleUrls: ['./axes.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAxesComponent {
+export class TuiAxes {
     @Input()
     public axisX: TuiLineType = 'solid';
 

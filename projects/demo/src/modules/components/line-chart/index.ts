@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiAxesComponent, TuiLineChartComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
@@ -14,7 +14,7 @@ import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
         TuiNotificationComponent,
         RouterLink,
         TuiLink,
-        TuiAxesComponent,
+        TuiAxes,
         TuiLineChartComponent,
     ],
     templateUrl: './index.html',

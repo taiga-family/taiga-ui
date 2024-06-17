@@ -1,13 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiAxesComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes} from '@taiga-ui/addon-charts';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 describe('Axes', () => {
     @Component({
         standalone: true,
-        imports: [TuiAxesComponent],
+        imports: [TuiAxes],
         template: `
             <tui-axes #defaultValues></tui-axes>
             <tui-axes
@@ -22,10 +22,10 @@ describe('Axes', () => {
     })
     class Test {
         @ViewChild('defaultValues')
-        public readonly defaultValues!: TuiAxesComponent;
+        public readonly defaultValues!: TuiAxes;
 
         @ViewChild('customValues')
-        public readonly customValues!: TuiAxesComponent;
+        public readonly customValues!: TuiAxes;
 
         public axisXLabels = ['Label 1', 'Label 2'];
 

@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiAxesComponent,
+    TuiAxes,
     TuiLineChartComponent,
     TuiLineDaysChartComponent,
     TuiLineDaysChartHintDirective,
@@ -30,7 +30,7 @@ import {map, of} from 'rxjs';
         TuiNotificationComponent,
         TuiInputDateRangeModule,
         FormsModule,
-        TuiAxesComponent,
+        TuiAxes,
         NgForOf,
         NgIf,
         AsyncPipe,

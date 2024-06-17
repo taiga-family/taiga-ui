@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_NONE,
-    TuiAxesComponent,
+    TuiAxes,
     TuiBarChartComponent,
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
@@ -16,14 +16,7 @@ const BENJI = 100;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAxesComponent,
-        TuiBarChartComponent,
-        TuiHint,
-        TuiAmountPipe,
-        AsyncPipe,
-        NgForOf,
-    ],
+    imports: [TuiAxes, TuiBarChartComponent, TuiHint, TuiAmountPipe, AsyncPipe, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
