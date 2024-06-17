@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiRippleDirective} from '@taiga-ui/addon-mobile/directives';
+import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
@@ -21,7 +21,7 @@ import type {TuiMobileDialogOptions} from './mobile-dialog.options';
         PolymorpheusTemplate,
         NgForOf,
         TuiButton,
-        TuiRippleDirective,
+        TuiRipple,
     ],
     templateUrl: './mobile-dialog.template.html',
     styleUrls: ['./mobile-dialog.style.less'],
