@@ -7,7 +7,7 @@ import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiHintOptionsDirective,
-    TuiLinkDirective,
+    TuiLink,
     TuiNotificationComponent,
     TuiNumberFormatDirective,
 } from '@taiga-ui/core';
@@ -21,7 +21,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiNotificationComponent,
         TuiInputNumberModule,

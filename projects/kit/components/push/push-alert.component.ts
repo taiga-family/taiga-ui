@@ -7,7 +7,7 @@ import {
     tuiFadeIn,
     tuiHeightCollapse,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
     tuiSlideInRight,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
@@ -30,7 +30,7 @@ import type {TuiPushOptions} from './push.options';
         TuiPushComponent,
         TuiIconComponent,
         TuiButtonDirective,
-        TuiLinkDirective,
+        TuiLink,
     ],
     templateUrl: './push-alert.template.html',
     styleUrls: ['./push-alert.style.less'],

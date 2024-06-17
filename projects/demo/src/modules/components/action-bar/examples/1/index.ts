@@ -9,7 +9,7 @@ import {
     TuiButtonDirective,
     TuiDataList,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilterComponent} from '@taiga-ui/kit';
 import {map} from 'rxjs';
@@ -21,7 +21,7 @@ import {map} from 'rxjs';
         TuiActionBar,
         TuiDataList,
         NgIf,
-        TuiLinkDirective,
+        TuiLink,
         ReactiveFormsModule,
         TuiFilterComponent,
         TuiIconComponent,

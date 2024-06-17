@@ -4,18 +4,12 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        NgFor,
-        RouterLink,
-        TuiBreadcrumbsComponent,
-        TuiLinkDirective,
-        TuiItemDirective,
-    ],
+    imports: [NgFor, RouterLink, TuiBreadcrumbsComponent, TuiLink, TuiItemDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

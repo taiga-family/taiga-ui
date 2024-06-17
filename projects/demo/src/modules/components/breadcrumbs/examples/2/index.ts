@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiDataList,
     TuiDropdownModule,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {TuiBreadcrumbsComponent, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
@@ -21,7 +21,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiDataList,
         TuiInputNumberModule,
         TuiRepeatTimes,
-        TuiLinkDirective,
+        TuiLink,
         TuiButtonDirective,
         TuiItemDirective,
     ],

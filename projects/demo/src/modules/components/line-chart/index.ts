@@ -5,7 +5,7 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAxesComponent, TuiLineChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -13,7 +13,7 @@ import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
         TuiDemo,
         TuiNotificationComponent,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiAxesComponent,
         TuiLineChartComponent,
     ],

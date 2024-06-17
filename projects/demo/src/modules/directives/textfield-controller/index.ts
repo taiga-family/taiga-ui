@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiLink, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     imports: [
         TuiDemo,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiInputModule,
         ReactiveFormsModule,
         TuiTextfieldOptionsDirective,

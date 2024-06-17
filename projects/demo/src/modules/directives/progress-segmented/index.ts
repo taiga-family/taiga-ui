@@ -2,13 +2,13 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import type {TuiProgressBarComponent} from '@taiga-ui/kit';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiProgressModule, TuiLinkDirective, RouterLink],
+    imports: [TuiDemo, TuiProgressModule, TuiLink, RouterLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

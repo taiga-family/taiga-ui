@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiBreakpointService, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiBreakpointService, TuiLink} from '@taiga-ui/core';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
@@ -12,7 +12,7 @@ import {TuiInputFilesComponent} from './input-files.component';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiLinkDirective],
+    imports: [AsyncPipe, TuiLink],
     template: `
         <a tuiLink>{{ link$ | async }}</a>
         {{ label$ | async }}

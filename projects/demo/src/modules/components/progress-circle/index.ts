@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLinkDirective, TuiProgressModule],
+    imports: [TuiDemo, TuiLink, TuiProgressModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiFormatNumberPipe, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiLink} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
@@ -22,7 +22,7 @@ import {NumberFormatDocumentationComponent} from '../../components/abstract/numb
         ReactiveFormsModule,
         NumberFormatDocumentationComponent,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,

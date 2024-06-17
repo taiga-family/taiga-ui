@@ -18,11 +18,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {
-    TuiHintOptionsDirective,
-    TuiLinkDirective,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -40,7 +36,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiDemo,
         InheritedDocumentationComponent,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiNotificationComponent,
         TuiInputDateRangeModule,
         ReactiveFormsModule,

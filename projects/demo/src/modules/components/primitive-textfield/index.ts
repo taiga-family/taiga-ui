@@ -11,7 +11,7 @@ import {
     TUI_HINT_DIRECTIONS,
     TuiHintOptionsDirective,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -35,7 +35,7 @@ import ExampleComponent2 from './examples/2';
         TuiDemo,
         TuiNotificationComponent,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         FormsModule,
         ExampleComponent1,
         ExampleComponent2,

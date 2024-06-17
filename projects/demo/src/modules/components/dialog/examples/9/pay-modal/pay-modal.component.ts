@@ -23,7 +23,7 @@ import {
     TuiFormatNumberPipe,
     TuiIconPipe,
     TuiLabelDirective,
-    TuiLinkDirective,
+    TuiLink,
     TuiLoader,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
@@ -43,7 +43,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         ReactiveFormsModule,
         NgForOf,
         NgIf,
-        TuiLinkDirective,
+        TuiLink,
         TuiButtonDirective,
         TuiButtonLoadingComponent,
         AsyncPipe,

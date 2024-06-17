@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 import {TuiVariablesExample1} from './examples/1';
 
@@ -14,7 +14,7 @@ import {TuiVariablesExample1} from './examples/1';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         KeyValuePipe,
         ClipboardModule,
         RouterLink,

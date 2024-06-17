@@ -6,7 +6,7 @@ import {
     TuiCalendarComponent,
     TuiDropdownModule,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
@@ -30,7 +30,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiCalendarComponent,
-        TuiLinkDirective,
+        TuiLink,
         TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,

@@ -37,7 +37,7 @@ import {
     TuiDataList,
     TuiExpand,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
     TuiScrollbarComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
@@ -73,7 +73,7 @@ import {
         TuiScrollbarComponent,
         TuiAccordion,
         NgTemplateOutlet,
-        TuiLinkDirective,
+        TuiLink,
         TuiScrollIntoViewLinkDirective,
         RouterLinkActive,
         TuiExpand,

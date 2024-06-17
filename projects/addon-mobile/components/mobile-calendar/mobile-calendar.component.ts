@@ -41,7 +41,7 @@ import {
     TUI_SHORT_WEEK_DAYS,
     TuiButtonDirective,
     tuiGetDuration,
-    TuiLinkDirective,
+    TuiLink,
     TuiMonthPipe,
     TuiOrderWeekDaysPipe,
 } from '@taiga-ui/core';
@@ -85,7 +85,7 @@ import {
         TuiButtonDirective,
         AsyncPipe,
         TuiRippleDirective,
-        TuiLinkDirective,
+        TuiLink,
         TuiTouchable,
         CdkFixedSizeVirtualScroll,
         CdkVirtualScrollViewport,

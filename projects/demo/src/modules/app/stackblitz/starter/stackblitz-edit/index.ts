@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiLinkDirective],
+    imports: [TuiLink],
     template: `
         <button
             iconLeft="assets/icons/stackblitz.svg"

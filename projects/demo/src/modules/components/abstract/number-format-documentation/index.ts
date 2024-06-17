@@ -6,7 +6,7 @@ import {
     TuiDocDocumentationComponent,
     TuiDocDocumentationPropertyConnectorDirective,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import type {AbstractExampleTuiNumberFormat} from '../number-format';
@@ -16,7 +16,7 @@ import type {AbstractExampleTuiNumberFormat} from '../number-format';
     selector: 'number-format-documentation',
     imports: [
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiDocDocumentationComponent,
         TuiDocDocumentationPropertyConnectorDirective,
     ],

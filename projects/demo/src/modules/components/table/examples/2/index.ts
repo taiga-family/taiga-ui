@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButtonDirective, TuiLink} from '@taiga-ui/core';
 import {TuiChipDirective} from '@taiga-ui/kit';
 
 interface User {
@@ -22,7 +22,7 @@ interface User {
         TuiChipDirective,
         NgForOf,
         TuiAutoColorPipe,
-        TuiLinkDirective,
+        TuiLink,
         NgIf,
         TuiButtonDirective,
         TuiLet,

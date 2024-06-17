@@ -17,7 +17,7 @@ import {
 import {
     TuiDropdownOpenDirective,
     TuiHintOptionsDirective,
-    TuiLinkDirective,
+    TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {
@@ -34,7 +34,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiNotificationComponent,
         TuiInputDateTimeModule,

@@ -14,7 +14,7 @@ import {
     tuiControlValue,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 
@@ -22,7 +22,7 @@ import type {Observable} from 'rxjs';
     standalone: true,
     imports: [
         TuiAddonDoc,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiMobileCalendarComponent,
         TuiComponentPipe,

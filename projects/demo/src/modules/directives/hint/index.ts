@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHint, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
@@ -15,7 +15,7 @@ import {InheritedDocumentationComponent} from '../../components/abstract/inherit
     imports: [
         TuiDemo,
         TuiNotificationComponent,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiHint,
         InheritedDocumentationComponent,

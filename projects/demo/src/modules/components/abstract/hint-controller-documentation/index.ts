@@ -6,7 +6,7 @@ import {
     TuiDocDocumentationComponent,
     TuiDocDocumentationPropertyConnectorDirective,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import type {AbstractExampleTuiControl} from '../control';
@@ -16,7 +16,7 @@ import type {AbstractExampleTuiControl} from '../control';
     selector: 'hint-controller-documentation',
     imports: [
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiDocDocumentationComponent,
         TuiDocDocumentationPropertyConnectorDirective,
     ],

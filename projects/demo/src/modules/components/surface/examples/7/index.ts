@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {
     TuiButtonDirective,
-    TuiLinkDirective,
+    TuiLink,
     TuiScrollbarComponent,
     TuiSurfaceDirective,
     TuiTitleDirective,
@@ -22,7 +22,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
         TuiAmountPipe,
         TuiBadgeDirective,
         TuiButtonDirective,
-        TuiLinkDirective,
+        TuiLink,
         TuiCellDirective,
         TuiCardLarge,
         CommonModule,

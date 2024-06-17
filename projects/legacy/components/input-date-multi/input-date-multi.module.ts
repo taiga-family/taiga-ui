@@ -8,7 +8,7 @@ import {
     TuiCalendarComponent,
     TuiDropdownModule,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
@@ -27,7 +27,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiCalendarComponent,
-        TuiLinkDirective,
+        TuiLink,
         TuiInputTagModule,
         FormsModule,
         TuiMapperPipe,

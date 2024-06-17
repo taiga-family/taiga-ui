@@ -5,12 +5,12 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiNotificationComponent,
         TuiBarChartComponent,

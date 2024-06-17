@@ -12,7 +12,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiHint,
-    TuiLinkDirective,
+    TuiLink,
     TuiNotificationComponent,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
@@ -29,7 +29,7 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiNotificationComponent,
         TuiInputModule,
