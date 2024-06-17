@@ -15,7 +15,7 @@ import {
     TuiSkeletonDirective,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
-import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -28,7 +28,7 @@ import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiButtonDirective,
         TuiChipDirective,
         TuiBadgeDirective,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiSurfaceDirective,
         TuiHeaderDirective,
         TuiTitleDirective,

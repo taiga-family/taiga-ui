@@ -5,12 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiRangeComponent} from '@taiga-ui/kit';
-import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiSurfaceDirective,
         TuiRangeComponent,
         FormsModule,

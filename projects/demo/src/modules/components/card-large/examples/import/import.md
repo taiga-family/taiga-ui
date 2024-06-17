@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiCardLargeDirective,
+    TuiCardLarge,
   ],
 })
 export class Component {}

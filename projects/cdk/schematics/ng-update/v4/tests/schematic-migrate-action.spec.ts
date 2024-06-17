@@ -27,12 +27,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiSurfaceDirective } from "@taiga-ui/core";
-import { TuiCardLargeDirective } from "@taiga-ui/layout";
+import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCardLargeDirective, TuiSurfaceDirective]
+    imports: [TuiCardLarge, TuiSurfaceDirective]
 })
 export class Test {
 }`;

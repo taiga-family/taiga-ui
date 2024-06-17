@@ -12,16 +12,12 @@ import {
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {
-    TuiCardLargeDirective,
-    TuiCellDirective,
-    TuiHeaderDirective,
-} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiDropdownModule,
         TuiRepeatTimes,
         TuiAvatarComponent,

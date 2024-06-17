@@ -9,7 +9,7 @@ import {
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
-import {TuiCardMediumDirective} from '@taiga-ui/layout';
+import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -21,7 +21,7 @@ import {TuiCardMediumDirective} from '@taiga-ui/layout';
         TuiAutoColorPipe,
         NgForOf,
         TuiSurfaceDirective,
-        TuiCardMediumDirective,
+        TuiCardMedium,
         TuiTitleDirective,
     ],
     templateUrl: './index.html',

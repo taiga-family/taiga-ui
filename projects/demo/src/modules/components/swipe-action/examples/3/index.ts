@@ -9,14 +9,14 @@ import {
 } from '@taiga-ui/addon-mobile';
 import {TuiButtonDirective, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiSwipeActionsComponent,
         TuiSwipeActionsAutoCloseDirective,
-        TuiCardLargeDirective,
+        TuiCardLarge,
         TuiCellDirective,
         TuiSurfaceDirective,
         TuiAvatarComponent,
