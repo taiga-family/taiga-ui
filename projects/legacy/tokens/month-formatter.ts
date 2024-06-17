@@ -3,7 +3,7 @@ import {InjectionToken} from '@angular/core';
 import type {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
 import {TuiMonthPipe} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {of} from 'rxjs';
 
 /**
  * A function to get localized formatted month
@@ -17,10 +17,9 @@ export const TUI_MONTH_FORMATTER_PROVIDER: FactoryProvider = {
     deps: [TuiMonthPipe],
     useFactory:
         (pipe: TuiMonthPipe): TuiHandler<TuiMonth | null, Observable<string>> =>
-        month =>
-            month
-                ? pipe
-                      .transform(month)
-                      .pipe(map(formatted => `${formatted} ${month.formattedYear}`))
-                : of(''),
+        month => {
+            const formattedMonth = month && pipe.transform(month);
+
+            return of(formattedMonth ? `${formattedMonth} ${month.formattedYear}` : '');
+        },
 };

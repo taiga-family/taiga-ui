@@ -5,7 +5,7 @@
     (leftClick)="append({month: -1})"
     (rightClick)="append({month: 1})"
 >
-    {{ value | tuiMonth | async }}
+    {{ value | tuiMonth }}
     <ng-container *ngIf="min.year === max.year; else button">
         {{ value.formattedYear }}
     </ng-container>
