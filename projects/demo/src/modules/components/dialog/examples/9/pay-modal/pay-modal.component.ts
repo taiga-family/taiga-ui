@@ -22,10 +22,9 @@ import {
     TuiButton,
     TuiFormatNumberPipe,
     TuiIconPipe,
-    TuiLabelDirective,
     TuiLink,
     TuiLoader,
-    TuiTextfieldOptionsDirective,
+    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
@@ -52,8 +51,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiAutoFocus,
         TuiLoader,
         TuiInputCardGroup,
-        TuiTextfieldOptionsDirective,
-        TuiLabelDirective,
+        TuiTextfield,
         TuiCheckboxComponent,
         TuiIconPipe,
     ],

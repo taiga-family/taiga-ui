@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/core';
+import {TuiLabel} from '@taiga-ui/core';
 import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBadgeNotificationComponent, TuiLabelDirective],
+    imports: [TuiDemo, TuiBadgeNotificationComponent, TuiLabel],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -31,7 +31,7 @@ class TuiLabelStyles {}
         '[class._textfield]': 'textfield',
     },
 })
-export class TuiLabelDirective {
+export class TuiLabel {
     @ContentChild(forwardRef(() => TUI_DATA_LIST_HOST))
     protected readonly textfield?: unknown;
 

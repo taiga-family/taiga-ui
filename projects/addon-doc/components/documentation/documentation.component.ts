@@ -37,7 +37,6 @@ import {
     TuiGroupDirective,
     TuiNotificationComponent,
     TuiTextfield,
-    TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiDataListWrapper, TuiSwitchComponent} from '@taiga-ui/kit';
 import {
@@ -72,7 +71,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         NgTemplateOutlet,
         TuiDocTypeReferencePipe,
         TuiSelectModule,
-        TuiTextfieldOptionsDirective,
         FormsModule,
         TuiDropdownOptionsDirective,
         TuiShowCleanerPipe,

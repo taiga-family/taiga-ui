@@ -33,7 +33,7 @@ import {
     TuiIcon,
     TuiLink,
     TuiScrollbarComponent,
-    TuiTextfieldOptionsDirective,
+    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
@@ -53,7 +53,7 @@ import {
     selector: 'tui-doc-navigation',
     imports: [
         TuiInputModule,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         ReactiveFormsModule,
         TuiAutoFocus,
         TuiDataList,

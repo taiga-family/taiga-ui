@@ -4,12 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe, TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiErrorComponent,
-    TuiGroupDirective,
-    TuiLabelDirective,
-} from '@taiga-ui/core';
+import {TuiButton, TuiErrorComponent, TuiGroupDirective, TuiLabel} from '@taiga-ui/core';
 import {
     TuiBlockDirective,
     TuiCheckboxComponent,
@@ -73,7 +68,7 @@ class Account {
         TuiBlockDirective,
         TuiRadioComponent,
         TuiInputTimeModule,
-        TuiLabelDirective,
+        TuiLabel,
         TuiCheckboxComponent,
         TuiButton,
         TuiAmountPipe,

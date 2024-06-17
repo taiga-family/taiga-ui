@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -10,7 +10,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     imports: [
         ReactiveFormsModule,
         TuiInputModule,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         TuiHint,
     ],

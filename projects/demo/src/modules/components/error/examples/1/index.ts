@@ -3,12 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {TuiErrorComponent, TuiLabelDirective} from '@taiga-ui/core';
+import {TuiErrorComponent, TuiLabel} from '@taiga-ui/core';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiLabelDirective, TuiSwitchComponent, TuiErrorComponent],
+    imports: [FormsModule, TuiLabel, TuiSwitchComponent, TuiErrorComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

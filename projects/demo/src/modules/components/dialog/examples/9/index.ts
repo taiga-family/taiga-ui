@@ -8,7 +8,7 @@ import {
     TuiDialogService,
     TuiHintOptionsDirective,
     TuiIconPipe,
-    TuiTextfieldOptionsDirective,
+    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -20,7 +20,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     imports: [
         TuiInputNumberModule,
         ReactiveFormsModule,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         TuiHintOptionsDirective,
         TuiButton,

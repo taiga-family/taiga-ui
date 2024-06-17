@@ -8,7 +8,7 @@ import {
     TuiHint,
     TuiLink,
     TuiNotificationComponent,
-    TuiTextfieldOptionsDirective,
+    TuiTextfield,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
@@ -26,7 +26,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiDropdownModule,
         TuiHint,
         TuiInputPhoneInternationalComponent,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         ReactiveFormsModule,
         TuiLink,
         TuiNotificationComponent,
