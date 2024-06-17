@@ -1,6 +1,5 @@
 import {Directive, HostBinding, inject, Input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
-import type {TuiPlatform} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,
@@ -8,14 +7,14 @@ import type {TuiPlatform} from '@taiga-ui/cdk/types';
     providers: [
         {
             provide: TUI_PLATFORM,
-            deps: [TuiPlatformDirective],
-            useFactory: ({tuiPlatform}: TuiPlatformDirective) =>
+            deps: [TuiPlatform],
+            useFactory: ({tuiPlatform}: TuiPlatform) =>
                 tuiPlatform || inject(TUI_PLATFORM, {skipSelf: true}),
         },
     ],
 })
-export class TuiPlatformDirective {
+export class TuiPlatform {
     @Input()
     @HostBinding('attr.data-platform')
-    public tuiPlatform: TuiPlatform | '' = '';
+    public tuiPlatform: '' | 'android' | 'ios' | 'web' = '';
 }

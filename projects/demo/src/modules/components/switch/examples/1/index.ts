@@ -4,8 +4,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiPlatformDirective} from '@taiga-ui/cdk';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
 
@@ -15,7 +14,7 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiPlatformDirective,
+        TuiPlatform,
         TuiSwitchComponent,
     ],
     templateUrl: './index.html',
@@ -24,7 +23,7 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent implements OnInit {
-    protected readonly platforms: readonly TuiPlatform[] = [
+    protected readonly platforms: ReadonlyArray<'android' | 'ios' | 'web'> = [
         'web',
         'web',
         'android',

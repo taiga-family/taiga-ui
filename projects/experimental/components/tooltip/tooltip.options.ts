@@ -1,9 +1,8 @@
 import type {Provider} from '@angular/core';
-import type {TuiPlatform} from '@taiga-ui/cdk';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiTooltipOptions {
-    readonly icons: Record<TuiPlatform, string> | string;
+    readonly icons: Record<'android' | 'ios' | 'web', string> | string;
 }
 
 export const TUI_TOOLTIP_DEFAULT_OPTIONS: TuiTooltipOptions = {
