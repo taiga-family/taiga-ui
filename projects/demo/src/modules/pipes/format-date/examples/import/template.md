@@ -1,3 +1,3 @@
 ```html
-Formatted timestamp: {{timestamp | tuiFormatDate | async}}
+Formatted timestamp: {{timestamp | tuiFormatDate}}
 ```
