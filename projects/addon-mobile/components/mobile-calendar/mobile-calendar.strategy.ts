@@ -43,7 +43,7 @@ function reduceCycle(
 /**
  * This scroll strategy is hard wired with styles for iOS and Android.
  * It is dependent on month height on those platforms and is designed to
- * work for {@link TuiMobileCalendarComponent} with years 1906 to 2102
+ * work for {@link TuiMobileCalendar} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     private readonly index$ = new Subject<number>();

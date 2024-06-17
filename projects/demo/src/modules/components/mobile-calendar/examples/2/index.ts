@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile';
+import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {TuiDay} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiMobileCalendarComponent],
+    imports: [TuiMobileCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

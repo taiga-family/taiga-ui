@@ -5,7 +5,7 @@ import {TUI_DIALOGS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
-import {TuiMobileDialogComponent} from './mobile-dialog.component';
+import {TuiMobileDialog} from './mobile-dialog.component';
 import type {TuiMobileDialogOptions} from './mobile-dialog.options';
 import {TUI_MOBILE_DIALOG_OPTIONS} from './mobile-dialog.options';
 
@@ -14,7 +14,7 @@ import {TUI_MOBILE_DIALOG_OPTIONS} from './mobile-dialog.options';
     useFactory: () =>
         new TuiMobileDialogService(
             TUI_DIALOGS,
-            TuiMobileDialogComponent,
+            TuiMobileDialog,
             inject(TUI_MOBILE_DIALOG_OPTIONS),
         ),
 })

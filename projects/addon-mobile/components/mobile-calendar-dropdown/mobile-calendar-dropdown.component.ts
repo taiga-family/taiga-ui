@@ -1,6 +1,6 @@
 import type {ValueProvider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar';
+import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {
     TUI_FALSE_HANDLER,
@@ -33,14 +33,14 @@ export interface TuiMobileCalendarData {
 @Component({
     standalone: true,
     selector: 'tui-mobile-calendar-dropdown',
-    imports: [TuiMobileCalendarComponent],
+    imports: [TuiMobileCalendar],
     templateUrl: './mobile-calendar-dropdown.template.html',
     styleUrls: ['./mobile-calendar-dropdown.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
     hostDirectives: [TuiActiveZoneDirective],
 })
-export class TuiMobileCalendarDropdownComponent {
+export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
@@ -121,6 +121,6 @@ export class TuiMobileCalendarDropdownComponent {
 export function tuiProvideMobileCalendar(): ValueProvider {
     return {
         provide: TUI_MOBILE_CALENDAR,
-        useValue: TuiMobileCalendarDropdownComponent,
+        useValue: TuiMobileCalendarDropdown,
     };
 }

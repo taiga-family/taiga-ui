@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
-    TuiMobileCalendarComponent,
+    TuiMobileCalendar,
     tuiProvideMobileCalendar,
 } from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler, TuiDayLike, TuiDayRange} from '@taiga-ui/cdk';
@@ -46,7 +46,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         ReactiveFormsModule,
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
-        TuiMobileCalendarComponent,
+        TuiMobileCalendar,
     ],
     templateUrl: './index.html',
     changeDetection,
