@@ -6,10 +6,10 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {filter, map, merge, Observable, pairwise} from 'rxjs';
 
 import {TUI_SWIPE_OPTIONS} from './swipe.options';
-import type {TuiSwipe, TuiSwipeDirection} from './swipe.types';
+import type {TuiSwipeDirection, TuiSwipeEvent} from './swipe.types';
 
 @Injectable()
-export class TuiSwipeService extends Observable<TuiSwipe> {
+export class TuiSwipeService extends Observable<TuiSwipeEvent> {
     constructor() {
         const doc = inject(DOCUMENT);
         const el = tuiInjectElement();

@@ -1,5 +1,5 @@
 ```ts
-import {TuiSwipeDirective} from '@taiga-ui/cdk';
+import {TuiSwipe} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiSwipeDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiSwipeDirective,
+    TuiSwipe,
   ],
   // ...
 })

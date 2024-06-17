@@ -7,7 +7,7 @@ import {TuiSwipeService} from './swipe.service';
     selector: '[tuiSwipe]',
     providers: [TuiSwipeService],
 })
-export class TuiSwipeDirective {
+export class TuiSwipe {
     @Output()
     public readonly tuiSwipe = inject(TuiSwipeService);
 }

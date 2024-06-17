@@ -39,7 +39,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiSwipeModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiSwipeDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiSwipe', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiValueChangesModule', moduleSpecifier: '@taiga-ui/cdk'},
