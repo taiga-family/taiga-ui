@@ -1,20 +1,17 @@
 import type {PipeTransform, Signal} from '@angular/core';
-import {inject, INJECTOR, Pipe, untracked} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiPure} from '@taiga-ui/cdk';
+import {inject, Pipe} from '@angular/core';
+import {TuiObservablePipe, tuiPure} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
-import {map, Subject, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 @Pipe({
     standalone: true,
     name: 'tuiFormatNumber',
     pure: false,
 })
-export class TuiFormatNumberPipe implements PipeTransform {
+export class TuiFormatNumberPipe extends TuiObservablePipe implements PipeTransform {
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
-    private readonly injector = inject(INJECTOR);
-    private readonly destroy$ = new Subject<void>();
 
     /**
      * Formats number adding a thousand separators and correct decimal separator
@@ -34,24 +31,19 @@ export class TuiFormatNumberPipe implements PipeTransform {
         value: number,
         settings: Partial<TuiNumberFormatSettings>,
     ): Signal<string> {
-        this.destroy$.next();
-
-        return untracked(() =>
-            toSignal(
-                this.numberFormat.pipe(
-                    map(format =>
-                        tuiFormatNumber(value, {
-                            ...format,
-                            precision: Number.isNaN(format.precision)
-                                ? Infinity
-                                : format.precision,
-                            ...settings,
-                        }),
-                    ),
-                    takeUntil(this.destroy$),
+        return this.toSignal(
+            this.numberFormat.pipe(
+                map(format =>
+                    tuiFormatNumber(value, {
+                        ...format,
+                        precision: Number.isNaN(format.precision)
+                            ? Infinity
+                            : format.precision,
+                        ...settings,
+                    }),
                 ),
-                {injector: this.injector, initialValue: ''},
             ),
+            '',
         );
     }
 }
