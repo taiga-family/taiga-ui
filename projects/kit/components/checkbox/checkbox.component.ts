@@ -15,7 +15,7 @@ import {
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearance} from '@taiga-ui/core';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
@@ -27,7 +27,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',
@@ -45,7 +45,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     },
 })
 export class TuiCheckboxComponent implements OnInit, DoCheck {
-    private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly destroyRef = inject(DestroyRef);

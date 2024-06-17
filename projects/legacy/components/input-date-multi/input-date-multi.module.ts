@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiCalendarComponent,
     TuiDropdownModule,
     TuiIcon,
@@ -36,7 +36,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiPrimitiveTextfieldModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
-        TuiAppearanceDirective,
+        TuiAppearance,
     ],
     declarations: [TuiInputDateMultiComponent],
     exports: [TuiInputDateMultiComponent],

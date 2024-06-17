@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiAppearanceDirective,
-    TuiIcon,
-    TuiScrollbarComponent,
-    TuiTooltip,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiIcon, TuiScrollbarComponent, TuiTooltip} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -28,7 +23,7 @@ import {TuiTextareaDirective} from './textarea.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiIcon,
-        TuiAppearanceDirective,
+        TuiAppearance,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
     exports: [

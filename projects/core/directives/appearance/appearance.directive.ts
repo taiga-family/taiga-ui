@@ -13,7 +13,7 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
         '[attr.data-focus]': 'tuiAppearanceFocus',
     },
 })
-export class TuiAppearanceDirective {
+export class TuiAppearance {
     @Input()
     public tuiAppearance = inject(TUI_APPEARANCE_OPTIONS).appearance;
 

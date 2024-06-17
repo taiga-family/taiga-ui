@@ -7,11 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import {
-    TuiAppearanceDirective,
-    tuiAppearanceOptionsProvider,
-    TuiIcons,
-} from '@taiga-ui/core';
+import {TuiAppearance, tuiAppearanceOptionsProvider, TuiIcons} from '@taiga-ui/core';
 
 import {TUI_BADGE_OPTIONS} from './badge.options';
 
@@ -37,7 +33,7 @@ class TuiBadgeStyles {}
     },
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',

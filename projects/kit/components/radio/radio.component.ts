@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiInjectElement, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiAppearanceDirective} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
 
@@ -15,7 +15,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',
@@ -31,7 +31,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     },
 })
 export class TuiRadioComponent implements DoCheck {
-    private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_RADIO_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 

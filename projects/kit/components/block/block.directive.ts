@@ -10,7 +10,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective, tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
+import {TuiAppearance, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';
@@ -42,7 +42,7 @@ class TuiBlockStyles {}
     hostDirectives: [
         TuiNativeValidatorDirective,
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',

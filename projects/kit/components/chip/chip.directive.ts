@@ -9,7 +9,7 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeXXS} from '@taiga-ui/core';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     tuiAppearanceOptionsProvider,
     tuiButtonOptionsProvider,
     TuiIcons,
@@ -47,7 +47,7 @@ class TuiChipStyles {}
     ],
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',

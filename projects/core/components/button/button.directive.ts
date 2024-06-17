@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
@@ -33,7 +33,7 @@ class TuiButtonStyles {}
     providers: [tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiDropdownModule,
     TuiIcon,
     TuiScrollbarComponent,
@@ -31,7 +31,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiTagModule,
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,
-        TuiAppearanceDirective,
+        TuiAppearance,
         TuiIcon,
     ],
     declarations: [TuiInputTagComponent],

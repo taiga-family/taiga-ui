@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_PLATFORM, tuiIsString} from '@taiga-ui/cdk';
 import {
-    TuiAppearanceDirective,
+    TuiAppearance,
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
     TuiTextfieldComponent,
@@ -33,7 +33,7 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     protected readonly driver$?: TuiHintHoverDirective;
 
     protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
-    protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
+    protected readonly iconAppearance = inject(TuiAppearance, {optional: true});
 
     @Input()
     public describeId = '';

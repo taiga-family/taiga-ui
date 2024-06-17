@@ -4,7 +4,7 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_ICON_RESOLVER,
-    TuiAppearanceDirective,
+    TuiAppearance,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core';
 
@@ -20,7 +20,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
     providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',

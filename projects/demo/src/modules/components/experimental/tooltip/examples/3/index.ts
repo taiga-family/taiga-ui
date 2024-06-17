@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearanceDirective} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
 import {TuiTooltipModule, tuiTooltipOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [TuiTooltipModule, TuiAppearanceDirective],
+    imports: [TuiTooltipModule, TuiAppearance],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

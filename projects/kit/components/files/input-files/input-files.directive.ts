@@ -8,7 +8,7 @@ import {
     tuiInjectElement,
 } from '@taiga-ui/cdk';
 import type {TuiAppearanceOptions} from '@taiga-ui/core';
-import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
+import {TuiAppearance, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
 import {filter, map, switchMap, timer} from 'rxjs';
 
 import type {TuiFileLike} from '../files.types';
@@ -31,7 +31,7 @@ import {TuiInputFilesValidatorDirective} from './input-files-validator.directive
     },
     hostDirectives: [
         {
-            directive: TuiAppearanceDirective,
+            directive: TuiAppearance,
             inputs: [
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',
