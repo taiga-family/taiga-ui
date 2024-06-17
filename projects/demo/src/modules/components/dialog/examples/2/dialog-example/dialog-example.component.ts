@@ -4,7 +4,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiButton, TuiDialogService, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
@@ -21,7 +21,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
         TuiInputModule,
         TuiAmountPipe,
         AsyncPipe,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
         TuiTextfieldOptionsDirective,
         FormsModule,
         TuiSelectModule,

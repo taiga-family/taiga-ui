@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -13,7 +13,7 @@ import {TuiDialogDirective} from './dialog.directive';
         PolymorpheusTemplate,
         TuiButton,
         CommonModule,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
     ],
     declarations: [TuiDialogComponent, TuiDialogDirective],
     exports: [TuiDialogComponent, TuiDialogDirective],

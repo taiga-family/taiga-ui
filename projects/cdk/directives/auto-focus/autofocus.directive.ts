@@ -16,7 +16,7 @@ import {
     selector: '[tuiAutoFocus]',
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
-export class TuiAutoFocusDirective implements AfterViewInit {
+export class TuiAutoFocus implements AfterViewInit {
     private readonly handler = inject(TUI_AUTOFOCUS_HANDLER);
     private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
     private readonly destroyRef = inject(DestroyRef);

@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {
     EMPTY_ARRAY,
     TUI_DEFAULT_MATCHER,
-    TuiAutoFocusDirective,
+    TuiAutoFocus,
     TuiFilterPipe,
     TuiLet,
 } from '@taiga-ui/cdk';
@@ -38,7 +38,7 @@ interface Items<T> {
         TuiFilterPipe,
         TuiMultiSelectModule,
         TuiTextfield,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
     ],
     templateUrl: './index.html',
     changeDetection,
