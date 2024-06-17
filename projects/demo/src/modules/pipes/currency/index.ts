@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     imports: [
         TuiDemo,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
         TuiInputNumberModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

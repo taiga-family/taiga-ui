@@ -7,7 +7,7 @@ import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
@@ -34,7 +34,7 @@ describe('Breadcrumbs Wrapper', () => {
             TuiBreadcrumbsComponent,
             NgFor,
             TuiItemDirective,
-            TuiLinkDirective,
+            TuiLink,
             RouterTestingModule,
         ],
         template: `

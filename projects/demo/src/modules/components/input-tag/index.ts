@@ -12,7 +12,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -31,7 +31,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiDropdownOpenDirective,
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         InheritedDocumentationComponent,
     ],

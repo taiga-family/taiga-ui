@@ -6,7 +6,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
-    TuiLinkDirective,
+    TuiLink,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -34,7 +34,7 @@ function randomString(len: number): string {
     standalone: true,
     imports: [
         TuiChevronDirective,
-        TuiLinkDirective,
+        TuiLink,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,

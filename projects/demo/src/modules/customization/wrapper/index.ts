@@ -4,13 +4,13 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 import {TuiWrapperExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, ClipboardModule, RouterLink, TuiLinkDirective, TuiWrapperExample1],
+    imports: [TuiDemo, ClipboardModule, RouterLink, TuiLink, TuiWrapperExample1],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

@@ -8,11 +8,7 @@ import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiRound, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {
-    tuiFormatNumber,
-    TuiLinkDirective,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -20,7 +16,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     imports: [
         TuiDemo,
         TuiNotificationComponent,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiPieChartComponent,
     ],

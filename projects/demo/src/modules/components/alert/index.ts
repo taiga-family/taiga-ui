@@ -10,7 +10,7 @@ import {
     TUI_NOTIFICATION_OPTIONS,
     TuiAlertService,
     TuiButtonDirective,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -20,13 +20,7 @@ import {AlertExampleWithDataComponent} from './examples/4';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiLinkDirective,
-        TuiButtonDirective,
-        TuiTextCodeDirective,
-        RouterLink,
-    ],
+    imports: [TuiDemo, TuiLink, TuiButtonDirective, TuiTextCodeDirective, RouterLink],
     templateUrl: './index.html',
     changeDetection,
 })

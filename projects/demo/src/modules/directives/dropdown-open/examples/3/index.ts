@@ -8,7 +8,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
     imports: [
         TuiChevronDirective,
         TuiDropdownOptionsDirective,
-        TuiLinkDirective,
+        TuiLink,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListComponent,

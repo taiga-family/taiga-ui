@@ -4,7 +4,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCodeComponent, TuiDocTabComponent} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
         TuiDocTabComponent,
         NgIf,
         TuiDocCodeComponent,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiAccordion,
         TuiNotificationComponent,

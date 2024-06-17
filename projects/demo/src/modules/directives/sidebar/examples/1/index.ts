@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
         TuiSidebarDirective,
         TuiAccordion,
         NgForOf,
-        TuiLinkDirective,
+        TuiLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

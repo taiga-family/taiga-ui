@@ -17,7 +17,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -42,7 +42,7 @@ class Account {
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         TuiMultiSelectModule,
         ReactiveFormsModule,
         TuiDropdownOptionsDirective,

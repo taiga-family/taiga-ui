@@ -13,14 +13,14 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiCalendarComponent, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiCalendarComponent, TuiLink} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [RouterModule, TuiLinkDirective, TuiCalendarComponent, TuiDemo],
+    imports: [RouterModule, TuiLink, TuiCalendarComponent, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

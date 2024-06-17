@@ -10,7 +10,7 @@ import {
     TuiAlertService,
     TuiButtonDirective,
     TuiDialogService,
-    TuiLinkDirective,
+    TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
@@ -20,7 +20,7 @@ import {switchMap} from 'rxjs';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
         TuiNotificationComponent,
         TuiButtonDirective,

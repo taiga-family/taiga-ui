@@ -13,7 +13,7 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
 import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
@@ -22,7 +22,7 @@ import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
     imports: [
         TuiDemo,
         TuiCalendarMonthComponent,
-        TuiLinkDirective,
+        TuiLink,
         RouterModule,
         TuiInputMonthRangeModule,
     ],

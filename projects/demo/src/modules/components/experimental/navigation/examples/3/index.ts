@@ -6,7 +6,7 @@ import {
     TuiAppearanceDirective,
     TuiButtonDirective,
     TuiIconComponent,
-    TuiLinkDirective,
+    TuiLink,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         TuiBreadcrumbsComponent,
         TuiItemDirective,
-        TuiLinkDirective,
+        TuiLink,
         TuiAppearanceDirective,
         TuiCardLarge,
         TuiHeaderDirective,

@@ -12,7 +12,7 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {TuiCalendarRangeComponent, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
@@ -21,7 +21,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLinkDirective, RouterLink],
+    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLink, RouterLink],
     templateUrl: './index.html',
     changeDetection,
 })

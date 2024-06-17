@@ -5,11 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK, TuiLinkDirective} from '@taiga-ui/core';
+import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDocCodeComponent, NgForOf, TuiLinkDirective, RouterLink],
+    imports: [TuiDocCodeComponent, NgForOf, TuiLink, RouterLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

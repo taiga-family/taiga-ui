@@ -9,14 +9,14 @@ import {
     type TuiAlertOptions,
     TuiAlertService,
     TuiButtonDirective,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiButtonDirective, TuiLinkDirective, TuiAmountPipe],
+    imports: [AsyncPipe, TuiButtonDirective, TuiLink, TuiAmountPipe],
     template: `
         <em>Your balance:</em>
         <span>{{ value | tuiAmount: 'RUB' | async }}</span>

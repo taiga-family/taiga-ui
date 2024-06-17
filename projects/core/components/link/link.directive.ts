@@ -50,7 +50,7 @@ class TuiLinkStyles {}
         '[class._pseudo]': 'pseudo',
     },
 })
-export class TuiLinkDirective {
+export class TuiLink {
     protected readonly nothing = tuiWithStyles(TuiLinkStyles);
 
     @Input()

@@ -2,14 +2,14 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiSliderComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLinkDirective,
+        TuiLink,
         TuiNotificationComponent,
         TuiSliderComponent,
         ReactiveFormsModule,

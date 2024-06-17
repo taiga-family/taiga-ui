@@ -5,7 +5,7 @@ import {
     TuiButtonDirective,
     TuiHintDirective,
     TuiHintManualDirective,
-    TuiLinkDirective,
+    TuiLink,
 } from '@taiga-ui/core';
 
 @Component({
@@ -15,7 +15,7 @@ import {
         TuiHintDirective,
         TuiHintManualDirective,
         RouterLink,
-        TuiLinkDirective,
+        TuiLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

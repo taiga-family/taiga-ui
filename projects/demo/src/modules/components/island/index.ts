@@ -4,11 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiButtonDirective,
-    TuiLinkDirective,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 import {StylesInfoComponent} from '../../app/styles-info';
@@ -21,7 +17,7 @@ import {StylesInfoComponent} from '../../app/styles-info';
         TuiIslandDirective,
         TuiButtonDirective,
         TuiNotificationComponent,
-        TuiLinkDirective,
+        TuiLink,
         RouterLink,
     ],
     templateUrl: './index.html',

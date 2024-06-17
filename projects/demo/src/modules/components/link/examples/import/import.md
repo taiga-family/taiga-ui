@@ -1,5 +1,5 @@
 ```ts
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiLinkDirective} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiLinkDirective,
+    TuiLink,
   ],
   // ...
 })

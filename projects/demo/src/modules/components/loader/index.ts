@@ -4,12 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiLoader} from '@taiga-ui/core';
+import {TuiLink, TuiLoader} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLoader, TuiLinkDirective, RouterLink],
+    imports: [TuiDemo, TuiLoader, TuiLink, RouterLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
