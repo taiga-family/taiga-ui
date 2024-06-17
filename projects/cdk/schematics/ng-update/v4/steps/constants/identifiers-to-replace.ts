@@ -254,7 +254,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiUnmaskHandlerModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiUnmaskHandlerDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnmaskHandler', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiDialogFormService', moduleSpecifier: '@taiga-ui/kit'},
