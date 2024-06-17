@@ -3,11 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiNotificationComponent} from '@taiga-ui/core';
-import {
-    TuiChipDirective,
-    TuiItemsWithMoreComponent,
-    TuiMoreDirective,
-} from '@taiga-ui/kit';
+import {TuiChip, TuiItemsWithMoreComponent, TuiMoreDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -15,7 +11,7 @@ import {
         TuiDemo,
         TuiNotificationComponent,
         TuiItemsWithMoreComponent,
-        TuiChipDirective,
+        TuiChip,
         TuiItemDirective,
         TuiMoreDirective,
     ],

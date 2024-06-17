@@ -11,7 +11,7 @@ import {
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,
-    TuiChipDirective,
+    TuiChip,
     TuiSkeletonDirective,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
@@ -26,7 +26,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         TuiSkeletonDirective,
         TuiButton,
-        TuiChipDirective,
+        TuiChip,
         TuiBadgeDirective,
         TuiCardLarge,
         TuiSurfaceDirective,

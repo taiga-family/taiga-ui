@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiChipDirective} from '@taiga-ui/kit';
+import {TuiChip} from '@taiga-ui/kit';
 
 interface User {
     readonly email: string;
@@ -19,7 +19,7 @@ interface User {
     selector: 'tui-table-example-2',
     imports: [
         TuiTable,
-        TuiChipDirective,
+        TuiChip,
         NgForOf,
         TuiAutoColorPipe,
         TuiLink,

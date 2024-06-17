@@ -11,7 +11,7 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {EMPTY_QUERY, TuiItemDirective, TuiReplacePipe} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe} from '@taiga-ui/core';
-import {TuiChipDirective, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TuiChip, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 import {TuiDocSeeAlsoComponent} from '../internal/see-also';
 import {TuiDocSourceCodeComponent} from '../internal/source-code/source-code.component';
@@ -22,7 +22,7 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
     standalone: true,
     selector: 'tui-doc-page',
     imports: [
-        TuiChipDirective,
+        TuiChip,
         NgIf,
         TuiAutoColorPipe,
         TuiTabsWithMoreComponent,

@@ -7,14 +7,14 @@ import {TuiButton} from '@taiga-ui/core';
 import {
     TuiBadgedContentComponent,
     TuiBadgeNotificationComponent,
-    TuiChipDirective,
+    TuiChip,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiChipDirective,
+        TuiChip,
         TuiAmountPipe,
         AsyncPipe,
         TuiBadgedContentComponent,
