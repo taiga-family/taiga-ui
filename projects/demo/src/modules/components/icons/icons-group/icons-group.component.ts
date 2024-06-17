@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_DEFAULT_MATCHER,
-    TuiAutoFocusDirective,
+    TuiAutoFocus,
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
@@ -25,7 +25,7 @@ import {IconsGroupDirective} from './icons-group.directive';
     selector: 'icons-group',
     imports: [
         TuiInputModule,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
         TuiHint,
         ReactiveFormsModule,
         TuiTextfieldOptionsDirective,

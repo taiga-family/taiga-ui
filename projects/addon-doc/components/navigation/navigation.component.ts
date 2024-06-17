@@ -25,13 +25,7 @@ import {
 import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {
-    TuiAutoFocusDirective,
-    tuiControlValue,
-    tuiPure,
-    tuiUniqBy,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+import {TuiAutoFocus, tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
     TuiDataList,
@@ -61,7 +55,7 @@ import {
         TuiInputModule,
         TuiTextfieldOptionsDirective,
         ReactiveFormsModule,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
         TuiDataList,
         AsyncPipe,
         NgForOf,

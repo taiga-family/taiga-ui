@@ -3,7 +3,7 @@
   standalone: true,
   imports: [
     // ...
-    TuiAutoFocusDirective,
+    TuiAutoFocus,
   ],
   providers: [
     tuiAutoFocusOptionsProvider({

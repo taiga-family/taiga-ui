@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataListComponent,
@@ -30,7 +30,7 @@ import {
         TuiIcon,
         NgForOf,
         TuiTextareaModule,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
         TuiButton,
     ],
     templateUrl: './index.html',

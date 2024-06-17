@@ -7,7 +7,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiAutoFocusDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiAutoFocus', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiFocusTrapModule', moduleSpecifier: '@taiga-ui/cdk'},

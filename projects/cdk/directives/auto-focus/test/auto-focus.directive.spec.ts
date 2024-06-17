@@ -11,7 +11,7 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_AUTOFOCUS_HANDLER,
-    TuiAutoFocusDirective,
+    TuiAutoFocus,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -21,7 +21,7 @@ describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
         @Component({
             standalone: true,
-            imports: [TuiAutoFocusDirective],
+            imports: [TuiAutoFocus],
             template: `
                 <div
                     tabindex="0"
@@ -31,7 +31,7 @@ describe('TuiAutoFocus directive', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestWithDiv {
-            @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
+            @ViewChild(TuiAutoFocus, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
         }
 
@@ -58,14 +58,14 @@ describe('TuiAutoFocus directive', () => {
     describe('works for iOS decoy method', () => {
         @Component({
             standalone: true,
-            imports: [TuiAutoFocusDirective],
+            imports: [TuiAutoFocus],
             template: `
                 <input tuiAutoFocus />
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestIos {
-            @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
+            @ViewChild(TuiAutoFocus, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
         }
 
@@ -105,7 +105,7 @@ describe('TuiAutoFocus directive', () => {
     describe('autoFocus flag is false', () => {
         @Component({
             standalone: true,
-            imports: [TuiAutoFocusDirective],
+            imports: [TuiAutoFocus],
             template: `
                 <div
                     tabindex="0"
@@ -115,7 +115,7 @@ describe('TuiAutoFocus directive', () => {
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestWithFocusFlag {
-            @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
+            @ViewChild(TuiAutoFocus, {read: ElementRef})
             public element!: ElementRef<HTMLElement>;
 
             public autoFocus = false;

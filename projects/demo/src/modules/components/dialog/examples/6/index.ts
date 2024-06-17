@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogModule, TuiHint} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -14,7 +14,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiDialogModule,
         ReactiveFormsModule,
         TuiInputModule,
-        TuiAutoFocusDirective,
+        TuiAutoFocus,
     ],
     templateUrl: './index.html',
     encapsulation,
