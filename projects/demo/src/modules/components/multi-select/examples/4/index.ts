@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLetDirective} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -23,7 +23,7 @@ const DICTIONARY = [
     standalone: true,
     imports: [
         TuiMultiSelectModule,
-        TuiLetDirective,
+        TuiLet,
         AsyncPipe,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

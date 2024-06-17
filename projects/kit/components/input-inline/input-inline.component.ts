@@ -7,13 +7,13 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiControlValue, tuiIsElement, tuiIsInput, TuiLetDirective} from '@taiga-ui/cdk';
+import {tuiControlValue, tuiIsElement, tuiIsInput, TuiLet} from '@taiga-ui/cdk';
 import {defer} from 'rxjs';
 
 @Component({
     standalone: true,
     selector: 'tui-input-inline',
-    imports: [NgIf, TuiLetDirective, AsyncPipe],
+    imports: [NgIf, TuiLet, AsyncPipe],
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,

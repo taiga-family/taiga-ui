@@ -2,7 +2,7 @@ import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -18,7 +18,7 @@ import {RequestService} from './request.service';
         NgIf,
         NgForOf,
         ReactiveFormsModule,
-        TuiLetDirective,
+        TuiLet,
         TuiComboBoxModule,
         TuiDataList,
         TuiAvatarComponent,

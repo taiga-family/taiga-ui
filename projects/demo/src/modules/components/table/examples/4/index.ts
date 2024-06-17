@@ -16,7 +16,7 @@ import {
     tuiDefaultSort,
     tuiIsFalsy,
     tuiIsPresent,
-    TuiLetDirective,
+    TuiLet,
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {
@@ -127,7 +127,7 @@ function getAge({dob}: User): number {
         TuiDropdownOpenDirective,
         FormsModule,
         NgForOf,
-        TuiLetDirective,
+        TuiLet,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

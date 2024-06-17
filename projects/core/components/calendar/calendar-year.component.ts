@@ -14,7 +14,7 @@ import {
     TuiHoveredDirective,
     tuiInRange,
     tuiIsNumber,
-    TuiLetDirective,
+    TuiLet,
     TuiMonth,
     TuiMonthRange,
     TuiRepeatTimesDirective,
@@ -32,7 +32,7 @@ const ITEMS_IN_ROW = 4;
     imports: [
         TuiHoveredDirective,
         TuiRepeatTimesDirective,
-        TuiLetDirective,
+        TuiLet,
         TuiScrollIntoViewDirective,
     ],
     templateUrl: './calendar-year.template.html',

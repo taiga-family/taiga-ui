@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TUI_DEFAULT_MATCHER, TuiLetDirective} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataListDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -37,7 +37,7 @@ const databaseMockData: readonly User[] = [
     standalone: true,
     imports: [
         TuiMultiSelectModule,
-        TuiLetDirective,
+        TuiLet,
         AsyncPipe,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

@@ -680,7 +680,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiLetModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiLetDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiLet', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {

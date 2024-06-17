@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiLetDirective, tuiPure} from '@taiga-ui/cdk';
+import {TuiLet, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
     TuiDataListDirective,
@@ -32,7 +32,7 @@ const ITEMS: readonly Python[] = [
     standalone: true,
     imports: [
         TuiSelectModule,
-        TuiLetDirective,
+        TuiLet,
         TuiTextfieldControllerModule,
         FormsModule,
         AsyncPipe,

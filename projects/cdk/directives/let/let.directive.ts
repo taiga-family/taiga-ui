@@ -10,7 +10,7 @@ import {TuiLetContext} from './let-context';
     standalone: true,
     selector: '[tuiLet]',
 })
-export class TuiLetDirective<T> {
+export class TuiLet<T> {
     @Input()
     public tuiLet!: T;
 
@@ -28,7 +28,7 @@ export class TuiLetDirective<T> {
      * `TuiLet` structural directive renders its template with a specific context type.
      */
     public static ngTemplateContextGuard<T>(
-        _dir: TuiLetDirective<T>,
+        _dir: TuiLet<T>,
         _ctx: unknown,
     ): _ctx is TuiLetContext<T> {
         return true;

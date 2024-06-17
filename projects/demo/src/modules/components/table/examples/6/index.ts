@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiTable, TuiLetDirective, TuiButtonDirective],
+    imports: [NgForOf, TuiTable, TuiLet, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

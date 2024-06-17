@@ -7,7 +7,7 @@ import {
     TUI_DEFAULT_MATCHER,
     TuiAutoFocusDirective,
     TuiFilterPipe,
-    TuiLetDirective,
+    TuiLet,
 } from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
@@ -34,7 +34,7 @@ interface Items<T> {
         TuiDataListComponent,
         TuiOptGroupDirective,
         TuiOptionComponent,
-        TuiLetDirective,
+        TuiLet,
         TuiFilterPipe,
         TuiMultiSelectModule,
         TuiTextfield,
