@@ -15,12 +15,7 @@ import {
     INTERSECTION_ROOT,
     IntersectionObserverModule,
 } from '@ng-web-apis/intersection-observer';
-import {
-    EMPTY_QUERY,
-    TuiAutoFocus,
-    tuiProvide,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiAutoFocus, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
 
 @Component({
