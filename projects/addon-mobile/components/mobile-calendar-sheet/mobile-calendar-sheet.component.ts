@@ -14,6 +14,6 @@ import {TuiCalendarSheetComponent, TuiCalendarSheetPipe} from '@taiga-ui/core';
         '[class._ios]': 'isIOS',
     },
 })
-export class TuiMobileCalendarSheetComponent extends TuiCalendarSheetComponent {
+export class TuiMobileCalendarSheet extends TuiCalendarSheetComponent {
     protected readonly isIOS = inject(TUI_IS_IOS);
 }

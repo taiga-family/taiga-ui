@@ -1,5 +1,5 @@
 ```ts
-import {TuiMobileCalendarComponent, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
+import {TuiMobileCalendar, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 // ...
@@ -8,7 +8,7 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
   standalone: true,
   imports: [
     // ...
-    TuiMobileCalendarComponent,
+    TuiMobileCalendar,
   ],
   // If you want it in date picker inputs
   providers: [tuiProvideMobileCalendar()],

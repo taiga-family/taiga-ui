@@ -17,7 +17,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiMobileCalendarSheetComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
+import {TuiMobileCalendarSheet} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
 import {TuiRippleDirective, TuiTouchable} from '@taiga-ui/addon-mobile/directives';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
 import {
@@ -91,7 +91,7 @@ import {
         CdkVirtualScrollViewport,
         CdkVirtualForOf,
         TuiOrderWeekDaysPipe,
-        TuiMobileCalendarSheetComponent,
+        TuiMobileCalendarSheet,
         TuiMonthPipe,
         NgForOf,
         NgIf,
@@ -106,7 +106,7 @@ import {
         '[class._initialized]': 'initialized',
     },
 })
-export class TuiMobileCalendarComponent implements AfterViewInit {
+export class TuiMobileCalendar implements AfterViewInit {
     @ViewChild('yearsScrollRef')
     private readonly yearsScrollRef?: CdkVirtualScrollViewport;
 

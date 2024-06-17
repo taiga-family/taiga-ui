@@ -996,7 +996,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
         to: {
-            name: 'TuiMobileCalendarComponent',
+            name: 'TuiMobileCalendar',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
@@ -1429,7 +1429,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
         to: {
-            name: 'TuiMobileDialogComponent',
+            name: 'TuiMobileDialog',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },

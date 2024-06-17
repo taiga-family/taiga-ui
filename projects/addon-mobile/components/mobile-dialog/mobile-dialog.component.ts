@@ -30,7 +30,7 @@ import type {TuiMobileDialogOptions} from './mobile-dialog.options';
         '[class._ios]': 'isIOS',
     },
 })
-export class TuiMobileDialogComponent<I> {
+export class TuiMobileDialog<I> {
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly context =
         inject<TuiPopover<TuiMobileDialogOptions<I>, number>>(POLYMORPHEUS_CONTEXT);

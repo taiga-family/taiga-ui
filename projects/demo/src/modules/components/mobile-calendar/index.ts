@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile';
+import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -24,7 +24,7 @@ import type {Observable} from 'rxjs';
         TuiAddonDoc,
         TuiLink,
         RouterLink,
-        TuiMobileCalendarComponent,
+        TuiMobileCalendar,
         TuiComponentPipe,
         TuiExamplePipe,
         TuiSetupComponent,
