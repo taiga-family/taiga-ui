@@ -4,12 +4,12 @@ import {tuiDistanceBetweenTouches, tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 
 import {TUI_ZOOM_OPTIONS} from './zoom.options';
-import type {TuiZoom} from './zoom.types';
+import type {TuiZoomEvent} from './zoom.types';
 
 const TOUCH_SENSITIVITY = 0.01;
 
 @Injectable()
-export class TuiZoomService extends Observable<TuiZoom> {
+export class TuiZoomService extends Observable<TuiZoomEvent> {
     constructor() {
         const el = tuiInjectElement();
         const {wheelSensitivity} = inject(TUI_ZOOM_OPTIONS);

@@ -11,6 +11,6 @@ import {TuiZoomService} from './zoom.service';
         '[style.touch-action]': '"none"',
     },
 })
-export class TuiZoomDirective {
+export class TuiZoom {
     protected readonly tuiZoom = inject(TuiZoomService);
 }

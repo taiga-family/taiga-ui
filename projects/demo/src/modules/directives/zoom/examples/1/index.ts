@@ -2,13 +2,13 @@ import {AsyncPipe, DecimalPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiZoom} from '@taiga-ui/cdk';
-import {tuiClamp, TuiZoomDirective} from '@taiga-ui/cdk';
+import type {TuiZoomEvent} from '@taiga-ui/cdk';
+import {tuiClamp, TuiZoom} from '@taiga-ui/cdk';
 import {map, scan, startWith, Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiZoomDirective, AsyncPipe, DecimalPipe],
+    imports: [TuiZoom, AsyncPipe, DecimalPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -24,7 +24,7 @@ export default class Example {
 
     protected readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
 
-    protected onZoom({delta}: TuiZoom): void {
+    protected onZoom({delta}: TuiZoomEvent): void {
         this.delta$.next(delta);
     }
 }

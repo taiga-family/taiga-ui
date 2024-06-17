@@ -1,5 +1,5 @@
 ```ts
-import {TuiZoomDirective} from '@taiga-ui/cdk';
+import {TuiZoom} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiZoomDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiZoomDirective,
+    TuiZoom,
   ],
   // ...
 })

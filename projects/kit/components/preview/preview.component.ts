@@ -2,7 +2,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import type {TuiZoom} from '@taiga-ui/cdk';
+import type {TuiZoomEvent} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     tuiClamp,
@@ -12,7 +12,7 @@ import {
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
-    TuiZoomDirective,
+    TuiZoom,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHint, tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
@@ -33,7 +33,7 @@ const ROTATION_ANGLE = 90;
         TuiPanDirective,
         MutationObserverModule,
         ResizeObserverModule,
-        TuiZoomDirective,
+        TuiZoom,
         AsyncPipe,
         TuiHint,
         TuiButtonDirective,
@@ -108,7 +108,7 @@ export class TuiPreviewComponent {
         this.refresh(clientWidth, clientHeight);
     }
 
-    protected onZoom({clientX, clientY, delta}: TuiZoom): void {
+    protected onZoom({clientX, clientY, delta}: TuiZoomEvent): void {
         if (this.zoomable) {
             this.processZoom(clientX, clientY, delta);
         }
