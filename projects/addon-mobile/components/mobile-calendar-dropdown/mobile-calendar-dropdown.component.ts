@@ -6,7 +6,7 @@ import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     type TuiBooleanHandler,
     TuiControl,
     type TuiDay,
@@ -38,7 +38,7 @@ export interface TuiMobileCalendarData {
     styleUrls: ['./mobile-calendar-dropdown.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
-    hostDirectives: [TuiActiveZoneDirective],
+    hostDirectives: [TuiActiveZone],
 })
 export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing

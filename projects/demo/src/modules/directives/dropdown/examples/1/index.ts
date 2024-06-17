@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdownModule} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
 
@@ -11,7 +11,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
         TuiDropdownModule,
         TuiButton,
         TuiChevronDirective,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiObscuredDirective,
     ],
     templateUrl: './index.html',

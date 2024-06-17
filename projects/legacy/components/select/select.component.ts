@@ -8,7 +8,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {
     TuiDataListHost,
@@ -75,7 +75,7 @@ export class TuiSelectComponent<T>
     private readonly options = inject(TUI_SELECT_OPTIONS);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected open = false;

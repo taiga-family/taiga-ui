@@ -13,7 +13,7 @@ import {
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
-import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
 import {tuiIsNativeFocused, tuiPure} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -67,7 +67,7 @@ export class TuiInputPhoneComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZone>>;
 
     protected open = false;
 

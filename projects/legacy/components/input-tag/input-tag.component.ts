@@ -15,7 +15,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiActiveZoneDirective, TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_FALSE_HANDLER,
@@ -104,7 +104,7 @@ export class TuiInputTagComponent
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZone>>;
 
     @ViewChild('errorIcon')
     protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;

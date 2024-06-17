@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiNumberFormatDirective} from '@taiga-ui/core';
 import {TuiRangeComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
@@ -19,7 +19,7 @@ import {TuiInputRangeComponent} from './input-range.component';
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiInputNumberModule,
         TuiRangeComponent,
         TuiWrapperModule,

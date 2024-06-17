@@ -1,9 +1,5 @@
 import {Directive, HostListener, inject} from '@angular/core';
-import {
-    EMPTY_CLIENT_RECT,
-    TuiActiveZoneDirective,
-    tuiPointToClientRect,
-} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT, TuiActiveZone, tuiPointToClientRect} from '@taiga-ui/cdk';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
@@ -17,7 +13,7 @@ function activeZoneFilter(this: TuiDropdownContextDirective, target: Element): b
     standalone: true,
     selector: '[tuiDropdownContext]',
     providers: [
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiDropdownDriver,
         tuiAsDriver(TuiDropdownDriver),
         tuiAsRectAccessor(TuiDropdownContextDirective),
@@ -27,7 +23,7 @@ export class TuiDropdownContextDirective extends TuiRectAccessor {
     private readonly driver = inject(TuiDropdownDriver);
     private currentRect = EMPTY_CLIENT_RECT;
 
-    protected readonly activeZone = inject(TuiActiveZoneDirective);
+    protected readonly activeZone = inject(TuiActiveZone);
 
     public readonly type = 'dropdown';
 

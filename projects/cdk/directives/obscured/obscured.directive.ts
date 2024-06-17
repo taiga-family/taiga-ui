@@ -1,5 +1,5 @@
 import {Directive, inject, Input, Output} from '@angular/core';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {map, Subject} from 'rxjs';
 
@@ -14,7 +14,7 @@ import {TuiObscuredService} from './obscured.service';
     providers: [TuiObscuredService],
 })
 export class TuiObscuredDirective {
-    private readonly activeZone = inject(TuiActiveZoneDirective, {optional: true});
+    private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly enabled$ = new Subject<boolean>();
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
         map(by => !!by?.every(el => !this.activeZone?.contains(el))),

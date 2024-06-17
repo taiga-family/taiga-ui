@@ -11,7 +11,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
 import type {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     TuiBooleanHandler,
     TuiContext,
     TuiDateMode,
@@ -82,7 +82,7 @@ export class TuiInputDateTimeComponent
         {optional: true},
     );
 
-    protected readonly type!: TuiContext<TuiActiveZoneDirective>;
+    protected readonly type!: TuiContext<TuiActiveZone>;
 
     protected readonly filler$: Observable<string> = combineLatest([
         this.dateTexts$.pipe(

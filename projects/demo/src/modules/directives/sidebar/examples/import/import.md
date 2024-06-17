@@ -1,6 +1,6 @@
 ```ts
 import {TuiSidebar} from '@taiga-ui/addon-mobile';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 
 // ...
 
@@ -9,7 +9,7 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
   imports: [
     // ...
     TuiSidebar,
-    TuiActiveZoneDirective,
+    TuiActiveZone,
   ],
   // ...
 })

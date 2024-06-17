@@ -24,7 +24,7 @@ import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     TUI_NON_DIGIT_REGEXP,
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     tuiAsControl,
     TuiControl,
     tuiDirectiveBinding,
@@ -79,7 +79,7 @@ export interface TuiCard {
         ResizeObserverDirective,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiFormatCardPipe,
         TuiMapperPipe,
         TuiLet,

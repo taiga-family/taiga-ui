@@ -7,7 +7,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -52,7 +52,7 @@ export class TuiInputComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
 
     public open = false;
 

@@ -13,7 +13,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiClamp,
@@ -82,7 +82,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     public moreContent: PolymorpheusContent;
 
     @Input()
-    public dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    public dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZone>>;
 
     @Input()
     public underline = this.options.underline;
