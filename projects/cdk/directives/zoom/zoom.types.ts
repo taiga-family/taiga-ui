@@ -1,4 +1,4 @@
-export interface TuiZoom {
+export interface TuiZoomEvent {
     readonly clientX: number;
     readonly clientY: number;
     readonly delta: number;

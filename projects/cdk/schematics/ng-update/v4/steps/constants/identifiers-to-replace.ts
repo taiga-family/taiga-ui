@@ -47,7 +47,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiZoomModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiZoomDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiZoom', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},

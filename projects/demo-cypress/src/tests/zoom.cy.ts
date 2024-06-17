@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import type {TuiZoom} from '@taiga-ui/cdk';
-import {tuiFloor, TuiZoomDirective} from '@taiga-ui/cdk';
+import type {TuiZoomEvent} from '@taiga-ui/cdk';
+import {tuiFloor, TuiZoom} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiZoom', () => {
@@ -17,7 +17,7 @@ describe('TuiZoom', () => {
     class Test {
         public scale = 1;
 
-        protected onZoom({delta}: TuiZoom): void {
+        protected onZoom({delta}: TuiZoomEvent): void {
             this.scale -= delta;
         }
     }
@@ -25,7 +25,7 @@ describe('TuiZoom', () => {
     beforeEach(() =>
         cy
             .mount(Test, {
-                imports: [TuiZoomDirective],
+                imports: [TuiZoom],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
