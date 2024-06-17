@@ -19,7 +19,7 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     TuiButton,
-    TuiIconComponent,
+    TuiIcon,
     TuiLoader,
 } from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
@@ -41,7 +41,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         PolymorpheusTemplate,
         TuiLoader,
         TuiButton,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],

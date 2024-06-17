@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAppearanceDirective, TuiHint, TuiIconComponent} from '@taiga-ui/core';
+import {TuiAppearanceDirective, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -22,7 +22,7 @@ import {TuiInputPasswordDirective} from './input-password.directive';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiAppearanceDirective,
-        TuiIconComponent,
+        TuiIcon,
     ],
     declarations: [TuiInputPasswordComponent, TuiInputPasswordDirective],
     exports: [

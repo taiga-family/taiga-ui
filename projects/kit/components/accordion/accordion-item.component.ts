@@ -11,7 +11,7 @@ import {
     Output,
 } from '@angular/core';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiExpand, TuiIconComponent} from '@taiga-ui/core';
+import {TuiExpand, TuiIcon} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit/directives';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -25,7 +25,7 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiIconComponent,
+        TuiIcon,
         TuiChevronDirective,
         TuiExpand,
     ],

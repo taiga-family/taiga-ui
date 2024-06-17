@@ -1,11 +1,11 @@
 import {NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiIconComponent, NgTemplateOutlet],
+    imports: [TuiIcon, NgTemplateOutlet],
     template: `
         <tui-icon
             class="tui-space_right-2"

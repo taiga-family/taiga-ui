@@ -10,14 +10,14 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiIconComponent, tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {TuiIcon, tuiLinkOptionsProvider} from '@taiga-ui/core';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
 @Component({
     standalone: true,
     selector: 'tui-breadcrumbs',
-    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiIconComponent],
+    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiIcon],
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

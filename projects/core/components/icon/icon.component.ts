@@ -16,7 +16,7 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
     styleUrls: ['./icon.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiIconComponent {
+export class TuiIcon {
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     @Input()

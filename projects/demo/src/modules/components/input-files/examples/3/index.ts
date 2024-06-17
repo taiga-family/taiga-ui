@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiIconComponent, TuiLink} from '@taiga-ui/core';
+import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import type {TuiFileLike} from '@taiga-ui/kit';
 import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
 
@@ -17,7 +17,7 @@ import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
         NgIf,
         TuiItemDirective,
         TuiLink,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     encapsulation,

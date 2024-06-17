@@ -29,7 +29,7 @@ import {
     TUI_COMMON_ICONS,
     TuiCalendarComponent,
     TuiDataList,
-    TuiIconComponent,
+    TuiIcon,
 } from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
@@ -47,7 +47,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
         TuiMapperPipe,
         TuiCalendarComponent,
         TuiDataList,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],

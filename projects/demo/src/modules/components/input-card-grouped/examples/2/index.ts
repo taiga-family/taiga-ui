@@ -9,7 +9,7 @@ import {
 import {
     TuiButton,
     TuiDataList,
-    TuiIconComponent,
+    TuiIcon,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 
@@ -19,7 +19,7 @@ import {
         ReactiveFormsModule,
         TuiInputCardGroupedComponent,
         TuiDataList,
-        TuiIconComponent,
+        TuiIcon,
         NgForOf,
         TuiThumbnailCardComponent,
         TuiTitleDirective,

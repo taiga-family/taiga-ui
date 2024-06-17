@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintOptionsDirective, TuiIconComponent} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, TuiIcon} from '@taiga-ui/core';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
         FormsModule,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

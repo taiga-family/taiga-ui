@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
@@ -15,7 +15,7 @@ interface TreeNode {
 
 @Component({
     standalone: true,
-    imports: [TuiTree, TuiIconComponent, NgIf],
+    imports: [TuiTree, TuiIcon, NgIf],
     templateUrl: './index.html',
     styleUrls: ['index.less'],
     encapsulation,

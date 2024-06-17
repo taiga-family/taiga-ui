@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_USED_ICONS} from '@taiga-ui/cdk';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiIconComponent],
+    imports: [TuiDemo, TuiIcon],
     templateUrl: './index.html',
     changeDetection,
     providers: [

@@ -14,7 +14,7 @@ import {
     tuiFallbackValueProvider,
     TuiRepeatTimes,
 } from '@taiga-ui/cdk';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_RATING_OPTIONS} from './rating.options';
@@ -25,7 +25,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     imports: [
         CommonModule,
         FormsModule,
-        TuiIconComponent,
+        TuiIcon,
         TuiRepeatTimes,
         PolymorpheusOutlet,
         PolymorpheusTemplate,

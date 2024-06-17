@@ -12,7 +12,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownPositionSidedDirective,
     TuiExpand,
-    TuiIconComponent,
+    TuiIcon,
     TuiOptionComponent,
     TuiSurfaceDirective,
     TuiTitleDirective,
@@ -34,7 +34,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
     imports: [
         TuiNavigationModule,
         TuiButton,
-        TuiIconComponent,
+        TuiIcon,
         TuiChevronDirective,
         TuiDropdownOpenDirective,
         TuiDropdownDirective,

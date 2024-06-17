@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputRangeModule, ReactiveFormsModule, TuiIconComponent],
+    imports: [TuiInputRangeModule, ReactiveFormsModule, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

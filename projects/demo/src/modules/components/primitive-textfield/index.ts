@@ -10,7 +10,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_HINT_DIRECTIONS,
     TuiHintOptionsDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
@@ -43,7 +43,7 @@ import ExampleComponent2 from './examples/2';
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
         TuiAvatarComponent,
-        TuiIconComponent,
+        TuiIcon,
         HintControllerDocumentationComponent,
         TextfieldControllerDocumentationComponent,
         InheritedDocumentationComponent,

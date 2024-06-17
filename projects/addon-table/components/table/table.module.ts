@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -24,7 +24,7 @@ import {TuiTrComponent} from './tr/tr.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiIconComponent,
+        TuiIcon,
         TuiMapperPipe,
         TuiChevronDirective,
         PolymorpheusOutlet,

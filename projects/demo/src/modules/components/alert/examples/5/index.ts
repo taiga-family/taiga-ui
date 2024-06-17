@@ -7,7 +7,7 @@ import {
     type TuiAlertOptions,
     TuiAlertService,
     TuiButton,
-    TuiIconComponent,
+    TuiIcon,
 } from '@taiga-ui/core';
 import {
     POLYMORPHEUS_CONTEXT,
@@ -19,7 +19,7 @@ import {takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiIconComponent],
+    imports: [TuiIcon],
     template: `
         <label style="display: flex; align-items: center">
             <em>From custom label component with</em>

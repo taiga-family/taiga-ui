@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {
     TUI_ANIMATIONS_SPEED,
-    TuiIconComponent,
+    TuiIcon,
     tuiScaleIn,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
@@ -10,7 +10,7 @@ import {
 @Component({
     standalone: true,
     selector: 'button[tuiTabBarItem], a[tuiTabBarItem]',
-    imports: [NgIf, TuiIconComponent],
+    imports: [NgIf, TuiIcon],
     templateUrl: './tab-bar-item.template.html',
     styleUrls: ['./tab-bar-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

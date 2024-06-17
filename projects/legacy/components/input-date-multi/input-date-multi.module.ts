@@ -7,7 +7,7 @@ import {
     TuiAppearanceDirective,
     TuiCalendarComponent,
     TuiDropdownModule,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
@@ -35,7 +35,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiTextfieldControllerModule,
         TuiPrimitiveTextfieldModule,
         TuiLegacyDropdownOpenMonitorDirective,
-        TuiIconComponent,
+        TuiIcon,
         TuiAppearanceDirective,
     ],
     declarations: [TuiInputDateMultiComponent],

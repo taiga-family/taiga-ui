@@ -8,11 +8,7 @@ import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort, TuiLet, TuiValidatorDirective} from '@taiga-ui/cdk';
-import {
-    TuiFormatNumberPipe,
-    TuiIconComponent,
-    TuiScrollbarComponent,
-} from '@taiga-ui/core';
+import {TuiFormatNumberPipe, TuiIcon, TuiScrollbarComponent} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
@@ -47,7 +43,7 @@ interface Item {
         TuiScrollbarComponent,
         TuiFormatNumberPipe,
         AsyncPipe,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

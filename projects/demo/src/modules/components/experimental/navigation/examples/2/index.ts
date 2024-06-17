@@ -8,7 +8,7 @@ import {
     TuiButton,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -35,7 +35,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiDropdownOpenDirective,
         TuiHeaderDirective,
         TuiTitleDirective,
-        TuiIconComponent,
+        TuiIcon,
         TuiFadeDirective,
         TuiBadgeDirective,
         TuiTabsHorizontalDirective,

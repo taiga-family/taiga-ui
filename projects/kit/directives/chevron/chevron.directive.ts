@@ -9,7 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiDropdownDirective, TuiIconComponent, TuiIconsDirective} from '@taiga-ui/core';
+import {TuiDropdownDirective, TuiIcon, TuiIconsDirective} from '@taiga-ui/core';
 
 import {TuiChevronService} from './chevron.service';
 
@@ -36,7 +36,7 @@ export class TuiChevronDirective implements DoCheck {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly icons = inject(TuiIconsDirective, {optional: true});
-    private readonly icon = inject(TuiIconComponent, {optional: true});
+    private readonly icon = inject(TuiIcon, {optional: true});
     private readonly handler = inject(TuiChevronService).getHandler(inject(INJECTOR));
 
     protected readonly nothing = tuiWithStyles(TuiChevronStyles);

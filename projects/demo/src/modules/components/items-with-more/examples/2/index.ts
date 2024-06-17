@@ -11,7 +11,7 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiGroupDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
@@ -39,7 +39,7 @@ import {
         TuiDataListComponent,
         NgIf,
         TuiOptionComponent,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

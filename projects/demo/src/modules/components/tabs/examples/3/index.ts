@@ -7,7 +7,7 @@ import {
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
@@ -29,7 +29,7 @@ import {
         TuiDropdownOpenDirective,
         TuiDataListComponent,
         TuiOptionComponent,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

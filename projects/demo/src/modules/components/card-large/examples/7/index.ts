@@ -7,7 +7,7 @@ import {
     TuiAppearanceDirective,
     TuiDataList,
     TuiDropdownModule,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
@@ -21,7 +21,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
         TuiDropdownModule,
         TuiRepeatTimes,
         TuiAvatarComponent,
-        TuiIconComponent,
+        TuiIcon,
         TuiDataList,
         NgForOf,
         TuiCellDirective,

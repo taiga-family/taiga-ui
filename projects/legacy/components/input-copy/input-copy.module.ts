@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiAppearanceDirective, TuiHint, TuiIconComponent} from '@taiga-ui/core';
+import {TuiAppearanceDirective, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -20,7 +20,7 @@ import {TuiInputCopyDirective} from './input-copy.directive';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiAppearanceDirective,
-        TuiIconComponent,
+        TuiIcon,
     ],
     declarations: [TuiInputCopyComponent, TuiInputCopyDirective],
     exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldComponent],

@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDurationOptions} from '@taiga-ui/core';
-import {TuiIconComponent, tuiScaleIn} from '@taiga-ui/core';
+import {TuiIcon, tuiScaleIn} from '@taiga-ui/core';
 
 import {AnimationState} from '../../state';
 
 @Component({
     standalone: true,
-    imports: [TuiIconComponent, NgIf, NgForOf, AsyncPipe],
+    imports: [TuiIcon, NgIf, NgForOf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

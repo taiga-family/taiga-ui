@@ -5,7 +5,7 @@ import {TuiItemDirective, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiButton,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
     TuiSurfaceDirective,
     TuiTitleDirective,
@@ -23,7 +23,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiNavigationModule,
-        TuiIconComponent,
+        TuiIcon,
         TuiAvatarComponent,
         TuiBreadcrumbsComponent,
         TuiItemDirective,
