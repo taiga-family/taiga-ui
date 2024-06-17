@@ -5,7 +5,7 @@ import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiDropdownModule,
-    TuiIconComponent,
+    TuiIcon,
     TuiScrollbarComponent,
     TuiTooltip,
 } from '@taiga-ui/core';
@@ -32,7 +32,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiAppearanceDirective,
-        TuiIconComponent,
+        TuiIcon,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],

@@ -8,7 +8,7 @@ import {
     TuiBreakpointService,
     TuiButton,
     TuiDataList,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilterComponent} from '@taiga-ui/kit';
@@ -24,7 +24,7 @@ import {map} from 'rxjs';
         TuiLink,
         ReactiveFormsModule,
         TuiFilterComponent,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

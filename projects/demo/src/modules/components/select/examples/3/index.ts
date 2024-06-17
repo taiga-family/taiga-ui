@@ -8,7 +8,7 @@ import {
     TuiButton,
     TuiDataListComponent,
     TuiDataListDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
@@ -27,7 +27,7 @@ import {
         TuiDataListDirective,
         NgIf,
         TuiOptionComponent,
-        TuiIconComponent,
+        TuiIcon,
         NgForOf,
         TuiTextareaModule,
         TuiAutoFocusDirective,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIconComponent, TuiLink} from '@taiga-ui/core';
+import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import type {TuiFileLike} from '@taiga-ui/kit';
 import {
     TuiAvatarComponent,
@@ -24,7 +24,7 @@ import {
         TuiLink,
         TuiFilesComponent,
         TuiFileComponent,
-        TuiIconComponent,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

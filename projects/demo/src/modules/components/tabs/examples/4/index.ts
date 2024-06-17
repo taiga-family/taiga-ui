@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiIconComponent} from '@taiga-ui/core';
+import {TuiAlertService, TuiIcon} from '@taiga-ui/core';
 import {TuiTabDirective, TuiTabsHorizontalDirective} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
@@ -12,7 +12,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
     imports: [
         TuiTabsHorizontalDirective,
         TuiTabDirective,
-        TuiIconComponent,
+        TuiIcon,
         NgIf,
         NgForOf,
         TuiInputNumberModule,

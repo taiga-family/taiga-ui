@@ -16,7 +16,7 @@ import {
     TuiDataList,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -42,7 +42,7 @@ export interface TuiTablePagination {
         PolymorpheusTemplate,
         NgForOf,
         TuiDropdownOpenDirective,
-        TuiIconComponent,
+        TuiIcon,
         TuiButton,
     ],
     templateUrl: './table-pagination.template.html',

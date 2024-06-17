@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiButton, TuiIconComponent} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
@@ -15,7 +15,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiItemDirective,
         TuiTabDirective,
         NgForOf,
-        TuiIconComponent,
+        TuiIcon,
         TuiButton,
         TuiInputNumberModule,
         FormsModule,

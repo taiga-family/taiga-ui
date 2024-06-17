@@ -8,7 +8,7 @@ import {
     TuiDataListComponent,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
-    TuiIconComponent,
+    TuiIcon,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
         TuiOptionComponent,
         RouterLinkActive,
         RouterLink,
-        TuiIconComponent,
+        TuiIcon,
         NgIf,
     ],
     templateUrl: './index.html',

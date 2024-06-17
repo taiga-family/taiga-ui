@@ -5,14 +5,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton, TuiIconComponent, TuiLoader} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLoader} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiPreview, AsyncPipe, NgIf, TuiIconComponent, TuiLoader],
+    imports: [TuiButton, TuiPreview, AsyncPipe, NgIf, TuiIcon, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

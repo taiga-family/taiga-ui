@@ -14,7 +14,7 @@ import {
 import {
     TuiDropdownModule,
     TuiHint,
-    TuiIconComponent,
+    TuiIcon,
     TuiNotificationComponent,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
@@ -48,7 +48,7 @@ class Account {
         TuiDropdownModule,
         TuiHint,
         TuiTextfieldControllerModule,
-        TuiIconComponent,
+        TuiIcon,
         InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',

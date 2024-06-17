@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiIconComponent} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiAccordion, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -27,7 +27,7 @@ class Account {
         TuiAccordion,
         AsyncPipe,
         TuiAmountPipe,
-        TuiIconComponent,
+        TuiIcon,
         ReactiveFormsModule,
         TuiInputModule,
         TuiSelectModule,

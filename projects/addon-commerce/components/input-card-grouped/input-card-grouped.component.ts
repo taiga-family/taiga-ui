@@ -51,7 +51,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
-    TuiIconComponent,
+    TuiIcon,
     TuiIconPipe,
     TuiWithDataList,
 } from '@taiga-ui/core';
@@ -83,7 +83,7 @@ export interface TuiCard {
         TuiFormatCardPipe,
         TuiMapperPipe,
         TuiLet,
-        TuiIconComponent,
+        TuiIcon,
         TuiChevronDirective,
         TuiAppearanceDirective,
         TuiIconPipe,

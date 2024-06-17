@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, TuiIconComponent} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS, TuiIcon} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 
@@ -19,7 +19,7 @@ import {TuiStepperComponent} from './stepper.component';
     standalone: true,
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
-    imports: [NgIf, TuiIconComponent],
+    imports: [NgIf, TuiIcon],
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

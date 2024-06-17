@@ -566,7 +566,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiIconModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiIconComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiIcon', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiCheckboxLabeledModule', moduleSpecifier: '@taiga-ui/kit'},

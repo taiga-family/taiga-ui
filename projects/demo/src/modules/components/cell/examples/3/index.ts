@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
-import {TuiIconComponent, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiIcon, TuiTitleDirective} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -16,7 +16,7 @@ import {TuiCellDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiIconComponent,
+        TuiIcon,
         TuiCellDirective,
         TuiProgressModule,
         TuiBadgeDirective,

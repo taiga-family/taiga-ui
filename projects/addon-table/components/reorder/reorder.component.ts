@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiButton, TuiIconComponent} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -23,7 +23,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     imports: [
         TuiTiles,
         NgForOf,
-        TuiIconComponent,
+        TuiIcon,
         TuiButton,
         AsyncPipe,
         PolymorpheusOutlet,

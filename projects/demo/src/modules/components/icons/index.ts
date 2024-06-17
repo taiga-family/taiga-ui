@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {assets, TuiDemo} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {TuiIconComponent, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiIcon, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
@@ -17,7 +17,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     imports: [
         TuiDemo,
         TuiSvgComponent,
-        TuiIconComponent,
+        TuiIcon,
         IconsGroupComponent,
         IconsGroupDirective,
         IntersectionObserverModule,
