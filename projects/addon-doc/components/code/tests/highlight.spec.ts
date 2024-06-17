@@ -10,10 +10,10 @@ import {BehaviorSubject} from 'rxjs';
 
 describe('Highlight Directive', () => {
     let highlightedCode: string | undefined;
-    let component: TestHighlightComponent;
+    let component: Test;
     let directiveElement: DebugElement;
     let directiveInstance: Highlight;
-    let fixture: ComponentFixture<TestHighlightComponent>;
+    let fixture: ComponentFixture<Test>;
     let loader: HighlightLoader;
     const testJsCode = 'console.log(&quot;test&quot;)';
     const testHtmlCode = '<div class=&quot;my-class&quot;></div>';
@@ -25,14 +25,14 @@ describe('Highlight Directive', () => {
             <code [highlight]="code || ''"></code>
         `,
     })
-    class TestHighlightComponent {
+    class Test {
         @Input()
         public code?: string | null;
     }
 
     beforeEach(waitForAsync(async () => {
         await TestBed.configureTestingModule({
-            imports: [TestHighlightComponent],
+            imports: [Test],
             providers: [
                 {
                     provide: HighlightLoader,
@@ -44,7 +44,7 @@ describe('Highlight Directive', () => {
         }).compileComponents();
 
         loader = TestBed.inject(HighlightLoader);
-        fixture = TestBed.createComponent(TestHighlightComponent);
+        fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         directiveElement = fixture.debugElement.query(By.directive(Highlight));
         directiveInstance = directiveElement.injector.get(Highlight);
