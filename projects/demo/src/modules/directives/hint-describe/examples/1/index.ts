@@ -6,7 +6,7 @@ import {
     TuiHintDescribeDirective,
     TuiHintDirective,
     TuiHintOptionsDirective,
-    TuiTooltipModule,
+    TuiTooltip,
 } from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -16,7 +16,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiButtonDirective,
         TuiHintDirective,
         TuiHintDescribeDirective,
-        TuiTooltipModule,
+        TuiTooltip,
         TuiInputModule,
         TuiHintOptionsDirective,
         FormsModule,
