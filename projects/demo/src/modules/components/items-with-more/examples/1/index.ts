@@ -3,17 +3,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItemDirective} from '@taiga-ui/cdk';
-import {
-    TuiChipDirective,
-    TuiItemsWithMoreComponent,
-    TuiMoreDirective,
-} from '@taiga-ui/kit';
+import {TuiChip, TuiItemsWithMoreComponent, TuiMoreDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiItemsWithMoreComponent,
-        TuiChipDirective,
+        TuiChip,
         TuiItemDirective,
         TuiMoreDirective,
         NgForOf,

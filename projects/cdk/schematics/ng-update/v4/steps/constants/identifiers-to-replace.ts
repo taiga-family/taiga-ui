@@ -622,7 +622,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiChipModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiChipDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiChip', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {

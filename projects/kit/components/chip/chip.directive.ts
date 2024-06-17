@@ -61,7 +61,7 @@ class TuiChipStyles {}
     ],
     host: {'[attr.data-size]': 'size'},
 })
-export class TuiChipDirective {
+export class TuiChip {
     private readonly options = inject(TUI_CHIP_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(TuiChipStyles);
