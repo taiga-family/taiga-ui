@@ -31,7 +31,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPullToRefreshService],
 })
-export class TuiPullToRefreshComponent {
+export class TuiPullToRefresh {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 

@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
-    TuiSwipeActionsAutoCloseDirective,
-    TuiSwipeActionsComponent,
+    TuiSwipeActionsAutoClose,
+    TuiSwipeActions,
 } from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -14,8 +14,8 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiSwipeActionsComponent,
-        TuiSwipeActionsAutoCloseDirective,
+        TuiSwipeActions,
+        TuiSwipeActionsAutoClose,
         TuiCardLarge,
         TuiCellDirective,
         TuiSurfaceDirective,

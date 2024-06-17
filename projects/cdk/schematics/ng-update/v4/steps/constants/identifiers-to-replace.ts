@@ -1485,7 +1485,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
         to: {
-            name: 'TuiPullToRefreshComponent',
+            name: 'TuiPullToRefresh',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
