@@ -10,4 +10,4 @@ import {StylesInfoComponent} from '../../app/styles-info';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {}
+export default class Page {}

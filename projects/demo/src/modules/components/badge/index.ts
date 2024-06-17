@@ -35,7 +35,7 @@ import {TuiBadgeExample6} from './examples/6';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );

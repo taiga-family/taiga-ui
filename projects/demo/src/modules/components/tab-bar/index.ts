@@ -26,6 +26,6 @@ import TuiTabBarExample from './examples/1';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected fixed = false;
 }

@@ -14,7 +14,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
     changeDetection,
     providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
-export default class PageComponent {
+export default class Page {
     protected value = 6;
     protected max = 10;
 

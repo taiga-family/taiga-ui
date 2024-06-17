@@ -22,7 +22,7 @@ import {
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly items = [
         'John Cleese',
         'Eric Idle',

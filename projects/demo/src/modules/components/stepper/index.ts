@@ -10,7 +10,7 @@ import {TuiStepper} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected activeItemIndex = 0;
 
     protected readonly examples = ['Basic', 'Vertical', 'Vertical autoscroll'];

@@ -23,7 +23,7 @@ import {TuiVariablesExample1} from './examples/1';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

@@ -14,7 +14,7 @@ import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-gi
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly screenshotBotName = SCREENSHOT_BOT_NAME;
     protected readonly screenshotBotLink = SCREENSHOT_BOT_LINK;
 }

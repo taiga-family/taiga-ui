@@ -33,7 +33,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly icons = inject(TUI_DEMO_ICONS);
     protected readonly keys = Object.keys(this.icons);

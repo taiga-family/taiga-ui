@@ -18,6 +18,6 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected sidePadding = 3;
 }

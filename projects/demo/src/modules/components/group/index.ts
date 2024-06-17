@@ -19,7 +19,7 @@ import {TuiButtonDirective, TuiGroupDirective, TuiLinkDirective} from '@taiga-ui
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected rounded = true;
     protected collapsed = false;
 

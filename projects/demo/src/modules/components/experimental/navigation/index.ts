@@ -12,4 +12,4 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {}
+export default class Page {}

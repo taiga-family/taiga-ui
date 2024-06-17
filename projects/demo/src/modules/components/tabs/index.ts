@@ -20,7 +20,7 @@ import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export default class PageComponent {
+export default class Page {
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
 
     protected readonly moreContentVariants = ['', 'And more'];

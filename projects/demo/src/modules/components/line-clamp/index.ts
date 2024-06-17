@@ -10,7 +10,7 @@ import {TuiLineClampComponent} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected linesLimit = 1;
     protected lineHeight = 24;
     protected maxWidth = 100;

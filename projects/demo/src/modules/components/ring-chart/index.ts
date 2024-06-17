@@ -11,7 +11,7 @@ import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly valueVariants = [
         [40, 30, 20, 10],
         [13769, 10172, 3018, 2592],

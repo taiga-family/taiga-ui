@@ -38,7 +38,7 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
     protected readonly columnsNames = Object.keys(this.breakpoints[0]);
 

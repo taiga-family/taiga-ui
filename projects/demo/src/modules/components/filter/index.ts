@@ -28,7 +28,7 @@ class ItemWithBadge {
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected initialItems = ['Alex Inkin', 'Roman Sedov'];
 
     protected itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [

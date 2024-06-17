@@ -16,7 +16,7 @@ import {map} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly months$ = inject(TUI_MONTHS);
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [

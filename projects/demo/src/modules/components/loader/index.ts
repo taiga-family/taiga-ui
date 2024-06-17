@@ -14,7 +14,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     @ViewChild('textTemplate')
     protected readonly textTemplate: PolymorpheusContent;
 

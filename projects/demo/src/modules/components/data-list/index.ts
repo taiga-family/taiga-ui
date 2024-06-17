@@ -10,7 +10,7 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),

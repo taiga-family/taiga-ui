@@ -9,7 +9,7 @@ import {TuiMediaDirective} from '@taiga-ui/cdk';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
 
     protected playbackRate = 1;

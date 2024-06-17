@@ -19,7 +19,7 @@ import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
     encapsulation,
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly itemsVariants = [
         [10, 20, 50, 100],
         [10, 100, 500],

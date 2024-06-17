@@ -10,7 +10,7 @@ import {TuiTabsModule} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly cypress = import('./examples/cypress.md?raw');
     protected readonly playwright = import('./examples/playwright.md?raw');
 }

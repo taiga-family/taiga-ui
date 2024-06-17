@@ -13,7 +13,7 @@ import {TuiRangeComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];

@@ -30,7 +30,7 @@ import {AlertExampleWithDataComponent} from './examples/4';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     private readonly alerts = inject(TuiAlertService);
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;

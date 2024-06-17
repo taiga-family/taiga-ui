@@ -11,7 +11,7 @@ import {TuiButtonLoadingComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly examples = [
         'Sizes',
         'Appearance',

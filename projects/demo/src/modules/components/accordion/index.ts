@@ -28,7 +28,7 @@ import {TuiAccordionExample5} from './examples/5';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     private readonly destroyRef = inject(DestroyRef);
 
     @ViewChild('content')

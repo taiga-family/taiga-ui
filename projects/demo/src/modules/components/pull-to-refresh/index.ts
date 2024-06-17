@@ -21,7 +21,7 @@ import {
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly example1 = import('./examples/1').then(
         ({default: component}) => new PolymorpheusComponent(component),
     );

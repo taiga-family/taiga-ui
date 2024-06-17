@@ -10,7 +10,7 @@ import {TuiFadeDirective} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected lineHeight = '100%';
     protected size = '1.5em';
     protected offset = '0em';

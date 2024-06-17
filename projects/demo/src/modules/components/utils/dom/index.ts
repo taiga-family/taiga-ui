@@ -10,6 +10,6 @@ import {TuiLinkDirective} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly component = import('./examples/import/import.md?raw');
 }

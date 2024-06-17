@@ -14,6 +14,6 @@ export const TUI_HOME_COMPONENT = tuiCreateToken(HomeComponent);
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly component = inject(TUI_HOME_COMPONENT);
 }

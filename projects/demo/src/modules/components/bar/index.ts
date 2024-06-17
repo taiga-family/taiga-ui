@@ -11,7 +11,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly examples = ['Basic', 'Segments'];
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];

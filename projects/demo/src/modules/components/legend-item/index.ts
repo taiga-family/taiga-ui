@@ -11,7 +11,7 @@ import type {TuiSizeS} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected text = 'Text inside';
 
     protected active = false;

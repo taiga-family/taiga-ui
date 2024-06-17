@@ -34,14 +34,13 @@ import type {Observable} from 'rxjs';
     changeDetection,
     providers: [
         {
-            deps: [PageComponent],
+            deps: [Page],
             provide: TUI_CALENDAR_DATE_STREAM,
-            useFactory: (component: PageComponent): Observable<TuiDay> =>
-                component.stream,
+            useFactory: (component: Page): Observable<TuiDay> => component.stream,
         },
     ],
 })
-export default class PageComponent {
+export default class Page {
     protected minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),

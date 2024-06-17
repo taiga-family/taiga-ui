@@ -16,7 +16,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
         }),
     ],
 })
-export default class PageComponent {
+export default class Page {
     protected readonly iconVariants = ['', ...TUI_USED_ICONS];
     protected readonly colorVariants = ['', 'var(--tui-text-01)', 'red', '#3aa981'];
 

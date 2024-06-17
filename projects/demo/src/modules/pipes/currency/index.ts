@@ -22,7 +22,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
     protected currency = this.currencyVariants[0];
 

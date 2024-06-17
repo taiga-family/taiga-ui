@@ -30,7 +30,7 @@ import {switchMap} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 

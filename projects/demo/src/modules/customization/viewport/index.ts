@@ -11,7 +11,7 @@ import {TuiViewportExample2} from './examples/2';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly providers = import('./examples/import/providers.md?raw');
 
     protected readonly example1: TuiDocExample = {

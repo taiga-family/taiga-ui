@@ -9,7 +9,7 @@ import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
     styles: ['td {width: 18.75rem}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageComponent {
+export default class Page {
     protected readonly desktopBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},
