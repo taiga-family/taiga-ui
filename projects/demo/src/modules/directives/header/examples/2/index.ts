@@ -9,13 +9,13 @@ import {
     TuiBadgeNotificationComponent,
     TuiSensitiveDirective,
 } from '@taiga-ui/kit';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiBadgeNotificationComponent,
-        TuiHeaderDirective,
+        TuiHeader,
         TuiTitleDirective,
         TuiButton,
         TuiTooltipModule,

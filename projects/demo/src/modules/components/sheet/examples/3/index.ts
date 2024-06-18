@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiTitleDirective} from '@taiga-ui/core';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/layout';
 import type {TuiSheetOptions} from '@taiga-ui/legacy';
 import {TuiSheetModule} from '@taiga-ui/legacy';
 
@@ -15,7 +15,7 @@ import {TuiSheetModule} from '@taiga-ui/legacy';
         TuiSheetModule,
         TuiAmountPipe,
         AsyncPipe,
-        TuiHeaderDirective,
+        TuiHeader,
         TuiTitleDirective,
     ],
     templateUrl: './index.html',

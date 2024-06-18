@@ -3,14 +3,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiSurface, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCellDirective, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiCardLarge,
         TuiSurface,
-        TuiHeaderDirective,
+        TuiHeader,
         TuiAvatarComponent,
         TuiCellDirective,
         TuiTitleDirective,
