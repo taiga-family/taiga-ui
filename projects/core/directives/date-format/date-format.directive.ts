@@ -6,9 +6,9 @@ import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 @Directive({
     standalone: true,
     selector: '[tuiDateFormat]',
-    providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormatDirective)],
+    providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormat)],
 })
-export class TuiDateFormatDirective extends Observable<TuiDateFormatSettings> {
+export class TuiDateFormat extends Observable<TuiDateFormatSettings> {
     private readonly settings = new ReplaySubject<Partial<TuiDateFormatSettings>>(1);
     private readonly parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
 
