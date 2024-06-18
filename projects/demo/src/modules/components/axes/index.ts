@@ -2,16 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
-import {
-    TUI_ALWAYS_DASHED,
-    TUI_ALWAYS_SOLID,
-    TuiAxesComponent,
-} from '@taiga-ui/addon-charts';
+import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID, TuiAxes} from '@taiga-ui/addon-charts';
 import {TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAxesComponent, TuiNotificationComponent, TuiDemo],
+    imports: [TuiAxes, TuiNotificationComponent, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

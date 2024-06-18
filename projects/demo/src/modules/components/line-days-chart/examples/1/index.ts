@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxesComponent, TuiLineDaysChartComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineDaysChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiDayLike, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiDay, TuiDayRange, TuiMonth, tuiPure} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
@@ -15,7 +15,7 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [
         TuiInputDateRangeModule,
-        TuiAxesComponent,
+        TuiAxes,
         NgIf,
         AsyncPipe,
         TuiLineDaysChartComponent,

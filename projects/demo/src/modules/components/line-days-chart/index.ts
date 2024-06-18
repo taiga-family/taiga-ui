@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiAxesComponent, TuiLineDaysChartComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineDaysChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
@@ -11,7 +11,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiAxesComponent, TuiLineDaysChartComponent],
+    imports: [TuiDemo, TuiAxes, TuiLineDaysChartComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

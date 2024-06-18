@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiAxesComponent,
+    TuiAxes,
     TuiLineChartComponent,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts';
@@ -12,12 +12,7 @@ import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAxesComponent,
-        TuiLineChartComponent,
-        NgForOf,
-        TuiLineChartHintDirective,
-    ],
+    imports: [TuiAxes, TuiLineChartComponent, NgForOf, TuiLineChartHintDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

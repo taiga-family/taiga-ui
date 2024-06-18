@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxesComponent, TuiBarChartComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import {tuiCeil} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiAxesComponent, TuiBarChartComponent],
+    imports: [TuiAxes, TuiBarChartComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAxesComponent, TuiBarChartComponent} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiFormatNumber, TuiHint} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
@@ -11,13 +11,13 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiAxesComponent,
+        TuiAxes,
         TuiBarChartComponent,
         TuiSelectModule,
         FormsModule,
         TuiDataListWrapper,
         TuiHint,
-        TuiAxesComponent,
+        TuiAxes,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
