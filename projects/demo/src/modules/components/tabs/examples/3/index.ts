@@ -10,11 +10,7 @@ import {
     TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {
-    TuiChevronDirective,
-    TuiTabDirective,
-    TuiTabsWithMoreComponent,
-} from '@taiga-ui/kit';
+import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -24,7 +20,7 @@ import {
         NgForOf,
         NgIf,
         TuiTabDirective,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListComponent,

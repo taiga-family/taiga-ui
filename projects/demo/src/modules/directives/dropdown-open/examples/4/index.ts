@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDropdownDirective, TuiDropdownOpenDirective} from '@taiga-ui/core';
-import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiButton,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDataListWrapper,
         TuiMultiSelectModule,
     ],

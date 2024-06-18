@@ -12,7 +12,7 @@ import {
     TuiGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -23,7 +23,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiButton,
-        TuiChevronDirective,
+        TuiChevron,
         TuiSelectModule,
         FormsModule,
         TuiDataListWrapper,

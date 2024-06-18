@@ -44,7 +44,7 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
         inputProperty: 'iconRotated',
         directive: 'tuiChevron',
         directiveModule: {
-            name: 'TuiChevronDirective',
+            name: 'TuiChevron',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },

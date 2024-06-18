@@ -11,7 +11,7 @@ import {
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
-    TuiChevronDirective,
+    TuiChevron,
     TuiDataListDropdownManager,
     TuiLineClampComponent,
 } from '@taiga-ui/kit';
@@ -33,7 +33,7 @@ function randomString(len: number): string {
 @Component({
     standalone: true,
     imports: [
-        TuiChevronDirective,
+        TuiChevron,
         TuiLink,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,

@@ -10,7 +10,7 @@ import {
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
-    TuiChevronDirective,
+    TuiChevron,
     TuiSwitchComponent,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
@@ -21,7 +21,7 @@ import {
     imports: [
         TuiTabsHorizontalDirective,
         TuiTabDirective,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownHoverDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,

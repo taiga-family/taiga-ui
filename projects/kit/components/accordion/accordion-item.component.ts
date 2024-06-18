@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiExpand, TuiIcon} from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit/directives';
+import {TuiChevron} from '@taiga-ui/kit/directives';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
@@ -26,7 +26,7 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiIcon,
-        TuiChevronDirective,
+        TuiChevron,
         TuiExpand,
     ],
     templateUrl: './accordion-item.template.html',

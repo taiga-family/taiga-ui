@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit';
+import {TuiChevron} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -33,7 +33,7 @@ import {TuiTableTr} from '../tr/tr.component';
         NgIf,
         TuiIcon,
         PolymorpheusOutlet,
-        TuiChevronDirective,
+        TuiChevron,
         TuiMapperPipe,
     ],
     templateUrl: './tbody.template.html',

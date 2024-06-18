@@ -34,7 +34,7 @@ import {
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiChevronDirective} from '@taiga-ui/kit/directives';
+import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import type {MetadataJson} from 'libphonenumber-js/core';
@@ -53,7 +53,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         CommonModule,
         FormsModule,
         MaskitoDirective,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDataList,
         TuiDropdownModule,
         TuiFlagPipe,
