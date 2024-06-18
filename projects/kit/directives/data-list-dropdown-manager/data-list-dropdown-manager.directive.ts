@@ -27,7 +27,7 @@ import {
     standalone: true,
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
-export class TuiDataListDropdownManagerDirective implements AfterViewInit {
+export class TuiDataListDropdownManager implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
     private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
 

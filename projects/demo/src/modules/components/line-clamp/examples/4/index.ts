@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiChevronDirective,
-    TuiDataListDropdownManagerDirective,
+    TuiDataListDropdownManager,
     TuiLineClampComponent,
 } from '@taiga-ui/kit';
 
@@ -38,7 +38,7 @@ function randomString(len: number): string {
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
-        TuiDataListDropdownManagerDirective,
+        TuiDataListDropdownManager,
         TuiOptGroupDirective,
         NgForOf,
         TuiOptionComponent,

@@ -236,7 +236,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiDataListDropdownManagerDirective',
+            name: 'TuiDataListDropdownManager',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
