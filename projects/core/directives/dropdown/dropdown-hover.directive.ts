@@ -20,14 +20,14 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {delay, distinctUntilChanged, map, merge, of, share, switchMap, tap} from 'rxjs';
 
 import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
-import {TuiDropdownOpenDirective} from './dropdown-open.directive';
+import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive({
     standalone: true,
     selector: '[tuiDropdownHover]',
-    providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHoverDirective)],
+    providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHover)],
 })
-export class TuiDropdownHoverDirective extends TuiDriver {
+export class TuiDropdownHover extends TuiDriver {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
@@ -35,7 +35,7 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZone);
-    private readonly open = inject(TuiDropdownOpenDirective, {optional: true});
+    private readonly open = inject(TuiDropdownOpen, {optional: true});
     private readonly stream$ = merge(
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
         tuiTypedFromEvent(this.doc, 'mouseout').pipe(map(e => e.relatedTarget)),

@@ -19,7 +19,7 @@ import {TuiLabel} from '@taiga-ui/core/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdownOpen,
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
@@ -56,7 +56,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         TuiDropdownDirective,
         TuiWithDataList,
         {
-            directive: TuiDropdownOpenDirective,
+            directive: TuiDropdownOpen,
             inputs: ['tuiDropdownOpen: open'],
             outputs: ['tuiDropdownOpenChange: openChange'],
         },
@@ -70,7 +70,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
     private readonly el?: ElementRef<HTMLInputElement>;
 
-    private readonly dropdown = inject(TuiDropdownOpenDirective, {
+    private readonly dropdown = inject(TuiDropdownOpen, {
         optional: true,
         self: true,
     });

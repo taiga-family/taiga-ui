@@ -6,8 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdown,
     TuiIcon,
     TuiOptGroupDirective,
     TuiOptionComponent,
@@ -19,8 +18,7 @@ import {TuiChevron} from '@taiga-ui/kit';
     imports: [
         TuiButton,
         TuiChevron,
-        TuiDropdownOpenDirective,
-        TuiDropdownDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptGroupDirective,
         NgForOf,

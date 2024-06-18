@@ -25,12 +25,12 @@ import { TuiHostedDropdownModule } from "@taiga-ui/core";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiDropdownModule } from "@taiga-ui/core";
+const COMPONENT_AFTER = `import { TuiDropdown } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiDropdownModule]
+    imports: [TuiDropdown]
 })
 export class Test {
 }`;

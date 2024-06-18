@@ -5,8 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString, TuiItemDirective} from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdown,
     TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -21,8 +20,7 @@ import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/k
         NgIf,
         TuiTabDirective,
         TuiChevron,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptionComponent,
         TuiIcon,

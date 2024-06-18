@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiDropdownModule, TuiIcon} from '@taiga-ui/core';
+import {TuiAppearance, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
@@ -27,18 +27,19 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiDropdownModule,
         TuiCalendarRangeComponent,
         TuiValueAccessorModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
         TuiAppearance,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputDateRangeComponent, TuiInputDateRangeDirective],
     exports: [
         TuiInputDateRangeComponent,
         TuiInputDateRangeDirective,
         TuiTextfieldComponent,
+        ...TuiDropdown,
     ],
 })
 export class TuiInputDateRangeModule {}

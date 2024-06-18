@@ -1,15 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiAppearance,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiDropdown} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiDropdownDirective, TuiDropdownOpenDirective],
+    imports: [TuiAppearance, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

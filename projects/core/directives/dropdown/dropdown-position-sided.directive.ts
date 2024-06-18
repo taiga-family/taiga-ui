@@ -5,20 +5,17 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
-import {TuiDropdownPositionDirective} from './dropdown-position.directive';
+import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     standalone: true,
     selector: '[tuiDropdownSided]',
-    providers: [
-        TuiDropdownPositionDirective,
-        tuiAsPositionAccessor(TuiDropdownPositionSidedDirective),
-    ],
+    providers: [TuiDropdownPosition, tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
-export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
+export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
-    private readonly vertical = inject(TuiDropdownPositionDirective);
+    private readonly vertical = inject(TuiDropdownPosition);
 
     private previous = this.options.direction || 'bottom';
 

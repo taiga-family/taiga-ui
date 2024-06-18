@@ -14,8 +14,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiButton,
     TuiDataListDirective,
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiHint,
     TuiLink,
 } from '@taiga-ui/core';
@@ -45,8 +44,7 @@ class Account {
         TuiLink,
         TuiMultiSelectModule,
         ReactiveFormsModule,
-        TuiDropdownOptionsDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
         TuiDataListWrapperComponent,

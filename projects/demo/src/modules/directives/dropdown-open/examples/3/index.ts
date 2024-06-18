@@ -4,9 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiIcon,
     TuiLink,
     TuiOptGroupDirective,
@@ -18,10 +16,8 @@ import {TuiChevron} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         TuiChevron,
-        TuiDropdownOptionsDirective,
         TuiLink,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptGroupDirective,
         NgForOf,

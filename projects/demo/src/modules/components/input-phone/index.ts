@@ -3,12 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
-    TuiHint,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -22,8 +17,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiNotificationComponent,
         TuiInputPhoneModule,
         ReactiveFormsModule,
-        TuiDropdownOptionsDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,

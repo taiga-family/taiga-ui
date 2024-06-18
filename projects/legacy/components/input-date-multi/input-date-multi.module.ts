@@ -6,7 +6,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiCalendarComponent,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
@@ -31,14 +31,14 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiInputTagModule,
         FormsModule,
         TuiMapperPipe,
-        TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiPrimitiveTextfieldModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
         TuiAppearance,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputDateMultiComponent],
-    exports: [TuiInputDateMultiComponent],
+    exports: [TuiInputDateMultiComponent, ...TuiDropdown],
 })
 export class TuiInputDateMultiModule {}

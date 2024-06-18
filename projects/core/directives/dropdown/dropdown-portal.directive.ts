@@ -7,7 +7,7 @@ import {TuiDropdownService} from './dropdown.service';
     standalone: true,
     selector: 'ng-template[tuiDropdown]',
 })
-export class TuiDropdownPortalDirective implements OnDestroy {
+export class TuiDropdownPortal implements OnDestroy {
     private readonly template = inject(TemplateRef);
     private readonly service = inject(TuiDropdownService);
 

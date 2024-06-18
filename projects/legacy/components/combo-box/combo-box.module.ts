@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDropdownModule} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiPrimitiveTextfieldModule,
@@ -24,12 +24,12 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
-        TuiDropdownModule,
         TuiSelectOptionModule,
         TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,
+        ...TuiDropdown,
     ],
     declarations: [
         TuiComboBoxComponent,
@@ -41,6 +41,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiComboBoxStrictDirective,
         TuiComboBoxDirective,
         TuiTextfieldComponent,
+        ...TuiDropdown,
     ],
 })
 export class TuiComboBoxModule {}

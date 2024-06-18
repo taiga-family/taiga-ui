@@ -574,7 +574,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdown', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiTitleModule', moduleSpecifier: '@taiga-ui/experimental'},

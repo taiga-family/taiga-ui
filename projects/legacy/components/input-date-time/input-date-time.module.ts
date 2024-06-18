@@ -4,7 +4,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiAppearance,
     TuiCalendarComponent,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
@@ -31,13 +31,13 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         PolymorpheusTemplate,
         TuiCalendarComponent,
         TuiLink,
-        TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
         TuiAppearance,
+        ...TuiDropdown,
     ],
     declarations: [
         TuiInputDateTimeComponent,
@@ -48,6 +48,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         TuiInputDateTimeComponent,
         TuiInputDateTimeDirective,
         TuiTextfieldComponent,
+        ...TuiDropdown,
     ],
 })
 export class TuiInputDateTimeModule {}

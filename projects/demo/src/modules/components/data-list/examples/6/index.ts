@@ -6,9 +6,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -19,9 +17,7 @@ import {TuiChevron} from '@taiga-ui/kit';
     imports: [
         TuiChevron,
         TuiButton,
-        TuiDropdownDirective,
-        TuiDropdownOptionsDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptGroupDirective,
         NgForOf,

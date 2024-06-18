@@ -32,10 +32,7 @@ import {filter, fromEvent, map, merge} from 'rxjs';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
 
-function shouldClose(
-    this: TuiDropdownOpenDirective,
-    event: Event | KeyboardEvent,
-): boolean {
+function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boolean {
     return (
         'key' in event &&
         event.key.toLowerCase() === 'escape' &&
@@ -58,7 +55,7 @@ function shouldClose(
     ],
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
-export class TuiDropdownOpenDirective implements OnChanges {
+export class TuiDropdownOpen implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 

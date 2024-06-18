@@ -98,7 +98,7 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
         to: {
-            name: 'TuiDropdownModule',
+            name: 'TuiDropdown',
             moduleSpecifier: '@taiga-ui/core',
         },
     },
@@ -108,7 +108,7 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiDropdownModule',
+            name: 'TuiDropdown',
             moduleSpecifier: '@taiga-ui/core',
         },
     },
@@ -118,7 +118,7 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiDropdownModule',
+            name: 'TuiDropdown',
             moduleSpecifier: '@taiga-ui/core',
         },
     },
@@ -128,7 +128,7 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiDropdownModule',
+            name: 'TuiDropdown',
             moduleSpecifier: '@taiga-ui/core',
         },
     },

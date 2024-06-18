@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {TuiDropdownOpenDirective, TuiIcon, tuiSizeBigger} from '@taiga-ui/core';
+import {TuiDropdownOpen, TuiIcon, tuiSizeBigger} from '@taiga-ui/core';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -24,7 +24,7 @@ export class TuiArrowComponent {
     private readonly control: any = inject(AbstractTuiControl, {optional: true});
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly options = inject(TUI_ARROW_OPTIONS);
-    protected readonly directive = inject(TuiDropdownOpenDirective, {optional: true});
+    protected readonly directive = inject(TuiDropdownOpen, {optional: true});
 
     @HostBinding('class._rotated')
     protected get rotated(): boolean {

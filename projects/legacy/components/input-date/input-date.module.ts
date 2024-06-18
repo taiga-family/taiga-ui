@@ -5,7 +5,7 @@ import {TuiLet} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiCalendarComponent,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
@@ -32,7 +32,6 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         PolymorpheusTemplate,
         TuiCalendarComponent,
         TuiLink,
-        TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiLet,
@@ -40,8 +39,14 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         TuiLegacyDropdownOpenMonitorDirective,
         TuiAppearance,
         TuiIcon,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputDateComponent, TuiInputDateDirective, TuiNativeDateDirective],
-    exports: [TuiInputDateComponent, TuiInputDateDirective, TuiTextfieldComponent],
+    exports: [
+        TuiInputDateComponent,
+        TuiInputDateDirective,
+        TuiTextfieldComponent,
+        ...TuiDropdown,
+    ],
 })
 export class TuiInputDateModule {}

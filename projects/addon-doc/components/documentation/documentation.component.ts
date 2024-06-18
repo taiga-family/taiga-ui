@@ -33,7 +33,7 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiGroupDirective,
     TuiNotificationComponent,
     TuiTextfield,
@@ -72,7 +72,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocTypeReferencePipe,
         TuiSelectModule,
         FormsModule,
-        TuiDropdownOptionsDirective,
+        TuiDropdown,
         TuiShowCleanerPipe,
         TuiDataListWrapper,
         TuiInspectPipe,

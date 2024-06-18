@@ -14,12 +14,7 @@ import {
     tuiProvide,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {
-    TuiDropdownOpenDirective,
-    TuiHint,
-    TuiLink,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
 import {
     TuiInputDateTimeModule,
     TuiNamedDay,
@@ -39,7 +34,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiNotificationComponent,
         TuiInputDateTimeModule,
         ReactiveFormsModule,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,

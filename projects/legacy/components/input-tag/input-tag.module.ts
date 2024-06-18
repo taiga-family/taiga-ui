@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiIcon,
     TuiScrollbar,
     TuiTooltip,
@@ -27,15 +27,15 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiHoveredDirective,
         TuiScrollbar,
         TuiTooltip,
-        TuiDropdownModule,
         TuiTagModule,
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiAppearance,
         TuiIcon,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],
-    exports: [TuiInputTagComponent],
+    exports: [TuiInputTagComponent, ...TuiDropdown],
 })
 export class TuiInputTagModule {}

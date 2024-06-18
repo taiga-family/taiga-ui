@@ -1,12 +1,12 @@
 ```ts
-import {TuiDropdownModule} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiDropdownModule,
+    TuiDropdown,
   ],
   // ...
 })

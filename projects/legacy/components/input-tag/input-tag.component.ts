@@ -33,7 +33,7 @@ import {
     TUI_COMMON_ICONS,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdownOpen,
     TuiHintOptionsDirective,
     TuiScrollbar,
 } from '@taiga-ui/core';
@@ -82,8 +82,8 @@ export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
-    @ViewChild(TuiDropdownOpenDirective)
-    private readonly dropdown?: TuiDropdownOpenDirective;
+    @ViewChild(TuiDropdownOpen)
+    private readonly dropdown?: TuiDropdownOpen;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;

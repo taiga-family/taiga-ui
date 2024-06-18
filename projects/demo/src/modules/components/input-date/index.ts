@@ -15,7 +15,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiDropdownModule, TuiHint, TuiLink} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
 import {
     TuiInputDateModule,
     TuiNamedDay,
@@ -35,7 +35,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiDemo,
         TuiInputDateModule,
         TuiTextfieldControllerModule,
-        TuiDropdownModule,
+        TuiDropdown,
         TuiHint,
         TuiLink,
         ReactiveFormsModule,

@@ -19,7 +19,7 @@ import {map} from 'rxjs';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
-import {TuiDropdownPositionDirective} from './dropdown-position.directive';
+import {TuiDropdownPosition} from './dropdown-position.directive';
 
 /**
  * @description:
@@ -37,16 +37,16 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         TuiPositionService,
-        tuiPositionAccessorFor('dropdown', TuiDropdownPositionDirective),
+        tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
     ],
+    animations: [tuiDropdownAnimation],
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme',
     },
     hostDirectives: [TuiActiveZone],
-    animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {
     private readonly el = tuiInjectElement();

@@ -6,9 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownHoverDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdown,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
@@ -18,9 +16,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     standalone: true,
     imports: [
         TuiButton,
-        TuiDropdownHoverDirective,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiSelectModule,
         ReactiveFormsModule,
         TuiDataListWrapper,

@@ -26,7 +26,7 @@ import {
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiDataList,
-    TuiDropdownModule,
+    TuiDropdown,
     tuiDropdownOptionsProvider,
     TuiFlagPipe,
     TuiGroupDirective,
@@ -55,7 +55,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         MaskitoDirective,
         TuiChevron,
         TuiDataList,
-        TuiDropdownModule,
+        TuiDropdown,
         TuiFlagPipe,
         TuiGetCountryCallingCodePipe,
         TuiGroupDirective,

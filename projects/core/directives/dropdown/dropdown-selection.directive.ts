@@ -28,11 +28,11 @@ import {TuiDropdownDirective} from './dropdown.directive';
     standalone: true,
     selector: '[tuiDropdownSelection]',
     providers: [
-        tuiAsDriver(TuiDropdownSelectionDirective),
-        tuiAsRectAccessor(TuiDropdownSelectionDirective),
+        tuiAsDriver(TuiDropdownSelection),
+        tuiAsRectAccessor(TuiDropdownSelection),
     ],
 })
-export class TuiDropdownSelectionDirective
+export class TuiDropdownSelection
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
