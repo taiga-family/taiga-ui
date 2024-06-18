@@ -34,7 +34,7 @@ class TuiCellStyles {}
         '[attr.data-size]': 'size || "l"',
     },
 })
-export class TuiCellDirective {
+export class TuiCell {
     protected readonly nothing = tuiWithStyles(TuiCellStyles);
 
     @Input('tuiCell')

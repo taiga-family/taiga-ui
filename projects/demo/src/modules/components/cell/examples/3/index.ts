@@ -11,13 +11,13 @@ import {
     TuiCheckboxComponent,
     TuiProgressModule,
 } from '@taiga-ui/kit';
-import {TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiIcon,
-        TuiCellDirective,
+        TuiCell,
         TuiProgressModule,
         TuiBadgeDirective,
         TuiAvatarComponent,

@@ -22,6 +22,6 @@ class TuiBlockDetailsStyles {}
     standalone: true,
     selector: '[tuiBlockDetails]',
 })
-export class TuiBlockDetailsDirective {
+export class TuiBlockDetails {
     protected readonly nothing = tuiWithStyles(TuiBlockDetailsStyles);
 }

@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiBadgeDirective, TuiCommentDirective} from '@taiga-ui/kit';
-import {TuiBlockDetailsDirective} from '@taiga-ui/layout';
+import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -15,7 +15,7 @@ import {TuiBlockDetailsDirective} from '@taiga-ui/layout';
         TuiAvatarComponent,
         TuiCommentDirective,
         TuiAmountPipe,
-        TuiBlockDetailsDirective,
+        TuiBlockDetails,
         TuiBadgeDirective,
         TuiTitle,
     ],
