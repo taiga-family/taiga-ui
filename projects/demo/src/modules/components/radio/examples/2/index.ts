@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiLabelDirective} from '@taiga-ui/core';
+import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit';
         TuiPlatform,
         TuiRadioComponent,
         TuiRadioDirective,
-        TuiLabelDirective,
+        TuiLabel,
         TuiButton,
     ],
     templateUrl: './index.html',

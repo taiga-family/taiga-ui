@@ -14,7 +14,7 @@ import {
     TuiHint,
     TuiLink,
     TuiNotificationComponent,
-    TuiTextfieldOptionsDirective,
+    TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -37,7 +37,7 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,
         TuiHint,
-        TuiTextfieldOptionsDirective,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         TuiAmountPipe,
         InheritedDocumentationComponent,

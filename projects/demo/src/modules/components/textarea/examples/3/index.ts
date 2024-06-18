@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLabelDirective} from '@taiga-ui/core';
+import {TuiLabel} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -11,7 +11,7 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
         ReactiveFormsModule,
         TuiTextareaModule,
         TuiTextfieldControllerModule,
-        TuiLabelDirective,
+        TuiLabel,
     ],
     templateUrl: './index.html',
     encapsulation,

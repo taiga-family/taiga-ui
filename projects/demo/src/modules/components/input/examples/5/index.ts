@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputModule, TuiTextfieldOptionsDirective],
+    imports: [ReactiveFormsModule, TuiInputModule, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

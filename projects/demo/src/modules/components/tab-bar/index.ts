@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiDropdownPortalDirective,
-    TuiLabelDirective,
+    TuiLabel,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
@@ -17,7 +17,7 @@ import TuiTabBarExample from './examples/1';
         TuiDemo,
         TuiNotificationComponent,
         TuiCheckboxComponent,
-        TuiLabelDirective,
+        TuiLabel,
         TuiTabBarExample,
         FormsModule,
         TuiDropdownPortalDirective,
