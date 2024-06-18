@@ -15,7 +15,7 @@ import {
     TuiInitialsPipe,
     TuiOption,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 
@@ -35,7 +35,7 @@ export interface User {
         TuiDataList,
         NgIf,
         NgForOf,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',

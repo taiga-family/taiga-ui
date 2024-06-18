@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, filter, of, startWith, Subject, switchMap} from 'rxjs';
@@ -43,7 +43,7 @@ const databaseMockData: readonly User[] = [
         TuiTextfieldControllerModule,
         TuiDataListWrapper,
         TuiDataList,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',

@@ -8,7 +8,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
@@ -43,7 +43,7 @@ interface User {
         TuiButton,
         TuiInputNumberModule,
         TuiCell,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiTitle,
         TuiAmountPipe,
     ],

@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiAvatarStackComponent,
     TuiBadgeDirective,
     TuiCheckboxComponent,
@@ -20,7 +20,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiCell,
         TuiProgressModule,
         TuiBadgeDirective,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiAvatarStackComponent,
         TuiCheckboxComponent,
         TuiThumbnailCard,

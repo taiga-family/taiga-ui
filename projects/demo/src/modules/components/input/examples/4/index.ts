@@ -7,7 +7,7 @@ import {assets} from '@demo/utils';
 import {TuiAmountPipe, TuiCurrency, TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
@@ -104,7 +104,7 @@ const USERS = [
         NgIf,
         TuiDataList,
         NgForOf,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
         TuiDataListWrapper,
         TuiAmountPipe,

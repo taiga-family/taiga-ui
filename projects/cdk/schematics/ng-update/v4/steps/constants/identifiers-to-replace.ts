@@ -643,7 +643,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiMarkerIconModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiAvatarComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAvatar', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TUI_PROMPT', moduleSpecifier: '@taiga-ui/kit'},

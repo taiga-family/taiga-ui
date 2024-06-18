@@ -12,7 +12,7 @@ import {
     TuiDropdownService,
     TuiNumberFormatDirective,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -21,7 +21,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiNumberFormatDirective,
         TuiAmountPipe,
         AsyncPipe,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiElasticStickyDirective,
         TuiButton,
         NgIf,

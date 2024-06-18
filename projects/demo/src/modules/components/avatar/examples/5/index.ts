@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAvatarComponent, tuiAvatarOptionsProvider} from '@taiga-ui/kit';
+import {TuiAvatar, tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatarComponent],
+    imports: [TuiAvatar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

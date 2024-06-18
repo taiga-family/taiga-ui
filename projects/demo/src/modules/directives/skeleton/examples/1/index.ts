@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiLabel, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBadgeDirective,
     TuiChip,
     TuiSkeletonDirective,
@@ -18,7 +18,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiLabel,
         TuiSwitch,
         FormsModule,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiSkeletonDirective,
         TuiButton,
         TuiChip,

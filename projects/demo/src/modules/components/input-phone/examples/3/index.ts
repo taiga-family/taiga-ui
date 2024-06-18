@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLet, tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {
@@ -56,7 +56,7 @@ const DATA: readonly User[] = [
         NgIf,
         TuiDataList,
         NgForOf,
-        TuiAvatarComponent,
+        TuiAvatar,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

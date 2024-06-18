@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiLoader} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiCarouselButtonsDirective,
     TuiCarouselComponent,
 } from '@taiga-ui/kit';
@@ -17,7 +17,7 @@ import {
         TuiButton,
         TuiCarouselComponent,
         TuiLoader,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiAmountPipe,
         AsyncPipe,
         TuiCarouselButtonsDirective,

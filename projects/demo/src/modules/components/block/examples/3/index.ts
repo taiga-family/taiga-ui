@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTitle, TuiTooltip} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBlockDirective,
     TuiCheckboxComponent,
     TuiSwitch,
@@ -14,7 +14,7 @@ import {
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiTooltip,
         TuiIcon,
         TuiBlockDirective,

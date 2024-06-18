@@ -11,7 +11,7 @@ import {
     TuiLink,
     TuiSurface,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -20,7 +20,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiCardLarge,
         TuiDropdown,
         TuiRepeatTimes,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiIcon,
         TuiDataList,
         NgForOf,

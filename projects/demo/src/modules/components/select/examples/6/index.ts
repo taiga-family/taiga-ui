@@ -7,7 +7,7 @@ import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
@@ -42,7 +42,7 @@ const databaseMockData: readonly User[] = [
         FormsModule,
         TuiDataListWrapper,
         TuiDataList,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',

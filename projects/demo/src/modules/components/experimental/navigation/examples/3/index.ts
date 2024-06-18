@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBreadcrumbsComponent,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
@@ -24,7 +24,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     imports: [
         TuiNavigationModule,
         TuiIcon,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiBreadcrumbsComponent,
         TuiItem,
         TuiLink,
