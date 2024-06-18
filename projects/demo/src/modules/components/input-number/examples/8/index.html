@@ -1,0 +1,9 @@
+<tui-input-number
+    [max]="max"
+    [min]="min"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="value"
+>
+    Enter value between {{ min }} and {{ max }}
+    <input tuiTextfieldLegacy />
+</tui-input-number>

@@ -149,6 +149,7 @@ export class TuiInputNumberComponent
 
         if (this.isNativeValueNotFinished) {
             this.unfinishedValue = nativeValue;
+            this.cdr.markForCheck();
 
             return;
         }

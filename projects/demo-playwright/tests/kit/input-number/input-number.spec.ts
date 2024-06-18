@@ -246,6 +246,28 @@ test.describe('InputNumber', () => {
                 await expect(example).toHaveScreenshot('19-input-number.png');
             });
         });
+
+        test('positive [min] property and positive value (which is less than [min])', async ({
+            page,
+        }) => {
+            await tuiGoto(page, DemoRoute.InputNumber);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#min-max');
+            const textfield = example.getByRole('textbox');
+
+            await expect(textfield).toHaveValue('');
+            textfield.fill('33'); // less than min
+
+            await expect(example).toHaveScreenshot(
+                '20-input-number-positive-min-positive-wrong-value.png',
+            );
+
+            textfield.fill('333'); // more than min
+
+            await expect(example).toHaveScreenshot(
+                '20-input-number-positive-min-positive-valid-value.png',
+            );
+        });
     });
 
     test.describe('[max] prop', () => {
@@ -265,12 +287,12 @@ test.describe('InputNumber', () => {
                 await expect(input).toHaveValue(`${CHAR_MINUS}1`);
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
-                await expect(example).toHaveScreenshot('20-input-number.png');
+                await expect(example).toHaveScreenshot('21-input-number-before-blur.png');
                 await input.blur();
                 await expect(input).toHaveValue(`${CHAR_MINUS}5`);
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
-                await expect(example).toHaveScreenshot('21-input-number.png');
+                await expect(example).toHaveScreenshot('21-input-number-after-blur.png');
             });
         });
 
