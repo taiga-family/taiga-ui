@@ -10,12 +10,7 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TuiElement,
-    tuiIsNativeFocused,
-    tuiIsPresent,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiElement, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     tuiAsDataListAccessor,
