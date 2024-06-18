@@ -11,7 +11,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiLink,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy';
@@ -29,7 +29,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         ReactiveFormsModule,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         TuiLink,
         RouterLink,

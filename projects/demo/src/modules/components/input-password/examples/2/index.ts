@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
 import {TuiInputPasswordModule, tuiInputPasswordOptionsProvider} from '@taiga-ui/legacy';
 import {of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputPasswordModule, TuiHintOptionsDirective],
+    imports: [ReactiveFormsModule, TuiInputPasswordModule, TuiHint],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

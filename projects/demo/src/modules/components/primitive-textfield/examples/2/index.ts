@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import type {TuiNativeFocusableElement} from '@taiga-ui/legacy';
 import {
     AbstractTuiControl,
@@ -14,11 +14,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-primitive-textfield-example-2',
-    imports: [
-        TuiTextfieldControllerModule,
-        TuiPrimitiveTextfieldModule,
-        TuiHintOptionsDirective,
-    ],
+    imports: [TuiTextfieldControllerModule, TuiPrimitiveTextfieldModule, TuiHint],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

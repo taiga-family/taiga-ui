@@ -24,12 +24,12 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         ResizeObserverDirective,
         TuiZoom,
         AsyncPipe,
-        TuiHint,
         TuiButton,
         TuiSliderThumbLabelComponent,
         PercentPipe,
         TuiSliderComponent,
         FormsModule,
+        ...TuiHint,
     ],
     declarations: [
         TuiPreviewComponent,
@@ -44,6 +44,7 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewTitleComponent,
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
+        ...TuiHint,
     ],
 })
 export class TuiPreview {}

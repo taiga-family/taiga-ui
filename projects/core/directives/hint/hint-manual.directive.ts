@@ -8,9 +8,9 @@ import {TuiHintHoverDirective} from './hint-hover.directive';
 @Directive({
     standalone: true,
     selector: '[tuiHint][tuiHintManual]',
-    providers: [tuiAsDriver(TuiHintManualDirective)],
+    providers: [tuiAsDriver(TuiHintManual)],
 })
-export class TuiHintManualDirective extends TuiDriver implements OnChanges {
+export class TuiHintManual extends TuiDriver implements OnChanges {
     private readonly hover = inject(TuiHintHoverDirective);
     private readonly stream$ = new BehaviorSubject(false);
 

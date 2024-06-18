@@ -9,10 +9,10 @@ import {TuiTooltipComponent} from './tooltip.component';
     imports: [
         CommonModule,
         TuiButton,
-        TuiHint,
         TuiIcon,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        ...TuiHint,
     ],
     declarations: [TuiTooltipComponent],
     exports: [TuiTooltipComponent],

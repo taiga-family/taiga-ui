@@ -6,7 +6,7 @@ import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -24,7 +24,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         ReactiveFormsModule,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,
     ],

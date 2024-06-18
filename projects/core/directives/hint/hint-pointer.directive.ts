@@ -8,15 +8,9 @@ import {TuiHintHoverDirective} from './hint-hover.directive';
 @Directive({
     standalone: true,
     selector: '[tuiHint][tuiHintPointer]',
-    providers: [
-        tuiAsRectAccessor(TuiHintPointerDirective),
-        tuiAsDriver(TuiHintPointerDirective),
-    ],
+    providers: [tuiAsRectAccessor(TuiHintPointer), tuiAsDriver(TuiHintPointer)],
 })
-export class TuiHintPointerDirective
-    extends TuiHintHoverDirective
-    implements TuiRectAccessor
-{
+export class TuiHintPointer extends TuiHintHoverDirective implements TuiRectAccessor {
     private currentRect = EMPTY_CLIENT_RECT;
 
     public getClientRect(): ClientRect {

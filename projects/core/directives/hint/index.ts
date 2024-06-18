@@ -1,6 +1,6 @@
+export * from './hint';
 export * from './hint.component';
 export * from './hint.directive';
-export * from './hint.module';
 export * from './hint.providers';
 export * from './hint.service';
 export * from './hint-describe.directive';

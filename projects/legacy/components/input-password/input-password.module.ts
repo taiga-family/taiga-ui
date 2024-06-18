@@ -14,11 +14,11 @@ import {TuiInputPasswordDirective} from './input-password.directive';
 
 @NgModule({
     imports: [
+        ...TuiHint,
         CommonModule,
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiHint,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiAppearance,
@@ -29,6 +29,7 @@ import {TuiInputPasswordDirective} from './input-password.directive';
         TuiInputPasswordComponent,
         TuiInputPasswordDirective,
         TuiTextfieldComponent,
+        ...TuiHint,
     ],
 })
 export class TuiInputPasswordModule {}

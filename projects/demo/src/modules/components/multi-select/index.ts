@@ -16,7 +16,7 @@ import {
     TuiDataListDirective,
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiLink,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
@@ -47,7 +47,7 @@ class Account {
         ReactiveFormsModule,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         TuiDataListWrapperComponent,
         TuiDataListDirective,

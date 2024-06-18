@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHintOptionsDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiInputPasswordModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -17,7 +17,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiNotificationComponent,
         TuiInputPasswordModule,
         ReactiveFormsModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,
     ],

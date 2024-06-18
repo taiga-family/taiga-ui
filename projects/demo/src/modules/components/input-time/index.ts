@@ -8,7 +8,7 @@ import {TUI_FALSE_HANDLER, tuiProvide, TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDropdownOptionsDirective,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
@@ -26,7 +26,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiInputTimeModule,
         ReactiveFormsModule,
         TuiDropdownOptionsDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,
     ],

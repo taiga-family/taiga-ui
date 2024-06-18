@@ -12,7 +12,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiDropdownOpenDirective, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiDropdownOpenDirective, TuiHint} from '@taiga-ui/core';
 import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -26,7 +26,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiInputDateMultiModule,
         ReactiveFormsModule,
         TuiDropdownOpenDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         TuiMobileCalendar,
         InheritedDocumentationComponent,

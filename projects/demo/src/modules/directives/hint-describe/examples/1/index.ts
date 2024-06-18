@@ -1,13 +1,7 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TuiButton,
-    TuiHintDescribeDirective,
-    TuiHintDirective,
-    TuiHintOptionsDirective,
-    TuiTooltip,
-} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiHintDirective, TuiTooltip} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -15,10 +9,9 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     imports: [
         TuiButton,
         TuiHintDirective,
-        TuiHintDescribeDirective,
         TuiTooltip,
         TuiInputModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         FormsModule,
     ],
     templateUrl: './index.html',
