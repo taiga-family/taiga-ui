@@ -38,7 +38,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
         '[class._icons]': 'showIcons',
     },
 })
-export class TuiSwitchComponent implements DoCheck {
+export class TuiSwitch implements DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly options = inject(TUI_SWITCH_OPTIONS);

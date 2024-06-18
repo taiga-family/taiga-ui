@@ -8,7 +8,7 @@ import {
     TuiBadgeDirective,
     TuiChip,
     TuiSkeletonDirective,
-    TuiSwitchComponent,
+    TuiSwitch,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -16,7 +16,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiLabel,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
         TuiAvatarComponent,
         TuiSkeletonDirective,

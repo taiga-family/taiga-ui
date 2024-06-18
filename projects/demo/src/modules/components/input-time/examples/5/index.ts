@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiTime} from '@taiga-ui/cdk';
-import {TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiSwitch} from '@taiga-ui/kit';
 import {
     TuiInputTimeModule,
     tuiInputTimeOptionsProvider,
@@ -16,7 +16,7 @@ import {
         ReactiveFormsModule,
         TuiInputTimeModule,
         TuiTextfieldControllerModule,
-        TuiSwitchComponent,
+        TuiSwitch,
     ],
     templateUrl: './index.html',
     encapsulation,

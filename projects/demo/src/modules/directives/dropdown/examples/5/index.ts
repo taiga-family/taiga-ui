@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdown, TuiLabel, TuiSurface} from '@taiga-ui/core';
-import {TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
@@ -11,7 +11,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     imports: [
         TuiDropdown,
         TuiLabel,
-        TuiSwitchComponent,
+        TuiSwitch,
         TuiCardLarge,
         TuiSurface,
         FormsModule,

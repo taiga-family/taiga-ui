@@ -6,7 +6,7 @@ import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
     TuiSensitiveDirective,
-    TuiSwitchComponent,
+    TuiSwitch,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -16,7 +16,7 @@ import {
         TuiButton,
         TuiBadgeDirective,
         TuiLabel,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
     ],
     templateUrl: './index.html',
