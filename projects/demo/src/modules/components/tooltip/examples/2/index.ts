@@ -7,13 +7,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiLink,
-        RouterLink,
-        TuiAvatar,
-        TuiHintDirective,
-        TuiAutoColorPipe,
-    ],
+    imports: [TuiLink, RouterLink, TuiAvatar, TuiHintDirective, TuiAutoColorPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
