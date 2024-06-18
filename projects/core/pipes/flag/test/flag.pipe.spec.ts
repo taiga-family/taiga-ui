@@ -6,7 +6,7 @@ describe('tuiFlagPipe', () => {
 
     beforeEach(() => {
         TestBed.overrideProvider(TUI_ASSETS_PATH, {
-            useValue: 'path/',
+            useValue: 'path',
         }).runInInjectionContext(() => {
             pipe = new TuiFlagPipe();
         });
