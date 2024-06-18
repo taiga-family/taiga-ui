@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
-import {TuiIconPipe, TuiSurfaceDirective} from '@taiga-ui/core';
+import {TuiIconPipe, TuiSurface} from '@taiga-ui/core';
 import {TuiFadeDirective} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
@@ -12,7 +12,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiCardMedium,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiIconPipe,
         TuiThumbnailCardComponent,
         FormsModule,

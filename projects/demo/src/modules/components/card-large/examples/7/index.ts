@@ -9,7 +9,7 @@ import {
     TuiDropdownModule,
     TuiIcon,
     TuiLink,
-    TuiSurfaceDirective,
+    TuiSurface,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
@@ -27,7 +27,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
         TuiCellDirective,
         TuiLink,
         TuiAppearance,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiHeaderDirective,
     ],
     templateUrl: './index.html',

@@ -602,7 +602,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiSurfaceModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiSurfaceDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiSurface', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiFlagPipeModule', moduleSpecifier: '@taiga-ui/core'},
@@ -653,7 +653,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiActionModule', moduleSpecifier: '@taiga-ui/kit'},
         to: [
             {name: 'TuiCardLarge', moduleSpecifier: '@taiga-ui/layout'},
-            {name: 'TuiSurfaceDirective', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiSurface', moduleSpecifier: '@taiga-ui/core'},
         ],
     },
     {

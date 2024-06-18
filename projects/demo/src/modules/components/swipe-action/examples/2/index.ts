@@ -3,14 +3,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiSurface, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiSwipeActions,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiAvatarComponent,
         TuiTitleDirective,
         TuiButton,

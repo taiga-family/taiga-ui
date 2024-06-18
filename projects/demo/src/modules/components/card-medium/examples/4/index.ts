@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiAutoColorPipe,
     TuiFallbackSrcPipe,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
@@ -20,7 +20,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         AsyncPipe,
         TuiAutoColorPipe,
         NgForOf,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiCardMedium,
         TuiTitleDirective,
     ],

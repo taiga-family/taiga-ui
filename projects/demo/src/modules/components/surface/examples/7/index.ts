@@ -7,7 +7,7 @@ import {
     TuiButton,
     TuiLink,
     TuiScrollbarComponent,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
@@ -16,7 +16,7 @@ import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiThumbnailCardComponent,
         TuiAvatarComponent,
         TuiAmountPipe,

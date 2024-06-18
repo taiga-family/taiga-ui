@@ -27,7 +27,7 @@ class TuiSurfaceStyles {}
         '[attr.data-surface]': 'tuiSurface',
     },
 })
-export class TuiSurfaceDirective {
+export class TuiSurface {
     protected readonly nothing = tuiWithStyles(TuiSurfaceStyles);
 
     @Input()

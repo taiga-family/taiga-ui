@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiSurface, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
@@ -10,7 +10,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layo
     standalone: true,
     imports: [
         TuiCardLarge,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiHeaderDirective,
         TuiRepeatTimes,
         TuiAvatarComponent,

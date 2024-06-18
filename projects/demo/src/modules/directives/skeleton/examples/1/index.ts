@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiLabelDirective,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {
@@ -29,7 +29,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiChip,
         TuiBadgeDirective,
         TuiCardLarge,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiHeaderDirective,
         TuiTitleDirective,
     ],

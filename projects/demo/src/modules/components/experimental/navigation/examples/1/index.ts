@@ -14,7 +14,7 @@ import {
     TuiExpand,
     TuiIcon,
     TuiOptionComponent,
-    TuiSurfaceDirective,
+    TuiSurface,
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
@@ -54,7 +54,7 @@ import {TuiCardLarge, TuiHeaderDirective} from '@taiga-ui/layout';
         TuiRepeatTimes,
         TuiCardLarge,
         TuiHeaderDirective,
-        TuiSurfaceDirective,
+        TuiSurface,
         TuiTitleDirective,
     ],
     templateUrl: './index.html',
