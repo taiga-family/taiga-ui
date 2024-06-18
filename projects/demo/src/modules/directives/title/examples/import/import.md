@@ -1,5 +1,5 @@
 ```ts
-import {TuiTitleDirective} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiTitleDirective} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiTitleDirective,
+    TuiTitle,
   ],
   // ...
 })

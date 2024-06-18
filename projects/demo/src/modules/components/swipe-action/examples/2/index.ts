@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiSurface, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
         TuiSwipeActions,
         TuiSurface,
         TuiAvatarComponent,
-        TuiTitleDirective,
+        TuiTitle,
         TuiButton,
         TuiSwitchComponent,
         FormsModule,

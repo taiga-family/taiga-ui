@@ -15,7 +15,7 @@ import {
     TuiIcon,
     TuiOptionComponent,
     TuiSurface,
-    TuiTitleDirective,
+    TuiTitle,
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
@@ -55,7 +55,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiCardLarge,
         TuiHeader,
         TuiSurface,
-        TuiTitleDirective,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -10,7 +10,7 @@ import {
     TuiDropdownOpenDirective,
     TuiIcon,
     TuiSurface,
-    TuiTitleDirective,
+    TuiTitle,
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
@@ -34,7 +34,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiHeader,
-        TuiTitleDirective,
+        TuiTitle,
         TuiIcon,
         TuiFadeDirective,
         TuiBadgeDirective,

@@ -9,12 +9,12 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiTitleDirective} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiRadioListComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TuiRadioListComponent, TuiTitleDirective],
+    imports: [FormsModule, ReactiveFormsModule, TuiRadioListComponent, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

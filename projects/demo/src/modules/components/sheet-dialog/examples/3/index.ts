@@ -4,17 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialogDirective} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiTitleDirective,
-        TuiSheetDialogDirective,
-        TuiAmountPipe,
-        AsyncPipe,
-    ],
+    imports: [TuiButton, TuiTitle, TuiSheetDialogDirective, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDropdownModule, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButton, TuiDropdownModule, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
     TuiDataListWrapper,
@@ -44,7 +44,7 @@ interface User {
         TuiInputNumberModule,
         TuiCellDirective,
         TuiAvatarComponent,
-        TuiTitleDirective,
+        TuiTitle,
         TuiAmountPipe,
     ],
     templateUrl: './index.html',

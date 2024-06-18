@@ -28,7 +28,7 @@ class TuiTitleStyles {}
         '[attr.data-size]': 'size || null',
     },
 })
-export class TuiTitleDirective {
+export class TuiTitle {
     protected readonly nothing = tuiWithStyles(TuiTitleStyles);
 
     @Input('tuiTitle')
