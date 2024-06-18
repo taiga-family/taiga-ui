@@ -19,7 +19,7 @@ jobs:
       - run: |
           npx nx prebuild icons
           npx nx build icons
-          npm run prettier -- --write
+          npx prettier ./projects/icons/* --write
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix || echo "no file matching"
           npx eslint ./projects/demo/used-icons.ts --fix || echo "no file matching"
