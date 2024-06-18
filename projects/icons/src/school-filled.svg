@@ -1,0 +1,20 @@
+<!-- @license lucide-static v0.395.0 - ISC -->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="lucide lucide-school"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path vector-effect="non-scaling-stroke" d="M14 22v-4a2 2 0 1 0-4 0v4" />
+    <path vector-effect="non-scaling-stroke" d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2" />
+    <path vector-effect="non-scaling-stroke" d="M18 5v17" />
+    <path vector-effect="non-scaling-stroke" d="m4 6 8-4 8 4" />
+    <path vector-effect="non-scaling-stroke" d="M6 5v17" />
+    <circle vector-effect="non-scaling-stroke" cx="12" cy="9" r="2" />
+</svg>
