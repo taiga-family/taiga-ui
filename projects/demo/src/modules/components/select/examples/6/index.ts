@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiDataListDirective, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
@@ -40,8 +40,8 @@ const databaseMockData: readonly User[] = [
         TuiLet,
         AsyncPipe,
         FormsModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
         TuiAvatarComponent,
         TuiInitialsPipe,
     ],

@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiDataListDirective} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 import {CustomListComponent} from './custom-list';
@@ -35,7 +35,7 @@ const EXPENSES = {
 
 @Component({
     standalone: true,
-    imports: [TuiSelectModule, FormsModule, CustomListComponent, TuiDataListDirective],
+    imports: [TuiSelectModule, FormsModule, CustomListComponent, TuiDataList],
     templateUrl: './index.html',
     styles: [
         `

@@ -34,14 +34,14 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiMapperPipe,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
-        TuiDataListWrapper,
         TuiMapperPipe,
         TuiLink,
-        TuiDataList,
         TuiTextfieldControllerModule,
         TuiStringifyContentPipe,
         TuiLegacyDropdownOpenMonitorDirective,
         ...TuiDropdown,
+        ...TuiDataList,
+        ...TuiDataListWrapper,
     ],
     declarations: [
         TuiMultiSelectComponent,
@@ -61,6 +61,8 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiNativeMultiSelectComponent,
         TuiNativeMultiSelectGroupComponent,
         ...TuiDropdown,
+        ...TuiDataList,
+        ...TuiDataListWrapper,
     ],
 })
 export class TuiMultiSelectModule {}

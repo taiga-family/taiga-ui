@@ -1,7 +1,7 @@
 ```ts
 import {FormsModule} from '@angular/forms';
-import {TuiDataListModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper, TuiInputModule} from '@taiga-ui/kit';
 import {TuiEmailsPipe} from '@taiga-ui/proprietary';
 
 // ...
@@ -13,8 +13,8 @@ import {TuiEmailsPipe} from '@taiga-ui/proprietary';
     FormsModule,
     TuiEmailsPipe,
     TuiInputModule,
-    TuiDataListModule,
-    TuiDataListWrapperModule,
+    TuiDataList,
+    TuiDataListWrapper,
   ],
   // ...
 })

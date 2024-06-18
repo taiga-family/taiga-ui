@@ -19,7 +19,7 @@ import {
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
-import {TUI_DATA_LIST_HOST, TuiOptionComponent} from '@taiga-ui/core';
+import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
@@ -31,8 +31,8 @@ import {combineLatest, map} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectGroupComponent<T> {
-    @ContentChildren(TuiOptionComponent)
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    @ContentChildren(TuiOption)
+    private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
     private readonly control = inject(NgControl);
@@ -115,7 +115,7 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     @tuiPure
-    private filter(items: ReadonlyArray<TuiOptionComponent<T>>): readonly T[] {
+    private filter(items: ReadonlyArray<TuiOption<T>>): readonly T[] {
         return items.map(({value}) => value).filter(tuiIsPresent);
     }
 }

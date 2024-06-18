@@ -30,11 +30,11 @@ import {TuiSelectDirective} from './select.directive';
         TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapper,
-        TuiDataList,
         TuiStringifyContentPipe,
         TuiLegacyDropdownOpenMonitorDirective,
         ...TuiDropdown,
+        ...TuiDataList,
+        ...TuiDataListWrapper,
     ],
     declarations: [
         TuiSelectComponent,
@@ -49,6 +49,8 @@ import {TuiSelectDirective} from './select.directive';
         TuiNativeSelectComponent,
         TuiNativeSelectGroupComponent,
         ...TuiDropdown,
+        ...TuiDataList,
+        ...TuiDataListWrapper,
     ],
 })
 export class TuiSelectModule {}

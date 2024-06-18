@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent, tuiItemsHandlersProvider} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper, tuiItemsHandlersProvider} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Employee {
@@ -21,8 +21,8 @@ interface Employee {
         TuiSelectModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -23,13 +23,13 @@ import {
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
 import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
-import {TuiOptionComponent} from './option.component';
+import {TuiOption} from './option.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
@@ -42,7 +42,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 @Component({
     standalone: true,
     selector: 'tui-data-list',
-    imports: [NgIf, AsyncPipe, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [NgIf, AsyncPipe, PolymorpheusOutlet],
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -53,8 +53,8 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     },
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
-    @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    @ContentChildren(forwardRef(() => TuiOption), {descendants: true})
+    private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
     private readonly el = tuiInjectElement();

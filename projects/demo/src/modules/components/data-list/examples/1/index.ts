@@ -3,14 +3,7 @@ import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiDataListComponent,
-    TuiDropdown,
-    TuiIcon,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
@@ -19,10 +12,8 @@ import {TuiChevron} from '@taiga-ui/kit';
         TuiButton,
         TuiChevron,
         TuiDropdown,
-        TuiDataListComponent,
-        TuiOptGroupDirective,
+        TuiDataList,
         NgForOf,
-        TuiOptionComponent,
         RouterLinkActive,
         RouterLink,
         TuiIcon,

@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDialogContext, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiDataListDirective, TuiDialogService} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiButton, TuiDataList, TuiDialogService} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -15,8 +15,8 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiMultiSelectModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     encapsulation,

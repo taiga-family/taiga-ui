@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLet} from '@taiga-ui/cdk';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -27,8 +27,8 @@ const DICTIONARY = [
         AsyncPipe,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     changeDetection,

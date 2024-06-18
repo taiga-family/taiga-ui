@@ -4,12 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Hero {
@@ -23,11 +19,9 @@ interface Hero {
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        TuiDataListComponent,
-        TuiDataListDirective,
-        TuiOptionComponent,
+        TuiDataList,
         NgForOf,
-        TuiDataListWrapperComponent,
+        TuiDataListWrapper,
     ],
     templateUrl: './index.html',
     encapsulation,

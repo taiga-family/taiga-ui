@@ -7,11 +7,10 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
-    TuiDataListComponent,
+    TuiDataList,
     TuiDropdown,
     TuiExpand,
     TuiIcon,
-    TuiOptionComponent,
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
@@ -36,8 +35,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiChevron,
         TuiDropdown,
         TuiFadeDirective,
-        TuiDataListComponent,
-        TuiOptionComponent,
+        TuiDataList,
         TuiBadgeNotificationComponent,
         TuiAvatarComponent,
         RouterLink,

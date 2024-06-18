@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -12,8 +12,8 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
         FormsModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

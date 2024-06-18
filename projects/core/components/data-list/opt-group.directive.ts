@@ -8,7 +8,7 @@ import {Directive, Input} from '@angular/core';
         '[attr.data-label]': 'label',
     },
 })
-export class TuiOptGroupDirective {
+export class TuiOptGroup {
     @Input()
     public label?: string | null;
 }

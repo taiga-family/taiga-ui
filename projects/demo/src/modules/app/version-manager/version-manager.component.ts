@@ -4,11 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiStringifyContentPipe, TuiStringifyPipe} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -25,10 +21,8 @@ import {TUI_VERSIONS_META_OPTIONS} from './versions.constants';
         FormsModule,
         TuiStringifyPipe,
         TuiStringifyContentPipe,
-        TuiDataListComponent,
-        TuiDataListDirective,
+        TuiDataList,
         NgForOf,
-        TuiOptionComponent,
     ],
     templateUrl: './version-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -5,12 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiLet, tuiPure} from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiLoader,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiLoader} from '@taiga-ui/core';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
@@ -36,10 +31,8 @@ const ITEMS: readonly Python[] = [
         TuiTextfieldControllerModule,
         FormsModule,
         AsyncPipe,
-        TuiDataListDirective,
-        TuiDataListComponent,
+        TuiDataList,
         NgIf,
-        TuiOptionComponent,
         NgForOf,
         TuiLoader,
     ],

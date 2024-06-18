@@ -13,7 +13,7 @@ import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TuiDataListComponent,
-    TuiOptionComponent,
+    TuiOption,
 } from '@taiga-ui/core';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -31,7 +31,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     private readonly changeDetection$ = new Subject<void>();
     protected readonly abstractControl = inject(AbstractTuiControl<T>, {optional: true});
     protected readonly control = inject(NgControl);
-    protected readonly option = inject(TuiOptionComponent<T>);
+    protected readonly option = inject(TuiOption<T>);
     protected readonly dataList = inject(TuiDataListComponent<T>, {optional: true});
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context =

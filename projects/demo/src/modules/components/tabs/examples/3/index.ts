@@ -3,12 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString, TuiItemDirective} from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDropdown,
-    TuiIcon,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 @Component({
@@ -21,8 +16,7 @@ import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/k
         TuiTabDirective,
         TuiChevron,
         TuiDropdown,
-        TuiDataListComponent,
-        TuiOptionComponent,
+        TuiDataList,
         TuiIcon,
     ],
     templateUrl: './index.html',

@@ -9,7 +9,7 @@ import {
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
 import type {TuiDataListHost} from './data-list.tokens';
@@ -19,12 +19,14 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
 @Component({
     standalone: true,
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <ng-container *polymorpheusOutlet="content || t as text; context: {$implicit: t}">
             {{ text }}
         </ng-container>
-        <ng-template #t><ng-content /></ng-template>
+        <ng-template #t>
+            <ng-content />
+        </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
@@ -42,7 +44,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
         '(mousemove.silent)': 'onMouseMove()',
     },
 })
-export class TuiOptionComponent<T = unknown> implements OnDestroy {
+export class TuiOption<T = unknown> implements OnDestroy {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly dataList = inject<TuiDataListComponent<T>>(
