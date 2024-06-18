@@ -33,6 +33,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
         '[attr.data-type]': 'type',
         '[style.--t-mask]': '"url(" + resolver(safeSrc) + ")"',
         '[class._round]': 'round',
+        '[class._svg]': 'svg',
     },
 })
 export class TuiAvatarComponent {
@@ -57,12 +58,16 @@ export class TuiAvatarComponent {
         return this.src || '';
     }
 
+    protected get svg(): boolean {
+        return tuiIsString(this.value) && this.value.endsWith('.svg');
+    }
+
     protected get type(): 'content' | 'icon' | 'img' | 'text' {
         if (this.value && !tuiIsString(this.value)) {
             return 'img';
         }
 
-        if (this.value.startsWith('@tui.') || this.value.endsWith('.svg')) {
+        if (this.value.startsWith('@tui.')) {
             return 'icon';
         }
 

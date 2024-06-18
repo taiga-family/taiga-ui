@@ -113,7 +113,7 @@
         }
     }
 
-    &[data-type='img'] {
+    &[data-type='img']:not(._svg) {
         background: transparent;
     }
 
@@ -123,6 +123,10 @@
 
     &._round {
         --t-radius: calc(var(--t-size) / 2);
+    }
+
+    &._svg img {
+        padding: 20%;
     }
 
     ::ng-deep img,
