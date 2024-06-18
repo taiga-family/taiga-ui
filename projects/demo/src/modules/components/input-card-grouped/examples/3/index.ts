@@ -6,7 +6,7 @@ import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {
     tuiCardExpireValidator,
     tuiCardNumberValidator,
-    TuiInputCardGroupedComponent,
+    TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
 import {TuiErrorComponent} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
@@ -15,7 +15,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     imports: [
-        TuiInputCardGroupedComponent,
+        TuiInputCardGroup,
         ReactiveFormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,

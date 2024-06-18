@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
+import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
@@ -12,7 +12,7 @@ import {firstValueFrom, timer} from 'rxjs';
 describe('InputCardGrouped', () => {
     @Component({
         standalone: true,
-        imports: [TuiInputCardGroupedComponent, ReactiveFormsModule, TuiIcon],
+        imports: [TuiInputCardGroup, ReactiveFormsModule, TuiIcon],
         template: `
             <tui-input-card-grouped
                 [formControl]="control"
@@ -25,8 +25,8 @@ describe('InputCardGrouped', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiInputCardGroupedComponent, {static: true})
-        public component!: TuiInputCardGroupedComponent;
+        @ViewChild(TuiInputCardGroup, {static: true})
+        public component!: TuiInputCardGroup;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
         public customIconTemplate!: TemplateRef<any>;

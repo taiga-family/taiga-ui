@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {
     TUI_INPUT_CARD_GROUPED_TEXTS,
-    TuiInputCardGroupedComponent,
+    TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
 import {of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputCardGroupedComponent, ReactiveFormsModule],
+    imports: [TuiInputCardGroup, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection,
     providers: [

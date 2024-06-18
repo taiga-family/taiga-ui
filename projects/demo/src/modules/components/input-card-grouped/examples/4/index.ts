@@ -3,11 +3,11 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
+import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
-    imports: [TuiInputCardGroupedComponent, ReactiveFormsModule],
+    imports: [TuiInputCardGroup, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
