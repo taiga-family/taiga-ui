@@ -18,7 +18,7 @@ import {TuiAlertsComponent} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
-import {TuiHintsComponent} from '@taiga-ui/core/directives/hint';
+import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
@@ -34,7 +34,7 @@ import {debounceTime, map, of} from 'rxjs';
         TuiDropdownsComponent,
         TuiDialogsComponent,
         TuiAlertsComponent,
-        TuiHintsComponent,
+        TuiHints,
         TuiScrollControls,
     ],
     templateUrl: './root.template.html',

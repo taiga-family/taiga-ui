@@ -21,10 +21,10 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 @Directive({
     standalone: true,
     selector: '[tuiHint]:is(never)',
-    providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
+    providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })
-export class TuiHintHoverDirective extends TuiDriver {
+export class TuiHintHover extends TuiDriver {
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
@@ -58,7 +58,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         }),
     );
 
-    private readonly parent = inject(TuiHintHoverDirective, {
+    private readonly parent = inject(TuiHintHover, {
         optional: true,
         skipSelf: true,
     });

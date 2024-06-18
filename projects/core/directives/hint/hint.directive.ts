@@ -9,10 +9,10 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintService} from './hint.service';
-import {TuiHintDriverDirective} from './hint-driver.directive';
-import {TuiHintHoverDirective} from './hint-hover.directive';
+import {TuiHintDriver} from './hint-driver.directive';
+import {TuiHintHover} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
-import {TuiHintPositionDirective} from './hint-position.directive';
+import {TuiHintPosition} from './hint-position.directive';
 
 @Directive({
     standalone: true,
@@ -27,13 +27,13 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         },
     ],
     hostDirectives: [
-        TuiHintDriverDirective,
+        TuiHintDriver,
         {
-            directive: TuiHintHoverDirective,
+            directive: TuiHintHover,
             inputs: ['tuiHintHideDelay', 'tuiHintShowDelay'],
         },
         {
-            directive: TuiHintPositionDirective,
+            directive: TuiHintPosition,
             inputs: ['tuiHintDirection'],
         },
     ],

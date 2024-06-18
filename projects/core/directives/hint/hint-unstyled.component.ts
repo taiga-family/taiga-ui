@@ -29,7 +29,7 @@ import {TuiHintDirective} from './hint.directive';
     animations: [tuiParentAnimation],
     host: {'[@tuiParentAnimation]': ''},
 })
-class TuiHintUnstyledComponent {
+class TuiHintUnstyledStyles {
     protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
 }
 
@@ -43,11 +43,11 @@ class TuiHintUnstyledComponent {
         },
     ],
 })
-export class TuiHintUnstyledDirective<C> {
+export class TuiHintUnstyled<C> {
     constructor() {
         const hint = inject(TuiHintDirective<C>);
 
-        hint.component = new PolymorpheusComponent(TuiHintUnstyledComponent);
+        hint.component = new PolymorpheusComponent(TuiHintUnstyledStyles);
         hint.content = inject(TemplateRef<C>);
     }
 }

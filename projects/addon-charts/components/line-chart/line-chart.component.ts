@@ -23,7 +23,7 @@ import {
 import type {TuiPoint} from '@taiga-ui/core';
 import {
     TuiHint,
-    TuiHintHoverDirective,
+    TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core';
@@ -55,7 +55,7 @@ export class TuiLineChartComponent {
 
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
-    @ViewChildren(TuiHintHoverDirective)
+    @ViewChildren(TuiHintHover)
     public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()

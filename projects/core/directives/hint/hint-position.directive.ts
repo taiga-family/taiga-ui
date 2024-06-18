@@ -21,7 +21,7 @@ const LEFT = 1;
     standalone: true,
     selector: '[tuiHint]:is(never)',
 })
-export class TuiHintPositionDirective extends TuiPositionAccessor {
+export class TuiHintPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
