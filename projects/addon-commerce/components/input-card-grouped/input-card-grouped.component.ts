@@ -55,7 +55,7 @@ import {
     TuiIconPipe,
     TuiWithDataList,
 } from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit';
+import {TuiChevron} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map, merge} from 'rxjs';
@@ -84,7 +84,7 @@ export interface TuiCard {
         TuiMapperPipe,
         TuiLet,
         TuiIcon,
-        TuiChevronDirective,
+        TuiChevron,
         TuiAppearance,
         TuiIconPipe,
     ],

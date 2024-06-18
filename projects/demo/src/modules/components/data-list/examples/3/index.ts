@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiCheckboxComponent,
-    TuiChevronDirective,
+    TuiChevron,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
@@ -23,7 +23,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
     standalone: true,
     imports: [
         TuiButton,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownDirective,
         TuiDropdownOptionsDirective,
         TuiDropdownOpenDirective,

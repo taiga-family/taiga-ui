@@ -32,7 +32,7 @@ class TuiChevronStyles {}
         tuiChevron: '',
     },
 })
-export class TuiChevronDirective implements DoCheck {
+export class TuiChevron implements DoCheck {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly icons = inject(TuiIcons, {optional: true});

@@ -11,7 +11,7 @@ import {
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
-    TuiChevronDirective,
+    TuiChevron,
     TuiTabDirective,
     TuiTabsWithMoreComponent,
 } from '@taiga-ui/kit';
@@ -24,7 +24,7 @@ import {
         NgForOf,
         NgIf,
         TuiTabDirective,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListComponent,

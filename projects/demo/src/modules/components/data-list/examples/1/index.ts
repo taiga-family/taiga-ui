@@ -12,13 +12,13 @@ import {
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit';
+import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiButton,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownOpenDirective,
         TuiDropdownDirective,
         TuiDataListComponent,

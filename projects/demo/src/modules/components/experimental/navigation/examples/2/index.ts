@@ -15,7 +15,7 @@ import {
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiBadgeDirective,
-    TuiChevronDirective,
+    TuiChevron,
     TuiFadeDirective,
     TuiSwitchComponent,
     TuiTabDirective,
@@ -30,7 +30,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiSwitchComponent,
         FormsModule,
         TuiButton,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiHeader,

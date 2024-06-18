@@ -27,7 +27,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiDropdownModule} from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit/directives';
+import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -48,7 +48,7 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
         TuiDropdownModule,
         TuiTabDirective,
         TuiTabsHorizontalDirective,
-        TuiChevronDirective,
+        TuiChevron,
     ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],

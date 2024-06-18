@@ -25,7 +25,7 @@ import {
     TuiDropdownOpenDirective,
     TuiLoader,
 } from '@taiga-ui/core';
-import {TuiChevronDirective} from '@taiga-ui/kit';
+import {TuiChevron} from '@taiga-ui/kit';
 import {
     TuiInputModule,
     TuiInputNumberModule,
@@ -123,7 +123,7 @@ function getAge({dob}: User): number {
         ReactiveFormsModule,
         TuiDropdownDirective,
         TuiButton,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDropdownOpenDirective,
         FormsModule,
         NgForOf,

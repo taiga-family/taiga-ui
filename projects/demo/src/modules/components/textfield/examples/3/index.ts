@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltipModule} from '@taiga-ui/experimental';
 import {
-    TuiChevronDirective,
+    TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
@@ -17,7 +17,7 @@ import {
         TuiTextfield,
         TuiIcon,
         TuiTooltipModule,
-        TuiChevronDirective,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
     ],

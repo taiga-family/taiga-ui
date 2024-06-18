@@ -26,13 +26,13 @@ import { TuiLinkModule } from "@taiga-ui/core";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiChevronDirective } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiChevron } from "@taiga-ui/kit";
 import { TuiLink } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiLink, TuiChevronDirective]
+    imports: [TuiLink, TuiChevron]
 })
 export class Test {
 }`;
