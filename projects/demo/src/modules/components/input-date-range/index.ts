@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -22,7 +21,7 @@ import {TuiInputDateRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/l
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
@@ -31,8 +30,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     standalone: true,
     imports: [
         TuiDemo,
-        InheritedDocumentationComponent,
-        RouterLink,
+        InheritedDocumentation,
         TuiLink,
         TuiNotificationComponent,
         TuiInputDateRangeModule,

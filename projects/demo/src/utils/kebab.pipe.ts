@@ -10,7 +10,10 @@ export function toKebab(str: string): string {
         );
 }
 
-@Pipe({standalone: true, name: 'tuiKebab'})
+@Pipe({
+    standalone: true,
+    name: 'tuiKebab',
+})
 export class TuiKebabPipe implements PipeTransform {
     public readonly transform = toKebab;
 }

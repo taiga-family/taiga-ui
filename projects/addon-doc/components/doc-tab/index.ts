@@ -7,7 +7,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocTabComponent {
+export class TuiDocTab {
     @Input()
     public src = '';
 }

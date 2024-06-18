@@ -1,16 +1,15 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiFormatNumberPipe, TuiLink} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';
-import {NumberFormatDocumentationComponent} from '../../components/abstract/number-format-documentation';
+import {NumberFormatDocumentation} from '../../components/abstract/number-format-documentation';
 
 @Component({
     standalone: true,
@@ -20,9 +19,7 @@ import {NumberFormatDocumentationComponent} from '../../components/abstract/numb
         TuiInputNumberModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        NumberFormatDocumentationComponent,
-        RouterLink,
-        TuiLink,
+        NumberFormatDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

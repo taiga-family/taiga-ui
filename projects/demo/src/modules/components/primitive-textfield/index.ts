@@ -1,6 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -11,7 +10,6 @@ import {
     TUI_HINT_DIRECTIONS,
     TuiHint,
     TuiIcon,
-    TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -22,10 +20,10 @@ import {
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {HintControllerDocumentationComponent} from '../abstract/hint-controller-documentation';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {HintControllerDocumentation} from '../abstract/hint-controller-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
-import {TextfieldControllerDocumentationComponent} from '../abstract/textfield-controller-documentation';
+import {TextfieldControllerDocumentation} from '../abstract/textfield-controller-documentation';
 import ExampleComponent1 from './examples/1';
 import ExampleComponent2 from './examples/2';
 
@@ -34,8 +32,6 @@ import ExampleComponent2 from './examples/2';
     imports: [
         TuiDemo,
         TuiNotificationComponent,
-        RouterLink,
-        TuiLink,
         FormsModule,
         ExampleComponent1,
         ExampleComponent2,
@@ -44,9 +40,9 @@ import ExampleComponent2 from './examples/2';
         TuiTextfieldControllerModule,
         TuiAvatarComponent,
         TuiIcon,
-        HintControllerDocumentationComponent,
-        TextfieldControllerDocumentationComponent,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
+        TextfieldControllerDocumentation,
+        HintControllerDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

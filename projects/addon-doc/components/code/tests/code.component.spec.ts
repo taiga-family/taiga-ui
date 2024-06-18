@@ -1,16 +1,16 @@
 // cspell:disable
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
+import {TuiDocCode} from '@taiga-ui/addon-doc';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
 describe('TuiDocCodeComponent', () => {
-    let component: TuiDocCodeComponent;
-    let fixture: ComponentFixture<TuiDocCodeComponent>;
+    let component: TuiDocCode;
+    let fixture: ComponentFixture<TuiDocCode>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [HighlightModule, TuiDocCodeComponent],
+            imports: [HighlightModule, TuiDocCode],
             providers: [
                 {
                     provide: HIGHLIGHT_OPTIONS,
@@ -27,7 +27,7 @@ describe('TuiDocCodeComponent', () => {
             ],
         });
         await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TuiDocCodeComponent);
+        fixture = TestBed.createComponent(TuiDocCode);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

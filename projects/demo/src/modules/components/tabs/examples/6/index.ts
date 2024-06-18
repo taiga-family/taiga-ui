@@ -7,7 +7,7 @@ import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTabsVerticalDirective, RouterLink, RouterLinkActive, TuiTabDirective],
+    imports: [TuiTabsVerticalDirective, RouterLinkActive, TuiTabDirective, RouterLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

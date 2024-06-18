@@ -5,11 +5,11 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentationComponent} from '../../components/abstract/dropdown-documentation';
+import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiDropdown, TuiButton, DropdownDocumentationComponent],
+    imports: [TuiDemo, TuiDropdown, TuiButton, DropdownDocumentation],
     templateUrl: './index.html',
     changeDetection,
     providers: [

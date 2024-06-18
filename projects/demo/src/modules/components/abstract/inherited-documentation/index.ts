@@ -2,38 +2,38 @@ import {NgIf} from '@angular/common';
 import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiDocDocumentationComponent,
-    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocDocumentation,
+    TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../control';
-import {DropdownDocumentationComponent} from '../dropdown-documentation';
+import {DropdownDocumentation} from '../dropdown-documentation';
 import {AbstractExampleTuiHint} from '../hint';
-import {HintControllerDocumentationComponent} from '../hint-controller-documentation';
+import {HintControllerDocumentation} from '../hint-controller-documentation';
 import {AbstractExampleTuiInteractive} from '../interactive';
 import {AbstractExampleTuiNumberFormat} from '../number-format';
-import {NumberFormatDocumentationComponent} from '../number-format-documentation';
+import {NumberFormatDocumentation} from '../number-format-documentation';
 import type {TuiSupportingDocumentationComponent} from '../supporting-documentation-component';
-import {TextfieldControllerDocumentationComponent} from '../textfield-controller-documentation';
+import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
 @Component({
     standalone: true,
     selector: 'inherited-documentation',
     imports: [
-        DropdownDocumentationComponent,
+        DropdownDocumentation,
         NgIf,
-        NumberFormatDocumentationComponent,
-        HintControllerDocumentationComponent,
-        TextfieldControllerDocumentationComponent,
-        TuiDocDocumentationComponent,
-        TuiDocDocumentationPropertyConnectorDirective,
+        NumberFormatDocumentation,
+        HintControllerDocumentation,
+        TextfieldControllerDocumentation,
+        TuiDocDocumentation,
+        TuiDocDocumentationPropertyConnector,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class InheritedDocumentationComponent {
+export class InheritedDocumentation {
     protected readonly booleanVariants: readonly boolean[] = [false, true];
     protected readonly directionVariants = TUI_HINT_DIRECTIONS;
     protected readonly appearanceVariants = ['', 'error', 'dark'];

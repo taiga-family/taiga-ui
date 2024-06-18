@@ -1,16 +1,13 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
 import {
     TuiAlertService,
     TuiButton,
     TuiDialogService,
-    TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
@@ -18,14 +15,7 @@ import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiLink,
-        RouterLink,
-        TuiNotificationComponent,
-        TuiButton,
-        TuiAccordion,
-    ],
+    imports: [TuiDemo, TuiNotificationComponent, TuiButton, TuiAccordion],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -41,7 +31,7 @@ export default class Page {
         './examples/import/dialogs-close-token.md?raw'
     );
 
-    protected readonly example2: TuiDocExample = {
+    protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         'dialog-example/dialog-example.component.ts': import(
@@ -55,7 +45,7 @@ export default class Page {
         ),
     };
 
-    protected readonly example7: TuiDocExample = {
+    protected readonly example7 = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
         'search-example/search-dialog-example.component.ts': import(
@@ -69,7 +59,7 @@ export default class Page {
         ),
     };
 
-    protected readonly example9: TuiDocExample = {
+    protected readonly example9 = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),

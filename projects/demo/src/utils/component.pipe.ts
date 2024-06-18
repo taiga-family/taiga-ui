@@ -1,12 +1,15 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
-import {TuiDocPageComponent} from '@taiga-ui/addon-doc';
+import {TuiDocPage} from '@taiga-ui/addon-doc';
 
 import {toKebab} from './kebab.pipe';
 
-@Pipe({standalone: true, name: 'tuiComponent'})
+@Pipe({
+    standalone: true,
+    name: 'tuiComponent',
+})
 export class TuiComponentPipe implements PipeTransform {
-    private readonly page = inject(TuiDocPageComponent);
+    private readonly page = inject(TuiDocPage);
 
     public async transform(index: number): Promise<{readonly default: any}> {
         return import(

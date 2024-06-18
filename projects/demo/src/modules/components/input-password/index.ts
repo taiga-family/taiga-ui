@@ -8,7 +8,7 @@ import {TuiInputPasswordModule, TuiTextfieldControllerModule} from '@taiga-ui/le
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -19,7 +19,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         ReactiveFormsModule,
         TuiHint,
         TuiTextfieldControllerModule,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

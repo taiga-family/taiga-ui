@@ -7,7 +7,7 @@ import {TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiLink, RouterLink],
+    imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

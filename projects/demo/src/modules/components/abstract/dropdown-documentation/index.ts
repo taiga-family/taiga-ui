@@ -4,8 +4,8 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiDocDocumentationComponent,
-    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocDocumentation,
+    TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 
@@ -16,16 +16,16 @@ import type {AbstractExampleTuiDropdown} from '../dropdown';
     standalone: true,
     selector: 'dropdown-documentation',
     imports: [
-        RouterLink,
         TuiLink,
-        TuiDocDocumentationComponent,
-        TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocDocumentation,
+        TuiDocDocumentationPropertyConnector,
         AsyncPipe,
+        RouterLink,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class DropdownDocumentationComponent {
+export class DropdownDocumentation {
     protected readonly documentedComponent = inject<AbstractExampleTuiDropdown>(
         ABSTRACT_PROPS_ACCESSOR,
     );

@@ -1,30 +1,21 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 
 import {TuiVariablesExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiLink,
-        KeyValuePipe,
-        ClipboardModule,
-        RouterLink,
-        TuiVariablesExample1,
-    ],
+    imports: [TuiDemo, TuiLink, KeyValuePipe, ClipboardModule, TuiVariablesExample1],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    protected readonly example1: TuiDocExample = {
+    protected readonly example1 = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -9,13 +8,7 @@ import {StylesInfoComponent} from '../../app/styles-info';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        StylesInfoComponent,
-        TuiNotificationComponent,
-        TuiLink,
-        RouterLink,
-    ],
+    imports: [TuiDemo, StylesInfoComponent, TuiNotificationComponent, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

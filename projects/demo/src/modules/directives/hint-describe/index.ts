@@ -6,11 +6,11 @@ import {TuiHint} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {InheritedDocumentationComponent} from '../../components/abstract/inherited-documentation';
+import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, InheritedDocumentationComponent, TuiHint],
+    imports: [TuiDemo, InheritedDocumentation, TuiHint],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

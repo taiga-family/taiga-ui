@@ -22,7 +22,7 @@ import {
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocus, tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
@@ -78,7 +78,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: NAVIGATION_PROVIDERS,
 })
-export class TuiDocNavigationComponent {
+export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
@@ -136,12 +136,12 @@ export class TuiDocNavigationComponent {
         return (this.search.value?.length ?? 0) > 2;
     }
 
-    protected get itemsWithoutSections(): TuiDocPages {
+    protected get itemsWithoutSections(): TuiDocRoutePages {
         return this.items[this.items.length - 1];
     }
 
-    protected $pages(pages: any): readonly TuiDocPage[] {
-        return pages as TuiDocPage[];
+    protected $pages(pages: any): readonly TuiDocRoutePage[] {
+        return pages as TuiDocRoutePage[];
     }
 
     protected isActive(route: string): boolean {
@@ -165,9 +165,9 @@ export class TuiDocNavigationComponent {
 
     @tuiPure
     private filterItems(
-        items: ReadonlyArray<readonly TuiDocPage[]>,
+        items: ReadonlyArray<readonly TuiDocRoutePage[]>,
         search: string,
-    ): ReadonlyArray<readonly TuiDocPage[]> {
+    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
         return items.map(section =>
             tuiUniqBy(
                 section.filter(({title, keywords = ''}) => {
@@ -193,12 +193,12 @@ export class TuiDocNavigationComponent {
 
     @tuiPure
     private flattenSubPages(
-        items: readonly TuiDocPages[],
-    ): ReadonlyArray<readonly TuiDocPage[]> {
-        return items.reduce<ReadonlyArray<readonly TuiDocPage[]>>(
+        items: readonly TuiDocRoutePages[],
+    ): ReadonlyArray<readonly TuiDocRoutePage[]> {
+        return items.reduce<ReadonlyArray<readonly TuiDocRoutePage[]>>(
             (array, item) => [
                 ...array,
-                item.reduce<readonly TuiDocPage[]>(
+                item.reduce<readonly TuiDocRoutePage[]>(
                     (pages, page) =>
                         'subPages' in page
                             ? [...pages, ...page.subPages]

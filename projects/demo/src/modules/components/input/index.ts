@@ -1,17 +1,15 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
+import {TuiTextCode} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiDropdown,
     TuiHint,
-    TuiLink,
     TuiNotificationComponent,
     TuiTextfield,
 } from '@taiga-ui/core';
@@ -20,7 +18,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
 
@@ -28,8 +26,6 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiLink,
-        RouterLink,
         TuiNotificationComponent,
         TuiInputModule,
         ReactiveFormsModule,
@@ -38,8 +34,8 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiAmountPipe,
-        InheritedDocumentationComponent,
-        TuiTextCodeDirective,
+        InheritedDocumentation,
+        TuiTextCode,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

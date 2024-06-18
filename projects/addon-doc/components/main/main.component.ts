@@ -12,7 +12,7 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
 
 import {TuiDocHeaderComponent} from '../internal/header';
-import {TuiDocNavigationComponent} from '../navigation/navigation.component';
+import {TuiDocNavigation} from '../navigation/navigation.component';
 
 @Component({
     standalone: true,
@@ -23,7 +23,7 @@ import {TuiDocNavigationComponent} from '../navigation/navigation.component';
         RouterOutlet,
         TuiButton,
         TuiDocHeaderComponent,
-        TuiDocNavigationComponent,
+        TuiDocNavigation,
     ],
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
@@ -33,7 +33,7 @@ import {TuiDocNavigationComponent} from '../navigation/navigation.component';
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiSwipeService],
 })
-export class TuiDocMainComponent {
+export class TuiDocMain {
     private readonly icons = inject(TUI_DOC_ICONS);
 
     protected readonly dark$ = inject(TuiThemeDarkService);

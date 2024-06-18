@@ -1,8 +1,7 @@
 import {Component, DestroyRef, type ElementRef, inject, ViewChild} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDoc, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
@@ -16,14 +15,13 @@ import {TuiAccordionExample5} from './examples/5';
 @Component({
     standalone: true,
     imports: [
-        TuiAddonDoc,
+        TuiDemo,
         TuiAccordion,
         TuiAccordionExample1,
         TuiAccordionExample2,
         TuiAccordionExample3,
         TuiAccordionExample4,
         TuiAccordionExample5,
-        TuiSetupComponent,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -46,31 +44,31 @@ export default class Page {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    protected readonly example1: TuiDocExample = {
+    protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    protected readonly example2: TuiDocExample = {
+    protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    protected readonly example3: TuiDocExample = {
+    protected readonly example3 = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    protected readonly example4: TuiDocExample = {
+    protected readonly example4 = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    protected readonly example5: TuiDocExample = {
+    protected readonly example5 = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };

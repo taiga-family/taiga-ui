@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
@@ -13,7 +12,7 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
 export default class Page {
     protected readonly exampleService = import('./examples/import/service.md?raw');
 
-    protected readonly example2: TuiDocExample = {
+    protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         'actions-content.component.ts': import(

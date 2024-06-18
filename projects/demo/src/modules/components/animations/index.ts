@@ -1,23 +1,14 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiComponentPipe, TuiExamplePipe} from '@demo/utils';
-import {TuiAddonDoc} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
 import {TuiSlider} from '@taiga-ui/kit';
 
 import {AnimationState} from './state';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAddonDoc,
-        TuiSlider,
-        FormsModule,
-        NgForOf,
-        TuiExamplePipe,
-        TuiComponentPipe,
-    ],
+    imports: [TuiDemo, TuiSlider, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

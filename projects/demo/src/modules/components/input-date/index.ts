@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
@@ -24,7 +22,7 @@ import {
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
@@ -39,8 +37,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiHint,
         TuiLink,
         ReactiveFormsModule,
-        InheritedDocumentationComponent,
-        RouterLink,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -51,7 +48,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 })
 export default class ExampleComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
-    protected readonly example5: TuiDocExample = {
+    protected readonly example5 = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         'native-date-transformer.directive.ts': import(

@@ -1,14 +1,13 @@
 import {Component, forwardRef} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiNotificationComponent} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentationComponent} from '../../components/abstract/dropdown-documentation';
+import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
@@ -19,9 +18,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
         TuiActiveZone,
         TuiButton,
         TuiObscuredDirective,
-        DropdownDocumentationComponent,
-        TuiLink,
-        RouterLink,
+        DropdownDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

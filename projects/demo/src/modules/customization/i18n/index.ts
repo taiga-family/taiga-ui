@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 import {from, map} from 'rxjs';
@@ -22,7 +21,7 @@ export default class Page {
     protected exampleModule = import('./app.module.md?raw');
     protected exampleEsbuildModule = import('./app.esbuild.module.md?raw');
 
-    protected example1: TuiDocExample = {
+    protected example1 = {
         'language-switcher.component.html': import(
             '../../../../../addon-doc/components/language-switcher/index.html?raw'
         ),

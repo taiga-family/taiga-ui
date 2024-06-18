@@ -3,8 +3,8 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiDocDocumentationComponent,
-    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocDocumentation,
+    TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 
@@ -17,13 +17,13 @@ import type {AbstractExampleTuiControl} from '../control';
     imports: [
         RouterLink,
         TuiLink,
-        TuiDocDocumentationComponent,
-        TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocDocumentation,
+        TuiDocDocumentationPropertyConnector,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class TextfieldControllerDocumentationComponent {
+export class TextfieldControllerDocumentation {
     protected readonly documentedComponent = inject<AbstractExampleTuiControl>(
         ABSTRACT_PROPS_ACCESSOR,
     );
