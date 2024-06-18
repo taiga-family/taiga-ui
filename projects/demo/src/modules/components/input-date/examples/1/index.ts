@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
@@ -16,7 +16,7 @@ import {
     standalone: true,
     imports: [
         TuiInputDateModule,
-        TuiErrorComponent,
+        TuiError,
         TuiTextfieldControllerModule,
         TuiFieldErrorPipe,
         ReactiveFormsModule,

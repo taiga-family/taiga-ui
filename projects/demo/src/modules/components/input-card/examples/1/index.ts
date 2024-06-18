@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {
     TuiAlertService,
-    TuiErrorComponent,
+    TuiError,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
@@ -26,7 +26,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
         TuiInputCVC,
         TuiInputExpire,
         TuiInputCard,
-        TuiErrorComponent,
+        TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
         JsonPipe,

@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
-import {TuiErrorComponent, TuiTextfield} from '@taiga-ui/core';
+import {TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {
     TuiInputModule,
@@ -20,7 +20,7 @@ import {interval, map, of, scan, startWith} from 'rxjs';
         TuiInputModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiErrorComponent,
+        TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
         TuiInputNumberModule,

@@ -210,11 +210,7 @@ function replaceFieldError({
     });
 
     if (elements.length) {
-        addImportToClosestModule(
-            resource.componentPath,
-            'TuiErrorComponent',
-            '@taiga-ui/core',
-        );
+        addImportToClosestModule(resource.componentPath, 'TuiError', '@taiga-ui/core');
     }
 }
 
