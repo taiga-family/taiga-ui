@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiSurface} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCellDirective, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -15,7 +15,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeader} from '@taiga-ui/layout';
         TuiRepeatTimes,
         TuiAvatarComponent,
         TuiButton,
-        TuiCellDirective,
+        TuiCell,
     ],
     templateUrl: './index.html',
     encapsulation,

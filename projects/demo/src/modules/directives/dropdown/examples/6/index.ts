@@ -12,7 +12,7 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 import {
     TuiComboBoxModule,
     TuiInputNumberModule,
@@ -42,7 +42,7 @@ interface User {
         TuiMultiSelectModule,
         TuiButton,
         TuiInputNumberModule,
-        TuiCellDirective,
+        TuiCell,
         TuiAvatarComponent,
         TuiTitle,
         TuiAmountPipe,

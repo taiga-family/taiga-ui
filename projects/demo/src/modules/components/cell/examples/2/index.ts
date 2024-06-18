@@ -9,12 +9,12 @@ import {
     TuiBadgeDirective,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
-import {TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCellDirective,
+        TuiCell,
         TuiBadgedContentComponent,
         TuiBadgeDirective,
         TuiIcon,

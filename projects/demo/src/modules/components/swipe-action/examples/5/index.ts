@@ -14,14 +14,14 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiSwipeActions,
         TuiCardLarge,
-        TuiCellDirective,
+        TuiCell,
         TuiSurface,
         TuiAvatarComponent,
         TuiTitle,

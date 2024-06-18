@@ -1,12 +1,12 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 // ...
 
 @Component({
   imports: [
     // ...
-    TuiCellDirective,
+    TuiCell,
   ],
 })
 export class MyComponent {}

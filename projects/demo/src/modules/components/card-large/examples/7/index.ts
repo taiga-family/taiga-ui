@@ -12,7 +12,7 @@ import {
     TuiSurface,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCellDirective, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -24,7 +24,7 @@ import {TuiCardLarge, TuiCellDirective, TuiHeader} from '@taiga-ui/layout';
         TuiIcon,
         TuiDataList,
         NgForOf,
-        TuiCellDirective,
+        TuiCell,
         TuiLink,
         TuiAppearance,
         TuiSurface,
