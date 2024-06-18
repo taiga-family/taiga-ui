@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiDialogService,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiIconPipe,
     TuiTextfield,
 } from '@taiga-ui/core';
@@ -22,7 +22,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
         ReactiveFormsModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiButton,
         TuiIconPipe,
     ],

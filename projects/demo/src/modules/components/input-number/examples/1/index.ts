@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiInputNumberModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiCurrencyPipe,
     ],
     templateUrl: './index.html',

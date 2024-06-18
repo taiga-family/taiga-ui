@@ -9,7 +9,7 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiLink,
     TuiNotificationComponent,
     TuiNumberFormatDirective,
@@ -30,7 +30,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
         TuiNotificationComponent,
         TuiInputSliderModule,
         ReactiveFormsModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiNumberFormatDirective,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,

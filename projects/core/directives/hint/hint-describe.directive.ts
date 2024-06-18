@@ -28,9 +28,9 @@ import {
 @Directive({
     standalone: true,
     selector: '[tuiHintDescribe]',
-    providers: [tuiAsDriver(TuiHintDescribeDirective)],
+    providers: [tuiAsDriver(TuiHintDescribe)],
 })
-export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
+export class TuiHintDescribe extends TuiDriver implements OnChanges {
     private readonly zone = inject(NgZone);
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();

@@ -5,9 +5,9 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 @Directive({
     standalone: true,
     selector: '[tuiHint][tuiHintHost]',
-    providers: [tuiAsRectAccessor(TuiHintHostDirective)],
+    providers: [tuiAsRectAccessor(TuiHintHost)],
 })
-export class TuiHintHostDirective extends TuiRectAccessor {
+export class TuiHintHost extends TuiRectAccessor {
     @Input()
     public tuiHintHost?: HTMLElement;
 

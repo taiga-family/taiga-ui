@@ -66,6 +66,9 @@ export const tuiHintOptionsProvider: (
     useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),
 });
 
+/**
+ * @deprecated: drop in 5.0
+ */
 @Directive({
     standalone: true,
     selector: '[tuiHintContent]',

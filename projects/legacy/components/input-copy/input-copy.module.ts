@@ -16,13 +16,18 @@ import {TuiInputCopyDirective} from './input-copy.directive';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiHint,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiAppearance,
         TuiIcon,
+        ...TuiHint,
     ],
     declarations: [TuiInputCopyComponent, TuiInputCopyDirective],
-    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldComponent],
+    exports: [
+        TuiInputCopyComponent,
+        TuiInputCopyDirective,
+        TuiTextfieldComponent,
+        ...TuiHint,
+    ],
 })
 export class TuiInputCopyModule {}

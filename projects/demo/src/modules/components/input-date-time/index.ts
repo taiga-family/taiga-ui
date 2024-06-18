@@ -16,7 +16,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDropdownOpenDirective,
-    TuiHintOptionsDirective,
+    TuiHint,
     TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
@@ -40,7 +40,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiInputDateTimeModule,
         ReactiveFormsModule,
         TuiDropdownOpenDirective,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,
     ],

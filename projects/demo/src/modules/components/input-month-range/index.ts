@@ -11,7 +11,7 @@ import {
     TuiMonth,
     tuiProvide,
 } from '@taiga-ui/cdk';
-import {TuiHintOptionsDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiInputMonthRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -25,7 +25,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiNotificationComponent,
         TuiInputMonthRangeModule,
         ReactiveFormsModule,
-        TuiHintOptionsDirective,
+        TuiHint,
         TuiTextfieldControllerModule,
         InheritedDocumentationComponent,
     ],

@@ -26,16 +26,12 @@ import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {
-    POLYMORPHEUS_CONTEXT,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
-import {TuiHintPointerDirective} from './hint-pointer.directive';
+import {TuiHintPointer} from './hint-pointer.directive';
 import {TuiHintPositionDirective} from './hint-position.directive';
 
 const GAP = 4;
@@ -50,7 +46,7 @@ export const TUI_HINT_PROVIDERS = [
 @Component({
     standalone: true,
     selector: 'tui-hint',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <ng-content></ng-content>
         <span
@@ -83,7 +79,7 @@ export class TuiHintComponent<C = any> {
         inject(TuiHintDirective).el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
 
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});
+    protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
 
     constructor() {
