@@ -107,10 +107,15 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     @HostListener('click', ['$event.target'])
+    @HostListener('keydown.enter', ['$event.target'])
+    @HostListener('keydown.space', ['$event.target'])
     protected onClick(target: HTMLElement): void {
-        if (!this.editable && this.host.contains(target)) {
-            this.update(!this.tuiDropdownOpen);
+        if (this.editable && !this.host.contains(target)) {
+            return;
         }
+
+        this.update(!this.tuiDropdownOpen);
+        this.focusDropdown(false);
     }
 
     @HostListener('keydown.arrowDown', ['$event', 'false'])
@@ -121,6 +126,7 @@ export class TuiDropdownOpen implements OnChanges {
         }
 
         event.preventDefault();
+        this.update(true);
         this.focusDropdown(up);
     }
 
@@ -197,6 +203,6 @@ export class TuiDropdownOpen implements OnChanges {
         });
 
         child.remove();
-        focusable?.focus();
+        focusable?.focus({preventScroll: true});
     }
 }
