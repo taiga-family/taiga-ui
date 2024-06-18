@@ -11,7 +11,7 @@ import {
     TuiDataListComponent,
     TuiDataListDirective,
     TuiOptionComponent,
-    TuiScrollableDirective,
+    TuiScrollbar,
 } from '@taiga-ui/core';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
@@ -22,7 +22,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         FormsModule,
         CdkVirtualScrollViewport,
         TuiDataListDirective,
-        TuiScrollableDirective,
+        TuiScrollbar,
         CdkFixedSizeVirtualScroll,
         TuiDataListComponent,
         CdkVirtualForOf,

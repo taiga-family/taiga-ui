@@ -9,4 +9,4 @@ export const SCROLL_REF_SELECTOR = '[tuiScrollRef]';
     selector: SCROLL_REF_SELECTOR,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
 })
-export class TuiScrollRefDirective {}
+export class TuiScrollRef {}

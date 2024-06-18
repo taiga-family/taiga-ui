@@ -35,7 +35,7 @@ import {
     TuiDataListDirective,
     TuiDropdownOpenDirective,
     TuiHintOptionsDirective,
-    TuiScrollbarComponent,
+    TuiScrollbar,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {AbstractTuiMultipleControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -97,7 +97,7 @@ export class TuiInputTagComponent
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
-    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
+    @ViewChild(TuiScrollbar, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
     private readonly el = tuiInjectElement();

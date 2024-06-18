@@ -6,7 +6,7 @@ import {
     TuiAppearance,
     TuiDropdownModule,
     TuiIcon,
-    TuiScrollbarComponent,
+    TuiScrollbar,
     TuiTooltip,
 } from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
@@ -25,7 +25,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiHoveredDirective,
-        TuiScrollbarComponent,
+        TuiScrollbar,
         TuiTooltip,
         TuiDropdownModule,
         TuiTagModule,

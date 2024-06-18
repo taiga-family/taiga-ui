@@ -26,7 +26,7 @@ import type {TuiRangeState} from '@taiga-ui/core';
 import {
     TuiCalendarYearComponent,
     TuiLink,
-    TuiScrollbarComponent,
+    TuiScrollbar,
     TuiSpinButtonComponent,
 } from '@taiga-ui/core';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
@@ -42,7 +42,7 @@ const TODAY = TuiDay.currentLocal();
         NgForOf,
         TuiCalendarYearComponent,
         TuiSpinButtonComponent,
-        TuiScrollbarComponent,
+        TuiScrollbar,
         TuiLink,
         TuiLet,
         TuiHoveredDirective,

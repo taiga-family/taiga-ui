@@ -16,7 +16,7 @@ import {
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
-import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 
 import {
     TuiCalendarSheetComponent,
@@ -30,7 +30,7 @@ import {TuiCalendarYearComponent} from './calendar-year.component';
     selector: 'tui-calendar',
     imports: [
         NgIf,
-        TuiScrollbarComponent,
+        TuiScrollbar,
         TuiCalendarYearComponent,
         TuiCalendarSpinComponent,
         TuiCalendarSheetComponent,

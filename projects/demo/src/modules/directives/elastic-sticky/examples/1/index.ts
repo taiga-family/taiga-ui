@@ -6,13 +6,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiScrollbar} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiScrollbarComponent, TuiElasticStickyDirective, TuiAmountPipe, AsyncPipe],
+    imports: [TuiScrollbar, TuiElasticStickyDirective, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

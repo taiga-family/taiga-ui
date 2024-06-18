@@ -32,7 +32,7 @@ import {
     TuiExpand,
     TuiIcon,
     TuiLink,
-    TuiScrollbarComponent,
+    TuiScrollbar,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
@@ -64,7 +64,7 @@ import {
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         RouterLink,
-        TuiScrollbarComponent,
+        TuiScrollbar,
         TuiAccordion,
         NgTemplateOutlet,
         TuiLink,

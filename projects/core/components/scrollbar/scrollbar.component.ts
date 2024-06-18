@@ -10,15 +10,15 @@ import {
 import {TUI_IS_IOS, tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
-import {TuiScrollControlsComponent} from './scroll-controls.component';
+import {TuiScrollControls} from './scroll-controls.component';
 
 /**
- * An event for scrolling an element into view within {@link TuiScrollbarComponent}.
+ * An event for scrolling an element into view within {@link TuiScrollbar}.
  */
 export const TUI_SCROLL_INTO_VIEW = 'tui-scroll-into-view';
 
 /**
- * An event to notify {@link TuiScrollbarComponent} that
+ * An event to notify {@link TuiScrollbar} that
  * it should control a nested element.
  */
 export const TUI_SCROLLABLE = 'tui-scrollable';
@@ -26,19 +26,19 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 @Component({
     standalone: true,
     selector: 'tui-scrollbar',
-    imports: [NgIf, TuiScrollControlsComponent],
+    imports: [TuiScrollControls, NgIf],
     templateUrl: './scrollbar.template.html',
     styleUrls: ['./scrollbar.style.less'],
-    host: {'[class._native-hidden]': '!isIOS || hidden'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_SCROLL_REF,
-            useFactory: () => inject(TuiScrollbarComponent).browserScrollRef,
+            useFactory: () => inject(TuiScrollbar).browserScrollRef,
         },
     ],
+    host: {'[class._native-hidden]': '!isIOS || hidden'},
 })
-export class TuiScrollbarComponent {
+export class TuiScrollbar {
     private readonly el = tuiInjectElement();
 
     protected readonly isIOS = inject(TUI_IS_IOS);

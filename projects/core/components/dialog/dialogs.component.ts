@@ -3,10 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiFocusTrapDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
-import {
-    TuiScrollControlsComponent,
-    TuiScrollRefDirective,
-} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
@@ -19,9 +16,9 @@ import {TUI_DIALOGS} from './dialog.tokens';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiScrollRefDirective,
-        TuiScrollControlsComponent,
         TuiFocusTrapDirective,
+        TuiScrollControls,
+        TuiScrollRef,
     ],
     templateUrl: './dialogs.template.html',
     styleUrls: ['./dialogs.style.less'],
