@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {
     TUI_HINT_OPTIONS,
-    TuiHintDescribeDirective,
+    TuiHintDescribe,
     TuiHintDirective,
     TuiHintHoverDirective,
 } from '@taiga-ui/core/directives/hint';
@@ -56,7 +56,7 @@ class TuiTooltipStyles {}
             inputs: ['tuiAppearance: appearance'],
         },
         {
-            directive: TuiHintDescribeDirective,
+            directive: TuiHintDescribe,
             inputs: ['tuiHintDescribe'],
         },
         {
@@ -69,7 +69,7 @@ class TuiTooltipStyles {}
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly describe = inject(TuiHintDescribeDirective);
+    private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHoverDirective);
 
     protected readonly nothing = tuiWithStyles(TuiTooltipStyles);
