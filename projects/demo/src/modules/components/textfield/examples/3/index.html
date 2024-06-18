@@ -5,7 +5,7 @@
         tuiTextfield
         [(ngModel)]="value"
     />
-    <tui-tooltip content="Editable combo-box" />
+    <tui-icon tuiTooltip="Editable combo-box" />
     <tui-data-list-wrapper
         *tuiDataList
         [items]="items | tuiFilterByInput"
@@ -19,7 +19,7 @@
         tuiTextfield
         [(ngModel)]="value"
     ></select>
-    <tui-tooltip content="Fixed choice select" />
+    <tui-icon tuiTooltip="Fixed choice select" />
     <tui-data-list-wrapper
         *tuiDataList
         [items]="items"

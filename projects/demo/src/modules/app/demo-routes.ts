@@ -27,7 +27,6 @@ export const DemoRoute = {
     Appearance: '/components/appearance',
     Chip: '/components/chip',
     Title: '/components/title',
-    TooltipExp: '/experimental/tooltip',
     CardMedium: '/layout/card-medium',
     CardLarge: '/layout/card-large',
     BadgeNotification: '/components/badge-notification',

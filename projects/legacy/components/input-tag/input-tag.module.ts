@@ -7,9 +7,9 @@ import {
     TuiDropdown,
     TuiIcon,
     TuiScrollbar,
-    TuiTooltip,
 } from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
+import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
 import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiWrapperModule,

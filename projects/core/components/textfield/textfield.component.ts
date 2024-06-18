@@ -105,6 +105,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return this.el.nativeElement;
     }
 
+    public get id(): string {
+        return this.el?.nativeElement.id || '';
+    }
+
     // TODO: Do not change to `this.input`, will be refactored
     public get focused(): boolean {
         return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.el?.nativeElement);

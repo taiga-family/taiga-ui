@@ -918,12 +918,6 @@ export const pages: TuiDocPages = [
         route: DemoRoute.Title,
     },
     {
-        section: 'Experimental',
-        title: 'Tooltip ',
-        keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
-        route: DemoRoute.TooltipExp,
-    },
-    {
         section: 'Components',
         title: 'Appearance',
         keywords: 'colors, css, theme, custom, style',

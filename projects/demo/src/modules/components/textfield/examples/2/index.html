@@ -5,7 +5,7 @@
         [disabled]="true"
         [(ngModel)]="value"
     />
-    <tui-tooltip content="Disabled does not show tooltip" />
+    <tui-icon tuiTooltip="Disabled does not show tooltip" />
 </tui-textfield>
 <tui-textfield iconLeft="@tui.search">
     <label tuiLabel>Read-only</label>
@@ -15,7 +15,7 @@
         [readOnly]="true"
         [(ngModel)]="value"
     />
-    <tui-tooltip content="Readonly shows tooltip" />
+    <tui-icon tuiTooltip="Readonly shows tooltip" />
 </tui-textfield>
 <tui-textfield iconLeft="@tui.search">
     <label tuiLabel>Invalid</label>
@@ -25,5 +25,5 @@
         [invalid]="true"
         [(ngModel)]="value"
     />
-    <tui-tooltip content="Can also follow Angular validation" />
+    <tui-icon tuiTooltip="Can also follow Angular validation" />
 </tui-textfield>

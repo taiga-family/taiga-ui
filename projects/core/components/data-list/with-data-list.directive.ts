@@ -1,7 +1,7 @@
 import type {WritableSignal} from '@angular/core';
 import {ContentChild, Directive, TemplateRef} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListDirective} from './data-list.directive';
