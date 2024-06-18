@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiArcChartComponent} from '@taiga-ui/addon-charts';
+import {TuiArcChart} from '@taiga-ui/addon-charts';
 import type {TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiArcChartComponent, TuiDemo],
+    imports: [TuiArcChart, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
