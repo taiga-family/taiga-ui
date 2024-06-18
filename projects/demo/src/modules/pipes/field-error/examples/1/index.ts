@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiErrorComponent, TuiLabel, TuiLink} from '@taiga-ui/core';
+import {TuiError, TuiLabel, TuiLink} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged} from 'rxjs';
@@ -36,7 +36,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
         TuiLabel,
         TuiInputModule,
         TuiTextfieldControllerModule,
-        TuiErrorComponent,
+        TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
         RouterLink,

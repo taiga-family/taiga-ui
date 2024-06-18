@@ -8,7 +8,7 @@ import {
     tuiCardNumberValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 @Component({
@@ -18,7 +18,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
         TuiFieldErrorPipe,
         AsyncPipe,
         ReactiveFormsModule,
-        TuiErrorComponent,
+        TuiError,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -1,5 +1,5 @@
 ```ts
-import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiErrorComponent} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiErrorComponent,
+    TuiError,
   ],
   // ...
 })

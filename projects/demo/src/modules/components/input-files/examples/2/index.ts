@@ -5,7 +5,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 import {
     TuiFieldErrorPipe,
     TuiFileComponent,
@@ -27,7 +27,7 @@ import {map} from 'rxjs';
         TuiFileComponent,
         NgForOf,
         AsyncPipe,
-        TuiErrorComponent,
+        TuiError,
         TuiFieldErrorPipe,
         TuiFileRejectedPipe,
     ],

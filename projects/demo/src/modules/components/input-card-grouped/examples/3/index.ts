@@ -8,7 +8,7 @@ import {
     tuiCardNumberValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -19,7 +19,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
         ReactiveFormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiErrorComponent,
+        TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
     ],
