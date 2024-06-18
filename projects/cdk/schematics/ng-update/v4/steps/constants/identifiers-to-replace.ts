@@ -15,7 +15,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiElementModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiElementDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiElement', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiForModule', moduleSpecifier: '@taiga-ui/cdk'},

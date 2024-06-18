@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    TuiElementDirective,
+    TuiElement,
     tuiIsNativeFocused,
     tuiIsPresent,
 } from '@taiga-ui/cdk';
@@ -35,7 +35,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
         TuiDataList,
         NgIf,
         NgForOf,
-        TuiElementDirective,
+        TuiElement,
         TuiLoader,
         PolymorpheusOutlet,
     ],

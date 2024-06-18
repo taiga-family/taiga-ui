@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TuiElementDirective} from '@taiga-ui/cdk';
+import {TuiElement} from '@taiga-ui/cdk';
 import {tuiAsDataListAccessor, TuiDataList, TuiLoader} from '@taiga-ui/core';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -13,7 +13,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
         TuiDataList,
         NgIf,
         NgForOf,
-        TuiElementDirective,
+        TuiElement,
         PolymorpheusOutlet,
         TuiLoader,
     ],
