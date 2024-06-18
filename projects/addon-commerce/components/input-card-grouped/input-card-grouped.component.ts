@@ -92,8 +92,8 @@ export interface TuiCard {
     styleUrls: ['./input-card-grouped.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsDataListHost(TuiInputCardGroupedComponent),
-        tuiAsControl(TuiInputCardGroupedComponent),
+        tuiAsDataListHost(TuiInputCardGroup),
+        tuiAsControl(TuiInputCardGroup),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         TuiHoveredService,
@@ -114,7 +114,7 @@ export interface TuiCard {
         '(mousedown)': 'onMouseDown($event)',
     },
 })
-export class TuiInputCardGroupedComponent
+export class TuiInputCardGroup
     extends TuiControl<TuiCard | null>
     implements TuiDataListHost<Partial<TuiCard>>
 {

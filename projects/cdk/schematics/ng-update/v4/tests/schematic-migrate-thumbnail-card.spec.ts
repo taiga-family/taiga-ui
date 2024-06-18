@@ -29,16 +29,16 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `
-import { TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
+import { TuiThumbnailCard } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiThumbnailCardComponent]
+    imports: [TuiThumbnailCard]
 })
 export class Test {
-    @ViewChild(TuiThumbnailCardComponent)
-    card: TuiThumbnailCardComponent;
+    @ViewChild(TuiThumbnailCard)
+    card: TuiThumbnailCard;
 }`;
 
 const TEMPLATE_BEFORE = `

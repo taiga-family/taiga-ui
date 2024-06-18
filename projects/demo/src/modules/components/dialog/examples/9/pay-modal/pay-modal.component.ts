@@ -13,7 +13,7 @@ import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
-    TuiInputCardGroupedComponent,
+    TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_IS_IOS, TuiAutoFocus, TuiLet} from '@taiga-ui/cdk';
@@ -51,7 +51,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiLet,
         TuiAutoFocus,
         TuiLoader,
-        TuiInputCardGroupedComponent,
+        TuiInputCardGroup,
         TuiTextfieldOptionsDirective,
         TuiLabelDirective,
         TuiCheckboxComponent,
@@ -63,7 +63,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
 })
 export class PayModalComponent implements OnInit {
     @ViewChild('cardGroupedInput')
-    private readonly cardGroupedInput?: TuiInputCardGroupedComponent;
+    private readonly cardGroupedInput?: TuiInputCardGroup;
 
     private readonly payService = inject(PayService);
     private readonly destroyRef = inject(DestroyRef);

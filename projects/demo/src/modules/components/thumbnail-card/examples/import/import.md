@@ -1,5 +1,5 @@
 ```ts
-import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
+import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
   standalone: true,
   imports: [
     // ...
-    TuiThumbnailCardComponent,
+    TuiThumbnailCard,
   ],
   // ...
 })

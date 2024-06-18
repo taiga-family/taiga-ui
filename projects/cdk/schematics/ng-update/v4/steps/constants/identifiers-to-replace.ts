@@ -279,21 +279,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
-            name: 'TuiThumbnailCardComponent',
+            name: 'TuiThumbnailCard',
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
     {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
         to: {
-            name: 'TuiThumbnailCardComponent',
+            name: 'TuiThumbnailCard',
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
     {
         from: {name: 'TuiCardComponent', moduleSpecifier: '@taiga-ui/addon-commerce'},
         to: {
-            name: 'TuiThumbnailCardComponent',
+            name: 'TuiThumbnailCard',
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
@@ -1379,7 +1379,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
         to: {
-            name: 'TuiInputCardGroupedComponent',
+            name: 'TuiInputCardGroup',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },

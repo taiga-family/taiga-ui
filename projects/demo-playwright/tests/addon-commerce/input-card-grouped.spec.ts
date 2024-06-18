@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {
     TuiDocumentationPagePO,
     tuiGoto,
-    TuiInputCardGroupedPO,
+    TuiInputCardGroupPO,
 } from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -22,7 +22,7 @@ test.describe('InputCardGrouped', () => {
         test('set value and clear after', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API`);
 
-            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupedPO(
+            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(
                 apiPageExample,
             );
             const entryValue = '1234 4567 8910 1112';
@@ -50,7 +50,7 @@ test.describe('InputCardGrouped', () => {
         test('disabled input card grouped', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API?disabled=true`);
 
-            const {numberTextfield} = new TuiInputCardGroupedPO(apiPageExample);
+            const {numberTextfield} = new TuiInputCardGroupPO(apiPageExample);
 
             await expect(numberTextfield).toHaveCSS('pointer-events', 'none');
             await expect(numberTextfield).toHaveScreenshot(
@@ -71,7 +71,7 @@ test.describe('InputCardGrouped', () => {
         test('input card grouped with validation', async () => {
             const example = documentationPage.getExample('#with-validation');
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupedPO(example);
+                new TuiInputCardGroupPO(example);
             const cardInfo = {
                 number: '5213 0000 4039 5834',
                 expiry: '02/38',
@@ -124,8 +124,9 @@ test.describe('InputCardGrouped', () => {
 
         test('input card grouped with saved cards', async () => {
             const example = documentationPage.getExample('#with-saved-cards');
-            const {numberTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupedPO(example);
+            const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupPO(
+                example,
+            );
             const cvc = '123';
 
             await expect(numberTextfield).toHaveScreenshot(
@@ -157,7 +158,7 @@ test.describe('InputCardGrouped', () => {
         test('expired field should be clickable after reset of prefilled value', async () => {
             const example = documentationPage.getExample('#custom-labels');
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupedPO(example);
+                new TuiInputCardGroupPO(example);
             const cardInfo = {number: '5586 2000 7149 2158', expiry: '12/25'};
 
             await cvcTextfield.focus();

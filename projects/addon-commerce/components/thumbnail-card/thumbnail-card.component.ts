@@ -20,7 +20,7 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiThumbnailCardComponent {
+export class TuiThumbnailCard {
     protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 

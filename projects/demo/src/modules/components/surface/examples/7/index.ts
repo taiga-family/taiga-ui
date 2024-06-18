@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {
     TuiButton,
     TuiLink,
@@ -17,7 +17,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiSurface,
-        TuiThumbnailCardComponent,
+        TuiThumbnailCard,
         TuiAvatarComponent,
         TuiAmountPipe,
         TuiBadgeDirective,
