@@ -14,7 +14,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiItemDirective, TuiLet} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiItem, TuiLet} from '@taiga-ui/cdk';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';
@@ -48,7 +48,7 @@ import {TuiMoreDirective} from './more.directive';
     ],
 })
 export class TuiItemsWithMoreComponent {
-    @ContentChildren(TuiItemDirective, {read: TemplateRef, descendants: true})
+    @ContentChildren(TuiItem, {read: TemplateRef, descendants: true})
     protected readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
 
     @ContentChild(TuiMoreDirective, {read: TemplateRef})

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiLoader} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
@@ -21,7 +21,7 @@ import {
         TuiAmountPipe,
         AsyncPipe,
         TuiCarouselButtonsDirective,
-        TuiItemDirective,
+        TuiItem,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

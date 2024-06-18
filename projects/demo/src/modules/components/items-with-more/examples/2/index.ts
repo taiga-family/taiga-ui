@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_FALSE_HANDLER, TuiItemDirective} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiItem} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -23,7 +23,7 @@ import {
     imports: [
         TuiGroupDirective,
         TuiItemsWithMoreComponent,
-        TuiItemDirective,
+        TuiItem,
         TuiBlockDirective,
         NgForOf,
         FormsModule,

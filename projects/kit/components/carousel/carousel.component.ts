@@ -20,7 +20,7 @@ import {
     TUI_IS_MOBILE,
     tuiClamp,
     tuiInjectElement,
-    TuiItemDirective,
+    TuiItem,
     TuiPanDirective,
     tuiPure,
     TuiSwipe,
@@ -62,7 +62,7 @@ export class TuiCarouselComponent {
     private readonly directive = inject(TuiCarouselDirective);
     private translate = 0;
 
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiChip, TuiItemsWithMoreComponent, TuiMoreDirective} from '@taiga-ui/kit';
 
@@ -12,7 +12,7 @@ import {TuiChip, TuiItemsWithMoreComponent, TuiMoreDirective} from '@taiga-ui/ki
         TuiNotificationComponent,
         TuiItemsWithMoreComponent,
         TuiChip,
-        TuiItemDirective,
+        TuiItem,
         TuiMoreDirective,
     ],
     templateUrl: './index.html',

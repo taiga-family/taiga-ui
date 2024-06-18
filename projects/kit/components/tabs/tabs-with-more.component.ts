@@ -21,7 +21,7 @@ import {
     tuiInjectElement,
     tuiIsElement,
     tuiIsNativeFocused,
-    TuiItemDirective,
+    TuiItem,
     tuiPx,
     tuiToInt,
 } from '@taiga-ui/cdk';
@@ -68,7 +68,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 

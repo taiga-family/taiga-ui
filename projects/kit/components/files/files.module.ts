@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 
 import {TuiFileComponent} from './file/file.component';
 import {TuiFilesComponent} from './files/files.component';
@@ -9,7 +9,7 @@ import {TuiFileRejectedPipe} from './pipes/file-rejected.pipe';
 
 @NgModule({
     imports: [
-        TuiItemDirective,
+        TuiItem,
         TuiFileRejectedPipe,
         TuiFileComponent,
         TuiFilesComponent,
@@ -17,7 +17,7 @@ import {TuiFileRejectedPipe} from './pipes/file-rejected.pipe';
         TuiInputFilesDirective,
     ],
     exports: [
-        TuiItemDirective,
+        TuiItem,
         TuiFileRejectedPipe,
         TuiFileComponent,
         TuiFilesComponent,

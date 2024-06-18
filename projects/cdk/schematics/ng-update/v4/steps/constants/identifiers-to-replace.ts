@@ -27,7 +27,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiItemModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiPanModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -153,7 +153,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiBreadcrumbsModule', moduleSpecifier: '@taiga-ui/kit'},
         to: [
             {name: 'TuiBreadcrumbsComponent', moduleSpecifier: '@taiga-ui/kit'},
-            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+            {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
         ],
     },
     {
@@ -168,7 +168,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
         to: [
             {name: 'TuiCarouselComponent', moduleSpecifier: '@taiga-ui/kit'},
-            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+            {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
         ],
     },
     {

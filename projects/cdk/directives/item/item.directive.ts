@@ -7,4 +7,4 @@ import {Directive} from '@angular/core';
     standalone: true,
     selector: '[tuiItem]',
 })
-export class TuiItemDirective {}
+export class TuiItem {}

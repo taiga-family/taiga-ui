@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
@@ -13,7 +13,7 @@ import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
         TuiDemo,
         TuiNotificationComponent,
         TuiTabsWithMoreComponent,
-        TuiItemDirective,
+        TuiItem,
         TuiTabDirective,
     ],
     templateUrl: './index.html',

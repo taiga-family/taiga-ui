@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogModule, TuiLink} from '@taiga-ui/core';
 import {
     TuiCarouselButtonsDirective,
@@ -21,7 +21,7 @@ import {
         RouterLink,
         TuiPaginationModule,
         TuiCarouselButtonsDirective,
-        TuiItemDirective,
+        TuiItem,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

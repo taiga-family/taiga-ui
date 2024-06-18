@@ -2,13 +2,13 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiFileLike} from '@taiga-ui/kit';
 import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFilesComponent, TuiFileComponent, NgForOf, TuiItemDirective],
+    imports: [TuiFilesComponent, TuiFileComponent, NgForOf, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItemDirective, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiItem, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
 import {TuiBreadcrumbsComponent, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
@@ -18,7 +18,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiRepeatTimes,
         TuiLink,
         TuiButton,
-        TuiItemDirective,
+        TuiItem,
     ],
     templateUrl: './index.html',
     encapsulation,
