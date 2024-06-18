@@ -8,13 +8,7 @@ import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiIslandDirective,
-        ReactiveFormsModule,
-        TuiSwitch,
-        TuiLink,
-        TuiButton,
-    ],
+    imports: [TuiIslandDirective, ReactiveFormsModule, TuiSwitch, TuiLink, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -10,13 +10,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiPlatform,
-        TuiSwitch,
-    ],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, TuiPlatform, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
