@@ -1,9 +1,10 @@
 import {Directive, inject, Input, TemplateRef} from '@angular/core';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHead]',
 })
-export class TuiHeadDirective<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableHead<T extends Partial<Record<keyof T, any>>> {
     @Input({required: true})
     public tuiHead: string | keyof T = '';
 

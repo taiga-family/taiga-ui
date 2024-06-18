@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,27 +12,29 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs';
 
-import {TuiHeadDirective} from '../directives/head.directive';
+import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
-import {TuiThComponent} from '../th/th.component';
+import {TuiTableTh} from '../th/th.component';
 
 @Component({
+    standalone: true,
     selector: 'tr[tuiThGroup]',
+    imports: [NgIf, TuiTableTh, NgTemplateOutlet, NgForOf, AsyncPipe],
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
+export class TuiTableThGroup<T extends Partial<Record<keyof T, any>>>
     implements AfterContentInit
 {
-    @ContentChild(forwardRef(() => TuiThComponent))
-    protected readonly th!: TuiThComponent<T>;
+    @ContentChild(forwardRef(() => TuiTableTh))
+    protected readonly th!: TuiTableTh<T>;
 
-    @ContentChildren(forwardRef(() => TuiHeadDirective))
-    protected readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
+    @ContentChildren(forwardRef(() => TuiTableHead))
+    protected readonly heads: QueryList<TuiTableHead<T>> = EMPTY_QUERY;
 
-    protected heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
+    protected heads$: Observable<Record<any, TuiTableHead<T>>> | null = null;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -43,7 +46,7 @@ export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
             map(() =>
                 this.heads.reduce(
                     (record, item) => ({...record, [item.tuiHead]: item}),
-                    {} as Record<keyof T, TuiHeadDirective<T>>,
+                    {} as Record<keyof T, TuiTableHead<T>>,
                 ),
             ),
         );

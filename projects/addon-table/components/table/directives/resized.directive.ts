@@ -9,9 +9,10 @@ import {
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: '[tuiResized]',
 })
-export class TuiResizedDirective {
+export class TuiTableResized {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
 

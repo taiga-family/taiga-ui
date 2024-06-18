@@ -18,6 +18,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
 
 @Directive({
+    standalone: true,
     selector: 'table[tuiTable]',
     providers: [
         {

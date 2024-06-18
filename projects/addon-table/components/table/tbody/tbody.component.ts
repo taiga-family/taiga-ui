@@ -1,3 +1,4 @@
+import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -10,36 +11,49 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiIcon} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TuiRowDirective} from '../directives/row.directive';
+import {TuiTableRow} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TUI_TABLE_OPTIONS} from '../table.options';
-import {TuiTrComponent} from '../tr/tr.component';
+import {TuiTableTr} from '../tr/tr.component';
 
 @Component({
+    standalone: true,
     selector: 'tbody[tuiTbody]',
+    imports: [
+        NgForOf,
+        NgTemplateOutlet,
+        NgIf,
+        TuiIcon,
+        PolymorpheusOutlet,
+        TuiChevronDirective,
+        TuiMapperPipe,
+    ],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
-export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
     private readonly pipe = inject(TuiTableSortPipe<T>);
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
-    @ContentChild(forwardRef(() => TuiRowDirective))
-    protected readonly row?: TuiRowDirective<T>;
+    @ContentChild(forwardRef(() => TuiTableRow))
+    protected readonly row?: TuiTableRow<T>;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
     );
 
-    @ContentChildren(forwardRef(() => TuiTrComponent))
-    public readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
+    @ContentChildren(forwardRef(() => TuiTableTr))
+    public readonly rows: QueryList<TuiTableTr<T>> = EMPTY_QUERY;
 
     @Input()
     public data: readonly T[] = [];

@@ -1,4 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
+import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,21 +10,25 @@ import {
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk';
+import {TuiIcon} from '@taiga-ui/core';
 
-import {TuiHeadDirective} from '../directives/head.directive';
+import {TuiTableHead} from '../directives/head.directive';
+import {TuiTableResized} from '../directives/resized.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 
 @Component({
+    standalone: true,
     selector: 'th[tuiTh]',
+    imports: [NgIf, NgTemplateOutlet, TuiIcon, AsyncPipe, TuiTableResized],
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
-    private readonly head = inject<TuiHeadDirective<T>>(TuiHeadDirective, {
+    private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
         optional: true,
     });
 

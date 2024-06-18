@@ -4,9 +4,10 @@ import {map} from 'rxjs';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
+    standalone: true,
     selector: 'table[tuiTable][tuiDirectionOrder]',
 })
-export class TuiDirectionOrderDirective<T> {
+export class TuiTableDirectionOrder<T> {
     private readonly table = inject(TuiTableDirective<T>);
 
     @Output()
