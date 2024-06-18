@@ -8,13 +8,7 @@ import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        NgFor,
-        TuiCarouselComponent,
-        TuiPaginationModule,
-        TuiButton,
-        TuiItem,
-    ],
+    imports: [NgFor, TuiCarouselComponent, TuiPaginationModule, TuiButton, TuiItem],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

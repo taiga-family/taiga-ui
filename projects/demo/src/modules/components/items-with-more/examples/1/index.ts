@@ -7,13 +7,7 @@ import {TuiChip, TuiItemsWithMoreComponent, TuiMoreDirective} from '@taiga-ui/ki
 
 @Component({
     standalone: true,
-    imports: [
-        TuiItemsWithMoreComponent,
-        TuiChip,
-        TuiItem,
-        TuiMoreDirective,
-        NgForOf,
-    ],
+    imports: [TuiItemsWithMoreComponent, TuiChip, TuiItem, TuiMoreDirective, NgForOf],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
