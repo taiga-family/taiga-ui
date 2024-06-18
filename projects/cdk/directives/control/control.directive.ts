@@ -7,7 +7,7 @@ import {NgControl} from '@angular/forms';
     selector: '[tuiControl]',
     exportAs: 'ngControl',
 })
-export class TuiControlDirective {
+export class TuiNgControl {
     private readonly ngControl = inject(NgControl);
 
     public get control(): AbstractControl {
