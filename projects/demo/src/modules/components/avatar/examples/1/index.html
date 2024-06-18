@@ -1,29 +1,54 @@
+<h3 tuiTitle>
+    Icon
+    <span tuiSubtitle>
+        Starts with
+        <code>&#64;tui.</code>
+    </span>
+</h3>
 <tui-avatar src="@tui.user" />
+
+<h3 tuiTitle>
+    Colored icon
+    <span tuiSubtitle>
+        Use
+        <code>tuiIcon</code>
+        pipe to resolve name
+    </span>
+</h3>
+<tui-avatar [src]="'@tui.mastercard' | tuiIcon" />
+
+<h3 tuiTitle>Image</h3>
 <tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" />
+
+<h3 tuiTitle>Initials</h3>
 <tui-avatar src="AI" />
-<tui-avatar>99+</tui-avatar>
-<tui-avatar>
-    <picture>
-        <source
-            media="(min-width: 600px)"
-            srcset="/assets/images/angular.svg"
-        />
-        <img
-            alt="Alex Inkin"
-            src="/assets/images/avatar.jpg"
-        />
-    </picture>
-</tui-avatar>
-<tui-avatar>
-    <video
-        autoplay
-        loop
-        playsinline
-        [muted]="true"
-    >
-        <source
-            src="/assets/media/bbb.mp4"
-            type="video/mp4"
-        />
-    </video>
-</tui-avatar>
+
+<h3 tuiTitle>Content</h3>
+<div>
+    <tui-avatar>99+</tui-avatar>
+    <tui-avatar class="tui-space_horizontal-4">
+        <picture>
+            <source
+                media="(min-width: 600px)"
+                srcset="/assets/images/angular.svg"
+            />
+            <img
+                alt="Alex Inkin"
+                src="/assets/images/avatar.jpg"
+            />
+        </picture>
+    </tui-avatar>
+    <tui-avatar>
+        <video
+            autoplay
+            loop
+            playsinline
+            [muted]="true"
+        >
+            <source
+                src="/assets/media/bbb.mp4"
+                type="video/mp4"
+            />
+        </video>
+    </tui-avatar>
+</div>
