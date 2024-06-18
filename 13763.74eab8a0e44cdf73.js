@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[13763],{13763:n=>{n.exports='<tui-input-phone-international\n    [countries]="(countries | tuiSortCountries | async) || []"\n    [(countryIsoCode)]="countryIsoCode"\n    [(ngModel)]="value"\n>\n    Type your number\n</tui-input-phone-international>\n'}}]);
