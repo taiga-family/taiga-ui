@@ -96,7 +96,7 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.Tooltip);
         const example = new TuiDocumentationPagePO(page).getExample('#example-base');
 
-        await example.locator('tui-tooltip').nth(0).hover();
+        await example.locator('[tuiTooltip]').nth(0).hover();
 
         await expect(example).toHaveScreenshot('04-tooltip-left.png');
     });
@@ -107,7 +107,7 @@ test.describe('TuiHint', () => {
             '#repeating-template',
         );
 
-        await example.locator('tui-tooltip').nth(0).hover();
+        await example.locator('[tuiTooltip]').nth(0).hover();
 
         await expect(example).toHaveScreenshot('05-tooltip-bottom.png');
     });

@@ -12,7 +12,7 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
         return icon =>
             !icon || icon.includes('/')
                 ? icon
-                : `${path}${icon.replace('@tui.', '')}.svg`;
+                : `${path}/icons/${icon.replace('@tui.', '')}.svg`;
     },
 );
 

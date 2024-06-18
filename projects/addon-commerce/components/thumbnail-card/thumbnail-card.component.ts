@@ -8,21 +8,19 @@ import {
 } from '@angular/core';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
+import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tui-thumbnail-card',
-    imports: [TuiIcon, NgIf],
+    imports: [TuiIcon, NgIf, TuiIconPipe],
     templateUrl: './thumbnail-card.template.html',
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCard {
     protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
-    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     @Input()
     @HostBinding('attr.data-size')

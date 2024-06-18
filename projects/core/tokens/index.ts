@@ -5,6 +5,7 @@ export * from './date-format';
 export * from './day-type-handler';
 export * from './first-day-of-week';
 export * from './i18n';
+export * from './icon';
 export * from './icon-resolver';
 export * from './media';
 export * from './number-format';
