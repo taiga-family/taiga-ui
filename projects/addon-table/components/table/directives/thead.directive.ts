@@ -4,6 +4,7 @@ import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {TuiStuck} from './stuck.directive';
 
 @Directive({
+    standalone: true,
     selector: 'thead[tuiThead]',
     providers: [
         {
@@ -13,4 +14,4 @@ import {TuiStuck} from './stuck.directive';
     ],
     hostDirectives: [TuiStuck],
 })
-export class TuiTheadDirective {}
+export class TuiTableThead {}

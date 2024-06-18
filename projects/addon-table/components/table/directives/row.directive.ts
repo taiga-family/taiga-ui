@@ -8,16 +8,17 @@ import type {TuiRowContext} from '@taiga-ui/addon-table/types';
  * TODO v4.0 delete it.
  */
 @Directive({
+    standalone: true,
     selector: 'ng-template[tuiRow]',
 })
-export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableRow<T extends Partial<Record<keyof T, any>>> {
     @Input()
     public tuiRowOf: readonly T[] = [];
 
     public readonly template = inject(TemplateRef<TuiRowContext<T>>);
 
     public static ngTemplateContextGuard<T>(
-        _dir: TuiRowDirective<T>,
+        _dir: TuiTableRow<T>,
         _ctx: unknown,
     ): _ctx is TuiRowContext<T> {
         return true;

@@ -10,7 +10,7 @@ export * from './directives/table.directive';
 export * from './directives/thead.directive';
 export * from './pipes/table-sort.pipe';
 export * from './providers/table.provider';
-export * from './table.module';
+export * from './table';
 export * from './table.options';
 export * from './tbody/tbody.component';
 export * from './td/td.component';

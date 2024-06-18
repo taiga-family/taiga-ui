@@ -4,15 +4,16 @@ import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {delay, filter, map} from 'rxjs';
 
-import {TuiSortableDirective} from './sortable.directive';
+import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
+    standalone: true,
     selector: 'table[tuiTable][tuiSortBy]',
 })
-export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
-    @ContentChildren(TuiSortableDirective, {descendants: true})
-    private readonly sortables: QueryList<TuiSortableDirective<T>> = EMPTY_QUERY;
+export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
+    @ContentChildren(TuiTableSortable, {descendants: true})
+    private readonly sortables: QueryList<TuiTableSortable<T>> = EMPTY_QUERY;
 
     private readonly table = inject(TuiTableDirective<T>);
 

@@ -7,6 +7,7 @@ import {
 import {NgControl} from '@angular/forms';
 
 @Component({
+    standalone: true,
     selector: 'th[tuiTd], td[tuiTd]',
     template: `
         <ng-content></ng-content>
@@ -14,7 +15,7 @@ import {NgControl} from '@angular/forms';
     styleUrls: ['./td.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTdComponent {
+export class TuiTableTd {
     @HostBinding('class._editable')
     @ContentChild(NgControl)
     protected readonly control: unknown;
