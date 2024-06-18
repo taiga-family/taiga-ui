@@ -5,10 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDataListComponent,
     TuiDialogService,
-    TuiDropdownContextDirective,
-    TuiDropdownDirective,
-    TuiDropdownOptionsDirective,
-    TuiDropdownPositionSidedDirective,
+    TuiDropdown,
     TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -18,13 +15,10 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         NgForOf,
-        TuiDropdownContextDirective,
-        TuiDropdownDirective,
+        TuiDropdown,
         TuiDataListDropdownManager,
         TuiOptionComponent,
         TuiIcon,
-        TuiDropdownPositionSidedDirective,
-        TuiDropdownOptionsDirective,
         TuiDataListComponent,
     ],
     templateUrl: './index.html',

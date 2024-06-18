@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
-    TuiDropdownModule,
+    TuiDropdown,
     TuiHint,
     TuiLink,
     TuiNotificationComponent,
@@ -23,7 +23,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     imports: [
         InheritedDocumentationComponent,
         TuiDemo,
-        TuiDropdownModule,
+        TuiDropdown,
         TuiHint,
         TuiInputPhoneInternationalComponent,
         TuiTextfield,

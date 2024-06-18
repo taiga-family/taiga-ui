@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiCalendarYearComponent,
-    TuiDropdownModule,
-    TuiDropdownOpenDirective,
+    TuiDropdown,
+    TuiDropdownOpen,
     TuiScrollbar,
 } from '@taiga-ui/core';
 import {
@@ -18,14 +18,19 @@ import {TuiInputYearDirective} from './input-year.directive';
 @NgModule({
     imports: [
         MaskitoDirective,
-        TuiDropdownModule,
-        TuiDropdownOpenDirective,
+        TuiDropdownOpen,
         TuiPrimitiveTextfieldModule,
         TuiScrollbar,
         TuiCalendarYearComponent,
         TuiTextfieldControllerModule,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputYearComponent, TuiInputYearDirective],
-    exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldComponent],
+    exports: [
+        TuiInputYearComponent,
+        TuiInputYearDirective,
+        TuiTextfieldComponent,
+        ...TuiDropdown,
+    ],
 })
 export class TuiInputYearModule {}

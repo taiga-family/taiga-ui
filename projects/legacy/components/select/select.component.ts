@@ -21,7 +21,7 @@ import {
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdownOpen,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
@@ -62,8 +62,8 @@ export class TuiSelectComponent<T>
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    @ViewChild(TuiDropdownOpenDirective)
-    private readonly dropdown?: TuiDropdownOpenDirective;
+    @ViewChild(TuiDropdownOpen)
+    private readonly dropdown?: TuiDropdownOpen;
 
     @ContentChild(AbstractTuiNativeSelect, {static: true})
     private readonly nativeSelect?: AbstractTuiNativeSelect;

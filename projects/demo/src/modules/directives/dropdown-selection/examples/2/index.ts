@@ -10,8 +10,7 @@ import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiDataListComponent,
     TuiDriver,
-    TuiDropdownDirective,
-    TuiDropdownSelectionDirective,
+    TuiDropdown,
     tuiGetWordRange,
     TuiInitialsPipe,
     TuiOptionComponent,
@@ -30,8 +29,7 @@ export interface User {
     standalone: true,
     imports: [
         TuiTextareaModule,
-        TuiDropdownSelectionDirective,
-        TuiDropdownDirective,
+        TuiDropdown,
         FormsModule,
         AsyncPipe,
         TuiDataListComponent,

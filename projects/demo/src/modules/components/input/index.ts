@@ -9,8 +9,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiHint,
     TuiLink,
     TuiNotificationComponent,
@@ -34,8 +33,7 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
         TuiNotificationComponent,
         TuiInputModule,
         ReactiveFormsModule,
-        TuiDropdownOptionsDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHint,
         TuiTextfield,
         TuiTextfieldControllerModule,

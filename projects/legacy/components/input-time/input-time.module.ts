@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiAppearance, TuiDataList, TuiDropdownModule, TuiIcon} from '@taiga-ui/core';
+import {TuiAppearance, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
@@ -21,7 +21,6 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         MaskitoDirective,
         TuiSelectOptionModule,
         TuiDataList,
-        TuiDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
@@ -30,8 +29,9 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,
         TuiAppearance,
+        ...TuiDropdown,
     ],
     declarations: [TuiInputTimeComponent, TuiNativeTimeComponent, TuiInputTimeDirective],
-    exports: [TuiInputTimeComponent, TuiInputTimeDirective],
+    exports: [TuiInputTimeComponent, TuiInputTimeDirective, ...TuiDropdown],
 })
 export class TuiInputTimeModule {}

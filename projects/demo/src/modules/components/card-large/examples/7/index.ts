@@ -6,7 +6,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiDataList,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiIcon,
     TuiLink,
     TuiSurface,
@@ -18,7 +18,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiCardLarge,
-        TuiDropdownModule,
+        TuiDropdown,
         TuiRepeatTimes,
         TuiAvatarComponent,
         TuiIcon,

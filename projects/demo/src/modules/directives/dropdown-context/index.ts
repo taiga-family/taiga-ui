@@ -1,11 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {
-    TuiDropdownContextDirective,
-    TuiDropdownDirective,
-    TuiDropdownOptionsDirective,
-} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
@@ -13,13 +9,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiDropdownContextDirective,
-        TuiDropdownDirective,
-        TuiDropdownOptionsDirective,
-        DropdownDocumentationComponent,
-    ],
+    imports: [TuiDemo, TuiDropdown, DropdownDocumentationComponent],
     templateUrl: './index.html',
     changeDetection,
     providers: [

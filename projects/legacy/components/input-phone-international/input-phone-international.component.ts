@@ -17,7 +17,7 @@ import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiAppearance,
     TuiDataList,
-    TuiDropdownModule,
+    TuiDropdown,
     TuiFlagPipe,
     TuiGroupDirective,
     TuiHint,
@@ -68,7 +68,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHint,
-        TuiDropdownModule,
+        TuiDropdown,
         TuiDataList,
         TuiArrowComponent,
         TuiAppearance,

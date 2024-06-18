@@ -3,9 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
+    TuiDropdown,
     TuiLink,
     TuiOptGroupDirective,
     TuiOptionComponent,
@@ -35,9 +33,7 @@ function randomString(len: number): string {
     imports: [
         TuiChevron,
         TuiLink,
-        TuiDropdownOptionsDirective,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListDropdownManager,
         TuiOptGroupDirective,
         NgForOf,

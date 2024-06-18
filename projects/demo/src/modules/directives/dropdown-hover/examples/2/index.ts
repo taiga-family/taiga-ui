@@ -2,13 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownHoverDirective,
-    TuiDropdownOpenDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataListComponent, TuiDropdown, TuiOptionComponent} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiSwitchComponent,
@@ -22,9 +16,7 @@ import {
         TuiTabsHorizontalDirective,
         TuiTabDirective,
         TuiChevron,
-        TuiDropdownHoverDirective,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptionComponent,
         ReactiveFormsModule,

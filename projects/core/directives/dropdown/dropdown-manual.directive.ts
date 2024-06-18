@@ -9,7 +9,7 @@ import {TuiDropdownDriver} from './dropdown.driver';
     selector: '[tuiDropdownManual]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
-export class TuiDropdownManualDirective implements OnChanges {
+export class TuiDropdownManual implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
 
     @Input()

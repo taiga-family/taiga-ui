@@ -5,8 +5,8 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
     TuiButton,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdown,
+    TuiDropdownOpen,
     type TuiPoint,
     TuiPositionAccessor,
 } from '@taiga-ui/core';
@@ -30,12 +30,7 @@ class TopRightDirective extends TuiPositionAccessor {
 
 @Component({
     standalone: true,
-    imports: [
-        TopRightDirective,
-        TuiDropdownOpenDirective,
-        TuiButton,
-        TuiDropdownDirective,
-    ],
+    imports: [TopRightDirective, TuiDropdownOpen, TuiButton, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

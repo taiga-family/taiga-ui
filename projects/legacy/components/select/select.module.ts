@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDataList, TuiDropdownModule} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
@@ -26,7 +26,6 @@ import {TuiSelectDirective} from './select.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
-        TuiDropdownModule,
         TuiSelectOptionModule,
         TuiArrowComponent,
         TuiWrapperModule,
@@ -35,6 +34,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiDataList,
         TuiStringifyContentPipe,
         TuiLegacyDropdownOpenMonitorDirective,
+        ...TuiDropdown,
     ],
     declarations: [
         TuiSelectComponent,
@@ -48,6 +48,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiTextfieldComponent,
         TuiNativeSelectComponent,
         TuiNativeSelectGroupComponent,
+        ...TuiDropdown,
     ],
 })
 export class TuiSelectModule {}

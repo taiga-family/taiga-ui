@@ -4,14 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-    TuiIcon,
-    TuiSurface,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiBadgeDirective,
@@ -31,8 +24,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         FormsModule,
         TuiButton,
         TuiChevron,
-        TuiDropdownDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHeader,
         TuiTitle,
         TuiIcon,

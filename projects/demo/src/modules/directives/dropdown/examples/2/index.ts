@@ -3,18 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TuiDropdownModule, TuiLink} from '@taiga-ui/core';
+import {TuiDropdown, TuiLink} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDropdownModule,
-        TuiSwitchComponent,
-        FormsModule,
-        TuiLink,
-        TuiAvatarComponent,
-    ],
+    imports: [TuiDropdown, TuiSwitchComponent, FormsModule, TuiLink, TuiAvatarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

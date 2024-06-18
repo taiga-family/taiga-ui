@@ -10,11 +10,7 @@ import {
 import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    tuiAsDataListHost,
-    TuiDataListDirective,
-    TuiDropdownOpenDirective,
-} from '@taiga-ui/core';
+import {tuiAsDataListHost, TuiDataListDirective, TuiDropdownOpen} from '@taiga-ui/core';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
@@ -43,8 +39,8 @@ export class TuiInputComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
-    @ViewChild(TuiDropdownOpenDirective)
-    private readonly dropdown?: TuiDropdownOpenDirective;
+    @ViewChild(TuiDropdownOpen)
+    private readonly dropdown?: TuiDropdownOpen;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;

@@ -15,7 +15,7 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdownOpen,
     TuiIcon,
     TuiLink,
 } from '@taiga-ui/core';
@@ -41,7 +41,7 @@ export interface TuiTablePagination {
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         NgForOf,
-        TuiDropdownOpenDirective,
+        TuiDropdownOpen,
         TuiIcon,
         TuiButton,
     ],

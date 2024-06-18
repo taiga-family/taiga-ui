@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiGetClosestFocusable, tuiInjectElement} from '@taiga-ui/cdk';
-import {TuiDropdownOpenDirective} from '@taiga-ui/core';
+import {TuiDropdownOpen} from '@taiga-ui/core';
 import {filter} from 'rxjs';
 
 @Directive({
@@ -10,8 +10,8 @@ import {filter} from 'rxjs';
 })
 export class TuiLegacyDropdownOpenMonitorDirective {
     private readonly el = tuiInjectElement();
-    private readonly host = inject(TuiDropdownOpenDirective, {self: true});
-    private readonly external = inject(TuiDropdownOpenDirective, {
+    private readonly host = inject(TuiDropdownOpen, {self: true});
+    private readonly external = inject(TuiDropdownOpen, {
         skipSelf: true,
         optional: true,
     });

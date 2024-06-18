@@ -5,10 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiDataListComponent,
-    TuiDropdownDirective,
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
-    TuiDropdownPositionSidedDirective,
+    TuiDropdown,
     TuiOptGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -17,10 +14,7 @@ import {
     standalone: true,
     imports: [
         TuiButton,
-        TuiDropdownOptionsDirective,
-        TuiDropdownDirective,
-        TuiDropdownPositionSidedDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiDataListComponent,
         TuiOptGroupDirective,
         NgForOf,

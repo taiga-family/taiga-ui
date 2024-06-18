@@ -8,12 +8,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiDropdownOpenDirective,
-    TuiDropdownOptionsDirective,
-    TuiHint,
-    TuiLink,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -27,8 +22,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiDemo,
         TuiInputTagModule,
         ReactiveFormsModule,
-        TuiDropdownOptionsDirective,
-        TuiDropdownOpenDirective,
+        TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
         TuiLink,

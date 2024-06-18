@@ -49,7 +49,7 @@ import {
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
     TuiDropdownDirective,
-    TuiDropdownOpenDirective,
+    TuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiIcon,
     TuiIconPipe,
@@ -103,7 +103,7 @@ export interface TuiCard {
         TuiDropdownDirective,
         TuiWithDataList,
         {
-            directive: TuiDropdownOpenDirective,
+            directive: TuiDropdownOpen,
             inputs: ['tuiDropdownOpen: open'],
             outputs: ['tuiDropdownOpenChange: openChange'],
         },
@@ -150,7 +150,7 @@ export class TuiInputCardGroup
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUPED_TEXTS));
 
     protected readonly open: WritableSignal<boolean> = tuiDirectiveBinding(
-        TuiDropdownOpenDirective,
+        TuiDropdownOpen,
         'tuiDropdownOpen',
         false,
     );
@@ -168,7 +168,7 @@ export class TuiInputCardGroup
         computed(() => this.open() || this.focusedIn()),
     );
 
-    protected readonly sub = inject(TuiDropdownOpenDirective)
+    protected readonly sub = inject(TuiDropdownOpen)
         .tuiDropdownOpenChange.pipe(takeUntilDestroyed())
         .subscribe(open => {
             this.open.set(open);

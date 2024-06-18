@@ -2,22 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiDropdownContextDirective,
-    TuiDropdownDirective,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDropdownContextDirective,
-        TuiDropdownDirective,
-        ReactiveFormsModule,
-        TuiTextareaModule,
-        TuiButton,
-    ],
+    imports: [TuiDropdown, ReactiveFormsModule, TuiTextareaModule, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
