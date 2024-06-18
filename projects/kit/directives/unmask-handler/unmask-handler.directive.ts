@@ -8,9 +8,9 @@ import {identity} from 'rxjs';
 @Directive({
     standalone: true,
     selector: '[maskito][tuiUnmaskHandler]',
-    providers: [tuiProvide(TuiValueTransformer, TuiUnmaskHandlerDirective)],
+    providers: [tuiProvide(TuiValueTransformer, TuiUnmaskHandler)],
 })
-export class TuiUnmaskHandlerDirective extends TuiValueTransformer<string> {
+export class TuiUnmaskHandler extends TuiValueTransformer<string> {
     @Input()
     public tuiUnmaskHandler: TuiMapper<[string], string> = identity;
 
