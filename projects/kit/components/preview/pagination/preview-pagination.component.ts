@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,15 +8,10 @@ import {
     Output,
 } from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 
-import {TuiPreviewActionDirective} from '../preview-action/preview-action.directive';
-
 @Component({
-    standalone: true,
     selector: 'tui-preview-pagination',
-    imports: [NgIf, AsyncPipe, TuiButton, TuiPreviewActionDirective],
     templateUrl: './preview-pagination.template.html',
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
