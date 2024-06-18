@@ -16,14 +16,14 @@ import {distinctUntilChanged, map, skip, startWith, tap} from 'rxjs';
         '(document:mousedown.silent)': '(0)',
     },
 })
-export class TuiActiveZoneDirective implements OnDestroy {
+export class TuiActiveZone implements OnDestroy {
     private readonly control: any = inject(NgControl, {optional: true, self: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
     private readonly el = tuiInjectElement();
-    private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
-    private subActiveZones: readonly TuiActiveZoneDirective[] = [];
-    private readonly directParentActiveZone = inject(TuiActiveZoneDirective, {
+    private tuiActiveZoneParent: TuiActiveZone | null = null;
+    private subActiveZones: readonly TuiActiveZone[] = [];
+    private readonly directParentActiveZone = inject(TuiActiveZone, {
         skipSelf: true,
         optional: true,
     });
@@ -47,7 +47,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     @Input('tuiActiveZoneParent')
-    public set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
+    public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
         this.setZone(zone);
     }
 
@@ -67,17 +67,17 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     @tuiPure
-    private setZone(zone: TuiActiveZoneDirective | null): void {
+    private setZone(zone: TuiActiveZone | null): void {
         this.tuiActiveZoneParent?.removeSubActiveZone(this);
         zone?.addSubActiveZone(this);
         this.tuiActiveZoneParent = zone;
     }
 
-    private addSubActiveZone(activeZone: TuiActiveZoneDirective): void {
+    private addSubActiveZone(activeZone: TuiActiveZone): void {
         this.subActiveZones = [...this.subActiveZones, activeZone];
     }
 
-    private removeSubActiveZone(activeZone: TuiActiveZoneDirective): void {
+    private removeSubActiveZone(activeZone: TuiActiveZone): void {
         this.subActiveZones = tuiArrayRemove(
             this.subActiveZones,
             this.subActiveZones.indexOf(activeZone),

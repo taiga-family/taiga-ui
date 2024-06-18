@@ -3,7 +3,7 @@ import type {ReplacementIdentifierMulti} from '../../../interfaces';
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiActiveZoneModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiActiveZoneDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiActiveZone', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},

@@ -10,7 +10,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZoneDirective, TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
+import type {TuiActiveZone, TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TUI_STRICT_MATCHER, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
 import type {
     TuiDataListAccessor,
@@ -70,7 +70,7 @@ export class TuiComboBoxComponent<T>
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
 
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;

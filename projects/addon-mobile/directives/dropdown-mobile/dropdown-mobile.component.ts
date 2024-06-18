@@ -10,7 +10,7 @@ import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk';
 import {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     tuiGetNativeFocused,
     tuiInjectElement,
     tuiIsElement,
@@ -46,7 +46,7 @@ const GAP = 16;
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
-    hostDirectives: [TuiActiveZoneDirective],
+    hostDirectives: [TuiActiveZone],
     host: {
         '[@tuiFadeIn]': 'animation',
         '[@tuiSlideInTop]': 'animation',

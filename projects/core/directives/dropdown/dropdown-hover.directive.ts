@@ -9,7 +9,7 @@ import {
     NgZone,
 } from '@angular/core';
 import {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     tuiGetActualTarget,
     tuiInjectElement,
     tuiIsElement,
@@ -25,7 +25,7 @@ import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 @Directive({
     standalone: true,
     selector: '[tuiDropdownHover]',
-    providers: [TuiActiveZoneDirective, tuiAsDriver(TuiDropdownHoverDirective)],
+    providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHoverDirective)],
 })
 export class TuiDropdownHoverDirective extends TuiDriver {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
@@ -34,7 +34,7 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
-    private readonly activeZone = inject(TuiActiveZoneDirective);
+    private readonly activeZone = inject(TuiActiveZone);
     private readonly open = inject(TuiDropdownOpenDirective, {optional: true});
     private readonly stream$ = merge(
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),

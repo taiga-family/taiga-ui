@@ -2,7 +2,7 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiActiveZoneDirective, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
+import {TuiActiveZone, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
@@ -45,7 +45,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme',
     },
-    hostDirectives: [TuiActiveZoneDirective],
+    hostDirectives: [TuiActiveZone],
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {

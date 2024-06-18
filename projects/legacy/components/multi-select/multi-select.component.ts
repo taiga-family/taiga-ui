@@ -11,7 +11,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     TuiBooleanHandler,
     TuiContext,
     TuiMapper,
@@ -96,7 +96,7 @@ export class TuiMultiSelectComponent<T>
     private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
 
     protected open = false;
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);

@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
     tuiInjectElement,
@@ -51,7 +51,7 @@ function shouldClose(
     hostDirectives: [
         TuiObscuredDirective,
         {
-            directive: TuiActiveZoneDirective,
+            directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],
             outputs: ['tuiActiveZoneChange'],
         },
@@ -69,7 +69,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
-        inject(TuiActiveZoneDirective).tuiActiveZoneChange.pipe(filter(a => !a)),
+        inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter(a => !a)),
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
             filter(

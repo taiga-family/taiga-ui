@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDropdownModule,
@@ -21,7 +21,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
         TuiDemo,
         TuiDropdownModule,
         TuiNotificationComponent,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiButton,
         TuiObscuredDirective,
         DropdownDocumentationComponent,

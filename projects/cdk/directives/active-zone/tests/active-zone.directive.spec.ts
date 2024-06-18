@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
-describe('TuiActiveZoneDirective', () => {
+describe('TuiActiveZone', () => {
     @Component({
         standalone: true,
-        imports: [TuiActiveZoneDirective, ReactiveFormsModule],
+        imports: [TuiActiveZone, ReactiveFormsModule],
         template: `
             <p id="parent-info">Parent zone: {{ parentActive }}</p>
             <p id="child-info">Child zone: {{ childActive }}</p>

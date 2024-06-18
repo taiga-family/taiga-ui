@@ -1,5 +1,5 @@
 ```ts
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiActiveZoneDirective,
+    TuiActiveZone,
   ],
   // ...
 })

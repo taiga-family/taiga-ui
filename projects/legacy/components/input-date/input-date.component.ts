@@ -13,7 +13,7 @@ import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import type {
-    TuiActiveZoneDirective,
+    TuiActiveZone,
     TuiBooleanHandler,
     TuiContext,
     TuiDateMode,
@@ -106,7 +106,7 @@ export class TuiInputDateComponent
     });
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly type!: TuiContext<TuiActiveZoneDirective>;
+    protected readonly type!: TuiContext<TuiActiveZone>;
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(

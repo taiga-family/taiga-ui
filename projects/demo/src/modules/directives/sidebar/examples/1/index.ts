@@ -3,20 +3,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSidebar} from '@taiga-ui/addon-mobile';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiActiveZoneDirective,
-        TuiSidebar,
-        TuiAccordion,
-        NgForOf,
-        TuiLink,
-    ],
+    imports: [TuiButton, TuiActiveZone, TuiSidebar, TuiAccordion, NgForOf, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

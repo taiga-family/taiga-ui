@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiSidebar} from '@taiga-ui/addon-mobile';
-import {TUI_FALSE_HANDLER, TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
@@ -15,7 +15,7 @@ import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
     selector: 'header[tuiDocHeader]',
     imports: [
         TuiButton,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiSidebar,
         AsyncPipe,
         PolymorpheusOutlet,
