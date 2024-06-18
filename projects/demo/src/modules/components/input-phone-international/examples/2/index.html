@@ -1,9 +1,7 @@
-<form [formGroup]="testForm">
-    <tui-input-phone-international
-        formControlName="testValue"
-        [countries]="(countries | tuiSortCountries | async) || []"
-        [(countryIsoCode)]="countryIsoCode"
-    >
-        Type your number
-    </tui-input-phone-international>
-</form>
+<tui-input-phone-international
+    [countries]="(countries | tuiSortCountries | async) || []"
+    [(countryIsoCode)]="countryIsoCode"
+    [(ngModel)]="value"
+>
+    Type your number
+</tui-input-phone-international>

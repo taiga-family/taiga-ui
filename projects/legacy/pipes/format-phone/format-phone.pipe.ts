@@ -20,7 +20,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
      *     standalone: true,
      *     imports: [MaskitoPipe],
      *     template: `
-     *         Phone: ${{'12125552368' | maskito: options}}
+     *         Phone: {{'12125552368' | maskito: options}}
      *         <!-- Phone: +1 (212) 555-2368 -->
      *     `,
      * })

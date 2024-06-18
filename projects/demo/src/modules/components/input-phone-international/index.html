@@ -6,26 +6,149 @@
     <ng-template pageTab>
         <p>Allows to input phone number in international format</p>
 
-        <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        <p>
+            <code>InputPhoneInternational</code>
+            is based on
+            <a
+                href="https://maskito.dev/addons/phone"
+                target="_blank"
+                tuiLink
+            >
+                <strong>&#64;maskito/phone</strong>
+            </a>
+            and
+            <a
+                href="https://www.npmjs.com/package/libphonenumber-js"
+                target="_blank"
+                tuiLink
+            >
+                <strong>libphonenumber-js</strong>
+            </a>
+            libraries.
+        </p>
+
+        <tui-notification>
+            <a
+                href="https://github.com/google/libphonenumber"
+                target="_blank"
+                tuiLink
+            >
+                <strong>libphonenumber</strong>
+            </a>
+            is an ultimate phone number formatting and parsing library developed by
+            <strong>Google</strong>
+            .
+
+            <p>
+                This library
+                <a
+                    tuiLink="https://github.com/google/libphonenumber/blob/master/FAQ.md#where-do-we-get-information-from-to-determine-if-a-number-range-is-valid"
+                >
+                    collects
+                </a>
+                the latest phone number rules from ITU documents, user bug reports, telecom company home pages and
+                government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases
+                are published almost every month. It means that
+                <code>InputPhoneInternational</code>
+                has the robust source of truth!
+            </p>
+        </tui-notification>
 
         <tui-doc-example
-            id="all-countries"
-            heading="All available countries"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [description]="sortPipeDescription"
+            id="metadata"
+            heading="Choose metadata"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+            [description]="metadataDescription"
         >
-            <ng-template #sortPipeDescription>
-                Use
-                <code>tuiSortCountries</code>
-                pipe from
-                <code>TuiSortCountriesPipe</code>
-                to sort countries according to your current language.
+            <ng-template #metadataDescription>
+                <p class="tui-space_top-0">The first step is to choose the size of metadata.</p>
+
+                <tui-notification>
+                    <strong>Google</strong>
+                    <a
+                        href="https://github.com/google/libphonenumber/blob/master/FAQ.md#what-do-we-mean-by-metadata"
+                        target="_blank"
+                        tuiLink
+                    >
+                        uses
+                    </a>
+                    the word
+                    <strong>"metadata"</strong>
+                    to refer to all information about phone numbering in a particular country - what the country code,
+                    international and national dialling prefixes are, what carrier codes are operational, which phone
+                    numbers are possible or valid for a particular country, how to optimally format them, which prefixes
+                    represent a particular geographical area, etc.
+                </tui-notification>
+
+                <p>
+                    The complete list of all phone rules is huge, so
+                    <code>libphonenumber-js</code>
+                    provides different "metadata" sets to provides a way to optimize bundle size by choosing between
+                    <strong>max</strong>
+                    ,
+                    <strong>min</strong>
+                    (default value) and
+                    <strong>mobile</strong>
+                    sets.
+                </p>
+
+                <p class="tui-space_bottom-0">
+                    Read in-depth
+                    <a
+                        href="https://github.com/catamphetamine/libphonenumber-js?tab=readme-ov-file#min-vs-max-vs-mobile-vs-core"
+                        target="_blank"
+                        tuiLink
+                    >
+                        description about every set
+                    </a>
+                    .
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="countries"
+            heading="Choose any countries"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+            [description]="selectCountriesDescription"
+        >
+            <ng-template #selectCountriesDescription>
+                Parameter
+                <code>countries</code>
+                allows you to choose which countries user can select from the dropdown.
+
+                <p class="tui-space_top-0">
+                    You can even pick all possible countries by built-in utility
+                    <code>getCountries</code>
+                    from
+                    <code>libphonenumber-js</code>
+                    .
+                </p>
+
+                <p class="tui-space_bottom-0">
+                    Use
+                    <code>TuiSortCountriesPipe</code>
+                    to sort countries according to your current language.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="phone-format-helpers"
+            heading="Use phone format helpers"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'ts'"
+            [description]="phoneFormatHelpersDescription"
+        >
+            <ng-template #phoneFormatHelpersDescription>
+                <code>InputPhoneInternational</code>
+                internally uses
+                <strong>Maskito</strong>
+                to format phone number.
+                <br />
+                Don't hesitate to use it too to manually format any phone number.
             </ng-template>
         </tui-doc-example>
     </ng-template>
@@ -85,44 +208,5 @@
         <inherited-documentation />
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                <p>
-                    Import
-                    <code>TuiInputPhoneInternationalComponent</code>
-                    in the same module where you want to use our component:
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li class="tui-list__item">
-                <p>
-                    Declare a form (
-                    <code>FormGroup</code>
-                    ) or a control (
-                    <code>FormControl</code>
-                    ) in your component:
-                </p>
-
-                <tui-doc-code
-                    filename="my.component.ts"
-                    [code]="exampleForm"
-                />
-            </li>
-
-            <li class="tui-list__item">
-                <p>Add to the template:</p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>
