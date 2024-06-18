@@ -10,14 +10,7 @@ import {TuiSheetModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiSheetModule,
-        TuiAmountPipe,
-        AsyncPipe,
-        TuiHeader,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiSheetModule, TuiAmountPipe, AsyncPipe, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
