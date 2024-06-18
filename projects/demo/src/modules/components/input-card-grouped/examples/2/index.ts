@@ -2,8 +2,8 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiDataList, TuiIcon} from '@taiga-ui/core';
+import {TuiInputCardGroup, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
+import {TuiButton, TuiDataList, TuiIcon, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

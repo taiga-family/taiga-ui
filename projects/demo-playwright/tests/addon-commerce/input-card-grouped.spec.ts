@@ -124,8 +124,9 @@ test.describe('InputCardGrouped', () => {
 
         test('input card grouped with saved cards', async () => {
             const example = documentationPage.getExample('#with-saved-cards');
-            const {numberTextfield, cvcTextfield, cleanerIcon} =
-                new TuiInputCardGroupPO(example);
+            const {numberTextfield, cvcTextfield, cleanerIcon} = new TuiInputCardGroupPO(
+                example,
+            );
             const cvc = '123';
 
             await expect(numberTextfield).toHaveScreenshot(
