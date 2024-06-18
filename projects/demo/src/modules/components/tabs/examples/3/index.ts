@@ -10,11 +10,7 @@ import {
     TuiIcon,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiTabDirective,
-    TuiTabsWithMoreComponent,
-} from '@taiga-ui/kit';
+import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

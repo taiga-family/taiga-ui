@@ -4,11 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltipModule} from '@taiga-ui/experimental';
-import {
-    TuiChevron,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
