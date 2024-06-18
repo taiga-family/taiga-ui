@@ -6,7 +6,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiNumberFormatDirective} from '@taiga-ui/core';
+import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputNumberComponent,
@@ -23,7 +23,7 @@ describe('InputNumber', () => {
             TuiInputNumberModule,
             NgIf,
             TuiHint,
-            TuiNumberFormatDirective,
+            TuiNumberFormat,
             TuiTextfieldControllerModule,
         ],
         template: `

@@ -11,7 +11,7 @@ import {
     TuiHint,
     TuiLink,
     TuiNotification,
-    TuiNumberFormatDirective,
+    TuiNumberFormat,
 } from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -29,7 +29,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
         TuiInputSliderModule,
         ReactiveFormsModule,
         TuiHint,
-        TuiNumberFormatDirective,
+        TuiNumberFormat,
         TuiTextfieldControllerModule,
         InheritedDocumentation,
     ],

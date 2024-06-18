@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiNumberFormatDirective} from '@taiga-ui/core';
+import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiNumberFormatDirective, TuiAmountPipe, AsyncPipe],
+    imports: [TuiNumberFormat, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

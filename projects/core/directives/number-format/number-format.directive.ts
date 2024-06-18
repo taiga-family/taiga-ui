@@ -6,9 +6,9 @@ import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 @Directive({
     standalone: true,
     selector: '[tuiNumberFormat]',
-    providers: [tuiProvide(TUI_NUMBER_FORMAT, TuiNumberFormatDirective)],
+    providers: [tuiProvide(TUI_NUMBER_FORMAT, TuiNumberFormat)],
 })
-export class TuiNumberFormatDirective extends Observable<TuiNumberFormatSettings> {
+export class TuiNumberFormat extends Observable<TuiNumberFormatSettings> {
     private readonly settings = new ReplaySubject<Partial<TuiNumberFormatSettings>>(1);
     private readonly parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
 
