@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
 import {inject} from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TUI_ASSETS_PATH} from './assets-path';
 

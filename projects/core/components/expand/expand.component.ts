@@ -15,7 +15,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiValuesOf} from '@taiga-ui/cdk';
+import type {TuiValuesOf} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {timer} from 'rxjs';

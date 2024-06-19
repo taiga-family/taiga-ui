@@ -1,5 +1,5 @@
 import type {ValueProvider} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const TUI_ASSETS_PATH = tuiCreateToken('assets/taiga-ui');
 

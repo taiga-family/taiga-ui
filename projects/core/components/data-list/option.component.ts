@@ -1,4 +1,4 @@
-import type {OnDestroy} from '@angular/core';
+import type {OnDestroy, TemplateRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,10 +6,13 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
 import type {TuiDataListHost} from './data-list.tokens';
@@ -56,7 +59,10 @@ export class TuiOption<T = unknown> implements OnDestroy {
         optional: true,
     });
 
-    protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
+    protected readonly content: PolymorpheusContent<
+        TuiContext<TemplateRef<Record<string, unknown>>>
+    > = inject(TUI_OPTION_CONTENT, {optional: true});
+
     protected readonly dropdown = inject(TuiDropdownDirective, {
         self: true,
         optional: true,

@@ -1,5 +1,6 @@
 import {Directive, HostListener} from '@angular/core';
-import {EMPTY_CLIENT_RECT, tuiPointToClientRect} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {tuiAsDriver, tuiAsRectAccessor} from '@taiga-ui/core/classes';
 

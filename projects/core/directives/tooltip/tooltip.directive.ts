@@ -9,7 +9,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch, tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,

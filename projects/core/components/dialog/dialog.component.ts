@@ -1,8 +1,9 @@
 import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {TUI_IS_MOBILE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {
     TUI_ANIMATIONS_SPEED,

@@ -7,13 +7,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {
-    TUI_IS_ANDROID,
-    TUI_IS_IOS,
-    TUI_IS_MOBILE,
-    TUI_VERSION,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';

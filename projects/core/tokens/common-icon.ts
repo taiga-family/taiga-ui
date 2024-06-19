@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 const COMMON_ICONS: TuiCommonIcons = {
     check: '@tui.check',

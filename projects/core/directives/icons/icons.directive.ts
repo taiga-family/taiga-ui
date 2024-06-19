@@ -6,8 +6,8 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ICON, TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 
 @Component({

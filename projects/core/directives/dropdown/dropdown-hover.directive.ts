@@ -8,14 +8,13 @@ import {
     Input,
     NgZone,
 } from '@angular/core';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
-    TuiActiveZone,
     tuiGetActualTarget,
     tuiInjectElement,
     tuiIsElement,
-    tuiTypedFromEvent,
-    tuiZoneOptimized,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {delay, distinctUntilChanged, map, merge, of, share, switchMap, tap} from 'rxjs';
 

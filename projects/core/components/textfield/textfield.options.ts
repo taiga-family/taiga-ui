@@ -1,11 +1,11 @@
 import type {Provider} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {
-    AbstractTuiController,
     tuiCreateToken,
     tuiProvide,
     tuiProvideOptions,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 

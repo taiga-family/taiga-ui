@@ -1,6 +1,7 @@
 import type {OnDestroy} from '@angular/core';
 import {Directive, inject, INJECTOR, Input} from '@angular/core';
-import {TuiActiveZone, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';

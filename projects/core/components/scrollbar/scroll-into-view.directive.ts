@@ -1,6 +1,6 @@
 import {DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {timer} from 'rxjs';
 
 import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';

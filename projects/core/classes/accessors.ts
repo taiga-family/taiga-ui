@@ -1,6 +1,6 @@
 import type {AbstractType, ExistingProvider, FactoryProvider, Type} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {

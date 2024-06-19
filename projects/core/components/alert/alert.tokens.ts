@@ -1,7 +1,11 @@
 import type {Type} from '@angular/core';
 import {inject} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {TUI_IS_MOBILE, tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {
+    tuiCreateToken,
+    tuiCreateTokenFromFactory,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {BehaviorSubject, combineLatest, map, of} from 'rxjs';
 

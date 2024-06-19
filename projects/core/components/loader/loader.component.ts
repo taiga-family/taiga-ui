@@ -6,13 +6,10 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_IS_IOS,
-    tuiBlurNativeFocused,
-    tuiInjectElement,
-    tuiIsNativeFocusedIn,
-    tuiIsSafari,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiBlurNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

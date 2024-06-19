@@ -6,20 +6,21 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
     MIN_YEAR,
-    TUI_FALSE_HANDLER,
-    TuiHoveredDirective,
-    tuiInRange,
-    tuiIsNumber,
-    TuiLet,
     TuiMonth,
     TuiMonthRange,
-    TuiRepeatTimes,
     TuiYear,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/date-time';
+import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiInRange} from '@taiga-ui/cdk/utils/math';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoViewDirective} from '@taiga-ui/core/components/scrollbar';
 import type {TuiRangeState} from '@taiga-ui/core/types';
 

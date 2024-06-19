@@ -1,4 +1,8 @@
-import {CHAR_NO_BREAK_SPACE, CHAR_ZERO_WIDTH_SPACE, svgNodeFilter} from '@taiga-ui/cdk';
+import {
+    CHAR_NO_BREAK_SPACE,
+    CHAR_ZERO_WIDTH_SPACE,
+    svgNodeFilter,
+} from '@taiga-ui/cdk/constants';
 
 /**
  * Creates a cloned range with its boundaries set at word boundaries

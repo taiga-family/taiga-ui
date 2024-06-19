@@ -1,6 +1,6 @@
 import type {OnInit} from '@angular/core';
 import {Directive} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_SCROLLABLE} from './scrollbar.component';
 

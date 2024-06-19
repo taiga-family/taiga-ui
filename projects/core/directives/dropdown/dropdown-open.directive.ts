@@ -11,19 +11,21 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiObscuredDirective} from '@taiga-ui/cdk/directives/obscured';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {
-    TuiActiveZone,
     tuiGetActualTarget,
-    tuiGetClosestFocusable,
     tuiInjectElement,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
+} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
-    TuiObscuredDirective,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/utils/focus';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';

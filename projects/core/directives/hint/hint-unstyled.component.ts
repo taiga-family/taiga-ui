@@ -5,7 +5,7 @@ import {
     inject,
     TemplateRef,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {

@@ -1,5 +1,6 @@
 import {inject, Injectable, NgZone} from '@angular/core';
-import {TUI_WINDOW_SIZE, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
 import {TUI_MEDIA, type TuiMedia} from '@taiga-ui/core/tokens';
 import {distinctUntilChanged, map, Observable, shareReplay} from 'rxjs';
 

@@ -1,4 +1,4 @@
-import type {TuiActiveZone} from '@taiga-ui/cdk';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {PolymorpheusComponent, PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiPortalItem<C = any> {
