@@ -2,7 +2,7 @@
 // ...
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [
     provideAnimations(),
     NG_EVENT_PLUGINS,

@@ -19,7 +19,7 @@ export default class Page {
     protected readonly example2 = {
         'page.routes.ts': import('./routes.ts?raw'),
         'page.template.html': import('./examples/2/index.html?raw'),
-        'page.ts': import('./examples/2/index.ts?raw'),
+        'page.ts': import('./examples/2?raw'),
         'dialog.component.ts': import('./examples/2/dialog.component.ts?raw'),
     };
 }

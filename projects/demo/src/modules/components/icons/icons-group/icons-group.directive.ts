@@ -4,7 +4,7 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
     standalone: true,
     selector: '[iconGroup]',
 })
-export class IconsGroupDirective {
+export class IconsGroup {
     @Input()
     public iconGroup?: string | '';
 

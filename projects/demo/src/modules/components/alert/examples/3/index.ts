@@ -27,7 +27,7 @@ import {switchMap, takeUntil} from 'rxjs';
     `,
     changeDetection,
 })
-export class AlertExampleComponent {
+export class AlertExample {
     protected readonly context =
         inject<TuiPopover<TuiAlertOptions<void>, boolean>>(POLYMORPHEUS_CONTEXT);
 }
@@ -42,7 +42,7 @@ export class AlertExampleComponent {
 export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly notification = this.alerts
-        .open<boolean>(new PolymorpheusComponent(AlertExampleComponent), {
+        .open<boolean>(new PolymorpheusComponent(AlertExample), {
             label: 'Question',
             status: 'error',
             autoClose: 0,

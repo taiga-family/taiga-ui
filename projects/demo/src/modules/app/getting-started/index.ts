@@ -4,9 +4,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 
-import {HomeComponent} from '../home/home.component';
+import {Home} from '../home/home.component';
 
-export const TUI_HOME_COMPONENT = tuiCreateToken(HomeComponent);
+export const TUI_HOME_COMPONENT = tuiCreateToken(Home);
 
 @Component({
     standalone: true,

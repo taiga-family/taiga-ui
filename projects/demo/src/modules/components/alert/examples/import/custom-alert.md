@@ -5,7 +5,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 
 //...
 
-export class NotificationExampleComponent {
+export class NotificationExample {
   private readonly context: TuiPopover<TuiAlertOptions<boolean>, boolean> = inject(POLYMORPHEUS_CONTEXT);
 
   ok() {

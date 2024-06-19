@@ -11,10 +11,10 @@ import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
-import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
+import {CustomHost} from '../customization/portals/examples/1/portal/custom-host.component';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
-import {VersionManagerComponent} from './version-manager/version-manager.component';
+import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
@@ -23,8 +23,8 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     imports: [
         TuiDemo,
         TuiLanguageSwitcherComponent,
-        VersionManagerComponent,
-        CustomHostComponent,
+        VersionManager,
+        CustomHost,
         TuiTextfieldControllerModule,
         TuiSheetModule,
     ],
@@ -38,7 +38,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
 })
-export class AppComponent extends AbstractDemoComponent implements OnInit {
+export class App extends AbstractDemoComponent implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);

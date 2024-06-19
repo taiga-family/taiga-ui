@@ -10,5 +10,5 @@ import {TuiSurface} from '@taiga-ui/core';
     TuiSurface,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

@@ -39,7 +39,7 @@ import {switchMap, takeUntil} from 'rxjs';
     `,
     changeDetection,
 })
-export class AlertExampleWithDataComponent {
+export class AlertExampleWithData {
     protected readonly context =
         inject<TuiPopover<TuiAlertOptions<number>, number>>(POLYMORPHEUS_CONTEXT);
 
@@ -60,7 +60,7 @@ export class AlertExampleWithDataComponent {
 export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly notification = this.alerts
-        .open<number>(new PolymorpheusComponent(AlertExampleWithDataComponent), {
+        .open<number>(new PolymorpheusComponent(AlertExampleWithData), {
             label: 'Heading is so long that it should be shown in two lines of text',
             data: 237,
             status: 'warning',

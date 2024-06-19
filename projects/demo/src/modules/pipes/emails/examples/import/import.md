@@ -18,5 +18,5 @@ import {TuiEmailsPipe} from '@taiga-ui/proprietary';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

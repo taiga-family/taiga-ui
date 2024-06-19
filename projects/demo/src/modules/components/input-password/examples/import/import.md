@@ -25,7 +25,7 @@ import {TuiInputPasswordModule} from '@taiga-ui/legacy';
     },
   ],
 })
-export class MyComponent {
+export class Example {
   testForm = new FormGroup({
     testValue: new FormControl(''),
   });

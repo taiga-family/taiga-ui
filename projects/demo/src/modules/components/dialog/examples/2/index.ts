@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {DialogExampleComponent} from './dialog-example/dialog-example.component';
+import {DialogExample} from './dialog-example/dialog-example.component';
 
 @Component({
     standalone: true,
@@ -18,7 +18,7 @@ export default class Example {
     private readonly injector = inject(INJECTOR);
 
     private readonly dialog = this.dialogs.open<number>(
-        new PolymorpheusComponent(DialogExampleComponent, this.injector),
+        new PolymorpheusComponent(DialogExample, this.injector),
         {
             data: 237,
             dismissible: true,

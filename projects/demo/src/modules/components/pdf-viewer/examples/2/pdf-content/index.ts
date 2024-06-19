@@ -12,7 +12,7 @@ import {map, timer} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PdfContentComponent {
+export class PdfContent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';

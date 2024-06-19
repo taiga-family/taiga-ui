@@ -12,5 +12,5 @@ import {TuiButtonGroupDirective} from '@taiga-ui/kit';
     TuiButtonGroupDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

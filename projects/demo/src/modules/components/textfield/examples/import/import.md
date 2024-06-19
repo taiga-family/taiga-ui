@@ -10,5 +10,5 @@ import {TuiTextfield} from '@taiga-ui/core';
     TuiTextfield,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

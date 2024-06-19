@@ -9,5 +9,5 @@ import {TuiCell} from '@taiga-ui/layout';
     TuiCell,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

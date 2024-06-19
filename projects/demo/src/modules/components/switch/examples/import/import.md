@@ -10,5 +10,5 @@ import {TuiSwitch} from '@taiga-ui/kit';
     TuiSwitch,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

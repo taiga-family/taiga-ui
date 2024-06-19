@@ -11,7 +11,7 @@ import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiBadgeNotificationComponent {
+export default class Example {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = [
         'l',
         'm',

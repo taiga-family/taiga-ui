@@ -8,7 +8,7 @@ import {TuiDataList, TuiScrollbar} from '@taiga-ui/core';
 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
-import {IndexChangeDirective} from './index-change.directive';
+import {IndexChange} from './index-change.directive';
 
 @Component({
     standalone: true,
@@ -21,7 +21,7 @@ import {IndexChangeDirective} from './index-change.directive';
         TuiFilterByInputPipe,
         ScrollingModule,
         TuiScrollbar,
-        IndexChangeDirective,
+        IndexChange,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

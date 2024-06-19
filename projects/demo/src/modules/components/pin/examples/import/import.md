@@ -10,5 +10,5 @@ import {TuiPinComponent} from '@taiga-ui/kit';
     TuiPinComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

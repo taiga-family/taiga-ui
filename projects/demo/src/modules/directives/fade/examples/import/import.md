@@ -10,5 +10,5 @@ import {TuiFadeDirective} from '@taiga-ui/kit';
     TuiFadeDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

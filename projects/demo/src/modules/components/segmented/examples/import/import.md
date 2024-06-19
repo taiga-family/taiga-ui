@@ -10,5 +10,5 @@ import {TuiSegmentedComponent} from '@taiga-ui/experimental';
     TuiSegmentedComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

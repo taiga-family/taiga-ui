@@ -9,7 +9,7 @@ import {MyDialogComponent} from './my-dialog.component.ts';
 @Component({
   // ...
 })
-export class MyComponent {
+export class Example {
   private readonly injector = inject(INJECTOR);
   private readonly dialogs = inject(TuiDialogService);
 

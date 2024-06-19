@@ -11,5 +11,5 @@ import {TuiFormatDatePipe} from '@taiga-ui/core';
   ],
   //  ...
 })
-export class MyComponent {}
+export class Example {}
 ```

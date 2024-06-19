@@ -27,4 +27,4 @@ class ExampleTransformer extends TuiValueTransformer<From, To> {
         },
     ],
 })
-export class ExampleNativeDateTransformerDirective {}
+export class ExampleNativeDateTransformer {}

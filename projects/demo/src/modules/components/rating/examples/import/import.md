@@ -10,5 +10,5 @@ import {TuiRatingComponent} from '@taiga-ui/kit';
     TuiRatingComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

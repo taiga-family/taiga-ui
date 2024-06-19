@@ -10,5 +10,5 @@ import {TuiAvatarModule} from '@taiga-ui/kit';
     TuiAvatarModule,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

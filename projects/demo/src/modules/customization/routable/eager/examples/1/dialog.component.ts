@@ -5,4 +5,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     template: 'Eager loaded dialog content',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogComponent {}
+export class DialogExample {}

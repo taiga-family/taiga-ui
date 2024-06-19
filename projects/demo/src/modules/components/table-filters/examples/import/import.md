@@ -9,5 +9,5 @@ import {TuiTableFilters} from '@taiga-ui/addon-table';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

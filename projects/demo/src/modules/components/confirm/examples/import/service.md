@@ -2,7 +2,7 @@
 import {TUI_CONFIRM} from '@taiga-ui/kit';
 
 // ...
-export class MyComponent {
+export class Example {
   private readonly dialogs = inject(TuiDialogService);
 
   confirm() {

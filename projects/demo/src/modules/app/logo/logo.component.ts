@@ -12,8 +12,8 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
     styleUrls: ['./logo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoComponent {
+export class Logo {
     protected readonly demoRoutes = DemoRoute;
 }
 
-export const LOGO_CONTENT = new PolymorpheusComponent(LogoComponent);
+export const LOGO_CONTENT = new PolymorpheusComponent(Logo);

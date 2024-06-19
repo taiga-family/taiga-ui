@@ -9,5 +9,5 @@ import {TuiPulseComponent} from '@taiga-ui/kit';
     TuiPulseComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

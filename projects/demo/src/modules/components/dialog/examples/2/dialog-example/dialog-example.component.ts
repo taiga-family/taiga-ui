@@ -34,7 +34,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
     styleUrls: ['./dialog-example.style.less'],
     changeDetection,
 })
-export class DialogExampleComponent {
+export class DialogExample {
     private readonly dialogs = inject(TuiDialogService);
     private readonly context =
         inject<TuiDialogContext<number, number>>(POLYMORPHEUS_CONTEXT);

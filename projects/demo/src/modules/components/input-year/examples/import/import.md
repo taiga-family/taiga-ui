@@ -11,7 +11,7 @@ import {TuiInputYearModule} from '@taiga-ui/legacy';
   ],
   // ...
 })
-export class MyComponent {
+export class Example {
   readonly testForm = new FormGroup({
     testValue: new FormControl(null),
   });

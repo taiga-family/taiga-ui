@@ -1,5 +1,5 @@
 ```ts
-export class MyComponent {
+export class Example {
   private readonly pdfService = inject(TuiPdfViewerService);
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>) {

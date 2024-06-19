@@ -8,7 +8,7 @@ import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
 import {IconsGroupComponent} from './icons-group/icons-group.component';
-import {IconsGroupDirective} from './icons-group/icons-group.directive';
+import {IconsGroup} from './icons-group/icons-group.directive';
 
 // TODO: Remove this entire section
 @Component({
@@ -18,7 +18,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
         TuiSvgComponent,
         TuiIcon,
         IconsGroupComponent,
-        IconsGroupDirective,
+        IconsGroup,
         IntersectionObserverModule,
         TuiNotification,
     ],

@@ -5,7 +5,7 @@ import {inject} from '@angular/core';
 
 // ...
 
-export class MyComponent {
+export class Example {
   private readonly dialogs = inject(TuiDialogService);
 
   // ...

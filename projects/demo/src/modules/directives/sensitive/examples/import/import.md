@@ -11,5 +11,5 @@ import {TuiSensitiveDirective} from '@taiga-ui/kit';
     TuiSensitiveDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

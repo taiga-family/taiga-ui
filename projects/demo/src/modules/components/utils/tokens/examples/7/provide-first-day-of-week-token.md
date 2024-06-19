@@ -12,5 +12,5 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     },
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

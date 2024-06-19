@@ -10,5 +10,5 @@ import {TuiRadioComponent} from '@taiga-ui/kit';
     TuiRadioComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

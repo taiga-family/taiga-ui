@@ -11,5 +11,5 @@ import {TuiLineClampComponent} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

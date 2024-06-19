@@ -3,7 +3,7 @@ import {inject} from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/cdk';
 
 // ...
-export class MyComponent {
+export class Example {
   private readonly keyboard = inject(TuiKeyboardService);
 
   toggle(): void {

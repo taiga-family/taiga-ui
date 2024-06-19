@@ -9,7 +9,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
-import {AlertExampleWithDataComponent} from './examples/4';
+import {AlertExampleWithData} from './examples/4';
 
 @Component({
     standalone: true,
@@ -78,7 +78,7 @@ export default class Page {
     protected closeable = true;
 
     protected readonly component = new PolymorpheusComponent(
-        AlertExampleWithDataComponent,
+        AlertExampleWithData,
         inject(INJECTOR),
     );
 

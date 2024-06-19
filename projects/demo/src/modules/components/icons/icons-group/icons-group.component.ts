@@ -18,7 +18,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 
-import {IconsGroupDirective} from './icons-group.directive';
+import {IconsGroup} from './icons-group.directive';
 
 @Component({
     standalone: true,
@@ -49,8 +49,8 @@ export class IconsGroupComponent implements OnInit {
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChild(IconsGroupDirective)
-    protected readonly iconGroup?: IconsGroupDirective;
+    @ContentChild(IconsGroup)
+    protected readonly iconGroup?: IconsGroup;
 
     protected matcher: (item: string, search: string) => boolean = TUI_DEFAULT_MATCHER;
 

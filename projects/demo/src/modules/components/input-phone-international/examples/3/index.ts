@@ -15,7 +15,7 @@ import metadata from 'libphonenumber-js/max/metadata';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
+export default class Example {
     protected rawValue = '12125552368';
     protected readonly mask = maskitoPhoneOptionsGenerator({
         metadata,

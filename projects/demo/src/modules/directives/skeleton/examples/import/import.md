@@ -10,5 +10,5 @@ import {TuiSkeletonDirective} from '@taiga-ui/kit';
     TuiSkeletonDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

@@ -10,5 +10,5 @@ import {TuiCommentDirective} from '@taiga-ui/kit';
     TuiCommentDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

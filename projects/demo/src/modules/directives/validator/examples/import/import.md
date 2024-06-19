@@ -11,5 +11,5 @@ import {TuiValidatorDirective} from '@taiga-ui/cdk';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

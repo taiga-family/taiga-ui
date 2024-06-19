@@ -7,7 +7,7 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
-import {StackblitzEditButtonComponent} from './starter/stackblitz-edit';
+import {StackblitzEditButton} from './starter/stackblitz-edit';
 import {
     appPrefix,
     getAllTaigaUIModulesFile,
@@ -23,7 +23,7 @@ const APP_COMP_META = {
     SELECTOR: 'my-app',
     TEMPLATE_URL: './app.component.html',
     STYLE_URLS: ['./app.component.less'],
-    CLASS_NAME: 'AppComponent',
+    CLASS_NAME: 'App',
 } as const;
 
 @Injectable()
@@ -31,7 +31,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     private readonly deps = inject(StackblitzDepsService);
 
     public readonly name = 'Stackblitz';
-    public readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
+    public readonly content = new PolymorpheusComponent(StackblitzEditButton);
 
     public async edit(
         component: string,

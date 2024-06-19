@@ -8,5 +8,5 @@ import {TuiFiles} from '@taiga-ui/kit';
   imports: [TuiFiles],
   //...
 })
-export class MyComponent {}
+export class Example {}
 ```

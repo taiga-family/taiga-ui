@@ -7,7 +7,7 @@ import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import {TUI_TREE_CONTENT, TuiTree} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {FoldersComponent} from './content';
+import {Folders} from './content';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -24,7 +24,7 @@ interface TreeNode {
     providers: [
         {
             provide: TUI_TREE_CONTENT,
-            useValue: new PolymorpheusComponent(FoldersComponent),
+            useValue: new PolymorpheusComponent(Folders),
         },
     ],
 })

@@ -11,5 +11,5 @@ import {TuiSvgComponent} from '@taiga-ui/legacy';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

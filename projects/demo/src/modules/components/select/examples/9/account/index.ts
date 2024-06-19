@@ -28,7 +28,7 @@ export interface MyAccount {
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleMyAccountComponent {
+export class ExampleMyAccount {
     @Input({required: true})
     public account!: MyAccount;
 }
