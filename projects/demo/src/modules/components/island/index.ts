@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 import {StylesInfoComponent} from '../../app/styles-info';
@@ -15,7 +15,7 @@ import {StylesInfoComponent} from '../../app/styles-info';
         StylesInfoComponent,
         TuiIslandDirective,
         TuiButton,
-        TuiNotificationComponent,
+        TuiNotification,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

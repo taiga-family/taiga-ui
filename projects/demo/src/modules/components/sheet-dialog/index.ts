@@ -6,7 +6,7 @@ import {
     TuiSheetDialogDirective,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiNotificationComponent, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
     imports: [
         TuiDemo,
         TuiButton,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiAvatar,
         TuiTitle,
         TuiSheetDialogDirective,

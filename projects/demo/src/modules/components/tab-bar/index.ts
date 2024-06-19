@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiDropdown, TuiLabel, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiDropdown, TuiLabel, TuiNotification} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import TuiTabBarExample from './examples/1';
@@ -11,7 +11,7 @@ import TuiTabBarExample from './examples/1';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiCheckboxComponent,
         TuiLabel,
         TuiTabBarExample,

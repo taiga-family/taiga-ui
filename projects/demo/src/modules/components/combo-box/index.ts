@@ -14,7 +14,7 @@ import {
     TuiDropdown,
     TuiHint,
     TuiIcon,
-    TuiNotificationComponent,
+    TuiNotification,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
@@ -43,7 +43,7 @@ class Account {
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,

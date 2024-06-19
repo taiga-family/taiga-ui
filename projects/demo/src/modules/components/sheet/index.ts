@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import type {TuiSheet, TuiSheetOptions} from '@taiga-ui/legacy';
 import {TUI_SHEET_DEFAULT_OPTIONS, TuiSheetModule} from '@taiga-ui/legacy';
@@ -11,15 +11,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiNotificationComponent,
-        TuiLink,
-
-        TuiButton,
-        TuiAvatar,
-        TuiSheetModule,
-    ],
+    imports: [TuiDemo, TuiNotification, TuiLink, TuiButton, TuiAvatar, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

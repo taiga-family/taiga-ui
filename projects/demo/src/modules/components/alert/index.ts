@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
-import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
+import type {TuiAlertOptions, TuiNotificationStatus} from '@taiga-ui/core';
 import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -54,7 +54,7 @@ export default class Page {
 
     protected label = 'Heading';
 
-    protected readonly statusVariants: TuiNotification[] = [
+    protected readonly statusVariants: TuiNotificationStatus[] = [
         'info',
         'success',
         'error',

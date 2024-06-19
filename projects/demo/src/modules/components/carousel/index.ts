@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItem, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiCarouselComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiCarouselComponent,
         TuiRepeatTimes,
         TuiButton,

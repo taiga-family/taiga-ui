@@ -3,14 +3,14 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {TuiPdfViewerService} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiNotificationComponent, TuiButton],
+    imports: [TuiNotification, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

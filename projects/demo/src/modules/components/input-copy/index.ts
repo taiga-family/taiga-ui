@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 import {TuiInputCopyModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -16,7 +16,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiInputCopyModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

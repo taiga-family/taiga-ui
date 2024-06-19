@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationComponent, tuiNotificationOptionsProvider} from '@taiga-ui/core';
+import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiNotificationComponent],
+    imports: [TuiNotification],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

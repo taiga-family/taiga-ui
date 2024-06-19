@@ -4,11 +4,11 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-export type TuiNotification = 'error' | 'info' | 'neutral' | 'success' | 'warning';
+export type TuiNotificationStatus = 'error' | 'info' | 'neutral' | 'success' | 'warning';
 
 export interface TuiNotificationOptions {
-    readonly status: TuiNotification;
-    readonly icon: PolymorpheusContent<TuiContext<TuiNotification>>;
+    readonly status: TuiNotificationStatus;
+    readonly icon: PolymorpheusContent<TuiContext<TuiNotificationStatus>>;
     readonly size: TuiSizeL | TuiSizeS;
 }
 

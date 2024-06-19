@@ -7,12 +7,12 @@ import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiRound, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {tuiFormatNumber, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiLink, TuiNotification} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotificationComponent, TuiLink, TuiPieChartComponent],
+    imports: [TuiDemo, TuiNotification, TuiLink, TuiPieChartComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

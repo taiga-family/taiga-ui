@@ -10,7 +10,7 @@ import type {TuiSizeL} from '@taiga-ui/core';
 import {
     TuiHint,
     TuiLink,
-    TuiNotificationComponent,
+    TuiNotification,
     TuiNumberFormatDirective,
 } from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
@@ -25,7 +25,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     imports: [
         TuiDemo,
         TuiLink,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiInputSliderModule,
         ReactiveFormsModule,
         TuiHint,

@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiNotification} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
@@ -14,7 +14,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
     imports: [
         TuiDemo,
         TuiDropdown,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiActiveZone,
         TuiButton,
         TuiObscuredDirective,

@@ -19,7 +19,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import {TUI_MONTHS, TuiNotificationComponent} from '@taiga-ui/core';
+import {TUI_MONTHS, TuiNotification} from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
@@ -27,7 +27,7 @@ import {map, of} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        TuiNotificationComponent,
+        TuiNotification,
         TuiInputDateRangeModule,
         FormsModule,
         TuiAxes,

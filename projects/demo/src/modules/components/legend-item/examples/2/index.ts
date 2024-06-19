@@ -5,18 +5,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItemComponent, TuiRingChartComponent} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {
-    TuiAlertService,
-    tuiFormatNumber,
-    TuiIcon,
-    TuiNotificationComponent,
-} from '@taiga-ui/core';
+import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiNotificationComponent,
+        TuiNotification,
         TuiLegendItemComponent,
         TuiCheckboxComponent,
         NgForOf,
