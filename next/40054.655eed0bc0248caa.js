@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40054],{40054:n=>{n.exports="```ts\nimport {TuiFieldErrorPipe} from '@taiga-ui/kit';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiFieldErrorPipe,\n  ],\n})\nexport class Example {}\n```\n"}}]);

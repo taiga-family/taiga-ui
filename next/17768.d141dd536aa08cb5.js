@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[17768],{17768:n=>{n.exports="```ts\nimport {TuiTableFilters} from '@taiga-ui/addon-table';\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiTableFilters,\n  ],\n  // ...\n})\nexport class Example {}\n```\n"}}]);

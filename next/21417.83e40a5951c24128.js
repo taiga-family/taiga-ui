@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[21417],{21417:n=>{n.exports="```ts\nimport {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';\n\n//...\n\n@Component({\n  standalone: true,\n  imports: [\n    //...\n    TuiCurrencyPipe,\n  ],\n  // ...\n})\nexport class Example {}\n```\n"}}]);
