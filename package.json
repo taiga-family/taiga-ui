@@ -81,7 +81,8 @@
         ],
         "rules": {
             "@angular-eslint/component-class-suffix": "off",
-            "jest/prefer-importing-jest-globals": "off"
+            "jest/prefer-importing-jest-globals": "off",
+            "@taiga-ui/experience/no-deep-imports": "off"
         },
         "root": true
     },

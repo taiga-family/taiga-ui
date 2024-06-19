@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
-import {TuiCalendarYearComponent} from '@taiga-ui/core/components/calendar';
+import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiCalendarYearComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiCalendarYearComponent', () => {
