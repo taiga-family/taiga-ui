@@ -30,6 +30,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiIdService} from '@taiga-ui/cdk/services';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiDirectiveBinding, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -178,7 +179,7 @@ export class TuiInputCardGroup
     public exampleText = this.options.exampleText;
 
     @Input()
-    public cardValidator = this.options.cardValidator;
+    public cardValidator: TuiBooleanHandler<string> = this.options.cardValidator;
 
     @Input()
     public icon: PolymorpheusContent = this.options.icon;
