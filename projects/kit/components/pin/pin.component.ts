@@ -7,7 +7,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
     styleUrls: ['./pin.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPinComponent {
+export class TuiPin {
     @Input()
     @HostBinding('class._open')
     public open = false;

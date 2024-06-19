@@ -2,17 +2,17 @@ import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
-import {TuiCompassComponent} from '@taiga-ui/kit';
+import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCompassComponent],
+    imports: [TuiCompass],
     template: '<tui-compass [degrees]="degrees"></tui-compass>',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiCompassComponent, {read: ElementRef})
+    @ViewChild(TuiCompass, {read: ElementRef})
     private readonly compass?: ElementRef<HTMLElement>;
 
     protected degrees = 0;

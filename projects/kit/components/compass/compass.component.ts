@@ -7,7 +7,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
     styleUrls: ['./compass.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCompassComponent {
+export class TuiCompass {
     @Input()
     @HostBinding('style.--t-degrees.deg')
     public degrees = NaN;
