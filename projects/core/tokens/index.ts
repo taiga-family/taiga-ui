@@ -7,6 +7,7 @@ export * from './first-day-of-week';
 export * from './i18n';
 export * from './icon';
 export * from './icon-resolver';
+export * from './icons';
 export * from './media';
 export * from './number-format';
 export * from './reduced-motion';
