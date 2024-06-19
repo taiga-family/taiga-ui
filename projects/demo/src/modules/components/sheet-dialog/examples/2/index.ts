@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiSheetDialogDirective} from '@taiga-ui/addon-mobile';
+import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiSheetDialogDirective],
+    imports: [TuiButton, TuiSheetDialog],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

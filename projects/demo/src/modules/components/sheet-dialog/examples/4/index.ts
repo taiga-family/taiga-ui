@@ -3,7 +3,7 @@ import {Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSheetDialogDirective} from '@taiga-ui/addon-mobile';
+import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MATCHER,
@@ -43,7 +43,7 @@ const USERS = [
     standalone: true,
     imports: [
         TuiButton,
-        TuiSheetDialogDirective,
+        TuiSheetDialog,
         TuiInputModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
