@@ -1,8 +1,9 @@
 import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
-import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiSum} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

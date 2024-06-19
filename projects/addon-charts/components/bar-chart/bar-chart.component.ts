@@ -8,15 +8,19 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiBarSetComponent} from '@taiga-ui/addon-charts/components/bar-set';
-import type {TuiContext, TuiMapper} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiIdService, TuiMapperPipe, tuiPure, tuiSum} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import type {TuiContext, TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiSum} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 

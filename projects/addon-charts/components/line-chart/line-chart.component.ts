@@ -11,22 +11,19 @@ import {
 } from '@angular/core';
 import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiIdService,
-    tuiIsPresent,
-    TuiLet,
-    tuiPure,
-    tuiZoneOptimized,
-} from '@taiga-ui/cdk';
-import type {TuiPoint} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/hint';
+import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, Subject} from 'rxjs';

@@ -1,4 +1,4 @@
-import type {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {tuiLineAngle} from './line-angle';
 import {tuiLineLength} from './line-length';

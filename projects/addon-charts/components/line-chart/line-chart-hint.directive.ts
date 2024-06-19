@@ -11,15 +11,12 @@ import {
     Renderer2,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiHoveredService,
-    tuiPure,
-    tuiQueryListChanges,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import type {TuiPoint} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {tuiQueryListChanges, tuiZonefree} from '@taiga-ui/cdk/observables';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {
