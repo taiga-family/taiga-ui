@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46320],{46320:n=>{n.exports='<p>Icon can be changed using DI options</p>\n<tui-tooltip content="Info icon" />\n\n<p>\n    Icon color can be changed using\n    <code>tuiAppearance</code>\n    directive\n</p>\n<tui-tooltip\n    content="Custom appearance"\n    tuiAppearance="accent"\n/>\n'}}]);
