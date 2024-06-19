@@ -5,6 +5,6 @@ import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     standalone: true,
     selector: 'ng-template[tuiAccordionItemContent]',
 })
-export class TuiAccordionItemContentDirective extends PolymorpheusTemplate<
+export class TuiAccordionItemContent extends PolymorpheusTemplate<
     Record<string, unknown>
 > {}

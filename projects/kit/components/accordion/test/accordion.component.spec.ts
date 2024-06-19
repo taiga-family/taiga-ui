@@ -11,7 +11,7 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiAccordion,
     TuiAccordionDirective,
-    TuiAccordionItemComponent,
+    TuiAccordionItem,
 } from '@taiga-ui/kit';
 import {
     TuiAccordionHarness,
@@ -92,8 +92,8 @@ describe('Accordion', () => {
         @ViewChild(TuiAccordionDirective, {static: true})
         public component!: TuiAccordionDirective;
 
-        @ViewChildren(TuiAccordionItemComponent)
-        public items!: QueryList<TuiAccordionItemComponent>;
+        @ViewChildren(TuiAccordionItem)
+        public items!: QueryList<TuiAccordionItem>;
 
         public closeOthers = true;
 

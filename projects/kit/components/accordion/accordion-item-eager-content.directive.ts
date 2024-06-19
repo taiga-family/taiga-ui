@@ -4,4 +4,4 @@ import {Directive} from '@angular/core';
     standalone: true,
     selector: '[tuiAccordionItemContent]:not(ng-template)',
 })
-export class TuiAccordionItemEagerContentDirective {}
+export class TuiAccordionItemEagerContent {}
