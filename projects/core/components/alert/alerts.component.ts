@@ -28,7 +28,7 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [tuiParentAnimation],
 })
-export class TuiAlertsComponent {
+export class TuiAlerts {
     private readonly injector = inject(INJECTOR);
 
     protected readonly alerts$ = inject(TUI_ALERTS_GROUPED);
