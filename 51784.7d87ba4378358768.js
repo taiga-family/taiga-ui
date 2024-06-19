@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51784],{62369:e=>{e.exports="```bash\nnpm i @taiga-ui/{cdk,core,kit,icons}\n```\n"}}]);
