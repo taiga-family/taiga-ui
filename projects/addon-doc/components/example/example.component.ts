@@ -15,7 +15,7 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiItem, TuiMapperPipe} from '@taiga-ui/cdk';
@@ -30,7 +30,7 @@ import {
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
 
-import {TuiDocCodeComponent} from '../code';
+import {TuiDocCode} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
@@ -52,19 +52,23 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiLoader,
         TuiMapperPipe,
         NgTemplateOutlet,
-        TuiDocCodeComponent,
+        TuiDocCode,
     ],
     templateUrl: './example.template.html',
     styleUrls: ['./example.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocExampleComponent {
+export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly location = inject(LOCATION);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
-    private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+
+    private readonly rawLoader$$ = new BehaviorSubject<
+        Record<string, TuiRawLoaderContent>
+    >({});
+
     private readonly lazyLoader$$ = new ReplaySubject<Promise<{readonly default: any}>>(
         1,
     );
@@ -113,7 +117,7 @@ export class TuiDocExampleComponent {
     public componentName: string = this.location.pathname.slice(1);
 
     @Input()
-    public set content(content: TuiDocExample) {
+    public set content(content: Record<string, TuiRawLoaderContent>) {
         this.rawLoader$$.next(content);
     }
 

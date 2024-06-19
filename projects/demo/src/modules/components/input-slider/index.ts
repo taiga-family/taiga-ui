@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -18,7 +17,7 @@ import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({
@@ -26,14 +25,13 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     imports: [
         TuiDemo,
         TuiLink,
-        RouterLink,
         TuiNotificationComponent,
         TuiInputSliderModule,
         ReactiveFormsModule,
         TuiHint,
         TuiNumberFormatDirective,
         TuiTextfieldControllerModule,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

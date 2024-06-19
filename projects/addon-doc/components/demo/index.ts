@@ -58,7 +58,7 @@ const MIN_WIDTH = 160;
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocDemoComponent implements OnInit {
+export class TuiDocDemo implements OnInit {
     @ViewChild(TuiResizeableDirective, {static: true})
     private readonly resizeable?: ElementRef<HTMLElement>;
 

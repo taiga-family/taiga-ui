@@ -16,7 +16,7 @@ import {TuiChip, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit'
 import {TuiDocSeeAlsoComponent} from '../internal/see-also';
 import {TuiDocSourceCodeComponent} from '../internal/source-code/source-code.component';
 import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
-import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
+import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
     standalone: true,
@@ -41,7 +41,7 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: PAGE_PROVIDERS,
 })
-export class TuiDocPageComponent {
+export class TuiDocPage {
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
     protected readonly from = / /g;
     protected readonly to = '_';
@@ -61,9 +61,8 @@ export class TuiDocPageComponent {
     @Input()
     public deprecated: boolean | '' = false;
 
-    @ContentChildren(TuiDocPageTabConnectorDirective)
-    public readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> =
-        EMPTY_QUERY;
+    @ContentChildren(TuiDocPageTabConnector)
+    public readonly tabConnectors: QueryList<TuiDocPageTabConnector> = EMPTY_QUERY;
 
     public activeItemIndex = 0;
     public readonly seeAlso = inject(PAGE_SEE_ALSO);

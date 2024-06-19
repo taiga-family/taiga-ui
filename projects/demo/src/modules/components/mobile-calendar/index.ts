@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
-import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDoc} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
@@ -14,21 +12,12 @@ import {
     tuiControlValue,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {TuiLink} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAddonDoc,
-        TuiLink,
-        RouterLink,
-        TuiMobileCalendar,
-        TuiComponentPipe,
-        TuiExamplePipe,
-        TuiSetupComponent,
-    ],
+    imports: [TuiDemo, TuiMobileCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

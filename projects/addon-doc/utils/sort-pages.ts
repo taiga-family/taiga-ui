@@ -1,8 +1,8 @@
-import type {TuiDocPage, TuiDocPageGroup} from '@taiga-ui/addon-doc/types';
+import type {TuiDocRoutePage, TuiDocRoutePageGroup} from '@taiga-ui/addon-doc/types';
 
-import {tuiIsPageGroup} from './is-page-group';
+import {tuiIsRoutePageGroup} from './is-page-group';
 
-export function tuiSortPages<T extends TuiDocPage | TuiDocPageGroup>(
+export function tuiSortPages<T extends TuiDocRoutePage | TuiDocRoutePageGroup>(
     pages: readonly T[],
     excludeSections = new Set<string>(),
 ): readonly T[] {
@@ -31,7 +31,7 @@ export function tuiSortPages<T extends TuiDocPage | TuiDocPageGroup>(
     });
 
     return sortedPages.map(page =>
-        tuiIsPageGroup(page)
+        tuiIsRoutePageGroup(page)
             ? {
                   ...page,
                   subPages: tuiSortPages(page.subPages, excludeSections),

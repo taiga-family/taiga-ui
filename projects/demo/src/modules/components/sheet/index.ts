@@ -1,5 +1,4 @@
 import {Component, inject, ViewChild} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -16,7 +15,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiDemo,
         TuiNotificationComponent,
         TuiLink,
-        RouterLink,
+
         TuiButton,
         TuiAvatarComponent,
         TuiSheetModule,

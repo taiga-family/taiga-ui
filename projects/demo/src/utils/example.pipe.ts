@@ -1,13 +1,16 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDocPageComponent} from '@taiga-ui/addon-doc';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiDocPage} from '@taiga-ui/addon-doc';
 
 import {toKebab} from './kebab.pipe';
 
-@Pipe({standalone: true, name: 'tuiExample'})
+@Pipe({
+    standalone: true,
+    name: 'tuiExample',
+})
 export class TuiExamplePipe implements PipeTransform {
-    private readonly page = inject(TuiDocPageComponent);
+    private readonly page = inject(TuiDocPage);
 
     public transform(
         index: number,
@@ -17,7 +20,7 @@ export class TuiExamplePipe implements PipeTransform {
             | 'html,ts'
             | 'html'
             | 'ts' = 'html,ts,less',
-    ): TuiDocExample {
+    ): Record<string, TuiRawLoaderContent> {
         return Object.fromEntries(
             formats
                 .split(',')

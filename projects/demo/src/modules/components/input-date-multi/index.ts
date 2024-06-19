@@ -17,7 +17,7 @@ import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/l
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -29,7 +29,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiHint,
         TuiTextfieldControllerModule,
         TuiMobileCalendar,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
 
     templateUrl: './index.html',

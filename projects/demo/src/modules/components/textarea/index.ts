@@ -1,18 +1,17 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
-import {TuiHint, TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -23,9 +22,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         ReactiveFormsModule,
         TuiHint,
         TuiTextfieldControllerModule,
-        InheritedDocumentationComponent,
-        RouterLink,
-        TuiLink,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

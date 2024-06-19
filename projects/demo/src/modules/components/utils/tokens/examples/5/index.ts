@@ -3,10 +3,11 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [RouterLink],
+    imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

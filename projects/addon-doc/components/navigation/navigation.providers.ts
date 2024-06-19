@@ -3,13 +3,13 @@ import {InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs';
 
-function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
+function labelsProviderFactory(pages: TuiDocRoutePages): readonly string[] {
     return pages
         .map(({section}) => section)
         .filter(tuiIsPresent)
@@ -33,8 +33,8 @@ export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
 /**
  * Navigation pages
  */
-export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
-    new InjectionToken<readonly TuiDocPages[]>('[NAVIGATION_ITEMS]');
+export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocRoutePages[]> =
+    new InjectionToken<readonly TuiDocRoutePages[]>('[NAVIGATION_ITEMS]');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     tuiLinkOptionsProvider({appearance: 'icon'}),
@@ -63,7 +63,7 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
     {
         provide: NAVIGATION_ITEMS,
         deps: [TUI_DOC_PAGES],
-        useFactory: (pages: TuiDocPages): readonly TuiDocPages[] => {
+        useFactory: (pages: TuiDocRoutePages): readonly TuiDocRoutePages[] => {
             const labels = labelsProviderFactory(pages);
 
             return [

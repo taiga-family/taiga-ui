@@ -8,7 +8,7 @@ import {TuiButton} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
-import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
+import {TuiDocNavigation} from '../../navigation/navigation.component';
 
 @Component({
     standalone: true,
@@ -20,7 +20,7 @@ import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
         AsyncPipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiDocNavigationComponent,
+        TuiDocNavigation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

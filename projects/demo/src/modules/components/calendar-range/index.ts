@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -21,7 +20,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLink, RouterLink],
+    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

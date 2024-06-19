@@ -1,19 +1,15 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiLink} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
-        RouterLink,
-        TuiLink,
         TuiInputNumberModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

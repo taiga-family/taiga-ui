@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -23,21 +22,20 @@ import {
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
         TuiLink,
-        RouterLink,
         TuiNotificationComponent,
         TuiInputDateTimeModule,
         ReactiveFormsModule,
         TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

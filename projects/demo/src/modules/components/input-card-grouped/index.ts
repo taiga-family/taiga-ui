@@ -8,7 +8,7 @@ import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
@@ -18,7 +18,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
         TuiInputCardGroup,
         ReactiveFormsModule,
         TuiThumbnailCard,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

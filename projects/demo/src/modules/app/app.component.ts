@@ -1,14 +1,13 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiAddonDoc, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
@@ -22,12 +21,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     standalone: true,
     selector: 'app',
     imports: [
-        RouterOutlet,
-        AsyncPipe,
-        TuiAddonDoc,
-        NgIf,
-        TuiLink,
-        RouterLink,
+        TuiDemo,
         TuiLanguageSwitcherComponent,
         VersionManagerComponent,
         CustomHostComponent,

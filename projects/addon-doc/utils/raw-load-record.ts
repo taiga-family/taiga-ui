@@ -1,9 +1,9 @@
-import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 
 import {tuiRawLoad} from './raw-load';
 
 export async function tuiRawLoadRecord(
-    example: TuiDocExample,
+    example: Record<string, TuiRawLoaderContent>,
 ): Promise<Record<string, string>> {
     const processedContent: Record<string, string> = {};
 

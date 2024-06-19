@@ -17,10 +17,9 @@
         <tui-doc-example
             id="base"
             heading="Basic"
+            [component]="1 | tuiComponent"
             [content]="1 | tuiExample: 'html,ts'"
-        >
-            <tui-number-format-example-1 />
-        </tui-doc-example>
+        />
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

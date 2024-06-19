@@ -1,14 +1,13 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {TuiError, TuiLink} from '@taiga-ui/core';
+import {TuiError} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [RouterLink, TuiDemo, TuiError, TuiLink],
+    imports: [TuiDemo, TuiError],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -16,7 +16,7 @@ import {TuiInputMonthModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -26,7 +26,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiInputMonthModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

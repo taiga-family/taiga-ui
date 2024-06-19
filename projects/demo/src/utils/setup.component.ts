@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiDocCodeComponent, TuiDocPageComponent} from '@taiga-ui/addon-doc';
+import {TuiDocCode, TuiDocPage} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {toKebab} from './kebab.pipe';
@@ -8,7 +8,7 @@ import {toKebab} from './kebab.pipe';
 @Component({
     standalone: true,
     selector: 'tui-setup',
-    imports: [TuiDocCodeComponent],
+    imports: [TuiDocCode],
     template: `
         <ol class="tui-list tui-list_ordered">
             <li class="tui-list__item">
@@ -26,8 +26,8 @@ import {toKebab} from './kebab.pipe';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiSetupComponent {
-    private readonly page = inject(TuiDocPageComponent);
+export class TuiDocSetup {
+    private readonly page = inject(TuiDocPage);
 
     @Input()
     public import: TuiRawLoaderContent = '';

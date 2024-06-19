@@ -5,12 +5,19 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiSegmentedComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSegmentedComponent, RouterLink, FormsModule, RouterLinkActive, TuiIcon],
+    imports: [
+        TuiSegmentedComponent,
+        FormsModule,
+        TuiIcon,
+        RouterLink,
+        RouterLinkActive,
+        TuiButton,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

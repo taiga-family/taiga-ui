@@ -16,7 +16,7 @@ const COPIED_TIMEOUT = 1500;
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocCopyComponent {
+export class TuiDocCopy {
     private readonly copy$ = new Subject<void>();
 
     protected readonly texts$ = inject(TUI_COPY_TEXTS);

@@ -46,7 +46,7 @@ import {
 } from '@taiga-ui/legacy';
 import {merge, switchMap} from 'rxjs';
 
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiDocDocumentationPropertyConnector} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiInspectPipe} from './pipes/inspect.pipe';
@@ -100,16 +100,15 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         ]),
     ],
 })
-export class TuiDocDocumentationComponent implements AfterContentInit {
+export class TuiDocDocumentation implements AfterContentInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
     private readonly getColor = inject(TuiGetColorPipe);
     private readonly getOpacity = inject(TuiGetOpacityPipe);
 
-    @ContentChildren(TuiDocDocumentationPropertyConnectorDirective)
-    protected propertiesConnectors: QueryList<
-        TuiDocDocumentationPropertyConnectorDirective<any>
-    > = EMPTY_QUERY;
+    @ContentChildren(TuiDocDocumentationPropertyConnector)
+    protected propertiesConnectors: QueryList<TuiDocDocumentationPropertyConnector<any>> =
+        EMPTY_QUERY;
 
     protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
     protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
@@ -139,11 +138,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     protected matcher: TuiMatcher<
-        [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
+        [TuiDocDocumentationPropertyConnector<any>, Set<string>]
     > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
 
     protected onColorChange(
-        connector: TuiDocDocumentationPropertyConnectorDirective<string>,
+        connector: TuiDocDocumentationPropertyConnector<string>,
         color: string,
     ): void {
         const opacity = this.getOpacity.transform(
@@ -163,7 +162,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     }
 
     protected onOpacityChange(
-        connector: TuiDocDocumentationPropertyConnectorDirective<string>,
+        connector: TuiDocDocumentationPropertyConnector<string>,
         opacity: number | null,
     ): void {
         const hex = this.getColor.transform(connector.documentationPropertyValue || '');

@@ -19,9 +19,7 @@ export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' |
     selector: 'ng-template[documentationPropertyName]',
     exportAs: 'documentationProperty',
 })
-export class TuiDocDocumentationPropertyConnectorDirective<T>
-    implements OnInit, OnChanges
-{
+export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChanges {
     private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);

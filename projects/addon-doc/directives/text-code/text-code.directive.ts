@@ -4,7 +4,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
     standalone: true,
     selector: 'code[tuiText]',
 })
-export class TuiTextCodeDirective {
+export class TuiTextCode {
     @Input('tuiText')
     @HostBinding('textContent')
     public code = '';

@@ -3,8 +3,8 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {
-    TuiDocDocumentationComponent,
-    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocDocumentation,
+    TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 
@@ -17,13 +17,13 @@ import type {AbstractExampleTuiNumberFormat} from '../number-format';
     imports: [
         RouterLink,
         TuiLink,
-        TuiDocDocumentationComponent,
-        TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocDocumentation,
+        TuiDocDocumentationPropertyConnector,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class NumberFormatDocumentationComponent {
+export class NumberFormatDocumentation {
     protected readonly documentedComponent = inject<AbstractExampleTuiNumberFormat>(
         ABSTRACT_PROPS_ACCESSOR,
     );

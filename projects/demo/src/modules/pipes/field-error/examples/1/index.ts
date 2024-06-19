@@ -39,8 +39,9 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
         TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
-        RouterLink,
+
         TuiLink,
+        RouterLink,
     ],
     templateUrl: './index.html',
     encapsulation,

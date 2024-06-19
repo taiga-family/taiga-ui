@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
@@ -22,7 +21,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 class Account {
     constructor(
@@ -50,7 +49,7 @@ class Account {
         TuiDataList,
         TuiIcon,
         TuiButton,
-        InheritedDocumentationComponent,
+        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -66,7 +65,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     >;
 
-    protected readonly example9: TuiDocExample = {
+    protected readonly example9 = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),

@@ -23,7 +23,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocCodeComponent {
+export class TuiDocCode {
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
 
     protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
