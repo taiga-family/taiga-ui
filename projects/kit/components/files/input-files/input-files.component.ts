@@ -42,7 +42,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
         '[class._dragged]': 'fileDragged',
     },
 })
-export class TuiInputFilesComponent {
+export class TuiInputFiles {
     @ContentChild(TemplateRef)
     protected readonly template?: TemplateRef<TuiContext<boolean>>;
 

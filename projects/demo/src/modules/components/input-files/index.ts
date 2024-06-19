@@ -2,17 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiItem, tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiNotification} from '@taiga-ui/core';
-import {
-    TuiFileComponent,
-    TuiFileRejectedPipe,
-    tuiFilesAccepted,
-    TuiFilesComponent,
-    TuiInputFilesComponent,
-    TuiInputFilesDirective,
-} from '@taiga-ui/kit';
+import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -20,17 +13,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiNotification,
-        TuiInputFilesComponent,
-        TuiInputFilesDirective,
-        ReactiveFormsModule,
-        TuiFilesComponent,
-        TuiFileComponent,
-        TuiItem,
-        TuiFileRejectedPipe,
-    ],
+    imports: [TuiDemo, TuiNotification, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

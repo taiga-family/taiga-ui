@@ -4,11 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiFileLike} from '@taiga-ui/kit';
-import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
+import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFilesComponent, TuiFileComponent, NgForOf, TuiItem],
+    imports: [TuiFiles, NgForOf, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

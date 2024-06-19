@@ -6,19 +6,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import type {TuiFileLike} from '@taiga-ui/kit';
-import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
+import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiFilesComponent,
-        TuiFileComponent,
-        NgForOf,
-        NgIf,
-        TuiItem,
-        TuiLink,
-        TuiIcon,
-    ],
+    imports: [TuiFiles, NgForOf, NgIf, TuiItem, TuiLink, TuiIcon],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

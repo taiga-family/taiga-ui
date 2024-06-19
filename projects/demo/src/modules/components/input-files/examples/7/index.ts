@@ -3,26 +3,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiFileComponent,
-    TuiFileRejectedPipe,
-    TuiFilesComponent,
-    TuiInputFilesComponent,
-    TuiInputFilesDirective,
-} from '@taiga-ui/kit';
+import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiInputFilesComponent,
-        TuiInputFilesDirective,
-        FormsModule,
-        TuiFilesComponent,
-        TuiFileComponent,
-        NgForOf,
-        TuiFileRejectedPipe,
-        AsyncPipe,
-    ],
+    imports: [TuiFiles, FormsModule, NgForOf, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

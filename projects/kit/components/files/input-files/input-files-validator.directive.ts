@@ -15,7 +15,7 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
     exportAs: 'tuiInputFilesValidator',
     hostDirectives: [TuiValidatorDirective],
 })
-export class TuiInputFilesValidatorDirective implements OnChanges, OnInit {
+export class TuiInputFilesValidator implements OnChanges, OnInit {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     private readonly validator = inject(TuiValidatorDirective);
 

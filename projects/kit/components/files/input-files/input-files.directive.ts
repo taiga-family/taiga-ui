@@ -13,8 +13,8 @@ import {filter, map, switchMap, timer} from 'rxjs';
 
 import type {TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
-import {TuiInputFilesComponent} from './input-files.component';
-import {TuiInputFilesValidatorDirective} from './input-files-validator.directive';
+import {TuiInputFiles} from './input-files.component';
+import {TuiInputFilesValidator} from './input-files-validator.directive';
 
 @Directive({
     standalone: true,
@@ -39,7 +39,7 @@ import {TuiInputFilesValidatorDirective} from './input-files-validator.directive
             ],
         },
         {
-            directive: TuiInputFilesValidatorDirective,
+            directive: TuiInputFilesValidator,
             inputs: ['accept', 'maxFileSize'],
         },
     ],
@@ -48,7 +48,7 @@ export class TuiInputFilesDirective
     extends TuiControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiAppearanceOptions
 {
-    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
+    protected readonly host = inject(forwardRef(() => TuiInputFiles));
 
     @Output()
     public readonly reject = timer(0).pipe(
