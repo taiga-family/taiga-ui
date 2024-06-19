@@ -10,5 +10,5 @@ import {TuiActionBar} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class AppComponent {}
+export class App {}
 ```

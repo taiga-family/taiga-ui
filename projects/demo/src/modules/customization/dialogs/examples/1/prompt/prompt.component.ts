@@ -20,7 +20,7 @@ import type {PromptOptions} from './prompt-options';
     changeDetection,
     providers: [TuiDialogCloseService],
 })
-export class PromptComponent {
+export class Prompt {
     protected readonly context =
         inject<TuiPopover<PromptOptions, boolean>>(POLYMORPHEUS_CONTEXT);
 

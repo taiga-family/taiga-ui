@@ -6,7 +6,7 @@ import {inject, INJECTOR} from '@angular/core';
 import {CustomNotificationComponent} from './custom-notification.component';
 
 //...
-export class MyComponent {
+export class Example {
   constructor() {
     //...
     inject(TuiAlertService)

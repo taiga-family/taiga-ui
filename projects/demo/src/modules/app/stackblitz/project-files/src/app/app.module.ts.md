@@ -4,7 +4,7 @@ import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 
 import {ALL_TAIGA_UI_MODULES} from './@stackblitz/all-taiga-modules';
-import {AppComponent} from './app.component';
+import {App} from './app.component';
 
 @NgModule({
   /**
@@ -12,8 +12,8 @@ import {AppComponent} from './app.component';
    * it's a workaround for stackblitz
    */
   imports: ALL_TAIGA_UI_MODULES,
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+  declarations: [App],
+  bootstrap: [App],
   providers: [
     // A workaround because StackBlitz does not support assets
     tuiSvgOptionsProvider({

@@ -13,5 +13,5 @@ import {TuiButtonVerticalDirective} from '@taiga-ui/kit';
     TuiButtonVerticalDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

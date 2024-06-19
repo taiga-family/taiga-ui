@@ -27,7 +27,7 @@ import {TUI_VERSIONS_META_OPTIONS} from './versions.constants';
     templateUrl: './version-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VersionManagerComponent {
+export class VersionManager {
     private readonly locationRef = inject(LOCATION);
     private readonly router = inject(Router);
     protected readonly initialVersion = inject(TUI_SELECTED_VERSION_META);

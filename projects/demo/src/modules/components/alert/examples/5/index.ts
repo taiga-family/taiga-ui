@@ -23,7 +23,7 @@ import {takeUntil} from 'rxjs';
     `,
     changeDetection,
 })
-class CustomLabelComponent {}
+class CustomLabel {}
 
 @Component({
     standalone: true,
@@ -37,7 +37,7 @@ class CustomLabelComponent {}
     `,
     changeDetection,
 })
-class AlertExampleWithCustomLabelComponent {
+class AlertExampleWithCustomLabel {
     protected readonly context =
         inject<TuiPopover<TuiAlertOptions<unknown>, boolean>>(POLYMORPHEUS_CONTEXT);
 }
@@ -55,7 +55,7 @@ export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     private readonly notification = this.alerts
-        .open(new PolymorpheusComponent(AlertExampleWithCustomLabelComponent), {
+        .open(new PolymorpheusComponent(AlertExampleWithCustomLabel), {
             label: ({status}) =>
                 status === 'error'
                     ? 'Error label from function'
@@ -66,8 +66,8 @@ export default class Example {
         .pipe(takeUntil(this.router.events));
 
     private readonly notificationWithCustomLabel = this.alerts
-        .open(new PolymorpheusComponent(AlertExampleWithCustomLabelComponent), {
-            label: new PolymorpheusComponent(CustomLabelComponent),
+        .open(new PolymorpheusComponent(AlertExampleWithCustomLabel), {
+            label: new PolymorpheusComponent(CustomLabel),
             status: 'warning',
             autoClose: 0,
         })

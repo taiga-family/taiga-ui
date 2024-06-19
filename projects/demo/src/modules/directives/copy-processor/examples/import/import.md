@@ -11,5 +11,5 @@ import {TuiCopyProcessorDirective} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

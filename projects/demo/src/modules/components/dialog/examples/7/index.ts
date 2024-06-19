@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {SearchDialogExampleComponent} from './search-example/search-dialog-example.component';
+import {SearchDialogExample} from './search-example/search-dialog-example.component';
 
 @Component({
     standalone: true,
@@ -19,14 +19,11 @@ export default class Example {
 
     protected showDialog(): void {
         this.dialogs
-            .open(
-                new PolymorpheusComponent(SearchDialogExampleComponent, this.injector),
-                {
-                    size: 'page',
-                    closeable: true,
-                    dismissible: true,
-                },
-            )
+            .open(new PolymorpheusComponent(SearchDialogExample, this.injector), {
+                size: 'page',
+                closeable: true,
+                dismissible: true,
+            })
             .subscribe();
     }
 }

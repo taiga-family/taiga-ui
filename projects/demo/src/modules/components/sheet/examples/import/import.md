@@ -11,5 +11,5 @@ import {TuiSheetModule} from '@taiga-ui/legacy';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

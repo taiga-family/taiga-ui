@@ -12,4 +12,4 @@ import {CustomPortalService} from './custom-portal.service';
     changeDetection,
     providers: [tuiAsPortal(CustomPortalService)],
 })
-export class CustomHostComponent extends TuiPortalsComponent {}
+export class CustomHost extends TuiPortalsComponent {}

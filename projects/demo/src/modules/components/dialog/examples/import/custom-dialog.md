@@ -4,7 +4,7 @@ import {TuiDialogContext} from '@taiga-ui/core';
 
 // ...
 
-export class MyDialogComponent {
+export class Example {
   private readonly context: TuiDialogContext<boolean> = inject(POLYMORPHEUS_CONTEXT);
 
   ok() {

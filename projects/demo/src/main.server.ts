@@ -5,7 +5,7 @@ import {provideServerRendering, ServerModule} from '@angular/platform-server';
 import {RESIZE_OBSERVER_SUPPORT} from '@ng-web-apis/resize-observer';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
-import {AppComponent} from './modules/app/app.component';
+import {App} from './modules/app/app.component';
 import {config} from './modules/app/app.config';
 import {ServerErrorHandler} from './modules/app/server-error-handler';
 
@@ -30,4 +30,4 @@ const serverConfig = mergeApplicationConfig(config, {
 });
 
 export default async (): Promise<ApplicationRef> =>
-    bootstrapApplication(AppComponent, serverConfig);
+    bootstrapApplication(App, serverConfig);

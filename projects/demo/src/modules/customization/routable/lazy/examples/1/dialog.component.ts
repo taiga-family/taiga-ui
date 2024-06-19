@@ -5,4 +5,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     template: 'Lazy loaded dialog content',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class LazyDialogComponent {}
+export default class LazyDialog {}

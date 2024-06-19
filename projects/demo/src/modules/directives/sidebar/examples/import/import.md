@@ -13,7 +13,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk';
   ],
   // ...
 })
-export class MyComponent {
+export class Example {
   open = false;
 
   toggle(open: boolean) {

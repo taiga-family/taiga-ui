@@ -10,5 +10,5 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
     TuiBlockDetails,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

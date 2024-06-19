@@ -8,8 +8,8 @@ import {TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
-import {ActionsContentComponent} from './actions-content';
-import {PdfContentComponent} from './pdf-content';
+import {ActionsContent} from './actions-content';
+import {PdfContent} from './pdf-content';
 
 export type Buttons = ReadonlyArray<
     Readonly<{
@@ -32,7 +32,7 @@ export default class Example {
     protected show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
             label: 'Taiga UI',
-            actions: new PolymorpheusComponent(ActionsContentComponent),
+            actions: new PolymorpheusComponent(ActionsContent),
             data: [
                 {
                     text: 'Sign',
@@ -46,7 +46,7 @@ export default class Example {
         };
 
         this.pdfService
-            .open<string>(new PolymorpheusComponent(PdfContentComponent), options)
+            .open<string>(new PolymorpheusComponent(PdfContent), options)
             .pipe(switchMap(response => this.alerts.open(response)))
             .subscribe();
     }

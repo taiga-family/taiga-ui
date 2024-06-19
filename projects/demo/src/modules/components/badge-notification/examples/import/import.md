@@ -10,5 +10,5 @@ import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
     TuiBadgeNotificationComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

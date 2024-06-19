@@ -11,5 +11,5 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

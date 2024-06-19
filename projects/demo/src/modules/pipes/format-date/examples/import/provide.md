@@ -17,5 +17,5 @@ export class FormatService extends TuiFormatDateService {
     },
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

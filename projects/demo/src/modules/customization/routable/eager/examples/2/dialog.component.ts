@@ -5,4 +5,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     template: 'Dialog content via named outlet',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogComponent {}
+export class DialogExample {}

@@ -10,5 +10,5 @@ import {TuiAppearanceDirective} from '@taiga-ui/core';
     TuiAppearanceDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

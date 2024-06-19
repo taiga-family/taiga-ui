@@ -24,5 +24,5 @@ import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
     ),
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

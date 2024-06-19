@@ -11,5 +11,5 @@ import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

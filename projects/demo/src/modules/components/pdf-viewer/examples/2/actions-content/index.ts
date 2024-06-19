@@ -13,7 +13,7 @@ import type {Buttons} from '../index';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ActionsContentComponent {
+export class ActionsContent {
     protected readonly context =
         inject<TuiPopover<TuiPdfViewerOptions<Buttons>, string>>(POLYMORPHEUS_CONTEXT);
 }

@@ -11,7 +11,7 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
     TuiTextareaModule,
   ],
 })
-export class MyComponent {
+export class Example {
   testForm = new FormGroup({
     testValue: new FormControl('Content'),
   });

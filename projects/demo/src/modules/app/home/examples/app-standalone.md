@@ -12,5 +12,5 @@ import {TuiRoot} from '@taiga-ui/core';
   templateUrl: './app.component.html',
   styleUrls: ['./my.component.scss', './my.component.less'],
 })
-export class AppComponent {}
+export class App {}
 ```

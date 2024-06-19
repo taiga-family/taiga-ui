@@ -17,7 +17,7 @@ import {TuiDataListWrapper, TuiMultiSelectModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyComponent {
+export class Example {
   testForm = new FormGroup({
     testValue: new FormControl(),
   });

@@ -7,7 +7,7 @@ import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
   imports: [ReactiveFormsModule, TuiInputPhoneInternationalComponent],
   // ...
 })
-export class MyComponent {
+export class Example {
   readonly testForm = new FormGroup({
     testValue: new FormControl('+78005553535'),
   });

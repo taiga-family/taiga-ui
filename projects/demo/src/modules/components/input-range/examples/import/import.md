@@ -14,5 +14,5 @@ import {TuiInputRangeModule} from '@taiga-ui/legacy';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

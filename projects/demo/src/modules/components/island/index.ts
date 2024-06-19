@@ -6,17 +6,11 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiButton, TuiNotification} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
-import {StylesInfoComponent} from '../../app/styles-info';
+import {StylesInfo} from '../../app/styles-info';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        StylesInfoComponent,
-        TuiIslandDirective,
-        TuiButton,
-        TuiNotification,
-    ],
+    imports: [TuiDemo, StylesInfo, TuiIslandDirective, TuiButton, TuiNotification],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

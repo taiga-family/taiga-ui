@@ -10,5 +10,5 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     TuiProgressModule,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

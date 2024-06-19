@@ -7,7 +7,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
   imports: [FormsModule, ReactiveFormsModule, TuiInputNumberModule],
   // ...
 })
-export class MyComponent {
+export class Example {
   testForm = new FormGroup({
     testValue: new FormControl(5000),
   });

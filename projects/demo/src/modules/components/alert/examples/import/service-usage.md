@@ -2,7 +2,7 @@
 import {TuiAlertService} from '@taiga-ui/core';
 //...
 
-export class MyComponent {
+export class Example {
   private readonly alerts = inject(TuiAlertService);
 
   constructor() {

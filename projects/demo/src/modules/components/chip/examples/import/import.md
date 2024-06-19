@@ -9,5 +9,5 @@ import {TuiChip} from '@taiga-ui/kit';
     TuiChip,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

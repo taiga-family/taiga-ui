@@ -11,5 +11,5 @@ import {TuiAppBar} from '@taiga-ui/layout';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

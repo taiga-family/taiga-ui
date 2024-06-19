@@ -10,5 +10,5 @@ import {TuiCompassComponent} from '@taiga-ui/kit';
     TuiCompassComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

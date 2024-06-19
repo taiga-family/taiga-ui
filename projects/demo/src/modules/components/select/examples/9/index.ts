@@ -8,7 +8,7 @@ import {TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import type {MyAccount} from './account';
-import {ExampleMyAccountComponent} from './account';
+import {ExampleMyAccount} from './account';
 
 @Component({
     standalone: true,
@@ -18,7 +18,7 @@ import {ExampleMyAccountComponent} from './account';
         ReactiveFormsModule,
         TuiDataList,
         NgForOf,
-        ExampleMyAccountComponent,
+        ExampleMyAccount,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

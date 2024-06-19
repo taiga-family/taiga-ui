@@ -5,15 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
-import {ExampleNativeDateTransformerDirective} from './native-date-transformer.directive';
+import {ExampleNativeDateTransformer} from './native-date-transformer.directive';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiInputDateModule,
-        ReactiveFormsModule,
-        ExampleNativeDateTransformerDirective,
-    ],
+    imports: [TuiInputDateModule, ReactiveFormsModule, ExampleNativeDateTransformer],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

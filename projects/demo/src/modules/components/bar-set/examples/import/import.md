@@ -11,5 +11,5 @@ import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
   ],
 })
 // ...
-export class MyComponent {}
+export class Example {}
 ```

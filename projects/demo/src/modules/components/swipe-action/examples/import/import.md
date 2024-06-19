@@ -10,5 +10,5 @@ import {TuiSwipeActionsModule} from '@taiga-ui/experimental';
     TuiSwipeActionsModule,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

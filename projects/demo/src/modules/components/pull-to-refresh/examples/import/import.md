@@ -11,5 +11,5 @@ import {TuiPullToRefresh} from '@taiga-ui/addon-mobile';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

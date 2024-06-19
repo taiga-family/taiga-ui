@@ -10,5 +10,5 @@ import {TuiAmountPipeModule} from '@taiga-ui/experimental';
     TuiAmountPipeModule,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

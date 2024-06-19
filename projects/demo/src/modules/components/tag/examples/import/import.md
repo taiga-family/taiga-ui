@@ -12,5 +12,5 @@ import {TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
     }),
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

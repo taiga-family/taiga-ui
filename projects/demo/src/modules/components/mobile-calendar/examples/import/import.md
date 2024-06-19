@@ -14,5 +14,5 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
   providers: [tuiProvideMobileCalendar()],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

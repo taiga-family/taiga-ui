@@ -3,7 +3,7 @@
   standalone: true,
   // ..
 })
-export class MyComponent {
+export class Example {
   @tuiPure
   get complexCalculationWithFixedResult(): number {
     // ...

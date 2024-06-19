@@ -16,7 +16,7 @@ import type {Color} from '../../constants';
     styleUrls: ['./table.style.less'],
     changeDetection,
 })
-export class TableComponent {
+export class TableColors {
     private readonly themeService = inject(TuiThemeService);
     private readonly doc = inject(DOCUMENT);
     private readonly win = inject(WINDOW);

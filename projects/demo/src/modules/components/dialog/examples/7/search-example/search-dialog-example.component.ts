@@ -12,7 +12,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
     styleUrls: ['./search-dialog-example.component.less'],
     changeDetection,
 })
-export class SearchDialogExampleComponent {
+export class SearchDialogExample {
     private readonly context = inject<TuiDialogContext<boolean>>(POLYMORPHEUS_CONTEXT);
 
     protected close(): void {

@@ -10,6 +10,6 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StylesInfoComponent {
+export class StylesInfo {
     protected readonly routes = DemoRoute;
 }

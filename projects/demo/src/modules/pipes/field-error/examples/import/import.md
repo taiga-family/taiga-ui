@@ -10,5 +10,5 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
     TuiFieldErrorPipe,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

@@ -12,5 +12,5 @@ import {TuiButtonClose} from '@taiga-ui/kit';
     TuiButtonClose,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

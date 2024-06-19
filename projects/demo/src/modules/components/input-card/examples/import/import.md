@@ -13,5 +13,5 @@ import {TuiInputCard, TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerc
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```

@@ -2,7 +2,7 @@
 import {TuiBreakpointService} from '@taiga-ui/core';
 
 // ...
-export class MyComponent {
+export class Example {
   private readonly breakpoint$ = inject(TuiBreakpointService);
 }
 ```

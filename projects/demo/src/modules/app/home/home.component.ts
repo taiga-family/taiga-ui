@@ -14,7 +14,7 @@ import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export class HomeComponent {
+export class Home {
     protected readonly angularJsonStyles = import(
         './examples/angular-json-styles.md?raw'
     );

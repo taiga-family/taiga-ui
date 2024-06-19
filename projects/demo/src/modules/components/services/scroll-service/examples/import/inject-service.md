@@ -5,7 +5,7 @@
   providers: [TuiScrollService],
   // ...
 })
-export class MyComponent {
+export class Example {
   private tuiScrollService = inject(TuiScrollService);
 
   ngOnInit() {

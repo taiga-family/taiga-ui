@@ -10,5 +10,5 @@ import {TuiHeader} from '@taiga-ui/layout';
     TuiHeader,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

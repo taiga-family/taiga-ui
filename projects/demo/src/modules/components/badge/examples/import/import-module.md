@@ -10,5 +10,5 @@ import {TuiBadgeDirective} from '@taiga-ui/kit';
     TuiBadgeDirective,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

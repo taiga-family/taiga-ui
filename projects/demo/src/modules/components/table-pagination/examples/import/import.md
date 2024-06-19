@@ -10,5 +10,5 @@ import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
     TuiTablePaginationComponent,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

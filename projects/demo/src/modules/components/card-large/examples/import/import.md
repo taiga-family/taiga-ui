@@ -10,5 +10,5 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     TuiCardLarge,
   ],
 })
-export class Component {}
+export class Example {}
 ```

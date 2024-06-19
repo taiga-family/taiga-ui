@@ -11,11 +11,11 @@ import {
     TEXT,
     TEXT_NIGHT,
 } from './constants';
-import {TableComponent} from './examples/table/table.component';
+import {TableColors} from './examples/table/table.component';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TableComponent],
+    imports: [TuiDemo, TableColors],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

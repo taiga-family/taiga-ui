@@ -7,7 +7,7 @@ import {TuiDialogContext} from '@taiga-ui/core';
 @Component({
   // ...
 })
-export class SomeComponent {
+export class Example {
   private readonly previewDialogService = inject(TuiPreviewDialogService);
 
   @ViewChild(`preview`)

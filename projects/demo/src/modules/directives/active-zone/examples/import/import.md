@@ -11,7 +11,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk';
   ],
   // ...
 })
-export class MyComponent {
+export class Example {
   active = false;
 
   onActiveZone(active: boolean) {

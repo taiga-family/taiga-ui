@@ -10,5 +10,5 @@ import {TuiButton} from '@taiga-ui/core';
     TuiButton,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

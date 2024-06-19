@@ -10,5 +10,5 @@ import {TuiIcon} from '@taiga-ui/core';
     TuiIcon,
   ],
 })
-export class MyComponent {}
+export class Example {}
 ```

@@ -16,4 +16,4 @@ import {TuiLink} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StackblitzEditButtonComponent {}
+export class StackblitzEditButton {}

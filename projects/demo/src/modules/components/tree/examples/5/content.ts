@@ -18,7 +18,7 @@ import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
         '(click)': 'onClick()',
     },
 })
-export class FoldersComponent extends TuiTreeItemContentComponent {
+export class Folders extends TuiTreeItemContentComponent {
     protected get icon(): string {
         return this.isExpandable ? '@tui.folder' : '@tui.file';
     }

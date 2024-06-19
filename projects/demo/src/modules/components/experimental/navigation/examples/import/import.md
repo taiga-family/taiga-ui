@@ -11,5 +11,5 @@ import {TuiNavigationModule} from '@taiga-ui/experimental';
   ],
   // ...
 })
-export class MyComponent {}
+export class Example {}
 ```
