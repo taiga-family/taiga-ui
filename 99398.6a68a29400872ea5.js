@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99398],{99398:e=>{e.exports="```ts\nimport {inject} from '@angular/core';\nimport {TuiKeyboardService} from '@taiga-ui/cdk';\n\n// ...\nexport class Example {\n  private readonly keyboard = inject(TuiKeyboardService);\n\n  toggle(): void {\n    this.keyboard.toggle();\n  }\n}\n```\n"}}]);
