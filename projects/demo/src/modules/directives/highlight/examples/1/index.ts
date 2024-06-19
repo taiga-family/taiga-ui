@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHighlightDirective} from '@taiga-ui/kit';
+import {TuiHighlight} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiTextfieldControllerModule,
         FormsModule,
         NgForOf,
-        TuiHighlightDirective,
+        TuiHighlight,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

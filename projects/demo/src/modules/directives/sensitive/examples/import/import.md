@@ -1,6 +1,6 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiSensitiveDirective} from '@taiga-ui/kit';
+import {TuiSensitive} from '@taiga-ui/kit';
 
 // ...
 
@@ -8,7 +8,7 @@ import {TuiSensitiveDirective} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiSensitiveDirective,
+    TuiSensitive,
   ],
 })
 export class Example {}

@@ -27,7 +27,7 @@ class TuiCommentStyles {}
         '[attr.data-direction]': 'tuiComment',
     },
 })
-export class TuiCommentDirective {
+export class TuiComment {
     protected readonly nothing = tuiWithStyles(TuiCommentStyles);
 
     @Input()

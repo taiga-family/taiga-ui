@@ -9,7 +9,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
     TuiTextfieldControllerModule,
-    TuiUnfinishedValidatorDirective,
+    TuiUnfinishedValidator,
 } from '@taiga-ui/legacy';
 
 @Component({
@@ -21,7 +21,7 @@ import {
         TuiFieldErrorPipe,
         ReactiveFormsModule,
         AsyncPipe,
-        TuiUnfinishedValidatorDirective,
+        TuiUnfinishedValidator,
     ],
     templateUrl: './index.html',
     encapsulation,

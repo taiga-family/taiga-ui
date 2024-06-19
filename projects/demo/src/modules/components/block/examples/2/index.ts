@@ -3,17 +3,11 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiGroupDirective} from '@taiga-ui/core';
-import {TuiBlock, TuiFadeDirective, TuiRadio} from '@taiga-ui/kit';
+import {TuiBlock, TuiFade, TuiRadio} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiRadio,
-        ReactiveFormsModule,
-        TuiGroupDirective,
-        TuiBlock,
-        TuiFadeDirective,
-    ],
+    imports: [TuiRadio, ReactiveFormsModule, TuiGroupDirective, TuiBlock, TuiFade],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

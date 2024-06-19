@@ -7,7 +7,7 @@ import {
     TuiAvatar,
     TuiBadgeNotification,
     TuiCheckbox,
-    TuiSensitiveDirective,
+    TuiSensitive,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
@@ -18,7 +18,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiLoader,
         TuiTooltip,
         TuiAvatar,
-        TuiSensitiveDirective,
+        TuiSensitive,
         TuiBadgeNotification,
         FormsModule,
         TuiIcon,

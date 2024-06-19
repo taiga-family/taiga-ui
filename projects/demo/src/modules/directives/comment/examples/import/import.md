@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiCommentDirective} from '@taiga-ui/kit';
+import {TuiComment} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiCommentDirective,
+    TuiComment,
   ],
 })
 export class Example {}

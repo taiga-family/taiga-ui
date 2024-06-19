@@ -14,7 +14,7 @@ import {svgNodeFilter, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
         '[style.zIndex]': '0',
     },
 })
-export class TuiHighlightDirective implements OnChanges {
+export class TuiHighlight implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
