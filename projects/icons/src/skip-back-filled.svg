@@ -1,0 +1,16 @@
+<!-- @license lucide-static v0.395.0 - ISC -->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="lucide lucide-skip-back"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <polygon vector-effect="non-scaling-stroke" points="19 20 9 12 19 4 19 20" />
+    <line vector-effect="non-scaling-stroke" x1="5" x2="5" y1="19" y2="5" />
+</svg>
