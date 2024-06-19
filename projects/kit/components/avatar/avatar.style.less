@@ -22,13 +22,6 @@
     padding: 0.25rem;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
-    &:before {
-        .fullsize();
-
-        background: currentColor;
-        mask: var(--t-mask) no-repeat center/60%;
-    }
-
     &[data-size='xs'] {
         --t-size: var(--tui-height-xs);
         --t-radius: 0.5rem;
@@ -127,6 +120,13 @@
 
     &._svg img {
         padding: 20%;
+    }
+
+    tui-icon {
+        .center-all();
+
+        width: 60%;
+        height: 60%;
     }
 
     ::ng-deep img,

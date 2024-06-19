@@ -1,5 +1,4 @@
 import {DOCUMENT} from '@angular/common';
-import type {OnChanges} from '@angular/core';
 import {Directive, inject, Input, NgZone} from '@angular/core';
 import {
     tuiIfMap,
@@ -12,13 +11,13 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
+    BehaviorSubject,
     debounce,
     distinctUntilChanged,
     fromEvent,
     map,
     merge,
     of,
-    ReplaySubject,
     skip,
     startWith,
     switchMap,
@@ -30,12 +29,12 @@ import {
     selector: '[tuiHintDescribe]',
     providers: [tuiAsDriver(TuiHintDescribe)],
 })
-export class TuiHintDescribe extends TuiDriver implements OnChanges {
-    private readonly zone = inject(NgZone);
+export class TuiHintDescribe extends TuiDriver {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
-    private readonly id$ = new ReplaySubject(1);
+    private readonly id$ = new BehaviorSubject('');
     private readonly stream$ = this.id$.pipe(
+        distinctUntilChanged(),
         tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),
         switchMap(() =>
             this.focused
@@ -49,11 +48,8 @@ export class TuiHintDescribe extends TuiDriver implements OnChanges {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(inject(NgZone)),
     );
-
-    @Input()
-    public tuiHintDescribe?: string | null = '';
 
     public readonly type = 'hint';
 
@@ -61,13 +57,14 @@ export class TuiHintDescribe extends TuiDriver implements OnChanges {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    public ngOnChanges(): void {
-        this.id$.next(this.tuiHintDescribe);
+    @Input()
+    public set tuiHintDescribe(id: string | null | undefined) {
+        this.id$.next(id || '');
     }
 
     @tuiPure
     private get element(): HTMLElement {
-        return this.doc.getElementById(this.tuiHintDescribe || '') || this.el;
+        return this.doc.getElementById(this.id$.value || '') || this.el;
     }
 
     private get focused(): boolean {

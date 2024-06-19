@@ -37,7 +37,7 @@ export interface TuiHintOptions {
     readonly appearance: string;
     readonly direction: TuiHintDirection;
     readonly hideDelay: number;
-    readonly icon: PolymorpheusContent;
+    readonly icon: string;
     readonly showDelay: number;
 }
 

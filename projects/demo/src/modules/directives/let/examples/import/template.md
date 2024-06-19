@@ -2,7 +2,7 @@
 <ng-container *tuiLet="someStream | async as streamValue">
   <p>
     {{streamValue}}
-    <tui-tooltip [content]="template"></tui-tooltip>
+    <tui-icon [tuiTooltip]="template"></tui-icon>
   </p>
   <button
     tuiButton

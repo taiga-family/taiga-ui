@@ -5,6 +5,10 @@
         loading="lazy"
         [src]="value"
     />
+    <tui-icon
+        *ngSwitchCase="'icon'"
+        [icon]="value.toString()"
+    />
     <ng-container *ngSwitchCase="'text'">{{ value }}</ng-container>
     <ng-container *ngSwitchDefault>
         <ng-content />

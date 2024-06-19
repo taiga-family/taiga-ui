@@ -28,3 +28,4 @@ export * from '@taiga-ui/legacy/components/svg';
 export * from '@taiga-ui/legacy/components/table-bar';
 export * from '@taiga-ui/legacy/components/tag';
 export * from '@taiga-ui/legacy/components/textarea';
+export * from '@taiga-ui/legacy/components/tooltip';

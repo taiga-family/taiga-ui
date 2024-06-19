@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
+import {TUI_ICON, TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,
@@ -38,7 +38,7 @@ export class TuiIcons {
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     @Input()
-    public iconLeft = '';
+    public iconLeft = inject(TUI_ICON);
 
     @Input()
     public iconRight = '';

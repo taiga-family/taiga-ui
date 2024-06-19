@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiLoader} from '@taiga-ui/core';
-import {TuiTooltipModule} from '@taiga-ui/experimental';
+import {TuiIcon, TuiLoader, TuiTitle, TuiTooltip} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
     TuiBadgeNotificationComponent,
@@ -17,13 +16,14 @@ import {TuiCell} from '@taiga-ui/layout';
     imports: [
         TuiCell,
         TuiLoader,
-        TuiTooltipModule,
+        TuiTooltip,
         TuiAvatarComponent,
         TuiSensitiveDirective,
         TuiBadgeNotificationComponent,
         FormsModule,
         TuiIcon,
         TuiCheckboxComponent,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

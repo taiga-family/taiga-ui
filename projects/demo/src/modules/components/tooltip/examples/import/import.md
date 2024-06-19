@@ -1,5 +1,5 @@
 ```ts
-import {TuiTooltipModule, TuiHint} from '@taiga-ui/core';
+import {TuiTooltip, TuiHint} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiTooltipModule, TuiHint} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiTooltipModule,
+    TuiTooltip,
     TuiHint,
   ],
   // ...

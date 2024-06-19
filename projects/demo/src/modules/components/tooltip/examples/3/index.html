@@ -5,9 +5,9 @@
     class="input"
     [tuiTextfieldLabelOutside]="true"
 />
-<tui-tooltip
-    direction="bottom"
-    [content]="tooltip"
+<tui-icon
+    tuiHintDirection="bottom"
+    [tuiTooltip]="tooltip"
 />
 
 <tui-input
@@ -15,9 +15,10 @@
     class="input"
     [tuiTextfieldLabelOutside]="true"
 />
-<tui-tooltip
-    content="Set icon color with 'color'"
-    direction="right"
+<tui-icon
+    appearance=""
+    tuiHintDirection="bottom"
+    tuiTooltip="Set icon color with 'color' after resetting appearance"
     class="primary"
 />
 
@@ -25,7 +26,7 @@
     tuiTextfieldSize="m"
     class="input"
 />
-<tui-tooltip
-    direction="right"
-    [content]="tooltip"
+<tui-icon
+    tuiHintDirection="right"
+    [tuiTooltip]="tooltip"
 />

@@ -1,22 +1,22 @@
 <p>Component with a static text...</p>
-<tui-tooltip
-    content="Supports basic <strong>HTML</strong>"
-    direction="right"
+<tui-icon
+    tuiHintDirection="right"
+    tuiTooltip="Supports basic <strong>HTML</strong>"
 />
 <p>
     ...or any custom HTML or logic with
     <code>PolymorpheusContent</code>
     :
 </p>
-<tui-tooltip
-    direction="bottom-right"
-    [content]="tooltip"
+<tui-icon
+    tuiHintDirection="bottom-right"
+    [tuiTooltip]="tooltip"
 />
 <p class="wrapping-tooltip">
     Example of wrapping tooltip
-    <tui-tooltip
-        direction="bottom-right"
-        [content]="tooltip"
+    <tui-icon
+        tuiHintDirection="bottom-right"
+        [tuiTooltip]="tooltip"
     />
 </p>
 

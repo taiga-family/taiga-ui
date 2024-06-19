@@ -155,11 +155,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/title'),
     }),
     route({
-        path: DemoRoute.TooltipExp,
-        loadComponent: async () => import('../components/experimental/tooltip'),
-        title: 'Tooltip ',
-    }),
-    route({
         path: DemoRoute.CardMedium,
         loadComponent: async () => import('../components/card-medium'),
         title: 'CardMedium',

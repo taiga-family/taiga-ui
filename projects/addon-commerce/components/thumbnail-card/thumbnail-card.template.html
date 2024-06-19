@@ -28,7 +28,7 @@
             <img
                 class="t-logo"
                 [alt]="paymentSystem"
-                [src]="resolver(paymentIcons[paymentSystem]).replace('Outline', '')"
+                [src]="paymentIcons[paymentSystem] | tuiIcon"
             />
         </ng-template>
     </ng-container>
