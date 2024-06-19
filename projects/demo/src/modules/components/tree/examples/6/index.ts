@@ -21,14 +21,7 @@ function flatten(item: TreeNode): readonly TreeNode[] {
 
 @Component({
     standalone: true,
-    imports: [
-        TuiTree,
-        NgForOf,
-        TuiCheckbox,
-        TuiLabel,
-        FormsModule,
-        TuiMapperPipe,
-    ],
+    imports: [TuiTree, NgForOf, TuiCheckbox, TuiLabel, FormsModule, TuiMapperPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

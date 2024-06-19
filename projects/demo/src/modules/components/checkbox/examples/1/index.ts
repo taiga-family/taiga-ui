@@ -10,13 +10,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        NgForOf,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiCheckbox,
-        TuiPlatform,
-    ],
+    imports: [NgForOf, FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
