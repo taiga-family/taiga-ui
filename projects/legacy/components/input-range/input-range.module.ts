@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZone} from '@taiga-ui/cdk';
-import {TuiNumberFormatDirective} from '@taiga-ui/core';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiRangeComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {
@@ -24,7 +24,7 @@ import {TuiInputRangeComponent} from './input-range.component';
         TuiRangeComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
-        TuiNumberFormatDirective,
+        TuiNumberFormat,
     ],
     declarations: [TuiInputRangeComponent],
     exports: [TuiInputRangeComponent],

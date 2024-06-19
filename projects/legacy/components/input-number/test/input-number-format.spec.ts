@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode} from '@taiga-ui/core';
-import {TuiNumberFormatDirective, tuiNumberFormatProvider} from '@taiga-ui/core';
+import {TuiNumberFormat, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
@@ -12,7 +12,7 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 describe('InputNumber - backward compatibility for separators', () => {
     @Component({
         standalone: true,
-        imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormatDirective],
+        imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormat],
         template: `
             <ng-container [formGroup]="form">
                 <tui-input-number

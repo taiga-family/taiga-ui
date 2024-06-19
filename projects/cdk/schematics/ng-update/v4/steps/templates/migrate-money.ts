@@ -57,7 +57,7 @@ export function migrateMoney({
         if (decimalAttr || precisionAttr) {
             addImportToClosestModule(
                 resource.componentPath,
-                'TuiNumberFormatDirective',
+                'TuiNumberFormat',
                 '@taiga-ui/core',
             );
 

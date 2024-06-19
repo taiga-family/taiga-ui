@@ -26,13 +26,13 @@ import { TuiMoneyModule } from "@taiga-ui/addon-commerce";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiNumberFormatDirective } from "@taiga-ui/core";
+const COMPONENT_AFTER = `import { TuiNumberFormat } from "@taiga-ui/core";
 import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAmountPipe, TuiNumberFormatDirective]
+    imports: [TuiAmountPipe, TuiNumberFormat]
 })
 export class Test {
 }`;

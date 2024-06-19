@@ -3,12 +3,12 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
-import {TuiNumberFormatDirective} from '@taiga-ui/core';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormatDirective],
+    imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormat],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
