@@ -7,7 +7,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
+import {TuiLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
@@ -22,7 +22,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     selector: 'app',
     imports: [
         TuiDemo,
-        TuiLanguageSwitcherComponent,
+        TuiLanguageSwitcher,
         VersionManager,
         CustomHost,
         TuiTextfieldControllerModule,
