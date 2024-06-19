@@ -13,7 +13,7 @@ import {EMPTY_QUERY, TuiIdService, TuiMapperPipe, tuiPure, tuiSum} from '@taiga-
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiHint,
-    TuiHintHoverDirective,
+    TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core';
@@ -33,7 +33,7 @@ export class TuiBarChartComponent {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoIdString = inject(TuiIdService).generate();
 
-    @ViewChildren(TuiHintHoverDirective)
+    @ViewChildren(TuiHintHover)
     protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()

@@ -8,7 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-tooltip',
@@ -20,8 +20,8 @@ import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core';
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
 
-    @ViewChild(TuiHintHoverDirective)
-    protected readonly driver$?: TuiHintHoverDirective;
+    @ViewChild(TuiHintHover)
+    protected readonly driver$?: TuiHintHover;
 
     @Input()
     public describeId = '';

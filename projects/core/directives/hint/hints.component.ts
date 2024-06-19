@@ -29,7 +29,7 @@ import {TuiHintService} from './hint.service';
         'aria-live': 'polite',
     },
 })
-export class TuiHintsComponent implements OnInit {
+export class TuiHints implements OnInit {
     private readonly hints$ = inject(TuiHintService);
     private readonly destroyRef = inject(DestroyRef);
     private readonly cdr = inject(ChangeDetectorRef);

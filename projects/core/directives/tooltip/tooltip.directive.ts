@@ -19,7 +19,7 @@ import {
     TUI_HINT_OPTIONS,
     TuiHintDescribe,
     TuiHintDirective,
-    TuiHintHoverDirective,
+    TuiHintHover,
 } from '@taiga-ui/core/directives/hint';
 import {TUI_ICON} from '@taiga-ui/core/tokens';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
@@ -70,7 +70,7 @@ export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly describe = inject(TuiHintDescribe);
-    private readonly driver = inject(TuiHintHoverDirective);
+    private readonly driver = inject(TuiHintHover);
 
     protected readonly nothing = tuiWithStyles(TuiTooltipStyles);
     protected readonly state = bindAppearanceState();
@@ -97,7 +97,7 @@ function bindAppearanceState(): Signal<TuiInteractiveState | null> {
         TuiAppearance,
         'tuiAppearanceState',
         toSignal(
-            inject(TuiHintHoverDirective).pipe(
+            inject(TuiHintHover).pipe(
                 map(hover => (hover ? 'hover' : null)),
                 tuiWatch(inject(ChangeDetectorRef)),
             ),

@@ -30,16 +30,16 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
-import {TuiHintHoverDirective} from './hint-hover.directive';
+import {TuiHintHover} from './hint-hover.directive';
 import {TuiHintPointer} from './hint-pointer.directive';
-import {TuiHintPositionDirective} from './hint-position.directive';
+import {TuiHintPosition} from './hint-position.directive';
 
 const GAP = 4;
 
 export const TUI_HINT_PROVIDERS = [
     TuiPositionService,
     TuiHoveredService,
-    tuiPositionAccessorFor('hint', TuiHintPositionDirective),
+    tuiPositionAccessorFor('hint', TuiHintPosition),
     tuiRectAccessorFor('hint', TuiHintDirective),
 ];
 
@@ -68,7 +68,7 @@ export class TuiHintComponent<C = any> {
         inject<TuiContext<TuiPortalItem<C>>>(POLYMORPHEUS_CONTEXT);
 
     private readonly el = tuiInjectElement();
-    private readonly hover = inject(TuiHintHoverDirective);
+    private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
 

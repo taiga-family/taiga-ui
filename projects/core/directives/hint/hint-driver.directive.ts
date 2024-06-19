@@ -5,6 +5,6 @@ import {TuiDriverDirective} from '@taiga-ui/core/classes';
     standalone: true,
     selector: '[tuiHint]:is(never)',
 })
-export class TuiHintDriverDirective extends TuiDriverDirective {
+export class TuiHintDriver extends TuiDriverDirective {
     public readonly type = 'hint';
 }
