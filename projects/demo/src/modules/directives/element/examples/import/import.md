@@ -1,5 +1,5 @@
 ```ts
-import {TuiElementDirective} from '@taiga-ui/cdk';
+import {TuiElement} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiElementDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiElementDirective,
+    TuiElement,
   ],
   // ...
 })

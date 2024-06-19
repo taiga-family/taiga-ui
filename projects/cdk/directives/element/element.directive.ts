@@ -6,9 +6,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     selector: '[tuiElement]',
     exportAs: 'elementRef',
 })
-export class TuiElementDirective<T extends Element = HTMLElement>
-    implements ElementRef<T>
-{
+export class TuiElement<T extends Element = HTMLElement> implements ElementRef<T> {
     public nativeElement = tuiInjectElement<T>();
 
     constructor() {

@@ -10,12 +10,7 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TuiElementDirective,
-    tuiIsNativeFocused,
-    tuiIsPresent,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiElement, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     tuiAsDataListAccessor,
@@ -31,14 +26,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper:not([labels])',
-    imports: [
-        TuiDataList,
-        NgIf,
-        NgForOf,
-        TuiElementDirective,
-        TuiLoader,
-        PolymorpheusOutlet,
-    ],
+    imports: [TuiDataList, NgIf, NgForOf, TuiElement, TuiLoader, PolymorpheusOutlet],
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
