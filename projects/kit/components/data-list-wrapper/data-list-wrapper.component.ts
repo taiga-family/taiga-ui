@@ -26,14 +26,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper:not([labels])',
-    imports: [
-        TuiDataList,
-        NgIf,
-        NgForOf,
-        TuiElement,
-        TuiLoader,
-        PolymorpheusOutlet,
-    ],
+    imports: [TuiDataList, NgIf, NgForOf, TuiElement, TuiLoader, PolymorpheusOutlet],
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -9,14 +9,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper[labels]',
-    imports: [
-        TuiDataList,
-        NgIf,
-        NgForOf,
-        TuiElement,
-        PolymorpheusOutlet,
-        TuiLoader,
-    ],
+    imports: [TuiDataList, NgIf, NgForOf, TuiElement, PolymorpheusOutlet, TuiLoader],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
