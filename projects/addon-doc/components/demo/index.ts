@@ -24,8 +24,8 @@ import {
     tuiInjectElement,
     tuiPure,
     tuiPx,
-    TuiResizeableDirective,
-    TuiResizerDirective,
+    TuiResizeable,
+    TuiResizer,
     tuiToInteger,
 } from '@taiga-ui/cdk';
 import {TuiButton, TuiExpand, TuiGroupDirective} from '@taiga-ui/core';
@@ -38,10 +38,10 @@ const MIN_WIDTH = 160;
     standalone: true,
     selector: 'tui-doc-demo',
     imports: [
-        TuiResizerDirective,
+        TuiResizer,
         FormsModule,
         TuiSwitch,
-        TuiResizeableDirective,
+        TuiResizeable,
         NgIf,
         ReactiveFormsModule,
         NgTemplateOutlet,
@@ -59,7 +59,7 @@ const MIN_WIDTH = 160;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDemo implements OnInit {
-    @ViewChild(TuiResizeableDirective, {static: true})
+    @ViewChild(TuiResizeable, {static: true})
     private readonly resizeable?: ElementRef<HTMLElement>;
 
     @ViewChild('content', {static: true})
