@@ -5,7 +5,7 @@ import {EMPTY_QUERY, tuiIsPresent, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {TuiGroupDirective, tuiGroupOptionsProvider} from '@taiga-ui/core';
 import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
-import {TuiAccordionItemComponent} from './accordion-item.component';
+import {TuiAccordionItem} from './accordion-item.component';
 
 @Directive({
     standalone: true,
@@ -27,8 +27,8 @@ import {TuiAccordionItemComponent} from './accordion-item.component';
 export class TuiAccordionDirective implements AfterContentInit {
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChildren(TuiAccordionItemComponent)
-    protected readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
+    @ContentChildren(TuiAccordionItem)
+    protected readonly accordionItems: QueryList<TuiAccordionItem> = EMPTY_QUERY;
 
     @Input()
     public closeOthers = true;

@@ -15,8 +15,8 @@ import {TuiExpand, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
-import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
+import {TuiAccordionItemContent} from './accordion-item-content.directive';
+import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.directive';
 
 @Component({
     standalone: true,
@@ -33,14 +33,14 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAccordionItemComponent {
+export class TuiAccordionItem {
     private readonly cdr = inject(ChangeDetectorRef);
 
-    @ContentChild(TuiAccordionItemEagerContentDirective)
-    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
+    @ContentChild(TuiAccordionItemEagerContent)
+    protected readonly eagerContent?: TuiAccordionItemEagerContent;
 
-    @ContentChild(TuiAccordionItemContentDirective)
-    protected readonly lazyContent?: TuiAccordionItemContentDirective;
+    @ContentChild(TuiAccordionItemContent)
+    protected readonly lazyContent?: TuiAccordionItemContent;
 
     @Input()
     @HostBinding('class._no-padding')
