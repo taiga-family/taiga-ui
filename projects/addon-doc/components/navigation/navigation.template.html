@@ -64,7 +64,8 @@
                 *ngFor="let label of labels; index as index"
                 size="s"
                 [borders]="null"
-                [(open)]="!!openPagesArr[index]"
+                [open]="!!openPagesArr[index]"
+                (openChange)="openPagesArr[index] = $event"
             >
                 <span class="t-label">
                     <strong>{{ label }}</strong>
