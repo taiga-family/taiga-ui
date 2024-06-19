@@ -7,12 +7,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {
-    TuiHint,
-    TuiLink,
-    TuiNotification,
-    TuiNumberFormat,
-} from '@taiga-ui/core';
+import {TuiHint, TuiLink, TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
