@@ -1,4 +1,4 @@
-<h2 class="title">Search by name</h2>
+<h2 class="title"><ng-content /></h2>
 <tui-input
     tuiAutoFocus
     tuiHintContent="You can copy icon's name with a click"
@@ -9,8 +9,6 @@
 >
     Input icon name to highlight
 </tui-input>
-
-<ng-content />
 
 <ng-container *ngFor="let key of icons | tuiKeys">
     <ng-container *ngIf="icons[key] | tuiFilter: matcher : (search$ | async) ?? '' as filtered">
@@ -41,7 +39,6 @@
                         icon: icon,
                         group: key,
                         copyPath: copyPath,
-                        entry: {isIntersecting: false},
                     }"
                 />
             </div>

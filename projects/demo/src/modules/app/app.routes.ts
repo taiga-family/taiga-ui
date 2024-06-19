@@ -195,6 +195,11 @@ export const ROUTES: Routes = [
         title: 'Icon',
     }),
     route({
+        path: DemoRoute.Icons,
+        loadComponent: async () => import('../components/icons'),
+        title: 'Icons',
+    }),
+    route({
         path: DemoRoute.Label,
         title: 'Label ',
         loadComponent: async () => import('../components/label'),
