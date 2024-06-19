@@ -31,7 +31,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
         '[class._svg]': 'svg',
     },
 })
-export class TuiAvatarComponent {
+export class TuiAvatar {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
     @Input()

@@ -16,7 +16,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
     TuiChevron,
@@ -37,7 +37,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiFadeDirective,
         TuiDataList,
         TuiBadgeNotificationComponent,
-        TuiAvatarComponent,
+        TuiAvatar,
         RouterLink,
         RouterLinkActive,
         TuiAppearance,

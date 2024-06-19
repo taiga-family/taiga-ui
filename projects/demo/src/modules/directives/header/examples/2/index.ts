@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon, TuiTitle, TuiTooltip} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
     TuiSensitiveDirective,
@@ -18,7 +18,7 @@ import {TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
         TuiButton,
         TuiTooltip,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiSensitiveDirective,
         TuiBadgeDirective,
         TuiIcon,

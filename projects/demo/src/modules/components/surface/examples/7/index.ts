@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiLink, TuiScrollbar, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadgeDirective} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
     imports: [
         TuiSurface,
         TuiThumbnailCard,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiAmountPipe,
         TuiBadgeDirective,
         TuiButton,

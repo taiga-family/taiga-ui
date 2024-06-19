@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
     TuiSwitch,
@@ -18,7 +18,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiBadgedContentComponent,
         TuiBadgeDirective,
         TuiIcon,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiSwitch,
         FormsModule,
     ],

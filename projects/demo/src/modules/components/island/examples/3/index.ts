@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiError, TuiLink} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {
     TuiInputPhoneModule,
@@ -23,7 +23,7 @@ import {
         TuiFieldErrorPipe,
         AsyncPipe,
         TuiCardLarge,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiButton,
         TuiLink,
         NgIf,

@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import type {TuiFileLike} from '@taiga-ui/kit';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiFileComponent,
     TuiFilesComponent,
     TuiInputFilesComponent,
@@ -20,7 +20,7 @@ import {
         TuiInputFilesDirective,
         ReactiveFormsModule,
         NgIf,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiLink,
         TuiFilesComponent,
         TuiFileComponent,

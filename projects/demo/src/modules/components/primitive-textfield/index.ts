@@ -12,7 +12,7 @@ import {
     TuiIcon,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
@@ -38,7 +38,7 @@ import ExampleComponent2 from './examples/2';
         TuiPrimitiveTextfieldModule,
         TuiHint,
         TuiTextfieldControllerModule,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiIcon,
         InheritedDocumentation,
         TextfieldControllerDocumentation,

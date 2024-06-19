@@ -5,14 +5,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiBadgeDirective, TuiFadeDirective} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadgeDirective, TuiFadeDirective} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         AsyncPipe,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiAmountPipe,
         TuiBlockDetails,
         TuiBadgeDirective,

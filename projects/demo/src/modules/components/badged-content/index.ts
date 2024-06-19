@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {
-    TuiAvatarComponent,
+    TuiAvatar,
     TuiBadgedContentComponent,
     TuiBadgeNotificationComponent,
 } from '@taiga-ui/kit';
@@ -15,7 +15,7 @@ import {
         AsyncPipe,
         TuiBadgedContentComponent,
         TuiBadgeNotificationComponent,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiFallbackSrcPipe,
         TuiDemo,
     ],

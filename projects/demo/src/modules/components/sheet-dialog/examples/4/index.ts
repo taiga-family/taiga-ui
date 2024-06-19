@@ -12,7 +12,7 @@ import {
     TuiSwipe,
 } from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -50,7 +50,7 @@ const USERS = [
         AsyncPipe,
         TuiSwipe,
         NgForOf,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
         TuiAutoColorPipe,
     ],
