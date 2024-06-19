@@ -5,8 +5,9 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {tuiControlValue, tuiPure} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';

@@ -1,5 +1,5 @@
 import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {tuiGetCurrencySymbol} from './get-currency-symbol';
 

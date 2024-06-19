@@ -1,5 +1,5 @@
 import type {MaskitoOptions} from '@maskito/core';
-import {TUI_DIGIT_REGEXP} from '@taiga-ui/cdk';
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 
 export const TUI_MASK_CARD: MaskitoOptions = {
     mask: [
