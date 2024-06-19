@@ -14,7 +14,7 @@ import {
     TUI_VERSION,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TuiAlertsComponent} from '@taiga-ui/core/components/alert';
+import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
@@ -33,7 +33,7 @@ import {debounceTime, map, of} from 'rxjs';
         AsyncPipe,
         TuiDropdownsComponent,
         TuiDialogsComponent,
-        TuiAlertsComponent,
+        TuiAlerts,
         TuiHints,
         TuiScrollControls,
     ],

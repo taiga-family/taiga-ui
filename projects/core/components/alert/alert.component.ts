@@ -34,7 +34,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
         '[@tuiHeightCollapse]': 'animation',
     },
 })
-export class TuiAlertComponent<O, I> implements OnInit {
+export class TuiAlert<O, I> implements OnInit {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
     protected readonly position = inject(TUI_ALERT_POSITION);
