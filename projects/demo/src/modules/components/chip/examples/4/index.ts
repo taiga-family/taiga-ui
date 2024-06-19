@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton} from '@taiga-ui/core';
 import {
-    TuiBadgedContentComponent,
-    TuiBadgeNotificationComponent,
+    TuiBadgedContent,
+    TuiBadgeNotification,
     TuiChip,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
@@ -17,8 +17,8 @@ import {
         TuiChip,
         TuiAmountPipe,
         AsyncPipe,
-        TuiBadgedContentComponent,
-        TuiBadgeNotificationComponent,
+        TuiBadgedContent,
+        TuiBadgeNotification,
         TuiButton,
         TuiFadeDirective,
     ],

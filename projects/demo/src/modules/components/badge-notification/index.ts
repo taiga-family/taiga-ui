@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiLabel} from '@taiga-ui/core';
-import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
+import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBadgeNotificationComponent, TuiLabel],
+    imports: [TuiDemo, TuiBadgeNotification, TuiLabel],
     templateUrl: './index.html',
     changeDetection,
 })

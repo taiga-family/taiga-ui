@@ -13,7 +13,7 @@ import {
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
 import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
-import {TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
@@ -35,7 +35,7 @@ import {IconsGroup} from './icons-group.directive';
         NgIf,
         TuiFilterPipe,
         AsyncPipe,
-        TuiBadgeDirective,
+        TuiBadge,
         NgTemplateOutlet,
     ],
     templateUrl: './icons-group.template.html',

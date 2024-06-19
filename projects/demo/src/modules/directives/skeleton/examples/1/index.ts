@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiLabel, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiBadgeDirective,
+    TuiBadge,
     TuiChip,
     TuiSkeletonDirective,
     TuiSwitch,
@@ -22,7 +22,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiSkeletonDirective,
         TuiButton,
         TuiChip,
-        TuiBadgeDirective,
+        TuiBadge,
         TuiCardLarge,
         TuiSurface,
         TuiHeader,

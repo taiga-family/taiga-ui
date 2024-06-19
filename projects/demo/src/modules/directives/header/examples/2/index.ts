@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon, TuiTitle, TuiTooltip} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiBadgeDirective,
-    TuiBadgeNotificationComponent,
+    TuiBadge,
+    TuiBadgeNotification,
     TuiSensitiveDirective,
 } from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
@@ -13,14 +13,14 @@ import {TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiBadgeNotificationComponent,
+        TuiBadgeNotification,
         TuiHeader,
         TuiTitle,
         TuiButton,
         TuiTooltip,
         TuiAvatar,
         TuiSensitiveDirective,
-        TuiBadgeDirective,
+        TuiBadge,
         TuiIcon,
     ],
     templateUrl: './index.html',

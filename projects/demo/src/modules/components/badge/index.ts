@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
-import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiBadge, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
 
 import {TuiBadgeExample1} from './examples/1';
 import {TuiBadgeExample2} from './examples/2';
@@ -16,7 +16,7 @@ import {TuiBadgeExample6} from './examples/6';
 @Component({
     standalone: true,
     imports: [
-        TuiBadgeDirective,
+        TuiBadge,
         TuiFadeDirective,
         TuiRadioListComponent,
         FormsModule,

@@ -38,7 +38,7 @@ import {
     TuiNotification,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiBadgeDirective, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
+import {TuiBadge, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
 import {
     TuiInputNumberModule,
     TuiSelectModule,
@@ -67,7 +67,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         NgForOf,
         TuiStripOptionalPipe,
         TuiIsOptionalPipe,
-        TuiBadgeDirective,
+        TuiBadge,
         NgTemplateOutlet,
         TuiDocTypeReferencePipe,
         TuiSelectModule,

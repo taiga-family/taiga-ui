@@ -3,12 +3,12 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiBadge} from '@taiga-ui/kit';
 import {interval, NEVER, startWith} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiLet, TuiBadgeDirective, AsyncPipe],
+    imports: [TuiLet, TuiBadge, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

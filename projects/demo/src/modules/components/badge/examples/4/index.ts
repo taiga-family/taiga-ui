@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBadgeDirective, TuiFadeDirective} from '@taiga-ui/kit';
+import {TuiBadge, TuiFadeDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-badge-example-4',
-    imports: [TuiBadgeDirective, TuiFadeDirective],
+    imports: [TuiBadge, TuiFadeDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

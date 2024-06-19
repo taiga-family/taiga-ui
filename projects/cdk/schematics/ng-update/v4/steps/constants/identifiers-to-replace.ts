@@ -319,11 +319,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadge', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadge', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiClickOutsideModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -398,7 +398,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiBadgeNotificationModule',
             moduleSpecifier: '@taiga-ui/experimental',
         },
-        to: {name: 'TuiBadgeNotificationComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgeNotification', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},

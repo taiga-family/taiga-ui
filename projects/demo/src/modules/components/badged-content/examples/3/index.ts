@@ -2,22 +2,18 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {
-    TuiBadgedContentComponent,
-    TuiBadgeDirective,
-    TuiBadgeNotificationComponent,
-} from '@taiga-ui/kit';
+import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
-        TuiBadgedContentComponent,
-        TuiBadgeNotificationComponent,
+        TuiBadgedContent,
+        TuiBadgeNotification,
         TuiInputModule,
         TuiIcon,
         TuiButton,
-        TuiBadgeDirective,
+        TuiBadge,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
