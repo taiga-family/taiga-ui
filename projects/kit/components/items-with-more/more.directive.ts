@@ -5,9 +5,9 @@ import type {TuiContext} from '@taiga-ui/cdk';
     standalone: true,
     selector: '[tuiMore]',
 })
-export class TuiMoreDirective {
+export class TuiMore {
     public static ngTemplateContextGuard(
-        _dir: TuiMoreDirective,
+        _dir: TuiMore,
         _ctx: unknown,
     ): _ctx is TuiContext<number> {
         return true;

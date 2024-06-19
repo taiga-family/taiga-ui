@@ -11,23 +11,17 @@ import {
     TuiGroupDirective,
     TuiIcon,
 } from '@taiga-ui/core';
-import {
-    TuiBadge,
-    TuiBlock,
-    TuiItemsWithMoreComponent,
-    TuiMoreDirective,
-} from '@taiga-ui/kit';
+import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiGroupDirective,
-        TuiItemsWithMoreComponent,
+        TuiItemsWithMore,
         TuiItem,
         TuiBlock,
         NgForOf,
         FormsModule,
-        TuiMoreDirective,
         TuiDropdown,
         TuiButton,
         TuiBadge,
