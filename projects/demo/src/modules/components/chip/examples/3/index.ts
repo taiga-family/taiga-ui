@@ -4,11 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import {TuiCheckboxComponent, TuiChip} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiChip, TuiRepeatTimes, FormsModule, TuiButton, TuiCheckboxComponent],
+    imports: [TuiChip, TuiRepeatTimes, FormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

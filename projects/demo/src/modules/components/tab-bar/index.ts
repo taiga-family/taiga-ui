@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown, TuiLabel, TuiNotification} from '@taiga-ui/core';
-import {TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiCheckbox} from '@taiga-ui/kit';
 
 import TuiTabBarExample from './examples/1';
 
@@ -12,7 +12,7 @@ import TuiTabBarExample from './examples/1';
     imports: [
         TuiDemo,
         TuiNotification,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiLabel,
         TuiTabBarExample,
         FormsModule,

@@ -26,7 +26,7 @@ import {
     TuiLoader,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiButtonLoadingComponent, TuiCheckbox} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
@@ -52,7 +52,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiLoader,
         TuiInputCardGroup,
         TuiTextfield,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiIconPipe,
     ],
     templateUrl: './pay-modal.component.html',

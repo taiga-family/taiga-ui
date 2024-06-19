@@ -10,11 +10,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TuiRadioListComponent, TuiTitle],
+    imports: [FormsModule, ReactiveFormsModule, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

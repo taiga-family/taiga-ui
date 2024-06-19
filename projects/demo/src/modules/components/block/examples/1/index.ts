@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBlock, TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiBlock, TuiCheckboxComponent],
+    imports: [ReactiveFormsModule, TuiBlock, TuiCheckbox],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

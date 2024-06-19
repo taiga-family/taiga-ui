@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiLabel} from '@taiga-ui/core';
-import {TuiCheckboxComponent, TuiTree} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -24,7 +24,7 @@ function flatten(item: TreeNode): readonly TreeNode[] {
     imports: [
         TuiTree,
         NgForOf,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiLabel,
         FormsModule,
         TuiMapperPipe,

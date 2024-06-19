@@ -10,7 +10,7 @@ import {TuiBlock, TuiCheckboxComponent} from '@taiga-ui/kit';
     // ...
     FormsModule,
     TuiBlock,
-    TuiCheckboxComponent, // or TuiRadioComponent
+    TuiCheckbox, // or TuiRadio
   ],
   // ...
 })

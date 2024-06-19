@@ -6,7 +6,7 @@ import {TuiIcon, TuiLoader, TuiTitle, TuiTooltip} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadgeNotification,
-    TuiCheckboxComponent,
+    TuiCheckbox,
     TuiSensitiveDirective,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
@@ -22,7 +22,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiBadgeNotification,
         FormsModule,
         TuiIcon,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiTitle,
     ],
     templateUrl: './index.html',
