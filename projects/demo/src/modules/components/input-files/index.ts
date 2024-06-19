@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiItemDirective, tuiProvide} from '@taiga-ui/cdk';
+import {TuiItem, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiNotificationComponent} from '@taiga-ui/core';
 import {
@@ -28,7 +28,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         ReactiveFormsModule,
         TuiFilesComponent,
         TuiFileComponent,
-        TuiItemDirective,
+        TuiItem,
         TuiFileRejectedPipe,
     ],
     templateUrl: './index.html',

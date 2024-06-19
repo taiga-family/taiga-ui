@@ -2,7 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiIsString, TuiItemDirective} from '@taiga-ui/cdk';
+import {tuiIsString, TuiItem} from '@taiga-ui/cdk';
 import {TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
@@ -10,7 +10,7 @@ import {TuiChevron, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/k
     standalone: true,
     imports: [
         TuiTabsWithMoreComponent,
-        TuiItemDirective,
+        TuiItem,
         NgForOf,
         NgIf,
         TuiTabDirective,

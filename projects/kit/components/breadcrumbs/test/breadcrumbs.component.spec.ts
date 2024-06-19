@@ -5,7 +5,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -30,13 +30,7 @@ const ITEMS = [
 describe('Breadcrumbs Wrapper', () => {
     @Component({
         standalone: true,
-        imports: [
-            TuiBreadcrumbsComponent,
-            NgFor,
-            TuiItemDirective,
-            TuiLink,
-            RouterTestingModule,
-        ],
+        imports: [TuiBreadcrumbsComponent, NgFor, TuiItem, TuiLink, RouterTestingModule],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"

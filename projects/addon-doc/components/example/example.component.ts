@@ -18,7 +18,7 @@ import {
 import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_IS_E2E, TuiItemDirective, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItem, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -47,7 +47,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiDocExampleGetTabsPipe,
         TuiTabsWithMoreComponent,
         NgForOf,
-        TuiItemDirective,
+        TuiItem,
         TuiTabDirective,
         TuiLoader,
         TuiMapperPipe,

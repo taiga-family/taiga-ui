@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
@@ -11,7 +11,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
     standalone: true,
     imports: [
         TuiTabsWithMoreComponent,
-        TuiItemDirective,
+        TuiItem,
         TuiTabDirective,
         TuiInputNumberModule,
         FormsModule,

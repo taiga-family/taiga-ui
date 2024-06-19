@@ -11,7 +11,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiItem} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiExpandComponent,
@@ -32,7 +32,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     hostDirectives: [TuiGroupDirective],
 })
 export class TuiFilesComponent {
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 
