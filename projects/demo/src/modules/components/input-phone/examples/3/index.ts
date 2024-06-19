@@ -5,11 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLet, tuiPure} from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
@@ -58,10 +54,8 @@ const DATA: readonly User[] = [
         TuiTextfieldControllerModule,
         FormsModule,
         NgIf,
-        TuiDataListComponent,
-        TuiDataListDirective,
+        TuiDataList,
         NgForOf,
-        TuiOptionComponent,
         TuiAvatarComponent,
     ],
     templateUrl: './index.html',

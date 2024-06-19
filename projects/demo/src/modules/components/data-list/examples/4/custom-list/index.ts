@@ -10,10 +10,8 @@ import {
     TuiLet,
 } from '@taiga-ui/cdk';
 import {
-    TuiDataListComponent,
+    TuiDataList,
     tuiIsEditingKey,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
     TuiTextfield,
     TuiTextfieldDirective,
 } from '@taiga-ui/core';
@@ -31,9 +29,7 @@ interface Items<T> {
         NgIf,
         NgForOf,
         FormsModule,
-        TuiDataListComponent,
-        TuiOptGroupDirective,
-        TuiOptionComponent,
+        TuiDataList,
         TuiLet,
         TuiFilterPipe,
         TuiMultiSelectModule,

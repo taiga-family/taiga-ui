@@ -6,11 +6,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, TuiItemDirective} from '@taiga-ui/cdk';
 import {
     TuiButton,
-    TuiDataListComponent,
+    TuiDataList,
     TuiDropdown,
     TuiGroupDirective,
     TuiIcon,
-    TuiOptionComponent,
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
@@ -32,9 +31,8 @@ import {
         TuiDropdown,
         TuiButton,
         TuiBadgeDirective,
-        TuiDataListComponent,
+        TuiDataList,
         NgIf,
-        TuiOptionComponent,
         TuiIcon,
     ],
     templateUrl: './index.html',

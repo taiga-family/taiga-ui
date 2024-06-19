@@ -8,12 +8,12 @@ import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
 import {
-    TuiDataListComponent,
+    TuiDataList,
     TuiDriver,
     TuiDropdown,
     tuiGetWordRange,
     TuiInitialsPipe,
-    TuiOptionComponent,
+    TuiOption,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
@@ -32,10 +32,9 @@ export interface User {
         TuiDropdown,
         FormsModule,
         AsyncPipe,
-        TuiDataListComponent,
+        TuiDataList,
         NgIf,
         NgForOf,
-        TuiOptionComponent,
         TuiAvatarComponent,
         TuiInitialsPipe,
     ],
@@ -45,7 +44,7 @@ export interface User {
     changeDetection,
 })
 export default class Example {
-    @ViewChildren(TuiOptionComponent, {read: ElementRef})
+    @ViewChildren(TuiOption, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChild(TuiDriver)

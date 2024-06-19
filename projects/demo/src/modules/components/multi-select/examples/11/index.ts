@@ -4,8 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiMultiSelectModule,
     TuiTagModule,
@@ -19,8 +19,8 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
         FormsModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
         NgForOf,
         TuiTagModule,
     ],

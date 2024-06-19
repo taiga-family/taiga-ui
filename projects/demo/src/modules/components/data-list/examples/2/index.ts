@@ -4,13 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiButton,
-    TuiDataListComponent,
-    TuiDialogService,
-    TuiDropdown,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
@@ -19,8 +13,7 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
         TuiButton,
         TuiDropdown,
         TuiDataListDropdownManager,
-        TuiOptionComponent,
-        TuiDataListComponent,
+        TuiDataList,
         TuiLet,
         NgForOf,
     ],

@@ -22,27 +22,22 @@ import {
     TuiDataList,
     tuiInjectDataListSize,
     TuiLoader,
-    TuiOptionComponent,
+    TuiOption,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper:not([labels])',
     imports: [
+        TuiDataList,
         NgIf,
         NgForOf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiDataList,
         TuiElementDirective,
         TuiLoader,
+        PolymorpheusOutlet,
     ],
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
@@ -52,8 +47,8 @@ import {
 export class TuiDataListWrapperComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
-    @ViewChildren(forwardRef(() => TuiOptionComponent))
-    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    @ViewChildren(forwardRef(() => TuiOption))
+    protected readonly optionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     @Input()
     public items: readonly T[] | null = [];

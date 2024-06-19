@@ -2,8 +2,8 @@ import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent, TuiEmailsPipe} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -12,9 +12,9 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
         NgIf,
         FormsModule,
-        TuiDataListDirective,
-        TuiDataListWrapperComponent,
+        TuiDataList,
         TuiEmailsPipe,
+        TuiDataListWrapper,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -4,13 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiIcon,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiIcon} from '@taiga-ui/core';
 import {
     TuiSelectModule,
     TuiTextareaModule,
@@ -23,10 +17,8 @@ import {
         ReactiveFormsModule,
         TuiSelectModule,
         TuiTextfieldControllerModule,
-        TuiDataListComponent,
-        TuiDataListDirective,
+        TuiDataList,
         NgIf,
-        TuiOptionComponent,
         TuiIcon,
         NgForOf,
         TuiTextareaModule,

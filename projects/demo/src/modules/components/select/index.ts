@@ -9,14 +9,14 @@ import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     TuiButton,
-    TuiDataListDirective,
+    TuiDataList,
     TuiDropdown,
     TuiHint,
     TuiIcon,
     TuiLink,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -46,8 +46,8 @@ class Account {
         TuiDropdown,
         TuiHint,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
         TuiIcon,
         TuiButton,
         InheritedDocumentationComponent,

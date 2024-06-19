@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 const ITEMS: readonly string[] = [
@@ -23,8 +23,8 @@ const ITEMS: readonly string[] = [
         TuiMultiSelectModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     encapsulation,

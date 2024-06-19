@@ -11,12 +11,7 @@ import {
     tuiPure,
     TuiValidationError,
 } from '@taiga-ui/cdk';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiError,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -44,11 +39,9 @@ function tagValidator(tag: string): boolean {
         TuiInputTagModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiDataListComponent,
+        TuiDataList,
         NgIf,
         NgForOf,
-        TuiOptionComponent,
-        TuiDataListDirective,
         TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,

@@ -8,10 +8,9 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCalendarComponent,
-    TuiDataListComponent,
+    TuiDataList,
     TuiDropdown,
     TuiGroupDirective,
-    TuiOptionComponent,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
@@ -21,9 +20,8 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
     imports: [
         TuiButton,
         TuiDropdown,
-        TuiDataListComponent,
+        TuiDataList,
         TuiDataListDropdownManager,
-        TuiOptionComponent,
         TuiInputModule,
         TuiCalendarComponent,
         TuiGroupDirective,

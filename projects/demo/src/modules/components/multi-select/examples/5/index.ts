@@ -3,12 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -17,11 +12,8 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
         FormsModule,
-        TuiDataListComponent,
-        TuiDataListDirective,
+        TuiDataList,
         NgForOf,
-        TuiOptionComponent,
-        TuiOptGroupDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

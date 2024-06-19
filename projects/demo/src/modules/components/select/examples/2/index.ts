@@ -4,8 +4,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe, TuiCurrency, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiDataListDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class Card {
@@ -29,8 +29,8 @@ class Account {
     imports: [
         ReactiveFormsModule,
         TuiSelectModule,
-        TuiDataListWrapperComponent,
-        TuiDataListDirective,
+        TuiDataListWrapper,
+        TuiDataList,
         TuiTextfieldControllerModule,
         TuiThumbnailCard,
         TuiAmountPipe,

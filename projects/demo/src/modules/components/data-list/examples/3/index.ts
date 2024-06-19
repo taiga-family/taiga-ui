@@ -3,13 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiButton,
-    TuiDataListComponent,
-    TuiDropdown,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiChevron, TuiSwitchComponent} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
@@ -19,12 +13,10 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiButton,
         TuiChevron,
         TuiDropdown,
-        TuiDataListComponent,
-        TuiOptGroupDirective,
+        TuiDataList,
         TuiMultiSelectModule,
         FormsModule,
         NgForOf,
-        TuiOptionComponent,
         TuiCheckboxComponent,
         TuiSwitchComponent,
     ],

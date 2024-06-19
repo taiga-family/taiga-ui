@@ -6,13 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
-import {
-    TuiDataListComponent,
-    TuiDataListDirective,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiTitle} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Account {
@@ -56,10 +50,7 @@ const CASH: Account = {
     imports: [
         TuiSelectModule,
         FormsModule,
-        TuiDataListDirective,
-        TuiDataListComponent,
-        TuiOptGroupDirective,
-        TuiOptionComponent,
+        TuiDataList,
         TuiMultiSelectModule,
         NgForOf,
         TuiTitle,

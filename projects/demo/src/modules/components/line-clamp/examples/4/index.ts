@@ -2,12 +2,7 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiDropdown,
-    TuiLink,
-    TuiOptGroupDirective,
-    TuiOptionComponent,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListDropdownManager,
@@ -35,10 +30,9 @@ function randomString(len: number): string {
         TuiLink,
         TuiDropdown,
         TuiDataListDropdownManager,
-        TuiOptGroupDirective,
         NgForOf,
-        TuiOptionComponent,
         TuiLineClampComponent,
+        TuiDataList,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
