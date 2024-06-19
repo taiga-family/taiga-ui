@@ -6,16 +6,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiDayRange, TuiMapper} from '@taiga-ui/cdk';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    TuiDay,
-    TuiMapperPipe,
-    TuiMonth,
-    tuiNullableSame,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 
 import {

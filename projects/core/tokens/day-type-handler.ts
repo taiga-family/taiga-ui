@@ -1,5 +1,6 @@
-import type {TuiDay, TuiHandler} from '@taiga-ui/cdk';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {TuiDay} from '@taiga-ui/cdk/date-time';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Token for adding data-type attribute to calendar cell

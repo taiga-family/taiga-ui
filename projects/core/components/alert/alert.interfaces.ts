@@ -1,4 +1,5 @@
-import type {TuiHandler, TuiPopoverContext} from '@taiga-ui/cdk';
+import type {TuiPopoverContext} from '@taiga-ui/cdk/services';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import type {
     TuiNotificationOptions,
     TuiNotificationStatus,

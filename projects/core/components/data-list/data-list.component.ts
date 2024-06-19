@@ -11,15 +11,11 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    tuiInjectElement,
-    tuiIsNativeFocusedIn,
-    tuiIsPresent,
-    tuiMoveFocus,
-    tuiPure,
-    tuiQueryListChanges,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';

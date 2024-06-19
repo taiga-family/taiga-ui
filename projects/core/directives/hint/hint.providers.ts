@@ -1,5 +1,5 @@
 import type {Type} from '@angular/core';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiHintComponent} from './hint.component';
 

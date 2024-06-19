@@ -1,13 +1,13 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {
     tuiContainsOrAfter,
     tuiGetActualTarget,
     tuiInjectElement,
     tuiIsElement,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
 import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 

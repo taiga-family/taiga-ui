@@ -2,7 +2,8 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {NAVIGATOR} from '@ng-web-apis/common';
-import {TuiNativeValidatorDirective, tuiProvide} from '@taiga-ui/cdk';
+import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 import {TuiTextfieldDirective} from './textfield.directive';

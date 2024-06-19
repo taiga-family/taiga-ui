@@ -1,5 +1,5 @@
 import type {ExistingProvider, ProviderToken} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiAppearanceOptions {
     readonly appearance: string;

@@ -1,7 +1,8 @@
 import type {InjectionToken, Provider} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
-import type {TuiRounding} from '@taiga-ui/cdk';
-import {CHAR_NO_BREAK_SPACE, tuiCreateToken} from '@taiga-ui/cdk';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import type {TuiRounding} from '@taiga-ui/cdk/types';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 

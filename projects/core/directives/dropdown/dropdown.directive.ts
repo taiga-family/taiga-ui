@@ -8,8 +8,9 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';

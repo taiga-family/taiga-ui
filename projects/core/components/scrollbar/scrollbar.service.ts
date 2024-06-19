@@ -1,5 +1,6 @@
 import {inject, Injectable, NgZone} from '@angular/core';
-import {tuiInjectElement, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {map, merge, Observable, switchMap, takeUntil} from 'rxjs';
 

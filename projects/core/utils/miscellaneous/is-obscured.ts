@@ -1,4 +1,4 @@
-import {tuiGetElementObscures} from '@taiga-ui/cdk';
+import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
 
 /**
  * @internal

@@ -1,5 +1,5 @@
 import {Directive, inject, Input} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,

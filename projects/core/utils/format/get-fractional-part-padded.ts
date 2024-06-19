@@ -1,4 +1,4 @@
-import {tuiIsNumber} from '@taiga-ui/cdk';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {tuiNumberToStringWithoutExp} from './number-to-string-without-exp';
 

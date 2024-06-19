@@ -10,8 +10,9 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiIsNativeFocused, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
+import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';

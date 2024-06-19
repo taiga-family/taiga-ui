@@ -1,7 +1,7 @@
 import type {ExistingProvider, OnInit, Type} from '@angular/core';
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, merge, Observable} from 'rxjs';
 
 import {TuiVehicle} from './vehicle';

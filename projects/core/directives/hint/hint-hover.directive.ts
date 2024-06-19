@@ -1,5 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
-import {TuiHoveredService, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {

@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk';
+import {TuiPopoverService} from '@taiga-ui/cdk/services';
 
 import {TuiAlert} from './alert.component';
 import type {TuiAlertOptions} from './alert.interfaces';

@@ -1,4 +1,4 @@
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 
 /**

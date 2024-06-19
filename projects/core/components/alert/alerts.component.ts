@@ -8,8 +8,8 @@ import {
     Injector,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiMapper} from '@taiga-ui/cdk';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import type {TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {identity} from 'rxjs';

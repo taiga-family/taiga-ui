@@ -7,7 +7,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
 
 import {TUI_GROUP_OPTIONS} from './group.options';

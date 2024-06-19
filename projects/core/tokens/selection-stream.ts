@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject} from '@angular/core';
-import {tuiCreateTokenFromFactory, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {merge, share, switchMap, takeUntil} from 'rxjs';
 

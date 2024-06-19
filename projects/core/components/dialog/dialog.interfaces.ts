@@ -1,4 +1,4 @@
-import type {TuiPopover, TuiPopoverContext} from '@taiga-ui/cdk';
+import type {TuiPopover, TuiPopoverContext} from '@taiga-ui/cdk/services';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';

@@ -7,7 +7,8 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_IOS, tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';

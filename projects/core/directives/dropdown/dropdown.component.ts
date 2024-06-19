@@ -2,7 +2,9 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiActiveZone, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,

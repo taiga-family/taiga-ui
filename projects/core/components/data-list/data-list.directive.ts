@@ -1,6 +1,6 @@
 import type {Provider, Type} from '@angular/core';
 import {Directive} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Directive({
     standalone: true,

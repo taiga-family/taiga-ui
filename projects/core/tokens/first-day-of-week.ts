@@ -1,4 +1,5 @@
-import {tuiCreateToken, TuiDayOfWeek} from '@taiga-ui/cdk';
+import {TuiDayOfWeek} from '@taiga-ui/cdk/date-time';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * The first day of the week index

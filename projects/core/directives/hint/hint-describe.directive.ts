@@ -1,14 +1,9 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Input, NgZone} from '@angular/core';
-import {
-    tuiIfMap,
-    tuiInjectElement,
-    tuiIsNativeFocused,
-    tuiIsPresent,
-    tuiPure,
-    tuiTypedFromEvent,
-    tuiZoneOptimized,
-} from '@taiga-ui/cdk';
+import {tuiIfMap, tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
     BehaviorSubject,

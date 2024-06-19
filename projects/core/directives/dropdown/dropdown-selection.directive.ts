@@ -1,21 +1,22 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
-    TUI_RANGE,
     TUI_TRUE_HANDLER,
-    tuiGetNativeFocused,
+} from '@taiga-ui/cdk/constants';
+import {TUI_RANGE} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {
     tuiInjectElement,
     tuiIsElement,
-    tuiIsString,
     tuiIsTextfield,
     tuiIsTextNode,
-    tuiPx,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';

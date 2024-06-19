@@ -8,18 +8,14 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {
-    TUI_FALSE_HANDLER,
-    TuiDay,
-    TuiDayRange,
-    TuiHoveredDirective,
-    TuiLet,
-    TuiMapperPipe,
-    TuiMonth,
-    tuiNullableSame,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import type {TuiRangeState} from '@taiga-ui/core/types';

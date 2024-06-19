@@ -1,4 +1,5 @@
-import {CHAR_HYPHEN, tuiRoundWith} from '@taiga-ui/cdk';
+import {CHAR_HYPHEN} from '@taiga-ui/cdk/constants';
+import {tuiRoundWith} from '@taiga-ui/cdk/utils/math';
 import {
     TUI_DEFAULT_NUMBER_FORMAT,
     type TuiNumberFormatSettings,

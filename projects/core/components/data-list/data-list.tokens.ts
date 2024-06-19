@@ -1,7 +1,7 @@
 import type {Provider, TemplateRef, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
-import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiProvide} from '@taiga-ui/cdk';
+import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 

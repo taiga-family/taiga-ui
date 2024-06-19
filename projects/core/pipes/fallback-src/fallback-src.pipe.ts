@@ -1,6 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {Observable} from 'rxjs';
 import {fromEvent, map, merge, startWith} from 'rxjs';
 

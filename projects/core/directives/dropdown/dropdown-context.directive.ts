@@ -1,5 +1,7 @@
 import {Directive, HostListener, inject} from '@angular/core';
-import {EMPTY_CLIENT_RECT, TuiActiveZone, tuiPointToClientRect} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {shouldCall} from '@taiga-ui/event-plugins';
 

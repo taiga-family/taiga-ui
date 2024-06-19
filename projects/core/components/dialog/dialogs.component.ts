@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiFocusTrapDirective, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiFocusTrapDirective} from '@taiga-ui/cdk/directives/focus-trap';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHost} from '@taiga-ui/core/animations';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

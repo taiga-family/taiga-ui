@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 
 @Directive({

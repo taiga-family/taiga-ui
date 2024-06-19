@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TUI_REDUCED_MOTION} from './reduced-motion';
 

@@ -1,7 +1,7 @@
 import type {InjectionToken, Provider} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
-import type {TuiDateMode} from '@taiga-ui/cdk';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 

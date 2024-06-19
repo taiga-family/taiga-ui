@@ -6,7 +6,9 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

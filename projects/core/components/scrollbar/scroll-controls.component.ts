@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiZoneOptimized} from '@taiga-ui/cdk';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';

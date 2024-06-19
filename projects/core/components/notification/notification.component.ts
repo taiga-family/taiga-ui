@@ -8,7 +8,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
