@@ -1,11 +1,12 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk';
 
-import type {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
+import type {TuiTreeItem} from '../components/tree-item/tree-item.component';
 import type {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
+    standalone: true,
     selector: '[tuiTreeController][map]',
     providers: [
         tuiProvide(TUI_TREE_ACCESSOR, TuiTreeControllerDirective),
@@ -16,7 +17,7 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>
 {
-    protected readonly items = new Map<TuiTreeItemComponent, T>();
+    protected readonly items = new Map<TuiTreeItem, T>();
 
     @Input('tuiTreeController')
     public fallback = true;
@@ -27,21 +28,21 @@ export class TuiTreeControllerDirective<T>
     @Output()
     public readonly toggled = new EventEmitter<T>();
 
-    public register(item: TuiTreeItemComponent, value: T): void {
+    public register(item: TuiTreeItem, value: T): void {
         this.items.set(item, value);
     }
 
-    public unregister(item: TuiTreeItemComponent): void {
+    public unregister(item: TuiTreeItem): void {
         this.items.delete(item);
     }
 
-    public isExpanded(item: TuiTreeItemComponent): boolean {
+    public isExpanded(item: TuiTreeItem): boolean {
         const value = this.items.get(item);
 
         return (value && this.map.get(value)) ?? this.fallback;
     }
 
-    public toggle(item: TuiTreeItemComponent): void {
+    public toggle(item: TuiTreeItem): void {
         const value = this.items.get(item);
         const expanded = this.isExpanded(item);
 

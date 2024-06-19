@@ -1,7 +1,7 @@
 import {NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
+import {TuiTreeItemContent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -18,7 +18,7 @@ import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
         '(click)': 'onClick()',
     },
 })
-export class Folders extends TuiTreeItemContentComponent {
+export class Folders extends TuiTreeItemContent {
     protected get icon(): string {
         return this.isExpandable ? '@tui.folder' : '@tui.file';
     }

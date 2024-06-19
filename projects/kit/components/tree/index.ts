@@ -9,4 +9,4 @@ export * from './misc/tree.constants';
 export * from './misc/tree.interfaces';
 export * from './misc/tree.service';
 export * from './misc/tree.tokens';
-export * from './tree.module';
+export * from './tree';

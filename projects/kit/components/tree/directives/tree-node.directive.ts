@@ -1,15 +1,16 @@
 import type {OnDestroy} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
 
-import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
+import {TuiTreeItem} from '../components/tree-item/tree-item.component';
 import type {TuiTreeAccessor} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 
 @Directive({
+    standalone: true,
     selector: 'tui-tree-item[tuiTreeNode]',
 })
-export class TuiTreeNodeDirective<T> implements OnDestroy {
-    private readonly component = inject(TuiTreeItemComponent);
+export class TuiTreeNode<T> implements OnDestroy {
+    private readonly component = inject(TuiTreeItem);
     private readonly directive = inject<TuiTreeAccessor<T>>(TUI_TREE_ACCESSOR, {
         optional: true,
     });
