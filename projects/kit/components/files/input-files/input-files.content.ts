@@ -8,7 +8,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
 
-import {TuiInputFilesComponent} from './input-files.component';
+import {TuiInputFiles} from './input-files.component';
 
 @Component({
     standalone: true,
@@ -23,7 +23,7 @@ export class TuiInputFilesContent {
     private readonly breakpoint$ = inject(TuiBreakpointService);
     private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
     private readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiContext<boolean>;
-    private readonly component = inject(TuiInputFilesComponent);
+    private readonly component = inject(TuiInputFiles);
 
     protected get link$(): Observable<string> {
         return this.computeLink$(

@@ -1,6 +1,6 @@
 export * from './file/file.component';
 export * from './file/file.options';
-export * from './files.module';
+export * from './files';
 export * from './files.types';
 export * from './files.utils';
 export * from './files.validators';

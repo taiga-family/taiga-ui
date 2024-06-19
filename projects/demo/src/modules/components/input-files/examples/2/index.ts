@@ -6,30 +6,18 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
-import {
-    TuiFieldErrorPipe,
-    TuiFileComponent,
-    TuiFileRejectedPipe,
-    tuiFilesAccepted,
-    TuiFilesComponent,
-    TuiInputFilesComponent,
-    TuiInputFilesDirective,
-} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe, TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
     standalone: true,
     imports: [
-        TuiInputFilesComponent,
-        TuiInputFilesDirective,
         ReactiveFormsModule,
-        TuiFilesComponent,
-        TuiFileComponent,
+        TuiFiles,
         NgForOf,
         AsyncPipe,
         TuiError,
         TuiFieldErrorPipe,
-        TuiFileRejectedPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

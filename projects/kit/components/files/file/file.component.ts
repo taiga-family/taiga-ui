@@ -49,7 +49,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],
 })
-export class TuiFileComponent {
+export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
