@@ -6,7 +6,7 @@ import {TuiAmountPipe, TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-comme
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiGroupDirective, TuiLabel} from '@taiga-ui/core';
 import {
-    TuiBlockDirective,
+    TuiBlock,
     TuiCheckboxComponent,
     TuiDataListWrapper,
     TuiFieldErrorPipe,
@@ -65,7 +65,7 @@ class Account {
         TuiDataListWrapper,
         TuiInputPhoneModule,
         TuiGroupDirective,
-        TuiBlockDirective,
+        TuiBlock,
         TuiRadioComponent,
         TuiInputTimeModule,
         TuiLabel,

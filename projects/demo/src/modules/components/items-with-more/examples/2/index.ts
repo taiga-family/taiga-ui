@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
-    TuiBlockDirective,
+    TuiBlock,
     TuiItemsWithMoreComponent,
     TuiMoreDirective,
 } from '@taiga-ui/kit';
@@ -24,7 +24,7 @@ import {
         TuiGroupDirective,
         TuiItemsWithMoreComponent,
         TuiItem,
-        TuiBlockDirective,
+        TuiBlock,
         NgForOf,
         FormsModule,
         TuiMoreDirective,
