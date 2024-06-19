@@ -1,11 +1,11 @@
 import type {TuiHandler, TuiPopoverContext} from '@taiga-ui/cdk';
 import type {
-    TuiNotification,
     TuiNotificationOptions,
+    TuiNotificationStatus,
 } from '@taiga-ui/core/components/notification';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-export type TuiAlertAutoClose = TuiHandler<TuiNotification, number> | number;
+export type TuiAlertAutoClose = TuiHandler<TuiNotificationStatus, number> | number;
 
 export interface TuiAlertOptions<I = undefined>
     extends Omit<TuiNotificationOptions, 'size'> {

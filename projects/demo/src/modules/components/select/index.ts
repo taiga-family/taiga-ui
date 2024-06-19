@@ -13,7 +13,7 @@ import {
     TuiHint,
     TuiIcon,
     TuiLink,
-    TuiNotificationComponent,
+    TuiNotification,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -38,7 +38,7 @@ class Account {
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiLink,
         TuiSelectModule,
         ReactiveFormsModule,

@@ -2,11 +2,11 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiIcon, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiIcon, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, TuiNotificationComponent, TuiIcon, TuiHint],
+    imports: [CommonModule, TuiNotification, TuiIcon, TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

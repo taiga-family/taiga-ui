@@ -35,7 +35,7 @@ import {
 import {
     TuiDropdown,
     TuiGroupDirective,
-    TuiNotificationComponent,
+    TuiNotification,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
@@ -85,7 +85,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiGetColorPipe,
         TuiInputNumberModule,
         TuiIsPrimitivePolymorpheusContentPipe,
-        TuiNotificationComponent,
+        TuiNotification,
         AsyncPipe,
         TuiToArrayPipe,
         TuiTextfieldControllerModule,

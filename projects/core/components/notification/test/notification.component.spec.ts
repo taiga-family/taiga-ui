@@ -3,11 +3,11 @@ import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiNotification} from '@taiga-ui/core';
+import type {TuiNotificationStatus} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationComponent,
+    TuiNotification,
 } from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
@@ -16,7 +16,7 @@ describe('Notification', () => {
     describe('Without options', () => {
         @Component({
             standalone: true,
-            imports: [TuiNotificationComponent, NgIf],
+            imports: [TuiNotification, NgIf],
             template: `
                 <tui-notification
                     *ngIf="hasCloseButton; else noClose"
@@ -33,11 +33,11 @@ describe('Notification', () => {
             `,
         })
         class Test {
-            @ViewChild(TuiNotificationComponent, {static: false})
-            public component!: TuiNotificationComponent;
+            @ViewChild(TuiNotification, {static: false})
+            public component!: TuiNotification;
 
             public hasCloseButton = true;
-            public status: TuiNotification = 'info';
+            public status: TuiNotificationStatus = 'info';
 
             public onClose(): void {}
         }
@@ -89,14 +89,14 @@ describe('Notification', () => {
     describe('With options', () => {
         @Component({
             standalone: true,
-            imports: [TuiNotificationComponent],
+            imports: [TuiNotification],
             template: `
                 <tui-notification>Short simple informational message</tui-notification>
             `,
         })
         class Test {
-            @ViewChild(TuiNotificationComponent, {static: false})
-            public component!: TuiNotificationComponent;
+            @ViewChild(TuiNotification, {static: false})
+            public component!: TuiNotification;
         }
 
         const status = 'error';

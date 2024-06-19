@@ -74,8 +74,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiAlertDirective', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiNotificationStatus', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiNotificationModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiNotificationComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiCalendarModule', moduleSpecifier: '@taiga-ui/core'},

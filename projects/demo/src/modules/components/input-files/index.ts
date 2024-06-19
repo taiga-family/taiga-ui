@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItem, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 import {
     TuiFileComponent,
     TuiFileRejectedPipe,
@@ -22,7 +22,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiInputFilesComponent,
         TuiInputFilesDirective,
         ReactiveFormsModule,

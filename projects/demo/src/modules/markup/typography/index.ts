@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotificationComponent, ClipboardModule],
+    imports: [TuiDemo, TuiNotification, ClipboardModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

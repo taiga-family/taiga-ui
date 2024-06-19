@@ -1,19 +1,19 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiNotification} from '@taiga-ui/core';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import type {TuiNotificationStatus} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotificationComponent],
+    imports: [TuiDemo, TuiNotification],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
     protected readonly examples = ['Basic', 'Options', 'Sizes'];
 
-    protected readonly statusVariants: TuiNotification[] = [
+    protected readonly statusVariants: TuiNotificationStatus[] = [
         'info',
         'error',
         'warning',

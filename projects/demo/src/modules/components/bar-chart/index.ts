@@ -4,11 +4,11 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiLink, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiLink, TuiNotificationComponent, TuiBarChartComponent, TuiDemo],
+    imports: [TuiLink, TuiNotification, TuiBarChartComponent, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

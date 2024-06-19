@@ -8,14 +8,14 @@ import {
     TuiAlertService,
     TuiButton,
     TuiDialogService,
-    TuiNotificationComponent,
+    TuiNotification,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotificationComponent, TuiButton, TuiAccordion],
+    imports: [TuiDemo, TuiNotification, TuiButton, TuiAccordion],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -5,7 +5,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
-import {TuiNotificationComponent} from '@taiga-ui/core/components/notification';
+import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {
@@ -21,7 +21,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alert',
-    imports: [TuiNotificationComponent, NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [TuiNotification, NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiNotificationComponent, TuiScrollbar} from '@taiga-ui/core';
+import {TuiNotification, TuiScrollbar} from '@taiga-ui/core';
 import {
     PolymorpheusComponent,
     PolymorpheusOutlet,
@@ -13,7 +13,7 @@ import {
     imports: [
         TuiDemo,
         TuiScrollbar,
-        TuiNotificationComponent,
+        TuiNotification,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
     ],

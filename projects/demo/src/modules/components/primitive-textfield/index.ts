@@ -10,7 +10,7 @@ import {
     TUI_HINT_DIRECTIONS,
     TuiHint,
     TuiIcon,
-    TuiNotificationComponent,
+    TuiNotification,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {
@@ -31,7 +31,7 @@ import ExampleComponent2 from './examples/2';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         FormsModule,
         ExampleComponent1,
         ExampleComponent2,

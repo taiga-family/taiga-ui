@@ -3,13 +3,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiRangeComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotificationComponent, TuiRangeComponent, ReactiveFormsModule],
+    imports: [TuiDemo, TuiNotification, TuiRangeComponent, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection,
 })

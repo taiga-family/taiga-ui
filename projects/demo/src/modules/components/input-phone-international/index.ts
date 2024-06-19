@@ -7,7 +7,7 @@ import {
     TuiDropdown,
     TuiHint,
     TuiLink,
-    TuiNotificationComponent,
+    TuiNotification,
     TuiTextfield,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -29,7 +29,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiTextfield,
         ReactiveFormsModule,
         TuiLink,
-        TuiNotificationComponent,
+        TuiNotification,
     ],
     templateUrl: './index.html',
     changeDetection,

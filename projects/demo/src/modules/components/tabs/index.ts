@@ -4,14 +4,14 @@ import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationComponent,
+        TuiNotification,
         TuiTabsWithMoreComponent,
         TuiItem,
         TuiTabDirective,

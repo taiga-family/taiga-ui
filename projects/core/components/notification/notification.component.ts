@@ -15,7 +15,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-import type {TuiNotification} from './notification.options';
+import type {TuiNotificationStatus} from './notification.options';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
@@ -33,14 +33,15 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     styleUrls: ['./notification.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiNotificationComponent {
+export class TuiNotification {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     @Input()
-    public icon: PolymorpheusContent<TuiContext<TuiNotification>> = this.options.icon;
+    public icon: PolymorpheusContent<TuiContext<TuiNotificationStatus>> =
+        this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
