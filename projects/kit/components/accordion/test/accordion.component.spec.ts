@@ -8,11 +8,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataList} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {
-    TuiAccordion,
-    TuiAccordionDirective,
-    TuiAccordionItem,
-} from '@taiga-ui/kit';
+import {TuiAccordion, TuiAccordionDirective, TuiAccordionItem} from '@taiga-ui/kit';
 import {
     TuiAccordionHarness,
     TuiAccordionItemHarness,
