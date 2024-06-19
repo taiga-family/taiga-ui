@@ -98,6 +98,13 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Foundations',
+        title: 'Icons',
+        keywords:
+            'icons, icon, free, pack, lucide, markup, icons, image, картинка, свг, svg, графика',
+        route: DemoRoute.Icons,
+    },
+    {
+        section: 'Foundations',
         title: 'Styles',
         subPages: [
             {

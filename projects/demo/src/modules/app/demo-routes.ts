@@ -67,6 +67,7 @@ export const DemoRoute = {
     Fade: '/directives/fade',
     Sensitive: '/directives/sensitive',
     Skeleton: '/directives/skeleton',
+    Icons: '/icons',
     InputInline: '/components/input-inline',
     Input: '/components/input',
     InputDate: '/components/input-date',

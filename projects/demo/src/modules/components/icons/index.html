@@ -2,11 +2,10 @@
     header="Icons"
     type="components"
 >
-    <ng-template
-        *ngFor="let key of keys"
-        [pageTab]="key"
-    >
-        <tui-notification>
+    <ng-template pageTab="Overview">
+        <h2 class="title">Default icons pack</h2>
+
+        <p>
             Open source theme for Taiga UI uses processed
             <a
                 href="https://lucide.dev/"
@@ -16,34 +15,45 @@
             >
                 Lucide Icons
             </a>
-            as its icon pack with some custom made icons.
-        </tui-notification>
+            . You can browse all the icons from this pack and find the one that suits you
+            <a
+                href="https://lucide.dev/icons/"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                here
+            </a>
+            .
+        </p>
+        <p>
+            In addition to the main icon pack Taiga has several custom icons related to payment systems. You can see
+            them below:
+        </p>
 
-        <icons-group
-            waIntersectionObserver
-            waIntersectionThreshold="0.5"
-            [icons]="icons[key]"
-        >
+        <icons-group [icons]="icons">
+            Custom icons
             <ng-template
                 iconGroup
                 let-copyPath="copyPath"
-                let-entry="entry"
+                let-group="group"
                 let-icon="icon"
             >
-                <div
-                    class="icon-place"
-                    (waIntersectionObservee)="entry.isIntersecting = entry.isIntersecting || onIntersection($event)"
-                >
+                <div class="icon-place">
                     <tui-icon
-                        *ngIf="entry.isIntersecting"
+                        *ngIf="group === 'Mono'"
                         class="icon"
                         [icon]="icon"
+                        (click)="copyPath(icon)"
+                    />
+                    <img
+                        *ngIf="group === 'Colored'"
+                        class="icon"
+                        [src]="icon | tuiIcon"
                         (click)="copyPath(icon)"
                     />
                 </div>
             </ng-template>
         </icons-group>
     </ng-template>
-
-    <tui-setup *pageTab />
 </tui-doc-page>
