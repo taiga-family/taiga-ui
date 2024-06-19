@@ -2,12 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
-    TuiDropdown,
-    TuiIcon,
-    TuiScrollbar,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiDropdown, TuiIcon, TuiScrollbar} from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
 import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
 import {
