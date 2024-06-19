@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {DoCheck, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -9,7 +10,9 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiInjectElement, tuiProvide} from '@taiga-ui/cdk';
+import {TuiExpandComponent} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
@@ -21,12 +24,14 @@ import {
 } from '../../misc/tree.tokens';
 
 @Component({
+    standalone: true,
     selector: 'tui-tree-item',
+    imports: [PolymorpheusOutlet, TuiExpandComponent, NgIf, AsyncPipe],
     templateUrl: './tree-item.template.html',
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiProvide(TUI_TREE_NODE, TuiTreeItemComponent),
+        tuiProvide(TUI_TREE_NODE, TuiTreeItem),
         {
             provide: TUI_TREE_LEVEL,
             deps: [[new SkipSelf(), TUI_TREE_LEVEL]],
@@ -37,7 +42,7 @@ import {
         role: 'treeitem',
     },
 })
-export class TuiTreeItemComponent implements DoCheck {
+export class TuiTreeItem implements DoCheck {
     @ContentChildren(TUI_TREE_NODE as any)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 

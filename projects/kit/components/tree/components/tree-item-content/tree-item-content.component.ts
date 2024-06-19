@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -6,7 +7,7 @@ import {
     HostBinding,
     inject,
 } from '@angular/core';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS, TuiButton} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -15,11 +16,13 @@ import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interf
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
+    standalone: true,
+    imports: [NgIf, TuiButton, NgTemplateOutlet, AsyncPipe],
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTreeItemContentComponent implements DoCheck {
+export class TuiTreeItemContent implements DoCheck {
     private readonly controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),
     );

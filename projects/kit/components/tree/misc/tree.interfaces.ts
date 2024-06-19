@@ -2,24 +2,24 @@ import type {TemplateRef} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 
-import type {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
+import type {TuiTreeItem} from '../components/tree-item/tree-item.component';
 
-export interface TuiTreeItemContext extends TuiContext<TuiTreeItemComponent> {
+export interface TuiTreeItemContext extends TuiContext<TuiTreeItem> {
     readonly template: TemplateRef<Record<string, unknown>>;
 }
 
 export interface TuiTreeContext<T> extends TuiContext<T> {
-    readonly node: TuiTreeItemComponent;
+    readonly node: TuiTreeItem;
 }
 
 export interface TuiTreeController {
-    isExpanded(item: TuiTreeItemComponent): boolean;
-    toggle(item: TuiTreeItemComponent): void;
+    isExpanded(item: TuiTreeItem): boolean;
+    toggle(item: TuiTreeItem): void;
 }
 
 export interface TuiTreeAccessor<T> {
-    register(item: TuiTreeItemComponent, value: T): void;
-    unregister(item: TuiTreeItemComponent): void;
+    register(item: TuiTreeItem, value: T): void;
+    unregister(item: TuiTreeItem): void;
 }
 
 export interface TuiTreeLoader<T> {

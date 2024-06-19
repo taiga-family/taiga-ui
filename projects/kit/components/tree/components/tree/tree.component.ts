@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {DoCheck, TrackByFunction} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -8,17 +9,29 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {TuiHandler} from '@taiga-ui/cdk';
-import {tuiProvide} from '@taiga-ui/cdk';
+import {TuiLet, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
-import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
+import {TuiTreeChildren} from '../../directives/tree-children.directive';
+import {TuiTreeNode} from '../../directives/tree-node.directive';
 import type {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
-import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
+import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-tree',
+    imports: [
+        TuiTreeItem,
+        TuiLet,
+        PolymorpheusOutlet,
+        NgIf,
+        NgForOf,
+        TuiTreeNode,
+        AsyncPipe,
+    ],
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,8 +41,8 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
-    @ViewChild(forwardRef(() => TuiTreeItemComponent))
-    protected readonly item?: TuiTreeItemComponent;
+    @ViewChild(forwardRef(() => TuiTreeItem))
+    protected readonly item?: TuiTreeItem;
 
     @ViewChild(forwardRef(() => TuiTreeComponent))
     protected readonly child?: TuiTreeComponent<T>;
@@ -40,12 +53,9 @@ export class TuiTreeComponent<T> implements DoCheck {
         distinctUntilChanged(),
     );
 
-    protected readonly directive = inject<TuiTreeChildrenDirective<T>>(
-        TuiTreeChildrenDirective,
-        {
-            optional: true,
-        },
-    );
+    protected readonly directive = inject<TuiTreeChildren<T>>(TuiTreeChildren, {
+        optional: true,
+    });
 
     @Input({
         required: true,
@@ -70,6 +80,6 @@ export class TuiTreeComponent<T> implements DoCheck {
     }
 
     private get handler(): TuiHandler<T, readonly T[]> {
-        return this.directive?.childrenHandler || TuiTreeChildrenDirective.defaultHandler;
+        return this.directive?.childrenHandler || TuiTreeChildren.defaultHandler;
     }
 }
