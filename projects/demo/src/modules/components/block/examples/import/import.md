@@ -1,6 +1,6 @@
 ```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiBlockDirective, TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiBlock, TuiCheckboxComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -9,7 +9,7 @@ import {TuiBlockDirective, TuiCheckboxComponent} from '@taiga-ui/kit';
   imports: [
     // ...
     FormsModule,
-    TuiBlockDirective,
+    TuiBlock,
     TuiCheckboxComponent, // or TuiRadioComponent
   ],
   // ...

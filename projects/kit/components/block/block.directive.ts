@@ -51,7 +51,7 @@ class TuiBlockStyles {}
         },
     ],
 })
-export class TuiBlockDirective {
+export class TuiBlock {
     @ContentChild(NgControl)
     private readonly control?: NgControl;
 
