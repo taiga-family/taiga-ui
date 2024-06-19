@@ -8,16 +8,18 @@ import {
     Output,
 } from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
-import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiSum} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TuiHoveredDirective,
-    TuiIdService,
-    tuiPure,
-    TuiRepeatTimes,
-    tuiSum,
-} from '@taiga-ui/cdk';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiHint, TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+    TuiHint,
+    TuiHintOptionsDirective,
+    tuiHintOptionsProvider,
+} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiPieChartDirective} from './pie-chart.directive';

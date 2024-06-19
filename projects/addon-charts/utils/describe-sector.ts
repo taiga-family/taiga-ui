@@ -1,4 +1,4 @@
-import {tuiToInt, tuiToRadians} from '@taiga-ui/cdk';
+import {tuiToInt, tuiToRadians} from '@taiga-ui/cdk/utils/math';
 
 const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
 

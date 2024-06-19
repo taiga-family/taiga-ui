@@ -12,8 +12,9 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiRepeatTimes, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
-import type {TuiSizeXL} from '@taiga-ui/core';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk/observables';
+import type {TuiSizeXL} from '@taiga-ui/core/types';
 import type {Observable} from 'rxjs';
 import {map, merge, ReplaySubject, startWith, switchMap, tap, timer} from 'rxjs';
 // 3/4 with 1% safety offset

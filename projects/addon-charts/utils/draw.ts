@@ -1,4 +1,4 @@
-import type {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {tuiDrawCurve} from './draw-curve';
 import {tuiDrawLine} from './draw-line';

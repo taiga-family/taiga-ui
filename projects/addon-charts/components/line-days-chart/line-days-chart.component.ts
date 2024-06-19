@@ -17,20 +17,14 @@ import {
     tuiLineChartDrivers,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts/components/line-chart';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    EMPTY_ARRAY,
-    EMPTY_QUERY,
-    TuiDay,
-    TuiHoveredService,
-    tuiIsNumber,
-    tuiIsPresent,
-    TuiMonth,
-    tuiPure,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import type {TuiPoint} from '@taiga-ui/core';
-import {TuiHint} from '@taiga-ui/core';
+import {EMPTY_ARRAY, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiIsNumber, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiHint} from '@taiga-ui/core/directives/hint';
+import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';

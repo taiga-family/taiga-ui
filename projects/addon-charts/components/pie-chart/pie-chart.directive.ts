@@ -2,8 +2,12 @@ import {Directive, inject, Input, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
-import {tuiClamp, tuiEaseInOutQuad, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
 
 @Directive({

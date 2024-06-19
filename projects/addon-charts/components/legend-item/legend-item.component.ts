@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,
