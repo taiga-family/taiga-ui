@@ -18,7 +18,7 @@ import {EMPTY_QUERY, TuiItem, TuiLet} from '@taiga-ui/cdk';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';
-import {TuiMoreDirective} from './more.directive';
+import {TuiMore} from './more.directive';
 
 @Component({
     standalone: true,
@@ -51,7 +51,7 @@ export class TuiItemsWithMoreComponent {
     @ContentChildren(TuiItem, {read: TemplateRef, descendants: true})
     protected readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
 
-    @ContentChild(TuiMoreDirective, {read: TemplateRef})
+    @ContentChild(TuiMore, {read: TemplateRef})
     protected readonly more?: TemplateRef<TuiContext<number>>;
 
     protected readonly directive = inject(TuiItemsWithMoreDirective);
