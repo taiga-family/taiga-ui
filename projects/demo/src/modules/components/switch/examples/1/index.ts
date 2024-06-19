@@ -6,17 +6,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiPlatform,
-        TuiSwitchComponent,
-    ],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, TuiPlatform, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

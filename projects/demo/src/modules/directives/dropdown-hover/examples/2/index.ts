@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {
     TuiChevron,
-    TuiSwitchComponent,
+    TuiSwitch,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
 } from '@taiga-ui/kit';
@@ -19,7 +19,7 @@ import {
         TuiDropdown,
         TuiDataList,
         ReactiveFormsModule,
-        TuiSwitchComponent,
+        TuiSwitch,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

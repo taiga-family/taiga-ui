@@ -10,7 +10,7 @@ import {
     TuiBadgeDirective,
     TuiChevron,
     TuiFadeDirective,
-    TuiSwitchComponent,
+    TuiSwitch,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
 } from '@taiga-ui/kit';
@@ -20,7 +20,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         TuiNavigationModule,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
         TuiButton,
         TuiChevron,

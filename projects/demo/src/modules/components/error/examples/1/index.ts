@@ -4,11 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError, TuiLabel} from '@taiga-ui/core';
-import {TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiLabel, TuiSwitchComponent, TuiError],
+    imports: [FormsModule, TuiLabel, TuiSwitch, TuiError],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

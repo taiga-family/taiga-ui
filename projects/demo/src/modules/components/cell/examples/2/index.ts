@@ -7,7 +7,7 @@ import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
-    TuiSwitchComponent,
+    TuiSwitch,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
@@ -19,7 +19,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiBadgeDirective,
         TuiIcon,
         TuiAvatarComponent,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
     ],
     templateUrl: './index.html',

@@ -26,12 +26,12 @@ import { TuiToggleModule } from "@taiga-ui/experimental";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiSwitchComponent } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiSwitch } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiSwitchComponent]
+    imports: [TuiSwitch]
 })
 export class Test {
 }`;

@@ -7,7 +7,7 @@ import {
     TuiAvatarComponent,
     TuiBlockDirective,
     TuiCheckboxComponent,
-    TuiSwitchComponent,
+    TuiSwitch,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -20,7 +20,7 @@ import {
         TuiBlockDirective,
         TuiCheckboxComponent,
         TuiTitle,
-        TuiSwitchComponent,
+        TuiSwitch,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

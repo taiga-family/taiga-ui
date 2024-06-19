@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -14,7 +14,7 @@ import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
         TuiAvatarComponent,
         TuiTitle,
         TuiButton,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
     ],
     templateUrl: './index.html',

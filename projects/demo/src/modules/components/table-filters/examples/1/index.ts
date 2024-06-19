@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
-import {TuiSwitchComponent} from '@taiga-ui/kit';
+import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiTableFilters,
         ReactiveFormsModule,
         TuiInputNumberModule,
-        TuiSwitchComponent,
+        TuiSwitch,
         FormsModule,
         TuiTable,
         AsyncPipe,
