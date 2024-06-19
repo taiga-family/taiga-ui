@@ -4,11 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiLet, TuiBadgeDirective],
+    imports: [TuiLet, TuiBadge],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

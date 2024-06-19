@@ -16,7 +16,7 @@ import {
     tuiFallbackValueProvider,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiBadgeDirective} from '@taiga-ui/kit/components/badge';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiBlock} from '@taiga-ui/kit/components/block';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -38,7 +38,7 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiBlock,
-        TuiBadgeDirective,
+        TuiBadge,
     ],
     templateUrl: './filter.template.html',
     styleUrls: ['./filter.style.less'],

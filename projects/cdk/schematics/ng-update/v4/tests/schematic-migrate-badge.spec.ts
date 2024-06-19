@@ -26,12 +26,12 @@ import { TuiBadgeModule } from "@taiga-ui/experimental";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiBadgeDirective } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiBadge } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadgeDirective]
+    imports: [TuiBadge]
 })
 export class Test {
 }`;

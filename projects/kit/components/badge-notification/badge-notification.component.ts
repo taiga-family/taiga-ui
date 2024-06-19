@@ -16,7 +16,7 @@ import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
         '[@tuiPop]': 'options',
     },
 })
-export class TuiBadgeNotificationComponent {
+export class TuiBadgeNotification {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()

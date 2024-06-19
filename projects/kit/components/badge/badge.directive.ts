@@ -46,7 +46,7 @@ class TuiBadgeStyles {}
         },
     ],
 })
-export class TuiBadgeDirective {
+export class TuiBadge {
     private readonly options = inject(TUI_BADGE_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(TuiBadgeStyles);

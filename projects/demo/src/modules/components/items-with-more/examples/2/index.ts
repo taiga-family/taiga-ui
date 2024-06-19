@@ -12,7 +12,7 @@ import {
     TuiIcon,
 } from '@taiga-ui/core';
 import {
-    TuiBadgeDirective,
+    TuiBadge,
     TuiBlock,
     TuiItemsWithMoreComponent,
     TuiMoreDirective,
@@ -30,7 +30,7 @@ import {
         TuiMoreDirective,
         TuiDropdown,
         TuiButton,
-        TuiBadgeDirective,
+        TuiBadge,
         TuiDataList,
         NgIf,
         TuiIcon,

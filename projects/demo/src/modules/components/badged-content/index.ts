@@ -3,18 +3,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadgedContentComponent,
-    TuiBadgeNotificationComponent,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         AsyncPipe,
-        TuiBadgedContentComponent,
-        TuiBadgeNotificationComponent,
+        TuiBadgedContent,
+        TuiBadgeNotification,
         TuiAvatar,
         TuiFallbackSrcPipe,
         TuiDemo,

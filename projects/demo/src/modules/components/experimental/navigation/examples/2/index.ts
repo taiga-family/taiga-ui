@@ -7,7 +7,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
-    TuiBadgeDirective,
+    TuiBadge,
     TuiChevron,
     TuiFadeDirective,
     TuiSwitch,
@@ -29,7 +29,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
         TuiIcon,
         TuiFadeDirective,
-        TuiBadgeDirective,
+        TuiBadge,
         TuiTabsHorizontalDirective,
         TuiTabDirective,
         TuiRepeatTimes,
