@@ -2,12 +2,12 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
+import {TuiBarSet} from '@taiga-ui/addon-charts';
 
 describe('BarSet', () => {
     @Component({
         standalone: true,
-        imports: [TuiBarSetComponent],
+        imports: [TuiBarSet],
         template: `
             <tui-bar-set
                 [collapsed]="collapsed"
@@ -16,8 +16,8 @@ describe('BarSet', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiBarSetComponent)
-        public readonly component!: TuiBarSetComponent;
+        @ViewChild(TuiBarSet)
+        public readonly component!: TuiBarSet;
 
         public readonly value = [10, 20, 30, 40];
         public collapsed = false;

@@ -13,7 +13,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_LINE_CHART_OPTIONS,
-    TuiLineChartComponent,
+    TuiLineChart,
     tuiLineChartDrivers,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts/components/line-chart';
@@ -36,13 +36,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 @Component({
     standalone: true,
     selector: 'tui-line-days-chart',
-    imports: [
-        TuiLineChartComponent,
-        NgForOf,
-        TuiHint,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-    ],
+    imports: [TuiLineChart, NgForOf, TuiHint, PolymorpheusOutlet, PolymorpheusTemplate],
     templateUrl: './line-days-chart.template.html',
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,8 +57,8 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         optional: true,
     });
 
-    @ViewChildren(TuiLineChartComponent)
-    public readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+    @ViewChildren(TuiLineChart)
+    public readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
 
     @Input()
     public y = 0;
@@ -178,7 +172,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         return index - offset;
     }
 
-    protected raise(index: number, {value}: TuiLineChartComponent): void {
+    protected raise(index: number, {value}: TuiLineChart): void {
         const x = value[index][0];
         const month = this.getDay(x);
 
@@ -193,7 +187,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         return this.getDay(index).daysCount * this.months.length;
     }
 
-    protected getContext(index: number, {value}: TuiLineChartComponent): unknown {
+    protected getContext(index: number, {value}: TuiLineChart): unknown {
         const x = value[index][0];
 
         return this.hintDirective

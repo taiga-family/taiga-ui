@@ -1,12 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiBarChartComponent} from '@taiga-ui/addon-charts';
+import {TuiBarChart} from '@taiga-ui/addon-charts';
 
 describe('BarChart', () => {
     @Component({
         standalone: true,
-        imports: [TuiBarChartComponent],
+        imports: [TuiBarChart],
         template: `
             <tui-bar-chart
                 [max]="max"
@@ -15,8 +15,8 @@ describe('BarChart', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiBarChartComponent)
-        public readonly component!: TuiBarChartComponent;
+        @ViewChild(TuiBarChart)
+        public readonly component!: TuiBarChart;
 
         public readonly value = [
             [1, 2, 3],

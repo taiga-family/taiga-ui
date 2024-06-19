@@ -7,7 +7,7 @@ import {
     Input,
     ViewChildren,
 } from '@angular/core';
-import {TuiBarSetComponent} from '@taiga-ui/addon-charts/components/bar-set';
+import {TuiBarSet} from '@taiga-ui/addon-charts/components/bar-set';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiIdService} from '@taiga-ui/cdk/services';
@@ -27,13 +27,13 @@ import type {Observable} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-bar-chart',
-    imports: [NgForOf, TuiHint, TuiMapperPipe, AsyncPipe, TuiBarSetComponent],
+    imports: [NgForOf, TuiHint, TuiMapperPipe, AsyncPipe, TuiBarSet],
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
-export class TuiBarChartComponent {
+export class TuiBarChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoIdString = inject(TuiIdService).generate();
 

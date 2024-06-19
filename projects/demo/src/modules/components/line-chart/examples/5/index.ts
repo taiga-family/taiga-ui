@@ -2,17 +2,13 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiAxes,
-    TuiLineChartComponent,
-    TuiLineChartHintDirective,
-} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineChart, TuiLineChartHintDirective} from '@taiga-ui/addon-charts';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAxes, TuiLineChartComponent, NgForOf, TuiLineChartHintDirective],
+    imports: [TuiAxes, TuiLineChart, NgForOf, TuiLineChartHintDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

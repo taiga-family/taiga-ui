@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLegendItemComponent} from '@taiga-ui/addon-charts';
+import {TuiLegendItem} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLegendItemComponent, TuiAmountPipe],
+    imports: [TuiDemo, TuiLegendItem, TuiAmountPipe],
     templateUrl: './index.html',
     changeDetection,
 })
