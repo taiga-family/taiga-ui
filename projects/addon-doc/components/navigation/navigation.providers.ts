@@ -4,8 +4,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
-import {tuiIsPresent} from '@taiga-ui/cdk';
-import {tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs';
 

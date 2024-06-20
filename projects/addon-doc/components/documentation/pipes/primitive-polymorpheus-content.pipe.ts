@@ -1,6 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Pipe({
     standalone: true,

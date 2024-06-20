@@ -5,8 +5,8 @@ import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
-import {tuiIsNumber} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';

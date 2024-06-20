@@ -17,10 +17,14 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_IS_E2E, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, TuiLoader} from '@taiga-ui/core';
-import {TUI_COPY_TEXTS, TuiTabs} from '@taiga-ui/kit';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {TuiAlertService} from '@taiga-ui/core/components/alert';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {TuiTabs} from '@taiga-ui/kit/components/tabs';
+import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     PolymorpheusComponent,

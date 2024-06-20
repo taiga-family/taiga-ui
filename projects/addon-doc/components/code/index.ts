@@ -10,8 +10,8 @@ import {
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 

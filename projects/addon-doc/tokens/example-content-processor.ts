@@ -1,6 +1,6 @@
 import {tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc/utils';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {identity} from 'rxjs';
 
 /**

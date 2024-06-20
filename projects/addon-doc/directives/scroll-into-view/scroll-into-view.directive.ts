@@ -1,7 +1,7 @@
 import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
-import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounceTime, filter, ReplaySubject, switchMap} from 'rxjs';
 
 @Directive({

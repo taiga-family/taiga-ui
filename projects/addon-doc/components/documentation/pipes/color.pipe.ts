@@ -1,6 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import {tuiRgbToHex} from '@taiga-ui/cdk';
+import {tuiRgbToHex} from '@taiga-ui/cdk/utils/color';
 
 @Pipe({
     standalone: true,

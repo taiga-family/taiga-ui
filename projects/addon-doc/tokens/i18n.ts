@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * TODO: think about reorganization in @taiga-ui/i18n way

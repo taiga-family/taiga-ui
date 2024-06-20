@@ -2,7 +2,10 @@ import type {InjectionToken} from '@angular/core';
 import {inject} from '@angular/core';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiToFlatMapPages} from '@taiga-ui/addon-doc/utils';
-import {tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {
+    tuiCreateToken,
+    tuiCreateTokenFromFactory,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Documentation pages

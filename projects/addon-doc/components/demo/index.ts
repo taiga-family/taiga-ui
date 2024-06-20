@@ -19,18 +19,18 @@ import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
-import {
-    tuiClamp,
-    tuiInjectElement,
-    tuiPure,
-    tuiPx,
-    TuiResizeable,
-    TuiResizer,
-    tuiToInteger,
-} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand, TuiGroupDirective} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
-import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiResizeable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
+import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiGroupDirective} from '@taiga-ui/core/components/group';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiSwitch} from '@taiga-ui/kit/components/switch';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 
 const MIN_WIDTH = 160;
 
