@@ -5,8 +5,9 @@ import {
     TUI_CARD_EXPIRY_TEXTS,
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
-import {tuiCreateTokenFromFactory, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TUI_MEDIA} from '@taiga-ui/core';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of, startWith, switchMap} from 'rxjs';
 

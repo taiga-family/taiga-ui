@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
+import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

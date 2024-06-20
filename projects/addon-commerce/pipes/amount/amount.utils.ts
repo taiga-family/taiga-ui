@@ -1,4 +1,4 @@
-import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
+import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk/constants';
 
 import type {TuiAmountSign, TuiAmountSignSymbol} from './amount.types';
 

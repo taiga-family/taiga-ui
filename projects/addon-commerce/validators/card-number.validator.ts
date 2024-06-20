@@ -1,6 +1,6 @@
 import type {AbstractControl, ValidationErrors} from '@angular/forms';
 import {tuiIsCardNumberValid} from '@taiga-ui/addon-commerce/utils';
-import {TuiValidationError} from '@taiga-ui/cdk';
+import {TuiValidationError} from '@taiga-ui/cdk/classes';
 
 export function tuiCardNumberValidator({
     value,

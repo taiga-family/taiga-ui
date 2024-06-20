@@ -1,4 +1,4 @@
-import {tuiClamp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 export function tuiIsExpireValid(expire: string, today = new Date()): boolean {
     const currentMonth = today.getMonth() + 1;
