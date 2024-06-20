@@ -4,7 +4,7 @@ import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
+import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiScrollbar} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
@@ -12,15 +12,15 @@ import {distinctUntilChanged, map, startWith} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiScrollbar, TuiElasticStickyDirective, TuiAmountPipe, AsyncPipe],
+    imports: [TuiScrollbar, TuiElasticSticky, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class ExampleComponent implements AfterViewInit {
-    @ViewChild(TuiElasticStickyDirective)
-    protected readonly elasticSticky?: TuiElasticStickyDirective;
+    @ViewChild(TuiElasticSticky)
+    protected readonly elasticSticky?: TuiElasticSticky;
 
     protected scale$?: Observable<number>;
 

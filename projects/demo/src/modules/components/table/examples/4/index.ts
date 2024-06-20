@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiComparator, TuiTablePagination} from '@taiga-ui/addon-table';
+import type {TuiComparator, TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 import {
     TuiReorderComponent,
     TuiTable,
-    TuiTablePaginationComponent,
+    TuiTablePagination,
 } from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
@@ -114,7 +114,7 @@ function getAge({dob}: User): number {
         TuiLoader,
         AsyncPipe,
         NgIf,
-        TuiTablePaginationComponent,
+        TuiTablePagination,
         ReactiveFormsModule,
         TuiDropdown,
         TuiButton,
@@ -185,7 +185,7 @@ export default class Example {
         this.direction$.next(direction);
     }
 
-    protected onPagination({page, size}: TuiTablePagination): void {
+    protected onPagination({page, size}: TuiTablePaginationEvent): void {
         this.page$.next(page);
         this.size$.next(size);
     }

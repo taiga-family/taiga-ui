@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiTablePaginationComponent,
+    TuiTablePagination,
     tuiTablePaginationOptionsProvider,
 } from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [TuiTablePaginationComponent],
+    imports: [TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

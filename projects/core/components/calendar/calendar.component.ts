@@ -14,12 +14,9 @@ import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 
-import {
-    TuiCalendarSheetComponent,
-    type TuiMarkerHandler,
-} from './calendar-sheet.component';
-import {TuiCalendarSpinComponent} from './calendar-spin.component';
-import {TuiCalendarYearComponent} from './calendar-year.component';
+import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
+import {TuiCalendarSpin} from './calendar-spin.component';
+import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
     standalone: true,
@@ -27,9 +24,9 @@ import {TuiCalendarYearComponent} from './calendar-year.component';
     imports: [
         NgIf,
         TuiScrollbar,
-        TuiCalendarYearComponent,
-        TuiCalendarSpinComponent,
-        TuiCalendarSheetComponent,
+        TuiCalendarYear,
+        TuiCalendarSpin,
+        TuiCalendarSheet,
         TuiMapperPipe,
     ],
     templateUrl: './calendar.template.html',

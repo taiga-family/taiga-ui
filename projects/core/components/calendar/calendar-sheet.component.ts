@@ -38,7 +38,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     styleUrls: ['./calendar-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarSheetComponent {
+export class TuiCalendarSheet {
     private readonly today = TuiDay.currentLocal();
 
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);

@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
-import type {TuiTablePagination} from '@taiga-ui/addon-table';
-import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
+import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
+import {TuiTablePagination} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiTablePaginationComponent],
+    imports: [TuiDemo, TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -23,7 +23,7 @@ export default class Page {
     protected items = this.itemsVariants[0];
     protected size = this.items[0];
 
-    protected update({page, size}: TuiTablePagination): void {
+    protected update({page, size}: TuiTablePaginationEvent): void {
         this.page = page;
         this.size = size;
     }

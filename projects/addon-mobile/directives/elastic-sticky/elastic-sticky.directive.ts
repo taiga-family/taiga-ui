@@ -8,7 +8,7 @@ import {TuiElasticStickyService} from './elastic-sticky.service';
     providers: [TuiElasticStickyService],
     exportAs: 'tuiElasticSticky',
 })
-export class TuiElasticStickyDirective {
+export class TuiElasticSticky {
     @Output()
     public readonly tuiElasticSticky = inject(TuiElasticStickyService);
 }

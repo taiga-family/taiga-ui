@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
+import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 
@@ -34,7 +34,7 @@ describe('ElasticSticky', () => {
 
     beforeEach(() =>
         cy.mount(Test, {
-            imports: [TuiElasticStickyDirective],
+            imports: [TuiElasticSticky],
             providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 change: createOutputSpy<number>('changeSpy'),

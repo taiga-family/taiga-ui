@@ -21,7 +21,7 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
         '[style.visibility]': '"visible"',
     },
 })
-export class TuiDropdownMobileDirective {
+export class TuiDropdownMobile {
     private readonly isMobile = inject(TUI_IS_MOBILE);
 
     @Input()

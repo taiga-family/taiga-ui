@@ -17,7 +17,7 @@ const ROTATE_X_STEP = 30;
     styleUrls: ['./loader-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiMobileLoaderIOSComponent {
+export class TuiMobileLoaderIOS {
     private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
@@ -44,4 +44,4 @@ export class TuiMobileLoaderIOSComponent {
     }
 }
 
-export const TUI_IOS_LOADER = new PolymorpheusComponent(TuiMobileLoaderIOSComponent);
+export const TUI_IOS_LOADER = new PolymorpheusComponent(TuiMobileLoaderIOS);

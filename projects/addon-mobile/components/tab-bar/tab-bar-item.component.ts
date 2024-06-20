@@ -14,7 +14,7 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiScaleIn],
 })
-export class TuiTabBarItemComponent {
+export class TuiTabBarItem {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()

@@ -19,7 +19,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
     styleUrls: ['./loader-android.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiMobileLoaderAndroidComponent {
+export class TuiMobileLoaderAndroid {
     private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
@@ -56,5 +56,5 @@ export class TuiMobileLoaderAndroidComponent {
 }
 
 export const TUI_ANDROID_LOADER = new PolymorpheusComponent(
-    TuiMobileLoaderAndroidComponent,
+    TuiMobileLoaderAndroid,
 );

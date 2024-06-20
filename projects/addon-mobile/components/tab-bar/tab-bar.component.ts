@@ -15,7 +15,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
-import {TuiTabBarItemComponent} from './tab-bar-item.component';
+import {TuiTabBarItem} from './tab-bar-item.component';
 
 @Component({
     standalone: true,
@@ -26,7 +26,7 @@ import {TuiTabBarItemComponent} from './tab-bar-item.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarComponent {
-    @ContentChildren(forwardRef(() => TuiTabBarItemComponent), {read: ElementRef})
+    @ContentChildren(forwardRef(() => TuiTabBarItem), {read: ElementRef})
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()

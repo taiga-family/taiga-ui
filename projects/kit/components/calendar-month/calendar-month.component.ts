@@ -21,7 +21,7 @@ import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiCalendarYearComponent} from '@taiga-ui/core/components/calendar';
+import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiSpinButtonComponent} from '@taiga-ui/core/components/spin-button';
@@ -37,7 +37,7 @@ const TODAY = TuiDay.currentLocal();
         AsyncPipe,
         NgIf,
         NgForOf,
-        TuiCalendarYearComponent,
+        TuiCalendarYear,
         TuiSpinButtonComponent,
         TuiScrollbar,
         TuiLink,

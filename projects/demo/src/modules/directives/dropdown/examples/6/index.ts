@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
@@ -30,7 +30,7 @@ interface User {
         FormsModule,
         TuiDropdown,
         TuiComboBoxModule,
-        TuiDropdownMobileDirective,
+        TuiDropdownMobile,
         TuiTextfieldControllerModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
