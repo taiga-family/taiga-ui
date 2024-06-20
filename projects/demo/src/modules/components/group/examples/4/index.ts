@@ -7,13 +7,7 @@ import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiGroupDirective,
-        ReactiveFormsModule,
-        TuiBlock,
-        TuiTitle,
-        TuiRadio,
-    ],
+    imports: [TuiGroupDirective, ReactiveFormsModule, TuiBlock, TuiTitle, TuiRadio],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
