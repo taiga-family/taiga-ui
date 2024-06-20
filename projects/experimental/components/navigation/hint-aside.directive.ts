@@ -3,16 +3,17 @@ import {Directive, inject} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 
-import {TuiAsideComponent} from './aside.component';
+import {TuiAside} from './aside.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHintAside]',
     hostDirectives: [TuiHintDirective],
     providers: [tuiHintOptionsProvider({direction: 'right'})],
 })
-export class TuiHintAsideDirective implements DoCheck {
+export class TuiHintAside implements DoCheck {
     private readonly el = tuiInjectElement();
-    private readonly aside = inject(TuiAsideComponent);
+    private readonly aside = inject(TuiAside);
     private readonly hint = inject(TuiHintDirective);
 
     // TODO: switch to `tuiDirectiveBinding` when tuiNavigationAside is switched to signal

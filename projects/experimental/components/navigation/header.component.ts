@@ -6,6 +6,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 @Component({
+    standalone: true,
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./header.style.less'],
@@ -22,4 +23,4 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiTheme: 'dark',
     },
 })
-export class TuiHeaderComponent {}
+export class TuiHeader {}

@@ -8,7 +8,7 @@ import {TUI_SCROLLABLE} from './scrollbar.component';
     standalone: true,
     selector: '[tuiScrollable]',
 })
-export class TuiScrollableDirective implements OnInit {
+export class TuiScrollable implements OnInit {
     private readonly el = tuiInjectElement();
 
     public ngOnInit(): void {

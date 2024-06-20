@@ -4,6 +4,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
 
 @Component({
+    standalone: true,
     selector: 'nav[tuiNavigationNav]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./nav.style.less'],
@@ -15,4 +16,4 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
         tuiTabsOptionsProvider({size: 'm'}),
     ],
 })
-export class TuiNavComponent {}
+export class TuiNav {}

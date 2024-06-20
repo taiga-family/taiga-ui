@@ -4,11 +4,15 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'aside[tuiNavigationAside]',
+    imports: [TuiScrollbar, TuiFade, TuiScrollable],
     template: `
         <ng-content select="header"></ng-content>
         <tui-scrollbar class="t-nav-scrollbar">
@@ -35,7 +39,7 @@ import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
         '[class._expanded]': 'tuiNavigationAside',
     },
 })
-export class TuiAsideComponent {
+export class TuiAside {
     @Input()
     public tuiNavigationAside = false;
 }
