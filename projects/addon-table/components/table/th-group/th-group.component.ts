@@ -8,7 +8,7 @@ import {
     forwardRef,
     inject,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs';
 

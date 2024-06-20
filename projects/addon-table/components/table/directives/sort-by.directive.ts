@@ -1,7 +1,7 @@
 import type {QueryList} from '@angular/core';
 import {ContentChildren, Directive, inject, Input, Output} from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {delay, filter, map} from 'rxjs';
 
 import {TuiTableSortable} from './sortable.directive';

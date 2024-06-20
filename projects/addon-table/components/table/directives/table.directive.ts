@@ -10,9 +10,10 @@ import {
 } from '@angular/core';
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {AbstractTuiController, tuiProvide} from '@taiga-ui/cdk';
-import type {TuiTextfieldOptions} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';

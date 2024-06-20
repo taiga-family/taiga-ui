@@ -4,7 +4,7 @@ import {
     INTERSECTION_THRESHOLD,
     IntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
-import {tuiWatch} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 
 // TODO: Consider making universal and moving to CDK

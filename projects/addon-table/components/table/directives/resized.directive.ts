@@ -1,11 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Output} from '@angular/core';
-import {
-    EMPTY_CLIENT_RECT,
-    tuiInjectElement,
-    tuiPreventDefault,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({

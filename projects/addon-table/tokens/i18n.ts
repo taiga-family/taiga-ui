@@ -1,5 +1,5 @@
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import {tuiExtractI18n} from '@taiga-ui/i18n';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiExtractI18n} from '@taiga-ui/i18n/tools';
 
 /**
  * tui-reorder i18n button

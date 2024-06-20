@@ -11,9 +11,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
-import {TuiChevron} from '@taiga-ui/kit';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
