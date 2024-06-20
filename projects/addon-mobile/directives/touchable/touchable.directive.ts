@@ -1,6 +1,8 @@
 import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_IS_IOS, tuiInjectElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
 const STYLE = {

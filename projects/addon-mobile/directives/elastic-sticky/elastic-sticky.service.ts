@@ -8,13 +8,10 @@ import {
     NgZone,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-    tuiGetElementOffset,
-    tuiInjectElement,
-    tuiScrollFrom,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {SCROLL_REF_SELECTOR} from '@taiga-ui/core/components/scrollbar';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {map, Observable, Subscription, tap} from 'rxjs';
 
 @Injectable()

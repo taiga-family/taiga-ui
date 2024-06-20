@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk';
-import {TUI_DIALOGS} from '@taiga-ui/core';
+import {TuiPopoverService} from '@taiga-ui/cdk/services';
+import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';

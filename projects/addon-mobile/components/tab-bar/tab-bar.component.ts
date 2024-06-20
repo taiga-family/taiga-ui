@@ -11,7 +11,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiIsElement, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTabBarItemComponent} from './tab-bar-item.component';
 

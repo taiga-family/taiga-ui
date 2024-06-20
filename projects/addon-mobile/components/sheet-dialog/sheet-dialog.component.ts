@@ -10,21 +10,19 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiClickOutsideDirective,
-    tuiInjectElement,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiClickOutsideDirective} from '@taiga-ui/cdk/directives/click-outside';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButton,
-    tuiGetDuration,
-    tuiSlideInTop,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
 import {
     POLYMORPHEUS_CONTEXT,

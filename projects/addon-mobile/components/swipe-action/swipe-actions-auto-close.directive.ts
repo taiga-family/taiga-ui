@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
     standalone: true,

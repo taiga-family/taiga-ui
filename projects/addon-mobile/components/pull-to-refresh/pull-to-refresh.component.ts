@@ -8,9 +8,11 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, tuiPx, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
-import {TUI_SCROLL_REF} from '@taiga-ui/core';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import type {TuiContext, TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';

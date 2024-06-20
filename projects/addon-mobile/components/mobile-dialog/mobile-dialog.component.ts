@@ -1,9 +1,9 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusOutlet,

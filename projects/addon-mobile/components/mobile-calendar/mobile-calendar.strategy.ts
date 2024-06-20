@@ -2,8 +2,9 @@ import type {
     CdkVirtualScrollViewport,
     VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
-import type {TuiScrollService} from '@taiga-ui/cdk';
-import {MONTHS_IN_YEAR, tuiPure} from '@taiga-ui/cdk';
+import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
+import type {TuiScrollService} from '@taiga-ui/cdk/services';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, Subject, takeUntil} from 'rxjs';
 

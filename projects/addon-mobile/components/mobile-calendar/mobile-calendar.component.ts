@@ -19,38 +19,36 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiMobileCalendarSheet} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
 import {TuiRipple, TuiTouchable} from '@taiga-ui/addon-mobile/directives';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     MONTHS_IN_YEAR,
-    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
-    TUI_IS_E2E,
-    TUI_IS_IOS,
     TUI_LAST_DAY,
     TuiDay,
     TuiDayRange,
-    TuiMapperPipe,
     TuiMonth,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/date-time';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
+import {TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes/order-week-days';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
-    TuiButton,
-    tuiGetDuration,
-    TuiLink,
-    TuiMonthPipe,
-    TuiOrderWeekDaysPipe,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
-    tuiToggleDay,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/tokens';
+import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
     debounceTime,

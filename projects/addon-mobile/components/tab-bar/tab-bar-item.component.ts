@@ -1,11 +1,9 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiIcon,
-    tuiScaleIn,
-    tuiToAnimationOptions,
-} from '@taiga-ui/core';
+import {tuiScaleIn} from '@taiga-ui/core/animations';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     standalone: true,

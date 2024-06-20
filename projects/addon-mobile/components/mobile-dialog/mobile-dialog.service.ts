@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
-import type {TuiPopoverContext} from '@taiga-ui/cdk';
-import {TuiPopoverService} from '@taiga-ui/cdk';
-import {TUI_DIALOGS} from '@taiga-ui/core';
+import type {TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {TuiPopoverService} from '@taiga-ui/cdk/services';
+import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
