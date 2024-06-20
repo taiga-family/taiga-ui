@@ -17,7 +17,7 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
     },
 );
 
-export function tuiInjectResolver(): TuiStringHandler<string> {
+export function tuiInjectIconResolver(): TuiStringHandler<string> {
     const icons = inject(TUI_ICONS);
     const resolver = inject(TUI_ICON_RESOLVER);
 
