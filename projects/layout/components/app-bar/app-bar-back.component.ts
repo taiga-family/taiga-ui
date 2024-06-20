@@ -7,4 +7,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     styleUrls: ['./app-bar-back.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAppBarBackComponent {}
+export class TuiAppBarBack {}
