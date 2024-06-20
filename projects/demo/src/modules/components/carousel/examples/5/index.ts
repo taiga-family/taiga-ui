@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiCarouselComponent, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCarouselComponent, NgFor, TuiPaginationModule, TuiItem],
+    imports: [TuiCarouselComponent, NgFor, TuiPagination, TuiItem],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

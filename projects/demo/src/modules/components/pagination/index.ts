@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiPaginationModule],
+    imports: [TuiDemo, TuiPagination],
     templateUrl: './index.html',
     changeDetection,
 })

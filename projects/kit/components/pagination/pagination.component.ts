@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -15,22 +16,27 @@ import {
     tuiClamp,
     tuiInjectElement,
     tuiIsNativeFocusedIn,
+    TuiLet,
+    TuiRepeatTimes,
 } from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS} from '@taiga-ui/core';
+import {TUI_SPIN_ICONS, TuiButton} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
+    standalone: true,
     selector: 'tui-pagination',
+    imports: [NgIf, AsyncPipe, TuiButton, TuiRepeatTimes, TuiLet, PolymorpheusOutlet],
     templateUrl: './pagination.template.html',
     styleUrls: ['./pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPaginationComponent {
+export class TuiPagination {
     @ViewChildren('element', {read: ElementRef})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 

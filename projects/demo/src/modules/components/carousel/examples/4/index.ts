@@ -8,7 +8,7 @@ import {TuiButton, TuiDialogModule, TuiLink} from '@taiga-ui/core';
 import {
     TuiCarouselButtonsDirective,
     TuiCarouselComponent,
-    TuiPaginationModule,
+    TuiPagination,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -19,7 +19,7 @@ import {
         TuiCarouselComponent,
         TuiLink,
         RouterLink,
-        TuiPaginationModule,
+        TuiPagination,
         TuiCarouselButtonsDirective,
         TuiItem,
     ],
