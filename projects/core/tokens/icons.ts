@@ -1,6 +1,6 @@
 import type {FactoryProvider} from '@angular/core';
 import {inject} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const TUI_ICONS = tuiCreateToken<Record<string, string>>({});
 

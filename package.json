@@ -81,9 +81,30 @@
         ],
         "rules": {
             "@angular-eslint/component-class-suffix": "off",
-            "jest/prefer-importing-jest-globals": "off",
-            "@taiga-ui/experience/no-deep-imports": "off"
+            "jest/prefer-importing-jest-globals": "off"
         },
+        "overrides": [
+            {
+                "files": [
+                    "projects/**/*.ts"
+                ],
+                "excludedFiles": [
+                    "**/*.spec.ts",
+                    "**/*.cy.ts",
+                    "projects/demo/**/*.ts"
+                ],
+                "parser": "@typescript-eslint/parser",
+                "rules": {
+                    "@taiga-ui/experience/no-deep-imports": "off",
+                    "@taiga-ui/experience/prefer-deep-imports": [
+                        "error",
+                        {
+                            "importFilter": "/^@taiga-ui\\u002F(addon-charts|addon-commerce|addon-doc|addon-mobile|addon-table|cdk|core|experimental|i18n|icons|kit|layout|legacy|styles|testing)$/"
+                        }
+                    ]
+                }
+            }
+        ],
         "root": true
     },
     "stylelint": {
