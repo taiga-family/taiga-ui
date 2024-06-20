@@ -25,7 +25,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
         type: 'button',
     },
 })
-export class TuiTabDirective implements OnDestroy {
+export class TuiTab implements OnDestroy {
     private readonly el = tuiInjectElement();
     private readonly rla = inject(RouterLinkActive, {optional: true});
     private readonly observer =

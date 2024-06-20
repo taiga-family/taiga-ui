@@ -3,12 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiNotification} from '@taiga-ui/core';
-import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiAccordion, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabsModule, TuiAccordion, TuiNotification],
+    imports: [TuiDemo, TuiTabs, TuiAccordion, TuiNotification],
     templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
     encapsulation,

@@ -6,14 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiNavigation} from '@taiga-ui/experimental';
-import {
-    TuiBadge,
-    TuiChevron,
-    TuiFade,
-    TuiSwitch,
-    TuiTabDirective,
-    TuiTabsHorizontalDirective,
-} from '@taiga-ui/kit';
+import {TuiBadge, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -30,8 +23,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiIcon,
         TuiFade,
         TuiBadge,
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabs,
         TuiRepeatTimes,
         TuiCardLarge,
         TuiSurface,

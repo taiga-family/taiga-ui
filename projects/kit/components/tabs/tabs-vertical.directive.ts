@@ -14,7 +14,7 @@ import {TuiTabsDirective} from './tabs.directive';
         },
     ],
 })
-export class TuiTabsVerticalDirective {
+export class TuiTabsVertical {
     private readonly tabs = inject(TuiTabsDirective);
 
     @Input()

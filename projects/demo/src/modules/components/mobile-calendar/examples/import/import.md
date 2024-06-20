@@ -4,7 +4,7 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 // ...
 
-@NgModule({
+@Component({
   standalone: true,
   imports: [
     // ...

@@ -21,8 +21,7 @@ import {
     TuiBadgeNotification,
     TuiChevron,
     TuiFade,
-    TuiTabDirective,
-    TuiTabsHorizontalDirective,
+    TuiTabs,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -43,8 +42,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiAppearance,
         TuiExpand,
         TuiBadge,
-        TuiTabsHorizontalDirective,
-        TuiTabDirective,
+        TuiTabs,
         TuiRepeatTimes,
         TuiCardLarge,
         TuiHeader,
