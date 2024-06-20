@@ -6,7 +6,7 @@ import {TuiCarouselDirective} from './carousel.directive';
     standalone: true,
     selector: '[tuiCarouselAutoscroll]',
 })
-export class TuiCarouselAutoscrollDirective {
+export class TuiCarouselAutoscroll {
     @Output()
     public readonly tuiCarouselAutoscroll = inject(TuiCarouselDirective);
 }
