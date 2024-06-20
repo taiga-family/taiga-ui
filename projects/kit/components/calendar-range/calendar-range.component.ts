@@ -80,6 +80,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     previousValue: TuiDayRange | null = null;
 
+    selectedActivePeriod: TuiDayRangePeriod | null = null;
+
     readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     get computedMin(): TuiDay {
@@ -165,6 +167,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         const {value} = this;
 
         this.previousValue = value;
+        this.selectedActivePeriod = null;
 
         if (value === null || !value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
@@ -176,14 +179,16 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     }
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== 'string') {
+        if (!tuiIsString(item)) {
             this.updateValue(item.range.dayLimit(this.min, this.max));
+            this.selectedActivePeriod = item;
 
             return;
         }
 
         if (this.activePeriod !== null) {
             this.updateValue(null);
+            this.selectedActivePeriod = null;
         }
     }
 
@@ -194,7 +199,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.items.find(item =>
+            this.selectedActivePeriod ??
+            (this.items.find(item =>
                 tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
@@ -202,7 +208,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ||
+                null)
         );
     }
 
