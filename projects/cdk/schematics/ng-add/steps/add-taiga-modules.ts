@@ -30,9 +30,7 @@ import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstr
 import {pushToObjectArrayProperty} from '../../utils/push-to-array-property';
 import type {ImportingModule} from '../constants/modules';
 import {
-    ALERT_MODULES,
     BROWSER_ANIMATION_MODULE,
-    DIALOG_MODULES,
     MAIN_MODULE,
     SANITIZER_MODULES,
 } from '../constants/modules';
@@ -40,14 +38,13 @@ import type {TuiSchema} from '../schema';
 
 function addTuiModules({
     mainClass,
-    options,
     context,
 }: {
     context: SchematicContext;
     mainClass: ClassDeclaration;
     options: TuiSchema;
 }): void {
-    const modules = getModules(options, [BROWSER_ANIMATION_MODULE]);
+    const modules = getModules([BROWSER_ANIMATION_MODULE]);
     const mainModulePath = mainClass.getSourceFile().getFilePath();
 
     modules.forEach(module => {
@@ -156,7 +153,6 @@ function addRootTuiProvidersToBootstrapFn(
 
 function addMainModuleToRootComponent({
     mainClass,
-    options,
     context,
 }: {
     context: SchematicContext;
@@ -165,7 +161,7 @@ function addMainModuleToRootComponent({
 }): void {
     const rootComponentPath = mainClass.getSourceFile().getFilePath();
 
-    const modules = getModules(options);
+    const modules = getModules();
 
     modules.forEach(({name, packageName}) => {
         addImportToComponent(mainClass, name);
@@ -177,16 +173,8 @@ function addMainModuleToRootComponent({
     );
 }
 
-function getModules(
-    options: TuiSchema,
-    extraModules?: ImportingModule[],
-): ImportingModule[] {
-    return [
-        ...(extraModules || []),
-        MAIN_MODULE,
-        ...(options.addDialogsModule ? DIALOG_MODULES : []),
-        ...(options.addAlertModule ? ALERT_MODULES : []),
-    ];
+function getModules(extraModules?: ImportingModule[]): ImportingModule[] {
+    return [...(extraModules || []), MAIN_MODULE];
 }
 
 function getOptionsObject(

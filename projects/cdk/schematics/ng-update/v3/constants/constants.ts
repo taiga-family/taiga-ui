@@ -58,7 +58,7 @@ export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
         to: {
-            name: 'TuiAlertModule',
+            name: 'TuiAlert',
             moduleSpecifier: '@taiga-ui/core',
         },
     },

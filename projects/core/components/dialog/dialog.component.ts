@@ -1,10 +1,13 @@
 import type {AnimationOptions} from '@angular/animations';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -12,7 +15,7 @@ import {
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
 
@@ -27,7 +30,9 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 }
 
 @Component({
+    standalone: true,
     selector: 'tui-dialog',
+    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, AsyncPipe],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     // So we don't force OnPush on dialog content

@@ -13,20 +13,6 @@ export const BROWSER_ANIMATION_MODULE = {
     packageName: '@angular/platform-browser/animations',
 };
 
-export const DIALOG_MODULES: readonly ImportingModule[] = [
-    {
-        name: 'TuiDialogModule',
-        packageName: '@taiga-ui/core',
-    },
-];
-
-export const ALERT_MODULES: readonly ImportingModule[] = [
-    {
-        name: 'TuiAlertModule',
-        packageName: '@taiga-ui/core',
-    },
-];
-
 export const SANITIZER_MODULES: readonly ImportingModule[] = [
     {
         name: 'TUI_SANITIZER',
