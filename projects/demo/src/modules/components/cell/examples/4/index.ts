@@ -3,12 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiLoader, TuiTitle, TuiTooltip} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadgeNotification,
-    TuiCheckbox,
-    TuiSensitive,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadgeNotification, TuiCheckbox, TuiSensitive} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
