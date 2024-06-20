@@ -7,6 +7,7 @@ import {PolymorpheusComponent, PolymorpheusTemplate} from '@taiga-ui/polymorpheu
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiSidebar]',
 })
 export class TuiSidebarDirective<T = Record<string, unknown>>
