@@ -7,12 +7,12 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiFadeDirective} from '@taiga-ui/kit/directives';
+import {TuiFade} from '@taiga-ui/kit/directives';
 
 @Component({
     standalone: true,
     selector: 'tui-avatar-labeled',
-    imports: [NgForOf, NgIf, TuiFadeDirective],
+    imports: [NgForOf, NgIf, TuiFade],
     template: `
         <ng-content></ng-content>
         <ng-container *ngIf="label.length">

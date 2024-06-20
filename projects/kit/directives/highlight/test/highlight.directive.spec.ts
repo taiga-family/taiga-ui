@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiHighlightDirective} from '@taiga-ui/kit';
+import {TuiHighlight} from '@taiga-ui/kit';
 
 describe('TuiHighlight directive', () => {
     @Component({
         standalone: true,
-        imports: [TuiHighlightDirective],
+        imports: [TuiHighlight],
         template: `
             <div
                 id="ica"

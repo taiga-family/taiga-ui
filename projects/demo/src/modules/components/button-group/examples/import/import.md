@@ -1,7 +1,7 @@
 ```ts
 import {Component} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiButtonGroupDirective} from '@taiga-ui/kit';
+import {TuiButtonGroup} from '@taiga-ui/kit';
 // ...
 
 @Component({
@@ -9,7 +9,7 @@ import {TuiButtonGroupDirective} from '@taiga-ui/kit';
   imports: [
     // ...
     TuiButton,
-    TuiButtonGroupDirective,
+    TuiButtonGroup,
   ],
 })
 export class Example {}

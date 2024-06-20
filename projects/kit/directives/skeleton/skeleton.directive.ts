@@ -38,7 +38,7 @@ class TuiSkeletonStyles {}
         '[attr.data-tui-skeleton]': 'getPlaceholder(tuiSkeleton)',
     },
 })
-export class TuiSkeletonDirective implements OnChanges {
+export class TuiSkeleton implements OnChanges {
     private animation?: Animation;
     private readonly el = tuiInjectElement();
     private readonly duration =

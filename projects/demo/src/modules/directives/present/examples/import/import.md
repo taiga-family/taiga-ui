@@ -1,5 +1,5 @@
 ```ts
-import {TuiPresentDirective} from '@taiga-ui/kit';
+import {TuiPresent} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiPresentDirective} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiPresentDirective,
+    TuiPresent,
   ],
   // ...
 })

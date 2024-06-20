@@ -9,7 +9,7 @@ import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiBadge,
     TuiChevron,
-    TuiFadeDirective,
+    TuiFade,
     TuiSwitch,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
@@ -28,7 +28,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiTitle,
         TuiIcon,
-        TuiFadeDirective,
+        TuiFade,
         TuiBadge,
         TuiTabsHorizontalDirective,
         TuiTabDirective,

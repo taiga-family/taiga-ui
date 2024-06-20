@@ -22,6 +22,6 @@ class TuiButtonVerticalStyles {}
     standalone: true,
     selector: '[tuiButtonVertical]',
 })
-export class TuiButtonVerticalDirective {
+export class TuiButtonVertical {
     protected readonly nothing = tuiWithStyles(TuiButtonVerticalStyles);
 }

@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiFadeIn, TuiLink} from '@taiga-ui/core';
-import {TuiFadeDirective} from '@taiga-ui/kit';
+import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFadeDirective, NgIf, TuiLink],
+    imports: [TuiFade, NgIf, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

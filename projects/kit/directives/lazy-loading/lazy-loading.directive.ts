@@ -11,7 +11,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
 })
-export class TuiLazyLoadingDirective {
+export class TuiImgLazyLoading {
     private readonly el = tuiInjectElement<HTMLImageElement>();
     private readonly src$ = inject(TuiLazyLoadingService);
 

@@ -20,7 +20,7 @@ import {
     TuiBadge,
     TuiBadgeNotification,
     TuiChevron,
-    TuiFadeDirective,
+    TuiFade,
     TuiTabDirective,
     TuiTabsHorizontalDirective,
 } from '@taiga-ui/kit';
@@ -34,7 +34,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiIcon,
         TuiChevron,
         TuiDropdown,
-        TuiFadeDirective,
+        TuiFade,
         TuiDataList,
         TuiBadgeNotification,
         TuiAvatar,

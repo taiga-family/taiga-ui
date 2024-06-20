@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiFadeDirective} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiFade} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
@@ -17,7 +17,7 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
         TuiBlockDetails,
         TuiBadge,
         TuiTitle,
-        TuiFadeDirective,
+        TuiFade,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

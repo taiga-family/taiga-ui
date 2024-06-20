@@ -8,9 +8,9 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 @Directive({
     standalone: true,
     selector: 'input[tuiUnfinishedValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidatorDirective, true)],
+    providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidator, true)],
 })
-export class TuiUnfinishedValidatorDirective implements Validator {
+export class TuiUnfinishedValidator implements Validator {
     public readonly validate = tuiCreateUnfinishedValidator(
         tuiInjectElement(),
         tuiInjectElement().getAttribute('tuiUnfinishedValidator') || '',

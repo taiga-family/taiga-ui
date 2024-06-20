@@ -9,7 +9,7 @@ import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
         '[style.animation]': '"tuiPresent 1s infinite"',
     },
 })
-export class TuiPresentDirective implements OnDestroy {
+export class TuiPresent implements OnDestroy {
     private readonly visibility$ = new BehaviorSubject(false);
 
     @Output()

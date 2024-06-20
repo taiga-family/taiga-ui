@@ -22,6 +22,6 @@ class TuiButtonGroupStyles {}
     standalone: true,
     selector: '[tuiButtonGroup]',
 })
-export class TuiButtonGroupDirective {
+export class TuiButtonGroup {
     protected readonly nothing = tuiWithStyles(TuiButtonGroupStyles);
 }

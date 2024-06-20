@@ -246,15 +246,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiHighlightModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiHighlightDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiHighlight', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiLazyLoadingModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiLazyLoadingDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiImgLazyLoading', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiUnfinishedValidatorModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiUnfinishedValidatorDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnfinishedValidator', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiUnmaskHandlerModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -519,7 +519,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiPresentModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {
-            name: 'TuiPresentDirective',
+            name: 'TuiPresent',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
@@ -548,7 +548,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiFadeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
-            name: 'TuiFadeDirective',
+            name: 'TuiFade',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },

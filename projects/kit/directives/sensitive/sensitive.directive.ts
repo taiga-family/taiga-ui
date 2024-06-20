@@ -36,7 +36,7 @@ class TuiSensitiveStyles {}
         '[class.tui-sensitive]': 'tuiSensitive',
     },
 })
-export class TuiSensitiveDirective {
+export class TuiSensitive {
     protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
 
