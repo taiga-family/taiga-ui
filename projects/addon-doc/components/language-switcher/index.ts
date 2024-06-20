@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n';
-import {TuiLanguageSwitcher} from '@taiga-ui/i18n';
+import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -21,8 +21,8 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLanguageSwitcherComponent {
-    protected readonly switcher = inject(TuiLanguageSwitcher);
+export class TuiLanguageSwitcher {
+    protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected readonly language = new FormControl(capitalize(this.switcher.language));
 
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([

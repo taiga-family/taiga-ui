@@ -11,7 +11,7 @@ import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
 
-import {TuiDocHeaderComponent} from '../internal/header';
+import {TuiDocHeader} from '../internal/header';
 import {TuiDocNavigation} from '../navigation/navigation.component';
 
 @Component({
@@ -22,7 +22,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
         AsyncPipe,
         RouterOutlet,
         TuiButton,
-        TuiDocHeaderComponent,
+        TuiDocHeader,
         TuiDocNavigation,
     ],
     templateUrl: './main.template.html',

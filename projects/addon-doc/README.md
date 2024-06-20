@@ -57,7 +57,7 @@ npm i @taiga-ui/addon-doc
        },
      ],
    })
-   export class AppComponent {}
+   export class App {}
    ```
 
 3. Configure documentation providers:
@@ -103,7 +103,7 @@ npm i @taiga-ui/addon-doc
      standalone: true,
      imports: [TuiAddonDoc, SuperComponent],
    })
-   export class AppComponent {}
+   export class App {}
    ```
 
    _Component:_
@@ -113,10 +113,10 @@ npm i @taiga-ui/addon-doc
 
    @Component({
      standalone: true,
-     selector: 'super-component',
+     selector: 'super',
      templateUrl: './super.component.html',
    })
-   export class SuperComponent {
+   export class Super {
      // Keys would be used as tabs for code example
      readonly example = {
        // import a file as a string

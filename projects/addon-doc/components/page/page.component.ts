@@ -13,8 +13,8 @@ import {EMPTY_QUERY, TuiItem, TuiReplacePipe} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe} from '@taiga-ui/core';
 import {TuiChip, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
-import {TuiDocSeeAlsoComponent} from '../internal/see-also';
-import {TuiDocSourceCodeComponent} from '../internal/source-code/source-code.component';
+import {TuiDocSeeAlso} from '../internal/see-also';
+import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
@@ -32,8 +32,8 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         RouterLink,
         RouterLinkActive,
         TuiReplacePipe,
-        TuiDocSourceCodeComponent,
-        TuiDocSeeAlsoComponent,
+        TuiDocSourceCode,
+        TuiDocSeeAlso,
         NgTemplateOutlet,
     ],
     templateUrl: './page.template.html',

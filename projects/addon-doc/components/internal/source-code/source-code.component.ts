@@ -16,7 +16,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     templateUrl: './source-code.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocSourceCodeComponent {
+export class TuiDocSourceCode {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
     protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);

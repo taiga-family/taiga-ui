@@ -12,7 +12,7 @@ import {TuiLink} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocSeeAlsoComponent {
+export class TuiDocSeeAlso {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
     protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 

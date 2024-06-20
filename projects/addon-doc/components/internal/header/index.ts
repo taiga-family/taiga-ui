@@ -26,7 +26,7 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocHeaderComponent {
+export class TuiDocHeader {
     private readonly stream$ = new Subject<boolean>();
     private readonly router = inject(Router);
     protected readonly icons = inject(TUI_DOC_ICONS);
