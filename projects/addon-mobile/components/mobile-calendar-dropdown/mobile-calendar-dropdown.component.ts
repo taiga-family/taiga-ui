@@ -2,23 +2,18 @@ import type {ValueProvider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    TuiActiveZone,
-    type TuiBooleanHandler,
-    TuiControl,
-    type TuiDay,
-} from '@taiga-ui/cdk';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiDropdownDirective,
-    tuiFadeIn,
-    tuiGetDuration,
-    tuiSlideInTop,
-} from '@taiga-ui/core';
-import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDay} from '@taiga-ui/cdk/date-time';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_DAY_CAPS_MAPPER} from '@taiga-ui/kit/components/calendar-range';
+import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
 

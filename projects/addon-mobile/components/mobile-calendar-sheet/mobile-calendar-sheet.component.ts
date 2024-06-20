@@ -1,7 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
-import {TUI_IS_IOS, TuiLet, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiCalendarSheetComponent, TuiCalendarSheetPipe} from '@taiga-ui/core';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {TuiCalendarSheetComponent} from '@taiga-ui/core/components/calendar';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
 
 @Component({
     standalone: true,

@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {filter, fromEvent, merge} from 'rxjs';
 
 @Injectable({

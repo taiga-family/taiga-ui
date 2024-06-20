@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
-import {tuiInjectElement, tuiWatch} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 

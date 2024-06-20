@@ -1,4 +1,4 @@
-import {MONTHS_IN_YEAR} from '@taiga-ui/cdk';
+import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
 
 function getCycle(options: {
     label: number;

@@ -10,8 +10,11 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiIsHTMLElement, tuiPx, tuiTypedFromEvent, tuiWithStyles} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {first, merge, race, switchMap, tap} from 'rxjs';
 
 const DEFAULT_SELECTOR = ':scope';
