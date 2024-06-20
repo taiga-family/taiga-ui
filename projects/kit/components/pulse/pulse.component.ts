@@ -19,7 +19,7 @@ import {
         '[style.--t-animation-state]': "playing ? 'running' : 'paused'",
     },
 })
-export class TuiPulseComponent {
+export class TuiPulse {
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()

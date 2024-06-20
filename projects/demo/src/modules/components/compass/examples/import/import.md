@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiCompassComponent} from '@taiga-ui/kit';
+import {TuiCompass} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiCompassComponent,
+    TuiCompass,
   ],
 })
 export class Example {}

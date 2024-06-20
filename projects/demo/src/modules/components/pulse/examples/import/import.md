@@ -1,12 +1,12 @@
 ```ts
-import {TuiPulseComponent} from '@taiga-ui/kit';
+import {TuiPulse} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiPulseComponent,
+    TuiPulse,
   ],
 })
 export class Example {}
