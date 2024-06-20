@@ -8,9 +8,13 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiNativeValidatorDirective, tuiWithStyles} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiAppearance, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
+import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TuiAppearance,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core/directives/appearance';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';

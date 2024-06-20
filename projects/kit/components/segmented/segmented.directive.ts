@@ -10,7 +10,9 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
-import {EMPTY_QUERY, tuiInjectElement, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {EMPTY, switchMap} from 'rxjs';
 
 import {TuiSegmentedComponent} from './segmented.component';

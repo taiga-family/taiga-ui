@@ -7,7 +7,8 @@ import {
     HostBinding,
     inject,
 } from '@angular/core';
-import {TUI_COMMON_ICONS, TuiButton} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 

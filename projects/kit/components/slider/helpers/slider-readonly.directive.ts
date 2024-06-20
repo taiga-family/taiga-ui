@@ -3,12 +3,9 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
 import {Directive, HostListener, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_TRUE_HANDLER,
-    tuiInjectElement,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {combineLatest, filter, map, merge, tap} from 'rxjs';
 
 const SLIDER_INTERACTION_KEYS = new Set([

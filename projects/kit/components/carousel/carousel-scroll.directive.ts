@@ -1,5 +1,6 @@
 import {Directive, Output} from '@angular/core';
-import {tuiInjectElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
 @Directive({

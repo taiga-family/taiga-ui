@@ -3,7 +3,8 @@ import type {OnDestroy} from '@angular/core';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiArrayShallowEquals, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,

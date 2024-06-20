@@ -1,15 +1,11 @@
 import type {Provider} from '@angular/core';
+import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {
     TuiBooleanHandler,
     TuiIdentityMatcher,
     TuiStringHandler,
-} from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FALSE_HANDLER,
-    tuiCreateToken,
-    tuiProvideOptions,
-} from '@taiga-ui/cdk';
+} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiItemsHandlers<T> {
     readonly disabledItemHandler: TuiBooleanHandler<T>;

@@ -1,11 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiExpandComponent,
-    tuiFadeIn,
-    tuiSlideInTop,
-    tuiToAnimationOptions,
-} from '@taiga-ui/core';
+import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     standalone: true,

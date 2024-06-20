@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiDropdownPortal} from '@taiga-ui/core';
+import {TuiDropdownPortal} from '@taiga-ui/core/directives/dropdown';
 
 @Directive({
     standalone: true,

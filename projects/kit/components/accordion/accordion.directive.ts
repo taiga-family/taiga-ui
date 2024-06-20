@@ -1,8 +1,13 @@
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {ContentChildren, DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, tuiIsPresent, tuiQueryListChanges} from '@taiga-ui/cdk';
-import {TuiGroupDirective, tuiGroupOptionsProvider} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TuiGroupDirective,
+    tuiGroupOptionsProvider,
+} from '@taiga-ui/core/components/group';
 import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
 import {TuiAccordionItem} from './accordion-item.component';

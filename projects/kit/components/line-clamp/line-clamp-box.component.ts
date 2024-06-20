@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
-import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
+import {tuiFadeIn} from '@taiga-ui/core/animations';
+import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({

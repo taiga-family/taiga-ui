@@ -1,8 +1,12 @@
 import {NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiAppearance, tuiAppearanceOptionsProvider, TuiIcon} from '@taiga-ui/core';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {
+    TuiAppearance,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core/directives/appearance';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 

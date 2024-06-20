@@ -1,15 +1,15 @@
 import type {AfterViewInit, QueryList} from '@angular/core';
 import {ContentChildren, DestroyRef, Directive, ElementRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {
-    EMPTY_QUERY,
-    tuiGetClosestFocusable,
     tuiPreventDefault,
-    tuiPure,
     tuiQueryListChanges,
     tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
-import {TuiDropdownDirective} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/observables';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import type {Observable} from 'rxjs';
 import {
     debounceTime,

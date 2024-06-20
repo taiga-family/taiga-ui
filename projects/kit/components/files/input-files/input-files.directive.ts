@@ -1,14 +1,14 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, forwardRef, inject, Output} from '@angular/core';
+import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
-    EMPTY_ARRAY,
-    tuiAsControl,
-    TuiControl,
-    tuiControlValue,
-    tuiInjectElement,
-} from '@taiga-ui/cdk';
-import type {TuiAppearanceOptions} from '@taiga-ui/core';
-import {TuiAppearance, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
+    TuiAppearance,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core/directives/appearance';
 import {filter, map, switchMap, timer} from 'rxjs';
 
 import type {TuiFileLike} from '../files.types';

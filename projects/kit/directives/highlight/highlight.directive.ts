@@ -3,7 +3,9 @@ import type {OnChanges} from '@angular/core';
 import {Directive, inject, Input, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {svgNodeFilter, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
+import {svgNodeFilter} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Directive({
     standalone: true,

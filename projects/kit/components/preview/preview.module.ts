@@ -3,8 +3,10 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
-import {TuiPanDirective, TuiZoom} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
+import {TuiPanDirective} from '@taiga-ui/cdk/directives/pan';
+import {TuiZoom} from '@taiga-ui/cdk/directives/zoom';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {
     TuiSliderComponent,
     TuiSliderThumbLabelComponent,

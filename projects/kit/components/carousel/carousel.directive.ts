@@ -1,12 +1,8 @@
 import {Directive, inject, Input} from '@angular/core';
 import {PAGE_VISIBILITY} from '@ng-web-apis/common';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_TRUE_HANDLER,
-    tuiIfMap,
-    tuiInjectElement,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiIfMap, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
 
 @Directive({

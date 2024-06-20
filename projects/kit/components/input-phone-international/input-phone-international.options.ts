@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import type {Observable} from 'rxjs';
 import {defer} from 'rxjs';

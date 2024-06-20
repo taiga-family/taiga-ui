@@ -1,8 +1,9 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiBreakpointService, TuiLink} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';

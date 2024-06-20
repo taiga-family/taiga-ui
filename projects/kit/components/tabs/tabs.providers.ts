@@ -7,7 +7,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import type {Observable} from 'rxjs';
 import {debounceTime, filter, merge, startWith, tap} from 'rxjs';
 

@@ -9,8 +9,10 @@ import {
     inject,
     SkipSelf,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiInjectElement, tuiProvide} from '@taiga-ui/cdk';
-import {TuiExpandComponent} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';

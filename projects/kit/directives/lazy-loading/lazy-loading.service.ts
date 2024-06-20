@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, inject, Injectable} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {tuiWatch} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {filter, map, Observable, Subject, switchMap, take} from 'rxjs';
 
 @Injectable()

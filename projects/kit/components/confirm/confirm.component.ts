@@ -1,8 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TUI_IS_MOBILE, TuiAutoFocus} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import type {TuiDialogContext} from '@taiga-ui/core/components/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {

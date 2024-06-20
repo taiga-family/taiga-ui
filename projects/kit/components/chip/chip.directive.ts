@@ -6,14 +6,14 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
-import type {TuiSizeXXS} from '@taiga-ui/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TuiAppearance,
     tuiAppearanceOptionsProvider,
-    tuiButtonOptionsProvider,
-    TuiIcons,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/appearance';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import type {TuiSizeXXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';

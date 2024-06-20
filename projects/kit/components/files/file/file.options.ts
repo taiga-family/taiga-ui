@@ -1,6 +1,7 @@
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {TuiAppearanceOptions, TuiSizeL} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import type {TuiSizeL} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiFileState} from '../files.types';

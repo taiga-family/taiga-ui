@@ -6,7 +6,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {
     PolymorpheusComponent,
     PolymorpheusOutlet,

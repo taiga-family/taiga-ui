@@ -1,5 +1,5 @@
 import {Directive, HostListener, inject} from '@angular/core';
-import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk';
+import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
 import {TuiTileComponent} from './tile.component';

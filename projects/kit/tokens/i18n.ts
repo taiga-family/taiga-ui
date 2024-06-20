@@ -1,7 +1,7 @@
-import type {TuiDateMode} from '@taiga-ui/cdk';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {tuiExtractI18n} from '@taiga-ui/i18n';
+import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+import {tuiExtractI18n} from '@taiga-ui/i18n/tools';
 import type {Observable} from 'rxjs';
 
 export const TUI_CONFIRM_WORDS = tuiCreateTokenFromFactory(tuiExtractI18n('confirm'));

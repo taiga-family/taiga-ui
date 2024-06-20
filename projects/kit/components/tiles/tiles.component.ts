@@ -12,7 +12,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
 @Component({

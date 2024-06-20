@@ -11,18 +11,18 @@ import {
 import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiPure} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {
-    TUI_COMMON_ICONS,
     TuiAppearance,
     tuiAppearanceOptionsProvider,
-    TuiButton,
-    TuiIcon,
-    TuiLoader,
-} from '@taiga-ui/core';
-import type {TuiLanguage} from '@taiga-ui/i18n';
+} from '@taiga-ui/core/directives/appearance';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiSizeL} from '@taiga-ui/core/types';
+import type {TuiLanguage} from '@taiga-ui/i18n/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

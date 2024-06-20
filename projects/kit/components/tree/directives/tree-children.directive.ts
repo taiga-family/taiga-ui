@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,

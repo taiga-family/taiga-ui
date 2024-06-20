@@ -13,7 +13,10 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, tuiInjectElement, tuiPure, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiTabDirective} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';

@@ -1,6 +1,6 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import type {ValidatorFn} from '@angular/forms';
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 
 export const TUI_SIZE_ERROR = 'tuiSize';
 export const TUI_FORMAT_ERROR = 'tuiFormat';

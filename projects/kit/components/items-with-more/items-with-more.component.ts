@@ -13,8 +13,10 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiItem, TuiLet} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';

@@ -10,17 +10,21 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    tuiClamp,
-    tuiInjectElement,
-    tuiIsNativeFocusedIn,
-    TuiLet,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
-import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS, TuiButton} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
+import type {
+    TuiHorizontalDirection,
+    TuiSizeL,
+    TuiSizeS,
+    TuiSizeXS,
+} from '@taiga-ui/core/types';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

@@ -1,6 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';

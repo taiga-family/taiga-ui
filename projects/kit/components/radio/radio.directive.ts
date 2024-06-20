@@ -1,7 +1,7 @@
 import {Directive, inject, Input} from '@angular/core';
 import {RadioControlValueAccessor} from '@angular/forms';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,

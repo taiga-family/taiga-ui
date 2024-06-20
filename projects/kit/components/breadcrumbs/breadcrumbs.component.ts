@@ -9,9 +9,12 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiItem} from '@taiga-ui/cdk';
-import {TuiIcon, tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 
+import type {TuiBreadcrumbsOptions} from './breadcrumbs.options';
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
 @Component({
@@ -32,5 +35,5 @@ export class TuiBreadcrumbsComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = this.options.size;
+    public size: TuiBreadcrumbsOptions['size'] = this.options.size;
 }

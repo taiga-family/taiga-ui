@@ -1,5 +1,5 @@
 import {Directive, HostBinding, HostListener, inject, Input} from '@angular/core';
-import type {TuiHorizontalDirection} from '@taiga-ui/core';
+import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 import {TuiTabsDirective} from './tabs.directive';
 

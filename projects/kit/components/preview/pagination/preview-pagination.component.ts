@@ -7,7 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiClamp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 
 @Component({

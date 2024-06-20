@@ -1,4 +1,4 @@
-import {HOURS_IN_DAY, TuiTime} from '@taiga-ui/cdk';
+import {HOURS_IN_DAY, TuiTime} from '@taiga-ui/cdk/date-time';
 
 export function tuiCreateTimePeriods(
     minHour = 0,

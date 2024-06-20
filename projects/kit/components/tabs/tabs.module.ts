@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 import {TuiTabDirective} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';

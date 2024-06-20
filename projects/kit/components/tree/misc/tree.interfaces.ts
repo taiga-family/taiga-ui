@@ -1,5 +1,5 @@
 import type {TemplateRef} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import type {Observable} from 'rxjs';
 
 import type {TuiTreeItem} from '../components/tree-item/tree-item.component';

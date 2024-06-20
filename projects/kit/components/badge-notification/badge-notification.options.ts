@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiBadgeNotificationOptions {
     readonly size: TuiSizeL | TuiSizeXS;

@@ -1,4 +1,4 @@
-import {EMPTY_FUNCTION, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {EMPTY_FUNCTION, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiTreeItemContent} from '../components/tree-item-content/tree-item-content.component';

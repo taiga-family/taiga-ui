@@ -7,7 +7,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiIfMap} from '@taiga-ui/cdk';
+import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
 

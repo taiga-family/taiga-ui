@@ -1,16 +1,12 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TuiButton,
-    tuiFadeIn,
-    tuiHeightCollapse,
-    TuiIcon,
-    TuiLink,
-    tuiSlideInRight,
-    tuiToAnimationOptions,
-} from '@taiga-ui/core';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusOutlet,

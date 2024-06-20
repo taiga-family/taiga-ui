@@ -1,15 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiZoomEvent} from '@taiga-ui/cdk';
-import {
-    TUI_FALSE_HANDLER,
-    tuiClamp,
-    tuiDragAndDropFrom,
-    tuiInjectElement,
-    tuiPx,
-    tuiRound,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
-import {tuiSlideInTop} from '@taiga-ui/core';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiZoomEvent} from '@taiga-ui/cdk/directives/zoom';
+import {tuiDragAndDropFrom, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 

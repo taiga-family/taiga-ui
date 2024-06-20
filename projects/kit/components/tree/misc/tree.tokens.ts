@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
