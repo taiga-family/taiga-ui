@@ -11,4 +11,4 @@ import {TuiSheetDialogService} from './sheet-dialog.service';
     outputs: ['openChange: tuiSheetDialogChange'],
     providers: [tuiAsPopover(TuiSheetDialogService)],
 })
-export class TuiSheetDialogDirective extends TuiPopoverDirective<TuiSheetDialogOptions> {}
+export class TuiSheetDialog extends TuiPopoverDirective<TuiSheetDialogOptions> {}
