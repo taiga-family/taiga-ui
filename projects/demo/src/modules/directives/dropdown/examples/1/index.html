@@ -4,6 +4,7 @@
     type="button"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
+    [tuiObscuredEnabled]="open"
     (click)="onClick()"
     (tuiActiveZoneChange)="onActiveZone($event)"
     (tuiObscured)="onObscured($event)"

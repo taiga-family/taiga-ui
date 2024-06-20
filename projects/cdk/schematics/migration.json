@@ -1,6 +1,11 @@
 {
     "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
     "schematics": {
+        "migrateIcons": {
+            "description": "Migrate Taiga UI icons to a new format",
+            "version": "4.0.0",
+            "factory": "./ng-update/v4/migrate-icons#migrateIcons"
+        },
         "updateToV4": {
             "description": "Updates Taiga UI packages to v4",
             "version": "4.0.0",

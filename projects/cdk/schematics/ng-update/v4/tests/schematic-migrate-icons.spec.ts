@@ -11,30 +11,26 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
-import {createAngularJson} from '../../../utils/create-angular-json';
-
 const collectionPath = join(__dirname, '../../../migration.json');
 
-const COMPONENT_BEFORE = `
-import { TuiAvatarModule } from "@taiga-ui/experimental";
+const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAvatarModule]
 })
 export class Test {
+   icons = ['tuiIconMailLarge', 'tuiIconStar', 'tuiIconArrowDown']
 }`;
 
-const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe } from "@taiga-ui/core";
-import { TuiAvatarModule } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { Component } from "@angular/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAvatarModule, TuiFallbackSrcPipe, TuiInitialsPipe]
 })
 export class Test {
+   icons = ['@tui.mail', '@tui.star', '@tui.arrow-down']
 }`;
 
 const TEMPLATE_BEFORE = `
@@ -44,45 +40,23 @@ const TEMPLATE_BEFORE = `
     [rounded]="true"
 ></tui-avatar>
 <tui-avatar
-    avatarUrl="tuiIconUser"
+    avatarUrl="tuiIconAlertCircle"
 ></tui-avatar>
-<tui-avatar
-    class="tui-avatar"
-    [avatarUrl]="avatarUrl"
-    [text]="text"
-></tui-avatar>
-<tui-avatar
-    text="alex inkin"
-></tui-avatar>
-<tui-avatar
-    [rounded]="false"
-    [avatarUrl]="avatarUrl"
-    [fallback]="fallback"
-></tui-avatar>
+<button tuiIconButton icon="tuiIconClose">Button</button>
+<button tuiIconButton icon="tuiIconCloseLarge">Button</button>
 `;
 
 const TEMPLATE_AFTER = `
-<tui-avatar [src]="'tuiIconUser' | tuiFallbackSrc : ('alex inkin' | tuiInitials) | async"
-   ${''}
-   ${''}
-    [round]="true"
+<tui-avatar
+    avatarUrl="@tui.user"
+    text="alex inkin"
+    [rounded]="true"
 ></tui-avatar>
-<tui-avatar [src]="'tuiIconUser'" [round]="false"
-   ${''}
+<tui-avatar
+    avatarUrl="@tui.circle-alert"
 ></tui-avatar>
-<tui-avatar [src]="avatarUrl | tuiFallbackSrc : (text | tuiInitials) | async" [round]="false"
-    class="tui-avatar"
-   ${''}
-   ${''}
-></tui-avatar>
-<tui-avatar [src]="'alex inkin' | tuiInitials" [round]="false"
-   ${''}
-></tui-avatar>
-<tui-avatar [src]="avatarUrl | tuiFallbackSrc : fallback | async"
-    [round]="false"
-   ${''}
-   ${''}
-></tui-avatar>
+<button tuiIconButton icon="@tui.x">Button</button>
+<button tuiIconButton icon="@tui.x">Button</button>
 `;
 
 describe('ng-update', () => {
@@ -102,7 +76,7 @@ describe('ng-update', () => {
 
     it('should migrate badge in template', async () => {
         const tree = await runner.runSchematic(
-            'updateToV4',
+            'migrateIcons',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
@@ -110,9 +84,9 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should migrate avatar references in ts files', async () => {
+    it('should migrate icons in ts files', async () => {
         const tree = await runner.runSchematic(
-            'updateToV4',
+            'migrateIcons',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
@@ -130,7 +104,6 @@ function createMainFiles(): void {
 
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
-    createAngularJson();
     createSourceFile(
         'package.json',
         '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
