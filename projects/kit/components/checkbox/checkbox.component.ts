@@ -15,7 +15,7 @@ import {
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TUI_ICON_RESOLVER, TuiAppearance} from '@taiga-ui/core';
+import {TuiAppearance, tuiInjectIconResolver} from '@taiga-ui/core';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
@@ -47,7 +47,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 export class TuiCheckbox implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
-    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly resolver = tuiInjectIconResolver();
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 

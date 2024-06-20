@@ -4,6 +4,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TUI_ASSETS_PATH} from './assets-path';
+import {TUI_ICONS} from './icons';
 
 export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<string>>(
     () => {
@@ -12,9 +13,16 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
         return icon =>
             !icon || icon.includes('/')
                 ? icon
-                : `${path}/icons/${icon.replace('@tui.', '')}.svg`;
+                : `${path}/icons/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
     },
 );
+
+export function tuiInjectIconResolver(): TuiStringHandler<string> {
+    const icons = inject(TUI_ICONS);
+    const resolver = inject(TUI_ICON_RESOLVER);
+
+    return icon => icons[icon] || resolver(icon);
+}
 
 export function tuiIconResolverProvider(useValue: TuiStringHandler<string>): Provider {
     return {

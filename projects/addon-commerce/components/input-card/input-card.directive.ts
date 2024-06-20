@@ -7,7 +7,7 @@ import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
+import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
@@ -26,7 +26,7 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
 export class TuiInputCard implements OnInit {
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_OPTIONS);
-    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly resolver = tuiInjectIconResolver();
     private readonly control = inject(NgControl);
     private readonly mask = inject(MaskitoDirective);
     private readonly accessor = inject(DefaultValueAccessor, {

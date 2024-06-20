@@ -9,7 +9,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {tuiInjectElement, tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TUI_ICON_RESOLVER, TuiAppearance} from '@taiga-ui/core';
+import {TuiAppearance, tuiInjectIconResolver} from '@taiga-ui/core';
 
 import {TUI_SWITCH_OPTIONS} from './switch.options';
 
@@ -40,7 +40,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
 })
 export class TuiSwitch implements DoCheck {
     private readonly appearance = inject(TuiAppearance);
-    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly resolver = tuiInjectIconResolver();
     private readonly options = inject(TUI_SWITCH_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 
