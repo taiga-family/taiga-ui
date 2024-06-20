@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import type {TuiDialogOptions} from '@taiga-ui/core';
-import {TuiDialogService} from '@taiga-ui/core';
+import type {TuiDialogOptions} from '@taiga-ui/core/components/dialog';
+import {TuiDialogService} from '@taiga-ui/core/components/dialog';
 import type {Observable} from 'rxjs';
 import {defer, of} from 'rxjs';
 

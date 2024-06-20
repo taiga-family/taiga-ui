@@ -8,8 +8,10 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
-import {tuiInjectElement, tuiPure, tuiWatch} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';

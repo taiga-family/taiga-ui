@@ -17,18 +17,18 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {TuiScrollService} from '@taiga-ui/cdk/services';
+import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {
-    EMPTY_QUERY,
     tuiGetOriginalArrayFromQueryList,
-    tuiInjectElement,
-    tuiIsElement,
-    tuiMoveFocus,
     tuiPure,
-    tuiQueryListChanges,
-    TuiScrollService,
-} from '@taiga-ui/cdk';
-import type {TuiOrientation} from '@taiga-ui/core';
-import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import type {TuiOrientation} from '@taiga-ui/core/types';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {delay} from 'rxjs';
 

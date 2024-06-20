@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiAppearanceOptions, TuiSizeXXS} from '@taiga-ui/core';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import type {TuiSizeXXS} from '@taiga-ui/core/types';
 
 export interface TuiChipOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeXXS;

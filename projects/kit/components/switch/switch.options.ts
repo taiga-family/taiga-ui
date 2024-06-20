@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiSwitchOptions {
     readonly showIcons: boolean;

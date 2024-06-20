@@ -1,4 +1,4 @@
-import {tuiRound} from '@taiga-ui/cdk';
+import {tuiRound} from '@taiga-ui/cdk/utils/math';
 
 /**
  * Used as a limit for eliminating JS issues with floating point math

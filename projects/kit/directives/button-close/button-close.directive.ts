@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
-import {TUI_ICON, tuiButtonOptionsProvider} from '@taiga-ui/core';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TUI_ICON} from '@taiga-ui/core/tokens';
 
 import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
 

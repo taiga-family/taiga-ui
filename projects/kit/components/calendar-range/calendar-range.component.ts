@@ -11,26 +11,23 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiMapper} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
-    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDayRange,
-    tuiIsString,
-    TuiMapperPipe,
     TuiMonth,
-    tuiNullableSame,
-    tuiPure,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {
-    TUI_COMMON_ICONS,
-    TuiCalendarComponent,
-    TuiDataList,
-    TuiIcon,
-} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/date-time';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {TuiCalendarComponent} from '@taiga-ui/core/components/calendar';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 

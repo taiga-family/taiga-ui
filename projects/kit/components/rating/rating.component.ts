@@ -8,13 +8,11 @@ import {
     Input,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    tuiClamp,
-    TuiControl,
-    tuiFallbackValueProvider,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_RATING_OPTIONS} from './rating.options';

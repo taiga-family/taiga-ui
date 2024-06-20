@@ -8,27 +8,24 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
-    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
-    TuiHoveredDirective,
-    TuiLet,
     TuiMonth,
     TuiMonthRange,
-    tuiNullableSame,
-    tuiPure,
     TuiYear,
-} from '@taiga-ui/cdk';
-import type {TuiRangeState} from '@taiga-ui/core';
-import {
-    TuiCalendarYearComponent,
-    TuiLink,
-    TuiScrollbar,
-    TuiSpinButtonComponent,
-} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/date-time';
+import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiCalendarYearComponent} from '@taiga-ui/core/components/calendar';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiSpinButtonComponent} from '@taiga-ui/core/components/spin-button';
+import type {TuiRangeState} from '@taiga-ui/core/types';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();

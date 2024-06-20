@@ -14,15 +14,15 @@ import {
     ViewChild,
 } from '@angular/core';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    tuiInjectElement,
-    tuiIsCurrentTarget,
-    TuiLet,
-    tuiPx,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core';
+    TUI_HINT_COMPONENT,
+    TuiHint,
+    TuiHintDirective,
+} from '@taiga-ui/core/directives/hint';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';

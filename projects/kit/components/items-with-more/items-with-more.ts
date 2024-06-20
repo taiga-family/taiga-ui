@@ -1,4 +1,4 @@
-import {TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 import {TuiItemsWithMoreComponent} from './items-with-more.component';
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';

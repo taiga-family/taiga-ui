@@ -8,7 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';

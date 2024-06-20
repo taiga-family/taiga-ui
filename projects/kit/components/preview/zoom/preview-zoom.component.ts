@@ -6,7 +6,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 

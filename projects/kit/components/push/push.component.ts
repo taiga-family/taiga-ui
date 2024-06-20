@@ -7,14 +7,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsString} from '@taiga-ui/cdk';
-import {
-    TUI_CLOSE_WORD,
-    TUI_COMMON_ICONS,
-    TuiButton,
-    tuiButtonOptionsProvider,
-    TuiFormatDatePipe,
-} from '@taiga-ui/core';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiFormatDatePipe} from '@taiga-ui/core/pipes/format-date';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,

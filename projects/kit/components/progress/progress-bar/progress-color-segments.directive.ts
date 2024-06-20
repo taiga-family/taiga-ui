@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Directive, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiWatch} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 @Directive({

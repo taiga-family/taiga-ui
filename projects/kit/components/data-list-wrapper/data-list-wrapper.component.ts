@@ -10,15 +10,18 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiElement, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
-import type {TuiValueContentContext} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiElement} from '@taiga-ui/cdk/directives/element';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListAccessor,
     TuiDataList,
     tuiInjectDataListSize,
-    TuiLoader,
     TuiOption,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/components/data-list';
+import {TuiLoader} from '@taiga-ui/core/components/loader';
+import type {TuiValueContentContext} from '@taiga-ui/core/types';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

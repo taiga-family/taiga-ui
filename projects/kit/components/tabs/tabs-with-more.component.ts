@@ -13,20 +13,16 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    tuiClamp,
-    tuiGetClosestFocusable,
-    tuiInjectElement,
-    tuiIsElement,
-    tuiIsNativeFocused,
-    TuiItem,
-    tuiPx,
-    tuiToInt,
-} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiDropdown} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetClosestFocusable, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import type {TuiSizeL} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';

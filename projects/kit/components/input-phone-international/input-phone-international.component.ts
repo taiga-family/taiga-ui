@@ -16,24 +16,23 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
-import {
-    CHAR_PLUS,
-    tuiAsControl,
-    TuiControl,
-    tuiFallbackValueProvider,
-    tuiIsInputEvent,
-} from '@taiga-ui/cdk';
+import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiGroupDirective} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
-    TuiDataList,
-    TuiDropdown,
-    tuiDropdownOptionsProvider,
-    TuiFlagPipe,
-    TuiGroupDirective,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
-} from '@taiga-ui/core';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+} from '@taiga-ui/core/components/textfield';
+import {
+    TuiDropdown,
+    tuiDropdownOptionsProvider,
+} from '@taiga-ui/core/directives/dropdown';
+import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {validatePhoneNumberLength} from 'libphonenumber-js';

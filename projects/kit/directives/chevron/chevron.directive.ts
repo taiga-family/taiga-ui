@@ -8,8 +8,11 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiDropdownDirective, TuiIcon, TuiIcons} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TuiChevronService} from './chevron.service';
 

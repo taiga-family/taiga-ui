@@ -6,8 +6,12 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiAppearance, tuiAppearanceOptionsProvider, TuiIcons} from '@taiga-ui/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TuiAppearance,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core/directives/appearance';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BADGE_OPTIONS} from './badge.options';
 

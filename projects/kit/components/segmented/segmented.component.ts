@@ -12,8 +12,10 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 import {TuiSegmentedDirective} from './segmented.directive';

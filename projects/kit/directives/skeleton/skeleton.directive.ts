@@ -7,13 +7,11 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {
-    CHAR_NO_BREAK_SPACE,
-    tuiInjectElement,
-    tuiPure,
-    tuiWithStyles,
-} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DEFAULT_DURATION, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core/utils/miscellaneous';
 
 const FADE = [{opacity: 0.06}, {opacity: 1}];
 

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 import {delay, of} from 'rxjs';
 
 @Component({

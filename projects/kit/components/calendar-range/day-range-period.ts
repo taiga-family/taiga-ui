@@ -1,5 +1,5 @@
-import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TUI_FIRST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export class TuiDayRangePeriod {

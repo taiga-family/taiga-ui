@@ -1,4 +1,4 @@
-import {TuiDataListDirective} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
 
 import {TuiDataListGroupWrapperComponent} from './data-list-group-wrapper.component';
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';

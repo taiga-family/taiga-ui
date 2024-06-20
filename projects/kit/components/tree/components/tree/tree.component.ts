@@ -8,8 +8,9 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {TuiLet, tuiProvide} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';

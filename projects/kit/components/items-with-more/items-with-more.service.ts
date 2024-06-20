@@ -1,7 +1,9 @@
 import {inject, Injectable, NgZone} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiClamp, tuiInjectElement, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {distinctUntilChanged, map, merge, Observable, share, throttleTime} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';

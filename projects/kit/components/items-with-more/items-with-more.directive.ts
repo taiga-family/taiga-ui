@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 
 @Directive({
     standalone: true,

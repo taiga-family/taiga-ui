@@ -11,16 +11,13 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    EMPTY_QUERY,
-    tuiClamp,
-    TuiControl,
-    tuiFallbackValueProvider,
-    tuiInjectElement,
-    tuiPure,
-    tuiQuantize,
-} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     tuiKeyStepValueToPercentage,

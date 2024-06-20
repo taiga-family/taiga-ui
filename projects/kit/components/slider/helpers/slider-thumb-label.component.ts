@@ -3,7 +3,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import type {AfterContentInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ContentChild} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import type {TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';
 

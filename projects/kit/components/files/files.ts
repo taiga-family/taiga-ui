@@ -1,4 +1,4 @@
-import {TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 import {TuiFile} from './file/file.component';
 import {TuiFilesComponent} from './files/files.component';

@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiFade} from '@taiga-ui/kit/directives';
 
 @Component({

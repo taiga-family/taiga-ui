@@ -8,8 +8,9 @@ import {
     Input,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, TuiIcon} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 

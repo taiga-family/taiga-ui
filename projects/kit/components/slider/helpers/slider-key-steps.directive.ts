@@ -1,5 +1,7 @@
 import {Directive, forwardRef, HostListener, inject, Input} from '@angular/core';
-import {tuiClamp, TuiControl, tuiFallbackValueProvider} from '@taiga-ui/cdk';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 import {TuiSliderComponent} from '../slider.component';
 import type {TuiKeySteps} from './key-steps';

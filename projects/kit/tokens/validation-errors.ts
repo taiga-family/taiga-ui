@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 

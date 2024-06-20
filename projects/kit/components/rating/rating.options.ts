@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiRatingOptions {

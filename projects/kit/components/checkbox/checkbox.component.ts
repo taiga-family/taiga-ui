@@ -8,14 +8,13 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {
-    tuiControlValue,
-    tuiInjectElement,
-    tuiIsString,
-    TuiNativeValidatorDirective,
-} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiAppearance, tuiInjectIconResolver} from '@taiga-ui/core';
+import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 

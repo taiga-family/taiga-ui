@@ -4,13 +4,10 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    TUI_ANIMATIONS_SPEED,
-    tuiFadeIn,
-    tuiGetDuration,
-    tuiSlideInTop,
-} from '@taiga-ui/core';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusOutlet,

@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_ANIMATIONS_SPEED, tuiPop, tuiToAnimationOptions} from '@taiga-ui/core';
+import {tuiPop} from '@taiga-ui/core/animations';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
 

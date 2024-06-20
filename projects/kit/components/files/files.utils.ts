@@ -1,6 +1,6 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import type {AbstractControl} from '@angular/forms';
-import {tuiRound} from '@taiga-ui/cdk';
+import {tuiRound} from '@taiga-ui/cdk/utils/math';
 
 import {TUI_FORMAT_ERROR, TUI_SIZE_ERROR} from './files.validators';
 

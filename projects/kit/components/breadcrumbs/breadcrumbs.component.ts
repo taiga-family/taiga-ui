@@ -9,8 +9,10 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiItem} from '@taiga-ui/cdk';
-import {TuiIcon, tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 

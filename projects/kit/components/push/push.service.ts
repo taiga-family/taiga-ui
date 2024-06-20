@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk';
-import {TUI_ALERTS} from '@taiga-ui/core';
+import {TuiPopoverService} from '@taiga-ui/cdk/services';
+import {TUI_ALERTS} from '@taiga-ui/core/components/alert';
 
 import type {TuiPushOptions} from './push.options';
 import {TUI_PUSH_OPTIONS} from './push.options';

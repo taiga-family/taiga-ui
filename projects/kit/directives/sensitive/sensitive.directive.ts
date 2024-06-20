@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiWatch, tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
 
 const rowsInSvg = 3;

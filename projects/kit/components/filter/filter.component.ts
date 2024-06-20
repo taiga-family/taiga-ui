@@ -8,14 +8,15 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {TuiBooleanHandler, TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FALSE_HANDLER,
-    TuiControl,
-    tuiFallbackValueProvider,
-} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import type {
+    TuiBooleanHandler,
+    TuiHandler,
+    TuiIdentityMatcher,
+} from '@taiga-ui/cdk/types';
+import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiBlock} from '@taiga-ui/kit/components/block';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';

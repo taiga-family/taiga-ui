@@ -1,7 +1,9 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiClamp, tuiInjectElement, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 

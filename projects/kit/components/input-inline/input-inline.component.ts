@@ -7,7 +7,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiControlValue, tuiIsElement, tuiIsInput, TuiLet} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {defer} from 'rxjs';
 
 @Component({
