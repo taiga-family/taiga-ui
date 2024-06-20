@@ -8,17 +8,12 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {
-    TUI_COMMON_ICONS,
-    TUI_SPIN_ICONS,
-    TUI_SPIN_TEXTS,
-    TuiButton,
-    TuiDataList,
-    TuiDropdownDirective,
-    TuiDropdownOpen,
-    TuiIcon,
-    TuiLink,
-} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import type {TuiTablePaginationOptions} from './table-pagination.options';

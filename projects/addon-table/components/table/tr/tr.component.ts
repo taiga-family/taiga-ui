@@ -7,7 +7,8 @@ import {
     forwardRef,
     inject,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {map, ReplaySubject, switchMap} from 'rxjs';
 
 import {TuiTableCell} from '../directives/cell.directive';

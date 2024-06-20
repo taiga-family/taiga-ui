@@ -9,8 +9,8 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultSort} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
+import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 
 import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableResized} from '../directives/resized.directive';

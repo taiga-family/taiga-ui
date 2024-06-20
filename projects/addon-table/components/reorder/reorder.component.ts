@@ -9,9 +9,10 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiTiles} from '@taiga-ui/kit';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiTiles} from '@taiga-ui/kit/components/tiles';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
