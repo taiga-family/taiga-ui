@@ -4,7 +4,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
     ResizeObserverService,

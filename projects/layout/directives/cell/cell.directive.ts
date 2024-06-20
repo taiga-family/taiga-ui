@@ -5,10 +5,10 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 @Component({
     standalone: true,

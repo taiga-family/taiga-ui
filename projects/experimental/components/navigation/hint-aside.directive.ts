@@ -1,7 +1,7 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 
 import {TuiAsideComponent} from './aside.component';
 
