@@ -126,7 +126,20 @@
 
         //noinspection CssInvalidPseudoSelector
         &::-webkit-credit-card-auto-fill-button {
-            .webkit-auto-fill-button-hidden();
+            // hide: -webkit-caps-lock-indicator
+            content: none !important;
+
+            // hide: -webkit-strong-password-auto-fill-button
+            // because safari forcing set display as block
+            position: absolute;
+            left: -62.4375rem;
+            top: -62.4375rem;
+            z-index: -999;
+
+            // hide: -webkit-contacts-auto-fill-button
+            display: none !important;
+            background: transparent !important;
+            pointer-events: none !important;
         }
     }
 

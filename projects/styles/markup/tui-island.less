@@ -30,9 +30,18 @@
     }
 
     &_hoverable {
-        .hoverable-with-shadow();
+        .transition();
 
         background: var(--tui-background-elevation-2);
+        box-shadow: var(--tui-shadow);
+        cursor: pointer;
+        transition-property: transform, box-shadow;
+        will-change: transform, box-shadow;
+
+        &:hover {
+            box-shadow: var(--tui-shadow-hover);
+            transform: translateY(-0.25rem);
+        }
     }
 
     &_transparent {
