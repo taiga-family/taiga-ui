@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiPaginationComponent, TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiPagination} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 interface TuiPaginationParams {
@@ -19,7 +19,7 @@ interface TuiPaginationParams {
 describe('TuiPaginationComponent', () => {
     @Component({
         standalone: true,
-        imports: [TuiPaginationModule],
+        imports: [TuiPagination],
         template: `
             <tui-pagination
                 [activePadding]="activePadding"
@@ -30,8 +30,8 @@ describe('TuiPaginationComponent', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiPaginationComponent, {static: true})
-        public component!: TuiPaginationComponent;
+        @ViewChild(TuiPagination, {static: true})
+        public component!: TuiPagination;
 
         public index = 0;
 
@@ -44,7 +44,7 @@ describe('TuiPaginationComponent', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiPaginationComponent;
+    let component: TuiPagination;
     let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {

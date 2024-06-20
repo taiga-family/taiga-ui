@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiPaginationModule],
+    imports: [TuiPagination],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

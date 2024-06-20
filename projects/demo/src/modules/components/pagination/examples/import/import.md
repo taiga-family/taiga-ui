@@ -1,5 +1,5 @@
 ```ts
-import {TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiPagination} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiPaginationModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiPaginationModule,
+    TuiPagination,
   ],
   // ...
 })

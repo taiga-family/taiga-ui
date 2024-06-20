@@ -6,6 +6,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiActiveZone', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiPaginationModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiPagination', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiAutoFocus', moduleSpecifier: '@taiga-ui/cdk'},
     },
