@@ -7,13 +7,10 @@ import {
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk';
-import {
-    TUI_ANIMATIONS_SPEED,
-    tuiFadeIn,
-    tuiSlideInTop,
-    tuiToAnimationOptions,
-} from '@taiga-ui/core';
+import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
+import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {map} from 'rxjs';
 
 import type {TuiSheet} from '../../sheet';

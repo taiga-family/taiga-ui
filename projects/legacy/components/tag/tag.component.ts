@@ -10,9 +10,11 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_COMMON_ICONS, tuiSizeBigger, tuiStringHashToHsl} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core/types';
+import {tuiStringHashToHsl} from '@taiga-ui/core/utils/format';
+import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 

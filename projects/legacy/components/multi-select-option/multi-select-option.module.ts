@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiCheckbox} from '@taiga-ui/kit';
+import {TuiCheckbox} from '@taiga-ui/kit/components/checkbox';
 
 import {TuiMultiSelectOptionComponent} from './multi-select-option.component';
 

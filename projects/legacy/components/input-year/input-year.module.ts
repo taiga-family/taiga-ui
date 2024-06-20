@@ -1,11 +1,8 @@
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {
-    TuiCalendarYearComponent,
-    TuiDropdown,
-    TuiDropdownOpen,
-    TuiScrollbar,
-} from '@taiga-ui/core';
+import {TuiCalendarYearComponent} from '@taiga-ui/core/components/calendar';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,

@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDropdown} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiPrimitiveTextfieldModule,

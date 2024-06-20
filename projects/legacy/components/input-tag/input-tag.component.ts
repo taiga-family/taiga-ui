@@ -15,28 +15,28 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiActiveZone, TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import type {TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk/types';
 import {
-    EMPTY_QUERY,
-    TUI_FALSE_HANDLER,
-    TUI_TRUE_HANDLER,
-    tuiArrayRemove,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
     tuiInjectElement,
     tuiIsElement,
-    tuiIsNativeFocusedIn,
     tuiRetargetedBoundaryCrossing,
-} from '@taiga-ui/cdk';
-import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiArrayRemove} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
-    TUI_COMMON_ICONS,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDropdownOpen,
-    TuiHintOptionsDirective,
-    TuiScrollbar,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/components/data-list';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {AbstractTuiMultipleControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {

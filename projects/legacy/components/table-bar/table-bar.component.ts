@@ -1,15 +1,14 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiParentAnimation, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiButton,
-    tuiParentAnimation,
-    tuiSlideInTop,
-    tuiToAnimationOptions,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusOutlet,

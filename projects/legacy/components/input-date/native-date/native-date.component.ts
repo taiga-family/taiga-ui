@@ -1,5 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk';
+import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
 import {TUI_TEXTFIELD_HOST, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import {TuiInputDateDirective} from '../input-date.directive';

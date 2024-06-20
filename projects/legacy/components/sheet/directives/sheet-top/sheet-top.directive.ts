@@ -1,7 +1,8 @@
 import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiClamp, tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {map} from 'rxjs';
 
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';

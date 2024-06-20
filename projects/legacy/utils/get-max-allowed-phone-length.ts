@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 /**
  * @deprecated use `validatePhoneNumberLength` from `libphonenumber-js` instead

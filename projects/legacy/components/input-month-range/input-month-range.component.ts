@@ -6,18 +6,14 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiMonth, TuiYear} from '@taiga-ui/cdk';
-import {
-    CHAR_EN_DASH,
-    TUI_FALSE_HANDLER,
-    tuiDateClamp,
-    TuiDay,
-    TuiMonthRange,
-} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiMonthPipe} from '@taiga-ui/core';
-import type {TuiInputDateOptions} from '@taiga-ui/kit';
-import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {CHAR_EN_DASH, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiMonth, TuiYear} from '@taiga-ui/cdk/date-time';
+import {tuiDateClamp, TuiDay, TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';

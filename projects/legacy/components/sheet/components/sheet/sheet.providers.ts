@@ -1,15 +1,11 @@
 import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
 import {ElementRef, forwardRef, NgZone} from '@angular/core';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_IS_IOS,
-    TUI_TRUE_HANDLER,
-    tuiProvide,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import {TUI_SCROLL_REF} from '@taiga-ui/core';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {concat, delay, map, merge, share, switchMap, take, takeUntil, zip} from 'rxjs';
 

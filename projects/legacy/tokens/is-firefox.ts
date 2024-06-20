@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Firefox browser engine detection

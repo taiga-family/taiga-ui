@@ -10,21 +10,18 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
-import type {TuiBooleanHandler, TuiTimeLike, TuiTimeMode} from '@taiga-ui/cdk';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_IS_IOS,
-    TUI_IS_MOBILE,
-    TUI_STRICT_MATCHER,
-    tuiIsElement,
-    tuiIsInput,
-    tuiIsNativeFocused,
-    tuiPure,
-    TuiTime,
-} from '@taiga-ui/cdk';
-import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit';
+import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
+import type {TuiTimeLike, TuiTimeMode} from '@taiga-ui/cdk/date-time';
+import {TuiTime} from '@taiga-ui/cdk/date-time';
+import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';

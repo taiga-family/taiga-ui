@@ -17,22 +17,16 @@ import {
     maskitoNumberOptionsGenerator,
     maskitoParseNumber,
 } from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk';
-import {
-    CHAR_HYPHEN,
-    CHAR_MINUS,
-    EMPTY_QUERY,
-    TUI_IS_IOS,
-    tuiClamp,
-    tuiPure,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_DEFAULT_NUMBER_FORMAT,
-    TUI_NUMBER_FORMAT,
-    tuiFormatNumber,
-} from '@taiga-ui/core';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiDecimalMode} from '@taiga-ui/core/tokens';
+import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {

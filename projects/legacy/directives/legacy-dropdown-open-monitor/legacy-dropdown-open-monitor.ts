@@ -1,7 +1,8 @@
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiGetClosestFocusable, tuiInjectElement} from '@taiga-ui/cdk';
-import {TuiDropdownOpen} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
+import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {filter} from 'rxjs';
 
 @Directive({

@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAppearance, TuiIcon} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives/wrapper';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

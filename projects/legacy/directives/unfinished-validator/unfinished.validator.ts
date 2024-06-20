@@ -1,5 +1,6 @@
 import type {AbstractControl, ValidatorFn} from '@angular/forms';
-import {tuiIsHTMLElement, tuiIsInput, TuiValidationError} from '@taiga-ui/cdk';
+import {TuiValidationError} from '@taiga-ui/cdk/classes';
+import {tuiIsHTMLElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 

@@ -1,7 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import {CHAR_PLUS} from '@taiga-ui/cdk';
+import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
 @Pipe({

@@ -1,12 +1,9 @@
 import {ContentChild, Directive, inject, Input, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {
-    TUI_FALSE_HANDLER,
-    tuiClamp,
-    tuiIsFalsy,
-    tuiPure,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiIsFalsy, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {
     debounceTime,

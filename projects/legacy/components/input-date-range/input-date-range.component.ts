@@ -11,27 +11,32 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
-import type {TuiBooleanHandler, TuiDateMode, TuiDay, TuiDayLike} from '@taiga-ui/cdk';
+import {tuiAsControl} from '@taiga-ui/cdk/classes';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDateMode, TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
-    changeDateSeparator,
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
-    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
-    TUI_IS_MOBILE,
     TUI_LAST_DAY,
-    tuiAsControl,
     TuiDayRange,
-    tuiIsPresent,
     TuiMonth,
+} from '@taiga-ui/cdk/date-time';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {
+    changeDateSeparator,
+    tuiIsPresent,
     tuiNullableSame,
     tuiPure,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
-import type {TuiDayRangePeriod, TuiInputDateOptions} from '@taiga-ui/kit';
+} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
@@ -39,7 +44,7 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiNullableControl,
     tuiAsControl as tuiAsLegacyControl,

@@ -1,4 +1,4 @@
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 const ITEM_SIZE = 1.5;
 const CONTENT_SIZE = 2.5;

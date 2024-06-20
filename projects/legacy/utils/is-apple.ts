@@ -1,4 +1,4 @@
-import {tuiIsIos} from '@taiga-ui/cdk';
+import {tuiIsIos} from '@taiga-ui/cdk/utils/browser';
 
 const SAFARI_REG_EXP = /^((?!chrome|android).)*safari/i;
 

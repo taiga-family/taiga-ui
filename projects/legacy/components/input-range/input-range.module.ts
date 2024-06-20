@@ -1,9 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZone} from '@taiga-ui/cdk';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiNumberFormat} from '@taiga-ui/core/directives/number-format';
+import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {
     TuiTextfieldControllerModule,

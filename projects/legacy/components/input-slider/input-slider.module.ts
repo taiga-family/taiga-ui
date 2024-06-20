@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiNumberFormat} from '@taiga-ui/core/directives/number-format';
+import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

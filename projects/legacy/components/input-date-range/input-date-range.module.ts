@@ -1,9 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiLet} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiDropdown, TuiIcon} from '@taiga-ui/core';
-import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiCalendarRangeComponent} from '@taiga-ui/kit/components/calendar-range';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,

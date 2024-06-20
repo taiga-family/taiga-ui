@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
-import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiCalendarMonthComponent} from '@taiga-ui/kit/components/calendar-month';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,

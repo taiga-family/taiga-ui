@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import type {TuiDay, TuiTime} from '@taiga-ui/cdk';
+import type {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 

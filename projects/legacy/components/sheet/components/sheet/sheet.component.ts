@@ -11,15 +11,13 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-    EMPTY_QUERY,
-    TUI_IS_IOS,
-    tuiInjectElement,
-    tuiPure,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
-import {tuiSlideInTop} from '@taiga-ui/core';
-import {TUI_MORE_WORD} from '@taiga-ui/kit';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {map, timer} from 'rxjs';
 
 import type {TuiSheet, TuiSheetRequiredProps} from '../../sheet';

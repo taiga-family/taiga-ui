@@ -1,7 +1,7 @@
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_SCROLL_REF} from '@taiga-ui/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
     distinctUntilChanged,
     filter,

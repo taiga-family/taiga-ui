@@ -1,5 +1,5 @@
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_VERSION} from '@taiga-ui/cdk';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 
 export const TUI_CACHE_BUSTING_PAYLOAD = `?v=${TUI_VERSION}` as const;
 

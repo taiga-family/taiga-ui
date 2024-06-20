@@ -1,9 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import {
-    AbstractTuiController,
-    tuiCreateTokenFromFactory,
-    tuiProvide,
-} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
+import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const TUI_TEXTFIELD_CUSTOM_CONTENT = tuiCreateTokenFromFactory(

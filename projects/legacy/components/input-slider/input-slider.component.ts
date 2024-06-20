@@ -6,15 +6,17 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiClamp, tuiIsNativeFocused, tuiPure, tuiRound} from '@taiga-ui/cdk';
-import {tuiGetFractionPartPadded} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
+import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_FLOATING_PRECISION,
     TuiSliderComponent,
     tuiSliderOptionsProvider,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/components/slider';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import {

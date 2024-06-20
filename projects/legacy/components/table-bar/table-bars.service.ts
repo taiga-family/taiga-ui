@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk';
+import {TuiPopoverService} from '@taiga-ui/cdk/services';
 
 import {TuiTableBarComponent} from './table-bar.component';
 import type {TuiTableBarOptions} from './table-bar.options';

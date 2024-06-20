@@ -5,10 +5,10 @@ import {
     inject,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHintOptionsDirective} from '@taiga-ui/core';
-import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';

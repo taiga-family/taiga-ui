@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
-import type {TuiContext, TuiTimeMode} from '@taiga-ui/cdk';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiInputTimeOptions {

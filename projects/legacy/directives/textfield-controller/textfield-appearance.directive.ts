@@ -1,9 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import {
-    AbstractTuiController,
-    tuiCreateTokenFromFactory,
-    tuiProvide,
-} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
+import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 // TODO: rename to TUI_TEXTFIELD_APPEARANCE in v4
 export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(

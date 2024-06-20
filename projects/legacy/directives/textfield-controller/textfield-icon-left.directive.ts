@@ -1,11 +1,8 @@
 import {Directive, Input} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {
-    AbstractTuiController,
-    tuiCreateTokenFromFactory,
-    tuiProvide,
-} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {AbstractTuiController} from '@taiga-ui/cdk/classes';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(

@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
-import {tuiClamp, tuiZonefull} from '@taiga-ui/cdk';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';

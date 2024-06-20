@@ -1,12 +1,8 @@
 import {Directive, inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {
-    tuiIfMap,
-    tuiInjectElement,
-    tuiIsFalsy,
-    tuiTypedFromEvent,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
+import {tuiIfMap, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsFalsy} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, merge, startWith} from 'rxjs';
 

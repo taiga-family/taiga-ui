@@ -1,7 +1,8 @@
 import type {AfterViewInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 export const TUI_SHEET_CLOSE = 'tui-sheet-close';
 export const TUI_SHEET_ID = 'tui-sheet-id';

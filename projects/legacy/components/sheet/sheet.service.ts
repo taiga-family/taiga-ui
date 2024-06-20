@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
-import {tuiGetNativeFocused, tuiIsHTMLElement} from '@taiga-ui/cdk';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 

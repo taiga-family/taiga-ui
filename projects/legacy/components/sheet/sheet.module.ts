@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {TuiLet} from '@taiga-ui/cdk';
-import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetComponent} from './components/sheet/sheet.component';

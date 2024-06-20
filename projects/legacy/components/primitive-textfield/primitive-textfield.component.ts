@@ -11,15 +11,13 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {
-    tuiInjectElement,
-    tuiIsNativeFocusedIn,
-    tuiPure,
-    tuiRetargetedBoundaryCrossing,
-} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_OPTIONS as OPTIONS, TuiHintOptionsDirective} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement, tuiRetargetedBoundaryCrossing} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_TEXTFIELD_OPTIONS as OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiInteractive} from '@taiga-ui/legacy/classes';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
