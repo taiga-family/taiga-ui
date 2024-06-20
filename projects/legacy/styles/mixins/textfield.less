@@ -53,7 +53,7 @@
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
     text-indent: var(--text-indent);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     text-align: inherit;
     box-sizing: border-box;
     white-space: nowrap;
@@ -85,7 +85,7 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
         opacity: 0;
     }
 
@@ -181,7 +181,7 @@
     width: 100%;
     user-select: none;
     font: var(--tui-font-text-s);
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     pointer-events: none;
     will-change: transform;
     transform: translateY(0);
@@ -198,14 +198,14 @@
 
         :host._invalid:not(._focused) &,
         :host._invalid:not(._focused):hover & {
-            color: var(--tui-error-fill);
+            color: var(--tui-status-negative);
         }
     }
 
     :host._focused &,
     :host[data-size='m']._focused._label-outside &,
     :host[data-size='l']._focused._label-outside & {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     :host[data-size='l'] & {
@@ -219,7 +219,7 @@
 
     :host[data-size='m']._focused:not(._label-outside) &,
     :host[data-size='l']._focused:not(._label-outside) & {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }
 

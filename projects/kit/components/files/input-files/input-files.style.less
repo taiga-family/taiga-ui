@@ -40,32 +40,32 @@ label[tuiInputFiles] {
 [tuiAppearance][data-appearance='file'] {
     border-radius: inherit;
     box-sizing: border-box;
-    border: 1px dashed var(--tui-link);
+    border: 1px dashed var(--tui-text-action);
 
     tui-root._mobile & {
         border-style: solid;
     }
 
     [tuiInputFiles]._dragged & {
-        background: var(--tui-secondary);
-        border-color: var(--tui-link-hover);
+        background: var(--tui-background-neutral-1);
+        border-color: var(--tui-text-action-hover);
     }
 
     .appearance-hover({
-        background: var(--tui-secondary);
-        border-color: var(--tui-link-hover);
+        background: var(--tui-background-neutral-1);
+        border-color: var(--tui-text-action-hover);
     });
 
     .appearance-active({
-        background: var(--tui-secondary-hover);
+        background: var(--tui-background-neutral-1-hover);
     });
 
     .appearance-disabled({
         background: transparent;
-        border-color: var(--tui-text-03);
+        border-color: var(--tui-text-tertiary);
     });
 
     .appearance-focus({
-        border: 0.125rem solid var(--tui-focus);
+        border: 0.125rem solid var(--tui-border-focus);
     });
 }

@@ -36,22 +36,22 @@
 .t-wrapper {
     box-shadow: var(--tui-shadow-dropdown);
     display: flex;
-    border: 1px solid var(--tui-base-03);
+    border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
     max-width: 100%;
     min-height: 6rem;
     width: 100%;
     min-width: 10rem;
-    color: var(--tui-text-01);
-    background-color: var(--tui-base-01);
+    color: var(--tui-text-primary);
+    background-color: var(--tui-background-base);
     overflow: hidden;
     pointer-events: auto;
 
     &.t-wrapper_transparent {
-        background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
-            linear-gradient(-45deg, var(--tui-base-02) 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, var(--tui-base-02) 75%),
-            linear-gradient(-45deg, transparent 75%, var(--tui-base-02) 75%);
+        background-image: linear-gradient(45deg, var(--tui-background-base-alt) 25%, transparent 25%),
+            linear-gradient(-45deg, var(--tui-background-base-alt) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, var(--tui-background-base-alt) 75%),
+            linear-gradient(-45deg, transparent 75%, var(--tui-background-base-alt) 75%);
         background-size: 1.25rem 1.25rem;
         background-position:
             0 0,
@@ -94,7 +94,7 @@
 
 .t-value {
     flex: 1;
-    background: var(--tui-clear-inverse);
+    background: var(--tui-background-neutral-1);
     padding: 0.75rem;
     border-radius: 0.25rem;
 }
@@ -116,10 +116,10 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border-left: 1px solid var(--tui-base-03);
+    border-left: 1px solid var(--tui-border-normal);
     outline: none;
-    background: var(--tui-base-01);
-    color: var(--tui-text-01);
+    background: var(--tui-background-base);
+    color: var(--tui-text-primary);
 
     &:before,
     &:after {
@@ -129,8 +129,8 @@
         left: 50%;
         bottom: calc(50% + 1rem);
         width: 1px;
-        background: var(--tui-base-04);
-        box-shadow: -0.25rem 0 var(--tui-base-04);
+        background: var(--tui-border-normal);
+        box-shadow: -0.25rem 0 var(--tui-border-normal);
         transform: translate3d(0, 0, 0);
     }
 
@@ -149,7 +149,7 @@
     position: relative;
     z-index: 1;
     padding: 0.75rem;
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 
     .wrapper_light & {
         background: @color-dark-resizer;

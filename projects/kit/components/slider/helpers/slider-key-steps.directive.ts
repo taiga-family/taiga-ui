@@ -55,7 +55,7 @@ export class TuiSliderKeyStepsDirective extends TuiControl<number> {
     @HostListener('change')
     protected updateControlValue(): void {
         this.onChange(
-            tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
+            tuiPercentageToKeyStepValue(this.slider.valueRatio * 100, this.keySteps),
         );
     }
 

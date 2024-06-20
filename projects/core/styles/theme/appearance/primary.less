@@ -1,20 +1,20 @@
 @import '../../taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='primary'] {
-    --t-bg: var(--tui-primary);
+    --t-bg: var(--tui-background-accent-1);
 
     background: var(--t-bg);
-    color: var(--tui-primary-text);
+    color: var(--tui-text-primary-on-accent-1);
 
     &:invalid {
-        background: var(--tui-error-fill);
+        background: var(--tui-status-negative);
     }
 
     .appearance-hover({
-        --t-bg: var(--tui-primary-hover);
+        --t-bg: var(--tui-background-accent-1-hover);
     });
 
     .appearance-active({
-        --t-bg: var(--tui-primary-active);
+        --t-bg: var(--tui-background-accent-1-pressed);
     });
 }

@@ -3,27 +3,27 @@
 [tuiAppearance][data-appearance='secondary'],
 [tuiAppearance][data-appearance='flat'],
 [tuiAppearance][data-appearance='destructive'] {
-    background: var(--tui-secondary);
-    color: var(--tui-link);
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-action);
 
     .appearance-hover({
-        background: var(--tui-secondary-hover);
+        background: var(--tui-background-neutral-1-hover);
     });
 
     .appearance-active({
-        background: var(--tui-secondary-active);
+        background: var(--tui-background-neutral-1-pressed);
     });
 
     &:invalid {
-        color: var(--tui-error-fill);
-        background: var(--tui-error-bg);
+        color: var(--tui-status-negative);
+        background: var(--tui-status-negative-pale);
 
         .appearance-hover({
-            background: var(--tui-error-bg-hover);
+            background: var(--tui-status-negative-pale-hover);
         });
 
         .appearance-active({
-            background: var(--tui-error-bg-hover);
+            background: var(--tui-status-negative-pale-hover);
         });
     }
 }
@@ -34,17 +34,25 @@
 }
 
 [tuiAppearance][data-appearance='flat']:checked {
-    background: var(--tui-secondary);
+    background: var(--tui-background-neutral-1);
 
     .appearance-hover({
-        background: var(--tui-secondary-hover);
+        background: var(--tui-background-neutral-1-hover);
     });
 
     .appearance-active({
-        background: var(--tui-secondary-active);
+        background: var(--tui-background-neutral-1-pressed);
     });
 }
 
 [tuiAppearance][data-appearance='destructive'] {
-    color: var(--tui-negative);
+    color: var(--tui-status-negative);
+}
+
+// Overriding to darker colors for small items
+input[type='checkbox'][data-appearance='secondary'],
+input[type='radio'][data-appearance='secondary'] {
+    --tui-background-neutral-1: var(--tui-background-neutral-2);
+    --tui-background-neutral-1-hover: var(--tui-background-neutral-2-hover);
+    --tui-background-neutral-1-pressed: var(--tui-background-neutral-2-pressed);
 }

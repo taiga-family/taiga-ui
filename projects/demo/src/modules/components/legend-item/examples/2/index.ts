@@ -57,10 +57,6 @@ export default class Example {
         }
     }
 
-    protected getColor(index: number): string {
-        return `var(--tui-chart-${index})`;
-    }
-
     @tuiPure
     private getValue(
         data: readonly number[],

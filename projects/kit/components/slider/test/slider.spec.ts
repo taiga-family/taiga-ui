@@ -179,7 +179,7 @@ describe('Slider', () => {
 
             fixture.detectChanges();
 
-            expect(testComponent.formControllerComponentRef.valuePercentage).toBe(0);
+            expect(testComponent.formControllerComponentRef.valueRatio).toBe(0);
             expect(
                 getFillPercentage(
                     testComponent.formControllerElementRef.nativeElement,
@@ -205,9 +205,7 @@ describe('Slider', () => {
         });
 
         it('fill percentage === 50%', () => {
-            expect(testComponent.nativeUsageAllDefaultsComponentRef.valuePercentage).toBe(
-                50,
-            );
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.valueRatio).toBe(0.5);
         });
     });
 

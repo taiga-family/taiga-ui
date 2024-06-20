@@ -2,31 +2,31 @@
 
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='primary'] {
-    background: var(--tui-primary);
-    color: var(--tui-primary-text);
+    background: var(--tui-background-accent-1);
+    color: var(--tui-text-primary-on-accent-1);
 
     .wrapper-hover({
-        background: var(--tui-primary-hover);
+        background: var(--tui-background-accent-1-hover);
     });
 
     .wrapper-active({
-        background: var(--tui-primary-active);
+        background: var(--tui-background-accent-1-pressed);
     });
 
     .wrapper-invalid({
-        color: var(--tui-negative-night);
-        background: var(--tui-error-bg);
+        color: var(--tui-status-negative);
+        background: var(--tui-status-negative-pale);
 
         .wrapper-hover({
-            background: var(--tui-error-bg-hover);
+            background: var(--tui-status-negative-pale-hover);
         });
 
         .wrapper-active({
-            background: var(--tui-error-bg-hover);
+            background: var(--tui-status-negative-pale-hover);
         });
 
         .wrapper-focus({
-            --tui-focus: var(--tui-error-fill);
+            --tui-border-focus: var(--tui-status-negative);
         })
     });
 }

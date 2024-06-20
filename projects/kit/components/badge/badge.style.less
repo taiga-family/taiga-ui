@@ -10,7 +10,7 @@ tui-badge,
 
     border-radius: 6rem;
     background: #959595;
-    color: var(--tui-base-01);
+    color: var(--tui-background-base);
     padding: var(--t-padding);
     height: var(--t-size);
     min-width: var(--t-size);
@@ -33,23 +33,23 @@ tui-badge,
     }
 
     &[data-appearance='error'] {
-        --t-dot: var(--tui-error-fill);
+        --t-dot: var(--tui-status-negative);
     }
 
     &[data-appearance='success'] {
-        --t-dot: var(--tui-success-fill);
+        --t-dot: var(--tui-status-positive);
     }
 
     &[data-appearance='warning'] {
-        --t-dot: var(--tui-warning-fill);
+        --t-dot: var(--tui-status-warning);
     }
 
     &[data-appearance='info'] {
-        --t-dot: var(--tui-info-fill);
+        --t-dot: var(--tui-status-info);
     }
 
     &[data-appearance='neutral'] {
-        --t-dot: var(--tui-neutral-fill);
+        --t-dot: var(--tui-status-neutral);
     }
 
     &[data-size='s'] {
@@ -101,7 +101,7 @@ tui-badge,
     &[tuiAppearance][data-appearance='warning'],
     &[tuiAppearance][data-appearance='info'],
     &[tuiAppearance][data-appearance='neutral'] {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }
 

@@ -85,7 +85,7 @@ $line-height-l: 1.25rem;
     }
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
         opacity: 0;
     }
 
@@ -168,7 +168,7 @@ $line-height-l: 1.25rem;
     width: 100%;
     user-select: none;
     font: var(--tui-font-text-s);
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     pointer-events: none;
     will-change: transform;
     transform: translateY(0);
@@ -185,14 +185,14 @@ $line-height-l: 1.25rem;
 
         :host._invalid:not(._focused) &,
         :host._invalid:not(._focused):hover & {
-            color: var(--tui-error-fill);
+            color: var(--tui-status-negative);
         }
     }
 
     :host._focused &,
     :host[data-size='m']._focused._label-outside &,
     :host[data-size='l']._focused._label-outside & {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     :host[data-size='l'] & {
@@ -206,7 +206,7 @@ $line-height-l: 1.25rem;
 
     :host[data-size='m']._focused:not(._label-outside) &,
     :host[data-size='l']._focused:not(._label-outside) & {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 
     @include safari-only {

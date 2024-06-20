@@ -23,8 +23,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
-const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
-const ONE_DOT: [string] = ['var(--tui-success-fill)'];
+const TWO_DOTS: [string, string] = [
+    'var(--tui-background-accent-1)',
+    'var(--tui-status-info)',
+];
+const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
     standalone: true,

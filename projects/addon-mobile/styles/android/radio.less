@@ -3,18 +3,18 @@ input[tuiRadio] {
 
     .transition(color);
 
-    color: var(--tui-base-04);
+    color: var(--tui-background-neutral-2);
     outline: 0.125rem solid;
     outline-offset: -0.125rem;
     box-shadow: none !important;
     background: transparent !important;
 
     &:disabled:not(._readonly) {
-        color: var(--tui-base-04);
+        color: var(--tui-background-neutral-2);
     }
 
     &:checked {
-        color: var(--tui-accent);
+        color: var(--tui-background-accent-2);
 
         &:after {
             transform: scale(0.555);
@@ -22,10 +22,10 @@ input[tuiRadio] {
     }
 
     &:invalid {
-        color: var(--tui-error-bg-hover);
+        color: var(--tui-status-negative-pale-hover);
 
         &:checked {
-            color: var(--tui-error-fill);
+            color: var(--tui-status-negative);
         }
     }
 }

@@ -17,7 +17,7 @@
 
 .loop (@i) when (@i > 0) {
     .support-@{i} {
-        background-color: ~'var(--tui-support-@{i}, var(--tui-support-0@{i}))';
+        background-color: ~'var(--tui-chart-categorical-@{i}, var(--tui-chart-categorical-0@{i}))';
     }
     .loop(@i - 1);
 }

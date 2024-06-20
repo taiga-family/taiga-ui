@@ -22,10 +22,10 @@ export default class Example {
     protected readonly fastValue$ = this.animationDisabled ? of(80) : timer(500, 100);
     protected readonly slowValue$ = this.animationDisabled ? of(4) : timer(500, 2000);
     protected readonly colors = [
-        'var(--tui-support-01)',
-        'var(--tui-support-21)',
+        'var(--tui-chart-categorical-01)',
+        'var(--tui-chart-categorical-21)',
         'lightskyblue',
         '#3682db',
-        'var(--tui-primary)',
+        'var(--tui-background-accent-1)',
     ];
 }

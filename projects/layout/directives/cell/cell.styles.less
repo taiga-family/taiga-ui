@@ -11,7 +11,7 @@
     align-items: center;
     box-sizing: content-box;
     isolation: isolate;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     padding: var(--t-padding);
     min-height: var(--t-height);
 
@@ -53,7 +53,7 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     }
 
     [tuiTitle] {
@@ -168,7 +168,7 @@
 @media (hover: hover) and (pointer: fine) {
     a[tuiCell]:not([tuiSurface]):hover,
     button[tuiCell]:not([tuiSurface]):hover {
-        background: var(--tui-clear);
+        background: var(--tui-background-neutral-1);
         cursor: pointer;
     }
 }

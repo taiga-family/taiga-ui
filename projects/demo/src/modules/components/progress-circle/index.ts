@@ -31,7 +31,7 @@ export default class Page {
     protected size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     protected readonly colorVariants: readonly string[] = [
-        'var(--tui-primary)',
+        'var(--tui-background-accent-1)',
         'lightskyblue',
         '#3682db',
         'rgba(74, 201, 155, 1)',

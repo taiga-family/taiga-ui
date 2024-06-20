@@ -13,7 +13,7 @@
             size="s"
             class="item"
             [active]="isItemActive(index)"
-            [color]="getColor(index)"
+            [color]="'var(--tui-chart-categorical-0' + index + ')'"
             [text]="label"
             (tuiHoveredChange)="onHover(index, $event)"
         >

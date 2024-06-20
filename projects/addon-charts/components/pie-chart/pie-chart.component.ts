@@ -7,7 +7,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {SafeValue} from '@angular/platform-browser';
 import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiIdService} from '@taiga-ui/cdk/services';
@@ -110,10 +109,6 @@ export class TuiPieChart {
 
     protected onHovered(hovered: boolean, index: number): void {
         this.updateActiveItemIndex(hovered ? index : NaN);
-    }
-
-    protected getColor(index: number): SafeValue {
-        return `var(--tui-chart-${index})`;
     }
 
     @tuiPure

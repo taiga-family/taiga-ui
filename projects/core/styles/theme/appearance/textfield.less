@@ -5,10 +5,10 @@
 
     --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
-    background-color: var(--tui-base-01);
-    color: var(--tui-text-01);
+    background-color: var(--tui-background-base);
+    color: var(--tui-text-primary);
     box-shadow: var(--t-shadow);
-    outline: 1px solid var(--tui-base-03);
+    outline: 1px solid var(--tui-border-normal);
     outline-offset: -1px;
 
     .appearance-hover({
@@ -17,7 +17,7 @@
 
     .appearance-focus({
         box-shadow: none;
-        outline: 0.125rem solid var(--tui-primary);
+        outline: 0.125rem solid var(--tui-background-accent-1);
         outline-offset: -0.125rem;
     });
 
@@ -27,12 +27,12 @@
 
     &[data-mode='invalid'][data-mode='invalid'],
     &:invalid:not([data-mode]) {
-        outline-color: var(--tui-negative);
+        outline-color: var(--tui-status-negative);
     }
 
     &[data-mode='readonly'] {
         box-shadow: none;
-        outline-color: var(--tui-base-04) !important;
+        outline-color: var(--tui-border-normal) !important;
     }
 }
 

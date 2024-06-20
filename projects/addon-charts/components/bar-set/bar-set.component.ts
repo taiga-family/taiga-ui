@@ -1,6 +1,5 @@
 import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import type {SafeValue} from '@angular/platform-browser';
 import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -41,10 +40,6 @@ export class TuiBarSet {
 
     protected getHeight(value: number): number {
         return Math.abs((PERCENT * value) / this.getLargest(this.computedValue));
-    }
-
-    protected getColor(index: number): SafeValue {
-        return `var(--tui-chart-${index})`;
     }
 
     @tuiPure

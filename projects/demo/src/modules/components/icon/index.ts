@@ -18,7 +18,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 })
 export default class Page {
     protected readonly iconVariants = ['', ...TUI_USED_ICONS];
-    protected readonly colorVariants = ['', 'var(--tui-text-01)', 'red', '#3aa981'];
+    protected readonly colorVariants = ['', 'var(--tui-text-primary)', 'red', '#3aa981'];
 
     protected icon = '@tui.heart';
     protected backgroundIcon = '';

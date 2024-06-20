@@ -10,8 +10,6 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {SafeValue} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk/observables';
 import type {TuiSizeXL} from '@taiga-ui/core/types';
@@ -56,7 +54,6 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArcChart {
-    private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
     protected initialized = false;
@@ -135,11 +132,5 @@ export class TuiArcChart {
 
     protected getOffset(index: number): number {
         return this.getLength(index) * (1 - Math.min(this.value[index] / this.max, 1));
-    }
-
-    protected getColor(index: number): SafeValue {
-        return this.sanitizer.bypassSecurityTrustStyle(
-            `var(--tui-chart-${index}, var(--tui-support-0${index + 1}))`,
-        );
     }
 }

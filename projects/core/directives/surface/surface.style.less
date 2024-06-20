@@ -20,7 +20,7 @@
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform !important;
 
     &:focus-visible {
-        outline-color: var(--tui-focus);
+        outline-color: var(--tui-border-focus);
     }
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
@@ -85,53 +85,53 @@ button[data-surface] {
 }
 
 input[tuiSurfaceLayer] {
-    color: var(--tui-accent);
+    color: var(--tui-background-accent-2);
     appearance: none;
     margin: 0;
     border-radius: inherit;
     outline: none;
     box-shadow:
         inset 0 0,
-        inset 0 0 var(--tui-base-03);
+        inset 0 0 var(--tui-background-neutral-1);
 
     &:checked {
         box-shadow:
             inset 0 0 0 calc(var(--tui-gap) / 2),
-            inset 0 0 var(--tui-base-03);
+            inset 0 0 var(--tui-background-neutral-1);
     }
 
     &:focus-visible {
         box-shadow:
             inset 0 0,
-            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
 
     &:checked:focus-visible {
         filter: brightness(0.7);
         box-shadow:
             inset 0 0 0 calc(var(--tui-gap) / 2),
-            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
+            inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
     }
 
     @media (hover: hover) and (pointer: fine) {
         [data-surface]:hover & {
             box-shadow:
                 inset 0 0,
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
+                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
         }
 
         [data-surface]:hover &:checked {
             filter: brightness(0.9);
             box-shadow:
                 inset 0 0 0 calc(var(--tui-gap) / 2),
-                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
+                inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
         }
     }
 }
 
 [tuiSurface][data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
-    background-color: var(--tui-elevation-01);
+    background-color: var(--tui-background-elevation-1);
 
     button&,
     a& {
@@ -144,14 +144,14 @@ input[tuiSurfaceLayer] {
             &:hover {
                 box-shadow: var(--tui-shadow-hover);
                 transform: translate3d(0, -0.25rem, 0);
-                background: var(--tui-elevation-01);
+                background: var(--tui-background-elevation-1);
             }
         }
     }
 }
 
 [tuiSurface][data-surface='flat'] {
-    background-color: var(--tui-clear);
+    background-color: var(--tui-background-neutral-1);
 
     button&,
     a& {

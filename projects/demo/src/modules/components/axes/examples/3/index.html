@@ -8,7 +8,7 @@
         <tui-bar
             *ngFor="let bar of value; let i = index"
             size="m"
-            [style.background-color]="getBackground(i)"
+            [style.background-color]="'var(--tui-chart-categorical-0' + i + ')'"
             [style.height.%]="getHeight(bar)"
         />
     </div>

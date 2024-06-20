@@ -10,7 +10,7 @@
 <p>Use CSS for support colors</p>
 <tui-badge
     *tuiRepeatTimes="let index of 20"
-    [style.background]="'var(--tui-support-' + (index + 1).toString().padStart(2, '0') + ')'"
+    [style.background]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'"
 >
     Taiga
 </tui-badge>

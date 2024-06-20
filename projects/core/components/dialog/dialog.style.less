@@ -60,8 +60,8 @@
         min-height: 100%;
         border-radius: 0;
         border: none;
-        background: var(--tui-elevation-01);
-        box-shadow: 0 4rem var(--tui-elevation-01);
+        background: var(--tui-background-elevation-1);
+        box-shadow: 0 4rem var(--tui-background-elevation-1);
 
         .t-content {
             // TODO: investigate problem in mobile calendar
@@ -132,7 +132,7 @@
 .t-content {
     border-radius: inherit;
     padding: 2rem;
-    background: var(--tui-elevation-01);
+    background: var(--tui-background-elevation-1);
 
     &:not(:first-child) {
         border-top-left-radius: 0;
@@ -166,7 +166,7 @@
     :host:not([data-size='fullscreen']):not([data-size='page']) & {
         animation: tuiFadeIn var(--tui-duration);
         background: rgba(104, 104, 104, 0.96);
-        color: var(--tui-base-01);
+        color: var(--tui-background-base);
 
         &:hover {
             background: rgba(159, 159, 159, 0.86);
@@ -185,7 +185,7 @@
             top: 0;
             right: 0;
             background: transparent !important;
-            color: var(--tui-text-01);
+            color: var(--tui-text-primary);
             opacity: 0.5;
         }
     }

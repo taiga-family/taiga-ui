@@ -4,7 +4,7 @@
 [tuiWrapper][data-appearance='table'] {
     border-radius: 0;
     background: transparent;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 
     /* stylelint-disable meowtec/no-px */
     &:before,
@@ -37,12 +37,12 @@
 
     &[data-appearance='table']:after {
         border-width: 1px;
-        color: var(--tui-base-04);
+        color: var(--tui-border-normal);
     }
 
     .wrapper-hover({
         &:not(._focused):before {
-            background-color: var(--tui-clear);
+            background-color: var(--tui-background-neutral-1);
         }
     });
 
@@ -52,16 +52,16 @@
 
     .wrapper-invalid({
         &:before {
-            background-image: linear-gradient(to top right, transparent 0%, transparent 50%, var(--tui-error-fill) 50%, var(--tui-error-fill) 100%);
+            background-image: linear-gradient(to top right, transparent 0%, transparent 50%, var(--tui-status-negative) 50%, var(--tui-status-negative) 100%);
         }
 
         &:not(._focused):before {
-            background-color: var(--tui-error-bg);
+            background-color: var(--tui-status-negative-pale);
         }
 
         .wrapper-hover({
             &:not(._focused):before {
-                background-color: var(--tui-error-bg-hover);
+                background-color: var(--tui-status-negative-pale-hover);
             }
         });
 
@@ -72,7 +72,7 @@
         .wrapper-focus({
             background: transparent;
 
-            --tui-focus: var(--tui-error-fill);
+            --tui-border-focus: var(--tui-status-negative);
 
             &:after {
                 border-width: 1px;

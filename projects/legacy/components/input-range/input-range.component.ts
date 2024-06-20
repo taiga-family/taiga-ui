@@ -18,6 +18,7 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
 import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
+import {tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
@@ -44,6 +45,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     providers: [
         tuiAsFocusableItemAccessor(TuiInputRangeComponent),
         tuiAsControl(TuiInputRangeComponent),
+        tuiSliderOptionsProvider({trackColor: 'transparent'}),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })

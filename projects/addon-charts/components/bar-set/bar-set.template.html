@@ -28,7 +28,7 @@
         [class.t-bar_flexible]="flexible"
         [class.t-bar_negative]="item < 0"
         [size]="computedSize"
-        [style.background]="getColor(index)"
+        [style.background]="'var(--tui-chart-categorical-0' + index + ')'"
         [style.height.%]="getHeight(item)"
         [value]="computedSegments"
     />

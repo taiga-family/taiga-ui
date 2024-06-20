@@ -9,7 +9,7 @@ describe('TuiSwipe', () => {
     @Component({
         template: `
             <section
-                style="background: var(--tui-primary); width: 500px; height: 500px"
+                style="background: var(--tui-background-accent-1); width: 500px; height: 500px"
                 (tuiSwipe)="onSwipe($event)"
             ></section>
         `,

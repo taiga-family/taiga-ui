@@ -25,7 +25,7 @@
     .wrapper-focus({
         &:after {
             border-width: 2px;
-            color: var(--tui-focus);
+            color: var(--tui-border-focus);
         }
     });
 
@@ -38,7 +38,7 @@
     .safari-only({
         :focus-visible &,
         &:focus-visible {
-            --tui-focus: transparent !important;
+            --tui-border-focus: transparent !important;
         }
     });
 }

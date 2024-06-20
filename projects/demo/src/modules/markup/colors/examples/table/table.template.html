@@ -7,29 +7,33 @@
         <h3 class="name">
             <tui-doc-copy
                 class="copy"
-                [cdkCopyToClipboard]="'var(' + color.name + ')'"
+                [cdkCopyToClipboard]="'var(' + color + ')'"
             >
                 Copy
             </tui-doc-copy>
-            {{ color.name }}
+            {{ color }}
         </h3>
-        <div>{{ color.desc }}</div>
     </td>
     <td>
         <div
             class="demo"
-            [style.background]="getValue(color.name)"
+            [style.background]="'var(' + color + ')'"
+            [style.box-shadow]="
+                getValue(color) === '#fff' || getValue(color) === '#222'
+                    ? 'inset 0 0 0 1px var(--tui-border-normal)'
+                    : null
+            "
         ></div>
     </td>
     <td>
         <div class="value">
             <tui-doc-copy
                 class="copy"
-                [cdkCopyToClipboard]="getValue(color.name)"
+                [cdkCopyToClipboard]="getValue(color)"
             >
                 Copy
             </tui-doc-copy>
-            {{ getValue(color.name) }}
+            {{ getValue(color) }}
         </div>
     </td>
 </tr>

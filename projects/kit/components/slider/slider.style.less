@@ -39,13 +39,13 @@
     );
     @ticks-gradient: repeating-linear-gradient(
         to right,
-        var(--tui-base-06) 0 @ticks-thickness,
+        var(--tui-text-tertiary) 0 @ticks-thickness,
         transparent 0 var(--tui-slider-segment-width)
     );
     @filling-progress-gradient: linear-gradient(
         to right,
-        @thumb-color var(--tui-slider-fill-percentage),
-        transparent var(--tui-slider-fill-percentage)
+        @thumb-color calc(100% * var(--tui-slider-fill-ratio)),
+        transparent calc(100% * var(--tui-slider-fill-ratio))
     );
 
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@
     }
 
     :focus-visible& {
-        box-shadow: 0 0 0 2px inset var(--tui-focus);
+        box-shadow: 0 0 0 2px inset var(--tui-border-focus);
     }
 }
 
@@ -105,7 +105,7 @@
 .thumb-ghost(@size) {
     position: absolute;
     top: ((@hitbox - @thumb-diameters[@@size]) / 2);
-    left: calc(var(--tui-slider-fill-percentage) - var(--tui-slider-fill-ratio) * @thumb-diameters[@@size]);
+    left: calc(var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameters[@@size]);
     width: @thumb-diameters[@@size];
     height: @thumb-diameters[@@size];
     border-radius: 50%;
@@ -133,7 +133,7 @@
     position: relative;
     display: block;
     width: 100%;
-    color: var(--tui-primary); /* See currentColor inside this file */
+    color: var(--tui-background-accent-1); /* See currentColor inside this file */
     cursor: pointer;
     appearance: none;
     height: @track-height;

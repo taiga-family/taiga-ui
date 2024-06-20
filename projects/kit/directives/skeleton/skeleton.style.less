@@ -13,7 +13,7 @@
 [tuiSkeleton] {
     &._skeleton {
         color: transparent;
-        background: var(--tui-base-01) !important;
+        background: var(--tui-background-base) !important;
         box-shadow: none !important;
         filter: contrast(0) brightness(0);
         animation: tuiSkeleton ease-in-out 1s infinite alternate;
@@ -23,7 +23,7 @@
 
             &:before {
                 content: attr(data-tui-skeleton);
-                background: var(--tui-base-01);
+                background: var(--tui-background-base);
                 font-size: smaller;
                 box-decoration-break: clone;
                 border-radius: 0.25rem;

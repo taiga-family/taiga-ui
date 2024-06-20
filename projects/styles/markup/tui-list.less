@@ -2,7 +2,7 @@
     font: var(--tui-font-text-m);
     line-height: 1.5rem;
     list-style-type: none;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 
     &_large {
         font: var(--tui-font-text-l);
@@ -17,7 +17,7 @@
 
     &_nested {
         margin: 0.75rem 0 0.75rem 1.25rem;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
 
         .tui-list_large & {
             margin-left: 0.75rem;
@@ -51,7 +51,7 @@
             width: 0.5rem;
             height: 0.5rem;
             border-radius: 100%;
-            background-color: var(--tui-primary);
+            background-color: var(--tui-background-accent-1);
 
             .tui-list_large > & {
                 top: 0.625rem;
@@ -89,7 +89,7 @@
                 counter-increment: counter;
                 width: auto;
                 height: auto;
-                color: var(--tui-text-03);
+                color: var(--tui-text-tertiary);
                 background-color: transparent;
             }
         }
@@ -104,7 +104,7 @@
                 width: auto;
                 height: auto;
                 background-color: transparent;
-                color: var(--tui-base-06);
+                color: var(--tui-text-tertiary);
                 font-size: 0.75rem;
             }
         }
@@ -122,7 +122,7 @@
 
     &__description {
         margin: @space * 2 0 0;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
 
         .tui-list_small & {
             margin-top: @space;

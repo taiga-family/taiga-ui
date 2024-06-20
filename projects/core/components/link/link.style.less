@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiLink] {
-    --tui-text-03: var(--tui-text-02);
+    --tui-text-tertiary: var(--tui-text-secondary);
 
     padding: 0;
     background: transparent;
@@ -11,7 +11,7 @@
     font: inherit;
 
     &:hover {
-        --tui-text-02: var(--tui-text-01);
+        --tui-text-secondary: var(--tui-text-primary);
     }
 
     &:before {
@@ -40,7 +40,7 @@
 
     .appearance-focus({
         outline: none;
-        background: var(--tui-selection);
+        background: var(--tui-service-selected-text);
         background: color-mix(in lch, currentColor 12%, transparent);
     });
 }

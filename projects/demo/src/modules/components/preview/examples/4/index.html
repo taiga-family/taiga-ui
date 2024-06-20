@@ -44,7 +44,10 @@
         </button>
 
         <ng-container *ngIf="contentUnavailable$ | async">
-            <div class="t-container">
+            <div
+                tuiTheme="dark"
+                class="t-container"
+            >
                 <tui-icon
                     icon="@tui.file"
                     class="t-icon"

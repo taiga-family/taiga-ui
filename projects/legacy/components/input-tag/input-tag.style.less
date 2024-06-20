@@ -179,11 +179,11 @@
     }
 
     &_disabled {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     &_error {
-        color: var(--tui-negative);
+        color: var(--tui-status-negative);
     }
 
     &:not(.t-text_comma):last-of-type:after {
@@ -261,12 +261,12 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
         opacity: 0;
     }
 
     :host-context([tuiTheme='dark']) &::placeholder {
-        color: var(--tui-text-03-night);
+        color: var(--tui-text-tertiary);
     }
 
     :host._focused &:not(:read-only)::placeholder {
@@ -276,6 +276,6 @@
 
 .t-error-icon {
     display: block;
-    color: var(--tui-error-fill);
+    color: var(--tui-status-negative);
     font-size: 1rem;
 }
