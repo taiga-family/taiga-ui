@@ -4,17 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAutoColorPipe, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStackComponent} from '@taiga-ui/kit';
+import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatarStackComponent,
-        NgForOf,
-        TuiAvatar,
-        TuiInitialsPipe,
-        TuiAutoColorPipe,
-    ],
+    imports: [TuiAvatarStack, NgForOf, TuiAvatar, TuiInitialsPipe, TuiAutoColorPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

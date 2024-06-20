@@ -4,7 +4,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSurface} from '@taiga-ui/core';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiRange} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     imports: [
         TuiCardLarge,
         TuiSurface,
-        TuiRangeComponent,
+        TuiRange,
         FormsModule,
         JsonPipe,
         ReactiveFormsModule,

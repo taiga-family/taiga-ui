@@ -15,7 +15,7 @@ import {TuiSliderComponent} from '../slider.component';
     styleUrls: ['./slider-thumb-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiSliderThumbLabelComponent implements AfterContentInit {
+export class TuiSliderThumbLabel implements AfterContentInit {
     @ContentChild(TuiSliderComponent)
     protected readonly slider?: TuiSliderComponent;
 

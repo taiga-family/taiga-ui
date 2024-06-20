@@ -14,7 +14,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
 })
-export class TuiLineClampBoxComponent extends TuiHintComponent {
+export class TuiLineClampBox extends TuiHintComponent {
     @HostBinding('style.min-width.px')
     protected get width(): number {
         return this.accessor.getClientRect().width;

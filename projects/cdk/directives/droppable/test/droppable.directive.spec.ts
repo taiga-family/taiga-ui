@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiDroppableDirective} from '@taiga-ui/cdk';
+import {TuiDroppable} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiMockEvent} from '@taiga-ui/testing';
 
 describe('TuiDroppable Directive', () => {
     @Component({
         standalone: true,
-        imports: [TuiDroppableDirective],
+        imports: [TuiDroppable],
         template: `
             <div
                 (tuiDroppableDragOverChange)="onDragOver($event)"
@@ -38,7 +38,7 @@ describe('TuiDroppable Directive', () => {
         testComponent = fixture.componentInstance;
 
         directiveElement = fixture.debugElement.query(
-            By.directive(TuiDroppableDirective),
+            By.directive(TuiDroppable),
         ).nativeElement;
         fixture.detectChanges();
     });

@@ -2,6 +2,7 @@ import {Directive} from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 
 @Directive({
+    standalone: true,
     selector: '[tuiPreviewAction]',
     providers: [
         tuiButtonOptionsProvider({
@@ -13,4 +14,4 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
         '[style.border-radius.rem]': '100',
     },
 })
-export class TuiPreviewActionDirective {}
+export class TuiPreviewAction {}

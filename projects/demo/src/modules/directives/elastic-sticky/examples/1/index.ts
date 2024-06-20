@@ -18,7 +18,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent implements AfterViewInit {
+export default class Example implements AfterViewInit {
     @ViewChild(TuiElasticSticky)
     protected readonly elasticSticky?: TuiElasticSticky;
 

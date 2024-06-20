@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import {TuiCalendarComponent} from '@taiga-ui/core/components/calendar';
+import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -28,7 +28,7 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         MaskitoDirective,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiCalendarComponent,
+        TuiCalendar,
         TuiLink,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,

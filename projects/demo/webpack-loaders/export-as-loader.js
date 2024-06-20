@@ -5,7 +5,7 @@ module.exports = function (source) {
         const currentDir = path.basename(path.dirname(this.resourcePath));
 
         const searchString = 'standalone: true,';
-        const insertString = `    exportAs: "ExampleComponent${currentDir}",`;
+        const insertString = `    exportAs: "Example${currentDir}",`;
 
         const regex = new RegExp(searchString);
 

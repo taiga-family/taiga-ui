@@ -13,7 +13,7 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiCalendarComponent} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
@@ -23,7 +23,7 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
     standalone: true,
-    imports: [RouterModule, TuiCalendarComponent, TuiDemo],
+    imports: [RouterModule, TuiCalendar, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

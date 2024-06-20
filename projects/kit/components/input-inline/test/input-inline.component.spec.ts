@@ -6,12 +6,12 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';
 
-import {TuiInputInlineComponent} from '../input-inline.component';
+import {TuiInputInline} from '../input-inline.component';
 
 describe('InputInline', () => {
     @Component({
         standalone: true,
-        imports: [TuiInputInlineComponent, ReactiveFormsModule],
+        imports: [TuiInputInline, ReactiveFormsModule],
         template: `
             <tui-input-inline>
                 <input
@@ -22,8 +22,8 @@ describe('InputInline', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiInputInlineComponent, {static: true})
-        public component!: TuiInputInlineComponent;
+        @ViewChild(TuiInputInline, {static: true})
+        public component!: TuiInputInline;
 
         public control = new FormControl('');
     }

@@ -17,14 +17,14 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
-import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiSpinButtonComponent} from '@taiga-ui/core/components/spin-button';
+import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
 import type {TuiRangeState} from '@taiga-ui/core/types';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
@@ -38,17 +38,17 @@ const TODAY = TuiDay.currentLocal();
         NgIf,
         NgForOf,
         TuiCalendarYear,
-        TuiSpinButtonComponent,
+        TuiSpinButton,
         TuiScrollbar,
         TuiLink,
         TuiLet,
-        TuiHoveredDirective,
+        TuiHovered,
     ],
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarMonthComponent {
+export class TuiCalendarMonth {
     protected isYearPickerShown = false;
     protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 

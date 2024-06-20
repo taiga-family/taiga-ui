@@ -16,7 +16,7 @@ import {TuiRadio} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     protected readonly platforms: ReadonlyArray<'android' | 'ios' | 'web'> = [
         'web',
         'web',

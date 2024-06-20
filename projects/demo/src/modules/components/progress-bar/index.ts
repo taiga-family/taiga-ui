@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiProgressModule} from '@taiga-ui/kit';
+import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLink, TuiProgressModule],
+    imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

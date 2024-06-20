@@ -4,18 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiHoveredDirective, tuiSum} from '@taiga-ui/cdk';
+import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiRingChart,
-        TuiAmountPipe,
-        AsyncPipe,
-        TuiLegendItem,
-        NgForOf,
-        TuiHoveredDirective,
-    ],
+    imports: [TuiRingChart, TuiAmountPipe, AsyncPipe, TuiLegendItem, NgForOf, TuiHovered],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

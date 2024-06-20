@@ -5,7 +5,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiCalendarRangeComponent} from '@taiga-ui/kit/components/calendar-range';
+import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -29,7 +29,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiCalendarRangeComponent,
+        TuiCalendarRange,
         TuiValueAccessorModule,
         TuiLegacyDropdownOpenMonitorDirective,
         TuiIcon,

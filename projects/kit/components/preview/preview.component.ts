@@ -1,20 +1,43 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {MutationObserverDirective} from '@ng-web-apis/mutation-observer';
+import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import type {TuiZoomEvent} from '@taiga-ui/cdk/directives/zoom';
+import {TuiZoom} from '@taiga-ui/cdk/directives/zoom';
 import {tuiDragAndDropFrom, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
+
+import {TuiPreviewAction} from './preview-action/preview-action.directive';
+import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
 @Component({
+    standalone: true,
     selector: 'tui-preview',
+    imports: [
+        TuiZoom,
+        MutationObserverDirective,
+        ResizeObserverDirective,
+        NgIf,
+        AsyncPipe,
+        TuiPan,
+        TuiButton,
+        TuiHint,
+        TuiPreviewAction,
+        TuiPreviewZoom,
+    ],
     templateUrl: './preview.template.html',
     styleUrls: ['./preview.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

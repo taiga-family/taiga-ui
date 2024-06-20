@@ -1,5 +1,5 @@
 ```ts
-import {TuiValidatorDirective} from '@taiga-ui/cdk';
+import {TuiValidator} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiValidatorDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiValidatorDirective,
+    TuiValidator,
   ],
   // ...
 })

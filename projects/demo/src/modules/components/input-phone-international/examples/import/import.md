@@ -1,6 +1,6 @@
 ```ts
 import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,

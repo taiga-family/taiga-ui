@@ -45,7 +45,7 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
         },
     ],
 })
-export default class ExampleComponent implements AfterViewInit {
+export default class Example implements AfterViewInit {
     protected readonly maxLength = 97;
 
     protected readonly testForm = new FormGroup({

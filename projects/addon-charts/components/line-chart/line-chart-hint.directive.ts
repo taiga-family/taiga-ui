@@ -35,7 +35,7 @@ import {TuiLineChart} from './line-chart.component';
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
-export class TuiLineChartHintDirective implements AfterViewInit {
+export class TuiLineChartHint implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChart))
     private readonly charts: QueryList<TuiLineChart> = EMPTY_QUERY;
 

@@ -21,7 +21,7 @@ import {defer} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiInputInlineComponent {
+export class TuiInputInline {
     @ContentChild(NgControl)
     private readonly control?: NgControl;
 

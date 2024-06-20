@@ -15,7 +15,7 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
-import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
@@ -30,7 +30,7 @@ const ITEMS_IN_ROW = 4;
 @Component({
     standalone: true,
     selector: 'tui-calendar-year',
-    imports: [TuiHoveredDirective, TuiRepeatTimes, TuiLet, TuiScrollIntoView],
+    imports: [TuiHovered, TuiRepeatTimes, TuiLet, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

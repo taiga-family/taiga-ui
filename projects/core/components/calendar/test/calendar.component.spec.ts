@@ -4,14 +4,14 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
-import {TuiCalendarComponent} from '@taiga-ui/core';
+import {TuiCalendar} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiCalendarHarness} from '@taiga-ui/testing';
 
 describe('Calendar', () => {
     @Component({
         standalone: true,
-        imports: [TuiCalendarComponent],
+        imports: [TuiCalendar],
         template: `
             <tui-calendar
                 [value]="value"
@@ -37,8 +37,8 @@ describe('Calendar', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiCalendarComponent, {static: true})
-        public component!: TuiCalendarComponent;
+        @ViewChild(TuiCalendar, {static: true})
+        public component!: TuiCalendar;
 
         public value = TuiDay.currentLocal();
         public month = new TuiMonth(2019, 2);
@@ -56,7 +56,7 @@ describe('Calendar', () => {
     let fixture: ComponentFixture<Test>;
     let loader: HarnessLoader;
     let testComponent: Test;
-    let component: TuiCalendarComponent;
+    let component: TuiCalendar;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({

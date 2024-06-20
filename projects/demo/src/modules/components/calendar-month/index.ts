@@ -14,18 +14,12 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
+import {TuiCalendarMonth} from '@taiga-ui/kit';
 import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiCalendarMonthComponent,
-        TuiLink,
-        RouterModule,
-        TuiInputMonthRangeModule,
-    ],
+    imports: [TuiDemo, TuiCalendarMonth, TuiLink, RouterModule, TuiInputMonthRangeModule],
     templateUrl: './index.html',
     changeDetection,
 })

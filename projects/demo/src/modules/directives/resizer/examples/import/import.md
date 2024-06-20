@@ -1,5 +1,5 @@
 ```ts
-import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
+import {TuiResizeable, TuiResizer} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,8 +7,8 @@ import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiResizeableDirective,
-    TuiResizerDirective,
+    TuiResizeable,
+    TuiResizer,
   ],
   // ...
 })

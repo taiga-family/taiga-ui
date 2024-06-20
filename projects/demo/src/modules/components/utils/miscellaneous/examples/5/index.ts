@@ -22,7 +22,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     protected userDetailsForm = new FormGroup({
         name: new FormControl('', Validators.required),
         address: new FormGroup({

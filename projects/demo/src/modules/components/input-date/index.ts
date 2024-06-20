@@ -44,12 +44,9 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent),
-        tuiProvideMobileCalendar(),
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, Example), tuiProvideMobileCalendar()],
 })
-export default class ExampleComponent extends AbstractExampleTuiControl {
+export default class Example extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected readonly example5 = {
         TypeScript: import('./examples/5/index.ts?raw'),

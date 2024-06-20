@@ -26,7 +26,7 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
 })
-export class TuiBreadcrumbsComponent {
+export class TuiBreadcrumbs {
     @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;

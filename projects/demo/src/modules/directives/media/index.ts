@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiMediaDirective} from '@taiga-ui/cdk';
+import {TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiMediaDirective],
+    imports: [TuiDemo, TuiMedia],
     templateUrl: './index.html',
     changeDetection,
 })

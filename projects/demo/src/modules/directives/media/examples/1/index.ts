@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHighDpiDirective, TuiMediaDirective} from '@taiga-ui/cdk';
+import {TuiHighDpi, TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiMediaDirective, TuiHighDpiDirective],
+    imports: [TuiMedia, TuiHighDpi],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

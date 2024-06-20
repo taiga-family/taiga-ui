@@ -6,10 +6,10 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
-    TuiAvatarStackComponent,
+    TuiAvatarStack,
     TuiBadge,
     TuiCheckbox,
-    TuiProgressModule,
+    TuiProgress,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
@@ -18,10 +18,10 @@ import {TuiCell} from '@taiga-ui/layout';
     imports: [
         TuiIcon,
         TuiCell,
-        TuiProgressModule,
+        TuiProgress,
         TuiBadge,
         TuiAvatar,
-        TuiAvatarStackComponent,
+        TuiAvatarStack,
         TuiCheckbox,
         TuiThumbnailCard,
         FormsModule,

@@ -1,5 +1,5 @@
 ```ts
-import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
+import {TuiTablePagination} from '@taiga-ui/addon-table';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
   standalone: true,
   imports: [
     // ...
-    TuiTablePaginationComponent,
+    TuiTablePagination,
   ],
 })
 export class Example {}

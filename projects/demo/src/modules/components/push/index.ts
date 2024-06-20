@@ -4,11 +4,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon} from '@taiga-ui/core';
-import {TuiPushComponent} from '@taiga-ui/kit';
+import {TuiPush} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiPushComponent, TuiIcon],
+    imports: [TuiDemo, TuiPush, TuiIcon],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

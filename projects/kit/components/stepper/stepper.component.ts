@@ -32,7 +32,7 @@ import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {delay} from 'rxjs';
 
-import {TuiStepComponent} from './step.component';
+import {TuiStep} from './step.component';
 
 @Component({
     standalone: true,
@@ -44,7 +44,7 @@ import {TuiStepComponent} from './step.component';
     providers: [ResizeObserverService],
 })
 export class TuiStepperComponent {
-    @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
+    @ContentChildren(forwardRef(() => TuiStep), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly cdr = inject(ChangeDetectorRef);

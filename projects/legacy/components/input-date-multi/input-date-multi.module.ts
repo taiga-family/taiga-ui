@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {TuiCalendarComponent} from '@taiga-ui/core/components/calendar';
+import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -24,7 +24,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         MaskitoDirective,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiCalendarComponent,
+        TuiCalendar,
         TuiLink,
         TuiInputTagModule,
         FormsModule,

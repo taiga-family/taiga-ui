@@ -2,13 +2,13 @@ import {Directive, HostListener, inject} from '@angular/core';
 import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
-import {TuiTileComponent} from './tile.component';
+import {TuiTile} from './tile.component';
 
-function isInteracting(this: TuiTileHandleDirective, x = NaN): boolean {
+function isInteracting(this: TuiTileHandle, x = NaN): boolean {
     return !Number.isNaN(x) || !Number.isNaN(this['x']);
 }
 
-function isDragging(this: TuiTileHandleDirective): boolean {
+function isDragging(this: TuiTileHandle): boolean {
     return !Number.isNaN(this['x']);
 }
 
@@ -20,8 +20,8 @@ function isDragging(this: TuiTileHandleDirective): boolean {
         '[style.userSelect]': '"none"',
     },
 })
-export class TuiTileHandleDirective {
-    private readonly tile = inject(TuiTileComponent);
+export class TuiTileHandle {
+    private readonly tile = inject(TuiTile);
     private x = NaN;
     private y = NaN;
 

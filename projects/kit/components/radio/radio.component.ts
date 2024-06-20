@@ -1,7 +1,7 @@
 import type {DoCheck} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeS} from '@taiga-ui/core/types';
@@ -23,7 +23,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
                 'tuiAppearanceFocus',
             ],
         },
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
     ],
     host: {
         '[disabled]': '!control || control.disabled',

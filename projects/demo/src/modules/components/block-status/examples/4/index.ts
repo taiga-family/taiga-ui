@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStackComponent} from '@taiga-ui/kit';
+import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
         TuiAvatar,
         TuiAutoColorPipe,
         TuiInitialsPipe,
-        TuiAvatarStackComponent,
+        TuiAvatarStack,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

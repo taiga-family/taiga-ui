@@ -19,7 +19,7 @@ import {switchMap} from 'rxjs';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent implements TuiConfirmData {
+export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 

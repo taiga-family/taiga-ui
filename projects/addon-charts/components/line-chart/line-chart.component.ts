@@ -29,7 +29,7 @@ import type {Observable} from 'rxjs';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
-import {TuiLineChartHintDirective} from './line-chart-hint.directive';
+import {TuiLineChartHint} from './line-chart-hint.directive';
 
 @Component({
     standalone: true,
@@ -46,7 +46,7 @@ export class TuiLineChart {
     private readonly hover$ = new Subject<number>();
     private readonly autoIdString = inject(TuiIdService).generate();
 
-    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
+    protected readonly hintDirective = inject(TuiLineChartHint, {
         optional: true,
     });
 

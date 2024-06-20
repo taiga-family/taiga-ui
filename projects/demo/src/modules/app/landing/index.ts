@@ -37,7 +37,7 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
         '[class._hide]': 'hidden',
     },
 })
-export default class PageComponent implements OnInit {
+export default class Page implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 

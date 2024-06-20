@@ -20,7 +20,7 @@ import {TuiTilesComponent} from './tiles.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiTileService],
 })
-export class TuiTileComponent implements OnDestroy, AfterViewInit {
+export class TuiTile implements OnDestroy, AfterViewInit {
     @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 

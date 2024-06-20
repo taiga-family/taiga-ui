@@ -18,7 +18,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 
-import {IconsGroup} from './icons-group.directive';
+import {IconsGroupTemplate} from './icons-group.directive';
 
 @Component({
     standalone: true,
@@ -42,15 +42,15 @@ import {IconsGroup} from './icons-group.directive';
     styleUrls: ['./icons-group.style.less'],
     changeDetection,
 })
-export class IconsGroupComponent implements OnInit {
+export class IconsGroup implements OnInit {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChild(IconsGroup)
-    protected readonly iconGroup?: IconsGroup;
+    @ContentChild(IconsGroupTemplate)
+    protected readonly iconGroup?: IconsGroupTemplate;
 
     protected matcher: (item: string, search: string) => boolean = TUI_DEFAULT_MATCHER;
 

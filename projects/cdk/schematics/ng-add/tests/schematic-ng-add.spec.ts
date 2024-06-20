@@ -249,9 +249,9 @@ describe('ng-add', () => {
 import { TuiRoot, TUI_SANITIZER } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
+import {App} from './app.component';
 
-@NgModule({declarations: [AppComponent],
+@NgModule({declarations: [App],
     imports: [BrowserAnimationsModule, TuiRoot],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
@@ -297,9 +297,9 @@ function createMainFiles(): void {
     createSourceFile(
         'test/app/app.module.ts',
         `import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
+import {App} from './app.component';
 
-@NgModule({declarations: [AppComponent]})
+@NgModule({declarations: [App]})
 export class AppModule {}
 `,
     );
@@ -307,10 +307,10 @@ export class AppModule {}
     createSourceFile(
         'test/app/app.component.ts',
         `import {Component} from '@angular/core';
-import {AppComponent} from './app.component';
+import {App} from './app.component';
 
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {}`,
+export class App {}`,
     );
 
     createSourceFile('test/app/app.template.html', '<app></app>');

@@ -3,11 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiDataListDropdownManager,
-    TuiLineClampComponent,
-} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListDropdownManager, TuiLineClamp} from '@taiga-ui/kit';
 
 function randomString(len: number): string {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -31,7 +27,7 @@ function randomString(len: number): string {
         TuiDropdown,
         TuiDataListDropdownManager,
         NgForOf,
-        TuiLineClampComponent,
+        TuiLineClamp,
         TuiDataList,
     ],
     templateUrl: './index.html',

@@ -5,8 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiAxes,
     TuiLineChart,
-    TuiLineDaysChartComponent,
-    TuiLineDaysChartHintDirective,
+    TuiLineDaysChart,
+    TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
 import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
 import {
@@ -34,8 +34,8 @@ import {map, of} from 'rxjs';
         NgForOf,
         NgIf,
         AsyncPipe,
-        TuiLineDaysChartHintDirective,
-        TuiLineDaysChartComponent,
+        TuiLineDaysChartHint,
+        TuiLineDaysChart,
         TuiFilterPipe,
         TuiLineChart,
         TuiMapperPipe,

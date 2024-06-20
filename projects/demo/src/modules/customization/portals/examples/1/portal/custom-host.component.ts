@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk';
 
 import {CustomPortalService} from './custom-portal.service';
 
@@ -12,4 +12,4 @@ import {CustomPortalService} from './custom-portal.service';
     changeDetection,
     providers: [tuiAsPortal(CustomPortalService)],
 })
-export class CustomHost extends TuiPortalsComponent {}
+export class CustomHost extends TuiPortals {}

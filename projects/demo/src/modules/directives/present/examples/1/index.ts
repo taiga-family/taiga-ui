@@ -2,12 +2,12 @@ import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHoveredDirective} from '@taiga-ui/cdk';
+import {TuiHovered} from '@taiga-ui/cdk';
 import {TuiBadge, TuiPresent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiHoveredDirective, TuiPresent, NgIf, TuiBadge],
+    imports: [TuiHovered, TuiPresent, NgIf, TuiBadge],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -8,7 +8,7 @@ import {identity} from 'rxjs';
     standalone: true,
     selector: '[tuiCopyProcessor]',
 })
-export class TuiCopyProcessorDirective {
+export class TuiCopyProcessor {
     private readonly win = inject(WINDOW);
 
     @Input()

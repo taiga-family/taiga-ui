@@ -9,7 +9,7 @@ import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
+import {TuiBreadcrumbs} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 const ITEMS = [
@@ -30,7 +30,7 @@ const ITEMS = [
 describe('Breadcrumbs Wrapper', () => {
     @Component({
         standalone: true,
-        imports: [TuiBreadcrumbsComponent, NgFor, TuiItem, TuiLink, RouterTestingModule],
+        imports: [TuiBreadcrumbs, NgFor, TuiItem, TuiLink, RouterTestingModule],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"
@@ -49,8 +49,8 @@ describe('Breadcrumbs Wrapper', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiBreadcrumbsComponent, {static: true})
-        public component!: TuiBreadcrumbsComponent;
+        @ViewChild(TuiBreadcrumbs, {static: true})
+        public component!: TuiBreadcrumbs;
 
         public items = ITEMS;
 

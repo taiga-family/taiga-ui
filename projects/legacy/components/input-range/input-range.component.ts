@@ -16,7 +16,7 @@ import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focu
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
-import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import {TuiRange} from '@taiga-ui/kit/components/range';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_FLOATING_PRECISION,
@@ -58,7 +58,7 @@ export class TuiInputRangeComponent
     @ViewChildren(TuiInputNumberComponent)
     private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
 
-    @ViewChild(TuiRangeComponent, {read: ElementRef})
+    @ViewChild(TuiRange, {read: ElementRef})
     private readonly range?: ElementRef<HTMLElement>;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);

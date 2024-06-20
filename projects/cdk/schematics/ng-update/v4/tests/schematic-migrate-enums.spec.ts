@@ -16,7 +16,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 const COMPONENT_BEFORE = `
 import { TuiInteractiveState, TuiInteractiveStateT } from '@taiga-ui/core';
 
-export class MyComponent {
+export class Example {
     public getItemState(item: TuiDay): TuiInteractiveStateT | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
 
@@ -40,7 +40,7 @@ export class MyComponent {
 const COMPONENT_AFTER = `
 import { TuiInteractiveState } from '@taiga-ui/core';
 
-export class MyComponent {
+export class Example {
     public getItemState(item: TuiDay): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
 

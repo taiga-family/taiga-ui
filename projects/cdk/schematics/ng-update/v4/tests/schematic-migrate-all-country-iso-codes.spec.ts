@@ -21,7 +21,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     selector: 'awesome-selector',
     template: '',
 })
-export class MyComponent {
+export class Example {
     readonly countries: TuiCountryIsoCode[] = Object.values(TuiCountryIsoCode);
 
     countryIsoCode = TuiCountryIsoCode.US;
@@ -36,7 +36,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     selector: 'awesome-selector',
     template: '',
 })
-export class MyComponent {
+export class Example {
     readonly countries: TuiCountryIsoCode[] = getCountries();
 
     countryIsoCode = 'US';

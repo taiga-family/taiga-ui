@@ -2,7 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiActiveZone, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiNotification} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
@@ -17,7 +17,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         TuiNotification,
         TuiActiveZone,
         TuiButton,
-        TuiObscuredDirective,
+        TuiObscured,
         DropdownDocumentation,
     ],
     templateUrl: './index.html',

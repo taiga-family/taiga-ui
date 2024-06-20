@@ -20,7 +20,7 @@ import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {timer} from 'rxjs';
 
-import {TuiExpandContentDirective} from './expand-content.directive';
+import {TuiExpandContent} from './expand-content.directive';
 
 const State = {
     Idle: 0,
@@ -54,7 +54,7 @@ export class TuiExpandComponent {
     private readonly destroyRef = inject(DestroyRef);
     private state: TuiValuesOf<typeof State> = State.Idle;
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    @ContentChild(TuiExpandContent, {read: TemplateRef})
     protected content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding('class._expanded')

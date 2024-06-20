@@ -16,7 +16,7 @@ import {
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {TuiPanDirective} from '@taiga-ui/cdk/directives/pan';
+import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk/directives/swipe';
 import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -38,7 +38,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         NgStyle,
         NgTemplateOutlet,
         IntersectionObserverModule,
-        TuiPanDirective,
+        TuiPan,
         TuiSwipe,
         TuiCarouselScroll,
         TuiCarouselAutoscroll,

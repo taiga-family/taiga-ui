@@ -12,7 +12,7 @@ import {from, of, switchMap} from 'rxjs';
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TuiRoutableDialogComponent {
+export default class TuiRoutableDialog {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly injector = inject(INJECTOR);

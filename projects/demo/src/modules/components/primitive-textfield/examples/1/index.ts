@@ -24,7 +24,7 @@ import {
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent extends AbstractTuiControl<string> {
+export default class Example extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 

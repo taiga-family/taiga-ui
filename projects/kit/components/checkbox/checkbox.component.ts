@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -33,7 +33,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
                 'tuiAppearanceFocus',
             ],
         },
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
     ],
     host: {
         '[disabled]': '!control || control.disabled',

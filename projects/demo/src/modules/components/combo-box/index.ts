@@ -54,11 +54,11 @@ class Account {
     styleUrls: ['./index.less'],
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, Example),
         tuiDocExcludeProperties(['tuiTextfieldPrefix', 'tuiTextfieldPostfix']),
     ],
 })
-export default class ExampleComponent extends AbstractExampleTuiControl {
+export default class Example extends AbstractExampleTuiControl {
     @ViewChild('valueTemplateContent')
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>

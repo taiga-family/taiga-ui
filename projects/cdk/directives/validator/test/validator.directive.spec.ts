@@ -3,13 +3,13 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiValidatorDirective} from '@taiga-ui/cdk';
+import {TuiValidator} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiValidator directive', () => {
     @Component({
         standalone: true,
-        imports: [NgIf, ReactiveFormsModule, TuiValidatorDirective],
+        imports: [NgIf, ReactiveFormsModule, TuiValidator],
         template: `
             <input
                 *ngIf="show"
