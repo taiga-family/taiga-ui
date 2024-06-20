@@ -52,8 +52,7 @@
     color: var(--tui-text-primary);
 
     &:after {
-        color: var(--tui-text-tertiary);
-        opacity: var(--tui-disabled-opacity);
+        color: var(--tui-border-normal);
     }
 
     .wrapper-hover({
@@ -65,11 +64,10 @@
     });
 
     .wrapper-focus({
-        background: rgba(255, 255, 255, 0.08);
+        background: transparent;
 
         &:after {
             transition: none;
-            opacity: 1;
             --tui-border-focus: var(--tui-background-accent-1);
         }
     });

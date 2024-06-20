@@ -41,8 +41,7 @@
             font-size: 1rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
 
@@ -76,8 +75,7 @@
             margin-inline-end: -0.125rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
     }
@@ -105,8 +103,7 @@
             margin-inline-start: 0.25rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-m);
         }
     }
@@ -127,8 +124,7 @@
 
     &._with-label {
         .t-template,
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             padding-top: calc(var(--t-height) / 3);
 
             &::placeholder,
@@ -139,8 +135,7 @@
     }
 
     .t-template,
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         .fullsize();
 
         appearance: none;
@@ -152,10 +147,10 @@
         padding: inherit;
     }
 
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         pointer-events: auto;
-        background: padding-box transparent no-repeat center right 1rem / 2rem;
+        background: transparent no-repeat center right 1rem / 2rem;
+        background-clip: border-box, padding-box;
 
         &:read-only ~ .t-filler {
             display: none;
@@ -224,8 +219,7 @@
         cursor: pointer;
     }
 
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         .ios-only({
             &:active {
                 font-size: 1rem;
