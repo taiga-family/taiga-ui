@@ -55,6 +55,4 @@ export class TuiMobileLoaderAndroid {
     }
 }
 
-export const TUI_ANDROID_LOADER = new PolymorpheusComponent(
-    TuiMobileLoaderAndroid,
-);
+export const TUI_ANDROID_LOADER = new PolymorpheusComponent(TuiMobileLoaderAndroid);
