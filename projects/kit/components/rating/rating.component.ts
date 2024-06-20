@@ -15,6 +15,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
+import type {TuiRatingOptions} from './rating.options';
 import {TUI_RATING_OPTIONS} from './rating.options';
 
 @Component({
@@ -44,7 +45,7 @@ export class TuiRatingComponent extends TuiControl<number> {
     protected active = 0;
 
     @Input()
-    public icon = this.options.icon;
+    public icon: TuiRatingOptions['icon'] = this.options.icon;
 
     @Input()
     public max = this.options.max;
