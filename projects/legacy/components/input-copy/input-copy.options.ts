@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiInputCopyOptions {

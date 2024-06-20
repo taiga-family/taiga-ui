@@ -1,5 +1,5 @@
-import type {TuiSafeHtml} from '@taiga-ui/cdk';
-import {tuiIsString} from '@taiga-ui/cdk';
+import type {TuiSafeHtml} from '@taiga-ui/cdk/types';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 function makeRandomSalt(): number {
     return Math.floor(Math.random() * Date.now());

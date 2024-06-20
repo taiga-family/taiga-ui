@@ -2,14 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
-    TuiCalendarComponent,
-    TuiDropdown,
-    TuiIcon,
-    TuiLink,
-} from '@taiga-ui/core';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TuiCalendarComponent} from '@taiga-ui/core/components/calendar';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {

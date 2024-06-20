@@ -10,25 +10,30 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZone, TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
-import {TUI_STRICT_MATCHER, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
+import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {
     TuiDataListAccessor,
     TuiDataListHost,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
-    TuiValueContentContext,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_ACCESSOR,
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
-    TuiDropdownOpen,
-} from '@taiga-ui/core';
-import type {TuiItemsHandlers} from '@taiga-ui/kit';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
+} from '@taiga-ui/core/components/data-list';
+import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
+    TuiValueContentContext,
+} from '@taiga-ui/core/types';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';

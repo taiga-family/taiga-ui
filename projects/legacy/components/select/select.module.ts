@@ -1,7 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiStringifyContentPipe} from '@taiga-ui/kit/pipes/stringify-content';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiPrimitiveTextfieldModule,

@@ -9,10 +9,12 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, tuiIsNativeFocused} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_OPTIONS, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {
     TUI_ICON_PADDINGS,

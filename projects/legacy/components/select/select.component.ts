@@ -8,23 +8,25 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
-import {TUI_IS_MOBILE, tuiIsNativeFocused} from '@taiga-ui/cdk';
-import type {
-    TuiDataListHost,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
-    TuiValueContentContext,
-} from '@taiga-ui/core';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
-    TuiDropdownOpen,
-} from '@taiga-ui/core';
-import type {TuiItemsHandlers} from '@taiga-ui/kit';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
+} from '@taiga-ui/core/components/data-list';
+import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
+    TuiValueContentContext,
+} from '@taiga-ui/core/types';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiNativeSelect,
     AbstractTuiNullableControl,

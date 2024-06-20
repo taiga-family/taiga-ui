@@ -1,8 +1,12 @@
 import {Directive, forwardRef, Optional} from '@angular/core';
 import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
-import {EMPTY_FUNCTION, tuiArrayToggle} from '@taiga-ui/cdk';
-import type {TuiDataListHost} from '@taiga-ui/core';
-import {TUI_DATA_LIST_HOST, tuiAsOptionContent} from '@taiga-ui/core';
+import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    TUI_DATA_LIST_HOST,
+    tuiAsOptionContent,
+} from '@taiga-ui/core/components/data-list';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/legacy/components/multi-select-option';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 

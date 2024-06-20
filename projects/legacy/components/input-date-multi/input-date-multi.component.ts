@@ -10,21 +10,18 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {TuiBooleanHandler, TuiMapper, TuiValueTransformer} from '@taiga-ui/cdk';
-import {
-    changeDateSeparator,
-    TUI_FALSE_HANDLER,
-    TUI_IS_MOBILE,
-    tuiAsControl,
-    tuiDateClamp,
-    TuiDay,
-    tuiIsString,
-    TuiMonth,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
-import type {TuiInputDateOptions} from '@taiga-ui/kit';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {tuiAsControl} from '@taiga-ui/cdk/classes';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiDateClamp, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {changeDateSeparator, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -33,8 +30,8 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
-    tuiToggleDay,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/tokens';
+import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import {
     AbstractTuiMultipleControl,
     tuiAsControl as tuiAsLegacyControl,

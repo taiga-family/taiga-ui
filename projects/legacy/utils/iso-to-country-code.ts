@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
 

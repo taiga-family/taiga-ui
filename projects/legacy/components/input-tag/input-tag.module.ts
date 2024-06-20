@@ -1,8 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiHoveredDirective, TuiScrollService} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiDropdown, TuiIcon, TuiScrollbar} from '@taiga-ui/core';
+import {TuiHoveredDirective} from '@taiga-ui/cdk/directives/hovered';
+import {TuiScrollService} from '@taiga-ui/cdk/services';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
 import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
 import {

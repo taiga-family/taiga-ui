@@ -11,12 +11,9 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
-import {
-    EMPTY_FUNCTION,
-    tuiIsPresent,
-    tuiProvide,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk';
+import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
+import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     delay,
     distinctUntilChanged,

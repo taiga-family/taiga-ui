@@ -8,20 +8,17 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TUI_IS_MOBILE,
-    tuiClamp,
-    tuiInjectElement,
-    tuiIsNativeFocused,
-    tuiIsNativeFocusedIn,
-    tuiPure,
-    tuiRound,
-} from '@taiga-ui/cdk';
-import {tuiGetFractionPartPadded} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TUI_FLOATING_PRECISION, TuiRangeComponent} from '@taiga-ui/kit';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
+import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import {

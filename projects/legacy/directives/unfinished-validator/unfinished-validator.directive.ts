@@ -1,7 +1,8 @@
 import {Directive, inject, INJECTOR} from '@angular/core';
 import type {Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
-import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/legacy/tokens';
 
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';

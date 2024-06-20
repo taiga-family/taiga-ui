@@ -1,7 +1,8 @@
 import type {FactoryProvider} from '@angular/core';
 import {InjectionToken} from '@angular/core';
-import type {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
-import {TuiMonthPipe} from '@taiga-ui/core';
+import type {TuiMonth} from '@taiga-ui/cdk/date-time';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 

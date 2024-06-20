@@ -1,4 +1,4 @@
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable, Observer} from 'rxjs';
 

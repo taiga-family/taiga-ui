@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import {NAVIGATOR} from '@ng-web-apis/common';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIsApple} from '@taiga-ui/legacy/utils';
 
 /**

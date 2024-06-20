@@ -12,28 +12,28 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {
-    TuiActiveZone,
-    TuiBooleanHandler,
-    TuiContext,
-    TuiDateMode,
-} from '@taiga-ui/cdk';
+import {tuiAsControl} from '@taiga-ui/cdk/classes';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {
-    changeDateSeparator,
     DATE_FILLER_LENGTH,
-    TUI_FALSE_HANDLER,
-    TUI_IS_MOBILE,
-    tuiAsControl,
     tuiDateClamp,
     TuiDay,
     TuiMonth,
+} from '@taiga-ui/cdk/date-time';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import type {TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk/types';
+import {
+    changeDateSeparator,
     tuiNullableSame,
     tuiPure,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
-import type {TuiInputDateOptions} from '@taiga-ui/kit';
+} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -41,7 +41,7 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/tokens';
 import type {TuiNamedDay} from '@taiga-ui/legacy/classes';
 import {
     AbstractTuiNullableControl,

@@ -8,19 +8,17 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
+import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {
-    EMPTY_QUERY,
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    tuiControlValue,
     tuiGetOriginalArrayFromQueryList,
     tuiIsPresent,
     tuiPure,
-    tuiQueryListChanges,
-} from '@taiga-ui/cdk';
-import type {TuiDataListHost} from '@taiga-ui/core';
-import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core';
-import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit';
+} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core/components/data-list';
+import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
 

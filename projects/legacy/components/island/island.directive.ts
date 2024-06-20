@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 @Directive({
     standalone: true,

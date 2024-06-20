@@ -8,11 +8,13 @@ import {
 } from '@angular/core';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {MAX_YEAR, MIN_YEAR, TUI_FALSE_HANDLER, tuiPure} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import type {TuiInputDateOptions} from '@taiga-ui/kit';
-import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {MAX_YEAR, MIN_YEAR} from '@taiga-ui/cdk/date-time';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';

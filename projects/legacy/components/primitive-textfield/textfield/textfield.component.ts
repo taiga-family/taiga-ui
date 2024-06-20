@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,

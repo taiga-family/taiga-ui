@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,

@@ -1,6 +1,6 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {tuiParentAnimation} from '@taiga-ui/core';
+import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TUI_TABLE_BARS} from './table-bar.options';

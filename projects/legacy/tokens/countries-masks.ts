@@ -1,5 +1,5 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 /**
  * @deprecated Use new version of {@link https://taiga-ui.dev/components/input-phone-international InputPhoneInternational}.

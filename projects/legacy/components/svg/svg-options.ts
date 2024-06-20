@@ -1,7 +1,7 @@
 import type {FactoryProvider, Provider} from '@angular/core';
 import {InjectionToken, Optional, SkipSelf} from '@angular/core';
-import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiCreateTokenFromFactory, tuiIsString} from '@taiga-ui/cdk';
+import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateTokenFromFactory, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIconsPathFactory} from '@taiga-ui/legacy/utils';
 import {identity} from 'rxjs';
 

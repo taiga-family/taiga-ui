@@ -1,6 +1,6 @@
 import type {Provider, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 
 export interface TuiNativeFocusableElement extends Element, HTMLOrSVGElement {}

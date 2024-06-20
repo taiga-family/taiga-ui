@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import type {TuiInteractiveState} from '@taiga-ui/core';
+import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 /**
  * @deprecated

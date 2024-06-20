@@ -10,16 +10,12 @@ import {
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import type {TuiSafeHtml} from '@taiga-ui/cdk';
-import {
-    TUI_BASE_HREF,
-    tuiGetDocumentOrShadowRoot,
-    tuiInjectElement,
-    tuiIsString,
-    TuiLet,
-    tuiPure,
-    TuiStaticRequestService,
-} from '@taiga-ui/cdk';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiStaticRequestService} from '@taiga-ui/cdk/services';
+import {TUI_BASE_HREF} from '@taiga-ui/cdk/tokens';
+import type {TuiSafeHtml} from '@taiga-ui/cdk/types';
+import {tuiGetDocumentOrShadowRoot, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsString, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
 import {TUI_CACHE_BUSTING_PAYLOAD, tuiIsPresumedHTMLString} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';

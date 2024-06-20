@@ -1,5 +1,5 @@
 import {Directive, inject, Input, Output} from '@angular/core';
-import {tuiIfMap} from '@taiga-ui/cdk';
+import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {endWith, ignoreElements, share, Subject} from 'rxjs';
 

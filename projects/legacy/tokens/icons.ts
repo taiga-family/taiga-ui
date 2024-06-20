@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * A key/value dictionary of icon names and src to be defined with TuiSvgService

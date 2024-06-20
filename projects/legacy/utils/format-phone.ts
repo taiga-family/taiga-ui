@@ -1,4 +1,4 @@
-import {CHAR_PLUS} from '@taiga-ui/cdk';
+import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 
 /**
  * Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead!

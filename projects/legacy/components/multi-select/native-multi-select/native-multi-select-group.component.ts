@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk';
-import {tuiAsDataList} from '@taiga-ui/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiAsDataList} from '@taiga-ui/core/components/data-list';
 
 import {AbstractTuiNativeMultiSelect} from './native-multi-select';
 

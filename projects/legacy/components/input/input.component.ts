@@ -7,10 +7,16 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZone, TuiContext} from '@taiga-ui/cdk';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk';
-import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiAsDataListHost, TuiDataListDirective, TuiDropdownOpen} from '@taiga-ui/core';
+import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    TuiDataListDirective,
+} from '@taiga-ui/core/components/data-list';
+import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {

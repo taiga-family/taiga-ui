@@ -1,9 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiLet, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiStringifyContentPipe} from '@taiga-ui/kit/pipes/stringify-content';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/legacy/components/multi-select-option';
