@@ -10,15 +10,15 @@ import {
 } from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import {TuiResizeableDirective} from './resizeable.directive';
+import {TuiResizeable} from './resizeable.directive';
 
 @Directive({
     standalone: true,
     selector: '[tuiResizer]',
     host: {'[style.touchAction]': '"none"'},
 })
-export class TuiResizerDirective {
-    private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeableDirective);
+export class TuiResizer {
+    private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeable);
 
     protected x = NaN;
     protected y = NaN;
