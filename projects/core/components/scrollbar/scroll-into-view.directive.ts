@@ -12,7 +12,7 @@ import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';
     standalone: true,
     selector: '[tuiScrollIntoView]',
 })
-export class TuiScrollIntoViewDirective {
+export class TuiScrollIntoView {
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
 

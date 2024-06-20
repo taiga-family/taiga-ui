@@ -10,7 +10,7 @@ import {
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiNavigationModule} from '@taiga-ui/experimental';
+import {TuiNavigation} from '@taiga-ui/experimental';
 import {
     TuiAvatar,
     TuiBreadcrumbsComponent,
@@ -22,7 +22,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiNavigationModule,
+        TuiNavigation,
         TuiIcon,
         TuiAvatar,
         TuiBreadcrumbsComponent,

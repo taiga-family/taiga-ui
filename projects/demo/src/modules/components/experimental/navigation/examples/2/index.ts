@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiNavigationModule} from '@taiga-ui/experimental';
+import {TuiNavigation} from '@taiga-ui/experimental';
 import {
     TuiBadge,
     TuiChevron,
@@ -19,7 +19,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiNavigationModule,
+        TuiNavigation,
         TuiSwitch,
         FormsModule,
         TuiButton,
