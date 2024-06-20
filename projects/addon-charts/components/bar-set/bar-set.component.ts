@@ -1,7 +1,7 @@
 import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
-import {TuiBarComponent} from '@taiga-ui/addon-charts/components/bar';
+import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
@@ -12,12 +12,12 @@ const FILLER_ARRAY: readonly number[] = [1];
 @Component({
     standalone: true,
     selector: 'tui-bar-set',
-    imports: [NgIf, NgForOf, NgTemplateOutlet, TuiBarComponent],
+    imports: [NgIf, NgForOf, NgTemplateOutlet, TuiBar],
     templateUrl: './bar-set.template.html',
     styleUrls: ['./bar-set.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiBarSetComponent {
+export class TuiBarSet {
     @Input()
     public value: readonly number[] = [];
 

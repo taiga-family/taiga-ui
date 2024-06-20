@@ -10,7 +10,7 @@ import type {TuiSizeS} from '@taiga-ui/core/types';
     styleUrls: ['./legend-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLegendItemComponent {
+export class TuiLegendItem {
     @Input()
     public active = false;
 

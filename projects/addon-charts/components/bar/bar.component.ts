@@ -13,7 +13,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
     styleUrls: ['./bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiBarComponent {
+export class TuiBar {
     @Input()
     public value: readonly number[] = [];
 

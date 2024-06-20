@@ -2,13 +2,13 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRingChartComponent} from '@taiga-ui/addon-charts';
+import {TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiRingChartComponent, TuiAmountPipe, AsyncPipe],
+    imports: [TuiRingChart, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

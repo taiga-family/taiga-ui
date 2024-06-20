@@ -2,12 +2,12 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
+import {TuiBarSet} from '@taiga-ui/addon-charts';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiBarSetComponent, TuiFormatNumberPipe, AsyncPipe],
+    imports: [TuiBarSet, TuiFormatNumberPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

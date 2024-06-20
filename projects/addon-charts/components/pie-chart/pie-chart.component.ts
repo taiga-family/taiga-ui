@@ -48,7 +48,7 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top-right', appearance: 'dark'})],
 })
-export class TuiPieChartComponent {
+export class TuiPieChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoIdString = inject(TuiIdService).generate();
 

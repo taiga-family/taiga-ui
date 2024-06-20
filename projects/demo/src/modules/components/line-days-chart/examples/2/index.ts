@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiAxes,
-    TuiLineChartComponent,
+    TuiLineChart,
     TuiLineDaysChartComponent,
     TuiLineDaysChartHintDirective,
 } from '@taiga-ui/addon-charts';
@@ -37,7 +37,7 @@ import {map, of} from 'rxjs';
         TuiLineDaysChartHintDirective,
         TuiLineDaysChartComponent,
         TuiFilterPipe,
-        TuiLineChartComponent,
+        TuiLineChart,
         TuiMapperPipe,
     ],
     templateUrl: './index.html',

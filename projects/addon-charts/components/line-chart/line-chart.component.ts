@@ -40,7 +40,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
 })
-export class TuiLineChartComponent {
+export class TuiLineChart {
     private readonly zone = inject(NgZone);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiPieChartComponent} from '@taiga-ui/addon-charts';
+import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiRound, tuiSum} from '@taiga-ui/cdk';
@@ -12,7 +12,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, TuiLink, TuiPieChartComponent],
+    imports: [TuiDemo, TuiNotification, TuiLink, TuiPieChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
