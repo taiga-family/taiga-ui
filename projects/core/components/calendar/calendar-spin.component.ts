@@ -20,7 +20,7 @@ import {TuiMonthPipe} from '@taiga-ui/core/pipes';
     styleUrls: ['./calendar-spin.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarSpinComponent {
+export class TuiCalendarSpin {
     @Input()
     public value = TuiMonth.currentLocal();
 

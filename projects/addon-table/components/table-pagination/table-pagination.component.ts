@@ -19,7 +19,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {TuiTablePaginationOptions} from './table-pagination.options';
 import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
 
-export interface TuiTablePagination {
+export interface TuiTablePaginationEvent {
     readonly page: number;
     readonly size: number;
 }
@@ -44,7 +44,7 @@ export interface TuiTablePagination {
     styleUrls: ['./table-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTablePaginationComponent {
+export class TuiTablePagination {
     private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
     protected open = false;
@@ -66,7 +66,7 @@ export class TuiTablePaginationComponent {
     public size = this.options.size;
 
     @Output()
-    public readonly paginationChange = new EventEmitter<TuiTablePagination>();
+    public readonly paginationChange = new EventEmitter<TuiTablePaginationEvent>();
 
     public onItem(size: number): void {
         const {start} = this;
@@ -105,7 +105,7 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
-    protected get pagination(): TuiTablePagination {
+    protected get pagination(): TuiTablePaginationEvent {
         return {
             page: this.page,
             size: this.size,

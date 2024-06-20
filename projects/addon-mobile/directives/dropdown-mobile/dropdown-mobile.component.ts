@@ -20,7 +20,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-import {TuiDropdownMobileDirective} from './dropdown-mobile.directive';
+import {TuiDropdownMobile} from './dropdown-mobile.directive';
 
 const GAP = 16;
 
@@ -59,7 +59,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         this.refresh(this.doc.defaultView!.visualViewport!),
     );
 
-    protected readonly directive = inject(TuiDropdownMobileDirective);
+    protected readonly directive = inject(TuiDropdownMobile);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly animation = {
         value: '',

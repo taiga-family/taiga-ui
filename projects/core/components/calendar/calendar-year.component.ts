@@ -35,7 +35,7 @@ const ITEMS_IN_ROW = 4;
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarYearComponent {
+export class TuiCalendarYear {
     private hoveredItem: number | null = null;
     private readonly currentYear = TuiMonth.currentLocal().year;
 

@@ -1,8 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiTablePagination} from '@taiga-ui/addon-table';
-import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
+import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
+import {TuiTablePagination} from '@taiga-ui/addon-table';
 
 describe('TablePagination', () => {
     let fixture: ComponentFixture<Test>;
@@ -10,7 +10,7 @@ describe('TablePagination', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiTablePaginationComponent],
+        imports: [TuiTablePagination],
         template: `
             <tui-table-pagination
                 [page]="page"
@@ -21,13 +21,13 @@ describe('TablePagination', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiTablePaginationComponent, {static: true})
-        public component!: TuiTablePaginationComponent;
+        @ViewChild(TuiTablePagination, {static: true})
+        public component!: TuiTablePagination;
 
         public page = 3;
         public size = 10;
 
-        protected update({page, size}: TuiTablePagination): void {
+        protected update({page, size}: TuiTablePaginationEvent): void {
             this.page = page;
             this.size = size;
         }

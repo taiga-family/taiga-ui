@@ -11,7 +11,7 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiCalendarSheetComponent, TuiCalendarSheetPipe} from '@taiga-ui/core';
+import {TuiCalendarSheet, TuiCalendarSheetPipe} from '@taiga-ui/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {tuiMockCurrentDate, tuiRestoreRealDate} from '@taiga-ui/testing';
 
@@ -20,7 +20,7 @@ describe('CalendarSheet', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiCalendarSheetComponent],
+        imports: [TuiCalendarSheet],
         template: `
             <tui-calendar-sheet
                 [disabledItemHandler]="disabledItemHandler"
@@ -31,8 +31,8 @@ describe('CalendarSheet', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiCalendarSheetComponent, {static: true})
-        public component!: TuiCalendarSheetComponent;
+        @ViewChild(TuiCalendarSheet, {static: true})
+        public component!: TuiCalendarSheet;
 
         public month = new TuiMonth(2018, 1);
 
@@ -45,7 +45,7 @@ describe('CalendarSheet', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiCalendarSheetComponent;
+    let component: TuiCalendarSheet;
 
     describe('main case', () => {
         beforeEach(async () => {

@@ -2,13 +2,13 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiCalendarYearComponent} from '@taiga-ui/core';
+import {TuiCalendarYear} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiCalendarYearComponent', () => {
     @Component({
         standalone: true,
-        imports: [TuiCalendarYearComponent],
+        imports: [TuiCalendarYear],
         template: `
             <tui-calendar-year
                 [disabledItemHandler]="disabledItemHandler"
@@ -21,8 +21,8 @@ describe('TuiCalendarYearComponent', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @ViewChild(TuiCalendarYearComponent, {static: true})
-        public component!: TuiCalendarYearComponent;
+        @ViewChild(TuiCalendarYear, {static: true})
+        public component!: TuiCalendarYear;
 
         public min = 0;
         public max = TuiDay.currentLocal().year + 200;
@@ -33,7 +33,7 @@ describe('TuiCalendarYearComponent', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiCalendarYearComponent;
+    let component: TuiCalendarYear;
     let pageObject: TuiPageObject<Test>;
     const testContext = {
         get prefix() {
