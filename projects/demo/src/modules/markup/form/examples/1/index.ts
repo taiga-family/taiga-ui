@@ -7,10 +7,10 @@ import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiGroupDirective, TuiLabel} from '@taiga-ui/core';
 import {
     TuiBlock,
-    TuiCheckboxComponent,
+    TuiCheckbox,
     TuiDataListWrapper,
     TuiFieldErrorPipe,
-    TuiRadioComponent,
+    TuiRadio,
     TuiStepper,
 } from '@taiga-ui/kit';
 import {
@@ -66,10 +66,10 @@ class Account {
         TuiInputPhoneModule,
         TuiGroupDirective,
         TuiBlock,
-        TuiRadioComponent,
+        TuiRadio,
         TuiInputTimeModule,
         TuiLabel,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiButton,
         TuiAmountPipe,
     ],

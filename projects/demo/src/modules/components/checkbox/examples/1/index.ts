@@ -6,17 +6,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        NgForOf,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiCheckboxComponent,
-        TuiPlatform,
-    ],
+    imports: [NgForOf, FormsModule, ReactiveFormsModule, TuiCheckbox, TuiPlatform],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

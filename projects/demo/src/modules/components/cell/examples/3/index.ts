@@ -8,7 +8,7 @@ import {
     TuiAvatar,
     TuiAvatarStackComponent,
     TuiBadge,
-    TuiCheckboxComponent,
+    TuiCheckbox,
     TuiProgressModule,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
@@ -22,7 +22,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiBadge,
         TuiAvatar,
         TuiAvatarStackComponent,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiThumbnailCard,
         FormsModule,
         TuiTitle,

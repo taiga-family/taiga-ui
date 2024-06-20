@@ -7,7 +7,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiLabel} from '@taiga-ui/core';
-import {TuiCheckboxComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -24,7 +24,7 @@ const secretRegexTwelve = /^\d{12}$/;
         TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiButton,
     ],
     templateUrl: './index.html',

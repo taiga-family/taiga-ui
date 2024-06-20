@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {TuiCheckboxComponent, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
+import {TuiCheckbox, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -17,7 +17,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiMultiSelectModule,
         FormsModule,
         NgForOf,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         TuiSwitch,
     ],
     templateUrl: './index.html',

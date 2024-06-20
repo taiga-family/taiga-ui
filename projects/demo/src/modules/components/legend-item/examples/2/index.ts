@@ -6,14 +6,14 @@ import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga-ui/core';
-import {TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiNotification,
         TuiLegendItem,
-        TuiCheckboxComponent,
+        TuiCheckbox,
         NgForOf,
         TuiRingChart,
         TuiAmountPipe,

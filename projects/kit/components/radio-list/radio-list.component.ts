@@ -22,7 +22,7 @@ import {
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
-import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit/components/radio';
+import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -33,20 +33,19 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     selector: 'tui-radio-list',
     imports: [
         NgForOf,
+        TuiRadio,
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiRadioComponent,
-        TuiRadioDirective,
         TuiValidatorDirective,
     ],
     templateUrl: './radio-list.template.html',
     styleUrls: ['./radio-list.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsControl(TuiRadioListComponent)],
+    providers: [tuiAsControl(TuiRadioList)],
 })
-export class TuiRadioListComponent<T> extends TuiControl<T> {
+export class TuiRadioList<T> extends TuiControl<T> {
     @ViewChildren(NgControl)
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 

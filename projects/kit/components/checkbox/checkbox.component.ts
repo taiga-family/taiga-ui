@@ -44,7 +44,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
         '[style.--t-indeterminate]': 'getIcon("indeterminate")',
     },
 })
-export class TuiCheckboxComponent implements OnInit, DoCheck {
+export class TuiCheckbox implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
