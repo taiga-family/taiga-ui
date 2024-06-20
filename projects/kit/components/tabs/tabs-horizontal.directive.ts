@@ -25,13 +25,6 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 @Directive({
     standalone: true,
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
-    hostDirectives: [
-        {
-            directive: TuiTabsDirective,
-            inputs: ['activeItemIndex', 'size'],
-            outputs: ['activeItemIndexChange'],
-        },
-    ],
     providers: [
         MutationObserverService,
         {
@@ -41,6 +34,13 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
                 characterData: true,
                 subtree: true,
             },
+        },
+    ],
+    hostDirectives: [
+        {
+            directive: TuiTabsDirective,
+            inputs: ['activeItemIndex', 'size'],
+            outputs: ['activeItemIndexChange'],
         },
     ],
     host: {

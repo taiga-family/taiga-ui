@@ -45,13 +45,13 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
     ],
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
             directive: TuiCarouselDirective,
             inputs: ['duration'],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();

@@ -69,7 +69,6 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
     templateUrl: './input-tag.template.html',
     styleUrls: ['./input-tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[class._expandable]': 'expandable'},
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
         tuiAsControl(TuiInputTagComponent),
@@ -77,6 +76,7 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {'[class._expandable]': 'expandable'},
 })
 export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>

@@ -32,10 +32,10 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(INTERSECTION_ROOT, ElementRef)],
+    animations: [tuiFadeIn],
     host: {
         '[class._hide]': 'hidden',
     },
-    animations: [tuiFadeIn],
 })
 export default class PageComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})

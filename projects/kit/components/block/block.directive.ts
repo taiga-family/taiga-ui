@@ -38,11 +38,6 @@ class TuiBlockStyles {}
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
         tuiAvatarOptionsProvider({size: 's'}),
     ],
-    host: {
-        tuiBlock: '',
-        '[attr.data-size]': 'size',
-        '[class._disabled]': 'disabled',
-    },
     hostDirectives: [
         TuiNativeValidatorDirective,
         {
@@ -54,6 +49,11 @@ class TuiBlockStyles {}
             ],
         },
     ],
+    host: {
+        tuiBlock: '',
+        '[attr.data-size]': 'size',
+        '[class._disabled]': 'disabled',
+    },
 })
 export class TuiBlock {
     @ContentChild(NgControl)

@@ -7,6 +7,7 @@ import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
 @Directive({
     standalone: true,
     selector: 'input[tuiInputCVC]',
+    hostDirectives: [MaskitoDirective],
     host: {
         inputmode: 'numeric',
         '[autocomplete]': 'autocomplete ? "cc-csc" : "off"',
@@ -14,7 +15,6 @@ import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
         '[style.-webkit-text-security]': 'hidden ? "disc" : null',
         '(copy.prevent)': '(0)',
     },
-    hostDirectives: [MaskitoDirective],
 })
 export class TuiInputCVC implements OnInit, OnChanges {
     private readonly mask = inject(MaskitoDirective);

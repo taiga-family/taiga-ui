@@ -43,12 +43,12 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
     ],
     animations: [tuiDropdownAnimation],
+    hostDirectives: [TuiActiveZone],
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme',
     },
-    hostDirectives: [TuiActiveZone],
 })
 export class TuiDropdownComponent implements OnInit {
     private readonly el = tuiInjectElement();

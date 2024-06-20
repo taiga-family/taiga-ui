@@ -15,6 +15,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
     templateUrl: './select.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TuiTextfieldDirective, TuiSelectDirective)],
+    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
     host: {
         '[id]': 'el.id || id',
         '(keydown.space.prevent)': '0',
@@ -24,7 +25,6 @@ import {TuiTextfieldDirective} from './textfield.directive';
         '(keydown.control.c)': 'onCopy()',
         '(keydown.meta.c)': 'onCopy()',
     },
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
 })
 export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly nav = inject(NAVIGATOR);

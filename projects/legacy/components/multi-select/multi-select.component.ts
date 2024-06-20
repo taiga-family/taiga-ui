@@ -59,7 +59,6 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
     templateUrl: './multi-select.template.html',
     styleUrls: ['./multi-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'[class._expandable]': 'rows > 1'},
     providers: [
         tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
         tuiAsControl(TuiMultiSelectComponent),
@@ -67,6 +66,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {'[class._expandable]': 'rows > 1'},
 })
 export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>

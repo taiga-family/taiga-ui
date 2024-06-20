@@ -47,6 +47,7 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
 @Directive({
     standalone: true,
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
+    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscuredDirective,
         {
@@ -55,7 +56,6 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
             outputs: ['tuiActiveZoneChange'],
         },
     ],
-    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
 export class TuiDropdownOpen implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})

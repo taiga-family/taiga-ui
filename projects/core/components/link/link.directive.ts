@@ -30,6 +30,7 @@ class TuiLinkStyles {}
 @Directive({
     standalone: true,
     selector: 'a[tuiLink], button[tuiLink]',
+    providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
     hostDirectives: [
         {
             directive: TuiAppearance,
@@ -44,7 +45,6 @@ class TuiLinkStyles {}
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
-    providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
     host: {
         tuiLink: '',
         '[class._pseudo]': 'pseudo',

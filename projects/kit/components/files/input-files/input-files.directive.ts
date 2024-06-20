@@ -23,12 +23,6 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         tuiAsControl(TuiInputFilesDirective),
         tuiAppearanceOptionsProvider(TuiInputFilesDirective),
     ],
-    host: {
-        type: 'file',
-        '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
-        '(click)': 'onClick($event)',
-    },
     hostDirectives: [
         {
             directive: TuiAppearance,
@@ -43,6 +37,12 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
             inputs: ['accept', 'maxFileSize'],
         },
     ],
+    host: {
+        type: 'file',
+        '[disabled]': 'disabled()',
+        '(blur)': 'onTouched()',
+        '(click)': 'onClick($event)',
+    },
 })
 export class TuiInputFilesDirective
     extends TuiControl<TuiFileLike | readonly TuiFileLike[]>

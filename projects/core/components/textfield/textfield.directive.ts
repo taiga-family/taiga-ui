@@ -12,6 +12,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 @Directive({
     standalone: true,
     selector: 'input[tuiTextfield]',
+    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
     host: {
         '[id]': 'el.id || id',
         '[readOnly]': 'readOnly',
@@ -21,7 +22,6 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '(focusin)': '0',
         '(focusout)': '0',
     },
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
 })
 export class TuiTextfieldDirective implements DoCheck {
     private readonly appearance = inject(TuiAppearance);

@@ -17,6 +17,8 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
             ></option>
         </datalist>
     `,
+    styleUrls: ['./native-time.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         type: 'time',
         '[attr.list]': 'autoIdString',
@@ -27,8 +29,6 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
-    styleUrls: ['./native-time.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeTimeComponent {
     protected readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
