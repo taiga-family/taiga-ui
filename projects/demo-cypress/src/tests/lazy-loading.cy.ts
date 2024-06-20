@@ -8,7 +8,7 @@ describe('LazyLoading', () => {
             <img
                 alt="picsum"
                 loading="lazy"
-                style="--tui-background-neutral-1-hover: rgba(0, 0, 0, 0.16); width: 100px; height: 100px; display: block"
+                style="--tui-background-neutral-2: rgba(0, 0, 0, 0.16); width: 100px; height: 100px; display: block"
                 [attr.src]="src"
             />
 
