@@ -2,7 +2,7 @@ import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
-import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {marked} from 'marked';
 import type {Observable} from 'rxjs';
 import {identity, map, of, switchMap} from 'rxjs';

@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
 import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '@taiga-ui/addon-doc/types';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiDocExampleOptions {

@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Token to exclude inherited documentation properties

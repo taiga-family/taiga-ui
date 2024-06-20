@@ -23,27 +23,22 @@ import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiMatcher} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiFilterPipe,
-    tuiHexToRgb,
-    tuiQueryListChanges,
-    TuiToArrayPipe,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import {
-    TuiDropdown,
-    TuiGroupDirective,
-    TuiNotification,
-    TuiTextfield,
-} from '@taiga-ui/core';
-import {TuiBadge, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
-import {
-    TuiInputNumberModule,
-    TuiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk/observables';
+import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
+import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
+import type {TuiMatcher} from '@taiga-ui/cdk/types';
+import {tuiHexToRgb} from '@taiga-ui/cdk/utils/color';
+import {TuiGroupDirective} from '@taiga-ui/core/components/group';
+import {TuiNotification} from '@taiga-ui/core/components/notification';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiSwitch} from '@taiga-ui/kit/components/switch';
+import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
+import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {merge, switchMap} from 'rxjs';
 
 import {TuiDocDocumentationPropertyConnector} from './documentation-property-connector.directive';

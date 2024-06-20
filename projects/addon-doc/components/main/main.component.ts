@@ -8,8 +8,9 @@ import {
 import {RouterOutlet} from '@angular/router';
 import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
-import {TuiSwipeService} from '@taiga-ui/cdk';
-import {TuiButton, TuiRoot} from '@taiga-ui/core';
+import {TuiSwipeService} from '@taiga-ui/cdk/directives/swipe';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiRoot} from '@taiga-ui/core/components/root';
 
 import {TuiDocHeader} from '../internal/header';
 import {TuiDocNavigation} from '../navigation/navigation.component';

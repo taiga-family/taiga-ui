@@ -24,20 +24,21 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
-import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {TuiAutoFocus, tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
-import {
-    TUI_COMMON_ICONS,
-    TuiDataList,
-    TuiExpand,
-    TuiIcon,
-    TuiLink,
-    TuiScrollbar,
-    TuiTextfield,
-} from '@taiga-ui/core';
-import {TuiAccordion} from '@taiga-ui/kit';
-import type {TuiInputComponent} from '@taiga-ui/legacy';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiPure, tuiUniqBy} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
+import type {TuiInputComponent} from '@taiga-ui/legacy/components/input';
+import {TuiInputModule} from '@taiga-ui/legacy/components/input';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
 

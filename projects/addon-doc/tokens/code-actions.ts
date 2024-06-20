@@ -1,5 +1,5 @@
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**

@@ -1,8 +1,9 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TUI_FALSE_HANDLER, tuiPure} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 

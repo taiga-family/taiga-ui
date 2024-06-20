@@ -5,8 +5,8 @@ import {
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
