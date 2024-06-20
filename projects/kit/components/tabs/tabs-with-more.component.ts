@@ -29,10 +29,10 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {filter, map, tap} from 'rxjs';
 
-import {TuiTabDirective} from './tab.directive';
+import {TuiTab} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
-import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
+import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 
 @Component({
     standalone: true,
@@ -42,8 +42,8 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiDropdown,
-        TuiTabDirective,
-        TuiTabsHorizontalDirective,
+        TuiTab,
+        TuiTabsHorizontal,
         TuiChevron,
     ],
     templateUrl: './tabs-with-more.template.html',
@@ -51,11 +51,11 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
 })
-export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit {
-    @ViewChild(TuiTabDirective, {read: ElementRef})
+export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
+    @ViewChild(TuiTab, {read: ElementRef})
     private readonly moreButton?: ElementRef<HTMLButtonElement>;
 
-    @ViewChild(TuiTabsHorizontalDirective, {read: ElementRef})
+    @ViewChild(TuiTabsHorizontal, {read: ElementRef})
     private readonly dir?: ElementRef<HTMLButtonElement>;
 
     private readonly options = inject(TUI_TABS_OPTIONS);

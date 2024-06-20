@@ -1,6 +1,6 @@
 export * from './tab.directive';
+export * from './tabs';
 export * from './tabs.directive';
-export * from './tabs.module';
 export * from './tabs.options';
 export * from './tabs.providers';
 export * from './tabs-horizontal.directive';

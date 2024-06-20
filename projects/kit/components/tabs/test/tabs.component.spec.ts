@@ -4,16 +4,12 @@ import {Component, Input, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {
-    TuiTabDirective,
-    TuiTabsDirective,
-    TuiTabsHorizontalDirective,
-} from '@taiga-ui/kit';
+import {TuiTabs, TuiTabsDirective, TuiTabsHorizontal} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
     @Component({
         standalone: true,
-        imports: [AsyncPipe, CommonModule, TuiTabDirective, TuiTabsHorizontalDirective],
+        imports: [AsyncPipe, CommonModule, TuiTabs],
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">
                 <button
@@ -26,8 +22,8 @@ describe('Tabs', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiTabsHorizontalDirective, {static: true})
-        public tabsHorizontalDirective!: TuiTabsHorizontalDirective;
+        @ViewChild(TuiTabsHorizontal, {static: true})
+        public tabsHorizontalDirective!: TuiTabsHorizontal;
 
         @ViewChild(TuiTabsDirective, {static: true})
         public tabsDirective!: TuiTabsDirective;

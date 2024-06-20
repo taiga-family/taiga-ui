@@ -18,7 +18,7 @@ import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import {TuiTabDirective} from './tab.directive';
+import {TuiTab} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
@@ -48,12 +48,12 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
         '[style.--t-color]': "underline === true ? 'var(--tui-primary)' : underline",
     },
 })
-export class TuiTabsHorizontalDirective implements AfterViewChecked {
+export class TuiTabsHorizontal implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 
-    @ContentChildren(forwardRef(() => TuiTabDirective))
+    @ContentChildren(forwardRef(() => TuiTab))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     protected readonly sub = inject(MutationObserverService)

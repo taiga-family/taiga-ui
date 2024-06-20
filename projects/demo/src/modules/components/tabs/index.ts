@@ -2,20 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
-import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiNotification} from '@taiga-ui/core';
-import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
+import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiNotification,
-        TuiTabsWithMoreComponent,
-        TuiItem,
-        TuiTabDirective,
-    ],
+    imports: [TuiDemo, TuiNotification, TuiTabs],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
