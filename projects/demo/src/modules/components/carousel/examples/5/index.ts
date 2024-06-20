@@ -2,12 +2,11 @@ import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItem} from '@taiga-ui/cdk';
-import {TuiCarouselComponent, TuiPagination} from '@taiga-ui/kit';
+import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCarouselComponent, NgFor, TuiPagination, TuiItem],
+    imports: [TuiCarousel, NgFor, TuiPagination],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

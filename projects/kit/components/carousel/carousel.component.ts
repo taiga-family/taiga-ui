@@ -25,8 +25,8 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiCarouselDirective} from './carousel.directive';
-import {TuiCarouselAutoscrollDirective} from './carousel-autoscroll.directive';
-import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
+import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
+import {TuiCarouselScroll} from './carousel-scroll.directive';
 
 @Component({
     standalone: true,
@@ -40,8 +40,8 @@ import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
         IntersectionObserverModule,
         TuiPanDirective,
         TuiSwipe,
-        TuiCarouselScrollDirective,
-        TuiCarouselAutoscrollDirective,
+        TuiCarouselScroll,
+        TuiCarouselAutoscroll,
     ],
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],

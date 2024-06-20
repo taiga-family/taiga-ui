@@ -11,4 +11,4 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
         }),
     ],
 })
-export class TuiCarouselButtonsDirective {}
+export class TuiCarouselButtons {}

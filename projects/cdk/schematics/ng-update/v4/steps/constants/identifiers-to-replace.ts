@@ -174,10 +174,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: [
-            {name: 'TuiCarouselComponent', moduleSpecifier: '@taiga-ui/kit'},
-            {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
-        ],
+        to: {name: 'TuiCarousel', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},

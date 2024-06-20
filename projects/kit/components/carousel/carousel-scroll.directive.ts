@@ -7,7 +7,7 @@ import {filter, map, tap, throttleTime} from 'rxjs';
     standalone: true,
     selector: '[tuiCarouselScroll]',
 })
-export class TuiCarouselScrollDirective {
+export class TuiCarouselScroll {
     private readonly el = tuiInjectElement();
 
     @Output()
