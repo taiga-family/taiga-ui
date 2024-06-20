@@ -39,8 +39,6 @@ describe('ng-add', () => {
         const options: TuiSchema = {
             addSanitizer: false,
             addGlobalStyles: false,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: [],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -65,8 +63,6 @@ describe('ng-add', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -95,8 +91,6 @@ describe('ng-add', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: true,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -243,8 +237,6 @@ describe('ng-add', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
-            addDialogsModule: true,
-            addAlertModule: true,
             addons: [],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -254,13 +246,13 @@ describe('ng-add', () => {
 
         expect(tree.readContent('test/app/app.module.ts')).toBe(
             `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRoot, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
+import { TuiRoot, TUI_SANITIZER } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @NgModule({declarations: [AppComponent],
-    imports: [BrowserAnimationsModule, TuiRoot, TuiDialogModule, TuiAlertModule],
+    imports: [BrowserAnimationsModule, TuiRoot],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
 export class AppModule {}

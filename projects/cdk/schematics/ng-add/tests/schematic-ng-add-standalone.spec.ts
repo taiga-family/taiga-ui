@@ -39,8 +39,6 @@ describe('ng-add [Standalone]', () => {
         const options: TuiSchema = {
             addSanitizer: false,
             addGlobalStyles: false,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: [],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -65,8 +63,6 @@ describe('ng-add [Standalone]', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -95,8 +91,6 @@ describe('ng-add [Standalone]', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: true,
-            addDialogsModule: false,
-            addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -243,8 +237,6 @@ describe('ng-add [Standalone]', () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
-            addDialogsModule: true,
-            addAlertModule: true,
             addons: [],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -254,13 +246,13 @@ describe('ng-add [Standalone]', () => {
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(
             `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRoot, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
+import { TuiRoot, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, TuiRoot, TuiDialogModule, TuiAlertModule],
+  imports: [RouterModule, TuiRoot],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],
