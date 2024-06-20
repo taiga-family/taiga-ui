@@ -7,9 +7,9 @@ import {AbstractTuiTableFilter} from './abstract-table-filter';
 @Directive({
     standalone: true,
     selector: '[tuiGenericFilter]',
-    providers: [tuiProvide(AbstractTuiTableFilter, TuiGenericFilterDirective)],
+    providers: [tuiProvide(AbstractTuiTableFilter, TuiGenericFilter)],
 })
-export class TuiGenericFilterDirective<T, G> extends AbstractTuiTableFilter<T, G> {
+export class TuiGenericFilter<T, G> extends AbstractTuiTableFilter<T, G> {
     @Input('tuiGenericFilter')
     public filter: (item: T, value: G) => boolean = TUI_TRUE_HANDLER;
 }
