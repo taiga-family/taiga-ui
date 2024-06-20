@@ -8,6 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -56,7 +57,7 @@ export class TuiInputCopyComponent
     public successMessage = this.options.successMessage;
 
     @Input()
-    public messageDirection = this.options.messageDirection;
+    public messageDirection: TuiHintDirection = this.options.messageDirection;
 
     @Input()
     public messageAppearance = this.options.messageAppearance;

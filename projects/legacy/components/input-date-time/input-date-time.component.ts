@@ -10,6 +10,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDateMode, TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {
@@ -75,10 +76,9 @@ export class TuiInputDateTimeComponent
 
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject(
-        TUI_DATE_TIME_VALUE_TRANSFORMER,
-        {optional: true},
-    );
+    protected override readonly valueTransformer: TuiValueTransformer<
+        [TuiDay | null, TuiTime | null]
+    > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly type!: TuiContext<TuiActiveZone>;
 
