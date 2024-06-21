@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58166],{58166:r=>{r.exports=".dark {\n    width: 18.75rem;\n    padding: 0.625rem 1.25rem 1.25rem;\n    background: #454e58;\n    border-radius: 0.25rem;\n}\n\n.light {\n    padding: 0.625rem 1.25rem;\n    background: var(--tui-base-01);\n    border-radius: 0.25rem;\n    color: var(--tui-text-01);\n}\n"}}]);

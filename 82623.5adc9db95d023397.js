@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82623],{82623:e=>{e.exports=".stepper {\n    max-height: 10rem;\n    border: 1px solid var(--tui-border-normal);\n}\n"}}]);

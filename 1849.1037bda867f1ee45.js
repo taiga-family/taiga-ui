@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1849],{1849:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    display: flex;\n    align-items: center;\n}\n\n.tag {\n    .gradient(#2d96ff, #ff5011, 60deg);\n    color: #fff;\n    margin: 0.25rem;\n}\n"}}]);
