@@ -2,7 +2,6 @@ import {TuiTableCell} from './directives/cell.directive';
 import {TuiTableDirectionOrder} from './directives/direction-order.directive';
 import {TuiTableHead} from './directives/head.directive';
 import {TuiTableResized} from './directives/resized.directive';
-import {TuiTableRow} from './directives/row.directive';
 import {TuiTableSortBy} from './directives/sort-by.directive';
 import {TuiTableSortable} from './directives/sortable.directive';
 import {TuiTableDirective} from './directives/table.directive';
@@ -23,7 +22,6 @@ export const TuiTable = [
     TuiTableTr,
     TuiTableCell,
     TuiTableHead,
-    TuiTableRow,
     TuiTableSortBy,
     TuiTableSortable,
     TuiTableThead,

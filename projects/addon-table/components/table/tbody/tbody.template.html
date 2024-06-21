@@ -23,10 +23,3 @@
 <ng-container *ngIf="open">
     <ng-content />
 </ng-container>
-<ng-container *ngIf="open && row">
-    <ng-container
-        *ngFor="let item of sorted; let index = index"
-        [ngTemplateOutlet]="row.template"
-        [ngTemplateOutletContext]="item | tuiMapper: toContext : index"
-    />
-</ng-container>
