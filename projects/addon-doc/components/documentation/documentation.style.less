@@ -14,7 +14,7 @@
 
 .t-row {
     &:not(:last-child) {
-        border-bottom: 1px solid var(--tui-base-03);
+        border-bottom: 1px solid var(--tui-border-normal);
     }
 
     :host-context(tui-root._mobile) & {
@@ -56,7 +56,7 @@
 
 .t-th {
     padding: 0.5rem 1rem;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     font-weight: normal;
     text-align: left;
 
@@ -93,7 +93,7 @@
 
 .t-deprecated-label {
     margin-right: 0.125rem;
-    color: var(--tui-error-fill);
+    color: var(--tui-status-negative);
     font-size: 0.75rem;
 }
 
@@ -126,7 +126,7 @@
 
 .t-code-reference {
     display: inline-flex;
-    color: var(--tui-link);
+    color: var(--tui-text-action);
     text-decoration: none;
     align-items: center;
     justify-content: center;

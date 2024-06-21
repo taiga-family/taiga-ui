@@ -4,14 +4,14 @@
 [tuiWrapper][data-appearance='textfield'] {
     .transition(~'box-shadow, background');
 
-    background: var(--tui-base-01);
-    color: var(--tui-text-01);
+    background: var(--tui-background-base);
+    color: var(--tui-text-primary);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     &[data-appearance='textfield']:after {
         .transition(color);
 
-        color: var(--tui-base-03);
+        color: var(--tui-border-normal);
     }
 
     .wrapper-hover({
@@ -22,7 +22,7 @@
         box-shadow: none;
 
         &:after {
-            --tui-focus: var(--tui-primary);
+            --tui-border-focus: var(--tui-background-accent-1);
         }
     });
 
@@ -30,7 +30,7 @@
         box-shadow: none;
 
         &:after {
-            color: var(--tui-base-04);
+            color: var(--tui-border-normal);
         }
     });
 
@@ -40,24 +40,23 @@
 
     .wrapper-invalid({
         &:after {
-            color: var(--tui-error-fill);
-            --tui-focus: var(--tui-error-fill);
+            color: var(--tui-status-negative);
+            --tui-border-focus: var(--tui-status-negative);
         }
     });
 }
 
 [tuiWrapper][data-appearance='textfield'][tuiTheme='dark'],
 [tuiTheme='dark'] [tuiWrapper][data-appearance='textfield'] {
-    background: var(--tui-clear-inverse);
-    color: var(--tui-text-01-night);
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-primary);
 
     &:after {
-        color: var(--tui-text-03-night);
-        opacity: var(--tui-disabled-opacity);
+        color: var(--tui-border-normal);
     }
 
     .wrapper-hover({
-        background: var(--tui-clear-inverse-hover);
+        background: var(--tui-background-neutral-1-hover);
     });
 
     .wrapper-readonly({
@@ -65,18 +64,17 @@
     });
 
     .wrapper-focus({
-        background: rgba(255, 255, 255, 0.08);
+        background: transparent;
 
         &:after {
             transition: none;
-            opacity: 1;
-            --tui-focus: var(--tui-primary);
+            --tui-border-focus: var(--tui-background-accent-1);
         }
     });
 
     .wrapper-invalid({
         &:after {
-            --tui-focus: var(--tui-error-fill-night);
+            --tui-border-focus: var(--tui-status-negative);
         }
     });
 }

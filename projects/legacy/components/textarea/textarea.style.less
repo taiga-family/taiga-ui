@@ -11,7 +11,7 @@
     flex-direction: column;
     min-height: var(--tui-textarea-height);
     border-radius: var(--tui-radius-m);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
@@ -167,7 +167,7 @@
     }
 
     &__extra {
-        background-color: var(--tui-error-bg-night);
+        background-color: var(--tui-status-negative-pale-night);
     }
 }
 
@@ -193,7 +193,7 @@
     }
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
         opacity: 0;
     }
 
@@ -295,5 +295,5 @@
     pointer-events: none;
     margin-top: auto;
     text-align: right;
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
 }

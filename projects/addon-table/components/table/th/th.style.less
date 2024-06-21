@@ -9,13 +9,13 @@
     font: var(--tui-font-text-s);
     text-align: left;
     font-weight: bold;
-    color: var(--tui-text-02);
-    background: var(--tui-base-01);
+    color: var(--tui-text-secondary);
+    background: var(--tui-background-base);
     cursor: default;
     padding: 0 0.75rem;
     box-sizing: border-box;
     box-shadow: 0 0.3125rem rgba(237, 237, 237, 0);
-    border: 1px solid var(--tui-base-04);
+    border: 1px solid var(--tui-border-normal);
     // Create new viewport for fixed positioning
     filter: opacity(1);
     .safari-only({
@@ -104,7 +104,7 @@
 
 .t-sort {
     .transition(color);
-    .clearbtn();
+    .button-clear();
 
     display: inline-flex;
     flex-direction: inherit;
@@ -114,15 +114,15 @@
     cursor: pointer;
 
     &_sorted {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 
     &:focus-visible {
-        background: var(--tui-selection);
+        background: var(--tui-service-selected-text);
     }
 
     &:hover {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }
 
@@ -136,7 +136,7 @@
     width: 3px;
     justify-self: flex-end;
     border-left: 2px solid transparent;
-    background: var(--tui-support-12);
+    background: var(--tui-status-warning);
     background-clip: content-box;
     cursor: ew-resize;
     opacity: 0;

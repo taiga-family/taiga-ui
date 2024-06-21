@@ -12,11 +12,11 @@
     height: 3.9375rem;
     align-items: center;
     padding: 0 1.25rem;
-    background: var(--tui-base-01);
-    border-bottom: 1px solid var(--tui-base-03);
+    background: var(--tui-background-base);
+    border-bottom: 1px solid var(--tui-border-normal);
 
-    @supports (background: color-mix(in srgb, var(--tui-base-01), transparent 50%)) {
-        background: color-mix(in srgb, var(--tui-base-01), transparent 50%);
+    @supports (background: color-mix(in srgb, var(--tui-background-base), transparent 50%)) {
+        background: color-mix(in srgb, var(--tui-background-base), transparent 50%);
         backdrop-filter: blur(1.25rem);
     }
 }

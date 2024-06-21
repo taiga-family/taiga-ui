@@ -1,14 +1,14 @@
 @import '../../taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='icon'] {
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
 
     .appearance-hover({
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     });
 
     .appearance-active({
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     });
 }
 
@@ -20,20 +20,20 @@
     &:after {
         .transition(color);
 
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     .appearance-hover({
         &:before,
         &:after {
-            color: var(--tui-text-02);
+            color: var(--tui-text-secondary);
         }
     });
 
     .appearance-active({
         &:before,
         &:after {
-            color: var(--tui-text-01);
+            color: var(--tui-text-primary);
         }
     });
 }

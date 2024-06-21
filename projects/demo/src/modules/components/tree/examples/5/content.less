@@ -8,7 +8,7 @@
     align-items: center;
     padding: 0 0.5rem;
     border-radius: var(--tui-radius-xs);
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 
     &:before,
     &:after {
@@ -20,19 +20,19 @@
 
     &:before {
         width: 1rem;
-        border-bottom: 1px solid var(--tui-base-04);
+        border-bottom: 1px solid var(--tui-border-normal);
     }
 
     &:after {
         top: -1rem;
         bottom: 1rem;
-        border-left: 1px solid var(--tui-base-04);
+        border-left: 1px solid var(--tui-border-normal);
     }
 
     &._expandable {
         &:hover {
             cursor: pointer;
-            background: var(--tui-base-02);
+            background: var(--tui-background-base-alt);
         }
     }
 }

@@ -11,7 +11,12 @@ import {TuiCompass} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected colorVariants = ['#428bf9', 'rgb(234, 56, 24)', 'var(--tui-positive)', ''];
+    protected colorVariants = [
+        '#428bf9',
+        'rgb(234, 56, 24)',
+        'var(--tui-status-positive)',
+        '',
+    ];
 
     protected color = this.colorVariants[0];
 

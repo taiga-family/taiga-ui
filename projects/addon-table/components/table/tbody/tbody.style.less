@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    border-color: var(--tui-base-04);
+    border-color: var(--tui-border-normal);
 
     tr {
         border-color: inherit;
@@ -9,7 +9,7 @@
 }
 
 .t-expand {
-    .clearbtn;
+    .button-clear();
 
     display: flex;
     width: 100%;
@@ -22,7 +22,7 @@
     border-color: inherit;
 
     &:focus-visible .t-name {
-        background: var(--tui-selection);
+        background: var(--tui-service-selected-text);
     }
 
     &:before,
@@ -49,12 +49,12 @@
     height: var(--tui-height-m);
     font: var(--tui-font-text-s);
     padding: 0;
-    background: var(--tui-base-02);
-    border-bottom: 1px solid var(--tui-base-04);
+    background: var(--tui-background-neutral-1);
+    border-bottom: 1px solid var(--tui-border-normal);
     border-color: inherit;
 
     &:hover {
-        background: var(--tui-base-03);
+        background: var(--tui-background-neutral-1-hover);
     }
 
     :host-context(table[data-size='l']) & {

@@ -8,7 +8,7 @@ tui-data-list {
     font: var(--tui-font-text-m);
     flex-direction: column;
     padding: calc(var(--tui-data-list-padding) - var(--tui-data-list-margin)) var(--tui-data-list-padding);
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
 
     &:focus-within {
         .t-trap {
@@ -63,7 +63,7 @@ tui-opt-group {
     position: relative;
     display: flex;
     font: var(--tui-font-text-xs);
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     flex-direction: column;
     line-height: 1rem;
 
@@ -101,7 +101,7 @@ tui-opt-group {
         right: 0.5rem;
         top: var(--tui-data-list-padding);
         height: 1px;
-        background: var(--tui-base-03);
+        background: var(--tui-border-normal);
     }
 
     &:not(:empty) ~ & {
@@ -127,7 +127,7 @@ tui-opt-group {
 }
 
 [tuiOption] {
-    .clearbtn();
+    .button-clear();
     .transition(background);
 
     display: flex;
@@ -136,7 +136,7 @@ tui-opt-group {
     margin: var(--tui-data-list-margin) 0;
     justify-content: space-between;
     text-align: left;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     border-radius: var(--tui-radius-s);
     outline: none;
     cursor: pointer;
@@ -149,7 +149,7 @@ tui-opt-group {
 
     &:focus-within,
     &._with-dropdown {
-        background-color: var(--tui-clear);
+        background-color: var(--tui-background-neutral-1);
     }
 
     &:after {

@@ -1,8 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 aside[tuiNavigationAside] {
-    --tui-link: var(--tui-text-01-night);
-    --tui-link-hover: var(--tui-text-01-night);
+    --tui-text-action: var(--tui-text-primary);
+    --tui-text-action-hover: var(--tui-text-primary);
 
     position: sticky;
     top: 3rem;
@@ -12,7 +12,7 @@ aside[tuiNavigationAside] {
     padding: 0.5rem 0.5rem 0.25rem;
     box-sizing: border-box;
     background: var(--tui-theme-color, #000);
-    color: var(--tui-text-01-night);
+    color: var(--tui-text-primary);
 
     &._expanded {
         width: 13.75rem;
@@ -24,7 +24,7 @@ aside[tuiNavigationAside] {
 
     /* stylelint-disable-next-line */
     a[tuiButton].active {
-        background: var(--tui-clear-hover);
+        background: var(--tui-background-neutral-1-hover);
     }
 
     .t-nav-scrollbar {
@@ -49,7 +49,7 @@ aside[tuiNavigationAside] {
             .transition(transform);
 
             margin-left: auto;
-            color: var(--tui-text-03-night);
+            color: var(--tui-text-tertiary);
         }
     }
 
@@ -58,7 +58,7 @@ aside[tuiNavigationAside] {
     }
 
     hr {
-        background: var(--tui-clear-inverse);
+        background: var(--tui-background-neutral-1);
         height: 1px;
         margin: 0 0 0.25rem;
         border: none;
@@ -66,7 +66,7 @@ aside[tuiNavigationAside] {
 
     header {
         padding-bottom: 0.25rem;
-        box-shadow: inset 0 -1px var(--tui-clear);
+        box-shadow: inset 0 -1px var(--tui-background-neutral-1);
         margin-bottom: 1rem;
     }
 
@@ -82,8 +82,8 @@ aside[tuiNavigationAside] {
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
-    --tui-text-01: var(--tui-text-01-night);
-    --tui-clear: var(--tui-clear-inverse);
+    --tui-text-primary: #fff;
+    --tui-background-neutral-1: rgba(255, 255, 255, 0.16);
 
     border: none;
     background: #323232;

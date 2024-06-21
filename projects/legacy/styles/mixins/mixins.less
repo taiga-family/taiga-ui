@@ -1,0 +1,252 @@
+@space: 0.25rem;
+
+// clearfix
+.clearfix() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.autofill(@mode:default) {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        caret-color: var(--tui-text-primary);
+        border-radius: inherit;
+        color: inherit !important;
+        background-color: transparent !important;
+        -webkit-text-fill-color: var(--tui-text-primary) !important;
+        border-color: var(--tui-autofill);
+        -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
+    }
+}
+
+.clearinput(@mode: default) {
+    .autofill(@mode);
+
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-radius: inherit;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+    caret-color: currentColor;
+    outline: none;
+    appearance: none;
+    word-break: keep-all;
+    -webkit-text-fill-color: currentColor; // for Safari
+
+    .ios-only({
+        &:active {
+            font-size: 1rem;
+        }
+    });
+}
+
+.visually-hidden() {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(0);
+}
+
+.webkit-auto-fill-button-hidden() {
+    // hide: -webkit-caps-lock-indicator
+    content: none !important;
+
+    // hide: -webkit-strong-password-auto-fill-button
+    // because safari forcing set display as block
+    position: absolute;
+    left: -62.4375rem;
+    top: -62.4375rem;
+    z-index: -999;
+
+    // hide: -webkit-contacts-auto-fill-button
+    display: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+}
+
+// customize native scroll
+.customize-scroll() {
+    // exclude non-supporting browsers
+    @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 6.25rem;
+            background-clip: padding-box;
+            border: 0.375rem solid transparent;
+        }
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--tui-background-neutral-1-hover);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: var(--tui-background-neutral-1-pressed);
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: var(--tui-text-tertiary);
+        }
+    }
+}
+
+.inset-border(@direction: bottom, @mode: none) {
+    & when (@direction = bottom) {
+        box-shadow: inset 0 -1px var(--tui-border-normal);
+
+        & when (@mode = light) {
+            box-shadow: inset 0 -1px rgba(255, 255, 255, 0.24);
+        }
+
+        & when (@mode = dark) {
+            box-shadow: inset 0 -1px rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    & when (@direction = top) {
+        box-shadow: inset 0 1px var(--tui-border-normal);
+
+        & when (@mode = light) {
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.24);
+        }
+
+        & when (@mode = dark) {
+            box-shadow: inset 0 1px rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    & when (@direction = left) {
+        box-shadow: inset 1px 0 var(--tui-border-normal);
+
+        & when (@mode = light) {
+            box-shadow: inset 1px 0 rgba(255, 255, 255, 0.24);
+        }
+
+        & when (@mode = dark) {
+            box-shadow: inset 1px 0 rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    & when (@direction = right) {
+        box-shadow: inset -1px 0 var(--tui-border-normal);
+
+        & when (@mode = light) {
+            box-shadow: inset -1px 0 rgba(255, 255, 255, 0.24);
+        }
+
+        & when (@mode = dark) {
+            box-shadow: inset -1px 0 rgba(51, 51, 51, 0.24);
+        }
+    }
+}
+
+// dashed border
+.dashed-border(@color: currentColor, @alignment: bottom, @space: 4) {
+    @size: unit(@space, px);
+    @percentage: (100% / @space * 2);
+
+    background-image: linear-gradient(to right, @color 0%, @color @percentage, transparent @percentage);
+    background-position: 0 @alignment;
+    background-size: @size 1px;
+    background-repeat: repeat-x;
+}
+
+// typical opacity properties for icons
+.opacity-icon() {
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.hoverable-with-shadow() {
+    .transition();
+
+    box-shadow: var(--tui-shadow);
+    cursor: pointer;
+    transition-property: transform, box-shadow;
+    will-change: transform, box-shadow;
+
+    &:hover {
+        box-shadow: var(--tui-shadow-hover);
+        transform: translateY(-@space);
+    }
+}
+
+.text-overflow-with-fade(@color: var(--tui-background-base), @transparentColor: transparent, @width: 1.875rem) {
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: @width;
+        height: 100%;
+        background-image: linear-gradient(to right, @transparentColor 0%, @color 80%, @color 100%);
+        pointer-events: none;
+    }
+}
+
+//spaces
+.tui-space(@direction, @size) {
+    & when (@direction = all) {
+        margin: @space * @size;
+    }
+
+    & when (@direction = top) {
+        margin-top: @space * @size;
+    }
+
+    & when (@direction = bottom) {
+        margin-bottom: @space * @size;
+    }
+
+    & when (@direction = vertical) {
+        margin-top: @space * @size;
+        margin-bottom: @space * @size;
+    }
+
+    & when (@direction = left) {
+        margin-left: @space * @size;
+    }
+
+    & when (@direction = right) {
+        margin-right: @space * @size;
+    }
+
+    & when (@direction = horizontal) {
+        margin-right: @space * @size;
+        margin-left: @space * @size;
+    }
+}
+
+.contrast-background(@background) {
+    background: @background;
+    color: contrast(@background, #333, #fff);
+}
+
+.blurred-background(@color: #fff) {
+    background: fade(@color, 70%);
+    backdrop-filter: blur(0.4375rem);
+}

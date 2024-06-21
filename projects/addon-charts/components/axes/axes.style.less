@@ -18,7 +18,7 @@
     justify-content: space-around;
     align-items: flex-end;
     border-width: 1px;
-    border-color: var(--tui-base-03);
+    border-color: var(--tui-border-normal);
     isolation: isolate;
 }
 
@@ -45,7 +45,7 @@
     flex: 2 0 1px;
     box-sizing: border-box;
     border-width: 1px;
-    border-color: var(--tui-base-03);
+    border-color: var(--tui-border-normal);
 
     &_vertical {
         :host._centered &:first-child {
@@ -69,7 +69,7 @@
     writing-mode: tb;
     text-align: center;
     padding-left: 0.75rem;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
 
     &_primary {
         transform: rotate(180deg);
@@ -81,7 +81,7 @@
     font: var(--tui-font-text-xs);
     flex-direction: column-reverse;
     justify-content: space-between;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
 
     &_primary {
         text-align: right;
@@ -115,12 +115,12 @@
     display: flex;
     font: var(--tui-font-text-xs);
     border-right: 1px solid transparent;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
 }
 
 .t-label-x {
     height: 0.4375rem;
-    border-left: 1px solid var(--tui-base-03);
+    border-left: 1px solid var(--tui-border-normal);
     flex: 1;
     margin-bottom: 1.5625rem;
 

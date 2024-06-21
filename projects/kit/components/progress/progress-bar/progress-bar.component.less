@@ -36,7 +36,7 @@
 }
 
 :host {
-    @track-color: var(--tui-clear);
+    @track-color: var(--tui-background-neutral-1);
     @progress-color: var(--tui-progress-color, currentColor);
 
     .clearProgress();
@@ -46,7 +46,7 @@
     display: block;
     width: 100%;
     height: var(--t-height);
-    color: var(--tui-primary);
+    color: var(--tui-background-accent-1);
     background: @track-color;
     clip-path: inset(0 0.5px round var(--tui-radius-m)); // 0.5px is a hack to prevent jagged edges on low dpi screens
     overflow: hidden;

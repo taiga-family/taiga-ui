@@ -2,32 +2,37 @@
     <ng-template pageTab="Text">
         <table [colors]="text"></table>
         <table
-            [colors]="textNight"
-            [dark]="true"
+            tuiTheme="dark"
+            [colors]="text"
         ></table>
     </ng-template>
 
-    <ng-template pageTab="Status">
-        <table [colors]="status"></table>
+    <ng-template pageTab="Backgrounds">
+        <table [colors]="backgrounds"></table>
         <table
-            [colors]="statusNight"
-            [dark]="true"
+            tuiTheme="dark"
+            [colors]="backgrounds"
         ></table>
     </ng-template>
 
-    <ng-template pageTab="Base palette">
+    <ng-template pageTab="Statuses">
+        <table [colors]="statuses"></table>
         <table
-            class="base-colors"
-            [colors]="base"
-        ></table>
-        <table
-            [colors]="baseNight"
-            [dark]="true"
+            tuiTheme="dark"
+            [colors]="statuses"
         ></table>
     </ng-template>
 
-    <ng-template pageTab="Support palette">
-        <table [colors]="support"></table>
+    <ng-template pageTab="Others">
+        <table [colors]="others"></table>
+        <table
+            tuiTheme="dark"
+            [colors]="others"
+        ></table>
+    </ng-template>
+
+    <ng-template pageTab="Charts">
+        <table [colors]="charts"></table>
     </ng-template>
 
     <ng-template pageTab="Setup">

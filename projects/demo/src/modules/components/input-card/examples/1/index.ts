@@ -37,7 +37,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputCardOptionsProvider({autocomplete: true}),
-        tuiTextfieldOptionsProvider({cleaner: false}),
+        tuiTextfieldOptionsProvider({cleaner: true}),
     ],
 })
 export default class Example {

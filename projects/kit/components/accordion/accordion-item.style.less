@@ -27,7 +27,7 @@
         content: '';
         box-sizing: border-box;
         border-radius: inherit;
-        border: 1px solid var(--tui-base-04);
+        border: 1px solid var(--tui-border-normal);
         pointer-events: none;
 
         :host:not([data-borders]) & {
@@ -58,7 +58,7 @@
 }
 
 .t-header {
-    .clearbtn();
+    .button-clear();
     .transition(background);
 
     display: flex;
@@ -66,16 +66,16 @@
     font: var(--tui-font-text-l);
     align-items: center;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--tui-base-04);
+    border-bottom: 1px solid var(--tui-border-normal);
     min-height: var(--tui-height-l);
     padding: 0.75rem 1.25rem;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     cursor: pointer;
     text-align: left;
     outline: none;
 
     &:focus-visible {
-        box-shadow: inset 0 0 0 2px var(--tui-focus);
+        box-shadow: inset 0 0 0 2px var(--tui-border-focus);
     }
 
     :host:not([data-borders]) & {
@@ -87,7 +87,7 @@
     }
 
     :host-context([tuiTheme='dark']) &_open {
-        background: var(--tui-clear-inverse);
+        background: var(--tui-background-neutral-1);
     }
 
     :host[data-size='s'] & {
@@ -107,7 +107,7 @@
 
     &_hoverable {
         .t-wrapper:hover > & {
-            background: var(--tui-base-02);
+            background: var(--tui-background-base-alt);
         }
     }
 }
@@ -127,10 +127,10 @@
     .transition(color);
 
     margin-left: auto;
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
 
     :host:hover & {
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     }
 }
 

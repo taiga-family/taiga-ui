@@ -3,50 +3,50 @@
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='outline'] {
     background: transparent;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 
     &:after {
-        color: var(--tui-base-04);
+        color: var(--tui-border-normal);
     }
 
     [tuiTheme='dark'] &,
     &[tuiTheme='dark'] {
-        color: var(--tui-text-01-night);
+        color: var(--tui-text-primary);
 
         &:after {
-            color: var(--tui-text-01-night);
+            color: var(--tui-text-primary);
         }
 
         .wrapper-hover({
-            background: var(--tui-clear-inverse-hover);
+            background: var(--tui-background-neutral-1-hover);
 
             &:after {
-                color: var(--tui-text-03-night);
+                color: var(--tui-text-tertiary);
             }
         });
 
         .wrapper-active({
-            background: var(--tui-clear-inverse-active);
+            background: var(--tui-background-neutral-1-pressed);
 
             &:after {
-                color: var(--tui-text-03-night);
+                color: var(--tui-text-tertiary);
             }
         });
 
         .wrapper-focus({
-            --tui-focus: var(--tui-text-01-night);
+            --tui-border-focus: var(--tui-text-primary);
         });
     }
 
     .wrapper-hover({
         &:after {
-            color: var(--tui-base-05);
+            color: var(--tui-border-hover);
         }
     });
 
     .wrapper-active({
         &:after {
-            color: var(--tui-base-06);
+            color: var(--tui-border-hover);
         }
     });
 }

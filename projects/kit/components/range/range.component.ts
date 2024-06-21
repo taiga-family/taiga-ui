@@ -6,6 +6,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
+    inject,
     Input,
     signal,
     ViewChildren,
@@ -20,6 +21,7 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
+    TUI_SLIDER_OPTIONS,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
     TuiSlider,
@@ -47,6 +49,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
         '[attr.aria-disabled]': 'disabled()',
         '[style.--left.%]': 'left()',
         '[style.--right.%]': 'right()',
+        '[style.background]': 'options.trackColor',
         '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
     },
@@ -56,6 +59,7 @@ export class TuiRangeComponent extends TuiControl<[number, number]> implements O
     private readonly changes = signal(1);
     private readonly el = tuiInjectElement();
 
+    protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected lastActiveThumb: 'left' | 'right' = 'right';
 
     @Input()
@@ -69,7 +73,7 @@ export class TuiRangeComponent extends TuiControl<[number, number]> implements O
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeS = 'm';
+    public size: TuiSizeS = this.options.size;
 
     @Input()
     public segments = 1;

@@ -19,9 +19,9 @@ export default class Page {
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     protected readonly colorVariants: readonly string[] = [
-        'var(--tui-support-04)',
-        'var(--tui-primary)',
-        'var(--tui-secondary)',
+        'var(--tui-chart-categorical-04)',
+        'var(--tui-background-accent-1)',
+        'var(--tui-background-neutral-1)',
     ];
 
     protected size = this.sizeVariants[0];

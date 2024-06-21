@@ -7,14 +7,14 @@ tui-dropdown-mobile:not(._sheet) {
 
     visibility: visible !important;
     transform: translate3d(0, 0, 0);
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
     overscroll-behavior: contain;
     overflow: auto;
     box-shadow:
-        0 -0.5rem 0.5rem var(--tui-base-01),
-        0 10rem var(--tui-base-01),
-        0 20rem var(--tui-base-01),
-        0 30rem var(--tui-base-01);
+        0 -0.5rem 0.5rem var(--tui-background-base),
+        0 10rem var(--tui-background-base),
+        0 20rem var(--tui-background-base),
+        0 30rem var(--tui-background-base);
 
     &:after {
         content: '';
@@ -68,7 +68,7 @@ tui-dropdown-mobile._sheet {
         padding: 0 0.5rem;
         scroll-snap-stop: always;
         scroll-snap-align: start;
-        background: var(--tui-elevation-01);
+        background: var(--tui-background-elevation-1);
 
         > .t-heading {
             position: relative;
@@ -84,7 +84,7 @@ tui-dropdown-mobile._sheet {
                 width: 2rem;
                 height: 0.25rem;
                 border-radius: 1rem;
-                background: var(--tui-clear-hover);
+                background: var(--tui-background-neutral-2);
                 transform: translate(-50%, -50%);
             }
         }

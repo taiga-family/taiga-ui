@@ -35,8 +35,4 @@ export default class Example {
     protected onHover(index: number, hovered: boolean): void {
         this.activeItemIndex = hovered ? index : 0;
     }
-
-    protected getColor(index: number): string {
-        return `var(--tui-chart-${index})`;
-    }
 }

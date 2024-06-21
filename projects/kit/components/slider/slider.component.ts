@@ -28,19 +28,20 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          * For change detection.
          * Webkit does not have built-in method for customization of filling progress (as Firefox).
          * We draw filling of progress by `background: linear-gradient(...)` of the track.
-         * This function triggers change detection (for {@link valuePercentage} function) when we drag thumb of the input.
+         * This function triggers change detection (for {@link valueRatio} getter) when we drag thumb of the input.
          */
         '(input)': '0',
-        '[style.--tui-slider-track-color]': 'trackColor',
+        '[style.--tui-slider-track-color]': 'options.trackColor',
+        '[attr.data-size]': 'size',
     },
 })
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
-    private readonly options = inject(TUI_SLIDER_OPTIONS);
+
+    protected readonly options = inject(TUI_SLIDER_OPTIONS);
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeS = this.options.size;
 
     @Input()
@@ -66,15 +67,6 @@ export class TuiSliderComponent {
     @HostBinding('style.--tui-slider-fill-ratio')
     public get valueRatio(): number {
         return (this.value - this.min) / (this.max - this.min) || 0;
-    }
-
-    @HostBinding('style.--tui-slider-fill-percentage.%')
-    public get valuePercentage(): number {
-        return 100 * this.valueRatio;
-    }
-
-    public get trackColor(): string {
-        return this.options.trackColor;
     }
 
     public get min(): number {

@@ -1,4 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/legacy/styles/taiga-ui-local';
 
 :host {
     display: block;
@@ -17,7 +18,7 @@
     position: relative;
     margin: 0;
     white-space: normal;
-    outline: 1px solid var(--tui-base-03);
+    outline: 1px solid var(--tui-border-normal);
 
     ::ng-deep .hljs-ln {
         width: max-content;
@@ -40,7 +41,7 @@
     :host-context(tui-root._mobile) & {
         padding: 0.3125rem;
         border-radius: 0.25rem;
-        border: 1px solid var(--tui-base-04);
+        border: 1px solid var(--tui-border-normal);
     }
 }
 
@@ -66,9 +67,9 @@
 
 .t-code-actions,
 .hljs:not(:empty) {
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 
-    @supports (background: color-mix(in srgb, var(--tui-base-01), #222 2%)) {
-        background: color-mix(in srgb, var(--tui-base-01), #222 2%);
+    @supports (background: color-mix(in srgb, var(--tui-background-base), #222 2%)) {
+        background: color-mix(in srgb, var(--tui-background-base), #222 2%);
     }
 }

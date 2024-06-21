@@ -1,15 +1,15 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@accent: var(--tui-link);
-@secondary: var(--tui-text-02);
-@border: var(--tui-base-03);
-@background: var(--tui-base-01);
+@accent: var(--tui-text-action);
+@secondary: var(--tui-text-secondary);
+@border: var(--tui-border-normal);
+@background: var(--tui-background-base);
 
 :host {
     display: block;
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .t-year {
-    .clearbtn();
+    .button-clear();
 
     outline: none;
     // TODO: investigate problem in mobile calendar

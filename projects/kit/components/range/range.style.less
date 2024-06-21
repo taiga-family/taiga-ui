@@ -11,7 +11,7 @@
     display: block;
     height: @track-height;
     border-radius: var(--tui-radius-m);
-    background: var(--tui-base-03);
+    background: var(--tui-border-normal);
     cursor: pointer;
     outline: none;
     margin: @extra-click-area-space 0;
@@ -48,7 +48,7 @@
         left: var(--left);
         right: var(--right);
         height: 100%;
-        background: var(--tui-primary);
+        background: var(--tui-background-accent-1);
         margin: 0 calc(-@thumb-width / 2 - @thumb-shift);
     }
 
@@ -61,7 +61,7 @@
         right: ((@thumb-width + @tick-thickness) / 2);
         background-image: repeating-linear-gradient(
             to right,
-            var(--tui-base-06) 0 @tick-thickness,
+            var(--tui-text-tertiary) 0 @tick-thickness,
             transparent 0 calc(var(--segment-width) / var(--bg-size-ratio))
         );
         background-position-x: right;

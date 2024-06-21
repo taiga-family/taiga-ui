@@ -54,10 +54,6 @@ export default class Example {
         return this.setNames[index];
     }
 
-    protected getBackground(index: number): string {
-        return `var(--tui-chart-${index})`;
-    }
-
     @tuiPure
     private getMax(value: ReadonlyArray<[number, number, number, number]>): number {
         return tuiCeil(

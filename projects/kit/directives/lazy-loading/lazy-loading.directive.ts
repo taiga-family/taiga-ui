@@ -19,7 +19,7 @@ export class TuiImgLazyLoading {
     protected animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
 
     @HostBinding('style.background')
-    protected background = 'var(--tui-clear-hover)';
+    protected background = 'var(--tui-background-neutral-2)';
 
     @HostBinding('attr.src')
     protected src: SafeResourceUrl | string | null = null;

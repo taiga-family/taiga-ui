@@ -1,31 +1,20 @@
 @import '../../taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='opposite'] {
-    --tui-focus: rgba(255, 255, 255, 0.64);
+    --tui-border-focus: rgba(255, 255, 255, 0.64);
 
-    background: #000;
-    color: #fff;
+    background: var(--tui-background-accent-opposite);
+    color: var(--tui-background-base);
 
     .appearance-hover({
-        background: #333;
+        background: var(--tui-background-accent-opposite-hover);
     });
 
     .appearance-active({
-        background: #5c636b;
+        background: var(--tui-background-accent-opposite-pressed);
     });
 
     [tuiTheme='dark'] & {
-        --tui-focus: rgba(51, 51, 51, 0.48);
-
-        color: rgba(0, 0, 0, 0.8);
-        background: #fff;
-
-        .appearance-hover({
-            background: #f3F4f6;
-        });
-
-        .appearance-active({
-            background: #eaecee;
-        });
+        --tui-border-focus: rgba(51, 51, 51, 0.48);
     }
 }

@@ -15,7 +15,7 @@
             *ngFor="let label of labels; let index = index"
             #item
             class="item"
-            [color]="getColor(index)"
+            [color]="'var(--tui-chart-categorical-0' + index + ')'"
             [disabled]="!isEnabled(index)"
             [text]="label"
             (click)="onClick(index)"

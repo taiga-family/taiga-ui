@@ -13,15 +13,15 @@
         outline: none;
 
         &:not(&_hover_disabled):hover {
-            background: var(--tui-base-02);
+            background: var(--tui-background-base-alt);
         }
 
         &:not(&_border_none) {
-            border-bottom: 1px solid var(--tui-base-03);
+            border-bottom: 1px solid var(--tui-border-normal);
         }
 
         &_border_top {
-            border-top: 1px solid var(--tui-base-03);
+            border-top: 1px solid var(--tui-border-normal);
         }
 
         &_cursor_pointer {
@@ -36,7 +36,7 @@
         padding: 0.5rem 1rem;
         vertical-align: middle;
         height: 2.5rem;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
         background: inherit;
 
         &_font-size_l,
@@ -51,7 +51,7 @@
         vertical-align: top;
         word-wrap: break-word;
         height: 3.4375rem;
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
         background: inherit;
 
         &_size_l,
@@ -134,11 +134,11 @@
     &__subtext {
         font: var(--tui-font-text-s);
         margin: @space 0 0 0;
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     &__sort {
-        .clearbtn();
+        .button-clear();
         .transition(color);
 
         position: relative;
@@ -148,14 +148,14 @@
         cursor: pointer;
 
         &:hover {
-            color: var(--tui-text-01);
+            color: var(--tui-text-primary);
         }
 
         &_active {
-            color: var(--tui-link);
+            color: var(--tui-text-action);
 
             &:hover {
-                color: var(--tui-link-hover);
+                color: var(--tui-text-action-hover);
             }
         }
     }

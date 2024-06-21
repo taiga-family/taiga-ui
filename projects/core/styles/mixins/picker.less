@@ -66,20 +66,20 @@
             height: 0.125rem;
             width: 0.75rem;
             border-radius: 0.375rem;
-            background: var(--tui-text-01);
+            background: var(--tui-text-primary);
         }
 
         &_interval {
             &:before {
-                background: var(--tui-base-02);
+                background: var(--tui-background-base-alt);
 
                 :host._single & {
-                    background: var(--tui-secondary-hover);
+                    background: var(--tui-background-neutral-1-hover);
                 }
             }
 
             &:not(:last-child):before {
-                right: -0.25rem;
+                right: -0.1875rem;
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
@@ -110,35 +110,35 @@
 
         &[data-range] {
             &:after {
-                background: var(--tui-primary-text);
+                background: var(--tui-text-primary-on-accent-1);
             }
 
             & > .t-item {
-                color: var(--tui-primary-text);
+                color: var(--tui-text-primary-on-accent-1);
 
                 &:before,
                 &:after {
-                    background: var(--tui-primary);
+                    background: var(--tui-background-accent-1);
                 }
             }
 
             &:hover > .t-item:before,
             &:hover > .t-item:after {
-                background: var(--tui-primary-hover);
+                background: var(--tui-background-accent-1-hover);
             }
 
             &:active > .t-item:before,
             &:active > .t-item:after {
-                background: var(--tui-primary-active);
+                background: var(--tui-background-accent-1-pressed);
             }
         }
 
         &[data-range='end'] {
             &:before {
-                background: var(--tui-base-02);
+                background: var(--tui-background-base-alt);
 
                 :host._single & {
-                    background: var(--tui-secondary-hover);
+                    background: var(--tui-background-neutral-1-hover);
                 }
             }
 
@@ -189,11 +189,11 @@
         }
 
         &:hover:not([data-range]) > .t-item {
-            background: var(--tui-secondary-hover);
+            background: var(--tui-background-neutral-1-hover);
         }
 
         &:active:not([data-range]) > .t-item {
-            background: var(--tui-secondary-active);
+            background: var(--tui-background-neutral-1-pressed);
         }
     }
 }

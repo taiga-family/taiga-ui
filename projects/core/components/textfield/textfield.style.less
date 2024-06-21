@@ -12,7 +12,7 @@
     pointer-events: none;
     cursor: pointer;
     height: var(--t-height);
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
@@ -41,8 +41,7 @@
             font-size: 1rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
 
@@ -76,8 +75,7 @@
             margin-inline-end: -0.125rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
     }
@@ -105,14 +103,13 @@
             margin-inline-start: 0.25rem;
         }
 
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             font: var(--tui-font-text-m);
         }
     }
 
     &:hover {
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     }
 
     &:before {
@@ -127,8 +124,7 @@
 
     &._with-label {
         .t-template,
-        ::ng-deep input,
-        ::ng-deep select {
+        ::ng-deep [tuiTextfield] {
             padding-top: calc(var(--t-height) / 3);
 
             &::placeholder,
@@ -139,8 +135,7 @@
     }
 
     .t-template,
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         .fullsize();
 
         appearance: none;
@@ -152,10 +147,10 @@
         padding: inherit;
     }
 
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         pointer-events: auto;
-        background: padding-box transparent no-repeat center right 1rem / 2rem;
+        background: transparent no-repeat center right 1rem / 2rem;
+        background-clip: border-box, padding-box;
 
         &:read-only ~ .t-filler {
             display: none;
@@ -180,7 +175,7 @@
 
             &:not(:disabled)[data-mode='invalid'] ~ label,
             &:invalid:not(:disabled):not([data-mode]) ~ label {
-                color: var(--tui-negative);
+                color: var(--tui-status-negative);
             }
 
             &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
@@ -192,11 +187,11 @@
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    color: var(--tui-text-03);
+                    color: var(--tui-text-tertiary);
                 }
 
                 & ~ label {
-                    color: var(--tui-text-01) !important;
+                    color: var(--tui-text-primary) !important;
                     font-size: 0.83em;
                     transform: translateY(-0.7em);
                 }
@@ -217,15 +212,14 @@
     ::ng-deep label,
     ::ng-deep input::placeholder,
     ::ng-deep select._empty {
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     }
 
     ::ng-deep select:not([data-mode='readonly']) {
         cursor: pointer;
     }
 
-    ::ng-deep input,
-    ::ng-deep select {
+    ::ng-deep [tuiTextfield] {
         .ios-only({
             &:active {
                 font-size: 1rem;
@@ -254,6 +248,6 @@
 .t-filler {
     pointer-events: none;
     background: none;
-    color: var(--tui-text-03);
+    color: var(--tui-text-tertiary);
     opacity: 1;
 }

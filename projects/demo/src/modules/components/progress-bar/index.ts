@@ -28,11 +28,11 @@ export default class Page {
     protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2];
 
     protected readonly colorVariants: readonly string[] = [
-        'var(--tui-primary)',
+        'var(--tui-background-accent-1)',
         'lightskyblue',
         '#3682db',
         'rgba(74, 201, 155, 1)',
-        'linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))',
+        'linear-gradient(to right, var(--tui-chart-categorical-02), var(--tui-chart-categorical-14), var(--tui-chart-categorical-12))',
     ];
 
     protected color = this.colorVariants[0];

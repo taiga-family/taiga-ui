@@ -5,7 +5,7 @@ tui-segmented {
     display: flex;
     box-sizing: border-box;
     isolation: isolate;
-    color: var(--tui-clear);
+    color: var(--tui-background-neutral-1);
     border: 0.125rem solid transparent;
 
     &[data-size='s'] {
@@ -54,7 +54,7 @@ tui-segmented {
     & > label,
     & > label > input:not([tuiRadio]) {
         .transition(color);
-        .clearbtn();
+        .button-clear();
 
         position: relative;
         display: flex;
@@ -64,7 +64,7 @@ tui-segmented {
         gap: var(--t-gap);
         margin: 0;
         padding: 0 var(--t-padding);
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
         overflow: hidden;
         cursor: pointer;
         font: inherit;
@@ -77,7 +77,7 @@ tui-segmented {
         }
 
         &:focus-visible {
-            outline: 0.125rem solid var(--tui-focus);
+            outline: 0.125rem solid var(--tui-border-focus);
             outline-offset: -0.125rem;
         }
     }
@@ -106,7 +106,7 @@ tui-segmented {
         width: var(--t-width);
         border-radius: inherit;
         background: currentColor;
-        color: var(--tui-base-01);
+        color: var(--tui-background-base);
         box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.1);
     }
 }

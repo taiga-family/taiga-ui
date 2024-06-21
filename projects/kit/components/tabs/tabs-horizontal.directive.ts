@@ -45,7 +45,8 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     ],
     host: {
         '[class._underline]': 'underline',
-        '[style.--t-color]': "underline === true ? 'var(--tui-primary)' : underline",
+        '[style.--t-color]':
+            "underline === true ? 'var(--tui-background-accent-1)' : underline",
     },
 })
 export class TuiTabsHorizontal implements AfterViewChecked {

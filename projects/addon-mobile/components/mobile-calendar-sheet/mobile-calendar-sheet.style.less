@@ -1,8 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 @itemSize: 2.75rem;
-@accent: var(--tui-link);
-@faded: var(--tui-base-02);
+@accent: var(--tui-text-action);
+@faded: var(--tui-background-base-alt);
 
 .picker(@itemSize);
 
@@ -80,11 +80,11 @@
     &[data-range='end'] {
         border-radius: 100%;
         background-color: @accent;
-        color: var(--tui-accent-text);
+        color: var(--tui-text-primary-on-accent-2);
         font-weight: 500;
 
         &:after {
-            background-color: var(--tui-base-01);
+            background-color: var(--tui-background-base);
         }
 
         :host._ios & {
@@ -100,7 +100,7 @@
 
     &[data-range='end']:not(:first-child):before {
         left: 50%;
-        background: var(--tui-base-01);
+        background: var(--tui-background-base);
         border-radius: 0;
     }
 

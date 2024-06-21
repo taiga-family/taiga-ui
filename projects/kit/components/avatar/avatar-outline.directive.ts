@@ -35,7 +35,7 @@ export class TuiAvatarOutlineDirective {
 
     protected get value(): string | null {
         return this.tuiAvatarOutline === ''
-            ? 'var(--tui-primary)'
+            ? 'var(--tui-background-accent-1)'
             : this.tuiAvatarOutline;
     }
 }

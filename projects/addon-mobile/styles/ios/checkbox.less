@@ -3,8 +3,8 @@ input[tuiRadio] {
     --t-size: 1.375rem;
 
     border-radius: 100%;
-    color: var(--tui-base-01);
-    outline: 1px solid var(--tui-base-04);
+    color: var(--tui-background-base);
+    outline: 1px solid var(--tui-background-neutral-2);
     outline-offset: -1px;
     transition: none;
     box-shadow: none !important;
@@ -12,12 +12,12 @@ input[tuiRadio] {
 
     &:checked,
     &:not([tuiRadio]):indeterminate {
-        --t-background: var(--tui-accent);
+        --t-background: var(--tui-background-accent-2);
 
         outline: none;
 
         &:disabled:not(._readonly) {
-            --t-background: var(--tui-base-04);
+            --t-background: var(--tui-background-neutral-2);
         }
 
         &:before {
@@ -27,7 +27,7 @@ input[tuiRadio] {
         }
 
         &:invalid {
-            --t-background: var(--tui-error-fill);
+            --t-background: var(--tui-status-negative);
         }
     }
 
@@ -42,6 +42,6 @@ input[tuiRadio] {
     }
 
     &:invalid {
-        outline-color: var(--tui-error-bg-hover);
+        outline-color: var(--tui-status-negative-pale-hover);
     }
 }

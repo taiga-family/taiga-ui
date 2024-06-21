@@ -12,7 +12,7 @@
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     overscroll-behavior: none;
-    box-shadow: 0 20rem var(--tui-elevation-01);
+    box-shadow: 0 20rem var(--tui-background-elevation-1);
 
     &._closeable {
         display: block;
@@ -42,7 +42,7 @@
     border-radius: 0.75rem 0.75rem 0 0;
     padding: 0 1rem;
     margin-top: auto;
-    background: var(--tui-elevation-01);
+    background: var(--tui-background-elevation-1);
     box-sizing: border-box;
     scroll-snap-stop: always;
     scroll-snap-align: start;
@@ -59,7 +59,7 @@
     top: 0;
     z-index: 1;
     height: 1.5rem;
-    background: var(--tui-elevation-01);
+    background: var(--tui-background-elevation-1);
 
     &:after {
         content: '';
@@ -69,8 +69,7 @@
         width: 2rem;
         height: 0.25rem;
         transform: translateX(-50%);
-        background: var(--tui-base-09);
-        opacity: 0.3;
+        background: var(--tui-background-neutral-2);
         border-radius: 1rem;
     }
 }
@@ -83,7 +82,7 @@
     margin: 0;
     padding-bottom: 1rem;
     font: var(--tui-font-heading-6);
-    background: var(--tui-elevation-01);
+    background: var(--tui-background-elevation-1);
 
     &:last-child {
         margin-bottom: -0.75rem;
@@ -96,7 +95,7 @@
         left: 0;
         right: 0;
         height: 1px;
-        background: var(--tui-base-03);
+        background: var(--tui-border-normal);
         opacity: 0;
     }
 
@@ -124,5 +123,5 @@
     height: 1rem;
     scroll-snap-stop: always;
     scroll-snap-align: end;
-    background: var(--tui-elevation-01);
+    background: var(--tui-background-elevation-1);
 }

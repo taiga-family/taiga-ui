@@ -2,47 +2,47 @@
 
 [tuiAppearance][data-appearance='outline'],
 [tuiAppearance][data-appearance='whiteblock'] {
-    --t-bs: var(--tui-base-04);
+    --t-bs: var(--tui-border-normal);
 
-    color: var(--tui-link);
+    color: var(--tui-text-action);
     box-shadow: inset 0 0 0 1px var(--t-bs);
 
     &:checked,
     &[data-mode='checked'] {
-        --t-bs: var(--tui-primary);
+        --t-bs: var(--tui-background-accent-1);
 
         box-shadow: inset 0 0 0 2px var(--t-bs);
 
         .appearance-hover({
-            --t-bs: var(--tui-primary-hover);
+            --t-bs: var(--tui-background-accent-1-hover);
         });
 
         .appearance-active({
-            --t-bs: var(--tui-primary-active);
+            --t-bs: var(--tui-background-accent-1-pressed);
         });
     }
 
     &:invalid {
-        box-shadow: inset 0 0 0 1px var(--tui-error-bg-hover);
+        box-shadow: inset 0 0 0 1px var(--tui-status-negative-pale-hover);
     }
 
     &:checked:invalid,
     &[data-mode='checked']:invalid {
-        box-shadow: inset 0 0 0 2px var(--tui-error-fill);
+        box-shadow: inset 0 0 0 2px var(--tui-status-negative);
     }
 
     .appearance-hover({
-        background: var(--tui-clear);
+        background: var(--tui-background-neutral-1);
         cursor: pointer;
-        --t-bs: var(--tui-base-05);
+        --t-bs: var(--tui-border-hover);
     });
 
     .appearance-active({
-        background: var(--tui-clear);
-        --t-bs: var(--tui-base-06);
+        background: var(--tui-background-neutral-1);
+        --t-bs: var(--tui-border-hover);
     });
 }
 
 [tuiAppearance][data-appearance='whiteblock'] {
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 }

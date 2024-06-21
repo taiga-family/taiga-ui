@@ -1,11 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    --tui-chart-0: #c779d0;
-    --tui-chart-1: #feac5e;
-    --tui-chart-2: #ff5f6d;
-    --tui-chart-3: #4bc0c8;
-    --tui-chart-4: #9795cd;
+    --tui-chart-categorical-00: #c779d0;
+    --tui-chart-categorical-01: #feac5e;
+    --tui-chart-categorical-02: #ff5f6d;
+    --tui-chart-categorical-03: #4bc0c8;
+    --tui-chart-categorical-04: #9795cd;
 }
 
 .chart {
@@ -26,14 +26,14 @@
     .transition(~'transform, color');
     margin-left: 0.25rem;
     will-change: transform;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     pointer-events: auto;
     border: 0.25rem solid transparent;
     width: 1.5rem;
     height: 1.5rem;
 
     &:hover {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 
     &_rotated {

@@ -2,7 +2,7 @@
 
 [tuiTab] {
     .transition(~'color, box-shadow, opacity, background');
-    .clearbtn();
+    .button-clear();
 
     position: relative;
     display: flex;
@@ -31,18 +31,18 @@
     }
 
     &._active {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
         box-shadow: none;
     }
 
     &:focus-visible {
-        outline: 2px solid var(--tui-focus);
+        outline: 2px solid var(--tui-border-focus);
         outline-offset: -2px;
     }
 
     tui-tabs._underline &:hover:not(._active),
     [tuiTabs]._underline &:hover:not(._active) {
-        box-shadow: inset 0 -2px var(--tui-base-03);
+        box-shadow: inset 0 -2px var(--tui-border-normal);
     }
 
     tui-tabs > &:first-child,
@@ -72,7 +72,7 @@
 
     @media (hover: hover) {
         &:hover {
-            color: var(--tui-text-01);
+            color: var(--tui-text-primary);
         }
     }
 }
@@ -84,8 +84,8 @@ tui-tabs {
     position: relative;
     display: flex;
     font: var(--tui-font-text-m);
-    color: var(--tui-text-02);
-    box-shadow: inset 0 -1px var(--tui-base-03);
+    color: var(--tui-text-secondary);
+    box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: auto;
     isolation: isolate;
 
@@ -117,7 +117,7 @@ tui-tabs {
 tui-tabs[data-vertical],
 [tuiTabs][data-vertical] {
     flex-direction: column;
-    box-shadow: inset -1px 0 var(--tui-base-03);
+    box-shadow: inset -1px 0 var(--tui-border-normal);
 
     [tuiTab] {
         min-height: 2.75rem;
@@ -136,13 +136,13 @@ tui-tabs[data-vertical],
             bottom: 0;
             right: 0;
             width: 2px;
-            background: var(--tui-primary);
+            background: var(--tui-background-accent-1);
             transform: scaleX(0);
             transform-origin: right;
         }
 
         &:hover {
-            box-shadow: inset -2px 0 var(--tui-base-03);
+            box-shadow: inset -2px 0 var(--tui-border-normal);
         }
 
         &._active:after {
@@ -156,7 +156,7 @@ tui-tabs[data-vertical],
     }
 
     &[data-vertical='right'] {
-        box-shadow: inset 1px 0 var(--tui-base-03);
+        box-shadow: inset 1px 0 var(--tui-border-normal);
 
         [tuiTab] {
             text-align: right;
@@ -169,7 +169,7 @@ tui-tabs[data-vertical],
             }
 
             &:hover {
-                box-shadow: inset 2px 0 var(--tui-base-03);
+                box-shadow: inset 2px 0 var(--tui-border-normal);
             }
         }
     }

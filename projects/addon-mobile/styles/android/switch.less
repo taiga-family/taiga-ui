@@ -3,7 +3,7 @@ input[tuiSwitch] {
 
     height: 1.25rem;
     width: 2.5rem;
-    color: var(--tui-base-05);
+    color: var(--tui-border-hover);
     background: transparent !important;
     overflow: visible;
 
@@ -32,7 +32,7 @@ input[tuiSwitch] {
         width: 1.25rem;
         height: 1.25rem;
         border-radius: 100%;
-        background: #ececec;
+        background: #f6f6f6;
         transform: none;
         box-shadow:
             0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.24),
@@ -41,7 +41,7 @@ input[tuiSwitch] {
     }
 
     &:checked {
-        color: var(--tui-accent);
+        color: var(--tui-background-accent-2);
         background: transparent;
 
         &:after {
@@ -51,7 +51,7 @@ input[tuiSwitch] {
     }
 
     &:invalid {
-        color: var(--tui-error-fill);
+        color: var(--tui-status-negative);
 
         &:not(:checked) {
             background: transparent;
@@ -59,7 +59,7 @@ input[tuiSwitch] {
         }
 
         &:after {
-            background: var(--tui-error-fill);
+            background: var(--tui-status-negative);
         }
     }
 }

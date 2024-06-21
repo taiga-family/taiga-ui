@@ -28,8 +28,8 @@ export class TuiLegendItem {
     @HostBinding('class._disabled')
     public disabled = false;
 
-    @HostBinding('style.--tui-primary')
+    @HostBinding('style.--tui-background-accent-1')
     protected get computedColor(): string | null {
-        return this.color === 'var(--tui-primary)' ? null : this.color;
+        return this.color === 'var(--tui-background-accent-1)' ? null : this.color;
     }
 }

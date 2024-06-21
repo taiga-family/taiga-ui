@@ -2,30 +2,18 @@
 
 :host {
     width: 100%;
-
-    &._dark {
-        background: #333;
-        color: var(--tui-text-01-night);
-
-        tr:not(:first-child) {
-            border-top: 1px solid var(--tui-base-06);
-        }
-
-        td:last-child {
-            color: var(--tui-text-02-night);
-            padding-right: 0;
-        }
-    }
+    color: var(--tui-text-primary);
+    background: var(--tui-background-base);
 
     tr:not(:first-child) {
-        border-top: 1px solid var(--tui-base-03);
+        border-top: 1px solid var(--tui-border-normal);
     }
 
     td {
         padding: 1.5rem;
 
         &:last-child {
-            color: var(--tui-text-02);
+            color: var(--tui-text-secondary);
             padding-right: 0;
         }
     }
@@ -44,7 +32,7 @@
     position: relative;
     display: inline-block;
     height: 2rem;
-    background: var(--tui-base-02);
+    background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
     padding: 0.25rem 0.75rem;
     box-sizing: border-box;
@@ -55,10 +43,6 @@
         .copy {
             opacity: 1;
         }
-    }
-
-    :host._dark & {
-        background: var(--tui-clear-inverse);
     }
 
     .copy {
@@ -80,7 +64,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--tui-base-02);
+    background: var(--tui-background-base-alt);
     opacity: 0;
 
     &:hover {

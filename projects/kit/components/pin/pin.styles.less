@@ -4,7 +4,7 @@
     --t-size: 2rem;
 
     .transition(~'width, height, border, margin');
-    .clearbtn();
+    .button-clear();
 
     position: relative;
     display: flex;
@@ -18,10 +18,10 @@
     font: var(--tui-font-text-s);
     font-weight: bold;
     box-sizing: border-box;
-    color: var(--tui-accent-text);
-    background: var(--tui-accent);
-    box-shadow: 0 0 0 0.125rem var(--tui-elevation-01);
-    border: 0 solid var(--tui-accent);
+    color: var(--tui-text-primary-on-accent-2);
+    background: var(--tui-background-accent-2);
+    box-shadow: 0 0 0 0.125rem var(--tui-background-elevation-1);
+    border: 0 solid var(--tui-background-accent-2);
     transform: translate(-50%, -50%);
 
     .interactive({
@@ -40,7 +40,7 @@
         max-height: 100%;
         box-sizing: border-box;
         border-radius: 100%;
-        background: var(--tui-base-01);
+        background: var(--tui-background-base);
     }
 
     ::ng-deep > tui-icon,

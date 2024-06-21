@@ -71,8 +71,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         (day: TuiDay) =>
             day.day % 2 === 0
-                ? ['var(--tui-primary)', 'var(--tui-info-fill)']
-                : ['var(--tui-success-fill)'],
+                ? ['var(--tui-background-accent-1)', 'var(--tui-status-info)']
+                : ['var(--tui-status-positive)'],
     ];
 
     protected markerHandler: TuiMarkerHandler | null = null;

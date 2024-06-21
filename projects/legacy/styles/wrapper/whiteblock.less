@@ -3,45 +3,45 @@
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='whiteblock'],
 [tuiWrapper][data-appearance='whiteblock-active'] {
-    background: var(--tui-base-01);
-    color: var(--tui-text-01);
+    background: var(--tui-background-base);
+    color: var(--tui-text-primary);
 
     &:after {
-        color: var(--tui-base-04);
+        color: var(--tui-border-normal);
     }
 
     .wrapper-hover({
-        background: var(--tui-base-02);
+        background: var(--tui-background-base-alt);
 
         &:after {
-            color: var(--tui-base-04);
+            color: var(--tui-border-normal);
         }
     });
 
     .wrapper-active({
-        background: var(--tui-base-02);
+        background: var(--tui-background-base-alt);
 
         &:after {
-            color: var(--tui-base-04);
+            color: var(--tui-border-normal);
         }
     });
 }
 
 [tuiWrapper][data-appearance='whiteblock-active'] {
     &:after {
-        color: var(--tui-primary);
+        color: var(--tui-background-accent-1);
         border-width: 2px;
     }
 
     .wrapper-hover({
         &:after {
-            color: var(--tui-primary-hover);
+            color: var(--tui-background-accent-1-hover);
         }
     });
 
     .wrapper-active({
         &:after {
-            color: var(--tui-primary-active);
+            color: var(--tui-background-accent-1-pressed);
         }
     });
 }

@@ -1,13 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .clearbtn();
+    .button-clear();
 
     position: relative;
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    color: var(--tui-link);
+    color: var(--tui-text-action);
     margin-right: 1.5rem;
     outline: none;
     cursor: pointer;
@@ -15,11 +15,11 @@
 
     &:disabled {
         pointer-events: none;
-        color: var(--tui-base-07);
+        color: var(--tui-text-secondary);
     }
 
     &:hover {
-        color: var(--tui-link-hover);
+        color: var(--tui-text-action-hover);
     }
 
     &:not(:last-of-type)._vertical {
@@ -28,7 +28,7 @@
 
     &._active,
     &._active:hover {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
         cursor: default;
     }
 
@@ -40,7 +40,7 @@
         top: 50%;
         height: 1.5rem;
         margin-top: -0.75rem;
-        background: var(--tui-selection);
+        background: var(--tui-service-selected-text);
     }
 }
 
@@ -55,14 +55,14 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    background: var(--tui-secondary);
-    color: var(--tui-link);
+    background: var(--tui-background-neutral-1);
+    color: var(--tui-text-action);
     border: 0.5rem solid transparent;
     box-sizing: border-box;
 
     :host:disabled & {
-        background: var(--tui-base-03);
-        color: var(--tui-base-07);
+        background: var(--tui-background-neutral-1);
+        color: var(--tui-text-secondary);
     }
 
     &_index {
@@ -71,13 +71,13 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
-            background: var(--tui-secondary-hover);
+            color: var(--tui-text-action-hover);
+            background: var(--tui-background-neutral-1-hover);
         }
 
         :host._active & {
-            color: var(--tui-primary-text);
-            background: var(--tui-primary);
+            color: var(--tui-text-primary-on-accent-1);
+            background: var(--tui-background-accent-1);
         }
 
         :host:not([data-state='normal']):not(._active) &,
@@ -87,12 +87,12 @@
     }
 
     &_error {
-        background: var(--tui-error-bg);
-        color: var(--tui-error-fill);
+        background: var(--tui-status-negative-pale);
+        color: var(--tui-status-negative);
 
         :host:hover & {
-            background: var(--tui-error-bg-hover);
-            color: var(--tui-error-fill);
+            background: var(--tui-status-negative-pale-hover);
+            color: var(--tui-status-negative);
         }
 
         :host:not([data-state='error']) &,
@@ -115,8 +115,8 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
-            background: var(--tui-secondary-hover);
+            color: var(--tui-text-action-hover);
+            background: var(--tui-background-neutral-1-hover);
         }
     }
 }

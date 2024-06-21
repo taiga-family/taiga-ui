@@ -66,7 +66,7 @@
     box-sizing: border-box;
     font: var(--tui-font-text-s);
     line-height: 2.25rem;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     white-space: nowrap;
     pointer-events: none;
 
@@ -108,10 +108,10 @@
     background: transparent;
     box-sizing: border-box;
     font: var(--tui-font-text-s);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     &&&_card {
@@ -119,14 +119,27 @@
         &:not(.t-input_hidden),
         &:not(.t-input_hidden)::placeholder,
         &:not(.t-input_hidden):-webkit-autofill {
-            caret-color: var(--tui-base-09);
+            caret-color: var(--tui-text-primary);
             color: transparent !important;
             -webkit-text-fill-color: transparent !important;
         }
 
         //noinspection CssInvalidPseudoSelector
         &::-webkit-credit-card-auto-fill-button {
-            .webkit-auto-fill-button-hidden();
+            // hide: -webkit-caps-lock-indicator
+            content: none !important;
+
+            // hide: -webkit-strong-password-auto-fill-button
+            // because safari forcing set display as block
+            position: absolute;
+            left: -62.4375rem;
+            top: -62.4375rem;
+            z-index: -999;
+
+            // hide: -webkit-contacts-auto-fill-button
+            display: none !important;
+            background: transparent !important;
+            pointer-events: none !important;
         }
     }
 
@@ -170,7 +183,7 @@
     margin: 1.125rem 1rem;
     font: var(--tui-font-text-m);
     line-height: 1.25rem;
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
 
     &_raised {
         font-size: 0.8156rem;
@@ -178,11 +191,11 @@
     }
 
     :host([data-mode='invalid']) & {
-        color: var(--tui-negative);
+        color: var(--tui-status-negative);
     }
 
     :host([data-focus='true']) & {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }
 

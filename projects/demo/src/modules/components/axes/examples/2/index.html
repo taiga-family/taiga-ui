@@ -26,7 +26,7 @@
     >
         <span
             class="dot"
-            [style.background]="getBackground(index)"
+            [style.background]="'var(--tui-chart-categorical-0' + index + ')'"
         ></span>
         <span class="name">{{ getSetName(index) }}</span>
         <span>{{ item[setIndex] * 1000 | tuiAmount: 'RUB' | async }}</span>

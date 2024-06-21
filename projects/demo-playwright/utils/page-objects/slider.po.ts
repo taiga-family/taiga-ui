@@ -14,8 +14,8 @@ export class TuiSliderPO {
                 parseFloat(
                     globalThis
                         .getComputedStyle(el)
-                        .getPropertyValue('--tui-slider-fill-percentage'),
-                ),
+                        .getPropertyValue('--tui-slider-fill-ratio'),
+                ) * 100,
             ),
         );
     }

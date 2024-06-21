@@ -5,10 +5,10 @@
     position: relative;
     display: block;
     border-radius: var(--tui-radius-xl);
-    background-color: var(--tui-base-01);
+    background-color: var(--tui-background-base);
     word-wrap: break-word;
     text-decoration: none;
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     outline: none;
     box-sizing: content-box;
 
@@ -17,7 +17,7 @@
 
         content: '';
         box-sizing: border-box;
-        border: 1px solid var(--tui-base-03);
+        border: 1px solid var(--tui-border-normal);
         border-radius: inherit;
         pointer-events: none;
     }
@@ -25,14 +25,23 @@
     &:focus,
     &:hover:focus {
         &:before {
-            border-color: var(--tui-focus);
+            border-color: var(--tui-border-focus);
         }
     }
 
     &_hoverable {
-        .hoverable-with-shadow();
+        .transition();
 
-        background: var(--tui-elevation-02);
+        background: var(--tui-background-elevation-2);
+        box-shadow: var(--tui-shadow);
+        cursor: pointer;
+        transition-property: transform, box-shadow;
+        will-change: transform, box-shadow;
+
+        &:hover {
+            box-shadow: var(--tui-shadow-hover);
+            transform: translateY(-0.25rem);
+        }
     }
 
     &_transparent {
@@ -89,7 +98,7 @@
         text-transform: uppercase;
         letter-spacing: 0.075em;
         margin: 0 0 @space * 2;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
 
         .tui-island_size_l & {
             margin: 0 0 @space * 3;
@@ -112,7 +121,7 @@
 
     &__paragraph {
         margin: 0;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
 
         &_link.tui-island__paragraph {
             margin-top: @space * 4;
@@ -151,13 +160,13 @@
         display: flex;
         padding-bottom: 1rem;
         margin-bottom: 1rem;
-        border-bottom: 1px solid var(--tui-base-03);
+        border-bottom: 1px solid var(--tui-border-normal);
         white-space: nowrap;
     }
 
     &__carousel-pages {
         margin-left: auto;
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
     }
 
     &__carousel-button {
@@ -169,7 +178,7 @@
         max-width: unset;
         width: ~'calc(100% + 1.875rem);'; // margin compensation
         margin: @padding calc(-1rem + 1px) calc(-1rem + 1px); // 1px is compensations of border
-        border-top: 1px solid var(--tui-base-03);
+        border-top: 1px solid var(--tui-border-normal);
         border-radius: 0 0 var(--tui-radius-xl) var(--tui-radius-xl);
     }
 

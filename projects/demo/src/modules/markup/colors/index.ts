@@ -1,24 +1,14 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
-import {
-    BASE,
-    BASE_NIGHT,
-    STATUS,
-    STATUS_NIGHT,
-    SUPPORT,
-    TEXT,
-    TEXT_NIGHT,
-} from './constants';
+import {BACKGROUNDS, CHARTS, OTHERS, STATUSES, TEXT} from './constants';
 import {TableColors} from './examples/table/table.component';
 
 @Component({
     standalone: true,
     imports: [TuiDemo, TableColors],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export default class Page {
@@ -26,11 +16,9 @@ export default class Page {
         './examples/import/basic-imports-less.md?raw'
     );
 
-    protected readonly base = BASE;
-    protected readonly baseNight = BASE_NIGHT;
-    protected readonly support = SUPPORT.map(name => ({name}));
+    protected readonly backgrounds = BACKGROUNDS;
     protected readonly text = TEXT;
-    protected readonly textNight = TEXT_NIGHT;
-    protected readonly status = STATUS;
-    protected readonly statusNight = STATUS_NIGHT;
+    protected readonly statuses = STATUSES;
+    protected readonly others = OTHERS;
+    protected readonly charts = CHARTS;
 }

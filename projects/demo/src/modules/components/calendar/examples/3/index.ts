@@ -6,8 +6,11 @@ import type {TuiDay} from '@taiga-ui/cdk';
 import {TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TuiCalendarComponent, type TuiMarkerHandler} from '@taiga-ui/core';
 
-const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
-const ONE_DOT: [string] = ['var(--tui-success-fill)'];
+const TWO_DOTS: [string, string] = [
+    'var(--tui-background-accent-1)',
+    'var(--tui-status-info)',
+];
+const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
     standalone: true,

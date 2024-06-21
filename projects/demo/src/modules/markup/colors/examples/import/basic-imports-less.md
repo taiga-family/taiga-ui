@@ -1,5 +1,5 @@
 ```less
 .class {
-  background-color: var(--tui-success-fill);
+  background-color: var(--tui-status-positive);
 }
 ```

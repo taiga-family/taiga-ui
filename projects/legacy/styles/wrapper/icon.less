@@ -5,7 +5,7 @@
 [tuiWrapper][data-appearance='icon'][data-appearance='icon'] {
     .transition(opacity);
 
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     opacity: 0.5;
 
     [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
@@ -14,14 +14,14 @@
 
     [tuiTheme='dark'] &,
     &[tuiTheme='dark'] {
-        color: var(--tui-text-01-night);
+        color: var(--tui-text-primary);
 
         [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
             opacity: 1;
         }
 
         .wrapper-focus({
-            --tui-focus: var(--tui-base-01);
+            --tui-border-focus: var(--tui-background-base);
         });
 
         .wrapper-hover({
@@ -45,9 +45,9 @@
 tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
 tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
 tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'] {
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
 
     [tuiTheme='dark'] & {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }

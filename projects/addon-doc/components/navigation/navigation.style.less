@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 }
 
 .t-input {
@@ -53,7 +53,7 @@
 
     &_bordered {
         margin: 0.5rem 0;
-        border-left: 1px solid var(--tui-base-03);
+        border-left: 1px solid var(--tui-border-normal);
     }
 }
 
@@ -62,7 +62,7 @@
 }
 
 .t-sublink {
-    .clearbtn();
+    .button-clear();
 
     font: var(--tui-font-text-m);
     margin-left: 0.5rem;
@@ -81,7 +81,7 @@
 
     &&&_active {
         // @note: (&&&_) it's increasing css cascade priority
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 }
 

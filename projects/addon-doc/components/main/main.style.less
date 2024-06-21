@@ -28,7 +28,7 @@
 html,
 body {
     scroll-padding-top: @sticky-header-height;
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 }
 
 tui-root > tui-scroll-controls > .t-bar_vertical {
@@ -47,13 +47,13 @@ code:not(pre code) {
         .transition(background);
 
         display: inline-flex;
-        background: var(--tui-base-02);
-        color: var(--tui-text-02);
+        background: var(--tui-background-base-alt);
+        color: var(--tui-text-secondary);
         vertical-align: middle;
         align-items: center;
         border-radius: 0.25rem;
         font-weight: 500;
-        outline: 1px solid var(--tui-base-04);
+        outline: 1px solid var(--tui-border-hover);
         font-size: 0.75rem;
         padding: 0 0.3125rem;
         margin: 0.125rem 0.1875rem;
@@ -65,14 +65,14 @@ code:not(pre code) {
         }
 
         a & {
-            color: var(--tui-link);
+            color: var(--tui-text-action);
         }
     }
 }
 
 button:focus code,
 a:focus code {
-    background: var(--tui-base-01);
+    background: var(--tui-background-base);
 }
 
 .tui-doc-page {
@@ -85,7 +85,7 @@ tui-doc-navigation.tui-doc-navigation {
     top: 4rem;
     bottom: 0;
     width: @sidebar-width;
-    border-right: 1px solid var(--tui-base-03);
+    border-right: 1px solid var(--tui-border-normal);
 
     @media @tui-mobile {
         display: none;
@@ -119,8 +119,8 @@ tui-doc-code {
         display: block;
         overflow-x: auto;
         padding: 0.5em;
-        color: var(--tui-text-01);
-        background-color: var(--tui-clear);
+        color: var(--tui-text-primary);
+        background-color: var(--tui-background-neutral-1);
 
         &.hljs-line-numbers {
             background: transparent;
@@ -130,16 +130,16 @@ tui-doc-code {
     .hljs-subst,
     .hljs-title {
         font-weight: normal;
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 
     .hljs-property {
-        color: var(--tui-support-14);
+        color: #bd65a4;
     }
 
     .hljs-comment,
     .hljs-quote {
-        color: var(--tui-text-02);
+        color: var(--tui-text-secondary);
         font-style: italic;
     }
 
@@ -156,11 +156,11 @@ tui-doc-code {
     .hljs-selector-id,
     .hljs-selector-class {
         font-weight: bold;
-        color: var(--tui-link);
+        color: var(--tui-text-action);
     }
 
     .hljs-attr {
-        color: var(--tui-link);
+        color: var(--tui-text-action);
     }
 
     .hljs-attribute,
@@ -169,7 +169,7 @@ tui-doc-code {
     .hljs-link,
     .hljs-built_in {
         font-weight: bold;
-        color: var(--tui-support-06);
+        color: #b8474e;
     }
 
     .hljs-number,
@@ -179,15 +179,15 @@ tui-doc-code {
     }
 
     .hljs-string {
-        color: var(--tui-positive);
+        color: var(--tui-status-positive);
         font-weight: bold;
     }
 
     .hljs-symbol,
     .hljs-bullet,
     .hljs-formula {
-        color: var(--tui-text-01);
-        background: var(--tui-base-02);
+        color: var(--tui-text-primary);
+        background: var(--tui-background-base-alt);
         font-style: italic;
     }
 
@@ -197,15 +197,15 @@ tui-doc-code {
 
     .hljs-variable,
     .hljs-template-variable {
-        color: var(--tui-link-hover);
+        color: var(--tui-text-action-hover);
     }
 
     .hljs-addition {
-        background: var(--tui-success-bg);
+        background: var(--tui-status-positive-pale);
     }
 
     .hljs-deletion {
-        background: var(--tui-error-bg);
+        background: var(--tui-status-negative-pale);
     }
 
     .hljs-emphasis {
@@ -231,6 +231,6 @@ tui-doc-code {
 [tuiTheme='dark'] tui-doc-code {
     .hljs-variable,
     .hljs-template-variable {
-        color: var(--tui-warning-fill);
+        color: var(--tui-status-warning);
     }
 }
