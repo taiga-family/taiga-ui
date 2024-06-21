@@ -68,15 +68,15 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: false}),
     ],
-    host: {
-        '[attr.data-size]': 'textfieldOptions?.size',
-    },
     viewProviders: [
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',
             align: 'right',
         }),
     ],
+    host: {
+        '[attr.data-size]': 'textfieldOptions?.size',
+    },
 })
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})

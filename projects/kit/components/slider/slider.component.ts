@@ -19,15 +19,10 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
     standalone: true,
-    /**
-     * We have to call our component as `<input tuiSlider type="range" ... />`
-     * because otherwise built-in angular
-     * {@link https://github.com/angular/angular/blob/master/packages/forms/src/directives/range_value_accessor.ts#L45 RangeValueAccessor}
-     * cannot be matched by its CSS selector.
-     */
     selector: 'input[type=range][tuiSlider]',
     template: '',
     styleUrls: ['./slider.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         /**
          * For change detection.
@@ -38,7 +33,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'trackColor',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);

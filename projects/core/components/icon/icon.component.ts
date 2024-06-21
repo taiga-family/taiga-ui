@@ -6,13 +6,13 @@ import {TUI_ICON, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
     standalone: true,
     selector: 'tui-icon',
     template: '',
+    styleUrls: ['./icon.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._duo]': 'background',
         '[style.--t-mask]': '"url(" + resolver(icon) + ")"',
         '[style.--t-mask-bg]': 'background ? "url(" + resolver(background) + ")" : null',
     },
-    styleUrls: ['./icon.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();

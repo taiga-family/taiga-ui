@@ -8,8 +8,8 @@ import {TuiAside} from './aside.component';
 @Directive({
     standalone: true,
     selector: '[tuiHintAside]',
-    hostDirectives: [TuiHintDirective],
     providers: [tuiHintOptionsProvider({direction: 'right'})],
+    hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAside implements DoCheck {
     private readonly el = tuiInjectElement();

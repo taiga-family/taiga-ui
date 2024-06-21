@@ -14,13 +14,13 @@ import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
     standalone: true,
-    host: {
-        class: 'tui-group-styles',
-    },
     template: '',
     styleUrls: ['./group.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-group-styles',
+    },
 })
 class TuiGroupStyles {}
 

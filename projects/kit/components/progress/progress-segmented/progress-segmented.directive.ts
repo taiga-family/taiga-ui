@@ -9,11 +9,11 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     standalone: true,
-    host: {class: 'tui-progress-segmented'},
     template: '',
     styleUrls: ['./progress-segmented.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {class: 'tui-progress-segmented'},
 })
 class TuiProgressSegmentedStyles {}
 

@@ -15,18 +15,18 @@ import {TuiAccordionItem} from './accordion-item.component';
 @Directive({
     standalone: true,
     selector: 'tui-accordion',
-    hostDirectives: [
-        {
-            directive: TuiGroupDirective,
-            inputs: ['rounded'],
-        },
-    ],
     providers: [
         tuiGroupOptionsProvider({
             orientation: 'vertical',
             size: 'l',
             collapsed: true,
         }),
+    ],
+    hostDirectives: [
+        {
+            directive: TuiGroupDirective,
+            inputs: ['rounded'],
+        },
     ],
 })
 export class TuiAccordionDirective implements AfterContentInit {

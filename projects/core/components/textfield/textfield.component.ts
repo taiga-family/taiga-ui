@@ -46,12 +46,6 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
     ],
-    host: {
-        '[style.--t-side.px]': 'side',
-        '[attr.data-size]': 'options.size',
-        '[class._with-label]': 'hasLabel',
-        '[class._disabled]': 'input.disabled',
-    },
     hostDirectives: [
         TuiNativeValidatorDirective,
         TuiDropdownDirective,
@@ -66,6 +60,12 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
+    host: {
+        '[style.--t-side.px]': 'side',
+        '[attr.data-size]': 'options.size',
+        '[class._with-label]': 'hasLabel',
+        '[class._disabled]': 'input.disabled',
+    },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})

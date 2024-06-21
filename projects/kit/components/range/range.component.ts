@@ -35,6 +35,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
     templateUrl: './range.template.html',
     styleUrls: ['./range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiFallbackValueProvider([0, 0])],
     hostDirectives: [
         {
             directive: TuiRangeChangeDirective,
@@ -49,7 +50,6 @@ import {TuiRangeChangeDirective} from './range-change.directive';
         '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
     },
-    providers: [tuiFallbackValueProvider([0, 0])],
 })
 export class TuiRangeComponent extends TuiControl<[number, number]> implements OnChanges {
     // TODO: workaround until we get signal inputs

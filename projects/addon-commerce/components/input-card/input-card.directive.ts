@@ -15,13 +15,13 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
 @Directive({
     standalone: true,
     selector: 'input[tuiInputCard]',
+    hostDirectives: [MaskitoDirective],
     host: {
         inputmode: 'numeric',
         placeholder: '0000 0000 0000 0000',
         '[autocomplete]': 'autocomplete ? "cc-number" : "off"',
         '[style.background-image]': 'backgroundImage',
     },
-    hostDirectives: [MaskitoDirective],
 })
 export class TuiInputCard implements OnInit {
     private readonly icons = inject(TUI_PAYMENT_SYSTEM_ICONS);

@@ -27,8 +27,8 @@ import {TuiSegmentedDirective} from './segmented.directive';
     styleUrls: ['./segmented.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiSegmentedDirective],
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
+    hostDirectives: [TuiSegmentedDirective],
 })
 export class TuiSegmentedComponent implements OnChanges {
     private readonly el = tuiInjectElement();

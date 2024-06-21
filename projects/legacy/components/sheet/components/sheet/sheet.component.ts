@@ -31,12 +31,12 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
     styleUrls: ['./sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_SHEET_PROVIDERS,
+    animations: [tuiSlideInTop],
     host: {
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
         '[class._ios]': 'isIos',
     },
-    animations: [tuiSlideInTop],
 })
 export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
     @ViewChild('sheet')

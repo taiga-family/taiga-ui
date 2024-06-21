@@ -31,10 +31,6 @@ class TuiBadgeStyles {}
     standalone: true,
     selector: 'tui-badge,[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
-    host: {
-        '[class._dot]': 'dot',
-        '[attr.data-size]': 'size',
-    },
     hostDirectives: [
         {
             directive: TuiAppearance,
@@ -49,6 +45,10 @@ class TuiBadgeStyles {}
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
+    host: {
+        '[class._dot]': 'dot',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiBadge {
     private readonly options = inject(TUI_BADGE_OPTIONS);
