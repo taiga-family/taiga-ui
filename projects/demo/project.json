@@ -1,7 +1,7 @@
 {
     "name": "demo",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "application",
     "prefix": "app",
     "implicitDependencies": ["!testing"],
@@ -32,7 +32,11 @@
                 "polyfills": "{projectRoot}/src/polyfills.ts",
                 "tsConfig": "projects/{projectName}/tsconfig.app.json",
                 "assets": [
-                    "{projectRoot}/src/404.html",
+                    {
+                        "glob": "**/404.html",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
+                    },
                     {
                         "glob": "**/*",
                         "input": "{projectRoot}/src/assets/",

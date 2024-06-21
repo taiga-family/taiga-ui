@@ -45,6 +45,7 @@ jobs:
           echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Generate Release Body
+        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
         id: generate_body
         run: |
           npx extract-changelog-release > RELEASE_BODY.md
