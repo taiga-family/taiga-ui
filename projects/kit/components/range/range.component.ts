@@ -28,7 +28,7 @@ import {
     TuiSliderComponent,
 } from '@taiga-ui/kit/components/slider';
 
-import {TuiRangeChangeDirective} from './range-change.directive';
+import {TuiRangeChange} from './range-change.directive';
 
 @Component({
     standalone: true,
@@ -40,7 +40,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
     providers: [tuiFallbackValueProvider([0, 0])],
     hostDirectives: [
         {
-            directive: TuiRangeChangeDirective,
+            directive: TuiRangeChange,
             outputs: ['activeThumbChange'],
         },
     ],
@@ -54,7 +54,7 @@ import {TuiRangeChangeDirective} from './range-change.directive';
         '(focusout)': 'onTouched()',
     },
 })
-export class TuiRangeComponent extends TuiControl<[number, number]> implements OnChanges {
+export class TuiRange extends TuiControl<[number, number]> implements OnChanges {
     // TODO: workaround until we get signal inputs
     private readonly changes = signal(1);
     private readonly el = tuiInjectElement();

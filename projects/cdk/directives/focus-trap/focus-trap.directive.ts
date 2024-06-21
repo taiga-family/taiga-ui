@@ -19,7 +19,7 @@ import {
         tabIndex: '0',
     },
 })
-export class TuiFocusTrapDirective implements OnDestroy {
+export class TuiFocusTrap implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly activeElement = tuiGetNativeFocused(this.doc);

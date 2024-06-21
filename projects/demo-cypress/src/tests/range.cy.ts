@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiRange} from '@taiga-ui/kit';
 
 describe('TuiRange', () => {
     let component: Test;
@@ -22,10 +22,10 @@ describe('TuiRange', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiRangeComponent, {static: true})
-        protected component!: TuiRangeComponent;
+        @ViewChild(TuiRange, {static: true})
+        protected component!: TuiRange;
 
-        @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
+        @ViewChild(TuiRange, {static: true, read: ElementRef})
         public el!: ElementRef<HTMLElement>;
 
         public testValue = new FormControl([3, 5]);
@@ -38,7 +38,7 @@ describe('TuiRange', () => {
 
     beforeEach(() => {
         cy.mount(Test, {
-            imports: [TuiRangeComponent, ReactiveFormsModule],
+            imports: [TuiRange, ReactiveFormsModule],
             providers: [NG_EVENT_PLUGINS],
         }).then(wrapper => {
             component = wrapper.component;

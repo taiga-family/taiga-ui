@@ -14,7 +14,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     exportAs: 'tuiMedia',
     host: {'(durationchange)': '0'},
 })
-export class TuiMediaDirective {
+export class TuiMedia {
     private readonly el = tuiInjectElement<HTMLMediaElement>();
 
     private playbackRate = 1;

@@ -1,6 +1,6 @@
 ```ts
 import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputInlineComponent} from '@taiga-ui/kit';
+import {TuiInputInline} from '@taiga-ui/kit';
 
 // ...
 
@@ -9,7 +9,7 @@ import {TuiInputInlineComponent} from '@taiga-ui/kit';
   imports: [
     // ...
     ReactiveFormsModule,
-    TuiInputInlineComponent,
+    TuiInputInline,
   ],
   // ...
 })

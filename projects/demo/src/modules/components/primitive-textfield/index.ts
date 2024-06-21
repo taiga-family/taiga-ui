@@ -19,8 +19,8 @@ import {HintControllerDocumentation} from '../abstract/hint-controller-documenta
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 import {TextfieldControllerDocumentation} from '../abstract/textfield-controller-documentation';
-import ExampleComponent1 from './examples/1';
-import ExampleComponent2 from './examples/2';
+import Example1 from './examples/1';
+import Example2 from './examples/2';
 
 @Component({
     standalone: true,
@@ -28,8 +28,8 @@ import ExampleComponent2 from './examples/2';
         TuiDemo,
         TuiNotification,
         FormsModule,
-        ExampleComponent1,
-        ExampleComponent2,
+        Example1,
+        Example2,
         TuiPrimitiveTextfieldModule,
         TuiHint,
         TuiTextfieldControllerModule,

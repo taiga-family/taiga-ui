@@ -1,5 +1,5 @@
 ```ts
-import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
+import {TuiCalendarRange} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiCalendarRangeComponent,
+    TuiCalendarRange,
   ],
   // ...
 })

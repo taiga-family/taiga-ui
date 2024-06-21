@@ -7,7 +7,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
     TuiButton,
-    TuiCalendarComponent,
+    TuiCalendar,
     TuiDataList,
     TuiDropdown,
     TuiGroupDirective,
@@ -23,7 +23,7 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
         TuiDataList,
         TuiDataListDropdownManager,
         TuiInputModule,
-        TuiCalendarComponent,
+        TuiCalendar,
         TuiGroupDirective,
         FormsModule,
         TuiAmountPipe,

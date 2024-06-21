@@ -34,7 +34,7 @@ export interface TuiConfirmData {
     styleUrls: ['./confirm.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiConfirmComponent {
+export class TuiConfirm {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly words$ = inject(TUI_CONFIRM_WORDS);
 
@@ -48,4 +48,4 @@ export class TuiConfirmComponent {
     }
 }
 
-export const TUI_CONFIRM = new PolymorpheusComponent(TuiConfirmComponent);
+export const TUI_CONFIRM = new PolymorpheusComponent(TuiConfirm);

@@ -1,6 +1,6 @@
 ```ts
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
+import {TuiBreadcrumbs} from '@taiga-ui/kit';
 
 // ...
 
@@ -9,7 +9,7 @@ import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
   imports: [
     // ...
     TuiItem,
-    TuiBreadcrumbsComponent,
+    TuiBreadcrumbs,
   ],
   // ...
 })

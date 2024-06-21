@@ -4,11 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRangeComponent} from '@taiga-ui/kit';
+import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiRangeComponent, FormsModule, NgForOf, JsonPipe],
+    imports: [TuiRange, FormsModule, NgForOf, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

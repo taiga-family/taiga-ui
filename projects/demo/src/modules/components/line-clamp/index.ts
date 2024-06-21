@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLineClampComponent} from '@taiga-ui/kit';
+import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLineClampComponent],
+    imports: [TuiDemo, TuiLineClamp],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

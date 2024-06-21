@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf, PercentPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,20 +7,37 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
+
+import {TuiPreviewAction} from '../preview-action/preview-action.directive';
 
 const STEP = 0.5;
 
 @Component({
+    standalone: true,
     selector: 'tui-preview-zoom',
+    imports: [
+        NgIf,
+        TuiButton,
+        AsyncPipe,
+        TuiHint,
+        FormsModule,
+        TuiSlider,
+        PercentPipe,
+        TuiPreviewAction,
+    ],
     templateUrl: './preview-zoom.template.html',
     styleUrls: ['./preview-zoom.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPreviewZoomComponent {
+export class TuiPreviewZoom {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
 

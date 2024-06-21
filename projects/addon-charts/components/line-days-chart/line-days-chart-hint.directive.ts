@@ -20,7 +20,7 @@ import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
-import {TuiLineDaysChartComponent} from './line-days-chart.component';
+import {TuiLineDaysChart} from './line-days-chart.component';
 
 function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay, number] {
     return value.find(([day]) => day.daySame(current)) || [current, NaN];
@@ -32,9 +32,9 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
-export class TuiLineDaysChartHintDirective implements AfterContentInit {
-    @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
-    private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
+export class TuiLineDaysChartHint implements AfterContentInit {
+    @ContentChildren(forwardRef(() => TuiLineDaysChart))
+    private readonly charts: QueryList<TuiLineDaysChart> = EMPTY_QUERY;
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);

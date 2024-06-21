@@ -1,27 +1,27 @@
 import {tuiGenerateDialogableRoute} from '../generate-dialogable-route';
-import TuiRoutableDialogComponent from '../routable-dialog.component';
+import TuiRoutableDialog from '../routable-dialog.component';
 
-class DialogComponent {}
+class Dialog {}
 
 describe('tuiGenerateDialogableRoute', () => {
     it('generated route should have component: TuiRoutableDialogComponent', done => {
-        const result = tuiGenerateDialogableRoute(DialogComponent);
+        const result = tuiGenerateDialogableRoute(Dialog);
 
         void Promise.resolve(result.loadComponent?.()).then((module: any) => {
-            expect(module.default).toBe(TuiRoutableDialogComponent);
+            expect(module.default).toBe(TuiRoutableDialog);
 
             done();
         });
     });
 
     it('if passed path is undefined then route path is empty string', () => {
-        const result = tuiGenerateDialogableRoute(DialogComponent);
+        const result = tuiGenerateDialogableRoute(Dialog);
 
         expect(result.path).toBe('');
     });
 
     it('path passed correctly', () => {
-        const result = tuiGenerateDialogableRoute(DialogComponent, {
+        const result = tuiGenerateDialogableRoute(Dialog, {
             path: 'path/to/dialog',
         });
 
@@ -34,7 +34,7 @@ describe('tuiGenerateDialogableRoute', () => {
             closeable: true,
         };
 
-        const result = tuiGenerateDialogableRoute(DialogComponent, {
+        const result = tuiGenerateDialogableRoute(Dialog, {
             path: '',
             ...dialogOptions,
         });
@@ -43,32 +43,32 @@ describe('tuiGenerateDialogableRoute', () => {
     });
 
     it('if path is undefined then isLazy: true', () => {
-        const result = tuiGenerateDialogableRoute(DialogComponent);
+        const result = tuiGenerateDialogableRoute(Dialog);
 
         expect(result?.data?.isLazy).toBe(true);
     });
 
     it('if path is empty string then isLazy: true', () => {
-        const result = tuiGenerateDialogableRoute(DialogComponent, {path: ''});
+        const result = tuiGenerateDialogableRoute(Dialog, {path: ''});
 
         expect(result?.data?.isLazy).toBe(true);
     });
 
     it('if path is not empty string then isLazy: false', () => {
-        const result = tuiGenerateDialogableRoute(DialogComponent, {path: 'path'});
+        const result = tuiGenerateDialogableRoute(Dialog, {path: 'path'});
 
         expect(result?.data?.isLazy).toBe(false);
     });
 
     describe('checking back url calculation', () => {
         it('back url calculated correctly for undefined path', () => {
-            const result = tuiGenerateDialogableRoute(DialogComponent);
+            const result = tuiGenerateDialogableRoute(Dialog);
 
             expect(result?.data?.backUrl).toBe('..');
         });
 
         it('back url calculated correctly for empty path', () => {
-            const result = tuiGenerateDialogableRoute(DialogComponent, {
+            const result = tuiGenerateDialogableRoute(Dialog, {
                 path: '',
             });
 
@@ -76,7 +76,7 @@ describe('tuiGenerateDialogableRoute', () => {
         });
 
         it('back url calculated correctly for single segment', () => {
-            const result = tuiGenerateDialogableRoute(DialogComponent, {
+            const result = tuiGenerateDialogableRoute(Dialog, {
                 path: 'path',
             });
 
@@ -84,7 +84,7 @@ describe('tuiGenerateDialogableRoute', () => {
         });
 
         it('back url calculated correctly for double segments', () => {
-            const result = tuiGenerateDialogableRoute(DialogComponent, {
+            const result = tuiGenerateDialogableRoute(Dialog, {
                 path: 'path/to',
             });
 
@@ -92,7 +92,7 @@ describe('tuiGenerateDialogableRoute', () => {
         });
 
         it('back url calculated correctly for triple segments', () => {
-            const result = tuiGenerateDialogableRoute(DialogComponent, {
+            const result = tuiGenerateDialogableRoute(Dialog, {
                 path: 'path/to/dialog',
             });
 

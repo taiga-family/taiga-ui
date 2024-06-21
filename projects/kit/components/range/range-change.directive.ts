@@ -7,16 +7,16 @@ import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
-import {TuiRangeComponent} from './range.component';
+import {TuiRange} from './range.component';
 
 @Directive({
     standalone: true,
     selector: 'tui-range:is(never)',
 })
-export class TuiRangeChangeDirective {
+export class TuiRangeChange {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
-    private readonly range = inject(TuiRangeComponent);
+    private readonly range = inject(TuiRange);
 
     /**
      * TODO replace with pointer events (when all supported browsers can handle them).

@@ -1,14 +1,17 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 import {delay, of} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-progress-circle',
+    imports: [AsyncPipe],
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiProgressCircleComponent {
+export class TuiProgressCircle {
     protected readonly animationDelay$ = of(true).pipe(delay(0));
 
     @Input()

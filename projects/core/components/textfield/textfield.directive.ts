@@ -1,6 +1,6 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -12,7 +12,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 @Directive({
     standalone: true,
     selector: 'input[tuiTextfield]',
-    hostDirectives: [TuiNativeValidatorDirective, TuiAppearance],
+    hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'el.id || id',
         '[readOnly]': 'readOnly',

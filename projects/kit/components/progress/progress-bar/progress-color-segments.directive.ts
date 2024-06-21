@@ -6,11 +6,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     providers: [ResizeObserverService],
     host: {'[style.--tui-progress-color]': 'color()'},
 })
-export class TuiProgressColorSegmentsDirective {
+export class TuiProgressColorSegments {
     private readonly colors$ = new BehaviorSubject<string[]>([]);
     private readonly el = tuiInjectElement<HTMLProgressElement>();
     private readonly resize$ = inject(ResizeObserverService);

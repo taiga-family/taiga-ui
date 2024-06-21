@@ -13,7 +13,7 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
-import {TuiCalendarRangeComponent, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiCalendarRange, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
 const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',
@@ -23,7 +23,7 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLink],
+    imports: [TuiDemo, TuiCalendarRange, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -3,12 +3,12 @@ import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {TuiProgressModule} from '@taiga-ui/kit';
+import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiProgressModule, AsyncPipe],
+    imports: [TuiProgress, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

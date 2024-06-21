@@ -5,11 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
+import {TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [NgFor, RouterLink, TuiBreadcrumbsComponent, TuiLink, TuiItem],
+    imports: [NgFor, RouterLink, TuiBreadcrumbs, TuiLink, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

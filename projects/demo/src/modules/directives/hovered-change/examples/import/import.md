@@ -1,5 +1,5 @@
 ```ts
-import {TuiHoveredDirective} from '@taiga-ui/cdk';
+import {TuiHovered} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiHoveredDirective} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiHoveredDirective,
+    TuiHovered,
   ],
   // ...
 })

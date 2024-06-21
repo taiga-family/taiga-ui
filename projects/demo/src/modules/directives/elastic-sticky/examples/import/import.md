@@ -1,6 +1,6 @@
 ```ts
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiScrollbar} from '@taiga-ui/core';
 
 // ...
 
@@ -8,7 +8,7 @@ import {TuiScrollbarComponent} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiScrollbarComponent,
+    TuiScrollbar,
     TuiElasticStickyModule,
   ],
   // ...

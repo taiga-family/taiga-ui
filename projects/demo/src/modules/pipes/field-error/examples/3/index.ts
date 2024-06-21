@@ -32,7 +32,7 @@ const secretRegexTwelve = /^\d{12}$/;
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     @ViewChild('errorContent')
     protected errorContent: PolymorpheusContent;
 

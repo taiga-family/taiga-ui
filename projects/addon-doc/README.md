@@ -37,7 +37,7 @@ npm i @taiga-ui/addon-doc
    import {TuiDocMainModule} from '@taiga-ui/addon-doc';
    import {hljsLanguages} from './hljsLanguages';
    import {HIGHLIGHT_OPTIONS, HighlightLanguage} from 'ngx-highlightjs';
-   import {AppComponent} from './app.component';
+   import {App} from './app.component';
 
    @Component({
      standalone: true,

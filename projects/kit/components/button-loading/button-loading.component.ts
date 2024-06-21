@@ -33,7 +33,7 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
         '[class._loading]': 'loading',
     },
 })
-export class TuiButtonLoadingComponent {
+export class TuiButtonLoading {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
 
     @Input()

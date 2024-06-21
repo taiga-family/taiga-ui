@@ -11,7 +11,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiNavigation} from '@taiga-ui/experimental';
-import {TuiAvatar, TuiBreadcrumbsComponent, TuiTabs} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBreadcrumbs, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -20,7 +20,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiNavigation,
         TuiIcon,
         TuiAvatar,
-        TuiBreadcrumbsComponent,
+        TuiBreadcrumbs,
         TuiItem,
         TuiLink,
         TuiAppearance,

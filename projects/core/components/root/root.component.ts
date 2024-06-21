@@ -11,7 +11,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
-import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
+import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
@@ -28,7 +28,7 @@ import {debounceTime, map, of} from 'rxjs';
         NgIf,
         AsyncPipe,
         TuiDropdownsComponent,
-        TuiDialogsComponent,
+        TuiDialogs,
         TuiAlerts,
         TuiHints,
         TuiScrollControls,

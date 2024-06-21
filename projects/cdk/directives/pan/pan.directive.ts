@@ -7,7 +7,7 @@ import {TuiPanService} from './pan.service';
     selector: '[tuiPan]',
     providers: [TuiPanService],
 })
-export class TuiPanDirective {
+export class TuiPan {
     @Output()
     public readonly tuiPan = inject(TuiPanService);
 }

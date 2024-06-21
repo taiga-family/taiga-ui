@@ -2,9 +2,9 @@
 export const routes = [
   {
     path: '',
-    component: MyPageComponent,
+    component: MyPage,
     children: [
-      tuiGenerateDialogableRoute(MyDialogComponent, {
+      tuiGenerateDialogableRoute(MyDialog, {
         path: 'path/to/dialog',
       }),
     ],

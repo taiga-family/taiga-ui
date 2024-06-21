@@ -258,7 +258,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./app.component.less'],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
-export class AppComponent {
+export class App {
   title = 'standalone-test';
 }`,
         );
@@ -292,9 +292,9 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), NG_EVENT_PLUGINS],
 }).catch((err) => console.error(err));
 `);
@@ -344,9 +344,9 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import { appRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), NG_EVENT_PLUGINS],
 }).catch((err) => console.error(err));
 `);
@@ -367,9 +367,9 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule)],
 }).catch((err) => console.error(err));
 `,
@@ -388,7 +388,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent {
+export class App {
   title = 'standalone-test';
 }`,
         {overwrite: true},
@@ -406,9 +406,9 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import { appRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation())],
 }).catch((err) => console.error(err));
 `,
@@ -425,10 +425,10 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import { appRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 import { appConfig } from './app/app.config';
 
-bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+bootstrapApplication(App, appConfig).catch((err) => console.error(err));
 `,
         {overwrite: true},
     );

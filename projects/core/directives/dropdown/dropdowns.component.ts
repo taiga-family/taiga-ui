@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk/classes';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
 
 import {TuiDropdownService} from './dropdown.service';
 
@@ -25,4 +25,4 @@ import {TuiDropdownService} from './dropdown.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
 })
-export class TuiDropdownsComponent extends TuiPortalsComponent {}
+export class TuiDropdownsComponent extends TuiPortals {}

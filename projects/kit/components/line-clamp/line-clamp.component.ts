@@ -40,7 +40,7 @@ import {
 } from 'rxjs';
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
-import {TuiLineClampBoxComponent} from './line-clamp-box.component';
+import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @Component({
@@ -61,11 +61,11 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     providers: [
         {
             provide: TUI_HINT_COMPONENT,
-            useValue: TuiLineClampBoxComponent,
+            useValue: TuiLineClampBox,
         },
     ],
 })
-export class TuiLineClampComponent implements DoCheck, AfterViewInit {
+export class TuiLineClamp implements DoCheck, AfterViewInit {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 

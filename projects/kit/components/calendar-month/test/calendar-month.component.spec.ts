@@ -3,14 +3,14 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
+import {TuiCalendarMonth} from '@taiga-ui/kit';
 
 const TODAY = TuiDay.currentLocal();
 
 describe('CalendarMonth', () => {
     @Component({
         standalone: true,
-        imports: [TuiCalendarMonthComponent],
+        imports: [TuiCalendarMonth],
         template: `
             <tui-calendar-month
                 [disabledItemHandler]="disabledItemHandler"
@@ -22,8 +22,8 @@ describe('CalendarMonth', () => {
         `,
     })
     class Test {
-        @ViewChild(TuiCalendarMonthComponent, {static: true})
-        public component!: TuiCalendarMonthComponent;
+        @ViewChild(TuiCalendarMonth, {static: true})
+        public component!: TuiCalendarMonth;
 
         public year = new TuiYear(TODAY.year);
 
@@ -36,7 +36,7 @@ describe('CalendarMonth', () => {
 
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
-    let component: TuiCalendarMonthComponent;
+    let component: TuiCalendarMonth;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({

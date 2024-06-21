@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {TuiObscuredDirective} from '@taiga-ui/cdk/directives/obscured';
+import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {
     tuiGetActualTarget,
@@ -49,7 +49,7 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
-        TuiObscuredDirective,
+        TuiObscured,
         {
             directive: TuiActiveZone,
             inputs: ['tuiActiveZoneParent'],
@@ -64,7 +64,7 @@ export class TuiDropdownOpen implements OnChanges {
     // TODO: Remove optional after refactor is complete
     private readonly directive = inject(TuiDropdownDirective, {optional: true});
     private readonly el = tuiInjectElement();
-    private readonly obscured = inject(TuiObscuredDirective);
+    private readonly obscured = inject(TuiObscured);
 
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),

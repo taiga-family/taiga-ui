@@ -28,7 +28,7 @@ import {TuiFade} from '@taiga-ui/kit/directives';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAvatarLabeledComponent {
+export class TuiAvatarLabeled {
     @Input()
     @HostBinding('attr.title')
     public label = '';

@@ -25,7 +25,7 @@ import {TuiStepperComponent} from './stepper.component';
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiStepComponent {
+export class TuiStep {
     private readonly stepper = inject(TuiStepperComponent);
     private readonly el = tuiInjectElement();
     private readonly routerLinkActive$: Observable<boolean> =

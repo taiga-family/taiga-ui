@@ -17,10 +17,10 @@ import {TuiInputSliderComponent} from './input-slider.component';
         PolymorpheusTemplate,
         TuiInputNumberModule,
         TuiNumberFormat,
-        TuiSlider,
         TuiTextfieldControllerModule,
+        ...TuiSlider,
     ],
     declarations: [TuiInputSliderComponent],
-    exports: [TuiInputSliderComponent],
+    exports: [TuiInputSliderComponent, ...TuiSlider],
 })
 export class TuiInputSliderModule {}

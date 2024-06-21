@@ -1,5 +1,5 @@
 ```ts
-import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
+import {TuiCalendarMonth} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiCalendarMonthComponent,
+    TuiCalendarMonth,
   ],
   // ...
 })

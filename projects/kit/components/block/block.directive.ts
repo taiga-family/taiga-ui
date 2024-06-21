@@ -8,7 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiNativeValidatorDirective} from '@taiga-ui/cdk/directives/native-validator';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiAppearance,
@@ -39,7 +39,7 @@ class TuiBlockStyles {}
         tuiAvatarOptionsProvider({size: 's'}),
     ],
     hostDirectives: [
-        TuiNativeValidatorDirective,
+        TuiNativeValidator,
         {
             directive: TuiAppearance,
             inputs: [

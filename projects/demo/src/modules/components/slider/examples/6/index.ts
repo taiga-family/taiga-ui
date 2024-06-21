@@ -5,20 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
-import {TuiSliderComponent, TuiSliderThumbLabelComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButton,
-        TuiSliderThumbLabelComponent,
-        TuiHint,
-        PercentPipe,
-        AsyncPipe,
-        TuiSliderComponent,
-        FormsModule,
-    ],
+    imports: [TuiButton, TuiSlider, TuiHint, PercentPipe, AsyncPipe, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

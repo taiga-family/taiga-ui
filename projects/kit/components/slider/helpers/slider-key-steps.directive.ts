@@ -19,7 +19,7 @@ import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-st
         '(blur)': 'onTouched()',
     },
 })
-export class TuiSliderKeyStepsDirective extends TuiControl<number> {
+export class TuiSliderKeySteps extends TuiControl<number> {
     private readonly slider = inject<TuiSliderComponent>(
         forwardRef(() => TuiSliderComponent),
     );

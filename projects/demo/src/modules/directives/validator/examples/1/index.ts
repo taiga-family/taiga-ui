@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiValidatorDirective} from '@taiga-ui/cdk';
+import {TuiValidator} from '@taiga-ui/cdk';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -22,7 +22,7 @@ import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/le
         FormsModule,
         TuiDataListWrapper,
         NgIf,
-        TuiValidatorDirective,
+        TuiValidator,
         TuiInputPhoneModule,
     ],
     templateUrl: './index.html',

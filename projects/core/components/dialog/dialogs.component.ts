@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiFocusTrapDirective} from '@taiga-ui/cdk/directives/focus-trap';
+import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHost} from '@taiga-ui/core/animations';
@@ -17,7 +17,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
         CommonModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiFocusTrapDirective,
+        TuiFocusTrap,
         TuiScrollControls,
         TuiScrollRef,
     ],
@@ -31,7 +31,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
         '(keydown.silent)': 'el.scrollTop = el.scrollHeight / 2',
     },
 })
-export class TuiDialogsComponent {
+export class TuiDialogs {
     protected readonly el = tuiInjectElement();
     protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> =
         inject(TUI_DIALOGS);

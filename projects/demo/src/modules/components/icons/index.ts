@@ -4,8 +4,8 @@ import {TuiDemo} from '@demo/utils';
 import {TuiIcon, TuiIconPipe, TuiLink, TuiNotification} from '@taiga-ui/core';
 
 import {COLORED_ICONS, MONO_ICONS} from './icons.tokens';
-import {IconsGroupComponent} from './icons-group/icons-group.component';
-import {IconsGroup} from './icons-group/icons-group.directive';
+import {IconsGroup} from './icons-group/icons-group.component';
+import {IconsGroupTemplate} from './icons-group/icons-group.directive';
 
 @Component({
     standalone: true,
@@ -13,8 +13,8 @@ import {IconsGroup} from './icons-group/icons-group.directive';
         TuiDemo,
         TuiIcon,
         TuiIconPipe,
-        IconsGroupComponent,
         IconsGroup,
+        IconsGroupTemplate,
         TuiLink,
         TuiNotification,
     ],

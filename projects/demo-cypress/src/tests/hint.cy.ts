@@ -19,14 +19,14 @@ describe('TuiHint', () => {
             </ng-container>
         `,
     })
-    class HostComponent {
+    class Host {
         @Input()
         public hideElement = false;
     }
 
     @Component({
         standalone: true,
-        imports: [TuiRoot, HostComponent, TuiHintDirective],
+        imports: [TuiRoot, Host, TuiHintDirective],
         template: `
             <tui-root>
                 <my-host [hideElement]="hide">
@@ -42,7 +42,7 @@ describe('TuiHint', () => {
     beforeEach(() =>
         cy
             .mount(Test, {
-                imports: [NoopAnimationsModule, HostComponent],
+                imports: [NoopAnimationsModule, Host],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrap => {

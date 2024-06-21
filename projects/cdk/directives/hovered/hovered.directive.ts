@@ -7,7 +7,7 @@ import {TuiHoveredService} from './hovered.service';
     selector: '[tuiHoveredChange]',
     providers: [TuiHoveredService],
 })
-export class TuiHoveredDirective {
+export class TuiHovered {
     @Output()
     public readonly tuiHoveredChange = inject(TuiHoveredService);
 }

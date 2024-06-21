@@ -60,7 +60,7 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
     },
   ],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of
@@ -121,7 +121,7 @@ import {TUI_SERBIAN_LANGUAGE} from './serbian';
     },
   ],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Thank you!

@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiProgressModule} from '@taiga-ui/kit';
+import {TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBar, TuiButton, TuiTitle, TuiProgressModule],
+    imports: [TuiAppBar, TuiButton, TuiTitle, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -11,7 +11,7 @@ import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rx
         '(dragover.prevent.silent)': '0',
     },
 })
-export class TuiDroppableDirective {
+export class TuiDroppable {
     private readonly el = tuiInjectElement();
 
     @Output()

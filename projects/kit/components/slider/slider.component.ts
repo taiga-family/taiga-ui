@@ -14,7 +14,7 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
-import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
+import {TuiSliderKeySteps} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
@@ -100,7 +100,7 @@ export class TuiSliderComponent {
 
     @tuiPure
     protected get hasKeySteps(): boolean {
-        return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
+        return Boolean(this.injector.get(TuiSliderKeySteps, null));
     }
 
     protected get step(): number {

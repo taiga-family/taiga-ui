@@ -8,9 +8,9 @@ import {timer} from 'rxjs';
 @Directive({
     standalone: true,
     selector: '[tuiNativeValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidatorDirective, true)],
+    providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
 })
-export class TuiNativeValidatorDirective implements Validator {
+export class TuiNativeValidator implements Validator {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly host = tuiInjectElement<HTMLInputElement>();

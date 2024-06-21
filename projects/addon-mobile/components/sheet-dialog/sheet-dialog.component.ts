@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiClickOutsideDirective} from '@taiga-ui/cdk/directives/click-outside';
+import {TuiClickOutside} from '@taiga-ui/cdk/directives/click-outside';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -43,7 +43,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     selector: 'tui-sheet-dialog',
     imports: [
         NgForOf,
-        TuiClickOutsideDirective,
+        TuiClickOutside,
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,

@@ -15,7 +15,7 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
-import TuiRoutableDialogComponent from '../routable-dialog.component';
+import TuiRoutableDialog from '../routable-dialog.component';
 
 function providerOf(serviceToken: any, mockedService: any): Provider {
     return {
@@ -25,18 +25,18 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 }
 
 @Component({template: ''})
-class DialogComponent {}
+class Dialog {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {
     snapshot: {
         data: {
-            dialog: DialogComponent,
+            dialog: Dialog,
         },
     },
 };
 
 describe('TuiRoutableDialog', () => {
-    let fixture: ComponentFixture<TuiRoutableDialogComponent>;
+    let fixture: ComponentFixture<TuiRoutableDialog>;
     let tuiDialogService: TuiDialogService;
     let router: Router;
 
@@ -48,7 +48,7 @@ describe('TuiRoutableDialog', () => {
         router = mock(Router);
 
         void TestBed.configureTestingModule({
-            imports: [TuiRoutableDialogComponent],
+            imports: [TuiRoutableDialog],
             providers: [
                 NG_EVENT_PLUGINS,
                 providerOf(TuiDialogService, tuiDialogService),
@@ -64,7 +64,7 @@ describe('TuiRoutableDialog', () => {
             closeDialogImmediately ? EMPTY : NEVER,
         );
 
-        fixture = TestBed.createComponent(TuiRoutableDialogComponent);
+        fixture = TestBed.createComponent(TuiRoutableDialog);
     }
 
     it('Dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
@@ -77,7 +77,7 @@ describe('TuiRoutableDialog', () => {
         // assert
         verify(
             tuiDialogService.open(
-                deepEqual(new PolymorpheusComponent(DialogComponent, anything())),
+                deepEqual(new PolymorpheusComponent(Dialog, anything())),
                 anything(),
             ),
         ).once();
@@ -92,7 +92,7 @@ describe('TuiRoutableDialog', () => {
         createComponent({
             snapshot: {
                 data: {
-                    dialog: DialogComponent,
+                    dialog: Dialog,
                     dialogOptions,
                 } as unknown as Data,
             } as unknown as ActivatedRouteSnapshot,
@@ -110,7 +110,7 @@ describe('TuiRoutableDialog', () => {
         const activatedRouteMock = {
             snapshot: {
                 data: {
-                    dialog: DialogComponent,
+                    dialog: Dialog,
                     isLazy: true,
                 } as unknown as Data,
             } as unknown as ActivatedRouteSnapshot,
@@ -152,7 +152,7 @@ describe('TuiRoutableDialog', () => {
         createComponent({
             snapshot: {
                 data: {
-                    dialog: DialogComponent,
+                    dialog: Dialog,
                     backUrl: '../../..',
                 } as unknown as Data,
             } as unknown as ActivatedRouteSnapshot,
@@ -171,7 +171,7 @@ describe('TuiRoutableDialog', () => {
             {
                 snapshot: {
                     data: {
-                        dialog: DialogComponent,
+                        dialog: Dialog,
                         backUrl: '../../..',
                     } as unknown as Data,
                 } as unknown as ActivatedRouteSnapshot,

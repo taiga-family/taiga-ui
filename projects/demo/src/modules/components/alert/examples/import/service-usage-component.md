@@ -1,7 +1,7 @@
 ```ts
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {TuiAlertService} from '@taiga-ui/core';
-import {CustomNotificationComponent} from './custom-notification.component';
+import {CustomNotification} from './custom-notification.component';
 import {inject} from '@angular/core';
 
 //...

@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
-import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
+import {TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBreadcrumbsComponent, TuiItem, TuiLink],
+    imports: [TuiDemo, TuiBreadcrumbs, TuiItem, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

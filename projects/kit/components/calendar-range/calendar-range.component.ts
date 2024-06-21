@@ -24,7 +24,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
-import {TuiCalendarComponent} from '@taiga-ui/core/components/calendar';
+import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -37,20 +37,12 @@ import type {TuiDayRangePeriod} from './day-range-period';
 @Component({
     standalone: true,
     selector: 'tui-calendar-range',
-    imports: [
-        AsyncPipe,
-        NgIf,
-        NgForOf,
-        TuiMapperPipe,
-        TuiCalendarComponent,
-        TuiDataList,
-        TuiIcon,
-    ],
+    imports: [AsyncPipe, NgIf, NgForOf, TuiMapperPipe, TuiCalendar, TuiDataList, TuiIcon],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarRangeComponent implements OnChanges {
+export class TuiCalendarRange implements OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected previousValue: TuiDayRange | null = null;

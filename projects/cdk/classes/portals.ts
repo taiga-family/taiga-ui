@@ -15,7 +15,7 @@ import type {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
  * Abstract class for host element for dynamically created portals.
  */
 @Directive()
-export abstract class TuiPortalsComponent {
+export abstract class TuiPortals {
     @ViewChild('viewContainer', {read: ViewContainerRef})
     private readonly vcr!: ViewContainerRef;
 
@@ -45,9 +45,9 @@ export abstract class TuiPortalsComponent {
  */
 @Injectable()
 export abstract class TuiPortalService {
-    protected host?: TuiPortalsComponent;
+    protected host?: TuiPortals;
 
-    public attach(host: TuiPortalsComponent): void {
+    public attach(host: TuiPortals): void {
         this.host = host;
     }
 
@@ -71,7 +71,7 @@ export abstract class TuiPortalService {
         }
     }
 
-    protected get safeHost(): TuiPortalsComponent {
+    protected get safeHost(): TuiPortals {
         if (!this.host) {
             throw new TuiNoHostException();
         }
