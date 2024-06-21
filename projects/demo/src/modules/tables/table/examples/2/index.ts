@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {BehaviorSubject} from 'rxjs';
 
 interface User {
     readonly email: string;
@@ -19,7 +20,7 @@ interface User {
 export class TuiTableExample2 {
     readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
-    users: readonly User[] = [
+    readonly users$ = new BehaviorSubject<readonly User[]>([
         {
             name: 'Michael Palin',
             email: 'm.palin@montypython.com',
@@ -56,9 +57,11 @@ export class TuiTableExample2 {
             status: 'deceased',
             tags: ['Funny', 'King Arthur'],
         },
-    ];
+    ]);
 
     remove(item: User): void {
-        this.users = this.users.filter(user => user !== item);
+        const users = this.users$.getValue().filter(user => user !== item);
+
+        this.users$.next(users);
     }
 }
