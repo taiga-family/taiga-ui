@@ -3,6 +3,6 @@ import {TuiElement} from '@taiga-ui/cdk/directives/element';
 
 @Directive({
     standalone: true,
-    selector: '[tuiResizeable]',
+    selector: '[tuiResizable]',
 })
-export class TuiResizeable extends TuiElement {}
+export class TuiResizable extends TuiElement {}

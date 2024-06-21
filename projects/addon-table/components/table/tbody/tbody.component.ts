@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -25,15 +25,7 @@ import {TuiTableTr} from '../tr/tr.component';
 @Component({
     standalone: true,
     selector: 'tbody[tuiTbody]',
-    imports: [
-        NgForOf,
-        NgTemplateOutlet,
-        NgIf,
-        TuiIcon,
-        PolymorpheusOutlet,
-        TuiChevron,
-        TuiMapperPipe,
-    ],
+    imports: [NgIf, TuiIcon, PolymorpheusOutlet, TuiChevron, TuiMapperPipe],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

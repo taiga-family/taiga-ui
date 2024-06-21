@@ -43,13 +43,12 @@ export class TuiHintDirective<C>
     implements OnDestroy, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiHintService);
-    private readonly options = inject(TUI_HINT_OPTIONS);
 
     @Input('tuiHintContext')
     public context?: C;
 
-    @Input()
-    public tuiHintAppearance: string | null = null;
+    @Input('tuiHintAppearance')
+    public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
     public content: PolymorpheusContent<C>;
     public component = inject(PolymorpheusComponent<unknown>);
@@ -64,10 +63,6 @@ export class TuiHintDirective<C>
         if (!content) {
             this.toggle(false);
         }
-    }
-
-    public get appearance(): string {
-        return this.tuiHintAppearance ?? this.options.appearance;
     }
 
     public ngOnDestroy(): void {

@@ -22,7 +22,6 @@ const LEFT = 1;
     selector: '[tuiHint]:is(never)',
 })
 export class TuiHintPosition extends TuiPositionAccessor {
-    private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor),
@@ -36,11 +35,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
         );
 
     @Input('tuiHintDirection')
-    public direction: TuiHintOptions['direction'] = this.options.direction;
+    public direction: TuiHintOptions['direction'] = inject(TUI_HINT_OPTIONS).direction;
 
     public readonly type = 'hint';
 
-    public getPosition({width, height}: ClientRect): TuiPoint {
+    public getPosition({width, height}: DOMRect): TuiPoint {
         const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
