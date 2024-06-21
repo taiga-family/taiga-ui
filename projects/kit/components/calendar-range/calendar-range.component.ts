@@ -47,6 +47,7 @@ export class TuiCalendarRange implements OnChanges {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
+    protected selectedActivePeriod: TuiDayRangePeriod | null = null;
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
 
     @Input()
@@ -141,10 +142,12 @@ export class TuiCalendarRange implements OnChanges {
     }
 
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== 'string') {
+        if (!tuiIsString(item)) {
             this.updateValue(item.range.dayLimit(this.min, this.max));
+            this.selectedActivePeriod = item;
         } else if (this.activePeriod !== null) {
             this.updateValue(null);
+            this.selectedActivePeriod = null;
         }
     }
 
@@ -154,6 +157,7 @@ export class TuiCalendarRange implements OnChanges {
 
     protected onDayClick(day: TuiDay): void {
         this.previousValue = this.value;
+        this.selectedActivePeriod = null;
 
         if (!this.value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
@@ -169,7 +173,8 @@ export class TuiCalendarRange implements OnChanges {
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.items.find(item =>
+            this.selectedActivePeriod ??
+            (this.items.find(item =>
                 tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
@@ -177,7 +182,8 @@ export class TuiCalendarRange implements OnChanges {
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ||
+                null)
         );
     }
 

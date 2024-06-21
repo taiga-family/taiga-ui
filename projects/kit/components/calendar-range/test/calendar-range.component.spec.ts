@@ -32,6 +32,7 @@ describe('rangeCalendarComponent', () => {
                 [items]="items"
                 [max]="max"
                 [min]="min"
+                [value]="value"
                 (valueChange)="onRangeChange($event)"
             />
         `,
@@ -59,6 +60,8 @@ describe('rangeCalendarComponent', () => {
         public min = new TuiDay(1900, 0, 1);
 
         public max = TUI_LAST_DAY;
+
+        public value: TuiDayRange | null = null;
 
         public onRangeChange(range: TuiDayRange | null): void {
             this.control.setValue(range);
@@ -108,6 +111,17 @@ describe('rangeCalendarComponent', () => {
             expect(items.length).toBe(7);
         });
 
+        it('If the value fit any range, check the box next to appropriate range', () => {
+            const today = TuiDay.currentLocal();
+
+            testComponent.value = new TuiDayRange(today, today);
+            fixture.detectChanges();
+
+            const items = getItems();
+
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+        });
+
         it('If the value does not fit any range, check the box next to "Other date..."', () => {
             expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
         });
@@ -124,6 +138,7 @@ describe('rangeCalendarComponent', () => {
 
             testComponent.min = min;
             fixture.detectChanges();
+
             component['onItemSelect'](component.items[5]);
             fixture.detectChanges();
 
@@ -167,6 +182,47 @@ describe('rangeCalendarComponent', () => {
             expect(items.length).toBe(2);
             expect(items[0].nativeElement.textContent.trim()).toBe(title);
             expect(items[1].nativeElement.textContent.trim()).toBe('Other date...');
+        });
+
+        it('When redefining intervals, displays appropriate checkbox', () => {
+            const today = TuiDay.currentLocal();
+            const previousMonth = today.append({month: -1});
+            const title = 'New interval';
+
+            component['onItemSelect'](component.items[0]);
+            fixture.detectChanges();
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), title),
+                ...testComponent.items,
+            ];
+            fixture.detectChanges();
+
+            const items = getItems();
+
+            expect(items[0].nativeElement.textContent.trim()).toBe(title);
+
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+        });
+
+        it('If there are ranges with same range dates, displays appropriate checkbox when switching between them', () => {
+            const today = TuiDay.currentLocal();
+            const previousMonth = today.append({month: -1});
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '1'),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '2'),
+            ];
+            fixture.detectChanges();
+
+            component['onItemSelect'](component.items[1]);
+            fixture.detectChanges();
+
+            const items = getItems();
+
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
         });
     });
 
