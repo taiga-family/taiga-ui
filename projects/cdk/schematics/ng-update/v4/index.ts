@@ -9,7 +9,13 @@ import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {removeModules, replaceEnums, replaceIdentifiers, showWarnings} from '../steps';
+import {
+    removeModules,
+    renameTypes,
+    replaceEnums,
+    replaceIdentifiers,
+    showWarnings,
+} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
@@ -25,6 +31,7 @@ import {
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
 } from './steps/constants';
+import {TYPES_TO_RENAME} from './steps/constants/types';
 import {migrateOptionProviders} from './steps/migrate-option-providers';
 import {migrateProprietary} from './steps/migrate-proprietary';
 import {migrateStyles} from './steps/migrate-styles';
@@ -35,6 +42,7 @@ function main(options: TuiSchema): Rule {
 
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
+        renameTypes(options, TYPES_TO_RENAME);
 
         restoreTuiMapper(options);
         restoreTuiMatcher(options);

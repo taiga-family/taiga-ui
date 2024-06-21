@@ -17,6 +17,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiMoneyModule } from "@taiga-ui/addon-commerce";
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
@@ -24,6 +25,11 @@ import { TuiMoneyModule } from "@taiga-ui/addon-commerce";
     imports: [TuiMoneyModule]
 })
 export class Test {
+    example: TuiDocExample = {
+        [DocExamplePrimaryTab.MaskitoOptions]: import(
+            './examples/1-high-precision/mask.ts?raw'
+        )
+    }
 }`;
 
 const COMPONENT_AFTER = `import { TuiNumberFormat } from "@taiga-ui/core";
@@ -35,6 +41,11 @@ import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
     imports: [TuiAmountPipe, TuiNumberFormat]
 })
 export class Test {
+    example: Record<string, string | Promise<unknown>> = {
+        [DocExamplePrimaryTab.MaskitoOptions]: import(
+            './examples/1-high-precision/mask.ts?raw'
+        )
+    }
 }`;
 
 const TEMPLATE_BEFORE = `

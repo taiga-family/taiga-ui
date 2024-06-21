@@ -19,6 +19,7 @@ function renameType(
     to?: string,
     moduleSpecifier?: string[] | string,
     preserveGenerics = false,
+    removeImport = false,
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
@@ -30,7 +31,7 @@ function renameType(
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
-            processImport(parent, from, to);
+            processImport(parent, from, to, removeImport);
         } else if (Node.isTypeReference(parent)) {
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
@@ -40,13 +41,18 @@ function renameType(
     });
 }
 
-function processImport(node: ImportSpecifier, from: string, to?: string): void {
+function processImport(
+    node: ImportSpecifier,
+    from: string,
+    to?: string,
+    remove?: boolean,
+): void {
     const filePath = node.getSourceFile().getFilePath();
     const targetImportAlreadyExists = Boolean(
         getImports(filePath, {namedImports: to}).length,
     );
 
-    if (to && !targetImportAlreadyExists) {
+    if (to && !targetImportAlreadyExists && !remove) {
         renameImport(node, removeGeneric(to), removeGeneric(from));
     } else {
         removeImport(node);
@@ -68,8 +74,8 @@ export function renameTypes(options: TuiSchema, types: readonly ReplacementType[
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
-    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
-        renameType(from, to, moduleSpecifier, preserveGenerics),
+    types.forEach(({from, to, moduleSpecifier, preserveGenerics, removeImport}) =>
+        renameType(from, to, moduleSpecifier, preserveGenerics, removeImport),
     );
 
     !options['skip-logs'] &&
