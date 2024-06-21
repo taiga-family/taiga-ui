@@ -1,4 +1,4 @@
-import {NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,6 +6,7 @@ import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiChip} from '@taiga-ui/kit';
+import {BehaviorSubject} from 'rxjs';
 
 interface User {
     readonly email: string;
@@ -26,6 +27,7 @@ interface User {
         NgIf,
         TuiButton,
         TuiLet,
+        AsyncPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -35,7 +37,7 @@ interface User {
 export default class Example {
     protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
-    protected users: readonly User[] = [
+    protected users$ = new BehaviorSubject<User[]>([
         {
             name: 'Michael Palin',
             email: 'm.palin@montypython.com',
@@ -72,9 +74,11 @@ export default class Example {
             status: 'deceased',
             tags: ['Funny', 'King Arthur'],
         },
-    ];
+    ]);
 
     protected remove(item: User): void {
-        this.users = this.users.filter(user => user !== item);
+        const users = this.users$.getValue().filter(user => user !== item);
+
+        this.users$.next(users);
     }
 }

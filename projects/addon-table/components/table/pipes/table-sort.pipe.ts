@@ -13,8 +13,8 @@ import {TuiTableDirective} from '../directives/table.directive';
 export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTransform {
     private readonly table = inject(TuiTableDirective<K>);
 
-    public transform<T extends K>(data: readonly T[]): readonly T[] {
-        return this.sort<T>(data, this.table.sorter, this.table.direction);
+    public transform<T extends K>(data?: readonly T[] | null): readonly T[] {
+        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction);
     }
 
     @tuiPure
