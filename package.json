@@ -1,6 +1,7 @@
 {
     "name": "@taiga-ui/components",
     "version": "4.0.0-rc.1",
+    "private": true,
     "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
@@ -77,34 +78,13 @@
     "eslintConfig": {
         "extends": [
             "plugin:@taiga-ui/experience/all",
-            "plugin:@taiga-ui/experience/taiga-naming"
+            "plugin:@taiga-ui/experience/taiga-naming",
+            "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
             "@angular-eslint/component-class-suffix": "off",
             "jest/prefer-importing-jest-globals": "off"
         },
-        "overrides": [
-            {
-                "files": [
-                    "projects/**/*.ts"
-                ],
-                "excludedFiles": [
-                    "**/*.spec.ts",
-                    "**/*.cy.ts",
-                    "projects/demo/**/*.ts"
-                ],
-                "parser": "@typescript-eslint/parser",
-                "rules": {
-                    "@taiga-ui/experience/no-deep-imports": "off",
-                    "@taiga-ui/experience/prefer-deep-imports": [
-                        "error",
-                        {
-                            "importFilter": "/^@taiga-ui\\u002F(addon-charts|addon-commerce|addon-doc|addon-mobile|addon-table|cdk|core|experimental|i18n|icons|kit|layout|legacy|styles|testing)$/"
-                        }
-                    ]
-                }
-            }
-        ],
         "root": true
     },
     "stylelint": {
