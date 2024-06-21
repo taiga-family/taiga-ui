@@ -71,7 +71,7 @@
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+                "command": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
             },
             "dependsOn": [
                 {
