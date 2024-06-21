@@ -139,13 +139,6 @@ export class TuiCalendarSheet {
         return this.value instanceof TuiDayRange && this.value.isSingleDay;
     }
 
-    /**
-     * @deprecated: use {@link this.isSingleDayRange}
-     */
-    protected get isSingle(): boolean {
-        return this.isSingleDayRange;
-    }
-
     protected readonly toMarkers = (
         day: TuiDay,
         today: boolean,
