@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[59059],{59059:n=>{n.exports=".island {\n    max-width: 20rem;\n    padding: 1rem;\n    border: 1px solid var(--tui-base-03);\n    border-radius: 1.75rem;\n}\n\n.clamp {\n    pointer-events: none;\n}\n"}}]);

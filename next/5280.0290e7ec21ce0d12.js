@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5280],{5280:c=>{c.exports=".first {\n    color: var(--tui-chart-categorical-01);\n}\n\n.second {\n    color: var(--tui-chart-categorical-03);\n}\n\n.third {\n    color: var(--tui-chart-categorical-12);\n}\n"}}]);

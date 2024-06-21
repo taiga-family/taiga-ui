@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67419],{67419:n=>{n.exports=".island {\n    width: 20rem;\n    margin-bottom: 1rem;\n    box-sizing: border-box;\n    padding: 1rem;\n    border: 1px solid var(--tui-base-03);\n    border-radius: 1rem;\n}\n\n.email {\n    margin: 0;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n}\n"}}]);

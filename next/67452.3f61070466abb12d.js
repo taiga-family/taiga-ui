@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67452],{67452:e=>{e.exports="tui-action-bar {\n    background: var(--tui-chart-categorical-13);\n    left: 3rem;\n    right: 3rem;\n}\n"}}]);

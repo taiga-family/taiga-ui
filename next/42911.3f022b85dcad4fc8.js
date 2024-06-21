@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42911],{42911:a=>{a.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.wrapper {\n    position: relative;\n\n    --tui-chart-0: var(--tui-chart-categorical-03);\n}\n\n.stacked {\n    .fullsize();\n\n    --tui-background-neutral-1: transparent;\n    --tui-chart-0: var(--tui-chart-categorical-04);\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[97579],{97579:n=>{n.exports=":host {\n    display: flex;\n    gap: 1.25rem;\n    flex-wrap: wrap;\n}\n\n.success {\n    background: var(--tui-status-positive);\n}\n\n.primary {\n    background: var(--tui-background-accent-1);\n}\n"}}]);
