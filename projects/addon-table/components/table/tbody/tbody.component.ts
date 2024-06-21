@@ -3,7 +3,6 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
     ContentChildren,
     EventEmitter,
     forwardRef,
@@ -18,9 +17,7 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TuiTableRow} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
@@ -43,11 +40,7 @@ import {TuiTableTr} from '../tr/tr.component';
     providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
-    private readonly pipe = inject(TuiTableSortPipe<T>);
     private readonly options = inject(TUI_TABLE_OPTIONS);
-
-    @ContentChild(forwardRef(() => TuiTableRow))
-    protected readonly row?: TuiTableRow<T>;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -67,10 +60,6 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
 
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
-
-    public get sorted(): readonly T[] {
-        return this.pipe.transform(this.data);
-    }
 
     protected readonly toContext = (
         $implicit: T,

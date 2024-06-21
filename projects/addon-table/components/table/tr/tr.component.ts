@@ -53,10 +53,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
         switchMap(() => tuiQueryListChanges(this.body.rows)),
         map(
             rows =>
-                /**
-                 * TODO v4.0 replace `this.body.sorted` with `this.body.data` (don't forget to drop `sorted`-getter).
-                 */
-                this.body.sorted[rows.findIndex(row => row === this)] as Record<
+                this.body.data[rows.findIndex(row => row === this)] as Record<
                     string | keyof T,
                     any
                 >,
