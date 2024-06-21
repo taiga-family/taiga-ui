@@ -1,13 +1,13 @@
 {
     "name": "testing",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/testing",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "library",
     "prefix": "tui",
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/testing"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "{projectRoot}/tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
@@ -22,22 +22,31 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/testing"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./dist/{projectName}"
+            }
+        },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": [
-                    "cp ./LICENSE ./dist/testing",
-                    "ts-node ./scripts/publish.ts --path ./dist/testing --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ],
-                "parallel": false
-            }
+                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }

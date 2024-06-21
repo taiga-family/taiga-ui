@@ -1,7 +1,7 @@
 {
     "name": "demo-playwright",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo-playwright",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "application",
     "prefix": "app",
     "targets": {
@@ -14,7 +14,7 @@
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx e2e demo-playwright -- --ui --debug"
+                "command": "nx e2e {projectName} -- --ui --debug"
             }
         }
     }

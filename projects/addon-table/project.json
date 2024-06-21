@@ -1,7 +1,7 @@
 {
     "name": "addon-table",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/addon-table",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -23,23 +23,32 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/addon-table"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
-                "coverageDirectory": "coverage/addon-table",
+                "coverageDirectory": "coverage/{projectName}",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
+            }
+        },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./dist/{projectName}"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": [
-                    "cp ./LICENSE ./dist/addon-table",
-                    "ts-node ./scripts/publish.ts --path ./dist/addon-table --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ],
-                "parallel": false
-            }
+                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }

@@ -1,14 +1,14 @@
 {
     "name": "addon-mobile",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/addon-mobile",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/addon-mobile"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
@@ -23,23 +23,32 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/addon-mobile"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
-                "coverageDirectory": "coverage/addon-mobile",
+                "coverageDirectory": "coverage/{projectName}",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
+            }
+        },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./dist/{projectName}"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": [
-                    "cp ./LICENSE ./dist/addon-mobile",
-                    "ts-node ./scripts/publish.ts --path ./dist/addon-mobile --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ],
-                "parallel": false
-            }
+                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }
