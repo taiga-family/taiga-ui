@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[92326],{92326:n=>{n.exports="```ts\nimport {TuiBarSet} from '@taiga-ui/addon-charts';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiBarSet,\n  ],\n})\n// ...\nexport class Example {}\n```\n"}}]);
