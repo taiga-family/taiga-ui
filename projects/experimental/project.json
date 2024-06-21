@@ -1,14 +1,14 @@
 {
     "name": "experimental",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/experimental",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/experimental"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
@@ -23,23 +23,32 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/experimental"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
-                "coverageDirectory": "coverage/core",
+                "coverageDirectory": "coverage/{projectName}",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
+            }
+        },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./dist/{projectName}"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": [
-                    "cp ./LICENSE ./dist/experimental",
-                    "ts-node ./scripts/publish.ts --path ./dist/experimental --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ],
-                "parallel": false
-            }
+                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }

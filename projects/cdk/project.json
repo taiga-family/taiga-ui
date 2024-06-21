@@ -1,7 +1,7 @@
 {
     "name": "cdk",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/cdk",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing", "!core", "!styles"],
@@ -25,7 +25,7 @@
             "outputs": ["{workspaceRoot}/dist/cdk"],
             "options": {
                 "parallel": false,
-                "commands": ["nx prebuild cdk", "nx postbuild cdk"]
+                "commands": ["nx prebuild {projectName}", "nx postbuild {projectName}"]
             }
         },
         "postbuild": {
@@ -37,7 +37,7 @@
         "schematics": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "schematics ./dist/cdk:updateToV{args.v} --allow-private --dry-run true"
+                "command": "schematics ./dist/{projectName}:updateToV{args.v} --allow-private --dry-run true"
             },
             "dependsOn": [
                 {
@@ -48,10 +48,10 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/cdk"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
-                "coverageDirectory": "coverage/cdk",
+                "coverageDirectory": "coverage/{projectName}",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             },
@@ -62,15 +62,24 @@
                 }
             ]
         },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./dist/{projectName}"
+            }
+        },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "commands": [
-                    "cp ./LICENSE ./dist/cdk",
-                    "ts-node ./scripts/publish.ts --path ./dist/cdk --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-                ],
-                "parallel": false
-            }
+                "commands": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }

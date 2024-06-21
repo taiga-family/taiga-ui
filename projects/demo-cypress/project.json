@@ -1,7 +1,7 @@
 {
     "name": "demo-cypress",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo-cypress",
+    "sourceRoot": "projects/{projectName}",
     "projectType": "application",
     "prefix": "app",
     "implicitDependencies": ["demo"],

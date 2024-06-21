@@ -15,7 +15,7 @@
         },
         "build": {
             "executor": "@nx/angular:webpack-browser",
-            "outputs": ["{workspaceRoot}/dist/demo"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -24,13 +24,13 @@
             ],
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.config.ts"
+                    "path": "projects/{projectName}/webpack.config.ts"
                 },
-                "outputPath": "dist/demo/browser",
+                "outputPath": "dist/{projectName}/browser",
                 "index": "{projectRoot}/src/index.html",
                 "main": "{projectRoot}/src/main.ts",
                 "polyfills": "{projectRoot}/src/polyfills.ts",
-                "tsConfig": "projects/demo/tsconfig.app.json",
+                "tsConfig": "projects/{projectName}/tsconfig.app.json",
                 "assets": [
                     "{projectRoot}/src/404.html",
                     {
@@ -128,20 +128,20 @@
             },
             "configurations": {
                 "production": {
-                    "buildTarget": "demo:build:production",
+                    "buildTarget": "{projectName}:build:production",
                     "aot": true
                 },
                 "ru": {
-                    "buildTarget": "demo:build:ru"
+                    "buildTarget": "{projectName}:build:ru"
                 },
                 "development": {
-                    "buildTarget": "demo:build:development"
+                    "buildTarget": "{projectName}:build:development"
                 },
                 "def": {
-                    "buildTarget": "demo:build:def"
+                    "buildTarget": "{projectName}:build:def"
                 },
                 "shadow": {
-                    "buildTarget": "demo:build:shadow"
+                    "buildTarget": "{projectName}:build:shadow"
                 }
             },
             "defaultConfiguration": "development"
@@ -149,7 +149,7 @@
         "serve-ssl": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx mkcert demo && nx serve demo --ssl --open --host 0.0.0.0 --disable-host-check"
+                "command": "nx mkcert {projectName} && nx serve {projectName} --ssl --open --host 0.0.0.0 --disable-host-check"
             }
         },
         "serve-ssr": {
@@ -157,12 +157,12 @@
             "options": {},
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
-                    "serverTarget": "demo:server:production"
+                    "browserTarget": "{projectName}:build:production",
+                    "serverTarget": "{projectName}:server:production"
                 },
                 "development": {
-                    "serverTarget": "demo:server:development",
-                    "browserTarget": "demo:build:development"
+                    "serverTarget": "{projectName}:server:development",
+                    "browserTarget": "{projectName}:build:development"
                 }
             },
             "dependsOn": [
@@ -186,7 +186,7 @@
                 "customWebpackConfig": {
                     "path": "{projectRoot}/webpack.server.config.ts"
                 },
-                "outputPath": "dist/demo/server",
+                "outputPath": "dist/{projectName}/server",
                 "main": "{projectRoot}/server.ts",
                 "tsConfig": "{projectRoot}/tsconfig.server.json",
                 "sourceMap": true,
@@ -210,11 +210,11 @@
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
-            "outputs": ["{workspaceRoot}/dist/demo"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "browserTarget": "demo:build:production",
-                "serverTarget": "demo:server:production",
-                "routesFile": "projects/demo/routes.txt",
+                "browserTarget": "{projectName}:build:production",
+                "serverTarget": "{projectName}:server:production",
+                "routesFile": "projects/{projectName}/routes.txt",
                 "guessRoutes": false
             },
             "configurations": {
@@ -234,7 +234,7 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/demo"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
