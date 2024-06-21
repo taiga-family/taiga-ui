@@ -19,7 +19,7 @@ import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
-import {TuiResizeable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
+import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -41,7 +41,7 @@ const MIN_WIDTH = 160;
         TuiResizer,
         FormsModule,
         TuiSwitch,
-        TuiResizeable,
+        TuiResizable,
         NgIf,
         ReactiveFormsModule,
         NgTemplateOutlet,
@@ -59,8 +59,8 @@ const MIN_WIDTH = 160;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDemo implements OnInit {
-    @ViewChild(TuiResizeable, {static: true})
-    private readonly resizeable?: ElementRef<HTMLElement>;
+    @ViewChild(TuiResizable, {static: true})
+    private readonly resizable?: ElementRef<HTMLElement>;
 
     @ViewChild('content', {static: true})
     private readonly content?: ElementRef<HTMLElement>;
@@ -137,23 +137,23 @@ export class TuiDocDemo implements OnInit {
     }
 
     protected updateWidth(width = NaN): void {
-        if (!this.resizer || !this.resizeable || !this.content) {
+        if (!this.resizer || !this.resizable || !this.content) {
             return;
         }
 
-        const safe = width || this.resizeable.nativeElement.clientWidth;
+        const safe = width || this.resizable.nativeElement.clientWidth;
         const total = this.el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 
         this.resizer.nativeElement.textContent = String(clamped || '-');
-        this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : '';
+        this.resizable.nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
 
     private get delta(): number {
-        return this.resizeable && this.content
-            ? this.resizeable.nativeElement.clientWidth -
+        return this.resizable && this.content
+            ? this.resizable.nativeElement.clientWidth -
                   this.content.nativeElement.clientWidth
             : 0;
     }

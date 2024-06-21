@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import {TuiResizeable} from './resizeable.directive';
+import {TuiResizable} from './resizable.directive';
 
 @Directive({
     standalone: true,
@@ -18,7 +18,7 @@ import {TuiResizeable} from './resizeable.directive';
     host: {'[style.touchAction]': '"none"'},
 })
 export class TuiResizer {
-    private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeable);
+    private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
 
     protected x = NaN;
     protected y = NaN;
@@ -52,8 +52,8 @@ export class TuiResizer {
     protected onPointerDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
-        this.width = this.resizeable.nativeElement.clientWidth;
-        this.height = this.resizeable.nativeElement.clientHeight;
+        this.width = this.resizable.nativeElement.clientWidth;
+        this.height = this.resizable.nativeElement.clientHeight;
     }
 
     @HostListener('document:pointermove.silent', ['$event'])
@@ -75,7 +75,7 @@ export class TuiResizer {
             return;
         }
 
-        const {style} = this.resizeable.nativeElement;
+        const {style} = this.resizable.nativeElement;
         const size = [
             this.width + this.tuiResizer[0] * (x - this.x),
             this.height + this.tuiResizer[1] * (y - this.y),

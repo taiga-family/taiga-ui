@@ -1,5 +1,5 @@
 ```ts
-import {TuiResizeable, TuiResizer} from '@taiga-ui/cdk';
+import {TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiResizeable, TuiResizer} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiResizeable,
+    TuiResizable,
     TuiResizer,
   ],
   // ...
