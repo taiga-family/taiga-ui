@@ -12,6 +12,18 @@
             "factory": "./ng-add/setup-project",
             "schema": "./ng-add/schema.json"
         },
+        "migrateIconsV4": {
+            "private": true,
+            "description": "Migrate Taiga UI icons to a new format",
+            "factory": "./ng-update/v4/migrate-icons/index#migrateIcons",
+            "schema": "./ng-update/v4/schema.json"
+        },
+        "migrateCssVarsV4": {
+            "private": true,
+            "description": "Migrate Taiga UI css variables",
+            "factory": "./ng-update/v4/migrate-css-vars/index#migrateCssVars",
+            "schema": "./ng-update/v4/schema.json"
+        },
         "updateToV4": {
             "private": true,
             "description": "Manually run migration to update Taiga to v4.x.x",

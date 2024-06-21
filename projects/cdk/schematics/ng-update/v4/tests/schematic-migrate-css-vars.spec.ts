@@ -18,9 +18,16 @@ const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
+    host: {
+      '[style.--tui-accent-active]': 'red',
+    }
 })
 export class Test {
-   icons = ['tuiIconMailLarge', 'tuiIconStar', 'tuiIconArrowDown']
+   flag = false;
+
+   get color(): string {
+     return this.flag ? 'var(--tui-base-05)' : 'var(--tui-primary-text)';
+   }
 }`;
 
 const COMPONENT_AFTER = `import { Component } from "@angular/core";
@@ -28,36 +35,42 @@ const COMPONENT_AFTER = `import { Component } from "@angular/core";
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
+    host: {
+      '[style.--tui-background-accent-2-pressed]': 'red',
+    }
 })
 export class Test {
-   icons = ['@tui.mail', '@tui.star', '@tui.arrow-down']
+   flag = false;
+
+   get color(): string {
+     return this.flag ? 'var(--tui-border-hover)' : 'var(--tui-text-primary-on-accent-1)';
+   }
 }`;
 
-const TEMPLATE_BEFORE = `
-<tui-avatar
-    avatarUrl="tuiIconUser"
-    text="alex inkin"
-    [rounded]="true"
-></tui-avatar>
-<tui-avatar
-    avatarUrl="tuiIconAlertCircle"
-></tui-avatar>
-<button tuiIconButton icon="tuiIconClose">Button</button>
-<button tuiIconButton icon="tuiIconCloseLarge">Button</button>
-`;
+const STYLES_BEFORE = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
-const TEMPLATE_AFTER = `
-<tui-avatar
-    avatarUrl="@tui.user"
-    text="alex inkin"
-    [rounded]="true"
-></tui-avatar>
-<tui-avatar
-    avatarUrl="@tui.circle-alert"
-></tui-avatar>
-<button tuiIconButton icon="@tui.x">Button</button>
-<button tuiIconButton icon="@tui.x">Button</button>
-`;
+:host {
+    color: var(--tui-text-primary);
+    --tui-base-01: 'black';
+    --tui-info-bg-night: 'blue';
+
+    &_error {
+        color: var(--tui-error-fill);
+    }
+}`;
+
+const STYLES_AFTER = `@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    color: var(--tui-text-primary);
+    --tui-background-base: 'black';
+// TODO: use tuiTheme="dark" on an element to switch colors to dark theme
+    --tui-status-info-pale: 'blue';
+
+    &_error {
+        color: var(--tui-status-negative);
+    }
+}`;
 
 describe('ng-update', () => {
     let host: UnitTestTree;
@@ -74,19 +87,19 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate badge in template', async () => {
+    it('should migrate css vars in styles', async () => {
         const tree = await runner.runSchematic(
-            'migrateIconsV4',
+            'migrateCssVarsV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test/app/test.style.less')).toEqual(STYLES_AFTER);
     });
 
-    it('should migrate icons in ts files', async () => {
+    it('should migrate css vars in ts files', async () => {
         const tree = await runner.runSchematic(
-            'migrateIconsV4',
+            'migrateCssVarsV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
@@ -102,7 +115,7 @@ describe('ng-update', () => {
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile('test/app/test.style.less', STYLES_BEFORE);
 
     createSourceFile(
         'package.json',

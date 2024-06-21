@@ -1,4 +1,4 @@
-export const MAP = {
+export const DEPRECATED_VARS = {
     '--tui-font-text-l-2': '--tui-font-text-ui-l',
     '--tui-font-text-m-2': '--tui-font-text-ui-m',
     '--tui-font-text-s-2': '--tui-font-text-ui-s',
@@ -57,7 +57,6 @@ export const MAP = {
     '--tui-negative-hover': '--tui-status-negative',
     '--tui-support-': '--tui-chart-categorical-',
     '--tui-chart-': '--tui-chart-categorical-0',
-    // leave a "TODO: use tuiTheme="dark" on an element to switch colors to dark theme"
     '--tui-clear-inverse': '--tui-background-neutral-1',
     '--tui-clear-inverse-hover': '--tui-background-neutral-1-hover',
     '--tui-clear-inverse-active': '--tui-background-neutral-1-pressed',
@@ -86,3 +85,36 @@ export const MAP = {
     '--tui-negative-night': '--tui-status-negative',
     '--tui-negative-night-hover': '--tui-status-negative',
 };
+
+export const NIGHT_VAR_COMMENT =
+    'TODO: use tuiTheme="dark" on an element to switch colors to dark theme';
+
+export const DEPRECATE_VARS_WITH_COMMENT = [
+    '--tui-clear-inverse',
+    '--tui-clear-inverse-hover',
+    '--tui-clear-inverse-active',
+    '--tui-error-fill-night',
+    '--tui-error-bg-night',
+    '--tui-error-bg-night-hover',
+    '--tui-success-fill-night',
+    '--tui-success-bg-night',
+    '--tui-success-bg-night-hover',
+    '--tui-warning-fill-night',
+    '--tui-warning-bg-night',
+    '--tui-warning-bg-night-hover',
+    '--tui-info-fill-night',
+    'tui-info-bg-night',
+    '--tui-info-bg-night-hover',
+    '--tui-neutral-fill-night',
+    '--tui-neutral-bg-night',
+    '--tui-neutral-bg-night-hover',
+    '--tui-text-01-night',
+    '--tui-text-02-night',
+    '--tui-text-03-night',
+    '--tui-link-night',
+    '--tui-link-night-hover',
+    '--tui-positive-night',
+    '--tui-positive-night-hover',
+    '--tui-negative-night',
+    '--tui-negative-night-hover',
+];
