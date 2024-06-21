@@ -1,8 +1,10 @@
-import {Component, DestroyRef, type ElementRef, inject, ViewChild} from '@angular/core';
+import type {ElementRef} from '@angular/core';
+import {Component, DestroyRef, inject, ViewChild} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
