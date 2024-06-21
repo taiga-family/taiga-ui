@@ -14,7 +14,6 @@ export function runStandardVersion(
             npm run release -- \
                 --release-as ${version} ${dryRun} \
                 --skip.changelog \
-                --skip.tag
             `,
         );
     } else {
