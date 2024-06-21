@@ -1,4 +1,4 @@
-import {type Type} from '@angular/core';
+import type {Type} from '@angular/core';
 import type {DefaultExport, Route} from '@angular/router';
 import type {TuiDialogOptions} from '@taiga-ui/core/components/dialog';
 

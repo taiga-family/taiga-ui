@@ -1,4 +1,5 @@
-import {Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 import type {MetadataJson} from 'libphonenumber-js/core';

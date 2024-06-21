@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 import {TuiBadgeExample1} from './examples/1';

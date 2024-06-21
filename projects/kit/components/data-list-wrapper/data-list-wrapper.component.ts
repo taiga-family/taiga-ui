@@ -24,7 +24,8 @@ import {TuiLoader} from '@taiga-ui/core/components/loader';
 import type {TuiValueContentContext} from '@taiga-ui/core/types';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

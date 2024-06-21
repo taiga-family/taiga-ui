@@ -14,7 +14,8 @@ import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 
-import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
+import type {TuiMarkerHandler} from './calendar-sheet.component';
+import {TuiCalendarSheet} from './calendar-sheet.component';
 import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 

@@ -3,7 +3,8 @@ import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
+import type {UrlTree} from '@angular/router';
+import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
@@ -30,7 +31,8 @@ import {
 } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
+import type {TuiLanguageName} from '@taiga-ui/i18n';
+import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TUI_SANITIZER} from '@taiga-ui/legacy';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
