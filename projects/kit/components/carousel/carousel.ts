@@ -1,4 +1,4 @@
-import {TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 import {TuiCarouselComponent} from './carousel.component';
 import {TuiCarouselDirective} from './carousel.directive';

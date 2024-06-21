@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc';
+import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 
 function flatPages(pages: TuiDocRoutePages): readonly TuiDocRoutePage[] {
     return pages.reduce(
