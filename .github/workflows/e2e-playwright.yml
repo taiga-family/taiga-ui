@@ -105,6 +105,24 @@ jobs:
           compression-level: 0
           retention-days: 1
 
+  # workaround for status checks -- check this one job instead of each individual E2E job in the matrix
+  # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809
+  playwright-composite-result:
+    name: Playwright E2E Tests matrix result
+    if: ${{ always() }}
+    needs:
+      - playwright
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          result="${{ needs.playwright.result }}"
+          # mark as successful even if skipped
+          if [[ $result == "success" || $result == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
+
   result:
     if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
