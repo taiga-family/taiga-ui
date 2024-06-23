@@ -4,7 +4,8 @@
     tuiGroup
     [tuiDropdown]="dropdown"
     [tuiDropdownEnabled]="interactive()"
-    [(tuiDropdownOpen)]="!disabled() && open"
+    [tuiDropdownOpen]="!disabled() && open"
+    (tuiDropdownOpenChange)="onOpenChange($event)"
 >
     <tui-textfield
         tuiChevron

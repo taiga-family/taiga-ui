@@ -170,6 +170,10 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         this.onChange(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
     }
 
+    protected onOpenChange(open: boolean): void {
+        this.open = open;
+    }
+
     private computeMask(
         countryIsoCode: TuiCountryIsoCode,
         metadata?: MetadataJson,
