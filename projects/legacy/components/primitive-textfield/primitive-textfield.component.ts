@@ -39,6 +39,9 @@ export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     l: 2.25,
 };
 
+/**
+ * @deprecated: use `tui-textfield` instead of `tui-primitive-textfield`
+ */
 @Component({
     selector: 'tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',
