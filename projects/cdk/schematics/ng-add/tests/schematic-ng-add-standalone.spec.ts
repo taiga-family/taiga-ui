@@ -11,7 +11,7 @@ import {
 } from 'ng-morph';
 
 import {createAngularJson} from '../../utils/create-angular-json';
-import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from '../constants/versions';
+import {TAIGA_VERSION} from '../constants/versions';
 import type {TuiSchema} from '../schema';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -37,7 +37,6 @@ describe('ng-add [Standalone]', () => {
 
     it('should add main modules in package.json', async () => {
         const options: TuiSchema = {
-            addSanitizer: false,
             addGlobalStyles: false,
             addons: [],
             project: '',
@@ -59,37 +58,8 @@ describe('ng-add [Standalone]', () => {
         );
     });
 
-    it('should add additional modules in package.json', async () => {
-        const options: TuiSchema = {
-            addSanitizer: true,
-            addGlobalStyles: false,
-            addons: ['addon-doc', 'addon-mobile'],
-            project: '',
-            'skip-logs': process.env['TUI_CI'] === 'true',
-        };
-
-        const tree = await runner.runSchematic('ng-add', options, host);
-
-        expect(tree.readContent('package.json')).toBe(
-            `{
-  "dependencies": {
-    "@angular/cdk": "^13.0.0",
-    "@angular/core": "~13.0.0",
-    "@taiga-ui/addon-doc": "${TAIGA_VERSION}",
-    "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
-    "@taiga-ui/cdk": "${TAIGA_VERSION}",
-    "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
-    "@taiga-ui/icons": "${TAIGA_VERSION}",
-    "@taiga-ui/kit": "${TAIGA_VERSION}"
-  }
-}`,
-        );
-    });
-
     it('should add additional modules in package.json and global styles', async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
             addGlobalStyles: true,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
@@ -107,7 +77,6 @@ describe('ng-add [Standalone]', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
     "@taiga-ui/styles": "${TAIGA_VERSION}"
@@ -235,7 +204,6 @@ describe('ng-add [Standalone]', () => {
 
     it('Should add Taiga-ui modules and providers to main component', async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
             addGlobalStyles: false,
             addons: [],
             project: '',
@@ -245,8 +213,7 @@ describe('ng-add [Standalone]', () => {
         const tree = await runner.runSchematic('ng-add-setup-project', options, host);
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(
-            `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRoot, TUI_SANITIZER } from "@taiga-ui/core";
+            `import { TuiRoot } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -256,7 +223,6 @@ import { RouterModule } from '@angular/router';
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],
-    providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
 })
 export class App {
   title = 'standalone-test';
@@ -338,6 +304,7 @@ export const appConfig: ApplicationConfig = {
 
         expect(tree.readContent('test/main.ts'))
             .toBe(`import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
+import { provideAnimations } from "@angular/platform-browser/animations";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,

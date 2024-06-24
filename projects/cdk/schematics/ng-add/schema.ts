@@ -1,6 +1,5 @@
 export interface TuiSchema {
     readonly addGlobalStyles: boolean;
-    readonly addSanitizer: boolean;
     readonly addons: readonly string[];
     readonly project: string;
 
