@@ -55,6 +55,22 @@ export function findElementsByTagNames(html: string, tagNames: string[]): Elemen
 
 /**
  * Parses a HTML fragment and traverses all AST nodes in order find elements that
+ * include the specified directive as attribute or input.
+ */
+export function findElementsWithDirective(
+    html: string,
+    attributeName: string,
+): Element[] {
+    const lowercasedAttrName = attributeName.toLowerCase();
+    const inputName = `[${lowercasedAttrName}]`;
+
+    return findElementsInTemplateByFn(html, el =>
+        el.attrs?.some(({name}) => name === lowercasedAttrName || name === inputName),
+    );
+}
+
+/**
+ * Parses a HTML fragment and traverses all AST nodes in order find elements that
  * include the specified attribute.
  */
 export function findElementsWithAttribute(

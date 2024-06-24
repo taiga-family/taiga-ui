@@ -13,4 +13,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiFocusableModule',
         moduleSpecifier: '@taiga-ui/cdk',
     },
+    {
+        name: 'TuiOverscrollModule',
+        moduleSpecifier: '@taiga-ui/cdk',
+    },
 ];
