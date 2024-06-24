@@ -44,6 +44,7 @@ import {
     migrateThumbnailCard,
     migrateToggle,
 } from './templates';
+import {migrateOverscroll} from './templates/migrate-overscroll';
 
 function getAction<T>({
     action,
@@ -102,6 +103,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLabeled,
         migrateProgressSegmented,
         migrateThumbnailCard,
+        migrateOverscroll,
     ] as const;
 
     const progressLog = setupProgressLogger({
