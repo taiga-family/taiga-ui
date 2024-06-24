@@ -9,8 +9,8 @@ jobs:
     name: Label when approved
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.62.24
-      - uses: taiga-family/ci/actions/setup/variables@v1.62.24
-      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.62.24
+      - uses: taiga-family/ci/actions/setup/checkout@v1.62.25
+      - uses: taiga-family/ci/actions/setup/variables@v1.62.25
+      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.62.25
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

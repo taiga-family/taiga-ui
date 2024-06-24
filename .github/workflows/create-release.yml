@@ -25,12 +25,12 @@ jobs:
       IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.62.24
+      - uses: taiga-family/ci/actions/setup/checkout@v1.62.25
         with:
           fetch-depth: 0
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@v1.62.24
-      - uses: taiga-family/ci/actions/setup/config/git@v1.62.24
+      - uses: taiga-family/ci/actions/setup/node@v1.62.25
+      - uses: taiga-family/ci/actions/setup/config/git@v1.62.25
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
