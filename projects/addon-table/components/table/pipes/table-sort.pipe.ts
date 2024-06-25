@@ -14,8 +14,8 @@ export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTran
         private readonly table: TuiTableDirective<K>,
     ) {}
 
-    transform<T extends K>(data: readonly T[]): readonly T[] {
-        return this.sort<T>(data, this.table.sorter, this.table.direction);
+    transform<T extends K>(data?: readonly T[] | null): readonly T[] {
+        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction);
     }
 
     @tuiPure

@@ -37,7 +37,7 @@
         </tr>
     </thead>
     <tbody
-        *tuiLet="users | tuiTableSort as sortedUsers"
+        *tuiLet="users$ | async | tuiTableSort as sortedUsers"
         tuiTbody
         [data]="sortedUsers"
     >
