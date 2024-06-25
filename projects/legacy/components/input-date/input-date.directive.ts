@@ -6,6 +6,9 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputDateComponent} from './input-date.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: 'tui-input-date:not([multiple])',
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],

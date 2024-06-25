@@ -3,7 +3,7 @@ import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core
 const TUI = 'tui_interactive_';
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 @Directive()
 export abstract class AbstractTuiInteractive {

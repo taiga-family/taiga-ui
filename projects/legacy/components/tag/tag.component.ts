@@ -20,6 +20,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_TAG_OPTIONS} from './tag.options';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',
     templateUrl: './tag.template.html',

@@ -2,6 +2,9 @@ import {Directive, HostListener, inject, Input} from '@angular/core';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: 'tui-combo-box[strict]',
 })

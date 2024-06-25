@@ -7,6 +7,9 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/legacy/tokens';
 
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     standalone: true,
     selector: '[tuiUnfinishedValidator]',

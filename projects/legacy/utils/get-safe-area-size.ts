@@ -1,4 +1,5 @@
 /**
+ * @deprecated: drop in v5.0
  * Calculates size of safe area on mobile devices (status bars)
  *
  * ATTENTION: Only use in browser environment

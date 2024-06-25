@@ -29,12 +29,17 @@ const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
 const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export interface TuiIconError {
     readonly icon: string;
     readonly message: string;
 }
 
-// TODO: Move to legacy along with all related infrastructure SvgService and SvgDefsHostComponent
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     standalone: true,
     selector: 'tui-svg',

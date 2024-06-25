@@ -16,6 +16,9 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 import {AbstractTuiControl} from './control';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive()
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
     private readonly idService = inject(TuiIdService);

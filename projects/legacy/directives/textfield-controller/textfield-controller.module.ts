@@ -12,6 +12,9 @@ import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
 import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     declarations: [

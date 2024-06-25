@@ -13,6 +13,9 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiInputCopyComponent} from './input-copy.component';
 import {TuiInputCopyDirective} from './input-copy.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

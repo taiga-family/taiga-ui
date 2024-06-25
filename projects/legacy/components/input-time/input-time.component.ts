@@ -35,6 +35,9 @@ import {map, timer} from 'rxjs';
 import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-time',
     templateUrl: './input-time.template.html',

@@ -1,4 +1,6 @@
-// TODO: Move to legacy with tui-svg
+/**
+ * @deprecated: drop in v5.0
+ */
 export function tuiIsPresumedHTMLString(candidate: string): boolean {
     const trimmed = candidate.trim();
 

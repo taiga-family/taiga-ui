@@ -15,6 +15,9 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiInputNumberComponent} from './input-number.component';
 import {TuiInputNumberDirective} from './input-number.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

@@ -3,6 +3,9 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {TuiSelectOptionComponent} from '@taiga-ui/legacy/components/select-option';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-multi-select-option',
     templateUrl: './multi-select-option.template.html',

@@ -12,6 +12,9 @@ import {TuiPrimitiveTextfieldDirective} from './primitive-textfield.directive';
 import {TuiTextfieldComponent} from './textfield/textfield.component';
 import {TuiValueDecorationComponent} from './value-decoration/value-decoration.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

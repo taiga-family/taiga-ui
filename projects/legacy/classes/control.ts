@@ -28,6 +28,7 @@ import {
 import {AbstractTuiInteractive} from './interactive';
 
 /**
+ * @deprecated: drop in v5.0
  * Basic ControlValueAccessor class to build form components upon
  */
 @Directive()

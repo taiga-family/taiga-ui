@@ -1,6 +1,9 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export interface TuiInputNumberOptions {
     readonly icons: Readonly<{
         down: string;
@@ -11,7 +14,10 @@ export interface TuiInputNumberOptions {
     readonly step: number;
 }
 
-/** Default values for the input number options. */
+/**
+ * @deprecated: drop in v5.0
+ * Default values for the input number options.
+ */
 export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     icons: {
         up: '@tui.plus',
@@ -23,10 +29,14 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
 };
 
 /**
+ * @deprecated: drop in v5.0
  * Default parameters for input count component
  */
 export const TUI_INPUT_NUMBER_OPTIONS = tuiCreateToken(TUI_INPUT_NUMBER_DEFAULT_OPTIONS);
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export function tuiInputNumberOptionsProvider(
     options: Partial<TuiInputNumberOptions>,
 ): Provider {

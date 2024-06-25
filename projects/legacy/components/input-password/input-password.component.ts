@@ -23,6 +23,9 @@ import {EMPTY, map, startWith} from 'rxjs';
 
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-password',
     templateUrl: './input-password.template.html',

@@ -13,6 +13,9 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputRangeComponent} from './input-range.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

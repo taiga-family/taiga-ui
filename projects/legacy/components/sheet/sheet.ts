@@ -5,7 +5,7 @@ import type {Observable, Observer} from 'rxjs';
 import type {TuiSheetOptions} from './sheet-options';
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 export interface TuiSheet<O, I = undefined>
     extends TuiSheetOptions<I, O>,
@@ -16,7 +16,7 @@ export interface TuiSheet<O, I = undefined>
 }
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 export interface TuiSheetRequiredProps<T = unknown> {
     item: TuiSheet<T>;

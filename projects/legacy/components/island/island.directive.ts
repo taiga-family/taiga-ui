@@ -1,6 +1,9 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     standalone: true,
     selector: 'tui-island, a[tuiIsland]',

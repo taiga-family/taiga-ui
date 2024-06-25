@@ -5,6 +5,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly itemSize: TuiSizeL | TuiSizeS;
@@ -13,8 +16,14 @@ export interface TuiInputTimeOptions {
     readonly nativePicker?: boolean;
 }
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export type TuiTimeFormatParts = 'HH' | 'MM' | 'MS' | 'SS';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     HH: 23,
     MM: 59,
@@ -22,6 +31,9 @@ export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     MS: 999,
 };
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: () => '@tui.clock',
     mode: 'HH:MM',
@@ -35,6 +47,9 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
  */
 export const TUI_INPUT_TIME_OPTIONS = tuiCreateToken(TUI_INPUT_TIME_DEFAULT_OPTIONS);
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export function tuiInputTimeOptionsProvider(
     options: Partial<TuiInputTimeOptions>,
 ): Provider {

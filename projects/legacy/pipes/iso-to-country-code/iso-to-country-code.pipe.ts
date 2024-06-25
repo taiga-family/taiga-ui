@@ -5,7 +5,8 @@ import {TUI_COUNTRIES_MASKS} from '@taiga-ui/legacy/tokens';
 import {tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
 
 /**
- * @deprecated Use `getCountryCallingCode` from `libphonenumber-js/core` instead
+ * @deprecated: drop in v5.0
+ * Use `getCountryCallingCode` from `libphonenumber-js/core` instead
  * ```ts
  * import {getCountryCallingCode} from 'libphonenumber-js/core';
  * import metadata from 'libphonenumber-js/max/metadata';

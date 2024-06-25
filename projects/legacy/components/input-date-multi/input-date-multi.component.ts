@@ -45,6 +45,9 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-date[multiple]',
     templateUrl: './input-date-multi.template.html',

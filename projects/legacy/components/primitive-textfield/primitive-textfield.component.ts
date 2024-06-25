@@ -33,12 +33,18 @@ import {fromEvent, map} from 'rxjs';
 
 import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     s: 1.25,
     m: 1.75,
     l: 2.25,
 };
 
+/**
+ * @deprecated: use `tui-textfield` instead of `tui-primitive-textfield`
+ */
 @Component({
     selector: 'tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',

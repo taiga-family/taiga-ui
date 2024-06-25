@@ -23,6 +23,9 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-year',
     templateUrl: './input-year.template.html',

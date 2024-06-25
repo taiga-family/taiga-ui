@@ -1,6 +1,7 @@
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 
 /**
+ * @deprecated: drop in v5.0
  * Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead!
  * @example
  * import {maskitoTransform} from '@maskito/core';

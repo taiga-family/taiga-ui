@@ -15,6 +15,9 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiTextareaComponent} from './textarea.component';
 import {TuiTextareaDirective} from './textarea.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

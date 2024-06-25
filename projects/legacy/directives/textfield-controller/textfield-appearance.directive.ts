@@ -2,11 +2,16 @@ import {Directive, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
-// TODO: rename to TUI_TEXTFIELD_APPEARANCE in v4
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
     () => new TuiTextfieldAppearanceDirective(),
 );
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: '[tuiTextfieldAppearance]',
     providers: [

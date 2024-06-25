@@ -29,9 +29,15 @@ import {TUI_TEXTFIELD_PREFIX} from './textfield-prefix.directive';
 import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
 import {TUI_TEXTFIELD_SIZE} from './textfield-size.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>('[TUI_TEXTFIELD_WATCHED_CONTROLLER]');
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
     {
         provide: TUI_TEXTFIELD_WATCHED_CONTROLLER,

@@ -4,7 +4,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {TuiSheet} from './sheet';
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 export interface TuiSheetOptions<I = undefined, O = unknown> {
     readonly closeable: boolean;
@@ -18,7 +18,7 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
 }
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     image: '',
@@ -31,7 +31,7 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 };
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  * Default parameters for sheet component
  */
 export const TUI_SHEET_OPTIONS = tuiCreateToken<Omit<TuiSheetOptions, 'data'>>({

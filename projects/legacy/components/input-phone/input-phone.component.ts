@@ -43,6 +43,9 @@ function isText(value: string): boolean {
     return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-phone',
     templateUrl: './input-phone.template.html',

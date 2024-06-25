@@ -44,6 +44,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {TuiSelectOptions} from './select.options';
 import {TUI_SELECT_OPTIONS} from './select.options';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-select',
     templateUrl: './select.template.html',

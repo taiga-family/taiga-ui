@@ -9,6 +9,9 @@ import {
 import {TuiInputComponent} from './input.component';
 import {TuiInputDirective} from './input.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [CommonModule, TuiPrimitiveTextfieldModule, ...TuiDropdown],
     declarations: [TuiInputComponent, TuiInputDirective],

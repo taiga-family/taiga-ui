@@ -28,6 +28,9 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input',
     templateUrl: './input.template.html',
