@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Component testing result
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.63.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.63.0
-      - uses: taiga-family/ci/actions/setup/node@v1.63.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.0
+      - uses: taiga-family/ci/actions/setup/node@v1.65.0
       - run: npx tsc -p projects/demo-cypress/tsconfig.json
       - run: npx nx component-test demo-cypress
 
