@@ -368,7 +368,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiSwipeActionsComponent', moduleSpecifier: '@taiga-ui/addon-mobile'},
+        to: [
+            {name: 'TuiSwipeActions', moduleSpecifier: '@taiga-ui/addon-mobile'},
+            {name: 'TuiSwipeActionsAutoClose', moduleSpecifier: '@taiga-ui/addon-mobile'},
+        ],
     },
     {
         from: {name: 'TuiRadioModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -380,6 +383,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiSwitch', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiSwitch', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
@@ -450,6 +457,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
@@ -588,6 +599,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiHeaderModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiHeader', moduleSpecifier: '@taiga-ui/layout'},
+    },
+    {
+        from: {name: 'TuiBlockDetailsModule', moduleSpecifier: '@taiga-ui/layout'},
+        to: {name: 'TuiBlockDetails', moduleSpecifier: '@taiga-ui/layout'},
     },
     {
         from: {name: 'TuiPinModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -1133,6 +1148,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiAppBar',
             moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
+    {
+        from: {
+            name: 'TuiAppearanceModule',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiAppearance',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiButtonCloseModule',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiButtonClose',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
