@@ -15,9 +15,9 @@ jobs:
     if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.63.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.63.0
-      - uses: taiga-family/ci/actions/setup/node@v1.63.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.0
+      - uses: taiga-family/ci/actions/setup/node@v1.65.0
 
       - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -34,9 +34,9 @@ jobs:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.63.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.63.0
-      - uses: taiga-family/ci/actions/setup/node@v1.63.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.0
+      - uses: taiga-family/ci/actions/setup/node@v1.65.0
 
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
