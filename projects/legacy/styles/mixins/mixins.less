@@ -1,6 +1,3 @@
-@space: 0.25rem;
-
-// clearfix
 .clearfix() {
     &:after {
         content: '';
@@ -188,7 +185,7 @@
 
     &:hover {
         box-shadow: var(--tui-shadow-hover);
-        transform: translateY(-@space);
+        transform: translateY(-0.25rem);
     }
 }
 
@@ -211,33 +208,33 @@
 //spaces
 .tui-space(@direction, @size) {
     & when (@direction = all) {
-        margin: @space * @size;
+        margin: 0.25rem * @size;
     }
 
     & when (@direction = top) {
-        margin-top: @space * @size;
+        margin-top: 0.25rem * @size;
     }
 
     & when (@direction = bottom) {
-        margin-bottom: @space * @size;
+        margin-bottom: 0.25rem * @size;
     }
 
     & when (@direction = vertical) {
-        margin-top: @space * @size;
-        margin-bottom: @space * @size;
+        margin-top: 0.25rem * @size;
+        margin-bottom: 0.25rem * @size;
     }
 
     & when (@direction = left) {
-        margin-left: @space * @size;
+        margin-left: 0.25rem * @size;
     }
 
     & when (@direction = right) {
-        margin-right: @space * @size;
+        margin-right: 0.25rem * @size;
     }
 
     & when (@direction = horizontal) {
-        margin-right: @space * @size;
-        margin-left: @space * @size;
+        margin-right: 0.25rem * @size;
+        margin-left: 0.25rem * @size;
     }
 }
 

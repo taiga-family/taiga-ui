@@ -49,11 +49,7 @@
                     }
                 ],
                 "baseHref": "./",
-                "styles": [
-                    "{projectRoot}/src/styles/normalize.less",
-                    "{projectRoot}/src/styles/styles.less",
-                    "{projectRoot}/src/styles/styles.scss"
-                ],
+                "styles": ["{projectRoot}/src/styles/styles.less", "{projectRoot}/src/styles/styles.scss"],
                 "scripts": [],
                 "allowedCommonJsDependencies": ["markdown-it"],
                 "vendorChunk": true,

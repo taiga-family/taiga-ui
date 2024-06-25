@@ -1,7 +1,7 @@
-@fields-space: @space * 5;
-@fields-space-mobile: @space * 4;
-@fields-space-large: @space * 8;
-@fields-space-large-mobile: @space * 6;
+@fields-space: 1.25rem;
+@fields-space-mobile: 1rem;
+@fields-space-large: 2rem;
+@fields-space-large-mobile: 1.5rem;
 
 .tui-form {
     /* stylelint-disable */
@@ -25,10 +25,10 @@
         }
 
         &_margin-bottom_small {
-            margin-bottom: @fields-space - @space;
+            margin-bottom: @fields-space - 0.25rem;
 
             @media @tui-mobile {
-                margin-bottom: @fields-space-mobile - @space;
+                margin-bottom: @fields-space-mobile - 0.25rem;
             }
         }
     }
@@ -89,12 +89,12 @@
 
     &__field-note {
         font: var(--tui-font-text-s);
-        margin-top: @space;
+        margin-top: 0.25rem;
         color: var(--tui-text-secondary);
     }
 
     &__field-checkbox {
-        margin-top: @space * 2;
+        margin-top: 0.5rem;
     }
 
     &__checkbox {
@@ -128,14 +128,14 @@
     }
 
     &__button {
-        margin-left: @space * 3;
+        margin-left: 0.75rem;
 
         &:first-child {
             margin-left: 0;
         }
 
         @media @tui-mobile {
-            margin-top: @space * 2;
+            margin-top: 0.5rem;
             margin-left: 0;
         }
     }

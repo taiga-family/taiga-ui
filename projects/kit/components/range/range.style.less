@@ -45,11 +45,11 @@
         content: '';
         position: absolute;
         top: 0;
-        left: var(--left);
-        right: var(--right);
+        left: ~'max(calc(var(--left) - 1px), 1px)';
+        right: ~'max(var(--right), 1px)';
         height: 100%;
         background: var(--tui-background-accent-1);
-        margin: 0 calc(-@thumb-width / 2 - @thumb-shift);
+        margin: 0 calc(-@thumb-width / 2);
     }
 
     /* Ticks */

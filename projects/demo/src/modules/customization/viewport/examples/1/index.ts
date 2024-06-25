@@ -19,7 +19,7 @@ export class Example extends TuiRectAccessor {
 
     public readonly type = 'viewport';
 
-    public getClientRect(): ClientRect {
+    public getClientRect(): DOMRect {
         return this.el.getBoundingClientRect();
     }
 }
