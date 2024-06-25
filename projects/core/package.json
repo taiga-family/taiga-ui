@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "4.0.0-rc.1",
+    "version": "4.0.0-rc.2",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -18,7 +18,7 @@
         "./styles/*": "./styles/*"
     },
     "dependencies": {
-        "@taiga-ui/i18n": "^4.0.0-rc.1"
+        "@taiga-ui/i18n": "^4.0.0-rc.2"
     },
     "peerDependencies": {
         "@angular/animations": ">=16.0.0",
@@ -29,9 +29,9 @@
         "@angular/router": ">=16.0.0",
         "@ng-web-apis/common": "^4.0.0",
         "@ng-web-apis/mutation-observer": "^4.0.0",
-        "@taiga-ui/cdk": "^4.0.0-rc.1",
+        "@taiga-ui/cdk": "^4.0.0-rc.2",
         "@taiga-ui/event-plugins": "^4.0.1",
-        "@taiga-ui/i18n": "^4.0.0-rc.1",
+        "@taiga-ui/i18n": "^4.0.0-rc.2",
         "@taiga-ui/polymorpheus": "^4.6.3",
         "rxjs": ">=7.0.0",
         "tslib": "^2.6.3"
