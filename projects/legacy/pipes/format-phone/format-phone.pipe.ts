@@ -4,6 +4,9 @@ import {Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Pipe({
     standalone: true,
     name: 'tuiFormatPhone',

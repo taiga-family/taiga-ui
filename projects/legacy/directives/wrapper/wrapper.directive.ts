@@ -2,7 +2,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 @Directive({
     selector: '[tuiWrapper]',

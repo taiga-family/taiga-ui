@@ -26,6 +26,9 @@ import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-gr
 import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
 import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

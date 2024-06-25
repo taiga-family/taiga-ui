@@ -4,7 +4,7 @@ import type {TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
 import {AbstractTuiControl} from './control';
 
 /**
- * @deprecated
+ * @deprecated: drop in v5.0
  */
 @Directive()
 export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>

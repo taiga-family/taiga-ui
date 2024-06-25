@@ -4,6 +4,9 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiComboBoxComponent} from './combo-box.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: 'tui-combo-box',
     providers: [tuiAsTextfieldHost(TuiComboBoxDirective)],

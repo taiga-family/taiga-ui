@@ -1,3 +1,6 @@
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_DEPRECATED_ICONS: Record<string, string> = {
     tuiIconAttach: 'tuiIconPaperclip',
     tuiIconAttention: 'tuiIconAlertCircle',

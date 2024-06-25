@@ -4,6 +4,9 @@ import {tuiIsHTMLElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export function tuiCreateUnfinishedValidator(
     nativeInputGetter: () => TuiFocusableElementAccessor,
     message: PolymorpheusContent,

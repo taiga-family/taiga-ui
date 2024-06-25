@@ -14,6 +14,9 @@ import {
 
 import {TUI_ARROW_OPTIONS} from './arrow.options';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     standalone: true,
     selector: 'tui-arrow',
@@ -43,4 +46,7 @@ export class TuiArrowComponent {
     }
 }
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_ARROW = new PolymorpheusComponent(TuiArrowComponent);

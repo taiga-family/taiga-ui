@@ -8,6 +8,9 @@ import {distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthComponent} from './input-month.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: 'tui-input-month',
     providers: [tuiAsTextfieldHost(TuiInputMonthDirective)],

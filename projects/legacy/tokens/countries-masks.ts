@@ -2,7 +2,8 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 /**
- * @deprecated Use new version of {@link https://taiga-ui.dev/components/input-phone-international InputPhoneInternational}.
+ * @deprecated: drop in v5.0
+ * Use new version of {@link https://taiga-ui.dev/components/input-phone-international InputPhoneInternational}.
  * The new version is based on Google Open Source solution {@link https://github.com/google/libphonenumber libphonenumber}.
  * This token (and all other hard-coded values) and related utils are no more required.
  */

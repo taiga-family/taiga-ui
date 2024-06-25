@@ -5,10 +5,16 @@ import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscell
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(
     () => new TuiTextfieldIconLeftDirective(),
 );
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Directive({
     selector: '[tuiTextfieldIconLeft]',
     providers: [tuiProvide(TUI_TEXTFIELD_ICON_LEFT, TuiTextfieldIconLeftDirective)],

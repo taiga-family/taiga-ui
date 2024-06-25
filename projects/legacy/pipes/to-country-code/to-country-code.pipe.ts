@@ -10,7 +10,8 @@ import {
 } from '@taiga-ui/legacy/utils';
 
 /**
- * @deprecated use `maskitoGetCountryFromNumber` from `@maskito/phone` instead
+ * @deprecated: drop in v5.0
+ * use `maskitoGetCountryFromNumber` from `@maskito/phone` instead
  * ```
  * npm i @maskito/phone
  * ```

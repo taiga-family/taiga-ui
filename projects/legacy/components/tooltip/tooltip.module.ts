@@ -7,6 +7,9 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTooltipComponent} from './tooltip.component';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [CommonModule, TuiIcon, PolymorpheusOutlet, TuiAppearance, ...TuiHint],
     declarations: [TuiTooltipComponent],

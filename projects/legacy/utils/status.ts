@@ -1,3 +1,6 @@
+/**
+ * @deprecated: drop in v5.0
+ */
 export type TuiStatus =
     | 'custom'
     | 'default'

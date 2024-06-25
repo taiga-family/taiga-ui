@@ -3,7 +3,8 @@ import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
 
 /**
- * @deprecated Use `getCountryCallingCode` from `libphonenumber-js/core` instead
+ * @deprecated: drop in v5.0
+ * Use `getCountryCallingCode` from `libphonenumber-js/core` instead
  * ```ts
  * import {getCountryCallingCode} from 'libphonenumber-js/core';
  * import metadata from 'libphonenumber-js/max/metadata';

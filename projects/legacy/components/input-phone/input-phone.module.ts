@@ -14,6 +14,9 @@ import {
 import {TuiInputPhoneComponent} from './input-phone.component';
 import {TuiInputPhoneDirective} from './input-phone.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         MaskitoDirective,

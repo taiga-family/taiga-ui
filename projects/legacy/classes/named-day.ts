@@ -1,5 +1,8 @@
 import type {TuiDay} from '@taiga-ui/cdk/date-time';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export class TuiNamedDay {
     constructor(
         public readonly day: TuiDay,

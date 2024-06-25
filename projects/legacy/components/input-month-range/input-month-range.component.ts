@@ -24,6 +24,9 @@ import {
     tuiAsFocusableItemAccessor,
 } from '@taiga-ui/legacy/tokens';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-input-month-range',
     templateUrl: './input-month-range.template.html',

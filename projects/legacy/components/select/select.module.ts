@@ -22,6 +22,9 @@ import {TuiNativeSelectGroupComponent} from './native-select/native-select-group
 import {TuiSelectComponent} from './select.component';
 import {TuiSelectDirective} from './select.directive';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @NgModule({
     imports: [
         CommonModule,

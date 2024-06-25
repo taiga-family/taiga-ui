@@ -7,6 +7,7 @@ import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
 /**
+ * @deprecated: drop in v5.0
  * A function to get localized formatted month
  */
 export const TUI_MONTH_FORMATTER = new InjectionToken<

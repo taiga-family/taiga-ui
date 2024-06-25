@@ -10,6 +10,9 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Component({
     selector: 'tui-tooltip',
     templateUrl: './tooltip.template.html',

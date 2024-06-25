@@ -13,7 +13,10 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
     return Array.from(new Set(ids));
 }
 
+
 /**
+ * @deprecated: drop in v5.0
+ *
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
  * element which are not defined on this element are inherited by this element.
