@@ -24,6 +24,7 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -87,6 +88,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         ?.change$;
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly control = inject(NgControl, {optional: true});
 
     @Input()

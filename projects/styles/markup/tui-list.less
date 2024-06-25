@@ -35,9 +35,9 @@
 
     &__item {
         position: relative;
-        padding-left: @space * 6;
+        padding-left: 1.5rem;
         word-wrap: break-word;
-        margin-top: @space * 3;
+        margin-top: 0.75rem;
 
         &:first-child {
             margin-top: 0;
@@ -63,11 +63,11 @@
         }
 
         .tui-list_extra-small > & {
-            margin-top: @space * 2;
+            margin-top: 0.5rem;
         }
 
         .tui-list_linear & {
-            padding-left: @space * 7;
+            padding-left: 1.75rem;
 
             &:before {
                 content: '\2014';
@@ -80,7 +80,7 @@
         }
 
         .tui-list_ordered & {
-            padding-left: @space * 5;
+            padding-left: 1.25rem;
 
             &:before {
                 content: counter(counter) '.';
@@ -95,7 +95,7 @@
         }
 
         .tui-list_triangle > & {
-            padding-left: @space * 7;
+            padding-left: 1.75rem;
 
             &:before {
                 content: '\25E4'; // represent symbol '◤'
@@ -121,16 +121,16 @@
     }
 
     &__description {
-        margin: @space * 2 0 0;
+        margin: 0.5rem 0 0;
         color: var(--tui-text-secondary);
 
         .tui-list_small & {
-            margin-top: @space;
+            margin-top: 0.25rem;
         }
 
         .tui-list_large & {
             line-height: 1.75rem;
-            margin-top: @space * 3;
+            margin-top: 0.75rem;
         }
     }
 }

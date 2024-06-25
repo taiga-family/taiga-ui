@@ -10,11 +10,11 @@
     <button
         *ngIf="options.cleaner"
         appearance="icon"
-        iconLeft="@tui.x"
         size="xs"
         tabindex="-1"
         tuiIconButton
         class="t-clear"
+        [iconLeft]="icons.close"
         (click)="directive?.setValue('')"
         (pointerdown.silent.prevent)="input.focus()"
     ></button>
