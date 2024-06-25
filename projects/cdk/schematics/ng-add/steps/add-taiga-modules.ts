@@ -11,8 +11,6 @@ import type {
 import {
     addImportToComponent,
     addImportToNgModule,
-    addProviderToComponent,
-    addProviderToNgModule,
     createProject,
     getMainModule,
     Node,
@@ -29,11 +27,7 @@ import {getProjects} from '../../utils/get-projects';
 import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
 import {pushToObjectArrayProperty} from '../../utils/push-to-array-property';
 import type {ImportingModule} from '../constants/modules';
-import {
-    BROWSER_ANIMATION_MODULE,
-    MAIN_MODULE,
-    SANITIZER_MODULES,
-} from '../constants/modules';
+import {BROWSER_ANIMATION_MODULE, MAIN_MODULE} from '../constants/modules';
 import type {TuiSchema} from '../schema';
 
 function addTuiModules({
@@ -55,36 +49,6 @@ function addTuiModules({
     context.logger.info(
         `${modules.map(module => module.name)} was added to ${mainModulePath}`,
     );
-}
-
-function addExtraTuiProvidersToRootComponent({
-    mainClass,
-    options,
-    standalone = false,
-}: {
-    mainClass: ClassDeclaration;
-    options: TuiSchema;
-    standalone?: boolean;
-}): void {
-    if (!options.addSanitizer) {
-        return;
-    }
-
-    const provider = '{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}';
-
-    if (standalone) {
-        addProviderToComponent(mainClass, provider, {unique: true});
-    } else {
-        addProviderToNgModule(mainClass, provider, {unique: true});
-    }
-
-    SANITIZER_MODULES.forEach(module => {
-        addUniqueImport(
-            mainClass.getSourceFile().getFilePath(),
-            module.name,
-            module.packageName,
-        );
-    });
 }
 
 function addTuiEntitiesToStandalone({
@@ -110,7 +74,6 @@ function addTuiEntitiesToStandalone({
     if (mainClass) {
         addMainModuleToRootComponent({mainClass, options, context});
         addRootTuiProvidersToBootstrapFn(optionsObject);
-        addExtraTuiProvidersToRootComponent({mainClass, options, standalone: true});
     }
 }
 
@@ -128,9 +91,10 @@ function addRootTuiProvidersToBootstrapFn(
         );
 
     pushToObjectArrayProperty(bootstrapOptions, 'providers', 'NG_EVENT_PLUGINS');
+    const modules = [];
 
     if (!provideAnimations) {
-        [MAIN_MODULE].push({
+        modules.push({
             name: 'provideAnimations',
             packageName: '@angular/platform-browser/animations',
         });
@@ -140,15 +104,15 @@ function addRootTuiProvidersToBootstrapFn(
         });
     }
 
-    [{name: 'NG_EVENT_PLUGINS', packageName: '@taiga-ui/event-plugins'}].forEach(
-        ({name, packageName}) => {
-            addUniqueImport(
-                bootstrapOptions.getSourceFile().getFilePath(),
-                name,
-                packageName,
-            );
-        },
-    );
+    modules.push({name: 'NG_EVENT_PLUGINS', packageName: '@taiga-ui/event-plugins'});
+
+    modules.forEach(({name, packageName}) => {
+        addUniqueImport(
+            bootstrapOptions.getSourceFile().getFilePath(),
+            name,
+            packageName,
+        );
+    });
 }
 
 function addMainModuleToRootComponent({
@@ -225,7 +189,6 @@ export function addTaigaModules(options: TuiSchema): Rule {
             const mainClass = getMainModule(mainFilePath);
 
             addTuiModules({mainClass, options, context});
-            addExtraTuiProvidersToRootComponent({mainClass, options});
         }
 
         saveActiveProject();

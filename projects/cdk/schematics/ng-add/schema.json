@@ -20,33 +20,6 @@
                 "type": "confirmation"
             }
         },
-        "addDialogsModule": {
-            "description": "Setting up dialog module",
-            "type": "boolean",
-            "default": true,
-            "x-prompt": {
-                "message": "Do you want to use Taiga UI dialogs?",
-                "type": "confirmation"
-            }
-        },
-        "addSanitizer": {
-            "description": "Setting up TUI_SANITIZER",
-            "type": "boolean",
-            "default": true,
-            "x-prompt": {
-                "message": "Do you plan on using custom SVGs/icons or TUI editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icons/bundled#sanitizer",
-                "type": "confirmation"
-            }
-        },
-        "addAlertModule": {
-            "description": "Setting up alerts module",
-            "type": "boolean",
-            "default": true,
-            "x-prompt": {
-                "message": "Do you want to use Taiga UI alerts?",
-                "type": "confirmation"
-            }
-        },
         "addons": {
             "description": "Setting up additional packages",
             "type": "array",

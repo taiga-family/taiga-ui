@@ -7,7 +7,7 @@ import {
 } from 'ng-morph';
 
 import {MAIN_PACKAGES} from './constants/packages';
-import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from './constants/versions';
+import {TAIGA_VERSION} from './constants/versions';
 import type {TuiSchema} from './schema';
 
 function addDependencies(tree: Tree, options: TuiSchema): void {
@@ -26,13 +26,6 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/styles',
             version: TAIGA_VERSION,
-        });
-    }
-
-    if (options.addSanitizer) {
-        addPackageJsonDependency(tree, {
-            name: '@taiga-ui/dompurify',
-            version: NG_DOMPURIFY_VERSION,
         });
     }
 

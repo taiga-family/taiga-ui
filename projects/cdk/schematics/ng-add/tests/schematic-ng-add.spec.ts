@@ -11,7 +11,7 @@ import {
 } from 'ng-morph';
 
 import {createAngularJson} from '../../utils/create-angular-json';
-import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from '../constants/versions';
+import {TAIGA_VERSION} from '../constants/versions';
 import type {TuiSchema} from '../schema';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -37,7 +37,6 @@ describe('ng-add', () => {
 
     it('should add main modules in package.json', async () => {
         const options: TuiSchema = {
-            addSanitizer: false,
             addGlobalStyles: false,
             addons: [],
             project: '',
@@ -61,7 +60,6 @@ describe('ng-add', () => {
 
     it('should add additional modules in package.json', async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
             addGlobalStyles: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
@@ -79,7 +77,6 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -89,7 +86,6 @@ describe('ng-add', () => {
 
     it('should add additional modules in package.json and global styles', async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
             addGlobalStyles: true,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
@@ -107,7 +103,6 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
-    "@taiga-ui/dompurify": "${NG_DOMPURIFY_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
     "@taiga-ui/styles": "${TAIGA_VERSION}"
@@ -231,33 +226,6 @@ describe('ng-add', () => {
     }
   }
 }`);
-    });
-
-    it('Should add Taiga-ui modules and providers to main module', async () => {
-        const options: TuiSchema = {
-            addSanitizer: true,
-            addGlobalStyles: false,
-            addons: [],
-            project: '',
-            'skip-logs': process.env['TUI_CI'] === 'true',
-        };
-
-        const tree = await runner.runSchematic('ng-add-setup-project', options, host);
-
-        expect(tree.readContent('test/app/app.module.ts')).toBe(
-            `import { NgDompurifySanitizer } from "@taiga-ui/dompurify";
-import { TuiRoot, TUI_SANITIZER } from "@taiga-ui/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {NgModule} from '@angular/core';
-import {App} from './app.component';
-
-@NgModule({declarations: [App],
-    imports: [BrowserAnimationsModule, TuiRoot],
-    providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
-})
-export class AppModule {}
-`,
-        );
     });
 
     it('Should wrap main template with tui-root', async () => {
