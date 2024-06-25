@@ -1,4 +1,4 @@
-[tuiButton] {
+[tuiCardLarge] [tuiButton] {
     width: 100%;
 }
 
@@ -14,7 +14,12 @@
         --t-radius: 0.75rem;
     }
 
-    &:disabled:not(._loading) {
+    &[data-appearance='primary']:disabled:not(._loading),
+    &[data-appearance='secondary']:disabled:not(._loading),
+    &[data-appearance='accent']:disabled:not(._loading),
+    &[data-appearance='destructive']:disabled:not(._loading),
+    &[data-appearance='opposite']:disabled:not(._loading),
+    &[data-appearance='flat']:disabled:not(._loading) {
         background: var(--tui-background-neutral-1);
         color: var(--tui-background-neutral-1-pressed);
         opacity: 1;

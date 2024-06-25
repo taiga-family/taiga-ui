@@ -7,14 +7,14 @@ import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
     providers: [
         {
             provide: TUI_PLATFORM,
-            deps: [TuiPlatform],
-            useFactory: ({tuiPlatform}: TuiPlatform) =>
-                tuiPlatform || inject(TUI_PLATFORM, {skipSelf: true}),
+            useFactory: () => inject(TuiPlatform).tuiPlatform,
         },
     ],
 })
 export class TuiPlatform {
     @Input()
     @HostBinding('attr.data-platform')
-    public tuiPlatform: '' | 'android' | 'ios' | 'web' = '';
+    public tuiPlatform: 'android' | 'ios' | 'web' = inject(TUI_PLATFORM, {
+        skipSelf: true,
+    });
 }

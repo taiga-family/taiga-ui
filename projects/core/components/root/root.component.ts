@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -38,11 +39,10 @@ import {debounceTime, map, of} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    hostDirectives: [TuiPlatform],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
-        '[class._ios]': 'isIOS',
-        '[class._android]': 'isAndroid',
         '[class._reduced-motion]': 'reducedMotion',
         '[class._mobile]': 'isMobileRes()',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
@@ -50,26 +50,20 @@ import {debounceTime, map, of} from 'rxjs';
     },
 })
 export class TuiRoot {
-    private readonly dialogs$ = inject<Observable<readonly unknown[]>>(TUI_DIALOGS);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly breakpoint = inject(TuiBreakpointService);
-
-    protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly isAndroid = inject(TUI_IS_ANDROID);
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
     protected readonly isMobileRes = toSignal(
-        this.breakpoint.pipe(
+        inject(TuiBreakpointService).pipe(
             map(breakpoint => breakpoint === 'mobile'),
             tuiWatch(inject(ChangeDetectorRef)),
         ),
     );
 
-    protected readonly scrollbars$: Observable<boolean> = this.isMobile
+    protected readonly scrollbars$: Observable<boolean> = inject(TUI_IS_MOBILE)
         ? of(false)
-        : this.dialogs$.pipe(
-              map(dialogs => !dialogs.length),
+        : inject<Observable<readonly unknown[]>>(TUI_DIALOGS).pipe(
+              map(({length}) => !length),
               debounceTime(0),
           );
 
