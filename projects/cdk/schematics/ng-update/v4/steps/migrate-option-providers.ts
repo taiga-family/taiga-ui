@@ -25,10 +25,10 @@ function migrateInputNumberOptions(options: TuiSchema): void {
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} tuiInputNumberOptionsProvider`);
 
-    const references = getNamedImportReferences(
-        'tuiInputNumberOptionsProvider',
-        '@taiga-ui/kit',
-    );
+    const references = [
+        ...getNamedImportReferences('tuiInputNumberOptionsProvider', '@taiga-ui/kit'),
+        ...getNamedImportReferences('tuiInputNumberOptionsProvider', '@taiga-ui/legacy'),
+    ];
 
     references.forEach(ref => {
         if (ref.wasForgotten()) {

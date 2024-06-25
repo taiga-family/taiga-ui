@@ -27,8 +27,7 @@ import { Component } from "@angular/core";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/kit";
-
+const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
 import { Component } from "@angular/core";
 
 @Component({
