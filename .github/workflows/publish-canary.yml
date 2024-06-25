@@ -9,15 +9,15 @@ jobs:
     name: Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.62.25
+      - uses: taiga-family/ci/actions/setup/checkout@v1.63.0
         with:
           ref: v3.x
-      - uses: taiga-family/ci/actions/setup/variables@v1.62.25
-      - uses: taiga-family/ci/actions/setup/node@v1.62.25
+      - uses: taiga-family/ci/actions/setup/variables@v1.63.0
+      - uses: taiga-family/ci/actions/setup/node@v1.63.0
         with:
           node-version: '18.x'
           validate-peer-deps: 'false'
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.62.25
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.63.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs

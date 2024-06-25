@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Run the latest migration
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.62.25
-      - uses: taiga-family/ci/actions/setup/node@v1.62.25
+      - uses: taiga-family/ci/actions/setup/checkout@v1.63.0
+      - uses: taiga-family/ci/actions/setup/node@v1.63.0
       - run: npx nx run cdk:schematics --v=4
 
 concurrency:
