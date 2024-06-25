@@ -5,7 +5,13 @@
     display: block;
     height: max-content;
     isolation: isolate;
-    border-radius: var(--tui-radius-m);
+    border-radius: var(--tui-radius);
+
+    --tui-radius: var(--tui-radius-m);
+
+    &[data-size='l'] {
+        --tui-radius: var(--tui-radius-l);
+    }
 }
 
 tui-input-number {
@@ -14,7 +20,7 @@ tui-input-number {
 
 // Don't change CSS-selector (we require the such specificity to override default styles without !important)
 input[type='range'] {
-    @left-gap: calc(var(--tui-radius-m) / 2);
+    @left-gap: calc(var(--tui-radius) / 2);
 
     position: absolute;
     top: 100%;
@@ -25,5 +31,5 @@ input[type='range'] {
     height: 1rem;
     margin: -0.5625rem 0 0;
     border-top-left-radius: 0;
-    border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
+    border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
 }
