@@ -14,7 +14,7 @@ import {
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { TuiButtonModule } from "@taiga-ui/kit";
+import { TuiButtonModule } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
@@ -24,12 +24,13 @@ import { TuiButtonModule } from "@taiga-ui/kit";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiButton, TuiButtonLoadingComponent } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiButtonLoading } from "@taiga-ui/kit";
+import { TuiButton } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButton, TuiButtonLoadingComponent]
+    imports: [TuiButton, TuiButtonLoading]
 })
 export class Test {
 }`;

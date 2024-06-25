@@ -685,17 +685,31 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiInteractiveState', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/kit'},
+        from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/core'},
         to: {
             name: 'TuiButton',
-            moduleSpecifier: '@taiga-ui/kit',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {name: 'TuiDialogModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {
+            name: 'TuiDialog',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {name: 'TuiAlertModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {
+            name: 'TuiAlert',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {
         from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiButton',
-            moduleSpecifier: '@taiga-ui/kit',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {

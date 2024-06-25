@@ -53,7 +53,7 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
         inputProperty: 'showLoader',
         directive: 'loading',
         directiveModule: {
-            name: 'TuiButtonLoadingComponent',
+            name: 'TuiButtonLoading',
             moduleSpecifier: '@taiga-ui/kit',
         },
         filterFn: el => hasElementAttribute(el, 'tuiButton'),
