@@ -178,13 +178,13 @@
 .hoverable-with-shadow() {
     .transition();
 
-    box-shadow: var(--tui-shadow);
+    box-shadow: var(--tui-shadow-small);
     cursor: pointer;
     transition-property: transform, box-shadow;
     will-change: transform, box-shadow;
 
     &:hover {
-        box-shadow: var(--tui-shadow-hover);
+        box-shadow: var(--tui-shadow-small-hover);
         transform: translateY(-0.25rem);
     }
 }

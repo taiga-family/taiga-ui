@@ -160,12 +160,12 @@
 @mixin hoverable-with-shadow() {
     @include transition(all);
     cursor: pointer;
-    box-shadow: var(--tui-shadow);
+    box-shadow: var(--tui-shadow-small);
     transition-property: transform, box-shadow;
     will-change: transform, box-shadow;
 
     &:hover {
-        box-shadow: var(--tui-shadow-hover);
+        box-shadow: var(--tui-shadow-small-hover);
         transform: translateY(-0.25rem);
     }
 }
