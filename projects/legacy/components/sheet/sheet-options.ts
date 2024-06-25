@@ -30,7 +30,6 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     overlay: false,
 };
 
-
 /**
  * @deprecated: drop in v5.0
  * Default parameters for sheet component

@@ -13,7 +13,6 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
     return Array.from(new Set(ids));
 }
 
-
 /**
  * @deprecated: drop in v5.0
  *
