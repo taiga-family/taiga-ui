@@ -2,11 +2,11 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiSliderComponent, ReactiveFormsModule],
+    imports: [TuiDemo, TuiSlider, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
