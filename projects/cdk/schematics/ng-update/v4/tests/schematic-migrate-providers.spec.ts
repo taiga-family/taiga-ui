@@ -65,4 +65,5 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/component.ts', COMPONENT_BEFORE);
+    createSourceFile('package.json', '{}');
 }

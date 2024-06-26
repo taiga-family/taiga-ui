@@ -69,4 +69,5 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/styles.less', STYLES_BEFORE);
+    createSourceFile('package.json', '{}');
 }
