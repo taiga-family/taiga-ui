@@ -6,7 +6,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint, TuiNotification, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -20,7 +20,6 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiInputModule,
         ReactiveFormsModule,
         TuiDropdown,

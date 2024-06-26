@@ -7,7 +7,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiNumberFormat} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -19,7 +19,6 @@ import {NumberFormatDocumentation} from '../abstract/number-format-documentation
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiInputRangeModule,
         ReactiveFormsModule,
         TuiNumberFormat,

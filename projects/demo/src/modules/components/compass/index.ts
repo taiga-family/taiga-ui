@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiNotification} from '@taiga-ui/core';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCompass, TuiNotification],
+    imports: [TuiDemo, TuiCompass],
     templateUrl: './index.html',
     changeDetection,
 })

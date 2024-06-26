@@ -4,18 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
-import {
-    TuiAlertService,
-    TuiButton,
-    TuiDialogService,
-    TuiNotification,
-} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, TuiButton, TuiAccordion],
+    imports: [TuiDemo, TuiButton, TuiAccordion],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

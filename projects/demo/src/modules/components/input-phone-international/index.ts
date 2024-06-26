@@ -3,13 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TuiDropdown,
-    TuiHint,
-    TuiLink,
-    TuiNotification,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
@@ -28,8 +22,6 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiInputPhoneInternationalComponent,
         TuiTextfield,
         ReactiveFormsModule,
-        TuiLink,
-        TuiNotification,
     ],
     templateUrl: './index.html',
     changeDetection,

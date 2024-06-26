@@ -14,7 +14,7 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiHint, TuiLink, TuiNotification} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -34,8 +34,6 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
     imports: [
         TuiDemo,
         InheritedDocumentation,
-        TuiLink,
-        TuiNotification,
         TuiInputDateRangeModule,
         ReactiveFormsModule,
         TuiHint,

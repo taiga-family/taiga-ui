@@ -6,7 +6,7 @@ import {TuiDemo} from '@demo/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_HINT_DIRECTIONS, TuiHint, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
@@ -26,7 +26,6 @@ import Example2 from './examples/2';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         FormsModule,
         Example1,
         Example2,

@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHint, TuiNotification, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -15,7 +15,6 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiInputNumberModule,
         ReactiveFormsModule,
         TuiHint,

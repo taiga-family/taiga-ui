@@ -6,7 +6,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, tuiProvide, TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDropdown, TuiHint, TuiNotification} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 import {TuiInputTimeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -18,7 +18,6 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiInputTimeModule,
         ReactiveFormsModule,
         TuiDropdown,

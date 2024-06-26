@@ -6,7 +6,7 @@ import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
-import {TuiHint, TuiNotification} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -17,7 +17,6 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiTextareaModule,
         ReactiveFormsModule,
         TuiHint,
