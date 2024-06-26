@@ -97,10 +97,13 @@ export function findElementsWithAttributeOnTag(
     return findElementsInTemplateByFn(
         html,
         el =>
-            el.attrs?.some(attr =>
-                attributeNames.map(name => name.toLowerCase()).includes(attr.name),
-            ) &&
-            (tagNames.includes(el.tagName) || !tagNames.length) &&
+            (!attributeNames.length ||
+                el.attrs?.some(attr =>
+                    attributeNames.map(name => name.toLowerCase()).includes(attr.name),
+                )) &&
+            (tagNames.includes(el.tagName) ||
+                tagNames.includes('*') ||
+                !tagNames.length) &&
             filterFn(el),
     );
 }

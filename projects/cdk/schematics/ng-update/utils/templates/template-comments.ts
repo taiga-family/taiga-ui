@@ -26,11 +26,13 @@ export function addHTMLCommentTags({
     data.forEach(({comment, tag, withAttrs}) => {
         const elementStartOffsets = [
             ...findElementsWithAttributeOnTag(template, withAttrs, [tag]),
-            ...findElementsWithAttributeOnTag(
-                template,
-                withAttrs.map(attr => `[${attr}]`),
-                [tag],
-            ),
+            ...(withAttrs.length
+                ? findElementsWithAttributeOnTag(
+                      template,
+                      withAttrs.map(attr => `[${attr}]`),
+                      [tag],
+                  )
+                : []),
         ].map(
             ({sourceCodeLocation}) =>
                 (sourceCodeLocation?.startOffset || 0) + templateOffset,

@@ -17,4 +17,12 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiOverscrollModule',
         moduleSpecifier: '@taiga-ui/cdk',
     },
+    {
+        name: 'TuiThemeNightModule',
+        moduleSpecifier: '@taiga-ui/core',
+    },
+    {
+        name: 'TuiModeModule',
+        moduleSpecifier: '@taiga-ui/core',
+    },
 ];
