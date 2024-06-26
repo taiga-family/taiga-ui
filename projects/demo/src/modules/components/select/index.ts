@@ -6,15 +6,7 @@ import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiHint,
-    TuiIcon,
-    TuiLink,
-    TuiNotification,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -38,8 +30,6 @@ class Account {
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
-        TuiLink,
         TuiSelectModule,
         ReactiveFormsModule,
         TuiDropdown,

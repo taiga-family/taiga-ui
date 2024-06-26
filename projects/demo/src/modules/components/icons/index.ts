@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiIcon, TuiIconPipe, TuiLink, TuiNotification} from '@taiga-ui/core';
+import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 
 import {COLORED_ICONS, MONO_ICONS} from './icons.tokens';
 import {IconsGroup} from './icons-group/icons-group.component';
@@ -9,15 +9,7 @@ import {IconsGroupTemplate} from './icons-group/icons-group.directive';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiIcon,
-        TuiIconPipe,
-        IconsGroup,
-        IconsGroupTemplate,
-        TuiLink,
-        TuiNotification,
-    ],
+    imports: [TuiDemo, TuiIcon, TuiIconPipe, IconsGroup, IconsGroupTemplate],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -4,11 +4,10 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, TuiLink, TuiAxes, TuiLineChart],
+    imports: [TuiDemo, TuiAxes, TuiLineChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

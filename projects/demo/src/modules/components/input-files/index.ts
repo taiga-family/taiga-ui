@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNotification} from '@taiga-ui/core';
 import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
@@ -13,7 +12,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiNotification, ReactiveFormsModule, TuiFiles],
+    imports: [TuiDemo, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

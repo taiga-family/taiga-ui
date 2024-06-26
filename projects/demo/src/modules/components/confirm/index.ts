@@ -1,21 +1,15 @@
 import {Component, inject} from '@angular/core';
-import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {
-    TuiAlertService,
-    TuiButton,
-    TuiDialogService,
-    TuiNotification,
-} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, RouterModule, TuiNotification, TuiDemo],
+    imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

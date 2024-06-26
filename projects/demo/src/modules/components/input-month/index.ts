@@ -11,7 +11,6 @@ import {
     TuiMonth,
     tuiProvide,
 } from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core';
 import {TuiInputMonthModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -22,7 +21,6 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotification,
         TuiInputMonthModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,

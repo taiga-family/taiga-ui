@@ -3,12 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_SHEET_DIALOG_DEFAULT_OPTIONS, TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton, TuiNotification, TuiAvatar, TuiTitle, TuiSheetDialog],
+    imports: [TuiDemo, TuiButton, TuiAvatar, TuiTitle, TuiSheetDialog],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -8,7 +8,7 @@ import {
 } from '@angular/common';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 import {TuiComponentPipe} from './component.pipe';
 import {TuiExamplePipe} from './example.pipe';
@@ -21,6 +21,7 @@ export const TuiDemo = [
     RouterLinkActive,
     RouterOutlet,
     TuiLink,
+    TuiNotification,
     NgSwitch,
     NgSwitchCase,
     NgSwitchDefault,
