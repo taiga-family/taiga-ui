@@ -92,6 +92,28 @@ describe('InputDateRangeComponent', () => {
             initializeEnvironment();
         });
 
+        it('When switching between ranges with same date, displays appropriate input value', async () => {
+            const today = TuiDay.currentLocal();
+            const previousMonth = today.append({month: -1});
+            const first = '1';
+            const second = '2';
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), first),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), second),
+            ];
+            fixture.detectChanges();
+
+            clickOnTextfield();
+
+            getCalendarItems()[1]?.nativeElement.click();
+            fixture.detectChanges();
+
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(second);
+        });
+
         describe('Click on the input field', () => {
             it('opens the calendar', () => {
                 clickOnTextfield();
@@ -404,6 +426,10 @@ describe('InputDateRangeComponent', () => {
 
     function getCalendarsWrapper(): DebugElement | null {
         return pageObject.getByAutomationId('tui-calendar-range__calendars');
+    }
+
+    function getCalendarItems(): DebugElement[] {
+        return pageObject.getAllByAutomationId('tui-calendar-range__menu__item');
     }
 
     function getTextfield(): DebugElement | null {

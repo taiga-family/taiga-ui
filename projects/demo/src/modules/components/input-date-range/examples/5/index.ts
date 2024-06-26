@@ -28,5 +28,10 @@ export class TuiInputDateRangeExample5 {
             'Yesterday',
             ({$implicit}) => `Yesterday (${$implicit.from})`,
         ),
+        new TuiDayRangePeriod(
+            new TuiDayRange(yesterday, yesterday),
+            'Yet another yesterday',
+            ({$implicit}) => `Yet another yesterday (${$implicit.from})`,
+        ),
     ];
 }

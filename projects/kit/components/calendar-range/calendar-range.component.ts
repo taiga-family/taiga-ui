@@ -96,7 +96,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         @Optional()
         @Inject(TUI_CALENDAR_DATE_STREAM)
         valueChanges: Observable<TuiDayRange | null> | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) readonly cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
@@ -180,15 +180,15 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
             this.selectedActivePeriod = item;
+            this.updateValue(item.range.dayLimit(this.min, this.max));
 
             return;
         }
 
         if (this.activePeriod !== null) {
-            this.updateValue(null);
             this.selectedActivePeriod = null;
+            this.updateValue(null);
         }
     }
 
