@@ -11,6 +11,8 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import cdkPackage from '../../../../package.json';
+
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const TS_FILE_BEFORE = `
@@ -42,8 +44,8 @@ const PACKAGE_JSON_AFTER = {
     dependencies: {
         '@angular/core': '~13.0.0',
         '@taiga-ui/addon-commerce': '~3.42.0',
-        '@taiga-ui/event-plugins': '^4.0.1',
-        '@taiga-ui/polymorpheus': '^4.6.3',
+        '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+        '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
     },
 };
 
