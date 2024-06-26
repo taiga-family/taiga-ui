@@ -43,4 +43,16 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             '[shape] input has been removed. Please use border-radius css property for rounding borders https://taiga-ui.dev/components/button',
     },
+    {
+        tag: '*',
+        withAttrs: ['tuiMode'],
+        comment:
+            'TuiMode has been removed. Please use tuiTheme attribute to set theme https://taiga-ui.dev/directives/theme',
+    },
+    {
+        tag: 'tui-theme-night',
+        withAttrs: [],
+        comment:
+            'TuiThemeNight has been removed. Please use tuiTheme attribute to set theme https://taiga-ui.dev/directives/theme',
+    },
 ];

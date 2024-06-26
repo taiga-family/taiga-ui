@@ -9,4 +9,12 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         withTagNames: ['button'],
         filterFn: el => hasElementAttribute(el, 'tuiButton'),
     },
+    {
+        attrNames: ['tuiMode'],
+        newAttrName: 'tuiTheme',
+        values: [
+            {from: 'onDark', to: 'dark'},
+            {from: 'onLight', to: 'light'},
+        ],
+    },
 ];
