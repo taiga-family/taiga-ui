@@ -2,13 +2,13 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiValueChangesDirective} from '@taiga-ui/cdk';
+import {TuiValueChanges} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputModule, TuiValueChangesDirective],
+    imports: [ReactiveFormsModule, TuiInputModule, TuiValueChanges],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

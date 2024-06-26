@@ -2,14 +2,14 @@ import {AsyncPipe, NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiForDirective, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiFor, tuiInjectElement} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {Subject} from 'rxjs';
 
 describe('TuiFor directive', () => {
     @Component({
         standalone: true,
-        imports: [TuiForDirective, NgFor, AsyncPipe],
+        imports: [TuiFor, NgFor, AsyncPipe],
         template: `
             <div *ngFor="let item of items$ | async; else: loading; empty: blank">
                 {{ item }}

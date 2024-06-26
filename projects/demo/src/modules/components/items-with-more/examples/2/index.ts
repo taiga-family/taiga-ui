@@ -4,19 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, TuiItem} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiGroupDirective,
-    TuiIcon,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiIcon} from '@taiga-ui/core';
 import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiGroupDirective,
+        TuiGroup,
         TuiItemsWithMore,
         TuiItem,
         TuiBlock,

@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
-import {TuiButton, TuiGroupDirective} from '@taiga-ui/core';
+import {TuiButton, TuiGroup} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiGroupDirective, TuiButton],
+    imports: [TuiDemo, TuiGroup, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -14,7 +14,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
+import {TuiDropdowns} from '@taiga-ui/core/directives';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
@@ -28,7 +28,7 @@ import {debounceTime, map, of} from 'rxjs';
     imports: [
         NgIf,
         AsyncPipe,
-        TuiDropdownsComponent,
+        TuiDropdowns,
         TuiDialogs,
         TuiAlerts,
         TuiHints,

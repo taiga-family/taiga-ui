@@ -2,20 +2,13 @@ import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDropdown, TuiGroupDirective} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiCell,
-        TuiDropdown,
-        TuiGroupDirective,
-        TuiButton,
-        TuiDataListWrapper,
-        NgFor,
-    ],
+    imports: [TuiCell, TuiDropdown, TuiGroup, TuiButton, TuiDataListWrapper, NgFor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

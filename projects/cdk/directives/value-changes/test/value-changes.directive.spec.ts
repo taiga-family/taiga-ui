@@ -3,13 +3,13 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiValueChangesDirective} from '@taiga-ui/cdk';
+import {TuiValueChanges} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiValueChangesDirective', () => {
     @Component({
         standalone: true,
-        imports: [ReactiveFormsModule, TuiValueChangesDirective],
+        imports: [ReactiveFormsModule, TuiValueChanges],
         template: `
             <form
                 [formGroup]="form"

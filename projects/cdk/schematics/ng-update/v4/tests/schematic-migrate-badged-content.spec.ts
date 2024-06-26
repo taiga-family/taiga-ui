@@ -27,12 +27,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiInitialsPipe } from "@taiga-ui/core";
-import { TuiBadgedContentComponent } from "@taiga-ui/kit";
+import { TuiBadgedContent } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadgedContentComponent, TuiInitialsPipe]
+    imports: [TuiBadgedContent, TuiInitialsPipe]
 })
 export class Test {
 }`;

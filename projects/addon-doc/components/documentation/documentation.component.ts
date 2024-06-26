@@ -29,7 +29,7 @@ import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
 import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
 import type {TuiMatcher} from '@taiga-ui/cdk/types';
 import {tuiHexToRgb} from '@taiga-ui/cdk/utils/color';
-import {TuiGroupDirective} from '@taiga-ui/core/components/group';
+import {TuiGroup} from '@taiga-ui/core/components/group';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
@@ -75,7 +75,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         NgSwitchCase,
         TuiSwitch,
         TuiTextfield,
-        TuiGroupDirective,
+        TuiGroup,
         TuiGetOpacityPipe,
         TuiGetColorPipe,
         TuiInputNumberModule,

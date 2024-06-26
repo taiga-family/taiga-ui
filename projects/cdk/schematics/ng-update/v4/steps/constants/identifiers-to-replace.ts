@@ -15,7 +15,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFocusTrapModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiFocusTrapDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiFocusTrap', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiElementModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -23,11 +23,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiForModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiForDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiFor', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiHoveredModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiHoveredDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiHovered', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiItemModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -35,7 +35,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiPanModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiPanDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPan', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiRepeatTimesModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -47,7 +47,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiValueChangesModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiValueChangesDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValueChanges', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiZoomModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -74,8 +74,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_NON_DIGITS_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
-        from: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiAlertDirective', moduleSpecifier: '@taiga-ui/core'},
+        from: {name: 'TuiAlertModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
@@ -87,7 +87,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiCalendarModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiCalendarComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiCalendar', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiFormatDatePipeModule', moduleSpecifier: '@taiga-ui/core'},
@@ -150,27 +150,23 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiLoader', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiAccordionComponent', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiAccordionDirective', moduleSpecifier: '@taiga-ui/kit'},
-    },
-    {
         from: {name: 'TuiAccordionModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiAccordion', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiBreadcrumbsModule', moduleSpecifier: '@taiga-ui/kit'},
         to: [
-            {name: 'TuiBreadcrumbsComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiBreadcrumbs', moduleSpecifier: '@taiga-ui/kit'},
             {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
         ],
     },
     {
         from: {name: 'TuiCalendarMonthModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiCalendarMonthComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarMonth', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCalendarRangeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiCalendarRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarRange', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -179,13 +175,13 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},
         to: [
-            {name: 'TuiPushComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiPush', moduleSpecifier: '@taiga-ui/kit'},
             {name: 'TuiPushDirective', moduleSpecifier: '@taiga-ui/kit'},
         ],
     },
     {
         from: {name: 'TuiElasticContainerModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiElasticContainerComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiElasticContainer', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiFilesModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -193,11 +189,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFilterModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiFilterComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFilter', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiInputInlineModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiInputInlineComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiInputInline', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiIslandComponent', moduleSpecifier: '@taiga-ui/kit'},
@@ -213,11 +209,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiLineClampModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiLineClampComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLineClamp', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiRangeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRange', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiSliderModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -328,11 +324,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiClickOutsideModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiClickOutsideDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiClickOutside', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiCopyProcessorModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiCopyProcessorDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiCopyProcessor', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'AbstractTuiValueTransformer', moduleSpecifier: '@taiga-ui/cdk'},
@@ -364,7 +360,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCheckboxComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -375,7 +371,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiRadioModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiRadioComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRadio', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiAvatarModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -395,11 +391,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiTextAreaDirective', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiBadgedContentComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgedContent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgedContent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {
@@ -409,12 +409,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiBadgeNotification', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
-        from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiBadgedContentComponent', moduleSpecifier: '@taiga-ui/kit'},
-    },
-    {
         from: {name: 'TuiTextAreaComponent', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiInputCountModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -464,15 +460,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiGroupModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiGroupDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiGroup', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'AbstractTuiPortalHostComponent', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiPortalsComponent', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortals', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'AbstractTuiPortalService', moduleSpecifier: '@taiga-ui/cdk'},
@@ -484,7 +480,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiDropdownHostComponent', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiDropdownsComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdowns', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiDropdownPortalService', moduleSpecifier: '@taiga-ui/cdk'},
@@ -492,19 +488,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiPortalDirective', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdownPortal', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiPortalModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdownPortal', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiDroppableModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiDroppableDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDroppable', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiValidatorModule', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiValidatorDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValidator', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
         from: {name: 'TuiAmountModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -537,25 +533,30 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiEditorModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiEditorComponent', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiEditor', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
         from: {name: 'TuiEditorSocketModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiEditorSocketComponent', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiEditorSocket', moduleSpecifier: '@taiga/editor'},
     },
     {
         from: {name: 'defaultEditorExtensions', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {
+        to: {name: 'TUI_EDITOR_DEFAULT_EXTENSIONS', moduleSpecifier: '@taiga-ui/editor'},
+    },
+    {
+        from: {
             name: 'TUI_EDITOR_DEFAULT_EXTENSIONS',
             moduleSpecifier: '@tinkoff/tui-editor',
         },
+        to: {name: 'TUI_EDITOR_DEFAULT_EXTENSIONS', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
         from: {name: 'defaultEditorTools', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {
-            name: 'TUI_EDITOR_DEFAULT_TOOLS',
-            moduleSpecifier: '@tinkoff/tui-editor',
-        },
+        to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
+    },
+    {
+        from: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
         from: {name: 'TuiFadeModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -586,7 +587,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiCheckboxLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiLabelComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiLabel', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
@@ -606,19 +607,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiPinModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiPinComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiPin', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCompassModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCompassComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCompass', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRating', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRating', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiSurfaceModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -650,7 +651,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-table',
         },
         to: {
-            name: 'TuiTablePaginationComponent',
+            name: 'TuiTablePagination',
             moduleSpecifier: '@taiga-ui/addon-table',
         },
     },
@@ -1080,7 +1081,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-table',
         },
         to: {
-            name: 'TuiReorderComponent',
+            name: 'TuiReorder',
             moduleSpecifier: '@taiga-ui/addon-table',
         },
     },
@@ -1130,7 +1131,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiBarChartComponent',
+            name: 'TuiBarChart',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -1140,7 +1141,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiBarSetComponent',
+            name: 'TuiBarSet',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -1150,7 +1151,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
-            name: 'TuiDocCopyComponent',
+            name: 'TuiDocCopy',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
@@ -1230,7 +1231,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
-            name: 'TuiTextCodeDirective',
+            name: 'TuiTextCode',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
@@ -1240,7 +1241,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-preview',
         },
         to: {
-            name: 'TuiPreviewDialogComponent',
+            name: 'TuiPreviewDialog',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
@@ -1370,7 +1371,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiLegendItemComponent',
+            name: 'TuiLegendItem',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -1381,11 +1382,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: [
             {
-                name: 'TuiLineChartComponent',
+                name: 'TuiLineChart',
                 moduleSpecifier: '@taiga-ui/addon-charts',
             },
             {
-                name: 'TuiLineChartHintDirective',
+                name: 'TuiLineChartHint',
                 moduleSpecifier: '@taiga-ui/addon-charts',
             },
         ],
@@ -1398,11 +1399,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: [
             {
-                name: 'TuiLineDaysChartComponent',
+                name: 'TuiLineDaysChart',
                 moduleSpecifier: '@taiga-ui/addon-charts',
             },
             {
-                name: 'TuiLineDaysChartHintDirective',
+                name: 'TuiLineDaysChartHint',
                 moduleSpecifier: '@taiga-ui/addon-charts',
             },
         ],
@@ -1413,7 +1414,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiPieChartComponent',
+            name: 'TuiPieChart',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -1423,7 +1424,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiRingChartComponent',
+            name: 'TuiRingChart',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -1523,7 +1524,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
         to: {
-            name: 'TuiElasticStickyDirective',
+            name: 'TuiElasticSticky',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
@@ -1538,7 +1539,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
                 moduleSpecifier: '@taiga-ui/addon-mobile',
             },
             {
-                name: 'TuiSheetDialogDirective',
+                name: 'TuiSheetDialog',
                 moduleSpecifier: '@taiga-ui/addon-mobile',
             },
         ],

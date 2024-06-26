@@ -20,8 +20,8 @@ import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 
 const OLD_PACKAGE = '@taiga-ui/addon-editor';
-const NEW_PACKAGE = '@tinkoff/tui-editor';
-const NEW_PACKAGE_VERSION = '^1.0.1';
+const NEW_PACKAGE = '@taiga-ui/editor';
+const NEW_PACKAGE_VERSION = '^2.0.0';
 
 // TODO: drop in v4.x
 export function updateToV3_36(options: TuiSchema): Rule {

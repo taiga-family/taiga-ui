@@ -3,14 +3,14 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDataList, TuiDropdown, TuiGroupDirective} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
-        TuiGroupDirective,
+        TuiGroup,
         TuiDropdown,
         TuiButton,
         TuiChevron,

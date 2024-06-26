@@ -25,4 +25,4 @@ import {TuiDropdownService} from './dropdown.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
 })
-export class TuiDropdownsComponent extends TuiPortals {}
+export class TuiDropdowns extends TuiPortals {}

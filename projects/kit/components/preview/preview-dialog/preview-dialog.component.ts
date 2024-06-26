@@ -33,7 +33,7 @@ import {
         '[@tuiFadeIn]': 'animation',
     },
 })
-export class TuiPreviewDialogComponent {
+export class TuiPreviewDialog {
     protected readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
     protected readonly animation = {
         value: '',

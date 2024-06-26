@@ -21,7 +21,7 @@ import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroupDirective} from '@taiga-ui/core/components/group';
+import {TuiGroup} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
@@ -57,7 +57,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiDropdown,
         TuiFlagPipe,
         TuiGetCountryCallingCodePipe,
-        TuiGroupDirective,
+        TuiGroup,
         TuiTextfield,
     ],
     templateUrl: './input-phone-international.template.html',

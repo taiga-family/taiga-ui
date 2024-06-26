@@ -25,12 +25,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiCheckboxComponent, TuiRadioComponent } from "@taiga-ui/kit";
-import { TuiLabelComponent } from "@taiga-ui/core";
+import { TuiLabel } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiLabelComponent, TuiCheckboxComponent, TuiRadioComponent]
+    imports: [TuiLabel, TuiCheckboxComponent, TuiRadioComponent]
 })
 export class Test {
 }`;
