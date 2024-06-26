@@ -12,6 +12,7 @@ export function runStandardVersion(
         execute(
             `
             npm run release -- \
+                --prerelease=alpha
                 --release-as ${version} ${dryRun} \
                 --skip.changelog \
             `,
