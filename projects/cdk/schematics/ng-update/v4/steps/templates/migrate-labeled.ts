@@ -50,9 +50,7 @@ export function migrateLabeled({
 
         addImportToClosestModule(
             resource.componentPath,
-            tagName === 'tui-checkbox-labeled'
-                ? 'TuiCheckboxComponent'
-                : 'TuiRadioComponent',
+            tagName === 'tui-checkbox-labeled' ? 'TuiCheckbox' : 'TuiRadio',
             '@taiga-ui/kit',
         );
 
