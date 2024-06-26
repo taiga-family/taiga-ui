@@ -5,6 +5,7 @@ import {chain} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {saveActiveProject} from 'ng-morph';
 
+import cdkPackage from '../../../package.json';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
@@ -14,6 +15,7 @@ import {
     renameTypes,
     replaceEnums,
     replaceIdentifiers,
+    replacePackageName,
     showWarnings,
 } from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
@@ -60,6 +62,23 @@ function main(options: TuiSchema): Rule {
 
         fileSystem.commitEdits();
         saveActiveProject();
+
+        replacePackageName(
+            '@tinkoff/ng-polymorpheus',
+            {
+                name: '@taiga-ui/polymorpheus',
+                version: cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
+            },
+            tree,
+        );
+        replacePackageName(
+            '@tinkoff/ng-event-plugins',
+            {
+                name: '@taiga-ui/event-plugins',
+                version: cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+            },
+            tree,
+        );
 
         context.addTask(new NodePackageInstallTask());
     };
