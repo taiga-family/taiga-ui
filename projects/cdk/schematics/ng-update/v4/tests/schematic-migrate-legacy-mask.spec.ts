@@ -73,6 +73,7 @@ describe('ng-update', () => {
         setActiveProject(createProject(host));
 
         createSourceFile('test/app/test.component.ts', BEFORE);
+        createSourceFile('package.json', '{}');
 
         saveActiveProject();
     });

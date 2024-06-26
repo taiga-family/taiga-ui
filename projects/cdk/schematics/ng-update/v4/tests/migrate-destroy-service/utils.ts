@@ -19,6 +19,7 @@ export async function runMigration(before: string): Promise<string> {
 
     setActiveProject(createProject(host));
     createSourceFile('test/app/test.component.ts', before);
+    createSourceFile('package.json', '{}');
     saveActiveProject();
 
     const tree = await runner.runSchematic(

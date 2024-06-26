@@ -103,4 +103,5 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile('package.json', '{}');
 }

@@ -167,5 +167,5 @@ function createMainFiles(): void {
     createSourceFile('test/app/tui-typed-mapper.component.html', TEMPLATE_BEFORE);
 
     createAngularJson();
-    createSourceFile('package.json');
+    createSourceFile('package.json', '{}');
 }
