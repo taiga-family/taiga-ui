@@ -11,7 +11,7 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     styleUrls: ['./elastic-container.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiElasticContainerComponent {
+export class TuiElasticContainer {
     @HostBinding('style.height.px')
     protected height = NaN;
 

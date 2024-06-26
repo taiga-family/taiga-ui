@@ -35,7 +35,7 @@ class TuiGroupStyles {}
         '[class.tui-group_radius_large]': 'size === "l"',
     },
 })
-export class TuiGroupDirective {
+export class TuiGroup {
     private readonly options = inject(TUI_GROUP_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(TuiGroupStyles);

@@ -15,10 +15,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
-import {
-    TuiGroupDirective,
-    tuiGroupOptionsProvider,
-} from '@taiga-ui/core/components/group';
+import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/components/group';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
@@ -30,7 +27,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiGroupOptionsProvider({collapsed: true, orientation: 'vertical'})],
-    hostDirectives: [TuiGroupDirective],
+    hostDirectives: [TuiGroup],
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItem, {read: TemplateRef})

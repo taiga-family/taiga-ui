@@ -8,7 +8,7 @@ import {distinctUntilChanged, EMPTY, Subject, switchAll} from 'rxjs';
     standalone: true,
     selector: '[tuiValueChanges]',
 })
-export class TuiValueChangesDirective<T> implements DoCheck {
+export class TuiValueChanges<T> implements DoCheck {
     private readonly container = inject(ControlContainer, {optional: true});
     private readonly control = inject(NgControl, {optional: true});
     private readonly refresh$ = new Subject<Observable<T>>();
