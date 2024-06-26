@@ -5,7 +5,6 @@ import {chain} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {saveActiveProject} from 'ng-morph';
 
-import cdkPackage from '../../../package.json';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
@@ -15,7 +14,6 @@ import {
     renameTypes,
     replaceEnums,
     replaceIdentifiers,
-    replacePackageName,
     showWarnings,
 } from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
@@ -24,9 +22,13 @@ import {
     migrateAllCountryIsoCodes,
     migrateDestroyService,
     migrateLegacyMask,
+    migrateOptionProviders,
+    migrateProprietary,
+    migrateStyles,
     migrateTemplates,
     restoreTuiMapper,
     restoreTuiMatcher,
+    updatePackages,
 } from './steps';
 import {
     IDENTIFIERS_TO_REPLACE,
@@ -34,9 +36,6 @@ import {
     MODULES_TO_REMOVE,
 } from './steps/constants';
 import {TYPES_TO_RENAME} from './steps/constants/types';
-import {migrateOptionProviders} from './steps/migrate-option-providers';
-import {migrateProprietary} from './steps/migrate-proprietary';
-import {migrateStyles} from './steps/migrate-styles';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -59,26 +58,10 @@ function main(options: TuiSchema): Rule {
         showWarnings(context, MIGRATION_WARNINGS);
 
         migrateProprietary(fileSystem, options);
+        updatePackages(fileSystem, options);
 
         fileSystem.commitEdits();
         saveActiveProject();
-
-        replacePackageName(
-            '@tinkoff/ng-polymorpheus',
-            {
-                name: '@taiga-ui/polymorpheus',
-                version: cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
-            },
-            tree,
-        );
-        replacePackageName(
-            '@tinkoff/ng-event-plugins',
-            {
-                name: '@taiga-ui/event-plugins',
-                version: cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
-            },
-            tree,
-        );
 
         context.addTask(new NodePackageInstallTask());
     };
