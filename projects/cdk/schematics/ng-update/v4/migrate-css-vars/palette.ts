@@ -84,6 +84,13 @@ export const DEPRECATED_VARS = {
     '--tui-positive-night-hover': '--tui-status-positive',
     '--tui-negative-night': '--tui-status-negative',
     '--tui-negative-night-hover': '--tui-status-negative',
+    '--tui-shadow': 'var(--tui-shadow-small)',
+    '--tui-shadow-hover': 'var(--tui-shadow-small-hover)',
+    '--tui-shadow-dropdown': 'var(--tui-shadow-medium)',
+    '--tui-shadow-modal': 'var(--tui-shadow-popup)',
+    '--tui-shadow-sidebar': 'var(--tui-shadow-medium)',
+    '--tui-shadow-navigation': 'var(--tui-shadow-small)',
+    '--tui-shadow-sheet': 'var(--tui-shadow-popup)',
 };
 
 export const NIGHT_VAR_COMMENT =
