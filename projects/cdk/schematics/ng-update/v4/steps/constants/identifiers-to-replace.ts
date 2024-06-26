@@ -390,6 +390,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiTextareaModule', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TuiTextareaModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTextareaModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiTextAreaDirective', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/legacy'},
     },
@@ -1367,6 +1371,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiAddonDocModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
             name: 'TuiLegendItemModule',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
@@ -2222,6 +2236,46 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiTagModule',
             moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TUI_IS_APPLE',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TUI_IS_APPLE',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocPage',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiDocRoutePage',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocPages',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiDocRoutePages',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiLabelModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiLabel',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];
