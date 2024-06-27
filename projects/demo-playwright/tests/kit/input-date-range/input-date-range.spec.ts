@@ -13,6 +13,7 @@ import {
 test.describe('InputDateRange', () => {
     let example!: Locator;
     let inputDateRange!: TuiInputDateRangePO;
+    let documentationPage!: TuiDocumentationPagePO;
 
     test.use({
         viewport: {width: 650, height: 650},
@@ -21,7 +22,8 @@ test.describe('InputDateRange', () => {
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.InputDateRange);
 
-        example = new TuiDocumentationPagePO(page).apiPageExample;
+        documentationPage = new TuiDocumentationPagePO(page);
+        example = documentationPage.apiPageExample;
 
         inputDateRange = new TuiInputDateRangePO(example.locator('tui-input-date-range'));
     });
@@ -158,6 +160,28 @@ test.describe('InputDateRange', () => {
             );
             await expect(example).toHaveScreenshot(
                 '07-item-and-calendar-interactions.png',
+            );
+        });
+    });
+
+    test.describe('Examples', () => {
+        test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
+            const example = documentationPage.getExample('#custom-period');
+
+            const inputDateRange = new TuiInputDateRangePO(
+                example.locator('tui-input-date-range'),
+            );
+
+            await inputDateRange.textfield.click();
+            await inputDateRange.selectItem(2);
+            await inputDateRange.textfield.click();
+
+            expect(await inputDateRange.itemHasCheckmark(1)).toBeFalsy();
+            expect(await inputDateRange.itemHasCheckmark(2)).toBeTruthy();
+
+            await expect(inputDateRange.textfield).toHaveValue('Yet another yesterday');
+            await expect(inputDateRange.calendarRange).toHaveScreenshot(
+                '08-calendar-correct-selected-period-after-close-open.png',
             );
         });
     });

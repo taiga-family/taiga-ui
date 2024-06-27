@@ -45,6 +45,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
 export class TuiCalendarRange implements OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly cdr = inject(ChangeDetectorRef);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected selectedActivePeriod: TuiDayRangePeriod | null = null;
@@ -82,7 +83,7 @@ export class TuiCalendarRange implements OnChanges {
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
-            ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
+            ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed())
             .subscribe(value => {
                 this.value = value;
             });
@@ -143,11 +144,11 @@ export class TuiCalendarRange implements OnChanges {
 
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
             this.selectedActivePeriod = item;
+            this.updateValue(item.range.dayLimit(this.min, this.max));
         } else if (this.activePeriod !== null) {
-            this.updateValue(null);
             this.selectedActivePeriod = null;
+            this.updateValue(null);
         }
     }
 
