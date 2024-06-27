@@ -84,7 +84,7 @@ const TEMPLATE_AFTER = `
         [style.color]="'var(--tui-error-fill)'"
     ></tui-badge-notification>
      <tui-avatar [src]="'a b' | tuiInitials"
-         size="l"
+         size="xl"
         ${''}
          [round]="true"
      ></tui-avatar>
@@ -111,7 +111,7 @@ const TEMPLATE_AFTER = `
     ></tui-icon>
 
     <tui-avatar [src]="'e' | tuiInitials" [round]="false"
-        size="l"
+        size="xl"
        ${''}
     ></tui-avatar>
 </tui-badged-content>

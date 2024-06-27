@@ -42,9 +42,11 @@ const TEMPLATE_BEFORE = `
     avatarUrl="tuiIconUser"
     text="alex inkin"
     [rounded]="true"
+    size="xxs"
 ></tui-avatar>
 <tui-avatar
     avatarUrl="tuiIconUser"
+    [size]="size"
 ></tui-avatar>
 <tui-avatar
     class="tui-avatar"
@@ -66,9 +68,11 @@ const TEMPLATE_AFTER = `
    ${''}
    ${''}
     [round]="true"
+    size="xs"
 ></tui-avatar>
 <tui-avatar [src]="'tuiIconUser'" [round]="false"
    ${''}
+    [size]="size"
 ></tui-avatar>
 <tui-avatar [src]="avatarUrl | tuiFallbackSrc : (text | tuiInitials) | async" [round]="false"
     class="tui-avatar"

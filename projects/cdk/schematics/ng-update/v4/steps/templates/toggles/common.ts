@@ -31,6 +31,7 @@ export function replaceSizeAttr(
     sourceCodeLocation: ElementLocation,
     recorder: UpdateRecorder,
     templateOffset: number,
+    map = sizeMap,
 ): void {
     const sizeAttr = attrs.find(attr => attr.name === 'size');
 
@@ -43,7 +44,7 @@ export function replaceSizeAttr(
         recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         recorder.insertRight(
             templateOffset + startOffset,
-            `size="${sizeMap[sizeAttr.value] || sizeAttr.value}"`,
+            `size="${map[sizeAttr.value] || sizeAttr.value}"`,
         );
     }
 }
