@@ -1,0 +1,32 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/legacy/styles/taiga-ui-local';
+
+:host {
+    display: block;
+    border-radius: var(--tui-radius-m);
+    text-align: left;
+}
+
+.t-wrapper {
+    display: flex;
+    border-radius: inherit;
+    width: 100%;
+}
+
+.t-textfield {
+    border-radius: inherit;
+    text-align: inherit;
+    width: inherit;
+
+    ::ng-deep .t-input {
+        text-transform: lowercase !important;
+    }
+}
+
+.t-color {
+    width: 1.5rem;
+    height: 1.5rem;
+    box-shadow: inset 0 0 0 1px var(--tui-base-03-dark);
+    border-radius: 0.125rem;
+    pointer-events: auto !important;
+}
