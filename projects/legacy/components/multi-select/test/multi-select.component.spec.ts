@@ -143,14 +143,14 @@ describe('MultiSelect', () => {
                 inputPO.focus();
             });
 
-            it('Click on the arrow to open the dropdown', () => {
+            it('click on the arrow to open the dropdown', () => {
                 getArrow(pageObject)?.nativeElement.click();
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            it('Clicking the arrow again closes the dropdown', () => {
+            it('clicking the arrow again closes the dropdown', () => {
                 getArrow(pageObject)?.nativeElement.click();
                 fixture.detectChanges();
                 getArrow(pageObject)?.nativeElement.click();
@@ -159,14 +159,14 @@ describe('MultiSelect', () => {
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it('There is exists interactive arrow in readOnly mode', () => {
+            it('there is exists interactive arrow in readOnly mode', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
                 expect(getArrow(pageObject)?.nativeElement).toBeTruthy();
             });
 
-            it('In disabled mode there is interactive arrow exists', () => {
+            it('in disabled mode there is interactive arrow exists', () => {
                 testComponent.control.disable();
                 fixture.detectChanges();
 
@@ -179,14 +179,14 @@ describe('MultiSelect', () => {
                 inputPO.focus();
             });
 
-            it('Down arrow opens a dropdown', () => {
+            it('down arrow opens a dropdown', () => {
                 inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
-            it('Esc closes the dropdown', () => {
+            it('esc closes the dropdown', () => {
                 inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
                 inputPO.sendKeydown('Escape');
@@ -195,7 +195,7 @@ describe('MultiSelect', () => {
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it('Down arrow does not open dropdown in readOnly mode', () => {
+            it('down arrow does not open dropdown in readOnly mode', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
                 inputPO.sendKeydown('ArrowDown');
@@ -204,14 +204,14 @@ describe('MultiSelect', () => {
                 expect(getDropdown(pageObject)).toBeNull();
             });
 
-            it('The repeated down arrow moves focus to the item', () => {
+            it('the repeated down arrow moves focus to the item', () => {
                 inputPO.sendKeydown('ArrowDown');
                 inputPO.sendKeydown('ArrowDown');
 
                 expect(document.activeElement?.tagName.toLowerCase()).toBe('button');
             });
 
-            it('Click to remove the selected item', () => {
+            it('click to remove the selected item', () => {
                 inputPO.sendKeydown('ArrowDown');
                 inputPO.sendKeydown('ArrowDown');
 
@@ -220,7 +220,7 @@ describe('MultiSelect', () => {
                 expect(testComponent.control.value).toEqual([]);
             });
 
-            it('Click to select an unselected item', () => {
+            it('click to select an unselected item', () => {
                 inputPO.sendKeydown('ArrowDown');
                 inputPO.sendKeydown('ArrowDown');
 

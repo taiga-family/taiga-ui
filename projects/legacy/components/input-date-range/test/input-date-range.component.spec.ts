@@ -142,13 +142,13 @@ describe('InputDateRangeComponent', () => {
                 fixture.detectChanges();
             });
 
-            it('When entering the first date, the control value is null', () => {
+            it('when entering the first date, the control value is null', () => {
                 inputPO.sendText('31.12.2012');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it('When entering two dates, the control value is updated', () => {
+            it('when entering two dates, the control value is updated', () => {
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
                 expect(
@@ -158,7 +158,7 @@ describe('InputDateRangeComponent', () => {
                 ).toBe(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
             });
 
-            it('When entering two dates, the value is truncated by min / max is updated', () => {
+            it('when entering two dates, the value is truncated by min / max is updated', () => {
                 testComponent.min = new TuiDay(2001, 6, 15);
                 testComponent.max = new TuiDay(2019, 6, 15);
                 fixture.detectChanges();

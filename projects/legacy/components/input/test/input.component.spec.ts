@@ -148,7 +148,7 @@ describe('Input', () => {
         });
 
         describe('Dropdown does not appear', () => {
-            it('Dropdown does not appear on focus', () => {
+            it('dropdown does not appear on focus', () => {
                 expect(getDropdown()).toBeNull();
             });
 
@@ -161,14 +161,14 @@ describe('Input', () => {
             });
         });
 
-        it('Dropdown is hidden by Esc', () => {
+        it('dropdown is hidden by Esc', () => {
             inputPO.sendText('ен');
             inputPO.sendKeydown('escape');
 
             expect(getDropdown()).toBeNull();
         });
 
-        it('The value is substituted when selecting an item from the dropdown', () => {
+        it('the value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('ен');
             pageObject
                 .getByAutomationId('tui-data-list-wrapper__option')!
@@ -197,7 +197,7 @@ describe('Input', () => {
             expect(updateSpy).toHaveBeenCalled();
         });
 
-        it('Updating the control updates the input', async () => {
+        it('updating the control updates the input', async () => {
             testComponent.control.setValue('321');
             fixture.detectChanges();
             await fixture.whenStable();
@@ -288,72 +288,72 @@ describe('Input', () => {
             inputPO.sendKeydown('ArrowDown');
         });
 
-        it('Focus in the dropdown', () => {
+        it('focus in the dropdown', () => {
             expect(tuiActiveText()).toBe(ITEMS[0].toString());
         });
 
-        it('Entering characters brings focus to the input field', () => {
+        it('entering characters brings focus to the input field', () => {
             tuiDispatchOnActive('e');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Spacebar' moves focus to the input field", () => {
+        it("pressing 'Spacebar' moves focus to the input field", () => {
             tuiDispatchOnActive('Spacebar');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Backspace' moves focus to the input field", () => {
+        it("pressing 'Backspace' moves focus to the input field", () => {
             tuiDispatchOnActive('Backspace');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Delete' moves focus to the input field", () => {
+        it("pressing 'Delete' moves focus to the input field", () => {
             tuiDispatchOnActive('Delete');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'ArrowLeft' moves focus to the input field", () => {
+        it("pressing 'ArrowLeft' moves focus to the input field", () => {
             tuiDispatchOnActive('ArrowLeft');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'ArrowRight' moves focus to the input field", () => {
+        it("pressing 'ArrowRight' moves focus to the input field", () => {
             tuiDispatchOnActive('ArrowRight');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Left' moves focus to the input field", () => {
+        it("pressing 'Left' moves focus to the input field", () => {
             tuiDispatchOnActive('Left');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Right' moves focus to the input field", () => {
+        it("pressing 'Right' moves focus to the input field", () => {
             tuiDispatchOnActive('Right');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'End' moves focus to the input field", () => {
+        it("pressing 'End' moves focus to the input field", () => {
             tuiDispatchOnActive('End');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it("Pressing 'Home' moves focus to the input field", () => {
+        it("pressing 'Home' moves focus to the input field", () => {
             tuiDispatchOnActive('Home');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
     });
 
-    it('Loading shown when items === null', () => {
+    it('loading shown when items === null', () => {
         testComponent.items = null;
         fixture.detectChanges();
         inputPO.focus();

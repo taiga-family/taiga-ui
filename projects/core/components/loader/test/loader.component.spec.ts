@@ -54,14 +54,14 @@ describe('Loader', () => {
     });
 
     describe('showLoader:', () => {
-        it('Loader is shown by default', async () => {
+        it('loader is shown by default', async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const shown = await harness.isLoading();
 
             expect(shown).toBe(true);
         });
 
-        it('With showLoader = false, the loader is shown', async () => {
+        it('with showLoader = false, the loader is shown', async () => {
             component.custom = true;
             fixture.detectChanges();
 
@@ -73,14 +73,14 @@ describe('Loader', () => {
     });
 
     describe('Text', () => {
-        it('No text', async () => {
+        it('no text', async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const text = await harness.getText();
 
             expect(text).toBe('');
         });
 
-        it('If there is `textContent`, the text is shown', async () => {
+        it('if there is `textContent`, the text is shown', async () => {
             component.content = component.template;
             component.custom = true;
             component.showLoader = true;

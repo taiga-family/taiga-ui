@@ -71,25 +71,25 @@ describe('Calendar', () => {
         fixture.detectChanges();
     });
 
-    it('Year selection is not initially visible', async () => {
+    it('year selection is not initially visible', async () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         expect(await calendar.yearPickerShown()).toBe(false);
     });
 
-    it('Month selection is initially visible', async () => {
+    it('month selection is initially visible', async () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         expect(await calendar.yearMonthPaginationShown()).toBe(true);
     });
 
-    it('Day selection is initially visible', async () => {
+    it('day selection is initially visible', async () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         expect(await calendar.primitiveCalendarShown()).toBe(true);
     });
 
-    it('Year selection is initially visible in "year" view', async () => {
+    it('year selection is initially visible in "year" view', async () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#year-view'}),
         );
@@ -97,7 +97,7 @@ describe('Calendar', () => {
         expect(await calendar.yearPickerShown()).toBe(true);
     });
 
-    it('Month selection is not initially visible in "year" view', async () => {
+    it('month selection is not initially visible in "year" view', async () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#year-view'}),
         );
@@ -105,7 +105,7 @@ describe('Calendar', () => {
         expect(await calendar.yearMonthPaginationShown()).toBe(false);
     });
 
-    it('Day selection is initially visible in "year" view', async () => {
+    it('day selection is initially visible in "year" view', async () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: '#year-view'}),
         );

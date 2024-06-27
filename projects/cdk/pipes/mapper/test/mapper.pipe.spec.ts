@@ -12,11 +12,11 @@ describe('TuiMapper pipe', () => {
         pipe = new TuiMapperPipe();
     });
 
-    it('Mapper works', () => {
+    it('mapper works', () => {
         expect(pipe.transform(data, mapper)).toBe(data.toUpperCase());
     });
 
-    it('Works with extra arguments', () => {
+    it('works with extra arguments', () => {
         expect(pipe.transform(data, mapper, ...args)).toBe('TESTthree eleven');
     });
 });

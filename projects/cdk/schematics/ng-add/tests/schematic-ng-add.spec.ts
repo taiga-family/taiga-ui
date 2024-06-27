@@ -228,7 +228,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('Should wrap main template with tui-root', async () => {
+    it('should wrap main template with tui-root', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,

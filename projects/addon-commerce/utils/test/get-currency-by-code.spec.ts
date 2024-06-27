@@ -6,7 +6,7 @@ import {
 } from '@taiga-ui/addon-commerce';
 
 describe('tuiGetCurrencyByCode', () => {
-    it('AED', () => {
+    it('aed', () => {
         expect(tuiGetCurrencyByCode(TuiCurrencyCode.Dirham)).toEqual(TuiCurrency.Dirham);
         expect(tuiGetCurrencyByCode(TuiCurrencyCode.Dirham)?.toString()).toBe('AED');
     });

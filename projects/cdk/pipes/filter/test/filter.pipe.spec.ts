@@ -12,15 +12,15 @@ describe('TuiFilter pipe', () => {
         pipe = new TuiFilterPipe();
     });
 
-    it('Filter works', () => {
+    it('filter works', () => {
         expect(pipe.transform(data, matcher, 6)).toEqual([data[1]]);
     });
 
-    it('Filter returns empty array if nothing matched', () => {
+    it('filter returns empty array if nothing matched', () => {
         expect(pipe.transform(data, matcher, 5)).toEqual([]);
     });
 
-    it('Filter works with extra arguments', () => {
+    it('filter works with extra arguments', () => {
         expect(pipe.transform(data, matcher, 5, ...args)).toEqual([data[0]]);
     });
 });

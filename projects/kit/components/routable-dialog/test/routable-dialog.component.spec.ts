@@ -67,7 +67,7 @@ describe('TuiRoutableDialog', () => {
         fixture = TestBed.createComponent(TuiRoutableDialog);
     }
 
-    it('Dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
+    it('dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
         // arrange
         createComponent();
 
@@ -105,7 +105,7 @@ describe('TuiRoutableDialog', () => {
         verify(tuiDialogService.open(anything(), deepEqual(dialogOptions))).once();
     });
 
-    it('Closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(() => {
+    it('closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(() => {
         // arrange
         const activatedRouteMock = {
             snapshot: {
@@ -147,7 +147,7 @@ describe('TuiRoutableDialog', () => {
         ).once();
     }));
 
-    it('Closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(() => {
+    it('closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(() => {
         // arrange
         createComponent({
             snapshot: {

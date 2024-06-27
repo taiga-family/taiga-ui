@@ -124,23 +124,23 @@ describe('InputTag', () => {
             await fixture.whenStable();
         });
 
-        it('Adds tags separated by commas', () => {
+        it('adds tags separated by commas', () => {
             expect(component.value[1]).toBe('1234');
             expect(component.value[2]).toBe('567');
             expect(component.value.length).toBe(3);
         });
 
-        it('Leaves the value after the last comma in the input field', () => {
+        it('leaves the value after the last comma in the input field', () => {
             expect(inputPO.value).toBe('89');
         });
 
-        it("Doesn't create empty tags", () => {
+        it("doesn't create empty tags", () => {
             inputPO.sendText(' ,  ,,,');
 
             expect(component.value.length).toBe(3);
         });
 
-        it('When exiting the field adds input as a tag', async () => {
+        it('when exiting the field adds input as a tag', async () => {
             focusStealer.focus();
             fixture.detectChanges();
 
@@ -150,7 +150,7 @@ describe('InputTag', () => {
             expect(component.value[3]).toBe('89');
         });
 
-        it('Does not add empty tags when leaving the field', () => {
+        it('does not add empty tags when leaving the field', () => {
             inputPO.sendText('   ');
             focusStealer.focus();
             fixture.detectChanges();
@@ -158,7 +158,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('When adding a tag on leaving the field, the field is cleared', async () => {
+        it('when adding a tag on leaving the field, the field is cleared', async () => {
             focusStealer.focus();
             fixture.detectChanges();
 
@@ -167,21 +167,21 @@ describe('InputTag', () => {
             expect(inputPO.value).toBe('');
         });
 
-        it('Pressing Enter on the field adds the input as a tag', () => {
+        it('pressing Enter on the field adds the input as a tag', () => {
             inputPO.sendKeydown('enter');
 
             expect(component.value.length).toBe(4);
             expect(component.value[3]).toBe('89');
         });
 
-        it('Pressing Enter on the field does not add empty tags', () => {
+        it('pressing Enter on the field does not add empty tags', () => {
             inputPO.sendText('   ');
             inputPO.sendKeydown('enter');
 
             expect(component.value.length).toBe(3);
         });
 
-        it('Pressing Enter on a field clears the field', async () => {
+        it('pressing Enter on a field clears the field', async () => {
             inputPO.sendKeydown('enter');
             fixture.detectChanges();
 
@@ -189,7 +189,7 @@ describe('InputTag', () => {
             expect(inputPO.value).toBe('');
         });
 
-        it("Doesn't add tag on hitting Enter if disabledItemHandler returned false", () => {
+        it("doesn't add tag on hitting Enter if disabledItemHandler returned false", () => {
             component.disabledItemHandler = item => item === 'Tag';
             inputPO.sendText('Tag');
             inputPO.sendKeydown('enter');
@@ -199,7 +199,7 @@ describe('InputTag', () => {
     });
 
     describe('Adding tags with custom separator', () => {
-        it('Adds tags separated by custom separator', () => {
+        it('adds tags separated by custom separator', () => {
             testComponent.separator = ';';
             inputPO.focus();
             fixture.detectChanges();
@@ -213,7 +213,7 @@ describe('InputTag', () => {
     });
 
     describe('Adding tags with spaces (spaces inside tags are allowed)', () => {
-        it('Spaces are preserved and not tagged', () => {
+        it('spaces are preserved and not tagged', () => {
             inputPO.focus();
             fixture.detectChanges();
             inputPO.sendText('1234 567 89');
@@ -255,7 +255,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('When adding Space does not add tag or change value if tagValidator returned false', () => {
+        it('when adding Space does not add tag or change value if tagValidator returned false', () => {
             const savedLength = component.value.length;
             const newTag = 'new';
 
@@ -267,7 +267,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(savedLength);
         });
 
-        it('Adding a comma does not add the tag and does not change the value if tagValidator returned false', () => {
+        it('adding a comma does not add the tag and does not change the value if tagValidator returned false', () => {
             const savedLength = component.value.length;
             const newTag = 'new';
 
@@ -279,7 +279,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(savedLength);
         });
 
-        it('Strips away the bad tags, separated by commas or spaces', () => {
+        it('strips away the bad tags, separated by commas or spaces', () => {
             const firstValidTag = 'first';
             const secondValidTag = 'second';
             const invalidTag = 'invalid';
@@ -292,7 +292,7 @@ describe('InputTag', () => {
     });
 
     describe('Cleaner', () => {
-        it('There is no cleaner by default', () => {
+        it('there is no cleaner by default', () => {
             testComponent.defaultInputs = true;
             fixture.detectChanges();
 
@@ -301,7 +301,7 @@ describe('InputTag', () => {
             ).toBeNull();
         });
 
-        it('If cleaner === true and empty field without cleaner tags is missing', () => {
+        it('if cleaner === true and empty field without cleaner tags is missing', () => {
             testComponent.control.setValue([]);
             fixture.detectChanges();
 
@@ -310,7 +310,7 @@ describe('InputTag', () => {
             ).toBeNull();
         });
 
-        it('If cleaner === true and not empty, the cleaner field is present', () => {
+        it('if cleaner === true and not empty, the cleaner field is present', () => {
             testComponent.control.setValue([]);
             inputPO.sendText('123');
 
@@ -319,13 +319,13 @@ describe('InputTag', () => {
             ).not.toBeNull();
         });
 
-        it('With cleaner === true and added tags, cleaner is present', () => {
+        it('with cleaner === true and added tags, cleaner is present', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}cleaner`),
             ).not.toBeNull();
         });
 
-        it('Clicking on cleaner clears the input field and tags', () => {
+        it('clicking on cleaner clears the input field and tags', () => {
             inputPO.sendText('123');
             pageObject
                 .getByAutomationId(`${testContext.prefix}cleaner`)!
@@ -337,14 +337,14 @@ describe('InputTag', () => {
     });
 
     describe('Editing tags', () => {
-        it('Edits tags', () => {
+        it('edits tags', () => {
             component.onTagEdited('Hapica', 0);
             fixture.detectChanges();
 
             expect(component.value[0]).toBe('Hapica');
         });
 
-        it('Moves focus to the input field after editing', () => {
+        it('moves focus to the input field after editing', () => {
             component.onTagEdited('Hapica', 0);
             fixture.detectChanges();
 
@@ -353,7 +353,7 @@ describe('InputTag', () => {
     });
 
     describe('Go to tags', () => {
-        it('Goes to tags when pressing arrowLeft', () => {
+        it('goes to tags when pressing arrowLeft', () => {
             inputPO.focus();
             inputPO.sendKeydown('ArrowLeft');
 
@@ -365,7 +365,7 @@ describe('InputTag', () => {
             ).toBe(true);
         });
 
-        it("Doesn't jump to tags when pressing arrowLeft if input field is not empty", () => {
+        it("doesn't jump to tags when pressing arrowLeft if input field is not empty", () => {
             inputPO.focus();
             inputPO.sendText('123');
             inputPO.sendKeydown('ArrowLeft');
@@ -373,7 +373,7 @@ describe('InputTag', () => {
             expect(inputPO.focused).toBe(true);
         });
 
-        it('Goes to tags on backspace and empty input field', () => {
+        it('goes to tags on backspace and empty input field', () => {
             inputPO.focus();
             inputPO.sendKeydown('backspace');
 
@@ -385,7 +385,7 @@ describe('InputTag', () => {
             ).toBe(true);
         });
 
-        it("Doesn't jump to tags when pressing backspace and not empty input field", () => {
+        it("doesn't jump to tags when pressing backspace and not empty input field", () => {
             inputPO.focus();
             inputPO.sendText('123');
             inputPO.sendKeydown('backspace');

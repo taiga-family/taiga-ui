@@ -13,11 +13,11 @@ describe('blurNativeFocused', () => {
         document.body.removeChild(element);
     });
 
-    it('Element is focused', () => {
+    it('element is focused', () => {
         expect(document.activeElement).toBe(element);
     });
 
-    it('Blurs element', () => {
+    it('blurs element', () => {
         tuiBlurNativeFocused(document);
 
         expect(document.activeElement).toBe(document.body);

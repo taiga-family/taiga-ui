@@ -51,7 +51,7 @@ describe('TuiCalendarYearComponent', () => {
         fixture.detectChanges();
     });
 
-    it('Showed 200 years', () => {
+    it('showed 200 years', () => {
         expect(pageObject.getAllByAutomationId(`${testContext.prefix}cell`).length).toBe(
             200,
         );

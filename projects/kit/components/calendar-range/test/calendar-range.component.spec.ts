@@ -101,17 +101,17 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
         });
 
-        it('If there are items - one calendar with a menu is shown, and 2 calendars are hidden', () => {
+        it('if there are items - one calendar with a menu is shown, and 2 calendars are hidden', () => {
             expect(getCalendar()).not.toBeNull();
         });
 
-        it('Default items from generator', () => {
+        it('default items from generator', () => {
             const items = getItems();
 
             expect(items.length).toBe(7);
         });
 
-        it('If the value fit any range, check the box next to appropriate range', () => {
+        it('if the value fit any range, check the box next to appropriate range', () => {
             const today = TuiDay.currentLocal();
 
             testComponent.value = new TuiDayRange(today, today);
@@ -122,15 +122,15 @@ describe('rangeCalendarComponent', () => {
             expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
         });
 
-        it('If the value does not fit any range, check the box next to "Other date..."', () => {
+        it('if the value does not fit any range, check the box next to "Other date..."', () => {
             expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
         });
 
-        it('If the value does not fit the range, the range has no tick', () => {
+        it('if the value does not fit the range, the range has no tick', () => {
             expect(getItems()[5].nativeElement.contains(getCheckmark())).toBe(false);
         });
 
-        it('Interval selection takes into account min / max', () => {
+        it('interval selection takes into account min / max', () => {
             const today = TuiDay.currentLocal();
             const startOfMonth = today.append({day: 1 - today.day});
             const startOfLastMonth = startOfMonth.append({month: -1});
@@ -149,7 +149,7 @@ describe('rangeCalendarComponent', () => {
             ).toBe(true);
         });
 
-        it('Intervals that are completely outside min and max are not displayed', () => {
+        it('intervals that are completely outside min and max are not displayed', () => {
             const today = TuiDay.currentLocal();
 
             testComponent.min = TuiDay.currentLocal().append({
@@ -167,7 +167,7 @@ describe('rangeCalendarComponent', () => {
             expect(items.some(item => item === 'Today')).toBe(false);
         });
 
-        it('When redefining intervals, the list always contains "Other date..."', () => {
+        it('when redefining intervals, the list always contains "Other date..."', () => {
             const august = new TuiDayRange(
                 new TuiDay(1944, 7, 1),
                 new TuiDay(1944, 7, 31),
@@ -184,7 +184,7 @@ describe('rangeCalendarComponent', () => {
             expect(items[1].nativeElement.textContent.trim()).toBe('Other date...');
         });
 
-        it('When redefining intervals, displays appropriate checkbox', () => {
+        it('when redefining intervals, displays appropriate checkbox', () => {
             const today = TuiDay.currentLocal();
             const previousMonth = today.append({month: -1});
             const title = 'New interval';
@@ -206,7 +206,7 @@ describe('rangeCalendarComponent', () => {
             expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
         });
 
-        it('If there are ranges with same range dates, displays appropriate checkbox when switching between them', () => {
+        it('if there are ranges with same range dates, displays appropriate checkbox when switching between them', () => {
             const today = TuiDay.currentLocal();
             const previousMonth = today.append({month: -1});
 

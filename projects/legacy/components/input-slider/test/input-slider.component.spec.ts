@@ -108,7 +108,7 @@ describe('InputSlider', () => {
             await fixture.whenStable();
         });
 
-        it('Pressing `Arrow Up` increases value by `quantum`-value if property `step` was not provided', () => {
+        it('pressing `Arrow Up` increases value by `quantum`-value if property `step` was not provided', () => {
             inputPO.focus();
 
             inputPO.sendKeydown('arrowUp');
@@ -121,7 +121,7 @@ describe('InputSlider', () => {
             expect(testComponent.control.value).toBe(30);
         });
 
-        it('Pressing `Arrow Down` decreases value by `quantum`-value if property `step` was not provided', () => {
+        it('pressing `Arrow Down` decreases value by `quantum`-value if property `step` was not provided', () => {
             inputPO.focus();
 
             inputPO.sendKeydown('arrowDown');

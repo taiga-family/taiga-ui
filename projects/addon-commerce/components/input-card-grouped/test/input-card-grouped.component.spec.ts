@@ -55,7 +55,7 @@ describe('InputCardGrouped', () => {
         fixture.autoDetectChanges();
     });
 
-    it('Clear resets control to null', () => {
+    it('clear resets control to null', () => {
         testComponent.control.setValue({
             card: '123',
             expire: '12/12',
@@ -68,7 +68,7 @@ describe('InputCardGrouped', () => {
 
     describe('Card number', () => {
         describe('binChange', () => {
-            it('Less than 6 digits entered', () => {
+            it('less than 6 digits entered', () => {
                 setCard('12345');
 
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
@@ -80,7 +80,7 @@ describe('InputCardGrouped', () => {
                 expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
             });
 
-            it('Value has changed, first 6 digits are the same', () => {
+            it('value has changed, first 6 digits are the same', () => {
                 setCard('123456789');
                 (testComponent.onBinChange as Mock).mockClear();
                 setCard('123456987');
@@ -88,7 +88,7 @@ describe('InputCardGrouped', () => {
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
             });
 
-            it('Value has changed, first 6 digits have changed', () => {
+            it('value has changed, first 6 digits have changed', () => {
                 setCard('123456789');
                 (testComponent.onBinChange as Mock).mockClear();
                 setCard('654321789');
@@ -96,7 +96,7 @@ describe('InputCardGrouped', () => {
                 expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
             });
 
-            it('Value has changed, now it has less than 6 digits', () => {
+            it('value has changed, now it has less than 6 digits', () => {
                 setCard('123456789');
                 (testComponent.onBinChange as Mock).mockClear();
                 setCard('123');

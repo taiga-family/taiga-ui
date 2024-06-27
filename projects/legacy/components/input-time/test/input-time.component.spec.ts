@@ -93,12 +93,12 @@ describe('InputTime', () => {
     });
 
     describe('Initial value', () => {
-        it('The value in the field is formatted by mask', async () => {
+        it('the value in the field is formatted by mask', async () => {
             await fixture.whenStable();
             expect(input.value).toBe('12:30');
         });
 
-        it('The initial value in the formControl is issued as an object with the hours and minutes properties', () => {
+        it('the initial value in the formControl is issued as an object with the hours and minutes properties', () => {
             expect(testComponent.control.value?.hours).toBe(12);
             expect(testComponent.control.value?.minutes).toBe(30);
         });
@@ -110,21 +110,21 @@ describe('InputTime', () => {
             fixture.detectChanges();
         });
 
-        it('A new formatted value appears in the field', async () => {
+        it('a new formatted value appears in the field', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
             await fixture.whenStable();
             expect(input.value).toBe('22:30');
         });
 
-        it('In the formControl is issued as an object with hours and minutes properties', () => {
+        it('in the formControl is issued as an object with hours and minutes properties', () => {
             expect(testComponent.control.value?.hours).toBe(22);
             expect(testComponent.control.value?.minutes).toBe(30);
         });
     });
 
     describe('Short time input (less than 5 characters, including colon)', () => {
-        it('The value of formControl is passed null', () => {
+        it('the value of formControl is passed null', () => {
             component.onValueChange('11:1');
             fixture.detectChanges();
             expect(testComponent.control.value).toBeNull();
@@ -134,7 +134,7 @@ describe('InputTime', () => {
     describe('Keyboard control', () => {
         beforeEach(async () => fixture.whenStable());
 
-        it('If the cursor is at position 0, then pressing UP increases the hour by 1', () => {
+        it('if the cursor is at position 0, then pressing UP increases the hour by 1', () => {
             input.focus();
             component.nativeFocusableElement?.setSelectionRange(0, 0);
             input.dispatchEvent(tuiCreateKeyboardEvent('ArrowUp', 'keydown'));
@@ -143,7 +143,7 @@ describe('InputTime', () => {
             expect(input.value).toBe('13:30');
         });
 
-        it('If the cursor is at position 4, then pressing UP increases the minute by 1', () => {
+        it('if the cursor is at position 4, then pressing UP increases the minute by 1', () => {
             input.focus();
             component.nativeFocusableElement?.setSelectionRange(4, 4);
             input.dispatchEvent(tuiCreateKeyboardEvent('ArrowUp', 'keydown'));
@@ -152,7 +152,7 @@ describe('InputTime', () => {
             expect(input.value).toBe('12:31');
         });
 
-        it('If the cursor is at position 0, then pressing DOWN decreases the hour by 1', () => {
+        it('if the cursor is at position 0, then pressing DOWN decreases the hour by 1', () => {
             input.focus();
             component.nativeFocusableElement?.setSelectionRange(0, 0);
             input.dispatchEvent(tuiCreateKeyboardEvent('ArrowDown', 'keydown'));
@@ -161,7 +161,7 @@ describe('InputTime', () => {
             expect(input.value).toBe('11:30');
         });
 
-        it('If the cursor is at position 4, then pressing DOWN decreases the minute by 1', () => {
+        it('if the cursor is at position 4, then pressing DOWN decreases the minute by 1', () => {
             input.focus();
             component.nativeFocusableElement?.setSelectionRange(4, 4);
             input.dispatchEvent(tuiCreateKeyboardEvent('ArrowDown', 'keydown'));
@@ -170,7 +170,7 @@ describe('InputTime', () => {
             expect(input.value).toBe('12:29');
         });
 
-        it('When readOnly is ignored', async () => {
+        it('when readOnly is ignored', async () => {
             testComponent.readOnly = true;
             input.focus();
             fixture.detectChanges();
@@ -213,7 +213,7 @@ describe('InputTime', () => {
         });
 
         describe('Dropdown does not appear', () => {
-            it('Dropdown does not appear on focus', () => {
+            it('dropdown does not appear on focus', () => {
                 expect(getDropdown()).toBeNull();
             });
 
@@ -227,7 +227,7 @@ describe('InputTime', () => {
             });
         });
 
-        it('Input filters items', () => {
+        it('input filters items', () => {
             inputPO.sendText('03');
             fixture.detectChanges();
 
@@ -236,7 +236,7 @@ describe('InputTime', () => {
             );
         });
 
-        it('The value is substituted when selecting an item from the dropdown', () => {
+        it('the value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('03');
             fixture.detectChanges();
             pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();

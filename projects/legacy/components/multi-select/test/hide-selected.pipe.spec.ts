@@ -18,11 +18,11 @@ describe('tuiHideSelected pipe', () => {
         });
     });
 
-    it('Works for flat arrays', () => {
+    it('works for flat arrays', () => {
         expect(pipe.transform([1, 4, 5])).toEqual([4, 5]);
     });
 
-    it('Works for 2d arrays', () => {
+    it('works for 2d arrays', () => {
         expect(
             pipe.transform([
                 [1, 4, 5],
@@ -31,14 +31,14 @@ describe('tuiHideSelected pipe', () => {
         ).toEqual([[4, 5], [6]]);
     });
 
-    it('Works with flat array and custom matcher', () => {
+    it('works with flat array and custom matcher', () => {
         multiSelect.identityMatcher = (a: any, b: any) => a.id === b.id;
         multiSelect.value = [{id: 1}, {id: 2}];
 
         expect(pipe.transform([{id: 1}, {id: 3}])).toEqual([{id: 3}]);
     });
 
-    it('Works with 2d array and custom matcher', () => {
+    it('works with 2d array and custom matcher', () => {
         multiSelect.identityMatcher = (a: any, b: any) => a.id === b.id;
         multiSelect.value = [{id: 1}, {id: 2}];
 

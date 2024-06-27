@@ -122,14 +122,14 @@ describe('Select', () => {
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it('considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it("Doesn't consider copies of objects identical", () => {
+            it("doesn't consider copies of objects identical", () => {
                 testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 
@@ -143,14 +143,14 @@ describe('Select', () => {
                 fixture.detectChanges();
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it('considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 inputPO.sendKeydown('ArrowDown');
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it('Considers copies of objects identical', () => {
+            it('considers copies of objects identical', () => {
                 testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 inputPO.sendKeydown('ArrowDown');
 

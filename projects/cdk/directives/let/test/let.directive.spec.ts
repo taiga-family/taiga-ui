@@ -48,11 +48,11 @@ describe('Let', () => {
         fixture.detectChanges();
     });
 
-    it('Result is shown 3 times', () => {
+    it('result is shown 3 times', () => {
         expect(testComponent.el.nativeElement.textContent!.trim()).toBe('!!!');
     });
 
-    it('Getter is called once', () => {
+    it('getter is called once', () => {
         expect(testComponent.counter).toBe(1);
     });
 });

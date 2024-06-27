@@ -1,7 +1,7 @@
 import {tuiIsCurrentTarget} from '@taiga-ui/cdk';
 
 describe('isCurrentTarget', () => {
-    it('Target is equal to currentTarget', () => {
+    it('target is equal to currentTarget', () => {
         const event = new MouseEvent('click');
 
         Object.defineProperty(event, 'target', {value: '<button>'});

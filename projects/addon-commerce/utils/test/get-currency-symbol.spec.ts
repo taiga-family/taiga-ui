@@ -19,114 +19,114 @@ describe('getCurrencySymbol', () => {
         });
     });
 
-    it('Ruble', () => {
+    it('ruble', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Ruble)).toBe('₽');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Ruble)).toBe('₽');
     });
 
-    it('Dollar', () => {
+    it('dollar', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Dollar)).toBe('$');
         expect(tuiGetCurrencySymbol(TuiCurrency.MexicanPeso)).toBe('$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Dollar)).toBe('$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.MexicanPeso)).toBe('$');
     });
 
-    it('SingaporeDollar', () => {
+    it('singapore dollar', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.SingaporeDollar)).toBe('S$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.SingaporeDollar)).toBe('S$');
     });
 
-    it('AustralianDollar', () => {
+    it('australian dollar', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.AustralianDollar)).toBe('A$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.AustralianDollar)).toBe('A$');
     });
 
-    it('HongKongDollar', () => {
+    it('hongKong dollar', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.HongKongDollar)).toBe('HK$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.HongKongDollar)).toBe('HK$');
     });
 
-    it('CanadianDollar', () => {
+    it('canadian dollar', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.CanadianDollar)).toBe('C$');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.CanadianDollar)).toBe('C$');
     });
 
-    it('Euro', () => {
+    it('euro', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Euro)).toBe('€');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Euro)).toBe('€');
     });
 
-    it('Pound', () => {
+    it('pound', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Pound)).toBe('£');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Pound)).toBe('£');
     });
 
-    it('Baht', () => {
+    it('baht', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Baht)).toBe('฿');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Baht)).toBe('฿');
     });
 
-    it('TurkishLira', () => {
+    it('turkishLira', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.TurkishLira)).toBe('₺');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.TurkishLira)).toBe('₺');
     });
 
-    it('YuanRenminbi', () => {
+    it('yuan renminbi', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.YuanRenminbi)).toBe('CN¥');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.YuanRenminbi)).toBe('CN¥');
     });
 
-    it('Yen', () => {
+    it('yen', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Yen)).toBe('¥');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Yen)).toBe('¥');
     });
 
-    it('IsraeliShekel', () => {
+    it('israeli shekel', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.IsraeliShekel)).toBe('₪');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.IsraeliShekel)).toBe('₪');
     });
 
-    it('IndianRupee', () => {
+    it('indian rupee', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.IndianRupee)).toBe('₹');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.IndianRupee)).toBe('₹');
     });
 
-    it('SwissFranc', () => {
+    it('swiss franc', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.SwissFranc)).toBe('₣');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.SwissFranc)).toBe('₣');
     });
 
-    it('ArmenianDram', () => {
+    it('armenian dram', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.ArmenianDram)).toBe('֏');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.ArmenianDram)).toBe('֏');
     });
 
-    it('Won', () => {
+    it('won', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Won)).toBe('₩');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Won)).toBe('₩');
     });
 
-    it('Tenge', () => {
+    it('tenge', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Tenge)).toBe('₸');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Tenge)).toBe('₸');
     });
 
-    it('Hryvnia', () => {
+    it('hryvnia', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Hryvnia)).toBe('₴');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Hryvnia)).toBe('₴');
     });
 
-    it('UzbekSum', () => {
+    it('uzbek sum', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.UzbekSum)).toBe("So'm");
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.UzbekSum)).toBe("So'm");
     });
 
-    it('KyrgyzstanSom', () => {
+    it('kyrgyzstan som', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.KyrgyzstanSom)).toBe('c');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.KyrgyzstanSom)).toBe('c');
     });
 
-    it('Dirham', () => {
+    it('dirham', () => {
         expect(tuiGetCurrencySymbol(TuiCurrency.Dirham)).toBe('Dh');
         expect(tuiGetCurrencySymbol(TuiCurrencyCode.Dirham)).toBe('Dh');
     });

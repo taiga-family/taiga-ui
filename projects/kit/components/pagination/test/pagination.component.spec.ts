@@ -182,7 +182,7 @@ describe('TuiPaginationComponent', () => {
     });
 
     describe('Page switching arrow behavior', () => {
-        it('If the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
+        it('if the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
             setParams({index: 0});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -192,7 +192,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('If the second item is selected, the left arrow is on, as well as the right', () => {
+        it('if the second item is selected, the left arrow is on, as well as the right', () => {
             setParams({index: 1});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -202,7 +202,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('If the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
+        it('if the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
             setParams({index: 49});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -212,7 +212,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(true);
         });
 
-        it('If the penultimate item is selected, the right arrow is on, as well as the left', () => {
+        it('if the penultimate item is selected, the right arrow is on, as well as the left', () => {
             setParams({index: 48});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;

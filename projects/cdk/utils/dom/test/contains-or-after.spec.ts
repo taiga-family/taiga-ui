@@ -1,7 +1,7 @@
 import {tuiContainsOrAfter} from '@taiga-ui/cdk';
 
 describe('tuiContainsOrAfter', () => {
-    it('Parent contains child', () => {
+    it('parent contains child', () => {
         const parent = document.createElement('div');
         const child = document.createElement('button');
 
@@ -10,7 +10,7 @@ describe('tuiContainsOrAfter', () => {
         expect(tuiContainsOrAfter(parent, child)).toBe(true);
     });
 
-    it('Child does not contain parent', () => {
+    it('child does not contain parent', () => {
         const parent = document.createElement('div');
         const child = document.createElement('button');
 
