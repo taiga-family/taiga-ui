@@ -63,11 +63,7 @@
         "*.less": [
             "stylelint --fix"
         ],
-        "*.{js,ts,html}": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.{svg,yml,md,less,json}": [
+        "*.{js,ts,html,svg,yml,md,less,json}": [
             "prettier --write"
         ]
     },
@@ -81,9 +77,6 @@
             "plugin:@taiga-ui/experience/taiga-naming",
             "plugin:@taiga-ui/experience/entry-points"
         ],
-        "rules": {
-            "jest/prefer-importing-jest-globals": "off"
-        },
         "root": true
     },
     "stylelint": {
