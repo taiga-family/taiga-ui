@@ -1,0 +1,21 @@
+<tui-select
+    [ngModel]="theme"
+    (ngModelChange)="onTheme($event)"
+>
+    <ng-content />
+    <tui-data-list *tuiDataList>
+        <button
+            *ngFor="let key of keys"
+            tuiOption
+            [value]="key"
+        >
+            <img
+                alt=""
+                [src]="themes[key]"
+                [style.margin-inline-end.rem]="0.5"
+                [style.width.rem]="1.75"
+            />
+            {{ key }}
+        </button>
+    </tui-data-list>
+</tui-select>

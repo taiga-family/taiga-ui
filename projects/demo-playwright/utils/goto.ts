@@ -37,7 +37,7 @@ export async function tuiGoto(
 
     if (enableNightMode) {
         await page.addInitScript(() =>
-            globalThis.localStorage.setItem('tuiNight', 'true'),
+            globalThis.localStorage.setItem('tuiDark', 'true'),
         );
     }
 
