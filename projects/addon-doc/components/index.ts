@@ -24,3 +24,4 @@ export * from './navigation/navigation.component';
 export * from './page/page.component';
 export * from './page/page.providers';
 export * from './page/page-tab.directive';
+export * from './theme-switcher/theme-switcher.component';

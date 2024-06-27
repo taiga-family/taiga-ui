@@ -1,8 +1,11 @@
 import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {BehaviorSubject} from 'rxjs';
 
-import {TUI_DARK_THEME, TUI_DARK_THEME_KEY} from './theme-dark.options';
+export const TUI_DARK_THEME_DEFAULT_KEY = 'tuiDark';
+export const TUI_DARK_THEME_KEY = tuiCreateToken(TUI_DARK_THEME_DEFAULT_KEY);
+export const TUI_DARK_THEME = tuiCreateToken(false);
 
 @Injectable({
     providedIn: 'root',
