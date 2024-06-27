@@ -24,4 +24,14 @@ export class TuiInputDateRangePO {
 
         await items[index].click();
     }
+
+    async itemHasCheckmark(index: number): Promise<boolean> {
+        const items = await this.getItems();
+
+        const itemCheckmark = await items[index]
+            .locator('[automation-id="tui-calendar-range__checkmark"]')
+            .count();
+
+        return !!itemCheckmark;
+    }
 }

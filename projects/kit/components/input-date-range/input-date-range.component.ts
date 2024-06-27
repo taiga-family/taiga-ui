@@ -1,7 +1,9 @@
 import {
+    AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    forwardRef,
     HostBinding,
     HostListener,
     Inject,
@@ -55,6 +57,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import {TuiCalendarRangeComponent} from '@taiga-ui/kit/components/calendar-range';
 import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_MODE_MASKITO_ADAPTER,
@@ -91,10 +94,16 @@ import {map} from 'rxjs/operators';
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+    implements
+        TuiWithOptionalMinMax<TuiDay>,
+        TuiFocusableElementAccessor,
+        AfterViewChecked
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    @ViewChild(forwardRef(() => TuiCalendarRangeComponent))
+    private readonly calendarRange?: TuiCalendarRangeComponent;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -121,6 +130,8 @@ export class TuiInputDateRangeComponent
     maxLength: TuiDayLike | null = null;
 
     open = false;
+
+    selectedActivePeriod: TuiDayRangePeriod | null = null;
 
     readonly maxLengthMapper: TuiTypedMapper<
         [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
@@ -155,6 +166,21 @@ export class TuiInputDateRangeComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr, valueTransformer);
+    }
+
+    @HostListener('click')
+    onClick(): void {
+        if (!this.isMobile && this.interactive) {
+            this.toggle();
+        }
+    }
+
+    // TODO: remove this after refactor controls to hold whole TuiDayRangePeriod
+    ngAfterViewChecked(): void {
+        if (this.calendarRange) {
+            this.calendarRange.selectedActivePeriod = this.selectedActivePeriod;
+            this.calendarRange.cdr.markForCheck();
+        }
     }
 
     @HostBinding('attr.data-size')
@@ -215,7 +241,8 @@ export class TuiInputDateRangeComponent
 
     get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.items.find(item =>
+            this.selectedActivePeriod ??
+            (this.items.find(item =>
                 tuiNullableSame(
                     this.value,
                     item.range,
@@ -223,7 +250,8 @@ export class TuiInputDateRangeComponent
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ||
+                null)
         );
     }
 
@@ -269,20 +297,13 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    @HostListener('click')
-    onClick(): void {
-        if (!this.isMobile && this.interactive) {
-            this.open = !this.open;
-        }
-    }
-
     getComputedRangeFiller(dateFiller: string): string {
         return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
     }
 
     onIconClick(): void {
         if (this.isMobile && this.interactive) {
-            this.open = true;
+            this.onOpenChange(true);
         }
     }
 
@@ -303,6 +324,10 @@ export class TuiInputDateRangeComponent
             value.length === DATE_RANGE_FILLER_LENGTH
                 ? TuiDayRange.normalizeParse(value, this.dateFormat)
                 : null;
+
+        if (!this.value) {
+            this.selectedActivePeriod = null;
+        }
     }
 
     onRangeChange(range: TuiDayRange | null): void {
@@ -314,6 +339,7 @@ export class TuiInputDateRangeComponent
         }
 
         this.value = range;
+        this.selectedActivePeriod = this.calendarRange?.selectedActivePeriod ?? null;
     }
 
     // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
