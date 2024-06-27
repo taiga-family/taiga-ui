@@ -8,7 +8,7 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
-import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
+import {TuiTooltipModule} from '@taiga-ui/legacy/components/tooltip';
 import {
     TuiLegacyDropdownOpenMonitorDirective,
     TuiWrapperModule,
@@ -28,7 +28,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         PolymorpheusTemplate,
         TuiHovered,
         TuiScrollbar,
-        TuiTooltip,
+        TuiTooltipModule,
         TuiTagModule,
         TuiWrapperModule,
         TuiLegacyDropdownOpenMonitorDirective,

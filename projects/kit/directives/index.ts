@@ -10,5 +10,6 @@ export * from '@taiga-ui/kit/directives/lazy-loading';
 export * from '@taiga-ui/kit/directives/present';
 export * from '@taiga-ui/kit/directives/sensitive';
 export * from '@taiga-ui/kit/directives/skeleton';
+export * from '@taiga-ui/kit/directives/tooltip';
 export * from '@taiga-ui/kit/directives/unfinished-validator';
 export * from '@taiga-ui/kit/directives/unmask-handler';

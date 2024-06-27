@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiTooltip} from '@taiga-ui/legacy/components/tooltip';
+import {TuiTooltipModule} from '@taiga-ui/legacy/components/tooltip';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives/wrapper';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -22,7 +22,7 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiWrapperModule,
-        TuiTooltip,
+        TuiTooltipModule,
         TuiIcon,
         TuiAppearance,
     ],
