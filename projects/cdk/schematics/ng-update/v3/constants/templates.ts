@@ -654,7 +654,7 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
     {
         componentSelector: '*',
         inputProperty: 'scrollIntoView',
-        directive: 'tuiScrollIntoViewLink',
+        directive: 'TuiDocScrollIntoViewLink',
         directiveModule: {
             name: 'TuiScrollIntoViewLinkModule',
             moduleSpecifier: '@taiga-ui/addon-doc',

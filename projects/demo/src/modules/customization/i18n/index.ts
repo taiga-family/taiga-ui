@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLanguageSwitcher} from '@taiga-ui/addon-doc';
+import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 import {from, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLink, TuiLanguageSwitcher],
+    imports: [TuiDemo, TuiLink, TuiDocLanguageSwitcher],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
-import {TuiMarkdownPipe} from '@taiga-ui/addon-doc';
+import {TuiDocMarkdownPipe} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiMarkdownPipe],
+    imports: [TuiDemo, TuiDocMarkdownPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

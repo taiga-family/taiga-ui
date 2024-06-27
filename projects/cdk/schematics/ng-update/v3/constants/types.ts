@@ -124,7 +124,7 @@ export const TYPES_TO_RENAME: readonly ReplacementType[] = [
     },
     {
         from: 'ScrollIntoViewDirective',
-        to: 'TuiScrollIntoViewLink',
+        to: 'TuiDocScrollIntoViewLink',
         moduleSpecifier: ['@taiga-ui/addon-doc'],
     },
     {

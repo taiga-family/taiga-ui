@@ -9,9 +9,9 @@ import {identity, map, of, switchMap} from 'rxjs';
 
 @Pipe({
     standalone: true,
-    name: 'tuiMarkdown',
+    name: 'tuiDocMarkdown',
 })
-export class TuiMarkdownPipe implements PipeTransform {
+export class TuiDocMarkdownPipe implements PipeTransform {
     public transform(
         value: TuiRawLoaderContent,
         mapper: TuiStringHandler<string> = identity,
