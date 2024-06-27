@@ -23,7 +23,7 @@ export class TuiDocScrollIntoViewLink {
         .subscribe(() => this.el.scrollIntoView());
 
     @Input()
-    public set TuiDocScrollIntoViewLink(shallWe: boolean) {
+    public set tuiDocScrollIntoViewLink(shallWe: boolean) {
         this.scroll$.next(shallWe);
     }
 }
