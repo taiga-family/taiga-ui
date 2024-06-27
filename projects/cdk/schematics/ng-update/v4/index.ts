@@ -44,6 +44,7 @@ function main(options: TuiSchema): Rule {
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         renameTypes(options, TYPES_TO_RENAME);
+        saveActiveProject();
 
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
