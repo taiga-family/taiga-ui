@@ -11,7 +11,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 export const TUI_THEME_KEY = tuiCreateToken('data-tui-theme');
 export const TUI_THEMES = tuiCreateToken<Record<string, string>>({});
 
-export function tuiDocProvideTheme(): FactoryProvider {
+export function tuiDocThemeProvider(): FactoryProvider {
     return {
         provide: TUI_THEME,
         useFactory: () =>
