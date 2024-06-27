@@ -1,6 +1,8 @@
+import type {AfterViewChecked} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    forwardRef,
     HostBinding,
     HostListener,
     inject,
@@ -35,7 +37,10 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
+import {
+    TuiCalendarRange,
+    type TuiDayRangePeriod,
+} from '@taiga-ui/kit/components/calendar-range';
 import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -75,10 +80,13 @@ import {map} from 'rxjs';
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
-    implements TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor, AfterViewChecked
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    @ViewChild(forwardRef(() => TuiCalendarRange))
+    private readonly calendarRange?: TuiCalendarRange;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
@@ -106,6 +114,8 @@ export class TuiInputDateRangeComponent
         .subscribe(format => {
             this.dateFormat = format;
         });
+
+    protected selectedActivePeriod: TuiDayRangePeriod | null = null;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -162,7 +172,17 @@ export class TuiInputDateRangeComponent
     @HostListener('click')
     public onClick(): void {
         if (!this.isMobile && this.interactive) {
-            this.open = !this.open;
+            this.toggle();
+        }
+    }
+
+    // TODO: remove this after refactor controls to hold whole TuiDayRangePeriod
+    public ngAfterViewChecked(): void {
+        if (this.calendarRange) {
+            // @ts-ignore
+            this.calendarRange.selectedActivePeriod = this.selectedActivePeriod;
+            // @ts-ignore
+            this.calendarRange.cdr.markForCheck();
         }
     }
 
@@ -179,6 +199,10 @@ export class TuiInputDateRangeComponent
             value.length === DATE_RANGE_FILLER_LENGTH
                 ? TuiDayRange.normalizeParse(value, this.dateFormat.mode)
                 : null;
+
+        if (!this.value) {
+            this.selectedActivePeriod = null;
+        }
     }
 
     public onRangeChange(range: TuiDayRange | null): void {
@@ -190,6 +214,8 @@ export class TuiInputDateRangeComponent
         }
 
         this.value = range;
+        // @ts-ignore
+        this.selectedActivePeriod = this.calendarRange?.selectedActivePeriod ?? null;
     }
 
     public override writeValue(value: TuiDayRange | null): void {
@@ -225,7 +251,8 @@ export class TuiInputDateRangeComponent
 
     protected get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.items.find(item =>
+            this.selectedActivePeriod ??
+            (this.items.find(item =>
                 tuiNullableSame(
                     this.value,
                     item.range,
@@ -233,7 +260,8 @@ export class TuiInputDateRangeComponent
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ||
+                null)
         );
     }
 
@@ -273,7 +301,7 @@ export class TuiInputDateRangeComponent
 
     protected onIconClick(): void {
         if (this.isMobile && this.interactive) {
-            this.open = true;
+            this.onOpenChange(true);
         }
     }
 

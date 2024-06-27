@@ -13,10 +13,10 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
+    TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {
     TuiInputDateRangeComponent,
@@ -91,6 +91,28 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({imports: [Test]});
             await TestBed.compileComponents();
             initializeEnvironment();
+        });
+
+        it('When switching between ranges with same date, displays appropriate input value', async () => {
+            const today = TuiDay.currentLocal();
+            const previousMonth = today.append({month: -1});
+            const first = '1';
+            const second = '2';
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), first),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), second),
+            ];
+            fixture.detectChanges();
+
+            clickOnTextfield();
+
+            getCalendarItems()[1]?.nativeElement.click();
+            fixture.detectChanges();
+
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(second);
         });
 
         describe('Click on the input field', () => {
@@ -440,6 +462,10 @@ describe('InputDateRangeComponent', () => {
 
     function getCalendarsWrapper(): DebugElement | null {
         return fixture.debugElement.query(By.css('tui-calendar-range'));
+    }
+
+    function getCalendarItems(): DebugElement[] {
+        return pageObject.getAllByAutomationId('tui-calendar-range__menu__item');
     }
 
     function getTextfield(): DebugElement | null {
