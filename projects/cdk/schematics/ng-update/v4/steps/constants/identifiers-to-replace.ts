@@ -1584,8 +1584,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
         to: {
-            name: 'TuiTooltip',
-            moduleSpecifier: '@taiga-ui/core',
+            name: 'TuiTooltipModule',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {

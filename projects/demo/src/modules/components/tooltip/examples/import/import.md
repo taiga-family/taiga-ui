@@ -1,5 +1,6 @@
 ```ts
-import {TuiTooltip, TuiHint} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
 
 // ...
 

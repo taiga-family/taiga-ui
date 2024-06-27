@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiIcon, TuiLoader, TuiTooltip} from '@taiga-ui/core';
+import {TuiIcon, TuiLoader} from '@taiga-ui/core';
+import {TuiTooltip} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({

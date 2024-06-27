@@ -15,4 +15,4 @@ import {TuiTooltipComponent} from './tooltip.component';
     declarations: [TuiTooltipComponent],
     exports: [TuiTooltipComponent],
 })
-export class TuiTooltip {}
+export class TuiTooltipModule {}
