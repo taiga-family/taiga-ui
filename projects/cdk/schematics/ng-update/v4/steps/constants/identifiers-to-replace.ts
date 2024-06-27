@@ -78,10 +78,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiNotificationStatus', moduleSpecifier: '@taiga-ui/core'},
-    },
-    {
         from: {name: 'TuiNotificationModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -592,6 +588,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiCheckboxLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiLabel', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiRadioLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLabel', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiTabsModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTabs', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},

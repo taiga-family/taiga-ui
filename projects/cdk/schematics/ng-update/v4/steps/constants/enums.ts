@@ -12,6 +12,16 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
         keepAsType: true,
     },
     {
+        name: 'TuiNotification',
+        replaceValues: {
+            Error: 'error',
+            Info: 'info',
+            Success: 'success',
+            Warning: 'warning',
+        },
+        keepAsType: false,
+    },
+    {
         name: 'TuiCountryIsoCode',
         replaceValues: {
             AD: 'AD',

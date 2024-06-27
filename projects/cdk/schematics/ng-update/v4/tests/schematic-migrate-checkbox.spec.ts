@@ -18,6 +18,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 const COMPONENT_BEFORE = `
 import { TuiCheckboxModule } from "@taiga-ui/experimental";
 import { TuiCardModule } from "@taiga-ui/experimental";
+import { TuiNotification } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
@@ -25,6 +26,7 @@ import { TuiCardModule } from "@taiga-ui/experimental";
     imports: [TuiCheckboxModule, TuiCardModule]
 })
 export class Test {
+    status: TuiNotification = TuiNotification.Error;
 }`;
 
 const COMPONENT_AFTER = `import { TuiCardLarge, TuiCardMedium } from "@taiga-ui/layout";
@@ -36,6 +38,7 @@ import { TuiCheckbox } from "@taiga-ui/kit";
     imports: [TuiCheckbox, TuiCardLarge, TuiCardMedium]
 })
 export class Test {
+    status = 'error';
 }`;
 
 const TEMPLATE_BEFORE = `
