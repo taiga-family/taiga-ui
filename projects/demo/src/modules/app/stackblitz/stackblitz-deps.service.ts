@@ -53,6 +53,8 @@ export class StackblitzDepsService {
             '@taiga-ui/addon-mobile': version,
             '@taiga-ui/addon-table': version,
             '@taiga-ui/layout': version,
+            '@taiga-ui/legacy': version,
+            '@taiga-ui/experimental': version,
         };
     }
 
