@@ -175,6 +175,10 @@ export function migrateDestroyService(options: TuiSchema): void {
 }
 
 function findTakeUntil(node: Node, maxDepth = 10): CallExpression | null {
+    if (node.wasForgotten()) {
+        return null;
+    }
+
     if (Node.isCallExpression(node) && node.getText().includes('takeUntil(')) {
         return node;
     }
