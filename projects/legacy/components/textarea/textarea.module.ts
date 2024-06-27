@@ -8,7 +8,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
-import {TuiTooltipModule, TuiTooltipModule} from '@taiga-ui/legacy/components/tooltip';
+import {TuiTooltipModule} from '@taiga-ui/legacy/components/tooltip';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
