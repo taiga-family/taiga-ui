@@ -2,6 +2,7 @@ import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
@@ -44,6 +45,7 @@ const PACKAGE_JSON_AFTER = {
     dependencies: {
         '@angular/core': '~13.0.0',
         '@taiga-ui/addon-commerce': '~3.42.0',
+        '@taiga-ui/legacy': TUI_VERSION,
         '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
         '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
     },
