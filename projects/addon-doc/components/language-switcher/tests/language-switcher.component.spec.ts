@@ -1,6 +1,7 @@
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';

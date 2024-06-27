@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiCeil, tuiFloor, tuiRound, tuiTrunc} from '@taiga-ui/cdk';
 
 describe('round', () => {

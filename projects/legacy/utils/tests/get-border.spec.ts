@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiGetBorder} from '@taiga-ui/legacy';
 
 describe('getBorder', () => {

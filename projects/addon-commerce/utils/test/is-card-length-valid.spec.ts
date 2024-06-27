@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiIsCardLengthValid} from '@taiga-ui/addon-commerce';
 
 describe('isCardLengthValid', () => {

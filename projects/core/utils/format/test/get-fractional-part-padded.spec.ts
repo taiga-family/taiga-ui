@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {tuiGetFractionPartPadded} from '../get-fractional-part-padded';
 
 describe('Getting fractional part from number', () => {

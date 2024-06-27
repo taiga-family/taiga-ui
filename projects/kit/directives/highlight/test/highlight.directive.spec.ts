@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiHighlight} from '@taiga-ui/kit';
 

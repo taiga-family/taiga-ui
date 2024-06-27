@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {tuiNumberToStringWithoutExp} from '../number-to-string-without-exp';
 
 describe('number converting to string without exponent', () => {

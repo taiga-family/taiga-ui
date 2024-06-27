@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {processTs} from '../src/modules/app/utils/example-content-processor/typescript-processor';
 
 describe('Replacing a custom instructions in typescript', () => {

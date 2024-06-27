@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiGetViewportHeight, tuiGetViewportWidth} from '@taiga-ui/core';
 import {tuiTestingViewport} from '@taiga-ui/testing';
 

@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiDateClamp, TuiDay} from '@taiga-ui/cdk';
 
 describe('tuiDateClamp', () => {

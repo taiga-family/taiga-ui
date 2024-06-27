@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/legacy';
 
 describe('tuiHideSelected pipe', () => {

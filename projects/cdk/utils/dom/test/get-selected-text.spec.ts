@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {tuiGetSelectedText} from '@taiga-ui/cdk';
 
 describe('tuiGetSelectedText', () => {

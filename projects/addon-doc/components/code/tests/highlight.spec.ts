@@ -3,6 +3,7 @@ import {Component, Input} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import hljs from 'highlight.js';
 import type {HighlightLibrary} from 'ngx-highlightjs';
 import {Highlight, HighlightLoader} from 'ngx-highlightjs';

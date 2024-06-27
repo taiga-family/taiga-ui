@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
 
 describe('isNativeKeyboardFocusable', () => {

@@ -1,4 +1,5 @@
 import {QueryList} from '@angular/core';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {tuiQueryListChanges} from '@taiga-ui/cdk';
 
 describe('tuiQueryListChanges', () => {

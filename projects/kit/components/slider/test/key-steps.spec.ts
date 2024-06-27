@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from '@taiga-ui/kit';
 

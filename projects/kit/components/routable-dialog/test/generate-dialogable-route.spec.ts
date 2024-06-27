@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {tuiGenerateDialogableRoute} from '../generate-dialogable-route';
 import TuiRoutableDialog from '../routable-dialog.component';
 

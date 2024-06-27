@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiRgbaToHex} from '@taiga-ui/cdk';
 
 describe('rgbaToHex', () => {

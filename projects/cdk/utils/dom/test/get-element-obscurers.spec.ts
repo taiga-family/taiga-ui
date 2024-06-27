@@ -1,3 +1,4 @@
+import {afterEach, beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {tuiGetElementObscures} from '@taiga-ui/cdk';
 
 describe('tuiGetElementObscures', () => {

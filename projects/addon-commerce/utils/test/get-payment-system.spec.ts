@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
 
 describe('getPaymentSystem', () => {

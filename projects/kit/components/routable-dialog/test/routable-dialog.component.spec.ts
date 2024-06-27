@@ -9,6 +9,7 @@ import type {
     UrlSegment,
 } from '@angular/router';
 import {ActivatedRoute, Router} from '@angular/router';
+import {describe, it} from '@jest/globals';
 import {TuiDialogService} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';

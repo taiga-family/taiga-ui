@@ -2,6 +2,7 @@ import type {DebugElement} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPageObject} from '@taiga-ui/testing';

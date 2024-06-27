@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
 
 describe('normalizeToIntNumber', () => {

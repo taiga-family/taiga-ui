@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {bumpVersion} from '../../../scripts/shared/bump-version';
 
 describe('Bump version', () => {

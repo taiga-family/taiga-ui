@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {svgNodeFilter} from '@taiga-ui/cdk';
 
 describe('SvgNodeFilter', () => {

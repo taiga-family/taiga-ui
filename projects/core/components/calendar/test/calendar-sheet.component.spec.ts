@@ -3,6 +3,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {afterEach, beforeEach, describe, expect, it} from '@jest/globals';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,

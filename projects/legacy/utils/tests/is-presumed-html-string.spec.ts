@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/legacy';
 
 describe('isPresumedHTMLString', () => {

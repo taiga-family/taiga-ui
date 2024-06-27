@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
 describe('Phone number formatting', () => {

@@ -1,4 +1,5 @@
 import {fakeAsync, tick} from '@angular/core/testing';
+import {describe, expect, it} from '@jest/globals';
 import {tuiMustBePresent} from '@taiga-ui/cdk/observables/must-be-present';
 import {first, Subject} from 'rxjs';
 

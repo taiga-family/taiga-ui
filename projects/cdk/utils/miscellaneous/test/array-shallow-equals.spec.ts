@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiArrayShallowEquals} from '@taiga-ui/cdk';
 
 describe('tuiArrayShallowEquals', () => {

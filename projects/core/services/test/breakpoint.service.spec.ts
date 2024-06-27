@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {afterEach, beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiBreakpointService} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

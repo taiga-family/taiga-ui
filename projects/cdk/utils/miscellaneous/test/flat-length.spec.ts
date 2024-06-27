@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiFlatLength} from '@taiga-ui/cdk';
 
 describe('flatLength', () => {

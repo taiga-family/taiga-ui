@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {TuiDroppable} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiMockEvent} from '@taiga-ui/testing';

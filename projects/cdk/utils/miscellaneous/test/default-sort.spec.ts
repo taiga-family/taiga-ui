@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
 
 describe('tuiDefaultSort', () => {

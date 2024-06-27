@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiGetDocumentOrShadowRoot} from '@taiga-ui/cdk';
 
 describe('getDocumentOrShadowRoot', () => {

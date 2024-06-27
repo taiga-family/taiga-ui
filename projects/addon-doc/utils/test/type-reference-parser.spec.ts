@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiTypeReferenceParser} from '@taiga-ui/addon-doc';
 
 describe('tuiTypeReferenceParser', () => {

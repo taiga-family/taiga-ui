@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy';
 
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';

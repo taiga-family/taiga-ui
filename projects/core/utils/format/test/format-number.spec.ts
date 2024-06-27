@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 import {tuiFormatNumber} from '../format-number';

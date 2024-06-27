@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 describe('Browsers', () => {

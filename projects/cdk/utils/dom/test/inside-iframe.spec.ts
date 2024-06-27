@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiIsInsideIframe} from '@taiga-ui/cdk';
 
 describe('tuiIsInsideIframe', () => {

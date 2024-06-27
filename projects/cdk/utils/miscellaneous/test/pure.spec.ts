@@ -1,6 +1,6 @@
-import {tuiPure} from '@taiga-ui/cdk';
-
 /** TODO this tests does not cover typescript@^5 and experimentalDecorators: false */
+import {describe, expect, it} from '@jest/globals';
+import {tuiPure} from '@taiga-ui/cdk';
 
 describe('tuiPure', () => {
     it('calls getter only once and then sets result as a value property on the object', () => {

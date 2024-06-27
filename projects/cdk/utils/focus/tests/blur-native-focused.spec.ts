@@ -1,3 +1,4 @@
+import {afterAll, beforeEach, describe, expect, it} from '@jest/globals';
 import {tuiBlurNativeFocused} from '@taiga-ui/cdk';
 
 describe('blurNativeFocused', () => {

@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiRawLoad, tuiRawLoadRecord} from '@taiga-ui/addon-doc';
 
 describe('tui-doc raw content utils', () => {

@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiHsvToRgb} from '@taiga-ui/cdk';
 
 describe('hsvToRgb', () => {

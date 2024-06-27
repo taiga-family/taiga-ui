@@ -1,4 +1,5 @@
 import {fakeAsync} from '@angular/core/testing';
+import {describe, expect, it} from '@jest/globals';
 import {tuiPreventDefault, tuiStopPropagation} from '@taiga-ui/cdk';
 import {first, Subject} from 'rxjs';
 

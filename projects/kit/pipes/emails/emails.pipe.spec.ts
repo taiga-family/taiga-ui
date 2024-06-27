@@ -1,5 +1,6 @@
 /// <reference types="jest" />
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TUI_EMAIL_PIPE_OPTIONS, TuiEmailsPipe} from '@taiga-ui/kit';
 
 describe('TuiEmailsPipe', () => {

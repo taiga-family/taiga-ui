@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {TuiTable, TuiTableDirective} from '@taiga-ui/addon-table';
 
 describe('TuiDirectionOrder directive', () => {

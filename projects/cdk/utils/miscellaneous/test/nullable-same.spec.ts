@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiNullableSame} from '@taiga-ui/cdk';
 
 describe('nullableSame', () => {

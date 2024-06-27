@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {TuiStringifyPipe} from './stringify.pipe';
 
 describe('TuiStringify pipe', () => {

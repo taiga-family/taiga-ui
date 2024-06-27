@@ -3,6 +3,7 @@ import {join} from 'node:path';
 import type {Tree} from '@angular-devkit/schematics';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {afterEach, beforeEach, describe, expect, it} from '@jest/globals';
 import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,

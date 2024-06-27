@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,

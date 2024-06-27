@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_AUTOFOCUS_HANDLER,

@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/legacy';
 

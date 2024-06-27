@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {tuiIsElementEditable} from '@taiga-ui/cdk';
 
 describe('tuiIsElementEditable', () => {

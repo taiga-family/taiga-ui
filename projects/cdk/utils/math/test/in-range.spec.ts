@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiInRange} from '@taiga-ui/cdk';
 
 describe('inRange returns', () => {

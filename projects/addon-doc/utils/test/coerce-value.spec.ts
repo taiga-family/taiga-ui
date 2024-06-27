@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiCoerceValue, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc';
 
 describe('coercing values', () => {

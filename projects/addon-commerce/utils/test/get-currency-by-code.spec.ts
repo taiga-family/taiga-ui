@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {
     TUI_CURRENCY_DICTIONARY,
     TuiCurrency,

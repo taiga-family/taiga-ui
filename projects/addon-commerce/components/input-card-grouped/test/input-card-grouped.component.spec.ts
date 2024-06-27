@@ -2,6 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiIcon} from '@taiga-ui/core';

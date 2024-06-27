@@ -2,6 +2,7 @@ import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {afterEach, beforeEach, describe, expect, it} from '@jest/globals';
 import {
     createProject,
     createSourceFile,

@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiIdService} from '@taiga-ui/cdk';
 
 describe('TuiIdService', () => {

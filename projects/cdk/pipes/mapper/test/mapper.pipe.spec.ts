@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import type {TuiMapper} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 

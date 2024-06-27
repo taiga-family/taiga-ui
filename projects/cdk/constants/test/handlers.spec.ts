@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 
 describe('Handler functions', () => {

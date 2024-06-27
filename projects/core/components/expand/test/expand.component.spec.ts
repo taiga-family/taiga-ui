@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import type {TuiExpandComponent} from '@taiga-ui/core';
 import {TUI_EXPAND_LOADED, TuiExpand} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

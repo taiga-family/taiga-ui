@@ -1,4 +1,5 @@
 // cspell:disable
+import {describe, expect, it} from '@jest/globals';
 import {maskitoPipe} from '@maskito/core';
 import {TUI_MASK_CARD_HOLDER} from '@taiga-ui/addon-commerce';
 

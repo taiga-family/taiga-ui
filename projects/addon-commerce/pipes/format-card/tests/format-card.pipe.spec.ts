@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 
 describe('TuiFormatCardPipe', () => {

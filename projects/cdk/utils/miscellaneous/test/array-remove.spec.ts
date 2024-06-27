@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
 
 describe('tuiArrayRemove', () => {

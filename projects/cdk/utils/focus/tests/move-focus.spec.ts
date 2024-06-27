@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiMoveFocus} from '@taiga-ui/cdk';
 
 describe('move focus', () => {

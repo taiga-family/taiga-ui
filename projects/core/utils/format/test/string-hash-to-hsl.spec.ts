@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {tuiStringHashToHsl} from '../string-hash-to-hsl';
 
 describe('Convert string to HSL color', () => {

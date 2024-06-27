@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarYear} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';

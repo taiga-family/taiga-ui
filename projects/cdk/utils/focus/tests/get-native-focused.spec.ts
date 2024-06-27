@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 
 describe('getNativeFocused', () => {

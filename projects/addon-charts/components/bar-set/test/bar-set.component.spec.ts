@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiBarSet} from '@taiga-ui/addon-charts';
 
 describe('BarSet', () => {

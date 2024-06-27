@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk';
 
 describe('easeInOutQuad', () => {

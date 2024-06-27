@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TUI_ASSETS_PATH, TuiFlagPipe} from '@taiga-ui/core';
 
 describe('tuiFlagPipe', () => {

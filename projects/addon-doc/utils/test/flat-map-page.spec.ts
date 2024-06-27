@@ -1,3 +1,4 @@
+import {afterEach, beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {tuiToFlatMapPages} from '@taiga-ui/addon-doc';
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 

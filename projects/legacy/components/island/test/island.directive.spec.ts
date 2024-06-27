@@ -3,6 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 import {TuiIslandHarness} from '@taiga-ui/testing';
