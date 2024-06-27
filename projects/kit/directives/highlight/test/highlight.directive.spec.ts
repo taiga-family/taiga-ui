@@ -42,19 +42,19 @@ describe('TuiHighlight directive', () => {
         fixture.detectChanges();
     });
 
-    it('Highlight is shown', () => {
+    it('highlight is shown', () => {
         const element = document.querySelector('#ica')?.firstElementChild as HTMLElement;
 
         expect(element.style.display).toBe('block');
     });
 
-    it('Highlight is not shown', () => {
+    it('highlight is not shown', () => {
         const element = document.querySelector('#dong')?.firstElementChild as HTMLElement;
 
         expect(element.style.display).toBe('none');
     });
 
-    it('Highlight color is yellow', () => {
+    it('highlight color is yellow', () => {
         const element = document.querySelector('#aaa')?.firstElementChild as HTMLElement;
 
         expect(element.style.background).toBe('yellow');

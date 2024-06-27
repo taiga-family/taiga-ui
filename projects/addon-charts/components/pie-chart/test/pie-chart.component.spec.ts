@@ -38,7 +38,7 @@ describe('PieChart', () => {
         fixture.detectChanges();
     });
 
-    it('Has segment for each item in value', () => {
+    it('has segment for each item in value', () => {
         expect(pageObject.getAllByAutomationId('tui-pie-chart__segment').length).toBe(3);
     });
 });

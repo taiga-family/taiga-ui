@@ -103,7 +103,7 @@ describe('InputNumber', () => {
             fixture.detectChanges();
         });
 
-        it('Zero pennies are not shown', async () => {
+        it('zero pennies are not shown', async () => {
             testComponent.control.setValue(1234.0);
             fixture.detectChanges();
 
@@ -115,7 +115,7 @@ describe('InputNumber', () => {
             );
         });
 
-        it('Non-zero pennies are shown', async () => {
+        it('non-zero pennies are shown', async () => {
             testComponent.control.setValue(12.345);
             fixture.detectChanges();
 
@@ -125,7 +125,7 @@ describe('InputNumber', () => {
             expect(getNativeInput()!.nativeElement.value).toBe('12,34');
         });
 
-        it('Default min and max are safe integers', async () => {
+        it('default min and max are safe integers', async () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
@@ -135,7 +135,7 @@ describe('InputNumber', () => {
         });
     });
 
-    it('Non-zero pennies are not shown when precision = 0', async () => {
+    it('non-zero pennies are not shown when precision = 0', async () => {
         testComponent.control.setValue(12.3);
         testComponent.precision = 0;
         fixture.detectChanges();
@@ -147,7 +147,7 @@ describe('InputNumber', () => {
         expect(getNativeInput()!.nativeElement.value).toBe('12');
     });
 
-    it('There is no minus sign for negative values with min> = 0', async () => {
+    it('there is no minus sign for negative values with min> = 0', async () => {
         testComponent.component.min = 0;
         fixture.detectChanges();
 
@@ -159,7 +159,7 @@ describe('InputNumber', () => {
         );
     });
 
-    it('No minus sign for non-negative min', async () => {
+    it('no minus sign for non-negative min', async () => {
         testComponent.component.min = 10;
         fixture.detectChanges();
 
@@ -173,31 +173,31 @@ describe('InputNumber', () => {
 
     describe('onValueChange | updating form values', () => {
         describe('An incomplete value is passed to the form null', () => {
-            it("Value ''", () => {
+            it("value ''", () => {
                 component.onValueChange('');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it("Value '-'", () => {
+            it("value '-'", () => {
                 component.onValueChange('-');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it("Value ','", () => {
+            it("value ','", () => {
                 component.onValueChange(',');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it("Value '-,'", () => {
+            it("value '-,'", () => {
                 component.onValueChange('-,');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it('Value does not depend on the separator', () => {
+            it('value does not depend on the separator', () => {
                 testComponent.decimalMode = 'not-zero';
 
                 inputPO.sendText('123456,50');
@@ -215,14 +215,14 @@ describe('InputNumber', () => {
                 fixture.autoDetectChanges();
             });
 
-            it('A value less than positive min does not update the control', () => {
+            it('a value less than positive min does not update the control', () => {
                 testComponent.component.min = 15;
                 inputPO.sendText('10');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it('A value less than positive min is clipped to min when element lose focus', () => {
+            it('a value less than positive min is clipped to min when element lose focus', () => {
                 testComponent.component.min = 15;
                 inputPO.sendText('10');
                 inputPO.blur();
@@ -230,7 +230,7 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(15);
             });
 
-            it('A value greater than max is clipped to max', async () => {
+            it('a value greater than max is clipped to max', async () => {
                 const savedMax = 25;
 
                 testComponent.component.max = savedMax;
@@ -240,14 +240,14 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(savedMax);
             });
 
-            it('A value greater than negative max does not update the control', () => {
+            it('a value greater than negative max does not update the control', () => {
                 testComponent.component.max = -15;
                 inputPO.sendText('-10');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it('A value greater than negative max is clipped to max when element lose focus', () => {
+            it('a value greater than negative max is clipped to max when element lose focus', () => {
                 testComponent.component.max = -15;
                 inputPO.sendText('-10');
                 inputPO.blur();
@@ -255,7 +255,7 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(-15);
             });
 
-            it('A value less than negative min is truncated to min', async () => {
+            it('a value less than negative min is truncated to min', async () => {
                 const savedMin = -25;
 
                 testComponent.component.min = savedMin;
@@ -266,7 +266,7 @@ describe('InputNumber', () => {
             });
         });
 
-        it('The correctly filled value is passed to the form number', () => {
+        it('the correctly filled value is passed to the form number', () => {
             testComponent.decimalMode = 'not-zero';
             inputPO.sendText(`-12${CHAR_NO_BREAK_SPACE}345,67`);
 
@@ -275,7 +275,7 @@ describe('InputNumber', () => {
     });
 
     describe('computedValue | value to display', () => {
-        it('The given value from the form is correctly converted to a string', () => {
+        it('the given value from the form is correctly converted to a string', () => {
             testComponent.precision = 0;
             fixture.detectChanges();
             testComponent.control.setValue(-12345.67);
@@ -285,7 +285,7 @@ describe('InputNumber', () => {
             );
         });
 
-        it("The given value from the form is correctly converted to a string with 0's at start", () => {
+        it("the given value from the form is correctly converted to a string with 0's at start", () => {
             inputPO.sendTextAndBlur('00 002 025');
 
             expect(component.computedValue).toBe(`2${CHAR_NO_BREAK_SPACE}025`);
@@ -295,13 +295,13 @@ describe('InputNumber', () => {
             expect(component.computedValue).toBe('5');
         });
 
-        it('The given value from the form is correctly converted to a string with 0', () => {
+        it('the given value from the form is correctly converted to a string with 0', () => {
             inputPO.sendText('0');
 
             expect(component.computedValue).toBe('0');
         });
 
-        it("Doesn't trim zeros if the input is focused", () => {
+        it("doesn't trim zeros if the input is focused", () => {
             testComponent.decimalMode = 'not-zero';
 
             inputPO.focus();
@@ -332,21 +332,21 @@ describe('InputNumber', () => {
             inputPO.focus();
         });
 
-        it('Positive value', () => {
+        it('positive value', () => {
             inputPO.sendText('0,0000000001');
             inputPO.blur();
 
             expect(component.computedValue).toBe('0,0000000001');
         });
 
-        it('Negative value', () => {
+        it('negative value', () => {
             inputPO.sendText('-0,0000000001');
             inputPO.blur();
 
             expect(component.computedValue).toBe(`${CHAR_MINUS}0,0000000001`);
         });
 
-        it('Value with precision less than 10', () => {
+        it('value with precision less than 10', () => {
             inputPO.sendText('-0,00000052');
             inputPO.blur();
 
@@ -362,7 +362,7 @@ describe('InputNumber', () => {
     });
 
     describe('When decimalMode === always', () => {
-        it('Adds the number of zeros specified by the precision property when updating Value (123) with an integer', () => {
+        it('adds the number of zeros specified by the precision property when updating Value (123) with an integer', () => {
             const value = '123';
             const precision = 2;
 
@@ -374,7 +374,7 @@ describe('InputNumber', () => {
             expect(component.computedValue).toBe(`${value},00`);
         });
 
-        it('Adds the number of zeros specified by the precision property when updating Value (0) with an integer', () => {
+        it('adds the number of zeros specified by the precision property when updating Value (0) with an integer', () => {
             const value = '0';
             const precision = 2;
 

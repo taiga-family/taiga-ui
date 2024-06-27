@@ -128,11 +128,11 @@ describe('ComboBox', () => {
             fixture.detectChanges();
         });
 
-        it('The default is String(item)', () => {
+        it('the default is String(item)', () => {
             expect(getValue()!.nativeElement.textContent.trim()).toBe(String(ITEMS[0]));
         });
 
-        it('Custom value', () => {
+        it('custom value', () => {
             testComponent.defaultInputs = false;
             fixture.detectChanges();
 
@@ -140,7 +140,7 @@ describe('ComboBox', () => {
         });
     });
 
-    it('When changing items, substitutes an exact match in the control', async () => {
+    it('when changing items, substitutes an exact match in the control', async () => {
         testComponent.defaultInputs = true;
         testComponent.items = [];
         testComponent.control.setValue(ITEMS[0]);
@@ -166,14 +166,14 @@ describe('ComboBox', () => {
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it('considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
 
-            it("Doesn't consider copies of objects identical", () => {
+            it("doesn't consider copies of objects identical", () => {
                 testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 
@@ -186,14 +186,14 @@ describe('ComboBox', () => {
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Considers the same object to be identical to itself', () => {
+            it('considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
 
-            it('Considers copies of objects identical', () => {
+            it('considers copies of objects identical', () => {
                 testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 

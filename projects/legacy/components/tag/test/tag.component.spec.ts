@@ -50,7 +50,7 @@ describe('Tag', () => {
     });
 
     describe('Default values:', () => {
-        it('Cross not shown', async () => {
+        it('cross not shown', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#default'}),
             );
@@ -59,7 +59,7 @@ describe('Tag', () => {
             expect(icon).toBeNull();
         });
 
-        it('Tag is not editable', async () => {
+        it('tag is not editable', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#default'}),
             );
@@ -79,13 +79,13 @@ describe('Tag', () => {
             await tag.sendEnter();
         });
 
-        it('Tag is being edited', async () => {
+        it('tag is being edited', async () => {
             const input = await tag.getInput();
 
             expect(input).not.toBeNull();
         });
 
-        it('Emit an edit event on enter', async () => {
+        it('emit an edit event on enter', async () => {
             const input = await tag.getInput();
 
             await input?.setInputValue('Hapica');
@@ -94,7 +94,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
-        it('Emitting edit event on field exit', async () => {
+        it('emitting edit event on field exit', async () => {
             const input = await tag.getInput();
 
             await input?.setInputValue('Hapica');
@@ -103,7 +103,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
-        it('Emitting edit event on comma input', async () => {
+        it('emitting edit event on comma input', async () => {
             const input = await tag.getInput();
 
             await input?.setInputValue('Hapica, ogo');
@@ -111,7 +111,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica, ogo');
         });
 
-        it('Issuer empty string when storing empty tag', async () => {
+        it('issuer empty string when storing empty tag', async () => {
             const input = await tag.getInput();
 
             await input?.setInputValue('');
@@ -122,7 +122,7 @@ describe('Tag', () => {
     });
 
     describe('Deleting a tag', () => {
-        it('Cross shown with removable === true', async () => {
+        it('cross shown with removable === true', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#changed'}),
             );
@@ -131,7 +131,7 @@ describe('Tag', () => {
             expect(icon).not.toBeNull();
         });
 
-        it('Emit an empty line across a cross', async () => {
+        it('emit an empty line across a cross', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#changed'}),
             );
@@ -142,7 +142,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
 
-        it('When you press the backspace on the tag, an empty line is emitted', async () => {
+        it('when you press the backspace on the tag, an empty line is emitted', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#changed'}),
             );
@@ -151,7 +151,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
 
-        it('When you press delete on the tag, an empty string is emitted', async () => {
+        it('when you press delete on the tag, an empty string is emitted', async () => {
             const tag = await loader.getHarness(
                 TuiTagHarness.with({selector: '#changed'}),
             );

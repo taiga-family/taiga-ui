@@ -104,7 +104,7 @@ describe('InputRange', () => {
             expect(getRightValueContent()).toBeNull();
         });
 
-        it('Plural signature missing', () => {
+        it('plural signature missing', () => {
             expect(getLeftValueContent()).toBeNull();
             expect(getRightValueContent()).toBeNull();
         });
@@ -113,7 +113,7 @@ describe('InputRange', () => {
     describe('Labels', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it('Plural signature is present', () => {
+        it('plural signature is present', () => {
             expect(getLeftValueDecoration()).toContain('лет');
             expect(getRightValueDecoration()).toContain('год');
         });
@@ -130,25 +130,25 @@ describe('InputRange', () => {
     describe('quantum', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it('Rounds the left value to the nearest quantum on loss of focus', () => {
+        it('rounds the left value to the nearest quantum on loss of focus', () => {
             inputPOLeft.sendTextAndBlur('-7');
 
             expect(testComponent.control.value?.[0]).toBe(-5);
         });
 
-        it('Rounds the left value of an input field to the nearest quantum when focus is lost', () => {
+        it('rounds the left value of an input field to the nearest quantum when focus is lost', () => {
             inputPOLeft.sendTextAndBlur('-7');
 
             expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
-        it('Rounds the right value to the nearest quantum on loss of focus', () => {
+        it('rounds the right value to the nearest quantum on loss of focus', () => {
             inputPORight.sendTextAndBlur('7');
 
             expect(testComponent.control.value?.[1]).toBe(5);
         });
 
-        it('Rounds the right value of an input field to the nearest quantum on loss of focus', () => {
+        it('rounds the right value of an input field to the nearest quantum on loss of focus', () => {
             inputPORight.sendTextAndBlur('7');
 
             expect(inputPORight.value).toBe('5 лет');
@@ -170,7 +170,7 @@ describe('InputRange', () => {
     describe('Deleting Values', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it("Doesn't change value when left content is removed", () => {
+        it("doesn't change value when left content is removed", () => {
             inputPOLeft.sendTextAndBlur('-5');
             inputPOLeft.sendTextAndBlur('');
 
@@ -178,7 +178,7 @@ describe('InputRange', () => {
             expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
-        it("Doesn't change value when deleting right content", () => {
+        it("doesn't change value when deleting right content", () => {
             inputPORight.sendTextAndBlur('5');
             inputPORight.sendTextAndBlur('');
 
@@ -190,7 +190,7 @@ describe('InputRange', () => {
     describe('Changing values', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it('Prevents the left value from exceeding the right value when typing', () => {
+        it('prevents the left value from exceeding the right value when typing', () => {
             inputPORight.sendTextAndBlur('5');
             inputPOLeft.sendTextAndBlur('123');
 
@@ -202,7 +202,7 @@ describe('InputRange', () => {
             );
         });
 
-        it('Prevents the right value from becoming less than the left value when leaving the field', () => {
+        it('prevents the right value from becoming less than the left value when leaving the field', () => {
             inputPOLeft.sendTextAndBlur('-5');
             fixture.detectChanges();
 
@@ -235,11 +235,11 @@ describe('InputRange', () => {
             inputPORight.sendTextAndBlur('12345.67');
         });
 
-        it('Formats input', () => {
+        it('formats input', () => {
             expect(inputPORight.value).toBe('12 345,67 лет');
         });
 
-        it("Doesn't format the value", () => {
+        it("doesn't format the value", () => {
             expect(testComponent.control.value?.[1]).toBe(12345.67);
         });
     });
@@ -259,25 +259,25 @@ describe('InputRange', () => {
                 fixture.detectChanges();
             });
 
-            it('The up arrow on the left margin does not increase the value', () => {
+            it('the up arrow on the left margin does not increase the value', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[0]).toBe(2);
             });
 
-            it('Down arrow on left margin does not decrease value', () => {
+            it('down arrow on left margin does not decrease value', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[0]).toBe(2);
             });
 
-            it('The up arrow on the right margin does not increase the value', () => {
+            it('the up arrow on the right margin does not increase the value', () => {
                 inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[1]).toBe(6);
             });
 
-            it('Down arrow on right margin does not decrease value', () => {
+            it('down arrow on right margin does not decrease value', () => {
                 inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[1]).toBe(6);
@@ -287,25 +287,25 @@ describe('InputRange', () => {
         describe('Quantum', () => {
             beforeEach(() => fixture.autoDetectChanges());
 
-            it('The up arrow on the left margin increases start by a quantum', () => {
+            it('the up arrow on the left margin increases start by a quantum', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[0]).toBe(3);
             });
 
-            it('The down arrow on the left margin decreases start by a quantum', () => {
+            it('the down arrow on the left margin decreases start by a quantum', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[0]).toBe(1);
             });
 
-            it('The up arrow on the right margin increases end by a quantum', () => {
+            it('the up arrow on the right margin increases end by a quantum', () => {
                 inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[1]).toBe(7);
             });
 
-            it('The down arrow on the right margin decreases end by a quantum', () => {
+            it('the down arrow on the right margin decreases end by a quantum', () => {
                 inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[1]).toBe(5);
@@ -318,25 +318,25 @@ describe('InputRange', () => {
                 fixture.autoDetectChanges();
             });
 
-            it('The up arrow on the left margin increases start by one step', () => {
+            it('the up arrow on the left margin increases start by one step', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[0]).toBe(4);
             });
 
-            it('Down arrow on the left margin decreases start by one step', () => {
+            it('down arrow on the left margin decreases start by one step', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[0]).toBe(0);
             });
 
-            it('The up arrow on the right margin increases end by one step', () => {
+            it('the up arrow on the right margin increases end by one step', () => {
                 inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[1]).toBe(8);
             });
 
-            it('Down arrow on the right margin decreases end by one step', () => {
+            it('down arrow on the right margin decreases end by one step', () => {
                 inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[1]).toBe(4);
@@ -346,54 +346,54 @@ describe('InputRange', () => {
         describe('Limitations', () => {
             beforeEach(() => fixture.autoDetectChanges());
 
-            it('The up arrow on the left margin does not increase start to a value greater than end', () => {
+            it('the up arrow on the left margin does not increase start to a value greater than end', () => {
                 testComponent.control.setValue([6, 6]);
                 inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[0]).toBe(6);
             });
 
-            it('The down arrow on the left margin does not decrease start to a value less than min', () => {
+            it('the down arrow on the left margin does not decrease start to a value less than min', () => {
                 testComponent.control.setValue([0, 6]);
                 inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[0]).toBe(0);
             });
 
-            it('The up arrow on the right margin does not increase end to a value greater than max', () => {
+            it('the up arrow on the right margin does not increase end to a value greater than max', () => {
                 testComponent.control.setValue([6, 10]);
                 inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value?.[1]).toBe(10);
             });
 
-            it('The down arrow on the right margin does not decrease end to a value less than start', () => {
+            it('the down arrow on the right margin does not decrease end to a value less than start', () => {
                 testComponent.control.setValue([6, 6]);
                 inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value?.[1]).toBe(6);
             });
 
-            it('Keyboard input does not exceed max', () => {
+            it('keyboard input does not exceed max', () => {
                 inputPORight.sendText('12345');
 
                 expect(inputPORight.value).toBe('10 лет');
             });
 
-            it('Keyboard input does not exceed min', () => {
+            it('keyboard input does not exceed min', () => {
                 testComponent.min = -10;
                 inputPOLeft.sendText('-123');
 
                 expect(inputPOLeft.value).toBe(`${CHAR_MINUS}10 лет`);
             });
 
-            it('Keyboard input does not go beyond value[1]', () => {
+            it('keyboard input does not go beyond value[1]', () => {
                 inputPOLeft.sendText('12345');
 
                 expect(inputPOLeft.value).toBe('6 лет');
             });
 
-            it('Keyboard input does not output value[1] beyond value[0]', () => {
+            it('keyboard input does not output value[1] beyond value[0]', () => {
                 inputPORight.sendText('1');
 
                 expect(inputPORight.value).toBe(

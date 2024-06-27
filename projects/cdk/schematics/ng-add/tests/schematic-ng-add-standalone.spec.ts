@@ -202,7 +202,7 @@ describe('ng-add [Standalone]', () => {
 }`);
     });
 
-    it('Should add Taiga-ui modules and providers to main component', async () => {
+    it('should add Taiga-ui modules and providers to main component', async () => {
         const options: TuiSchema = {
             addGlobalStyles: false,
             addons: [],
@@ -230,7 +230,7 @@ export class App {
         );
     });
 
-    it('Should wrap main template with tui-root', async () => {
+    it('should wrap main template with tui-root', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,

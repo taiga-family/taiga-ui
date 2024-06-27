@@ -82,7 +82,6 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "@angular-eslint/component-class-suffix": "off",
             "jest/prefer-importing-jest-globals": "off"
         },
         "root": true

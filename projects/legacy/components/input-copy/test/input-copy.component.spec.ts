@@ -55,14 +55,14 @@ describe('InputCopy', () => {
     });
 
     describe('Copy icon visibility', () => {
-        it('Icon is still available in readonly mode', () => {
+        it('icon is still available in readonly mode', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             expect(getIcon()).not.toBeNull();
         });
 
-        it('There is no icon in disabled mode', () => {
+        it('there is no icon in disabled mode', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
@@ -71,7 +71,7 @@ describe('InputCopy', () => {
     });
 
     describe('Behavior when clicking on the icon', () => {
-        it('When you click on the "Copy" icon, copy command is executed', () => {
+        it('when you click on the "Copy" icon, copy command is executed', () => {
             const func = jest.spyOn(document, 'execCommand');
 
             getIcon()!.nativeElement.click();

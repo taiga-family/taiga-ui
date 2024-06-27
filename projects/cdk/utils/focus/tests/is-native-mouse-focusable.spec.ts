@@ -1,13 +1,13 @@
 import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
 
 describe('isNativeMouseFocusable', () => {
-    it('DIV is not mouse focusable', () => {
+    it('div is not mouse focusable', () => {
         const element = document.createElement('div');
 
         expect(tuiIsNativeMouseFocusable(element)).toBe(false);
     });
 
-    it('BUTTON is mouse focusable', () => {
+    it('button is mouse focusable', () => {
         const element = document.createElement('button');
 
         expect(tuiIsNativeMouseFocusable(element)).toBe(true);
@@ -21,7 +21,7 @@ describe('isNativeMouseFocusable', () => {
         expect(tuiIsNativeMouseFocusable(element)).toBe(false);
     });
 
-    it('BUTTON with tabIndex === -1 is not mouse focusable', () => {
+    it('button with tabIndex === -1 is not mouse focusable', () => {
         const element = document.createElement('button');
 
         element.setAttribute('disabled', '');

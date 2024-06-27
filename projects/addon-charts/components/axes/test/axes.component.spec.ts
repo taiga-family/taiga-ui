@@ -50,25 +50,25 @@ describe('Axes', () => {
     });
 
     describe('axisXLabels', () => {
-        it('By default there are no X labels', () => {
+        it('by default there are no X labels', () => {
             expect(testComponent.defaultValues.hasXLabels).toBe(false);
         });
 
-        it('When axisXLabels is not empty, labels are shown', () => {
+        it('when axisXLabels is not empty, labels are shown', () => {
             expect(testComponent.customValues.hasXLabels).toBe(true);
         });
     });
 
     describe('axisYLabels', () => {
-        it('By default there are no Y labels', () => {
+        it('by default there are no Y labels', () => {
             expect(testComponent.defaultValues.hasYLabels).toBe(false);
         });
 
-        it('When axisYLabels is not empty, labels are shown', () => {
+        it('when axisYLabels is not empty, labels are shown', () => {
             expect(testComponent.customValues.hasYLabels).toBe(true);
         });
 
-        it('When axisYLabels is empty, but there is name for the axis, labels section is shown', () => {
+        it('when axisYLabels is empty, but there is name for the axis, labels section is shown', () => {
             testComponent.axisYLabels = [];
             testComponent.axisYName = 'Test';
             fixture.detectChanges();
@@ -76,21 +76,21 @@ describe('Axes', () => {
             expect(testComponent.customValues.hasYLabels).toBe(true);
         });
 
-        it('Empty labels falls back to non-breaking space', () => {
+        it('empty labels falls back to non-breaking space', () => {
             expect(testComponent.defaultValues.fallback('')).toBe(CHAR_NO_BREAK_SPACE);
         });
     });
 
     describe('axisYSecondaryLabels', () => {
-        it('By default there are no secondary Y labels', () => {
+        it('by default there are no secondary Y labels', () => {
             expect(testComponent.defaultValues.hasYSecondaryLabels).toBe(false);
         });
 
-        it('When axisYSecondaryLabels is not empty, secondary labels are shown', () => {
+        it('when axisYSecondaryLabels is not empty, secondary labels are shown', () => {
             expect(testComponent.customValues.hasYSecondaryLabels).toBe(true);
         });
 
-        it('When axisYSecondaryLabels is empty, but there is name for the secondary axis, secondary labels section is shown', () => {
+        it('when axisYSecondaryLabels is empty, but there is name for the secondary axis, secondary labels section is shown', () => {
             testComponent.axisYSecondaryLabels = [];
             testComponent.axisYSecondaryName = 'Test';
             fixture.detectChanges();

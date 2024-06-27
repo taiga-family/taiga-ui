@@ -37,7 +37,7 @@ describe('BarChart', () => {
         fixture.detectChanges();
     });
 
-    it('Transposes correctly', () => {
+    it('transposes correctly', () => {
         expect(testComponent.component.transposed).toEqual([
             [1, 4],
             [2, 5],
@@ -45,7 +45,7 @@ describe('BarChart', () => {
         ]);
     });
 
-    it('Computes percent correctly', () => {
+    it('computes percent correctly', () => {
         expect(
             testComponent.component.percentMapper(
                 [1, 3],
@@ -55,7 +55,7 @@ describe('BarChart', () => {
         ).toBe(50);
     });
 
-    it('Computes percent correctly in collapsed mode', () => {
+    it('computes percent correctly in collapsed mode', () => {
         testComponent.component.collapsed = true;
         expect(
             testComponent.component.percentMapper(

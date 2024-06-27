@@ -51,7 +51,7 @@ describe('Hint', () => {
         fixture.detectChanges();
     });
 
-    it('Hint is not shown immediately', () => {
+    it('hint is not shown immediately', () => {
         getHost().dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
         expect(getTooltip()).toBeNull();

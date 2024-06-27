@@ -43,7 +43,7 @@ describe('TuiDroppable Directive', () => {
         fixture.detectChanges();
     });
 
-    it('Drop event is prevented', () => {
+    it('drop event is prevented', () => {
         const dataTransfer = new DataTransfer();
         const event = new TuiMockEvent('drop', {dataTransfer});
 
@@ -53,7 +53,7 @@ describe('TuiDroppable Directive', () => {
         expect(event.preventDefault).toHaveBeenCalled();
     });
 
-    it('DragOver event is prevented', () => {
+    it('dragover event is prevented', () => {
         const event = new Event('dragover');
 
         jest.spyOn(event, 'preventDefault').mockImplementation(() => undefined);
@@ -62,7 +62,7 @@ describe('TuiDroppable Directive', () => {
         expect(event.preventDefault).toHaveBeenCalled();
     });
 
-    it('Dropped DataTransfer is emitted', () => {
+    it('dropped DataTransfer is emitted', () => {
         const dataTransfer = new DataTransfer();
         const event = new TuiMockEvent('drop', {dataTransfer});
 
@@ -71,7 +71,7 @@ describe('TuiDroppable Directive', () => {
         expect(testComponent.onDropped).toHaveBeenCalledWith(dataTransfer);
     });
 
-    it('DataTransfer is emitted on DragEnter', () => {
+    it('dataTransfer is emitted on DragEnter', () => {
         const dataTransfer = new DataTransfer();
         const event = new TuiMockEvent('dragenter', {dataTransfer});
 
@@ -91,7 +91,7 @@ describe('TuiDroppable Directive', () => {
         expect(testComponent.onDragOver).toHaveBeenCalledWith(null);
     });
 
-    it('Nothing is emitted on DragLeave not preceded by DragEnter on the same element', () => {
+    it('nothing is emitted on DragLeave not preceded by DragEnter on the same element', () => {
         const dataTransfer = new DataTransfer();
         const dragenter = new TuiMockEvent('dragenter', {dataTransfer});
         const dragleave = new TuiMockEvent('dragleave', {dataTransfer});

@@ -117,19 +117,19 @@ describe('InputDate', () => {
         });
 
         describe('Keyboard input', () => {
-            it('The passed date is inserted into the field', () => {
+            it('the passed date is inserted into the field', () => {
                 inputPO.sendText('01.03.2017');
 
                 expect(inputPO.value).toBe('01.03.2017');
             });
 
-            it('When entering an incomplete date, leaves it in the field', () => {
+            it('when entering an incomplete date, leaves it in the field', () => {
                 inputPO.sendText('31.12.20');
 
                 expect(inputPO.value).toBe('31.12.20');
             });
 
-            it('When entering an incomplete date, the control value is null', () => {
+            it('when entering an incomplete date, the control value is null', () => {
                 inputPO.sendText('31.12.20');
 
                 expect(testComponent.control.value).toBeNull();

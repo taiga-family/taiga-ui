@@ -61,15 +61,15 @@ describe('Textfield', () => {
     });
 
     describe('id binding', () => {
-        it('Auto id generation works', () => {
+        it('auto id generation works', () => {
             expect(testComponent.auto.nativeElement.id).toBeTruthy();
         });
 
-        it('Static id is not overridden', () => {
+        it('static id is not overridden', () => {
             expect(testComponent.attr.nativeElement.id).toBe('attr');
         });
 
-        it('Dynamic id binding works', () => {
+        it('dynamic id binding works', () => {
             expect(testComponent.bind.nativeElement.id).toBe('bind');
         });
     });

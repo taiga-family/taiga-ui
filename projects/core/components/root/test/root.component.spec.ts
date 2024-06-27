@@ -24,7 +24,7 @@ describe('root', () => {
         expect(root.dataset.tuiVersion).toBeDefined();
     });
 
-    it('There is some data-tui-version value', () => {
+    it('there is some data-tui-version value', () => {
         expect(root.dataset.tuiVersion).not.toBe('undefined');
     });
 });

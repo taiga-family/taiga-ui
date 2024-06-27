@@ -219,7 +219,7 @@ describe('Accordion', () => {
             expect(await accordionItem2.getContent()).not.toBeNull();
         });
 
-        xit('pressing the space bar in the input does not close the accordion', async () => {
+        it.skip('pressing the space bar in the input does not close the accordion', async () => {
             const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
             await accordionItem.clickHeader();
@@ -229,7 +229,7 @@ describe('Accordion', () => {
             expect(await accordionItem.getContent()).not.toBeNull();
         });
 
-        xit('in the select inside the content, the dropdown on ESC is correctly closed, the accordion content is not closed', async () => {
+        it.skip('in the select inside the content, the dropdown on ESC is correctly closed, the accordion content is not closed', async () => {
             const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
             await accordionItem.clickHeader();

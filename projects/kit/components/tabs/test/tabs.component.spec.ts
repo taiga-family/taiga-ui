@@ -54,7 +54,7 @@ describe('Tabs', () => {
     }
 
     describe('Tabs component', () => {
-        it('Should render all tabs', () => {
+        it('should render all tabs', () => {
             const tabs = [1, 2, 3, 4, 5];
 
             fixture.componentRef.setInput('tabs', tabs);
@@ -63,7 +63,7 @@ describe('Tabs', () => {
             expect(getTabs().length).toBe(tabs.length);
         });
 
-        it('When you click on a tab it changes the active tab', () => {
+        it('when you click on a tab it changes the active tab', () => {
             const [firstTab, secondTab] = getTabs().map(
                 tab => tab.nativeElement as HTMLButtonElement,
             );
@@ -77,7 +77,7 @@ describe('Tabs', () => {
             expect(secondTab).toEqual(component.tabsDirective.activeElement);
         });
 
-        it('When a tab is active, it has the class _active', () => {
+        it('when a tab is active, it has the class _active', () => {
             const [firstTab, secondTab] = getTabs().map(
                 tab => tab.nativeElement as HTMLButtonElement,
             );
