@@ -1,0 +1,56 @@
+<tui-doc-page
+    header="ActionBar"
+    package="EXPERIMENTAL"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-notification status="warning">
+            This code is
+            <strong>experimental</strong>
+            and is a subject to change. Expect final solution to be shipped in the next major version
+        </tui-notification>
+
+        <p>
+            It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
+            content.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-action-bar-example-1></tui-action-bar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="customization"
+            heading="Customization"
+            [content]="example2"
+        >
+            <tui-action-bar-example-2></tui-action-bar-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p>Import into module</p>
+
+                <tui-doc-code
+                    filename="my.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="my.component.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

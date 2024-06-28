@@ -1,0 +1,22 @@
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open$.next(true)"
+>
+    Show TableBar
+</button>
+
+<tui-action-bar *tuiActionBar="!!(open$ | async)">
+    <span>Table bar opened</span>
+
+    <button
+        appearance="glass"
+        size="m"
+        tuiButton
+        type="button"
+        (click)="open$.next(false)"
+    >
+        Close
+    </button>
+</tui-action-bar>
