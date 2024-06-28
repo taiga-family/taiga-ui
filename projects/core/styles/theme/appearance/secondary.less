@@ -15,14 +15,16 @@
     });
 
     &:invalid {
-        color: var(--tui-status-negative);
+        color: var(--tui-text-negative);
         background: var(--tui-status-negative-pale);
 
         .appearance-hover({
+            color: var(--tui-text-negative-hover);
             background: var(--tui-status-negative-pale-hover);
         });
 
         .appearance-active({
+            color: var(--tui-text-negative-hover);
             background: var(--tui-status-negative-pale-hover);
         });
     }
@@ -46,7 +48,15 @@
 }
 
 [tuiAppearance][data-appearance='destructive'] {
-    color: var(--tui-status-negative);
+    color: var(--tui-text-negative);
+
+    .appearance-hover({
+        color: var(--tui-text-negative-hover);
+    });
+
+    .appearance-active({
+        color: var(--tui-text-negative-hover);
+    });
 }
 
 // Overriding to darker colors for small items
