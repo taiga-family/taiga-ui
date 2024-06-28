@@ -1,0 +1,247 @@
+@import '../taiga-ui-local.less';
+
+/**
+ * TODO: Drop in v.5
+ * @deprecated use appearance instead
+ */
+[tuiWrapper] {
+    .transition(~'color, background, opacity');
+
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    appearance: none;
+    border-radius: inherit;
+
+    &:after {
+        .transition(~'box-shadow, color');
+        .fullsize(absolute, inset);
+
+        content: '';
+        border-radius: inherit;
+        border: 1px solid currentColor;
+        pointer-events: none;
+        color: transparent;
+    }
+
+    .wrapper-focus({
+        &:after {
+            border-width: 2px;
+            color: var(--tui-border-focus);
+        }
+    });
+
+    .wrapper-disabled({
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+    });
+
+    // Temporary hide focus in Safari until we figure out a better approach
+    .safari-only({
+        :focus-visible &,
+        &:focus-visible {
+            --tui-border-focus: transparent !important;
+        }
+    });
+}
+
+[tuiWrapper][data-appearance='textfield'] {
+    .transition(~'box-shadow, background');
+
+    background: var(--tui-background-base);
+    color: var(--tui-text-primary);
+    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+
+    &:after {
+        .transition(color);
+
+        color: var(--tui-border-normal);
+    }
+
+    .wrapper-hover({
+        box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+    });
+
+    .wrapper-focus({
+        box-shadow: none;
+
+        &:after {
+            --tui-border-focus: var(--tui-background-accent-1);
+        }
+    });
+
+    .wrapper-readonly({
+        box-shadow: none;
+        background: transparent;
+
+        &:after {
+            color: var(--tui-border-normal);
+        }
+    });
+
+    .wrapper-disabled({
+        box-shadow: none;
+    });
+
+    .wrapper-invalid({
+        &:after {
+            color: var(--tui-status-negative);
+            --tui-border-focus: var(--tui-status-negative);
+        }
+    });
+}
+
+[tuiWrapper][data-appearance='textfield'][tuiTheme='dark'],
+[tuiTheme='dark'] [tuiWrapper][data-appearance='textfield'] {
+    background: var(--tui-background-neutral-1);
+
+    .wrapper-hover({
+        background: var(--tui-background-neutral-1-hover);
+    });
+
+    .wrapper-focus({
+        background: transparent;
+    });
+}
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='table'] {
+    border-radius: 0;
+    background: transparent;
+    color: var(--tui-text-primary);
+
+    /* stylelint-disable meowtec/no-px */
+    &:before,
+    &[data-appearance='table']:after {
+        position: fixed;
+        top: -0.03125rem;
+        left: -1px;
+        right: -0.03125rem;
+        bottom: -1px;
+    }
+    /* stylelint-enable meowtec/no-px */
+
+    &:before {
+        .transition(background);
+
+        content: '';
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 0.5rem 0.5rem;
+    }
+
+    table &[data-appearance='table']:not(._focused):after {
+        border-width: 0;
+    }
+
+    table &._focused {
+        z-index: 1;
+    }
+
+    &[data-appearance='table']:after {
+        border-width: 1px;
+        color: var(--tui-border-normal);
+    }
+
+    .wrapper-hover({
+        &:not(._focused):before {
+            background-color: var(--tui-background-neutral-1);
+        }
+    });
+
+    .wrapper-focus({
+        background: transparent;
+
+        &:after {
+            border-width: 2px;
+            color: var(--tui-border-focus);
+        }
+    });
+
+    .wrapper-invalid({
+        &:before {
+            background-image: linear-gradient(to top right, transparent 0%, transparent 50%, var(--tui-status-negative) 50%, var(--tui-status-negative) 100%);
+        }
+
+        &:not(._focused):before {
+            background-color: var(--tui-status-negative-pale);
+        }
+
+        .wrapper-hover({
+            &:not(._focused):before {
+                background-color: var(--tui-status-negative-pale-hover);
+            }
+        });
+
+        .wrapper-disabled({
+            background: transparent;
+        });
+
+        .wrapper-focus({
+            background: transparent;
+
+            --tui-border-focus: var(--tui-status-negative);
+
+            &:after {
+                border-width: 1px;
+            }
+        });
+    });
+}
+
+[tuiWrapper][data-appearance='icon'][data-appearance='icon'] {
+    .transition(opacity);
+
+    color: var(--tui-text-primary);
+    opacity: 0.5;
+
+    [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
+        opacity: 0.65;
+    }
+
+    [tuiTheme='dark'] &,
+    &[tuiTheme='dark'] {
+        [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
+            opacity: 1;
+        }
+
+        .wrapper-focus({
+            --tui-border-focus: var(--tui-background-base);
+        });
+
+        .wrapper-hover({
+            opacity: 1;
+        });
+    }
+
+    .wrapper-hover({
+        opacity: 0.65;
+    });
+
+    .wrapper-active({
+        opacity: 1;
+    });
+
+    .wrapper-disabled({
+        opacity: calc(0.5 * var(--tui-disabled-opacity));
+    });
+}
+
+tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'] {
+    color: var(--tui-text-secondary);
+
+    [tuiTheme='dark'] &,
+    &[tuiTheme='dark'] {
+        color: var(--tui-text-primary);
+    }
+}
+
+[tuiWrapper][data-appearance='none'] {
+    &:after {
+        border: none;
+    }
+}
