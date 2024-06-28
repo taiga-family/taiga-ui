@@ -44,6 +44,10 @@ export const TEXT = [
     '--tui-text-primary-on-accent-2',
     '--tui-text-action',
     '--tui-text-action-hover',
+    '--tui-text-negative',
+    '--tui-text-negative-hover',
+    '--tui-text-positive',
+    '--tui-text-positive-hover',
 ];
 
 export const OTHERS = [

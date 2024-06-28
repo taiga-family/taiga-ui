@@ -43,12 +43,6 @@
 }
 
 .wrapper-focus(@ruleset) {
-    // Temporary rule until we get hostDirectives with Angular 15
-    :focus-visible:not([data-focused='false']) > &,
-    [data-focused='true'] > & {
-        @ruleset();
-    }
-
     // TODO: Join rules together once all browsers support focus-visible
     // Specificity artificially increased to match `:hover:not()` level
     &:focus-visible:focus-visible {

@@ -86,13 +86,13 @@
 
     .wrapper-invalid({
         &:after {
-            color: var(--tui-status-negative);
+            color: var(--tui-text-negative);
             --tui-border-focus: var(--tui-status-negative);
         }
     });
 }
 
-[tuiWrapper][data-appearance='textfield'][tuiTheme='dark'],
+[tuiTheme='dark'][tuiWrapper][data-appearance='textfield'],
 [tuiTheme='dark'] [tuiWrapper][data-appearance='textfield'] {
     background: var(--tui-background-neutral-1);
 
@@ -191,7 +191,7 @@
     });
 }
 
-[tuiWrapper][data-appearance='icon'][data-appearance='icon'] {
+[tuiWrapper][data-appearance='icon'] {
     .transition(opacity);
 
     color: var(--tui-text-primary);
@@ -199,21 +199,6 @@
 
     [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
         opacity: 0.65;
-    }
-
-    [tuiTheme='dark'] &,
-    &[tuiTheme='dark'] {
-        [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
-            opacity: 1;
-        }
-
-        .wrapper-focus({
-            --tui-border-focus: var(--tui-background-base);
-        });
-
-        .wrapper-hover({
-            opacity: 1;
-        });
     }
 
     .wrapper-hover({
@@ -229,15 +214,34 @@
     });
 }
 
+[tuiTheme='dark'] [tuiWrapper][data-appearance='icon'],
+[tuiTheme='dark'][tuiWrapper][data-appearance='icon'] {
+    [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
+        opacity: 1;
+    }
+
+    .wrapper-focus({
+        --tui-border-focus: var(--tui-background-base);
+    });
+
+    .wrapper-hover({
+        opacity: 1;
+    });
+}
+
 tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
 tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
 tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'] {
     color: var(--tui-text-secondary);
+}
 
-    [tuiTheme='dark'] &,
-    &[tuiTheme='dark'] {
-        color: var(--tui-text-primary);
-    }
+[tuiTheme='dark'] tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+[tuiTheme='dark'] tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+[tuiTheme='dark'] tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
+tui-primitive-textfield:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'],
+tui-textarea:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'],
+tui-input-tag:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'] {
+    color: var(--tui-text-primary);
 }
 
 [tuiWrapper][data-appearance='none'] {

@@ -141,8 +141,8 @@
         appearance: none;
         box-sizing: border-box;
         border: none;
-        border-inline-start: var(--t-left) solid transparent;
-        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent;
+        border-inline-start: var(--t-left) solid transparent !important;
+        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent !important;
         border-radius: inherit;
         padding: inherit;
     }
@@ -175,7 +175,7 @@
 
             &:not(:disabled)[data-mode='invalid'] ~ label,
             &:invalid:not(:disabled):not([data-mode]) ~ label {
-                color: var(--tui-status-negative);
+                color: var(--tui-text-negative);
             }
 
             &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {

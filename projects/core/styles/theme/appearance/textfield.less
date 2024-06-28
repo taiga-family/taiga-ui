@@ -35,17 +35,17 @@
         box-shadow: none;
         outline-color: var(--tui-border-normal) !important;
     }
+}
 
-    [tuiTheme='dark'] &,
-    &[tuiTheme='dark'] {
-        background-color: var(--tui-background-neutral-1);
+[tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'],
+[tuiTheme='dark'][tuiAppearance][data-appearance='textfield'] {
+    background-color: var(--tui-background-neutral-1);
 
-        .appearance-hover({
-            background-color: var(--tui-background-neutral-1-hover);
-        });
+    .appearance-hover({
+        background-color: var(--tui-background-neutral-1-hover);
+    });
 
-        .appearance-focus({
-            background-color: transparent !important;
-        });
-    }
+    .appearance-focus({
+        background-color: transparent !important;
+    });
 }
