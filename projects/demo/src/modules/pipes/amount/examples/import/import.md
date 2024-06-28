@@ -1,5 +1,5 @@
 ```ts
-import {TuiAmountPipeModule} from '@taiga-ui/experimental';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiAmountPipeModule} from '@taiga-ui/experimental';
   standalone: true,
   imports: [
     // ...
-    TuiAmountPipeModule,
+    TuiAmountPipe,
   ],
 })
 export class Example {}
