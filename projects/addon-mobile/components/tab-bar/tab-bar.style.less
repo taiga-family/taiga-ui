@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    --tui-active-color: var(--tui-primary);
+    --tui-active-color: var(--tui-link);
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -13,15 +13,19 @@
         'Segoe UI',
         sans-serif;
     height: var(--tui-height-l);
-    color: var(--tui-text-03);
-    backdrop-filter: blur(0.25rem);
+    color: var(--tui-text-02);
+    backdrop-filter: blur(0.3125rem);
 
     &:before {
         .fullsize();
         content: '';
-        background: var(--tui-elevation-01);
+        background: var(--tui-base-02);
         box-shadow: inset 0 1px var(--tui-base-04);
-        opacity: 0.9;
+        opacity: 0.8;
+
+        [tuiTheme='night'] & {
+            opacity: 0.7;
+        }
     }
 }
 
