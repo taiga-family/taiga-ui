@@ -495,6 +495,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiDropdownPortal', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdown', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiDroppableModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiDroppable', moduleSpecifier: '@taiga-ui/cdk'},
     },
@@ -698,6 +702,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiButton',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TUI_ARROW',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {name: 'TuiArrowComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiArrowComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {
