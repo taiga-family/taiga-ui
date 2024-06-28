@@ -63,11 +63,7 @@
         "*.less": [
             "stylelint --fix"
         ],
-        "*.{js,ts,html}": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.{svg,yml,md,less,json}": [
+        "*.{js,ts,html, svg,yml,md,less,json}": [
             "prettier --write"
         ]
     },
