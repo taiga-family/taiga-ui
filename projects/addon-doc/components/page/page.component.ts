@@ -27,6 +27,9 @@ export class TuiDocPageComponent {
     package = '';
 
     @Input()
+    tags: string[] = [];
+
+    @Input()
     type = '';
 
     @Input()
