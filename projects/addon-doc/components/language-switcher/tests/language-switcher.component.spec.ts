@@ -1,14 +1,14 @@
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TuiLanguageSwitcher} from '@taiga-ui/addon-doc';
+import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
-describe('TuiLanguageSwitcherComponent', () => {
-    let component: TuiLanguageSwitcher;
-    let fixture: ComponentFixture<TuiLanguageSwitcher>;
+describe('TuiDocLanguageSwitcher', () => {
+    let component: TuiDocLanguageSwitcher;
+    let fixture: ComponentFixture<TuiDocLanguageSwitcher>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -16,12 +16,12 @@ describe('TuiLanguageSwitcherComponent', () => {
                 ReactiveFormsModule,
                 TuiSelectModule,
                 TuiDataList,
-                TuiLanguageSwitcher,
+                TuiDocLanguageSwitcher,
             ],
             providers: [TuiLanguageSwitcherService],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TuiLanguageSwitcher);
+        fixture = TestBed.createComponent(TuiDocLanguageSwitcher);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

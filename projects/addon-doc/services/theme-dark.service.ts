@@ -10,7 +10,7 @@ export const TUI_DARK_THEME = tuiCreateToken(false);
 @Injectable({
     providedIn: 'root',
 })
-export class TuiThemeDarkService extends BehaviorSubject<boolean> {
+export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
     private readonly storage = inject(LOCAL_STORAGE);
     private readonly key = inject(TUI_DARK_THEME_KEY);
 

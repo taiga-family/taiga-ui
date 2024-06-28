@@ -1,6 +1,6 @@
 ```ts
 import {TuiLanguageName} from '@taiga-ui/i18n/interfaces';
-import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
+import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
 
 @Component({
   standalone: true,
@@ -9,7 +9,7 @@ import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
   ],
   providers: [
     // ...
-    tuiLanguageSwitcher(
+    tuiDocLanguageSwitcher(
       /**
        * @note:
        * then the i18n language files will be loaded from node_modules

@@ -10,7 +10,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 
 @Component({
     standalone: true,
-    selector: 'tui-language-switcher',
+    selector: 'tui-doc-language-switcher',
     imports: [
         ReactiveFormsModule,
         TuiDataList,
@@ -23,7 +23,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLanguageSwitcher {
+export class TuiDocLanguageSwitcher {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected readonly language = new FormControl(capitalize(this.switcher.language));
 

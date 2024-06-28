@@ -119,7 +119,7 @@
                         [attr.rel]="item.rel"
                         [routerLink]="item.route"
                         [target]="item.target || '_self'"
-                        [tuiScrollIntoViewLink]="isActive(item.route)"
+                        [tuiDocScrollIntoViewLink]="isActive(item.route)"
                         (click)="closeMenu()"
                     >
                         {{ item.title }}
@@ -188,7 +188,7 @@
                                         [fragment]="subPage.fragment"
                                         [routerLink]="subPage.route"
                                         [target]="subPage.target || '_self'"
-                                        [tuiScrollIntoViewLink]="isActive(subPage.route)"
+                                        [tuiDocScrollIntoViewLink]="isActive(subPage.route)"
                                         (click)="closeMenu()"
                                     >
                                         {{ subPage.title }}
