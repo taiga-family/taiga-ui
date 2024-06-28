@@ -507,7 +507,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiValidator', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
-        from: {name: 'TuiAmountModule', moduleSpecifier: '@taiga-ui/experimental'},
+        from: {name: 'TuiAmountPipeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiAmountPipe', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },
     {
