@@ -15,7 +15,7 @@ import type {AbstractControl} from '@angular/forms';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
-import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
+import {TuiDocThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
@@ -77,7 +77,7 @@ export class TuiDocDemo implements OnInit {
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     protected dark = tuiCoerceValueIsTrue(
-        this.params.darkMode ?? inject(TuiThemeDarkService).value,
+        this.params.darkMode ?? inject(TuiDocThemeDarkService).value,
     );
 
     protected testForm?: FormGroup;

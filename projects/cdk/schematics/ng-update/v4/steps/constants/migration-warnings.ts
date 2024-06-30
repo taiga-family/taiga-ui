@@ -150,4 +150,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_INPUT_NUMBER_OPTIONS "precision" and "decimal" have been moved to TUI_FORMAT_NUMBER_OPTIONS. See https://taiga-ui.dev/components/input-number#options ',
     },
+    {
+        name: 'TUI_ARROW',
+        moduleSpecifier: '@taiga-ui/kit',
+        message:
+            'TUI_ARROW is deprecated, Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links',
+    },
 ];

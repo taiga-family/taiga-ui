@@ -12,21 +12,21 @@ import {
 } from '../../../utils/colored-log';
 import {getFileSystem} from '../../utils/get-file-system';
 import {renameIcons} from './rename-icons';
+import {renameProprietaryIcons} from './rename-proprietary-icons';
 
 export function migrateIcons(options: TuiSchema): Rule {
     return chain([
         (tree: Tree, _: SchematicContext) => {
-            if (hasProprietaryIcons(tree)) {
-                // TODO: add proprietary-icons migration
-
-                return;
-            }
-
             const fileSystem = getFileSystem(tree);
 
             !options['skip-logs'] &&
-                infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing strings...`);
-            renameIcons();
+                infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing icons...`);
+
+            if (hasProprietaryIcons(tree)) {
+                renameProprietaryIcons();
+            } else {
+                renameIcons();
+            }
 
             fileSystem.commitEdits();
             saveActiveProject();

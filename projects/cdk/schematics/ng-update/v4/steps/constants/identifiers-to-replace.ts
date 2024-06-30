@@ -495,6 +495,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiDropdownPortal', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdown', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiDroppableModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiDroppable', moduleSpecifier: '@taiga-ui/cdk'},
     },
@@ -503,7 +507,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiValidator', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
-        from: {name: 'TuiAmountModule', moduleSpecifier: '@taiga-ui/experimental'},
+        from: {name: 'TuiAmountPipeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiAmountPipe', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },
     {
@@ -698,6 +702,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiButton',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TUI_ARROW',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {name: 'TuiArrowComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiArrowComponent',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {
@@ -1229,7 +1247,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
-            name: 'TuiScrollIntoViewLink',
+            name: 'TuiDocScrollIntoViewLink',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
@@ -1239,7 +1257,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
         to: {
-            name: 'TuiTextCode',
+            name: 'TuiDocText',
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },

@@ -59,6 +59,32 @@ const TEMPLATE_AFTER = `
 <button tuiIconButton icon="@tui.x">Button</button>
 `;
 
+const PROPRIETARY_TEMPLATE_BEFORE = `
+<tui-avatar
+    avatarUrl="tuiIconTdsLockSmall"
+    text="alex inkin"
+    [rounded]="true"
+></tui-avatar>
+<tui-avatar
+    avatarUrl="tuiIconTdsTransportAutoRubleMedium"
+></tui-avatar>
+<button tuiIconButton icon="tuiIconTdsMoreMediumPragmatic">Button</button>
+<button tuiIconButton icon="tuiIconTdsCheckMedium">Button</button>
+`;
+
+const PROPRIETARY_TEMPLATE_AFTER = `
+<tui-avatar
+    avatarUrl="@tui.fancy.small.lock"
+    text="alex inkin"
+    [rounded]="true"
+></tui-avatar>
+<tui-avatar
+    avatarUrl="@tui.fancy.medium.transport-auto-ruble"
+></tui-avatar>
+<button tuiIconButton icon="@tui.pragmatic.medium.more">Button</button>
+<button tuiIconButton icon="@tui.fancy.medium.check">Button</button>
+`;
+
 describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
@@ -94,6 +120,26 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
+    it('should migrate proprietary icons in ts files', async () => {
+        createSourceFile(
+            'package.json',
+            '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.42.0"}}',
+            {overwrite: true},
+        );
+
+        saveActiveProject();
+
+        const tree = await runner.runSchematic(
+            'migrateIconsV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+
+        expect(tree.readContent('test/app/proprietary-test.template.html')).toEqual(
+            PROPRIETARY_TEMPLATE_AFTER,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -103,6 +149,11 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+
+    createSourceFile(
+        'test/app/proprietary-test.template.html',
+        PROPRIETARY_TEMPLATE_BEFORE,
+    );
 
     createSourceFile(
         'package.json',

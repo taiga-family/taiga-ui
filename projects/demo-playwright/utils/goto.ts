@@ -72,7 +72,7 @@ export async function tuiGoto(
     }
 
     if (hideLanguageSwitcher) {
-        await tuiRemoveElement(page.locator('tui-language-switcher'));
+        await tuiRemoveElement(page.locator('tui-doc-language-switcher'));
     }
 
     expect(

@@ -13,7 +13,7 @@ import {
     TuiDocTab,
     TuiDocTypeReferencePipe,
 } from '@taiga-ui/addon-doc/components';
-import {TuiTextCode} from '@taiga-ui/addon-doc/directives';
+import {TuiDocText} from '@taiga-ui/addon-doc/directives';
 
 export const TuiAddonDoc = [
     TuiDocCopy,
@@ -29,7 +29,7 @@ export const TuiAddonDoc = [
     TuiDocPageTabConnector,
     TuiDocNavigation,
     TuiDocMain,
-    TuiTextCode,
+    TuiDocText,
 ] as const;
 
 export * from '@taiga-ui/addon-doc/components';

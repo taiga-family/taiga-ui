@@ -13,9 +13,9 @@
     .appearance-active({
         background: var(--tui-background-accent-opposite-pressed);
     });
+}
 
-    [tuiTheme='dark'] &,
-    &[tuiTheme='dark'] {
-        --tui-border-focus: rgba(51, 51, 51, 0.48);
-    }
+[tuiTheme='dark'] [tuiAppearance][data-appearance='opposite'],
+[tuiTheme='dark'][tuiAppearance][data-appearance='opposite'] {
+    --tui-border-focus: rgba(51, 51, 51, 0.48);
 }

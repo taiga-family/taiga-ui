@@ -21,7 +21,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
 
 @Component({
     standalone: true,
-    selector: 'tui-theme-switcher',
+    selector: 'tui-doc-theme-switcher',
     imports: [NgForOf, FormsModule, TuiDataList, TuiSelectModule],
     templateUrl: './theme-switcher.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

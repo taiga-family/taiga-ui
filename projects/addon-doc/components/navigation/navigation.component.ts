@@ -16,7 +16,6 @@ import {
     RouterLinkActive,
     Scroll,
 } from '@angular/router';
-import {TuiScrollIntoViewLink} from '@taiga-ui/addon-doc/directives';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
@@ -48,6 +47,7 @@ import {
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
 } from './navigation.providers';
+import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
 @Component({
     standalone: true,
@@ -69,7 +69,7 @@ import {
         TuiAccordion,
         NgTemplateOutlet,
         TuiLink,
-        TuiScrollIntoViewLink,
+        TuiDocScrollIntoViewLink,
         RouterLinkActive,
         TuiExpand,
         TuiTextfieldControllerModule,
