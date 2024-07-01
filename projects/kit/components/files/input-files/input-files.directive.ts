@@ -4,11 +4,11 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
-    TuiAppearance,
-    tuiAppearanceOptionsProvider,
+    TuiAppearanceOptions,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
+import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {filter, map, switchMap, timer} from 'rxjs';
 
 import type {TuiFileLike} from '../files.types';
@@ -24,14 +24,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         tuiAppearanceOptionsProvider(TuiInputFilesDirective),
     ],
     hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
+        TuiWithAppearance,
         {
             directive: TuiInputFilesValidator,
             inputs: ['accept', 'maxFileSize'],

@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
@@ -14,17 +14,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     template: '',
     styleUrls: ['./radio.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-        TuiNativeValidator,
-    ],
+    hostDirectives: [TuiWithAppearance, TuiNativeValidator],
     host: {
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',

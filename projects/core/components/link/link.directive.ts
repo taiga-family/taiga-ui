@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TuiAppearance,
     tuiAppearanceOptionsProvider,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_LINK_OPTIONS} from './link.options';
 
@@ -31,20 +31,7 @@ class TuiLinkStyles {}
     standalone: true,
     selector: 'a[tuiLink], button[tuiLink]',
     providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-    ],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
         '[class._pseudo]': 'pseudo',

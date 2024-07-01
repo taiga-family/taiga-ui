@@ -4,8 +4,8 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
-    TuiAppearance,
     tuiAppearanceOptionsProvider,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
@@ -18,16 +18,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-    ],
+    hostDirectives: [TuiWithAppearance],
     host: {
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',

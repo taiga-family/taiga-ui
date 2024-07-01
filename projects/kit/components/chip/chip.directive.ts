@@ -9,10 +9,10 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
-    TuiAppearance,
     tuiAppearanceOptionsProvider,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import type {TuiSizeXXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
@@ -45,20 +45,7 @@ class TuiChipStyles {}
             appearance: 'icon',
         }),
     ],
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-    ],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {'[attr.data-size]': 'size'},
 })
 export class TuiChip {

@@ -12,7 +12,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
@@ -24,17 +24,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     template: '',
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-        TuiNativeValidator,
-    ],
+    hostDirectives: [TuiWithAppearance, TuiNativeValidator],
     host: {
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',

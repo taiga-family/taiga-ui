@@ -11,7 +11,7 @@ import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -33,12 +33,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-    ],
+    hostDirectives: [TuiWithIcons],
     host: {
         type: 'button',
         role: 'option',
