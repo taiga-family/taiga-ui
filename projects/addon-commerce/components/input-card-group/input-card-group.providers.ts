@@ -18,9 +18,9 @@ export interface TuiCardGroupedTexts {
 }
 
 /**
- * InputCardGrouped texts
+ * InputCardGroup texts
  */
-export const TUI_INPUT_CARD_GROUPED_TEXTS = tuiCreateTokenFromFactory<
+export const TUI_INPUT_CARD_GROUP_TEXTS = tuiCreateTokenFromFactory<
     Observable<TuiCardGroupedTexts>
 >(() => {
     const win = inject(WINDOW);

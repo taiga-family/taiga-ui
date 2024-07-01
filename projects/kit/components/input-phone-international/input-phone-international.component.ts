@@ -68,8 +68,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: false}),
         tuiGroupOptionsProvider({size: 'l'}),
-    ],
-    viewProviders: [
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',
             align: 'right',
@@ -84,9 +82,9 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     private readonly input?: ElementRef<HTMLInputElement>;
 
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
 
+    protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly mask = computed(() =>

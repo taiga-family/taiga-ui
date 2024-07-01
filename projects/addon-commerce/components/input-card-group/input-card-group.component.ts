@@ -53,8 +53,8 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map, merge} from 'rxjs';
 
-import {TUI_INPUT_CARD_GROUPED_OPTIONS} from './input-card-grouped.options';
-import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
+import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
+import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
 
 export interface TuiCard {
     card: string;
@@ -64,7 +64,7 @@ export interface TuiCard {
 
 @Component({
     standalone: true,
-    selector: 'tui-input-card-grouped',
+    selector: 'tui-input-card-group',
     imports: [
         NgIf,
         FormsModule,
@@ -81,8 +81,8 @@ export interface TuiCard {
         TuiAppearance,
         TuiIconPipe,
     ],
-    templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    templateUrl: './input-card-group.template.html',
+    styleUrls: ['./input-card-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiInputCardGroup),
@@ -122,7 +122,7 @@ export class TuiInputCardGroup
 
     private expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
-    private readonly options = inject(TUI_INPUT_CARD_GROUPED_OPTIONS);
+    private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
     private readonly focusedIn = toSignal(
@@ -140,7 +140,7 @@ export class TuiInputCardGroup
     protected readonly maskCard = TUI_MASK_CARD;
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUPED_TEXTS));
+    protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
 
     protected readonly open: WritableSignal<boolean> = tuiDirectiveBinding(
         TuiDropdownOpen,

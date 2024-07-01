@@ -5,7 +5,7 @@
     >
         <input
             #inputCard
-            automation-id="tui-input-card-grouped__card"
+            automation-id="tui-input-card-group__card"
             inputmode="numeric"
             translate="no"
             type="text"
@@ -62,7 +62,7 @@
     <label (click.silent.prevent)="(0)">
         <input
             #inputExpire
-            automation-id="tui-input-card-grouped__expire"
+            automation-id="tui-input-card-group__expire"
             inputmode="numeric"
             placeholder="00/00"
             translate="no"
@@ -94,7 +94,7 @@
     <label (click.silent.prevent)="(0)">
         <input
             #inputCVC
-            automation-id="tui-input-card-grouped__cvc"
+            automation-id="tui-input-card-group__cvc"
             inputmode="numeric"
             translate="no"
             type="text"
@@ -128,14 +128,14 @@
         <img
             *polymorpheusOutlet="content as src"
             alt=""
-            automation-id="tui-input-card-grouped__icon"
+            automation-id="tui-input-card-group__icon"
             class="t-card"
             [src]="src | tuiIcon"
         />
     </div>
     <tui-icon
         *ngIf="hasCleaner()"
-        automation-id="tui-input-card-grouped__cleaner"
+        automation-id="tui-input-card-group__cleaner"
         tuiAppearance="icon"
         class="t-icon"
         [icon]="icons.close"
@@ -143,7 +143,7 @@
     />
     <tui-icon
         *ngIf="dropdown.content"
-        automation-id="tui-input-card-grouped__dropdown"
+        automation-id="tui-input-card-group__dropdown"
         tuiAppearance="icon"
         tuiChevron
         (click)="toggle()"

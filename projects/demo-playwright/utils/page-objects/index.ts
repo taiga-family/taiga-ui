@@ -3,7 +3,7 @@ export * from './combo-box.po';
 export * from './documentation-api-page.po';
 export * from './documentation-page.po';
 export * from './input-card.po';
-export * from './input-card-grouped.po';
+export * from './input-card-group.po';
 export * from './input-date-range.po';
 export * from './input-date-time.po';
 export * from './input-month.po';

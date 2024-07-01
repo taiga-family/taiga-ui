@@ -436,10 +436,10 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputCardGrouped',
+                title: 'InputCardGroup',
                 keywords:
                     'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
-                route: DemoRoute.InputCardGrouped,
+                route: DemoRoute.InputCardGroup,
             },
             {
                 section: 'Components',

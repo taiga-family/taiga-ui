@@ -1,6 +1,5 @@
 <!-- TODO: move tuiGroup & tuiDropdown to host directive and get rid of nesting -->
 <div
-    *ngIf="countriesNames$ | async as countriesNames"
     tuiGroup
     [tuiDropdown]="dropdown"
     [tuiDropdownEnabled]="interactive()"
@@ -23,7 +22,7 @@
         <ng-template #flag>
             <img
                 class="t-flag t-flag_select"
-                [alt]="countriesNames[countryIsoCode()]"
+                [alt]="names()?.[countryIsoCode()]"
                 [src]="countryIsoCode() | tuiFlag"
             />
         </ng-template>
@@ -61,9 +60,7 @@
                     class="t-flag"
                     [src]="item | tuiFlag"
                 />
-                <span class="t-country-item-name">
-                    {{ countriesNames[item] }}
-                </span>
+                <span class="t-country-item-name">{{ names()?.[item] }}</span>
                 <span class="t-country-item-code">
                     {{ item | tuiGetCountryCallingCode: metadata() }}
                 </span>

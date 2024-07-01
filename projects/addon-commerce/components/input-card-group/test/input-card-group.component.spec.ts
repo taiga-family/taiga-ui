@@ -9,12 +9,12 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
 
-describe('InputCardGrouped', () => {
+describe('InputCardGroup', () => {
     @Component({
         standalone: true,
         imports: [TuiInputCardGroup, ReactiveFormsModule, TuiIcon],
         template: `
-            <tui-input-card-grouped
+            <tui-input-card-group
                 [formControl]="control"
                 (binChange)="onBinChange($event)"
             />
@@ -48,9 +48,9 @@ describe('InputCardGrouped', () => {
         fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputCardPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__card');
-        inputExpirePO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__expire');
-        inputCVCPO = new TuiNativeInputPO(fixture, 'tui-input-card-grouped__cvc');
+        inputCardPO = new TuiNativeInputPO(fixture, 'tui-input-card-group__card');
+        inputExpirePO = new TuiNativeInputPO(fixture, 'tui-input-card-group__expire');
+        inputCVCPO = new TuiNativeInputPO(fixture, 'tui-input-card-group__cvc');
 
         fixture.autoDetectChanges();
     });
@@ -184,14 +184,14 @@ describe('InputCardGrouped', () => {
     describe('icon with value', () => {
         beforeEach(() => setCard('4111 1111 1111 1111'));
 
-        it('input-card-grouped have a default icon', () => {
+        it('input-card-group have a default icon', () => {
             expect(testComponent.control.valid).toBe(true);
             expect(testComponent.component['content']).toBe('@tui.visa');
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
 
-        it('input-card-grouped have tuiIconMastercard icon', () => {
+        it('input-card-group have tuiIconMastercard icon', () => {
             testComponent.component.icon = 'tuiIconMastercard';
 
             expect(testComponent.control.valid).toBe(true);
@@ -200,7 +200,7 @@ describe('InputCardGrouped', () => {
             expect(expectCardOutlet()).toBeTruthy();
         });
 
-        it('input-card-grouped have TemplateRef', () => {
+        it('input-card-group have TemplateRef', () => {
             testComponent.component.icon = fixture.componentInstance.customIconTemplate;
 
             expect(testComponent.control.valid).toBe(true);
