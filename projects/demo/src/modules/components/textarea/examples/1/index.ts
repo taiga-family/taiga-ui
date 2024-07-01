@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiTextareaExample1 {
     testForm = new FormGroup({
-        testValue1: new FormControl('A field', Validators.required),
-        testValue2: new FormControl('This one can be expanded', Validators.required),
+        testValue1: new FormControl('A field 😅', Validators.required),
+        testValue2: new FormControl('This one can be expanded 😀', Validators.required),
     });
 }
