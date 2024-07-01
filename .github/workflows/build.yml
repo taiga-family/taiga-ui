@@ -10,9 +10,9 @@ jobs:
     name: Build packages
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.65.0
-      - uses: taiga-family/ci/actions/setup/node@v1.65.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.1
+      - uses: taiga-family/ci/actions/setup/node@v1.65.1
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/check-dist.ts
 
@@ -21,9 +21,9 @@ jobs:
     name: Prerender of demo application
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.65.0
-      - uses: taiga-family/ci/actions/setup/node@v1.65.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.1
+      - uses: taiga-family/ci/actions/setup/node@v1.65.1
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Bundle size tracking
