@@ -113,7 +113,7 @@
         "@nx/jest": "18.3.4",
         "@nx/workspace": "18.3.4",
         "@schematics/angular": "16.2.12",
-        "@taiga-ui/browserslist-config": "0.109.1",
+        "@taiga-ui/browserslist-config": "0.109.2",
         "@taiga-ui/commitlint-config": "0.109.1",
         "@taiga-ui/cspell-config": "0.109.1",
         "@taiga-ui/design-tokens": "0.85.0",
