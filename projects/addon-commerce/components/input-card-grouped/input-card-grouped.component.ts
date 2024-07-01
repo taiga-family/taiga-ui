@@ -112,6 +112,9 @@ export class TuiInputCardGroupedComponent
     cardValidator = this.options.cardValidator;
 
     @Input()
+    cvcHidden = this.options.cvcHidden;
+
+    @Input()
     set codeLength(length: TuiCodeCVCLength) {
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = {
@@ -129,8 +132,6 @@ export class TuiInputCardGroupedComponent
     readonly datalist?: TuiDataListComponent<TuiCard>;
 
     exampleTextCVC = this.options.exampleTextCVC;
-
-    cvcHidden = this.options.cvcHidden;
 
     maskCVC: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
