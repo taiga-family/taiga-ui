@@ -8,5 +8,5 @@ jobs:
   dependency-review:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.65.0
-      - uses: taiga-family/ci/actions/security/dependency-review@v1.65.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
+      - uses: taiga-family/ci/actions/security/dependency-review@v1.65.1
