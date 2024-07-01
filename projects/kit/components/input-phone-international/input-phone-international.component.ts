@@ -73,7 +73,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
             align: 'right',
         }),
     ],
-    hostDirectives: [TuiGroup],
     host: {
         '[attr.data-size]': 'textfieldOptions?.size',
     },
