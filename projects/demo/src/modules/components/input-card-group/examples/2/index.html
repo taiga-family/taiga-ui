@@ -6,7 +6,7 @@
     Toggle dropdown
 </button>
 <form [formGroup]="card">
-    <tui-input-card-grouped
+    <tui-input-card-group
         formControlName="meta"
         [(open)]="open"
     >
@@ -45,5 +45,5 @@
                 <span>{{ item.card.slice(-5) }}</span>
             </button>
         </tui-data-list>
-    </tui-input-card-grouped>
+    </tui-input-card-group>
 </form>

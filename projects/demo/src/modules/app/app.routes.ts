@@ -390,9 +390,9 @@ export const ROUTES: Routes = [
         title: 'InputCard',
     }),
     route({
-        path: DemoRoute.InputCardGrouped,
-        loadComponent: async () => import('../components/input-card-grouped'),
-        title: 'InputCardGrouped',
+        path: DemoRoute.InputCardGroup,
+        loadComponent: async () => import('../components/input-card-group'),
+        title: 'InputCardGroup',
     }),
     route({
         path: DemoRoute.InputCopy,

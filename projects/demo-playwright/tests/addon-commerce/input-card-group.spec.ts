@@ -7,7 +7,7 @@ import {
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
-test.describe('InputCardGrouped', () => {
+test.describe('InputCardGroup', () => {
     let documentationPage: TuiDocumentationPagePO;
 
     test.describe('API', () => {
@@ -20,7 +20,7 @@ test.describe('InputCardGrouped', () => {
         });
 
         test('set value and clear after', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API`);
+            await tuiGoto(page, `${DemoRoute.InputCardGroup}/API`);
 
             const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(
                 apiPageExample,
@@ -30,12 +30,12 @@ test.describe('InputCardGrouped', () => {
             await numberTextfield.pressSequentially(entryValue);
             await expect(numberTextfield).toHaveValue(entryValue);
             await expect(numberTextfield).toHaveScreenshot(
-                '01-input-card-grouped-filled.png',
+                '01-input-card-group-filled.png',
             );
 
             await cleanerIcon.click();
             await expect(numberTextfield).toHaveScreenshot(
-                '02-input-card-grouped-cleared.png',
+                '02-input-card-group-cleared.png',
             );
 
             await apiPageExample.click({
@@ -43,18 +43,18 @@ test.describe('InputCardGrouped', () => {
                 position: {x: 0, y: 0}, // click top left corner, away from field
             });
             await expect(numberTextfield).toHaveScreenshot(
-                '03-input-card-grouped-unfocused.png',
+                '03-input-card-group-unfocused.png',
             );
         });
 
         test('disabled input card grouped', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputCardGrouped}/API?disabled=true`);
+            await tuiGoto(page, `${DemoRoute.InputCardGroup}/API?disabled=true`);
 
             const {numberTextfield} = new TuiInputCardGroupPO(apiPageExample);
 
             await expect(numberTextfield).toHaveCSS('pointer-events', 'none');
             await expect(numberTextfield).toHaveScreenshot(
-                '04-input-card-grouped-disabled.png',
+                '04-input-card-group-disabled.png',
             );
         });
     });
@@ -63,7 +63,7 @@ test.describe('InputCardGrouped', () => {
         test.use({viewport: {width: 1280, height: 800}});
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputCardGrouped);
+            await tuiGoto(page, DemoRoute.InputCardGroup);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });

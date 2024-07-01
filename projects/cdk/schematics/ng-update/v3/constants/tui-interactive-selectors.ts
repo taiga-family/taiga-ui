@@ -34,7 +34,7 @@ export const TUI_INTERACTIVE_SELECTORS = [
     'tui-radio-list',
     'tui-radio',
     'tui-select',
-    'tui-input-card-grouped',
+    'tui-input-card-group',
     'tui-checkbox-block',
     'tui-checkbox-labeled',
     'tui-combo-box',

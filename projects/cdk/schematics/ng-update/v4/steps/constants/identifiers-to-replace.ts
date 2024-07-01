@@ -1476,7 +1476,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiInputCardGroupedModule',
+            name: 'TuiInputCardGroupModule',
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
         to: {

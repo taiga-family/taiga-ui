@@ -12,7 +12,7 @@ export interface TuiInputCardGroupOptions extends TuiInputCardOptions {
     readonly cvcHidden: boolean;
 }
 
-export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
+export const TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
     ...TUI_INPUT_CARD_DEFAULT_OPTIONS,
     cardValidator: tuiDefaultCardValidator,
     exampleText: '0000 0000 0000 0000',
@@ -20,16 +20,16 @@ export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupOptions = 
     cvcHidden: true,
 };
 
-export const TUI_INPUT_CARD_GROUPED_OPTIONS = tuiCreateToken(
-    TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS,
+export const TUI_INPUT_CARD_GROUP_OPTIONS = tuiCreateToken(
+    TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS,
 );
 
-export function tuiInputCardGroupedOptionsProvider(
+export function tuiInputCardGroupOptionsProvider(
     options: Partial<TuiInputCardGroupOptions>,
 ): Provider {
     return tuiProvideOptions(
-        TUI_INPUT_CARD_GROUPED_OPTIONS,
+        TUI_INPUT_CARD_GROUP_OPTIONS,
         options,
-        TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS,
+        TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS,
     );
 }
