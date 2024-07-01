@@ -1,6 +1,6 @@
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {tuiExtractI18n} from '@taiga-ui/i18n/tools';
 import type {Observable} from 'rxjs';
 
