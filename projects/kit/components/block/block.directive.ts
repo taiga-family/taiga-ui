@@ -14,6 +14,7 @@ import {
     TuiAppearance,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
@@ -40,6 +41,10 @@ class TuiBlockStyles {}
     ],
     hostDirectives: [
         TuiNativeValidator,
+        {
+            directive: TuiIcons,
+            inputs: ['iconLeft', 'iconRight'],
+        },
         {
             directive: TuiAppearance,
             inputs: [

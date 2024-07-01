@@ -1,4 +1,44 @@
-<tui-doc-page header="Colors">
+<tui-doc-page
+    header="Colors"
+    [tuiPlatform]="platform"
+>
+    <p
+        tuiGroup
+        class="mobile-colors-switch"
+        [collapsed]="true"
+        [style.width]="'fit-content'"
+    >
+        <label
+            appearance=""
+            iconLeft="@tui.monitor"
+            tuiBlock
+        >
+            Web
+            <input
+                appearance="whiteblock"
+                name="platform"
+                tuiBlock
+                type="radio"
+                value="web"
+                [(ngModel)]="platform"
+            />
+        </label>
+        <label
+            appearance=""
+            iconLeft="@tui.smartphone"
+            tuiBlock
+        >
+            Mobile
+            <input
+                appearance="whiteblock"
+                name="platform"
+                tuiBlock
+                type="radio"
+                value="android"
+                [(ngModel)]="platform"
+            />
+        </label>
+    </p>
     <ng-template pageTab="Text">
         <table [colors]="text"></table>
         <table
@@ -38,7 +78,8 @@
     <ng-template pageTab="Setup">
         Taiga UI uses
         <strong>CSS custom properties</strong>
-        . You do not need to import anything. Just use variables
+        . You do not need to import anything as long as you included Taiga UI theme in your global styles. Just use
+        variables
 
         <tui-doc-code
             filename="styles.less"
