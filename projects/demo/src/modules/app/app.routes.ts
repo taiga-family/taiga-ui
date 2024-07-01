@@ -216,6 +216,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/action-bar',
+        loadChildren: async () =>
+            (await import('../experimental/action-bar/action-bar.module'))
+                .ExampleTuiActionBarModule,
+        data: {
+            title: 'ActionBar',
+        },
+    },
+    {
         path: 'experimental/app-bar',
         loadChildren: async () =>
             (await import('../experimental/app-bar/app-bar.module'))

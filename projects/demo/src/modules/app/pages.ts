@@ -874,6 +874,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'ActionBar',
+        keywords: 'bar, action, tablebar, бар, multi',
+        route: '/experimental/action-bar',
+    },
+    {
+        section: 'Experimental',
         title: 'Avatar ',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: '/experimental/avatar',
