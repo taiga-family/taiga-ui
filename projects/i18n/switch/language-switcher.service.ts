@@ -1,11 +1,11 @@
 import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import type {TuiLanguage, TuiLanguageName} from '@taiga-ui/i18n/types';
 import {
     TUI_DEFAULT_LANGUAGE,
     TUI_LANGUAGE_LOADER,
     TUI_LANGUAGE_STORAGE_KEY,
 } from '@taiga-ui/i18n/tokens';
+import type {TuiLanguage, TuiLanguageName} from '@taiga-ui/i18n/types';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, of} from 'rxjs';
 

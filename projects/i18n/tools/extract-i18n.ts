@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
-import type {TuiLanguage} from '@taiga-ui/i18n/types';
 import {TUI_LANGUAGE} from '@taiga-ui/i18n/tokens';
+import type {TuiLanguage} from '@taiga-ui/i18n/types';
 import type {Observable} from 'rxjs';
 import {isObservable, map, of, switchMap} from 'rxjs';
 
