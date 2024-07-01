@@ -10,6 +10,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {
     TuiAppearance,
     tuiAppearanceOptionsProvider,
@@ -40,6 +41,10 @@ class TuiBlockStyles {}
     ],
     hostDirectives: [
         TuiNativeValidator,
+        {
+            directive: TuiIcons,
+            inputs: ['iconLeft', 'iconRight'],
+        },
         {
             directive: TuiAppearance,
             inputs: [
