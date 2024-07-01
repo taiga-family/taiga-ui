@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[61357],{61357:r=>{r.exports='<tui-input-card-group\n    [formControl]="control"\n    [icon]="card"\n/>\n<tui-error\n    [error]="[] | tuiFieldError | async"\n    [formControl]="control"\n/>\n'}}]);
