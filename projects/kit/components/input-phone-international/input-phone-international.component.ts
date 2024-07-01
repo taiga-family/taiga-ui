@@ -63,7 +63,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiGroup],
     providers: [
         tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
@@ -74,6 +73,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
             align: 'right',
         }),
     ],
+    hostDirectives: [TuiGroup],
     host: {
         '[attr.data-size]': 'textfieldOptions?.size',
     },
