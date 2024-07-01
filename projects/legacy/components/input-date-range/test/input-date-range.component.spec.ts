@@ -93,7 +93,7 @@ describe('InputDateRangeComponent', () => {
             initializeEnvironment();
         });
 
-        it('When switching between ranges with same date, displays appropriate input value', async () => {
+        it('when switching between ranges with same date, displays appropriate input value', async () => {
             const today = TuiDay.currentLocal();
             const previousMonth = today.append({month: -1});
             const first = '1';
