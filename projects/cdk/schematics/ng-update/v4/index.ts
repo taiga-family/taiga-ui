@@ -44,7 +44,6 @@ function main(options: TuiSchema): Rule {
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         renameTypes(options, TYPES_TO_RENAME);
-
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
         migrateLegacyMask(options);
@@ -54,9 +53,12 @@ function main(options: TuiSchema): Rule {
 
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateTemplates(fileSystem, options);
-        migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);
 
+        fileSystem.commitEdits();
+        saveActiveProject();
+
+        migrateStyles();
         migrateProprietary(fileSystem, options);
         updatePackages(fileSystem, options);
 
