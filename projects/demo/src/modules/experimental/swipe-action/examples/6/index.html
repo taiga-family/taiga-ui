@@ -1,0 +1,50 @@
+<div
+    tuiCardLarge
+    tuiSurface="elevated"
+>
+    <tui-swipe-actions *ngFor="let item of items">
+        <button tuiCell>
+            <tui-avatar
+                appearance="primary"
+                [src]="item.icon"
+            ></tui-avatar>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+
+            <tui-hosted-dropdown
+                class="desktop"
+                [content]="content"
+            >
+                <button
+                    appearance="flat"
+                    iconLeft="tuiIconMoreVertical"
+                    size="s"
+                    tuiIconButton
+                ></button>
+
+                <ng-template #content>
+                    <tui-data-list>
+                        <button tuiOption>Hide</button>
+                        <button tuiOption>Edit</button>
+                    </tui-data-list>
+                </ng-template>
+            </tui-hosted-dropdown>
+        </button>
+
+        <button
+            iconLeft="tuiIconEye"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+        ></button>
+        <button
+            appearance="secondary"
+            iconLeft="tuiIconShare"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+        ></button>
+    </tui-swipe-actions>
+</div>

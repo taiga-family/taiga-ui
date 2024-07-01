@@ -14,6 +14,17 @@
     scroll-snap-type: x mandatory;
     perspective: 1px;
     perspective-origin: calc(100% + calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding));
+
+    [tuiCardLarge] > &::ng-deep {
+        & > .t-content > [tuiCell] {
+            margin: 0;
+        }
+
+        & {
+            margin: -0.5rem -0.5rem -0.75rem;
+            margin-top: -0.5rem !important;
+        }
+    }
 }
 
 .t-content {
