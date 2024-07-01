@@ -29,8 +29,8 @@ import {TuiSwipeActionExample2} from './examples/2';
 import {TuiSwipeActionExample3} from './examples/3';
 import {TuiSwipeActionExample4} from './examples/4';
 import {TuiSwipeActionExample5} from './examples/5';
-import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
 import {TuiSwipeActionExample6} from './examples/6';
+import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
 
 @NgModule({
     imports: [
