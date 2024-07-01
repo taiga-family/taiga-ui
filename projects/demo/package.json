@@ -12,7 +12,7 @@
         "@angular/platform-browser-dynamic": "16.2.12",
         "@angular/platform-server": "16.2.12",
         "@angular/router": "16.2.12",
-        "@ng-web-apis/universal": "4.1.1",
+        "@ng-web-apis/universal": "4.1.2",
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.10.0",
         "@taiga-ui/dompurify": "4.1.0",
