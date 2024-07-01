@@ -26,5 +26,5 @@ export default class Page {
     protected readonly others = OTHERS;
     protected readonly charts = CHARTS;
 
-    protected platform: 'web' | 'android' = 'web';
+    protected platform: 'android' | 'web' = 'web';
 }
