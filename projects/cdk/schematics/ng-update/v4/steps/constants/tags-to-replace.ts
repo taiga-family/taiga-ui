@@ -51,4 +51,5 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-marker-icon',
         to: 'tui-avatar',
     },
+    {from: 'tui-input-card-grouped', to: 'tui-input-card-group'},
 ];

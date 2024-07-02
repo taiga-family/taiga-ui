@@ -22,6 +22,27 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
         keepAsType: false,
     },
     {
+        name: 'TuiCard',
+        replaceValues: {
+            TinkoffAirlines: 't-airlines',
+            TinkoffAirlinesCredit: 't-airlines-credit',
+            TinkoffBlack: 't-black',
+            TinkoffBusiness: 't-business',
+            TinkoffJunior: 't-junior',
+            TinkoffPlatinum: 't-platinum',
+        },
+        keepAsType: true,
+    },
+    {
+        name: 'TuiTimelineStatus',
+        replaceValues: {
+            Completed: 'completed',
+            Declined: 'declined',
+            Normal: 'normal',
+        },
+        keepAsType: false,
+    },
+    {
         name: 'TuiCountryIsoCode',
         replaceValues: {
             AD: 'AD',
