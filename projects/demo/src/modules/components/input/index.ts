@@ -45,7 +45,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public icon = this.iconVariants[0];
 
-    public override iconLeft = this.iconVariants[0];
+    public override iconStart = this.iconVariants[0];
 
     public readonly control = new FormControl('111', Validators.required);
 

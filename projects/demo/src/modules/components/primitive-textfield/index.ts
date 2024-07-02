@@ -58,7 +58,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected readonly iconLeftVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
-    protected iconLeft = '';
+    protected iconStart = '';
 
     protected readonly typeVariants: readonly string[] = [
         'text',

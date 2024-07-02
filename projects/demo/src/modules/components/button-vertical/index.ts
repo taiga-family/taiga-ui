@@ -29,7 +29,7 @@ export default class Page {
 
     protected readonly icons = ['', '@tui.search', '@tui.chevron-down'];
 
-    protected iconLeft = this.icons[0];
+    protected iconStart = this.icons[0];
 
     protected loading = false;
 }

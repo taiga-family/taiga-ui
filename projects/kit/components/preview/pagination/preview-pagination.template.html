@@ -5,7 +5,7 @@
         type="button"
         class="t-arrow_left"
         [disabled]="leftButtonDisabled"
-        [iconLeft]="icons.prev"
+        [iconStart]="icons.prev"
         (click)="onArrowClick(-1)"
     >
         {{ texts[0] }}
@@ -17,7 +17,7 @@
         type="button"
         class="t-arrow_right"
         [disabled]="rightButtonDisabled"
-        [iconLeft]="icons.next"
+        [iconStart]="icons.next"
         (click)="onArrowClick(1)"
     >
         {{ texts[1] }}

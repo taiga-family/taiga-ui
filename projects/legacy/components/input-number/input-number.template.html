@@ -44,7 +44,7 @@
         class="t-button"
         [appearance]="textfield.appearance"
         [disabled]="!canIncrement"
-        [iconLeft]="icons.up"
+        [iconStart]="icons.up"
         (click.prevent)="onArrow(step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >
@@ -58,7 +58,7 @@
         class="t-button"
         [appearance]="textfield.appearance"
         [disabled]="!canDecrement"
-        [iconLeft]="icons.down"
+        [iconStart]="icons.down"
         (click.prevent)="onArrow(-step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >

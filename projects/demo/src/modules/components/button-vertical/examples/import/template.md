@@ -2,7 +2,7 @@
 <button
   tuiButton
   tuiButtonVertical
-  iconLeft="@tui.star"
+  iconStart="@tui.star"
 >
   Press me
 </button>

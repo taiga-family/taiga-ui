@@ -83,7 +83,7 @@
 
     <button
         appearance="glass"
-        iconLeft="@tui.send"
+        iconStart="@tui.send"
         size="m"
         tuiButton
         [disabled]="expanded"
@@ -93,7 +93,7 @@
     <button
         *ngIf="!isMobile()"
         appearance="glass"
-        iconLeft="@tui.trash"
+        iconStart="@tui.trash"
         size="m"
         tuiButton
         [disabled]="expanded"
@@ -105,7 +105,7 @@
     <button
         *ngIf="isMobile()"
         appearance="glass"
-        iconLeft="@tui.ellipsis"
+        iconStart="@tui.ellipsis"
         size="m"
         tuiIconButton
         (click)="expanded = !expanded"
@@ -116,7 +116,7 @@
     <button
         *ngIf="!isMobile()"
         appearance="icon"
-        iconLeft="@tui.x"
+        iconStart="@tui.x"
         size="m"
         tuiIconButton
         (click)="close()"
