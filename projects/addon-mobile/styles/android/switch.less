@@ -3,7 +3,7 @@ input[tuiSwitch] {
 
     height: 1.25rem;
     width: 2.5rem;
-    color: var(--tui-border-hover);
+    color: var(--tui-border-hover) !important;
     background: transparent !important;
     overflow: visible;
 
@@ -41,7 +41,7 @@ input[tuiSwitch] {
     }
 
     &:checked {
-        color: var(--tui-background-accent-2);
+        color: var(--tui-background-accent-2) !important;
         background: transparent;
 
         &:after {
@@ -51,7 +51,7 @@ input[tuiSwitch] {
     }
 
     &:invalid {
-        color: var(--tui-status-negative);
+        color: var(--tui-status-negative) !important;
 
         &:not(:checked) {
             background: transparent;

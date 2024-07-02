@@ -6,7 +6,10 @@
         *ngFor="let item of unsortedItems; let index = index"
         [style.order]="order.get(index)"
     >
-        <div class="t-item">
+        <div
+            class="t-item"
+            [class.t-item_disabled]="!isEnabled(item)"
+        >
             <div
                 tuiTileHandle
                 class="t-draggable"
@@ -25,7 +28,6 @@
                 tuiIconButton
                 type="button"
                 class="t-button"
-                [class.t-button_hidden]="!isEnabled(item)"
                 [iconLeft]="getIcon(item)"
                 (click)="toggle(item)"
                 (keydown.arrowDown.prevent)="move(index, 1)"

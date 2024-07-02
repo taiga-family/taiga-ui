@@ -14,6 +14,7 @@ import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_EXAMPLE_TEXTS,
+    TUI_DOC_ICONS,
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
@@ -75,6 +76,7 @@ export class TuiDocExample {
         1,
     );
 
+    protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});

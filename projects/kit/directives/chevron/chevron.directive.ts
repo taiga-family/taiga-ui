@@ -4,17 +4,16 @@ import {
     Component,
     Directive,
     inject,
-    INJECTOR,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
-import {TuiChevronService} from './chevron.service';
+export const TUI_CHEVRON = tuiCreateToken('@tui.chevron-down');
 
 @Component({
     standalone: true,
@@ -40,7 +39,7 @@ export class TuiChevron implements DoCheck {
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly icons = inject(TuiIcons, {optional: true});
     private readonly icon = inject(TuiIcon, {optional: true});
-    private readonly handler = inject(TuiChevronService).getHandler(inject(INJECTOR));
+    private readonly chevron = inject(TUI_CHEVRON);
 
     protected readonly nothing = tuiWithStyles(TuiChevronStyles);
 
@@ -48,7 +47,7 @@ export class TuiChevron implements DoCheck {
     public tuiChevron: boolean | '' = '';
 
     public ngDoCheck(): void {
-        this.set(this.handler());
+        this.set(this.chevron);
         this.el.classList.toggle(
             '_chevron-rotated',
             !!this.dropdown?.dropdownBoxRef || this.tuiChevron === true,
