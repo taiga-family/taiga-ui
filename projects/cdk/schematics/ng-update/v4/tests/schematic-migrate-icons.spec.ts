@@ -70,6 +70,11 @@ const PROPRIETARY_TEMPLATE_BEFORE = `
 ></tui-avatar>
 <button tuiIconButton icon="tuiIconTdsMoreMediumPragmatic">Button</button>
 <button tuiIconButton icon="tuiIconTdsCheckMedium">Button</button>
+<button tuiIconButton icon="tuiIconTdsChevronDownService">Button</button>
+<button tuiIconButton icon="tuiIconTdsArmFlags">Button</button>
+<button tuiIconButton icon="tuiIconTdsTBankLogoSiteheader">Button</button>
+<button tuiIconButton icon="tuiIconTdsGooglePlayLogoSquare">Button</button>
+<button tuiIconButton icon="tuiIconTdsTBankInverseLogo">Button</button>
 `;
 
 const PROPRIETARY_TEMPLATE_AFTER = `
@@ -83,6 +88,11 @@ const PROPRIETARY_TEMPLATE_AFTER = `
 ></tui-avatar>
 <button tuiIconButton icon="@tui.pragmatic.medium.more">Button</button>
 <button tuiIconButton icon="@tui.fancy.medium.check">Button</button>
+<button tuiIconButton icon="@tui.service.chevron-down">Button</button>
+<button tuiIconButton icon="@tui.flags.arm">Button</button>
+<button tuiIconButton icon="@tui.logo.siteheader.t-bank">Button</button>
+<button tuiIconButton icon="@tui.logo.square.google-play">Button</button>
+<button tuiIconButton icon="@tui.logo.t-bank-inverse">Button</button>
 `;
 
 describe('ng-update', () => {
