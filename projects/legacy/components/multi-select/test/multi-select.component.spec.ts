@@ -11,7 +11,7 @@ import {
     TuiMultiSelectComponent,
     TuiMultiSelectModule,
 } from '@taiga-ui/legacy';
-import {TUI_SANITIZER_MOCK, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('MultiSelect', () => {
     describe('Basic', () => {
@@ -76,7 +76,7 @@ describe('MultiSelect', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [TUI_SANITIZER_MOCK, NG_EVENT_PLUGINS],
+                providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
@@ -295,7 +295,6 @@ describe('MultiSelect', () => {
                         provide: TUI_ARROW_MODE,
                         useValue: {interactive: '☆', disabled: '★'},
                     },
-                    TUI_SANITIZER_MOCK,
                 ],
             });
             await TestBed.compileComponents();
