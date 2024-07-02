@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.85.0](https://github.com/taiga-family/taiga-ui/compare/v3.84.0...v3.85.0) (2024-07-02)
+
+### Features
+
+- **addon-commerce:** add `cvcHidden` input property ([#7998](https://github.com/taiga-family/taiga-ui/issues/7998))
+  ([a4fddd0](https://github.com/taiga-family/taiga-ui/commit/a4fddd089f577ca88dfe73643622b70c154faea2))
+- **addon-docs:** support custom tags ([#7979](https://github.com/taiga-family/taiga-ui/issues/7979))
+  ([343d38b](https://github.com/taiga-family/taiga-ui/commit/343d38b2f8c7a8f72bc106163da773d52f1d5a3f))
+- **addon-mobile:** update `TabBar` styles ([#7977](https://github.com/taiga-family/taiga-ui/issues/7977))
+  ([067cae4](https://github.com/taiga-family/taiga-ui/commit/067cae4251eb31d165eba7ed739a74076fda06e3))
+- **addon-table:** support nullable values in `tuiTableSort`
+  ([#7890](https://github.com/taiga-family/taiga-ui/issues/7890))
+  ([439871e](https://github.com/taiga-family/taiga-ui/commit/439871e016c7d24167cae325416f612dc6f2fdc8))
+- **experimental:** `ActionBar` add new component ([#7984](https://github.com/taiga-family/taiga-ui/issues/7984))
+  ([ac0c34a](https://github.com/taiga-family/taiga-ui/commit/ac0c34a7f7648ccafe83743bae7f09aabd03774f))
+
+### Bug Fixes
+
+- **addon-doc:** `Navigation` fix invalid two-way binding error in Angular v18
+  ([#7837](https://github.com/taiga-family/taiga-ui/issues/7837))
+  ([1908b9d](https://github.com/taiga-family/taiga-ui/commit/1908b9d5853021e8041c7d00a7b54a7daccf0eec))
+- **addon-mobile:** prevent touchstart after close sheet ([#8001](https://github.com/taiga-family/taiga-ui/issues/8001))
+  ([aea2db3](https://github.com/taiga-family/taiga-ui/commit/aea2db332ebe8e8d159fa1cab7f063a5a4e5ffc6))
+- **kit:** `CalendarRange` should not distinguish ranges with same dates and different names
+  ([#7804](https://github.com/taiga-family/taiga-ui/issues/7804))
+  ([f5d60b2](https://github.com/taiga-family/taiga-ui/commit/f5d60b23677132d9ce97419bbf95a26984662829))
+- **kit:** `InputDateRange` should not distinguish ranges with same dates and different names
+  ([#7932](https://github.com/taiga-family/taiga-ui/issues/7932))
+  ([a862ca5](https://github.com/taiga-family/taiga-ui/commit/a862ca52cf056043d88b5a6ddd981e49a2134585))
+- **kit:** `InputNumber` should emit form control change if value is less/more than `min`/`max`
+  ([#7809](https://github.com/taiga-family/taiga-ui/issues/7809))
+  ([2d6ab2d](https://github.com/taiga-family/taiga-ui/commit/2d6ab2def4aa90168abe87e14bb8b9577665a9b1))
+
 ## [3.84.0](https://github.com/taiga-family/taiga-ui/compare/v3.83.0...v3.84.0) (2024-06-17)
 
 ### Bug Fixes
