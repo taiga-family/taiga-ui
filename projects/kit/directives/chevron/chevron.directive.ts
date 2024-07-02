@@ -13,8 +13,8 @@ import {
     tuiProvide,
     tuiWithStyles,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 
 export const TUI_CHEVRON = tuiCreateToken('@tui.chevron-down');
 
@@ -31,8 +31,8 @@ class TuiChevronStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiChevron]',
-    host: {tuiChevron: ''},
     providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
+    host: {tuiChevron: ''},
 })
 export class TuiChevron implements DoCheck {
     private readonly el = tuiInjectElement();
