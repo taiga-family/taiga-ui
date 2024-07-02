@@ -3,7 +3,7 @@
     waIntersectionObserver
     waIntersectionThreshold="1"
     class="t-filler"
-    (touchstart.silent)="close()"
+    (touchstart.silent.prevent)="close()"
     (waIntersectionObservee)="onIntersection($event)"
 ></div>
 <div
