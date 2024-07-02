@@ -7,8 +7,9 @@ import {
 } from '../projects/cdk/schematics/utils/colored-log';
 import {getValueByFlag} from './shared/argv.utils';
 import {execute} from './shared/execute';
+import {getAllTags} from './shared/get-all-tags';
 import {getAllVersions} from './shared/get-all-versions';
-import {getLastMajorVersion} from './shared/get-last-major-version';
+import {parseVersion} from './shared/parse-version';
 
 const isDryRun =
     getValueByFlag<'false' | 'true' | 'undefined'>('--dry-run', 'false') === 'true';
@@ -29,7 +30,7 @@ const path = getValueByFlag<string>('--path', '');
     infoLog(`version: ${version}`);
 
     const dry = isDryRun ? '--dry-run' : '';
-    const tag = makeTag(version, versions);
+    const tag = makeTag(version);
 
     execute(
         `cd ${path} && npm version ${version} --allow-same-version --no-git-tag-version`,
@@ -40,16 +41,23 @@ const path = getValueByFlag<string>('--path', '');
     successLog(`+${packageJson.name}@${version} is published successfully`);
 })();
 
-function makeTag(version: string, versions: string[]): string {
+function makeTag(version: string): string {
     const customTag = getValueByFlag<string>('--customTag', '');
 
     if (customTag !== '') {
         return `--tag ${customTag}`;
     }
 
-    const currentMajor = parseInt(version, 10);
-    const maxMajorVersion = getLastMajorVersion(versions, currentMajor);
-    const tagFlag = maxMajorVersion > currentMajor ? `--tag v${currentMajor}-lts` : '';
+    if (version.includes('rc')) {
+        return '--tag next --pre-id rc';
+    }
 
-    return version.includes('rc') ? '--tag next' : tagFlag;
+    const baseLatestTag = getAllTags('@taiga-ui/core').latest;
+    const currentMajor = parseVersion(version).major;
+    const latestOrLTS =
+        parseVersion(baseLatestTag).major === currentMajor
+            ? 'latest'
+            : `v${currentMajor}-lts`;
+
+    return `--tag ${latestOrLTS}`;
 }
