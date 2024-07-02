@@ -35,7 +35,9 @@ import {
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
 } from './steps/constants';
+import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
+import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -43,6 +45,7 @@ function main(options: TuiSchema): Rule {
 
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
+        replaceModulesWithProviders(options, MODULES_TO_REPLACE_WITH_PROVIDERS);
         renameTypes(options, TYPES_TO_RENAME);
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
