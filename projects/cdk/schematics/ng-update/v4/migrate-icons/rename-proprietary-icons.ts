@@ -24,11 +24,60 @@ function convertString(input: string): string {
         .replace(/MediumPragmatic$/, '')
         .replace(/Small$/, '')
         .replace(/Medium$/, '')
+        .replace(/Flags$/, '')
+        .replace(/Service$/, '')
+        .replace(/Logo$/, '')
+        .replace(/LogoSiteheader$/, '')
+        .replace(/LogoSquare$/, '')
         .replaceAll(/([A-Z0-9])/g, '-$1')
         .toLowerCase();
 
-    const pack = input.includes('Pragmatic') ? 'pragmatic' : 'fancy';
-    const size = input.includes('Medium') ? 'medium' : 'small';
+    const pack = extractPackName(input);
+    const subfolder = extractSubfolder(input);
 
-    return `@tui.${pack}.${size}.${result.startsWith('-') ? result.slice(1) : result}`;
+    return `@tui.${pack}${subfolder ? `.${subfolder}` : ''}.${result.startsWith('-') ? result.slice(1) : result}`;
+}
+
+function extractPackName(input: string): string {
+    if (input.endsWith('Pragmatic')) {
+        return 'pragmatic';
+    }
+
+    if (input.endsWith('Service')) {
+        return 'service';
+    }
+
+    if (
+        input.endsWith('Logo') ||
+        input.endsWith('LogoSquare') ||
+        input.endsWith('LogoSiteheader')
+    ) {
+        return 'logo';
+    }
+
+    if (input.endsWith('Flags')) {
+        return 'flags';
+    }
+
+    return 'fancy';
+}
+
+function extractSubfolder(input: string): string | null {
+    if (input.includes('Medium')) {
+        return 'medium';
+    }
+
+    if (input.includes('Small')) {
+        return 'small';
+    }
+
+    if (input.includes('LogoSquare')) {
+        return 'square';
+    }
+
+    if (input.includes('LogoSiteheader')) {
+        return 'siteheader';
+    }
+
+    return null;
 }
