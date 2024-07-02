@@ -6,7 +6,7 @@
             type="button"
             class="t-sign_minus"
             [disabled]="leftButtonDisabled"
-            [iconLeft]="icons.zoomOut"
+            [iconStart]="icons.zoomOut"
             (click)="onMinus()"
         >
             {{ texts.zoomOut }}
@@ -41,7 +41,7 @@
             type="button"
             class="t-sign_plus"
             [disabled]="rightButtonDisabled"
-            [iconLeft]="icons.zoomIn"
+            [iconStart]="icons.zoomIn"
             (click)="onPlus()"
         >
             {{ texts.zoomIn }}
@@ -57,7 +57,7 @@
         type="button"
         class="t-reset-button"
         [class.t-invisible]="!collapseVisible"
-        [iconLeft]="icons.zoomReset"
+        [iconStart]="icons.zoomReset"
         [tuiHint]="texts.reset"
         (click)="onReset()"
     ></button>

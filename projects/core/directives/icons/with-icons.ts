@@ -7,7 +7,7 @@ import {TuiIcons} from './icons.directive';
     hostDirectives: [
         {
             directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
+            inputs: ['iconStart', 'iconEnd'],
         },
     ],
 })

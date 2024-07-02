@@ -24,7 +24,7 @@ import {
     TuiHintDirective,
     TuiHintHover,
 } from '@taiga-ui/core/directives/hint';
-import {TUI_ICON} from '@taiga-ui/core/tokens';
+import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
 
@@ -49,7 +49,7 @@ class TuiTooltipStyles {}
             useValue: {appearance: 'icon'},
         },
         {
-            provide: TUI_ICON,
+            provide: TUI_ICON_START,
             useFactory: () => inject(TUI_HINT_OPTIONS).icon,
         },
     ],

@@ -87,7 +87,7 @@ export abstract class AbstractExampleTuiControl
 
     public readonly iconLeftVariants = ['', '@tui.mail', '@tui.pie-chart'];
 
-    public iconLeft = this.iconLeftVariants[0];
+    public iconStart = this.iconLeftVariants[0];
 
     public hintContent = this.hintContentVariants[0];
 

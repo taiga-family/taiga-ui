@@ -18,8 +18,8 @@
             <button
                 tuiButton
                 [appearance]="appearance"
-                [iconLeft]="iconLeft"
-                [iconRight]="iconRight"
+                [iconEnd]="iconEnd"
+                [iconStart]="iconStart"
                 [loading]="loading"
                 [size]="size"
             >
@@ -38,19 +38,19 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="iconLeft"
+                documentationPropertyName="iconStart"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="icons"
-                [(documentationPropertyValue)]="iconLeft"
+                [(documentationPropertyValue)]="iconStart"
             >
                 Icon on the left side
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="iconRight"
+                documentationPropertyName="iconEnd"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="icons"
-                [(documentationPropertyValue)]="iconRight"
+                [(documentationPropertyValue)]="iconEnd"
             >
                 Icon on the right side
             </ng-template>

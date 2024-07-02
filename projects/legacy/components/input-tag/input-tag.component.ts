@@ -246,9 +246,9 @@ export class TuiInputTagComponent
         this.open = false;
     }
 
-    @HostBinding('class._icon-left')
-    protected get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
-        return this.controller.iconLeft;
+    @HostBinding('class._icon-start')
+    protected get iconStart(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+        return this.controller.iconStart;
     }
 
     protected get appearance(): string {

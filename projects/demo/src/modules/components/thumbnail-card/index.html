@@ -18,8 +18,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-thumbnail-card
-                [iconLeft]="iconLeft"
-                [iconRight]="iconRight"
+                [iconEnd]="iconEnd"
+                [iconStart]="iconStart"
                 [paymentSystem]="paymentSystem"
                 [size]="size"
             >
@@ -29,19 +29,19 @@
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="iconLeft"
+                documentationPropertyName="iconStart"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconLeft"
+                [(documentationPropertyValue)]="iconStart"
             >
                 Icon on the left
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="iconRight"
+                documentationPropertyName="iconEnd"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconRight"
+                [(documentationPropertyValue)]="iconEnd"
             >
                 Icon on the right
             </ng-template>

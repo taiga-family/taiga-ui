@@ -1,7 +1,7 @@
 <header tuiNavigationHeader>
     <button
         appearance="secondary"
-        iconLeft="@tui.layout-grid"
+        iconStart="@tui.layout-grid"
         tuiIconButton
     >
         Menu
@@ -36,20 +36,20 @@
     <hr />
     <button
         appearance="secondary"
-        iconLeft="@tui.plus"
+        iconStart="@tui.plus"
         tuiButton
     >
         Create
     </button>
     <button
-        iconLeft="@tui.bell"
+        iconStart="@tui.bell"
         tuiIconButton
     >
         Notifications
         <tui-badge-notification />
     </button>
     <button
-        iconLeft="@tui.ellipsis"
+        iconStart="@tui.ellipsis"
         tuiIconButton
     >
         More
@@ -63,7 +63,7 @@
     >
         <header>
             <button
-                iconLeft="@tui.home"
+                iconStart="@tui.home"
                 tuiButton
                 tuiHintAside
             >
@@ -71,14 +71,14 @@
             </button>
         </header>
         <button
-            iconLeft="@tui.search"
+            iconStart="@tui.search"
             tuiButton
             tuiHintAside
         >
             Search
         </button>
         <a
-            iconLeft="@tui.users"
+            iconStart="@tui.users"
             routerLinkActive="active"
             tuiAppearance="flat"
             tuiButton
@@ -88,7 +88,7 @@
             Groups
         </a>
         <button
-            iconLeft="@tui.settings"
+            iconStart="@tui.settings"
             tuiAppearance="flat"
             tuiButton
             [tuiAppearanceState]="open ? 'hover' : null"
@@ -114,7 +114,7 @@
             <button tuiButton>Privacy</button>
         </tui-expand>
         <button
-            iconLeft="@tui.heart"
+            iconStart="@tui.heart"
             tuiButton
             tuiHintAside
         >
@@ -122,7 +122,7 @@
         </button>
         <hr />
         <button
-            iconLeft="@tui.plus"
+            iconStart="@tui.plus"
             tuiButton
             tuiHintAside
         >
@@ -130,7 +130,7 @@
         </button>
         <footer>
             <button
-                iconLeft="@tui.star"
+                iconStart="@tui.star"
                 tuiButton
                 tuiHintAside
             >
@@ -139,7 +139,7 @@
             <button
                 tuiButton
                 tuiHintAside
-                [iconLeft]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
+                [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
                 (click)="expanded = !expanded"
             >
                 {{ expanded ? 'Collapse' : 'Expand' }}
@@ -158,7 +158,7 @@
             /
             <span tuiNavigationLogo>
                 <span tuiFade>Groups</span>
-                <tui-badge iconLeft="@tui.lock">Status</tui-badge>
+                <tui-badge iconStart="@tui.lock">Status</tui-badge>
             </span>
             <hr />
             <tui-tabs tuiFade>
