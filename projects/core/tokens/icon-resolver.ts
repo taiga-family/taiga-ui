@@ -13,7 +13,7 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
         return icon =>
             !icon || icon.includes('/')
                 ? icon
-                : `${path}/icons/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
+                : `${path}/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
     },
 );
 

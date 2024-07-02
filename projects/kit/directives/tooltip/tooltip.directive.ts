@@ -16,6 +16,7 @@ import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiAppearance,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {
     TUI_HINT_OPTIONS,
@@ -53,10 +54,7 @@ class TuiTooltipStyles {}
         },
     ],
     hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: ['tuiAppearance: appearance'],
-        },
+        TuiWithAppearance,
         {
             directive: TuiHintDescribe,
             inputs: ['tuiHintDescribe'],

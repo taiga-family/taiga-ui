@@ -11,10 +11,10 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TuiAppearance,
     tuiAppearanceOptionsProvider,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
@@ -39,21 +39,7 @@ class TuiBlockStyles {}
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
         tuiAvatarOptionsProvider({size: 's'}),
     ],
-    hostDirectives: [
-        TuiNativeValidator,
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-    ],
+    hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
     host: {
         tuiBlock: '',
         '[attr.data-size]': 'size',

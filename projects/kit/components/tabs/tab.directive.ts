@@ -6,7 +6,7 @@ import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {EMPTY, filter, merge} from 'rxjs';
 
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
@@ -15,12 +15,7 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
     standalone: true,
     selector:
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
-    hostDirectives: [
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-    ],
+    hostDirectives: [TuiWithIcons],
     host: {
         type: 'button',
     },

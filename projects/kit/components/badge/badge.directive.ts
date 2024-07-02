@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TuiAppearance,
     tuiAppearanceOptionsProvider,
+    TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BADGE_OPTIONS} from './badge.options';
 
@@ -31,20 +31,7 @@ class TuiBadgeStyles {}
     standalone: true,
     selector: 'tui-badge,[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
-    hostDirectives: [
-        {
-            directive: TuiAppearance,
-            inputs: [
-                'tuiAppearance: appearance',
-                'tuiAppearanceState',
-                'tuiAppearanceFocus',
-            ],
-        },
-        {
-            directive: TuiIcons,
-            inputs: ['iconLeft', 'iconRight'],
-        },
-    ],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         '[class._dot]': 'dot',
         '[attr.data-size]': 'size',
