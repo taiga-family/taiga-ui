@@ -62,7 +62,7 @@ const TEMPLATE_AFTER = `
 
 <span  class="money">{{ 123 | tuiAmount : "RUB" | async }}</span>
 
-<span [tuiNumberFormat]='{"decimal":"always"}' customDirective>{{ value | tuiAmount : "RUB" | async }}</span>
+<span [tuiNumberFormat]='{"decimalMode":"always"}' customDirective>{{ value | tuiAmount : "RUB" | async }}</span>
 
 `;
 
