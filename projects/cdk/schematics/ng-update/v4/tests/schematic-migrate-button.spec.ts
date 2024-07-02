@@ -62,7 +62,7 @@ const TEMPLATE_AFTER = `
     appearance="primary"
     tuiButton
     type="button"
-    [iconLeft]="icon"
+    [iconStart]="icon"
     [shape]="rounded"
 >
     primary
@@ -71,7 +71,7 @@ const TEMPLATE_AFTER = `
 <button
     tuiButton
     [style.border-radius.%]="100"
-    [iconLeft]="icon"
+    [iconStart]="icon"
     [loading]="showLoader"
 >
     primary

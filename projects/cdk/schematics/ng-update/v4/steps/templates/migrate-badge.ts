@@ -77,7 +77,7 @@ function migrateIcon({
 
     recorder.insertRight(
         insertTo,
-        `${src?.name === 'src' ? 'iconLeft' : '[iconLeft]'}="${srcValue}"`,
+        `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
     recorder.remove(
         svg.sourceCodeLocation?.startOffset || 0,

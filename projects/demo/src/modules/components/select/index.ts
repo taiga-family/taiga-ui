@@ -85,7 +85,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
-    public override iconLeft = this.iconVariants[0];
+    public override iconStart = this.iconVariants[0];
 
     public control = new FormControl<Account | null>(null, Validators.required);
 

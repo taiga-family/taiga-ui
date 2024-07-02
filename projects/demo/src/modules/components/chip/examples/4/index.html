@@ -8,7 +8,7 @@
 
 <tui-chip
     appearance="accent"
-    iconLeft="@tui.box"
+    iconStart="@tui.box"
 >
     <div class="ellipsis">Very long value in chip</div>
 </tui-chip>
@@ -20,7 +20,7 @@
     />
     <tui-chip
         appearance="secondary"
-        iconLeft="@tui.bell"
+        iconStart="@tui.bell"
     >
         Notifications
     </tui-chip>
@@ -28,7 +28,7 @@
 
 <tui-chip
     appearance="custom"
-    iconRight="@tui.thumbs-up"
+    iconEnd="@tui.thumbs-up"
 >
     Customized chip
 </tui-chip>
@@ -36,7 +36,7 @@
 <tui-chip [appearance]="selected ? 'primary' : 'neutral'">
     Toggle chip
     <button
-        iconLeft="@tui.plus"
+        iconStart="@tui.plus"
         tuiIconButton
         class="toggle"
         [style.transform]="selected ? 'rotate(45deg)' : 'rotate(0)'"

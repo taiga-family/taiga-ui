@@ -122,7 +122,7 @@ export default class Example extends AbstractExampleTuiControl {
 
     public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
-    public override iconLeft = this.iconVariants[0];
+    public override iconStart = this.iconVariants[0];
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

@@ -8,7 +8,7 @@
 
 <a
   tuiLink
-  iconLeft="@tui.settings"
+  iconStart="@tui.settings"
   href="#"
 >
   Link with an icon on the left

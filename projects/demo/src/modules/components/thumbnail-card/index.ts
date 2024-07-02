@@ -14,8 +14,8 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 export default class Example {
     protected examples = ['Sizes', 'A cool one', 'Backgrounds'];
     protected iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
-    protected iconLeft = this.iconVariants[0];
-    protected iconRight = this.iconVariants[0];
+    protected iconStart = this.iconVariants[0];
+    protected iconEnd = this.iconVariants[0];
 
     protected paymentSystemVariants: readonly TuiPaymentSystem[] = [
         'amex',

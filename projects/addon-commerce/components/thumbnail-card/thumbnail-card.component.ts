@@ -30,10 +30,10 @@ export class TuiThumbnailCard {
     public paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
-    public iconLeft = '';
+    public iconStart = '';
 
     @Input()
-    public iconRight = '';
+    public iconEnd = '';
 
     protected get isMono(): boolean {
         switch (this.paymentSystem) {

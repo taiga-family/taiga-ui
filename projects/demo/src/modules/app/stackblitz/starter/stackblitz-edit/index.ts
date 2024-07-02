@@ -6,7 +6,7 @@ import {TuiLink} from '@taiga-ui/core';
     imports: [TuiLink],
     template: `
         <button
-            iconLeft="assets/icons/stackblitz.svg"
+            iconStart="assets/icons/stackblitz.svg"
             tuiLink
             type="button"
         >
