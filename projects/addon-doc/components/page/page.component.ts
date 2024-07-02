@@ -58,6 +58,9 @@ export class TuiDocPage {
     public type = '';
 
     @Input()
+    public tags: string[] = [];
+
+    @Input()
     public path = '';
 
     @Input()
