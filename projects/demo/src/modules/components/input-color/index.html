@@ -1,0 +1,66 @@
+<tui-doc-page
+    header="InputColor"
+    package="kit"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="input"
+            heading="Input color"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="dropdown"
+            heading="Color selector in dropdown"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="palette"
+            heading="Palette in dropdown"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="native"
+            heading="Native input color"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        >
+            <tui-notification class="b-form tui-space_bottom-3">
+                You can easily integrative native color picker into input using interactive icon content and
+                <a
+                    href="https://github.com/taiga-family/maskito"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    Maskito
+                </a>
+                for masking
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-color-picker />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="color"
+                documentationPropertyType="[number, number, number, number]"
+            >
+                RGBA color tuple
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

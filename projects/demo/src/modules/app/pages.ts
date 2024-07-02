@@ -571,6 +571,13 @@ export const pages: TuiDocRoutePages = [
                 keywords: 'input-files, files, file, файлы',
                 route: DemoRoute.InputFiles,
             },
+            {
+                section: 'Components',
+                title: 'InputColor',
+                keywords:
+                    'input-color, gradient, picker, color, цвет, выбор, градиент, gradient, палитра',
+                route: DemoRoute.InputColor,
+            },
         ],
     },
     {

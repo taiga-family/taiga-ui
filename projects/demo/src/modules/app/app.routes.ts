@@ -320,6 +320,11 @@ export const ROUTES: Routes = [
         title: 'InputFiles',
     }),
     route({
+        path: DemoRoute.InputColor,
+        loadComponent: async () => import('../components/input-color'),
+        title: 'InputColor',
+    }),
+    route({
         path: DemoRoute.Group,
         loadComponent: async () => import('../components/group'),
         title: 'Group',

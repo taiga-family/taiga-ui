@@ -1,0 +1,19 @@
+<div
+    [tuiDropdown]="palette"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance=""
+        tuiButton
+        type="button"
+        [style.background]="color$ | async"
+    >
+        Palette only
+    </button>
+</div>
+<ng-template #palette>
+    <tui-palette
+        [colors]="colors"
+        (selectedColor)="updateColor($event)"
+    />
+</ng-template>

@@ -1,0 +1,17 @@
+<div
+    [tuiDropdown]="picker"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance=""
+        tuiButton
+        type="button"
+        [style.background]="background"
+        [style.color]="background"
+    >
+        <span class="invert">Color me Kubrick</span>
+    </button>
+</div>
+<ng-template #picker>
+    <tui-color-selector [(color)]="color" />
+</ng-template>

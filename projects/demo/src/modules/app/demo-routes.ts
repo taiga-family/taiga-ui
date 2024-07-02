@@ -58,6 +58,7 @@ export const DemoRoute = {
     ElasticContainer: '/components/elastic-container',
     FieldError: '/pipes/field-error',
     InputFiles: '/components/input-files',
+    InputColor: '/components/input-color',
     Group: '/components/group',
     Dropdown: '/directives/dropdown',
     DropdownOpen: '/directives/dropdown-open',

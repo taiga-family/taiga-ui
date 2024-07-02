@@ -57,6 +57,7 @@ export const TUI_USED_ICONS = [
     '@tui.maestro-mono',
     '@tui.mir-mono',
     '@tui.dollar-sign',
+    '@tui.paint-bucket',
     '@tui.file',
     '@tui.droplet',
     '@tui.cloud-upload',

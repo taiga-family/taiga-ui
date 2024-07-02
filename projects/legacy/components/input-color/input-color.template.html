@@ -1,0 +1,37 @@
+<div
+    class="t-wrapper"
+    [tuiDropdown]="picker"
+    [(tuiDropdownOpen)]="open"
+>
+    <tui-primitive-textfield
+        class="t-textfield"
+        [disabled]="disabled"
+        [focusable]="focusable"
+        [invalid]="computedInvalid"
+        [maskito]="maskitoOptions(mode)"
+        [nativeId]="nativeId"
+        [pseudoActive]="pseudoActive"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [readOnly]="readOnly"
+        [tuiTextfieldIconLeft]="color"
+        [(value)]="value"
+        (focusedChange)="onFocused($event)"
+    >
+        <ng-content />
+    </tui-primitive-textfield>
+</div>
+
+<ng-template #color>
+    <div
+        class="t-color"
+        [style.background]="background"
+    ></div>
+</ng-template>
+
+<ng-template #picker>
+    <tui-color-selector
+        [colors]="colors"
+        [(color)]="value"
+    />
+</ng-template>
