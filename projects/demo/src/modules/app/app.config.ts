@@ -29,11 +29,9 @@ import {
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
 } from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
-import {TUI_SANITIZER} from '@taiga-ui/legacy';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import {SEE_ALSO_GROUPS} from './app.const';
@@ -85,10 +83,6 @@ export const config: ApplicationConfig = {
                     },
                 };
             },
-        },
-        {
-            provide: TUI_SANITIZER,
-            useClass: NgDompurifySanitizer,
         },
         {
             provide: TUI_DOC_SOURCE_CODE,
