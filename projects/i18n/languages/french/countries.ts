@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 export const TUI_FRENCH_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     AD: 'Andorre',

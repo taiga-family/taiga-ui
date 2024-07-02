@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import type {TuiLanguageLoader} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageLoader} from '@taiga-ui/i18n/types';
 
 /**
  * Webpack chunk loader for Taiga UI libraries i18n

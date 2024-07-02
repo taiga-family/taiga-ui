@@ -1,4 +1,4 @@
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n/types';
 
 export const TUI_PORTUGUESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Cor sólida', 'Gradiente'],

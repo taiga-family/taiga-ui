@@ -1,8 +1,4 @@
-import type {
-    TuiLanguage,
-    TuiLanguageLoader,
-    TuiLanguageName,
-} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguage, TuiLanguageLoader, TuiLanguageName} from '@taiga-ui/i18n/types';
 import type {Observable} from 'rxjs';
 import {from, map, of} from 'rxjs';
 

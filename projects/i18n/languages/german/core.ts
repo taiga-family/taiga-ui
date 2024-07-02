@@ -1,5 +1,5 @@
-import type {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '@taiga-ui/i18n/languages/english';
+import type {TuiLanguageCore} from '@taiga-ui/i18n/types';
 
 export const TUI_GERMAN_LANGUAGE_CORE: TuiLanguageCore = {
     months: [

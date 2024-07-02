@@ -32,7 +32,7 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
