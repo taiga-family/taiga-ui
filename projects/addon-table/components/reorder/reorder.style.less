@@ -25,6 +25,15 @@
     padding: 0 0.75rem;
     background: var(--tui-background-base);
 
+    &_disabled {
+        opacity: var(--tui-disabled-opacity);
+
+        .t-button {
+            color: var(--tui-text-primary);
+            opacity: 1;
+        }
+    }
+
     &:hover {
         background: var(--tui-background-base-alt);
 
@@ -46,7 +55,6 @@
     margin-left: auto;
     opacity: 0;
 
-    &_hidden,
     &:focus {
         opacity: 1;
     }

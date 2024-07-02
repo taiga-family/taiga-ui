@@ -7,7 +7,11 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {
+    TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
+    TUI_DOC_ICONS,
+} from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
@@ -24,6 +28,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCode {
+    private readonly icons = inject(TUI_DOC_ICONS);
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
 
     protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
@@ -32,13 +37,16 @@ export class TuiDocCode {
 
     protected readonly copy$ = new Subject<void>();
 
-    protected readonly icon$ = this.copy$.pipe(
-        switchMap(() =>
-            timer(2000).pipe(
-                map(() => '@tui.copy'),
-                startWith('@tui.check'),
+    protected readonly icon = toSignal(
+        this.copy$.pipe(
+            switchMap(() =>
+                timer(2000).pipe(
+                    map(() => this.icons.copy),
+                    startWith(this.icons.check),
+                ),
             ),
         ),
+        {initialValue: this.icons.copy},
     );
 
     protected readonly processor$ = this.rawLoader$$.pipe(

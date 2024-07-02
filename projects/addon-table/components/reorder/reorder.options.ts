@@ -11,8 +11,8 @@ export interface TuiReorderOptions {
 
 export const TUI_REORDER_DEFAULT_OPTIONS: TuiReorderOptions = {
     icons: {
-        hide: '@tui.eye',
-        show: '@tui.eye-off',
+        hide: '@tui.eye-off',
+        show: '@tui.eye',
         drag: '@tui.grip-vertical',
     },
 };

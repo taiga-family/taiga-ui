@@ -7,7 +7,6 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export interface TuiDocExampleOptions {
     codeEditorVisibilityHandler: TuiBooleanHandler<Record<string, string>>;
     fullsize: boolean;
-    linkIcon: string;
     tabTitles: Map<unknown, PolymorpheusContent>;
 }
 
@@ -19,7 +18,6 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
         ),
     tabTitles: new Map(),
     fullsize: true,
-    linkIcon: '@tui.link',
 };
 
 /**

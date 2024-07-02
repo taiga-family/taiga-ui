@@ -7,6 +7,9 @@ export interface TuiDocIcons {
     readonly menu: string;
     readonly dark: string;
     readonly search: string;
+    readonly copy: string;
+    readonly check: string;
+    readonly link: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
@@ -15,6 +18,9 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     dark: '@tui.moon',
     code: '@tui.code',
     menu: '@tui.menu',
+    copy: '@tui.copy',
+    check: '@tui.check',
+    link: '@tui.link',
 };
 
 export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);
