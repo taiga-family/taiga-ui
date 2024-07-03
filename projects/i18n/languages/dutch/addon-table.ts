@@ -1,4 +1,4 @@
-import type {TuiLanguageTable} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageTable} from '@taiga-ui/i18n/types';
 
 export const TUI_DUTCH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
     showHideText: 'Toon/Verberg',

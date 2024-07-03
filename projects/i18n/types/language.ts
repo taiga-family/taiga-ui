@@ -1,5 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
-
+import type {TuiCountryIsoCode} from './country-iso-code';
 import type {TuiLanguageName} from './language-names';
 
 // prettier-ignore
