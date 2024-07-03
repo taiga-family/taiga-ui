@@ -1,4 +1,5 @@
-import {inject, Injectable, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DEFAULT_LANGUAGE,
