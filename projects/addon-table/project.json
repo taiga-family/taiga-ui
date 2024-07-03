@@ -8,10 +8,10 @@
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/addon-table"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-table/ng-package.json"
+                "project": "projects/{projectName}/ng-package.json"
             },
             "dependsOn": [
                 {
