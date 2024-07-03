@@ -23,6 +23,6 @@ import {syncVersions} from './shared/sync-versions';
     overwriteVersion(resolve('./projects/cdk/constants/version.ts'), newVersion);
 
     execute(
-        `npx nx run-many --target publish --all --customTag=${type} --customVersion=${newVersion}`,
+        `npx nx run-many --target publish --all --customTag=${type} --customVersion=${newVersion} --nxBail`,
     );
 })();
