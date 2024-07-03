@@ -18,6 +18,15 @@
         >
             {{ package }}
         </tui-chip>
+        <tui-chip
+            *ngFor="let tag of tags"
+            appearance="custom"
+            size="xs"
+            class="t-tag t-tag_package"
+            [style.background]="tag | tuiAutoColor"
+        >
+            {{ tag }}
+        </tui-chip>
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"
