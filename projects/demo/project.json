@@ -15,7 +15,7 @@
         },
         "build": {
             "executor": "@angular-builders/custom-webpack:browser",
-            "outputs": ["{workspaceRoot}/dist/demo"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -24,15 +24,15 @@
             ],
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.config.ts"
+                    "path": "projects/{projectName}/webpack.config.ts"
                 },
-                "outputPath": "dist/demo/browser",
-                "index": "projects/demo/src/index.html",
-                "main": "projects/demo/src/main.browser.ts",
-                "polyfills": "projects/demo/src/polyfills.ts",
-                "tsConfig": "projects/demo/tsconfig.app.json",
+                "outputPath": "dist/{projectName}/browser",
+                "index": "projects/{projectName}/src/index.html",
+                "main": "projects/{projectName}/src/main.browser.ts",
+                "polyfills": "projects/{projectName}/src/polyfills.ts",
+                "tsConfig": "projects/{projectName}/tsconfig.app.json",
                 "assets": [
-                    "projects/demo/src/404.html",
+                    "{projectRoot}/src/404.html",
                     {
                         "glob": "**/*",
                         "input": "projects/demo/src/assets/",
@@ -46,9 +46,9 @@
                 ],
                 "baseHref": "./",
                 "styles": [
-                    "projects/demo/src/normalize.less",
-                    "projects/demo/src/styles.less",
-                    "projects/demo/src/styles.scss"
+                    "{projectRoot}/src/normalize.less",
+                    "{projectRoot}/src/styles.less",
+                    "{projectRoot}/src/styles.scss"
                 ],
                 "scripts": [],
                 "allowedCommonJsDependencies": ["text-mask-core", "markdown-it"],
@@ -63,8 +63,8 @@
                 "production": {
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/environments/environment.ts",
-                            "with": "projects/demo/src/environments/environment.prod.ts"
+                            "replace": "{projectRoot}/src/environments/environment.ts",
+                            "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
                     "optimization": true,
@@ -78,8 +78,8 @@
                 "next": {
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/environments/environment.ts",
-                            "with": "projects/demo/src/environments/environment.prod.ts"
+                            "replace": "{projectRoot}/src/environments/environment.ts",
+                            "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
                     "optimization": true,
@@ -98,8 +98,8 @@
                     "baseHref": "/",
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/emulate/change-detection-strategy.ts",
-                            "with": "projects/demo/src/emulate/change-detection-strategy.def.ts"
+                            "replace": "{projectRoot}/src/emulate/change-detection-strategy.ts",
+                            "with": "{projectRoot}/src/emulate/change-detection-strategy.def.ts"
                         }
                     ]
                 },
@@ -107,8 +107,8 @@
                     "baseHref": "/",
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/emulate/view-encapsulation.ts",
-                            "with": "projects/demo/src/emulate/view-encapsulation.shadow.ts"
+                            "replace": "{projectRoot}/src/emulate/view-encapsulation.ts",
+                            "with": "{projectRoot}/src/emulate/view-encapsulation.shadow.ts"
                         }
                     ]
                 },
@@ -122,8 +122,8 @@
                     "baseHref": "/",
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/emulate/ng-zone-options.ts",
-                            "with": "projects/demo/src/emulate/ng-zone-options.coalescing.ts"
+                            "replace": "{projectRoot}/src/emulate/ng-zone-options.ts",
+                            "with": "{projectRoot}/src/emulate/ng-zone-options.coalescing.ts"
                         }
                     ]
                 }
@@ -159,26 +159,26 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
+                    "browserTarget": "{projectName}:build:production",
                     "aot": true
                 },
                 "ru": {
-                    "browserTarget": "demo:build:ru"
+                    "browserTarget": "{projectName}:build:ru"
                 },
                 "development": {
-                    "browserTarget": "demo:build:development"
+                    "browserTarget": "{projectName}:build:development"
                 },
                 "def": {
-                    "browserTarget": "demo:build:def"
+                    "browserTarget": "{projectName}:build:def"
                 },
                 "fast": {
-                    "browserTarget": "demo:build:fast"
+                    "browserTarget": "{projectName}:build:fast"
                 },
                 "shadow": {
-                    "browserTarget": "demo:build:shadow"
+                    "browserTarget": "{projectName}:build:shadow"
                 },
                 "coalescing": {
-                    "browserTarget": "demo:build:coalescing"
+                    "browserTarget": "{projectName}:build:coalescing"
                 }
             },
             "defaultConfiguration": "development"
@@ -186,7 +186,7 @@
         "serve-ssl": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx mkcert demo && nx serve demo --ssl --open --host 0.0.0.0 --disable-host-check"
+                "command": "nx mkcert {projectName} && nx serve {projectName} --ssl --open --host 0.0.0.0 --disable-host-check"
             }
         },
         "serve-ssr": {
@@ -194,12 +194,12 @@
             "options": {},
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
-                    "serverTarget": "demo:server:production"
+                    "browserTarget": "{projectName}:build:production",
+                    "serverTarget": "{projectName}:server:production"
                 },
                 "development": {
-                    "serverTarget": "demo:server:development",
-                    "browserTarget": "demo:build:development"
+                    "serverTarget": "{projectName}:server:development",
+                    "browserTarget": "{projectName}:build:development"
                 }
             },
             "dependsOn": [
@@ -221,11 +221,11 @@
             "executor": "@angular-builders/custom-webpack:server",
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.server.config.ts"
+                    "path": "{projectRoot}/webpack.server.config.ts"
                 },
-                "outputPath": "dist/demo/server",
-                "main": "projects/demo/server.ts",
-                "tsConfig": "projects/demo/tsconfig.server.json",
+                "outputPath": "dist/{projectName}/server",
+                "main": "{projectRoot}/server.ts",
+                "tsConfig": "{projectRoot}/tsconfig.server.json",
                 "sourceMap": true,
                 "optimization": false
             },
@@ -241,11 +241,11 @@
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
-            "outputs": ["{workspaceRoot}/dist/demo"],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "browserTarget": "demo:build:production",
-                "serverTarget": "demo:server:production",
-                "routesFile": "projects/demo/routes.txt",
+                "browserTarget": "{projectName}:build:production",
+                "serverTarget": "{projectName}:server:production",
+                "routesFile": "projects/{projectName}/routes.txt",
                 "guessRoutes": false
             },
             "configurations": {
@@ -261,11 +261,11 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/demo"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
-                "testMatch": ["<rootDir>/projects/demo/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         }
     }

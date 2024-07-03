@@ -1,7 +1,7 @@
 {
     "name": "demo-playwright",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo-playwright/cypress",
+    "sourceRoot": "projects/{projectName}/cypress",
     "projectType": "application",
     "prefix": "app",
     "targets": {
@@ -14,7 +14,7 @@
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx e2e demo-playwright -- --ui"
+                "command": "nx e2e {projectName} -- --ui --debug"
             }
         }
     }
