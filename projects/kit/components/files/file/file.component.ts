@@ -22,7 +22,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL} from '@taiga-ui/core/types';
-import type {TuiLanguage} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguage} from '@taiga-ui/i18n/types';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

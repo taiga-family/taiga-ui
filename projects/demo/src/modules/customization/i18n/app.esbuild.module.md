@@ -1,6 +1,6 @@
 ```ts
-import {TuiLanguageName} from '@taiga-ui/i18n/interfaces';
-import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
+import {TuiLanguageName} from '@taiga-ui/i18n/types';
+import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/utils';
 
 @Component({
   standalone: true,

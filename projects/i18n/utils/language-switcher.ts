@@ -1,15 +1,30 @@
+import type {Provider} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import type {TuiLanguage, TuiLanguageName} from '@taiga-ui/i18n/interfaces';
 import {
     TUI_DEFAULT_LANGUAGE,
+    TUI_LANGUAGE,
     TUI_LANGUAGE_LOADER,
     TUI_LANGUAGE_STORAGE_KEY,
 } from '@taiga-ui/i18n/tokens';
+import type {TuiLanguage, TuiLanguageLoader, TuiLanguageName} from '@taiga-ui/i18n/types';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, of, switchAll} from 'rxjs';
 
-import {tuiAsyncLoadLanguage} from './utils';
+import {tuiAsyncLoadLanguage} from './load-language';
+
+export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
+    return [
+        {
+            provide: TUI_LANGUAGE_LOADER,
+            useFactory: () => loader,
+        },
+        {
+            provide: TUI_LANGUAGE,
+            useFactory: () => inject(TuiLanguageSwitcherService).pipe(switchAll()),
+        },
+    ];
+}
 
 @Injectable({
     providedIn: 'root',

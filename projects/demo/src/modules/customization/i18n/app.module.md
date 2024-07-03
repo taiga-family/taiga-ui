@@ -1,5 +1,5 @@
 ```ts
-import {TuiLanguageName} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguageName} from '@taiga-ui/i18n/types';
 import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
 
 @Component({

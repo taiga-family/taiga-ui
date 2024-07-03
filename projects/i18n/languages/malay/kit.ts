@@ -1,4 +1,4 @@
-import type {TuiLanguageKit} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageKit} from '@taiga-ui/i18n/types';
 
 export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
     cancel: 'Batal',
