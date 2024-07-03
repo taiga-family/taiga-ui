@@ -14,8 +14,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
       - uses: taiga-family/ci/actions/setup/variables@v1.65.1
       - uses: taiga-family/ci/actions/setup/node@v1.65.1
-      - run: npx tsc --project tsconfig.spec.json
-      - run: npx nx run-many -t test --output-style=stream --nxBail
+      - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v4.5.0
         with:
