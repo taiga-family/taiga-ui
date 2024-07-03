@@ -1,14 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
-import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_LANGUAGE} from '@taiga-ui/i18n';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
-import type {BehaviorSubject, Observable} from 'rxjs';
-import {map, switchMap} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -19,10 +17,8 @@ import {map, switchMap} from 'rxjs';
     providers: [
         {
             provide: TUI_DATE_FORMAT,
-            deps: [TUI_LANGUAGE],
-            useFactory: (lang: BehaviorSubject<Observable<TuiLanguage>>) =>
-                lang.pipe(
-                    switchMap(lang => lang),
+            useFactory: () =>
+                inject(TUI_LANGUAGE).pipe(
                     map(({name}) => ({
                         ...TUI_DEFAULT_DATE_FORMAT,
                         mode: name === 'english' ? 'MDY' : 'DMY',
