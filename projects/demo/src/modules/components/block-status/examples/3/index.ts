@@ -20,6 +20,6 @@ export default class Example {
     protected readonly breakpointService = inject(TuiBreakpointService);
 
     protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
-        map(key => (key === 'mobile' ? 'm' : 'l')),
+        map((key) => (key === 'mobile' ? 'm' : 'l')),
     );
 }

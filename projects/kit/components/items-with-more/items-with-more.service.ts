@@ -26,7 +26,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
     );
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     private get maxItems(): number {

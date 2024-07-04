@@ -57,7 +57,7 @@ describe('Filter', () => {
 
         public size: TuiSizeS = 'm';
 
-        public badgeHandler: TuiHandler<unknown, number> = item => Number(item);
+        public badgeHandler: TuiHandler<unknown, number> = (item) => Number(item);
     }
 
     let fixture: ComponentFixture<Test>;
@@ -153,7 +153,7 @@ describe('Filter', () => {
         });
 
         it('present if disabledHandler returned true', async () => {
-            testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
+            testComponent.disabledItemHandler = (item) => item.indexOf('footwear') > -1;
             fixture.detectChanges();
             await fixture.whenStable();
 

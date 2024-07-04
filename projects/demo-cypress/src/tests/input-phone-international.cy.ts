@@ -40,7 +40,7 @@ export class Test implements OnInit {
     public ngOnInit(): void {
         this.control.valueChanges
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
+            .subscribe((value) => {
                 this.valueChange.emit(value);
             });
     }

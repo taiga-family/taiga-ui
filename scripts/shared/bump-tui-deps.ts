@@ -17,8 +17,8 @@ export function bumpTuiDeps({
     ignores,
 }: TuiBumpDepsOptions): void {
     Object.keys(deps)
-        .filter(key => isTuiPackageName(key, ignores))
-        .forEach(key => {
+        .filter((key) => isTuiPackageName(key, ignores))
+        .forEach((key) => {
             if (tuiIsString(deps[key])) {
                 deps[key] = isPeerDependency
                     ? (deps[key] as string)?.replace(prevVersion, newVersion)

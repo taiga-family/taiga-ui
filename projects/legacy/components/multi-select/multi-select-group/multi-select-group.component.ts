@@ -49,7 +49,7 @@ export class TuiMultiSelectGroupComponent<T> {
     @tuiPure
     protected get disabled$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(
-            map(items => items.every(({disabled}) => disabled)),
+            map((items) => items.every(({disabled}) => disabled)),
         );
     }
 
@@ -60,7 +60,7 @@ export class TuiMultiSelectGroupComponent<T> {
                 let result = false;
 
                 for (let i = 0; i < items.length; i++) {
-                    const selected = current.some(selected =>
+                    const selected = current.some((selected) =>
                         this.matcher(selected, items[i]),
                     );
 
@@ -83,8 +83,8 @@ export class TuiMultiSelectGroupComponent<T> {
 
         const controlValue: readonly T[] = this.control.value || [];
         const {values} = this;
-        const filtered = controlValue.filter(current =>
-            values.every(item => !this.matcher(current, item)),
+        const filtered = controlValue.filter((current) =>
+            values.every((item) => !this.matcher(current, item)),
         );
 
         this.control.control.setValue(checked ? filtered : [...filtered, ...values]);
@@ -93,14 +93,14 @@ export class TuiMultiSelectGroupComponent<T> {
     @tuiPure
     private get items$(): Observable<readonly T[]> {
         return tuiQueryListChanges(this.options).pipe(
-            map(options => options.map(({value}) => value).filter(tuiIsPresent)),
+            map((options) => options.map(({value}) => value).filter(tuiIsPresent)),
         );
     }
 
     @tuiPure
     private get valueChanges$(): Observable<readonly T[]> {
         return tuiControlValue<readonly T[]>(this.control).pipe(
-            map(value => value || []),
+            map((value) => value || []),
         );
     }
 

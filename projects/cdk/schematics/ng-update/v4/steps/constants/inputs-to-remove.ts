@@ -9,6 +9,6 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
     {
         inputName: 'iconAlign',
         tags: ['button', 'a'],
-        filterFn: el => hasElementAttribute(el, 'tuiLink'),
+        filterFn: (el) => hasElementAttribute(el, 'tuiLink'),
     },
 ];

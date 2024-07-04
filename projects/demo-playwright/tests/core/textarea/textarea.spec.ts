@@ -7,7 +7,7 @@ test.describe('Textarea', () => {
         await page.setViewportSize({width: 400, height: 600});
     });
 
-    ['m', 'l'].forEach(size => {
+    ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(page, `components/textarea/API?tuiTextfieldSize=${size}`);
             const {apiPageExample} = new TuiDocumentationPagePO(page);

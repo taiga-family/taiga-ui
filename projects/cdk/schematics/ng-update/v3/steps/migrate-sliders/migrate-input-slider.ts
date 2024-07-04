@@ -42,7 +42,7 @@ function replaceMinMaxLabels(
         from: 'minLabel',
         to: '[valueContent]',
         newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
-        filterFn: element => !hasElementAttribute(element, 'maxLabel'),
+        filterFn: (element) => !hasElementAttribute(element, 'maxLabel'),
     });
 
     removeInputProperty({
@@ -50,7 +50,7 @@ function replaceMinMaxLabels(
         fileSystem,
         componentSelector: 'tui-input-slider',
         inputProperty: 'minLabel',
-        filterFn: element => hasElementAttribute(element, 'maxLabel'),
+        filterFn: (element) => hasElementAttribute(element, 'maxLabel'),
     });
 
     if (wasMaxLabelModified || wasMinLabelModified) {
@@ -93,7 +93,7 @@ export function migrateInputSlider(
         prefix: '[replaceMinMaxLabels]',
     });
 
-    templateResources.forEach(templateResource => {
+    templateResources.forEach((templateResource) => {
         !options['skip-logs'] && progressLog(templateResource.componentPath);
         replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
     });
@@ -111,7 +111,7 @@ export function migrateInputSlider(
         prefix: '[addMinMaxLabelMethod]',
     });
 
-    Array.from(COMPONENTS_WITH_MIN_MAX_LABELS).forEach(componentPath => {
+    Array.from(COMPONENTS_WITH_MIN_MAX_LABELS).forEach((componentPath) => {
         !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath);
     });

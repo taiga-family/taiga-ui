@@ -140,7 +140,9 @@ export abstract class AbstractTuiControl<T>
                 map(() => this.ngControl?.control),
                 filter(tuiIsPresent),
                 distinctUntilChanged(),
-                switchMap(control => merge(control.valueChanges, control.statusChanges)),
+                switchMap((control) =>
+                    merge(control.valueChanges, control.statusChanges),
+                ),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {

@@ -27,7 +27,7 @@ export class TuiLegacyDropdownOpenMonitorDirective {
                 ),
                 takeUntilDestroyed(),
             )
-            .subscribe(value => {
+            .subscribe((value) => {
                 if (value) {
                     tuiGetClosestFocusable({
                         initial: this.el,

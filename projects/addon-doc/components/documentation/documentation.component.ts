@@ -121,7 +121,7 @@ export class TuiDocDocumentation implements AfterContentInit {
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.propertiesConnectors)
             .pipe(
-                switchMap(items => merge(...items.map(({changed$}) => changed$))),
+                switchMap((items) => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.cdr),
                 takeUntilDestroyed(this.destroyRef),
             )

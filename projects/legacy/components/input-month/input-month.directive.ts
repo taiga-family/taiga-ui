@@ -32,7 +32,7 @@ export class TuiInputMonthDirective
                 switchMap(inject(TUI_MONTH_FORMATTER)),
                 takeUntilDestroyed(),
             )
-            .subscribe(localizedValue => {
+            .subscribe((localizedValue) => {
                 this.localizedValue = localizedValue;
             });
     }

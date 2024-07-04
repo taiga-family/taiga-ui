@@ -56,13 +56,13 @@ export class TuiRangeChange {
                         this.el.focus();
                     }
                 }),
-                switchMap(event => this.pointerMove$.pipe(startWith(event))),
+                switchMap((event) => this.pointerMove$.pipe(startWith(event))),
                 map(({clientX}) => this.getFractionFromEvents(clientX)),
                 takeUntil(this.pointerUp$),
                 repeat(),
                 takeUntilDestroyed(),
             )
-            .subscribe(fraction => {
+            .subscribe((fraction) => {
                 const value = this.range.toValue(fraction);
 
                 this.range.processValue(value, activeThumb === 'right');

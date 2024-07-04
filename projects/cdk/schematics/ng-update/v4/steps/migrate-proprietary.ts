@@ -41,7 +41,7 @@ export function migrateProprietary(
 function replaceScopePackages(): void {
     getActiveProject()
         ?.getSourceFiles('**/**.{ts,less,scss}')
-        .forEach(sourceFile => {
+        .forEach((sourceFile) => {
             let fullText = sourceFile.getFullText();
 
             fullText = fullText
@@ -59,7 +59,7 @@ function replaceScopePackages(): void {
 function replaceProprietaryIconPath(): void {
     getActiveProject()
         ?.getSourceFiles('**/{angular,project}.json')
-        .forEach(sourceFile => {
+        .forEach((sourceFile) => {
             let fullText = sourceFile.getFullText();
 
             fullText = fullText
@@ -92,7 +92,7 @@ export function removeProprietaryPackages(fileSystem: DevkitFileSystem): void {
         '@taiga-ui/proprietary-icons',
         '@taiga-ui/proprietary-tds-icons',
         '@taiga-ui/proprietary-tds-palette',
-    ].forEach(name => removePackageJsonDependency(fileSystem.tree, name));
+    ].forEach((name) => removePackageJsonDependency(fileSystem.tree, name));
 
     addPackageJsonDependency(fileSystem.tree, {
         name: '@taiga-ui/proprietary',

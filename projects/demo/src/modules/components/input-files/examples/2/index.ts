@@ -36,9 +36,9 @@ export default class Example {
     }
 
     protected onRemove(file: File): void {
-        this.rejected = this.rejected.filter(rejected => rejected !== file);
+        this.rejected = this.rejected.filter((rejected) => rejected !== file);
         this.control.setValue(
-            this.control.value?.filter(current => current !== file) ?? [],
+            this.control.value?.filter((current) => current !== file) ?? [],
         );
     }
 }

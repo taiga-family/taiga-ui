@@ -87,9 +87,9 @@ export class TuiInputCopyComponent
     @tuiPure
     protected get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
-            switchMap(texts =>
+            switchMap((texts) =>
                 this.copied$.pipe(
-                    switchMap(copied => {
+                    switchMap((copied) => {
                         if (!copied) {
                             return of(texts[0]);
                         }

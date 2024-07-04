@@ -12,7 +12,7 @@ test.describe('InputFiles', () => {
         example = new TuiDocumentationApiPagePO(page).apiPageExample;
     });
 
-    ['english', 'dutch', 'russian'].forEach(language =>
+    ['english', 'dutch', 'russian'].forEach((language) =>
         test(`Wrong file type (i18n: ${language})`, async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputFiles}/API?accept=application/pdf`, {
                 language,
@@ -25,7 +25,7 @@ test.describe('InputFiles', () => {
         }),
     );
 
-    ['english', 'dutch', 'russian'].forEach(language =>
+    ['english', 'dutch', 'russian'].forEach((language) =>
         test(`File is bigger than (i18n: ${language})`, async ({page}) => {
             await tuiGoto(
                 page,

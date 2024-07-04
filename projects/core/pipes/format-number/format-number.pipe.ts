@@ -24,7 +24,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
         settings: Partial<TuiNumberFormatSettings> = {},
     ): Observable<string> {
         return this.numberFormat.pipe(
-            map(format =>
+            map((format) =>
                 tuiFormatNumber(value, {
                     ...format,
                     precision: Number.isNaN(format.precision)

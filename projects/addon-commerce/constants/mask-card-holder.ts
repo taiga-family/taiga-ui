@@ -33,7 +33,7 @@ function toEnglishUppercase(value: string): string {
     return value
         .toUpperCase()
         .split('')
-        .map(char => MAP[char] || char)
+        .map((char) => MAP[char] || char)
         .join('');
 }
 

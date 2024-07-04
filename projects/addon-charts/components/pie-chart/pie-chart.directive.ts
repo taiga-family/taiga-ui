@@ -32,13 +32,13 @@ export class TuiPieChartDirective {
                     const endDelta = cur[1] - prev[1];
 
                     return animationFrame$.pipe(
-                        map(timestamp =>
+                        map((timestamp) =>
                             tuiEaseInOutQuad(
                                 tuiClamp((timestamp - now) / tuiGetDuration(speed), 0, 1),
                             ),
                         ),
-                        takeWhile(progress => progress < 1, true),
-                        map(progress => [
+                        takeWhile((progress) => progress < 1, true),
+                        map((progress) => [
                             prev[0] + startDelta * progress,
                             cur[1] > 359 ? cur[1] : prev[1] + endDelta * progress,
                         ]),

@@ -33,10 +33,10 @@ export function replaceAttrValues({
             ),
         ];
 
-        elements.forEach(element => {
+        elements.forEach((element) => {
             const {name, value} =
-                element.attrs.find(attr =>
-                    attrNames.map(name => name.toLowerCase()).includes(attr.name),
+                element.attrs.find((attr) =>
+                    attrNames.map((name) => name.toLowerCase()).includes(attr.name),
                 ) || {};
 
             if (!name || !value) {
@@ -44,7 +44,7 @@ export function replaceAttrValues({
             }
 
             const attributeName = attrNames.find(
-                attrName => attrName.toLowerCase() === name,
+                (attrName) => attrName.toLowerCase() === name,
             );
 
             values.forEach(({from, to}) => {

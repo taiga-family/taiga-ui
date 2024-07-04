@@ -6,7 +6,7 @@ import {tuiIsFlakyExample} from './is-flaky-examples';
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
-    demoPaths.forEach(path => {
+    demoPaths.forEach((path) => {
         test(path, async ({page}) => {
             const documentation = new TuiDocumentationPagePO(page);
 

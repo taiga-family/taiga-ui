@@ -19,10 +19,10 @@ export const TUI_MONTH_FORMATTER_PROVIDER: FactoryProvider = {
     deps: [TuiMonthPipe],
     useFactory:
         (pipe: TuiMonthPipe): TuiHandler<TuiMonth | null, Observable<string>> =>
-        month =>
+        (month) =>
             month
                 ? pipe
                       .transform(month)
-                      .pipe(map(formatted => `${formatted} ${month.formattedYear}`))
+                      .pipe(map((formatted) => `${formatted} ${month.formattedYear}`))
                 : of(''),
 };

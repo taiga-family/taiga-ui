@@ -42,7 +42,7 @@ export function replaceAttrs({
             ),
         ];
 
-        offsets.forEach(offset => {
+        offsets.forEach((offset) => {
             recorder.remove(offset + templateOffset, from.attrName.length);
             recorder.insertRight(offset + templateOffset, to.attrName);
         });

@@ -12,7 +12,7 @@ import {getProjectTargetOptions} from './get-project-target-options';
 import {getProjects} from './get-projects';
 
 function hasTaigaIcons(assets: Asset[]): boolean {
-    return !!assets?.find(asset =>
+    return !!assets?.find((asset) =>
         tuiIsString(asset)
             ? asset.includes('taiga-ui')
             : asset?.input?.includes('taiga-ui'),
@@ -45,7 +45,7 @@ export function addStylesToAngularJson(
         ',',
     )} to angular.json manually.`;
 
-    return updateWorkspace(workspace => {
+    return updateWorkspace((workspace) => {
         const projects = getProjects(options, workspace);
 
         if (!projects.length) {
@@ -85,13 +85,13 @@ export function addStylesToAngularJson(
 
             if (
                 stylesToReplace &&
-                styles?.filter(style => style !== stylesToReplace.from)
+                styles?.filter((style) => style !== stylesToReplace.from)
             ) {
                 targetOptions.styles = Array.from(
                     new Set([
                         ...taigaStyles,
                         ...stylesToReplace.to,
-                        ...styles.filter(style => style !== stylesToReplace.from),
+                        ...styles.filter((style) => style !== stylesToReplace.from),
                     ]),
                 );
             } else {

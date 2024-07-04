@@ -30,11 +30,11 @@ export class TuiActiveZone implements OnDestroy {
 
     @Output()
     public readonly tuiActiveZoneChange = this.active$.pipe(
-        map(element => !!element && this.contains(element)),
+        map((element) => !!element && this.contains(element)),
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tap(active => {
+        tap((active) => {
             if (!active && typeof this.control?.valueAccessor.onTouched === 'function') {
                 this.control.valueAccessor.onTouched();
             }

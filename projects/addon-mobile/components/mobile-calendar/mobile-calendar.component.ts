@@ -165,7 +165,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     constructor() {
         inject(TUI_VALUE_STREAM)
             .pipe(takeUntilDestroyed())
-            .subscribe(value => {
+            .subscribe((value) => {
                 this.value = value;
             });
     }
@@ -255,7 +255,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => item =>
+    > = (disabledItemHandler, min, max) => (item) =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
@@ -368,7 +368,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             .pipe(
                 // Ignore smooth scroll resulting from click on the exact year
                 windowToggle(touchstart$, () => click$),
-                mergeMap(x => x),
+                mergeMap((x) => x),
                 // Delay is required to run months scroll in the next frame to prevent flicker
                 delay(0),
                 map(
@@ -379,10 +379,10 @@ export class TuiMobileCalendar implements AfterViewInit {
                         Math.floor(YEARS_IN_ROW / 2) +
                         STARTING_YEAR,
                 ),
-                filter(activeYear => activeYear !== this.activeYear),
+                filter((activeYear) => activeYear !== this.activeYear),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(activeYear => {
+            .subscribe((activeYear) => {
                 this.activeMonth += this.getMonthOffset(activeYear);
                 this.activeYear = activeYear;
                 this.scrollToActiveMonth();

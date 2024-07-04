@@ -12,7 +12,7 @@ export function renameImport(specifier: ImportSpecifier, to: string, from: strin
     const namedImport = specifier
         .getImportDeclaration()
         .getNamedImports()
-        .find(specifier => specifier.getName() === from);
+        .find((specifier) => specifier.getName() === from);
 
     namedImport?.replaceWithText(to);
 }

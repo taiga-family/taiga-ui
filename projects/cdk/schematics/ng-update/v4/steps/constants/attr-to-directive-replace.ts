@@ -40,7 +40,7 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
     },
     {
         componentSelector: ['a', 'button'],
-        filterFn: el => hasElementAttribute(el, 'tuiLink'),
+        filterFn: (el) => hasElementAttribute(el, 'tuiLink'),
         inputProperty: 'iconRotated',
         directive: 'tuiChevron',
         directiveModule: {
@@ -56,6 +56,6 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
             name: 'TuiButtonLoading',
             moduleSpecifier: '@taiga-ui/kit',
         },
-        filterFn: el => hasElementAttribute(el, 'tuiButton'),
+        filterFn: (el) => hasElementAttribute(el, 'tuiButton'),
     },
 ];

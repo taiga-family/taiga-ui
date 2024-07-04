@@ -47,7 +47,7 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             titlePrefix: string,
         ): Observable<string> =>
             router.events.pipe(
-                filter(event => event instanceof NavigationEnd),
+                filter((event) => event instanceof NavigationEnd),
                 map(() => activatedRoute.firstChild),
                 filter(tuiIsPresent),
                 mergeMap(({data}) => data),
@@ -67,8 +67,8 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             const labels = labelsProviderFactory(pages);
 
             return [
-                ...labels.map(label => pages.filter(({section}) => section === label)),
-                pages.filter(page => !page.section),
+                ...labels.map((label) => pages.filter(({section}) => section === label)),
+                pages.filter((page) => !page.section),
             ];
         },
     },

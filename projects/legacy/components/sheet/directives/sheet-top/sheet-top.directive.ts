@@ -20,9 +20,9 @@ export class TuiSheetTopDirective {
     private readonly el = tuiInjectElement();
 
     protected readonly rounded$ = this.scroll$
-        .pipe(map(y => y < this.stop + OFFSET))
+        .pipe(map((y) => y < this.stop + OFFSET))
         .pipe(takeUntilDestroyed())
-        .subscribe(add =>
+        .subscribe((add) =>
             add
                 ? this.el.classList.add('_rounded')
                 : this.el.classList.remove('_rounded'),
@@ -30,17 +30,17 @@ export class TuiSheetTopDirective {
 
     protected readonly transform$ = this.scroll$
         .pipe(
-            map(y => `translateY(${this.getY(y)}%) scaleX(-1)`),
+            map((y) => `translateY(${this.getY(y)}%) scaleX(-1)`),
             takeUntilDestroyed(),
         )
-        .subscribe(transform => this.el.style.setProperty('transform', transform));
+        .subscribe((transform) => this.el.style.setProperty('transform', transform));
 
     protected readonly clickthrough$ = this.scroll$
         .pipe(
-            map(y => !!Math.round(this.getY(y))),
+            map((y) => !!Math.round(this.getY(y))),
             takeUntilDestroyed(),
         )
-        .subscribe(add =>
+        .subscribe((add) =>
             add
                 ? this.el.classList.add('_clickthrough')
                 : this.el.classList.remove('_clickthrough'),

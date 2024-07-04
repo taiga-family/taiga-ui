@@ -5,8 +5,8 @@ export function tuiToggleDay(
     day: TuiDay,
 ): readonly TuiDay[] {
     return (
-        (days?.find(item => item.daySame(day))
-            ? days.filter(item => !item.daySame(day))
+        (days?.find((item) => item.daySame(day))
+            ? days.filter((item) => !item.daySame(day))
             : days?.concat(day)) || []
     );
 }

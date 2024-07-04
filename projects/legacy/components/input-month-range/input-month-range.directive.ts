@@ -39,7 +39,7 @@ export class TuiInputMonthRangeDirective
                 ),
                 takeUntilDestroyed(),
             )
-            .subscribe(localizedValue => {
+            .subscribe((localizedValue) => {
                 this.localizedValue = localizedValue;
             });
     }

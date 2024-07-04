@@ -67,7 +67,7 @@ export default class Example {
                 superComputerValidator,
             ]),
         },
-        control =>
+        (control) =>
             Object.values((control as FormGroup).controls).every(({valid}) => valid)
                 ? null
                 : {other: 'Form is invalid'},

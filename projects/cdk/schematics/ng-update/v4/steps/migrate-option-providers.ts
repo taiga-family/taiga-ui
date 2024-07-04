@@ -30,7 +30,7 @@ function migrateInputNumberOptions(options: TuiSchema): void {
         ...getNamedImportReferences('tuiInputNumberOptionsProvider', '@taiga-ui/legacy'),
     ];
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -49,7 +49,7 @@ function migrateInputNumberOptions(options: TuiSchema): void {
 
             [precision, decimal]
                 .filter((property): property is ObjectLiteralElementLike => !!property)
-                .forEach(property => property.remove());
+                .forEach((property) => property.remove());
 
             if (precision || decimal) {
                 insertTodo(

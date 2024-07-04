@@ -16,7 +16,7 @@ export default class Page {
         import('../../../../../i18n/README.md?raw') as Promise<{
             default: string;
         }>,
-    ).pipe(map(readme => readme.default.split('Supported languages:')[1]));
+    ).pipe(map((readme) => readme.default.split('Supported languages:')[1]));
 
     protected exampleModule = import('./app.module.md?raw');
     protected exampleEsbuildModule = import('./app.esbuild.module.md?raw');

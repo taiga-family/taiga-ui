@@ -84,7 +84,7 @@ export class TuiCalendarRange implements OnChanges {
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
             ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-            .subscribe(value => {
+            .subscribe((value) => {
                 this.value = value;
             });
     }
@@ -127,7 +127,7 @@ export class TuiCalendarRange implements OnChanges {
         ReadonlyArray<TuiDayRangePeriod | string>
     > = (items, min, max, minLength, otherDateText) => [
         ...items.filter(
-            item =>
+            (item) =>
                 (minLength === null ||
                     item.range.from.append(minLength).daySameOrBefore(item.range.to)) &&
                 (min === null || item.range.to.daySameOrAfter(min)) &&
@@ -175,7 +175,7 @@ export class TuiCalendarRange implements OnChanges {
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.selectedActivePeriod ??
-            (this.items.find(item =>
+            (this.items.find((item) =>
                 tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
@@ -194,7 +194,7 @@ export class TuiCalendarRange implements OnChanges {
         value: TuiDayRange | null,
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
-        return item => {
+        return (item) => {
             if (!value?.isSingleDay || !minLength) {
                 return disabledItemHandler(item);
             }

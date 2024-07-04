@@ -20,7 +20,7 @@ export default class Example {
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     protected readonly transform$ = this.coordinates$.pipe(
-        map(coords =>
+        map((coords) =>
             this.sanitizer.bypassSecurityTrustStyle(
                 `translate(${coords[0]}px, ${coords[1]}px)`,
             ),

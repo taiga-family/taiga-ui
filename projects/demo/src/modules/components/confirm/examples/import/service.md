@@ -15,7 +15,7 @@ export class Example {
           no: 'Oops!',
         },
       })
-      .subscribe(response => {
+      .subscribe((response) => {
         // ...
       });
   }

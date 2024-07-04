@@ -36,7 +36,7 @@ export default class Example implements OnInit {
                 tuiWatch(this.cd),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(value => {
+            .subscribe((value) => {
                 this.count = String(value);
             });
     }

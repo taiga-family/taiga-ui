@@ -15,7 +15,7 @@ import {insertTodo} from '../../../utils/insert-todo';
 function addWarningToMethod(className: string, method: string, message: string): void {
     const references = getNamedImportReferences(className);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isTypeReference(parent)) {
@@ -35,14 +35,14 @@ function replaceEnumProperty({
 }): void {
     const references = getNamedImportReferences(enumName);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (!Node.isPropertyAccessExpression(parent)) {
             return;
         }
 
-        parent.getChildren().forEach(node => {
+        parent.getChildren().forEach((node) => {
             if (node.getText() === from) {
                 node.replaceWithText(to);
             }
@@ -54,7 +54,7 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
     const statement = node.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
-    identifier.findReferencesAsNodes().forEach(ref => {
+    identifier.findReferencesAsNodes().forEach((ref) => {
         let parent = ref.getParent();
 
         if (
@@ -66,7 +66,7 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
         }
 
         if (Node.isPropertyAccessExpression(parent)) {
-            parent.getChildrenOfKind(SyntaxKind.Identifier).forEach(identifier => {
+            parent.getChildrenOfKind(SyntaxKind.Identifier).forEach((identifier) => {
                 if (identifier.getText() === method) {
                     insertTodo(identifier, message);
                 }

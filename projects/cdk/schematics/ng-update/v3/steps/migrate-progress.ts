@@ -37,10 +37,11 @@ export function replaceProgressColorSegmentsPipe(
 
     findElementsWithAttribute(template, PROPERTY_FOR_DEPRECATED_PIPES)
         .filter(isProgressWithDeprecatedPipe)
-        .forEach(progressEl => {
+        .forEach((progressEl) => {
             const oldValue =
-                progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
-                    ?.value || '';
+                progressEl.attrs.find(
+                    (attr) => attr.name === PROPERTY_FOR_DEPRECATED_PIPES,
+                )?.value || '';
             const newValue = oldValue.replaceAll(DEPRECATED_PROGRESS_PIPES_REG, '');
 
             const attrLocations = progressEl.sourceCodeLocation?.attrs;
@@ -62,7 +63,7 @@ export function isProgressWithDeprecatedPipe(element: Element): boolean {
     return (
         element.tagName === 'progress' &&
         element.attrs.some(
-            attr =>
+            (attr) =>
                 attr.name === PROPERTY_FOR_DEPRECATED_PIPES &&
                 attr.value.match(DEPRECATED_PROGRESS_PIPES_REG),
         )
@@ -73,7 +74,7 @@ export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
-    getComponentTemplates(ALL_TS_FILES).forEach(templateResource =>
+    getComponentTemplates(ALL_TS_FILES).forEach((templateResource) =>
         replaceProgressColorSegmentsPipe(templateResource, fileSystem),
     );
 

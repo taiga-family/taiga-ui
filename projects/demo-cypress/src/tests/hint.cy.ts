@@ -45,7 +45,7 @@ describe('TuiHint', () => {
                 imports: [NoopAnimationsModule, Host],
                 providers: [NG_EVENT_PLUGINS],
             })
-            .then(wrap => {
+            .then((wrap) => {
                 component = wrap.component;
                 wrapper = wrap;
             }),

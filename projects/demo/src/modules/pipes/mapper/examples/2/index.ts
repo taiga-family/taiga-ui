@@ -17,5 +17,5 @@ export default class Example {
     protected readonly mapper: TuiMapper<[readonly number[], number], number[]> = (
         numbers,
         multiplier,
-    ) => numbers.map(number => number * multiplier);
+    ) => numbers.map((number) => number * multiplier);
 }

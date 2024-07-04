@@ -191,7 +191,7 @@ export class TuiInputTimeComponent
 
     @tuiPure
     protected getFiller$(mode: TuiTimeMode): Observable<string> {
-        return this.timeTexts$.pipe(map(texts => texts[mode]));
+        return this.timeTexts$.pipe(map((texts) => texts[mode]));
     }
 
     @HostListener('click')
@@ -267,7 +267,7 @@ export class TuiInputTimeComponent
         mode: TuiTimeMode,
         search: string,
     ): readonly TuiTime[] {
-        return items.filter(item => item.toString(mode).includes(search));
+        return items.filter((item) => item.toString(mode).includes(search));
     }
 
     private findNearestTimeFromItems(value: TuiTime): TuiTime | null {
@@ -282,7 +282,7 @@ export class TuiInputTimeComponent
     }
 
     private getMatch(value: string): TuiTime | undefined {
-        return this.items.find(item => TUI_STRICT_MATCHER(item, value));
+        return this.items.find((item) => TUI_STRICT_MATCHER(item, value));
     }
 
     private close(): void {

@@ -55,7 +55,7 @@ export default class Example {
     protected readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (
         items1,
         items2,
-    ) => items1.length === items2.length && items1.every(item => items2.includes(item));
+    ) => items1.length === items2.length && items1.every((item) => items2.includes(item));
 
     protected readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
         $implicit,

@@ -8,7 +8,7 @@ export function findElementsByFn(
     const elements: Element[] = [];
 
     const visitNodes = (nodes: ChildNode[]): void => {
-        nodes.forEach(n => {
+        nodes.forEach((n) => {
             const node = n as Element;
 
             if (node.childNodes) {
@@ -46,11 +46,14 @@ export function findElementsByTagName(
     // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): Element[] {
-    return findElementsInTemplateByFn(html, el => el.tagName === tagName && filterFn(el));
+    return findElementsInTemplateByFn(
+        html,
+        (el) => el.tagName === tagName && filterFn(el),
+    );
 }
 
 export function findElementsByTagNames(html: string, tagNames: string[]): Element[] {
-    return findElementsInTemplateByFn(html, el => tagNames.includes(el.tagName));
+    return findElementsInTemplateByFn(html, (el) => tagNames.includes(el.tagName));
 }
 
 /**
@@ -64,7 +67,7 @@ export function findElementsWithDirective(
     const lowercasedAttrName = attributeName.toLowerCase();
     const inputName = `[${lowercasedAttrName}]`;
 
-    return findElementsInTemplateByFn(html, el =>
+    return findElementsInTemplateByFn(html, (el) =>
         el.attrs?.some(({name}) => name === lowercasedAttrName || name === inputName),
     );
 }
@@ -77,8 +80,8 @@ export function findElementsWithAttribute(
     html: string,
     attributeName: string,
 ): Element[] {
-    return findElementsInTemplateByFn(html, el =>
-        el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
+    return findElementsInTemplateByFn(html, (el) =>
+        el.attrs?.some((attr) => attr.name === attributeName.toLowerCase()),
     );
 }
 
@@ -96,10 +99,10 @@ export function findElementsWithAttributeOnTag(
 ): Element[] {
     return findElementsInTemplateByFn(
         html,
-        el =>
+        (el) =>
             (!attributeNames.length ||
-                el.attrs?.some(attr =>
-                    attributeNames.map(name => name.toLowerCase()).includes(attr.name),
+                el.attrs?.some((attr) =>
+                    attributeNames.map((name) => name.toLowerCase()).includes(attr.name),
                 )) &&
             (tagNames.includes(el.tagName) ||
                 tagNames.includes('*') ||
@@ -121,11 +124,11 @@ export function findAttributeOnElementWithTag(
 ): number[] {
     return findElementsWithAttribute(html, name)
         .filter(
-            element =>
+            (element) =>
                 (tagNames.includes(element.tagName) || tagNames.includes('*')) &&
                 filterFn(element),
         )
-        .map(element => getStartOffsetOfAttribute(element, name));
+        .map((element) => getStartOffsetOfAttribute(element, name));
 }
 
 /**
@@ -141,16 +144,16 @@ export function findAttributeOnElementWithAttrs(
 ): number[] {
     return findElementsWithAttribute(html, name)
         .filter(
-            element =>
-                attrs.some(attr => hasElementAttribute(element, attr)) &&
+            (element) =>
+                attrs.some((attr) => hasElementAttribute(element, attr)) &&
                 filterFn(element),
         )
-        .map(element => getStartOffsetOfAttribute(element, name));
+        .map((element) => getStartOffsetOfAttribute(element, name));
 }
 
 /** Shorthand function that checks if the specified element contains the given attribute. */
 export function hasElementAttribute(element: Element, attributeName: string): boolean {
-    return element.attrs?.some(attr => attr.name === attributeName.toLowerCase());
+    return element.attrs?.some((attr) => attr.name === attributeName.toLowerCase());
 }
 
 /** Gets the start offset of the given attribute from a Parse5 element. */

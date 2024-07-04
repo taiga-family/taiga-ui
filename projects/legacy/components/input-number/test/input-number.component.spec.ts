@@ -84,7 +84,7 @@ describe('InputNumber', () => {
 
         inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
 
-        document.querySelectorAll('input').forEach(el => {
+        document.querySelectorAll('input').forEach((el) => {
             const maxlength = el.getAttribute('maxlength');
             const oldSpecification = 52488; // Note: https://bugs.chromium.org/p/chromium/issues/detail?id=450544
 

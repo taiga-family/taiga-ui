@@ -47,7 +47,7 @@ export class TuiSliderReadonly {
 
         const shouldPreventMove$ = merge(
             touchStart$.pipe(
-                tap(e => this.preventEvent(e)),
+                tap((e) => this.preventEvent(e)),
                 map(TUI_TRUE_HANDLER),
             ),
             touchEnd$.pipe(map(TUI_FALSE_HANDLER)),

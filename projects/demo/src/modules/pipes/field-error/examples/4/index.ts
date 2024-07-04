@@ -87,7 +87,8 @@ export default class Example {
     private getPhoneArrayValidator(): ValidatorFn {
         return ((array: FormArray): ValidationErrors | null =>
             array.controls.length < 2 ||
-            (!!array.controls.filter(item => item.errors).length && array.controls.length)
+            (!!array.controls.filter((item) => item.errors).length &&
+                array.controls.length)
                 ? {
                       length: new TuiValidationError(
                           'You should add at least 2 phone number',

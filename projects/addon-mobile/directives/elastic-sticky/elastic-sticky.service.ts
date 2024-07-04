@@ -24,7 +24,7 @@ export class TuiElasticStickyService extends Observable<number> {
     private readonly destroyRef = inject(DestroyRef);
 
     constructor() {
-        super(subscriber => {
+        super((subscriber) => {
             const subscription = new Subscription();
 
             afterNextRender(

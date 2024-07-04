@@ -23,7 +23,7 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 export class TuiStuck {
     protected readonly stuck = toSignal(
         inject(IntersectionObserverService).pipe(
-            map(entries => entries[entries.length - 1].intersectionRatio < 1),
+            map((entries) => entries[entries.length - 1].intersectionRatio < 1),
             distinctUntilChanged(),
             tuiWatch(inject(ChangeDetectorRef)),
             catchError(() => EMPTY), // SSR

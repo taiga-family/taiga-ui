@@ -7,7 +7,7 @@ export function removeAttrs(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    attrs.forEach(attr => {
+    attrs.forEach((attr) => {
         const attrOffset = sourceCodeLocation.attrs?.[attr.name];
 
         if (attrOffset) {

@@ -38,7 +38,7 @@ export class TuiNativeMultiSelectGroupComponent<
     public labels: readonly string[] = [];
 
     protected onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
-        const selected = Array.from(selectedOptions).map(option => option.index);
+        const selected = Array.from(selectedOptions).map((option) => option.index);
         const flatItems = this.items?.reduce((acc, val) => acc.concat(val), []) || [];
         const value = flatItems.filter((_, index) => selected.includes(index));
 

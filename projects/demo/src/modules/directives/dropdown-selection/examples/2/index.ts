@@ -65,7 +65,7 @@ export default class Example {
         },
     ];
 
-    protected predicate: TuiBooleanHandler<Range> = range =>
+    protected predicate: TuiBooleanHandler<Range> = (range) =>
         tuiGetWordRange(range).toString().startsWith('@');
 
     protected onArrow(event: Event, which: 'first' | 'last'): void {

@@ -41,15 +41,15 @@ export class TuiAccordionDirective implements AfterContentInit {
         const newOpenRow$ = rows$.pipe(
             pairwise(),
             map(([previous, current]) =>
-                current.find(item => !previous.includes(item) && item.open),
+                current.find((item) => !previous.includes(item) && item.open),
             ),
             filter(tuiIsPresent),
         );
         const rowsOpen$ = merge(
             rows$.pipe(
-                switchMap(rows =>
+                switchMap((rows) =>
                     merge(
-                        ...rows.map(row =>
+                        ...rows.map((row) =>
                             row.openChange.pipe(
                                 filter(identity),
                                 map(() => row),
@@ -64,8 +64,8 @@ export class TuiAccordionDirective implements AfterContentInit {
             takeUntilDestroyed(this.destroyRef),
         );
 
-        rowsOpen$.subscribe(currentRow => {
-            accordionItems.forEach(row => {
+        rowsOpen$.subscribe((currentRow) => {
+            accordionItems.forEach((row) => {
                 if (currentRow !== row) {
                     row.close();
                 }

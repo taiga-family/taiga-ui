@@ -13,7 +13,7 @@ import type {TuiSchema} from './schema';
 function addDependencies(tree: Tree, options: TuiSchema): void {
     const packages = [...MAIN_PACKAGES, ...options.addons];
 
-    packages.forEach(pack => {
+    packages.forEach((pack) => {
         addPackageJsonDependency(tree, {
             name: `@taiga-ui/${pack}`,
             version: TAIGA_VERSION,

@@ -59,14 +59,14 @@ export default class Example {
 
         this.restoredFiles = [...this.restoredFiles, file];
         this.removedFiles = this.removedFiles.filter(
-            removed => file.name !== removed?.name,
+            (removed) => file.name !== removed?.name,
         );
     }
 
     protected remove(file: TuiFileLike): void {
         this.removedFiles = [...this.removedFiles, file];
         this.restoredFiles = this.restoredFiles.filter(
-            restored => file.name !== restored?.name,
+            (restored) => file.name !== restored?.name,
         );
     }
 }

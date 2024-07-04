@@ -22,7 +22,7 @@ import {defer} from 'rxjs';
          */
         tuiInputPhoneInternationalOptionsProvider({
             metadata: defer(async () =>
-                import('libphonenumber-js/max/metadata').then(m => m.default),
+                import('libphonenumber-js/max/metadata').then((m) => m.default),
             ),
         }),
         /**

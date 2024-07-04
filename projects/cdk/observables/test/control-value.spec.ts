@@ -10,7 +10,7 @@ describe('tuiControlValue', () => {
         let actual = '';
         const control = new FormControl('hello');
 
-        tuiControlValue<string>(control).subscribe(value => {
+        tuiControlValue<string>(control).subscribe((value) => {
             actual = value;
         });
 
@@ -23,7 +23,7 @@ describe('tuiControlValue', () => {
 
         tuiControlValue<string>(control)
             .pipe(skip(1))
-            .subscribe(value => {
+            .subscribe((value) => {
                 actual = value;
             });
 

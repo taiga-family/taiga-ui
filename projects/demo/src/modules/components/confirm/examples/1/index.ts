@@ -31,7 +31,7 @@ export default class Example {
                 size: 's',
                 data,
             })
-            .pipe(switchMap(response => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
     }
 }

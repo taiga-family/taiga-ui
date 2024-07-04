@@ -25,7 +25,7 @@ export class ServerErrorHandler implements ErrorHandler {
     public handleError(error: Error | string): void {
         const errorMessage = (typeof error === 'string' ? error : error.message) || '';
 
-        if (KNOWN_ISSUES.some(issue => errorMessage.includes(issue))) {
+        if (KNOWN_ISSUES.some((issue) => errorMessage.includes(issue))) {
             return;
         }
 

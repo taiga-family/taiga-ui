@@ -15,7 +15,7 @@ export class TuiSwipeService extends Observable<TuiSwipeEvent> {
         const el = tuiInjectElement();
         const {timeout, threshold} = inject(TUI_SWIPE_OPTIONS);
 
-        super(subscriber => {
+        super((subscriber) => {
             merge(
                 tuiTypedFromEvent(el, 'touchstart', {passive: true}),
                 tuiTypedFromEvent(doc, 'touchend'),

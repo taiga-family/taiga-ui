@@ -92,9 +92,10 @@ function addTaigaStyles(options: TuiSchema): Rule {
             options,
             context,
             taigaStyles,
-            existingStyles =>
+            (existingStyles) =>
                 !!existingStyles?.some(
-                    style => typeof style === 'string' && style.includes('tinkoff-theme'),
+                    (style) =>
+                        typeof style === 'string' && style.includes('tinkoff-theme'),
                 ),
             stylesToReplace,
             tree,

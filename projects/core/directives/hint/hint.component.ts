@@ -82,7 +82,7 @@ export class TuiHintComponent<C = any> {
     constructor() {
         inject(TuiPositionService)
             .pipe(
-                map(point => this.vvs.correct(point)),
+                map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe(([top, left]) => {
@@ -91,7 +91,7 @@ export class TuiHintComponent<C = any> {
 
         inject(TuiHoveredService)
             .pipe(takeUntilDestroyed())
-            .subscribe(hover => this.hover.toggle(hover));
+            .subscribe((hover) => this.hover.toggle(hover));
     }
 
     protected get content(): PolymorpheusContent<C> {

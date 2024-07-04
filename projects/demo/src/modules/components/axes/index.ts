@@ -38,7 +38,7 @@ export default class Page {
     protected readonly handlerVariants: readonly TuiLineHandler[] = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
-        index => (index % 2 ? 'dashed' : 'solid'),
+        (index) => (index % 2 ? 'dashed' : 'solid'),
     ];
 
     protected axisX = this.lineVariants[0];

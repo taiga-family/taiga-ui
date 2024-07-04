@@ -49,12 +49,12 @@ export class TuiLineDaysChartHint implements AfterContentInit {
             this.hovered$,
         ])
             .pipe(
-                filter(result => !result.some(Boolean)),
+                filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts.forEach(chart => chart.onHovered(NaN));
+                this.charts.forEach((chart) => chart.onHovered(NaN));
             });
     }
 
@@ -82,7 +82,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
             (map, [day]) =>
                 map.set(
                     String(day),
-                    values.map(value => find(value, day)),
+                    values.map((value) => find(value, day)),
                 ),
             new Map<string, ReadonlyArray<[TuiDay, number]>>(),
         );

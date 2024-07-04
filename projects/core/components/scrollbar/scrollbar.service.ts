@@ -10,18 +10,18 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
     private readonly scroll$ = merge(
         tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
-            map(event => this.getScrolled(event, 0.5, 0.5)),
+            map((event) => this.getScrolled(event, 0.5, 0.5)),
         ),
         tuiTypedFromEvent(this.el, 'mousedown').pipe(
             tuiZonefree(inject(NgZone)),
-            switchMap(event => {
+            switchMap((event) => {
                 const {ownerDocument} = this.el;
                 const rect = this.el.getBoundingClientRect();
                 const vertical = getOffsetVertical(event, rect);
                 const horizontal = getOffsetHorizontal(event, rect);
 
                 return tuiTypedFromEvent(ownerDocument, 'mousemove').pipe(
-                    map(event => this.getScrolled(event, vertical, horizontal)),
+                    map((event) => this.getScrolled(event, vertical, horizontal)),
                     takeUntil(tuiTypedFromEvent(ownerDocument, 'mouseup')),
                 );
             }),
@@ -29,7 +29,7 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     );
 
     constructor() {
-        super(subscriber => this.scroll$.subscribe(subscriber));
+        super((subscriber) => this.scroll$.subscribe(subscriber));
     }
 
     private getScrolled(

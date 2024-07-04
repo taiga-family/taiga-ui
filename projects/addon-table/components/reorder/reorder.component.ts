@@ -55,7 +55,7 @@ export class TuiReorderComponent<T> {
     public set items(items: readonly T[]) {
         if (
             items.length !== this.unsortedItems.length ||
-            !items.every(item => this.unsortedItems.includes(item))
+            !items.every((item) => this.unsortedItems.includes(item))
         ) {
             this.unsortedItems = items;
         }
@@ -94,7 +94,7 @@ export class TuiReorderComponent<T> {
 
     protected toggle(toggled: T): void {
         this.enabled = this.isEnabled(toggled)
-            ? this.enabled.filter(item => item !== toggled)
+            ? this.enabled.filter((item) => item !== toggled)
             : this.enabled.concat(toggled);
 
         this.updateEnabled();
@@ -112,7 +112,7 @@ export class TuiReorderComponent<T> {
 
         const newIndex = oldIndex + direction;
         const oldItem = Array.from(this.order.values()).findIndex(
-            item => item === newIndex,
+            (item) => item === newIndex,
         );
 
         this.order.set(index, newIndex);
@@ -138,7 +138,7 @@ export class TuiReorderComponent<T> {
     }
 
     private updateEnabled(): void {
-        const enabled = this.getSortedItems().filter(item => this.isEnabled(item));
+        const enabled = this.getSortedItems().filter((item) => this.isEnabled(item));
 
         this.enabled = enabled;
         this.enabledChange.emit(enabled);

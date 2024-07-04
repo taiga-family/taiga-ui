@@ -20,6 +20,6 @@ export class TuiObscuredService extends Observable<readonly Element[] | null> {
     );
 
     constructor() {
-        super(subscriber => this.obscured$.subscribe(subscriber));
+        super((subscriber) => this.obscured$.subscribe(subscriber));
     }
 }

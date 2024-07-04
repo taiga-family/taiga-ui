@@ -190,7 +190,7 @@ describe('InputTag', () => {
         });
 
         it("doesn't add tag on hitting Enter if disabledItemHandler returned false", () => {
-            component.disabledItemHandler = item => item === 'Tag';
+            component.disabledItemHandler = (item) => item === 'Tag';
             inputPO.sendText('Tag');
             inputPO.sendKeydown('enter');
 
@@ -284,10 +284,10 @@ describe('InputTag', () => {
             const secondValidTag = 'second';
             const invalidTag = 'invalid';
 
-            component.disabledItemHandler = item => item === invalidTag;
+            component.disabledItemHandler = (item) => item === invalidTag;
             inputPO.sendText(`${firstValidTag}, ${invalidTag}, ${secondValidTag}`);
 
-            expect(component.value.find(tag => tag === invalidTag)).toBeUndefined();
+            expect(component.value.find((tag) => tag === invalidTag)).toBeUndefined();
         });
     });
 

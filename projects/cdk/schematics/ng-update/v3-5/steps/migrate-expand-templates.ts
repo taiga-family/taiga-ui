@@ -34,10 +34,10 @@ function migrateExpand({
 
     const elements = findElementsByTagName(template, 'tui-expand');
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
         const templateElement = findElementsByFn(
             element.childNodes,
-            el => el.tagName === 'ng-template',
+            (el) => el.tagName === 'ng-template',
         )[0];
 
         if (!templateElement) {
@@ -45,7 +45,7 @@ function migrateExpand({
         }
 
         const tuiExpandAttr = templateElement.attrs.find(
-            attr => attr.name === 'tuiexpandcontent',
+            (attr) => attr.name === 'tuiexpandcontent',
         );
 
         const insertTo = templateElement?.sourceCodeLocation?.startTag?.endOffset ?? 0;
@@ -71,7 +71,7 @@ export function migrateExpandTemplates(
         total: componentWithTemplatesPaths.length,
     });
 
-    componentWithTemplatesPaths.forEach(resource => {
+    componentWithTemplatesPaths.forEach((resource) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 

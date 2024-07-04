@@ -43,7 +43,7 @@ function replaceEnumWithString(
             continue;
         }
 
-        const key = Object.keys(replaceValues).find(key => parent.getName() === key);
+        const key = Object.keys(replaceValues).find((key) => parent.getName() === key);
 
         if (key) {
             parent.replaceWithText(`'${replaceValues[key]}'`);
@@ -55,7 +55,7 @@ function containTypeRef(node: ImportSpecifier): boolean {
     return node
         .getNameNode()
         .findReferencesAsNodes()
-        .some(ref => Node.isTypeReference(ref.getParent()));
+        .some((ref) => Node.isTypeReference(ref.getParent()));
 }
 
 export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {

@@ -38,7 +38,7 @@ export default class Example {
     protected value = [];
 
     protected readonly items$ = this.search$.pipe(
-        switchMap(search =>
+        switchMap((search) =>
             this.serverRequest(search).pipe(startWith<readonly string[] | null>(null)),
         ),
         startWith(databaseMockData),
@@ -52,7 +52,7 @@ export default class Example {
      * Server request emulation
      */
     private serverRequest(search: string): Observable<readonly string[]> {
-        const result = databaseMockData.filter(item =>
+        const result = databaseMockData.filter((item) =>
             item.toLowerCase().includes(search.toLowerCase()),
         );
 

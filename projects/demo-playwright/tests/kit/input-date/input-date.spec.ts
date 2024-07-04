@@ -60,7 +60,7 @@ test.describe('InputDate', () => {
             );
         });
 
-        ['s', 'm', 'l'].forEach(size => {
+        ['s', 'm', 'l'].forEach((size) => {
             test(`correct filler display for size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,
@@ -140,7 +140,7 @@ test.describe('InputDate', () => {
             userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
         });
 
-        ['russian', 'english', 'spanish'].forEach(language => {
+        ['russian', 'english', 'spanish'].forEach((language) => {
             test(`mobile calendar - ${language}`, async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputDate, {language});
                 const api = new TuiDocumentationPagePO(page);

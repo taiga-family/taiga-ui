@@ -110,7 +110,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         total: componentWithTemplatesPaths.length,
     });
 
-    componentWithTemplatesPaths.forEach(resource => {
+    componentWithTemplatesPaths.forEach((resource) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 

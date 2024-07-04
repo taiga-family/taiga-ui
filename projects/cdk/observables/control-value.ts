@@ -9,7 +9,7 @@ import {Observable, startWith} from 'rxjs';
 export function tuiControlValue<T>(
     control: AbstractControl | AbstractControlDirective | null,
 ): Observable<T> {
-    return new Observable(subscriber => {
+    return new Observable((subscriber) => {
         if (!control?.valueChanges) {
             throw new TuiValueChangesException();
         }

@@ -103,7 +103,7 @@ function findTuiIconNames(
                 );
 
                 if (tuiIconMatches) {
-                    tuiIconMatches.forEach(match => {
+                    tuiIconMatches.forEach((match) => {
                         if (!excludedNames.includes(match)) {
                             tuiIconNames.add(match);
                         }

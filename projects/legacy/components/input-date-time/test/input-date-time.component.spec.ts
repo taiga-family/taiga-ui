@@ -421,7 +421,7 @@ describe('InputDateTime', () => {
             testContext.calendarCellAutomationId,
         );
         const cell = cells.find(
-            debugEl => debugEl.nativeElement.textContent.trim() === `${dayNumber}`,
+            (debugEl) => debugEl.nativeElement.textContent.trim() === `${dayNumber}`,
         );
 
         cell?.nativeElement.click();
@@ -448,8 +448,9 @@ describe('InputDateTime', () => {
         return (
             pageObject
                 .getAllByAutomationId(testContext.calendarCellAutomationId)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
-            null
+                .find(
+                    (el) => Number(el.nativeElement.textContent.trim()) === dayNumber,
+                ) || null
         );
     }
 });

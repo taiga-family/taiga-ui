@@ -15,9 +15,9 @@ function assertTitle(page: TuiDocRoutePage, map: Map<string, TuiDocRoutePage>): 
 export function tuiToFlatMapPages(pages: TuiDocRoutePages): Map<string, TuiDocRoutePage> {
     const map = new Map<string, TuiDocRoutePage>();
 
-    pages.forEach(page => {
+    pages.forEach((page) => {
         if ('subPages' in page) {
-            page.subPages.forEach(subPage => {
+            page.subPages.forEach((subPage) => {
                 ngDevMode && assertTitle(subPage, map);
                 map.set(subPage.title, subPage);
             });

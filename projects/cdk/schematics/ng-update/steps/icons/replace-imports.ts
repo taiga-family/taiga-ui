@@ -19,21 +19,21 @@ export function replaceImports(
 
     replaceable.forEach(({from, to}) => {
         const importDeclarations = allImports.filter(
-            declaration =>
+            (declaration) =>
                 !declaration.wasForgotten() &&
                 declaration.getModuleSpecifierValue() === from.moduleSpecifier &&
                 declaration
                     .getNamedImports()
-                    .some(specifier => specifier.getName() === from.name),
+                    .some((specifier) => specifier.getName() === from.name),
         );
 
-        const namedImports = importDeclarations.map(declaration =>
+        const namedImports = importDeclarations.map((declaration) =>
             declaration
                 .getNamedImports()
-                .find(specifier => specifier.getName() === from.name),
+                .find((specifier) => specifier.getName() === from.name),
         );
 
-        namedImports.forEach(namedImport => {
+        namedImports.forEach((namedImport) => {
             if (Node.isImportSpecifier(namedImport) && !namedImport.wasForgotten()) {
                 removeImport(namedImport);
                 addUniqueImport(

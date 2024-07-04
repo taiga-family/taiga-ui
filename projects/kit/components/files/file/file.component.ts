@@ -131,7 +131,7 @@ export class TuiFile {
         fileTexts$: Observable<Record<keyof TuiLanguage['fileTexts'], string>>,
     ): Observable<PolymorpheusContent> {
         return state === 'error' && !file.content
-            ? fileTexts$.pipe(map(texts => texts.loadingError))
+            ? fileTexts$.pipe(map((texts) => texts.loadingError))
             : of(this.file.content || '');
     }
 
@@ -140,7 +140,7 @@ export class TuiFile {
         file: TuiFileLike,
         units$: Observable<[string, string, string]>,
     ): Observable<string | null> {
-        return units$.pipe(map(units => this.options.formatSize(units, file.size)));
+        return units$.pipe(map((units) => this.options.formatSize(units, file.size)));
     }
 
     @tuiPure

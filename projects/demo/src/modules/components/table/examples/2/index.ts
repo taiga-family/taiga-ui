@@ -77,7 +77,7 @@ export default class Example {
     ]);
 
     protected remove(item: User): void {
-        const users = this.users$.getValue().filter(user => user !== item);
+        const users = this.users$.getValue().filter((user) => user !== item);
 
         this.users$.next(users);
     }

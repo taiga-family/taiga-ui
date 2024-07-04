@@ -38,21 +38,23 @@ export default class Page {
     protected value = this.valueVariants[0];
 
     protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map(months => Array.from({length: 3}, (_, i) => months[i])),
+        map((months) => Array.from({length: 3}, (_, i) => months[i])),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
-        y => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
+        (y) => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
     protected readonly xStringifyVariants$: Observable<
         ReadonlyArray<TuiStringHandler<TuiDay>>
-    > = this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
+    > = this.months$.pipe(
+        map((months) => [({month, day}) => `${months[month]}, ${day}`]),
+    );
 
     protected readonly hintContentVariants$: Observable<
         ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
     > = this.months$.pipe(
-        map(months => [
+        map((months) => [
             '',
             ({$implicit}) =>
                 `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(

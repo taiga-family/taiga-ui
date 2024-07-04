@@ -12,7 +12,7 @@ export class TuiKeyboardService implements OnDestroy {
     private readonly sub = merge(
         fromEvent(this.doc, 'focusout'),
         fromEvent(this.doc, 'mousedown').pipe(
-            filter(e => Object.is(e.target, this.element)),
+            filter((e) => Object.is(e.target, this.element)),
         ),
     ).subscribe(() => {
         this.show();

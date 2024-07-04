@@ -24,14 +24,14 @@ describe('TuiPan', () => {
                 imports: [TuiPan],
                 providers: [NG_EVENT_PLUGINS],
             })
-            .then(wrapper => {
+            .then((wrapper) => {
                 component = wrapper.component;
             }),
     );
 
     it('emits delta', () => {
         cy.get('section')
-            .then(query => {
+            .then((query) => {
                 const element = query.get(0);
 
                 sendTouchEvent(0, 0, element, 'touchstart');

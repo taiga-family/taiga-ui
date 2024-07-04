@@ -19,18 +19,18 @@ export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     return concat(
         tuiTypedFromEvent(element, 'mousedown').pipe(
             take(1),
-            map(event => new TuiDragState('start', event)),
+            map((event) => new TuiDragState('start', event)),
         ),
         merge(
             tuiTypedFromEvent(ownerDocument, 'mousemove').pipe(
-                map(event => new TuiDragState('continues', event)),
+                map((event) => new TuiDragState('continues', event)),
             ),
             merge(
                 tuiTypedFromEvent(ownerDocument, 'mouseup'),
                 tuiTypedFromEvent(ownerDocument, 'dragend'),
             ).pipe(
                 take(1),
-                map(event => new TuiDragState('end', event)),
+                map((event) => new TuiDragState('end', event)),
                 endWith(null),
             ),
         ).pipe(takeWhile(tuiIsPresent)),

@@ -39,7 +39,7 @@ export class TuiHintDescribe extends TuiDriver {
                       tuiTypedFromEvent(this.element, 'blur'),
                   ).pipe(map(() => this.focused)),
         ),
-        debounce(visible => (visible ? timer(1000) : of(null))),
+        debounce((visible) => (visible ? timer(1000) : of(null))),
         startWith(false),
         distinctUntilChanged(),
         skip(1),
@@ -49,7 +49,7 @@ export class TuiHintDescribe extends TuiDriver {
     public readonly type = 'hint';
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     @Input()

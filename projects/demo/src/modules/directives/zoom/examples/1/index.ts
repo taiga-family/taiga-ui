@@ -22,7 +22,7 @@ export default class Example {
         startWith(1),
     );
 
-    protected readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
+    protected readonly transform$ = this.scale$.pipe(map((scale) => `scale(${scale})`));
 
     protected onZoom({delta}: TuiZoomEvent): void {
         this.delta$.next(delta);

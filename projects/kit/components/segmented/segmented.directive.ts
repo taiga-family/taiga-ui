@@ -62,10 +62,10 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     }
 
     private get linkIndex(): number {
-        return this.links.toArray().findIndex(link => link.isActive);
+        return this.links.toArray().findIndex((link) => link.isActive);
     }
 
     private getIndex(element: Element | null): number {
-        return Array.from(this.el.children).findIndex(tab => tab.contains(element));
+        return Array.from(this.el.children).findIndex((tab) => tab.contains(element));
     }
 }

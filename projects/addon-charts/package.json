@@ -19,7 +19,7 @@
         "@ng-web-apis/common": "^4.1.2",
         "@taiga-ui/cdk": "^4.0.0-rc.2",
         "@taiga-ui/core": "^4.0.0-rc.2",
-        "@taiga-ui/polymorpheus": "^4.6.3",
+        "@taiga-ui/polymorpheus": "^4.6.4",
         "tslib": "^2.6.3"
     }
 }

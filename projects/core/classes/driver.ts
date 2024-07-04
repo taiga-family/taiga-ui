@@ -27,7 +27,7 @@ export abstract class TuiDriverDirective implements OnInit {
 
         merge(...this.drivers.filter(({type}) => type === this.type))
             .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
+            .subscribe((value) => {
                 vehicle?.toggle(value);
             });
     }

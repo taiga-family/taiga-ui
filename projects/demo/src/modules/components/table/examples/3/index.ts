@@ -129,12 +129,12 @@ export default class Example {
 
         this.pythons =
             data === this.pythons
-                ? this.pythons.map(item => (item === current ? updated : item))
+                ? this.pythons.map((item) => (item === current ? updated : item))
                 : this.pythons;
 
         this.starwars =
             data === this.starwars
-                ? this.starwars.map(item => (item === current ? updated : item))
+                ? this.starwars.map((item) => (item === current ? updated : item))
                 : this.starwars;
     }
 }

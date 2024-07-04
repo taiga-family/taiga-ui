@@ -73,16 +73,16 @@ export default class Example {
     protected readonly user$ = merge(
         this.selected$,
         this.search$.pipe(
-            switchMap(value =>
+            switchMap((value) =>
                 this.request(value).pipe(
-                    map(response =>
+                    map((response) =>
                         this.isFullMatch(response, value) ? response[0] : null,
                     ),
                 ),
             ),
         ),
     ).pipe(
-        tap(user => {
+        tap((user) => {
             if (user) {
                 this.value = user.phone;
             }
@@ -91,9 +91,9 @@ export default class Example {
 
     protected readonly items$ = this.search$.pipe(
         startWith(''),
-        switchMap(value =>
+        switchMap((value) =>
             this.request(value).pipe(
-                map(response => (this.isFullMatch(response, value) ? [] : response)),
+                map((response) => (this.isFullMatch(response, value) ? [] : response)),
             ),
         ),
     );
@@ -116,7 +116,7 @@ export default class Example {
     private request(query: string): Observable<readonly User[]> {
         return of(
             DATA.filter(
-                item =>
+                (item) =>
                     TUI_DEFAULT_MATCHER(item, query) ||
                     TUI_DEFAULT_MATCHER(item.phone, query),
             ),

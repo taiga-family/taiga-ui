@@ -134,7 +134,7 @@ export class TuiCalendar {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => item =>
+    > = (disabledItemHandler, min, max) => (item) =>
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
     protected onPaginationYearClick(): void {

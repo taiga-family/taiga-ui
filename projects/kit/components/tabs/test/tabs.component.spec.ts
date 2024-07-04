@@ -65,7 +65,7 @@ describe('Tabs', () => {
 
         it('when you click on a tab it changes the active tab', () => {
             const [firstTab, secondTab] = getTabs().map(
-                tab => tab.nativeElement as HTMLButtonElement,
+                (tab) => tab.nativeElement as HTMLButtonElement,
             );
 
             expect(firstTab).toEqual(component.tabsDirective.activeElement);
@@ -79,7 +79,7 @@ describe('Tabs', () => {
 
         it('when a tab is active, it has the class _active', () => {
             const [firstTab, secondTab] = getTabs().map(
-                tab => tab.nativeElement as HTMLButtonElement,
+                (tab) => tab.nativeElement as HTMLButtonElement,
             );
 
             expect(firstTab.classList.contains('_active')).toBeTruthy();

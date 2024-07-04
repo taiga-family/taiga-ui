@@ -12,15 +12,15 @@ function showWarning(
         moduleSpecifier,
         namedImports: [name],
     })
-        .map(i =>
+        .map((i) =>
             i
                 .getNamedImports()
-                .find(namedImport => namedImport.getName() === name)
+                .find((namedImport) => namedImport.getName() === name)
                 ?.getNameNode(),
         )
         .filter(<T>(namedImport?: T): namedImport is T => Boolean(namedImport));
 
-    const referencesMeta = references.map(ref => {
+    const referencesMeta = references.map((ref) => {
         const sourceFile = ref.getSourceFile();
 
         return {
@@ -45,5 +45,5 @@ export function showWarnings(
     context: SchematicContext,
     warnings: readonly MigrationWarning[],
 ): void {
-    warnings.forEach(warning => showWarning(warning, context));
+    warnings.forEach((warning) => showWarning(warning, context));
 }

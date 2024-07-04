@@ -28,14 +28,14 @@ describe('TuiSwipe', () => {
                 imports: [TuiSwipe],
                 providers: [NG_EVENT_PLUGINS],
             })
-            .then(wrapper => {
+            .then((wrapper) => {
                 component = wrapper.component;
             }),
     );
 
     it('emits events bottom', () => {
         cy.get('section')
-            .then(query =>
+            .then((query) =>
                 cy
                     .wrap(query)
                     .trigger(...touch('touchstart', 0, 0, query.get(0)))
@@ -46,7 +46,7 @@ describe('TuiSwipe', () => {
 
     it('emits events right', () => {
         cy.get('section')
-            .then(query =>
+            .then((query) =>
                 cy
                     .wrap(query)
                     .trigger(...touch('touchstart', 0, 0, query.get(0)))
@@ -57,7 +57,7 @@ describe('TuiSwipe', () => {
 
     it('does not emit events due to threshold', () => {
         cy.get('section')
-            .then(query =>
+            .then((query) =>
                 cy
                     .wrap(query)
                     .trigger(...touch('touchstart', 0, 0, query.get(0)))

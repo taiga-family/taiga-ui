@@ -21,7 +21,7 @@ const CHANGED_ICONS = [
 export function renameIcons(pattern = ALL_FILES): void {
     const sourceFiles = getSourceFiles(pattern);
 
-    sourceFiles.forEach(file => {
+    sourceFiles.forEach((file) => {
         let text = file.getFullText();
 
         CHANGED_ICONS.map(({from, to}) => ({
@@ -33,7 +33,7 @@ export function renameIcons(pattern = ALL_FILES): void {
 
         const regex = /\btuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
 
-        text = text.replaceAll(regex, match => convertString(match));
+        text = text.replaceAll(regex, (match) => convertString(match));
 
         file.replaceWithText(text);
     });

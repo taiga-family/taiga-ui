@@ -87,7 +87,7 @@ export class TuiInputDateTimeComponent
 
     protected readonly filler$: Observable<string> = combineLatest([
         this.dateTexts$.pipe(
-            map(dateTexts =>
+            map((dateTexts) =>
                 changeDateSeparator(
                     dateTexts[this.dateFormat.mode],
                     this.dateFormat.separator,
@@ -106,7 +106,7 @@ export class TuiInputDateTimeComponent
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
+        .subscribe((format) => {
             this.dateFormat = format;
         });
 

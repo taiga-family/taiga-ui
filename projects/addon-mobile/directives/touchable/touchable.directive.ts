@@ -43,7 +43,7 @@ export class TuiTouchable {
             .pipe(
                 tap(() => this.onTouchStart()),
                 map(({touches}) => touches[touches.length - 1].identifier),
-                switchMap(identifier =>
+                switchMap((identifier) =>
                     race(
                         tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>

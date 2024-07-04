@@ -24,7 +24,7 @@ export class TuiExamplePipe implements PipeTransform {
         return Object.fromEntries(
             formats
                 .split(',')
-                .map(format => [
+                .map((format) => [
                     format === 'ts' ? 'TypeScript' : format.toUpperCase(),
                     import(
                         `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.${format}?raw`

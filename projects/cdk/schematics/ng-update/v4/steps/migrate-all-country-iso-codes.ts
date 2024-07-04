@@ -19,7 +19,7 @@ export function migrateAllCountryIsoCodes(options: TuiSchema): void {
 
     const references = getNamedImportReferences('TuiCountryIsoCode', '@taiga-ui/i18n');
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }

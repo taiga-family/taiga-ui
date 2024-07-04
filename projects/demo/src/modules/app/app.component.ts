@@ -61,7 +61,7 @@ export class App extends AbstractDemo implements OnInit {
                 filter((event): event is NavigationEnd => event instanceof NavigationEnd),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(event =>
+            .subscribe((event) =>
                 this.ym.hit(event.urlAfterRedirects, {referer: event.url}),
             );
     }

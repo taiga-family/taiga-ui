@@ -228,7 +228,7 @@ export class TuiCalendarMonth {
         minLength: number | null,
         maxLength: number | null,
     ): TuiBooleanHandler<TuiMonth> {
-        return item => {
+        return (item) => {
             const delta =
                 value instanceof TuiMonthRange && value.isSingleMonth
                     ? Math.abs(

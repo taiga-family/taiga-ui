@@ -40,7 +40,7 @@ describe('TuiRange', () => {
         cy.mount(Test, {
             imports: [TuiRange, ReactiveFormsModule],
             providers: [NG_EVENT_PLUGINS],
-        }).then(wrapper => {
+        }).then((wrapper) => {
             component = wrapper.component;
             fixture = wrapper.fixture;
         });

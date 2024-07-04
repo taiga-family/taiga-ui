@@ -17,7 +17,7 @@ export class TuiDroppable {
     @Output()
     public readonly tuiDroppableDropped = tuiTypedFromEvent(this.el, 'drop').pipe(
         tuiPreventDefault(),
-        map(event => event.dataTransfer),
+        map((event) => event.dataTransfer),
         filter(tuiIsPresent),
     );
 
@@ -29,7 +29,7 @@ export class TuiDroppable {
         switchMap(({target, dataTransfer}) =>
             merge(
                 tuiTypedFromEvent(this.el, 'dragleave').pipe(
-                    filter(event => event.target === target),
+                    filter((event) => event.target === target),
                 ),
                 tuiTypedFromEvent(this.el, 'drop'),
             ).pipe(

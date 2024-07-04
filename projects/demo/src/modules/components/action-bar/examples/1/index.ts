@@ -37,7 +37,7 @@ export default class Example {
     protected expanded = false;
 
     protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map(size => size === 'mobile')),
+        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
     );
 
     protected get value(): string[] {

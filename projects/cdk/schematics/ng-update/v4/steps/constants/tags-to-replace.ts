@@ -7,13 +7,13 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-input-count',
         to: 'tui-input-number',
         addAttributes: ['decimal="never"'],
-        filterFn: element => element.attrs.some(attr => attr.name === '[step]'),
+        filterFn: (element) => element.attrs.some((attr) => attr.name === '[step]'),
     },
     {
         from: 'tui-input-count',
         to: 'tui-input-number',
         addAttributes: ['decimal="never"', '[step]="1"'],
-        filterFn: element => element.attrs.every(attr => attr.name !== '[step]'),
+        filterFn: (element) => element.attrs.every((attr) => attr.name !== '[step]'),
     },
     {
         from: 'tui-money',
@@ -32,14 +32,14 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
     {
         from: 'tui-hosted-dropdown',
         to: 'div',
-        filterFn: el =>
-            el.attrs.some(attr => attr.name === '[open]' || attr.name === '[(open)]'),
+        filterFn: (el) =>
+            el.attrs.some((attr) => attr.name === '[open]' || attr.name === '[(open)]'),
     },
     {
         from: 'tui-hosted-dropdown',
         to: 'div',
-        filterFn: el =>
-            el.attrs.every(attr => attr.name !== '[open]' && attr.name !== '[(open)]'),
+        filterFn: (el) =>
+            el.attrs.every((attr) => attr.name !== '[open]' && attr.name !== '[(open)]'),
         addAttributes: ['tuiDropdownOpen'],
     },
     {

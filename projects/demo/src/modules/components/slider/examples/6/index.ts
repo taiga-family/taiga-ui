@@ -24,7 +24,7 @@ export default class Example {
     protected readonly active$ = new BehaviorSubject(false);
     protected readonly showHint$ = this.active$.pipe(
         distinctUntilChanged(),
-        switchMap(active =>
+        switchMap((active) =>
             active ? of(true) : timer(1000).pipe(map(TUI_FALSE_HANDLER)),
         ),
     );

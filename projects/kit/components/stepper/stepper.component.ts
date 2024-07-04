@@ -131,7 +131,7 @@ export class TuiStepperComponent {
         }
 
         const stepElements = this.steps.toArray().map(({nativeElement}) => nativeElement);
-        const index = stepElements.findIndex(element => element === current);
+        const index = stepElements.findIndex((element) => element === current);
 
         tuiMoveFocus(index, stepElements, step);
     }

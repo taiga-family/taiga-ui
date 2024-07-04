@@ -45,9 +45,9 @@ export default class Example {
     // Items only hold IDs
     protected readonly items$ = this.search$.pipe(
         startWith(''),
-        switchMap(search =>
+        switchMap((search) =>
             this.server$.pipe(
-                map(items =>
+                map((items) =>
                     items
                         .filter(({name}) => TUI_DEFAULT_MATCHER(name, search))
                         .map(({id}) => id),
@@ -61,10 +61,10 @@ export default class Example {
     protected readonly stringify$: Observable<
         TuiHandler<TuiContext<number> | number, string>
     > = this.server$.pipe(
-        map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
+        map((items) => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
         startWith(new Map()),
         map(
-            map => (id: TuiContext<number> | number) =>
+            (map) => (id: TuiContext<number> | number) =>
                 (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
         ),
     );

@@ -129,7 +129,7 @@ test.describe('Input', () => {
     });
 
     test.describe('check tuiTextfieldCleaner', () => {
-        ['s', 'm', 'l'].forEach(size => {
+        ['s', 'm', 'l'].forEach((size) => {
             test(`size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,

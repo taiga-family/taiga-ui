@@ -37,13 +37,13 @@ export class TuiDropdownHover extends TuiDriver {
     private readonly open = inject(TuiDropdownOpen, {optional: true});
     private readonly stream$ = merge(
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
-        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map(e => e.relatedTarget)),
+        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
     ).pipe(
-        map(element => tuiIsElement(element) && this.isHovered(element)),
+        map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
-        switchMap(v => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
+        switchMap((v) => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
         tuiZoneOptimized(inject(NgZone)),
-        tap(hovered => {
+        tap((hovered) => {
             this.hovered = hovered;
             this.open?.toggle(hovered);
         }),
@@ -61,7 +61,7 @@ export class TuiDropdownHover extends TuiDriver {
     public readonly type = 'dropdown';
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     @HostListener('click.capture', ['$event'])

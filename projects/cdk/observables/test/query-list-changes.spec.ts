@@ -12,7 +12,7 @@ describe('tuiQueryListChanges', () => {
     it('emits current array on subscription', () => {
         let result: readonly number[] | null = null;
 
-        tuiQueryListChanges<number>(queryList).subscribe(data => {
+        tuiQueryListChanges<number>(queryList).subscribe((data) => {
             result = data;
         });
 
@@ -22,7 +22,7 @@ describe('tuiQueryListChanges', () => {
     it('emits new array on changes', () => {
         let result: readonly number[] | null = null;
 
-        tuiQueryListChanges<number>(queryList).subscribe(data => {
+        tuiQueryListChanges<number>(queryList).subscribe((data) => {
             result = data;
         });
 

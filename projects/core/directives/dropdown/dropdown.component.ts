@@ -66,7 +66,7 @@ export class TuiDropdownComponent implements OnInit {
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
-            map(v => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+            map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
             takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {

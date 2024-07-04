@@ -16,8 +16,11 @@ export class TuiEmailsPipe implements PipeTransform {
     ): readonly string[] {
         return query.includes('@')
             ? suggestions
-                  .map(item => query.slice(0, Math.max(0, query.indexOf('@') + 1)) + item)
-                  .filter(item => item.startsWith(query))
+                  .map(
+                      (item) =>
+                          query.slice(0, Math.max(0, query.indexOf('@') + 1)) + item,
+                  )
+                  .filter((item) => item.startsWith(query))
             : [];
     }
 }

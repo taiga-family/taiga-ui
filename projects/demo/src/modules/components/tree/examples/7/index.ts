@@ -62,7 +62,7 @@ export default class Example {
 
     protected map = new Map<Item, boolean>();
 
-    protected childrenHandler: TuiHandler<Item, readonly Item[]> = item =>
+    protected childrenHandler: TuiHandler<Item, readonly Item[]> = (item) =>
         this.service.getChildren(item);
 
     protected onToggled(item: Item): void {

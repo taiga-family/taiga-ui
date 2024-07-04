@@ -50,9 +50,9 @@ const EXCEPTIONS = [
         demoRoutesFileContent
             .match(/['"`](.*)['"`]/g)
             // @ts-ignore Try changing the lib compiler option to es2021 or later
-            ?.map(route => route.replaceAll(/['"`]/g, '')) || [];
+            ?.map((route) => route.replaceAll(/['"`]/g, '')) || [];
 
-    routes.forEach(route => {
+    routes.forEach((route) => {
         if (
             /**
              * Temporarily workaround!
@@ -78,7 +78,7 @@ const EXCEPTIONS = [
     titleLog('Generated routes:');
     [...routes]
         .sort((a, b) => a.localeCompare(b))
-        .forEach(route => infoLog(`${SMALL_TAB_SYMBOL}* ${route}`));
+        .forEach((route) => infoLog(`${SMALL_TAB_SYMBOL}* ${route}`));
 
     writeFileSync(
         join(process.cwd(), 'projects', 'demo', 'routes.txt'),

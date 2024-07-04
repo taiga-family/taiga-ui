@@ -38,7 +38,7 @@ export class TuiSheetsHostComponent implements OnInit {
         // can happen after view was checked, so calling `detectChanges` instead
         this.service.sheets$
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(sheets => {
+            .subscribe((sheets) => {
                 this.sheets = sheets;
                 this.cdr.detectChanges();
             });

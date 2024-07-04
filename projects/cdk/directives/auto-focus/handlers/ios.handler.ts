@@ -141,7 +141,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * so that when focusing the dialogs don't shake
      */
     private patchCssStyles(): void {
-        [this.win.document.documentElement, this.win.document.body].forEach(element => {
+        [this.win.document.documentElement, this.win.document.body].forEach((element) => {
             element.style.setProperty('overflow', 'auto');
             element.style.setProperty('height', '100%');
         });
@@ -154,7 +154,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * for example [inputMode=numeric, autocomplete=cc-number]
      */
     private patchFakeInputFromFocusableElement(fakeInput: HTMLInputElement): void {
-        TEXTFIELD_ATTRS.forEach(attr => {
+        TEXTFIELD_ATTRS.forEach((attr) => {
             const value = this.element.getAttribute(attr);
 
             if (tuiIsPresent(value)) {

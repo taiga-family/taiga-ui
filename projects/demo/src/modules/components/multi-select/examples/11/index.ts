@@ -46,6 +46,6 @@ export default class Example {
     }) => `Selected: ${length}`;
 
     protected remove(item: string): void {
-        this.value = this.value.filter(val => val !== item);
+        this.value = this.value.filter((val) => val !== item);
     }
 }

@@ -49,7 +49,7 @@ export class TuiToCountryCodePipe implements PipeTransform {
         value: string,
         countries: readonly TuiCountryIsoCode[],
     ): TuiCountryIsoCode | undefined {
-        return countries.find(countryIsoCode => {
+        return countries.find((countryIsoCode) => {
             const ruCodeTest =
                 countryIsoCode === 'RU' &&
                 /^[78]/.test(value) &&

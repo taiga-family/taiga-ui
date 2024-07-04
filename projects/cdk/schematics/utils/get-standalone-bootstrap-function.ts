@@ -9,8 +9,8 @@ export function getStandaloneBootstrapFunction(path: string): CallExpression | n
         '@angular/platform-browser',
         path,
     )
-        .map(ref => ref.getParent())
-        .find(node => Node.isCallExpression(node));
+        .map((ref) => ref.getParent())
+        .find((node) => Node.isCallExpression(node));
 
     const standaloneBootstrapFunction = standaloneBootstrapIdentifier as CallExpression;
 

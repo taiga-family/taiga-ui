@@ -58,7 +58,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
             sheet.push(row);
         }
 
-        this.currentSheet = sheet.filter(row => row.length);
+        this.currentSheet = sheet.filter((row) => row.length);
         this.currentMonth = month;
 
         return this.currentSheet;

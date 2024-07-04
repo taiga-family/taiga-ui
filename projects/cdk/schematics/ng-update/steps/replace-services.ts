@@ -27,7 +27,7 @@ function replaceService(
 
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -60,7 +60,7 @@ function replaceProperties(
     const statement = parent.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
-    identifier?.findReferencesAsNodes().forEach(ref => {
+    identifier?.findReferencesAsNodes().forEach((ref) => {
         let parent = ref.getParent();
 
         if (
@@ -83,9 +83,9 @@ function replaceProperty(
 ): void {
     const identifiers = node.getChildrenOfKind(SyntaxKind.Identifier);
 
-    identifiers.forEach(identifier => {
+    identifiers.forEach((identifier) => {
         const property = properties?.find(
-            property => property.from === identifier.getText(),
+            (property) => property.from === identifier.getText(),
         );
 
         if (property) {
@@ -101,7 +101,7 @@ export function replaceServices(
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
 
-    services.forEach(service => replaceService(service, options));
+    services.forEach((service) => replaceService(service, options));
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);

@@ -8,5 +8,5 @@ bootstrapApplication(App, {
     NG_EVENT_PLUGINS,
     //...
   ],
-}).catch(err => console.error(err));
+}).catch((err) => console.error(err));
 ```

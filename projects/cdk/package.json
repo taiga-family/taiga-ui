@@ -33,7 +33,7 @@
         "@ng-web-apis/mutation-observer": "^4.1.2",
         "@ng-web-apis/resize-observer": "^4.1.2",
         "@taiga-ui/event-plugins": "^4.0.1",
-        "@taiga-ui/polymorpheus": "^4.6.3",
+        "@taiga-ui/polymorpheus": "^4.6.4",
         "rxjs": ">=7.0.0"
     },
     "optionalDependencies": {

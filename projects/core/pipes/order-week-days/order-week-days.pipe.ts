@@ -28,7 +28,7 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
             map(
-                weekDays =>
+                (weekDays) =>
                     [
                         ...weekDays.slice(this.firstDayOfWeekIndex),
                         ...weekDays.slice(0, this.firstDayOfWeekIndex),

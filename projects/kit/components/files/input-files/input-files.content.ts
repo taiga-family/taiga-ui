@@ -45,7 +45,7 @@ export class TuiInputFilesContent {
         return fileDragged
             ? of('')
             : this.text$.pipe(
-                  map(t => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
+                  map((t) => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
               );
     }
 

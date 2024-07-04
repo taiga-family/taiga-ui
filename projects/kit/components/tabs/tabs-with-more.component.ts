@@ -115,9 +115,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
             .pipe(
                 map(() => this.getMaxIndex()),
                 tap(() => this.refresh()),
-                filter(maxIndex => this.maxIndex !== maxIndex),
+                filter((maxIndex) => this.maxIndex !== maxIndex),
             )
-            .subscribe(maxIndex => {
+            .subscribe((maxIndex) => {
                 this.maxIndex = maxIndex;
                 this.cdr.detectChanges();
             });

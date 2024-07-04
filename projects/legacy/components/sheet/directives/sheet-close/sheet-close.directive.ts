@@ -26,7 +26,7 @@ export class TuiSheetCloseDirective {
         tuiTypedFromEvent(this.el, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             tuiIfMap(() => this.scroll$.pipe(startWith(this.el.scrollTop)), tuiIsFalsy),
-            filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
+            filter((y) => this.sheet.item?.closeable && this.shouldClose(y)),
             distinctUntilChanged(),
             tuiZonefull(this.zone),
         ),

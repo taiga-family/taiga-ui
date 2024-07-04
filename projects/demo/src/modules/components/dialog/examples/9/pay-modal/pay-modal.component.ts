@@ -138,10 +138,10 @@ export class PayModal implements OnInit {
         this.payService
             .preparePayment(this.context.data.amount)
             .pipe(
-                switchMap(amount =>
+                switchMap((amount) =>
                     this.payService
                         .getPrimaryCard()
-                        .pipe(map(data => [amount, data] as [number, FetchedCards])),
+                        .pipe(map((data) => [amount, data] as [number, FetchedCards])),
                 ),
                 takeUntilDestroyed(this.destroyRef),
             )

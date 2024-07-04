@@ -43,18 +43,18 @@ export class TuiPullToRefresh {
     );
 
     protected readonly dropped$: Observable<boolean> = this.pulling$.pipe(
-        map(distance => distance <= MICRO_OFFSET || distance === this.threshold),
+        map((distance) => distance <= MICRO_OFFSET || distance === this.threshold),
         distinctUntilChanged(),
     );
 
     @Input()
     public styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
-        ? distance => ({top: tuiPx(distance / 2)})
+        ? (distance) => ({top: tuiPx(distance / 2)})
         : () => null;
 
     @Output()
     public readonly pulled: Observable<unknown> = inject(TuiPullToRefreshService).pipe(
-        filter(distance => distance === this.threshold),
+        filter((distance) => distance === this.threshold),
     );
 
     constructor() {

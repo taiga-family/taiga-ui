@@ -50,7 +50,7 @@ describe('TuiStaticRequestService', () => {
         let completed = false;
 
         service.request(`${baseUrl}/test`).subscribe({
-            next: response => {
+            next: (response) => {
                 result1 = response;
             },
             complete: () => {
@@ -59,7 +59,7 @@ describe('TuiStaticRequestService', () => {
         });
 
         service.request(`${baseUrl}/test`).subscribe({
-            next: response => {
+            next: (response) => {
                 result2 = response;
             },
             complete: () => {

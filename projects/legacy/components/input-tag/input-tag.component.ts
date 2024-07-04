@@ -223,7 +223,7 @@ export class TuiInputTagComponent
                         ? tag
                         : value
                               .split(this.separator)
-                              .map(tag => tag.trim())
+                              .map((tag) => tag.trim())
                               .filter(Boolean),
                 )
                 .reduce<string[]>(
@@ -397,9 +397,9 @@ export class TuiInputTagComponent
     protected onInput(value: string): void {
         const array = value.split(this.separator);
         const tags = array
-            .map(item => this.clippedValue(item.trim()))
+            .map((item) => this.clippedValue(item.trim()))
             .filter((item, index, {length}) => item.length > 0 && index !== length - 1);
-        const validated = tags.filter(tag => !this.disabledItemHandler(tag));
+        const validated = tags.filter((tag) => !this.disabledItemHandler(tag));
 
         if (array.length > 1) {
             this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
@@ -451,7 +451,7 @@ export class TuiInputTagComponent
         return value
             .reverse()
             .filter(
-                item => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
+                (item) => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
             )
             .reverse();
     }

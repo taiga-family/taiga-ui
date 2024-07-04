@@ -66,7 +66,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
 
         return tuiIsPresent(match)
             ? items
-            : items.filter(item => matcher(item, query, stringify));
+            : items.filter((item) => matcher(item, query, stringify));
     }
 
     private filter2d<T>(
@@ -75,13 +75,13 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        const match = items.find(item =>
+        const match = items.find((item) =>
             tuiIsPresent(this.getMatch(item, stringify, query)),
         );
 
         return tuiIsPresent(match)
             ? items
-            : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
+            : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
     }
 
     private getMatch<T>(
@@ -90,7 +90,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         query: string,
     ): T | undefined {
         return items.find(
-            item => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
+            (item) => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
         );
     }
 }

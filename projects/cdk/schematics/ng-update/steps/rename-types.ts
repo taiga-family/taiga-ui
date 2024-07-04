@@ -23,7 +23,7 @@ function renameType(
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -64,7 +64,7 @@ function removeGeneric(type: string): string {
 }
 
 function addGeneric(typeName: string, generics: TypeNode[]): string {
-    const typeArgs = generics.map(t => t.getType().getText());
+    const typeArgs = generics.map((t) => t.getType().getText());
     const genericType = typeArgs.length ? `<${typeArgs.join(', ')}>` : '';
 
     return typeName + genericType;

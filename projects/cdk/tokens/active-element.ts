@@ -77,10 +77,10 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
         ),
         blur$.pipe(
             map(() => doc.activeElement),
-            filter(element => !!element?.matches('iframe')),
+            filter((element) => !!element?.matches('iframe')),
         ),
         focusin$.pipe(
-            switchMap(event => {
+            switchMap((event) => {
                 const target = tuiGetActualTarget(event);
                 const root = tuiGetDocumentOrShadowRoot(target) as Document;
 
@@ -90,7 +90,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
             }),
         ),
         mousedown$.pipe(
-            switchMap(event => {
+            switchMap((event) => {
                 const actualTargetInCurrentTime = tuiGetActualTarget(event);
 
                 return !doc.activeElement || doc.activeElement === doc.body

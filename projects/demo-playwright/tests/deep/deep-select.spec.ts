@@ -4,7 +4,7 @@ import {expect, test} from '@playwright/test';
 test.describe('Deep / Select', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
-    deepPaths.forEach(path =>
+    deepPaths.forEach((path) =>
         test(path, async ({page}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);

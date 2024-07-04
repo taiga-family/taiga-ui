@@ -19,7 +19,7 @@ export class TuiTableFiltersDirective<T> {
     }
 
     public unregister(filter: TuiTableFilter<T>): void {
-        this.filters = this.filters.filter(item => item !== filter);
+        this.filters = this.filters.filter((item) => item !== filter);
         this.update();
     }
 
@@ -27,12 +27,12 @@ export class TuiTableFiltersDirective<T> {
         return this.refresh$.pipe(
             switchMap(identity),
             startWith(null),
-            map(() => items.filter(item => this.check(item))),
+            map(() => items.filter((item) => this.check(item))),
         );
     }
 
     private check(item: T): boolean {
-        return this.filters.every(filter => filter.filter(item));
+        return this.filters.every((filter) => filter.filter(item));
     }
 
     private update(): void {

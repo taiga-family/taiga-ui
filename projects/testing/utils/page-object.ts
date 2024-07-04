@@ -15,7 +15,7 @@ export class TuiPageObject<T> {
     }
 
     private static byAutomationId(automationId: string): Predicate<DebugElement> {
-        return debugElement => TuiPageObject.containsId(debugElement, automationId);
+        return (debugElement) => TuiPageObject.containsId(debugElement, automationId);
     }
 
     public getByAutomationId(

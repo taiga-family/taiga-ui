@@ -29,7 +29,7 @@ describe('TuiDarkThemeService', () => {
     it('returns actual value', () => {
         let value = false;
 
-        service.pipe(take(1)).subscribe(v => {
+        service.pipe(take(1)).subscribe((v) => {
             value = v;
         });
 
@@ -39,7 +39,7 @@ describe('TuiDarkThemeService', () => {
     it('fires upon refresh', () => {
         let value = false;
 
-        service.pipe(take(2)).subscribe(v => {
+        service.pipe(take(2)).subscribe((v) => {
             value = v;
         });
 

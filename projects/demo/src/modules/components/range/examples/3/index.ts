@@ -20,7 +20,7 @@ export default class Example {
     protected readonly step = 250;
     protected readonly segments = 4;
     protected readonly labels = [...new Array(this.segments + 1).keys()].map(
-        i => this.min + this.step * i,
+        (i) => this.min + this.step * i,
     );
 
     protected value = [0, 250];

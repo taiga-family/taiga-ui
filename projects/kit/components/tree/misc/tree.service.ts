@@ -13,11 +13,13 @@ export class TuiTreeService<T> {
     private readonly load$ = new Subject<T>();
 
     public readonly data$ = this.load$.pipe(
-        switchMap(item =>
+        switchMap((item) =>
             this.loader.loadChildren(item).pipe(
-                tap(children => this.map.set(item, children)),
-                map(children => children.filter(item => !this.loader.hasChildren(item))),
-                tap(children => children.forEach(child => this.map.set(child, []))),
+                tap((children) => this.map.set(item, children)),
+                map((children) =>
+                    children.filter((item) => !this.loader.hasChildren(item)),
+                ),
+                tap((children) => children.forEach((child) => this.map.set(child, []))),
             ),
         ),
         startWith(null),

@@ -79,7 +79,7 @@ export default class Example {
 
         if (length > 90) {
             return this.months$.pipe(
-                map(months =>
+                map((months) =>
                     Array.from(
                         {length: TuiMonth.lengthBetween(from, to) + 1},
                         (_, i) => months[from.append({month: i}).month],
@@ -187,7 +187,7 @@ export default class Example {
 }
 
 function onlyMondays(range: readonly TuiDay[]): readonly string[] {
-    return range.filter(day => !day.dayOfWeek()).map(String);
+    return range.filter((day) => !day.dayOfWeek()).map(String);
 }
 
 function even<T>(array: readonly T[]): readonly T[] {

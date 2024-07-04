@@ -17,7 +17,7 @@ export class TuiSheetBarComponent {
     private readonly zone = inject(NgZone);
 
     protected readonly rotate$ = this.scroll$.pipe(
-        map(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10)),
+        map((y) => tuiClamp(10 - (y - this.stop) / 5, 0, 10)),
         distinctUntilChanged(),
         tuiZonefull(this.zone),
     );

@@ -6,7 +6,7 @@ export function tuiSortPages<T extends TuiDocRoutePage | TuiDocRoutePageGroup>(
     pages: readonly T[],
     excludeSections = new Set<string>(),
 ): readonly T[] {
-    const sections = Array.from(new Set(pages.map(page => page.section)));
+    const sections = Array.from(new Set(pages.map((page) => page.section)));
 
     const sortedPages = pages.slice().sort((a, b) => {
         if (
@@ -30,7 +30,7 @@ export function tuiSortPages<T extends TuiDocRoutePage | TuiDocRoutePageGroup>(
         return a.title.localeCompare(b.title);
     });
 
-    return sortedPages.map(page =>
+    return sortedPages.map((page) =>
         tuiIsRoutePageGroup(page)
             ? {
                   ...page,

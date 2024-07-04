@@ -186,8 +186,8 @@ export class TuiColorSelectorComponent {
     }
 
     public onStopsChange(stopsKeys: readonly number[]): void {
-        const removed = this.stopsKeys.find(item => !stopsKeys.includes(item));
-        const added = stopsKeys.find(item => !this.stopsKeys.includes(item));
+        const removed = this.stopsKeys.find((item) => !stopsKeys.includes(item));
+        const added = stopsKeys.find((item) => !this.stopsKeys.includes(item));
 
         if (removed === undefined && added !== undefined) {
             this.addStop(added);
@@ -235,7 +235,7 @@ export class TuiColorSelectorComponent {
     private getGradient(direction: TuiGradientDirection): string {
         return `linear-gradient(${direction}, ${[...this.stopsKeys]
             .sort(tuiDefaultSort)
-            .map(key => `rgba(${this.getStop(key).join(', ')}) ${key * 100}%`)
+            .map((key) => `rgba(${this.getStop(key).join(', ')}) ${key * 100}%`)
             .join(', ')})`;
     }
 
@@ -265,7 +265,7 @@ export class TuiColorSelectorComponent {
 
         this.currentStop = added;
         this.stops = new Map(
-            this.stopsKeys.map<[number, [number, number, number, number]]>(key =>
+            this.stopsKeys.map<[number, [number, number, number, number]]>((key) =>
                 key === removed ? [added, value] : [key, this.getStop(key)],
             ),
         );

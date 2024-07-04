@@ -31,7 +31,7 @@ export class TuiHoveredService extends Observable<boolean> {
     ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 }
 

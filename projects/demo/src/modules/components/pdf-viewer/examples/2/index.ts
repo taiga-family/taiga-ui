@@ -36,18 +36,18 @@ export default class Example {
             data: [
                 {
                     text: 'Sign',
-                    onClick: context => context.completeWith('Document signed'),
+                    onClick: (context) => context.completeWith('Document signed'),
                 },
                 {
                     text: 'Deny',
-                    onClick: context => context.completeWith('Document denied'),
+                    onClick: (context) => context.completeWith('Document denied'),
                 },
             ],
         };
 
         this.pdfService
             .open<string>(new PolymorpheusComponent(PdfContent), options)
-            .pipe(switchMap(response => this.alerts.open(response)))
+            .pipe(switchMap((response) => this.alerts.open(response)))
             .subscribe();
     }
 }

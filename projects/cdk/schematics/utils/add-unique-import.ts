@@ -21,7 +21,7 @@ export function addUniqueImport(
     if (existingDeclaration.length) {
         const modules = existingDeclaration[0]
             .getNamedImports()
-            .map(namedImport => namedImport.getText());
+            .map((namedImport) => namedImport.getText());
 
         editImports(existingDeclaration[0], () => ({
             namedImports: [...modules, namedImport],

@@ -67,14 +67,14 @@ export class TuiFilterComponent<T> extends TuiControl<readonly T[]> {
     public content: PolymorpheusContent = ({$implicit}) => String($implicit);
 
     @Input()
-    public badgeHandler: TuiHandler<T, number> = item => Number(item);
+    public badgeHandler: TuiHandler<T, number> = (item) => Number(item);
 
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.onChange(
             value
                 ? [...this.value(), item]
-                : this.value().filter(arrItem => !this.identityMatcher(arrItem, item)),
+                : this.value().filter((arrItem) => !this.identityMatcher(arrItem, item)),
         );
     }
 
@@ -83,6 +83,6 @@ export class TuiFilterComponent<T> extends TuiControl<readonly T[]> {
     }
 
     protected isCheckboxEnabled(item: T): boolean {
-        return this.value().some(arrItem => this.identityMatcher(arrItem, item));
+        return this.value().some((arrItem) => this.identityMatcher(arrItem, item));
     }
 }

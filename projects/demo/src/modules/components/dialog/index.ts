@@ -119,7 +119,7 @@ export default class Page {
                 size,
                 appearance,
             })
-            .pipe(switchMap(response => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
     }
 }

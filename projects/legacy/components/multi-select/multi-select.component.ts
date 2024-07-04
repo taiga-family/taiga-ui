@@ -165,7 +165,7 @@ export class TuiMultiSelectComponent<T>
 
     public handleOption(option: T): void {
         const {value, identityMatcher} = this;
-        const index = value.findIndex(item => identityMatcher(item, option));
+        const index = value.findIndex((item) => identityMatcher(item, option));
 
         this.value =
             index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
@@ -216,12 +216,12 @@ export class TuiMultiSelectComponent<T>
     > = (value, stringify, group) =>
         group
             ? EMPTY_ARRAY
-            : value.map(item => new TuiStringifiableItem(item, stringify));
+            : value.map((item) => new TuiStringifiableItem(item, stringify));
 
     protected readonly disabledItemHandlerWrapper: TuiMapper<
         [TuiBooleanHandler<T>],
         TuiBooleanHandler<TuiStringifiableItem<T> | string>
-    > = handler => stringifiable =>
+    > = (handler) => (stringifiable) =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 
     protected onSpace(event: Event): void {

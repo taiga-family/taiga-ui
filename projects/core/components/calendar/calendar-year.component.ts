@@ -87,7 +87,7 @@ export class TuiCalendarYear {
         }
 
         if (!(value instanceof TuiMonthRange)) {
-            return value.find(day => day.year === item) ? 'single' : null;
+            return value.find((day) => day.year === item) ? 'single' : null;
         }
 
         if (

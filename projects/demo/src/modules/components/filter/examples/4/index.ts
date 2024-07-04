@@ -40,14 +40,14 @@ export default class Example {
     @tuiPure
     protected get model$(): Observable<readonly string[]> {
         return this.filters$.pipe(
-            map(value => (value.length === this.items.length ? [] : value)),
+            map((value) => (value.length === this.items.length ? [] : value)),
         );
     }
 
     @tuiPure
     protected get buttonAppearance$(): Observable<string> {
         return this.filters$.pipe(
-            map(value =>
+            map((value) =>
                 value.length === this.items.length ? 'whiteblock-active' : 'whiteblock',
             ),
         );

@@ -37,8 +37,8 @@ export default class Example {
 
     @tuiPure
     protected filter(search: string | null): readonly string[] {
-        return ITEMS.filter(item => TUI_DEFAULT_MATCHER(item, search || ''));
+        return ITEMS.filter((item) => TUI_DEFAULT_MATCHER(item, search || ''));
     }
 
-    protected tagValidator: TuiBooleanHandler<string> = tag => !tag.startsWith('Han');
+    protected tagValidator: TuiBooleanHandler<string> = (tag) => !tag.startsWith('Han');
 }

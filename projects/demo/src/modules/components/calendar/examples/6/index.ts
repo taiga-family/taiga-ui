@@ -16,8 +16,8 @@ export default class Example {
     protected value: readonly TuiDay[] = [];
 
     protected onDayClick(day: TuiDay): void {
-        this.value = this.value.find(item => item.daySame(day))
-            ? this.value.filter(item => !item.daySame(day))
+        this.value = this.value.find((item) => item.daySame(day))
+            ? this.value.filter((item) => !item.daySame(day))
             : this.value.concat(day);
     }
 }

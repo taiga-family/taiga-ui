@@ -41,13 +41,13 @@ function addTuiModules({
     const modules = getModules([BROWSER_ANIMATION_MODULE]);
     const mainModulePath = mainClass.getSourceFile().getFilePath();
 
-    modules.forEach(module => {
+    modules.forEach((module) => {
         addImportToNgModule(mainClass, module.name, {unique: true});
         addUniqueImport(mainModulePath, module.name, module.packageName);
     });
 
     context.logger.info(
-        `${modules.map(module => module.name)} was added to ${mainModulePath}`,
+        `${modules.map((module) => module.name)} was added to ${mainModulePath}`,
     );
 }
 
@@ -85,7 +85,7 @@ function addRootTuiProvidersToBootstrapFn(
     const provideAnimations = initializer
         .getElements()
         .find(
-            el =>
+            (el) =>
                 Node.isCallExpression(el) &&
                 el.getExpression().getText() === 'provideAnimations',
         );

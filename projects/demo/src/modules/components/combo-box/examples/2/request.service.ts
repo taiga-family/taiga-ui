@@ -23,8 +23,8 @@ export class RequestService {
     // Imitating server request with switchMap + delay pair
     private readonly response$ = this.request$.pipe(
         distinctUntilChanged(),
-        switchMap(query =>
-            of(databaseMockData.filter(user => TUI_DEFAULT_MATCHER(user, query))).pipe(
+        switchMap((query) =>
+            of(databaseMockData.filter((user) => TUI_DEFAULT_MATCHER(user, query))).pipe(
                 delay(Math.random() * 1000 + 500),
                 startWith(null),
             ),

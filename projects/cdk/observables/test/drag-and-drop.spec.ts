@@ -21,7 +21,7 @@ describe('tuiDragAndDropFrom', () => {
 
         tuiDragAndDropFrom(element)
             .pipe(take(1))
-            .subscribe(event => {
+            .subscribe((event) => {
                 result = event.stage;
             });
 
@@ -36,7 +36,7 @@ describe('tuiDragAndDropFrom', () => {
 
         tuiDragAndDropFrom(element)
             .pipe(skip(1), take(1))
-            .subscribe(event => {
+            .subscribe((event) => {
                 result = event.stage;
             });
 
@@ -51,7 +51,7 @@ describe('tuiDragAndDropFrom', () => {
 
         tuiDragAndDropFrom(element)
             .pipe(skip(2), take(1))
-            .subscribe(event => {
+            .subscribe((event) => {
                 result = event.stage;
             });
 

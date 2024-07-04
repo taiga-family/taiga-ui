@@ -17,7 +17,7 @@ export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly enabled$ = new Subject<boolean>();
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
-        map(by => !!by?.every(el => !this.activeZone?.contains(el))),
+        map((by) => !!by?.every((el) => !this.activeZone?.contains(el))),
     );
 
     @Output()

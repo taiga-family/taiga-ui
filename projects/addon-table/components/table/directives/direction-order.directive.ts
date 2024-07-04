@@ -12,7 +12,7 @@ export class TuiTableDirectionOrder<T> {
 
     @Output()
     public readonly directionOrderChange = this.table.directionChange.pipe(
-        map(dir => (dir === 1 ? 'asc' : 'desc')),
+        map((dir) => (dir === 1 ? 'asc' : 'desc')),
     );
 
     @Input()

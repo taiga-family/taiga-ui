@@ -57,12 +57,12 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
     protected readonly stuck$ = this.scroll$.pipe(
-        map(y => Math.floor(y) > this.contentTop),
+        map((y) => Math.floor(y) > this.contentTop),
     );
 
     protected readonly stuck$$ = this.stuck$
         .pipe(takeUntilDestroyed())
-        .subscribe(add =>
+        .subscribe((add) =>
             add ? this.el.classList.add('_stuck') : this.el.classList.remove('_stuck'),
         );
 

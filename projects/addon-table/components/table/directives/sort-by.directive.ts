@@ -22,7 +22,7 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
         delay(0),
         filter(() => !!this.sortables.length),
-        map(sorter => this.getKey(sorter)),
+        map((sorter) => this.getKey(sorter)),
     );
 
     public tuiSortBy: string | keyof T | null = null;
@@ -34,10 +34,10 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
     }
 
     protected checkSortables(): void {
-        this.sortables.forEach(s => s.check());
+        this.sortables.forEach((s) => s.check());
     }
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
-        return this.sortables.find(s => s.sorter === sorter)?.key || null;
+        return this.sortables.find((s) => s.sorter === sorter)?.key || null;
     }
 }

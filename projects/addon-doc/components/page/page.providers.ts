@@ -17,13 +17,13 @@ export const PAGE_PROVIDERS: Provider[] = [
         ): readonly string[] => {
             const currentHeader = nativeElement.getAttribute('header');
             const groups =
-                seeAlsoGroups.filter(group => group.includes(currentHeader)) || [];
+                seeAlsoGroups.filter((group) => group.includes(currentHeader)) || [];
 
             const seeAlsoSet = new Set(
                 groups
                     .join()
                     .split(',')
-                    .filter(component => component && component !== currentHeader),
+                    .filter((component) => component && component !== currentHeader),
             );
 
             return Array.from(seeAlsoSet);
