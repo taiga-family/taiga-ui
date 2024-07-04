@@ -1,5 +1,7 @@
-import {Directive, DoCheck, inject, Input} from '@angular/core';
-import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
+import type {DoCheck} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
+import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAppearance} from '@taiga-ui/core/directives';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
