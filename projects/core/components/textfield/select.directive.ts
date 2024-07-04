@@ -6,8 +6,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
-import {TuiTextfieldBase} from './textfield.base';
-import {TuiTextfieldDirective} from './textfield.directive';
+import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
 
 @Component({
     standalone: true,
