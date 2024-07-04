@@ -35,7 +35,7 @@ export default class Page {
         '--tui-padding-m': 'padding for inputs with size "m"',
         '--tui-padding-l': 'padding for inputs with size "l"',
         '--tui-disabled-opacity': 'amount of transparency for disabled elements',
-        '--tui-autofill': 'color for native browser autofill',
+        '--tui-service-autofill-background': 'color for native browser autofill',
     };
 
     protected readonly routes = DemoRoute;
