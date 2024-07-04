@@ -17,6 +17,6 @@ describe('tuiFlagPipe', () => {
     });
 
     it('calculates flag path from isoCode', () => {
-        expect(pipe.transform('AD')).toBe('path/flags/AD.svg');
+        expect(pipe.transform('AD')).toBe('path/flags/ad.svg');
     });
 });
