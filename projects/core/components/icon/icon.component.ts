@@ -18,7 +18,10 @@ export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     @Input()
-    public icon = inject(TUI_ICON_START) || inject(TUI_ICON_END);
+    public icon =
+        inject(TUI_ICON_START, {self: true, optional: true}) ||
+        inject(TUI_ICON_END, {self: true, optional: true}) ||
+        '';
 
     @Input()
     public background = '';
