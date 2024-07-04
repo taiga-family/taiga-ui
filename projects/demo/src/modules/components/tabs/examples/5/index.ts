@@ -27,7 +27,7 @@ export default class Example {
     protected remove(removed: string): void {
         const index = this.items.indexOf(removed);
 
-        this.items = this.items.filter(item => item !== removed);
+        this.items = this.items.filter((item) => item !== removed);
 
         if (index <= this.activeItemIndex) {
             this.activeItemIndex = Math.max(this.activeItemIndex - 1, 0);

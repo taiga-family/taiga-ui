@@ -5,7 +5,7 @@ import type {OperatorFunction} from 'rxjs';
 import {map} from 'rxjs';
 
 export function tuiMustBePresent<T>(): OperatorFunction<T | null | undefined, T> {
-    return map(value => {
+    return map((value) => {
         if (!tuiIsPresent(value)) {
             throw new TuiValuePresentException();
         }

@@ -27,7 +27,7 @@ export class TuiSvgService {
     public define(icons: Record<string, string>): void {
         const {value} = this.items$;
 
-        Object.keys(icons).forEach(key => {
+        Object.keys(icons).forEach((key) => {
             this.defineIcon(key, icons[key], value);
         });
 

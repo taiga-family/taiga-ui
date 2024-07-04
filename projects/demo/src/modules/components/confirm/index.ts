@@ -36,7 +36,7 @@ export default class Example implements TuiConfirmData {
                 size: 's',
                 data: this,
             })
-            .pipe(switchMap(response => this.alerts.open(String(response))))
+            .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
     }
 }

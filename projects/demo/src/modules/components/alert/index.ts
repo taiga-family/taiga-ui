@@ -99,7 +99,7 @@ export default class Page {
                 icon: this.icon === this.iconVariants[0] ? this.defaultIcon : this.icon,
             })
             .pipe(
-                switchMap(response =>
+                switchMap((response) =>
                     this.alerts.open(response, {
                         label: 'Notification responded with:',
                     }),

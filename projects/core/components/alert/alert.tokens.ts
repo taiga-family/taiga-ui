@@ -42,7 +42,7 @@ export const TUI_ALERTS_GROUPED = tuiCreateTokenFromFactory(() =>
         map(([map, alerts]) => {
             map.forEach((_, key) => map.set(key, []));
 
-            alerts.forEach(alert => {
+            alerts.forEach((alert) => {
                 const key = alert.component.component;
                 const value = map.get(key) || [];
 

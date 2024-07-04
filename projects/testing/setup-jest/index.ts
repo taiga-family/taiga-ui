@@ -21,13 +21,13 @@ const resizeEvent = document.createEvent('Event');
 
 resizeEvent.initEvent('resize', true, true);
 
-global.window.resizeTo = width => {
+global.window.resizeTo = (width) => {
     (global.window as any).innerWidth = width || global.window.innerWidth;
     (global.window as any).innerHeight = width || global.window.innerHeight;
     global.window.dispatchEvent(resizeEvent);
 };
 
-global.URL.createObjectURL = jest.fn(blob => `${blob}`);
+global.URL.createObjectURL = jest.fn((blob) => `${blob}`);
 global.URL.revokeObjectURL = jest.fn();
 
 Object.defineProperty(global.window, 'CSS', {value: null});
@@ -52,7 +52,7 @@ Object.defineProperty(global.document.body.style, 'transform', {
 
 Object.defineProperty(global.window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: jest.fn().mockImplementation((query) => ({
         matches: false,
         media: query,
         onchange: null,

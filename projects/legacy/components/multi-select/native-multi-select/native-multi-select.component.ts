@@ -32,7 +32,7 @@ export class TuiNativeMultiSelectComponent<T> extends AbstractTuiNativeMultiSele
     public items: readonly T[] | null = [];
 
     protected onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
-        const selected = Array.from(selectedOptions).map(option => option.index);
+        const selected = Array.from(selectedOptions).map((option) => option.index);
         const value = this.items?.filter((_, index) => selected.includes(index)) || [];
 
         this.host.onSelectionChange(value);

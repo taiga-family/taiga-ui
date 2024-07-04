@@ -43,7 +43,7 @@ export class TuiInputCard implements OnInit {
     @Output()
     public readonly binChange = timer(0).pipe(
         switchMap(() => tuiControlValue<string>(this.control)),
-        map(value => (value.length < 6 ? null : value.replace(' ', '').slice(0, 6))),
+        map((value) => (value.length < 6 ? null : value.replace(' ', '').slice(0, 6))),
         startWith(null),
         distinctUntilChanged(),
         skip(1),

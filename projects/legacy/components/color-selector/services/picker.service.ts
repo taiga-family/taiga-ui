@@ -17,7 +17,7 @@ export class TuiPickerService extends Observable<TuiPoint> {
 
         const point$ = tuiTypedFromEvent(nativeElement, 'mousedown').pipe(
             tuiPreventDefault(),
-            switchMap(event => {
+            switchMap((event) => {
                 const mouseMove$ = tuiTypedFromEvent(doc, 'mousemove').pipe(
                     map(({clientX, clientY}) =>
                         tuiGetElementPoint(clientX, clientY, nativeElement),
@@ -40,6 +40,6 @@ export class TuiPickerService extends Observable<TuiPoint> {
             takeUntilDestroyed(),
         );
 
-        super(subscriber => point$.subscribe(subscriber));
+        super((subscriber) => point$.subscribe(subscriber));
     }
 }

@@ -30,6 +30,6 @@ export default class Example {
         'Terry Jones',
     ];
 
-    protected readonly disabledItemHandler: TuiBooleanHandler<string> = v =>
+    protected readonly disabledItemHandler: TuiBooleanHandler<string> = (v) =>
         v.startsWith('T');
 }

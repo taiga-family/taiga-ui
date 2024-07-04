@@ -55,7 +55,7 @@ export class TuiRoot {
 
     protected readonly isMobileRes = toSignal(
         inject(TuiBreakpointService).pipe(
-            map(breakpoint => breakpoint === 'mobile'),
+            map((breakpoint) => breakpoint === 'mobile'),
             tuiWatch(inject(ChangeDetectorRef)),
         ),
     );

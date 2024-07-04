@@ -142,7 +142,7 @@ export default class Example {
     ]).pipe(
         // zero time debounce for a case when both key and direction change
         debounceTime(0),
-        switchMap(query => this.getData(...query).pipe(startWith(null))),
+        switchMap((query) => this.getData(...query).pipe(startWith(null))),
         share(),
     );
 
@@ -164,7 +164,7 @@ export default class Example {
 
     protected readonly data$: Observable<readonly User[]> = this.request$.pipe(
         filter(tuiIsPresent),
-        map(users => users.filter(tuiIsPresent)),
+        map((users) => users.filter(tuiIsPresent)),
         startWith([]),
     );
 
@@ -173,8 +173,8 @@ export default class Example {
     protected onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
-            .filter(column => enabled.includes(column))
-            .map(column => KEYS[column]);
+            .filter((column) => enabled.includes(column))
+            .map((column) => KEYS[column]);
     }
 
     protected onDirection(direction: -1 | 1): void {
@@ -203,7 +203,7 @@ export default class Example {
         const end = start + size;
         const result = [...DATA]
             .sort(sortBy(key, direction))
-            .filter(user => getAge(user) >= minAge)
+            .filter((user) => getAge(user) >= minAge)
             .map((user, index) => (index >= start && index < end ? user : null));
 
         // Imitating server response

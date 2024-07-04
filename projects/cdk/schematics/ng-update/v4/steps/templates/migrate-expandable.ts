@@ -27,7 +27,7 @@ export function migrateExpandable({
     );
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
-        const expandableAttr = attrs.find(attr => attr.name === '[expandable]');
+        const expandableAttr = attrs.find((attr) => attr.name === '[expandable]');
 
         if (!expandableAttr) {
             return;
@@ -40,7 +40,7 @@ export function migrateExpandable({
             sourceCodeLocation?.attrs?.[expandableAttr.name]?.endOffset ?? 0;
 
         if (expandableValue === 'false') {
-            const rowsAttr = attrs.find(attr => attr.name === '[rows]');
+            const rowsAttr = attrs.find((attr) => attr.name === '[rows]');
 
             const insertTo = (sourceCodeLocation?.startTag?.endOffset ?? 0) - 1;
 

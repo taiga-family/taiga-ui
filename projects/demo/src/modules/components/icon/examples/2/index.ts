@@ -11,7 +11,7 @@ import {TuiIcon, tuiIconResolverProvider} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
     providers: [
-        tuiIconResolverProvider(icon =>
+        tuiIconResolverProvider((icon) =>
             icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
         ),
     ],

@@ -54,7 +54,9 @@ export function tuiGetElementObscures(
         return [];
     }
 
-    const filtered = nonNull.filter(el => !element.contains(el) && !el.contains(element));
+    const filtered = nonNull.filter(
+        (el) => !element.contains(el) && !el.contains(element),
+    );
 
     return filtered.length === 4
         ? (filtered as [Element, Element, Element, Element])

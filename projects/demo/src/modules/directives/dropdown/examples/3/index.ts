@@ -31,5 +31,5 @@ export default class Example {
 
     protected value = 'some data';
 
-    protected showBigText$ = interval(3000).pipe(map(i => !(i % 2)));
+    protected showBigText$ = interval(3000).pipe(map((i) => !(i % 2)));
 }

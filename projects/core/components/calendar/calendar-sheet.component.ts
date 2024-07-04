@@ -104,7 +104,7 @@ export class TuiCalendarSheet {
         }
 
         if (!(value instanceof TuiDayRange)) {
-            return value.find(day => day.daySame(item)) ? 'single' : null;
+            return value.find((day) => day.daySame(item)) ? 'single' : null;
         }
 
         if (

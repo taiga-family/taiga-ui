@@ -13,6 +13,6 @@ export class TuiMonthPipe implements PipeTransform {
     private readonly months$ = inject(TUI_MONTHS);
 
     public transform({month}: TuiMonth): Observable<string> {
-        return this.months$.pipe(map(months => months[month]));
+        return this.months$.pipe(map((months) => months[month]));
     }
 }

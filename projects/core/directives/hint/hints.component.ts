@@ -39,7 +39,7 @@ export class TuiHints implements OnInit {
     public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        this.hints$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(hints => {
+        this.hints$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((hints) => {
             this.hints = hints;
             this.cdr.detectChanges();
         });

@@ -28,7 +28,7 @@ function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): v
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing <tui-text-area /> to <tui-textarea />`,
         );
 
-    getComponentTemplates(ALL_TS_FILES).forEach(resource => {
+    getComponentTemplates(ALL_TS_FILES).forEach((resource) => {
         const template = getTemplateFromTemplateResource(resource, fileSystem);
         const elements = findElementsByTagName(template, 'tui-text-area');
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));

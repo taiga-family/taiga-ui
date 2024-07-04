@@ -40,7 +40,7 @@ export abstract class TuiPopoverService<T, K = void> {
         content: PolymorpheusContent<T & TuiPopoverContext<K extends void ? G : K>>,
         options: Partial<T> = {},
     ): Observable<K extends void ? G : K> {
-        return new Observable(observer => {
+        return new Observable((observer) => {
             const item = {
                 ...this.options,
                 ...options,
@@ -58,7 +58,7 @@ export abstract class TuiPopoverService<T, K = void> {
             this.items$.next([...this.items$.value, item]);
 
             return () => {
-                this.items$.next(this.items$.value.filter(value => value !== item));
+                this.items$.next(this.items$.value.filter((value) => value !== item));
             };
         });
     }

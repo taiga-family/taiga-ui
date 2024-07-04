@@ -20,11 +20,11 @@ export function replaceDeepImports(options: TuiSchema): void {
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deep imports...`);
 
-    const deepImports = getImports(ALL_TS_FILES).filter(imp =>
+    const deepImports = getImports(ALL_TS_FILES).filter((imp) =>
         DEEP_REGEX.test(imp.getModuleSpecifier().getLiteralValue()),
     );
 
-    editImports(deepImports, deepImport => {
+    editImports(deepImports, (deepImport) => {
         const specifier = deepImport.moduleSpecifier.replace(DEEP_REGEX, '$1');
 
         return {moduleSpecifier: specifier};

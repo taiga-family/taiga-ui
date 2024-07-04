@@ -98,7 +98,7 @@ function bindAppearanceState(): Signal<TuiInteractiveState | null> {
         'tuiAppearanceState',
         toSignal(
             inject(TuiHintHover).pipe(
-                map(hover => (hover ? 'hover' : null)),
+                map((hover) => (hover ? 'hover' : null)),
                 tuiWatch(inject(ChangeDetectorRef)),
             ),
             {initialValue: null},

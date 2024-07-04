@@ -24,7 +24,7 @@ export default class Example {
 
     protected numberProcessor$ = this.format.pipe(
         map(
-            format => (text: string) =>
+            (format) => (text: string) =>
                 text
                     .replace(format.decimalSeparator, '.')
                     .replaceAll(new RegExp(format.thousandSeparator, 'g'), ''),
@@ -36,6 +36,6 @@ export default class Example {
         this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
     }
 
-    protected readonly textProcessor: TuiStringHandler<string> = text =>
+    protected readonly textProcessor: TuiStringHandler<string> = (text) =>
         text.toUpperCase();
 }

@@ -16,7 +16,7 @@ interface FileSizeError {
 export function tuiCreateFileSizeValidator(size: number): ValidatorFn {
     return ({value}: {value: File | readonly File[] | null}): FileSizeError | null => {
         const files = value && coerceArray(value);
-        const $implicit = value && files?.filter(file => file.size > size);
+        const $implicit = value && files?.filter((file) => file.size > size);
 
         return $implicit?.length ? {[TUI_SIZE_ERROR]: {$implicit, size}} : null;
     };
@@ -26,7 +26,7 @@ export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
     return ({value}: {value: File | readonly File[] | null}): FileFormatError | null => {
         const files = value && coerceArray(value);
         const formats = toArray(accept);
-        const $implicit = value && files?.filter(file => !checkFormat(file, formats));
+        const $implicit = value && files?.filter((file) => !checkFormat(file, formats));
 
         return $implicit?.length && accept ? {[TUI_FORMAT_ERROR]: {$implicit}} : null;
     };
@@ -36,7 +36,7 @@ function checkFormat({name, type}: File, formats: readonly string[]): boolean {
     const extension = `.${(name.split('.').pop() || '').toLowerCase()}`;
 
     return formats.some(
-        format =>
+        (format) =>
             format === extension ||
             format === type ||
             (format.split('/')[1] === '*' && type.split('/')[0] === format.split('/')[0]),
@@ -47,5 +47,5 @@ function toArray(accept: string): readonly string[] {
     return accept
         .toLowerCase()
         .split(',')
-        .map(format => format.trim().toLowerCase());
+        .map((format) => format.trim().toLowerCase());
 }

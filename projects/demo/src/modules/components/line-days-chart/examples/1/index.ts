@@ -40,7 +40,7 @@ export default class Example {
     protected readonly xStringify$: Observable<TuiStringHandler<TuiDay>> =
         this.months$.pipe(
             map(
-                months =>
+                (months) =>
                     ({month, day}) =>
                         `${months[month]}, ${day}`,
             ),
@@ -53,7 +53,7 @@ export default class Example {
     @tuiPure
     protected computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
         return this.months$.pipe(
-            map(months =>
+            map((months) =>
                 Array.from(
                     {length: TuiMonth.lengthBetween(from, to) + 1},
                     (_, i) => months[from.append({month: i}).month],
@@ -62,7 +62,7 @@ export default class Example {
         );
     }
 
-    protected readonly yStringify: TuiStringHandler<number> = y =>
+    protected readonly yStringify: TuiStringHandler<number> = (y) =>
         `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 
     @tuiPure

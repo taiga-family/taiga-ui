@@ -40,7 +40,7 @@ import {interval, map, of, scan, startWith} from 'rxjs';
                     of(`Minimum length — ${requiredLength}`),
                 min: interval(2000).pipe(
                     scan(tuiIsFalsy, false),
-                    map(val => (val ? 'Fix please' : 'Min number 3')),
+                    map((val) => (val ? 'Fix please' : 'Min number 3')),
                     startWith('Min number 3'),
                 ),
             },

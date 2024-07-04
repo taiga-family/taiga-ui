@@ -87,7 +87,7 @@ export class TuiInputDateMultiComponent
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly doneWord$ = inject(TUI_DONE_WORD);
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
-        map(dateTexts =>
+        map((dateTexts) =>
             changeDateSeparator(
                 dateTexts[this.dateFormat.mode],
                 this.dateFormat.separator,
@@ -97,7 +97,7 @@ export class TuiInputDateMultiComponent
 
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
+        .subscribe((format) => {
             this.dateFormat = format;
         });
 
@@ -216,13 +216,14 @@ export class TuiInputDateMultiComponent
     protected readonly disabledItemHandlerWrapper: TuiMapper<
         [TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>],
         TuiBooleanHandler<TuiStringifiableItem<any> | string>
-    > = handler => stringifiable =>
+    > = (handler) => (stringifiable) =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 
     protected readonly valueMapper: TuiMapper<
         [readonly TuiDay[]],
         ReadonlyArray<TuiStringifiableItem<TuiDay>>
-    > = value => value.map(item => new TuiStringifiableItem(item, item => String(item)));
+    > = (value) =>
+        value.map((item) => new TuiStringifiableItem(item, (item) => String(item)));
 
     protected onEnter(search: string): void {
         if (!this.tagValidator(search)) {

@@ -110,7 +110,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     public ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
-                filter(result => !result.some(Boolean)),
+                filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
             )
@@ -121,7 +121,7 @@ export class TuiLineDaysChart implements AfterViewInit {
 
     public onHovered(day: TuiDay | number): void {
         if (tuiIsNumber(day)) {
-            this.charts.forEach(chart => chart.onHovered(NaN));
+            this.charts.forEach((chart) => chart.onHovered(NaN));
 
             return;
         }
@@ -130,9 +130,9 @@ export class TuiLineDaysChart implements AfterViewInit {
         const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
         const current = this.charts.get(index);
 
-        this.charts.forEach(chart => {
+        this.charts.forEach((chart) => {
             if (chart === current) {
-                current.onHovered(current.value.findIndex(point => point[0] === x));
+                current.onHovered(current.value.findIndex((point) => point[0] === x));
             } else {
                 chart.onHovered(NaN);
             }
@@ -161,7 +161,7 @@ export class TuiLineDaysChart implements AfterViewInit {
         return value[x - value[0][0].day + 1];
     }
 
-    protected readonly daysStringify: TuiStringHandler<number> = index =>
+    protected readonly daysStringify: TuiStringHandler<number> = (index) =>
         this.xStringify ? this.xStringify(this.getDay(index)) : '';
 
     protected getX(index: number): number {
@@ -205,7 +205,7 @@ export class TuiLineDaysChart implements AfterViewInit {
             {length: TuiMonth.lengthBetween(value[0][0], value[value.length - 1][0]) + 1},
             (_, i) => i + value[0][0].month + value[0][0].year * 12,
         )
-            .map(absoluteMonth =>
+            .map((absoluteMonth) =>
                 value
                     .map<TuiPoint | null>(([{month, year}, y], index) =>
                         month + year * 12 === absoluteMonth ? [index + offset, y] : null,
@@ -217,7 +217,7 @@ export class TuiLineDaysChart implements AfterViewInit {
                     ? month
                     : [
                           ...month,
-                          array[index + 1].find(day => !Number.isNaN(day[1])) || DUMMY,
+                          array[index + 1].find((day) => !Number.isNaN(day[1])) || DUMMY,
                       ],
             );
     }

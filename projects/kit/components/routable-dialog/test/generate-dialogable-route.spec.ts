@@ -4,7 +4,7 @@ import TuiRoutableDialog from '../routable-dialog.component';
 class Dialog {}
 
 describe('tuiGenerateDialogableRoute', () => {
-    it('generated route should have component: TuiRoutableDialogComponent', done => {
+    it('generated route should have component: TuiRoutableDialogComponent', (done) => {
         const result = tuiGenerateDialogableRoute(Dialog);
 
         void Promise.resolve(result.loadComponent?.()).then((module: any) => {

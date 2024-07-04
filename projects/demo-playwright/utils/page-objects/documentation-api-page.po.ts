@@ -72,10 +72,10 @@ export class TuiDocumentationApiPagePO {
         }
 
         if ((await this.apiPageExample.all()).length) {
-            await this.apiPageExample.evaluate(el => el.scrollIntoView());
+            await this.apiPageExample.evaluate((el) => el.scrollIntoView());
             await expect(async () => {
                 expect(
-                    await this.apiPageExample.boundingBox().then(box => box?.y),
+                    await this.apiPageExample.boundingBox().then((box) => box?.y),
                 ).toBeGreaterThanOrEqual(64);
             }).toPass();
         }

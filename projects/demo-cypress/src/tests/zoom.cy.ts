@@ -28,14 +28,14 @@ describe('TuiZoom', () => {
                 imports: [TuiZoom],
                 providers: [NG_EVENT_PLUGINS],
             })
-            .then(wrapper => {
+            .then((wrapper) => {
                 component = wrapper.component;
             }),
     );
 
     it('pinch', () => {
         cy.get('section')
-            .then(query =>
+            .then((query) =>
                 cy
                     .wrap(query)
                     .trigger(...touch('touchstart', [10, 10], [20, 20], query.get(0)))
@@ -47,7 +47,7 @@ describe('TuiZoom', () => {
 
     it('wheel', () => {
         cy.get('section')
-            .then(query =>
+            .then((query) =>
                 cy.wrap(query).trigger('wheel', new WheelEvent('wheel', {deltaY: 1.1})),
             )
             .then(() => expect(tuiFloor(component.scale, 2)).to.eql(1.01));

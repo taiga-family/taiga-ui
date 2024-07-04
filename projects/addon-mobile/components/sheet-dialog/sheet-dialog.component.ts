@@ -80,7 +80,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected readonly stuck$$ = this.stuck$
         .pipe(takeUntilDestroyed())
-        .subscribe(add =>
+        .subscribe((add) =>
             add ? this.el.classList.add('_stuck') : this.el.classList.remove('_stuck'),
         );
 

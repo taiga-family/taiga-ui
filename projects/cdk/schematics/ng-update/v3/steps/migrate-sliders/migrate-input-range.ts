@@ -103,7 +103,7 @@ export function migrateInputRange(
         prefix: '[replaceMinMaxLabel]',
     });
 
-    templateResources.forEach(templateResource => {
+    templateResources.forEach((templateResource) => {
         !options['skip-logs'] && progressLog(templateResource.componentPath);
         replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
@@ -116,7 +116,7 @@ export function migrateInputRange(
         prefix: '[COMPONENTS_WITH_MIN_LABELS]',
     });
 
-    Array.from(COMPONENTS_WITH_MIN_LABELS).forEach(componentPath => {
+    Array.from(COMPONENTS_WITH_MIN_LABELS).forEach((componentPath) => {
         !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
@@ -132,7 +132,7 @@ export function migrateInputRange(
         prefix: '[COMPONENTS_WITH_MAX_LABELS]',
     });
 
-    Array.from(COMPONENTS_WITH_MAX_LABELS).forEach(componentPath => {
+    Array.from(COMPONENTS_WITH_MAX_LABELS).forEach((componentPath) => {
         !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',

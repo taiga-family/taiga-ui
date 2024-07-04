@@ -18,7 +18,7 @@ export class TuiElasticContainer {
     @HostBinding('class._transitioning')
     protected transitions = 0;
 
-    @shouldCall(name => name === 'height')
+    @shouldCall((name) => name === 'height')
     protected onAnimation(_name: string, count: number): void {
         this.transitions += count;
     }

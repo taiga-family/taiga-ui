@@ -16,8 +16,8 @@ export function readyToScrollFactory(
             const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
 
             return (
-                exampleElements.every(el => el.querySelector('.t-example')) &&
-                codeElements.every(el => el.querySelector('.t-code'))
+                exampleElements.every((el) => el.querySelector('.t-example')) &&
+                codeElements.every((el) => el.querySelector('.t-code'))
             );
         }),
         takeUntilDestroyed(),

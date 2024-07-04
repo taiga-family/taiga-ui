@@ -8,7 +8,7 @@ export function replaceText(
 ): void {
     const sourceFiles = getSourceFiles(pattern);
 
-    sourceFiles.forEach(file => {
+    sourceFiles.forEach((file) => {
         let text = file.getFullText();
 
         replaceable.forEach(({from, to}) => {

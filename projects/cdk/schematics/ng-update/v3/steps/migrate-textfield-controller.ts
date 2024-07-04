@@ -47,7 +47,7 @@ const ATTRS_MAP: Record<string, string> = {
     '[tuitextfieldexampletext]': '[attr.placeholder]',
 };
 
-const CONTROLLER_ITEMS = Object.keys(ATTRS_MAP).map(attr => attr.toLowerCase());
+const CONTROLLER_ITEMS = Object.keys(ATTRS_MAP).map((attr) => attr.toLowerCase());
 
 function insertTuiTextfieldInput({
     element,
@@ -61,7 +61,7 @@ function insertTuiTextfieldInput({
     templateOffset: number;
 }): void {
     const newAttrs = attrs
-        .map(attr => `${ATTRS_MAP[attr.name]}="${attr.value}"`)
+        .map((attr) => `${ATTRS_MAP[attr.name]}="${attr.value}"`)
         .join('\n');
     const content =
         element.tagName === 'tui-text-area'
@@ -86,7 +86,7 @@ function addAttrToExistingInput({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    attrs.forEach(attr => {
+    attrs.forEach((attr) => {
         const insertTo = existingInput.sourceCodeLocation?.attrs?.tuitextfield?.endOffset;
 
         if (insertTo) {
@@ -104,7 +104,7 @@ function removeOldInputs(
     templateOffset: number,
 ): void {
     const offsets = arrayFlat(
-        CONTROLLER_ITEMS.map(item =>
+        CONTROLLER_ITEMS.map((item) =>
             getInputPropertyOffsets(template, item, getTagsToRemove(item)),
         ),
     );
@@ -116,7 +116,7 @@ function removeOldInputs(
 
 function getTagsToRemove(attrName: string): string[] {
     return ['[tuitextfieldmaxlength]', 'tuitextfieldmaxlength'].includes(attrName)
-        ? TEXTFIELDS.filter(tag => tag !== 'tui-text-area')
+        ? TEXTFIELDS.filter((tag) => tag !== 'tui-text-area')
         : TEXTFIELDS;
 }
 
@@ -142,9 +142,9 @@ export function migrateTextfieldController({
 
     const elements = findElementsByTagNames(template, TEXTFIELDS);
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
         const attrs = element.attrs.filter(
-            attr =>
+            (attr) =>
                 CONTROLLER_ITEMS.includes(attr.name) && !exclusion(element, attr.name),
         );
 
@@ -154,7 +154,7 @@ export function migrateTextfieldController({
 
         const existingInput = findElementsByFn(
             element.childNodes,
-            el =>
+            (el) =>
                 (el.tagName === 'input' || el.tagName === 'textarea') &&
                 hasElementAttribute(el, 'tuiTextfield'),
         )[0];

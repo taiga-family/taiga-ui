@@ -29,8 +29,8 @@ test.describe('TuiHint', () => {
             'top',
         ];
 
-        directions.forEach(direction => {
-            [256, 1280].forEach(width => {
+        directions.forEach((direction) => {
+            [256, 1280].forEach((width) => {
                 test(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
                     page,
                 }) => {
@@ -48,7 +48,7 @@ test.describe('TuiHint', () => {
         });
     });
 
-    ['true', 'false'].forEach(mode => {
+    ['true', 'false'].forEach((mode) => {
         test(`${mode} mode hint without delay`, async ({page}) => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(

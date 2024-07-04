@@ -44,9 +44,11 @@ export class TuiScrollService {
         const observable = !duration
             ? of<[number, number]>([scrollTop, scrollLeft])
             : defer(() => of(this.performanceRef.now())).pipe(
-                  switchMap(start => this.animationFrame$.pipe(map(now => now - start))),
-                  map(elapsed => tuiEaseInOutQuad(tuiClamp(elapsed / duration, 0, 1))),
-                  map<number, [number, number]>(percent => [
+                  switchMap((start) =>
+                      this.animationFrame$.pipe(map((now) => now - start)),
+                  ),
+                  map((elapsed) => tuiEaseInOutQuad(tuiClamp(elapsed / duration, 0, 1))),
+                  map<number, [number, number]>((percent) => [
                       initialTop + deltaTop * percent,
                       initialLeft + deltaLeft * percent,
                   ]),

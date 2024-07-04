@@ -58,7 +58,7 @@ export default class Example {
             }
 
             return value
-                .map(day => `${months[day.month]} ${day.day}, ${day.year}`)
+                .map((day) => `${months[day.month]} ${day.day}, ${day.year}`)
                 .join('; ');
         }),
     );
@@ -68,6 +68,6 @@ export default class Example {
     }
 
     protected onClick(): void {
-        this.dialog$.subscribe(value => this.control.setValue(value));
+        this.dialog$.subscribe((value) => this.control.setValue(value));
     }
 }

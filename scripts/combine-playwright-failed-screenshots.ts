@@ -21,15 +21,15 @@ console.info('canvas:', version);
     });
 
     for (const {name} of filesOrDirs.filter(
-        x => x.isDirectory() && !x.name.match(/-retry\d$/),
+        (x) => x.isDirectory() && !x.name.match(/-retry\d$/),
     )) {
         await combinePlaywrightFailedScreenshots(`${rootPath}/${name}`);
     }
 
     const imagesPaths: string[] = filesOrDirs
-        .filter(x => x.isFile() && x.name.endsWith('.png'))
+        .filter((x) => x.isFile() && x.name.endsWith('.png'))
         .map(({name}) => `${rootPath}/${name}`);
-    const diffImage = imagesPaths.find(path => path.endsWith(DIFF_IMAGE_POSTFIX));
+    const diffImage = imagesPaths.find((path) => path.endsWith(DIFF_IMAGE_POSTFIX));
 
     if (!diffImage) {
         return;
@@ -45,7 +45,7 @@ console.info('canvas:', version);
 
     images
         .reverse() // After <= Diff => Before
-        .forEach(image => {
+        .forEach((image) => {
             ctx.drawImage(image, prevWidth, 0);
             prevWidth += image.width;
         });

@@ -105,7 +105,7 @@ export const config: ApplicationConfig = {
 
                 return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
                     header[0].toLowerCase() + header.slice(1)
-                ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+                ).replaceAll(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}`;
             },
         },
         {

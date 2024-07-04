@@ -26,7 +26,7 @@ export function hasFlag(flag: string): boolean {
 }
 
 export function findIndexFlag(flag: string): number {
-    return process.argv.findIndex(arg => arg === flag || arg.split('=')[0] === flag);
+    return process.argv.findIndex((arg) => arg === flag || arg.split('=')[0] === flag);
 }
 
 export function stringifier(value?: string): string | undefined {

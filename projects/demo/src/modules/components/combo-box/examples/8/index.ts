@@ -42,5 +42,5 @@ export default class Example {
     protected readonly control = new FormControl(3);
     protected readonly items = DICTIONARY.map(({id}) => id);
     protected readonly stringify = (id: number): string =>
-        DICTIONARY.find(item => item.id === id)?.name || '';
+        DICTIONARY.find((item) => item.id === id)?.name || '';
 }

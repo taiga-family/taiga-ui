@@ -48,13 +48,13 @@ function removeOldInputs(
     templateOffset: number,
 ): void {
     const offsets = [
-        ...getInputPropertyOffsets(template, '[content]', ['*'], el =>
+        ...getInputPropertyOffsets(template, '[content]', ['*'], (el) =>
             hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
-        ...getInputPropertyOffsets(template, '[context]', ['*'], el =>
+        ...getInputPropertyOffsets(template, '[context]', ['*'], (el) =>
             hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
-        ...getInputPropertyOffsets(template, 'polymorpheus-outlet', ['*'], el =>
+        ...getInputPropertyOffsets(template, 'polymorpheus-outlet', ['*'], (el) =>
             hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
     ];
@@ -79,7 +79,7 @@ function insertPolymorpheusWithDefault({
     template: string;
     templateOffset: number;
 }): void {
-    const templateVar = defaultTemplateEl.attrs.find(attr =>
+    const templateVar = defaultTemplateEl.attrs.find((attr) =>
         attr.name.startsWith('let-'),
     );
 
@@ -126,13 +126,13 @@ export function migratePolymorpheus({
 
     const elements = findElementsWithAttribute(template, 'polymorpheus-outlet');
 
-    elements.forEach(element => {
-        const contentVal = element.attrs.find(attr => attr.name === '[content]')?.value;
-        const contextVal = element.attrs.find(attr => attr.name === '[context]')?.value;
+    elements.forEach((element) => {
+        const contentVal = element.attrs.find((attr) => attr.name === '[content]')?.value;
+        const contextVal = element.attrs.find((attr) => attr.name === '[context]')?.value;
 
         const defaultTemplateEl = findElementsByFn(
             element.childNodes,
-            el => el.tagName === 'ng-template',
+            (el) => el.tagName === 'ng-template',
         )[0];
 
         if (!contentVal) {

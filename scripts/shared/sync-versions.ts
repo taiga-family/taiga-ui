@@ -12,16 +12,16 @@ export function syncVersions(
     newVersion: string,
     ignores: readonly string[] = [],
 ): void {
-    const patterns = filesOrDirectories.map(pattern =>
+    const patterns = filesOrDirectories.map((pattern) =>
         pattern.endsWith('.json')
             ? pattern
             : `${pattern}/**/*(package.json|package-lock.json)`,
     );
 
     const files = patterns
-        .map(pattern => glob.sync(pattern, {ignore: '**/node_modules/**'}))
-        .flatMap(files => files)
-        .filter(file => !file.includes('node_modules'));
+        .map((pattern) => glob.sync(pattern, {ignore: '**/node_modules/**'}))
+        .flatMap((files) => files)
+        .filter((file) => !file.includes('node_modules'));
 
     for (const file of files) {
         const originalJSON = JSON.stringify(

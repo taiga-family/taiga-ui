@@ -210,7 +210,7 @@ export class TuiSvgComponent {
 
                 return of('');
             }),
-            map(response =>
+            map((response) =>
                 this.sanitize(response.replace('<svg', '<svg focusable="false"')),
             ),
         );

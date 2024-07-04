@@ -21,9 +21,9 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     return file
         .replaceAll(CODE_COMMENTS, '')
         .split(';')
-        .map(line => line.trim())
+        .map((line) => line.trim())
         .filter(Boolean)
-        .map(line => {
+        .map((line) => {
             const [name, ...value] = line.split(':');
 
             return {name, value: value.join(':').replaceAll(/[~'"]/g, '').trim()};

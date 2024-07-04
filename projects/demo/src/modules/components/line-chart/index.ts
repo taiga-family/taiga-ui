@@ -32,11 +32,11 @@ export default class Page {
     ];
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
-        y => `${(10 * y).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`,
+        (y) => `${(10 * y).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`,
     ];
 
     protected readonly xStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
-        x => `${100 * x}`,
+        (x) => `${100 * x}`,
     ];
 
     protected yStringify: TuiStringHandler<number> | null = null;

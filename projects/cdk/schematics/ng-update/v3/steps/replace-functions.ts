@@ -14,7 +14,7 @@ import {DEPRECATED_FUNCTIONS} from '../constants/deprecated-functions';
 
 function replaceDeprecatedFunction(): void {
     DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
-        getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
+        getNamedImportReferences(from, moduleSpecifier).forEach((ref) => {
             if (ref.wasForgotten()) {
                 return;
             }
@@ -34,7 +34,7 @@ function replaceDeprecatedFunction(): void {
 }
 
 function replacePadStart(references: Node[]): void {
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -52,7 +52,7 @@ function replacePadStart(references: Node[]): void {
 }
 
 function replaceNativeFocused(references: Node[]): void {
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -73,7 +73,7 @@ function replaceNativeFocused(references: Node[]): void {
 }
 
 function replaceClosestElement(references: Node[]): void {
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -91,7 +91,7 @@ function replaceClosestElement(references: Node[]): void {
 }
 
 function replaceCustomEvent(references: Node[]): void {
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -107,7 +107,7 @@ function replaceCustomEvent(references: Node[]): void {
 }
 
 function replaceFallbackValue(references: Node[]): void {
-    references.forEach(ref => {
+    references.forEach((ref) => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -125,9 +125,9 @@ function modifyFormatNumberArgs(): void {
         ...getNamedImportReferences('formatNumber', '@taiga-ui/core'),
         ...getNamedImportReferences('tuiFormatNumber', '@taiga-ui/core'),
     ]
-        .map(ref => ref.getParent())
+        .map((ref) => ref.getParent())
         .filter(Node.isCallExpression)
-        .forEach(fn => {
+        .forEach((fn) => {
             const args = fn.getArguments();
 
             if (args.length > 1) {
@@ -137,7 +137,7 @@ function modifyFormatNumberArgs(): void {
                     decimalSeparator = "','",
                     thousandSeparator = "'\u00A0'",
                     zeroPadding = true,
-                ] = args.map(arg => arg.getText());
+                ] = args.map((arg) => arg.getText());
                 const notNullDecimalLimit =
                     decimalLimit === 'null' ? 'Infinity' : decimalLimit;
                 const conditionalDecimalLimit = !Number.isNaN(Number(notNullDecimalLimit))
@@ -153,13 +153,13 @@ function modifyFormatNumberArgs(): void {
 
 function modifyClosestFocusable(): void {
     getNamedImportReferences('tuiGetClosestFocusable', '@taiga-ui/cdk')
-        .map(ref => ref.getParent())
+        .map((ref) => ref.getParent())
         .filter(Node.isCallExpression)
-        .forEach(fn => {
+        .forEach((fn) => {
             const args = fn.getArguments();
 
             if (args.length > 1) {
-                const [initial, prev = false, root, keyboard = true] = args.map(arg =>
+                const [initial, prev = false, root, keyboard = true] = args.map((arg) =>
                     arg.getText(),
                 );
 

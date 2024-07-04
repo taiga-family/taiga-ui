@@ -24,7 +24,7 @@ export class TuiClickOutside {
         'mouseup',
     ).pipe(
         map(tuiGetActualTarget),
-        filter(target => this.isOutside(target)),
+        filter((target) => this.isOutside(target)),
         tuiZoneOptimized(this.zone),
     );
 

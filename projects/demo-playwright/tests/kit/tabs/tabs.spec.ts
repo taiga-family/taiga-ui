@@ -32,7 +32,7 @@ test.describe('Tabs', () => {
     });
 
     test.describe('API', () => {
-        [-2, -1, 0, 1, 2, 3, 4, 5, 100, 1000].forEach(index => {
+        [-2, -1, 0, 1, 2, 3, 4, 5, 100, 1000].forEach((index) => {
             test(`clamp active activeItemIndex=${index}`, async ({page}) => {
                 await tuiGoto(page, `/navigation/tabs/API?activeItemIndex=${index}`);
                 await expect(

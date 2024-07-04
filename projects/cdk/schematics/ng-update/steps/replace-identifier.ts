@@ -29,7 +29,7 @@ export function replaceIdentifiers(
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }

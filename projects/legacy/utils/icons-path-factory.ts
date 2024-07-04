@@ -9,7 +9,7 @@ export const TUI_CACHE_BUSTING_PAYLOAD = `?v=${TUI_VERSION}` as const;
 /**
  * @deprecated: drop in v5.0
  */
-export const DEFAULT_ICONS_PATH: TuiStringHandler<string> = name =>
+export const DEFAULT_ICONS_PATH: TuiStringHandler<string> = (name) =>
     name.includes('.svg#') ? name : `#${name}`;
 
 /**
@@ -18,7 +18,7 @@ export const DEFAULT_ICONS_PATH: TuiStringHandler<string> = name =>
 export function tuiIconsPathFactory(staticPath: string): TuiStringHandler<string> {
     const base = staticPath.endsWith('/') ? staticPath : `${staticPath}/`;
 
-    return name => {
+    return (name) => {
         if (name.startsWith('tuiIcon')) {
             return `${base}${name}.svg${TUI_CACHE_BUSTING_PAYLOAD}#${name}`;
         }

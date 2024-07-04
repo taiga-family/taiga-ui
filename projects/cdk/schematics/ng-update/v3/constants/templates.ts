@@ -590,8 +590,8 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+        filterFn: (element) =>
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'right',
     },
     {
         componentSelector: 'tui-input',
@@ -601,9 +601,9 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
+        filterFn: (element) =>
             !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
     },
     {
         componentSelector: 'tui-primitive-textfield',
@@ -613,9 +613,9 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
+        filterFn: (element) =>
             !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'right',
     },
     {
         componentSelector: 'tui-primitive-textfield',
@@ -625,8 +625,8 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+        filterFn: (element) =>
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
     },
     {
         componentSelector: 'tui-input-tag',
@@ -636,9 +636,9 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
+        filterFn: (element) =>
             !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'right',
     },
     {
         componentSelector: 'tui-input-tag',
@@ -648,8 +648,8 @@ export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
         },
-        filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+        filterFn: (element) =>
+            element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
     },
     {
         componentSelector: '*',

@@ -37,13 +37,13 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
 
     public ngAfterViewInit(): void {
-        this.right$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(index => {
+        this.right$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((index) => {
             this.tryToFocus(index);
         });
 
         merge(this.immediate$, this.debounce$)
             .pipe(
-                switchMap(active => {
+                switchMap((active) => {
                     this.dropdowns.forEach((dropdown, index) => {
                         dropdown.toggle(index === active);
                     });
@@ -66,7 +66,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                     ).pipe(filter(({key}) => key === 'Escape'));
 
                     return merge(mouseEnter$, esc$).pipe(
-                        tap(event => {
+                        tap((event) => {
                             if (dropdown.dropdownBoxRef) {
                                 event.stopPropagation();
                             }
@@ -84,7 +84,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
         return tuiQueryListChanges(this.els).pipe(
-            map(array => array.map(({nativeElement}) => nativeElement)),
+            map((array) => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );
     }
@@ -92,7 +92,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     @tuiPure
     private get right$(): Observable<number> {
         return this.elements$.pipe(
-            switchMap(elements =>
+            switchMap((elements) =>
                 merge(
                     ...elements.map((element, index) =>
                         tuiTypedFromEvent(element, 'keydown').pipe(
@@ -109,7 +109,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     @tuiPure
     private get immediate$(): Observable<number> {
         return this.elements$.pipe(
-            switchMap(elements =>
+            switchMap((elements) =>
                 merge(
                     ...elements.map((element, index) =>
                         tuiTypedFromEvent(element, 'click').pipe(map(() => index)),
@@ -122,7 +122,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     @tuiPure
     private get debounce$(): Observable<number> {
         return this.elements$.pipe(
-            switchMap(elements =>
+            switchMap((elements) =>
                 merge(
                     ...elements.map((element, index) =>
                         merge(

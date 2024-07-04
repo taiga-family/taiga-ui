@@ -10,7 +10,7 @@ declare global {
 }
 
 export const stableMount: typeof mount = (...mountArgs) =>
-    mount(...mountArgs).then(mountResponse =>
+    mount(...mountArgs).then((mountResponse) =>
         cy
             .get('body')
             .find('[data-cy-root]')

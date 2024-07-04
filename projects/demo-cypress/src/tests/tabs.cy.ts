@@ -46,7 +46,7 @@ describe('Tabs', () => {
                 imports: [TuiTabs],
                 providers: [NG_EVENT_PLUGINS],
             })
-            .then(wrapper => {
+            .then((wrapper) => {
                 component = wrapper.component;
             }),
     );

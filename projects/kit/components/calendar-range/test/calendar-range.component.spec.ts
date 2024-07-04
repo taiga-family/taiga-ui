@@ -161,10 +161,10 @@ describe('rangeCalendarComponent', () => {
             testComponent.max = TuiDay.currentLocal().append({day: -1});
             fixture.detectChanges();
 
-            const items = getItems().map(item => item.nativeElement.textContent.trim());
+            const items = getItems().map((item) => item.nativeElement.textContent.trim());
 
-            expect(items.some(item => item === 'Yesterday')).toBe(true);
-            expect(items.some(item => item === 'Today')).toBe(false);
+            expect(items.some((item) => item === 'Yesterday')).toBe(true);
+            expect(items.some((item) => item === 'Today')).toBe(false);
         });
 
         it('when redefining intervals, the list always contains "Other date..."', () => {

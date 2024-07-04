@@ -95,12 +95,12 @@ export class TuiDocExample {
     protected readonly processor$: Observable<Record<string, string>> =
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
-            map(value => this.processContent(value)),
+            map((value) => this.processContent(value)),
         );
 
     protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
         switchAll(),
-        map(module => new PolymorpheusComponent(module.default)),
+        map((module) => new PolymorpheusComponent(module.default)),
     );
 
     @Input()

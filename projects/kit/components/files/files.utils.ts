@@ -20,7 +20,7 @@ export function tuiFilesAccepted(control?: AbstractControl | null): File[] {
     const size: File[] = control?.getError(TUI_SIZE_ERROR)?.$implicit || [];
     const format: File[] = control?.getError(TUI_FORMAT_ERROR)?.$implicit || [];
 
-    return files.filter(file => !size.includes(file) && !format.includes(file));
+    return files.filter((file) => !size.includes(file) && !format.includes(file));
 }
 
 export function tuiFormatSize(

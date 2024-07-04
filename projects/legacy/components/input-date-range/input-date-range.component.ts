@@ -100,7 +100,7 @@ export class TuiInputDateRangeComponent
     );
 
     protected readonly dateFiller$ = this.dateTexts$.pipe(
-        map(dateTexts =>
+        map((dateTexts) =>
             changeDateSeparator(
                 dateTexts[this.dateFormat.mode],
                 this.dateFormat.separator,
@@ -111,7 +111,7 @@ export class TuiInputDateRangeComponent
     protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
+        .subscribe((format) => {
             this.dateFormat = format;
         });
 
@@ -252,7 +252,7 @@ export class TuiInputDateRangeComponent
     protected get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.selectedActivePeriod ??
-            (this.items.find(item =>
+            (this.items.find((item) =>
                 tuiNullableSame(
                     this.value,
                     item.range,
@@ -334,7 +334,7 @@ export class TuiInputDateRangeComponent
     }
 
     private get itemSelected(): boolean {
-        return this.items.findIndex(item => String(item) === this.nativeValue) !== -1;
+        return this.items.findIndex((item) => String(item) === this.nativeValue) !== -1;
     }
 
     @tuiPure

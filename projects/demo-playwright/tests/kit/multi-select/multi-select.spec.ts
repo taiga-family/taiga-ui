@@ -101,7 +101,7 @@ test.describe('MultiSelect', () => {
         });
 
         test.describe('sizes', () => {
-            ['s', 'm', 'l'].forEach(size => {
+            ['s', 'm', 'l'].forEach((size) => {
                 test(`tuiTextfieldSize=${size}`, async ({page}) => {
                     await tuiGoto(
                         page,
@@ -122,7 +122,7 @@ test.describe('MultiSelect', () => {
         test.describe('Form changes by updateOn', () => {
             test.use({viewport: {width: 400, height: 500}});
 
-            (['submit', 'blur', 'change'] as const).forEach(type => {
+            (['submit', 'blur', 'change'] as const).forEach((type) => {
                 test(`updateOn: ${type}`, async ({page}) => {
                     await tuiGoto(
                         page,

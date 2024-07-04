@@ -66,11 +66,11 @@ export function replaceInputProperty({
     const stringProperties = [
         ...findAttributeOnElementWithTag(template, from, selector, filterFn),
         ...findAttributeOnElementWithAttrs(template, from, selector, filterFn),
-    ].map(offset => templateOffset + offset);
+    ].map((offset) => templateOffset + offset);
     const propertyBindings = [
         ...findAttributeOnElementWithTag(template, `[${from}]`, selector, filterFn),
         ...findAttributeOnElementWithAttrs(template, `[${from}]`, selector, filterFn),
-    ].map(offset => templateOffset + offset);
+    ].map((offset) => templateOffset + offset);
     const propertyValues = newValue
         ? getInputPropertyValueOffsets(template, from, selector).map(([start, end]) => [
               templateOffset + start,
@@ -82,12 +82,12 @@ export function replaceInputProperty({
         return false;
     }
 
-    stringProperties.forEach(offset => {
+    stringProperties.forEach((offset) => {
         recorder.remove(offset, from.length);
         recorder.insertRight(offset, to);
     });
 
-    propertyBindings.forEach(offset => {
+    propertyBindings.forEach((offset) => {
         recorder.remove(offset, `[${from}]`.length);
         recorder.insertRight(offset, to.startsWith('[') ? to : `[${to}]`);
     });
@@ -116,7 +116,7 @@ export function getInputPropertyOffsets(
 ): Array<[number, number]> {
     return findElementsWithAttribute(html, attrName)
         .filter(
-            element =>
+            (element) =>
                 (tags.includes(element.tagName) || tags.includes('*')) &&
                 filterFn(element),
         )

@@ -58,7 +58,7 @@ export function getComponentTemplates(
     query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
 ): TemplateResource[] {
     return getClasses(pattern, query)
-        .map(declaration => declaration.getDecorator('Component'))
+        .map((declaration) => declaration.getDecorator('Component'))
         .filter((decorator): decorator is Decorator => !!decorator)
         .map(decoratorToTemplateResource)
         .filter(<T>(x: T | null): x is T => Boolean(x));

@@ -43,13 +43,13 @@ export class TuiPullToRefreshService extends Observable<number> {
             tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
                 filter(() => !this.scrollRef.scrollTop),
                 map(({touches}) => touches[0].clientY),
-                switchMap(start =>
+                switchMap((start) =>
                     tuiTypedFromEvent(this.el, 'touchmove').pipe(
                         tap((): void => {
                             this.touched = true;
                         }),
                         map(({touches}) => touches[0].clientY - start),
-                        filter(distance => distance > 0),
+                        filter((distance) => distance > 0),
                         takeUntil(
                             tuiTypedFromEvent(this.el, 'touchend').pipe(
                                 tap((): void => {
@@ -68,7 +68,7 @@ export class TuiPullToRefreshService extends Observable<number> {
                             : current + current * MICRO_OFFSET,
                     0,
                 ),
-                takeWhile(distance => distance !== this.threshold, true),
+                takeWhile((distance) => distance !== this.threshold, true),
                 startWith(0),
             ),
         ),
@@ -79,6 +79,6 @@ export class TuiPullToRefreshService extends Observable<number> {
     constructor() {
         const component = inject(TUI_PULL_TO_REFRESH_COMPONENT);
 
-        super(subscriber => (component ? this.pulling$ : EMPTY).subscribe(subscriber));
+        super((subscriber) => (component ? this.pulling$ : EMPTY).subscribe(subscriber));
     }
 }

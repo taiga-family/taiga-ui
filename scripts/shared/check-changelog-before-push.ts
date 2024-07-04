@@ -13,7 +13,7 @@ export async function checkChangelogBeforePush(): Promise<string | undefined> {
     return new Promise((resolve: (value?: PromiseLike<string> | string) => void) => {
         let response: string;
 
-        readline.on('line', userInput => {
+        readline.on('line', (userInput) => {
             response = userInput;
             readline.close();
         });

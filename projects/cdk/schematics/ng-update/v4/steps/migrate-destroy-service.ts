@@ -23,7 +23,7 @@ export function migrateDestroyService(options: TuiSchema): void {
     const references = getNamedImportReferences('TuiDestroyService', '@taiga-ui/cdk');
     const nodesForComments: Node[] = [];
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -47,7 +47,7 @@ export function migrateDestroyService(options: TuiSchema): void {
             // providers: [TuiDestroyService]
             const index = parent
                 .getElements()
-                .findIndex(el => el.getText() === 'TuiDestroyService');
+                .findIndex((el) => el.getText() === 'TuiDestroyService');
 
             parent.removeElement(index);
         } else if (Node.isTypeReference(parent)) {
@@ -95,7 +95,7 @@ export function migrateDestroyService(options: TuiSchema): void {
             nodesForComments.push(ref);
         }
 
-        destroyObservableUsages.forEach(node => {
+        destroyObservableUsages.forEach((node) => {
             const possibleTakeUntil = findTakeUntil(node);
 
             if (!possibleTakeUntil) {
@@ -155,7 +155,7 @@ export function migrateDestroyService(options: TuiSchema): void {
      * ---
      * @see https://ts-morph.com/manipulation/#strongwarningstrong
      */
-    nodesForComments.forEach(ref => {
+    nodesForComments.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }

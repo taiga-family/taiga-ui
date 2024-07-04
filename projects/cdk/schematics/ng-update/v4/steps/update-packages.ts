@@ -10,7 +10,7 @@ import {replacePackageName} from '../../steps';
 export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
 
-    packagesToRemove.forEach(pkg => {
+    packagesToRemove.forEach((pkg) => {
         removePackageJsonDependency(tree, pkg);
     });
 

@@ -24,7 +24,7 @@ export class TuiSheetService {
         content: PolymorpheusContent<TuiSheet<G>>,
         options: Partial<TuiSheetOptions> = {},
     ): Observable<G> {
-        return new Observable($implicit => {
+        return new Observable(($implicit) => {
             const completeWith = (result: G): void => {
                 $implicit.next(result);
                 $implicit.complete();
@@ -46,7 +46,7 @@ export class TuiSheetService {
             this.sheets$.next([...this.sheets$.value, sheet]);
 
             return () => {
-                this.sheets$.next(this.sheets$.value.filter(item => item !== sheet));
+                this.sheets$.next(this.sheets$.value.filter((item) => item !== sheet));
             };
         });
     }

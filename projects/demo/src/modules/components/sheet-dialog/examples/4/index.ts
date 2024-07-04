@@ -72,7 +72,7 @@ export default class Example {
     protected readonly search = new FormControl('');
 
     protected readonly users$ = tuiControlValue<string>(this.search).pipe(
-        map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),
+        map((search) => USERS.filter((user) => TUI_DEFAULT_MATCHER(user, search))),
     );
 
     protected readonly height$ = this.size$.pipe(

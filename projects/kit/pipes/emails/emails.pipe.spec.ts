@@ -30,7 +30,7 @@ describe('TuiEmailsPipe', () => {
         it('should not filter suggestions if query contains "@" and is empty', () => {
             const result = pipe.transform('@');
 
-            expect(result).toEqual(options.map(item => `@${item}`));
+            expect(result).toEqual(options.map((item) => `@${item}`));
         });
 
         it('should filter suggestions if query contains "@" and is not empty', () => {

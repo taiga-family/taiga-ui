@@ -19,7 +19,7 @@ export class TuiDocMarkdownPipe implements PipeTransform {
         return of(value).pipe(
             switchMap(tuiRawLoad),
             map(mapper),
-            switchMap(async markdown =>
+            switchMap(async (markdown) =>
                 marked
                     .use({
                         async: true,

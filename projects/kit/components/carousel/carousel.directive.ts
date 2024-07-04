@@ -24,12 +24,12 @@ export class TuiCarouselDirective extends Observable<unknown> {
     private readonly output$ = combineLatest([this.duration$, this.running$]).pipe(
         tuiIfMap(
             ([duration]) => interval(duration),
-            values => values.every(Boolean),
+            (values) => values.every(Boolean),
         ),
     );
 
     constructor() {
-        super(subscriber => this.output$.subscribe(subscriber));
+        super((subscriber) => this.output$.subscribe(subscriber));
     }
 
     @Input()

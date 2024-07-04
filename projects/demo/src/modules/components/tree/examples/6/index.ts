@@ -53,7 +53,7 @@ export default class Example {
         ],
     };
 
-    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || EMPTY_ARRAY;
 
     protected readonly getValue = (
@@ -73,7 +73,7 @@ export default class Example {
     };
 
     protected onChecked(node: TreeNode, value: boolean): void {
-        flatten(node).forEach(item => this.map.set(item, value));
+        flatten(node).forEach((item) => this.map.set(item, value));
 
         this.map = new Map(this.map.entries());
     }

@@ -70,6 +70,6 @@ export default class Example {
     }
 
     protected onClick(): void {
-        this.dialog$.subscribe(value => this.control.setValue(value));
+        this.dialog$.subscribe((value) => this.control.setValue(value));
     }
 }

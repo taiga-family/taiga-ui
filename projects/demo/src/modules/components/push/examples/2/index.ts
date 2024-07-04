@@ -26,7 +26,7 @@ export default class Example {
             })
             .pipe(
                 take(1),
-                switchMap(button => this.alert.open(button)),
+                switchMap((button) => this.alert.open(button)),
             )
             .subscribe();
     }

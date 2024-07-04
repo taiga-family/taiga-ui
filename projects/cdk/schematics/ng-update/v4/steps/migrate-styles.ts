@@ -7,7 +7,7 @@ export const TUI_RATING_WARNING =
 export function migrateStyles(): void {
     getActiveProject()
         ?.getSourceFiles('**/**.{less,sass,scss,css}')
-        .forEach(sourceFile => {
+        .forEach((sourceFile) => {
             let fullText = sourceFile.getFullText();
 
             fullText = fullText

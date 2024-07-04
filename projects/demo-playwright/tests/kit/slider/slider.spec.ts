@@ -8,7 +8,7 @@ test.describe('Slider', () => {
     test.use({viewport: {width: 500, height: 500}});
 
     test.describe('correctly displays values with float percentage progress', () => {
-        [4, 7, 13, 24, 39, 78].forEach(value => {
+        [4, 7, 13, 24, 39, 78].forEach((value) => {
             test(`value = ${value}`, async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.Slider}/API?max=89&min=0&step=1`);
 
@@ -50,7 +50,7 @@ test.describe('Slider', () => {
                 const controlValue = await example
                     .getByTestId('key-steps-example-control-value')
                     .textContent()
-                    .then(x => maskitoParseNumber(x || ''));
+                    .then((x) => maskitoParseNumber(x || ''));
 
                 expect(controlValue).toBe(expectedControlValue);
                 await expect(example).toHaveScreenshot(

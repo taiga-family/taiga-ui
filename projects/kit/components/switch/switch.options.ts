@@ -14,7 +14,7 @@ export const TUI_SWITCH_DEFAULT_OPTIONS: TuiSwitchOptions = {
     showIcons: true,
     size: 'm',
     icon: '@tui.check',
-    appearance: el => (el.checked ? 'primary' : 'secondary'),
+    appearance: (el) => (el.checked ? 'primary' : 'secondary'),
 };
 
 export const TUI_SWITCH_OPTIONS = tuiCreateToken(TUI_SWITCH_DEFAULT_OPTIONS);

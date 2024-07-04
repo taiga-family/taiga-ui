@@ -39,7 +39,7 @@ export function tuiDateFormatProvider(options: Partial<TuiDateFormatSettings>): 
             parent: Observable<TuiDateFormatSettings> | null,
         ): Observable<TuiDateFormatSettings> =>
             (parent || of(TUI_DEFAULT_DATE_FORMAT)).pipe(
-                map(format => ({...format, ...options})),
+                map((format) => ({...format, ...options})),
             ),
     };
 }

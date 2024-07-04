@@ -39,7 +39,7 @@ export default class Example {
 
     protected readonly control = new FormControl([this.items[3], this.items[4]]);
 
-    protected readonly stringify: TuiStringHandler<Hero | TuiContext<Hero>> = item =>
+    protected readonly stringify: TuiStringHandler<Hero | TuiContext<Hero>> = (item) =>
         'name' in item ? item.name : item.$implicit.name;
 
     protected readonly identityMatcher: TuiIdentityMatcher<Hero> = (hero1, hero2) =>

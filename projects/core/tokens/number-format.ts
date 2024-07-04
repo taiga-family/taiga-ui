@@ -62,7 +62,7 @@ export function tuiNumberFormatProvider(
             parent: Observable<TuiNumberFormatSettings> | null,
         ): Observable<TuiNumberFormatSettings> =>
             (parent || of(TUI_DEFAULT_NUMBER_FORMAT)).pipe(
-                map(format => ({...format, ...options})),
+                map((format) => ({...format, ...options})),
             ),
     };
 }

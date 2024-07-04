@@ -16,7 +16,9 @@ export class TuiSortCountriesPipe implements PipeTransform {
         countries: readonly TuiCountryIsoCode[],
     ): Observable<TuiCountryIsoCode[]> {
         return this.countriesNames$.pipe(
-            map(names => [...countries].sort((a, b) => names[a].localeCompare(names[b]))),
+            map((names) =>
+                [...countries].sort((a, b) => names[a].localeCompare(names[b])),
+            ),
         );
     }
 }

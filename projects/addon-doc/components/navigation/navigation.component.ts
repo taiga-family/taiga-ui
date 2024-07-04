@@ -101,8 +101,8 @@ export class TuiDocNavigation {
     protected readonly search = new FormControl('');
 
     protected readonly filtered$ = tuiControlValue<string>(this.search).pipe(
-        filter(search => search.trim().length > 2),
-        map(search => this.filterItems(this.flattenSubPages(this.items), search)),
+        filter((search) => search.trim().length > 2),
+        map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
     );
 
     constructor() {
@@ -111,7 +111,7 @@ export class TuiDocNavigation {
 
         inject(NAVIGATION_TITLE)
             .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
-            .subscribe(title => {
+            .subscribe((title) => {
                 titleService.setTitle(title);
                 this.openActivePageGroup();
             });
@@ -130,7 +130,7 @@ export class TuiDocNavigation {
                 filter<string>(Boolean),
                 takeUntilDestroyed(),
             )
-            .subscribe(anchor => this.navigateToAnchorLink(anchor));
+            .subscribe((anchor) => this.navigateToAnchorLink(anchor));
     }
 
     protected get canOpen(): boolean {
@@ -169,7 +169,7 @@ export class TuiDocNavigation {
         items: ReadonlyArray<readonly TuiDocRoutePage[]>,
         search: string,
     ): ReadonlyArray<readonly TuiDocRoutePage[]> {
-        return items.map(section =>
+        return items.map((section) =>
             tuiUniqBy(
                 section.filter(({title, keywords = ''}) => {
                     search = search.toLowerCase().trim();
@@ -184,7 +184,7 @@ export class TuiDocNavigation {
                         search.replaceAll('-', '').includes(title) ||
                         title.includes(search.replaceAll(/\s|tui/g, '')) ||
                         keywords.includes(search.replaceAll(/\s|tui/g, '')) ||
-                        search.split(/\s/).find(word => title.includes(word))
+                        search.split(/\s/).find((word) => title.includes(word))
                     );
                 }),
                 'title',
@@ -229,7 +229,7 @@ export class TuiDocNavigation {
                 }
 
                 if ('subPages' in page) {
-                    page.subPages.forEach(subPage => {
+                    page.subPages.forEach((subPage) => {
                         if (this.isActiveRoute(subPage.route)) {
                             this.openPagesArr[pagesIndex] = true;
                             this.openPagesGroupsArr[pagesIndex * 100 + pageIndex] = true;

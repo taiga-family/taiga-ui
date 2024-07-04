@@ -38,23 +38,23 @@ export default class Example {
     protected readonly index$$ = new BehaviorSubject<number>(0);
 
     protected readonly item$ = this.index$$.pipe(
-        map(index => this.items[index]),
+        map((index) => this.items[index]),
         filter(tuiIsPresent),
     );
 
-    protected readonly title$ = this.item$.pipe(map(item => item.title));
+    protected readonly title$ = this.item$.pipe(map((item) => item.title));
 
     protected readonly contentUnavailable$ = this.item$.pipe(
-        map(item => !item.hasPreview),
+        map((item) => !item.hasPreview),
     );
 
     protected readonly imageSrc$ = this.item$.pipe(
-        switchMap(item =>
+        switchMap((item) =>
             item.hasPreview ? this.emulateBackendRequest().pipe(startWith('')) : of(null),
         ),
     );
 
-    protected readonly loading$ = this.imageSrc$.pipe(map(src => src === ''));
+    protected readonly loading$ = this.imageSrc$.pipe(map((src) => src === ''));
 
     protected show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();

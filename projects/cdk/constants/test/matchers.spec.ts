@@ -20,7 +20,7 @@ describe('Matcher functions', () => {
     const defaultMatcher = TUI_DEFAULT_MATCHER;
     const strictMatcher = TUI_STRICT_MATCHER;
     const identityMatcher = TUI_DEFAULT_IDENTITY_MATCHER;
-    const stringify: TuiStringHandler<Item> = item => item.price.toString();
+    const stringify: TuiStringHandler<Item> = (item) => item.price.toString();
     const search = 'HOLY GRAIL';
     const item = new Item('Monty Python and the Holy Grail DVD', 99);
 

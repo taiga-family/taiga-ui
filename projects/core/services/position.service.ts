@@ -16,11 +16,11 @@ export class TuiPositionService extends Observable<TuiPoint> {
         const animationFrame$ = inject(ANIMATION_FRAME);
         const zone = inject(NgZone);
 
-        super(subscriber =>
+        super((subscriber) =>
             animationFrame$
                 .pipe(
                     map(() => this.el.getBoundingClientRect()),
-                    map(rect => this.accessor.getPosition(rect)),
+                    map((rect) => this.accessor.getPosition(rect)),
                     tuiZonefree(zone),
                     finalize(() => this.accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )

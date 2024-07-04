@@ -41,7 +41,7 @@ export const replaceModulesWithProviders = (
 function replaceModule({from, to}: ModuleToReplace): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }

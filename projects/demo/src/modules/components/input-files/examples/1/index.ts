@@ -20,7 +20,7 @@ export default class Example {
     protected readonly failedFiles$ = new Subject<TuiFileLike | null>();
     protected readonly loadingFiles$ = new Subject<TuiFileLike | null>();
     protected readonly loadedFiles$ = this.control.valueChanges.pipe(
-        switchMap(file => this.processFile(file)),
+        switchMap((file) => this.processFile(file)),
     );
 
     protected removeFile(): void {

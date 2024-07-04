@@ -30,7 +30,7 @@ export function migrateBadge({
         }
 
         const valueAttr = attrs.find(
-            attr => attr.name === '[value]' || attr.name === 'value',
+            (attr) => attr.name === '[value]' || attr.name === 'value',
         );
 
         // migration for icon-only badges
@@ -40,7 +40,9 @@ export function migrateBadge({
             return;
         }
 
-        const svg = (childNodes as Element[])?.find(node => node.nodeName === 'tui-svg');
+        const svg = (childNodes as Element[])?.find(
+            (node) => node.nodeName === 'tui-svg',
+        );
 
         if (svg) {
             migrateIcon({svg, sourceCodeLocation, recorder, templateOffset});
@@ -66,7 +68,7 @@ function migrateIcon({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const src = svg.attrs?.find(attr => attr.name === 'src');
+    const src = svg.attrs?.find((attr) => attr.name === 'src');
     const srcValue = src?.value;
 
     if (!srcValue) {

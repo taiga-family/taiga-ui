@@ -6,7 +6,7 @@ import {tuiCreateTokenFromFactory} from './create-token';
 const MAP = tuiCreateTokenFromFactory(() => {
     const map = new Map();
 
-    inject(DestroyRef).onDestroy(() => map.forEach(component => component.destroy()));
+    inject(DestroyRef).onDestroy(() => map.forEach((component) => component.destroy()));
 
     return map;
 });

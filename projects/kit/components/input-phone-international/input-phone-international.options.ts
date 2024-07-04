@@ -16,7 +16,7 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
         countries: [],
         countryIsoCode: 'RU',
         metadata: defer(async () =>
-            import('libphonenumber-js/min/metadata').then(m => m.default),
+            import('libphonenumber-js/min/metadata').then((m) => m.default),
         ),
     };
 

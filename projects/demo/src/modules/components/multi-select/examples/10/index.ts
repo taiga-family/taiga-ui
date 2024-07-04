@@ -66,9 +66,9 @@ export default class Example {
 
     protected labels = ['Salad', 'Soup'];
 
-    protected stringify: TuiStringHandler<Item> = item => item.name;
+    protected stringify: TuiStringHandler<Item> = (item) => item.name;
 
-    protected disableHandler: TuiBooleanHandler<string> = item =>
+    protected disableHandler: TuiBooleanHandler<string> = (item) =>
         item.startsWith('Broccoli');
 
     protected disableItemHandler: TuiBooleanHandler<Item> = ({name}) =>

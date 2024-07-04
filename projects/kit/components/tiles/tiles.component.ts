@@ -42,7 +42,7 @@ export class TuiTilesComponent {
     public readonly orderChange = this.el$.pipe(
         debounce(() => timer(this.debounce)),
         filter(this.filter.bind(this)),
-        map(element => this.reorder(element)),
+        map((element) => this.reorder(element)),
     );
 
     @HostBinding('class._dragged')

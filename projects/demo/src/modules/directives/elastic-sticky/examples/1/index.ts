@@ -32,7 +32,7 @@ export default class Example implements AfterViewInit {
         // If we use it like that instead of (tuiElasticSticky)="onElasticSticky($event)"
         // we will not trigger unnecessary change detection when scale is less than 0.5
         this.scale$ = this.elasticSticky.tuiElasticSticky.pipe(
-            map(scale => tuiClamp(scale, 0.5, 1)),
+            map((scale) => tuiClamp(scale, 0.5, 1)),
             startWith(1),
             distinctUntilChanged(),
         );

@@ -26,7 +26,7 @@ test.describe('ComboBox', () => {
     });
 
     test.describe('API', () => {
-        [true, false].forEach(strict => {
+        [true, false].forEach((strict) => {
             test(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, async ({
                 page,
             }) => {

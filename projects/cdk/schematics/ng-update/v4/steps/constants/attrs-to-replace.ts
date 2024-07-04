@@ -181,9 +181,10 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         from: {
             attrName: 'icon',
             withAttrsNames: ['tuiLink'],
-            filterFn: element =>
+            filterFn: (element) =>
                 !hasElementAttribute(element, 'iconAlign') ||
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+                element.attrs.find((attr) => attr.name === 'iconalign')?.value ===
+                    'right',
         },
         to: {attrName: 'iconEnd'},
     },
@@ -191,8 +192,8 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         from: {
             attrName: 'icon',
             withAttrsNames: ['tuiLink'],
-            filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            filterFn: (element) =>
+                element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
         },
         to: {attrName: 'iconStart'},
     },

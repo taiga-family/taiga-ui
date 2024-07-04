@@ -31,7 +31,7 @@ function migrateTuiMaskedMoneyValueIsEmpty(options: TuiSchema): void {
         '@taiga-ui/core',
     );
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -64,7 +64,7 @@ function migrateTuiMaskedNumberStringToNumber(options: TuiSchema): void {
         '@taiga-ui/core',
     );
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }

@@ -86,7 +86,7 @@ export class TuiLineChart {
 
     @Input('value')
     public set valueSetter(value: readonly TuiPoint[]) {
-        this.value = value.filter(item => !item.some(Number.isNaN));
+        this.value = value.filter((item) => !item.some(Number.isNaN));
     }
 
     public onHovered(index: number): void {

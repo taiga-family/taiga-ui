@@ -36,7 +36,7 @@ export class TuiNativeTimeComponent {
     protected readonly autoIdString: string = inject(TuiIdService).generate();
 
     protected get items(): string[] {
-        return this.host.items.map(item => item.toString(this.host.mode));
+        return this.host.items.map((item) => item.toString(this.host.mode));
     }
 
     protected get value(): string {

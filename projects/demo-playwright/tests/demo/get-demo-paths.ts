@@ -33,7 +33,7 @@ export function tuiGetDemoPathsForE2E(
         new Set(
             flatPages(pages)
                 .filter(
-                    page =>
+                    (page) =>
                         !exclusionSection.includes(page.section!) &&
                         !exclusionRoutes.includes(page.route) &&
                         !page.route.includes('://'),

@@ -14,6 +14,6 @@ export class TuiDarkThemeService extends Observable<boolean> {
             shareReplay({bufferSize: 1, refCount: true}),
         );
 
-        super(subscriber => media$.subscribe(subscriber));
+        super((subscriber) => media$.subscribe(subscriber));
     }
 }

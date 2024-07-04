@@ -33,7 +33,7 @@ export function replaceSizeAttr(
     templateOffset: number,
     map = sizeMap,
 ): void {
-    const sizeAttr = attrs.find(attr => attr.name === 'size');
+    const sizeAttr = attrs.find((attr) => attr.name === 'size');
 
     if (sizeAttr) {
         const {startOffset, endOffset} = sourceCodeLocation.attrs?.[sizeAttr.name] || {

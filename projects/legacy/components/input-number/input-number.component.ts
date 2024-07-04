@@ -87,7 +87,7 @@ export class TuiInputNumberComponent
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
+        .subscribe((format) => {
             this.numberFormat = format;
         });
 
@@ -344,7 +344,7 @@ export class TuiInputNumberComponent
             ...options,
             plugins: [
                 ...plugins,
-                maskitoCaretGuard(value => [
+                maskitoCaretGuard((value) => [
                     prefix.length,
                     value.length - postfix.length,
                 ]),

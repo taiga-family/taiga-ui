@@ -34,7 +34,7 @@ export default class Example {
                     actions,
                 },
             )
-            .pipe(switchMap(index => this.alerts.open(`Selected: ${actions[index]}`)))
+            .pipe(switchMap((index) => this.alerts.open(`Selected: ${actions[index]}`)))
             .subscribe();
     }
 }

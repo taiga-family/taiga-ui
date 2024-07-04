@@ -30,7 +30,7 @@ export class TuiDialogsExample1 {
                 buttons: ['Absolutely!', 'No way!'],
             })
             .pipe(
-                switchMap(response =>
+                switchMap((response) =>
                     response
                         ? this.alerts.open(wisely, {
                               status: 'success',

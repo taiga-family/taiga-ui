@@ -83,7 +83,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         String,
-        item => String(String(item).match(/\d+/)),
+        (item) => String(String(item).match(/\d+/)),
     ];
 
     protected stringify = this.stringifyVariants[0];
@@ -97,8 +97,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
         TUI_TRUE_HANDLER,
-        item => item.balance > 300,
-        item => !item.name.startsWith('Pounds'),
+        (item) => item.balance > 300,
+        (item) => !item.name.startsWith('Pounds'),
     ];
 
     protected tagValidator = this.tagValidatorVariants[0];

@@ -79,7 +79,7 @@ export class TuiDropdownSelection
     public readonly type = 'dropdown';
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     @Input()

@@ -79,7 +79,7 @@ export class TuiTabsDirective implements AfterViewChecked {
 
     @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])
     protected onActivate(event: Event, element: HTMLElement): void {
-        const index = this.tabs.findIndex(tab => tab === element);
+        const index = this.tabs.findIndex((tab) => tab === element);
 
         event.stopPropagation();
 
@@ -94,7 +94,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     protected markTabAsActive(): void {
         const {tabs, activeElement} = this;
 
-        tabs.forEach(nativeElement => {
+        tabs.forEach((nativeElement) => {
             const active = nativeElement === activeElement;
 
             nativeElement.classList.toggle('_active', active);

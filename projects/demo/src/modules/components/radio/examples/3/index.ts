@@ -43,6 +43,6 @@ export default class Example {
 
     protected horizontal = this.strings[0];
 
-    protected readonly handler: TuiBooleanHandler<string> = item =>
+    protected readonly handler: TuiBooleanHandler<string> = (item) =>
         item === this.strings[2];
 }

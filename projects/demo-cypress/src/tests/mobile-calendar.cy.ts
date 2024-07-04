@@ -128,8 +128,8 @@ describe('Mobile calendar', () => {
                     onConfirm: createOutputSpy('onConfirmSpy'),
                 },
             })
-                .then(wrapper => wrapper.component)
-                .then(component => {
+                .then((wrapper) => wrapper.component)
+                .then((component) => {
                     cy.wait(500).then(() => {
                         component.calendar.setYear(1950);
 

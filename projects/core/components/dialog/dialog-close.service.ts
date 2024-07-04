@@ -20,7 +20,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
     private readonly el = tuiInjectElement();
 
     private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
-        filter(event => {
+        filter((event) => {
             const target = tuiGetActualTarget(event);
 
             return (
@@ -33,7 +33,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
 
     private readonly mousedown$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
         filter(
-            event =>
+            (event) =>
                 tuiGetViewportWidth(this.win) - event.clientX > SCROLLBAR_PLACEHOLDER &&
                 this.isOutside(tuiGetActualTarget(event)),
         ),
@@ -41,13 +41,13 @@ export class TuiDialogCloseService extends Observable<unknown> {
             tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
                 map(tuiGetActualTarget),
-                filter(target => this.isOutside(target)),
+                filter((target) => this.isOutside(target)),
             ),
         ),
     );
 
     constructor() {
-        super(subscriber => merge(this.esc$, this.mousedown$).subscribe(subscriber));
+        super((subscriber) => merge(this.esc$, this.mousedown$).subscribe(subscriber));
     }
 
     private isOutside(target: EventTarget): boolean {

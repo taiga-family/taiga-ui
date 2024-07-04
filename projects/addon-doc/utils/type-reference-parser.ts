@@ -11,8 +11,8 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
                   types,
               )
               .split('|')
-              .map(item => item.trim())
-        : types.split('|').map(item => item.trim());
+              .map((item) => item.trim())
+        : types.split('|').map((item) => item.trim());
 
     return escaped.reduce<TuiDocTypeReferenceParsed>((result, type) => {
         let extracted = type.trim().replaceAll('readonly ', '').replaceAll('[]', '');

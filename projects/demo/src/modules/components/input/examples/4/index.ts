@@ -131,8 +131,8 @@ export default class Example {
     protected lastUser: User | null = null;
 
     protected readonly users$ = tuiControlValue<string>(this.user).pipe(
-        map(value => {
-            const filtered = USERS.filter(user => TUI_DEFAULT_MATCHER(user, value));
+        map((value) => {
+            const filtered = USERS.filter((user) => TUI_DEFAULT_MATCHER(user, value));
 
             if (
                 filtered.length !== 1 ||

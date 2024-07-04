@@ -68,11 +68,12 @@ export class TuiDropdownOpen implements OnChanges {
 
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
-        inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter(a => !a)),
+        inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
             filter(
-                target => !this.host.contains(target) || !this.directive?.dropdownBoxRef,
+                (target) =>
+                    !this.host.contains(target) || !this.directive?.dropdownBoxRef,
             ),
         ),
     )

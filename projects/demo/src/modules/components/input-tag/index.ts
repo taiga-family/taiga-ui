@@ -58,8 +58,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         TUI_TRUE_HANDLER,
-        item => item === 'test',
-        item => item !== 'mail',
+        (item) => item === 'test',
+        (item) => item !== 'mail',
     ];
 
     protected tagValidator = this.tagValidatorVariants[0];
@@ -68,7 +68,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: Array<
         TuiBooleanHandler<TuiStringifiableItem<string> | string>
-    > = [TUI_FALSE_HANDLER, item => String(item).startsWith('T')];
+    > = [TUI_FALSE_HANDLER, (item) => String(item).startsWith('T')];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 

@@ -57,7 +57,7 @@ export class IconsGroup implements OnInit {
     protected control = new FormControl<string>('');
 
     protected search$: Observable<string> = this.route.queryParams.pipe(
-        map(queryParams => queryParams['search'] ?? ''),
+        map((queryParams) => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
 
@@ -72,11 +72,11 @@ export class IconsGroup implements OnInit {
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
-                map(search => search || ''),
-                filter(search => search.length > 2 || search.length === 0),
+                map((search) => search || ''),
+                filter((search) => search.length > 2 || search.length === 0),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(search => {
+            .subscribe((search) => {
                 void this.router.navigate([], {queryParams: {search}});
             });
     }

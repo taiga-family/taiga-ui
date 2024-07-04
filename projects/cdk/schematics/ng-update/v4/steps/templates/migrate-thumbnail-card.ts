@@ -29,7 +29,7 @@ export function migrateThumbnailCard({
         }
 
         const valueAttr = attrs.find(
-            attr => attr.name === '[cardnumber]' || attr.name === 'cardnumber',
+            (attr) => attr.name === '[cardnumber]' || attr.name === 'cardnumber',
         );
 
         if (!valueAttr) {

@@ -19,7 +19,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
         const el = tuiInjectElement();
         const doc = inject(DOCUMENT);
 
-        super(subscriber => {
+        super((subscriber) => {
             merge(
                 tuiTypedFromEvent(el, 'touchstart', {passive: true}),
                 tuiTypedFromEvent(el, 'mousedown'),

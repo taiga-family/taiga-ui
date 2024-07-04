@@ -483,8 +483,9 @@ describe('InputDateRangeComponent', () => {
         return (
             pageObject
                 .getAllByAutomationId('tui-calendar-sheet__cell', calendarEl)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
-            null
+                .find(
+                    (el) => Number(el.nativeElement.textContent.trim()) === dayNumber,
+                ) || null
         );
     }
 });

@@ -56,9 +56,9 @@ export default class Example {
 
     protected readonly items$ = this.control.valueChanges.pipe(
         startWith(''),
-        switchMap(value =>
+        switchMap((value) =>
             this.request(value ?? '').pipe(
-                map(response => {
+                map((response) => {
                     if (response.length === 1 && String(response[0]) === value) {
                         this.onClick(response[0]);
 
@@ -79,6 +79,6 @@ export default class Example {
 
     // Request imitation
     private request(query: string): Observable<readonly User[]> {
-        return of(DATA.filter(item => TUI_DEFAULT_MATCHER(item, query)));
+        return of(DATA.filter((item) => TUI_DEFAULT_MATCHER(item, query)));
     }
 }

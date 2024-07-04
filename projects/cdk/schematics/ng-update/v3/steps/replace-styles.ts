@@ -13,7 +13,7 @@ export const TUI_WARNING_WRAPPER_MIXINS =
 export function replaceStyles(): void {
     getActiveProject()
         ?.getSourceFiles('**/**.less')
-        .forEach(sourceFile => {
+        .forEach((sourceFile) => {
             let fullText = sourceFile.getFullText();
 
             if (fullText.includes('taiga-ui')) {
@@ -37,7 +37,7 @@ export function replaceStyles(): void {
                     "@import '@taiga-ui/core/styles/taiga-ui-global",
                     `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global`,
                 )
-                .replaceAll(/@import '@taiga-ui\/.+(.less)?';/g, val =>
+                .replaceAll(/@import '@taiga-ui\/.+(.less)?';/g, (val) =>
                     `${val.replace("';", '')}.less';`.replace('.less.less', '.less'),
                 );
 

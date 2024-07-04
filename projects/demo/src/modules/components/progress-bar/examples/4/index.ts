@@ -20,8 +20,8 @@ export default class Example {
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
             ? of(30)
             : timer(300, 300).pipe(
-                  map(i => i + 30),
+                  map((i) => i + 30),
                   startWith(30),
-                  takeWhile(value => value <= this.max),
+                  takeWhile((value) => value <= this.max),
               );
 }

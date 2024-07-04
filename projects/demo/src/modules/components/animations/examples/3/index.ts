@@ -23,7 +23,7 @@ export default class Example {
 
     protected isShown$ = isPlatformBrowser(inject(PLATFORM_ID))
         ? from([false, true]).pipe(
-              concatMap(val => of(val).pipe(delay(1.5 * this.speed.value))),
+              concatMap((val) => of(val).pipe(delay(1.5 * this.speed.value))),
               repeat(),
               startWith(true),
           )

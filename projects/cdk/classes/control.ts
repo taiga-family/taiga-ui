@@ -74,7 +74,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 map(() => this.control.control),
                 filter(tuiIsPresent),
                 distinctUntilChanged(),
-                switchMap(control => merge(control.valueChanges, control.statusChanges)),
+                switchMap((control) =>
+                    merge(control.valueChanges, control.statusChanges),
+                ),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {

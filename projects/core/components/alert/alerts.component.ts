@@ -33,7 +33,7 @@ export class TuiAlerts {
 
     protected readonly alerts$ = inject(TUI_ALERTS_GROUPED);
     protected readonly trackBy = identity;
-    protected readonly mapper: TuiMapper<[Type<any>], Injector> = useValue =>
+    protected readonly mapper: TuiMapper<[Type<any>], Injector> = (useValue) =>
         Injector.create({
             providers: [
                 {

@@ -18,7 +18,7 @@ export const TUI_REMOVED_ELEMENT = tuiCreateTokenFromFactory(() => {
     };
 
     return element$.pipe(
-        switchMap(element =>
+        switchMap((element) =>
             timer(0).pipe(
                 map(() => null),
                 startWith(element),

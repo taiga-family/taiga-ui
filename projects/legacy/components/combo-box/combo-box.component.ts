@@ -146,7 +146,9 @@ export class TuiComboBoxComponent<T>
     public onValueChange(value: string): void {
         this.updateSearch(value);
 
-        const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
+        const match = this.accessor
+            ?.getOptions()
+            .find((item) => this.isStrictMatch(item));
 
         if (match !== undefined) {
             this.value = match;

@@ -432,8 +432,9 @@ describe('InputDate', () => {
         return (
             pageObject
                 .getAllByAutomationId('tui-calendar-sheet__cell')
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
-            null
+                .find(
+                    (el) => Number(el.nativeElement.textContent.trim()) === dayNumber,
+                ) || null
         );
     }
 });

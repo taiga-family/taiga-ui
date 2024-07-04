@@ -19,7 +19,7 @@ export class TuiHintService extends BehaviorSubject<readonly TuiPortalItem[]> {
 
     public remove(directive: TuiPortalItem): void {
         if (this.value.includes(directive)) {
-            this.next(this.value.filter(hint => hint !== directive));
+            this.next(this.value.filter((hint) => hint !== directive));
         }
     }
 }

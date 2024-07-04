@@ -28,7 +28,7 @@ export default class Example {
 
     protected showDialog(): void {
         this.dialog.subscribe({
-            next: data => {
+            next: (data) => {
                 console.info(`Dialog emitted data = ${data}`);
             },
             complete: () => {

@@ -37,7 +37,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
         value: readonly T[],
         matcher: TuiIdentityMatcher<T>,
     ): ReadonlyArray<readonly T[]> {
-        return items.map(subItems => this.filter(subItems, value, matcher));
+        return items.map((subItems) => this.filter(subItems, value, matcher));
     }
 
     @tuiPure
@@ -46,6 +46,8 @@ export class TuiHideSelectedPipe implements PipeTransform {
         value: readonly T[],
         matcher: TuiIdentityMatcher<T>,
     ): readonly T[] {
-        return items.filter(item => value.every(selected => !matcher(selected, item)));
+        return items.filter((item) =>
+            value.every((selected) => !matcher(selected, item)),
+        );
     }
 }

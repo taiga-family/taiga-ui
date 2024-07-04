@@ -67,7 +67,7 @@ export default class Example {
     @tuiPure
     private filterBy(search: string, value: readonly string[]): readonly string[] {
         return ITEMS.filter(
-            item => TUI_DEFAULT_MATCHER(item, search) && !value.includes(item),
+            (item) => TUI_DEFAULT_MATCHER(item, search) && !value.includes(item),
         );
     }
 }

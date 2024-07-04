@@ -17,12 +17,12 @@ export default class Example {
     protected rejected: File[] = [];
 
     protected onRemove(remove: File): void {
-        this.files = this.files.filter(file => file !== remove);
-        this.rejected = this.rejected.filter(file => file !== remove);
+        this.files = this.files.filter((file) => file !== remove);
+        this.rejected = this.rejected.filter((file) => file !== remove);
     }
 
     protected onChange(files: File[]): void {
-        this.files = files.filter(file => !this.rejected.includes(file));
+        this.files = files.filter((file) => !this.rejected.includes(file));
     }
 
     protected onReject(rejected: File[]): void {

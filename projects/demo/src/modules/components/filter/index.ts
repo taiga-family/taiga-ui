@@ -42,8 +42,8 @@ export default class Page {
     ];
 
     protected badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
-        item => Number(item),
-        item => String(item).length,
+        (item) => Number(item),
+        (item) => String(item).length,
     ];
 
     protected badgeHandler = this.badgeHandlerVariants[0];
@@ -52,8 +52,8 @@ export default class Page {
         TuiBooleanHandler<ItemWithBadge | string>
     > = [
         TUI_FALSE_HANDLER,
-        item => item === 'Roman Sedov',
-        item => (Number(item.valueOf()) || 0) >= 30,
+        (item) => item === 'Roman Sedov',
+        (item) => (Number(item.valueOf()) || 0) >= 30,
     ];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];

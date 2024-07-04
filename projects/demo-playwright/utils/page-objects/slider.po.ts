@@ -9,7 +9,7 @@ export class TuiSliderPO {
     }
 
     public get fillPercentage(): Promise<number> {
-        return this.host.evaluate(el =>
+        return this.host.evaluate((el) =>
             Math.round(
                 parseFloat(
                     globalThis

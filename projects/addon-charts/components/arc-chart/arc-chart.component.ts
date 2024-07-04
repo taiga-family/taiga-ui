@@ -79,13 +79,13 @@ export class TuiArcChart {
 
     @Output()
     public readonly activeItemIndexChange = this.arcs$.pipe(
-        switchMap(arcs =>
+        switchMap((arcs) =>
             arcs.changes.pipe(
                 startWith(null),
                 switchMap(() => merge(...arcsToIndex(arcs))),
             ),
         ),
-        tap(index => {
+        tap((index) => {
             this.activeItemIndex = index;
         }),
     );

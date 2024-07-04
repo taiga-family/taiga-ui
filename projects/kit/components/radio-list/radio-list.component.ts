@@ -75,7 +75,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
 
     @HostListener('focusout')
     protected onFocusOut(): void {
-        this.controls.forEach(control => control.control?.markAsTouched());
+        this.controls.forEach((control) => control.control?.markAsTouched());
 
         if (!this.touched()) {
             this.onTouched();

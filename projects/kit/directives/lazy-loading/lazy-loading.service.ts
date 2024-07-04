@@ -9,7 +9,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
     private readonly src$ = new Subject<SafeResourceUrl | string>();
     private readonly intersections$ = inject(IntersectionObserverService);
     private readonly stream$ = this.src$.pipe(
-        switchMap(src =>
+        switchMap((src) =>
             this.intersections$.pipe(
                 filter(([{isIntersecting}]) => isIntersecting),
                 map(() => src),
@@ -20,7 +20,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
     );
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     public next(src: SafeResourceUrl | string): void {

@@ -6,7 +6,7 @@ function makeRandomSalt(): number {
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
-    const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
+    const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map((url) =>
         url.slice(4, url.length - 1).replaceAll(/['"#]+/g, ''),
     );
 

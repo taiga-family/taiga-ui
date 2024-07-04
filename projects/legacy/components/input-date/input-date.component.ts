@@ -111,7 +111,7 @@ export class TuiInputDateComponent
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly type!: TuiContext<TuiActiveZone>;
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
-        map(dateTexts =>
+        map((dateTexts) =>
             changeDateSeparator(
                 dateTexts[this.dateFormat.mode],
                 this.dateFormat.separator,
@@ -121,7 +121,7 @@ export class TuiInputDateComponent
 
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
+        .subscribe((format) => {
             this.dateFormat = format;
         });
 
@@ -227,7 +227,7 @@ export class TuiInputDateComponent
     protected get activeItem(): TuiNamedDay | null {
         const {value} = this;
 
-        return (value && this.items.find(item => item.day.daySame(value))) || null;
+        return (value && this.items.find((item) => item.day.daySame(value))) || null;
     }
 
     @HostListener('click')

@@ -67,7 +67,7 @@ describe('tuiGetElementObscures', () => {
                 ownerDocument.createElement('p'),
             ];
 
-            others.forEach(el => document.body.appendChild(el));
+            others.forEach((el) => document.body.appendChild(el));
 
             const mockElementFromPoint = jest
                 .fn()
@@ -96,7 +96,7 @@ describe('tuiGetElementObscures', () => {
                 ownerDocument.createElement('p'),
             ];
 
-            others.forEach(el => document.body.appendChild(el));
+            others.forEach((el) => document.body.appendChild(el));
 
             const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
@@ -154,7 +154,7 @@ describe('tuiGetElementObscures', () => {
                 ownerDocument.createElement('p'),
             ];
 
-            others.forEach(el => document.body.appendChild(el));
+            others.forEach((el) => document.body.appendChild(el));
 
             const mockElementFromPoint = jest
                 .fn()

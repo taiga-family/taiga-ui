@@ -19,6 +19,6 @@ export class TuiFilterPipe implements PipeTransform {
         matcher: TuiMatcher<[T, ...U]>,
         ...args: U
     ): T[] {
-        return items.filter(item => matcher(item, ...args));
+        return items.filter((item) => matcher(item, ...args));
     }
 }

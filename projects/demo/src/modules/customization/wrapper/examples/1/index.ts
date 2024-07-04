@@ -19,7 +19,7 @@ import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiInputModule} from '@taiga-ui/lega
             },
         },
         tuiCheckboxOptionsProvider({
-            appearance: el =>
+            appearance: (el) =>
                 el.checked || el.indeterminate
                     ? 'material-checkbox-on'
                     : 'material-checkbox-off',

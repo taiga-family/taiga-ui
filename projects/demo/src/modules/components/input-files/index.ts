@@ -50,9 +50,9 @@ export default class PageComponent extends AbstractExampleTuiControl {
     );
 
     protected removeFile(file: File): void {
-        this.rejected = this.rejected.filter(current => current !== file);
+        this.rejected = this.rejected.filter((current) => current !== file);
         this.control.setValue(
-            this.control.value?.filter(current => current !== file) || null,
+            this.control.value?.filter((current) => current !== file) || null,
         );
     }
 

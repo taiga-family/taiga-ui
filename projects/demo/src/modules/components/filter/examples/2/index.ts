@@ -97,6 +97,6 @@ export default class Example {
         item2: Operations,
     ) => item1.title === item2.title;
 
-    protected badgeHandler: TuiHandler<Operations, number> = item =>
+    protected badgeHandler: TuiHandler<Operations, number> = (item) =>
         item.operations.length;
 }

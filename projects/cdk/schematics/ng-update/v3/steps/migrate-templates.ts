@@ -115,10 +115,10 @@ function addHTMLCommentTags({
             ...findElementsWithAttribute(template, withAttr),
             ...findElementsWithAttribute(template, `[${withAttr}]`),
         ]
-            .filter(el => el.tagName === tag)
-            .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
+            .filter((el) => el.tagName === tag)
+            .map((el) => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
 
-        elementStartOffsets.forEach(offset => {
+        elementStartOffsets.forEach((offset) => {
             recorder.insertRight(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
         });
     });
@@ -138,8 +138,8 @@ function replaceBreadcrumbs({
 
     const elements = findElementsByTagName(template, 'tui-breadcrumbs');
 
-    elements.forEach(element => {
-        const itemsAttr = element.attrs.find(attr => attr.name === '[items]');
+    elements.forEach((element) => {
+        const itemsAttr = element.attrs.find((attr) => attr.name === '[items]');
         const itemsValue = itemsAttr?.value;
         const insertTo = element?.sourceCodeLocation?.startTag?.endOffset ?? 0;
 
@@ -183,8 +183,8 @@ function replaceFieldError({
 
     const elements = findElementsByTagName(template, 'tui-field-error');
 
-    elements.forEach(element => {
-        const orderAttr = element.attrs.find(attr => attr.name === '[order]');
+    elements.forEach((element) => {
+        const orderAttr = element.attrs.find((attr) => attr.name === '[order]');
         const orderVal = orderAttr?.value;
 
         if (orderAttr) {
@@ -224,7 +224,7 @@ function addEditorProviders({
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const elements = findElementsByTagName(template, 'tui-editor').filter(
-        element => !hasElementAttribute(element, 'new'),
+        (element) => !hasElementAttribute(element, 'new'),
     );
 
     if (elements.length) {
@@ -263,13 +263,13 @@ function migrateTuiHideSelectedPipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elementsWithPipe = findElementsInTemplateByFn(template, el =>
-        el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
+    const elementsWithPipe = findElementsInTemplateByFn(template, (el) =>
+        el.attrs?.some((attr) => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 
-    elementsWithPipe.forEach(el => {
+    elementsWithPipe.forEach((el) => {
         const {name, value: oldValue} =
-            el.attrs.find(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ||
+            el.attrs.find((attr) => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ||
             {};
         const attrLocations = el.sourceCodeLocation?.attrs;
 
@@ -302,15 +302,15 @@ function migrateBinaryAttributes({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach(attrName => {
-        const elements = findElementsInTemplateByFn(template, el =>
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach((attrName) => {
+        const elements = findElementsInTemplateByFn(template, (el) =>
             el.attrs?.some(
-                attr =>
+                (attr) =>
                     attr.value === 'true' && attr.name.includes(attrName.toLowerCase()),
             ),
         );
 
-        elements.forEach(el => {
+        elements.forEach((el) => {
             const attrLocations = el.sourceCodeLocation?.attrs;
 
             if (!attrLocations) {
@@ -402,7 +402,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         total: componentWithTemplatesPaths.length,
     });
 
-    componentWithTemplatesPaths.forEach(resource => {
+    componentWithTemplatesPaths.forEach((resource) => {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 

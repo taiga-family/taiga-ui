@@ -28,7 +28,7 @@ export function removeModules(
 export function removeModule(name: string, moduleSpecifier: string): void {
     const references = getNamedImportReferences(name, moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -38,7 +38,7 @@ export function removeModule(name: string, moduleSpecifier: string): void {
         if (Node.isImportSpecifier(parent)) {
             removeImport(parent);
         } else if (Node.isArrayLiteralExpression(parent)) {
-            const index = parent.getElements().findIndex(el => el.getText() === name);
+            const index = parent.getElements().findIndex((el) => el.getText() === name);
 
             parent.removeElement(index);
         }

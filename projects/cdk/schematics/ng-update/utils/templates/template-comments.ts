@@ -29,7 +29,7 @@ export function addHTMLCommentTags({
             ...(withAttrs.length
                 ? findElementsWithAttributeOnTag(
                       template,
-                      withAttrs.map(attr => `[${attr}]`),
+                      withAttrs.map((attr) => `[${attr}]`),
                       [tag],
                   )
                 : []),
@@ -38,7 +38,7 @@ export function addHTMLCommentTags({
                 (sourceCodeLocation?.startOffset || 0) + templateOffset,
         );
 
-        elementStartOffsets.forEach(offset => {
+        elementStartOffsets.forEach((offset) => {
             recorder.insertLeft(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
         });
     });

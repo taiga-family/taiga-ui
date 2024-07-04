@@ -52,7 +52,7 @@ test.describe('InputTime', () => {
             inputTime = new TuiInputTimePO(apiPageExample.locator('tui-input-time'));
         });
 
-        ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'].forEach(mode => {
+        ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'].forEach((mode) => {
             test(`the input is configured for ${mode} mode`, async ({page}) => {
                 await tuiGoto(page, `components/input-time/API?mode=${mode}`, {
                     date: MOCK_DATE,
@@ -94,7 +94,7 @@ test.describe('InputTime', () => {
                 );
             });
 
-            ['s', 'm', 'l'].forEach(size => {
+            ['s', 'm', 'l'].forEach((size) => {
                 test(`the dropdown is configured for ${size} size`, async ({page}) => {
                     await tuiGoto(
                         page,

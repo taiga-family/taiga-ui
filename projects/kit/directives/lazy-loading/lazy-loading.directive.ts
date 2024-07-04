@@ -26,7 +26,7 @@ export class TuiImgLazyLoading {
 
     constructor() {
         if (!this.supported) {
-            this.src$.pipe(takeUntilDestroyed()).subscribe(src => {
+            this.src$.pipe(takeUntilDestroyed()).subscribe((src) => {
                 this.src = src;
             });
         }

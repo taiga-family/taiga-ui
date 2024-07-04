@@ -14,7 +14,7 @@ export class TuiDateFormat extends Observable<TuiDateFormatSettings> {
     private readonly parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
 
     constructor() {
-        super(subscriber =>
+        super((subscriber) =>
             combineLatest([this.parent, this.settings])
                 .pipe(map(([parent, settings]) => ({...parent, ...settings})))
                 .subscribe(subscriber),

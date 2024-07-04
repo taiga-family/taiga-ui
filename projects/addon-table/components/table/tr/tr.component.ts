@@ -41,7 +41,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
 
     protected readonly cells$ = this.contentReady$.pipe(
         switchMap(() => tuiQueryListChanges(this.cells)),
-        map(cells =>
+        map((cells) =>
             cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
                 {} as Record<string | keyof T, TuiTableCell>,
@@ -52,8 +52,8 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
     protected readonly item$ = this.contentReady$.pipe(
         switchMap(() => tuiQueryListChanges(this.body.rows)),
         map(
-            rows =>
-                this.body.data[rows.findIndex(row => row === this)] as Record<
+            (rows) =>
+                this.body.data[rows.findIndex((row) => row === this)] as Record<
                     string | keyof T,
                     any
                 >,

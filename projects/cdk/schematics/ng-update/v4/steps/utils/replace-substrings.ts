@@ -16,7 +16,7 @@ export function replaceSubstrings(text: string, replacements: Replacement[]): st
     let transformed = text;
     let acc = 0;
 
-    replacements.forEach(replacement => {
+    replacements.forEach((replacement) => {
         replacement.start += acc;
         transformed = replaceSubstring(transformed, replacement);
         acc += replacement.to.length - replacement.from.length;

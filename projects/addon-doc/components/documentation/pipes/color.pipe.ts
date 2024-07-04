@@ -30,7 +30,7 @@ export class TuiGetColorPipe implements PipeTransform {
             .replace(')', '')
             .replace(' ', '')
             .split(',')
-            .map(v => Number.parseInt(v, 10)) as [number, number, number];
+            .map((v) => Number.parseInt(v, 10)) as [number, number, number];
 
         return tuiRgbToHex(...parsed);
     }

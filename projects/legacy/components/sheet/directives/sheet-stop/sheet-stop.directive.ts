@@ -24,7 +24,7 @@ export class TuiSheetStopDirective {
 
         inject(TUI_SHEET_SCROLL)
             .pipe(
-                map(y => Math.floor(y) > el.offsetTop),
+                map((y) => Math.floor(y) > el.offsetTop),
                 distinctUntilChanged(),
                 withLatestFrom(inject(TUI_SHEET_DRAGGED)),
                 map(([above, dragged]) => !above && !dragged),

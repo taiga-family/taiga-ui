@@ -29,7 +29,7 @@ test.describe('InputDateRange', () => {
     });
 
     test.describe('API', () => {
-        ['s', 'm', 'l'].forEach(size => {
+        ['s', 'm', 'l'].forEach((size) => {
             test(`correct filler display for size ${size.toUpperCase()}`, async ({
                 page,
             }) => {

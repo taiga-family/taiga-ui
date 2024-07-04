@@ -17,7 +17,7 @@ export class TuiDocScrollIntoViewLink {
             filter(Boolean),
             switchMap(() => this.scroll$),
             debounceTime(750),
-            filter(shallWe => shallWe && !!tuiGetElementObscures(this.el)),
+            filter((shallWe) => shallWe && !!tuiGetElementObscures(this.el)),
             takeUntilDestroyed(),
         )
         .subscribe(() => this.el.scrollIntoView());

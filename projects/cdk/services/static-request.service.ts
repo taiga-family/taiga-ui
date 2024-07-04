@@ -17,7 +17,7 @@ export class TuiStaticRequestService {
         }
 
         const piped = fromFetch(url).pipe(
-            switchMap(async response => {
+            switchMap(async (response) => {
                 if (response.ok) {
                     return response.text();
                 }

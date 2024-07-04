@@ -7,6 +7,6 @@ export function tuiHexToRgb(hex: string): [number, number, number] {
         .match(/.{2}/g);
 
     return matches
-        ? (matches.map(x => Number.parseInt(x, 16)) as [number, number, number])
+        ? (matches.map((x) => Number.parseInt(x, 16)) as [number, number, number])
         : [0, 0, 0];
 }

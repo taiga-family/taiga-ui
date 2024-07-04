@@ -68,7 +68,7 @@ export default class Example {
             autoClose: 0,
         })
         .pipe(
-            switchMap(response =>
+            switchMap((response) =>
                 this.alerts.open(`Got a value — ${response}`, {label: 'Information'}),
             ),
             takeUntil(inject(Router).events),

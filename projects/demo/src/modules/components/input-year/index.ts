@@ -32,7 +32,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<number>
-    > = [TUI_FALSE_HANDLER, year => year % 3 === 0];
+    > = [TUI_FALSE_HANDLER, (year) => year % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 

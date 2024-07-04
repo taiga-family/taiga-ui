@@ -69,7 +69,7 @@ export class TuiSheetWrapperDirective {
     @tuiPure
     public get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
-            map(y => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
+            map((y) => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
             distinctUntilChanged(),
             tuiZonefull(this.zone),
         );

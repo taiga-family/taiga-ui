@@ -55,7 +55,7 @@ export class TuiCheckbox implements OnInit, DoCheck {
 
         tuiControlValue(this.control)
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
+            .subscribe((value) => {
                 // https://github.com/angular/angular/issues/14988
                 const fix = this.control instanceof NgModel ? this.control.model : value;
 

@@ -25,7 +25,7 @@ export class TuiAmountPipe implements PipeTransform {
         currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
     ): Observable<string> {
         return this.format.pipe(
-            map(format => {
+            map((format) => {
                 const sign = tuiFormatSignSymbol(value, this.options.sign);
                 const currencySymbol = tuiFormatCurrency(currency);
                 const formatted = tuiFormatNumber(Math.abs(value), {

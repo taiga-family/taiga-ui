@@ -45,7 +45,7 @@ export default class Example {
 
     protected readonly map = new Map<TreeNode, boolean>();
 
-    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || EMPTY_ARRAY;
 
     protected toggleTopmost(): void {

@@ -30,5 +30,5 @@ export default class Example {
         'Building materials',
     ];
 
-    protected disabledItemHandler: TuiBooleanHandler<string> = item => item.length < 7;
+    protected disabledItemHandler: TuiBooleanHandler<string> = (item) => item.length < 7;
 }

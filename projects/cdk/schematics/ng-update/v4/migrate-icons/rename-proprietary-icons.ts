@@ -6,12 +6,12 @@ import {ALL_FILES} from '../../../constants';
 export function renameProprietaryIcons(pattern = ALL_FILES): void {
     const sourceFiles = getSourceFiles(pattern);
 
-    sourceFiles.forEach(file => {
+    sourceFiles.forEach((file) => {
         let text = file.getFullText();
 
         const regex = /\btuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
 
-        text = text.replaceAll(regex, match => convertString(match));
+        text = text.replaceAll(regex, (match) => convertString(match));
 
         file.replaceWithText(text);
     });

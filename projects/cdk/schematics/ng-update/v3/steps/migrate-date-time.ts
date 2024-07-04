@@ -30,7 +30,7 @@ function migrateProperty({
 }): void {
     const references = getNamedImportReferences(namedImport, moduleSpecifier);
 
-    references.forEach(ref => {
+    references.forEach((ref) => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -47,7 +47,7 @@ function migrateProperty({
             );
             const searched = accessExpression
                 ?.getChildrenOfKind(SyntaxKind.Identifier)
-                .find(identifier => identifier.getText() === from);
+                .find((identifier) => identifier.getText() === from);
 
             if (searched && accessExpression) {
                 callback(accessExpression);
@@ -59,7 +59,7 @@ function migrateProperty({
         if (Node.isPropertyAccessExpression(parent)) {
             const searched = parent
                 .getChildrenOfKind(SyntaxKind.Identifier)
-                .find(identifier => identifier.getText() === from);
+                .find((identifier) => identifier.getText() === from);
 
             if (searched && !parent.wasForgotten()) {
                 callback(parent);
@@ -113,8 +113,8 @@ function replaceIdentifierReferences(
          * If `identifier` is equal to `var` from `method1` (1),
          * then `identifier.findReferencesAsNodes` will return array with 2 references: (2) and (3).
          */
-        .filter(ref => !areBothObjectDestructuring(ref, identifier))
-        .forEach(ref => {
+        .filter((ref) => !areBothObjectDestructuring(ref, identifier))
+        .forEach((ref) => {
             if (ref.wasForgotten()) {
                 return;
             }
@@ -139,7 +139,7 @@ function replaceIdentifierReferences(
             if (Node.isPropertyAccessExpression(parent)) {
                 const searched = parent
                     .getChildrenOfKind(SyntaxKind.Identifier)
-                    .find(identifier => identifier.getText() === from);
+                    .find((identifier) => identifier.getText() === from);
 
                 if (searched) {
                     callback(parent);
@@ -185,7 +185,7 @@ export function dateTimeMigrations(options: TuiSchema): void {
         namedImport: 'TuiDay',
         moduleSpecifier: '@taiga-ui/cdk',
         from: 'formattedDay',
-        callback: node =>
+        callback: (node) =>
             node.replaceWithText(
                 node.getText().replace('formattedDay', 'getFormattedDay("DMY", ".")'),
             ),
@@ -202,7 +202,7 @@ export function dateTimeMigrations(options: TuiSchema): void {
         namedImport: 'TuiDayRange',
         moduleSpecifier: '@taiga-ui/cdk',
         from: 'formattedDayRange',
-        callback: node =>
+        callback: (node) =>
             node.replaceWithText(
                 node
                     .getText()
@@ -221,7 +221,7 @@ export function dateTimeMigrations(options: TuiSchema): void {
         namedImport: 'TuiDayRange',
         moduleSpecifier: '@taiga-ui/cdk',
         from: 'normalizeParse',
-        callback: node => {
+        callback: (node) => {
             const parent = node.getParent();
 
             if (Node.isCallExpression(parent)) {
@@ -285,7 +285,7 @@ export function dateTimeMigrations(options: TuiSchema): void {
             namedImport,
             moduleSpecifier: '@taiga-ui/cdk',
             from: field,
-            callback: node => insertTodoBeforeNode(node, message),
+            callback: (node) => insertTodoBeforeNode(node, message),
         });
 
         !options['skip-logs'] &&

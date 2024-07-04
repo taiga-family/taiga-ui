@@ -53,12 +53,12 @@ export class TuiLineChartHint implements AfterViewInit {
     public ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
-                filter(result => !result.some(Boolean)),
+                filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
-                this.charts.forEach(chart => chart.onHovered(NaN));
+                this.charts.forEach((chart) => chart.onHovered(NaN));
             });
     }
 
@@ -69,10 +69,10 @@ export class TuiLineChartHint implements AfterViewInit {
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
     public raise(index: number, _chart: TuiLineChart): void {
-        const current = this.charts.map(chart => chart.value[index]);
+        const current = this.charts.map((chart) => chart.value[index]);
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
-        this.charts.forEach(chart => chart.onHovered(index));
+        this.charts.forEach((chart) => chart.onHovered(index));
         this.chartsRef.forEach(({nativeElement}, index) =>
             this.renderer.setStyle(
                 nativeElement,
@@ -86,7 +86,7 @@ export class TuiLineChartHint implements AfterViewInit {
     private computeContext(
         ...values: ReadonlyArray<readonly TuiPoint[]>
     ): ReadonlyArray<readonly TuiPoint[]> {
-        return (values[0] || []).map((_, index) => values.map(value => value[index]));
+        return (values[0] || []).map((_, index) => values.map((value) => value[index]));
     }
 }
 
@@ -96,13 +96,13 @@ export function tuiLineChartDrivers(
     return combineLatest(
         charts.map(({drivers}) =>
             tuiQueryListChanges(drivers).pipe(
-                map(drivers => drivers.map(driver => driver.pipe(startWith(false)))),
+                map((drivers) => drivers.map((driver) => driver.pipe(startWith(false)))),
             ),
         ),
     ).pipe(
-        map(all => all.reduce((acc, drivers) => acc.concat(drivers), [])),
-        switchMap(drivers => combineLatest(drivers)),
-        map(values => values.some(Boolean)),
+        map((all) => all.reduce((acc, drivers) => acc.concat(drivers), [])),
+        switchMap((drivers) => combineLatest(drivers)),
+        map((values) => values.some(Boolean)),
         distinctUntilChanged(),
     );
 }

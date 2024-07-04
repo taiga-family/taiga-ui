@@ -14,7 +14,7 @@ export class TuiNumberFormat extends Observable<TuiNumberFormatSettings> {
     private readonly parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
 
     constructor() {
-        super(subscriber =>
+        super((subscriber) =>
             combineLatest([this.parent, this.settings])
                 .pipe(map(([parent, settings]) => ({...parent, ...settings})))
                 .subscribe(subscriber),

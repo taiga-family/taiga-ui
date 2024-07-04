@@ -31,7 +31,7 @@ export class TuiFlatPickerComponent {
     constructor() {
         inject(TuiPickerService)
             .pipe(takeUntilDestroyed())
-            .subscribe(point => {
+            .subscribe((point) => {
                 this.value = point;
                 this.valueChange.emit([point[0], point[1]]);
             });

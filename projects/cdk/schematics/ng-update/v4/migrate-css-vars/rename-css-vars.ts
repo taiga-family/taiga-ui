@@ -12,12 +12,12 @@ import {
 export function renameCssVars(pattern = ALL_FILES): void {
     const sourceFiles = getSourceFiles(pattern);
 
-    sourceFiles.forEach(file => {
+    sourceFiles.forEach((file) => {
         let text = file.getFullText();
 
         // leave comments
         if (!file.getFilePath().endsWith('html')) {
-            DEPRECATE_VARS_WITH_COMMENT.forEach(variable => {
+            DEPRECATE_VARS_WITH_COMMENT.forEach((variable) => {
                 const wordRegex = new RegExp(`(^|\\n)(?=[^\\n]*\\b${variable}\\b)`, 'g');
 
                 text = text.replaceAll(wordRegex, `$1// ${NIGHT_VAR_COMMENT}\n`);

@@ -20,7 +20,7 @@ export class TuiHintManual extends TuiDriver implements OnChanges {
     public readonly type = 'hint';
 
     constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
+        super((subscriber) => this.stream$.subscribe(subscriber));
         this.hover.enabled = false;
     }
 

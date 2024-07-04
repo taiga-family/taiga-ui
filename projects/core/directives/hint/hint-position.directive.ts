@@ -76,7 +76,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             return this.points[this.direction];
         }
 
-        const direction = TUI_HINT_DIRECTIONS.find(direction =>
+        const direction = TUI_HINT_DIRECTIONS.find((direction) =>
             this.checkPosition(this.points[direction], width, height),
         );
 

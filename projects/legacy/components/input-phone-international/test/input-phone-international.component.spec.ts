@@ -115,7 +115,7 @@ describe('InputPhoneInternational', () => {
         });
 
         describe('should set KZ country code on paste event', () => {
-            ['+7(600)555-3535', '+7 7272 588300'].forEach(phone => {
+            ['+7(600)555-3535', '+7 7272 588300'].forEach((phone) => {
                 it(`${phone}`, () => {
                     const data = new DataTransfer();
 
@@ -239,7 +239,7 @@ describe('InputPhoneInternational', () => {
             let result: unknown;
             const phoneNumber = '+380123456789';
 
-            testComponent.control.valueChanges.subscribe(value => {
+            testComponent.control.valueChanges.subscribe((value) => {
                 result = value;
             });
 
@@ -305,7 +305,7 @@ describe('InputPhoneInternational', () => {
         const countryNameContainers =
             fixture.debugElement.queryAll(By.css('.t-country-item-name')) || [];
 
-        return countryNameContainers.map(container =>
+        return countryNameContainers.map((container) =>
             container.nativeElement.textContent?.trim(),
         );
     }

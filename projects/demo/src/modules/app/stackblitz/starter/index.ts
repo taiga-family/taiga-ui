@@ -34,7 +34,7 @@ export default class Page implements OnInit {
                 import('./files/index.html.md?raw'),
                 import('./files/styles.less.md?raw'),
             ].map(tuiRawLoad),
-        ).then(markdowns => markdowns.map(md => tuiTryParseMarkdownCodeBlock(md)[0]));
+        ).then((markdowns) => markdowns.map((md) => tuiTryParseMarkdownCodeBlock(md)[0]));
 
         return this.stackblitz.openStarter(
             {

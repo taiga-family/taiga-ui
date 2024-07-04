@@ -333,7 +333,7 @@ describe('CalendarSheet', () => {
                 fixture.debugElement.queryAll(By.css('.t-row_weekday .t-cell')) || [];
 
             return daysOfWeekContainers.map(
-                container => container.nativeElement.textContent,
+                (container) => container.nativeElement.textContent,
             );
         }
 
@@ -352,7 +352,7 @@ describe('CalendarSheet', () => {
         function getColumnDates(columnIndex: number): string[] {
             const columnDatesContainers = getColumnCells(columnIndex);
 
-            return columnDatesContainers.map(container =>
+            return columnDatesContainers.map((container) =>
                 container.nativeElement.textContent.trim(),
             );
         }

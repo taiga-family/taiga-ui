@@ -22,7 +22,7 @@ export default class Example {
     }
 
     protected addColumn(): void {
-        this.data = this.data.map(item => ({
+        this.data = this.data.map((item) => ({
             ...item,
             [`extra-${this.columns.length + 1}`]: `extra column ${
                 this.columns.length + 1

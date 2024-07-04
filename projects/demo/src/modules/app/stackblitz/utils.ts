@@ -111,10 +111,10 @@ export async function getAllTaigaUIModulesFile(
         import('@taiga-ui/addon-commerce'),
         import('@taiga-ui/addon-mobile'),
         import('@taiga-ui/addon-table'),
-    ]).then(modules => {
+    ]).then((modules) => {
         const allModuleNames = new Set<string>();
 
-        return modules.map(entryPoint => getAllModules(entryPoint, allModuleNames));
+        return modules.map((entryPoint) => getAllModules(entryPoint, allModuleNames));
     });
 
     const additionalModulesImports = additionalModules
