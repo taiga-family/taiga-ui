@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[10088],{10088:n=>{n.exports='```html\n<button\n  tuiButton\n  tuiButtonVertical\n  iconLeft="@tui.star"\n>\n  Press me\n</button>\n```\n'}}]);
