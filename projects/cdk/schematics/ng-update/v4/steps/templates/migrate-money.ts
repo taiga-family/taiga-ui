@@ -63,7 +63,7 @@ export function migrateMoney({
 
             const format = JSON.stringify(
                 cleanObject({
-                    decimal: decimalAttr?.value,
+                    decimalMode: decimalAttr?.value,
                     precision: precisionAttr?.value,
                 }),
             );
