@@ -7,6 +7,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 import {TuiTextfieldDirective} from './textfield.directive';
+import {TuiTextfieldBase} from './textfield.base';
 
 @Component({
     standalone: true,
@@ -18,6 +19,11 @@ import {TuiTextfieldDirective} from './textfield.directive';
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'el.id || id',
+        '[attr.data-mode]': 'mode',
+        '[class._empty]': 'el.value === ""',
+        '(input)': '0',
+        '(focusin)': '0',
+        '(focusout)': '0',
         '(keydown.space.prevent)': '0',
         '(keydown.enter.prevent)': '0',
         '(keydown.backspace)': 'setValue("")',
@@ -26,7 +32,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         '(keydown.meta.c)': 'onCopy()',
     },
 })
-export class TuiSelect extends TuiTextfieldDirective {
+export class TuiSelect extends TuiTextfieldBase {
     private readonly nav = inject(NAVIGATOR);
     private readonly control = inject(NgControl);
 
