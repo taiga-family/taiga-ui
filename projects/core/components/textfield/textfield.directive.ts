@@ -9,21 +9,8 @@ import type {TuiInteractiveState} from '@taiga-ui/core/types';
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
-@Directive({
-    standalone: true,
-    selector: 'input[tuiTextfield]',
-    hostDirectives: [TuiNativeValidator, TuiAppearance],
-    host: {
-        '[id]': 'el.id || id',
-        '[readOnly]': 'readOnly',
-        '[class._empty]': 'el.value === ""',
-        '[attr.data-mode]': 'mode',
-        '(input)': '0',
-        '(focusin)': '0',
-        '(focusout)': '0',
-    },
-})
-export class TuiTextfieldDirective implements DoCheck {
+@Directive()
+export class TuiTextfieldBase implements DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
@@ -70,3 +57,19 @@ export class TuiTextfieldDirective implements DoCheck {
         this.el.dispatchEvent(new Event('input'));
     }
 }
+
+@Directive({
+    standalone: true,
+    selector: 'input[tuiTextfield]',
+    hostDirectives: [TuiNativeValidator, TuiAppearance],
+    host: {
+        '[id]': 'el.id || id',
+        '[readOnly]': 'readOnly',
+        '[class._empty]': 'el.value === ""',
+        '[attr.data-mode]': 'mode',
+        '(input)': '0',
+        '(focusin)': '0',
+        '(focusout)': '0',
+    },
+})
+export class TuiTextfieldDirective extends TuiTextfieldBase {}
