@@ -1,0 +1,18 @@
+<tui-input
+    [maskito]="mask"
+    [tuiTextfieldIcon]="color"
+    [(ngModel)]="value"
+>
+    Input color
+</tui-input>
+<ng-template #color>
+    <input
+        tabindex="-1"
+        type="color"
+        [(ngModel)]="value"
+        (click.stop)="(0)"
+        (mousedown.stop)="(0)"
+    />
+    <tui-icon icon="@tui.paint-bucket" />
+    <hr [style.background]="value" />
+</ng-template>

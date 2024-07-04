@@ -1,0 +1,20 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+input {
+    .fullsize();
+    opacity: 0;
+    pointer-events: auto;
+    cursor: pointer;
+
+    &:hover + tui-icon {
+        opacity: 0.65;
+    }
+}
+
+hr {
+    position: absolute;
+    width: 1.4rem;
+    height: 0.3rem;
+    bottom: -0.4rem;
+    border-radius: 0.125rem;
+}

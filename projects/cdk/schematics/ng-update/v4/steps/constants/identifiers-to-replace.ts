@@ -566,6 +566,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
+        from: {name: 'TuiColorPickerModule', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiColorPickerModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiInputColorModule', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiInputColorModule', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiFadeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiFade',

@@ -1,0 +1,87 @@
+<div
+    class="t-select"
+    [tuiDropdown]="menu"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance=""
+        size="s"
+        tuiButton
+        tuiChevron
+        type="button"
+    >
+        {{ currentMode }}
+    </button>
+
+    <ng-template #menu>
+        <tui-data-list
+            role="menu"
+            size="s"
+            class="t-menu"
+        >
+            <button
+                *ngFor="let mode of modes"
+                role="menuitemradio"
+                tuiOption
+                [attr.aria-checked]="isModeActive(mode)"
+                (click)="onModeSelect(mode)"
+                (keydown.enter.prevent)="onModeSelect(mode)"
+                (keydown.space.prevent)="onModeSelect(mode)"
+            >
+                {{ mode }}
+                <tui-icon
+                    *ngIf="isModeActive(mode)"
+                    icon="@tui.check"
+                    class="t-checkmark"
+                />
+            </button>
+        </tui-data-list>
+    </ng-template>
+</div>
+<ng-container *ngIf="isGradient">
+    <hr class="t-hr" />
+    <div
+        class="t-wrapper"
+        [style.background]="gradient"
+    >
+        <tui-linear-multi-picker
+            class="t-gradient"
+            [value]="stopsKeys"
+            (indexChange)="onIndexChange($event)"
+            (valueChange)="onStopsChange($event)"
+        />
+    </div>
+    <div class="t-buttons">
+        <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
+        <button
+            *ngFor="let button of buttons"
+            appearance=""
+            size="xs"
+            tuiHintDescribe
+            tuiIconButton
+            type="button"
+            class="t-direction"
+            [class.t-direction_active]="isDirectionActive(button)"
+            [iconLeft]="getIcon(button)"
+            [tuiHint]="button"
+            (click)="onDirectionChange(button)"
+        ></button>
+    </div>
+</ng-container>
+<tui-color-picker
+    [color]="currentColor"
+    (colorChange)="onColorChange($event)"
+/>
+<tui-color-edit
+    *ngIf="!isGradient"
+    tuiGroup
+    class="t-edit"
+    [color]="color"
+    (colorChange)="onColorChange($event)"
+/>
+<tui-palette
+    *ngIf="palette.size"
+    class="t-palette"
+    [colors]="palette"
+    (selectedColor)="onPalettePick($event)"
+/>
