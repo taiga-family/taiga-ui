@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34599],{34599:n=>{n.exports='<tui-thumbnail-card\n    *ngFor="let size of sizes"\n    iconLeft="@tui.lock"\n    iconRight="@tui.cloud"\n    paymentSystem="mastercard"\n    [size]="size"\n>\n    4572\n</tui-thumbnail-card>\n'}}]);
