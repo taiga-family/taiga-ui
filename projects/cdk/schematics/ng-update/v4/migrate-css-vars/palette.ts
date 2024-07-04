@@ -55,8 +55,6 @@ export const DEPRECATED_VARS = {
     '--tui-positive-hover': '--tui-text-positive-hover',
     '--tui-negative': '--tui-text-negative',
     '--tui-negative-hover': '--tui-text-negative-hover',
-    '--tui-support-': '--tui-chart-categorical-',
-    '--tui-chart-': '--tui-chart-categorical-0',
     '--tui-clear-inverse': '--tui-background-neutral-1',
     '--tui-clear-inverse-hover': '--tui-background-neutral-1-hover',
     '--tui-clear-inverse-active': '--tui-background-neutral-1-pressed',
@@ -91,6 +89,12 @@ export const DEPRECATED_VARS = {
     '--tui-shadow-sidebar': 'var(--tui-shadow-medium)',
     '--tui-shadow-navigation': 'var(--tui-shadow-small)',
     '--tui-shadow-sheet': 'var(--tui-shadow-popup)',
+};
+
+// warning: order is important
+export const DEPRECATED_NUMERIC_VARS = {
+    '--tui-chart-': '--tui-chart-categorical-0',
+    '--tui-support-': '--tui-chart-categorical-',
 };
 
 export const NIGHT_VAR_COMMENT =

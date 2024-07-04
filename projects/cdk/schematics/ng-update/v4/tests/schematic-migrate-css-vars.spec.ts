@@ -20,6 +20,8 @@ const COMPONENT_BEFORE = `import { Component } from "@angular/core";
     templateUrl: './test.template.html',
     host: {
       '[style.--tui-accent-active]': 'red',
+      '[style.--tui-support-13]': 'green',
+      '[style.--tui-chart-2]': 'blue',
     }
 })
 export class Test {
@@ -37,6 +39,8 @@ const COMPONENT_AFTER = `import { Component } from "@angular/core";
     templateUrl: './test.template.html',
     host: {
       '[style.--tui-background-accent-2-pressed]': 'red',
+      '[style.--tui-chart-categorical-13]': 'green',
+      '[style.--tui-chart-categorical-02]': 'blue',
     }
 })
 export class Test {
