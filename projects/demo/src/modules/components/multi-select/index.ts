@@ -117,7 +117,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public control = new FormControl<Account[] | null>(null);
 
-    public override iconLeft = '';
+    public override iconStart = '';
 
     public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
         's',

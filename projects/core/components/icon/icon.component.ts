@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {TUI_ICON, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,
@@ -18,7 +18,10 @@ export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     @Input()
-    public icon = inject(TUI_ICON);
+    public icon =
+        inject(TUI_ICON_START, {self: true, optional: true}) ||
+        inject(TUI_ICON_END, {self: true, optional: true}) ||
+        '';
 
     @Input()
     public background = '';

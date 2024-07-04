@@ -20,11 +20,11 @@
     >
         <div class="t-content">
             <div
-                *ngIf="iconLeft"
+                *ngIf="iconStart"
                 class="t-icon t-icon_left t-textfield-icon t-icon-wrapper"
             >
                 <tui-icon
-                    *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
+                    *polymorpheusOutlet="iconStart as src; context: {$implicit: size}"
                     tuiAppearance="icon"
                     [icon]="src.toString()"
                 />

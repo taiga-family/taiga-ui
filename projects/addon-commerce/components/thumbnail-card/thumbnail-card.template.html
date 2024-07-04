@@ -1,20 +1,20 @@
 <div class="t-front">
     <div
-        *ngIf="iconLeft"
+        *ngIf="iconStart"
         class="t-left"
     >
         <tui-icon
             class="t-icon"
-            [icon]="iconLeft"
+            [icon]="iconStart"
         />
     </div>
     <div
-        *ngIf="iconRight"
+        *ngIf="iconEnd"
         class="t-right"
     >
         <tui-icon
             class="t-icon"
-            [icon]="iconRight"
+            [icon]="iconEnd"
         />
     </div>
     <ng-content />

@@ -36,7 +36,7 @@ import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
 /**
  * @deprecated: drop in v5.0
  */
-export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
+export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     s: 1.25,
     m: 1.75,
     l: 2.25,
@@ -220,7 +220,7 @@ export class TuiPrimitiveTextfieldComponent
     protected get iconLeftContent(): PolymorpheusContent<
         TuiContext<TuiSizeL | TuiSizeS>
     > {
-        return this.controller.iconLeft;
+        return this.controller.iconStart;
     }
 
     protected get showHint(): boolean {
@@ -284,7 +284,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get iconPaddingLeft(): number {
-        return TUI_ICON_PADDINGS[this.size];
+        return TUI_ICON_START_PADDINGS[this.size];
     }
 
     private get placeholderRaisable(): boolean {

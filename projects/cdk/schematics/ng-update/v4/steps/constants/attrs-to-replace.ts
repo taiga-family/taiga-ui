@@ -7,14 +7,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: 'brandLogo',
             withTagNames: ['tui-card', 'tui-thumbnail-card'],
         },
-        to: {attrName: 'iconLeft'},
+        to: {attrName: 'iconStart'},
     },
     {
         from: {
             attrName: '[brandLogo]',
             withTagNames: ['tui-card', 'tui-thumbnail-card'],
         },
-        to: {attrName: '[iconLeft]'},
+        to: {attrName: '[iconStart]'},
     },
     {
         from: {
@@ -168,14 +168,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: 'icon',
             withAttrsNames: ['tuiButton'],
         },
-        to: {attrName: 'iconLeft'},
+        to: {attrName: 'iconStart'},
     },
     {
         from: {
             attrName: '[icon]',
             withAttrsNames: ['tuiButton'],
         },
-        to: {attrName: '[iconLeft]'},
+        to: {attrName: '[iconStart]'},
     },
     {
         from: {
@@ -185,7 +185,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
                 !hasElementAttribute(element, 'iconAlign') ||
                 element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
         },
-        to: {attrName: 'iconRight'},
+        to: {attrName: 'iconEnd'},
     },
     {
         from: {
@@ -194,7 +194,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             filterFn: element =>
                 element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
         },
-        to: {attrName: 'iconLeft'},
+        to: {attrName: 'iconStart'},
     },
     {
         from: {

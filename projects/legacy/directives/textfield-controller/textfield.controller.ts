@@ -48,8 +48,8 @@ export class TuiTextfieldController {
         return this.iconDirective.icon;
     }
 
-    public get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
-        return this.iconLeftDirective.iconLeft;
+    public get iconStart(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+        return this.iconLeftDirective.iconStart;
     }
 
     public get labelOutside(): boolean {
