@@ -10,13 +10,9 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-        caret-color: var(--tui-text-primary);
-        border-radius: inherit;
-        color: inherit !important;
-        background-color: transparent !important;
         -webkit-text-fill-color: var(--tui-text-primary) !important;
-        border-color: var(--tui-autofill);
-        -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
+        border-color: var(--tui-service-autofill-background);
+        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important; // to overlay native background
     }
 }
 

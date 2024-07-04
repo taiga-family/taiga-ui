@@ -54,8 +54,8 @@ export const OTHERS = [
     '--tui-border-normal',
     '--tui-border-hover',
     '--tui-border-focus',
-    '--tui-autofill',
-    '--tui-service-selected-text',
+    '--tui-service-autofill-background',
+    '--tui-service-selection-background',
 ];
 
 export const CHARTS = Array.from(

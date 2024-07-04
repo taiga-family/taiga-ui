@@ -35,6 +35,12 @@
         box-shadow: none;
         outline-color: var(--tui-border-normal) !important;
     }
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: var(--tui-text-primary) !important;
+        border-color: var(--tui-service-autofill-background);
+        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
+    }
 }
 
 [tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'],

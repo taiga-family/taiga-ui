@@ -23,7 +23,7 @@ export const DEPRECATED_VARS = {
     '--tui-accent-hover': '--tui-background-accent-2-hover',
     '--tui-accent-active': '--tui-background-accent-2-pressed',
     '--tui-accent-text': '--tui-text-primary-on-accent-2',
-    '--tui-selection': '--tui-service-selected-text',
+    '--tui-selection': '--tui-service-selection-background',
     '--tui-focus': '--tui-border-focus',
     '--tui-clear': '--tui-background-neutral-1',
     '--tui-clear-disabled': '--tui-background-neutral-1',
