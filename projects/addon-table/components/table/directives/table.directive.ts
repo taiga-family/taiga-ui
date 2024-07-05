@@ -57,7 +57,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public readonly size = signal(this.options.size);
     public readonly cleaner = signal(false);
 
-    @Input()
+    @Input('size')
     public set sizeSetter(size: TuiSizeS | TuiSizeL) {
         this.size.set(size);
     }
