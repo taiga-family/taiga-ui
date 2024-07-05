@@ -3,7 +3,6 @@ import type {DevkitFileSystem} from 'ng-morph';
 import {addPackageJsonDependency, removePackageJsonDependency} from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
-import cdkPackage from '../../../../package.json';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {replacePackageName} from '../../steps';
 
@@ -23,7 +22,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/ng-polymorpheus',
         {
             name: '@taiga-ui/polymorpheus',
-            version: cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
+            version: '^4.6.4',
         },
         tree,
     );
@@ -31,7 +30,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/ng-event-plugins',
         {
             name: '@taiga-ui/event-plugins',
-            version: cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+            version: '^4.0.1',
         },
         tree,
     );
