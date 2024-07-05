@@ -1,11 +1,10 @@
-import {computed, signal} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiAppearance,
     TuiAppearance,
+    tuiAppearance,
     tuiAppearanceFocus,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';

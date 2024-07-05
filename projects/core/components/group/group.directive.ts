@@ -1,3 +1,4 @@
+import type {Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,7 +6,6 @@ import {
     HostBinding,
     inject,
     Input,
-    Signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';

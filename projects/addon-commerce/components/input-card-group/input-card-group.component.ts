@@ -42,8 +42,8 @@ import {
     TuiWithTextfieldDropdown,
 } from '@taiga-ui/core/components/textfield';
 import {
-    tuiAppearance,
     TuiAppearance,
+    tuiAppearance,
     tuiAppearanceFocus,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';

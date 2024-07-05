@@ -27,12 +27,12 @@ import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
-    tuiTextfieldOptionsProvider,
     TuiTextfieldDropdownDirective,
+    tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core/components/textfield';
 import {
-    tuiDropdown,
     TuiDropdown,
+    tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
     tuiDropdownOptionsProvider,
