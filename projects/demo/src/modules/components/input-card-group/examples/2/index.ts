@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiInputCardGroup, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiDataList, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiIcon, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -17,6 +17,7 @@ import {TuiButton, TuiDataList, TuiIcon, TuiTitle} from '@taiga-ui/core';
         TuiTitle,
         NgIf,
         TuiButton,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

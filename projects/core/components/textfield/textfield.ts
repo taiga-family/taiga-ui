@@ -4,6 +4,7 @@ import {TuiSelect} from './select.directive';
 import {TuiTextfieldComponent} from './textfield.component';
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TuiTextfieldOptionsDirective} from './textfield.options';
+import {TuiTextfieldDropdownDirective} from './textfield-dropdown.directive';
 
 export const TuiTextfield = [
     TuiLabel,
@@ -11,4 +12,5 @@ export const TuiTextfield = [
     TuiTextfieldComponent,
     TuiTextfieldDirective,
     TuiTextfieldOptionsDirective,
+    TuiTextfieldDropdownDirective,
 ] as const;

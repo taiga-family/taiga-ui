@@ -16,7 +16,7 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="directive?.setValue('')"
-        (pointerdown.silent.prevent)="input.focus()"
+        (pointerdown.silent.prevent)="el?.nativeElement?.focus()"
     ></button>
     <ng-content select="tui-icon" />
 </span>

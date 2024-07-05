@@ -21,7 +21,6 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:is(never)',
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })
@@ -32,14 +31,14 @@ export class TuiHintHover extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
-            switchMap((visible) =>
+            switchMap(visible =>
                 of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
             ),
             takeUntil(this.hovered$),
             repeat(),
         ),
         this.hovered$.pipe(
-            switchMap((visible) =>
+            switchMap(visible =>
                 of(visible).pipe(
                     delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
                 ),
@@ -50,11 +49,11 @@ export class TuiHintHover extends TuiDriver {
     ).pipe(
         filter(() => this.enabled),
         map(
-            (value) =>
+            value =>
                 value &&
                 (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
         ),
-        tap((visible) => {
+        tap(visible => {
             this.visible = visible;
         }),
     );
@@ -77,7 +76,7 @@ export class TuiHintHover extends TuiDriver {
     public readonly el = tuiInjectElement();
 
     constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
+        super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     public toggle(visible = !this.visible): void {

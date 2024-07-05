@@ -19,7 +19,6 @@ const LEFT = 1;
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:is(never)',
 })
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly viewport = inject(TUI_VIEWPORT);
@@ -76,7 +75,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             return this.points[this.direction];
         }
 
-        const direction = TUI_HINT_DIRECTIONS.find((direction) =>
+        const direction = TUI_HINT_DIRECTIONS.find(direction =>
             this.checkPosition(this.points[direction], width, height),
         );
 

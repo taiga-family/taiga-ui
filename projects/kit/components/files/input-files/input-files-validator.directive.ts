@@ -11,7 +11,6 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Directive({
     standalone: true,
-    selector: 'input:is(never)',
     exportAs: 'tuiInputFilesValidator',
     hostDirectives: [TuiValidator],
 })

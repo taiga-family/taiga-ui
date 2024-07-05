@@ -14,13 +14,14 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
+import {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
-    TuiDropdownOpen,
+    tuiDropdownOpen,
     tuiDropdownOptionsProvider,
+    TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -29,6 +30,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
+import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 export interface TuiTextfieldContext<T> extends TuiContext<T> {
     readonly active: boolean;
@@ -48,35 +50,28 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     hostDirectives: [
         TuiNativeValidator,
         TuiDropdownDirective,
-        TuiWithDataList,
-        {
-            directive: TuiDropdownOpen,
-            inputs: ['tuiDropdownOpen: open'],
-            outputs: ['tuiDropdownOpenChange: openChange'],
-        },
+        TuiWithDropdownOpen,
+        TuiWithTextfieldDropdown,
         TuiWithIcons,
     ],
     host: {
         '[style.--t-side.px]': 'side',
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._disabled]': 'input.disabled',
+        '[class._disabled]': 'el?.nativeElement.disabled',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
-    private readonly el?: ElementRef<HTMLInputElement>;
-
-    private readonly dropdown = inject(TuiDropdownOpen, {
-        optional: true,
-        self: true,
-    });
+    private readonly open = tuiDropdownOpen();
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective))
     protected readonly directive?: TuiTextfieldDirective;
 
-    @ContentChild(TuiLabel, {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
+
+    @ContentChild(NgControl)
+    protected readonly control?: NgControl;
 
     protected side = 0;
     protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
@@ -84,7 +79,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly control = inject(NgControl, {optional: true});
+
+    @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
+    public readonly el?: ElementRef<HTMLInputElement>;
 
     @Input()
     public filler = '';
@@ -95,30 +92,21 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     @Input()
     public content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
-    public get input(): HTMLInputElement {
-        if (!this.el) {
-            throw new Error('[tuiTextfield] component is required');
-        }
-
-        return this.el.nativeElement;
-    }
-
     public get id(): string {
         return this.el?.nativeElement.id || '';
     }
 
-    // TODO: Do not change to `this.input`, will be refactored
     public get focused(): boolean {
-        return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.el?.nativeElement);
+        return this.open() || tuiIsNativeFocused(this.el?.nativeElement);
     }
 
     public handleOption(option: T): void {
         this.directive?.setValue(this.stringify(option));
-        this.dropdown?.toggle(false);
+        this.open.set(false);
     }
 
     protected get computedFiller(): string {
-        const value = this.input.value || '';
+        const value = this.el?.nativeElement.value || '';
         const filler = value + this.filler.slice(value.length);
 
         return filler.length > value.length ? filler : '';
@@ -128,7 +116,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return (
             this.focused &&
             !!this.computedFiller &&
-            (!!this.input.value || !this.input.placeholder)
+            (!!this.el?.nativeElement.value || !this.el?.nativeElement.placeholder)
         );
     }
 
