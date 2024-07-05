@@ -166,7 +166,7 @@ export class TuiInputCardGroup
 
     protected readonly sub = inject(TuiDropdownOpen)
         .tuiDropdownOpenChange.pipe(takeUntilDestroyed())
-        .subscribe(open => {
+        .subscribe((open) => {
             this.open.set(open);
         });
 

@@ -1,5 +1,5 @@
-import {Optional, Provider, signal, SkipSelf, WritableSignal} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
+import type {Provider, WritableSignal} from '@angular/core';
+import {Directive, inject, Input, Optional, signal, SkipSelf} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -61,7 +61,7 @@ export class TuiTextfieldOptionsDirective
     }
 
     @Input()
-    public set tuiTextfieldSize(size: TuiSizeS | TuiSizeL) {
+    public set tuiTextfieldSize(size: TuiSizeL | TuiSizeS) {
         this.size.set(size);
     }
 

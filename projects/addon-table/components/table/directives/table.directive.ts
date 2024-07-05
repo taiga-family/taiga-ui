@@ -1,4 +1,4 @@
-import {AfterViewInit, signal} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -6,14 +6,15 @@ import {
     inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
@@ -58,7 +59,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public readonly cleaner = signal(false);
 
     @Input('size')
-    public set sizeSetter(size: TuiSizeS | TuiSizeL) {
+    public set sizeSetter(size: TuiSizeL | TuiSizeS) {
         this.size.set(size);
     }
 
