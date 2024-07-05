@@ -17,6 +17,7 @@
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo-playwright/stubs"
     ],
+    "ignoreWords": ["preid"],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {
