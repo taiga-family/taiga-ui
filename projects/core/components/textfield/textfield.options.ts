@@ -50,6 +50,11 @@ export class TuiTextfieldOptionsDirective
 {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
+    // TODO: refactor to input signals after Angular update
+    public appearance = signal(this.options.appearance());
+    public size = signal(this.options.size());
+    public cleaner = signal(this.options.cleaner());
+
     @Input()
     public set tuiTextfieldAppearance(appearance: string) {
         this.appearance.set(appearance);
@@ -64,9 +69,4 @@ export class TuiTextfieldOptionsDirective
     public set tuiTextfieldCleaner(enabled: boolean) {
         this.cleaner.set(enabled);
     }
-
-    // TODO: refactor to input signals after Angular update
-    public appearance = signal(this.options.appearance());
-    public size = signal(this.options.size());
-    public cleaner = signal(this.options.cleaner());
 }
