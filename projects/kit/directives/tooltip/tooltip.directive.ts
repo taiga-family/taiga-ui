@@ -1,4 +1,4 @@
-import type {DoCheck} from '@angular/core';
+import type {DoCheck, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -72,10 +72,10 @@ export class TuiTooltip implements DoCheck {
     private readonly driver = inject(TuiHintHover);
 
     protected readonly nothing = tuiWithStyles(TuiTooltipStyles);
-    protected readonly state = tuiAppearanceState(
+    protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
-                map(hover => (hover ? 'hover' : null)),
+                map((hover) => (hover ? 'hover' : null)),
                 tuiWatch(inject(ChangeDetectorRef)),
             ),
             {initialValue: null},

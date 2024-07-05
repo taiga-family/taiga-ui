@@ -102,11 +102,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
 
     protected textfieldValue = '';
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
-
     @Input()
     public countries = this.options.countries;
 
@@ -162,6 +157,11 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             ? maskitoTransform(unmaskedValue, maskOptions)
             : unmaskedValue; // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
         this.cdr.detectChanges();
+    }
+
+    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
+    protected set template(template: PolymorpheusContent) {
+        this.dropdown.set(template);
     }
 
     protected onFocus(): void {

@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {ElementRef} from '@angular/core';
+import type {ElementRef, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -148,7 +148,7 @@ export class TuiInputCardGroup
         inject(TUI_TEXTFIELD_OPTIONS).appearance,
     );
 
-    protected readonly state = tuiAppearanceState(
+    protected readonly state: Signal<unknown> = tuiAppearanceState(
         // eslint-disable-next-line no-nested-ternary
         computed(() => (this.disabled() ? 'disabled' : this.hover() ? 'hover' : null)),
     );
