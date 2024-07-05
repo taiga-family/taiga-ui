@@ -66,7 +66,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     providers: [
         tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
-        tuiTextfieldOptionsProvider({cleaner: false}),
+        tuiTextfieldOptionsProvider({cleaner: signal(false)}),
         tuiGroupOptionsProvider({size: 'l'}),
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',

@@ -60,7 +60,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     ],
     host: {
         '[style.--t-side.px]': 'side',
-        '[attr.data-size]': 'options.size',
+        '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._disabled]': 'input.disabled',
     },

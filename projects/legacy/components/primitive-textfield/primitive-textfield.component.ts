@@ -132,7 +132,9 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     public get appearance(): string {
-        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
+        return this.options.appearance() === 'table'
+            ? 'table'
+            : this.controller.appearance;
     }
 
     public onModelChange(value: string): void {

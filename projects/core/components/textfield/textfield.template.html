@@ -8,7 +8,7 @@
 >
     <ng-content />
     <button
-        *ngIf="options.cleaner"
+        *ngIf="options.cleaner()"
         appearance="icon"
         size="xs"
         tabindex="-1"
