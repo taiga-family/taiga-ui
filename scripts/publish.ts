@@ -49,7 +49,7 @@ function makeTag(version: string): string {
     }
 
     if (version.includes('rc')) {
-        return '--tag next --pre-id rc';
+        return '--tag next --preid rc';
     }
 
     const baseLatestTag = getAllTags('@taiga-ui/core').latest;

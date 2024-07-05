@@ -1,6 +1,6 @@
 {
     "name": "taiga-ui",
-    "version": "4.0.0-rc.2",
+    "version": "4.0.0-rc.3",
     "description": "Taiga UI package that provides ng add command for Taiga library",
     "keywords": [
         "angular",
@@ -15,10 +15,10 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@taiga-ui/cdk": "^4.0.0-rc.2"
+        "@taiga-ui/cdk": "^4.0.0-rc.3"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": "^4.0.0-rc.2",
+        "@taiga-ui/cdk": "^4.0.0-rc.3",
         "tslib": "^2.6.3"
     },
     "schematics": "../@taiga-ui/cdk/schematics/collection.json"
