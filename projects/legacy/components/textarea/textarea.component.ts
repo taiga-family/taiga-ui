@@ -100,7 +100,7 @@ export class TuiTextareaComponent
 
     @HostBinding('class._label-outside')
     protected get labelOutside(): boolean {
-        return this.options.appearance === 'table' || this.controller.labelOutside;
+        return this.options.appearance() === 'table' || this.controller.labelOutside;
     }
 
     @HostBinding('attr.data-size')
@@ -143,7 +143,9 @@ export class TuiTextareaComponent
     }
 
     protected get appearance(): string {
-        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
+        return this.options.appearance() === 'table'
+            ? 'table'
+            : this.controller.appearance;
     }
 
     protected get hasCleaner(): boolean {

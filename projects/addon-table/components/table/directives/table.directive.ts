@@ -3,10 +3,10 @@ import {
     ChangeDetectorRef,
     Directive,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
@@ -14,6 +14,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
@@ -29,7 +30,10 @@ import {TuiStuck} from './stuck.directive';
         tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
     ],
     hostDirectives: [TuiStuck],
-    host: {style: 'border-collapse: separate'},
+    host: {
+        style: 'border-collapse: separate',
+        '[attr.data-size]': 'size()',
+    },
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     extends AbstractTuiController
@@ -42,10 +46,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public columns: ReadonlyArray<string | keyof T> = [];
 
     @Input()
-    @HostBinding('attr.data-size')
-    public size = this.options.size;
-
-    @Input()
     public direction = this.options.direction;
 
     @Output()
@@ -54,8 +54,14 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
 
-    public readonly appearance = 'table';
-    public readonly cleaner = false;
+    public readonly appearance = signal('table');
+    public readonly size = signal(this.options.size);
+    public readonly cleaner = signal(false);
+
+    @Input('size')
+    public set sizeSetter(size: TuiSizeL | TuiSizeS) {
+        this.size.set(size);
+    }
 
     @Input()
     public sorter: TuiComparator<T> = () => 0;

@@ -17,7 +17,6 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
-import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
     TuiDropdownOpen,
@@ -44,7 +43,6 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiTextfieldComponent),
-        tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
     ],
     hostDirectives: [
@@ -60,7 +58,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     ],
     host: {
         '[style.--t-side.px]': 'side',
-        '[attr.data-size]': 'options.size',
+        '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._disabled]': 'input.disabled',
     },

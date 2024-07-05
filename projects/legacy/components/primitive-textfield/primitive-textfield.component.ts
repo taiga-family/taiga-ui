@@ -57,7 +57,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     host: {
         '[class._autofilled]': 'autofilled',
         '[class._label-outside]':
-            'options.appearance === "table" || controller.labelOutside',
+            'options.appearance() === "table" || controller.labelOutside',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -132,7 +132,9 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     public get appearance(): string {
-        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
+        return this.options.appearance() === 'table'
+            ? 'table'
+            : this.controller.appearance;
     }
 
     public onModelChange(value: string): void {

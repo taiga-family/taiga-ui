@@ -1,5 +1,5 @@
 import {AsyncPipe, JsonPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -37,7 +37,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputCardOptionsProvider({autocomplete: true}),
-        tuiTextfieldOptionsProvider({cleaner: true}),
+        tuiTextfieldOptionsProvider({cleaner: signal(true)}),
     ],
 })
 export default class Example {

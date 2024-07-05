@@ -39,8 +39,8 @@ import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
+    TUI_APPEARANCE_OPTIONS,
     TuiAppearance,
-    tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
@@ -88,8 +88,11 @@ export interface TuiCard {
         tuiAsDataListHost(TuiInputCardGroup),
         tuiAsControl(TuiInputCardGroup),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
-        tuiAppearanceOptionsProvider(TUI_TEXTFIELD_OPTIONS),
         TuiHoveredService,
+        {
+            provide: TUI_APPEARANCE_OPTIONS,
+            useFactory: () => ({appearance: inject(TUI_TEXTFIELD_OPTIONS).appearance()}),
+        },
     ],
     hostDirectives: [
         TuiAppearance,
