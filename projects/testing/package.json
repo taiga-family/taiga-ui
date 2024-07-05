@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "4.0.0-rc.2",
+    "version": "4.0.0-rc.3",
     "description": "Utils functions for testing Taiga UI packages",
     "devDependencies": {
         "@types/jest": "29.5.12",
@@ -9,7 +9,7 @@
         "ts-jest": "29.1.5"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": "^4.0.0-rc.2",
+        "@taiga-ui/cdk": "^4.0.0-rc.3",
         "tslib": "^2.6.3"
     }
 }
