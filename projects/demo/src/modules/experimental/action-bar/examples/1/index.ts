@@ -8,7 +8,6 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-action-bar-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
