@@ -22,7 +22,7 @@
     >
         <input
             tuiTextfield
-            [placeholder]="m.focused ? 'I am placeholder' : 'I am a label'"
+            [placeholder]="m.focused() ? 'I am placeholder' : 'I am a label'"
             [(ngModel)]="value"
         />
         <tui-icon icon="@tui.bell" />
@@ -38,7 +38,7 @@
 >
     <input
         tuiTextfield
-        [placeholder]="s.focused ? 'I am placeholder' : 'I am a label'"
+        [placeholder]="s.focused() ? 'I am placeholder' : 'I am a label'"
         [(ngModel)]="value"
     />
     <tui-icon icon="@tui.bell" />

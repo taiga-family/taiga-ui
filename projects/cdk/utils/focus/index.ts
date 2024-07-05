@@ -1,4 +1,5 @@
 export * from './blur-native-focused';
+export * from './focused-in';
 export * from './get-closest-focusable';
 export * from './get-native-focused';
 export * from './is-native-focused';

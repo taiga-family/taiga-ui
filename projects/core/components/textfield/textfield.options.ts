@@ -48,7 +48,7 @@ export class TuiTextfieldOptionsDirective
 {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
-    // TODO: refactor to input signals after Angular update
+    // TODO: refactor to signal inputs after Angular update
     public appearance = signal(this.options.appearance());
     public size = signal(this.options.size());
     public cleaner = signal(this.options.cleaner());

@@ -2,6 +2,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ContentChild,
     ElementRef,
     forwardRef,
@@ -10,9 +11,10 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
@@ -31,10 +33,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
-
-export interface TuiTextfieldContext<T> extends TuiContext<T> {
-    readonly active: boolean;
-}
 
 @Component({
     standalone: true,
@@ -63,6 +61,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly open = tuiDropdownOpen();
+    private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective))
     protected readonly directive?: TuiTextfieldDirective;
@@ -90,14 +89,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public stringify: TuiStringHandler<T> = String;
 
     @Input()
-    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
+    public content: PolymorpheusContent<TuiContext<T>>;
+
+    public readonly focused = computed(() => this.open() || this.focusedIn());
 
     public get id(): string {
         return this.el?.nativeElement.id || '';
-    }
-
-    public get focused(): boolean {
-        return this.open() || tuiIsNativeFocused(this.el?.nativeElement);
     }
 
     public handleOption(option: T): void {
@@ -114,7 +111,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected get showFiller(): boolean {
         return (
-            this.focused &&
+            this.focused() &&
             !!this.computedFiller &&
             (!!this.el?.nativeElement.value || !this.el?.nativeElement.placeholder)
         );
