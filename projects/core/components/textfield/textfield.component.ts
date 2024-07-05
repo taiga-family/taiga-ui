@@ -16,10 +16,8 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import type {
-    tuiAsDataListHost,
-    TuiDataListHost,
-} from '@taiga-ui/core/components/data-list';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
