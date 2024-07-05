@@ -1,12 +1,12 @@
-import {ExistingProvider, ProviderToken, signal, WritableSignal} from '@angular/core';
+import {ExistingProvider, ProviderToken} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiAppearanceOptions {
-    readonly appearance: WritableSignal<string> | string;
+    readonly appearance: string;
 }
 
 export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
-    appearance: signal(''),
+    appearance: '',
 };
 
 export const TUI_APPEARANCE_OPTIONS = tuiCreateToken(TUI_APPEARANCE_DEFAULT_OPTIONS);

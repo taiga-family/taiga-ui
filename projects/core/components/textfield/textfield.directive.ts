@@ -1,5 +1,6 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -7,10 +8,17 @@ import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TuiTextfieldComponent} from './textfield.component';
+import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
 @Directive()
 export class TuiTextfieldBase implements DoCheck {
     private readonly appearance = inject(TuiAppearance);
+
+    protected binding = tuiDirectiveBinding(
+        TuiAppearance,
+        'tuiAppearance',
+        inject(TUI_TEXTFIELD_OPTIONS).appearance,
+    );
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly id = inject(TuiIdService).generate();
