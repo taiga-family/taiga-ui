@@ -900,7 +900,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
         to: {
-            name: 'TuiSubscriptionBadgeComponent',
+            name: 'TuiSubscriptionBadge',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },
@@ -949,36 +949,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiDropdownSecureModule',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
-        to: [
-            {
-                name: 'TuiDropdownSecureDirective',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiDropdownSecureComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-        ],
+        to: {
+            name: 'TuiDropdownSecure',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
     },
     {
         from: {
             name: 'TuiProductMenuModule',
             moduleSpecifier: '@taiga-ui/proprietary-banking',
         },
-        to: [
-            {
-                name: 'TuiProductMenuDirective',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiProductMenuComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiProductMenuButtonComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-        ],
+        to: {
+            name: 'TuiProductMenu',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
     },
     {
         from: {
@@ -986,7 +970,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiCardLogoDirective',
+            name: 'TuiCardLogo',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },
@@ -1013,15 +997,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: [
             {
-                name: 'TuiTimecodePlayerComponent',
+                name: 'TuiTimecodePlayer',
                 moduleSpecifier: '@taiga-ui/proprietary',
             },
             {
-                name: 'TuiTimecodeComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiTimecodeProgressComponent',
+                name: 'TuiTimecode',
                 moduleSpecifier: '@taiga-ui/proprietary',
             },
         ],
@@ -1051,16 +1031,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiProfileMenuModule',
             moduleSpecifier: '@taiga-ui/proprietary-navigation',
         },
-        to: [
-            {
-                name: 'TuiProfileMenuComponent',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-            {
-                name: 'TuiProfileMenuDirective',
-                moduleSpecifier: '@taiga-ui/proprietary',
-            },
-        ],
+        to: {
+            name: 'TuiProfileMenu',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
     },
     {
         from: {
