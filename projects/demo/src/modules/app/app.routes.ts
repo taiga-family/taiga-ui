@@ -585,7 +585,7 @@ export const ROUTES: Routes = [
         title: 'Slider',
     }),
     route({
-        path: DemoRoute.Slider,
+        path: DemoRoute.Status,
         loadComponent: async () => import('../components/status'),
         title: 'Status',
     }),

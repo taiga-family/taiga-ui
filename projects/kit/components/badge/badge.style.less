@@ -47,6 +47,14 @@ tui-badge,
         --t-status: var(--tui-status-neutral);
     }
 
+    &[data-appearance='error']:before,
+    &[data-appearance='success']:before,
+    &[data-appearance='warning']:before,
+    &[data-appearance='info']:before,
+    &[data-appearance='neutral']:before {
+        content: '';
+    }
+
     &[data-size='s'] {
         --t-padding: 0 0.3125rem;
         --t-size: 1rem;
