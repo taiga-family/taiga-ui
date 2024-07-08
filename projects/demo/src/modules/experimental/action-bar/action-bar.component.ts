@@ -13,11 +13,12 @@ export class ExampleTuiActionBarComponent {
 
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 }
