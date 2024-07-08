@@ -4,14 +4,14 @@ table[tuiTable] {
         gap: 0.375rem;
     }
 
-    &[data-size='l'] [tuiCell] [tuiTitle]:not(:first-child) {
+    &[data-size='l'] [tuiCell] *:not(:first-child) {
         margin-inline-start: 0.75rem;
     }
 
     [tuiCell] {
         padding: 0;
 
-        [tuiTitle]:not(:first-child) {
+        *:not(:first-child) {
             margin-inline-start: 0.5rem;
         }
     }
