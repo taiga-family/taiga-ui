@@ -81,6 +81,18 @@
     }
 }
 
+:host-context(table[data-size='s']) {
+    font: var(--tui-font-text-s);
+    height: var(--tui-height-s);
+    // Don't affect vertical padding for easier override
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    &._editable {
+        padding: 0;
+    }
+}
+
 :host(td) {
     &:focus-within {
         z-index: 1;

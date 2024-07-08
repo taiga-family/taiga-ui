@@ -1,4 +1,9 @@
-import type {AfterViewInit} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    ViewEncapsulation,
+} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -11,13 +16,30 @@ import {
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk/classes';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {
+    tuiBadgeOptionsProvider,
+    tuiChipOptionsProvider,
+    tuiProgressOptionsProvider,
+} from '@taiga-ui/kit';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./table.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-table',
+    },
+})
+class TuiTableStyles {}
 
 @Directive({
     standalone: true,
@@ -28,6 +50,9 @@ import {TuiStuck} from './stuck.directive';
             useValue: '10000px 10000px 10000px 0px',
         },
         tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
+        tuiBadgeOptionsProvider({size: 'm', appearance: 'neutral'}),
+        tuiChipOptionsProvider({size: 'xxs', appearance: 'neutral'}),
+        tuiProgressOptionsProvider({size: 's', color: 'var(--tui-text-action)'}),
     ],
     hostDirectives: [TuiStuck],
     host: {
@@ -41,6 +66,8 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
+
+    protected readonly nothing = tuiWithStyles(TuiTableStyles);
 
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];
