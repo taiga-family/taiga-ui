@@ -34,10 +34,7 @@ class TuiTabsStyles {}
 
 @Directive({
     standalone: true,
-    selector: 'tui-tabs:is(never)',
-    host: {
-        '[attr.data-size]': 'size',
-    },
+    host: {'[attr.data-size]': 'size'},
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();

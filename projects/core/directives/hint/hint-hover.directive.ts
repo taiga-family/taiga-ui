@@ -21,7 +21,6 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:is(never)',
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })

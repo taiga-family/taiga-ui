@@ -4,10 +4,12 @@ import {
     Component,
     computed,
     ElementRef,
+    forwardRef,
     inject,
     Input,
     Output,
     signal,
+    TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
@@ -21,20 +23,26 @@ import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/components/group';
+import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
+    TuiTextfieldDropdownDirective,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdown,
+    tuiDropdown,
+    TuiDropdownDirective,
+    tuiDropdownOpen,
     tuiDropdownOptionsProvider,
+    TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import {getCountryCallingCode} from 'libphonenumber-js/core';
@@ -67,23 +75,24 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiAsControl(TuiInputPhoneInternationalComponent),
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: signal(false)}),
-        tuiGroupOptionsProvider({size: 'l'}),
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',
             align: 'right',
         }),
     ],
+    hostDirectives: [TuiGroup, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        '[attr.data-size]': 'textfieldOptions?.size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
+    protected readonly dropdown = tuiDropdown(null);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-
+    protected readonly size = tuiGroupSize(inject(TUI_TEXTFIELD_OPTIONS).size);
+    protected readonly open = tuiDropdownOpen();
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
@@ -91,7 +100,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
         this.computeMask(this.countryIsoCode(), this.metadata()),
     );
 
-    protected open = false;
     protected textfieldValue = '';
 
     @Input()
@@ -135,7 +143,7 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
     }
 
     public onItemClick(isoCode: TuiCountryIsoCode): void {
-        this.open = false;
+        this.open.set(false);
         this.countryIsoCode.set(isoCode);
         this.input?.nativeElement.focus();
     }
@@ -149,6 +157,11 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             ? maskitoTransform(unmaskedValue, maskOptions)
             : unmaskedValue; // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
         this.cdr.detectChanges();
+    }
+
+    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
+    protected set template(template: PolymorpheusContent) {
+        this.dropdown.set(template);
     }
 
     protected onFocus(): void {
@@ -167,10 +180,6 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             : '';
 
         this.onChange(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
-    }
-
-    protected onOpenChange(open: boolean): void {
-        this.open = open;
     }
 
     private computeMask(

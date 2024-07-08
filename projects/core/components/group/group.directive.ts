@@ -1,3 +1,4 @@
+import type {Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,8 +8,8 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
+import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiOrientation, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_GROUP_OPTIONS} from './group.options';
 
@@ -52,5 +53,11 @@ export class TuiGroup {
     public rounded = this.options.rounded;
 
     @Input()
-    public size: TuiSizeL = this.options.size;
+    public size: TuiSizeL | TuiSizeS = this.options.size;
+}
+
+export function tuiGroupSize(
+    signal: Signal<TuiSizeL | TuiSizeS>,
+): Signal<TuiSizeL | TuiSizeS> {
+    return tuiDirectiveBinding(TuiGroup, 'size', signal);
 }

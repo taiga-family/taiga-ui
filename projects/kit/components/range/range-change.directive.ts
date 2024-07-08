@@ -11,7 +11,6 @@ import {TuiRange} from './range.component';
 
 @Directive({
     standalone: true,
-    selector: 'tui-range:is(never)',
 })
 export class TuiRangeChange {
     private readonly doc = inject(DOCUMENT);

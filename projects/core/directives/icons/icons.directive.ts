@@ -24,7 +24,6 @@ class TuiIconsStyles {}
 
 @Directive({
     standalone: true,
-    selector: '[tuiIcons]:is(never)',
     host: {
         tuiIcons: '',
         '[class._icon-start]': 'iconStart',

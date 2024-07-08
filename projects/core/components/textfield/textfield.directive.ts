@@ -1,23 +1,27 @@
-import type {DoCheck} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {
+    TuiAppearance,
+    tuiAppearance,
+    tuiAppearanceFocus,
+    tuiAppearanceState,
+} from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
 @Directive()
-export class TuiTextfieldBase implements DoCheck {
-    private readonly appearance = inject(TuiAppearance);
+export class TuiTextfieldBase {
+    // TODO: refactor to signal inputs after Angular update
+    private readonly focused = signal<boolean | null>(null);
 
-    protected binding = tuiDirectiveBinding(
-        TuiAppearance,
-        'tuiAppearance',
-        inject(TUI_TEXTFIELD_OPTIONS).appearance,
+    protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
+    protected readonly s = tuiAppearanceState(null);
+    protected readonly f = tuiAppearanceFocus(
+        computed(() => this.focused() || this.textfield.focused()),
     );
 
     protected readonly textfield = inject(TuiTextfieldComponent);
@@ -30,11 +34,15 @@ export class TuiTextfieldBase implements DoCheck {
     @Input()
     public invalid: boolean | null = null;
 
-    @Input()
-    public focused: boolean | null = null;
+    @Input('focused')
+    public set focusedSetter(focused: boolean | null) {
+        this.focused.set(focused);
+    }
 
-    @Input()
-    public state: TuiInteractiveState | null = null;
+    @Input('state')
+    public set stateSetter(state: TuiInteractiveState | null) {
+        this.s.set(state);
+    }
 
     public get mode(): string | null {
         if (this.readOnly) {
@@ -50,11 +58,6 @@ export class TuiTextfieldBase implements DoCheck {
         }
 
         return null;
-    }
-
-    public ngDoCheck(): void {
-        this.appearance.tuiAppearanceFocus = this.focused ?? this.textfield.focused;
-        this.appearance.tuiAppearanceState = this.state;
     }
 
     public setValue(value: string): void {

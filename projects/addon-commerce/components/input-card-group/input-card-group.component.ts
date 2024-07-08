@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {ElementRef, WritableSignal} from '@angular/core';
+import type {ElementRef, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
@@ -33,19 +33,25 @@ import {TuiIdService} from '@taiga-ui/cdk/services';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiDirectiveBinding, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, TuiWithDataList} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
-    TUI_APPEARANCE_OPTIONS,
+    TUI_TEXTFIELD_OPTIONS,
+    TuiWithTextfieldDropdown,
+} from '@taiga-ui/core/components/textfield';
+import {
     TuiAppearance,
+    tuiAppearance,
+    tuiAppearanceFocus,
+    tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownDirective,
-    TuiDropdownOpen,
+    tuiDropdownOpen,
     tuiDropdownOptionsProvider,
+    TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
@@ -89,20 +95,12 @@ export interface TuiCard {
         tuiAsControl(TuiInputCardGroup),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         TuiHoveredService,
-        {
-            provide: TUI_APPEARANCE_OPTIONS,
-            useFactory: () => ({appearance: inject(TUI_TEXTFIELD_OPTIONS).appearance()}),
-        },
     ],
     hostDirectives: [
         TuiAppearance,
         TuiDropdownDirective,
-        TuiWithDataList,
-        {
-            directive: TuiDropdownOpen,
-            inputs: ['tuiDropdownOpen: open'],
-            outputs: ['tuiDropdownOpenChange: openChange'],
-        },
+        TuiWithTextfieldDropdown,
+        TuiWithDropdownOpen,
     ],
     host: {
         'data-size': 'l',
@@ -144,31 +142,20 @@ export class TuiInputCardGroup
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
+    protected readonly open = tuiDropdownOpen();
 
-    protected readonly open: WritableSignal<boolean> = tuiDirectiveBinding(
-        TuiDropdownOpen,
-        'tuiDropdownOpen',
-        false,
+    protected readonly appearance = tuiAppearance(
+        inject(TUI_TEXTFIELD_OPTIONS).appearance,
     );
 
-    protected readonly state = tuiDirectiveBinding(
-        TuiAppearance,
-        'tuiAppearanceState',
+    protected readonly state: Signal<unknown> = tuiAppearanceState(
         // eslint-disable-next-line no-nested-ternary
         computed(() => (this.disabled() ? 'disabled' : this.hover() ? 'hover' : null)),
     );
 
-    protected readonly focus = tuiDirectiveBinding(
-        TuiAppearance,
-        'tuiAppearanceFocus',
+    protected readonly focus = tuiAppearanceFocus(
         computed(() => this.open() || this.focusedIn()),
     );
-
-    protected readonly sub = inject(TuiDropdownOpen)
-        .tuiDropdownOpenChange.pipe(takeUntilDestroyed())
-        .subscribe((open) => {
-            this.open.set(open);
-        });
 
     protected readonly labelRaised = computed(
         () => (this.focus() && !this.readOnly()) || !!this.value()?.card,

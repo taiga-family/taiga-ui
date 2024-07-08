@@ -3,7 +3,9 @@ import {environment} from '@demo/environments/environment';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+    providedIn: 'root',
+})
 export class StackblitzDepsService {
     private readonly location = inject(LOCATION);
 

@@ -19,7 +19,6 @@ const LEFT = 1;
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:is(never)',
 })
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly viewport = inject(TUI_VIEWPORT);

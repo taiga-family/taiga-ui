@@ -55,7 +55,7 @@ import {TuiRangeChange} from './range-change.directive';
     },
 })
 export class TuiRange extends TuiControl<[number, number]> implements OnChanges {
-    // TODO: workaround until we get signal inputs
+    // TODO: refactor to signal inputs after Angular update
     private readonly changes = signal(1);
     private readonly el = tuiInjectElement();
 

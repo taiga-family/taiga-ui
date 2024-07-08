@@ -7,7 +7,6 @@ import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from '
 
 @Directive({
     standalone: true,
-    selector: 'tui-carousel:is(never)',
 })
 export class TuiCarouselDirective extends Observable<unknown> {
     private readonly el = tuiInjectElement();
