@@ -1,17 +1,15 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
-    Component,
-    ViewEncapsulation,
-} from '@angular/core';
-import {
     ChangeDetectorRef,
+    Component,
     Directive,
     EventEmitter,
     inject,
     Input,
     Output,
     signal,
+    ViewEncapsulation,
 } from '@angular/core';
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
@@ -20,11 +18,9 @@ import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {
-    tuiBadgeOptionsProvider,
-    tuiChipOptionsProvider,
-    tuiProgressOptionsProvider,
-} from '@taiga-ui/kit';
+import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
+import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
+import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
