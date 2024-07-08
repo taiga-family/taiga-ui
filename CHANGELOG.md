@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.86.0](https://github.com/taiga-family/taiga-ui/compare/v3.85.0...v3.86.0) (2024-07-08)
+
+### Bug Fixes
+
+- **addon-mobile:** dropdown mobile arrow doesn't rotate when click on overlay
+  ([#8043](https://github.com/taiga-family/taiga-ui/issues/8043))
+  ([5da350e](https://github.com/taiga-family/taiga-ui/commit/5da350e57f0d1c50df2ad9a7bfba1accd244654b))
+
 ## [3.85.0](https://github.com/taiga-family/taiga-ui/compare/v3.84.0...v3.85.0) (2024-07-02)
 
 ### Features
