@@ -7,12 +7,8 @@ import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDropdown, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiCell,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
 import {
     TuiComboBoxModule,
     TuiInputNumberModule,

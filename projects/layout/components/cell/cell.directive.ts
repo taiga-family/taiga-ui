@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -10,8 +9,6 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
-
-import {TUI_CELL_OPTIONS} from './cell.options';
 
 @Component({
     standalone: true,
@@ -34,11 +31,10 @@ class TuiCellStyles {}
     ],
     host: {
         tuiCell: '',
-        '[attr.data-size]': 'size || this.options.size',
+        '[attr.data-size]': 'size || "l"',
     },
 })
 export class TuiCell {
-    protected readonly options = inject(TUI_CELL_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiCellStyles);
 
     @Input('tuiCell')

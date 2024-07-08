@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDataList, TuiDropdown, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiCell} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

@@ -8,10 +8,10 @@ import {
     TuiAvatar,
     TuiAvatarStack,
     TuiBadge,
-    TuiCell,
     TuiCheckbox,
     TuiProgress,
 } from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

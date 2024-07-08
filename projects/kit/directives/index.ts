@@ -1,7 +1,6 @@
 export * from '@taiga-ui/kit/directives/button-close';
 export * from '@taiga-ui/kit/directives/button-group';
 export * from '@taiga-ui/kit/directives/button-vertical';
-export * from '@taiga-ui/kit/directives/cell';
 export * from '@taiga-ui/kit/directives/chevron';
 export * from '@taiga-ui/kit/directives/comment';
 export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';

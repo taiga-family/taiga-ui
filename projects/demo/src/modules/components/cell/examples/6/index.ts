@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
-import {TuiCell, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

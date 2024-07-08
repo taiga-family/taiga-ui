@@ -121,7 +121,10 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     public writeValue(value: T | null): void {
         // TODO: https://github.com/angular/angular/issues/14988
-        const safe = this.control instanceof NgModel ? this.control.model : value;
+        const safe =
+            this.control instanceof NgModel && value === null
+                ? this.control.model
+                : value;
 
         this.internal.set(this.fromControlValue(safe));
         this.update();

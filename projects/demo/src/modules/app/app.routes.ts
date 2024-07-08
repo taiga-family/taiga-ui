@@ -187,7 +187,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Header,
         title: 'Header',
-        loadComponent: async () => import('../directives/header'),
+        loadComponent: async () => import('../components/header'),
     }),
     route({
         path: DemoRoute.Icon,
