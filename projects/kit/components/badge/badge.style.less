@@ -47,11 +47,11 @@ tui-badge,
         --t-status: var(--tui-status-neutral);
     }
 
-    &[data-appearance='error']:before,
-    &[data-appearance='success']:before,
-    &[data-appearance='warning']:before,
-    &[data-appearance='info']:before,
-    &[data-appearance='neutral']:before {
+    &[tuiStatus][data-appearance='error']:before,
+    &[tuiStatus][data-appearance='success']:before,
+    &[tuiStatus][data-appearance='warning']:before,
+    &[tuiStatus][data-appearance='info']:before,
+    &[tuiStatus][data-appearance='neutral']:before {
         content: '';
     }
 
