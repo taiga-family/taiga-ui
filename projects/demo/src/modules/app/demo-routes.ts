@@ -114,6 +114,7 @@ export const DemoRoute = {
     Sheet: '/components/sheet',
     SheetDialog: '/components/sheet-dialog',
     Slider: '/components/slider',
+    Status: '/components/status',
     Stepper: '/navigation/stepper',
     Preview: '/components/preview',
     AppBar: '/navigation/app-bar',

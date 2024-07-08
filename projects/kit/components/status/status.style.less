@@ -1,0 +1,15 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiStatus] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:before {
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        background: var(--t-status);
+    }
+}

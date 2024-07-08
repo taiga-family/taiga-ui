@@ -62,7 +62,6 @@
                     *ngIf="contentType === 'with icon'"
                     iconStart="@tui.check"
                     [appearance]="appearance"
-                    [dot]="dot"
                     [size]="size"
                 >
                     <div tuiFade>Taiga UI</div>
@@ -71,7 +70,6 @@
                 <tui-badge
                     *ngIf="contentType === 'text'"
                     [appearance]="appearance"
-                    [dot]="dot"
                     [size]="size"
                 >
                     Taiga UI
@@ -83,7 +81,6 @@
                     src="assets/images/avatar.jpg"
                     tuiBadge
                     [appearance]="appearance"
-                    [dot]="dot"
                     [size]="size"
                 />
             </p>
@@ -100,14 +97,6 @@
             />
         </div>
         <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="dot"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="dot"
-            >
-                Show dot on the left side
-            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"

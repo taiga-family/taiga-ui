@@ -65,6 +65,4 @@ export default class Page {
 
     protected contentTypeVariants = ['text', 'with icon', 'image'];
     protected contentType = this.contentTypeVariants[0];
-
-    protected dot = false;
 }
