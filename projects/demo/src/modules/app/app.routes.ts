@@ -585,6 +585,11 @@ export const ROUTES: Routes = [
         title: 'Slider',
     }),
     route({
+        path: DemoRoute.Status,
+        loadComponent: async () => import('../components/status'),
+        title: 'Status',
+    }),
+    route({
         path: DemoRoute.Stepper,
         loadComponent: async () => import('../components/stepper'),
         title: 'Stepper',

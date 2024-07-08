@@ -3,7 +3,6 @@
 tui-badge,
 [tuiBadge] {
     --t-gap: 0rem;
-    --t-dot: currentColor;
     --t-icon-size: 1rem;
 
     .button-base();
@@ -17,13 +16,9 @@ tui-badge,
     width: fit-content;
     font: var(--tui-font-text-s);
 
-    &._dot:before {
-        content: '';
-        display: block;
+    &[tuiStatus]:before {
         width: 0.375rem;
         height: 0.375rem;
-        background: var(--t-dot);
-        border-radius: 100%;
     }
 
     > tui-icon,
@@ -33,23 +28,31 @@ tui-badge,
     }
 
     &[data-appearance='error'] {
-        --t-dot: var(--tui-status-negative);
+        --t-status: var(--tui-status-negative);
     }
 
     &[data-appearance='success'] {
-        --t-dot: var(--tui-status-positive);
+        --t-status: var(--tui-status-positive);
     }
 
     &[data-appearance='warning'] {
-        --t-dot: var(--tui-status-warning);
+        --t-status: var(--tui-status-warning);
     }
 
     &[data-appearance='info'] {
-        --t-dot: var(--tui-status-info);
+        --t-status: var(--tui-status-info);
     }
 
     &[data-appearance='neutral'] {
-        --t-dot: var(--tui-status-neutral);
+        --t-status: var(--tui-status-neutral);
+    }
+
+    &[tuiStatus][data-appearance='error']:before,
+    &[tuiStatus][data-appearance='success']:before,
+    &[tuiStatus][data-appearance='warning']:before,
+    &[tuiStatus][data-appearance='info']:before,
+    &[tuiStatus][data-appearance='neutral']:before {
+        content: '';
     }
 
     &[data-size='s'] {
@@ -58,7 +61,7 @@ tui-badge,
         --t-icon-size: 0.625rem;
         --t-margin: -0.125rem;
 
-        &._dot:before {
+        &[tuiStatus]:before {
             width: 0.25rem;
             height: 0.25rem;
             margin-inline-end: -0.125rem;
@@ -77,7 +80,7 @@ tui-badge,
         --t-size: var(--tui-height-xs);
         --t-margin: -0.25rem;
 
-        &._dot:before {
+        &[tuiStatus]:before {
             margin-inline-end: -0.25rem;
         }
     }
@@ -89,7 +92,7 @@ tui-badge,
 
         font: var(--tui-font-text-m);
 
-        &._dot:before {
+        &[tuiStatus]:before {
             width: 0.5rem;
             height: 0.5rem;
             margin-inline-end: -0.125rem;

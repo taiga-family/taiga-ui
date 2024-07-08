@@ -811,6 +811,12 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Status',
+        keywords: 'dot, точка, бейдж, badge, success, failure, error',
+        route: DemoRoute.Status,
+    },
+    {
+        section: 'Components',
         title: 'Table',
         subPages: [
             {
