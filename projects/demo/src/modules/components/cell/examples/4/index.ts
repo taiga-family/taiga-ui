@@ -6,11 +6,11 @@ import {TuiIcon, TuiLoader, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadgeNotification,
+    TuiCell,
     TuiCheckbox,
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

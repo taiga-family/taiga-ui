@@ -11,8 +11,8 @@ import {
     TuiLink,
     TuiSurface,
 } from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiCell} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

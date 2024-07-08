@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiBadgeNotification, TuiFade} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiAvatar, TuiBadge, TuiBadgeNotification, TuiCell, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

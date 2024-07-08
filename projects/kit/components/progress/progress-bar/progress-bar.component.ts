@@ -1,5 +1,13 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    inject,
+    Input,
+} from '@angular/core';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
+
+import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 
 @Component({
     standalone: true,
@@ -9,11 +17,13 @@ import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBar {
+    private readonly options = inject(TUI_PROGRESS_OPTIONS);
+
     @Input()
     @HostBinding('style.--tui-progress-color')
-    public color?: string;
+    public color: string | null = this.options.color;
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeXS | TuiSizeXXL = 'm';
+    public size: TuiSizeXXL | TuiSizeXXS = this.options.size;
 }
