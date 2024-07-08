@@ -1,0 +1,37 @@
+<tui-doc-page
+    header="Status"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-status-example-1></tui-status-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p>Import module:</p>
+
+                <tui-doc-code
+                    filename="my.module.ts"
+                    [code]="import"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="my.component.html"
+                    [code]="template"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

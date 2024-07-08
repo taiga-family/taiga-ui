@@ -5,13 +5,11 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 export interface TuiBadgeOptions {
     readonly appearance: string;
     readonly size: TuiSizeS | TuiSizeXL;
-    readonly dot: boolean;
 }
 
 export const TUI_BADGE_DEFAULT_OPTIONS: TuiBadgeOptions = {
     size: 'l',
     appearance: 'default',
-    dot: false,
 };
 
 export const TUI_BADGE_OPTIONS = tuiCreateToken(TUI_BADGE_DEFAULT_OPTIONS);

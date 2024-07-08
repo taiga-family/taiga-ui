@@ -795,6 +795,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'Status',
+        keywords: 'dot, точка, бейдж, badge, success, failure, error',
+        route: '/experimental/status',
+    },
+    {
+        section: 'Components',
         title: 'Table',
         subPages: [
             {

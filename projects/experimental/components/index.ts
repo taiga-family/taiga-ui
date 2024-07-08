@@ -16,6 +16,7 @@ export * from '@taiga-ui/experimental/components/pin';
 export * from '@taiga-ui/experimental/components/radio';
 export * from '@taiga-ui/experimental/components/rating';
 export * from '@taiga-ui/experimental/components/segmented';
+export * from '@taiga-ui/experimental/components/status';
 export * from '@taiga-ui/experimental/components/swipe-action';
 export * from '@taiga-ui/experimental/components/thumbnail-card';
 export * from '@taiga-ui/experimental/components/toggle';

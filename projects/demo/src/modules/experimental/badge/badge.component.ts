@@ -64,6 +64,4 @@ export class ExampleTuiBadgeComponent {
 
     contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
-
-    dot = false;
 }
