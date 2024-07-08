@@ -4,7 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     standalone: true,
@@ -30,5 +30,5 @@ class TuiStatusStyles {}
 export class TuiStatus {
     protected readonly nothing = tuiWithStyles(TuiStatusStyles);
 
-    tuiStatus = '';
+    public tuiStatus = '';
 }
