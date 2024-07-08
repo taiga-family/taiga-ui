@@ -1,7 +1,15 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    inject,
+    Input,
+} from '@angular/core';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 import {delay, of} from 'rxjs';
+
+import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 
 @Component({
     standalone: true,
@@ -12,6 +20,8 @@ import {delay, of} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressCircle {
+    private readonly options = inject(TUI_PROGRESS_OPTIONS);
+
     protected readonly animationDelay$ = of(true).pipe(delay(0));
 
     @Input()
@@ -22,11 +32,11 @@ export class TuiProgressCircle {
 
     @Input()
     @HostBinding('style.--tui-progress-color')
-    public color: string | null = null;
+    public color: string | null = this.options.color;
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeXXL | TuiSizeXXS = 'm';
+    public size: TuiSizeXXL | TuiSizeXXS = this.options.size;
 
     @HostBinding('style.--progress-ratio')
     protected get progressRatio(): number {

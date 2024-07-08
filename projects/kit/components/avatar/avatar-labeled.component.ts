@@ -7,7 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiFade} from '@taiga-ui/kit/directives';
+import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
     standalone: true,

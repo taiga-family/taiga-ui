@@ -38,5 +38,5 @@ export class TuiCell {
     protected readonly nothing = tuiWithStyles(TuiCellStyles);
 
     @Input('tuiCell')
-    public size: TuiSizeL | TuiSizeS | '' = 'l';
+    public size: TuiSizeL | TuiSizeS | '' = '';
 }
