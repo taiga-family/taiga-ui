@@ -18,6 +18,7 @@
     border: 1px solid var(--tui-border-normal);
     // Create new viewport for fixed positioning
     filter: opacity(1);
+
     .safari-only({
         transform: translate3d(0, 0, 0);
     });
@@ -64,6 +65,13 @@
     font: var(--tui-font-text-m);
     font-weight: bold;
     padding: 0 1rem;
+}
+
+:host-context(table[data-size='s']) {
+    height: var(--tui-height-s);
+    font: var(--tui-font-text-s);
+    font-weight: bold;
+    padding: 0 0.5rem;
 }
 
 :host-context(thead[tuiThead]) {

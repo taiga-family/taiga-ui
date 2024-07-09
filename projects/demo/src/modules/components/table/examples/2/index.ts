@@ -1,33 +1,53 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiLet} from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButton, TuiLink} from '@taiga-ui/core';
-import {TuiChip} from '@taiga-ui/kit';
-import {BehaviorSubject} from 'rxjs';
-
-interface User {
-    readonly email: string;
-    readonly name: string;
-    readonly status: 'alive' | 'deceased';
-    readonly tags: readonly string[];
-}
+import {
+    TuiAutoColorPipe,
+    TuiButton,
+    TuiDropdown,
+    TuiIcon,
+    TuiInitialsPipe,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiAvatar,
+    TuiBadge,
+    TuiCheckbox,
+    TuiChip,
+    TuiItemsWithMore,
+    TuiProgressBar,
+    TuiRadioList,
+    TuiStatus,
+} from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    selector: 'tui-table-example-2',
     imports: [
-        TuiTable,
-        TuiChip,
-        NgForOf,
-        TuiAutoColorPipe,
-        TuiLink,
         NgIf,
+        NgForOf,
+        FormsModule,
+        TuiTable,
+        TuiCell,
+        TuiCheckbox,
+        TuiTitle,
+        TuiAvatar,
+        TuiInitialsPipe,
+        TuiItemsWithMore,
+        TuiChip,
+        TuiProgressBar,
         TuiButton,
-        TuiLet,
-        AsyncPipe,
+        TuiBadge,
+        TuiIcon,
+        TuiStatus,
+        TuiLink,
+        TuiAutoColorPipe,
+        TuiDropdown,
+        TuiRadioList,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -35,50 +55,89 @@ interface User {
     changeDetection,
 })
 export default class Example {
-    protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
+    protected readonly sizes = ['l', 'm', 's'] as const;
 
-    protected users$ = new BehaviorSubject<User[]>([
-        {
-            name: 'Michael Palin',
-            email: 'm.palin@montypython.com',
-            status: 'alive',
-            tags: ['Funny'],
-        },
-        {
-            name: 'Eric Idle',
-            email: 'e.idle@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Music'],
-        },
-        {
-            name: 'John Cleese',
-            email: 'j.cleese@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Tall', 'Actor'],
-        },
-        {
-            name: 'Terry Jones',
-            email: '',
-            status: 'deceased',
-            tags: ['Funny', 'Director'],
-        },
-        {
-            name: 'Terry Gilliam',
-            email: 't.gilliam@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Director'],
-        },
-        {
-            name: 'Graham Chapman',
-            email: '',
-            status: 'deceased',
-            tags: ['Funny', 'King Arthur'],
-        },
-    ]);
+    protected size = this.sizes[0];
 
-    protected remove(item: User): void {
-        const users = this.users$.getValue().filter((user) => user !== item);
+    protected readonly data = [
+        {
+            checkbox: {
+                title: 'Data point 1',
+                subtitle: 'The first element',
+            },
+            title: {
+                icon: '@tui.file',
+                title: 'This is title',
+                chip: 'Chip',
+                subtitle: 'More information ・ Data',
+            },
+            cell: {
+                name: 'John Cleese',
+                email: 'silly@walk.uk',
+            },
+            status: {
+                value: 'Success',
+                color: 'var(--tui-status-positive)',
+            },
+            items: ['Some', 'items', 'displayed', 'here', 'and', 'can', 'overflow'],
+            progress: 78,
+            selected: false,
+        },
+        {
+            checkbox: {
+                title: 'Some title',
+                subtitle: 'Some more text',
+            },
+            title: {
+                icon: '@tui.heart',
+                title: 'More info',
+                chip: 'Chips can be here',
+            },
+            cell: {
+                name: 'Eric Idle',
+                email: 'cool@dude.com',
+            },
+            status: {
+                value: 'Failure',
+                color: 'var(--tui-status-negative)',
+            },
+            items: ['One', 'Item'],
+            progress: 91,
+            selected: false,
+        },
+        {
+            checkbox: {
+                title: 'And now',
+                subtitle: 'Completely different',
+            },
+            title: {
+                icon: '@tui.star',
+                title: 'Wow',
+            },
+            cell: {
+                name: 'Michael Palin',
+                email: 'its@man.com',
+            },
+            status: {
+                value: 'Pending',
+                color: 'var(--tui-status-warning)',
+            },
+            items: [],
+            progress: 32,
+            selected: false,
+        },
+    ];
 
-        this.users$.next(users);
+    protected get checked(): boolean | null {
+        const every = this.data.every(({selected}) => selected);
+        const some = this.data.some(({selected}) => selected);
+
+        return every || (some && null);
+    }
+
+    protected onCheck(checked: boolean): void {
+        this.data.forEach((item) => {
+            item.selected = checked;
+        });
     }
 }

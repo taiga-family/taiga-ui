@@ -1,50 +1,10 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
-
-td,
-th {
-    white-space: nowrap;
-    border-color: transparent;
-    border-right-color: var(--tui-border-normal);
-
-    &:last-child {
-        border-right-color: transparent;
-    }
+[tuiTh],
+[tuiTd] {
+    border-inline-start: none;
+    border-inline-end: none;
 }
 
-tbody {
-    border-color: transparent;
-}
-
-tr:nth-child(even) td {
-    background: var(--tui-background-base-alt);
-}
-
-.alive,
-.deceased {
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-
-    &:before {
-        content: '';
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 100%;
-        margin-right: 0.5rem;
-        background: var(--tui-border-normal);
-    }
-}
-
-.alive:before {
-    background: var(--tui-status-positive);
-}
-
-.remove {
-    .transition(opacity);
-    opacity: 0;
-
-    tr:hover &,
-    tr:focus-within & {
-        opacity: 1;
-    }
+[tuiTable][data-size='s'] [tuiTitle] {
+    flex-direction: row;
+    gap: 0.375rem;
 }

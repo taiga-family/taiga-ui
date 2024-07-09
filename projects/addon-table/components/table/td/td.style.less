@@ -2,19 +2,21 @@
 
 :host {
     position: relative;
-    height: var(--tui-height-m);
-    font: var(--tui-font-text-s);
     text-align: left;
-    padding: 0 0.75rem;
     background: var(--tui-background-base);
     border: 1px solid var(--tui-border-normal);
     border-top: none;
     box-sizing: border-box;
     // Create new viewport for fixed positioning
     filter: opacity(1);
+
     .safari-only({
         transform: translate3d(0, 0, 0);
     });
+
+    &._editable {
+        padding: 0 !important;
+    }
 
     &:first-child {
         left: 0;
@@ -70,15 +72,21 @@
 }
 
 :host-context(table[data-size='l']) {
-    font: var(--tui-font-text-m);
     height: var(--tui-height-l);
-    // Don't affect vertical padding for easier override
-    padding-left: 1rem;
-    padding-right: 1rem;
+    font: var(--tui-font-text-m);
+    padding: 1rem;
+}
 
-    &._editable {
-        padding: 0;
-    }
+:host-context(table[data-size='m']) {
+    height: var(--tui-height-m);
+    font: var(--tui-font-text-s);
+    padding: 0.75rem;
+}
+
+:host-context(table[data-size='s']) {
+    height: var(--tui-height-s);
+    font: var(--tui-font-text-s);
+    padding: 0.25rem 0.5rem;
 }
 
 :host(td) {

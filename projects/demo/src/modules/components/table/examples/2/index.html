@@ -1,103 +1,162 @@
+<div [style.margin-bottom.rem]="2">
+    <tui-radio-list
+        [itemContent]="content"
+        [items]="sizes"
+        [style.flex-direction]="'row'"
+        [style.width]="'max-content'"
+        [(ngModel)]="size"
+    />
+    <ng-template
+        #content
+        let-value
+    >
+        {{ value === 's' ? 'Small' : value === 'm' ? 'Medium' : 'Large' }}
+    </ng-template>
+</div>
+
 <table
     tuiTable
-    [columns]="columns"
+    [size]="size"
+    [style.width.rem]="58"
 >
     <thead>
-        <tr tuiThGroup>
-            <th
-                *tuiHead="'name'"
-                tuiTh
-            >
-                Name
+        <tr>
+            <th tuiTh>
+                <div [tuiCell]="size">
+                    <input
+                        tuiCheckbox
+                        type="checkbox"
+                        [ngModel]="checked"
+                        [size]="size === 'l' ? 'm' : 's'"
+                        (ngModelChange)="onCheck($event)"
+                    />
+                    <span tuiTitle>Checkbox</span>
+                </div>
             </th>
+            <th tuiTh>Title</th>
+            <th tuiTh>Cell</th>
+            <th tuiTh>Status</th>
             <th
-                *tuiHead="'email'"
                 tuiTh
+                [style.width.rem]="10"
             >
-                E-mail
+                Items
             </th>
-            <th
-                *tuiHead="'status'"
-                tuiTh
-            >
-                Status
-            </th>
-            <th
-                *tuiHead="'tags'"
-                tuiTh
-                [sorter]="null"
-            >
-                Tags
-            </th>
-            <th
-                *tuiHead="'actions'"
-                tuiTh
-                [sorter]="null"
-            ></th>
+            <th tuiTh>Progress</th>
+            <th tuiTh>Actions</th>
         </tr>
     </thead>
-    <tbody
-        *tuiLet="users$ | async | tuiTableSort as sortedUsers"
-        tuiTbody
-        [data]="sortedUsers"
-    >
-        <tr
-            *ngFor="let item of sortedUsers; let index = index"
-            tuiTr
-        >
-            <td
-                *tuiCell="'name'"
-                tuiTd
-            >
-                {{ index + 1 }}. {{ item.name }}
+    <tbody tuiTbody>
+        <tr *ngFor="let item of data">
+            <td tuiTd>
+                <div [tuiCell]="size">
+                    <input
+                        tuiCheckbox
+                        type="checkbox"
+                        [size]="size === 'l' ? 'm' : 's'"
+                        [(ngModel)]="item.selected"
+                    />
+                    <span tuiTitle>
+                        {{ item.checkbox.title }}
+                        <span tuiSubtitle>{{ item.checkbox.subtitle }}</span>
+                    </span>
+                </div>
             </td>
-            <td
-                *tuiCell="'email'"
-                tuiTd
-            >
-                <a
-                    *ngIf="item.email"
-                    tuiLink
-                    [href]="'mailto:' + item.email"
-                >
-                    {{ item.email }}
-                </a>
+            <td tuiTd>
+                <div [tuiCell]="size">
+                    <span tuiTitle>
+                        <span tuiStatus>
+                            <tui-icon [icon]="item.title.icon" />
+                            {{ item.title.title }}
+                            <tui-chip *ngIf="item.title.chip && item.title.subtitle">{{ item.title.chip }}</tui-chip>
+                        </span>
+                        <tui-chip *ngIf="!item.title.subtitle && item.title.chip; else subtitle">
+                            {{ item.title.chip }}
+                        </tui-chip>
+                        <ng-template #subtitle>
+                            <span tuiSubtitle>
+                                {{ item.title.subtitle }}
+                            </span>
+                        </ng-template>
+                    </span>
+                </div>
             </td>
-            <td
-                *tuiCell="'status'"
-                tuiTd
-            >
-                <div [class]="item.status">{{ item.status }}</div>
+            <td tuiTd>
+                <div [tuiCell]="size">
+                    <tui-avatar
+                        [src]="item.cell.name | tuiInitials"
+                        [style.background]="item.cell.name | tuiAutoColor"
+                    />
+                    <span tuiTitle>
+                        {{ item.cell.name }}
+                        <span tuiSubtitle>{{ item.cell.email }}</span>
+                    </span>
+                </div>
             </td>
-            <td
-                *tuiCell="'tags'"
-                tuiTd
-            >
-                <tui-chip
-                    *ngFor="let tag of item.tags"
-                    size="xs"
-                    class="tui-space_right-1"
-                    [style.background]="tag | tuiAutoColor"
-                >
-                    {{ tag }}
-                </tui-chip>
+            <td tuiTd>
+                <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
             </td>
-            <td
-                *tuiCell="'actions'"
-                tuiTd
-            >
-                <button
-                    appearance="flat"
-                    iconStart="@tui.trash"
-                    size="s"
-                    tuiIconButton
-                    type="button"
-                    class="remove"
-                    [style.border-radius.%]="100"
-                    (click)="remove(item)"
-                >
-                    Remove
-                </button>
+            <td tuiTd>
+                <tui-items-with-more [style.gap.rem]="0.25">
+                    <ng-container *ngFor="let chip of item.items">
+                        <tui-badge *tuiItem>{{ chip }}</tui-badge>
+                    </ng-container>
+                    <ng-template
+                        let-number
+                        tuiMore
+                    >
+                        <button
+                            appearance="icon"
+                            tuiDropdownAlign="right"
+                            tuiDropdownOpen
+                            tuiLink
+                            [pseudo]="true"
+                            [tuiDropdown]="dropdown"
+                        >
+                            + {{ item.items.length - number - 1 }}
+                        </button>
+                        <ng-template #dropdown>
+                            <div
+                                tuiStatus
+                                [style.padding.rem]="1"
+                            >
+                                <ng-container *ngFor="let chip of item.items; let index = index">
+                                    <tui-badge *ngIf="index > number">{{ chip }}</tui-badge>
+                                </ng-container>
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                </tui-items-with-more>
+            </td>
+            <td tuiTd>
+                <span tuiStatus>
+                    <progress
+                        tuiProgressBar
+                        [style.width.rem]="6"
+                        [value]="item.progress / 100"
+                    ></progress>
+                    {{ item.progress }}ms
+                </span>
+            </td>
+            <td tuiTd>
+                <span tuiStatus>
+                    <button
+                        appearance="link"
+                        iconStart="@tui.pencil"
+                        size="xs"
+                        tuiIconButton
+                    >
+                        Edit
+                    </button>
+                    <button
+                        appearance="link"
+                        iconStart="@tui.ellipsis"
+                        size="xs"
+                        tuiIconButton
+                    >
+                        More
+                    </button>
+                </span>
             </td>
         </tr>
     </tbody>
