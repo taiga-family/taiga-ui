@@ -16,10 +16,11 @@ export interface ReplacementIdentifierMulti extends Pick<ReplacementIdentifier, 
               readonly moduleSpecifier: string;
               readonly name: string;
               readonly namedImport?: string;
+              readonly spreadInModule?: boolean;
           }>
         | {
               readonly moduleSpecifier: string;
               readonly name: string;
-              readonly namedImport?: string;
+              readonly spreadInModule?: boolean;
           };
 }
