@@ -37,8 +37,8 @@ import {
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
-import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 import {migrateRoot} from './steps/migrate-root';
+import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
