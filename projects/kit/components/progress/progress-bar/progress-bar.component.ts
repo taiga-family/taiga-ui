@@ -9,10 +9,12 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiBrightness,
-    TuiSizeXS,
     TuiSizeXXL,
+    TuiSizeXXS,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
+import {TUI_PROGRESS_OPTIONS, TuiProgressOptions} from '../progress.options';
 
 @Component({
     selector: 'progress[tuiProgressBar]',
@@ -27,11 +29,15 @@ import {Observable} from 'rxjs';
 export class TuiProgressBarComponent {
     @Input()
     @HostBinding('style.--tui-progress-color')
-    color?: string;
+    color: string | null = this.options.color;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    size: TuiSizeXXL | TuiSizeXXS = this.options.size;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    constructor(
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_PROGRESS_OPTIONS)
+        private readonly options: TuiProgressOptions,
+    ) {}
 }
