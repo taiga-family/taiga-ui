@@ -16,7 +16,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {map} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
@@ -66,7 +66,8 @@ export class TuiDropdownComponent implements OnInit {
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
-            map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+            map(v => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+            distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
             takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {
