@@ -12,4 +12,4 @@ import {TuiAlertService} from './alert.service';
     outputs: ['openChange: tuiAlertChange'],
     providers: [tuiAsPopover(TuiAlertService)],
 })
-export class TuiAlertDirective<T> extends TuiPopoverDirective<TuiAlertOptions<T>> {}
+export class TuiAlert<T> extends TuiPopoverDirective<TuiAlertOptions<T>> {}
