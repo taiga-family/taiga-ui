@@ -44,7 +44,7 @@ export class Test {
 
 const MODULE_AFTER = `import { TuiDialog } from "@taiga-ui/core";
 @NgModule({
-    imports: [...TuiDialog],
+    imports: [TuiDialog],
 })
 export class Test {
 }`;
