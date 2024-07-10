@@ -103,6 +103,7 @@ const PACKAGE_JSON_AFTER = `
 {
     "dependencies": {
         "@angular/core": "~13.0.0",
+        "@taiga-ui/event-plugins": "^4.0.1",
         "@taiga-ui/legacy": "${TUI_VERSION}",
         "@taiga-ui/proprietary": "${TUI_VERSION}"
     }
