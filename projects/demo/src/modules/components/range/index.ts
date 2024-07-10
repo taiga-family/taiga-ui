@@ -23,6 +23,10 @@ export default class Page {
 
     protected max = 100;
 
+    protected margin = 0;
+
+    protected limit = 0;
+
     protected step = 1;
 
     protected segments = 1;
