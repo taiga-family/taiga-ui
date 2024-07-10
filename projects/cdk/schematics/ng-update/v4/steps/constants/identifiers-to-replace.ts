@@ -734,7 +734,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiDialog',
             moduleSpecifier: '@taiga-ui/core',
-            spreadInModule: true,
         },
     },
     {
