@@ -32,6 +32,7 @@ export default class Example {
         'Cheeseburger',
         'Royal Cheeseburger Quarterpounder',
     ];
+
     protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
     protected open = false;
