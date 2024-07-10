@@ -19,6 +19,8 @@ import {
 import {Observable, of} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
+import {TUI_PROGRESS_OPTIONS, TuiProgressOptions} from '../progress.options';
+
 @Component({
     selector: 'tui-progress-circle',
     templateUrl: './progress-circle.template.html',
@@ -41,11 +43,11 @@ export class TuiProgressCircleComponent {
 
     @Input()
     @HostBinding('style.--tui-progress-color')
-    color: string | null = null;
+    color: string | null = this.options.color;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXXL | TuiSizeXXS = 'm';
+    size: TuiSizeXXL | TuiSizeXXS = this.options.size;
 
     readonly animationDelay$ = of(true).pipe(delay(0));
 
@@ -54,6 +56,8 @@ export class TuiProgressCircleComponent {
         @Inject(WINDOW) private readonly win: Window,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_PROGRESS_OPTIONS)
+        private readonly options: TuiProgressOptions,
     ) {}
 
     @HostBinding('style.--progress-ratio')
