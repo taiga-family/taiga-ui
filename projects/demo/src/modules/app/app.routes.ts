@@ -1170,6 +1170,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/status',
+        loadChildren: async () =>
+            (await import('../experimental/status/status.module')).ExampleTuiStatusModule,
+        data: {
+            title: 'Status',
+        },
+    },
+    {
         path: 'navigation/stepper',
         loadChildren: async () =>
             (await import('../components/stepper/stepper.module'))
