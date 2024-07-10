@@ -1,5 +1,5 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -16,12 +16,23 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map} from 'rxjs';
+import {BehaviorSubject, filter, map, pairwise, tap} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
+
+const round = (r: number): number => Math.round(r * 10 ** 2) / 10 ** 2;
+
+interface DynamicStyles {
+    position: 'absolute' | 'fixed';
+    top: string;
+    left: string;
+    maxHeight: string;
+    width: string;
+    minWidth: string;
+}
 
 /**
  * @description:
@@ -51,6 +62,8 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownComponent implements OnInit {
+    private readonly destroyRef = inject(DestroyRef);
+
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
@@ -64,10 +77,11 @@ export class TuiDropdownComponent implements OnInit {
         .closest('[tuiTheme]')
         ?.getAttribute('tuiTheme');
 
+    protected readonly styles$ = new BehaviorSubject<Partial<DynamicStyles>>({});
+
     protected readonly sub = inject(TuiPositionService)
         .pipe(
             map(v => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
-            distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
             takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {
@@ -79,13 +93,16 @@ export class TuiDropdownComponent implements OnInit {
         });
 
     public ngOnInit(): void {
-        this.updateWidth(this.accessor.getClientRect().width);
+        this.styles$.next({
+            ...this.styles$.value,
+            ...this.widthProps(this.accessor.getClientRect().width),
+        });
+        this.trackStyleChanges();
     }
 
     protected readonly close = (): void => this.directive.toggle(false);
 
     private update(top: number, left: number): void {
-        const {style} = this.el;
         const {right} = this.el.getBoundingClientRect();
         const {maxHeight, minHeight, offset} = this.options;
         const {innerHeight} = this.win;
@@ -106,30 +123,49 @@ export class TuiDropdownComponent implements OnInit {
 
         const sided = right <= rect.left || left >= rect.right;
 
-        style.position = position;
-        style.top = tuiPx(Math.max(top, offsetY + offset));
-        style.left = tuiPx(left);
-        style.maxHeight = sided
-            ? `${maxHeight}px`
-            : tuiPx(Math.min(maxHeight, Math.max(available, minHeight)));
-        style.width = '';
-        style.minWidth = '';
-
-        this.updateWidth(rect.width);
+        this.styles$.next({
+            position,
+            top: tuiPx(round(Math.max(top, offsetY + offset))),
+            left: tuiPx(round(left)),
+            maxHeight: tuiPx(
+                round(
+                    sided
+                        ? maxHeight
+                        : Math.min(maxHeight, Math.max(available, minHeight)),
+                ),
+            ),
+            width: '',
+            minWidth: '',
+            ...this.widthProps(rect.width),
+        });
     }
 
-    private updateWidth(width: number): void {
-        const {style} = this.el;
-
+    private widthProps(width: number): Partial<DynamicStyles> {
         switch (this.options.limitWidth) {
             case 'min':
-                style.minWidth = tuiPx(width);
-                break;
+                return {minWidth: tuiPx(round(width))};
             case 'fixed':
-                style.width = tuiPx(width);
-                break;
+                return {width: tuiPx(round(width))};
             case 'auto':
-                break;
+                return {};
         }
+    }
+
+    private trackStyleChanges(): void {
+        this.styles$
+            .pipe(
+                pairwise(),
+                map(([prev, next]) =>
+                    Object.entries({...prev, ...next}).reduce((acc, item) => {
+                        const key = item[0] as keyof DynamicStyles;
+
+                        return prev[key] === next[key] ? acc : {...acc, [key]: next[key]};
+                    }, {} as Partial<DynamicStyles>),
+                ),
+                filter(diff => !!Object.keys(diff).length),
+                tap(styles => Object.assign(this.el.style, styles)),
+                takeUntilDestroyed(this.destroyRef),
+            )
+            .subscribe();
     }
 }
