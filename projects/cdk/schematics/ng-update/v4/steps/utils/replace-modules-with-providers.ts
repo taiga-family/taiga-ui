@@ -17,11 +17,7 @@ import {
 } from '../../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
 import {removeImport} from '../../../../utils/import-manipulations';
-
-interface ModuleToReplace {
-    from: {name: string; moduleSpecifier: string};
-    to: {name: string; providerSpecifier: string};
-}
+import type {ModuleToReplace, ProviderToReplace} from '../constants/modules-to-replace';
 
 export const replaceModulesWithProviders = (
     options: TuiSchema,
@@ -40,6 +36,7 @@ export const replaceModulesWithProviders = (
 
 function replaceModule({from, to}: ModuleToReplace): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
+    const toReplace = Array.isArray(to) ? to : [to];
 
     references.forEach((ref) => {
         if (ref.wasForgotten()) {
@@ -50,21 +47,28 @@ function replaceModule({from, to}: ModuleToReplace): void {
 
         if (Node.isImportSpecifier(parent)) {
             removeImport(parent);
-            addImport(to, parent.getSourceFile().getFilePath());
+            toReplace.forEach((provider) =>
+                addImport(provider, parent.getSourceFile().getFilePath()),
+            );
         } else if (Node.isArrayLiteralExpression(parent)) {
-            parent.removeElement(ref.getChildIndex());
+            const index = parent
+                .getElements()
+                .findIndex((el) => el.getText() === from.name);
 
-            addProvider(to, parent.getSourceFile().getFilePath());
+            parent.removeElement(index);
+            toReplace.forEach((provider) =>
+                addProvider(provider, parent.getSourceFile().getFilePath()),
+            );
         }
     });
 }
 
-function addImport(identifier: ModuleToReplace['to'], filePath: string): void {
+function addImport(identifier: ProviderToReplace, filePath: string): void {
     addUniqueImport(filePath, identifier.name, identifier.providerSpecifier);
 }
 
-function addProvider(identifier: ModuleToReplace['to'], filePath: string): void {
-    const provider = `${identifier.name}()`;
+function addProvider(identifier: ProviderToReplace, filePath: string): void {
+    const provider = `${identifier.name}${identifier.isFunction ? '()' : ''}`;
 
     const componentClass = getNgComponents(filePath)[0];
 

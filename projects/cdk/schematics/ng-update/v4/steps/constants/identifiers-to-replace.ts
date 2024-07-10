@@ -359,6 +359,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: [
             {name: 'TuiSwipeActions', moduleSpecifier: '@taiga-ui/addon-mobile'},
@@ -455,7 +459,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/cdk'},
+        from: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
@@ -655,10 +659,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiSvgComponent', moduleSpecifier: '@taiga-ui/legacy'},
-    },
-    {
-        from: {name: 'TuiRootModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiRoot', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiCellModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -871,16 +871,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiPromptDialogComponent',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-    },
-    {
-        from: {
-            name: 'TuiProprietaryRoot2023Module',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
-        },
-        to: {
-            name: 'TuiProprietaryRoot2023Component',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },
@@ -1103,7 +1093,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiArrowComponent',
-            moduleSpecifier: '@taiga-ui/kit',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {
@@ -1255,6 +1245,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiPreviewDialog',
             moduleSpecifier: '@taiga-ui/kit',
         },
+    },
+    {
+        from: {
+            name: 'TuiPreviewDialogService',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+        to: {
+            name: 'TuiPreviewDialogService',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'PolymorpheusModule',
+            moduleSpecifier: '@tinkoff/ng-polymorpheus',
+        },
+        to: [
+            {name: 'PolymorpheusTemplate', moduleSpecifier: '@taiga-ui/polymorpheus'},
+            {name: 'PolymorpheusOutlet', moduleSpecifier: '@taiga-ui/polymorpheus'},
+        ],
     },
     {
         from: {
