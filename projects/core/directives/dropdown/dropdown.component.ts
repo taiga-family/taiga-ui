@@ -1,5 +1,5 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, DestroyRef, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -16,7 +16,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {BehaviorSubject, filter, map, pairwise, tap} from 'rxjs';
+import {map, tap} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
@@ -62,8 +62,6 @@ interface DynamicStyles {
     },
 })
 export class TuiDropdownComponent implements OnInit {
-    private readonly destroyRef = inject(DestroyRef);
-
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
@@ -77,27 +75,27 @@ export class TuiDropdownComponent implements OnInit {
         .closest('[tuiTheme]')
         ?.getAttribute('tuiTheme');
 
-    protected readonly styles$ = new BehaviorSubject<Partial<DynamicStyles>>({});
+    protected elStyles: Partial<DynamicStyles> = {};
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
             map(v => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+            tap(([top, left]) => {
+                if (this.directive.el.isConnected) {
+                    this.update(top, left);
+                } else {
+                    this.close();
+                }
+            }),
             takeUntilDestroyed(),
         )
-        .subscribe(([top, left]) => {
-            if (this.directive.el.isConnected) {
-                this.update(top, left);
-            } else {
-                this.close();
-            }
-        });
+        .subscribe();
 
     public ngOnInit(): void {
-        this.styles$.next({
-            ...this.styles$.value,
+        this.elStyles = {
             ...this.widthProps(this.accessor.getClientRect().width),
-        });
-        this.trackStyleChanges();
+        };
+        Object.assign(this.el.style, this.elStyles);
     }
 
     protected readonly close = (): void => this.directive.toggle(false);
@@ -123,7 +121,7 @@ export class TuiDropdownComponent implements OnInit {
 
         const sided = right <= rect.left || left >= rect.right;
 
-        this.styles$.next({
+        const nextStyles = {
             position,
             top: tuiPx(round(Math.max(top, offsetY + offset))),
             left: tuiPx(round(left)),
@@ -137,7 +135,14 @@ export class TuiDropdownComponent implements OnInit {
             width: '',
             minWidth: '',
             ...this.widthProps(rect.width),
-        });
+        };
+
+        const diff = this.stylesDiff(this.elStyles, nextStyles);
+
+        if (Object.keys(diff).length) {
+            this.elStyles = nextStyles;
+            Object.assign(this.el.style, nextStyles);
+        }
     }
 
     private widthProps(width: number): Partial<DynamicStyles> {
@@ -151,21 +156,14 @@ export class TuiDropdownComponent implements OnInit {
         }
     }
 
-    private trackStyleChanges(): void {
-        this.styles$
-            .pipe(
-                pairwise(),
-                map(([prev, next]) =>
-                    Object.entries({...prev, ...next}).reduce((acc, item) => {
-                        const key = item[0] as keyof DynamicStyles;
+    private stylesDiff(
+        prev: Partial<DynamicStyles>,
+        next: Partial<DynamicStyles>,
+    ): Partial<DynamicStyles> {
+        return Object.entries({...prev, ...next}).reduce((acc, item) => {
+            const key = item[0] as keyof DynamicStyles;
 
-                        return prev[key] === next[key] ? acc : {...acc, [key]: next[key]};
-                    }, {} as Partial<DynamicStyles>),
-                ),
-                filter(diff => !!Object.keys(diff).length),
-                tap(styles => Object.assign(this.el.style, styles)),
-                takeUntilDestroyed(this.destroyRef),
-            )
-            .subscribe();
+            return prev[key] === next[key] ? acc : {...acc, [key]: next[key]};
+        }, {} as Partial<DynamicStyles>);
     }
 }
