@@ -16,6 +16,7 @@ import {
     replaceIdentifiers,
     showWarnings,
 } from '../steps';
+import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
@@ -40,7 +41,6 @@ import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-re
 import {TYPES_TO_RENAME} from './steps/constants/types';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
-import {replaceServices} from '../steps/replace-services';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
