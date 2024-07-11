@@ -29,6 +29,10 @@ tui-data-list {
             font: var(--tui-font-text-s);
             min-height: 2rem;
             padding: 0.3125rem 0.5rem;
+
+            &:before {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -152,8 +156,14 @@ tui-opt-group {
         background-color: var(--tui-background-neutral-1);
     }
 
+    &:before {
+        margin-inline-end: 0.5rem;
+    }
+
     &:after {
         font-size: 1rem;
-        margin: 0 -0.25rem 0 1rem;
+        margin: 0 -0.75rem 0 auto;
+        border-left: 0.5rem solid;
+        border-right: 0.5rem solid;
     }
 }

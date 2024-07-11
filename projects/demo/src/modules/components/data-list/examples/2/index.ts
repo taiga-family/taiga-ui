@@ -27,7 +27,12 @@ export default class Example {
     protected dropdownOpen = false;
     protected size: TuiSizeL | TuiSizeS = 's';
 
-    protected readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
+    protected readonly burgers = [
+        'Classic',
+        'Cheeseburger',
+        'Royal Cheeseburger Quarterpounder',
+    ];
+
     protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
     protected open = false;
