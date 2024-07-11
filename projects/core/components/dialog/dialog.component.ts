@@ -68,7 +68,8 @@ export class TuiDialogComponent<O, I> {
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<TuiDialogOptions<I>, O>,
+        @Inject(POLYMORPHEUS_CONTEXT)
+        readonly context: TuiDialog<TuiDialogOptions<I>, O | undefined>,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,
         @Inject(TuiDialogCloseService) dialogClose$: Observable<unknown>,
         @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,

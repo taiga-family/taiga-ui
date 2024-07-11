@@ -22,7 +22,7 @@
                     tuiAutoFocus
                     tuiButton
                     type="button"
-                    (click)="context.$implicit.complete()"
+                    (click)="context.$implicit.next(undefined)"
                 >
                     {{ $any(context.data)?.button || 'OK' }}
                 </button>
