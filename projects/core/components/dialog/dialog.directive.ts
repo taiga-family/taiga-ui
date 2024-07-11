@@ -12,4 +12,4 @@ import {TuiDialogService} from './dialog.service';
     outputs: ['openChange: tuiDialogChange'],
     providers: [tuiAsPopover(TuiDialogService)],
 })
-export class TuiDialogDirective<T> extends TuiPopoverDirective<TuiDialogOptions<T>> {}
+export class TuiDialog<T> extends TuiPopoverDirective<TuiDialogOptions<T>> {}
