@@ -25,7 +25,7 @@ export default class Page {
 
     protected margin = 0;
 
-    protected limit = 0;
+    protected limit = Infinity;
 
     protected step = 1;
 

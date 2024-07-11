@@ -37,7 +37,7 @@ describe('TuiRange', () => {
         public step = 1;
         public keySteps: TuiKeySteps | null = null;
         public margin = 0;
-        public limit = 0;
+        public limit = Infinity;
     }
 
     beforeEach(() => {
