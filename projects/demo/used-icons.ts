@@ -162,4 +162,5 @@ export const TUI_USED_ICONS = [
     'tuiIconAmazonPay',
     'tuiIconAndroidPay',
     'tuiIconPaperclipLarge',
+    'tuiIconFile',
 ] as const;
