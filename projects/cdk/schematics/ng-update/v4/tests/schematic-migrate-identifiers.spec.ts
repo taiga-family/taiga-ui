@@ -16,61 +16,38 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { TuiLinkModule, TuiNotificationModule } from "@taiga-ui/core";
+import { TuiDialogModule } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
-    templateUrl: './test.template.html',
-    imports: [TuiLinkModule, TuiNotificationModule]
+    imports: [TuiDialogModule]
 })
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiChevron } from "@taiga-ui/kit";
-
-import { TuiNotification, TuiLink } from "@taiga-ui/core";
+const COMPONENT_AFTER = `import { TuiDialog } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
-    templateUrl: './test.template.html',
-    imports: [TuiLink, TuiNotification, TuiChevron]
+    imports: [TuiDialog]
 })
 export class Test {
 }`;
 
-const TEMPLATE_BEFORE = `
-<a
-    icon="tuiIconSettings"
-    tuiLink
-    [iconRotated]="true"
->
-    Link with icon right
-</a>
-<a
-    icon="tuiIconSettings"
-    iconAlign="left"
-    tuiLink
->
-    Link with icon left
-</a>
-`;
+const MODULE_BEFORE = `import { TuiDialogModule } from "@taiga-ui/core";
 
-const TEMPLATE_AFTER = `
-<a
-    iconEnd="tuiIconSettings"
-    tuiLink
-    [tuiChevron]="true"
->
-    Link with icon right
-</a>
-<a
-    iconStart="tuiIconSettings"
-    ${''}
-    tuiLink
->
-    Link with icon left
-</a>
-`;
+@NgModule({
+    imports: [TuiDialogModule],
+})
+export class Test {
+}`;
+
+const MODULE_AFTER = `import { TuiDialog } from "@taiga-ui/core";
+@NgModule({
+    imports: [TuiDialog],
+})
+export class Test {
+}`;
 
 describe('ng-update', () => {
     let host: UnitTestTree;
@@ -87,17 +64,17 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate link in template', async () => {
+    it('should migrate dialog in module', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
     });
 
-    it('should migrate link references in ts files', async () => {
+    it('should migrate dialog references in ts files', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
@@ -114,7 +91,8 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+
+    createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
 
     createAngularJson();
     createSourceFile(

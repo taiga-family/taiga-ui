@@ -37,12 +37,15 @@ import {
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
+import {migrateRoot} from './steps/migrate-root';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        replaceEnums(options, ENUMS_TO_REPLACE);
+        migrateRoot(fileSystem, options);
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         replaceModulesWithProviders(options, MODULES_TO_REPLACE_WITH_PROVIDERS);
@@ -54,7 +57,6 @@ function main(options: TuiSchema): Rule {
         migrateOptionProviders(options);
         migrateAllCountryIsoCodes(options);
 
-        replaceEnums(options, ENUMS_TO_REPLACE);
         migrateTemplates(fileSystem, options);
         showWarnings(context, MIGRATION_WARNINGS);
 

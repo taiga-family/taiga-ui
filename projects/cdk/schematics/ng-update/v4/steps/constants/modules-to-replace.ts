@@ -1,6 +1,12 @@
-interface ModuleToReplace {
+export interface ProviderToReplace {
+    name: string;
+    providerSpecifier: string;
+    isFunction?: boolean;
+}
+
+export interface ModuleToReplace {
     from: {name: string; moduleSpecifier: string};
-    to: {name: string; providerSpecifier: string};
+    to: ProviderToReplace | ProviderToReplace[];
 }
 
 export const MODULES_TO_REPLACE_WITH_PROVIDERS: ModuleToReplace[] = [
@@ -12,6 +18,7 @@ export const MODULES_TO_REPLACE_WITH_PROVIDERS: ModuleToReplace[] = [
         to: {
             name: 'tuiProvideMobileCalendar',
             providerSpecifier: '@taiga-ui/addon-mobile',
+            isFunction: true,
         },
     },
 ];

@@ -1,4 +1,4 @@
-import {Node} from 'ng-morph';
+import {Node, ts} from 'ng-morph';
 
 import type {TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
@@ -40,9 +40,15 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
             removeImport(parent);
             addImports(to, parent.getSourceFile().getFilePath());
         } else {
-            ref?.replaceWithText(
-                Array.isArray(to) ? to.map(({name}) => name).join(', ') : to.name,
+            const decorator = ref.getParentWhile(
+                (node) => node.getKindName() !== 'Decorator',
             );
+
+            const inModule =
+                decorator?.getFirstChildIfKind(ts.SyntaxKind.Identifier)?.getText() ===
+                'NgModule';
+
+            ref.replaceWithText(getReplacementText(to, !!inModule));
         }
     });
 }
@@ -55,9 +61,18 @@ function addImports(
         ? identifier.forEach(({name, namedImport, moduleSpecifier}) => {
               addUniqueImport(filePath, namedImport || name, moduleSpecifier);
           })
-        : addUniqueImport(
-              filePath,
-              identifier.namedImport || identifier.name,
-              identifier.moduleSpecifier,
-          );
+        : addUniqueImport(filePath, identifier.name, identifier.moduleSpecifier);
+}
+
+function getReplacementText(
+    to: ReplacementIdentifierMulti['to'],
+    inModule: boolean,
+): string {
+    const res = Array.isArray(to) ? to : [to];
+
+    return res
+        .map(({name, spreadInModule}) =>
+            spreadInModule && inModule ? `...${name}` : name,
+        )
+        .join(', ');
 }

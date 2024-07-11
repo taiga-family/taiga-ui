@@ -18,31 +18,38 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const MODULE_BEFORE = `import { TuiMobileCalendarDialogModule } from "@taiga-ui/addon-mobile";
 import { OldModule } from "@namespace/cdk";
+import { TuiProprietaryRootModule } from "@taiga-ui/proprietary-core";
 
 @NgModule({
-    imports: [ TuiMobileCalendarDialogModule, OldModule ]
+    imports: [ TuiMobileCalendarDialogModule, OldModule],
+    providers: [importProvidersFrom(TuiProprietaryRootModule)]
 })
 export class Test {
 }`;
 
 const MODULE_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
+import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
+import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
+import { TuiRoot } from "@taiga-ui/core";
 
 @NgModule({
     imports: [ ],
-    providers: [tuiProvideMobileCalendar(), newProvider()]
+    providers: [importProvidersFrom(), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
 })
 export class Test {
 }`;
 
 const COMPONENT_BEFORE = `import { TuiMobileCalendarDialogModule } from "@taiga-ui/addon-mobile";
 import { OldModule } from "@namespace/cdk";
+import { TuiRootModule } from "@taiga-ui/core";
 
 @Component({
     selector: 'app-my-component',
     standalone: true,
     template: '',
     imports: [
+        TuiRootModule,
         TuiMobileCalendarDialogModule,
         OldModule
     ]
@@ -52,14 +59,16 @@ export class Test {
 
 const COMPONENT_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
+import { TuiRoot } from "@taiga-ui/core";
 
 @Component({
     selector: 'app-my-component',
     standalone: true,
     template: '',
     imports: [
-],
-    providers: [tuiProvideMobileCalendar(), newProvider()]
+        TuiRoot
+    ],
+    providers: [tuiProvideMobileCalendar(), newProvider]
 })
 export class Test {
 }`;
@@ -116,6 +125,6 @@ function createMainFiles(): void {
     createAngularJson();
     createSourceFile(
         'package.json',
-        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
+        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0", "@taiga-ui/proprietary-core": "~3.42.0"}}',
     );
 }

@@ -1,6 +1,10 @@
 /// <reference lib="es2021" />
 import type {DevkitFileSystem} from 'ng-morph';
-import {addPackageJsonDependency, removePackageJsonDependency} from 'ng-morph';
+import {
+    addPackageJsonDependency,
+    getPackageJsonDependency,
+    removePackageJsonDependency,
+} from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
 import type {TuiSchema} from '../../../ng-add/schema';
@@ -42,4 +46,11 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         },
         tree,
     );
+
+    if (!getPackageJsonDependency(tree, '@taiga-ui/event-plugins')) {
+        addPackageJsonDependency(tree, {
+            name: '@taiga-ui/event-plugins',
+            version: '^4.0.1',
+        });
+    }
 }
