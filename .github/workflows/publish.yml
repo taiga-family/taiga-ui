@@ -31,6 +31,7 @@ jobs:
 
       - name: Announce to Time messenger
         uses: taiga-family/ci/actions/messenger/time/announce@v1.65.1
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
@@ -38,6 +39,7 @@ jobs:
 
       - name: Announce to Telegram messenger
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.65.1
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
