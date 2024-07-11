@@ -134,7 +134,6 @@ export const TUI_USED_ICONS = [
     'tuiIconGift',
     'tuiIconBriefcase',
     'tuiIconCloud',
-    'tuiIconInfo',
     'tuiIconDeleteLarge',
     'tuiIconRedo',
     'tuiIconRefresh',
