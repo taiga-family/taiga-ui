@@ -35,9 +35,7 @@ import { TuiLabel } from "@taiga-ui/core";
 export class Test {
 }`;
 
-const TEMPLATE_BEFORE = `
-
-<tui-checkbox-labeled [(ngModel)]="value">
+const TEMPLATE_BEFORE = `<tui-checkbox-labeled [(ngModel)]="value">
   Label
 </tui-checkbox-labeled>
 
@@ -46,9 +44,7 @@ const TEMPLATE_BEFORE = `
 </tui-radio-labeled>
 `;
 
-const TEMPLATE_AFTER = `
-<label tuiLabel>
-<input tuiCheckbox type="checkbox" [(ngModel)]="value">
+const TEMPLATE_AFTER = `<label tuiLabel><input tuiCheckbox type="checkbox" [(ngModel)]="value">
   Label
 </label>
 

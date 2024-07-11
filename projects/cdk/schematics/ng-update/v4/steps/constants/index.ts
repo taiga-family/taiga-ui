@@ -6,4 +6,5 @@ export * from './identifiers-to-replace';
 export * from './inputs-to-remove';
 export * from './migration-warnings';
 export * from './modules-to-remove';
+export * from './services';
 export * from './tags-to-replace';

@@ -16,6 +16,7 @@ import {
     replaceIdentifiers,
     showWarnings,
 } from '../steps';
+import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
@@ -34,6 +35,7 @@ import {
     IDENTIFIERS_TO_REPLACE,
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
+    SERVICES_TO_REPLACE,
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
@@ -46,6 +48,7 @@ function main(options: TuiSchema): Rule {
 
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateRoot(fileSystem, options);
+        replaceServices(options, SERVICES_TO_REPLACE);
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         replaceModulesWithProviders(options, MODULES_TO_REPLACE_WITH_PROVIDERS);

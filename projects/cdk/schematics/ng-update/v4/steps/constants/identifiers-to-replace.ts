@@ -254,10 +254,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiUnmaskHandler', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
-        from: {name: 'TuiDialogFormService', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiConfirmService', moduleSpecifier: '@taiga-ui/kit'},
-    },
-    {
         from: {name: 'TuiSortCountriesPipeModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiSortCountriesPipe', moduleSpecifier: '@taiga-ui/kit'},
     },
@@ -375,7 +371,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiAvatarModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiAvatarModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAvatar', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -464,6 +460,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
     },
     {
@@ -1151,6 +1151,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiPromptData',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiConfirmData',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiAppBarModule',
             moduleSpecifier: '@taiga-ui/layout',
         },
@@ -1205,8 +1215,48 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
         to: {
+            name: 'TuiTabBar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSidebarModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
             name: 'TuiSidebar',
             moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiProgressModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiProgress',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRadioListModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiRadioList',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputFilesModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiInputFiles',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {

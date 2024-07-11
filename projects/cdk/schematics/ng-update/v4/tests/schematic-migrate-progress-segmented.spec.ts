@@ -25,13 +25,12 @@ import { TuiProgressModule } from '@taiga-ui/kit';
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `
-import { TuiProgressModule } from '@taiga-ui/kit';
+const COMPONENT_AFTER = `import { TuiProgress } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiProgressModule]
+    imports: [TuiProgress]
 })
 export class Test {
 }`;
