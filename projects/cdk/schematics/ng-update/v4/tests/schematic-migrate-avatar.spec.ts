@@ -27,12 +27,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe } from "@taiga-ui/core";
-import { TuiAvatarModule } from "@taiga-ui/kit";
+import { TuiAvatar } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAvatarModule, TuiFallbackSrcPipe, TuiInitialsPipe]
+    imports: [TuiAvatar, TuiFallbackSrcPipe, TuiInitialsPipe]
 })
 export class Test {
 }`;

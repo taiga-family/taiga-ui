@@ -16,6 +16,14 @@ const CHANGED_ICONS = [
     {from: 'tuiIconDragLarge', to: ' @tui.grip-vertical'},
     {from: 'tuiIconGrid', to: '@tui.layout-grid'},
     {from: 'tuiIconGridLarge', to: '@tui.layout-grid'},
+    {from: 'tuiIconTool', to: '@tui.wrench'},
+    {from: 'tuiIconUnlock', to: '@tui.lock-open'},
+    {from: 'tuiIconMessageCircle', to: '@tui.message-circle'},
+    {from: 'tuiIconSliders', to: '@tui.sliders-vertical'},
+    {from: 'tuiIconPlusSquare', to: '@tui.square-plus'},
+    {from: 'tuiIconAlertTriangle', to: '@tui.triangle-alert'},
+    {from: 'tuiIconUploadCloud', to: '@tui.cloud-upload'},
+    {from: 'tuiIconDownloadCloud', to: '@tui.cloud-download'},
 ];
 
 export function renameIcons(pattern = ALL_FILES): void {

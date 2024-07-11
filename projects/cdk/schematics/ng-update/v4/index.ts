@@ -34,11 +34,13 @@ import {
     IDENTIFIERS_TO_REPLACE,
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
+    SERVICES_TO_REPLACE,
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
+import {replaceServices} from '../steps/replace-services';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -46,6 +48,7 @@ function main(options: TuiSchema): Rule {
 
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateRoot(fileSystem, options);
+        replaceServices(options, SERVICES_TO_REPLACE);
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         replaceModulesWithProviders(options, MODULES_TO_REPLACE_WITH_PROVIDERS);

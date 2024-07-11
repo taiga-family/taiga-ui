@@ -55,11 +55,11 @@ export function migrateLabeled({
         );
 
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.startTag?.startOffset ?? 1) - 1,
+            templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
             '<label tuiLabel>',
         );
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 1) - 1,
+            templateOffset + (sourceCodeLocation.endTag?.startOffset || 1) - 1,
             '\n</label>',
         );
 
