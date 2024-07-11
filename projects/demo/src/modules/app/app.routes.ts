@@ -292,15 +292,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/tooltip',
-        loadChildren: async () =>
-            (await import('../experimental/tooltip/tooltip.module'))
-                .ExampleTuiTooltipModule,
-        data: {
-            title: 'Tooltip ',
-        },
-    },
-    {
         path: 'experimental/card-medium',
         loadChildren: async () =>
             (await import('../experimental/card-medium/card-medium.module'))
