@@ -1,22 +1,36 @@
 import {
     AfterViewInit,
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
+    Component,
     Directive,
     EventEmitter,
     HostBinding,
     Inject,
     Input,
     Output,
+    ViewEncapsulation,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
+
+@Component({
+    template: '',
+    styleUrls: ['./table.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-table',
+    },
+})
+class TuiTableStylesComponent {}
 
 @Directive({
     selector: 'table[tuiTable]',
@@ -54,8 +68,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
         @Inject(TUI_TABLE_OPTIONS) private readonly options: TuiTableOptions,
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
         super();
+        directiveStyles.addComponent(TuiTableStylesComponent);
     }
 
     @Input()
