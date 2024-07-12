@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -53,7 +53,7 @@ export default class Example {
     protected sum = null;
     protected user: User | null = null;
 
-    protected open = false;
+    protected readonly open = signal(false);
 
     protected readonly countries = [
         'Afghanistan',

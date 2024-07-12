@@ -3,7 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import {filter} from 'rxjs';
+import {distinctUntilChanged} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -18,24 +18,22 @@ export class TuiLegacyDropdownOpenMonitorDirective {
     });
 
     constructor() {
-        this.external?.driver
-            .pipe(
-                filter(
-                    () =>
-                        this.host.dropdown === this.external?.dropdown &&
-                        !this.host.focused,
-                ),
-                takeUntilDestroyed(),
-            )
-            .subscribe((value) => {
-                if (value) {
-                    tuiGetClosestFocusable({
-                        initial: this.el,
-                        root: this.el,
-                    })?.focus();
-                }
+        if (this.external && !this.external['directive']) {
+            this.host.driver
+                .pipe(distinctUntilChanged(), takeUntilDestroyed())
+                .subscribe((open) => this.external?.toggle(open));
+            this.external.driver
+                .pipe(distinctUntilChanged(), takeUntilDestroyed())
+                .subscribe((value) => {
+                    if (value) {
+                        tuiGetClosestFocusable({
+                            initial: this.el,
+                            root: this.el,
+                        })?.focus();
+                    }
 
-                this.host.toggle(value);
-            });
+                    this.host.toggle(value);
+                });
+        }
     }
 }
