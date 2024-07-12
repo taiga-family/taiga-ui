@@ -1,14 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {BehaviorSubject} from 'rxjs';
-
-interface User {
-    readonly email: string;
-    readonly name: string;
-    readonly status: 'alive' | 'deceased';
-    readonly tags: readonly string[];
-}
 
 @Component({
     selector: 'tui-table-example-2',
@@ -18,50 +10,89 @@ interface User {
     changeDetection,
 })
 export class TuiTableExample2 {
-    readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
+    readonly sizes = ['l', 'm', 's'] as const;
 
-    readonly users$ = new BehaviorSubject<readonly User[]>([
-        {
-            name: 'Michael Palin',
-            email: 'm.palin@montypython.com',
-            status: 'alive',
-            tags: ['Funny'],
-        },
-        {
-            name: 'Eric Idle',
-            email: 'e.idle@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Music'],
-        },
-        {
-            name: 'John Cleese',
-            email: 'j.cleese@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Tall', 'Actor'],
-        },
-        {
-            name: 'Terry Jones',
-            email: '',
-            status: 'deceased',
-            tags: ['Funny', 'Director'],
-        },
-        {
-            name: 'Terry Gilliam',
-            email: 't.gilliam@montypython.com',
-            status: 'alive',
-            tags: ['Funny', 'Director'],
-        },
-        {
-            name: 'Graham Chapman',
-            email: '',
-            status: 'deceased',
-            tags: ['Funny', 'King Arthur'],
-        },
-    ]);
+    size = this.sizes[0];
 
-    remove(item: User): void {
-        const users = this.users$.getValue().filter(user => user !== item);
+    readonly data = [
+        {
+            checkbox: {
+                title: 'Data point 1',
+                subtitle: 'The first element',
+            },
+            title: {
+                icon: 'tuiIconFile',
+                title: 'This is title',
+                chip: 'Chip',
+                subtitle: 'More information ・ Data',
+            },
+            cell: {
+                name: 'John Cleese',
+                email: 'silly@walk.uk',
+            },
+            status: {
+                value: 'Success',
+                color: 'var(--tui-success-fill)',
+            },
+            items: ['Some', 'items', 'displayed', 'here', 'and', 'can', 'overflow'],
+            progress: 78,
+            selected: false,
+        },
+        {
+            checkbox: {
+                title: 'Some title',
+                subtitle: 'Some more text',
+            },
+            title: {
+                icon: 'tuiIconHeart',
+                title: 'More info',
+                chip: 'Chips can be here',
+            },
+            cell: {
+                name: 'Eric Idle',
+                email: 'cool@dude.com',
+            },
+            status: {
+                value: 'Failure',
+                color: 'var(--tui-error-fill)',
+            },
+            items: ['One', 'Item'],
+            progress: 91,
+            selected: false,
+        },
+        {
+            checkbox: {
+                title: 'And now',
+                subtitle: 'Completely different',
+            },
+            title: {
+                icon: 'tuiIconStar',
+                title: 'Wow',
+            },
+            cell: {
+                name: 'Michael Palin',
+                email: 'its@man.com',
+            },
+            status: {
+                value: 'Pending',
+                color: 'var(--tui-warning-fill)',
+            },
+            items: [],
+            progress: 32,
+            selected: false,
+        },
+    ];
 
-        this.users$.next(users);
+    get checked(): boolean | null {
+        const every = this.data.every(({selected}) => selected);
+        const some = this.data.some(({selected}) => selected);
+
+        return every || (some && null);
+    }
+
+    onCheck(checked: boolean): void {
+        this.data.forEach(item => {
+            item.selected = checked;
+        });
     }
 }
