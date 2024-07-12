@@ -57,6 +57,8 @@
                 <tui-range
                     [formControl]="control"
                     [keySteps]="keySteps"
+                    [limit]="limit"
+                    [margin]="margin"
                     [max]="max"
                     [min]="min"
                     [segments]="segments"
@@ -158,6 +160,35 @@
                 <p>
                     The default is
                     <code>null</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="limit"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="limit"
+            >
+                Limiting the maximum distance between two thumbs.
+
+                <p>
+                    The default is
+                    <code>Infinity</code>
+                    .
+                </p>
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="margin"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="margin"
+            >
+                Limiting the minimum distance between two thumbs.
+
+                <p>
+                    The default is
+                    <code>0</code>
                     .
                 </p>
             </ng-template>

@@ -14,6 +14,8 @@ describe('TuiRange', () => {
             <tui-range
                 [formControl]="testValue"
                 [keySteps]="keySteps"
+                [limit]="limit"
+                [margin]="margin"
                 [max]="max"
                 [min]="min"
                 [segments]="segments"
@@ -34,6 +36,8 @@ describe('TuiRange', () => {
         public segments = 10;
         public step = 1;
         public keySteps: TuiKeySteps | null = null;
+        public margin = 0;
+        public limit = Infinity;
     }
 
     beforeEach(() => {
@@ -148,7 +152,7 @@ describe('TuiRange', () => {
                 .type('{rightArrow}')
                 .then(() => {
                     expect(component.testValue.value?.[0]).to.equal(5);
-                    expect(component.testValue.value?.[0]).to.equal(5);
+                    expect(component.testValue.value?.[1]).to.equal(5);
                 });
         });
 
@@ -190,6 +194,54 @@ describe('TuiRange', () => {
                 .type('{rightArrow}')
                 .then(() => {
                     expect(component.testValue.value?.[0]).to.equal(4);
+                });
+        });
+
+        it('Prevents the value from exceeding the limit', () => {
+            component.step = 3;
+            component.limit = 2;
+            component.testValue.setValue([1, 5]);
+            cy.get('@rightThumb')
+                .focus()
+                .type('{rightArrow}')
+                .then(() => {
+                    expect(component.testValue.value?.[1]).to.equal(5);
+                });
+        });
+
+        it('Allow the value in the limit', () => {
+            component.step = 2;
+            component.limit = 2;
+            component.testValue.setValue([1, 1]);
+            cy.get('@rightThumb')
+                .focus()
+                .type('{rightArrow}')
+                .then(() => {
+                    expect(component.testValue.value?.[1]).to.equal(3);
+                });
+        });
+
+        it('Prevents the value from exceeding the margin', () => {
+            component.limit = 0;
+            component.step = 1;
+            component.margin = 5;
+            component.testValue.setValue([1, 5]);
+            cy.get('@rightThumb')
+                .focus()
+                .type('{leftArrow}')
+                .then(() => {
+                    expect(component.testValue.value?.[1]).to.equal(5);
+                });
+        });
+
+        it('Allow the value within the margin', () => {
+            component.margin = 5;
+            component.testValue.setValue([1, 7]);
+            cy.get('@rightThumb')
+                .focus()
+                .type('{leftArrow}')
+                .then(() => {
+                    expect(component.testValue.value?.[1]).to.equal(6);
                 });
         });
     });

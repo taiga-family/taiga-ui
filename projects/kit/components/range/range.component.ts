@@ -84,6 +84,12 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     @Input()
     public focusable = true;
 
+    @Input()
+    public margin = 0;
+
+    @Input()
+    public limit = Infinity;
+
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
@@ -167,10 +173,28 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     }
 
     private updateStart(value: number): void {
-        this.onChange([Math.min(value, this.value()[1]), this.value()[1]]);
+        const newValue = Math.min(value, this.value()[1]);
+        const distance = this.value()[1] - newValue;
+
+        if (!this.checkDistance(distance)) {
+            return;
+        }
+
+        this.onChange([newValue, this.value()[1]]);
     }
 
     private updateEnd(value: number): void {
-        this.onChange([this.value()[0], Math.max(value, this.value()[0])]);
+        const newValue = Math.max(value, this.value()[0]);
+        const distance = newValue - this.value()[0];
+
+        if (!this.checkDistance(distance)) {
+            return;
+        }
+
+        this.onChange([this.value()[0], newValue]);
+    }
+
+    private checkDistance(distance: number): boolean {
+        return tuiClamp(distance, this.margin, this.limit) === distance;
     }
 }
