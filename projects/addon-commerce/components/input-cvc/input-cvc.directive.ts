@@ -1,8 +1,9 @@
-import type {OnChanges, OnInit} from '@angular/core';
+import type {OnChanges} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
+import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Directive({
     standalone: true,
@@ -16,8 +17,8 @@ import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
         '(copy.prevent)': '(0)',
     },
 })
-export class TuiInputCVC implements OnInit, OnChanges {
-    private readonly mask = inject(MaskitoDirective);
+export class TuiInputCVC implements OnChanges {
+    private readonly mask = tuiMaskito(TUI_MASK_CVC(3));
 
     @Input()
     public autocomplete = inject(TUI_INPUT_CARD_OPTIONS).autocomplete;
@@ -28,16 +29,8 @@ export class TuiInputCVC implements OnInit, OnChanges {
     @Input()
     public length: 3 | 4 = 3;
 
-    public ngOnInit(): void {
-        this.refresh();
-    }
-
+    // TODO: refactor to signal inputs after Angular update
     public ngOnChanges(): void {
-        this.refresh();
-    }
-
-    private refresh(): void {
-        this.mask.options = TUI_MASK_CVC(this.length);
-        this.mask.ngOnChanges();
+        this.mask.set(TUI_MASK_CVC(this.length));
     }
 }
