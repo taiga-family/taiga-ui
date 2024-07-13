@@ -96,7 +96,7 @@ export const tuiSvgOptionsProvider: (
             TUI_SVG_DEFAULT_OPTIONS.iconsPlace,
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
-            : options.path ?? fallback?.path ?? TUI_SVG_DEFAULT_OPTIONS.path,
+            : (options.path ?? fallback?.path ?? TUI_SVG_DEFAULT_OPTIONS.path),
         deprecated:
             options.deprecated ??
             fallback?.deprecated ??
