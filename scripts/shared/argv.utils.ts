@@ -14,7 +14,7 @@ export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
         stringifier(parsedValue) ??
         (process.argv[index + 1]?.startsWith('-')
             ? fallback
-            : stringifier(process.argv[index + 1]) ?? fallback);
+            : (stringifier(process.argv[index + 1]) ?? fallback));
 
     processLog(`parsed flags: \n${[parsedFlag, value || "''"].join('=')}`);
 
