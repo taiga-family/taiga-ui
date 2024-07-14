@@ -1,6 +1,7 @@
 export * from './migrate-avatar';
 export * from './migrate-badge';
 export * from './migrate-badged-content';
+export * from './migrate-button-appearance';
 export * from './migrate-expandable';
 export * from './migrate-focusable';
 export * from './migrate-label';

@@ -33,6 +33,7 @@ import {
     migrateAvatar,
     migrateBadge,
     migrateBadgedContent,
+    migrateButtonAppearance,
     migrateCheckbox,
     migrateExpandable,
     migrateFocusable,
@@ -105,6 +106,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateProgressSegmented,
         migrateThumbnailCard,
         migrateOverscroll,
+        migrateButtonAppearance,
         migrateLabel,
     ] as const;
 
