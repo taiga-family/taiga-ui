@@ -72,16 +72,12 @@ export function migrateButtonAppearance({
         }
     });
 
-    const elementWithConditionAppearance = elements.find(({attrs}: Element) => {
-        const hasCondition = attrs.some(
+    const elementWithConditionAppearance = elements.find(({attrs}: Element) =>
+        attrs.some(
             ({name, value}) =>
                 name === `[${appearanceInputName}]` && !value.trim().startsWith("'"),
-        );
-
-        console.log(hasCondition);
-
-        return hasCondition;
-    });
+        ),
+    );
 
     if (elementWithConditionAppearance) {
         addTodo(recorder, templateOffset);
