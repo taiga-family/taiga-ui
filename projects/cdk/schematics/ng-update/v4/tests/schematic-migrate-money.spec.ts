@@ -33,6 +33,7 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiNumberFormat } from "@taiga-ui/core";
+import { TuiRawLoaderContent } from "@taiga-ui/addon-doc";
 import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
 
 @Component({
@@ -41,7 +42,7 @@ import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
     imports: [TuiAmountPipe, TuiNumberFormat]
 })
 export class Test {
-    example: Record<string, string | Promise<unknown>> = {
+    example: Record<string, TuiRawLoaderContent> = {
         [DocExamplePrimaryTab.MaskitoOptions]: import(
             './examples/1-high-precision/mask.ts?raw'
         )

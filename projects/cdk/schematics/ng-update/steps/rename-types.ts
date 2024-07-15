@@ -3,6 +3,7 @@ import {getImports, Node} from 'ng-morph';
 import type {TypeNode} from 'ts-morph';
 
 import type {TuiSchema} from '../../ng-add/schema';
+import {addUniqueImport} from '../../utils/add-unique-import';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -14,13 +15,14 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {removeImport, renameImport} from '../../utils/import-manipulations';
 import type {ReplacementType} from '../interfaces/replacement-type';
 
-function renameType(
-    from: string,
-    to?: string,
-    moduleSpecifier?: string[] | string,
+function renameType({
+    from,
+    to,
+    moduleSpecifier,
     preserveGenerics = false,
     removeImport = false,
-): void {
+    newImports = [],
+}: ReplacementType): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
     references.forEach((ref) => {
@@ -37,6 +39,13 @@ function renameType(
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
 
             parent.replaceWithText(targetType || 'any');
+            newImports.forEach(({name, moduleSpecifier}) => {
+                addUniqueImport(
+                    parent.getSourceFile().getFilePath(),
+                    name,
+                    moduleSpecifier,
+                );
+            });
         }
     });
 }
@@ -74,9 +83,7 @@ export function renameTypes(options: TuiSchema, types: readonly ReplacementType[
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
-    types.forEach(({from, to, moduleSpecifier, preserveGenerics, removeImport}) =>
-        renameType(from, to, moduleSpecifier, preserveGenerics, removeImport),
-    );
+    types.forEach(renameType);
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
