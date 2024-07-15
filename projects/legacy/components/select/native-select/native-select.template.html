@@ -4,7 +4,7 @@
     [itemContent]="stringify | tuiStringifyContent"
     [items]="items"
 />
-<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+<ng-container *ngIf="control.control?.valueChanges | async" />
 <option
     *ngIf="emptyOption"
     disabled

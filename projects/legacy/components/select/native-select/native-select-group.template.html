@@ -5,7 +5,7 @@
     [items]="items"
     [labels]="labels"
 />
-<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+<ng-container *ngIf="control.control?.valueChanges | async" />
 <option
     *ngIf="emptyOption"
     disabled
