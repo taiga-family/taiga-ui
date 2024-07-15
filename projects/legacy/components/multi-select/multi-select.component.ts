@@ -142,7 +142,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     public get focused(): boolean {
-        return !!this.input?.focused || !!this.dropdown?.focused;
+        return !!this.input?.focused || !!this.dropdown?.tuiDropdownOpen;
     }
 
     public onValueChange(value: readonly T[]): void {

@@ -46,7 +46,7 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
 
 @Directive({
     standalone: true,
-    selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
+    selector: '[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
         TuiObscured,
@@ -61,8 +61,7 @@ export class TuiDropdownOpen implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
-    // TODO: Remove optional after refactor is complete
-    private readonly directive = inject(TuiDropdownDirective, {optional: true});
+    private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
 
@@ -72,8 +71,7 @@ export class TuiDropdownOpen implements OnChanges {
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
             filter(
-                (target) =>
-                    !this.host.contains(target) || !this.directive?.dropdownBoxRef,
+                (target) => !this.host.contains(target) || !this.directive.dropdownBoxRef,
             ),
         ),
     )
@@ -93,12 +91,7 @@ export class TuiDropdownOpen implements OnChanges {
     public readonly driver = inject(TuiDropdownDriver);
 
     public get dropdown(): HTMLElement | undefined {
-        return this.directive?.dropdownBoxRef?.location.nativeElement;
-    }
-
-    // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
+        return this.directive.dropdownBoxRef?.location.nativeElement;
     }
 
     public ngOnChanges(): void {
@@ -166,6 +159,10 @@ export class TuiDropdownOpen implements OnChanges {
 
     private get editable(): boolean {
         return tuiIsElementEditable(this.host);
+    }
+
+    private get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
     }
 
     private update(open: boolean): void {

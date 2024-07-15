@@ -74,7 +74,8 @@ export class TuiInputComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) || !!this.dropdown?.focused
+            tuiIsNativeFocused(this.nativeFocusableElement) ||
+            !!this.dropdown?.tuiDropdownOpen
         );
     }
 
