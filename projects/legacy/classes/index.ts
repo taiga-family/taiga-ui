@@ -1,6 +1,7 @@
 export * from './abstract-native-select';
 export * from './abstract-textfield-host';
 export * from './control';
+export * from './controller';
 export * from './interactive';
 export * from './multiple-control';
 export * from './named-day';

@@ -1,6 +1,5 @@
 import type {Provider, WritableSignal} from '@angular/core';
 import {Directive, inject, Input, Optional, signal, SkipSelf} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
@@ -42,10 +41,7 @@ export function tuiTextfieldOptionsProvider(
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
-export class TuiTextfieldOptionsDirective
-    extends AbstractTuiController
-    implements TuiTextfieldOptions
-{
+export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
     // TODO: refactor to signal inputs after Angular update
