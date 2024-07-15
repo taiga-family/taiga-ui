@@ -273,7 +273,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             return this.value?.[0]?.year ?? this.today.year;
         }
 
-        return this.value.from.year;
+        return this.value.to.year;
     }
 
     private get initialMonth(): number {
@@ -294,8 +294,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         }
 
         return (
-            this.value.from.month +
-            (this.value.from.year - STARTING_YEAR) * MONTHS_IN_YEAR
+            this.value.to.month + (this.value.to.year - STARTING_YEAR) * MONTHS_IN_YEAR
         );
     }
 
