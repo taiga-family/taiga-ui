@@ -34,8 +34,15 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
+    @Input()
+    public placeholder = '';
+
     @HostBinding('id')
     protected get id(): string {
         return this.el.id || this.idService.generate();
+    }
+
+    protected get emptyOption(): boolean {
+        return !!this.placeholder && !this.control.value;
     }
 }

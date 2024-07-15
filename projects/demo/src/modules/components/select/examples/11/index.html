@@ -1,7 +1,11 @@
 <form>
-    <tui-select [formControl]="itemStringControl">
+    <tui-select
+        [formControl]="itemStringControl"
+        [tuiTextfieldCleaner]="true"
+    >
         Character
         <select
+            placeholder="Select character"
             tuiSelect
             [items]="items"
         ></select>
@@ -14,6 +18,7 @@
     >
         Food
         <select
+            placeholder="Select food"
             tuiSelect
             [disabledItemHandler]="disabledItemHandler"
             [items]="groupItems"
@@ -33,6 +38,7 @@
     >
         Character
         <select
+            placeholder="Select character"
             tuiSelect
             [items]="customItems"
         ></select>

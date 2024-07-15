@@ -25,7 +25,8 @@ import type {TuiSelectDirective} from '../select.directive';
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
         '[value]': 'host.value',
-        '(change)': 'onValueChange($event.target.options.selectedIndex)',
+        '(change)':
+            'onValueChange($event.target.options.selectedIndex - (emptyOption ? 1 : 0))',
     },
 })
 export class TuiNativeSelectComponent<T> extends AbstractTuiNativeSelect<
