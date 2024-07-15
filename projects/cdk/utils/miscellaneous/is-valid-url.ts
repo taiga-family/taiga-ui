@@ -1,3 +1,6 @@
+/**
+ * @deprecated: use `new URL(url)`
+ */
 export function tuiIsValidUrl(url: string): boolean {
     const pattern = new RegExp(
         '^([a-zA-Z]+:\\/\\/)?' + // protocol
