@@ -6,6 +6,7 @@ import {
     ElementRef,
     Inject,
     OnDestroy,
+    Optional,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
@@ -13,13 +14,13 @@ import {
     TuiActiveZoneDirective,
     tuiGetNativeFocused,
     tuiIsElement,
-    tuiIsNodeIn,
     tuiPx,
     TuiSwipe,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
     TuiDropdownDirective,
+    TuiDropdownOpenMonitorDirective,
     tuiFadeIn,
     tuiSlideInTop,
 } from '@taiga-ui/core';
@@ -61,6 +62,9 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     } as const;
 
     constructor(
+        @Optional()
+        @Inject(TuiDropdownOpenMonitorDirective)
+        private readonly monitor: TuiDropdownOpenMonitorDirective | null,
         @Inject(TuiActiveZoneDirective) _: any,
         @Inject(TuiKeyboardService) private readonly keyboard: TuiKeyboardService,
         @Inject(DOCUMENT) private readonly doc: Document,
@@ -76,12 +80,10 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
 
     onClick(event: MouseEvent): void {
         if (
-            !this.el.nativeElement.contains(event.target as Node) &&
-            // TODO: find a better way to check if the click is inside interactive element in textfield
-            !(
-                tuiIsNodeIn(event.target as Node, 'tui-svg') ||
-                (tuiIsElement(event.target) && event.target.tagName === 'button')
-            )
+            tuiIsElement(event.target) &&
+            !this.el.nativeElement.contains(event.target) &&
+            (!this.dropdown.el.nativeElement.contains(event.target) ||
+                event.target.matches('input,textarea'))
         ) {
             event.stopPropagation();
         }
@@ -103,6 +105,10 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     }
 
     close(): void {
+        if (this.monitor) {
+            this.monitor.tuiDropdownOpenMonitor = false;
+        }
+
         this.dropdown.toggle(false);
     }
 

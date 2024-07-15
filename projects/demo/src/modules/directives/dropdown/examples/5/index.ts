@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
+import {Subject} from 'rxjs';
 
 interface User {
     readonly url: string;
@@ -21,7 +22,7 @@ export class TuiDropdownExample5 {
     sum = null;
     user: User | null = null;
 
-    open = false;
+    readonly open$ = new Subject<boolean>();
 
     readonly countries = [
         'Afghanistan',

@@ -2,10 +2,10 @@
     *tuiLet="(open$ | async) ?? openChange.value as isOpen"
     #activeZone="tuiActiveZone"
     tuiAccessorProxy
-    tuiDropdownOpenMonitor
     class="t-wrapper"
     [tuiDropdown]="dropdown"
     [tuiDropdownManual]="isOpen && canOpen"
+    [tuiDropdownOpenMonitor]="isOpen && canOpen"
     [tuiDropdownSided]="sided"
     [tuiObscuredEnabled]="isOpen"
     (tuiActiveZoneChange)="onActiveZone($event)"
