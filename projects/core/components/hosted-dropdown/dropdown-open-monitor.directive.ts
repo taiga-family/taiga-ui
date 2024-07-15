@@ -1,8 +1,8 @@
-import {Directive, Inject, Optional, Self} from '@angular/core';
+import {Directive, Inject, Input, Optional, Self} from '@angular/core';
 import {TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TuiDropdownDirective, TuiDropdownOpenDirective} from '@taiga-ui/core/directives';
 import {Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 
@@ -11,23 +11,31 @@ import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
     providers: [TuiDestroyService],
 })
 export class TuiDropdownOpenMonitorDirective {
+    @Input()
+    set tuiDropdownOpenMonitor(open: boolean) {
+        this.open?.update(open);
+        this.hosted.updateOpen(open);
+    }
+
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_HOSTED_DROPDOWN_COMPONENT)
-        hosted: TuiInjectionTokenType<typeof TUI_HOSTED_DROPDOWN_COMPONENT>,
+        private readonly hosted: TuiInjectionTokenType<
+            typeof TUI_HOSTED_DROPDOWN_COMPONENT
+        >,
         @Self() @Inject(TuiDropdownDirective) dropdown: TuiDropdownDirective,
         @Optional()
         @Inject(TuiDropdownOpenDirective)
-        open: TuiDropdownOpenDirective | null,
+        private readonly open: TuiDropdownOpenDirective | null,
     ) {
-        open?.tuiDropdownOpenChange
-            .pipe(
-                filter(value => value && open.dropdown === dropdown && !hosted.focused),
-                takeUntil(destroy$),
-            )
-            .subscribe(() => {
-                hosted.nativeFocusableElement?.focus();
-                hosted.updateOpen(true);
+        if (open?.dropdown === dropdown) {
+            open.tuiDropdownOpenChange.pipe(takeUntil(destroy$)).subscribe(value => {
+                if (value) {
+                    hosted.nativeFocusableElement?.focus();
+                }
+
+                hosted.updateOpen(value);
             });
+        }
     }
 }
