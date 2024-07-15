@@ -94,6 +94,36 @@ describe('ng-update', () => {
         expect(JSON.parse(tree.readContent('package.json'))).toEqual(PACKAGE_JSON_AFTER);
     });
 
+    it('replace imports inside all *.ts files (even if package is not installed directly – peer deps of another direct dep)', async () => {
+        const PACKAGE_JSON_DEPS = {
+            '@angular/core': '~13.0.0',
+            '@taiga-ui/cdk': '~3.42.0',
+        };
+
+        createSourceFile(
+            'package.json',
+            JSON.stringify({dependencies: PACKAGE_JSON_DEPS}),
+            {overwrite: true},
+        );
+        saveActiveProject();
+
+        const tree = await runner.runSchematic(
+            'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(TS_FILE_AFTER);
+        expect(JSON.parse(tree.readContent('package.json'))).toEqual({
+            dependencies: {
+                ...PACKAGE_JSON_DEPS,
+                '@taiga-ui/event-plugins':
+                    cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+                '@taiga-ui/legacy': TUI_VERSION,
+            },
+        });
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
