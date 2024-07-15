@@ -82,6 +82,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiNotificationT', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiNotificationStatus', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiFormatPhonePipeModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiCalendarModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiCalendar', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -374,11 +386,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiAvatar', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiAvatarModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAvatar', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiSwitch', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSwitch', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiToggleComponent', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiSwitch', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
@@ -859,12 +879,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiPromptDialogModule',
+            name: 'TuiPromptDialogComponent',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiPromptDialogComponent',
-            moduleSpecifier: '@taiga-ui/proprietary',
+            name: 'TuiConfirm',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
@@ -890,11 +910,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {
             name: 'TuiNavigationModule',
-            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+            moduleSpecifier: '@taiga-ui/experimental',
         },
         to: {
-            name: 'TuiNavigationComponent',
-            moduleSpecifier: '@taiga-ui/proprietary',
+            name: 'TuiNavigation',
+            moduleSpecifier: '@taiga-ui/experimental',
+            spreadInModule: true,
         },
     },
     {
@@ -1311,12 +1332,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'POLYMORPHEUS_CONTEXT',
+            moduleSpecifier: '@tinkoff/ng-polymorpheus',
+        },
+        to: {name: 'POLYMORPHEUS_CONTEXT', moduleSpecifier: '@taiga-ui/polymorpheus'},
+    },
+    {
+        from: {
+            name: 'PolymorpheusComponent',
+            moduleSpecifier: '@tinkoff/ng-polymorpheus',
+        },
+        to: {name: 'PolymorpheusComponent', moduleSpecifier: '@taiga-ui/polymorpheus'},
+    },
+    {
+        from: {
             name: 'tuiDefaultSort',
             moduleSpecifier: '@taiga-ui/addon-table',
         },
         to: {
             name: 'tuiDefaultSort',
             moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {
+            name: 'AbstractTuiControl',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'AbstractTuiControl',
+            moduleSpecifier: '@taiga-ui/legacy',
         },
     },
     {
@@ -2175,6 +2220,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiMultiSelectModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
+        from: {
+            name: 'TuiMultiSelectComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiMultiSelectComponent',
             moduleSpecifier: '@taiga-ui/legacy',
         },
     },

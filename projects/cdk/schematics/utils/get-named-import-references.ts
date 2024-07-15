@@ -5,12 +5,14 @@ import {ALL_TS_FILES} from '../constants';
 
 export function getNamedImportReferences(
     namedImport: string,
-    moduleSpecifier: string[] | string = '**/**',
+    moduleSpecifier: string[] | string = ['**/**'],
     files = ALL_TS_FILES,
 ): Node[] {
     const importDeclarations = getImports(files, {
         namedImports: [namedImport],
-        moduleSpecifier,
+        moduleSpecifier: Array.isArray(moduleSpecifier)
+            ? moduleSpecifier
+            : [moduleSpecifier, `${moduleSpecifier}/**`],
     });
 
     const namedImports = importDeclarations.map((declaration) =>

@@ -16,7 +16,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { TuiDialogModule } from "@taiga-ui/core";
+import { TuiDialogModule } from "@taiga-ui/core/components";
 
 @Component({
     standalone: true,

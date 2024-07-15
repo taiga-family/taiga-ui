@@ -166,16 +166,44 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {
             attrName: 'icon',
-            withAttrsNames: ['tuiButton'],
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
         },
         to: {attrName: 'iconStart'},
     },
     {
         from: {
             attrName: '[icon]',
-            withAttrsNames: ['tuiButton'],
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
         },
         to: {attrName: '[iconStart]'},
+    },
+    {
+        from: {
+            attrName: 'iconLeft',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {attrName: 'iconStart'},
+    },
+    {
+        from: {
+            attrName: '[iconLeft]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {attrName: '[iconStart]'},
+    },
+    {
+        from: {
+            attrName: 'iconRight',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {attrName: 'iconEnd'},
+    },
+    {
+        from: {
+            attrName: '[iconRight]',
+            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+        },
+        to: {attrName: '[iconEnd]'},
     },
     {
         from: {

@@ -33,14 +33,14 @@ export class Test {
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
-const COMPONENT_AFTER = `
-import { TuiBackComponent, TuiFeedItemComponent, TuiNavigationComponent, TuiIllustrationModePipe } from "@taiga-ui/proprietary";
+const COMPONENT_AFTER =
+    `import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBackComponent, TuiFeedItemComponent, TuiNavigationComponent, TuiIllustrationModePipe]
+    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationModePipe]
 })
 export class Test {
     readonly icon = tuiIconTdsAbhFlags;

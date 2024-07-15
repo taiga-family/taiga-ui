@@ -9,6 +9,14 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
+import {replaceSizeAttr} from './toggles/common';
+
+const badgeSizeMap = {
+    xs: 's',
+    s: 'm',
+    m: 'l',
+    l: 'xl',
+};
 
 export function migrateBadge({
     resource,
@@ -28,6 +36,14 @@ export function migrateBadge({
         if (!sourceCodeLocation) {
             return;
         }
+
+        replaceSizeAttr(
+            attrs,
+            sourceCodeLocation,
+            recorder,
+            templateOffset,
+            badgeSizeMap,
+        );
 
         const valueAttr = attrs.find(
             (attr) => attr.name === '[value]' || attr.name === 'value',
