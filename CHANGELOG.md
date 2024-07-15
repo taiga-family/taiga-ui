@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.87.0](https://github.com/taiga-family/taiga-ui/compare/v3.86.0...v3.87.0) (2024-07-15)
+
+### Features
+
+- **addon-table:** fix for `Cell` and `Title` ([#8078](https://github.com/taiga-family/taiga-ui/issues/8078))
+  ([e2e0ae5](https://github.com/taiga-family/taiga-ui/commit/e2e0ae5105b46e33454dae852b20d823336d100d))
+- **experimental:** `Status` add new component ([#8064](https://github.com/taiga-family/taiga-ui/issues/8064))
+  ([6e8450d](https://github.com/taiga-family/taiga-ui/commit/6e8450ddbd4af5a3c0cc2c1f24f092da96699868))
+- **kit:** `Progress` add options with DI ([#8065](https://github.com/taiga-family/taiga-ui/issues/8065))
+  ([e00cd8c](https://github.com/taiga-family/taiga-ui/commit/e00cd8c75098a8d74182b8f05c825251aaab8d3a))
+
+### Bug Fixes
+
+- **addon-mobile:** `DropdownMobile` fix open status report
+  ([#8101](https://github.com/taiga-family/taiga-ui/issues/8101))
+  ([ab05df0](https://github.com/taiga-family/taiga-ui/commit/ab05df0e20c4ab03e100807ecd15908513ea8fa0))
+- **addon-mobile:** display mobile calendar range ([#8092](https://github.com/taiga-family/taiga-ui/issues/8092))
+  ([75ac03b](https://github.com/taiga-family/taiga-ui/commit/75ac03bf74f2d93c75251c0c7b13535cf7cd79bf))
+- **experimental:** correct border-radius for `ButtonGroup` with only child
+  ([#8087](https://github.com/taiga-family/taiga-ui/issues/8087))
+  ([5805ce6](https://github.com/taiga-family/taiga-ui/commit/5805ce66644a1fa9f536486dc607366c139b175a))
+- **kit:** `Textarea` displays emoji in Safari ([#8088](https://github.com/taiga-family/taiga-ui/issues/8088))
+  ([0e88271](https://github.com/taiga-family/taiga-ui/commit/0e88271f0a18ebddfe15f079f82a638bbcda3eb9))
+- **kit:** correct paddings for `RadioBlock`, `CheckboxBlock`
+  ([#8081](https://github.com/taiga-family/taiga-ui/issues/8081))
+  ([0aa0458](https://github.com/taiga-family/taiga-ui/commit/0aa04586df42a2952fb6cf131d63add6f3bb8d6c))
+
 ## [3.86.0](https://github.com/taiga-family/taiga-ui/compare/v3.85.0...v3.86.0) (2024-07-08)
 
 ### Bug Fixes
