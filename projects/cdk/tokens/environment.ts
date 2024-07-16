@@ -38,7 +38,7 @@ export const TUI_PLATFORM = tuiCreateTokenFromFactory<'android' | 'ios' | 'web'>
 export const TUI_IS_TOUCH = tuiCreateTokenFromFactory(() => {
     const media = inject(WINDOW).matchMedia('(pointer: coarse)');
 
-    return toSignal(fromEvent(media, 'changes').pipe(map(() => media.matches)), {
+    return toSignal(fromEvent(media, 'change').pipe(map(() => media.matches)), {
         initialValue: media.matches,
     });
 });

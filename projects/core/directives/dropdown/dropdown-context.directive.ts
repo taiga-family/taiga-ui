@@ -1,4 +1,4 @@
-import {computed, Directive, HostBinding, HostListener, inject} from '@angular/core';
+import {computed, Directive, HostListener, inject} from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
     TUI_IS_IOS,
@@ -27,20 +27,20 @@ const MOVE_THRESHOLD = 15;
         tuiAsDriver(TuiDropdownDriver),
         tuiAsRectAccessor(TuiDropdownContext),
     ],
+    host: {
+        '[style.user-select]': 'userSelect()',
+        '[style.-webkit-user-select]': 'userSelect()',
+        '[style.-webkit-touch-callout]': 'userSelect()',
+    },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
-    private readonly stream$ = inject(TuiDropdownDriver);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly isTouch = inject(TUI_IS_TOUCH);
     private readonly driver = inject(TuiDropdownDriver);
     private currentRect = EMPTY_CLIENT_RECT;
     private longTapTimeout: any = NaN;
 
-    @HostBinding('style.user-select')
-    @HostBinding('style.-webkit-touch-callout')
-    @HostBinding('style.-webkit-user-select')
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
-
     protected readonly activeZone = inject(TuiActiveZone);
 
     public readonly type = 'dropdown';
@@ -90,7 +90,7 @@ export class TuiDropdownContext extends TuiRectAccessor {
 
         this.currentRect = tuiPointToClientRect(x, y);
         this.longTapTimeout = setTimeout(() => {
-            this.stream$.next(true);
+            this.driver.next(true);
         }, TAP_DELAY);
     }
 
