@@ -53,27 +53,12 @@ export class TuiDropdownContext extends TuiRectAccessor {
     }
 
     @shouldCall(activeZoneFilter)
-    @HostListener('document:click.silent', ['$event.target'])
+    @HostListener('document:pointerdown.silent', ['$event.target'])
     @HostListener('document:contextmenu.capture.silent', ['$event.target'])
     @HostListener('document:keydown.esc', ['$event.currentTarget'])
     protected closeDropdown(): void {
         this.driver.next(false);
         this.currentRect = EMPTY_CLIENT_RECT;
-    }
-
-    @HostListener('touchmove.silent.passive', [
-        '$event.touches[0].clientX',
-        '$event.touches[0].clientY',
-    ])
-    protected onTouchMove(x: number, y: number): void {
-        if (
-            this.isIOS &&
-            this.isTouch() &&
-            this.currentRect !== EMPTY_CLIENT_RECT &&
-            Math.hypot(x - this.currentRect.x, y - this.currentRect.y) > MOVE_THRESHOLD
-        ) {
-            this.onTouchEnd();
-        }
     }
 
     @HostListener('touchstart.silent.passive', [
@@ -89,6 +74,21 @@ export class TuiDropdownContext extends TuiRectAccessor {
         this.longTapTimeout = setTimeout(() => {
             this.driver.next(true);
         }, TAP_DELAY);
+    }
+
+    @HostListener('touchmove.silent.passive', [
+        '$event.touches[0].clientX',
+        '$event.touches[0].clientY',
+    ])
+    protected onTouchMove(x: number, y: number): void {
+        if (
+            this.isIOS &&
+            this.isTouch() &&
+            this.currentRect !== EMPTY_CLIENT_RECT &&
+            Math.hypot(x - this.currentRect.x, y - this.currentRect.y) > MOVE_THRESHOLD
+        ) {
+            this.onTouchEnd();
+        }
     }
 
     @HostListener('touchend.silent.passive')
