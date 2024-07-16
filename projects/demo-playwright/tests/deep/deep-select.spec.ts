@@ -1,7 +1,7 @@
 import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {DemoRoute} from '../../../demo/src/modules/app/demo-routes';
+import {DemoRoute} from '@demo/routes';
 
 const DEEP_SELECT_FLAKY = new Set<string>([DemoRoute.Avatar]);
 
