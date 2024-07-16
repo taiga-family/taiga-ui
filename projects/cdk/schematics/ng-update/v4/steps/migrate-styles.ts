@@ -1,5 +1,5 @@
 /// <reference lib="es2021" />
-import {getActiveProject} from 'ng-morph';
+import {getActiveProject, saveActiveProject} from 'ng-morph';
 
 export const TUI_RATING_WARNING =
     '// TODO: (Taiga UI migration): use css to customize rating gap and size. See https://taiga-ui.dev/components/rating#basic';
@@ -19,4 +19,6 @@ export function migrateStyles(): void {
 
             sourceFile.replaceWithText(fullText);
         });
+
+    saveActiveProject();
 }
