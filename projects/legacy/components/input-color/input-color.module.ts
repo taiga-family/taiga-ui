@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiColorSelectorModule} from '@taiga-ui/legacy/components/color-selector';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
@@ -17,7 +17,7 @@ import {TuiInputColorComponent} from './input-color.component';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiColorSelectorModule,
-        MaskitoModule,
+        MaskitoDirective,
         ...TuiDropdown,
     ],
     declarations: [TuiInputColorComponent],
