@@ -8,6 +8,7 @@ import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
@@ -28,11 +29,12 @@ export class TuiInputCard implements OnInit {
     private readonly options = inject(TUI_INPUT_CARD_OPTIONS);
     private readonly resolver = tuiInjectIconResolver();
     private readonly control = inject(NgControl);
-    private readonly mask = inject(MaskitoDirective);
     private readonly accessor = inject(DefaultValueAccessor, {
         self: true,
         optional: true,
     });
+
+    protected readonly mask = tuiMaskito(TUI_MASK_CARD);
 
     @Input()
     public autocomplete = this.options.autocomplete;
@@ -50,9 +52,6 @@ export class TuiInputCard implements OnInit {
     );
 
     public ngOnInit(): void {
-        this.mask.options = TUI_MASK_CARD;
-        this.mask.ngOnChanges();
-
         if (!this.accessor) {
             return;
         }
