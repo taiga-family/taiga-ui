@@ -6,7 +6,7 @@ import type {TuiHintDirection} from '@taiga-ui/core';
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {
         await tuiGoto(page, DemoRoute.Hint);
-        const example = new TuiDocumentationPagePO(page).getExample('#multiple');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.locator('tui-avatar').hover();
 
