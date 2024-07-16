@@ -86,10 +86,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiNotificationStatus', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiFormatPhonePipeModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
-    },
-    {
         from: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
     },
@@ -1329,20 +1325,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'PolymorpheusTemplate', moduleSpecifier: '@taiga-ui/polymorpheus'},
             {name: 'PolymorpheusOutlet', moduleSpecifier: '@taiga-ui/polymorpheus'},
         ],
-    },
-    {
-        from: {
-            name: 'POLYMORPHEUS_CONTEXT',
-            moduleSpecifier: '@tinkoff/ng-polymorpheus',
-        },
-        to: {name: 'POLYMORPHEUS_CONTEXT', moduleSpecifier: '@taiga-ui/polymorpheus'},
-    },
-    {
-        from: {
-            name: 'PolymorpheusComponent',
-            moduleSpecifier: '@tinkoff/ng-polymorpheus',
-        },
-        to: {name: 'PolymorpheusComponent', moduleSpecifier: '@taiga-ui/polymorpheus'},
     },
     {
         from: {
