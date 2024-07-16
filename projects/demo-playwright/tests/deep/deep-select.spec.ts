@@ -1,8 +1,14 @@
 import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
+import {DemoRoute} from '../../../demo/src/modules/app/demo-routes';
+
+const DEEP_SELECT_FLAKY = new Set<string>([DemoRoute.Avatar]);
+
 test.describe('Deep / Select', () => {
-    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!).filter(
+        (path: string) => !DEEP_SELECT_FLAKY.has(path),
+    );
 
     deepPaths.forEach((path) =>
         test(path, async ({page}) => {
