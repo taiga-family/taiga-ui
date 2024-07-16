@@ -60,6 +60,7 @@ function main(options: TuiSchema): Rule {
         migrateOptionProviders(options);
         migrateAllCountryIsoCodes(options);
 
+        saveActiveProject();
         migrateTemplates(fileSystem, options);
         showWarnings(context, MIGRATION_WARNINGS);
 

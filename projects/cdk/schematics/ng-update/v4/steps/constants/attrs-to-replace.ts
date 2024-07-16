@@ -135,6 +135,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: '[colors]',
+            withTagNames: ['tui-progress-segmented'],
+        },
+        to: {attrName: '[tuiProgressColorSegments]'},
+    },
+    {
+        from: {
             attrName: 'tuiMarkerIcon',
             withTagNames: ['button', 'a'],
         },

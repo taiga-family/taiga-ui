@@ -74,7 +74,7 @@ export function migrateAvatar({
         const avatarUrlAttr = findAttr(attrs, 'avatarurl');
         const fallbackAttr = findAttr(attrs, 'fallback');
         const textAttr = findAttr(attrs, 'text');
-        const roundedAttr = findAttr(attrs, 'rounded') || findAttr(attrs, 'round');
+        const roundedAttr = findAttr(attrs, 'rounded');
 
         if ((!avatarUrlAttr && !textAttr) || !sourceCodeLocation) {
             return;

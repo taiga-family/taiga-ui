@@ -43,6 +43,11 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         addAttributes: ['tuiDropdownOpen'],
     },
     {
+        from: 'tui-progress-segmented',
+        to: 'progress',
+        addAttributes: ['tuiProgressBar'],
+    },
+    {
         from: 'tui-marker-icon',
         to: 'tui-avatar',
     },

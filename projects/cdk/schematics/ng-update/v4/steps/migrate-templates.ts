@@ -13,7 +13,6 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../interfaces/template-resource';
-import {saveTemplates} from '../../utils/save-templates';
 import {
     addHTMLCommentTags,
     removeInputs,
@@ -111,18 +110,16 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         total: componentWithTemplatesPaths.length,
     });
 
-    actions.forEach((action, actionIndex) => {
-        const isLastAction = actionIndex === actions.length - 1;
+    componentWithTemplatesPaths.forEach((resource) => {
+        const path = fileSystem.resolve(getPathFromTemplateResource(resource));
+        const recorder = fileSystem.edit(path);
 
-        componentWithTemplatesPaths.forEach((resource) => {
-            const path = fileSystem.resolve(getPathFromTemplateResource(resource));
-            const recorder = fileSystem.edit(path);
+        actions.forEach((action, actionIndex) => {
+            const isLastAction = actionIndex === actions.length - 1;
 
             !options['skip-logs'] && progressLog(action.name, isLastAction);
             action({resource, fileSystem, recorder});
         });
-
-        saveTemplates(fileSystem);
     });
 
     !options['skip-logs'] &&
