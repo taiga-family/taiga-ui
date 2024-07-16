@@ -8,6 +8,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
+import {replaceAttrs, replaceTags} from '../../../utils/templates';
 
 export function migrateProgressSegmented({
     resource,
@@ -38,5 +39,33 @@ export function migrateProgressSegmented({
         const insertTo = sourceCodeLocation?.attrs?.[maxAttr.name].endOffset || 0;
 
         recorder.insertRight(insertTo + templateOffset, `  [segments]="${max}"`);
+    });
+
+    replaceAttrs({
+        fileSystem,
+        recorder,
+        resource,
+        data: [
+            {
+                from: {
+                    attrName: '[colors]',
+                    withTagNames: ['tui-progress-segmented'],
+                },
+                to: {attrName: '[tuiProgressColorSegments]'},
+            },
+        ],
+    });
+
+    replaceTags({
+        fileSystem,
+        recorder,
+        resource,
+        data: [
+            {
+                from: 'tui-progress-segmented',
+                to: 'progress',
+                addAttributes: ['tuiProgressBar'],
+            },
+        ],
     });
 }
