@@ -21,7 +21,8 @@ export default class Example {
         [200, 150],
         [250, 155],
         [300, 190],
-        [350, 90],
+        [350, 0],
+        [400, 0],
     ];
 
     protected readonly stringify = String;
