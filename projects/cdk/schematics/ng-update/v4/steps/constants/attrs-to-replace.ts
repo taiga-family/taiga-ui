@@ -232,4 +232,11 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: ''},
     },
+    {
+        from: {
+            attrName: 'tuiTextfield',
+            withTagNames: ['input', 'textarea'],
+        },
+        to: {attrName: 'tuiTextfieldLegacy'},
+    },
 ];
