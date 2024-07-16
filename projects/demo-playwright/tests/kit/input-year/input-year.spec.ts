@@ -19,6 +19,7 @@ test.describe('InputYear', () => {
 
         test('12345 => 1234', async ({page}) => {
             await input.fill('123456789');
+            await page.waitForTimeout(300);
             await expect(page).toHaveScreenshot('01-input-year.png');
         });
 
