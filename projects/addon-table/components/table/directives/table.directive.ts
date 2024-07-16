@@ -1,4 +1,4 @@
-import type {AfterViewInit} from '@angular/core';
+import type {AfterViewInit, OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -57,7 +57,7 @@ class TuiTableStyles {}
     },
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
-    implements AfterViewInit, TuiTextfieldOptions
+    implements AfterViewInit, TuiTextfieldOptions, OnChanges
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);

@@ -1,4 +1,5 @@
-import {Directive, Input, OnChanges} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import {Subject} from 'rxjs';
 
 @Directive({
