@@ -7,19 +7,16 @@
         <p>Directive to show a hint by hover of an element</p>
 
         <tui-doc-example
-            id="multiple"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="Customizing bubble"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-notification class="tui-space_bottom-4">
+            <tui-notification
+                *ngIf="index === 1"
+                class="tui-space_bottom-4"
+            >
                 Make sure
                 <code>*tuiHint</code>
                 directive is nested inside
@@ -27,13 +24,6 @@
                 directive so that dependency injection works properly
             </tui-notification>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="nested"
-            heading="Nested"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html,ts'"
-        />
     </ng-template>
 
     <ng-template pageTab>

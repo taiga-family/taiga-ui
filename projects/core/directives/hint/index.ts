@@ -3,6 +3,7 @@ export * from './hint.component';
 export * from './hint.directive';
 export * from './hint.providers';
 export * from './hint.service';
+export * from './hint-auto.directive';
 export * from './hint-describe.directive';
 export * from './hint-driver.directive';
 export * from './hint-host.directive';
