@@ -16,14 +16,13 @@ import type {
     TuiHandler,
     TuiIdentityMatcher,
 } from '@taiga-ui/cdk/types';
-import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeS, TuiSizeXL} from '@taiga-ui/core/types';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiBlock} from '@taiga-ui/kit/components/block';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
-    xs: 's',
+const badgeSizeMap: Record<TuiSizeL | TuiSizeS, TuiSizeS | TuiSizeXL> = {
     s: 'm',
     m: 'l',
     l: 'xl',
@@ -55,7 +54,7 @@ export class TuiFilterComponent<T> extends TuiControl<readonly T[]> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeL | TuiSizeXS = 'm';
+    public size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;

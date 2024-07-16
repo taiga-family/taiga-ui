@@ -1,10 +1,10 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiBlockOptions extends TuiAppearanceOptions {
-    readonly size: TuiSizeL | TuiSizeXS;
+    readonly size: TuiSizeL | TuiSizeS;
 }
 
 export const TUI_BLOCK_DEFAULT_OPTIONS: TuiBlockOptions = {
