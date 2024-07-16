@@ -80,6 +80,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public readonly size = signal(this.options.size);
     public readonly cleaner = signal(false);
 
+    // TODO: refactor to signal inputs after Angular update
+    public readonly change$ = new Subject<void>();
+
     @Input('size')
     public set sizeSetter(size: TuiSizeL | TuiSizeS) {
         this.size.set(size);
@@ -87,9 +90,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     @Input()
     public sorter: TuiComparator<T> = () => 0;
-
-    // TODO: refactor to signal inputs after Angular update
-    public readonly change$ = new Subject<void>();
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
