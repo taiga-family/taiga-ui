@@ -1,4 +1,4 @@
-import type {AfterViewInit} from '@angular/core';
+import type {AfterViewInit, OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
@@ -21,6 +20,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
+import {Subject} from 'rxjs';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiStuck} from './stuck.directive';
@@ -57,8 +57,7 @@ class TuiTableStyles {}
     },
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
-    extends AbstractTuiController
-    implements AfterViewInit, TuiTextfieldOptions
+    implements AfterViewInit, TuiTextfieldOptions, OnChanges
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
@@ -81,6 +80,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public readonly size = signal(this.options.size);
     public readonly cleaner = signal(false);
 
+    // TODO: refactor to signal inputs after Angular update
+    public readonly change$ = new Subject<void>();
+
     @Input('size')
     public set sizeSetter(size: TuiSizeL | TuiSizeS) {
         this.size.set(size);
@@ -96,6 +98,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
             this.updateSorter(sorter);
             this.updateDirection(1);
         }
+    }
+
+    public ngOnChanges(): void {
+        this.change$.next();
     }
 
     public ngAfterViewInit(): void {

@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 
 /**
  * @deprecated: drop in v5.0

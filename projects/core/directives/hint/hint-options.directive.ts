@@ -1,9 +1,9 @@
-import type {FactoryProvider} from '@angular/core';
+import type {FactoryProvider, OnChanges} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk/classes';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {Subject} from 'rxjs';
 
 export type TuiHintDirection =
     | 'bottom-left'
@@ -75,10 +75,7 @@ export const tuiHintOptionsProvider: (
     selector: '[tuiHintContent]',
     providers: [tuiProvide(TUI_HINT_OPTIONS, TuiHintOptionsDirective)],
 })
-export class TuiHintOptionsDirective
-    extends AbstractTuiController
-    implements TuiHintOptions
-{
+export class TuiHintOptionsDirective implements TuiHintOptions, OnChanges {
     private readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
 
     @Input('tuiHintContent')
@@ -97,4 +94,10 @@ export class TuiHintOptionsDirective
     public hideDelay = this.options.hideDelay;
 
     public icon = this.options.icon;
+
+    public readonly change$ = new Subject<void>();
+
+    public ngOnChanges(): void {
+        this.change$.next();
+    }
 }
