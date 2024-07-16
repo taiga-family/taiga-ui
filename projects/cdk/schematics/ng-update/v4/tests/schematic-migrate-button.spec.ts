@@ -78,6 +78,54 @@ const TEMPLATE_AFTER = `
 </button>
 `;
 
+const INLINE_TEMPLATE_COMPONENT_BEFORE = `
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TuiButtonModule} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    selector: 'stackblitz-edit-button',
+    imports: [TuiButtonModule],
+    template: \`
+        <button
+            size="s"
+            icon="assets/icons/stackblitz.svg"
+            title="Edit on StackBlitz"
+            tuiButton
+            type="button"
+        >
+            Edit
+        </button>
+    \`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class StackblitzEditButton {}`;
+
+const INLINE_TEMPLATE_COMPONENT_AFTER = `
+import { TuiButton } from "@taiga-ui/core";
+
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+
+@Component({
+    standalone: true,
+    selector: 'stackblitz-edit-button',
+    imports: [TuiButton],
+    template: \`
+        <button
+            size="s"
+            iconStart="assets/icons/stackblitz.svg"
+            title="Edit on StackBlitz"
+            tuiButton
+            type="button"
+        >
+            Edit
+        </button>
+    \`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class StackblitzEditButton {}
+`.trim();
+
 describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
@@ -113,6 +161,18 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
+    it('should migrate button references in components with inline templates', async () => {
+        const tree = await runner.runSchematic(
+            'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+
+        expect(tree.readContent('test/app/inline-template.component.ts')).toEqual(
+            INLINE_TEMPLATE_COMPONENT_AFTER,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -121,5 +181,9 @@ describe('ng-update', () => {
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile(
+        'test/app/inline-template.component.ts',
+        INLINE_TEMPLATE_COMPONENT_BEFORE,
+    );
     createSourceFile('package.json', '{}');
 }
