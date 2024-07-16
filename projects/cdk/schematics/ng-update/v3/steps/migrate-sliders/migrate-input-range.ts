@@ -1,20 +1,14 @@
 import type {DevkitFileSystem} from 'ng-morph';
-import {
-    addMethods,
-    createProject,
-    getNgComponents,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import {addMethods, getNgComponents} from 'ng-morph';
 
-import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
+import {ALL_TS_FILES} from '../../../../constants';
 import type {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
 import {setupProgressLogger} from '../../../../utils/progress';
-import {projectRoot} from '../../../../utils/project-root';
 import {getComponentTemplates} from '../../../../utils/templates/get-component-templates';
 import {replaceInputProperty} from '../../../../utils/templates/ng-component-input-manipulations';
 import type {TemplateResource} from '../../../interfaces/template-resource';
+import {saveTemplates} from '../../../utils/save-templates';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
@@ -80,16 +74,6 @@ function addMinMaxLabelMethod(
     }
 }
 
-/**
- * We should update virtual file tree after template manipulations
- * otherwise all following ng-morph commands will overwrite all previous template manipulations
- * */
-function save(fileSystem: DevkitFileSystem): void {
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
-}
-
 export function migrateInputRange(
     fileSystem: DevkitFileSystem,
     options: TuiSchema,
@@ -109,7 +93,7 @@ export function migrateInputRange(
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
     });
 
-    save(fileSystem);
+    saveTemplates(fileSystem);
 
     progressLog = setupProgressLogger({
         total: COMPONENTS_WITH_MIN_LABELS.size,
