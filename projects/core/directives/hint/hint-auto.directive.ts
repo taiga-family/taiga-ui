@@ -1,6 +1,7 @@
 import {Directive} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding, tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {fromEvent, map} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
