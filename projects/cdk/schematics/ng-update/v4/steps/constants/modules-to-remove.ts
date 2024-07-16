@@ -14,6 +14,14 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/cdk',
     },
     {
+        name: 'TuiPromptDialogModule',
+        moduleSpecifier: '@taiga-ui/proprietary-core',
+    },
+    {
+        name: 'TuiThemeTinkoff2023NightModule',
+        moduleSpecifier: '@taiga-ui/proprietary-core',
+    },
+    {
         name: 'TuiOverscrollModule',
         moduleSpecifier: '@taiga-ui/cdk',
     },
