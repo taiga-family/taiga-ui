@@ -1,11 +1,8 @@
 import {computed, Directive, HostListener, inject} from '@angular/core';
-import {
-    EMPTY_CLIENT_RECT,
-    TUI_IS_IOS,
-    TUI_IS_TOUCH,
-    TuiActiveZone,
-    tuiPointToClientRect,
-} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TUI_IS_IOS, TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
+import {tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
