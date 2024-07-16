@@ -112,7 +112,6 @@ export class TuiHintComponent<C = any> {
         }
     }
 
-    @tuiPure
     private update(top: number, left: number): void {
         if (!this.hover.el.isConnected) {
             this.hover.toggle(false);
@@ -134,9 +133,19 @@ export class TuiHintComponent<C = any> {
             rect.left + rect.width / 2 - safeLeft,
         ]);
 
-        this.el.style.top = tuiPx(top);
-        this.el.style.left = tuiPx(safeLeft);
-        this.el.style.setProperty('--top', tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
-        this.el.style.setProperty('--left', tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
+        this.apply(
+            tuiPx(Math.round(top)),
+            tuiPx(Math.round(safeLeft)),
+            tuiPx(Math.round(tuiClamp(beakTop, 0.5, height - 1))),
+            tuiPx(Math.round(tuiClamp(beakLeft, 0.5, width - 1))),
+        );
+    }
+
+    @tuiPure
+    private apply(top: string, left: string, beakTop: string, beakLeft: string): void {
+        this.el.style.top = top;
+        this.el.style.left = left;
+        this.el.style.setProperty('--top', beakTop);
+        this.el.style.setProperty('--left', beakLeft);
     }
 }
