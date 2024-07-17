@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
@@ -18,7 +18,7 @@ import {TuiColorEditComponent} from './color-edit.component';
     imports: [
         CommonModule,
         FormsModule,
-        MaskitoModule,
+        MaskitoDirective,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiInputNumberModule,
