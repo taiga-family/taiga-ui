@@ -51,9 +51,14 @@ tui-root > .t-root-scrollbar {
 }
 
 .t-root-content {
+    position: relative;
+    top: var(--t-root-top);
     height: 100%;
     isolation: isolate;
-    transform: translateY(var(--t-root-top));
+
+    > * {
+        --t-root-top: 0;
+    }
 }
 
 [tuiDropdownButton][tuiDropdownButton] {

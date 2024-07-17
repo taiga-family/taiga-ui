@@ -211,7 +211,7 @@ export class TuiInputTagComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el) || !!this.dropdown?.focused;
+        return tuiIsNativeFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen;
     }
 
     public onTagEdited(value: string, index: number): void {

@@ -29,9 +29,11 @@
     tuiDropdownMobile
     class="tui-space_vertical-4"
     [stringify]="stringify"
+    [tuiDropdownOpen]="open()"
     [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="selected"
-    [(tuiDropdownOpen)]="open"
+    (tuiDropdownOpenChange)="open.set($event)"
 >
     Pick more users
     <ng-container *tuiDataList>
@@ -45,7 +47,7 @@
             size="m"
             tuiButton
             tuiDropdownButton
-            (click)="open = false"
+            (click)="open.set(false)"
         >
             Done
         </button>
