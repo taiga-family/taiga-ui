@@ -1,9 +1,9 @@
-import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
@@ -16,7 +16,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {map} from 'rxjs';
+import {map, takeWhile} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
@@ -50,7 +50,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         '[attr.tuiTheme]': 'theme',
     },
 })
-export class TuiDropdownComponent implements OnInit {
+export class TuiDropdownComponent {
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
@@ -66,27 +66,21 @@ export class TuiDropdownComponent implements OnInit {
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
+            takeWhile(() => this.directive.el.isConnected),
             map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+            map(([top, left]) => this.getStyles(top, left)),
             takeUntilDestroyed(),
         )
-        .subscribe(([top, left]) => {
-            if (this.directive.el.isConnected) {
-                this.update(top, left);
-            } else {
-                this.close();
-            }
+        .subscribe({
+            next: (styles) => Object.assign(this.el.style, styles),
+            complete: () => this.close(),
         });
-
-    public ngOnInit(): void {
-        this.updateWidth(this.accessor.getClientRect().width);
-    }
 
     protected readonly close = (): void => this.directive.toggle(false);
 
-    private update(top: number, left: number): void {
-        const {style} = this.el;
+    private getStyles(top: number, left: number): Record<string, string> {
         const {right} = this.el.getBoundingClientRect();
-        const {maxHeight, minHeight, offset} = this.options;
+        const {maxHeight, minHeight, offset, limitWidth} = this.options;
         const {innerHeight} = this.win;
         const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
@@ -97,38 +91,22 @@ export class TuiDropdownComponent implements OnInit {
         top += offsetY;
         left += offsetX;
 
+        const sided = right <= rect.left || left >= rect.right;
         const isIntersecting =
             left < rect.right && right > rect.left && top < offsetY + 2 * offset;
         const available = isIntersecting
             ? rect.top - 2 * offset
             : offsetY + innerHeight - top - offset;
 
-        const sided = right <= rect.left || left >= rect.right;
-
-        style.position = position;
-        style.top = tuiPx(Math.max(top, offsetY + offset));
-        style.left = tuiPx(left);
-        style.maxHeight = sided
-            ? `${maxHeight}px`
-            : tuiPx(Math.min(maxHeight, Math.max(available, minHeight)));
-        style.width = '';
-        style.minWidth = '';
-
-        this.updateWidth(rect.width);
-    }
-
-    private updateWidth(width: number): void {
-        const {style} = this.el;
-
-        switch (this.options.limitWidth) {
-            case 'min':
-                style.minWidth = tuiPx(width);
-                break;
-            case 'fixed':
-                style.width = tuiPx(width);
-                break;
-            case 'auto':
-                break;
-        }
+        return {
+            position,
+            top: tuiPx(Math.round(Math.max(top, offsetY + offset))),
+            left: tuiPx(Math.round(left)),
+            maxHeight: sided
+                ? tuiPx(maxHeight)
+                : tuiPx(Math.round(tuiClamp(available, minHeight, maxHeight))),
+            width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width)) : '',
+            minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width)) : '',
+        };
     }
 }
