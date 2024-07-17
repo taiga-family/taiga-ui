@@ -5,6 +5,15 @@
     [items]="items"
     [labels]="labels"
 />
+<ng-container *ngIf="control.control?.valueChanges | async" />
+<option
+    *ngIf="emptyOption"
+    disabled
+    selected
+    value=""
+>
+    {{ placeholder }}
+</option>
 <optgroup
     *ngFor="let group of items; let index = index"
     [label]="labels[index]"
