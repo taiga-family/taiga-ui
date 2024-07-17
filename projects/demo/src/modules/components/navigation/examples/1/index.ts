@@ -9,7 +9,6 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiExpand,
     TuiIcon,
     TuiSurface,
     TuiTitle,
@@ -39,7 +38,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         RouterLink,
         RouterLinkActive,
         TuiAppearance,
-        TuiExpand,
         TuiBadge,
         TuiTabs,
         TuiRepeatTimes,
@@ -53,8 +51,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    protected open = false;
     protected expanded = false;
-    protected submenu = false;
     protected readonly routes = DemoRoute;
 }

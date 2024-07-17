@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 aside[tuiNavigationAside] {
+    .transition(width);
+
     --tui-text-action: var(--tui-text-primary);
     --tui-text-action-hover: var(--tui-text-primary);
 
@@ -22,11 +24,6 @@ aside[tuiNavigationAside] {
         }
     }
 
-    /* stylelint-disable-next-line */
-    a[tuiButton].active {
-        background: var(--tui-background-neutral-1-hover);
-    }
-
     .t-nav-scrollbar {
         margin: 0 -0.25rem;
     }
@@ -39,7 +36,7 @@ aside[tuiNavigationAside] {
         overflow: auto;
     }
 
-    [tuiButton] {
+    [tuiOption] {
         width: 100%;
         justify-content: flex-start;
         gap: 0.625rem;
@@ -51,9 +48,14 @@ aside[tuiNavigationAside] {
             margin-left: auto;
             color: var(--tui-text-tertiary);
         }
+
+        &._chevron-rotated,
+        &._active {
+            background: var(--tui-background-neutral-1-hover);
+        }
     }
 
-    tui-expand [tuiButton] {
+    tui-expand [tuiOption] {
         padding-inline-start: 2rem;
     }
 
@@ -78,10 +80,11 @@ aside[tuiNavigationAside] {
     + main[tuiNavigationMain] {
         max-width: calc(100% - 3rem);
     }
-    .transition(width);
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
+    --tui-text-action: var(--tui-text-primary);
+    --tui-text-action-hover: var(--tui-text-primary);
     --tui-text-primary: #fff;
     --tui-background-neutral-1: rgba(255, 255, 255, 0.16);
 

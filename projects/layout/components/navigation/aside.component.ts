@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -36,10 +37,15 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     host: {
         tuiNavigationAside: '',
         tuiTheme: 'dark',
-        '[class._expanded]': 'tuiNavigationAside',
+        '[class._expanded]': 'expanded()',
     },
 })
 export class TuiAsideComponent {
+    // TODO: refactor to signal inputs after Angular update
+    public readonly expanded = signal(false);
+
     @Input()
-    public tuiNavigationAside = false;
+    public set tuiNavigationAside(expanded: boolean) {
+        this.expanded.set(expanded);
+    }
 }

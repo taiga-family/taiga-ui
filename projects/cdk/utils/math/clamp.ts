@@ -11,7 +11,6 @@ export function tuiClamp(value: number, min: number, max: number): number {
     ngDevMode && console.assert(!Number.isNaN(value));
     ngDevMode && console.assert(!Number.isNaN(min));
     ngDevMode && console.assert(!Number.isNaN(max));
-    ngDevMode && console.assert(max >= min);
 
-    return Math.min(max, Math.max(min, value));
+    return Math.min(Math.max(min, max), Math.max(Math.min(min, max), value));
 }

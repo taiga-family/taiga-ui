@@ -50,12 +50,13 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
                     const element = this.els.get(active);
                     const dropdown = this.dropdowns.get(active);
+                    const ref = dropdown?.ref();
 
-                    if (!element || !dropdown?.dropdownBoxRef) {
+                    if (!element || !dropdown || !ref) {
                         return EMPTY;
                     }
 
-                    const {nativeElement} = dropdown.dropdownBoxRef.location;
+                    const {nativeElement} = ref.location;
                     const mouseEnter$ = tuiTypedFromEvent(
                         nativeElement,
                         'mouseenter',
@@ -67,7 +68,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
                     return merge(mouseEnter$, esc$).pipe(
                         tap((event) => {
-                            if (dropdown.dropdownBoxRef) {
+                            if (dropdown.ref()) {
                                 event.stopPropagation();
                             }
 
@@ -144,11 +145,12 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     private notInDropdown(element: EventTarget | null, index: number): boolean {
         return !this.dropdowns
             .get(index)
-            ?.dropdownBoxRef?.location.nativeElement.contains(element);
+            ?.ref()
+            ?.location.nativeElement.contains(element);
     }
 
     private tryToFocus(index: number): void {
-        const content = this.dropdowns.get(index)?.dropdownBoxRef?.location.nativeElement;
+        const content = this.dropdowns.get(index)?.ref()?.location.nativeElement;
 
         if (!content) {
             return;

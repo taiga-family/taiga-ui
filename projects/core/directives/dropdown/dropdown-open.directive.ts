@@ -70,9 +70,7 @@ export class TuiDropdownOpen implements OnChanges {
         inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
-            filter(
-                (target) => !this.host.contains(target) || !this.directive.dropdownBoxRef,
-            ),
+            filter((target) => !this.host.contains(target) || !this.directive.ref()),
         ),
     )
         .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
@@ -91,7 +89,7 @@ export class TuiDropdownOpen implements OnChanges {
     public readonly driver = inject(TuiDropdownDriver);
 
     public get dropdown(): HTMLElement | undefined {
-        return this.directive.dropdownBoxRef?.location.nativeElement;
+        return this.directive.ref()?.location.nativeElement;
     }
 
     public ngOnChanges(): void {
