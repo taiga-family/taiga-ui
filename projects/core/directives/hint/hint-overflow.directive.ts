@@ -15,7 +15,7 @@ import {TuiHintDirective} from './hint.directive';
         },
     ],
 })
-export class TuiHintOverfow {
+export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {

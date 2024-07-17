@@ -1,6 +1,6 @@
 import {TuiHintComponent} from './hint.component';
 import {TuiHintDirective} from './hint.directive';
-import {TuiHintOverfow} from './hint-overflow.directive';
+import {TuiHintOverflow} from './hint-overflow.directive';
 import {TuiHintDescribe} from './hint-describe.directive';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHost} from './hint-host.directive';
@@ -19,7 +19,7 @@ export const TuiHint = [
     TuiHintDriver,
     TuiHintPosition,
     TuiHintHover,
-    TuiHintOverfow,
+    TuiHintOverflow,
     TuiHintDescribe,
     TuiHintHost,
     TuiHintManual,
