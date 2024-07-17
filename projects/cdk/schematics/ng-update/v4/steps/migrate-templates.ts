@@ -36,15 +36,16 @@ import {
     migrateCheckbox,
     migrateExpandable,
     migrateFocusable,
+    migrateLabel,
     migrateLabeled,
     migrateMoney,
+    migrateOverscroll,
     migratePreventDefault,
     migrateProgressSegmented,
     migrateRadio,
     migrateThumbnailCard,
     migrateToggle,
 } from './templates';
-import {migrateOverscroll} from './templates/migrate-overscroll';
 
 function getAction<T>({
     action,
@@ -104,6 +105,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateProgressSegmented,
         migrateThumbnailCard,
         migrateOverscroll,
+        migrateLabel,
     ] as const;
 
     const progressLog = setupProgressLogger({

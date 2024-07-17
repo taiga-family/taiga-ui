@@ -17,7 +17,7 @@
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo-playwright/stubs"
     ],
-    "ignoreWords": ["preid", "Quarterpounder"],
+    "ignoreWords": ["preid", "Quarterpounder", "tuilabel"],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {
