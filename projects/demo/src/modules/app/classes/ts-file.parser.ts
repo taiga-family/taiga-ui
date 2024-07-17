@@ -18,14 +18,15 @@ export class TsFileParser {
     }
 
     public get className(): string {
-        const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
+        const [, className] =
+            this.rawFileContent.match(/(?:export(?: default)? class\s)(\w*)/i) || [];
 
         return className || '';
     }
 
     public set className(newClassName: string) {
         this.rawFileContent = this.rawFileContent.replace(
-            /(export class\s)(\w*)/i,
+            /(export(?: default)? class\s)(\w*)/i,
             `$1${newClassName}`,
         );
     }
@@ -43,7 +44,7 @@ export class TsFileParser {
 
         this.rawFileContent = this.rawFileContent.includes(fromName)
             ? this.addIntoExistingImport(entity, fromName)
-            : `import {${entity}} from '${fromName}';\n${this.rawFileContent};`;
+            : `import {${entity}} from '${fromName}';\n${this.rawFileContent}`;
     }
 
     public toString(): string {
