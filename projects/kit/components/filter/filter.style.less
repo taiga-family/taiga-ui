@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
     display: block;
     margin-bottom: calc(-1 * var(--t-gap));
@@ -10,9 +12,14 @@
 }
 
 .t-item {
+    max-width: 11rem;
     margin: 0 var(--t-gap) var(--t-gap) 0;
 
     &:last-child {
         margin-right: 0;
     }
+}
+
+.t-text {
+    .text-overflow();
 }

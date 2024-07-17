@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiFilterComponent} from '@taiga-ui/kit';
 
 class ItemWithBadge {
@@ -62,12 +62,7 @@ export default class Page {
 
     protected control = new FormControl(this.initialItems);
 
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = [
-        'xs',
-        's',
-        'm',
-        'l',
-    ];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
     protected size = this.sizeVariants[2];
 }
