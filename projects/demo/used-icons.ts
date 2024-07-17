@@ -70,6 +70,7 @@ export const TUI_USED_ICONS = [
     '@tui.circle-check',
     '@tui.circle-x',
     '@tui.external-link',
+    '@tui.gitlab',
     '@tui.download',
     '@tui.video',
     '@tui.arrow-up',
