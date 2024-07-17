@@ -5,15 +5,15 @@ import {TuiHintDirective} from './hint.directive';
 @Directive({
     standalone: true,
     selector: '[tuiHintOverflow]',
-    host: {
-        '(mouseenter)': 'onMouseEnter($event.currentTarget)',
-    },
     hostDirectives: [
         {
             directive: TuiHintDirective,
             inputs: ['tuiHintAppearance'],
         },
     ],
+    host: {
+        '(mouseenter)': 'onMouseEnter($event.currentTarget)',
+    },
 })
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
