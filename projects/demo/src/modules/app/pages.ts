@@ -870,7 +870,6 @@ export const pages: TuiDocRoutePages = [
         keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
         route: DemoRoute.Tree,
     },
-    // Experimental
     {
         section: 'Layout',
         title: 'BlockDetails',
@@ -956,7 +955,7 @@ export const pages: TuiDocRoutePages = [
         route: DemoRoute.CardLarge,
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
         route: DemoRoute.Navigation,
