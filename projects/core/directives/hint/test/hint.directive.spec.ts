@@ -80,7 +80,7 @@ describe('Hint', () => {
         });
 
         // TODO: Figure out why this stopped working
-        xit('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
+        it.skip('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
             getHost().dispatchEvent(new Event('mouseout'));
             fixture.detectChanges();
             tick(200);
