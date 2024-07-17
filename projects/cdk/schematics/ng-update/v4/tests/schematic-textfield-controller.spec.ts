@@ -72,7 +72,7 @@ const TEMPLATE_AFTER = `
 >
     Type an email
     <input
-        tuiTextfield
+        tuiTextfieldLegacy
         type="email"
     />
 </tui-primitive-textfield>
