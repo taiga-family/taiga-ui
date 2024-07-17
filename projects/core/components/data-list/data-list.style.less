@@ -61,6 +61,44 @@ tui-data-list {
         box-sizing: border-box;
         margin: var(--tui-data-list-margin) 0;
     }
+
+    [tuiOption] {
+        .button-clear();
+        .transition(background);
+
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        margin: var(--tui-data-list-margin) 0;
+        justify-content: space-between;
+        text-align: left;
+        color: var(--tui-text-primary);
+        border-radius: var(--tui-radius-s);
+        outline: none;
+        cursor: pointer;
+        background-clip: padding-box;
+
+        &:disabled {
+            opacity: var(--tui-disabled-opacity);
+            cursor: default;
+        }
+
+        &:focus-within,
+        &._with-dropdown {
+            background-color: var(--tui-background-neutral-1);
+        }
+
+        &:before {
+            margin-inline-end: 0.5rem;
+        }
+
+        &:after {
+            font-size: 1rem;
+            margin: 0 -0.75rem 0 auto;
+            border-left: 0.5rem solid;
+            border-right: 0.5rem solid;
+        }
+    }
 }
 
 tui-opt-group {
@@ -127,43 +165,5 @@ tui-opt-group {
     &:not([data-label]):before {
         padding: 0;
         margin: 0;
-    }
-}
-
-[tuiOption] {
-    .button-clear();
-    .transition(background);
-
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    margin: var(--tui-data-list-margin) 0;
-    justify-content: space-between;
-    text-align: left;
-    color: var(--tui-text-primary);
-    border-radius: var(--tui-radius-s);
-    outline: none;
-    cursor: pointer;
-    background-clip: padding-box;
-
-    &:disabled {
-        opacity: var(--tui-disabled-opacity);
-        cursor: default;
-    }
-
-    &:focus-within,
-    &._with-dropdown {
-        background-color: var(--tui-background-neutral-1);
-    }
-
-    &:before {
-        margin-inline-end: 0.5rem;
-    }
-
-    &:after {
-        font-size: 1rem;
-        margin: 0 -0.75rem 0 auto;
-        border-left: 0.5rem solid;
-        border-right: 0.5rem solid;
     }
 }
