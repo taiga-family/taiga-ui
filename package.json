@@ -64,8 +64,9 @@
         "*.less": [
             "stylelint --fix"
         ],
-        "*.{js,ts,html, svg,yml,md,less,json}": [
-            "prettier --write"
+        "*.{js,ts,html,svg,yml,md,less,json}": [
+            "prettier --write",
+            "cspell"
         ]
     },
     "browserslist": [
