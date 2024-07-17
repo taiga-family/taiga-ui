@@ -1,7 +1,9 @@
 import {inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {NAVIGATOR, USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiCreateTokenFromFactory, tuiIsIos} from '@taiga-ui/cdk/utils';
+import {fromEvent, map} from 'rxjs';
 
 // https://stackoverflow.com/a/11381730/2706426 http://detectmobilebrowsers.com/
 const firstRegex =
@@ -31,6 +33,14 @@ export const TUI_PLATFORM = tuiCreateTokenFromFactory<'android' | 'ios' | 'web'>
     }
 
     return inject(TUI_IS_ANDROID) ? 'android' : 'web';
+});
+
+export const TUI_IS_TOUCH = tuiCreateTokenFromFactory(() => {
+    const media = inject(WINDOW).matchMedia('(pointer: coarse)');
+
+    return toSignal(fromEvent(media, 'change').pipe(map(() => media.matches)), {
+        initialValue: media.matches,
+    });
 });
 
 /**
