@@ -188,8 +188,6 @@ export class TuiDropdownOpen implements OnChanges {
 
     private focusDropdown(previous: boolean): void {
         if (!this.dropdown) {
-            this.update(true);
-
             return;
         }
 

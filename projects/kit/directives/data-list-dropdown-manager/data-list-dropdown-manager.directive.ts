@@ -148,21 +148,10 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     }
 
     private tryToFocus(index: number): void {
-        const content = this.dropdowns.get(index)?.dropdownBoxRef?.location.nativeElement;
+        const root = this.dropdowns.get(index)?.dropdownBoxRef?.location.nativeElement;
 
-        if (!content) {
-            return;
-        }
-
-        // First item is focus trap
-        const focusTrap = tuiGetClosestFocusable({initial: content, root: content});
-        const item = tuiGetClosestFocusable({
-            initial: focusTrap || content,
-            root: content,
-        });
-
-        if (item) {
-            item.focus();
+        if (root) {
+            tuiGetClosestFocusable({initial: root, root})?.focus();
         }
     }
 }

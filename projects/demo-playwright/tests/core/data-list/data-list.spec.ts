@@ -37,7 +37,6 @@ test.describe('DataList', () => {
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
