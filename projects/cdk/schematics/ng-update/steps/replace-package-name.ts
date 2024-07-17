@@ -15,16 +15,14 @@ export function replacePackageName(
     newPackage: {name: string; version: string},
     tree: Tree,
 ): void {
-    if (!getPackageJsonDependency(tree, oldPackage)) {
-        return;
-    }
-
     const fileSystem = getFileSystem(tree);
 
     replaceText([{from: oldPackage, to: newPackage.name}], ALL_TS_FILES);
-    removePackageJsonDependency(tree, oldPackage);
 
-    addPackageJsonDependency(tree, newPackage);
+    if (getPackageJsonDependency(tree, oldPackage)) {
+        removePackageJsonDependency(tree, oldPackage);
+        addPackageJsonDependency(tree, newPackage);
+    }
 
     fileSystem.commitEdits();
     saveActiveProject();
