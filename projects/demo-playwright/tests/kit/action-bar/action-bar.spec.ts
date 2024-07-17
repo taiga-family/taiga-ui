@@ -10,7 +10,7 @@ test.describe('ActionBar', () => {
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
         const example = page.locator('#base');
-        const showActionBarButton = example.locator('input').first();
+        const showActionBarButton = example.locator('label').first();
 
         await showActionBarButton.click();
         const actionBarExample = page.locator('tui-action-bar');
