@@ -39,7 +39,7 @@ export const DemoRoute = {
     Surface: '/components/surface',
     SwipeActions: '/components/swipe-actions',
     Textfield: '/components/textfield',
-    Navigation: '/experimental/navigation',
+    Navigation: '/components/navigation',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
     ButtonVertical: '/components/button-vertical',

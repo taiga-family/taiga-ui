@@ -226,7 +226,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Navigation,
-        loadComponent: async () => import('../components/experimental/navigation'),
+        loadComponent: async () => import('../components/navigation'),
         title: 'Navigation',
     }),
     route({

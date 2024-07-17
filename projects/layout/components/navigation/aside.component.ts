@@ -39,7 +39,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         '[class._expanded]': 'tuiNavigationAside',
     },
 })
-export class TuiAside {
+export class TuiAsideComponent {
     @Input()
     public tuiNavigationAside = false;
 }

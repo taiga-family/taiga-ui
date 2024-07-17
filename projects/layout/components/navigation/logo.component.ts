@@ -2,13 +2,10 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 
 @Component({
     standalone: true,
-    selector: 'main[tuiNavigationMain]',
+    selector: '[tuiNavigationLogo]',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./main.style.less'],
+    styleUrls: ['./logo.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiNavigationMain: '',
-    },
 })
-export class TuiMain {}
+export class TuiLogoComponent {}

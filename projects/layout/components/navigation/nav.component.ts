@@ -16,4 +16,4 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
         tuiTabsOptionsProvider({size: 'm'}),
     ],
 })
-export class TuiNav {}
+export class TuiNavComponent {}

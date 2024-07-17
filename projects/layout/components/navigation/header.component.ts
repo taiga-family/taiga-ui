@@ -23,4 +23,4 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiTheme: 'dark',
     },
 })
-export class TuiHeader {}
+export class TuiHeaderComponent {}
