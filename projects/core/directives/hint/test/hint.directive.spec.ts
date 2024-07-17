@@ -1,7 +1,13 @@
 import type {TemplateRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {ComponentFixture, flush} from '@angular/core/testing';
-import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {
+    discardPeriodicTasks,
+    fakeAsync,
+    flush,
+    TestBed,
+    tick,
+} from '@angular/core/testing';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
