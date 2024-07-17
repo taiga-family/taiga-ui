@@ -4,13 +4,17 @@
     class="t-item"
     [tuiBlock]="size"
 >
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: item}">
+    <span
+        *polymorpheusOutlet="content as text; context: {$implicit: item}"
+        tuiHintOverflow
+        class="t-text"
+    >
         {{ text }}
-    </ng-container>
+    </span>
     <tui-badge
         *ngIf="badgeHandler(item) as badgeValue"
         appearance="neutral"
-        [size]="badgeSize"
+        [size]="size"
     >
         {{ badgeValue }}
     </tui-badge>
