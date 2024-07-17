@@ -1,5 +1,9 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiTextfieldWithDataListPO,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Input', () => {
@@ -141,6 +145,58 @@ test.describe('Input', () => {
                     `12-input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
                 );
             });
+        });
+    });
+
+    test.describe('ArrowUp/ArrowDown keyboard navigation', () => {
+        test('textfield without datalist', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Input);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#success');
+            const textfield = example.locator('tui-input input:not([type="email"])');
+
+            const value = '123';
+
+            await textfield.scrollIntoViewIfNeeded();
+            await textfield.focus();
+            await textfield.fill(value);
+
+            await expect(textfield).toHaveValue(value);
+            await expect(textfield).toHaveJSProperty('selectionStart', value.length);
+            await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
+
+            await page.keyboard.press('ArrowUp');
+            await expect(textfield).toHaveJSProperty('selectionStart', 0);
+            await expect(textfield).toHaveJSProperty('selectionEnd', 0);
+
+            await page.keyboard.press('ArrowDown');
+            await expect(textfield).toHaveJSProperty('selectionStart', value.length);
+            await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
+        });
+
+        test('textfield with datalist', async ({page}) => {
+            await tuiGoto(page, DemoRoute.Input);
+
+            const example = new TuiDocumentationPagePO(page).getExample('#datalist');
+            const {textfield, dropdown} = new TuiTextfieldWithDataListPO(
+                example.locator('tui-input'),
+            );
+
+            await textfield.scrollIntoViewIfNeeded();
+            await textfield.focus();
+            await textfield.fill('a');
+            await textfield.blur();
+            await expect(dropdown).not.toBeAttached();
+
+            await textfield.focus();
+            await expect(textfield).toHaveJSProperty('selectionStart', 1);
+            await expect(textfield).toHaveJSProperty('selectionEnd', 1);
+            await expect(dropdown).not.toBeAttached();
+
+            await page.keyboard.press('ArrowUp');
+            await expect(textfield).toHaveJSProperty('selectionStart', 1);
+            await expect(textfield).toHaveJSProperty('selectionEnd', 1);
+            await expect(dropdown).toBeAttached();
         });
     });
 });

@@ -116,7 +116,11 @@ export class TuiDropdownOpen implements OnChanges {
     @HostListener('keydown.arrowDown', ['$event', 'false'])
     @HostListener('keydown.arrowUp', ['$event', 'true'])
     protected onArrow(event: KeyboardEvent, up: boolean): void {
-        if (!tuiIsElement(event.target) || !this.host.contains(event.target)) {
+        if (
+            !tuiIsElement(event.target) ||
+            !this.host.contains(event.target) ||
+            !this.tuiDropdownEnabled
+        ) {
             return;
         }
 
