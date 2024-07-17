@@ -1,13 +1,11 @@
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
-
 import {TuiAsideComponent} from './aside.component';
 import {TuiAsideGroupComponent} from './aside-group.component';
+import {TuiAsideItemDirective} from './aside-item.directive';
 import {TuiHeaderComponent} from './header.component';
 import {TuiHintAside} from './hint-aside.directive';
 import {TuiLogoComponent} from './logo.component';
 import {TuiMainComponent} from './main.component';
 import {TuiNavComponent} from './nav.component';
-import {TuiOptionDirective} from './option.directive';
 
 export const TuiNavigation = [
     TuiHeaderComponent,
@@ -15,8 +13,7 @@ export const TuiNavigation = [
     TuiMainComponent,
     TuiAsideComponent,
     TuiAsideGroupComponent,
+    TuiAsideItemDirective,
     TuiNavComponent,
-    TuiOptionDirective,
     TuiHintAside,
-    TuiDataList,
 ] as const;

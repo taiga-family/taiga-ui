@@ -21,7 +21,7 @@
         <span tuiFade>A very very long project</span>
         <ng-template #products>
             <tui-data-list size="s">
-                <button tuiOption>
+                <button tuiAsideItem>
                     A very very long project
                     <tui-icon
                         icon="@tui.check"
@@ -29,7 +29,7 @@
                         [style.margin-left.rem]="0.5"
                     />
                 </button>
-                <button tuiOption>Something else</button>
+                <button tuiAsideItem>Something else</button>
             </tui-data-list>
         </ng-template>
     </button>
@@ -64,20 +64,20 @@
         <header>
             <button
                 iconStart="@tui.home"
-                tuiOption
+                tuiAsideItem
             >
                 <span tuiFade>A very very long product name</span>
             </button>
         </header>
         <button
             iconStart="@tui.search"
-            tuiOption
+            tuiAsideItem
         >
             Search
         </button>
         <a
             iconStart="@tui.users"
-            tuiOption
+            tuiAsideItem
             [routerLink]="routes.Navigation"
         >
             Groups
@@ -85,39 +85,39 @@
         <tui-aside-group>
             <button
                 iconStart="@tui.settings"
+                tuiAsideItem
                 tuiChevron
-                tuiOption
             >
                 Settings
                 <ng-template>
-                    <button tuiOption>Account</button>
-                    <button tuiOption>Notifications</button>
-                    <button tuiOption>Privacy</button>
+                    <button tuiAsideItem>Account</button>
+                    <button tuiAsideItem>Notifications</button>
+                    <button tuiAsideItem>Privacy</button>
                 </ng-template>
             </button>
         </tui-aside-group>
         <button
             iconStart="@tui.heart"
-            tuiOption
+            tuiAsideItem
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
         <hr />
         <button
             iconStart="@tui.plus"
-            tuiOption
+            tuiAsideItem
         >
             Add
         </button>
         <footer>
             <button
                 iconStart="@tui.star"
-                tuiOption
+                tuiAsideItem
             >
                 Favorites
             </button>
             <button
-                tuiOption
+                tuiAsideItem
                 [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
                 (click)="expanded = !expanded"
             >

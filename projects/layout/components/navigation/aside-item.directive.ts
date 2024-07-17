@@ -8,9 +8,10 @@ import {TuiHintAside} from './hint-aside.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiOption]',
+    selector: '[tuiAsideItem]',
     host: {
         tuiButton: '',
+        tuiOption: '',
         '[class._active]': 'active()',
     },
     hostDirectives: [TuiHintAside, TuiButton, RouterLinkActive],
@@ -24,6 +25,6 @@ import {TuiHintAside} from './hint-aside.directive';
         },
     ],
 })
-export class TuiOptionDirective {
+export class TuiAsideItemDirective {
     protected readonly active = toSignal(inject(RouterLinkActive).isActiveChange);
 }

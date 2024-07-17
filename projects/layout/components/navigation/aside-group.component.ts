@@ -28,7 +28,6 @@ import {TuiAsideComponent} from './aside.component';
     standalone: true,
     selector: 'tui-aside-group',
     templateUrl: './aside-group.template.html',
-    styleUrls: ['aside-group.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [TuiExpand, TuiDataList, PolymorpheusOutlet],
