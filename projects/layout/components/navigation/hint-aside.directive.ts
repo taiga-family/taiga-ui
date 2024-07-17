@@ -3,7 +3,7 @@ import {Directive, inject} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 
-import {TuiAside} from './aside.component';
+import {TuiAsideComponent} from './aside.component';
 
 @Directive({
     standalone: true,
@@ -13,7 +13,7 @@ import {TuiAside} from './aside.component';
 })
 export class TuiHintAside implements DoCheck {
     private readonly el = tuiInjectElement();
-    private readonly aside = inject(TuiAside);
+    private readonly aside = inject(TuiAsideComponent);
     private readonly hint = inject(TuiHintDirective);
 
     // TODO: switch to `tuiDirectiveBinding` when tuiNavigationAside is switched to signal

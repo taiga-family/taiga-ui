@@ -910,8 +910,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiNavigation',
-            moduleSpecifier: '@taiga-ui/experimental',
+            moduleSpecifier: '@taiga-ui/layout',
             spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiSegmentedModule',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'TuiSegmented',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {

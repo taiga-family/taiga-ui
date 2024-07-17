@@ -1,13 +1,13 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiSwipeActionsModule} from '@taiga-ui/experimental';
+import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiSwipeActionsModule,
+    TuiSwipeActions,
   ],
 })
 export class Example {}

@@ -4,4 +4,4 @@ export * from './hint-aside.directive';
 export * from './logo.component';
 export * from './main.component';
 export * from './nav.component';
-export * from './navigation.module';
+export * from './navigation';
