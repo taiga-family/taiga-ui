@@ -12,6 +12,6 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "devDependencies": {
-        "lucide-static": "0.399.0"
+        "lucide-static": "0.408.0"
     }
 }
