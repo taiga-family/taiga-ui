@@ -51,7 +51,6 @@ export const TUI_USED_ICONS = [
     '@tui.visa',
     '@tui.maestro',
     '@tui.mir',
-    '@tui.gitlab',
     '@tui.message-square',
     '@tui.info',
     '@tui.electron-mono',
