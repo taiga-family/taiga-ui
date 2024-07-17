@@ -14,7 +14,14 @@ import {TuiHintAside} from './hint-aside.directive';
         tuiOption: '',
         '[class._active]': 'active()',
     },
-    hostDirectives: [TuiHintAside, TuiButton, RouterLinkActive],
+    hostDirectives: [
+        TuiHintAside,
+        TuiButton,
+        {
+            directive: RouterLinkActive,
+            inputs: ['routerLinkActiveOptions'],
+        },
+    ],
     providers: [
         {
             provide: TUI_ICON_END,
