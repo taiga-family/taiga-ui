@@ -34,17 +34,17 @@ const COMPONENT_AFTER = `import { TuiDialog } from "@taiga-ui/core";
 export class Test {
 }`;
 
-const MODULE_BEFORE = `import { TuiDialogModule } from "@taiga-ui/core";
+const MODULE_BEFORE = `import { TuiTabBarModule } from "@taiga-ui/addon-mobile";
 
 @NgModule({
-    imports: [TuiDialogModule],
+    imports: [TuiTabBarModule],
 })
 export class Test {
 }`;
 
-const MODULE_AFTER = `import { TuiDialog } from "@taiga-ui/core";
+const MODULE_AFTER = `import { TuiTabBar } from "@taiga-ui/addon-mobile";
 @NgModule({
-    imports: [TuiDialog],
+    imports: [...TuiTabBar],
 })
 export class Test {
 }`;
