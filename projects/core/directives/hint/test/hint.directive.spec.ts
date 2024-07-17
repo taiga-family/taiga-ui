@@ -1,6 +1,6 @@
 import type {TemplateRef} from '@angular/core';
 import {Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
+import {ComponentFixture, flush} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';
 
@@ -84,6 +84,7 @@ describe('Hint', () => {
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
+            flush();
 
             await fixture.whenStable();
 
