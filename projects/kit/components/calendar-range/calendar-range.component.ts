@@ -43,13 +43,13 @@ import type {TuiDayRangePeriod} from './day-range-period';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarRange implements OnChanges {
-    public selectedActivePeriod: TuiDayRangePeriod | null = null;
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
+    public selectedActivePeriod: TuiDayRangePeriod | null = null;
 
     @Input()
     public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
