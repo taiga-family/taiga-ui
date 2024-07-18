@@ -1,10 +1,11 @@
-import {effect, signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    effect,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';

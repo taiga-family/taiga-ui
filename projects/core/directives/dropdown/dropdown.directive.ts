@@ -1,16 +1,11 @@
-import {
-    AfterViewChecked,
-    ComponentRef,
-    OnChanges,
-    OnDestroy,
-    signal,
-} from '@angular/core';
+import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
     inject,
     INJECTOR,
     Input,
+    signal,
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
