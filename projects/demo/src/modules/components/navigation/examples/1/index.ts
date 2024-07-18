@@ -18,6 +18,7 @@ import {
     TuiBadge,
     TuiBadgeNotification,
     TuiChevron,
+    TuiDataListDropdownManager,
     TuiFade,
     TuiTabs,
 } from '@taiga-ui/kit';
@@ -45,6 +46,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiHeader,
         TuiSurface,
         TuiTitle,
+        TuiDataListDropdownManager,
     ],
     templateUrl: './index.html',
     encapsulation,

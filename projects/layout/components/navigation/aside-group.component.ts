@@ -10,8 +10,12 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TUI_DATA_LIST_HOST,
+    TuiDataList,
+    TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {
     TuiDropdownDirective,
@@ -31,6 +35,7 @@ import {TuiAsideComponent} from './aside.component';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [TuiExpand, TuiDataList, PolymorpheusOutlet],
+    providers: [tuiProvide(TUI_DATA_LIST_HOST, TuiAsideGroupComponent)],
     hostDirectives: [
         TuiDropdownDirective,
         TuiDropdownHover,
@@ -38,7 +43,7 @@ import {TuiAsideComponent} from './aside.component';
         TuiDropdownOpen,
     ],
 })
-export class TuiAsideGroupComponent {
+export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     @ViewChild('datalist', {static: true})
     private readonly datalist: PolymorpheusContent;
 
@@ -58,6 +63,8 @@ export class TuiAsideGroupComponent {
         computed(() => (this.aside.expanded() ? null : this.datalist)),
     );
 
+    public readonly size = 's';
+
     @HostListener('click')
     protected onClick() {
         this.open.set(!this.open() && this.aside.expanded());
@@ -66,4 +73,6 @@ export class TuiAsideGroupComponent {
             this.chevron.tuiChevron = this.open();
         }
     }
+
+    public handleOption(): void {}
 }

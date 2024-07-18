@@ -32,7 +32,11 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({size: 's', appearance: 'flat'}),
-        tuiDropdownOptionsProvider({appearance: 'dropdown-navigation', align: 'right'}),
+        tuiDropdownOptionsProvider({
+            appearance: 'dropdown-navigation',
+            align: 'right',
+            offset: 12,
+        }),
     ],
     host: {
         tuiNavigationAside: '',

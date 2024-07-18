@@ -102,6 +102,51 @@
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
+        <button
+            iconEnd="@tui.chevron-right"
+            iconStart="@tui.ellipsis"
+            tuiAsideItem
+            tuiDropdownHover
+            tuiDropdownOpen
+            [tuiDropdown]="more"
+        >
+            More
+            <ng-template
+                #more
+                let-close
+            >
+                <tui-data-list tuiDataListDropdownManager>
+                    <button
+                        iconStart="@tui.pencil"
+                        tuiAsideItem
+                        tuiOption
+                    >
+                        Write
+                    </button>
+                    <button
+                        iconEnd="@tui.chevron-right"
+                        iconStart="@tui.book"
+                        tuiAsideItem
+                        tuiOption
+                        [tuiDropdown]="submenu"
+                    >
+                        Categories
+                        <ng-template #submenu>
+                            <tui-data-list>
+                                <button
+                                    tuiAsideItem
+                                    (click)="close()"
+                                >
+                                    Fiction
+                                </button>
+                                <button tuiAsideItem>Non-Fiction</button>
+                                <button tuiAsideItem>Children</button>
+                            </tui-data-list>
+                        </ng-template>
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </button>
         <hr />
         <button
             iconStart="@tui.plus"

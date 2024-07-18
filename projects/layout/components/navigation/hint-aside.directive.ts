@@ -2,8 +2,8 @@ import {computed} from '@angular/core';
 import {Directive, inject} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
-import {TuiAsideGroupComponent} from '@taiga-ui/layout/components';
 
 import {TuiAsideComponent} from './aside.component';
 
@@ -16,13 +16,13 @@ import {TuiAsideComponent} from './aside.component';
 export class TuiHintAside {
     private readonly el = tuiInjectElement();
     private readonly aside = inject(TuiAsideComponent);
-    private readonly group = inject(TuiAsideGroupComponent, {optional: true});
+    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
     protected readonly binding = tuiDirectiveBinding(
         TuiHintDirective,
         'tuiHint',
         computed(() =>
-            this.aside.expanded() || this.group ? '' : this.el.textContent?.trim(),
+            this.aside.expanded() || this.dropdown ? '' : this.el.textContent?.trim(),
         ),
     );
 }

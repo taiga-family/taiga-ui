@@ -3,10 +3,7 @@
     <ng-container *polymorpheusOutlet="template" />
 </tui-expand>
 <ng-template #datalist>
-    <tui-data-list
-        size="s"
-        class="tui-aside-group-list"
-    >
+    <tui-data-list>
         <tui-opt-group [label]="host.textContent">
             <ng-container *polymorpheusOutlet="template" />
         </tui-opt-group>
