@@ -4,6 +4,7 @@ import {RouterLinkActive} from '@angular/router';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_OPTIONS,
+    TuiDropdownDirective,
     TuiDropdownManual,
     TuiDropdownOptions,
     TuiDropdownPositionSided,
@@ -57,10 +58,16 @@ export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
 function provideIcon(): FactoryProvider {
     return {
         provide: TUI_ICON_END,
-        useFactory: (): string =>
-            inject(TuiDataListComponent, {optional: true})
-                ? inject(TUI_COMMON_ICONS).check
-                : '',
+        useFactory: (): string => {
+            const icons = inject(TUI_COMMON_ICONS);
+            const check = inject(TuiDataListComponent, {optional: true})
+                ? icons.check
+                : '';
+
+            return inject(TuiDropdownDirective, {self: true, optional: true})
+                ? icons.more
+                : check;
+        },
     };
 }
 
