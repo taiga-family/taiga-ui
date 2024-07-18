@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
+import {maskitoRemoveOnBlurPlugin} from '@maskito/kit';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
@@ -194,18 +195,16 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             countryIsoCode,
             metadata,
         });
-        /**
-         * TODO: temporary workaround for @maskito/phone@2 (eliminate after update to @maskito/phone@3)
-         * https://github.com/taiga-family/maskito/issues/1134
-         * ___
-         * We should manage focus event by itself (not built-in maskito focus plugin) because there is race condition
-         * (after selection country from dropdown and before mask recalculation)
-         */
-        const [caretPlugin, blurPlugin] = plugins;
 
         return {
             ...restOptions,
-            plugins: [caretPlugin, blurPlugin, maskitoInitialCalibrationPlugin()],
+            plugins: [
+                ...plugins,
+                maskitoRemoveOnBlurPlugin(
+                    `${CHAR_PLUS}${getCountryCallingCode(countryIsoCode, metadata)} `,
+                ),
+                maskitoInitialCalibrationPlugin(),
+            ],
         };
     }
 }
