@@ -1,0 +1,38 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Appearance
+ * @selector [tuiAppearance]
+ *
+ * @description
+ * Base directive to apply different styles to interactive elements
+ *
+ * @attributes
+ * data-appearance — current appearance
+ * data-state — manual interactive state override ('active' | 'disabled' | 'hover')
+ * data-focus — manual :focus-visible state override
+ * data-mode — arbitrary manual mode like 'checked', 'invalid' or 'readonly'
+ *
+ * @example
+ * <button tuiAppearance data-appearance='primary'></button>
+ *
+ * @see-also
+ * Button
+ */
+[tuiAppearance] {
+    .transition(~'color, background, opacity, box-shadow, border');
+
+    position: relative;
+    appearance: none;
+    outline: 0.125rem solid transparent;
+    outline-offset: -0.125rem;
+
+    .appearance-focus({
+        outline-color: var(--tui-border-focus);
+    });
+
+    .appearance-disabled({
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+    });
+}

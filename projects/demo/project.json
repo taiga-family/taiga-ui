@@ -30,6 +30,7 @@
                 "index": "{projectRoot}/src/index.html",
                 "main": "{projectRoot}/src/main.ts",
                 "polyfills": "{projectRoot}/src/polyfills.ts",
+                "inlineStyleLanguage": "less",
                 "tsConfig": "projects/{projectName}/tsconfig.app.json",
                 "assets": [
                     {

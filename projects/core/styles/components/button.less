@@ -1,5 +1,21 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
+/**
+ * @name Button
+ * @selector [tuiButton], [tuiIconButton]
+ *
+ * @description
+ * Plain button design, applicable to both links and buttons
+ *
+ * @attributes
+ * data-size — size ('xs' | 's' | 'm' | 'l')
+ *
+ * @example
+ * <button tuiButton>Click me</button>
+ *
+ * @see-also
+ * Icons, Appearance, Link
+ */
 [tuiButton],
 [tuiIconButton] {
     --t-gap: 0.125rem;
@@ -107,12 +123,12 @@
     width: var(--t-size);
     font-size: 0 !important;
     padding: 0;
-}
 
-[tuiIconButton][data-size='l']:after {
-    margin: 0;
-}
+    &[data-size='l']:after {
+        margin: 0;
+    }
 
-[tuiIconButton]._icon-start:after {
-    display: none;
+    &._icon-start:after {
+        display: none;
+    }
 }
