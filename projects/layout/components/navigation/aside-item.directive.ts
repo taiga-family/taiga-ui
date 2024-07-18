@@ -53,8 +53,6 @@ export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
     protected readonly active = toSignal(inject(RouterLinkActive).isActiveChange);
 
     public readonly size = 's';
-
-    public handleOption(): void {}
 }
 
 function provideIcon(): FactoryProvider {

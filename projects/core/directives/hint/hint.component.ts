@@ -127,7 +127,7 @@ export class TuiHintComponent<C = any> {
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
 
-        if (rect === EMPTY_CLIENT_RECT) {
+        if (rect === EMPTY_CLIENT_RECT || !height || !width) {
             return;
         }
 
@@ -140,8 +140,8 @@ export class TuiHintComponent<C = any> {
         this.apply(
             tuiPx(Math.round(top)),
             tuiPx(Math.round(safeLeft)),
-            tuiPx(Math.round(tuiClamp(beakTop, 0.5, height - 1))),
-            tuiPx(Math.round(tuiClamp(beakLeft, 0.5, width - 1))),
+            tuiPx(Math.round(tuiClamp(beakTop, 1, height - 1))),
+            tuiPx(Math.round(tuiClamp(beakLeft, 1, width - 1))),
         );
     }
 }

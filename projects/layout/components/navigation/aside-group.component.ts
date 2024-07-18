@@ -66,13 +66,11 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     public readonly size = 's';
 
     @HostListener('click')
-    protected onClick() {
+    protected onClick(): void {
         this.open.set(!this.open() && this.aside.expanded());
 
         if (this.chevron) {
             this.chevron.tuiChevron = this.open();
         }
     }
-
-    public handleOption(): void {}
 }

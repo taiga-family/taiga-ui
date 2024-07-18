@@ -76,7 +76,7 @@ export class TuiOption<T = unknown> implements OnDestroy {
     }
 
     protected onClick(): void {
-        if (this.host && this.value !== undefined) {
+        if (this.host?.handleOption && this.value !== undefined) {
             this.host.handleOption(this.value);
         }
     }
