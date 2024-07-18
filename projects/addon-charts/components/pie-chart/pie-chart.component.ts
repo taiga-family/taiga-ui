@@ -132,7 +132,7 @@ export class TuiPieChart {
     }
 
     private getDeg(value: number): number {
-        return this.getSum(this.value) > 0 ? 360 * (value / this.getSum(this.value)) : 0;
+        return 360 * (value / this.getSum(this.value)) || 0;
     }
 
     private updateActiveItemIndex(index: number): void {
