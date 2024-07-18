@@ -21,7 +21,7 @@
         <span tuiFade>A very very long project</span>
         <ng-template #products>
             <tui-data-list size="s">
-                <button tuiAsideItem>
+                <button tuiOption>
                     A very very long project
                     <tui-icon
                         icon="@tui.check"
@@ -29,7 +29,7 @@
                         [style.margin-left.rem]="0.5"
                     />
                 </button>
-                <button tuiAsideItem>Something else</button>
+                <button tuiOption>Something else</button>
             </tui-data-list>
         </ng-template>
     </button>
@@ -124,7 +124,7 @@
                         Write
                     </button>
                     <button
-                        iconStart="@tui.book"
+                        iconStart="@tui.pie-chart"
                         tuiAsideItem
                         tuiOption
                         [tuiDropdown]="submenu"

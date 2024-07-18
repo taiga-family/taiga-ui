@@ -36,8 +36,6 @@ class TuiChevronStyles {}
     host: {tuiChevron: ''},
 })
 export class TuiChevron {
-    // TODO: refactor to signal inputs after Angular update
-    private readonly chevron = signal(false);
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
@@ -45,12 +43,15 @@ export class TuiChevron {
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',
-            !!this.dropdown?.ref() || this.chevron(),
+            this.chevron() || (this.chevron() === '' && !!this.dropdown?.ref()),
         ),
     );
 
+    // TODO: refactor to signal inputs after Angular update
+    public readonly chevron = signal<boolean | ''>('');
+
     @Input()
     public set tuiChevron(chevron: boolean | '') {
-        this.chevron.set(!!chevron);
+        this.chevron.set(chevron);
     }
 }

@@ -3,9 +3,6 @@
 aside[tuiNavigationAside] {
     .transition(width);
 
-    --tui-text-action: var(--tui-text-primary);
-    --tui-text-action-hover: var(--tui-text-primary);
-
     position: sticky;
     top: 3rem;
     display: flex;
@@ -68,10 +65,9 @@ aside[tuiNavigationAside] {
     justify-content: flex-start;
     gap: 0.625rem;
     margin-bottom: 0.25rem;
+    color: var(--tui-text-primary) !important;
 
     &:after {
-        .transition(transform);
-
         border: none !important;
         margin-left: auto !important;
         color: var(--tui-text-tertiary);
@@ -84,11 +80,6 @@ aside[tuiNavigationAside] {
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
-    --tui-text-action: var(--tui-text-primary);
-    --tui-text-action-hover: var(--tui-text-primary);
-    --tui-text-primary: #fff;
-    --tui-background-neutral-1: rgba(255, 255, 255, 0.16);
-
     border: none;
     background: #323232;
     background: color-mix(in srgb, var(--tui-theme-color, #000) 80%, #fff);
