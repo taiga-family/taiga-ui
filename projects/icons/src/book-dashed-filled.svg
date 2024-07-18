@@ -1,4 +1,4 @@
-<!-- @license lucide-static v0.399.0 - ISC -->
+<!-- @license lucide-static v0.408.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     class="lucide lucide-book-dashed"
@@ -11,15 +11,15 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M20 22h-2" />
-    <path vector-effect="non-scaling-stroke" d="M20 15v2h-2" />
-    <path vector-effect="non-scaling-stroke" d="M4 19.5V15" />
-    <path vector-effect="non-scaling-stroke" d="M20 8v3" />
-    <path vector-effect="non-scaling-stroke" d="M18 2h2v2" />
-    <path vector-effect="non-scaling-stroke" d="M4 11V9" />
-    <path vector-effect="non-scaling-stroke" d="M12 2h2" />
-    <path vector-effect="non-scaling-stroke" d="M12 22h2" />
     <path vector-effect="non-scaling-stroke" d="M12 17h2" />
-    <path vector-effect="non-scaling-stroke" d="M8 22H6.5a2.5 2.5 0 0 1 0-5H8" />
+    <path vector-effect="non-scaling-stroke" d="M12 22h2" />
+    <path vector-effect="non-scaling-stroke" d="M12 2h2" />
+    <path vector-effect="non-scaling-stroke" d="M18 22h1a1 1 0 0 0 1-1" />
+    <path vector-effect="non-scaling-stroke" d="M18 2h1a1 1 0 0 1 1 1v1" />
+    <path vector-effect="non-scaling-stroke" d="M20 15v2h-2" />
+    <path vector-effect="non-scaling-stroke" d="M20 8v3" />
+    <path vector-effect="non-scaling-stroke" d="M4 11V9" />
+    <path vector-effect="non-scaling-stroke" d="M4 19.5V15" />
     <path vector-effect="non-scaling-stroke" d="M4 5v-.5A2.5 2.5 0 0 1 6.5 2H8" />
+    <path vector-effect="non-scaling-stroke" d="M8 22H6.5a1 1 0 0 1 0-5H8" />
 </svg>
