@@ -1,6 +1,6 @@
 import {Directive, FactoryProvider, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_OPTIONS,
@@ -26,6 +26,7 @@ import {TuiHintAside} from './hint-aside.directive';
     host: {
         tuiButton: '',
         tuiOption: '',
+        '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd',
     },
@@ -48,6 +49,7 @@ import {TuiHintAside} from './hint-aside.directive';
 export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
     protected readonly icon = inject(TUI_COMMON_ICONS).check;
     protected readonly icons = inject(TuiIcons);
+    protected readonly link = inject(RouterLink, {self: true, optional: true});
     protected readonly active = toSignal(inject(RouterLinkActive).isActiveChange);
 
     public readonly size = 's';
@@ -59,14 +61,16 @@ function provideIcon(): FactoryProvider {
     return {
         provide: TUI_ICON_END,
         useFactory: (): string => {
-            const icons = inject(TUI_COMMON_ICONS);
-            const check = inject(TuiDataListComponent, {optional: true})
-                ? icons.check
-                : '';
+            const {check, more} = inject(TUI_COMMON_ICONS);
+            const active =
+                inject(TuiDataListComponent, {optional: true}) &&
+                inject(RouterLink, {self: true, optional: true})
+                    ? check
+                    : '';
 
             return inject(TuiDropdownDirective, {self: true, optional: true})
-                ? icons.more
-                : check;
+                ? more
+                : active;
         },
     };
 }
