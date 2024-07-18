@@ -1,4 +1,4 @@
-<!-- @license lucide-static v0.399.0 - ISC -->
+<!-- @license lucide-static v0.408.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     class="lucide lucide-book-key"
@@ -11,9 +11,9 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H14" />
-    <path vector-effect="non-scaling-stroke" d="M20 8v14H6.5a2.5 2.5 0 0 1 0-5H20" />
-    <circle vector-effect="non-scaling-stroke" cx="14" cy="8" r="2" />
-    <path vector-effect="non-scaling-stroke" d="m20 2-4.5 4.5" />
     <path vector-effect="non-scaling-stroke" d="m19 3 1 1" />
+    <path vector-effect="non-scaling-stroke" d="m20 2-4.5 4.5" />
+    <path vector-effect="non-scaling-stroke" d="M20 8v13a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+    <path vector-effect="non-scaling-stroke" d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H14" />
+    <circle vector-effect="non-scaling-stroke" cx="14" cy="8" r="2" />
 </svg>
