@@ -9,11 +9,11 @@ import {
     TUI_DATA_LIST_HOST,
     TuiDataListComponent,
 } from '@taiga-ui/core/components/data-list';
-import type {
+import type {TuiDropdownOptions} from '@taiga-ui/core/directives/dropdown';
+import {
     TUI_DROPDOWN_OPTIONS,
     TuiDropdownDirective,
     TuiDropdownManual,
-    TuiDropdownOptions,
     TuiDropdownPositionSided,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
