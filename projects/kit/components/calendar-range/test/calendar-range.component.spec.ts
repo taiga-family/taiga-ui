@@ -224,6 +224,13 @@ describe('rangeCalendarComponent', () => {
             expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
             expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
         });
+
+        it('should update selectedActivePeriod after onItemSelect', () => {
+            component['onItemSelect'](component.items[1]);
+            expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
+                'Today',
+            );
+        });
     });
 
     function getCalendar(): DebugElement | null {
