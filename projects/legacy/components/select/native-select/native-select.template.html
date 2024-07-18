@@ -4,6 +4,15 @@
     [itemContent]="stringify | tuiStringifyContent"
     [items]="items"
 />
+<ng-container *ngIf="control.control?.valueChanges | async" />
+<option
+    *ngIf="emptyOption"
+    disabled
+    selected
+    value=""
+>
+    {{ placeholder }}
+</option>
 <option
     *ngFor="let option of items; let index = index"
     [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"

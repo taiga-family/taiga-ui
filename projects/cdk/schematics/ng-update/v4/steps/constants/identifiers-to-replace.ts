@@ -135,11 +135,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiDataListModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiDataList', moduleSpecifier: '@taiga-ui/core'},
+        to: {
+            name: 'TuiDataList',
+            moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiDataListWrapperModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiDataListWrapper', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiDataListWrapper',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiErrorModule', moduleSpecifier: '@taiga-ui/core'},
@@ -147,7 +155,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiExpandModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiExpand', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiExpand', moduleSpecifier: '@taiga-ui/core', spreadInModule: true},
     },
     {
         from: {name: 'TuiLoaderModule', moduleSpecifier: '@taiga-ui/core'},
@@ -155,7 +163,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiAccordionModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiAccordion', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiAccordion',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiBreadcrumbsModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -174,7 +186,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiCarousel', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCarousel', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -189,7 +201,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFilesModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiFiles', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFiles', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiFilterModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -209,7 +221,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiItemsWithMoreModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiItemsWithMore', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiItemsWithMore',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiLineClampModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -221,19 +237,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiSliderModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiSlider', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSlider', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiTilesModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiTiles', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTiles', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiStepperModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiStepper', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStepper', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiTreeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {
@@ -375,7 +391,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiRadioModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiRadio', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRadio', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiAvatarModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -411,7 +427,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiBadgedContent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiBadgedContent',
+            moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -516,7 +536,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiDropdown', moduleSpecifier: '@taiga-ui/core'},
+        to: {
+            name: 'TuiDropdown',
+            moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
+        },
     },
     {
         from: {name: 'TuiDroppableModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -630,7 +654,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiTabsModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiTabs', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTabs', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
@@ -1094,6 +1118,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiTableFilters',
             moduleSpecifier: '@taiga-ui/addon-table',
+            spreadInModule: true,
         },
     },
     {
@@ -1144,6 +1169,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiTable',
             moduleSpecifier: '@taiga-ui/addon-table',
+            spreadInModule: true,
         },
     },
     {
@@ -1194,6 +1220,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiAppBar',
             moduleSpecifier: '@taiga-ui/layout',
+            spreadInModule: true,
         },
     },
     {
@@ -1224,6 +1251,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiPreview',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1234,6 +1262,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiBlockStatus',
             moduleSpecifier: '@taiga-ui/layout',
+            spreadInModule: true,
         },
     },
     {
@@ -1244,6 +1273,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiTabBar',
             moduleSpecifier: '@taiga-ui/addon-mobile',
+            spreadInModule: true,
         },
     },
     {
@@ -1254,6 +1284,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiSidebar',
             moduleSpecifier: '@taiga-ui/addon-mobile',
+            spreadInModule: true,
         },
     },
     {
@@ -1264,6 +1295,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiProgress',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
@@ -1394,6 +1426,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiHint',
             moduleSpecifier: '@taiga-ui/core',
+            spreadInModule: true,
         },
     },
     {
@@ -1404,6 +1437,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiAddonDoc',
             moduleSpecifier: '@taiga-ui/addon-doc',
+            spreadInModule: true,
         },
     },
     {
