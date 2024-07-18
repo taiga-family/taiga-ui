@@ -1,6 +1,7 @@
-import {computed, OnChanges} from '@angular/core';
+import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectorRef,
+    computed,
     ContentChild,
     Directive,
     ElementRef,
