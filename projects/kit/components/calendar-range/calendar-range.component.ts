@@ -48,7 +48,6 @@ export class TuiCalendarRange implements OnChanges {
     protected readonly cdr = inject(ChangeDetectorRef);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
-    protected selectedActivePeriod: TuiDayRangePeriod | null = null;
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
 
     @Input()
@@ -80,6 +79,8 @@ export class TuiCalendarRange implements OnChanges {
 
     @Output()
     public readonly valueChange = new EventEmitter<TuiDayRange | null>();
+
+    public selectedActivePeriod: TuiDayRangePeriod | null = null;
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
