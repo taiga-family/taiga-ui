@@ -1,7 +1,7 @@
 import {inject} from '@angular/core';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
-import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 

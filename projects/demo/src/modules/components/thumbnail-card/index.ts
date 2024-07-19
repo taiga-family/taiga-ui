@@ -3,7 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TUI_TRUE_HANDLER, TuiBooleanHandler} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -38,8 +39,10 @@ export default class Example {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[1];
 
-    protected readonly monoHandlerVariants: readonly TuiBooleanHandler<TuiPaymentSystem>[] =
-        [(ps) => ps === 'mir' || ps === 'visa' || ps === 'electron', TUI_TRUE_HANDLER];
+    protected readonly monoHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiPaymentSystem>
+    > = [(ps) => ps === 'mir' || ps === 'visa' || ps === 'electron', TUI_TRUE_HANDLER];
+
     protected monoHandler = this.monoHandlerVariants[0];
 
     protected paymentSystem: TuiPaymentSystem | null = null;

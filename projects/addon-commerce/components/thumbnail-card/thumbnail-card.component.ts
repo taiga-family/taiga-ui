@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {TuiBooleanHandler} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
