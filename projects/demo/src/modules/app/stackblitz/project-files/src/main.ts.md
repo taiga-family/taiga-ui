@@ -22,6 +22,7 @@ bootstrapApplication(Root, {
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!
      */
+    // TODO: remove `next/` after 4.0 release
     tuiAssetsPathProvider('https://taiga-ui.dev/next/assets/taiga-ui/icons'),
   ],
 });
