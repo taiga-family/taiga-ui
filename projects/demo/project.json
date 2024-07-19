@@ -190,6 +190,7 @@
                 "outputPath": "dist/{projectName}/server",
                 "main": "{projectRoot}/server.ts",
                 "tsConfig": "{projectRoot}/tsconfig.server.json",
+                "inlineStyleLanguage": "less",
                 "sourceMap": true,
                 "optimization": false
             },
