@@ -1,8 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 aside[tuiNavigationAside] {
-    --tui-text-action: var(--tui-text-primary);
-    --tui-text-action-hover: var(--tui-text-primary);
+    .transition(width);
 
     position: sticky;
     top: 3rem;
@@ -22,11 +21,6 @@ aside[tuiNavigationAside] {
         }
     }
 
-    /* stylelint-disable-next-line */
-    a[tuiButton].active {
-        background: var(--tui-background-neutral-1-hover);
-    }
-
     .t-nav-scrollbar {
         margin: 0 -0.25rem;
     }
@@ -39,26 +33,12 @@ aside[tuiNavigationAside] {
         overflow: auto;
     }
 
-    [tuiButton] {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 0.625rem;
-        margin-bottom: 0.25rem;
-
-        &:after {
-            .transition(transform);
-
-            margin-left: auto;
-            color: var(--tui-text-tertiary);
-        }
-    }
-
-    tui-expand [tuiButton] {
+    tui-expand [tuiAsideItem] {
         padding-inline-start: 2rem;
     }
 
     hr {
-        background: var(--tui-background-neutral-1);
+        background: var(--tui-border-normal);
         height: 1px;
         margin: 0 0 0.25rem;
         border: none;
@@ -66,7 +46,7 @@ aside[tuiNavigationAside] {
 
     header {
         padding-bottom: 0.25rem;
-        box-shadow: inset 0 -1px var(--tui-background-neutral-1);
+        box-shadow: inset 0 -1px var(--tui-border-normal);
         margin-bottom: 1rem;
     }
 
@@ -78,14 +58,45 @@ aside[tuiNavigationAside] {
     + main[tuiNavigationMain] {
         max-width: calc(100% - 3rem);
     }
-    .transition(width);
+}
+
+[tuiAsideItem] {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.625rem;
+    margin-bottom: 0.25rem;
+    color: var(--tui-text-primary) !important;
+
+    &:after {
+        border: none !important;
+        margin-left: auto !important;
+        color: var(--tui-text-tertiary);
+    }
+
+    &._chevron-rotated,
+    &._active {
+        background: var(--tui-background-neutral-1-hover);
+    }
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
-    --tui-text-primary: #fff;
-    --tui-background-neutral-1: rgba(255, 255, 255, 0.16);
-
     border: none;
     background: #323232;
     background: color-mix(in srgb, var(--tui-theme-color, #000) 80%, #fff);
+
+    [tuiAsideItem] {
+        justify-content: flex-start;
+
+        &._active {
+            background: transparent;
+        }
+
+        &._link:not(._custom):after {
+            opacity: 0;
+        }
+
+        &._link._active:after {
+            opacity: 1;
+        }
+    }
 }

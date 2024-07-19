@@ -5,6 +5,7 @@ import {
     inject,
     INJECTOR,
     Input,
+    signal,
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -50,8 +51,8 @@ export class TuiDropdownDirective
     protected readonly sub = this.refresh$
         .pipe(throttleTime(0), takeUntilDestroyed())
         .subscribe(() => {
-            this.dropdownBoxRef?.changeDetectorRef.detectChanges();
-            this.dropdownBoxRef?.changeDetectorRef.markForCheck();
+            this.ref()?.changeDetectorRef.detectChanges();
+            this.ref()?.changeDetectorRef.markForCheck();
         });
 
     public readonly el = tuiInjectElement();
@@ -61,7 +62,7 @@ export class TuiDropdownDirective
         inject(INJECTOR),
     );
 
-    public dropdownBoxRef: ComponentRef<unknown> | null = null;
+    public ref = signal<ComponentRef<unknown> | null>(null);
     public content: PolymorpheusContent<TuiContext<() => void>>;
 
     @Input()
@@ -96,13 +97,13 @@ export class TuiDropdownDirective
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content && !this.dropdownBoxRef) {
-            this.dropdownBoxRef = this.service.add(this.component);
-        } else if (!show && this.dropdownBoxRef) {
-            const {dropdownBoxRef} = this;
+        const ref = this.ref();
 
-            this.dropdownBoxRef = null;
-            this.service.remove(dropdownBoxRef);
+        if (show && this.content && !ref) {
+            this.ref.set(this.service.add(this.component));
+        } else if (!show && ref) {
+            this.ref.set(null);
+            this.service.remove(ref);
         }
     }
 }

@@ -1,9 +1,9 @@
 <ng-content />
 <div
-    *ngIf="empty$ | async"
+    *ngIf="empty"
     class="t-empty"
 >
-    <ng-container *polymorpheusOutlet="emptyContent || (defaultEmptyContent$ | async) as text">
+    <ng-container *polymorpheusOutlet="emptyContent || fallback() as text">
         {{ text }}
     </ng-container>
 </div>

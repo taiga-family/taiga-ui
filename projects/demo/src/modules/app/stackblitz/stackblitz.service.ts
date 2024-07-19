@@ -4,25 +4,16 @@ import stackblitz from '@stackblitz/sdk';
 import type {TuiCodeEditor} from '@taiga-ui/addon-doc';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {TsFileComponentParser, TsFileModuleParser} from '../classes';
+import {TsFileComponentParser} from '../classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {StackblitzEditButton} from './starter/stackblitz-edit';
-import {
-    appPrefix,
-    getAllTaigaUIModulesFile,
-    getComponentsClassNames,
-    getSupportFiles,
-    getSupportModules,
-    prepareLess,
-    prepareSupportFiles,
-    stackblitzPrefix,
-} from './utils';
+import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
 const APP_COMP_META = {
-    SELECTOR: 'my-app',
-    TEMPLATE_URL: './app.component.html',
-    STYLE_URLS: ['./app.component.less'],
+    SELECTOR: 'app',
+    TEMPLATE_URL: './app.template.html',
+    STYLE_URLS: ['./app.style.less'],
     CLASS_NAME: 'App',
 } as const;
 
@@ -42,33 +33,15 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const {appModuleTs} =
-            await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
-
-        const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
         const supportFilesTuples = getSupportFiles(content);
-        const supportModulesTuples = getSupportModules(supportFilesTuples);
-        const supportCompClassNames = getComponentsClassNames(supportFilesTuples);
         const modifiedSupportFiles = prepareSupportFiles(supportFilesTuples);
-
-        supportCompClassNames.forEach(([fileName, className]) => {
-            const insideAnotherModule = supportModulesTuples.some(([_, module]) =>
-                module.hasDeclarationEntity(className),
-            );
-
-            if (insideAnotherModule) {
-                return;
-            }
-
-            appModule.addImport(className, `./${fileName}`);
-            appModule.addDeclaration(className);
-        });
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
+        appCompTs.defaultExport = false;
 
         return stackblitz.openProject({
             ...(await this.getStackblitzProjectConfig()),
@@ -76,12 +49,10 @@ export class TuiStackblitzService implements TuiCodeEditor {
             description: `Taiga UI example of the component ${component}`,
             files: {
                 ...(await this.getBaseAngularProjectFiles()),
-                ...(await this.getStackblitzOnlyFiles(supportModulesTuples)),
                 ...modifiedSupportFiles,
-                [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
-                [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-                [appPrefix`app.component.less`]: prepareLess(content.LESS || ''),
+                [appPrefix`app.template.html`]: content.HTML,
+                [appPrefix`app.style.less`]: prepareLess(content.LESS || ''),
             },
         });
     }
@@ -97,7 +68,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 description,
                 files: {
                     ...(await this.getBaseAngularProjectFiles()),
-                    ...(await this.getStackblitzOnlyFiles()),
                     ...files,
                 },
             },
@@ -106,31 +76,15 @@ export class TuiStackblitzService implements TuiCodeEditor {
     }
 
     private async getBaseAngularProjectFiles(): Promise<Project['files']> {
-        const {tsconfig, angularJson, mainTs, polyfills, indexHtml, styles, appModuleTs} =
+        const {tsconfig, angularJson, mainTs, indexHtml, globalStyles} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
         return {
             'tsconfig.json': tsconfig,
             'angular.json': angularJson,
             'src/main.ts': mainTs,
-            'src/polyfills.ts': polyfills,
             'src/index.html': indexHtml,
-            'src/styles.less': styles,
-            [appPrefix`app.module.ts`]: appModuleTs.toString(),
-        };
-    }
-
-    /** Some stackblitz hacks */
-    private async getStackblitzOnlyFiles(
-        additionalModules: Array<[fileName: string, parsedFile: TsFileModuleParser]> = [],
-    ): Promise<Project['files']> {
-        const {stackblitzReadMe} =
-            await AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
-
-        return {
-            [stackblitzPrefix`README.md`]: stackblitzReadMe,
-            [stackblitzPrefix`all-taiga-modules.ts`]:
-                await getAllTaigaUIModulesFile(additionalModules),
+            'src/global_styles.less': globalStyles,
         };
     }
 
