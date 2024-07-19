@@ -30,6 +30,7 @@
                 "index": "{projectRoot}/src/index.html",
                 "main": "{projectRoot}/src/main.ts",
                 "polyfills": "{projectRoot}/src/polyfills.ts",
+                "inlineStyleLanguage": "less",
                 "tsConfig": "projects/{projectName}/tsconfig.app.json",
                 "assets": [
                     {
@@ -189,6 +190,7 @@
                 "outputPath": "dist/{projectName}/server",
                 "main": "{projectRoot}/server.ts",
                 "tsConfig": "{projectRoot}/tsconfig.server.json",
+                "inlineStyleLanguage": "less",
                 "sourceMap": true,
                 "optimization": false
             },

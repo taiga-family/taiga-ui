@@ -13,7 +13,7 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./icons.styles.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

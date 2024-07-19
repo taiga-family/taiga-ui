@@ -11,7 +11,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./title.style.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/title.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
