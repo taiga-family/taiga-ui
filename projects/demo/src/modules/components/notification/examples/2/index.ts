@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
+import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
@@ -12,7 +12,7 @@ import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
     providers: [
         tuiNotificationOptionsProvider({
             icon: '@tui.circle-help',
-            status: 'warning',
+            appearance: 'warning',
         }),
     ],
 })

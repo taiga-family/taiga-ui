@@ -1,25 +1,15 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, TuiNotification, TuiIcon, TuiHint],
+    imports: [TuiNotification, TuiTitle, TuiButton, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected readonly statuses = [
-        'neutral',
-        'info',
-        'success',
-        'warning',
-        'error',
-    ] as const;
-
-    protected readonly sizes = ['s', 'm', 'l'] as const;
-}
+export default class Example {}
