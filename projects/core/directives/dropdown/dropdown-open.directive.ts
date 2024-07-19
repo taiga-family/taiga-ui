@@ -1,6 +1,7 @@
 import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectorRef,
+    computed,
     ContentChild,
     Directive,
     ElementRef,
@@ -40,7 +41,7 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
         event.key.toLowerCase() === 'escape' &&
         this.tuiDropdownEnabled &&
         !!this.tuiDropdownOpen &&
-        !this.dropdown?.nextElementSibling
+        !this['dropdown']()?.nextElementSibling
     );
 }
 
@@ -65,14 +66,16 @@ export class TuiDropdownOpen implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
 
+    private readonly dropdown = computed(
+        () => this.directive.ref()?.location.nativeElement,
+    );
+
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
         inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
         fromEvent(this.el, 'focusin').pipe(
             map(tuiGetActualTarget),
-            filter(
-                (target) => !this.host.contains(target) || !this.directive.dropdownBoxRef,
-            ),
+            filter((target) => !this.host.contains(target) || !this.directive.ref()),
         ),
     )
         .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
@@ -89,10 +92,6 @@ export class TuiDropdownOpen implements OnChanges {
 
     // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
     public readonly driver = inject(TuiDropdownDriver);
-
-    public get dropdown(): HTMLElement | undefined {
-        return this.directive.dropdownBoxRef?.location.nativeElement;
-    }
 
     public ngOnChanges(): void {
         this.drive();
@@ -166,7 +165,7 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown);
+        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown());
     }
 
     private update(open: boolean): void {
@@ -185,20 +184,18 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private focusDropdown(previous: boolean): void {
-        if (!this.dropdown) {
+        const root = this.dropdown();
+
+        if (!root) {
             this.update(true);
 
             return;
         }
 
         const doc = this.el.ownerDocument;
-        const child = this.dropdown.appendChild(doc.createElement('div'));
-        const initial = previous ? child : this.dropdown;
-        const focusable = tuiGetClosestFocusable({
-            initial,
-            previous,
-            root: this.dropdown,
-        });
+        const child = root.appendChild(doc.createElement('div'));
+        const initial = previous ? child : root;
+        const focusable = tuiGetClosestFocusable({initial, previous, root});
 
         child.remove();
         focusable?.focus();

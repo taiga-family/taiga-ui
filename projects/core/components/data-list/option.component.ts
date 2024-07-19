@@ -38,7 +38,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
         type: 'button',
         role: 'option',
         '[attr.disabled]': 'disabled || null',
-        '[class._with-dropdown]': 'active',
+        '[class._with-dropdown]': 'dropdown?.()',
         '(click)': 'onClick()',
         '(mousemove.silent)': 'onMouseMove()',
     },
@@ -62,7 +62,7 @@ export class TuiOption<T = unknown> implements OnDestroy {
     protected readonly dropdown = inject(TuiDropdownDirective, {
         self: true,
         optional: true,
-    });
+    })?.ref;
 
     @Input()
     public disabled = false;
@@ -75,12 +75,8 @@ export class TuiOption<T = unknown> implements OnDestroy {
         this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 
-    protected get active(): boolean {
-        return !!this.dropdown && !!this.dropdown.dropdownBoxRef;
-    }
-
     protected onClick(): void {
-        if (this.host && this.value !== undefined) {
+        if (this.host?.handleOption && this.value !== undefined) {
             this.host.handleOption(this.value);
         }
     }

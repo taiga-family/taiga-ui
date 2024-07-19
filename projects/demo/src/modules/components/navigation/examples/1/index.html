@@ -64,79 +64,104 @@
         <header>
             <button
                 iconStart="@tui.home"
-                tuiButton
-                tuiHintAside
+                tuiAsideItem
             >
                 <span tuiFade>A very very long product name</span>
             </button>
         </header>
         <button
             iconStart="@tui.search"
-            tuiButton
-            tuiHintAside
+            tuiAsideItem
         >
             Search
         </button>
         <a
             iconStart="@tui.users"
-            routerLinkActive="active"
-            tuiButton
-            tuiHintAside
+            tuiAsideItem
             [routerLink]="routes.Navigation"
         >
             Groups
         </a>
-        <button
-            iconStart="@tui.settings"
-            tuiButton
-            [tuiAppearanceState]="open ? 'hover' : null"
-            [tuiChevron]="expanded && submenu"
-            [tuiDropdown]="dropdown"
-            [tuiDropdownEnabled]="!expanded"
-            [tuiDropdownSided]="true"
-            [(tuiDropdownOpen)]="open"
-            (click)="submenu = expanded && !submenu"
-        >
-            Settings
-            <ng-template #dropdown>
-                <tui-data-list size="s">
-                    <button tuiOption>Account</button>
-                    <button tuiOption>Notifications</button>
-                    <button tuiOption>Privacy</button>
-                </tui-data-list>
-            </ng-template>
-        </button>
-        <tui-expand [expanded]="expanded && submenu">
-            <button tuiButton>Account</button>
-            <button tuiButton>Notifications</button>
-            <button tuiButton>Privacy</button>
-        </tui-expand>
+        <tui-aside-group>
+            <button
+                iconStart="@tui.settings"
+                tuiAsideItem
+                tuiChevron
+            >
+                Settings
+                <ng-template>
+                    <button tuiAsideItem>Account</button>
+                    <button tuiAsideItem>Notifications</button>
+                    <button tuiAsideItem>Privacy</button>
+                </ng-template>
+            </button>
+        </tui-aside-group>
         <button
             iconStart="@tui.heart"
-            tuiButton
-            tuiHintAside
+            tuiAsideItem
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
+        </button>
+        <button
+            iconEnd="@tui.chevron-right"
+            iconStart="@tui.ellipsis"
+            tuiAsideItem
+            tuiDropdownHover
+            tuiDropdownOpen
+            [tuiDropdown]="more"
+        >
+            More
+            <ng-template
+                #more
+                let-close
+            >
+                <tui-data-list tuiDataListDropdownManager>
+                    <button
+                        iconStart="@tui.pencil"
+                        tuiAsideItem
+                        tuiOption
+                    >
+                        Write
+                    </button>
+                    <button
+                        iconStart="@tui.pie-chart"
+                        tuiAsideItem
+                        tuiOption
+                        [tuiDropdown]="submenu"
+                    >
+                        Categories
+                        <ng-template #submenu>
+                            <tui-data-list>
+                                <button
+                                    tuiAsideItem
+                                    (click)="close()"
+                                >
+                                    Fiction (will close menu)
+                                </button>
+                                <button tuiAsideItem>Non-Fiction</button>
+                                <button tuiAsideItem>Children</button>
+                            </tui-data-list>
+                        </ng-template>
+                    </button>
+                </tui-data-list>
+            </ng-template>
         </button>
         <hr />
         <button
             iconStart="@tui.plus"
-            tuiButton
-            tuiHintAside
+            tuiAsideItem
         >
             Add
         </button>
         <footer>
             <button
                 iconStart="@tui.star"
-                tuiButton
-                tuiHintAside
+                tuiAsideItem
             >
                 Favorites
             </button>
             <button
-                tuiButton
-                tuiHintAside
+                tuiAsideItem
                 [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
                 (click)="expanded = !expanded"
             >
