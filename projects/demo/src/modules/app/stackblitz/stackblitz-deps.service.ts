@@ -18,20 +18,18 @@ export class StackblitzDepsService {
     }
 
     private getAngularPackages(): Record<string, string> {
-        const ngVersion = '17.x.x';
+        const ngVersion = '18.x.x';
 
         return {
+            '@angular/animations': ngVersion,
             '@angular/cdk': ngVersion,
-            '@angular/core': ngVersion,
             '@angular/common': ngVersion,
             '@angular/compiler': ngVersion,
+            '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
-            '@angular/localize': ngVersion,
             '@angular/platform-browser': ngVersion,
-            '@angular/platform-browser-dynamic': ngVersion,
-            '@angular/animations': ngVersion,
             '@angular/router': ngVersion,
-            typescript: '5.3.x', // compatible with angular 17
+            typescript: '5.4.x', // compatible with angular 18
         };
     }
 
@@ -40,23 +38,23 @@ export class StackblitzDepsService {
             this.location.pathname.startsWith('/next/') ||
             this.location.host.endsWith('web.app') ||
             !environment.production
-                ? 'canary'
+                ? 'next' // TODO: replace with 'canary' after 4.0.0 release
                 : `${TUI_VERSION.split('.')[0]}.x.x`;
 
         return {
-            '@taiga-ui/cdk': version,
-            '@taiga-ui/i18n': version,
-            '@taiga-ui/core': version,
-            '@taiga-ui/kit': version,
-            '@taiga-ui/icons': version,
-            '@taiga-ui/styles': version,
             '@taiga-ui/addon-charts': version,
             '@taiga-ui/addon-commerce': version,
             '@taiga-ui/addon-mobile': version,
             '@taiga-ui/addon-table': version,
+            '@taiga-ui/cdk': version,
+            '@taiga-ui/core': version,
+            '@taiga-ui/experimental': version,
+            '@taiga-ui/i18n': version,
+            '@taiga-ui/icons': version,
+            '@taiga-ui/kit': version,
             '@taiga-ui/layout': version,
             '@taiga-ui/legacy': version,
-            '@taiga-ui/experimental': version,
+            '@taiga-ui/styles': version,
         };
     }
 
@@ -78,9 +76,9 @@ export class StackblitzDepsService {
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
             '@maskito/kit': kitDeps['@maskito/kit'],
-            'zone.js': (await import('@angular/core/package.json')).peerDependencies[
-                'zone.js'
-            ],
+            '@maskito/phone': kitDeps['@maskito/phone'],
+            'libphonenumber-js': (await import('@maskito/phone/package.json'))
+                .peerDependencies['libphonenumber-js'],
             dompurify: (await import('@taiga-ui/dompurify/package.json')).peerDependencies
                 .dompurify,
             rxjs: rootDevDeps.rxjs,
