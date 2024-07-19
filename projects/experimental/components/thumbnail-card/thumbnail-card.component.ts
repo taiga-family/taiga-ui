@@ -5,14 +5,15 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_INPUT_CARD_OPTIONS,
-    TuiInputCardOptions,
-    TuiPaymentSystem,
-} from '@taiga-ui/addon-commerce';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+
+import {
+    TUI_THUMBNAIL_CARD_OPTIONS,
+    TuiThumbnailCardOptions,
+} from './thumbnail-card.options';
 
 @Component({
     selector: 'tui-thumbnail-card',
@@ -23,7 +24,7 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 export class TuiThumbnailCardComponent {
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'm';
+    size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
     paymentSystem: TuiPaymentSystem | null = null;
@@ -34,20 +35,11 @@ export class TuiThumbnailCardComponent {
     @Input()
     iconRight = '';
 
+    @Input()
+    monoHandler: TuiBooleanHandler<TuiPaymentSystem> = this.options.monoHandler;
+
     constructor(
         @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
-        @Inject(TUI_INPUT_CARD_OPTIONS) readonly options: TuiInputCardOptions,
+        @Inject(TUI_THUMBNAIL_CARD_OPTIONS) readonly options: TuiThumbnailCardOptions,
     ) {}
-
-    // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
-    get isMono(): boolean {
-        switch (this.paymentSystem) {
-            case 'mir':
-            case 'visa':
-            case 'electron':
-                return true;
-            default:
-                return false;
-        }
-    }
 }
