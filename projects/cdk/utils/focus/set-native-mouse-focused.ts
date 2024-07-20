@@ -15,7 +15,12 @@ export function tuiSetNativeMouseFocused(
     }
 
     if (typeof Event === 'function') {
-        element.dispatchEvent(new Event('mousedown', {bubbles: true, cancelable: true}));
+        element.dispatchEvent(
+            new MouseEvent('mousedown', {
+                bubbles: true,
+                cancelable: true,
+            }),
+        );
     } else {
         const event = element.ownerDocument.createEvent('Event');
 
