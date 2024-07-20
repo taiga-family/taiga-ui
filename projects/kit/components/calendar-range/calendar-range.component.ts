@@ -221,7 +221,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     ): TuiBooleanHandler<TuiDay> {
         return item => {
             if (!value?.isSingleDay || !minLength) {
-                return disabledItemHandler(item);
+                return this.isDisabledItem(disabledItemHandler, value, item);
             }
 
             const negativeMinLength = tuiObjectFromEntries(
@@ -232,7 +232,41 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             const inDisabledRange =
                 disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
 
-            return inDisabledRange || disabledItemHandler(item);
+            return (
+                inDisabledRange || this.isDisabledItem(disabledItemHandler, value, item)
+            );
         };
+    }
+
+    private isDisabledItem(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        value: TuiDayRange | null,
+        item: TuiDay,
+    ): boolean {
+        return (
+            disabledItemHandler(item) ||
+            (!!value?.isSingleDay &&
+                this.isExternalDaysDisabled(disabledItemHandler, value.from, item))
+        );
+    }
+
+    private isExternalDaysDisabled(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        startDay: TuiDay,
+        item: TuiDay,
+    ): boolean {
+        let temp = item;
+
+        while (temp.dayBefore(startDay) || temp.dayAfter(startDay)) {
+            if (disabledItemHandler(temp)) {
+                return true;
+            }
+
+            const day = temp.dayBefore(startDay) ? 1 : -1;
+
+            temp = temp.append({day});
+        }
+
+        return false;
     }
 }
