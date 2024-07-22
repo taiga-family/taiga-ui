@@ -46,7 +46,7 @@ test.describe('InputDateRange', () => {
                     `01-calendar-size-${size}-empty.png`,
                 );
 
-                await inputDateRange.textfield.type('01');
+                await inputDateRange.textfield.pressSequentially('01');
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `02-textfield-size-${size}-set-day.png`,
                 );
@@ -54,7 +54,7 @@ test.describe('InputDateRange', () => {
                     `02-calendar-size-${size}-set-day.png`,
                 );
 
-                await inputDateRange.textfield.type('.06.1994');
+                await inputDateRange.textfield.pressSequentially('.06.1994');
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `03-textfield-size-${size}-set-from-date.png`,
                 );
@@ -62,7 +62,7 @@ test.describe('InputDateRange', () => {
                     `03-calendar-size-${size}-set-from-date.png`,
                 );
 
-                await inputDateRange.textfield.type('01.01.2022');
+                await inputDateRange.textfield.pressSequentially('01.01.2022');
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `04-textfield-size-${size}-set-to-date.png`,
                 );
@@ -97,11 +97,11 @@ test.describe('InputDateRange', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.type('32');
+                await inputDateRange.textfield.pressSequentially('32');
 
                 await expect(inputDateRange.textfield).toHaveValue('3');
 
-                await inputDateRange.textfield.type('1');
+                await inputDateRange.textfield.pressSequentially('1');
 
                 await expect(inputDateRange.textfield).toHaveValue('31');
             });
@@ -109,18 +109,18 @@ test.describe('InputDateRange', () => {
             test('month > 12', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
-                await inputDateRange.textfield.type('2913');
+                await inputDateRange.textfield.pressSequentially('2913');
 
                 await expect(inputDateRange.textfield).toHaveValue('29.1');
 
-                await inputDateRange.textfield.type('0');
+                await inputDateRange.textfield.pressSequentially('0');
                 await expect(inputDateRange.textfield).toHaveValue('29.10');
             });
 
             test('pads date range if it is less than [minLength]', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=0`); // minLength = {day: 3}
 
-                await inputDateRange.textfield.type('21052023-22052023');
+                await inputDateRange.textfield.pressSequentially('21052023-22052023');
 
                 await expect(inputDateRange.textfield).toHaveValue(
                     `21.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}23.05.2023`,
@@ -130,7 +130,7 @@ test.describe('InputDateRange', () => {
             test('cuts date range if it is more than [maxLength]', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=0`); // maxLength = {day: 5}
 
-                await inputDateRange.textfield.type('20052023-29052023');
+                await inputDateRange.textfield.pressSequentially('20052023-29052023');
 
                 await expect(inputDateRange.textfield).toHaveValue(
                     `20.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}24.05.2023`,

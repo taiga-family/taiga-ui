@@ -124,7 +124,7 @@ test.describe('InputSlider', () => {
             });
 
             test('cannot even type minus if [min] is positive', async () => {
-                await inputSlider.textfield.type('-11');
+                await inputSlider.textfield.pressSequentially('-11');
                 await expect(inputSlider.textfield).toHaveValue('11');
             });
 
@@ -156,12 +156,12 @@ test.describe('InputSlider', () => {
             });
 
             test('can type negative number more than [min]', async () => {
-                await inputSlider.textfield.type('-5');
+                await inputSlider.textfield.pressSequentially('-5');
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}5`);
             });
 
             test('cannot type negative number less than [min]', async () => {
-                await inputSlider.textfield.type('-11');
+                await inputSlider.textfield.pressSequentially('-11');
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}10`);
             });
         });
