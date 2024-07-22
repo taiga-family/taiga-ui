@@ -33,4 +33,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiModeModule',
         moduleSpecifier: '@taiga-ui/core',
     },
+    {
+        name: 'TuiIconsModule',
+        moduleSpecifier: '@taiga-ui/experimental',
+    },
 ];
