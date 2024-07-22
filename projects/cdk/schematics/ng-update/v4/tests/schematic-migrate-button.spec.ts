@@ -54,6 +54,21 @@ const TEMPLATE_BEFORE = `
 >
     primary
 </button>
+
+<button
+    tuiIconButton
+    type="button"
+    [icon]="icon"
+    [showLoader]="true"
+    (click)="onClick($event)"
+></button>
+
+<a
+    tuiIconButton
+    [icon]="icon"
+    [showLoader]="true"
+    href="https://taiga-ui.dev"
+></a>
 `;
 
 const TEMPLATE_AFTER = `
@@ -76,6 +91,21 @@ const TEMPLATE_AFTER = `
 >
     primary
 </button>
+
+<button
+    tuiIconButton
+    type="button"
+    [iconStart]="icon"
+    [loading]="true"
+    (click)="onClick($event)"
+></button>
+
+<a
+    tuiIconButton
+    [iconStart]="icon"
+    [loading]="true"
+    href="https://taiga-ui.dev"
+></a>
 `;
 
 const INLINE_TEMPLATE_COMPONENT_BEFORE = `

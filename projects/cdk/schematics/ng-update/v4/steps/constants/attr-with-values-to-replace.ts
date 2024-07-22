@@ -7,7 +7,9 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         newAttrName: '[style.border-radius.%]',
         values: [{from: 'rounded', to: '100'}],
         withTagNames: ['button'],
-        filterFn: (el) => hasElementAttribute(el, 'tuiButton'),
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiButton') ||
+            hasElementAttribute(el, 'tuiIconButton'),
     },
     {
         attrNames: ['tuiMode'],
