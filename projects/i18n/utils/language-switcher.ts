@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
-import {LOCAL_STORAGE} from '@ng-web-apis/common';
+import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DEFAULT_LANGUAGE,
     TUI_LANGUAGE,
@@ -32,13 +32,13 @@ export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
 export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLanguage>> {
     private readonly fallback = inject(TUI_DEFAULT_LANGUAGE);
     private readonly key = inject(TUI_LANGUAGE_STORAGE_KEY);
-    private readonly storage = inject(LOCAL_STORAGE);
+    private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly loader = inject(TUI_LANGUAGE_LOADER, {optional: true});
 
     constructor() {
         super(
             tuiAsyncLoadLanguage(
-                inject(LOCAL_STORAGE).getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
+                inject(WA_LOCAL_STORAGE).getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
                 inject(TUI_LANGUAGE_LOADER, {optional: true}),
                 inject(TUI_DEFAULT_LANGUAGE),
             ),

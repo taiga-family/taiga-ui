@@ -9,8 +9,8 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {
-    MUTATION_OBSERVER_INIT,
     MutationObserverService,
+    WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -34,7 +34,7 @@ import {TuiMore} from './more.directive';
         ResizeObserverService,
         TuiItemsWithMoreService,
         {
-            provide: MUTATION_OBSERVER_INIT,
+            provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
                 childList: true,
                 characterData: true,

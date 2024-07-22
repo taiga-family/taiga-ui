@@ -1,7 +1,7 @@
 import {Directive, inject, Output} from '@angular/core';
 import {
-    MUTATION_OBSERVER_INIT,
     MutationObserverService,
+    WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,7 +14,7 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
         ResizeObserverService,
         MutationObserverService,
         {
-            provide: MUTATION_OBSERVER_INIT,
+            provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {
                 childList: true,
                 characterData: true,

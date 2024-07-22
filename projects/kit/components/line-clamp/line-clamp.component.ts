@@ -13,7 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
@@ -47,7 +47,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     standalone: true,
     selector: 'tui-line-clamp',
     imports: [
-        ResizeObserverDirective,
+        WaResizeObserver,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiHint,

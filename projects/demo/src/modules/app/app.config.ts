@@ -6,7 +6,7 @@ import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
-import {SESSION_STORAGE} from '@ng-web-apis/common';
+import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -61,7 +61,7 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_IS_PLAYWRIGHT,
-            useFactory: () => Boolean(inject(SESSION_STORAGE).getItem('playwright')),
+            useFactory: () => Boolean(inject(WA_SESSION_STORAGE).getItem('playwright')),
         },
         {
             provide: HIGHLIGHT_OPTIONS,

@@ -6,7 +6,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
+import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
@@ -28,7 +28,7 @@ const GAP = 16;
     standalone: true,
     selector: 'tui-dropdown-mobile',
     imports: [
-        IntersectionObserverModule,
+        WaIntersectionObserver,
         TuiSwipe,
         NgIf,
         PolymorpheusOutlet,

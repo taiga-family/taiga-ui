@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {take} from 'rxjs';
 
 import {TuiDarkThemeService} from '../dark-theme.service';
@@ -12,7 +12,7 @@ describe('TuiDarkThemeService', () => {
         TestBed.configureTestingModule({
             providers: [
                 {
-                    provide: WINDOW,
+                    provide: WA_WINDOW,
                     useValue: {
                         matchMedia(): unknown {
                             return mock;

@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {
     tuiCreateTokenFromFactory,
@@ -57,7 +57,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
     Observable<EventTarget | null>
 >(() => {
     const removedElement$ = inject(TUI_REMOVED_ELEMENT);
-    const win = inject(WINDOW);
+    const win = inject(WA_WINDOW);
     const doc = inject(DOCUMENT);
     const focusout$ = tuiTypedFromEvent(win, 'focusout', {capture: true});
     const focusin$ = tuiTypedFromEvent(win, 'focusin', {capture: true});

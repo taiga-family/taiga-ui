@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {NAVIGATOR} from '@ng-web-apis/common';
+import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
@@ -10,7 +10,7 @@ describe('TUI_IS_IOS', () => {
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
-                        provide: NAVIGATOR,
+                        provide: WA_NAVIGATOR,
                         useValue: {
                             userAgent:
                                 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
@@ -33,7 +33,7 @@ describe('TUI_IS_IOS', () => {
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
-                        provide: NAVIGATOR,
+                        provide: WA_NAVIGATOR,
                         useValue: {
                             userAgent:
                                 'Safari: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15)' +
@@ -58,7 +58,7 @@ describe('TUI_IS_IOS', () => {
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
-                        provide: NAVIGATOR,
+                        provide: WA_NAVIGATOR,
                         useValue: {
                             userAgent:
                                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,' +
@@ -83,7 +83,7 @@ describe('TUI_IS_IOS', () => {
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
-                        provide: NAVIGATOR,
+                        provide: WA_NAVIGATOR,
                         useValue: {
                             userAgent:
                                 'Mozilla/5.0 (Linux; Android 11; Android SDK built for x86' +

@@ -1,6 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {inject, Injectable} from '@angular/core';
-import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
+import {WA_ANIMATION_FRAME, WA_PERFORMANCE} from '@ng-web-apis/common';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
@@ -24,8 +24,8 @@ function getY(elementOrWindow: Element | Window): number {
     providedIn: 'root',
 })
 export class TuiScrollService {
-    private readonly performanceRef = inject(PERFORMANCE);
-    private readonly animationFrame$ = inject(ANIMATION_FRAME);
+    private readonly performanceRef = inject(WA_PERFORMANCE);
+    private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
 
     public scroll$(
         elementOrWindow: Element | Window,

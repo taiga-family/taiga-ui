@@ -13,7 +13,7 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
-import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
+import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
@@ -37,7 +37,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         NgForOf,
         NgStyle,
         NgTemplateOutlet,
-        IntersectionObserverModule,
+        WaIntersectionObserver,
         TuiPan,
         TuiSwipe,
         TuiCarouselScroll,

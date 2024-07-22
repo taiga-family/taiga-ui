@@ -1,6 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {map} from 'rxjs';
@@ -16,7 +16,7 @@ const OFFSET = 10;
 export class TuiSheetTopDirective {
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
     private readonly component = inject(TUI_SHEET);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     private readonly el = tuiInjectElement();
 
     protected readonly rounded$ = this.scroll$

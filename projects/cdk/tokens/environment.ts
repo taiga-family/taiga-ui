@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {NAVIGATOR, USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {WA_NAVIGATOR, WA_USER_AGENT, WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiCreateTokenFromFactory, tuiIsIos} from '@taiga-ui/cdk/utils';
 import {fromEvent, map} from 'rxjs';
@@ -13,18 +13,18 @@ const secondRegex =
 
 export const TUI_IS_MOBILE = tuiCreateTokenFromFactory(
     () =>
-        firstRegex.test(inject(USER_AGENT).toLowerCase()) ||
-        secondRegex.test(inject(USER_AGENT).slice(0, 4).toLowerCase()),
+        firstRegex.test(inject(WA_USER_AGENT).toLowerCase()) ||
+        secondRegex.test(inject(WA_USER_AGENT).slice(0, 4).toLowerCase()),
 );
 
-export const TUI_IS_IOS = tuiCreateTokenFromFactory(() => tuiIsIos(inject(NAVIGATOR)));
+export const TUI_IS_IOS = tuiCreateTokenFromFactory(() => tuiIsIos(inject(WA_NAVIGATOR)));
 
 export const TUI_IS_ANDROID = tuiCreateTokenFromFactory(
     () => inject(TUI_IS_MOBILE) && !inject(TUI_IS_IOS),
 );
 
 export const TUI_IS_WEBKIT = tuiCreateTokenFromFactory(
-    () => !!inject<any>(WINDOW)?.webkitConvertPointFromNodeToPage,
+    () => !!inject<any>(WA_WINDOW)?.webkitConvertPointFromNodeToPage,
 );
 
 export const TUI_PLATFORM = tuiCreateTokenFromFactory<'android' | 'ios' | 'web'>(() => {
@@ -36,7 +36,7 @@ export const TUI_PLATFORM = tuiCreateTokenFromFactory<'android' | 'ios' | 'web'>
 });
 
 export const TUI_IS_TOUCH = tuiCreateTokenFromFactory(() => {
-    const media = inject(WINDOW).matchMedia('(pointer: coarse)');
+    const media = inject(WA_WINDOW).matchMedia('(pointer: coarse)');
 
     return toSignal(fromEvent(media, 'change').pipe(map(() => media.matches)), {
         initialValue: media.matches,
@@ -48,7 +48,7 @@ export const TUI_IS_TOUCH = tuiCreateTokenFromFactory(() => {
  * {@link https://docs.cypress.io/faq/questions/using-cypress-faq#Is-there-any-way-to-detect-if-my-app-is-running-under-Cypress Cypress docs}
  */
 export const TUI_IS_CYPRESS = tuiCreateTokenFromFactory(
-    () => !!inject<any>(WINDOW).Cypress,
+    () => !!inject<any>(WA_WINDOW).Cypress,
 );
 
 /**

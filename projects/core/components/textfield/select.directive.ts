@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {NAVIGATOR} from '@ng-web-apis/common';
+import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -32,7 +32,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     },
 })
 export class TuiSelect extends TuiTextfieldBase {
-    private readonly nav = inject(NAVIGATOR);
+    private readonly nav = inject(WA_NAVIGATOR);
     private readonly control = inject(NgControl);
 
     @Input()

@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
@@ -8,6 +8,6 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
  */
 export const TUI_IS_FIREFOX = tuiCreateTokenFromFactory(
     () =>
-        typeof (inject(WINDOW) as Window & {mozCancelFullScreen: unknown})
+        typeof (inject(WA_WINDOW) as Window & {mozCancelFullScreen: unknown})
             ?.mozCancelFullScreen !== 'undefined',
 );

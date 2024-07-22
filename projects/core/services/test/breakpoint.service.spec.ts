@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiBreakpointService} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {first} from 'rxjs';
@@ -25,7 +25,7 @@ describe('TuiBreakpointService', () => {
                     NG_EVENT_PLUGINS,
                     TuiBreakpointService,
                     {
-                        provide: WINDOW,
+                        provide: WA_WINDOW,
                         useValue: {
                             ...windowMock,
                             document: {documentElement: {clientWidth: 700}},
@@ -53,7 +53,7 @@ describe('TuiBreakpointService', () => {
                     NG_EVENT_PLUGINS,
                     TuiBreakpointService,
                     {
-                        provide: WINDOW,
+                        provide: WA_WINDOW,
                         useValue: {
                             ...windowMock,
                             document: {documentElement: {clientWidth: 1024}},

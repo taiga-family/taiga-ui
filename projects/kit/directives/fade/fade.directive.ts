@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MUTATION_OBSERVER_INIT,
     MutationObserverService,
+    WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -41,7 +41,7 @@ class TuiFadeStyles {}
         ResizeObserverService,
         MutationObserverService,
         {
-            provide: MUTATION_OBSERVER_INIT,
+            provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
         },
     ],

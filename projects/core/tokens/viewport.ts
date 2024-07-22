@@ -1,6 +1,6 @@
 import type {Provider, Type} from '@angular/core';
 import {inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiRectAccessor} from '@taiga-ui/core/classes';
 
@@ -8,7 +8,7 @@ import type {TuiRectAccessor} from '@taiga-ui/core/classes';
  * Viewport accessor
  */
 export const TUI_VIEWPORT = tuiCreateTokenFromFactory<TuiRectAccessor>(() => {
-    const win = inject(WINDOW);
+    const win = inject(WA_WINDOW);
 
     return {
         type: 'viewport',

@@ -11,7 +11,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
+import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
@@ -42,7 +42,7 @@ class TuiTableStyles {}
     selector: 'table[tuiTable]',
     providers: [
         {
-            provide: INTERSECTION_ROOT_MARGIN,
+            provide: WA_INTERSECTION_ROOT_MARGIN,
             useValue: '10000px 10000px 10000px 0px',
         },
         tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),

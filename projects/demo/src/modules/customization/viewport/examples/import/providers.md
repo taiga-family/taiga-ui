@@ -8,7 +8,7 @@ import {TUI_VIEWPORT} from '@taiga-ui/core';
     {
       provide: TUI_VIEWPORT,
       useFactory: () => {
-        const win = inject(WINDOW);
+        const win = inject(WA_WINDOW);
 
         return {
           type: `viewport`,

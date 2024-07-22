@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {USER_AGENT} from '@ng-web-apis/common';
+import {WA_USER_AGENT} from '@ng-web-apis/common';
 import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 @Component({
@@ -11,7 +11,7 @@ import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/
     changeDetection,
 })
 export default class Example {
-    private readonly userAgent = inject(USER_AGENT);
+    private readonly userAgent = inject(WA_USER_AGENT);
     private readonly el = tuiInjectElement();
 
     protected get aboutMyBrowser(): string {

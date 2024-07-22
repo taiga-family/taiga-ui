@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {
     tuiContainsOrAfter,
@@ -15,7 +15,7 @@ const SCROLLBAR_PLACEHOLDER = 17;
 
 @Injectable()
 export class TuiDialogCloseService extends Observable<unknown> {
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
 

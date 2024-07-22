@@ -3,8 +3,8 @@ import type {Provider} from '@angular/core';
 import {ChangeDetectorRef, ElementRef, InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
-    MUTATION_OBSERVER_INIT,
     MutationObserverService,
+    WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
@@ -19,7 +19,7 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
     MutationObserverService,
     tuiDropdownOptionsProvider({align: 'right'}),
     {
-        provide: MUTATION_OBSERVER_INIT,
+        provide: WA_MUTATION_OBSERVER_INIT,
         useValue: {
             childList: true,
             subtree: true,

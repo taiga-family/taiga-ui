@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiStaticRequestService} from '@taiga-ui/cdk/services';
 import {TUI_BASE_HREF} from '@taiga-ui/cdk/tokens';
@@ -51,7 +51,7 @@ export interface TuiIconError {
 export class TuiSvgComponent {
     private icon: TuiSafeHtml = '';
     private readonly doc = inject(DOCUMENT);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     private readonly options = inject(TUI_SVG_OPTIONS);
     private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
     private readonly svgService = inject(TuiSvgService);

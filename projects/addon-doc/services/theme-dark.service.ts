@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
+import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {BehaviorSubject} from 'rxjs';
 
@@ -11,11 +11,17 @@ export const TUI_DARK_THEME = tuiCreateToken(false);
     providedIn: 'root',
 })
 export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
-    private readonly storage = inject(LOCAL_STORAGE);
+    private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly key = inject(TUI_DARK_THEME_KEY);
 
     constructor() {
-        super(isDark(inject(LOCAL_STORAGE), inject(TUI_DARK_THEME_KEY), inject(WINDOW)));
+        super(
+            isDark(
+                inject(WA_LOCAL_STORAGE),
+                inject(TUI_DARK_THEME_KEY),
+                inject(WA_WINDOW),
+            ),
+        );
     }
 
     public override next(dark: boolean): void {

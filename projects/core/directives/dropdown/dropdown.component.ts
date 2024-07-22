@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -53,7 +53,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 export class TuiDropdownComponent {
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     private readonly vvs = inject(TuiVisualViewportService);
 
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));

@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
-    INTERSECTION_THRESHOLD,
     IntersectionObserverService,
+    WA_INTERSECTION_THRESHOLD,
 } from '@ng-web-apis/intersection-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
@@ -14,7 +14,7 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
     providers: [
         IntersectionObserverService,
         {
-            provide: INTERSECTION_THRESHOLD,
+            provide: WA_INTERSECTION_THRESHOLD,
             useValue: [0, 1],
         },
     ],
