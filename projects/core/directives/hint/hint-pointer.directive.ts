@@ -14,7 +14,7 @@ import {TuiHintHover} from './hint-hover.directive';
 export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {
     private currentRect = EMPTY_CLIENT_RECT;
 
-    public getClientRect(): ClientRect {
+    public getClientRect(): DOMRect {
         return this.currentRect;
     }
 
