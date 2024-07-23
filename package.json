@@ -136,6 +136,7 @@
         "local-web-server": "5.3.3",
         "ng-morph": "4.5.4",
         "ng-packagr": "16.2.3",
+        "ngx-highlightjs": "10.0.0",
         "nx": "18.3.5",
         "rollup": "4.18.1",
         "rxjs": "7.5.0",
@@ -147,8 +148,8 @@
         "webpack": "5.93.0"
     },
     "engines": {
-        "node": ">= 16.14",
-        "npm": ">= 8.3",
+        "node": ">= 20",
+        "npm": ">= 10",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
     "authors": [

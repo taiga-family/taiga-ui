@@ -4,6 +4,7 @@
     "description": "Global Styles for Taiga UI",
     "peerDependencies": {
         "@taiga-ui/cdk": "^4.0.0-rc.6",
+        "@taiga-ui/core": "^4.0.0-rc.6",
         "tslib": "^2.6.3"
     }
 }

@@ -17,9 +17,6 @@
     "exports": {
         "./styles/*": "./styles/*"
     },
-    "dependencies": {
-        "@taiga-ui/i18n": "^4.0.0-rc.6"
-    },
     "peerDependencies": {
         "@angular/animations": ">=16.0.0",
         "@angular/common": ">=16.0.0",
