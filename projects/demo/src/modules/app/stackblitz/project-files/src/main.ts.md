@@ -4,6 +4,7 @@ import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {Component} from '@angular/core';
 import {TuiRoot, tuiAssetsPathProvider} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 import {App} from './app/app.component';
 
@@ -18,6 +19,7 @@ class Root {}
 bootstrapApplication(Root, {
   providers: [
     provideAnimations(),
+    NG_EVENT_PLUGINS,
     /**
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!
