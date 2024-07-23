@@ -49,13 +49,15 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
         },
     },
     {
-        componentSelector: ['button'],
+        componentSelector: ['button', 'a'],
         inputProperty: 'showLoader',
         directive: 'loading',
         directiveModule: {
             name: 'TuiButtonLoading',
             moduleSpecifier: '@taiga-ui/kit',
         },
-        filterFn: (el) => hasElementAttribute(el, 'tuiButton'),
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiButton') ||
+            hasElementAttribute(el, 'tuiIconButton'),
     },
 ];
