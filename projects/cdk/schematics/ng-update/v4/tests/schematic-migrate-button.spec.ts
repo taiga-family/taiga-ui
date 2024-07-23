@@ -15,22 +15,29 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiButtonModule } from "@taiga-ui/core";
+import {tuiButtonOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButtonModule]
+    imports: [TuiButtonModule],
+    providers: [
+        tuiButtonOptionsProvider({size: 's'}),
+    ],
 })
 export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiButtonLoading } from "@taiga-ui/kit";
-import { TuiButton } from "@taiga-ui/core";
+import { TuiButton, tuiButtonOptionsProvider } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButton, TuiButtonLoading]
+    imports: [TuiButton, TuiButtonLoading],
+    providers: [
+        tuiButtonOptionsProvider({size: 's'}),
+    ],
 })
 export class Test {
 }`;

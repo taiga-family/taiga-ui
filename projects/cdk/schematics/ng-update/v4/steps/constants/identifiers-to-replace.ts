@@ -784,6 +784,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: {
+            name: 'tuiButtonOptionsProvider',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {
+            name: 'tuiButtonOptionsProvider',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
         from: {name: 'TuiLetModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiLet', moduleSpecifier: '@taiga-ui/cdk'},
     },
