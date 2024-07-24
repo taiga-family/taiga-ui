@@ -387,6 +387,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiPrimitiveCheckboxModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: [
             {name: 'TuiSwipeActions', moduleSpecifier: '@taiga-ui/addon-mobile'},
