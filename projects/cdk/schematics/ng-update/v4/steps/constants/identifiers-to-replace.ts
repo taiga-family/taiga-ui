@@ -66,6 +66,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'tuiCapitalizeFirstLetter', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'tuiCapitalizeFirstLetter', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TUI_NON_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TUI_NON_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
     },
