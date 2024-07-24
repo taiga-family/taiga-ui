@@ -2,7 +2,7 @@ import {NgForOf} from '@angular/common';
 import type {FactoryProvider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {LOCAL_STORAGE, LOCATION} from '@ng-web-apis/common';
+import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TUI_THEME} from '@taiga-ui/core/tokens';
@@ -15,7 +15,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
     return {
         provide: TUI_THEME,
         useFactory: () =>
-            inject(LOCAL_STORAGE).getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
+            inject(WA_LOCAL_STORAGE).getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
     };
 }
 
@@ -27,9 +27,9 @@ export function tuiDocThemeProvider(): FactoryProvider {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocThemeSwitcher {
-    private readonly storage = inject(LOCAL_STORAGE);
+    private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly key = inject(TUI_THEME_KEY);
-    private readonly location = inject(LOCATION);
+    private readonly location = inject(WA_LOCATION);
 
     protected readonly theme = inject(TUI_THEME);
     protected readonly themes = inject(TUI_THEMES);

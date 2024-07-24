@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     TUI_CARD_CVC_TEXTS,
     TUI_CARD_EXPIRY_TEXTS,
@@ -23,7 +23,7 @@ export interface TuiCardGroupedTexts {
 export const TUI_INPUT_CARD_GROUP_TEXTS = tuiCreateTokenFromFactory<
     Observable<TuiCardGroupedTexts>
 >(() => {
-    const win = inject(WINDOW);
+    const win = inject(WA_WINDOW);
     const cardNumberTexts = inject(TUI_CARD_NUMBER_TEXTS);
     const expiryTexts = inject(TUI_CARD_EXPIRY_TEXTS);
     const cvcTexts = inject(TUI_CARD_CVC_TEXTS);

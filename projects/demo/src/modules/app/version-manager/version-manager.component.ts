@@ -2,7 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LOCATION} from '@ng-web-apis/common';
+import {WA_LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiStringifyContentPipe, TuiStringifyPipe} from '@taiga-ui/kit';
@@ -28,7 +28,7 @@ import {TUI_VERSIONS_META_OPTIONS} from './versions.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManager {
-    private readonly locationRef = inject(LOCATION);
+    private readonly locationRef = inject(WA_LOCATION);
     private readonly router = inject(Router);
     protected readonly initialVersion = inject(TUI_SELECTED_VERSION_META);
     protected readonly versions = inject(TUI_VERSIONS_META_OPTIONS);

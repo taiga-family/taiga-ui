@@ -2,14 +2,14 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
+import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import type {TuiSheetOptions} from '@taiga-ui/legacy';
 import {TuiSheetModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiSheetModule, NgForOf, IntersectionObserverModule, TuiLabel],
+    imports: [TuiButton, TuiSheetModule, NgForOf, WaIntersectionObserver, TuiLabel],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

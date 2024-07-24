@@ -10,7 +10,7 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -37,7 +37,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, AsyncPipe, ResizeObserverDirective, TuiButton, PolymorpheusOutlet],
+    imports: [NgIf, AsyncPipe, WaResizeObserver, TuiButton, PolymorpheusOutlet],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

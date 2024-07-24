@@ -561,7 +561,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiResizeModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {
-            name: 'ResizeObserverDirective',
+            name: 'WaResizeObserver',
             moduleSpecifier: '@ng-web-apis/resize-observer',
         },
     },
@@ -2448,5 +2448,111 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiLabel',
             moduleSpecifier: '@taiga-ui/core',
         },
+    },
+    {
+        from: {
+            name: 'ResizeObserverModule',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+        to: {
+            name: 'WaResizeObserver',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+    },
+    {
+        from: {
+            name: 'IntersectionObserverModule',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+        to: {
+            name: 'WaIntersectionObserver',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+    },
+    {
+        from: {
+            name: 'INTERSECTION_THRESHOLD',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+        to: {
+            name: 'WA_INTERSECTION_THRESHOLD',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+    },
+    {
+        from: {
+            name: 'INTERSECTION_ROOT_MARGIN',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+        to: {
+            name: 'WA_INTERSECTION_ROOT_MARGIN',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+    },
+    {
+        from: {
+            name: 'INTERSECTION_ROOT',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+        to: {
+            name: 'WA_INTERSECTION_ROOT',
+            moduleSpecifier: '@ng-web-apis/intersection-observer',
+        },
+    },
+    {
+        from: {
+            name: 'MUTATION_OBSERVER_INIT',
+            moduleSpecifier: '@ng-web-apis/mutation-observer',
+        },
+        to: {
+            name: 'WA_MUTATION_OBSERVER_INIT',
+            moduleSpecifier: '@ng-web-apis/mutation-observer',
+        },
+    },
+    {
+        from: {
+            name: 'MutationObserverDirective',
+            moduleSpecifier: '@ng-web-apis/mutation-observer',
+        },
+        to: {
+            name: 'WaMutationObserver',
+            moduleSpecifier: '@ng-web-apis/mutation-observer',
+        },
+    },
+    {
+        from: {name: 'WINDOW', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_WINDOW', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'USER_AGENT', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_USER_AGENT', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'NAVIGATOR', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_NAVIGATOR', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'SESSION_STORAGE', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_SESSION_STORAGE', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'PAGE_VISIBILITY', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_PAGE_VISIBILITY', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'LOCATION', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_LOCATION', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'PERFORMANCE', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_PERFORMANCE', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'LOCAL_STORAGE', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_LOCAL_STORAGE', moduleSpecifier: '@ng-web-apis/common'},
+    },
+    {
+        from: {name: 'ANIMATION_FRAME', moduleSpecifier: '@ng-web-apis/common'},
+        to: {name: 'WA_ANIMATION_FRAME', moduleSpecifier: '@ng-web-apis/common'},
     },
 ];

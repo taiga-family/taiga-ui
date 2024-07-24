@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {NAVIGATOR} from '@ng-web-apis/common';
+import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
@@ -11,7 +11,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
@@ -34,7 +34,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1',
@@ -56,7 +56,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1',
@@ -78,7 +78,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
@@ -105,7 +105,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36',
@@ -127,7 +127,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (Linux; Android 11; Android SDK built for x86' +
@@ -154,7 +154,7 @@ describe('TUI_IS_MOBILE', () => {
                     providers: [
                         NG_EVENT_PLUGINS,
                         {
-                            provide: NAVIGATOR,
+                            provide: WA_NAVIGATOR,
                             useValue: {
                                 userAgent:
                                     'Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.188 Safari/537.36 CrKey/1.54.250320',

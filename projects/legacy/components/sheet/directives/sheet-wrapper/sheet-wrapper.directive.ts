@@ -1,5 +1,5 @@
 import {ContentChild, Directive, inject, Input, NgZone} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -61,7 +61,7 @@ export class TuiSheetWrapperDirective {
     private readonly scroll$!: Observable<number>;
 
     private readonly zone = inject(NgZone);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
 
     @Input()
     public tuiSheetWrapper = 16;

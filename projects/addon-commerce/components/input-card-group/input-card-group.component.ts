@@ -13,7 +13,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {
     TUI_MASK_CARD,
     TUI_MASK_CVC,
@@ -75,7 +75,7 @@ export interface TuiCard {
         NgIf,
         FormsModule,
         MaskitoDirective,
-        ResizeObserverDirective,
+        WaResizeObserver,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiActiveZone,
