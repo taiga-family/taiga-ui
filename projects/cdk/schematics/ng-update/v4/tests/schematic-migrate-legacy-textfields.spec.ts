@@ -11,79 +11,72 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
-import {createAngularJson} from '../../../utils/create-angular-json';
-
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { CommonModule } from "@angular/common";
-import { ArrayElement } from "@taiga-ui/kit";
+import {Component} from '@angular/core';
+import { TuiInputModule } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [CommonModule]
+    imports: [TuiInputModule]
 })
-export class Test {
-   some: ArrayElement<string>;
-}`;
+export class Test {}
+`.trim();
 
-const COMPONENT_AFTER = `import { TuiTextfieldControllerModule } from "@taiga-ui/core";
-import { TuiArrayElement } from "@taiga-ui/kit";
-
-import { CommonModule } from "@angular/common";
+const COMPONENT_AFTER = `
+import { TuiInputModule } from "@taiga-ui/legacy";
+import {Component} from '@angular/core';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [CommonModule, TuiTextfieldControllerModule]
+    imports: [TuiInputModule]
 })
-export class Test {
-   some: TuiArrayElement<string>;
-}`;
+export class Test {}
+`.trim();
 
 const TEMPLATE_BEFORE = `
-<tui-primitive-textfield
-    filler="filler"
-    [(value)]="value"
-    (focusedChange)="onFocused($event)"
->
-    Type an email
+<tui-input [(ngModel)]="value">
+    Enter price
     <input
+        inputmode="numeric"
         tuiTextfield
-        type="email"
+        [maskito]="maskitoOptions"
     />
-</tui-primitive-textfield>
-<tui-input-slider
-    [prefix]="prefix"
-    [max]="10"
-    [min]="0"
-    [(ngModel)]="userAnswer"
->
-    2+2=?
-</tui-input-slider>
+</tui-input>
+
+<tui-textarea [(ngModel)]="value">
+    Enter address
+    <textarea
+        autocomplete="street-address"
+        placeholder="Only latin letters and digits are allowed"
+        tuiTextfield
+        [maskito]="mask"
+    ></textarea>
+</tui-textarea>
 `;
 
 const TEMPLATE_AFTER = `
-<tui-primitive-textfield
-    tuiTextfieldFiller="filler"
-    [(value)]="value"
-    (focusedChange)="onFocused($event)"
->
-    Type an email
+<tui-input [(ngModel)]="value">
+    Enter price
     <input
+        inputmode="numeric"
         tuiTextfieldLegacy
-        type="email"
+        [maskito]="maskitoOptions"
     />
-</tui-primitive-textfield>
-<tui-input-slider
-    [tuiTextfieldPrefix]="prefix"
-    [max]="10"
-    [min]="0"
-    [(ngModel)]="userAnswer"
->
-    2+2=?
-</tui-input-slider>
+</tui-input>
+
+<tui-textarea [(ngModel)]="value">
+    Enter address
+    <textarea
+        autocomplete="street-address"
+        placeholder="Only latin letters and digits are allowed"
+        tuiTextfieldLegacy
+        [maskito]="mask"
+    ></textarea>
+</tui-textarea>
 `;
 
 describe('ng-update', () => {
@@ -101,7 +94,7 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate prefix, postfix, filler in template', async () => {
+    it('should migrate [tuiTextfield] => [tuiTextfieldLegacy] in template', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
@@ -111,7 +104,7 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should add textfield controller references in ts files', async () => {
+    it('should migrate `@taiga-ui/kit` => `@taiga-ui/legacy` import in ts files', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
@@ -128,12 +121,7 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
-    createAngularJson();
-    createSourceFile(
-        'package.json',
-        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
-    );
+    createSourceFile('package.json', '{}');
 }
