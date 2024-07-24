@@ -21,7 +21,9 @@ export default class Example {
     protected show(actions: PolymorpheusContent<TuiPdfViewerOptions>): void {
         this.pdfService
             .open(
-                this.sanitizer.bypassSecurityTrustResourceUrl('assets/media/taiga.pdf'),
+                this.sanitizer.bypassSecurityTrustResourceUrl(
+                    'https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/assets/media/taiga.pdf',
+                ),
                 {label: 'Taiga UI', actions},
             )
             .subscribe();
