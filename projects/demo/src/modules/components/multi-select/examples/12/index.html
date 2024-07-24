@@ -1,0 +1,46 @@
+<tui-multi-select
+    [editable]="false"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="value"
+>
+    <tui-data-list
+        *tuiDataList
+        tuiDataListDropdownManager
+        tuiMultiSelectGroup
+    >
+        <button
+            *ngFor="let item of mainOptions"
+            tuiOption
+            [value]="item"
+        >
+            {{ item }}
+        </button>
+
+        <button
+            iconEnd="@tui.chevron-right"
+            moreOption
+            tuiDropdownAlign="right"
+            tuiDropdownManual
+            tuiDropdownSided
+            tuiOption
+            [tuiDropdown]="moreList"
+        >
+            More
+        </button>
+    </tui-data-list>
+
+    <ng-template #moreList>
+        <tui-data-list
+            tuiDataListDropdownManager
+            tuiMultiSelectGroup
+        >
+            <button
+                *ngFor="let option of moreOptions"
+                tuiOption
+                [value]="option"
+            >
+                {{ option }}
+            </button>
+        </tui-data-list>
+    </ng-template>
+</tui-multi-select>
