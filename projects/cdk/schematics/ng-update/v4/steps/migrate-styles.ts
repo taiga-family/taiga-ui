@@ -15,7 +15,19 @@ export function migrateStyles(): void {
                 .replace(/^(.*--tui-rating-size.*)$/gm, `${TUI_RATING_WARNING}\n$1`)
                 // eslint-disable-next-line
                 .replace(/^(.*--tui-rating-gap.*)$/gm, `${TUI_RATING_WARNING}\n$1`)
-                .replaceAll('--tui-link-icon-size', '--tui-icon-size');
+                .replaceAll('--tui-link-icon-size', '--tui-icon-size')
+                .replaceAll(
+                    '@taiga-ui/proprietary-core/styles/tinkoff-fonts',
+                    '@taiga-ui/proprietary/styles/tbank-fonts',
+                )
+                .replaceAll(
+                    '@taiga-ui/proprietary-core/styles/theme-tinkoff-2023',
+                    '@taiga-ui/proprietary/styles/tbank-theme',
+                )
+                .replaceAll(
+                    '@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile-2023',
+                    '@taiga-ui/proprietary/styles/tbank-theme-mobile.less',
+                );
 
             sourceFile.replaceWithText(fullText);
         });

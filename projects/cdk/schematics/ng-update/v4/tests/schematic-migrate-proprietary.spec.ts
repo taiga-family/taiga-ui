@@ -54,9 +54,9 @@ const STYLES_BEFORE = `
 `.trim();
 
 const STYLES_AFTER = `
-@import '@taiga-ui/proprietary/styles/tinkoff-fonts';
-@import '@taiga-ui/proprietary/styles/theme-tinkoff-2023';
-@import '@taiga-ui/proprietary/styles/theme-tinkoff-mobile-2023';
+@import '@taiga-ui/proprietary/styles/tbank-fonts';
+@import '@taiga-ui/proprietary/styles/tbank-theme';
+@import '@taiga-ui/proprietary/styles/tbank-theme-mobile.less';
 // ...
 `.trim();
 
