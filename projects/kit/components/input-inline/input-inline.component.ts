@@ -79,6 +79,13 @@ export class TuiInputInlineComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
+
+        if (focused) {
+            this.nativeFocusableElement?.scrollTo(
+                this.nativeFocusableElement.scrollWidth,
+                0,
+            );
+        }
     }
 
     onScroll(): void {
