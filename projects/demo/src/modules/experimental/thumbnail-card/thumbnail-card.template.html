@@ -36,6 +36,7 @@
             <tui-thumbnail-card
                 [iconLeft]="iconLeft"
                 [iconRight]="iconRight"
+                [monoHandler]="monoHandler"
                 [paymentSystem]="paymentSystem"
                 [size]="size"
             >
@@ -60,6 +61,15 @@
                 [(documentationPropertyValue)]="iconRight"
             >
                 Icon on the right
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="monoHandler"
+                documentationPropertyType="TuiBooleanHandler<TuiPaymentSystem>"
+                [documentationPropertyValues]="monoHandlerVariants"
+                [(documentationPropertyValue)]="monoHandler"
+            >
+                Whether to use colored icon for particular payment system
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
