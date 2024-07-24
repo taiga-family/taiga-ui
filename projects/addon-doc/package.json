@@ -16,11 +16,6 @@
     "exports": {
         "./styles/*": "./styles/*"
     },
-    "dependencies": {
-        "markdown-it": "14.1.0",
-        "marked": "13.0.2",
-        "ngx-highlightjs": "10.0.0"
-    },
     "devDependencies": {
         "@types/markdown-it": "14.1.1"
     },
@@ -36,6 +31,9 @@
         "@taiga-ui/core": "^4.0.0-rc.6",
         "@taiga-ui/kit": "^4.0.0-rc.6",
         "@taiga-ui/polymorpheus": "^4.6.4",
+        "markdown-it": ">=14.1.0",
+        "marked": ">=13.0.2",
+        "ngx-highlightjs": ">=10.0.0",
         "tslib": "^2.6.3"
     }
 }

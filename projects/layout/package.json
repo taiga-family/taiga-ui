@@ -15,6 +15,7 @@
         "@angular/core": ">=16.0.0",
         "@taiga-ui/cdk": "^4.0.0-rc.6",
         "@taiga-ui/core": "^4.0.0-rc.6",
+        "@taiga-ui/kit": "^4.0.0-rc.6",
         "@taiga-ui/polymorpheus": "^4.6.4",
         "rxjs": ">=7.0.0",
         "tslib": "^2.6.3"

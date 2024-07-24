@@ -10,10 +10,8 @@
     "homepage": "https://github.com/taiga-family/taiga-ui",
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
-    "dependencies": {
-        "tslib": "2.6.3"
-    },
     "peerDependencies": {
-        "@angular/core": ">=16.0.0"
+        "@angular/core": ">=16.0.0",
+        "tslib": "^2.6.3"
     }
 }
