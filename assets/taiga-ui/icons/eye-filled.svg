@@ -1,4 +1,4 @@
-<!-- @license lucide-static v0.408.0 - ISC -->
+<!-- @license lucide-static v0.414.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     class="lucide lucide-eye"
@@ -11,6 +11,9 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+    />
     <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="3" />
 </svg>
