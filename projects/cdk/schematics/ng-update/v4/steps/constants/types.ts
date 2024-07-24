@@ -3,9 +3,12 @@ import type {ReplacementType} from '../../../interfaces';
 export const TYPES_TO_RENAME: readonly ReplacementType[] = [
     {
         from: 'TuiDocExample',
-        to: 'Record<string, string | Promise<unknown>>',
+        to: 'Record<string, TuiRawLoaderContent>',
         moduleSpecifier: ['@taiga-ui/addon-doc'],
         removeImport: true,
+        newImports: [
+            {name: 'TuiRawLoaderContent', moduleSpecifier: '@taiga-ui/addon-doc'},
+        ],
     },
     {
         from: 'TuiBrightness',
