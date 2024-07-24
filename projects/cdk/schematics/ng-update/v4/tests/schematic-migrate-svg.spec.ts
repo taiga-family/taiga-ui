@@ -11,78 +11,39 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
-import {createAngularJson} from '../../../utils/create-angular-json';
-
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import { TuiBadgeModule } from "@taiga-ui/experimental";
+import { TuiSvgModule } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadgeModule]
+    imports: [TuiSvgModule],
 })
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiBadge } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiIcon } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadge]
+    imports: [TuiIcon],
 })
 export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `
-<tui-badge
-    status="primary"
-    [value]="value"
-    [hoverable]="true"
-/>
-<tui-badge
-    status="primary"
-    [value]="value"
-    [hoverable]="true"
-></tui-badge>
-<tui-badge
-    status="success"
-    value="Taiga"
->
-    <tui-svg src="tuiIconHelpCircle"></tui-svg>
-</tui-badge>
-<tui-badge
-    status="success"
->
-    <tui-svg src="tuiIconHelpCircle"></tui-svg>
-</tui-badge>
+<tui-svg class="custom" [src]="src"></tui-svg>
+
+<tui-svg src="icon"></tui-svg>
 `;
 
 const TEMPLATE_AFTER = `
-<tui-badge
-    appearance="primary"
-   ${''}
-    ${''}
->{{ value }}</tui-badge>
-<tui-badge
-    appearance="primary"
-   ${''}
-    ${''}
->{{ value }}</tui-badge>
-<tui-badge
-    appearance="success"
-   ${''}
-iconStart="tuiIconHelpCircle">Taiga
-    ${''}
-</tui-badge>
-<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
-<tui-badge
-    appearance="success"
->
-    <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
-</tui-badge>
+<tui-icon  class="custom" [icon]="src"></tui-icon>
+
+<tui-icon  icon="icon"></tui-icon>
 `;
 
 describe('ng-update', () => {
@@ -100,7 +61,7 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate badge in template', async () => {
+    it('should migrate svg in template', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
@@ -110,7 +71,7 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should migrate badge references in ts files', async () => {
+    it('should migrate svg references in ts files', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
@@ -127,12 +88,7 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
-    createAngularJson();
-    createSourceFile(
-        'package.json',
-        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
-    );
+    createSourceFile('package.json', '{}');
 }

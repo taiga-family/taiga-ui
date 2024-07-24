@@ -11,6 +11,20 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: 'src',
+            withTagNames: ['tui-svg'],
+        },
+        to: {attrName: 'icon'},
+    },
+    {
+        from: {
+            attrName: '[src]',
+            withTagNames: ['tui-svg'],
+        },
+        to: {attrName: '[icon]'},
+    },
+    {
+        from: {
             attrName: '[brandLogo]',
             withTagNames: ['tui-card', 'tui-thumbnail-card'],
         },
