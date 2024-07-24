@@ -13,7 +13,7 @@ export class TuiHintHost extends TuiRectAccessor {
 
     public readonly type = 'hint';
 
-    public getClientRect(): ClientRect {
+    public getClientRect(): DOMRect {
         return this.tuiHintHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
     }
 }
