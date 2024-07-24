@@ -702,7 +702,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiSvgComponent', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TuiIcon', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiCellModule', moduleSpecifier: '@taiga-ui/experimental'},

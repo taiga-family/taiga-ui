@@ -3,6 +3,7 @@ import type {ReplacementTag} from '../../../interfaces';
 export const TAGS_TO_REPLACE: ReplacementTag[] = [
     {from: 'tui-card', to: 'tui-thumbnail-card'},
     {from: 'tui-text-area', to: 'tui-textarea'},
+    {from: 'tui-svg', to: 'tui-icon'},
     {
         from: 'tui-input-count',
         to: 'tui-input-number',
