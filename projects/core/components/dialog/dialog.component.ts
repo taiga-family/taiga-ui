@@ -71,10 +71,11 @@ export class TuiDialogComponent<O, I> {
 
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected closeable$ = toObservable(this.context.closeable);
 
     constructor() {
         merge(
-            this.close$.pipe(switchMap(() => toObservable(this.context.closeable))),
+            this.close$.pipe(switchMap(() => this.closeable$)),
             inject(TuiDialogCloseService).pipe(
                 switchMap(() => toObservable(this.context.dismissible)),
             ),
