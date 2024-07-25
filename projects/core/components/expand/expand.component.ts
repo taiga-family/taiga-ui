@@ -45,6 +45,9 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiExpandComponent {
     @ViewChild('wrapper')
