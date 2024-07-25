@@ -69,7 +69,7 @@ const TEMPLATE_BEFORE = `
 
 <tui-checkbox-block
     formControlName="testValue3"
-    size="l"
+    size="xs"
     [hideCheckbox]="true"
 >
     Pineapples
@@ -108,27 +108,27 @@ const TEMPLATE_AFTER = `
     Pineapples
   </label>
 </form>
-<label tuiBlock>
+<label tuiBlock appearance="">
 <input tuiCheckbox type="checkbox"
   size="m"
-  [hideCheckbox]="true"
+  ${''}
   [(ngModel)]="value"
 >
   Label
 </label>
-<label tuiBlock>
+<label tuiBlock appearance="">
 <input tuiCheckbox type="checkbox"
     formControlName="testValue3"
-    size="l"
-    [hideCheckbox]="true"
+    size="s"
+    ${''}
 >
     Pineapples
 </label>
-<label tuiBlock>
+<label tuiBlock appearance="">
 <input tuiRadio type="radio"
     formControlName="testValue"
     size="l"
-    [hideRadio]="true"
+    ${''}
     [value]="fruit"
 >
     {{ fruit }}

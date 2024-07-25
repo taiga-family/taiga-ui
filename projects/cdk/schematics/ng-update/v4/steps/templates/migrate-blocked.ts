@@ -44,9 +44,14 @@ export function migrateBlocked({
             return;
         }
 
+        const [, hideIconLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(
+                ([name]) => name.includes('hidecheckbox') || name.includes('hideradio'),
+            ) || [];
+
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
-            '<label tuiBlock>',
+            `<label tuiBlock${hideIconLocation ? ' appearance=""' : ''}>`,
         );
 
         recorder.remove(
@@ -57,5 +62,12 @@ export function migrateBlocked({
             templateOffset + (sourceCodeLocation.endTag?.startOffset || 1),
             '</label>',
         );
+
+        if (hideIconLocation) {
+            recorder.remove(
+                templateOffset + hideIconLocation.startOffset,
+                hideIconLocation.endOffset - hideIconLocation.startOffset,
+            );
+        }
     });
 }
