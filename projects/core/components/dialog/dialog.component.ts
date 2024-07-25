@@ -17,7 +17,7 @@ import {tuiGetDuration} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
-import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
+import {filter, isObservable, map, merge, of, share, Subject, switchMap} from 'rxjs';
 
 import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
@@ -71,7 +71,7 @@ export class TuiDialogComponent<O, I> {
 
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected closeable$ = toObservable(this.context.closeable);
+    protected closeable$ = toObservable(this.context.closeable).pipe(share());
 
     constructor() {
         merge(
