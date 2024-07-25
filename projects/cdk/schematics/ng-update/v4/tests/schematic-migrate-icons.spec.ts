@@ -14,23 +14,35 @@ import {
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `import { Component } from "@angular/core";
+import { iconsName } from "some-path";
+
+const iconsMap = {
+  tuiIconStar: 'tuiIconStar'
+}
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {
-   icons = ['tuiIconMailLarge', 'tuiIconStar', 'tuiIconArrowDown']
+   icons = ['tuiIconMailLarge', 'tuiIconStar', 'tuiIconArrowDown'];
+   icon = iconsName.tuiIconStart;
 }`;
 
 const COMPONENT_AFTER = `import { Component } from "@angular/core";
+import { iconsName } from "some-path";
+
+const iconsMap = {
+  tuiIconStar: '@tui.star'
+}
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {
-   icons = ['@tui.mail', '@tui.star', '@tui.arrow-down']
+   icons = ['@tui.mail', '@tui.star', '@tui.arrow-down'];
+   icon = iconsName.tuiIconStart;
 }`;
 
 const TEMPLATE_BEFORE = `
