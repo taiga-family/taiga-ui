@@ -11,6 +11,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
+import {setupProgressLogger} from '../../utils/progress';
 import type {ReplacementIdentifierMulti} from '../interfaces/replacement-identifier';
 
 export function replaceIdentifiers(
@@ -20,7 +21,17 @@ export function replaceIdentifiers(
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
 
-    constants.forEach(replaceIdentifier);
+    const progressLog = setupProgressLogger({
+        total: constants.length,
+    });
+
+    constants.forEach((item, index) => {
+        replaceIdentifier(item);
+
+        const last = index === constants.length - 1;
+
+        !options['skip-logs'] && progressLog(item.from.name, last);
+    });
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} identifiers replaced \n`);
