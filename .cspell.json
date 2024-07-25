@@ -15,8 +15,7 @@
         "**/projects/i18n/languages/**",
         "**/addon-commerce/enums/currency-code.ts",
         "**/addon-commerce/utils/get-currency-symbol.ts",
-        "**/demo-playwright/stubs",
-        "**/cdk/schematics/**/*.ts"
+        "**/demo-playwright/stubs"
     ],
     "ignoreWords": ["preid", "Quarterpounder", "tuilabel"],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],

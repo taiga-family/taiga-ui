@@ -108,26 +108,26 @@ const TEMPLATE_AFTER = `
     Pineapples
   </label>
 </form>
-<label tuiBlock appearance="">
+<label tuiBlock="m" appearance="">
 <input tuiCheckbox type="checkbox"
-  size="m"
+  ${''}
   ${''}
   [(ngModel)]="value"
 >
   Label
 </label>
-<label tuiBlock appearance="">
+<label tuiBlock="s" appearance="">
 <input tuiCheckbox type="checkbox"
     formControlName="testValue3"
-    size="s"
+    ${''}
     ${''}
 >
     Pineapples
 </label>
-<label tuiBlock appearance="">
+<label tuiBlock="l" appearance="">
 <input tuiRadio type="radio"
     formControlName="testValue"
-    size="l"
+    ${''}
     ${''}
     [value]="fruit"
 >

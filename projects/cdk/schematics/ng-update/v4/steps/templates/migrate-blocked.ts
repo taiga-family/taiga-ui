@@ -7,7 +7,6 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
-import {replaceAttrValues} from '../../../utils/templates';
 
 export function migrateBlocked({
     resource,
@@ -21,37 +20,34 @@ export function migrateBlocked({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    replaceAttrValues({
-        resource,
-        fileSystem,
-        recorder,
-        data: [
-            {
-                attrNames: ['size'],
-                values: [{from: 'xs', to: 's'}],
-                withTagNames: ['tui-checkbox-block', 'tui-radio-block'],
-            },
-        ],
-    });
-
     const elements = findElementsByTagNames(template, [
         'tui-checkbox-block',
         'tui-radio-block',
     ]);
 
-    elements.forEach(({sourceCodeLocation, tagName}) => {
+    elements.forEach(({sourceCodeLocation, tagName, attrs}) => {
         if (!sourceCodeLocation) {
             return;
         }
 
-        const [, hideIconLocation] =
+        const [, hideIconAttrLocation] =
             Object.entries(sourceCodeLocation.attrs || {}).find(
-                ([name]) => name.includes('hidecheckbox') || name.includes('hideradio'),
+                ([name]) =>
+                    name.includes('hideCheckbox'.toLowerCase()) ||
+                    name.includes('hideRadio'.toLowerCase()),
             ) || [];
+
+        const [, sizeAttrLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
+                name.includes('size'),
+            ) || [];
+        const sizeAttr = attrs.find(({name}) => name.includes('size'));
+
+        const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
 
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
-            `<label tuiBlock${hideIconLocation ? ' appearance=""' : ''}>`,
+            `<label ${newBlockAttr}${hideIconAttrLocation ? ' appearance=""' : ''}>`,
         );
 
         recorder.remove(
@@ -63,10 +59,17 @@ export function migrateBlocked({
             '</label>',
         );
 
-        if (hideIconLocation) {
+        if (hideIconAttrLocation) {
             recorder.remove(
-                templateOffset + hideIconLocation.startOffset,
-                hideIconLocation.endOffset - hideIconLocation.startOffset,
+                templateOffset + hideIconAttrLocation.startOffset,
+                hideIconAttrLocation.endOffset - hideIconAttrLocation.startOffset,
+            );
+        }
+
+        if (sizeAttrLocation) {
+            recorder.remove(
+                templateOffset + sizeAttrLocation.startOffset,
+                sizeAttrLocation.endOffset - sizeAttrLocation.startOffset,
             );
         }
     });
