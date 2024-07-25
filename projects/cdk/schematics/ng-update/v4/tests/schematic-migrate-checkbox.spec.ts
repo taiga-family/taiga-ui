@@ -16,6 +16,7 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
+import {TuiPrimitiveCheckboxModule} from '@taiga-ui/core';
 import { TuiCheckboxModule } from "@taiga-ui/experimental";
 import { TuiCardModule } from "@taiga-ui/experimental";
 import { TuiNotification } from "@taiga-ui/core";
@@ -42,6 +43,10 @@ export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `
+<tui-primitive-checkbox [value]="false"></tui-primitive-checkbox>
+<tui-primitive-checkbox [value]="true"></tui-primitive-checkbox>
+<tui-primitive-checkbox [value]="computedValue"></tui-primitive-checkbox>
+
 <tui-checkbox
     formControlName="testValue1"
     class="checkbox"
@@ -55,6 +60,16 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
+<input
+    tuiCheckbox
+    type="checkbox" />
+<input
+    tuiCheckbox
+    type="checkbox" checked />
+<input
+    tuiCheckbox
+    type="checkbox" [checked]="computedValue" />
+
 <input
     tuiCheckbox
     type="checkbox"
