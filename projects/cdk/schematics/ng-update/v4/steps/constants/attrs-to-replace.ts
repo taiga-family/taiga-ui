@@ -47,14 +47,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {
             attrName: 'item',
-            withTagNames: ['tui-radio'],
+            withTagNames: ['tui-radio', 'tui-radio-labeled', 'tui-radio-block'],
         },
         to: {attrName: 'value'},
     },
     {
         from: {
             attrName: '[item]',
-            withTagNames: ['tui-radio'],
+            withTagNames: ['tui-radio', 'tui-radio-labeled', 'tui-radio-block'],
         },
         to: {attrName: '[value]'},
     },
@@ -71,20 +71,6 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withTagNames: ['*'],
         },
         to: {attrName: '(waResizeObserver)'},
-    },
-    {
-        from: {
-            attrName: 'item',
-            withTagNames: ['tui-radio-labeled'],
-        },
-        to: {attrName: 'value'},
-    },
-    {
-        from: {
-            attrName: '[item]',
-            withTagNames: ['tui-radio-labeled'],
-        },
-        to: {attrName: '[value]'},
     },
     // Hosted dropdown
     {
