@@ -10,12 +10,12 @@ jobs:
     env:
       NX_SKIP_NX_CACHE: true
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.2
         with:
           fetch-depth: 0
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.0
-      - uses: taiga-family/ci/actions/setup/node@v1.66.0
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.66.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.2
+      - uses: taiga-family/ci/actions/setup/node@v1.66.2
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.66.2
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
@@ -30,7 +30,7 @@ jobs:
         run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Time messenger
-        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.0
+        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.2
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
@@ -38,7 +38,7 @@ jobs:
           version: ${{ steps.info.outputs.version }}
 
       - name: Announce to Telegram messenger
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.0
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.2
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
