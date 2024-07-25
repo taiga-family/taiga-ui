@@ -661,12 +661,24 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiIcon', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiCheckboxComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCheckboxLabeledComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckbox', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiCheckboxLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiLabel', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiRadioLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiLabel', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiRadioLabeledComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRadioComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCheckboxBlockModule', moduleSpecifier: '@taiga-ui/kit'},
