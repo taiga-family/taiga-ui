@@ -17,7 +17,7 @@
         "./styles/*": "./styles/*"
     },
     "devDependencies": {
-        "@types/markdown-it": "14.1.1"
+        "@types/markdown-it": "14.1.2"
     },
     "peerDependencies": {
         "@angular/cdk": ">=16.0.0",
