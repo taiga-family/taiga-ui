@@ -14,6 +14,8 @@ import {
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const STYLES_BEFORE = `
+import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
+
 :host {
     display: flex;
     align-items: center;
@@ -25,6 +27,8 @@ const STYLES_BEFORE = `
 `;
 
 const STYLES_AFTER = `
+import '@taiga-ui/proprietary/styles/tbank-fonts';
+
 :host {
     display: flex;
     align-items: center;
