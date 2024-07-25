@@ -32,7 +32,7 @@
 </div>
 <div class="t-filler"></div>
 <div
-    *ngIf="context.closeable"
+    *ngIf="closeable$ | async"
     class="t-wrapper"
 >
     <button

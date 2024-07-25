@@ -28,6 +28,8 @@ export class TuiDialogExampleComponent8 {
     onClick(content: PolymorpheusContent): void {
         const closeable = this.dialogForm.withPrompt({
             label: 'Are you sure?',
+            closeable: false,
+            dismissible: false,
             data: {
                 content: 'Your data will be <strong>lost</strong>',
             },
