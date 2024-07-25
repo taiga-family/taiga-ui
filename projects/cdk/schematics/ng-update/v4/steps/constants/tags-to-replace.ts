@@ -31,6 +31,16 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         addAttributes: ['tuiRadio', 'type="radio"'],
     },
     {
+        from: 'tui-checkbox-block',
+        to: 'input',
+        addAttributes: ['tuiCheckbox', 'type="checkbox"'],
+    },
+    {
+        from: 'tui-radio-block',
+        to: 'input',
+        addAttributes: ['tuiRadio', 'type="radio"'],
+    },
+    {
         from: 'tui-hosted-dropdown',
         to: 'div',
         filterFn: (el) =>

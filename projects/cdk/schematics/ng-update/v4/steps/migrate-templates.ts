@@ -47,6 +47,7 @@ import {
     migrateThumbnailCard,
     migrateToggle,
 } from './templates';
+import {migrateBlocked} from './templates/migrate-blocked';
 
 function getAction<T>({
     action,
@@ -103,6 +104,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migratePreventDefault,
         migrateMoney,
         migrateLabeled,
+        migrateBlocked,
         migrateProgressSegmented,
         migrateThumbnailCard,
         migrateOverscroll,
