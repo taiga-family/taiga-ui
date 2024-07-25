@@ -27,6 +27,14 @@ export function migrateStyles(): void {
                 .replaceAll(
                     '@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile-2023',
                     '@taiga-ui/proprietary/styles/tbank-theme-mobile.less',
+                )
+                .replaceAll(
+                    '@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile',
+                    '@taiga-ui/proprietary/styles/tbank-theme-mobile.less',
+                )
+                .replaceAll(
+                    '@taiga-ui/proprietary-core/styles/theme-tinkoff',
+                    '@taiga-ui/proprietary/styles/tbank-theme',
                 );
 
             sourceFile.replaceWithText(fullText);
