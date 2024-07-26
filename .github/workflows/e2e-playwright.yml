@@ -8,13 +8,13 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.3
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.2
-      - uses: taiga-family/ci/actions/run/rebase@v1.66.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.3
+      - uses: taiga-family/ci/actions/run/rebase@v1.66.3
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.66.2
+      - uses: taiga-family/ci/actions/setup/node@v1.66.3
 
       - run: npx tsc -p tsconfig.playwright.json
 
@@ -38,9 +38,9 @@ jobs:
         shardTotal: [9]
     name: playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.2
-      - uses: taiga-family/ci/actions/setup/node@v1.66.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.3
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.3
+      - uses: taiga-family/ci/actions/setup/node@v1.66.3
 
       - name: Install Playwright Browsers
         run: |
@@ -129,8 +129,8 @@ jobs:
     needs: [playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.3
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.3
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
