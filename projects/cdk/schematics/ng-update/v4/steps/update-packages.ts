@@ -1,15 +1,16 @@
 /// <reference lib="es2021" />
-import {DevkitFileSystem, getImports} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
+    getImports,
     getPackageJsonDependency,
     removePackageJsonDependency,
 } from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
+import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {replacePackageName} from '../../steps';
-import {ALL_TS_FILES} from '../../../constants';
 
 export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
