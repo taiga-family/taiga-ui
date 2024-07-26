@@ -816,6 +816,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: {name: 'TuiDialog', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {
+            name: 'TuiPopover',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
+        from: {name: 'TuiBaseDialogContext', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {
+            name: 'TuiPopoverContext',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
+    {
         from: {name: 'TuiDialogModule', moduleSpecifier: '@taiga-ui/core'},
         to: {
             name: 'TuiDialog',
