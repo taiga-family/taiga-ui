@@ -3,6 +3,7 @@ import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagName} from '../../../../../utils/templates/elements';
+import {findAttr} from '../../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -64,9 +65,7 @@ function replaceValueAttr(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    const valueAttr = attrs.find(
-        (attr) => attr.name === 'value' || attr.name === '[value]',
-    );
+    const valueAttr = findAttr(attrs, 'value');
 
     if (valueAttr) {
         const {startOffset, endOffset} = sourceCodeLocation.attrs?.[valueAttr.name] || {

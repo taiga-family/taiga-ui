@@ -2,6 +2,7 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -41,7 +42,7 @@ export function migrateBlocked({
             Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
                 name.includes('size'),
             ) || [];
-        const sizeAttr = attrs.find(({name}) => name.includes('size'));
+        const sizeAttr = findAttr(attrs, 'size');
 
         const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
 
