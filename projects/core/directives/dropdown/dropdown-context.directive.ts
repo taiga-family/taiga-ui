@@ -2,7 +2,7 @@ import {Directive, HostBinding, HostListener, Inject} from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
     TUI_IS_IOS,
-    TUI_TOUCH_SUPPORTED,
+    TUI_IS_TOUCH,
     TuiActiveZoneDirective,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
@@ -43,7 +43,7 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
         readonly activeZone: TuiActiveZoneDirective,
         @Inject(TUI_IS_IOS)
         readonly isIOS: boolean,
-        @Inject(TUI_TOUCH_SUPPORTED)
+        @Inject(TUI_IS_TOUCH)
         readonly isTouch: boolean,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
