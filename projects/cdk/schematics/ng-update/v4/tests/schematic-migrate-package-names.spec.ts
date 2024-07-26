@@ -23,11 +23,13 @@ import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 import {TuiEditorModule} from '@tinkoff/tui-editor';
+import {TuiNavigationModule} from '@taiga-ui/experimental';
 
 const imports = [TuiEditorModule];
 `.trim();
 
 const TS_FILE_AFTER = `
+import { TuiNavigation } from "@taiga-ui/layout";
 import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
 import {Component} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -51,6 +53,7 @@ const PACKAGE_JSON_AFTER = {
     dependencies: {
         '@angular/core': '~13.0.0',
         '@taiga-ui/addon-commerce': '~3.42.0',
+        '@taiga-ui/layout': TUI_VERSION,
         '@taiga-ui/legacy': TUI_VERSION,
         '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
         '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
@@ -119,6 +122,7 @@ describe('ng-update', () => {
                 ...PACKAGE_JSON_DEPS,
                 '@taiga-ui/event-plugins':
                     cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+                '@taiga-ui/layout': TUI_VERSION,
                 '@taiga-ui/legacy': TUI_VERSION,
             },
         });

@@ -1,5 +1,5 @@
 /// <reference lib="es2021" />
-import type {DevkitFileSystem} from 'ng-morph';
+import {DevkitFileSystem, getImports} from 'ng-morph';
 import {
     addPackageJsonDependency,
     getPackageJsonDependency,
@@ -9,6 +9,7 @@ import {
 import {TUI_VERSION} from '../../../../constants/version';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {replacePackageName} from '../../steps';
+import {ALL_TS_FILES} from '../../../constants';
 
 export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
@@ -51,6 +52,13 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/event-plugins',
             version: '^4.0.1',
+        });
+    }
+
+    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
+        addPackageJsonDependency(tree, {
+            name: '@taiga-ui/layout',
+            version: TUI_VERSION,
         });
     }
 }
