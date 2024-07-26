@@ -3,6 +3,9 @@ import type {Observable} from 'rxjs';
 import {shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
 
+/**
+ * @deprecated: drop in v5.0
+ */
 @Injectable({
     providedIn: 'root',
 })
