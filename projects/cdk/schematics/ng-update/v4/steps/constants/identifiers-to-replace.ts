@@ -1472,6 +1472,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'TuiProprietaryNavigation',
             moduleSpecifier: '@taiga-ui/proprietary',
+            spreadInModule: true,
         },
     },
     {
