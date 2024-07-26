@@ -1,3 +1,4 @@
+export * from './push';
 export * from './push.component';
 export * from './push.directive';
 export * from './push.options';
