@@ -23,6 +23,8 @@ import { TuiFeedItemModule } from '@taiga-ui/proprietary-banking';
 import { TuiNavigationModule } from '@taiga-ui/proprietary-navigation';
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary-icons';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
+import {TuiIllustrationName} from '@taiga-ui/proprietary-icons';
+import {TuiOperationIcon} from '@taiga-ui/proprietary-banking';
 
 @Component({
     standalone: true,
@@ -30,12 +32,21 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
     imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule]
 })
 export class Test {
+    @Input() illustration: TuiIllustrationName | null = null;
+
+    readonly operationIcon: TuiOperationIcon = {
+        icon: 'tuiIconTdsTransportAutoRubleMedium',
+        color: '#428BF9',
+        background: '#428bf91f',
+    };
+
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
 const COMPONENT_AFTER =
     `import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
+import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 
 @Component({
     standalone: true,
@@ -43,6 +54,14 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
     imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationModePipe]
 })
 export class Test {
+    @Input() illustration: string | null = null;
+
+    readonly operationIcon: TuiFeedItemIcon = {
+        icon: '@tui.tds-transport-auto-ruble-medium',
+        color: '#428BF9',
+        background: '#428bf91f',
+    };
+
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
@@ -126,8 +145,13 @@ describe('ng-update proprietary', () => {
     });
 
     it('migrate', async () => {
-        const tree = await runner.runSchematic(
+        await runner.runSchematic(
             'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+        const tree = await runner.runSchematic(
+            'migrateIconsV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
