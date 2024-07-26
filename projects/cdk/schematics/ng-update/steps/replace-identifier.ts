@@ -25,12 +25,10 @@ export function replaceIdentifiers(
         total: constants.length,
     });
 
-    constants.forEach((item, index) => {
+    constants.forEach((item) => {
         replaceIdentifier(item);
 
-        const last = index === constants.length - 1;
-
-        !options['skip-logs'] && progressLog(item.from.name, last);
+        !options['skip-logs'] && progressLog(item.from.name);
     });
 
     !options['skip-logs'] &&
