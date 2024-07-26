@@ -9,7 +9,7 @@ export function renameProprietaryIcons(pattern = ALL_FILES): void {
     sourceFiles.forEach((file) => {
         let text = file.getFullText();
 
-        const regex = /\btuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
+        const regex = /['"`]tuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
 
         text = text.replaceAll(regex, (match) => convertString(match));
 
@@ -19,7 +19,7 @@ export function renameProprietaryIcons(pattern = ALL_FILES): void {
 
 function convertString(input: string): string {
     const result = input
-        .replace(/^tuiIconTds/, '')
+        .replace(/['"`]tuiIconTds/, '')
         .replace(/SmallPragmatic$/, '')
         .replace(/MediumPragmatic$/, '')
         .replace(/Small$/, '')
@@ -35,7 +35,7 @@ function convertString(input: string): string {
     const pack = extractPackName(input);
     const subfolder = extractSubfolder(input);
 
-    return `@tui.${pack}${subfolder ? `.${subfolder}` : ''}.${result.startsWith('-') ? result.slice(1) : result}`;
+    return `${input.slice(0, 1)}@tui.${pack}${subfolder ? `.${subfolder}` : ''}.${result.startsWith('-') ? result.slice(1) : result}`;
 }
 
 function extractPackName(input: string): string {
