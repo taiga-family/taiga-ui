@@ -14,7 +14,7 @@ export abstract class TuiPopoverDirective<T>
     private readonly service = inject(TuiPopoverService<T>);
     private readonly open$ = new Subject<boolean>();
 
-    protected options: Partial<T> = {};
+    protected options: Partial<T & {readonly name?: string}> = {};
     protected open = false;
 
     protected readonly openChange = this.open$.pipe(

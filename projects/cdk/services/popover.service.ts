@@ -13,6 +13,7 @@ export interface TuiPopoverContext<O> extends TuiContext<Observer<O>> {
     readonly component: PolymorpheusComponent<any>;
     readonly createdAt: number;
     readonly id: string;
+    readonly name?: string;
     readonly completeWith: (value: O) => void;
 }
 
@@ -38,7 +39,7 @@ export abstract class TuiPopoverService<T, K = void> {
 
     public open<G = void>(
         content: PolymorpheusContent<T & TuiPopoverContext<K extends void ? G : K>>,
-        options: Partial<T> = {},
+        options: Partial<T & {readonly name?: string}> = {},
     ): Observable<K extends void ? G : K> {
         return new Observable((observer) => {
             const item = {
@@ -49,6 +50,7 @@ export abstract class TuiPopoverService<T, K = void> {
                 component: this.component,
                 createdAt: Date.now(),
                 id: this.id.generate(),
+                name: options.name,
                 completeWith: (result: K extends void ? G : K): void => {
                     observer.next(result);
                     observer.complete();

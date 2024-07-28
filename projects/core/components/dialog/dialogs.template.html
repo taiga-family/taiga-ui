@@ -8,12 +8,14 @@
         class="t-dialog"
         @tuiHost
         [attr.aria-labelledby]="item.id"
+        [attr.data-dialog-name]="item?.name"
         [class.t-dialog_closing]="!dialogs.length"
     >
         <ng-container *polymorpheusOutlet="item.component; context: item" />
         <tui-scroll-controls class="t-scrollbars" />
     </section>
     <div
+        data-dialog-overlay
         class="t-overlay"
         [style.opacity]="dialogs.length"
     ></div>

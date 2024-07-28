@@ -101,6 +101,13 @@
             [component]="10 | tuiComponent"
             [content]="10 | tuiExample"
         />
+
+        <tui-doc-example
+            id="overlay"
+            heading="Custom overlay"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -221,6 +228,13 @@
                 [(documentationPropertyValue)]="label"
             >
                 Heading of dialog
+            </ng-template>
+            <ng-template
+                documentationPropertyName="name"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="name"
+            >
+                Dialog name
             </ng-template>
             <ng-template
                 documentationPropertyName="required"

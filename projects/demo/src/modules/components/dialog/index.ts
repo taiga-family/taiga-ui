@@ -104,10 +104,13 @@ export default class Page {
 
     protected label = '';
 
+    protected name = '';
+
     protected appearance = '';
 
     protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
-        const {data, label, required, closeable, dismissible, size, appearance} = this;
+        const {data, label, required, closeable, dismissible, size, appearance, name} =
+            this;
 
         this.dialogs
             .open(content, {
@@ -117,6 +120,7 @@ export default class Page {
                 closeable,
                 dismissible,
                 size,
+                name,
                 appearance,
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
