@@ -104,6 +104,21 @@
             [component]="10 | tuiComponent"
             [content]="10 | tuiExample"
         />
+
+        <tui-doc-example
+            id="status-bar"
+            description="Change status-bar color when opening dialog"
+            heading="Theme color"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts'"
+        >
+            <tui-notification
+                appearance="warning"
+                class="tui-space_bottom-4"
+            >
+                Works only on mobile browsers
+            </tui-notification>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
