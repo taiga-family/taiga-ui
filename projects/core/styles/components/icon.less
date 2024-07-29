@@ -28,10 +28,12 @@ tui-icon {
     box-sizing: border-box;
     mask: var(--t-icon-bg) no-repeat center/contain;
 
-    &:after {
+    &:after,
+    &[tuiIcons]:after {
         .fullsize();
 
         content: '';
+        display: block;
         mask: var(--t-icon) no-repeat center/contain;
         background: currentColor;
     }

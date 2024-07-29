@@ -124,7 +124,11 @@
     font-size: 0 !important;
     padding: 0;
 
-    &:after {
+    &[data-size='l']:after {
+        margin: 0;
+    }
+
+    &&[style*='--t-icon-start:']:after {
         display: none;
     }
 }
