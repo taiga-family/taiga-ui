@@ -3,7 +3,6 @@ import {
     Component,
     EventEmitter,
     inject,
-    InjectionToken,
     Input,
     Output,
 } from '@angular/core';
@@ -17,64 +16,11 @@ import {
 } from '@taiga-ui/cdk/utils/color';
 import {tuiDefaultSort, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 
-/**
- * @deprecated: drop in v5.0
- */
-export const TUI_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
-    '[TUI_COLOR_SELECTOR_MODE_NAMES]',
-    {
-        factory: () => ['Solid color', 'Gradient'],
-    },
-);
-
-/**
- * @deprecated: drop in v5.0
- */
-export const TUI_DEFAULT_INPUT_COLORS = new Map([
-    ['color-black-100', '#909090'],
-    ['color-black-200', '#666666'],
-    ['color-black-300', '#333333'],
-    ['color-blue-100', '#1771e6'],
-    ['color-blue-200', '#1464cc'],
-    ['color-blue-300', '#0953b3'],
-    ['color-gray-100', '#f5f5f6'],
-    ['color-gray-200', '#e7e8ea'],
-    ['color-gray-300', '#cbcfd3'],
-    ['color-gray-400', '#959ba4'],
-    ['color-gray-500', '#79818c'],
-    ['color-gray-600', '#616871'],
-    ['color-green-100', '#39b54a'],
-    ['color-green-200', '#2ca53a'],
-    ['color-green-300', '#168a21'],
-    ['color-light-blue-100', '#ecf1f7'],
-    ['color-light-blue-200', '#e4ebf3'],
-    ['color-light-blue-300', '#dde4ed'],
-    ['color-red-100', '#e01f19'],
-    ['color-red-200', '#d3120e'],
-    ['color-red-300', '#c40b08'],
-    ['color-yellow-100', '#FFDD2C'],
-    ['color-yellow-200', '#FCC521'],
-    ['color-yellow-300', '#FAB618'],
-    ['transparent', 'transparent'],
-]);
-
-const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
-
-const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
-    [0, [0, 0, 0, 1]],
-    [1, [255, 255, 255, 1]],
-];
-
-const ICONS: Record<TuiGradientDirection, string> = {
-    'to top right': '@tui.move-up-right',
-    'to right': '@tui.move-right',
-    'to bottom right': '@tui.move-down-right',
-    'to bottom': '@tui.move-down',
-    'to bottom left': '@tui.move-down-left',
-    'to left': '@tui.move-left',
-    'to top left': '@tui.move-up-left',
-    'to top': '@tui.move-up',
-};
+import {
+    TUI_COLOR_SELECTOR_MODE_NAMES,
+    TUI_COLOR_SELECTOR_OPTIONS,
+    TuiColorSelectorMode,
+} from './color-selector.options';
 
 /**
  * @deprecated: drop in v5.0
@@ -86,38 +32,39 @@ const ICONS: Record<TuiGradientDirection, string> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorSelectorComponent {
-    private stops = new Map(DEFAULT_STEPS);
-    private currentStop = 0;
-    private direction: TuiGradientDirection = 'to bottom';
+    private readonly selectorOptions = inject(TUI_COLOR_SELECTOR_OPTIONS);
+    private stops = new Map(this.selectorOptions.gradient.steps);
+    private currentStop = this.selectorOptions.gradient.stop;
+    private direction = this.selectorOptions.gradient.direction;
+
     private readonly sanitizer = inject(DomSanitizer);
     protected open = false;
 
     @Input()
-    public colors: ReadonlyMap<string, string> = new Map<string, string>();
+    public colors = this.selectorOptions.colors;
 
     @Output()
     public readonly colorChange = new EventEmitter<string>();
 
-    public color: [number, number, number, number] = [0, 0, 0, 1];
+    public color = this.selectorOptions.color;
 
     public readonly modes = inject(TUI_COLOR_SELECTOR_MODE_NAMES);
 
-    public currentMode = this.modes[0];
+    public currentMode = this.modes[this.selectorOptions.mode];
 
-    public readonly buttons: readonly TuiGradientDirection[] = [
-        'to top right',
-        'to right',
-        'to bottom right',
-        'to bottom',
-        'to bottom left',
-        'to left',
-        'to top left',
-        'to top',
-    ];
+    public readonly buttons = this.selectorOptions.gradient.buttons;
 
     @Input('color')
     public set colorSetter(color: string) {
-        this.parse(color);
+        if (color.startsWith('linear-gradient')) {
+            this.parseGradient(color);
+        } else {
+            this.parseColor(color);
+        }
+    }
+
+    public get selectorMode(): boolean {
+        return this.selectorOptions.selectorMode;
     }
 
     public get palette(): Map<string, string> {
@@ -137,11 +84,11 @@ export class TuiColorSelectorComponent {
     }
 
     public get isGradient(): boolean {
-        return this.currentMode === this.modes[1];
+        return this.currentMode === this.modes[TuiColorSelectorMode.Gradient];
     }
 
     public getIcon(direction: TuiGradientDirection): string {
-        return ICONS[direction];
+        return this.selectorOptions.gradient.icons[direction];
     }
 
     public isModeActive(mode: string): boolean {
@@ -166,7 +113,7 @@ export class TuiColorSelectorComponent {
         this.open = false;
 
         this.updateColor(
-            mode === this.modes[0]
+            mode === this.modes[TuiColorSelectorMode.SolidColor]
                 ? `rgba(${this.color.join(', ')})`
                 : this.getGradient(this.direction),
         );
@@ -242,7 +189,7 @@ export class TuiColorSelectorComponent {
     }
 
     private getStop(stop: number): [number, number, number, number] {
-        return this.stops.get(stop) || EMPTY_STOP;
+        return this.stops.get(stop) || this.selectorOptions.gradient.emptyStop;
     }
 
     private addStop(stop: number): void {
@@ -273,14 +220,6 @@ export class TuiColorSelectorComponent {
         );
     }
 
-    private parse(color: string): void {
-        if (color.startsWith('linear-gradient')) {
-            this.parseGradient(color);
-        } else {
-            this.parseColor(color);
-        }
-    }
-
     private parseGradient(color: string): void {
         if (color === this.getGradient(this.direction)) {
             return;
@@ -288,9 +227,8 @@ export class TuiColorSelectorComponent {
 
         const gradient = tuiParseGradient(tuiGetGradientData(color));
 
-        this.currentMode = this.modes[1];
         this.direction = gradient.side;
-        this.currentStop = 0;
+        this.currentStop = this.selectorOptions.gradient.stop;
         this.stops = new Map(
             gradient.stops.length
                 ? gradient.stops.map<[number, [number, number, number, number]]>(
@@ -299,13 +237,12 @@ export class TuiColorSelectorComponent {
                           tuiParseColor(color),
                       ],
                   )
-                : DEFAULT_STEPS,
+                : this.selectorOptions.gradient.steps,
         );
     }
 
     private parseColor(color: string): void {
-        this.currentMode = this.modes[0];
-        this.currentStop = 0;
+        this.currentStop = this.selectorOptions.gradient.stop;
         this.color = tuiParseColor(color);
     }
 }

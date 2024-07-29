@@ -1,45 +1,48 @@
-<div
-    class="t-select"
-    [tuiDropdown]="menu"
-    [(tuiDropdownOpen)]="open"
->
-    <button
-        appearance=""
-        size="s"
-        tuiButton
-        tuiChevron
-        type="button"
+<ng-container *ngIf="selectorMode">
+    <div
+        class="t-select"
+        [tuiDropdown]="menu"
+        [(tuiDropdownOpen)]="open"
     >
-        {{ currentMode }}
-    </button>
-
-    <ng-template #menu>
-        <tui-data-list
-            role="menu"
+        <button
+            appearance=""
             size="s"
-            class="t-menu"
+            tuiButton
+            tuiChevron
+            type="button"
         >
-            <button
-                *ngFor="let mode of modes"
-                role="menuitemradio"
-                tuiOption
-                [attr.aria-checked]="isModeActive(mode)"
-                (click)="onModeSelect(mode)"
-                (keydown.enter.prevent)="onModeSelect(mode)"
-                (keydown.space.prevent)="onModeSelect(mode)"
+            {{ currentMode }}
+        </button>
+
+        <ng-template #menu>
+            <tui-data-list
+                role="menu"
+                size="s"
+                class="t-menu"
             >
-                {{ mode }}
-                <tui-icon
-                    *ngIf="isModeActive(mode)"
-                    icon="@tui.check"
-                    class="t-checkmark"
-                />
-            </button>
-        </tui-data-list>
-    </ng-template>
-</div>
-<ng-container *ngIf="isGradient">
+                <button
+                    *ngFor="let mode of modes"
+                    role="menuitemradio"
+                    tuiOption
+                    [attr.aria-checked]="isModeActive(mode)"
+                    (click)="onModeSelect(mode)"
+                    (keydown.enter.prevent)="onModeSelect(mode)"
+                    (keydown.space.prevent)="onModeSelect(mode)"
+                >
+                    {{ mode }}
+                    <tui-icon
+                        *ngIf="isModeActive(mode)"
+                        icon="@tui.check"
+                        class="t-checkmark"
+                    />
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </div>
     <hr class="t-hr" />
+</ng-container>
+
+<ng-container *ngIf="isGradient">
     <div
         class="t-wrapper"
         [style.background]="gradient"
