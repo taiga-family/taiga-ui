@@ -1,18 +1,14 @@
-import {DOCUMENT} from '@angular/common';
 import {
+    ApplicationRef,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
     Inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_IS_IOS,
-    tuiBlurNativeFocused,
-    tuiIsNativeFocusedIn,
-    tuiIsSafari,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiIsSafari} from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -40,8 +36,12 @@ export class TuiLoaderComponent {
     @Input()
     set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
-        if (value && this.focused) {
-            tuiBlurNativeFocused(this.doc);
+        if (value) {
+            this.cd.markForCheck();
+            /**
+             * recalculated HostBinding getters
+             */
+            void Promise.resolve().then(() => this.app.tick());
         }
 
         this.loading = value;
@@ -53,7 +53,8 @@ export class TuiLoaderComponent {
     readonly isApple = tuiIsSafari(this.el.nativeElement) || this.isIos;
 
     constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(ApplicationRef) private readonly app: ApplicationRef,
+        @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
         @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
@@ -69,9 +70,5 @@ export class TuiLoaderComponent {
 
     get isHorizontal(): boolean {
         return !tuiSizeBigger(this.size);
-    }
-
-    get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 }

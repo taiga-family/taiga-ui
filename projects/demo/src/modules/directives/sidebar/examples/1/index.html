@@ -26,16 +26,35 @@
             <tui-accordion-item borders="top-bottom">
                 Other libraries
                 <ng-template tuiAccordionItemContent>
-                    <a
-                        *ngFor="let link of links"
-                        href="https://github.com/taiga-family/{{ link }}"
-                        rel="noreferrer"
-                        target="_blank"
-                        tuiLink
-                        class="link"
+                    <tui-loader
+                        *tuiLet="fakeRequest$ | async as loading"
+                        textContent="Loading..."
+                        [overlay]="true"
+                        [showLoader]="loading || false"
                     >
-                        {{ link }}
-                    </a>
+                        <ng-container *ngIf="loading === false; else button">
+                            <a
+                                *ngFor="let link of links"
+                                href="https://github.com/taiga-family/{{ link }}"
+                                rel="noreferrer"
+                                target="_blank"
+                                tuiLink
+                                class="link"
+                            >
+                                {{ link }}
+                            </a>
+                        </ng-container>
+
+                        <ng-template #button>
+                            <button
+                                size="s"
+                                tuiButton
+                                (click)="load$.next()"
+                            >
+                                Loading
+                            </button>
+                        </ng-template>
+                    </tui-loader>
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>
