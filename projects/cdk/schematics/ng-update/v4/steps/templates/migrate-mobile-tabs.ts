@@ -17,7 +17,7 @@ const SEGMENTED_TAG_NAME = 'tui-segmented';
 const TAB_ATTRIBUTE_NAME = 'tuiTab'.toLowerCase();
 const MOBILE_TABS_ATTRIBUTE_NAME = 'tuiMobileTabs'.toLowerCase();
 
-export function migrateMobileTas({
+export function migrateMobileTabs({
     resource,
     recorder,
     fileSystem,
