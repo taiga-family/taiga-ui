@@ -2,15 +2,15 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
-import {replaceTag} from '../../../utils/templates';
-import {removeAttrs} from '../utils/remove-attrs';
+import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsWithAttributeOnTag} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
-import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
+import {replaceTag} from '../../../utils/templates';
+import {removeAttrs} from '../utils/remove-attrs';
 
 const TABS_TAG_NAME = 'tui-tabs';
 const SEGMENTED_TAG_NAME = 'tui-segmented';
@@ -25,7 +25,7 @@ export function migrateMobileTas({
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
     resource: TemplateResource;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
@@ -58,7 +58,7 @@ function removeTabAttribute(
     {attrs, sourceCodeLocation}: Element,
     recorder: UpdateRecorder,
     templateOffset: number,
-) {
+): void {
     const tabAttr = attrs?.find((attr) => attr.name === TAB_ATTRIBUTE_NAME);
 
     if (!tabAttr || !sourceCodeLocation) {
@@ -72,7 +72,7 @@ function removeMobileTabsAttribute(
     {attrs, sourceCodeLocation}: Element,
     recorder: UpdateRecorder,
     templateOffset: number,
-) {
+): void {
     const mobileTabsAttr = attrs?.find(
         (attr) => attr.name === MOBILE_TABS_ATTRIBUTE_NAME,
     );

@@ -1,4 +1,5 @@
 import {join} from 'node:path';
+
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
@@ -16,7 +17,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 import { TuiMobileTabsModule } from "@taiga-ui/addon-mobile";
- 
+
 @Component({
     standalone: true,
     selector: 'test-mobile-tabs',
