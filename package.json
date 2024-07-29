@@ -138,7 +138,7 @@
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
         "nx": "18.3.5",
-        "rollup": "4.19.0",
+        "rollup": "4.19.1",
         "rxjs": "7.5.0",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
