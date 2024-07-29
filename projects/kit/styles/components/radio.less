@@ -33,7 +33,7 @@
         opacity: 1;
     }
 
-    &:before {
+    &::before {
         .fullsize();
         .transition(transform);
 
@@ -43,7 +43,7 @@
         transform: scale(0);
     }
 
-    &:checked:before {
+    &:checked::before {
         transform: scale(0.5);
     }
 

@@ -36,7 +36,7 @@
             left: 0;
         }
 
-        &:after {
+        &::after {
             .transition(opacity);
 
             content: '';
@@ -78,7 +78,7 @@
     position: sticky;
 }
 
-:host-context(table._stuck)._sticky:after {
+:host-context(table._stuck)._sticky::after {
     opacity: 1;
 }
 
@@ -86,7 +86,7 @@
     box-shadow: 0 0.3125rem rgba(237, 237, 237, 0.7);
 }
 
-:host-context([tuiTheme='dark'])._sticky:after {
+:host-context([tuiTheme='dark'])._sticky::after {
     background: rgba(60, 60, 60, 0.9);
 }
 

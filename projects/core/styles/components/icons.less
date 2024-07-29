@@ -19,8 +19,8 @@
     --t-icon-start: none;
     --t-icon-end: none;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: '';
         display: var(--t-icon-start);
         width: 1em;
@@ -31,7 +31,7 @@
         mask: var(--t-icon-start) no-repeat center/contain;
     }
 
-    &:after {
+    &::after {
         display: var(--t-icon-end);
         mask: var(--t-icon-end) no-repeat center/contain;
     }

@@ -45,7 +45,7 @@ tui-pin,
     &:empty {
         --t-size: 0.75rem;
 
-        &:before {
+        &::before {
             display: none;
         }
     }
@@ -91,12 +91,12 @@ tui-pin,
             height: 2.125rem;
         }
 
-        &:before {
+        &::before {
             transform: scale(0.99) translate(-1.875rem, -1.875rem);
             opacity: 1;
         }
 
-        &:after {
+        &::after {
             top: 4.5rem;
             opacity: 1;
         }
@@ -121,18 +121,18 @@ tui-pin,
             height: 2.125rem;
         }
 
-        &:before {
+        &::before {
             transform: scale(0.99) translate(-1.875rem, -1.875rem);
             opacity: 1;
         }
 
-        &:after {
+        &::after {
             top: 4.5rem;
             opacity: 1;
         }
     }
 
-    &:before {
+    &::before {
         .transition(~'transform, opacity');
 
         content: '';
@@ -153,7 +153,7 @@ tui-pin,
             no-repeat;
     }
 
-    &:after {
+    &::after {
         .transition(~'top, opacity');
 
         content: '';

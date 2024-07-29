@@ -95,7 +95,8 @@
             "**/demo/**",
             "**/dist/**",
             "**/coverage/**",
-            "**/node_modules/**"
+            "**/node_modules/**",
+            "**/tests-report/**"
         ]
     },
     "devDependencies": {
@@ -122,7 +123,7 @@
         "@taiga-ui/eslint-plugin-experience": "0.113.3",
         "@taiga-ui/event-plugins": "4.0.1",
         "@taiga-ui/prettier-config": "0.113.3",
-        "@taiga-ui/stylelint-config": "0.113.3",
+        "@taiga-ui/stylelint-config": "0.125.2",
         "@taiga-ui/tsconfig": "0.113.3",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",

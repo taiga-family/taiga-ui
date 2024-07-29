@@ -174,7 +174,7 @@
 }
 
 .t-text {
-    &:after {
+    &::after {
         content: ',\00a0';
     }
 
@@ -186,7 +186,7 @@
         color: var(--tui-text-negative);
     }
 
-    &:not(.t-text_comma):last-of-type:after {
+    &:not(.t-text_comma):last-of-type::after {
         content: '';
     }
 

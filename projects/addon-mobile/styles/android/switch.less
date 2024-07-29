@@ -7,7 +7,7 @@ input[tuiSwitch] {
     background: transparent !important;
     overflow: visible;
 
-    &:before {
+    &::before {
         content: '';
         display: block;
         height: 100%;
@@ -22,7 +22,7 @@ input[tuiSwitch] {
         mask: none;
     }
 
-    &:after {
+    &::after {
         .transition(transform);
 
         content: '';
@@ -45,7 +45,7 @@ input[tuiSwitch] {
         color: var(--tui-background-accent-2) !important;
         background: transparent;
 
-        &:after {
+        &::after {
             background: currentColor;
             transform: translateX(1.25rem);
         }
@@ -59,7 +59,7 @@ input[tuiSwitch] {
             opacity: 0.4;
         }
 
-        &:after {
+        &::after {
             background: var(--tui-status-negative);
         }
     }

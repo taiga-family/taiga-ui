@@ -40,7 +40,7 @@
     position: sticky;
     z-index: 1;
 
-    &:after {
+    &::after {
         .transition(opacity);
 
         content: '';
@@ -59,7 +59,7 @@
     }
 }
 
-:host-context([tuiTheme='dark']):after {
+:host-context([tuiTheme='dark'])::after {
     background: rgba(60, 60, 60, 0.9);
 }
 
@@ -67,7 +67,7 @@
     z-index: 10;
 }
 
-:host-context(table._stuck):last-of-type:after {
+:host-context(table._stuck):last-of-type::after {
     opacity: 1;
 }
 

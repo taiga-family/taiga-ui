@@ -35,30 +35,30 @@
         height: 1rem;
         width: 2rem;
 
-        &:before {
+        &::before {
             width: 1rem;
             transform: translateX(-1rem);
             mask-size: 0.75rem;
         }
 
-        &:after {
+        &::after {
             width: 1rem;
             box-shadow: -2.625rem 0 0 0.5rem currentColor;
             outline-width: 0.167rem;
             transform: scale(0.375);
         }
 
-        &:checked:after {
+        &:checked::after {
             transform: scale(0.375) translateX(2.625rem);
         }
     }
 
     &:checked {
-        &:before {
+        &::before {
             transform: none;
         }
 
-        &:after {
+        &::after {
             transform: scale(0.33333) translateX(4.5rem);
         }
     }
@@ -67,8 +67,8 @@
         opacity: 1;
     }
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         .transition(transform);
 
         content: '';
@@ -77,7 +77,7 @@
         width: 1.5rem;
     }
 
-    &:before {
+    &::before {
         display: var(--t-checked-icon, none);
         background: currentColor;
         mask: var(--t-checked-icon) no-repeat center;
@@ -85,7 +85,7 @@
         transform: translateX(-1.5rem);
     }
 
-    &:after {
+    &::after {
         right: 0;
         border-radius: 100%;
         transform: scale(0.33333);

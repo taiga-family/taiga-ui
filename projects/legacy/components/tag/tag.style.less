@@ -15,7 +15,7 @@
     padding: 0;
     border: 0;
 
-    &:after {
+    &::after {
         .transition(background);
         .fullsize();
 
@@ -27,12 +27,12 @@
 
     &._hoverable:hover,
     &._hoverable:active {
-        &[data-status='custom']:after {
+        &[data-status='custom']::after {
             background-color: var(--tui-background-neutral-1);
         }
     }
 
-    &:focus:after {
+    &:focus::after {
         border: 2px solid var(--tui-border-focus);
     }
 
@@ -147,7 +147,7 @@
                 background-color: var(--tui-background-neutral-1-pressed);
             }
 
-            &:focus:after {
+            &:focus::after {
                 border: 2px solid var(--tui-background-base);
             }
         }
