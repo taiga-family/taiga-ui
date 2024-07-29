@@ -35,6 +35,10 @@ export function migrateMobileTabs({
         [TABS_TAG_NAME],
     );
 
+    if (elements.length > 0) {
+        addImportToClosestModule(resource.componentPath, 'TuiSegmented', '@taiga-ui/kit');
+    }
+
     elements.forEach((element) => {
         replaceTag(
             recorder,
@@ -50,8 +54,6 @@ export function migrateMobileTabs({
             .filter(isElement)
             .forEach((element) => removeTabAttribute(element, recorder, templateOffset));
     });
-
-    addImportToClosestModule(resource.componentPath, 'TuiSegmented', '@taiga-ui/kit');
 }
 
 function removeTabAttribute(
