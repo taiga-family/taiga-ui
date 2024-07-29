@@ -46,9 +46,9 @@ export function migrateMobileTas({
 
         removeMobileTabsAttribute(element, recorder, templateOffset);
 
-        element.childNodes.forEach((element) =>
-            removeTabAttribute(element, recorder, templateOffset),
-        );
+        element.childNodes
+            .filter(isElement)
+            .forEach((element) => removeTabAttribute(element, recorder, templateOffset));
     });
 
     addImportToClosestModule(resource.componentPath, 'TuiSegmented', '@taiga-ui/kit');
@@ -59,7 +59,7 @@ function removeTabAttribute(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    const tabAttr = attrs?.find((attr) => attr.name === TAB_ATTRIBUTE_NAME);
+    const tabAttr = attrs.find((attr) => attr.name === TAB_ATTRIBUTE_NAME);
 
     if (!tabAttr || !sourceCodeLocation) {
         return;
@@ -73,13 +73,15 @@ function removeMobileTabsAttribute(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    const mobileTabsAttr = attrs?.find(
-        (attr) => attr.name === MOBILE_TABS_ATTRIBUTE_NAME,
-    );
+    const mobileTabsAttr = attrs.find((attr) => attr.name === MOBILE_TABS_ATTRIBUTE_NAME);
 
     if (!mobileTabsAttr || !sourceCodeLocation) {
         return;
     }
 
     removeAttrs([mobileTabsAttr], sourceCodeLocation, recorder, templateOffset);
+}
+
+function isElement(node: object): node is Element {
+    return Boolean((node as Element).attrs);
 }
