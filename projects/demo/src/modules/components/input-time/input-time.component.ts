@@ -67,7 +67,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(TuiTime.currentLocal(), Validators.required);
+    control = new FormControl(new TuiTime(15, 30), Validators.required);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiTime>> = [
         ALWAYS_FALSE_HANDLER,
