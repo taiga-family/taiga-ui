@@ -6,6 +6,7 @@ export * from './migrate-expandable';
 export * from './migrate-focusable';
 export * from './migrate-label';
 export * from './migrate-labeled';
+export * from './migrate-mobile-tabs';
 export * from './migrate-money';
 export * from './migrate-overscroll';
 export * from './migrate-prevent-default';
