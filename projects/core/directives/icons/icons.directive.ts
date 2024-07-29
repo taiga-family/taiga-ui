@@ -26,10 +26,8 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[class._icon-start]': 'iconStart',
-        '[class._icon-end]': 'iconEnd',
-        '[style.--t-mask-start]': '"url(" + resolver(iconStart) + ")"',
-        '[style.--t-mask-end]': '"url(" + resolver(iconEnd) + ")"',
+        '[style.--t-icon-start]': 'iconStart ? "url(" + resolver(iconStart) + ")" : null',
+        '[style.--t-icon-end]': 'iconEnd ? "url(" + resolver(iconEnd) + ")" : null',
     },
 })
 export class TuiIcons {

@@ -49,7 +49,7 @@ export class TuiSwitch implements DoCheck {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
-    @HostBinding('style.--t-mask')
+    @HostBinding('style.--t-icon')
     protected get icon(): string {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
