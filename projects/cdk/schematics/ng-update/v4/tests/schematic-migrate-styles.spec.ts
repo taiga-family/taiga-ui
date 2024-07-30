@@ -19,10 +19,15 @@ import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 :host {
     display: flex;
     align-items: center;
+    .tui-space(bottom, 2);
     justify-content: center;
     --tui-rating-size: 1.5rem;
 
     --tui-rating-gap: 0.5rem;
+}
+
+.example {
+    .tui-space(vertical, 4);
 }
 `;
 
@@ -32,12 +37,18 @@ import '@taiga-ui/proprietary/styles/tbank-fonts';
 :host {
     display: flex;
     align-items: center;
+    margin-bottom: 0.5rem;
     justify-content: center;
 // TODO: (Taiga UI migration): use css to customize rating gap and size. See https://taiga-ui.dev/components/rating#basic
     --tui-rating-size: 1.5rem;
 
 // TODO: (Taiga UI migration): use css to customize rating gap and size. See https://taiga-ui.dev/components/rating#basic
     --tui-rating-gap: 0.5rem;
+}
+
+.example {
+    margin-top: 1rem;
+margin-bottom: 1rem;
 }
 `;
 

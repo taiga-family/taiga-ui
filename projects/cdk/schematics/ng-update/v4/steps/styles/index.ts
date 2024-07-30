@@ -1,6 +1,8 @@
 /// <reference lib="es2021" />
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
+import {migrateSpaceMixins} from './migrate-space-mixins';
+
 export const TUI_RATING_WARNING =
     '// TODO: (Taiga UI migration): use css to customize rating gap and size. See https://taiga-ui.dev/components/rating#basic';
 
@@ -36,6 +38,8 @@ export function migrateStyles(): void {
                     '@taiga-ui/proprietary-core/styles/theme-tinkoff',
                     '@taiga-ui/proprietary/styles/tbank-theme',
                 );
+
+            fullText = migrateSpaceMixins(fullText);
 
             sourceFile.replaceWithText(fullText);
         });
