@@ -2,11 +2,13 @@
 import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
+    getImports,
     getPackageJsonDependency,
     removePackageJsonDependency,
 } from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
+import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {replacePackageName} from '../../steps';
 
@@ -15,11 +17,6 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
 
     packagesToRemove.forEach((pkg) => {
         removePackageJsonDependency(tree, pkg);
-    });
-
-    addPackageJsonDependency(tree, {
-        name: '@taiga-ui/legacy',
-        version: TUI_VERSION,
     });
 
     replacePackageName(
@@ -51,6 +48,20 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/event-plugins',
             version: '^4.0.1',
+        });
+    }
+
+    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
+        addPackageJsonDependency(tree, {
+            name: '@taiga-ui/layout',
+            version: TUI_VERSION,
+        });
+    }
+
+    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/legacy'}).length) {
+        addPackageJsonDependency(tree, {
+            name: '@taiga-ui/legacy',
+            version: TUI_VERSION,
         });
     }
 }
