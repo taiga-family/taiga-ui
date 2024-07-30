@@ -2,7 +2,6 @@ import type {Node, ObjectLiteralExpression, PropertyAccessExpression} from 'ng-m
 import {SyntaxKind} from 'ng-morph';
 import type {CallExpression} from 'ts-morph';
 
-import {tuiIsPresent} from '../../../../utils';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
@@ -25,16 +24,14 @@ export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
     );
 
     // inject(TuiAlertService).open(...)
-    const viaDirectInjects = alertServiceRefs
-        .map((x) =>
-            x.getFirstAncestor(
-                (node): node is CallExpression =>
-                    node.isKind(SyntaxKind.CallExpression) &&
-                    node.getFullText().includes('inject(TuiAlertService') &&
-                    node.getFullText().includes('.open('),
-            ),
-        )
-        .filter(tuiIsPresent);
+    const viaDirectInjects = alertServiceRefs.map((x) =>
+        x.getFirstAncestor(
+            (node): node is CallExpression =>
+                node.isKind(SyntaxKind.CallExpression) &&
+                node.getFullText().includes('inject(TuiAlertService') &&
+                node.getFullText().includes('.open('),
+        ),
+    );
 
     // readonly alertService = inject(TuiAlertService);
     const viaClassProperty = alertServiceRefs
@@ -44,8 +41,7 @@ export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
                 ?.findReferencesAsNodes(),
         )
         .flat()
-        .map(toAlertServiceOpenCallExpression)
-        .filter(tuiIsPresent);
+        .map(toAlertServiceOpenCallExpression);
 
     // constructor(private readonly legacyWayService: TuiAlertService) {}
     const viaConstructorParam = alertServiceRefs
@@ -53,8 +49,7 @@ export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
             x.getFirstAncestorByKind(SyntaxKind.Parameter)?.findReferencesAsNodes(),
         )
         .flat()
-        .map(toAlertServiceOpenCallExpression)
-        .filter(tuiIsPresent);
+        .map(toAlertServiceOpenCallExpression);
 
     [...viaDirectInjects, ...viaClassProperty, ...viaConstructorParam].forEach(
         (callExpression) => {
