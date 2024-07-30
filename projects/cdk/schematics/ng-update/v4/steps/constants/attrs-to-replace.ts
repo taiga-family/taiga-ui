@@ -60,6 +60,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: '(removed)',
+            withTagNames: ['tui-file'],
+        },
+        to: {attrName: '(remove)'},
+    },
+    {
+        from: {
             attrName: '[rounded]',
             withTagNames: ['tui-avatar'],
         },

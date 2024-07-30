@@ -1419,8 +1419,9 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
         to: {
-            name: 'TuiInputFiles',
+            name: 'TuiFiles',
             moduleSpecifier: '@taiga-ui/kit',
+            spreadInModule: true,
         },
     },
     {
