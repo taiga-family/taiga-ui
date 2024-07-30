@@ -1,3 +1,4 @@
+import type {OnChanges, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,8 +6,6 @@ import {
     HostBinding,
     inject,
     Input,
-    OnChanges,
-    OnInit,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -35,7 +34,6 @@ class TuiNotificationStyles {}
 @Directive({
     standalone: true,
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
-    hostDirectives: [TuiWithIcons, TuiWithAppearance],
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
         tuiLinkOptionsProvider({
@@ -47,6 +45,7 @@ class TuiNotificationStyles {}
             size: 's',
         }),
     ],
+    hostDirectives: [TuiWithIcons, TuiWithAppearance],
 })
 export class TuiNotification implements OnChanges, OnInit {
     protected readonly nothing = tuiWithStyles(TuiNotificationStyles);
