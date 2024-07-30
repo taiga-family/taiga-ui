@@ -16,6 +16,6 @@ export default class Page {
         'Hidden',
         'Light scrollbar',
         'Virtual scroll',
-        'Show scroll bars on hover'
+        'Show scroll bars on hover',
     ];
 }
