@@ -14,6 +14,7 @@ import {TuiMobileCalendarExample2} from './examples/2';
 import {TuiMobileCalendarExample3} from './examples/3';
 import {TuiMobileCalendarExample4} from './examples/4';
 import {TuiMobileCalendarExample5} from './examples/5';
+import {TuiMobileCalendarExample6} from './examples/6';
 import {ExampleTuiMobileCalendarComponent} from './mobile-calendar.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import {ExampleTuiMobileCalendarComponent} from './mobile-calendar.component';
         TuiMobileCalendarExample3,
         TuiMobileCalendarExample4,
         TuiMobileCalendarExample5,
+        TuiMobileCalendarExample6,
     ],
     exports: [ExampleTuiMobileCalendarComponent],
 })

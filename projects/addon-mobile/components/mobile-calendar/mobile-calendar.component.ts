@@ -8,6 +8,7 @@ import {
     Inject,
     Input,
     NgZone,
+    Optional,
     Output,
     Self,
     ViewChild,
@@ -135,8 +136,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
         @Inject(TUI_SHORT_WEEK_DAYS)
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
+        @Optional()
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]>,
+        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]> | null,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
