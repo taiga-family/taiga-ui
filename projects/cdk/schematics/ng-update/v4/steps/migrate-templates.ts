@@ -49,6 +49,7 @@ import {
     migrateToggle,
 } from './templates';
 import {migrateBlocked} from './templates/migrate-blocked';
+import {migrateNumberPrecision} from './templates/migrate-number-precision';
 
 function getAction<T>({
     action,
@@ -112,6 +113,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateOverscroll,
         migrateButtonAppearance,
         migrateLabel,
+        migrateNumberPrecision,
     ] as const;
 
     const progressLog = setupProgressLogger({
