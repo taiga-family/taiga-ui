@@ -58,7 +58,7 @@ export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
             }
 
             const [, arg] = callExpression.getArguments();
-            const options = arg.isKind(SyntaxKind.PropertyAccessExpression)
+            const options = arg?.isKind(SyntaxKind.PropertyAccessExpression)
                 ? findOptionsInitializer(arg)
                 : arg;
 
