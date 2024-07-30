@@ -19,11 +19,6 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         removePackageJsonDependency(tree, pkg);
     });
 
-    addPackageJsonDependency(tree, {
-        name: '@taiga-ui/legacy',
-        version: TUI_VERSION,
-    });
-
     replacePackageName(
         '@tinkoff/ng-polymorpheus',
         {
@@ -59,6 +54,13 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/layout',
+            version: TUI_VERSION,
+        });
+    }
+
+    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/legacy'}).length) {
+        addPackageJsonDependency(tree, {
+            name: '@taiga-ui/legacy',
             version: TUI_VERSION,
         });
     }
