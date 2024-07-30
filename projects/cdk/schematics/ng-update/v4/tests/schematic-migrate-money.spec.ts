@@ -52,7 +52,7 @@ export class Test {
 const TEMPLATE_BEFORE = `
 <tui-money class="money" [value]="123" [currency]="currency"></tui-money>
 
-<tui-money class="money" [value]="123"></tui-money>
+<tui-money [singleColor]="true" class="money" [value]="123"></tui-money>
 
 <tui-money customDirective decimal="always" [value]="value"></tui-money>
 
@@ -61,7 +61,7 @@ const TEMPLATE_BEFORE = `
 const TEMPLATE_AFTER = `
 <span  class="money">{{ 123 | tuiAmount : currency | async }}</span>
 
-<span  class="money">{{ 123 | tuiAmount : "RUB" | async }}</span>
+<span   class="money">{{ 123 | tuiAmount : "RUB" | async }}</span>
 
 <span [tuiNumberFormat]='{"decimalMode":"always"}' customDirective>{{ value | tuiAmount : "RUB" | async }}</span>
 

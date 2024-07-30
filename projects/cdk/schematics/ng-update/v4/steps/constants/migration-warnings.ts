@@ -156,4 +156,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_ARROW is deprecated, Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links',
     },
+    {
+        name: 'TuiMoneyComponent',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TuiMoneyComponent is deprecated, Use tuiAmount pipe instead. See example https://taiga-ui.dev/pipes/amount',
+    },
 ];
