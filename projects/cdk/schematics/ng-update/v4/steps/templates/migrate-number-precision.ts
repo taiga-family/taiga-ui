@@ -53,7 +53,7 @@ export function migrateNumberPrecision({
 
             const insertTo =
                 (sourceCodeLocation?.startTag?.startOffset || 0) +
-                `<tui-input-number `.length;
+                '<tui-input-number '.length;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);
         }
