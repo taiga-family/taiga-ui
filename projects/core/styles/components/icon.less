@@ -8,11 +8,11 @@
  * Container for displaying icons colored with CSS (color/background) using mask
  *
  * @vars
- * --t-mask — mask for the icon
- * --t-mask-bg — mask for the background
+ * --t-icon — mask for the icon
+ * --t-icon-bg — mask for the background
  *
  * @example
- * <tui-icon style="--t-mask: url('icon.svg')"></tui-icon>
+ * <tui-icon style="--t-icon: url('icon.svg')"></tui-icon>
  *
  * @see-also
  * Icons
@@ -26,13 +26,15 @@ tui-icon {
     flex-shrink: 0;
     vertical-align: middle;
     box-sizing: border-box;
-    mask: var(--t-mask-bg) no-repeat center/contain;
+    mask: var(--t-icon-bg) no-repeat center/contain;
 
-    &:after {
+    &:after,
+    &[tuiIcons]:after {
         .fullsize();
 
         content: '';
-        mask: var(--t-mask) no-repeat center/contain;
+        display: block;
+        mask: var(--t-icon) no-repeat center/contain;
         background: currentColor;
     }
 }

@@ -23,7 +23,7 @@ input[tuiRadio] {
         &:before {
             display: block;
             transform: none;
-            mask: var(--t-mask) center/100%;
+            mask: var(--t-icon) center/100%;
         }
 
         &:invalid {
@@ -32,13 +32,13 @@ input[tuiRadio] {
     }
 
     &:before {
-        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 11.25L9.8 15.2L15.2 7" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        --t-icon: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 11.25L9.8 15.2L15.2 7" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 
         display: none;
     }
 
     &:not([tuiRadio]):indeterminate:before {
-        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6 11H16" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round"/></svg>');
+        --t-icon: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6 11H16" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round"/></svg>');
     }
 
     &:invalid {

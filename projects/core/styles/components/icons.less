@@ -5,37 +5,34 @@
  * @description
  * Icons directive applies CSS mask to ::before and ::after pseudo elements
  *
- * @classes
- * _icon-start — enables ::before element
- * _icon-end — enables ::after element
- *
  * @vars
- * --t-mask-start — mask for ::before element
- * --t-mask-end — mask for ::after element
+ * --t-icon-start — mask for ::before element
+ * --t-icon-end — mask for ::after element
  *
  * @example
- * <button tuiIcons class="_icon-start" style="--t-mask-start: url('icon.svg')"></button>
+ * <button tuiIcons style="--t-icon-start: url('icon.svg')"></button>
  *
  * @see-also
- * Button, Icon
+ * Button, Icon, Link
  */
 [tuiIcons] {
+    --t-display-start: var(--t-icon-start, none);
+    --t-display-end: var(--t-icon-end, none);
+
     &:before,
     &:after {
-        font-size: 1.5rem;
-    }
-
-    &._icon-start:before,
-    &._icon-end:after {
         content: '';
+        display: var(--t-display-start);
         width: 1em;
         height: 1em;
+        font-size: 1.5rem;
         flex-shrink: 0;
         background: currentColor;
-        mask: var(--t-mask-start) no-repeat center/contain;
+        mask: var(--t-icon-start) no-repeat center/contain;
     }
 
-    &._icon-end:after {
-        mask: var(--t-mask-end) no-repeat center/contain;
+    &:after {
+        display: var(--t-display-end);
+        mask: var(--t-icon-end) no-repeat center/contain;
     }
 }

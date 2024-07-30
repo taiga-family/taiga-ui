@@ -55,12 +55,12 @@
         margin-left: var(--tui-tab-margin, 1.5rem);
     }
 
-    &._icon-start:before {
+    &[tuiIcons]:before {
         font-size: 1rem;
         margin-inline-end: 0.5rem;
     }
 
-    &._icon-end:after {
+    &[tuiIcons]:after {
         font-size: 1rem;
         margin-inline-start: 0.5rem;
     }
@@ -133,12 +133,14 @@ tui-tabs[data-vertical],
             content: '';
             position: absolute;
             top: 0;
-            bottom: 0;
             right: 0;
+            display: block;
+            height: 100%;
             width: 2px;
             background: var(--tui-background-accent-1);
             transform: scaleX(0);
             transform-origin: right;
+            margin: 0;
         }
 
         &:hover {
