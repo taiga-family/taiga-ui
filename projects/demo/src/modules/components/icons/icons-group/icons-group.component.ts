@@ -83,6 +83,6 @@ export class IconsGroup implements OnInit {
 
     protected copyPath = (name: string): void => {
         this.clipboard.copy(name);
-        this.alerts.open(`The name ${name} copied`, {status: 'success'}).subscribe();
+        this.alerts.open(`The name ${name} copied`, {appearance: 'success'}).subscribe();
     };
 }

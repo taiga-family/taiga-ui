@@ -3,7 +3,6 @@ import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiNotificationStatus} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
@@ -20,13 +19,13 @@ describe('Notification', () => {
             template: `
                 <tui-notification
                     *ngIf="hasCloseButton; else noClose"
-                    [status]="status"
+                    [appearance]="appearance"
                     (close)="onClose()"
                 >
                     Short simple informational message
                 </tui-notification>
                 <ng-template #noClose>
-                    <tui-notification [status]="status">
+                    <tui-notification [appearance]="appearance">
                         Short simple informational message
                     </tui-notification>
                 </ng-template>
@@ -37,7 +36,7 @@ describe('Notification', () => {
             public component!: TuiNotification;
 
             public hasCloseButton = true;
-            public status: TuiNotificationStatus = 'info';
+            public appearance = 'info';
 
             public onClose(): void {}
         }
@@ -99,8 +98,6 @@ describe('Notification', () => {
             public component!: TuiNotification;
         }
 
-        const status = 'error';
-
         let fixture: ComponentFixture<Test>;
         let pageObject: TuiPageObject<Test>;
 
@@ -116,7 +113,7 @@ describe('Notification', () => {
                         provide: TUI_NOTIFICATION_OPTIONS,
                         useValue: {
                             ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
-                            status,
+                            appearance: 'error',
                             icon: null,
                         },
                     },

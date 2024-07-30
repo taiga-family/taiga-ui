@@ -33,10 +33,10 @@ export class TuiDialogsExample1 {
                 switchMap((response) =>
                     response
                         ? this.alerts.open(wisely, {
-                              status: 'success',
+                              appearance: 'success',
                           })
                         : this.alerts.open(poorly, {
-                              status: 'error',
+                              appearance: 'error',
                           }),
                 ),
             )

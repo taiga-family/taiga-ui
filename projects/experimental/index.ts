@@ -1,1 +1,1 @@
-export * from '@taiga-ui/experimental/components';
+export const NOTHING = 'to see here, move along';

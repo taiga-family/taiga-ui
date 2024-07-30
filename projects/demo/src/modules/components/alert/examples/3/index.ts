@@ -45,7 +45,7 @@ export default class Example {
     private readonly notification = this.alerts
         .open<boolean>(new PolymorpheusComponent(AlertExample), {
             label: 'Question',
-            status: 'error',
+            appearance: 'error',
             autoClose: 0,
         })
         .pipe(

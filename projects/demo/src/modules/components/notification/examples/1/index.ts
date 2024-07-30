@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
-import {TuiNotification} from '@taiga-ui/experimental';
+import {TuiButton, TuiLink, TuiNotification, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

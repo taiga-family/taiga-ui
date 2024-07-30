@@ -86,10 +86,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiNotificationT', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiNotificationStatus', moduleSpecifier: '@taiga-ui/core'},
-    },
-    {
         from: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
     },

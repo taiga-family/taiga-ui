@@ -16,13 +16,13 @@
  * Button, Icon, Link
  */
 [tuiIcons] {
-    --t-display-start: var(--t-icon-start, none);
-    --t-display-end: var(--t-icon-end, none);
+    --t-icon-start: none;
+    --t-icon-end: none;
 
     &:before,
     &:after {
         content: '';
-        display: var(--t-display-start);
+        display: var(--t-icon-start);
         width: 1em;
         height: 1em;
         font-size: 1.5rem;
@@ -32,7 +32,7 @@
     }
 
     &:after {
-        display: var(--t-display-end);
+        display: var(--t-icon-end);
         mask: var(--t-icon-end) no-repeat center/contain;
     }
 }

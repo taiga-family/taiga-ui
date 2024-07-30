@@ -9,12 +9,9 @@
     [tuiAlertOptions]="{label: 'Directive', autoClose: 0, closeable: false}"
     [(tuiAlert)]="show"
 >
-    This is a declarative directive alert
+    <span tuiSubtitle>This is a declarative directive alert</span>
     <button
-        appearance="mono"
-        size="s"
         tuiButton
-        class="tui-space_top-2"
         (click)="show = false"
     >
         Close

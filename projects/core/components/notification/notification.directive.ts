@@ -9,9 +9,9 @@ import {
     OnInit,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk';
-import {tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -23,7 +23,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./notification.style.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/notification.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
