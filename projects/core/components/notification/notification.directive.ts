@@ -8,7 +8,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
@@ -58,7 +58,7 @@ export class TuiNotification implements OnChanges, OnInit {
     public appearance = this.options.appearance;
 
     @Input()
-    public icon: string | TuiStringHandler<string> = this.options.icon;
+    public icon: TuiStringHandler<string> | string = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-size')
