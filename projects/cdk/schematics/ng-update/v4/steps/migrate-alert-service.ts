@@ -28,8 +28,16 @@ const OPTIONS_MIGRATIONS: Record<
                 return null;
         }
     },
+    defaultAutoCloseTime: (property) =>
+        property.replaceWithText(
+            property.getText().replace('defaultAutoCloseTime', 'autoClose'),
+        ),
     status: (property) =>
         property.replaceWithText(property.getText().replace('status', 'appearance')),
+    hasCloseButton: (property) =>
+        property.replaceWithText(
+            property.getText().replace('hasCloseButton', 'closeable'),
+        ),
     hasIcon: (property) => {
         const [, propertyValue] = property.getText().split(/\s?:\s?/);
 

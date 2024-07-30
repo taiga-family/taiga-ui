@@ -29,6 +29,7 @@ export class Test {
         hasIcon: false,
         autoClose: false,
         label: 'params in a separate property',
+        hasCloseButton: false,
     };
 
     constructor(private readonly legacyWayService: TuiAlertService) {
@@ -77,6 +78,7 @@ export class Test {
         icon: '',
         autoClose: 0,
         label: 'params in a separate property',
+        closeable: false,
     };
 
     constructor(private readonly legacyWayService: TuiAlertService) {
