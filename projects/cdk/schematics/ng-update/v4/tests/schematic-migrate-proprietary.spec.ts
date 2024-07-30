@@ -25,6 +25,7 @@ import { TuiIllustrationsModule } from '@taiga-ui/proprietary-icons';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
 import {TuiIllustrationName} from '@taiga-ui/proprietary-icons';
 import {TuiOperationIcon} from '@taiga-ui/proprietary-banking';
+import { TuiInputNumberModule } from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -43,8 +44,8 @@ export class Test {
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
-const COMPONENT_AFTER =
-    `import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
+import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 

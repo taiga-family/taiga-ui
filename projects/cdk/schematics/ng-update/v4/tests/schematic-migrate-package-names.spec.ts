@@ -24,11 +24,13 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 import {TuiEditorModule} from '@tinkoff/tui-editor';
 import {TuiNavigationModule} from '@taiga-ui/experimental';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 const imports = [TuiEditorModule];
 `.trim();
 
 const TS_FILE_AFTER = `
+import { TuiInputNumberModule } from "@taiga-ui/legacy";
 import { TuiNavigation } from "@taiga-ui/layout";
 import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
 import {Component} from '@angular/core';
