@@ -8,6 +8,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
@@ -48,18 +49,20 @@ class TuiNotificationStyles {}
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
 })
 export class TuiNotification implements OnChanges, OnInit {
+    private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(TuiNotificationStyles);
     protected readonly icons = inject(TuiIcons);
 
     @Input()
-    public appearance = inject(TUI_NOTIFICATION_OPTIONS).appearance;
+    public appearance = this.options.appearance;
 
     @Input()
-    public icon = inject(TUI_NOTIFICATION_OPTIONS).icon;
+    public icon: string | TuiStringHandler<string> = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = inject(TUI_NOTIFICATION_OPTIONS).size;
+    public size = this.options.size;
 
     public ngOnInit(): void {
         this.refresh();

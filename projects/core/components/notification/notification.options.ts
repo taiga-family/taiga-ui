@@ -9,7 +9,7 @@ export interface TuiNotificationOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeL | TuiSizeS;
 }
 
-const STATUS_ICON: any = {
+const ICONS: Record<string, string> = {
     info: '@tui.info',
     success: '@tui.circle-check',
     error: '@tui.circle-x',
@@ -20,7 +20,7 @@ const STATUS_ICON: any = {
 /** Default values for the notification options. */
 export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationOptions = {
     appearance: 'info',
-    icon: (appearance) => STATUS_ICON[appearance],
+    icon: (appearance) => ICONS[appearance],
     size: 'l',
 };
 
