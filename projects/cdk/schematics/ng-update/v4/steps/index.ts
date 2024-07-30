@@ -1,4 +1,4 @@
-export * from './migrate-alert-auto-close-boolean';
+export * from './migrate-alert-service';
 export * from './migrate-all-country-iso-codes';
 export * from './migrate-destroy-service';
 export * from './migrate-legacy-mask';

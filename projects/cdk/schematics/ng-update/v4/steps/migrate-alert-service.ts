@@ -1,6 +1,6 @@
 import type {Node, ObjectLiteralExpression, PropertyAccessExpression} from 'ng-morph';
 import {SyntaxKind} from 'ng-morph';
-import type {CallExpression} from 'ts-morph';
+import type {CallExpression, ObjectLiteralElementLike} from 'ts-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {
@@ -12,7 +12,27 @@ import {
 } from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
-export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
+const OPTIONS_MIGRATIONS: Record<
+    string,
+    (property: ObjectLiteralElementLike) => unknown
+> = {
+    autoClose: (property) => {
+        const [propertyKey, propertyValue] = property.getText().split(/\s?:\s?/);
+
+        switch (propertyValue) {
+            case 'true':
+                return property.replaceWithText(`${propertyKey}: 3_000`);
+            case 'false':
+                return property.replaceWithText(`${propertyKey}: 0`);
+            default:
+                return null;
+        }
+    },
+    status: (property) =>
+        property.replaceWithText(property.getText().replace('status', 'appearance')),
+};
+
+export function migrateAlertService(options: TuiSchema): void {
     !options['skip-logs'] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing inject(TuiAlertService).open({autoClose: boolean})...`,
@@ -66,22 +86,13 @@ export function migrateAlertAutoCloseBoolean(options: TuiSchema): void {
                 return;
             }
 
-            const property = options.getProperty('autoClose');
+            Object.entries(OPTIONS_MIGRATIONS).forEach(([propertyName, migration]) => {
+                const property = options.getProperty(propertyName);
 
-            if (!property) {
-                return;
-            }
-
-            const [propertyKey, propertyValue] = property.getText().split(/\s?:\s?/);
-
-            switch (propertyValue) {
-                case 'true':
-                    return property.replaceWithText(`${propertyKey}: 3_000`);
-                case 'false':
-                    return property.replaceWithText(`${propertyKey}: 0`);
-                default:
-                    return null;
-            }
+                if (property) {
+                    migration(property);
+                }
+            });
         },
     );
 

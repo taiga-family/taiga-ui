@@ -20,7 +20,7 @@ import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
-    migrateAlertAutoCloseBoolean,
+    migrateAlertService,
     migrateAllCountryIsoCodes,
     migrateDestroyService,
     migrateLegacyMask,
@@ -60,7 +60,7 @@ function main(options: TuiSchema): Rule {
         migrateDestroyService(options);
         migrateOptionProviders(options);
         migrateAllCountryIsoCodes(options);
-        migrateAlertAutoCloseBoolean(options);
+        migrateAlertService(options);
 
         saveActiveProject();
         migrateTemplates(fileSystem, options);

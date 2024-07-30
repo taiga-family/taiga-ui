@@ -33,8 +33,8 @@ export class Test {
     constructor(private readonly legacyWayService: TuiAlertService) {
         inject(TuiAlertService)
             .open('Inside injection context', {
-                status: 'error',
                 autoClose: true,
+                status: 'warning',
                 label: 'I will be closed in 3s',
             })
             .subscribe();
@@ -43,9 +43,9 @@ export class Test {
     onClick() {
         this.alertService
             .open('Outside of an injection context', {
-                status: 'error',
                 autoClose: false,
                 label: 'User should close me by himself',
+                status: 'success',
             })
             .subscribe();
     }
@@ -70,7 +70,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class Test {
     readonly alertService = inject(TuiAlertService);
     private alertParams = {
-        status: 'error',
+        appearance: 'error',
         autoClose: 0,
         label: 'params in a separate property',
     };
@@ -78,8 +78,8 @@ export class Test {
     constructor(private readonly legacyWayService: TuiAlertService) {
         inject(TuiAlertService)
             .open('Inside injection context', {
-                status: 'error',
                 autoClose: 3_000,
+                appearance: 'warning',
                 label: 'I will be closed in 3s',
             })
             .subscribe();
@@ -88,9 +88,9 @@ export class Test {
     onClick() {
         this.alertService
             .open('Outside of an injection context', {
-                status: 'error',
                 autoClose: 0,
                 label: 'User should close me by himself',
+                appearance: 'success',
             })
             .subscribe();
     }
