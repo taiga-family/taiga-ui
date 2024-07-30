@@ -30,6 +30,20 @@ const OPTIONS_MIGRATIONS: Record<
     },
     status: (property) =>
         property.replaceWithText(property.getText().replace('status', 'appearance')),
+    hasIcon: (property) => {
+        const [, propertyValue] = property.getText().split(/\s?:\s?/);
+
+        switch (propertyValue) {
+            case 'false':
+                return property.replaceWithText("icon: ''");
+            case 'true':
+                return property.remove();
+            default:
+                return property.replaceWithText(
+                    `// TODO: (Taiga UI migration) "hasIcon" is deleted. Use "icon: ''" to hide icon. Use "icon: TUI_NOTIFICATION_DEFAULT_OPTIONS['icon']" to show it.\n${property.getText()}`,
+                );
+        }
+    },
 };
 
 export function migrateAlertService(options: TuiSchema): void {
