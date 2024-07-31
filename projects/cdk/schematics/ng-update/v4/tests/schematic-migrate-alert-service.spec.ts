@@ -26,14 +26,17 @@ export class Test {
     readonly alertService = inject(TuiAlertService);
     private alertParams = {
         status: 'error',
+        hasIcon: false,
         autoClose: false,
         label: 'params in a separate property',
+        hasCloseButton: false,
     };
 
     constructor(private readonly legacyWayService: TuiAlertService) {
         inject(TuiAlertService)
             .open('Inside injection context', {
                 autoClose: true,
+                hasIcon: true,
                 status: 'warning',
                 label: 'I will be closed in 3s',
             })
@@ -46,6 +49,7 @@ export class Test {
                 autoClose: false,
                 label: 'User should close me by himself',
                 status: 'success',
+                hasIcon: Math.random() > 0.5 ? true : false,
             })
             .subscribe();
     }
@@ -71,8 +75,10 @@ export class Test {
     readonly alertService = inject(TuiAlertService);
     private alertParams = {
         appearance: 'error',
+        icon: '',
         autoClose: 0,
         label: 'params in a separate property',
+        closeable: false,
     };
 
     constructor(private readonly legacyWayService: TuiAlertService) {
@@ -91,6 +97,8 @@ export class Test {
                 autoClose: 0,
                 label: 'User should close me by himself',
                 appearance: 'success',
+                // TODO: (Taiga UI migration) "hasIcon" is deleted. Use "icon: ''" to hide icon. Use "icon: TUI_NOTIFICATION_DEFAULT_OPTIONS['icon']" to show it.
+                hasIcon: Math.random() > 0.5 ? true : false,
             })
             .subscribe();
     }
