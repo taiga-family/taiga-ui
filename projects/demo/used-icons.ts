@@ -87,7 +87,6 @@ export const TUI_USED_ICONS = [
     '@tui.briefcase',
     '@tui.code',
     '@tui.terminal',
-    '@tui.hr',
     '@tui.image',
     '@tui.map-pin',
     '@tui.circle-alert',
