@@ -8,7 +8,6 @@ import {
 import {RouterOutlet} from '@angular/router';
 import {TuiDocThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
-import {TuiSwipeService} from '@taiga-ui/cdk/directives/swipe';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
@@ -29,10 +28,9 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,
-    // @note: This one was default on purpose so we can test demo in default mode.
+    // @note: This one was default on purpose, so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiSwipeService],
 })
 export class TuiDocMain {
     private readonly icons = inject(TUI_DOC_ICONS);

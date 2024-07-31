@@ -157,23 +157,6 @@
                         <code>npm i &#64;taiga-ui/styles</code>
                         and put this code:
 
-                        <tui-notification
-                            status="warning"
-                            class="tui-space_top-3"
-                        >
-                            In version 3.0 we drop to support normalize(v7) out-of-the-box!
-                            <p>
-                                You need to manually
-                                <a
-                                    href="https://necolas.github.io/normalize.css/"
-                                    tuiLink
-                                >
-                                    download css file
-                                </a>
-                                , if you're looking to use reset styles or you can write your own reset.css
-                            </p>
-                        </tui-notification>
-
                         <tui-doc-code
                             filename="angular.json"
                             [code]="angularJsonGlobalSingleStyles"
@@ -185,10 +168,11 @@
                         />
 
                         <tui-notification class="tui-space_top-3">
-                            Also you can use not all styles from global, but only what you need partially import, for
-                            example
-                            <code>&#64;taiga-ui/styles/markup/tui-mobile-only</code>
-                            , or something:
+                            <div>
+                                Also you can use not all styles from global, but only the ones you need, for example
+                                <code>&#64;taiga-ui/styles/markup/tui-mobile-only</code>
+                                or something else from the list below:
+                            </div>
                         </tui-notification>
 
                         <tui-doc-code

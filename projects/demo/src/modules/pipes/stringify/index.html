@@ -15,21 +15,23 @@
             [content]="1 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_top-4">
-                With
-                <a
-                    tuiLink
-                    [routerLink]="routes.FilterByInput"
-                >
-                    <code>FilterByInput</code>
-                </a>
-                and
-                <a
-                    tuiLink
-                    [routerLink]="routes.StringifyContent"
-                >
-                    <code>StringifyContent</code>
-                </a>
-                pipes.
+                <div>
+                    With
+                    <a
+                        tuiLink
+                        [routerLink]="routes.FilterByInput"
+                    >
+                        <code>FilterByInput</code>
+                    </a>
+                    and
+                    <a
+                        tuiLink
+                        [routerLink]="routes.StringifyContent"
+                    >
+                        <code>StringifyContent</code>
+                    </a>
+                    pipes.
+                </div>
             </tui-notification>
         </tui-doc-example>
     </ng-template>
