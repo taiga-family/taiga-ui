@@ -4,6 +4,7 @@ import type {ElementLocation} from 'parse5/dist/common/token';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsWithDirective} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -12,10 +13,7 @@ import type {TemplateResource} from '../../../interfaces';
 import {removeAttrs} from '../utils/remove-attrs';
 
 const overscrollAttrName = 'tuiOverscroll';
-const overscrollAttrNameDict = {
-    [overscrollAttrName.toLowerCase()]: true,
-    [`[${overscrollAttrName.toLowerCase()}]`]: true,
-};
+
 export function migrateOverscroll({
     resource,
     recorder,
@@ -37,14 +35,15 @@ export function migrateOverscroll({
     }
 
     elements.forEach(({attrs, sourceCodeLocation}: Element) => {
-        const attrsToRemove = attrs.filter(({name}) => overscrollAttrNameDict[name]);
+        const attrToRemove = findAttr(attrs, overscrollAttrName);
 
-        removeAttrs(
-            attrsToRemove,
-            sourceCodeLocation as ElementLocation,
-            recorder,
-            templateOffset,
-        );
+        attrToRemove &&
+            removeAttrs(
+                [attrToRemove],
+                sourceCodeLocation as ElementLocation,
+                recorder,
+                templateOffset,
+            );
     });
 
     addTodo(recorder, elements[0].sourceCodeLocation as ElementLocation, templateOffset);

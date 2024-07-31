@@ -3,13 +3,14 @@ import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, Location} from 'parse5/dist/common/token';
 
 import {findElementsWithAttributeOnTag} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
 
-const LEGACY_ATTRIBUTE_NAME = '[tuiFocusable]'.toLowerCase();
+const LEGACY_ATTRIBUTE_NAME = 'tuiFocusable';
 
 export function migrateFocusable({
     resource,
@@ -23,15 +24,17 @@ export function migrateFocusable({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsWithAttributeOnTag(template, [LEGACY_ATTRIBUTE_NAME]);
+    const elements = findElementsWithAttributeOnTag(template, [
+        `[${LEGACY_ATTRIBUTE_NAME}]`,
+    ]);
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
         if (!sourceCodeLocation) {
             return;
         }
 
-        const focusableAttr = attrs.find((attr) => attr.name === LEGACY_ATTRIBUTE_NAME);
-        const attributeLocation = sourceCodeLocation.attrs?.[LEGACY_ATTRIBUTE_NAME];
+        const focusableAttr = findAttr(attrs, LEGACY_ATTRIBUTE_NAME);
+        const attributeLocation = sourceCodeLocation.attrs?.[focusableAttr!.name];
 
         if (!focusableAttr || !attributeLocation) {
             return;

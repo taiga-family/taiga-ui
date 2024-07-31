@@ -4,6 +4,7 @@ import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -45,9 +46,7 @@ export function migrateBadge({
             badgeSizeMap,
         );
 
-        const valueAttr = attrs.find(
-            (attr) => attr.name === '[value]' || attr.name === 'value',
-        );
+        const valueAttr = findAttr(attrs, 'value');
 
         // migration for icon-only badges
         if (!valueAttr) {
@@ -84,7 +83,7 @@ function migrateIcon({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const src = svg.attrs?.find((attr) => attr.name === 'src');
+    const src = findAttr(svg.attrs, 'src');
     const srcValue = src?.value;
 
     if (!srcValue) {

@@ -2,6 +2,7 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 
 import {findElementsWithAttributeOnTag} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -27,7 +28,7 @@ export function migrateExpandable({
     );
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
-        const expandableAttr = attrs.find((attr) => attr.name === '[expandable]');
+        const expandableAttr = findAttr(attrs, 'expandable');
 
         if (!expandableAttr) {
             return;
@@ -40,7 +41,7 @@ export function migrateExpandable({
             sourceCodeLocation?.attrs?.[expandableAttr.name]?.endOffset ?? 0;
 
         if (expandableValue === 'false') {
-            const rowsAttr = attrs.find((attr) => attr.name === '[rows]');
+            const rowsAttr = findAttr(attrs, 'rows');
 
             const insertTo = (sourceCodeLocation?.startTag?.endOffset ?? 0) - 1;
 

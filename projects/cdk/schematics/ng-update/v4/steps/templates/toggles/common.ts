@@ -1,6 +1,8 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
+import {findAttr} from '../../../../../utils/templates/inputs';
+
 const sizeMap: Record<string, string> = {
     l: 'm',
     m: 's',
@@ -33,7 +35,7 @@ export function replaceSizeAttr(
     templateOffset: number,
     map = sizeMap,
 ): void {
-    const sizeAttr = attrs.find((attr) => attr.name === 'size');
+    const sizeAttr = findAttr(attrs, 'size');
 
     if (sizeAttr) {
         const {startOffset, endOffset} = sourceCodeLocation.attrs?.[sizeAttr.name] || {
@@ -44,7 +46,7 @@ export function replaceSizeAttr(
         recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         recorder.insertRight(
             templateOffset + startOffset,
-            `size="${map[sizeAttr.value] || sizeAttr.value}"`,
+            `${sizeAttr.name}="${map[sizeAttr.value] || sizeAttr.value}"`,
         );
     }
 }

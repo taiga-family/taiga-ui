@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import type {ReplacementTag} from '../../../interfaces';
 
 export const TAGS_TO_REPLACE: ReplacementTag[] = [
@@ -8,13 +9,13 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-input-count',
         to: 'tui-input-number',
         addAttributes: ['decimal="never"'],
-        filterFn: (element) => element.attrs.some((attr) => attr.name === '[step]'),
+        filterFn: (element) => hasElementAttribute(element, 'step'),
     },
     {
         from: 'tui-input-count',
         to: 'tui-input-number',
         addAttributes: ['decimal="never"', '[step]="1"'],
-        filterFn: (element) => element.attrs.every((attr) => attr.name !== '[step]'),
+        filterFn: (element) => !hasElementAttribute(element, 'step'),
     },
     {
         from: 'tui-money',

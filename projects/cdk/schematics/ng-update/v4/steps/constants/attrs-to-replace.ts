@@ -1,4 +1,5 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import type {ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
@@ -218,8 +219,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withAttrsNames: ['tuiLink'],
             filterFn: (element) =>
                 !hasElementAttribute(element, 'iconAlign') ||
-                element.attrs.find((attr) => attr.name === 'iconalign')?.value ===
-                    'right',
+                findAttr(element.attrs, 'iconAlign')?.value === 'right',
         },
         to: {attrName: 'iconEnd'},
     },
@@ -227,8 +227,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         from: {
             attrName: 'icon',
             withAttrsNames: ['tuiLink'],
-            filterFn: (element) =>
-                element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
+            filterFn: (element) => findAttr(element.attrs, 'iconAlign')?.value === 'left',
         },
         to: {attrName: 'iconStart'},
     },
