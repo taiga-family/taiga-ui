@@ -1,4 +1,7 @@
-<header class="t-header">
+<header
+    *ngIf="chooseDayOrRangeTexts$ | async as texts"
+    class="t-header"
+>
     <button
         appearance=""
         automation-id="tui-mobile-calendar__cancel"
@@ -21,11 +24,10 @@
         {{ cancelWord$ | async }}
     </button>
     <h2
-        *ngIf="chooseDayOrRangeTexts$ | async as texts"
         automation-id="tui-mobile-calendar__label"
         class="t-label"
     >
-        {{ single ? texts?.[0] : multi ? texts?.[2] : texts?.[1] }}
+        {{ single ? texts[0] : multi ? texts[2] : texts[1] }}
     </h2>
     <button
         automation-id="tui-mobile-calendar__confirm"
