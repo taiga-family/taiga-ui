@@ -1,46 +1,51 @@
 import type {TuiCountryIsoCode} from './country-iso-code';
 import type {TuiLanguageName} from './language-names';
 
-// prettier-ignore
-type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
-
 export interface TuiLanguageCore {
     close: string;
     countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;
-    months: MONTHS_ARRAY;
+    months: [
+        January: string,
+        February: string,
+        March: string,
+        April: string,
+        May: string,
+        June: string,
+        July: string,
+        August: string,
+        September: string,
+        October: string,
+        November: string,
+        December: string,
+    ];
     nothingFoundMessage: string;
-    /**
-     * Tuple with short days of week
-     * starts with Mon (Monday)
-     */
-    shortWeekDays: [string, string, string, string, string, string, string];
-    /**
-     * [@string word 'previous', @string word 'next']
-     */
-    spinTexts: [string, string];
+    shortWeekDays: [
+        Monday: string,
+        Tuesday: string,
+        Wednesday: string,
+        Thursday: string,
+        Friday: string,
+        Saturday: string,
+        Sunday: string,
+    ];
+    spinTexts: [previous: string, next: string];
 }
 
 export interface TuiLanguageKit {
     cancel: string;
-    /**
-     * [@string 'Copy', @param 'Copied']
-     */
-    copyTexts: [string, string];
-    /**
-     * [@string 'plus', @param 'minus']
-     */
-    countTexts: [string, string];
+    copyTexts: [copy: string, copied: string];
+    countTexts: [plus: string, minus: string];
     dateTexts: {
         DMY: string;
         MDY: string;
         YMD: string;
     };
-    /**
-     * short bytes, kilobytes and megabytes
-     * [@string 'B', @param 'KB', @param 'MB']
-     */
-    digitalInformationUnits: [string, string, string];
+    digitalInformationUnits: [
+        short_byte: string,
+        short_kilobyte: string,
+        short_megabyte: string,
+    ];
     done: string;
     fileTexts: {
         loadingError: string;
@@ -58,33 +63,34 @@ export interface TuiLanguageKit {
         formatRejectionReason: string;
         maxSizeRejectionReason: string;
     };
-    /**
-     * [@string 'choose day', @param 'choose range', @param 'choose days']
-     */
-    mobileCalendarTexts: [string, string, string];
+    mobileCalendarTexts: [choose_day: string, choose_range: string, choose_days: string];
     more: string;
     multiSelectTexts: {
         all: string;
         none: string;
     };
     otherDate: string;
-    /**
-     * [@string 'Previous page', @param 'Next page']
-     */
-    pagination: [string, string];
-    /**
-     * [@string 'Show password', @param 'Hide password']
-     */
-    passwordTexts: [string, string];
+    pagination: [previous_page: string, next_page: string];
+    passwordTexts: [show_password: string, hide_password: string];
     confirm: {
         no: string;
         yes: string;
     };
-    /**
-     * [@string 'from', @param 'to']
-     */
-    range: [string, string];
-    shortCalendarMonths: MONTHS_ARRAY;
+    range: [from: string, to: string];
+    shortCalendarMonths: [
+        January: string,
+        February: string,
+        March: string,
+        April: string,
+        May: string,
+        June: string,
+        July: string,
+        August: string,
+        September: string,
+        October: string,
+        November: string,
+        December: string,
+    ];
     showAll: string;
     time: {
         'HH:MM': string;
@@ -102,16 +108,8 @@ export interface TuiLanguageKit {
 }
 
 export interface TuiLanguageCommerce {
-    /**
-     * Short and full expiry text
-     * [@string 'Expiry', @string 'Expiry date']
-     */
-    cardExpiry: [string, string];
-    /**
-     * Short and full card number text
-     * [@string 'Number', @string 'Card number']
-     */
-    cardNumber: [string, string];
+    cardExpiry: [expiry: string, expiry_date: string];
+    cardNumber: [number: string, card_number: string];
 }
 
 export interface TuiLanguageTable {
@@ -120,9 +118,6 @@ export interface TuiLanguageTable {
         of: string;
         pages: string;
     };
-    /**
-     * 'Show/hide' button title
-     */
     showHideText: string;
 }
 
