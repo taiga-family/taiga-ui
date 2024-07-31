@@ -30,10 +30,10 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
     standalone: true,
@@ -41,8 +41,8 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
     imports: [NgIf, WaResizeObserver, TuiButton, PolymorpheusOutlet],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiTextfieldComponent),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),

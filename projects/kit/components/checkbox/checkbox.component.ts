@@ -1,10 +1,11 @@
-import {DoCheck, OnInit, ViewEncapsulation} from '@angular/core';
+import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
