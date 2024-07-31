@@ -59,10 +59,10 @@ describe('ng-migrate', () => {
     it('should migrate status => appearance ("tui-notification" selector)', async () => {
         const {template} = await runMigration({
             component: COMPONENT_BEFORE,
-            template: '<tui-notification status="info" />',
+            template: '<tui-notification size="m" status="info" />',
         });
 
-        expect(template).toBe('<tui-notification appearance="info" />');
+        expect(template).toBe('<tui-notification size="m" appearance="info" />');
     });
 
     it('should migrate status => appearance ("[tuiNotification]" selector)', async () => {
@@ -72,8 +72,23 @@ describe('ng-migrate', () => {
         });
 
         expect(template).toBe(
-            '<button tuiNotification [appearance]="status">Text</button>',
+            '<button size="m" tuiNotification [appearance]="status">Text</button>',
         );
+    });
+
+    describe('keeps untouched "size" attribute (if it is already exists)', () => {
+        ['size="l"', '[size]="computedSize"'].forEach((sizeAttr) => {
+            it(`${sizeAttr}`, async () => {
+                const {template} = await runMigration({
+                    component: COMPONENT_BEFORE,
+                    template: `<button tuiNotification ${sizeAttr}>Text</button>`,
+                });
+
+                expect(template).toBe(
+                    `<button tuiNotification ${sizeAttr}>Text</button>`,
+                );
+            });
+        });
     });
 
     afterEach(() => {
