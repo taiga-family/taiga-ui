@@ -1,0 +1,30 @@
+/**
+ * @name Status
+ * @selector [tuiStatus]
+ *
+ * @description
+ * An indicator of a status with a color dot
+ *
+ * @vars
+ * --t-status — color of the dot
+ *
+ * @example
+ * <span tuiStatus style="--t-status: green">Success</span>
+ *
+ * @see-also
+ * Badge, Chip
+ */
+[tuiStatus] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:before {
+        content: '';
+        display: var(--t-status, none);
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        background: var(--t-status);
+    }
+}

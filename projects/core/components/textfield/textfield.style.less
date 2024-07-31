@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
+tui-textfield {
     .transition(color);
 
     --t-left: 0rem;
@@ -41,7 +41,7 @@
             font-size: 1rem;
         }
 
-        ::ng-deep [tuiTextfield] {
+        [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
 
@@ -75,7 +75,7 @@
             margin-inline-end: -0.125rem;
         }
 
-        ::ng-deep [tuiTextfield] {
+        [tuiTextfield] {
             font: var(--tui-font-text-s);
         }
     }
@@ -103,7 +103,7 @@
             margin-inline-start: 0.25rem;
         }
 
-        ::ng-deep [tuiTextfield] {
+        [tuiTextfield] {
             font: var(--tui-font-text-m);
         }
     }
@@ -116,15 +116,35 @@
         z-index: 1;
     }
 
+    &:has(:disabled):before,
+    &:has(:disabled):after,
+    &:has(:disabled) .t-template {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    // TODO: Fallback until Safari 15.4
     &._disabled:before,
     &._disabled:after,
     &._disabled .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
+    &:has(label) {
+        .t-template,
+        [tuiTextfield] {
+            padding-top: calc(var(--t-height) / 3);
+
+            &::placeholder,
+            &._empty {
+                color: transparent;
+            }
+        }
+    }
+
+    // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        ::ng-deep [tuiTextfield] {
+        [tuiTextfield] {
             padding-top: calc(var(--t-height) / 3);
 
             &::placeholder,
@@ -147,7 +167,7 @@
         padding: inherit;
     }
 
-    ::ng-deep [tuiTextfield] {
+    [tuiTextfield] {
         pointer-events: auto;
         background: transparent no-repeat center right 1rem / 2rem;
         background-clip: border-box, padding-box;
@@ -199,7 +219,7 @@
         }
     }
 
-    ::ng-deep label {
+    label {
         .transition(all);
         .text-overflow();
 
@@ -209,17 +229,17 @@
         font-size: inherit;
     }
 
-    ::ng-deep label,
-    ::ng-deep input::placeholder,
-    ::ng-deep select._empty {
+    label,
+    input::placeholder,
+    select._empty {
         color: var(--tui-text-secondary);
     }
 
-    ::ng-deep select:not([data-mode='readonly']) {
+    select:not([data-mode='readonly']) {
         cursor: pointer;
     }
 
-    ::ng-deep [tuiTextfield] {
+    [tuiTextfield] {
         .ios-only({
             &:active {
                 font-size: 1rem;
@@ -232,27 +252,27 @@
         });
     }
 
-    ::ng-deep button,
-    ::ng-deep a {
+    button,
+    a {
         pointer-events: auto;
     }
-}
 
-.t-content {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    margin-inline-start: auto;
-}
+    .t-content {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-inline-start: auto;
+    }
 
-.t-clear {
-    display: none;
-    pointer-events: auto;
-}
+    .t-clear {
+        display: none;
+        pointer-events: auto;
+    }
 
-.t-filler {
-    pointer-events: none;
-    background: none;
-    color: var(--tui-text-tertiary);
-    opacity: 1;
+    .t-filler {
+        pointer-events: none;
+        background: none;
+        color: var(--tui-text-tertiary);
+        opacity: 1;
+    }
 }

@@ -12,7 +12,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     standalone: true,
     selector: 'input[type="radio"][tuiRadio]',
     template: '',
-    styleUrls: ['./radio.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/radio.less";'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithAppearance, TuiNativeValidator],
     host: {

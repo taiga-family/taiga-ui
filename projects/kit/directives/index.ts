@@ -2,7 +2,6 @@ export * from '@taiga-ui/kit/directives/button-close';
 export * from '@taiga-ui/kit/directives/button-group';
 export * from '@taiga-ui/kit/directives/button-vertical';
 export * from '@taiga-ui/kit/directives/chevron';
-export * from '@taiga-ui/kit/directives/comment';
 export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';
 export * from '@taiga-ui/kit/directives/fade';
 export * from '@taiga-ui/kit/directives/highlight';

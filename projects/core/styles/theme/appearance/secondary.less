@@ -14,6 +14,35 @@
         background: var(--tui-background-neutral-1-pressed);
     });
 
+    &:checked,
+    &:indeterminate {
+        background: var(--tui-background-accent-1);
+        color: var(--tui-text-primary-on-accent-1);
+
+        .appearance-hover({
+            background: var(--tui-background-accent-1-hover);
+        });
+
+        .appearance-active({
+            background: var(--tui-background-accent-1-pressed);
+        });
+
+        &:invalid {
+            background: var(--tui-status-negative);
+            color: #fff;
+
+            .appearance-hover({
+                background: var(--tui-status-negative);
+                color: #fff;
+            });
+
+            .appearance-active({
+                background: var(--tui-status-negative);
+                color: #fff;
+            });
+        }
+    }
+
     &:invalid {
         color: var(--tui-text-negative);
         background: var(--tui-status-negative-pale);

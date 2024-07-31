@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +8,7 @@ import {
     forwardRef,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -29,18 +30,19 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
-import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, AsyncPipe, WaResizeObserver, TuiButton, PolymorpheusOutlet],
+    imports: [NgIf, WaResizeObserver, TuiButton, PolymorpheusOutlet],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
     providers: [
         tuiAsDataListHost(TuiTextfieldComponent),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),

@@ -23,7 +23,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./chip.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/chip.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

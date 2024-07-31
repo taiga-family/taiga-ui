@@ -1,6 +1,20 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-:host {
+/**
+ * @name Pin
+ * @selector tui-pin,[tuiPin]
+ *
+ * @description
+ * A toggleable pin to be used on maps
+ *
+ * @example
+ * <button tuiPin><img src="avatar.jpg" /></button>
+ *
+ * @see-also
+ * Compass
+ */
+tui-pin,
+[tuiPin] {
     --t-size: 2rem;
 
     .transition(~'width, height, border, margin');
@@ -36,15 +50,22 @@
         }
     }
 
-    ::ng-deep > img {
+    > input {
+        .fullsize();
+
+        appearance: none;
+        border-radius: 100%;
+    }
+
+    > img {
         max-height: 100%;
         box-sizing: border-box;
         border-radius: 100%;
         background: var(--tui-background-base);
     }
 
-    ::ng-deep > tui-icon,
-    ::ng-deep > tui-svg {
+    > tui-icon,
+    > tui-svg {
         .transition(~'width, height');
 
         width: 1.25rem;
@@ -52,6 +73,36 @@
         align-self: center;
     }
 
+    &:has(:checked) {
+        --t-size: 3.5rem;
+
+        font: var(--tui-font-text-m);
+        font-weight: bold;
+        border-width: 0;
+        margin-top: -2.75rem;
+
+        > img {
+            padding: 0.125rem;
+        }
+
+        > tui-icon,
+        > tui-svg {
+            width: 2.125rem;
+            height: 2.125rem;
+        }
+
+        &:before {
+            transform: scale(0.99) translate(-1.875rem, -1.875rem);
+            opacity: 1;
+        }
+
+        &:after {
+            top: 4.5rem;
+            opacity: 1;
+        }
+    }
+
+    // TODO: Fallback until Safari 15.4
     &._open {
         --t-size: 3.5rem;
 
@@ -60,12 +111,12 @@
         border-width: 0;
         margin-top: -2.75rem;
 
-        ::ng-deep > img {
+        > img {
             padding: 0.125rem;
         }
 
-        ::ng-deep > tui-icon,
-        ::ng-deep > tui-svg {
+        > tui-icon,
+        > tui-svg {
             width: 2.125rem;
             height: 2.125rem;
         }
