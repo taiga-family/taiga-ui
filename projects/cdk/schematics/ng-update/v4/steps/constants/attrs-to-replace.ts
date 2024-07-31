@@ -246,4 +246,20 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: 'tuiTextfieldLegacy'},
     },
+    {
+        from: {
+            attrName: 'status',
+            withTagNames: ['tui-notification'],
+            withAttrsNames: ['tuiNotification'],
+        },
+        to: {attrName: 'appearance'},
+    },
+    {
+        from: {
+            attrName: '[status]',
+            withTagNames: ['tui-notification'],
+            withAttrsNames: ['tuiNotification'],
+        },
+        to: {attrName: '[appearance]'},
+    },
 ];
