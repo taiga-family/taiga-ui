@@ -53,12 +53,13 @@ export default class Example {
     @tuiPure
     protected computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
         return this.months$.pipe(
-            map((months) =>
-                Array.from(
+            map((months) => [
+                ...Array.from(
                     {length: TuiMonth.lengthBetween(from, to) + 1},
                     (_, i) => months[from.append({month: i}).month],
                 ),
-            ),
+                '',
+            ]),
         );
     }
 

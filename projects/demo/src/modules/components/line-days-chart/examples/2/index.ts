@@ -79,12 +79,13 @@ export default class Example {
 
         if (length > 90) {
             return this.months$.pipe(
-                map((months) =>
-                    Array.from(
+                map((months) => [
+                    ...Array.from(
                         {length: TuiMonth.lengthBetween(from, to) + 1},
                         (_, i) => months[from.append({month: i}).month],
                     ),
-                ),
+                    '',
+                ]),
             );
         }
 
@@ -93,18 +94,18 @@ export default class Example {
         const days = range.map(String);
 
         if (length > 60) {
-            return of(even(mondays));
+            return of([...even(mondays), '']);
         }
 
         if (length > 14) {
-            return of(mondays);
+            return of([...mondays, '']);
         }
 
         if (length > 7) {
-            return of(even(days));
+            return of([...even(days), '']);
         }
 
-        return of(days);
+        return of([...days, '']);
     }
 
     protected readonly filter: TuiMatcher<[readonly [TuiDay, number], TuiDayRange]> = (

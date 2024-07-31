@@ -34,7 +34,7 @@
     [axisXLabels]="labels"
     [horizontalLines]="4"
     [tuiLineChartHint]="hint"
-    [verticalLines]="labels.length"
+    [verticalLines]="labels.length - 1"
 >
     <ng-container *ngIf="getWidth(show) > 90; else line">
         <tui-line-days-chart
