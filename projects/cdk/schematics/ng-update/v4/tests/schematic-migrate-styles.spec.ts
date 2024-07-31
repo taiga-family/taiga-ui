@@ -29,6 +29,10 @@ import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 .example {
     .tui-space(vertical, 4);
 }
+
+.one-more-class {
+    .tui-space(horizontal, -4);
+}
 `;
 
 const STYLES_AFTER = `
@@ -49,6 +53,11 @@ import '@taiga-ui/proprietary/styles/tbank-fonts';
 .example {
     margin-top: 1rem;
 margin-bottom: 1rem;
+}
+
+.one-more-class {
+    margin-left: -1rem;
+margin-right: -1rem;
 }
 `;
 
