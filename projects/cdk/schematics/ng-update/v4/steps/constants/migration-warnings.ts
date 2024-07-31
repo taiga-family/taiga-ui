@@ -162,4 +162,10 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiMoneyComponent is deprecated, Use tuiAmount pipe instead. See example https://taiga-ui.dev/pipes/amount',
     },
+    {
+        name: 'TuiIllustrationsModule',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
 ];

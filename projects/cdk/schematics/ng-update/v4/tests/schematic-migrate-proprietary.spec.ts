@@ -45,14 +45,16 @@ export class Test {
 }`.trim();
 
 const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
-import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+import { TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+// TODO: (Taiga UI migration) Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
+import { TuiIllustrationsModule } from '@taiga-ui/proprietary';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationModePipe]
+    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationsModule]
 })
 export class Test {
     @Input() illustration: string | null = null;

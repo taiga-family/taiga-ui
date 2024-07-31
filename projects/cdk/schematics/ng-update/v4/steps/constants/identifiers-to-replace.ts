@@ -1045,16 +1045,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiIllustrationsModule',
-            moduleSpecifier: '@taiga-ui/proprietary-icons',
-        },
-        to: {
-            name: 'TuiIllustrationModePipe',
-            moduleSpecifier: '@taiga-ui/proprietary',
-        },
-    },
-    {
-        from: {
             name: 'ProductsNavigationModule',
             moduleSpecifier: '@taiga-ui/proprietary-navigation',
         },
