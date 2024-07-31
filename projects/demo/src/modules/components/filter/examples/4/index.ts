@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiFilterComponent} from '@taiga-ui/kit';
+import {TuiFilter} from '@taiga-ui/kit';
 import {BehaviorSubject, map} from 'rxjs';
 
 const Department = {
@@ -24,7 +24,7 @@ const Department = {
 
 @Component({
     standalone: true,
-    imports: [TuiButton, AsyncPipe, TuiFilterComponent, FormsModule],
+    imports: [TuiButton, AsyncPipe, TuiFilter, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
