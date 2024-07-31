@@ -91,6 +91,19 @@ describe('ng-migrate', () => {
         });
     });
 
+    it('adds close button inside if (close) listener exists', async () => {
+        const {template, component} = await runMigration({
+            component: COMPONENT_BEFORE,
+            template:
+                '<tui-notification [hideClose]="condition" (close)="anyHandler()">Text</tui-notification>',
+        });
+
+        expect(template).toBe(
+            '<tui-notification size="m"  (close)="anyHandler()">Text <button *ngIf="!condition" tuiIconButton iconStart="@tui.x"></button></tui-notification>',
+        );
+        expect(component).toContain('import { NgIf } from "@angular/common";');
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
