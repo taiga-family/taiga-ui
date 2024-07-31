@@ -2638,4 +2638,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'ANIMATION_FRAME', moduleSpecifier: '@ng-web-apis/common'},
         to: {name: 'WA_ANIMATION_FRAME', moduleSpecifier: '@ng-web-apis/common'},
     },
+    {
+        from: {name: 'MaskitoModule', moduleSpecifier: '@maskito/angular'},
+        to: [
+            {name: 'MaskitoDirective', moduleSpecifier: '@maskito/angular'},
+            {name: 'MaskitoPipe', moduleSpecifier: '@maskito/angular'},
+        ],
+    },
 ];
