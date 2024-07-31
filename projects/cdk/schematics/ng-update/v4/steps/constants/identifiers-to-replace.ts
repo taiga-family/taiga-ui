@@ -2640,9 +2640,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'MaskitoModule', moduleSpecifier: '@maskito/angular'},
-        to: [
-            {name: 'MaskitoDirective', moduleSpecifier: '@maskito/angular'},
-            {name: 'MaskitoPipe', moduleSpecifier: '@maskito/angular'},
-        ],
+        to: {name: 'MaskitoDirective', moduleSpecifier: '@maskito/angular'},
     },
 ];
