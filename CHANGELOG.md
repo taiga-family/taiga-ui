@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.88.0](https://github.com/taiga-family/taiga-ui/compare/v3.87.0...v3.88.0) (2024-07-31)
+
+### Features
+
+- **addon-mobile:** possibility to hide header of `MobileCalendar`
+  ([#8264](https://github.com/taiga-family/taiga-ui/issues/8264))
+  ([8afc477](https://github.com/taiga-family/taiga-ui/commit/8afc477d3383f91490efaef7ec05e3dd129a7c95))
+- **experimental:** `ThumbnailCard` add DI options ([#8155](https://github.com/taiga-family/taiga-ui/issues/8155))
+  ([96c5656](https://github.com/taiga-family/taiga-ui/commit/96c56561cd1af077aca7a88d87f66bca06bb592c))
+
+### Bug Fixes
+
+- **cdk:** provided double value is non-finite ([#8161](https://github.com/taiga-family/taiga-ui/issues/8161))
+  ([276879b](https://github.com/taiga-family/taiga-ui/commit/276879bf97f2ee5f958477d0f31923ce4b420f87))
+- **core:** `Dialog` should hide close icon if `closeable` equals to `Observable<false>`
+  ([#8206](https://github.com/taiga-family/taiga-ui/issues/8206))
+  ([d0e04f9](https://github.com/taiga-family/taiga-ui/commit/d0e04f926308b89475097077e88de77c1e6b6080))
+- **core:** fix dropdown-context directive on touchscreen laptops
+  ([#8223](https://github.com/taiga-family/taiga-ui/issues/8223))
+  ([0bb7b5b](https://github.com/taiga-family/taiga-ui/commit/0bb7b5ba2789683af27a979d80609c968b88d323))
+- **kit:** `Date` should support native date picker even without importing of `TuiMobileCalendarDialogModule`
+  ([#8252](https://github.com/taiga-family/taiga-ui/issues/8252))
+  ([b6da5bd](https://github.com/taiga-family/taiga-ui/commit/b6da5bd87b0d713ee802ec5f36d5507bcbe53e04))
+
 ## [3.87.0](https://github.com/taiga-family/taiga-ui/compare/v3.86.0...v3.87.0) (2024-07-15)
 
 ### Features
