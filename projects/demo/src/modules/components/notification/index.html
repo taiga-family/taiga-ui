@@ -9,50 +9,11 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
+            [content]="index + 1 | tuiExample: 'html,ts'"
             [heading]="example"
             [id]="example | tuiKebab"
         />
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-doc-demo>
-            <tui-notification
-                [status]="status"
-                (close)="documentationPropertyClose.emitEvent($event)"
-            >
-                A short simple informative message
-            </tui-notification>
-        </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="status"
-                documentationPropertyType="TuiNotificationStatus"
-                [documentationPropertyValues]="statusVariants"
-                [(documentationPropertyValue)]="status"
-            >
-                Status changes color of notification
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="icon"
-                documentationPropertyType="PolymorpheusContent"
-            >
-                Icon content. Specify
-                <code>null</code>
-                to hide icon.
-            </ng-template>
-            <ng-template
-                #documentationPropertyClose="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="close"
-                documentationPropertyType="void"
-            >
-                Emits click on close cross. When subscribed to, close button appears.
-            </ng-template>
-        </tui-doc-documentation>
-    </ng-template>
-
-    <tui-setup *pageTab />
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

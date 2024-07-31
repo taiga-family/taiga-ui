@@ -4,15 +4,17 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="error">
-            This component is deprecated, use new
-            <a
-                tuiLink
-                [routerLink]="routes.Textfield"
-            >
-                Textfield
-            </a>
-            instead
+        <tui-notification appearance="error">
+            <div>
+                This component is deprecated, use new
+                <a
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    Textfield
+                </a>
+                instead to build your custom textfield controls
+            </div>
         </tui-notification>
         <p>
             PrimitiveTextfield is a flexible string input that can be used as a base for complex inputs. Use it as a
@@ -27,13 +29,15 @@
             [content]="1 | tuiExample"
         >
             <tui-notification class="tui-space_bottom-4">
-                Simplified version of
-                <a
-                    tuiLink
-                    [routerLink]="routes.InputPassword"
-                >
-                    <code>InputPassword</code>
-                </a>
+                <div>
+                    Simplified version of
+                    <a
+                        tuiLink
+                        [routerLink]="routes.InputPassword"
+                    >
+                        <code>InputPassword</code>
+                    </a>
+                </div>
             </tui-notification>
             <tui-primitive-textfield-example-1 [(ngModel)]="password">
                 Type a password
@@ -46,11 +50,13 @@
             [content]="2 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-4">
-                If you need to set some attributes or listen to events on native
-                <code>input</code>
-                , you can put it inside with
-                <code>Textfield</code>
-                directive as shown below
+                <div>
+                    If you need to set some attributes or listen to events on native
+                    <code>input</code>
+                    , you can put it inside with
+                    <code>Textfield</code>
+                    directive as shown below
+                </div>
             </tui-notification>
             <tui-primitive-textfield-example-2 [(ngModel)]="example2Value" />
         </tui-doc-example>

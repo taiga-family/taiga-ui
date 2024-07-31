@@ -39,11 +39,13 @@
             [content]="2 | tuiExample: 'html,ts'"
         >
             <tui-notification class="bar tui-space_bottom-4">
-                If you use
-                <code>routerLink</code>
-                you must also add
-                <code>routerLinkActive</code>
-                directive.
+                <div>
+                    If you use
+                    <code>routerLink</code>
+                    you must also add
+                    <code>routerLinkActive</code>
+                    directive.
+                </div>
             </tui-notification>
         </tui-doc-example>
 
@@ -51,7 +53,7 @@
             id="customization"
             heading="Customization"
             [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html,ts'"
+            [content]="3 | tuiExample"
         />
 
         <tui-doc-example
@@ -61,9 +63,11 @@
             [content]="4 | tuiExample: 'html,ts'"
         >
             <tui-notification class="bar tui-space_bottom-4">
-                When there are no
-                <code>TabBarItem</code>
-                children, the component shows skeleton for 4 items
+                <div>
+                    When there are no
+                    <code>TabBarItem</code>
+                    children, the component shows skeleton for 4 items
+                </div>
             </tui-notification>
         </tui-doc-example>
     </ng-template>

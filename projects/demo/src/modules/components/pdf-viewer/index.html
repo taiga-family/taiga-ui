@@ -6,14 +6,16 @@
     <ng-template pageTab>
         <p>Custom dialog to preview PDF</p>
 
-        <tui-notification status="warning">
-            Keep in mind mobile devices do not support displaying PDFs in iframe, so you need to rely on
-            <code>TUI_IS_MOBILE</code>
-            token to provide suitable alternative behavior. For example, you can use third-party service
-            <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
-            or your own service to render PDF in mobile iframe with
-            <code>pdf.js</code>
-            .
+        <tui-notification appearance="warning">
+            <div>
+                Keep in mind most mobile devices do not support displaying PDFs in iframe, so you need to rely on
+                <code>TUI_IS_MOBILE</code>
+                token to provide suitable alternative behavior. For example, you can use third-party service
+                <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
+                or your own service to render PDF in mobile iframe with
+                <code>pdf.js</code>
+                .
+            </div>
         </tui-notification>
 
         <tui-doc-example

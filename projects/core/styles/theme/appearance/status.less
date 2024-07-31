@@ -15,7 +15,10 @@
 [tuiAppearance][data-appearance='error'] {
     --t-bg: var(--tui-status-negative-pale);
 
-    color: var(--tui-status-negative);
+    &:before,
+    &:after {
+        color: var(--tui-status-negative);
+    }
 
     .appearance-hover({
         --t-bg: var(--tui-status-negative-pale-hover);
@@ -33,7 +36,10 @@
 [tuiAppearance][data-appearance='success'] {
     --t-bg: var(--tui-status-positive-pale);
 
-    color: var(--tui-status-positive);
+    &:before,
+    &:after {
+        color: var(--tui-status-positive);
+    }
 
     .appearance-hover({
         --t-bg: var(--tui-status-positive-pale-hover);
@@ -51,7 +57,10 @@
 [tuiAppearance][data-appearance='warning'] {
     --t-bg: var(--tui-status-warning-pale);
 
-    color: var(--tui-status-warning);
+    &:before,
+    &:after {
+        color: var(--tui-status-warning);
+    }
 
     .appearance-hover({
         --t-bg: var(--tui-status-warning-pale-hover);
@@ -69,7 +78,10 @@
 [tuiAppearance][data-appearance='info'] {
     --t-bg: var(--tui-status-info-pale);
 
-    color: var(--tui-status-info);
+    &:before,
+    &:after {
+        color: var(--tui-status-info);
+    }
 
     .appearance-hover({
         --t-bg: var(--tui-status-info-pale-hover);
@@ -87,7 +99,10 @@
 [tuiAppearance][data-appearance='neutral'] {
     --t-bg: var(--tui-background-neutral-1);
 
-    color: var(--tui-status-neutral);
+    &:before,
+    &:after {
+        color: var(--tui-status-neutral);
+    }
 
     .appearance-hover({
         --t-bg: var(--tui-background-neutral-1-hover);

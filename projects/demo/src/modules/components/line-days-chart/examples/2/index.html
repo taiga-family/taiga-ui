@@ -1,6 +1,8 @@
 <tui-notification>
-    <code>TuiLineDaysChart</code>
-    is used to show data of several months to simplify working with different number of days in months
+    <div>
+        <code>TuiLineDaysChart</code>
+        is used to show data of several months to simplify working with different number of days in months
+    </div>
 </tui-notification>
 <p class="controls">
     <tui-input-date-range
@@ -32,7 +34,7 @@
     [axisXLabels]="labels"
     [horizontalLines]="4"
     [tuiLineChartHint]="hint"
-    [verticalLines]="labels.length"
+    [verticalLines]="labels.length - 1"
 >
     <ng-container *ngIf="getWidth(show) > 90; else line">
         <tui-line-days-chart

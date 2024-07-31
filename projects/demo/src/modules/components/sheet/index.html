@@ -5,17 +5,19 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="warning">
-            If you need overlay and do not need image related functionality, it is recommended to use
-            <a
-                tuiLink
-                [routerLink]="routes.SheetDialog"
-            >
-                SheetDialog
-            </a>
-            .
-            <code>Sheet</code>
-            component is on track to be deprecated.
+        <tui-notification appearance="warning">
+            <div>
+                If you need overlay and do not need image related functionality, it is recommended to use
+                <a
+                    tuiLink
+                    [routerLink]="routes.SheetDialog"
+                >
+                    SheetDialog
+                </a>
+                .
+                <code>Sheet</code>
+                component is on track to be deprecated.
+            </div>
         </tui-notification>
 
         <tui-notification
@@ -39,9 +41,11 @@
             [content]="2 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-4">
-                Note
-                <code>SheetHeading</code>
-                component that styles the heading and adds close button if sheet is closeable.
+                <div>
+                    Note
+                    <code>SheetHeading</code>
+                    component that styles the heading and adds close button if sheet is closeable.
+                </div>
             </tui-notification>
         </tui-doc-example>
 
@@ -59,14 +63,16 @@
             [content]="4 | tuiExample"
         >
             <tui-notification class="tui-space_bottom-4">
-                Using
-                <a
-                    tuiLink
-                    [routerLink]="routes.ElasticSticky"
-                >
-                    <code>ElasticSticky</code>
-                </a>
-                directive.
+                <div>
+                    Using
+                    <a
+                        tuiLink
+                        [routerLink]="routes.ElasticSticky"
+                    >
+                        <code>ElasticSticky</code>
+                    </a>
+                    directive.
+                </div>
             </tui-notification>
         </tui-doc-example>
 

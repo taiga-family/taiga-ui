@@ -4,7 +4,12 @@
     type="components"
 >
     <ng-template pageTab>
-        Basic textfield component to implement more complex controls based upon it.
+        <p>Basic textfield component to implement more complex controls based upon it.</p>
+
+        <tui-notification appearance="warning">
+            Textfield based controls are in the process of being refactored. For now it is recommended to use old
+            components from the Legacy package
+        </tui-notification>
 
         <tui-doc-example
             *ngFor="let example of examples; let index = index"

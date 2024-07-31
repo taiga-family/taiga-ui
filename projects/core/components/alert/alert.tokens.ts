@@ -11,7 +11,7 @@ import {BehaviorSubject, combineLatest, map, of} from 'rxjs';
 
 import type {TuiAlertOptions} from './alert.interfaces';
 
-export const TUI_ALERT_DEFAULT_OPTIONS: Omit<TuiAlertOptions, 'icon' | 'status'> = {
+export const TUI_ALERT_DEFAULT_OPTIONS: Omit<TuiAlertOptions, 'appearance' | 'icon'> = {
     autoClose: 3000,
     label: '',
     closeable: true,

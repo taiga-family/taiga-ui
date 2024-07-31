@@ -1,40 +1,37 @@
-<ng-container *ngFor="let status of statuses; let last = last">
-    <tui-notification
-        *ngFor="let size of sizes"
-        [size]="size"
-        [status]="status"
-    >
-        {{ status | titlecase }} label ({{ size | uppercase }})
-    </tui-notification>
-
-    <hr />
-
-    <tui-notification
-        *ngFor="let size of sizes"
-        tuiNotification
-        [size]="size"
-        [status]="status"
-    >
-        {{ status | titlecase }} label ({{ size | uppercase }})
-        <tui-icon
-            icon="@tui.circle-help"
-            tuiHintAppearance="dark"
-            tuiHintDirection="right"
-            [tuiHint]="tooltip"
-        />
-        <ng-template #tooltip>Hello world</ng-template>
-    </tui-notification>
-
-    <hr />
-
+<tui-notification size="l">
+    Hello world
     <button
-        *ngFor="let size of sizes"
-        tuiNotification
-        [size]="size"
-        [status]="status"
+        iconStart="@tui.x"
+        tuiIconButton
     >
-        {{ status | titlecase }} label ({{ size | uppercase }})
+        Close
     </button>
+</tui-notification>
 
-    <hr *ngIf="!last" />
-</ng-container>
+<tui-notification
+    appearance="warning"
+    size="m"
+>
+    <div tuiTitle>
+        I am title
+        <div tuiSubtitle>I am content of the notification and I can even wrap to multiple lines.</div>
+        <div>
+            <button tuiButton>So what?</button>
+            <button tuiLink>Whatever</button>
+        </div>
+    </div>
+    <button
+        iconStart="@tui.x"
+        tuiIconButton
+    >
+        Close
+    </button>
+</tui-notification>
+
+<tui-notification
+    appearance="neutral"
+    icon=""
+    size="s"
+>
+    Most boring notification
+</tui-notification>

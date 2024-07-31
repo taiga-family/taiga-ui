@@ -23,6 +23,12 @@ export const TYPES_TO_RENAME: readonly ReplacementType[] = [
         removeImport: true,
     },
     {
+        from: 'TuiNotificationT',
+        moduleSpecifier: ['@taiga-ui/core'],
+        to: 'string',
+        removeImport: true,
+    },
+    {
         from: 'TuiOperationIcon',
         moduleSpecifier: ['@taiga-ui/proprietary-banking'],
         to: 'TuiFeedItemIcon',

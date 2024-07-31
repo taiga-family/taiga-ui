@@ -38,7 +38,7 @@ export default class Page {
     protected value = this.valueVariants[0];
 
     protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map((months) => Array.from({length: 3}, (_, i) => months[i])),
+        map((months) => Array.from({length: 4}, (_, i) => months[i])),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [

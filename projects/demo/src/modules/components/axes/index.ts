@@ -23,9 +23,9 @@ export default class Page {
 
     protected readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
-        ['', '25%', '50%', '100%'],
-        ['One', 'Two', 'Three'],
-        ['One', null, '', 'Two and a half', 'Three', null],
+        ['', '25%', '50%', '100%', ''],
+        ['One', 'Two', 'Three', ''],
+        ['One', null, '', 'Two and a half', 'Three', null, ''],
     ];
 
     protected readonly labelsYVariants: ReadonlyArray<readonly string[]> = [

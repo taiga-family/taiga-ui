@@ -14,29 +14,26 @@ import {switchMap, takeUntil} from 'rxjs';
     standalone: true,
     imports: [AsyncPipe, TuiButton, TuiLink, TuiAmountPipe],
     template: `
-        <em>Your balance:</em>
-        <span>{{ value | tuiAmount: 'RUB' | async }}</span>
-        <p [style.display]="'flex'">
+        <span tuiSubtitle>
+            <em>Your balance:</em>
+            {{ value | tuiAmount: 'RUB' | async }}
+        </span>
+        <div>
             <button
-                appearance="whiteblock"
-                size="m"
                 tuiButton
                 type="button"
-                class="tui-space_right-3"
                 (click)="context.completeWith(value)"
             >
                 Submit
             </button>
             <button
-                appearance=""
                 tuiLink
                 type="button"
-                [pseudo]="true"
                 (click)="increaseBalance()"
             >
                 Increase
             </button>
-        </p>
+        </div>
     `,
     changeDetection,
 })
@@ -64,7 +61,7 @@ export default class Example {
         .open<number>(new PolymorpheusComponent(AlertExampleWithData), {
             label: 'Heading is so long that it should be shown in two lines of text',
             data: 237,
-            status: 'warning',
+            appearance: 'warning',
             autoClose: 0,
         })
         .pipe(

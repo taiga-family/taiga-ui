@@ -12,7 +12,8 @@ import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
     providers: [
         tuiNotificationOptionsProvider({
             icon: '@tui.circle-help',
-            status: 'warning',
+            appearance: 'warning',
+            size: 's',
         }),
     ],
 })

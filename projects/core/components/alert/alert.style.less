@@ -2,9 +2,11 @@
 
 :host {
     display: block;
-    box-shadow: var(--tui-shadow-medium);
-    border-radius: var(--tui-radius-l);
     width: 18rem;
+    flex-shrink: 0;
+    background: var(--tui-background-elevation-1);
+    border-radius: var(--tui-radius-m);
+    box-shadow: var(--tui-shadow-medium);
 
     &:not(:first-child) {
         margin-top: 0.75rem !important;
@@ -12,36 +14,5 @@
 
     &:not(:last-child) {
         margin-bottom: 0 !important;
-    }
-}
-
-.t-heading {
-    margin: 0;
-
-    [data-size='s'] & {
-        font: var(--tui-font-text-s);
-        font-weight: bold;
-    }
-
-    [data-size='m'] & {
-        font: var(--tui-font-text-m);
-        line-height: 1.25rem;
-        font-weight: bold;
-    }
-
-    [data-size='l'] & {
-        font: var(--tui-font-text-l);
-        line-height: 1.5rem;
-        font-weight: bold;
-    }
-}
-
-.t-content {
-    color: var(--tui-text-primary);
-    word-wrap: break-word;
-    word-break: break-word;
-
-    &:empty {
-        display: none;
     }
 }

@@ -1,0 +1,123 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-notification,
+[tuiNotification] {
+    .button-clear();
+
+    position: relative;
+    display: flex;
+    max-height: 100%;
+    color: var(--tui-text-primary);
+    font: var(--tui-font-text-s);
+    border-radius: var(--tui-radius-m);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+    border: 0 solid transparent;
+
+    &:after {
+        font-size: 1rem;
+        margin: 0 -0.25rem 0 auto;
+        align-self: center;
+        color: var(--tui-text-tertiary) !important;
+    }
+
+    &[data-size='s'] {
+        gap: 0.5rem;
+        padding: 0.375rem 0.625rem;
+
+        &:before,
+        tui-icon {
+            font-size: 1rem;
+            margin-top: 0.125rem;
+            margin-bottom: 0.125rem;
+        }
+
+        [tuiTitle] {
+            font: var(--tui-font-text-s);
+            font-weight: bold;
+        }
+
+        [tuiSubtitle] + * {
+            gap: 1rem;
+            margin: 0.375rem 0 0.25rem;
+        }
+
+        > [tuiIconButton] {
+            margin: -0.375rem -0.625rem -0.375rem auto;
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 0.375rem;
+        padding: 0.75rem;
+
+        &:before,
+        tui-icon {
+            font-size: 1.25rem;
+        }
+
+        [tuiTitle] {
+            font: var(--tui-font-text-ui-m);
+            font-weight: bold;
+        }
+
+        [tuiSubtitle] + * {
+            gap: 1rem;
+            margin: 0.625rem 0 0.25rem;
+        }
+
+        > [tuiIconButton] {
+            margin: -0.375rem -0.25rem -0.375rem auto;
+        }
+    }
+
+    &[data-size='l'] {
+        gap: 0.5rem;
+        padding: 1rem;
+        font: var(--tui-font-text-m);
+        border-radius: var(--tui-radius-l);
+
+        [tuiTitle] {
+            font: var(--tui-font-text-ui-l);
+            font-weight: bold;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-m);
+
+            + * {
+                gap: 1.25rem;
+                margin-top: 0.625rem;
+            }
+        }
+
+        > [tuiIconButton] {
+            margin: -0.25rem -0.25rem -0.25rem auto;
+        }
+    }
+
+    [tuiTitle] {
+        gap: 0.125rem;
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-font-text-s);
+
+        + * {
+            display: flex;
+            font: var(--tui-font-text-s);
+            align-items: center;
+        }
+    }
+
+    > [tuiIconButton] {
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+}
+
+[tuiNotification] {
+    cursor: pointer;
+}
