@@ -1,4 +1,4 @@
-import type {DoCheck} from '@angular/core';
+import {DoCheck, ViewEncapsulation} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -13,6 +13,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     selector: 'input[type="radio"][tuiRadio]',
     template: '',
     styles: ['@import "@taiga-ui/kit/styles/components/radio.less";'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithAppearance, TuiNativeValidator],
     host: {

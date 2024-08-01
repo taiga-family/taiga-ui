@@ -41,7 +41,8 @@ tui-textfield {
             font-size: 1rem;
         }
 
-        [tuiTextfield] {
+        input,
+        select {
             font: var(--tui-font-text-s);
         }
 
@@ -75,7 +76,8 @@ tui-textfield {
             margin-inline-end: -0.125rem;
         }
 
-        [tuiTextfield] {
+        input,
+        select {
             font: var(--tui-font-text-s);
         }
     }
@@ -103,7 +105,8 @@ tui-textfield {
             margin-inline-start: 0.25rem;
         }
 
-        [tuiTextfield] {
+        input,
+        select {
             font: var(--tui-font-text-m);
         }
     }
@@ -116,9 +119,9 @@ tui-textfield {
         z-index: 1;
     }
 
-    &:has(:disabled):before,
-    &:has(:disabled):after,
-    &:has(:disabled) .t-template {
+    &:has(:disabled:not(.t-filler)):before,
+    &:has(:disabled:not(.t-filler)):after,
+    &:has(:disabled:not(.t-filler)) .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
@@ -129,9 +132,10 @@ tui-textfield {
         opacity: var(--tui-disabled-opacity);
     }
 
-    &:has(label) {
+    &:has(label:not(:empty)) {
         .t-template,
-        [tuiTextfield] {
+        input,
+        select {
             padding-top: calc(var(--t-height) / 3);
 
             &::placeholder,
@@ -144,7 +148,8 @@ tui-textfield {
     // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        [tuiTextfield] {
+        input,
+        select {
             padding-top: calc(var(--t-height) / 3);
 
             &::placeholder,
@@ -155,7 +160,8 @@ tui-textfield {
     }
 
     .t-template,
-    ::ng-deep [tuiTextfield] {
+    input:defined,
+    select:defined {
         .fullsize();
 
         appearance: none;
@@ -167,7 +173,8 @@ tui-textfield {
         padding: inherit;
     }
 
-    [tuiTextfield] {
+    input:defined,
+    select:defined {
         pointer-events: auto;
         background: transparent no-repeat center right 1rem / 2rem;
         background-clip: border-box, padding-box;
@@ -219,7 +226,7 @@ tui-textfield {
         }
     }
 
-    label {
+    label:defined {
         .transition(all);
         .text-overflow();
 
@@ -229,7 +236,7 @@ tui-textfield {
         font-size: inherit;
     }
 
-    label,
+    label:defined,
     input::placeholder,
     select._empty {
         color: var(--tui-text-secondary);
@@ -239,7 +246,8 @@ tui-textfield {
         cursor: pointer;
     }
 
-    [tuiTextfield] {
+    input:defined,
+    select:defined {
         .ios-only({
             &:active {
                 font-size: 1rem;
@@ -269,7 +277,7 @@ tui-textfield {
         pointer-events: auto;
     }
 
-    .t-filler {
+    .t-filler:defined {
         pointer-events: none;
         background: none;
         color: var(--tui-text-tertiary);
