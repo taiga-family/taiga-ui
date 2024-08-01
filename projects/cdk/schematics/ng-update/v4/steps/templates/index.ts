@@ -1,4 +1,5 @@
 export * from './migrate-avatar';
+export * from './migrate-axes';
 export * from './migrate-badge';
 export * from './migrate-badged-content';
 export * from './migrate-button-appearance';
