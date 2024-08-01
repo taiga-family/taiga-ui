@@ -31,19 +31,18 @@ export function migrateNotification({
         ...findElementsWithAttributeOnTag(template, ['tuiNotification'], ['button', 'a']),
     ];
 
-    elements.forEach(({attrs, sourceCodeLocation, tagName}) => {
+    elements.forEach(({attrs, sourceCodeLocation, tagName, childNodes}) => {
         const sizeAttr = findAttr(attrs, 'size');
         const hideCloseAttr = findAttr(attrs, 'hideClose');
         const closeListener = findAttr(attrs, '(close)');
 
+        const {startTag, endTag} = sourceCodeLocation || {};
         const hideCloseAttrLocation =
             sourceCodeLocation?.attrs?.[hideCloseAttr?.name || ''];
 
         if (!sizeAttr) {
             recorder.insertRight(
-                templateOffset +
-                    (sourceCodeLocation?.startTag?.startOffset ?? 0) +
-                    `<${tagName}`.length,
+                templateOffset + (startTag?.startOffset ?? 0) + `<${tagName}`.length,
                 ' size="m"',
             );
         }
@@ -62,7 +61,7 @@ export function migrateNotification({
             const closeButtonTemplate = ` <button${ifCondition} tuiIconButton iconStart="${closeIconName}"></button>`;
 
             recorder.insertRight(
-                templateOffset + (sourceCodeLocation?.endTag?.startOffset ?? 0),
+                templateOffset + (endTag?.startOffset ?? 0),
                 closeButtonTemplate,
             );
 
@@ -71,6 +70,11 @@ export function migrateNotification({
 
                 recorder.remove(templateOffset + startOffset, endOffset - startOffset);
             }
+        }
+
+        if (childNodes.length > 1 && startTag && endTag) {
+            recorder.insertRight(templateOffset + startTag.endOffset, '<div>');
+            recorder.insertLeft(templateOffset + endTag.startOffset, '</div>');
         }
     });
 }
