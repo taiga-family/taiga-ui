@@ -133,7 +133,7 @@
         "husky": "9.1.4",
         "kill-port": "2.0.1",
         "lint-staged": "15.2.7",
-        "local-web-server": "5.3.4",
+        "local-web-server": "5.4.0",
         "ng-morph": "4.5.4",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
