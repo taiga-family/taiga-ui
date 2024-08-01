@@ -41,6 +41,7 @@ import {
     migrateLabeled,
     migrateMobileTabs,
     migrateMoney,
+    migrateNotification,
     migrateOverscroll,
     migratePreventDefault,
     migrateProgressSegmented,
@@ -114,6 +115,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateButtonAppearance,
         migrateLabel,
         migrateNumberPrecision,
+        migrateNotification,
     ] as const;
 
     const progressLog = setupProgressLogger({
