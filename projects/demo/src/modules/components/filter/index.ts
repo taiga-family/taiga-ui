@@ -5,7 +5,7 @@ import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiFilterComponent} from '@taiga-ui/kit';
+import {TuiFilter} from '@taiga-ui/kit';
 
 class ItemWithBadge {
     constructor(
@@ -24,7 +24,7 @@ class ItemWithBadge {
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiFilterComponent, ReactiveFormsModule],
+    imports: [TuiDemo, TuiFilter, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection,
 })
