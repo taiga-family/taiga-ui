@@ -36,10 +36,6 @@ function getFallbackValue(
     textValue: string | undefined,
     fallbackValue: string | undefined,
 ): string {
-    if (textValue) {
-        return `(${textValue} | tuiInitials)`;
-    }
-
     return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || '';
 }
 
@@ -75,6 +71,7 @@ export function migrateAvatar({
         const fallbackAttr = findAttr(attrs, 'fallback');
         const textAttr = findAttr(attrs, 'text');
         const roundedAttr = findAttr(attrs, 'rounded');
+        const autoColorAttr = findAttr(attrs, 'autoColor');
 
         if ((!avatarUrlAttr && !textAttr) || !sourceCodeLocation) {
             return;
@@ -88,6 +85,9 @@ export function migrateAvatar({
         const fallbackAttrValue =
             fallbackAttr?.value &&
             normalizeAttrValue(fallbackAttr.name, fallbackAttr.value);
+        const autoColorValue =
+            autoColorAttr?.value &&
+            normalizeAttrValue(autoColorAttr.name, autoColorAttr.value);
 
         const insertTo =
             (sourceCodeLocation.startTag?.startOffset ?? 0) + '<tui-avatar'.length;
@@ -110,12 +110,15 @@ export function migrateAvatar({
             insertTo + templateOffset,
             ` [src]="${mainSrc}${fallbackSrc ? ` ${fallbackSrc}` : ''}"${
                 !roundedAttr ? ' [round]="false"' : ''
-            }`,
+            }${autoColorValue === 'true' ? ` [style.background]="${textAttrValue} | tuiAutoColor"` : ''}`,
         );
 
-        const attrsToRemove = [avatarUrlAttr, textAttr, fallbackAttr].filter(
-            (attr): attr is Attribute => attr !== undefined,
-        );
+        const attrsToRemove = [
+            avatarUrlAttr,
+            textAttr,
+            fallbackAttr,
+            autoColorAttr,
+        ].filter((attr): attr is Attribute => attr !== undefined);
 
         const fallbackModule = !!((avatarUrlAttr && textAttrValue) || fallbackAttr);
         const initialsModule = !!textAttrValue;
