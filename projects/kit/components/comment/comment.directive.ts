@@ -11,11 +11,11 @@ import type {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./comment.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/comment.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-comment-styles',
+        class: 'tui-comment',
     },
 })
 class TuiCommentStyles {}

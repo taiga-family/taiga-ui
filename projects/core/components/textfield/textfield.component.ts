@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +8,7 @@ import {
     forwardRef,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -37,9 +38,10 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, AsyncPipe, WaResizeObserver, TuiButton, PolymorpheusOutlet],
+    imports: [NgIf, WaResizeObserver, TuiButton, PolymorpheusOutlet],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiTextfieldComponent),

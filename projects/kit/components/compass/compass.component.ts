@@ -1,10 +1,17 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
     standalone: true,
     selector: 'tui-compass',
     template: '',
-    styleUrls: ['./compass.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/compass.less";'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCompass {

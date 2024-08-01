@@ -1,6 +1,22 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-:host {
+/**
+ * @name Compass
+ * @selector tui-compass
+ *
+ * @description
+ * A compass arrow for the map
+ *
+ * @vars
+ * --t-degrees — rotation
+ *
+ * @example
+ * <tui-compass style="--t-degrees: 45deg"></tui-compass>
+ *
+ * @see-also
+ * Pin
+ */
+tui-compass {
     position: relative;
     display: inline-block;
     color: var(--tui-background-accent-1);

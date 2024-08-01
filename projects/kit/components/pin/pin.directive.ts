@@ -2,6 +2,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    HostBinding,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -9,26 +11,23 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 @Component({
     standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/status.less";'],
+    styles: ['@import "@taiga-ui/kit/styles/components/pin.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-status',
+        class: 'tui-pin',
     },
 })
-class TuiStatusStyles {}
+class TuiPinStyles {}
 
 @Directive({
     standalone: true,
-    selector: '[tuiStatus]',
-    inputs: ['tuiStatus'],
-    host: {
-        tuiStatus: '',
-        '[style.--t-status]': 'tuiStatus || null',
-    },
+    selector: 'tui-pin,[tuiPin]',
 })
-export class TuiStatus {
-    protected readonly nothing = tuiWithStyles(TuiStatusStyles);
+export class TuiPin {
+    protected readonly nothing = tuiWithStyles(TuiPinStyles);
 
-    public tuiStatus = '';
+    @Input()
+    @HostBinding('class._open')
+    public open = false;
 }

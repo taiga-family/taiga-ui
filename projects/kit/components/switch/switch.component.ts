@@ -5,6 +5,7 @@ import {
     HostBinding,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -20,7 +21,8 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
     standalone: true,
     selector: 'input[type="checkbox"][tuiSwitch]',
     template: '',
-    styleUrls: ['./switch.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/switch.less";'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithAppearance, TuiNativeValidator],
     host: {
@@ -28,7 +30,6 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',
-        '[class._icons]': 'showIcons',
     },
 })
 export class TuiSwitch implements DoCheck {
@@ -49,11 +50,11 @@ export class TuiSwitch implements DoCheck {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
-    @HostBinding('style.--t-icon')
-    protected get icon(): string {
+    @HostBinding('style.--t-checked-icon')
+    protected get icon(): string | null {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
 
-        return `url(${resolver(icon)})`;
+        return this.showIcons ? `url(${resolver(icon)})` : null;
     }
 }

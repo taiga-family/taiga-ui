@@ -1,6 +1,25 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-:host {
+/**
+ * @name Switch
+ * @selector [tuiSwitch]
+ *
+ * @description
+ * A stylized input type="checkbox" switch
+ *
+ * @attributes
+ * data-size — size ('s' | 'm')
+ *
+ * @vars
+ * --t-checked-icon — checkmark icon
+ *
+ * @example
+ * <input type="checkbox" tuiSwitch />
+ *
+ * @see-also
+ * Checkbox, Radio
+ */
+[tuiSwitch] {
     .transition(~'background, box-shadow');
 
     width: 3rem;
@@ -24,11 +43,13 @@
 
         &:after {
             width: 1rem;
-            box-shadow: -2rem 0 0 0.25rem currentColor;
+            box-shadow: -2.625rem 0 0 0.5rem currentColor;
+            outline-width: 0.167rem;
+            transform: scale(0.375);
         }
 
         &:checked:after {
-            transform: scale(0.5) translateX(2rem);
+            transform: scale(0.375) translateX(2.625rem);
         }
     }
 
@@ -38,7 +59,7 @@
         }
 
         &:after {
-            transform: scale(0.5) translateX(3rem);
+            transform: scale(0.33333) translateX(4.5rem);
         }
     }
 
@@ -57,9 +78,9 @@
     }
 
     &:before {
-        display: none;
+        display: var(--t-checked-icon, none);
         background: currentColor;
-        mask: var(--t-icon) no-repeat center;
+        mask: var(--t-checked-icon) no-repeat center;
         mask-size: 1rem;
         transform: translateX(-1.5rem);
     }
@@ -67,25 +88,9 @@
     &:after {
         right: 0;
         border-radius: 100%;
-        transform: scale(0.5);
-        box-shadow: -3rem 0 0 0.25rem currentColor;
-    }
-
-    &._icons {
-        &:before {
-            display: block;
-        }
-
-        &:after {
-            box-shadow:
-                inset 0 0 0 0.25rem var(--tui-background-neutral-2-pressed),
-                -3rem 0 0 0.25rem currentColor;
-        }
-
-        &[data-size='s']:after {
-            box-shadow:
-                inset 0 0 0 0.125rem var(--tui-background-neutral-2-pressed),
-                -2rem 0 0 0.25rem currentColor;
-        }
+        transform: scale(0.33333);
+        box-shadow: -4.5rem 0 0 0.75rem currentColor;
+        outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
+        outline-offset: var(--t-checked-icon, 20rem);
     }
 }

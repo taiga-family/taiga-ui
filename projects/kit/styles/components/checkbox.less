@@ -1,6 +1,26 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-:host {
+/**
+ * @name Checkbox
+ * @selector [tuiCheckbox]
+ *
+ * @description
+ * A stylized input type="checkbox"
+ *
+ * @attributes
+ * data-size — size ('s' | 'm')
+ *
+ * @vars
+ * --t-checked-icon-icon — checkmark icon
+ * --t-indeterminate-icon-icon — indeterminate state icon
+ *
+ * @example
+ * <input type="checkbox" tuiCheckbox />
+ *
+ * @see-also
+ * Switch, Radio, Appearance
+ */
+[tuiCheckbox] {
     --t-size: 1.5rem;
     --t-radius: var(--tui-radius-s);
 
@@ -30,7 +50,7 @@
     &:checked,
     &:indeterminate {
         &:before {
-            mask-image: var(--t-checked);
+            mask-image: var(--t-checked-icon);
             transform: scale(1);
             transition:
                 transform var(--tui-duration) ease-in-out,
@@ -39,7 +59,7 @@
     }
 
     &:indeterminate:before {
-        mask-image: var(--t-indeterminate);
+        mask-image: var(--t-indeterminate-icon);
     }
 
     &[data-size='s'] {

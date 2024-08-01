@@ -1,9 +1,13 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "assets": [
+        "styles"
+    ],
     "allowedNonPeerDependencies": [
         "."
     ],
     "dest": "../../dist/kit",
+    "inlineStyleLanguage": "less",
     "lib": {
         "entryFile": "index.ts"
     }
