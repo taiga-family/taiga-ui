@@ -104,6 +104,29 @@ describe('ng-migrate', () => {
         expect(component).toContain('import { NgIf } from "@angular/common";');
     });
 
+    describe('wrap all content projection with <div> if it includes children >= 2', () => {
+        it('text node + <a> tag', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template:
+                    '<tui-notification size="l">Learn more in <a>documentation</a></tui-notification>',
+            });
+
+            expect(template).toBe(
+                '<tui-notification size="l"><div>Learn more in <a>documentation</a></div></tui-notification>',
+            );
+        });
+
+        it('self-closing tag <tui-notification />', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template: '<tui-notification />',
+            });
+
+            expect(template).toBe('<tui-notification size="m" />');
+        });
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
