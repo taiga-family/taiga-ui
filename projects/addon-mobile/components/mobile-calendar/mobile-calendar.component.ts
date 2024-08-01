@@ -43,13 +43,22 @@ import {
     TUI_DONE_WORD,
     tuiImmutableUpdateInputDateMulti,
 } from '@taiga-ui/kit';
-import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
+import {
+    BehaviorSubject,
+    identity,
+    MonoTypeOperatorFunction,
+    Observable,
+    race,
+    timer,
+} from 'rxjs';
 import {
     debounceTime,
     delay,
+    distinctUntilChanged,
     filter,
     map,
     mergeMap,
+    skip,
     switchMap,
     take,
     takeUntil,
@@ -85,6 +94,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('monthsScrollRef')
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
+    private readonly value$ = new BehaviorSubject<
+        TuiDay | TuiDayRange | readonly TuiDay[] | null
+    >(null);
+
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
@@ -110,7 +123,12 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     @Output()
     readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
 
-    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    @Output()
+    readonly valueChange = this.value$.pipe(
+        skip(1),
+        distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
+        takeUntil(this.destroy$),
+    );
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
 
@@ -148,6 +166,15 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
         });
+    }
+
+    get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
+    @Input()
+    set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value$.next(value);
     }
 
     get yearWidth(): number {
