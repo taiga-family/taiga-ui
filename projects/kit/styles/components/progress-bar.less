@@ -108,10 +108,10 @@
         background: transparent;
         border-radius: inherit;
     }
-}
 
-:host-context(label[tuiProgressLabel]):not(:first-child) {
-    .fullsize();
+    label[tuiProgressLabel]:not(:first-child) & {
+        .fullsize();
 
-    background: transparent;
+        background: transparent;
+    }
 }
