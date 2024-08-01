@@ -119,9 +119,9 @@ tui-textfield {
         z-index: 1;
     }
 
-    &:has(:disabled:not(.t-filler)):before,
-    &:has(:disabled:not(.t-filler)):after,
-    &:has(:disabled:not(.t-filler)) .t-template {
+    &:has(:disabled:not(.t-filler, button, option)):before,
+    &:has(:disabled:not(.t-filler, button, option)):after,
+    &:has(:disabled:not(.t-filler, button, option)) .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
