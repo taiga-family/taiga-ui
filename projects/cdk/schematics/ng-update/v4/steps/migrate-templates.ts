@@ -31,6 +31,7 @@ import {
 } from './constants';
 import {
     migrateAvatar,
+    migrateAxes,
     migrateBadge,
     migrateBadgedContent,
     migrateButtonAppearance,
@@ -96,6 +97,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
+        migrateAxes,
         migrateBadge,
         migrateCheckbox,
         migrateFocusable,
