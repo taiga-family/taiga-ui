@@ -190,7 +190,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiPush', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiPush', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
         from: {name: 'TuiElasticContainerModule', moduleSpecifier: '@taiga-ui/kit'},
