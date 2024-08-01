@@ -80,6 +80,8 @@ export class ExampleTuiMobileCalendarComponent {
 
     single = true;
 
+    multi = false;
+
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,
         ({day}) => day % 3 === 0,

@@ -206,12 +206,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
             this.value = tuiImmutableUpdateInputDateMulti(this.value, day);
-        } else if (this.isSingleValue(this.value)) {
-            this.value = new TuiDayRange(day, day);
+        } else if (this.value instanceof TuiDay) {
+            this.value = TuiDayRange.sort(this.value, day);
+        } else if (this.value instanceof TuiDayRange && !this.value.isSingleDay) {
+            this.value = day;
         } else if (this.value instanceof TuiDayRange) {
             this.value = TuiDayRange.sort(this.value.from, day);
         } else if (!this.value) {
-            this.value = new TuiDayRange(day, day);
+            this.value = day;
         }
     }
 
@@ -270,10 +272,6 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
         return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
-    }
-
-    private isSingleValue(day: any): day is TuiDay {
-        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
     }
 
     private get initialYear(): number {
