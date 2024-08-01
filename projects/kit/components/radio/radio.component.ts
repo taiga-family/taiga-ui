@@ -1,5 +1,11 @@
-import {DoCheck, ViewEncapsulation} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import type {DoCheck} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
