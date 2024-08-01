@@ -8,7 +8,7 @@
  * Plain button design, applicable to both links and buttons
  *
  * @attributes
- * data-size — size ('xs' | 's' | 'm' | 'l')
+ * data-size — size (default: 'l') ('xs' | 's' | 'm' | 'l')
  *
  * @example
  * <button tuiButton>Click me</button>
@@ -18,7 +18,11 @@
  */
 [tuiButton],
 [tuiIconButton] {
-    --t-gap: 0.125rem;
+    --t-size: var(--tui-height-l);
+    --t-radius: var(--tui-radius-l);
+    --t-padding: 0 1.25rem;
+    --t-gap: 0.25rem;
+    --t-margin: -0.25rem;
 
     .button-base();
 
@@ -28,6 +32,12 @@
     padding: var(--t-padding);
     user-select: none;
     cursor: pointer;
+    font: var(--tui-font-text-m);
+    font-weight: bold;
+
+    &:after {
+        margin: 0 -0.25rem 0 0.25rem;
+    }
 
     > .t-loader {
         .center-all();
@@ -45,6 +55,10 @@
 
         font: var(--tui-font-text-s);
 
+        &:after {
+            margin: 0;
+        }
+
         tui-svg,
         tui-icon,
         &:before {
@@ -59,6 +73,10 @@
         --t-margin: -0.125rem;
 
         font: var(--tui-font-text-s);
+
+        &:after {
+            margin: 0;
+        }
 
         tui-svg,
         tui-icon,
@@ -77,23 +95,7 @@
         font-weight: bold;
 
         &:after {
-            margin-inline-end: -0.125rem;
-        }
-    }
-
-    &[data-size='l'] {
-        --t-size: var(--tui-height-l);
-        --t-radius: var(--tui-radius-l);
-        --t-padding: 0 1.25rem;
-        --t-gap: 0.25rem;
-        --t-margin: -0.25rem;
-
-        font: var(--tui-font-text-m);
-        font-weight: bold;
-
-        &:after {
-            margin-inline-start: 0.25rem;
-            margin-inline-end: -0.25rem;
+            margin: 0 -0.125rem 0 0;
         }
     }
 
