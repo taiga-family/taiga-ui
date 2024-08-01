@@ -73,7 +73,10 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS', '[class._initialized]': 'initialized'},
+    host: {
+        '[class._ios]': 'isIOS',
+        '[class._initialized]': 'initialized',
+    },
 })
 export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
