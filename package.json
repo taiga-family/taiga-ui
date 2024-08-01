@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.0.0-rc.7",
+    "version": "4.0.0-rc.8",
     "private": true,
     "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
