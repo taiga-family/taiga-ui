@@ -1,5 +1,5 @@
 ```ts
-import {TuiValueChangesModule} from '@taiga-ui/cdk';
+import {TuiValueChanges} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiValueChangesModule} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiValueChangesModule,
+    TuiValueChanges,
   ],
   // ...
 })
