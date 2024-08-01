@@ -13,7 +13,7 @@ import {
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 
-import {TuiPush} from './push.component';
+import {TuiPushComponent} from './push.component';
 import {TuiPushDirective} from './push.directive';
 import type {TuiPushOptions} from './push.options';
 
@@ -23,7 +23,7 @@ import type {TuiPushOptions} from './push.options';
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiPush,
+        TuiPushComponent,
         TuiIcon,
         TuiButton,
         TuiLink,
