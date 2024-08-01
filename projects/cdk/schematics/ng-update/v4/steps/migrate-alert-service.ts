@@ -71,7 +71,7 @@ export function migrateAlertService(options: TuiSchema): void {
             (node): node is CallExpression =>
                 node.isKind(SyntaxKind.CallExpression) &&
                 node.getFullText().includes('inject(TuiAlertService') &&
-                node.getFullText().includes('.open('),
+                node.getFullText().includes('.open'),
         ),
     );
 
@@ -127,7 +127,7 @@ export function migrateAlertService(options: TuiSchema): void {
 function toAlertServiceOpenCallExpression(node?: Node): CallExpression | undefined {
     return node?.getFirstAncestor(
         (x): x is CallExpression =>
-            x.isKind(SyntaxKind.CallExpression) && x.getFullText().includes('.open('),
+            x.isKind(SyntaxKind.CallExpression) && x.getFullText().includes('.open'),
     );
 }
 
