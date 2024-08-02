@@ -33,6 +33,11 @@ import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 .one-more-class {
     .tui-space(horizontal, -4);
 }
+
+.hack {
+    .tui-space(top, 0) !important;
+    .tui-space(horizontal, -4) !important;
+}
 `;
 
 const STYLES_AFTER = `
@@ -58,6 +63,12 @@ margin-bottom: 1rem;
 .one-more-class {
     margin-left: -1rem;
 margin-right: -1rem;
+}
+
+.hack {
+    margin-top: 0rem !important;
+    margin-left: -1rem !important;
+margin-right: -1rem !important;
 }
 `;
 
