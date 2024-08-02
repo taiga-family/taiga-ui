@@ -25,10 +25,15 @@ export function replaceIdentifiers(
         total: constants.length,
     });
 
-    constants.forEach((item) => {
-        replaceIdentifier(item);
+    constants.forEach(({from, to}) => {
+        toArray(from).forEach((x) => replaceIdentifier({from: x, to}));
 
-        !options['skip-logs'] && progressLog(item.from.name);
+        !options['skip-logs'] &&
+            progressLog(
+                toArray(from)
+                    .map((x) => x.name)
+                    .join(', '),
+            );
     });
 
     !options['skip-logs'] &&
@@ -36,7 +41,9 @@ export function replaceIdentifiers(
 }
 
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
-    const references = getNamedImportReferences(from.name, from.moduleSpecifier);
+    const references = toArray(from)
+        .map(({name, moduleSpecifier}) => getNamedImportReferences(name, moduleSpecifier))
+        .flat();
 
     references.forEach((ref) => {
         if (ref.wasForgotten()) {
@@ -66,22 +73,22 @@ function addImports(
     identifier: ReplacementIdentifierMulti['to'],
     filePath: string,
 ): void {
-    Array.isArray(identifier)
-        ? identifier.forEach(({name, namedImport, moduleSpecifier}) => {
-              addUniqueImport(filePath, namedImport || name, moduleSpecifier);
-          })
-        : addUniqueImport(filePath, identifier.name, identifier.moduleSpecifier);
+    toArray(identifier).forEach(({name, namedImport, moduleSpecifier}) => {
+        addUniqueImport(filePath, namedImport || name, moduleSpecifier);
+    });
 }
 
 function getReplacementText(
     to: ReplacementIdentifierMulti['to'],
     inModule: boolean,
 ): string {
-    const res = Array.isArray(to) ? to : [to];
-
-    return res
+    return toArray(to)
         .map(({name, spreadInModule}) =>
             spreadInModule && inModule ? `...${name}` : name,
         )
         .join(', ');
+}
+
+function toArray<T>(x: T | T[]): T[] {
+    return Array.isArray(x) ? x : [x];
 }
