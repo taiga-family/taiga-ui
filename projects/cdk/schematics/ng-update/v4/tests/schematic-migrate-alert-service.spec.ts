@@ -60,6 +60,11 @@ export class Test {
             .subscribe();
     }
 
+    onClick3() {
+        this.alertService
+            .open<void>('One more tricky case', {autoClose: false})
+            .subscribe();
+    }
 }`.trim();
 
 const COMPONENT_AFTER = `
@@ -109,6 +114,11 @@ export class Test {
             .subscribe();
     }
 
+    onClick3() {
+        this.alertService
+            .open<void>('One more tricky case', {autoClose: 0})
+            .subscribe();
+    }
 }`.trim();
 
 describe('ng-update', () => {
