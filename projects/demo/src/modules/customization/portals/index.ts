@@ -19,17 +19,7 @@ export default class Page {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
-        'portal/custom-portal.service.ts': import(
-            './examples/1/portal/custom-portal.service.ts?raw'
-        ),
-        'portal/custom-host.component.ts': import(
-            './examples/1/portal/custom-host.component.ts?raw'
-        ),
-        'portal/custom-host.template.html': import(
-            './examples/1/portal/custom-host.template.html?raw'
-        ),
-        'portal/custom-host.style.less': import(
-            './examples/1/portal/custom-host.style.less?raw'
-        ),
+        'portal.ts': import('./examples/1/portal.ts?raw'),
+        'service.ts': import('./examples/1/service.ts?raw'),
     };
 }

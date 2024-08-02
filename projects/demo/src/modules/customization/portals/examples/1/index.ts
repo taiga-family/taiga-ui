@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
 
-import {CustomPortalService} from './portal/custom-portal.service';
+import {CustomPortalService} from './service';
 
 @Component({
     standalone: true,

@@ -931,12 +931,6 @@ export const pages: TuiDocRoutePages = [
         route: DemoRoute.Title,
     },
     {
-        section: 'Components',
-        title: 'Appearance',
-        keywords: 'colors, css, theme, custom, style',
-        route: DemoRoute.Appearance,
-    },
-    {
         section: 'Layout',
         title: 'CardMedium',
         keywords: 'card, card-medium, medium, block, карточка, блок',
@@ -1128,9 +1122,21 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'Appearance',
+                keywords: 'colors, css, theme, custom, style',
+                route: DemoRoute.Appearance,
+            },
+            {
+                section: 'Tools',
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: DemoRoute.AutoFocus,
+            },
+            {
+                section: 'Tools',
+                title: 'AutoScale',
+                keywords: 'font, scale, textfield, input, size, text',
+                route: DemoRoute.AutoScale,
             },
             {
                 section: 'Tools',

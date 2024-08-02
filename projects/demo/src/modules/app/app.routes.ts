@@ -145,6 +145,11 @@ export const ROUTES: Routes = [
         title: 'Appearance',
     }),
     route({
+        path: DemoRoute.AutoScale,
+        loadComponent: async () => import('../directives/auto-scale'),
+        title: 'AutoScale',
+    }),
+    route({
         path: DemoRoute.Chip,
         loadComponent: async () => import('../components/chip'),
         title: 'Chip',
