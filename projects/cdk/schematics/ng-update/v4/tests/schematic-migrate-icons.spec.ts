@@ -45,6 +45,37 @@ export class Test {
    icon = iconsName.tuiIconStart;
 }`;
 
+const PROPR_COMPONENT_BEFORE = `import { Component } from "@angular/core";
+
+const iconsMap = {
+  tuiIconStar: 'tuiIconStar'
+}
+
+@Component({
+    standalone: true,
+    templateUrl: './test.template.html',
+})
+export class Test {
+   icons = ['tuiIconTdsCheckMedium', 'tuiIconStar', 'tuiIconArrowDown'];
+   icon = iconsName.tuiIconStart;
+}`;
+
+const PROPR_COMPONENT_AFTER = `// TODO (Taiga UI migration): invalid icons tuiIconStar, tuiIconStar, tuiIconStar, tuiIconArrowDown, tuiIconStart. Please select an icon from the proprietary pack
+import { Component } from "@angular/core";
+
+const iconsMap = {
+  tuiIconStar: 'tuiIconStar'
+}
+
+@Component({
+    standalone: true,
+    templateUrl: './test.template.html',
+})
+export class Test {
+   icons = ['@tui.fancy.medium.check', 'tuiIconStar', 'tuiIconArrowDown'];
+   icon = iconsName.tuiIconStart;
+}`;
+
 const TEMPLATE_BEFORE = `
 <tui-avatar
     avatarUrl="tuiIconUser"
@@ -90,7 +121,8 @@ const PROPRIETARY_TEMPLATE_BEFORE = `
 <button tuiIconButton icon="tuiIconCancelOutline">Button</button>
 `;
 
-const PROPRIETARY_TEMPLATE_AFTER = `
+const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icons tuiIconCancelOutline. Please select an icon from the proprietary pack -->
+
 <tui-avatar
     avatarUrl="@tui.fancy.small.lock"
     text="alex inkin"
@@ -164,6 +196,26 @@ describe('ng-update', () => {
         );
     });
 
+    it('should migrate proprietary icons in ts file', async () => {
+        createSourceFile(
+            'package.json',
+            '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.42.0"}}',
+            {overwrite: true},
+        );
+
+        saveActiveProject();
+
+        const tree = await runner.runSchematic(
+            'migrateIconsV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+
+        expect(tree.readContent('test/app/proprietary-test.component.ts')).toEqual(
+            PROPR_COMPONENT_AFTER,
+        );
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -178,6 +230,8 @@ function createMainFiles(): void {
         'test/app/proprietary-test.template.html',
         PROPRIETARY_TEMPLATE_BEFORE,
     );
+
+    createSourceFile('test/app/proprietary-test.component.ts', PROPR_COMPONENT_BEFORE);
 
     createSourceFile(
         'package.json',

@@ -27,6 +27,17 @@ export function renameProprietaryIcons(
             return convertString(icon);
         });
 
+        const invalidIcons = text.match(/\b(tuiIcon(?!Tds|Button)\w*)\b/g);
+
+        if (invalidIcons) {
+            const message = `TODO (Taiga UI migration): invalid icons ${invalidIcons.join(', ')}. Please select an icon from the proprietary pack`;
+            const todo = file.getFilePath().endsWith('html')
+                ? `<!-- ${message} -->`
+                : `// ${message}`;
+
+            text = `${todo}\n${text}`;
+        }
+
         file.replaceWithText(text);
     });
 }
