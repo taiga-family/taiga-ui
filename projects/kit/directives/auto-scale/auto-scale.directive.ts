@@ -1,11 +1,13 @@
-import {Directive, inject, Input, NgZone, OnChanges} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, inject, Input, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {fromEvent, merge, Subject} from 'rxjs';
 
 import {TUI_AUTO_SCALE_OPTIONS} from './auto-scale.options';
@@ -15,7 +17,6 @@ const STEP = 1 / 16;
 @Directive({
     standalone: true,
     selector: '[tuiAutoScale]',
-    host: {tuiAutoScale: ''},
     providers: [
         ResizeObserverService,
         MutationObserverService,
@@ -24,6 +25,7 @@ const STEP = 1 / 16;
             useValue: {characterData: true, subtree: true},
         },
     ],
+    host: {tuiAutoScale: ''},
 })
 export class TuiAutoScale implements OnChanges {
     // TODO: refactor to signal inputs after Angular update
