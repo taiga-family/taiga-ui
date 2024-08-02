@@ -1710,7 +1710,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiCurrencyPipe',
-            moduleSpecifier: '@taiga-ui/addon-mobile',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
         },
     },
     {
