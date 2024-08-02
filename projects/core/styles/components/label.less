@@ -8,9 +8,6 @@
  * Easy to use label ready for horizontal orientation for checkbox/radio/switch
  * and vertical for input, select and textarea
  *
- * @attributes
- * data-orientation — orientation ('horizontal' | 'vertical')
- *
  * @example
  * <label tuiLabel><input type="checkbox" /> Click me</tui-icon>
  *
@@ -30,7 +27,8 @@
         font: var(--tui-font-text-m);
     }
 
-    //TODO: Remove after legacy inputs are dropped
+    // TODO: Remove after legacy inputs are dropped
+    &:has(tui-textfield),
     &:has(tui-primitive-textfield),
     &:has(tui-textarea) {
         flex-direction: column !important;

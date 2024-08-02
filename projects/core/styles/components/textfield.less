@@ -1,10 +1,11 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 tui-textfield {
     .transition(color);
 
     --t-left: 0rem;
     --t-right: 0rem;
+    --t-height: var(--tui-height-l);
 
     position: relative;
     display: flex;
@@ -13,6 +14,30 @@ tui-textfield {
     cursor: pointer;
     height: var(--t-height);
     color: var(--tui-text-tertiary);
+    padding: 0 var(--tui-padding-l);
+    border-radius: var(--tui-radius-l);
+    font: var(--tui-font-text-m);
+
+    &[style*='--t-icon-start:'] {
+        --t-left: 2.25rem;
+    }
+
+    &[style*='--t-icon-end:'] {
+        --t-right: 2.25rem;
+    }
+
+    &:before {
+        margin-inline-end: 0.75rem;
+    }
+
+    &:after {
+        margin-inline-start: 0.25rem;
+    }
+
+    input,
+    select {
+        font: var(--tui-font-text-m);
+    }
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
@@ -79,35 +104,6 @@ tui-textfield {
         input,
         select {
             font: var(--tui-font-text-s);
-        }
-    }
-
-    &[data-size='l'] {
-        --t-height: var(--tui-height-l);
-
-        padding: 0 var(--tui-padding-l);
-        border-radius: var(--tui-radius-l);
-        font: var(--tui-font-text-m);
-
-        &[style*='--t-icon-start:'] {
-            --t-left: 2.25rem;
-        }
-
-        &[style*='--t-icon-end:'] {
-            --t-right: 2.25rem;
-        }
-
-        &:before {
-            margin-inline-end: 0.75rem;
-        }
-
-        &:after {
-            margin-inline-start: 0.25rem;
-        }
-
-        input,
-        select {
-            font: var(--tui-font-text-m);
         }
     }
 
@@ -194,7 +190,7 @@ tui-textfield {
             }
         }
 
-        &:not(._empty) {
+        &:not(._empty):not(:placeholder-shown) {
             & ~ label {
                 font-size: 0.83em;
                 transform: translateY(-0.7em);

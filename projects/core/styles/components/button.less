@@ -8,7 +8,7 @@
  * Plain button design, applicable to both links and buttons
  *
  * @attributes
- * data-size — size ('xs' | 's' | 'm' | 'l')
+ * data-size — size (default: 'l') ('xs' | 's' | 'm' | 'l')
  *
  * @example
  * <button tuiButton>Click me</button>
@@ -18,7 +18,11 @@
  */
 [tuiButton],
 [tuiIconButton] {
-    --t-gap: 0.125rem;
+    --t-size: var(--tui-height-l);
+    --t-radius: var(--tui-radius-l);
+    --t-gap: 0.25rem;
+    --t-padding: 0 1.25rem;
+    --t-margin: -0.25rem;
 
     .button-base();
 
@@ -28,6 +32,12 @@
     padding: var(--t-padding);
     user-select: none;
     cursor: pointer;
+    font: var(--tui-font-text-m);
+    font-weight: bold;
+
+    &[tuiIcons]:after {
+        margin: 0 -0.25rem 0 0.25rem;
+    }
 
     > .t-loader {
         .center-all();
@@ -40,10 +50,15 @@
     &[data-size='xs'] {
         --t-size: var(--tui-height-xs);
         --t-radius: var(--tui-radius-xs);
+        --t-gap: 0.125rem;
         --t-padding: 0 0.375rem;
         --t-margin: -0.125rem;
 
         font: var(--tui-font-text-s);
+
+        &:after {
+            margin: var(--t-margin);
+        }
 
         tui-svg,
         tui-icon,
@@ -55,10 +70,15 @@
     &[data-size='s'] {
         --t-size: var(--tui-height-s);
         --t-radius: var(--tui-radius-s);
+        --t-gap: 0.125rem;
         --t-padding: 0 0.625rem;
         --t-margin: -0.125rem;
 
         font: var(--tui-font-text-s);
+
+        &:after {
+            margin: var(--t-margin);
+        }
 
         tui-svg,
         tui-icon,
@@ -70,6 +90,7 @@
     &[data-size='m'] {
         --t-size: var(--tui-height-m);
         --t-radius: var(--tui-radius-m);
+        --t-gap: 0.125rem;
         --t-padding: 0 1rem;
         --t-margin: -0.375rem;
 
@@ -77,23 +98,8 @@
         font-weight: bold;
 
         &:after {
+            margin: var(--t-margin);
             margin-inline-end: -0.125rem;
-        }
-    }
-
-    &[data-size='l'] {
-        --t-size: var(--tui-height-l);
-        --t-radius: var(--tui-radius-l);
-        --t-padding: 0 1.25rem;
-        --t-gap: 0.25rem;
-        --t-margin: -0.25rem;
-
-        font: var(--tui-font-text-m);
-        font-weight: bold;
-
-        &:after {
-            margin-inline-start: 0.25rem;
-            margin-inline-end: -0.25rem;
         }
     }
 
@@ -115,6 +121,24 @@
 
     &[tuiIcons]:after {
         font-size: 1rem;
+    }
+
+    &[tuiButtonVertical] {
+        --t-line-height: 1rem;
+        --t-margin: 0rem !important;
+
+        flex-direction: column;
+        flex-shrink: 1;
+        height: auto;
+        padding: 0.75rem;
+        gap: 0.375rem;
+        min-width: 5rem;
+        white-space: pre-line;
+        font: var(--tui-font-text-ui-s);
+
+        & > * {
+            max-height: calc(var(--t-line-height) * 2);
+        }
     }
 }
 

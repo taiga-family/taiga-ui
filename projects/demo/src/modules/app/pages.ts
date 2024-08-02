@@ -208,12 +208,6 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'ButtonVertical',
-                keywords: 'кнопка, button, vertical-button, вертикальная',
-                route: DemoRoute.ButtonVertical,
-            },
-            {
-                section: 'Components',
                 title: 'ButtonClose',
                 keywords: 'кнопка, button, close, закрыть',
                 route: DemoRoute.ButtonClose,

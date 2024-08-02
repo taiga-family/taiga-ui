@@ -8,7 +8,7 @@
  * A general purpose container, typically used for labels and inputs
  *
  * @attributes
- * data-size — size ('s' | 'm' | 'l')
+ * data-size — size (default: 'l') ('s' | 'm' | 'l')
  *
  * @example
  * <label tuiBlock>
@@ -20,9 +20,12 @@
  * Icons, Appearance, Link, Button
  */
 [tuiBlock] {
+    --t-height: var(--tui-height-l);
+    --t-radius: var(--tui-radius-l);
+
     position: relative;
     display: inline-flex;
-    gap: 1rem;
+    gap: 0.75rem;
     color: var(--tui-text-primary);
     border-radius: var(--t-radius);
     min-height: var(--t-height);
@@ -30,6 +33,12 @@
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
+    font: var(--tui-font-text-m);
+    padding: var(--tui-padding-l);
+
+    [tuiTooltip] {
+        margin: 0.25rem;
+    }
 
     &[data-size='s'] {
         gap: 0.5rem;
@@ -62,19 +71,6 @@
 
         [tuiTooltip] {
             margin: 0.125rem;
-        }
-    }
-
-    &[data-size='l'] {
-        gap: 0.75rem;
-        font: var(--tui-font-text-m);
-        padding: var(--tui-padding-l);
-
-        --t-height: var(--tui-height-l);
-        --t-radius: var(--tui-radius-l);
-
-        [tuiTooltip] {
-            margin: 0.25rem;
         }
     }
 

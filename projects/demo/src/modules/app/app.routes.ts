@@ -240,11 +240,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/button'),
     }),
     route({
-        path: DemoRoute.ButtonVertical,
-        title: 'ButtonVertical',
-        loadComponent: async () => import('../components/button-vertical'),
-    }),
-    route({
         path: DemoRoute.ButtonClose,
         title: 'ButtonClose',
         loadComponent: async () => import('../components/button-close'),

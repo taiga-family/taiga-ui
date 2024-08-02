@@ -42,7 +42,6 @@ export const DemoRoute = {
     Navigation: '/components/navigation',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
-    ButtonVertical: '/components/button-vertical',
     ButtonClose: '/components/button-close',
     ButtonGroup: '/components/button-group',
     Calendar: '/components/calendar',

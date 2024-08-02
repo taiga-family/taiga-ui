@@ -4,6 +4,7 @@ import {
     HostBinding,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 
@@ -13,7 +14,8 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     standalone: true,
     selector: 'progress[tuiProgressBar]',
     template: '',
-    styleUrls: ['./progress-bar.component.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/progress-bar.less";'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBar {

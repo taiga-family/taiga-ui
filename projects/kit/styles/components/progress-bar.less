@@ -1,5 +1,18 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
+/**
+ * @name ProgressBar
+ * @selector [tuiProgressBar]
+ *
+ * @description
+ * A stylized native progress element
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' )
+ *
+ * @example
+ * <progress tuiProgressBar value="33"></progress>
+ */
 .clearProgress() {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -35,13 +48,15 @@
     }
 }
 
-:host {
+[tuiProgressBar] {
     @track-color: var(--tui-background-neutral-1);
     @progress-color: var(--tui-progress-color, currentColor);
 
     .clearProgress();
     .progressAnimation();
     .progressValue({ background: @progress-color; border-radius: inherit });
+
+    --t-height: 0.75rem;
 
     display: block;
     width: 100%;
@@ -63,10 +78,6 @@
 
     &[data-size='s'] {
         --t-height: 0.5rem;
-    }
-
-    &[data-size='m'] {
-        --t-height: 0.75rem;
     }
 
     &[data-size='l'] {
@@ -97,10 +108,10 @@
         background: transparent;
         border-radius: inherit;
     }
-}
 
-:host-context(label[tuiProgressLabel]):not(:first-child) {
-    .fullsize();
+    label[tuiProgressLabel] &:not(:first-child) {
+        .fullsize();
 
-    background: transparent;
+        background: transparent;
+    }
 }
