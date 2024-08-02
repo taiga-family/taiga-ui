@@ -18,6 +18,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/proprietary-core',
     },
     {
+        name: 'TuiPromptModule',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
         name: 'TuiThemeTinkoff2023NightModule',
         moduleSpecifier: '@taiga-ui/proprietary-core',
     },

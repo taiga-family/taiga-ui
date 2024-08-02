@@ -126,4 +126,10 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
         message:
             'TuiNotificationContentContext has been deleted in 3.0. Please, use TuiDialog<TuiAlertOptions<I>, O> instead of TuiNotificationContentContext<O, I>',
     },
+    {
+        name: 'TUI_ANIMATIONS_DURATION',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ANIMATIONS_DURATION has been deleted. Please, use TUI_ANIMATIONS_SPEED token (a speed value is equivalent to a duration value divided by default duration (300))',
+    },
 ];
