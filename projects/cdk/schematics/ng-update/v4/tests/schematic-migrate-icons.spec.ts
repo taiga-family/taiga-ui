@@ -87,6 +87,7 @@ const PROPRIETARY_TEMPLATE_BEFORE = `
 <button tuiIconButton icon="tuiIconTdsTBankLogoSiteheader">Button</button>
 <button tuiIconButton icon="tuiIconTdsGooglePlayLogoSquare">Button</button>
 <button tuiIconButton icon="tuiIconTdsTBankInverseLogo">Button</button>
+<button tuiIconButton icon="tuiIconCancelOutline">Button</button>
 `;
 
 const PROPRIETARY_TEMPLATE_AFTER = `
@@ -105,6 +106,7 @@ const PROPRIETARY_TEMPLATE_AFTER = `
 <button tuiIconButton icon="@tui.logo.siteheader.t-bank">Button</button>
 <button tuiIconButton icon="@tui.logo.square.google-play">Button</button>
 <button tuiIconButton icon="@tui.logo.t-bank-inverse">Button</button>
+<button tuiIconButton icon="tuiIconCancelOutline">Button</button>
 `;
 
 describe('ng-update', () => {
@@ -142,7 +144,7 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
-    it('should migrate proprietary icons in ts files', async () => {
+    it('should migrate proprietary icons in template', async () => {
         createSourceFile(
             'package.json',
             '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.42.0"}}',
