@@ -166,6 +166,6 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         name: 'TuiIllustrationsModule',
         moduleSpecifier: '@taiga-ui/proprietary-icons',
         message:
-            'Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+            'TuiIllustrationsModule was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
     },
 ];
