@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiButtonVertical} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiButtonVertical, TuiAvatar],
+    imports: [TuiButton, TuiFade, TuiAvatar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styles: [':host { display: flex; gap: 1rem; align-items: flex-start; }'],
     encapsulation,
     changeDetection,
 })

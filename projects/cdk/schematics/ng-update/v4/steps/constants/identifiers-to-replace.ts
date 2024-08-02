@@ -1330,7 +1330,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/experimental',
         },
         to: {
-            name: 'TuiButtonVertical',
+            name: 'TuiButton',
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
