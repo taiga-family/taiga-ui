@@ -14,7 +14,8 @@ import {
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const STYLES_BEFORE = `
-import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
+@import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
     display: flex;
@@ -28,15 +29,18 @@ import '@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 
 .example {
     .tui-space(vertical, 4);
+    .text-h3();
 }
 
 .one-more-class {
     .tui-space(horizontal, -4);
+    .text-body-m-bold(1);
 }
 `;
 
 const STYLES_AFTER = `
-import '@taiga-ui/proprietary/styles/tbank-fonts';
+@import '@taiga-ui/proprietary/styles/tbank-fonts';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
     display: flex;
@@ -53,11 +57,13 @@ import '@taiga-ui/proprietary/styles/tbank-fonts';
 .example {
     margin-top: 1rem;
 margin-bottom: 1rem;
+    font: var(--tui-font-heading-3);
 }
 
 .one-more-class {
     margin-left: -1rem;
 margin-right: -1rem;
+    .text-body-m-bold(1); // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less
 }
 `;
 
