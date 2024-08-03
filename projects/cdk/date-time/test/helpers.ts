@@ -5,7 +5,7 @@ declare const global: {Date: typeof Date};
 const OriginalDate = global.Date;
 
 export function tuiMockCurrentDate(dateOrNumber: Date | number): void {
-    const date: Date = tuiIsNumber(dateOrNumber)
+    const date = tuiIsNumber(dateOrNumber)
         ? new OriginalDate(dateOrNumber)
         : dateOrNumber;
 

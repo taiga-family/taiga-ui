@@ -1,11 +1,13 @@
-import {tuiDateClamp, TuiDay} from '@taiga-ui/cdk';
+import {tuiDateClamp, TuiDay, type TuiReadonlyDate} from '@taiga-ui/cdk';
 
 describe('tuiDateClamp', () => {
-    const now = new Date();
+    const now: TuiReadonlyDate = new Date();
     const nowYear = TuiDay.fromLocalNativeDate(now);
+
     const nextYear = TuiDay.fromLocalNativeDate(
         new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
     );
+
     const lastYear = TuiDay.fromLocalNativeDate(
         new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()),
     );

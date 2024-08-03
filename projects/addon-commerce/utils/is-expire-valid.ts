@@ -1,6 +1,10 @@
+import type {TuiReadonlyDate} from '@taiga-ui/cdk/date-time';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
-export function tuiIsExpireValid(expire: string, today = new Date()): boolean {
+export function tuiIsExpireValid(
+    expire: string,
+    today: Date | TuiReadonlyDate = new Date(),
+): boolean {
     const currentMonth = today.getMonth() + 1;
     const currentYear = today.getFullYear() - 2000;
     const expireMonth = tuiClamp(parseInt(expire.slice(0, 2), 10), 1, 12);

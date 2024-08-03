@@ -1,4 +1,4 @@
-import {MONTHS_IN_YEAR} from '@taiga-ui/cdk/date-time';
+import {MONTHS_IN_YEAR, type TuiReadonlyDate} from '@taiga-ui/cdk/date-time';
 
 function getCycle(options: {
     label: number;
@@ -18,12 +18,18 @@ function getCycle(options: {
 }
 
 function weekCount(options: {year: number; month: number; startingYear: number}): number {
-    const firstOfMonth = new Date(options.year + options.startingYear, options.month, 1);
-    const lastOfMonth = new Date(
+    const firstOfMonth: TuiReadonlyDate = new Date(
+        options.year + options.startingYear,
+        options.month,
+        1,
+    );
+
+    const lastOfMonth: TuiReadonlyDate = new Date(
         options.year + options.startingYear,
         options.month + 1,
         0,
     );
+
     const days = lastOfMonth.getDate() + (firstOfMonth.getDay() || 7) - 1;
 
     return Math.ceil(days / 7);

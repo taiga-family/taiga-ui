@@ -1,3 +1,5 @@
+export type TuiReadonlyDate = Omit<Date, `set${string}`>;
+
 /**
  * * DMY - dd.mm.yyyy
  * * MDY - mm.dd.yyyy

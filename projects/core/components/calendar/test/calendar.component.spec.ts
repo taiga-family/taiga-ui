@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {TuiDay, TuiMonth, type TuiReadonlyDate} from '@taiga-ui/cdk';
 import {TuiCalendar} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiCalendarHarness} from '@taiga-ui/testing';
@@ -131,7 +131,7 @@ describe('Calendar', () => {
     });
 
     it('onPaginationValueChange does not update month if it is the same with current', () => {
-        const date = new Date();
+        const date: TuiReadonlyDate = new Date();
         const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
         const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
 

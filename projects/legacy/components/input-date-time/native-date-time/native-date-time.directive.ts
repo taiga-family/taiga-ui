@@ -1,5 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
+import {TuiDay, type TuiReadonlyDate, TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputDateTimeDirective} from '../input-date-time.directive';
@@ -37,7 +37,7 @@ export class TuiNativeDateTimeDirective {
             return;
         }
 
-        const date = new Date(value);
+        const date: TuiReadonlyDate = new Date(value);
         const day = TuiDay.fromLocalNativeDate(date);
         const time = TuiTime.fromLocalNativeDate(date);
 

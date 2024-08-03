@@ -4,7 +4,7 @@ import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonthNumber} from './month-number';
-import type {TuiMonthLike} from './types';
+import type {TuiMonthLike, TuiReadonlyDate} from './types';
 import {TuiYear} from './year';
 
 /**
@@ -54,7 +54,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @nosideeffects
      */
     public static currentLocal(): TuiMonth {
-        const nativeDate = new Date();
+        const nativeDate: TuiReadonlyDate = new Date();
 
         return new TuiMonth(nativeDate.getFullYear(), nativeDate.getMonth());
     }
@@ -63,7 +63,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns current month and year based on UTC
      */
     public static currentUtc(): TuiMonth {
-        const nativeDate = new Date();
+        const nativeDate: TuiReadonlyDate = new Date();
 
         return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
     }

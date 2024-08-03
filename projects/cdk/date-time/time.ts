@@ -10,7 +10,7 @@ import {
     MINUTES_IN_HOUR,
     SECONDS_IN_MINUTE,
 } from './date-time';
-import type {TuiTimeLike, TuiTimeMode} from './types';
+import type {TuiReadonlyDate, TuiTimeLike, TuiTimeMode} from './types';
 
 /**
  * Immutable time object with hours, minutes, seconds and ms
@@ -65,7 +65,7 @@ export class TuiTime implements TuiTimeLike {
      * Current time in local timezone
      */
     public static currentLocal(): TuiTime {
-        const date = new Date();
+        const date: TuiReadonlyDate = new Date();
 
         return TuiTime.fromAbsoluteMilliseconds(
             (Date.now() - date.getTimezoneOffset() * MILLISECONDS_IN_MINUTE) %
@@ -116,7 +116,7 @@ export class TuiTime implements TuiTimeLike {
      * Converts Date object into TuiTime
      * @param date
      */
-    public static fromLocalNativeDate(date: Date): TuiTime {
+    public static fromLocalNativeDate(date: Date | TuiReadonlyDate): TuiTime {
         return new TuiTime(
             date.getHours(),
             date.getMinutes(),

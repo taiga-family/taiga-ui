@@ -1,4 +1,4 @@
-import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
+import {TuiDay, tuiDefaultSort, type TuiReadonlyDate} from '@taiga-ui/cdk';
 
 describe('tuiDefaultSort', () => {
     it('should return 0 when x and y are equal', () => {
@@ -30,7 +30,7 @@ describe('tuiDefaultSort', () => {
 
     it('should not convert TuiDay to utcNativeDate when comparing with non TuiDay', () => {
         const day = TuiDay.currentLocal();
-        const date = new Date(Date.UTC(2022, 5, 1));
+        const date: TuiReadonlyDate = new Date(Date.UTC(2022, 5, 1));
 
         expect(tuiDefaultSort(day, date as unknown as TuiDay)).toBeGreaterThan(0);
         expect(tuiDefaultSort(date, day as unknown as Date)).toBeLessThan(0);

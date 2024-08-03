@@ -2,7 +2,12 @@ import {Component, Injectable} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay, TuiDayRange, TuiValueTransformer} from '@taiga-ui/cdk';
+import {
+    TuiDay,
+    TuiDayRange,
+    type TuiReadonlyDate,
+    TuiValueTransformer,
+} from '@taiga-ui/cdk';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -43,7 +48,7 @@ export class ExampleDateTransformer extends TuiValueTransformer<
     TuiDay | null,
     Date | null
 > {
-    public fromControlValue(controlValue: Date | null): TuiDay | null {
+    public fromControlValue(controlValue: Date | TuiReadonlyDate | null): TuiDay | null {
         return controlValue && TuiDay.fromLocalNativeDate(controlValue);
     }
 

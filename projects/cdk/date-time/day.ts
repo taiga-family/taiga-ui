@@ -7,7 +7,7 @@ import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiDayOfWeek} from './day-of-week';
 import {TuiMonth} from './month';
 import {TuiMonthNumber} from './month-number';
-import type {TuiDateMode, TuiDayLike} from './types';
+import type {TuiDateMode, TuiDayLike, TuiReadonlyDate} from './types';
 import {TuiYear} from './year';
 
 /**
@@ -26,14 +26,14 @@ export class TuiDay extends TuiMonth {
     /**
      * Creates {@link TuiDay} from native {@link Date} based on local time zone
      */
-    public static fromLocalNativeDate(date: Date): TuiDay {
+    public static fromLocalNativeDate(date: Date | TuiReadonlyDate): TuiDay {
         return new TuiDay(date.getFullYear(), date.getMonth(), date.getDate());
     }
 
     /**
      * Creates {@link TuiDay} from native {@link Date} using UTC
      */
-    public static fromUtcNativeDate(date: Date): TuiDay {
+    public static fromUtcNativeDate(date: Date | TuiReadonlyDate): TuiDay {
         return new TuiDay(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
     }
 
@@ -61,7 +61,7 @@ export class TuiDay extends TuiMonth {
      * Current day based on local time zone
      */
     public static override currentLocal(): TuiDay {
-        const nativeDate = new Date();
+        const nativeDate: TuiReadonlyDate = new Date();
         const year = nativeDate.getFullYear();
         const month = nativeDate.getMonth();
         const day = nativeDate.getDate();
@@ -73,7 +73,7 @@ export class TuiDay extends TuiMonth {
      * Returns current day based on UTC
      */
     public static override currentUtc(): TuiDay {
-        const nativeDate = new Date();
+        const nativeDate: TuiReadonlyDate = new Date();
         const year = nativeDate.getUTCFullYear();
         const month = nativeDate.getUTCMonth();
         const day = nativeDate.getUTCDate();
