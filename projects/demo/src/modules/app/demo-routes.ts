@@ -1,7 +1,6 @@
 export const DemoRoute = {
     GettingStarted: '/getting-started',
     BrowserSupport: '/browser-support',
-    Changelog: '/changelog',
     SSR: '/ssr',
     AddonDoc: '/tui-doc',
     Related: '/related',

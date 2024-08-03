@@ -20,7 +20,8 @@ export const pages: TuiDocRoutePages = [
         section: 'Documentation',
         title: 'Changelog',
         keywords: 'release, change, changelog, archive, history',
-        route: DemoRoute.Changelog,
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+        target: '_blank',
     },
     {
         section: 'Documentation',
