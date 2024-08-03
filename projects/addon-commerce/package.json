@@ -20,7 +20,7 @@
         "@maskito/angular": "^3.0.0",
         "@maskito/core": "^3.0.0",
         "@maskito/kit": "^3.0.0",
-        "@ng-web-apis/common": "^4.2.0",
+        "@ng-web-apis/common": "^4.2.1",
         "@taiga-ui/cdk": "^4.0.0-rc.8",
         "@taiga-ui/core": "^4.0.0-rc.8",
         "@taiga-ui/i18n": "^4.0.0-rc.8",
