@@ -25,7 +25,7 @@
         "@angular/core": ">=16.0.0",
         "@angular/forms": ">=16.0.0",
         "@angular/router": ">=16.0.0",
-        "@ng-web-apis/common": "^4.2.0",
+        "@ng-web-apis/common": "^4.2.1",
         "@taiga-ui/addon-mobile": "^4.0.0-rc.8",
         "@taiga-ui/cdk": "^4.0.0-rc.8",
         "@taiga-ui/core": "^4.0.0-rc.8",
