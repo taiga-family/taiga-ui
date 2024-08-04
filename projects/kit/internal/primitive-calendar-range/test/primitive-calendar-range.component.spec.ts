@@ -96,6 +96,15 @@ describe('PrimitiveRangeCalendar component', () => {
             component.ngOnInit();
             expect(component.userViewedMonthSecond).toEqual(minDate.append({month: 1}));
         });
+
+        it('When min later than given month, return next month after min', () => {
+            const minDate = TuiDay.currentLocal().append({month: 1});
+
+            component.min = minDate;
+            component.ngOnInit();
+
+            expect(component.userViewedMonthSecond).toEqual(minDate.append({month: 1}));
+        });
     });
 
     describe('cappedUserViewedMonthSecond', () => {
