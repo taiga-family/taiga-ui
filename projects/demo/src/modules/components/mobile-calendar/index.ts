@@ -36,7 +36,7 @@ export default class Page {
         new TuiDay(1900, 0, 1),
     ];
 
-    protected min = this.minVariants[0];
+    protected min = this.minVariants[0]!;
 
     protected maxVariants = [
         TUI_LAST_DAY,
@@ -44,7 +44,7 @@ export default class Page {
         new TuiDay(2300, 0, 1),
     ];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected single = true;
 
@@ -52,7 +52,7 @@ export default class Page {
         TuiBooleanHandler<TuiDay>
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
 

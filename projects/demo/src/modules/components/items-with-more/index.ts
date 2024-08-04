@@ -23,7 +23,7 @@ export default class Page {
 
     protected readonly itemsLimitVariants = [Infinity, 4, 2];
 
-    protected required = this.requiredVariants[0];
+    protected required = this.requiredVariants[0]!;
 
-    protected itemsLimit = this.itemsLimitVariants[0];
+    protected itemsLimit = this.itemsLimitVariants[0]!;
 }

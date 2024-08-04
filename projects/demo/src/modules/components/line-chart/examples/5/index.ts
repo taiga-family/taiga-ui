@@ -47,5 +47,5 @@ export default class Example {
 
     protected readonly hint: TuiStringHandler<TuiContext<readonly TuiPoint[]>> = ({
         $implicit,
-    }) => `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
+    }) => `${$implicit[0]?.[0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
 }

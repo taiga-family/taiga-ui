@@ -79,9 +79,9 @@ describe('TuiRepeatTimes directive', () => {
         });
 
         it('passes index as implicit context', () => {
-            expect(debugElements[0].nativeElement.title).toBe('0');
-            expect(debugElements[1].nativeElement.title).toBe('1');
-            expect(debugElements[2].nativeElement.title).toBe('2');
+            expect(debugElements[0]?.nativeElement.title).toBe('0');
+            expect(debugElements[1]?.nativeElement.title).toBe('1');
+            expect(debugElements[2]?.nativeElement.title).toBe('2');
         });
     });
 });

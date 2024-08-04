@@ -197,7 +197,7 @@ export class TuiPagination {
         }
 
         const previous = this.els.find(
-            (_, index, array) => array[index + 1].nativeElement === element,
+            (_, index, array) => array[index + 1]?.nativeElement === element,
         );
 
         previous?.nativeElement.focus();

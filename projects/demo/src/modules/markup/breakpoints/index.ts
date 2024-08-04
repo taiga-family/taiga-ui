@@ -26,7 +26,10 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
         .map((line) => {
             const [name, ...value] = line.split(':');
 
-            return {name, value: value.join(':').replaceAll(/[~'"]/g, '').trim()};
+            return {
+                name: name || '',
+                value: value.join(':').replaceAll(/[~'"]/g, '').trim(),
+            };
         });
 }
 
@@ -40,7 +43,7 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
 })
 export default class Page {
     protected readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
-    protected readonly columnsNames = Object.keys(this.breakpoints[0]);
+    protected readonly columnsNames = Object.keys(this.breakpoints[0] || {});
 
     protected readonly importTaigaUILocalLess = import(
         './examples/import/import-taiga-ui-local-less.md?raw'

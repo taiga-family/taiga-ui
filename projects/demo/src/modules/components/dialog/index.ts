@@ -100,7 +100,7 @@ export default class Page {
         'auto',
     ];
 
-    protected size: TuiDialogSize = this.sizeVariants[1];
+    protected size: TuiDialogSize = this.sizeVariants[1]!;
 
     protected label = '';
 

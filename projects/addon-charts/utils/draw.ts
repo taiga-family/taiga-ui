@@ -12,5 +12,5 @@ export function tuiDraw(
 ): string {
     return smoothing
         ? tuiDrawCurve(array, index, smoothing / COEFFICIENT)
-        : tuiDrawLine([array[index][0], array[index][1]]);
+        : tuiDrawLine([array[index]?.[0] || 0, array[index]?.[1] || 0]);
 }

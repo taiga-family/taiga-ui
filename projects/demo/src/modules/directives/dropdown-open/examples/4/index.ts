@@ -38,7 +38,7 @@ export default class Example {
             case 0:
                 return 'Select';
             case 1:
-                return this.value[0];
+                return this.value[0] || '';
             default:
                 return `${this.length} selected`;
         }

@@ -20,11 +20,11 @@ export default class Page {
         'vertical',
     ];
 
-    protected orientation: TuiOrientation = this.orientationVariants[0];
+    protected orientation: TuiOrientation = this.orientationVariants[0]!;
 
     protected readonly iconVariants = ['', '@tui.clock', '@tui.heart'];
 
-    protected icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0]!;
 
     protected readonly stateVariants = ['normal', 'pass', 'error'] as const;
 

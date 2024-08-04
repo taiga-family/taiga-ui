@@ -48,12 +48,14 @@ export class TuiPieChartDirective {
                 takeUntilDestroyed(),
             )
             .subscribe(([start, end]) =>
-                el.setAttribute('d', tuiDescribeSector(start, end)),
+                el.setAttribute('d', tuiDescribeSector(start || 0, end || 0)),
             );
     }
 
     @Input()
-    public set tuiPieChart(sector: readonly [number, number]) {
-        this.sector$.next(sector);
+    public set tuiPieChart(sector: readonly [number, number] | undefined) {
+        if (sector) {
+            this.sector$.next(sector);
+        }
     }
 }

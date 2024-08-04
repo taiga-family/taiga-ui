@@ -41,7 +41,7 @@ export default class Example {
 
     protected readonly strings = ['King Arthur', "It's Man", 'Silly Walks'];
 
-    protected horizontal = this.strings[0];
+    protected horizontal = this.strings[0]!;
 
     protected readonly handler: TuiBooleanHandler<string> = (item) =>
         item === this.strings[2];

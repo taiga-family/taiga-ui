@@ -17,7 +17,7 @@ export default class Page {
 
     protected readonly moreContentVariants = ['', 'And more'];
 
-    protected moreContent = this.moreContentVariants[0];
+    protected moreContent = this.moreContentVariants[0]!;
 
     protected underline = true;
 
@@ -27,5 +27,5 @@ export default class Page {
 
     protected sizes: readonly TuiSizeL[] = ['m', 'l'];
 
-    protected size = this.sizes[1];
+    protected size = this.sizes[1]!;
 }

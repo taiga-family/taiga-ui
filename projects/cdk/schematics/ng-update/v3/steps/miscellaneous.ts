@@ -54,7 +54,7 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
     const statement = node.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
-    identifier.findReferencesAsNodes().forEach((ref) => {
+    identifier?.findReferencesAsNodes().forEach((ref) => {
         let parent = ref.getParent();
 
         if (

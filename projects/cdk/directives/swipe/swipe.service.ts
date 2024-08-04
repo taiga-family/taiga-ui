@@ -25,14 +25,14 @@ export class TuiSwipeService extends Observable<TuiSwipeEvent> {
                     filter(
                         ([first, second]) =>
                             !!first.touches.length &&
-                            first.touches[0].identifier ===
-                                second.changedTouches[0].identifier,
+                            first.touches[0]?.identifier ===
+                                second.changedTouches[0]?.identifier,
                     ),
                     map(([start, end]) => {
-                        const startX = start.touches[0].clientX;
-                        const startY = start.touches[0].clientY;
-                        const endX = end.changedTouches[0].clientX;
-                        const endY = end.changedTouches[0].clientY;
+                        const startX = start.touches.item(0)?.clientX || 0;
+                        const startY = start.touches.item(0)?.clientY || 0;
+                        const endX = end.changedTouches.item(0)?.clientX || 0;
+                        const endY = end.changedTouches.item(0)?.clientY || 0;
 
                         const distanceX = startX - endX;
                         const distanceY = startY - endY;

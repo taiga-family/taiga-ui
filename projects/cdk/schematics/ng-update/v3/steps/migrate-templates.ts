@@ -230,15 +230,18 @@ function addEditorProviders({
     if (elements.length) {
         const componentPath = resource.componentPath;
         const componentClass = getNgComponents(componentPath);
+        const classDeclaration = componentClass[0];
 
-        addProviderToComponent(
-            componentClass[0],
-            `{
+        if (classDeclaration) {
+            addProviderToComponent(
+                classDeclaration,
+                `{
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultEditorExtensions
         }`,
-            {unique: true},
-        );
+                {unique: true},
+            );
+        }
 
         addUniqueImport(componentPath, 'TUI_EDITOR_EXTENSIONS', '@taiga-ui/addon-editor');
         addUniqueImport(
@@ -282,7 +285,7 @@ function migrateTuiHideSelectedPipe({
             '| tuiHideSelected',
         );
 
-        const {startOffset} = attrLocations[name];
+        const {startOffset} = attrLocations[name] ?? {startOffset: 0};
         const valueOffset = templateOffset + startOffset + name.length + '="'.length;
 
         recorder.remove(valueOffset, oldValue.length);
@@ -317,9 +320,10 @@ function migrateBinaryAttributes({
                 return;
             }
 
-            const {startOffset, endOffset} =
-                attrLocations[`[${attrName.toLowerCase()}]`] ||
-                attrLocations[attrName.toLowerCase()];
+            const {startOffset, endOffset} = (attrLocations[
+                `[${attrName.toLowerCase()}]`
+            ] ||
+                attrLocations[attrName.toLowerCase()]) ?? {startOffset: 0, endOffset: 0};
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
             recorder.insertRight(templateOffset + startOffset, attrName);

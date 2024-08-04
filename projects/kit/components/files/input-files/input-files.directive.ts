@@ -54,11 +54,14 @@ export class TuiInputFilesDirective
     public readonly input = tuiInjectElement<HTMLInputElement>();
 
     public process(files: FileList): void {
-        this.onChange(
-            this.input.multiple
-                ? [...toArray(this.value()), ...Array.from(files)]
-                : files[0] || null,
-        );
+        const fileOrFiles: File | ReadonlyArray<File | TuiFileLike> | null = this.input
+            .multiple
+            ? [...toArray(this.value()), ...Array.from(files)]
+            : files[0] || null;
+
+        if (fileOrFiles) {
+            this.onChange(fileOrFiles);
+        }
     }
 
     protected onClick(event: MouseEvent): void {

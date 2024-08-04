@@ -184,9 +184,9 @@ describe('Accordion', () => {
                 TuiAccordionItemHarness,
             );
 
-            await accordionItem1.clickHeader();
-            expect(await accordionItem1.getContent()).not.toBeNull();
-            expect(await accordionItem2.getContent()).toBeNull();
+            await accordionItem1?.clickHeader();
+            expect(await accordionItem1?.getContent()).not.toBeNull();
+            expect(await accordionItem2?.getContent()).toBeNull();
         });
 
         it('clicking on the 2nd section opens its contents and closes the contents of the 1st', async () => {
@@ -195,12 +195,12 @@ describe('Accordion', () => {
             );
 
             await parallel(() => [
-                accordionItem1.clickHeader(),
-                accordionItem2.clickHeader(),
+                accordionItem1?.clickHeader(),
+                accordionItem2?.clickHeader(),
             ]);
 
-            expect(await accordionItem1.getContent()).toBeNull();
-            expect(await accordionItem2.getContent()).not.toBeNull();
+            expect(await accordionItem1?.getContent()).toBeNull();
+            expect(await accordionItem2?.getContent()).not.toBeNull();
         });
 
         it('when closeOthers = false, already open sections are not closed when new ones are opened', async () => {
@@ -211,12 +211,12 @@ describe('Accordion', () => {
             );
 
             await parallel(() => [
-                accordionItem1.clickHeader(),
-                accordionItem2.clickHeader(),
+                accordionItem1?.clickHeader(),
+                accordionItem2?.clickHeader(),
             ]);
 
-            expect(await accordionItem1.getContent()).not.toBeNull();
-            expect(await accordionItem2.getContent()).not.toBeNull();
+            expect(await accordionItem1?.getContent()).not.toBeNull();
+            expect(await accordionItem2?.getContent()).not.toBeNull();
         });
 
         it.skip('pressing the space bar in the input does not close the accordion', async () => {

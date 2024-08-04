@@ -131,10 +131,14 @@ export class TuiCarouselComponent {
     }
 
     protected onIntersection(
-        {intersectionRatio}: IntersectionObserverEntry,
+        entry: IntersectionObserverEntry | undefined,
         index: number,
     ): void {
-        if (intersectionRatio && intersectionRatio !== 1 && !this.transitioned) {
+        if (
+            entry?.intersectionRatio &&
+            entry?.intersectionRatio !== 1 &&
+            !this.transitioned
+        ) {
             this.updateIndex(index - Math.floor(this.itemsCount / 2));
         }
     }

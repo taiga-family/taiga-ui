@@ -139,13 +139,14 @@ export class TuiInputMonthComponent
     protected onNativeChange(value: string): void {
         const [year, month] = value.split('-').map(Number);
 
-        this.value = value
-            ? tuiDateClamp(
-                  new TuiMonth(year, month - 1),
-                  this.computedMin,
-                  this.computedMax,
-              )
-            : null;
+        this.value =
+            value && year && month
+                ? tuiDateClamp(
+                      new TuiMonth(year, month - 1),
+                      this.computedMin,
+                      this.computedMax,
+                  )
+                : null;
     }
 
     protected onFocused(focused: boolean): void {

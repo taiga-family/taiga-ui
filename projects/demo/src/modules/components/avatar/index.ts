@@ -34,7 +34,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size = this.sizes[3];
+    protected size = this.sizes[3]!;
 
     protected readonly srcVariants: ReadonlyArray<SafeResourceUrl | string> = [
         'MW',
@@ -46,7 +46,7 @@ export default class Page {
         ),
     ];
 
-    protected src = this.srcVariants[0];
+    protected src = this.srcVariants[0]!;
 
     protected round = true;
 }

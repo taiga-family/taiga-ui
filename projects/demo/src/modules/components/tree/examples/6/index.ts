@@ -61,7 +61,7 @@ export default class Example {
         map: Map<TreeNode, boolean>,
     ): boolean | null => {
         const flat = flatten(item);
-        const result = !!map.get(flat[0]);
+        const result = flat[0] ? !!map.get(flat[0]) : false;
 
         for (const item of flat) {
             if (result !== !!map.get(item)) {

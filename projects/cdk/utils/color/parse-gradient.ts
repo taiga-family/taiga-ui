@@ -73,12 +73,12 @@ export function tuiParseGradient(input: string): TuiParsedGradient {
         : 'to bottom';
     let stops: TuiParsedGradient['stops'] = [];
 
-    let matchColorStop = stopsRegexp.exec(stopsString);
+    let matchColorStop: RegExpMatchArray | null = stopsRegexp.exec(stopsString);
 
     while (matchColorStop !== null) {
         stops = stops.concat({
-            color: matchColorStop[1],
-            position: getPosition(matchColorStop[2], stops.length),
+            color: matchColorStop?.[1] || '',
+            position: getPosition(matchColorStop?.[2] || '', stops.length),
         });
 
         matchColorStop = stopsRegexp.exec(stopsString);

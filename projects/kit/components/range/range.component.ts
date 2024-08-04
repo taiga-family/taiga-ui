@@ -135,8 +135,8 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
-        const leftThumbElement = sliderLeftRef.nativeElement;
-        const rightThumbElement = sliderRightRef.nativeElement;
+        const leftThumbElement = sliderLeftRef?.nativeElement;
+        const rightThumbElement = sliderRightRef?.nativeElement;
 
         const isRightThumb =
             target === this.el

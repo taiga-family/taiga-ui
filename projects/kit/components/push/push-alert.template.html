@@ -23,7 +23,7 @@
         *ngIf="context.buttons.length > 1"
         tuiButton
         type="button"
-        (click)="context.$implicit.next(context.buttons[0])"
+        (click)="context.$implicit.next(context.buttons[0] || '')"
     >
         {{ context.buttons[0] }}
     </button>
@@ -31,7 +31,7 @@
         *ngIf="context.buttons.length"
         tuiLink
         type="button"
-        (click)="context.$implicit.next(context.buttons[context.buttons.length - 1])"
+        (click)="context.$implicit.next(context.buttons[context.buttons.length - 1] || '')"
     >
         {{ context.buttons[context.buttons.length - 1] }}
     </button>

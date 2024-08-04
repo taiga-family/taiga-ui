@@ -37,11 +37,11 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
     protected readonly routes = DemoRoute;
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
-    protected min = this.minVariants[0];
+    protected min = this.minVariants[0]!;
 
     protected readonly maxVariants: readonly number[] = [10, 100, 10000];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected segments = 1;
 
@@ -51,7 +51,7 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
         1, 0.01, 0.001, 0.0001, 10, 20, 100,
     ];
 
-    protected quantum = this.quantumVariants[0];
+    protected quantum = this.quantumVariants[0]!;
 
     protected readonly valueContentVariants = [
         '',
@@ -61,7 +61,7 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
     ];
 
-    protected valueContent = this.valueContentVariants[0];
+    protected valueContent = this.valueContentVariants[0]!;
 
     protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [
@@ -74,7 +74,7 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
     protected keySteps: TuiKeySteps | null = null;
 
     public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    public override size = this.sizeVariants[1];
+    public override size = this.sizeVariants[1]!;
     public readonly control = new FormControl(0);
 
     public override readonly customContentVariants: string[] = [
@@ -83,5 +83,5 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
         '@tui.mastercard-mono',
     ];
 
-    public override customContentSelected = this.customContentVariants[0];
+    public override customContentSelected = this.customContentVariants[0]!;
 }

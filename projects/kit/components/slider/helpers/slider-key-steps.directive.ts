@@ -24,7 +24,7 @@ export class TuiSliderKeySteps extends TuiControl<number> {
         forwardRef(() => TuiSliderComponent),
     );
 
-    @Input()
+    @Input({required: true})
     public keySteps!: TuiKeySteps;
 
     public override writeValue(controlValue: number | null): void {
@@ -48,7 +48,7 @@ export class TuiSliderKeySteps extends TuiControl<number> {
     }
 
     protected get max(): number {
-        return this.keySteps[this.keySteps.length - 1][1];
+        return this.keySteps[this.keySteps.length - 1]?.[1] ?? 0;
     }
 
     @HostListener('input')

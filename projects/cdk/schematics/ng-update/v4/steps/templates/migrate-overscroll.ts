@@ -46,12 +46,16 @@ export function migrateOverscroll({
             );
     });
 
-    addTodo(recorder, elements[0].sourceCodeLocation as ElementLocation, templateOffset);
+    addTodo(
+        recorder,
+        elements[0]?.sourceCodeLocation as ElementLocation | undefined,
+        templateOffset,
+    );
 }
 
 function addTodo(
     recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation,
+    sourceCodeLocation: ElementLocation | undefined,
     templateOffset: number,
 ): void {
     recorder.insertRight(

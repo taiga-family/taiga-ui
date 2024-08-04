@@ -36,11 +36,11 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
     protected readonly routes = DemoRoute;
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
-    protected min = this.minVariants[0];
+    protected min = this.minVariants[0]!;
 
     protected maxVariants: readonly number[] = [10, 100, 10000];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected segments = 1;
 
@@ -48,7 +48,7 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
 
     protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
-    protected quantum = this.quantumVariants[0];
+    protected quantum = this.quantumVariants[0]!;
 
     protected readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: 'thing', few: 'things', many: 'things', other: 'things'},
@@ -78,12 +78,12 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : `${val}`),
     ];
 
-    protected leftValueContent = this.valueContentVariants[0];
-    protected rightValueContent = this.valueContentVariants[0];
+    protected leftValueContent = this.valueContentVariants[0]!;
+    protected rightValueContent = this.valueContentVariants[0]!;
 
     public control = new FormControl([0, 10]);
 
     public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    public override size = this.sizeVariants[1];
+    public override size = this.sizeVariants[1]!;
 }

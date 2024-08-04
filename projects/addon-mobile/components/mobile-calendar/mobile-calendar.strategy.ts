@@ -124,10 +124,10 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         let accumulator = 0;
 
         for (let year = 0; year < cycle.length; year++) {
-            for (let month = 0; month < cycle[year].length; month++) {
-                accumulator += cycle[year][month];
+            for (let month = 0; month < (cycle[year]?.length || 0); month++) {
+                accumulator += cycle[year]?.[month] || 0;
 
-                if (accumulator - cycle[year][month] / 2 > remainder) {
+                if (accumulator - (cycle[year]?.[month] || 0) / 2 > remainder) {
                     return Math.max((years + year) * MONTHS_IN_YEAR + month, 0);
                 }
             }

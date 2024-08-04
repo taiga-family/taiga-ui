@@ -59,8 +59,12 @@ export default class Example {
         switchMap((value) =>
             this.request(value ?? '').pipe(
                 map((response) => {
-                    if (response.length === 1 && String(response[0]) === value) {
-                        this.onClick(response[0]);
+                    const user = response[0]!;
+
+                    if (response.length === 1 && String(user) === value) {
+                        if (user) {
+                            this.onClick(user);
+                        }
 
                         return [];
                     }

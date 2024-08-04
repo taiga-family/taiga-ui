@@ -94,7 +94,7 @@ describe('Filter', () => {
         });
 
         it('set from checked items', () => {
-            component.onCheckbox(true, ARR_STRING[0]);
+            component.onCheckbox(true, ARR_STRING[0]!);
             fixture.detectChanges();
 
             expect(testComponent.control.value).toEqual(ARR_STRING);

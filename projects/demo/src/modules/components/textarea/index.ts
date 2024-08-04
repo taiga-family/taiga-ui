@@ -37,9 +37,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected readonly iconVariants = ['', '@tui.search', '@tui.calendar'];
-    protected icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0]!;
     protected readonly rowsVariants: readonly number[] = [8, 15, 30];
-    protected rows: number = this.rowsVariants[0];
+    protected rows: number = this.rowsVariants[0]!;
     protected expandable = false;
     protected placeholder = 'Placeholder';
 
@@ -52,5 +52,5 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'l',
     ];
 
-    public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
+    public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1]!;
 }

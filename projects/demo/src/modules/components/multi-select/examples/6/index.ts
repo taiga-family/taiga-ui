@@ -30,5 +30,5 @@ export default class Example {
         'مایکل پیلین',
     ];
 
-    protected value: readonly string[] = [this.items[0]];
+    protected value: readonly string[] = [this.items[0]!];
 }

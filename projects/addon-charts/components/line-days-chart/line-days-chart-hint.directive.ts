@@ -69,8 +69,10 @@ export class TuiLineDaysChartHint implements AfterContentInit {
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
         this.charts.forEach((chart, index) => {
+            const currentChart = current[index];
+
             chart.onHovered(day);
-            chart.zIndex = Math.max(sorted.indexOf(current[index]), 0);
+            chart.zIndex = currentChart ? Math.max(sorted.indexOf(currentChart), 0) : 0;
         });
     }
 

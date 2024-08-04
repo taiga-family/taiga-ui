@@ -78,12 +78,16 @@ function addTuiEntitiesToStandalone({
 }
 
 function addRootTuiProvidersToBootstrapFn(
-    bootstrapOptions: ObjectLiteralExpression,
+    bootstrapOptions?: ObjectLiteralExpression,
 ): void {
-    const property = bootstrapOptions.getProperty('providers') as PropertyAssignment;
-    const initializer = property.getInitializer() as ArrayLiteralExpression;
+    const property = bootstrapOptions?.getProperty('providers') as
+        | PropertyAssignment
+        | undefined;
+
+    const initializer = property?.getInitializer() as ArrayLiteralExpression | undefined;
+
     const provideAnimations = initializer
-        .getElements()
+        ?.getElements()
         .find(
             (el) =>
                 Node.isCallExpression(el) &&
@@ -107,11 +111,11 @@ function addRootTuiProvidersToBootstrapFn(
     modules.push({name: 'NG_EVENT_PLUGINS', packageName: '@taiga-ui/event-plugins'});
 
     modules.forEach(({name, packageName}) => {
-        addUniqueImport(
-            bootstrapOptions.getSourceFile().getFilePath(),
-            name,
-            packageName,
-        );
+        const path = bootstrapOptions?.getSourceFile().getFilePath();
+
+        if (path) {
+            addUniqueImport(path, name, packageName);
+        }
     });
 }
 
@@ -143,14 +147,14 @@ function getModules(extraModules?: ImportingModule[]): ImportingModule[] {
 
 function getOptionsObject(
     options: Identifier | ObjectLiteralExpression,
-): ObjectLiteralExpression {
+): ObjectLiteralExpression | undefined {
     if (Node.isObjectLiteralExpression(options)) {
         return options;
     }
 
     const definition = options.getDefinitionNodes()[0];
 
-    return definition.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0];
+    return definition?.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)?.[0];
 }
 
 export function addTaigaModules(options: TuiSchema): Rule {

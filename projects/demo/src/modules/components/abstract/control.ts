@@ -61,13 +61,13 @@ export abstract class AbstractExampleTuiControl
         '@tui.mastercard-mono',
     ];
 
-    public customContentSelected = this.customContentVariants[0];
+    public customContentSelected: PolymorpheusContent = this.customContentVariants[0];
 
-    public inputMode = this.inputModeVariants[0];
+    public inputMode = this.inputModeVariants[0]!;
 
     public maxLength: TuiPossibleGenericType | null = null;
 
-    public type = this.typeVariants[0];
+    public type = this.typeVariants[0]!;
 
     public cleaner = false;
 
@@ -79,7 +79,7 @@ export abstract class AbstractExampleTuiControl
 
     public labelOutside = false;
 
-    public size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
+    public size: TuiSizeL | TuiSizeS = this.sizeVariants[2]!;
 
     public exampleText = '';
 
@@ -87,13 +87,13 @@ export abstract class AbstractExampleTuiControl
 
     public readonly iconLeftVariants = ['', '@tui.mail', '@tui.pie-chart'];
 
-    public iconStart = this.iconLeftVariants[0];
+    public iconStart = this.iconLeftVariants[0]!;
 
-    public hintContent = this.hintContentVariants[0];
+    public hintContent = this.hintContentVariants[0]!;
 
-    public hintDirection = this.hintDirectionVariants[0];
+    public hintDirection = this.hintDirectionVariants[0]!;
 
-    public hintAppearance = this.hintAppearanceVariants[0];
+    public hintAppearance = this.hintAppearanceVariants[0]!;
 
     public dropdownOpen = new BehaviorSubject(false);
 
@@ -111,7 +111,7 @@ export abstract class AbstractExampleTuiControl
         'auto',
     ];
 
-    public dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
+    public dropdownLimitWidth = this.dropdownLimitWidthVariants[0]!;
 
     public readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'bottom',
@@ -132,9 +132,9 @@ export abstract class AbstractExampleTuiControl
         'Very long text',
     ];
 
-    public prefix = this.prefixVariants[0];
+    public prefix = this.prefixVariants[0]!;
 
-    public postfix = this.prefixVariants[0];
+    public postfix = this.prefixVariants[0]!;
 
     public dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
 

@@ -22,10 +22,10 @@ export default class Example {
     protected index = NaN;
 
     protected get sum(): number {
-        return Number.isNaN(this.index) ? this.total : this.value[this.index];
+        return Number.isNaN(this.index) ? this.total : this.value[this.index] || 0;
     }
 
     protected get label(): string {
-        return Number.isNaN(this.index) ? 'Total' : this.labels[this.index];
+        return Number.isNaN(this.index) ? 'Total' : this.labels[this.index] || '';
     }
 }

@@ -19,13 +19,17 @@ export function addUniqueImport(
     });
 
     if (existingDeclaration.length) {
-        const modules = existingDeclaration[0]
-            .getNamedImports()
-            .map((namedImport) => namedImport.getText());
+        const declaration = existingDeclaration[0];
 
-        editImports(existingDeclaration[0], () => ({
-            namedImports: [...modules, namedImport],
-        }));
+        if (declaration) {
+            const modules = declaration
+                .getNamedImports()
+                .map((namedImport) => namedImport.getText());
+
+            editImports(declaration, () => ({
+                namedImports: [...modules, namedImport],
+            }));
+        }
 
         return;
     }

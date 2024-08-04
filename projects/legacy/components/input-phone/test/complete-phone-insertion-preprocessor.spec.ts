@@ -34,7 +34,7 @@ describe('tuiCreateCompletePhoneInsertionPreprocessor + browser autofill', () =>
 
         tests.forEach(([before, after]) => {
             it(`${before} => ${after}`, () => {
-                expect(maskitoTransform(before, maskOptions)).toBe(after);
+                expect(maskitoTransform(before || '', maskOptions)).toBe(after);
             });
         });
     });
@@ -63,7 +63,7 @@ describe('tuiCreateCompletePhoneInsertionPreprocessor + browser autofill', () =>
 
         tests.forEach(([before, after]) => {
             it(`${before} => ${after}`, () => {
-                expect(maskitoTransform(before, maskOptions)).toBe(after);
+                expect(maskitoTransform(before || '', maskOptions)).toBe(after);
             });
         });
     });

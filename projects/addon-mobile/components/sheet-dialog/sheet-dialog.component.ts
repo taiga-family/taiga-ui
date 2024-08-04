@@ -90,9 +90,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
-            this.context.initial
-        ];
+        this.el.scrollTop =
+            [...this.getStops(this.stopsRefs), this.sheetTop][this.context.initial] || 0;
     }
 
     @HostBinding('style.top.px')

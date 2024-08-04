@@ -402,7 +402,7 @@ export class TuiInputTagComponent
         const validated = tags.filter((tag) => !this.disabledItemHandler(tag));
 
         if (array.length > 1) {
-            this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
+            this.updateSearch(this.clippedValue(array[array.length - 1]?.trim() || ''));
             this.value = this.filterValue([...this.value, ...validated]);
         } else {
             this.updateSearch(this.clippedValue(value));
@@ -498,7 +498,7 @@ export class TuiInputTagComponent
 
     private deleteLastEnabledItem(): void {
         for (let index = this.value.length - 1; index >= 0; index--) {
-            if (!this.disabledItemHandler(this.value[index])) {
+            if (!this.disabledItemHandler(this.value[index] || '')) {
                 this.value = tuiArrayRemove(this.value, index);
 
                 break;

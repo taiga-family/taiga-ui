@@ -50,7 +50,7 @@ export class TuiSkeleton implements OnChanges {
     public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
         this.animation?.cancel();
 
-        if (!tuiSkeleton.currentValue && !tuiSkeleton.firstChange) {
+        if (!tuiSkeleton?.currentValue && !tuiSkeleton?.firstChange) {
             this.animation = this.el.animate(FADE, this.duration);
         }
     }

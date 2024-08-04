@@ -98,7 +98,7 @@ export default class Example extends AbstractExampleTuiControl {
         (item) => String(String(item).match(/\d+/)),
     ];
 
-    protected stringify = this.stringifyVariants[0];
+    protected stringify = this.stringifyVariants[0]!;
 
     protected readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Account>> = [
         TUI_STRICT_MATCHER as TuiStringMatcher<Account>,
@@ -107,7 +107,7 @@ export default class Example extends AbstractExampleTuiControl {
             Number.parseInt(search, 10),
     ];
 
-    protected strictMatcher = this.strictMatcherVariants[0];
+    protected strictMatcher = this.strictMatcherVariants[0]!;
 
     protected readonly identityMatcherVariants: ReadonlyArray<
         TuiIdentityMatcher<Account>
@@ -116,13 +116,13 @@ export default class Example extends AbstractExampleTuiControl {
         (item1, item2) => item1.balance === item2.balance,
     ];
 
-    protected identityMatcher = this.identityMatcherVariants[0];
+    protected identityMatcher = this.identityMatcherVariants[0]!;
 
     public readonly control = new FormControl<Account | null>(null, Validators.required);
 
     public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
-    public override iconStart = this.iconVariants[0];
+    public override iconStart = this.iconVariants[0]!;
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

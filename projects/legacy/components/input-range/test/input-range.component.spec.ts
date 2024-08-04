@@ -198,7 +198,7 @@ describe('InputRange', () => {
                 testComponent.control.value?.[1],
             );
             expect(inputPOLeft.value).toBe(
-                `${testComponent.control.value?.[1].toString()} лет`,
+                `${testComponent.control.value?.[1]?.toString()} лет`,
             );
         });
 
@@ -213,7 +213,7 @@ describe('InputRange', () => {
             );
             expect(inputPORight.value).toBe(
                 `${testComponent.control.value?.[0]
-                    .toString()
+                    ?.toString()
                     .replace(CHAR_HYPHEN, CHAR_MINUS)} лет`,
             );
         });

@@ -20,8 +20,8 @@ export default class Page {
 
     protected total = 1000;
     protected page = 5;
-    protected items = this.itemsVariants[0];
-    protected size = this.items[0];
+    protected items = this.itemsVariants[0]!;
+    protected size = this.items[0]!;
 
     protected update({page, size}: TuiTablePaginationEvent): void {
         this.page = page;

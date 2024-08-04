@@ -90,9 +90,8 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     }
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
-            this.item.initial
-        ];
+        this.el.scrollTop =
+            [...this.stops, this.sheetTop, this.contentTop][this.item.initial] || 0;
     }
 
     @HostListener(TUI_SHEET_ID, ['$event.detail'])

@@ -174,7 +174,7 @@ export default class Example {
         this.enabled = enabled;
         this.columns = this.initial
             .filter((column) => enabled.includes(column))
-            .map((column) => KEYS[column]);
+            .map((column) => KEYS[column] || '');
     }
 
     protected onDirection(direction: -1 | 1): void {

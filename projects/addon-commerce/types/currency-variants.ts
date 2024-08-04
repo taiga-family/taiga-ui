@@ -7,4 +7,4 @@ export type TuiCurrencyAutocompletion =
 
 export type TuiCurrencyVariants =
     | TuiCurrencyAutocompletion
-    | (TuiCurrency | TuiCurrencyCode | number | string | null);
+    | (TuiCurrency | TuiCurrencyCode | number | string | null | undefined);

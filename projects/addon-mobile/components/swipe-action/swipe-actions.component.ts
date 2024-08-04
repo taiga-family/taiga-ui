@@ -15,7 +15,7 @@ import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 export class TuiSwipeActions {
     protected actionsWidth = 0;
 
-    protected onResize({target}: ResizeObserverEntry): void {
-        this.actionsWidth = target.clientWidth;
+    protected onResize(entry?: ResizeObserverEntry): void {
+        this.actionsWidth = entry?.target.clientWidth || 0;
     }
 }

@@ -63,13 +63,10 @@ export default class Page implements OnInit {
         return !!this.storage.getItem('env');
     }
 
-    protected onIntersection(
-        [{isIntersecting, target}]: IntersectionObserverEntry[],
-        index: number,
-    ): void {
-        if (isIntersecting) {
+    protected onIntersection([entry]: IntersectionObserverEntry[], index: number): void {
+        if (entry?.isIntersecting) {
             this.current = index;
-            target.scrollIntoView({behavior: 'smooth'});
+            entry?.target.scrollIntoView({behavior: 'smooth'});
         }
     }
 

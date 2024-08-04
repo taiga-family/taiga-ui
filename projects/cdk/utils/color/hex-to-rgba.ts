@@ -4,7 +4,7 @@ const getChunksFromString = (hex: string, chunkSize: number): RegExpMatchArray |
 const convertHexUnitTo256 = (hexStr: string): number =>
     parseInt(hexStr.repeat(2 / hexStr.length), 16);
 
-const getAlphaFloat = (a: number, alpha?: number): number => {
+const getAlphaFloat = (a?: number, alpha?: number): number => {
     if (typeof a !== 'undefined') {
         return Number((a / 255).toFixed(2));
     }
@@ -39,5 +39,5 @@ export function tuiParseHex(
     const [r, g, b, a] = hexArr?.map(convertHexUnitTo256) ?? [];
     const floatAlpha = getAlphaFloat(a, alpha);
 
-    return [r, g, b, floatAlpha];
+    return [r || 0, g || 0, b || 0, floatAlpha];
 }

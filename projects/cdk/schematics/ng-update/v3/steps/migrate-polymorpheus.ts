@@ -105,8 +105,8 @@ function insertPolymorpheusWithDefault({
 
     if (defaultTemplateEl.sourceCodeLocation?.attrs && templateVar?.name) {
         recorder.remove(
-            defaultTemplateEl.sourceCodeLocation.attrs[templateVar.name].startOffset +
-                templateOffset,
+            (defaultTemplateEl.sourceCodeLocation.attrs[templateVar.name]?.startOffset ||
+                0) + templateOffset,
             templateVar.name.length,
         );
     }

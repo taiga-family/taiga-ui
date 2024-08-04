@@ -45,9 +45,10 @@ export default class Example {
             text: ['русский текст', Validators.required],
         });
 
-        this.form.controls['text'].setAsyncValidators(
+        this.form.controls['text']?.setAsyncValidators(
             asyncValidatorFn(inject(TUI_IS_E2E)),
         );
-        this.form.controls['text'].markAsTouched();
+
+        this.form.controls['text']?.markAsTouched();
     }
 }

@@ -33,6 +33,6 @@ export default class Page {
         ],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
     protected readonly routes = DemoRoute;
 }

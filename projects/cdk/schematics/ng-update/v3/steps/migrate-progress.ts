@@ -1,3 +1,4 @@
+/// <reference lib="es2021" />
 import type {DevkitFileSystem} from 'ng-morph';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import type {Element} from 'parse5/dist/tree-adapters/default';
@@ -47,8 +48,9 @@ export function replaceProgressColorSegmentsPipe(
             const attrLocations = progressEl.sourceCodeLocation?.attrs;
 
             if (attrLocations) {
-                const {startOffset, endOffset} =
-                    attrLocations[PROPERTY_FOR_DEPRECATED_PIPES];
+                const {startOffset, endOffset} = attrLocations[
+                    PROPERTY_FOR_DEPRECATED_PIPES
+                ] ?? {startOffset: 0, endOffset: 0};
 
                 recorder.remove(templateOffset + startOffset, endOffset - startOffset);
                 recorder.insertRight(

@@ -247,8 +247,11 @@ export class TuiInputDateComponent
         }
     }
 
-    protected onDayClick(value: TuiDay): void {
-        this.value = value;
+    protected onDayClick(value?: TuiDay): void {
+        if (value) {
+            this.value = value;
+        }
+
         this.open = false;
     }
 

@@ -110,8 +110,8 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    protected onIntersection([{isIntersecting}]: IntersectionObserverEntry[]): void {
-        if (isIntersecting) {
+    protected onIntersection([entry]: IntersectionObserverEntry[]): void {
+        if (entry?.isIntersecting) {
             this.close();
         }
     }

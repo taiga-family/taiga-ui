@@ -44,9 +44,9 @@ export class TuiSheetsHostComponent implements OnInit {
             });
     }
 
-    protected close({closeable, $implicit}: TuiSheet<unknown>): void {
-        if (closeable) {
-            $implicit.complete();
+    protected close(sheet?: TuiSheet<unknown>): void {
+        if (sheet?.closeable) {
+            sheet.$implicit.complete();
         }
     }
 }

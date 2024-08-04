@@ -34,17 +34,17 @@ export default class Page {
         'url',
     ];
 
-    protected type = this.typeVariants[0];
+    protected type = this.typeVariants[0]!;
 
     protected readonly customContentVariants = ['', 'Bell'];
 
-    protected customContentSelected = this.customContentVariants[0];
+    protected customContentSelected = this.customContentVariants[0]!;
 
     protected cleaner = false;
     protected exampleText = '';
     protected labelOutside = false;
-    protected size = this.sizeVariants[2];
-    protected inputMode = this.inputModeVariants[0];
+    protected size = this.sizeVariants[2]!;
+    protected inputMode = this.inputModeVariants[0]!;
     protected maxLength: number | null = null;
 
     protected readonly control = new FormControl('111', Validators.required);

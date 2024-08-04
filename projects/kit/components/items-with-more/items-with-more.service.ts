@@ -44,16 +44,16 @@ export class TuiItemsWithMoreService extends Observable<number> {
 
         items.unshift(...items.splice(first, 1));
 
-        let total = items.reduce((sum, width) => sum + width, 0) - more;
+        let total = items.reduce((sum, width) => sum + width, 0) - (more ?? 0);
 
         if (total <= clientWidth && this.directive.itemsLimit >= items.length) {
             return this.maxItems;
         }
 
         for (let i = last - 1; i > 0; i--) {
-            total -= items[i];
+            total -= items?.[i] ?? 0;
 
-            if (total + more <= clientWidth) {
+            if (total + (more ?? 0) <= clientWidth) {
                 return tuiClamp(
                     i > this.directive.required ? i - 1 : i - 2,
                     -1,

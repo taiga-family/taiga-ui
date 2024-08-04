@@ -11,7 +11,7 @@ export function tuiNumberToStringWithoutExp(value: number): string {
     let valueWithoutExp = valueAsString;
 
     if (expPart) {
-        const [, fractionalPart] = numberPart.split('.');
+        const [, fractionalPart] = numberPart?.split('.') ?? [];
         const decimalDigits = Number(expPart) + (fractionalPart?.length || 0);
 
         valueWithoutExp = value.toFixed(decimalDigits);

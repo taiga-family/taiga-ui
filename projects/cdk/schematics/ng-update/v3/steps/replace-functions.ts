@@ -43,7 +43,7 @@ function replacePadStart(references: Node[]): void {
             const [targetString, length, pad] = parent.getArguments();
 
             parent.replaceWithText(
-                `${targetString.getText()}.padStart(${length.getText()}, ${
+                `${targetString?.getText()}.padStart(${length?.getText()}, ${
                     pad?.getText() ?? '" "'
                 })`,
             );
@@ -62,10 +62,10 @@ function replaceNativeFocused(references: Node[]): void {
 
             const setFocused = !focusedArg || focusedArg.getText() === 'true';
 
-            const focus = `${targetString.getText()}.focus(${
+            const focus = `${targetString?.getText()}.focus(${
                 preventScroll?.getText() ? '{preventScroll: true}' : ''
             })`;
-            const blur = `${targetString.getText()}.blur()`;
+            const blur = `${targetString?.getText()}.blur()`;
 
             parent.replaceWithText(setFocused ? focus : blur);
         }
@@ -80,12 +80,12 @@ function replaceClosestElement(references: Node[]): void {
             removeImport(parent);
         } else if (Node.isCallExpression(parent)) {
             const [firstArg, secondArg] = parent.getArguments();
-            const firstArgText = firstArg.getText();
-            const element = firstArgText.includes(' as ') // e.g, `getClosestElement(el as Element, ...)`
+            const firstArgText = firstArg?.getText();
+            const element = firstArgText?.includes(' as ') // e.g, `getClosestElement(el as Element, ...)`
                 ? `(${firstArgText})`
                 : firstArgText;
 
-            parent.replaceWithText(`${element}.closest(${secondArg.getText()})`);
+            parent.replaceWithText(`${element}.closest(${secondArg?.getText()})`);
         }
     });
 }
@@ -100,7 +100,7 @@ function replaceCustomEvent(references: Node[]): void {
             const [firstArg, secondArg] = parent.getArguments();
 
             parent.replaceWithText(
-                `new CustomEvent(${firstArg.getText()}, ${secondArg.getText()})`,
+                `new CustomEvent(${firstArg?.getText()}, ${secondArg?.getText()})`,
             );
         }
     });
@@ -115,7 +115,7 @@ function replaceFallbackValue(references: Node[]): void {
         } else if (Node.isCallExpression(parent)) {
             const [firstArg, secondArg] = parent.getArguments();
 
-            parent.replaceWithText(`${firstArg.getText()} ?? ${secondArg.getText()}`);
+            parent.replaceWithText(`${firstArg?.getText()} ?? ${secondArg?.getText()}`);
         }
     });
 }

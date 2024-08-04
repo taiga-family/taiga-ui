@@ -68,10 +68,10 @@ export class TuiCalendarSheet {
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
 
-    public itemIsInterval(day: TuiDay): boolean {
+    public itemIsInterval(day?: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
-        if (!(value instanceof TuiDayRange)) {
+        if (!(value instanceof TuiDayRange) || !day) {
             return false;
         }
 
@@ -88,14 +88,14 @@ export class TuiCalendarSheet {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    public onItemHovered(item: TuiDay | false): void {
+    public onItemHovered(item: TuiDay | false | undefined): void {
         this.updateHoveredItem(item || null);
     }
 
-    public getItemRange(item: TuiDay): TuiRangeState | null {
+    public getItemRange(item?: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
-        if (!value) {
+        if (!value || !item) {
             return null;
         }
 
@@ -154,15 +154,15 @@ export class TuiCalendarSheet {
         return markers?.length ? markers : null;
     };
 
-    protected itemIsToday(item: TuiDay): boolean {
-        return this.today.daySame(item);
+    protected itemIsToday(item?: TuiDay): boolean {
+        return item ? this.today.daySame(item) : false;
     }
 
-    protected itemIsUnavailable(item: TuiDay): boolean {
-        return !this.month.monthSame(item);
+    protected itemIsUnavailable(item?: TuiDay): boolean {
+        return item ? !this.month.monthSame(item) : false;
     }
 
-    protected onItemClick(item: TuiDay): void {
+    protected onItemClick(item?: TuiDay): void {
         this.dayClick.emit(item);
     }
 

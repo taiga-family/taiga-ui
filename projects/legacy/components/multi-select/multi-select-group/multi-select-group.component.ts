@@ -60,9 +60,11 @@ export class TuiMultiSelectGroupComponent<T> {
                 let result = false;
 
                 for (let i = 0; i < items.length; i++) {
-                    const selected = current.some((selected) =>
-                        this.matcher(selected, items[i]),
-                    );
+                    const selected = current.some((selected) => {
+                        const item = items[i];
+
+                        return item ? this.matcher(selected, item) : false;
+                    });
 
                     if ((!selected && result) || (selected && !result && i)) {
                         return null;

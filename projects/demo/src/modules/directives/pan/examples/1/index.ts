@@ -33,8 +33,8 @@ export default class Example {
 
     protected onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([
-            this.currentCoords[0] + delta[0],
-            this.currentCoords[1] + delta[1],
+            (this.currentCoords[0] || 0) + delta[0],
+            (this.currentCoords[1] || 0) + delta[1],
         ]);
     }
 }

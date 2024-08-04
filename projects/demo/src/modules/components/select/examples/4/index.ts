@@ -28,7 +28,7 @@ export default class Example {
         'Graham Chapman',
     ];
 
-    protected value = this.pythons[0];
+    protected value = this.pythons[0]!;
 
     protected addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);

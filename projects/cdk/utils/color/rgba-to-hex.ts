@@ -9,10 +9,10 @@ export function tuiRgbaToHex(color: string): string {
             .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i) as unknown as number[]) ??
         [];
     let alpha: number | string = (rgb?.[4] ?? '').toString().trim();
-    let hex = rgb
-        ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
-          (rgb[2] | (1 << 8)).toString(16).slice(1) +
-          (rgb[3] | (1 << 8)).toString(16).slice(1)
+    let hex = rgb.length
+        ? ((rgb?.[1] || 0) | (1 << 8)).toString(16).slice(1) +
+          ((rgb?.[2] || 0) | (1 << 8)).toString(16).slice(1) +
+          ((rgb?.[3] || 0) | (1 << 8)).toString(16).slice(1)
         : color;
 
     alpha = alpha !== '' ? alpha : 0o1;

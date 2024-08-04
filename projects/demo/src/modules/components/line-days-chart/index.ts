@@ -24,7 +24,7 @@ export default class Page {
             .fill(0)
             .reduce<
                 ReadonlyArray<[TuiDay, number]>
-            >((array, _, i) => [...array, [new TuiDay(2020, 0, 1).append({day: i}), (i ? array[i - 1][1] : 100) + Math.random() * 20 - 10]], []),
+            >((array, _, i) => [...array, [new TuiDay(2020, 0, 1).append({day: i}), (i ? array[i - 1]?.[1] || 0 : 100) + Math.random() * 20 - 10]], []),
         [
             [new TuiDay(2020, 1, 10), 10],
             [new TuiDay(2020, 1, 15), 150],
@@ -35,10 +35,10 @@ export default class Page {
         ],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
 
     protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map((months) => Array.from({length: 4}, (_, i) => months[i])),
+        map((months) => Array.from({length: 4}, (_, i) => months[i] || '')),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [

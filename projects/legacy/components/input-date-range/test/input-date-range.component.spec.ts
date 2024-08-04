@@ -477,7 +477,7 @@ describe('InputDateRangeComponent', () => {
     }
 
     function getCalendarCell(
-        calendarEl: DebugElement,
+        calendarEl: DebugElement | undefined,
         dayNumber: number,
     ): DebugElement | null {
         return (

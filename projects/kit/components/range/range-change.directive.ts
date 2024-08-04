@@ -56,7 +56,7 @@ export class TuiRangeChange {
                     }
                 }),
                 switchMap((event) => this.pointerMove$.pipe(startWith(event))),
-                map(({clientX}) => this.getFractionFromEvents(clientX)),
+                map((touch) => this.getFractionFromEvents(touch?.clientX ?? 0)),
                 takeUntil(this.pointerUp$),
                 repeat(),
                 takeUntilDestroyed(),
@@ -83,9 +83,9 @@ export class TuiRangeChange {
         const [leftSliderRef, rightSliderRef] = this.range.slidersRefs;
 
         switch (target) {
-            case leftSliderRef.nativeElement:
+            case leftSliderRef?.nativeElement:
                 return 'left';
-            case rightSliderRef.nativeElement:
+            case rightSliderRef?.nativeElement:
                 return 'right';
             default:
                 return this.findNearestActiveThumb(clientX);

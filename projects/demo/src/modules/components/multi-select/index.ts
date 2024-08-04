@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import type {SafeValue} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
@@ -14,7 +15,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import type {PolymorpheusComponent, PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -86,14 +87,14 @@ export default class PageComponent extends AbstractExampleTuiControl {
         (item) => String(String(item).match(/\d+/)),
     ];
 
-    protected stringify = this.stringifyVariants[0];
+    protected stringify = this.stringifyVariants[0]!;
 
     protected identityMatcherVariants: ReadonlyArray<TuiIdentityMatcher<Account>> = [
         (item1, item2) => item1 === item2,
         (item1, item2) => item1.balance === item2.balance,
     ];
 
-    protected identityMatcher = this.identityMatcherVariants[0];
+    protected identityMatcher = this.identityMatcherVariants[0]!;
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
         TUI_TRUE_HANDLER,
@@ -101,19 +102,24 @@ export default class PageComponent extends AbstractExampleTuiControl {
         (item) => !item.name.startsWith('Pounds'),
     ];
 
-    protected tagValidator = this.tagValidatorVariants[0];
+    protected tagValidator = this.tagValidatorVariants[0]!;
 
     protected readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContext<readonly Account[]>>
     > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
 
-    protected valueContent = this.valueContentVariants[0];
+    protected valueContent:
+        | PolymorpheusComponent<unknown>
+        | PolymorpheusContent<TuiContext<readonly Account[]>>
+        | SafeValue
+        | number
+        | string = this.valueContentVariants[0];
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
     > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     public control = new FormControl<Account[] | null>(null);
 
@@ -126,7 +132,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
+        this.sizeVariants[this.sizeVariants.length - 1]!;
 
     public override readonly maxLengthVariants: readonly number[] = [10];
 

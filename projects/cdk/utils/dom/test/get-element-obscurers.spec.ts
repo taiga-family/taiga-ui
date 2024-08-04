@@ -101,9 +101,9 @@ describe('tuiGetElementObscures', () => {
             const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint
-                .mockReturnValueOnce(others[0])
-                .mockReturnValueOnce(others[1])
-                .mockReturnValueOnce(others[2])
+                .mockReturnValueOnce(others[0]!)
+                .mockReturnValueOnce(others[1]!)
+                .mockReturnValueOnce(others[2]!)
                 .mockReturnValueOnce(element);
 
             expect(tuiGetElementObscures(element)).toBeNull();

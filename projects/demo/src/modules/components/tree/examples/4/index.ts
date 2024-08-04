@@ -54,7 +54,10 @@ export default class Example {
 
     protected toggleLevel(index: number): void {
         const nodes: readonly TreeNode[] = this.data.children || [];
+        const node = nodes[index];
 
-        this.map.set(nodes[index], !this.map.get(nodes[index]));
+        if (node) {
+            this.map.set(node, !this.map.get(node));
+        }
     }
 }

@@ -33,7 +33,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         getCountries(),
     ];
 
-    protected countries = this.countriesVariants[0];
+    protected countries = this.countriesVariants[0]!;
 
     protected readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
         'RU',
@@ -42,7 +42,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'BY',
     ];
 
-    protected countryIsoCode = this.countryIsoCodeVariants[0];
+    protected countryIsoCode = this.countryIsoCodeVariants[0]!;
 
     public override cleaner = false;
     public control = new FormControl('', [Validators.required, Validators.minLength(9)]);

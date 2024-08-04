@@ -125,7 +125,7 @@ const excludedAttrs: Record<string, string[]> = {
 };
 
 function exclusion({tagName}: Element, attrName: string): boolean {
-    return excludedAttrs[tagName]?.includes(attrName);
+    return excludedAttrs[tagName]?.includes(attrName) ?? false;
 }
 
 export function migrateTextfieldController({

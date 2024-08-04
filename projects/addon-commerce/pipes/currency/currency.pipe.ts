@@ -8,7 +8,7 @@ import {tuiFormatCurrency} from '@taiga-ui/addon-commerce/utils';
     name: 'tuiCurrency',
 })
 export class TuiCurrencyPipe implements PipeTransform {
-    public transform(currency: TuiCurrencyVariants): string {
+    public transform(currency?: TuiCurrencyVariants | null): string {
         return tuiFormatCurrency(currency);
     }
 }

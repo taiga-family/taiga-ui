@@ -25,6 +25,12 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         const [indexHtml] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
         const [globalStyles] = tuiTryParseMarkdownCodeBlock(stylesContent);
 
-        return {angularJson, tsconfig, mainTs, indexHtml, globalStyles};
+        return {
+            angularJson: angularJson!,
+            tsconfig: tsconfig!,
+            mainTs: mainTs!,
+            indexHtml: indexHtml!,
+            globalStyles: globalStyles!,
+        };
     }
 }

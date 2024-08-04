@@ -32,7 +32,8 @@ function tuiFindKeyStepsBoundariesByFn(
     const keyStepUpperIndex = keySteps.findIndex((keyStep, i) => i && fn(keyStep));
 
     const lowerStep = keySteps[keyStepUpperIndex - 1] || keySteps[0];
-    const upperStep = keySteps[keyStepUpperIndex] || keySteps[keySteps.length - 1];
+    const upperStep = keySteps[keyStepUpperIndex] ||
+        keySteps[keySteps.length - 1] || [0, 0];
 
     return [lowerStep, upperStep];
 }

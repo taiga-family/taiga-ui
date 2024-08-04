@@ -181,7 +181,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         let index = tabs.length - 2;
 
         while (index >= 0) {
-            tabs[index].focus();
+            tabs[index]?.focus();
 
             if (tuiIsNativeFocused(tabs[index])) {
                 return;
@@ -231,20 +231,23 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
         const {exposeActive, minMoreWidth} = this.options;
         const {clientWidth} = this.el;
-        const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
-        const moreWidth = Math.max(tabs[tabs.length - 1].scrollWidth, minMoreWidth);
+        const activeWidth = tabs[activeItemIndex]
+            ? tabs[activeItemIndex]?.scrollWidth || 0
+            : 0;
+
+        const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth || 0, minMoreWidth);
         let maxIndex = tabs.length - 2;
         let total =
             tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
             maxIndex * margin -
-            tabs[tabs.length - 1].scrollWidth;
+            (tabs[tabs.length - 1]?.scrollWidth ?? 0);
 
         if (Number.isNaN(total) || total <= clientWidth) {
             return Infinity;
         }
 
         while (maxIndex) {
-            total -= tabs[maxIndex].scrollWidth + margin;
+            total -= (tabs[maxIndex]?.scrollWidth || 0) + margin;
             maxIndex--;
 
             const activeDisplaced = exposeActive && activeItemIndex > maxIndex;

@@ -117,7 +117,10 @@ export class TuiPreviewComponent {
             return;
         }
 
-        const {width, height} = contentResizeEntries[0].contentRect;
+        const {width, height} = contentResizeEntries[0]?.contentRect ?? {
+            width: 0,
+            height: 0,
+        };
 
         this.refresh(width, height);
     }

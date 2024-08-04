@@ -93,8 +93,8 @@ export function replaceInputProperty({
     });
 
     propertyValues.forEach(([startOffset, endOffset]) => {
-        recorder.remove(startOffset, endOffset - startOffset);
-        recorder.insertRight(startOffset, newValue);
+        recorder.remove(startOffset || 0, (endOffset || 0) - (startOffset || 0));
+        recorder.insertRight(startOffset || 0, newValue);
     });
 
     return true;
@@ -229,6 +229,6 @@ export function removeInputProperty({
     ].map(([start, end]) => [templateOffset + start, templateOffset + end]);
 
     propertyOffsets.forEach(([start, end]) => {
-        recorder.remove(start, end - start);
+        recorder.remove(start ?? 0, (end ?? 0) - (start ?? 0));
     });
 }

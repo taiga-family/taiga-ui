@@ -2,7 +2,7 @@ import type {ObjectLiteralExpression} from 'ng-morph';
 import {Node} from 'ng-morph';
 
 export function pushToObjectArrayProperty(
-    objectExpression: ObjectLiteralExpression,
+    objectExpression: ObjectLiteralExpression | undefined,
     propertyName: string,
     initializer: string,
     {
@@ -12,8 +12,8 @@ export function pushToObjectArrayProperty(
     }: {forceToArray?: boolean; index?: number | null; unique?: boolean} = {},
 ): void {
     const property =
-        objectExpression.getProperty(propertyName) ??
-        objectExpression.addProperty(`${propertyName}: []`);
+        objectExpression?.getProperty(propertyName) ??
+        objectExpression?.addProperty(`${propertyName}: []`);
 
     if (!Node.isPropertyAssignment(property)) {
         return;

@@ -41,12 +41,12 @@ export class TuiZoomService extends Observable<TuiZoomEvent> {
                             ),
                             map(({event, delta}) => {
                                 const clientX =
-                                    (event.touches[0].clientX +
-                                        event.touches[1].clientX) /
+                                    ((event.touches.item(0)?.clientX || 0) +
+                                        (event.touches.item(0)?.clientX || 0)) /
                                     2;
                                 const clientY =
-                                    (event.touches[0].clientY +
-                                        event.touches[1].clientY) /
+                                    ((event.touches.item(0)?.clientY || 0) +
+                                        (event.touches.item(1)?.clientY || 0)) /
                                     2;
 
                                 return {clientX, clientY, delta, event};
