@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiRoot} from '@taiga-ui/core';
+import {tuiNumberFormatProvider, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputSliderComponent,
@@ -86,7 +86,10 @@ describe('InputSlider', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [
+                NG_EVENT_PLUGINS,
+                tuiNumberFormatProvider({decimalSeparator: ','}),
+            ],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

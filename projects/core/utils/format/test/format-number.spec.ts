@@ -30,15 +30,15 @@ describe('Number formatting', () => {
     });
 
     it('preserves the fractional part', () => {
-        expect(tuiFormatNumber(1.234)).toBe('1,234');
+        expect(tuiFormatNumber(1.234)).toBe('1.234');
     });
 
     it('finishes the fractional part with zeros to a given value', () => {
-        expect(tuiFormatNumber(123, {precision: 2})).toBe('123,00');
+        expect(tuiFormatNumber(123, {precision: 2})).toBe('123.00');
     });
 
     it('discards the extra fractional part', () => {
-        expect(tuiFormatNumber(1.234, {precision: 2})).toBe('1,23');
+        expect(tuiFormatNumber(1.234, {precision: 2})).toBe('1.23');
     });
 
     it('discards the fractional part altogether', () => {
@@ -83,7 +83,7 @@ describe('Number formatting', () => {
     });
 
     it('value with exponent and fractional part with and decimal bigger than precision', () => {
-        expect(tuiFormatNumber(1.23e-8, {precision: 12})).toBe('0,000000012300');
+        expect(tuiFormatNumber(1.23e-8, {precision: 12})).toBe('0.000000012300');
     });
 
     it('deletes trailing zeros when decimal mode is not-zero', () => {

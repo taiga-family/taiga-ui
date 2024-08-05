@@ -42,7 +42,10 @@ describe('InputNumber - backward compatibility for separators', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [
+                    NG_EVENT_PLUGINS,
+                    tuiNumberFormatProvider({decimalSeparator: ','}),
+                ],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
