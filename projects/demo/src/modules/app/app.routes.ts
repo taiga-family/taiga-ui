@@ -21,11 +21,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/browsers'),
     }),
     route({
-        path: DemoRoute.Changelog,
-        title: 'Changelog',
-        loadComponent: async () => import('../info/changelog'),
-    }),
-    route({
         path: DemoRoute.SSR,
         title: 'Server Side Rendering (SSR)',
         loadComponent: async () => import('../info/ssr'),

@@ -13,9 +13,6 @@
     "homepage": "https://github.com/taiga-family/taiga-ui",
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
-    "exports": {
-        "./styles/*": "./styles/*"
-    },
     "devDependencies": {
         "@types/markdown-it": "14.1.2"
     },
@@ -32,8 +29,6 @@
         "@taiga-ui/kit": "^4.0.0-rc.8",
         "@taiga-ui/polymorpheus": "^4.6.4",
         "markdown-it": ">=14.1.0",
-        "marked": ">=13.0.3",
-        "marked-gfm-heading-id": ">=4.0.0",
         "ngx-highlightjs": ">=10.0.0",
         "tslib": "^2.6.3"
     }
