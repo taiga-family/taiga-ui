@@ -191,9 +191,17 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="closeable"
             >
-                Show a cross to close dialog. Pass
-                <code tuiDocText="Observable<boolean>"></code>
-                if you want prevent closing, for example, with a confirmation prompt.
+                Show a cross to close dialog.
+
+                <p>
+                    Pass
+                    <code tuiDocText="Observable<boolean>"></code>
+                    if you want prevent closing, for example, with a confirmation prompt. Be careful, passing
+                    <code tuiDocText="Observable<boolean>"></code>
+                    will always display cross button even if it emits
+                    <code>false</code>
+                    value!
+                </p>
             </ng-template>
             <ng-template
                 documentationPropertyName="dismissible"
