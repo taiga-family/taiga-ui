@@ -21,7 +21,7 @@
         cursor: ew-resize;
     }
 
-    &:after {
+    &::after {
         content: '';
         position: absolute;
         top: -@extra-click-area-space;
@@ -41,7 +41,7 @@
     height: 100%;
 
     /* Filled selected range */
-    &:before {
+    &::before {
         content: '';
         position: absolute;
         top: 0;
@@ -53,7 +53,7 @@
     }
 
     /* Ticks */
-    &:after {
+    &::after {
         .fullsize(absolute, inset);
 
         content: '';

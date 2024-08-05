@@ -113,7 +113,7 @@
 }
 
 .thumb-overlay(@size) {
-    &:not(:disabled):before {
+    &:not(:disabled)::before {
         .transition(~'transform, opacity');
         .thumb-ghost(@size);
 
@@ -123,7 +123,7 @@
         opacity: 0;
     }
 
-    &:active:before {
+    &:active::before {
         opacity: 0.2;
         transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
     }

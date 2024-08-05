@@ -55,18 +55,18 @@
         margin-left: var(--tui-tab-margin, 1.5rem);
     }
 
-    &[tuiIcons]:before {
+    &[tuiIcons]::before {
         font-size: 1rem;
         margin-inline-end: 0.5rem;
     }
 
-    &[tuiIcons]:after {
+    &[tuiIcons]::after {
         font-size: 1rem;
         margin-inline-start: 0.5rem;
     }
 
-    &:empty:after,
-    &:empty:before {
+    &:empty::after,
+    &:empty::before {
         margin: 0.5rem;
     }
 
@@ -97,7 +97,7 @@ tui-tabs {
         height: var(--tui-height-m);
     }
 
-    &:before {
+    &::before {
         .transition(~'width, left');
 
         position: absolute;
@@ -109,7 +109,7 @@ tui-tabs {
         animation: tuiPresent 1ms;
     }
 
-    &._underline:before {
+    &._underline::before {
         content: '';
     }
 }
@@ -127,7 +127,7 @@ tui-tabs[data-vertical],
         text-align: left;
         padding: 0.25rem 1.25rem 0.25rem 0;
 
-        &:after {
+        &::after {
             .transition(transform);
 
             content: '';
@@ -147,7 +147,7 @@ tui-tabs[data-vertical],
             box-shadow: inset -2px 0 var(--tui-border-normal);
         }
 
-        &._active:after {
+        &._active::after {
             transform: none;
         }
     }
@@ -164,7 +164,7 @@ tui-tabs[data-vertical],
             text-align: right;
             padding: 0.25rem 0 0.25rem 1.25rem;
 
-            &:after {
+            &::after {
                 right: auto;
                 left: 0;
                 transform-origin: left;

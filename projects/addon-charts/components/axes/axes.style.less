@@ -34,7 +34,7 @@
 
     display: flex;
 
-    :host._centered &:after {
+    :host._centered &::after {
         content: '';
         display: block;
         flex: 1 0 1px;
@@ -125,7 +125,7 @@
     flex: 1;
     margin-bottom: 1.5625rem;
 
-    &:before {
+    &::before {
         content: '';
         display: block;
         height: 0.5625rem;

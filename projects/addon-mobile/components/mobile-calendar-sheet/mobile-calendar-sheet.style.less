@@ -41,30 +41,30 @@
         margin-right: 0;
     }
 
-    &:before {
+    &::before {
         // TODO: investigate problem in mobile calendar
         /* stylelint-disable-next-line */
         right: -100vw;
     }
 
-    &:first-child:before {
+    &:first-child::before {
         // TODO: investigate problem in mobile calendar
         /* stylelint-disable-next-line */
         left: -100vw;
     }
 
-    &_today:after {
+    &_today::after {
         height: 0.375rem;
         width: 0.375rem;
         background-color: @accent;
     }
 
     &_interval {
-        &:before {
+        &::before {
             background-color: @faded;
         }
 
-        &:last-child:first-child:before {
+        &:last-child:first-child::before {
             // TODO: investigate problem in mobile calendar
             /* stylelint-disable-next-line */
             right: -100vw;
@@ -83,7 +83,7 @@
         color: var(--tui-text-primary-on-accent-2);
         font-weight: 500;
 
-        &:after {
+        &::after {
             background-color: var(--tui-background-base);
         }
 
@@ -92,19 +92,19 @@
         }
     }
 
-    &[data-range='start']:before {
+    &[data-range='start']::before {
         left: 50%;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
 
-    &[data-range='end']:not(:first-child):before {
+    &[data-range='end']:not(:first-child)::before {
         left: 50%;
         background: var(--tui-background-base);
         border-radius: 0;
     }
 
-    &[data-range='end']:first-child:before {
+    &[data-range='end']:first-child::before {
         right: 50%;
         background-color: @faded;
     }
@@ -112,7 +112,7 @@
     :host._ios & {
         margin-right: 0.5625rem;
 
-        &:before {
+        &::before {
             border-radius: 0.5rem;
         }
     }

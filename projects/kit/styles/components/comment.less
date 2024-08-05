@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
 
-    &:before {
+    &::before {
         content: '';
         position: absolute;
         bottom: 100%;
@@ -39,7 +39,7 @@
     }
 
     &[data-direction='bottom'] {
-        &:before {
+        &::before {
             top: 100%;
             bottom: auto;
             transform: translate(-50%) rotate(180deg);
@@ -47,7 +47,7 @@
     }
 
     &[data-direction='left'] {
-        &:before {
+        &::before {
             left: auto;
             top: 50%;
             right: 100%;
@@ -56,7 +56,7 @@
     }
 
     &[data-direction='right'] {
-        &:before {
+        &::before {
             top: 50%;
             left: 100%;
             transform: translate(-0.785rem, -50%) rotate(90deg);

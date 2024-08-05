@@ -14,7 +14,7 @@
     appearance: none;
     border-radius: inherit;
 
-    &:after {
+    &::after {
         .transition(~'box-shadow, color');
         .fullsize(absolute, inset);
 
@@ -53,7 +53,7 @@
     color: var(--tui-text-primary);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
-    &:after {
+    &::after {
         .transition(color);
 
         color: var(--tui-border-normal);
@@ -112,8 +112,8 @@
     color: var(--tui-text-primary);
 
     /* stylelint-disable meowtec/no-px */
-    &:before,
-    &[data-appearance='table']:after {
+    &::before,
+    &[data-appearance='table']::after {
         position: fixed;
         top: -0.03125rem;
         left: -1px;
@@ -122,7 +122,7 @@
     }
     /* stylelint-enable meowtec/no-px */
 
-    &:before {
+    &::before {
         .transition(background);
 
         content: '';
@@ -132,7 +132,7 @@
         background-size: 0.5rem 0.5rem;
     }
 
-    table &[data-appearance='table']:not(._focused):after {
+    table &[data-appearance='table']:not(._focused)::after {
         border-width: 0;
     }
 
@@ -140,7 +140,7 @@
         z-index: 1;
     }
 
-    &[data-appearance='table']:after {
+    &[data-appearance='table']::after {
         border-width: 1px;
         color: var(--tui-border-normal);
     }
@@ -245,7 +245,7 @@ tui-input-tag:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appear
 }
 
 [tuiWrapper][data-appearance='none'] {
-    &:after {
+    &::after {
         border: none;
     }
 }

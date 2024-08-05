@@ -20,8 +20,8 @@
         line-height: 2rem;
         border-radius: var(--tui-radius-m);
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             .fullsize(absolute, inset);
 
             content: '';
@@ -29,7 +29,7 @@
             border-radius: var(--tui-radius-m);
         }
 
-        &:after {
+        &::after {
             border-radius: 0.5rem;
         }
     }
@@ -47,7 +47,7 @@
         box-sizing: border-box;
         border: 0.125rem solid transparent;
 
-        &:before {
+        &::before {
             content: '';
             position: absolute;
             top: 0;
@@ -58,7 +58,7 @@
             border-radius: var(--tui-radius-m);
         }
 
-        &_today:after {
+        &_today::after {
             .center-left();
 
             content: '';
@@ -70,7 +70,7 @@
         }
 
         &_interval {
-            &:before {
+            &::before {
                 background: var(--tui-background-base-alt);
 
                 :host._single & {
@@ -78,18 +78,18 @@
                 }
             }
 
-            &:not(:last-child):before {
+            &:not(:last-child)::before {
                 right: -0.1875rem;
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
 
-            &:not([data-range='start']):not(:first-child):before {
+            &:not([data-range='start']):not(:first-child)::before {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
             }
 
-            &:last-child:first-child:before {
+            &:last-child:first-child::before {
                 right: 0;
             }
 
@@ -109,32 +109,32 @@
         }
 
         &[data-range] {
-            &:after {
+            &::after {
                 background: var(--tui-text-primary-on-accent-1);
             }
 
             & > .t-item {
                 color: var(--tui-text-primary-on-accent-1);
 
-                &:before,
-                &:after {
+                &::before,
+                &::after {
                     background: var(--tui-background-accent-1);
                 }
             }
 
-            &:hover > .t-item:before,
-            &:hover > .t-item:after {
+            &:hover > .t-item::before,
+            &:hover > .t-item::after {
                 background: var(--tui-background-accent-1-hover);
             }
 
-            &:active > .t-item:before,
-            &:active > .t-item:after {
+            &:active > .t-item::before,
+            &:active > .t-item::after {
                 background: var(--tui-background-accent-1-pressed);
             }
         }
 
         &[data-range='end'] {
-            &:before {
+            &::before {
                 background: var(--tui-background-base-alt);
 
                 :host._single & {
@@ -142,20 +142,20 @@
                 }
             }
 
-            &:not(:first-child):before {
+            &:not(:first-child)::before {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
             }
         }
 
         &[data-range='end'] > .t-item {
-            &:before {
+            &::before {
                 left: 0.625rem;
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
             }
 
-            &:after {
+            &::after {
                 left: -2rem;
                 right: 100%;
                 transform: translateX(1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
@@ -163,20 +163,20 @@
         }
 
         &[data-range='start'] > .t-item {
-            &:before {
+            &::before {
                 right: 0.625rem;
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
 
-            &:after {
+            &::after {
                 left: 100%;
                 right: -2rem;
                 transform: translateX(-1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
             }
         }
 
-        &[data-range='single'] > .t-item:after {
+        &[data-range='single'] > .t-item::after {
             display: none;
         }
 

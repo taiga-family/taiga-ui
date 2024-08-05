@@ -5,7 +5,7 @@
     pointer-events: none;
     user-select: none;
 
-    &:after {
+    &::after {
         .fullsize();
 
         content: '';
@@ -14,25 +14,25 @@
         border-radius: var(--tui-skeleton-radius, 0);
     }
 
-    &_light:after {
+    &_light::after {
         background-color: fade(#fff, 24%);
     }
 
-    &_rounded:after {
+    &_rounded::after {
         border-radius: inherit;
     }
 
-    &_short:after {
+    &_short::after {
         width: 40%;
     }
 
-    &_center:after {
+    &_center::after {
         .center-left();
 
         width: 40%;
     }
 
-    &_text:before {
+    &_text::before {
         content: '\a0';
     }
 

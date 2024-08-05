@@ -25,7 +25,7 @@
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
     @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
-        &:before {
+        &::before {
             mix-blend-mode: multiply;
         }
     }
@@ -35,10 +35,10 @@ button[data-surface] {
     cursor: pointer;
 }
 
-[data-surface]:before,
-[data-surface]:after,
-[tuiSurfaceLayer]:before,
-[tuiSurfaceLayer]:after {
+[data-surface]::before,
+[data-surface]::after,
+[tuiSurfaceLayer]::before,
+[tuiSurfaceLayer]::after {
     .fullsize();
     .transition();
 

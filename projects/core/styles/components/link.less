@@ -31,16 +31,16 @@
         --tui-text-secondary: var(--tui-text-primary);
     }
 
-    &:before {
+    &::before {
         margin-inline-end: 0.25rem;
     }
 
-    &:after {
+    &::after {
         margin-inline-start: 0.25rem;
     }
 
-    &[tuiIcons]:before,
-    &[tuiIcons]:after {
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
         content: '\2060';
         padding: calc(var(--tui-icon-size, 1rem) / 2);
         vertical-align: super;

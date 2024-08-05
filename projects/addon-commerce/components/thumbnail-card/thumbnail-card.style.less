@@ -9,7 +9,7 @@
     transform-style: preserve-3d;
     overflow: hidden;
 
-    &:before {
+    &::before {
         .fullsize();
 
         content: '';
@@ -98,7 +98,7 @@
     right: 0;
     transform-origin: top right;
 
-    &:before {
+    &::before {
         content: '';
         .fullsize();
 
@@ -144,7 +144,7 @@
     background: #b0b0b0;
     border-radius: inherit;
 
-    &:after {
+    &::after {
         .fullsize(absolute, inset);
 
         content: '';
