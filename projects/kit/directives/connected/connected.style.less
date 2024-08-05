@@ -10,8 +10,8 @@
     [tuiStep] {
         padding-inline-start: inherit;
 
-        &:not(:first-of-type):before,
-        &:not(:last-of-type):after {
+        &:not(:first-of-type)::before,
+        &:not(:last-of-type)::after {
             content: '';
             position: absolute;
             left: calc(var(--t-image-size) / 2);
@@ -20,11 +20,11 @@
             background-color: var(--tui-border-normal);
         }
 
-        &:not(:first-of-type):before {
+        &:not(:first-of-type)::before {
             bottom: var(--t-vertical-offset);
         }
 
-        &:not(:last-of-type):after {
+        &:not(:last-of-type)::after {
             top: var(--t-vertical-offset);
         }
     }
