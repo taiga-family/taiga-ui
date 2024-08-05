@@ -47,7 +47,7 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
@@ -137,6 +137,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,
     });
+
     protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
     protected readonly months = Array.from(
         {length: RANGE * 12},
@@ -166,7 +167,9 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly cancel = new EventEmitter<void>();
 
     @Output()
-    public readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
+    public readonly confirm = new EventEmitter<
+        TuiDay | TuiDayRange | readonly TuiDay[]
+    >();
 
     @Output()
     public readonly valueChange = this.value$.pipe(
@@ -178,18 +181,9 @@ export class TuiMobileCalendar implements AfterViewInit {
     constructor() {
         inject(TUI_VALUE_STREAM)
             .pipe(takeUntilDestroyed())
-            .subscribe(value => {
+            .subscribe((value) => {
                 this.value = value;
             });
-    }
-
-    protected get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.value$.value;
-    }
-
-    @Input()
-    protected set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.value$.next(value);
     }
 
     public ngAfterViewInit(): void {
@@ -214,6 +208,15 @@ export class TuiMobileCalendar implements AfterViewInit {
             .subscribe(() => this.scrollToActiveMonth());
     }
 
+    @Input()
+    protected set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value$.next(value);
+    }
+
+    protected get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
     protected get yearWidth(): number {
         return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
     }
@@ -235,12 +238,14 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
             this.value = tuiToggleDay(this.value, day);
-        } else if (this.isSingleValue(this.value)) {
-            this.value = new TuiDayRange(day, day);
+        } else if (this.value instanceof TuiDay) {
+            this.value = TuiDayRange.sort(this.value, day);
+        } else if (this.value instanceof TuiDayRange && !this.value.isSingleDay) {
+            this.value = day;
         } else if (this.value instanceof TuiDayRange) {
             this.value = TuiDayRange.sort(this.value.from, day);
         } else if (!this.value) {
-            this.value = new TuiDayRange(day, day);
+            this.value = day;
         }
     }
 
@@ -277,7 +282,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => item =>
+    > = (disabledItemHandler, min, max) => (item) =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
@@ -322,10 +327,6 @@ export class TuiMobileCalendar implements AfterViewInit {
 
     private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
         return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
-    }
-
-    private isSingleValue(day: any): day is TuiDay {
-        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
     }
 
     private getYearsViewportSize(): number {
@@ -389,7 +390,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             .pipe(
                 // Ignore smooth scroll resulting from click on the exact year
                 windowToggle(touchstart$, () => click$),
-                mergeMap(x => x),
+                mergeMap((x) => x),
                 // Delay is required to run months scroll in the next frame to prevent flicker
                 delay(0),
                 map(
@@ -400,10 +401,10 @@ export class TuiMobileCalendar implements AfterViewInit {
                         Math.floor(YEARS_IN_ROW / 2) +
                         STARTING_YEAR,
                 ),
-                filter(activeYear => activeYear !== this.activeYear),
+                filter((activeYear) => activeYear !== this.activeYear),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(activeYear => {
+            .subscribe((activeYear) => {
                 this.activeMonth += this.getMonthOffset(activeYear);
                 this.activeYear = activeYear;
                 this.scrollToActiveMonth();

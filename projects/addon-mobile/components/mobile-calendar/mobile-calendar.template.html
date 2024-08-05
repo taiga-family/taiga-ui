@@ -70,7 +70,6 @@
 <cdk-virtual-scroll-viewport
     #monthsScrollRef
     class="t-months"
-    [class._without_header]="!chooseDayOrRangeTexts$"
     (scrolledIndexChange)="onMonthChange($event)"
 >
     <section
