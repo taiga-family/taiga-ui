@@ -3,18 +3,18 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TUI_AUTO_SCALE_OPTIONS, TuiAutoScale} from '@taiga-ui/kit';
+import {TUI_FLUID_TYPOGRAPHY_OPTIONS, TuiFluidTypography} from '@taiga-ui/kit';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTextfield, TuiAutoScale, FormsModule, TuiInputRangeModule],
+    imports: [TuiTextfield, TuiFluidTypography, FormsModule, TuiInputRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    private readonly options = inject(TUI_AUTO_SCALE_OPTIONS);
+    private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
     protected value = 'I am a very long value';
     protected range = signal([this.options.min * 16, this.options.max * 16]);

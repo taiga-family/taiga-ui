@@ -25,7 +25,7 @@ export const DemoRoute = {
     Amount: '/pipes/amount',
     Emails: '/pipes/emails',
     Appearance: '/directives/appearance',
-    AutoScale: '/directives/auto-scale',
+    FluidTypography: '/directives/fluid-typography',
     Chip: '/components/chip',
     Title: '/components/title',
     CardMedium: '/layout/card-medium',

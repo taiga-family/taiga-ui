@@ -145,9 +145,9 @@ export const ROUTES: Routes = [
         title: 'Appearance',
     }),
     route({
-        path: DemoRoute.AutoScale,
-        loadComponent: async () => import('../directives/auto-scale'),
-        title: 'AutoScale',
+        path: DemoRoute.FluidTypography,
+        loadComponent: async () => import('../directives/fluid-typography'),
+        title: 'FluidTypography',
     }),
     route({
         path: DemoRoute.Chip,

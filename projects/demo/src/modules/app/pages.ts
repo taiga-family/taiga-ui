@@ -1134,9 +1134,9 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'AutoScale',
+                title: 'FluidTypography',
                 keywords: 'font, scale, textfield, input, size, text',
-                route: DemoRoute.AutoScale,
+                route: DemoRoute.FluidTypography,
             },
             {
                 section: 'Tools',

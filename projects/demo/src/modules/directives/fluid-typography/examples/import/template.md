@@ -2,7 +2,7 @@
 <tui-textfield>
   <input
     tuiTextfield
-    tuiAutoScale
+    tuiFluidTypography
   />
 </tui-textfield>
 ```

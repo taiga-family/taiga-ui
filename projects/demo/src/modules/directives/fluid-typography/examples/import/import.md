@@ -1,7 +1,7 @@
 ```ts
 import {Component} from '@angular/core';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiAutoScale} from '@taiga-ui/kit';
+import {TuiFluidTypography} from '@taiga-ui/kit';
 // ...
 
 @Component({
@@ -9,7 +9,7 @@ import {TuiAutoScale} from '@taiga-ui/kit';
   imports: [
     // ...
     TuiTextfield,
-    TuiAutoScale,
+    TuiFluidTypography,
   ],
 })
 export class Example {}
