@@ -24,6 +24,18 @@
         .customize-scroll();
         overflow: overlay;
     }
+
+    .t-hover-mode:not(:active) {
+        .transition(opacity);
+
+        opacity: 0;
+    }
+
+    &:hover .t-hover-mode {
+        .transition(opacity);
+
+        opacity: 1;
+    }
 }
 
 .t-content {
