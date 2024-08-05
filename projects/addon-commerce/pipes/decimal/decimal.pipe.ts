@@ -8,11 +8,10 @@ import {map, switchMap} from 'rxjs';
 
 @Pipe({standalone: true, name: 'tuiDecimal'})
 export class TuiDecimalPipe implements PipeTransform {
-    private readonly injector = inject(INJECTOR);
     private readonly format = inject(TUI_NUMBER_FORMAT);
     private readonly amountPipe = Injector.create({
         providers: [{provide: TuiAmountPipe}],
-        parent: this.injector,
+        parent: inject(INJECTOR),
     }).get(TuiAmountPipe);
 
     public transform(

@@ -8,6 +8,7 @@ import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
 
 describe('InputRange', () => {
     @Component({
@@ -72,7 +73,10 @@ describe('InputRange', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [
+                NG_EVENT_PLUGINS,
+                tuiNumberFormatProvider({decimalSeparator: ','}),
+            ],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
