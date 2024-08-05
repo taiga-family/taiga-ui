@@ -31,8 +31,8 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, EMPTY, Observable, timer} from 'rxjs';
-import {map, startWith, takeUntil} from 'rxjs/operators';
+import {combineLatest, EMPTY, Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 import {
     TUI_INPUT_PASSWORD_OPTIONS,
@@ -128,23 +128,9 @@ export class TuiInputPasswordComponent
 
     togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
-
-        this.reuseCursorPosition();
     }
 
     protected getFallbackValue(): string {
         return '';
-    }
-
-    private reuseCursorPosition(): void {
-        const {selectionStart: start = 0, selectionEnd: end = 0} =
-            this.textfield?.nativeFocusableElement ?? {};
-
-        timer(0)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(
-                () =>
-                    this.textfield?.nativeFocusableElement?.setSelectionRange(start, end),
-            );
     }
 }
