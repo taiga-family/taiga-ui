@@ -168,4 +168,16 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiIllustrationsModule was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
     },
+    {
+        name: 'TuiIllustrationsPipe',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'TuiIllustrationsPipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
+    {
+        name: 'TuiIllustrationModePipe',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'TuiIllustrationModePipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
 ];

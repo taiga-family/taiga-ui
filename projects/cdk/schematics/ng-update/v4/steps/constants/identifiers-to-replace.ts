@@ -670,6 +670,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: {name: 'TuiHostedDropdownComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdownOpen', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiTitleModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiTitle', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -705,7 +709,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiFlagPipe', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
+        from: [
+            {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiSvgComponent', moduleSpecifier: '@taiga-ui/core'},
+        ],
         to: {name: 'TuiIcon', moduleSpecifier: '@taiga-ui/core'},
     },
     {
