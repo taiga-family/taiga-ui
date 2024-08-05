@@ -80,7 +80,7 @@ export class TuiBarChart {
     ): ReadonlyArray<readonly number[]> {
         return value.reduce<ReadonlyArray<readonly number[]>>(
             (result, next) =>
-                next.map((_, index) => [...(result[index] || []), next[index]]),
+                next.map((_, index) => [...(result[index] || []), next[index] || 0]),
             [],
         );
     }
@@ -91,7 +91,7 @@ export class TuiBarChart {
             ? Math.max(
                   // eslint-disable-next-line no-restricted-syntax
                   ...values.reduce((result, next) =>
-                      result.map((value, index) => value + next[index]),
+                      result.map((value, index) => value + (next[index] || 0)),
                   ),
               )
             : values.reduce((max, value) => Math.max(...value, max), 0);

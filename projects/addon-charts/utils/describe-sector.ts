@@ -11,7 +11,7 @@ const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
  * @param startAngle starting angle in degrees
  * @param endAngle ending angle in degrees
  */
-export function tuiDescribeSector(startAngle: number, endAngle: number): string {
+export function tuiDescribeSector(startAngle = 0, endAngle = 0): string {
     const startRad = tuiToRadians(startAngle);
     const endRad = tuiToRadians(endAngle);
     const startX = Math.cos(startRad) * 100;
