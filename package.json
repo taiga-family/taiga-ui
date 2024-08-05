@@ -164,15 +164,15 @@
         "types": [
             {
                 "type": "feat",
-                "section": "\uD83D\uDE80 Features"
+                "section": "🚀 Features"
             },
             {
                 "type": "fix",
-                "section": "\uD83D\uDC1E Bug Fixes"
+                "section": "🐞 Bug Fixes"
             },
             {
                 "type": "deprecate",
-                "section": "⚠\uFE0F Deprecations"
+                "section": "⚠️ Deprecations"
             }
         ]
     }
