@@ -36,6 +36,11 @@ const STYLES_BEFORE = `
     .tui-space(horizontal, -4);
     .text-body-m-bold(1);
 }
+
+.hack {
+    .tui-space(top, 0) !important;
+    .tui-space(horizontal, -4) !important;
+}
 `;
 
 const STYLES_AFTER = `
@@ -64,6 +69,12 @@ margin-bottom: 1rem;
     margin-left: -1rem;
 margin-right: -1rem;
     .text-body-m-bold(1); // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less
+}
+
+.hack {
+    margin-top: 0rem !important;
+    margin-left: -1rem !important;
+margin-right: -1rem !important;
 }
 `;
 
