@@ -12,6 +12,7 @@ import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
 import {TuiScrollControls} from './scroll-controls.component';
+import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 
 /**
  * An event for scrolling an element into view within {@link TuiScrollbar}.
@@ -42,6 +43,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 export class TuiScrollbar {
     private readonly el = tuiInjectElement();
 
+    protected readonly options = inject(TUI_SCROLLBAR_OPTIONS);
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly browserScrollRef = new ElementRef(this.el);
 
