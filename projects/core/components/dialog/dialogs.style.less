@@ -5,11 +5,12 @@
     .scrollbar-hidden();
 
     pointer-events: none;
-    overflow: auto;
+    overflow: hidden;
     overscroll-behavior: none;
 
     &:has(section) {
         pointer-events: auto;
+        overflow: auto;
     }
 
     &::before {
