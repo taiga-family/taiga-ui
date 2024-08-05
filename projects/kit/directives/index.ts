@@ -3,6 +3,7 @@ export * from '@taiga-ui/kit/directives/button-group';
 export * from '@taiga-ui/kit/directives/chevron';
 export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';
 export * from '@taiga-ui/kit/directives/fade';
+export * from '@taiga-ui/kit/directives/fluid-typography';
 export * from '@taiga-ui/kit/directives/highlight';
 export * from '@taiga-ui/kit/directives/lazy-loading';
 export * from '@taiga-ui/kit/directives/present';

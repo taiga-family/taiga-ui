@@ -140,6 +140,11 @@ export const ROUTES: Routes = [
         title: 'Appearance',
     }),
     route({
+        path: DemoRoute.FluidTypography,
+        loadComponent: async () => import('../directives/fluid-typography'),
+        title: 'FluidTypography',
+    }),
+    route({
         path: DemoRoute.Chip,
         loadComponent: async () => import('../components/chip'),
         title: 'Chip',

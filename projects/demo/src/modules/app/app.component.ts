@@ -11,7 +11,7 @@ import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
-import {CustomHost} from '../customization/portals/examples/1/portal/custom-host.component';
+import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
 import {VersionManager} from './version-manager/version-manager.component';
