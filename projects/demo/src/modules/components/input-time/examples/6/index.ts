@@ -1,4 +1,4 @@
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,7 +6,6 @@ import {TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
 import {TUI_TIME_VALUE_TRANSFORMER, tuiCreateTimePeriods} from '@taiga-ui/kit';
 import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
-@Injectable()
 class ExampleTimeTransformer extends TuiValueTransformer<TuiTime | null, string | null> {
     public fromControlValue(controlValue: string): TuiTime | null {
         return controlValue ? TuiTime.fromString(controlValue) : null;
