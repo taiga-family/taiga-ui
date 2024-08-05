@@ -1,4 +1,5 @@
 export * from './calendar.po';
+export * from './calendar-range.po';
 export * from './documentation-page.po';
 export * from './input-card.po';
 export * from './input-card-grouped.po';
