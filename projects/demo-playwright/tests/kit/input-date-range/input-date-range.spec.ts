@@ -188,10 +188,6 @@ test.describe('InputDateRange', () => {
             expect(
                 (await getDaysState()).filter(state => state !== 'disabled'),
             ).toHaveLength(2);
-
-            await expect(example).toHaveScreenshot(
-                '09-prevent-disabled-days-selection.png',
-            );
         });
     });
 

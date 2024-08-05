@@ -243,22 +243,26 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         value: TuiDayRange | null,
         item: TuiDay,
     ): boolean {
-        if (disabledItemHandler(item)) {
-            return true;
-        }
+        return (
+            disabledItemHandler(item) ||
+            (!!value?.isSingleDay &&
+                this.isExternalDaysDisabled(disabledItemHandler, value.from, item))
+        );
+    }
 
-        if (!value || !value.isSingleDay) {
-            return false;
-        }
-
+    private isExternalDaysDisabled(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        startDay: TuiDay,
+        item: TuiDay,
+    ): boolean {
         let temp = item;
 
-        while (temp.dayBefore(value.from) || temp.dayAfter(value.from)) {
+        while (temp.dayBefore(startDay) || temp.dayAfter(startDay)) {
             if (disabledItemHandler(temp)) {
                 return true;
             }
 
-            const day = temp.dayBefore(value.from) ? 1 : -1;
+            const day = temp.dayBefore(startDay) ? 1 : -1;
 
             temp = temp.append({day});
         }
