@@ -5,10 +5,10 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
 
 describe('InputRange', () => {
     @Component({
