@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {TuiStaticRequestService} from '@taiga-ui/cdk';
+import {TuiStaticRequestService} from '@taiga-ui/legacy';
 
 describe('TuiStaticRequestService', () => {
     let service: TuiStaticRequestService;

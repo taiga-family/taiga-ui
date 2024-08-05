@@ -2582,4 +2582,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'MaskitoModule', moduleSpecifier: '@maskito/angular'},
         to: {name: 'MaskitoDirective', moduleSpecifier: '@maskito/angular'},
     },
+    {
+        from: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/legacy'},
+    },
 ];
