@@ -48,6 +48,7 @@
                     <div
                         class="t-tags"
                         [class.t-tags_empty]="(!focused || inputHidden) && !value.length && !search?.trim()?.length"
+                        [class.t-with-placeholder]="placeholder"
                     >
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
