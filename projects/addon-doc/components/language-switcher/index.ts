@@ -33,6 +33,7 @@ export class TuiDocLanguageSwitcher {
         ['english', 'GB'],
         ['french', 'FR'],
         ['german', 'DE'],
+        ['hebrew', 'IL'],
         ['italian', 'IT'],
         ['kazakh', 'KZ'],
         ['malay', 'MY'],
