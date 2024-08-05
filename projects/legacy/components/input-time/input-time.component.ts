@@ -121,6 +121,12 @@ export class TuiInputTimeComponent
         controlValue instanceof TuiTime &&
         controlValue.valueOf() === dropdownValue.valueOf();
 
+    public checkOption(option: TuiTime): void {
+        if (option.valueOf() === this.value?.valueOf()) {
+            this.value = option;
+        }
+    }
+
     public handleOption(item: TuiTime): void {
         this.focusInput();
         this.value = item;

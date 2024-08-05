@@ -69,5 +69,5 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public override cleaner = false;
 
-    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
+    public control = new FormControl(new TuiTime(15, 30), Validators.required);
 }
