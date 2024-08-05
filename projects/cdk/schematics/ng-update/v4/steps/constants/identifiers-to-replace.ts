@@ -2593,4 +2593,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/legacy'},
     },
+    {
+        from: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/addon-doc'},
+    },
 ];

@@ -35,6 +35,12 @@ export const TYPES_TO_RENAME: readonly ReplacementType[] = [
         removeImport: true,
     },
     {
+        from: 'TuiMarkerIconMode',
+        moduleSpecifier: ['@taiga-ui/kit'],
+        to: 'string',
+        removeImport: true,
+    },
+    {
         from: 'TuiOperationIcon',
         moduleSpecifier: ['@taiga-ui/proprietary-banking'],
         to: 'TuiFeedItemIcon',
