@@ -255,6 +255,12 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
+    checkOption(option: TuiTime): void {
+        if (option.toAbsoluteMilliseconds() === this.value?.toAbsoluteMilliseconds()) {
+            this.value = option;
+        }
+    }
+
     handleOption(item: TuiTime): void {
         this.focusInput();
         this.value = item;
