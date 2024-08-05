@@ -1,5 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {OnChanges} from '@angular/core';
+import type {OnChanges, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -42,7 +42,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarRange implements OnChanges {
+export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
@@ -92,6 +92,12 @@ export class TuiCalendarRange implements OnChanges {
 
     public ngOnChanges(): void {
         this.defaultViewedMonth = this.value?.from || this.defaultViewedMonth;
+    }
+
+    public ngOnInit(): void {
+        if (!this.value) {
+            this.updateDefaultViewedMonth();
+        }
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
@@ -210,5 +216,15 @@ export class TuiCalendarRange implements OnChanges {
 
             return inDisabledRange || disabledItemHandler(item);
         };
+    }
+
+    private updateDefaultViewedMonth(): void {
+        if (this.max && this.defaultViewedMonth.monthSameOrAfter(this.max)) {
+            this.defaultViewedMonth = this.max.append({month: -1});
+        }
+
+        if (this.min && this.defaultViewedMonth.monthSameOrBefore(this.min)) {
+            this.defaultViewedMonth = this.min;
+        }
     }
 }
