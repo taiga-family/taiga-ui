@@ -13,7 +13,7 @@ export interface TuiAmountOptions {
 
 export const TUI_AMOUNT_DEFAULT_OPTIONS: TuiAmountOptions = {
     currency: null,
-    currencyAlign: 'right',
+    currencyAlign: 'left',
     sign: 'negative-only',
 };
 

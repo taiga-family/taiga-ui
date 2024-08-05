@@ -6,23 +6,18 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs';
 
-import {TUI_DECIMAL_OPTIONS} from './decimal.options';
-
 @Pipe({standalone: true, name: 'tuiDecimal'})
 export class TuiDecimalPipe implements PipeTransform {
     private readonly injector = inject(INJECTOR);
-    private readonly localInjector = Injector.create({
+    private readonly format = inject(TUI_NUMBER_FORMAT);
+    private readonly amountPipe = Injector.create({
         providers: [{provide: TuiAmountPipe}],
         parent: this.injector,
-    });
-
-    private readonly options = inject(TUI_DECIMAL_OPTIONS);
-    private readonly format = inject(TUI_NUMBER_FORMAT);
-    private readonly amountPipe = this.localInjector.get(TuiAmountPipe);
+    }).get(TuiAmountPipe);
 
     public transform(
         value: number,
-        currency: TuiCurrencyVariants = this.options.currency,
+        currency: TuiCurrencyVariants = '',
     ): Observable<string> {
         return this.format.pipe(
             switchMap((format) =>
