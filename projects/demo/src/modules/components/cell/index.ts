@@ -22,5 +22,6 @@ export default class Example {
         'Long content',
         'Actions',
         'Combinations',
+        'Connected',
     ];
 }
