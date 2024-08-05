@@ -97,7 +97,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     onClick(): void {
         if (this.host && this.value !== undefined) {
             this.host.handleOption(this.value);
-            this.el.nativeElement.focus();
         }
     }
 
