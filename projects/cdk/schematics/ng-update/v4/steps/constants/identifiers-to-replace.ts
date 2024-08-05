@@ -82,7 +82,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiNotificationModule', moduleSpecifier: '@taiga-ui/core'},
+        from: [
+            {name: 'TuiNotificationComponent', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiNotificationModule', moduleSpecifier: '@taiga-ui/core'},
+        ],
         to: {name: 'TuiNotification', moduleSpecifier: '@taiga-ui/core'},
     },
     {
@@ -493,7 +496,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
     },
     {
-        from: {name: 'TuiGroupModule', moduleSpecifier: '@taiga-ui/core'},
+        from: [
+            {name: 'TuiGroupModule', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiGroupDirective', moduleSpecifier: '@taiga-ui/core'},
+        ],
         to: {name: 'TuiGroup', moduleSpecifier: '@taiga-ui/core'},
     },
     {
@@ -728,7 +734,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         ],
     },
     {
-        from: {name: 'TuiMarkerIconModule', moduleSpecifier: '@taiga-ui/kit'},
+        from: [
+            {name: 'TuiMarkerIconModule', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiMarkerIconComponent', moduleSpecifier: '@taiga-ui/kit'},
+        ],
         to: {name: 'TuiAvatar', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
@@ -1158,10 +1167,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
-        from: {
-            name: 'TuiTableBarsHostModule',
-            moduleSpecifier: '@taiga-ui/addon-tablebars',
-        },
+        from: [
+            {
+                name: 'TuiTableBarsHostModule',
+                moduleSpecifier: '@taiga-ui/addon-tablebars',
+            },
+            {
+                name: 'TuiTableBarsHostComponent',
+                moduleSpecifier: '@taiga-ui/addon-tablebars',
+            },
+        ],
         to: {
             name: 'TuiTableBarsHostComponent',
             moduleSpecifier: '@taiga-ui/legacy',
@@ -1229,10 +1244,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
-        from: {
-            name: 'TuiAppBarModule',
-            moduleSpecifier: '@taiga-ui/layout',
-        },
+        from: [
+            {
+                name: 'TuiAppBarModule',
+                moduleSpecifier: '@taiga-ui/addon-mobile',
+            },
+            {
+                name: 'TuiAppBarModule',
+                moduleSpecifier: '@taiga-ui/layout',
+            },
+        ],
         to: {
             name: 'TuiAppBar',
             moduleSpecifier: '@taiga-ui/layout',
@@ -1437,10 +1458,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
-        from: {
-            name: 'TuiErrorModule',
-            moduleSpecifier: '@taiga-ui/core',
-        },
+        from: [
+            {
+                name: 'TuiErrorModule',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+            {
+                name: 'TuiErrorComponent',
+                moduleSpecifier: '@taiga-ui/core',
+            },
+        ],
         to: {
             name: 'TuiError',
             moduleSpecifier: '@taiga-ui/core',
