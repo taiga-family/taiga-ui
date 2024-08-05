@@ -30,6 +30,8 @@
     </section>
 </div>
 <div class="t-filler"></div>
+
+<!-- Close button is insensitive to `context.closeable === Observable<false>` by design -->
 <div
     *ngIf="context.closeable"
     class="t-wrapper"
