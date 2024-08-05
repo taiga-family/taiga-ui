@@ -54,13 +54,13 @@ test.describe('InputDateTime', () => {
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
             await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.11.2018, 16:2|0|
-            await inputDateTime.textfield.type('5');
+            await inputDateTime.textfield.pressSequentially('5');
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
             // valid case
             await inputDateTime.textfield.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2018, 16|:20
             await inputDateTime.textfield.press('Shift+ArrowLeft');
-            await inputDateTime.textfield.type('2');
+            await inputDateTime.textfield.pressSequentially('2');
             await expect(inputDateTime.textfield).toHaveValue('02.11.2018, 12:20');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -73,7 +73,7 @@ test.describe('InputDateTime', () => {
 
             // invalid case
             await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|2:|20
-            await inputDateTime.textfield.type('9');
+            await inputDateTime.textfield.pressSequentially('9');
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
         });
 
@@ -126,7 +126,7 @@ test.describe('InputDateTime', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
 
-            await inputDateTime.textfield.type('191120181235');
+            await inputDateTime.textfield.pressSequentially('191120181235');
             await expect(inputDateTime.textfield).toHaveValue('19.11.2018, 12:35');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -199,7 +199,7 @@ test.describe('InputDateTime', () => {
             });
 
             test('does not accept day > 31', async () => {
-                await inputDateTime.textfield.type('32');
+                await inputDateTime.textfield.pressSequentially('32');
                 await expect(inputDateTime.textfield).toHaveValue('3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -209,7 +209,7 @@ test.describe('InputDateTime', () => {
             });
 
             test('does not accept month > 12', async () => {
-                await inputDateTime.textfield.type('2413');
+                await inputDateTime.textfield.pressSequentially('2413');
                 await expect(inputDateTime.textfield).toHaveValue('24.1');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -239,7 +239,7 @@ test.describe('InputDateTime', () => {
             });
 
             test('does not accept day > 31', async () => {
-                await inputDateTime.textfield.type('2023/05/35');
+                await inputDateTime.textfield.pressSequentially('2023/05/35');
                 await expect(inputDateTime.textfield).toHaveValue('2023/05/3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -252,7 +252,7 @@ test.describe('InputDateTime', () => {
             });
 
             test('does not accept month > 12', async () => {
-                await inputDateTime.textfield.type('2023/13');
+                await inputDateTime.textfield.pressSequentially('2023/13');
                 await expect(inputDateTime.textfield).toHaveValue('2023/1');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
