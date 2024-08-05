@@ -256,7 +256,7 @@ export class TuiInputTimeComponent
     }
 
     checkOption(option: TuiTime): void {
-        if (option.toAbsoluteMilliseconds() === this.value?.toAbsoluteMilliseconds()) {
+        if (option.valueOf() === this.value?.valueOf()) {
             this.value = option;
         }
     }
