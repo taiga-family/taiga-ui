@@ -47,17 +47,20 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
-} from '@taiga-ui/kit/tokens';
+} from '@taiga-ui/kit';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
+    BehaviorSubject,
     debounceTime,
     delay,
+    distinctUntilChanged,
     filter,
     identity,
     map,
     mergeMap,
     race,
+    skip,
     switchMap,
     take,
     takeUntil,
@@ -111,6 +114,10 @@ export class TuiMobileCalendar implements AfterViewInit {
     @ViewChild('monthsScrollRef')
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
+    private readonly value$ = new BehaviorSubject<
+        TuiDay | TuiDayRange | readonly TuiDay[] | null
+    >(null);
+
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
@@ -120,7 +127,6 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly ngZone = inject(NgZone);
 
     protected initialized = false;
-    protected value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -160,9 +166,14 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly cancel = new EventEmitter<void>();
 
     @Output()
-    public readonly confirm = new EventEmitter<
-        TuiDay | TuiDayRange | readonly TuiDay[]
-    >();
+    public readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
+
+    @Output()
+    public readonly valueChange = this.value$.pipe(
+        skip(1),
+        distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
+        takeUntilDestroyed(),
+    );
 
     constructor() {
         inject(TUI_VALUE_STREAM)
@@ -170,6 +181,15 @@ export class TuiMobileCalendar implements AfterViewInit {
             .subscribe(value => {
                 this.value = value;
             });
+    }
+
+    protected get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
+    @Input()
+    protected set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value$.next(value);
     }
 
     public ngAfterViewInit(): void {
