@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[81498],{81498:e=>{e.exports=":host {\n    font: var(--tui-font-text-l);\n}\n"}}]);
