@@ -47,10 +47,11 @@ Read more about Taiga UI main features in [this article](https://indepth.dev/pos
 
 ## Version compatibility
 
-| Taiga UI | Angular              | Supported           | Latest version (npm)                                                                        |
-| -------- | -------------------- | ------------------- | ------------------------------------------------------------------------------------------- |
-| `3.x.y`  | `^12.0.0` - `latest` | ✅ Current          | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk?label=%40taiga-ui%2Fcdk%20~%20v3) |
-| `2.x.y`  | `^9.0.0` - `^15.0.0` | No longer supported | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)   |
+| Taiga UI | Angular              | Supported               | Latest version (npm)                                                                             |
+| -------- | -------------------- | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| `4.x.y`  | `^16.0.0` - `latest` | ✅ Current              | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk/next?label=%40taiga-ui%2Fcdk%20~%20v4) |
+| `3.x.y`  | `^12.0.0` - `latest` | Long-term support (LTS) | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk?label=%40taiga-ui%2Fcdk%20~%20v3)      |
+| `2.x.y`  | `^9.0.0` - `^15.0.0` | No longer supported     | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)        |
 
 ## How to start
 
