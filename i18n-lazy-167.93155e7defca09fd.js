@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42499],{4688:(e,s,a)=>{a.r(s),a.d(s,{TUI_KAZAKH_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Көрсету/Жасыру",paginationTexts:{pages:"Беттер",linesPerPage:"Әр беттегі жолдар",of:"ның"}}}}]);
