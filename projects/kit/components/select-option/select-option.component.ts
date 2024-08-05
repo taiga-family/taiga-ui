@@ -79,7 +79,6 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         void Promise.resolve().then(() => {
             if (tuiIsPresent(this.option.value) && !this.option.disabled) {
                 this.host.checkOption?.(this.option.value);
-                this.el.nativeElement.focus();
             }
         });
     }
