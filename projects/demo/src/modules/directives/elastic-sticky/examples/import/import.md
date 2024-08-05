@@ -1,5 +1,5 @@
 ```ts
-import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
+import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {TuiScrollbar} from '@taiga-ui/core';
 
 // ...
@@ -9,7 +9,7 @@ import {TuiScrollbar} from '@taiga-ui/core';
   imports: [
     // ...
     TuiScrollbar,
-    TuiElasticStickyModule,
+    TuiElasticSticky,
   ],
   // ...
 })
