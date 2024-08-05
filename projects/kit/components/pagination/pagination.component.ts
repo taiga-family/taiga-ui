@@ -267,11 +267,7 @@ export class TuiPagination {
 
     private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
-            tuiClamp(
-                this.index + tuiHorizontalDirectionToNumber(direction),
-                0,
-                this.lastIndex,
-            ),
+            tuiClamp(this.index + (direction === 'right' ? -1 : 1), 0, this.lastIndex),
         );
     }
 
@@ -290,14 +286,5 @@ export class TuiPagination {
 
         this.index = index;
         this.indexChange.emit(index);
-    }
-}
-
-function tuiHorizontalDirectionToNumber(direction: TuiHorizontalDirection): -1 | 1 {
-    switch (direction) {
-        case 'left':
-            return -1;
-        case 'right':
-            return 1;
     }
 }
