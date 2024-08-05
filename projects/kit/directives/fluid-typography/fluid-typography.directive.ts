@@ -17,7 +17,6 @@ const STEP = 1 / 16;
 @Directive({
     standalone: true,
     selector: '[tuiFluidTypography]',
-    host: {tuiFluidTypography: ''},
     providers: [
         ResizeObserverService,
         MutationObserverService,
@@ -26,6 +25,7 @@ const STEP = 1 / 16;
             useValue: {characterData: true, subtree: true},
         },
     ],
+    host: {tuiFluidTypography: ''},
 })
 export class TuiFluidTypography implements OnChanges {
     // TODO: refactor to signal inputs after Angular update
