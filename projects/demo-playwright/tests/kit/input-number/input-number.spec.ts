@@ -361,12 +361,12 @@ test.describe('InputNumber', () => {
                 '/components/input-number/API?precision=2&decimalMode=not-zero',
             );
 
-            await input.fill('42,1');
-            await expect(input).toHaveValue('42,1');
+            await input.fill('42.1');
+            await expect(input).toHaveValue('42.1');
             await expect(input).toHaveJSProperty('selectionStart', 4);
             await expect(input).toHaveJSProperty('selectionEnd', 4);
             await input.blur();
-            await expect(input).toHaveValue('42,1');
+            await expect(input).toHaveValue('42.1');
             await expect(example).toHaveScreenshot('27-input-number.png');
         });
 
@@ -376,12 +376,12 @@ test.describe('InputNumber', () => {
                 '/components/input-number/API?precision=2&decimalMode=pad',
             );
 
-            await input.fill('42,1');
-            await expect(input).toHaveValue('42,1');
+            await input.fill('42.1');
+            await expect(input).toHaveValue('42.1');
             await expect(input).toHaveJSProperty('selectionStart', 4);
             await expect(input).toHaveJSProperty('selectionEnd', 4);
             await input.blur();
-            await expect(input).toHaveValue('42,10');
+            await expect(input).toHaveValue('42.10');
             await expect(example).toHaveScreenshot('28-input-number.png');
         });
 
@@ -391,7 +391,7 @@ test.describe('InputNumber', () => {
                 '/components/input-number/API?precision=2&decimalMode=not-zero',
             );
 
-            await input.fill('42,00');
+            await input.fill('42.00');
             await expect(input).toHaveJSProperty('selectionStart', 5);
             await expect(input).toHaveJSProperty('selectionEnd', 5);
             await expect(example).toHaveScreenshot('29-input-number.png');
@@ -400,7 +400,7 @@ test.describe('InputNumber', () => {
         test('Value 42,1 (precision=0) => 42', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=0`);
 
-            await input.fill('42,1');
+            await input.fill('42.1');
             await expect(input).toHaveValue('42');
             await expect(example).toHaveScreenshot('30-input-number.png');
         });
@@ -411,7 +411,7 @@ test.describe('InputNumber', () => {
                 '/components/input-number/API?precision=2&decimalMode=always',
             );
             await input.fill('42');
-            await expect(input).toHaveValue('42,00');
+            await expect(input).toHaveValue('42.00');
             await expect(input).toHaveJSProperty('selectionStart', 2);
             await expect(input).toHaveJSProperty('selectionEnd', 2);
             await expect(example).toHaveScreenshot('31-input-number.png');

@@ -123,12 +123,12 @@ test.describe('InputRange', () => {
 
         const testsConditions = [
             {typedValue: '9', expectedRoundedValue: '10'},
-            {typedValue: '8', expectedRoundedValue: '7,5'},
-            {typedValue: '7,6', expectedRoundedValue: '7,5'},
-            {typedValue: '7.4', expectedRoundedValue: '7,5'},
-            {typedValue: '7', expectedRoundedValue: '7,5'},
+            {typedValue: '8', expectedRoundedValue: '7.5'},
+            {typedValue: '7,6', expectedRoundedValue: '7.5'},
+            {typedValue: '7.4', expectedRoundedValue: '7.5'},
+            {typedValue: '7', expectedRoundedValue: '7.5'},
             {typedValue: '6', expectedRoundedValue: '5'},
-            {typedValue: '3.2', expectedRoundedValue: '2,5'},
+            {typedValue: '3.2', expectedRoundedValue: '2.5'},
             {typedValue: '1', expectedRoundedValue: '0'},
             {typedValue: '0.1', expectedRoundedValue: '0'},
         ] as const;
