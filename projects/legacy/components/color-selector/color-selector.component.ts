@@ -66,14 +66,14 @@ const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> =
 ];
 
 const ICONS: Record<TuiGradientDirection, string> = {
-    'to top right': 'tuiIconArrowUpRight',
-    'to right': 'tuiIconArrowRight',
-    'to bottom right': 'tuiIconArrowDownRight',
-    'to bottom': 'tuiIconArrowDown',
-    'to bottom left': 'tuiIconArrowDownLeft',
-    'to left': 'tuiIconArrowLeft',
-    'to top left': 'tuiIconArrowUpLeft',
-    'to top': 'tuiIconArrowUp',
+    'to top right': '@tui.move-up-right',
+    'to right': '@tui.move-right',
+    'to bottom right': '@tui.move-down-right',
+    'to bottom': '@tui.move-down',
+    'to bottom left': '@tui.move-down-left',
+    'to left': '@tui.move-left',
+    'to top left': '@tui.move-up-left',
+    'to top': '@tui.move-up',
 };
 
 /**
@@ -90,6 +90,7 @@ export class TuiColorSelectorComponent {
     private currentStop = 0;
     private direction: TuiGradientDirection = 'to bottom';
     private readonly sanitizer = inject(DomSanitizer);
+    protected open = false;
 
     @Input()
     public colors: ReadonlyMap<string, string> = new Map<string, string>();
@@ -162,6 +163,7 @@ export class TuiColorSelectorComponent {
 
     public onModeSelect(mode: string): void {
         this.currentMode = mode;
+        this.open = false;
 
         this.updateColor(
             mode === this.modes[0]
