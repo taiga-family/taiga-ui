@@ -7,6 +7,7 @@ import {TuiIcon} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/legacy';
 import {TuiTagModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
@@ -55,6 +56,8 @@ export default class Page {
     protected readonly leftContentVariants = ['', 'Error icon'];
 
     protected leftContentSelected = '';
+
+    protected readonly routes = DemoRoute;
 
     protected get leftContent(): PolymorpheusContent {
         return this.leftContentSelected && this.errorTemplate;
