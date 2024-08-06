@@ -1,12 +1,12 @@
 const MAPPING = {
-    'shadow()': 'var(--tui-shadow)',
-    'shadow(1)': 'var(--tui-shadow)',
-    'shadow(2)': 'var(--tui-shadow-dropdown)',
-    'shadow(3)': 'var(--tui-shadow-modal)',
-    'shadow(4)': 'var(--tui-shadow-sidebar)',
-    'shadow(5)': 'var(--tui-shadow-hover)',
-    'shadow(6)': 'var(--tui-shadow-navigation)',
-    'shadow(7)': 'var(--tui-shadow-sheet)',
+    'shadow()': 'var(--tui-shadow-small)',
+    'shadow(1)': 'var(--tui-shadow-small)',
+    'shadow(2)': 'var(--tui-shadow-medium)',
+    'shadow(3)': 'var(--tui-shadow-popup)',
+    'shadow(4)': 'var(--tui-shadow-medium)',
+    'shadow(5)': 'var(--tui-shadow-small-hover)',
+    'shadow(6)': 'var(--tui-shadow-small)',
+    'shadow(7)': 'var(--tui-shadow-popup)',
 };
 
 // .shadow(2);
