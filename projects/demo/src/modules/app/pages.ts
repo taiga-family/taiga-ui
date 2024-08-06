@@ -34,7 +34,8 @@ export const pages: TuiDocRoutePages = [
         title: 'Documentation engine',
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
-        route: DemoRoute.AddonDoc,
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
+        target: '_blank',
     },
     {
         section: 'Documentation',

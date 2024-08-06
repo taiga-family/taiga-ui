@@ -26,11 +26,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/ssr'),
     }),
     route({
-        path: DemoRoute.AddonDoc,
-        title: 'Documentation engine',
-        loadComponent: async () => import('../info/doc'),
-    }),
-    route({
         path: DemoRoute.Related,
         title: 'Taiga UI family',
         loadComponent: async () => import('../info/related'),
