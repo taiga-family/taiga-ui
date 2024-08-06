@@ -2,6 +2,7 @@
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
 import {migrateLessSCSSConstants} from './migrate-less-scss-constants';
+import {migrateScrollbarBehavior} from './migrate-scrollbar-behavior';
 import {migrateShadowMixins} from './migrate-shadow-mixins';
 import {migrateSpaceMixins} from './migrate-space-mixins';
 import {migrateTextMixins} from './migrate-text-mixins';
@@ -47,6 +48,7 @@ export function migrateStyles(): void {
                 migrateTextMixins,
                 migrateShadowMixins,
                 migrateLessSCSSConstants,
+                migrateScrollbarBehavior,
             ].reduce((text, migrate) => migrate(text), fullText);
 
             sourceFile.replaceWithText(newFileContent);

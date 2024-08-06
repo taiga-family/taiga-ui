@@ -15,9 +15,10 @@
 
 .vertical,
 .horizontal {
-    .scroll-behavior();
     .transition(~'box-shadow, background');
+
     position: relative;
+    scroll-behavior: var(--tui-scroll-behavior);
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
