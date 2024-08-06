@@ -5,12 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiRatingComponent} from '@taiga-ui/kit';
+import {TuiRating} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiRatingComponent, FormsModule, NgFor, NgIf, TuiButton],
+    imports: [TuiRating, FormsModule, NgFor, NgIf, TuiButton],
     templateUrl: 'index.html',
     styleUrls: ['index.less'],
     encapsulation,
