@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.89.0](https://github.com/taiga-family/taiga-ui/compare/v3.88.0...v3.89.0) (2024-08-06)
+
+### Features
+
+- **core:** add `mode` for `tui-scrollbar` ([#8340](https://github.com/taiga-family/taiga-ui/issues/8340))
+  ([fc78143](https://github.com/taiga-family/taiga-ui/commit/fc78143b19b41c542132a13f9a8e37b4270f2dd7))
+- **i18n:** add hebrew ([#8241](https://github.com/taiga-family/taiga-ui/issues/8241))
+  ([1e1c574](https://github.com/taiga-family/taiga-ui/commit/1e1c574c5878c9ca07c2217f16bad0e5c13e01be))
+
+### Bug Fixes
+
+- **addon-mobile:** fix mobile-calendar size without header
+  ([#8296](https://github.com/taiga-family/taiga-ui/issues/8296))
+  ([75bb445](https://github.com/taiga-family/taiga-ui/commit/75bb4454d8eb8f566e46452656e6452d979d8b37))
+- **core:** ios menu is not triggered ([#8345](https://github.com/taiga-family/taiga-ui/issues/8345))
+  ([0476a72](https://github.com/taiga-family/taiga-ui/commit/0476a72763d8dccb09559e64923a1e79f3274531))
+- **kit:** correct present of control value from items list for input-time
+  ([#8249](https://github.com/taiga-family/taiga-ui/issues/8249))
+  ([e890e6b](https://github.com/taiga-family/taiga-ui/commit/e890e6b696e72f19d9864bd0229a98645d4ea544))
+- **kit:** fix `CalendarRange` switch month with maxLength
+  ([07a99ce](https://github.com/taiga-family/taiga-ui/commit/07a99ce56a45c7fb5364d628bcbf4105085fc025))
+- **kit:** fix `CalendarRange` switch month with maxLength
+  ([#8307](https://github.com/taiga-family/taiga-ui/issues/8307))
+  ([68f28f6](https://github.com/taiga-family/taiga-ui/commit/68f28f6f005fa9856177ca7bc45b82bad3755ec2))
+- **kit:** placeholder in multiselect disappears while hovering options
+  ([#8253](https://github.com/taiga-family/taiga-ui/issues/8253))
+  ([58763ff](https://github.com/taiga-family/taiga-ui/commit/58763ffddaf0b220beb55d2adbc06fbcdd0b724d))
+- **kit:** reuse cursor position after showing password ([#8188](https://github.com/taiga-family/taiga-ui/issues/8188))
+  ([864e50e](https://github.com/taiga-family/taiga-ui/commit/864e50e5b3f37421114202219edff67edbc07251))
+
 ## [3.88.0](https://github.com/taiga-family/taiga-ui/compare/v3.87.0...v3.88.0) (2024-07-31)
 
 ### Features
