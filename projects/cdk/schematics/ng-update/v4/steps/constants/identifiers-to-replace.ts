@@ -10,6 +10,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiPagination', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiPlatformModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPlatform', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {
+            name: 'tuiIconResolverProvider',
+            moduleSpecifier: '@taiga-ui/experimental',
+        },
+        to: {name: 'tuiIconResolverProvider', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiAutoFocus', moduleSpecifier: '@taiga-ui/cdk'},
     },
