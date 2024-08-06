@@ -29,7 +29,7 @@ export function migrateLabeled({
         data: [
             {
                 attrNames: ['size'],
-                values: [
+                valueReplacer: [
                     {from: 'l', to: 'm'},
                     {from: 'm', to: 's'},
                 ],
