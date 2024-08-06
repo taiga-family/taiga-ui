@@ -585,7 +585,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiEditorSocketModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiEditorSocket', moduleSpecifier: '@taiga/editor'},
+        to: {name: 'TuiEditorSocket', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
         from: {name: 'defaultEditorExtensions', moduleSpecifier: '@tinkoff/tui-editor'},
