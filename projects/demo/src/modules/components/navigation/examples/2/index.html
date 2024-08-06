@@ -75,7 +75,10 @@
             </button>
         </aside>
     </header>
-    <nav tuiNavigationNav>
+    <nav
+        tuiNavigationNav
+        [style.position]="'sticky'"
+    >
         <tui-tabs>
             <button tuiTab>Default view</button>
             <button tuiTab>Details</button>
@@ -96,6 +99,7 @@
         tuiCardLarge
         tuiHeader
         tuiSurface="elevated"
+        [style.grid-column]="'span 6'"
     >
         <h2 tuiTitle>
             Some random content

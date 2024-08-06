@@ -5,6 +5,7 @@ aside[tuiNavigationAside] {
 
     position: sticky;
     top: 3rem;
+    z-index: 1;
     display: flex;
     width: 3rem;
     flex-direction: column;
@@ -13,11 +14,24 @@ aside[tuiNavigationAside] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
 
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: -1;
+        height: 3rem;
+        width: 3rem;
+        pointer-events: none;
+        border-top-left-radius: 1.25rem;
+        box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
+    }
+
     &._expanded {
         width: 13.75rem;
 
         + main[tuiNavigationMain] {
-            max-width: calc(100% - 13.75rem);
+            max-width: calc(100vw - 13.75rem);
         }
     }
 
@@ -56,7 +70,7 @@ aside[tuiNavigationAside] {
     }
 
     + main[tuiNavigationMain] {
-        max-width: calc(100% - 3rem);
+        max-width: calc(100vw - 3rem);
     }
 }
 
@@ -67,7 +81,7 @@ aside[tuiNavigationAside] {
     margin-bottom: 0.25rem;
     color: var(--tui-text-primary) !important;
 
-    &::after {
+    &:after {
         border: none !important;
         margin-left: auto !important;
         color: var(--tui-text-tertiary);
@@ -91,11 +105,11 @@ tui-dropdown[data-appearance='dropdown-navigation'] {
             background: transparent;
         }
 
-        &._link:not(._custom)::after {
+        &._link:not(._custom):after {
             opacity: 0;
         }
 
-        &._link._active::after {
+        &._link._active:after {
             opacity: 1;
         }
     }
