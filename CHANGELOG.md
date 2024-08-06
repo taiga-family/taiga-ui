@@ -17,9 +17,6 @@ All notable changes to this project will be documented in this file. See
 
 - **cdk:** provided double value is non-finite ([#8161](https://github.com/taiga-family/taiga-ui/issues/8161))
   ([276879b](https://github.com/taiga-family/taiga-ui/commit/276879bf97f2ee5f958477d0f31923ce4b420f87))
-- **core:** `Dialog` should hide close icon if `closeable` equals to `Observable<false>`
-  ([#8206](https://github.com/taiga-family/taiga-ui/issues/8206))
-  ([d0e04f9](https://github.com/taiga-family/taiga-ui/commit/d0e04f926308b89475097077e88de77c1e6b6080))
 - **core:** fix dropdown-context directive on touchscreen laptops
   ([#8223](https://github.com/taiga-family/taiga-ui/issues/8223))
   ([0bb7b5b](https://github.com/taiga-family/taiga-ui/commit/0bb7b5ba2789683af27a979d80609c968b88d323))
