@@ -2597,4 +2597,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/addon-doc'},
     },
+    {
+        from: {name: 'TUI_FOCUSABLE_ITEM_ACCESSOR', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_FOCUSABLE_ITEM_ACCESSOR', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiNativeFocusableElement', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiNativeFocusableElement', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiFocusableElementAccessor', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiFocusableElementAccessor', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiObscuredModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiObscured', moduleSpecifier: '@taiga-ui/cdk'},
+    },
 ];
