@@ -6,7 +6,7 @@
 
     [tuiCell],
     [tuiStep] {
-        &:not(:last-of-type):after {
+        &:not(:last-of-type)::after {
             content: '';
             position: absolute;
             top: calc(var(--t-image-size) + 0.25rem);
