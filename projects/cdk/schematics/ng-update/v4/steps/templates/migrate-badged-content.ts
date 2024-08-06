@@ -84,7 +84,7 @@ export function migrateBadgedContent({
 
             recorder.insertRight(
                 insertTo + templateOffset - 1,
-                '[style.--tui-radius.%]="50"',
+                ' [style.--tui-radius.%]="50"',
             );
         }
 

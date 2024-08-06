@@ -38,6 +38,11 @@ export class Test {
 }`;
 
 const TEMPLATE_BEFORE = `
+<tui-badged-content [colorTop]="status || ''">
+  <p class="day">
+      {{ day?.activity?.date?.day }}
+  </p>
+</tui-badged-content>
 <tui-badged-content
      colorTop="var(--tui-error-fill)"
      size="l"
@@ -72,12 +77,22 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
+<tui-badged-content [style.--tui-radius.%]="50">
+<tui-badge-notification
+        size="xs"
+        tuiSlot="top"
+        [style.color]="'status || '''"
+    ></tui-badge-notification>
+  <p class="day">
+      {{ day?.activity?.date?.day }}
+  </p>
+</tui-badged-content>
 <tui-badged-content
     ${''}
     ${''}
      class="tui-space_right-5"
     ${''}
-[style.--tui-radius.%]="50">
+ [style.--tui-radius.%]="50">
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
@@ -96,7 +111,7 @@ const TEMPLATE_AFTER = `
  ${''}
   class="tui-space_right-5"
  ${''}
-[style.--tui-radius.%]="50"><tui-badge-notification
+ [style.--tui-radius.%]="50"><tui-badge-notification
         size="l"
         tuiSlot="top"
         ${''}
@@ -119,7 +134,7 @@ const TEMPLATE_AFTER = `
 <!-- Taiga migration TODO: contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->
 <tui-badged-content
  ${''}
-[style.--tui-radius.%]="50">
+ [style.--tui-radius.%]="50">
     <tui-avatar></tui-avatar>
 </tui-badged-content>
 `;
