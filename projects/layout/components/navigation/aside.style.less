@@ -14,7 +14,7 @@ aside[tuiNavigationAside] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
 
-    &:before {
+    &::before {
         content: '';
         position: absolute;
         top: 0;
@@ -81,7 +81,7 @@ aside[tuiNavigationAside] {
     margin-bottom: 0.25rem;
     color: var(--tui-text-primary) !important;
 
-    &:after {
+    &::after {
         border: none !important;
         margin-left: auto !important;
         color: var(--tui-text-tertiary);
@@ -105,11 +105,11 @@ tui-dropdown[data-appearance='dropdown-navigation'] {
             background: transparent;
         }
 
-        &._link:not(._custom):after {
+        &._link:not(._custom)::after {
             opacity: 0;
         }
 
-        &._link._active:after {
+        &._link._active::after {
             opacity: 1;
         }
     }

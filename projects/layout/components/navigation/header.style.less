@@ -19,8 +19,8 @@ header[tuiNavigationHeader] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: '';
         position: absolute;
         top: 100%;
@@ -31,12 +31,12 @@ header[tuiNavigationHeader] {
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
     }
 
-    &:before {
+    &::before {
         left: 0;
         border-top-left-radius: 1.25rem;
     }
 
-    &:after {
+    &::after {
         right: 0;
         border-top-right-radius: 1.25rem;
     }
