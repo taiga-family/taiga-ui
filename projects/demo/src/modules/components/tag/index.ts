@@ -1,13 +1,13 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiIcon} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/legacy';
 import {TuiTagModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
