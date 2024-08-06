@@ -1,40 +1,26 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiConnected] {
-    --t-image-size: 2rem;
-    --t-vertical-offset: calc((100% + var(--t-image-size)) / 2 + 0.25rem);
-    --t-connected-height: calc(100% - var(--t-vertical-offset));
+    --t-image-size: 2.5rem;
+    --t-connected-height: calc(100% - var(--t-image-size) - 0.5rem);
 
-    &[tuiCardLarge] [tuiCell],
     [tuiCell],
     [tuiStep] {
-        padding-inline-start: inherit;
-
-        &:not(:first-of-type)::before,
-        &:not(:last-of-type)::after {
+        &:not(:last-of-type):after {
             content: '';
             position: absolute;
+            top: calc(var(--t-image-size) + 0.25rem);
             left: calc(var(--t-image-size) / 2);
             height: var(--t-connected-height);
             width: 1px;
             background-color: var(--tui-border-normal);
+            background-clip: content-box;
+            padding: inherit;
         }
-
-        &:not(:first-of-type)::before {
-            bottom: var(--t-vertical-offset);
-        }
-
-        &:not(:last-of-type)::after {
-            top: var(--t-vertical-offset);
-        }
-    }
-
-    &[tuiCardLarge] [tuiCell] {
-        --t-image-size: 2.5rem;
     }
 
     [tuiStep] {
-        --t-vertical-margin: 1.25rem;
-        --t-connected-height: calc(100% - var(--t-vertical-offset) + var(--t-vertical-margin) / 2);
+        --t-image-size: 2rem;
+        --t-connected-height: calc(100% - var(--t-image-size) + 0.75rem);
     }
 }

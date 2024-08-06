@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiNotification, TuiSurface} from '@taiga-ui/core';
+import {TuiIcon, TuiNotification, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadge,
@@ -33,6 +33,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiConnected,
         TuiBadge,
         TuiSwitch,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
