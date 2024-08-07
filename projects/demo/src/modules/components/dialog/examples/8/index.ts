@@ -29,8 +29,6 @@ export default class Example {
     protected onClick(content: PolymorpheusContent): void {
         const closeable = this.confirm.withConfirm({
             label: 'Are you sure?',
-            closeable: false,
-            dismissible: false,
             data: {
                 content: 'Your data will be <strong>lost</strong>',
             },
