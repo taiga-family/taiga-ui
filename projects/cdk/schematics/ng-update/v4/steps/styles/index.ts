@@ -1,6 +1,7 @@
 /// <reference lib="es2021" />
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
+import {migrateShadowMixins} from './migrate-shadow-mixins';
 import {migrateSpaceMixins} from './migrate-space-mixins';
 import {migrateTextMixins} from './migrate-text-mixins';
 
@@ -40,10 +41,11 @@ export function migrateStyles(): void {
                     '@taiga-ui/proprietary/styles/tbank-theme',
                 );
 
-            const newFileContent = [migrateSpaceMixins, migrateTextMixins].reduce(
-                (text, migrate) => migrate(text),
-                fullText,
-            );
+            const newFileContent = [
+                migrateSpaceMixins,
+                migrateTextMixins,
+                migrateShadowMixins,
+            ].reduce((text, migrate) => migrate(text), fullText);
 
             sourceFile.replaceWithText(newFileContent);
         });

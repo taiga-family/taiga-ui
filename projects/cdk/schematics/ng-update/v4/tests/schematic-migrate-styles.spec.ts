@@ -21,6 +21,7 @@ const STYLES_BEFORE = `
     display: flex;
     align-items: center;
     .tui-space(bottom, 2);
+    .shadow();
     justify-content: center;
     --tui-rating-size: 1.5rem;
 
@@ -35,6 +36,7 @@ const STYLES_BEFORE = `
 .one-more-class {
     .tui-space(horizontal, -4);
     .text-body-m-bold(1);
+    .shadow(3);
 }
 
 .hack {
@@ -51,6 +53,7 @@ const STYLES_AFTER = `
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
+    box-shadow: var(--tui-shadow-small);
     justify-content: center;
 // TODO: (Taiga UI migration): use css to customize rating gap and size. See https://taiga-ui.dev/components/rating#basic
     --tui-rating-size: 1.5rem;
@@ -69,6 +72,7 @@ margin-bottom: 1rem;
     margin-left: -1rem;
 margin-right: -1rem;
     .text-body-m-bold(1); // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less
+    box-shadow: var(--tui-shadow-popup);
 }
 
 .hack {
