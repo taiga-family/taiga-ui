@@ -33,12 +33,14 @@ export function migrateNotification({
 
     elements.forEach(({attrs, sourceCodeLocation, tagName, childNodes}) => {
         const sizeAttr = findAttr(attrs, 'size');
+        const hasIconAttr = findAttr(attrs, 'hasIcon');
         const hideCloseAttr = findAttr(attrs, 'hideClose');
         const closeListener = findAttr(attrs, '(close)');
 
         const {startTag, endTag} = sourceCodeLocation || {};
         const hideCloseAttrLocation =
             sourceCodeLocation?.attrs?.[hideCloseAttr?.name || ''];
+        const hasIconAttrLocation = sourceCodeLocation?.attrs?.[hasIconAttr?.name || ''];
 
         if (!sizeAttr) {
             recorder.insertRight(
@@ -69,6 +71,27 @@ export function migrateNotification({
                 const {startOffset, endOffset} = hideCloseAttrLocation;
 
                 recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+            }
+        }
+
+        if (hasIconAttr && hasIconAttrLocation) {
+            const {startOffset, endOffset} = hasIconAttrLocation;
+            const attrOffset = templateOffset + startOffset;
+            const attrLength = endOffset - startOffset;
+
+            switch (hasIconAttr.value) {
+                case 'false':
+                    recorder.remove(attrOffset, attrLength);
+                    recorder.insertRight(attrOffset, 'icon=""');
+                    break;
+                case 'true':
+                    recorder.remove(attrOffset, attrLength);
+                    break;
+                default:
+                    recorder.insertLeft(
+                        templateOffset + (startTag?.startOffset || 0),
+                        '<!-- TODO: (Taiga UI migration) "hasIcon" is deleted. Use icon="" to hide icon. Or pass TUI_NOTIFICATION_DEFAULT_OPTIONS["icon"] to show it again. Learn more: https://taiga-ui.dev/components/notification -->\n',
+                    );
             }
         }
 
