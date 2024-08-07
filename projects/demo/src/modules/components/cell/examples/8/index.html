@@ -24,7 +24,7 @@
         />
     </label>
     <label tuiCell>
-        <tui-badged-content>
+        <tui-badged-content tuiAccessories>
             <tui-icon
                 appearance="success"
                 icon="@tui.arrow-up-right"
@@ -34,12 +34,14 @@
             />
             <tui-avatar src="@tui.phone" />
         </tui-badged-content>
-        <div tuiTitle>Allow outgoing</div>
-        <input
-            tuiSwitch
-            type="checkbox"
-            [(ngModel)]="outgoing"
-        />
+        <div tuiTitle>Allow outgoing unusual call that can change your life in an unusual way</div>
+        <div tuiAccessories>
+            <input
+                tuiSwitch
+                type="checkbox"
+                [(ngModel)]="outgoing"
+            />
+        </div>
     </label>
     <label tuiCell>
         <tui-badged-content>

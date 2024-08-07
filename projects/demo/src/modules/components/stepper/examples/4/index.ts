@@ -12,5 +12,10 @@ import {TuiConnected, TuiStepper} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly steps = ['Start Up', 'Cash In', 'Sell Out', 'Bro Down'];
+    protected readonly steps = [
+        'Start Up',
+        'Cash In',
+        'Sell out this huge amount that you have been saving up for many years of hard work',
+        'Bro Down',
+    ];
 }
