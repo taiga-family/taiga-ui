@@ -3,24 +3,14 @@
 main[tuiNavigationMain] {
     .transition(max-width);
 
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 8.5625rem));
+    gap: 0 1rem;
+    justify-content: center;
     flex: 1;
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
     isolation: isolate;
     box-sizing: border-box;
-
-    &::before {
-        content: '';
-        position: sticky;
-        top: 3rem;
-        z-index: 2;
-        display: block;
-        height: 3rem;
-        width: calc(100% + 2.5rem);
-        pointer-events: none;
-        margin: 0 -1.25rem -3rem;
-        border-radius: 1.25rem 1.25rem 0 0;
-        box-shadow: 0 -1.25rem var(--tui-theme-color, #000);
-    }
 
     > [tuiHeader] {
         margin: 1rem 0 0.5rem;
@@ -84,5 +74,11 @@ main[tuiNavigationMain] {
         height: 1.25rem;
         padding: 0;
         margin-top: 0.875rem;
+        justify-self: flex-start;
+    }
+
+    > * {
+        grid-column: span 12;
+        max-width: 100%;
     }
 }

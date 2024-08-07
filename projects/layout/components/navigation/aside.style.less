@@ -5,6 +5,7 @@ aside[tuiNavigationAside] {
 
     position: sticky;
     top: 3rem;
+    z-index: 1;
     display: flex;
     width: 3rem;
     flex-direction: column;
@@ -12,6 +13,19 @@ aside[tuiNavigationAside] {
     box-sizing: border-box;
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: -1;
+        height: 3rem;
+        width: 3rem;
+        pointer-events: none;
+        border-top-left-radius: 1.25rem;
+        box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
+    }
 
     &._expanded {
         width: 13.75rem;
