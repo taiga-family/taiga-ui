@@ -18,8 +18,8 @@ jobs:
         if: env.IS_OWNER_MODE == 'true'
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}
-          projectId: taiga-ui
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          projectId: taiga-previews
           expires: 1d
 
 concurrency:
