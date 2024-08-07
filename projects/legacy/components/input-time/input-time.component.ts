@@ -85,12 +85,6 @@ export class TuiInputTimeComponent
     @Input()
     public mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
-    public readonly identityMatcher?: TuiIdentityMatcher<TuiTime> = this.valueTransformer
-        ? (controlValue: TuiTime, dropdownValue: TuiTime) =>
-              controlValue instanceof TuiTime &&
-              controlValue.valueOf() === dropdownValue.valueOf()
-        : undefined;
-
     @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
@@ -119,6 +113,13 @@ export class TuiInputTimeComponent
 
         this.nativeFocusableElement.value = value;
     }
+
+    public readonly identityMatcher: TuiIdentityMatcher<TuiTime> = (
+        controlValue: TuiTime,
+        dropdownValue: TuiTime,
+    ) =>
+        controlValue instanceof TuiTime &&
+        controlValue.valueOf() === dropdownValue.valueOf();
 
     public handleOption(item: TuiTime): void {
         this.focusInput();
