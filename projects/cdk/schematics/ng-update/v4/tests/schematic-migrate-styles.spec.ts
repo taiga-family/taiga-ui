@@ -31,6 +31,7 @@ const STYLES_BEFORE = `
 .example {
     .tui-space(vertical, 4);
     .text-h3();
+    padding-top: @space * 2;
 }
 
 .one-more-class {
@@ -66,6 +67,7 @@ const STYLES_AFTER = `
     margin-top: 1rem;
 margin-bottom: 1rem;
     font: var(--tui-font-heading-3);
+    padding-top: 0.25rem * 2;
 }
 
 .one-more-class {
