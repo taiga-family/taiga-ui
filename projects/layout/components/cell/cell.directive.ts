@@ -26,7 +26,7 @@ class TuiCellStyles {}
     standalone: true,
     selector: '[tuiCell]:not(ng-template)',
     providers: [
-        tuiAvatarOptionsProvider({size: 's'}),
+        tuiAvatarOptionsProvider({size: 'm'}),
         tuiButtonOptionsProvider({size: 's'}),
     ],
     host: {

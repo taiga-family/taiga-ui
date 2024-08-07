@@ -1,0 +1,26 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiConnected] {
+    --t-image-size: 2.5rem;
+    --t-connected-height: calc(100% - var(--t-image-size) - 0.5rem);
+
+    [tuiCell],
+    [tuiStep] {
+        &:not(:last-of-type)::after {
+            content: '';
+            position: absolute;
+            top: calc(var(--t-image-size) + 0.25rem);
+            left: calc(var(--t-image-size) / 2);
+            height: var(--t-connected-height);
+            width: 1px;
+            background-color: var(--tui-border-normal);
+            background-clip: content-box;
+            padding: inherit;
+        }
+    }
+
+    [tuiStep] {
+        --t-image-size: 2rem;
+        --t-connected-height: calc(100% - var(--t-image-size) + 0.75rem);
+    }
+}
