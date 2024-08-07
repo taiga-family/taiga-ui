@@ -8,6 +8,7 @@ const fs = require('node:fs');
     fs.readdirSync(src).forEach((filename: string) => {
         const content = fs
             .readFileSync(path.join(src, filename), 'utf-8')
+            .replace(/class="[a-zA-Z0-9:;.\s()\-,]*"/, '')
             .replaceAll(
                 /<(circle|ellipse|line|polygon|polyline|path|rect)/g,
                 '<$1 vector-effect="non-scaling-stroke"',
