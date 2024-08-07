@@ -24,15 +24,14 @@ import { TuiCheckboxBlockModule, TuiRadioBlockModule } from "@taiga-ui/kit";
 })
 export class Test {}`;
 
-const COMPONENT_AFTER = `import { TuiAppearance } from "@taiga-ui/core";
-
+const COMPONENT_AFTER = `
 import {FormsModule} from '@angular/forms';
 import { TuiBlock, TuiCheckbox, TuiRadio } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiBlock, TuiRadio, TuiAppearance]
+    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiBlock, TuiRadio]
 })
 export class Test {}`;
 

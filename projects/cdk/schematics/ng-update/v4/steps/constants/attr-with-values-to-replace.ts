@@ -35,49 +35,29 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'active' : null`,
-        directiveModule: {
-            name: 'TuiAppearance',
-            moduleSpecifier: '@taiga-ui/core',
-        },
     },
     {
         attrNames: ['[pseudoFocus]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'focus' : null`,
-        directiveModule: {
-            name: 'TuiAppearance',
-            moduleSpecifier: '@taiga-ui/core',
-        },
     },
     {
         attrNames: ['[pseudoHover]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'hover' : null`,
-        directiveModule: {
-            name: 'TuiAppearance',
-            moduleSpecifier: '@taiga-ui/core',
-        },
     },
     {
         attrNames: ['[pseudoInvalid]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'invalid' : null`,
-        directiveModule: {
-            name: 'TuiAppearance',
-            moduleSpecifier: '@taiga-ui/core',
-        },
     },
     {
         attrNames: ['[pseudoDisabled]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: ['tui-radio-block', 'tui-radio-labeled', 'tui-radio'],
         valueReplacer: (condition) => `${condition} ? 'disabled' : null`,
-        directiveModule: {
-            name: 'TuiAppearance',
-            moduleSpecifier: '@taiga-ui/core',
-        },
     },
 ];
