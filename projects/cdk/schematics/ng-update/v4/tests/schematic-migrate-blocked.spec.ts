@@ -24,19 +24,20 @@ import { TuiCheckboxBlockModule, TuiRadioBlockModule } from "@taiga-ui/kit";
 })
 export class Test {}`;
 
-const COMPONENT_AFTER = `
+const COMPONENT_AFTER = `import { TuiAppearance } from "@taiga-ui/core";
+
 import {FormsModule} from '@angular/forms';
 import { TuiBlock, TuiCheckbox, TuiRadio } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiBlock, TuiRadio]
+    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiBlock, TuiRadio, TuiAppearance]
 })
 export class Test {}`;
 
 const TEMPLATE_BEFORE = `
-<tui-checkbox-block [(ngModel)]="value">Content</tui-checkbox-block>
+<tui-checkbox-block [(ngModel)]="value" [pseudoFocus]="pseudoFocus">Content</tui-checkbox-block>
 
 <form [formGroup]="testForm">
   <tui-radio-block
@@ -86,7 +87,7 @@ const TEMPLATE_BEFORE = `
 `.trim();
 
 const TEMPLATE_AFTER = `
-<label tuiBlock><input tuiCheckbox type="checkbox" [(ngModel)]="value">Content</label>
+<label tuiBlock><input tuiCheckbox type="checkbox" [(ngModel)]="value" [tuiAppearanceState]="pseudoFocus ? 'focus' : null">Content</label>
 
 <form [formGroup]="testForm">
  <label tuiBlock> <input tuiRadio type="radio"

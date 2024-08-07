@@ -29,12 +29,12 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiButtonLoading } from "@taiga-ui/kit";
-import { TuiButton, tuiButtonOptionsProvider } from "@taiga-ui/core";
+import { TuiButton, tuiButtonOptionsProvider, TuiAppearance } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButton, TuiButtonLoading],
+    imports: [TuiButton, TuiButtonLoading, TuiAppearance],
     providers: [
         tuiButtonOptionsProvider({size: 's'}),
     ],
@@ -49,6 +49,7 @@ const TEMPLATE_BEFORE = `
     type="button"
     [icon]="icon"
     [shape]="rounded"
+    [pseudoActive]="true"
 >
     primary
 </button>
@@ -86,6 +87,7 @@ const TEMPLATE_AFTER = `
     type="button"
     [iconStart]="icon"
     [shape]="rounded"
+    [tuiAppearanceState]="true ? 'active' : null"
 >
     primary
 </button>

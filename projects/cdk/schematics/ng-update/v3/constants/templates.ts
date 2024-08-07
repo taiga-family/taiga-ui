@@ -744,19 +744,19 @@ export const TEMPLATE_COMMENTS = [
 export const REPLACE_ATTR_VALUE: ReplacementAttributeValue[] = [
     {
         attrNames: ['tuiHintDirection'],
-        values: [
+        valueReplacer: [
             {from: 'bottom-middle', to: 'bottom'},
             {from: 'top-middle', to: 'top'},
         ],
     },
     {
         attrNames: ['ngProjectAs'],
-        values: [{from: 'tuiOverNotifications', to: 'tuiOverAlerts'}],
+        valueReplacer: [{from: 'tuiOverNotifications', to: 'tuiOverAlerts'}],
     },
     {
         attrNames: ['direction'],
         withTagNames: ['tui-tooltip'],
-        values: [
+        valueReplacer: [
             {from: 'bottom-middle', to: 'bottom'},
             {from: 'top-middle', to: 'top'},
         ],
