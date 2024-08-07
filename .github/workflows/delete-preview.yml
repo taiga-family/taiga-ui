@@ -1,0 +1,16 @@
+name: Close PR delete firebase channel
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  delete_firebase_channel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: w9jds/firebase-action@v12.4.0
+        with:
+          args: hosting:channel:delete ${{ github.head_ref }} --force
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          PROJECT_ID: taiga-previews
