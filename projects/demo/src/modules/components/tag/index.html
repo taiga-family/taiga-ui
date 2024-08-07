@@ -1,11 +1,24 @@
 <tui-doc-page
     deprecated
     header="Tag"
-    package="KIT"
+    package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
         <div class="tui-space_bottom-3">Tags show information and they can be edited, deleted or clicked.</div>
+
+        <tui-notification appearance="error">
+            <div>
+                This component is deprecated in favor of
+                <a
+                    tuiLink
+                    [routerLink]="routes.Chip"
+                >
+                    Chip
+                </a>
+                component
+            </div>
+        </tui-notification>
 
         <p>
             They work with both
