@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Unit tests
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.3
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.3
-      - uses: taiga-family/ci/actions/setup/node@v1.66.3
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
+      - uses: taiga-family/ci/actions/setup/node@v1.66.4
       - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v4.5.0
