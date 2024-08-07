@@ -33,7 +33,7 @@
         cursor: default;
     }
 
-    &:focus-visible:before {
+    &:focus-visible::before {
         content: '';
         position: absolute;
         left: 2.75rem;
@@ -69,7 +69,7 @@
     }
 
     &_index {
-        &:before {
+        &::before {
             content: counter(steps);
         }
 
