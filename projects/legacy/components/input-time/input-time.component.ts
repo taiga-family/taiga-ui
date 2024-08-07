@@ -10,18 +10,19 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiTimeLike, TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_TEXTS, TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
@@ -63,6 +64,9 @@ export class TuiInputTimeComponent
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly isIOS: boolean = inject(TUI_IS_IOS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
+    protected override readonly valueTransformer: TuiValueTransformer<TuiTime | null> | null =
+        inject(TUI_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected open = false;
 
@@ -109,6 +113,13 @@ export class TuiInputTimeComponent
 
         this.nativeFocusableElement.value = value;
     }
+
+    public readonly identityMatcher: TuiIdentityMatcher<TuiTime> = (
+        controlValue: TuiTime,
+        dropdownValue: TuiTime,
+    ) =>
+        controlValue instanceof TuiTime &&
+        controlValue.valueOf() === dropdownValue.valueOf();
 
     public handleOption(item: TuiTime): void {
         this.focusInput();

@@ -4,10 +4,32 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>
+        <div class="tui-space_bottom-9">
             <code>InputTime</code>
             allows input time in HH:MM format
-        </p>
+        </div>
+
+        <h3>DI-tokens for input-configurations:</h3>
+        <dl>
+            <dt>
+                <code>TUI_TIME_VALUE_TRANSFORMER</code>
+            </dt>
+            <dd>
+                custom format of control output (
+                <code>TuiTime | null</code>
+                is default).
+                <p>
+                    <a
+                        fragment="string-control-output"
+                        routerLink="."
+                        tuiLink
+                    >
+                        See example
+                    </a>
+                    with string as control's output.
+                </p>
+            </dd>
+        </dl>
 
         <tui-doc-example
             id="base"
@@ -46,10 +68,17 @@
         />
 
         <tui-doc-example
-            id="native"
-            heading="Native input time"
+            id="string-control-output"
+            heading="With control's output as string"
             [component]="6 | tuiComponent"
             [content]="6 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="native"
+            heading="Native input time"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-5">
                 Please note that iOS Safari doesn't support native picker in modes other than HH:MM
