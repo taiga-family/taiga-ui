@@ -1,7 +1,7 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_ACTIONS,
@@ -17,6 +17,7 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
@@ -50,6 +51,8 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiMapperPipe,
         NgTemplateOutlet,
         TuiDocCode,
+        TuiLink,
+        RouterLinkActive,
     ],
     templateUrl: './example.template.html',
     styleUrls: ['./example.style.less'],
