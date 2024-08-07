@@ -31,6 +31,5 @@ class ExampleTimeTransformer extends TuiValueTransformer<TuiTime | null, string 
 })
 export default class Example {
     protected readonly control = new FormControl('');
-
-    protected items = tuiCreateTimePeriods();
+    protected readonly items = tuiCreateTimePeriods();
 }

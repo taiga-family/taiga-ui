@@ -348,7 +348,7 @@ describe('InputTime', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [Test],
+                imports: [TransformerTest],
                 providers: [
                     {provide: TUI_TIME_VALUE_TRANSFORMER, useClass: TestTransformer},
                 ],
