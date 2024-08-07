@@ -127,6 +127,61 @@ describe('ng-migrate', () => {
         });
     });
 
+    describe('[hasIcon] migration', () => {
+        it('button[tuiNotification]: [hasIcon]="false" => icon=""', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template: '<button tuiNotification [hasIcon]="false">Text</button>',
+            });
+
+            expect(template).toBe(
+                '<button size="m" tuiNotification icon="">Text</button>',
+            );
+        });
+
+        it('tui-notification: [hasIcon]="false" => icon=""', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template: '<tui-notification [hasIcon]="false">Text</tui-notification>',
+            });
+
+            expect(template).toBe(
+                '<tui-notification size="m" icon="">Text</tui-notification>',
+            );
+        });
+
+        it('button[tuiNotification]: [hasIcon]="true" => the whole attribute is removed', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template: '<button tuiNotification [hasIcon]="true">Text</button>',
+            });
+
+            expect(template).toBe('<button size="m" tuiNotification >Text</button>');
+        });
+
+        it('tui-notification: [hasIcon]="true" => the whole attribute is removed', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template: '<tui-notification [hasIcon]="true">Text</tui-notification>',
+            });
+
+            expect(template).toBe('<tui-notification size="m" >Text</tui-notification>');
+        });
+
+        it('[hasIcon]="complexCondition" => add todo comment', async () => {
+            const {template} = await runMigration({
+                component: COMPONENT_BEFORE,
+                template:
+                    '<tui-notification [hasIcon]="complexCondition">Text</tui-notification>',
+            });
+
+            expect(template).toBe(
+                '<!-- TODO: (Taiga UI migration) "hasIcon" is deleted. Use icon="" to hide icon. Or pass TUI_NOTIFICATION_DEFAULT_OPTIONS["icon"] to show it again. Learn more: https://taiga-ui.dev/components/notification -->\n' +
+                    '<tui-notification size="m" [hasIcon]="complexCondition">Text</tui-notification>',
+            );
+        });
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
