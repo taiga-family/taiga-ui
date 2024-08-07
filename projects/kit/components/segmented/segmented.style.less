@@ -13,7 +13,7 @@ tui-segmented {
         --t-gap: 0.5rem;
         --t-margin: -0.125rem;
 
-        height: var(--tui-height-s);
+        block-size: var(--tui-height-s);
         font: var(--tui-font-text-s);
         border-radius: var(--tui-radius-s);
 
@@ -29,7 +29,7 @@ tui-segmented {
         --t-gap: 1rem;
         --t-margin: -0.375rem;
 
-        height: var(--tui-height-m);
+        block-size: var(--tui-height-m);
         font: var(--tui-font-text-m);
         border-radius: var(--tui-radius-s);
     }
@@ -39,7 +39,7 @@ tui-segmented {
         --t-gap: 1rem;
         --t-margin: -0.375rem;
 
-        height: var(--tui-height-l);
+        block-size: var(--tui-height-l);
         font: var(--tui-font-text-l);
         border-radius: var(--tui-radius-m);
         border-width: 0.25rem;
@@ -102,8 +102,8 @@ tui-segmented {
         content: '';
         position: absolute;
         left: var(--t-left);
-        height: 100%;
-        width: var(--t-width);
+        block-size: 100%;
+        inline-size: var(--t-width);
         border-radius: inherit;
         background: currentColor;
         color: var(--tui-background-base);

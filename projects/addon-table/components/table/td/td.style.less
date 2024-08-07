@@ -2,10 +2,10 @@
 
 :host {
     position: relative;
-    text-align: left;
+    text-align: start;
     background: var(--tui-background-base);
     border: 1px solid var(--tui-border-normal);
-    border-top: none;
+    border-block-start: none;
     box-sizing: border-box;
     // Create new viewport for fixed positioning
     filter: opacity(1);
@@ -23,7 +23,7 @@
     }
 
     &:not(:first-child) {
-        border-left: none;
+        border-inline-start: none;
     }
 
     &._editable:focus-within {
@@ -48,7 +48,7 @@
         top: 0;
         bottom: 0;
         left: 100%;
-        width: 0.3125rem;
+        inline-size: 0.3125rem;
         pointer-events: none;
         background: rgba(237, 237, 237, 0.7);
         opacity: 0;
@@ -72,19 +72,19 @@
 }
 
 :host-context(table[data-size='l']) {
-    height: var(--tui-height-l);
+    block-size: var(--tui-height-l);
     font: var(--tui-font-text-m);
     padding: 1rem;
 }
 
 :host-context(table[data-size='m']) {
-    height: var(--tui-height-m);
+    block-size: var(--tui-height-m);
     font: var(--tui-font-text-s);
     padding: 0.75rem;
 }
 
 :host-context(table[data-size='s']) {
-    height: var(--tui-height-s);
+    block-size: var(--tui-height-s);
     font: var(--tui-font-text-s);
     padding: 0.25rem 0.5rem;
 }

@@ -9,11 +9,11 @@
     z-index: 1;
     display: flex;
     box-shadow: var(--tui-shadow-small);
-    height: 3.9375rem;
+    block-size: 3.9375rem;
     align-items: center;
     padding: 0 1.25rem;
     background: var(--tui-background-base);
-    border-bottom: 1px solid var(--tui-border-normal);
+    border-block-end: 1px solid var(--tui-border-normal);
 
     @supports (background: color-mix(in srgb, var(--tui-background-base), transparent 50%)) {
         background: color-mix(in srgb, var(--tui-background-base), transparent 50%);
@@ -39,5 +39,5 @@
 }
 
 .t-navigation {
-    min-height: 100%;
+    min-block-size: 100%;
 }

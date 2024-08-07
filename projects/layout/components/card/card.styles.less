@@ -18,7 +18,7 @@
 
     [tuiTitle],
     [tuiSubtitle] {
-        max-width: 100%;
+        max-inline-size: 100%;
     }
 
     > * {
@@ -27,8 +27,8 @@
 }
 
 [tuiCardMedium] {
-    width: 8.75rem;
-    height: 8.75rem;
+    inline-size: 8.75rem;
+    block-size: 8.75rem;
     flex-direction: column;
     justify-content: space-between;
     padding: 0.75rem;
@@ -99,7 +99,7 @@
     }
 
     [tuiCell] {
-        width: stretch;
+        inline-size: stretch;
         padding: 0.5rem;
         margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
@@ -107,7 +107,7 @@
 
     > [tuiLink]:last-child {
         display: block;
-        width: fit-content;
+        inline-size: fit-content;
         margin-bottom: var(--t-comp);
     }
 }

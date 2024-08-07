@@ -13,7 +13,7 @@
 }
 
 .t-button {
-    width: var(--tui-height-s);
+    inline-size: var(--tui-height-s);
     margin: 0 0.125rem;
     flex-shrink: 0;
 
@@ -26,13 +26,13 @@
     }
 
     &[data-size='xs'] {
-        width: var(--tui-height-xs);
+        inline-size: var(--tui-height-xs);
     }
 
     &&&_small {
         // @note: (&&&_) it's increasing css cascade priority
-        width: 0.5rem;
-        height: 0.5rem;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
         padding: 0;
         margin: 0;
 
@@ -43,8 +43,8 @@
 }
 
 .t-dots {
-    width: var(--tui-height-s);
-    height: var(--tui-height-s);
+    inline-size: var(--tui-height-s);
+    block-size: var(--tui-height-s);
     line-height: var(--tui-height-s);
     margin: 0 0.125rem;
     flex-shrink: 0;

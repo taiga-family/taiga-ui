@@ -10,7 +10,7 @@
 
     & > * {
         flex: 1 1 0;
-        min-width: 0;
+        min-inline-size: 0;
 
         &:not(:last-child) {
             margin-right: 0.125rem;
@@ -88,7 +88,7 @@
         flex-direction: column;
 
         & > * {
-            min-height: auto;
+            min-block-size: auto;
             flex: 0 0 auto;
 
             &:not(:last-child) {
@@ -135,7 +135,7 @@
     }
 
     &__auto-width-item {
-        min-width: auto;
+        min-inline-size: auto;
         flex: 0 0 auto;
     }
 }

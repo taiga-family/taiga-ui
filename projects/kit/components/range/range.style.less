@@ -9,7 +9,7 @@
 :host {
     position: relative;
     display: block;
-    height: @track-height;
+    block-size: @track-height;
     border-radius: var(--tui-radius-m);
     background: var(--tui-border-normal);
     cursor: pointer;
@@ -26,7 +26,7 @@
         position: absolute;
         top: -@extra-click-area-space;
         bottom: -@extra-click-area-space;
-        width: 100%;
+        inline-size: 100%;
     }
 
     &._disabled {
@@ -38,7 +38,7 @@
 .track(@thumb-width) {
     position: relative;
     margin: 0 (@thumb-width / 2);
-    height: 100%;
+    block-size: 100%;
 
     /* Filled selected range */
     &::before {
@@ -47,7 +47,7 @@
         top: 0;
         left: ~'max(calc(var(--left) - 1px), 1px)';
         right: ~'max(var(--right), 1px)';
-        height: 100%;
+        block-size: 100%;
         background: var(--tui-background-accent-1);
         margin: 0 calc(-@thumb-width / 2);
     }

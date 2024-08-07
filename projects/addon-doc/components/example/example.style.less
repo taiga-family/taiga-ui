@@ -5,7 +5,7 @@
     position: relative;
     display: block;
     padding-top: 3.5rem;
-    clear: right;
+    clear: inline-end;
 
     &:target {
         animation: 1s 300ms tuiShaking;
@@ -75,7 +75,7 @@
     .customize-scroll();
 
     padding: 2rem;
-    max-width: 100%;
+    max-inline-size: 100%;
     box-sizing: border-box;
     overflow-x: auto;
 
@@ -84,8 +84,8 @@
     }
 
     :host:not(._fullsize) & {
-        width: min-content;
-        min-width: 20rem;
+        inline-size: min-content;
+        min-inline-size: 20rem;
     }
 }
 
@@ -96,7 +96,7 @@
 
 .t-content {
     will-change: opacity;
-    height: 0;
+    block-size: 0;
     visibility: hidden;
     opacity: 0;
 }
@@ -106,7 +106,7 @@
 }
 
 .t-content_visible {
-    height: auto;
+    block-size: auto;
     visibility: visible;
     opacity: 1;
 }

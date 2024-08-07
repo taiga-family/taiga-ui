@@ -7,7 +7,7 @@ aside[tuiNavigationAside] {
     top: 3rem;
     z-index: 1;
     display: flex;
-    width: 3rem;
+    inline-size: 3rem;
     flex-direction: column;
     padding: 0.5rem 0.5rem 0.25rem;
     box-sizing: border-box;
@@ -20,18 +20,18 @@ aside[tuiNavigationAside] {
         top: 0;
         left: 100%;
         z-index: -1;
-        height: 3rem;
-        width: 3rem;
+        block-size: 3rem;
+        inline-size: 3rem;
         pointer-events: none;
-        border-top-left-radius: 1.25rem;
+        border-start-start-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
     }
 
     &._expanded {
-        width: 13.75rem;
+        inline-size: 13.75rem;
 
         + main[tuiNavigationMain] {
-            max-width: calc(100% - 13.75rem);
+            max-inline-size: calc(100% - 13.75rem);
         }
     }
 
@@ -42,7 +42,7 @@ aside[tuiNavigationAside] {
     .t-nav-content {
         .scrollbar-hidden();
 
-        height: 100%;
+        block-size: 100%;
         padding: 0 0.25rem;
         overflow: auto;
     }
@@ -53,7 +53,7 @@ aside[tuiNavigationAside] {
 
     hr {
         background: var(--tui-border-normal);
-        height: 1px;
+        block-size: 1px;
         margin: 0 0 0.25rem;
         border: none;
     }
@@ -66,16 +66,16 @@ aside[tuiNavigationAside] {
 
     footer {
         margin-top: auto;
-        border-top: 1.75rem solid transparent;
+        border-block-start: 1.75rem solid transparent;
     }
 
     + main[tuiNavigationMain] {
-        max-width: calc(100% - 3rem);
+        max-inline-size: calc(100% - 3rem);
     }
 }
 
 [tuiAsideItem] {
-    width: 100%;
+    inline-size: 100%;
     justify-content: flex-start;
     gap: 0.625rem;
     margin-bottom: 0.25rem;

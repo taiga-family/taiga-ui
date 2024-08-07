@@ -3,8 +3,8 @@
 :host {
     position: relative;
     display: block;
-    width: fit-content;
-    min-width: fit-content;
+    inline-size: fit-content;
+    min-inline-size: fit-content;
     font-size: 1rem;
     color: var(--tui-chart-categorical-12);
     cursor: pointer;
@@ -58,7 +58,7 @@
     transition-timing-function: ease-in-out, cubic-bezier(0.35, 1.5, 0.4, 2.5);
 
     &:first-child {
-        max-width: 2.5em;
+        max-inline-size: 2.5em;
     }
 
     &:hover,
@@ -78,8 +78,8 @@
 .t-icon {
     .transition(clip-path);
 
-    width: 2.5em;
-    height: 2.5em;
+    inline-size: 2.5em;
+    block-size: 2.5em;
     font-size: inherit;
     clip-path: inset(0 var(--t-cut) 0 0);
 
