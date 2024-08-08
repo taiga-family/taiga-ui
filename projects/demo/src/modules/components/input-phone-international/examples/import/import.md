@@ -4,7 +4,7 @@ import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
-  imports: [ReactiveFormsModule, TuiInputPhoneInternationalComponent],
+  imports: [ReactiveFormsModule, TuiInputPhoneInternational],
   // ...
 })
 export class Example {
