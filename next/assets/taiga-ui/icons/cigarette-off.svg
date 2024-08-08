@@ -1,4 +1,4 @@
-<!-- @license lucide-static v0.424.0 - ISC -->
+<!-- @license lucide-static v0.426.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -10,11 +10,10 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <line vector-effect="non-scaling-stroke" x1="2" x2="22" y1="2" y2="22" />
-    <path vector-effect="non-scaling-stroke" d="M12 12H2v4h14" />
-    <path vector-effect="non-scaling-stroke" d="M22 12v4" />
-    <path vector-effect="non-scaling-stroke" d="M18 12h-.5" />
-    <path vector-effect="non-scaling-stroke" d="M7 12v4" />
+    <path vector-effect="non-scaling-stroke" d="M12 12H3a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h13" />
     <path vector-effect="non-scaling-stroke" d="M18 8c0-2.5-2-2.5-2-5" />
+    <path vector-effect="non-scaling-stroke" d="m2 2 20 20" />
+    <path vector-effect="non-scaling-stroke" d="M21 12a1 1 0 0 1 1 1v2a1 1 0 0 1-.5.866" />
     <path vector-effect="non-scaling-stroke" d="M22 8c0-2.5-2-2.5-2-5" />
+    <path vector-effect="non-scaling-stroke" d="M7 12v4" />
 </svg>
