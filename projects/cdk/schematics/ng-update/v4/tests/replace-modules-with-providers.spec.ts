@@ -22,7 +22,7 @@ import { TuiProprietaryRootModule } from "@taiga-ui/proprietary-core";
 
 @NgModule({
     imports: [ TuiMobileCalendarDialogModule, OldModule],
-    providers: [importProvidersFrom(TuiProprietaryRootModule)]
+    providers: [importProvidersFrom(TuiProprietaryRootModule, TuiAlertModule)]
 })
 export class Test {
 }`;
@@ -35,7 +35,7 @@ import { TuiRoot } from "@taiga-ui/core";
 
 @NgModule({
     imports: [ ],
-    providers: [importProvidersFrom(), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
+    providers: [importProvidersFrom(TuiAlertModule), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
 })
 export class Test {
 }`;
