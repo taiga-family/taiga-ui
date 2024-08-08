@@ -61,6 +61,7 @@ const TEMPLATE_BEFORE = `
         size="xs"
         src="tuiIconStarLarge"
         class="tui-island__marker icon"
+        [mode]="mode"
     ></tui-marker-icon>
 </button>
 `;
@@ -91,6 +92,7 @@ const TEMPLATE_AFTER = `
         size="s"
         src="tuiIconStarLarge"
         class="tui-island__marker icon"
+        [appearance]="mode"
     ></tui-avatar>
 </button>
 `;
