@@ -12,7 +12,7 @@ import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
     providers: [
         tuiNotificationOptionsProvider({
             icon: '@tui.alarm-clock',
-            appearance: 'warning',
+            appearance: 'neutral',
             size: 's',
         }),
     ],
