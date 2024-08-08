@@ -43,7 +43,7 @@ import {debounceTime, map, of} from 'rxjs';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
-        '[class._reduced-motion]': 'reducedMotion',
+        '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '[class._mobile]': 'isMobileRes()',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.silent)': '0',

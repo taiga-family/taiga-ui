@@ -44,6 +44,14 @@ const STYLES_BEFORE = `
     .tui-space(top, 0) !important;
     .tui-space(horizontal, -4) !important;
 }
+
+.t-scrollbar {
+    .scroll-behavior();
+}
+
+.horizontal {
+    .scroll-behavior();
+}
 `;
 
 const STYLES_AFTER = `
@@ -81,6 +89,14 @@ margin-right: -1rem;
     margin-top: 0rem !important;
     margin-left: -1rem !important;
 margin-right: -1rem !important;
+}
+
+.t-scrollbar {
+    scroll-behavior: var(--tui-scroll-behavior);
+}
+
+.horizontal {
+    scroll-behavior: var(--tui-scroll-behavior);
 }
 `;
 

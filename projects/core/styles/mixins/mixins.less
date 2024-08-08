@@ -129,11 +129,3 @@
     overflow: hidden;
     padding: 0;
 }
-
-.scroll-behavior(@mode: smooth) {
-    scroll-behavior: @mode;
-
-    :host-context(tui-root._reduced-motion) & {
-        scroll-behavior: auto;
-    }
-}
