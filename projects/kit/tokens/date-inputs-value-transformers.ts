@@ -23,3 +23,10 @@ export const TUI_DATE_RANGE_VALUE_TRANSFORMER = new InjectionToken<
 export const TUI_DATE_TIME_VALUE_TRANSFORMER = new InjectionToken<
     TuiControlValueTransformer<[TuiDay | null, TuiTime | null]>
 >('[TUI_DATE_TIME_VALUE_TRANSFORMER]');
+
+/**
+ * Control value transformer for InputTime component
+ */
+export const TUI_TIME_VALUE_TRANSFORMER = new InjectionToken<
+    TuiControlValueTransformer<TuiTime | null>
+>('[TUI_TIME_VALUE_TRANSFORMER]');
