@@ -24,6 +24,7 @@ import {
     migrateAllCountryIsoCodes,
     migrateDestroyService,
     migrateLegacyMask,
+    migrateNumberFormatSettings,
     migrateOptionProviders,
     migrateProprietary,
     migrateStyles,
@@ -61,6 +62,7 @@ function main(options: TuiSchema): Rule {
         migrateOptionProviders(options);
         migrateAllCountryIsoCodes(options);
         migrateAlertService(options);
+        migrateNumberFormatSettings(options);
 
         saveActiveProject();
         migrateTemplates(fileSystem, options);
