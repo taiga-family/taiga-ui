@@ -5,12 +5,12 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TuiRoot} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
     standalone: true,
-    imports: [TuiRoot, ReactiveFormsModule, TuiInputPhoneInternationalComponent],
+    imports: [TuiRoot, ReactiveFormsModule, TuiInputPhoneInternational],
     template: `
         <tui-root>
             <tui-input-phone-international

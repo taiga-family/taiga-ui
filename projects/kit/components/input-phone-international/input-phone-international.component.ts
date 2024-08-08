@@ -73,7 +73,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputPhoneInternationalComponent),
+        tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: signal(false)}),
         tuiDropdownOptionsProvider({
@@ -86,7 +86,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
+export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
