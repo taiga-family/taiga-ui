@@ -29,7 +29,7 @@ export function renameProprietaryIcons(
 
         const invalidIcons = [...new Set(text.match(/\b(tuiIcon(?!Tds|Button)\w*)\b/g))];
 
-        if (invalidIcons) {
+        if (invalidIcons.length) {
             const message = `TODO (Taiga UI migration): invalid icons ${invalidIcons.join(', ')}. Please select an icon from the proprietary pack`;
             const todo = file.getFilePath().endsWith('html')
                 ? `<!-- ${message} -->`
