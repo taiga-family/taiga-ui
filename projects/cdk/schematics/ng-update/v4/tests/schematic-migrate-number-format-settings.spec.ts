@@ -15,7 +15,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import {Component} from '@angular/core';
-import {tuiNumberFormatProvider, TuiNumberFormatSettings, tuiFormatNumber} from '@taiga-ui/core';
+import {tuiNumberFormatProvider, TuiNumberFormatSettings, tuiFormatNumber, TuiFormatNumberPipe} from '@taiga-ui/core';
 
 const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
     decimalSeparator: ',',
@@ -26,7 +26,13 @@ const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
 @Component({
     standalone: true,
     selector: 'test',
-    template: '',
+    template: \`
+        <p>
+            Formatted:
+            {{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: '.'} }}
+        </p>
+    \`,
+    imports: [TuiFormatNumberPipe],
     providers: [
         tuiNumberFormatProvider({
             decimalLimit: 2, // => precision: 2
@@ -46,7 +52,7 @@ export class Test {
 
 const COMPONENT_AFTER = `
 import {Component} from '@angular/core';
-import {tuiNumberFormatProvider, TuiNumberFormatSettings, tuiFormatNumber} from '@taiga-ui/core';
+import {tuiNumberFormatProvider, TuiNumberFormatSettings, tuiFormatNumber, TuiFormatNumberPipe} from '@taiga-ui/core';
 
 const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
     decimalSeparator: ',',
@@ -57,7 +63,14 @@ const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
 @Component({
     standalone: true,
     selector: 'test',
-    template: '',
+    template: \`<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration -->
+
+        <p>
+            Formatted:
+            {{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: '.'} }}
+        </p>
+    \`,
+    imports: [TuiFormatNumberPipe],
     providers: [
         tuiNumberFormatProvider({
             precision: 2, // => precision: 2
