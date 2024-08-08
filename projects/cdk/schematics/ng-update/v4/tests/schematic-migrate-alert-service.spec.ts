@@ -15,7 +15,24 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import {Component, inject} from '@angular/core';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiAlertOptions} from '@taiga-ui/core';
+
+const status = 'error';
+const hasIcon = Math.random() > 0.5 ? true : false;
+
+const standaloneAlertOptions = {
+    status,
+    label: 'any text',
+    autoClose: false,
+    hasCloseButton: !autoClose,
+} as TuiAlertOptions<unknown>;
+
+const standaloneAlertOptions2: TuiAlertOptions<unknown> = {
+    status: 'error',
+    label: 'any text 2',
+    autoClose: true,
+    hasIcon,
+};
 
 @Component({
     standalone: true,
@@ -69,7 +86,25 @@ export class Test {
 
 const COMPONENT_AFTER = `
 import {Component, inject} from '@angular/core';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiAlertOptions} from '@taiga-ui/core';
+
+const status = 'error';
+const hasIcon = Math.random() > 0.5 ? true : false;
+
+const standaloneAlertOptions = {
+    appearance: status,
+    label: 'any text',
+    autoClose: 0,
+    closeable: !autoClose,
+} as TuiAlertOptions<unknown>;
+
+const standaloneAlertOptions2: TuiAlertOptions<unknown> = {
+    appearance: 'error',
+    label: 'any text 2',
+    autoClose: 3_000,
+    // TODO: (Taiga UI migration) "hasIcon" is deleted. Use "icon: ''" to hide icon. Use "icon: TUI_NOTIFICATION_DEFAULT_OPTIONS['icon']" to show it.
+    hasIcon,
+};
 
 @Component({
     standalone: true,

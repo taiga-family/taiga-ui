@@ -1,5 +1,5 @@
-import type {Node, ObjectLiteralExpression, PropertyAccessExpression} from 'ng-morph';
-import {SyntaxKind} from 'ng-morph';
+import type {ObjectLiteralExpression, PropertyAccessExpression} from 'ng-morph';
+import {Node, SyntaxKind} from 'ng-morph';
 import type {CallExpression, ObjectLiteralElementLike} from 'ts-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
@@ -93,30 +93,61 @@ export function migrateAlertService(options: TuiSchema): void {
         .flat()
         .map(toAlertServiceOpenCallExpression);
 
-    [...viaDirectInjects, ...viaClassProperty, ...viaConstructorParam].forEach(
-        (callExpression) => {
+    const inlineAlertOptions = [
+        ...viaDirectInjects,
+        ...viaClassProperty,
+        ...viaConstructorParam,
+    ]
+        .map((callExpression) => {
             if (!callExpression || callExpression.wasForgotten()) {
                 return;
             }
 
             const [, arg] = callExpression.getArguments();
-            const options = arg?.isKind(SyntaxKind.PropertyAccessExpression)
+
+            return arg?.isKind(SyntaxKind.PropertyAccessExpression)
                 ? findOptionsInitializer(arg)
                 : arg;
+        })
+        .filter(Node.isObjectLiteralExpression);
 
-            if (!options?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+    const standaloneAlertOptions = getNamedImportReferences(
+        'TuiAlertOptions',
+        '@taiga-ui/core',
+    )
+        .map((n) => {
+            const type = n.getFirstAncestorByKind(SyntaxKind.TypeReference);
+            const siblings = [
+                ...(type?.getPreviousSiblings() || []),
+                ...(type?.getNextSiblings() || []),
+            ];
+
+            return siblings.find(Node.isObjectLiteralExpression);
+        })
+        .filter(<T>(x: T | undefined): x is T => !!x);
+
+    [...inlineAlertOptions, ...standaloneAlertOptions].forEach((options) => {
+        Object.entries(OPTIONS_MIGRATIONS).forEach(([propertyName, migration]) => {
+            const property = options.getProperty(propertyName);
+
+            if (!property) {
                 return;
             }
 
-            Object.entries(OPTIONS_MIGRATIONS).forEach(([propertyName, migration]) => {
-                const property = options.getProperty(propertyName);
+            const isShorthandPropertyAssignment =
+                Node.isShorthandPropertyAssignment(property) &&
+                !property.hasObjectAssignmentInitializer();
+            const previousPropertyText = property.getText();
 
-                if (property) {
-                    migration(property);
-                }
-            });
-        },
-    );
+            migration(property);
+
+            if (isShorthandPropertyAssignment && !property.wasForgotten()) {
+                property.replaceWithText(
+                    `${property.getText()}: ${previousPropertyText}`,
+                );
+            }
+        });
+    });
 
     !options['skip-logs'] &&
         successLog(
