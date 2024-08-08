@@ -62,7 +62,7 @@ export const HTML_COMMENTS: HtmlComment[] = [
             'Native input inside is now required and the wrapper has changed from <tui-input-files to <label tuiInputFiles, control moved to native input. See interactive example https://taiga-ui.dev/components/input-files',
     },
     {
-        pattern: /|\s?tuiFormatNumber\s?:/,
+        pattern: /\|\s?tuiFormatNumber\s?:/g,
         comment:
             'tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration',
     },
