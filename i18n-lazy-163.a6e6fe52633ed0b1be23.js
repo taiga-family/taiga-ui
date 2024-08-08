@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[35847],{10051:(e,a,n)=>{n.r(a),n.d(a,{TUI_JAPAN_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"表示または非表示",paginationTexts:{pages:"ページ",linesPerPage:"1ページあたりの行数",of:"の"}}}}]);
