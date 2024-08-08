@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: w9jds/firebase-action@v12.9.0
+      - uses: w9jds/firebase-action@v13.15.0
         with:
           args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }} --force
         env:
