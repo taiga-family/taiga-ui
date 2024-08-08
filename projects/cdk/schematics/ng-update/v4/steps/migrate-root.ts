@@ -54,8 +54,14 @@ function replaceRootIdentifier(ref: Node, fileSystem: DevkitFileSystem): void {
         callExpression &&
         callExpression.getExpression().getText() === 'importProvidersFrom'
     ) {
-        ref.replaceWithText('');
-        addProviders(callExpression, fileSystem);
+        const node = callExpression
+            .getArguments()
+            .find((arg) => arg.getText() === ref.getText());
+
+        if (node) {
+            callExpression.removeArgument(node);
+            addProviders(callExpression, fileSystem);
+        }
     } else {
         ref.replaceWithText('TuiRoot');
     }
