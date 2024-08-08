@@ -26,7 +26,7 @@ export function addHTMLCommentTags({
     data.forEach(({comment, tag, withAttrs, pattern}) => {
         if (pattern && template.match(pattern)) {
             recorder.insertRight(
-                templateOffset + 1,
+                templateOffset && templateOffset + 1,
                 `<!-- ${TODO_MARK} ${comment} -->\n`,
             );
         }

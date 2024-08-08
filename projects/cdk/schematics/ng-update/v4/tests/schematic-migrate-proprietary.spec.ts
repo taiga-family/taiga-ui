@@ -163,6 +163,11 @@ describe('ng-update proprietary', () => {
         expect(tree.readContent('test/styles.less')).toEqual(STYLES_AFTER);
         expect(tree.readContent('angular.json')).toEqual(ANGULAR_JSON_AFTER);
         expect(tree.readContent('package.json').trim()).toEqual(PACKAGE_JSON_AFTER);
+        expect(tree.readContent('test/app/test.template.html').trim()).toBe(
+            '<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration -->' +
+                '\n' +
+                '{{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: "."} }}',
+        );
     });
 
     afterEach(() => {
@@ -172,7 +177,10 @@ describe('ng-update proprietary', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-    createSourceFile('test/app/test.template.html', '');
+    createSourceFile(
+        'test/app/test.template.html',
+        '{{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: "."} }}',
+    );
     createSourceFile('test/styles.less', STYLES_BEFORE);
     createSourceFile('angular.json', ANGULAR_JSON_BEFORE);
     createSourceFile('package.json', PACKAGE_JSON_BEFORE, {overwrite: true});
