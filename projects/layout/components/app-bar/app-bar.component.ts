@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import type {ElementRef, QueryList} from '@angular/core';
+import {ElementRef, NgZone, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {tuiZonefull} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
@@ -36,6 +37,7 @@ export class TuiAppBarComponent {
         inject(ResizeObserverService),
         inject(MutationObserverService),
     ).pipe(
+        tuiZonefull(inject(NgZone)),
         map(
             () =>
                 2 *
