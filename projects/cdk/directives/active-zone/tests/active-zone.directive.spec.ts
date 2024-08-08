@@ -89,7 +89,7 @@ describe('TuiActiveZone', () => {
         }
 
         public onClick(element: HTMLInputElement): void {
-            element?.focus();
+            element.focus();
         }
     }
 

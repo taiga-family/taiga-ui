@@ -227,7 +227,7 @@ describe('rangeCalendarComponent', () => {
 
         it('should update selectedActivePeriod after onItemSelect', () => {
             component['onItemSelect'](component.items[1]);
-            expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
+            expect(testComponent.component.selectedActivePeriod?.toString()).toBe(
                 'Today',
             );
         });

@@ -5,6 +5,7 @@ import {
     getNgComponents,
     isStandaloneComponent,
 } from 'ng-morph';
+import type {ClassDeclaration} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../constants/file-globs';
 import {addUniqueImport} from './add-unique-import';
@@ -14,7 +15,9 @@ export function addImportToClosestModule(
     moduleName: string,
     moduleSpecifier: string,
 ): void {
-    const [ngComponent] = getNgComponents(componentPath);
+    const [ngComponent] = getNgComponents(componentPath) as [
+        ClassDeclaration | undefined,
+    ];
 
     if (!ngComponent) {
         return;

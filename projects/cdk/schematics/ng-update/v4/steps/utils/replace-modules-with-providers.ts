@@ -1,3 +1,4 @@
+import type {ClassDeclaration} from 'ng-morph';
 import {
     addProviderToComponent,
     addProviderToNgModule,
@@ -70,13 +71,13 @@ function addImport(identifier: ProviderToReplace, filePath: string): void {
 function addProvider(identifier: ProviderToReplace, filePath: string): void {
     const provider = `${identifier.name}${identifier.isFunction ? '()' : ''}`;
 
-    const componentClass = getNgComponents(filePath)[0];
+    const componentClass = getNgComponents(filePath)[0] as ClassDeclaration | undefined;
 
     if (componentClass) {
         addProviderToComponent(componentClass, provider);
     }
 
-    const moduleClass = getNgModules(filePath)[0];
+    const moduleClass = getNgModules(filePath)[0] as ClassDeclaration | undefined;
 
     if (moduleClass) {
         addProviderToNgModule(moduleClass, provider);

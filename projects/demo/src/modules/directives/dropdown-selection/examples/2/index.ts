@@ -71,6 +71,8 @@ export default class Example {
     protected onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
 
+        // TODO: update after noUncheckedIndexedAccess
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!item) {
             return;
         }

@@ -8,7 +8,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
  * @deprecated: drop in v5.0
  */
 export function tuiCreateUnfinishedValidator(
-    nativeInputGetter: () => TuiFocusableElementAccessor,
+    nativeInputGetter: () => TuiFocusableElementAccessor | undefined,
     message: PolymorpheusContent,
 ): ValidatorFn {
     return ({

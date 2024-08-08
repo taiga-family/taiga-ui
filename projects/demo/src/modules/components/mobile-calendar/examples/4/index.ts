@@ -53,6 +53,8 @@ export default class Example {
         this.months$,
     ]).pipe(
         map(([value, months]) => {
+            // TODO: update after noUncheckedIndexedAccess
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (!value) {
                 return 'Choose a date range';
             }

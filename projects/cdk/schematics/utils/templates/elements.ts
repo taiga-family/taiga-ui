@@ -9,14 +9,16 @@ export function findElementsByFn(
 
     const visitNodes = (nodes: ChildNode[]): void => {
         nodes.forEach((n) => {
-            const node = n as Element;
+            const node = n as Omit<Element, 'childNodes'> & {
+                childNodes: ChildNode[] | undefined;
+            };
 
-            if (node.childNodes) {
+            if (node.childNodes?.length) {
                 visitNodes(node.childNodes);
             }
 
-            if (predicateFn(node)) {
-                elements.push(node);
+            if (predicateFn(node as Element)) {
+                elements.push(node as Element);
             }
         });
     };
@@ -68,6 +70,7 @@ export function findElementsWithDirective(
     const inputName = `[${lowercasedAttrName}]`;
 
     return findElementsInTemplateByFn(html, (el) =>
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         el.attrs?.some(({name}) => name === lowercasedAttrName || name === inputName),
     );
 }
@@ -81,6 +84,7 @@ export function findElementsWithAttribute(
     attributeName: string,
 ): Element[] {
     return findElementsInTemplateByFn(html, (el) =>
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         el.attrs?.some((attr) => attr.name === attributeName.toLowerCase()),
     );
 }
@@ -101,6 +105,7 @@ export function findElementsWithAttributeOnTag(
         html,
         (el) =>
             (!attributeNames.length ||
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 el.attrs?.some((attr) =>
                     attributeNames.map((name) => name.toLowerCase()).includes(attr.name),
                 )) &&
@@ -155,6 +160,7 @@ export function findAttributeOnElementWithAttrs(
 export function hasElementAttribute(element: Element, attributeName: string): boolean {
     const lowercasedAttrName = attributeName.toLowerCase();
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     return element.attrs?.some(
         (attr) =>
             attr.name === lowercasedAttrName || attr.name === `[${lowercasedAttrName}]`,

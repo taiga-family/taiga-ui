@@ -85,7 +85,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     private get isCurrentAndAscDirection(): boolean {
-        return this.sorter === this.table?.sorter && this.table?.direction === -1;
+        return this.sorter === this.table?.sorter && this.table.direction === -1;
     }
 }
 

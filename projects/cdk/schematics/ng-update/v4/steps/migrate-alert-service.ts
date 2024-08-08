@@ -105,7 +105,7 @@ export function migrateAlertService(options: TuiSchema): void {
 
             const [, arg] = callExpression.getArguments();
 
-            return arg?.isKind(SyntaxKind.PropertyAccessExpression)
+            return arg.isKind(SyntaxKind.PropertyAccessExpression)
                 ? findOptionsInitializer(arg)
                 : arg;
         })
@@ -166,7 +166,7 @@ function findOptionsInitializer(
     ref: PropertyAccessExpression,
 ): ObjectLiteralExpression | undefined {
     return ref
-        ?.getFirstChildByKind(SyntaxKind.Identifier)
+        .getFirstChildByKind(SyntaxKind.Identifier)
         ?.findReferencesAsNodes()
         .map((n) =>
             n

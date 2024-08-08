@@ -24,7 +24,7 @@ export function tuiParseColor(color: string): [number, number, number, number] {
 
     const parsed = matches.map((char) =>
         parseInt(stripped.length % 2 ? char + char : char, 16),
-    );
+    ) as ReadonlyArray<number | undefined>;
 
     return [
         parsed[0] || DEFAULT[0],

@@ -149,11 +149,7 @@ export class TuiFile {
             return file.src;
         }
 
-        if (
-            this.win.File &&
-            file instanceof this.win.File &&
-            file.type?.startsWith('image/')
-        ) {
+        if (file instanceof this.win.File && file.type.startsWith('image/')) {
             return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 

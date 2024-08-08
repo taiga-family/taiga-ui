@@ -161,8 +161,7 @@ export class TuiInputDateTimeComponent
     public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
-        this.nativeValue =
-            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
+        this.nativeValue = this.value[0] || this.value[1] ? this.computedValue : '';
     }
 
     public onValueChange(value: string): void {

@@ -53,8 +53,8 @@ function migrateValue({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
+    const attrValue = valueAttr.value;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 
     if (!attrValue || !insertTo) {
         return;
@@ -65,7 +65,7 @@ function migrateValue({
         valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`,
     );
 
-    const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
+    const attrOffset = sourceCodeLocation.attrs?.[valueAttr.name];
 
     if (attrOffset) {
         const {startOffset, endOffset} = attrOffset;

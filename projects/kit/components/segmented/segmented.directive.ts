@@ -37,7 +37,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
-                switchMap(() => this.controls.last?.valueChanges || EMPTY),
+                switchMap(() => this.controls.last.valueChanges || EMPTY),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {

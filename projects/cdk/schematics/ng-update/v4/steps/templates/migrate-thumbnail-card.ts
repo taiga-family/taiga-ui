@@ -55,9 +55,9 @@ function migrateValue({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
-    const selfClosing = !sourceCodeLocation?.endTag;
+    const attrValue = valueAttr.value;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
+    const selfClosing = !sourceCodeLocation.endTag;
 
     if (!attrValue || !insertTo) {
         return;
@@ -70,7 +70,7 @@ function migrateValue({
             : `{{ ${attrValue} }}${selfClosing ? '</tui-thumbnail-card>' : ''}`,
     );
 
-    const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
+    const attrOffset = sourceCodeLocation.attrs?.[valueAttr.name];
 
     if (attrOffset) {
         const {startOffset, endOffset} = attrOffset;

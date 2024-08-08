@@ -149,7 +149,7 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
         const newFractionValue = previousFraction + coefficient * this.fractionStep;
 
         this.processValue(this.toValue(newFractionValue), isRightThumb);
-        activeThumbElement?.focus();
+        activeThumbElement.focus();
     }
 
     protected toPercent(value: number): number {

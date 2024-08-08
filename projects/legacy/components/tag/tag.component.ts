@@ -15,7 +15,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core/types';
 import {tuiStringHashToHsl} from '@taiga-ui/core/utils/format';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import type {TuiStatus} from '@taiga-ui/legacy/utils';
+import type {TuiStatus} from '@taiga-ui/kit/components/status';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_TAG_OPTIONS} from './tag.options';
@@ -60,7 +60,7 @@ export class TuiTagComponent {
 
     @Input()
     @HostBinding('attr.data-status')
-    public status: TuiStatus = this.options.status;
+    public status = this.options.status as unknown as TuiStatus;
 
     @Input()
     @HostBinding('class._hoverable')
@@ -84,10 +84,8 @@ export class TuiTagComponent {
     public readonly edited = new EventEmitter<string>();
 
     @ViewChild('input', {read: ElementRef})
-    protected set input(input: ElementRef<HTMLInputElement>) {
-        if (input) {
-            input.nativeElement.focus();
-        }
+    protected set input(input: ElementRef<HTMLInputElement> | undefined) {
+        input?.nativeElement.focus();
     }
 
     protected get backgroundColor(): string | null {

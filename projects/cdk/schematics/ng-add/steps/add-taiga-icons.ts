@@ -20,6 +20,8 @@ export function addTaigaAssetsToAngularJson(options: TuiSchema): Rule {
     return updateWorkspace((workspace) => {
         const project = getProjects(options, workspace)[0];
 
+        // TODO: update after noUncheckedIndexedAccess
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (project) {
             const targetOptions = getProjectTargetOptions(project, 'build');
             const assets = targetOptions.assets as JsonArray | undefined;

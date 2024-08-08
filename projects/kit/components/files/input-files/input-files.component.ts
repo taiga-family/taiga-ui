@@ -58,7 +58,7 @@ export class TuiInputFiles {
 
     @HostListener('change', ['$event.target'])
     protected onFilesSelected(input: HTMLInputElement): void {
-        if (!input?.files) {
+        if (!input.files) {
             return;
         }
 

@@ -20,14 +20,10 @@ export default class Example {
     protected readonly min = 0;
 
     protected increase(): void {
-        this.control.patchValue(
-            Math.min(((this.control?.value as number) ?? 0) + 20, this.max),
-        );
+        this.control.patchValue(Math.min((this.control.value ?? 0) + 20, this.max));
     }
 
     protected decrease(): void {
-        this.control.patchValue(
-            Math.max(((this.control?.value as number) ?? 0) - 20, this.min),
-        );
+        this.control.patchValue(Math.max((this.control.value ?? 0) - 20, this.min));
     }
 }

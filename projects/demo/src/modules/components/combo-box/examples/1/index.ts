@@ -63,7 +63,7 @@ export default class Example {
     }
 
     protected extractValueFromEvent(event: Event): string | null {
-        return (event.target as HTMLInputElement)?.value || null;
+        return (event.target as HTMLInputElement).value || null;
     }
 
     /**

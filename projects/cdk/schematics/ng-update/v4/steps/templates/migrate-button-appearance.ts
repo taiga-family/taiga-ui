@@ -35,6 +35,7 @@ export function migrateButtonAppearance({
         findElementsWithDirective(template, selector).filter(
             ({sourceCodeLocation, attrs}) =>
                 !!sourceCodeLocation &&
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 attrs.some(({name}) => appearanceInputNameDict[name]),
         ),
     );
@@ -48,6 +49,8 @@ export function migrateButtonAppearance({
     elements.forEach(({attrs, sourceCodeLocation}: Element) => {
         const whiteBlockActiveAttr = attrs.find(
             ({value, name}) =>
+                // TODO: update after noUncheckedIndexedAccess
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 appearanceInputNameDict[name] &&
                 (value === whiteBlockValue || value === `'${whiteBlockValue}'`),
         );

@@ -118,6 +118,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     protected get hasLabel(): boolean {
-        return Boolean(this.label?.nativeElement?.childNodes.length);
+        return Boolean(this.label?.nativeElement.childNodes.length);
     }
 }

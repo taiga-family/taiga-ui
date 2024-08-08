@@ -55,9 +55,7 @@ export function migrateBadge({
             return;
         }
 
-        const svg = (childNodes as Element[])?.find(
-            (node) => node.nodeName === 'tui-svg',
-        );
+        const svg = (childNodes as Element[]).find((node) => node.nodeName === 'tui-svg');
 
         if (svg) {
             migrateIcon({svg, sourceCodeLocation, recorder, templateOffset});
@@ -90,11 +88,11 @@ function migrateIcon({
         return;
     }
 
-    const insertTo = templateOffset + (sourceCodeLocation?.startTag?.endOffset || 0) - 1;
+    const insertTo = templateOffset + (sourceCodeLocation.startTag?.endOffset || 0) - 1;
 
     recorder.insertRight(
         insertTo,
-        `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
+        `${src.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
     recorder.remove(
         svg.sourceCodeLocation?.startOffset || 0,
@@ -114,9 +112,9 @@ function migrateBadgeValue({
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
-    const selfClosing = !sourceCodeLocation?.endTag;
+    const attrValue = valueAttr.value;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
+    const selfClosing = !sourceCodeLocation.endTag;
 
     if (!attrValue || !insertTo) {
         return;
@@ -129,7 +127,7 @@ function migrateBadgeValue({
             : `{{ ${attrValue} }}${selfClosing ? '</tui-badge>' : ''}`,
     );
 
-    const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
+    const attrOffset = sourceCodeLocation.attrs?.[valueAttr.name];
 
     if (attrOffset) {
         const {startOffset, endOffset} = attrOffset;
@@ -148,7 +146,7 @@ function addTodo(
     templateOffset: number,
 ): void {
     recorder.insertRight(
-        templateOffset + (sourceCodeLocation?.startTag?.startOffset ?? 0),
+        templateOffset + (sourceCodeLocation.startTag?.startOffset ?? 0),
         '<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->\n',
     );
 }

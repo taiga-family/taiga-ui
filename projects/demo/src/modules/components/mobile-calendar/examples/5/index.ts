@@ -53,7 +53,7 @@ export default class Example {
         this.months$,
     ]).pipe(
         map(([value, months]) => {
-            if (!value?.length) {
+            if (!value.length) {
                 return 'Choose dates';
             }
 

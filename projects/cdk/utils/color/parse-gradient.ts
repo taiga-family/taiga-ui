@@ -58,7 +58,7 @@ const REGEXP_ARRAY = [
 function getPosition(match: string, stops: number): string {
     const fallback = stops === 1 ? '100%' : `${stops}%`;
 
-    return match?.includes('%') ? match : fallback;
+    return match.includes('%') ? match : fallback;
 }
 
 export function tuiParseGradient(input: string): TuiParsedGradient {

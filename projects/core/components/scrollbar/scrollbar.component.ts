@@ -72,6 +72,7 @@ export class TuiScrollbar {
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
         const scrollLeft = offsetLeft + offsetWidth / 2 - clientWidth / 2;
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         nativeElement.scrollTo?.(scrollLeft, scrollTop);
     }
 }

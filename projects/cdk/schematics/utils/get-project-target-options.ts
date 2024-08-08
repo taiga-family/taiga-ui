@@ -5,7 +5,7 @@ export function getProjectTargetOptions(
     project: workspaces.ProjectDefinition,
     buildTarget: string,
 ): Record<string, JsonArray | JsonObject | boolean | number | string | null | undefined> {
-    const buildTargetObject = project.targets?.get(buildTarget);
+    const buildTargetObject = project.targets.get(buildTarget);
 
     if (buildTargetObject?.options) {
         return buildTargetObject.options;

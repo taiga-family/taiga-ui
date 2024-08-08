@@ -120,7 +120,8 @@ export class TuiDropdownSelection
         const range =
             active && tuiIsTextfield(active) && this.el.contains(active)
                 ? this.veryVerySadInputFix(active)
-                : (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
+                : // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                  (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
 
         return range.cloneRange();
     }

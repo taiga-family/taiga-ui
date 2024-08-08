@@ -36,7 +36,7 @@ function tuiControlValueFactory<
     return control
         ? tuiControlValue(control).pipe(
               map((value) =>
-                  transformer ? transformer?.fromControlValue(value) : (value as T),
+                  transformer ? transformer.fromControlValue(value) : (value as T),
               ),
           )
         : of(null);

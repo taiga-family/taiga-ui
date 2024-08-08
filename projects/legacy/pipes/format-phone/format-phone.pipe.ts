@@ -40,7 +40,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
      * @return formatted phone number string +7(XXX)XXX-XX-XX
      */
     public transform(
-        value: string,
+        value?: string,
         countryCode = `${CHAR_PLUS}7`,
         phoneMask = '(###) ###-##-##',
     ): string {
@@ -50,6 +50,6 @@ export class TuiFormatPhonePipe implements PipeTransform {
                 'Undefined was passed to tuiFormatPhone pipe',
             );
 
-        return tuiFormatPhone(value, countryCode, phoneMask);
+        return tuiFormatPhone(value || '', countryCode, phoneMask);
     }
 }
