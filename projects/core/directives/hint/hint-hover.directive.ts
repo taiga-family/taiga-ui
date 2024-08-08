@@ -25,6 +25,7 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
     exportAs: 'tuiHintHover',
 })
 export class TuiHintHover extends TuiDriver {
+    private readonly el = tuiInjectElement();
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
@@ -72,8 +73,6 @@ export class TuiHintHover extends TuiDriver {
     public readonly type = 'hint';
 
     public enabled = true;
-
-    public readonly el = tuiInjectElement();
 
     constructor() {
         super((subscriber) => this.stream$.subscribe(subscriber));
