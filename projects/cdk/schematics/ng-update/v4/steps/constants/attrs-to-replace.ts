@@ -165,6 +165,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: '[mode]',
+            withTagNames: ['tui-marker-icon'],
+            withAttrsNames: ['tuiMarkerIcon'],
+        },
+        to: {attrName: '[appearance]'},
+    },
+    {
+        from: {
             attrName: 'tuiAction',
             withTagNames: ['button', 'a'],
             withAttrsNames: ['tuiMarkerIcon'],
