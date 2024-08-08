@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Directive, inject, Input} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, Input, NgZone} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
@@ -14,12 +14,11 @@ import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 export class TuiProgressColorSegments {
     private readonly colors$ = new BehaviorSubject<string[]>([]);
     private readonly el = tuiInjectElement<HTMLProgressElement>();
-    private readonly resize$ = inject(ResizeObserverService);
 
     protected readonly color = toSignal(
         combineLatest([
             this.colors$,
-            this.resize$.pipe(
+            inject(ResizeObserverService).pipe(
                 map(() => this.el.offsetWidth),
                 distinctUntilChanged(),
             ),
@@ -34,6 +33,7 @@ export class TuiProgressColorSegments {
 
                 return `linear-gradient(to right ${colorsString})`;
             }),
+            tuiZonefull(inject(NgZone)),
             tuiWatch(inject(ChangeDetectorRef)),
         ),
     );
