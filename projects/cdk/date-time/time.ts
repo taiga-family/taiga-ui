@@ -24,7 +24,16 @@ export class TuiTime implements TuiTimeLike {
     ) {
         ngDevMode &&
             console.assert(
-                TuiTime.isValidTime(hours, minutes, seconds, ms),
+                // Currently `TuiTime` could have hours more than 23
+                // in order to not break current behaviour of `isValidTime` the logic is duplicated
+                Number.isInteger(hours) &&
+                    tuiInRange(hours, 0, Infinity) &&
+                    Number.isInteger(minutes) &&
+                    tuiInRange(minutes, 0, MINUTES_IN_HOUR) &&
+                    Number.isInteger(seconds) &&
+                    tuiInRange(seconds, 0, SECONDS_IN_MINUTE) &&
+                    Number.isInteger(ms) &&
+                    tuiInRange(ms, 0, 1000),
                 'Time must be real, but got:',
                 hours,
                 minutes,
