@@ -48,14 +48,14 @@ function addTuiRoot(filePath: string, context: SchematicContext, tree: Tree): vo
     );
 }
 
-function getAppTemplatePath(mainPath: string): string | undefined {
+function getAppTemplatePath(mainPath: string): string {
     const standaloneBootstrapFunction = getStandaloneBootstrapFunction(mainPath);
 
     if (standaloneBootstrapFunction) {
         const [componentIdentifier] = standaloneBootstrapFunction.getArguments();
         const component = getComponentFromIdentifier(componentIdentifier);
 
-        return component && getTemplatePathFromComponent(component);
+        return (component && getTemplatePathFromComponent(component)) || '';
     }
 
     const mainModule = getMainModule(mainPath);
@@ -65,8 +65,8 @@ function getAppTemplatePath(mainPath: string): string | undefined {
         'declarations',
     );
 
-    if (!Node.isArrayLiteralExpression(mainInitializer)) {
-        return;
+    if (!mainInitializer || !Node.isArrayLiteralExpression(mainInitializer)) {
+        return '';
     }
 
     const appIdentifier = mainInitializer.getElements()[0] as Identifier;
@@ -93,26 +93,26 @@ function getTemplateInitializer(
     classDeclaration: ClassDeclaration,
     decoratorName: string,
     propertyName: string,
-): Expression | undefined {
+): Expression | null {
     const decorator = classDeclaration.getDecorator(decoratorName);
 
     if (!decorator) {
-        return;
+        return null;
     }
 
     const [metadata] = decorator.getArguments();
 
     if (!Node.isObjectLiteralExpression(metadata)) {
-        return;
+        return null;
     }
 
     const property = metadata.getProperty(propertyName);
 
     if (!Node.isPropertyAssignment(property)) {
-        return;
+        return null;
     }
 
-    return property.getInitializer();
+    return property.getInitializer() ?? null;
 }
 
 export function wrapWithTuiRoot(options: TuiSchema): Rule {
