@@ -89,6 +89,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_NON_DIGITS_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiAlertContext', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiAlertContext', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiAlertModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -588,6 +592,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiEditorSocket', moduleSpecifier: '@taiga-ui/editor'},
     },
     {
+        from: {name: 'TuiToolbarModule', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiToolbar', moduleSpecifier: '@taiga-ui/editor'},
+    },
+    {
         from: {name: 'defaultEditorExtensions', moduleSpecifier: '@tinkoff/tui-editor'},
         to: {name: 'TUI_EDITOR_DEFAULT_EXTENSIONS', moduleSpecifier: '@taiga-ui/editor'},
     },
@@ -882,11 +890,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiConfirmationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiConfirmationComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
             name: 'TuiConfirmDialogModule',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiConfirmDialogComponent',
+            name: 'TuiConfirmDialog',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },

@@ -180,4 +180,16 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TuiIllustrationModePipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
     },
+    {
+        name: 'TUI_IS_MOBILE_RES',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'use TuiBreakpointService instead of TUI_IS_MOBILE_RES. Learn more https://taiga-ui.dev/services/breakpoint-service',
+    },
+    {
+        name: 'TUI_ANIMATIONS_DURATION',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ANIMATIONS_DURATION is deleted. Use TUI_ANIMATIONS_SPEED instead (300ms divided by your previous value of TUI_ANIMATIONS_DURATION)',
+    },
 ];
