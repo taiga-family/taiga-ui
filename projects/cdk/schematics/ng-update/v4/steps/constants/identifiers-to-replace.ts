@@ -89,6 +89,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_NON_DIGITS_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiAlertContext', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiAlertContext', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiAlertModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiAlert', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -882,11 +886,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiConfirmationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiConfirmationComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
             name: 'TuiConfirmDialogModule',
             moduleSpecifier: '@taiga-ui/proprietary-core',
         },
         to: {
-            name: 'TuiConfirmDialogComponent',
+            name: 'TuiConfirmDialog',
             moduleSpecifier: '@taiga-ui/proprietary',
         },
     },
