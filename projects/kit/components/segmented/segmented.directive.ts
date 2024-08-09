@@ -1,13 +1,13 @@
 import {isPlatformBrowser} from '@angular/common';
 import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
 import {
-    PLATFORM_ID,
     ContentChildren,
     DestroyRef,
     Directive,
     ElementRef,
     HostListener,
     inject,
+    PLATFORM_ID,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
