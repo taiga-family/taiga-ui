@@ -47,6 +47,7 @@ export default class Page {
     protected max = this.maxVariants[0];
 
     protected single = true;
+    protected multi = false;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiDay>

@@ -117,7 +117,7 @@ describe('Mobile calendar', () => {
             cy.get('[automation-id="tui-mobile-calendar__confirm"]').click();
             cy.get('@onConfirmSpy').should(
                 'be.calledWith',
-                new TuiDayRange(today, today),
+                new TuiDayRange(today, tomorrow),
             );
         });
 
