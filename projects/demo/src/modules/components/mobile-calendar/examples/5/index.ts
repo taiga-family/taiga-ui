@@ -49,7 +49,7 @@ export default class Example {
     );
 
     protected readonly date$ = combineLatest([
-        tuiControlValue<readonly TuiDay[]>(this.control),
+        tuiControlValue<readonly TuiDay[] | undefined>(this.control),
         this.months$,
     ]).pipe(
         map(([value, months]) => {

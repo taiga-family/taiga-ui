@@ -49,7 +49,7 @@ describe('rangeCalendarComponent', () => {
     })
     class Test {
         @ViewChild(TuiCalendarRange)
-        public readonly component!: TuiCalendarRange;
+        public readonly component?: TuiCalendarRange;
 
         public readonly control = new FormControl(
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
@@ -71,7 +71,7 @@ describe('rangeCalendarComponent', () => {
     let fixture: ComponentFixture<Test>;
     let testComponent: Test;
     let pageObject: TuiPageObject<Test>;
-    let component: TuiCalendarRange;
+    let component: TuiCalendarRange | undefined;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
@@ -139,7 +139,7 @@ describe('rangeCalendarComponent', () => {
             testComponent.min = min;
             fixture.detectChanges();
 
-            component['onItemSelect'](component.items[5]);
+            component?.['onItemSelect'](component.items[5]);
             fixture.detectChanges();
 
             expect(
@@ -189,7 +189,7 @@ describe('rangeCalendarComponent', () => {
             const previousMonth = today.append({month: -1});
             const title = 'New interval';
 
-            component['onItemSelect'](component.items[0]);
+            component?.['onItemSelect'](component.items[0]);
             fixture.detectChanges();
 
             testComponent.items = [
@@ -216,7 +216,7 @@ describe('rangeCalendarComponent', () => {
             ];
             fixture.detectChanges();
 
-            component['onItemSelect'](component.items[1]);
+            component?.['onItemSelect'](component.items[1]);
             fixture.detectChanges();
 
             const items = getItems();
@@ -226,7 +226,7 @@ describe('rangeCalendarComponent', () => {
         });
 
         it('should update selectedActivePeriod after onItemSelect', () => {
-            component['onItemSelect'](component.items[1]);
+            component?.['onItemSelect'](component.items[1]);
             expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
                 'Today',
             );
@@ -238,10 +238,10 @@ describe('rangeCalendarComponent', () => {
             testComponent.min = minDate;
             fixture.detectChanges();
 
-            component.ngOnInit();
+            component?.ngOnInit();
             fixture.detectChanges();
 
-            expect(component.defaultViewedMonth).toEqual(minDate);
+            expect(component?.defaultViewedMonth).toEqual(minDate);
         });
     });
 

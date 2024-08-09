@@ -69,7 +69,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly directive?: TuiTextfieldDirective;
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
-    protected readonly label?: ElementRef<HTMLElement>;
+    protected readonly label?: ElementRef<HTMLElement | undefined>;
 
     @ContentChild(NgControl)
     protected readonly control?: NgControl;

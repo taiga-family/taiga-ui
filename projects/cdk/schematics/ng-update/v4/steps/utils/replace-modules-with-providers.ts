@@ -72,12 +72,14 @@ function addProvider(identifier: ProviderToReplace, filePath: string): void {
 
     const componentClass = getNgComponents(filePath)[0];
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (componentClass) {
         addProviderToComponent(componentClass, provider);
     }
 
     const moduleClass = getNgModules(filePath)[0];
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (moduleClass) {
         addProviderToNgModule(moduleClass, provider);
     }

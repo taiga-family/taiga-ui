@@ -42,11 +42,11 @@ export function migrateMoney({
             return;
         }
 
-        const insertTo = sourceCodeLocation?.endTag?.startOffset ?? 0;
+        const insertTo = sourceCodeLocation.endTag?.startOffset ?? 0;
         const value = isBinding(valueAttr) ? valueAttr.value : `'${valueAttr.value}'`;
         const currency =
             currencyAttr && isBinding(currencyAttr)
-                ? currencyAttr?.value
+                ? currencyAttr.value
                 : `'${currencyAttr?.value}'`;
 
         recorder.insertRight(
@@ -70,7 +70,7 @@ export function migrateMoney({
 
             const formatPart = `[tuiNumberFormat]='${format}'`;
 
-            const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
+            const insertTo = (sourceCodeLocation.startTag?.startOffset || 0) + 1;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);
         }

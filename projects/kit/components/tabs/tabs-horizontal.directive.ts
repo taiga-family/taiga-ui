@@ -93,6 +93,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     private scrollTo(index: number): void {
         const element = this.tabs.tabs[index];
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!element) {
             return;
         }

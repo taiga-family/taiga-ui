@@ -22,7 +22,7 @@ import {TuiSegmented} from './segmented.component';
 })
 export class TuiSegmentedDirective implements AfterContentChecked, AfterContentInit {
     @ContentChildren(NgControl, {descendants: true})
-    private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
+    private readonly controls: QueryList<NgControl | undefined> = EMPTY_QUERY;
 
     @ContentChildren(RouterLinkActive)
     private readonly links: QueryList<RouterLinkActive> = EMPTY_QUERY;
