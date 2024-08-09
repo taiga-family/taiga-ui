@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18385],{18385:t=>{t.exports='```html\n<tui-tiles [(items)]="items">\n  <tui-tile\n    *ngFor="let item of items"\n    [width]="item.w"\n    [height]="item.h"\n  >\n    <tui-icon\n      tuiTileHandle\n      icon="@tui.grip-vertical"\n    />\n    {{ item.content }}\n  </tui-tile>\n</tui-tiles>\n```\n'}}]);

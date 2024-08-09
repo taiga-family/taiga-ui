@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58348],{58348:n=>{n.exports=":host {\n    display: block;\n}\n\n.video {\n    float: left;\n    margin-right: 1.5rem;\n}\n"}}]);

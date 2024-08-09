@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26492],{26492:n=>{n.exports=".wrapper {\n    padding: 0.75rem;\n\n    &_dark {\n        background-color: #30406a;\n    }\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68020],{68020:n=>{n.exports="```ts\nimport {TuiActiveZone} from '@taiga-ui/cdk';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiActiveZone,\n  ],\n  // ...\n})\nexport class Example {\n  active = false;\n\n  onActiveZone(active: boolean) {\n    this.active = active;\n  }\n}\n```\n"}}]);

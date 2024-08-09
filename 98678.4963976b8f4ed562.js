@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98678],{98678:n=>{n.exports='<div\n    tuiHint="Wow! How exciting!"\n    tuiHintDirection="top-left"\n    tuiHintPointer\n    class="block"\n>\n    <p>In this block hint follows cursor</p>\n</div>\n'}}]);

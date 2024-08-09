@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24842],{24842:e=>{e.exports='```html\n<tui-icon tuiTooltip="Please don\'t touch this" />\n```\n'}}]);

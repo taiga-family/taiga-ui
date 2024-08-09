@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[64992],{64992:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.scroll {\n    .scrollbar-hidden();\n    height: 200px;\n\n    --tui-duration: 0;\n}\n"}}]);

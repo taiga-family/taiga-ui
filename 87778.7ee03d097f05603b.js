@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87778],{87778:a=>{a.exports=".bars {\n    height: 6.25rem;\n    width: 3.75rem;\n    margin-bottom: 3.125rem;\n    box-shadow: 0 1px var(--tui-border-normal);\n\n    --tui-chart-categorical-00: var(--tui-background-accent-1);\n    --tui-chart-categorical-01: var(--tui-background-accent-1);\n}\n"}}]);

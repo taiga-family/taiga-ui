@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[79288],{79288:e=>{e.exports="form {\n    width: max-content;\n    display: flex;\n    align-items: flex-start;\n    gap: 1rem;\n    margin-bottom: 1rem;\n}\n"}}]);

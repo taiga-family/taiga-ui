@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91722],{91722:t=>{t.exports='<tui-segmented>\n    <button>Dynamic width</button>\n    <button>Items</button>\n</tui-segmented>\n\n<tui-segmented class="full">\n    <button>Fixed width</button>\n    <button tuiFade>with fadeout effect</button>\n</tui-segmented>\n'}}]);

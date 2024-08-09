@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[33900],{33900:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.input1 {\n    border: 2px solid var(--tui-status-negative);\n    padding: 0.625rem;\n    font-size: 1.25rem;\n    text-align: center;\n}\n"}}]);

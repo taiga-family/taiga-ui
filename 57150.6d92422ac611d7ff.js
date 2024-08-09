@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57150],{57150:e=>{e.exports=".success {\n    position: relative;\n    color: var(--tui-text-positive);\n    height: 1rem;\n    width: 1rem;\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32195],{21832:(e,s,a)=>{a.r(s),a.d(s,{TUI_BELARUSIAN_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Паказаць/Схаваць",paginationTexts:{pages:"Старонак",linesPerPage:"Радкоў на старонку",of:"з"}}}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[4072],{4072:s=>{s.exports='<span tuiStatus="var(--tui-status-positive)">Success</span>\n<p>Status is automatically colored within some badge appearances</p>\n<tui-badge\n    appearance="success"\n    tuiStatus\n>\n    Success\n</tui-badge>\n'}}]);

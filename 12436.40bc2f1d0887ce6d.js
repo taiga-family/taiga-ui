@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12436],{12436:e=>{e.exports=".invert {\n    color: inherit;\n    filter: invert(1);\n}\n"}}]);

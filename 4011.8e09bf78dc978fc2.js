@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[4011],{4011:n=>{n.exports=":host {\n    display: block;\n    margin: -1.25rem;\n    padding: 1.25rem;\n    background: var(--tui-background-accent-1);\n    color: var(--tui-text-primary-on-accent-1);\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[86584],{86584:n=>{n.exports=".item {\n    border-radius: inherit;\n    font-weight: normal;\n}\n\n._hidden {\n    visibility: hidden;\n}\n\ntui-icon {\n    width: 1rem;\n    height: 1rem;\n}\n"}}]);

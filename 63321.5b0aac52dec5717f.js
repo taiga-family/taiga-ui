@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[63321],{63321:e=>{e.exports='<tui-input-year\n    [formControl]="control"\n    [tuiTextfieldCleaner]="true"\n>\n    Choose a year\n    <input\n        placeholder="Not 2022 please"\n        tuiTextfieldLegacy\n    />\n</tui-input-year>\n'}}]);

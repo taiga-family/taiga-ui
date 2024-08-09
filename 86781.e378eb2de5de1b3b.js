@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[86781],{86781:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.box {\n    width: 16rem;\n    height: 16rem;\n    background: var(--tui-background-base-alt);\n}\n\n.content {\n    padding: 0 0.6875rem;\n}\n\np {\n    color: fade(#fff, 72%);\n    white-space: nowrap;\n}\n"}}]);

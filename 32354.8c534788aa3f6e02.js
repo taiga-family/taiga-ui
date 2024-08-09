@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32354],{32354:e=>{e.exports="```html\n<tui-calendar-month></tui-calendar-month>\n```\n"}}]);
