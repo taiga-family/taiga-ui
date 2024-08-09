@@ -22,5 +22,7 @@ export function tuiDrawCurve(
         smoothing,
     );
 
-    return `C ${cpsX},${cpsY} ${cpeX},${cpeY} ${array[index][0]},${array[index][1]}`;
+    const point = array[index] ?? [0, 0];
+
+    return `C ${cpsX},${cpsY} ${cpeX},${cpeY} ${point[0]},${point[1]}`;
 }

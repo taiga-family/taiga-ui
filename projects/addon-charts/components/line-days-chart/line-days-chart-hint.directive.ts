@@ -64,13 +64,15 @@ export class TuiLineDaysChartHint implements AfterContentInit {
 
     public raise(day: TuiDay): void {
         const current = this.charts
-            .map(({value}) => find(value, day))
+            .map(({value}) => (day ? find(value, day) : []))
             .filter(([_, value]) => !Number.isNaN(value));
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
         this.charts.forEach((chart, index) => {
+            const item = current[index];
+
             chart.onHovered(day);
-            chart.zIndex = Math.max(sorted.indexOf(current[index]), 0);
+            chart.zIndex = Math.max(item ? sorted.indexOf(item) : 0, 0);
         });
     }
 

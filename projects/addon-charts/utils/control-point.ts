@@ -4,18 +4,19 @@ import {tuiLineAngle} from './line-angle';
 import {tuiLineLength} from './line-length';
 
 export function tuiControlPoint(
-    current: TuiPoint,
+    current?: TuiPoint,
     previous?: TuiPoint,
     next?: TuiPoint,
     reverse = false,
     smoothing = 0.2,
 ): TuiPoint {
-    const p = previous || current;
-    const n = next || current;
+    const fallback = current || ([0, 0] as const);
+    const p = previous || current || ([0, 0] as const);
+    const n = next || current || ([0, 0] as const);
     const angle = tuiLineAngle(p, n) + (reverse ? Math.PI : 0);
     const length = tuiLineLength(p, n) * smoothing;
-    const x = current[0] + Math.cos(angle) * length;
-    const y = current[1] + Math.sin(angle) * length;
+    const x = fallback[0] + Math.cos(angle) * length;
+    const y = fallback[1] + Math.sin(angle) * length;
 
     return [x, y];
 }
