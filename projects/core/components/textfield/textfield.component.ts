@@ -57,7 +57,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     ],
     host: {
         '[style.--t-side.px]': 'side',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._disabled]': 'el?.nativeElement.disabled',
     },
