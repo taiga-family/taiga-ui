@@ -105,6 +105,7 @@ export function migrateAlertService(options: TuiSchema): void {
 
             const [, arg] = callExpression.getArguments();
 
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             return arg?.isKind(SyntaxKind.PropertyAccessExpression)
                 ? findOptionsInitializer(arg)
                 : arg;
@@ -163,7 +164,7 @@ function toAlertServiceOpenCallExpression(node?: Node): CallExpression | undefin
 }
 
 function findOptionsInitializer(
-    ref: PropertyAccessExpression,
+    ref: PropertyAccessExpression | undefined,
 ): ObjectLiteralExpression | undefined {
     return ref
         ?.getFirstChildByKind(SyntaxKind.Identifier)

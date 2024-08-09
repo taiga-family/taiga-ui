@@ -83,7 +83,7 @@ export class PayModal implements OnInit {
     protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
-    protected amount: number = this.context?.data?.amount ?? 0;
+    protected amount: number = this.context.data.amount;
     protected readonly PAYMENT_MODE = PaymentMode;
 
     public ngOnInit(): void {

@@ -138,7 +138,7 @@ export class TuiCalendarMonth {
             value.isSingleMonth;
         const hoveredItemIsCandidateToBeFrom =
             hoveredItem?.monthSame(item) &&
-            hoveredItem?.monthBefore(value.from) &&
+            hoveredItem.monthBefore(value.from) &&
             value.isSingleMonth;
 
         if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidateToBeFrom) {
@@ -152,7 +152,7 @@ export class TuiCalendarMonth {
             value.isSingleMonth;
         const hoveredItemIsCandidateToBeTo =
             hoveredItem?.monthSame(item) &&
-            hoveredItem?.monthAfter(value.from) &&
+            hoveredItem.monthAfter(value.from) &&
             value.isSingleMonth;
 
         if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidateToBeTo) {

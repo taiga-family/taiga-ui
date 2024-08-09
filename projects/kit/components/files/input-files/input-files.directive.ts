@@ -57,7 +57,7 @@ export class TuiInputFilesDirective
         this.onChange(
             this.input.multiple
                 ? [...toArray(this.value()), ...Array.from(files)]
-                : files[0] || null,
+                : files[0],
         );
     }
 

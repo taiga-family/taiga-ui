@@ -16,6 +16,7 @@ export function tuiGetElementObscures(
 ): readonly [Element, Element, Element, Element] | [] | null {
     const {ownerDocument} = element;
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ownerDocument?.defaultView || !element.getBoundingClientRect) {
         return null;
     }

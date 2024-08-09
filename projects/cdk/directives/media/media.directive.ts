@@ -47,15 +47,15 @@ export class TuiMedia {
     @Input()
     public set paused(paused: boolean) {
         if (paused) {
-            this.el.pause?.();
+            this.el.pause();
         } else {
-            void this.el.play?.();
+            void this.el.play();
             this.updatePlaybackRate(this.playbackRate);
         }
     }
 
     public get currentTime(): number {
-        return this.el.currentTime ?? 0;
+        return this.el.currentTime;
     }
 
     public get paused(): boolean {

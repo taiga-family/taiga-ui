@@ -60,6 +60,7 @@ function replaceProperties(
     const statement = parent.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     identifier?.findReferencesAsNodes().forEach((ref) => {
         let parent = ref.getParent();
 

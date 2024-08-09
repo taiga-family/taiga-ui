@@ -36,7 +36,7 @@ export class TuiAmountPipe implements PipeTransform {
                 });
                 const space =
                     currencySymbol &&
-                    (currencySymbol?.length > 1 || currencyAlign === 'right')
+                    (currencySymbol.length > 1 || currencyAlign === 'right')
                         ? CHAR_NO_BREAK_SPACE
                         : '';
 

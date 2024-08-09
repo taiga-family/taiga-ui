@@ -35,6 +35,6 @@ export default class Example {
     });
 
     protected get postfix(): string {
-        return this.testForm.value?.isPm ? 'PM' : 'AM';
+        return this.testForm.value.isPm ? 'PM' : 'AM';
     }
 }

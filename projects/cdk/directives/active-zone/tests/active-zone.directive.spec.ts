@@ -88,7 +88,7 @@ describe('TuiActiveZone', () => {
             this.childActive = active;
         }
 
-        public onClick(element: HTMLInputElement): void {
+        public onClick(element?: HTMLInputElement): void {
             element?.focus();
         }
     }
