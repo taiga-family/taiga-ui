@@ -25,7 +25,7 @@ import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
-import {TuiGroup} from '@taiga-ui/core/components/group';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';

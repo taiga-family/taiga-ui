@@ -4,7 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/components/group';
+import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
 import {TuiAccordionItem} from './accordion-item.component';

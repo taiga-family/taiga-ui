@@ -3,8 +3,6 @@
 tui-textfield {
     .transition(color);
 
-    --t-left: 0rem;
-    --t-right: 0rem;
     --t-height: var(--tui-height-l);
 
     position: relative;
@@ -163,8 +161,8 @@ tui-textfield {
         appearance: none;
         box-sizing: border-box;
         border: none;
-        border-inline-start: var(--t-left) solid transparent !important;
-        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent !important;
+        border-inline-start: var(--t-left, 0) solid transparent !important;
+        border-inline-end: calc(var(--t-right, 0rem) + var(--t-side)) solid transparent !important;
         border-radius: inherit;
         padding: inherit;
     }

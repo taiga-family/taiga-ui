@@ -5,7 +5,6 @@ export * from '@taiga-ui/core/components/data-list';
 export * from '@taiga-ui/core/components/dialog';
 export * from '@taiga-ui/core/components/error';
 export * from '@taiga-ui/core/components/expand';
-export * from '@taiga-ui/core/components/group';
 export * from '@taiga-ui/core/components/icon';
 export * from '@taiga-ui/core/components/label';
 export * from '@taiga-ui/core/components/link';

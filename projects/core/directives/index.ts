@@ -1,6 +1,7 @@
 export * from '@taiga-ui/core/directives/appearance';
 export * from '@taiga-ui/core/directives/date-format';
 export * from '@taiga-ui/core/directives/dropdown';
+export * from '@taiga-ui/core/directives/group';
 export * from '@taiga-ui/core/directives/hint';
 export * from '@taiga-ui/core/directives/icons';
 export * from '@taiga-ui/core/directives/number-format';

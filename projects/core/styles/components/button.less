@@ -35,10 +35,6 @@
     font: var(--tui-font-text-m);
     font-weight: bold;
 
-    &[tuiIcons]::after {
-        margin: 0 -0.25rem 0 0.25rem;
-    }
-
     > .t-loader {
         .center-all();
 
@@ -56,10 +52,6 @@
 
         font: var(--tui-font-text-s);
 
-        &::after {
-            margin: var(--t-margin);
-        }
-
         tui-svg,
         tui-icon,
         &::before {
@@ -75,10 +67,6 @@
         --t-margin: -0.125rem;
 
         font: var(--tui-font-text-s);
-
-        &::after {
-            margin: var(--t-margin);
-        }
 
         tui-svg,
         tui-icon,
@@ -98,7 +86,6 @@
         font-weight: bold;
 
         &::after {
-            margin: var(--t-margin);
             margin-inline-end: -0.125rem;
         }
     }

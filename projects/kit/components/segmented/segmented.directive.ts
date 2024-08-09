@@ -1,3 +1,4 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
 import {
     ContentChildren,
@@ -6,6 +7,7 @@ import {
     ElementRef,
     HostListener,
     inject,
+    PLATFORM_ID,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
@@ -13,7 +15,7 @@ import {RouterLinkActive} from '@angular/router';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {EMPTY, switchMap} from 'rxjs';
+import {filter, merge, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
 
@@ -34,10 +36,14 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     private readonly component = inject(TuiSegmented);
     private readonly el = tuiInjectElement();
 
+    // TODO: Debug prerender
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
-                switchMap(() => this.controls.last?.valueChanges || EMPTY),
+                switchMap((controls) => merge(controls.map((c) => c.valueChanges))),
+                filter(() => this.isBrowser),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
