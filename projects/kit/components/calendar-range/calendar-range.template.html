@@ -3,6 +3,7 @@
     automation-id="tui-calendar-range__calendars"
     tuiPreventDefault="mousedown"
     [defaultViewedMonthFirst]="defaultViewedMonth"
+    [defaultViewedMonthSecond]="defaultViewedMonth | tuiMapper: monthOffset : 1"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
     [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"

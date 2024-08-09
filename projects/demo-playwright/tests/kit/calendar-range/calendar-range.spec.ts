@@ -26,5 +26,16 @@ describe('CalendarRange', () => {
             await documentationPage.prepareApiPageBeforeScreenshot();
             await expect(page).toHaveScreenshot('calendar-range-max-length-click.png');
         });
+
+        test('When set defaultViewedMonth, calendar shows defaultViewedMonth', async ({
+            page,
+        }) => {
+            await tuiGoto(page, 'components/calendar-range/API?defaultViewedMonth$=2');
+
+            await documentationPage.prepareApiPageBeforeScreenshot();
+            await expect(page).toHaveScreenshot(
+                'calendar-range-default-viewed-month.png',
+            );
+        });
     });
 });

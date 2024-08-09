@@ -120,6 +120,9 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
+    readonly monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, month) =>
+        value.append({month});
+
     readonly mapper: TuiTypedMapper<
         [
             readonly TuiDayRangePeriod[],
