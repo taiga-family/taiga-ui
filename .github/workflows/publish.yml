@@ -29,14 +29,15 @@ jobs:
         id: info
         run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Announce to Time messenger
-        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.4
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-        with:
-          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
-          channel: ${{ secrets.ANNOUNCE_TARGET }}
-          version: ${{ steps.info.outputs.version }}
 # TODO: uncomment later
+#      - name: Announce to Time messenger
+#        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.4
+#        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
+#        with:
+#          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
+#          channel: ${{ secrets.ANNOUNCE_TARGET }}
+#          version: ${{ steps.info.outputs.version }}
+
 #      - name: Announce to Telegram messenger
 #        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.4
 #        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
