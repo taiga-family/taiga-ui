@@ -7,6 +7,7 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+    allow-failure: true
     env:
       NX_SKIP_NX_CACHE: true
     steps:
@@ -29,24 +30,23 @@ jobs:
         id: info
         run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-# TODO: uncomment later
-#      - name: Announce to Time messenger
-#        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.4
-#        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-#        with:
-#          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
-#          channel: ${{ secrets.ANNOUNCE_TARGET }}
-#          version: ${{ steps.info.outputs.version }}
+      - name: Announce to Time messenger
+        uses: taiga-family/ci/actions/messenger/time/announce@v1.66.4
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
+        with:
+          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
+          channel: ${{ secrets.ANNOUNCE_TARGET }}
+          version: ${{ steps.info.outputs.version }}
 
-#      - name: Announce to Telegram messenger
-#        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.4
-#        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-#        with:
-#          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
-#          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
-#          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
-#          version: ${{ steps.info.outputs.version }}
-#          textLink: '@taiga-ui/cdk'
+      - name: Announce to Telegram messenger
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.4
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
+        with:
+          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
+          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
+          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
+          version: ${{ steps.info.outputs.version }}
+          textLink: '@taiga-ui/cdk'
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
