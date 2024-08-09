@@ -178,7 +178,7 @@ export const DemoRoute = {
     Touchable: '/directives/touchable',
     Validator: '/directives/validator',
     ValueChanges: '/directives/value-changes',
-    Media: '/media',
+    Media: '/directives/media',
     Theme: '/directives/theme',
     AutoFocus: '/directives/auto-focus',
     Currency: '/pipes/currency',

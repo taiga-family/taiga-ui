@@ -15,7 +15,6 @@ const EXCEPTIONS = [
     `${DemoRoute.Colors}/Base_palette`,
     `${DemoRoute.Colors}/Support_palette`,
     `${DemoRoute.Colors}/Setup`,
-    `${DemoRoute.IconsOverview}/Component`,
     `${DemoRoute.DialogLazyRoutable}/Setup`,
     `${DemoRoute.DialogRoutable}/NamedOutlet`,
     `${DemoRoute.DialogRoutable}/Setup`,
@@ -23,7 +22,6 @@ const EXCEPTIONS = [
     `${DemoRoute.Portals}/Setup`,
     `${DemoRoute.Viewport}/Setup`,
     `${DemoRoute.Surface}/Layers`,
-    `${DemoRoute.IconsOverview}/Setup`,
 ];
 
 /**
