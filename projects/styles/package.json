@@ -1,10 +1,10 @@
 {
     "name": "@taiga-ui/styles",
-    "version": "4.0.0-rc.10",
+    "version": "4.0.0",
     "description": "Global Styles for Taiga UI",
     "peerDependencies": {
-        "@taiga-ui/cdk": "^4.0.0-rc.10",
-        "@taiga-ui/core": "^4.0.0-rc.10",
+        "@taiga-ui/cdk": "^4.0.0",
+        "@taiga-ui/core": "^4.0.0",
         "tslib": "^2.6.3"
     }
 }
