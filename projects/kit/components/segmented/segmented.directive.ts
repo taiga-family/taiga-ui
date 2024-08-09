@@ -1,11 +1,7 @@
 import {isPlatformBrowser} from '@angular/common';
+import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
 import {
-    AfterContentChecked,
-    AfterContentInit,
     PLATFORM_ID,
-    QueryList,
-} from '@angular/core';
-import {
     ContentChildren,
     DestroyRef,
     Directive,
