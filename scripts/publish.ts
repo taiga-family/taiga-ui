@@ -23,7 +23,7 @@ const path = getValueByFlag<string>('--path', '');
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);
 
-        return;
+        process.exit(1);
     }
 
     infoLog(`name: ${packageJson.name}`);
