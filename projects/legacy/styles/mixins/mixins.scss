@@ -37,12 +37,6 @@
     appearance: none;
     word-break: keep-all;
     -webkit-text-fill-color: currentColor; // for Safari
-
-    @include ios-only {
-        &:active {
-            font-size: 1rem;
-        }
-    }
 }
 
 @mixin visually-hidden() {
