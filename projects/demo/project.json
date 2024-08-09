@@ -76,6 +76,22 @@
                     "statsJson": false,
                     "progress": false
                 },
+                "gh-pages": {
+                    "fileReplacements": [
+                        {
+                            "replace": "{projectRoot}/src/environments/environment.ts",
+                            "with": "{projectRoot}/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "buildOptimizer": true,
+                    "statsJson": false,
+                    "progress": false,
+                    "baseHref": "/"
+                },
                 "development": {
                     "baseHref": "/"
                 },
@@ -214,7 +230,7 @@
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "browserTarget": "{projectName}:build:production",
+                "browserTarget": "{projectName}:build:gh-pages",
                 "serverTarget": "{projectName}:server:production",
                 "routesFile": "projects/{projectName}/routes.txt",
                 "guessRoutes": false
