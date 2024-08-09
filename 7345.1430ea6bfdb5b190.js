@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7345],{7345:n=>{n.exports="```ts\nimport {clamp} from '@taiga-ui/cdk';\n\n// ...\nclamped = clamp(value, min, max);\n// ...\n```\n"}}]);

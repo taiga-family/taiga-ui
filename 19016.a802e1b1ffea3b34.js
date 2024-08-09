@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19016],{19016:e=>{e.exports='<div class="search-content">\n    <p class="search-title">Search</p>\n\n    <tui-textfield>\n        <label tuiLabel>What do you want to find?</label>\n        <input\n            tuiAutoFocus\n            tuiTextfield\n        />\n    </tui-textfield>\n</div>\n'}}]);

@@ -1,0 +1,17 @@
+<!-- @license lucide-static v0.411.0 - ISC -->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="lucide lucide-bar-chart-big"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path vector-effect="non-scaling-stroke" d="M3 3v18h18" />
+    <rect x="7" y="10" vector-effect="non-scaling-stroke" width="4" height="7" rx="1" />
+    <rect x="15" y="5" vector-effect="non-scaling-stroke" width="4" height="12" rx="1" />
+</svg>

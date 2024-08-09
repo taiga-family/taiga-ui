@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47321],{47321:e=>{e.exports="tui-progress-circle {\n    transition: color 2s;\n}\n"}}]);

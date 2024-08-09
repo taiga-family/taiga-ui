@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22328],{22328:n=>{n.exports=".block {\n    width: 10rem;\n    height: 5rem;\n    margin-top: 2rem;\n    border: 1px solid var(--tui-background-accent-1);\n}\n\n.block,\nbutton {\n    position: relative;\n    overflow: hidden;\n}\n"}}]);

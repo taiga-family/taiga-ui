@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[52950],{52950:e=>{e.exports="tui-badge {\n    margin: 0.5rem;\n}\n"}}]);

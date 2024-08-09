@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[88753],{88753:e=>{e.exports='<tui-combo-box [(ngModel)]="value">\n    Find the best employees\n    <input\n        placeholder="Type a name"\n        tuiTextfieldLegacy\n    />\n    <tui-data-list-wrapper\n        *tuiDataList\n        [items]="items | tuiFilterByInput"\n    />\n</tui-combo-box>\n'}}]);

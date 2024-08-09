@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82155],{82155:e=>{e.exports="```ts\n@Component({\n  standalone: true,\n  // ...\n  providers: [\n    {\n      provide: TUI_DIALOGS_CLOSE,\n      deps: [AuthService],\n      useFactory: (authService) => authService.logout$,\n    },\n  ],\n})\nexport class Example {}\n```\n"}}]);

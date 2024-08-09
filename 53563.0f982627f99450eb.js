@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53563],{53563:n=>{n.exports="<tui-elastic-container>\n    {{ current }}\n    <button\n        tuiLink\n        (click)=\"toggle()\"\n    >\n        Show {{ current === more ? 'less' : 'more' }}\n    </button>\n</tui-elastic-container>\n"}}]);

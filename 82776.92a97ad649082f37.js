@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82776],{82776:e=>{e.exports=".wrapper {\n    display: flex;\n    align-items: center;\n}\n\n.t-icon {\n    height: 1.5rem;\n    width: 1.5rem;\n    border: 0.25rem solid transparent;\n}\n"}}]);

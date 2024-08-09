@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75885],{75885:n=>{n.exports="```ts\nimport {TuiTextfieldControllerModule} from '@taiga-ui/legacy';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiTextfieldControllerModule,\n  ],\n  // ...\n})\nexport class Example {}\n```\n"}}]);
