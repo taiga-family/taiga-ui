@@ -1,26 +1,27 @@
-<h3
-    *ngIf="heading"
-    class="t-title"
->
-    <span
-        *polymorpheusOutlet="heading as text"
-        [textContent]="text"
-    ></span>
+<div class="t-title-block">
+    <h3
+        *ngIf="heading"
+        class="t-title"
+    >
+        <span
+            *polymorpheusOutlet="heading as text"
+            [textContent]="text"
+        ></span>
+    </h3>
     <a
         *ngIf="id"
-        appearance="icon"
         routerLink="."
-        size="xs"
-        tuiIconButton
+        tuiLink
         type="button"
-        class="t-link-icon"
+        class="t-link"
+        [attr.title]="copy$ | async"
+        [class.t-link-active]="route.snapshot.fragment === id"
         [fragment]="id"
-        [iconStart]="icons.link"
         (click)="copyExampleLink($event.currentTarget)"
     >
-        {{ copy$ | async }}
+        #
     </a>
-</h3>
+</div>
 <h4
     *ngIf="description"
     class="t-description"

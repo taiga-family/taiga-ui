@@ -16,12 +16,35 @@
     }
 }
 
+.t-title-block {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .t-title {
     font: var(--tui-font-heading-5);
-    margin: 0 0 0.5rem;
+    margin: 0 auto 0.5rem 0;
 
     :host-context(tui-root._mobile) & {
         font: var(--tui-font-heading-6);
+    }
+
+    &:hover + .t-link {
+        opacity: 1;
+    }
+}
+
+.t-link {
+    font: var(--tui-font-heading-6);
+    padding-right: 0.1rem;
+
+    @media not @tui-mobile {
+        font: var(--tui-font-heading-5);
+        margin-left: -1.6rem;
+
+        &:not(:hover):not(.t-link-active) {
+            opacity: 0;
+        }
     }
 }
 
@@ -87,11 +110,6 @@
         width: min-content;
         min-width: 20rem;
     }
-}
-
-.t-link-icon {
-    margin-left: 0.3rem;
-    vertical-align: baseline;
 }
 
 .t-content {
