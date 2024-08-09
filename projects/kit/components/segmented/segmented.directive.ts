@@ -13,7 +13,7 @@ import {RouterLinkActive} from '@angular/router';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {EMPTY, switchMap} from 'rxjs';
+import {merge, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
 
@@ -37,7 +37,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
-                switchMap(() => this.controls.last?.valueChanges || EMPTY),
+                switchMap((controls) => merge(controls.map((c) => c.valueChanges))),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {

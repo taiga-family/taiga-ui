@@ -24,7 +24,7 @@ import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/components/group';
+import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/directives/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,

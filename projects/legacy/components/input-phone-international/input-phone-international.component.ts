@@ -15,7 +15,7 @@ import {CHAR_PLUS, TUI_NON_DIGITS_REGEXP} from '@taiga-ui/cdk/constants';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup} from '@taiga-ui/core/components/group';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiHint} from '@taiga-ui/core/directives/hint';

@@ -28,6 +28,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -56,7 +57,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     ],
     host: {
         '[style.--t-side.px]': 'side',
-        '[attr.data-size]': 'options.size()',
+        '[attr.data-size]': 'size',
         '[class._with-label]': 'hasLabel',
         '[class._disabled]': 'el?.nativeElement.disabled',
     },
@@ -95,6 +96,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public get id(): string {
         return this.el?.nativeElement.id || '';
+    }
+
+    public get size(): TuiSizeS | TuiSizeL {
+        return this.options.size();
     }
 
     public handleOption(option: T): void {
