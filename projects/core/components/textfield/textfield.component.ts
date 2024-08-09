@@ -28,7 +28,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -98,7 +98,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return this.el?.nativeElement.id || '';
     }
 
-    public get size(): TuiSizeS | TuiSizeL {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.options.size();
     }
 

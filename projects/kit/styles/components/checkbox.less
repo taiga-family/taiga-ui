@@ -31,7 +31,7 @@
     margin: 0;
     flex-shrink: 0;
 
-    &:before {
+    &::before {
         .fullsize();
 
         content: '';
@@ -49,7 +49,7 @@
 
     &:checked,
     &:indeterminate {
-        &:before {
+        &::before {
             mask-image: var(--t-checked-icon);
             transform: scale(1);
             transition:
@@ -58,7 +58,7 @@
         }
     }
 
-    &:indeterminate:before {
+    &:indeterminate::before {
         mask-image: var(--t-indeterminate-icon);
     }
 
