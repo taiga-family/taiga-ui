@@ -50,6 +50,7 @@ export function migrateTextMixins(fileContent: string): string {
     return fileContent.replaceAll(
         MIXIN_RE,
         (originalString: string, mixinName: keyof typeof MAPPING, important = '') =>
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             MAPPING[mixinName]
                 ? `${MAPPING[mixinName].map((newValue) => `${newValue}${important};`).join('\n')}`
                 : `${originalString} // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less`,

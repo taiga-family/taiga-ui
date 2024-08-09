@@ -217,6 +217,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = new TuiDayRange(day, day);
         } else if (this.value instanceof TuiDayRange) {
             this.value = TuiDayRange.sort(this.value.from, day);
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         } else if (!this.value) {
             this.value = new TuiDayRange(day, day);
         }
@@ -255,7 +256,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => (item) =>
+    > = (disabledItemHandler, min, max: TuiDay | null) => (item) =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
@@ -270,6 +271,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         }
 
         if (!(this.value instanceof TuiDayRange)) {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             return this.value?.[0]?.year ?? this.today.year;
         }
 
@@ -287,7 +289,9 @@ export class TuiMobileCalendar implements AfterViewInit {
 
         if (!(this.value instanceof TuiDayRange)) {
             return (
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 (this.value?.[0]?.month ?? this.today.month) +
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 ((this.value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
                     MONTHS_IN_YEAR
             );

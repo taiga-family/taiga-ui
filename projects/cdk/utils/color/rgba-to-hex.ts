@@ -4,11 +4,14 @@ export function tuiRgbaToHex(color: string): string {
     }
 
     const rgb: number[] =
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         (color
             .replaceAll(/\s/g, '')
             .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i) as unknown as number[]) ??
         [];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     let alpha: number | string = (rgb?.[4] ?? '').toString().trim();
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     let hex = rgb
         ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
           (rgb[2] | (1 << 8)).toString(16).slice(1) +

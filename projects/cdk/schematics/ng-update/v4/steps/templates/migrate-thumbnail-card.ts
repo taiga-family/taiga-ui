@@ -50,8 +50,8 @@ function migrateValue({
     recorder,
     templateOffset,
 }: {
-    valueAttr: Attribute;
-    sourceCodeLocation: ElementLocation;
+    valueAttr: Attribute | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -79,6 +79,6 @@ function migrateValue({
     }
 
     if (selfClosing) {
-        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
+        recorder.remove((sourceCodeLocation?.startTag?.endOffset ?? 2) - 2, 1);
     }
 }

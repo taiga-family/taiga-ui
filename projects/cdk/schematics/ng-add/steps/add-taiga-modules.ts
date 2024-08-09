@@ -158,6 +158,7 @@ export function addTaigaModules(options: TuiSchema): Rule {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!project) {
             context.logger.warn(
                 '[WARNING]: Target project not found in current workspace',

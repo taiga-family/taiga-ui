@@ -3,7 +3,7 @@ import {ChangeDetectorRef, InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/legacy/tokens';
-import {merge, NEVER} from 'rxjs';
+import {merge} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
 import type {TuiTextfieldOptions} from './textfield.options';
@@ -73,9 +73,10 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
                 TuiTextfieldFillerDirective,
             ]
         ) => {
-            const change$ = merge(
-                ...controllers.map(({change$}) => change$ || NEVER),
-            ).pipe(tuiWatch(cdr), takeUntilDestroyed());
+            const change$ = merge(...controllers.map(({change$}) => change$)).pipe(
+                tuiWatch(cdr),
+                takeUntilDestroyed(),
+            );
 
             change$.subscribe();
 

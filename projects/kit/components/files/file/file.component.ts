@@ -32,6 +32,10 @@ import {map, of} from 'rxjs';
 import type {TuiFileLike, TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
+type WindowSSR = Omit<Window, 'File'> & {
+    File: typeof File | undefined;
+};
+
 @Component({
     standalone: true,
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
@@ -53,7 +57,7 @@ export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
-    private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+    private readonly win = inject<WindowSSR>(WA_WINDOW);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);

@@ -58,7 +58,7 @@ export class TuiSvgService {
         };
     }
 
-    private parseSrc(name: string, src: string): SafeHtml {
+    private parseSrc(name: string, src: string): SafeHtml | undefined {
         return this.sanitize(tuiProcessIcon(src, name));
     }
 

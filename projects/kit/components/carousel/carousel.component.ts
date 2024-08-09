@@ -86,7 +86,7 @@ export class TuiCarouselComponent {
     }
 
     public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
+        if (this.index === this.items.length - this.itemsCount) {
             return;
         }
 

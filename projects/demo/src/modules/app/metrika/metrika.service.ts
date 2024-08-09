@@ -5,7 +5,7 @@ import {TUI_IS_E2E, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 declare global {
     interface Window {
-        ym(
+        ym?(
             id: number | string,
             type: string,
             url: string,

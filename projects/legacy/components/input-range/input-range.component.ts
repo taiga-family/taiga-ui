@@ -59,7 +59,8 @@ export class TuiInputRangeComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChildren(TuiInputNumberComponent)
-    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
+    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent | undefined> =
+        EMPTY_QUERY;
 
     @ViewChild(TuiRange, {read: ElementRef})
     private readonly range?: ElementRef<HTMLElement>;

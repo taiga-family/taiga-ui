@@ -31,8 +31,9 @@ export class TuiNativeValidator implements Validator {
 
     @HostListener('blur')
     protected handleValidation(): void {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.el.setCustomValidity?.(
-            this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
+            this.control?.touched && this.control.invalid ? this.tuiNativeValidator : '',
         );
     }
 

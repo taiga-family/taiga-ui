@@ -55,7 +55,7 @@ export function migrateBadge({
             return;
         }
 
-        const svg = (childNodes as Element[])?.find(
+        const svg = (childNodes as Element[] | undefined)?.find(
             (node) => node.nodeName === 'tui-svg',
         );
 
@@ -78,12 +78,12 @@ function migrateIcon({
     recorder,
     templateOffset,
 }: {
-    svg: Element;
-    sourceCodeLocation: ElementLocation;
+    svg: Element | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
-    const src = findAttr(svg.attrs, 'src');
+    const src = findAttr(svg?.attrs || [], 'src');
     const srcValue = src?.value;
 
     if (!srcValue) {
@@ -94,12 +94,13 @@ function migrateIcon({
 
     recorder.insertRight(
         insertTo,
-        `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
+        `${src.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
+
     recorder.remove(
-        svg.sourceCodeLocation?.startOffset || 0,
-        (svg.sourceCodeLocation?.endOffset || 0) -
-            (svg.sourceCodeLocation?.startOffset || 0),
+        svg?.sourceCodeLocation?.startOffset || 0,
+        (svg?.sourceCodeLocation?.endOffset || 0) -
+            (svg?.sourceCodeLocation?.startOffset || 0),
     );
 }
 
@@ -109,8 +110,8 @@ function migrateBadgeValue({
     recorder,
     templateOffset,
 }: {
-    valueAttr: Attribute;
-    sourceCodeLocation: ElementLocation;
+    valueAttr: Attribute | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -138,13 +139,13 @@ function migrateBadgeValue({
     }
 
     if (selfClosing) {
-        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
+        recorder.remove((sourceCodeLocation?.startTag?.endOffset ?? 2) - 2, 1);
     }
 }
 
 function addTodo(
     recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation,
+    sourceCodeLocation: ElementLocation | undefined,
     templateOffset: number,
 ): void {
     recorder.insertRight(

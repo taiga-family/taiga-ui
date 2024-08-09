@@ -49,5 +49,6 @@ export const TUI_CODE_DICTIONARY: Record<TuiCurrency, TuiCurrencyCode> = {
 };
 
 export function tuiGetCodeByCurrency(code: TuiCurrency): TuiCurrencyCode | null {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     return TUI_CODE_DICTIONARY[code] ?? null;
 }

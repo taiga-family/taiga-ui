@@ -90,7 +90,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getSelect(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('.t-cell_value tui-select').all()) ?? [])?.[0] ?? null;
+        return (await row.locator('.t-cell_value tui-select').all())[0];
     }
 
     public async getNameProperty(row: Locator): Promise<string> {
@@ -107,16 +107,13 @@ export class TuiDocumentationApiPagePO {
 
     public async getCleaner(select: Locator): Promise<Locator | null> {
         return (
-            ((await select
+            await select
                 .locator('[automation-id="tui-primitive-textfield__cleaner"]')
-                .all()) ?? [])?.[0] ?? null
-        );
+                .all()
+        )[0];
     }
 
     public async getToggle(row: Locator): Promise<Locator | null> {
-        return (
-            ((await row.locator('.t-cell_value input[tuiSwitch]').all()) ?? [])?.[0] ??
-            null
-        );
+        return (await row.locator('.t-cell_value input[tuiSwitch]').all())[0];
     }
 }

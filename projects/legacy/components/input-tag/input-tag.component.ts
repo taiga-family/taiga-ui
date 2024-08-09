@@ -451,6 +451,7 @@ export class TuiInputTagComponent
         return value
             .reverse()
             .filter(
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 (item) => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
             )
             .reverse();

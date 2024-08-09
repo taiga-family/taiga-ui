@@ -17,6 +17,7 @@ export const PAGE_PROVIDERS: Provider[] = [
         ): readonly string[] => {
             const currentHeader = nativeElement.getAttribute('header');
             const groups =
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 seeAlsoGroups.filter((group) => group.includes(currentHeader)) || [];
 
             const seeAlsoSet = new Set(

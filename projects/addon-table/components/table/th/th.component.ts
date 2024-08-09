@@ -35,7 +35,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     @HostBinding('style.width.px')
     protected width: number | null = null;
 
-    protected readonly table = inject<TuiTableDirective<T>>(
+    protected readonly table = inject<TuiTableDirective<T> | null>(
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
@@ -85,7 +85,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     private get isCurrentAndAscDirection(): boolean {
-        return this.sorter === this.table?.sorter && this.table?.direction === -1;
+        return this.sorter === this.table?.sorter && this.table.direction === -1;
     }
 }
 

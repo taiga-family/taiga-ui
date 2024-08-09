@@ -2,7 +2,7 @@ import {tuiIsString} from '../../projects/cdk/utils/miscellaneous/is-string';
 import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {
-    deps: Record<string, Record<string, unknown> | string>;
+    deps: Record<string, Record<string, unknown> | string | undefined>;
     ignores: readonly string[];
     isPeerDependency?: boolean;
     newVersion: string;
@@ -21,7 +21,7 @@ export function bumpTuiDeps({
         .forEach((key) => {
             if (tuiIsString(deps[key])) {
                 deps[key] = isPeerDependency
-                    ? (deps[key] as string)?.replace(prevVersion, newVersion)
+                    ? (deps[key] as string | undefined)?.replace(prevVersion, newVersion)
                     : `^${newVersion}`;
             } else if (deps[key]?.hasOwnProperty('requires')) {
                 bumpTuiDeps({

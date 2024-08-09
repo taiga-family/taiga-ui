@@ -2,7 +2,11 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiInputModule} from '@taiga-ui/legacy';
+import {
+    AbstractTuiController,
+    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+    TuiInputModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -14,8 +18,8 @@ import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiInputModule} from '@taiga-ui/lega
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-            useValue: {
-                appearance: 'material-textfield',
+            useClass: class extends AbstractTuiController {
+                public readonly appearance = 'material-textfield';
             },
         },
         tuiCheckboxOptionsProvider({

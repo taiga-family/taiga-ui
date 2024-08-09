@@ -29,6 +29,7 @@ function updateTuiMatcher(options: TuiSchema): void {
         if (Node.isTypeReference(parent)) {
             const typeArguments = parent.getTypeArguments();
 
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (!typeArguments || typeArguments.length !== 1) {
                 return;
             }

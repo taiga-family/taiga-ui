@@ -80,6 +80,6 @@ const EXCEPTIONS = [
 
     writeFileSync(
         join(process.cwd(), 'projects', 'demo', 'routes.txt'),
-        routes?.join('\n') || '',
+        routes.join('\n') || '',
     );
 })();

@@ -32,7 +32,7 @@ export function getNamedImportReferences(
                      */
                     (ref) =>
                         ref.getSourceFile().getFilePath() ===
-                        specifier?.getSourceFile().getFilePath(),
+                        specifier.getSourceFile().getFilePath(),
                 ) || [],
         ),
     );

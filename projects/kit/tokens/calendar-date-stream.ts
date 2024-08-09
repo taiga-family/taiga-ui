@@ -35,9 +35,7 @@ function tuiControlValueFactory<
 ): Observable<T | null> | null {
     return control
         ? tuiControlValue(control).pipe(
-              map((value) =>
-                  transformer ? transformer?.fromControlValue(value) : (value as T),
-              ),
+              map((value) => transformer?.fromControlValue(value) ?? (value as T)),
           )
         : of(null);
 }

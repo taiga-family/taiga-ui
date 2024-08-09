@@ -6,13 +6,13 @@ import {infoLog} from '../../projects/cdk/schematics/utils/colored-log';
 export function execute(shell: string, options?: Partial<CommonExecOptions>): string {
     infoLog(`ᐅ ${shell}`);
 
-    return execSync(
+    const bash = execSync(
         shell,
         options ?? {
             stdio: 'inherit',
             encoding: 'utf8',
         },
-    )
-        ?.toString()
-        .trim();
+    ) as Buffer | undefined;
+
+    return bash?.toString().trim() ?? '';
 }

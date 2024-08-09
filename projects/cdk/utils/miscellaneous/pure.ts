@@ -83,6 +83,7 @@ export function tuiPure(
             return decorateGetter(target as () => unknown, context.name);
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (context.kind === 'method') {
             return decorateMethod(target as (...args: unknown[]) => unknown);
         }

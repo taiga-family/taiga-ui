@@ -8,6 +8,11 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
+type HTMLMediaElementSSR = Omit<HTMLMediaElement, 'pause' | 'play'> & {
+    play?(): void;
+    pause?(): void;
+};
+
 @Directive({
     standalone: true,
     selector: 'video[tuiMedia], audio[tuiMedia]',
@@ -15,7 +20,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     host: {'(durationchange)': '0'},
 })
 export class TuiMedia {
-    private readonly el = tuiInjectElement<HTMLMediaElement>();
+    private readonly el = tuiInjectElement<HTMLMediaElementSSR>();
 
     private playbackRate = 1;
 
@@ -55,7 +60,7 @@ export class TuiMedia {
     }
 
     public get currentTime(): number {
-        return this.el.currentTime ?? 0;
+        return this.el.currentTime;
     }
 
     public get paused(): boolean {

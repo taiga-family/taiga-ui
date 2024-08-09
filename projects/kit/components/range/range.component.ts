@@ -91,7 +91,8 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public limit = Infinity;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement> | undefined> =
+        EMPTY_QUERY;
 
     public readonly left = computed(() => this.toPercent(this.value()[0]));
     public readonly right = computed(() => 100 - this.toPercent(this.value()[1]));
@@ -135,8 +136,8 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
-        const leftThumbElement = sliderLeftRef.nativeElement;
-        const rightThumbElement = sliderRightRef.nativeElement;
+        const leftThumbElement = sliderLeftRef?.nativeElement;
+        const rightThumbElement = sliderRightRef?.nativeElement;
 
         const isRightThumb =
             target === this.el
