@@ -9,7 +9,7 @@
     z-index: 0;
     display: flex;
     flex-direction: column;
-    min-height: var(--tui-textarea-height);
+    min-block-size: var(--tui-textarea-height);
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-primary);
 
@@ -44,14 +44,14 @@
 }
 
 .t-outline {
-    min-height: inherit;
+    min-block-size: inherit;
 }
 
 .t-content {
     display: block;
     margin-top: 0;
     margin-bottom: 0;
-    min-height: inherit;
+    min-block-size: inherit;
     box-sizing: border-box;
     overflow: hidden;
     cursor: text;
@@ -67,7 +67,7 @@
         left: 0;
         bottom: 1px;
         right: 0;
-        min-height: auto;
+        min-block-size: auto;
     }
 
     :host._has-counter:not(._expandable) & {
@@ -81,9 +81,9 @@
 
 .t-wrapper {
     position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: inherit;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: inherit;
     box-sizing: border-box;
     padding: calc((var(--tui-height) - 1.25rem) / 2) 0;
 
@@ -109,27 +109,27 @@
 }
 
 .t-input-wrapper {
-    min-height: inherit;
-    width: 100%;
+    min-block-size: inherit;
+    inline-size: 100%;
     flex: 1;
 }
 
 .t-relative {
     position: relative;
-    min-height: inherit;
+    min-block-size: inherit;
 }
 
 .t-box {
     display: flex;
-    min-height: calc(100% - 1rem);
-    width: 100%;
+    min-block-size: calc(100% - 1rem);
+    inline-size: 100%;
 
     :host:not(._expandable) & {
-        height: calc(100% - 1rem);
+        block-size: calc(100% - 1rem);
     }
 
     :host:not(._expandable)._label-outside & {
-        height: 100%;
+        block-size: 100%;
     }
 
     :host._has-counter._expandable & {
@@ -138,11 +138,11 @@
 
     // For placeholder
     :host[data-size='m']:not(._label-outside) & {
-        border-top: 1rem solid transparent;
+        border-block-start: 1rem solid transparent;
     }
 
     :host[data-size='l']:not(._label-outside) & {
-        border-top: 1.25rem solid transparent;
+        border-block-start: 1.25rem solid transparent;
     }
 }
 
@@ -177,8 +177,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     box-sizing: border-box;
     resize: none;
     overflow: hidden;
@@ -226,7 +226,7 @@
     position: absolute;
     top: calc(var(--tui-height) / 2 - 0.625rem);
     left: 0;
-    max-width: 100%;
+    max-inline-size: 100%;
     border: 0 solid transparent;
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
@@ -246,7 +246,7 @@
 
     :host._label-outside & {
         overflow: initial;
-        height: auto;
+        block-size: auto;
         white-space: initial;
     }
 }
@@ -285,8 +285,8 @@
 
 .t-caret {
     display: inline-block;
-    height: 1rem;
-    width: 0;
+    block-size: 1rem;
+    inline-size: 0;
 }
 
 .t-counter {
@@ -296,6 +296,6 @@
     font: var(--tui-font-text-s);
     pointer-events: none;
     margin-top: auto;
-    text-align: right;
+    text-align: end;
     color: var(--tui-text-tertiary);
 }

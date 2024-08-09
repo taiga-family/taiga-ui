@@ -14,7 +14,7 @@
 :host {
     position: relative;
     display: flex;
-    min-width: 1.5rem;
+    min-inline-size: 1.5rem;
 
     --tui-thickness: calc(var(--t-diameter) / 12);
 
@@ -49,8 +49,8 @@
 
 .t-content {
     z-index: 0;
-    min-width: 100%;
-    height: 100%;
+    min-inline-size: 100%;
+    block-size: 100%;
     padding: 0;
     margin: 0;
     border: none;
@@ -71,8 +71,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 100%;
-    min-height: var(--t-diameter);
+    min-inline-size: 100%;
+    min-block-size: var(--t-diameter);
     flex-shrink: 0;
     align-self: center;
     color: var(--tui-text-primary);
@@ -96,7 +96,7 @@
     font: var(--tui-font-text-s);
     margin-top: 1rem;
     color: inherit;
-    max-width: 100%;
+    max-inline-size: 100%;
     text-align: center;
     stroke-width: 0; // for Safari 11
 
@@ -129,8 +129,8 @@
     });
 
     display: block;
-    width: var(--t-diameter);
-    height: var(--t-diameter);
+    inline-size: var(--t-diameter);
+    block-size: var(--t-diameter);
     margin: 0.25rem calc(var(--t-diameter) / -2);
     border-radius: 100%;
     overflow: hidden;

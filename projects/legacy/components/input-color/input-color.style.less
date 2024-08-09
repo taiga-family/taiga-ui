@@ -4,19 +4,19 @@
 :host {
     display: block;
     border-radius: var(--tui-radius-m);
-    text-align: left;
+    text-align: start;
 }
 
 .t-wrapper {
     display: flex;
     border-radius: inherit;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-textfield {
     border-radius: inherit;
     text-align: inherit;
-    width: inherit;
+    inline-size: inherit;
 
     ::ng-deep .t-input {
         text-transform: lowercase !important;
@@ -24,8 +24,8 @@
 }
 
 .t-color {
-    width: 1.5rem;
-    height: 1.5rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
     box-shadow: inset 0 0 0 1px var(--tui-base-03-dark);
     border-radius: 0.125rem;
     pointer-events: auto !important;

@@ -30,14 +30,14 @@ tui-badge,
     background: #959595;
     color: var(--tui-background-base);
     padding: var(--t-padding);
-    height: var(--t-size);
-    min-width: var(--t-size);
-    width: fit-content;
+    block-size: var(--t-size);
+    min-inline-size: var(--t-size);
+    inline-size: fit-content;
     font: var(--tui-font-text-s);
 
     &[tuiStatus]::before {
-        width: 0.375rem;
-        height: 0.375rem;
+        inline-size: 0.375rem;
+        block-size: 0.375rem;
         margin-inline-end: -0.25rem;
     }
 
@@ -84,8 +84,8 @@ tui-badge,
         --t-margin: -0.125rem;
 
         &[tuiStatus]::before {
-            width: 0.25rem;
-            height: 0.25rem;
+            inline-size: 0.25rem;
+            block-size: 0.25rem;
             margin-inline-end: -0.125rem;
         }
     }
@@ -105,8 +105,8 @@ tui-badge,
         font: var(--tui-font-text-m);
 
         &[tuiStatus]::before {
-            width: 0.5rem;
-            height: 0.5rem;
+            inline-size: 0.5rem;
+            block-size: 0.5rem;
             margin-inline-end: -0.125rem;
         }
     }
@@ -122,15 +122,15 @@ tui-badge,
 
 img[tuiBadge] {
     padding: 0;
-    width: var(--t-size);
+    inline-size: var(--t-size);
 }
 
 tui-icon[tuiBadge] {
     --t-margin: 0 !important;
 
     mask: none;
-    height: var(--t-size);
-    width: var(--t-size);
+    block-size: var(--t-size);
+    inline-size: var(--t-size);
 
     &[data-size='s']::after {
         mask-size: 0.625rem;

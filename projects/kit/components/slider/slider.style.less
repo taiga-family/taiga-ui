@@ -22,7 +22,7 @@
 };
 
 .customize-track(@progress-filling, @thumb-width) {
-    height: @track-height;
+    block-size: @track-height;
     border-radius: inherit;
 
     /*
@@ -72,15 +72,15 @@
     background-color: @thumb-color;
     box-shadow: none;
     border-radius: 50%;
-    height: @thumb-diameters[@@size];
-    width: @thumb-diameters[@@size];
+    block-size: @thumb-diameters[@@size];
+    inline-size: @thumb-diameters[@@size];
 
     /* Increase vertical hitbox by trasparent borders */
     box-sizing: content-box;
     background-clip: content-box;
     border: ((@hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
 
     :not(:disabled)& {
@@ -106,8 +106,8 @@
     position: absolute;
     top: ((@hitbox - @thumb-diameters[@@size]) / 2);
     left: calc(var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameters[@@size]);
-    width: @thumb-diameters[@@size];
-    height: @thumb-diameters[@@size];
+    inline-size: @thumb-diameters[@@size];
+    block-size: @thumb-diameters[@@size];
     border-radius: 50%;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
 }
@@ -132,11 +132,11 @@
 :host {
     position: relative;
     display: block;
-    width: 100%;
+    inline-size: 100%;
     color: var(--tui-background-accent-1); /* See currentColor inside this file */
     cursor: pointer;
     appearance: none;
-    height: @track-height;
+    block-size: @track-height;
     padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
     background-color: transparent;
     background-clip: content-box; /* To clip filling of paddings */
@@ -213,9 +213,9 @@
 
     /* stylelint-disable-next-line no-duplicate-selectors */
     &::-moz-range-progress {
-        height: @track-height;
+        block-size: @track-height;
         background: @thumb-color;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
     }
 }

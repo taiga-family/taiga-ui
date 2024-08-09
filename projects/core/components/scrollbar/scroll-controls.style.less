@@ -9,11 +9,11 @@
     top: 0;
     left: 0;
     z-index: 1;
-    min-width: calc(100% - 1px);
-    min-height: calc(100% - 1px);
-    max-width: calc(100% - 1px);
-    max-height: calc(100% - 1px);
-    float: left;
+    min-inline-size: calc(100% - 1px);
+    min-block-size: calc(100% - 1px);
+    max-inline-size: calc(100% - 1px);
+    max-block-size: calc(100% - 1px);
+    float: inline-start;
     margin-inline-end: calc(-100% + 1px);
     pointer-events: none;
 }
@@ -26,12 +26,12 @@
 
     &_vertical {
         top: 0;
-        width: @scroll-width-large;
+        inline-size: @scroll-width-large;
     }
 
     &_horizontal {
         left: 0;
-        height: @scroll-width-large;
+        block-size: @scroll-width-large;
     }
 
     &_has-horizontal {
@@ -68,23 +68,23 @@
 
     .t-bar_vertical & {
         right: 0;
-        width: @scroll-width;
-        min-height: @scroll-min-size;
+        inline-size: @scroll-width;
+        min-block-size: @scroll-min-size;
     }
 
     .t-bar_vertical:hover &,
     .t-bar_vertical &:active {
-        width: @scroll-width-large;
+        inline-size: @scroll-width-large;
     }
 
     .t-bar_horizontal & {
         bottom: 0;
-        height: @scroll-width;
-        min-width: @scroll-min-size;
+        block-size: @scroll-width;
+        min-inline-size: @scroll-min-size;
     }
 
     .t-bar_horizontal:hover &,
     .t-bar_horizontal &:active {
-        height: @scroll-width-large;
+        block-size: @scroll-width-large;
     }
 }

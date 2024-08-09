@@ -4,8 +4,8 @@
     .scrollbar-hidden();
 
     display: flex;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     flex-direction: column;
     clip-path: inset(0 0 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
@@ -25,7 +25,7 @@
 
 .t-stops {
     display: none;
-    height: 100%;
+    block-size: 100%;
     scroll-snap-stop: always;
     scroll-snap-align: start;
 }
@@ -33,8 +33,8 @@
 .t-stop {
     scroll-snap-stop: normal;
     scroll-snap-align: start;
-    height: 1rem;
-    width: 1rem;
+    block-size: 1rem;
+    inline-size: 1rem;
 }
 
 .t-sheet {
@@ -58,7 +58,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    height: 1.5rem;
+    block-size: 1.5rem;
     background: var(--tui-background-elevation-1);
 
     &::after {
@@ -66,8 +66,8 @@
         position: absolute;
         top: 0.5rem;
         left: 50%;
-        width: 2rem;
-        height: 0.25rem;
+        inline-size: 2rem;
+        block-size: 0.25rem;
         transform: translateX(-50%);
         background: var(--tui-background-neutral-2);
         border-radius: 1rem;
@@ -94,7 +94,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        height: 1px;
+        block-size: 1px;
         background: var(--tui-border-normal);
         opacity: 0;
     }
@@ -120,7 +120,7 @@
 }
 
 .t-footer {
-    height: 1rem;
+    block-size: 1rem;
     scroll-snap-stop: always;
     scroll-snap-align: end;
     background: var(--tui-background-elevation-1);

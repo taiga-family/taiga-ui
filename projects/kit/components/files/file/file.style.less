@@ -21,16 +21,16 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
     margin-right: 0.75rem;
     border-radius: var(--tui-radius-m);
     overflow: hidden;
     color: var(--tui-text-tertiary);
 
     &_big {
-        width: 4rem;
-        height: 4rem;
+        inline-size: 4rem;
+        block-size: 4rem;
         margin-right: 1rem;
 
         &::before {
@@ -43,8 +43,8 @@
 }
 
 .t-image {
-    max-width: 100%;
-    max-height: 100%;
+    max-inline-size: 100%;
+    max-block-size: 100%;
 }
 
 .t-loader {

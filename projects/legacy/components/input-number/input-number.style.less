@@ -1,24 +1,24 @@
 :host {
     display: flex;
     border-radius: var(--tui-radius-m);
-    text-align: left;
+    text-align: start;
 }
 
 .t-textfield {
     flex: 1;
-    min-width: 0;
-    max-width: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
     border-radius: inherit;
     text-align: inherit;
 
     &:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
     }
 }
 
 .t-value-content {
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-buttons {
@@ -33,8 +33,8 @@
 
         & .t-button:first-child {
             margin: 0 0 0 0.125rem;
-            border-top-right-radius: inherit;
-            border-bottom-right-radius: inherit;
+            border-start-end-radius: inherit;
+            border-end-end-radius: inherit;
         }
 
         & .t-button:last-child {
@@ -43,28 +43,28 @@
     }
 
     [data-size='m'] + & .t-button {
-        width: calc(var(--tui-height-m) * 0.75);
+        inline-size: calc(var(--tui-height-m) * 0.75);
     }
 
     [data-size='l'] + & .t-button {
-        width: calc(var(--tui-height-l) * 0.75);
+        inline-size: calc(var(--tui-height-l) * 0.75);
     }
 
     & .t-button {
         display: flex;
         flex: 1;
-        height: auto;
+        block-size: auto;
         align-items: center;
         justify-content: center;
         border-radius: 0;
 
         &:first-child {
             margin-bottom: 0.125rem;
-            border-top-right-radius: inherit;
+            border-start-end-radius: inherit;
         }
 
         &:last-child {
-            border-bottom-right-radius: inherit;
+            border-end-end-radius: inherit;
         }
     }
 }

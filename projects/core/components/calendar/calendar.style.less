@@ -6,15 +6,15 @@
 
 :host {
     display: block;
-    min-height: @paginationSize + @verticalSpace + @calendarSize;
-    width: @calendarSize;
+    min-block-size: @paginationSize + @verticalSpace + @calendarSize;
+    inline-size: @calendarSize;
     padding: @verticalSpace @horizontalSpace;
     box-sizing: content-box;
 }
 
 .t-scrollbar {
-    height: @paginationSize + @verticalSpace + @calendarSize;
-    width: @calendarSize + @horizontalSpace;
+    block-size: @paginationSize + @verticalSpace + @calendarSize;
+    inline-size: @calendarSize + @horizontalSpace;
 }
 
 .t-pagination {

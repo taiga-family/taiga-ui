@@ -2,7 +2,7 @@
 
 :host {
     display: block;
-    width: 100%;
+    inline-size: 100%;
     box-shadow: var(--tui-shadow-small);
     flex: 0 0 100%;
 
@@ -19,7 +19,7 @@
 
 .t-wrapper {
     display: flex;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-container {
@@ -28,26 +28,26 @@
 
     &.t-container_adaptive {
         @media @tui-desktop-lg-min {
-            width: 69rem;
+            inline-size: 69rem;
         }
 
         @media @tui-desktop {
-            width: 51.5rem;
+            inline-size: 51.5rem;
         }
 
         @media @tui-mobile {
-            width: 100%;
+            inline-size: 100%;
             padding: 0 1rem;
             box-sizing: border-box;
         }
     }
 
     @media @tui-desktop-lg-min {
-        width: 69rem;
+        inline-size: 69rem;
     }
 
     @media @tui-desktop {
-        width: 51.5rem;
+        inline-size: 51.5rem;
         padding: 0 3rem;
     }
 }
@@ -55,12 +55,12 @@
 .t-inner {
     display: flex;
     align-items: center;
-    height: 4.5rem;
-    width: 100%;
+    block-size: 4.5rem;
+    inline-size: 100%;
     overflow: hidden;
 
     :host-context(tui-root._mobile) & {
-        height: 5.75rem;
+        block-size: 5.75rem;
     }
 }
 
@@ -69,6 +69,6 @@
 }
 
 .t-content {
-    width: 100%;
+    inline-size: 100%;
     flex: 1 1 0;
 }

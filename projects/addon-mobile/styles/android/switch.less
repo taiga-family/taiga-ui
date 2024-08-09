@@ -1,8 +1,8 @@
 input[tuiSwitch] {
     .transition(~'color, opacity');
 
-    height: 1.25rem;
-    width: 2.5rem;
+    block-size: 1.25rem;
+    inline-size: 2.5rem;
     color: var(--tui-border-hover) !important;
     background: transparent !important;
     overflow: visible;
@@ -10,8 +10,8 @@ input[tuiSwitch] {
     &::before {
         content: '';
         display: block;
-        height: 100%;
-        width: 100%;
+        block-size: 100%;
+        inline-size: 100%;
         border: 0.1875rem solid transparent;
         box-sizing: border-box;
         border-radius: 2rem;
@@ -29,8 +29,8 @@ input[tuiSwitch] {
         position: absolute;
         top: 0;
         left: 0;
-        width: 1.25rem;
-        height: 1.25rem;
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
         border-radius: 100%;
         background: #f6f6f6;
         transform: none;

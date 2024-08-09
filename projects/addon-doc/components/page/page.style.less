@@ -3,7 +3,7 @@
 :host {
     display: flex;
     flex-direction: column;
-    min-height: 0;
+    min-block-size: 0;
     flex-basis: 0;
     flex-grow: 1;
 }
@@ -12,7 +12,7 @@
     display: flex;
     font: var(--tui-font-heading-3);
     flex-wrap: wrap;
-    min-height: 7.25rem;
+    min-block-size: 7.25rem;
     color: var(--tui-text-primary);
     box-shadow: inset 0 -1px 0 0 var(--tui-border-normal);
     padding: 3.75rem 0 0;
@@ -22,14 +22,14 @@
 
     :host-context(tui-root._mobile) & {
         font: var(--tui-font-heading-4);
-        min-height: 4.5rem;
+        min-block-size: 4.5rem;
         padding: 1.25rem 1.25rem 0;
         margin: 0;
     }
 }
 
 .t-title {
-    min-width: 100%;
+    min-inline-size: 100%;
     font-size: inherit;
     margin: 0;
 }
@@ -70,14 +70,14 @@
 }
 
 .t-see-also {
-    min-width: 18.75rem;
-    width: 30%;
-    float: right;
+    min-inline-size: 18.75rem;
+    inline-size: 30%;
+    float: inline-end;
     margin-left: 1.5rem;
 
     :host-context(tui-root._mobile) & {
         float: none;
-        width: 100%;
+        inline-size: 100%;
         margin: 0 0 1.5rem;
     }
 }

@@ -3,7 +3,7 @@
 :host {
     position: relative;
     display: block;
-    height: max-content;
+    block-size: max-content;
     isolation: isolate;
     border-radius: var(--tui-radius);
 
@@ -26,10 +26,10 @@ input[type='range'] {
     top: 100%;
     left: @left-gap;
     right: 0;
-    width: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
+    inline-size: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
     box-sizing: border-box;
-    height: 1rem;
+    block-size: 1rem;
     margin: -0.5625rem 0 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
+    border-start-start-radius: 0;
+    border-end-start-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
 }

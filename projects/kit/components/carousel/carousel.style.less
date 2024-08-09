@@ -36,8 +36,8 @@
     justify-content: center;
     padding: var(--tui-carousel-padding, 0 1.25rem);
     flex: 1;
-    min-width: 100%;
-    max-width: 100%;
+    min-inline-size: 100%;
+    max-inline-size: 100%;
     box-sizing: border-box;
     border: none;
     margin: 0;
@@ -47,7 +47,7 @@
     position: sticky;
     left: 0;
     right: 0;
-    min-width: 100%;
+    min-inline-size: 100%;
     overflow: hidden;
 }
 
@@ -62,6 +62,6 @@
     &::after {
         content: '';
         display: block;
-        min-width: 1rem;
+        min-inline-size: 1rem;
     }
 }

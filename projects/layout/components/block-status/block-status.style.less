@@ -8,8 +8,8 @@ tui-block-status {
     text-align: center;
     box-sizing: border-box;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
 
     &._card {
         border-radius: var(--tui-radius-xl);
@@ -31,7 +31,7 @@ tui-block-status {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        inline-size: 100%;
     }
 
     h1,
@@ -46,8 +46,8 @@ tui-block-status {
     }
 
     img {
-        width: 9rem;
-        height: 9rem;
+        inline-size: 9rem;
+        block-size: 9rem;
     }
 
     a:not(:last-child),

@@ -5,8 +5,8 @@
 }
 
 .calculate-ghost-params(@thumb) {
-    width: @thumb;
-    height: @thumb;
+    inline-size: @thumb;
+    block-size: @thumb;
     transform: translateX(calc(var(--tui-slider-thumb-ratio) * -@thumb));
 }
 

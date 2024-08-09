@@ -22,14 +22,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 2rem;
-    height: 2rem;
+    min-inline-size: 2rem;
+    block-size: 2rem;
     pointer-events: none;
 }
 
 .t-custom-icon {
-    width: 2rem;
-    height: 100%;
+    inline-size: 2rem;
+    block-size: 100%;
 }
 
 .t-input {
@@ -39,8 +39,8 @@
 
     :host[data-size] &_template {
         display: flex;
-        width: calc(100% - 1rem);
-        max-width: calc(100% - 1rem);
+        inline-size: calc(100% - 1rem);
+        max-inline-size: calc(100% - 1rem);
         align-items: center;
         pointer-events: none;
         padding-inline-end: 0;

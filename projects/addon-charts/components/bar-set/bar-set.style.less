@@ -1,7 +1,7 @@
 :host {
     position: relative;
     display: flex;
-    height: 100%;
+    block-size: 100%;
     align-items: flex-end;
     justify-content: center;
 }
@@ -9,7 +9,7 @@
 .t-wrapper {
     display: flex;
     flex: 1;
-    height: 100%;
+    block-size: 100%;
     align-items: flex-end;
 
     &:first-of-type {
@@ -30,8 +30,8 @@
     }
 
     &&_flexible {
-        max-width: none;
-        width: 75%;
+        max-inline-size: none;
+        inline-size: 75%;
         margin: 0 auto;
     }
 }

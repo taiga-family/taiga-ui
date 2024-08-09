@@ -8,8 +8,8 @@ header[tuiNavigationHeader] {
     top: 0;
     z-index: 1;
     display: flex;
-    height: 3rem;
-    width: 100%;
+    block-size: 3rem;
+    inline-size: 100%;
     align-items: center;
     gap: 0.25rem;
     padding: 0.5rem;
@@ -25,20 +25,20 @@ header[tuiNavigationHeader] {
         position: absolute;
         top: 100%;
         z-index: -1;
-        height: 3rem;
-        width: 3rem;
+        block-size: 3rem;
+        inline-size: 3rem;
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
     }
 
     &::before {
         left: 0;
-        border-top-left-radius: 1.25rem;
+        border-start-start-radius: 1.25rem;
     }
 
     &::after {
         right: 0;
-        border-top-right-radius: 1.25rem;
+        border-start-end-radius: 1.25rem;
     }
 
     [tuiNavigationLogo] {
@@ -55,11 +55,11 @@ header[tuiNavigationHeader] {
     [tuiChip],
     tui-badge,
     tui-chip {
-        max-width: 8rem;
+        max-inline-size: 8rem;
     }
 
     hr {
-        width: 2rem;
+        inline-size: 2rem;
         margin: 0 0 0 auto;
         border: none;
         visibility: hidden;

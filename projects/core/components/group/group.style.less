@@ -10,7 +10,7 @@
 
     & > * {
         flex: 1 1 0;
-        min-width: 0;
+        min-inline-size: 0;
 
         &:not(:last-child) {
             margin-right: 0.125rem;
@@ -88,7 +88,7 @@
         flex-direction: column;
 
         & > * {
-            min-height: auto;
+            min-block-size: auto;
             flex: 0 0 auto;
 
             &:not(:last-child) {
@@ -109,13 +109,13 @@
     &_rounded.tui-group_orientation_horizontal {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--t-radius);
-                border-bottom-left-radius: var(--t-radius);
+                border-start-start-radius: var(--t-radius);
+                border-end-start-radius: var(--t-radius);
             }
 
             &:last-child {
-                border-top-right-radius: var(--t-radius);
-                border-bottom-right-radius: var(--t-radius);
+                border-start-end-radius: var(--t-radius);
+                border-end-end-radius: var(--t-radius);
             }
         }
     }
@@ -123,19 +123,19 @@
     &_rounded.tui-group_orientation_vertical {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--t-radius);
-                border-top-right-radius: var(--t-radius);
+                border-start-start-radius: var(--t-radius);
+                border-start-end-radius: var(--t-radius);
             }
 
             &:last-child {
-                border-bottom-left-radius: var(--t-radius);
-                border-bottom-right-radius: var(--t-radius);
+                border-end-start-radius: var(--t-radius);
+                border-end-end-radius: var(--t-radius);
             }
         }
     }
 
     &__auto-width-item {
-        min-width: auto;
+        min-inline-size: auto;
         flex: 0 0 auto;
     }
 

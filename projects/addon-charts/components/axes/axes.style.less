@@ -7,7 +7,7 @@
 .t-wrapper {
     display: flex;
     flex: 1;
-    height: 100%;
+    block-size: 100%;
     flex-direction: column;
 }
 
@@ -84,7 +84,7 @@
     color: var(--tui-text-secondary);
 
     &_primary {
-        text-align: right;
+        text-align: end;
         padding-right: 0.75rem;
     }
 
@@ -106,7 +106,7 @@
         &_secondary {
             left: auto;
             right: 0.25rem;
-            text-align: right;
+            text-align: end;
         }
     }
 }
@@ -115,20 +115,20 @@
     position: relative;
     display: flex;
     font: var(--tui-font-text-xs);
-    border-right: 1px solid transparent;
+    border-inline-end: 1px solid transparent;
     color: var(--tui-text-secondary);
 }
 
 .t-label-x {
-    height: 0.4375rem;
-    border-left: 1px solid var(--tui-border-normal);
+    block-size: 0.4375rem;
+    border-inline-start: 1px solid var(--tui-border-normal);
     flex: 1;
     margin-bottom: 1.5625rem;
 
     &::before {
         content: '';
         display: block;
-        height: 0.5625rem;
+        block-size: 0.5625rem;
     }
 
     &_transparent {
@@ -136,7 +136,7 @@
     }
 
     :host._centered & {
-        height: 2rem;
+        block-size: 2rem;
         text-align: center;
         border: none;
         margin: 0;
@@ -146,8 +146,8 @@
         &:last-child:not(:first-child) {
             position: absolute;
             right: 0;
-            text-align: right;
-            border-left: none;
+            text-align: end;
+            border-inline-start: none;
         }
     }
 }

@@ -1,6 +1,6 @@
 input[tuiSwitch] {
-    height: 1.9375rem;
-    width: 3.1875rem;
+    block-size: 1.9375rem;
+    inline-size: 3.1875rem;
     border-radius: 2rem;
     color: #fff;
     background: var(--tui-background-neutral-2);
@@ -14,8 +14,8 @@ input[tuiSwitch] {
         .transition(~'transform, width');
 
         right: auto;
-        width: 1.9375rem;
-        height: 1.9375rem;
+        inline-size: 1.9375rem;
+        block-size: 1.9375rem;
         border-radius: 2rem;
         background: currentColor;
         transform: scale(0.871);
@@ -26,7 +26,7 @@ input[tuiSwitch] {
     }
 
     &:active::after {
-        width: 2.3rem;
+        inline-size: 2.3rem;
     }
 
     &:checked,

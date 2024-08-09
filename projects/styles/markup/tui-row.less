@@ -5,7 +5,7 @@
 /* stylelint-disable order/order */
 .generate-columns(@infix, @n, @padding, @i: 1) when (@i =< @n) {
     &_@{infix}-@{i} {
-        width: (@i * 100% / @n);
+        inline-size: (@i * 100% / @n);
         padding-left: @padding;
         padding-right: @padding;
         box-sizing: border-box;
@@ -24,7 +24,7 @@
 
 .generate-sme-columns(@n, @padding, @i: 1) when (@i =< @n) {
     &_@{i} {
-        width: (@i * 100% / @n);
+        inline-size: (@i * 100% / @n);
         padding-left: @padding;
         padding-right: @padding;
         box-sizing: border-box;

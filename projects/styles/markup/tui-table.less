@@ -1,7 +1,7 @@
 @height-cell-large: 5rem;
 
 .tui-table {
-    width: 100%;
+    inline-size: 100%;
 
     &_layout_fixed {
         table-layout: fixed;
@@ -17,11 +17,11 @@
         }
 
         &:not(&_border_none) {
-            border-bottom: 1px solid var(--tui-border-normal);
+            border-block-end: 1px solid var(--tui-border-normal);
         }
 
         &_border_top {
-            border-top: 1px solid var(--tui-border-normal);
+            border-block-start: 1px solid var(--tui-border-normal);
         }
 
         &_cursor_pointer {
@@ -35,7 +35,7 @@
         font: var(--tui-font-text-s);
         padding: 0.5rem 1rem;
         vertical-align: middle;
-        height: 2.5rem;
+        block-size: 2.5rem;
         color: var(--tui-text-secondary);
         background: inherit;
 
@@ -50,13 +50,13 @@
         padding: 1rem 1rem 0.875rem;
         vertical-align: top;
         word-wrap: break-word;
-        height: 3.4375rem;
+        block-size: 3.4375rem;
         color: var(--tui-text-primary);
         background: inherit;
 
         &_size_l,
         .tui-table_size_l & {
-            height: @height-cell-large - 0.0625rem;
+            block-size: @height-cell-large - 0.0625rem;
         }
 
         &_font-size_l,
@@ -77,12 +77,12 @@
     &__td,
     &__th {
         box-sizing: border-box;
-        text-align: left;
+        text-align: start;
 
         .tui-table_size_l &::before {
-            width: 1rem;
-            border-top-left-radius: 1rem;
-            border-bottom-left-radius: 1rem;
+            inline-size: 1rem;
+            border-start-start-radius: 1rem;
+            border-end-start-radius: 1rem;
         }
 
         &_first::before,
@@ -90,11 +90,11 @@
             content: '';
             position: absolute;
             top: 0;
-            width: 0.75rem;
-            height: 100%;
+            inline-size: 0.75rem;
+            block-size: 100%;
             background: inherit;
-            border-top-left-radius: 0.75rem;
-            border-bottom-left-radius: 0.75rem;
+            border-start-start-radius: 0.75rem;
+            border-end-start-radius: 0.75rem;
         }
 
         &_first {
@@ -123,7 +123,7 @@
         }
 
         &_text_right {
-            text-align: right;
+            text-align: end;
         }
 
         &_text_overflow {
@@ -165,8 +165,8 @@
 
         left: 100%;
         margin-left: 0.125rem;
-        width: 1rem;
-        height: 1rem;
+        inline-size: 1rem;
+        block-size: 1rem;
         flex-shrink: 0;
         opacity: 0;
 

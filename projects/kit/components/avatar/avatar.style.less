@@ -7,8 +7,8 @@
     position: relative;
     display: inline-flex;
     flex-shrink: 0;
-    width: var(--t-size);
-    height: var(--t-size);
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -125,8 +125,8 @@
     tui-icon {
         .center-all();
 
-        width: 60%;
-        height: 60%;
+        inline-size: 60%;
+        block-size: 60%;
     }
 
     ::ng-deep img,

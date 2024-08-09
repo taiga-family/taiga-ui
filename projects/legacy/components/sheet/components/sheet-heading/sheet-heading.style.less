@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    min-height: 2rem;
+    min-block-size: 2rem;
     box-sizing: border-box;
     margin: -1.25rem -1rem 0;
     padding: 1.5rem 1rem 1rem;
@@ -17,7 +17,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        height: 1px;
+        block-size: 1px;
         background: var(--tui-border-normal);
         opacity: 0;
     }
@@ -31,7 +31,7 @@
 
 .t-close {
     display: none;
-    float: right;
+    float: inline-end;
     margin-right: -0.25rem;
 
     :host-context(.t-wrapper_closeable) & {
