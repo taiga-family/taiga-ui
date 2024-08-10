@@ -16,9 +16,15 @@ jobs:
           rm -rf ./projects/icons/src/flags && mkdir -p ./projects/icons/src/flags
           cp -R ./node_modules/@taiga-ui/design-tokens/icons/flags/* ./projects/icons/src/flags
           npx prettier ./projects/icons/src/flags --write
-      - run: |
+      - name: Lucide icons
+        run: |
           npx nx prebuild icons
           npx nx build icons
+      - name: Material icons
+        run: |
+          npx nx prebuild icons-material
+          npx nx build icons-material
+      - run: |
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix || echo "no file matching"
           npx eslint ./projects/demo/used-icons.ts --fix || echo "no file matching"
