@@ -36,14 +36,14 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
-export class TuiDataListWrapperComponent<T> {
+export class TuiDataListWrapperComponent<T, K = T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     @ViewChildren(forwardRef(() => TuiOption))
     protected readonly optionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     @Input()
-    public items: readonly T[] | null = [];
+    public items: readonly K[] | null = [];
 
     @Input()
     public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
@@ -74,5 +74,9 @@ export class TuiDataListWrapperComponent<T> {
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);
+    }
+
+    protected $cast(items: readonly K[]): readonly T[] {
+        return items as unknown as readonly T[];
     }
 }

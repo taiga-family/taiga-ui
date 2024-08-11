@@ -16,11 +16,10 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
 })
-export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<T> {
-    @Input()
-    // @ts-ignore
-    public override items: readonly T[][] | null = [];
-
+export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<
+    T,
+    T[]
+> {
     @Input()
     public labels: readonly string[] = [];
 }
