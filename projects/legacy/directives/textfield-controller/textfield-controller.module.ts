@@ -11,6 +11,7 @@ import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.direc
 import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
 import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
+import {TuiTextfieldExpandableTriggerDirective} from './textfield-expandable-trigger.directive';
 
 /**
  * @deprecated: drop in v5.0
@@ -28,6 +29,7 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
         TuiTextfieldPrefixDirective,
         TuiTextfieldPostfixDirective,
         TuiTextfieldFillerDirective,
+        TuiTextfieldExpandableTriggerDirective,
     ],
     exports: [
         TuiTextfieldAppearanceDirective,
@@ -42,6 +44,7 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
         TuiTextfieldFillerDirective,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        TuiTextfieldExpandableTriggerDirective,
     ],
 })
 export class TuiTextfieldControllerModule {}
