@@ -14,6 +14,7 @@ test.describe('Input', () => {
             page,
             '/components/input/API?tuiTextfieldCustomContent=<span>LongTextContent<%2Fspan>&tuiHintContent=Some%20content',
         );
+
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
             '01-custom-text-content-cleaner-hint.png',
         );
@@ -24,6 +25,7 @@ test.describe('Input', () => {
             page,
             '/components/input/API?tuiTextfieldCustomContent=@tui.calendar',
         );
+
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
             '02-custom-large-icon-content.png',
         );
@@ -65,11 +67,14 @@ test.describe('Input', () => {
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.focus();
+
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
             '05-placeholder-will-be-hidden-inside.png',
         );
+
         await input.clear();
         await input.blur();
+
         await expect(example).toHaveScreenshot(
             '06-placeholder-will-be-hidden-inside.png',
         );
@@ -85,13 +90,16 @@ test.describe('Input', () => {
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.clear();
+
         await expect(example).toHaveScreenshot('07-character-descenders.png');
+
         await input.focus();
         await page.keyboard.type(
             "It has been the industry's standard dummy text ever since the 1500s",
         );
         await page.keyboard.press('Enter');
         await input.blur();
+
         await expect(example).toHaveScreenshot('08-character-descenders.png');
     });
 
@@ -102,13 +110,18 @@ test.describe('Input', () => {
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await expect(input).toHaveCSS('text-overflow', 'clip');
+
         await input.fill(
             "You should not set 'text-overflow: ellipsis' for input because it can be horizontally scrolled",
         );
         await input.blur();
+
         await expect(example).toHaveScreenshot('09-horizontally-scrolled.png');
+
         await input.focus();
+
         await expect(example).toHaveScreenshot('10-horizontally-scrolled.png');
+
         await page.evaluate(() => {
             const input = document.querySelector('input[tuiTextfieldLegacy]');
 
@@ -116,6 +129,7 @@ test.describe('Input', () => {
                 input.scrollLeft = input.clientWidth / 2;
             }
         });
+
         await expect(example).toHaveScreenshot('11-horizontally-scrolled.png');
     });
 
@@ -129,6 +143,7 @@ test.describe('Input', () => {
         await inputs.first().fill('111111111111');
         await inputs.last().fill('111111111111');
         await inputs.last().blur();
+
         await expect(example).toHaveScreenshot('11-mask.png');
     });
 
@@ -139,6 +154,7 @@ test.describe('Input', () => {
                     page,
                     `components/input/API?tuiTextfieldIcon=@tui.calendar&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
+
                 await expect(
                     new TuiDocumentationPagePO(page).apiPageExample,
                 ).toHaveScreenshot(
@@ -166,10 +182,12 @@ test.describe('Input', () => {
             await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
 
             await page.keyboard.press('ArrowUp');
+
             await expect(textfield).toHaveJSProperty('selectionStart', 0);
             await expect(textfield).toHaveJSProperty('selectionEnd', 0);
 
             await page.keyboard.press('ArrowDown');
+
             await expect(textfield).toHaveJSProperty('selectionStart', value.length);
             await expect(textfield).toHaveJSProperty('selectionEnd', value.length);
         });
@@ -186,14 +204,17 @@ test.describe('Input', () => {
             await textfield.focus();
             await textfield.fill('a');
             await textfield.blur();
+
             await expect(dropdown).not.toBeAttached();
 
             await textfield.focus();
+
             await expect(textfield).toHaveJSProperty('selectionStart', 1);
             await expect(textfield).toHaveJSProperty('selectionEnd', 1);
             await expect(dropdown).not.toBeAttached();
 
             await page.keyboard.press('ArrowUp');
+
             await expect(textfield).toHaveJSProperty('selectionStart', 1);
             await expect(textfield).toHaveJSProperty('selectionEnd', 1);
             await expect(dropdown).toBeAttached();

@@ -116,6 +116,7 @@ describe('Filter', () => {
         it('passed correctly if items is an array of objects with toString', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
+
             expect(getContent().textContent?.trim()).toBe('Focused Zone  10');
         });
     });

@@ -11,6 +11,7 @@ test.describe('TuiError', () => {
         const error = example.locator('tui-error');
 
         await expect(error).not.toBeVisible();
+
         await checkbox.click();
 
         await expect(checkbox).toBeChecked();

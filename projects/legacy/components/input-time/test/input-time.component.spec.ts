@@ -102,6 +102,7 @@ describe('InputTime', () => {
 
         it('the value in the field is formatted by mask', async () => {
             await fixture.whenStable();
+
             expect(input.value).toBe('12:30');
         });
 
@@ -127,6 +128,7 @@ describe('InputTime', () => {
             await fixture.whenStable();
             fixture.detectChanges();
             await fixture.whenStable();
+
             expect(input.value).toBe('22:30');
         });
 
@@ -148,6 +150,7 @@ describe('InputTime', () => {
         it('the value of formControl is passed null', () => {
             component.onValueChange('11:1');
             fixture.detectChanges();
+
             expect(testComponent.control.value).toBeNull();
         });
     });

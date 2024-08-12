@@ -209,6 +209,7 @@ describe('TuiDay', () => {
                     expect(result.day).toBe(1);
                 });
             });
+
             describe('from non valid string', () => {
                 it("'20.aa.2018'", () => {
                     const result = TuiDay.normalizeParse('20.aa.2018');
@@ -234,6 +235,7 @@ describe('TuiDay', () => {
                     expect(result.day).toBe(1);
                 });
             });
+
             describe('from yyyy.mm.dd string', () => {
                 it("'2021/12/22'", () => {
                     const result = TuiDay.normalizeParse('2021/12/22', 'YMD');
@@ -289,6 +291,7 @@ describe('TuiDay', () => {
                     expect(result.day).toBe(1);
                 });
             });
+
             describe('throws an exception', () => {
                 describe('dev mode', () => {
                     beforeEach(() => tuiSwitchNgDevMode(true));
@@ -411,6 +414,7 @@ describe('TuiDay', () => {
                         expect(new TuiDay(2000, 4, 5).formattedDayPart).toBe('05');
                     });
                 });
+
                 describe("without padded '0' for 2 digit days", () => {
                     it("'10' for 10", () => {
                         expect(new TuiDay(2000, 9, 10).formattedDayPart).toBe('10');

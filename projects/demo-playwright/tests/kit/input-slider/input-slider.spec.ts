@@ -80,6 +80,7 @@ test.describe('InputSlider', () => {
             );
 
             await inputSlider.textfield.focus();
+
             await expect(apiPageExample).toHaveScreenshot(
                 '3-value-content-hide-on-focus.png',
             );
@@ -120,11 +121,13 @@ test.describe('InputSlider', () => {
             test('cannot type number less than [min] property', async () => {
                 await inputSlider.textfield.fill('9.999');
                 await inputSlider.textfield.blur();
+
                 await expect(inputSlider.textfield).toHaveValue('10');
             });
 
             test('cannot even type minus if [min] is positive', async () => {
                 await inputSlider.textfield.pressSequentially('-11');
+
                 await expect(inputSlider.textfield).toHaveValue('11');
             });
 
@@ -132,9 +135,11 @@ test.describe('InputSlider', () => {
                 await inputSlider.textfield.fill('11');
 
                 await inputSlider.textfield.press('ArrowDown');
+
                 await expect(inputSlider.textfield).toHaveValue('10');
 
                 await inputSlider.textfield.press('ArrowDown');
+
                 await expect(inputSlider.textfield).toHaveValue('10');
             });
         });
@@ -157,11 +162,13 @@ test.describe('InputSlider', () => {
 
             test('can type negative number more than [min]', async () => {
                 await inputSlider.textfield.pressSequentially('-5');
+
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}5`);
             });
 
             test('cannot type negative number less than [min]', async () => {
                 await inputSlider.textfield.pressSequentially('-11');
+
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}10`);
             });
         });
@@ -186,11 +193,13 @@ test.describe('InputSlider', () => {
 
             test('pressing ArrowUp does not change value', async () => {
                 await inputSlider.textfield.press('ArrowUp');
+
                 await expect(inputSlider.textfield).toHaveValue('25');
             });
 
             test('pressing ArrowDown does not change value', async () => {
                 await inputSlider.textfield.press('ArrowDown');
+
                 await expect(inputSlider.textfield).toHaveValue('25');
             });
         });

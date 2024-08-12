@@ -30,6 +30,7 @@ test.describe('ActionBar', () => {
         const more = actionBarExample.locator('button:has-text("More")');
 
         await more.click();
+
         await expect(actionBarExample).toHaveScreenshot(
             '01-action-bar-mobile-expanded.png',
         );

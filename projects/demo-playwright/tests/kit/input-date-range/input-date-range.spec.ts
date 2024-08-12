@@ -39,6 +39,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await inputDateRange.textfield.click();
+
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `01-textfield-size-${size}-empty.png`,
                 );
@@ -47,6 +48,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await inputDateRange.textfield.pressSequentially('01');
+
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `02-textfield-size-${size}-set-day.png`,
                 );
@@ -55,6 +57,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await inputDateRange.textfield.pressSequentially('.06.1994');
+
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `03-textfield-size-${size}-set-from-date.png`,
                 );
@@ -63,6 +66,7 @@ test.describe('InputDateRange', () => {
                 );
 
                 await inputDateRange.textfield.pressSequentially('01.01.2022');
+
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `04-textfield-size-${size}-set-to-date.png`,
                 );
@@ -114,6 +118,7 @@ test.describe('InputDateRange', () => {
                 await expect(inputDateRange.textfield).toHaveValue('29.1');
 
                 await inputDateRange.textfield.pressSequentially('0');
+
                 await expect(inputDateRange.textfield).toHaveValue('29.10');
             });
 
@@ -150,6 +155,7 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.textfield.click();
             await inputDateRange.selectItem(1);
+
             await expect(inputDateRange.textfield).toHaveValue('Today');
 
             await inputDateRange.textfield.click();

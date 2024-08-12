@@ -20,7 +20,9 @@ test.describe('Preview', () => {
             const preview = page.locator('tui-preview');
 
             await example.getByRole('button').click();
+
             await expect(preview).toBeAttached();
+
             await page.waitForLoadState('networkidle');
 
             await preview.click(); // requires for mouse wheel
@@ -37,9 +39,11 @@ test.describe('Preview', () => {
             const preview = page.locator('tui-preview');
 
             await example.getByRole('button').click();
+
             await expect(preview).toBeAttached();
 
             await documentationPage.hideContent();
+
             await expect(preview).toHaveScreenshot('02-preview-unavailable.png');
         });
     });

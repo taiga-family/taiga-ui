@@ -29,14 +29,21 @@ test.describe('InputDate', () => {
 
                 await input.scrollIntoViewIfNeeded();
                 await input.click();
+
                 await expect(page).toHaveScreenshot(`01-01-input-date-${size}.png`);
+
                 await input.clear();
+
                 await expect(page).toHaveScreenshot(`01-02-input-date-${size}.png`);
+
                 await input.focus();
                 await page.keyboard.type('01.');
+
                 await expect(page).toHaveScreenshot(`01-03-input-date-${size}.png`);
+
                 await input.focus();
                 await page.keyboard.type('06.1994');
+
                 await expect(page).toHaveScreenshot(`01-04-input-date-${size}.png`);
             }
         });
@@ -69,10 +76,15 @@ test.describe('InputDate', () => {
 
                 await input.click();
                 await api.prepareBeforeScreenshot();
+
                 await expect(page).toHaveScreenshot(`02-01-input-date-${size}.png`);
+
                 await page.keyboard.type('01.');
+
                 await expect(page).toHaveScreenshot(`02-02-input-date-${size}.png`);
+
                 await page.keyboard.type('06.1994');
+
                 await expect(page).toHaveScreenshot(`02-03-input-date-${size}.png`);
             });
         });
@@ -83,6 +95,7 @@ test.describe('InputDate', () => {
             await input.scrollIntoViewIfNeeded();
             await input.click();
             await api.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('03-input-date.png');
         });
 
@@ -92,6 +105,7 @@ test.describe('InputDate', () => {
             await input.scrollIntoViewIfNeeded();
             await input.click();
             await api.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('04-input-date.png');
         });
 
@@ -101,6 +115,7 @@ test.describe('InputDate', () => {
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('35');
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
                 await expect(input).toHaveScreenshot('05-input-date.png');
@@ -111,6 +126,7 @@ test.describe('InputDate', () => {
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('1715');
+
                 await expect(input).toHaveJSProperty('selectionStart', '17.1'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '17.1'.length);
                 await expect(input).toHaveScreenshot('06-input-date.png');
@@ -121,6 +137,7 @@ test.describe('InputDate', () => {
                 await input.scrollIntoViewIfNeeded();
                 await input.focus();
                 await page.keyboard.type('999999');
+
                 await expect(input).toHaveJSProperty(
                     'selectionStart',
                     '09.09.9999'.length,
@@ -149,6 +166,7 @@ test.describe('InputDate', () => {
                 await example.scrollIntoViewIfNeeded();
                 await api.prepareBeforeScreenshot(':not(#base)');
                 await example.locator('tui-input-date .t-icon tui-icon').click();
+
                 await expect(page).toHaveScreenshot(`08-input-date-${language}.png`);
             });
         });

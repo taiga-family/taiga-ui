@@ -20,16 +20,19 @@ describe('tuiGetElementObscures', () => {
 
         it('should return null if element does not have ownerDocument', () => {
             Object.defineProperty(element, 'ownerDocument', {value: undefined});
+
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
         it('should return null if element does not have defaultView', () => {
             Object.defineProperty(element, 'ownerDocument', {value: {defaultView: null}});
+
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
         it('should return null if element does not have getBoundingClientRect method', () => {
             element.getBoundingClientRect = undefined as any;
+
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
@@ -38,6 +41,7 @@ describe('tuiGetElementObscures', () => {
             const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint.mockReturnValue(null);
+
             expect(tuiGetElementObscures(element)).toEqual([]);
             expect(mockElementFromPoint).toHaveBeenCalledTimes(4);
         });
@@ -125,6 +129,7 @@ describe('tuiGetElementObscures', () => {
             const mockElementFromPoint = jest.mocked(ownerDocument.elementFromPoint);
 
             mockElementFromPoint.mockReturnValue(null);
+
             expect(tuiGetElementObscures(element)).toBeNull();
             expect(mockElementFromPoint).toHaveBeenCalledTimes(0);
         });

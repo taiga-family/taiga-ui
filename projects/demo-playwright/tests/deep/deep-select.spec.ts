@@ -30,7 +30,9 @@ test.describe('Deep / Select', () => {
                 await api.focusOnBody();
                 await api.waitStableState();
                 await select.scrollIntoViewIfNeeded();
+
                 await expect(select).toBeVisible();
+
                 await select.click();
 
                 const options = await api.getOptions();

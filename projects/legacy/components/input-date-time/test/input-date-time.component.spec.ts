@@ -114,6 +114,7 @@ describe('InputDateTime', () => {
 
             expect(inputPO.value).toBe(`05.07.2021, ${timeString}`);
             expect(getCalendar()).not.toBeFalsy();
+
             clickOnCellInsideCalendar(27);
 
             expect(inputPO.value).toBe(`27.07.2021, ${timeString}`);
@@ -188,6 +189,7 @@ describe('InputDateTime', () => {
 
             expect(inputPO.value).toBe(`14.07.2021, ${time}`);
             expect(getCalendar()).not.toBeFalsy();
+
             clickOnCellInsideCalendar(10);
 
             expect(inputPO.value).toBe(`10.07.2021, ${time}`);
@@ -219,6 +221,7 @@ describe('InputDateTime', () => {
         it('empty value opens dropdown', () => {
             inputPO.sendText('');
             fixture.detectChanges();
+
             expect(component.dateTimeComponent.open).toBe(true);
         });
     });
@@ -245,14 +248,17 @@ describe('InputDateTime', () => {
 
         it('does not accept another separator', () => {
             inputPO.sendTextAndBlur('05.27.2002, 12:11');
+
             expect(inputPO.value).toBe('05/27/2002, 12:11');
         });
 
         it('keeps typed time if new date selected via calendar', () => {
             inputPO.sendTextAndBlur('041520102018');
+
             expect(inputPO.value).toBe('04/15/2010, 20:18');
 
             mouseDownOnTextfield();
+
             expect(getCalendar()).not.toBeNull();
 
             const calendarCell = getCalendarCell(9);
@@ -286,14 +292,17 @@ describe('InputDateTime', () => {
 
         it('does not accept another separator', () => {
             inputPO.sendTextAndBlur('2002.05.27, 12:11');
+
             expect(inputPO.value).toBe('2002-05-27, 12:11');
         });
 
         it('keeps typed time if new date selected via calendar', () => {
             inputPO.sendTextAndBlur('201004152018');
+
             expect(inputPO.value).toBe('2010-04-15, 20:18');
 
             mouseDownOnTextfield();
+
             expect(getCalendar()).not.toBeNull();
 
             const calendarCell = getCalendarCell(9);
@@ -395,9 +404,11 @@ describe('InputDateTime', () => {
 
         it('transforms value which was selected via calendar', () => {
             inputPO.sendTextAndBlur('020320221211');
+
             expect(inputPO.value).toBe('02.03.2022, 12:11');
 
             mouseDownOnTextfield();
+
             expect(getCalendar()).not.toBeNull();
 
             const calendarCell = getCalendarCell(17);

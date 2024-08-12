@@ -30,6 +30,7 @@ test.describe('InputMonthRange', () => {
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('input-month-range-maximum-month.png');
         });
 
@@ -38,6 +39,7 @@ test.describe('InputMonthRange', () => {
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('input-month-range-minimum-month.png');
         });
     });

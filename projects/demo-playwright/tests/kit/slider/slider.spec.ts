@@ -16,6 +16,7 @@ test.describe('Slider', () => {
                 const slider = new TuiSliderPO(apiPageExample.getByRole('slider'));
 
                 await slider.setValue(value);
+
                 await expect(apiPageExample).toHaveScreenshot(
                     `01-slider-float-percentage-${value}.png`,
                 );

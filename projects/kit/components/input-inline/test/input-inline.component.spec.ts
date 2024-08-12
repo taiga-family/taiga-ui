@@ -57,6 +57,7 @@ describe('InputInline', () => {
         it('not displayed if there is a value', () => {
             testComponent.control.setValue('123');
             fixture.detectChanges();
+
             expect(getPlaceholder()).toBeNull();
         });
     });

@@ -18,6 +18,7 @@ test.describe('TuiRange', () => {
 
             test('click on the beginning of the track changes only nearest (left) slider', async () => {
                 await range.host.click({position: {x: 0, y: 0}});
+
                 await expect(range.left).toHaveValue('0');
                 await expect(range.right).toHaveValue('6');
                 await expect(example).toHaveScreenshot('01-range-click-checks-0-6.png');
@@ -25,6 +26,7 @@ test.describe('TuiRange', () => {
 
             test('click on the end of the track changes only nearest (right) slider', async () => {
                 await range.host.click({position: {x: 276, y: 0}});
+
                 await expect(range.left).toHaveValue('4');
                 await expect(range.right).toHaveValue('10');
                 await expect(example).toHaveScreenshot('02-range-click-checks-4-10.png');
@@ -33,11 +35,14 @@ test.describe('TuiRange', () => {
             test('click between two thumbs triggers only nearest thumb', async () => {
                 await range.host.click({position: {x: 150, y: 0}});
                 await range.host.click({position: {x: 276, y: 0}});
+
                 await expect(range.left).toHaveValue('4');
                 await expect(range.right).toHaveValue('10');
                 await expect(example).toHaveScreenshot('03-range-click-checks-4-10.png');
+
                 await range.host.click({position: {x: 155, y: 0}});
                 await range.host.click({position: {x: 276, y: 0}});
+
                 await expect(range.left).toHaveValue('5');
                 await expect(range.right).toHaveValue('10');
                 await expect(example).toHaveScreenshot('03-range-click-checks-5-10.png');
@@ -57,16 +62,22 @@ test.describe('TuiRange', () => {
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('04-range-0-250.png');
+
                     await range.right.focus();
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('500');
                     await expect(example).toHaveScreenshot('04-range-0-500.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('750');
                     await expect(example).toHaveScreenshot('04-range-0-750.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('04-range-0-100.png');
@@ -76,23 +87,32 @@ test.describe('TuiRange', () => {
                     page,
                 }) => {
                     await range.host.click({position: {x: 276, y: 0}});
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('05-range-0-1000.png');
+
                     await range.left.focus();
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('250');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('05-range-250-1000.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('500');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('05-range-500-1000.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('750');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('05-range-750-1000.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('1000');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('05-range-1000-1000.png');
@@ -102,22 +122,31 @@ test.describe('TuiRange', () => {
                     page,
                 }) => {
                     await range.host.click({position: {x: 276, y: 0}});
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('06-range-0-1000.png');
+
                     await page.keyboard.down('ArrowLeft');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('750');
                     await expect(example).toHaveScreenshot('06-range-0-750.png');
+
                     await page.keyboard.down('ArrowLeft');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('500');
                     await expect(example).toHaveScreenshot('06-range-0-500.png');
+
                     await page.keyboard.down('ArrowLeft');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('06-range-0-250.png');
+
                     await page.keyboard.down('ArrowLeft');
+
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('0');
                     await expect(example).toHaveScreenshot('06-range-0-0.png');
@@ -129,20 +158,28 @@ test.describe('TuiRange', () => {
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('07-range-0-250.png');
+
                     await range.left.focus();
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('250');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('07-1-range-250-250.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('250');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('07-2-range-250-250.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('250');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('07-3-range-250-250.png');
+
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('250');
                     await expect(range.right).toHaveValue('250');
                     await expect(example).toHaveScreenshot('07-4-range-250-250.png');
@@ -155,24 +192,29 @@ test.describe('TuiRange', () => {
                     await range.left.focus();
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('500');
                     await expect(range.right).toHaveValue('1000');
                     await expect(example).toHaveScreenshot('08-range-500-1000.png');
+
                     await range.right.focus();
                     await page.keyboard.down('ArrowLeft');
                     await page.keyboard.down('ArrowLeft');
                     await page.keyboard.down('ArrowLeft');
                     await page.keyboard.down('ArrowLeft');
                     await page.keyboard.down('ArrowLeft');
+
                     await expect(range.left).toHaveValue('500');
                     await expect(range.right).toHaveValue('500');
                     await expect(example).toHaveScreenshot('08-1-range-500-500.png');
+
                     await range.left.focus();
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
+
                     await expect(range.left).toHaveValue('500');
                     await expect(range.right).toHaveValue('500');
                     await expect(example).toHaveScreenshot('08-2-range-500-500.png');
@@ -190,37 +232,54 @@ test.describe('TuiRange', () => {
 
                 test('ArrowUp increases value of the focused slider', async ({page}) => {
                     await range.right.focus();
+
                     await expect(output).toContainText('[ 0, 100000 ]');
                     await expect(example).toHaveScreenshot('09-range-0-100_000.png');
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 0, 300000 ]');
                     await expect(example).toHaveScreenshot('09-range-0-300_000.png');
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 0, 500000 ]');
                     await expect(example).toHaveScreenshot('09-range-0-500_000.png');
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 0, 750000 ]');
                     await expect(example).toHaveScreenshot('09-range-0-750_000.png');
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 0, 1000000 ]');
                     await expect(example).toHaveScreenshot('09-range-0-1_000_000.png');
+
                     await range.left.focus();
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 5000, 1000000 ]');
                     await expect(example).toHaveScreenshot(
                         '09-range-5_000-1_000_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 10000, 1000000 ]');
                     await expect(example).toHaveScreenshot(
                         '09-range-10_000-1_000_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 55000, 1000000 ]');
                     await expect(example).toHaveScreenshot(
                         '09-range-55_000-1_000_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 100000, 1000000 ]');
                     await expect(example).toHaveScreenshot(
                         '09-range-100_000-1_000_000.png',
@@ -232,12 +291,17 @@ test.describe('TuiRange', () => {
                 }) => {
                     await range.right.focus();
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 0, 55000 ]');
                     await expect(example).toHaveScreenshot('10-range-0-55_000.png');
+
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 0, 10000 ]');
                     await expect(example).toHaveScreenshot('10-range-0-10_000.png');
+
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 0, 5000 ]');
                     await expect(example).toHaveScreenshot('10-range-0-5_000.png');
                 });
@@ -250,21 +314,28 @@ test.describe('TuiRange', () => {
                     await page.keyboard.down('ArrowUp');
                     await page.keyboard.down('ArrowUp');
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 100000, 100000 ]');
                     await expect(example).toHaveScreenshot(
                         '11-range-100_000-100_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 100000, 100000 ]');
                     await expect(example).toHaveScreenshot(
                         '11-1-range-100_000-100_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 100000, 100000 ]');
                     await expect(example).toHaveScreenshot(
                         '11-2-range-100_000-100_000.png',
                     );
+
                     await page.keyboard.down('ArrowUp');
+
                     await expect(output).toContainText('[ 100000, 100000 ]');
                     await expect(example).toHaveScreenshot(
                         '11-3-range-100_000-100_000.png',
@@ -280,12 +351,17 @@ test.describe('TuiRange', () => {
                     await page.keyboard.down('ArrowDown');
                     await page.keyboard.down('ArrowDown');
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 5000, 5000 ]');
                     await expect(example).toHaveScreenshot('12-1-range-5000-5000.png');
+
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 5000, 5000 ]');
                     await expect(example).toHaveScreenshot('12-2-range-5000-5000.png');
+
                     await page.keyboard.down('ArrowDown');
+
                     await expect(output).toContainText('[ 5000, 5000 ]');
                     await expect(example).toHaveScreenshot('12-3-range-5000-5000.png');
                 });

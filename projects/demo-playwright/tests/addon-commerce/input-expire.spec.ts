@@ -10,6 +10,7 @@ test.describe('InputExpire', () => {
         await tuiGoto(page, DemoRoute.InputCard);
 
         expiryTextfield = new TuiInputCardPO(page).expiryTextfield;
+
         await expect(expiryTextfield).toBeEmpty();
     });
 
@@ -18,6 +19,7 @@ test.describe('InputExpire', () => {
         const expectedValue = '05';
 
         await expiryTextfield.fill(entryValue);
+
         await expect(expiryTextfield).toHaveValue(expectedValue);
         await expect(expiryTextfield).toHaveJSProperty(
             'selectionStart',
@@ -34,6 +36,7 @@ test.describe('InputExpire', () => {
         const expectedValue = '1';
 
         await expiryTextfield.pressSequentially(entryValue);
+
         await expect(expiryTextfield).toHaveValue(expectedValue);
         await expect(expiryTextfield).toHaveJSProperty(
             'selectionStart',
@@ -49,6 +52,7 @@ test.describe('InputExpire', () => {
         const expectedValue = '12';
 
         await expiryTextfield.fill(expectedValue);
+
         await expect(expiryTextfield).toHaveValue(expectedValue);
         await expect(expiryTextfield).toHaveJSProperty(
             'selectionStart',
@@ -65,6 +69,7 @@ test.describe('InputExpire', () => {
         const expectedValue = '0';
 
         await expiryTextfield.pressSequentially(entryValue);
+
         await expect(expiryTextfield).toHaveValue(expectedValue);
         await expect(expiryTextfield).toHaveJSProperty(
             'selectionStart',
@@ -81,6 +86,7 @@ test.describe('InputExpire', () => {
         const expectedValue = '01/30';
 
         await expiryTextfield.pressSequentially(entryValue);
+
         await expect(expiryTextfield).toHaveValue(expectedValue);
         await expect(expiryTextfield).toHaveJSProperty(
             'selectionStart',

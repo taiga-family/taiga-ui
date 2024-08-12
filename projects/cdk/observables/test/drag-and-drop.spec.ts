@@ -27,6 +27,7 @@ describe('tuiDragAndDropFrom', () => {
 
         element.dispatchEvent(new Event('mousedown'));
         element.dispatchEvent(new Event('mousemove'));
+
         expect(result).toBe('start');
     });
 
@@ -42,6 +43,7 @@ describe('tuiDragAndDropFrom', () => {
 
         element.dispatchEvent(new Event('mousedown'));
         document.dispatchEvent(new Event('mousemove'));
+
         expect(result).toBe('continues');
     });
 
@@ -58,6 +60,7 @@ describe('tuiDragAndDropFrom', () => {
         element.dispatchEvent(new Event('mousedown'));
         document.dispatchEvent(new Event('mousemove'));
         document.dispatchEvent(new Event('dragend'));
+
         expect(result).toBe('end');
     });
 });

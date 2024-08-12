@@ -24,7 +24,9 @@ test.describe('Deep / Toggle', () => {
 
                 await api.focusOnBody();
                 await toggle.scrollIntoViewIfNeeded();
+
                 await expect(toggle).toBeVisible();
+
                 await toggle.click();
                 await api.hideNotifications();
                 await api.waitStableState();

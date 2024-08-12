@@ -59,6 +59,7 @@ test.describe('InputTime', () => {
                 });
 
                 await inputTime.textfield.click();
+
                 await expect(apiPageExample).toHaveScreenshot(`time_mode_${mode}.png`);
             });
         });
@@ -70,6 +71,7 @@ test.describe('InputTime', () => {
                 });
 
                 await inputTime.textfield.click();
+
                 await expect(inputTime.dropdown).toHaveScreenshot(
                     'dropdown_is_visible.png',
                 );

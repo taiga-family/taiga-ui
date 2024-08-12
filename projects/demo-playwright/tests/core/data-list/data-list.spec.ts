@@ -12,6 +12,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-select').click();
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-data-list.png');
     });
 
@@ -23,6 +24,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiDropdownOpen]').click();
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('02-data-list.png');
     });
 
@@ -41,7 +43,9 @@ test.describe('DataList', () => {
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
+
         await expect(page).toHaveScreenshot('03-1-data-list.png');
+
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
@@ -49,14 +53,19 @@ test.describe('DataList', () => {
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
+
         await expect(page).toHaveScreenshot('03-2-data-list.png');
+
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
+
         await expect(page).toHaveScreenshot('03-3-data-list.png');
+
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
+
         await expect(page).toHaveScreenshot('03-4-data-list.png');
     });
 
@@ -69,6 +78,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').first().click();
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
     });
 
@@ -82,6 +92,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page).toHaveScreenshot('05-data-list.png');
 
         const money = page.locator('tui-dropdown').locator('[name="moneyValue"]').nth(0);
@@ -90,6 +101,7 @@ test.describe('DataList', () => {
         await money.fill('');
         await money.fill('2000');
         await money.press('Enter');
+
         await expect(page).toHaveScreenshot('06-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-email-option"]').click();
@@ -136,6 +148,7 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page).toHaveScreenshot('10-data-list.png');
     });
 });

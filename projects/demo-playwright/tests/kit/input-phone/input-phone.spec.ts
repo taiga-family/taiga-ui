@@ -28,12 +28,15 @@ test.describe('InputPhone', () => {
 
             await inputPhone.textfield.focus();
             await inputPhone.textfield.pressSequentially('52');
+
             await expect(inputPhone.textfield).toHaveValue('+52 (52');
 
             await inputPhone.cleaner.click();
+
             await expect(inputPhone.textfield).toHaveValue('+52 ');
 
             await inputPhone.textfield.pressSequentially('52');
+
             await expect(inputPhone.textfield).toHaveValue('+52 (52');
         });
 
@@ -46,20 +49,28 @@ test.describe('InputPhone', () => {
             );
 
             await inputPhone.textfield.focus();
+
             await expect(inputPhone.textfield).toHaveValue('+1 ');
 
             await inputPhone.textfield.blur();
+
             await expect(inputPhone.textfield).toHaveValue('');
 
             await inputPhone.textfield.pressSequentially('2125552368');
+
             await expect(inputPhone.textfield).toHaveValue('+1 (212) 555-23-68');
+
             await inputPhone.textfield.blur();
+
             await expect(inputPhone.textfield).toHaveValue('+1 (212) 555-23-68');
 
             await inputPhone.textfield.focus();
             await inputPhone.cleaner.click();
+
             await expect(inputPhone.textfield).toHaveValue('+1 ');
+
             await inputPhone.textfield.blur();
+
             await expect(inputPhone.textfield).toHaveValue('');
         });
 
@@ -73,16 +84,19 @@ test.describe('InputPhone', () => {
 
             test('Empty textfield => focus => textfield value is country code & form control is empty', async () => {
                 await inputPhone.textfield.focus();
+
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
                 await expect(example).toContainText('"testValue": ""');
             });
 
             test('Click on cleaner => => textfield value is country code & form control is empty', async () => {
                 await inputPhone.textfield.pressSequentially('2345');
+
                 await expect(inputPhone.textfield).toHaveValue('+1 (234) 5');
                 await expect(example).toContainText('"testValue": "+12345"');
 
                 await inputPhone.cleaner.click();
+
                 await expect(inputPhone.textfield).toHaveValue('+1 ');
                 await expect(example).toContainText('"testValue": ""');
             });
@@ -126,6 +140,7 @@ test.describe('InputPhone', () => {
                 tests.forEach(([typedValue, maskedValue], i) => {
                     test(`Typing "${typedValue}" => "${maskedValue}"`, async () => {
                         await input.fill(typedValue);
+
                         await expect(example).toHaveScreenshot(`01-input-phone-${i}.png`);
                         await expect(input).toHaveValue(maskedValue);
 
@@ -182,15 +197,21 @@ test.describe('InputPhone', () => {
                 }) => {
                     await expect(input).toHaveValue('+7 (912) 345-67-89');
                     await expect(example).toHaveScreenshot('03-input-phone-1.png');
+
                     await page.keyboard.press('Backspace');
                     await page.keyboard.down('5');
+
                     await expect(input).toHaveValue('+7 (912) 345-67-85');
                     await expect(example).toHaveScreenshot('03-input-phone-2.png');
+
                     await page.keyboard.press('Backspace');
                     await page.keyboard.press('Backspace');
+
                     await expect(example).toHaveScreenshot('03-input-phone-3.png');
+
                     await page.keyboard.down('9');
                     await page.keyboard.down('9');
+
                     await expect(input).toHaveValue('+7 (912) 345-67-99');
                     await expect(input).toHaveJSProperty(
                         'selectionStart',
@@ -1017,12 +1038,14 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('32-input-phone.png');
+
                     await page.keyboard.press('Delete');
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
                     await expect(example).toHaveScreenshot('33-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty('selectionStart', 0);
@@ -1054,6 +1077,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('35-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1066,6 +1090,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('36-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1104,6 +1129,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('38-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1132,6 +1158,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
                     await expect(example).toHaveScreenshot('40-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty('selectionStart', 0);
@@ -1141,6 +1168,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('41-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Shift+Z`);
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
@@ -1170,6 +1198,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('43-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1193,6 +1222,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('44-input-phone.png');
+
                     await page.keyboard.press('Control+Y');
 
                     await expect(input).toHaveJSProperty(
@@ -1244,6 +1274,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('46-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1256,6 +1287,7 @@ test.describe('InputPhone', () => {
                     );
 
                     await expect(example).toHaveScreenshot('47-input-phone.png');
+
                     await page.keyboard.press(`${CMD}+Shift+Z`);
 
                     await expect(input).toHaveJSProperty(
@@ -1364,6 +1396,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionEnd', 0);
 
                     await expect(example).toHaveScreenshot('53-input-phone.png');
+
                     await input.focus();
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
@@ -1409,6 +1442,7 @@ test.describe('InputPhone', () => {
             const example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
             await example.getByTestId('tui-primitive-textfield__native-input').focus();
+
             await expect(example).toHaveScreenshot('57-input-phone.png');
         });
     });

@@ -28,12 +28,14 @@ test.describe('InputCardGroup', () => {
             const entryValue = '1234 4567 8910 1112';
 
             await numberTextfield.pressSequentially(entryValue);
+
             await expect(numberTextfield).toHaveValue(entryValue);
             await expect(numberTextfield).toHaveScreenshot(
                 '01-input-card-group-filled.png',
             );
 
             await cleanerIcon.click();
+
             await expect(numberTextfield).toHaveScreenshot(
                 '02-input-card-group-cleared.png',
             );
@@ -42,6 +44,7 @@ test.describe('InputCardGroup', () => {
                 force: true,
                 position: {x: 0, y: 0}, // click top left corner, away from field
             });
+
             await expect(numberTextfield).toHaveScreenshot(
                 '03-input-card-group-unfocused.png',
             );
@@ -83,40 +86,47 @@ test.describe('InputCardGroup', () => {
             );
 
             await numberTextfield.pressSequentially(cardInfo.number);
+
             await expect(numberTextfield).toHaveValue(cardInfo.number);
             await expect(numberTextfield).toHaveScreenshot(
                 '06-input-card-with-value.png',
             );
 
             await numberTextfield.focus();
+
             await expect(numberTextfield).toHaveScreenshot(
                 '07-input-card-with-value-focus-edit-card.png',
             );
 
             await numberTextfield.press('Tab');
+
             await expect(numberTextfield).toHaveScreenshot(
                 '08-input-card-with-value-tab-to-expired.png',
             );
 
             await expiryTextfield.pressSequentially(cardInfo.expiry);
+
             await expect(expiryTextfield).toHaveValue(cardInfo.expiry);
             await expect(numberTextfield).toHaveScreenshot(
                 '09-input-card-with-value-expire-filled.png',
             );
 
             await cvcTextfield.pressSequentially('123');
+
             await expect(cvcTextfield).toHaveValue(cardInfo.cvc);
             await expect(numberTextfield).toHaveScreenshot(
                 '10-input-card-with-value-cvc-filled.png',
             );
 
             await cleanerIcon.click();
+
             await expect(numberTextfield).toBeEmpty();
             await expect(numberTextfield).toHaveScreenshot(
                 '11-input-card-with-focused-after-clear.png',
             );
 
             await example.click({position: {x: 0, y: 0}});
+
             await expect(numberTextfield).toHaveScreenshot(
                 '12-default-state-input-card.png',
             );
@@ -138,18 +148,21 @@ test.describe('InputCardGroup', () => {
             );
 
             await cvcTextfield.pressSequentially(cvc);
+
             await expect(cvcTextfield).toHaveValue(cvc);
             await expect(numberTextfield).toHaveScreenshot(
                 '15-input-card-with-value-cvc-filled.png',
             );
 
             await cleanerIcon.click();
+
             await expect(numberTextfield).toBeEmpty();
             await expect(numberTextfield).toHaveScreenshot(
                 '16-input-card-with-focused-after-clear.png',
             );
 
             await example.click({position: {x: 0, y: 0}});
+
             await expect(numberTextfield).toHaveScreenshot(
                 '17-default-prefilled-state-input-card.png',
             );
@@ -162,14 +175,17 @@ test.describe('InputCardGroup', () => {
             const cardInfo = {number: '5586 2000 7149 2158', expiry: '12/25'};
 
             await cvcTextfield.focus();
+
             await expect(expiryTextfield).toHaveCSS('pointer-events', 'none');
 
             await cleanerIcon.click();
             await numberTextfield.pressSequentially(cardInfo.number);
+
             await expect(numberTextfield).toHaveValue(cardInfo.number);
             await expect(expiryTextfield).toHaveCSS('pointer-events', 'auto');
 
             await expiryTextfield.pressSequentially(cardInfo.expiry);
+
             await expect(expiryTextfield).toHaveValue(cardInfo.expiry);
         });
     });

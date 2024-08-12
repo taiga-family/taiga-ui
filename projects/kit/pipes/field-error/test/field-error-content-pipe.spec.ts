@@ -73,6 +73,7 @@ describe('TuiFieldErrorContentPipe', () => {
         it('shows validation error', fakeAsync(() => {
             showHint();
             fixture.detectChanges();
+
             expect(getTooltip()?.textContent?.trim()).toBe(testError);
         }));
 
@@ -80,6 +81,7 @@ describe('TuiFieldErrorContentPipe', () => {
             component.control.setValue(22);
             showHint();
             fixture.detectChanges();
+
             expect(getTooltip()?.textContent?.trim()).toBe(`error ${max}`);
         }));
     });

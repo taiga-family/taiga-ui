@@ -55,6 +55,7 @@ describe('TuiSliderKeyStepsDirective', () => {
     describe("correctly sets initial value on native input (values satisfy input's steps)", () => {
         it('720_000 => 26/30', () => {
             fixture.detectChanges();
+
             expect(testComponent.inputElRef.nativeElement.value).toBe('26');
         });
 

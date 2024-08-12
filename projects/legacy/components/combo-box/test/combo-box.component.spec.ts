@@ -155,6 +155,7 @@ describe('ComboBox', () => {
         inputPO.sendText('Sly cat');
 
         await fixture.whenStable();
+
         expect(testComponent.control.value).toBe(ITEMS[1]);
     });
 
@@ -205,12 +206,14 @@ describe('ComboBox', () => {
             it('empty value does not open dropdown', () => {
                 testComponent.component.onValueChange('');
                 fixture.detectChanges();
+
                 expect(testComponent.component.open).toBe(false);
             });
 
             it('not empty value opens dropdown', () => {
                 testComponent.component.onValueChange('raccoon');
                 fixture.detectChanges();
+
                 expect(testComponent.component.open).toBe(true);
             });
         });

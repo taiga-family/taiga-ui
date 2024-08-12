@@ -186,6 +186,7 @@ describe('InputTag', () => {
             fixture.detectChanges();
 
             await fixture.whenStable();
+
             expect(inputPO.value).toBe('');
         });
 
