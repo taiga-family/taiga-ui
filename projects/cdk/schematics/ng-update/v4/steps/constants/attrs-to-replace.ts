@@ -287,4 +287,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: '[appearance]'},
     },
+    {
+        from: {
+            attrName: '[pseudoFocus]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiAppearanceFocus]',
+        },
+    },
 ];

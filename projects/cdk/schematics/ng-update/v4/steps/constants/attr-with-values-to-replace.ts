@@ -37,22 +37,10 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         valueReplacer: (condition) => `${condition} ? 'active' : null`,
     },
     {
-        attrNames: ['[pseudoFocus]'],
-        newAttrName: '[tuiAppearanceState]',
-        withTagNames: hasPseudo,
-        valueReplacer: (condition) => `${condition} ? 'focus' : null`,
-    },
-    {
         attrNames: ['[pseudoHover]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'hover' : null`,
-    },
-    {
-        attrNames: ['[pseudoInvalid]'],
-        newAttrName: '[tuiAppearanceState]',
-        withTagNames: hasPseudo,
-        valueReplacer: (condition) => `${condition} ? 'invalid' : null`,
     },
     {
         attrNames: ['[pseudoDisabled]'],
