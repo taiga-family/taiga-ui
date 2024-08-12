@@ -1,5 +1,6 @@
 name: 🚀 Snapshots
 on:
+  pull_request: # debug only, revert before merge
   push:
     branches: [main, 'v[0-9]+.x', 'release/**']
   workflow_dispatch:
@@ -30,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   snapshots-of-release:
-    if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
+    # debug only, revert before merge
     name: production
     runs-on: ubuntu-latest
     steps:
