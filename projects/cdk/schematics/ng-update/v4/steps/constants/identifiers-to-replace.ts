@@ -14,6 +14,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiPlatform', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TUI_DIALOGS', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_DIALOGS', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {
             name: 'tuiIconResolverProvider',
             moduleSpecifier: '@taiga-ui/experimental',

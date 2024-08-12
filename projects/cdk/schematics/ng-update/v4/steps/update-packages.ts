@@ -28,6 +28,14 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         tree,
     );
     replacePackageName(
+        '@tinkoff/ng-dompurify',
+        {
+            name: '@taiga-ui/dompurify',
+            version: '^4.1.2',
+        },
+        tree,
+    );
+    replacePackageName(
         '@tinkoff/ng-event-plugins',
         {
             name: '@taiga-ui/event-plugins',
