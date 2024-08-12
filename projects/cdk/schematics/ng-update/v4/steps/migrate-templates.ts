@@ -37,6 +37,7 @@ import {
     migrateButtonAppearance,
     migrateCheckbox,
     migrateExpandable,
+    migrateFilterPipe,
     migrateFocusable,
     migrateLabel,
     migrateLabeled,
@@ -118,6 +119,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateLabel,
         migrateNumberPrecision,
         migrateNotification,
+        migrateFilterPipe,
     ] as const;
 
     const progressLog = setupProgressLogger({

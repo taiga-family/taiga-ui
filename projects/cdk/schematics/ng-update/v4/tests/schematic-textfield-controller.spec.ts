@@ -53,6 +53,12 @@ const TEMPLATE_BEFORE = `
         tuiTextfield
         type="email"
     />
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="items | tuiFilterByInputWith : matcher"
+    ></tui-data-list-wrapper>
+    <div *ngFor="let item of items | tuiFilterByInputWith : matcher"></div>
 </tui-primitive-textfield>
 <tui-input-slider
     [prefix]="prefix"
@@ -75,6 +81,12 @@ const TEMPLATE_AFTER = `
         tuiTextfieldLegacy
         type="email"
     />
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="items | tuiFilterByInput : matcher"
+    ></tui-data-list-wrapper>
+    <div *ngFor="let item of items | tuiFilterByInput : matcher"></div>
 </tui-primitive-textfield>
 <tui-input-slider
     [tuiTextfieldPrefix]="prefix"
