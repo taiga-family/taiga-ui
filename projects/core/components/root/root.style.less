@@ -29,14 +29,8 @@ tui-root {
     font: var(--tui-font-text-s);
     color: var(--tui-text-primary);
     flex: 1;
+    border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 0 100vh 0;
     -webkit-tap-highlight-color: transparent;
-
-    &::before {
-        .fullsize(fixed);
-
-        content: '';
-        background: var(--tui-background-base);
-    }
 }
 
 tui-root > .t-root-scrollbar {
