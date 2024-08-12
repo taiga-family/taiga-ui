@@ -24,7 +24,6 @@ import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
@@ -39,6 +38,7 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
+import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';

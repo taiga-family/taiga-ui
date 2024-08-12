@@ -19,7 +19,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     host: {
         '[id]': 'el.id || id',
         '[attr.data-mode]': 'mode',
-        '[class._empty]': 'el.value === ""',
+        '[class._empty]': 'value === ""',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
@@ -40,6 +40,7 @@ export class TuiSelect extends TuiTextfieldBase {
 
     public override setValue(value: string): void {
         this.control.control?.setValue(value);
+        this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 
     public focus(): void {
@@ -53,6 +54,6 @@ export class TuiSelect extends TuiTextfieldBase {
     }
 
     protected async onCopy(): Promise<void> {
-        await this.nav.clipboard.writeText(this.el.value);
+        await this.nav.clipboard.writeText(this.value);
     }
 }
