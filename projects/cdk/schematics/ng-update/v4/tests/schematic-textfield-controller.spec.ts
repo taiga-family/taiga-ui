@@ -84,9 +84,9 @@ const TEMPLATE_AFTER = `
     <tui-data-list-wrapper
         *tuiDataList
         tuiMultiSelectGroup
-        [items]="items | tuiFilterByInput : matcher"
+        [items]="items | tuiFilterByInput"
     ></tui-data-list-wrapper>
-    <div *ngFor="let item of items | tuiFilterByInput : matcher"></div>
+    <div *ngFor="let item of items | tuiFilterByInput"></div>
 </tui-primitive-textfield>
 <tui-input-slider
     [tuiTextfieldPrefix]="prefix"
