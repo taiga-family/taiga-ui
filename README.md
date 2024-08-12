@@ -210,6 +210,32 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
             </div>
         </td>
         <td align="center">
+            <a href="https://github.com/mdlufy"
+                ><img
+                    src="https://github.com/mdlufy.png?size=200"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="German Panov"
+                /><br /><b>German Panov</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://github.com/mdlufy"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/mdlufy"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
+        <td align="center">
             <a href="https://github.com/splincode"
                 ><img
                     src="https://github.com/splincode.png?size=200"
