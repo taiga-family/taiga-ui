@@ -9,6 +9,7 @@ import {
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
 import {replaceAttrValues} from '../../../utils/templates';
+import {findAttr} from '../../../../utils/templates/inputs';
 
 export function migrateLabeled({
     resource,
@@ -43,10 +44,16 @@ export function migrateLabeled({
         'tui-radio-labeled',
     ]);
 
-    elements.forEach(({sourceCodeLocation, tagName}) => {
+    elements.forEach(({sourceCodeLocation, tagName, attrs}) => {
         if (!sourceCodeLocation) {
             return;
         }
+
+        const [, ngForAttrLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
+                name.includes('*ngfor'),
+            ) || [];
+        const ngForAttr = findAttr(attrs, '*ngFor');
 
         addImportToClosestModule(
             resource.componentPath,
@@ -56,7 +63,7 @@ export function migrateLabeled({
 
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
-            '<label tuiLabel>',
+            `<label${ngForAttr ? ` *ngFor="${ngForAttr.value}"` : ''} tuiLabel>`,
         );
         recorder.remove(
             templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 0),
@@ -66,5 +73,12 @@ export function migrateLabeled({
             templateOffset + (sourceCodeLocation.endTag?.startOffset || 1),
             '</label>',
         );
+
+        if (ngForAttrLocation) {
+            recorder.remove(
+                templateOffset + ngForAttrLocation.startOffset,
+                ngForAttrLocation.endOffset - ngForAttrLocation.startOffset,
+            );
+        }
     });
 }

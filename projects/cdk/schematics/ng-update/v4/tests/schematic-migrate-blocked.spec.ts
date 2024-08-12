@@ -60,11 +60,12 @@ const TEMPLATE_BEFORE = `
 </form>
 
 <tui-checkbox-block
+  *ngFor="let block of blocks"
   size="m"
   [hideCheckbox]="true"
   [(ngModel)]="value"
 >
-  Label
+  {{ block.name }}
 </tui-checkbox-block>
 
 <tui-checkbox-block
@@ -108,13 +109,14 @@ const TEMPLATE_AFTER = `
     Pineapples
   </label>
 </form>
-<label tuiBlock="m" appearance="">
+<label *ngFor="let block of blocks" tuiBlock="m" appearance="">
 <input tuiCheckbox type="checkbox"
+  ${''}
   ${''}
   ${''}
   [(ngModel)]="value"
 >
-  Label
+  {{ block.name }}
 </label>
 <label tuiBlock="s" appearance="">
 <input tuiCheckbox type="checkbox"
