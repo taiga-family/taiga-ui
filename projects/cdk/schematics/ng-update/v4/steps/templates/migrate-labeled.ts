@@ -3,13 +3,13 @@ import type {DevkitFileSystem} from 'ng-morph';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
 import {replaceAttrValues} from '../../../utils/templates';
-import {findAttr} from '../../../../utils/templates/inputs';
 
 export function migrateLabeled({
     resource,
