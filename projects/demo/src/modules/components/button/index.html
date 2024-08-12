@@ -18,6 +18,7 @@
             <button
                 tuiButton
                 [appearance]="appearance"
+                [disabled]="disabled"
                 [iconEnd]="iconEnd"
                 [iconStart]="iconStart"
                 [loading]="loading"
@@ -27,6 +28,22 @@
             </button>
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="loading"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="loading"
+            >
+                Loading indicator
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state
+            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="appearance"
@@ -53,14 +70,6 @@
                 [(documentationPropertyValue)]="iconEnd"
             >
                 Icon on the right side
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="loading"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="loading"
-            >
-                Loading indicator
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

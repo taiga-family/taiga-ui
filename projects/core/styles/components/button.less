@@ -35,6 +35,10 @@
     font: var(--tui-font-text-m);
     font-weight: bold;
 
+    &:disabled {
+        pointer-events: none;
+    }
+
     > .t-loader {
         .center-all();
 

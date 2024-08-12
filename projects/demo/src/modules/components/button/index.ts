@@ -44,5 +44,6 @@ export default class Page {
     protected iconStart = this.icons[0];
     protected iconEnd = this.icons[0];
 
+    protected disabled = false;
     protected loading = false;
 }
