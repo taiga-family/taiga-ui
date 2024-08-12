@@ -962,6 +962,12 @@ export const pages: TuiDocRoutePages = [
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
         route: DemoRoute.Navigation,
     },
+    {
+        section: 'Layout',
+        title: 'Search',
+        keywords: 'шапка, header, filter, table, поиск, фильтр, таблица',
+        route: DemoRoute.Search,
+    },
     // Charts
     {
         section: 'Charts',

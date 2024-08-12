@@ -39,6 +39,7 @@ export const DemoRoute = {
     SwipeActions: '/components/swipe-actions',
     Textfield: '/components/textfield',
     Navigation: '/components/navigation',
+    Search: '/components/search',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
     ButtonClose: '/components/button-close',
