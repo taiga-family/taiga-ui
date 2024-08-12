@@ -37,6 +37,7 @@ export class TuiDocLanguageSwitcher {
         ['italian', 'IT'],
         ['kazakh', 'KZ'],
         ['malay', 'MY'],
+        ['korean', 'KR'],
         ['polish', 'PL'],
         ['portuguese', 'PT'],
         ['russian', 'RU'],
