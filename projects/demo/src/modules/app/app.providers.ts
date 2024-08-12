@@ -26,7 +26,6 @@ import {
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
 import {
-    TUI_BASE_HREF,
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
@@ -171,9 +170,8 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,
-        deps: [TUI_BASE_HREF],
-        useFactory: (baseHref: string) => (tree: UrlTree) =>
-            String(tree).replace(baseHref, ''),
+        useFactory: () => (tree: UrlTree) =>
+            String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
     },
     {
         provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
