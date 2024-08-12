@@ -1,0 +1,46 @@
+<tui-doc-page
+    header="Material"
+    package="icons-material"
+    type="icons"
+>
+    <ng-template pageTab>
+        <h2 class="title">Material icons pack</h2>
+
+        <p>
+            Open source theme for Taiga UI uses processed
+            <a
+                href="https://fonts.google.com/icons?icon.set=Material+Icons"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                Material Icons.
+            </a>
+            You can browse all the icons from this pack and find the one that suits you
+            <a
+                href="https://marella.me/material-design-icons/demo/font/"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                here.
+            </a>
+        </p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <tui-doc-code code="npm i @taiga-ui/icons-material" />
+
+        <tui-doc-code
+            filename="angular.json"
+            [code]="assets"
+        />
+    </ng-template>
+</tui-doc-page>

@@ -190,9 +190,14 @@ export const ROUTES: Routes = [
         title: 'Icon',
     }),
     route({
-        path: DemoRoute.Icons,
-        loadComponent: async () => import('../components/icons'),
+        path: DemoRoute.IconsLucide,
+        loadComponent: async () => import('../icons/lucide'),
         title: 'Icons',
+    }),
+    route({
+        path: DemoRoute.IconsMaterial,
+        loadComponent: async () => import('../icons/material'),
+        title: 'Icons-material',
     }),
     route({
         path: DemoRoute.Label,

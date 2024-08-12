@@ -1,0 +1,17 @@
+{
+    "name": "@taiga-ui/icons-material",
+    "version": "4.0.0",
+    "description": "Feather icons for Taiga UI",
+    "keywords": [
+        "angular",
+        "icon",
+        "svg",
+        "material"
+    ],
+    "homepage": "https://github.com/taiga-family/taiga-ui",
+    "repository": "https://github.com/taiga-family/taiga-ui",
+    "license": "Apache-2.0",
+    "devDependencies": {
+        "@material-design-icons/svg": "0.14.13"
+    }
+}

@@ -99,11 +99,17 @@ export const pages: TuiDocRoutePages = [
         route: DemoRoute.Colors,
     },
     {
-        section: 'Foundations',
-        title: 'Icons',
+        section: 'Icons',
+        title: 'Lucide',
         keywords:
             'icons, icon, free, pack, lucide, markup, icons, image, картинка, свг, svg, графика',
-        route: DemoRoute.Icons,
+        route: DemoRoute.IconsLucide,
+    },
+    {
+        section: 'Icons',
+        title: 'Material',
+        keywords: 'icons, material, design, картинка, свг, svg, графика',
+        route: DemoRoute.IconsMaterial,
     },
     {
         section: 'Foundations',
