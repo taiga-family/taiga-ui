@@ -1,14 +1,12 @@
-import type {Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    HostBinding,
     inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiOrientation, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_GROUP_OPTIONS} from './group.options';
@@ -20,7 +18,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-group-styles',
+        class: 'tui-group',
     },
 })
 class TuiGroupStyles {}
@@ -29,11 +27,12 @@ class TuiGroupStyles {}
     standalone: true,
     selector: '[tuiGroup]:not(ng-container)',
     host: {
-        class: 'tui-group',
+        tuiGroup: '',
         role: 'group',
-        '[class.tui-group_orientation_horizontal]': 'orientation === "horizontal"',
-        '[class.tui-group_orientation_vertical]': 'orientation === "vertical"',
-        '[class.tui-group_radius_large]': 'size === "l"',
+        '[attr.data-orientation]': 'orientation',
+        '[attr.data-size]': 'size',
+        '[style.--t-group-radius]': 'rounded ? null : 0',
+        '[style.--t-group-margin.rem]': 'collapsed ? null : 0.125',
     },
 })
 export class TuiGroup {
@@ -45,19 +44,11 @@ export class TuiGroup {
     public orientation: TuiOrientation = this.options.orientation;
 
     @Input()
-    @HostBinding('class.tui-group_collapsed')
     public collapsed = this.options.collapsed;
 
     @Input()
-    @HostBinding('class.tui-group_rounded')
     public rounded = this.options.rounded;
 
     @Input()
     public size: TuiSizeL | TuiSizeS = this.options.size;
-}
-
-export function tuiGroupSize(
-    signal: Signal<TuiSizeL | TuiSizeS>,
-): Signal<TuiSizeL | TuiSizeS> {
-    return tuiDirectiveBinding(TuiGroup, 'size', signal);
 }

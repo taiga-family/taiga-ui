@@ -25,6 +25,6 @@ export default class Page {
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    protected size: TuiSizeL = this.sizeVariants[0];
+    protected size: TuiSizeL = this.sizeVariants[1];
     protected readonly routes = DemoRoute;
 }

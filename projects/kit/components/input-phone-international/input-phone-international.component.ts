@@ -38,7 +38,7 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/directives/group';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
@@ -92,7 +92,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
     protected readonly dropdown = tuiDropdown(null);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly size = tuiGroupSize(inject(TUI_TEXTFIELD_OPTIONS).size);
+    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly open = tuiDropdownOpen();
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly metadata = toSignal(from(this.options.metadata));
