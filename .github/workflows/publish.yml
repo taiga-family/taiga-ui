@@ -7,7 +7,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    allow-failure: true
     env:
       NX_SKIP_NX_CACHE: true
     steps:
