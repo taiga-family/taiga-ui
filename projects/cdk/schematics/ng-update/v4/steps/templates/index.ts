@@ -4,6 +4,7 @@ export * from './migrate-badge';
 export * from './migrate-badged-content';
 export * from './migrate-button-appearance';
 export * from './migrate-expandable';
+export * from './migrate-filter-pipe';
 export * from './migrate-focusable';
 export * from './migrate-label';
 export * from './migrate-labeled';
