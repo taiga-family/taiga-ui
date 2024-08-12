@@ -87,7 +87,7 @@ const TEMPLATE_BEFORE = `
 `.trim();
 
 const TEMPLATE_AFTER = `
-<label tuiBlock><input tuiCheckbox type="checkbox" [(ngModel)]="value" [tuiAppearanceState]="pseudoFocus ? 'focus' : null">Content</label>
+<label tuiBlock><input tuiCheckbox type="checkbox" [(ngModel)]="value" [tuiAppearanceFocus]="pseudoFocus">Content</label>
 
 <form [formGroup]="testForm">
  <label tuiBlock> <input tuiRadio type="radio"
