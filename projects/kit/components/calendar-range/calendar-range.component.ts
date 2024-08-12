@@ -155,7 +155,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
-        return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
+        return (
+            (tuiIsString(item) && activePeriod === null) ||
+            activePeriod === item ||
+            activePeriod?.toString() === item.toString()
+        );
     }
 
     // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
