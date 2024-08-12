@@ -21,6 +21,7 @@ describe('tuiGetSelectedText', () => {
 
         it('should return null if active element is not a textfield', () => {
             mockWindow.document.activeElement = document.createElement('div');
+
             expect(tuiGetSelectedText(mockWindow)).toBeNull();
         });
     });
@@ -44,6 +45,7 @@ describe('tuiGetSelectedText', () => {
             input.selectionStart = 2;
             input.selectionEnd = 6;
             mockWindow.document.activeElement = input;
+
             expect(tuiGetSelectedText(mockWindow)).toBe('put ');
         });
 
@@ -54,6 +56,7 @@ describe('tuiGetSelectedText', () => {
             textarea.selectionStart = 1;
             textarea.selectionEnd = 5;
             mockWindow.document.activeElement = textarea;
+
             expect(tuiGetSelectedText(mockWindow)).toBe('exta');
         });
 
@@ -61,6 +64,7 @@ describe('tuiGetSelectedText', () => {
             const div = document.createElement('div');
 
             mockWindow.document.activeElement = div;
+
             expect(tuiGetSelectedText(mockWindow)).toBe('selected text');
         });
     });

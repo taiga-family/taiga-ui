@@ -25,6 +25,7 @@ test.describe('InputNumber', () => {
             await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=Infinity`);
             await input.focus();
             await input.fill('1,2345');
+
             await expect(example).toHaveScreenshot('01-input-number.png');
         });
 
@@ -33,8 +34,11 @@ test.describe('InputNumber', () => {
                 page,
                 '/components/input-number/API?tuiTextfieldPrefix=$&tuiTextfieldPostfix=GBP',
             );
+
             await expect(example).toHaveScreenshot('02-input-number.png');
+
             await input.clear();
+
             await expect(example).toHaveScreenshot('03-input-number.png');
         });
 
@@ -46,6 +50,7 @@ test.describe('InputNumber', () => {
                     page,
                     `/components/input-number/API?style.text-align=${align}&tuiTextfieldPrefix=${readableFormatText}&tuiTextfieldPostfix=${readableFormatText}`,
                 );
+
                 await expect(example).toHaveScreenshot(`04-input-number-${i}.png`);
             });
         });
@@ -79,6 +84,7 @@ test.describe('InputNumber', () => {
             for (const [i, input] of inputs.entries()) {
                 await input.clear();
                 await input.focus();
+
                 await expect(example).toHaveScreenshot(`06-input-number-${i}.png`);
             }
         });
@@ -101,6 +107,7 @@ test.describe('InputNumber', () => {
 
             test('105,00| => Backspace => 105,0|0', async ({page}) => {
                 await page.keyboard.press('Backspace');
+
                 await expect(input).toHaveJSProperty('selectionStart', '105,0'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '105,0'.length);
                 await expect(example).toHaveScreenshot('07-input-number.png');
@@ -109,6 +116,7 @@ test.describe('InputNumber', () => {
             test('105,0|0 => Backspace => 105,|00', async ({page}) => {
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('Backspace');
+
                 await expect(input).toHaveJSProperty('selectionStart', '105,'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '105,'.length);
                 await expect(example).toHaveScreenshot('08-input-number.png');
@@ -118,6 +126,7 @@ test.describe('InputNumber', () => {
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('Backspace');
+
                 await expect(input).toHaveJSProperty('selectionStart', '105'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '105'.length);
                 await expect(example).toHaveScreenshot('09-input-number.png');
@@ -127,6 +136,7 @@ test.describe('InputNumber', () => {
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('ArrowLeft');
                 await page.keyboard.press('Delete');
+
                 await expect(input).toHaveJSProperty('selectionStart', '105,0'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '105,0'.length);
                 await expect(example).toHaveScreenshot('10-input-number.png');
@@ -155,6 +165,7 @@ test.describe('InputNumber', () => {
 
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('Delete');
+
                 await expect(input).toHaveJSProperty('selectionStart', '1 '.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '1 '.length);
                 await expect(example).toHaveScreenshot('11-input-number.png');
@@ -173,6 +184,7 @@ test.describe('InputNumber', () => {
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('Backspace');
+
                 await expect(input).toHaveJSProperty('selectionStart', '1'.length);
                 await expect(input).toHaveJSProperty('selectionEnd', '1'.length);
                 await expect(example).toHaveScreenshot('12-input-number.png');
@@ -195,6 +207,7 @@ test.describe('InputNumber', () => {
                 await input.fill(
                     `${CHAR_MINUS}${CHAR_HYPHEN}${CHAR_EN_DASH}${CHAR_EM_DASH}9`,
                 );
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
                 await expect(example).toHaveScreenshot('13-input-number.png');
@@ -202,10 +215,13 @@ test.describe('InputNumber', () => {
 
             test('validates positive value only on blur', async () => {
                 await input.fill('2');
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
                 await expect(example).toHaveScreenshot('14-input-number.png');
+
                 await input.blur();
+
                 await expect(example).toHaveScreenshot('15-input-number.png');
             });
         });
@@ -222,6 +238,7 @@ test.describe('InputNumber', () => {
 
             test('immediately validates negative value', async () => {
                 await input.fill('-10'); // less than [min]
+
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
                 await expect(input).toHaveValue(`${CHAR_MINUS}5`);
@@ -232,17 +249,24 @@ test.describe('InputNumber', () => {
 
             test("don't touch any positive value", async ({page}) => {
                 await input.fill('1');
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
                 await expect(example).toHaveScreenshot('17-input-number.png');
+
                 await input.fill('0');
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
                 await expect(example).toHaveScreenshot('18-input-number.png');
+
                 await input.blur();
+
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
+
                 await page.waitForTimeout(100); // to be sure that value is not changed even in case of some async validation
+
                 await expect(example).toHaveScreenshot('19-input-number.png');
             });
         });
@@ -256,6 +280,7 @@ test.describe('InputNumber', () => {
             const textfield = example.getByRole('textbox');
 
             await expect(textfield).toHaveValue('');
+
             textfield.fill('33'); // less than min
 
             await expect(example).toHaveScreenshot(
@@ -284,11 +309,14 @@ test.describe('InputNumber', () => {
             test('validates negative value only on blur', async ({page}) => {
                 await input.fill('-1'); // more than [max]
                 await page.waitForTimeout(100); // to be sure that value is not changed even in case of some async validation
+
                 await expect(input).toHaveValue(`${CHAR_MINUS}1`);
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
                 await expect(example).toHaveScreenshot('21-input-number-before-blur.png');
+
                 await input.blur();
+
                 await expect(input).toHaveValue(`${CHAR_MINUS}5`);
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
@@ -308,6 +336,7 @@ test.describe('InputNumber', () => {
 
             test('immediately validates positive value', async () => {
                 await input.fill('19');
+
                 await expect(input).toHaveValue('12');
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
@@ -316,18 +345,23 @@ test.describe('InputNumber', () => {
 
             test("don't touch any negative value", async ({page}) => {
                 await input.fill('-1');
+
                 await expect(input).toHaveValue(`${CHAR_MINUS}1`);
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
                 await expect(example).toHaveScreenshot('23-input-number.png');
+
                 await page.keyboard.down('9');
+
                 await expect(input).toHaveJSProperty('selectionStart', 3);
                 await expect(input).toHaveJSProperty('selectionEnd', 3);
                 await expect(input).toHaveValue(`${CHAR_MINUS}19`);
                 await expect(input).toHaveJSProperty('selectionStart', 3);
                 await expect(input).toHaveJSProperty('selectionEnd', 3);
                 await expect(example).toHaveScreenshot('24-input-number.png');
+
                 await page.waitForTimeout(100);
+
                 await expect(input).toHaveValue(`${CHAR_MINUS}19`);
                 await expect(input).toHaveJSProperty('selectionStart', 3);
                 await expect(input).toHaveJSProperty('selectionEnd', 3);
@@ -349,6 +383,7 @@ test.describe('InputNumber', () => {
             );
 
             await input.fill('42');
+
             await expect(input).toHaveValue('42');
             await expect(input).toHaveJSProperty('selectionStart', 2);
             await expect(input).toHaveJSProperty('selectionEnd', 2);
@@ -362,10 +397,13 @@ test.describe('InputNumber', () => {
             );
 
             await input.fill('42.1');
+
             await expect(input).toHaveValue('42.1');
             await expect(input).toHaveJSProperty('selectionStart', 4);
             await expect(input).toHaveJSProperty('selectionEnd', 4);
+
             await input.blur();
+
             await expect(input).toHaveValue('42.1');
             await expect(example).toHaveScreenshot('27-input-number.png');
         });
@@ -377,10 +415,13 @@ test.describe('InputNumber', () => {
             );
 
             await input.fill('42.1');
+
             await expect(input).toHaveValue('42.1');
             await expect(input).toHaveJSProperty('selectionStart', 4);
             await expect(input).toHaveJSProperty('selectionEnd', 4);
+
             await input.blur();
+
             await expect(input).toHaveValue('42.10');
             await expect(example).toHaveScreenshot('28-input-number.png');
         });
@@ -392,6 +433,7 @@ test.describe('InputNumber', () => {
             );
 
             await input.fill('42.00');
+
             await expect(input).toHaveJSProperty('selectionStart', 5);
             await expect(input).toHaveJSProperty('selectionEnd', 5);
             await expect(example).toHaveScreenshot('29-input-number.png');
@@ -401,6 +443,7 @@ test.describe('InputNumber', () => {
             await tuiGoto(page, `${DemoRoute.InputNumber}/API?precision=0`);
 
             await input.fill('42.1');
+
             await expect(input).toHaveValue('42');
             await expect(example).toHaveScreenshot('30-input-number.png');
         });
@@ -411,6 +454,7 @@ test.describe('InputNumber', () => {
                 '/components/input-number/API?precision=2&decimalMode=always',
             );
             await input.fill('42');
+
             await expect(input).toHaveValue('42.00');
             await expect(input).toHaveJSProperty('selectionStart', 2);
             await expect(input).toHaveJSProperty('selectionEnd', 2);
@@ -426,6 +470,7 @@ test.describe('InputNumber', () => {
             );
             await input.clear();
             await input.focus();
+
             await expect(input).toHaveValue('$ kg');
             await expect(input).toHaveJSProperty('selectionStart', 1);
             await expect(input).toHaveJSProperty('selectionEnd', 1);

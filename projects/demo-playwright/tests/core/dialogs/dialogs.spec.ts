@@ -119,6 +119,7 @@ test.describe('Dialogs', () => {
 
                 test('Pristine form does not show confirmation', async ({page}) => {
                     await page.locator('tui-dialog .t-close').click();
+
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });
 
@@ -135,6 +136,7 @@ test.describe('Dialogs', () => {
                     await page.locator('tui-dialog input').fill('Test');
                     await page.locator('tui-dialog .t-close').click();
                     await page.locator('tui-confirm button').nth(1).click();
+
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });
             });

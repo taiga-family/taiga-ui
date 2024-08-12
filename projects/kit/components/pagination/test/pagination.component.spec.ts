@@ -107,31 +107,37 @@ describe('TuiPaginationComponent', () => {
 
             it('index = 0', () => {
                 setParams({index: 0});
+
                 expect(getElements()).toEqual([1, 2, 3, 4, 5, 0, 99]);
             });
 
             it('index = 2', () => {
                 setParams({index: 2});
+
                 expect(getElements()).toEqual([1, 2, 3, 4, 5, 0, 99]);
             });
 
             it('index = 4', () => {
                 setParams({index: 4});
+
                 expect(getElements()).toEqual([1, 0, 4, 5, 6, 0, 99]);
             });
 
             it('index = 5', () => {
                 setParams({index: 5});
+
                 expect(getElements()).toEqual([1, 0, 5, 6, 7, 0, 99]);
             });
 
             it('index = 97', () => {
                 setParams({index: 97});
+
                 expect(getElements()).toEqual([1, 0, 95, 96, 97, 98, 99]);
             });
 
             it('index = 98', () => {
                 setParams({index: 98});
+
                 expect(getElements()).toEqual([1, 0, 95, 96, 97, 98, 99]);
             });
         });
@@ -144,16 +150,19 @@ describe('TuiPaginationComponent', () => {
 
                 it('index = 0', () => {
                     setParams({index: 0});
+
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
 
                 it('index = 1', () => {
                     setParams({index: 1});
+
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
 
                 it('index = 2', () => {
                     setParams({index: 2});
+
                     expect(getElements()).toEqual([1, 2, 3]);
                 });
             });
@@ -165,16 +174,19 @@ describe('TuiPaginationComponent', () => {
 
                 it('index = 0', () => {
                     setParams({index: 0});
+
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
 
                 it('index = 2', () => {
                     setParams({index: 2});
+
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
 
                 it('index = 4', () => {
                     setParams({index: 4});
+
                     expect(getElements()).toEqual([1, 2, 3, 4, 5]);
                 });
             });

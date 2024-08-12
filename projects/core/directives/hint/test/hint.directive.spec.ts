@@ -54,6 +54,7 @@ describe('Hint', () => {
     it('hint is not shown immediately', () => {
         getHost().dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
+
         expect(getTooltip()).toBeNull();
     });
 
@@ -69,6 +70,7 @@ describe('Hint', () => {
         it('is shown after 500ms', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
+
             expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
         });
 
@@ -76,6 +78,7 @@ describe('Hint', () => {
             setHint(null);
 
             await fixture.whenStable();
+
             expect(getTooltip()).toBeNull();
         });
 

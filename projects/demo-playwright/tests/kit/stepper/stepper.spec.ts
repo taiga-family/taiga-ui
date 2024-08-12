@@ -12,6 +12,7 @@ test.describe('Stepper', () => {
         const steps = po.apiPageExample.locator('[tuiStep]');
 
         await steps.nth(1).click();
+
         await expect(po.apiPageExample).toHaveScreenshot('01-stepper.png');
 
         await steps.nth(2).click();
@@ -26,6 +27,7 @@ test.describe('Stepper', () => {
         const steps = po.apiPageExample.locator('[tuiStep]');
 
         await steps.nth(1).click();
+
         await expect(po.apiPageExample).toHaveScreenshot('03-stepper.png');
 
         await steps.nth(2).click();

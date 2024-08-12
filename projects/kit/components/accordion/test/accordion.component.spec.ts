@@ -134,6 +134,7 @@ describe('Accordion', () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         await accordionItem.clickHeader();
+
         expect(await accordionItem.getContent()).not.toBeNull();
     });
 
@@ -141,6 +142,7 @@ describe('Accordion', () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         await accordionItem.clickHeader();
+
         expect(await accordionItem.getContent()).toBe('Accordion content');
     });
 
@@ -185,6 +187,7 @@ describe('Accordion', () => {
             );
 
             await accordionItem1.clickHeader();
+
             expect(await accordionItem1.getContent()).not.toBeNull();
             expect(await accordionItem2.getContent()).toBeNull();
         });
@@ -226,6 +229,7 @@ describe('Accordion', () => {
             const input = await accordionItem.getHarness(TuiTextfieldHarness);
 
             await input.sendSpaceKey();
+
             expect(await accordionItem.getContent()).not.toBeNull();
         });
 
@@ -236,6 +240,7 @@ describe('Accordion', () => {
             const select = await accordionItem.getHarness(TuiSelectHarness);
 
             await parallel(() => [select.sendSpaceKey(), select.sendEscKey()]);
+
             expect(await accordionItem.getContent()).not.toBeNull();
         });
     });

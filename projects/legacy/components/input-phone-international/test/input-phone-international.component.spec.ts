@@ -79,6 +79,7 @@ describe('InputPhoneInternational', () => {
 
         it('should truncate value if current mask is shorter then previous', () => {
             component.onItemClick('UA');
+
             expect(testComponent.control.value).toBe('+380911033010');
         });
     });
@@ -245,6 +246,7 @@ describe('InputPhoneInternational', () => {
 
             testComponent.countryIsoCode = 'UA';
             testComponent.control.patchValue(phoneNumber);
+
             expect(result).toEqual(phoneNumber);
         });
     });

@@ -17,11 +17,14 @@ test.describe('InputTag', () => {
             // cspell:disable-next-line
             await input.fill('Very looooooooooooooooooooooooong Text');
             await page.keyboard.down('Enter');
+
             await expect(example).toHaveScreenshot('01-input-tag.png');
+
             await input.fill('1');
             await page.keyboard.down('Enter');
             await input.fill('2');
             await page.keyboard.down('Enter');
+
             await expect(example).toHaveScreenshot('02-input-tag.png');
         });
 
@@ -29,7 +32,9 @@ test.describe('InputTag', () => {
             const example = new TuiDocumentationPagePO(page).getExample('#sizes');
 
             await expect(example).toHaveScreenshot('03-input-tag.png');
+
             await tuiGoto(page, DemoRoute.InputTag, {enableNightMode: true});
+
             await expect(example).toHaveScreenshot('04-input-tag.png');
         });
 
@@ -41,6 +46,7 @@ test.describe('InputTag', () => {
 
             await input.fill(' taiga ui library ');
             await page.keyboard.down('Enter');
+
             await expect(example).toHaveScreenshot('06-input-tag.png');
         });
     });
@@ -52,8 +58,11 @@ test.describe('InputTag', () => {
             const api = new TuiDocumentationApiPagePO(page);
 
             await api.apiPageExample.locator('tui-input-tag').click();
+
             await expect(api.apiPageExample).toHaveScreenshot('07-input-tag.png');
+
             await api.focusOnBody();
+
             await expect(api.apiPageExample).toHaveScreenshot('08-input-tag.png');
         });
     });

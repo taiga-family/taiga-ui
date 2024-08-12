@@ -76,6 +76,7 @@ describe('expand', () => {
 
             it('and after the end of the animation, the content remains', fakeAsync(() => {
                 tick(ANIMATION_DELAY);
+
                 expect(testComponent.content).toBeDefined();
             }));
         });
@@ -128,6 +129,7 @@ describe('expand', () => {
         it('visible loader', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
+
             expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
         });
 

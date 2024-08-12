@@ -31,6 +31,7 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('01-maximum-month.png');
         });
 
@@ -39,6 +40,7 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();
+
             await expect(page).toHaveScreenshot('02-minimum-month.png');
         });
 
@@ -51,16 +53,19 @@ test.describe('InputDateTime', () => {
             const maxValue = '02.11.2018, 16:20';
 
             await inputDateTime.textfield.fill(maxValue);
+
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
             await inputDateTime.textfield.press('Shift+ArrowLeft'); // 02.11.2018, 16:2|0|
             await inputDateTime.textfield.pressSequentially('5');
+
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
 
             // valid case
             await inputDateTime.textfield.press('ArrowLeft+ArrowLeft+ArrowLeft'); // 02.11.2018, 16|:20
             await inputDateTime.textfield.press('Shift+ArrowLeft');
             await inputDateTime.textfield.pressSequentially('2');
+
             await expect(inputDateTime.textfield).toHaveValue('02.11.2018, 12:20');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -74,6 +79,7 @@ test.describe('InputDateTime', () => {
             // invalid case
             await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 02.11.2018, 1|2:|20
             await inputDateTime.textfield.pressSequentially('9');
+
             await expect(inputDateTime.textfield).toHaveValue(maxValue);
         });
 
@@ -87,10 +93,12 @@ test.describe('InputDateTime', () => {
 
             await inputDateTime.textfield.focus();
             await inputDateTime.textfield.fill(minValue);
+
             await expect(inputDateTime.textfield).toHaveValue(minValue);
 
             await inputDateTime.textfield.press('ArrowLeft+Shift+ArrowLeft'); // 31.10.2018, 12:|2|0
             await inputDateTime.textfield.press('1');
+
             await expect(inputDateTime.textfield).toHaveValue(minValue);
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -105,6 +113,7 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.press('ArrowLeft+ArrowLeft'); // 31.10.2018, 12|:20
             await inputDateTime.textfield.press('Shift+ArrowLeft'); // 31.10.2018, 1|2|:20
             await inputDateTime.textfield.press('5');
+
             await expect(inputDateTime.textfield).toHaveValue('31.10.2018, 15:20');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -118,6 +127,7 @@ test.describe('InputDateTime', () => {
             // invalid case
             await inputDateTime.textfield.press('Shift+ArrowLeft+ArrowLeft'); // 31.10.2018, 1|5:|20
             await inputDateTime.textfield.press('1');
+
             await expect(inputDateTime.textfield).toHaveValue(minValue);
         });
 
@@ -127,6 +137,7 @@ test.describe('InputDateTime', () => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API`);
 
             await inputDateTime.textfield.pressSequentially('191120181235');
+
             await expect(inputDateTime.textfield).toHaveValue('19.11.2018, 12:35');
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionStart',
@@ -154,6 +165,7 @@ test.describe('InputDateTime', () => {
         test('change filler on dynamic change of [timeMode] prop', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM`);
             await inputDateTime.textfield.focus();
+
             await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.png');
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
@@ -164,11 +176,13 @@ test.describe('InputDateTime', () => {
             await timeModeSelect.textfield.click();
             await timeModeSelect.selectOptions([1]);
             await inputDateTime.textfield.focus();
+
             await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.SS.png');
 
             await timeModeSelect.textfield.click();
             await timeModeSelect.selectOptions([2]);
             await inputDateTime.textfield.focus();
+
             await expect(inputDateTime.host).toHaveScreenshot(
                 '03-timeMode=HH:MM.SS.MSS.png',
             );
@@ -200,6 +214,7 @@ test.describe('InputDateTime', () => {
 
             test('does not accept day > 31', async () => {
                 await inputDateTime.textfield.pressSequentially('32');
+
                 await expect(inputDateTime.textfield).toHaveValue('3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -210,6 +225,7 @@ test.describe('InputDateTime', () => {
 
             test('does not accept month > 12', async () => {
                 await inputDateTime.textfield.pressSequentially('2413');
+
                 await expect(inputDateTime.textfield).toHaveValue('24.1');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -240,6 +256,7 @@ test.describe('InputDateTime', () => {
 
             test('does not accept day > 31', async () => {
                 await inputDateTime.textfield.pressSequentially('2023/05/35');
+
                 await expect(inputDateTime.textfield).toHaveValue('2023/05/3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
@@ -253,6 +270,7 @@ test.describe('InputDateTime', () => {
 
             test('does not accept month > 12', async () => {
                 await inputDateTime.textfield.pressSequentially('2023/13');
+
                 await expect(inputDateTime.textfield).toHaveValue('2023/1');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',

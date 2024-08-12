@@ -9,6 +9,7 @@ test.describe('LineChart', () => {
         const chartColumn = example.locator('tui-line-chart .t-column').first();
 
         await chartColumn.hover();
+
         await expect(example).toHaveScreenshot('01-line-chart.png');
     });
 });

@@ -57,6 +57,7 @@ describe('InputPhone', () => {
     describe('Initial value', () => {
         it('the value in the field is formatted by mask', async () => {
             await fixture.whenStable();
+
             expect(inputPO.value).toBe('+7 911 033-01-02');
         });
 
@@ -82,6 +83,7 @@ describe('InputPhone', () => {
             inputPO.focus();
             await fixture.whenStable();
             fixture.detectChanges();
+
             expect(testComponent.control.value).toBeNull();
         });
 
@@ -91,6 +93,7 @@ describe('InputPhone', () => {
             fixture.detectChanges();
             inputPO.focus();
             await fixture.whenStable();
+
             expect(inputPO.value).toBe('');
         });
     });
@@ -168,6 +171,7 @@ describe('InputPhone', () => {
         it('in the field a new formatted value appears', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
+
             expect(inputPO.value).toBe('+7 812 123-45-67');
         });
 
@@ -181,6 +185,7 @@ describe('InputPhone', () => {
             testComponent.control.setValue('+78121');
             fixture.detectChanges();
             await fixture.whenStable();
+
             expect(inputPO.value).toBe('+7 812 1');
         });
     });
@@ -259,6 +264,7 @@ describe('InputPhone', () => {
         it('a short phone number is passed to the formControl value', () => {
             component.onValueChange('+712345');
             fixture.detectChanges();
+
             expect(testComponent.control.value).toBe('+712345');
         });
     });
@@ -267,6 +273,7 @@ describe('InputPhone', () => {
         it('a long phone number is truncated', () => {
             component.onValueChange('+712345678901');
             fixture.detectChanges();
+
             expect(testComponent.control.value).toBe('+71234567890');
         });
     });

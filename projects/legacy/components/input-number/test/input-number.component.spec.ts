@@ -113,6 +113,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
+
             expect(getNativeInput()!.nativeElement.value).toBe(
                 `1${CHAR_NO_BREAK_SPACE}234`,
             );
@@ -125,6 +126,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
+
             expect(getNativeInput()!.nativeElement.value).toBe('12,34');
         });
 
@@ -204,9 +206,11 @@ describe('InputNumber', () => {
                 testComponent.decimalMode = 'not-zero';
 
                 inputPO.sendText('123456,50');
+
                 expect(testComponent.control.value).toBe(123456.5);
 
                 inputPO.sendText('123456.50');
+
                 expect(testComponent.control.value).toBe(123456.5);
             });
         });

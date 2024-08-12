@@ -194,6 +194,7 @@ describe('TuiMonth', () => {
                         expect(new TuiMonth(2000, 4).formattedMonthPart).toBe('05');
                     });
                 });
+
                 describe("month without padded '0' if it is a two digit month", () => {
                     it("'10' if month is 9", () => {
                         expect(new TuiMonth(2000, 9).formattedMonthPart).toBe('10');
@@ -367,6 +368,7 @@ describe('TuiMonth', () => {
                         });
                     });
                 });
+
                 describe('false if passed year', () => {
                     it('is smaller', () => {
                         expect(y2000m6.monthSame(y1900m6)).toBe(false);
@@ -404,6 +406,7 @@ describe('TuiMonth', () => {
                         });
                     });
                 });
+
                 describe('false if passed year', () => {
                     describe('is the same and month', () => {
                         it('is bigger', () => {
@@ -429,6 +432,7 @@ describe('TuiMonth', () => {
                         });
                     });
                 });
+
                 describe('false if passed year', () => {
                     describe('is the same and month', () => {
                         it('is the same', () => {

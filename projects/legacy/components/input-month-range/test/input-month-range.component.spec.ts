@@ -130,6 +130,7 @@ describe('InputMonthRange', () => {
         it('empty value opens dropdown', () => {
             component.onValueChange('');
             fixture.detectChanges();
+
             expect(component.open).toBe(true);
         });
     });

@@ -175,6 +175,7 @@ describe('InputPhoneInternational', () => {
 
             testComponent.countryIsoCode = 'UA';
             testComponent.control.patchValue(phoneNumber);
+
             expect(result).toEqual(phoneNumber);
         });
     });

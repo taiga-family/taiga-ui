@@ -51,6 +51,7 @@ describe('TuiAutoFocus directive', () => {
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
@@ -98,6 +99,7 @@ describe('TuiAutoFocus directive', () => {
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
@@ -137,6 +139,7 @@ describe('TuiAutoFocus directive', () => {
         it('does not focus element', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(false);
         }));
     });

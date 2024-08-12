@@ -69,6 +69,7 @@ describe('TuiBreakpointService', () => {
             const observerMock = jest.fn();
 
             service.pipe(first()).subscribe(observerMock);
+
             expect(observerMock).toHaveBeenCalledWith('desktopLarge');
         });
     });

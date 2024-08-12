@@ -57,6 +57,7 @@ describe('BarChart', () => {
 
     it('computes percent correctly in collapsed mode', () => {
         testComponent.component.collapsed = true;
+
         expect(
             testComponent.component.percentMapper(
                 [8, 1],

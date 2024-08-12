@@ -196,6 +196,7 @@ describe('InputDateRangeComponent', () => {
             it('empty value opens dropdown', () => {
                 inputPO.sendText('');
                 fixture.detectChanges();
+
                 expect(component.open).toBe(true);
             });
         });
@@ -261,6 +262,7 @@ describe('InputDateRangeComponent', () => {
 
         it('accepts dd.mm.yyyy format', () => {
             inputPO.sendTextAndBlur('2021120120220214');
+
             expect(inputPO.value).toBe('2021-12-01 – 2022-02-14');
         });
 

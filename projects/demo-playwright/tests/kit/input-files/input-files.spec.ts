@@ -21,6 +21,7 @@ test.describe('InputFiles', () => {
             await example
                 .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
+
             await expect(example).toHaveScreenshot(`01-${language}-input-files.png`);
         }),
     );
@@ -35,6 +36,7 @@ test.describe('InputFiles', () => {
             await example
                 .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
+
             await expect(example).toHaveScreenshot(`02-${language}-input-files.png`);
         }),
     );

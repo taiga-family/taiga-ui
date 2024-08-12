@@ -115,12 +115,15 @@ describe('InputSlider', () => {
             inputPO.focus();
 
             inputPO.sendKeydown('arrowUp');
+
             expect(testComponent.control.value).toBe(10);
 
             inputPO.sendKeydown('arrowUp');
+
             expect(testComponent.control.value).toBe(20);
 
             inputPO.sendKeydown('arrowUp');
+
             expect(testComponent.control.value).toBe(30);
         });
 
@@ -128,12 +131,15 @@ describe('InputSlider', () => {
             inputPO.focus();
 
             inputPO.sendKeydown('arrowDown');
+
             expect(testComponent.control.value).toBe(-10);
 
             inputPO.sendKeydown('arrowDown');
+
             expect(testComponent.control.value).toBe(-20);
 
             inputPO.sendKeydown('arrowDown');
+
             expect(testComponent.control.value).toBe(-30);
         });
 
@@ -142,6 +148,7 @@ describe('InputSlider', () => {
             fixture.detectChanges();
 
             inputPO.sendTextAndBlur('0,1234412');
+
             expect(testComponent.control.value).toBe(0);
         });
 
@@ -150,6 +157,7 @@ describe('InputSlider', () => {
             fixture.detectChanges();
 
             inputPO.sendTextAndBlur('0,123456');
+
             expect(testComponent.control.value).toBe(0.123456);
         });
 
@@ -158,6 +166,7 @@ describe('InputSlider', () => {
             fixture.detectChanges();
 
             inputPO.sendTextAndBlur('0,123456');
+
             expect(testComponent.control.value).toBe(0.123);
         });
 
@@ -353,11 +362,14 @@ describe('InputSlider', () => {
             expectedContent: string,
         ): Promise<void> => {
             inputPO.focus();
+
             expect(getTextfieldValueContent()).toBe('');
+
             inputPO.sendText(`${value}`);
             await fixture.whenStable();
 
             expect(getTextfieldValueContent()).toBe('');
+
             inputPO.blur();
             await fixture.whenStable();
 
@@ -409,16 +421,19 @@ describe('InputSlider', () => {
 
         it('cannot type float number more than `max` property', () => {
             inputPO.sendTextAndBlur('100.001');
+
             expect(testComponent.control.value).toBe(100);
         });
 
         it('cannot type integer number more than `max` property', () => {
             inputPO.sendTextAndBlur('150');
+
             expect(testComponent.control.value).toBe(100);
         });
 
         it('can type large negative number', () => {
             inputPO.sendTextAndBlur('-200');
+
             expect(testComponent.control.value).toBe(-200);
         });
 
@@ -453,36 +468,42 @@ describe('InputSlider', () => {
             it('0 => 0%', async () => {
                 inputPO.sendTextAndBlur('0');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('0%');
             });
 
             it('1.5 => 15%', async () => {
                 inputPO.sendTextAndBlur('1.5');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('15%');
             });
 
             it('4.8 => 48%', async () => {
                 inputPO.sendTextAndBlur('4.8');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('48%');
             });
 
             it('6.3 => 63%', async () => {
                 inputPO.sendTextAndBlur('6.3');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('63%');
             });
 
             it('8 => 80%', async () => {
                 inputPO.sendTextAndBlur('8');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('80%');
             });
 
             it('10 => 100%', async () => {
                 inputPO.sendTextAndBlur('10');
                 await fixture.whenStable();
+
                 expect(getTextfieldCustomContent()).toBe('100%');
             });
         });

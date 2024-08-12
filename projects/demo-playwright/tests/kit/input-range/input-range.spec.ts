@@ -28,8 +28,11 @@ test.describe('InputRange', () => {
         }) => {
             await inputRange.leftTextfield.focus();
             await page.keyboard.down('ArrowDown');
+
             await expect(example).toHaveScreenshot('01-input-range.png');
+
             await page.keyboard.down('ArrowDown');
+
             await expect(example).toHaveScreenshot('02-input-range.png');
         });
 
@@ -38,8 +41,11 @@ test.describe('InputRange', () => {
         }) => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowDown');
+
             await expect(example).toHaveScreenshot('03-input-range.png');
+
             await page.keyboard.down('ArrowDown');
+
             await expect(example).toHaveScreenshot('04-input-range.png');
         });
 
@@ -48,8 +54,11 @@ test.describe('InputRange', () => {
         }) => {
             await inputRange.leftTextfield.focus();
             await page.keyboard.down('ArrowUp');
+
             await expect(example).toHaveScreenshot('05-input-range.png');
+
             await page.keyboard.down('ArrowUp');
+
             await expect(example).toHaveScreenshot('06-input-range.png');
         });
 
@@ -58,8 +67,11 @@ test.describe('InputRange', () => {
         }) => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowUp');
+
             await expect(example).toHaveScreenshot('07-input-range.png');
+
             await page.keyboard.down('ArrowUp');
+
             await expect(example).toHaveScreenshot('08-input-range.png');
         });
 
@@ -73,6 +85,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowDown');
             await page.keyboard.down('ArrowDown');
             await page.keyboard.down('ArrowDown');
+
             await expect(example).toHaveScreenshot('09-input-range.png');
         });
 
@@ -86,6 +99,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowUp');
             await page.keyboard.down('ArrowUp');
             await page.keyboard.down('ArrowUp');
+
             await expect(example).toHaveScreenshot('10-input-range.png');
         });
 
@@ -98,6 +112,7 @@ test.describe('InputRange', () => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowRight');
             await page.keyboard.down('ArrowRight');
+
             await expect(example).toHaveScreenshot('11-input-range.png');
         });
 
@@ -110,6 +125,7 @@ test.describe('InputRange', () => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowLeft');
             await page.keyboard.down('ArrowLeft');
+
             await expect(example).toHaveScreenshot('12-input-range.png');
         });
     });
@@ -139,6 +155,7 @@ test.describe('InputRange', () => {
                 await inputRange.rightTextfield.clear();
                 await inputRange.rightTextfield.fill(typedValue);
                 await inputRange.rightTextfield.blur();
+
                 await expect(inputRange.rightTextfield).toHaveValue(expectedRoundedValue);
             });
         });
@@ -164,6 +181,7 @@ test.describe('InputRange', () => {
                     (box?.width ?? 0) + (box?.x ?? 0),
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
+
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('100');
                 await expect(example).toHaveScreenshot('13-input-range.png');
@@ -201,6 +219,7 @@ test.describe('InputRange', () => {
                     box?.x ?? 0,
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
+
                 await expect(example).toHaveScreenshot('15-input-range.png');
             });
 
@@ -213,6 +232,7 @@ test.describe('InputRange', () => {
                     (box?.width ?? 0) + (box?.x ?? 0),
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
+
                 await expect(example).toHaveScreenshot('16-input-range.png');
             });
         });
@@ -261,6 +281,7 @@ test.describe('InputRange', () => {
                 page,
             }) => {
                 await inputRange.rightTextfield.focus();
+
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('20-input-range.png');
@@ -281,6 +302,7 @@ test.describe('InputRange', () => {
                 page,
             }) => {
                 await inputRange.leftTextfield.focus();
+
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('22-input-range.png');
