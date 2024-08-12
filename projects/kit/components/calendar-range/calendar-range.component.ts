@@ -146,7 +146,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
-        return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
+        return (
+            (tuiIsString(item) && activePeriod === null) ||
+            activePeriod === item ||
+            activePeriod?.toString() === item.toString()
+        );
     }
 
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
