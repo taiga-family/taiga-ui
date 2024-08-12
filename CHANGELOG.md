@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/taiga-family/taiga-ui/compare/v4.0.0...v4.1.0) (2024-08-12)
+
+### 🐞 Bug Fixes
+
+- **cdk:** redundant assert log if hours are greater than 23
+  ([#8448](https://github.com/taiga-family/taiga-ui/issues/8448))
+  ([c3a7e49](https://github.com/taiga-family/taiga-ui/commit/c3a7e4923eb958154e90b6bef7bda582ba8427fd))
+- **core:** `Root` fix background ([#8468](https://github.com/taiga-family/taiga-ui/issues/8468))
+  ([bbbb82e](https://github.com/taiga-family/taiga-ui/commit/bbbb82ece14906531fc140a8063bf0fc0ba217de))
+- **core:** add `type=button` to `textfield` for ignore submit event
+  ([#8455](https://github.com/taiga-family/taiga-ui/issues/8455))
+  ([4700e5d](https://github.com/taiga-family/taiga-ui/commit/4700e5d143f33ca5af175be40cffea3d55f8241d))
+- **kit:** `TuiDataListGroupWrapperComponent` is not assignable to the same property in base type
+  ([#8461](https://github.com/taiga-family/taiga-ui/issues/8461))
+  ([933be65](https://github.com/taiga-family/taiga-ui/commit/933be658d84d426d5b71e6535d808aa3145a1293))
+
 ## [4.0.0](https://github.com/taiga-family/taiga-ui/compare/v4.0.0-rc.10...v4.0.0) (2024-08-09)
 
 - Update to Angular 16 (https://github.com/taiga-family/taiga-ui/pull/6966).
