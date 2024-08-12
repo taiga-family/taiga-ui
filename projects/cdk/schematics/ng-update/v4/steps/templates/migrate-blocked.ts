@@ -42,13 +42,18 @@ export function migrateBlocked({
             Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
                 name.includes('size'),
             ) || [];
+        const [, ngForAttrLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
+                name.includes('*ngfor'),
+            ) || [];
         const sizeAttr = findAttr(attrs, 'size');
+        const ngForAttr = findAttr(attrs, '*ngFor');
 
         const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
 
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
-            `<label ${newBlockAttr}${hideIconAttrLocation ? ' appearance=""' : ''}>`,
+            `<label${ngForAttr ? ` *ngFor="${ngForAttr.value}"` : ''} ${newBlockAttr}${hideIconAttrLocation ? ' appearance=""' : ''}>`,
         );
 
         recorder.remove(
@@ -71,6 +76,13 @@ export function migrateBlocked({
             recorder.remove(
                 templateOffset + sizeAttrLocation.startOffset,
                 sizeAttrLocation.endOffset - sizeAttrLocation.startOffset,
+            );
+        }
+
+        if (ngForAttrLocation) {
+            recorder.remove(
+                templateOffset + ngForAttrLocation.startOffset,
+                ngForAttrLocation.endOffset - ngForAttrLocation.startOffset,
             );
         }
     });
