@@ -1,5 +1,5 @@
-const path = require('node:path');
-const fs = require('node:fs');
+import fs from 'node:fs';
+import path from 'node:path';
 
 (function main(): void {
     const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');

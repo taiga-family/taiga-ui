@@ -17,7 +17,11 @@
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./{projectRoot}/scripts/prepare-lucide-icons.ts"
+                "parallel": false,
+                "commands": [
+                    "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
+                    "prettier ./{projectRoot}/src/* --write"
+                ]
             }
         },
         "test": {
