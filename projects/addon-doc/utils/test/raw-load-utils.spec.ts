@@ -19,6 +19,7 @@ describe('tui-doc raw content utils', () => {
         expect(result).toBe('Hello');
 
         result = await tuiRawLoad(Promise.resolve({default: 'World'}));
+
         expect(result).toBe('World');
     });
 });

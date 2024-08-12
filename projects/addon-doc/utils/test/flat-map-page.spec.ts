@@ -61,6 +61,7 @@ describe('tuiToFlatMapPages', () => {
         const duplicatePages = [...testPages, {...duplicatePage}];
 
         tuiToFlatMapPages(duplicatePages);
+
         expect(spy).toHaveBeenCalledWith(
             'Title for page should be unique for prevent inconsistent page names',
             duplicatePage,

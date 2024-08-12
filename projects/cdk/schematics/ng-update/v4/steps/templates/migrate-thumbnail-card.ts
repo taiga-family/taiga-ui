@@ -3,6 +3,7 @@ import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -28,9 +29,7 @@ export function migrateThumbnailCard({
             return;
         }
 
-        const valueAttr = attrs.find(
-            (attr) => attr.name === '[cardnumber]' || attr.name === 'cardnumber',
-        );
+        const valueAttr = findAttr(attrs, 'cardNumber');
 
         if (!valueAttr) {
             return;

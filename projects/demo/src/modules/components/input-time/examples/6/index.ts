@@ -1,34 +1,35 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTime} from '@taiga-ui/cdk';
-import {tuiCreateTimePeriods} from '@taiga-ui/kit';
-import {
-    TuiInputTimeModule,
-    tuiInputTimeOptionsProvider,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
+import {TUI_TIME_VALUE_TRANSFORMER, tuiCreateTimePeriods} from '@taiga-ui/kit';
+import {TuiInputTimeModule} from '@taiga-ui/legacy';
+
+class ExampleTimeTransformer extends TuiValueTransformer<TuiTime | null, string | null> {
+    public fromControlValue(controlValue: string): TuiTime | null {
+        return controlValue ? TuiTime.fromString(controlValue) : null;
+    }
+
+    public toControlValue(time: TuiTime | null): string {
+        return time ? time.toString() : '';
+    }
+}
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputTimeModule, TuiTextfieldControllerModule],
+    imports: [TuiInputTimeModule, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputTimeOptionsProvider({
-            nativePicker: true,
-        }),
+        {
+            provide: TUI_TIME_VALUE_TRANSFORMER,
+            useClass: ExampleTimeTransformer,
+        },
     ],
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl(new TuiTime(10, 30)),
-        testValue2: new FormControl(new TuiTime(10, 30, 0)),
-        testValue3: new FormControl(new TuiTime(14, 30)),
-        testValue4: new FormControl(new TuiTime(10, 30, 0)),
-    });
-
-    protected readonly items = tuiCreateTimePeriods(14, 16, [0, 30]);
+    protected readonly control = new FormControl('');
+    protected readonly items = tuiCreateTimePeriods();
 }

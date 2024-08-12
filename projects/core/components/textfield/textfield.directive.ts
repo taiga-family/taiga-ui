@@ -62,7 +62,7 @@ export class TuiTextfieldBase {
 
     public setValue(value: string): void {
         this.el.value = value;
-        this.el.dispatchEvent(new Event('input'));
+        this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 }
 

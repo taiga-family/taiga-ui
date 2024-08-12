@@ -6,10 +6,12 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+
+import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
 @Component({
     standalone: true,
@@ -20,11 +22,11 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCard {
-    protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
+    protected readonly options = inject(TUI_THUMBNAIL_CARD_OPTIONS);
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeL | TuiSizeS = 'm';
+    public size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
     public paymentSystem: TuiPaymentSystem | null = null;
@@ -35,14 +37,6 @@ export class TuiThumbnailCard {
     @Input()
     public iconEnd = '';
 
-    protected get isMono(): boolean {
-        switch (this.paymentSystem) {
-            case 'mir':
-            case 'visa':
-            case 'electron':
-                return true;
-            default:
-                return false;
-        }
-    }
+    @Input()
+    public monoHandler: TuiBooleanHandler<TuiPaymentSystem> = this.options.monoHandler;
 }

@@ -23,6 +23,9 @@ import { TuiFeedItemModule } from '@taiga-ui/proprietary-banking';
 import { TuiNavigationModule } from '@taiga-ui/proprietary-navigation';
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary-icons';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
+import {TuiIllustrationName} from '@taiga-ui/proprietary-icons';
+import {TuiOperationIcon} from '@taiga-ui/proprietary-banking';
+import { TuiInputNumberModule } from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -30,19 +33,38 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
     imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule]
 })
 export class Test {
+    @Input() illustration: TuiIllustrationName | null = null;
+
+    readonly operationIcon: TuiOperationIcon = {
+        icon: 'tuiIconTdsTransportAutoRubleMedium',
+        color: '#428BF9',
+        background: '#428bf91f',
+    };
+
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
-const COMPONENT_AFTER =
-    `import { TuiBackComponent, TuiFeedItemComponent, TuiIllustrationModePipe, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
+import { TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+// TODO: (Taiga UI migration) TuiIllustrationsModule was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
+import { TuiIllustrationsModule } from '@taiga-ui/proprietary';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
+import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationModePipe]
+    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationsModule]
 })
 export class Test {
+    @Input() illustration: string | null = null;
+
+    readonly operationIcon: TuiFeedItemIcon = {
+        icon: '@tui.tds-transport-auto-ruble-medium',
+        color: '#428BF9',
+        background: '#428bf91f',
+    };
+
     readonly icon = tuiIconTdsAbhFlags;
 }`.trim();
 
@@ -54,9 +76,9 @@ const STYLES_BEFORE = `
 `.trim();
 
 const STYLES_AFTER = `
-@import '@taiga-ui/proprietary/styles/tinkoff-fonts';
-@import '@taiga-ui/proprietary/styles/theme-tinkoff-2023';
-@import '@taiga-ui/proprietary/styles/theme-tinkoff-mobile-2023';
+@import '@taiga-ui/proprietary/styles/tbank-fonts';
+@import '@taiga-ui/proprietary/styles/tbank-theme';
+@import '@taiga-ui/proprietary/styles/tbank-theme-mobile.less';
 // ...
 `.trim();
 
@@ -126,8 +148,13 @@ describe('ng-update proprietary', () => {
     });
 
     it('migrate', async () => {
-        const tree = await runner.runSchematic(
+        await runner.runSchematic(
             'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+        const tree = await runner.runSchematic(
+            'migrateIconsV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
@@ -136,6 +163,11 @@ describe('ng-update proprietary', () => {
         expect(tree.readContent('test/styles.less')).toEqual(STYLES_AFTER);
         expect(tree.readContent('angular.json')).toEqual(ANGULAR_JSON_AFTER);
         expect(tree.readContent('package.json').trim()).toEqual(PACKAGE_JSON_AFTER);
+        expect(tree.readContent('test/app/test.template.html').trim()).toBe(
+            '<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration -->' +
+                '\n' +
+                '{{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: "."} }}',
+        );
     });
 
     afterEach(() => {
@@ -145,7 +177,10 @@ describe('ng-update proprietary', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-    createSourceFile('test/app/test.template.html', '');
+    createSourceFile(
+        'test/app/test.template.html',
+        '{{ 10500.33 | tuiFormatNumber: {decimalLimit: 4, decimalSeparator: "."} }}',
+    );
     createSourceFile('test/styles.less', STYLES_BEFORE);
     createSourceFile('angular.json', ANGULAR_JSON_BEFORE);
     createSourceFile('package.json', PACKAGE_JSON_BEFORE, {overwrite: true});

@@ -1,5 +1,5 @@
-import {AsyncPipe, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
+import {NgIf} from '@angular/common';
+import type {AfterContentChecked, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,17 +11,15 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
 import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
@@ -38,7 +36,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 @Component({
     standalone: true,
     selector: 'tui-data-list',
-    imports: [NgIf, AsyncPipe, PolymorpheusOutlet],
+    imports: [NgIf, PolymorpheusOutlet],
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -48,14 +46,17 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         role: 'listbox',
     },
 })
-export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
+export class TuiDataListComponent<T>
+    implements TuiDataListAccessor<T>, AfterContentChecked
+{
     @ContentChildren(forwardRef(() => TuiOption), {descendants: true})
     private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
     private readonly el = tuiInjectElement();
 
-    protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
+    protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
+    protected empty = true;
 
     @Input()
     public emptyContent: PolymorpheusContent;
@@ -82,16 +83,16 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         }
     }
 
+    public ngAfterContentChecked(): void {
+        // TODO: Refactor to :has after Safari support bumped to 15
+        this.empty = !this.el.querySelector('[tuiOption]');
+    }
+
     public getOptions(includeDisabled = false): readonly T[] {
         return this.options
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);
-    }
-
-    @tuiPure
-    protected get empty$(): Observable<boolean> {
-        return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
     }
 
     @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])

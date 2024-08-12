@@ -1,6 +1,6 @@
 import {Directive, inject, Input, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
@@ -28,7 +28,7 @@ export class TuiScrollbarDirective {
         });
 
     protected readonly styleSub = merge(
-        inject(ANIMATION_FRAME).pipe(throttleTime(100)),
+        inject(WA_ANIMATION_FRAME).pipe(throttleTime(100)),
         tuiScrollFrom(this.el),
     )
         .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())

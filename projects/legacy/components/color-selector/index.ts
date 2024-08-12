@@ -4,6 +4,7 @@ export * from './color-picker/color-picker.component';
 export * from './color-picker/color-picker.module';
 export * from './color-selector.component';
 export * from './color-selector.module';
+export * from './color-selector.options';
 export * from './flat-picker/flat-picker.component';
 export * from './flat-picker/flat-picker.module';
 export * from './linear-multi-picker/linear-multi-picker.component';

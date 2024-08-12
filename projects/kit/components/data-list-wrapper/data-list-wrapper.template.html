@@ -4,7 +4,7 @@
     [size]="size"
 >
     <button
-        *ngFor="let item of items"
+        *ngFor="let item of $cast(items)"
         #elementRef="elementRef"
         automation-id="tui-data-list-wrapper__option"
         tuiElement

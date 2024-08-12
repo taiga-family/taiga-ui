@@ -1,4 +1,4 @@
-@import '../../taiga-ui-local.less';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='icon'] {
     color: var(--tui-text-tertiary);
@@ -14,10 +14,9 @@
 
 // Icons with the directive
 [tuiAppearance][data-appearance='whiteblock'],
-[tuiAppearance][data-appearance='neutral'],
 [tuiAppearance][data-appearance='floating'] {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         .transition(color);
 
         color: var(--tui-text-tertiary);

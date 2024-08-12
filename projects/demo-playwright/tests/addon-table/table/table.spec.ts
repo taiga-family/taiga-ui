@@ -9,6 +9,7 @@ test.describe('Table', () => {
         const addColumnButton = example.locator('button').first();
 
         await addColumnButton.click();
+
         await expect(example).toHaveScreenshot('01-table-dynamic.png');
     });
 });

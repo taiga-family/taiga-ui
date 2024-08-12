@@ -27,9 +27,11 @@
                     *ngSwitchCase="1"
                     class="tui-space_bottom-4"
                 >
-                    You can enable hover effects only on devices with pointer:
                     <div>
-                        <code>&#64;media (hover: hover) and (pointer: fine)</code>
+                        You can enable hover effects only on devices with pointer:
+                        <div>
+                            <code>&#64;media (hover: hover) and (pointer: fine)</code>
+                        </div>
                     </div>
                 </tui-notification>
 
@@ -37,34 +39,38 @@
                     *ngSwitchCase="2"
                     class="tui-space_bottom-4"
                 >
-                    Note that
-                    <code>padding</code>
-                    and
-                    <code>border-radius</code>
-                    are not part of the surface. Take a look at
-                    <a
-                        tuiLink
-                        [routerLink]="routes.CardLarge"
-                    >
-                        Card
-                    </a>
-                    component for that.
+                    <div>
+                        Note that
+                        <code>padding</code>
+                        and
+                        <code>border-radius</code>
+                        are not part of the surface. Take a look at
+                        <a
+                            tuiLink
+                            [routerLink]="routes.CardLarge"
+                        >
+                            Card
+                        </a>
+                        component for that.
+                    </div>
                 </tui-notification>
 
                 <tui-notification
                     *ngSwitchCase="3"
-                    status="warning"
+                    appearance="warning"
                     class="tui-space_bottom-4"
                 >
-                    Text should have vertical compensation to look properly aligned, either with unequal
-                    <code>padding</code>
-                    or with negative
-                    <code>margin</code>
-                    . Typical value is
-                    <strong>0.25rem</strong>
-                    , smaller line-height might require
-                    <strong>0.125rem</strong>
-                    instead.
+                    <div>
+                        Text should have vertical compensation to look properly aligned, either with unequal
+                        <code>padding</code>
+                        or with negative
+                        <code>margin</code>
+                        . Typical value is
+                        <strong>0.25rem</strong>
+                        , smaller line-height might require
+                        <strong>0.125rem</strong>
+                        instead.
+                    </div>
                 </tui-notification>
             </ng-container>
         </tui-doc-example>

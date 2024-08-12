@@ -20,6 +20,11 @@ export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
         title: `v${TUI_CURRENT_MAJOR_VERSION}`,
     },
     {
+        label: 'v3',
+        baseHref: '/v3/',
+        title: 'v3',
+    },
+    {
         label: 'v2',
         baseHref: '/v2/',
         title: 'v2',

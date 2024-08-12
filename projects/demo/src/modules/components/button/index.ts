@@ -18,6 +18,7 @@ export default class Page {
         'Icons',
         'Loading',
         'Options with DI',
+        'Vertical',
     ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];

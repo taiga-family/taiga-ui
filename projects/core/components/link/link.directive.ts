@@ -18,7 +18,7 @@ import {TUI_LINK_OPTIONS} from './link.options';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./link.style.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/link.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -34,7 +34,7 @@ class TuiLinkStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
-        '[class._pseudo]': 'pseudo',
+        '[style.text-decoration-line]': 'pseudo ? "underline" : null',
     },
 })
 export class TuiLink {

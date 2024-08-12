@@ -143,7 +143,7 @@ export class TuiDropdownSelection
      * Check if Node is inside dropdown
      */
     private boxContains(node: Node): boolean {
-        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
+        return !!this.dropdown.ref()?.location.nativeElement.contains(node);
     }
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {

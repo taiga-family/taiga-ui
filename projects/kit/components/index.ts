@@ -12,6 +12,7 @@ export * from '@taiga-ui/kit/components/calendar-range';
 export * from '@taiga-ui/kit/components/carousel';
 export * from '@taiga-ui/kit/components/checkbox';
 export * from '@taiga-ui/kit/components/chip';
+export * from '@taiga-ui/kit/components/comment';
 export * from '@taiga-ui/kit/components/compass';
 export * from '@taiga-ui/kit/components/confirm';
 export * from '@taiga-ui/kit/components/data-list-wrapper';

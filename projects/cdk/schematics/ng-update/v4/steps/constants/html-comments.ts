@@ -55,4 +55,15 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'TuiThemeNight has been removed. Please use tuiTheme attribute to set theme https://taiga-ui.dev/directives/theme',
     },
+    {
+        tag: 'tui-input-files',
+        withAttrs: [],
+        comment:
+            'Native input inside is now required and the wrapper has changed from <tui-input-files to <label tuiInputFiles, control moved to native input. See interactive example https://taiga-ui.dev/components/input-files',
+    },
+    {
+        pattern: /\|\s?tuiFormatNumber\s?:/g,
+        comment:
+            'tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration',
+    },
 ];

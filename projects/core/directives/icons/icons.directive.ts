@@ -13,7 +13,7 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./icons.styles.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -26,10 +26,8 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[class._icon-start]': 'iconStart',
-        '[class._icon-end]': 'iconEnd',
-        '[style.--t-mask-start]': '"url(" + resolver(iconStart) + ")"',
-        '[style.--t-mask-end]': '"url(" + resolver(iconEnd) + ")"',
+        '[style.--t-icon-start]': 'iconStart ? "url(" + resolver(iconStart) + ")" : null',
+        '[style.--t-icon-end]': 'iconEnd ? "url(" + resolver(iconEnd) + ")" : null',
     },
 })
 export class TuiIcons {

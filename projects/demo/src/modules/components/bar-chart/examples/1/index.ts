@@ -18,7 +18,7 @@ export default class Example {
         [3952, 3671, 3781, 5323, 3537, 4107, 2962, 3320, 8632, 4755, 9130, 1195, 3574],
     ];
 
-    protected readonly labelsX = ['Jan 2019', 'Feb', 'Mar'];
+    protected readonly labelsX = ['Jan 2019', 'Feb', 'Mar', ''];
     protected readonly labelsY = ['0', '10 000'];
 
     protected getHeight(max: number): number {

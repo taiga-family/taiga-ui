@@ -1,0 +1,60 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Label
+ * @selector [tuiLabel]
+ *
+ * @description
+ * Easy to use label ready for horizontal orientation for checkbox/radio/switch
+ * and vertical for input, select and textarea
+ *
+ * @example
+ * <label tuiLabel><input type="checkbox" /> Click me</tui-icon>
+ *
+ * @see-also
+ * Checkbox, Radio, Title
+ */
+[tuiLabel] {
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-primary);
+
+    &:not([data-orientation='vertical']) {
+        flex-direction: row;
+        width: fit-content;
+        font: var(--tui-font-text-m);
+    }
+
+    // TODO: Remove after legacy inputs are dropped
+    &:has(tui-textfield),
+    &:has(tui-primitive-textfield),
+    &:has(tui-textarea) {
+        flex-direction: column !important;
+        width: auto !important;
+        font: var(--tui-font-text-s) !important;
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        margin-inline-end: 0.5rem;
+
+        &[data-size='s'] {
+            margin-inline-end: 0.25rem;
+            margin-top: 0.125rem;
+        }
+    }
+
+    small {
+        font: var(--tui-font-text-s);
+    }
+
+    [tuiTitle] {
+        margin-top: 0.125rem;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+    }
+}

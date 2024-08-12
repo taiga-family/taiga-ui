@@ -10,6 +10,6 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['base', 'format', 'options'];
+    protected readonly examples = ['base', 'format', 'options', 'separate decimal part'];
     protected readonly routes = DemoRoute;
 }

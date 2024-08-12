@@ -70,7 +70,7 @@
     overflow: hidden;
     vertical-align: middle;
     max-width: 100%;
-    gap: calc(var(--t-gap) - 2 * var(--t-margin));
+    gap: calc(var(--t-gap, 0rem) - 2 * var(--t-margin, 0rem));
 
     > img,
     > tui-svg,
@@ -81,8 +81,8 @@
     > [tuiRadio],
     > [tuiSwitch],
     > [tuiCheckbox],
-    &._icon-start:before,
-    &._icon-end:after {
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
         margin: var(--t-margin);
     }
 }
@@ -128,12 +128,4 @@
     margin: -1px;
     overflow: hidden;
     padding: 0;
-}
-
-.scroll-behavior(@mode: smooth) {
-    scroll-behavior: @mode;
-
-    :host-context(tui-root._reduced-motion) & {
-        scroll-behavior: auto;
-    }
 }

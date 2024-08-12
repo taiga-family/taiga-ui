@@ -59,6 +59,7 @@ test.describe('InputTime', () => {
                 });
 
                 await inputTime.textfield.click();
+
                 await expect(apiPageExample).toHaveScreenshot(`time_mode_${mode}.png`);
             });
         });
@@ -70,6 +71,7 @@ test.describe('InputTime', () => {
                 });
 
                 await inputTime.textfield.click();
+
                 await expect(inputTime.dropdown).toHaveScreenshot(
                     'dropdown_is_visible.png',
                 );
@@ -136,7 +138,7 @@ test.describe('InputTime', () => {
             });
 
             test('3 => 03', async () => {
-                await inputTime.textfield.type('3');
+                await inputTime.textfield.pressSequentially('3');
 
                 await expect(inputTime.textfield).toHaveValue('03');
                 await expect(inputTime.textfield).toHaveJSProperty('selectionStart', 2);
@@ -144,7 +146,7 @@ test.describe('InputTime', () => {
             });
 
             test('1111 => 11:11', async () => {
-                await inputTime.textfield.type('1111');
+                await inputTime.textfield.pressSequentially('1111');
 
                 await expect(inputTime.textfield).toHaveValue('11:11');
                 await expect(inputTime.textfield).toHaveJSProperty(
@@ -158,7 +160,7 @@ test.describe('InputTime', () => {
             });
 
             test('0130 => 01:30', async () => {
-                await inputTime.textfield.type('0130');
+                await inputTime.textfield.pressSequentially('0130');
 
                 await expect(inputTime.textfield).toHaveValue('01:30');
                 await expect(inputTime.textfield).toHaveJSProperty(
@@ -172,7 +174,7 @@ test.describe('InputTime', () => {
             });
 
             test('99 => 09:09', async () => {
-                await inputTime.textfield.type('99');
+                await inputTime.textfield.pressSequentially('99');
 
                 await expect(inputTime.textfield).toHaveValue('09:09');
                 await expect(inputTime.textfield).toHaveJSProperty(

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {NAVIGATOR} from '@ng-web-apis/common';
+import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -19,7 +19,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     host: {
         '[id]': 'el.id || id',
         '[attr.data-mode]': 'mode',
-        '[class._empty]': 'el.value === ""',
+        '[class._empty]': 'value === ""',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
@@ -32,7 +32,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     },
 })
 export class TuiSelect extends TuiTextfieldBase {
-    private readonly nav = inject(NAVIGATOR);
+    private readonly nav = inject(WA_NAVIGATOR);
     private readonly control = inject(NgControl);
 
     @Input()
@@ -40,6 +40,7 @@ export class TuiSelect extends TuiTextfieldBase {
 
     public override setValue(value: string): void {
         this.control.control?.setValue(value);
+        this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 
     public focus(): void {
@@ -53,6 +54,6 @@ export class TuiSelect extends TuiTextfieldBase {
     }
 
     protected async onCopy(): Promise<void> {
-        await this.nav.clipboard.writeText(this.el.value);
+        await this.nav.clipboard.writeText(this.value);
     }
 }

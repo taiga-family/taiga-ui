@@ -22,10 +22,11 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     private previous?: TuiVerticalDirection;
 
     public readonly type = 'dropdown';
-    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-        inject<any>(TuiRectAccessor),
-        inject(TuiDropdownDirective),
-    );
+    public readonly accessor: TuiRectAccessor | null =
+        tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
+            inject<any>(TuiRectAccessor),
+            inject(TuiDropdownDirective, {optional: true})!,
+        );
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {

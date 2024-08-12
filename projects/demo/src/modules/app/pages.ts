@@ -20,7 +20,8 @@ export const pages: TuiDocRoutePages = [
         section: 'Documentation',
         title: 'Changelog',
         keywords: 'release, change, changelog, archive, history',
-        route: DemoRoute.Changelog,
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+        target: '_blank',
     },
     {
         section: 'Documentation',
@@ -33,7 +34,8 @@ export const pages: TuiDocRoutePages = [
         title: 'Documentation engine',
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
-        route: DemoRoute.AddonDoc,
+        route: 'https://github.com/taiga-family/taiga-ui/blob/main/projects/addon-doc/README.md',
+        target: '_blank',
     },
     {
         section: 'Documentation',
@@ -205,12 +207,6 @@ export const pages: TuiDocRoutePages = [
                 title: 'Button',
                 keywords: 'кнопка, button, icon-button, иконка',
                 route: DemoRoute.Button,
-            },
-            {
-                section: 'Components',
-                title: 'ButtonVertical',
-                keywords: 'кнопка, button, vertical-button, вертикальная',
-                route: DemoRoute.ButtonVertical,
             },
             {
                 section: 'Components',
@@ -582,13 +578,6 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'ColorPicker',
-        keywords: 'color, picker, input, color',
-        route: 'https://taiga-family.github.io/editor/color-picker',
-        target: '_blank',
-    },
-    {
-        section: 'Components',
         title: 'Island',
         keywords: 'Island, остров, плашка',
         route: DemoRoute.Island,
@@ -937,12 +926,6 @@ export const pages: TuiDocRoutePages = [
         route: DemoRoute.Title,
     },
     {
-        section: 'Components',
-        title: 'Appearance',
-        keywords: 'colors, css, theme, custom, style',
-        route: DemoRoute.Appearance,
-    },
-    {
         section: 'Layout',
         title: 'CardMedium',
         keywords: 'card, card-medium, medium, block, карточка, блок',
@@ -1134,9 +1117,21 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'Appearance',
+                keywords: 'colors, css, theme, custom, style',
+                route: DemoRoute.Appearance,
+            },
+            {
+                section: 'Tools',
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: DemoRoute.AutoFocus,
+            },
+            {
+                section: 'Tools',
+                title: 'FluidTypography',
+                keywords: 'font, scale, textfield, input, size, text',
+                route: DemoRoute.FluidTypography,
             },
             {
                 section: 'Tools',

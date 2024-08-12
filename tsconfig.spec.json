@@ -1,6 +1,6 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["projects/demo-cypress", "projects/demo-playwright", "**/scripts/**/*.ts"],
+    "exclude": ["projects/demo-cypress", "projects/demo-playwright"],
     "include": ["**/*.spec.ts", "**/*.d.ts"],
     "compilerOptions": {
         "target": "es2016",

@@ -91,6 +91,7 @@ describe('Tag', () => {
             await input?.setInputValue('Hapica');
             await input?.dispatchEvent('input');
             await input?.sendKeys(TestKey.ENTER);
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
@@ -100,6 +101,7 @@ describe('Tag', () => {
             await input?.setInputValue('Hapica');
             await input?.dispatchEvent('input');
             await input?.blur();
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
@@ -108,6 +110,7 @@ describe('Tag', () => {
 
             await input?.setInputValue('Hapica, ogo');
             await input?.dispatchEvent('input');
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica, ogo');
         });
 
@@ -117,6 +120,7 @@ describe('Tag', () => {
             await input?.setInputValue('');
             await input?.dispatchEvent('input');
             await input?.blur();
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
     });
@@ -148,6 +152,7 @@ describe('Tag', () => {
             );
 
             await tag.sendBackspace();
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
 
@@ -157,6 +162,7 @@ describe('Tag', () => {
             );
 
             await tag.sendDelete();
+
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
     });

@@ -5,8 +5,8 @@
 
     display: flex;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         .fullsize();
 
         content: '';
@@ -15,17 +15,17 @@
         animation: tuiFadeIn var(--tui-duration);
     }
 
-    &:before {
+    &::before {
         left: -100%;
         width: 200%;
     }
 
-    &:after {
+    &::after {
         left: 100%;
     }
 
-    &.ng-animating:before,
-    &.ng-animating:after {
+    &.ng-animating::before,
+    &.ng-animating::after {
         opacity: 0;
         transition: opacity var(--tui-duration);
     }

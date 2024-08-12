@@ -15,6 +15,7 @@ test.describe('Calendars', () => {
         const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
+
         await calendar.scrollIntoViewIfNeeded();
 
         await expect(calendar).toHaveScreenshot('01-calendar.png');
@@ -27,6 +28,7 @@ test.describe('Calendars', () => {
         const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
+
         await calendar.scrollIntoViewIfNeeded();
 
         await expect(calendar).toHaveScreenshot('01-calendar-is-april-2020.png');
@@ -39,6 +41,7 @@ test.describe('Calendars', () => {
         const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
+
         await calendar.scrollIntoViewIfNeeded();
 
         await expect(calendar).toHaveScreenshot('01-range-calendar.png');
@@ -51,6 +54,7 @@ test.describe('Calendars', () => {
         const calendar = apiPageExample.locator('tui-calendar-month').first();
 
         await expect(calendar).toBeVisible();
+
         await calendar.scrollIntoViewIfNeeded();
 
         await expect(calendar).toHaveScreenshot('01-calendar-month.png');

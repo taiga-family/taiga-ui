@@ -1,0 +1,18 @@
+<tui-textfield>
+    <input
+        placeholder="Type in long value"
+        tuiTextfield
+        [tuiFluidTypography]="scale()"
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+
+<tui-input-range
+    class="tui-space_top-4"
+    [max]="30"
+    [min]="1"
+    [ngModel]="range()"
+    (ngModelChange)="range.set($event)"
+>
+    Min/Max (converted to pixels)
+</tui-input-range>

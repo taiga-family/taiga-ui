@@ -61,6 +61,10 @@ code:not(pre code) {
         text-wrap: wrap;
 
         tui-notification & {
+            mix-blend-mode: color-burn;
+        }
+
+        [tuiTheme='dark'] tui-notification & {
             mix-blend-mode: luminosity;
         }
 
@@ -89,6 +93,10 @@ tui-doc-navigation.tui-doc-navigation {
 
     @media @tui-mobile {
         display: none;
+    }
+
+    tui-scrollbar {
+        overscroll-behavior: none;
     }
 }
 

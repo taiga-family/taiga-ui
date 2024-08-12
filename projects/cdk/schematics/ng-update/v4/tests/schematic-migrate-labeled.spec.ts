@@ -39,7 +39,9 @@ const TEMPLATE_BEFORE = `<tui-checkbox-labeled [(ngModel)]="value">
   Label
 </tui-checkbox-labeled>
 
-<tui-radio-labeled size="l" [formControl]="control" [item]="value" [identityMatcher]="matcher">
+<tui-checkbox-labeled *ngFor="let group of groups" [(ngModel)]="value">{{ group.name }}</tui-checkbox-labeled>
+
+<tui-radio-labeled size="l" [formControl]="control" [item]="value" [identityMatcher]="matcher" [pseudoDisabled]="disabled">
   Label
 </tui-radio-labeled>
 `;
@@ -47,12 +49,12 @@ const TEMPLATE_BEFORE = `<tui-checkbox-labeled [(ngModel)]="value">
 const TEMPLATE_AFTER = `<label tuiLabel><input tuiCheckbox type="checkbox" [(ngModel)]="value">
   Label
 </label>
-
+<label *ngFor="let group of groups" tuiLabel>
+<input tuiCheckbox type="checkbox"  [(ngModel)]="value">{{ group.name }}</label>
 <label tuiLabel>
-<input tuiRadio type="radio" size="m" [formControl]="control" [value]="value" [identityMatcher]="matcher">
+<input tuiRadio type="radio" size="m" [formControl]="control" [value]="value" [identityMatcher]="matcher" [tuiAppearanceState]="disabled ? 'disabled' : null">
   Label
 </label>
-
 `;
 
 describe('ng-update', () => {

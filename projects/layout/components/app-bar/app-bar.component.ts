@@ -6,12 +6,14 @@ import {
     HostBinding,
     inject,
     Input,
+    NgZone,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
@@ -36,6 +38,7 @@ export class TuiAppBarComponent {
         inject(ResizeObserverService),
         inject(MutationObserverService),
     ).pipe(
+        tuiZonefull(inject(NgZone)),
         map(
             () =>
                 2 *

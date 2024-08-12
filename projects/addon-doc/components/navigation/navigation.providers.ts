@@ -6,6 +6,7 @@ import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
+import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs';
 
@@ -72,4 +73,7 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             ];
         },
     },
+    tuiScrollbarOptionsProvider({
+        mode: 'hover',
+    }),
 ];

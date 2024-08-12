@@ -21,7 +21,20 @@
     outline: 1px solid var(--tui-border-normal);
 
     ::ng-deep .hljs-ln {
-        width: max-content;
+        width: 100%;
+
+        .hljs-ln-numbers {
+            width: 1rem;
+        }
+
+        td {
+            white-space: pre;
+        }
+
+        tr:hover {
+            outline: 1px solid var(--tui-border-normal);
+            border-radius: 0.25rem;
+        }
     }
 }
 

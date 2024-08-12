@@ -4,15 +4,17 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="error">
-            This component is deprecated in favor of
-            <a
-                tuiLink
-                [routerLink]="routes.CardLarge"
-            >
-                Card
-            </a>
-            component
+        <tui-notification appearance="error">
+            <div>
+                This component is deprecated in favor of
+                <a
+                    tuiLink
+                    [routerLink]="routes.CardLarge"
+                >
+                    Card
+                </a>
+                component
+            </div>
         </tui-notification>
 
         <div class="tui-space_vertical-3">Islands show information in rounded block with a border</div>

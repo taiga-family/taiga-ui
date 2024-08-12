@@ -53,6 +53,13 @@ const TEMPLATE_BEFORE = `
 >
     Link with icon left
 </a>
+<a
+    [icon]="icon"
+    iconAlign="left"
+    tuiLink
+>
+    Link with icon left
+</a>
 `;
 
 const TEMPLATE_AFTER = `
@@ -65,6 +72,13 @@ const TEMPLATE_AFTER = `
 </a>
 <a
     iconStart="tuiIconSettings"
+    ${''}
+    tuiLink
+>
+    Link with icon left
+</a>
+<a
+    [iconStart]="icon"
     ${''}
     tuiLink
 >

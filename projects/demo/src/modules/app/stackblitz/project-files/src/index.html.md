@@ -7,8 +7,29 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <my-app>Loading Taiga UI...</my-app>
+    <header class="header">
+      <h1>
+        <img
+          src="https://raw.githubusercontent.com/taiga-family/taiga-ui/main/projects/demo/src/assets/images/taiga.svg"
+          alt="taiga ui logo"
+          width="24"
+        />
+        Taiga UI
+      </h1>
+
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=Taiga-family&repo=taiga-ui&type=star&count=true&size=large"
+        frameborder="0"
+        scrolling="0"
+        width="170"
+        height="30"
+        title="GitHub"
+      ></iframe>
+    </header>
+
+    <root>Loading Taiga UI...</root>
   </body>
 </html>
 ```

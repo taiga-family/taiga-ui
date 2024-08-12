@@ -43,7 +43,7 @@
             margin-top: 0;
         }
 
-        &:before {
+        &::before {
             content: '';
             position: absolute;
             left: 0;
@@ -69,7 +69,7 @@
         .tui-list_linear & {
             padding-left: 1.75rem;
 
-            &:before {
+            &::before {
                 content: '\2014';
                 left: 0;
                 top: auto;
@@ -82,7 +82,7 @@
         .tui-list_ordered & {
             padding-left: 1.25rem;
 
-            &:before {
+            &::before {
                 content: counter(counter) '.';
                 left: 0;
                 top: auto;
@@ -97,7 +97,7 @@
         .tui-list_triangle > & {
             padding-left: 1.75rem;
 
-            &:before {
+            &::before {
                 content: '\25E4'; // represent symbol '◤'
                 left: 0;
                 top: 1px;

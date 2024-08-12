@@ -16,14 +16,14 @@ import {renameProprietaryIcons} from './rename-proprietary-icons';
 
 export function migrateIcons(options: TuiSchema): Rule {
     return chain([
-        (tree: Tree, _: SchematicContext) => {
+        (tree: Tree, context: SchematicContext) => {
             const fileSystem = getFileSystem(tree);
 
             !options['skip-logs'] &&
                 infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing icons...`);
 
             if (hasProprietaryIcons(tree)) {
-                renameProprietaryIcons();
+                renameProprietaryIcons(context);
             } else {
                 renameIcons();
             }

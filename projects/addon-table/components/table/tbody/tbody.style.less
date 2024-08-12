@@ -25,8 +25,8 @@
         background: var(--tui-service-selection-background);
     }
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: '';
         position: sticky;
         height: 100%;
@@ -34,11 +34,11 @@
         border-color: inherit;
     }
 
-    &:before {
+    &::before {
         left: 0;
     }
 
-    &:after {
+    &::after {
         right: 0;
     }
 }

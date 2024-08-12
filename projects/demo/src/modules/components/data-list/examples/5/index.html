@@ -29,10 +29,10 @@
             automation-id="tui-data-list-calendar-option"
             iconEnd="@tui.chevron-right"
             tuiDropdownAlign="right"
+            tuiDropdownManual
             tuiDropdownSided
             tuiOption
             [tuiDropdown]="calendar"
-            [tuiDropdownManual]="false"
         >
             📅 Calendar: {{ dateValue }}
         </button>
@@ -40,10 +40,10 @@
             automation-id="tui-data-list-email-option"
             iconEnd="@tui.chevron-right"
             tuiDropdownAlign="right"
+            tuiDropdownManual
             tuiDropdownSided
             tuiOption
             [tuiDropdown]="input"
-            [tuiDropdownManual]="false"
         >
             📧 Email: {{ emailValue }}
         </button>
@@ -52,10 +52,10 @@
             iconEnd="@tui.chevron-right"
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
+            tuiDropdownManual
             tuiDropdownSided
             tuiOption
             [tuiDropdown]="range"
-            [tuiDropdownManual]="false"
         >
             ⌛ Range: {{ rangeValue }}
         </button>

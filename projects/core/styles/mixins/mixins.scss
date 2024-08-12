@@ -80,8 +80,8 @@
     > [tuiRadio],
     > [tuiSwitch],
     > [tuiCheckbox],
-    &._icon-start:before,
-    &._icon-end:after {
+    &[tuiIcons]:before,
+    &[tuiIcons]:after {
         margin: var(--t-margin);
     }
 }

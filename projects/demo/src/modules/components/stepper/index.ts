@@ -13,7 +13,12 @@ import {TuiStepper} from '@taiga-ui/kit';
 export default class Page {
     protected activeItemIndex = 0;
 
-    protected readonly examples = ['Basic', 'Vertical', 'Vertical autoscroll'];
+    protected readonly examples = [
+        'Basic',
+        'Vertical',
+        'Vertical autoscroll',
+        'Vertical connected',
+    ];
 
     protected readonly orientationVariants: readonly TuiOrientation[] = [
         'horizontal',

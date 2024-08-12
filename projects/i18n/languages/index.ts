@@ -4,6 +4,7 @@ export * from '@taiga-ui/i18n/languages/dutch';
 export * from '@taiga-ui/i18n/languages/english';
 export * from '@taiga-ui/i18n/languages/french';
 export * from '@taiga-ui/i18n/languages/german';
+export * from '@taiga-ui/i18n/languages/hebrew';
 export * from '@taiga-ui/i18n/languages/italian';
 export * from '@taiga-ui/i18n/languages/kazakh';
 export * from '@taiga-ui/i18n/languages/malay';

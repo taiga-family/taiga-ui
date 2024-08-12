@@ -1,0 +1,11 @@
+<div #host><ng-content /></div>
+<tui-expand [expanded]="expanded()">
+    <ng-container *polymorpheusOutlet="template" />
+</tui-expand>
+<ng-template #datalist>
+    <tui-data-list>
+        <tui-opt-group [label]="host.textContent">
+            <ng-container *polymorpheusOutlet="template" />
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>

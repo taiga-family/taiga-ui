@@ -8,4 +8,14 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'Vertical',
+        'Horizontal',
+        'All',
+        'Hidden',
+        'Light scrollbar',
+        'Virtual scroll',
+        'Show scroll bars on hover',
+    ];
+}

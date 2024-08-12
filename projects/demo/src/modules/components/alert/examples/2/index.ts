@@ -36,7 +36,7 @@ export default class Example {
         this.alerts
             .open(this.withdrawTemplate || '', {
                 label: 'A template sample',
-                status: 'warning',
+                appearance: 'warning',
                 autoClose: 0,
             })
             .subscribe();
@@ -46,7 +46,7 @@ export default class Example {
         this.alerts
             .open(this.depositTemplate || '', {
                 label: 'A template sample',
-                status: 'success',
+                appearance: 'success',
                 autoClose: 0,
             })
             .subscribe();

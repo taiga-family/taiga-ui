@@ -17,8 +17,8 @@ tui-segmented {
         font: var(--tui-font-text-s);
         border-radius: var(--tui-radius-s);
 
-        & > *:before,
-        & > *:after,
+        & > *::before,
+        & > *::after,
         tui-icon {
             font-size: 1rem;
         }
@@ -44,7 +44,7 @@ tui-segmented {
         border-radius: var(--tui-radius-m);
         border-width: 0.25rem;
 
-        &:after {
+        &::after {
             box-shadow: 0 0 0 0.25rem;
         }
     }
@@ -71,8 +71,8 @@ tui-segmented {
         border-radius: inherit;
 
         & > *,
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             margin: 0 var(--t-margin);
         }
 
@@ -86,7 +86,7 @@ tui-segmented {
         .fullsize();
     }
 
-    &:after {
+    &::after {
         .fullsize();
 
         content: '';
@@ -96,7 +96,7 @@ tui-segmented {
         box-shadow: 0 0 0 0.125rem;
     }
 
-    &:before {
+    &::before {
         .transition(~'left, width');
 
         content: '';

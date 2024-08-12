@@ -31,8 +31,8 @@
     margin: 0;
 }
 
-.t-title:first-letter,
-.t-description:first-letter {
+.t-title::first-letter,
+.t-description::first-letter {
     text-transform: capitalize;
 }
 
@@ -109,4 +109,8 @@
     height: auto;
     visibility: visible;
     opacity: 1;
+}
+
+tui-doc-code {
+    overflow: hidden;
 }

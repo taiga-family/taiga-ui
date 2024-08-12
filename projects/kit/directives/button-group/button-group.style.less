@@ -30,8 +30,8 @@
             background: var(--tui-background-neutral-1);
         }
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             position: absolute;
             top: 0;
             background: inherit;
@@ -39,12 +39,12 @@
             height: 100%;
         }
 
-        &:first-child:before {
+        &:first-child::before {
             content: '';
             left: -1.75rem;
         }
 
-        &:last-child:after {
+        &:last-child::after {
             content: '';
             right: -1.75rem;
         }

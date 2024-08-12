@@ -117,6 +117,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         await calendar.clickPaginationYear();
+
         expect(await calendar.yearPickerShown()).toBe(true);
     });
 
@@ -147,6 +148,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         await calendar.clickDay(day.day);
+
         expect(testComponent.dayClick).toHaveBeenCalledWith(day);
     });
 
@@ -182,6 +184,7 @@ describe('Calendar', () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         await calendar.hoverDay(day.day);
+
         expect(testComponent.hoveredItemChange).toHaveBeenCalledWith(day);
     });
 
@@ -191,6 +194,7 @@ describe('Calendar', () => {
 
         await calendar.hoverDay(day.day);
         await calendar.hoverDay(day.day);
+
         expect(testComponent.hoveredItemChange).toHaveBeenCalledTimes(1);
     });
 

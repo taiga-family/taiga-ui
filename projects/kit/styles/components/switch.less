@@ -1,0 +1,96 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Switch
+ * @selector [tuiSwitch]
+ *
+ * @description
+ * A stylized input type="checkbox" switch
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('s' | 'm')
+ *
+ * @vars
+ * --t-checked-icon — checkmark icon
+ *
+ * @example
+ * <input type="checkbox" tuiSwitch />
+ *
+ * @see-also
+ * Checkbox, Radio
+ */
+[tuiSwitch] {
+    .transition(~'background, box-shadow');
+
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0;
+    flex-shrink: 0;
+    color: #fff !important;
+
+    &[data-size='s'] {
+        height: 1rem;
+        width: 2rem;
+
+        &::before {
+            width: 1rem;
+            transform: translateX(-1rem);
+            mask-size: 0.75rem;
+        }
+
+        &::after {
+            width: 1rem;
+            box-shadow: -2.625rem 0 0 0.5rem currentColor;
+            outline-width: 0.167rem;
+            transform: scale(0.375);
+        }
+
+        &:checked::after {
+            transform: scale(0.375) translateX(2.625rem);
+        }
+    }
+
+    &:checked {
+        &::before {
+            transform: none;
+        }
+
+        &::after {
+            transform: scale(0.33333) translateX(4.5rem);
+        }
+    }
+
+    &:disabled._readonly {
+        opacity: 1;
+    }
+
+    &::before,
+    &::after {
+        .transition(transform);
+
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 1.5rem;
+    }
+
+    &::before {
+        display: var(--t-checked-icon, none);
+        background: currentColor;
+        mask: var(--t-checked-icon) no-repeat center;
+        mask-size: 1rem;
+        transform: translateX(-1.5rem);
+    }
+
+    &::after {
+        right: 0;
+        border-radius: 100%;
+        transform: scale(0.33333);
+        box-shadow: -4.5rem 0 0 0.75rem currentColor;
+        outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
+        outline-offset: var(--t-checked-icon, 20rem);
+    }
+}

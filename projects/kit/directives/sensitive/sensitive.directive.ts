@@ -5,11 +5,12 @@ import {
     Directive,
     inject,
     Input,
+    NgZone,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
 
@@ -48,6 +49,7 @@ export class TuiSensitive {
                 contentRect.height,
             ]),
             map(([rows, height]) => height * (rowsInSvg / rows)),
+            tuiZonefull(inject(NgZone)),
             tuiWatch(inject(ChangeDetectorRef)),
         ),
     );

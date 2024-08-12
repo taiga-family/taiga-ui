@@ -25,6 +25,6 @@ export default class Example {
     }
 
     protected onX(index: number): void {
-        this.alerts.open(`Removed chip ${index + 1}`, {status: 'error'}).subscribe();
+        this.alerts.open(`Removed chip ${index + 1}`, {appearance: 'error'}).subscribe();
     }
 }

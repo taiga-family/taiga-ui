@@ -20,15 +20,15 @@
     <ng-content />
     <ng-container *ngIf="paymentSystem">
         <tui-icon
-            *ngIf="isMono; else colored"
+            *ngIf="monoHandler(paymentSystem); else colored"
             class="t-logo"
-            [icon]="paymentIcons[paymentSystem]"
+            [icon]="options.icons[paymentSystem]"
         />
         <ng-template #colored>
             <img
                 class="t-logo"
                 [alt]="paymentSystem"
-                [src]="paymentIcons[paymentSystem] | tuiIcon"
+                [src]="options.icons[paymentSystem] | tuiIcon"
             />
         </ng-template>
     </ng-container>

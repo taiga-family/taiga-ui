@@ -153,7 +153,12 @@ export function findAttributeOnElementWithAttrs(
 
 /** Shorthand function that checks if the specified element contains the given attribute. */
 export function hasElementAttribute(element: Element, attributeName: string): boolean {
-    return element.attrs?.some((attr) => attr.name === attributeName.toLowerCase());
+    const lowercasedAttrName = attributeName.toLowerCase();
+
+    return element.attrs?.some(
+        (attr) =>
+            attr.name === lowercasedAttrName || attr.name === `[${lowercasedAttrName}]`,
+    );
 }
 
 /** Gets the start offset of the given attribute from a Parse5 element. */

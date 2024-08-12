@@ -30,7 +30,7 @@ export default class Example {
         [6000, 2000, 4500, 7000, 5000],
     ];
 
-    protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar'];
+    protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar', ''];
     protected readonly labelsY = ['0', '10 000'];
     protected readonly appearances = ['dark', 'error'];
 

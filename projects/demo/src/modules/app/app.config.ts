@@ -1,12 +1,11 @@
 import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
-import {Title} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
-import {SESSION_STORAGE} from '@ng-web-apis/common';
+import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -28,6 +27,7 @@ import {
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
+    tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
@@ -54,14 +54,14 @@ export const config: ApplicationConfig = {
             }),
         ),
         NG_EVENT_PLUGINS,
-        Title,
+        tuiNotificationOptionsProvider({size: 'm'}),
         {
             provide: TUI_PLATFORM,
             useValue: 'web',
         },
         {
             provide: TUI_IS_PLAYWRIGHT,
-            useFactory: () => Boolean(inject(SESSION_STORAGE).getItem('playwright')),
+            useFactory: () => Boolean(inject(WA_SESSION_STORAGE).getItem('playwright')),
         },
         {
             provide: HIGHLIGHT_OPTIONS,

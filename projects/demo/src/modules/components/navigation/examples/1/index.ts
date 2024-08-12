@@ -9,7 +9,6 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiExpand,
     TuiIcon,
     TuiSurface,
     TuiTitle,
@@ -19,6 +18,7 @@ import {
     TuiBadge,
     TuiBadgeNotification,
     TuiChevron,
+    TuiDataListDropdownManager,
     TuiFade,
     TuiTabs,
 } from '@taiga-ui/kit';
@@ -39,7 +39,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         RouterLink,
         RouterLinkActive,
         TuiAppearance,
-        TuiExpand,
         TuiBadge,
         TuiTabs,
         TuiRepeatTimes,
@@ -47,14 +46,13 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiHeader,
         TuiSurface,
         TuiTitle,
+        TuiDataListDropdownManager,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected open = false;
     protected expanded = false;
-    protected submenu = false;
     protected readonly routes = DemoRoute;
 }

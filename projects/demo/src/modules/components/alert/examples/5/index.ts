@@ -57,11 +57,11 @@ export default class Example {
 
     private readonly notification = this.alerts
         .open(new PolymorpheusComponent(AlertExampleWithCustomLabel), {
-            label: ({status}) =>
-                status === 'error'
+            label: ({appearance}) =>
+                appearance === 'error'
                     ? 'Error label from function'
                     : 'Info label from function',
-            status: 'error',
+            appearance: 'error',
             autoClose: 0,
         })
         .pipe(takeUntil(this.router.events));
@@ -69,7 +69,7 @@ export default class Example {
     private readonly notificationWithCustomLabel = this.alerts
         .open(new PolymorpheusComponent(AlertExampleWithCustomLabel), {
             label: new PolymorpheusComponent(CustomLabel),
-            status: 'warning',
+            appearance: 'warning',
             autoClose: 0,
         })
         .pipe(takeUntil(this.router.events));

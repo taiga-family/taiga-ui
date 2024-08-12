@@ -1,4 +1,5 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import type {ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
@@ -8,6 +9,20 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withTagNames: ['tui-card', 'tui-thumbnail-card'],
         },
         to: {attrName: 'iconStart'},
+    },
+    {
+        from: {
+            attrName: 'src',
+            withTagNames: ['tui-svg'],
+        },
+        to: {attrName: 'icon'},
+    },
+    {
+        from: {
+            attrName: '[src]',
+            withTagNames: ['tui-svg'],
+        },
+        to: {attrName: '[icon]'},
     },
     {
         from: {
@@ -33,16 +48,23 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {
             attrName: 'item',
-            withTagNames: ['tui-radio'],
+            withTagNames: ['tui-radio', 'tui-radio-labeled', 'tui-radio-block'],
         },
         to: {attrName: 'value'},
     },
     {
         from: {
             attrName: '[item]',
-            withTagNames: ['tui-radio'],
+            withTagNames: ['tui-radio', 'tui-radio-labeled', 'tui-radio-block'],
         },
         to: {attrName: '[value]'},
+    },
+    {
+        from: {
+            attrName: '(removed)',
+            withTagNames: ['tui-file'],
+        },
+        to: {attrName: '(remove)'},
     },
     {
         from: {
@@ -57,20 +79,6 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withTagNames: ['*'],
         },
         to: {attrName: '(waResizeObserver)'},
-    },
-    {
-        from: {
-            attrName: 'item',
-            withTagNames: ['tui-radio-labeled'],
-        },
-        to: {attrName: 'value'},
-    },
-    {
-        from: {
-            attrName: '[item]',
-            withTagNames: ['tui-radio-labeled'],
-        },
-        to: {attrName: '[value]'},
     },
     // Hosted dropdown
     {
@@ -157,6 +165,14 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     },
     {
         from: {
+            attrName: '[mode]',
+            withTagNames: ['tui-marker-icon'],
+            withAttrsNames: ['tuiMarkerIcon'],
+        },
+        to: {attrName: '[appearance]'},
+    },
+    {
+        from: {
             attrName: 'tuiAction',
             withTagNames: ['button', 'a'],
             withAttrsNames: ['tuiMarkerIcon'],
@@ -211,19 +227,35 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withAttrsNames: ['tuiLink'],
             filterFn: (element) =>
                 !hasElementAttribute(element, 'iconAlign') ||
-                element.attrs.find((attr) => attr.name === 'iconalign')?.value ===
-                    'right',
+                findAttr(element.attrs, 'iconAlign')?.value === 'right',
         },
         to: {attrName: 'iconEnd'},
     },
     {
         from: {
-            attrName: 'icon',
+            attrName: '[icon]',
             withAttrsNames: ['tuiLink'],
             filterFn: (element) =>
-                element.attrs.find((attr) => attr.name === 'iconalign')?.value === 'left',
+                !hasElementAttribute(element, 'iconAlign') ||
+                findAttr(element.attrs, 'iconAlign')?.value === 'right',
+        },
+        to: {attrName: '[iconEnd]'},
+    },
+    {
+        from: {
+            attrName: 'icon',
+            withAttrsNames: ['tuiLink'],
+            filterFn: (element) => findAttr(element.attrs, 'iconAlign')?.value === 'left',
         },
         to: {attrName: 'iconStart'},
+    },
+    {
+        from: {
+            attrName: '[icon]',
+            withAttrsNames: ['tuiLink'],
+            filterFn: (element) => findAttr(element.attrs, 'iconAlign')?.value === 'left',
+        },
+        to: {attrName: '[iconStart]'},
     },
     {
         from: {
@@ -231,5 +263,37 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withTagNames: ['tui-progress-circle'],
         },
         to: {attrName: ''},
+    },
+    {
+        from: {
+            attrName: 'tuiTextfield',
+            withTagNames: ['input', 'textarea'],
+        },
+        to: {attrName: 'tuiTextfieldLegacy'},
+    },
+    {
+        from: {
+            attrName: 'status',
+            withTagNames: ['tui-notification'],
+            withAttrsNames: ['tuiNotification'],
+        },
+        to: {attrName: 'appearance'},
+    },
+    {
+        from: {
+            attrName: '[status]',
+            withTagNames: ['tui-notification'],
+            withAttrsNames: ['tuiNotification'],
+        },
+        to: {attrName: '[appearance]'},
+    },
+    {
+        from: {
+            attrName: '[pseudoFocus]',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: '[tuiAppearanceFocus]',
+        },
     },
 ];

@@ -1,7 +1,6 @@
-<!-- @license lucide-static v0.408.0 - ISC -->
+<!-- @license lucide-static v0.427.0 - ISC -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="lucide lucide-circle-check-big"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -11,6 +10,6 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <path vector-effect="non-scaling-stroke" d="M21.801 10A10 10 0 1 1 17 3.335" />
     <path vector-effect="non-scaling-stroke" d="m9 11 3 3L22 4" />
 </svg>

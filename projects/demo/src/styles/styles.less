@@ -3,8 +3,17 @@
 @import '@taiga-ui/core/styles/taiga-ui-fonts.less';
 @import '@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less';
 @import '@taiga-ui/styles/taiga-ui-global.less';
-@import './doc-global.style';
 
 .mobile-colors-switch.mobile-colors-switch {
     display: none;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    font: var(--tui-font-text-m);
+
+    @media (prefers-reduced-motion) {
+        scroll-behavior: auto;
+    }
 }

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     TUI_AUTOFOCUS_HANDLER,
     TuiAutoFocus,
@@ -51,6 +51,7 @@ describe('TuiAutoFocus directive', () => {
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
@@ -86,7 +87,7 @@ describe('TuiAutoFocus directive', () => {
                             zone: NgZone,
                             win: Window,
                         ) => new TuiIosAutofocusHandler(el, renderer, zone, win),
-                        deps: [ElementRef, Renderer2, NgZone, WINDOW],
+                        deps: [ElementRef, Renderer2, NgZone, WA_WINDOW],
                     },
                 ],
             });
@@ -98,6 +99,7 @@ describe('TuiAutoFocus directive', () => {
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
@@ -137,6 +139,7 @@ describe('TuiAutoFocus directive', () => {
         it('does not focus element', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
+
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(false);
         }));
     });

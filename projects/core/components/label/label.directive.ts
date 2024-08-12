@@ -14,11 +14,11 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./label.style.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/label.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-label-styles',
+        class: 'tui-label',
     },
 })
 class TuiLabelStyles {}
@@ -29,7 +29,7 @@ class TuiLabelStyles {}
     selector: 'label[tuiLabel]',
     host: {
         '[attr.for]': 'el.htmlFor || parent?.id',
-        '[class._textfield]': 'textfield',
+        '[attr.data-orientation]': 'textfield ? "vertical" : "horizontal"',
     },
 })
 export class TuiLabel {

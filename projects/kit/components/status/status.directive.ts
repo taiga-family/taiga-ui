@@ -9,7 +9,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./status.style.less'],
+    styles: ['@import "@taiga-ui/kit/styles/components/status.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

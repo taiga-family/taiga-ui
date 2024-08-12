@@ -11,6 +11,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+
         await expect(page).toHaveScreenshot('01-dropdown.png');
     });
 
@@ -20,6 +21,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input').click();
+
         await expect(page).toHaveScreenshot('02-dropdown.png');
     });
 
@@ -29,6 +31,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input').click();
+
         await expect(page).toHaveScreenshot('03-dropdown.png');
     });
 
@@ -38,6 +41,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+
         await expect(page).toHaveScreenshot('04-dropdown.png');
     });
 
@@ -47,6 +51,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+
         await expect(page).toHaveScreenshot('05-dropdown.png');
     });
 
@@ -56,17 +61,21 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button[tuiChevron]').click();
+
         await expect(page).toHaveScreenshot('06-dropdown.png');
 
         await page
             .locator("tui-dropdown [automation-id='tui-select__textfield']")
             .click();
+
         await expect(page).toHaveScreenshot('07-dropdown.png');
 
         await page.keyboard.press('Escape');
+
         await expect(page).toHaveScreenshot('08-dropdown.png');
 
         await page.keyboard.press('Escape');
+
         await expect(page).toHaveScreenshot('09-dropdown.png');
     });
 
@@ -76,8 +85,11 @@ test.describe('Dropdown', () => {
         const api = new TuiDocumentationPagePO(page).apiPageExample;
 
         await api.locator('button').click();
+
         await expect(page).toHaveScreenshot('10-dropdown.png');
+
         await page.locator('tui-dropdown').locator('tui-scrollbar .t-thumb').click();
+
         await expect(page).toHaveScreenshot('11-dropdown.png');
     });
 

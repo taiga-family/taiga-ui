@@ -34,7 +34,7 @@
 
     display: flex;
 
-    :host._centered &:after {
+    :host._centered &::after {
         content: '';
         display: block;
         flex: 1 0 1px;
@@ -112,6 +112,7 @@
 }
 
 .t-labels-x {
+    position: relative;
     display: flex;
     font: var(--tui-font-text-xs);
     border-right: 1px solid transparent;
@@ -124,7 +125,7 @@
     flex: 1;
     margin-bottom: 1.5625rem;
 
-    &:before {
+    &::before {
         content: '';
         display: block;
         height: 0.5625rem;
@@ -141,15 +142,12 @@
         margin: 0;
     }
 
-    :host[new]:not(._centered) & {
+    :host:not(._centered) & {
         &:last-child:not(:first-child) {
-            flex: 0.5;
+            position: absolute;
+            right: 0;
             text-align: right;
             border-left: none;
-        }
-
-        &:nth-last-child(2) {
-            flex: 0.5;
         }
     }
 }

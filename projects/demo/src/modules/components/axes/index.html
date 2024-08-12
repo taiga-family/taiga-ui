@@ -12,16 +12,7 @@
             [content]="index + 1 | tuiExample"
             [heading]="example"
             [id]="example | tuiKebab"
-        >
-            <tui-notification
-                *ngIf="index === 2"
-                class="tui-space_bottom-4"
-            >
-                Labels positioning on x axes were updated. To prevent breaking changes
-                <code>new</code>
-                attribute has to be added to enable new behaviour.
-            </tui-notification>
-        </tui-doc-example>
+        />
     </ng-template>
 
     <ng-template pageTab>

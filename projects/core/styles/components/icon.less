@@ -1,0 +1,40 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Icon
+ * @selector tui-icon
+ *
+ * @description
+ * Container for displaying icons colored with CSS (color/background) using mask
+ *
+ * @vars
+ * --t-icon — mask for the icon
+ * --t-icon-bg — mask for the background
+ *
+ * @example
+ * <tui-icon style="--t-icon: url('icon.svg')"></tui-icon>
+ *
+ * @see-also
+ * Icons
+ */
+tui-icon {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    mask: var(--t-icon-bg) no-repeat center/contain;
+
+    &::after,
+    &[tuiIcons]::after {
+        .fullsize();
+
+        content: '';
+        display: block;
+        mask: var(--t-icon) no-repeat center/contain;
+        background: currentColor;
+    }
+}

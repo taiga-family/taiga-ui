@@ -1,5 +1,5 @@
 import {Directive, HostListener, inject, Input} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
@@ -9,7 +9,7 @@ import {identity} from 'rxjs';
     selector: '[tuiCopyProcessor]',
 })
 export class TuiCopyProcessor {
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
 
     @Input()
     public tuiCopyProcessor: TuiStringHandler<string> = identity;

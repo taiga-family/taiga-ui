@@ -6,7 +6,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiHint, TuiNumberFormat, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputNumberComponent,
@@ -73,7 +73,10 @@ describe('InputNumber', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [
+                NG_EVENT_PLUGINS,
+                tuiNumberFormatProvider({decimalSeparator: ','}),
+            ],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
@@ -110,6 +113,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
+
             expect(getNativeInput()!.nativeElement.value).toBe(
                 `1${CHAR_NO_BREAK_SPACE}234`,
             );
@@ -122,6 +126,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
+
             expect(getNativeInput()!.nativeElement.value).toBe('12,34');
         });
 
@@ -201,9 +206,11 @@ describe('InputNumber', () => {
                 testComponent.decimalMode = 'not-zero';
 
                 inputPO.sendText('123456,50');
+
                 expect(testComponent.control.value).toBe(123456.5);
 
                 inputPO.sendText('123456.50');
+
                 expect(testComponent.control.value).toBe(123456.5);
             });
         });

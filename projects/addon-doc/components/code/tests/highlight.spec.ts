@@ -70,12 +70,14 @@ describe('Highlight Directive', () => {
             ).value;
         });
         tick(500);
+
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
     }));
 
     it('should reset text if empty string was passed', () => {
         component.code = '';
         fixture.detectChanges();
+
         expect(directiveElement.nativeElement.innerHTML).toBe('');
     });
 
@@ -83,6 +85,7 @@ describe('Highlight Directive', () => {
         jest.spyOn(directiveInstance, 'highlightElement');
         component.code = null;
         fixture.detectChanges();
+
         expect(directiveInstance.highlightElement).not.toHaveBeenCalled();
     });
 
@@ -97,6 +100,7 @@ describe('Highlight Directive', () => {
             ).value;
         });
         tick(500);
+
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
 
         component.code = testHtmlCode;
@@ -109,16 +113,19 @@ describe('Highlight Directive', () => {
             ).value;
         });
         tick(500);
+
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
 
         component.code = '';
         fixture.detectChanges();
         tick(300);
+
         expect(directiveElement.nativeElement.innerHTML).toBe('');
 
         component.code = null;
         fixture.detectChanges();
         tick(300);
+
         expect(directiveElement.nativeElement.innerHTML).toBe('');
     }));
 });

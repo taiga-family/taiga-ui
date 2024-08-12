@@ -11,8 +11,9 @@ import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
     changeDetection,
     providers: [
         tuiNotificationOptionsProvider({
-            icon: '@tui.circle-help',
-            status: 'warning',
+            icon: '@tui.alarm-clock',
+            appearance: 'neutral',
+            size: 's',
         }),
     ],
 })

@@ -20,9 +20,12 @@ import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
 import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
+    migrateAlertService,
     migrateAllCountryIsoCodes,
     migrateDestroyService,
     migrateLegacyMask,
+    migrateMonthContext,
+    migrateNumberFormatSettings,
     migrateOptionProviders,
     migrateProprietary,
     migrateStyles,
@@ -59,6 +62,9 @@ function main(options: TuiSchema): Rule {
         migrateDestroyService(options);
         migrateOptionProviders(options);
         migrateAllCountryIsoCodes(options);
+        migrateAlertService(options);
+        migrateNumberFormatSettings(options);
+        migrateMonthContext(options);
 
         saveActiveProject();
         migrateTemplates(fileSystem, options);

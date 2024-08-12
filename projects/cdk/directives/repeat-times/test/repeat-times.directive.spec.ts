@@ -46,6 +46,7 @@ describe('TuiRepeatTimes directive', () => {
             fixture.detectChanges();
 
             debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+
             expect(debugElements.length).toBe(0);
         });
 
@@ -54,6 +55,7 @@ describe('TuiRepeatTimes directive', () => {
             fixture.detectChanges();
 
             debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+
             expect(debugElements.length).toBe(0);
         });
 
@@ -62,6 +64,7 @@ describe('TuiRepeatTimes directive', () => {
             fixture.detectChanges();
 
             debugElements = fixture.debugElement.queryAll(By.css('.test-item'));
+
             expect(debugElements.length).toBe(0);
         });
     });

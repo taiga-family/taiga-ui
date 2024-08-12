@@ -15,22 +15,29 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiButtonModule } from "@taiga-ui/core";
+import {tuiButtonOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButtonModule]
+    imports: [TuiButtonModule],
+    providers: [
+        tuiButtonOptionsProvider({size: 's'}),
+    ],
 })
 export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiButtonLoading } from "@taiga-ui/kit";
-import { TuiButton } from "@taiga-ui/core";
+import { TuiButton, tuiButtonOptionsProvider } from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiButton, TuiButtonLoading]
+    imports: [TuiButton, TuiButtonLoading],
+    providers: [
+        tuiButtonOptionsProvider({size: 's'}),
+    ],
 })
 export class Test {
 }`;
@@ -42,6 +49,7 @@ const TEMPLATE_BEFORE = `
     type="button"
     [icon]="icon"
     [shape]="rounded"
+    [pseudoActive]="true"
 >
     primary
 </button>
@@ -54,6 +62,21 @@ const TEMPLATE_BEFORE = `
 >
     primary
 </button>
+
+<button
+    tuiIconButton
+    type="button"
+    [icon]="icon"
+    [showLoader]="true"
+    (click)="onClick($event)"
+></button>
+
+<a
+    tuiIconButton
+    [icon]="icon"
+    [showLoader]="true"
+    href="https://taiga-ui.dev"
+></a>
 `;
 
 const TEMPLATE_AFTER = `
@@ -64,6 +87,7 @@ const TEMPLATE_AFTER = `
     type="button"
     [iconStart]="icon"
     [shape]="rounded"
+    [tuiAppearanceState]="true ? 'active' : null"
 >
     primary
 </button>
@@ -76,6 +100,21 @@ const TEMPLATE_AFTER = `
 >
     primary
 </button>
+
+<button
+    tuiIconButton
+    type="button"
+    [iconStart]="icon"
+    [loading]="true"
+    (click)="onClick($event)"
+></button>
+
+<a
+    tuiIconButton
+    [iconStart]="icon"
+    [loading]="true"
+    href="https://taiga-ui.dev"
+></a>
 `;
 
 const INLINE_TEMPLATE_COMPONENT_BEFORE = `

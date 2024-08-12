@@ -1,5 +1,5 @@
 ```ts
-import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 // ...
 

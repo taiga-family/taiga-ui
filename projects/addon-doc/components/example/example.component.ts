@@ -8,7 +8,7 @@ import {
     Input,
 } from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {LOCATION} from '@ng-web-apis/common';
+import {WA_LOCATION} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
@@ -64,7 +64,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
-    private readonly location = inject(LOCATION);
+    private readonly location = inject(WA_LOCATION);
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
 
@@ -140,7 +140,7 @@ export class TuiDocExample {
     protected copyExampleLink(target: EventTarget | null): void {
         this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
         this.alerts
-            .open(this.texts[1], {label: this.texts[2], status: 'success'})
+            .open(this.texts[1], {label: this.texts[2], appearance: 'success'})
             .subscribe();
     }
 

@@ -31,14 +31,19 @@ import {
 } from './constants';
 import {
     migrateAvatar,
+    migrateAxes,
     migrateBadge,
     migrateBadgedContent,
+    migrateButtonAppearance,
     migrateCheckbox,
     migrateExpandable,
+    migrateFilterPipe,
     migrateFocusable,
     migrateLabel,
     migrateLabeled,
+    migrateMobileTabs,
     migrateMoney,
+    migrateNotification,
     migrateOverscroll,
     migratePreventDefault,
     migrateProgressSegmented,
@@ -46,6 +51,8 @@ import {
     migrateThumbnailCard,
     migrateToggle,
 } from './templates';
+import {migrateBlocked} from './templates/migrate-blocked';
+import {migrateNumberPrecision} from './templates/migrate-number-precision';
 
 function getAction<T>({
     action,
@@ -91,6 +98,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
+        migrateAxes,
         migrateBadge,
         migrateCheckbox,
         migrateFocusable,
@@ -100,12 +108,18 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateExpandable,
         migrateBadgedContent,
         migratePreventDefault,
+        migrateMobileTabs,
         migrateMoney,
         migrateLabeled,
+        migrateBlocked,
         migrateProgressSegmented,
         migrateThumbnailCard,
         migrateOverscroll,
+        migrateButtonAppearance,
         migrateLabel,
+        migrateNumberPrecision,
+        migrateNotification,
+        migrateFilterPipe,
     ] as const;
 
     const progressLog = setupProgressLogger({

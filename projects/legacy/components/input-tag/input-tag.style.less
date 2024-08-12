@@ -32,8 +32,7 @@
 }
 
 .t-scrollbar {
-    .scroll-behavior();
-
+    scroll-behavior: var(--tui-scroll-behavior);
     margin-inline-start: -0.25rem;
     min-width: 100%;
 
@@ -64,7 +63,7 @@
         overflow: hidden;
     }
 
-    &_empty {
+    &_empty:not(.t-with-placeholder) {
         height: 0;
     }
 
@@ -174,7 +173,7 @@
 }
 
 .t-text {
-    &:after {
+    &::after {
         content: ',\00a0';
     }
 
@@ -186,7 +185,7 @@
         color: var(--tui-text-negative);
     }
 
-    &:not(.t-text_comma):last-of-type:after {
+    &:not(.t-text_comma):last-of-type::after {
         content: '';
     }
 

@@ -1,5 +1,5 @@
 ```ts
-import {TuiPanModule} from '@taiga-ui/cdk';
+import {TuiPan} from '@taiga-ui/cdk';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiPanModule} from '@taiga-ui/cdk';
   standalone: true,
   imports: [
     // ...
-    TuiPanModule,
+    TuiPan,
   ],
   // ...
 })

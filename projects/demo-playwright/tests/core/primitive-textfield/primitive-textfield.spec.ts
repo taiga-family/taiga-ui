@@ -33,6 +33,7 @@ test.describe('TuiPrimitiveTextfield', () => {
             'text-indent',
             /\d+px/, // Auto-retrying assertions for test stability
         );
+
         await page.waitForTimeout(50);
 
         await expect(apiPageExample).toHaveScreenshot('02-prefix-postfix.png');
@@ -47,6 +48,7 @@ test.describe('TuiPrimitiveTextfield', () => {
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await apiPageExample.getByRole('textbox').click();
+
         await expect(apiPageExample).toHaveScreenshot('03-label-filler.png');
     });
 });

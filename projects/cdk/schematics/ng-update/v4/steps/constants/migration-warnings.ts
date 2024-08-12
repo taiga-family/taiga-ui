@@ -156,4 +156,40 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_ARROW is deprecated, Use tuiChevron directive instead. See example https://taiga-ui.dev/components/data-list#links',
     },
+    {
+        name: 'TuiMoneyComponent',
+        moduleSpecifier: '@taiga-ui/addon-commerce',
+        message:
+            'TuiMoneyComponent is deprecated, Use tuiAmount pipe instead. See example https://taiga-ui.dev/pipes/amount',
+    },
+    {
+        name: 'TuiIllustrationsModule',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'TuiIllustrationsModule was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
+    {
+        name: 'TuiIllustrationsPipe',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'TuiIllustrationsPipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
+    {
+        name: 'TuiIllustrationModePipe',
+        moduleSpecifier: '@taiga-ui/proprietary-icons',
+        message:
+            'TuiIllustrationModePipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+    },
+    {
+        name: 'TUI_IS_MOBILE_RES',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'use TuiBreakpointService instead of TUI_IS_MOBILE_RES. Learn more https://taiga-ui.dev/services/breakpoint-service',
+    },
+    {
+        name: 'TUI_ANIMATIONS_DURATION',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'TUI_ANIMATIONS_DURATION is deleted. Use TUI_ANIMATIONS_SPEED instead (300ms divided by your previous value of TUI_ANIMATIONS_DURATION)',
+    },
 ];

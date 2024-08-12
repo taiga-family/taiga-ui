@@ -17,13 +17,13 @@ import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
+import {maskitoRemoveOnBlurPlugin} from '@maskito/kit';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
-import {TuiGroup, tuiGroupSize} from '@taiga-ui/core/components/group';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
@@ -38,6 +38,7 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
@@ -72,7 +73,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputPhoneInternationalComponent),
+        tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
         tuiTextfieldOptionsProvider({cleaner: signal(false)}),
         tuiDropdownOptionsProvider({
@@ -85,13 +86,13 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
+export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
     protected readonly dropdown = tuiDropdown(null);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    protected readonly size = tuiGroupSize(inject(TUI_TEXTFIELD_OPTIONS).size);
+    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected readonly open = tuiDropdownOpen();
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly metadata = toSignal(from(this.options.metadata));
@@ -194,18 +195,16 @@ export class TuiInputPhoneInternationalComponent extends TuiControl<string> {
             countryIsoCode,
             metadata,
         });
-        /**
-         * TODO: temporary workaround for @maskito/phone@2 (eliminate after update to @maskito/phone@3)
-         * https://github.com/taiga-family/maskito/issues/1134
-         * ___
-         * We should manage focus event by itself (not built-in maskito focus plugin) because there is race condition
-         * (after selection country from dropdown and before mask recalculation)
-         */
-        const [caretPlugin, blurPlugin] = plugins;
 
         return {
             ...restOptions,
-            plugins: [caretPlugin, blurPlugin, maskitoInitialCalibrationPlugin()],
+            plugins: [
+                ...plugins,
+                maskitoRemoveOnBlurPlugin(
+                    `${CHAR_PLUS}${getCountryCallingCode(countryIsoCode, metadata)} `,
+                ),
+                maskitoInitialCalibrationPlugin(),
+            ],
         };
     }
 }

@@ -1,0 +1,56 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Link
+ * @selector [tuiLink]
+ *
+ * @description
+ * Plain link design, applicable to both links and buttons
+ *
+ * @example
+ * <a tuiLink>Click me</a>
+ *
+ * @see-also
+ * Icons, Appearance, Button
+ */
+[tuiLink] {
+    --tui-text-tertiary: var(--tui-text-secondary);
+
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-decoration: none dashed currentColor;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 0.7px;
+    text-decoration-color: color-mix(in lch, currentColor, transparent);
+
+    &:hover {
+        --tui-text-secondary: var(--tui-text-primary);
+    }
+
+    &::before {
+        margin-inline-end: 0.25rem;
+    }
+
+    &::after {
+        margin-inline-start: 0.25rem;
+    }
+
+    &[tuiIcons]::before,
+    &[tuiIcons]::after {
+        content: '\2060';
+        padding: calc(var(--tui-icon-size, 1rem) / 2);
+        vertical-align: super;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .appearance-focus({
+        outline: none;
+        background: var(--tui-service-selection-background);
+        background: color-mix(in lch, currentColor 12%, transparent);
+    });
+}

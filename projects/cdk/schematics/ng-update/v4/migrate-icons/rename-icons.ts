@@ -33,13 +33,13 @@ export function renameIcons(pattern = ALL_FILES): void {
         let text = file.getFullText();
 
         CHANGED_ICONS.map(({from, to}) => ({
-            from: new RegExp(`\\b${from}\\b`, 'g'),
+            from: new RegExp(`["'\`]${from}["'\`]`, 'g'),
             to,
         })).forEach(({from, to}) => {
-            text = text.replaceAll(from, to);
+            text = text.replaceAll(from, `"${to}"`);
         });
 
-        const regex = /\btuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
+        const regex = /['"`]tuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
 
         text = text.replaceAll(regex, (match) => convertString(match));
 
@@ -49,7 +49,7 @@ export function renameIcons(pattern = ALL_FILES): void {
 
 function convertString(input: string): string {
     let result = input
-        .replace(/^tuiIcon/, '')
+        .replace(/["'`]tuiIcon/, '')
         .replace(/Large$/, '')
         .replaceAll(/([A-Z0-9])/g, '-$1')
         .toLowerCase();
@@ -61,5 +61,5 @@ function convertString(input: string): string {
         result = `circle${result}`;
     }
 
-    return `@tui.${result.startsWith('-') ? result.slice(1) : result}`;
+    return `${input.slice(0, 1)}@tui.${result.startsWith('-') ? result.slice(1) : result}`;
 }

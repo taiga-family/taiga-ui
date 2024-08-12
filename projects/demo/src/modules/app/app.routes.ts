@@ -21,19 +21,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/browsers'),
     }),
     route({
-        path: DemoRoute.Changelog,
-        title: 'Changelog',
-        loadComponent: async () => import('../info/changelog'),
-    }),
-    route({
         path: DemoRoute.SSR,
         title: 'Server Side Rendering (SSR)',
         loadComponent: async () => import('../info/ssr'),
-    }),
-    route({
-        path: DemoRoute.AddonDoc,
-        title: 'Documentation engine',
-        loadComponent: async () => import('../info/doc'),
     }),
     route({
         path: DemoRoute.Related,
@@ -145,6 +135,11 @@ export const ROUTES: Routes = [
         title: 'Appearance',
     }),
     route({
+        path: DemoRoute.FluidTypography,
+        loadComponent: async () => import('../directives/fluid-typography'),
+        title: 'FluidTypography',
+    }),
+    route({
         path: DemoRoute.Chip,
         loadComponent: async () => import('../components/chip'),
         title: 'Chip',
@@ -238,11 +233,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Button,
         title: 'Button',
         loadComponent: async () => import('../components/button'),
-    }),
-    route({
-        path: DemoRoute.ButtonVertical,
-        title: 'ButtonVertical',
-        loadComponent: async () => import('../components/button-vertical'),
     }),
     route({
         path: DemoRoute.ButtonClose,

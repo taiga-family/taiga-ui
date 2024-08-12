@@ -213,6 +213,7 @@ describe('InputCardGroup', () => {
     function testFormat(value: string, formatted: string): void {
         setCard(value);
         fixture.detectChanges();
+
         expect(inputCardPO.value).toBe(formatted);
     }
 

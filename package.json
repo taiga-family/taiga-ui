@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.0.0-rc.6",
+    "version": "4.0.0",
     "private": true,
     "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -42,7 +42,7 @@
         "lint": "eslint .",
         "cspell": "cspell --relative --dot --gitignore .",
         "prettier": "prettier !package-lock.json . --ignore-path .gitignore",
-        "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.json",
+        "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
         "build:demo": "nx build demo",
         "build:demo:next": "nx build demo -c next",
@@ -64,8 +64,9 @@
         "*.less": [
             "stylelint --fix"
         ],
-        "*.{js,ts,html, svg,yml,md,less,json}": [
-            "prettier --write"
+        "*.{js,ts,html,svg,yml,md,less,json}": [
+            "prettier --write",
+            "cspell"
         ]
     },
     "browserslist": [
@@ -94,7 +95,8 @@
             "**/demo/**",
             "**/dist/**",
             "**/coverage/**",
-            "**/node_modules/**"
+            "**/node_modules/**",
+            "**/tests-report/**"
         ]
     },
     "devDependencies": {
@@ -121,22 +123,23 @@
         "@taiga-ui/eslint-plugin-experience": "0.113.3",
         "@taiga-ui/event-plugins": "4.0.1",
         "@taiga-ui/prettier-config": "0.113.3",
-        "@taiga-ui/stylelint-config": "0.113.3",
+        "@taiga-ui/stylelint-config": "0.125.2",
         "@taiga-ui/tsconfig": "0.113.3",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
-        "@types/node": "20.14.11",
+        "@types/node": "22.2.0",
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
         "glob": "10.4.5",
-        "husky": "9.0.11",
+        "husky": "9.1.4",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.7",
-        "local-web-server": "5.3.3",
+        "lint-staged": "15.2.8",
+        "local-web-server": "5.4.0",
         "ng-morph": "4.5.4",
         "ng-packagr": "16.2.3",
+        "ngx-highlightjs": "10.0.0",
         "nx": "18.3.5",
-        "rollup": "4.18.1",
+        "rollup": "4.20.0",
         "rxjs": "7.5.0",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
@@ -146,8 +149,8 @@
         "webpack": "5.93.0"
     },
     "engines": {
-        "node": ">= 16.14",
-        "npm": ">= 8.3",
+        "node": ">= 20",
+        "npm": ">= 10",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
     "authors": [
@@ -162,15 +165,15 @@
         "types": [
             {
                 "type": "feat",
-                "section": "Features"
+                "section": "🚀 Features"
             },
             {
                 "type": "fix",
-                "section": "Bug Fixes"
+                "section": "🐞 Bug Fixes"
             },
             {
                 "type": "deprecate",
-                "section": "Deprecations"
+                "section": "⚠️ Deprecations"
             }
         ]
     }

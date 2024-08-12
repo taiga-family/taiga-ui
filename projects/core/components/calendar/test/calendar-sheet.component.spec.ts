@@ -110,6 +110,7 @@ describe('CalendarSheet', () => {
                 it('click on blocked date does not change value', () => {
                     getDisabledCalendarItems()[0].nativeElement.click();
                     fixture.detectChanges();
+
                     expect(testComponent.value).toBeNull();
                 });
             });

@@ -12,8 +12,11 @@ test.describe('Routable', () => {
         const example = documentationPagePO.getExample('#lazy');
 
         await example.locator('button').click();
+
         await expect(page).toHaveURL('/dialog/lazy-routable/path/to/dialog');
+
         await documentationPagePO.prepareBeforeScreenshot();
+
         await expect(page).toHaveScreenshot('01-routable-dialog.png');
     });
 
@@ -21,8 +24,11 @@ test.describe('Routable', () => {
         page,
     }) => {
         await tuiGoto(page, `${DemoRoute.DialogLazyRoutable}/path/to/dialog`);
+
         await expect(page).toHaveURL(/\/dialog\/lazy-routable\/path\/to\/dialog$/);
+
         await page.locator('[automation-id="tui-dialog__close"]').click();
+
         await expect(page).toHaveURL(/\/dialog\/lazy-routable$/);
     });
 
@@ -33,10 +39,13 @@ test.describe('Routable', () => {
         const example = documentationPagePO.getExample('#named-outlet');
 
         await example.locator('button').click();
+
         await expect(page).toHaveURL(
             '/dialog/routable/NamedOutlet/(myOutlet:path/to/dialog)',
         );
+
         await page.locator('[automation-id="tui-dialog__close"]').click();
+
         await expect(page).toHaveURL(/\/dialog\/routable\/NamedOutlet$/);
     });
 });

@@ -23,7 +23,7 @@ const path = getValueByFlag<string>('--path', '');
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);
 
-        return;
+        process.exit(1);
     }
 
     infoLog(`name: ${packageJson.name}`);
@@ -52,12 +52,9 @@ function makeTag(version: string): string {
         return '--tag next --preid rc';
     }
 
-    const baseLatestTag = getAllTags('@taiga-ui/core').latest;
     const currentMajor = parseVersion(version).major;
-    const latestOrLTS =
-        parseVersion(baseLatestTag).major === currentMajor
-            ? 'latest'
-            : `v${currentMajor}-lts`;
+    const latestMajor = parseVersion(getAllTags('@taiga-ui/core').latest).major;
+    const latestOrLTS = currentMajor >= latestMajor ? 'latest' : `v${currentMajor}-lts`;
 
     return `--tag ${latestOrLTS}`;
 }

@@ -61,7 +61,7 @@
     height: 1.5rem;
     background: var(--tui-background-elevation-1);
 
-    &:after {
+    &::after {
         content: '';
         position: absolute;
         top: 0.5rem;
@@ -88,7 +88,7 @@
         margin-bottom: -0.75rem;
     }
 
-    &:after {
+    &::after {
         content: '';
         position: absolute;
         top: 100%;
@@ -99,7 +99,7 @@
         opacity: 0;
     }
 
-    :host._stuck &:after {
+    :host._stuck &::after {
         opacity: 1;
     }
 }

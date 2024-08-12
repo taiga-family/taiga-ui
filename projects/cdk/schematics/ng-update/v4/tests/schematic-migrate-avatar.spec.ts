@@ -43,6 +43,7 @@ const TEMPLATE_BEFORE = `
     text="alex inkin"
     [rounded]="true"
     size="xxs"
+    [autoColor]="true"
 ></tui-avatar>
 <tui-avatar
     avatarUrl="tuiIconUser"
@@ -64,11 +65,12 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<tui-avatar [src]="'tuiIconUser' | tuiFallbackSrc : ('alex inkin' | tuiInitials) | async"
+<tui-avatar [src]="'tuiIconUser' | tuiFallbackSrc : ('alex inkin' | tuiInitials) | async" [style.background]="'alex inkin' | tuiAutoColor"
    ${''}
    ${''}
     [round]="true"
     size="xs"
+   ${''}
 ></tui-avatar>
 <tui-avatar [src]="'tuiIconUser'" [round]="false"
    ${''}

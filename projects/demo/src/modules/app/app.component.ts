@@ -5,13 +5,13 @@ import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {LOCAL_STORAGE} from '@ng-web-apis/common';
+import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
-import {CustomHost} from '../customization/portals/examples/1/portal/custom-host.component';
+import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
 import {VersionManager} from './version-manager/version-manager.component';
@@ -42,7 +42,7 @@ export class App extends AbstractDemo implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
-    protected readonly storage = inject(LOCAL_STORAGE);
+    protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
 
     protected readonly isLanding$ = this.router.events.pipe(

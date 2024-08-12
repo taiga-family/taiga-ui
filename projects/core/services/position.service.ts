@@ -1,5 +1,5 @@
 import {inject, Injectable, NgZone} from '@angular/core';
-import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -13,7 +13,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
     private readonly accessor = inject(TuiPositionAccessor);
 
     constructor() {
-        const animationFrame$ = inject(ANIMATION_FRAME);
+        const animationFrame$ = inject(WA_ANIMATION_FRAME);
         const zone = inject(NgZone);
 
         super((subscriber) =>

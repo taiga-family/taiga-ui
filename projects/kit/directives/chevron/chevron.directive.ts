@@ -1,10 +1,11 @@
-import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    effect,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -34,19 +35,23 @@ class TuiChevronStyles {}
     providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
     host: {tuiChevron: ''},
 })
-export class TuiChevron implements DoCheck {
+export class TuiChevron {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
     protected readonly nothing = tuiWithStyles(TuiChevronStyles);
-
-    @Input()
-    public tuiChevron: boolean | '' = '';
-
-    public ngDoCheck(): void {
+    protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',
-            !!this.dropdown?.dropdownBoxRef || this.tuiChevron === true,
-        );
+            this.chevron() || (this.chevron() === '' && !!this.dropdown?.ref()),
+        ),
+    );
+
+    // TODO: refactor to signal inputs after Angular update
+    public readonly chevron = signal<boolean | ''>('');
+
+    @Input()
+    public set tuiChevron(chevron: boolean | '') {
+        this.chevron.set(chevron);
     }
 }

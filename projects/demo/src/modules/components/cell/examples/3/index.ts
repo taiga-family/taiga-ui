@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -26,6 +26,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiThumbnailCard,
         FormsModule,
         TuiTitle,
+        TuiLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

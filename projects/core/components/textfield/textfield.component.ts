@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,9 +8,10 @@ import {
     forwardRef,
     inject,
     Input,
+    ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {ResizeObserverDirective} from '@ng-web-apis/resize-observer';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -27,6 +28,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -37,9 +39,10 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, AsyncPipe, ResizeObserverDirective, TuiButton, PolymorpheusOutlet],
+    imports: [NgIf, WaResizeObserver, TuiButton, PolymorpheusOutlet],
     templateUrl: './textfield.template.html',
-    styleUrls: ['./textfield.style.less'],
+    styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiTextfieldComponent),
@@ -93,6 +96,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public get id(): string {
         return this.el?.nativeElement.id || '';
+    }
+
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.options.size();
     }
 
     public handleOption(option: T): void {

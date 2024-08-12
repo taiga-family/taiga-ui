@@ -81,7 +81,7 @@ iconStart="tuiIconHelpCircle">Taiga
 <tui-badge
     appearance="success"
 >
-    <tui-svg src="tuiIconHelpCircle"></tui-svg>
+    <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
 </tui-badge>
 `;
 

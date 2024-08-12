@@ -4,4 +4,5 @@ export interface ReplacementType {
     readonly preserveGenerics?: boolean;
     readonly to?: string;
     readonly removeImport?: boolean;
+    readonly newImports?: Array<{name: string; moduleSpecifier: string}>;
 }

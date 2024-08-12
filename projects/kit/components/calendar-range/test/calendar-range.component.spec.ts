@@ -227,9 +227,22 @@ describe('rangeCalendarComponent', () => {
 
         it('should update selectedActivePeriod after onItemSelect', () => {
             component['onItemSelect'](component.items[1]);
+
             expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
                 'Today',
             );
+        });
+
+        it('when min later than current month, defaultViewedMonth is next month after min', () => {
+            const minDate = TuiDay.currentLocal().append({month: 3});
+
+            testComponent.min = minDate;
+            fixture.detectChanges();
+
+            component.ngOnInit();
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth).toEqual(minDate);
         });
     });
 
