@@ -1,0 +1,131 @@
+/**
+ * @name Group
+ * @selector [tuiGroup]
+ *
+ * @description
+ * A directive to combine children into rounded flex group
+ *
+ * @attributes
+ * data-size — size (default: 'l') ('s' | 'm' | 'l')
+ * data-orientation — orientation (default: 'horizontal') ('horizontal' | 'vertical')
+ *
+ * @example
+ * <div tuiGroup>
+ *   <button tuiButton>Click me</button>
+ *   <button tuiButton>Click me</button>
+ *   <button tuiButton>Click me</button>
+ * </div>
+ *
+ * @see-also
+ * Button, Block, Textfield
+ */
+[tuiGroup] {
+    position: relative;
+    display: flex;
+    isolation: isolate;
+
+    --t-group-radius: var(--tui-radius-l);
+    --t-group-margin: -1px;
+
+    & > * {
+        z-index: 1;
+        flex: 1 1 0;
+        min-width: 0;
+
+        &._disabled,
+        &._disabled:hover {
+            z-index: 0;
+        }
+
+        &:invalid {
+            z-index: 2;
+
+            &:hover {
+                z-index: 4;
+            }
+        }
+
+        &:has(:invalid),
+        &:has([data-mode='invalid']) {
+            z-index: 2;
+
+            &:hover {
+                z-index: 4;
+            }
+        }
+
+        &:hover {
+            z-index: 3;
+        }
+
+        &:has([data-state='hover']) {
+            z-index: 3;
+        }
+
+        &:focus-within {
+            z-index: 5;
+        }
+
+        &:has([data-focus='true']) {
+            z-index: 5;
+        }
+
+        &[data-mode='checked'] {
+            z-index: 6;
+        }
+
+        &:has([tuiBlock]:checked) {
+            z-index: 6;
+        }
+
+        &:not(:last-child) {
+            margin-inline-end: var(--t-group-margin);
+        }
+
+        &:nth-child(n) {
+            border-radius: 0;
+        }
+
+        &:first-child {
+            border-top-left-radius: var(--t-group-radius);
+            border-bottom-left-radius: var(--t-group-radius);
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--t-group-radius);
+            border-bottom-right-radius: var(--t-group-radius);
+        }
+    }
+
+    &[data-size='s'],
+    &[data-size='m'] {
+        --t-group-radius: var(--tui-radius-m);
+    }
+
+    &[data-orientation='vertical'] {
+        display: inline-flex;
+        flex-direction: column;
+
+        & > * {
+            min-height: auto;
+            flex: 0 0 auto;
+
+            &:not(:last-child) {
+                margin-inline-end: 0;
+                margin-block-end: var(--t-group-margin);
+            }
+
+            &:first-child {
+                border-radius: var(--t-group-radius) var(--t-group-radius) 0 0;
+            }
+
+            &:last-child {
+                border-radius: 0 0 var(--t-group-radius) var(--t-group-radius);
+            }
+
+            &:only-child {
+                border-radius: var(--t-group-radius);
+            }
+        }
+    }
+}

@@ -11,18 +11,19 @@
             tuiHintContent=""
             tuiTextfieldPostfix=""
             tuiTextfieldPrefix=""
-            class="t-country-select tui-group__auto-width-item"
+            class="t-country-select"
             [disabled]="disabled"
             [editable]="false"
             [focusable]="focusable"
             [pseudoFocus]="open || null"
             [readOnly]="readOnly"
+            [style.flex]="'0 0 auto'"
             [tuiTextfieldCustomContent]="countryValueContent"
             [tuiTextfieldIcon]="icon"
             [tuiTextfieldLabelOutside]="true"
         />
         <tui-input-phone
-            class="t-input-phone tui-group__auto-width-item"
+            class="t-input-phone"
             [countryCode]="inputPhoneCountryCode"
             [disabled]="disabled"
             [focusable]="focusable"
@@ -31,6 +32,7 @@
             [pseudoHover]="pseudoHover"
             [pseudoInvalid]="computedInvalid"
             [readOnly]="readOnly"
+            [style.flex]="'0 0 auto'"
             [(ngModel)]="value"
         >
             <ng-content />

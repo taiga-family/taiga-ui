@@ -2,7 +2,8 @@
     tuiDropdownAlign="left"
     tuiDropdownLimitWidth="min"
     tuiTextfieldSize="m"
-    class="t-select tui-group__auto-width-item"
+    class="t-select"
+    [style.flex]="'0 0 auto'"
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="mode"
 >
@@ -22,7 +23,6 @@
 <tui-primitive-textfield
     *ngIf="isHex; else rgb"
     tuiTextfieldSize="m"
-    tuiValueAccessor
     [maskito]="hexMask"
     [tuiTextfieldLabelOutside]="true"
     [value]="hex"
@@ -30,7 +30,6 @@
 />
 <ng-template #rgb>
     <tui-input-number
-        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
         [max]="255"
@@ -40,7 +39,6 @@
         (ngModelChange)="onRgbChange($event, color[1], color[2], color[3])"
     />
     <tui-input-number
-        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
         [max]="255"
@@ -50,7 +48,6 @@
         (ngModelChange)="onRgbChange(color[0], $event, color[2], color[3])"
     />
     <tui-input-number
-        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
         [max]="255"
@@ -61,13 +58,13 @@
     />
 </ng-template>
 <tui-input-number
-    decimal="never"
     tuiTextfieldPostfix="%"
     tuiTextfieldSize="m"
-    class="t-opacity tui-group__auto-width-item"
+    class="t-opacity"
     [max]="100"
     [min]="0"
     [ngModel]="opacity"
+    [style.flex]="'0 0 auto'"
     [tuiTextfieldLabelOutside]="true"
     (ngModelChange)="onRgbChange(color[0], color[1], color[2], $event / 100)"
 />

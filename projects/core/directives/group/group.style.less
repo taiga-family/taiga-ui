@@ -1,4 +1,4 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/components/group.less';
 
 // TODO: Refactor and move to public published style API
 .tui-group {
@@ -6,7 +6,7 @@
     display: flex;
     isolation: isolate;
 
-    --t-radius: var(--tui-radius-m);
+    --t-group-radius: var(--tui-radius-m);
 
     & > * {
         flex: 1 1 0;
@@ -22,7 +22,7 @@
     }
 
     &_radius_large {
-        --t-radius: var(--tui-radius-l);
+        --t-group-radius: var(--tui-radius-l);
     }
 
     // TODO: refactor selectors for various z-indexes once other components are finalized
@@ -109,13 +109,13 @@
     &_rounded.tui-group_orientation_horizontal {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--t-radius);
-                border-bottom-left-radius: var(--t-radius);
+                border-top-left-radius: var(--t-group-radius);
+                border-bottom-left-radius: var(--t-group-radius);
             }
 
             &:last-child {
-                border-top-right-radius: var(--t-radius);
-                border-bottom-right-radius: var(--t-radius);
+                border-top-right-radius: var(--t-group-radius);
+                border-bottom-right-radius: var(--t-group-radius);
             }
         }
     }
@@ -123,13 +123,13 @@
     &_rounded.tui-group_orientation_vertical {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--t-radius);
-                border-top-right-radius: var(--t-radius);
+                border-top-left-radius: var(--t-group-radius);
+                border-top-right-radius: var(--t-group-radius);
             }
 
             &:last-child {
-                border-bottom-left-radius: var(--t-radius);
-                border-bottom-right-radius: var(--t-radius);
+                border-bottom-left-radius: var(--t-group-radius);
+                border-bottom-right-radius: var(--t-group-radius);
             }
         }
     }
@@ -138,9 +138,8 @@
         min-width: auto;
         flex: 0 0 auto;
     }
+}
 
-    // specificity is the reason of this selector
-    & .tui-group__inherit-item {
-        border-radius: inherit;
-    }
+.tui-group__inherit-item {
+    border-radius: inherit !important;
 }

@@ -10,7 +10,7 @@ export interface TuiGroupOptions {
 }
 
 export const TUI_GROUP_DEFAULT_OPTIONS: TuiGroupOptions = {
-    size: 'm',
+    size: 'l',
     collapsed: false,
     rounded: true,
     orientation: 'horizontal',

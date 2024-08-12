@@ -5,9 +5,9 @@
 >
   <div>
     <tui-input
-      class="tui-group__inherit-item"
       formControlName="testValue"
       tuiHintContent="Write a number"
+      [style.border-radius]="'inherit'"
     >
       House
       <input
@@ -22,9 +22,9 @@
   </div>
   <div>
     <tui-input
-      class="tui-group__inherit-item"
       formControlName="testValue2"
       tuiHintContent="Write house building"
+      [style.border-radius]="'inherit'"
     >
       House building
       <input
@@ -39,9 +39,9 @@
   </div>
   <div>
     <tui-input
-      class="tui-group__inherit-item"
       formControlName="testValue3"
       tuiHintContent="Write an apartment number only"
+      [style.border-radius]="'inherit'"
     >
       Apartment
       <input
