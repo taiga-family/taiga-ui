@@ -26,7 +26,9 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     styleUrls: ['./files.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiGroupOptionsProvider({collapsed: true, orientation: 'vertical'})],
+    providers: [
+        tuiGroupOptionsProvider({size: 'm', collapsed: true, orientation: 'vertical'}),
+    ],
     hostDirectives: [TuiGroup],
 })
 export class TuiFilesComponent {
