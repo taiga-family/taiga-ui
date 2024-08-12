@@ -170,11 +170,8 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,
-        useFactory: (baseHref: string) => (tree: UrlTree) => {
-            console.info('=[TUI_DOC_URL_STATE_HANDLER]= ', {baseHref, tree});
-
-            return String(tree).replace(/^\/(next|v[0-9]+)\//, '');
-        },
+        useFactory: () => (tree: UrlTree) =>
+            String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
     },
     {
         provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
