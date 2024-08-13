@@ -18,6 +18,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_DIALOGS', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {
+            name: 'TuiStringifiableItem',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiStringifiableItem',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
         from: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/legacy'},
     },

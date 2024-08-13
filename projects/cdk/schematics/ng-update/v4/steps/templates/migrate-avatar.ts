@@ -12,6 +12,7 @@ import {
 import type {TemplateResource} from '../../../interfaces';
 import {removeAttrs} from '../utils/remove-attrs';
 import {replaceSizeAttr} from './toggles/common';
+import {normalizeAttrValue} from '../utils/normalize-attr-value';
 
 const sizeMap: Record<string, string> = {
     xxs: 'xs',
@@ -37,10 +38,6 @@ function getFallbackValue(
     fallbackValue: string | undefined,
 ): string {
     return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || '';
-}
-
-function normalizeAttrValue(attrName: string, attrValue: string): string {
-    return attrName.startsWith('[') ? attrValue : `'${attrValue}'`;
 }
 
 export function migrateAvatar({
