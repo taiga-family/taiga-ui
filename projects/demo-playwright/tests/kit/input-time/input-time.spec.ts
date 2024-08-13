@@ -192,9 +192,12 @@ test.describe('InputTime', () => {
             const check = (typedCharacters: string, expectedFinalValue: string): void => {
                 test(`Type ${typedCharacters} => Blur => ${expectedFinalValue}`, async () => {
                     await inputTime.textfield.clear();
+
                     await expect(inputTime.textfield).toHaveValue('');
+
                     await inputTime.textfield.pressSequentially(typedCharacters);
                     await inputTime.textfield.blur();
+
                     await expect(inputTime.textfield).toHaveValue(expectedFinalValue);
                 });
             };
