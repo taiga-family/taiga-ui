@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[58699],{76255:(a,_,n)=>{n.r(_),n.d(_,{TUI_TURKISH_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["Kart No","Kart Numarası"],cardExpiry:["SKT","Son Kullanma"]}}}]);
