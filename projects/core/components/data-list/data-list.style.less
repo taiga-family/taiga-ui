@@ -30,7 +30,7 @@ tui-data-list {
             min-height: 2rem;
             padding: 0.3125rem 0.5rem;
 
-            &:before {
+            &::before {
                 font-size: 1rem;
             }
         }
@@ -88,11 +88,11 @@ tui-data-list {
             background-color: var(--tui-background-neutral-1);
         }
 
-        &:before {
+        &::before {
             margin-inline-end: 0.5rem;
         }
 
-        &:after {
+        &::after {
             font-size: 1rem;
             margin: 0 -0.75rem 0 auto;
             border-left: 0.5rem solid;
@@ -113,23 +113,23 @@ tui-opt-group {
         font: var(--tui-font-text-s);
         line-height: 1.25rem;
 
-        &:before {
+        &::before {
             padding-left: 0.625rem;
             padding-right: 0.625rem;
         }
 
-        &:after {
+        &::after {
             left: 0.625rem;
             right: 0.625rem;
         }
     }
 
-    &:empty:before,
-    &:empty:after {
+    &:empty::before,
+    &:empty::after {
         display: none;
     }
 
-    &:before {
+    &::before {
         content: attr(data-label);
         padding: var(--tui-data-list-padding) 0.5rem var(--tui-data-list-padding);
         margin: var(--tui-data-list-margin) 0;
@@ -137,7 +137,7 @@ tui-opt-group {
         word-break: break-word;
     }
 
-    &:after {
+    &::after {
         position: absolute;
         left: 0.5rem;
         right: 0.5rem;
@@ -147,22 +147,22 @@ tui-opt-group {
     }
 
     &:not(:empty) ~ & {
-        &:before {
+        &::before {
             padding-top: calc(0.75rem + var(--tui-data-list-padding));
         }
 
-        &[data-label='']:before,
-        &:not([data-label]):before {
+        &[data-label='']::before,
+        &:not([data-label])::before {
             padding: var(--tui-data-list-padding) 0;
         }
 
-        &:after {
+        &::after {
             content: '';
         }
     }
 
-    &[data-label='']:before,
-    &:not([data-label]):before {
+    &[data-label='']::before,
+    &:not([data-label])::before {
         padding: 0;
         margin: 0;
     }
