@@ -12,4 +12,12 @@
     >
         Type a text
     </tui-textarea>
+    <tui-textarea
+        #textarea
+        formControlName="testValue3"
+        class="tui-space_top-4"
+        [expandable]="textarea.focused"
+    >
+        Type a text (expandable on focus)
+    </tui-textarea>
 </form>
