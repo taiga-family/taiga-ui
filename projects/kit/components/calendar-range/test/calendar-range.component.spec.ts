@@ -244,6 +244,38 @@ describe('rangeCalendarComponent', () => {
 
             expect(component.defaultViewedMonth).toEqual(minDate);
         });
+
+        it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
+            const today = TuiDay.currentLocal();
+            const yesterday = today.append({day: -1});
+
+            testComponent.value = new TuiDayRange(today, today);
+            fixture.detectChanges();
+
+            expect(
+                component['isItemActive'](
+                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
+                ),
+            ).toBe(true);
+
+            testComponent.value = new TuiDayRange(yesterday, yesterday);
+            fixture.detectChanges();
+
+            expect(
+                component['isItemActive'](
+                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
+                ),
+            ).toBe(false);
+
+            testComponent.value = new TuiDayRange(today, today);
+            fixture.detectChanges();
+
+            expect(
+                component['isItemActive'](
+                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
+                ),
+            ).toBe(true);
+        });
     });
 
     function getCalendar(): DebugElement | null {
