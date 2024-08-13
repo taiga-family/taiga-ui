@@ -48,7 +48,7 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'lub przeciągnij\u00A0tutaj',
         defaultLinkSingle: 'Wybierz plik',
         defaultLinkMultiple: 'Wybierz pliki',
-        maxSizeRejectionReason: 'Plik przekracza rozmiar ',
+        maxSizeRejectionReason: 'Plik przekracza rozmiar',
         formatRejectionReason: 'Nieprawidłowy format pliku',
         drop: 'Przeciągnij plik tutaj',
         dropMultiple: 'Przeciągnij pliki tutaj',
