@@ -26,7 +26,7 @@
 
     --t-group-radius: var(--tui-radius-l);
     --t-group-margin: -1px;
-    --t-group-clip: inset(0 1px 0 0);
+    --t-group-clip: inset(-1px 1px -1px -1px);
 
     & > * {
         z-index: 1;
@@ -62,7 +62,7 @@
         &:hover {
             z-index: 3;
 
-            --t-group-clip: none;
+            --t-group-clip: inset(-1px 0.5px -1px -1px);
         }
 
         &:has([data-state='hover']) {
@@ -124,7 +124,7 @@
         display: inline-flex;
         flex-direction: column;
 
-        --t-group-clip: inset(0 0 1px 0);
+        --t-group-clip: inset(-1px -1px 1px -1px);
 
         & > * {
             min-height: auto;
@@ -145,6 +145,10 @@
 
             &:only-child {
                 border-radius: var(--t-group-radius);
+            }
+
+            &:hover {
+                --t-group-clip: inset(-1px -1px 0.5px -1px);
             }
         }
     }
