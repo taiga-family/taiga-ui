@@ -26,6 +26,7 @@
 
     --t-group-radius: var(--tui-radius-l);
     --t-group-margin: -1px;
+    --t-group-clip: inset(-1px 1px -1px -1px);
 
     & > * {
         z-index: 1;
@@ -40,6 +41,8 @@
         &:invalid {
             z-index: 2;
 
+            --t-group-clip: none;
+
             &:hover {
                 z-index: 4;
             }
@@ -49,6 +52,8 @@
         &:has([data-mode='invalid']) {
             z-index: 2;
 
+            --t-group-clip: none;
+
             &:hover {
                 z-index: 4;
             }
@@ -56,30 +61,43 @@
 
         &:hover {
             z-index: 3;
+
+            --t-group-clip: inset(-1px 0.5px -1px -1px);
         }
 
         &:has([data-state='hover']) {
             z-index: 3;
+
+            --t-group-clip: none;
         }
 
         &:focus-within {
             z-index: 5;
+
+            --t-group-clip: none;
         }
 
         &:has([data-focus='true']) {
             z-index: 5;
+
+            --t-group-clip: none;
         }
 
         &[data-mode='checked'] {
             z-index: 6;
+
+            --t-group-clip: none;
         }
 
         &:has([tuiBlock]:checked) {
             z-index: 6;
+
+            --t-group-clip: none;
         }
 
         &:not(:last-child) {
             margin-inline-end: var(--t-group-margin);
+            clip-path: var(--t-group-clip);
         }
 
         &:nth-child(n) {
@@ -106,6 +124,8 @@
         display: inline-flex;
         flex-direction: column;
 
+        --t-group-clip: inset(-1px -1px 1px -1px);
+
         & > * {
             min-height: auto;
             flex: 0 0 auto;
@@ -125,6 +145,10 @@
 
             &:only-child {
                 border-radius: var(--t-group-radius);
+            }
+
+            &:hover {
+                --t-group-clip: inset(-1px -1px 0.5px -1px);
             }
         }
     }
