@@ -40,7 +40,7 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
         attrNames: ['[pseudoInvalid]'],
         newAttrName: '[attr.data-mode]',
-        withTagNames: hasPseudo,
+        withTagNames: hasPseudoInvalid,
         valueReplacer: (condition) => `${condition} ? 'invalid' : null`,
     },
     {
