@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {TuiTextareaExpandableTrigger} from '@taiga-ui/legacy/types/textarea';
 import {tuiGetBorder} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -74,14 +73,8 @@ export class TuiTextareaComponent
     public maxLength: number | null = null;
 
     @Input()
-    public expandable = false;
-
     @HostBinding('class._expandable')
-    public get isExpandable(): boolean {
-        return (
-            this.expandable && (this.expandableTrigger === 'focus' ? this.focused : true)
-        );
-    }
+    public expandable = false;
 
     public get nativeFocusableElement(): HTMLTextAreaElement | null {
         if (this.computedDisabled) {
@@ -98,7 +91,7 @@ export class TuiTextareaComponent
     }
 
     public get computeMaxHeight(): number | null {
-        return this.isExpandable ? this.rows * this.lineHeight : null;
+        return this.expandable ? this.rows * this.lineHeight : null;
     }
 
     public onValueChange(value: string): void {
@@ -233,9 +226,5 @@ export class TuiTextareaComponent
 
     private get placeholderRaisable(): boolean {
         return this.size !== 's' && !this.controller.labelOutside;
-    }
-
-    private get expandableTrigger(): TuiTextareaExpandableTrigger {
-        return this.controller.expandableTrigger;
     }
 }

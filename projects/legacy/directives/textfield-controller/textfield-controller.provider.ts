@@ -28,8 +28,6 @@ import type {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TUI_TEXTFIELD_PREFIX} from './textfield-prefix.directive';
 import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
 import {TUI_TEXTFIELD_SIZE} from './textfield-size.directive';
-import type {TuiTextfieldExpandableTriggerDirective} from './textfield-expandable-trigger.directive';
-import {TUI_TEXTFIELD_EXPANDABLE} from './textfield-expandable-trigger.directive';
 
 /**
  * @deprecated: drop in v5.0
@@ -57,7 +55,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_PREFIX,
             TUI_TEXTFIELD_POSTFIX,
             TUI_TEXTFIELD_FILLER,
-            TUI_TEXTFIELD_EXPANDABLE,
         ],
         useFactory: (
             cdr: ChangeDetectorRef,
@@ -74,7 +71,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
                 TuiTextfieldPrefixDirective,
                 TuiTextfieldPostfixDirective,
                 TuiTextfieldFillerDirective,
-                TuiTextfieldExpandableTriggerDirective,
             ]
         ) => {
             const change$ = merge(

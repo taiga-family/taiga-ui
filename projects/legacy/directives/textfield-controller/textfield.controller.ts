@@ -7,7 +7,6 @@ import type {TuiTextfieldOptions} from './textfield.options';
 import type {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import type {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import type {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
-import type {TuiTextfieldExpandableTriggerDirective} from './textfield-expandable-trigger.directive';
 import type {TuiTextfieldFillerDirective} from './textfield-filler.directive';
 import type {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import type {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
@@ -15,7 +14,6 @@ import type {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.
 import type {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
 import type {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
-import type {TuiTextareaExpandableTrigger} from '@taiga-ui/legacy/types/textarea';
 
 export class TuiTextfieldController {
     constructor(
@@ -32,7 +30,6 @@ export class TuiTextfieldController {
         private readonly prefixDirective: TuiTextfieldPrefixDirective,
         private readonly postfixDirective: TuiTextfieldPostfixDirective,
         private readonly fillerDirective: TuiTextfieldFillerDirective,
-        private readonly expandableTriggerDirective: TuiTextfieldExpandableTriggerDirective,
     ) {}
 
     public get appearance(): string {
@@ -73,9 +70,5 @@ export class TuiTextfieldController {
 
     public get filler(): string {
         return this.fillerDirective.filler;
-    }
-
-    public get expandableTrigger(): TuiTextareaExpandableTrigger {
-        return this.expandableTriggerDirective.trigger;
     }
 }
