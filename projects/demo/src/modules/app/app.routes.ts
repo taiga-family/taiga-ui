@@ -191,7 +191,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.IconsLucide,
-        loadComponent: async () => import('../icons/lucide'),
+        loadComponent: async () => import('../icons/icons'),
         title: 'Icons',
     }),
     route({

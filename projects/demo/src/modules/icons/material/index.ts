@@ -9,5 +9,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly assets = import('./examples/assets.md?raw');
+    protected readonly assets = import('./assets.md?raw');
 }

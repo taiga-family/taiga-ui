@@ -11,27 +11,10 @@ export const TUI_ICON_START_RESOLVER = tuiCreateTokenFromFactory<
 >(() => {
     const path = inject(TUI_ASSETS_PATH);
 
-    return (icon) => {
-        if (!icon || icon.includes('/')) {
-            return icon;
-        }
-
-        let directory = '';
-
-        if (icon.includes('@tui.material')) {
-            directory = 'material/';
-        } else if (icon.includes('@tui.fa')) {
-            directory = 'fontawesome/';
-        }
-
-        const name = icon
-            .replace(/^@tui./, '')
-            .replace(/^material.|^fa./, '')
-            .split('.')
-            .join('/');
-
-        return `${path}/${directory}${name}.svg`;
-    };
+    return (icon) =>
+        !icon || icon.includes('/')
+            ? icon
+            : `${path}/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
 });
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {
