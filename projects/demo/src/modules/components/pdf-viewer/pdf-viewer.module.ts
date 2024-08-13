@@ -2,7 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLoaderModule, TuiNotificationModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiLoaderModule,
+    TuiNotificationModule,
+} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
 
 import {TuiPdfViewerExample1} from './examples/1';
@@ -20,6 +25,7 @@ import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
         TuiButtonModule,
         TuiNotificationModule,
         TuiAddonDocModule,
+        TuiLinkModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPdfViewerComponent)),
     ],
     declarations: [
