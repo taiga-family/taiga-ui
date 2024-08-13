@@ -56,7 +56,7 @@ import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 const MASK_SYMBOLS = /[ \-_()]/g;
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
  */
 @Component({
     standalone: true,

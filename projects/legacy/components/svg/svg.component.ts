@@ -30,7 +30,7 @@ const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
 const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export interface TuiIconError {
     readonly icon: string;
@@ -38,7 +38,7 @@ export interface TuiIconError {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 @Component({
     standalone: true,

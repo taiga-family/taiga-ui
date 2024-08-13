@@ -7,7 +7,7 @@ import {tuiProcessIcon} from '@taiga-ui/legacy/utils';
 import {BehaviorSubject} from 'rxjs';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  * Service for reusing SVGs without inlining each instance
  */
 @Injectable({

@@ -3,7 +3,7 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
  */
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];
@@ -11,7 +11,7 @@ export interface TuiInputPhoneInternationalOptions {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
  */
 export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInternationalOptions =
     {
@@ -20,15 +20,14 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
     };
 
 /**
- * @deprecated: drop in v5.0
- * Default parameters for input phone international component
+ * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
  */
 export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = tuiCreateToken(
     TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
 );
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
  */
 export function tuiInputPhoneInternationalOptionsProvider(
     options: Partial<TuiInputPhoneInternationalOptions>,

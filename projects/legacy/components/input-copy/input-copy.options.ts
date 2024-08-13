@@ -5,9 +5,6 @@ import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-/**
- * @deprecated: drop in v5.0
- */
 export interface TuiInputCopyOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly messageAppearance: string;
@@ -15,9 +12,6 @@ export interface TuiInputCopyOptions {
     readonly successMessage: PolymorpheusContent;
 }
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     successMessage: '',
     messageDirection: 'bottom-left',
@@ -25,14 +19,8 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     icon: () => '@tui.copy',
 };
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_INPUT_COPY_OPTIONS = tuiCreateToken(TUI_INPUT_COPY_DEFAULT_OPTIONS);
 
-/**
- * @deprecated: drop in v5.0
- */
 export function tuiInputCopyOptionsProvider(
     options: Partial<TuiInputCopyOptions>,
 ): Provider {

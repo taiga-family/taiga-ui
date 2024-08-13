@@ -13,9 +13,6 @@ import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-color-picker',
     templateUrl: './color-picker.template.html',

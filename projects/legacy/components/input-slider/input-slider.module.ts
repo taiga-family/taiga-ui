@@ -9,9 +9,6 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputSliderComponent} from './input-slider.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

@@ -5,6 +5,9 @@ import {tuiAsPopover} from '@taiga-ui/cdk/services';
 import type {TuiTableBarOptions} from './table-bar.options';
 import {TuiTableBarsService} from './table-bars.service';
 
+/**
+ * @deprecated drop in v5.0 use {@link TuiActionBar}
+ */
 @Directive({
     standalone: true,
     selector: 'ng-template[tuiTableBar]',

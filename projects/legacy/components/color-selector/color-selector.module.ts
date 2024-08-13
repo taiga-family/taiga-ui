@@ -15,9 +15,6 @@ import {TuiColorSelectorComponent} from './color-selector.component';
 import {TuiLinearMultiPickerModule} from './linear-multi-picker/linear-multi-picker.module';
 import {TuiPaletteModule} from './palette/palette.module';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

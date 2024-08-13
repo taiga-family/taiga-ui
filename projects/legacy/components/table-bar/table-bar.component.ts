@@ -17,6 +17,9 @@ import {
 
 import type {TuiTableBarOptions} from './table-bar.options';
 
+/**
+ * @deprecated drop in v5.0 use {@link TuiActionBar}
+ */
 @Component({
     standalone: true,
     selector: 'tui-table-bar',

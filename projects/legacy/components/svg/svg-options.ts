@@ -9,12 +9,12 @@ import {tuiSvgLinearGradientProcessor} from './content-processor';
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export interface TuiSvgOptions {
     readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
@@ -25,14 +25,14 @@ export interface TuiSvgOptions {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export type TuiSvgInterceptorHandler =
     | ((src: TuiSafeHtml, options: TuiSvgOptions) => TuiSafeHtml)
     | ((src: TuiSafeHtml) => TuiSafeHtml);
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
     iconsPlace: TUI_DEFAULT_ICONS_PLACE,
@@ -50,8 +50,7 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
 };
 
 /**
- * @deprecated: drop in v5.0
- * SVG component options
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
     iconsPlace: TUI_DEFAULT_ICONS_PLACE,
@@ -62,14 +61,14 @@ export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
 }));
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
     '[TUI_SVG_SRC_INTERCEPTORS]',
 );
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export function tuiSvgSrcInterceptors(interceptor: TuiSvgInterceptorHandler): Provider {
     return {
@@ -80,7 +79,7 @@ export function tuiSvgSrcInterceptors(interceptor: TuiSvgInterceptorHandler): Pr
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const tuiSvgOptionsProvider: (
     options: Partial<Omit<TuiSvgOptions, 'path'>> & {

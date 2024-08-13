@@ -7,7 +7,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TUI_ARROW} from './arrow.component';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export interface TuiArrowMode {
     readonly disabled: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>>;
@@ -15,7 +15,7 @@ export interface TuiArrowMode {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {
     interactive: TUI_ARROW,
@@ -23,13 +23,12 @@ export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {
 };
 
 /**
- * @deprecated: drop in v5.0
- * Type of icon in dropdowns for interactive or disable mode
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export const TUI_ARROW_MODE = tuiCreateToken(TUI_ARROW_DEFAULT_MODE);
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export function tuiArrowModeProvider(options: Partial<TuiArrowMode>): Provider {
     return tuiProvideOptions(TUI_ARROW_MODE, options, TUI_ARROW_DEFAULT_MODE);

@@ -2,7 +2,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiCardLarge}
  */
 @Directive({
     standalone: true,

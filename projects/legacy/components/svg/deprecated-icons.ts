@@ -1,5 +1,5 @@
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
  */
 export const TUI_DEPRECATED_ICONS: Record<string, string> = {
     tuiIconAttach: 'tuiIconPaperclip',

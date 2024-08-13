@@ -4,9 +4,6 @@ import {TuiHint} from '@taiga-ui/core/directives/hint';
 
 import {TuiPaletteComponent} from './palette.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [CommonModule, ...TuiHint],
     declarations: [TuiPaletteComponent],

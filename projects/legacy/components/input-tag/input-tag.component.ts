@@ -64,9 +64,6 @@ const LINE_HEIGHT_REM = {
 };
 const TAG_VERTICAL_SPACE_REM = 0.125;
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-input-tag',
     templateUrl: './input-tag.template.html',

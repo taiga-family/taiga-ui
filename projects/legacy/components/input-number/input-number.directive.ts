@@ -5,9 +5,6 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputNumberComponent} from './input-number.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Directive({
     selector: 'tui-input-number',
     providers: [tuiAsTextfieldHost(TuiInputNumberDirective)],

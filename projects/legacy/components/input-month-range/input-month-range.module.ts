@@ -15,9 +15,6 @@ import {
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 import {TuiInputMonthRangeDirective} from './input-month-range.directive';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

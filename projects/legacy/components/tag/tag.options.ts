@@ -4,7 +4,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChip}
  */
 export interface TuiTagOptions {
     readonly autoColor: boolean;
@@ -13,8 +13,7 @@ export interface TuiTagOptions {
 }
 
 /**
- * @deprecated: drop in v5.0
- * Default values for the tag options.
+ * @deprecated: drop in v5.0 use {@link TuiChip}
  */
 export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
     size: 'm',
@@ -23,13 +22,12 @@ export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
 };
 
 /**
- * @deprecated: drop in v5.0
- * Default parameters for Tag component
+ * @deprecated: drop in v5.0 use {@link TuiChip}
  */
 export const TUI_TAG_OPTIONS = tuiCreateToken(TUI_TAG_DEFAULT_OPTIONS);
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChip}
  */
 export function tuiTagOptionsProvider(options: Partial<TuiTagOptions>): Provider {
     return tuiProvideOptions(TUI_TAG_OPTIONS, options, TUI_TAG_DEFAULT_OPTIONS);
