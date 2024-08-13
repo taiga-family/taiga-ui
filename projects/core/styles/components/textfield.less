@@ -24,11 +24,11 @@ tui-textfield {
         --t-right: 2.25rem;
     }
 
-    &::before {
+    &:before {
         margin-inline-end: 0.75rem;
     }
 
-    &::after {
+    &:after {
         margin-inline-start: 0.25rem;
     }
 
@@ -52,13 +52,13 @@ tui-textfield {
             --t-right: 1.25rem;
         }
 
-        &::before {
+        &:before {
             margin-inline-start: -0.25rem;
             margin-inline-end: 0.5rem;
             font-size: 1rem;
         }
 
-        &::after {
+        &:after {
             margin-inline-end: -0.175rem;
             margin-inline-start: 0.25rem;
             font-size: 1rem;
@@ -89,12 +89,12 @@ tui-textfield {
             --t-right: 1.75rem;
         }
 
-        &::before {
+        &:before {
             margin-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
-        &::after {
+        &:after {
             margin-inline-start: 0.375rem;
             margin-inline-end: -0.125rem;
         }
@@ -109,19 +109,19 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
 
-    &::before {
+    &:before {
         z-index: 1;
     }
 
-    &:has(:disabled:not(.t-filler, button, option))::before,
-    &:has(:disabled:not(.t-filler, button, option))::after,
+    &:has(:disabled:not(.t-filler, button, option)):before,
+    &:has(:disabled:not(.t-filler, button, option)):after,
     &:has(:disabled:not(.t-filler, button, option)) .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
     // TODO: Fallback until Safari 15.4
-    &._disabled::before,
-    &._disabled::after,
+    &._disabled:before,
+    &._disabled:after,
     &._disabled .t-template {
         opacity: var(--tui-disabled-opacity);
     }
@@ -162,7 +162,7 @@ tui-textfield {
         box-sizing: border-box;
         border: none;
         border-inline-start: var(--t-left, 0) solid transparent !important;
-        border-inline-end: calc(var(--t-right, 0rem) + var(--t-side)) solid transparent !important;
+        border-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side)) solid transparent !important;
         border-radius: inherit;
         padding: inherit;
     }

@@ -37,8 +37,8 @@ tui-chip,
     });
 
     > tui-icon,
-    &[tuiIcons]::before,
-    &[tuiIcons]::after {
+    &[tuiIcons]:before,
+    &[tuiIcons]:after {
         font-size: var(--t-icon-size) !important;
     }
 
@@ -47,7 +47,7 @@ tui-chip,
     }
 
     &[data-size='xxs'] {
-        --t-gap: 0rem;
+        --t-gap: var(--t-0, 0rem);
         --t-padding: 0 0.25rem;
         --t-size: 1rem;
         --t-icon-size: 0.75rem;

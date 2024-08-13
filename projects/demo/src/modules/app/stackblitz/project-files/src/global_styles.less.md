@@ -9,6 +9,9 @@ app {
   height: 100%;
   box-sizing: border-box;
   font-size: 16px;
+
+  // StackBlitz changes "0px" to "0" breaking calc
+  --t-0: 0.001px;
 }
 
 .header {
