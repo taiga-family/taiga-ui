@@ -7,6 +7,7 @@ import {TUI_TABLE_BARS} from './table-bar.options';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 @Component({
     standalone: true,

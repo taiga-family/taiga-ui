@@ -41,6 +41,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
 
 /**
  * @deprecated: use {@link TuiTextfield}
+ * https://taiga-ui.dev/components/textfield
  */
 @Component({
     selector: 'tui-primitive-textfield',

@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 export interface TuiTableBarOptions {
     readonly adaptive?: boolean;
@@ -14,6 +15,7 @@ export interface TuiTableBarOptions {
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 export const TUI_TABLE_BARS = tuiCreateToken(
     new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
@@ -21,6 +23,7 @@ export const TUI_TABLE_BARS = tuiCreateToken(
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 export const TUI_TABLE_BAR_DEFAULT_OPTIONS: TuiTableBarOptions = {
     adaptive: true,
@@ -30,11 +33,13 @@ export const TUI_TABLE_BAR_DEFAULT_OPTIONS: TuiTableBarOptions = {
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 export const TUI_TABLE_BAR_OPTIONS = tuiCreateToken(TUI_TABLE_BAR_DEFAULT_OPTIONS);
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 export function tuiTableBarOptionsProvider(
     options: Partial<TuiTableBarOptions>,

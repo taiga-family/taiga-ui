@@ -9,6 +9,7 @@ import type {TuiSheetOptions} from './sheet-options';
 
 /**
  * @deprecated: use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 @Directive({
     selector: 'ng-template[tuiSheet]',

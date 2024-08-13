@@ -57,6 +57,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}
+ * https://taiga-ui.dev/components/input-phone-international
  */
 @Component({
     standalone: true,

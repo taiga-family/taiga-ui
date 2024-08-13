@@ -14,6 +14,7 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
 
 /**
  * @deprecated: use {@link TuiTextfield}
+ * https://taiga-ui.dev/components/textfield
  */
 @NgModule({
     imports: [

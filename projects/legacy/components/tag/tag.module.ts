@@ -9,6 +9,7 @@ import {TuiTagComponent} from './tag.component';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiChip}
+ * https://taiga-ui.dev/components/chip
  */
 @NgModule({
     imports: [

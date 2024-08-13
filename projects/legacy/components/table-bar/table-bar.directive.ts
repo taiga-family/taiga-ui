@@ -7,6 +7,7 @@ import {TuiTableBarsService} from './table-bars.service';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 @Directive({
     standalone: true,

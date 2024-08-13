@@ -12,6 +12,7 @@ import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/h
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiTooltip}
+ * https://taiga-ui.dev/components/tooltip
  */
 @Component({
     selector: 'tui-tooltip',

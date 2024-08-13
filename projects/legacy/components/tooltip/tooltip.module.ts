@@ -9,6 +9,7 @@ import {TuiTooltipComponent} from './tooltip.component';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiTooltip}
+ * https://taiga-ui.dev/components/tooltip
  */
 @NgModule({
     imports: [CommonModule, TuiIcon, PolymorpheusOutlet, TuiAppearance, ...TuiHint],
