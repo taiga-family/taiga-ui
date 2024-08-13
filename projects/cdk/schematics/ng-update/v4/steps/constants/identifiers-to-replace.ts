@@ -2534,6 +2534,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'WaIntersectionObserver',
             moduleSpecifier: '@ng-web-apis/intersection-observer',
+            spreadInModule: true,
         },
     },
     {
