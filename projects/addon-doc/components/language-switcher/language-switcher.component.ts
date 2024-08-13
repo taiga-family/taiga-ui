@@ -25,6 +25,7 @@ export class TuiLanguageSwitcherComponent {
         ['german', TuiCountryIsoCode.DE],
         ['japan', TuiCountryIsoCode.JP],
         ['italian', TuiCountryIsoCode.IT],
+        ['korean', TuiCountryIsoCode.KR],
         ['polish', TuiCountryIsoCode.PL],
         ['portuguese', TuiCountryIsoCode.PT],
         ['russian', TuiCountryIsoCode.RU],
