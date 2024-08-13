@@ -48,7 +48,7 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: '或拖动\u00A0它们\u00A0这里',
         defaultLinkSingle: '选择一个文件',
         defaultLinkMultiple: '选择多个文件',
-        maxSizeRejectionReason: '文件超出大小 ',
+        maxSizeRejectionReason: '文件超出大小',
         formatRejectionReason: '文件格式错误',
         drop: '把文件放在这里',
         dropMultiple: '把多个文件放在这里',

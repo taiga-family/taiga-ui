@@ -48,7 +48,7 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'veya\u00A0buraya\u00A0sürükleyin',
         defaultLinkSingle: 'Dosya seç',
         defaultLinkMultiple: 'Dosyaları seç',
-        maxSizeRejectionReason: 'Dosya boyutu fazla ',
+        maxSizeRejectionReason: 'Dosya boyutu fazla',
         formatRejectionReason: 'Dosya formatı yanlış',
         drop: 'Dosyayı buraya bırakın',
         dropMultiple: 'Dosyaları buraya bırakın',
