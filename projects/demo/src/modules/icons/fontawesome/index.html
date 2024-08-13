@@ -1,0 +1,46 @@
+<tui-doc-page
+    header="Fontawesome"
+    package="icons-fontawesome"
+    type="icons"
+>
+    <ng-template pageTab>
+        <h2 class="title">Fontawesome icons pack</h2>
+
+        <p>
+            Open source theme for Taiga UI uses processed
+            <a
+                href="https://fontawesome.com/"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                Fontawesome Icons (free pack).
+            </a>
+            You can browse all the icons from this pack and find the one that suits you
+            <a
+                href="https://fontawesome.com/search?m=free&o=r"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                here.
+            </a>
+        </p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <tui-doc-code code="npm i @taiga-ui/icons-fontawesome" />
+
+        <tui-doc-code
+            filename="angular.json"
+            [code]="assets"
+        />
+    </ng-template>
+</tui-doc-page>

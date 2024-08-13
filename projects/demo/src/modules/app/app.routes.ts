@@ -197,7 +197,12 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.IconsMaterial,
         loadComponent: async () => import('../icons/material'),
-        title: 'Icons-material',
+        title: 'Icons Material',
+    }),
+    route({
+        path: DemoRoute.IconsFontawesome,
+        loadComponent: async () => import('../icons/fontawesome'),
+        title: 'Icons Fontawesome',
     }),
     route({
         path: DemoRoute.Label,
