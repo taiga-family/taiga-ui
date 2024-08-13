@@ -219,12 +219,7 @@ export class TuiInputTimeComponent
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
-        if (
-            focused ||
-            this.value !== null ||
-            this.nativeValue === '' ||
-            this.mode === 'HH:MM'
-        ) {
+        if (focused || this.value !== null || this.nativeValue === '') {
             return;
         }
 
