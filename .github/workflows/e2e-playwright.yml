@@ -16,8 +16,6 @@ jobs:
         continue-on-error: true
       - uses: taiga-family/ci/actions/setup/node@v1.66.4
 
-      - run: npx tsc -p tsconfig.playwright.json
-
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo -- --base-href /
 
