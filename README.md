@@ -215,8 +215,8 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                     src="https://github.com/mdlufy.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
-                    alt="German&nbsp;Panov"
-                /><br /><b>German Panov</b></a
+                    alt="German Panov"
+                /><br /><b>German&nbsp;Panov</b></a
             >
             <div style="margin-top: 4px">
                 <a
