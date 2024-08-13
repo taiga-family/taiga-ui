@@ -122,6 +122,7 @@ export function migrateAvatar({
 
         const fallbackModule = !!((avatarUrlAttr && textAttrValue) || fallbackAttr);
         const initialsModule = !!textAttrValue;
+        const autoColorModule = !!autoColorValue && autoColorValue === 'true';
 
         const modules = [
             ...(fallbackModule
@@ -129,6 +130,9 @@ export function migrateAvatar({
                 : []),
             ...(initialsModule
                 ? [{moduleName: 'TuiInitialsPipe', moduleSpecifier: '@taiga-ui/core'}]
+                : []),
+            ...(autoColorModule
+                ? [{moduleName: 'TuiAutoColorPipe', moduleSpecifier: '@taiga-ui/core'}]
                 : []),
         ];
 

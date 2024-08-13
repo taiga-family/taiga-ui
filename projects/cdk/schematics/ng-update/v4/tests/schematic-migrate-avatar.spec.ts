@@ -26,13 +26,13 @@ import { TuiAvatarModule } from "@taiga-ui/experimental";
 export class Test {
 }`;
 
-const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe } from "@taiga-ui/core";
+const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe, TuiAutoColorPipe } from "@taiga-ui/core";
 import { TuiAvatar } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAvatar, TuiFallbackSrcPipe, TuiInitialsPipe]
+    imports: [TuiAvatar, TuiFallbackSrcPipe, TuiInitialsPipe, TuiAutoColorPipe]
 })
 export class Test {
 }`;
