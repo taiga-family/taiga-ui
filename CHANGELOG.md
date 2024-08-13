@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.90.0](https://github.com/taiga-family/taiga-ui/compare/v3.89.0...v3.90.0) (2024-08-13)
+
+### Features
+
+- **i18n:** add japanese ([#8374](https://github.com/taiga-family/taiga-ui/issues/8374))
+  ([e4a3cdb](https://github.com/taiga-family/taiga-ui/commit/e4a3cdbe5b7cc35c565954c891966ca14d25548d))
+- **kit:** create `TUI_TIME_VALUE_TRANSFORMER` for `tui-input-time component`
+  ([#8391](https://github.com/taiga-family/taiga-ui/issues/8391))
+  ([9cdc6bc](https://github.com/taiga-family/taiga-ui/commit/9cdc6bc2db8baf22a52d022166b3153822042169))
+- **kit:** prevent disabled days selection for calendar-range
+  ([#8328](https://github.com/taiga-family/taiga-ui/issues/8328))
+  ([13d1f4c](https://github.com/taiga-family/taiga-ui/commit/13d1f4c1700e0a0613ddc1ac9bd868aaa4b82f84))
+
+### Bug Fixes
+
+- **cdk:** redundant assert log if hours are greater than 23
+  ([#8449](https://github.com/taiga-family/taiga-ui/issues/8449))
+  ([ef7e6f1](https://github.com/taiga-family/taiga-ui/commit/ef7e6f1a4eb6d6eb4c8f700273007f2e4b4df4d5))
+- **core:** ignore pointer events for disabled button ([#8478](https://github.com/taiga-family/taiga-ui/issues/8478))
+  ([28b769f](https://github.com/taiga-family/taiga-ui/commit/28b769f14fe2766a0dff5228441f163e0666057e))
+- **i18n:** add korean ([#8498](https://github.com/taiga-family/taiga-ui/issues/8498))
+  ([b3cbe8b](https://github.com/taiga-family/taiga-ui/commit/b3cbe8bff7a126b1ddb32f75ba756cf999df07d0))
+- **i18n:** redundant whitespace ([#8497](https://github.com/taiga-family/taiga-ui/issues/8497))
+  ([f9a8ba6](https://github.com/taiga-family/taiga-ui/commit/f9a8ba641478207af916fe7a06bd08ddd9246b8d))
+- **kit:** `CalendarRange` defaultViewedMonth shows correct calendars months
+  ([6ae4be3](https://github.com/taiga-family/taiga-ui/commit/6ae4be388b7e76b5f1f419894bffdd087948da90))
+- **kit:** `CalendarRange` defaultViewedMonth shows correct calendars months
+  ([#8400](https://github.com/taiga-family/taiga-ui/issues/8400))
+  ([bcfd27f](https://github.com/taiga-family/taiga-ui/commit/bcfd27f5f8efc21e1a4f1c472b90c26ba5f2f60d))
+- **kit:** fix calendar range does not update checkbox position
+  ([#8481](https://github.com/taiga-family/taiga-ui/issues/8481))
+  ([301953f](https://github.com/taiga-family/taiga-ui/commit/301953fa51eed0008778fc527d8cc477c0cfb0ca))
+- **kit:** icon hover on readonly ([#8469](https://github.com/taiga-family/taiga-ui/issues/8469))
+  ([f191f9a](https://github.com/taiga-family/taiga-ui/commit/f191f9a1d4591abe9d29ea01defd9bbcbe68576f))
+
 ## [3.89.0](https://github.com/taiga-family/taiga-ui/compare/v3.88.0...v3.89.0) (2024-08-06)
 
 ### Features
