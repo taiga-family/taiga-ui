@@ -18,9 +18,6 @@ import {TuiComboBoxComponent} from './combo-box.component';
 import {TuiComboBoxDirective} from './combo-box.directive';
 import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

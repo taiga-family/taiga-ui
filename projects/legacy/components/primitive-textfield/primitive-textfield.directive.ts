@@ -5,7 +5,8 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
 /**
- * @deprecated: use `tui-textfield` instead of `tui-primitive-textfield`
+ * @deprecated: use {@link TuiTextfield}
+ * https://taiga-ui.dev/components/textfield
  */
 @Directive({
     selector: 'tui-primitive-textfield',

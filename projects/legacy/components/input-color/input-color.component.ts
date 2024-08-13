@@ -25,9 +25,6 @@ import type {
 
 type MaskMode = 'gradient' | 'hex' | 'rgb';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-input-color',
     templateUrl: './input-color.template.html',

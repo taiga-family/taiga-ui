@@ -22,9 +22,6 @@ import {
     TuiColorSelectorMode,
 } from './color-selector.options';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-color-selector',
     templateUrl: './color-selector.template.html',

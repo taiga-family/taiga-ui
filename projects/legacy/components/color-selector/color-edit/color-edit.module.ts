@@ -12,9 +12,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfiel
 
 import {TuiColorEditComponent} from './color-edit.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

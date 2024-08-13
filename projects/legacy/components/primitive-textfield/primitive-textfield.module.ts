@@ -13,7 +13,8 @@ import {TuiTextfieldComponent} from './textfield/textfield.component';
 import {TuiValueDecorationComponent} from './value-decoration/value-decoration.component';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: use {@link TuiTextfield}
+ * https://taiga-ui.dev/components/textfield
  */
 @NgModule({
     imports: [
