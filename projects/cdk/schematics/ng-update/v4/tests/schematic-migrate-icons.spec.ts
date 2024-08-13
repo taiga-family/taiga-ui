@@ -87,6 +87,7 @@ const TEMPLATE_BEFORE = `
 ></tui-avatar>
 <button tuiIconButton icon="tuiIconClose">Button</button>
 <button tuiIconButton icon="tuiIconCloseLarge">Button</button>
+<tui-icon [icon]="featureValue.value === 'true' ? 'tuiIconCheck' : 'tuiIconClose'"></tui-icon>
 `;
 
 const TEMPLATE_AFTER = `
@@ -100,6 +101,7 @@ const TEMPLATE_AFTER = `
 ></tui-avatar>
 <button tuiIconButton icon="@tui.x">Button</button>
 <button tuiIconButton icon="@tui.x">Button</button>
+<tui-icon [icon]="featureValue.value === 'true' ? '@tui.check' : '@tui.x'"></tui-icon>
 `;
 
 const PROPRIETARY_TEMPLATE_BEFORE = `
