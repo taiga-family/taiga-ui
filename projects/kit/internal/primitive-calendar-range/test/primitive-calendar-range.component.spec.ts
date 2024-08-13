@@ -62,6 +62,15 @@ describe('PrimitiveRangeCalendar component', () => {
             component.ngOnInit();
             expect(component.userViewedMonthFirst).toEqual(minDate);
         });
+
+        it('When initialized input defaultViewedMonthFirst, shows defaultViewedMonthFirst', () => {
+            const month = new TuiMonth(2020, 5);
+
+            component.defaultViewedMonthFirst = month;
+            component.ngOnInit();
+
+            expect(component.userViewedMonthFirst).toBe(month);
+        });
     });
 
     describe('viewedMonthSecond', () => {
@@ -104,6 +113,15 @@ describe('PrimitiveRangeCalendar component', () => {
             component.ngOnInit();
 
             expect(component.userViewedMonthSecond).toEqual(minDate.append({month: 1}));
+        });
+
+        it('When initialized input defaultViewedMonthSecond, shows defaultViewedMonthSecond', () => {
+            const month = new TuiMonth(2020, 5);
+
+            component.defaultViewedMonthSecond = month;
+            component.ngOnInit();
+
+            expect(component.userViewedMonthSecond).toBe(month);
         });
     });
 
