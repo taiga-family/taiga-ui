@@ -78,6 +78,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
+    availableRange: TuiDayRange | null = null;
     previousValue: TuiDayRange | null = null;
 
     selectedActivePeriod: TuiDayRangePeriod | null = null;
@@ -171,6 +172,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
         if (value === null || !value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
+            this.availableRange = this.findAvailableRange();
 
             return;
         }
@@ -245,28 +247,47 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     ): boolean {
         return (
             disabledItemHandler(item) ||
-            (!!value?.isSingleDay &&
-                this.isExternalDaysDisabled(disabledItemHandler, value.from, item))
+            (!!value?.isSingleDay && !this.availableRangeContainsItem(item))
         );
     }
 
-    private isExternalDaysDisabled(
-        disabledItemHandler: TuiBooleanHandler<TuiDay>,
-        startDay: TuiDay,
-        item: TuiDay,
-    ): boolean {
-        let temp = item;
-
-        while (temp.dayBefore(startDay) || temp.dayAfter(startDay)) {
-            if (disabledItemHandler(temp)) {
-                return true;
-            }
-
-            const day = temp.dayBefore(startDay) ? 1 : -1;
-
-            temp = temp.append({day});
+    private availableRangeContainsItem(item: TuiDay): boolean {
+        if (this.availableRange === null) {
+            return true;
         }
 
-        return false;
+        const {from, to} = this.availableRange;
+
+        return from.daySameOrBefore(item) && to.daySameOrAfter(item);
+    }
+
+    private findAvailableRange(): TuiDayRange | null {
+        const {disabledItemHandler, value} = this;
+
+        if (!value?.isSingleDay || disabledItemHandler === ALWAYS_FALSE_HANDLER) {
+            return null;
+        }
+
+        let from = value.from;
+        let to = value.from;
+
+        let leftShift = true;
+        let rightShift = true;
+
+        while (leftShift || rightShift) {
+            leftShift = !disabledItemHandler(from.append({day: -1}));
+
+            if (leftShift) {
+                from = from.append({day: -1});
+            }
+
+            rightShift = !disabledItemHandler(to.append({day: 1}));
+
+            if (rightShift) {
+                to = to.append({day: 1});
+            }
+        }
+
+        return new TuiDayRange(from, to);
     }
 }
