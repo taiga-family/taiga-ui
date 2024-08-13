@@ -20,7 +20,7 @@
                 "parallel": false,
                 "commands": [
                     "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
-                    "prettier ./projects/icons-material/src/* --write"
+                    "prettier ./{projectRoot}/src/* --write"
                 ]
             }
         },
