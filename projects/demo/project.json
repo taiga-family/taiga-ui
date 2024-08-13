@@ -47,6 +47,11 @@
                         "glob": "**/*",
                         "input": "projects/icons/src",
                         "output": "assets/taiga-ui/icons"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "projects/icons-material/src",
+                        "output": "assets/taiga-ui/icons/material"
                     }
                 ],
                 "baseHref": "./",
