@@ -78,6 +78,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
+    availableRange: TuiDayRange | null = null;
     previousValue: TuiDayRange | null = null;
 
     selectedActivePeriod: TuiDayRangePeriod | null = null;
@@ -175,6 +176,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
         if (value === null || !value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
+            this.availableRange = this.findAvailableRange();
 
             return;
         }
@@ -225,7 +227,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     ): TuiBooleanHandler<TuiDay> {
         return item => {
             if (!value?.isSingleDay || !minLength) {
-                return disabledItemHandler(item);
+                return this.isDisabledItem(disabledItemHandler, value, item);
             }
 
             const negativeMinLength = tuiObjectFromEntries(
@@ -236,7 +238,60 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             const inDisabledRange =
                 disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
 
-            return inDisabledRange || disabledItemHandler(item);
+            return (
+                inDisabledRange || this.isDisabledItem(disabledItemHandler, value, item)
+            );
         };
+    }
+
+    private isDisabledItem(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        value: TuiDayRange | null,
+        item: TuiDay,
+    ): boolean {
+        return (
+            disabledItemHandler(item) ||
+            (!!value?.isSingleDay && !this.availableRangeContainsItem(item))
+        );
+    }
+
+    private availableRangeContainsItem(item: TuiDay): boolean {
+        if (this.availableRange === null) {
+            return true;
+        }
+
+        const {from, to} = this.availableRange;
+
+        return from.daySameOrBefore(item) && to.daySameOrAfter(item);
+    }
+
+    private findAvailableRange(): TuiDayRange | null {
+        const {disabledItemHandler, value} = this;
+
+        if (!value?.isSingleDay || disabledItemHandler === ALWAYS_FALSE_HANDLER) {
+            return null;
+        }
+
+        let from = value.from;
+        let to = value.from;
+
+        let leftShift = true;
+        let rightShift = true;
+
+        while (leftShift || rightShift) {
+            leftShift = !disabledItemHandler(from.append({day: -1}));
+
+            if (leftShift) {
+                from = from.append({day: -1});
+            }
+
+            rightShift = !disabledItemHandler(to.append({day: 1}));
+
+            if (rightShift) {
+                to = to.append({day: 1});
+            }
+        }
+
+        return new TuiDayRange(from, to);
     }
 }
