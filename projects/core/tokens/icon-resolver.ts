@@ -16,10 +16,17 @@ export const TUI_ICON_START_RESOLVER = tuiCreateTokenFromFactory<
             return icon;
         }
 
-        const directory = icon.includes('@tui.material') ? 'material/' : '';
+        let directory = '';
+
+        if (icon.includes('@tui.material')) {
+            directory = 'material/';
+        } else if (icon.includes('@tui.fa')) {
+            directory = 'fontawesome/';
+        }
+
         const name = icon
             .replace(/^@tui./, '')
-            .replace(/^material./, '')
+            .replace(/^material.|^fa./, '')
             .split('.')
             .join('/');
 

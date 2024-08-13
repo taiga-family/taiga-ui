@@ -1,0 +1,17 @@
+{
+    "name": "@taiga-ui/icons-fontawesome",
+    "version": "4.0.0",
+    "description": "Fontawesome icons for Taiga UI",
+    "keywords": [
+        "angular",
+        "icon",
+        "svg",
+        "fontawesome"
+    ],
+    "homepage": "https://github.com/taiga-family/taiga-ui",
+    "repository": "https://github.com/taiga-family/taiga-ui",
+    "license": "Apache-2.0",
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "6.6.0"
+    }
+}

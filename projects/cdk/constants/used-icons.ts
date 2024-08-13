@@ -41,6 +41,7 @@ export const TUI_USED_ICONS = [
     '@tui.x',
     '@tui.chevron-right',
     '@tui.material',
+    '@tui.fa',
     '@tui.chevron-left',
     '@tui.calendar',
     '@tui.minus',

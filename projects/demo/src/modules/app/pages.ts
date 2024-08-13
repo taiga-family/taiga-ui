@@ -112,6 +112,13 @@ export const pages: TuiDocRoutePages = [
         route: DemoRoute.IconsMaterial,
     },
     {
+        section: 'Icons',
+        title: 'Fontawesome',
+        keywords:
+            'icons, fontawesome, awesome, font, design, картинка, свг, svg, графика',
+        route: DemoRoute.IconsFontawesome,
+    },
+    {
         section: 'Foundations',
         title: 'Styles',
         subPages: [

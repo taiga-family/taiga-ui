@@ -52,6 +52,11 @@
                         "glob": "**/*",
                         "input": "projects/icons-material/src",
                         "output": "assets/taiga-ui/icons/material"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "projects/icons-fontawesome/src",
+                        "output": "assets/taiga-ui/icons/fontawesome"
                     }
                 ],
                 "baseHref": "./",
