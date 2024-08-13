@@ -1,5 +1,8 @@
 import type {MigrationWarning} from '../../../interfaces';
 
+const ILLUSTRATION_WARNING_MESSAGE =
+    'TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="\'@tui.illustration.pack.icon-name\' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons';
+
 export const MIGRATION_WARNINGS: MigrationWarning[] = [
     {
         name: 'TuiNumberMaskOptions',
@@ -165,20 +168,17 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
     {
         name: 'TuiIllustrationsModule',
         moduleSpecifier: '@taiga-ui/proprietary-icons',
-        message:
-            'TuiIllustrationsModule was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+        message: ILLUSTRATION_WARNING_MESSAGE,
     },
     {
         name: 'TuiIllustrationsPipe',
         moduleSpecifier: '@taiga-ui/proprietary-icons',
-        message:
-            'TuiIllustrationsPipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+        message: ILLUSTRATION_WARNING_MESSAGE,
     },
     {
         name: 'TuiIllustrationModePipe',
         moduleSpecifier: '@taiga-ui/proprietary-icons',
-        message:
-            'TuiIllustrationModePipe was deleted. Import TuiIconPipe and use <img [src]="icon | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons',
+        message: ILLUSTRATION_WARNING_MESSAGE,
     },
     {
         name: 'TUI_IS_MOBILE_RES',
