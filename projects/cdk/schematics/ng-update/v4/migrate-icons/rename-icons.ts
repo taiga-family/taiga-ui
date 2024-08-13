@@ -36,7 +36,10 @@ export function renameIcons(pattern = ALL_FILES): void {
             from: new RegExp(`["'\`]${from}["'\`]`, 'g'),
             to,
         })).forEach(({from, to}) => {
-            text = text.replaceAll(from, `"${to}"`);
+            text = text.replaceAll(
+                from,
+                (match) => `${match.slice(0, 1)}${to}${match.slice(0, 1)}`,
+            );
         });
 
         const regex = /['"`]tuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
