@@ -10,9 +10,9 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
+import {normalizeAttrValue} from '../utils/normalize-attr-value';
 import {removeAttrs} from '../utils/remove-attrs';
 import {replaceSizeAttr} from './toggles/common';
-import {normalizeAttrValue} from '../utils/normalize-attr-value';
 
 const sizeMap: Record<string, string> = {
     xxs: 'xs',
