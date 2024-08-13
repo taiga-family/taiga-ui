@@ -48,7 +48,7 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'hoặc kéo nó vào đây',
         defaultLinkSingle: 'Chọn một tệp',
         defaultLinkMultiple: 'Chọn nhiều tệp',
-        maxSizeRejectionReason: 'Tệp vượt quá kích thước ',
+        maxSizeRejectionReason: 'Tệp vượt quá kích thước',
         formatRejectionReason: 'Tệp sai định dạng',
         drop: 'Thả tệp tại đây',
         dropMultiple: 'Thả nhiều tệp tại đây',

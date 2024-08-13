@@ -48,7 +48,7 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'та перенесіть\u00A0їx\u00A0сюди',
         defaultLinkSingle: 'Виберіть файл',
         defaultLinkMultiple: 'Виберіть файли',
-        maxSizeRejectionReason: 'Файл перевищує розмір ',
+        maxSizeRejectionReason: 'Файл перевищує розмір',
         formatRejectionReason: 'Невірний формат файлу',
         drop: 'Помістіть файл сюди',
         dropMultiple: 'Помістіть файли сюди',

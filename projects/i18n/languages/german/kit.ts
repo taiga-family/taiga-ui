@@ -49,7 +49,7 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLinkSingle: 'Datei auswählen',
         defaultLinkMultiple: 'Dateien auswählen',
         maxSizeRejectionReason:
-            'Die Dateigröße überschreitet die maximal zulässige Größe von ',
+            'Die Dateigröße überschreitet die maximal zulässige Größe von',
         formatRejectionReason: 'Ungültiges Dateiformat',
         drop: 'Datei hier ablegen',
         dropMultiple: 'Dateien hier ablegen',
