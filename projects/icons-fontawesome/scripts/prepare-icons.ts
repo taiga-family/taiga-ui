@@ -27,7 +27,7 @@ import path from 'node:path';
                     '<$1 vector-effect="non-scaling-stroke"',
                 );
 
-            const filePath = path.join(dest, type, filename);
+            const filePath = path.join(dest, 'fa', type, filename);
 
             fs.mkdirSync(path.dirname(filePath), {recursive: true});
             fs.writeFileSync(filePath, content);
@@ -83,7 +83,10 @@ import path from 'node:path';
     ].forEach((filename) => {
         const filePath = path.join('projects/icons/src', `${filename}.svg`);
 
-        fs.writeFileSync(path.join(dest, `${filename}.svg`), filePath);
+        fs.writeFileSync(
+            path.join(dest, `${filename}.svg`),
+            fs.readFileSync(path.join(filePath), 'utf-8'),
+        );
 
         console.info('copied:', filePath);
     });

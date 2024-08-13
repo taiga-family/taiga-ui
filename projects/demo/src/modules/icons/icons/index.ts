@@ -15,6 +15,8 @@ import {COLORED_ICONS, MONO_ICONS} from './icons.tokens';
     changeDetection,
 })
 export default class Page {
+    protected readonly assets = import('./assets.md?raw');
+
     protected readonly icons = {
         Mono: MONO_ICONS,
         Colored: COLORED_ICONS,
