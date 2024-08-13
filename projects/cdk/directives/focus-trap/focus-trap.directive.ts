@@ -50,11 +50,6 @@ export class TuiFocusTrap implements OnDestroy {
         });
     }
 
-    @HostListener('blur')
-    protected onBlur(): void {
-        this.el.removeAttribute('tabIndex');
-    }
-
     @HostListener('window:focusin.silent', ['$event.target'])
     protected onFocusIn(node: Node): void {
         if (!tuiContainsOrAfter(this.el, node)) {

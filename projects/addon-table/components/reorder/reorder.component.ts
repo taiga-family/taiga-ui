@@ -34,7 +34,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     styleUrls: ['./reorder.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiReorderComponent<T> {
+export class TuiReorder<T> {
     private dragging = false;
 
     protected order = new Map<number, number>();
