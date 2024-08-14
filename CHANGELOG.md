@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.90.0](https://github.com/taiga-family/taiga-ui/compare/v3.89.0...v3.90.0) (2024-08-13)
+
+### Features
+
+- **i18n:** add japanese ([#8374](https://github.com/taiga-family/taiga-ui/issues/8374))
+  ([e4a3cdb](https://github.com/taiga-family/taiga-ui/commit/e4a3cdbe5b7cc35c565954c891966ca14d25548d))
+- **kit:** create `TUI_TIME_VALUE_TRANSFORMER` for `tui-input-time component`
+  ([#8391](https://github.com/taiga-family/taiga-ui/issues/8391))
+  ([9cdc6bc](https://github.com/taiga-family/taiga-ui/commit/9cdc6bc2db8baf22a52d022166b3153822042169))
+- **kit:** prevent disabled days selection for calendar-range
+  ([#8328](https://github.com/taiga-family/taiga-ui/issues/8328))
+  ([13d1f4c](https://github.com/taiga-family/taiga-ui/commit/13d1f4c1700e0a0613ddc1ac9bd868aaa4b82f84))
+
+### Bug Fixes
+
+- **cdk:** redundant assert log if hours are greater than 23
+  ([#8449](https://github.com/taiga-family/taiga-ui/issues/8449))
+  ([ef7e6f1](https://github.com/taiga-family/taiga-ui/commit/ef7e6f1a4eb6d6eb4c8f700273007f2e4b4df4d5))
+- **core:** ignore pointer events for disabled button ([#8478](https://github.com/taiga-family/taiga-ui/issues/8478))
+  ([28b769f](https://github.com/taiga-family/taiga-ui/commit/28b769f14fe2766a0dff5228441f163e0666057e))
+- **i18n:** add korean ([#8498](https://github.com/taiga-family/taiga-ui/issues/8498))
+  ([b3cbe8b](https://github.com/taiga-family/taiga-ui/commit/b3cbe8bff7a126b1ddb32f75ba756cf999df07d0))
+- **i18n:** redundant whitespace ([#8497](https://github.com/taiga-family/taiga-ui/issues/8497))
+  ([f9a8ba6](https://github.com/taiga-family/taiga-ui/commit/f9a8ba641478207af916fe7a06bd08ddd9246b8d))
+- **kit:** `CalendarRange` defaultViewedMonth shows correct calendars months
+  ([6ae4be3](https://github.com/taiga-family/taiga-ui/commit/6ae4be388b7e76b5f1f419894bffdd087948da90))
+- **kit:** `CalendarRange` defaultViewedMonth shows correct calendars months
+  ([#8400](https://github.com/taiga-family/taiga-ui/issues/8400))
+  ([bcfd27f](https://github.com/taiga-family/taiga-ui/commit/bcfd27f5f8efc21e1a4f1c472b90c26ba5f2f60d))
+- **kit:** fix calendar range does not update checkbox position
+  ([#8481](https://github.com/taiga-family/taiga-ui/issues/8481))
+  ([301953f](https://github.com/taiga-family/taiga-ui/commit/301953fa51eed0008778fc527d8cc477c0cfb0ca))
+- **kit:** icon hover on readonly ([#8469](https://github.com/taiga-family/taiga-ui/issues/8469))
+  ([f191f9a](https://github.com/taiga-family/taiga-ui/commit/f191f9a1d4591abe9d29ea01defd9bbcbe68576f))
+
+## [3.89.0](https://github.com/taiga-family/taiga-ui/compare/v3.88.0...v3.89.0) (2024-08-06)
+
+### Features
+
+- **core:** add `mode` for `tui-scrollbar` ([#8340](https://github.com/taiga-family/taiga-ui/issues/8340))
+  ([fc78143](https://github.com/taiga-family/taiga-ui/commit/fc78143b19b41c542132a13f9a8e37b4270f2dd7))
+- **i18n:** add hebrew ([#8241](https://github.com/taiga-family/taiga-ui/issues/8241))
+  ([1e1c574](https://github.com/taiga-family/taiga-ui/commit/1e1c574c5878c9ca07c2217f16bad0e5c13e01be))
+
+### Bug Fixes
+
+- **addon-mobile:** fix mobile-calendar size without header
+  ([#8296](https://github.com/taiga-family/taiga-ui/issues/8296))
+  ([75bb445](https://github.com/taiga-family/taiga-ui/commit/75bb4454d8eb8f566e46452656e6452d979d8b37))
+- **core:** ios menu is not triggered ([#8345](https://github.com/taiga-family/taiga-ui/issues/8345))
+  ([0476a72](https://github.com/taiga-family/taiga-ui/commit/0476a72763d8dccb09559e64923a1e79f3274531))
+- **kit:** correct present of control value from items list for input-time
+  ([#8249](https://github.com/taiga-family/taiga-ui/issues/8249))
+  ([e890e6b](https://github.com/taiga-family/taiga-ui/commit/e890e6b696e72f19d9864bd0229a98645d4ea544))
+- **kit:** fix `CalendarRange` switch month with maxLength
+  ([07a99ce](https://github.com/taiga-family/taiga-ui/commit/07a99ce56a45c7fb5364d628bcbf4105085fc025))
+- **kit:** fix `CalendarRange` switch month with maxLength
+  ([#8307](https://github.com/taiga-family/taiga-ui/issues/8307))
+  ([68f28f6](https://github.com/taiga-family/taiga-ui/commit/68f28f6f005fa9856177ca7bc45b82bad3755ec2))
+- **kit:** placeholder in multiselect disappears while hovering options
+  ([#8253](https://github.com/taiga-family/taiga-ui/issues/8253))
+  ([58763ff](https://github.com/taiga-family/taiga-ui/commit/58763ffddaf0b220beb55d2adbc06fbcdd0b724d))
+- **kit:** reuse cursor position after showing password ([#8188](https://github.com/taiga-family/taiga-ui/issues/8188))
+  ([864e50e](https://github.com/taiga-family/taiga-ui/commit/864e50e5b3f37421114202219edff67edbc07251))
+
+## [3.88.0](https://github.com/taiga-family/taiga-ui/compare/v3.87.0...v3.88.0) (2024-07-31)
+
+### Features
+
+- **addon-mobile:** possibility to hide header of `MobileCalendar`
+  ([#8264](https://github.com/taiga-family/taiga-ui/issues/8264))
+  ([8afc477](https://github.com/taiga-family/taiga-ui/commit/8afc477d3383f91490efaef7ec05e3dd129a7c95))
+- **experimental:** `ThumbnailCard` add DI options ([#8155](https://github.com/taiga-family/taiga-ui/issues/8155))
+  ([96c5656](https://github.com/taiga-family/taiga-ui/commit/96c56561cd1af077aca7a88d87f66bca06bb592c))
+
+### Bug Fixes
+
+- **cdk:** provided double value is non-finite ([#8161](https://github.com/taiga-family/taiga-ui/issues/8161))
+  ([276879b](https://github.com/taiga-family/taiga-ui/commit/276879bf97f2ee5f958477d0f31923ce4b420f87))
+- **core:** fix dropdown-context directive on touchscreen laptops
+  ([#8223](https://github.com/taiga-family/taiga-ui/issues/8223))
+  ([0bb7b5b](https://github.com/taiga-family/taiga-ui/commit/0bb7b5ba2789683af27a979d80609c968b88d323))
+- **kit:** `Date` should support native date picker even without importing of `TuiMobileCalendarDialogModule`
+  ([#8252](https://github.com/taiga-family/taiga-ui/issues/8252))
+  ([b6da5bd](https://github.com/taiga-family/taiga-ui/commit/b6da5bd87b0d713ee802ec5f36d5507bcbe53e04))
+
 ## [3.87.0](https://github.com/taiga-family/taiga-ui/compare/v3.86.0...v3.87.0) (2024-07-15)
 
 ### Features

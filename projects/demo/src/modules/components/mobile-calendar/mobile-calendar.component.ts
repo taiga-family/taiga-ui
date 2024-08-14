@@ -64,6 +64,12 @@ export class ExampleTuiMobileCalendarComponent {
         LESS: import('./examples/5/index.less?raw'),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+        LESS: import('./examples/6/index.less?raw'),
+    };
+
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
 
     min = this.minVariants[0];
@@ -73,6 +79,8 @@ export class ExampleTuiMobileCalendarComponent {
     max = this.maxVariants[0];
 
     single = true;
+
+    multi = false;
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,

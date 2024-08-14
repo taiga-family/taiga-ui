@@ -65,9 +65,14 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
+    readonly example7: TuiDocExample = {
+        TypeScript: import('./examples/7/index.ts?raw'),
+        HTML: import('./examples/7/index.html?raw'),
+    };
+
     override cleaner = false;
 
-    control = new FormControl(TuiTime.currentLocal(), Validators.required);
+    control = new FormControl(new TuiTime(15, 30), Validators.required);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiTime>> = [
         ALWAYS_FALSE_HANDLER,

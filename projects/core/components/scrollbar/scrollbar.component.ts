@@ -17,6 +17,8 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 
+import {TUI_SCROLLBAR_OPTIONS, TuiScrollbarOptions} from './scrollbar.options';
+
 // TODO: Remove all legacy code in 4.0
 @Component({
     selector: 'tui-scrollbar',
@@ -50,6 +52,7 @@ export class TuiScrollbarComponent {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
+        @Inject(TUI_SCROLLBAR_OPTIONS) readonly options: TuiScrollbarOptions,
     ) {}
 
     get delegated(): boolean {

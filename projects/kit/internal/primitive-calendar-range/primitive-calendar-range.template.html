@@ -18,7 +18,7 @@
     [max]="max"
     [min]="min"
     [minViewedMonth]="cappedUserViewedMonthFirst | tuiMapper: monthOffset : 1"
-    [month]="userViewedMonthSecond.monthSameOrBefore(min) ? (min | tuiMapper: monthOffset : 1) : userViewedMonthSecond"
+    [month]="userViewedMonthSecond"
     [showAdjacent]="false"
     [value]="value"
     [(hoveredItem)]="hoveredItem"

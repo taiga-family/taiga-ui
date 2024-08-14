@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "3.87.0",
+    "version": "3.90.0",
     "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
@@ -141,7 +141,7 @@
         "@taiga-ui/tsconfig": "0.11.0",
         "@testing-library/cypress": "10.0.1",
         "@tinkoff/ng-event-plugins": "3.2.0",
-        "@tinkoff/tui-editor": "1.25.1",
+        "@tinkoff/tui-editor": "1.57.0",
         "@types/glob": "8.1.0",
         "@types/node": "20.10.4",
         "@types/parse5": "6.0.3",

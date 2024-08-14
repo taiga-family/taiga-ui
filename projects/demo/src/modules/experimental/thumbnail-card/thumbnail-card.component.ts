@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {ALWAYS_TRUE_HANDLER, TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -51,6 +52,13 @@ export class ExampleTuiThumbnailCardComponent {
 
     sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     size = this.sizeVariants[1];
+
+    monoHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiPaymentSystem>> = [
+        ps => ps === 'mir' || ps === 'visa' || ps === 'electron',
+        ALWAYS_TRUE_HANDLER,
+    ];
+
+    monoHandler = this.monoHandlerVariants[0];
 
     paymentSystem: TuiPaymentSystem | null = null;
 }

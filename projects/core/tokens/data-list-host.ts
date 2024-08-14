@@ -8,7 +8,7 @@ export const TUI_DATA_LIST_HOST = new InjectionToken<TuiDataListHost<unknown>>(
     '[TUI_DATA_LIST_HOST]',
 );
 
-export function tuiAsDataListHost(useExisting: Type<TuiDataListHost<unknown>>): Provider {
+export function tuiAsDataListHost<T>(useExisting: Type<TuiDataListHost<T>>): Provider {
     return {
         provide: TUI_DATA_LIST_HOST,
         useExisting,

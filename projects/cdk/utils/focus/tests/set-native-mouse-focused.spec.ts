@@ -18,7 +18,7 @@ describe('tuiSetNativeMouseFocused', () => {
         tuiSetNativeMouseFocused(element);
 
         expect(mockDispatchEvent).toHaveBeenCalledWith(
-            new Event('mousedown', {bubbles: true, cancelable: true}),
+            new MouseEvent('mousedown', {bubbles: true, cancelable: true}),
         );
     });
 

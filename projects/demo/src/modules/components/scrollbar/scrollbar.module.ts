@@ -16,6 +16,7 @@ import {TuiScrollbarExample3Component} from './examples/3/component';
 import {TuiScrollbarExample4Component} from './examples/4/component';
 import {TuiScrollbarExample5Component} from './examples/5/component';
 import {TuiScrollbarExample6Component} from './examples/6/component';
+import {TuiScrollbarExample7Component} from './examples/7';
 import {ExampleTuiScrollbarComponent} from './scrollbar.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import {ExampleTuiScrollbarComponent} from './scrollbar.component';
         TuiScrollbarExample4Component,
         TuiScrollbarExample5Component,
         TuiScrollbarExample6Component,
+        TuiScrollbarExample7Component,
     ],
     exports: [ExampleTuiScrollbarComponent],
 })

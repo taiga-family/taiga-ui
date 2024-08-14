@@ -15,6 +15,7 @@ import {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
+    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
@@ -23,6 +24,7 @@ import {
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
+    TuiIdentityMatcher,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -43,7 +45,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_TEXTS, TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {Observable, timer} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -104,8 +106,11 @@ export class TuiInputTimeComponent
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Optional()
+        @Inject(TUI_TIME_VALUE_TRANSFORMER)
+        override readonly valueTransformer: AbstractTuiValueTransformer<TuiTime | null> | null,
     ) {
-        super(control, cdr);
+        super(control, cdr, valueTransformer);
     }
 
     @HostBinding('attr.data-size')
@@ -190,6 +195,13 @@ export class TuiInputTimeComponent
         this.open = !this.open;
     }
 
+    readonly identityMatcher: TuiIdentityMatcher<TuiTime> = (
+        controlValue: TuiTime,
+        dropdownValue: TuiTime,
+    ) =>
+        controlValue instanceof TuiTime &&
+        controlValue.valueOf() === dropdownValue.valueOf();
+
     onValueChange(value: string): void {
         this.open = !!this.items.length;
 
@@ -253,6 +265,12 @@ export class TuiInputTimeComponent
         }
 
         this.processArrow(event, -1);
+    }
+
+    checkOption(option: TuiTime): void {
+        if (option.valueOf() === this.value?.valueOf()) {
+            this.value = option;
+        }
     }
 
     handleOption(item: TuiTime): void {

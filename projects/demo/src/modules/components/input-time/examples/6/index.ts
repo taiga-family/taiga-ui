@@ -1,9 +1,22 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTime} from '@taiga-ui/cdk';
-import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
+import {AbstractTuiValueTransformer, TuiTime} from '@taiga-ui/cdk';
+import {TUI_TIME_VALUE_TRANSFORMER, tuiCreateTimePeriods} from '@taiga-ui/kit';
+
+class ExampleTimeTransformer extends AbstractTuiValueTransformer<
+    TuiTime | null,
+    string | null
+> {
+    fromControlValue(controlValue: string): TuiTime | null {
+        return controlValue ? TuiTime.fromString(controlValue) : null;
+    }
+
+    toControlValue(time: TuiTime | null): string {
+        return time ? time.toString() : '';
+    }
+}
 
 @Component({
     selector: 'tui-input-time-example-6',
@@ -11,18 +24,13 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputTimeOptionsProvider({
-            nativePicker: true,
-        }),
+        {
+            provide: TUI_TIME_VALUE_TRANSFORMER,
+            useClass: ExampleTimeTransformer,
+        },
     ],
 })
 export class TuiInputTimeExample6 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl(new TuiTime(10, 30)),
-        testValue2: new FormControl(new TuiTime(10, 30, 0)),
-        testValue3: new FormControl(new TuiTime(14, 30)),
-        testValue4: new FormControl(new TuiTime(10, 30, 0)),
-    });
-
-    readonly items = tuiCreateTimePeriods(14, 16, [0, 30]);
+    readonly control = new FormControl('');
+    readonly items = tuiCreateTimePeriods();
 }

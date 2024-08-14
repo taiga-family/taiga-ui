@@ -83,6 +83,14 @@
         >
             <tui-mobile-calendar-example-5></tui-mobile-calendar-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="without-header"
+            heading="Without header"
+            [content]="example6"
+        >
+            <tui-mobile-calendar-example-6></tui-mobile-calendar-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -92,6 +100,7 @@
                 [disabledItemHandler]="disabledItemHandler"
                 [max]="max"
                 [min]="min"
+                [multi]="multi"
                 [single]="single"
                 (cancel)="documentationPropertyCancel.emitEvent($event)"
                 (confirm)="documentationPropertyConfirm.emitEvent($event)"
@@ -99,6 +108,13 @@
         </tui-doc-demo>
 
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="value"
+                documentationPropertyType="TuiDay | TuiDayRange | readonly TuiDay[] | null"
+            >
+                Value
+            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="disabledItemHandler"
@@ -135,6 +151,14 @@
                 [(documentationPropertyValue)]="single"
             >
                 Single date or a range
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="multi"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="multi"
+            >
+                Array of single dates
             </ng-template>
             <ng-template
                 #documentationPropertyCancel="documentationProperty"

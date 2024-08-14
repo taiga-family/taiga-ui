@@ -8,6 +8,7 @@ import {
     Inject,
     Input,
     NgZone,
+    Optional,
     Output,
     Self,
     ViewChild,
@@ -42,13 +43,22 @@ import {
     TUI_DONE_WORD,
     tuiImmutableUpdateInputDateMulti,
 } from '@taiga-ui/kit';
-import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
+import {
+    BehaviorSubject,
+    identity,
+    MonoTypeOperatorFunction,
+    Observable,
+    race,
+    timer,
+} from 'rxjs';
 import {
     debounceTime,
     delay,
+    distinctUntilChanged,
     filter,
     map,
     mergeMap,
+    skip,
     switchMap,
     take,
     takeUntil,
@@ -72,7 +82,10 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS', '[class._initialized]': 'initialized'},
+    host: {
+        '[class._ios]': 'isIOS',
+        '[class._initialized]': 'initialized',
+    },
 })
 export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
@@ -80,6 +93,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     @ViewChild('monthsScrollRef')
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
+
+    private readonly value$ = new BehaviorSubject<
+        TuiDay | TuiDayRange | readonly TuiDay[] | null
+    >(null);
 
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
@@ -106,7 +123,12 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     @Output()
     readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
 
-    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    @Output()
+    readonly valueChange = this.value$.pipe(
+        skip(1),
+        distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
+        takeUntil(this.destroy$),
+    );
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
 
@@ -135,14 +157,24 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
         @Inject(TUI_SHORT_WEEK_DAYS)
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
+        @Optional()
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]>,
+        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]> | null,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
         });
+    }
+
+    get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
+    @Input()
+    set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value$.next(value);
     }
 
     get yearWidth(): number {
@@ -174,12 +206,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
             this.value = tuiImmutableUpdateInputDateMulti(this.value, day);
-        } else if (this.isSingleValue(this.value)) {
-            this.value = new TuiDayRange(day, day);
+        } else if (this.value instanceof TuiDay) {
+            this.value = TuiDayRange.sort(this.value, day);
+        } else if (this.value instanceof TuiDayRange && !this.value.isSingleDay) {
+            this.value = day;
         } else if (this.value instanceof TuiDayRange) {
             this.value = TuiDayRange.sort(this.value.from, day);
         } else if (!this.value) {
-            this.value = new TuiDayRange(day, day);
+            this.value = day;
         }
     }
 
@@ -238,10 +272,6 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
         return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
-    }
-
-    private isSingleValue(day: any): day is TuiDay {
-        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
     }
 
     private get initialYear(): number {

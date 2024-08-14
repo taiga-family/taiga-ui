@@ -11,6 +11,7 @@
     outline: none;
     cursor: pointer;
     counter-increment: steps;
+    text-align: left;
 
     &:disabled {
         pointer-events: none;
@@ -45,6 +46,7 @@
 
 .t-marker {
     .transition(background);
+    position: relative;
     display: flex;
     width: 2rem;
     height: 2rem;
@@ -52,6 +54,7 @@
     margin-right: 0.75rem;
     flex-shrink: 0;
     align-items: center;
+    align-self: flex-start;
     justify-content: center;
     background: var(--tui-secondary);
     color: var(--tui-link);

@@ -9,7 +9,7 @@ import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {UrlTree} from '@angular/router';
 import {environment} from '@demo/environments/environment';
-import {SESSION_STORAGE} from '@ng-web-apis/common';
+import {SESSION_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -26,7 +26,6 @@ import {
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
 import {
-    TUI_BASE_HREF,
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
@@ -40,6 +39,7 @@ import {
     TUI_HINT_OPTIONS,
     TUI_SANITIZER,
 } from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -171,9 +171,8 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,
-        deps: [TUI_BASE_HREF],
-        useFactory: (baseHref: string) => (tree: UrlTree) =>
-            String(tree).replace(baseHref, ''),
+        useFactory: () => (tree: UrlTree) =>
+            String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
     },
     {
         provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
@@ -206,6 +205,20 @@ export const APP_PROVIDERS: Provider[] = [
     },
     tuiDocExampleOptionsProvider({fullsize: false}),
     metrikaOptionsProvider({id: environment.ym}),
+    {
+        provide: TUI_ICON_RESOLVER,
+        deps: [WINDOW],
+        useFactory: (window: Window) => (icon: string) =>
+            !icon || icon.includes('/')
+                ? icon
+                : `${
+                      window.origin.includes('taiga-ui.dev') ? '/v3' : ''
+                  }/assets/taiga-ui/icons/${
+                      icon.includes('Outline')
+                          ? icon
+                          : icon.replace('Large', '').concat('Outline')
+                  }.svg`,
+    },
     tuiLanguageSwitcher(
         async (language: TuiLanguageName): Promise<unknown> =>
             import(

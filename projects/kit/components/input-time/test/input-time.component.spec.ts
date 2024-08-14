@@ -1,9 +1,9 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, DebugElement, Type, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiTime} from '@taiga-ui/cdk';
+import {AbstractTuiValueTransformer, TuiTime} from '@taiga-ui/cdk';
 import {
     TuiHintModule,
     TuiRootModule,
@@ -12,6 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/kit';
+import {TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 const TIMES = [
@@ -66,20 +67,22 @@ describe('InputTime', () => {
         return pageObject.getByAutomationId('tui-input-time__dropdown');
     }
 
-    beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [
-                TuiRootModule,
-                TuiInputTimeModule,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiTextfieldControllerModule,
-                TuiHintModule,
-            ],
-            declarations: [TestComponent],
-        });
-        await TestBed.compileComponents();
-        fixture = TestBed.createComponent(TestComponent);
+    const meta = {
+        imports: [
+            TuiRootModule,
+            TuiInputTimeModule,
+            ReactiveFormsModule,
+            NoopAnimationsModule,
+            TuiTextfieldControllerModule,
+            TuiHintModule,
+        ],
+        declarations: [TestComponent],
+    };
+
+    const initializeEnvironment = async (
+        componentType: Type<TestComponent> = TestComponent,
+    ): Promise<void> => {
+        fixture = TestBed.createComponent(componentType);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
@@ -88,22 +91,31 @@ describe('InputTime', () => {
         input = fixture.debugElement.query(By.css('input')).nativeElement;
         await fixture.whenStable();
         fixture.detectChanges();
-    });
+    };
 
     describe('Initial value', () => {
+        beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
+            await initializeEnvironment();
+        });
+
         it('The value in the field is formatted by mask', async () => {
             await fixture.whenStable();
             expect(input.value).toBe('12:30');
         });
 
         it('The initial value in the formControl is issued as an object with the hours and minutes properties', () => {
-            expect(testComponent.control.value.hours).toBe(12);
-            expect(testComponent.control.value.minutes).toBe(30);
+            expect(testComponent.control.value).toEqual(new TuiTime(12, 30));
         });
     });
 
     describe('The value in the formControl changes outside', () => {
-        beforeEach(() => {
+        beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
+            await initializeEnvironment();
+
             testComponent.control.setValue(new TuiTime(22, 30));
             fixture.detectChanges();
         });
@@ -122,6 +134,12 @@ describe('InputTime', () => {
     });
 
     describe('Short time input (less than 5 characters, including colon)', () => {
+        beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
+            await initializeEnvironment();
+        });
+
         it('The value of formControl is passed null', () => {
             component.onValueChange('11:1');
             fixture.detectChanges();
@@ -130,7 +148,13 @@ describe('InputTime', () => {
     });
 
     describe('Keyboard control', () => {
-        beforeEach(async () => fixture.whenStable());
+        beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
+            await initializeEnvironment();
+
+            await fixture.whenStable();
+        });
 
         it('If the cursor is at position 0, then pressing UP increases the hour by 1', () => {
             input.focus();
@@ -188,7 +212,11 @@ describe('InputTime', () => {
     });
 
     describe('Drop-down list', () => {
-        beforeEach(() => {
+        beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
+            await initializeEnvironment();
+
             testComponent.items = TIMES;
 
             fixture.detectChanges();
@@ -275,6 +303,77 @@ describe('InputTime', () => {
 
                 expect(testComponent.control.value.toString().trim()).toBe('01:30');
             });
+        });
+    });
+
+    describe('InputTime + TUI_TIME_VALUE_TRANSFORMER', () => {
+        class TestTransformer extends AbstractTuiValueTransformer<
+            TuiTime | null,
+            string
+        > {
+            fromControlValue(controlValue: string): TuiTime | null {
+                return controlValue ? TuiTime.fromString(controlValue) : null;
+            }
+
+            toControlValue(componentValue: TuiTime | null): string {
+                return componentValue ? componentValue.toString() : '';
+            }
+        }
+
+        class TransformerTestComponent extends TestComponent {
+            override control = new FormControl('12:30');
+        }
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                ...meta,
+                providers: [
+                    {provide: TUI_TIME_VALUE_TRANSFORMER, useClass: TestTransformer},
+                ],
+                declarations: [TransformerTestComponent],
+            });
+            await TestBed.compileComponents();
+            await initializeEnvironment(TransformerTestComponent);
+
+            testComponent.items = TIMES;
+            fixture.detectChanges();
+        });
+
+        it('correctly transforms initial value', () => {
+            expect(inputPO.value).toBe('12:30');
+            expect(testComponent.control.value).toBe('12:30');
+        });
+
+        it('transforms typed value', () => {
+            inputPO.sendText('12:00');
+            fixture.detectChanges();
+
+            expect(inputPO.value).toBe('12:00');
+            expect(testComponent.control.value).toBe('12:00');
+        });
+
+        it('transforms empty value', () => {
+            inputPO.sendText('');
+            fixture.detectChanges();
+
+            expect(testComponent.control.value).toBe('');
+        });
+
+        it('transforms selected value', () => {
+            inputPO.sendText('03');
+            fixture.detectChanges();
+            pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();
+
+            expect(testComponent.control.value).toBe('03:00');
+        });
+
+        it('selected item has check mark', () => {
+            inputPO.sendText('03:00');
+            fixture.detectChanges();
+
+            expect(
+                pageObject.getByAutomationId('tui-select-option__checkmark'),
+            ).toBeTruthy();
         });
     });
 });

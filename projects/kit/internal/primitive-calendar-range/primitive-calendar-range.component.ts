@@ -138,7 +138,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             return this.max;
         }
 
-        if (month.monthBefore(this.min)) {
+        if (month.monthSameOrBefore(this.min)) {
             return this.min.append({month: 1});
         }
 

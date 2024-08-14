@@ -16,6 +16,7 @@ export * from './is-ios';
 export * from './is-mobile';
 export * from './is-playwright';
 export * from './is-stackblitz';
+export * from './is-touch';
 export * from './is-webkit';
 export * from './platform';
 export * from './range';

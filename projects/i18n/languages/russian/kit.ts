@@ -48,7 +48,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'или перетащите\u00A0их\u00A0сюда',
         defaultLinkSingle: 'Выберите файл',
         defaultLinkMultiple: 'Выберите файлы',
-        maxSizeRejectionReason: 'Файл превышает объем ',
+        maxSizeRejectionReason: 'Файл превышает объем',
         formatRejectionReason: 'Неверный формат файла',
         drop: 'Поместите файл сюда',
         dropMultiple: 'Поместите файлы сюда',
