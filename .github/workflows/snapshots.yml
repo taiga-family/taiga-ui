@@ -1,7 +1,8 @@
 name: 🚀 Snapshots
 on:
   push:
-    branches: [main, 'v[0-9]+.x', 'release/**']
+    # TODO: revert this line before merge
+    branches: [main, 'v[0-9]+.x', 'release/**', base-href-refactor-v3]
   workflow_dispatch:
     inputs:
       updateMain:
@@ -30,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   snapshots-of-release:
-    if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
+    # TODO: revert this line before merge
     name: production
     runs-on: ubuntu-latest
     steps:
