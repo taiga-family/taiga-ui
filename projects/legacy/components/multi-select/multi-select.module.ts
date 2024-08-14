@@ -19,12 +19,12 @@ import {
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiHideSelectedPipe} from './hide-selected.pipe';
-import {TuiMultiSelectGroupComponent} from './multi-select-group/multi-select-group.component';
-import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-group.directive';
 import {TuiMultiSelectComponent} from './multi-select.component';
 import {TuiMultiSelectDirective} from './multi-select.directive';
-import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
+import {TuiMultiSelectGroupComponent} from './multi-select-group/multi-select-group.component';
+import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-group.directive';
 import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
+import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
 
 @NgModule({
     imports: [
