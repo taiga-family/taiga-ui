@@ -113,7 +113,7 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Icons',
-        title: 'Fontawesome',
+        title: 'FontAwesome',
         keywords:
             'icons, fontawesome, awesome, font, design, картинка, свг, svg, графика',
         route: DemoRoute.IconsFontawesome,

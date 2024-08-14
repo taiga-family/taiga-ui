@@ -16,6 +16,7 @@
         [inputHidden]="!editable"
         [nativeId]="nativeId"
         [ngModel]="computedValue | tuiMapper: valueMapper : stringify"
+        [ngModelOptions]="{standalone: true}"
         [placeholder]="placeholder"
         [pseudoFocus]="computedFocused"
         [pseudoHover]="pseudoHover"

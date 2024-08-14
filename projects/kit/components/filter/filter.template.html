@@ -23,6 +23,7 @@
         type="checkbox"
         [disabled]="disabledItemHandler(item)"
         [ngModel]="isCheckboxEnabled(item)"
+        [ngModelOptions]="{standalone: true}"
         (ngModelChange)="onCheckbox($event, item)"
     />
 </label>

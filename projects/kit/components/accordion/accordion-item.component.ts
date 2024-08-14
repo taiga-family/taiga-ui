@@ -14,7 +14,7 @@ import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiAccordionItemContent} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.directive';
@@ -22,14 +22,7 @@ import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.direc
 @Component({
     standalone: true,
     selector: 'tui-accordion-item',
-    imports: [
-        NgIf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiIcon,
-        TuiChevron,
-        TuiExpand,
-    ],
+    imports: [NgIf, PolymorpheusOutlet, TuiIcon, TuiChevron, TuiExpand],
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

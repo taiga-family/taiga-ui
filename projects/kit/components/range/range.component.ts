@@ -19,6 +19,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
+import {TuiBlock} from '@taiga-ui/kit/components';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_SLIDER_OPTIONS,
@@ -33,7 +34,7 @@ import {TuiRangeChange} from './range-change.directive';
 @Component({
     standalone: true,
     selector: 'tui-range',
-    imports: [TuiSlider, FormsModule],
+    imports: [TuiSlider, FormsModule, TuiBlock],
     templateUrl: './range.template.html',
     styleUrls: ['./range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

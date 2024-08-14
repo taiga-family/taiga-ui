@@ -1,27 +1,28 @@
 <tui-doc-page
-    header="Icons"
-    package="icons"
+    header="FontAwesome"
+    package="icons-fontawesome"
     type="icons"
 >
-    <ng-template pageTab="Overview">
-        Open source theme for Taiga UI
+    <ng-template pageTab>
+        Taiga UI supports
         <a
-            href="https://lucide.dev/"
+            href="https://fontawesome.com/"
             rel="noreferrer"
             target="_blank"
             tuiLink
         >
-            Lucide Icons
+            FontAwesome Icons (free pack).
         </a>
-        by default. You can browse all the icons from this pack
+        You can browse all the icons from this pack
         <a
-            href="https://lucide.dev/icons/"
+            href="https://fontawesome.com/search?m=free&o=r"
             rel="noreferrer"
             target="_blank"
             tuiLink
         >
             here
         </a>
+        . You can replace icons used inside components as well through DI options, see example below.
 
         <tui-doc-example
             id="basic"
@@ -29,18 +30,10 @@
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
         />
-
-        <tui-doc-example
-            id="custom"
-            heading="custom icons"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [fullsize]="true"
-        />
     </ng-template>
 
     <ng-template pageTab="Setup">
-        <tui-doc-code code="npm i @taiga-ui/icons" />
+        <tui-doc-code code="npm i @taiga-ui/icons-fontawesome" />
 
         <tui-doc-code
             filename="angular.json"

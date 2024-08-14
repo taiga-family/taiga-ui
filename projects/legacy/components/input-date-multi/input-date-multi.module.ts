@@ -8,6 +8,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiBlock} from '@taiga-ui/kit';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
@@ -35,6 +36,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiIcon,
         TuiAppearance,
         ...TuiDropdown,
+        TuiBlock,
     ],
     declarations: [TuiInputDateMultiComponent],
     exports: [TuiInputDateMultiComponent, ...TuiDropdown],

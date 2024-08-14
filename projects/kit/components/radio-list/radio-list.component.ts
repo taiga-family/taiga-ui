@@ -21,6 +21,7 @@ import {
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core/types';
+import {TuiBlock} from '@taiga-ui/kit/components';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -37,6 +38,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiValidator,
+        TuiBlock,
     ],
     templateUrl: './radio-list.template.html',
     styleUrls: ['./radio-list.style.less'],

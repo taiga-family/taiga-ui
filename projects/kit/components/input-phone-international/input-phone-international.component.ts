@@ -41,6 +41,7 @@ import {
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {TuiBlock} from '@taiga-ui/kit/components';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -68,6 +69,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiGetCountryCallingCodePipe,
         TuiGroup,
         TuiTextfield,
+        TuiBlock,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
