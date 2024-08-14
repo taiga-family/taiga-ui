@@ -1,6 +1,7 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
@@ -48,8 +49,7 @@ export class TuiFileRejectedPipe implements PipeTransform {
                     return {
                         name: file.name,
                         size: file.size,
-                        content:
-                            maxSizeRejectionReason + this.formatSize(units, maxFileSize),
+                        content: `${maxSizeRejectionReason}${CHAR_NO_BREAK_SPACE}${this.formatSize(units, maxFileSize)}`,
                     };
                 }
 

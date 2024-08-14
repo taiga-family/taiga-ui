@@ -48,7 +48,7 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'o arrástrelos aquí',
         defaultLinkSingle: 'Seleccione un archivo',
         defaultLinkMultiple: 'Seleccione archivos',
-        maxSizeRejectionReason: 'Archivo demasiado grande ',
+        maxSizeRejectionReason: 'Archivo demasiado grande',
         formatRejectionReason: 'Formato de archivo inválido',
         drop: 'Suelte el archivo aquí',
         dropMultiple: 'Suelte los archivos aquí',
