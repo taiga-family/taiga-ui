@@ -34,7 +34,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '<base href="/">'
-          replace: '<base href="/v3">'
+          replace: '<base href="/v3/">'
           include: '${{ env.DIST }}/v3/**/index.html'
           regex: false
 
