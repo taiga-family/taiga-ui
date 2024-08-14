@@ -69,4 +69,5 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Phóng to',
         reset: 'Đặt lại',
     },
+    phoneSearch: 'Nhập quốc gia hoặc mã',
 };

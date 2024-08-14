@@ -69,4 +69,5 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Zum masuk',
         reset: 'Set semula',
     },
+    phoneSearch: 'Taip negara atau kod',
 };

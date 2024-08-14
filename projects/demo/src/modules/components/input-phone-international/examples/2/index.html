@@ -1,5 +1,6 @@
 <tui-input-phone-international
     [countries]="(countries | tuiSortCountries | async) || []"
+    [countrySearch]="true"
     [(countryIsoCode)]="countryIsoCode"
     [(ngModel)]="value"
 >

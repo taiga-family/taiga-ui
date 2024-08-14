@@ -69,4 +69,5 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Збільшувати',
         reset: 'Скинути',
     },
+    phoneSearch: 'Введіть країну або код',
 };

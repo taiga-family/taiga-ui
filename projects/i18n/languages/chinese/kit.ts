@@ -69,4 +69,5 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: '放大',
         reset: '重置',
     },
+    phoneSearch: '輸入國家或代碼',
 };

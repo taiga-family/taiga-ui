@@ -199,6 +199,7 @@
             <ng-template>
                 <tui-input-phone-international
                     [countries]="countries"
+                    [countrySearch]="countrySearch"
                     [formControl]="control"
                     [invalid]="pseudoInvalid"
                     [readOnly]="readOnly"
@@ -235,6 +236,14 @@
                 [(documentationPropertyValue)]="countries"
             >
                 Array of ISO-codes of countries to choose
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="countrySearch"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="countrySearch"
+            >
+                Enable filter input for countries
             </ng-template>
             <ng-template
                 documentationPropertyMode="input-output"

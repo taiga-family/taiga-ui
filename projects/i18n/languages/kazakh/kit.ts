@@ -69,4 +69,5 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Үлкейту',
         reset: 'Қалпына келтіру',
     },
+    phoneSearch: 'Елді немесе кодты теріңіз',
 };
