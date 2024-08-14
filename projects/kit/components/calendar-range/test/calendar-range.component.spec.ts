@@ -245,36 +245,30 @@ describe('rangeCalendarComponent', () => {
             expect(component.defaultViewedMonth).toEqual(minDate);
         });
 
-        it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
+        it('when value updates, displays appropriate checkbox', () => {
             const today = TuiDay.currentLocal();
-            const yesterday = today.append({day: -1});
+            const yesterday = TuiDay.currentLocal().append({day: -1});
+            const previousMonth = today.append({month: -1});
 
-            testComponent.value = new TuiDayRange(today, today);
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '1'),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, yesterday), '2'),
+            ];
             fixture.detectChanges();
 
-            expect(
-                component['isItemActive'](
-                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
-                ),
-            ).toBe(true);
-
-            testComponent.value = new TuiDayRange(yesterday, yesterday);
+            component['onItemSelect'](component.items[1]);
             fixture.detectChanges();
 
-            expect(
-                component['isItemActive'](
-                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
-                ),
-            ).toBe(false);
+            const items = getItems();
 
-            testComponent.value = new TuiDayRange(today, today);
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+
+            testComponent.value = new TuiDayRange(previousMonth, today);
             fixture.detectChanges();
 
-            expect(
-                component['isItemActive'](
-                    new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
-                ),
-            ).toBe(true);
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(false);
         });
     });
 

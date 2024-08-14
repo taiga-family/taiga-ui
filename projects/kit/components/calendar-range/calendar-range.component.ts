@@ -1,5 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {OnChanges, OnInit} from '@angular/core';
+import type {OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -87,12 +87,14 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
             ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed())
             .subscribe((value) => {
+                this.resetSelectedActivePeriod(value);
                 this.value = value;
             });
     }
 
-    public ngOnChanges(): void {
+    public ngOnChanges({value}: SimpleChanges): void {
         this.defaultViewedMonth = this.value?.from || this.defaultViewedMonth;
+        this.resetSelectedActivePeriod(value?.currentValue);
     }
 
     public ngOnInit(): void {
@@ -225,6 +227,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
                 inDisabledRange || this.isDisabledItem(disabledItemHandler, value, item)
             );
         };
+    }
+
+    private resetSelectedActivePeriod(value: TuiDayRange | null): void {
+        if (value?.toString() !== this.selectedActivePeriod?.range.toString()) {
+            this.selectedActivePeriod = null;
+        }
     }
 
     private isDisabledItem(
