@@ -67,6 +67,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'NgDompurifyModule', moduleSpecifier: '@tinkoff/ng-dompurify'},
+        to: {name: 'NgDompurifyPipe', moduleSpecifier: '@taiga-ui/dompurify'},
+    },
+    {
         from: {name: 'TuiPanModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiPan', moduleSpecifier: '@taiga-ui/cdk'},
     },
