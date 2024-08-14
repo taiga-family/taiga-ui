@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
@@ -28,7 +27,6 @@ import {TuiTextareaDirective} from './textarea.directive';
         PolymorpheusTemplate,
         TuiIcon,
         TuiAppearance,
-        TuiBlock,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
     exports: [

@@ -54,7 +54,6 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -87,7 +86,6 @@ export interface TuiCard {
         TuiChevron,
         TuiAppearance,
         TuiIconPipe,
-        TuiBlock,
     ],
     templateUrl: './input-card-group.template.html',
     styleUrls: ['./input-card-group.style.less'],

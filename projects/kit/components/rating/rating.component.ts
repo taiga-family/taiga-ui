@@ -13,8 +13,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TuiBlock} from '@taiga-ui/kit/components';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import type {TuiRatingOptions} from './rating.options';
 import {TUI_RATING_OPTIONS} from './rating.options';
@@ -22,15 +21,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
 @Component({
     standalone: true,
     selector: 'tui-rating',
-    imports: [
-        CommonModule,
-        FormsModule,
-        TuiIcon,
-        TuiRepeatTimes,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiBlock,
-    ],
+    imports: [CommonModule, FormsModule, TuiIcon, TuiRepeatTimes, PolymorpheusOutlet],
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

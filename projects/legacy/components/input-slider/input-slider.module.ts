@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiNumberFormat} from '@taiga-ui/core/directives/number-format';
-import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
@@ -20,7 +19,6 @@ import {TuiInputSliderComponent} from './input-slider.component';
         TuiNumberFormat,
         TuiTextfieldControllerModule,
         ...TuiSlider,
-        TuiBlock,
     ],
     declarations: [TuiInputSliderComponent],
     exports: [TuiInputSliderComponent, ...TuiSlider],

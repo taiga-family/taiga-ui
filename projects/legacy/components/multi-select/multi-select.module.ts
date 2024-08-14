@@ -6,7 +6,6 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiStringifyContentPipe} from '@taiga-ui/kit/pipes/stringify-content';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
@@ -20,12 +19,12 @@ import {
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiHideSelectedPipe} from './hide-selected.pipe';
-import {TuiMultiSelectComponent} from './multi-select.component';
-import {TuiMultiSelectDirective} from './multi-select.directive';
 import {TuiMultiSelectGroupComponent} from './multi-select-group/multi-select-group.component';
 import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-group.directive';
-import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
+import {TuiMultiSelectComponent} from './multi-select.component';
+import {TuiMultiSelectDirective} from './multi-select.directive';
 import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
+import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
 
 @NgModule({
     imports: [
@@ -47,7 +46,6 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         ...TuiDropdown,
         ...TuiDataList,
         ...TuiDataListWrapper,
-        TuiBlock,
     ],
     declarations: [
         TuiMultiSelectComponent,

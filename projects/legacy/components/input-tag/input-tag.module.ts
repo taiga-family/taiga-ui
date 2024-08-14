@@ -7,7 +7,6 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
 import {TuiTooltipModule} from '@taiga-ui/legacy/components/tooltip';
 import {
@@ -33,7 +32,6 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiAppearance,
         TuiIcon,
         ...TuiDropdown,
-        TuiBlock,
     ],
     declarations: [TuiInputTagComponent],
     providers: [TuiScrollService],
