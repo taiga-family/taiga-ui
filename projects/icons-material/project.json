@@ -20,7 +20,7 @@
                 "parallel": false,
                 "commands": [
                     "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
-                    "prettier ./{projectRoot}/src/* --write"
+                    "prettier ./{projectRoot}/src/* --write --log-level silent"
                 ]
             }
         },
