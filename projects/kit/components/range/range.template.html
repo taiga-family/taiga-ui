@@ -15,6 +15,7 @@
         [max]="max"
         [min]="min"
         [ngModel]="value()[0]"
+        [ngModelOptions]="{standalone: true}"
         [size]="size"
         [tabIndex]="focusable ? 0 : -1"
     />
@@ -30,6 +31,7 @@
         [max]="max"
         [min]="min"
         [ngModel]="value()[1]"
+        [ngModelOptions]="{standalone: true}"
         [size]="size"
         [tabIndex]="focusable ? 0 : -1"
     />

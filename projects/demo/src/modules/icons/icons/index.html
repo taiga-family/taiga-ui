@@ -4,43 +4,30 @@
     type="icons"
 >
     <ng-template pageTab="Overview">
-        <h2 class="title">Lucide (default) icons pack</h2>
-
-        <p>
-            Open source theme for Taiga UI uses processed
-            <a
-                href="https://lucide.dev/"
-                rel="noreferrer"
-                target="_blank"
-                tuiLink
-            >
-                Lucide Icons
-            </a>
-            . You can browse all the icons from this pack and find the one that suits you
-            <a
-                href="https://lucide.dev/icons/"
-                rel="noreferrer"
-                target="_blank"
-                tuiLink
-            >
-                here
-            </a>
-            .
-        </p>
+        Open source theme for Taiga UI
+        <a
+            href="https://lucide.dev/"
+            rel="noreferrer"
+            target="_blank"
+            tuiLink
+        >
+            Lucide Icons
+        </a>
+        by default. You can browse all the icons from this pack
+        <a
+            href="https://lucide.dev/icons/"
+            rel="noreferrer"
+            target="_blank"
+            tuiLink
+        >
+            here
+        </a>
 
         <tui-doc-example
             id="basic"
             heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="custom icons"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [fullsize]="true"
         />
     </ng-template>
 

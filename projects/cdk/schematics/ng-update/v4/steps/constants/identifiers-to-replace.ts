@@ -1169,7 +1169,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiBarComponent',
+            name: 'TuiBar',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },

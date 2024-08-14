@@ -39,6 +39,7 @@
     class="t-edit"
     [attr.maxLength]="maxLength"
     [ngModel]="editedText"
+    [ngModelOptions]="{standalone: true}"
     (blur)="onBlur()"
     (keydown)="onKeyDown($event)"
     (ngModelChange)="onInput($event)"

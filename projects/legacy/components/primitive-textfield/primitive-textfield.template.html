@@ -25,6 +25,7 @@
         [disabled]="computedDisabled"
         [id]="id"
         [ngModel]="value"
+        [ngModelOptions]="{standalone: true}"
         [readOnly]="readOnly || !editable"
         [tabIndex]="computedFocusable ? 0 : -1"
         (ngModelChange)="onModelChange($event)"

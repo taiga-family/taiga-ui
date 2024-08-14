@@ -4,7 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
+import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
 import {TuiAccordionItem} from './accordion-item.component';
@@ -12,13 +12,6 @@ import {TuiAccordionItem} from './accordion-item.component';
 @Directive({
     standalone: true,
     selector: 'tui-accordion',
-    providers: [
-        tuiGroupOptionsProvider({
-            orientation: 'vertical',
-            size: 'l',
-            collapsed: true,
-        }),
-    ],
     hostDirectives: [
         {
             directive: TuiGroup,
@@ -34,6 +27,14 @@ export class TuiAccordionDirective implements AfterContentInit {
 
     @Input()
     public closeOthers = true;
+
+    constructor() {
+        // Not using DI options to avoid changed defaults spilling to content
+        const group = inject(TuiGroup);
+
+        group.orientation = 'vertical';
+        group.collapsed = true;
+    }
 
     public ngAfterContentInit(): void {
         const {accordionItems} = this;

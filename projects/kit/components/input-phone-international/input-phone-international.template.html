@@ -8,6 +8,7 @@
         tuiTextfield
         [disabled]="disabled()"
         [focused]="open() || null"
+        [ngModelOptions]="{standalone: true}"
         [readOnly]="readOnly()"
     ></select>
 
@@ -27,6 +28,7 @@
         [disabled]="disabled()"
         [invalid]="invalid()"
         [maskito]="mask()"
+        [ngModelOptions]="{standalone: true}"
         [readOnly]="readOnly()"
         [(ngModel)]="textfieldValue"
         (beforeinput.capture)="onPaste($event)"

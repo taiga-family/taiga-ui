@@ -1,7 +1,7 @@
 {
     "name": "@taiga-ui/icons-fontawesome",
     "version": "4.1.0",
-    "description": "Fontawesome icons for Taiga UI",
+    "description": "FontAwesome icons for Taiga UI",
     "keywords": [
         "angular",
         "icon",
