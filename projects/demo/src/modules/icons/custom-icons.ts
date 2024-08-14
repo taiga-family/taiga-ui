@@ -1,0 +1,33 @@
+export const COLORED_ICONS = [
+    '@tui.electron',
+    '@tui.cirrus',
+    '@tui.maestro',
+    '@tui.mastercard',
+    '@tui.mir',
+    '@tui.visa',
+    '@tui.union-pay',
+    '@tui.jcb',
+    '@tui.pay-pal',
+    '@tui.amex',
+    '@tui.diners-club',
+    '@tui.discover',
+    '@tui.humo',
+    '@tui.ru-pay',
+    '@tui.uzcard',
+    '@tui.verve',
+    '@tui.apple-pay',
+    '@tui.google-pay',
+    '@tui.samsung-pay',
+    '@tui.world-pay',
+    '@tui.ali-pay',
+    '@tui.amazon-pay',
+    '@tui.android-pay',
+] as const;
+
+export const MONO_ICONS = [
+    '@tui.electron-mono',
+    '@tui.maestro-mono',
+    '@tui.mastercard-mono',
+    '@tui.mir-mono',
+    '@tui.visa-mono',
+] as const;
