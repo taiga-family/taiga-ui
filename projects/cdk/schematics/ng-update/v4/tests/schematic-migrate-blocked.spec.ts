@@ -64,6 +64,7 @@ const TEMPLATE_BEFORE = `
   size="m"
   [hideCheckbox]="true"
   [(ngModel)]="value"
+  [contentAlign]="contentAlign"
 >
   {{ block.name }}
 </tui-checkbox-block>
@@ -115,6 +116,7 @@ const TEMPLATE_AFTER = `
   ${''}
   ${''}
   [(ngModel)]="value"
+  ${''}
 >
   {{ block.name }}
 </label>

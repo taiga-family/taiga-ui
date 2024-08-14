@@ -8,6 +8,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
+import type {Location} from 'parse5/dist/common/token';
 
 export function migrateBlocked({
     resource,
@@ -46,6 +47,10 @@ export function migrateBlocked({
             Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
                 name.includes('*ngfor'),
             ) || [];
+        const [, contentAlignAttrLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
+                name.includes('contentalign'),
+            ) || [];
         const sizeAttr = findAttr(attrs, 'size');
         const ngForAttr = findAttr(attrs, '*ngFor');
 
@@ -65,25 +70,18 @@ export function migrateBlocked({
             '</label>',
         );
 
-        if (hideIconAttrLocation) {
-            recorder.remove(
-                templateOffset + hideIconAttrLocation.startOffset,
-                hideIconAttrLocation.endOffset - hideIconAttrLocation.startOffset,
-            );
-        }
+        const attrsToRemove = [
+            hideIconAttrLocation,
+            sizeAttrLocation,
+            ngForAttrLocation,
+            contentAlignAttrLocation,
+        ].filter((location): location is Location => Boolean(location));
 
-        if (sizeAttrLocation) {
+        attrsToRemove.forEach((location) => {
             recorder.remove(
-                templateOffset + sizeAttrLocation.startOffset,
-                sizeAttrLocation.endOffset - sizeAttrLocation.startOffset,
+                templateOffset + location.startOffset,
+                location.endOffset - location.startOffset,
             );
-        }
-
-        if (ngForAttrLocation) {
-            recorder.remove(
-                templateOffset + ngForAttrLocation.startOffset,
-                ngForAttrLocation.endOffset - ngForAttrLocation.startOffset,
-            );
-        }
+        });
     });
 }
