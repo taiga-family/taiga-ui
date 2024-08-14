@@ -73,4 +73,5 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Dézoomer',
         reset: 'Réinitialiser',
     },
+    phoneSearch: 'Tapez le pays ou le code',
 };

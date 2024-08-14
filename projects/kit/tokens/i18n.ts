@@ -73,3 +73,7 @@ export const TUI_PREVIEW_TEXTS = tuiCreateTokenFromFactory(
 export const TUI_PREVIEW_ZOOM_TEXTS = tuiCreateTokenFromFactory(
     tuiExtractI18n('zoomTexts'),
 );
+
+export const TUI_INTERNATIONAL_SEARCH = tuiCreateTokenFromFactory(
+    tuiExtractI18n('phoneSearch'),
+);

@@ -69,4 +69,5 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Zbliżenie',
         reset: 'Resetowanie',
     },
+    phoneSearch: 'Nuna imaluunniit kode allaguk',
 };

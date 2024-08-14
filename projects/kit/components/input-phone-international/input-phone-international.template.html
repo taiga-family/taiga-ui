@@ -8,7 +8,7 @@
         tuiTextfield
         [attr.data-mode]="mode()"
         [disabled]="disabled()"
-        [focused]="open() || null"
+        [focused]="open()"
         [ngModelOptions]="{standalone: true}"
     ></select>
 
@@ -53,21 +53,36 @@
     </label>
 </tui-textfield>
 
-<tui-data-list *tuiTextfieldDropdown>
-    <button
-        *ngFor="let item of countries"
-        tuiOption
-        type="button"
-        (click)="onItemClick(item)"
+<ng-container *tuiTextfieldDropdown>
+    <tui-textfield
+        *ngIf="countrySearch"
+        class="t-search"
+        [iconStart]="icons.search"
     >
-        <img
-            alt=""
-            class="t-flag"
-            [src]="item | tuiFlag"
+        <label tuiLabel>{{ internationalSearchLabel$ | async }}</label>
+        <input
+            tuiAutoFocus
+            tuiTextfield
+            [ngModel]="search()"
+            (keydown.arrowDown)="focusFirstItem()"
+            (ngModelChange)="search.set($event)"
         />
-        <span class="t-name">{{ names()?.[item] }}</span>
-        <span class="t-code">
-            {{ item | tuiGetCountryCallingCode: metadata() }}
-        </span>
-    </button>
-</tui-data-list>
+    </tui-textfield>
+
+    <tui-data-list>
+        <button
+            *ngFor="let item of filtered()"
+            tuiOption
+            type="button"
+            (click)="onItemClick(item.iso)"
+        >
+            <img
+                alt=""
+                class="t-flag"
+                [src]="item.iso | tuiFlag"
+            />
+            <span class="t-name">{{ item.name }}</span>
+            <span class="t-code">{{ item.code }}</span>
+        </button>
+    </tui-data-list>
+</ng-container>

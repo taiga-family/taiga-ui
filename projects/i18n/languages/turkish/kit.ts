@@ -69,4 +69,5 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Yakınlaştır',
         reset: 'Sıfırla',
     },
+    phoneSearch: 'Ülke veya kodu yazın',
 };

@@ -69,4 +69,5 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'ズームイン',
         reset: 'リセット',
     },
+    phoneSearch: '国またはコードを入力',
 };

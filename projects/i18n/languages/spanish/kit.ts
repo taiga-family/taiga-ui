@@ -69,4 +69,5 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Acercarse',
         reset: 'Reiniciar',
     },
+    phoneSearch: 'Escriba el país o el código',
 };
