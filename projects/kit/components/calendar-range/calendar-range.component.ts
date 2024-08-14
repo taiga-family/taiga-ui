@@ -6,9 +6,11 @@ import {
     HostListener,
     Inject,
     Input,
+    OnChanges,
     Optional,
     Output,
     Self,
+    SimpleChanges,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -47,7 +49,9 @@ import {takeUntil} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
-export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
+export class TuiCalendarRangeComponent
+    implements TuiWithOptionalMinMax<TuiDay>, OnChanges
+{
     @Input()
     defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -107,6 +111,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
 
         valueChanges.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe(value => {
+            this.resetSelectedActivePeriod(value);
             this.value = value;
         });
     }
@@ -119,6 +124,10 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
         event.stopPropagation();
         this.value = this.previousValue;
+    }
+
+    ngOnChanges({value}: SimpleChanges): void {
+        this.resetSelectedActivePeriod(value?.currentValue);
     }
 
     readonly monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, month) =>
@@ -245,6 +254,12 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 inDisabledRange || this.isDisabledItem(disabledItemHandler, value, item)
             );
         };
+    }
+
+    private resetSelectedActivePeriod(value: TuiDayRange | null): void {
+        if (value?.toString() !== this.selectedActivePeriod?.range.toString()) {
+            this.selectedActivePeriod = null;
+        }
     }
 
     private isDisabledItem(

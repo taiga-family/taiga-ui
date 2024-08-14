@@ -226,6 +226,32 @@ describe('rangeCalendarComponent', () => {
             expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
             expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
         });
+
+        it('when value updates, displays appropriate checkbox', () => {
+            const today = TuiDay.currentLocal();
+            const yesterday = TuiDay.currentLocal().append({day: -1});
+            const previousMonth = today.append({month: -1});
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '1'),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, yesterday), '2'),
+            ];
+            fixture.detectChanges();
+
+            component.onItemSelect(component.items[1]);
+            fixture.detectChanges();
+
+            const items = getItems();
+
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+
+            testComponent.value = new TuiDayRange(previousMonth, today);
+            fixture.detectChanges();
+
+            expect(items[0].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(items[1].nativeElement.contains(getCheckmark())).toBe(false);
+        });
     });
 
     function getCalendar(): DebugElement | null {
