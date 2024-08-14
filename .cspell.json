@@ -4,6 +4,7 @@
     "files": ["*/*.*"],
     "ignorePaths": [
         ".git",
+        "LICENSE",
         "CHANGELOG.md",
         ".cspell.json",
         ".github/CODEOWNERS",
