@@ -10,7 +10,8 @@ import {
     tuiProvide,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint, TuiIcon, type TuiValueContentContext} from '@taiga-ui/core';
+import type {TuiValueContentContext} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
