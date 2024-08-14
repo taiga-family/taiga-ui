@@ -1,13 +1,5 @@
 import type {ElementRef} from '@angular/core';
-import {
-    Directive,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiResizable} from './resizable.directive';
@@ -15,7 +7,13 @@ import {TuiResizable} from './resizable.directive';
 @Directive({
     standalone: true,
     selector: '[tuiResizer]',
-    host: {'[style.touchAction]': '"none"'},
+    host: {
+        '[style.cursor]': 'cursor',
+        '[style.touchAction]': '"none"',
+        '(pointerdown.silent.prevent)': 'onPointerDown($event.x, $event.y)',
+        '(document:pointermove.silent)': 'onPointerMove($event)',
+        '(document:pointerup.silent)': 'onPointerUp()',
+    },
 })
 export class TuiResizer {
     private readonly resizable: ElementRef<HTMLElement> = inject(TuiResizable);
@@ -31,7 +29,6 @@ export class TuiResizer {
     @Output()
     public readonly tuiSizeChange = new EventEmitter<readonly [x: number, y: number]>();
 
-    @HostBinding('style.cursor')
     protected get cursor(): string {
         if (!this.tuiResizer[0]) {
             return 'ns-resize';
@@ -48,7 +45,6 @@ export class TuiResizer {
         return 'nesw-resize';
     }
 
-    @HostListener('pointerdown.silent.prevent', ['$event.x', '$event.y'])
     protected onPointerDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
@@ -56,7 +52,6 @@ export class TuiResizer {
         this.height = this.resizable.nativeElement.clientHeight;
     }
 
-    @HostListener('document:pointermove.silent', ['$event'])
     protected onPointerMove({x, y, buttons}: PointerEvent): void {
         if (!buttons) {
             this.onPointerUp();
@@ -65,7 +60,6 @@ export class TuiResizer {
         }
     }
 
-    @HostListener('document:pointerup.silent')
     protected onPointerUp(): void {
         this.x = NaN;
     }
