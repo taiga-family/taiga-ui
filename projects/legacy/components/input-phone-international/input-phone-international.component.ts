@@ -23,7 +23,7 @@ import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
-import {TuiBlock} from '@taiga-ui/kit';
+import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';

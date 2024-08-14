@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiBlock} from '@taiga-ui/kit';
+import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {
     TuiPrimitiveTextfieldModule,

@@ -5,7 +5,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiBlock} from '@taiga-ui/kit';
+import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';

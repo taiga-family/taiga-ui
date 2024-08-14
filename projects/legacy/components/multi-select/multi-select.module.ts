@@ -6,7 +6,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiBlock} from '@taiga-ui/kit';
+import {TuiBlock} from '@taiga-ui/kit/components/block';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiStringifyContentPipe} from '@taiga-ui/kit/pipes/stringify-content';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
