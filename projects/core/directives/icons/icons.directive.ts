@@ -30,13 +30,17 @@ class TuiIconsStyles {}
         '[style.--t-icon-end]': 'iconEnd ? "url(" + resolver(iconEnd) + ")" : null',
     },
 })
-export class TuiIcons {
+export class TuiIcons<Icon extends string> {
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     @Input()
-    public iconStart = inject(TUI_ICON_START, {self: true, optional: true}) || '';
+    public iconStart = (inject(TUI_ICON_START, {self: true, optional: true}) || '') as
+        | Icon
+        | (Record<never, never> & string);
 
     @Input()
-    public iconEnd = inject(TUI_ICON_END, {self: true, optional: true}) || '';
+    public iconEnd = (inject(TUI_ICON_END, {self: true, optional: true}) || '') as
+        | Icon
+        | (Record<never, never> & string);
 }

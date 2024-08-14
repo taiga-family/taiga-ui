@@ -2,6 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import {PAYMENTS_ICONS} from '../../../scripts/custom-icons';
+import {makeIconIndexFile, makeIconName} from '../../../scripts/make-icon-index-file';
 import {tuiIsCI} from '../../cdk/schematics';
 
 const verbose = !tuiIsCI();
@@ -9,6 +11,7 @@ const verbose = !tuiIsCI();
 (function main(): void {
     const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');
     const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 'src');
+    const icons: string[] = PAYMENTS_ICONS.map((name) => makeIconName(name));
 
     fs.readdirSync(src).forEach((filename: string) => {
         const filledFilename = renameToFilled(filename);
@@ -22,6 +25,11 @@ const verbose = !tuiIsCI();
         const filled = content.replaceAll('fill="none"', 'fill="currentColor"');
         const filePath = path.join(dest, filename);
         const fileFilledPath = path.join(dest, filledFilename);
+
+        icons.push(
+            makeIconName(filename.replace('.svg', '')),
+            makeIconName(filledFilename.replace('.svg', '')),
+        );
 
         fs.writeFileSync(filePath, content);
         verbose && console.info('copied:', filePath);
@@ -40,8 +48,12 @@ const verbose = !tuiIsCI();
 
         fs.mkdirSync(path.dirname(filePath), {recursive: true});
         fs.writeFileSync(filePath, content);
+        icons.push(makeIconName(`flags.${filename.replace('.svg', '')}`));
         verbose && console.info('copied:', filePath);
     });
+
+    // 3. make index.ts
+    fs.writeFileSync(path.join(dest, '..', 'index.ts'), makeIconIndexFile(icons));
 })();
 
 function renameToFilled(filename: string): string {

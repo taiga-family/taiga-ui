@@ -29,6 +29,8 @@
             "@taiga-ui/testing": ["./dist/testing/index"],
             "@taiga-ui/testing/*": ["./dist/testing/*"],
             "@taiga-ui/icons": ["./dist/icons"],
+            "@taiga-ui/icons-material": ["./dist/icons-material"],
+            "@taiga-ui/icons-fontawesome": ["./dist/icons-fontawesome"],
             "@taiga-ui/addon-doc": ["./dist/addon-doc"],
             "@taiga-ui/addon-doc/*": ["./dist/addon-doc/*"],
             "@taiga-ui/experimental": ["./dist/experimental"],

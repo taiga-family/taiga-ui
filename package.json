@@ -80,6 +80,7 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
+            "max-classes-per-file": "off",
             "jest/prefer-importing-jest-globals": "off",
             "prettier/prettier": [
                 "error",

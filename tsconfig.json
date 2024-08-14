@@ -34,6 +34,8 @@
             "@taiga-ui/i18n": ["projects/i18n/index"],
             "@taiga-ui/i18n/*": ["projects/i18n/*"],
             "@taiga-ui/icons": ["projects/icons/index"],
+            "@taiga-ui/icons-material": ["projects/icons-material/index"],
+            "@taiga-ui/icons-fontawesome": ["projects/icons-fontawesome/index"],
             "@taiga-ui/kit": ["projects/kit/index"],
             "@taiga-ui/kit/*": ["projects/kit/*"],
             "@taiga-ui/layout": ["projects/layout/index"],

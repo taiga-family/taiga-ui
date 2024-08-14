@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import {PAYMENTS_ICONS} from '../../../scripts/custom-icons';
+import {makeIconIndexFile, makeIconName} from '../../../scripts/make-icon-index-file';
 import {tuiIsCI} from '../../cdk/schematics';
 
 const verbose = !tuiIsCI();
@@ -10,6 +11,9 @@ const verbose = !tuiIsCI();
 (function main(): void {
     const dest =
         process.argv[2] || path.join(process.cwd(), 'projects', 'icons-material', 'src');
+    const icons: string[] = PAYMENTS_ICONS.map((name) =>
+        makeIconName(`material.${name}`),
+    );
 
     // 1. copy material icons
     ['filled', 'outlined', 'round', 'sharp', 'two-tone'].forEach((type) => {
@@ -32,6 +36,8 @@ const verbose = !tuiIsCI();
 
             const filePath = path.join(dest, 'material', type, filename);
 
+            icons.push(makeIconName(`material.${type}.${filename.replace('.svg', '')}`));
+
             fs.mkdirSync(path.dirname(filePath), {recursive: true});
             fs.writeFileSync(filePath, content);
 
@@ -48,7 +54,7 @@ const verbose = !tuiIsCI();
 
         fs.mkdirSync(path.dirname(filePath), {recursive: true});
         fs.writeFileSync(filePath, content);
-
+        icons.push(makeIconName(`material.flags.${filename.replace('.svg', '')}`));
         verbose && console.info('copied:', filePath);
     });
 
@@ -61,6 +67,10 @@ const verbose = !tuiIsCI();
             fs.readFileSync(path.join(filePath), 'utf-8'),
         );
 
+        icons.push(makeIconName(`material.${filename.replace('.svg', '')}`));
         verbose && console.info('copied:', filePath);
     });
+
+    // 4. make index.ts
+    fs.writeFileSync(path.join(dest, '..', 'index.ts'), makeIconIndexFile(icons));
 })();

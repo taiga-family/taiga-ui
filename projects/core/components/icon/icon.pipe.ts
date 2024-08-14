@@ -7,6 +7,6 @@ import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
     standalone: true,
     name: 'tuiIcon',
 })
-export class TuiIconPipe implements PipeTransform {
-    public readonly transform: TuiStringHandler<string> = tuiInjectIconResolver();
+export class TuiIconPipe<Icon extends string = string> implements PipeTransform {
+    public readonly transform: TuiStringHandler<Icon> = tuiInjectIconResolver();
 }
