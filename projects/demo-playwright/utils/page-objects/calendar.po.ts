@@ -12,7 +12,9 @@ export class TuiCalendarPO {
 
         for (const cell of cells) {
             if ((await cell.textContent())?.trim() === day.toString()) {
-                return cell.click();
+                await cell.click();
+
+                break;
             }
         }
     }

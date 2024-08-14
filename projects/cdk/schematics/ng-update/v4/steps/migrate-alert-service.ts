@@ -93,23 +93,24 @@ export function migrateAlertService(options: TuiSchema): void {
         .flat()
         .map(toAlertServiceOpenCallExpression);
 
-    const inlineAlertOptions = [
-        ...viaDirectInjects,
-        ...viaClassProperty,
-        ...viaConstructorParam,
-    ]
-        .map((callExpression) => {
+    const inlineAlertOptions: ObjectLiteralExpression[] = [];
+
+    [...viaDirectInjects, ...viaClassProperty, ...viaConstructorParam].forEach(
+        (callExpression) => {
             if (!callExpression || callExpression.wasForgotten()) {
                 return;
             }
 
             const [, arg] = callExpression.getArguments();
-
-            return arg?.isKind(SyntaxKind.PropertyAccessExpression)
+            const expression = arg?.isKind(SyntaxKind.PropertyAccessExpression)
                 ? findOptionsInitializer(arg)
                 : arg;
-        })
-        .filter(Node.isObjectLiteralExpression);
+
+            if (Node.isObjectLiteralExpression(expression)) {
+                inlineAlertOptions.push(expression);
+            }
+        },
+    );
 
     const standaloneAlertOptions = getNamedImportReferences(
         'TuiAlertOptions',
