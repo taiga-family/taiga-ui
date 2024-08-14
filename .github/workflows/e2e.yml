@@ -22,7 +22,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.45.1
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
+        run: npx nx build demo -c next --output-path ${{ env.DIST }}
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v3.3.2
@@ -129,6 +129,7 @@ jobs:
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/taiga-family/taiga-ui.git ${{ env.DIST_NEXT }}
 
+      # Dont forget to delete this step later
       - name: Find and replace baseHref for next snapshot
         uses: jacobtomlinson/gha-find-replace@v3
         with:

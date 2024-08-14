@@ -44,7 +44,7 @@
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
-                "baseHref": "./",
+                "baseHref": "/",
                 "styles": [
                     "{projectRoot}/src/normalize.less",
                     "{projectRoot}/src/styles.less",
@@ -91,11 +91,8 @@
                     "statsJson": false,
                     "progress": false
                 },
-                "development": {
-                    "baseHref": "/"
-                },
+                "development": {},
                 "def": {
-                    "baseHref": "/",
                     "fileReplacements": [
                         {
                             "replace": "{projectRoot}/src/emulate/change-detection-strategy.ts",
@@ -104,7 +101,6 @@
                     ]
                 },
                 "shadow": {
-                    "baseHref": "/",
                     "fileReplacements": [
                         {
                             "replace": "{projectRoot}/src/emulate/view-encapsulation.ts",
@@ -113,13 +109,11 @@
                     ]
                 },
                 "fast": {
-                    "baseHref": "/",
                     "sourceMap": false,
                     "namedChunks": false,
                     "statsJson": false
                 },
                 "coalescing": {
-                    "baseHref": "/",
                     "fileReplacements": [
                         {
                             "replace": "{projectRoot}/src/emulate/ng-zone-options.ts",
