@@ -30,6 +30,14 @@ jobs:
       - name: Cleanup after clone snapshots
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
 
+      - name: Replace baseHref for v3
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/v3">'
+          include: '${{ env.DIST }}/v3/**/index.html'
+          regex: false
+
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
 
