@@ -1,5 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
+import type {Location} from 'parse5/dist/common/token';
 
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -8,7 +9,6 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
-import type {Location} from 'parse5/dist/common/token';
 
 export function migrateBlocked({
     resource,
