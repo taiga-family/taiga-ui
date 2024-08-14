@@ -60,7 +60,8 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: APP_BASE_HREF,
         // @note: By default, on webcontainer.io will not be provided APP_BASE_HREF, we use fallback
-        useFactory: () => inject(DOCUMENT).querySelector('base')?.href || '/',
+        useFactory: () =>
+            inject(DOCUMENT).querySelector('base')?.getAttribute('href') || '/',
     },
     {
         provide: TUI_IS_PLAYWRIGHT,
