@@ -47,7 +47,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/tui-editor',
         {
             name: '@taiga-ui/editor',
-            version: '^2.0.0',
+            version: '^2.5.0',
         },
         tree,
     );

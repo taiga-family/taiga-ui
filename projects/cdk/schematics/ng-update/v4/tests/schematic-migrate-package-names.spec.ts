@@ -59,7 +59,7 @@ const PACKAGE_JSON_AFTER = {
         '@taiga-ui/legacy': TUI_VERSION,
         '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
         '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
-        '@taiga-ui/editor': '^2.0.0',
+        '@taiga-ui/editor': '^2.5.0',
     },
 };
 
