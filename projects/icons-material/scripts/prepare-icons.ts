@@ -1,5 +1,11 @@
+/// <reference lib="es2021" />
 import fs from 'node:fs';
 import path from 'node:path';
+
+import {PAYMENTS_ICONS} from '../../../scripts/custom-icons';
+import {tuiIsCI} from '../../cdk/schematics';
+
+const verbose = !tuiIsCI();
 
 (function main(): void {
     const dest =
@@ -29,7 +35,7 @@ import path from 'node:path';
             fs.mkdirSync(path.dirname(filePath), {recursive: true});
             fs.writeFileSync(filePath, content);
 
-            console.info('copied:', filePath);
+            verbose && console.info('copied:', filePath);
         });
     });
 
@@ -43,40 +49,11 @@ import path from 'node:path';
         fs.mkdirSync(path.dirname(filePath), {recursive: true});
         fs.writeFileSync(filePath, content);
 
-        console.info('copied:', filePath);
+        verbose && console.info('copied:', filePath);
     });
 
     // 3. copy payment icons
-    [
-        'electron-mono',
-        'maestro-mono',
-        'mastercard-mono',
-        'mir-mono',
-        'visa-mono',
-        'electron',
-        'cirrus',
-        'maestro',
-        'mastercard',
-        'mir',
-        'visa',
-        'union-pay',
-        'jcb',
-        'pay-pal',
-        'amex',
-        'diners-club',
-        'discover',
-        'humo',
-        'ru-pay',
-        'uzcard',
-        'verve',
-        'apple-pay',
-        'google-pay',
-        'samsung-pay',
-        'world-pay',
-        'ali-pay',
-        'amazon-pay',
-        'android-pay',
-    ].forEach((filename) => {
+    PAYMENTS_ICONS.forEach((filename) => {
         const filePath = path.join('projects/icons/src', `${filename}.svg`);
 
         fs.writeFileSync(
@@ -84,6 +61,6 @@ import path from 'node:path';
             fs.readFileSync(path.join(filePath), 'utf-8'),
         );
 
-        console.info('copied:', filePath);
+        verbose && console.info('copied:', filePath);
     });
 })();
