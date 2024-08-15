@@ -129,15 +129,6 @@ jobs:
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/taiga-family/taiga-ui.git ${{ env.DIST_NEXT }}
 
-      # TODO: delete this step after merging of https://github.com/taiga-family/taiga-ui/pull/8526 (after snapshot update)
-      - name: Find and replace baseHref for next snapshot
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: '<base href="./">'
-          replace: '<base href="/">'
-          include: '${{ env.DIST_NEXT }}/index.html'
-          regex: false
-
       - name: Serve ${{ env.DIST_NEXT }} in background
         run: npx nx serve-compiled demo --path ${{ env.DIST_NEXT }} --port ${{ env.NG_SERVER_PORT }}
 
