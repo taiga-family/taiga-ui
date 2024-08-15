@@ -20,6 +20,11 @@ export class TuiFlagPipe implements PipeTransform {
             return null;
         }
 
-        return `${this.staticPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
+        const assetsPath =
+            typeof this.staticPath === 'string'
+                ? this.staticPath
+                : this.staticPath(countryIsoCode);
+
+        return `${assetsPath}/flags/${countryIsoCode.toLowerCase()}.svg`;
     }
 }
