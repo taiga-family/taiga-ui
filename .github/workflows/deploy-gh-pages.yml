@@ -1,10 +1,9 @@
 name: 🚀 Deploy to Github Pages (taiga-ui.dev)
 on:
-  # TODO: uncomment it later when all experiments with baseHref snapshots will be finished
-  #  workflow_run:
-  #    workflows: ['🚀 Snapshots']
-  #    types:
-  #      - completed
+  workflow_run:
+    workflows: ['🚀 Snapshots']
+    types:
+      - completed
   workflow_dispatch:
     inputs:
       dryRun:
