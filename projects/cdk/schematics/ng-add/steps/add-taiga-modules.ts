@@ -188,7 +188,9 @@ export function addTaigaModules(options: TuiSchema): Rule {
         } else {
             const mainClass = getMainModule(mainFilePath);
 
-            addTuiModules({mainClass, options, context});
+            if (mainClass) {
+                addTuiModules({mainClass, options, context});
+            }
         }
 
         saveActiveProject();

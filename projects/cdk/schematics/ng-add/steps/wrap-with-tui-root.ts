@@ -59,6 +59,11 @@ function getAppTemplatePath(mainPath: string): string {
     }
 
     const mainModule = getMainModule(mainPath);
+
+    if (!mainModule) {
+        return '';
+    }
+
     const mainInitializer = getTemplateInitializer(
         mainModule,
         'NgModule',
