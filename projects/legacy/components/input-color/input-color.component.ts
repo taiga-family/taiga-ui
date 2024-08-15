@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -31,6 +30,9 @@ type MaskMode = 'gradient' | 'hex' | 'rgb';
     styleUrls: ['./input-color.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
+    host: {
+        '(click)': 'onClick()',
+    },
 })
 export class TuiInputColorComponent
     extends AbstractTuiControl<string>
@@ -68,14 +70,13 @@ export class TuiInputColorComponent
         return this.value.startsWith('rgb') ? 'rgb' : 'gradient';
     }
 
-    @HostListener('click')
-    public onClick(): void {
-        this.open = !this.open;
-    }
-
     @tuiPure
     public maskitoOptions(mode: MaskMode): MaskitoOptions | null {
         return mode === 'hex' ? {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]} : null;
+    }
+
+    public onClick(): void {
+        this.open = !this.open;
     }
 
     /** deprecated use 'value' setter */

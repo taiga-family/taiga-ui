@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     ViewChild,
@@ -36,6 +35,9 @@ import {
         TUI_MONTH_FORMATTER_PROVIDER,
         TuiMonthPipe,
     ],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
@@ -92,7 +94,6 @@ export class TuiInputMonthComponent
         this.close();
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

@@ -5,7 +5,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    HostListener,
     inject,
     Input,
     NgZone,
@@ -64,6 +63,9 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
             useValue: TuiLineClampBox,
         },
     ],
+    host: {
+        '(transitionend)': 'updateView()',
+    },
 })
 export class TuiLineClamp implements DoCheck, AfterViewInit {
     @ViewChild(TuiHintDirective, {read: ElementRef})
@@ -135,7 +137,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
         return this.options.showHint && this.overflown ? this.content : '';
     }
 
-    @HostListener('transitionend')
     protected updateView(): void {
         this.cd.detectChanges();
     }

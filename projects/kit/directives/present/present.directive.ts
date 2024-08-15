@@ -1,5 +1,5 @@
 import type {OnDestroy} from '@angular/core';
-import {Directive, HostListener, Output} from '@angular/core';
+import {Directive, Output} from '@angular/core';
 import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({
@@ -7,6 +7,8 @@ import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
     selector: '[tuiPresentChange]',
     host: {
         '[style.animation]': '"tuiPresent 1s infinite"',
+        '(animationcancel.self)': 'onAnimation(false)',
+        '(animationstart.self)': 'onAnimation(true)',
     },
 })
 export class TuiPresent implements OnDestroy {
@@ -22,8 +24,6 @@ export class TuiPresent implements OnDestroy {
         this.visibility$.next(false);
     }
 
-    @HostListener('animationcancel.self', ['false'])
-    @HostListener('animationstart.self', ['true'])
     protected onAnimation(visibility: boolean): void {
         this.visibility$.next(visibility);
     }

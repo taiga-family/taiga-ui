@@ -3,8 +3,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -29,12 +27,22 @@ import {TUI_TAG_OPTIONS} from './tag.options';
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+        '[attr.data-status]': 'status',
+        '[class._editing]': 'editing',
+        '[class._hoverable]': 'hoverable',
+        '[class._autocolor]': 'autoColor',
+        '[class._disabled]': 'disabled',
+        '(keydown.delete)': 'remove($event)',
+        '(keydown.backspace)': 'remove($event)',
+        '(keydown.enter)': 'edit($event)',
+    },
 })
 export class TuiTagComponent {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TAG_OPTIONS);
 
-    @HostBinding('class._editing')
     protected editing = false;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -53,29 +61,24 @@ export class TuiTagComponent {
     public maxLength: number | null = null;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
     public showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-status')
     public status: TuiStatus = this.options.status;
 
     @Input()
-    @HostBinding('class._hoverable')
     public hoverable = false;
 
     @Input()
     public removable = false;
 
     @Input()
-    @HostBinding('class._disabled')
     public disabled = false;
 
     @Input()
-    @HostBinding('class._autocolor')
     public autoColor: boolean = this.options.autoColor;
 
     @Input()
@@ -107,7 +110,6 @@ export class TuiTagComponent {
         return tuiSizeBigger(this.size) ? 's' : 'xs';
     }
 
-    @HostListener('keydown.enter', ['$event'])
     protected edit(event: Event): void {
         if (!this.canEdit) {
             return;
@@ -118,8 +120,6 @@ export class TuiTagComponent {
         this.editedText = this.value;
     }
 
-    @HostListener('keydown.delete', ['$event'])
-    @HostListener('keydown.backspace', ['$event'])
     protected remove(event: Event): void {
         if (!this.canRemove) {
             return;

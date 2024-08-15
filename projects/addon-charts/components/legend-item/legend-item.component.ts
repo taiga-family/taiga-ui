@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
@@ -9,6 +9,11 @@ import type {TuiSizeS} from '@taiga-ui/core/types';
     templateUrl: './legend-item.template.html',
     styleUrls: ['./legend-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+        '[class._disabled]': 'disabled',
+        '[style.--tui-background-accent-1]': 'computedColor',
+    },
 })
 export class TuiLegendItem {
     @Input()
@@ -21,14 +26,11 @@ export class TuiLegendItem {
     public text = '';
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeS = 'm';
 
     @Input()
-    @HostBinding('class._disabled')
     public disabled = false;
 
-    @HostBinding('style.--tui-background-accent-1')
     protected get computedColor(): string | null {
         return this.color === 'var(--tui-background-accent-1)' ? null : this.color;
     }

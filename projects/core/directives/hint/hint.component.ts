@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -54,6 +54,7 @@ export const TUI_HINT_PROVIDERS = [
         '[class._untouchable]': 'pointer',
         '[attr.data-appearance]': 'appearance',
         '[attr.tuiTheme]': 'appearance',
+        '(document:click)': 'onClick($event.target)',
     },
 })
 export class TuiHintComponent<C = any> {
@@ -96,7 +97,6 @@ export class TuiHintComponent<C = any> {
             : this.hint.content;
     }
 
-    @HostListener('document:click', ['$event.target'])
     protected onClick(target: HTMLElement): void {
         if (
             (!target.closest('tui-hint') && !this.hint.el.contains(target)) ||

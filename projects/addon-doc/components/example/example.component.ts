@@ -1,12 +1,6 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
@@ -60,6 +54,10 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     templateUrl: './example.template.html',
     styleUrls: ['./example.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.id]': 'id',
+        '[class._fullsize]': 'fullsize',
+    },
 })
 export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
@@ -104,7 +102,6 @@ export class TuiDocExample {
     );
 
     @Input()
-    @HostBinding('attr.id')
     public id: string | null = null;
 
     @Input()
@@ -114,7 +111,6 @@ export class TuiDocExample {
     public description: PolymorpheusContent;
 
     @Input()
-    @HostBinding('class._fullsize')
     public fullsize = inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize;
 
     @Input()

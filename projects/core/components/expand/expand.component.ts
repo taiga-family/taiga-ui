@@ -7,8 +7,6 @@ import {
     Component,
     ContentChild,
     DestroyRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     TemplateRef,
@@ -47,6 +45,13 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
     animations: [tuiParentAnimation],
     host: {
         ngSkipHydration: 'true',
+        '[style.height.px]': 'height',
+        '[class._loading]': 'loading',
+        '[class._overflow]': 'overflow',
+        '[class._expanded]': 'expanded',
+        '[attr.aria-expanded]': 'expanded',
+        '(transitionend.self)': 'onTransitionEnd($event)',
+        [`(${TUI_EXPAND_LOADED})`]: 'onExpandLoaded($event)',
     },
 })
 export class TuiExpandComponent {
@@ -60,8 +65,6 @@ export class TuiExpandComponent {
     @ContentChild(TuiExpandContent, {read: TemplateRef})
     protected content: TemplateRef<NgIfContext<boolean>> | null = null;
 
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
     protected expanded: boolean | null = null;
 
     @Input()
@@ -90,17 +93,14 @@ export class TuiExpandComponent {
         return this.expanded || this.state !== State.Idle;
     }
 
-    @HostBinding('class._overflow')
     protected get overflow(): boolean {
         return this.state !== State.Idle;
     }
 
-    @HostBinding('class._loading')
     protected get loading(): boolean {
         return !!this.expanded && this.async && this.state === State.Loading;
     }
 
-    @HostBinding('style.height.px')
     protected get height(): number | null {
         const {expanded, state, contentWrapper} = this;
 
@@ -126,7 +126,6 @@ export class TuiExpandComponent {
         return null;
     }
 
-    @HostListener('transitionend.self', ['$event'])
     protected onTransitionEnd({propertyName, pseudoElement}: TransitionEvent): void {
         if (
             propertyName === 'opacity' &&
@@ -137,7 +136,7 @@ export class TuiExpandComponent {
         }
     }
 
-    @HostListener(TUI_EXPAND_LOADED, ['$event'])
+    // noinspection JSUnusedGlobalSymbols
     protected onExpandLoaded(event: Event): void {
         event.stopPropagation();
 

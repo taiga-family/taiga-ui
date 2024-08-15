@@ -1,6 +1,6 @@
 import type {AnimationOptions} from '@angular/animations';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
@@ -41,7 +41,11 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     providers: [TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
     host: {
+        '[@tuiSlideInTop]': 'slideInTop',
+        '[@tuiFadeIn]': 'slideInTop',
         '[attr.data-appearance]': 'context.appearance',
+        '[attr.data-size]': 'size',
+        '[class._centered]': 'header',
     },
 })
 export class TuiDialogComponent<O, I> {
@@ -86,18 +90,14 @@ export class TuiDialogComponent<O, I> {
             });
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiDialogSize {
         return this.context.size;
     }
 
-    @HostBinding('class._centered')
     protected get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
         return this.context.header;
     }
 
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
     protected get slideInTop(): AnimationOptions {
         return this.fullscreen || this.isMobile
             ? this.fullscreenAnimation

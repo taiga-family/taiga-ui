@@ -3,7 +3,6 @@ import {
     Component,
     computed,
     ContentChild,
-    HostListener,
     inject,
     signal,
     TemplateRef,
@@ -40,6 +39,9 @@ import {TuiAsideComponent} from './aside.component';
         TuiDropdownPositionSided,
         TuiDropdownOpen,
     ],
+    host: {
+        '(click)': 'onClick()',
+    },
 })
 export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     @ViewChild('datalist', {static: true})
@@ -63,7 +65,6 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
 
     public readonly size = 's';
 
-    @HostListener('click')
     protected onClick(): void {
         this.open.set(!this.open() && this.aside.expanded());
         this.chevron?.chevron.set(this.open());

@@ -1,4 +1,4 @@
-import {DestroyRef, Directive, HostListener, inject, Input, NgZone} from '@angular/core';
+import {DestroyRef, Directive, inject, Input, NgZone} from '@angular/core';
 import type {AbstractControl, Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -9,6 +9,9 @@ import {timer} from 'rxjs';
     standalone: true,
     selector: '[tuiNativeValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
+    host: {
+        '(blur)': 'handleValidation()',
+    },
 })
 export class TuiNativeValidator implements Validator {
     private readonly destroyRef = inject(DestroyRef);
@@ -29,7 +32,6 @@ export class TuiNativeValidator implements Validator {
         return null;
     }
 
-    @HostListener('blur')
     protected handleValidation(): void {
         this.el.setCustomValidity?.(
             this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',

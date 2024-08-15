@@ -1,5 +1,5 @@
 import type {OnInit} from '@angular/core';
-import {Directive, ElementRef, HostBinding, inject} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
@@ -15,14 +15,17 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
     useFactory: readyToScrollFactory,
 };
 
-@Directive()
+@Directive({
+    host: {
+        '[attr.data-tui-major-version]': 'majorVersion',
+    },
+})
 export abstract class AbstractDemo implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
 
     private readonly element = tuiInjectElement();
 
-    @HostBinding('attr.data-tui-major-version')
     protected readonly majorVersion = inject(TUI_SELECTED_VERSION_META)?.title;
 
     protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED)

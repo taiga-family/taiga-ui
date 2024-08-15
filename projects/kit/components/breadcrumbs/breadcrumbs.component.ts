@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    HostBinding,
     inject,
     Input,
     TemplateRef,
@@ -25,6 +24,9 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiBreadcrumbs {
     @ContentChildren(TuiItem, {read: TemplateRef})
@@ -34,6 +36,5 @@ export class TuiBreadcrumbs {
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiBreadcrumbsOptions['size'] = this.options.size;
 }

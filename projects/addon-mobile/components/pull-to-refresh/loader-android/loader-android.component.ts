@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -18,17 +18,20 @@ const ROTATE_X_MULTIPLIER = 2.3;
     templateUrl: './loader-android.template.html',
     styleUrls: ['./loader-android.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._visible]': 'percent',
+        '[class._dropped]': 'dropped',
+        '[style.transform]': 'hostTransform',
+    },
 })
 export class TuiMobileLoaderAndroid {
     private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
-    @HostBinding('class._visible')
     protected get percent(): number {
         return (this.context.$implicit * 100) / this.threshold;
     }
 
-    @HostBinding('class._dropped')
     protected get dropped(): boolean {
         return (
             this.context.$implicit <= MICRO_OFFSET ||
@@ -36,7 +39,6 @@ export class TuiMobileLoaderAndroid {
         );
     }
 
-    @HostBinding('style.transform')
     protected get hostTransform(): string {
         return `translateY(${Math.min(this.context.$implicit, this.threshold * 1.5)}px)`;
     }

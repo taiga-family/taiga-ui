@@ -5,8 +5,6 @@ import {
     Component,
     ContentChildren,
     forwardRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewEncapsulation,
@@ -44,6 +42,15 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     providers: [tuiAsDataListAccessor(TuiDataListComponent)],
     host: {
         role: 'listbox',
+        '[attr.data-size]': 'size',
+        '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
+        '(mousedown.prevent)': '(0)',
+        '(wheel.silent.passive)': 'handleFocusLossIfNecessary()',
+        '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
+        '(keydown.tab)': 'handleFocusLossIfNecessary()',
+        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
+        '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
+        '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
     },
 })
 export class TuiDataListComponent<T>
@@ -62,21 +69,14 @@ export class TuiDataListComponent<T>
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size = tuiInjectDataListSize();
 
-    @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
     public onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;
 
         tuiMoveFocus(elements.indexOf(current), elements, step);
     }
 
-    @HostListener('wheel.silent.passive')
-    @HostListener('mouseleave', ['$event.target'])
-    @HostListener('keydown.tab')
-    @HostListener('keydown.shift.tab')
     public handleFocusLossIfNecessary(element: Element = this.el): void {
         if (tuiIsNativeFocusedIn(element)) {
             this.origin?.focus({preventScroll: true});
@@ -95,15 +95,11 @@ export class TuiDataListComponent<T>
             .filter(tuiIsPresent);
     }
 
-    @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
     protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
         if (!currentTarget.contains(relatedTarget) && !this.origin) {
             this.origin = relatedTarget;
         }
     }
-
-    @HostListener('mousedown.prevent')
-    protected noop(): void {}
 
     private get elements(): readonly HTMLElement[] {
         return Array.from(

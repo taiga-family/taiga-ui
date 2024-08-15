@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     ViewChild,
@@ -39,6 +38,9 @@ import {TUI_INPUT_COPY_OPTIONS} from './input-copy.options';
         tuiAsFocusableItemAccessor(TuiInputCopyComponent),
         tuiAsControl(TuiInputCopyComponent),
     ],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
@@ -76,11 +78,6 @@ export class TuiInputCopyComponent
         this.value = value;
     }
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     @tuiPure
     protected get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
@@ -101,6 +98,10 @@ export class TuiInputCopyComponent
                 ),
             ),
         );
+    }
+
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     protected get icon(): TuiInputCopyOptions['icon'] {

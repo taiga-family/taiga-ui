@@ -4,7 +4,6 @@ import {
     Component,
     DestroyRef,
     Directive,
-    HostListener,
     inject,
     Input,
     ViewEncapsulation,
@@ -55,6 +54,9 @@ class TuiRippleStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiRipple]',
+    host: {
+        '(pointerdown.silent)': 'start($event.clientX, $event.clientY, $event.target)',
+    },
 })
 export class TuiRipple {
     private readonly document = inject(DOCUMENT);
@@ -71,11 +73,6 @@ export class TuiRipple {
     })
     public selector = DEFAULT_SELECTOR;
 
-    @HostListener('pointerdown.silent', [
-        '$event.clientX',
-        '$event.clientY',
-        '$event.target',
-    ])
     protected start(x: number, y: number, target: HTMLElement): void {
         const element = target.closest(this.selector);
 

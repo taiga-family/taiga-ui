@@ -4,8 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     TemplateRef,
@@ -57,6 +55,11 @@ const MIN_WIDTH = 160;
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._sticky]': 'sticky',
+        '(window:resize)': 'onResize()',
+        '(document:mouseup.silent)': 'onMouseUp()',
+    },
 })
 export class TuiDocDemo implements OnInit {
     @ViewChild(TuiResizable, {static: true})
@@ -96,7 +99,6 @@ export class TuiDocDemo implements OnInit {
     public control: AbstractControl | null = null;
 
     @Input()
-    @HostBinding('class._sticky')
     public sticky = true;
 
     public ngOnInit(): void {
@@ -104,13 +106,11 @@ export class TuiDocDemo implements OnInit {
         this.updateWidth(this.sandboxWidth + this.delta);
     }
 
-    @HostListener('window:resize')
     protected onResize(): void {
         this.updateWidth();
         this.onMouseUp();
     }
 
-    @HostListener('document:mouseup.silent')
     protected onMouseUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
     }

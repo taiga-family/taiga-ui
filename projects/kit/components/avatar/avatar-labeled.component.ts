@@ -2,7 +2,6 @@ import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -27,10 +26,12 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     styleUrls: ['./avatar-labeled.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.title]': 'label',
+    },
 })
 export class TuiAvatarLabeled {
     @Input()
-    @HostBinding('attr.title')
     public label = '';
 
     @tuiPure

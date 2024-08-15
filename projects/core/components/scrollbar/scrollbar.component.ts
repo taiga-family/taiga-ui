@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostListener,
     inject,
     Input,
 } from '@angular/core';
@@ -38,7 +37,11 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
             useFactory: () => inject(TuiScrollbar).browserScrollRef,
         },
     ],
-    host: {'[class._native-hidden]': '!isIOS || hidden'},
+    host: {
+        '[class._native-hidden]': '!isIOS || hidden',
+        [`(${TUI_SCROLLABLE}.stop)`]: 'onScrollable($event.detail)',
+        [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
+    },
 })
 export class TuiScrollbar {
     private readonly el = tuiInjectElement();
@@ -54,12 +57,12 @@ export class TuiScrollbar {
         return this.browserScrollRef.nativeElement !== this.el;
     }
 
-    @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
+    // noinspection JSUnusedGlobalSymbols
     protected onScrollable(element: HTMLElement): void {
         this.browserScrollRef.nativeElement = element;
     }
 
-    @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
+    // noinspection JSUnusedGlobalSymbols
     protected scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;

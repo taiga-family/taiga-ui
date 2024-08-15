@@ -1,7 +1,7 @@
 import type {BooleanInput} from '@angular/cdk/coercion';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
-import {Directive, HostListener, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -26,6 +26,10 @@ const SLIDER_INTERACTION_KEYS = new Set([
 @Directive({
     standalone: true,
     selector: 'input[tuiSlider][readonly]',
+    host: {
+        '(keydown)': 'preventKeyboardInteraction($event)',
+        '(mousedown)': 'preventEvent($event)',
+    },
 })
 export class TuiSliderReadonly {
     private readonly el = tuiInjectElement<HTMLInputElement>();
@@ -65,14 +69,12 @@ export class TuiSliderReadonly {
             .subscribe(([moveEvent]) => this.preventEvent(moveEvent));
     }
 
-    @HostListener('mousedown', ['$event'])
     protected preventEvent(event: Event): void {
         if (event.cancelable && this.readonly) {
             event.preventDefault();
         }
     }
 
-    @HostListener('keydown', ['$event'])
     protected preventKeyboardInteraction(event: KeyboardEvent): void {
         if (SLIDER_INTERACTION_KEYS.has(event.key)) {
             this.preventEvent(event);

@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -52,6 +51,12 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     templateUrl: './arc-chart.template.html',
     styleUrls: ['./arc-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+        '[style.width.rem]': 'width',
+        '[style.height.rem]': 'width',
+        '[style.strokeWidth.rem]': 'strokeWidth',
+    },
 })
 export class TuiArcChart {
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
@@ -62,7 +67,6 @@ export class TuiArcChart {
     public value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeXL = 'm';
 
     @Input()
@@ -103,13 +107,10 @@ export class TuiArcChart {
         this.arcs$.next(arcs);
     }
 
-    @HostBinding('style.width.rem')
-    @HostBinding('style.height.rem')
     protected get width(): number {
         return SIZE[this.size];
     }
 
-    @HostBinding('style.strokeWidth.rem')
     protected get strokeWidth(): number {
         return WIDTH[this.size];
     }

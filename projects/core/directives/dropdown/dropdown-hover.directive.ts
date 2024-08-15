@@ -1,13 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    ContentChild,
-    Directive,
-    ElementRef,
-    HostListener,
-    inject,
-    Input,
-    NgZone,
-} from '@angular/core';
+import {ContentChild, Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
@@ -25,6 +17,9 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
     standalone: true,
     selector: '[tuiDropdownHover]',
     providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHover)],
+    host: {
+        '(click.capture)': 'onClick($event)',
+    },
 })
 export class TuiDropdownHover extends TuiDriver {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
@@ -64,7 +59,6 @@ export class TuiDropdownHover extends TuiDriver {
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener('click.capture', ['$event'])
     protected onClick(event: MouseEvent): void {
         if (this.hovered && this.open) {
             event.preventDefault();

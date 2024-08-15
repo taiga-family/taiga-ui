@@ -1,8 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -20,6 +18,10 @@ import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/h
     styleUrls: ['./tooltip.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
+    host: {
+        '[attr.data-appearance]': 'computedAppearance',
+        '(mousedown)': 'stopOnMobile($event)',
+    },
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
@@ -33,12 +35,10 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     @Input()
     public context?: C;
 
-    @HostBinding('attr.data-appearance')
     protected get computedAppearance(): string {
         return this.appearance || '';
     }
 
-    @HostListener('mousedown', ['$event'])
     protected stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();

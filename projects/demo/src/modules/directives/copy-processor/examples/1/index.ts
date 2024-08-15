@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, HostListener, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -15,6 +15,9 @@ import {map} from 'rxjs';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    host: {
+        '(copy)': 'onCopy($event)',
+    },
 })
 export default class Example {
     private readonly format = inject(TUI_NUMBER_FORMAT);
@@ -31,7 +34,6 @@ export default class Example {
         ),
     );
 
-    @HostListener('copy', ['$event'])
     protected onCopy(event: ClipboardEvent): void {
         this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
     }

@@ -3,8 +3,6 @@ import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     ViewChild,
     ViewChildren,
@@ -54,6 +52,15 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
+    host: {
+        '[@tuiSlideInTop]': 'slideInTop',
+        '[style.top.px]': 'offset',
+        '[class._closeable]': 'closeable',
+        '(document:touchstart.passive.silent)': 'onPointerChange(1)',
+        '(document:touchend.silent)': 'onPointerChange(-1)',
+        '(document:touchcancel.silent)': 'onPointerChange(-1)',
+        '(scroll.silent)': 'onPointerChange(0)',
+    },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChild('sheet')
@@ -67,7 +74,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     private pointers = 0;
 
-    @HostBinding('@tuiSlideInTop')
     protected readonly slideInTop = {
         value: '',
         params: {
@@ -95,12 +101,10 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         ];
     }
 
-    @HostBinding('style.top.px')
     protected get offset(): number {
         return this.context.offset;
     }
 
-    @HostBinding('class._closeable')
     protected get closeable(): boolean {
         return this.context.closeable;
     }
@@ -109,10 +113,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
     }
 
-    @HostListener('document:touchstart.passive.silent', ['1'])
-    @HostListener('document:touchend.silent', ['-1'])
-    @HostListener('document:touchcancel.silent', ['-1'])
-    @HostListener('scroll.silent', ['0'])
+    @shouldCall(isCloseable)
+    protected close(): void {
+        // TODO: Refactor focus visible on mobile
+        this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
+        this.context.$implicit.complete();
+    }
+
     protected onPointerChange(delta: number): void {
         this.pointers += delta;
 
@@ -125,13 +132,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (this.context.closeable && !this.pointers && !this.el.scrollTop) {
             this.close();
         }
-    }
-
-    @shouldCall(isCloseable)
-    protected close(): void {
-        // TODO: Refactor focus visible on mobile
-        this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
-        this.context.$implicit.complete();
     }
 
     private get sheetTop(): number {

@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     inject,
     INJECTOR,
     Input,
@@ -32,6 +31,8 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          */
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
+        '[style.--tui-slider-segment-width.%]': 'segmentWidth',
+        '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
     },
 })
@@ -64,7 +65,6 @@ export class TuiSliderComponent {
         }
     }
 
-    @HostBinding('style.--tui-slider-fill-ratio')
     public get valueRatio(): number {
         return (this.value - this.min) / (this.max - this.min) || 0;
     }
@@ -93,14 +93,13 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    @HostBinding('style.--tui-slider-segment-width.%')
-    protected get segmentWidth(): number {
-        return 100 / Math.max(1, this.segments);
-    }
-
     @tuiPure
     protected get hasKeySteps(): boolean {
         return Boolean(this.injector.get(TuiSliderKeySteps, null));
+    }
+
+    protected get segmentWidth(): number {
+        return 100 / Math.max(1, this.segments);
     }
 
     protected get step(): number {

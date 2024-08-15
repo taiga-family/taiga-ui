@@ -1,4 +1,4 @@
-import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 
 @Directive({
@@ -10,11 +10,11 @@ import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
             useFactory: () => inject(TuiPlatform).tuiPlatform,
         },
     ],
+    host: {
+        '[attr.data-platform]': 'tuiPlatform',
+    },
 })
 export class TuiPlatform {
     @Input()
-    @HostBinding('attr.data-platform')
-    public tuiPlatform: 'android' | 'ios' | 'web' = inject(TUI_PLATFORM, {
-        skipSelf: true,
-    });
+    public tuiPlatform = inject(TUI_PLATFORM, {skipSelf: true});
 }

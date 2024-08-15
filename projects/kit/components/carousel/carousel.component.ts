@@ -6,8 +6,6 @@ import {
     Component,
     ContentChildren,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -52,6 +50,14 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
             inputs: ['duration'],
         },
     ],
+    host: {
+        '[class._transitioned]': 'transitioned',
+        '[class._draggable]': 'draggable',
+        '(touchstart)': 'onTransitioned(false)',
+        '(touchend)': 'onTransitioned(true)',
+        '(mousedown)': 'onTransitioned(false)',
+        '(document:mouseup.silent)': 'onTransitioned(true)',
+    },
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();
@@ -64,13 +70,11 @@ export class TuiCarouselComponent {
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 
-    @HostBinding('class._transitioned')
     protected transitioned = true;
 
     protected index = 0;
 
     @Input()
-    @HostBinding('class._draggable')
     public draggable = false;
 
     @Input()
@@ -103,18 +107,6 @@ export class TuiCarouselComponent {
         return `translateX(${100 * x}%)`;
     }
 
-    @HostListener('touchstart', ['false'])
-    @HostListener('touchend', ['true'])
-    @HostListener('mousedown', ['false'])
-    @HostListener('document:mouseup.silent', ['true'])
-    protected onTransitioned(transitioned: boolean): void {
-        this.transitioned = transitioned;
-
-        if (!transitioned) {
-            this.translate = this.computedTranslate;
-        }
-    }
-
     @tuiPure
     protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
         const percent = `${100 / itemsCount}%`;
@@ -124,6 +116,14 @@ export class TuiCarouselComponent {
             minWidth: percent,
             maxWidth: percent,
         };
+    }
+
+    protected onTransitioned(transitioned: boolean): void {
+        this.transitioned = transitioned;
+
+        if (!transitioned) {
+            this.translate = this.computedTranslate;
+        }
     }
 
     protected isDisabled(index: number): boolean {

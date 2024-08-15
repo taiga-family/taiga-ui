@@ -1,11 +1,4 @@
-import {
-    Directive,
-    HostBinding,
-    inject,
-    Input,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import {Directive, inject, Input, TemplateRef, ViewChild} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -19,7 +12,11 @@ import {AbstractTuiControl} from './control';
 /**
  * @deprecated: drop in v5.0
  */
-@Directive()
+@Directive({
+    host: {
+        '[id]': 'id',
+    },
+})
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
     private readonly idService = inject(TuiIdService);
 
@@ -37,7 +34,6 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
     @Input()
     public placeholder = '';
 
-    @HostBinding('id')
     protected get id(): string {
         return this.el.id || this.idService.generate();
     }

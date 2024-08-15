@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -33,6 +32,11 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(focusout.stop)': '(0)',
+        '(pointerdown.silent)': 'onDrag()',
+        '(document:pointerup.silent)': 'onDrop()',
+    },
 })
 export class TuiReorder<T> {
     private dragging = false;
@@ -66,15 +70,10 @@ export class TuiReorder<T> {
         $implicit,
     }) => String($implicit);
 
-    @HostListener('focusout.stop')
-    protected noop(): void {}
-
-    @HostListener('pointerdown.silent')
     protected onDrag(): void {
         this.dragging = true;
     }
 
-    @HostListener('document:pointerup.silent')
     protected onDrop(): void {
         if (!this.dragging) {
             return;

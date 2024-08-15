@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoPipe} from '@maskito/angular';
@@ -14,6 +14,9 @@ import metadata from 'libphonenumber-js/max/metadata';
     `,
     encapsulation,
     changeDetection,
+    host: {
+        '(click)': 'showUtilityPower()',
+    },
 })
 export default class Example {
     protected rawValue = '12125552368';
@@ -22,7 +25,6 @@ export default class Example {
         countryIsoCode: 'US',
     });
 
-    @HostListener('click')
     protected showUtilityPower(): void {
         console.info(maskitoTransform(this.rawValue, this.mask));
     }

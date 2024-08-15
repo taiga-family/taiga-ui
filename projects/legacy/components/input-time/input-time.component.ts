@@ -1,8 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -48,6 +46,10 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '(click)': 'onClick()',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
@@ -82,7 +84,6 @@ export class TuiInputTimeComponent
     @Input()
     public mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -208,7 +209,6 @@ export class TuiInputTimeComponent
         return this.timeTexts$.pipe(map((texts) => texts[mode]));
     }
 
-    @HostListener('click')
     protected onClick(): void {
         this.open = !this.open;
     }

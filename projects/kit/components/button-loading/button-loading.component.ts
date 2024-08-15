@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostListener,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
@@ -31,6 +25,7 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         '[attr.aria-disabled]': 'loading',
         '[class._loading]': 'loading',
+        '(click.capture)': 'onClick($event)',
     },
 })
 export class TuiButtonLoading {
@@ -50,7 +45,6 @@ export class TuiButtonLoading {
         return tuiIsString(this.loading) ? this.loading : '';
     }
 
-    @HostListener('click.capture', ['$event'])
     protected onClick(event: MouseEvent): void {
         if (this.loading) {
             event.stopPropagation();

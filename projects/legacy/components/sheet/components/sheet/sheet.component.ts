@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    HostListener,
     inject,
     Input,
     NgZone,
@@ -36,6 +35,7 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
         '[class._ios]': 'isIos',
+        [`(${TUI_SHEET_ID})`]: 'onId($event.detail)',
     },
 })
 export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
@@ -95,7 +95,6 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         ];
     }
 
-    @HostListener(TUI_SHEET_ID, ['$event.detail'])
     protected onId(id: string): void {
         this.id = id;
     }

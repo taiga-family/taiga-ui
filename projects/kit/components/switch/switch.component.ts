@@ -2,7 +2,6 @@ import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     ViewEncapsulation,
@@ -30,6 +29,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',
+        '[style.--t-checked-icon]': 'icon',
     },
 })
 export class TuiSwitch implements DoCheck {
@@ -50,7 +50,6 @@ export class TuiSwitch implements DoCheck {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
-    @HostBinding('style.--t-checked-icon')
     protected get icon(): string | null {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);

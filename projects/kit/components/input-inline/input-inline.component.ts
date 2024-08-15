@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    HostListener,
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -20,6 +19,9 @@ import {defer} from 'rxjs';
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(scroll.capture)': 'onScroll($event.target)',
+    },
 })
 export class TuiInputInline {
     @ContentChild(NgControl)
@@ -29,7 +31,6 @@ export class TuiInputInline {
 
     protected indent = -1;
 
-    @HostListener('scroll.capture', ['$event.target'])
     protected onScroll(target: EventTarget | null): void {
         if (tuiIsElement(target) && tuiIsInput(target)) {
             this.indent = -target.scrollLeft - 1; // -1 for Safari (see styles)

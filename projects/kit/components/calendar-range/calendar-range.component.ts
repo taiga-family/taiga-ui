@@ -5,7 +5,6 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -41,6 +40,9 @@ import type {TuiDayRangePeriod} from './day-range-period';
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(document:keydown.capture)': 'onEsc($event)',
+    },
 })
 export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
@@ -109,7 +111,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         );
     }
 
-    @HostListener('document:keydown.capture', ['$event'])
     protected onEsc(event: KeyboardEvent): void {
         if (event.key !== 'Escape' || !this.value?.isSingleDay) {
             return;

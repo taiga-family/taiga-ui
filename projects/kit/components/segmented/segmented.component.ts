@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     NgZone,
@@ -29,6 +28,9 @@ import {TuiSegmentedDirective} from './segmented.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
     hostDirectives: [TuiSegmentedDirective],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
@@ -38,7 +40,6 @@ export class TuiSegmented implements OnChanges {
         .subscribe(() => this.refresh());
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = 's';
 
     @Input()

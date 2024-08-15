@@ -3,8 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
-    HostListener,
     inject,
     ViewChild,
 } from '@angular/core';
@@ -20,6 +18,11 @@ import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
     // It follows Change Detection of PrimitiveTextfield
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    host: {
+        '[class._table]': 'isContextTable',
+        '[class._filler]': 'filler',
+        '(animationstart)': 'ngDoCheck()',
+    },
 })
 export class TuiValueDecorationComponent implements DoCheck {
     @ViewChild('pre', {read: ElementRef, static: true})
@@ -40,17 +43,14 @@ export class TuiValueDecorationComponent implements DoCheck {
         distinctUntilChanged(),
     );
 
-    @HostListener('animationstart')
     public ngDoCheck(): void {
         this.prefix$.next(this.prefix);
     }
 
-    @HostBinding('class._table')
     protected get isContextTable(): boolean {
         return this.textfield.appearance === 'table';
     }
 
-    @HostBinding('class._filler')
     protected get filler(): string {
         const {focused, placeholder, exampleText, value, textfield} = this;
 

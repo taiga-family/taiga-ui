@@ -1,11 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostListener,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -22,6 +16,10 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     styleUrls: ['./error.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiHeightCollapse, tuiFadeIn],
+    host: {
+        '(animationcancel.self)': 'onAnimation(false)',
+        '(animationstart.self)': 'onAnimation(true)',
+    },
 })
 export class TuiError {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
@@ -34,8 +32,6 @@ export class TuiError {
         this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }
 
-    @HostListener('animationcancel.self', ['false'])
-    @HostListener('animationstart.self', ['true'])
     protected onAnimation(visible: boolean): void {
         this.visible = visible;
     }

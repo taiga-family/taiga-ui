@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -41,6 +40,9 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     styleUrls: ['./filter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([])],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiFilter<T> extends TuiControl<readonly T[]> {
     @Input()
@@ -50,7 +52,6 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size;
 
     @Input()

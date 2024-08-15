@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -21,6 +20,10 @@ import {TuiPreviewAction} from '../preview-action/preview-action.directive';
     templateUrl: './preview-pagination.template.html',
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(document:keydown.arrowRight.prevent)': 'onArrowClick(1)',
+        '(document:keydown.arrowLeft.prevent)': 'onArrowClick(-1)',
+    },
 })
 export class TuiPreviewPagination {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
@@ -35,8 +38,6 @@ export class TuiPreviewPagination {
     @Output()
     public readonly indexChange = new EventEmitter<number>();
 
-    @HostListener('document:keydown.arrowRight.prevent', ['1'])
-    @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
     public onArrowClick(step: number): void {
         this.updateIndex(tuiClamp(this.index + step, 0, this.length - 1));
     }

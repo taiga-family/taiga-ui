@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
-    HostBinding,
     inject,
     Input,
 } from '@angular/core';
@@ -24,6 +23,10 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.width.px]': 'width',
+        '[class._sticky]': 'sticky',
+    },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
@@ -32,7 +35,6 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
         optional: true,
     });
 
-    @HostBinding('style.width.px')
     protected width: number | null = null;
 
     protected readonly table = inject<TuiTableDirective<T>>(
@@ -49,7 +51,6 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     public resizable = this.options.resizable;
 
     @Input()
-    @HostBinding('class._sticky')
     public sticky = this.options.sticky;
 
     public get key(): keyof T {

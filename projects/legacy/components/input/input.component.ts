@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    HostBinding,
     inject,
     TemplateRef,
     ViewChild,
@@ -40,6 +39,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         tuiAsControl(TuiInputComponent),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>
@@ -58,7 +60,6 @@ export class TuiInputComponent
 
     public open = false;
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

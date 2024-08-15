@@ -5,7 +5,6 @@ import {
     DestroyRef,
     Directive,
     ElementRef,
-    HostListener,
     inject,
     PLATFORM_ID,
 } from '@angular/core';
@@ -21,6 +20,9 @@ import {TuiSegmented} from './segmented.component';
 
 @Directive({
     standalone: true,
+    host: {
+        '(click)': 'update($event.target)',
+    },
 })
 export class TuiSegmentedDirective implements AfterContentChecked, AfterContentInit {
     @ContentChildren(NgControl, {descendants: true})
@@ -57,7 +59,6 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         }
     }
 
-    @HostListener('click', ['$event.target'])
     protected update(target: Element | null): void {
         const index = this.getIndex(target);
 

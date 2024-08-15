@@ -1,11 +1,5 @@
 import {NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
@@ -20,12 +14,14 @@ import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
     templateUrl: './thumbnail-card.template.html',
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiThumbnailCard {
     protected readonly options = inject(TUI_THUMBNAIL_CARD_OPTIONS);
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()

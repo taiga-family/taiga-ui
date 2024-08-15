@@ -1,13 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {OnInit, Provider, Type} from '@angular/core';
-import {
-    ChangeDetectorRef,
-    DestroyRef,
-    Directive,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectorRef, DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
@@ -31,7 +24,12 @@ import {AbstractTuiInteractive} from './interactive';
  * @deprecated: drop in v5.0
  * Basic ControlValueAccessor class to build form components upon
  */
-@Directive()
+@Directive({
+    host: {
+        '[class._readonly]': 'readOnly',
+        '[class._invalid]': 'computedInvalid',
+    },
+})
 export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
     implements OnInit, ControlValueAccessor
@@ -51,7 +49,6 @@ export abstract class AbstractTuiControl<T>
     );
 
     @Input()
-    @HostBinding('class._readonly')
     public readOnly = false;
 
     @Input()
@@ -75,7 +72,6 @@ export abstract class AbstractTuiControl<T>
 
     protected abstract getFallbackValue(): T;
 
-    @HostBinding('class._invalid')
     public get computedInvalid(): boolean {
         return (
             this.interactive &&

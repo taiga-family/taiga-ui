@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
@@ -10,6 +10,9 @@ import {TuiCompass} from '@taiga-ui/kit';
     template: '<tui-compass [degrees]="degrees"></tui-compass>',
     encapsulation,
     changeDetection,
+    host: {
+        '(document:mousemove)': 'calculate($event)',
+    },
 })
 export default class Example {
     @ViewChild(TuiCompass, {read: ElementRef})
@@ -17,7 +20,6 @@ export default class Example {
 
     protected degrees = 0;
 
-    @HostListener('document:mousemove', ['$event'])
     protected calculate(event: MouseEvent): void {
         const rect =
             this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;

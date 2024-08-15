@@ -5,7 +5,6 @@ import {
     Component,
     Directive,
     EventEmitter,
-    HostListener,
     inject,
     INJECTOR,
     Input,
@@ -34,7 +33,10 @@ class TuiTabsStyles {}
 
 @Directive({
     standalone: true,
-    host: {'[attr.data-size]': 'size'},
+    host: {
+        '[attr.data-size]': 'size',
+        [`(${TUI_TAB_ACTIVATE})`]: 'onActivate($event, $event.target)',
+    },
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
@@ -74,7 +76,6 @@ export class TuiTabsDirective implements AfterViewChecked {
         );
     }
 
-    @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])
     protected onActivate(event: Event, element: HTMLElement): void {
         const index = this.tabs.findIndex((tab) => tab === element);
 

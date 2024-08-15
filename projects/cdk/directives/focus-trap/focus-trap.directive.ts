@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
-import {Directive, HostListener, inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {
     tuiContainsOrAfter,
     tuiInjectElement,
@@ -17,6 +17,7 @@ import {
     selector: '[tuiFocusTrap]',
     host: {
         tabIndex: '0',
+        '(window:focusin.silent)': 'onFocusIn($event.target)',
     },
 })
 export class TuiFocusTrap implements OnDestroy {
@@ -50,7 +51,6 @@ export class TuiFocusTrap implements OnDestroy {
         });
     }
 
-    @HostListener('window:focusin.silent', ['$event.target'])
     protected onFocusIn(node: Node): void {
         if (!tuiContainsOrAfter(this.el, node)) {
             tuiGetClosestFocusable({

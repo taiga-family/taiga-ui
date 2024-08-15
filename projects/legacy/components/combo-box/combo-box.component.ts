@@ -3,7 +3,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -56,6 +55,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -101,7 +103,6 @@ export class TuiComboBoxComponent<T>
 
     public open = false;
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

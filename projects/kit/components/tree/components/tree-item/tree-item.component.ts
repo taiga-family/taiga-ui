@@ -5,7 +5,6 @@ import {
     Component,
     ContentChildren,
     forwardRef,
-    HostBinding,
     inject,
     SkipSelf,
 } from '@angular/core';
@@ -42,6 +41,7 @@ import {
     ],
     host: {
         role: 'treeitem',
+        '[class._expandable]': 'isExpandable',
     },
 })
 export class TuiTreeItem implements DoCheck {
@@ -72,7 +72,6 @@ export class TuiTreeItem implements DoCheck {
         distinctUntilChanged(),
     );
 
-    @HostBinding('class._expandable')
     public get isExpandable(): boolean {
         return !!this.nested.length;
     }

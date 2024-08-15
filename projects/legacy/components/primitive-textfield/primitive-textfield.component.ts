@@ -4,8 +4,6 @@ import {
     Component,
     ContentChildren,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -53,9 +51,17 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
+        '[attr.data-size]': 'size',
+        '[class._readonly]': 'readOnly',
+        '[class._hidden]': 'inputHidden',
+        '[class._invalid]': 'computedInvalid',
         '[class._autofilled]': 'autofilled',
+        '[style.--border-start.rem]': 'borderStart',
+        '[style.--border-end.rem]': 'borderEnd',
         '[class._label-outside]':
             'options.appearance() === "table" || controller.labelOutside',
+        '(focusin)': 'onFocused(true)',
+        '(focusout)': 'onFocused(false)',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -87,7 +93,6 @@ export class TuiPrimitiveTextfieldComponent
     public iconCleaner = this.legacyOptions.iconCleaner;
 
     @Input()
-    @HostBinding('class._readonly')
     public readOnly = false;
 
     @Input()
@@ -139,27 +144,22 @@ export class TuiPrimitiveTextfieldComponent
         this.updateValue(value);
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    @HostBinding('class._invalid')
     protected get computedInvalid(): boolean {
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
-    @HostBinding('class._hidden')
     protected get inputHidden(): boolean {
         return !!this.content?.length;
     }
 
-    @HostBinding('style.--border-start.rem')
     protected get borderStart(): number {
         return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
-    @HostBinding('style.--border-end.rem')
     protected get borderEnd(): number {
         return tuiGetBorder(
             !!this.iconContent,
@@ -241,17 +241,15 @@ export class TuiPrimitiveTextfieldComponent
         return this.nativeFocusableElement?.id || '';
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
-    }
-
     @tuiPure
     protected getIndent$(element: HTMLElement): Observable<number> {
         return fromEvent(element, 'scroll').pipe(
             map(() => -1 * Math.max(element.scrollLeft, 0)),
         );
+    }
+
+    protected onFocused(focused: boolean): void {
+        this.updateFocused(focused);
     }
 
     protected clear(): void {

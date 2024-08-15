@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    HostBinding,
     inject,
     Input,
     NgZone,
@@ -45,24 +44,26 @@ class TuiFadeStyles {}
             useValue: {characterData: true, subtree: true},
         },
     ],
+    host: {
+        '[style.line-height]': 'lineHeight',
+        '[style.--line-height]': 'lineHeight',
+        '[style.--fade-size]': 'size',
+        '[style.--fade-offset]': 'offset',
+        '[attr.data-orientation]': 'orientation',
+    },
 })
 export class TuiFade {
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
-    @HostBinding('style.line-height')
-    @HostBinding('style.--line-height')
     public lineHeight: string | null = null;
 
     @Input('tuiFadeSize')
-    @HostBinding('style.--fade-size')
     public size = '1.5em';
 
     @Input('tuiFadeOffset')
-    @HostBinding('style.--fade-offset')
     public offset = '0em';
 
     @Input('tuiFade')
-    @HostBinding('attr.data-orientation')
     public orientation: TuiOrientation | '' = 'horizontal';
 
     constructor() {

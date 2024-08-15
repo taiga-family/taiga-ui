@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -14,9 +13,11 @@ import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
     styleUrls: ['./avatar-stack.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-direction]': 'direction',
+    },
 })
 export class TuiAvatarStack {
     @Input()
-    @HostBinding('attr.data-direction')
     public direction: TuiHorizontalDirection = 'right';
 }

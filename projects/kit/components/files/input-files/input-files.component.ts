@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    HostListener,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
@@ -40,6 +39,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
         '(dragenter)': 'onDrag($event.dataTransfer)',
         '(dragleave.self)': 'onDrag(null)',
         '[class._dragged]': 'fileDragged',
+        '(change)': 'onFilesSelected($event.target)',
     },
 })
 export class TuiInputFiles {
@@ -56,7 +56,6 @@ export class TuiInputFiles {
         return !!this.files && !this.input?.disabled();
     }
 
-    @HostListener('change', ['$event.target'])
     protected onFilesSelected(input: HTMLInputElement): void {
         if (!input?.files) {
             return;

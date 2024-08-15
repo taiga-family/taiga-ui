@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -17,6 +16,9 @@ import {TuiPickerService} from '../services/picker.service';
     styleUrls: ['./linear-multi-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
+    host: {
+        '(document:mouseup)': 'onMouseUp()',
+    },
 })
 export class TuiLinearMultiPickerComponent {
     @Input()
@@ -36,7 +38,6 @@ export class TuiLinearMultiPickerComponent {
             .subscribe(([x]) => this.onPicker(x));
     }
 
-    @HostListener('document:mouseup')
     public onMouseUp(): void {
         this.index = NaN;
     }
