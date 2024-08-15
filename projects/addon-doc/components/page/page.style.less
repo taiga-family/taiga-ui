@@ -20,7 +20,7 @@
     flex-shrink: 0;
     margin: 0 ~'min(10vw, 8.75rem)';
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         font: var(--tui-font-heading-4);
         min-height: 4.5rem;
         padding: 1.25rem 1.25rem 0;
@@ -54,7 +54,7 @@
     margin: 1.125rem 0.3125rem 0 0;
     box-shadow: none;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         margin-top: 0.25rem;
     }
 }
@@ -63,7 +63,7 @@
     padding: 2rem 0;
     margin: 0 ~'min(10vw, 8.75rem)';
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 2rem 1.25rem;
         margin: 0;
     }
@@ -75,7 +75,7 @@
     float: right;
     margin-left: 1.5rem;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         float: none;
         width: 100%;
         margin: 0 0 1.5rem;
