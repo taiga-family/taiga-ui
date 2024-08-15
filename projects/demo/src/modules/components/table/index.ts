@@ -18,5 +18,6 @@ export default class Page {
         'With tuiSortBy directive to work with column titles instead of sorters',
         'Virtual scroll',
         'Dynamic columns',
+        'Footer',
     ];
 }
