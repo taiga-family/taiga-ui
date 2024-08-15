@@ -5,13 +5,17 @@ on:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
 jobs:
-  canary-3x:
-    name: Packages
+  canary:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: [v3.x, main]
+    name: Publish canary for ${{ matrix.branch }} branch
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.67.0
         with:
-          ref: v3.x
+          ref: ${{ matrix.branch }}
       - uses: taiga-family/ci/actions/setup/variables@v1.67.0
       - uses: taiga-family/ci/actions/setup/node@v1.67.0
         with:
