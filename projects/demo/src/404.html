@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <base href="./" />
+        <base href="/" />
         <meta charset="utf-8" />
         <title>Taiga UI</title>
         <script>
@@ -23,6 +23,7 @@
                 // @note: use preserve log for debug
                 console.log(`[404.html]: Try navigate to '${url}'`);
                 console.log(`[404.html]: Application path '${appPath}'`);
+                console.log(`[404.html]: Redirect url '${redirectUrl}'`);
 
                 localStorage.setItem('env', appPath);
                 location.replace(redirectUrl);
