@@ -34,7 +34,7 @@ export default defineConfig({
                                 output: 'assets/taiga-ui/icons',
                             },
                         ],
-                        baseHref: './',
+                        baseHref: '/',
                         styles: ['projects/demo/src/styles/styles.less'],
                     },
                 },
