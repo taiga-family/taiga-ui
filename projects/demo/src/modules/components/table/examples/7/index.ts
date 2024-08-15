@@ -11,14 +11,14 @@ import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit'
 @Component({
     standalone: true,
     imports: [
-        TuiTable,
         NgForOf,
-        TuiFormatNumberPipe,
         AsyncPipe,
+        FormsModule,
+        TuiTable,
+        TuiFormatNumberPipe,
         TuiButton,
         TuiButtonSelect,
         TuiPagination,
-        FormsModule,
         TuiDataListWrapper,
         TuiTextfield,
     ],
@@ -39,11 +39,11 @@ export default class Example {
         },
     ] as const;
 
-    readonly items = [10, 50, 100];
-    readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
+    protected readonly items = [10, 50, 100];
+    protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
         `${$implicit} items per page`;
 
-    index = 4;
-    length = 10;
-    size = 10;
+    protected index = 4;
+    protected length = 10;
+    protected size = 10;
 }
