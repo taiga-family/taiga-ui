@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -48,6 +47,9 @@ import {TUI_FILE_OPTIONS} from './file.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],
+    host: {
+        '[attr.data-delete]': 'showDelete',
+    },
 })
 export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
@@ -68,7 +70,6 @@ export class TuiFile {
     public size: TuiSizeL = 'm';
 
     @Input()
-    @HostBinding('attr.data-delete')
     public showDelete: boolean | 'always' = true;
 
     @Input()
