@@ -1,8 +1,7 @@
 name: 🚀 Snapshots
 on:
   push:
-    # TODO: Revert this line before merge
-    branches: [main, 'v[0-9]+.x', 'release/**', doc-base-href-v4]
+    branches: [main, 'v[0-9]+.x', 'release/**']
   workflow_dispatch:
     inputs:
       updateMain:
@@ -27,14 +26,12 @@ jobs:
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
-          # TODO: Revert this line before merge
-          BRANCH: snapshots/demo/next/main
+          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   production-snapshot:
     name: Push production snapshot
-    # TODO: Revert this line before merge
-    # if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
+    if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.66.6
