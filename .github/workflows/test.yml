@@ -18,6 +18,7 @@ jobs:
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v4.5.0
         with:
+          codecov_yml_path: ./.github/codecov.yml
           directory: ./coverage/
           flags: summary
           name: units
