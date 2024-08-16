@@ -10,8 +10,8 @@ import {TuiTableThead} from './directives/thead.directive';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
 import {TuiTableTbody} from './tbody/tbody.component';
 import {TuiTableTd} from './td/td.component';
-import {TuiTableThGroup} from './th-group/th-group.component';
 import {TuiTableTh} from './th/th.component';
+import {TuiTableThGroup} from './th-group/th-group.component';
 import {TuiTableTr} from './tr/tr.component';
 
 export const TuiTable = [

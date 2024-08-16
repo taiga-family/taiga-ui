@@ -26,9 +26,9 @@ import {
 export class TuiButtonSelect<T> extends TuiControl<T> implements TuiDataListHost<T> {
     private readonly open = tuiDropdownOpen();
 
-    readonly size = 's';
+    public readonly size = 's';
 
-    handleOption(option: T): void {
+    public handleOption(option: T): void {
         this.onChange(option);
         this.open.set(false);
     }

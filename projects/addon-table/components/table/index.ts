@@ -1,3 +1,4 @@
+export * from './caption/caption.component';
 export * from './directives/cell.directive';
 export * from './directives/direction-order.directive';
 export * from './directives/head.directive';
@@ -11,7 +12,6 @@ export * from './pipes/table-sort.pipe';
 export * from './providers/table.provider';
 export * from './table';
 export * from './table.options';
-export * from './caption/caption.component';
 export * from './tbody/tbody.component';
 export * from './td/td.component';
 export * from './th/th.component';
