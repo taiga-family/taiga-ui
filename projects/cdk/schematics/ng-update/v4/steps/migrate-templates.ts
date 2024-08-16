@@ -2,6 +2,7 @@ import type {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';
+import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -53,7 +54,6 @@ import {
 } from './templates';
 import {migrateBlocked} from './templates/migrate-blocked';
 import {migrateNumberPrecision} from './templates/migrate-number-precision';
-import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
 
 function getAction<T>({
     action,
