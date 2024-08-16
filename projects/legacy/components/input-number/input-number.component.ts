@@ -254,7 +254,10 @@ export class TuiInputNumberComponent
         this.unfinishedValue = null;
 
         if (Number.isNaN(nativeNumberValue)) {
-            this.nativeValue = focused ? this.computedPrefix + this.computedPostfix : '';
+            this.nativeValue =
+                focused && !this.readOnly
+                    ? this.computedPrefix + this.computedPostfix
+                    : '';
             this.value = null;
 
             return;
