@@ -53,6 +53,7 @@ import {
 } from './templates';
 import {migrateBlocked} from './templates/migrate-blocked';
 import {migrateNumberPrecision} from './templates/migrate-number-precision';
+import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
 
 function getAction<T>({
     action,
@@ -137,6 +138,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
             action({resource, fileSystem, recorder});
         });
     });
+
+    fileSystem.commitEdits();
+
+    saveAddedImports();
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
