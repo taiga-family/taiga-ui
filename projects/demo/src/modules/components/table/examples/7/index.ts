@@ -39,11 +39,10 @@ export default class Example {
         },
     ] as const;
 
-    protected readonly items = [10, 50, 100];
-    protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
-        `${$implicit} items per page`;
-
     protected index = 4;
     protected length = 10;
     protected size = 10;
+    protected readonly items = [10, 50, 100];
+    protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
+        `${$implicit} items per page`;
 }

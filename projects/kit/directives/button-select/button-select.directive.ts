@@ -17,7 +17,7 @@ import {
     standalone: true,
     selector: 'button[tuiButtonSelect]',
     providers: [
-        // TODO: Add checkmark once we properly implement new Select
+        // TODO: Add checkmark once we properly implement new Select, then add to demo
         tuiProvide(TUI_DATA_LIST_HOST, TuiButtonSelect),
         tuiDropdownOptionsProvider({align: 'right'}),
     ],
