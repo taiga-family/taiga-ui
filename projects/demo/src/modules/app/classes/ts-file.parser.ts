@@ -67,7 +67,7 @@ export class TsFileParser {
 
         this.rawFileContent = this.rawFileContent.replace(
             'assets`',
-            '`https://taiga-ui.dev/assets',
+            '`https://taiga-ui.dev/v3/assets',
         );
     }
 }
