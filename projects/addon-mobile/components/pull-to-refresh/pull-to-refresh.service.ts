@@ -33,6 +33,7 @@ export class TuiPullToRefreshService extends Observable<number> {
         startWith(null),
         switchMap(() =>
             tuiTypedFromEvent(this.element, 'touchstart', {passive: true}).pipe(
+                filter(() => !this.el.nativeElement.querySelector('tui-dialog')),
                 filter(() => !this.scrollTop),
                 map(({touches}) => touches[0].clientY),
                 switchMap(start =>
