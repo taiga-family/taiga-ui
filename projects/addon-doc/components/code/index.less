@@ -29,11 +29,11 @@
 
         td {
             white-space: pre;
-        }
 
-        tr:hover {
-            outline: 1px solid var(--tui-border-normal);
-            border-radius: 0.25rem;
+            &:not(.hljs-ln-numbers):hover {
+                outline: 1px solid var(--tui-border-normal);
+                border-radius: 0.25rem;
+            }
         }
     }
 }
