@@ -22,6 +22,7 @@ import {
 } from './pull-to-refresh.providers';
 
 export const MICRO_OFFSET = 10 ** -6;
+const EXCLUSION_SELECTORS = 'tui-dialog, tui-dropdown, tui-dropdown-mobile';
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
@@ -33,7 +34,11 @@ export class TuiPullToRefreshService extends Observable<number> {
         startWith(null),
         switchMap(() =>
             tuiTypedFromEvent(this.element, 'touchstart', {passive: true}).pipe(
-                filter(() => !this.scrollTop),
+                filter(
+                    () =>
+                        !this.scrollTop &&
+                        !this.el.nativeElement.querySelector(EXCLUSION_SELECTORS),
+                ),
                 map(({touches}) => touches[0].clientY),
                 switchMap(start =>
                     tuiTypedFromEvent(this.element, 'touchmove').pipe(
