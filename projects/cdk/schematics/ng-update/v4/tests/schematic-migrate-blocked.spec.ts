@@ -31,7 +31,7 @@ import { TuiBlock, TuiCheckbox, TuiRadio } from "@taiga-ui/kit";
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiBlock, TuiRadio]
+    imports: [FormsModule, TuiBlock, TuiCheckbox, TuiRadio]
 })
 export class Test {}`;
 

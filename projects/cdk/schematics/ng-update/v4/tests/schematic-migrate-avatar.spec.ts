@@ -17,16 +17,18 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiAvatarModule } from "@taiga-ui/experimental";
+import { TuiMarkerIconModule } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiAvatarModule]
+    imports: [TuiAvatarModule, TuiMarkerIconModule]
 })
 export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe, TuiAutoColorPipe } from "@taiga-ui/core";
+
 import { TuiAvatar } from "@taiga-ui/kit";
 
 @Component({
