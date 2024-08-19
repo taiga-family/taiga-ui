@@ -46,6 +46,10 @@ export abstract class AbstractDemo implements OnInit {
         );
     }
 
+    protected get url(): string {
+        return this.router.routerState.snapshot.url;
+    }
+
     protected async replaceEnvInURI(): Promise<void> {
         const env = this.storage.getItem('env');
 
