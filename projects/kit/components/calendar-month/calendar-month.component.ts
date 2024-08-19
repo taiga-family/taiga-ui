@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -47,6 +46,9 @@ const TODAY = TuiDay.currentLocal();
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._single]': 'isSingle',
+    },
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;
@@ -84,7 +86,6 @@ export class TuiCalendarMonth {
 
     public hoveredItem: TuiMonth | null = null;
 
-    @HostBinding('class._single')
     public get isSingle(): boolean {
         return (
             this.value !== null &&

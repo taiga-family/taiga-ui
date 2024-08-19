@@ -9,8 +9,6 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -42,6 +40,13 @@ import {TuiStep} from './step.component';
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService],
+    host: {
+        '[attr.data-orientation]': 'orientation',
+        '(keydown.arrowRight)': 'onHorizontal($event, 1)',
+        '(keydown.arrowLeft)': 'onHorizontal($event, -1)',
+        '(keydown.arrowDown)': 'onVertical($event, 1)',
+        '(keydown.arrowUp)': 'onVertical($event, -1)',
+    },
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStep), {read: ElementRef})
@@ -56,7 +61,6 @@ export class TuiStepperComponent {
     protected activeItemIndex = 0;
 
     @Input()
-    @HostBinding('attr.data-orientation')
     public orientation: TuiOrientation = 'horizontal';
 
     @Output()
@@ -102,8 +106,6 @@ export class TuiStepperComponent {
         return tuiQueryListChanges(this.steps).pipe(delay(0));
     }
 
-    @HostListener('keydown.arrowRight', ['$event', '1'])
-    @HostListener('keydown.arrowLeft', ['$event', '-1'])
     protected onHorizontal(event: Event, step: number): void {
         if (this.orientation !== 'horizontal' || !event.target) {
             return;
@@ -113,8 +115,6 @@ export class TuiStepperComponent {
         this.moveFocus(event.target, step);
     }
 
-    @HostListener('keydown.arrowDown', ['$event', '1'])
-    @HostListener('keydown.arrowUp', ['$event', '-1'])
     protected onVertical(event: Event, step: number): void {
         if (this.orientation !== 'vertical' || !event.target) {
             return;

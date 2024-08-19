@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -28,6 +28,7 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
     host: {
         '[@tuiFadeIn]': 'options',
         '[@tuiSlideInTop]': 'options',
+        '(document:keydown.esc)': 'onKeyDownEsc()',
     },
 })
 export class TuiPdfViewerComponent<I, O> {
@@ -37,7 +38,6 @@ export class TuiPdfViewerComponent<I, O> {
     protected readonly context =
         inject<TuiPopover<TuiPdfViewerOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
 
-    @HostListener('document:keydown.esc')
     protected onKeyDownEsc(): void {
         this.context.$implicit.complete();
     }

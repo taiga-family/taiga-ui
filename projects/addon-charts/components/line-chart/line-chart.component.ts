@@ -3,7 +3,6 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostListener,
     inject,
     Input,
     NgZone,
@@ -39,6 +38,9 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
+    host: {
+        '(mouseleave)': 'onMouseLeave()',
+    },
 })
 export class TuiLineChart {
     private readonly zone = inject(NgZone);
@@ -137,7 +139,6 @@ export class TuiLineChart {
         );
     }
 
-    @HostListener('mouseleave')
     protected onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(NaN);

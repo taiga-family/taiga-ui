@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -78,12 +77,14 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     styleUrls: ['./navigation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: NAVIGATION_PROVIDERS,
+    host: {
+        '[class._open]': 'menuOpen',
+    },
 })
 export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
-    @HostBinding('class._open')
     protected menuOpen = false;
 
     protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});

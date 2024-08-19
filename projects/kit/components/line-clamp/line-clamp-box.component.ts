@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -13,9 +13,11 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
+    host: {
+        '[style.min-width.px]': 'width',
+    },
 })
 export class TuiLineClampBox extends TuiHintComponent {
-    @HostBinding('style.min-width.px')
     protected get width(): number {
         return this.accessor.getClientRect().width;
     }

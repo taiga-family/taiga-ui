@@ -1,6 +1,6 @@
 import type {AnimationOptions} from '@angular/animations';
 import type {DoCheck} from '@angular/core';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -19,6 +19,10 @@ import {TuiSidebarDirective} from './sidebar.directive';
     styleUrls: ['./sidebar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideIn],
+    host: {
+        class: '"t-" + direction',
+        '[@tuiSlideIn]': 'animation',
+    },
 })
 export class TuiSidebarComponent implements DoCheck {
     private readonly directive = inject(TuiSidebarDirective);
@@ -30,14 +34,8 @@ export class TuiSidebarComponent implements DoCheck {
         this.directive.check();
     }
 
-    @HostBinding('@tuiSlideIn')
     protected get animation(): AnimationOptions {
         return this.direction === 'left' ? this.left : this.right;
-    }
-
-    @HostBinding('class')
-    protected get directionHostClass(): string {
-        return `t-${this.directive.direction}`;
     }
 
     protected get direction(): TuiHorizontalDirection {

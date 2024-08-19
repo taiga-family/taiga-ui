@@ -1,12 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    HostListener,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
@@ -29,12 +22,16 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     host: {
         '[class._disabled]': 'disabled()',
         '[class._readonly]': 'readOnly()',
+        '[class._active]': 'active',
+        '(keydown.capture)': 'onKeyDown($event)',
+        '(pointerdown)': 'onPointer(1)',
+        '(pointercancel)': 'onPointer(-1)',
+        '(document:pointerup)': 'onPointer(-1)',
     },
 })
 export class TuiRating extends TuiControl<number> {
     private readonly options = inject(TUI_RATING_OPTIONS);
 
-    @HostBinding('class._active')
     protected active = 0;
 
     @Input()
@@ -43,16 +40,12 @@ export class TuiRating extends TuiControl<number> {
     @Input()
     public max = this.options.max;
 
-    @HostListener('keydown.capture', ['$event'])
     protected onKeyDown(event: KeyboardEvent): void {
         if (this.readOnly()) {
             event.preventDefault();
         }
     }
 
-    @HostListener('pointerdown', ['1'])
-    @HostListener('pointercancel', ['-1'])
-    @HostListener('document:pointerup', ['-1'])
     protected onPointer(delta: number): void {
         this.active = tuiClamp(this.active + delta, 0, 1);
     }

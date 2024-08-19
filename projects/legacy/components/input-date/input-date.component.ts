@@ -2,8 +2,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -67,6 +65,10 @@ import {map} from 'rxjs';
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],
+    host: {
+        '[attr.data-size]': 'size',
+        '(click)': 'onClick()',
+    },
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
@@ -185,7 +187,6 @@ export class TuiInputDateComponent
         this.nativeValue = value ? this.computedValue : '';
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -227,7 +228,6 @@ export class TuiInputDateComponent
         return (value && this.items.find((item) => item.day.daySame(value))) || null;
     }
 
-    @HostListener('click')
     protected onClick(): void {
         if (!this.isMobile && this.interactive) {
             this.open = !this.open;

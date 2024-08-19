@@ -1,8 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -61,6 +59,10 @@ const DATE_TIME_SEPARATOR = ', ';
         tuiAsControl(TuiInputDateTimeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_TIME_VALUE_TRANSFORMER),
     ],
+    host: {
+        '[attr.data-size]': 'size',
+        '(click)': 'onClick()',
+    },
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
@@ -184,7 +186,6 @@ export class TuiInputDateTimeComponent
         this.value = [parsedDate, parsedTime];
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -261,7 +262,6 @@ export class TuiInputDateTimeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    @HostListener('click')
     protected onClick(): void {
         this.open = !this.open;
     }

@@ -1,4 +1,4 @@
-import {Directive, HostListener, inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
@@ -18,6 +18,9 @@ function isDragging(this: TuiTileHandle): boolean {
     host: {
         '[style.touchAction]': '"none"',
         '[style.userSelect]': '"none"',
+        '(pointerdown.silent)': 'onStart($event)',
+        '(document:pointerup.silent)': 'onPointer()',
+        '(document:pointermove.silent)': 'onMove($event.x, $event.y)',
     },
 })
 export class TuiTileHandle {
@@ -25,20 +28,7 @@ export class TuiTileHandle {
     private x = NaN;
     private y = NaN;
 
-    @HostListener('pointerdown.silent', ['$event'])
-    protected onStart(event: PointerEvent): void {
-        const target = tuiGetActualTarget(event);
-        const {x, y, pointerId} = event;
-
-        if (tuiIsElement(target)) {
-            target.releasePointerCapture(pointerId);
-        }
-
-        this.onPointer(x, y);
-    }
-
     @shouldCall(isInteracting)
-    @HostListener('document:pointerup.silent')
     protected onPointer(x = NaN, y = NaN): void {
         const {left, top} = this.tile.element.getBoundingClientRect();
 
@@ -48,8 +38,18 @@ export class TuiTileHandle {
     }
 
     @shouldCall(isDragging)
-    @HostListener('document:pointermove.silent', ['$event.x', '$event.y'])
     protected onMove(x: number, y: number): void {
         this.tile.onDrag([x - this.x, y - this.y]);
+    }
+
+    protected onStart(event: PointerEvent): void {
+        const target = tuiGetActualTarget(event);
+        const {x, y, pointerId} = event;
+
+        if (tuiIsElement(target)) {
+            target.releasePointerCapture(pointerId);
+        }
+
+        this.onPointer(x, y);
     }
 }

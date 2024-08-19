@@ -5,8 +5,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -76,7 +74,14 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
-    host: {'[class._expandable]': 'expandable'},
+    host: {
+        '[attr.data-size]': 'size',
+        '[class._icon-start]': 'iconStart',
+        '[class._expandable]': 'expandable',
+        '[class._label-outside]': 'labelOutside',
+        '(focusin.capture.silent)': 'onFocusInOut()',
+        '(focusout.capture.silent)': 'onFocusInOut()',
+    },
 })
 export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
@@ -169,14 +174,12 @@ export class TuiInputTagComponent
         this.pseudoFocus = value;
     }
 
-    @HostBinding('class._label-outside')
     public get labelOutside(): boolean {
         const {size, labelOutside} = this.controller;
 
         return size === 's' || labelOutside;
     }
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
@@ -243,7 +246,6 @@ export class TuiInputTagComponent
         this.open = false;
     }
 
-    @HostBinding('class._icon-start')
     protected get iconStart(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconStart;
     }
@@ -302,8 +304,6 @@ export class TuiInputTagComponent
         return this.expandable ? this.rows * this.lineHeight : null;
     }
 
-    @HostListener('focusin.capture.silent')
-    @HostListener('focusout.capture.silent')
     protected onFocusInOut(): void {
         this.cdr.detectChanges();
     }

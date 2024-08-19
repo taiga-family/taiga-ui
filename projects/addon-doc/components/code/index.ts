@@ -1,12 +1,6 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
@@ -26,6 +20,9 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._has-filename]': 'hasFilename',
+    },
 })
 export class TuiDocCode {
     private readonly icons = inject(TUI_DOC_ICONS);
@@ -62,7 +59,6 @@ export class TuiDocCode {
         this.rawLoader$$.next(code);
     }
 
-    @HostBinding('class._has-filename')
     public get hasFilename(): boolean {
         return !!this.filename;
     }

@@ -3,8 +3,6 @@ import {
     Component,
     ContentChild,
     ElementRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -44,7 +42,17 @@ export const LINE_HEIGHT_L = 24;
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
+        '[attr.data-size]': 'size',
         '[class._ios]': 'isIOS',
+        '[class._expandable]': 'expandable',
+        '[class._has-counter]': 'hasCounter',
+        '[class._label-outside]': 'labelOutside',
+        '[class._has-tooltip]': 'hasTooltip',
+        '[class._has-value]': 'hasValue',
+        '[style.--border-end.rem]': 'borderEnd',
+        '[style.--border-start.rem]': 'borderStart',
+        '(focusin)': 'onFocused(true)',
+        '(focusout)': 'onFocused(false)',
     },
 })
 export class TuiTextareaComponent
@@ -70,7 +78,6 @@ export class TuiTextareaComponent
     public maxLength: number | null = null;
 
     @Input()
-    @HostBinding('class._expandable')
     public expandable = false;
 
     public get nativeFocusableElement(): HTMLTextAreaElement | null {
@@ -95,22 +102,18 @@ export class TuiTextareaComponent
         this.value = value;
     }
 
-    @HostBinding('class._label-outside')
     protected get labelOutside(): boolean {
         return this.options.appearance() === 'table' || this.controller.labelOutside;
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    @HostBinding('style.--border-start.rem')
     protected get borderStart(): number {
         return this.iconLeftContent ? TUI_ICON_START_PADDINGS[this.size] : 0;
     }
 
-    @HostBinding('style.--border-end.rem')
     protected get borderEnd(): number {
         return tuiGetBorder(
             !!this.iconContent,
@@ -121,7 +124,6 @@ export class TuiTextareaComponent
         );
     }
 
-    @HostBinding('class._has-tooltip')
     protected get hasTooltip(): boolean {
         return (
             !!this.hintOptions?.content &&
@@ -129,12 +131,10 @@ export class TuiTextareaComponent
         );
     }
 
-    @HostBinding('class._has-value')
     protected get hasValue(): boolean {
         return this.value !== '';
     }
 
-    @HostBinding('class._has-counter')
     protected get hasCounter(): boolean {
         return !!this.maxLength && this.interactive;
     }
@@ -195,8 +195,6 @@ export class TuiTextareaComponent
         return this.value.slice(this.maxLength || Infinity);
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

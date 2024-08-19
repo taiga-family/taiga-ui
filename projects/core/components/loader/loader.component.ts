@@ -1,11 +1,5 @@
 import {DOCUMENT, NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -23,20 +17,20 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     templateUrl: './loader.template.html',
     styleUrls: ['./loader.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._loading]': 'loading',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiLoader {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
-
-    @HostBinding('class._loading')
     protected loading = true;
-
     protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size = this.options.size;
 
     @Input()

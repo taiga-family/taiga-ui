@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     ViewEncapsulation,
@@ -17,15 +16,17 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     styles: ['@import "@taiga-ui/kit/styles/components/progress-bar.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.--tui-progress-color]': 'color',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiProgressBar {
     private readonly options = inject(TUI_PROGRESS_OPTIONS);
 
     @Input()
-    @HostBinding('style.--tui-progress-color')
     public color: string | null = this.options.color;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeXXL | TuiSizeXXS = this.options.size;
 }

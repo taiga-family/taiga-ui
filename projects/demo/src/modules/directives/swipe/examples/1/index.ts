@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk';
@@ -11,9 +11,11 @@ import {TuiSwipe} from '@taiga-ui/cdk';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    host: {
+        class: 'swiped',
+    },
 })
 export default class Example {
-    @HostBinding('class')
     protected swiped = 'default';
 
     protected onSwipe(swipe: TuiSwipeEvent): void {

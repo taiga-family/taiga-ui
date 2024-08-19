@@ -3,7 +3,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -66,7 +65,11 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
-    host: {'[class._expandable]': 'rows > 1'},
+    host: {
+        '[attr.data-size]': 'size',
+        '[class._editable]': 'editable',
+        '[class._expandable]': 'rows > 1',
+    },
 })
 export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>
@@ -109,7 +112,6 @@ export class TuiMultiSelectComponent<T>
     public placeholder = '';
 
     @Input()
-    @HostBinding('class._editable')
     public editable = true;
 
     @Input()
@@ -129,7 +131,6 @@ export class TuiMultiSelectComponent<T>
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }

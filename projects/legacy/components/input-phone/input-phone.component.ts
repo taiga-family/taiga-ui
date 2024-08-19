@@ -3,7 +3,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -54,6 +53,9 @@ function isText(value: string): boolean {
         tuiAsDataListHost(TuiInputPhoneComponent),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
@@ -96,7 +98,6 @@ export class TuiInputPhoneComponent
         this.updateValueWithNewCountryCode(prevCountryCode, newCountryCode);
     }
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

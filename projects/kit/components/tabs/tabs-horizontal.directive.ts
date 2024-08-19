@@ -3,7 +3,6 @@ import {
     ContentChildren,
     Directive,
     forwardRef,
-    HostListener,
     inject,
     Input,
     NgZone,
@@ -47,6 +46,9 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
         '[class._underline]': 'underline',
         '[style.--t-color]':
             "underline === true ? 'var(--tui-background-accent-1)' : underline",
+        '(animationend)': 'refresh()',
+        '(keydown.arrowRight.prevent)': 'onKeyDownArrow($event.target, 1)',
+        '(keydown.arrowLeft.prevent)': 'onKeyDownArrow($event.target, -1)',
     },
 })
 export class TuiTabsHorizontal implements AfterViewChecked {
@@ -69,13 +71,10 @@ export class TuiTabsHorizontal implements AfterViewChecked {
         this.refresh();
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
     }
 
-    @HostListener('animationend')
     protected refresh(): void {
         const {activeElement} = this.tabs;
 

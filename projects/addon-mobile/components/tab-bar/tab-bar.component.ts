@@ -6,8 +6,6 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
-    HostBinding,
-    HostListener,
     Input,
     Output,
 } from '@angular/core';
@@ -24,6 +22,10 @@ import {TuiTabBarItem} from './tab-bar-item.component';
     templateUrl: './tab-bar.template.html',
     styleUrls: ['./tab-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style]': 'style',
+        '(click)': 'setActive($event.target)',
+    },
 })
 export class TuiTabBarComponent {
     @ContentChildren(forwardRef(() => TuiTabBarItem), {read: ElementRef})
@@ -38,7 +40,6 @@ export class TuiTabBarComponent {
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @HostListener('click', ['$event.target'])
     public setActive(tab: EventTarget): void {
         if (tuiIsElement(tab)) {
             this.updateIndex(
@@ -47,7 +48,6 @@ export class TuiTabBarComponent {
         }
     }
 
-    @HostBinding('style')
     protected get style(): string {
         return `--tui-tab-${this.activeItemIndex + 1}: var(--tui-active-color)`;
     }

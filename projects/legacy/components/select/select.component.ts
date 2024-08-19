@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    HostBinding,
     inject,
     Input,
     TemplateRef,
@@ -56,6 +55,9 @@ import {TUI_SELECT_OPTIONS} from './select.options';
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -92,7 +94,6 @@ export class TuiSelectComponent<T>
     @Input()
     public valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
-    @HostBinding('attr.data-size')
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

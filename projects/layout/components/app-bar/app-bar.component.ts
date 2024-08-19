@@ -3,7 +3,6 @@ import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     NgZone,
@@ -29,6 +28,9 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiAppBarComponent {
     @ViewChildren('side')
@@ -50,6 +52,5 @@ export class TuiAppBarComponent {
     );
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeL = 'm';
 }

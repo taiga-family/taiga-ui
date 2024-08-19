@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     ViewChild,
@@ -32,6 +31,9 @@ const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
         tuiAsFocusableItemAccessor(TuiInputYearComponent),
         tuiAsControl(TuiInputYearComponent),
     ],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputYearComponent
     extends AbstractTuiNullableControl<number>
@@ -74,7 +76,6 @@ export class TuiInputYearComponent
         this.updateNativeValue(value);
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

@@ -1,4 +1,4 @@
-import {computed, Directive, HostListener, inject} from '@angular/core';
+import {computed, Directive, inject} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_IOS, TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
@@ -28,6 +28,16 @@ const MOVE_THRESHOLD = 15;
         '[style.user-select]': 'userSelect()',
         '[style.-webkit-user-select]': 'userSelect()',
         '[style.-webkit-touch-callout]': 'userSelect()',
+        '(touchend.silent.passive)': 'onTouchEnd()',
+        '(touchcancel.silent.passive)': 'onTouchEnd()',
+        '(touchmove.silent.passive)':
+            'onTouchMove($event.touches[0].clientX, $event.touches[0].clientY)',
+        '(touchstart.silent.passive)':
+            'onTouchStart($event.touches[0].clientX, $event.touches[0].clientY)',
+        '(document:pointerdown.silent)': 'closeDropdown($event.target)',
+        '(document:contextmenu.capture.silent)': 'closeDropdown($event.target)',
+        '(document:keydown.esc)': 'closeDropdown($event.target)',
+        '(contextmenu.prevent.stop)': 'onContextMenu($event.clientX, $event.clientY)',
     },
 })
 export class TuiDropdownContext extends TuiRectAccessor {
@@ -46,40 +56,26 @@ export class TuiDropdownContext extends TuiRectAccessor {
         return this.currentRect;
     }
 
-    @HostListener('contextmenu.prevent.stop', ['$event.clientX', '$event.clientY'])
+    @shouldCall(activeZoneFilter)
+    protected closeDropdown(_element: Element): void {
+        this.driver.next(false);
+        this.currentRect = EMPTY_CLIENT_RECT;
+    }
+
     protected onContextMenu(x: number, y: number): void {
         this.currentRect = tuiPointToClientRect(x, y);
         this.driver.next(true);
     }
 
-    @shouldCall(activeZoneFilter)
-    @HostListener('document:pointerdown.silent', ['$event.target'])
-    @HostListener('document:contextmenu.capture.silent', ['$event.target'])
-    @HostListener('document:keydown.esc', ['$event.currentTarget'])
-    protected closeDropdown(): void {
-        this.driver.next(false);
-        this.currentRect = EMPTY_CLIENT_RECT;
-    }
-
-    @HostListener('touchstart.silent.passive', [
-        '$event.touches[0].clientX',
-        '$event.touches[0].clientY',
-    ])
     protected onTouchStart(x: number, y: number): void {
         if (!this.isIOS || !this.isTouch() || this.currentRect !== EMPTY_CLIENT_RECT) {
             return;
         }
 
         this.currentRect = tuiPointToClientRect(x, y);
-        this.longTapTimeout = setTimeout(() => {
-            this.driver.next(true);
-        }, TAP_DELAY);
+        this.longTapTimeout = setTimeout(() => this.driver.next(true), TAP_DELAY);
     }
 
-    @HostListener('touchmove.silent.passive', [
-        '$event.touches[0].clientX',
-        '$event.touches[0].clientY',
-    ])
     protected onTouchMove(x: number, y: number): void {
         if (
             this.isIOS &&
@@ -91,8 +87,6 @@ export class TuiDropdownContext extends TuiRectAccessor {
         }
     }
 
-    @HostListener('touchend.silent.passive')
-    @HostListener('touchcancel.silent.passive')
     protected onTouchEnd(): void {
         clearTimeout(this.longTapTimeout);
     }

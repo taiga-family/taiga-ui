@@ -1,4 +1,4 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 /**
@@ -10,6 +10,14 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
     selector: 'tui-island, a[tuiIsland]',
     host: {
         class: 'tui-island',
+        '[class.tui-island_hoverable]': 'hoverable',
+        '[class.tui-island_transparent]': 'transparent',
+        '[class.tui-island_size_s]': 'sizeS',
+        '[class.tui-island_size_m]': 'sizeM',
+        '[class.tui-island_size_l]': 'sizeL',
+        '[class.tui-island_text-align_left]': 'textAlignLeft',
+        '[class.tui-island_text-align_center]': 'textAlignCenter',
+        '[class.tui-island_text-align_right]': 'textAlignRight',
     },
 })
 export class TuiIslandDirective {
@@ -20,39 +28,31 @@ export class TuiIslandDirective {
     public textAlign: 'center' | 'left' | 'right' = 'left';
 
     @Input()
-    @HostBinding('class.tui-island_hoverable')
     public hoverable = false;
 
     @Input()
-    @HostBinding('class.tui-island_transparent')
     public transparent = false;
 
-    @HostBinding('class.tui-island_size_s')
     protected get sizeS(): boolean {
         return this.size === 's';
     }
 
-    @HostBinding('class.tui-island_size_m')
     protected get sizeM(): boolean {
         return this.size === 'm';
     }
 
-    @HostBinding('class.tui-island_size_l')
     protected get sizeL(): boolean {
         return this.size === 'l';
     }
 
-    @HostBinding('class.tui-island_text-align_left')
     protected get textAlignLeft(): boolean {
         return this.textAlign === 'left';
     }
 
-    @HostBinding('class.tui-island_text-align_center')
     protected get textAlignCenter(): boolean {
         return this.textAlign === 'center';
     }
 
-    @HostBinding('class.tui-island_text-align_right')
     protected get textAlignRight(): boolean {
         return this.textAlign === 'right';
     }

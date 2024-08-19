@@ -1,4 +1,4 @@
-import {Directive, HostListener} from '@angular/core';
+import {Directive} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor} from '@taiga-ui/core/classes';
@@ -10,6 +10,9 @@ import {TuiHintHover} from './hint-hover.directive';
     standalone: true,
     selector: '[tuiHint][tuiHintPointer]',
     providers: [tuiAsRectAccessor(TuiHintPointer), tuiAsDriver(TuiHintPointer)],
+    host: {
+        '(mousemove.silent)': 'onMove($event)',
+    },
 })
 export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {
     private currentRect = EMPTY_CLIENT_RECT;
@@ -18,7 +21,6 @@ export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {
         return this.currentRect;
     }
 
-    @HostListener('mousemove.silent', ['$event'])
     protected onMove({clientX, clientY}: MouseEvent): void {
         this.currentRect = tuiPointToClientRect(clientX, clientY);
     }

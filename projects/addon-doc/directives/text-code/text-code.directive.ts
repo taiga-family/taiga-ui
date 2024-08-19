@@ -1,11 +1,13 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 
 @Directive({
     standalone: true,
     selector: 'code[tuiDocText]',
+    host: {
+        '[textContent]': 'code',
+    },
 })
 export class TuiDocText {
     @Input('tuiDocText')
-    @HostBinding('textContent')
     public code = '';
 }

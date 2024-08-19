@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    HostBinding,
     inject,
     Input,
     ViewEncapsulation,
@@ -47,6 +46,9 @@ class TuiNotificationStyles {}
         }),
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiNotification implements OnChanges, OnInit {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
@@ -61,7 +63,6 @@ export class TuiNotification implements OnChanges, OnInit {
     public icon: TuiStringHandler<string> | string = this.options.icon;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size = this.options.size;
 
     public ngOnInit(): void {

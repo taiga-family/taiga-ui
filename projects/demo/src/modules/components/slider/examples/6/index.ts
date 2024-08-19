@@ -1,5 +1,5 @@
 import {AsyncPipe, PercentPipe} from '@angular/common';
-import {Component, HostListener} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -15,6 +15,10 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    host: {
+        '(pointerdown)': 'onKeydown(true)',
+        '(document:pointerup)': 'onKeydown(false)',
+    },
 })
 export default class Example {
     protected min = 0.5;
@@ -29,8 +33,6 @@ export default class Example {
         ),
     );
 
-    @HostListener('pointerdown', ['true'])
-    @HostListener('document:pointerup', ['false'])
     protected onKeydown(show: boolean): void {
         this.active$.next(show);
     }

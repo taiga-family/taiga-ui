@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     Input,
     Output,
 } from '@angular/core';
@@ -34,6 +33,9 @@ const ITEMS_IN_ROW = 4;
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._single]': 'isSingle',
+    },
 })
 export class TuiCalendarYear {
     private hoveredItem: number | null = null;
@@ -149,7 +151,6 @@ export class TuiCalendarYear {
         this.updateHoveredItem(hovered, item);
     }
 
-    @HostBinding('class._single')
     protected get isSingle(): boolean {
         return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
     }

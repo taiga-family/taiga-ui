@@ -1,12 +1,6 @@
 import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {DoCheck} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    forwardRef,
-    HostBinding,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
@@ -22,6 +16,9 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._expandable]': 'isExpandable',
+    },
 })
 export class TuiTreeItemContent implements DoCheck {
     private readonly controller = inject<TuiTreeController>(
@@ -43,7 +40,6 @@ export class TuiTreeItemContent implements DoCheck {
         this.change$.next();
     }
 
-    @HostBinding('class._expandable')
     protected get isExpandable(): boolean {
         return (
             this.context.$implicit.isExpandable &&

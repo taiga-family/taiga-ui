@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    HostBinding,
     inject,
     Input,
 } from '@angular/core';
@@ -27,6 +26,9 @@ import {combineLatest, map} from 'rxjs';
     templateUrl: './multi-select-group.template.html',
     styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._label]': 'label',
+    },
 })
 export class TuiMultiSelectGroupComponent<T> {
     @ContentChildren(TuiOption)
@@ -37,7 +39,6 @@ export class TuiMultiSelectGroupComponent<T> {
 
     protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
 
-    @HostBinding('class._label')
     @Input()
     public label = '';
 

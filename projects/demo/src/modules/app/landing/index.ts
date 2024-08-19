@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     inject,
     ViewChildren,
 } from '@angular/core';
@@ -35,6 +34,7 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
     animations: [tuiFadeIn],
     host: {
         '[class._hide]': 'hidden',
+        '[style.background]': 'background',
     },
 })
 export default class Page implements OnInit {
@@ -54,7 +54,6 @@ export default class Page implements OnInit {
         await this.clearQueryParams();
     }
 
-    @HostBinding('style.background')
     protected get background(): string {
         return this.current ? '#5f6ed0' : '#3dc67c';
     }

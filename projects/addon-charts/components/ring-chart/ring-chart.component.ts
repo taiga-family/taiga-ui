@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     Input,
     Output,
 } from '@angular/core';
@@ -16,13 +15,15 @@ import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
     templateUrl: './ring-chart.template.html',
     styleUrls: ['./ring-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiRingChart {
     @Input()
     public value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()

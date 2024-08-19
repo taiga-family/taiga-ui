@@ -2,8 +2,6 @@ import type {AfterViewInit, ElementRef, OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -19,6 +17,12 @@ import {TuiTilesComponent} from './tiles.component';
     templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiTileService],
+    host: {
+        '[class._dragged]': 'dragged',
+        '[style.gridColumn]': 'column',
+        '[style.gridRow]': 'row',
+        '(pointerenter)': 'onEnter()',
+    },
 })
 export class TuiTile implements OnDestroy, AfterViewInit {
     @ViewChild('wrapper')
@@ -27,7 +31,6 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     private readonly service = inject(TuiTileService);
     private readonly tiles = inject(TuiTilesComponent);
 
-    @HostBinding('class._dragged')
     protected dragged = false;
 
     @Input()
@@ -58,17 +61,14 @@ export class TuiTile implements OnDestroy, AfterViewInit {
         }
     }
 
-    @HostBinding('style.gridColumn')
     protected get column(): string {
         return `span var(--tui-width, ${this.width})`;
     }
 
-    @HostBinding('style.gridRow')
     protected get row(): string {
         return `span var(--tui-height, ${this.height})`;
     }
 
-    @HostListener('pointerenter')
     protected onEnter(): void {
         this.tiles.rearrange(this.element);
     }

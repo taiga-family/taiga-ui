@@ -1,8 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -57,6 +55,11 @@ import {map} from 'rxjs';
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],
+    host: {
+        '[class._editable]': 'editable',
+        '[attr.data-size]': 'size',
+        '(click)': 'onClick()',
+    },
 })
 export class TuiInputDateMultiComponent
     extends AbstractTuiMultipleControl<TuiDay>
@@ -117,7 +120,6 @@ export class TuiInputDateMultiComponent
     public inputHidden = false;
 
     @Input()
-    @HostBinding('class._editable')
     public editable = true;
 
     @Input()
@@ -164,7 +166,6 @@ export class TuiInputDateMultiComponent
         this.open = false;
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -197,7 +198,6 @@ export class TuiInputDateMultiComponent
         );
     }
 
-    @HostListener('click')
     protected onClick(): void {
         if (!this.isMobile && this.interactive) {
             this.open = !this.open;

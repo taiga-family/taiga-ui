@@ -4,7 +4,6 @@ import {
     ChangeDetectorRef,
     Component,
     Directive,
-    HostListener,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -63,7 +62,10 @@ class TuiTooltipStyles {}
             inputs: ['tuiHint: tuiTooltip', 'tuiHintAppearance', 'tuiHintContext'],
         },
     ],
-    host: {tuiTooltip: ''},
+    host: {
+        tuiTooltip: '',
+        '(mousedown)': 'stopOnMobile($event)',
+    },
 })
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
@@ -88,7 +90,6 @@ export class TuiTooltip implements DoCheck {
         }
     }
 
-    @HostListener('mousedown', ['$event'])
     protected stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();

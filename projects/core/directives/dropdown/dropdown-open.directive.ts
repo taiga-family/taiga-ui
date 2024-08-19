@@ -6,7 +6,6 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -57,6 +56,13 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
             outputs: ['tuiActiveZoneChange'],
         },
     ],
+    host: {
+        '(click)': 'onClick($event.target)',
+        '(keydown.arrowDown)': 'onArrow($event, false)',
+        '(keydown.arrowUp)': 'onArrow($event, true)',
+        '(document:keydown.silent.capture)': 'onEsc($event)',
+        '(document:keydown.silent)': 'onKeydown($event)',
+    },
 })
 export class TuiDropdownOpen implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
@@ -105,15 +111,18 @@ export class TuiDropdownOpen implements OnChanges {
         this.update(open);
     }
 
-    @HostListener('click', ['$event.target'])
+    @shouldCall(shouldClose)
+    protected onEsc(event: Event): void {
+        event.preventDefault();
+        this.toggle(false);
+    }
+
     protected onClick(target: HTMLElement): void {
         if (!this.editable && this.host.contains(target)) {
             this.update(!this.tuiDropdownOpen);
         }
     }
 
-    @HostListener('keydown.arrowDown', ['$event', 'false'])
-    @HostListener('keydown.arrowUp', ['$event', 'true'])
     protected onArrow(event: KeyboardEvent, up: boolean): void {
         if (
             !tuiIsElement(event.target) ||
@@ -127,14 +136,6 @@ export class TuiDropdownOpen implements OnChanges {
         this.focusDropdown(up);
     }
 
-    @shouldCall(shouldClose)
-    @HostListener('document:keydown.silent.capture', ['$event'])
-    protected onEsc(event: Event): void {
-        event.preventDefault();
-        this.toggle(false);
-    }
-
-    @HostListener('document:keydown.silent', ['$event'])
     protected onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
         if (
             defaultPrevented ||

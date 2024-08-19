@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
 import {TuiElasticContainerDirective} from './elastic-container.directive';
@@ -10,12 +10,13 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     templateUrl: './elastic-container.component.html',
     styleUrls: ['./elastic-container.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.height.px]': 'height',
+        '[class._transitioning]': 'transitions',
+    },
 })
 export class TuiElasticContainer {
-    @HostBinding('style.height.px')
     protected height = NaN;
-
-    @HostBinding('class._transitioning')
     protected transitions = 0;
 
     @shouldCall((name) => name === 'height')

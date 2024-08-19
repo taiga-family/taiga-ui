@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    HostBinding,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -23,11 +22,13 @@ class TuiPinStyles {}
 @Directive({
     standalone: true,
     selector: 'tui-pin,[tuiPin]',
+    host: {
+        '[class._open]': 'open',
+    },
 })
 export class TuiPin {
     protected readonly nothing = tuiWithStyles(TuiPinStyles);
 
     @Input()
-    @HostBinding('class._open')
     public open = false;
 }

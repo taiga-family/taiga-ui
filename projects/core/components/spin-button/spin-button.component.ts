@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -20,6 +19,8 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(mousedown.silent.prevent)': '(0)',
+        '(keydown.arrowLeft.prevent)': 'onLeftClick()',
+        '(keydown.arrowRight.prevent)': 'onRightClick()',
     },
 })
 export class TuiSpinButton {
@@ -44,14 +45,12 @@ export class TuiSpinButton {
     @Output()
     public readonly rightClick = new EventEmitter<void>();
 
-    @HostListener('keydown.arrowLeft.prevent')
     public onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
-    @HostListener('keydown.arrowRight.prevent')
     public onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();

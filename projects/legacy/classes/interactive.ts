@@ -1,11 +1,18 @@
-import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
 
 const TUI = 'tui_interactive_';
 
 /**
  * @deprecated: drop in v5.0
  */
-@Directive()
+@Directive({
+    host: {
+        '[attr.data-focused]': 'pseudoFocus',
+        '[class._disabled]': 'computedDisabled',
+        '[class._focused]': 'computedFocused',
+        '[class._focus-visible]': 'computedFocusVisible',
+    },
+})
 export abstract class AbstractTuiInteractive {
     private static autoId = 0;
 
@@ -24,7 +31,6 @@ export abstract class AbstractTuiInteractive {
     public pseudoActive: boolean | null = null;
 
     @Input()
-    @HostBinding('attr.data-focused')
     public pseudoFocus: boolean | null = null;
 
     /**
@@ -49,17 +55,14 @@ export abstract class AbstractTuiInteractive {
         this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
     }
 
-    @HostBinding('class._disabled')
     public get computedDisabled(): boolean {
         return this.disabled;
     }
 
-    @HostBinding('class._focused')
     public get computedFocused(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
     }
 
-    @HostBinding('class._focus-visible')
     public get computedFocusVisible(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
     }

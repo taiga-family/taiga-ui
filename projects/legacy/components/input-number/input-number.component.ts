@@ -3,8 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    HostBinding,
-    HostListener,
     inject,
     InjectionToken,
     Input,
@@ -57,6 +55,11 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
         tuiAsControl(TuiInputNumberComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    host: {
+        '[attr.data-size]': 'size',
+        '(keydown.arrowDown)': 'onArrow(-step)',
+        '(keydown.arrowUp)': 'onArrow(step)',
+    },
 })
 export class TuiInputNumberComponent
     extends AbstractTuiNullableControl<number>
@@ -160,7 +163,6 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
@@ -229,8 +231,6 @@ export class TuiInputNumberComponent
         this.nativeFocusableElement.value = value;
     }
 
-    @HostListener('keydown.arrowDown', ['-step'])
-    @HostListener('keydown.arrowUp', ['step'])
     protected onArrow(step: number | null): void {
         if (!step) {
             return;

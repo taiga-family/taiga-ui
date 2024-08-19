@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
@@ -13,9 +12,11 @@ import {
     styleUrls: ['./block-status.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._card]': 'card',
+    },
 })
 export class TuiBlockStatusComponent {
-    @HostBinding('class._card')
     @Input()
     public card = false;
 }

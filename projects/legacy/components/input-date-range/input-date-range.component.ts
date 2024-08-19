@@ -3,8 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     ViewChild,
@@ -74,6 +72,10 @@ import {map} from 'rxjs';
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],
+    host: {
+        '[attr.data-size]': 'size',
+        '(click)': 'onClick()',
+    },
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
@@ -166,7 +168,6 @@ export class TuiInputDateRangeComponent
             : nativeValue;
     }
 
-    @HostListener('click')
     public onClick(): void {
         if (!this.isMobile && this.interactive) {
             this.toggle();
@@ -220,7 +221,6 @@ export class TuiInputDateRangeComponent
         this.nativeValue = value ? this.computedValue : '';
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

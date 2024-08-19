@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -46,6 +45,10 @@ const TRANSFORM = {
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top-right', appearance: 'dark'})],
+    host: {
+        '[attr.data-size]': 'size',
+        '[class._empty]': 'empty',
+    },
 })
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
@@ -55,7 +58,6 @@ export class TuiPieChart {
     public value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
@@ -74,7 +76,6 @@ export class TuiPieChart {
         }
     }
 
-    @HostBinding('class._empty')
     protected get empty(): boolean {
         return !this.getSum(this.value);
     }

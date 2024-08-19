@@ -1,5 +1,5 @@
 import type {ValueProvider} from '@angular/core';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -34,6 +34,10 @@ export interface TuiMobileCalendarData {
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
     hostDirectives: [TuiActiveZone],
+    host: {
+        '[@tuiSlideInTop]': 'animation',
+        '[@tuiFadeIn]': 'animation',
+    },
 })
 export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
@@ -43,8 +47,6 @@ export class TuiMobileCalendarDropdown {
     private readonly observer?: Observer<any> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
     protected readonly animation = {
         value: '',
         params: {

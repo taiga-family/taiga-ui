@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    HostBinding,
     inject,
     Input,
     NgZone,
@@ -47,6 +46,9 @@ const DUMMY: TuiPoint = [NaN, NaN];
             useExisting: TuiLineDaysChart,
         },
     ],
+    host: {
+        '[style.zIndex]': 'zIndex',
+    },
 })
 export class TuiLineDaysChart implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
@@ -81,7 +83,6 @@ export class TuiLineDaysChart implements AfterViewInit {
     @Input()
     public dots = this.options.dots;
 
-    @HostBinding('style.zIndex')
     public zIndex = 0;
 
     public value: ReadonlyArray<[TuiDay, number]> = [];

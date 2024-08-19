@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -37,6 +36,9 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     templateUrl: './calendar-sheet.template.html',
     styleUrls: ['./calendar-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._single]': 'isSingleDayRange',
+    },
 })
 export class TuiCalendarSheet {
     private readonly today = TuiDay.currentLocal();
@@ -134,7 +136,6 @@ export class TuiCalendarSheet {
         return value.isSingleDay && value.from.daySame(item) ? 'single' : null;
     }
 
-    @HostBinding('class._single')
     protected get isSingleDayRange(): boolean {
         return this.value instanceof TuiDayRange && this.value.isSingleDay;
     }

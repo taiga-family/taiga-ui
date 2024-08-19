@@ -4,8 +4,6 @@ import {
     Component,
     computed,
     ElementRef,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     signal,
@@ -45,6 +43,7 @@ import {TuiRangeChange} from './range-change.directive';
         },
     ],
     host: {
+        '[attr.data-size]': 'size',
         '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
         '[style.--left.%]': 'left()',
@@ -52,6 +51,10 @@ import {TuiRangeChange} from './range-change.directive';
         '[style.background]': 'options.trackColor',
         '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
+        '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
+        '(keydown.arrowRight.prevent)': 'changeByStep(1, $event.target)',
+        '(keydown.arrowLeft.prevent)': 'changeByStep(-1, $event.target)',
+        '(keydown.arrowDown.prevent)': 'changeByStep(-1, $event.target)',
     },
 })
 export class TuiRange extends TuiControl<[number, number]> implements OnChanges {
@@ -72,7 +75,6 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public step = 1;
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeS = this.options.size;
 
     @Input()
@@ -129,10 +131,6 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
         return 1 / this.segments;
     }
 
-    @HostListener('keydown.arrowUp.prevent', ['1', '$event.target'])
-    @HostListener('keydown.arrowRight.prevent', ['1', '$event.target'])
-    @HostListener('keydown.arrowLeft.prevent', ['-1', '$event.target'])
-    @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
         const leftThumbElement = sliderLeftRef.nativeElement;

@@ -1,4 +1,4 @@
-import {Directive, forwardRef, HostListener, inject, Input} from '@angular/core';
+import {Directive, forwardRef, inject, Input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -17,6 +17,8 @@ import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-st
         '[attr.aria-valuemax]': 'max',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
+        '(input)': 'updateControlValue()',
+        '(change)': 'updateControlValue()',
     },
 })
 export class TuiSliderKeySteps extends TuiControl<number> {
@@ -51,8 +53,6 @@ export class TuiSliderKeySteps extends TuiControl<number> {
         return this.keySteps[this.keySteps.length - 1][1];
     }
 
-    @HostListener('input')
-    @HostListener('change')
     protected updateControlValue(): void {
         this.onChange(
             tuiPercentageToKeyStepValue(this.slider.valueRatio * 100, this.keySteps),

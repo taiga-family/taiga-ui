@@ -3,8 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -90,6 +88,11 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         TuiToCountryCodePipe,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    host: {
+        '[attr.data-size]': 'size',
+        '(paste.capture.prevent.stop)': 'onPaste($event)',
+        '(drop.capture.prevent.stop)': 'onPaste($event)',
+    },
 })
 export class TuiInputPhoneInternationalComponent
     extends AbstractTuiControl<string>
@@ -156,8 +159,6 @@ export class TuiInputPhoneInternationalComponent
         );
     }
 
-    @HostListener('paste.capture.prevent.stop', ['$event'])
-    @HostListener('drop.capture.prevent.stop', ['$event'])
     public onPaste(event: ClipboardEvent | DragEvent): void {
         let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
         const countryIsoCode = this.extractCountryCodePipe.transform(
@@ -206,7 +207,6 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -32,6 +26,9 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
         tuiAsFocusableItemAccessor(TuiInputPasswordComponent),
         tuiAsControl(TuiInputPasswordComponent),
     ],
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
@@ -74,7 +71,6 @@ export class TuiInputPasswordComponent
         this.value = textValue;
     }
 
-    @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

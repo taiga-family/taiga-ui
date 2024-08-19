@@ -4,8 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    HostBinding,
-    HostListener,
     Input,
     ViewChildren,
     ViewEncapsulation,
@@ -43,6 +41,10 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
+    host: {
+        '[attr.data-size]': 'size',
+        '(focusout)': 'onFocusOut()',
+    },
 })
 export class TuiRadioList<T> extends TuiControl<T> {
     @ViewChildren(NgControl)
@@ -56,7 +58,6 @@ export class TuiRadioList<T> extends TuiControl<T> {
     public items: readonly T[] = [];
 
     @Input()
-    @HostBinding('attr.data-size')
     public size: TuiSizeS = 'm';
 
     @Input()
@@ -73,7 +74,6 @@ export class TuiRadioList<T> extends TuiControl<T> {
         return this.control.name?.toString() || '';
     }
 
-    @HostListener('focusout')
     protected onFocusOut(): void {
         this.controls.forEach((control) => control.control?.markAsTouched());
 
