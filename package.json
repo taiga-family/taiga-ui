@@ -80,7 +80,13 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "jest/prefer-importing-jest-globals": "off"
+            "jest/prefer-importing-jest-globals": "off",
+            "prettier/prettier": [
+                "error",
+                {
+                    "endOfLine": "auto"
+                }
+            ]
         },
         "root": true
     },
