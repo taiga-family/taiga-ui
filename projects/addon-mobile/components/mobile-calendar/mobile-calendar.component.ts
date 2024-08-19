@@ -51,13 +51,16 @@ import {
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
+    BehaviorSubject,
     debounceTime,
     delay,
+    distinctUntilChanged,
     filter,
     identity,
     map,
     mergeMap,
     race,
+    skip,
     switchMap,
     take,
     takeUntil,
@@ -111,6 +114,10 @@ export class TuiMobileCalendar implements AfterViewInit {
     @ViewChild('monthsScrollRef')
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
+    private readonly value$ = new BehaviorSubject<
+        TuiDay | TuiDayRange | readonly TuiDay[] | null
+    >(null);
+
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
@@ -120,7 +127,6 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly ngZone = inject(NgZone);
 
     protected initialized = false;
-    protected value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -128,7 +134,10 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
     protected readonly doneWord$ = inject(TUI_DONE_WORD);
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
+    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
+        optional: true,
+    });
+
     protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
     protected readonly months = Array.from(
         {length: RANGE * 12},
@@ -162,6 +171,13 @@ export class TuiMobileCalendar implements AfterViewInit {
         TuiDay | TuiDayRange | readonly TuiDay[]
     >();
 
+    @Output()
+    public readonly valueChange = this.value$.pipe(
+        skip(1),
+        distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
+        takeUntilDestroyed(),
+    );
+
     constructor() {
         inject(TUI_VALUE_STREAM)
             .pipe(takeUntilDestroyed())
@@ -192,6 +208,15 @@ export class TuiMobileCalendar implements AfterViewInit {
             .subscribe(() => this.scrollToActiveMonth());
     }
 
+    @Input()
+    protected set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value$.next(value);
+    }
+
+    protected get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
     protected get yearWidth(): number {
         return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
     }
@@ -213,12 +238,14 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
             this.value = tuiToggleDay(this.value, day);
-        } else if (this.isSingleValue(this.value)) {
-            this.value = new TuiDayRange(day, day);
+        } else if (this.value instanceof TuiDay) {
+            this.value = TuiDayRange.sort(this.value, day);
+        } else if (this.value instanceof TuiDayRange && !this.value.isSingleDay) {
+            this.value = day;
         } else if (this.value instanceof TuiDayRange) {
             this.value = TuiDayRange.sort(this.value.from, day);
         } else if (!this.value) {
-            this.value = new TuiDayRange(day, day);
+            this.value = day;
         }
     }
 
@@ -300,10 +327,6 @@ export class TuiMobileCalendar implements AfterViewInit {
 
     private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
         return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
-    }
-
-    private isSingleValue(day: any): day is TuiDay {
-        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
     }
 
     private getYearsViewportSize(): number {
