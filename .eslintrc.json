@@ -1,15 +1,15 @@
 {
-   "overrides": [
-      {
-         "files": ["*.ts"],
-         "rules": {
-            "prettier/prettier": [
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "rules": {
+                "prettier/prettier": [
                     "error",
                     {
                         "endOfLine": "auto"
                     }
                 ]
-         }
-      }
-   ]
+            }
+        }
+    ]
 }

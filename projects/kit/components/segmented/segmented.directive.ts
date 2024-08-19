@@ -13,12 +13,11 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, merge, mergeAll, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
 
 @Directive({
     standalone: true,
@@ -48,8 +47,8 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
                 filter(() => this.isBrowser),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe((value) => {
-                this.update(this.el.querySelector(`input[value=${value}]`));
+            .subscribe(() => {
+                this.update(this.el.querySelector(':checked'));
             });
     }
 
