@@ -60,7 +60,7 @@
             -0.625rem 0;
     }
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         min-height: auto;
     }
 }
@@ -72,7 +72,7 @@
     box-sizing: border-box;
     overflow: hidden;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 1rem;
     }
 }
@@ -139,7 +139,7 @@
         top: calc(50% + 1rem);
     }
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         display: none;
     }
 }

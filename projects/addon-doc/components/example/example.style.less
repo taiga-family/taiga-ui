@@ -11,7 +11,7 @@
         animation: 1s 300ms tuiShaking;
     }
 
-    :host-context(tui-root._mobile) {
+    @media @tui-mobile {
         padding-top: 2rem;
     }
 }
@@ -20,7 +20,7 @@
     font: var(--tui-font-heading-5);
     margin: 0 0 0.5rem;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         font: var(--tui-font-heading-6);
     }
 }
@@ -44,7 +44,7 @@
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         margin-top: 0.75rem;
     }
 }
@@ -57,7 +57,7 @@
     align-items: center;
     gap: 0.5rem;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 0 0.875rem 0 1rem;
     }
 }
@@ -79,7 +79,7 @@
     box-sizing: border-box;
     overflow-x: auto;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 1rem;
     }
 
