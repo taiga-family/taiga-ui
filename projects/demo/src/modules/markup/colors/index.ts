@@ -13,6 +13,7 @@ import {TableColors} from './examples/table/table.component';
     standalone: true,
     imports: [TuiDemo, TableColors, TuiBlock, FormsModule, TuiGroup, TuiPlatform],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
