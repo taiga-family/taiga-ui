@@ -17,7 +17,7 @@ import {AppComponent} from './app.component';
   providers: [
     // A workaround because StackBlitz does not support assets
     tuiSvgOptionsProvider({
-      path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
+      path: 'https://taiga-ui.dev/v3/assets/taiga-ui/icons',
     }),
     /**
      * If you use unsafe icons or TuiEditor in your app
