@@ -6,11 +6,9 @@ import {
     HostListener,
     Inject,
     Input,
-    OnChanges,
     Optional,
     Output,
     Self,
-    SimpleChanges,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -49,9 +47,7 @@ import {takeUntil} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
-export class TuiCalendarRangeComponent
-    implements OnChanges, TuiWithOptionalMinMax<TuiDay>
-{
+export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
     /**
      * @deprecated use `item`
      */
@@ -86,7 +82,8 @@ export class TuiCalendarRangeComponent
 
     @Input()
     set item(item: TuiDayRangePeriod | null) {
-        this.updateValue(item?.range ?? null);
+        this.value = item?.range ?? null;
+        this.selectedActivePeriod = item;
     }
 
     @Output()
@@ -137,7 +134,6 @@ export class TuiCalendarRangeComponent
 
         valueChanges.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe(value => {
             this.value = value;
-            this.item = value ? this.findItemByDayRange(value) : null;
         });
     }
 
@@ -149,14 +145,6 @@ export class TuiCalendarRangeComponent
 
         event.stopPropagation();
         this.value = this.previousValue;
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        const {value} = changes ?? {};
-
-        if (value?.currentValue) {
-            this.item = this.findItemByDayRange(value.currentValue);
-        }
     }
 
     readonly monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, month) =>
@@ -222,17 +210,13 @@ export class TuiCalendarRangeComponent
             return;
         }
 
-        const sortedRange = TuiDayRange.sort(value.from, day);
-
-        this.updateValue(sortedRange);
-        this.updateItem(this.findItemByDayRange(sortedRange));
+        this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
             this.updateValue(item.range.dayLimit(this.min, this.max));
-            this.updateItem(item);
 
             return;
         }
@@ -240,23 +224,19 @@ export class TuiCalendarRangeComponent
         if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
             this.updateValue(null);
-            this.updateItem(null);
         }
     }
 
     updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
-    }
-
-    updateItem(item: TuiDayRangePeriod | null): void {
-        this.item = item;
-        this.itemChange.emit(item);
+        this.itemChange.emit(value ? this.findItemByDayRange(value) : null);
     }
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.items.find(item =>
+            this.selectedActivePeriod ??
+            (this.items.find(item =>
                 tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
@@ -264,7 +244,8 @@ export class TuiCalendarRangeComponent
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ||
+                null)
         );
     }
 
