@@ -62,9 +62,6 @@ import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',

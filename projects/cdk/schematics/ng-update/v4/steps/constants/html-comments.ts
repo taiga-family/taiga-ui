@@ -14,6 +14,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
             '(pageChange) and (sizeChange) outputs have been removed. Use (paginationChange) instead',
     },
     {
+        tag: 'tui-input-inline',
+        withAttrs: ['(focusedChange)'],
+        comment:
+            '(focusedChange) output has been removed. Use native (focusin) / (focusout) instead',
+    },
+    {
         tag: 'tui-radio',
         withAttrs: ['identityMatcher', 'showLoader'],
         comment:

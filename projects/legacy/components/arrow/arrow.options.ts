@@ -3,7 +3,7 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export interface TuiArrowOptions {
     readonly iconLarge: PolymorpheusContent;
@@ -11,8 +11,7 @@ export interface TuiArrowOptions {
 }
 
 /**
- * @deprecated: drop in v5.0
- * Default values for arrow options
+ * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
     iconSmall: '@tui.chevron-down',
@@ -25,9 +24,6 @@ export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
  */
 export const TUI_ARROW_OPTIONS = tuiCreateToken(TUI_ARROW_DEFAULT_OPTIONS);
 
-/**
- * @deprecated: drop in v5.0
- */
 export function tuiArrowOptionsProvider(options: Partial<TuiArrowOptions>): Provider {
     return tuiProvideOptions(TUI_ARROW_OPTIONS, options, TUI_ARROW_DEFAULT_OPTIONS);
 }

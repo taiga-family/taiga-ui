@@ -16,8 +16,8 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
+      - uses: taiga-family/ci/actions/setup/checkout@v1.67.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.67.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
@@ -28,6 +28,30 @@ jobs:
 
       - name: Cleanup after clone snapshots
         run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+
+      - name: Replace baseHref for next
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/next/">'
+          include: '${{ env.DIST }}/next/**/index.html'
+          regex: false
+
+      - name: Replace baseHref for v2
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/v2/">'
+          include: '${{ env.DIST }}/v2/**/index.html'
+          regex: false
+
+      - name: Replace baseHref for v3
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/v3/">'
+          include: '${{ env.DIST }}/v3/**/index.html'
+          regex: false
 
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'

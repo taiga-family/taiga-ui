@@ -5,7 +5,8 @@ import type {Observable, Observer} from 'rxjs';
 import type {TuiSheetOptions} from './sheet-options';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 export interface TuiSheet<O, I = undefined>
     extends TuiSheetOptions<I, O>,
@@ -16,7 +17,8 @@ export interface TuiSheet<O, I = undefined>
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 export interface TuiSheetRequiredProps<T = unknown> {
     item: TuiSheet<T>;

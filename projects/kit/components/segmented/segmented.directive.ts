@@ -13,9 +13,9 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {filter, merge, switchMap} from 'rxjs';
+import {filter, merge, mergeAll, switchMap} from 'rxjs';
 
 import {TuiSegmented} from './segmented.component';
 
@@ -42,7 +42,8 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
-                switchMap((controls) => merge(controls.map((c) => c.valueChanges))),
+                switchMap((controls) => merge(controls.map((c) => tuiControlValue(c)))),
+                mergeAll(),
                 filter(() => this.isBrowser),
                 takeUntilDestroyed(this.destroyRef),
             )

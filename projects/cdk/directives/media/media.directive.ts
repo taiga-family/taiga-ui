@@ -1,18 +1,21 @@
-import {
-    Directive,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    Input,
-    Output,
-} from '@angular/core';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
     standalone: true,
     selector: 'video[tuiMedia], audio[tuiMedia]',
     exportAs: 'tuiMedia',
-    host: {'(durationchange)': '0'},
+    host: {
+        '[volume]': 'volume',
+        '(durationchange)': '0',
+        '(ended)': 'onPausedChange(true)',
+        '(pause)': 'onPausedChange(true)',
+        '(play)': 'onPausedChange(false)',
+        '(volumechange)': 'onVolumeChange()',
+        '(timeupdate)': 'onCurrentTimeChange()',
+        '(seeking)': 'onCurrentTimeChange()',
+        '(seeked)': 'onCurrentTimeChange()',
+    },
 })
 export class TuiMedia {
     private readonly el = tuiInjectElement<HTMLMediaElement>();
@@ -20,7 +23,6 @@ export class TuiMedia {
     private playbackRate = 1;
 
     @Input()
-    @HostBinding('volume')
     public volume = 1;
 
     @Output()
@@ -62,23 +64,16 @@ export class TuiMedia {
         return Boolean(this.el.paused);
     }
 
-    @HostListener('ended', ['true'])
-    @HostListener('pause', ['true'])
-    @HostListener('play', ['false'])
     protected onPausedChange(paused: boolean): void {
         this.pausedChange.emit(paused);
         this.updatePlaybackRate(this.playbackRate);
     }
 
-    @HostListener('volumechange')
     protected onVolumeChange(): void {
         this.volume = this.el.volume;
         this.volumeChange.emit(this.volume);
     }
 
-    @HostListener('timeupdate')
-    @HostListener('seeking')
-    @HostListener('seeked')
     protected onCurrentTimeChange(): void {
         this.currentTimeChange.emit(this.currentTime);
     }

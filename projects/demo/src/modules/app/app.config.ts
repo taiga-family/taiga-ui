@@ -21,7 +21,7 @@ import {
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {TUI_BASE_HREF, TUI_IS_E2E, TUI_IS_PLAYWRIGHT, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TUI_IS_PLAYWRIGHT, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
@@ -159,9 +159,8 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_URL_STATE_HANDLER,
-            deps: [TUI_BASE_HREF],
-            useFactory: (baseHref: string) => (tree: UrlTree) =>
-                String(tree).replace(baseHref, ''),
+            useFactory: () => (tree: UrlTree) =>
+                String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
         },
         {
             provide: TUI_DOC_TYPE_REFERENCE_HANDLER,

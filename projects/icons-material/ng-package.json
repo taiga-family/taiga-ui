@@ -6,7 +6,7 @@
     "allowedNonPeerDependencies": [
         "."
     ],
-    "dest": "../../dist/icons",
+    "dest": "../../dist/icons-material",
     "lib": {
         "entryFile": "./index.ts"
     }

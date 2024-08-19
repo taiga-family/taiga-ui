@@ -7,9 +7,6 @@ import {
     Output,
 } from '@angular/core';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-palette',
     templateUrl: './palette.template.html',

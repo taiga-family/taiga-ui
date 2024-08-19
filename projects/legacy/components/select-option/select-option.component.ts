@@ -17,9 +17,6 @@ import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-select-option',
     templateUrl: './select-option.template.html',
@@ -83,7 +80,4 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     }
 }
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_SELECT_OPTION = new PolymorpheusComponent(TuiSelectOptionComponent);

@@ -32,6 +32,7 @@
             [max]="nativePickerMax"
             [min]="nativePickerMin"
             [ngModel]="nativeValue"
+            [ngModelOptions]="{standalone: true}"
             (click.stop.silent)="(0)"
             (mousedown.stop.silent)="(0)"
             (ngModelChange)="onNativeChange($event)"

@@ -1,8 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     Input,
     Output,
     ViewEncapsulation,
@@ -30,6 +28,10 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
             useValue: {childList: true},
         },
     ],
+    host: {
+        '[class._dragged]': 'element',
+        '(pointerleave.silent)': 'rearrange($event)',
+    },
 })
 export class TuiTilesComponent {
     private readonly el = tuiInjectElement();
@@ -45,7 +47,6 @@ export class TuiTilesComponent {
         map((element) => this.reorder(element)),
     );
 
-    @HostBinding('class._dragged')
     public element: Element | null = null;
 
     public readonly order$ = new BehaviorSubject(new Map<number, number>());
@@ -59,7 +60,6 @@ export class TuiTilesComponent {
         return this.order$.value;
     }
 
-    @HostListener('pointerleave.silent')
     public rearrange(element?: Element): void {
         this.el$.next(element);
     }

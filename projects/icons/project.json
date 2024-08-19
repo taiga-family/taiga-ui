@@ -20,7 +20,7 @@
                 "parallel": false,
                 "commands": [
                     "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
-                    "npx prettier ./{projectRoot}/src/* --write"
+                    "prettier ./{projectRoot}/src/* --write --log-level silent"
                 ]
             }
         },
@@ -33,24 +33,11 @@
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
-        "prepublish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "cp ./LICENSE ./dist/{projectName}"
-            }
-        },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-            },
-            "dependsOn": [
-                {
-                    "target": "prepublish",
-                    "params": "ignore",
-                    "dependencies": false
-                }
-            ]
+            }
         }
     }
 }

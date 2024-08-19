@@ -43,16 +43,10 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
     TuiValueTransformer<number | null>
 >('');
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',
@@ -260,7 +254,10 @@ export class TuiInputNumberComponent
         this.unfinishedValue = null;
 
         if (Number.isNaN(nativeNumberValue)) {
-            this.nativeValue = focused ? this.computedPrefix + this.computedPostfix : '';
+            this.nativeValue =
+                focused && !this.readOnly
+                    ? this.computedPrefix + this.computedPostfix
+                    : '';
             this.value = null;
 
             return;

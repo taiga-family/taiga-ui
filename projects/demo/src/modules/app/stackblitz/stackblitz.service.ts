@@ -43,7 +43,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.className = APP_COMP_META.CLASS_NAME;
         appCompTs.defaultExport = false;
 
-        return stackblitz.openProject({
+        stackblitz.openProject({
             ...(await this.getStackblitzProjectConfig()),
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,

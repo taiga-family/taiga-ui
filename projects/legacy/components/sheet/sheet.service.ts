@@ -11,6 +11,7 @@ import {TUI_SHEET_OPTIONS} from './sheet-options';
 
 /**
  * @deprecated: use {@link TuiSheetDialogService}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 @Injectable({
     providedIn: 'root',

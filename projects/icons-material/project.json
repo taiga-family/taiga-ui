@@ -20,28 +20,15 @@
                 "parallel": false,
                 "commands": [
                     "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
-                    "prettier ./projects/icons-material/src/* --write"
+                    "prettier ./{projectRoot}/src/* --write --log-level silent"
                 ]
-            }
-        },
-        "prepublish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "cp ./LICENSE ./dist/{projectName}"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-            },
-            "dependsOn": [
-                {
-                    "target": "prepublish",
-                    "params": "ignore",
-                    "dependencies": false
-                }
-            ]
+            }
         }
     }
 }

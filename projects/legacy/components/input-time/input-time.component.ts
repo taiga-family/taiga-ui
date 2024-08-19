@@ -36,9 +36,6 @@ import {map, timer} from 'rxjs';
 import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-input-time',
     templateUrl: './input-time.template.html',
@@ -219,12 +216,7 @@ export class TuiInputTimeComponent
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
-        if (
-            focused ||
-            this.value !== null ||
-            this.nativeValue === '' ||
-            this.mode === 'HH:MM'
-        ) {
+        if (focused || this.value !== null || this.nativeValue === '') {
             return;
         }
 

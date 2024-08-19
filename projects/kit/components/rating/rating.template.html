@@ -6,6 +6,7 @@
     [disabled]="disabled()"
     [max]="max"
     [ngModel]="value()"
+    [ngModelOptions]="{standalone: true}"
     (blur)="onTouched()"
     (ngModelChange)="onChange($event)"
 />

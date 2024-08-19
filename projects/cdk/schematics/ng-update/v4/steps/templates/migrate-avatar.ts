@@ -10,6 +10,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
+import {normalizeAttrValue} from '../utils/normalize-attr-value';
 import {removeAttrs} from '../utils/remove-attrs';
 import {replaceSizeAttr} from './toggles/common';
 
@@ -37,10 +38,6 @@ function getFallbackValue(
     fallbackValue: string | undefined,
 ): string {
     return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || '';
-}
-
-function normalizeAttrValue(attrName: string, attrValue: string): string {
-    return attrName.startsWith('[') ? attrValue : `'${attrValue}'`;
 }
 
 export function migrateAvatar({
@@ -122,6 +119,7 @@ export function migrateAvatar({
 
         const fallbackModule = !!((avatarUrlAttr && textAttrValue) || fallbackAttr);
         const initialsModule = !!textAttrValue;
+        const autoColorModule = !!autoColorValue && autoColorValue === 'true';
 
         const modules = [
             ...(fallbackModule
@@ -129,6 +127,9 @@ export function migrateAvatar({
                 : []),
             ...(initialsModule
                 ? [{moduleName: 'TuiInitialsPipe', moduleSpecifier: '@taiga-ui/core'}]
+                : []),
+            ...(autoColorModule
+                ? [{moduleName: 'TuiAutoColorPipe', moduleSpecifier: '@taiga-ui/core'}]
                 : []),
         ];
 

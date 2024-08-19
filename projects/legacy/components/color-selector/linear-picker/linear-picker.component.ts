@@ -10,9 +10,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 import {TuiPickerService} from '../services/picker.service';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-linear-picker',
     templateUrl: './linear-picker.template.html',

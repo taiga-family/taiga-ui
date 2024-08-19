@@ -97,6 +97,7 @@
                                 [disabled]="computedDisabled"
                                 [id]="id"
                                 [ngModel]="search"
+                                [ngModelOptions]="{standalone: true}"
                                 [placeholder]="placeholder"
                                 [readOnly]="readOnly || inputHidden"
                                 [tabIndex]="computedFocusable ? 0 : -1"

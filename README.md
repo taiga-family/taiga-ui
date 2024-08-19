@@ -216,7 +216,7 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="German Panov"
-                /><br /><b>German Panov</b></a
+                /><br /><b>German&nbsp;Panov</b></a
             >
             <div style="margin-top: 4px">
                 <a

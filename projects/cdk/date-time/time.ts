@@ -114,7 +114,7 @@ export class TuiTime implements TuiTimeLike {
      */
     public static fromString(time: string): TuiTime {
         const hours = Number(time.slice(0, 2));
-        const minutes = Number(time.slice(3, 5));
+        const minutes = Number(time.slice(3, 5)) || 0;
         const seconds = Number(time.slice(6, 8)) || 0;
         const ms = Number(time.slice(9, 12)) || 0;
 

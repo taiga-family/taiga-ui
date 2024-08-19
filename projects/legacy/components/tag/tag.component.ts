@@ -21,7 +21,8 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TUI_TAG_OPTIONS} from './tag.options';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiChip}
+ * https://taiga-ui.dev/components/chip
  */
 @Component({
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',

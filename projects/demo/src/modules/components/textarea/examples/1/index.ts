@@ -15,5 +15,9 @@ export default class Example {
     protected testForm = new FormGroup({
         testValue1: new FormControl('A field', Validators.required),
         testValue2: new FormControl('This one can be expanded', Validators.required),
+        testValue3: new FormControl(
+            'This one can be expanded (expandable on focus)',
+            Validators.required,
+        ),
     });
 }

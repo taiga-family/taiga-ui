@@ -29,11 +29,11 @@
 
         td {
             white-space: pre;
-        }
 
-        tr:hover {
-            outline: 1px solid var(--tui-border-normal);
-            border-radius: 0.25rem;
+            &:not(.hljs-ln-numbers):hover {
+                outline: 1px solid var(--tui-border-normal);
+                border-radius: 0.25rem;
+            }
         }
     }
 }
@@ -51,7 +51,7 @@
     align-items: center;
     flex-direction: row-reverse;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 0.3125rem;
         border-radius: 0.25rem;
         border: 1px solid var(--tui-border-normal);
@@ -73,7 +73,7 @@
     word-wrap: break-word;
     white-space: pre-wrap;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 1rem;
     }
 }

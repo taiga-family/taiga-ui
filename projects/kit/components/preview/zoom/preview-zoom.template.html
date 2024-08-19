@@ -32,6 +32,7 @@
                 [max]="max"
                 [min]="min"
                 [ngModel]="value"
+                [ngModelOptions]="{standalone: true}"
                 (ngModelChange)="onModelChange($event)"
             />
         </label>

@@ -18,9 +18,6 @@ import {TuiInputTimeComponent} from './input-time.component';
 import {TuiInputTimeDirective} from './input-time.directive';
 import {TuiNativeTimeComponent} from './native-time/native-time.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

@@ -3,9 +3,6 @@ import {InjectionToken} from '@angular/core';
 import type {TuiGradientDirection} from '@taiga-ui/cdk/utils/color';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
     '[TUI_COLOR_SELECTOR_MODE_NAMES]',
     {
@@ -13,9 +10,6 @@ export const TUI_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]
     },
 );
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_DEFAULT_INPUT_COLORS = new Map([
     ['color-black-100', '#909090'],
     ['color-black-200', '#666666'],
@@ -44,17 +38,11 @@ export const TUI_DEFAULT_INPUT_COLORS = new Map([
     ['transparent', 'transparent'],
 ]);
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TuiColorSelectorMode = {
     SolidColor: 0,
     Gradient: 1,
 } as const;
 
-/**
- * @deprecated: drop in v5.0
- */
 export interface TuiColorSelectorOptions {
     readonly mode: (typeof TuiColorSelectorMode)[keyof typeof TuiColorSelectorMode];
     readonly selectorMode: boolean;
@@ -70,9 +58,6 @@ export interface TuiColorSelectorOptions {
     };
 }
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_COLOR_SELECTOR_DEFAULT_OPTIONS: TuiColorSelectorOptions = {
     selectorMode: true,
     mode: TuiColorSelectorMode.SolidColor,
@@ -109,16 +94,10 @@ export const TUI_COLOR_SELECTOR_DEFAULT_OPTIONS: TuiColorSelectorOptions = {
     },
 };
 
-/**
- * @deprecated: drop in v5.0
- */
 export const TUI_COLOR_SELECTOR_OPTIONS = tuiCreateToken(
     TUI_COLOR_SELECTOR_DEFAULT_OPTIONS,
 );
 
-/**
- * @deprecated: drop in v5.0
- */
 export function tuiColorSelectorOptionsProvider(
     options: Partial<TuiColorSelectorOptions>,
 ): Provider {

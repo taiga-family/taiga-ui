@@ -1,5 +1,5 @@
 import type {OnChanges, OnInit} from '@angular/core';
-import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 
@@ -13,13 +13,15 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
     standalone: true,
     exportAs: 'tuiInputFilesValidator',
     hostDirectives: [TuiValidator],
+    host: {
+        '[accept]': 'accept',
+    },
 })
 export class TuiInputFilesValidator implements OnChanges, OnInit {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     private readonly validator = inject(TuiValidator);
 
     @Input()
-    @HostBinding('accept')
     public accept = this.options.accept;
 
     @Input()

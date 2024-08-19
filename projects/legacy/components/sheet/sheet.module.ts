@@ -16,7 +16,8 @@ import {TuiSheetWrapperDirective} from './directives/sheet-wrapper/sheet-wrapper
 import {TuiSheetDirective} from './sheet.directive';
 
 /**
- * @deprecated: use {@link TuiSheetDialogModule}
+ * @deprecated: use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 @NgModule({
     imports: [

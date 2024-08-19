@@ -6,9 +6,6 @@ import {tuiGetElementPoint, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Injectable()
 export class TuiPickerService extends Observable<TuiPoint> {
     constructor() {

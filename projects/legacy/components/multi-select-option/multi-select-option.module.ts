@@ -4,9 +4,6 @@ import {TuiCheckbox} from '@taiga-ui/kit/components/checkbox';
 
 import {TuiMultiSelectOptionComponent} from './multi-select-option.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [CommonModule, TuiCheckbox],
     declarations: [TuiMultiSelectOptionComponent],

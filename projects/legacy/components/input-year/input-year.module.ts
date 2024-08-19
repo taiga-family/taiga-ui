@@ -12,9 +12,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
 import {TuiInputYearComponent} from './input-year.component';
 import {TuiInputYearDirective} from './input-year.directive';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         MaskitoDirective,

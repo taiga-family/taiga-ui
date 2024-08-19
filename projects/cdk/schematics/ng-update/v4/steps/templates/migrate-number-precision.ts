@@ -11,7 +11,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import {cleanObject} from '../utils/clean-object';
+import {normalizeAttrValue} from '../utils/normalize-attr-value';
 
 export function migrateNumberPrecision({
     resource,
@@ -42,14 +42,9 @@ export function migrateNumberPrecision({
                 '@taiga-ui/core',
             );
 
-            const format = JSON.stringify(
-                cleanObject({
-                    decimalMode: decimalAttr?.value,
-                    precision: precisionAttr?.value,
-                }),
-            );
+            const format = `{${decimalAttr ? `decimalMode: ${normalizeAttrValue(decimalAttr.name, decimalAttr.value)}` : ''}${decimalAttr ? ', ' : ''}${precisionAttr ? `precision: ${normalizeAttrValue(precisionAttr.name, precisionAttr.value)}` : ''}`;
 
-            const formatPart = `[tuiNumberFormat]='${format}'`;
+            const formatPart = `[tuiNumberFormat]="${format}"`;
 
             const insertTo =
                 (sourceCodeLocation?.startTag?.startOffset || 0) +

@@ -55,6 +55,7 @@
                             class="t-input"
                             [disabled]="computedDisabled"
                             [id]="id"
+                            [ngModelOptions]="{standalone: true}"
                             [readOnly]="readOnly"
                             [tabIndex]="computedFocusable ? 0 : -1"
                             [(ngModel)]="value"

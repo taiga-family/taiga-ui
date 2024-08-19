@@ -6,7 +6,8 @@ import type {TuiTableBarOptions} from './table-bar.options';
 import {TUI_TABLE_BAR_OPTIONS, TUI_TABLE_BARS} from './table-bar.options';
 
 /**
- * @deprecated Use {@link TuiFilterByInputPipe} instead
+ * @deprecated drop in v5.0 use {@link TuiActionBar}
+ * https://taiga-ui.dev/components/actions-bar
  */
 @Injectable({
     providedIn: 'root',

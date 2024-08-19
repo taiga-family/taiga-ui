@@ -54,9 +54,6 @@ import type {TuiMultiSelectOptions} from './multi-select.options';
 import {TUI_MULTI_SELECT_OPTIONS} from './multi-select.options';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
-/**
- * @deprecated: drop in v5.0
- */
 @Component({
     selector: 'tui-multi-select',
     templateUrl: './multi-select.template.html',

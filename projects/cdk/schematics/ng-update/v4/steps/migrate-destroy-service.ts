@@ -108,7 +108,9 @@ export function migrateDestroyService(options: TuiSchema): void {
 
             if (constructor) {
                 // we are definitely inside an injection context
-                return possibleTakeUntil.replaceWithText('takeUntilDestroyed()');
+                possibleTakeUntil.replaceWithText('takeUntilDestroyed()');
+
+                return;
             }
 
             // other cases when we are not sure if we are inside an injection context
@@ -136,12 +138,12 @@ export function migrateDestroyService(options: TuiSchema): void {
                         isReadonly: true,
                     });
 
-                return possibleTakeUntil.replaceWithText(
-                    'takeUntilDestroyed(this.destroyRef)',
-                );
+                possibleTakeUntil.replaceWithText('takeUntilDestroyed(this.destroyRef)');
+
+                return;
             }
 
-            return nodesForComments.push(node);
+            nodesForComments.push(node);
         });
     });
 

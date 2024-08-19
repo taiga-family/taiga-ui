@@ -14,9 +14,6 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiInputPasswordComponent} from './input-password.component';
 import {TuiInputPasswordDirective} from './input-password.directive';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         ...TuiHint,

@@ -5,11 +5,23 @@
     "projectType": "application",
     "prefix": "app",
     "targets": {
+        "type-check": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "tsc -p projects/demo-playwright/tsconfig.playwright.json"
+            }
+        },
         "e2e": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "playwright test --config {projectRoot}/playwright.config.ts"
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "type-check",
+                    "params": "ignore"
+                }
+            ]
         },
         "e2e-ui": {
             "executor": "nx:run-commands",

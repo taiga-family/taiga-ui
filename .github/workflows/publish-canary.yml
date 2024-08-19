@@ -5,19 +5,23 @@ on:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
 jobs:
-  canary-3x:
-    name: Packages
+  canary:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: [v3.x, main]
+    name: Publish canary for ${{ matrix.branch }} branch
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
+      - uses: taiga-family/ci/actions/setup/checkout@v1.67.0
         with:
-          ref: v3.x
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
-      - uses: taiga-family/ci/actions/setup/node@v1.66.4
+          ref: ${{ matrix.branch }}
+      - uses: taiga-family/ci/actions/setup/variables@v1.67.0
+      - uses: taiga-family/ci/actions/setup/node@v1.67.0
         with:
           node-version: '18.x'
           validate-peer-deps: 'false'
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.66.4
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.67.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs

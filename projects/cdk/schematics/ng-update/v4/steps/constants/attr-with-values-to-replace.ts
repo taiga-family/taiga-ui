@@ -1,16 +1,17 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
 import type {ReplacementAttributeValue} from '../../../interfaces';
 
-const hasPseudo = [
-    'button',
-    'a',
+const hasPseudoInvalid = [
     'tui-checkbox',
     'tui-checkbox-block',
     'tui-radio',
     'tui-radio-block',
     'tui-radio-labeled',
     'tui-checkbox-labeled',
+    'tui-toggle',
 ];
+
+const hasPseudo = [...hasPseudoInvalid, 'button', 'a'];
 
 export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
     {
@@ -35,6 +36,12 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
         valueReplacer: (condition) => `${condition} ? 'active' : null`,
+    },
+    {
+        attrNames: ['[pseudoInvalid]'],
+        newAttrName: '[attr.data-mode]',
+        withTagNames: hasPseudoInvalid,
+        valueReplacer: (condition) => `${condition} ? 'invalid' : null`,
     },
     {
         attrNames: ['[pseudoHover]'],

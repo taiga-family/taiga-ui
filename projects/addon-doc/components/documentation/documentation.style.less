@@ -17,7 +17,7 @@
         border-bottom: 1px solid var(--tui-border-normal);
     }
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         display: flex;
         flex-wrap: wrap;
 
@@ -46,7 +46,7 @@
         text-align: right;
     }
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         width: 100%;
         height: auto;
         padding: 0.5rem 0;
@@ -64,7 +64,7 @@
         max-width: 20rem;
         text-align: right;
 
-        :host-context(tui-root._mobile) & {
+        @media @tui-mobile {
             width: 9.375rem;
         }
     }
@@ -76,7 +76,7 @@
     font-family: monospace;
     color: @color-property;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         padding: 0.5rem 0;
     }
 }

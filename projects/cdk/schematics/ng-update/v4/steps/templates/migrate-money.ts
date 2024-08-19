@@ -37,12 +37,13 @@ export function migrateMoney({
         const decimalAttr = findAttr(attrs, 'decimal');
         const precisionAttr = findAttr(attrs, 'precision');
         const signAttr = findAttr(attrs, 'sign');
+        const selfClosing = !sourceCodeLocation?.endTag;
 
         if (!valueAttr) {
             return;
         }
 
-        const insertTo = sourceCodeLocation?.endTag?.startOffset ?? 0;
+        const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
         const value = isBinding(valueAttr) ? valueAttr.value : `'${valueAttr.value}'`;
         const currency =
             currencyAttr && isBinding(currencyAttr)
@@ -51,7 +52,7 @@ export function migrateMoney({
 
         recorder.insertRight(
             templateOffset + insertTo,
-            `{{ ${value} | tuiAmount ${currencyAttr ? `: ${currency}` : ': "RUB"'} | async }}`,
+            `{{ ${value} | tuiAmount ${currencyAttr ? `: ${currency}` : ': "RUB"'} | async }}${selfClosing ? '</span>' : ''}`,
         );
 
         if (decimalAttr || precisionAttr) {
@@ -84,5 +85,14 @@ export function migrateMoney({
         ].filter((attr): attr is Attribute => attr !== undefined);
 
         removeAttrs(attrsToRemove, sourceCodeLocation, recorder, templateOffset);
+
+        if (selfClosing) {
+            recorder.remove(
+                templateOffset + (sourceCodeLocation.startTag?.endOffset ?? 2) - 2,
+                1,
+            );
+        }
+
+        addImportToClosestModule(resource.componentPath, 'AsyncPipe', '@angular/common');
     });
 }

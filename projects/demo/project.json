@@ -51,10 +51,15 @@
                     {
                         "glob": "**/*",
                         "input": "projects/icons-material/src",
-                        "output": "assets/taiga-ui/icons/material"
+                        "output": "assets/taiga-ui/icons/"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "projects/icons-fontawesome/src",
+                        "output": "assets/taiga-ui/icons/"
                     }
                 ],
-                "baseHref": "./",
+                "baseHref": "/",
                 "styles": ["{projectRoot}/src/styles/styles.less", "{projectRoot}/src/styles/styles.scss"],
                 "scripts": [],
                 "allowedCommonJsDependencies": ["markdown-it"],
@@ -81,27 +86,8 @@
                     "statsJson": false,
                     "progress": false
                 },
-                "gh-pages": {
-                    "fileReplacements": [
-                        {
-                            "replace": "{projectRoot}/src/environments/environment.ts",
-                            "with": "{projectRoot}/src/environments/environment.prod.ts"
-                        }
-                    ],
-                    "optimization": true,
-                    "outputHashing": "all",
-                    "sourceMap": false,
-                    "namedChunks": false,
-                    "buildOptimizer": true,
-                    "statsJson": false,
-                    "progress": false,
-                    "baseHref": "/"
-                },
-                "development": {
-                    "baseHref": "/"
-                },
+                "development": {},
                 "def": {
-                    "baseHref": "/",
                     "fileReplacements": [
                         {
                             "replace": "{projectRoot}/src/emulate/change-detection-strategy.ts",
@@ -110,7 +96,6 @@
                     ]
                 },
                 "shadow": {
-                    "baseHref": "/",
                     "fileReplacements": [
                         {
                             "replace": "{projectRoot}/src/emulate/view-encapsulation.ts",
@@ -235,7 +220,7 @@
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "browserTarget": "{projectName}:build:gh-pages",
+                "browserTarget": "{projectName}:build:production",
                 "serverTarget": "{projectName}:server:production",
                 "routesFile": "projects/{projectName}/routes.txt",
                 "guessRoutes": false

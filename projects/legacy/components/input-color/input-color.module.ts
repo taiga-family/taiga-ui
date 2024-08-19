@@ -8,9 +8,6 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfiel
 
 import {TuiInputColorComponent} from './input-color.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

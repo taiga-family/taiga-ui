@@ -30,6 +30,7 @@ import {
     migrateProprietary,
     migrateStyles,
     migrateTemplates,
+    removeDuplicates,
     restoreTuiMapper,
     restoreTuiMatcher,
     updatePackages,
@@ -73,6 +74,7 @@ function main(options: TuiSchema): Rule {
         fileSystem.commitEdits();
         saveActiveProject();
 
+        removeDuplicates(options);
         migrateStyles();
         migrateProprietary(fileSystem, options);
         updatePackages(fileSystem, options);

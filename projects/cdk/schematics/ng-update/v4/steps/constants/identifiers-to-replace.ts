@@ -18,6 +18,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_DIALOGS', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {
+            name: 'TuiStringifiableItem',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiStringifiableItem',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
+    {
         from: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'tuiSvgSrcInterceptors', moduleSpecifier: '@taiga-ui/legacy'},
     },
@@ -51,6 +61,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiItemModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiItem', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'NgDompurifyModule', moduleSpecifier: '@tinkoff/ng-dompurify'},
+        to: {name: 'NgDompurifyPipe', moduleSpecifier: '@taiga-ui/dompurify'},
     },
     {
         from: {name: 'TuiPanModule', moduleSpecifier: '@taiga-ui/cdk'},
@@ -1155,7 +1173,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
         to: {
-            name: 'TuiBarComponent',
+            name: 'TuiBar',
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
@@ -2534,6 +2552,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {
             name: 'WaIntersectionObserver',
             moduleSpecifier: '@ng-web-apis/intersection-observer',
+            spreadInModule: true,
         },
     },
     {
@@ -2629,6 +2648,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiStaticRequestService', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TUI_DATE_FORMAT', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_DATE_FORMAT', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/cdk'},

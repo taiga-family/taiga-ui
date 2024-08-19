@@ -4,6 +4,7 @@
     "files": ["*/*.*"],
     "ignorePaths": [
         ".git",
+        "LICENSE",
         "CHANGELOG.md",
         ".cspell.json",
         ".github/CODEOWNERS",
@@ -17,7 +18,7 @@
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo-playwright/stubs"
     ],
-    "ignoreWords": ["preid", "Quarterpounder", "tuilabel"],
+    "ignoreWords": ["preid", "Quarterpounder", "tuilabel", "fontawesome", "fortawesome", "svgs", "contentalign"],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {

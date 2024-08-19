@@ -41,14 +41,26 @@ const TEMPLATE_BEFORE = `
 <tui-input-number
   [formControl]="control"
   [precision]="2"
-  [decimal]="always"
+  decimal="always"
+>
+</tui-input-number>
+<tui-input-number
+  [formControl]="control"
+  [precision]="2"
+  [decimal]="decimal()"
 >
 </tui-input-number>
 `;
 
 const TEMPLATE_AFTER = `
 <tui-input-number
-[tuiNumberFormat]='{"decimalMode":"always","precision":"2"}'  [formControl]="control"
+[tuiNumberFormat]="{decimalMode: 'always', precision: 2"  [formControl]="control"
+ ${''}
+ ${''}
+>
+</tui-input-number>
+<tui-input-number
+[tuiNumberFormat]="{decimalMode: decimal(), precision: 2"  [formControl]="control"
  ${''}
  ${''}
 >

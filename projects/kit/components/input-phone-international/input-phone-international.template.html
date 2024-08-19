@@ -1,13 +1,14 @@
 <tui-textfield
-    tuiChevron
     class="t-country-select"
     [content]="flag"
+    [tuiChevron]="open()"
 >
     <select
         ngModel=""
         tuiTextfield
         [disabled]="disabled()"
         [focused]="open() || null"
+        [ngModelOptions]="{standalone: true}"
         [readOnly]="readOnly()"
     ></select>
 
@@ -27,6 +28,7 @@
         [disabled]="disabled()"
         [invalid]="invalid()"
         [maskito]="mask()"
+        [ngModelOptions]="{standalone: true}"
         [readOnly]="readOnly()"
         [(ngModel)]="textfieldValue"
         (beforeinput.capture)="onPaste($event)"

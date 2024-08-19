@@ -3,9 +3,6 @@ import {NgModule} from '@angular/core';
 
 import {TuiLinearMultiPickerComponent} from './linear-multi-picker.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [CommonModule],
     declarations: [TuiLinearMultiPickerComponent],

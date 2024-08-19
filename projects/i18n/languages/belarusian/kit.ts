@@ -48,7 +48,7 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'або перацягніце\u00A0іх\u00A0сюды',
         defaultLinkSingle: 'Выберыце файл',
         defaultLinkMultiple: 'Выберыце файлы',
-        maxSizeRejectionReason: 'Памер файла перавышае ',
+        maxSizeRejectionReason: 'Памер файла перавышае',
         formatRejectionReason: 'Няправільны тып файла',
         drop: 'Перацягніце файл сюды',
         dropMultiple: 'Перацягніце файлы сюды',

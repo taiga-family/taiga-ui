@@ -4,7 +4,8 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {TuiSheet} from './sheet';
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 export interface TuiSheetOptions<I = undefined, O = unknown> {
     readonly closeable: boolean;
@@ -18,7 +19,8 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     image: '',
@@ -31,8 +33,8 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 };
 
 /**
- * @deprecated: drop in v5.0
- * Default parameters for sheet component
+ * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
+ * https://taiga-ui.dev/components/sheet-dialog
  */
 export const TUI_SHEET_OPTIONS = tuiCreateToken<Omit<TuiSheetOptions, 'data'>>({
     ...TUI_SHEET_DEFAULT_OPTIONS,

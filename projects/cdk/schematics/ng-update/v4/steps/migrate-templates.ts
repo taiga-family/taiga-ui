@@ -2,6 +2,7 @@ import type {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';
+import {saveAddedImports} from '../../../utils/add-import-to-closest-module';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -137,6 +138,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
             action({resource, fileSystem, recorder});
         });
     });
+
+    fileSystem.commitEdits();
+
+    saveAddedImports();
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);

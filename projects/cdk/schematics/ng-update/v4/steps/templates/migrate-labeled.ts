@@ -1,5 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
+import type {Location} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
@@ -53,6 +54,10 @@ export function migrateLabeled({
             Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
                 name.includes('*ngfor'),
             ) || [];
+        const [, contentAlignAttrLocation] =
+            Object.entries(sourceCodeLocation.attrs || {}).find(([name]) =>
+                name.includes('contentalign'),
+            ) || [];
         const ngForAttr = findAttr(attrs, '*ngFor');
 
         addImportToClosestModule(
@@ -74,11 +79,15 @@ export function migrateLabeled({
             '</label>',
         );
 
-        if (ngForAttrLocation) {
+        const attrsToRemove = [ngForAttrLocation, contentAlignAttrLocation].filter(
+            (location): location is Location => Boolean(location),
+        );
+
+        attrsToRemove.forEach((location) => {
             recorder.remove(
-                templateOffset + ngForAttrLocation.startOffset,
-                ngForAttrLocation.endOffset - ngForAttrLocation.startOffset,
+                templateOffset + location.startOffset,
+                location.endOffset - location.startOffset,
             );
-        }
+        });
     });
 }

@@ -1,5 +1,4 @@
 export type TuiLanguageName =
-    | string
     | 'belarusian'
     | 'chinese'
     | 'dutch'
@@ -8,7 +7,9 @@ export type TuiLanguageName =
     | 'german'
     | 'hebrew'
     | 'italian'
+    | 'japan'
     | 'kazakh'
+    | 'korean'
     | 'malay'
     | 'polish'
     | 'portuguese'
@@ -16,4 +17,5 @@ export type TuiLanguageName =
     | 'spanish'
     | 'turkish'
     | 'ukrainian'
-    | 'vietnamese';
+    | 'vietnamese'
+    | (Record<never, never> & string);

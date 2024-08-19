@@ -22,9 +22,6 @@ import {TuiInputDateComponent} from './input-date.component';
 import {TuiInputDateDirective} from './input-date.directive';
 import {TuiNativeDateDirective} from './native-date/native-date.component';
 
-/**
- * @deprecated: drop in v5.0
- */
 @NgModule({
     imports: [
         CommonModule,

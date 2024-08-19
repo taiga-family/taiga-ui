@@ -3,6 +3,7 @@
     tuiDropdownLimitWidth="min"
     tuiTextfieldSize="m"
     class="t-select"
+    [ngModelOptions]="{standalone: true}"
     [style.flex]="'0 0 auto'"
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="mode"
@@ -35,6 +36,7 @@
         [max]="255"
         [min]="0"
         [ngModel]="color[0]"
+        [ngModelOptions]="{standalone: true}"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange($event, color[1], color[2], color[3])"
     />
@@ -44,6 +46,7 @@
         [max]="255"
         [min]="0"
         [ngModel]="color[1]"
+        [ngModelOptions]="{standalone: true}"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], $event, color[2], color[3])"
     />
@@ -53,6 +56,7 @@
         [max]="255"
         [min]="0"
         [ngModel]="color[2]"
+        [ngModelOptions]="{standalone: true}"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], color[1], $event, color[3])"
     />
@@ -64,6 +68,7 @@
     [max]="100"
     [min]="0"
     [ngModel]="opacity"
+    [ngModelOptions]="{standalone: true}"
     [style.flex]="'0 0 auto'"
     [tuiTextfieldLabelOutside]="true"
     (ngModelChange)="onRgbChange(color[0], color[1], color[2], $event / 100)"

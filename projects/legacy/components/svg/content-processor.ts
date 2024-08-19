@@ -14,7 +14,8 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
 }
 
 /**
- * @deprecated: drop in v5.0
+ * @deprecated: drop in v5.0 use {@link TuiIcon}
+ * https://taiga-ui.dev/components/icon
  *
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced

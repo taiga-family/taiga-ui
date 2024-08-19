@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.0.1",
+    "version": "4.2.0",
     "private": true,
     "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -31,7 +31,7 @@
         "start:default": "nx serve demo -c def",
         "start:shadow": "nx serve demo -c shadow",
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
-        "build:ssr": "nx build demo --baseHref=/ && nx run demo:server:production",
+        "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",
@@ -80,7 +80,13 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "jest/prefer-importing-jest-globals": "off"
+            "jest/prefer-importing-jest-globals": "off",
+            "prettier/prettier": [
+                "error",
+                {
+                    "endOfLine": "auto"
+                }
+            ]
         },
         "root": true
     },
@@ -112,9 +118,10 @@
         "@angular/forms": "16.2.12",
         "@angular/platform-browser": "16.2.12",
         "@angular/router": "16.2.12",
-        "@nx/angular": "18.3.5",
-        "@nx/jest": "18.3.5",
-        "@nx/workspace": "18.3.5",
+        "@nx/angular": "19.6.0",
+        "@nx/cypress": "19.6.0",
+        "@nx/jest": "19.6.0",
+        "@nx/workspace": "19.6.0",
         "@schematics/angular": "16.2.14",
         "@taiga-ui/browserslist-config": "0.113.3",
         "@taiga-ui/commitlint-config": "0.113.3",
@@ -127,19 +134,20 @@
         "@taiga-ui/tsconfig": "0.113.3",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
-        "@types/node": "22.2.0",
+        "@types/node": "22.4.1",
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
+        "cypress": "13.13.3",
         "glob": "10.4.5",
         "husky": "9.1.4",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.8",
+        "lint-staged": "15.2.9",
         "local-web-server": "5.4.0",
-        "ng-morph": "4.5.4",
+        "ng-morph": "4.6.0",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
-        "nx": "18.3.5",
-        "rollup": "4.20.0",
+        "nx": "19.6.0",
+        "rollup": "4.21.0",
         "rxjs": "7.5.0",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
