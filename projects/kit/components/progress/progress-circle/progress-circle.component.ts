@@ -13,9 +13,9 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     styleUrls: ['./progress-circle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--tui-progress-color]': 'color',
         '[attr.data-size]': 'size',
-        '[style.--progress-ratio]': 'progressRatio',
+        '[style.--tui-progress-color]': 'color',
+        '[style.--t-progress-ratio]': 'progressRatio',
     },
 })
 export class TuiProgressCircle {

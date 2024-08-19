@@ -209,9 +209,9 @@
 
                 <p>
                     Pass
-                    <code tuiDocText="Observable<boolean>"></code>
+                    <code [textContent]="'Observable<boolean>'"></code>
                     if you want prevent closing, for example, with a confirmation prompt. Be careful, passing
-                    <code tuiDocText="Observable<boolean>"></code>
+                    <code [textContent]="'Observable<boolean>'"></code>
                     will always display cross button even if it emits
                     <code>false</code>
                     value!
@@ -223,7 +223,7 @@
                 [(documentationPropertyValue)]="dismissible"
             >
                 Dialog can be canceled with Escape key or with a click outside. Pass
-                <code tuiDocText="Observable<boolean>"></code>
+                <code [textContent]="'Observable<boolean>'"></code>
                 if you want prevent closing, for example, with a confirmation prompt.
             </ng-template>
             <ng-template
@@ -232,7 +232,7 @@
                 [(documentationPropertyValue)]="data"
             >
                 Input data for dialog, type:
-                <code tuiDocText="<T>"></code>
+                <code [textContent]="'<T>'"></code>
             </ng-template>
             <ng-template
                 documentationPropertyName="header"
@@ -298,7 +298,7 @@
                     in it. Dialog will provide this token with some useful options:
                     <code>$implicit</code>
                     with
-                    <code tuiDocText="Observer<O>"></code>
+                    <code [textContent]="'Observer<O>'"></code>
                     and
                     <code>completeWith</code>
                     hook to call

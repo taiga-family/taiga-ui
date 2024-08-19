@@ -136,7 +136,6 @@ export class TuiExpandComponent {
         }
     }
 
-    // noinspection JSUnusedGlobalSymbols
     protected onExpandLoaded(event: Event): void {
         event.stopPropagation();
 

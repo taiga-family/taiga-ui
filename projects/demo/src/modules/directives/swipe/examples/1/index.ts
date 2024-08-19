@@ -12,7 +12,7 @@ import {TuiSwipe} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
     host: {
-        class: 'swiped',
+        '[class]': 'swiped',
     },
 })
 export default class Example {

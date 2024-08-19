@@ -57,12 +57,10 @@ export class TuiScrollbar {
         return this.browserScrollRef.nativeElement !== this.el;
     }
 
-    // noinspection JSUnusedGlobalSymbols
     protected onScrollable(element: HTMLElement): void {
         this.browserScrollRef.nativeElement = element;
     }
 
-    // noinspection JSUnusedGlobalSymbols
     protected scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;
