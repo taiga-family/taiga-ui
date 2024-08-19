@@ -1,4 +1,4 @@
-import {NgIf} from '@angular/common';
+import {NgIf, NgTemplateOutlet} from '@angular/common';
 import type {OnInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -27,6 +27,7 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
         TuiAutoFocus,
         TuiRepeatTimes,
         WaIntersectionObserver,
+        NgTemplateOutlet,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
