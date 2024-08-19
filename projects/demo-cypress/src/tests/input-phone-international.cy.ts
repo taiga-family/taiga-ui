@@ -5,7 +5,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TuiRoot} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternational} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
+} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
@@ -20,7 +23,12 @@ import {createOutputSpy} from 'cypress/angular';
             ></tui-input-phone-international>
         </tui-root>
     `,
-    providers: [provideAnimations()],
+    providers: [
+        provideAnimations(),
+        tuiInputPhoneInternationalOptionsProvider({
+            metadata: import('libphonenumber-js/max/metadata').then((m) => m.default),
+        }),
+    ],
 })
 export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
