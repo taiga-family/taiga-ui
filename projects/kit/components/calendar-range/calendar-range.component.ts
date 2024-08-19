@@ -256,8 +256,7 @@ export class TuiCalendarRangeComponent
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
-            this.item ??
-            (this.items.find(item =>
+            this.items.find(item =>
                 tuiNullableSame<TuiDayRange>(
                     this.value,
                     item.range,
@@ -265,8 +264,7 @@ export class TuiCalendarRangeComponent
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) ||
-                null)
+            ) || null
         );
     }
 
