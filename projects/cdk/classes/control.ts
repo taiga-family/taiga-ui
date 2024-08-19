@@ -32,11 +32,10 @@ import {TuiValueTransformer} from './value-transformer';
  */
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
+    private readonly fallback = inject<T>(TUI_FALLBACK_VALUE, {self: true});
     private readonly refresh$ = new Subject<void>();
     private readonly pseudoInvalid = signal<boolean | null>(null);
-    private readonly internal = signal(
-        inject(TUI_FALLBACK_VALUE, {self: true, optional: true}) as T,
-    );
+    private readonly internal = signal(this.fallback);
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly destroyRef = inject(DestroyRef);
@@ -45,7 +44,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         optional: true,
     });
 
-    public readonly value = computed(() => this.internal());
+    public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = signal(false);
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
