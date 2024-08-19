@@ -4,6 +4,7 @@
             *ngIf="bars[0]"
             class="t-bar t-bar_vertical"
             [class.t-bar_has-horizontal]="bars[1]"
+            (mousedown.capture.prevent)="(0)"
         >
             <div
                 tuiScrollbar="vertical"
@@ -14,6 +15,7 @@
             *ngIf="bars[1]"
             class="t-bar t-bar_horizontal"
             [class.t-bar_has-vertical]="bars[0]"
+            (mousedown.capture.prevent)="(0)"
         >
             <div
                 tuiScrollbar="horizontal"
