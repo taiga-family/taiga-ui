@@ -1,3 +1,4 @@
+import {TuiTableCaption} from './caption/caption.component';
 import {TuiTableCell} from './directives/cell.directive';
 import {TuiTableDirectionOrder} from './directives/direction-order.directive';
 import {TuiTableHead} from './directives/head.directive';
@@ -15,6 +16,7 @@ import {TuiTableTr} from './tr/tr.component';
 
 export const TuiTable = [
     TuiTableDirective,
+    TuiTableCaption,
     TuiTableTbody,
     TuiTableThGroup,
     TuiTableTh,

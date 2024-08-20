@@ -53,11 +53,6 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
 
-    protected readonly toContext = (
-        $implicit: T,
-        index: number,
-    ): {$implicit: T; index: number} => ({$implicit, index});
-
     protected onClick(): void {
         this.open = !this.open;
         this.openChange.emit(this.open);

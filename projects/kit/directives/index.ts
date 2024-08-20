@@ -1,5 +1,6 @@
 export * from '@taiga-ui/kit/directives/button-close';
 export * from '@taiga-ui/kit/directives/button-group';
+export * from '@taiga-ui/kit/directives/button-select';
 export * from '@taiga-ui/kit/directives/chevron';
 export * from '@taiga-ui/kit/directives/connected';
 export * from '@taiga-ui/kit/directives/data-list-dropdown-manager';

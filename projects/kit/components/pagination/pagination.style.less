@@ -17,6 +17,14 @@
     margin: 0 0.125rem;
     flex-shrink: 0;
 
+    &:first-child {
+        margin-inline-start: 0;
+    }
+
+    &:last-child {
+        margin-inline-end: 0;
+    }
+
     &[data-size='xs'] {
         width: var(--tui-height-xs);
     }
@@ -40,9 +48,15 @@
     line-height: var(--tui-height-s);
     margin: 0 0.125rem;
     flex-shrink: 0;
-    color: var(--tui-text-tertiary);
+    color: var(--tui-text-action);
     text-align: center;
     cursor: default;
+
+    &_small {
+        width: var(--tui-height-xs);
+        height: var(--tui-height-xs);
+        line-height: var(--tui-height-xs);
+    }
 
     &::before {
         content: '\2026';
