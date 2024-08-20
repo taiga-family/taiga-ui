@@ -26,7 +26,7 @@ import {createOutputSpy} from 'cypress/angular';
     providers: [
         provideAnimations(),
         tuiInputPhoneInternationalOptionsProvider({
-            metadata: import('libphonenumber-js/max/metadata').then((m) => m.default),
+            metadata: import('libphonenumber-js/min/metadata').then((m) => m.default),
         }),
     ],
 })
