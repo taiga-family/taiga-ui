@@ -6,13 +6,14 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
+import {TuiLet} from "@taiga-ui/cdk";
 
 const COPIED_TIMEOUT = 1500;
 
 @Component({
     standalone: true,
     selector: 'tui-doc-copy',
-    imports: [NgIf, AsyncPipe, TuiButton],
+    imports: [NgIf, AsyncPipe, TuiButton, TuiLet],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
