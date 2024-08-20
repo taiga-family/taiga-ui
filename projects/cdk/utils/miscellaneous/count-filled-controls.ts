@@ -6,7 +6,7 @@ import {tuiIsControlEmpty} from './is-control-empty';
 
 export function tuiCountFilledControls(control: AbstractControl): number {
     if (control instanceof FormArray) {
-        control.controls.reduce(
+        return control.controls.reduce(
             (acc, nestedControl) => acc + tuiCountFilledControls(nestedControl),
             0,
         );
