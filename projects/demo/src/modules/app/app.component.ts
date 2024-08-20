@@ -46,7 +46,7 @@ export class App extends AbstractDemo implements OnInit {
     protected readonly routes = DemoRoute;
 
     protected readonly isLanding$ = this.router.events.pipe(
-        map(() => this.router.routerState.snapshot.url === '/'),
+        map(() => this.url === '' || this.url === '/'),
         distinctUntilChanged(),
     );
 
