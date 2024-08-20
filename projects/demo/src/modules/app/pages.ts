@@ -12,6 +12,12 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Migration Guide',
+        keywords: 'update, migrate, обновление, миграция',
+        route: DemoRoute.MigrationGuide,
+    },
+    {
+        section: 'Documentation',
         title: 'Browser support',
         keywords: 'chrome, safari, ie, edge, firefox',
         route: DemoRoute.BrowserSupport,

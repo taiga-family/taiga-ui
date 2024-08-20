@@ -1067,6 +1067,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('./stackblitz/starter'),
         title: 'Stackblitz Starter',
     }),
+    route({
+        path: DemoRoute.MigrationGuide,
+        loadComponent: async () => import('../info/migration-guide'),
+        title: 'Migration Guide',
+    }),
     {
         path: '**',
         redirectTo: '',
