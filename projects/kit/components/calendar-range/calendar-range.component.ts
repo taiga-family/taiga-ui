@@ -48,6 +48,9 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService],
 })
 export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
+    /**
+     * @deprecated use `item`
+     */
     private selectedPeriod: TuiDayRangePeriod | null = null;
 
     @Input()
@@ -78,9 +81,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     value: TuiDayRange | null = null;
 
     @Input()
-    set item(item: TuiDayRangePeriod | null) {
-        this.selectedActivePeriod = item;
-    }
+    item: TuiDayRangePeriod | null = null;
 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
@@ -236,6 +237,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     private get activePeriod(): TuiDayRangePeriod | null {
         return (
+            this.item ??
             this.selectedActivePeriod ??
             (this.items.find(item =>
                 tuiNullableSame<TuiDayRange>(
