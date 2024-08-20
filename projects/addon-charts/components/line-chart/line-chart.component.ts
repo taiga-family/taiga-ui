@@ -122,7 +122,7 @@ export class TuiLineChart {
 
     protected get fillD(): string {
         return this.value.length
-            ? `${this.d}V ${this.y} H ${this.value[0][0]} V ${this.value[0][1]}`
+            ? `${this.d}V ${this.y} H ${this.value[0]?.[0]} V ${this.value[0]?.[1]}`
             : this.d;
     }
 
@@ -147,12 +147,12 @@ export class TuiLineChart {
 
     protected getX(index: number): number {
         if (this.isSinglePoint) {
-            return this.value[0][0] / 2;
+            return (this.value[0]?.[0] || 0) / 2;
         }
 
         return index
-            ? (this.value[index - 1][0] + this.value[index][0]) / 2
-            : 2 * this.value[0][0] - this.getX(1);
+            ? ((this.value[index - 1]?.[0] || 0) + (this.value[index]?.[0] || 0)) / 2
+            : 2 * (this.value[0]?.[0] || 0) - this.getX(1);
     }
 
     protected getWidth(index: number): number {
@@ -173,7 +173,7 @@ export class TuiLineChart {
     protected getHovered(hovered: number | null): TuiPoint | null {
         // This checks for NaN and null too since async pipe returns null before first item
         return tuiIsPresent(hovered) && Number.isInteger(hovered)
-            ? this.value[hovered]
+            ? (this.value[hovered] ?? null)
             : null;
     }
 
@@ -186,7 +186,7 @@ export class TuiLineChart {
     }
 
     protected getOffset(x: number): number {
-        return (100 * (this.value[x][0] - this.getX(x))) / this.computeWidth(x);
+        return (100 * ((this.value[x]?.[0] || 0) - this.getX(x))) / this.computeWidth(x);
     }
 
     protected onMouseEnter(index: number): void {
@@ -212,7 +212,7 @@ export class TuiLineChart {
 
     private computeWidth(index: number): number {
         return index === this.value.length - 1
-            ? 2 * (this.value[index][0] - this.getX(index))
+            ? 2 * ((this.value[index]?.[0] || 0) - this.getX(index))
             : this.getX(index + 1) - this.getX(index);
     }
 }

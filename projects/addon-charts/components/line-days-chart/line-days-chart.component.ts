@@ -95,13 +95,18 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
-        const start = value[0][0];
+        const start = value[0]?.[0];
+        const end = value[value.length - 1];
         const mutable = [...value];
-        const length = TuiDay.lengthBetween(start, value[value.length - 1][0]) + 1;
+        const length = start && end ? TuiDay.lengthBetween(start, end[0]) + 1 : 0;
 
         this.value = Array.from({length}, (_, day) => {
-            const currentDay = start.append({day});
-            const shifted = currentDay.daySame(mutable[0][0]) ? mutable.shift() : null;
+            const startMutable = mutable[0]?.[0];
+            const currentDay = start?.append({day});
+            const shifted =
+                startMutable && currentDay?.daySame(startMutable)
+                    ? mutable.shift()
+                    : null;
             const currentValue = shifted ? shifted[1] : NaN;
 
             return [currentDay, currentValue] as [TuiDay, number];
@@ -127,8 +132,9 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
-        const index = TuiMonth.lengthBetween(this.value[0][0], day);
-        const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
+        const start = this.value[0]?.[0];
+        const index = start && day ? TuiMonth.lengthBetween(start, day) : 0;
+        const x = start && day ? TuiDay.lengthBetween(start, day) + start.day - 1 : 0;
         const current = this.charts.get(index);
 
         this.charts.forEach((chart) => {
@@ -145,7 +151,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     }
 
     protected get firstWidth(): number {
-        return this.months.length * this.value[0][0].daysCount;
+        return this.months.length * (this.value[0]?.[0].daysCount || 0);
     }
 
     protected get hint():
@@ -159,23 +165,31 @@ export class TuiLineDaysChart implements AfterViewInit {
         x: number,
         value: ReadonlyArray<[TuiDay, number]>,
     ): [TuiDay, number] {
-        return value[x - value[0][0].day + 1];
+        return value[x - (value[0]?.[0]?.day || 0) + 1];
     }
 
-    protected readonly daysStringify: TuiStringHandler<number> = (index) =>
-        this.xStringify ? this.xStringify(this.getDay(index)) : '';
+    protected readonly daysStringify: TuiStringHandler<number> = (index) => {
+        const day = this.getDay(index);
+
+        return this.xStringify && day ? this.xStringify(day) : '';
+    };
 
     protected getX(index: number): number {
+        const start = this.value[0]?.[0];
         const current = this.getDay(index);
-        const months = TuiMonth.lengthBetween(this.value[0][0], current);
-        const offset = months * current.daysCount;
+        const months = start && current ? TuiMonth.lengthBetween(start, current) : 0;
+        const offset = months * (current?.daysCount || 0);
 
         return index - offset;
     }
 
     protected raise(index: number, {value}: TuiLineChart): void {
-        const x = value[index][0];
+        const x = value[index]?.[0] || 0;
         const month = this.getDay(x);
+
+        if (!month) {
+            return;
+        }
 
         if (this.hintDirective) {
             this.hintDirective.raise(month);
@@ -185,14 +199,15 @@ export class TuiLineDaysChart implements AfterViewInit {
     }
 
     protected getWidth(index: number): number {
-        return this.getDay(index).daysCount * this.months.length;
+        return (this.getDay(index)?.daysCount || 0) * this.months.length;
     }
 
     protected getContext(index: number, {value}: TuiLineChart): unknown {
-        const x = value[index][0];
+        const x = value[index]?.[0] || 0;
+        const day = this.getDay(x);
 
-        return this.hintDirective
-            ? this.hintDirective.getContext(this.getDay(x))
+        return this.hintDirective && day
+            ? this.hintDirective.getContext(day)
             : this.getHintContext(x, this.value);
     }
 
@@ -200,11 +215,13 @@ export class TuiLineDaysChart implements AfterViewInit {
     private breakMonths(
         value: ReadonlyArray<[TuiDay, number]>,
     ): ReadonlyArray<readonly TuiPoint[]> {
-        const offset = value[0][0].day - 1;
+        const offset = (value[0]?.[0].day || 1) - 1;
+        const start = value[0]?.[0];
+        const end = value[value.length - 1]?.[0];
 
         return Array.from(
-            {length: TuiMonth.lengthBetween(value[0][0], value[value.length - 1][0]) + 1},
-            (_, i) => i + value[0][0].month + value[0][0].year * 12,
+            {length: start && end ? TuiMonth.lengthBetween(start, end) + 1 : 0},
+            (_, i) => i + (start?.month || 0) + (start?.year || 0) * 12,
         )
             .map((absoluteMonth) =>
                 value
@@ -218,12 +235,14 @@ export class TuiLineDaysChart implements AfterViewInit {
                     ? month
                     : [
                           ...month,
-                          array[index + 1].find((day) => !Number.isNaN(day[1])) || DUMMY,
+                          array[index + 1]?.find((day) => !Number.isNaN(day[1])) || DUMMY,
                       ],
             );
     }
 
-    private getDay(index: number): TuiDay {
-        return this.value[index - this.value[0][0].day + 1][0];
+    private getDay(index: number): TuiDay | undefined {
+        const start = this.value[0]?.[0];
+
+        return this.value[index - (start?.day || 0) + 1]?.[0];
     }
 }

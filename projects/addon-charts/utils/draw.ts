@@ -10,7 +10,9 @@ export function tuiDraw(
     index: number,
     smoothing: number,
 ): string {
+    const point: readonly [number, number] = [...(array[index] ?? [0, 0])];
+
     return smoothing
         ? tuiDrawCurve(array, index, smoothing / COEFFICIENT)
-        : tuiDrawLine([array[index][0], array[index][1]]);
+        : tuiDrawLine([point[0], point[1]]);
 }
