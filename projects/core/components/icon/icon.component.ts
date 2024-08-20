@@ -6,6 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 
 @Component({
@@ -16,8 +17,8 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-icon]': '"url(" + resolver(icon) + ")"',
-        '[style.--t-icon-bg]': 'background ? "url(" + resolver(background) + ")" : null',
+        '[style.--t-icon]': 'getUrl(icon)',
+        '[style.--t-icon-bg]': 'getBackground(background)',
     },
 })
 export class TuiIcon {
@@ -31,4 +32,14 @@ export class TuiIcon {
 
     @Input()
     public background = '';
+
+    @tuiPure
+    protected getUrl(icon: string): string {
+        return `url(${this.resolver(icon)})`;
+    }
+
+    @tuiPure
+    protected getBackground(background: string): string | null {
+        return background ? `url(${this.resolver(background)})` : null;
+    }
 }
