@@ -1,6 +1,8 @@
 <tui-calendar-range
     [items]="items"
+    [value]="value"
     [(item)]="selected"
+    (valueChange)="onValue($event)"
 ></tui-calendar-range>
 
 <p *ngIf="isLastVisible">

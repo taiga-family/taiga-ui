@@ -48,9 +48,6 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService],
 })
 export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
-    /**
-     * @deprecated use `item`
-     */
     private selectedPeriod: TuiDayRangePeriod | null = null;
 
     @Input()
@@ -82,7 +79,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     @Input()
     set item(item: TuiDayRangePeriod | null) {
-        this.value = item?.range ?? null;
         this.selectedActivePeriod = item;
     }
 
@@ -206,17 +202,22 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         if (value === null || !value.isSingleDay) {
             this.value = new TuiDayRange(day, day);
             this.availableRange = this.findAvailableRange();
+            this.itemChange.emit(this.findItemByDayRange(this.value));
 
             return;
         }
 
-        this.updateValue(TuiDayRange.sort(value.from, day));
+        const sortedDayRange = TuiDayRange.sort(value.from, day);
+
+        this.updateValue(sortedDayRange);
+        this.itemChange.emit(this.findItemByDayRange(sortedDayRange));
     }
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
             this.updateValue(item.range.dayLimit(this.min, this.max));
+            this.itemChange.emit(item);
 
             return;
         }
@@ -224,13 +225,13 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
             this.updateValue(null);
+            this.itemChange.emit(null);
         }
     }
 
     updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
-        this.itemChange.emit(value ? this.findItemByDayRange(value) : null);
     }
 
     private get activePeriod(): TuiDayRangePeriod | null {

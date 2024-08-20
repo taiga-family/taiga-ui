@@ -27,7 +27,7 @@ export class TuiCalendarRangeExample5 {
     ];
 
     selected: TuiDayRangePeriod | null = this.default;
-    value: TuiDayRange | null = null;
+    value: TuiDayRange | null = this.default.range;
 
     get default(): TuiDayRangePeriod {
         return this.items[0];
@@ -64,11 +64,17 @@ export class TuiCalendarRangeExample5 {
         }
     }
 
+    onValue(value: TuiDayRange | null): void {
+        this.value = value;
+    }
+
     reset(): void {
         this.selected = this.default;
+        this.value = this.selected.range;
     }
 
     toggle(): void {
         this.selected = this.opposite;
+        this.value = this.selected?.range ?? null;
     }
 }
