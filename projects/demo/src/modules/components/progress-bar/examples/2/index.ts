@@ -2,14 +2,13 @@ import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocText} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiProgress} from '@taiga-ui/kit';
 import {of, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDocText, TuiProgress, AsyncPipe],
+    imports: [TuiProgress, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

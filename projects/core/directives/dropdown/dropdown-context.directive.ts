@@ -36,7 +36,7 @@ const MOVE_THRESHOLD = 15;
             'onTouchStart($event.touches[0].clientX, $event.touches[0].clientY)',
         '(document:pointerdown.silent)': 'closeDropdown($event.target)',
         '(document:contextmenu.capture.silent)': 'closeDropdown($event.target)',
-        '(document:keydown.esc)': 'closeDropdown($event.target)',
+        '(document:keydown.esc)': 'closeDropdown($event.currentTarget)',
         '(contextmenu.prevent.stop)': 'onContextMenu($event.clientX, $event.clientY)',
     },
 })

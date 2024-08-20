@@ -20,7 +20,7 @@ import {TuiSidebarDirective} from './sidebar.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideIn],
     host: {
-        class: '"t-" + direction',
+        '[class]': '"t-" + direction',
         '[@tuiSlideIn]': 'animation',
     },
 })

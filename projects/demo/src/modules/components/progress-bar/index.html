@@ -11,13 +11,13 @@
             </dt>
             <dd>
                 – attribute component for native html tag
-                <code tuiDocText="<progress />"></code>
+                <code [textContent]="'<progress />'"></code>
                 .
             </dd>
         </dl>
         <p>
             <strong>Usage:</strong>
-            <code tuiDocText='<progress tuiProgressBar value="40" max="100"></progress>'></code>
+            <code [textContent]="'<progress tuiProgressBar value=\'40\' max=\'100\'></progress>'"></code>
             .
         </p>
 
@@ -119,7 +119,7 @@
                     value
                 </a>
                 of
-                <code tuiDocText="<progress />"></code>
+                <code [textContent]="'<progress />'"></code>
             </ng-template>
 
             <ng-template
@@ -138,7 +138,7 @@
                     max
                 </a>
                 of
-                <code tuiDocText="<progress />"></code>
+                <code [textContent]="'<progress />'"></code>
             </ng-template>
 
             <ng-template
@@ -161,7 +161,7 @@
                 Color of the progress indicator
                 <p>
                     We recommend set solid color via
-                    <code tuiDocText="<progress />"></code>
+                    <code [textContent]="'<progress />'"></code>
                     's CSS-property
                     <code>color</code>
                     (especially, if you support old not-chromium based Edge)
