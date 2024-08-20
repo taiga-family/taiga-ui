@@ -22,7 +22,8 @@ import {
 } from './pull-to-refresh.providers';
 
 export const MICRO_OFFSET = 10 ** -6;
-const EXCLUSION_SELECTORS = 'tui-dialog, tui-dropdown, tui-dropdown-mobile';
+const EXCLUSION_SELECTORS =
+    'tui-dialog, tui-dropdown, tui-sheet-dialog, tui-dropdown-mobile';
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
