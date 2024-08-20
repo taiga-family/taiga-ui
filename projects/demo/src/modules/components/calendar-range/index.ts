@@ -28,7 +28,13 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Basic', 'With value', 'With ranges', 'Localization'];
+    protected readonly examples = [
+        'Basic',
+        'With value',
+        'With ranges',
+        'Localization',
+        'With another range switcher',
+    ];
 
     protected readonly minVariants = [
         TUI_FIRST_DAY,
