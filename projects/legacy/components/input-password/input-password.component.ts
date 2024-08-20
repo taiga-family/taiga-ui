@@ -64,7 +64,7 @@ export class TuiInputPasswordComponent
     }
 
     public get inputType(): string {
-        return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
+        return this.isPasswordHidden || this.computedDisabled ? 'password' : 'text';
     }
 
     public onValueChange(textValue: string): void {
