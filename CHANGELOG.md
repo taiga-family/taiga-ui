@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.92.0](https://github.com/taiga-family/taiga-ui/compare/v3.91.0...v3.92.0) (2024-08-20)
+
+### Features
+
+- **kit:** `TuiCalendarRange` add `item` property for correctly switch value outside
+  ([#8595](https://github.com/taiga-family/taiga-ui/issues/8595))
+  ([9224443](https://github.com/taiga-family/taiga-ui/commit/9224443055a279de64608ab1ecd24120a5ecb5e3))
+
+### Bug Fixes
+
+- **addon-mobile:** add `SheetDialog` to pull-to-refresh exclusion
+  ([#8611](https://github.com/taiga-family/taiga-ui/issues/8611))
+  ([96ba882](https://github.com/taiga-family/taiga-ui/commit/96ba8827c59fe7b84c848b32026a3bab78a61d8a))
+- **kit:** display view/hide password button with `readOnly` property
+  ([#8606](https://github.com/taiga-family/taiga-ui/issues/8606))
+  ([b638b1b](https://github.com/taiga-family/taiga-ui/commit/b638b1b941245ca6b635129c655cb4c8529d54f7))
+
 ## [3.91.0](https://github.com/taiga-family/taiga-ui/compare/v3.90.0...v3.91.0) (2024-08-19)
 
 ### Bug Fixes
