@@ -13,7 +13,7 @@ import type {ControlValueAccessor, FormControlStatus} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TUI_FALLBACK_VALUE} from '@taiga-ui/cdk/tokens';
-import {tuiIsPresent, tuiProvide, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiProvide, tuiPure} from '@taiga-ui/cdk/utils';
 import {
     delay,
     distinctUntilChanged,
@@ -27,25 +27,24 @@ import {
 
 import {TuiValueTransformer} from './value-transformer';
 
+const FLAGS = {self: true, optional: true};
+
 /**
  * Basic ControlValueAccessor class to build form components upon
  */
 @Directive()
 export abstract class TuiControl<T> implements ControlValueAccessor {
+    private readonly fallback = inject(TUI_FALLBACK_VALUE, FLAGS) as T;
     private readonly refresh$ = new Subject<void>();
     private readonly pseudoInvalid = signal<boolean | null>(null);
-    private readonly internal = signal(
-        inject(TUI_FALLBACK_VALUE, {self: true, optional: true}) as T,
-    );
+    private readonly internal = signal(this.fallback);
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly destroyRef = inject(DestroyRef);
     protected readonly cdr = inject(ChangeDetectorRef);
-    protected readonly transformer = inject<TuiValueTransformer<T>>(TuiValueTransformer, {
-        optional: true,
-    });
+    protected readonly transformer = inject(TuiValueTransformer, FLAGS);
 
-    public readonly value = computed(() => this.internal());
+    public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = signal(false);
     public readonly touched = signal(false);
     public readonly status = signal<FormControlStatus | undefined>(undefined);
@@ -72,16 +71,12 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 delay(0),
                 startWith(null),
                 map(() => this.control.control),
-                filter(tuiIsPresent),
+                filter(Boolean),
                 distinctUntilChanged(),
-                switchMap((control) =>
-                    merge(control.valueChanges, control.statusChanges),
-                ),
+                switchMap((c) => merge(c.valueChanges, c.statusChanges)),
                 takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe(() => {
-                this.update();
-            });
+            .subscribe(() => this.update());
     }
 
     @Input('readOnly')

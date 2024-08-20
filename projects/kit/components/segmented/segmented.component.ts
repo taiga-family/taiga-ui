@@ -22,7 +22,7 @@ import {TuiSegmentedDirective} from './segmented.directive';
 @Component({
     standalone: true,
     selector: 'tui-segmented',
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./segmented.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +53,7 @@ export class TuiSegmented implements OnChanges {
     }
 
     public update(activeItemIndex: number): void {
-        if (activeItemIndex === this.activeItemIndex) {
+        if (activeItemIndex === this.activeItemIndex || activeItemIndex < 0) {
             return;
         }
 

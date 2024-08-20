@@ -13,7 +13,9 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     selector: 'select[tuiTextfield]',
     imports: [CommonModule],
     templateUrl: './select.template.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // We want this template to follow change detection to parent textfield.
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [tuiProvide(TuiTextfieldDirective, TuiSelect)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
@@ -50,7 +52,7 @@ export class TuiSelect extends TuiTextfieldBase {
     }
 
     protected get value(): string {
-        return this.textfield.stringify(this.control.value);
+        return this.textfield.stringify(this.control.value ?? '');
     }
 
     protected async onCopy(): Promise<void> {
