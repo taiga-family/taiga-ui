@@ -1,10 +1,5 @@
 import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
-import {
-    ContentChildren,
-    Directive,
-    ElementRef,
-    inject,
-} from '@angular/core';
+import {ContentChildren, Directive, ElementRef, inject} from '@angular/core';
 import {NgControl, RadioControlValueAccessor} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
