@@ -1,0 +1,26 @@
+<tui-calendar-range
+    [items]="items"
+    [value]="value"
+    [(item)]="selected"
+    (valueChange)="onValue($event)"
+></tui-calendar-range>
+
+<p *ngIf="isLastVisible">
+    <button
+        tuiLink
+        (click)="reset()"
+    >
+        Reset
+    </button>
+</p>
+
+<p *ngIf="isSelected && !isDefault">
+    You are seeing {{ selected }}.
+    <button
+        *ngIf="!isLastVisible"
+        tuiLink
+        (click)="toggle()"
+    >
+        Switch to {{ opposite }}
+    </button>
+</p>
