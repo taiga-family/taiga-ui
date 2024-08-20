@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.91.0](https://github.com/taiga-family/taiga-ui/compare/v3.90.0...v3.91.0) (2024-08-19)
+
+### Bug Fixes
+
+- **addon-mobile:** `PullToRefresh` do not trigger pulled if dialog is inside
+  ([#8580](https://github.com/taiga-family/taiga-ui/issues/8580))
+  ([5f003ac](https://github.com/taiga-family/taiga-ui/commit/5f003ace6fd4babfa4db93228baa3b2a97fb05ff))
+- **core:** user selection on safari ([#8594](https://github.com/taiga-family/taiga-ui/issues/8594))
+  ([af837ac](https://github.com/taiga-family/taiga-ui/commit/af837acd05be598532e1c2a5a2b38a33a825015d))
+- **kit:** prevent add/remove suffixes while InputNumber is readonly
+  ([#8571](https://github.com/taiga-family/taiga-ui/issues/8571))
+  ([04f0e76](https://github.com/taiga-family/taiga-ui/commit/04f0e760b70cdd96f12c3a90b013be2099fd57a2))
+
 ## [3.90.0](https://github.com/taiga-family/taiga-ui/compare/v3.89.0...v3.90.0) (2024-08-13)
 
 ### Features
