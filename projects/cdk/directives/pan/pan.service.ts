@@ -38,8 +38,8 @@ export class TuiPanService extends Observable<readonly [number, number]> {
                     ),
                     pairwise(),
                     map(([first, second]) => {
-                        const deltaX = second.clientX - first.clientX;
-                        const deltaY = second.clientY - first.clientY;
+                        const deltaX = (second?.clientX ?? 0) - (first?.clientX ?? 0);
+                        const deltaY = (second?.clientY ?? 0) - (first?.clientY ?? 0);
 
                         return [deltaX, deltaY] as [number, number];
                     }),

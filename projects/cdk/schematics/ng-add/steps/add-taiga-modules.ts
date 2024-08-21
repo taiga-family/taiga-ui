@@ -65,11 +65,19 @@ function addTuiEntitiesToStandalone({
         bootstrapOptions = bootstrapFunction.addArgument('{providers}: []'),
     ] = bootstrapFunction.getArguments();
 
+    if (!rootComponentIdentifier) {
+        return;
+    }
+
     const mainClass = getComponentFromIdentifier(rootComponentIdentifier);
 
     const optionsObject = getOptionsObject(
         bootstrapOptions as Identifier | ObjectLiteralExpression,
     );
+
+    if (!optionsObject) {
+        return;
+    }
 
     if (mainClass) {
         addMainModuleToRootComponent({mainClass, options, context});
@@ -143,14 +151,14 @@ function getModules(extraModules?: ImportingModule[]): ImportingModule[] {
 
 function getOptionsObject(
     options: Identifier | ObjectLiteralExpression,
-): ObjectLiteralExpression {
+): ObjectLiteralExpression | null {
     if (Node.isObjectLiteralExpression(options)) {
         return options;
     }
 
     const definition = options.getDefinitionNodes()[0];
 
-    return definition.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0];
+    return definition?.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0] ?? null;
 }
 
 export function addTaigaModules(options: TuiSchema): Rule {

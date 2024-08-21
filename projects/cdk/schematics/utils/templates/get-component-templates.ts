@@ -16,8 +16,10 @@ import type {TemplateResource} from '../../ng-update/interfaces/template-resourc
 function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];
 
-    const templateUrl = metadata.getProperty('templateUrl') as PropertyAssignment;
-    const template = metadata.getProperty('template') as PropertyAssignment;
+    const templateUrl = metadata?.getProperty('templateUrl') as
+        | PropertyAssignment
+        | undefined;
+    const template = metadata?.getProperty('template') as PropertyAssignment | undefined;
     const componentPath = decorator.getSourceFile().getFilePath();
 
     if (templateUrl) {

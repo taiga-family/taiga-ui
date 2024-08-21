@@ -35,7 +35,7 @@ function updateTuiMapper(options: TuiSchema): void {
 
             const [inputType] = typeArguments;
 
-            inputType.replaceWithText(`[${inputType.getText()}, ...any]`);
+            inputType?.replaceWithText(`[${inputType.getText()}, ...any]`);
         }
     }
 }
