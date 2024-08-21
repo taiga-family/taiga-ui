@@ -43,7 +43,7 @@ export class TuiSensitive {
     protected readonly offset = Math.round(Math.random() * 10) * 10;
 
     protected readonly height = toSignal(
-        inject(ResizeObserverService).pipe(
+        inject(ResizeObserverService, {self: true}).pipe(
             map(([{contentRect}]) => [
                 Math.max(2, Math.floor(contentRect.height / 16) + 1),
                 contentRect.height,

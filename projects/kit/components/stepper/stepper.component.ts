@@ -67,7 +67,7 @@ export class TuiStepperComponent {
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
     constructor() {
-        inject(ResizeObserverService)
+        inject(ResizeObserverService, {self: true})
             .pipe(takeUntilDestroyed())
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }

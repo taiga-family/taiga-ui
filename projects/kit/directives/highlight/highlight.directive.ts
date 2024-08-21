@@ -34,7 +34,7 @@ export class TuiHighlight implements OnChanges {
     public tuiHighlightColor = 'var(--tui-service-selection-background)';
 
     constructor() {
-        inject(ResizeObserverService)
+        inject(ResizeObserverService, {self: true})
             .pipe(takeUntilDestroyed())
             .subscribe(() => this.updateStyles());
     }

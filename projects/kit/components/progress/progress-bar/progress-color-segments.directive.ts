@@ -18,7 +18,7 @@ export class TuiProgressColorSegments {
     protected readonly color = toSignal(
         combineLatest([
             this.colors$,
-            inject(ResizeObserverService).pipe(
+            inject(ResizeObserverService, {self: true}).pipe(
                 map(() => this.el.offsetWidth),
                 distinctUntilChanged(),
             ),

@@ -35,8 +35,8 @@ export class TuiFluidTypography implements OnChanges {
 
     protected readonly sub = merge(
         this.changes$,
-        inject(ResizeObserverService),
-        inject(MutationObserverService),
+        inject(ResizeObserverService, {self: true}),
+        inject(MutationObserverService, {self: true}),
         fromEvent(this.el, 'input'),
     )
         .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())

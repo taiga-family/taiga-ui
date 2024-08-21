@@ -37,8 +37,8 @@ export class TuiAppBarComponent {
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     protected readonly width$ = merge(
-        inject(ResizeObserverService),
-        inject(MutationObserverService),
+        inject(ResizeObserverService, {self: true}),
+        inject(MutationObserverService, {self: true}),
     ).pipe(
         tuiZonefull(inject(NgZone)),
         map(
