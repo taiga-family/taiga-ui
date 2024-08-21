@@ -33,6 +33,7 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
     animations: [tuiFadeIn],
     host: {
+        tuiTheme: 'light',
         '[class._hide]': 'hidden',
         '[style.background]': 'background',
     },
