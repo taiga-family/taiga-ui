@@ -125,4 +125,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected get hasLabel(): boolean {
         return Boolean(this.label?.nativeElement?.childNodes.length);
     }
+
+    protected onResize(entry: readonly ResizeObserverEntry[]): void {
+        this.side = entry[0]?.contentRect?.width || 0;
+    }
 }
