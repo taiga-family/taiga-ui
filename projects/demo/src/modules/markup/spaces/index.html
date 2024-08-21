@@ -5,9 +5,7 @@
     <ng-template pageTab>
         <tui-styles-info />
 
-        <div class="tui-space_bottom-3">
-            You can use global classes or LESS mixins to make (n multiples 4px) margins
-        </div>
+        <div class="tui-space_bottom-3">You can use global classes to make (n multiples 4px) margins</div>
 
         <div class="tui-space_bottom-3">
             You can build a class with direction and value between 0 and 15 (
@@ -15,35 +13,11 @@
             ).
         </div>
 
-        <div class="tui-space_top-3 tui-space_bottom-3">
-            <strong>Mixins</strong>
-            are included in local LESS styles, so you need to import them into LESS styles file and add it to classes of
-            your component
-        </div>
-
-        <tui-doc-code
-            filename="styles.less"
-            [code]="exampleBasicImportsLess"
-        />
-
-        <p>
-            Mixin also gets a direction and a value (
-            <code [textContent]="'.tui-space(<direction>, <value>);'"></code>
-            ).
-        </p>
-
         <tui-doc-example
             id="classes"
             heading="Classes"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="mixins"
-            heading="Mixins"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
         />
     </ng-template>
 </tui-doc-page>
