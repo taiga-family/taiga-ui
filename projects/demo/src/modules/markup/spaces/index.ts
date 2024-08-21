@@ -10,8 +10,4 @@ import {StylesInfo} from '../../app/styles-info';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {
-    protected readonly exampleBasicImportsLess = import(
-        './examples/import/basic-imports-less.md?raw'
-    );
-}
+export default class Page {}
