@@ -6,6 +6,7 @@ import {
     tuiCreateTokenFromFactory,
     tuiGetActualTarget,
     tuiGetDocumentOrShadowRoot,
+    tuiIsNativeMouseFocusable,
 } from '@taiga-ui/cdk/utils';
 import {merge, Observable, of, timer} from 'rxjs';
 import {
@@ -31,7 +32,9 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
         // Not due to button/input becoming disabled or under disabled fieldset
         !target.matches(':disabled') &&
         // Not due to element being removed from DOM
-        !removedElement?.contains(target)
+        !removedElement?.contains(target) &&
+        // Not due to scrollable element became non-scrollable
+        tuiIsNativeMouseFocusable(target)
     );
 }
 
