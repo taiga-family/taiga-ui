@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
 import {InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import type {Event} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, Scroll} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -48,7 +49,13 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             titlePrefix: string,
         ): Observable<string> =>
             router.events.pipe(
-                filter((event) => event instanceof NavigationEnd),
+                filter(
+                    (event: Event) =>
+                        event instanceof NavigationEnd ||
+                        (event instanceof Scroll
+                            ? event.routerEvent instanceof NavigationEnd
+                            : false),
+                ),
                 map(() => activatedRoute.firstChild),
                 filter(tuiIsPresent),
                 mergeMap(({data}) => data),
