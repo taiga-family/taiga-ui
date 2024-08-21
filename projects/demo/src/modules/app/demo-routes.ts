@@ -210,4 +210,5 @@ export const DemoRoute = {
     Pure: '/utils/pure',
     Animations: '/animations',
     StackblitzStarter: '/stackblitz',
+    MigrationGuide: '/migration-guide',
 } as const;
