@@ -1,13 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {from, isObservable} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -17,29 +19,44 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-icon]': 'getUrl(icon)',
-        '[style.--t-icon-bg]': 'getBackground(background)',
+        '[style.--t-icon]': 'iconUrl()',
+        '[style.--t-icon-bg]': 'backgroundUrl()',
     },
 })
 export class TuiIcon {
-    protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    private readonly destroyRef = inject(DestroyRef);
+    protected readonly iconUrl = signal('');
+    protected readonly backgroundUrl = signal('');
+    protected readonly resolver = tuiInjectIconResolver();
 
-    @Input()
-    public icon =
-        inject(TUI_ICON_START, {self: true, optional: true}) ||
-        inject(TUI_ICON_END, {self: true, optional: true}) ||
-        '';
-
-    @Input()
-    public background = '';
-
-    @tuiPure
-    protected getUrl(icon: string): string {
-        return `url(${this.resolver(icon)})`;
+    constructor() {
+        this.icon =
+            inject(TUI_ICON_START, {self: true, optional: true}) ||
+            inject(TUI_ICON_END, {self: true, optional: true}) ||
+            '';
     }
 
-    @tuiPure
-    protected getBackground(background: string): string | null {
-        return background ? `url(${this.resolver(background)})` : null;
+    @Input()
+    public set icon(icon: string) {
+        this.resolve(icon, (result) => this.iconUrl.set(result));
+    }
+
+    @Input()
+    public set background(background: string) {
+        this.resolve(background, (result) => this.backgroundUrl.set(result));
+    }
+
+    private resolve(value: string, callback: (result: string) => void): void {
+        const result = this.resolver(value);
+
+        if (typeof result === 'string') {
+            callback(`url(${result})`);
+        } else {
+            const stream = isObservable(result) ? result : from(result);
+
+            stream
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe((value) => callback(`url(${value})`));
+        }
     }
 }

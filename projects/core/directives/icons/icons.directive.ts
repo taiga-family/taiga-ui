@@ -6,7 +6,6 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 
@@ -32,7 +31,7 @@ class TuiIconsStyles {}
 })
 export class TuiIcons {
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
-    protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    protected readonly resolver = tuiInjectIconResolver();
 
     @Input()
     public iconStart = inject(TUI_ICON_START, {self: true, optional: true}) || '';
