@@ -59,7 +59,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     @ContentChildren(forwardRef(() => TuiTab))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
-    protected readonly sub = inject(MutationObserverService)
+    protected readonly sub = inject(MutationObserverService, {self: true})
         .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 

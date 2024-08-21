@@ -35,7 +35,7 @@ import {TuiSegmentedDirective} from './segmented.directive';
 export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
 
-    protected readonly sub = inject(ResizeObserverService)
+    protected readonly sub = inject(ResizeObserverService, {self: true})
         .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 

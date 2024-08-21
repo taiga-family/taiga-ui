@@ -28,8 +28,8 @@ export class TuiElasticContainerDirective {
 
     @Output()
     public readonly tuiElasticContainer = merge(
-        inject(ResizeObserverService),
-        inject(MutationObserverService),
+        inject(ResizeObserverService, {self: true}),
+        inject(MutationObserverService, {self: true}),
     ).pipe(
         debounceTime(0),
         map(() => this.el.clientHeight - 1),

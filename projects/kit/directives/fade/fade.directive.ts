@@ -71,8 +71,8 @@ export class TuiFade {
 
         tuiWithStyles(TuiFadeStyles);
         merge(
-            inject(ResizeObserverService),
-            inject(MutationObserverService),
+            inject(ResizeObserverService, {self: true}),
+            inject(MutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
             .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())

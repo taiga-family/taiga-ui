@@ -15,8 +15,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
 
     protected readonly stream$ = merge(
         this.directive.change$,
-        inject(MutationObserverService),
-        inject(ResizeObserverService),
+        inject(MutationObserverService, {self: true}),
+        inject(ResizeObserverService, {self: true}),
     ).pipe(
         throttleTime(0),
         map(() => this.getOverflowIndex()),
