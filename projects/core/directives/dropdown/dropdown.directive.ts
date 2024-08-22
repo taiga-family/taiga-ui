@@ -1,4 +1,10 @@
-import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
+import type {
+    AfterViewChecked,
+    ComponentRef,
+    OnChanges,
+    OnDestroy,
+    ViewRef,
+} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -51,8 +57,14 @@ export class TuiDropdownDirective
     protected readonly sub = this.refresh$
         .pipe(throttleTime(0), takeUntilDestroyed())
         .subscribe(() => {
-            this.ref()?.changeDetectorRef.detectChanges();
-            this.ref()?.changeDetectorRef.markForCheck();
+            const cdr = this.ref()?.changeDetectorRef as ViewRef | undefined;
+
+            if (!cdr || cdr?.destroyed) {
+                return;
+            }
+
+            cdr.detectChanges();
+            cdr.markForCheck();
         });
 
     public readonly el = tuiInjectElement();
