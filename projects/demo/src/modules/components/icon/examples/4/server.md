@@ -7,8 +7,9 @@ const serverConfig = mergeApplicationConfig(config, {
     provideServerRendering(),
     // ..
     tuiIconsProvider({
-      '@tui.badge-euro': euro,
-      '@tui.badge-russian-ruble': ruble,
+      '@tui.heart': heart,
+      '@tui.search': search,
+      // ...
     }),
   ],
 });
