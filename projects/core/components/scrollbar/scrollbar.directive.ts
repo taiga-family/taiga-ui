@@ -51,12 +51,15 @@ export class TuiScrollbarDirective {
                 clientWidth: this.el.clientWidth,
             };
 
+            const thumb = `${this.getThumb(dimension) * 100}%`;
+            const view = `${this.getView(dimension) * 100}%`;
+
             if (this.tuiScrollbar === 'vertical') {
-                this.style.top = `${this.getThumb(dimension) * 100}%`;
-                this.style.height = `${this.getView(dimension) * 100}%`;
+                this.style.top = thumb;
+                this.style.height = view;
             } else {
-                this.style.left = `${this.getThumb(dimension) * 100}%`;
-                this.style.width = `${this.getView(dimension) * 100}%`;
+                this.style.left = thumb;
+                this.style.width = view;
             }
         });
 

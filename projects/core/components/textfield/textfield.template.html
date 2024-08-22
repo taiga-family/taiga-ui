@@ -3,7 +3,7 @@
 <ng-content select="label" />
 <span
     class="t-content"
-    (waResizeObserver)="side = $event[0].contentRect.width"
+    (waResizeObserver)="onResize($event)"
 >
     <ng-content />
     <button
