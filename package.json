@@ -152,7 +152,7 @@
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
         "wait-on": "8.0.0",
-        "webpack": "5.93.0"
+        "webpack": "5.94.0"
     },
     "engines": {
         "node": ">= 20",
