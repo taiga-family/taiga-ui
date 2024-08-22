@@ -5,8 +5,8 @@ import {TuiDocCode} from '@taiga-ui/addon-doc';
 import {TuiIcon, tuiIconsProvider} from '@taiga-ui/core';
 // Note: depends on your method of importing static assets
 // https://github.com/tc39/proposal-import-attributes
-import euro from '@taiga-ui/icons/src/badge-euro.svg?raw';
-import ruble from '@taiga-ui/icons/src/badge-russian-ruble.svg?raw';
+import heart from '@taiga-ui/icons/src/heart.svg?raw';
+import search from '@taiga-ui/icons/src/search.svg?raw';
 
 @Component({
     standalone: true,
@@ -17,8 +17,8 @@ import ruble from '@taiga-ui/icons/src/badge-russian-ruble.svg?raw';
     changeDetection,
     providers: [
         tuiIconsProvider({
-            '@tui.badge-euro': euro,
-            '@tui.badge-russian-ruble': ruble,
+            '@tui.heart': heart,
+            '@tui.search': search,
         }),
     ],
 })
