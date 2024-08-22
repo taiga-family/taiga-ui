@@ -65,7 +65,12 @@ export class TuiTilesComponent {
     }
 
     private filter(element?: Element): element is Element {
-        return !!this.element && !!element && this.element !== element;
+        return (
+            !!this.element &&
+            !!element &&
+            this.element !== element &&
+            !(element instanceof PointerEvent)
+        );
     }
 
     private reorder(element: Element): Map<number, number> {
