@@ -20,7 +20,7 @@ const ICONS: Record<string, string> = {
 /** Default values for the notification options. */
 export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationOptions = {
     appearance: 'info',
-    icon: (appearance) => ICONS[appearance],
+    icon: (appearance) => ICONS[appearance] ?? '',
     size: 'l',
 };
 
