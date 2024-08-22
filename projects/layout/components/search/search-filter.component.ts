@@ -6,12 +6,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    TUI_ICON_START,
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/dropdown';
+import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -19,6 +19,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: true,
     selector: 'button[tuiSearchFilter]',
     template: '<ng-template><ng-content /></ng-template>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiDropdownOptionsProvider({align: 'right'}),
         {
@@ -27,7 +28,6 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         },
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSearchFilterComponent {
     private readonly dropdown = tuiDropdown(null);

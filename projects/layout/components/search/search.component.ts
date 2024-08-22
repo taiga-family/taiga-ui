@@ -4,9 +4,10 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiButtonOptionsProvider, tuiTextfieldOptionsProvider} from '@taiga-ui/core';
-import {tuiSwitchOptionsProvider} from '@taiga-ui/kit';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiBlockOptionsProvider} from '@taiga-ui/kit/components/block';
+import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 @Component({
     standalone: true,

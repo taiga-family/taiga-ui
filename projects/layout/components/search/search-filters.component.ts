@@ -17,20 +17,17 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {
-    EMPTY_QUERY,
     tuiControlValue,
-    tuiIsControlEmpty,
-    TuiItem,
     tuiQueryListChanges,
     tuiZonefull,
-} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    tuiButtonOptionsProvider,
-    type TuiSizeS,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/observables';
+import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import {TuiSearchFilterComponent} from '@taiga-ui/layout/components/search/search-filter.component';
 import {distinctUntilChanged, map, merge, switchMap} from 'rxjs';
 
@@ -39,8 +36,10 @@ const WIDTH = 12;
 @Component({
     standalone: true,
     selector: 'tui-search-filters',
+    imports: [NgIf, TuiButton, NgForOf, NgTemplateOutlet, TuiSearchFilterComponent],
     templateUrl: './search-filters.template.html',
     styleUrls: ['./search-filters.styles.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         ResizeObserverService,
         tuiButtonOptionsProvider({size: 'xs', appearance: 'flat'}),
@@ -51,8 +50,6 @@ const WIDTH = 12;
             inputs: ['tuiTextfieldSize: size'],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, TuiButton, NgForOf, NgTemplateOutlet, TuiSearchFilterComponent],
 })
 export class TuiSearchFiltersComponent implements AfterContentInit {
     @ViewChild('rem')

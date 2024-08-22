@@ -1,4 +1,4 @@
-import {TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 import {TuiSearchComponent} from './search.component';
 import {TuiSearchFiltersComponent} from './search-filters.component';
