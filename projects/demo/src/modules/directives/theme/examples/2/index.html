@@ -1,0 +1,17 @@
+Dark mode enabled: {{ darkMode() }}
+<p>
+    <button
+        tuiButton
+        (click)="darkMode.set(!darkMode())"
+    >
+        Toggle
+    </button>
+    <button
+        tuiButton
+        (click)="darkMode.reset()"
+    >
+        Reset
+    </button>
+</p>
+<p>Add to Root to enable:</p>
+<code>&lt;tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null'"&gt;</code>

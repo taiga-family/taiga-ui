@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,8 +5,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {TuiDocThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DARK_MODE} from '@taiga-ui/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
@@ -17,14 +16,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 @Component({
     standalone: true,
     selector: 'tui-doc-main',
-    imports: [
-        TuiRoot,
-        AsyncPipe,
-        RouterOutlet,
-        TuiButton,
-        TuiDocHeader,
-        TuiDocNavigation,
-    ],
+    imports: [TuiRoot, RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation],
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -35,9 +27,9 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 export class TuiDocMain {
     private readonly icons = inject(TUI_DOC_ICONS);
 
-    protected readonly dark$ = inject(TuiDocThemeDarkService);
+    protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected get icon(): string {
-        return this.dark$.value ? this.icons.light : this.icons.dark;
+        return this.darkMode() ? this.icons.light : this.icons.dark;
     }
 }

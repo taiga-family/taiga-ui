@@ -13,7 +13,6 @@ import type {AbstractControl} from '@angular/forms';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
-import {TuiDocThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
@@ -21,6 +20,7 @@ import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_DARK_MODE} from '@taiga-ui/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
@@ -80,7 +80,7 @@ export class TuiDocDemo implements OnInit {
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     protected dark = tuiCoerceValueIsTrue(
-        this.params.darkMode ?? inject(TuiDocThemeDarkService).value,
+        this.params.darkMode ?? inject(TUI_DARK_MODE)(),
     );
 
     protected testForm?: FormGroup;
