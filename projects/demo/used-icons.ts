@@ -75,6 +75,8 @@ export const TUI_USED_ICONS = [
     '@tui.arrow-up',
     '@tui.frown',
     '@tui.meh',
+    '@tui.rotate-cw',
+    '@tui.cloud-download',
     '@tui.sun',
     '@tui.moon',
     '@tui.phone-forwarded',
