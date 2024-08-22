@@ -848,7 +848,7 @@ export const pages: TuiDocRoutePages = [
             {
                 section: 'Components',
                 title: 'Table',
-                keywords: 'таблица, data, cell, tr, th, td, row, col, grid',
+                keywords: 'таблица, data, cell, tr, th, td, row, col, grid, beaver',
                 route: DemoRoute.Table,
             },
         ],
@@ -857,7 +857,7 @@ export const pages: TuiDocRoutePages = [
         section: 'Components',
         title: 'ActionBar',
         keywords:
-            'молекула, уведомление, нотификация, бабл, облачко, actions, alert, table, bar',
+            'молекула, уведомление, нотификация, бабл, облачко, actions, beaver, alert, table, bar',
         route: DemoRoute.ActionBar,
     },
     {
@@ -917,7 +917,7 @@ export const pages: TuiDocRoutePages = [
     {
         section: 'Navigation',
         title: 'Segmented',
-        keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
+        keywords: 'tabs, control, radio, navigation, навигация, beaver, вкладки, таб',
         route: DemoRoute.Segmented,
     },
     {
@@ -965,7 +965,7 @@ export const pages: TuiDocRoutePages = [
     {
         section: 'Layout',
         title: 'Search',
-        keywords: 'шапка, header, filter, table, поиск, фильтр, таблица',
+        keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
     },
     // Charts

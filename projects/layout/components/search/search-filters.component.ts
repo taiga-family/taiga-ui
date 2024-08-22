@@ -28,8 +28,9 @@ import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
-import {TuiSearchFilterComponent} from '@taiga-ui/layout/components/search/search-filter.component';
 import {distinctUntilChanged, map, merge, switchMap} from 'rxjs';
+
+import {TuiSearchFilterComponent} from './search-filter.component';
 
 const WIDTH = 12;
 

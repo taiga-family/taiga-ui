@@ -10,11 +10,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
     imports: [TuiDemo, TuiIcon],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        tuiInputNumberOptionsProvider({
-            min: 0,
-        }),
-    ],
+    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export default class Page {
     protected readonly iconVariants = ['', ...TUI_USED_ICONS];
