@@ -3,10 +3,10 @@ import {
     Component,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 
 @Component({
@@ -17,29 +17,31 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-icon]': 'getUrl(icon)',
-        '[style.--t-icon-bg]': 'getBackground(background)',
+        '[style.--t-icon]': 'iconSrc()',
+        '[style.--t-icon-bg]': 'backgroundSrc()',
     },
 })
 export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+    protected readonly backgroundSrc = signal<string | null>(null);
+    protected readonly iconSrc = signal<string | null>(
+        this.resolve(
+            inject(TUI_ICON_START, {self: true, optional: true}) ||
+                inject(TUI_ICON_END, {self: true, optional: true}),
+        ),
+    );
 
     @Input()
-    public icon =
-        inject(TUI_ICON_START, {self: true, optional: true}) ||
-        inject(TUI_ICON_END, {self: true, optional: true}) ||
-        '';
-
-    @Input()
-    public background = '';
-
-    @tuiPure
-    protected getUrl(icon: string): string {
-        return `url(${this.resolver(icon)})`;
+    public set icon(icon: string) {
+        this.iconSrc.set(this.resolve(icon));
     }
 
-    @tuiPure
-    protected getBackground(background: string): string | null {
-        return background ? `url(${this.resolver(background)})` : null;
+    @Input()
+    public set background(background: string) {
+        this.backgroundSrc.set(this.resolve(background));
+    }
+
+    private resolve(value?: string | null): string | null {
+        return value ? `url(${this.resolver(value)})` : null;
     }
 }
