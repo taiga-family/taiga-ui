@@ -39,7 +39,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     ],
     host: {
         '[class._native-hidden]': '!isIOS || hidden',
-        [`(${TUI_SCROLLABLE}.stop)`]: 'onScrollable($event.detail)',
+        [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
 })
@@ -54,10 +54,14 @@ export class TuiScrollbar {
     public hidden = false;
 
     protected get delegated(): boolean {
-        return this.browserScrollRef.nativeElement !== this.el;
+        return this.scrollRef !== this.el;
     }
 
-    protected onScrollable(element: HTMLElement): void {
+    protected get scrollRef(): HTMLElement {
+        return this.browserScrollRef.nativeElement;
+    }
+
+    protected set scrollRef(element: HTMLElement) {
         this.browserScrollRef.nativeElement = element;
     }
 
@@ -66,13 +70,11 @@ export class TuiScrollbar {
             return;
         }
 
-        const {nativeElement} = this.browserScrollRef;
-        const {offsetTop, offsetLeft} = tuiGetElementOffset(nativeElement, detail);
-        const {clientHeight, clientWidth} = nativeElement;
         const {offsetHeight, offsetWidth} = detail;
-        const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
-        const scrollLeft = offsetLeft + offsetWidth / 2 - clientWidth / 2;
+        const {offsetTop, offsetLeft} = tuiGetElementOffset(this.scrollRef, detail);
+        const scrollTop = offsetTop + offsetHeight / 2 - this.scrollRef.clientHeight / 2;
+        const scrollLeft = offsetLeft + offsetWidth / 2 - this.scrollRef.clientWidth / 2;
 
-        nativeElement.scrollTo?.(scrollLeft, scrollTop);
+        this.scrollRef.scrollTo?.(scrollLeft, scrollTop);
     }
 }
