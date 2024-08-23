@@ -41,6 +41,12 @@
     &[data-size='l']._has-counter {
         --tui-textarea-height: @heightCounter;
     }
+
+    .safari-only({
+        .t-pseudo-content, .t-input {
+            text-wrap: balance;
+        }
+    });
 }
 
 .t-outline {
