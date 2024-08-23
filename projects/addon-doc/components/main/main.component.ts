@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
-import {TUI_DARK_MODE} from '@taiga-ui/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiRoot} from '@taiga-ui/core/components/root';
+import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 
 import {TuiDocHeader} from '../internal/header';
 import {TuiDocNavigation} from '../navigation/navigation.component';

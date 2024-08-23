@@ -6,11 +6,11 @@ import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    imports: [TuiButton],
 })
 export default class Example {
     private readonly key = inject(TUI_DARK_MODE_KEY);

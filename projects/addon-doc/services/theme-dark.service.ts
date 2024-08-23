@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DARK_MODE_DEFAULT_KEY, TUI_DARK_MODE_KEY} from '@taiga-ui/core';
+import {TUI_DARK_MODE_DEFAULT_KEY, TUI_DARK_MODE_KEY} from '@taiga-ui/core/tokens';
 import {BehaviorSubject} from 'rxjs';
 
 /**
