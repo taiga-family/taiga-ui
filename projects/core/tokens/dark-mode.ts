@@ -10,6 +10,8 @@ export const TUI_DARK_MODE = new InjectionToken<
     WritableSignal<boolean> & {reset(): void}
 >('', {
     factory: () => {
+        let automatic = true;
+
         const storage = inject(WA_LOCAL_STORAGE);
         const key = inject(TUI_DARK_MODE_KEY);
         const saved = storage.getItem(key);
@@ -25,8 +27,6 @@ export const TUI_DARK_MODE = new InjectionToken<
                 automatic = true;
                 result.set(media.matches);
             });
-
-        let automatic = true;
 
         effect(() => {
             const value = String(result());
