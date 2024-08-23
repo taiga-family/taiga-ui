@@ -12,6 +12,11 @@ import {ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';
 import {replacePackageName} from '../../steps';
 
+export const TUI_POLYMORPHEUS_VERSION = '^4.6.4';
+export const TUI_DOMPURIFY_VERSION = '^4.1.2';
+export const TUI_EVENT_PLUGINS_VERSION = '^4.0.1';
+export const TUI_EDITOR_VERSION = '^2.5.0';
+
 export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
 
@@ -23,7 +28,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/ng-polymorpheus',
         {
             name: '@taiga-ui/polymorpheus',
-            version: '^4.6.4',
+            version: TUI_POLYMORPHEUS_VERSION,
         },
         tree,
     );
@@ -31,7 +36,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/ng-dompurify',
         {
             name: '@taiga-ui/dompurify',
-            version: '^4.1.2',
+            version: TUI_DOMPURIFY_VERSION,
         },
         tree,
     );
@@ -39,7 +44,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/ng-event-plugins',
         {
             name: '@taiga-ui/event-plugins',
-            version: '^4.0.1',
+            version: TUI_EVENT_PLUGINS_VERSION,
         },
         tree,
     );
@@ -47,15 +52,18 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         '@tinkoff/tui-editor',
         {
             name: '@taiga-ui/editor',
-            version: '^2.5.0',
+            version: TUI_EDITOR_VERSION,
         },
         tree,
     );
 
+    const cdk = getPackageJsonDependency(tree, '@taiga-ui/cdk');
+
     if (!getPackageJsonDependency(tree, '@taiga-ui/event-plugins')) {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/event-plugins',
-            version: '^4.0.1',
+            version: TUI_EVENT_PLUGINS_VERSION,
+            type: cdk?.type,
         });
     }
 
@@ -63,6 +71,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/layout',
             version: TUI_VERSION,
+            type: cdk?.type,
         });
     }
 
@@ -70,6 +79,7 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/legacy',
             version: TUI_VERSION,
+            type: cdk?.type,
         });
     }
 }

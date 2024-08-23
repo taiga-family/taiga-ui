@@ -3,6 +3,7 @@ import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schemati
 import {
     addPackageJsonDependency,
     getPackageJsonDependency,
+    NodeDependencyType,
     removePackageJsonDependency,
 } from 'ng-morph';
 
@@ -17,6 +18,7 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: `@taiga-ui/${pack}`,
             version: TAIGA_VERSION,
+            type: NodeDependencyType.Default,
         });
     });
 
@@ -26,6 +28,7 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
         addPackageJsonDependency(tree, {
             name: '@taiga-ui/styles',
             version: TAIGA_VERSION,
+            type: NodeDependencyType.Default,
         });
     }
 
@@ -47,6 +50,7 @@ function addAngularCdkDep(tree: Tree): void {
         addPackageJsonDependency(tree, {
             name: '@angular/cdk',
             version: `^${majorVersionArr[0]}.0.0`,
+            type: NodeDependencyType.Default,
         });
     }
 }
