@@ -7,8 +7,8 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 
 @Component({
     standalone: true,
