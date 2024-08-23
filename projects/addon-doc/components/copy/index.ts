@@ -1,6 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
@@ -12,7 +13,7 @@ const COPIED_TIMEOUT = 1500;
 @Component({
     standalone: true,
     selector: 'tui-doc-copy',
-    imports: [NgIf, AsyncPipe, TuiButton],
+    imports: [NgIf, AsyncPipe, TuiButton, TuiLet],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
