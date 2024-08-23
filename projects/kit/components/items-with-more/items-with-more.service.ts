@@ -40,7 +40,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const first = this.directive.required === -1 ? 0 : this.directive.required;
         const last = items.length - 1;
-        const more = children[last]?.tagName === 'SPAN' ? items[last] : 0;
+        const more = children[last]?.tagName === 'SPAN' ? (items[last] ?? 0) : 0;
 
         items.unshift(...items.splice(first, 1));
 
@@ -51,7 +51,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         }
 
         for (let i = last - 1; i > 0; i--) {
-            total -= items[i];
+            total -= items[i] ?? 0;
 
             if (total + more <= clientWidth) {
                 return tuiClamp(

@@ -44,10 +44,11 @@ export class TuiSensitive {
 
     protected readonly height = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
-            map(([{contentRect}]) => [
-                Math.max(2, Math.floor(contentRect.height / 16) + 1),
-                contentRect.height,
-            ]),
+            map((entry): [number, number] => {
+                const height = entry[0]?.contentRect.height ?? 0;
+
+                return [Math.max(2, Math.floor(height / 16) + 1), height];
+            }),
             map(([rows, height]) => height * (rowsInSvg / rows)),
             tuiZonefull(inject(NgZone)),
             tuiWatch(inject(ChangeDetectorRef)),

@@ -22,7 +22,7 @@
                 class="t-item"
                 [disabled]="isDisabled(i)"
                 [ngStyle]="getStyle(itemsCount)"
-                (waIntersectionObservee)="onIntersection($event[0], i)"
+                (waIntersectionObservee)="$event[0] && onIntersection($event[0], i)"
             >
                 <ng-container [ngTemplateOutlet]="item" />
             </fieldset>

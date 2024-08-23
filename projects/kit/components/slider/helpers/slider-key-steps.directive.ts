@@ -50,7 +50,7 @@ export class TuiSliderKeySteps extends TuiControl<number> {
     }
 
     protected get max(): number {
-        return this.keySteps[this.keySteps.length - 1][1];
+        return this.keySteps[this.keySteps.length - 1]?.[1] ?? 0;
     }
 
     protected updateControlValue(): void {
