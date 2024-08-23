@@ -19,7 +19,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.67.2
       - uses: taiga-family/ci/actions/setup/node@v1.67.2
         with:
-          node-version: '18.x'
           validate-peer-deps: 'false'
       - uses: taiga-family/ci/actions/setup/config/npm@v1.67.2
         with:
