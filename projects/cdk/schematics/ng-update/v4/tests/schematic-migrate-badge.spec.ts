@@ -16,24 +16,29 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
+import { CommonModule } from '@angular/common';
 import { TuiBadgeModule } from "@taiga-ui/experimental";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadgeModule]
+    imports: [TuiBadgeModule, CommonModule]
 })
 export class Test {
+    readonly state$ = new BehaviorSubject('granted');
 }`;
 
 const COMPONENT_AFTER = `import { TuiBadge } from "@taiga-ui/kit";
 
+import { CommonModule } from '@angular/common';
+
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadge]
+    imports: [TuiBadge, CommonModule]
 })
 export class Test {
+    readonly state$ = new BehaviorSubject('granted');
 }`;
 
 const TEMPLATE_BEFORE = `
@@ -58,6 +63,11 @@ const TEMPLATE_BEFORE = `
 >
     <tui-svg src="tuiIconHelpCircle"></tui-svg>
 </tui-badge>
+
+<ng-container [ngSwitch]="state$ | async">
+    <tui-badge *ngSwitchCase="'granted'" status="success" value="Permission is granted" />
+    <tui-badge *ngSwitchCase="'denied'" status="error" value="Permission is denied" />
+</ng-container>
 `;
 
 const TEMPLATE_AFTER = `
@@ -83,6 +93,11 @@ iconStart="tuiIconHelpCircle">Taiga
 >
     <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
 </tui-badge>
+
+<ng-container [ngSwitch]="state$ | async">
+    <tui-badge *ngSwitchCase="'granted'" appearance="success" >Permission is granted</tui-badge>
+    <tui-badge *ngSwitchCase="'denied'" appearance="error" >Permission is denied</tui-badge>
+</ng-container>
 `;
 
 describe('ng-update', () => {
