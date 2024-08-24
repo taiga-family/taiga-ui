@@ -1,7 +1,5 @@
-<img
-    alt="taiga"
-    loading="lazy"
-    src="assets/images/taiga.svg"
+<tui-icon
+    icon="assets/images/taiga.svg"
     class="taiga"
 />
 
@@ -13,10 +11,9 @@
     [class.components_second]="current === 2"
 >
     <div class="topography">
-        <img
-            alt="topography"
-            loading="lazy"
-            src="assets/images/topography.svg"
+        <tui-icon
+            icon="assets/images/topography.svg"
+            class="topography-image"
         />
     </div>
     <div
@@ -125,10 +122,9 @@
     [class.initial_hidden]="current"
 >
     <div class="map">
-        <img
-            alt="topography"
-            loading="lazy"
-            src="assets/images/topography.svg"
+        <tui-icon
+            icon="assets/images/topography.svg"
+            class="topography-image"
         />
     </div>
     <h1
@@ -137,10 +133,8 @@
     >
         Taiga UI
         <span class="dash">——</span>
-        <img
-            alt="logo"
-            loading="lazy"
-            src="assets/images/taiga.svg"
+        <tui-icon
+            icon="assets/images/taiga.svg"
             class="logo"
         />
         <br />
@@ -188,10 +182,8 @@
         [class.scroll_hidden]="current === 2"
         (click)="onClick()"
     ></button>
-    <img
-        alt="by TBank"
-        loading="lazy"
-        src="assets/images/by.svg"
+    <tui-icon
+        icon="assets/images/by.svg"
         class="by"
     />
 </footer>

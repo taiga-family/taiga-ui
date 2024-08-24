@@ -15,13 +15,14 @@ import {
     WaIntersectionObserver,
 } from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiAutoFocus, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
+import {TuiButton, tuiFadeIn, TuiIcon} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
         NgIf,
         RouterLink,
+        TuiIcon,
         TuiButton,
         TuiAutoFocus,
         TuiRepeatTimes,
