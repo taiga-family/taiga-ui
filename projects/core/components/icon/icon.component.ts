@@ -17,7 +17,7 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-icon]': 'iconSrc()',
+        '[style.--t-icon]': 'iconSrc() || "url()"',
         '[style.--t-icon-bg]': 'backgroundSrc()',
     },
 })
