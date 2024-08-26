@@ -1,6 +1,7 @@
 name: 🤖 Auto add label version
 on:
   pull_request:
+    types: [opened]
 
 jobs:
   label-version:
