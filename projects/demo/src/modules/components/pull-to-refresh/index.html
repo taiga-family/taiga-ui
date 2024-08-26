@@ -49,6 +49,13 @@
                 <ng-container *polymorpheusOutlet="example2 | async as text">{{ text }}</ng-container>
             </tui-scrollbar>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="virtual-scroll"
+            heading="Virtual scroll"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />
