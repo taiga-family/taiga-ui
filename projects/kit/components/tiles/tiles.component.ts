@@ -30,7 +30,7 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
     ],
     host: {
         '[class._dragged]': 'element',
-        '(pointerleave.silent)': 'rearrange($event)',
+        '(pointerleave.silent)': 'rearrange(element)',
     },
 })
 export class TuiTilesComponent {
