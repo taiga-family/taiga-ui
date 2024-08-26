@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,15 +8,6 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, of, startWith, Subject, switchMap} from 'rxjs';
-
-const databaseMockData: readonly string[] = [
-    'John Cleese',
-    'Eric Idle',
-    'Michael Palin',
-    'Terry Gilliam',
-    'Terry Jones',
-    'Graham Chapman',
-];
 
 @Component({
     standalone: true,
@@ -33,6 +24,8 @@ const databaseMockData: readonly string[] = [
     changeDetection,
 })
 export default class Example {
+    // Database mock data
+    private readonly items = inject<readonly string[]>('Pythons' as any);
     private readonly search$ = new Subject<string>();
 
     protected value = [];
@@ -41,7 +34,7 @@ export default class Example {
         switchMap((search) =>
             this.serverRequest(search).pipe(startWith<readonly string[] | null>(null)),
         ),
-        startWith(databaseMockData),
+        startWith(this.items),
     );
 
     protected onSearchChange(search: string): void {
@@ -52,7 +45,7 @@ export default class Example {
      * Server request emulation
      */
     private serverRequest(search: string): Observable<readonly string[]> {
-        const result = databaseMockData.filter((item) =>
+        const result = this.items.filter((item) =>
             item.toLowerCase().includes(search.toLowerCase()),
         );
 

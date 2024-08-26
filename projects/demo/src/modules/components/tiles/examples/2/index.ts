@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTiles} from '@taiga-ui/kit';
@@ -13,14 +13,6 @@ import {TuiTiles} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected items: readonly string[] = [
-        'John Cleese',
-        'Eric Idle',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-        'Graham Chapman',
-    ];
-
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected order = new Map();
 }

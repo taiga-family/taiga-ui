@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
@@ -10,14 +10,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Graham Chapman',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected readonly requiredVariants = [-1, 2, 4];
 

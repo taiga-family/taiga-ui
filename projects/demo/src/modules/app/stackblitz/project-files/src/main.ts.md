@@ -20,6 +20,10 @@ bootstrapApplication(Root, {
   providers: [
     provideAnimations(),
     NG_EVENT_PLUGINS,
+    {
+      provide: 'Pythons',
+      useValue: ['John Cleese', 'Eric Idle', 'Michael Palin', 'Graham Chapman', 'Terry Gilliam', 'Terry Jones'],
+    },
     /**
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!

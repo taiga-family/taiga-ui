@@ -1,0 +1,50 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+search[tuiSearch] {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        fieldset {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: inherit;
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            color: var(--tui-text-secondary);
+        }
+
+        tui-items-with-more {
+            min-width: 0;
+            flex: 1;
+        }
+
+        tui-textfield {
+            flex: 1;
+            min-width: 11.25rem;
+            max-width: 22.5rem;
+
+            &:first-child {
+                max-width: unset;
+            }
+        }
+
+        hr {
+            width: 1px;
+            height: 1rem;
+            background: var(--tui-border-normal);
+        }
+
+        tui-filter {
+            white-space: nowrap;
+        }
+
+        [tuiLabel] {
+            font: inherit;
+        }
+    }
+}

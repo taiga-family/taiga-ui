@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
@@ -11,14 +11,6 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Graham Chapman',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
-
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected value = '';
 }
