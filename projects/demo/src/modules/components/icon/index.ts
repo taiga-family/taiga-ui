@@ -20,6 +20,22 @@ export default class Page {
     protected readonly iconVariants = ['', ...TUI_USED_ICONS];
     protected readonly colorVariants = ['', 'var(--tui-text-primary)', 'red', '#3aa981'];
 
+    protected readonly examples = [
+        'Basic',
+        'External',
+        'Two colors',
+        'Bundled',
+        'Resolver',
+    ];
+
+    protected readonly descriptions = [
+        '',
+        '',
+        '',
+        'You can provide SVG source code in a dictionary to be bundled with the app, for example on the server side so they are loaded immediately with the page',
+        'IMPORTANT: Icon names are not allowed to have "/" symbol',
+    ];
+
     protected icon = '@tui.heart';
     protected backgroundIcon = '';
     protected color = this.colorVariants[1];
