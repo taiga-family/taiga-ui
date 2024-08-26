@@ -493,26 +493,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'DocumentationPropertyType',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocumentationPropertyType',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
-            name: 'RawContentLoader',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiRawContentLoader',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
             name: 'TuiContextWithImplicit',
             moduleSpecifier: '@taiga-ui/cdk',
         },
@@ -1287,16 +1267,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiDocCopyModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocCopy',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
             name: 'TuiPromptData',
             moduleSpecifier: '@taiga-ui/kit',
         },
@@ -1440,26 +1410,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
-            name: 'TuiScrollIntoViewLinkModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocScrollIntoViewLink',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
-            name: 'TuiTextCodeModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocText',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
             name: 'TuiPreviewDialogModule',
             moduleSpecifier: '@taiga-ui/addon-preview',
         },
@@ -1554,59 +1504,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiHint',
             moduleSpecifier: '@taiga-ui/core',
             spreadInModule: true,
-        },
-    },
-    {
-        from: {
-            name: 'TuiDocDocumentationModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiAddonDoc',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-            spreadInModule: true,
-        },
-    },
-    {
-        from: {
-            name: 'TuiDocPage',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocRoutePage',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: [
-            {
-                name: 'TuiDocCodeModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-            {
-                name: 'TuiDocDemoModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-            {
-                name: 'TuiDocMainModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-            {
-                name: 'TuiDocNavigationModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-            {
-                name: 'TuiDocPageModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-            {
-                name: 'TuiAddonDocModule',
-                moduleSpecifier: '@taiga-ui/addon-doc',
-            },
-        ],
-        to: {
-            name: 'TuiAddonDoc',
-            moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
     {
@@ -2499,26 +2396,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
-        from: {
-            name: 'TuiDocPage',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocRoutePage',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
-        from: {
-            name: 'TuiDocPages',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-        to: {
-            name: 'TuiDocRoutePages',
-            moduleSpecifier: '@taiga-ui/addon-doc',
-        },
-    },
-    {
         from: [
             {
                 name: 'TuiLabelModule',
@@ -2652,10 +2529,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TUI_DATE_FORMAT', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TUI_DATE_FORMAT', moduleSpecifier: '@taiga-ui/core'},
-    },
-    {
-        from: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TuiDeepPartial', moduleSpecifier: '@taiga-ui/addon-doc'},
     },
     {
         from: {name: 'TUI_FOCUSABLE_ITEM_ACCESSOR', moduleSpecifier: '@taiga-ui/cdk'},

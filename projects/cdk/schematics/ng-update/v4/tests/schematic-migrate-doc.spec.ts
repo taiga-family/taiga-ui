@@ -16,29 +16,39 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
-@Component({
-    standalone: true,
-    templateUrl: './test.template.html',
-    imports: [TuiAddonDocModule]
+import {ClassesComponent} from './classes.component';
+
+@NgModule({
+    imports: [
+        TuiAddonDocModule,
+        RouterModule.forChild(tuiGenerateRoutes(ClassesComponent)),
+    ],
+    declarations: [ClassesComponent],
+    exports: [ClassesComponent],
 })
-export class Test {
-    protected readonly example: TuiDocExample = {};
-}`;
+export class ClassesModule {}
+`;
 
-const COMPONENT_AFTER = `
-import { TuiRawLoaderContent, TuiAddonDoc } from '@taiga-ui/addon-doc';
+const COMPONENT_AFTER = `import { TuiAddonDoc } from "@taiga-ui/addon-doc";
 
-@Component({
-    standalone: true,
-    templateUrl: './test.template.html',
-    imports: [TuiAddonDoc]
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {ClassesComponent} from './classes.component';
+
+@NgModule({
+    imports: [
+        ...TuiAddonDoc,
+        RouterModule,
+    ],
+    declarations: [ClassesComponent],
+    exports: [ClassesComponent],
 })
-export class Test {
-    protected readonly example: Record<string, TuiRawLoaderContent> = {};
-}`;
+export class ClassesModule {}
+`.trim();
 
 describe('ng-update', () => {
     let host: UnitTestTree;
@@ -55,14 +65,16 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate addon-doc references in ts files', async () => {
+    it('should migrate doc references in ts files', async () => {
         const tree = await runner.runSchematic(
             'migrateAddonDocV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
             host,
         );
 
-        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
+        expect(tree.readContent('test/app/test.component.ts').trim()).toEqual(
+            COMPONENT_AFTER,
+        );
     });
 
     afterEach(() => {
@@ -72,9 +84,7 @@ describe('ng-update', () => {
 
 function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-
     createSourceFile('test/app/test.template.html', '');
-
     createAngularJson();
     createSourceFile(
         'package.json',
