@@ -17,11 +17,11 @@ export function migrateProprietary(
     options: TuiSchema,
 ): void {
     try {
-        const hasProprietary =
-            !!getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary-core') ||
-            !!getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
+        const proprietary =
+            getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary-core') ||
+            getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
 
-        if (!hasProprietary) {
+        if (!proprietary) {
             return;
         }
 
@@ -31,6 +31,11 @@ export function migrateProprietary(
         replaceScopePackages();
         replaceProprietaryIconPath();
         removeProprietaryPackages(fileSystem);
+        addPackageJsonDependency(fileSystem.tree, {
+            name: '@taiga-ui/proprietary',
+            version: TUI_VERSION,
+            type: proprietary.type,
+        });
 
         fileSystem.commitEdits();
         saveActiveProject();
@@ -92,9 +97,4 @@ export function removeProprietaryPackages(fileSystem: DevkitFileSystem): void {
         '@taiga-ui/proprietary-tds-icons',
         '@taiga-ui/proprietary-tds-palette',
     ].forEach((name) => removePackageJsonDependency(fileSystem.tree, name));
-
-    addPackageJsonDependency(fileSystem.tree, {
-        name: '@taiga-ui/proprietary',
-        version: TUI_VERSION,
-    });
 }

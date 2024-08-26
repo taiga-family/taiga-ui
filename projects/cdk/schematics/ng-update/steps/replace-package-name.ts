@@ -19,9 +19,11 @@ export function replacePackageName(
 
     replaceText([{from: oldPackage, to: newPackage.name}], ALL_TS_FILES);
 
-    if (getPackageJsonDependency(tree, oldPackage)) {
+    const old = getPackageJsonDependency(tree, oldPackage);
+
+    if (old) {
         removePackageJsonDependency(tree, oldPackage);
-        addPackageJsonDependency(tree, newPackage);
+        addPackageJsonDependency(tree, {...newPackage, type: old.type});
     }
 
     fileSystem.commitEdits();
