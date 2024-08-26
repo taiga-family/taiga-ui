@@ -11,7 +11,7 @@
                 </button>
                 <ng-container *ngFor="let control of filters.controls; let i = index">
                     <tui-textfield *tuiItem>
-                        <label>Filter {{ i + 1 }}</label>
+                        <label tuiLabel>Filter {{ i + 1 }}</label>
                         <input
                             placeholder="Search"
                             tuiTextfield

@@ -1,5 +1,5 @@
 ```ts
-import {TuiNavigation} from '@taiga-ui/layout';
+import {TuiSearch} from '@taiga-ui/layout';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiNavigation} from '@taiga-ui/layout';
   standalone: true,
   imports: [
     // ...
-    TuiNavigation,
+    TuiSearch,
   ],
   // ...
 })

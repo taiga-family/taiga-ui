@@ -1,8 +1,17 @@
 ```html
-<header tuiNavigationHeader>Header content</header>
-<aside [tuiNavigationAside]="expanded">Sidebar content</aside>
-<main tuiNavigationMain>
-  <nav tuiNavigationNav>Breadcrumbs, tabs, buttons</nav>
-  Main content
-</main>
+<search tuiSearch>
+  <form [formGroup]="form">
+    <fieldset>
+      <tui-textfield iconStart="@tui.search">
+        <label tuiLabel>Search</label>
+        <input
+          placeholder="Search"
+          tuiTextfield
+          formControlName="search"
+        />
+      </tui-textfield>
+      <button tuiButton>Search</button>
+    </fieldset>
+  </form>
+</search>
 ```
