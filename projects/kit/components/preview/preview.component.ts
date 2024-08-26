@@ -112,14 +112,10 @@ export class TuiPreviewComponent {
         }
     }
 
-    protected onResize(contentResizeEntries: readonly ResizeObserverEntry[]): void {
-        if (contentResizeEntries.length === 0) {
-            return;
+    protected onResize([entry]: readonly ResizeObserverEntry[]): void {
+        if (entry?.contentRect) {
+            this.refresh(entry.contentRect.width, entry.contentRect.height);
         }
-
-        const {width, height} = contentResizeEntries[0].contentRect;
-
-        this.refresh(width, height);
     }
 
     protected reset(): void {

@@ -133,8 +133,8 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
-        const leftThumbElement = sliderLeftRef.nativeElement;
-        const rightThumbElement = sliderRightRef.nativeElement;
+        const leftThumbElement = sliderLeftRef?.nativeElement;
+        const rightThumbElement = sliderRightRef?.nativeElement;
 
         const isRightThumb =
             target === this.el

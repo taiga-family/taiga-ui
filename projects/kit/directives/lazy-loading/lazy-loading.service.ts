@@ -11,7 +11,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
     private readonly stream$ = this.src$.pipe(
         switchMap((src) =>
             this.intersections$.pipe(
-                filter(([{isIntersecting}]) => isIntersecting),
+                filter((entry) => !!entry[0]?.isIntersecting),
                 map(() => src),
                 take(1),
             ),
