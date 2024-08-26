@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9932],{9932:e=>{e.exports='<tui-icon icon="@tui.heart" />\n<tui-icon icon="discord" />\n'}}]);
