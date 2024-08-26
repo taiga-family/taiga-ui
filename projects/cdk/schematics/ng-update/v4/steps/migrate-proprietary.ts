@@ -17,10 +17,9 @@ export function migrateProprietary(
     options: TuiSchema,
 ): void {
     try {
-        const hasProprietary = !!getPackageJsonDependency(
-            fileSystem.tree,
-            '@taiga-ui/proprietary-core',
-        )?.version;
+        const hasProprietary =
+            !!getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary-core') ||
+            !!getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
 
         if (!hasProprietary) {
             return;

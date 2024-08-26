@@ -15,11 +15,14 @@ export function renameProprietaryIcons(
 
         const regex = /['"`]tuiIcon(?!Button\b)[A-Z][a-zA-Z0-9]*\b/g;
 
+        const invalidIcons = new Set();
+
         text = text.replaceAll(regex, (icon) => {
             if (icon.match(/['"`]tuiIcon(?!Tds)\w*/)) {
                 logger.warn(
                     `[WARNING] in ${file.getSourceFile().getFilePath()}: Invalid icon name ${icon}. Please select an icon from the proprietary pack.`,
                 );
+                invalidIcons.add(icon.slice(1));
 
                 return icon;
             }
@@ -27,10 +30,8 @@ export function renameProprietaryIcons(
             return convertString(icon);
         });
 
-        const invalidIcons = [...new Set(text.match(/\b(tuiIcon(?!Tds|Button)\w*)\b/g))];
-
-        if (invalidIcons.length) {
-            const message = `TODO (Taiga UI migration): invalid icons ${invalidIcons.join(', ')}. Please select an icon from the proprietary pack`;
+        if (invalidIcons.size > 0) {
+            const message = `TODO (Taiga UI migration): invalid icons ${Array.from(invalidIcons).join(', ')}. Please select an icon from the proprietary pack`;
             const todo = file.getFilePath().endsWith('html')
                 ? `<!-- ${message} -->`
                 : `// ${message}`;

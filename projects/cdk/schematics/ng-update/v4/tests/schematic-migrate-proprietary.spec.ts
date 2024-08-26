@@ -60,7 +60,7 @@ export class Test {
     @Input() illustration: string | null = null;
 
     readonly operationIcon: TuiFeedItemIcon = {
-        icon: '@tui.tds-transport-auto-ruble-medium',
+        icon: '@tui.fancy.medium.transport-auto-ruble',
         color: '#428BF9',
         background: '#428bf91f',
     };

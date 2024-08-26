@@ -60,7 +60,7 @@ export class Test {
    icon = iconsName.tuiIconStart;
 }`;
 
-const PROPR_COMPONENT_AFTER = `// TODO (Taiga UI migration): invalid icons tuiIconStar, tuiIconArrowDown, tuiIconStart. Please select an icon from the proprietary pack
+const PROPR_COMPONENT_AFTER = `// TODO (Taiga UI migration): invalid icons tuiIconStar, tuiIconArrowDown. Please select an icon from the proprietary pack
 import { Component } from "@angular/core";
 
 const iconsMap = {

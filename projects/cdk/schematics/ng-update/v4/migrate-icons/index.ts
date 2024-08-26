@@ -38,5 +38,8 @@ export function migrateIcons(options: TuiSchema): Rule {
 }
 
 function hasProprietaryIcons(tree: Tree): boolean {
-    return !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons');
+    return (
+        !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons') ||
+        !!getPackageJsonDependency(tree, '@taiga-ui/proprietary')
+    );
 }
