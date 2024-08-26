@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.93.0](https://github.com/taiga-family/taiga-ui/compare/v3.92.0...v3.93.0) (2024-08-26)
+
+### Bug Fixes
+
+- **cdk:** `ActiveZone` do not exit zone when scrollable container becomes non-scrollable
+  ([#8631](https://github.com/taiga-family/taiga-ui/issues/8631))
+  ([4b160f2](https://github.com/taiga-family/taiga-ui/commit/4b160f2c12fa68cb087b97aca96e533f02d9ca6c))
+- **kit:** `CalendarRange` delete code for `availableRange` property
+  ([#8677](https://github.com/taiga-family/taiga-ui/issues/8677))
+  ([8e4c774](https://github.com/taiga-family/taiga-ui/commit/8e4c7749445a83810fb819fa38aa2156389aa80a))
+- **kit:** `Textarea` use balance text-wrap in safari ([#8666](https://github.com/taiga-family/taiga-ui/issues/8666))
+  ([#8672](https://github.com/taiga-family/taiga-ui/issues/8672))
+  ([06fb25a](https://github.com/taiga-family/taiga-ui/commit/06fb25a0990efe29da56056881dcd7ce649734e1))
+- **kit:** fix `CalendarRange` typing and checks `otherDateText` in `mapper` function
+  ([#8629](https://github.com/taiga-family/taiga-ui/issues/8629))
+  ([22bb699](https://github.com/taiga-family/taiga-ui/commit/22bb699d4f2a92d8448f24dfc83e010a1eafe7b9))
+
 ## [3.92.0](https://github.com/taiga-family/taiga-ui/compare/v3.91.0...v3.92.0) (2024-08-20)
 
 ### Features
