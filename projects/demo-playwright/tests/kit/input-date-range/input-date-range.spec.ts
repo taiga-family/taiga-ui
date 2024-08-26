@@ -168,39 +168,6 @@ test.describe('InputDateRange', () => {
                 '07-item-and-calendar-interactions.png',
             );
         });
-
-        test('Prevent selection of range with disabled days', async ({page}) => {
-            const calendar = new TuiCalendarPO(
-                inputDateRange.calendarRange.locator('tui-calendar'),
-            );
-
-            const getCellSelectors = async (cell: Locator): Promise<string | null> =>
-                cell.getAttribute('class');
-
-            const daysSelectors = async (): Promise<Array<string | null>> =>
-                Promise.all((await calendar.getDays()).map(getCellSelectors));
-
-            await tuiGoto(page, 'components/input-date-range/API?disabledItemHandler$=1');
-
-            await inputDateRange.textfield.click();
-
-            // check disabled items length before day selection
-            expect(
-                (await daysSelectors()).filter((selectors) =>
-                    selectors?.includes('t-cell_disabled'),
-                ),
-            ).toHaveLength(20);
-
-            await calendar.clickOnCalendarDay(7);
-
-            // check range which includes disabled days
-            // range should have only 2 enabled items
-            expect(
-                (await daysSelectors()).filter(
-                    (selectors) => !selectors?.includes('t-cell_disabled'),
-                ),
-            ).toHaveLength(2);
-        });
     });
 
     test.describe('Examples', () => {
