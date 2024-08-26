@@ -15,7 +15,7 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "tslib": "2.6.3"
+        "tslib": "2.7.0"
     },
     "devDependencies": {
         "@angular-devkit/core": "16.2.14",
@@ -40,7 +40,7 @@
         "@angular-devkit/core": ">=16.0.0",
         "@angular-devkit/schematics": ">=16.0.0",
         "@schematics/angular": ">=16.0.0",
-        "ng-morph": "^4.6.1",
+        "ng-morph": "^4.6.3",
         "parse5": "^7.1.2"
     },
     "ng-update": {

@@ -30,6 +30,6 @@
         "@taiga-ui/polymorpheus": "^4.6.4",
         "markdown-it": ">=14.1.0",
         "ngx-highlightjs": ">=10.0.0",
-        "tslib": "^2.6.3"
+        "tslib": "^2.7.0"
     }
 }
