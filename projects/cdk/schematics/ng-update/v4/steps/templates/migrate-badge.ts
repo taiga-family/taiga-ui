@@ -122,11 +122,13 @@ function migrateBadgeValue({
         return;
     }
 
+    const closeTag = selfClosing ? '</tui-badge>' : '';
+
     recorder.insertRight(
         insertTo + templateOffset,
         valueAttr.name === 'value'
-            ? attrValue
-            : `{{ ${attrValue} }}${selfClosing ? '</tui-badge>' : ''}`,
+            ? `${attrValue}${closeTag}`
+            : `{{ ${attrValue} }}${closeTag}`,
     );
 
     const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
