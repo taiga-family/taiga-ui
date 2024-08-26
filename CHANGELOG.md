@@ -3,28 +3,51 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/taiga-family/taiga-ui/compare/v4.3.0...v4.4.0) (2024-08-26)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `PullToRefresh` fix scroll ref ([#8684](https://github.com/taiga-family/taiga-ui/issues/8684))
+  ([c9eef96](https://github.com/taiga-family/taiga-ui/commit/c9eef96273244c069c12bc512c888aadcc152a45))
+- **cdk:** `ActiveZone` do not exit zone when scrollable container becomes non-scrollable
+  ([#8631](https://github.com/taiga-family/taiga-ui/issues/8631))
+  ([#8653](https://github.com/taiga-family/taiga-ui/issues/8653))
+  ([b796d0d](https://github.com/taiga-family/taiga-ui/commit/b796d0d761e7fac064479da128a221a4b896885e))
+- **kit:** `ButtonClose` fix icon ([#8659](https://github.com/taiga-family/taiga-ui/issues/8659))
+  ([7287016](https://github.com/taiga-family/taiga-ui/commit/728701659554f263e5f5baafc1f2bb012da7494a))
+- **kit:** `CalendarRange` delete code for `availableRange` property
+  ([#8688](https://github.com/taiga-family/taiga-ui/issues/8688))
+  ([18d9b07](https://github.com/taiga-family/taiga-ui/commit/18d9b0790be9fb66f0d6a8c81846a3b0f65bb7c0))
+- **kit:** `Tiles` fix reorder issue ([#8663](https://github.com/taiga-family/taiga-ui/issues/8663))
+  ([9ea0162](https://github.com/taiga-family/taiga-ui/commit/9ea0162c3a7371c50d390e9718b2a175ad30c001))
+- **legacy:** `Textarea` use balance text-wrap in safari ([#8666](https://github.com/taiga-family/taiga-ui/issues/8666))
+  ([cbaac1b](https://github.com/taiga-family/taiga-ui/commit/cbaac1b1c87b884cb692f979b44094ebb583ef1a))
+- **legacy:** invalid css variable ([#8619](https://github.com/taiga-family/taiga-ui/issues/8619))
+  ([4fa7631](https://github.com/taiga-family/taiga-ui/commit/4fa7631a81842abe7c47e3b8212a16121399d4c4))
+
+### 🚀 Features
+
+- **core:** `TUI_DARK_MODE` add new token ([#8657](https://github.com/taiga-family/taiga-ui/issues/8657))
+  ([f409942](https://github.com/taiga-family/taiga-ui/commit/f409942f3cb21fa8dc66fe59e4dcbe316fc045c9))
+- **icons:** drop useless comments inside svg file ([#8660](https://github.com/taiga-family/taiga-ui/issues/8660))
+  ([327f470](https://github.com/taiga-family/taiga-ui/commit/327f4700ee0628a6cadb2e1deba35287ca8e83fe))
+- **kit:** `CalendarRange` add `item` property for correctly switch value outside
+  ([#8617](https://github.com/taiga-family/taiga-ui/issues/8617))
+  ([39e3419](https://github.com/taiga-family/taiga-ui/commit/39e3419b1f03176770f49ebd03118a2c067546a1))
+- **kit:** `IconBadge` add new directive ([#8667](https://github.com/taiga-family/taiga-ui/issues/8667))
+  ([1d2c286](https://github.com/taiga-family/taiga-ui/commit/1d2c28614407307801fdb1e0c63b4896b86471d1))
+- **layout:** `Search` add new component ([#8648](https://github.com/taiga-family/taiga-ui/issues/8648))
+  ([8cb50c0](https://github.com/taiga-family/taiga-ui/commit/8cb50c024bbfeda2b691c170cecef80c9cc46e7d))
+
 ## [4.3.0](https://github.com/taiga-family/taiga-ui/compare/v4.0.1...v4.3.0) (2024-08-21)
 
 ### 🚀 Features
 
-- add `@taiga-ui/icons-fontawesome` ([#8493](https://github.com/taiga-family/taiga-ui/issues/8493))
-  ([131b3ed](https://github.com/taiga-family/taiga-ui/commit/131b3ed6a007c3229fe65f13fd9bfe014d68e7c2))
-- add `@taiga-ui/icons-material` ([#8454](https://github.com/taiga-family/taiga-ui/issues/8454))
-  ([3315a29](https://github.com/taiga-family/taiga-ui/commit/3315a29f5e6539956d3dc7d6b4a01b1a0c3d45e4))
 - **addon-mobile:** possibility drop mobile calendar header
   ([#8265](https://github.com/taiga-family/taiga-ui/issues/8265))
   ([819b17b](https://github.com/taiga-family/taiga-ui/commit/819b17ba2bf87d6ff92be9bf2d3508ae9a25ae01))
-- **i18n:** add japanese ([#8420](https://github.com/taiga-family/taiga-ui/issues/8420))
-  ([ef9f992](https://github.com/taiga-family/taiga-ui/commit/ef9f9929ccaa778811a2eda86803c35f726a1de2))
-- **i18n:** add korean ([#8486](https://github.com/taiga-family/taiga-ui/issues/8486))
-  ([691328f](https://github.com/taiga-family/taiga-ui/commit/691328f889c95346f18ced853fe2b91bd08e300f))
-- **i18n:** improve literal string union ([#8516](https://github.com/taiga-family/taiga-ui/issues/8516))
-  ([9bf0f8c](https://github.com/taiga-family/taiga-ui/commit/9bf0f8c39727cfccd481636433e44963b8b88331))
 - **kit:** `ButtonSelect` add new directive ([#8559](https://github.com/taiga-family/taiga-ui/issues/8559))
   ([6cba52c](https://github.com/taiga-family/taiga-ui/commit/6cba52c140bc182cb8014809116356fb49c3c6e2))
-- **kit:** prevent disabled date selection for calendar-range
-  ([#8329](https://github.com/taiga-family/taiga-ui/issues/8329))
-  ([951779d](https://github.com/taiga-family/taiga-ui/commit/951779def714e366bb31c915be56ce9ee50115ee))
 
 ### 🐞 Bug Fixes
 
@@ -33,18 +56,10 @@ All notable changes to this project will be documented in this file. See
 - **addon-mobile:** PullToRefresh do not trigger pulled if dialog is inside
   ([#8597](https://github.com/taiga-family/taiga-ui/issues/8597))
   ([7474d6e](https://github.com/taiga-family/taiga-ui/commit/7474d6ea455fecf07a785a86cab2d61bd45f0d34))
-- **core:** `Group` fix edge overlay ([#8509](https://github.com/taiga-family/taiga-ui/issues/8509))
-  ([bd43b97](https://github.com/taiga-family/taiga-ui/commit/bd43b977e00e554bbed373ed4987816dce49831f))
 - **core:** do not call resolver multiple time ([#8578](https://github.com/taiga-family/taiga-ui/issues/8578))
   ([6e5c9f4](https://github.com/taiga-family/taiga-ui/commit/6e5c9f4487d4f5a2633c13812c4ad4e2b221b5b3))
-- **core:** ios menu is not triggered ([#8348](https://github.com/taiga-family/taiga-ui/issues/8348))
-  ([8b00807](https://github.com/taiga-family/taiga-ui/commit/8b008072936d0c246a1eb6c7435360b39305bf8f))
 - **core:** user selection on safari ([#8587](https://github.com/taiga-family/taiga-ui/issues/8587))
   ([02e1c73](https://github.com/taiga-family/taiga-ui/commit/02e1c738f626f36425de0efdf424a006911d3b10))
-- **i18n:** redundant whitespace ([#8501](https://github.com/taiga-family/taiga-ui/issues/8501))
-  ([0f809a7](https://github.com/taiga-family/taiga-ui/commit/0f809a72b009e469e99ea0c773e446e8e9dafebd))
-- **kit:** `InputPhoneInternational` fix chevron ([#8491](https://github.com/taiga-family/taiga-ui/issues/8491))
-  ([a0397d6](https://github.com/taiga-family/taiga-ui/commit/a0397d6e6a20da1094367d11fa070f178dc6a9fc))
 - **kit:** `InputPhoneInternational` fix size for `border-box`
   ([#8633](https://github.com/taiga-family/taiga-ui/issues/8633))
   ([1dec452](https://github.com/taiga-family/taiga-ui/commit/1dec4524c8db8a0290eb82f10c302cb79c5d86ec))
@@ -56,15 +71,9 @@ All notable changes to this project will be documented in this file. See
 - **kit:** segmented subscription to control value changes
   ([#8574](https://github.com/taiga-family/taiga-ui/issues/8574))
   ([e6cf175](https://github.com/taiga-family/taiga-ui/commit/e6cf1759eb427c7f8b2ee1496f8fdfc3effe9ee4))
-- **legacy:** `InputTime` has missing zero padding on blur for `HH:MM` mode
-  ([#8492](https://github.com/taiga-family/taiga-ui/issues/8492))
-  ([84c3aae](https://github.com/taiga-family/taiga-ui/commit/84c3aaec0eaeb60cd4e5a4f101f6e056942c7a6c))
 - **legacy:** display view/hide password button with `readOnly` property
   ([#8584](https://github.com/taiga-family/taiga-ui/issues/8584))
   ([15857bc](https://github.com/taiga-family/taiga-ui/commit/15857bc81f7088956127cd331afe2b65dc495d94))
-- **legacy:** fix issues with custom injector in templates
-  ([#8523](https://github.com/taiga-family/taiga-ui/issues/8523))
-  ([ce49bac](https://github.com/taiga-family/taiga-ui/commit/ce49bac400287512ca6c97231ce04c4336b9794c))
 - **legacy:** prevent add/remove suffixes while InputNumber is readonly
   ([#8568](https://github.com/taiga-family/taiga-ui/issues/8568))
   ([7a58d78](https://github.com/taiga-family/taiga-ui/commit/7a58d7824a4fc72563558b3407889602b6714f89))
@@ -92,17 +101,10 @@ All notable changes to this project will be documented in this file. See
 
 ### 🐞 Bug Fixes
 
-- **core:** `Group` fix edge overlay ([#8509](https://github.com/taiga-family/taiga-ui/issues/8509))
-  ([bd43b97](https://github.com/taiga-family/taiga-ui/commit/bd43b977e00e554bbed373ed4987816dce49831f))
 - **core:** ios menu is not triggered ([#8348](https://github.com/taiga-family/taiga-ui/issues/8348))
   ([8b00807](https://github.com/taiga-family/taiga-ui/commit/8b008072936d0c246a1eb6c7435360b39305bf8f))
 - **i18n:** redundant whitespace ([#8501](https://github.com/taiga-family/taiga-ui/issues/8501))
   ([0f809a7](https://github.com/taiga-family/taiga-ui/commit/0f809a72b009e469e99ea0c773e446e8e9dafebd))
-- **kit:** `InputPhoneInternational` fix chevron ([#8491](https://github.com/taiga-family/taiga-ui/issues/8491))
-  ([a0397d6](https://github.com/taiga-family/taiga-ui/commit/a0397d6e6a20da1094367d11fa070f178dc6a9fc))
-- **legacy:** `InputTime` has missing zero padding on blur for `HH:MM` mode
-  ([#8492](https://github.com/taiga-family/taiga-ui/issues/8492))
-  ([84c3aae](https://github.com/taiga-family/taiga-ui/commit/84c3aaec0eaeb60cd4e5a4f101f6e056942c7a6c))
 - **legacy:** fix issues with custom injector in templates
   ([#8523](https://github.com/taiga-family/taiga-ui/issues/8523))
   ([ce49bac](https://github.com/taiga-family/taiga-ui/commit/ce49bac400287512ca6c97231ce04c4336b9794c))
