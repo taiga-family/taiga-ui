@@ -82,10 +82,9 @@ function addProviders(callExpression: Node, fileSystem: DevkitFileSystem): void 
     );
 
     getActiveProject();
-    const proprietary = getPackageJsonDependency(
-        fileSystem.tree,
-        '@taiga-ui/proprietary-core',
-    );
+    const proprietary =
+        getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary-core') ||
+        getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
 
     if (proprietary) {
         array.addElement('TBANK_PROVIDERS');
