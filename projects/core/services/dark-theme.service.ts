@@ -2,6 +2,9 @@ import {inject, Injectable} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {fromEvent, map, Observable, shareReplay, startWith} from 'rxjs';
 
+/**
+ * @deprecated use {@link TUI_DARK_MODE} instead
+ */
 @Injectable({
     providedIn: 'root',
 })
