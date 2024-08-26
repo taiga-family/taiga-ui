@@ -48,7 +48,7 @@ export function removeDuplicates(options: TuiSchema): void {
             }
         });
 
-        indexToRemove.forEach((index) => importsInitializer.removeElement(index));
+        indexToRemove.forEach((index, i) => importsInitializer.removeElement(index - i));
     });
 
     !options['skip-logs'] &&
