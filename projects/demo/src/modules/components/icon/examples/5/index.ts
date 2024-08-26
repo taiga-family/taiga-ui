@@ -8,6 +8,8 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
     imports: [TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_ICON_RESOLVER,
@@ -21,7 +23,5 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
             },
         },
     ],
-    encapsulation,
-    changeDetection,
 })
 export default class Example {}
