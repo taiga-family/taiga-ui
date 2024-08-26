@@ -4,13 +4,15 @@
     width: 100%;
     color: var(--tui-text-primary);
     background: var(--tui-background-base);
+    font-family: monospace;
+    table-layout: fixed;
 
     tr:not(:first-child) {
         border-top: 1px solid var(--tui-border-normal);
     }
 
     td {
-        padding: 1.5rem;
+        padding: 1.5rem 0.5rem;
 
         &:last-child {
             color: var(--tui-text-secondary);
@@ -19,19 +21,24 @@
     }
 }
 
+.circle {
+    text-align: center;
+}
+
 .demo {
     position: relative;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 100%;
     overflow: hidden;
+    display: inline-flex;
 }
 
 .name {
     .transition(color);
     position: relative;
     display: inline-block;
-    height: 2rem;
+    min-height: 2rem;
     background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
     padding: 0.25rem 0.75rem;
@@ -44,19 +51,15 @@
             opacity: 1;
         }
     }
-
-    .copy {
-        min-width: 100%;
-    }
 }
 
 .value {
     position: relative;
-    width: 11.25rem;
-
-    .copy {
-        top: -0.25rem;
-    }
+    width: fit-content;
+    margin-right: 1rem;
+    padding: 1rem 0.75rem;
+    overflow-wrap: break-word;
+    text-align: center;
 }
 
 .copy {
@@ -66,6 +69,17 @@
     left: 0;
     background: var(--tui-background-base-alt);
     opacity: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 2rem;
+
+    ::ng-deep button {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
 
     &:hover {
         opacity: 1;

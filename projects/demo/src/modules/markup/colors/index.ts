@@ -7,7 +7,7 @@ import {TuiGroup} from '@taiga-ui/core';
 import {TuiBlock} from '@taiga-ui/kit';
 
 import {BACKGROUNDS, CHARTS, OTHERS, STATUSES, TEXT} from './constants';
-import {TableColors} from './examples/table/table.component';
+import {TableColors} from './examples/table';
 
 @Component({
     standalone: true,
