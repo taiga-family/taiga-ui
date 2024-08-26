@@ -1,5 +1,5 @@
 import {NgForOf, NgIf} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -29,14 +29,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Graham Chapman',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }

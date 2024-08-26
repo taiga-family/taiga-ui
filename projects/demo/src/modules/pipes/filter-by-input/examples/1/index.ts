@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18,15 +18,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Graham Chapman',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
-
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected readonly form = new FormGroup({
         user: new FormControl(''),
     });

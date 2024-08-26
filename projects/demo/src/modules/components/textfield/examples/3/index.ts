@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -29,12 +29,5 @@ import {
 export default class Example {
     protected value = '';
 
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Michael Palin',
-        'Graham Chapman',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
 }

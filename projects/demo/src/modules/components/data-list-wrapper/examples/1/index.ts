@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -20,15 +20,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 })
 export default class Example {
     protected readonly control = new FormControl('');
-
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Graham Chapman',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected readonly disabledItemHandler: TuiBooleanHandler<string> = (v) =>
         v.startsWith('T');

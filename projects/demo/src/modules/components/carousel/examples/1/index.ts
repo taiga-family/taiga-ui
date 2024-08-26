@@ -16,13 +16,5 @@ import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 export default class Example {
     protected duration = isPlatformBrowser(inject(PLATFORM_ID)) ? 4_000 : 0;
     protected index = 2;
-
-    protected readonly items = [
-        'John Cleese',
-        'Eric Idle',
-        'Michael Palin',
-        'Graham Chapman',
-        'Terry Gilliam',
-        'Terry Jones',
-    ];
+    protected readonly items = inject<readonly string[]>('Pythons' as any);
 }

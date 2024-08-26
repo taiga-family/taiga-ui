@@ -20,12 +20,7 @@ export default class Example {
 
     protected readonly pythons = [
         'de la Concordia «Gabo» García Márquez',
-        'John Cleese',
-        'Eric Idle',
-        'Michael Palin',
-        'Terry Gilliam',
-        'Terry Jones',
-        'Graham Chapman',
+        ...inject<readonly string[]>('Pythons' as any),
     ];
 
     protected value = this.pythons[0];
