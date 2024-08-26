@@ -76,6 +76,6 @@ export class TuiCheckbox implements OnInit, DoCheck {
         const option = this.options.icons[state];
         const icon = tuiIsString(option) ? option : option(this.size);
 
-        return `url(${this.resolver(icon)})`;
+        return icon && `url(${this.resolver(icon)})`;
     }
 }

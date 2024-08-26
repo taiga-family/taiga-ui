@@ -54,6 +54,6 @@ export class TuiSwitch implements DoCheck {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
 
-        return this.showIcons ? `url(${resolver(icon)})` : null;
+        return this.showIcons && icon ? `url(${resolver(icon)})` : null;
     }
 }

@@ -63,7 +63,8 @@ export class TuiInputCard implements OnInit {
 
     protected get backgroundImage(): string | null {
         const system = this.getPaymentSystem(this.control.value);
-        const url = this.icon || (system && this.resolver(this.icons[system]));
+        const icon = system && this.icons[system] && this.resolver(this.icons[system]);
+        const url = this.icon || icon;
 
         return url && this.icon !== '' ? `url(${url})` : null;
     }
