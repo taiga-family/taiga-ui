@@ -23,7 +23,7 @@ export default class Example {
         ...inject<readonly string[]>('Pythons' as any),
     ];
 
-    protected activeElement = String(this.tabs[0]);
+    protected activeElement = String(this.collaborators[0]);
 
     protected get activeItemIndex(): number {
         if (this.collaborators.includes(this.activeElement)) {
