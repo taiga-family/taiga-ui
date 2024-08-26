@@ -1,3 +1,4 @@
+import type {ElementRef} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
 import {tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -30,7 +31,7 @@ const EXCLUSION_SELECTORS = 'tui-dialog, tui-dropdown, tui-dropdown-mobile';
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
     private readonly el = tuiInjectElement();
-    private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly scrollRef: ElementRef<HTMLElement> = inject(TUI_SCROLL_REF);
     private readonly loaded$ = inject(TUI_PULL_TO_REFRESH_LOADED);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
@@ -44,7 +45,7 @@ export class TuiPullToRefreshService extends Observable<number> {
             tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
                 filter(
                     () =>
-                        !this.scrollRef.scrollTop &&
+                        !this.scrollRef.nativeElement.scrollTop &&
                         !this.el.querySelector(EXCLUSION_SELECTORS),
                 ),
                 map(({touches}) => touches[0].clientY),
@@ -62,7 +63,7 @@ export class TuiPullToRefreshService extends Observable<number> {
                                 }),
                             ),
                         ),
-                        takeUntil(tuiScrollFrom(this.scrollRef)),
+                        takeUntil(tuiScrollFrom(this.scrollRef.nativeElement)),
                         endWith(0),
                     ),
                 ),
