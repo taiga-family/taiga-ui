@@ -141,7 +141,7 @@
         "kill-port": "2.0.1",
         "lint-staged": "15.2.9",
         "local-web-server": "5.4.0",
-        "ng-morph": "4.6.1",
+        "ng-morph": "4.6.3",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
         "nx": "19.6.2",
