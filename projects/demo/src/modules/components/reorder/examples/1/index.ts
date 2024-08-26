@@ -13,6 +13,6 @@ import {TuiReorder} from '@taiga-ui/addon-table';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected items = inject<readonly string[]>('Pythons' as any);
     protected enabled = this.items;
 }
