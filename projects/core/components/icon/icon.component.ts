@@ -41,7 +41,7 @@ export class TuiIcon {
         this.backgroundSrc.set(this.resolve(background));
     }
 
-    private resolve(value?: string | null): string | null {
+    public resolve(value?: string | null): string | null {
         return value ? `url(${this.resolver(value)})` : null;
     }
 }
