@@ -11,10 +11,11 @@
         are included. Importing is not required.
 
         <tui-doc-example
-            id="themes"
-            heading="Themes"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 </tui-doc-page>

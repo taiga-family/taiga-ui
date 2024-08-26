@@ -1,4 +1,4 @@
-<tui-root [attr.tuiTheme]="(dark$ | async) ? 'dark' : null">
+<tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null">
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />
@@ -17,7 +17,7 @@
             class="tui-doc-dark-mode-switch"
             [iconStart]="icon"
             [style.border-radius.%]="100"
-            (click)="dark$.toggle()"
+            (click)="darkMode.set(!darkMode())"
         ></button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
