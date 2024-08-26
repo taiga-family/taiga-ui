@@ -41,6 +41,13 @@
     &[data-size='l']._has-counter {
         --tui-textarea-height: @heightCounter;
     }
+
+    // https://bugs.webkit.org/show_bug.cgi?id=278558
+    .safari-only({
+        .t-pseudo-content, .t-input {
+            text-wrap: balance;
+        }
+    });
 }
 
 .t-outline {
