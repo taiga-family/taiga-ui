@@ -25,6 +25,7 @@ export function addUniqueImport(
 
         editImports(existingDeclaration[0], () => ({
             namedImports: [...modules, namedImport],
+            isTypeOnly: false,
         }));
 
         return;
@@ -33,5 +34,6 @@ export function addUniqueImport(
     addImports(filePath, {
         moduleSpecifier,
         namedImports: [namedImport],
+        isTypeOnly: false,
     });
 }
