@@ -42,9 +42,9 @@ export const TUI_INPUT_CARD_GROUP_TEXTS = tuiCreateTokenFromFactory<
             ]),
         ),
         map(([index, cardNumber, expiry, cvcTexts]) => ({
-            cardNumberText: cardNumber[index],
-            expiryText: expiry[index],
-            cvcText: cvcTexts[index],
+            cardNumberText: cardNumber[index] ?? '',
+            expiryText: expiry[index] ?? '',
+            cvcText: cvcTexts[index] ?? '',
         })),
     );
 });
