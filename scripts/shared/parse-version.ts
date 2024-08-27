@@ -6,7 +6,7 @@ interface ParsedVersion {
 }
 
 export function parseVersion(version: string): ParsedVersion {
-    const [major, minor, patch, , rc = -1] = version
+    const [major = 0, minor = 0, patch = 0, , rc = -1] = version
         .split(/[.-]/)
         .map((value) => Number(value));
 

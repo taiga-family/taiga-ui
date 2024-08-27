@@ -34,7 +34,7 @@ export default class Page {
 
     protected icon = '@tui.heart';
     protected backgroundIcon = '';
-    protected color = this.colorVariants[1];
+    protected color = this.colorVariants[1]!;
     protected backgroundColor = '';
     protected size = 24;
 }

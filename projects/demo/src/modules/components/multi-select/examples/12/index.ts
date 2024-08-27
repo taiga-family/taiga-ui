@@ -42,5 +42,8 @@ export default class Example {
 
     public readonly moreOptions: readonly string[] = ['Item #6', 'Item #7', 'Item #8'];
 
-    public value: readonly string[] = [this.mainOptions[2], this.moreOptions[1]];
+    public value: readonly string[] = [
+        this.mainOptions[2] ?? '',
+        this.moreOptions[1] ?? '',
+    ];
 }

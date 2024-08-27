@@ -21,7 +21,7 @@
     </div>
     <div
         class="container"
-        (waIntersectionObservee)="intersected = $event[0].isIntersecting || intersected"
+        (waIntersectionObservee)="intersected = $event[0]?.isIntersecting || intersected"
     >
         <iframe
             *ngIf="intersected || current === 1"
@@ -160,7 +160,7 @@
     waIntersectionObserver
     waIntersectionThreshold="0.5"
     class="screen"
-    (waIntersectionObservee)="onIntersection($event, index)"
+    (waIntersectionObservee)="$event[0] && onIntersection($event[0], index)"
 ></div>
 
 <footer class="footer">

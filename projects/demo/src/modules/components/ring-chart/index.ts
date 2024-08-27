@@ -17,11 +17,11 @@ export default class Page {
         [13769, 10172, 3018, 2592],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
 
     protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
 
-    protected activeItemIndex = this.activeItemIndexVariants[0];
+    protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         'xs',
@@ -31,5 +31,5 @@ export default class Page {
         'xl',
     ];
 
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
 }

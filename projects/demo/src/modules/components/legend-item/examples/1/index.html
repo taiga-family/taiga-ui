@@ -17,7 +17,7 @@
             [text]="label"
             (tuiHoveredChange)="onHover(index, $event)"
         >
-            <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
+            <span>{{ value[index] || 0 | tuiAmount: 'RUB' | async }}</span>
         </tui-legend-item>
     </div>
 </div>

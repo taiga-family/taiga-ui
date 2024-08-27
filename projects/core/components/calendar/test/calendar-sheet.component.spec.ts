@@ -103,12 +103,12 @@ describe('CalendarSheet', () => {
                 it('blocked date under condition', () => {
                     expect(getDisabledCalendarItems().length).toBe(1);
                     expect(
-                        getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
+                        getDisabledCalendarItems()[0]?.nativeElement.textContent.trim(),
                     ).toBe('20');
                 });
 
                 it('click on blocked date does not change value', () => {
-                    getDisabledCalendarItems()[0].nativeElement.click();
+                    getDisabledCalendarItems()[0]?.nativeElement.click();
                     fixture.detectChanges();
 
                     expect(testComponent.value).toBeNull();

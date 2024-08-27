@@ -59,7 +59,7 @@ export default class Example {
         let n = 0;
 
         while (n <= 1 && this.formData.controls[n]) {
-            this.formData.controls[n].setValidators([
+            this.formData.controls[n]?.setValidators([
                 Validators.required,
                 this.getPhoneLengthValidator(),
             ]);

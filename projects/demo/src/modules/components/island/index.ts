@@ -24,6 +24,6 @@ export default class Page {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[0];
+    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[0]!;
     protected readonly routes = DemoRoute;
 }
