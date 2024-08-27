@@ -14,7 +14,7 @@
 }
 
 ::ng-deep tui-accordion {
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-wrapper {
@@ -39,20 +39,20 @@
         }
 
         :host[data-borders='top-bottom'] & {
-            border-left-width: 0;
-            border-right-width: 0;
+            border-inline-start-width: 0;
+            border-inline-end-width: 0;
         }
 
         :host[data-borders='top'] & {
-            border-left-width: 0;
-            border-right-width: 0;
-            border-bottom-width: 0;
+            border-inline-start-width: 0;
+            border-inline-end-width: 0;
+            border-block-end-width: 0;
         }
 
         :host[data-borders='bottom'] & {
-            border-left-width: 0;
-            border-right-width: 0;
-            border-top-width: 0;
+            border-inline-start-width: 0;
+            border-inline-end-width: 0;
+            border-block-start-width: 0;
         }
     }
 }
@@ -62,16 +62,16 @@
     .transition(background);
 
     display: flex;
-    width: 100%;
+    inline-size: 100%;
     font: var(--tui-font-text-l);
     align-items: center;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--tui-border-normal);
-    min-height: var(--tui-height-l);
+    border-block-end: 1px solid var(--tui-border-normal);
+    min-block-size: var(--tui-height-l);
     padding: 0.75rem 1.25rem;
     color: var(--tui-text-primary);
     cursor: pointer;
-    text-align: left;
+    text-align: start;
     outline: none;
 
     &:focus-visible {
@@ -79,7 +79,7 @@
     }
 
     :host:not([data-borders]) & {
-        border-bottom-width: 0;
+        border-block-end-width: 0;
     }
 
     :host._has-arrow & {
@@ -92,7 +92,7 @@
 
     :host[data-size='s'] & {
         font: var(--tui-font-text-m);
-        min-height: var(--tui-height-m);
+        min-block-size: var(--tui-height-m);
         padding: 0.625rem 0.75rem 0.625rem 1rem;
     }
 

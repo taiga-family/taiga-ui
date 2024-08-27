@@ -9,8 +9,8 @@
     cursor: text;
 
     &._expandable {
-        height: auto;
-        max-height: none;
+        block-size: auto;
+        max-block-size: none;
     }
 
     &._disabled {
@@ -34,7 +34,7 @@
 .t-scrollbar {
     scroll-behavior: var(--tui-scroll-behavior);
     margin-inline-start: -0.25rem;
-    min-width: 100%;
+    min-inline-size: 100%;
 
     :host:not(._label-outside) &,
     :host._label-outside._icon-start & {
@@ -47,11 +47,11 @@
 
     // For placeholder
     :host[data-size='m']:not(._label-outside) & {
-        border-top: 1rem solid transparent;
+        border-block-start: 1rem solid transparent;
     }
 
     :host[data-size='l']:not(._label-outside) & {
-        border-top: 1.25rem solid transparent;
+        border-block-start: 1.25rem solid transparent;
     }
 }
 
@@ -64,7 +64,7 @@
     }
 
     &_empty:not(.t-with-placeholder) {
-        height: 0;
+        block-size: 0;
     }
 
     :host._expandable & {
@@ -87,29 +87,29 @@
     align-items: flex-start;
 
     :host[data-size='s'] & {
-        min-height: var(--tui-height-s);
+        min-block-size: var(--tui-height-s);
     }
 
     :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
+        min-block-size: var(--tui-height-m);
     }
 
     :host[data-size='l'] & {
-        min-height: var(--tui-height-l);
+        min-block-size: var(--tui-height-l);
     }
 }
 
 .t-icon-wrapper {
     :host[data-size='s'] & {
-        height: var(--tui-height-s);
+        block-size: var(--tui-height-s);
     }
 
     :host[data-size='m'] & {
-        height: var(--tui-height-m);
+        block-size: var(--tui-height-m);
     }
 
     :host[data-size='l'] & {
-        height: var(--tui-height-l);
+        block-size: var(--tui-height-l);
     }
 }
 
@@ -121,11 +121,11 @@
     justify-content: center;
 
     :host[data-size='m'] & {
-        height: var(--tui-height-m);
+        block-size: var(--tui-height-m);
     }
 
     :host[data-size='l'] & {
-        height: var(--tui-height-l);
+        block-size: var(--tui-height-l);
     }
 }
 
@@ -137,12 +137,12 @@
     box-sizing: border-box;
 
     :host[data-size='s'] & {
-        min-height: var(--tui-height-s);
+        min-block-size: var(--tui-height-s);
         padding: calc((var(--tui-height-s) - 1.5rem) / 2) 0;
     }
 
     :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
+        min-block-size: var(--tui-height-m);
         padding: calc((var(--tui-height-m) - var(--tui-height-xs) - 0.25rem) / 2) 0;
     }
 
@@ -163,7 +163,7 @@
     margin: @tag-vertical-space 0.5rem @tag-vertical-space -0.25rem;
     margin-inline-start: -0.25rem;
     margin-inline-end: 0.5rem;
-    max-width: 100%;
+    max-inline-size: 100%;
     flex-shrink: 0;
 
     :host[data-size='m'] & {
@@ -199,22 +199,22 @@
     position: relative;
     display: flex;
     flex: 1;
-    max-width: 100%;
+    max-inline-size: 100%;
 
     :host[data-size='s'] & {
-        min-height: 1.25rem + 2 * @tag-vertical-space;
+        min-block-size: 1.25rem + 2 * @tag-vertical-space;
     }
 
     :host[data-size='m'] & {
-        min-height: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
+        min-block-size: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
     }
 
     :host[data-size='l'] & {
-        min-height: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
+        min-block-size: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
     }
 
     :host:not(._label-outside) & {
-        min-height: 1rem;
+        min-block-size: 1rem;
     }
 }
 
@@ -233,10 +233,10 @@
     visibility: hidden;
     white-space: pre;
     text-overflow: clip;
-    min-width: 0.125rem;
+    min-inline-size: 0.125rem;
 
     :host:not(._expandable) & {
-        min-width: 2rem;
+        min-inline-size: 2rem;
     }
 }
 

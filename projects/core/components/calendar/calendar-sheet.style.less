@@ -5,7 +5,7 @@
 .picker(@itemSize);
 
 :host {
-    width: @itemSize * 7;
+    inline-size: @itemSize * 7;
 }
 
 [data-type='weekday'] {
@@ -48,8 +48,8 @@
 
 .t-dot {
     display: inline-block;
-    width: 0.25rem;
-    height: 0.25rem;
+    inline-size: 0.25rem;
+    block-size: 0.25rem;
     border-radius: 100%;
     margin: 0 0.0625rem;
 }

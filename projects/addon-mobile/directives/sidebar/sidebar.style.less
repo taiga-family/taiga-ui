@@ -10,14 +10,14 @@
         .fullsize();
 
         content: '';
-        height: 100%;
+        block-size: 100%;
         background: fade(#000, 38%);
         animation: tuiFadeIn var(--tui-duration);
     }
 
     &::before {
         left: -100%;
-        width: 200%;
+        inline-size: 200%;
     }
 
     &::after {
@@ -45,9 +45,9 @@
     flex-direction: column;
     background: var(--tui-background-base);
     box-shadow: 0 10rem var(--tui-background-base);
-    width: 17.25rem;
+    inline-size: 17.25rem;
 
     &_auto-width {
-        width: auto;
+        inline-size: auto;
     }
 }

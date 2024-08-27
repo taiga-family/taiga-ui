@@ -3,7 +3,7 @@
 tui-app-bar {
     position: relative;
     display: flex;
-    height: 3rem;
+    block-size: 3rem;
     align-items: center;
     justify-content: space-between;
     border: solid transparent;
@@ -21,8 +21,8 @@ tui-app-bar {
 
         position: absolute;
         display: flex;
-        height: 100%;
-        max-width: calc(100% - var(--t-sides, 0px));
+        block-size: 100%;
+        max-inline-size: calc(100% - var(--t-sides, 0px));
         flex-direction: column;
         justify-content: center;
         flex: 1;
@@ -54,7 +54,7 @@ tui-app-bar {
 
     &[data-size='l'] {
         border: 0;
-        height: 4rem;
+        block-size: 4rem;
 
         & > :first-child,
         & > :last-child {

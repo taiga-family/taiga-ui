@@ -5,9 +5,9 @@
 
     position: relative;
     top: 0;
-    height: var(--tui-height-m);
+    block-size: var(--tui-height-m);
     font: var(--tui-font-text-s);
-    text-align: left;
+    text-align: start;
     font-weight: bold;
     color: var(--tui-text-secondary);
     background: var(--tui-background-base);
@@ -24,7 +24,7 @@
     });
 
     &:not(:first-child) {
-        border-left: none;
+        border-inline-start: none;
     }
 
     &._sticky,
@@ -44,7 +44,7 @@
             top: 0;
             left: 100%;
             bottom: 0;
-            width: 0.3125rem;
+            inline-size: 0.3125rem;
             pointer-events: none;
             background: rgba(237, 237, 237, 0.7);
             opacity: 0;
@@ -57,18 +57,18 @@
 }
 
 :host-context(tr:not(:first-child)) {
-    border-top: none;
+    border-block-start: none;
 }
 
 :host-context(table[data-size='l']) {
-    height: var(--tui-height-l);
+    block-size: var(--tui-height-l);
     font: var(--tui-font-text-m);
     font-weight: bold;
     padding: 0 1rem;
 }
 
 :host-context(table[data-size='s']) {
-    height: var(--tui-height-s);
+    block-size: var(--tui-height-s);
     font: var(--tui-font-text-s);
     font-weight: bold;
     padding: 0 0.5rem;
@@ -141,9 +141,9 @@
     top: 0;
     bottom: 0;
     right: -1px;
-    width: 3px;
+    inline-size: 3px;
     justify-self: flex-end;
-    border-left: 2px solid transparent;
+    border-inline-start: 2px solid transparent;
     background: var(--tui-status-warning);
     background-clip: content-box;
     cursor: ew-resize;

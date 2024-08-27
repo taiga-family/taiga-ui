@@ -19,10 +19,10 @@
 
 .t-navigation {
     display: flex;
-    max-height: 100%;
-    min-height: 0;
+    max-block-size: 100%;
+    min-block-size: 0;
     flex: 1 1 0;
-    text-align: left;
+    text-align: start;
 
     tui-scrollbar {
         overscroll-behavior: none;
@@ -31,7 +31,7 @@
 
 .t-scrollbar {
     scroll-behavior: var(--tui-scroll-behavior);
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-items-container {
@@ -56,7 +56,7 @@
 
     &_bordered {
         margin: 0.5rem 0;
-        border-left: 1px solid var(--tui-border-normal);
+        border-inline-start: 1px solid var(--tui-border-normal);
     }
 }
 
@@ -95,8 +95,8 @@
 .t-chevron {
     .transition(transform);
 
-    width: 1rem;
-    height: 1rem;
+    inline-size: 1rem;
+    block-size: 1rem;
     margin: -0.25rem 0.25rem 0 -0.1875rem;
 
     &_active {

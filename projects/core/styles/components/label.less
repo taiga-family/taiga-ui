@@ -23,7 +23,7 @@
 
     &:not([data-orientation='vertical']) {
         flex-direction: row;
-        width: fit-content;
+        inline-size: fit-content;
         font: var(--tui-font-text-m);
     }
 
@@ -32,7 +32,7 @@
     &:has(tui-primitive-textfield),
     &:has(tui-textarea) {
         flex-direction: column !important;
-        width: auto !important;
+        inline-size: auto !important;
         font: var(--tui-font-text-s) !important;
     }
 

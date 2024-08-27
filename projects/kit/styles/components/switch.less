@@ -22,8 +22,8 @@
 [tuiSwitch] {
     .transition(~'background, box-shadow');
 
-    width: 3rem;
-    height: 1.5rem;
+    inline-size: 3rem;
+    block-size: 1.5rem;
     border-radius: 2rem;
     overflow: hidden;
     cursor: pointer;
@@ -32,17 +32,17 @@
     color: #fff !important;
 
     &[data-size='s'] {
-        height: 1rem;
-        width: 2rem;
+        block-size: 1rem;
+        inline-size: 2rem;
 
         &::before {
-            width: 1rem;
+            inline-size: 1rem;
             transform: translateX(-1rem);
             mask-size: 0.75rem;
         }
 
         &::after {
-            width: 1rem;
+            inline-size: 1rem;
             box-shadow: -2.625rem 0 0 0.5rem currentColor;
             outline-width: 0.167rem;
             transform: scale(0.375);
@@ -73,8 +73,8 @@
 
         content: '';
         position: absolute;
-        height: 100%;
-        width: 1.5rem;
+        block-size: 100%;
+        inline-size: 1.5rem;
     }
 
     &::before {
