@@ -1,6 +1,12 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {AsyncPipe, isPlatformServer, NgForOf, NgIf} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    PLATFORM_ID,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
@@ -21,12 +27,15 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[style.visibility]': 'isServer ? "hidden" : "visible"',
         '[class._has-filename]': 'hasFilename',
     },
 })
 export class TuiDocCode {
     private readonly icons = inject(TUI_DOC_ICONS);
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
+
+    protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
         TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
