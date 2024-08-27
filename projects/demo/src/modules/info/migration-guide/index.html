@@ -122,7 +122,65 @@
     <section>
         <h2>Troubleshooting</h2>
 
-        <tui-accordion [closeOthers]="false">
+        <tui-accordion>
+            <tui-accordion-item
+                id="unused-imports"
+                openOnRouteFragment
+            >
+                <div class="wrap">
+                    After running of migration schematics, I have a large amount of TypeScript errors
+                    <code>TS6133: &lt;entityName&gt; is declared but its value is never read.</code>
+                </div>
+
+                <div *tuiAccordionItemContent>
+                    <p>
+                        We don't include any code formatting in our schematics on purpose. Otherwise, it will
+                        drastically slow down the overall process of schematics execution. So,
+                        <strong>use well-optimized prettier/eslint rules and power of your IDEs</strong>
+                        .
+                    </p>
+
+                    <p>
+                        <u>If you are WebStorm user.</u>
+                        Just make right click on the root folder with the codebase of your recently migrated
+                        application. Choose
+                        <a
+                            href="https://blog.jetbrains.com/webstorm/2018/05/optimize-imports-in-webstorm/#optimize-all-imports"
+                            target="_blank"
+                            tuiLink
+                        >
+                            <i>"Optimize imports"</i>
+                        </a>
+                        from the context menu. It will automatically remove all unused imports across all the files in
+                        that folder.
+                    </p>
+
+                    <p>
+                        <u>If you are Visual Studio Code user.</u>
+                        Use an
+                        <a
+                            href="https://marketplace.visualstudio.com/items?itemName=bierner.folder-source-actions"
+                            target="_blank"
+                            tuiLink
+                        >
+                            Folder source actions
+                        </a>
+                        extension to trigger built-in
+                        <a
+                            href="https://code.visualstudio.com/docs/languages/javascript#_organize-imports"
+                            target="_blank"
+                            tuiLink
+                        >
+                            <i>Organize Imports</i>
+                        </a>
+                        action in all files recursively in the root folder with the codebase of your recently migrated
+                        application.
+                    </p>
+                </div>
+            </tui-accordion-item>
+        </tui-accordion>
+
+        <tui-accordion>
             <tui-accordion-item
                 id="manual-install-transitive-peer-deps"
                 openOnRouteFragment
@@ -178,7 +236,9 @@
                     </p>
                 </div>
             </tui-accordion-item>
+        </tui-accordion>
 
+        <tui-accordion>
             <tui-accordion-item
                 id="nx-legacy-peer-deps-bug"
                 openOnRouteFragment
@@ -220,7 +280,9 @@
                     />
                 </div>
             </tui-accordion-item>
+        </tui-accordion>
 
+        <tui-accordion>
             <tui-accordion-item
                 id="manual-run-schematics"
                 openOnRouteFragment
