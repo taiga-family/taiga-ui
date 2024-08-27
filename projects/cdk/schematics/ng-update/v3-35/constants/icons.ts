@@ -1852,11 +1852,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: 'tuiIconSort',
     },
     {
-        to: 'tuiIconTdsArrowSortDownSmallPragmatic',
+        to: 'tuiIconTdsSortDownSmallPragmatic',
         from: 'tuiIconSortAscending',
     },
     {
-        to: 'tuiIconTdsArrowSortUpSmallPragmatic',
+        to: 'tuiIconTdsSortUpSmallPragmatic',
         from: 'tuiIconSortDescending',
     },
     {
@@ -1864,7 +1864,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: 'tuiIconSortDown',
     },
     {
-        to: 'tuiIconTdsArrowSortDownSmallPragmatic',
+        to: 'tuiIconTdsSortDownSmallPragmatic',
         from: 'tuiIconSortDown2',
     },
     {
@@ -1876,7 +1876,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: 'tuiIconSortUp',
     },
     {
-        to: 'tuiIconTdsArrowSortUpSmallPragmatic',
+        to: 'tuiIconTdsSortUpSmallPragmatic',
         from: 'tuiIconSortUp2',
     },
     {
