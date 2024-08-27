@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.4.1](https://github.com/taiga-family/taiga-ui/compare/v4.3.0...v4.4.1) (2024-08-27)
+
+### 🚀 Features
+
+- **core:** `TUI_DARK_MODE` add new token ([#8657](https://github.com/taiga-family/taiga-ui/issues/8657))
+  ([f409942](https://github.com/taiga-family/taiga-ui/commit/f409942f3cb21fa8dc66fe59e4dcbe316fc045c9))
+- **icons:** drop useless comments inside svg file ([#8660](https://github.com/taiga-family/taiga-ui/issues/8660))
+  ([327f470](https://github.com/taiga-family/taiga-ui/commit/327f4700ee0628a6cadb2e1deba35287ca8e83fe))
+- **kit:** `CalendarRange` add `item` property for correctly switch value outside
+  ([#8617](https://github.com/taiga-family/taiga-ui/issues/8617))
+  ([39e3419](https://github.com/taiga-family/taiga-ui/commit/39e3419b1f03176770f49ebd03118a2c067546a1))
+- **kit:** `IconBadge` add new directive ([#8667](https://github.com/taiga-family/taiga-ui/issues/8667))
+  ([1d2c286](https://github.com/taiga-family/taiga-ui/commit/1d2c28614407307801fdb1e0c63b4896b86471d1))
+- **layout:** `Search` add new component ([#8648](https://github.com/taiga-family/taiga-ui/issues/8648))
+  ([8cb50c0](https://github.com/taiga-family/taiga-ui/commit/8cb50c024bbfeda2b691c170cecef80c9cc46e7d))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `PullToRefresh` fix scroll ref ([#8684](https://github.com/taiga-family/taiga-ui/issues/8684))
+  ([c9eef96](https://github.com/taiga-family/taiga-ui/commit/c9eef96273244c069c12bc512c888aadcc152a45))
+- **cdk:** `ActiveZone` do not exit zone when scrollable container becomes non-scrollable
+  ([#8631](https://github.com/taiga-family/taiga-ui/issues/8631))
+  ([#8653](https://github.com/taiga-family/taiga-ui/issues/8653))
+  ([b796d0d](https://github.com/taiga-family/taiga-ui/commit/b796d0d761e7fac064479da128a221a4b896885e))
+- **cdk:** `schematics` fix bad import ([#8696](https://github.com/taiga-family/taiga-ui/issues/8696))
+  ([c46899e](https://github.com/taiga-family/taiga-ui/commit/c46899e812f3354937fc5c8495a324f8fbafefca))
+- **kit:** `ButtonClose` fix icon ([#8659](https://github.com/taiga-family/taiga-ui/issues/8659))
+  ([7287016](https://github.com/taiga-family/taiga-ui/commit/728701659554f263e5f5baafc1f2bb012da7494a))
+- **kit:** `CalendarRange` delete code for `availableRange` property
+  ([#8688](https://github.com/taiga-family/taiga-ui/issues/8688))
+  ([18d9b07](https://github.com/taiga-family/taiga-ui/commit/18d9b0790be9fb66f0d6a8c81846a3b0f65bb7c0))
+- **kit:** `Tiles` fix reorder issue ([#8663](https://github.com/taiga-family/taiga-ui/issues/8663))
+  ([9ea0162](https://github.com/taiga-family/taiga-ui/commit/9ea0162c3a7371c50d390e9718b2a175ad30c001))
+- **legacy:** `Textarea` use balance text-wrap in safari ([#8666](https://github.com/taiga-family/taiga-ui/issues/8666))
+  ([cbaac1b](https://github.com/taiga-family/taiga-ui/commit/cbaac1b1c87b884cb692f979b44094ebb583ef1a))
+- **legacy:** invalid css variable ([#8619](https://github.com/taiga-family/taiga-ui/issues/8619))
+  ([4fa7631](https://github.com/taiga-family/taiga-ui/commit/4fa7631a81842abe7c47e3b8212a16121399d4c4))
+
 ## [4.4.0](https://github.com/taiga-family/taiga-ui/compare/v4.3.0...v4.4.0) (2024-08-26)
 
 ### 🐞 Bug Fixes
