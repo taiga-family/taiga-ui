@@ -51,7 +51,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     private selectedPeriod: TuiDayRangePeriod | null = null;
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly cdr = inject(ChangeDetectorRef);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
@@ -94,7 +93,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
-            ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed())
+            ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe((value) => {
                 this.value = value;
             });
