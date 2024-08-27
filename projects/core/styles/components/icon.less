@@ -34,7 +34,8 @@ tui-icon {
 
         content: '';
         display: block;
-        mask: var(--t-icon) no-repeat center/contain intersect;
+        mask: var(--t-icon) no-repeat center/contain;
+        mask-composite: intersect;
         background: currentColor;
     }
 }
