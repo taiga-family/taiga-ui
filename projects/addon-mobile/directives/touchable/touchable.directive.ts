@@ -13,9 +13,7 @@ const STYLE = {
 
 export function tuiFindTouchIndex(touches: TouchList, id: number): number {
     for (let i = 0; i < touches.length; i++) {
-        const {identifier} = touches[i];
-
-        if (identifier === id) {
+        if (touches[i]?.identifier === id) {
             return i;
         }
     }
@@ -42,12 +40,12 @@ export class TuiTouchable {
         tuiTypedFromEvent(this.el, 'touchstart', {passive: true})
             .pipe(
                 tap(() => this.onTouchStart()),
-                map(({touches}) => touches[touches.length - 1].identifier),
+                map(({touches}) => touches[touches.length - 1]?.identifier),
                 switchMap((identifier) =>
                     race(
                         tuiTypedFromEvent(this.el, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>
-                                this.hasTouchLeft(this.el, touches, identifier),
+                                this.hasTouchLeft(this.el, touches, identifier ?? 0),
                             ),
                         ),
                         tuiTypedFromEvent(this.el, 'touchend'),
@@ -78,7 +76,7 @@ export class TuiTouchable {
             return true;
         }
 
-        const {clientX, clientY} = touches[id];
+        const {clientX = 0, clientY = 0} = touches[id] ?? {};
 
         return !element.contains(ownerDocument.elementFromPoint(clientX, clientY));
     }
