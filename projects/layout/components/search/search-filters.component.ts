@@ -69,9 +69,11 @@ export class TuiSearchFiltersComponent implements AfterContentInit {
 
     protected readonly overflown = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
-            map(([{contentRect}]) =>
-                Math.floor((contentRect.width - this.more) / WIDTH / this.unit),
-            ),
+            map((entry) => {
+                const width = entry[0]?.contentRect.width ?? 0;
+
+                return Math.floor((width - this.more) / WIDTH / this.unit);
+            }),
             distinctUntilChanged(),
             tuiZonefull(inject(NgZone)),
         ),
