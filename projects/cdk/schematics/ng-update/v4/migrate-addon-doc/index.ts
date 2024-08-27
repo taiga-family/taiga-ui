@@ -1,6 +1,5 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
-import {renameTypes, replaceIdentifiers} from '@taiga-ui/cdk/schematics/ng-update/steps';
 import {getPackageJsonDependency, getSourceFiles, saveActiveProject} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
@@ -12,6 +11,7 @@ import {
     SMALL_TAB_SYMBOL,
     titleLog,
 } from '../../../utils/colored-log';
+import {renameTypes, replaceIdentifiers} from '../../steps';
 import {removeModules} from '../../steps/remove-module';
 import {getFileSystem} from '../../utils/get-file-system';
 import {DOC_SYMBOLS_TO_REPLACE} from './replace-symbols';
