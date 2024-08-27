@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49060],{49060:n=>{n.exports=".description {\n    display: flex;\n    justify-content: space-between;\n\n    & > *:first-child {\n        text-align: start;\n    }\n\n    & > *:last-child {\n        text-align: end;\n    }\n\n    [tuiSubtitle] {\n        color: var(--tui-text-secondary);\n    }\n}\n"}}]);
