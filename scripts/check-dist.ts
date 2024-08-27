@@ -1,4 +1,4 @@
-import * as path from 'node:path';
+import {resolve} from 'node:path';
 import * as process from 'node:process';
 
 import {getValueByFlag, hasFlag} from './shared/argv.utils';
@@ -7,17 +7,21 @@ import {checkIncorrectImports} from './shared/check-incorrect-imports';
 import {checkPrivateExports} from './shared/check-private-exports';
 import {checkRequireWithSrc} from './shared/check-require-with-src';
 
-const pathToSearch = path.resolve(getValueByFlag('--path', './dist'));
-
 (async function main(): Promise<void> {
+    const path = resolve(getValueByFlag('--path', './dist'));
+
     try {
         await Promise.all([
-            checkIncorrectImports(pathToSearch),
-            checkImportWithSrc(pathToSearch),
+            checkIncorrectImports(path),
+            checkImportWithSrc(path),
             hasFlag('--skip-check-private-exports')
                 ? Promise.resolve()
-                : checkPrivateExports(pathToSearch),
-            checkRequireWithSrc(pathToSearch),
+                : checkPrivateExports(path),
+            checkRequireWithSrc(path),
+            checkIncorrectImports(
+                resolve(path, 'cdk/schematics'),
+                '@taiga-ui/cdk/schematics',
+            ),
         ]);
     } catch (error) {
         console.error(error);
