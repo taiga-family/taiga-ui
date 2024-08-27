@@ -12,17 +12,12 @@ on:
           - minor
           - prerelease
           - major
-      dryRun:
-        type: boolean
-        required: false
-        description: --dry-run
 
 jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
     env:
-      IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.71.2
@@ -37,11 +32,7 @@ jobs:
       - name: Run release
         id: run-release
         run: |
-          npx ts-node ./scripts/release.ts \
-                --ci-mode \
-                --release-as ${{ github.event.inputs.mode }} \
-                --dry-run ${{ github.event.inputs.dryRun }}
-
+          npx ts-node ./scripts/release.ts --ci-mode --release-as ${{ github.event.inputs.mode }}
           echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Generate Release Body
@@ -60,20 +51,8 @@ jobs:
           echo "$body" >> $GITHUB_OUTPUT
           echo "$delimiter" >> $GITHUB_OUTPUT
 
-      - name: Debug body of pull request in dry mode
-        if: ${{ env.IS_DRY_MODE == 'true' }}
-        run: echo "${{ steps.get-pr-body.outputs.body }}"
-
-      - name: Debug variables
-        if: ${{ env.IS_DRY_MODE == 'true' }}
-        run: |
-          echo "${{ steps.generate_body.outputs.tag_name }}"
-          echo "release/${{ steps.run-release.outputs.new_version }}"
-          echo "${{ steps.get-pr-body.outputs.body }}"
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
-        if: ${{ env.IS_DRY_MODE == 'false' }}
         with:
           delete-branch: true
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
@@ -91,7 +70,7 @@ jobs:
             > points to not-existing commit.
 
       - name: Create GitHub Release
-        if: ${{ env.IS_DRY_MODE == 'false' && env.IS_RRE_RELEASE_MODE == 'false' }}
+        if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
         uses: ncipollo/release-action@v1.14.0
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
@@ -100,8 +79,7 @@ jobs:
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push release candidate tag
-        if: ${{ env.IS_RRE_RELEASE_MODE == 'true' }}
+      - name: Push tag
         run: git push origin tag v${{ steps.run-release.outputs.new_version }} || echo ""
 
 concurrency:
