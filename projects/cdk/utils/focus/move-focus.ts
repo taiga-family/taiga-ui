@@ -15,7 +15,7 @@ export function tuiMoveFocus(
     currentIndex += step;
 
     while (currentIndex >= 0 && currentIndex < elements.length) {
-        elements[currentIndex].focus();
+        elements[currentIndex]?.focus();
 
         if (tuiIsNativeFocused(elements[currentIndex])) {
             return;

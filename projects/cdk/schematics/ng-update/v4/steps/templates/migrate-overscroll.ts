@@ -46,7 +46,11 @@ export function migrateOverscroll({
             );
     });
 
-    addTodo(recorder, elements[0].sourceCodeLocation as ElementLocation, templateOffset);
+    const element = elements[0]?.sourceCodeLocation as ElementLocation | undefined;
+
+    if (element) {
+        addTodo(recorder, element, templateOffset);
+    }
 }
 
 function addTodo(

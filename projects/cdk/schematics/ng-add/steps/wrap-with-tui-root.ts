@@ -53,9 +53,16 @@ function getAppTemplatePath(mainPath: string): string {
 
     if (standaloneBootstrapFunction) {
         const [componentIdentifier] = standaloneBootstrapFunction.getArguments();
-        const component = getComponentFromIdentifier(componentIdentifier);
 
-        return (component && getTemplatePathFromComponent(component)) || '';
+        if (componentIdentifier) {
+            const component = getComponentFromIdentifier(componentIdentifier);
+
+            if (component) {
+                return getTemplatePathFromComponent(component);
+            }
+        }
+
+        return '';
     }
 
     const mainModule = getMainModule(mainPath);

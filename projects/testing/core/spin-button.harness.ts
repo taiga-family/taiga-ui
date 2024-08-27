@@ -6,10 +6,16 @@ export class TuiSpinButtonHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-spin-button';
 
     public async isLeftDisabled(): Promise<boolean> {
-        return (await this.locatorForAll(TuiButtonHarness)())[0].hasClass('t-hidden');
+        return (
+            (await this.locatorForAll(TuiButtonHarness)())[0]?.hasClass('t-hidden') ??
+            false
+        );
     }
 
     public async isRightDisabled(): Promise<boolean> {
-        return (await this.locatorForAll(TuiButtonHarness)())[1].hasClass('t-hidden');
+        return (
+            (await this.locatorForAll(TuiButtonHarness)())[1]?.hasClass('t-hidden') ??
+            false
+        );
     }
 }

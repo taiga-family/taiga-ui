@@ -139,7 +139,7 @@ export class TuiDocNavigation {
     }
 
     protected get itemsWithoutSections(): TuiDocRoutePages {
-        return this.items[this.items.length - 1];
+        return this.items[this.items.length - 1] ?? [];
     }
 
     protected $pages(pages: any): readonly TuiDocRoutePage[] {

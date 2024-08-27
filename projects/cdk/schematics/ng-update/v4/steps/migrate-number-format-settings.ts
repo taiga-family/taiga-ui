@@ -21,7 +21,7 @@ const OPTIONS_MIGRATIONS: Record<
         const [, propertyValue] = property.getText().split(/\s?:\s?/);
 
         property.replaceWithText(
-            propertyValue.match(/^['"`]never['"`]$/)
+            propertyValue?.match(/^['"`]never['"`]$/)
                 ? 'precision: 0'
                 : property.getText().replace('decimal', 'decimalMode'),
         );

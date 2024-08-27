@@ -18,12 +18,14 @@ export function addUniqueImport(
         moduleSpecifier,
     });
 
-    if (existingDeclaration.length) {
-        const modules = existingDeclaration[0]
+    const imports = existingDeclaration?.[0];
+
+    if (imports) {
+        const modules = imports
             .getNamedImports()
             .map((namedImport) => namedImport.getText());
 
-        editImports(existingDeclaration[0], () => ({
+        editImports(imports, () => ({
             namedImports: [...modules, namedImport],
             isTypeOnly: false,
         }));
