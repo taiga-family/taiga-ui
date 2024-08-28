@@ -1,6 +1,6 @@
 import type {AfterViewInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
@@ -17,11 +17,11 @@ export class TuiSheetHeadingComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly id = inject(TuiIdService).generate();
+    protected readonly autoId = tuiInjectId();
 
     public ngAfterViewInit(): void {
         this.el.dispatchEvent(
-            new CustomEvent(TUI_SHEET_ID, {bubbles: true, detail: this.id}),
+            new CustomEvent(TUI_SHEET_ID, {bubbles: true, detail: this.autoId}),
         );
     }
 
