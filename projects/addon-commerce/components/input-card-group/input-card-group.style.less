@@ -110,6 +110,15 @@
     font: var(--tui-font-text-s);
     color: var(--tui-text-primary);
 
+    &:not(&_inert):-webkit-autofill,
+    &:not(&_inert):-webkit-autofill:hover,
+    &:not(&_inert):-webkit-autofill:focus {
+        -webkit-text-fill-color: var(--tui-text-primary);
+        caret-color: var(--tui-text-primary);
+        border-color: var(--tui-service-autofill-background);
+        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset;
+    }
+
     &::placeholder {
         color: var(--tui-text-tertiary);
     }
@@ -174,6 +183,8 @@
     .transition(all);
     .text-overflow();
 
+    position: sticky;
+    z-index: 1; // prevent overview autofill shadow
     margin: 1.125rem 1rem;
     font: var(--tui-font-text-m);
     line-height: 1.25rem;
