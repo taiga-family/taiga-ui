@@ -98,6 +98,10 @@ export const DOC_SYMBOLS_TO_REPLACE: ReplacementIdentifierMulti[] = [
                 name: 'TuiAddonDocModule',
                 moduleSpecifier: '@taiga-ui/addon-doc',
             },
+            {
+                name: 'TuiDocExampleModule',
+                moduleSpecifier: '@taiga-ui/addon-doc',
+            },
         ],
         to: {
             name: 'TuiAddonDoc',
