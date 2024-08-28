@@ -7,9 +7,9 @@ jobs:
   label-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.67.3
-      - uses: taiga-family/ci/actions/setup/variables@v1.67.3
-      - uses: taiga-family/ci/actions/run/node-info@v1.67.3
+      - uses: taiga-family/ci/actions/setup/checkout@v1.71.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.71.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.71.0
         id: nodejs-workspace
       - uses: actions-ecosystem/action-add-labels@v1
         continue-on-error: true
