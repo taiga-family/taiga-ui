@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import type {ValidatorFn} from '@angular/forms';
 import {FormsModule, NgControl, Validators} from '@angular/forms';
-import {TuiIdService} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {
     EMPTY_QUERY,
@@ -18,6 +17,7 @@ import {
     TUI_FALSE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
+import {TuiIdService} from '@taiga-ui/cdk/services';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
