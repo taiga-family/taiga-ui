@@ -1,8 +1,6 @@
-import type {AfterViewChecked} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
     inject,
     Input,
     ViewChild,
@@ -35,10 +33,7 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {
-    TuiCalendarRange,
-    type TuiDayRangePeriod,
-} from '@taiga-ui/kit/components/calendar-range';
+import {type TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
 import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -79,13 +74,10 @@ import {map} from 'rxjs';
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
-    implements TuiFocusableElementAccessor, AfterViewChecked
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    @ViewChild(forwardRef(() => TuiCalendarRange))
-    private readonly calendarRange?: TuiCalendarRange;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
@@ -174,16 +166,6 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    // TODO: remove this after refactor controls to hold whole TuiDayRangePeriod
-    public ngAfterViewChecked(): void {
-        if (this.calendarRange) {
-            // @ts-ignore
-            this.calendarRange.selectedActivePeriod = this.selectedActivePeriod;
-            // @ts-ignore
-            this.calendarRange.cdr.markForCheck();
-        }
-    }
-
     public onValueChange(value: string): void {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
@@ -212,8 +194,6 @@ export class TuiInputDateRangeComponent
         }
 
         this.value = range;
-        // @ts-ignore
-        this.selectedActivePeriod = this.calendarRange?.selectedActivePeriod ?? null;
     }
 
     public override writeValue(value: TuiDayRange | null): void {
