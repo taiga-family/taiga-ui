@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import type {QueryList} from '@angular/core';
+import {inject, type QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import type {ValidatorFn} from '@angular/forms';
 import {FormsModule, NgControl, Validators} from '@angular/forms';
+import {TuiIdService} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {
     EMPTY_QUERY,
@@ -50,6 +51,8 @@ export class TuiRadioList<T> extends TuiControl<T> {
     @ViewChildren(NgControl)
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
+    private readonly id = inject(TuiIdService).generate();
+
     protected validator = computed(() =>
         this.invalid() ? ERROR : Validators.nullValidator,
     );
@@ -71,7 +74,7 @@ export class TuiRadioList<T> extends TuiControl<T> {
         String($implicit);
 
     protected get name(): string {
-        return this.control.name?.toString() || '';
+        return `${this.control.name}-${this.id}`;
     }
 
     protected onFocusOut(): void {
