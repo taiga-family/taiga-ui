@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
@@ -23,7 +23,7 @@ export class TuiScrollControls {
 
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly refresh$ = inject(WA_ANIMATION_FRAME).pipe(
-        throttleTime(300),
+        throttleTime(300, tuiZonefreeScheduler()),
         map(() => this.scrollbars),
         startWith([false, false]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
