@@ -1,10 +1,38 @@
+<!-- Ignore this part, it is only here to position drawer inside the example block -->
+<div class="custom-portal"><ng-container #viewContainer /></div>
 <header tuiNavigationHeader>
     <button
-        appearance="secondary"
-        iconStart="@tui.layout-grid"
+        title="Menu"
+        tuiDrawer
         tuiIconButton
+        [(open)]="open"
     >
-        Menu
+        <tui-data-list>
+            <tui-opt-group
+                *ngFor="let group of drawer | keyvalue"
+                [label]="group.key"
+            >
+                <button
+                    *ngFor="let item of group.value"
+                    tuiOption
+                    (click)="open = false"
+                >
+                    <img [src]="item.icon" />
+                    {{ item.name }}
+                </button>
+            </tui-opt-group>
+            <tui-opt-group>
+                <label tuiOption>
+                    <input
+                        size="s"
+                        tuiSwitch
+                        type="checkbox"
+                        [(ngModel)]="switch"
+                    />
+                    Dark mode
+                </label>
+            </tui-opt-group>
+        </tui-data-list>
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
