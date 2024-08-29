@@ -53,6 +53,7 @@ export const TUI_USED_ICONS = [
     '@tui.plus',
     '@tui.minimize',
     '@tui.filter',
+    '@tui.layout-grid',
     '@tui.move-up-right',
     '@tui.move-right',
     '@tui.move-down-right',
