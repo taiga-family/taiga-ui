@@ -3,8 +3,8 @@
 :host {
     position: relative;
     display: block;
-    width: 22.5rem;
-    max-width: 100%;
+    inline-size: 22.5rem;
+    max-inline-size: 100%;
     box-sizing: border-box;
     padding: 1.25rem 1.25rem 0.25rem;
     overflow: hidden;
@@ -17,7 +17,7 @@
 .t-image {
     display: flex;
     flex-direction: column;
-    max-height: 10.625rem;
+    max-block-size: 10.625rem;
     overflow: hidden;
     margin: -1.25rem -1.25rem 1.25rem;
 }
@@ -39,7 +39,7 @@
 }
 
 .t-icon {
-    height: 1.25rem;
+    block-size: 1.25rem;
     margin-right: 0.5rem;
     transform: scale(0.833);
     transform-origin: top left;
@@ -49,7 +49,7 @@
 .t-time::before {
     content: '•';
     display: inline-block;
-    width: 1rem;
+    inline-size: 1rem;
     text-align: center;
 }
 

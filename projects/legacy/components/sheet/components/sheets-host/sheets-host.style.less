@@ -4,7 +4,7 @@
     position: sticky;
     bottom: 0;
     display: block;
-    height: 0;
+    block-size: 0;
 }
 
 .t-overlay {
@@ -12,7 +12,7 @@
     .fullsize(fixed);
 
     z-index: -1;
-    height: 100%;
+    block-size: 100%;
     background: #000;
     opacity: 0.001; // Safari stops scroll if transitioning from 0
     pointer-events: none;
@@ -28,9 +28,9 @@
     position: absolute;
     bottom: 0;
     z-index: 0;
-    width: 100%;
+    inline-size: 100%;
     /* stylelint-disable-next-line */
-    height: 100vh;
+    block-size: 100vh;
     overflow: hidden;
 
     &_visible {

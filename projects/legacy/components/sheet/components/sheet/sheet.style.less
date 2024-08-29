@@ -29,7 +29,7 @@
 
 .t-bumpers {
     display: flex;
-    height: 100%;
+    block-size: 100%;
 
     :host-context(.t-wrapper_closeable) & {
         scroll-snap-stop: always;
@@ -41,8 +41,8 @@
 .t-bumper {
     scroll-snap-stop: always;
     scroll-snap-align: start;
-    height: 1rem;
-    width: 1rem;
+    block-size: 1rem;
+    inline-size: 1rem;
 }
 
 .t-wrapper {
@@ -76,7 +76,7 @@
 
 .t-image {
     display: block;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-sheet {
@@ -97,7 +97,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    height: 1.5rem;
+    block-size: 1.5rem;
     margin-bottom: -1.5rem;
     border-radius: inherit;
     background: var(--tui-background-elevation-1);
@@ -107,8 +107,8 @@
 .t-button {
     position: absolute;
     top: 0;
-    height: 1.5rem;
-    width: 3rem;
+    block-size: 1.5rem;
+    inline-size: 3rem;
     padding: 0;
     border: 0;
     opacity: 0;

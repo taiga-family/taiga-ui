@@ -11,7 +11,7 @@
 }
 
 .t-tabs {
-    height: inherit;
+    block-size: inherit;
     font: inherit;
     overflow: visible;
     box-shadow: none;
@@ -24,8 +24,8 @@
 
 .t-overflown {
     margin: 0;
-    width: 0;
-    max-width: 0;
+    inline-size: 0;
+    max-inline-size: 0;
     overflow: hidden;
     visibility: hidden;
 }
@@ -46,8 +46,8 @@
 
     /* stylelint-disable */
     ::ng-deep *[tuiTab] {
-        width: calc(100% - 0.75rem);
-        height: 2.75rem;
+        inline-size: calc(100% - 0.75rem);
+        block-size: 2.75rem;
         justify-content: flex-start;
         margin: 0.125rem 0.375rem;
         padding: 0 0.625rem;
@@ -70,7 +70,7 @@
     }
 
     &[data-size='m'] ::ng-deep *[tuiTab] {
-        height: 2.25rem;
+        block-size: 2.25rem;
         font: var(--tui-font-text-s);
     }
     /* stylelint-enable */

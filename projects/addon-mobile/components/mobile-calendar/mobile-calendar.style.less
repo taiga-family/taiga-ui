@@ -7,7 +7,7 @@
 
 :host {
     display: block;
-    height: 100%;
+    block-size: 100%;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     color: var(--tui-text-primary);
     -webkit-tap-highlight-color: transparent;
@@ -17,21 +17,21 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 3.5rem;
+    block-size: 3.5rem;
     padding: 0 1rem;
     // TODO: research if it can be used in rem units
     /* stylelint-disable-next-line */
     border-bottom: 0.5px solid @border;
 
     :host._ios & {
-        height: 2.75rem;
+        block-size: 2.75rem;
         border-bottom: none;
     }
 }
 
 .t-close {
-    width: 1.5rem;
-    height: 1.5rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
     margin-right: 2rem;
 
     :host._ios & {
@@ -53,7 +53,7 @@
     }
 
     :host._ios & {
-        min-width: 3.75rem;
+        min-inline-size: 3.75rem;
         text-align: end;
         font-size: 0.9375rem;
         line-height: 1.125rem;
@@ -95,7 +95,7 @@
 .t-years {
     .scrollbar-hidden();
 
-    height: 4.0625rem;
+    block-size: 4.0625rem;
     background-color: @background;
     // TODO: research if it can be used in rem units
     /* stylelint-disable-next-line */
@@ -108,7 +108,7 @@
 
 .t-years-wrapper {
     display: flex;
-    height: 4.0625rem;
+    block-size: 4.0625rem;
 }
 
 .t-year {
@@ -117,7 +117,7 @@
     outline: none;
     // TODO: investigate problem in mobile calendar
     /* stylelint-disable-next-line */
-    width: 20vw;
+    inline-size: 20vw;
     flex-shrink: 0;
     font-size: 0.9375rem;
     font-weight: 700;
@@ -145,14 +145,14 @@
 .t-week {
     display: flex;
     align-items: center;
-    height: 1.875rem;
-    width: 20.75rem;
-    max-width: 100%;
+    block-size: 1.875rem;
+    inline-size: 20.75rem;
+    max-inline-size: 100%;
     margin: 0 auto;
     font-size: 0.75rem;
 
     :host._ios & {
-        width: 22.625rem;
+        inline-size: 22.625rem;
         font-size: 0.6875rem;
         font-weight: 500;
         color: @secondary;
@@ -167,12 +167,12 @@
 .t-months {
     .scrollbar-hidden();
 
-    height: ~'calc(100% - 9.5rem)';
+    block-size: ~'calc(100% - 9.5rem)';
     box-shadow: 0 -1px @border;
     overflow-x: hidden;
 
     :host._ios & {
-        height: ~'calc(100% - 8.75rem)';
+        block-size: ~'calc(100% - 8.75rem)';
     }
 }
 
@@ -181,7 +181,7 @@
 }
 
 .t-month {
-    height: 2.75rem;
+    block-size: 2.75rem;
     line-height: 2.75rem;
     padding-left: 1rem;
     font-size: 0.875rem;
@@ -194,7 +194,7 @@
     border-bottom: 0.5px solid @border;
 
     :host._ios & {
-        height: 3.125rem;
+        block-size: 3.125rem;
         margin: 0;
         border-bottom: none;
         text-transform: none;

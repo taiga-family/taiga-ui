@@ -38,8 +38,8 @@
     left: 0;
 
     & when (@mode = height) {
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
     }
 
     & when (@mode = inset) {
@@ -69,7 +69,7 @@
     white-space: nowrap;
     overflow: hidden;
     vertical-align: middle;
-    max-width: 100%;
+    max-inline-size: 100%;
     gap: calc(var(--t-gap, var(--t-0, 0rem)) - 2 * var(--t-margin, 0rem));
 
     > img,
@@ -123,8 +123,8 @@
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
+    block-size: 1px;
+    inline-size: 1px;
     margin: -1px;
     overflow: hidden;
     padding: 0;

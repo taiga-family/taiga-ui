@@ -3,12 +3,12 @@
     flex: 1;
     gap: inherit;
     justify-content: flex-end;
-    min-width: 0;
+    min-inline-size: 0;
 }
 
 .t-rem {
     position: absolute;
-    width: 1rem;
+    inline-size: 1rem;
 }
 
 .t-button {
@@ -20,8 +20,8 @@
         top: 0.25rem;
         right: 0.25rem;
         display: block;
-        width: 0.625rem;
-        height: 0.625rem;
+        inline-size: 0.625rem;
+        block-size: 0.625rem;
         background: var(--tui-status-warning);
         transform: translate(50%, -50%);
         border-radius: 100%;
@@ -31,8 +31,8 @@
 
 .t-form {
     display: flex;
-    min-width: 25.5rem;
-    max-width: 33rem;
+    min-inline-size: 25.5rem;
+    max-inline-size: 33rem;
     flex-direction: column;
     gap: 0.75rem;
     padding: 0 1.5rem 1.5rem;

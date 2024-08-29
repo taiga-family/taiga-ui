@@ -11,7 +11,7 @@ search[tuiSearch] {
             align-items: center;
             flex-wrap: wrap;
             gap: inherit;
-            min-width: 0;
+            min-inline-size: 0;
             padding: 0;
             margin: 0;
             border: 0;
@@ -19,23 +19,23 @@ search[tuiSearch] {
         }
 
         tui-items-with-more {
-            min-width: 0;
+            min-inline-size: 0;
             flex: 1;
         }
 
         tui-textfield {
             flex: 1;
-            min-width: 11.25rem;
-            max-width: 22.5rem;
+            min-inline-size: 11.25rem;
+            max-inline-size: 22.5rem;
 
             &:first-child {
-                max-width: unset;
+                max-inline-size: unset;
             }
         }
 
         hr {
-            width: 1px;
-            height: 1rem;
+            inline-size: 1px;
+            block-size: 1rem;
             background: var(--tui-border-normal);
         }
 

@@ -19,7 +19,7 @@ tui-dropdown-mobile:not(._sheet) {
     &::after {
         content: '';
         display: block;
-        height: 1px;
+        block-size: 1px;
     }
 
     > .t-container {
@@ -27,7 +27,7 @@ tui-dropdown-mobile:not(._sheet) {
 
         position: sticky;
         top: 0;
-        height: 100%;
+        block-size: 100%;
         overflow: auto;
         margin: 0 0.75rem;
         touch-action: pan-y !important;
@@ -54,14 +54,14 @@ tui-dropdown-mobile._sheet {
     overscroll-behavior: none;
 
     > .t-filler {
-        height: 100%;
+        block-size: 100%;
         scroll-snap-stop: always;
         scroll-snap-align: start;
     }
 
     > .t-container {
         display: flex;
-        max-height: calc(100% - 1rem);
+        max-block-size: calc(100% - 1rem);
         flex-direction: column;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
@@ -81,8 +81,8 @@ tui-dropdown-mobile._sheet {
                 position: absolute;
                 left: 50%;
                 top: 0.75rem;
-                width: 2rem;
-                height: 0.25rem;
+                inline-size: 2rem;
+                block-size: 0.25rem;
                 border-radius: 1rem;
                 background: var(--tui-background-neutral-2);
                 transform: translate(-50%, -50%);

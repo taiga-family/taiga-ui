@@ -3,9 +3,9 @@
     display: block;
     text-align: start;
     border-radius: var(--tui-radius-m);
-    height: var(--tui-height);
-    min-height: var(--tui-height);
-    max-height: var(--tui-height);
+    block-size: var(--tui-height);
+    min-block-size: var(--tui-height);
+    max-block-size: var(--tui-height);
 
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
@@ -29,8 +29,8 @@
 
 .textfield-content() {
     display: flex;
-    height: 100%;
-    width: 100%;
+    block-size: 100%;
+    inline-size: 100%;
     box-sizing: border-box;
     align-items: center;
     overflow: hidden;
@@ -167,7 +167,7 @@
 
 .textfield-wrapper() {
     flex: 1;
-    min-width: 0;
+    min-inline-size: 0;
     padding-inline-end: 0.25rem;
 }
 
@@ -182,7 +182,7 @@
     });
 
     display: block;
-    width: 100%;
+    inline-size: 100%;
     user-select: none;
     font: var(--tui-font-text-s);
     color: var(--tui-text-secondary);
@@ -230,8 +230,8 @@
 .input-icon() {
     position: relative;
     display: flex;
-    width: 1.5rem;
-    height: 1.5rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;

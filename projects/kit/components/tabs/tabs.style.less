@@ -90,11 +90,11 @@ tui-tabs {
     isolation: isolate;
 
     &[data-size='l']:not([data-vertical]) {
-        height: var(--tui-height-l);
+        block-size: var(--tui-height-l);
     }
 
     &[data-size='m']:not([data-vertical]) {
-        height: var(--tui-height-m);
+        block-size: var(--tui-height-m);
     }
 
     &::before {
@@ -103,8 +103,8 @@ tui-tabs {
         position: absolute;
         left: var(--t-left);
         bottom: 0;
-        height: 2px;
-        width: var(--t-width);
+        block-size: 2px;
+        inline-size: var(--t-width);
         background: var(--t-color);
         animation: tuiPresent 1ms;
     }
@@ -120,8 +120,8 @@ tui-tabs[data-vertical],
     box-shadow: inset -1px 0 var(--tui-border-normal);
 
     [tuiTab] {
-        min-height: 2.75rem;
-        height: auto;
+        min-block-size: 2.75rem;
+        block-size: auto;
         white-space: normal;
         margin: 0;
         text-align: start;
@@ -135,8 +135,8 @@ tui-tabs[data-vertical],
             top: 0;
             right: 0;
             display: block;
-            height: 100%;
-            width: 2px;
+            block-size: 100%;
+            inline-size: 2px;
             background: var(--tui-background-accent-1);
             transform: scaleX(0);
             transform-origin: right;
@@ -153,7 +153,7 @@ tui-tabs[data-vertical],
     }
 
     &[data-size='m'] [tuiTab] {
-        min-height: 2.25rem;
+        min-block-size: 2.25rem;
         font: var(--tui-font-text-s);
     }
 
