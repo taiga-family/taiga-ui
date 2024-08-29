@@ -1,5 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
@@ -27,7 +27,7 @@ export class TuiScrollControls {
         map(() => this.scrollbars),
         startWith([false, false]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
     );
 
     private get scrollbars(): [boolean, boolean] {

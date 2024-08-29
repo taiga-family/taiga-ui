@@ -1,4 +1,4 @@
-import {inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -16,7 +16,7 @@ export class TuiObscuredService extends Observable<readonly Element[] | null> {
         map(() => tuiGetElementObscures(this.el)),
         startWith(null),
         distinctUntilChanged(),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
     );
 
     constructor() {

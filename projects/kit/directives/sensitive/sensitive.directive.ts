@@ -5,7 +5,6 @@ import {
     Directive,
     inject,
     Input,
-    NgZone,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -50,7 +49,7 @@ export class TuiSensitive {
                 return [Math.max(2, Math.floor(height / 16) + 1), height];
             }),
             map(([rows, height]) => height * (rowsInSvg / rows)),
-            tuiZonefull(inject(NgZone)),
+            tuiZonefull(),
             tuiWatch(inject(ChangeDetectorRef)),
         ),
     );

@@ -1,4 +1,4 @@
-import {Directive, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -40,7 +40,7 @@ export class TuiScrollbarDirective {
         inject(WA_ANIMATION_FRAME).pipe(throttleTime(100)),
         tuiScrollFrom(this.el),
     )
-        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {
             const dimension: ComputedDimension = {
                 scrollTop: this.el.scrollTop,

@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ContentChild, Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {ContentChild, Directive, ElementRef, inject, Input} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
@@ -37,7 +37,7 @@ export class TuiDropdownHover extends TuiDriver {
         map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
         switchMap((v) => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
         tap((hovered) => {
             this.hovered = hovered;
             this.open?.toggle(hovered);
