@@ -20,11 +20,11 @@
     }
 
     &[data-size='auto'] {
-        width: auto;
+        inline-size: auto;
     }
 
     &[data-size='s'] {
-        width: 30rem;
+        inline-size: 30rem;
 
         .t-content {
             padding: 1.5rem;
@@ -37,7 +37,7 @@
     }
 
     &[data-size='m'] {
-        width: 42.5rem;
+        inline-size: 42.5rem;
 
         .t-heading {
             margin-bottom: 0.75rem;
@@ -46,7 +46,7 @@
     }
 
     &[data-size='l'] {
-        width: 55rem;
+        inline-size: 55rem;
 
         .t-heading {
             margin-bottom: 1rem;
@@ -56,8 +56,8 @@
     &[data-size='fullscreen'],
     &[data-size='page'] {
         /* stylelint-disable-next-line */
-        min-width: 100vw;
-        min-height: 100%;
+        min-inline-size: 100vw;
+        min-block-size: 100%;
         border-radius: 0;
         border: none;
         background: var(--tui-background-elevation-1);
@@ -80,9 +80,9 @@
 
     :host-context(tui-root._mobile) {
         &[data-size] {
-            min-width: 100%;
-            width: 100%;
-            max-width: 100%;
+            min-inline-size: 100%;
+            inline-size: 100%;
+            max-inline-size: 100%;
             border-radius: 0;
             border: none;
             margin: auto 0 0;

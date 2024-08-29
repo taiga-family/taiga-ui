@@ -26,7 +26,7 @@ main[tuiNavigationMain] {
 
         &:not([tuiCardLarge]) {
             [tuiTitle] {
-                max-width: 42rem;
+                max-inline-size: 42rem;
                 white-space: nowrap;
                 gap: 0.375rem;
                 overflow: hidden;
@@ -71,7 +71,7 @@ main[tuiNavigationMain] {
     > a:first-child,
     > button:first-child,
     > tui-breadcrumbs:first-child {
-        height: 1.25rem;
+        block-size: 1.25rem;
         padding: 0;
         margin-top: 0.875rem;
         justify-self: flex-start;
@@ -79,6 +79,6 @@ main[tuiNavigationMain] {
 
     > * {
         grid-column: span 12;
-        max-width: 100%;
+        max-inline-size: 100%;
     }
 }

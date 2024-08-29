@@ -7,7 +7,7 @@
 }
 
 .t-country-select {
-    width: 5.625rem;
+    inline-size: 5.625rem;
 
     /* stylelint-disable */
     &:not(._readonly) ::ng-deep input:not(:disabled) {
@@ -20,11 +20,11 @@
     /* stylelint-enable */
 
     &[data-size='m'] {
-        width: 5.5rem;
+        inline-size: 5.5rem;
     }
 
     &[data-size='s'] {
-        width: 2rem;
+        inline-size: 2rem;
 
         .t-flag {
             margin-left: -1rem;
@@ -37,8 +37,8 @@
 }
 
 .t-flag {
-    width: 1.75rem;
-    height: 1.75rem;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
     border-radius: 50%;
 
     &_select {

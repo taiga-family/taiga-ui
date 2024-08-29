@@ -7,7 +7,7 @@
 :host {
     position: relative;
     display: block;
-    min-width: 100%;
+    min-inline-size: 100%;
     margin: 1.5rem 0;
     pointer-events: none;
 }
@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: flex-end;
     pointer-events: none;
-    width: 100%;
+    inline-size: 100%;
 
     & > * {
         pointer-events: auto;
@@ -38,10 +38,10 @@
     display: flex;
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
-    max-width: 100%;
+    max-inline-size: 100%;
     min-height: 6rem;
-    width: 100%;
-    min-width: 10rem;
+    inline-size: 100%;
+    min-inline-size: 10rem;
     color: var(--tui-text-primary);
     background-color: var(--tui-background-base);
     overflow: hidden;
@@ -67,7 +67,7 @@
 
 .t-content {
     flex: 1 1 0;
-    min-width: 0;
+    min-inline-size: 0;
     padding: 1.5rem;
     box-sizing: border-box;
     overflow: hidden;
@@ -84,12 +84,12 @@
 }
 
 .t-input-wrapper {
-    width: 100%;
+    inline-size: 100%;
     margin-bottom: 0.5rem;
 }
 
 .t-expand {
-    width: 100%;
+    inline-size: 100%;
 }
 
 .t-value {
@@ -100,17 +100,17 @@
 }
 
 .t-mode {
-    width: 12.5rem;
+    inline-size: 12.5rem;
 }
 
 .t-select {
-    max-width: 15rem;
+    max-inline-size: 15rem;
 }
 
 .t-resizer {
     box-shadow: var(--tui-shadow-medium);
     position: relative;
-    width: 3.5rem;
+    inline-size: 3.5rem;
     min-height: inherit;
     display: flex;
     align-items: center;
@@ -128,7 +128,7 @@
         top: 0.75rem;
         left: 50%;
         bottom: calc(50% + 1rem);
-        width: 1px;
+        inline-size: 1px;
         background: var(--tui-border-normal);
         box-shadow: -0.25rem 0 var(--tui-border-normal);
         transform: translate3d(0, 0, 0);
