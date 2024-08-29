@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rxjs';
 
@@ -12,7 +12,7 @@ import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rx
 export class TuiObscuredService extends Observable<readonly Element[] | null> {
     private readonly el = tuiInjectElement();
     private readonly obscured$ = inject(WA_ANIMATION_FRAME).pipe(
-        throttleTime(100),
+        throttleTime(100, tuiZonefreeScheduler()),
         map(() => tuiGetElementObscures(this.el)),
         startWith(null),
         distinctUntilChanged(),
