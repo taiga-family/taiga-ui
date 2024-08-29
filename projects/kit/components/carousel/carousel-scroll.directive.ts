@@ -1,5 +1,5 @@
 import {Directive, Output} from '@angular/core';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
@@ -13,7 +13,7 @@ export class TuiCarouselScroll {
     @Output()
     public readonly tuiCarouselScroll = tuiTypedFromEvent(this.el, 'wheel').pipe(
         filter(({deltaX}) => Math.abs(deltaX) > 20),
-        throttleTime(500),
+        throttleTime(500, tuiZonefreeScheduler()),
         map(({deltaX}) => Math.sign(deltaX)),
         tap(() => {
             // So we always have space to scroll and overflow-behavior saves us from back nav
