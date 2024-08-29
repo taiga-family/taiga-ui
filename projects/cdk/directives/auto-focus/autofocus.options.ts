@@ -49,7 +49,7 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
         ) =>
             isIos
                 ? new TuiIosAutofocusHandler(el, renderer, zone, win)
-                : new TuiDefaultAutofocusHandler(el, animationFrame$),
+                : new TuiDefaultAutofocusHandler(el, animationFrame$, zone),
         deps: [ElementRef, WA_ANIMATION_FRAME, Renderer2, NgZone, WA_WINDOW, TUI_IS_IOS],
     },
 ];
