@@ -38,7 +38,8 @@
 
     &:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
-        border-color: var(--tui-service-autofill-background);
+        caret-color: var(--tui-text-primary) !important;
+        border-color: var(--tui-service-autofill-background) !important;
         box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
     }
 }
@@ -46,6 +47,7 @@
 [tuiTheme='dark'] [tuiAppearance][data-appearance='textfield'],
 [tuiTheme='dark'][tuiAppearance][data-appearance='textfield'] {
     background-color: var(--tui-background-neutral-1);
+    color-scheme: dark;
 
     .appearance-hover({
         background-color: var(--tui-background-neutral-1-hover);

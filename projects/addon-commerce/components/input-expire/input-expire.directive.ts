@@ -12,6 +12,8 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         inputmode: 'numeric',
         placeholder: '00/00',
         translate: 'no',
+        maxlength: '5',
+        '[attr.name]': 'autocomplete ? "ccexpiryyear" : null',
         '[autocomplete]': 'autocomplete ? "cc-exp" : "off"',
     },
 })

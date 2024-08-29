@@ -64,7 +64,7 @@
 
     padding: 1.25rem var(--tui-padding-l) 0;
     box-sizing: border-box;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-text-m);
     line-height: 2.25rem;
     color: var(--tui-text-primary);
     white-space: nowrap;
@@ -107,11 +107,18 @@
     outline: none;
     background: transparent;
     box-sizing: border-box;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-text-m);
     color: var(--tui-text-primary);
 
     &::placeholder {
         color: var(--tui-text-tertiary);
+    }
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: var(--tui-text-primary) !important;
+        caret-color: var(--tui-text-primary) !important;
+        border-color: var(--tui-service-autofill-background) !important;
+        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
     }
 
     &&&_card {
