@@ -4,7 +4,7 @@
     waIntersectionThreshold="1"
     class="t-filler"
     (touchstart.prevent)="close()"
-    (waIntersectionObservee)="onIntersection($event)"
+    (waIntersectionObservee)="$event[0] && onIntersection($event[0])"
 ></div>
 <div
     #container
