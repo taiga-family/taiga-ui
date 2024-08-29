@@ -1,4 +1,10 @@
-import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
+import {
+    type AfterViewChecked,
+    type ComponentRef,
+    NgZone,
+    type OnChanges,
+    type OnDestroy,
+} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -9,6 +15,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -47,9 +54,10 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
+    private readonly zone = inject(NgZone);
 
     protected readonly sub = this.refresh$
-        .pipe(throttleTime(0), takeUntilDestroyed())
+        .pipe(throttleTime(0, tuiZonefreeScheduler(this.zone)), takeUntilDestroyed())
         .subscribe(() => {
             this.ref()?.changeDetectorRef.detectChanges();
             this.ref()?.changeDetectorRef.markForCheck();

@@ -1,5 +1,10 @@
 import type {NgZone} from '@angular/core';
-import type {MonoTypeOperatorFunction} from 'rxjs';
+import {
+    asyncScheduler,
+    type MonoTypeOperatorFunction,
+    type SchedulerLike,
+    type Subscription,
+} from 'rxjs';
 import {Observable, pipe} from 'rxjs';
 
 export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
@@ -22,4 +27,33 @@ export function tuiZonefree<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
 
 export function tuiZoneOptimized<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
     return pipe(tuiZonefree(zone), tuiZonefull(zone));
+}
+
+class TuiZoneScheduler implements SchedulerLike {
+    constructor(
+        private readonly zoneConditionFn: <T>(fn: (...args: unknown[]) => T) => T,
+        private readonly scheduler: SchedulerLike = asyncScheduler,
+    ) {}
+
+    public now(): number {
+        return this.scheduler.now();
+    }
+
+    public schedule(...args: Parameters<SchedulerLike['schedule']>): Subscription {
+        return this.zoneConditionFn(() => this.scheduler.schedule(...args));
+    }
+}
+
+export function tuiZonefreeScheduler(
+    zone: NgZone,
+    scheduler: SchedulerLike = asyncScheduler,
+): SchedulerLike {
+    return new TuiZoneScheduler(zone.runOutsideAngular.bind(zone), scheduler);
+}
+
+export function tuiZonefullScheduler(
+    zone: NgZone,
+    scheduler: SchedulerLike = asyncScheduler,
+): SchedulerLike {
+    return new TuiZoneScheduler(zone.run.bind(zone), scheduler);
 }
