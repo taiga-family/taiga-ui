@@ -6,7 +6,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -17,7 +17,12 @@ import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {TuiDropdowns} from '@taiga-ui/core/directives';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TUI_DARK_MODE,
+    TUI_REDUCED_MOTION,
+    TUI_THEME,
+} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import type {Observable} from 'rxjs';
 import {debounceTime, map, of} from 'rxjs';
@@ -68,9 +73,16 @@ export class TuiRoot {
           );
 
     constructor() {
-        inject(DOCUMENT).defaultView?.document.documentElement.setAttribute(
-            'data-tui-theme',
-            inject(TUI_THEME).toLowerCase(),
-        );
+        const element = inject(DOCUMENT).defaultView?.document.documentElement;
+
+        if (element) {
+            element.setAttribute('data-tui-theme', inject(TUI_THEME).toLowerCase());
+
+            toObservable(inject(TUI_DARK_MODE))
+                .pipe(takeUntilDestroyed())
+                .subscribe((dark) =>
+                    element.setAttribute('tuiTheme', dark ? 'dark' : 'light'),
+                );
+        }
     }
 }

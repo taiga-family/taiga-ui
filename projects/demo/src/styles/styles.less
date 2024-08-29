@@ -8,10 +8,7 @@ html,
 body {
     scroll-behavior: smooth;
     font: var(--tui-font-text-m);
-
-    &:has(tui-root[tuiTheme='dark']) {
-        background: #222;
-    }
+    background: var(--tui-background-base);
 
     @media (prefers-reduced-motion) {
         scroll-behavior: auto;
