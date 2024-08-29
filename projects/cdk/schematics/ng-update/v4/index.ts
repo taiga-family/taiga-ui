@@ -43,6 +43,7 @@ import {
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
+import {migrateEditor} from './steps/migrate-editor';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
@@ -50,6 +51,7 @@ function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        migrateEditor(fileSystem, options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateRoot(fileSystem, options);
         replaceServices(options, SERVICES_TO_REPLACE);

@@ -13,9 +13,9 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {TUI_EDITOR_VERSION} from '../steps/migrate-editor';
 import {
     TUI_DOMPURIFY_VERSION,
-    TUI_EDITOR_VERSION,
     TUI_EVENT_PLUGINS_VERSION,
     TUI_POLYMORPHEUS_VERSION,
 } from '../steps/update-packages';

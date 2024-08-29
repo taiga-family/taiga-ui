@@ -15,7 +15,6 @@ import {replacePackageName} from '../../steps';
 export const TUI_POLYMORPHEUS_VERSION = '^4.6.4';
 export const TUI_DOMPURIFY_VERSION = '^4.1.2';
 export const TUI_EVENT_PLUGINS_VERSION = '^4.0.1';
-export const TUI_EDITOR_VERSION = '^2.5.0';
 
 export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
@@ -45,14 +44,6 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         {
             name: '@taiga-ui/event-plugins',
             version: TUI_EVENT_PLUGINS_VERSION,
-        },
-        tree,
-    );
-    replacePackageName(
-        '@tinkoff/tui-editor',
-        {
-            name: '@taiga-ui/editor',
-            version: TUI_EDITOR_VERSION,
         },
         tree,
     );
