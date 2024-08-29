@@ -5,7 +5,6 @@ import {
     Component,
     inject,
     Input,
-    NgZone,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
@@ -40,7 +39,7 @@ export class TuiAppBarComponent {
         inject(ResizeObserverService, {self: true}),
         inject(MutationObserverService, {self: true}),
     ).pipe(
-        tuiZonefull(inject(NgZone)),
+        tuiZonefull(),
         map(
             () =>
                 2 *

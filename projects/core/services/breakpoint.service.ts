@@ -1,4 +1,4 @@
-import {inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
 import type {TuiMedia} from '@taiga-ui/core/tokens';
@@ -30,7 +30,7 @@ export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | nul
         map(({width}) => this.sorted.find((size) => size > width)),
         map((key) => this.invert[key || this.sorted[this.sorted.length - 1] || 0]),
         distinctUntilChanged(),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
         shareReplay({bufferSize: 1, refCount: true}),
     );
 

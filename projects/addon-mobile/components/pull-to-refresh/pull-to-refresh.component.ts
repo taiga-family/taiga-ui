@@ -1,12 +1,5 @@
 import {AsyncPipe, NgStyle} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    Input,
-    NgZone,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
@@ -65,7 +58,7 @@ export class TuiPullToRefresh {
         const el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
 
         tuiScrollFrom(el)
-            .pipe(startWith(null), tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+            .pipe(startWith(null), tuiZonefree(), takeUntilDestroyed())
             .subscribe(() => {
                 if (el.scrollTop) {
                     el.style.touchAction = '';

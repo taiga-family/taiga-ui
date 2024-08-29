@@ -5,7 +5,6 @@ import {
     EventEmitter,
     inject,
     Input,
-    NgZone,
     Output,
     ViewEncapsulation,
 } from '@angular/core';
@@ -36,7 +35,7 @@ export class TuiSegmented implements OnChanges {
     private readonly el = tuiInjectElement();
 
     protected readonly sub = inject(ResizeObserverService, {self: true})
-        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
     @Input()

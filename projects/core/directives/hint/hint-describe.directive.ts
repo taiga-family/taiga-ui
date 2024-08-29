@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {tuiIfMap, tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
@@ -43,7 +43,7 @@ export class TuiHintDescribe extends TuiDriver {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
     );
 
     public readonly type = 'hint';

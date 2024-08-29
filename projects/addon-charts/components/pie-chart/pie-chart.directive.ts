@@ -1,4 +1,4 @@
-import {Directive, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_ANIMATION_FRAME, WA_PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
@@ -44,7 +44,7 @@ export class TuiPieChartDirective {
                         ]),
                     );
                 }),
-                tuiZonefree(inject(NgZone)),
+                tuiZonefree(),
                 takeUntilDestroyed(),
             )
             .subscribe(([start, end]) =>

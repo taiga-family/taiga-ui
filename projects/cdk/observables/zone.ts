@@ -1,4 +1,4 @@
-import type {NgZone} from '@angular/core';
+import {inject, NgZone} from '@angular/core';
 import {
     asyncScheduler,
     type MonoTypeOperatorFunction,
@@ -7,7 +7,7 @@ import {
 } from 'rxjs';
 import {Observable, pipe} from 'rxjs';
 
-export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZonefull<T>(zone = inject(NgZone)): MonoTypeOperatorFunction<T> {
     return (source) =>
         new Observable((subscriber) =>
             source.subscribe({
@@ -18,14 +18,14 @@ export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
         );
 }
 
-export function tuiZonefree<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZonefree<T>(zone = inject(NgZone)): MonoTypeOperatorFunction<T> {
     return (source) =>
         new Observable((subscriber) =>
             zone.runOutsideAngular(() => source.subscribe(subscriber)),
         );
 }
 
-export function tuiZoneOptimized<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZoneOptimized<T>(zone = inject(NgZone)): MonoTypeOperatorFunction<T> {
     return pipe(tuiZonefree(zone), tuiZonefull(zone));
 }
 
@@ -45,14 +45,14 @@ class TuiZoneScheduler implements SchedulerLike {
 }
 
 export function tuiZonefreeScheduler(
-    zone: NgZone,
+    zone = inject(NgZone),
     scheduler: SchedulerLike = asyncScheduler,
 ): SchedulerLike {
     return new TuiZoneScheduler(zone.runOutsideAngular.bind(zone), scheduler);
 }
 
 export function tuiZonefullScheduler(
-    zone: NgZone,
+    zone = inject(NgZone),
     scheduler: SchedulerLike = asyncScheduler,
 ): SchedulerLike {
     return new TuiZoneScheduler(zone.run.bind(zone), scheduler);

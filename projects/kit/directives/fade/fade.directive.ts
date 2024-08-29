@@ -4,7 +4,6 @@ import {
     Directive,
     inject,
     Input,
-    NgZone,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -75,7 +74,7 @@ export class TuiFade {
             inject(MutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
-            .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+            .pipe(tuiZonefree(), takeUntilDestroyed())
             .subscribe(() => {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));

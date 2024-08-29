@@ -1,12 +1,5 @@
 import type {AfterViewChecked, QueryList} from '@angular/core';
-import {
-    ContentChildren,
-    Directive,
-    forwardRef,
-    inject,
-    Input,
-    NgZone,
-} from '@angular/core';
+import {ContentChildren, Directive, forwardRef, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
@@ -60,7 +53,7 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     protected readonly sub = inject(MutationObserverService, {self: true})
-        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
     @Input()

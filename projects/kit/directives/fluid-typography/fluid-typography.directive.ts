@@ -1,5 +1,5 @@
 import type {OnChanges} from '@angular/core';
-import {Directive, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
@@ -39,7 +39,7 @@ export class TuiFluidTypography implements OnChanges {
         inject(MutationObserverService, {self: true}),
         fromEvent(this.el, 'input'),
     )
-        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {
             const min = Number(this.tuiFluidTypography[0] || this.options.min);
             const max = Number(this.tuiFluidTypography[1] || this.options.max);

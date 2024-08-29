@@ -8,7 +8,6 @@ import {
     ElementRef,
     inject,
     Input,
-    NgZone,
     type QueryList,
     signal,
     TemplateRef,
@@ -75,7 +74,7 @@ export class TuiSearchFiltersComponent implements AfterContentInit {
                 return Math.floor((width - this.more) / WIDTH / this.unit);
             }),
             distinctUntilChanged(),
-            tuiZonefull(inject(NgZone)),
+            tuiZonefull(),
         ),
         {initialValue: 0},
     );

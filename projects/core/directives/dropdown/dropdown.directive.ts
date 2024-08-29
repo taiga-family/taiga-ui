@@ -1,7 +1,6 @@
 import {
     type AfterViewChecked,
     type ComponentRef,
-    NgZone,
     type OnChanges,
     type OnDestroy,
 } from '@angular/core';
@@ -54,10 +53,9 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly zone = inject(NgZone);
 
     protected readonly sub = this.refresh$
-        .pipe(throttleTime(0, tuiZonefreeScheduler(this.zone)), takeUntilDestroyed())
+        .pipe(throttleTime(0, tuiZonefreeScheduler()), takeUntilDestroyed())
         .subscribe(() => {
             this.ref()?.changeDetectorRef.detectChanges();
             this.ref()?.changeDetectorRef.markForCheck();
