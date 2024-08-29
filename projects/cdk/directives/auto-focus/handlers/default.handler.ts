@@ -1,4 +1,5 @@
-import type {ElementRef} from '@angular/core';
+import type {ElementRef, NgZone} from '@angular/core';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {Observable} from 'rxjs';
 import {map, race, skipWhile, take, throttleTime, timer} from 'rxjs';
 
@@ -11,6 +12,7 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
     constructor(
         el: ElementRef<HTMLElement>,
         private readonly animationFrame$: Observable<number>,
+        private readonly zone: NgZone,
     ) {
         super(el);
     }
@@ -20,7 +22,7 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
             race(
                 timer(TIMEOUT),
                 this.animationFrame$.pipe(
-                    throttleTime(100),
+                    throttleTime(100, tuiZonefreeScheduler(this.zone)),
                     map(() => this.element.closest(NG_ANIMATION_SELECTOR)),
                     skipWhile(Boolean),
                     take(1),
