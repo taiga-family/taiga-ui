@@ -55,7 +55,12 @@ export function migrateAvatar({
     const avatarElements = findElementsByTagName(template, 'tui-avatar');
     const markerIconElements = findElementsByTagName(template, 'tui-marker-icon');
 
-    [...avatarElements, ...markerIconElements].forEach(({attrs, sourceCodeLocation}) => {
+    [
+        ...avatarElements.filter(
+            ({attrs}) => findAttr(attrs, 'avatarurl') || findAttr(attrs, 'text'),
+        ),
+        ...markerIconElements,
+    ].forEach(({attrs, sourceCodeLocation}) => {
         if (!sourceCodeLocation) {
             return;
         }
