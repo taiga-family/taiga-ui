@@ -37,6 +37,14 @@
         (ngModelChange)="onValueChange($event)"
     />
 
+    <!--
+    TODO: get rid of built-in input and label and just externalize everything in 5.0
+    <tui-input-phone-international>
+      <label tuiLabel>My label</label>
+      <input tuiTextfield placeholder="My placeholder" [(ngModel)]="value" />
+      <tui-icon icon="@tui.phone" />
+    </tui-input-phone-international>
+    -->
     <ng-content select="tui-icon" />
 
     <label tuiLabel>
