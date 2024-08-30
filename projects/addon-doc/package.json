@@ -27,7 +27,7 @@
         "@taiga-ui/cdk": "^4.4.1",
         "@taiga-ui/core": "^4.4.1",
         "@taiga-ui/kit": "^4.4.1",
-        "@taiga-ui/polymorpheus": "^4.6.4",
+        "@taiga-ui/polymorpheus": "^4.7.0",
         "markdown-it": ">=14.1.0",
         "ngx-highlightjs": ">=10.0.0",
         "tslib": "^2.7.0"
