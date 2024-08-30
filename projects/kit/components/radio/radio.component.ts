@@ -7,9 +7,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 

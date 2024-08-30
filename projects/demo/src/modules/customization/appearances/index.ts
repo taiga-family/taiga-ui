@@ -27,5 +27,6 @@ export default class Page {
         '.appearance-disabled(@ruleset)',
         '.appearance-focus(@ruleset)',
     ];
+
     protected readonly routes = DemoRoute;
 }
