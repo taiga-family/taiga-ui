@@ -57,9 +57,9 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../customization/variables'),
     }),
     route({
-        path: DemoRoute.Wrapper,
-        title: 'Wrapper',
-        loadComponent: async () => import('../customization/wrapper'),
+        path: DemoRoute.Appearances,
+        title: 'Appearances',
+        loadComponent: async () => import('../customization/appearances'),
     }),
     route({
         path: DemoRoute.DialogCustom,

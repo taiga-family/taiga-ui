@@ -1082,9 +1082,9 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Customization',
-        title: 'Wrapper',
+        title: 'Appearances',
         keywords: 'colors, css, theme, custom, style',
-        route: DemoRoute.Wrapper,
+        route: DemoRoute.Appearances,
     },
     {
         section: 'Customization',

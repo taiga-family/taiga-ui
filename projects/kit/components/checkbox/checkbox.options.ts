@@ -5,7 +5,7 @@ import type {TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeS;
-    readonly appearance: TuiStringHandler<HTMLInputElement>;
+    readonly appearance: TuiStringHandler<HTMLInputElement> | string;
     readonly icons: Readonly<{
         checked: TuiStringHandler<TuiSizeS> | string;
         indeterminate: TuiStringHandler<TuiSizeS> | string;
