@@ -51,7 +51,7 @@ describe('LinkDirective', () => {
                 TuiLinkHarness.with({selector: '#link-no-pseudo'}),
             );
 
-            expect(await link.isPseudo()).toBeFalsy();
+            expect(await link.isPseudo()).toBe(false);
         });
 
         it('should have underline when pseudo is true', async () => {
@@ -59,7 +59,7 @@ describe('LinkDirective', () => {
                 TuiLinkHarness.with({selector: '#pseudo-link'}),
             );
 
-            expect(await link.isPseudo()).toBeTruthy();
+            expect(await link.isPseudo()).toBe(true);
         });
     });
 });
