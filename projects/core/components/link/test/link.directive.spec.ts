@@ -22,8 +22,8 @@ describe('LinkDirective', () => {
             <a
                 id="pseudo-link"
                 href="#"
-                pseudo="true"
                 tuiLink
+                [pseudo]="true"
             >
                 Pseudo Link
             </a>
@@ -51,7 +51,7 @@ describe('LinkDirective', () => {
                 TuiLinkHarness.with({selector: '#link-no-pseudo'}),
             );
 
-            expect(await link.isPseudo()).toBe(false);
+            expect(await link.isPseudo()).toBeFalsy();
         });
 
         it('should have underline when pseudo is true', async () => {
@@ -59,7 +59,7 @@ describe('LinkDirective', () => {
                 TuiLinkHarness.with({selector: '#pseudo-link'}),
             );
 
-            expect(await link.isPseudo()).toBe(true);
+            expect(await link.isPseudo()).toBeTruthy();
         });
     });
 });

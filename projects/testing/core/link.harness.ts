@@ -5,8 +5,9 @@ export class TuiLinkHarness extends TuiComponentHarness {
 
     public async isPseudo(): Promise<boolean> {
         return (
-            (await (await this.host()).getCssValue('text-decoration-line')) ===
-            'underline'
+            (await (await this.host()).getAttribute('style'))?.includes(
+                'text-decoration-line: underline',
+            ) ?? false
         );
     }
 }
