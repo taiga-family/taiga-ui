@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputTimeDirective} from '../input-time.directive';
@@ -9,7 +9,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     template: `
         <datalist
             *ngIf="items.length"
-            [id]="autoIdString"
+            [id]="autoId"
         >
             <option
                 *ngFor="let item of items"
@@ -21,7 +21,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         type: 'time',
-        '[attr.list]': 'autoIdString',
+        '[attr.list]': 'autoId',
         '[tabIndex]': '-1',
         '[value]': 'value',
         '[step]': 'step',
@@ -33,7 +33,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
 export class TuiNativeTimeComponent {
     protected readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
 
-    protected readonly autoIdString: string = inject(TuiIdService).generate();
+    protected readonly autoId = tuiInjectId();
 
     protected get items(): string[] {
         return this.host.items.map((item) => item.toString(this.host.mode));

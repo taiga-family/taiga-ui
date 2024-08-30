@@ -29,7 +29,7 @@ import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -175,7 +175,7 @@ export class TuiInputCardGroup
     public icon: PolymorpheusContent = this.options.icon;
 
     @Input()
-    public id = inject(TuiIdService).generate();
+    public id = tuiInjectId();
 
     @Input()
     public autocomplete = this.options.autocomplete;

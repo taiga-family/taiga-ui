@@ -13,7 +13,7 @@ import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -46,7 +46,7 @@ export class TuiLineChart {
     private readonly zone = inject(NgZone);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();
-    private readonly autoIdString = inject(TuiIdService).generate();
+    private readonly autoId = tuiInjectId();
 
     protected readonly hintDirective = inject(TuiLineChartHint, {
         optional: true,
@@ -105,7 +105,7 @@ export class TuiLineChart {
     }
 
     protected get fillId(): string {
-        return `tui-line-chart-${this.autoIdString}`;
+        return `tui-line-chart-${this.autoId}`;
     }
 
     protected get fill(): string {
@@ -160,7 +160,7 @@ export class TuiLineChart {
     }
 
     protected getHintId(index: number): string {
-        return `${this.autoIdString}_${index}`;
+        return `${this.autoId}_${index}`;
     }
 
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
