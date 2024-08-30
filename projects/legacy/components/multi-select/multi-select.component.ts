@@ -241,7 +241,7 @@ export class TuiMultiSelectComponent<T>
         }
 
         event.preventDefault();
-        this.value = tuiArrayToggle(value, options[0]);
+        this.value = options[0] ? tuiArrayToggle(value, options[0]) : value;
         this.updateSearch(null);
     }
 

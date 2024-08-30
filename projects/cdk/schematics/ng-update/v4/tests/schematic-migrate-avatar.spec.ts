@@ -64,6 +64,10 @@ const TEMPLATE_BEFORE = `
     [avatarUrl]="avatarUrl"
     [fallback]="fallback"
 ></tui-avatar>
+<tui-avatar
+    [src]="src"
+    size="xxs"
+></tui-avatar>
 `;
 
 const TEMPLATE_AFTER = `
@@ -90,6 +94,10 @@ const TEMPLATE_AFTER = `
     [round]="false"
    ${''}
    ${''}
+></tui-avatar>
+<tui-avatar
+    [src]="src"
+    size="xxs"
 ></tui-avatar>
 `;
 

@@ -70,13 +70,16 @@ function iosScrollFactory(
         ),
         touchstart$.pipe(
             switchMap(({touches}) => {
-                const {screenY} = touches[0];
+                const {screenY = 0} = touches[0] ?? {};
                 const {scrollTop} = element;
 
                 return concat(
                     // Sometimes touch is triggered without scroll in iOS, filter that
                     zip(touchmove$, scroll$).pipe(
-                        map(([{touches}]) => scrollTop + screenY - touches[0].screenY),
+                        map(
+                            ([{touches}]) =>
+                                scrollTop + screenY - (touches[0]?.screenY ?? 0),
+                        ),
                         takeUntil(touchend$),
                     ),
                     scroll$,

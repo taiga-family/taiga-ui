@@ -1,6 +1,8 @@
 import {
+    addProviderToNgModule,
     type DevkitFileSystem,
     getActiveProject,
+    getNgModules,
     getPackageJsonDependency,
     Node,
 } from 'ng-morph';
@@ -60,26 +62,43 @@ function replaceRootIdentifier(ref: Node, fileSystem: DevkitFileSystem): void {
 
         if (node) {
             callExpression.removeArgument(node);
-            addProviders(callExpression, fileSystem);
+            addProviders({callExpression, fileSystem});
         }
     } else {
         ref.replaceWithText('TuiRoot');
+        addProviders({fileSystem, modulePath: ref.getSourceFile().getFilePath()});
     }
 }
 
-function addProviders(callExpression: Node, fileSystem: DevkitFileSystem): void {
-    const array = callExpression.getParentWhile(Node.isArrayLiteralExpression);
+function addProviders({
+    callExpression,
+    fileSystem,
+    modulePath,
+}: {
+    callExpression?: Node;
+    fileSystem: DevkitFileSystem;
+    modulePath?: string;
+}): void {
+    const providersArray = callExpression?.getParentWhile(Node.isArrayLiteralExpression);
+    const module = modulePath && getNgModules(modulePath)?.[0];
 
-    if (!array) {
+    if (!providersArray && !modulePath) {
         return;
     }
 
-    array.addElement('NG_EVENT_PLUGINS');
-    addUniqueImport(
-        array.getSourceFile().getFilePath(),
-        'NG_EVENT_PLUGINS',
-        '@taiga-ui/event-plugins',
-    );
+    const path = providersArray
+        ? providersArray.getSourceFile().getFilePath()
+        : modulePath || '';
+
+    if (providersArray) {
+        providersArray.addElement('NG_EVENT_PLUGINS');
+    } else if (module) {
+        addProviderToNgModule(module, 'NG_EVENT_PLUGINS', {unique: true});
+    }
+
+    if (providersArray || module) {
+        addUniqueImport(path, 'NG_EVENT_PLUGINS', '@taiga-ui/event-plugins');
+    }
 
     getActiveProject();
     const proprietary =
@@ -87,12 +106,14 @@ function addProviders(callExpression: Node, fileSystem: DevkitFileSystem): void 
         getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
 
     if (proprietary) {
-        array.addElement('TBANK_PROVIDERS');
+        if (providersArray) {
+            providersArray.addElement('TBANK_PROVIDERS');
+        } else if (module) {
+            addProviderToNgModule(module, 'TBANK_PROVIDERS', {unique: true});
+        }
 
-        addUniqueImport(
-            array.getSourceFile().getFilePath(),
-            'TBANK_PROVIDERS',
-            '@taiga-ui/proprietary',
-        );
+        if (providersArray || module) {
+            addUniqueImport(path, 'TBANK_PROVIDERS', '@taiga-ui/proprietary');
+        }
     }
 }

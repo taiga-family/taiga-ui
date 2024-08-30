@@ -69,7 +69,9 @@ export class TuiCheckbox implements OnInit, DoCheck {
     }
 
     public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.options.appearance(this.el);
+        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
+            ? this.options.appearance
+            : this.options.appearance(this.el);
     }
 
     protected getIcon(state: 'checked' | 'indeterminate'): string {

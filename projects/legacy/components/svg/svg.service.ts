@@ -28,7 +28,7 @@ export class TuiSvgService {
         const {value} = this.items$;
 
         Object.keys(icons).forEach((key) => {
-            this.defineIcon(key, icons[key], value);
+            this.defineIcon(key, icons[key] ?? '', value);
         });
 
         this.items$.next(value);

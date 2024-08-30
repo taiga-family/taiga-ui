@@ -23,6 +23,7 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -34,6 +35,7 @@ import {
     TuiDropdown,
     tuiDropdown,
     TuiDropdownDirective,
+    TuiDropdownOpen,
     tuiDropdownOpen,
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
@@ -99,6 +101,12 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly mask = computed(() =>
         this.computeMask(this.countryIsoCode(), this.metadata()),
+    );
+
+    protected readonly $ = tuiDirectiveBinding(
+        TuiDropdownOpen,
+        'tuiDropdownEnabled',
+        this.interactive,
     );
 
     protected textfieldValue = '';
