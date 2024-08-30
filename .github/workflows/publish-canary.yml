@@ -1,25 +1,17 @@
-name: ⚠️ Publish canary management
+name: ⚠️ Publish canary
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
 jobs:
-  canary:
+  publish-canary:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        branch: [v3.x, main]
-    name: Publish canary for ${{ matrix.branch }} branch
+    name: Publish canary
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.71.2
-        with:
-          ref: ${{ matrix.branch }}
       - uses: taiga-family/ci/actions/setup/variables@v1.71.2
       - uses: taiga-family/ci/actions/setup/node@v1.71.2
-        with:
-          validate-peer-deps: 'false'
       - uses: taiga-family/ci/actions/setup/config/npm@v1.71.2
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
