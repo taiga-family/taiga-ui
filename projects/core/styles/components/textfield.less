@@ -102,8 +102,20 @@ tui-textfield {
         }
     }
 
+    /*
+    TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
+    &:hover:has(input:not(:read-only)),
+    &:hover:has(select:not([data-mode='readonly'])) {
+        color: var(--tui-text-secondary);
+    }
+    */
     &:hover {
         color: var(--tui-text-secondary);
+
+        &:has(input:read-only),
+        &:has(select[data-mode='readonly']) {
+            color: var(--tui-text-tertiary);
+        }
     }
 
     &::before {
