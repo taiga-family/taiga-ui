@@ -64,36 +64,47 @@
             [description]="metadataDescription"
         >
             <ng-template #metadataDescription>
-                <p class="tui-space_top-0">The first step is to choose the size of metadata.</p>
+                <p class="tui-space_top-0">
+                    The first step is to choose the size of
+                    <code>
+                        metadata
+                        <tui-icon
+                            tuiHintDirection="top"
+                            [tuiTooltip]="metadataDefinition"
+                        />
 
-                <tui-notification>
-                    <div>
-                        <strong>Google</strong>
-                        <a
-                            href="https://github.com/google/libphonenumber/blob/master/FAQ.md#what-do-we-mean-by-metadata"
-                            target="_blank"
-                            tuiLink
-                        >
-                            uses
-                        </a>
-                        the word
-                        <strong>"metadata"</strong>
-                        to refer to all information about phone numbering in a particular country - what the country
-                        code, international and national dialling prefixes are, what carrier codes are operational,
-                        which phone numbers are possible or valid for a particular country, how to optimally format
-                        them, which prefixes represent a particular geographical area, etc.
-                    </div>
-                </tui-notification>
+                        <ng-template #metadataDefinition>
+                            <strong>Google</strong>
+                            <a
+                                appearance="icon"
+                                href="https://github.com/google/libphonenumber/blob/master/FAQ.md#what-do-we-mean-by-metadata"
+                                target="_blank"
+                                tuiLink
+                                tuiTheme="dark"
+                                [pseudo]="true"
+                            >
+                                uses
+                            </a>
+                            the word
+                            <strong>"metadata"</strong>
+                            to refer to all information about phone numbering in a particular country - what the country
+                            code, international and national dialling prefixes are, what carrier codes are operational,
+                            which phone numbers are possible or valid for a particular country, how to optimally format
+                            them, which prefixes represent a particular geographical area, etc.
+                        </ng-template>
+                    </code>
+                    .
+                </p>
 
                 <p>
                     The complete list of all phone rules is huge, so
                     <code>libphonenumber-js</code>
                     provides different "metadata" sets to provides a way to optimize bundle size by choosing between
-                    <strong>max</strong>
+                    <code>max</code>
                     ,
-                    <strong>min</strong>
+                    <code>min</code>
                     (default value) and
-                    <strong>mobile</strong>
+                    <code>mobile</code>
                     sets.
                 </p>
 
@@ -155,6 +166,32 @@
                 Don't hesitate to use it too to manually format any phone number.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="customize-with-icons"
+            heading="Customize with icons"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts,less'"
+            [description]="iconsDescription"
+        >
+            <ng-template #iconsDescription>
+                You can put static
+                <a
+                    tuiLink
+                    [routerLink]="routes.Icon"
+                >
+                    Icon
+                </a>
+                or even interactive
+                <a
+                    tuiLink
+                    [routerLink]="routes.Tooltip"
+                >
+                    Tooltip
+                </a>
+                at the right side of the textfield.
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -209,7 +246,7 @@
                 ISO-code of selected country
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation />
+        <inherited-documentation [withHint]="false" />
     </ng-template>
 
     <tui-setup *pageTab />

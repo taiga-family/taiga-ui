@@ -34,7 +34,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
 
     protected selectedTemplate = '';
 

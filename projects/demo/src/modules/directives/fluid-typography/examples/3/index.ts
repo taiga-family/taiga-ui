@@ -19,7 +19,7 @@ export default class Example {
     protected value = 'I am a very long value';
     protected range = signal([this.options.min * 16, this.options.max * 16]);
     protected scale = computed<[number, number]>(() => [
-        this.range()[0] / 16,
-        this.range()[1] / 16,
+        (this.range()[0] ?? 0) / 16,
+        (this.range()[1] ?? 0) / 16,
     ]);
 }

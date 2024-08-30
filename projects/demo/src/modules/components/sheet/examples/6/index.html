@@ -19,7 +19,7 @@
             alt=""
             class="image"
             [src]="image"
-            (waIntersectionObservee)="onIntersection($event, img)"
+            (waIntersectionObservee)="$event[0] && onIntersection($event[0], img)"
         />
     </ng-container>
 </ng-template>

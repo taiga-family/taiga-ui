@@ -20,7 +20,7 @@ import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 })
 export default class Example {
     protected radiusVariants = ['0.75rem', '50%'];
-    protected radius = this.radiusVariants[0];
+    protected radius = this.radiusVariants[0]!;
 
     protected readonly examples = [
         'Basic',

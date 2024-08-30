@@ -234,8 +234,14 @@ describe('InputDateRangeComponent', () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 16)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 27)?.nativeElement?.click();
+            if (leftCalendar) {
+                getCalendarCell(leftCalendar, 16)?.nativeElement?.click();
+            }
+
+            if (rightCalendar) {
+                getCalendarCell(rightCalendar, 27)?.nativeElement?.click();
+            }
+
             fixture.detectChanges();
 
             await fixture.whenStable();
@@ -278,8 +284,13 @@ describe('InputDateRangeComponent', () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            if (leftCalendar) {
+                getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
+            }
+
+            if (rightCalendar) {
+                getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            }
 
             fixture.detectChanges();
 
@@ -435,8 +446,13 @@ describe('InputDateRangeComponent', () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            if (leftCalendar) {
+                getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
+            }
+
+            if (rightCalendar) {
+                getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            }
 
             fixture.detectChanges();
 

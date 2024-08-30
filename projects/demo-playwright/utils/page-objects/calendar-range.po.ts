@@ -14,14 +14,14 @@ export class TuiCalendarRangePO {
     public async selectItem(index: number): Promise<void> {
         const items = await this.getItems();
 
-        await items[index].click();
+        await items[index]?.click();
     }
 
     public async itemHasCheckmark(index: number): Promise<boolean> {
         const items = await this.getItems();
 
         const itemCheckmark = await items[index]
-            .locator('[automation-id="tui-calendar-range__checkmark"]')
+            ?.locator('[automation-id="tui-calendar-range__checkmark"]')
             .count();
 
         return !!itemCheckmark;

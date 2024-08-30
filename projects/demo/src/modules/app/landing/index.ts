@@ -64,7 +64,7 @@ export default class Page implements OnInit {
     }
 
     protected onIntersection(
-        [{isIntersecting, target}]: IntersectionObserverEntry[],
+        {isIntersecting, target}: IntersectionObserverEntry,
         index: number,
     ): void {
         if (isIntersecting) {

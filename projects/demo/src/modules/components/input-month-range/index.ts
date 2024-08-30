@@ -47,15 +47,15 @@ export default class PageComponent extends AbstractExampleTuiControl {
         new TuiMonth(2023, 0),
     ];
 
-    protected min = this.minVariants[0];
-    protected max = this.maxVariants[0];
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
     protected minLength = 0;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiMonth>
     > = [TUI_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     public override cleaner = false;
     public override maxLength = 0;

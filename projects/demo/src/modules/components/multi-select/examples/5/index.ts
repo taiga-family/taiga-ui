@@ -30,5 +30,5 @@ export default class Example {
 
     protected readonly sith: readonly string[] = ['Emperor', 'Darth Vader', 'Darth Maul'];
 
-    protected value: readonly string[] = [this.jedi[0]];
+    protected value: readonly string[] = [this.jedi[0] ?? ''];
 }

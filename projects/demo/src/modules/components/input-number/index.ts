@@ -32,11 +32,11 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
 
     protected readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
 
-    protected min = this.minVariants[0];
+    protected min = this.minVariants[0]!;
 
     protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected step = 0;
 

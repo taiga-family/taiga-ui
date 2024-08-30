@@ -17,7 +17,7 @@ export default class Page {
     protected max = 5;
     protected min = 0;
     protected step = 1;
-    protected size: TuiSizeS = this.sizeVariants[1];
+    protected size: TuiSizeS = this.sizeVariants[1]!;
     protected segments = this.max;
 
     protected get disabled(): boolean {

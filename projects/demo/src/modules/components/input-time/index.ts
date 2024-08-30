@@ -40,7 +40,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         (item: TuiTime) => String(item) === '06:00' || item > TuiTime.currentLocal(),
     ];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected readonly itemSizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
         's',
@@ -48,14 +48,14 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'l',
     ];
 
-    protected itemSize: TuiSizeL | TuiSizeS = this.itemSizeVariants[1];
+    protected itemSize: TuiSizeL | TuiSizeS = this.itemSizeVariants[1]!;
 
     protected readonly itemsVariants: ReadonlyArray<readonly TuiTime[]> = [
         [],
         tuiCreateTimePeriods(),
     ];
 
-    protected items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0]!;
 
     protected strict = false;
 
@@ -65,7 +65,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'HH:MM:SS.MSS',
     ];
 
-    protected mode = this.modeVariants[0];
+    protected mode = this.modeVariants[0]!;
 
     public override cleaner = false;
 

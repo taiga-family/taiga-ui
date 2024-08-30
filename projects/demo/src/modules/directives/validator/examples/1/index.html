@@ -12,7 +12,7 @@
         />
     </tui-select>
     <tui-input
-        *ngIf="type === items[0]; else phone"
+        *ngIf="type === items[0]!; else phone"
         formControlName="contact"
         [tuiValidator]="validator"
     >
