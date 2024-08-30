@@ -1,9 +1,11 @@
-<tui-input
-    minlength="5"
-    [(ngModel)]="value"
->
-    Input example
-</tui-input>
+<tui-textfield>
+    <label tuiLabel>Input example</label>
+    <input
+        minlength="5"
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+</tui-textfield>
 <label
     tuiLabel
     class="tui-space_vertical-4"
@@ -16,11 +18,4 @@
     />
     <small>Checkbox example</small>
 </label>
-<button
-    appearance="material-button"
-    size="s"
-    tuiButton
-    type="button"
->
-    Submit
-</button>
+<button tuiButton>Submit</button>

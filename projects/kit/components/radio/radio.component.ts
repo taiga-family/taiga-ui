@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
@@ -39,6 +40,8 @@ export class TuiRadioComponent implements DoCheck {
     public size: TuiSizeS = this.options.size;
 
     public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.options.appearance(this.el);
+        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
+            ? this.options.appearance
+            : this.options.appearance(this.el);
     }
 }

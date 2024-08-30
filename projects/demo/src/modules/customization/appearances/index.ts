@@ -1,6 +1,7 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
@@ -21,11 +22,10 @@ export default class Page {
     };
 
     protected readonly mixins = [
-        '.wrapper-hover(@ruleset)',
-        '.wrapper-active(@ruleset)',
-        '.wrapper-readonly(@ruleset)',
-        '.wrapper-disabled(@ruleset)',
-        '.wrapper-focus(@ruleset)',
-        '.wrapper-invalid(@ruleset)',
+        '.appearance-hover(@ruleset)',
+        '.appearance-active(@ruleset)',
+        '.appearance-disabled(@ruleset)',
+        '.appearance-focus(@ruleset)',
     ];
+    protected readonly routes = DemoRoute;
 }

@@ -4,7 +4,7 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiRadioOptions {
-    readonly appearance: TuiStringHandler<HTMLInputElement>;
+    readonly appearance: TuiStringHandler<HTMLInputElement> | string;
     readonly size: TuiSizeS;
 }
 
