@@ -6,27 +6,30 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiActiveZone} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiSlideInLeft} from '@taiga-ui/core/animations';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {
-    TUI_ANIMATIONS_SPEED,
-    TUI_COMMON_ICONS,
     TUI_DROPDOWN_COMPONENT,
-    TUI_ICON_END,
-    tuiButtonOptionsProvider,
     tuiDropdown,
     TuiDropdownDirective,
     TuiDropdownOpen,
-    TuiIcons,
-    TuiScrollbar,
-    tuiSlideInLeft,
-    tuiToAnimationOptions,
     TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/dropdown';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TUI_COMMON_ICONS,
+    TUI_ICON_END,
+} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
+    imports: [PolymorpheusOutlet, TuiScrollbar],
     template: `
         <tui-scrollbar [style.height.%]="100">
             <ng-container *polymorpheusOutlet="directive.content" />
@@ -34,7 +37,6 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     `,
     styleUrls: ['./drawer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [PolymorpheusOutlet, TuiScrollbar],
     animations: [tuiSlideInLeft],
     hostDirectives: [TuiActiveZone],
     host: {
@@ -52,7 +54,6 @@ class TuiDrawerComponent {
     selector: '[tuiIconButton][tuiDrawer]',
     template: '<ng-template><ng-content /></ng-template>',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
     providers: [
         tuiButtonOptionsProvider({appearance: 'secondary'}),
         {
@@ -64,6 +65,7 @@ class TuiDrawerComponent {
             useValue: TuiDrawerComponent,
         },
     ],
+    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiDrawer implements DoCheck {
     private readonly x = inject(TUI_COMMON_ICONS).close;
