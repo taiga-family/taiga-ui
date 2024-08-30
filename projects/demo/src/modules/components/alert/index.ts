@@ -56,19 +56,19 @@ export default class Page {
 
     protected readonly appearanceVariants = ['info', 'success', 'error', 'warning'];
 
-    protected appearance = this.appearanceVariants[0];
+    protected appearance = this.appearanceVariants[0]!;
 
     protected readonly iconVariants = ['Default', '@tui.heart'];
 
-    protected icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0]!;
 
     protected readonly contentVariants = ['String', 'Component'];
 
-    protected content = this.contentVariants[0];
+    protected content = this.contentVariants[0]!;
 
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
 
-    protected autoClose = this.autoCloseVariants[1];
+    protected autoClose = this.autoCloseVariants[1]!;
 
     protected closeable = true;
 

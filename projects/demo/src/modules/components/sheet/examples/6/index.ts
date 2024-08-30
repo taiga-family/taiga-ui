@@ -36,7 +36,7 @@ export default class Example {
     }
 
     protected onIntersection(
-        [{isIntersecting}]: IntersectionObserverEntry[],
+        {isIntersecting}: IntersectionObserverEntry,
         {classList}: HTMLElement,
     ): void {
         classList.toggle('_visible', isIntersecting);

@@ -51,10 +51,10 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected readonly routes = DemoRoute;
     protected readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
-    protected theme = this.themes[0];
+    protected theme = this.themes[0]!;
 
     protected readonly iconVariants = ['', '@tui.search', 'Interactive content'];
-    protected selectedIcon = this.iconVariants[0];
+    protected selectedIcon = this.iconVariants[0]!;
 
     protected readonly iconLeftVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
@@ -84,7 +84,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected readonly inputModeVariants: readonly string[] = ['text', 'numeric'];
 
-    protected inputMode = this.inputModeVariants[0];
+    protected inputMode = this.inputModeVariants[0]!;
 
     protected readonly customContentVariants = [
         '',
@@ -92,7 +92,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
         '<span>LongTextContent</span>',
     ];
 
-    protected customContentSelected = this.customContentVariants[0];
+    protected customContentSelected = this.customContentVariants[0]!;
 
     protected password = '';
 
@@ -110,7 +110,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
 
     protected readonly hintContentVariants: readonly string[] = ['', 'Ivan Ivanov'];
 
@@ -120,11 +120,11 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected invalid = false;
 
-    protected hintContent = this.hintContentVariants[0];
+    protected hintContent = this.hintContentVariants[0]!;
 
-    protected hintDirection = this.hintDirectionVariants[0];
+    protected hintDirection = this.hintDirectionVariants[0]!;
 
-    protected hintAppearance = this.hintAppearanceVariants[0];
+    protected hintAppearance = this.hintAppearanceVariants[0]!;
 
     protected get customContent(): string | null {
         return this.customContentSelected;
@@ -145,7 +145,7 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     }
 
     protected get isMaterial(): boolean {
-        return this.theme === this.themes[2];
+        return this.theme === this.themes[2]!;
     }
 
     protected get placeholder(): string {

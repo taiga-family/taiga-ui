@@ -15,9 +15,9 @@
             <a
                 *tuiRepeatTimes="let index of items.length - max"
                 tuiOption
-                [href]="items[index].link"
+                [href]="items[index]?.link"
             >
-                {{ items[index].caption }}
+                {{ items[index]?.caption }}
             </a>
         </tui-data-list>
     </ng-template>
@@ -26,9 +26,9 @@
             *tuiItem
             appearance="link"
             tuiLink
-            [href]="items[index + items.length - max].link"
+            [href]="items[index + items.length - max]?.link"
         >
-            {{ items[index + items.length - max].caption }}
+            {{ items[index + items.length - max]?.caption }}
         </a>
     </ng-container>
 </tui-breadcrumbs>

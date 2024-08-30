@@ -20,15 +20,15 @@ export default class Page {
         [13769, 10172, 3018, 2592],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
 
     protected readonly maxVariants = [100, 10000, 50000];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected readonly sizeVariants: readonly TuiSizeXL[] = ['m', 'l', 'xl'];
 
-    protected size = this.sizeVariants[0];
+    protected size = this.sizeVariants[0]!;
 
     protected minLabel = '0%';
 

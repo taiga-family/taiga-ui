@@ -28,5 +28,5 @@ export default class Example {
 
     protected readonly hintContent = ({
         $implicit,
-    }: TuiContext<readonly TuiPoint[]>): number => $implicit[0][1];
+    }: TuiContext<readonly TuiPoint[]>): number => $implicit[0]?.[1] ?? 0;
 }

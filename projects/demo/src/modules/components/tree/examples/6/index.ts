@@ -60,8 +60,13 @@ export default class Example {
         item: TreeNode,
         map: Map<TreeNode, boolean>,
     ): boolean | null => {
+        let result: boolean | null = null;
         const flat = flatten(item);
-        const result = !!map.get(flat[0]);
+        const key = flat[0]!;
+
+        if (key) {
+            result = !!map.get(key);
+        }
 
         for (const item of flat) {
             if (result !== !!map.get(item)) {

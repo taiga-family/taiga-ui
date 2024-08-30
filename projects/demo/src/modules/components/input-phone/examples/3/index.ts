@@ -138,7 +138,7 @@ export default class Example {
     private isFullMatch(response: readonly User[], value: string): boolean {
         return (
             response.length === 1 &&
-            (String(response[0]) === value || response[0].phone === value)
+            (String(response[0]) === value || response[0]?.phone === value)
         );
     }
 }

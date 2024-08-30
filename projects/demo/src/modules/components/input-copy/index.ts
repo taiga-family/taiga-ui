@@ -33,10 +33,10 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly successMessageVariants = ['Copied', 'Template'];
 
-    protected successMessage = this.successMessageVariants[0];
+    protected successMessage = this.successMessageVariants[0]!;
 
-    protected messageDirection = this.hintDirectionVariants[0];
-    protected messageMode = this.hintAppearanceVariants[0];
+    protected messageDirection = this.hintDirectionVariants[0]!;
+    protected messageMode = this.hintAppearanceVariants[0]!;
 
     public readonly control = new FormControl('', Validators.required);
 

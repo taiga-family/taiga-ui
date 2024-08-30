@@ -22,7 +22,7 @@ export default class Example implements TuiConfirmData {
     protected readonly exampleService = import('./examples/import/service.md?raw');
 
     public readonly appearances = ['primary', 'accent', 'secondary'];
-    public appearance = this.appearances[0];
+    public appearance = this.appearances[0]!;
     public no = 'No';
     public yes = 'Yes';
 

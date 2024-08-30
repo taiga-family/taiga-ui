@@ -46,7 +46,7 @@ export default class Page {
         (item) => String(item).length,
     ];
 
-    protected badgeHandler = this.badgeHandlerVariants[0];
+    protected badgeHandler = this.badgeHandlerVariants[0]!;
 
     protected disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<ItemWithBadge | string>
@@ -56,13 +56,13 @@ export default class Page {
         (item) => (Number(item.valueOf()) || 0) >= 30,
     ];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
-    protected items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0]!;
 
     protected control = new FormControl(this.initialItems);
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
 }

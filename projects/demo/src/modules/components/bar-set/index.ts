@@ -31,5 +31,5 @@ export default class Page {
         [237, -50, 10, 5, 1],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
 }

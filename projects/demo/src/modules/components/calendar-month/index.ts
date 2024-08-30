@@ -39,8 +39,8 @@ export default class Example {
         new TuiMonth(2019, 4),
     ];
 
-    protected min = this.minVariants[0];
-    protected max = this.maxVariants[0];
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
     protected maxLength = 0;
     protected minLength = 0;
 
@@ -48,7 +48,7 @@ export default class Example {
         TuiBooleanHandler<TuiMonth>
     > = [TUI_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected readonly valueVariants: ReadonlyArray<TuiMonth | TuiMonthRange> = [
         TuiDay.currentLocal(),
@@ -66,6 +66,6 @@ export default class Example {
         new TuiYear(2007),
     ];
 
-    protected year = this.yearVariants[0];
+    protected year = this.yearVariants[0]!;
     protected readonly routes = DemoRoute;
 }

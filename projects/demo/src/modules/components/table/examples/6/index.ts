@@ -18,7 +18,7 @@ export default class Example {
     protected data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
 
     protected get columns(): string[] {
-        return Object.keys(this.data[0]);
+        return Object.keys(this.data[0] ?? {});
     }
 
     protected addColumn(): void {

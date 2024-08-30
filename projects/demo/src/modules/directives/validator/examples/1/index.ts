@@ -32,7 +32,7 @@ import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/le
 export default class Example {
     protected readonly items = ['Email', 'Phone'];
 
-    protected type = this.items[0];
+    protected type = this.items[0]!;
 
     protected readonly group = new FormGroup({
         name: new FormControl('', Validators.required),

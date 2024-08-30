@@ -70,7 +70,7 @@ describe('Tabs', () => {
 
             expect(firstTab).toEqual(component.tabsDirective.activeElement);
 
-            secondTab.click();
+            secondTab?.click();
             fixture.detectChanges();
 
             expect(firstTab).not.toEqual(component.tabsDirective.activeElement);
@@ -82,14 +82,14 @@ describe('Tabs', () => {
                 (tab) => tab.nativeElement as HTMLButtonElement,
             );
 
-            expect(firstTab.classList.contains('_active')).toBeTruthy();
-            expect(secondTab.classList.contains('_active')).toBeFalsy();
+            expect(firstTab?.classList.contains('_active')).toBeTruthy();
+            expect(secondTab?.classList.contains('_active')).toBeFalsy();
 
-            secondTab.click();
+            secondTab?.click();
             fixture.detectChanges();
 
-            expect(firstTab.classList.contains('_active')).toBeFalsy();
-            expect(secondTab.classList.contains('_active')).toBeTruthy();
+            expect(firstTab?.classList.contains('_active')).toBeFalsy();
+            expect(secondTab?.classList.contains('_active')).toBeTruthy();
         });
     });
 });

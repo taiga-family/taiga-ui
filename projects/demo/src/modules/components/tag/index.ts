@@ -47,11 +47,11 @@ export default class Page {
         'warning',
     ];
 
-    protected status = this.statusVariants[0];
+    protected status = this.statusVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
+    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[1]!;
 
     protected readonly leftContentVariants = ['', 'Error icon'];
 

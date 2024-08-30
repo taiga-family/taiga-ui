@@ -25,11 +25,11 @@ export default class Page {
         [13769, 12367, 10172, 3018, 2592],
     ];
 
-    protected value = this.valueVariants[0];
+    protected value = this.valueVariants[0]!;
 
     protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
 
-    protected activeItemIndex = this.activeItemIndexVariants[0];
+    protected activeItemIndex = this.activeItemIndexVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         'xs',
@@ -39,7 +39,7 @@ export default class Page {
         'xl',
     ];
 
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
 
     protected readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContext<number>>
@@ -49,14 +49,14 @@ export default class Page {
         ({$implicit}) => this.format($implicit),
     ];
 
-    protected hintContent = this.contentVariants[0];
+    protected hintContent = this.contentVariants[0]!;
 
     protected getPercent(index: number): string {
-        return `${tuiRound((100 * this.value[index]) / tuiSum(...this.value), 2)} %`;
+        return `${tuiRound((100 * (this.value[index] ?? 0)) / tuiSum(...this.value), 2)} %`;
     }
 
     protected format(index: number): string {
-        return `${tuiFormatNumber(this.value[index])} ${tuiGetCurrencySymbol(
+        return `${tuiFormatNumber(this.value[index] ?? 0)} ${tuiGetCurrencySymbol(
             TuiCurrency.Ruble,
         )}`;
     }

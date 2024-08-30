@@ -136,7 +136,7 @@ describe('ComboBox', () => {
             testComponent.defaultInputs = false;
             fixture.detectChanges();
 
-            expect(getValue()!.nativeElement.textContent.trim()).toBe(ITEMS[0].trait);
+            expect(getValue()!.nativeElement.textContent.trim()).toBe(ITEMS[0]?.trait);
         });
     });
 

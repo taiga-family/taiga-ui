@@ -38,11 +38,11 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
 
     protected enabledVariants = [true, 'getter this.input.length > 2'];
 
-    protected enabledSelected = this.enabledVariants[0];
+    protected enabledSelected = this.enabledVariants[0]!;
 
     protected readonly contentVariants = ['Template', 'Custom string'];
 
-    protected content = this.contentVariants[0];
+    protected content = this.contentVariants[0]!;
 
     protected get template(): boolean {
         return this.content === 'Template';

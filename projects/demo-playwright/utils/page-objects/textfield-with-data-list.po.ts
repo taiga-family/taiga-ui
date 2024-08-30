@@ -17,7 +17,7 @@ export class TuiTextfieldWithDataListPO {
         const options = await this.getOptions();
 
         for (const optionIndex of indexes) {
-            await options[optionIndex].click();
+            await options[optionIndex]?.click();
         }
     }
 

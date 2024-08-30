@@ -24,7 +24,7 @@ export default class Page {
         'var(--tui-background-neutral-1)',
     ];
 
-    protected size = this.sizeVariants[0];
+    protected size = this.sizeVariants[0]!;
 
     protected disabled = false;
 

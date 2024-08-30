@@ -15,7 +15,7 @@ export default class Page {
     protected index = 0;
     protected length = 8;
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2]!;
     protected activePadding = 1;
     protected sidePadding = 1;
 }

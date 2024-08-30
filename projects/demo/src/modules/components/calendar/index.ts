@@ -46,7 +46,7 @@ export default class Example {
         new TuiDay(1900, 0, 1),
     ];
 
-    protected min = this.minVariants[0];
+    protected min = this.minVariants[0]!;
 
     protected readonly maxVariants = [
         TUI_LAST_DAY,
@@ -54,7 +54,7 @@ export default class Example {
         new TuiDay(2300, 0, 1),
     ];
 
-    protected max = this.maxVariants[0];
+    protected max = this.maxVariants[0]!;
 
     protected readonly minViewedMonthVariants = [
         new TuiMonth(0, 0),
@@ -62,7 +62,7 @@ export default class Example {
         new TuiMonth(1900, 0),
     ];
 
-    protected minViewedMonth = this.minViewedMonthVariants[0];
+    protected minViewedMonth = this.minViewedMonthVariants[0]!;
 
     protected readonly maxViewedMonthVariants = [
         TUI_LAST_DAY,
@@ -70,13 +70,13 @@ export default class Example {
         new TuiMonth(2300, 0),
     ];
 
-    protected maxViewedMonth = this.maxViewedMonthVariants[0];
+    protected maxViewedMonth = this.maxViewedMonthVariants[0]!;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiDay>
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),

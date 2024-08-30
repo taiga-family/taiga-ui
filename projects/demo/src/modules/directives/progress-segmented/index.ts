@@ -29,7 +29,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiProgressBar['size'] = this.sizeVariants[2];
+    protected size: TuiProgressBar['size'] = this.sizeVariants[2]!;
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-background-accent-1)'],
@@ -39,7 +39,7 @@ export default class Page {
             .map((_, index) => `var(--tui-chart-categorical-0${index + 1})`),
     ];
 
-    protected colors: string[] = this.colorsVariants[0];
+    protected colors: string[] = this.colorsVariants[0] ?? [];
 
     protected get computedColors(): string[] {
         return this.colors.slice(0, this.segments);

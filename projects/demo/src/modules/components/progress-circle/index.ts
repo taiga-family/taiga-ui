@@ -38,5 +38,5 @@ export default class Page {
         'url(#gradient)',
     ];
 
-    protected color = this.colorVariants[0];
+    protected color = this.colorVariants[0]!;
 }

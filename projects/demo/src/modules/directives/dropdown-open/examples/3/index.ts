@@ -26,20 +26,20 @@ export default class Example {
     protected ascending = false;
 
     protected onClick(item: string): void {
-        if (this.items[0].includes(item)) {
+        if (this.items[0]?.includes(item)) {
             this.primary = item;
 
             return;
         }
 
-        this.ascending = item === this.items[1][0];
+        this.ascending = item === this.items[1]?.[0];
     }
 
     protected itemIsActive(item: string): boolean {
         return (
             item === this.primary ||
-            (this.ascending && item === this.items[1][0]) ||
-            (!this.ascending && item === this.items[1][1])
+            (this.ascending && item === this.items[1]?.[0]) ||
+            (!this.ascending && item === this.items[1]?.[1])
         );
     }
 }
