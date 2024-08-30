@@ -11,6 +11,7 @@ export * from './card.harness';
 export * from './dialog.harness';
 export * from './dropdown-open.harness';
 export * from './island.harness';
+export * from './link.harness';
 export * from './loader.harness';
 export * from './primitive-textfield.harness';
 export * from './select.harness';
