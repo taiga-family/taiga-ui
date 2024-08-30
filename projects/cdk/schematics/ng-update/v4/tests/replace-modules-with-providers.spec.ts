@@ -22,8 +22,8 @@ import { TuiMarkerIconModule } from "@taiga-ui/kit";
 import { TuiProprietaryRootModule } from "@taiga-ui/proprietary-core";
 
 @NgModule({
-    imports: [ TuiMobileCalendarDialogModule, OldModule, TuiAvatar, TuiAvatar, TuiAvatar, TuiMarkerIconModule],
-    providers: [importProvidersFrom(TuiProprietaryRootModule, TuiAlertModule)]
+    imports: [TuiMobileCalendarDialogModule, TuiProprietaryRootModule, OldModule, TuiAvatar, TuiAvatar, TuiAvatar, TuiMarkerIconModule],
+    providers: [Provider]
 })
 export class Test {
 }`;
@@ -36,8 +36,8 @@ import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { TuiRoot } from "@taiga-ui/core";
 
 @NgModule({
-    imports: [ TuiAvatar],
-    providers: [importProvidersFrom(TuiAlertModule), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
+    imports: [TuiRoot, TuiAvatar],
+    providers: [Provider, NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
 })
 export class Test {
 }`;
@@ -54,13 +54,16 @@ import { TuiRootModule } from "@taiga-ui/core";
         TuiRootModule,
         TuiMobileCalendarDialogModule,
         OldModule
-    ]
+    ],
+    providers: [importProvidersFrom(TuiRootModule, SomeModule)]
 })
 export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
+import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
+import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { TuiRoot } from "@taiga-ui/core";
 
 @Component({
@@ -70,7 +73,7 @@ import { TuiRoot } from "@taiga-ui/core";
     imports: [
         TuiRoot
     ],
-    providers: [tuiProvideMobileCalendar(), newProvider]
+    providers: [importProvidersFrom(SomeModule), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
 })
 export class Test {
 }`;
