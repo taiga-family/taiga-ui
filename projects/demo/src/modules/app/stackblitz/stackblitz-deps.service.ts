@@ -38,7 +38,7 @@ export class StackblitzDepsService {
             this.location.pathname.startsWith('/next/') ||
             this.location.host.endsWith('web.app') ||
             !environment.production
-                ? 'next' // TODO: replace with 'canary' after 4.0.0 release
+                ? 'canary'
                 : `${TUI_VERSION.split('.')[0]}.x.x`;
 
         return {
