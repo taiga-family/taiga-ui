@@ -15,4 +15,8 @@ export class TuiButtonHarness extends TuiComponentHarness {
     public async hasClass(input: string): Promise<boolean> {
         return (await this.host()).hasClass(input);
     }
+
+    public async getSize(): Promise<string | null> {
+        return (await this.host()).getAttribute('data-size');
+    }
 }
