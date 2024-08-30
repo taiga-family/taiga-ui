@@ -175,7 +175,7 @@ export class TuiInputDateTimeComponent
             return;
         }
 
-        const [date, time] = value.split(DATE_TIME_SEPARATOR);
+        const [date = '', time] = value.split(DATE_TIME_SEPARATOR);
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
         const parsedTime =
             time && time.length === this.timeMode.length
