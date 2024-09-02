@@ -51,7 +51,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         [this.today.append({day: -1}), new TuiTime(12, 20)],
     ];
 
-    protected min: TuiDay | [TuiDay, TuiTime] = this.minVariants[0];
+    protected min: TuiDay | [TuiDay, TuiTime] = this.minVariants[0]!;
 
     protected readonly maxVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_LAST_DAY,
@@ -61,7 +61,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         [this.today.append({day: +1}), new TuiTime(16, 20)],
     ];
 
-    protected max: TuiDay | [TuiDay, TuiTime] = this.maxVariants[0];
+    protected max: TuiDay | [TuiDay, TuiTime] = this.maxVariants[0]!;
 
     protected defaultActiveYearMonthVariants = [
         TuiMonth.currentLocal(),
@@ -69,20 +69,20 @@ export default class PageComponent extends AbstractExampleTuiControl {
         new TuiMonth(2017, 2),
     ];
 
-    protected defaultActiveYearMonth = this.defaultActiveYearMonthVariants[0];
+    protected defaultActiveYearMonth = this.defaultActiveYearMonthVariants[0]!;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiDay>
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected readonly itemsVariants = [
         [],
         [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Until today')],
     ];
 
-    protected items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0]!;
 
     protected readonly modeVariants: readonly TuiTimeMode[] = [
         'HH:MM',
@@ -90,7 +90,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'HH:MM:SS.MSS',
     ];
 
-    protected mode = this.modeVariants[0];
+    protected mode = this.modeVariants[0]!;
 
     public override cleaner = false;
 

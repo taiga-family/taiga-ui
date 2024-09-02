@@ -14,6 +14,6 @@ export default class Page {
 
     protected playbackRate = 1;
     protected currentTime = 0;
-    protected volume = this.volumeVariants[0];
+    protected volume = this.volumeVariants[0]!;
     protected paused = true;
 }

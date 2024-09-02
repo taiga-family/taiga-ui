@@ -45,6 +45,7 @@ export const TUI_USED_ICONS = [
     '@tui.minus',
     '@tui.file',
     '@tui.trash',
+    '@tui.phone',
     '@tui.star',
     '@tui.rotate-ccw-square',
     '@tui.arrow-left',

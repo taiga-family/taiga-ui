@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -52,7 +52,7 @@ const TRANSFORM = {
 })
 export class TuiPieChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    private readonly autoIdString = inject(TuiIdService).generate();
+    private readonly autoId = tuiInjectId();
 
     @Input()
     public value: readonly number[] = [];
@@ -85,7 +85,7 @@ export class TuiPieChart {
     }
 
     protected get maskId(): string {
-        return `tui-ring-chart-${this.autoIdString}`;
+        return `tui-ring-chart-${this.autoId}`;
     }
 
     protected get mask(): string | null {

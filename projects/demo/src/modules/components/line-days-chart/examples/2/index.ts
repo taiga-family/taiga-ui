@@ -82,7 +82,7 @@ export default class Example {
                 map((months) => [
                     ...Array.from(
                         {length: TuiMonth.lengthBetween(from, to) + 1},
-                        (_, i) => months[from.append({month: i}).month],
+                        (_, i) => months[from.append({month: i}).month] ?? '',
                     ),
                     '',
                 ]),
@@ -166,7 +166,7 @@ export default class Example {
                         this.isE2E
                             ? initial
                             : Math.max(
-                                  (i ? array[i - 1][1] : initial) +
+                                  (i ? (array[i - 1]?.[1] ?? 0) : initial) +
                                       Math.random() * 10 -
                                       5,
                                   0,

@@ -23,6 +23,7 @@ export const DemoRoute = {
     Amount: '/pipes/amount',
     Emails: '/pipes/emails',
     Appearance: '/directives/appearance',
+    Appearances: '/appearances',
     FluidTypography: '/directives/fluid-typography',
     Chip: '/components/chip',
     Title: '/components/title',

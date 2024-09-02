@@ -119,15 +119,15 @@ describe('rangeCalendarComponent', () => {
 
             const items = getItems();
 
-            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(items[1]?.nativeElement.contains(getCheckmark())).toBe(true);
         });
 
         it('if the value does not fit any range, check the box next to "Other date..."', () => {
-            expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(getItems()[6]?.nativeElement.contains(getCheckmark())).toBe(true);
         });
 
         it('if the value does not fit the range, the range has no tick', () => {
-            expect(getItems()[5].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(getItems()[5]?.nativeElement.contains(getCheckmark())).toBe(false);
         });
 
         it('interval selection takes into account min / max', () => {
@@ -139,7 +139,10 @@ describe('rangeCalendarComponent', () => {
             testComponent.min = min;
             fixture.detectChanges();
 
-            component['onItemSelect'](component.items[5]);
+            if (component.items[5]) {
+                component['onItemSelect'](component.items[5]);
+            }
+
             fixture.detectChanges();
 
             expect(
@@ -180,8 +183,8 @@ describe('rangeCalendarComponent', () => {
             const items = getItems();
 
             expect(items.length).toBe(2);
-            expect(items[0].nativeElement.textContent.trim()).toBe(title);
-            expect(items[1].nativeElement.textContent.trim()).toBe('Other date...');
+            expect(items[0]?.nativeElement.textContent.trim()).toBe(title);
+            expect(items[1]?.nativeElement.textContent.trim()).toBe('Other date...');
         });
 
         it('when redefining intervals, displays appropriate checkbox', () => {
@@ -189,7 +192,10 @@ describe('rangeCalendarComponent', () => {
             const previousMonth = today.append({month: -1});
             const title = 'New interval';
 
-            component['onItemSelect'](component.items[0]);
+            if (component.items[0]) {
+                component['onItemSelect'](component.items[0]);
+            }
+
             fixture.detectChanges();
 
             testComponent.items = [
@@ -200,10 +206,9 @@ describe('rangeCalendarComponent', () => {
 
             const items = getItems();
 
-            expect(items[0].nativeElement.textContent.trim()).toBe(title);
-
-            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
-            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(items[0]?.nativeElement.textContent.trim()).toBe(title);
+            expect(items[0]?.nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1]?.nativeElement.contains(getCheckmark())).toBe(true);
         });
 
         it('if there are ranges with same range dates, displays appropriate checkbox when switching between them', () => {
@@ -214,19 +219,25 @@ describe('rangeCalendarComponent', () => {
                 new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '1'),
                 new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), '2'),
             ];
+
             fixture.detectChanges();
 
-            component['onItemSelect'](component.items[1]);
+            if (component.items[1]) {
+                component['onItemSelect'](component.items[1]);
+            }
+
             fixture.detectChanges();
 
             const items = getItems();
 
-            expect(items[0].nativeElement.contains(getCheckmark())).toBe(false);
-            expect(items[1].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(items[0]?.nativeElement.contains(getCheckmark())).toBe(false);
+            expect(items[1]?.nativeElement.contains(getCheckmark())).toBe(true);
         });
 
         it('should update selectedActivePeriod after onItemSelect', () => {
-            component['onItemSelect'](component.items[1]);
+            if (component.items[1]) {
+                component['onItemSelect'](component.items[1]);
+            }
 
             expect(testComponent.component?.selectedActivePeriod?.toString()).toBe(
                 'Today',

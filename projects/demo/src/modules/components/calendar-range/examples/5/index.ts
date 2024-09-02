@@ -33,7 +33,7 @@ export default class Example {
     protected value: TuiDayRange | null = this.default.range;
 
     public get default(): TuiDayRangePeriod {
-        return this.items[0];
+        return this.items[0]!;
     }
 
     public get isDefault(): boolean {
@@ -57,9 +57,9 @@ export default class Example {
             case this.default:
                 return null;
             case this.items[1]:
-                return this.items[2];
+                return this.items[2]!;
             case this.items[2]:
-                return this.items[3];
+                return this.items[3]!;
             case this.items[3]:
                 return null;
             default:

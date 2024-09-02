@@ -73,7 +73,7 @@
             <button
                 tuiLink
                 type="button"
-                (click)="onDayClick(items[0].day)"
+                (click)="items[0] && onDayClick(items[0].day)"
             >
                 {{ items[0] }}
             </button>

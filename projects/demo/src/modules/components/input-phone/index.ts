@@ -29,7 +29,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 export default class PageComponent extends AbstractExampleTuiControl {
     protected countryCodes = ['+7', '+850', '+1', '+52'];
 
-    protected countryCode = this.countryCodes[0];
+    protected countryCode = this.countryCodes[0]!;
 
     protected phoneMasksAfterCountryCode = [
         '(###) ###-##-##',
@@ -37,7 +37,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         '### ###-####',
     ];
 
-    protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0];
+    protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0]!;
 
     public override cleaner = false;
 

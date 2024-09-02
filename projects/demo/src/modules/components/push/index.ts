@@ -18,6 +18,6 @@ export default class Page {
     protected type = '';
 
     protected readonly timestampVars = ['', 'A moment ago', 123456789];
-    protected timestamp = this.timestampVars[0];
+    protected timestamp = this.timestampVars[0]!;
     protected readonly routes = DemoRoute;
 }

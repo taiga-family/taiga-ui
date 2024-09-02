@@ -19,7 +19,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     providers: [tuiProvide(TuiTextfieldDirective, TuiSelect)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
-        '[id]': 'el.id || id',
+        '[id]': 'el.id || autoId',
         '[attr.data-mode]': 'mode',
         '[class._empty]': 'value === ""',
         '(input)': '0',

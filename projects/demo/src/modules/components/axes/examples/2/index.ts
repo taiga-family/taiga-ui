@@ -51,7 +51,7 @@ export default class Example {
     }
 
     protected getSetName(index: number): string {
-        return this.setNames[index];
+        return this.setNames[index] ?? '';
     }
 
     @tuiPure

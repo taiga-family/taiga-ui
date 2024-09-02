@@ -48,7 +48,7 @@ export default class Example {
     protected onClick(index: number): void {
         if (this.isEnabled(index)) {
             this.alerts
-                .open(`Category spending: ${tuiFormatNumber(this.data[index])} ₽`, {
+                .open(`Category spending: ${tuiFormatNumber(this.data[index] ?? 0)} ₽`, {
                     label: this.labels[index],
                 })
                 .subscribe();

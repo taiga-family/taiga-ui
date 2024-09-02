@@ -282,7 +282,7 @@ describe('InputTime', () => {
             pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();
 
             expect(testComponent.control.value?.toString().trim()).toBe(
-                TIMES[6].toString(),
+                TIMES[6]?.toString(),
             );
         });
 

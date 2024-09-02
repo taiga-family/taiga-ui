@@ -199,7 +199,7 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        this.value = options[0];
+        this.value = options[0] ?? null;
         this.updateSearch(null);
         this.close();
     }

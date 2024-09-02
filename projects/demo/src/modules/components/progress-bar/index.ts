@@ -25,7 +25,7 @@ export default class Page {
         'xxl',
     ];
 
-    protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2];
+    protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2]!;
 
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-background-accent-1)',
@@ -35,5 +35,5 @@ export default class Page {
         'linear-gradient(to right, var(--tui-chart-categorical-02), var(--tui-chart-categorical-14), var(--tui-chart-categorical-12))',
     ];
 
-    protected color = this.colorVariants[0];
+    protected color = this.colorVariants[0]!;
 }

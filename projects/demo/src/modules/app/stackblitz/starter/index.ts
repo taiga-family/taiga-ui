@@ -40,8 +40,8 @@ export default class Page implements OnInit {
                 description:
                     'A starter with Taiga UI library\nDocumentation: https://taiga-ui.dev',
                 files: {
-                    [appPrefix`app.template.html`]: appTemplate,
-                    [appPrefix`app.component.ts`]: appComponent,
+                    [appPrefix`app.template.html`]: appTemplate ?? '',
+                    [appPrefix`app.component.ts`]: appComponent ?? '',
                     [appPrefix`app.style.less`]:
                         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
                 },

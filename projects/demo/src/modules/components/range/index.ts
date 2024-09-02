@@ -17,7 +17,7 @@ export default class Page {
 
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
-    protected size: TuiSizeS = this.sizeVariants[1];
+    protected size: TuiSizeS = this.sizeVariants[1]!;
 
     protected min = 0;
 

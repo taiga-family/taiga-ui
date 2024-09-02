@@ -30,6 +30,6 @@ export default class Example {
     });
 
     protected getItemIcon(title: string): string {
-        return getIcon[title];
+        return getIcon[title] ?? '';
     }
 }

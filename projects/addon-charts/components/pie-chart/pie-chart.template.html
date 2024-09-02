@@ -40,7 +40,7 @@
             [style.color]="'var(--tui-chart-categorical-0' + index + ')'"
             [tuiHint]="hintContent"
             [tuiHintContext]="{$implicit: index}"
-            [tuiPieChart]="segments[index]"
+            [tuiPieChart]="segments[index] || [0, 0]"
             (tuiHoveredChange)="onHovered($event, index)"
         />
     </g>

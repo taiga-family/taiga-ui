@@ -1,5 +1,5 @@
 import {Directive, inject, Input, TemplateRef, ViewChild} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk/services';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
@@ -18,11 +18,10 @@ import {AbstractTuiControl} from './control';
     },
 })
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
-    private readonly idService = inject(TuiIdService);
-
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
     protected readonly datalist: TemplateRef<any> | null = null;
 
+    protected readonly autoId = tuiInjectId();
     protected readonly el = tuiInjectElement<HTMLSelectElement>();
     protected readonly host = inject<H>(TUI_TEXTFIELD_HOST);
     protected readonly control = inject(AbstractTuiControl);
@@ -35,7 +34,7 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
     public placeholder = '';
 
     protected get id(): string {
-        return this.el.id || this.idService.generate();
+        return this.el.id || this.autoId;
     }
 
     protected get emptyOption(): boolean {

@@ -34,11 +34,11 @@ export default class Example {
         ],
     ];
 
-    protected items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0]!;
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    protected size: TuiSizeL = this.sizeVariants[0];
+    protected size: TuiSizeL = this.sizeVariants[0]!;
 
     protected readonly examples = [
         {name: 'Basic'},

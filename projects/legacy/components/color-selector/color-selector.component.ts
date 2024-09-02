@@ -117,7 +117,7 @@ export class TuiColorSelectorComponent {
     }
 
     public onIndexChange(index: number): void {
-        this.currentStop = this.stopsKeys[index];
+        this.currentStop = this.stopsKeys[index] ?? 0;
     }
 
     public onColorChange(color: [number, number, number, number]): void {
@@ -192,7 +192,7 @@ export class TuiColorSelectorComponent {
     private addStop(stop: number): void {
         const closest = this.stopsKeys.reduce(
             (prev, curr) => (Math.abs(curr - stop) < Math.abs(prev - stop) ? curr : prev),
-            this.stopsKeys[0],
+            this.stopsKeys[0] ?? 0,
         );
 
         this.stops.set(stop, this.getStop(closest));
@@ -203,7 +203,7 @@ export class TuiColorSelectorComponent {
     private removeStop(stop: number): void {
         this.stops.delete(stop);
         this.stops = new Map(this.stops);
-        this.currentStop = this.stopsKeys[0];
+        this.currentStop = this.stopsKeys[0] ?? 0;
     }
 
     private replaceStop(removed: number, added: number): void {
