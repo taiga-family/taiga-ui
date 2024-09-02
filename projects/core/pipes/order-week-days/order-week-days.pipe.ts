@@ -4,15 +4,12 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-type WeekDays<T> = [T, T, T, T, T, T, T];
-
-function convertToSundayFirstWeekFormat<T>(weekDaysNames: WeekDays<T>): WeekDays<T> {
+function convertToSundayFirstWeekFormat(
+    weekDaysNames: readonly string[],
+): readonly string[] {
     const sundayIndex = weekDaysNames.length - 1;
 
-    return [
-        weekDaysNames[sundayIndex],
-        ...weekDaysNames.slice(0, sundayIndex),
-    ] as WeekDays<T>;
+    return [weekDaysNames[sundayIndex], ...weekDaysNames.slice(0, sundayIndex)];
 }
 
 @Pipe({
@@ -22,18 +19,15 @@ function convertToSundayFirstWeekFormat<T>(weekDaysNames: WeekDays<T>): WeekDays
 export class TuiOrderWeekDaysPipe implements PipeTransform {
     private readonly firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 
-    public transform<T>(
-        mondayFirstWeekDays$: Observable<WeekDays<T>>,
-    ): Observable<WeekDays<T>> {
+    public transform(
+        mondayFirstWeekDays$: Observable<readonly string[]>,
+    ): Observable<readonly string[]> {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
-            map(
-                (weekDays) =>
-                    [
-                        ...weekDays.slice(this.firstDayOfWeekIndex),
-                        ...weekDays.slice(0, this.firstDayOfWeekIndex),
-                    ] as WeekDays<T>,
-            ),
+            map((weekDays) => [
+                ...weekDays.slice(this.firstDayOfWeekIndex),
+                ...weekDays.slice(0, this.firstDayOfWeekIndex),
+            ]),
         );
     }
 }
