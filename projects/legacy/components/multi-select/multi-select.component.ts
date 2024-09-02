@@ -128,6 +128,9 @@ export class TuiMultiSelectComponent<T>
     @Input()
     public rows: TuiMultiSelectOptions<T>['rows'] = this.options.rows;
 
+    @Input()
+    public autoColor = false;
+
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 

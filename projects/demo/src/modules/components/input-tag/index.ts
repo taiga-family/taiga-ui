@@ -64,6 +64,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected tagValidator = this.tagValidatorVariants[0]!;
 
+    protected autoColor = false;
+
     protected inputHidden = false;
 
     protected readonly disabledItemHandlerVariants: Array<
