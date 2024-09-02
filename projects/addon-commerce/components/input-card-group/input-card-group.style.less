@@ -18,6 +18,10 @@
     :host-context(tui-root._mobile) {
         inline-size: @width-mobile;
     }
+
+    &:has(:-webkit-autofill) {
+        background: var(--tui-service-autofill-background);
+    }
 }
 
 .t-outline {
@@ -117,15 +121,13 @@
     &:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
         caret-color: var(--tui-text-primary) !important;
-        border-color: var(--tui-service-autofill-background) !important;
-        box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
+        transition: background-color 600000s 0s;
     }
 
     &&&_card {
         // @note: (&&&_) it's increasing css cascade priority
-        &:not(.t-input_hidden),
-        &:not(.t-input_hidden)::placeholder,
-        &:not(.t-input_hidden):-webkit-autofill {
+        &:not(.t-input_visible),
+        &:not(.t-input_visible):not(.t-input_collapsed):-webkit-autofill {
             caret-color: var(--tui-text-primary);
             color: transparent !important;
             -webkit-text-fill-color: transparent !important;
@@ -181,11 +183,13 @@
     .transition(all);
     .text-overflow();
 
+    position: relative;
     margin: 1.125rem 1rem;
     font: var(--tui-font-text-m);
     line-height: 1.25rem;
     color: var(--tui-text-secondary);
 
+    input:-webkit-autofill ~ &,
     &_raised {
         font-size: 0.8156rem;
         transform: translateY(-0.7em);
