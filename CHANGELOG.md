@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/taiga-family/taiga-ui/compare/v4.4.1...v4.5.0) (2024-09-02)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCard` fix autofill ([#8728](https://github.com/taiga-family/taiga-ui/issues/8728))
+  ([226a763](https://github.com/taiga-family/taiga-ui/commit/226a763ea0b6d0636de1b5b78f98f2209cfa81f0))
+- **addon-doc:** code glitch in ssr ([#8705](https://github.com/taiga-family/taiga-ui/issues/8705))
+  ([59712a2](https://github.com/taiga-family/taiga-ui/commit/59712a2988a2c7db699d86c901e6b9f3ac48b6a9))
+- **core:** `Dropdown` triggers change detection too frequently
+  ([#8738](https://github.com/taiga-family/taiga-ui/issues/8738))
+  ([8bdcb19](https://github.com/taiga-family/taiga-ui/commit/8bdcb190e1e445b4e6de06caa7c368341a2cf66d))
+- **core:** `Icons` fix mask shorthand ([#8711](https://github.com/taiga-family/taiga-ui/issues/8711))
+  ([a292756](https://github.com/taiga-family/taiga-ui/commit/a29275647565b0b2c37ac281f7c58f996d85c5ba))
+- **core:** `Textfield` should not change color of chevron on hover if `readOnly` is enabled
+  ([#8754](https://github.com/taiga-family/taiga-ui/issues/8754))
+  ([2e21615](https://github.com/taiga-family/taiga-ui/commit/2e21615e732112ea28fe2ab5f3c25d5c753c51bb))
+- **kit:** `CalendarRange` shows end of range ([#8774](https://github.com/taiga-family/taiga-ui/issues/8774))
+  ([6604fd6](https://github.com/taiga-family/taiga-ui/commit/6604fd68f5688450aa40778b0326434535fe3bf7))
+- **kit:** `InputPhoneInternational` should not allow to open dropdown if `readOnly=true`
+  ([#8764](https://github.com/taiga-family/taiga-ui/issues/8764))
+  ([fcca2fa](https://github.com/taiga-family/taiga-ui/commit/fcca2fa6815dfcde4a5f6f9eac66958fb3cc9af9))
+- **kit:** CalendarRange not switch to selected item ([#8784](https://github.com/taiga-family/taiga-ui/issues/8784))
+  ([ad138ab](https://github.com/taiga-family/taiga-ui/commit/ad138abed3656a19e5ecb05576f76e3306855eff))
+- **kit:** contain width for img in avatar ([#8723](https://github.com/taiga-family/taiga-ui/issues/8723))
+  ([c9014a2](https://github.com/taiga-family/taiga-ui/commit/c9014a23e0ff2076b5dcbbfa2340428a89292e2f))
+- **layout:** `Navigation` fix style specificity for `AsideItem`
+  ([#8790](https://github.com/taiga-family/taiga-ui/issues/8790))
+  ([77a1eea](https://github.com/taiga-family/taiga-ui/commit/77a1eea69fdc3d956215d28a721ea72e2d26d596))
+- **legacy:** `InputDateRange` triggers cyclic change detection ticks
+  ([#8706](https://github.com/taiga-family/taiga-ui/issues/8706))
+  ([c7bc044](https://github.com/taiga-family/taiga-ui/commit/c7bc04403b7b379e184bad2fa978b62bcc9a500c))
+- **legacy:** restore `autoColor` for `InputTag` and `MultiSelect`
+  ([#8783](https://github.com/taiga-family/taiga-ui/issues/8783))
+  ([e5477c4](https://github.com/taiga-family/taiga-ui/commit/e5477c401e5b3cb046c24fa2b64993917376c20f))
+- **legacy:** trigger transform placeholder when using autofill
+  ([#8779](https://github.com/taiga-family/taiga-ui/issues/8779))
+  ([464dee4](https://github.com/taiga-family/taiga-ui/commit/464dee4c6bdb5dc47f8a9b657d188788fd5e6531))
+
+### 🚀 Features
+
+- **addon-commerce:** `ThumbnailCard` add `<img>` support
+  ([#8789](https://github.com/taiga-family/taiga-ui/issues/8789))
+  ([9fdb499](https://github.com/taiga-family/taiga-ui/commit/9fdb499790e3a7bf16a94162d6e01d26c19e252e))
+- **addon-doc:** improve ui for link to sample ([#8406](https://github.com/taiga-family/taiga-ui/issues/8406))
+  ([e5beb47](https://github.com/taiga-family/taiga-ui/commit/e5beb47843a578b8232431d9246daafdb0591165))
+- **cdk:** add `tuiInjectId` ([#8730](https://github.com/taiga-family/taiga-ui/issues/8730))
+  ([6b3bbb0](https://github.com/taiga-family/taiga-ui/commit/6b3bbb09d6c9917776ceb5c83ffaedbbe2c82dc9))
+- **core:** `Textfield` add `ViewContainerRef` ([#8781](https://github.com/taiga-family/taiga-ui/issues/8781))
+  ([5fee17a](https://github.com/taiga-family/taiga-ui/commit/5fee17a23c7ed83d3e8ea6befc49e804b3fa16ad))
+- improve style for A11y ([#8408](https://github.com/taiga-family/taiga-ui/issues/8408))
+  ([918e11f](https://github.com/taiga-family/taiga-ui/commit/918e11f0115a8fea8f6c9662a69ba40e2b60eb35))
+- **kit:** `InputPassword` add new version, deprecate legacy
+  ([#8786](https://github.com/taiga-family/taiga-ui/issues/8786))
+  ([7a655de](https://github.com/taiga-family/taiga-ui/commit/7a655defe64cd89fc39b2da9092fe63b08b7d048))
+- **kit:** `InputPhoneInternational` can be customized with `Icon` / `Tooltip`
+  ([#8750](https://github.com/taiga-family/taiga-ui/issues/8750))
+  ([b20459b](https://github.com/taiga-family/taiga-ui/commit/b20459b326a917c64ad10da54d68905af5720042))
+- **layout:** `Navigation` add `Drawer` ([#8757](https://github.com/taiga-family/taiga-ui/issues/8757))
+  ([cc64434](https://github.com/taiga-family/taiga-ui/commit/cc6443477b3c1941185c9e6556dfed38301d6731))
+- **testing:** adds size harness for button ([#8760](https://github.com/taiga-family/taiga-ui/issues/8760))
+  ([71e654f](https://github.com/taiga-family/taiga-ui/commit/71e654f75f447f494ce67503d8b45307dda249cf))
+
 ### [4.4.1](https://github.com/taiga-family/taiga-ui/compare/v4.4.0...v4.4.1) (2024-08-27)
 
 ### 🐞 Bug Fixes
