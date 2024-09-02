@@ -1,34 +1,29 @@
-<form [formGroup]="testForm">
-    <tui-input-password
-        formControlName="testValue"
-        tuiTextfieldSize="s"
-    >
-        Type a password
-        <input
-            placeholder="Make it secure!"
-            tuiTextfieldLegacy
-        />
-    </tui-input-password>
-    <tui-input-password
-        formControlName="testValue"
-        tuiTextfieldSize="m"
-        class="tui-space_top-2"
-        [tuiTextfieldLabelOutside]="true"
-    >
-        Type a password
-        <input
-            placeholder="Make it secure!"
-            tuiTextfieldLegacy
-        />
-    </tui-input-password>
-    <tui-input-password
-        formControlName="testValue"
-        class="tui-space_top-2"
-    >
-        Type a password
-        <input
-            placeholder="Make it secure!"
-            tuiTextfieldLegacy
-        />
-    </tui-input-password>
-</form>
+<tui-textfield
+    #textfield
+    tuiTextfieldSize="s"
+>
+    <input
+        tuiInputPassword
+        [placeholder]="textfield.focused() ? 'Make it secure!' : 'Type a password'"
+        [(ngModel)]="password"
+    />
+</tui-textfield>
+<tui-textfield
+    tuiTextfieldSize="m"
+    class="tui-space_vertical-4"
+>
+    <label tuiLabel>Type a password</label>
+    <input
+        placeholder="Make it secure!"
+        tuiInputPassword
+        [(ngModel)]="password"
+    />
+</tui-textfield>
+<tui-textfield>
+    <label tuiLabel>Type a password</label>
+    <input
+        placeholder="Make it secure!"
+        tuiInputPassword
+        [(ngModel)]="password"
+    />
+</tui-textfield>

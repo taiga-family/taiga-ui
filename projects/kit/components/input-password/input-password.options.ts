@@ -1,39 +1,26 @@
 import type {Provider} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-/**
- * @deprecated use {@link TuiInputPassword} instead
- */
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
-        hide: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
-        show: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
+        hide: TuiStringHandler<TuiSizeL | TuiSizeS> | string;
+        show: TuiStringHandler<TuiSizeL | TuiSizeS> | string;
     }>;
 }
 
-/**
- * @deprecated use {@link TuiInputPassword} instead
- */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     icons: {
-        hide: () => '@tui.eye',
-        show: () => '@tui.eye-off',
+        hide: '@tui.eye-off',
+        show: '@tui.eye',
     },
 };
 
-/**
- * @deprecated use {@link TuiInputPassword} instead
- */
 export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateToken(
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
 );
 
-/**
- * @deprecated use {@link TuiInputPassword} instead
- */
 export function tuiInputPasswordOptionsProvider(
     options: Partial<TuiInputPasswordOptions>,
 ): Provider {

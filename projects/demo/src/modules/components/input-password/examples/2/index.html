@@ -1,10 +1,9 @@
 <form [formGroup]="testForm">
-    <tui-input-password
-        formControlName="testValue"
-        tuiHintAppearance="dark"
-        tuiHintContent
-        tuiHintDirection="right"
-    >
-        Type a password
-    </tui-input-password>
+    <tui-textfield>
+        <label tuiLabel>Type a password</label>
+        <input
+            formControlName="testValue"
+            tuiInputPassword
+        />
+    </tui-textfield>
 </form>

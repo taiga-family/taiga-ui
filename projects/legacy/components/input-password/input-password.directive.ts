@@ -6,6 +6,9 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputPasswordComponent} from './input-password.component';
 
+/**
+ * @deprecated use {@link TuiInputPassword} instead
+ */
 @Directive({
     selector: 'tui-input-password',
     providers: [tuiAsTextfieldHost(TuiInputPasswordDirective)],
