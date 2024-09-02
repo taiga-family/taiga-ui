@@ -113,7 +113,6 @@ export default class Example {
         'Curaçao',
         'Cyprus',
         'Czechia',
-        // eslint-disable-next-line @typescript-eslint/quotes
         "Côte d'Ivoire",
         'Denmark',
         'Djibouti',
@@ -176,7 +175,6 @@ export default class Example {
         'Korea',
         'Kuwait',
         'Kyrgyzstan',
-        // eslint-disable-next-line @typescript-eslint/quotes
         "Lao People's Democratic Republic",
         'Latvia',
         'Lebanon',

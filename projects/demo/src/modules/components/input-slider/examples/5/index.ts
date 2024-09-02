@@ -25,7 +25,6 @@ export default class Example {
     }: TuiContext<number>): number | string => {
         switch ($implicit) {
             case this.max:
-                // eslint-disable-next-line @typescript-eslint/quotes
                 return "Digits can't describe my love!";
             case this.min:
                 return 'Just a label for min value';
