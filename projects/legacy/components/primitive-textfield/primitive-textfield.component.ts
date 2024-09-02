@@ -62,6 +62,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
             'options.appearance() === "table" || controller.labelOutside',
         '(focusin)': 'onFocused(true)',
         '(focusout)': 'onFocused(false)',
+        '(transitionstart.capture)': 'transitionStartHandler($event)',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -269,6 +270,15 @@ export class TuiPrimitiveTextfieldComponent
 
         event.preventDefault();
         nativeFocusableElement.focus();
+    }
+
+    protected transitionStartHandler({propertyName, target}: TransitionEvent): void {
+        const matchedAutofill =
+            propertyName.includes('box-shadow') && (target as Element)?.matches('input');
+
+        if (matchedAutofill) {
+            this.onAutofilled(!this.autofilled);
+        }
     }
 
     protected onAutofilled(autofilled: boolean): void {
