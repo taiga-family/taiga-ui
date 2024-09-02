@@ -4,9 +4,6 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-/**
- * @deprecated: drop in v5.0
- */
 export interface TuiTextfieldOptions {
     readonly hintOnDisabled: boolean;
     readonly iconCleaner: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
@@ -27,9 +24,6 @@ export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
  */
 export const TUI_TEXTFIELD_OPTIONS = tuiCreateToken(TUI_TEXTFIELD_DEFAULT_OPTIONS);
 
-/**
- * @deprecated: drop in v5.0
- */
 export function tuiTextfieldOptionsProvider(
     options: Partial<TuiTextfieldOptions>,
 ): Provider {
