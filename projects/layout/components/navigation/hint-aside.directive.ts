@@ -12,7 +12,7 @@ import {TuiAsideComponent} from './aside.component';
     providers: [tuiHintOptionsProvider({direction: 'right'})],
     hostDirectives: [TuiHintDirective],
 })
-export class TuiHintAside {
+export class TuiHintAsideDirective {
     private readonly el = tuiInjectElement();
     private readonly aside = inject(TuiAsideComponent);
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});

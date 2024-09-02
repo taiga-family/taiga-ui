@@ -19,7 +19,7 @@ import {
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
 
-import {TuiHintAside} from './hint-aside.directive';
+import {TuiHintAsideDirective} from './hint-aside.directive';
 
 @Directive({
     standalone: true,
@@ -30,7 +30,7 @@ import {TuiHintAside} from './hint-aside.directive';
         provideDropdown(),
     ],
     hostDirectives: [
-        TuiHintAside,
+        TuiHintAsideDirective,
         TuiDropdownManual,
         TuiDropdownPositionSided,
         TuiButton,

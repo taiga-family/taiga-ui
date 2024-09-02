@@ -51,7 +51,7 @@ class TuiDrawerComponent {
 
 @Component({
     standalone: true,
-    selector: '[tuiIconButton][tuiDrawer]',
+    selector: '[tuiIconButton][tuiNavigationDrawer]',
     template: '<ng-template><ng-content /></ng-template>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -67,7 +67,7 @@ class TuiDrawerComponent {
     ],
     hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
 })
-export class TuiDrawer implements DoCheck {
+export class TuiDrawerDirective implements DoCheck {
     private readonly x = inject(TUI_COMMON_ICONS).close;
     private readonly icons = inject(TuiIcons);
     private readonly dropdown = tuiDropdown(null);
