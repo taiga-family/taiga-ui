@@ -6,13 +6,15 @@ import {
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiFallbackValueProvider, tuiInjectElement, tuiIsString} from '@taiga-ui/cdk';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
     TUI_TEXTFIELD_OPTIONS,
-    TuiIcon,
     TuiTextfieldContent,
     TuiTextfieldDirective,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/components/textfield';
 import {TuiTooltip} from '@taiga-ui/kit/directives';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
@@ -21,6 +23,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 @Component({
     standalone: true,
     selector: 'input[tuiInputPassword]',
+    imports: [TuiIcon, TuiTooltip, TuiTextfieldContent],
     template: `
         <tui-icon
             *tuiTextfieldContent
@@ -32,12 +35,11 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
         />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiTextfieldDirective],
     providers: [tuiFallbackValueProvider('')],
+    hostDirectives: [TuiTextfieldDirective],
     host: {
         '[type]': 'hidden() ? "password" : "text"',
     },
-    imports: [TuiIcon, TuiTooltip, TuiTextfieldContent],
 })
 export class TuiInputPassword {
     private readonly options = inject(TUI_INPUT_PASSWORD_OPTIONS);

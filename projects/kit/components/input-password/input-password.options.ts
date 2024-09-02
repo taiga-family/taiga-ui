@@ -5,8 +5,8 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
-        hide: TuiStringHandler<TuiSizeS | TuiSizeL> | string;
-        show: TuiStringHandler<TuiSizeS | TuiSizeL> | string;
+        hide: TuiStringHandler<TuiSizeL | TuiSizeS> | string;
+        show: TuiStringHandler<TuiSizeL | TuiSizeS> | string;
     }>;
 }
 
