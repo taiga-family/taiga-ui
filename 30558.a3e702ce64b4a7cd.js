@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30558],{30558:e=>{e.exports=".example-viewport {\n    height: 12.5rem;\n    border: 1px solid;\n    overscroll-behavior: none;\n}\n\n.example-item {\n    height: 3.125rem;\n}\n"}}]);

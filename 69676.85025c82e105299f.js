@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[69676],{69676:e=>{e.exports=".icons {\n    display: flex;\n    gap: 1rem;\n    margin-bottom: 1rem;\n}\n"}}]);

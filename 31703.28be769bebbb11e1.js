@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31703],{31703:e=>{e.exports='```html\n<tui-loader [showLoader]="loader">Let off some steam, Bennett</tui-loader>\n```\n'}}]);

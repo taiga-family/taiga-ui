@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18076],{18076:o=>{o.exports='```html\n<tui-color-picker [(color)]="color"></tui-color-picker>\n```\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[38170],{38170:e=>{e.exports=".table {\n    width: 100%;\n}\n"}}]);
