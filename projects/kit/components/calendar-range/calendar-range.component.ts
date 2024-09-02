@@ -114,7 +114,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public get computedMonth(): TuiMonth {
-        return this.value ? this.value.to : this.defaultViewedMonth;
+        return this.value ? this.value.from : this.defaultViewedMonth;
     }
 
     public ngOnChanges(): void {
