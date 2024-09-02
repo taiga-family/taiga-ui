@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48832],{48832:n=>{n.exports="```ts\nimport {FormControl, FormGroup} from '@angular/forms';\n\n// ...\n\n@Component({\n  // ...\n})\nexport class Example {\n  testForm = new FormGroup({\n    testValue: new FormControl(),\n  });\n}\n```\n"}}]);
