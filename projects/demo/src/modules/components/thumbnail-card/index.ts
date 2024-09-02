@@ -14,7 +14,13 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Sizes', 'A cool one', 'Backgrounds'];
+    protected readonly examples = [
+        'Sizes',
+        'A cool one',
+        'Backgrounds',
+        'External colored icon',
+    ];
+
     protected readonly iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
     protected iconStart = this.iconVariants[0]!;
     protected iconEnd = this.iconVariants[0]!;
