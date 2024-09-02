@@ -24,7 +24,7 @@ export function tuiFilesAccepted(control?: AbstractControl | null): File[] {
 }
 
 export function tuiFormatSize(
-    units: [string, string, string],
+    units: readonly [string, string, string],
     size?: number,
 ): string | null {
     if (size === undefined) {
