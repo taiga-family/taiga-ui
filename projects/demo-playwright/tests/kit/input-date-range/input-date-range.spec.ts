@@ -168,6 +168,17 @@ test.describe('InputDateRange', () => {
                 '07-item-and-calendar-interactions.png',
             );
         });
+
+        test('Calendar shows end of period, when selected any range', async ({page}) => {
+            await tuiGoto(page, 'components/input-date-range/API?items$=1');
+
+            await inputDateRange.textfield.click();
+            await inputDateRange.selectItem(0);
+
+            await inputDateRange.textfield.click();
+
+            await expect(example).toHaveScreenshot('09-calendar-shows-end-of-period.png');
+        });
     });
 
     test.describe('Examples', () => {
