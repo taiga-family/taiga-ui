@@ -141,7 +141,9 @@ export default class Example {
                 return filtered;
             }
 
-            this.onSelected(filtered[0]);
+            if (filtered[0]) {
+                this.onSelected(filtered[0]);
+            }
 
             return [];
         }),

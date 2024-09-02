@@ -59,7 +59,7 @@ export default class Example {
             map((months) => [
                 ...Array.from(
                     {length: TuiMonth.lengthBetween(from, to) + 1},
-                    (_, i) => months[from.append({month: i}).month],
+                    (_, i) => months[from.append({month: i}).month] ?? '',
                 ),
                 null,
             ]),
@@ -75,6 +75,6 @@ export default class Example {
             .fill(0)
             .reduce<
                 ReadonlyArray<[TuiDay, number]>
-            >((array, _, i) => [...array, [from.append({day: i}), this.isE2E ? 100 : (i ? array[i - 1][1] : 100) + Math.random() * 10 - 5]], []);
+            >((array, _, i) => [...array, [from.append({day: i}), this.isE2E ? 100 : (i ? (array[i - 1]?.[1] ?? 0) : 100) + Math.random() * 10 - 5]], []);
     }
 }

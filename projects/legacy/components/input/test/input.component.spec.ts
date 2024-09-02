@@ -174,7 +174,7 @@ describe('Input', () => {
                 .getByAutomationId('tui-data-list-wrapper__option')!
                 .nativeElement.click();
 
-            expect(testComponent.control.value).toBe(ITEMS[0].toString());
+            expect(testComponent.control.value).toBe(ITEMS[0]?.toString());
         });
     });
 
@@ -289,7 +289,7 @@ describe('Input', () => {
         });
 
         it('focus in the dropdown', () => {
-            expect(tuiActiveText()).toBe(ITEMS[0].toString());
+            expect(tuiActiveText()).toBe(ITEMS[0]?.toString());
         });
 
         it('entering characters brings focus to the input field', () => {

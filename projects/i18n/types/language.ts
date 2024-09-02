@@ -5,7 +5,7 @@ export interface TuiLanguageCore {
     close: string;
     countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;
-    months: [
+    months: readonly [
         January: string,
         February: string,
         March: string,
@@ -20,7 +20,7 @@ export interface TuiLanguageCore {
         December: string,
     ];
     nothingFoundMessage: string;
-    shortWeekDays: [
+    shortWeekDays: readonly [
         Monday: string,
         Tuesday: string,
         Wednesday: string,
@@ -29,19 +29,19 @@ export interface TuiLanguageCore {
         Saturday: string,
         Sunday: string,
     ];
-    spinTexts: [previous: string, next: string];
+    spinTexts: readonly [previous: string, next: string];
 }
 
 export interface TuiLanguageKit {
     cancel: string;
-    copyTexts: [copy: string, copied: string];
-    countTexts: [plus: string, minus: string];
+    copyTexts: readonly [copy: string, copied: string];
+    countTexts: readonly [plus: string, minus: string];
     dateTexts: {
         DMY: string;
         MDY: string;
         YMD: string;
     };
-    digitalInformationUnits: [
+    digitalInformationUnits: readonly [
         short_byte: string,
         short_kilobyte: string,
         short_megabyte: string,
@@ -63,21 +63,25 @@ export interface TuiLanguageKit {
         formatRejectionReason: string;
         maxSizeRejectionReason: string;
     };
-    mobileCalendarTexts: [choose_day: string, choose_range: string, choose_days: string];
+    mobileCalendarTexts: readonly [
+        choose_day: string,
+        choose_range: string,
+        choose_days: string,
+    ];
     more: string;
     multiSelectTexts: {
         all: string;
         none: string;
     };
     otherDate: string;
-    pagination: [previous_page: string, next_page: string];
-    passwordTexts: [show_password: string, hide_password: string];
+    pagination: readonly [previous_page: string, next_page: string];
+    passwordTexts: readonly [show_password: string, hide_password: string];
     confirm: {
         no: string;
         yes: string;
     };
-    range: [from: string, to: string];
-    shortCalendarMonths: [
+    range: readonly [from: string, to: string];
+    shortCalendarMonths: readonly [
         January: string,
         February: string,
         March: string,
@@ -108,8 +112,8 @@ export interface TuiLanguageKit {
 }
 
 export interface TuiLanguageCommerce {
-    cardExpiry: [expiry: string, expiry_date: string];
-    cardNumber: [number: string, card_number: string];
+    cardExpiry: readonly [expiry: string, expiry_date: string];
+    cardNumber: readonly [number: string, card_number: string];
 }
 
 export interface TuiLanguageTable {

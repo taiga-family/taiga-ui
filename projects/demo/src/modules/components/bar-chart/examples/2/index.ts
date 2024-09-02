@@ -34,10 +34,13 @@ export default class Example {
     protected readonly labelsY = ['0', '10 000'];
     protected readonly appearances = ['dark', 'error'];
 
-    protected appearance = this.appearances[0];
+    protected appearance = this.appearances[0]!;
 
     protected readonly hint = ({$implicit}: TuiContext<number>): string =>
         this.value
-            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, '')
+            .reduce(
+                (result, set) => `${result}$${tuiFormatNumber(set[$implicit] ?? 0)}\n`,
+                '',
+            )
             .trim();
 }

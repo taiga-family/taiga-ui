@@ -59,13 +59,13 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TUI_LAST_DAY,
     ];
 
-    protected min: TuiDay = this.dayVariants[0];
+    protected min: TuiDay = this.dayVariants[0]!;
 
     protected readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
 
     protected minLength: TuiDayLike | null = null;
 
-    protected max = this.dayVariants[this.dayVariants.length - 1];
+    protected max = this.dayVariants[this.dayVariants.length - 1]!;
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
@@ -77,14 +77,14 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TuiBooleanHandler<TuiDay>
     > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     protected readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],
         tuiCreateDefaultDayRangePeriods(),
     ];
 
-    protected items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0]!;
 
     protected readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
         TuiMonth.currentLocal(),
@@ -92,7 +92,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         new TuiMonth(2007, 5),
     ];
 
-    protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
+    protected defaultViewedMonth = this.defaultViewedMonthVariants[0]!;
 
     public override cleaner = false;
     public control = new FormControl<TuiDayRange | null>(null, Validators.required);

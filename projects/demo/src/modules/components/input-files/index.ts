@@ -40,10 +40,10 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected rejected: readonly File[] = [];
-    protected maxFileSize = this.maxFileSizeVariants[2];
+    protected maxFileSize = this.maxFileSizeVariants[2]!;
 
     public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    public override size = this.sizeVariants[0];
+    public override size = this.sizeVariants[0]!;
     public readonly control = new FormControl<File[] | null>(null);
     public readonly files$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),

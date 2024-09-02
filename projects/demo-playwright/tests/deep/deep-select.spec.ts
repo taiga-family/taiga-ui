@@ -57,7 +57,7 @@ test.describe('Deep / Select', () => {
                 if (cleaner) {
                     await cleaner.click();
                 } else {
-                    await options[0].focus();
+                    await options[0]?.focus();
                     await page.keyboard.down('Enter');
                 }
 

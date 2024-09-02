@@ -8,6 +8,8 @@ import {
     forwardRef,
     inject,
     Input,
+    ViewChild,
+    ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -79,6 +81,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
+    @ViewChild('vcr', {read: ViewContainerRef, static: true})
+    public readonly vcr?: ViewContainerRef;
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
     public readonly el?: ElementRef<HTMLInputElement>;

@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import type {AfterViewInit, QueryList} from '@angular/core';
+import {type AfterViewInit, type QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -113,6 +113,12 @@ export class TuiLineDaysChart implements AfterViewInit {
         });
     }
 
+    public get hint():
+        | PolymorpheusContent<TuiContext<[TuiDay, number]>>
+        | PolymorpheusContent<TuiContext<readonly TuiPoint[]>> {
+        return this.hintDirective?.hint ?? this.hintContent;
+    }
+
     public ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
@@ -146,6 +152,30 @@ export class TuiLineDaysChart implements AfterViewInit {
         });
     }
 
+    public raise(index: number, {value}: TuiLineChart): void {
+        const x = value[index]?.[0] || 0;
+        const month = this.getDay(x);
+
+        if (!month) {
+            return;
+        }
+
+        if (this.hintDirective) {
+            this.hintDirective.raise(month);
+        } else {
+            this.onHovered(month);
+        }
+    }
+
+    public getContext(index: number, {value}: TuiLineChart): unknown {
+        const x = value[index]?.[0] || 0;
+        const day = this.getDay(x);
+
+        return this.hintDirective && day
+            ? this.hintDirective.getContext(day)
+            : this.getHintContext(x, this.value);
+    }
+
     protected get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
@@ -154,18 +184,12 @@ export class TuiLineDaysChart implements AfterViewInit {
         return this.months.length * (this.value[0]?.[0].daysCount || 0);
     }
 
-    protected get hint():
-        | PolymorpheusContent<TuiContext<[TuiDay, number]>>
-        | PolymorpheusContent<TuiContext<readonly TuiPoint[]>> {
-        return this.hintDirective?.hint ?? this.hintContent;
-    }
-
     @tuiPure
     protected getHintContext(
         x: number,
         value: ReadonlyArray<[TuiDay, number]>,
-    ): [TuiDay, number] {
-        return value[x - (value[0]?.[0]?.day || 0) + 1];
+    ): [TuiDay, number] | null {
+        return value[x - (value[0]?.[0]?.day || 0) + 1] ?? null;
     }
 
     protected readonly daysStringify: TuiStringHandler<number> = (index) => {
@@ -183,32 +207,8 @@ export class TuiLineDaysChart implements AfterViewInit {
         return index - offset;
     }
 
-    protected raise(index: number, {value}: TuiLineChart): void {
-        const x = value[index]?.[0] || 0;
-        const month = this.getDay(x);
-
-        if (!month) {
-            return;
-        }
-
-        if (this.hintDirective) {
-            this.hintDirective.raise(month);
-        } else {
-            this.onHovered(month);
-        }
-    }
-
     protected getWidth(index: number): number {
         return (this.getDay(index)?.daysCount || 0) * this.months.length;
-    }
-
-    protected getContext(index: number, {value}: TuiLineChart): unknown {
-        const x = value[index]?.[0] || 0;
-        const day = this.getDay(x);
-
-        return this.hintDirective && day
-            ? this.hintDirective.getContext(day)
-            : this.getHintContext(x, this.value);
     }
 
     @tuiPure

@@ -17,7 +17,7 @@ export default class Page {
         '',
     ];
 
-    protected color = this.colorVariants[0];
+    protected color = this.colorVariants[0]!;
 
     protected degrees = 90;
 }

@@ -20,10 +20,11 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
                 ].map(tuiRawLoad),
             );
 
-        const [angularJson, tsconfig] = tuiTryParseMarkdownCodeBlock(configsContent);
-        const [mainTs] = tuiTryParseMarkdownCodeBlock(mainTsContent);
-        const [indexHtml] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
-        const [globalStyles] = tuiTryParseMarkdownCodeBlock(stylesContent);
+        const [angularJson = '', tsconfig = ''] =
+            tuiTryParseMarkdownCodeBlock(configsContent);
+        const [mainTs = ''] = tuiTryParseMarkdownCodeBlock(mainTsContent);
+        const [indexHtml = ''] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
+        const [globalStyles = ''] = tuiTryParseMarkdownCodeBlock(stylesContent);
 
         return {angularJson, tsconfig, mainTs, indexHtml, globalStyles};
     }

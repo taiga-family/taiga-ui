@@ -46,7 +46,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly separatorVariants = [',', ';', /[\d]/, /[\s,]/];
 
-    protected separator = this.separatorVariants[0];
+    protected separator = this.separatorVariants[0]!;
 
     protected readonly iconVariants: readonly string[] = ['@tui.search'];
 
@@ -62,7 +62,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         (item) => item !== 'mail',
     ];
 
-    protected tagValidator = this.tagValidatorVariants[0];
+    protected tagValidator = this.tagValidatorVariants[0]!;
 
     protected inputHidden = false;
 
@@ -70,7 +70,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TuiBooleanHandler<TuiStringifiableItem<string> | string>
     > = [TUI_FALSE_HANDLER, (item) => String(item).startsWith('T')];
 
-    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0]!;
 
     public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
         's',
@@ -79,7 +79,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
+        this.sizeVariants[this.sizeVariants.length - 1]!;
 
     public readonly control = new FormControl(
         ['John Cleese', 'Eric Idle', 'Michael Palin'],

@@ -32,7 +32,7 @@
                 <ng-template>
                     <tui-input-number
                         [formControl]="control"
-                        [tuiTextfieldPostfix]="currency | tuiCurrency"
+                        [tuiTextfieldPostfix]="currency || '' | tuiCurrency"
                     >
                         Type a sum
                     </tui-input-number>

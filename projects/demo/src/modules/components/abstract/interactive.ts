@@ -3,7 +3,7 @@ export abstract class AbstractExampleTuiInteractive {
 
     public readonly textAlignVariants: readonly string[] = ['left', 'right'];
 
-    public textAlign = this.textAlignVariants[0];
+    public textAlign = this.textAlignVariants[0]!;
 
     public focusable = true;
 

@@ -12,7 +12,7 @@ import {TuiButton} from '@taiga-ui/core';
 })
 export default class Page {
     protected appearances = ['primary', 'secondary', 'flat'];
-    protected appearance = this.appearances[0];
+    protected appearance = this.appearances[0]!;
 
     protected states: readonly TuiInteractiveState[] = ['hover', 'active', 'disabled'];
     protected state: TuiInteractiveState | null = null;

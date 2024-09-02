@@ -48,9 +48,7 @@ export class TuiLineChart {
     private readonly hover$ = new Subject<number>();
     private readonly autoId = tuiInjectId();
 
-    protected readonly hintDirective = inject(TuiLineChartHint, {
-        optional: true,
-    });
+    protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
 
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
@@ -165,8 +163,10 @@ export class TuiLineChart {
 
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
-            this.hintDirective?.getContext(this.value.indexOf($implicit), this) ||
-            $implicit
+            (this.hintDirective?.getContext(
+                this.value.indexOf($implicit),
+                this,
+            ) as readonly TuiPoint[]) ?? $implicit
         );
     }
 

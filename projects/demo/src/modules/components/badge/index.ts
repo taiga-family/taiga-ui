@@ -52,7 +52,7 @@ export default class Page {
         'neutral',
     ];
 
-    protected appearance = this.appearanceVariants[0];
+    protected appearance = this.appearanceVariants[0]!;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
         's',
@@ -61,8 +61,8 @@ export default class Page {
         'xl',
     ];
 
-    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
+    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1]!;
 
     protected contentTypeVariants = ['text', 'with icon', 'image'];
-    protected contentType = this.contentTypeVariants[0];
+    protected contentType = this.contentTypeVariants[0]!;
 }

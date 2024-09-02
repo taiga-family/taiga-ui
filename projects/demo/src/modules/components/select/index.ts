@@ -68,7 +68,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly valueTemplateVariants = ['', 'Template'];
 
-    protected selectedValueTemplate = this.valueTemplateVariants[0];
+    protected selectedValueTemplate = this.valueTemplateVariants[0]!;
 
     protected readonly identityMatcherVariants: ReadonlyArray<
         TuiIdentityMatcher<Account>
@@ -77,7 +77,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         (item1, item2) => item1.balance === item2.balance,
     ];
 
-    protected identityMatcher = this.identityMatcherVariants[0];
+    protected identityMatcher = this.identityMatcherVariants[0]!;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
@@ -85,7 +85,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public readonly iconVariants = ['', '@tui.pie-chart', '@tui.credit-card'];
 
-    public override iconStart = this.iconVariants[0];
+    public override iconStart = this.iconVariants[0]!;
 
     public control = new FormControl<Account | null>(null, Validators.required);
 

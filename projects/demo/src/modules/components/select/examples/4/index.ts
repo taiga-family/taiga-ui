@@ -23,7 +23,7 @@ export default class Example {
         ...inject<readonly string[]>('Pythons' as any),
     ];
 
-    protected value = this.pythons[0];
+    protected value = this.pythons[0]!;
 
     protected addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);
