@@ -156,7 +156,7 @@
         "glob": "10.4.5",
         "husky": "9.1.5",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.9",
+        "lint-staged": "15.2.10",
         "local-web-server": "5.4.0",
         "ng-morph": "4.6.4",
         "ng-packagr": "16.2.3",
