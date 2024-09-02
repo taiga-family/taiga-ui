@@ -1,8 +1,9 @@
 import {TuiAsideComponent} from './aside.component';
 import {TuiAsideGroupComponent} from './aside-group.component';
 import {TuiAsideItemDirective} from './aside-item.directive';
+import {TuiDrawerDirective} from './drawer.component';
 import {TuiHeaderComponent} from './header.component';
-import {TuiHintAside} from './hint-aside.directive';
+import {TuiHintAsideDirective} from './hint-aside.directive';
 import {TuiLogoComponent} from './logo.component';
 import {TuiMainComponent} from './main.component';
 import {TuiNavComponent} from './nav.component';
@@ -15,5 +16,6 @@ export const TuiNavigation = [
     TuiAsideGroupComponent,
     TuiAsideItemDirective,
     TuiNavComponent,
-    TuiHintAside,
+    TuiHintAsideDirective,
+    TuiDrawerDirective,
 ] as const;

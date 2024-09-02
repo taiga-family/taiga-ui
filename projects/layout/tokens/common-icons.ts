@@ -1,16 +1,33 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
-const COMMON_ICONS: TuiCommonIcons = {
+const LAYOUT_ICONS: TuiLayoutIcons = {
     filter: '@tui.filter',
+    grid: '@tui.layout-grid',
 };
 
-export interface TuiCommonIcons {
+export interface TuiLayoutIcons {
     readonly filter: string;
+    readonly grid: string;
 }
 
-export const TUI_COMMON_ICONS = tuiCreateToken(COMMON_ICONS);
+export const TUI_LAYOUT_ICONS = tuiCreateToken(LAYOUT_ICONS);
 
-export function tuiCommonIconsProvider(icons: Partial<TuiCommonIcons>): Provider {
-    return tuiProvideOptions(TUI_COMMON_ICONS, icons, COMMON_ICONS);
+export function tuiLayoutIconsProvider(icons: Partial<TuiLayoutIcons>): Provider {
+    return tuiProvideOptions(TUI_LAYOUT_ICONS, icons, LAYOUT_ICONS);
 }
+
+/**
+ * @deprecated use {@link TUI_LAYOUT_ICONS} instead
+ */
+export const TUI_COMMON_ICONS = TUI_LAYOUT_ICONS;
+
+/**
+ * @deprecated use {@link tuiLayoutIconsProvider} instead
+ */
+export const tuiCommonIconsProvider = tuiLayoutIconsProvider;
+
+/**
+ * @deprecated use {@link TuiLayoutIcons} instead
+ */
+export interface TuiCommonIcons extends TuiLayoutIcons {}
