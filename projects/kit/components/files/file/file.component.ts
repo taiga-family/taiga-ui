@@ -139,7 +139,7 @@ export class TuiFile {
     @tuiPure
     private calculateFileSize$(
         file: TuiFileLike,
-        units$: Observable<[string, string, string]>,
+        units$: Observable<readonly [string, string, string]>,
     ): Observable<string | null> {
         return units$.pipe(map((units) => this.options.formatSize(units, file.size)));
     }

@@ -9,7 +9,7 @@ import {tuiFormatSize} from '../files.utils';
 
 export interface TuiFileOptions extends TuiAppearanceOptions {
     readonly formatSize: (
-        units: [string, string, string],
+        units: readonly [string, string, string],
         size?: number,
     ) => string | null;
     readonly icons: Record<
