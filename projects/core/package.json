@@ -27,9 +27,9 @@
         "@ng-web-apis/common": "^4.2.1",
         "@ng-web-apis/mutation-observer": "^4.2.1",
         "@taiga-ui/cdk": "^4.4.1",
-        "@taiga-ui/event-plugins": "^4.0.1",
+        "@taiga-ui/event-plugins": "^4.0.2",
         "@taiga-ui/i18n": "^4.4.1",
-        "@taiga-ui/polymorpheus": "^4.6.4",
+        "@taiga-ui/polymorpheus": "^4.7.0",
         "rxjs": ">=7.0.0",
         "tslib": "^2.7.0"
     },
