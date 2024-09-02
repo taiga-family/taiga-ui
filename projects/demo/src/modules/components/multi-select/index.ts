@@ -103,6 +103,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected tagValidator = this.tagValidatorVariants[0]!;
 
+    protected autoColor = false;
+
     protected readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContext<readonly Account[]>>
     > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
