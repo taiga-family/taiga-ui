@@ -19,8 +19,8 @@
         inline-size: @width-mobile;
     }
 
-    &:has(:-webkit-autofill) {
-        background: var(--tui-service-autofill-background);
+    &&&:has(:-webkit-autofill) {
+        background: var(--tui-service-autofill-background) !important;
     }
 }
 
@@ -126,8 +126,8 @@
 
     &&&_card {
         // @note: (&&&_) it's increasing css cascade priority
-        &:not(.t-input_visible),
-        &:not(.t-input_visible):not(.t-input_collapsed):-webkit-autofill {
+        &:not(:-webkit-autofill):not(:placeholder-shown),
+        &.t-input_filled {
             caret-color: var(--tui-text-primary);
             color: transparent !important;
             -webkit-text-fill-color: transparent !important;
