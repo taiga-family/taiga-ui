@@ -38,9 +38,9 @@ export class TuiAppearance {
     protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
 
     // TODO: refactor to signal inputs after Angular update
-    readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
-    readonly state = signal<TuiInteractiveState | null>(null);
-    readonly focus = signal<boolean | null>(null);
+    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
+    public readonly state = signal<TuiInteractiveState | null>(null);
+    public readonly focus = signal<boolean | null>(null);
 
     @Input()
     public set tuiAppearance(appearance: string) {
