@@ -13,7 +13,6 @@
             [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
             [attr.id]="id + '_card'"
             [autocomplete]="autocomplete ? 'cc-number' : 'off'"
-            [class.t-input_collapsed]="cardCollapsed"
             [class.t-input_filled]="card.length"
             [class.t-input_inert]="cardPrefilled"
             [disabled]="disabled()"
