@@ -2,6 +2,7 @@ import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants/version';
 import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
@@ -103,7 +104,7 @@ const PACKAGE_JSON_AFTER = `{
         "@taiga-ui/cdk": "~3.35.0",
         "@taiga-ui/editor": "^4.0.0",
         "@taiga-ui/event-plugins": "^4.0.1",
-        "@taiga-ui/legacy": "4.4.1",
+        "@taiga-ui/legacy": "${TUI_VERSION}",
         "@taiga-ui/polymorpheus": "^4.6.4"
     }
 }`.trim();
