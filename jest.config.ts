@@ -24,14 +24,14 @@ const config: JestConfigWithTsJest = {
             'jest-preset-angular',
             {
                 tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
-                stringifyContentPathRegex: '\\.html$',
+                stringifyContentPathRegex: String.raw`\.html$`,
                 isolatedModules: true,
                 diagnostics: true,
             },
         ],
     },
     transformIgnorePatterns: [
-        'node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito|@ng-web-apis|@taiga-ui\\/event-plugins|@taiga-ui\\/polymorpheus)',
+        String.raw`node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito|@ng-web-apis|@taiga-ui\/event-plugins|@taiga-ui\/polymorpheus)`,
     ],
     testMatch: ['<rootDir>/projects/**/*.spec.ts'],
     testPathIgnorePatterns: ['/demo-cypress/', '/demo-playwright/', '/node_modules/'],

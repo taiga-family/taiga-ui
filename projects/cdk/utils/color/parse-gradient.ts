@@ -23,11 +23,11 @@ export type TuiGradientDirection =
 // https://stackoverflow.com/a/20238168/2706426
 //
 // SETUP CODE
-const COMMA = '\\s*,\\s*'; // Allow space around comma.
+const COMMA = String.raw`\s*,\s*`; // Allow space around comma.
 const HEX = '#(?:[a-f0-9]{6}|[a-f0-9]{3})'; // 3 or 6 character form
-const RGB = '\\(\\s*(?:\\d{1,3}\\s*,\\s*){2}\\d{1,3}\\s*\\)'; // "(1, 2, 3)"
-const RGBA = '\\(\\s*(?:\\d{1,3}\\s*,\\s*){2}\\d{1,3}\\s*,\\s*\\d*\\.?\\d+\\)'; // "(1, 2, 3, 4)"
-const VALUE = '(?:[+-]?\\d*\\.?\\d+)(?:%|[a-z]+)?'; // ".9", "-5px", "100%".
+const RGB = String.raw`\(\s*(?:\d{1,3}\s*,\s*){2}\d{1,3}\s*\)`; // "(1, 2, 3)"
+const RGBA = String.raw`\(\s*(?:\d{1,3}\s*,\s*){2}\d{1,3}\s*,\s*\d*\.?\d+\)`; // "(1, 2, 3, 4)"
+const VALUE = String.raw`(?:[+-]?\d*\.?\d+)(?:%|[a-z]+)?`; // ".9", "-5px", "100%".
 const KEYWORD = '[_a-z-][_a-z0-9-]*'; // "red", "transparent", "border-collapse".
 const COLOR = [
     '(?:',
@@ -43,16 +43,16 @@ const COLOR = [
     ')',
 ];
 const REGEXP_ARRAY = [
-    '\\s*(',
+    String.raw`\s*(`,
     ...COLOR,
     ')',
-    '(?:\\s+',
+    String.raw`(?:\s+`,
     '(',
     VALUE,
     '))?',
     '(?:',
     COMMA,
-    '\\s*)?',
+    String.raw`\s*)?`,
 ];
 
 function getPosition(match: string, stops: number): string {
