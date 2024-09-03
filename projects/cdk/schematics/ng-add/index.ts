@@ -24,14 +24,6 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
 
     removeTaigaSchematicsPackage(tree);
 
-    if (options.addGlobalStyles) {
-        addPackageJsonDependency(tree, {
-            name: '@taiga-ui/styles',
-            version: TAIGA_VERSION,
-            type: NodeDependencyType.Default,
-        });
-    }
-
     if (packages.includes('addon-table') || packages.includes('addon-mobile')) {
         addAngularCdkDep(tree);
     }
