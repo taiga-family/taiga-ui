@@ -22,6 +22,11 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
         });
     });
 
+    addPackageJsonDependency(tree, {
+        name: '@taiga-ui/event-plugins',
+        version: '^4.0.2',
+    });
+
     removeTaigaSchematicsPackage(tree);
 
     if (packages.includes('addon-table') || packages.includes('addon-mobile')) {
