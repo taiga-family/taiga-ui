@@ -1,4 +1,14 @@
 .sticky-example::ng-deep .t-demo {
-    height: 30rem;
+    block-size: 30rem;
     padding: 0 !important;
+
+    .custom-portal {
+        position: sticky;
+        top: 0;
+        height: 30rem;
+        margin-block-end: -30rem;
+        z-index: 10;
+        transform: translate3d(0, 0, 0);
+        pointer-events: none;
+    }
 }

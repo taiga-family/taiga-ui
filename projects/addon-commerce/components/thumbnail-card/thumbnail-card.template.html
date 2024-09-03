@@ -17,6 +17,9 @@
             [icon]="iconEnd"
         />
     </div>
+    <div class="t-left t-icon">
+        <ng-content select="img" />
+    </div>
     <ng-content />
     <ng-container *ngIf="paymentSystem">
         <tui-icon

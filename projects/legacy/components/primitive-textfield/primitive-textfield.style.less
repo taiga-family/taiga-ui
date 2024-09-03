@@ -4,6 +4,12 @@
 .textfield();
 
 :host {
+    ::ng-deep input {
+        // @note: need for listen (transitionstart) event
+        // don't use more than one listener property
+        transition: box-shadow 0.01s;
+    }
+
     &._autofilled {
         &[data-size='s'] .t-placeholder,
         &._label-outside .t-placeholder,

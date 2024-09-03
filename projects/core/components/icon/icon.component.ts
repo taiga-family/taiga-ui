@@ -24,7 +24,7 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
 export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
     protected readonly backgroundSrc = signal<string | null>(null);
-    protected readonly iconSrc = signal<string | null>(
+    protected readonly iconSrc = signal(
         this.resolve(
             inject(TUI_ICON_START, {self: true, optional: true}) ||
                 inject(TUI_ICON_END, {self: true, optional: true}),

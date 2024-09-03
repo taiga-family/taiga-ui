@@ -4,6 +4,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated use {@link TuiInputPassword} instead
+ */
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
         hide: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
@@ -11,6 +14,9 @@ export interface TuiInputPasswordOptions {
     }>;
 }
 
+/**
+ * @deprecated use {@link TuiInputPassword} instead
+ */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     icons: {
         hide: () => '@tui.eye',
@@ -18,10 +24,16 @@ export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     },
 };
 
+/**
+ * @deprecated use {@link TuiInputPassword} instead
+ */
 export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateToken(
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
 );
 
+/**
+ * @deprecated use {@link TuiInputPassword} instead
+ */
 export function tuiInputPasswordOptionsProvider(
     options: Partial<TuiInputPasswordOptions>,
 ): Provider {

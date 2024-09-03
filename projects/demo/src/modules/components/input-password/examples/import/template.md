@@ -1,5 +1,11 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-input-password formControlName="testValue">Type a password</tui-input-password>
+<form [formGroup]="form">
+  <tui-textfield>
+    <label tuiLabel>Type a password</label>
+    <input
+      formControlName="value"
+      tuiInputPassword
+    />
+  </tui-textfield>
 </form>
 ```
