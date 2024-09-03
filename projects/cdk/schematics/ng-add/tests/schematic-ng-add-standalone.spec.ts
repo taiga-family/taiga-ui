@@ -51,6 +51,7 @@ describe('ng-add [Standalone]', () => {
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -77,6 +78,7 @@ describe('ng-add [Standalone]', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
     "@taiga-ui/styles": "${TAIGA_VERSION}"

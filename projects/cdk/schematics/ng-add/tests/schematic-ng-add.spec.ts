@@ -51,6 +51,7 @@ describe('ng-add', () => {
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -77,6 +78,7 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -103,6 +105,7 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
     "@taiga-ui/styles": "${TAIGA_VERSION}"
@@ -238,6 +241,28 @@ describe('ng-add', () => {
         expect(tree.readContent('test/app/app.template.html')).toBe(`<tui-root>
 <app></app>
 </tui-root>`);
+    });
+
+    it('should add root and provider to main module', async () => {
+        const tree = await runner.runSchematic(
+            'ng-add-setup-project',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
+
+        expect(tree.readContent('test/app/app.module.ts'))
+            .toBe(`import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
+import { TuiRoot } from "@taiga-ui/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {NgModule} from '@angular/core';
+import {App} from './app.component';
+
+@NgModule({declarations: [App],
+    imports: [BrowserAnimationsModule, TuiRoot],
+    providers: [NG_EVENT_PLUGINS]
+})
+export class AppModule {}
+`);
     });
 
     afterEach(() => {

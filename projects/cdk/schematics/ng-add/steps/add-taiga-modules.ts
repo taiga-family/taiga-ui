@@ -11,6 +11,7 @@ import type {
 import {
     addImportToComponent,
     addImportToNgModule,
+    addProviderToNgModule,
     createProject,
     getMainModule,
     Node,
@@ -45,6 +46,9 @@ function addTuiModules({
         addImportToNgModule(mainClass, module.name, {unique: true});
         addUniqueImport(mainModulePath, module.name, module.packageName);
     });
+
+    addProviderToNgModule(mainClass, 'NG_EVENT_PLUGINS', {unique: true});
+    addUniqueImport(mainModulePath, 'NG_EVENT_PLUGINS', '@taiga-ui/event-plugins');
 
     context.logger.info(
         `${modules.map((module) => module.name)} was added to ${mainModulePath}`,
