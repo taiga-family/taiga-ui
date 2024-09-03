@@ -3,18 +3,18 @@
 @border-radius: 1rem;
 
 .zoom-controller {
+    display: flex;
     border-radius: @border-radius;
     background: var(--tui-background-neutral-1-pressed);
-    height: var(--tui-height-s);
-    display: flex;
+    block-size: var(--tui-height-s);
     justify-content: space-between;
     align-items: center;
-    max-width: 18rem;
+    max-inline-size: 18rem;
     padding: 0 0.25rem;
     gap: 0.5rem;
 
     @media @tui-mobile {
-        max-width: 100%;
+        max-inline-size: 100%;
     }
 }
 

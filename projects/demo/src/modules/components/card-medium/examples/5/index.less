@@ -1,7 +1,7 @@
 :host {
     display: flex;
     gap: 1.2rem;
-    min-width: 40.625rem;
+    min-inline-size: 40.625rem;
 }
 
 .badge {
@@ -18,18 +18,18 @@
     background: rgb(88, 192, 190);
     padding: 0.75rem;
     color: #fff;
-    width: 13.9375rem;
-    height: 8rem;
+    inline-size: 13.9375rem;
+    block-size: 8rem;
 
     [tuiSubtitle] {
         color: #fff;
     }
 
-    &:after {
+    &::after {
         background: url(/assets/images/poster.svg) bottom right no-repeat;
     }
 
-    &:hover:after {
+    &:hover::after {
         transform: scale(1.1);
     }
 }
@@ -38,14 +38,14 @@
     background: rgb(101, 174, 234);
     padding: 0.75rem;
     color: #fff;
-    width: 8rem;
-    height: 8rem;
+    inline-size: 8rem;
+    block-size: 8rem;
 
-    &:after {
+    &::after {
         background: url(/assets/images/fly.svg) bottom right no-repeat;
     }
 
-    &:hover:after {
+    &:hover::after {
         transform: scale(1.1);
     }
 }
@@ -54,10 +54,10 @@
 .microsoft {
     padding: 0.75rem;
     background: var(--tui-background-base-alt);
-    height: 8rem;
-    width: 8rem;
+    block-size: 8rem;
+    inline-size: 8rem;
 
-    &:hover:after {
+    &:hover::after {
         transform: scale(1.1);
     }
 }
@@ -67,7 +67,7 @@
         color: red;
     }
 
-    &:after {
+    &::after {
         background: url(/assets/images/google.svg) bottom right no-repeat;
     }
 }
@@ -77,7 +77,7 @@
         color: #00b92d;
     }
 
-    &:after {
+    &::after {
         background: url(/assets/images/microsoft.svg) bottom right no-repeat;
     }
 }

@@ -3,38 +3,38 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 50vw;
-    height: 8rem;
+    inline-size: 50vw;
+    block-size: 8rem;
 }
 
 .beaver-wrapper {
-    width: 6.25rem;
-    height: 6.25rem;
+    inline-size: 6.25rem;
+    block-size: 6.25rem;
 }
 
 .beaver {
+    position: relative;
+    display: flex;
     cursor: pointer;
     background-color: var(--tui-chart-categorical-18);
     color: #000;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     border-radius: 3.125rem;
     border: none;
-    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 
     &::before,
     &::after {
         content: '';
         position: absolute;
-        width: 0.5rem;
-        height: 0.5rem;
+        top: 1.875rem;
+        left: 3.75rem;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
         background-color: #000;
         border-radius: 50%;
-        left: 3.75rem;
-        top: 1.875rem;
     }
 
     &::after {
@@ -42,21 +42,21 @@
     }
 
     .nose {
-        width: 1.875rem;
-        height: 1.875rem;
-        background-color: #333;
         position: absolute;
-        border-radius: 50%;
         top: 2.5rem;
+        inline-size: 1.875rem;
+        block-size: 1.875rem;
+        background-color: #333;
+        border-radius: 50%;
     }
 
     .teeth-left,
     .teeth-right {
         position: absolute;
-        width: 0.5rem;
-        height: 1.25rem;
-        background-color: #fff;
         bottom: 0.625rem;
+        inline-size: 0.5rem;
+        block-size: 1.25rem;
+        background-color: #fff;
         border-radius: 0.125rem;
     }
 

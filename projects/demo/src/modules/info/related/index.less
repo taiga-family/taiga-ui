@@ -5,17 +5,17 @@
 }
 
 .cell {
-    width: 21.25rem;
+    inline-size: 21.25rem;
 }
 
 .img {
     display: block;
     margin: auto;
-    max-width: 400px;
+    max-inline-size: 25rem;
 }
 
 .img-min {
-    height: 5rem;
+    block-size: 5rem;
 }
 
 .title {
@@ -25,7 +25,7 @@
 
 .grid {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 1.25rem;
 
     .tui-island {
         border: 1px solid var(--tui-border-normal);
@@ -46,10 +46,10 @@
 }
 
 .preview {
+    display: flex;
     grid-column: 1 / -1;
     background: #b3bdc8 !important;
     border-radius: 1.5rem;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
@@ -62,6 +62,7 @@
 
     [tuiCardLarge] {
         .transition(transform);
+
         display: inline;
         box-shadow: none;
         border: 1px solid var(--tui-border-normal);

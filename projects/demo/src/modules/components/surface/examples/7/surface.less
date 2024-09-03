@@ -9,7 +9,7 @@
         transform: scale(1.1);
     }
 
-    &:active:before {
+    &:active::before {
         backdrop-filter: brightness(0.9);
     }
 }
@@ -31,7 +31,7 @@
     padding: 1.25rem;
     clip-path: inset(0 round 5rem); // for crisp edges of blurred background
 
-    &:before {
+    &::before {
         backdrop-filter: blur(1rem);
     }
 }
@@ -45,7 +45,7 @@
     border-radius: 0;
     mask: linear-gradient(
         180deg,
-        #222222 77.89%,
+        #222 77.89%,
         rgba(36, 36, 36, 0.991353) 79.36%,
         rgba(42, 42, 42, 0.96449) 80.84%,
         rgba(52, 52, 52, 0.91834) 82.31%,

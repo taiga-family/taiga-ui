@@ -2,13 +2,13 @@
 
 .tiles {
     gap: 1rem;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(6.25rem, auto);
 }
 
-.tile:before {
+.tile::before {
     content: 'Drop here';
     display: flex;
-    height: 100%;
+    block-size: 100%;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -19,7 +19,8 @@
 
 .content {
     .transition(box-shadow);
-    height: 100%;
+
+    block-size: 100%;
     padding: 1rem;
     background: var(--tui-background-base);
     box-sizing: border-box;
@@ -33,8 +34,8 @@
 }
 
 .rick {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     padding: 0;
 }
 
@@ -44,6 +45,7 @@
 
 .handle {
     .transition(opacity);
+
     position: absolute;
     right: 0.75rem;
     top: 1rem;

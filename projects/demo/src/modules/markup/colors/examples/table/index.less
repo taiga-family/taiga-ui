@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    width: 100%;
+    inline-size: 100%;
     color: var(--tui-text-primary);
     background: var(--tui-background-base);
     font-family: monospace;
@@ -27,18 +27,19 @@
 
 .demo {
     position: relative;
-    width: 3rem;
-    height: 3rem;
+    display: inline-flex;
+    inline-size: 3rem;
+    block-size: 3rem;
     border-radius: 100%;
     overflow: hidden;
-    display: inline-flex;
 }
 
 .name {
     .transition(color);
+
     position: relative;
     display: inline-block;
-    min-height: 2rem;
+    min-block-size: 2rem;
     background: var(--tui-background-base-alt);
     border-radius: var(--tui-radius-m);
     padding: 0.25rem 0.75rem;
@@ -55,7 +56,7 @@
 
 .value {
     position: relative;
-    width: fit-content;
+    inline-size: fit-content;
     margin-right: 1rem;
     padding: 1rem 0.75rem;
     overflow-wrap: break-word;
@@ -64,21 +65,22 @@
 
 .copy {
     .transition(opacity);
+
     position: absolute;
     top: 0;
     left: 0;
     background: var(--tui-background-base-alt);
     opacity: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 2rem;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 2rem;
 
     ::ng-deep button {
         position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
         top: 0;
+        left: 0;
+        block-size: 100%;
+        inline-size: 100%;
     }
 
     &:hover {

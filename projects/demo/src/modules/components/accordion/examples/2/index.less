@@ -1,12 +1,12 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .container {
-    max-width: 46.875rem;
+    max-inline-size: 46.875rem;
 }
 
 .operation-header {
-    font: var(--tui-font-text-l);
     display: flex;
+    font: var(--tui-font-text-l);
     align-items: center;
 }
 
@@ -33,13 +33,14 @@
     margin: 0 1.5rem;
     background: var(--tui-background-neutral-1);
     border-radius: 100%;
-    width: 3rem;
-    height: 3rem;
+    inline-size: 3rem;
+    block-size: 3rem;
     color: var(--tui-text-tertiary);
 }
 
 .operation-title {
     .text-overflow();
+
     margin-right: 1.5rem;
     flex-grow: 1;
 }
@@ -64,7 +65,7 @@
 }
 
 .input {
-    max-width: 28.75rem;
+    max-inline-size: 28.75rem;
     margin-bottom: 1.25rem;
 }
 

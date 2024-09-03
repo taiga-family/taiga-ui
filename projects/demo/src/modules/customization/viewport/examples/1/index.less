@@ -2,15 +2,15 @@
 
 .dropdowns {
     position: relative;
-    height: 18.75rem;
-    width: 50%;
     display: block;
+    block-size: 18.75rem;
+    inline-size: 50%;
     resize: both;
     overflow: auto;
     outline: 0.125rem dotted var(--tui-border-normal);
 
     @media @tui-tablet {
-        width: 100%;
+        inline-size: 100%;
     }
 }
 
@@ -19,8 +19,8 @@
 .t3,
 .t4 {
     position: absolute;
-    width: 3.125rem;
-    height: 3.125rem;
+    inline-size: 3.125rem;
+    block-size: 3.125rem;
     background: var(--tui-background-accent-1);
 }
 

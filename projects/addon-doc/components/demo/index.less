@@ -34,12 +34,12 @@
 }
 
 .t-wrapper {
-    box-shadow: var(--tui-shadow-medium);
     display: flex;
+    box-shadow: var(--tui-shadow-medium);
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
     max-inline-size: 100%;
-    min-height: 6rem;
+    min-block-size: 6rem;
     inline-size: 100%;
     min-inline-size: 10rem;
     color: var(--tui-text-primary);
@@ -61,7 +61,7 @@
     }
 
     @media @tui-mobile {
-        min-height: auto;
+        min-block-size: auto;
     }
 }
 
@@ -108,11 +108,11 @@
 }
 
 .t-resizer {
-    box-shadow: var(--tui-shadow-medium);
     position: relative;
-    inline-size: 3.5rem;
-    min-height: inherit;
     display: flex;
+    box-shadow: var(--tui-shadow-medium);
+    inline-size: 3.5rem;
+    min-block-size: inherit;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
@@ -121,8 +121,8 @@
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: '';
         position: absolute;
         top: 0.75rem;
@@ -134,7 +134,7 @@
         transform: translate3d(0, 0, 0);
     }
 
-    &:after {
+    &::after {
         bottom: 0.75rem;
         top: calc(50% + 1rem);
     }
@@ -145,9 +145,9 @@
 }
 
 .t-resizer-text {
-    font: var(--tui-font-text-s);
     position: relative;
     z-index: 1;
+    font: var(--tui-font-text-s);
     padding: 0.75rem;
     background: var(--tui-background-base);
 

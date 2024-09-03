@@ -13,7 +13,7 @@
 }
 
 .axes {
-    height: 12.5rem;
+    block-size: 12.5rem;
 }
 
 .controls {
@@ -32,14 +32,15 @@
 
 .item {
     .color();
+
     display: flex;
     align-items: center;
     margin: 0 0.75rem;
 
-    &:before {
+    &::before {
         content: '';
         border-bottom: 0.125rem solid;
-        width: 1rem;
+        inline-size: 1rem;
         margin-right: 0.5rem;
     }
 }
