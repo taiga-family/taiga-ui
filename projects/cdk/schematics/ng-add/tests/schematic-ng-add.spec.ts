@@ -37,7 +37,6 @@ describe('ng-add', () => {
 
     it('should add main modules in package.json', async () => {
         const options: TuiSchema = {
-            addGlobalStyles: false,
             addons: [],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -60,7 +59,6 @@ describe('ng-add', () => {
 
     it('should add additional modules in package.json', async () => {
         const options: TuiSchema = {
-            addGlobalStyles: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -86,7 +84,6 @@ describe('ng-add', () => {
 
     it('should add additional modules in package.json and global styles', async () => {
         const options: TuiSchema = {
-            addGlobalStyles: true,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
             'skip-logs': process.env['TUI_CI'] === 'true',
@@ -104,8 +101,7 @@ describe('ng-add', () => {
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
-    "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@taiga-ui/styles": "${TAIGA_VERSION}"
+    "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
 }`,
         );
@@ -210,7 +206,6 @@ describe('ng-add', () => {
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-              "node_modules/@taiga-ui/styles/taiga-ui-global.less",
               "some.style"
             ],
             "assets": [

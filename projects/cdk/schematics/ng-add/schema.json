@@ -11,15 +11,6 @@
                 "$source": "projectName"
             }
         },
-        "addGlobalStyles": {
-            "description": "Setting up global styles",
-            "type": "boolean",
-            "default": false,
-            "x-prompt": {
-                "message": "Do you want to use global Taiga UI classes, such as 'tui-space', 'tui-skeleton', etc?",
-                "type": "confirmation"
-            }
-        },
         "addons": {
             "description": "Setting up additional packages",
             "type": "array",
