@@ -25,7 +25,9 @@ export function bumpTuiDeps({
                     : `^${newVersion}`;
             } else if (deps[key]?.hasOwnProperty('requires')) {
                 bumpTuiDeps({
-                    deps: (deps[key] as Record<string, Record<string, string>>).requires,
+                    deps:
+                        (deps[key] as Record<string, Record<string, string>>)?.requires ??
+                        {},
                     isPeerDependency,
                     ignores,
                     prevVersion,
