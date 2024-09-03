@@ -41,10 +41,6 @@ export default class Example {
             link: 'https://github.com/topics/angular',
         },
         {
-            caption: 'TramvaiJS',
-            link: 'https://github.com/tramvaijs/tramvai',
-        },
-        {
             caption: 'Taiga UI',
             link: 'https://github.com/taiga-family/taiga-ui',
         },
