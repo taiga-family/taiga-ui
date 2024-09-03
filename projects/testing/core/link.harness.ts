@@ -1,4 +1,4 @@
-import {TuiComponentHarness} from '../utils';
+import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiLinkHarness extends TuiComponentHarness {
     public static hostSelector = 'a[tuiLink], button[tuiLink]';
