@@ -587,47 +587,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
-        from: {name: 'TuiEditorModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: [
-            {name: 'TuiEditor', moduleSpecifier: '@taiga-ui/editor'},
-            {name: 'TuiEditorSocket', moduleSpecifier: '@taiga-ui/editor'},
-        ],
-    },
-    {
-        from: {name: 'TuiEditorSocketModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiEditorSocket', moduleSpecifier: '@taiga-ui/editor'},
-    },
-    {
-        from: {name: 'TuiToolbarModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiToolbar', moduleSpecifier: '@taiga-ui/editor'},
-    },
-    {
-        from: {name: 'defaultEditorExtensions', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TUI_EDITOR_DEFAULT_EXTENSIONS', moduleSpecifier: '@taiga-ui/editor'},
-    },
-    {
-        from: {
-            name: 'TUI_EDITOR_DEFAULT_EXTENSIONS',
-            moduleSpecifier: '@tinkoff/tui-editor',
-        },
-        to: {name: 'TUI_EDITOR_DEFAULT_EXTENSIONS', moduleSpecifier: '@taiga-ui/editor'},
-    },
-    {
-        from: [
-            {name: 'defaultEditorTools', moduleSpecifier: '@tinkoff/tui-editor'},
-            {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@tinkoff/tui-editor'},
-        ],
-        to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
-    },
-    {
-        from: {name: 'TuiColorPickerModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiColorPickerModule', moduleSpecifier: '@taiga-ui/legacy'},
-    },
-    {
-        from: {name: 'TuiInputColorModule', moduleSpecifier: '@tinkoff/tui-editor'},
-        to: {name: 'TuiInputColorModule', moduleSpecifier: '@taiga-ui/legacy'},
-    },
-    {
         from: {name: 'TuiFadeModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiFade',

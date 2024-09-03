@@ -13,6 +13,7 @@ import {
 } from 'ng-morph';
 
 import cdkPackage from '../../../../package.json';
+import {TUI_EDITOR_VERSION} from '../steps/migrate-editor';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
@@ -59,7 +60,7 @@ const PACKAGE_JSON_AFTER = {
         '@taiga-ui/legacy': TUI_VERSION,
         '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
         '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
-        '@taiga-ui/editor': '^2.5.0',
+        '@taiga-ui/editor': TUI_EDITOR_VERSION,
     },
 };
 
@@ -107,7 +108,12 @@ describe('ng-update', () => {
 
         createSourceFile(
             'package.json',
-            JSON.stringify({dependencies: PACKAGE_JSON_DEPS}),
+            JSON.stringify({
+                dependencies: {
+                    ...PACKAGE_JSON_DEPS,
+                    '@tinkoff/tui-editor': '1.58.0',
+                },
+            }),
             {overwrite: true},
         );
         saveActiveProject();
@@ -122,6 +128,7 @@ describe('ng-update', () => {
         expect(JSON.parse(tree.readContent('package.json'))).toEqual({
             dependencies: {
                 ...PACKAGE_JSON_DEPS,
+                '@taiga-ui/editor': TUI_EDITOR_VERSION,
                 '@taiga-ui/event-plugins':
                     cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
                 '@taiga-ui/layout': TUI_VERSION,
