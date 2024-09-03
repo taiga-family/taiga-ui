@@ -1,8 +1,7 @@
-import {Component, SkipSelf} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
+import {TuiIcon, tuiIconResolverProvider} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -12,16 +11,9 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
     providers: [
-        {
-            provide: TUI_ICON_RESOLVER,
-            deps: [[new SkipSelf(), TUI_ICON_RESOLVER]],
-            useFactory(defaultResolver: TuiStringHandler<string>) {
-                return (name: string) =>
-                    name.startsWith('@tui.')
-                        ? defaultResolver(name)
-                        : `/assets/icons/${name}.svg`;
-            },
-        },
+        tuiIconResolverProvider((icon, original) =>
+            icon.startsWith('@tui.') ? original(icon) : `/assets/icons/${icon}.svg`,
+        ),
     ],
 })
 export default class Example {}

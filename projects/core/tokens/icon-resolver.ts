@@ -26,9 +26,15 @@ export function tuiInjectIconResolver(): TuiStringHandler<string> {
     return (icon) => (!icon || icon.includes('/') ? icon : icons[icon] || resolver(icon));
 }
 
-export function tuiIconResolverProvider(useValue: TuiStringHandler<string>): Provider {
+export function tuiIconResolverProvider(
+    resolver: (name: string, original: TuiStringHandler<string>) => string,
+): Provider {
     return {
         provide: TUI_ICON_RESOLVER,
-        useValue,
+        useFactory() {
+            const original = inject(TUI_ICON_RESOLVER, {skipSelf: true});
+
+            return (name: string) => resolver(name, original);
+        },
     };
 }
