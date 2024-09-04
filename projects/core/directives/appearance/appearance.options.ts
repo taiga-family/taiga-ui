@@ -5,23 +5,23 @@ import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
  * Bundled appearances for autocomplete purposes, not exported on purpose
  */
 type Appearance =
-    | 'primary'
-    | 'secondary'
     | 'accent'
+    | 'destructive'
+    | 'error'
+    | 'flat'
     | 'floating'
     | 'glass'
-    | 'link'
-    | 'textfield'
-    | 'opposite'
-    | 'whiteblock'
-    | 'outline'
-    | 'flat'
-    | 'destructive'
-    | 'neutral'
-    | 'error'
-    | 'success'
-    | 'warning'
     | 'info'
+    | 'link'
+    | 'neutral'
+    | 'opposite'
+    | 'outline'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'textfield'
+    | 'warning'
+    | 'whiteblock'
     | (Record<never, never> & string);
 
 export interface TuiAppearanceOptions {

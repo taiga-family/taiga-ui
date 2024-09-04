@@ -18,6 +18,7 @@ export default class Page {
         'You can use it on input[type="checkbox"] to create a custom toggle component easily',
         'You can create your own appearances or use one of the bundled options',
     ];
+
     protected appearances = ['primary', 'secondary', 'flat'];
     protected appearance = this.appearances[0]!;
 
