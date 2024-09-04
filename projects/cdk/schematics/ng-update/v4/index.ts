@@ -43,6 +43,7 @@ import {
 } from './steps/constants';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
+import {dropUniversalMock} from './steps/drop-universal-mock';
 import {migrateEditor} from './steps/migrate-editor';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
@@ -68,6 +69,7 @@ function main(options: TuiSchema): Rule {
         migrateAlertService(options);
         migrateNumberFormatSettings(options);
         migrateMonthContext(options);
+        dropUniversalMock(options);
 
         saveActiveProject();
         migrateTemplates(fileSystem, options);
