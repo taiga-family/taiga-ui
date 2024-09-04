@@ -28,7 +28,11 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
-import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {
+    tuiTypedFromEvent,
+    tuiZonefree,
+    tuiZonefreeScheduler,
+} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
@@ -203,7 +207,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
 
-        timer(0)
+        timer(0, tuiZonefreeScheduler(this.ngZone))
             .pipe(tuiZonefree(this.ngZone), takeUntilDestroyed(this.destroyRef))
             .subscribe(() => this.scrollToActiveMonth());
     }
@@ -417,9 +421,12 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() =>
                     race(
                         yearsScrollRef.elementScrolled(),
-                        timer(SCROLL_DEBOUNCE_TIME),
+                        timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
-                        debounceTime(SCROLL_DEBOUNCE_TIME * 2),
+                        debounceTime(
+                            SCROLL_DEBOUNCE_TIME * 2,
+                            tuiZonefreeScheduler(this.ngZone),
+                        ),
                         take(1),
                         takeUntil(touchstart$),
                     ),
@@ -454,7 +461,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() =>
                     race(
                         monthsScrollRef.elementScrolled(),
-                        timer(SCROLL_DEBOUNCE_TIME),
+                        timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
                         debounceTime(SCROLL_DEBOUNCE_TIME * 2),
                         take(1),
