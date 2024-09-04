@@ -23,11 +23,6 @@ export class Home {
         './examples/project-json-styles.md?raw'
     );
 
-    protected readonly angularJsonGlobalSingleStyles = import(
-        './examples/angular-json-global-single-styles.md?raw'
-    );
-
-    protected readonly stylesLess = import('./examples/styles.less.md?raw');
     protected readonly appTemplate = import('./examples/app-template.md?raw');
     protected readonly assets = import('./examples/assets.md?raw');
     protected readonly nxAssets = import('./examples/nx-assets.md?raw');
@@ -39,12 +34,4 @@ export class Home {
     protected readonly nxMigrate = import('./examples/nx-migrate.md?raw');
     protected readonly standalone = import('./examples/app-standalone.md?raw');
     protected readonly standaloneMain = import('./examples/main-standalone.md?raw');
-
-    protected readonly customGlobalStyle = import(
-        '../../../../../styles/taiga-ui-global.less?raw'
-    ).then(({default: content}) => ({
-        default: content
-            .replaceAll("@import '", "@import '@taiga-ui/styles/")
-            .replace('@taiga-ui/styles/@taiga-ui/core', '@taiga-ui/core'),
-    }));
 }

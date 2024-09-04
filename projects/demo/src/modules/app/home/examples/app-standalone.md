@@ -1,6 +1,6 @@
 ```ts
-import {Component} from '@angular/core';
 import {TuiRoot} from '@taiga-ui/core';
+// ..
 
 @Component({
   standalone: true,
@@ -10,7 +10,6 @@ import {TuiRoot} from '@taiga-ui/core';
     // ...
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./my.component.scss', './my.component.less'],
 })
 export class App {}
 ```
