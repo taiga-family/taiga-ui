@@ -14,7 +14,7 @@
     cursor: default;
     padding: 0 0.75rem;
     box-sizing: border-box;
-    box-shadow: 0 0.3125rem rgb(237 237 237 / 0);
+    box-shadow: 0 0.3125rem rgb(237 237 237 / 0%);
     border: 1px solid var(--tui-border-normal);
     // Create new viewport for fixed positioning
     filter: opacity(1);
@@ -46,7 +46,7 @@
             bottom: 0;
             inline-size: 0.3125rem;
             pointer-events: none;
-            background: rgb(237 237 237 / 0.7);
+            background: rgb(237 237 237 / 70%);
             opacity: 0;
         }
     }
@@ -83,19 +83,19 @@
 }
 
 :host-context(thead[tuiThead]._stuck) {
-    box-shadow: 0 0.3125rem rgb(237 237 237 / 0.7);
+    box-shadow: 0 0.3125rem rgb(237 237 237 / 70%);
 }
 
 :host-context([tuiTheme='dark'])._sticky::after {
-    background: rgb(60 60 60 / 0.9);
+    background: rgb(60 60 60 / 90%);
 }
 
 :host-context([tuiTheme='dark'] thead[tuiThead]._stuck) {
-    box-shadow: 0 0.3125rem rgb(60 60 60 / 0.9);
+    box-shadow: 0 0.3125rem rgb(60 60 60 / 90%);
 }
 
 :host-context([tuiTheme='dark'] thead[tuiThead]._stuck):first-child {
-    box-shadow: 0.0625rem 0.3125rem rgb(60 60 60 / 0.9);
+    box-shadow: 0.0625rem 0.3125rem rgb(60 60 60 / 90%);
 }
 
 :host-context(table[data-size='l'] thead[tuiThead] tr:nth-child(2)) {
