@@ -15,6 +15,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -80,12 +81,16 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected side = 0;
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    protected readonly autoId = tuiInjectId();
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
 
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {read: ElementRef})
+    @ContentChild(forwardRef(() => TuiTextfieldDirective), {
+        read: ElementRef,
+        static: true,
+    })
     public readonly el?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -100,7 +105,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open() || this.focusedIn());
 
     public get id(): string {
-        return this.el?.nativeElement.id || '';
+        return this.el?.nativeElement.id || this.autoId;
     }
 
     public get size(): TuiSizeL | TuiSizeS {

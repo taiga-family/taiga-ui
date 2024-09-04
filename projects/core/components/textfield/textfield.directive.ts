@@ -1,6 +1,5 @@
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiAppearance,
@@ -25,7 +24,6 @@ export class TuiTextfieldBase {
     );
 
     protected readonly textfield = inject(TuiTextfieldComponent);
-    protected readonly autoId = tuiInjectId();
     protected readonly el = tuiInjectElement<HTMLInputElement>();
 
     @Input()
@@ -71,7 +69,7 @@ export class TuiTextfieldBase {
     selector: 'input[tuiTextfield]',
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
-        '[id]': 'el.id || autoId',
+        '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
         '[class._empty]': 'el.value === ""',
         '[attr.data-mode]': 'mode',
