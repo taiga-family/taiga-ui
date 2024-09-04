@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45738],{45738:n=>{n.exports="tui-input-number {\n    max-width: 20rem;\n\n    &:not(:last-child) {\n        margin-bottom: 1rem;\n    }\n}\n"}}]);

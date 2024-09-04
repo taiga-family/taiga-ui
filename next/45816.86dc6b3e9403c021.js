@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45816],{45816:e=>{e.exports=".bars {\n    block-size: 6.25rem;\n    inline-size: 10rem;\n    box-shadow: 0 1px var(--tui-border-normal);\n}\n"}}]);
