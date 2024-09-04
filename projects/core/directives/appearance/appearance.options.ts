@@ -22,7 +22,7 @@ type Appearance =
     | 'success'
     | 'warning'
     | 'info'
-    | ({} & string);
+    | (Record<never, never> & string);
 
 export interface TuiAppearanceOptions {
     readonly appearance: Appearance;
