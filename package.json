@@ -150,7 +150,7 @@
         "@taiga-ui/tsconfig": "0.147.10",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
-        "@types/node": "22.5.1",
+        "@types/node": "22.5.3",
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
         "glob": "10.4.5",
