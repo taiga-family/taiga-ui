@@ -7,8 +7,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    env:
-      NX_SKIP_NX_CACHE: true
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.71.2
         with:
