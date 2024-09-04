@@ -90,14 +90,14 @@
 
     &::placeholder {
         color: var(--tui-text-tertiary);
-        opacity: 0;
+        opacity: 0%;
     }
 
     :host._focused:not(._readonly) &::placeholder,
     :host-context(tui-primitive-textfield._focused:not(._readonly)) &::placeholder,
     :host-context(tui-textarea._focused:not(._readonly)) &::placeholder,
     :host-context(tui-text-area._focused:not(._readonly)) &::placeholder {
-        opacity: 1;
+        opacity: 100%;
     }
 
     :host[data-size='s'] &,
@@ -159,7 +159,7 @@
 
     :host._hidden input&,
     :host-context(tui-primitive-textfield._hidden) {
-        opacity: 0;
+        opacity: 0%;
         text-indent: -10em; // Hide blinking caret even in IE
         -webkit-user-select: none; // Hide blinking caret in mobile safari
     }

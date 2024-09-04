@@ -30,7 +30,7 @@
     }
 
     &:hover + .t-link {
-        opacity: 1;
+        opacity: 100%;
     }
 }
 
@@ -43,7 +43,7 @@
         margin-left: -1.6rem;
 
         &:not(:hover):not(.t-link-active) {
-            opacity: 0;
+            opacity: 0%;
         }
     }
 }
@@ -64,7 +64,7 @@
     margin-top: 1.5rem;
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
-    box-shadow: 0 0.125rem 0.1875rem rgb(0 0 0 / 0.1);
+    box-shadow: 0 0.125rem 0.1875rem rgb(0 0 0 / 10%);
     overflow: hidden;
 
     @media @tui-mobile {
@@ -116,7 +116,7 @@
     will-change: opacity;
     block-size: 0;
     visibility: hidden;
-    opacity: 0;
+    opacity: 0%;
 }
 
 .t-content_animated {
@@ -126,7 +126,7 @@
 .t-content_visible {
     block-size: auto;
     visibility: visible;
-    opacity: 1;
+    opacity: 100%;
 }
 
 tui-doc-code {
