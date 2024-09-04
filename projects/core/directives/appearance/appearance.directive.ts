@@ -10,7 +10,7 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
-import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
+import {TUI_APPEARANCE_OPTIONS, type TuiAppearanceOptions} from './appearance.options';
 
 @Component({
     standalone: true,
@@ -43,7 +43,7 @@ export class TuiAppearance {
     public readonly focus = signal<boolean | null>(null);
 
     @Input()
-    public set tuiAppearance(appearance: string) {
+    public set tuiAppearance(appearance: TuiAppearanceOptions['appearance']) {
         this.appearance.set(appearance);
     }
 
