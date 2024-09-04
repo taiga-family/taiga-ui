@@ -114,13 +114,15 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public get computedMonth(): TuiMonth {
-        return this.value ? this.value.from : this.defaultViewedMonth;
+        return (
+            (this.items.length ? this.value?.to : this.value?.from) ||
+            this.defaultViewedMonth
+        );
     }
 
+    // TODO: refactor using only getter or ngOnChanges
     public ngOnChanges(): void {
-        this.defaultViewedMonth =
-            (this.items.length ? this.value?.to : this.value?.from) ||
-            this.defaultViewedMonth;
+        this.defaultViewedMonth = this.computedMonth;
     }
 
     public ngOnInit(): void {
