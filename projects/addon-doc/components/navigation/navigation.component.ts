@@ -4,6 +4,7 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
+    ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -15,11 +16,7 @@ import {
     RouterLinkActive,
     Scroll,
 } from '@angular/router';
-import {
-    TUI_DOC_ICONS,
-    TUI_DOC_PAGE_LOADED,
-    TUI_DOC_SEARCH_TEXT,
-} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_ICONS, TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
@@ -34,8 +31,7 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
-import type {TuiInputComponent} from '@taiga-ui/legacy/components/input';
-import {TuiInputModule} from '@taiga-ui/legacy/components/input';
+import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
@@ -79,9 +75,13 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     providers: NAVIGATION_PROVIDERS,
     host: {
         '[class._open]': 'menuOpen',
+        '(window:keydown)': 'onFocusSearch($event)',
     },
 })
 export class TuiDocNavigation {
+    @ViewChild(TuiInputComponent, {static: true})
+    private readonly searchInput?: TuiInputComponent;
+
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
@@ -90,7 +90,6 @@ export class TuiDocNavigation {
     protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
-    protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
     protected readonly activatedRoute = inject(ActivatedRoute);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -163,6 +162,16 @@ export class TuiDocNavigation {
         this.menuOpen = false;
         this.search.setValue('');
         this.openActivePageGroup();
+    }
+
+    protected onFocusSearch(event: KeyboardEvent): void {
+        if (
+            event.code === 'Slash' &&
+            !(this.doc.activeElement instanceof HTMLInputElement)
+        ) {
+            this.searchInput?.nativeFocusableElement?.focus();
+            event.preventDefault();
+        }
     }
 
     @tuiPure
