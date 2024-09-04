@@ -43,7 +43,7 @@ export class Home {
         '../../../../../styles/taiga-ui-global.less?raw'
     ).then(({default: content}) => ({
         default: content
-            .replaceAll("@import '", `@import '@taiga-ui/styles/`)
+            .replaceAll("@import '", "@import '@taiga-ui/styles/")
             .replace('@taiga-ui/styles/@taiga-ui/core', '@taiga-ui/core'),
     }));
 }

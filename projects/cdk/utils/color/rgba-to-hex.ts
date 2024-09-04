@@ -23,8 +23,8 @@ export function tuiRgbaToHex(color: string): string {
 }
 
 export function tuiIsValidRgba(rgba: string): boolean {
-    const range = '(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|2[0-5]{2})';
-    const alpha = '([01]|0?\\.\\d+)';
+    const range = String.raw`(\d|[1-9]\d|1\d{2}|2[0-4]\d|2[0-5]{2})`;
+    const alpha = String.raw`([01]|0?\.\d+)`;
 
     return new RegExp(
         `^(?:rgb\\(\\s*${range}\\s*,\\s*${range}\\s*,\\s*${range}\\s*\\)|rgba\\(\\s*${range}\\s*,\\s*${range}\\s*,\\s*${range}\\s*,\\s*${alpha}\\s*\\))$`,

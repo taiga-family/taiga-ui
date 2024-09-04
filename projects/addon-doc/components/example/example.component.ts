@@ -145,7 +145,7 @@ export class TuiDocExample {
 
     protected edit(files: Record<string, string>): void {
         this.loading$.next(true);
-        void this.codeEditor
+        this.codeEditor
             ?.edit(this.componentName, this.id || '', files)
             .finally(() => this.loading$.next(false));
     }

@@ -99,10 +99,8 @@
             "sonarjs/single-char-in-character-classes": "off",
             "sonarjs/single-character-alternation": "off",
             "sonarjs/sonar-max-params": "off",
-            "sonarjs/void-use": "off",
             "unicorn/consistent-destructuring": "off",
             "unicorn/no-typeof-undefined": "off",
-            "unicorn/prefer-string-raw": "off",
             "@taiga-ui/experience/standalone-imports-sort": "off"
         },
         "root": true
