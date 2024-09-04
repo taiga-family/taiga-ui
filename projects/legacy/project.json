@@ -8,6 +8,7 @@
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
