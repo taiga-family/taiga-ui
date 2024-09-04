@@ -4,15 +4,36 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure, tuiZonefreeScheduler} from '@taiga-ui/cdk';
+import {debounceTime, map, type Observable, startWith} from 'rxjs';
 
-import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 import {TUI_SELECTED_VERSION_META} from './version-manager/version-manager.providers';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
     deps: [ElementRef, ResizeObserverService],
-    useFactory: readyToScrollFactory,
+    useFactory(
+        hostElement: ElementRef<HTMLElement>,
+        resize$: Observable<unknown>,
+    ): Observable<boolean> {
+        return resize$.pipe(
+            startWith(null),
+            debounceTime(0, tuiZonefreeScheduler()), // Synchronous scrollIntoView (after click) does not work https://stackoverflow.com/a/56971002
+            map(() => {
+                const host = hostElement.nativeElement;
+                const exampleElements = Array.from(
+                    host.querySelectorAll('tui-doc-example'),
+                );
+                const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
+
+                return (
+                    exampleElements.every((el) => el.querySelector('.t-example')) &&
+                    codeElements.every((el) => el.querySelector('.t-code'))
+                );
+            }),
+            takeUntilDestroyed(),
+        );
+    },
 };
 
 @Directive({
