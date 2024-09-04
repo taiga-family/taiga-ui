@@ -8,12 +8,12 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiTabs,
-        TuiChevron,
-        TuiDropdown,
-        TuiDataList,
         ReactiveFormsModule,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
         TuiSwitch,
+        TuiTabs,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

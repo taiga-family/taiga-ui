@@ -9,7 +9,7 @@ import {TuiWrapperExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, ClipboardModule, TuiLink, TuiWrapperExample1],
+    imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

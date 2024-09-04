@@ -8,10 +8,10 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiInputSliderModule,
-        TuiTextfieldControllerModule,
         FormsModule,
+        TuiInputSliderModule,
         TuiPagination,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -21,7 +21,7 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 @Component({
     standalone: true,
     selector: 'tui-app-bar',
-    imports: [TuiFade, AsyncPipe],
+    imports: [AsyncPipe, TuiFade],
     templateUrl: './app-bar.template.html',
     styleUrls: ['./app-bar.style.less'],
     encapsulation: ViewEncapsulation.None,

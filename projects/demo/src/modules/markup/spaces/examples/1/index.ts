@@ -6,7 +6,7 @@ import {TuiDocCopy} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDocCopy, ClipboardModule],
+    imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

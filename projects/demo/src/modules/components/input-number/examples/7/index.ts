@@ -9,7 +9,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputNumberModule, TuiTextfieldControllerModule, FormsModule],
+    imports: [FormsModule, TuiInputNumberModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

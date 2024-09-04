@@ -13,12 +13,12 @@ import {ExampleMyAccount} from './account';
 @Component({
     standalone: true,
     imports: [
-        TuiSelectModule,
-        TuiTextfieldControllerModule,
+        ExampleMyAccount,
+        NgForOf,
         ReactiveFormsModule,
         TuiDataList,
-        NgForOf,
-        ExampleMyAccount,
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

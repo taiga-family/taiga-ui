@@ -9,8 +9,8 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        TuiInputNumberModule,
         TuiCurrencyPipe,
+        TuiInputNumberModule,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

@@ -7,7 +7,7 @@ import {TuiInputSliderModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputSliderModule, ReactiveFormsModule, TuiButton],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputSliderModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

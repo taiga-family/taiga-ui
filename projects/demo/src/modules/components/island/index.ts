@@ -10,7 +10,7 @@ import {StylesInfo} from '../../app/styles-info';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, StylesInfo, TuiIslandDirective, TuiButton],
+    imports: [StylesInfo, TuiButton, TuiDemo, TuiIslandDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -8,7 +8,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiChevron, TuiButton, TuiDropdown, TuiDataList, NgForOf],
+    imports: [NgForOf, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     styles: [
         `

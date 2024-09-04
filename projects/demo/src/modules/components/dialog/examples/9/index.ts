@@ -18,13 +18,13 @@ import {PayModal} from './pay-modal/pay-modal.component';
 @Component({
     standalone: true,
     imports: [
-        TuiInputNumberModule,
         ReactiveFormsModule,
+        TuiButton,
+        TuiHint,
+        TuiIconPipe,
+        TuiInputNumberModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiHint,
-        TuiButton,
-        TuiIconPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

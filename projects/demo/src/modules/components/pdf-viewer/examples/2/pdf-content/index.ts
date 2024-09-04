@@ -7,7 +7,7 @@ import {map, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, AsyncPipe, TuiLoader],
+    imports: [AsyncPipe, NgIf, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

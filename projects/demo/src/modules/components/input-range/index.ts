@@ -18,12 +18,12 @@ import {NumberFormatDocumentation} from '../abstract/number-format-documentation
 @Component({
     standalone: true,
     imports: [
+        NumberFormatDocumentation,
+        ReactiveFormsModule,
         TuiDemo,
         TuiInputRangeModule,
-        ReactiveFormsModule,
         TuiNumberFormat,
         TuiTextfieldControllerModule,
-        NumberFormatDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -20,7 +20,7 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 @Component({
     standalone: true,
     selector: 'tui-pdf-viewer',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, AsyncPipe],
+    imports: [AsyncPipe, PolymorpheusOutlet, PolymorpheusTemplate, TuiButton],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -8,7 +8,7 @@ import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBar, TuiProgress, TuiButton, TuiTitle, TuiPlatform, TuiFade],
+    imports: [TuiAppBar, TuiButton, TuiFade, TuiPlatform, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

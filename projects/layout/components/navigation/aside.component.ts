@@ -13,7 +13,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 @Component({
     standalone: true,
     selector: 'aside[tuiNavigationAside]',
-    imports: [TuiScrollbar, TuiFade, TuiScrollable],
+    imports: [TuiFade, TuiScrollable, TuiScrollbar],
     template: `
         <ng-content select="header"></ng-content>
         <tui-scrollbar class="t-nav-scrollbar">

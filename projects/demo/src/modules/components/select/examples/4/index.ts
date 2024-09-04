@@ -9,7 +9,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiSelectModule, FormsModule, TuiDataList, NgForOf, TuiIcon],
+    imports: [FormsModule, NgForOf, TuiDataList, TuiIcon, TuiSelectModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

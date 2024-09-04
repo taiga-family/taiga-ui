@@ -11,12 +11,12 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiSegmented,
         FormsModule,
-        TuiIcon,
         RouterLink,
         RouterLinkActive,
         TuiButton,
+        TuiIcon,
+        TuiSegmented,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

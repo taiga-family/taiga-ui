@@ -11,13 +11,13 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiElasticContainer,
+        FormsModule,
         NgForOf,
+        TuiButton,
         TuiChevron,
+        TuiElasticContainer,
         TuiExpand,
         TuiInputModule,
-        FormsModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

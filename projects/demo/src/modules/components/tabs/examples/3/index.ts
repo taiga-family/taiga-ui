@@ -8,7 +8,7 @@ import {TuiChevron, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTabs, NgForOf, NgIf, TuiChevron, TuiDropdown, TuiDataList, TuiIcon],
+    imports: [NgForOf, NgIf, TuiChevron, TuiDataList, TuiDropdown, TuiIcon, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -9,12 +9,12 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
 @Component({
     standalone: true,
     imports: [
-        TuiChip,
-        TuiAmountPipe,
         AsyncPipe,
+        TuiAmountPipe,
         TuiBadgedContent,
         TuiBadgeNotification,
         TuiButton,
+        TuiChip,
         TuiFade,
     ],
     templateUrl: './index.html',

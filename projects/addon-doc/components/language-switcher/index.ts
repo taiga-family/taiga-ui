@@ -11,10 +11,10 @@ import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
     standalone: true,
     selector: 'tui-doc-language-switcher',
     imports: [
-        ReactiveFormsModule,
-        TuiDataList,
         NgForOf,
+        ReactiveFormsModule,
         TitleCasePipe,
+        TuiDataList,
         TuiFlagPipe,
         TuiSelectModule,
     ],

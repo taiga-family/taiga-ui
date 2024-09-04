@@ -9,11 +9,11 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        ReactiveFormsModule,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiSelectModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
     ],
     templateUrl: './index.html',
     encapsulation,

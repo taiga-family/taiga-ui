@@ -6,7 +6,7 @@ import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiDropdown, TuiButton, TuiColorSelectorModule],
+    imports: [TuiButton, TuiColorSelectorModule, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

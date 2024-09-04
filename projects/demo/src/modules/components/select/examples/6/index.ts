@@ -36,14 +36,14 @@ const databaseMockData: readonly User[] = [
 @Component({
     standalone: true,
     imports: [
-        TuiSelectModule,
-        TuiLet,
         AsyncPipe,
         FormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
         TuiAvatar,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiInitialsPipe,
+        TuiLet,
+        TuiSelectModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

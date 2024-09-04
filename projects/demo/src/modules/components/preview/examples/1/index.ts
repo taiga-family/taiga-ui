@@ -12,7 +12,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiPreview, TuiSwipe, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, TuiPreview, TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

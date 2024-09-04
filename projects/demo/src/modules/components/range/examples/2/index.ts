@@ -10,12 +10,12 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCardLarge,
-        TuiSurface,
-        TuiRange,
         FormsModule,
         JsonPipe,
         ReactiveFormsModule,
+        TuiCardLarge,
+        TuiRange,
+        TuiSurface,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

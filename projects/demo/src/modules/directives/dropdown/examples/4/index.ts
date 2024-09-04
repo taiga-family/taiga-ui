@@ -6,7 +6,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDropdown, TuiSwitch, FormsModule, TuiLabel],
+    imports: [FormsModule, TuiDropdown, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

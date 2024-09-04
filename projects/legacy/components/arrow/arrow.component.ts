@@ -20,7 +20,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
 @Component({
     standalone: true,
     selector: 'tui-arrow',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, NgIf, AsyncPipe, TuiIcon],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, PolymorpheusTemplate, TuiIcon],
     templateUrl: './arrow.template.html',
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -22,13 +22,13 @@ function randomString(len: number): string {
 @Component({
     standalone: true,
     imports: [
-        TuiChevron,
-        TuiLink,
-        TuiDropdown,
-        TuiDataListDropdownManager,
         NgForOf,
-        TuiLineClamp,
+        TuiChevron,
         TuiDataList,
+        TuiDataListDropdownManager,
+        TuiDropdown,
+        TuiLineClamp,
+        TuiLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -8,7 +8,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton, TuiAvatar, TuiTitle, TuiSheetDialog],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiSheetDialog, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

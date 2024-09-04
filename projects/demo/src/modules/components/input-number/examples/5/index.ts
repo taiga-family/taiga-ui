@@ -8,10 +8,10 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiInputNumberModule,
-        TuiTextfieldControllerModule,
-        TuiNumberFormat,
         FormsModule,
+        TuiInputNumberModule,
+        TuiNumberFormat,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

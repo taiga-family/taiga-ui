@@ -15,7 +15,7 @@ import {TuiPageObject} from '@taiga-ui/testing';
 describe('InputCopy', () => {
     @Component({
         standalone: true,
-        imports: [TuiInputCopyModule, ReactiveFormsModule, TuiTextfieldControllerModule],
+        imports: [ReactiveFormsModule, TuiInputCopyModule, TuiTextfieldControllerModule],
         template: `
             <tui-input-copy
                 [formControl]="control"

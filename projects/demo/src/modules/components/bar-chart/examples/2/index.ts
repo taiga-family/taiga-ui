@@ -11,13 +11,13 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        FormsModule,
+        TuiAxes,
         TuiAxes,
         TuiBarChart,
-        TuiSelectModule,
-        FormsModule,
         TuiDataListWrapper,
         TuiHint,
-        TuiAxes,
+        TuiSelectModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

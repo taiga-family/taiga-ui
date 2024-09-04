@@ -10,9 +10,9 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        NgFor,
-        JsonPipe,
         FormsModule,
+        JsonPipe,
+        NgFor,
         TuiComboBoxModule,
         TuiDataList,
         TuiFilterByInputPipe,

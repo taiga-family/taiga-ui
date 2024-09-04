@@ -14,12 +14,12 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        TuiInputDateRangeModule,
-        TuiAxes,
-        NgIf,
         AsyncPipe,
-        TuiLineDaysChart,
         FormsModule,
+        NgIf,
+        TuiAxes,
+        TuiInputDateRangeModule,
+        TuiLineDaysChart,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

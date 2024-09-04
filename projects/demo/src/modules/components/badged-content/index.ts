@@ -9,11 +9,11 @@ import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         AsyncPipe,
+        TuiAvatar,
         TuiBadgedContent,
         TuiBadgeNotification,
-        TuiAvatar,
-        TuiFallbackSrcPipe,
         TuiDemo,
+        TuiFallbackSrcPipe,
     ],
     templateUrl: './index.html',
     changeDetection,

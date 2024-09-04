@@ -8,7 +8,7 @@ import {TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBreadcrumbs, TuiItem, TuiLink],
+    imports: [TuiBreadcrumbs, TuiDemo, TuiItem, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

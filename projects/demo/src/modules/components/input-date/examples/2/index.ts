@@ -9,11 +9,11 @@ import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
 @Component({
     standalone: true,
     imports: [
+        ReactiveFormsModule,
+        TuiButton,
+        TuiDropdown,
         TuiInputDateModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        TuiDropdown,
-        TuiButton,
     ],
     templateUrl: './index.html',
     encapsulation,

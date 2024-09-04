@@ -16,7 +16,7 @@ const getIcon: Record<string, string> = {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiFilter, TuiIcon, JsonPipe],
+    imports: [JsonPipe, ReactiveFormsModule, TuiFilter, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

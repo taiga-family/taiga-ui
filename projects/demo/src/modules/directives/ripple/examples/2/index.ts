@@ -6,7 +6,7 @@ import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiRipple, TuiButton],
+    imports: [TuiButton, TuiRipple],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

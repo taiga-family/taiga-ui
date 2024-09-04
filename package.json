@@ -100,8 +100,7 @@
             "sonarjs/single-character-alternation": "off",
             "sonarjs/sonar-max-params": "off",
             "unicorn/consistent-destructuring": "off",
-            "unicorn/no-typeof-undefined": "off",
-            "@taiga-ui/experience/standalone-imports-sort": "off"
+            "unicorn/no-typeof-undefined": "off"
         },
         "root": true
     },

@@ -7,7 +7,7 @@ import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBadgeNotification, TuiLabel],
+    imports: [TuiBadgeNotification, TuiDemo, TuiLabel],
     templateUrl: './index.html',
     changeDetection,
 })

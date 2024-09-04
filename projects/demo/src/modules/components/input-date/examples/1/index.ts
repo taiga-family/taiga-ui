@@ -15,12 +15,12 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiInputDateModule,
-        TuiError,
-        TuiTextfieldControllerModule,
-        TuiFieldErrorPipe,
-        ReactiveFormsModule,
         AsyncPipe,
+        ReactiveFormsModule,
+        TuiError,
+        TuiFieldErrorPipe,
+        TuiInputDateModule,
+        TuiTextfieldControllerModule,
         TuiUnfinishedValidator,
     ],
     templateUrl: './index.html',

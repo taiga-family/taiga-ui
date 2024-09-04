@@ -6,7 +6,7 @@ import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTextfield, TuiPrimitiveTextfieldModule],
+    imports: [TuiPrimitiveTextfieldModule, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

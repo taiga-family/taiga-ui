@@ -5,7 +5,7 @@ import {TuiFade, TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSegmented, TuiFade],
+    imports: [TuiFade, TuiSegmented],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -11,7 +11,7 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'tui-wrapper-example-1',
-    imports: [FormsModule, TuiCheckbox, TuiButton, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiCheckbox, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

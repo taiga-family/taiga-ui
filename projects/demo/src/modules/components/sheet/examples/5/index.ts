@@ -10,7 +10,7 @@ const FRAMES = 166;
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiSheetModule, AsyncPipe],
+    imports: [AsyncPipe, TuiButton, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

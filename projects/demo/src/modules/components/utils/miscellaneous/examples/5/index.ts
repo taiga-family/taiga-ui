@@ -12,11 +12,11 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiInputModule,
         TuiError,
         TuiFieldErrorPipe,
-        AsyncPipe,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     encapsulation,

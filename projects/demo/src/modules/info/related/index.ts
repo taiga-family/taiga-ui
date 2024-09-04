@@ -9,7 +9,7 @@ import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-gi
 @Component({
     standalone: true,
     selector: 'related',
-    imports: [TuiDemo, TuiCardLarge, TuiSurface],
+    imports: [TuiCardLarge, TuiDemo, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

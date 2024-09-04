@@ -10,7 +10,7 @@ import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 @Component({
     standalone: true,
     selector: 'tui-thumbnail-card',
-    imports: [TuiIcon, NgIf, TuiIconPipe],
+    imports: [NgIf, TuiIcon, TuiIconPipe],
     templateUrl: './thumbnail-card.template.html',
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

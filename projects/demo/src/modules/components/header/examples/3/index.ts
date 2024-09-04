@@ -6,7 +6,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiHeader, TuiTitle, TuiIcon],
+    imports: [TuiHeader, TuiIcon, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

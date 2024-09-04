@@ -32,16 +32,15 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiLabel,
-        TuiInputModule,
-        TuiTextfieldControllerModule,
+        RouterLink,
         TuiError,
         TuiFieldErrorPipe,
-        AsyncPipe,
-
+        TuiInputModule,
+        TuiLabel,
         TuiLink,
-        RouterLink,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

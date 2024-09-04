@@ -32,13 +32,13 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
         InheritedDocumentation,
-        TuiInputDateRangeModule,
         ReactiveFormsModule,
+        TuiDemo,
         TuiHint,
-        TuiTextfieldControllerModule,
+        TuiInputDateRangeModule,
         TuiMobileCalendar,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     changeDetection,

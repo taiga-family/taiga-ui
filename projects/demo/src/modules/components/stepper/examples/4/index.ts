@@ -6,7 +6,7 @@ import {TuiConnected, TuiStepper} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiStepper, TuiConnected, NgForOf],
+    imports: [NgForOf, TuiConnected, TuiStepper],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

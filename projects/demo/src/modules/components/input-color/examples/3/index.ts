@@ -6,7 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiPaletteModule, TuiDropdown, AsyncPipe],
+    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiPaletteModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

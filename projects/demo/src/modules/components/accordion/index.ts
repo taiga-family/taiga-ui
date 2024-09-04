@@ -17,13 +17,13 @@ import {TuiAccordionExample5} from './examples/5';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
         TuiAccordion,
         TuiAccordionExample1,
         TuiAccordionExample2,
         TuiAccordionExample3,
         TuiAccordionExample4,
         TuiAccordionExample5,
+        TuiDemo,
     ],
     templateUrl: './index.html',
     changeDetection,

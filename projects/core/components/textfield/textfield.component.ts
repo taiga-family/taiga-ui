@@ -42,7 +42,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, WaResizeObserver, TuiButton, PolymorpheusOutlet],
+    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,

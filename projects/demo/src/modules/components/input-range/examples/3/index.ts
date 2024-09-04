@@ -8,12 +8,12 @@ import {TuiInputRangeModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiInputRangeModule,
-        ReactiveFormsModule,
+        I18nPluralPipe,
         NgSwitch,
         NgSwitchCase,
         NgSwitchDefault,
-        I18nPluralPipe,
+        ReactiveFormsModule,
+        TuiInputRangeModule,
     ],
     templateUrl: './index.html',
     styles: [

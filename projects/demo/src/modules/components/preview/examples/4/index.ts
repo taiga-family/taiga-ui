@@ -12,7 +12,7 @@ import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxj
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiPreview, AsyncPipe, NgIf, TuiIcon, TuiLoader],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiIcon, TuiLoader, TuiPreview],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

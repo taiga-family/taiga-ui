@@ -8,7 +8,7 @@ import {of, repeat, takeWhile, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiProgress, AsyncPipe],
+    imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -35,7 +35,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 @Component({
     standalone: true,
     selector: 'tui-line-days-chart',
-    imports: [TuiLineChart, NgForOf, TuiHint, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [NgForOf, PolymorpheusOutlet, PolymorpheusTemplate, TuiHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

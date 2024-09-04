@@ -19,7 +19,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 @Component({
     standalone: true,
     selector: 'th[tuiTh]',
-    imports: [NgIf, NgTemplateOutlet, TuiIcon, AsyncPipe, TuiTableResized],
+    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

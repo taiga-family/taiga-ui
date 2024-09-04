@@ -6,7 +6,7 @@ import {TuiInputYearModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
 
 @Component({
     standalone: true,
-    imports: [TuiInputYearModule, ReactiveFormsModule, TuiTextfieldControllerModule],
+    imports: [ReactiveFormsModule, TuiInputYearModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

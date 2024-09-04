@@ -8,7 +8,7 @@ import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiLet, TuiBadge],
+    imports: [TuiBadge, TuiLet],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

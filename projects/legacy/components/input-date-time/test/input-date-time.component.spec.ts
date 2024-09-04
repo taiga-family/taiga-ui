@@ -20,7 +20,7 @@ import {of} from 'rxjs';
 describe('InputDateTime', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot, TuiInputDateTimeModule, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
         template: `
             <tui-root>
                 <tui-input-date-time
@@ -349,7 +349,7 @@ describe('InputDateTime', () => {
 
         @Component({
             standalone: true,
-            imports: [TuiRoot, TuiInputDateTimeModule, ReactiveFormsModule],
+            imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
             template: `
                 <tui-root>
                     <tui-input-date-time

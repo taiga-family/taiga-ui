@@ -8,7 +8,7 @@ import {TuiHint} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiPieChart, TuiAmountPipe, AsyncPipe, TuiHint],
+    imports: [AsyncPipe, TuiAmountPipe, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

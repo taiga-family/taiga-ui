@@ -18,13 +18,13 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiInputSliderModule,
+        InheritedDocumentation,
         ReactiveFormsModule,
+        TuiDemo,
         TuiHint,
+        TuiInputSliderModule,
         TuiNumberFormat,
         TuiTextfieldControllerModule,
-        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -12,7 +12,7 @@ interface Item {
 
 @Component({
     standalone: true,
-    imports: [TuiSelectModule, ReactiveFormsModule, TuiTextfieldControllerModule],
+    imports: [ReactiveFormsModule, TuiSelectModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

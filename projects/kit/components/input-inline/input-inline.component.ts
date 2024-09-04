@@ -14,7 +14,7 @@ import {defer} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-input-inline',
-    imports: [NgIf, TuiLet, AsyncPipe],
+    imports: [AsyncPipe, NgIf, TuiLet],
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,

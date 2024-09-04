@@ -6,7 +6,7 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tui-styles-info',
-    imports: [TuiNotification, TuiLink, RouterLink],
+    imports: [RouterLink, TuiLink, TuiNotification],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

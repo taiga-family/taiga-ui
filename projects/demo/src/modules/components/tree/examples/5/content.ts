@@ -5,7 +5,7 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiIcon, NgTemplateOutlet],
+    imports: [NgTemplateOutlet, TuiIcon],
     template: `
         <tui-icon
             class="tui-space_right-2"

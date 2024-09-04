@@ -6,7 +6,7 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDropdown, TuiDataList, NgForOf],
+    imports: [NgForOf, TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

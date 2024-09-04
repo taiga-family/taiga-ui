@@ -27,13 +27,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiInputDateTimeModule,
+        InheritedDocumentation,
         ReactiveFormsModule,
+        TuiDemo,
         TuiDropdown,
         TuiHint,
+        TuiInputDateTimeModule,
         TuiTextfieldControllerModule,
-        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

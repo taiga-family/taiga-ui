@@ -6,7 +6,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSegmented, NgFor],
+    imports: [NgFor, TuiSegmented],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

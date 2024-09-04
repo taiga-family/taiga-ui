@@ -7,7 +7,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiItemsWithMore, TuiChip, TuiItem, NgForOf],
+    imports: [NgForOf, TuiChip, TuiItem, TuiItemsWithMore],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

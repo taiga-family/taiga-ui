@@ -10,7 +10,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, AsyncPipe, TuiBlockStatus, TuiButton],
+    imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

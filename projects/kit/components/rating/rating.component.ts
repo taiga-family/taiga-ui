@@ -14,7 +14,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
 @Component({
     standalone: true,
     selector: 'tui-rating',
-    imports: [CommonModule, FormsModule, TuiIcon, TuiRepeatTimes, PolymorpheusOutlet],
+    imports: [CommonModule, FormsModule, PolymorpheusOutlet, TuiIcon, TuiRepeatTimes],
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

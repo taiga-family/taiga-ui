@@ -7,7 +7,7 @@ import {TuiAccordion, TuiTabs} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabs, TuiAccordion],
+    imports: [TuiAccordion, TuiDemo, TuiTabs],
     templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
     encapsulation,

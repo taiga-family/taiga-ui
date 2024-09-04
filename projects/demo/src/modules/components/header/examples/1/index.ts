@@ -7,7 +7,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiHeader, TuiTitle, TuiBadgeNotification, TuiButton],
+    imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

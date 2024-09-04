@@ -38,7 +38,7 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
 @Component({
     standalone: true,
     selector: 'tui-expand',
-    imports: [TuiLoader, NgIf, NgTemplateOutlet],
+    imports: [NgIf, NgTemplateOutlet, TuiLoader],
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

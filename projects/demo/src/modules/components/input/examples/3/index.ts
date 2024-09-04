@@ -11,11 +11,11 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        JsonPipe,
+        MaskitoDirective,
         ReactiveFormsModule,
         TuiInputModule,
-        MaskitoDirective,
         TuiUnmaskHandler,
-        JsonPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

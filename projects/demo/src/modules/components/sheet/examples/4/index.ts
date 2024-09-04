@@ -8,7 +8,7 @@ import {TuiSheetModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiSheetModule, TuiElasticSticky, TuiLink],
+    imports: [TuiButton, TuiElasticSticky, TuiLink, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

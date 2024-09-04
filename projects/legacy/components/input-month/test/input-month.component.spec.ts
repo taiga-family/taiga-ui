@@ -11,7 +11,7 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 describe('InputMonth', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot, TuiInputMonthModule, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiInputMonthModule, TuiRoot],
         template: `
             <tui-root>
                 <tui-input-month [formControl]="control"></tui-input-month>

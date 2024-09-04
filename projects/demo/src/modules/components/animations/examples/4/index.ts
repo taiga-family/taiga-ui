@@ -10,7 +10,7 @@ import {AnimationState} from '../../state';
 
 @Component({
     standalone: true,
-    imports: [TuiIcon, NgIf, NgForOf, AsyncPipe],
+    imports: [AsyncPipe, NgForOf, NgIf, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -8,7 +8,7 @@ const WORDS = ['Rock', 'Paper', 'Scissor'];
 
 @Component({
     standalone: true,
-    imports: [TuiFluidTypography, TuiButton, TuiAppearance],
+    imports: [TuiAppearance, TuiButton, TuiFluidTypography],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

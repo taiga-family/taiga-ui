@@ -7,7 +7,7 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 
 @Component({
     standalone: true,
-    imports: [TuiInputSliderModule, TuiTextfieldControllerModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputSliderModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

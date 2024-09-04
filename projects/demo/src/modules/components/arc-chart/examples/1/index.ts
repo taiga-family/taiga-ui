@@ -9,7 +9,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputNumberModule, FormsModule, TuiArcChart, TuiAmountPipe, AsyncPipe],
+    imports: [AsyncPipe, FormsModule, TuiAmountPipe, TuiArcChart, TuiInputNumberModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

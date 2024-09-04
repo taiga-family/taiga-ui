@@ -33,7 +33,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
 @Component({
     standalone: true,
     selector: 'tui-line-chart',
-    imports: [TuiLet, AsyncPipe, NgIf, TuiHint, NgForOf],
+    imports: [AsyncPipe, NgForOf, NgIf, TuiHint, TuiLet],
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

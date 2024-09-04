@@ -9,7 +9,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiDropdown, DropdownDocumentation],
+    imports: [DropdownDocumentation, TuiDemo, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
     providers: [

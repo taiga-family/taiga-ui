@@ -48,12 +48,12 @@ describe('ComboBox', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiComboBoxModule,
             ReactiveFormsModule,
-            TuiHint,
-            TuiTextfieldControllerModule,
+            TuiComboBoxModule,
             TuiDataListWrapper,
+            TuiHint,
+            TuiRoot,
+            TuiTextfieldControllerModule,
         ],
         template: `
             <tui-root>

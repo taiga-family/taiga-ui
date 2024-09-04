@@ -8,8 +8,8 @@ import {TuiInputMonthRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/
 @Component({
     standalone: true,
     imports: [
-        TuiInputMonthRangeModule,
         ReactiveFormsModule,
+        TuiInputMonthRangeModule,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

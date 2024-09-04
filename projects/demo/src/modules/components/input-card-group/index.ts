@@ -14,11 +14,11 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 @Component({
     standalone: true,
     imports: [
+        InheritedDocumentation,
+        ReactiveFormsModule,
         TuiDemo,
         TuiInputCardGroup,
-        ReactiveFormsModule,
         TuiThumbnailCard,
-        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

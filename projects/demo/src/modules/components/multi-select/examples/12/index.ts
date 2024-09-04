@@ -18,6 +18,7 @@ export class MoreOption {}
     standalone: true,
     imports: [
         FormsModule,
+        MoreOption,
         NgForOf,
         TuiButton,
         TuiDataList,
@@ -25,7 +26,6 @@ export class MoreOption {}
         TuiDropdown,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
-        MoreOption,
     ],
     templateUrl: './index.html',
     encapsulation,

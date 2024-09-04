@@ -8,7 +8,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiProgress, TuiLink, RouterLink],
+    imports: [RouterLink, TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,7 +6,7 @@ import {TuiTagModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTagModule, TuiRepeatTimes],
+    imports: [TuiRepeatTimes, TuiTagModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

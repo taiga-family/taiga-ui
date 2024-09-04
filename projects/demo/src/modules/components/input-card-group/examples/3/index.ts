@@ -15,13 +15,13 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     imports: [
-        TuiInputCardGroup,
-        ReactiveFormsModule,
+        AsyncPipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        ReactiveFormsModule,
         TuiError,
         TuiFieldErrorPipe,
-        AsyncPipe,
+        TuiInputCardGroup,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -13,7 +13,7 @@ interface TreeNode {
 
 @Component({
     standalone: true,
-    imports: [TuiTree, TuiButton],
+    imports: [TuiButton, TuiTree],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

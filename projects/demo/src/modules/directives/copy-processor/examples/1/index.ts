@@ -11,7 +11,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputNumberModule, TuiCopyProcessor, FormsModule, AsyncPipe],
+    imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumberModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

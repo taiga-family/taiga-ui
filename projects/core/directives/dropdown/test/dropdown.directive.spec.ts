@@ -10,11 +10,11 @@ describe('TuiDropdownDirective', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiDropdownDirective,
-            TuiDropdownManual,
             PolymorpheusOutlet,
             PolymorpheusTemplate,
+            TuiDropdownDirective,
+            TuiDropdownManual,
+            TuiRoot,
         ],
         template: `
             <tui-root>

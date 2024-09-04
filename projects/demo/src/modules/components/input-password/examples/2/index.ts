@@ -12,7 +12,7 @@ import {of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiTextfield, TuiInputPassword],
+    imports: [ReactiveFormsModule, TuiInputPassword, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

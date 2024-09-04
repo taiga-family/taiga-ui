@@ -27,7 +27,7 @@ import type {Observable} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-bar-chart',
-    imports: [NgForOf, TuiHint, TuiMapperPipe, AsyncPipe, TuiBarSet],
+    imports: [AsyncPipe, NgForOf, TuiBarSet, TuiHint, TuiMapperPipe],
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

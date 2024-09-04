@@ -36,7 +36,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
 @Component({
     standalone: true,
     selector: 'tui-calendar-range',
-    imports: [AsyncPipe, NgIf, NgForOf, TuiMapperPipe, TuiCalendar, TuiDataList, TuiIcon],
+    imports: [AsyncPipe, NgForOf, NgIf, TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

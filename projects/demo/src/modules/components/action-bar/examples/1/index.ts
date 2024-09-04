@@ -17,14 +17,14 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiActionBar,
-        TuiDataList,
         NgIf,
-        TuiLink,
         ReactiveFormsModule,
+        TuiActionBar,
+        TuiButton,
+        TuiDataList,
         TuiFilter,
         TuiIcon,
+        TuiLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

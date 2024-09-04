@@ -5,7 +5,7 @@ import {TuiAppearance, TuiSurface} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiSurface, TuiAppearance],
+    imports: [TuiAppearance, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./base.less', './index.less'],
     encapsulation,

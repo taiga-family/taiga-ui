@@ -13,7 +13,7 @@ import {combineLatest, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, AsyncPipe],
+    imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -23,7 +23,7 @@ const DEFAULT_HEIGHT = 108;
 describe('Textarea', () => {
     @Component({
         standalone: true,
-        imports: [TuiTextareaModule, ReactiveFormsModule, TuiHint],
+        imports: [ReactiveFormsModule, TuiHint, TuiTextareaModule],
         template: `
             <tui-textarea
                 [expandable]="expandable"

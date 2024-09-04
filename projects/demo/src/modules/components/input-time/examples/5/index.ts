@@ -15,8 +15,8 @@ import {
     imports: [
         ReactiveFormsModule,
         TuiInputTimeModule,
-        TuiTextfieldControllerModule,
         TuiSwitch,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

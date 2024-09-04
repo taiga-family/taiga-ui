@@ -6,7 +6,7 @@ import {TuiAlert, TuiButton} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-6',
-    imports: [TuiButton, TuiAlert],
+    imports: [TuiAlert, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

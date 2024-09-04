@@ -6,7 +6,7 @@ import {TuiButtonGroup, TuiIconBadge} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiButtonGroup, TuiSurface, TuiIcon, TuiIconBadge],
+    imports: [TuiButton, TuiButtonGroup, TuiIcon, TuiIconBadge, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

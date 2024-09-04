@@ -8,7 +8,7 @@ import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFiles, NgForOf, TuiItem],
+    imports: [NgForOf, TuiFiles, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

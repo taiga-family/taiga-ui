@@ -22,8 +22,8 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
     imports: [
         NgIf,
         RouterLink,
-        TuiButton,
         TuiAutoFocus,
+        TuiButton,
         TuiRepeatTimes,
         WaIntersectionObserver,
     ],

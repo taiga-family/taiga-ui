@@ -8,12 +8,12 @@ import {TuiCell} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCell,
         TuiAvatar,
-        TuiIcon,
         TuiBadge,
         TuiBadgeNotification,
+        TuiCell,
         TuiFade,
+        TuiIcon,
         TuiTitle,
     ],
     templateUrl: './index.html',

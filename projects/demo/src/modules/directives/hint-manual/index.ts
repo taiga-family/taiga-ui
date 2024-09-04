@@ -10,7 +10,7 @@ import {InheritedDocumentation} from '../../components/abstract/inherited-docume
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton, TuiHint, InheritedDocumentation],
+    imports: [InheritedDocumentation, TuiButton, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

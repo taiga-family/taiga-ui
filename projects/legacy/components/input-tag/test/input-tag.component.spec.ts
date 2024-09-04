@@ -28,11 +28,11 @@ describe('InputTag', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiInputTagModule,
             NgIf,
             ReactiveFormsModule,
             TuiHint,
+            TuiInputTagModule,
+            TuiRoot,
             TuiTextfieldControllerModule,
         ],
         template: `

@@ -62,12 +62,12 @@ function getAge({dob}: User): number {
 @Component({
     standalone: true,
     imports: [
-        TuiTable,
-        TuiScrollbar,
         CdkFixedSizeVirtualScroll,
-        CdkVirtualScrollViewport,
         CdkVirtualForOf,
+        CdkVirtualScrollViewport,
         TuiScrollable,
+        TuiScrollbar,
+        TuiTable,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

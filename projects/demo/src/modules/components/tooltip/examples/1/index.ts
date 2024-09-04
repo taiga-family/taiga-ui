@@ -9,7 +9,7 @@ import {interval, map, startWith} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiTooltip, TuiLoader, TuiLet, AsyncPipe, TuiIcon],
+    imports: [AsyncPipe, TuiIcon, TuiLet, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

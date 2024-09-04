@@ -13,7 +13,7 @@ import {Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiPullToRefresh, TuiButton],
+    imports: [TuiButton, TuiPullToRefresh],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

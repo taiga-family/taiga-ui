@@ -11,9 +11,9 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
     imports: [
         ReactiveFormsModule,
         TuiButton,
-        TuiDropdown,
         TuiChevron,
         TuiDataListWrapper,
+        TuiDropdown,
         TuiMultiSelectModule,
     ],
     templateUrl: './index.html',

@@ -20,10 +20,10 @@ describe('InputDate', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiInputDateModule,
             ReactiveFormsModule,
             TuiHint,
+            TuiInputDateModule,
+            TuiRoot,
             TuiTextfieldControllerModule,
         ],
         template: `
@@ -329,10 +329,10 @@ describe('InputDate', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRoot,
-                TuiInputDateModule,
                 ReactiveFormsModule,
                 TuiHint,
+                TuiInputDateModule,
+                TuiRoot,
                 TuiTextfieldControllerModule,
             ],
             template: `

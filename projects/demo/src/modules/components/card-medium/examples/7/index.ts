@@ -11,13 +11,13 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCardMedium,
-        TuiSurface,
-        TuiIconPipe,
-        TuiThumbnailCard,
         FormsModule,
+        TuiCardMedium,
         TuiFade,
+        TuiIconPipe,
         TuiRipple,
+        TuiSurface,
+        TuiThumbnailCard,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

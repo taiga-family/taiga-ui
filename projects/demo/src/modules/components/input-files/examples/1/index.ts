@@ -10,7 +10,7 @@ import {finalize, map, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiFiles, ReactiveFormsModule, AsyncPipe],
+    imports: [AsyncPipe, NgIf, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

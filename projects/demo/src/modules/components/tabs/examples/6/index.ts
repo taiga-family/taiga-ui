@@ -7,7 +7,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTabs, RouterLinkActive, RouterLink],
+    imports: [RouterLink, RouterLinkActive, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

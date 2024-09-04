@@ -13,7 +13,7 @@ const startOfQuarter = startOfMonth.append({month: -(startOfMonth.month % 3)});
 
 @Component({
     standalone: true,
-    imports: [TuiCalendarRange, NgIf, TuiLink],
+    imports: [NgIf, TuiCalendarRange, TuiLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

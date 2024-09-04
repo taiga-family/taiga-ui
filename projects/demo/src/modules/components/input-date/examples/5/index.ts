@@ -9,7 +9,7 @@ import {ExampleNativeDateTransformer} from './native-date-transformer.directive'
 
 @Component({
     standalone: true,
-    imports: [TuiInputDateModule, ReactiveFormsModule, ExampleNativeDateTransformer],
+    imports: [ExampleNativeDateTransformer, ReactiveFormsModule, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

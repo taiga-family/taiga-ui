@@ -13,7 +13,7 @@ import {defer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiInputPhoneInternational, TuiIcon, TuiTooltip],
+    imports: [FormsModule, TuiIcon, TuiInputPhoneInternational, TuiTooltip],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

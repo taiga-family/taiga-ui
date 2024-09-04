@@ -8,7 +8,7 @@ import {TuiFilter} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiFilter, JsonPipe],
+    imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
