@@ -12,8 +12,11 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
-import cdkPackage from '../../../../package.json';
 import {TUI_EDITOR_VERSION} from '../steps/migrate-editor';
+import {
+    TUI_EVENT_PLUGINS_VERSION,
+    TUI_POLYMORPHEUS_VERSION,
+} from '../steps/update-packages';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
@@ -58,8 +61,8 @@ const PACKAGE_JSON_AFTER = {
         '@taiga-ui/addon-commerce': '~3.42.0',
         '@taiga-ui/layout': TUI_VERSION,
         '@taiga-ui/legacy': TUI_VERSION,
-        '@taiga-ui/event-plugins': cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
-        '@taiga-ui/polymorpheus': cdkPackage.peerDependencies['@taiga-ui/polymorpheus'],
+        '@taiga-ui/event-plugins': TUI_EVENT_PLUGINS_VERSION,
+        '@taiga-ui/polymorpheus': TUI_POLYMORPHEUS_VERSION,
         '@taiga-ui/editor': TUI_EDITOR_VERSION,
     },
 };
@@ -129,8 +132,7 @@ describe('ng-update', () => {
             dependencies: {
                 ...PACKAGE_JSON_DEPS,
                 '@taiga-ui/editor': TUI_EDITOR_VERSION,
-                '@taiga-ui/event-plugins':
-                    cdkPackage.peerDependencies['@taiga-ui/event-plugins'],
+                '@taiga-ui/event-plugins': TUI_EVENT_PLUGINS_VERSION,
                 '@taiga-ui/layout': TUI_VERSION,
                 '@taiga-ui/legacy': TUI_VERSION,
             },
