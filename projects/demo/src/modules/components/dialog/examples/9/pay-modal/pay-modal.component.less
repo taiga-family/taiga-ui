@@ -1,7 +1,7 @@
 :host {
     ::ng-deep {
         tui-input-card-group {
-            width: 100% !important;
+            inline-size: 100% !important;
 
             &.without-date {
                 .t-wrapper_expire {
@@ -21,21 +21,21 @@
 }
 
 .modal-container {
-    width: 480px;
+    inline-size: 30rem;
 }
 
 @media screen and (max-width: 599px) {
     .modal-container {
-        width: 100%;
+        inline-size: 100%;
     }
 }
 
 .title {
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: 0.18px;
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    letter-spacing: 0.01125rem;
 }
 
 .form-block {
@@ -44,20 +44,20 @@
 
     .saved-card-preset {
         &__item {
-            height: 56px;
+            display: flex;
+            block-size: 3.5rem;
             background: #fafbfb;
             border-radius: 16px;
             border: 2px solid #eaeaea;
             padding: 0 16px;
-            display: flex;
             align-items: center;
             cursor: pointer;
 
             &__placeholder {
                 color: #717172;
-                letter-spacing: 0.24px;
-                font-size: 12px;
-                line-height: 18px;
+                letter-spacing: 0.015rem;
+                font-size: 0.75rem;
+                line-height: 1.125rem;
             }
 
             &__info {
@@ -65,16 +65,16 @@
                 align-items: center;
 
                 &__icon {
-                    width: 36px;
-                    height: 22px;
+                    inline-size: 2.25rem;
+                    block-size: 1.375rem;
                     background-position: center;
                     background-repeat: no-repeat;
-                    margin-right: 8px;
+                    margin-right: 0.5rem;
                 }
 
                 &__number {
                     letter-spacing: 0.2px;
-                    line-height: 22px;
+                    line-height: 1.375rem;
                     color: #313132;
                 }
             }
@@ -88,8 +88,8 @@
         ::ng-deep {
             a {
                 font-weight: 400;
-                font-size: 14px;
-                line-height: 20px;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
 
                 &:first-child {
                     color: #6496dc;
@@ -109,7 +109,7 @@
     bottom: 0;
     left: 0;
     z-index: -9999999;
-    width: 100%;
+    inline-size: 100%;
     caret-color: transparent;
     cursor: none;
     color: transparent;

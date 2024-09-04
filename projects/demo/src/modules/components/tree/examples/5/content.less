@@ -2,28 +2,29 @@
 
 :host {
     .transition(background);
+
     position: relative;
-    height: var(--tui-height-s);
     display: flex;
+    block-size: var(--tui-height-s);
     align-items: center;
     padding: 0 0.5rem;
     border-radius: var(--tui-radius-xs);
     background: var(--tui-background-base);
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: '';
         position: absolute;
         left: -0.75rem;
         z-index: -1;
     }
 
-    &:before {
-        width: 1rem;
+    &::before {
+        inline-size: 1rem;
         border-bottom: 1px solid var(--tui-border-normal);
     }
 
-    &:after {
+    &::after {
         top: -1rem;
         bottom: 1rem;
         border-left: 1px solid var(--tui-border-normal);
@@ -39,6 +40,6 @@
 
 tui-icon {
     position: relative;
-    background: inherit;
     z-index: 1;
+    background: inherit;
 }

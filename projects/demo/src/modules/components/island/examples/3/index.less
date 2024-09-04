@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .container {
-    max-width: 62.5rem;
+    max-inline-size: 62.5rem;
 }
 
 .title {
@@ -21,14 +21,14 @@
 
 .image {
     display: block;
-    max-width: ~'calc(100% + 2.5rem)';
+    max-inline-size: ~'calc(100% + 2.5rem)';
     margin: -1.25rem -1.25rem 1.25rem;
     border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
 }
 
 .my-panel {
     display: flex;
-    height: 15rem;
+    block-size: 15rem;
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
@@ -40,6 +40,7 @@
 
     [tuiCardLarge] {
         .transition(transform);
+
         text-align: start;
         flex-direction: row;
         align-items: center;

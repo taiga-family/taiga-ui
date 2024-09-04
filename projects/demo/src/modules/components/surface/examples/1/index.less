@@ -13,7 +13,7 @@
 }
 
 .overlay {
-    &:after {
+    &::after {
         opacity: 0;
         background: linear-gradient(
             -45deg,
@@ -26,24 +26,24 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
-        &:hover:after {
+        &:hover::after {
             opacity: 0.5;
         }
     }
 
-    &:active:after {
+    &:active::after {
         opacity: 1;
     }
 }
 
 .highlight {
     @media (hover: hover) and (pointer: fine) {
-        &:hover:before {
+        &:hover::before {
             backdrop-filter: brightness(1.1);
         }
     }
 
-    &:active:before {
+    &:active::before {
         backdrop-filter: brightness(0.9);
     }
 }
@@ -53,12 +53,12 @@
 }
 
 .background {
-    &:after {
+    &::after {
         background: url(/assets/images/not-found.svg) top;
         background-size: 300%;
     }
 
-    &:hover:after {
+    &:hover::after {
         transform: scale(1.15);
     }
 }

@@ -23,18 +23,19 @@
 }
 
 .title {
-    min-width: 15.625rem;
+    min-inline-size: 15.625rem;
     margin: 0;
 }
 
 .tabs {
-    width: ~'calc(100% - 15.625rem)';
+    inline-size: ~'calc(100% - 15.625rem)';
     justify-content: flex-end;
     box-shadow: none;
 }
 
 .icon {
     .transition(transform);
+
     margin-left: 0.25rem;
 
     &_rotated {

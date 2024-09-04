@@ -6,15 +6,17 @@
 
 .fade {
     .transition(height);
-    height: 3.75rem;
+
+    block-size: 3.75rem;
 
     &_expanded {
-        height: 10rem;
+        block-size: 10rem;
     }
 }
 
 .expand {
     .transition(opacity, visibility);
+
     position: absolute;
     bottom: 0;
     right: 0;

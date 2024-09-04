@@ -24,13 +24,14 @@
 
 .disable {
     .transition(~'transform, color');
+
     margin-left: 0.25rem;
     will-change: transform;
     color: var(--tui-text-secondary);
     pointer-events: auto;
     border: 0.25rem solid transparent;
-    width: 1.5rem;
-    height: 1.5rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
 
     &:hover {
         color: var(--tui-text-primary);

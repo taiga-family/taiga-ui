@@ -1,18 +1,18 @@
 :host {
-    width: 20rem;
+    inline-size: 20rem;
 }
 
 .blur {
+    z-index: 1;
+    display: flex;
     background-image: url('/assets/images/restaurant-2.jpg');
     border-radius: 1rem;
     padding: 1.25rem;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    z-index: 1;
 
-    &:before {
+    &::before {
         backdrop-filter: blur(1rem);
     }
 }

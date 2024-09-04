@@ -2,7 +2,7 @@
 
 .wrapper {
     display: grid;
-    width: 100%;
+    inline-size: 100%;
     gap: 1px;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
@@ -10,15 +10,15 @@
 
     @media @tui-desktop-min {
         font: var(--tui-font-text-s);
-        width: 500px;
+        inline-size: 31.25rem;
     }
 }
 
 .item {
-    height: 100px;
+    display: flex;
+    block-size: 6.25rem;
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-primary);
-    display: flex;
     justify-content: center;
     align-items: center;
 }

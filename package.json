@@ -112,10 +112,25 @@
             "@taiga-ui/stylelint-config"
         ],
         "rules": {
-            "selector-class-pattern": "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$"
+            "no-empty-source": null,
+            "selector-type-no-unknown": null
         },
+        "overrides": [
+            {
+                "files": [
+                    "**/(!demo)/**/*.{less,css,scss}"
+                ],
+                "rules": {
+                    "selector-class-pattern": [
+                        "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$",
+                        {
+                            "resolveNestedSelectors": true
+                        }
+                    ]
+                }
+            }
+        ],
         "ignoreFiles": [
-            "**/demo/**",
             "**/dist/**",
             "**/coverage/**",
             "**/node_modules/**",

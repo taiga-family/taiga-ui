@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .tiles {
-    width: 10rem;
+    inline-size: 10rem;
     gap: 1rem;
     grid-auto-rows: minmax(var(--tui-height-m), auto);
 }
@@ -14,8 +14,9 @@
 
 .content {
     .transition(box-shadow);
-    height: 100%;
+
     display: flex;
+    block-size: 100%;
     align-items: center;
     padding: 0 1rem;
     background: var(--tui-background-base);
