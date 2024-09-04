@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -52,7 +51,6 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
     ],
     hostDirectives: [
-        TuiNativeValidator,
         TuiDropdownDirective,
         TuiWithDropdownOpen,
         TuiWithTextfieldDropdown,
