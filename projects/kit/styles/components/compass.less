@@ -24,7 +24,7 @@ tui-compass {
     inline-size: 1rem;
     block-size: 1rem;
     border: 0.1875rem solid var(--tui-background-base);
-    box-shadow: 0 0 0.1875rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.1875rem rgb(0 0 0 / 0.3);
     transform-style: preserve-3d; // z-index doesn't work on pseudo-element
 
     &::before {
@@ -44,6 +44,6 @@ tui-compass {
 
         content: '';
         border-radius: inherit;
-        background: currentColor linear-gradient(-45deg, rgba(0, 0, 0, 0.2), transparent);
+        background: currentColor linear-gradient(-45deg, rgb(0 0 0 / 0.2), transparent);
     }
 }
