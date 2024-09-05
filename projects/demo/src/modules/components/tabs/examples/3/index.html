@@ -14,6 +14,7 @@
                 <button
                     *tuiItem
                     tuiTab
+                    type="button"
                     (click)="onClick(tab)"
                 >
                     {{ tab }}
@@ -24,6 +25,7 @@
                     *tuiItem
                     tuiChevron
                     tuiTab
+                    type="button"
                     [tuiDropdown]="dropdown"
                     [(tuiDropdownOpen)]="open"
                     (tui-tab-activate)="stop($event)"
@@ -43,6 +45,7 @@
         <button
             *ngFor="let collaborator of collaborators"
             tuiOption
+            type="button"
             (click)="onClick(collaborator); close()"
         >
             {{ collaborator }}

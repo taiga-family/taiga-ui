@@ -18,6 +18,7 @@ import {TuiInputFiles} from './input-files.component';
         <a tuiLink>{{ link$ | async }}</a>
         {{ label$ | async }}
     `,
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiInputFilesContent {

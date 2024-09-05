@@ -3,13 +3,13 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiDataList, TuiIcon} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiDataList, TuiIcon} from '@taiga-ui/core';
 import type {TuiSelectComponent} from '@taiga-ui/legacy';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiSelectModule, FormsModule, TuiDataList, NgForOf, TuiIcon],
+    imports: [TuiSelectModule, FormsModule, TuiDataList, NgForOf, TuiIcon, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

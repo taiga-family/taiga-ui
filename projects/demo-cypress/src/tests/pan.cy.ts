@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiPan} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
@@ -6,9 +6,12 @@ describe('TuiPan', () => {
     let component: Test;
 
     @Component({
+        standalone: true,
+        imports: [TuiPan],
         template: `
             <section (tuiPan)="pan($event)"></section>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public coords: readonly number[] = [0, 0];

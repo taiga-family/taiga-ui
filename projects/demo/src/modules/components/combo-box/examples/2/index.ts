@@ -5,6 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiLoader} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {databaseMockData} from './database-mock-data';
@@ -25,6 +26,7 @@ import {RequestService} from './request.service';
         TuiLoader,
         TuiInitialsPipe,
         TuiTextfieldControllerModule,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

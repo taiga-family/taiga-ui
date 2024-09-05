@@ -24,12 +24,12 @@ export default class Example {
         $implicit,
     }: TuiContext<number>): number | string => {
         switch ($implicit) {
+            case (this.max - this.min) / 2:
+                return 'Middle';
             case this.max:
                 return "Digits can't describe my love!";
             case this.min:
                 return 'Just a label for min value';
-            case (this.max - this.min) / 2:
-                return 'Middle';
             default:
                 return $implicit;
         }

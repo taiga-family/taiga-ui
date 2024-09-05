@@ -15,6 +15,7 @@
         <button
             *tuiLet="'French Fries' as item"
             tuiOption
+            type="button"
             (click)="selectOption(item)"
         >
             {{ item }}
@@ -25,6 +26,7 @@
             tuiDropdownManual
             tuiDropdownSided
             tuiOption
+            type="button"
             [tuiDropdown]="burgersTmp"
         >
             Burgers
@@ -35,6 +37,7 @@
             tuiDropdownManual
             tuiDropdownSided
             tuiOption
+            type="button"
             [tuiDropdown]="drinksTmp"
         >
             Drinks
@@ -42,6 +45,7 @@
         <button
             *tuiLet="'Ice Cream' as item"
             tuiOption
+            type="button"
             (click)="selectOption(item)"
         >
             {{ item }}
@@ -52,6 +56,7 @@
             <button
                 *ngFor="let burger of burgers"
                 tuiOption
+                type="button"
                 (click)="selectOption(burger)"
             >
                 {{ burger }}
@@ -63,6 +68,7 @@
                 tuiDropdownManual
                 tuiDropdownSided
                 tuiOption
+                type="button"
                 [tuiDropdown]="drinksTmp"
             >
                 Nested menu
@@ -74,6 +80,7 @@
             <button
                 *ngFor="let drink of drinks"
                 tuiOption
+                type="button"
                 (click)="selectOption(drink)"
             >
                 {{ drink }}

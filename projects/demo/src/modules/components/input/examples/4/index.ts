@@ -8,6 +8,7 @@ import {TuiAmountPipe, TuiCurrency, TuiInputCard} from '@taiga-ui/addon-commerce
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
@@ -110,6 +111,7 @@ const USERS = [
         TuiAmountPipe,
         TuiTextfield,
         TuiInputCard,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

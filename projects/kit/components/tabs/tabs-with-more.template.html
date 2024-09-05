@@ -26,6 +26,7 @@
 <button
     *ngIf="moreContent; else chevron"
     tuiTab
+    type="button"
     class="t-more"
     [class._active]="isMoreActive"
     [class.t-no-margin]="isMoreAlone"
@@ -43,6 +44,7 @@
     <button
         tuiChevron
         tuiTab
+        type="button"
         class="t-more"
         [class._active]="isMoreActive"
         [class.t-no-margin]="isMoreAlone"

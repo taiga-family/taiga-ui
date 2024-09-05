@@ -5,10 +5,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiChip, TuiRepeatTimes, FormsModule, TuiButton, TuiCheckbox],
+    imports: [
+        TuiChip,
+        TuiRepeatTimes,
+        FormsModule,
+        TuiButton,
+        TuiCheckbox,
+        TuiAsideItemDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -1,4 +1,9 @@
-import {Component, signal, ViewEncapsulation} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    signal,
+    ViewEncapsulation,
+} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
     TuiButton,
@@ -6,15 +11,16 @@ import {
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
-import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
+import {TuiCheckbox, tuiCheckboxOptionsProvider, TuiStep} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-wrapper-example-1',
-    imports: [FormsModule, TuiCheckbox, TuiButton, TuiTextfield],
+    imports: [FormsModule, TuiCheckbox, TuiButton, TuiTextfield, TuiStep],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({appearance: 'material-button', size: 's'}),
         tuiCheckboxOptionsProvider({appearance: 'material-checkbox'}),

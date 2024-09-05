@@ -3,7 +3,12 @@
         Single action
         <div tuiSubtitle>Description of the action</div>
     </div>
-    <button tuiButton>Action</button>
+    <button
+        tuiButton
+        type="button"
+    >
+        Action
+    </button>
 </div>
 
 <div tuiCell>
@@ -18,6 +23,7 @@
         tuiDropdownAlign="right"
         tuiDropdownOpen
         tuiIconButton
+        type="button"
         [tuiDropdown]="dropdown"
     >
         Action
@@ -33,7 +39,10 @@
     </ng-template>
 </div>
 
-<button tuiCell>
+<button
+    tuiCell
+    type="button"
+>
     <div tuiTitle>
         Multiple actions
         <div tuiSubtitle>When there's content on the right</div>
@@ -48,6 +57,7 @@
             *ngFor="let item of items"
             appearance="opposite"
             tuiIconButton
+            type="button"
             [iconStart]="item.icon"
         >
             {{ item }}

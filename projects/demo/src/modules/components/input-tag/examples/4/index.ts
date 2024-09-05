@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDataList, TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
@@ -45,6 +46,7 @@ function tagValidator(tag: string): boolean {
         TuiError,
         TuiFieldErrorPipe,
         AsyncPipe,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

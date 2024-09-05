@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk';
 import {TuiSwipe} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -7,12 +7,15 @@ describe('TuiSwipe', () => {
     let component: Test;
 
     @Component({
+        standalone: true,
+        imports: [TuiSwipe],
         template: `
             <section
                 style="background: var(--tui-background-accent-1); width: 500px; height: 500px"
                 (tuiSwipe)="onSwipe($event)"
             ></section>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public swiped = '';

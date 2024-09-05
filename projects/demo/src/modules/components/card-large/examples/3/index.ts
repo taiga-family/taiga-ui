@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAppearance, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -16,6 +16,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiAppearance,
         TuiTitle,
         TuiCell,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

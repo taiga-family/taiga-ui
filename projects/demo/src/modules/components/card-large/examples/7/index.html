@@ -14,6 +14,7 @@
         tuiCell="l"
         tuiDropdownAlign="right"
         tuiDropdownOpen
+        type="button"
         [tuiDropdown]="dropdown"
         [tuiDropdownSided]="true"
     >
@@ -50,6 +51,7 @@
             <button
                 *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
                 tuiOption
+                type="button"
             >
                 {{ item }}
             </button>
@@ -57,6 +59,7 @@
         <tui-opt-group>
             <button
                 tuiOption
+                type="button"
                 (click)="close()"
             >
                 Nevermind

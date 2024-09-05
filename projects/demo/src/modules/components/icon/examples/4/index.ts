@@ -12,7 +12,7 @@ import search from '@taiga-ui/icons/src/search.svg?raw';
     standalone: true,
     imports: [TuiIcon, TuiDocCode],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     providers: [

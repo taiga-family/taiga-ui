@@ -334,14 +334,14 @@ describe('InputSlider', () => {
     describe('[valueContent] prop', () => {
         const customLabel = ({$implicit}: TuiContext<number>): number | string => {
             switch ($implicit) {
-                case 100:
-                    return 'MAX';
-                case 75:
-                    return 'Three quarters';
-                case 50:
-                    return 'Middle';
                 case 10:
                     return 'TEN';
+                case 100:
+                    return 'MAX';
+                case 50:
+                    return 'Middle';
+                case 75:
+                    return 'Three quarters';
                 default:
                     return $implicit;
             }

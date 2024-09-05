@@ -7,7 +7,7 @@ import {TuiElasticContainer} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiElasticContainer],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

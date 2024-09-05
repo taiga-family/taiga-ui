@@ -12,6 +12,7 @@
             <button
                 *ngFor="let item of items | tuiFilterByInput"
                 tuiOption
+                type="button"
                 [disabled]="item.disabled"
                 [value]="item"
             >

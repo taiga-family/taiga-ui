@@ -6,6 +6,7 @@
     <button
         *ngFor="let item of items"
         tuiTabBarItem
+        type="button"
         [badge]="item.badge"
         [icon]="item.icon"
         (click)="onClick(item)"

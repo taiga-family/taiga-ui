@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiZoomEvent} from '@taiga-ui/cdk';
 import {tuiFloor, TuiZoom} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -7,12 +7,15 @@ describe('TuiZoom', () => {
     let component: Test;
 
     @Component({
+        standalone: true,
+        imports: [TuiZoom],
         template: `
             <section
                 style="background: var(--tui-background-accent-1); width: 500px; height: 500px"
                 (tuiZoom)="onZoom($event)"
             ></section>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public scale = 1;

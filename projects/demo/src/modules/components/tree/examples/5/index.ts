@@ -18,7 +18,7 @@ interface TreeNode {
     standalone: true,
     imports: [TuiTree, NgForOf],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     providers: [

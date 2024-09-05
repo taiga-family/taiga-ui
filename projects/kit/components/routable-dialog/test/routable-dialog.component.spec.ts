@@ -24,7 +24,7 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
     };
 }
 
-@Component({template: ''})
+@Component({standalone: true, template: ''})
 class Dialog {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {

@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -16,6 +17,7 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
         TuiBadgeNotification,
         TuiButton,
         TuiFade,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiCalendarRange, TuiDayRangePeriod} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 const today = TuiDay.currentLocal();
 const startOfWeek = today.append({day: -today.dayOfWeek()});
@@ -13,7 +14,7 @@ const startOfQuarter = startOfMonth.append({month: -(startOfMonth.month % 3)});
 
 @Component({
     standalone: true,
-    imports: [TuiCalendarRange, NgIf, TuiLink],
+    imports: [TuiCalendarRange, NgIf, TuiLink, TuiAsideItemDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

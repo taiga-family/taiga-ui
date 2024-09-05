@@ -37,13 +37,13 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         ngDevMode && console.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
-            case TuiMonthNumber.February:
-                return isLeapYear ? 29 : 28;
             case TuiMonthNumber.April:
             case TuiMonthNumber.June:
-            case TuiMonthNumber.September:
             case TuiMonthNumber.November:
+            case TuiMonthNumber.September:
                 return 30;
+            case TuiMonthNumber.February:
+                return isLeapYear ? 29 : 28;
             default:
                 return 31;
         }

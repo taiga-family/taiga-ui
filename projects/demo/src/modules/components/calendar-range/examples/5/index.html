@@ -8,6 +8,7 @@
 <p *ngIf="isLastVisible">
     <button
         tuiLink
+        type="button"
         (click)="reset()"
     >
         Reset
@@ -19,6 +20,7 @@
     <button
         *ngIf="!isLastVisible"
         tuiLink
+        type="button"
         (click)="toggle()"
     >
         Switch to {{ opposite }}

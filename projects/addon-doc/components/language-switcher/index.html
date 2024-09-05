@@ -4,6 +4,7 @@
         <button
             *ngFor="let name of names"
             tuiOption
+            type="button"
             [value]="name | titlecase"
             (click)="switcher.setLanguage(name)"
         >

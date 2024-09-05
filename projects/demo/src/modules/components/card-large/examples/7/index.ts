@@ -12,7 +12,7 @@ import {
     TuiSurface,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -29,6 +29,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiAppearance,
         TuiSurface,
         TuiHeader,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

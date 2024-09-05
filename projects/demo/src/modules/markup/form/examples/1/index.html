@@ -1,21 +1,29 @@
 <div class="tui-container">
     <div class="stepper">
         <tui-stepper [activeItemIndex]="0">
-            <button tuiStep>First step</button>
             <button
                 tuiStep
+                type="button"
+            >
+                First step
+            </button>
+            <button
+                tuiStep
+                type="button"
                 [disabled]="true"
             >
                 Second step
             </button>
             <button
                 tuiStep
+                type="button"
                 [disabled]="true"
             >
                 Third step
             </button>
             <button
                 tuiStep
+                type="button"
                 [disabled]="true"
             >
                 Fourth step

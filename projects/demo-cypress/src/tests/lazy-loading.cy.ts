@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiImgLazyLoading} from '@taiga-ui/kit';
 
 describe('LazyLoading', () => {
     @Component({
+        standalone: true,
+        imports: [TuiImgLazyLoading],
         template: `
             <img
                 alt="picsum"
@@ -14,6 +16,7 @@ describe('LazyLoading', () => {
 
             <button (click)="updateSrc()">click</button>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         protected src = '';
@@ -26,7 +29,6 @@ describe('LazyLoading', () => {
 
     beforeEach(() =>
         cy.mount(Test, {
-            imports: [TuiImgLazyLoading],
             providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 src: '',

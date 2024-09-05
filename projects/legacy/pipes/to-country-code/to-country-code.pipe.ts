@@ -70,10 +70,10 @@ export class TuiToCountryCodePipe implements PipeTransform {
 
             if (matched) {
                 switch (countryIsoCode) {
-                    case 'RU':
-                        return tuiNotKzRegion(value);
                     case 'KZ':
                         return !tuiNotKzRegion(value);
+                    case 'RU':
+                        return tuiNotKzRegion(value);
                     default:
                         return true;
                 }

@@ -8,6 +8,7 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
+                type="button"
                 [disabled]="item.disabled"
                 [value]="item"
                 (click)="onClick(item)"

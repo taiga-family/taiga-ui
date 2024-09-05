@@ -17,7 +17,7 @@ interface TreeNode {
     standalone: true,
     imports: [TuiTree, TuiIcon, NgIf],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

@@ -2,11 +2,11 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiButton} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiOption} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiButton, NgForOf],
+    imports: [TuiAppearance, TuiButton, NgForOf, TuiOption],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

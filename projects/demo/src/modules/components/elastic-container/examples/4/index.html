@@ -1,6 +1,7 @@
 <button
     size="s"
     tuiButton
+    type="button"
     (click)="add()"
 >
     Add item
@@ -15,6 +16,7 @@
                 appearance="secondary"
                 size="s"
                 tuiIconButton
+                type="button"
                 class="tui-space_right-2"
                 [style.border-radius.%]="100"
                 [tuiChevron]="item.expanded"
@@ -28,6 +30,7 @@
                 iconStart="@tui.trash"
                 size="s"
                 tuiIconButton
+                type="button"
                 class="remove"
                 [style.border-radius.%]="100"
                 (click)="remove(index)"

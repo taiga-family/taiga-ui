@@ -5,6 +5,7 @@
         title="Menu"
         tuiIconButton
         tuiNavigationDrawer
+        type="button"
         [(open)]="open"
     >
         <tui-data-list>
@@ -15,9 +16,13 @@
                 <button
                     *ngFor="let item of group.value"
                     tuiOption
+                    type="button"
                     (click)="open = false"
                 >
-                    <img [src]="item.icon" />
+                    <img
+                        alt="icon"
+                        [src]="item.icon"
+                    />
                     {{ item.name }}
                 </button>
             </tui-opt-group>
@@ -44,12 +49,16 @@
         tuiButton
         tuiChevron
         tuiDropdownOpen
+        type="button"
         [tuiDropdown]="products"
     >
         <span tuiFade>A very very long project</span>
         <ng-template #products>
             <tui-data-list size="s">
-                <button tuiOption>
+                <button
+                    tuiOption
+                    type="button"
+                >
                     A very very long project
                     <tui-icon
                         icon="@tui.check"
@@ -57,7 +66,12 @@
                         [style.margin-left.rem]="0.5"
                     />
                 </button>
-                <button tuiOption>Something else</button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Something else
+                </button>
             </tui-data-list>
         </ng-template>
     </button>
@@ -66,12 +80,14 @@
         appearance="secondary"
         iconStart="@tui.plus"
         tuiButton
+        type="button"
     >
         Create
     </button>
     <button
         iconStart="@tui.bell"
         tuiIconButton
+        type="button"
     >
         Notifications
         <tui-badge-notification />
@@ -79,6 +95,7 @@
     <button
         iconStart="@tui.ellipsis"
         tuiIconButton
+        type="button"
     >
         More
     </button>
@@ -93,6 +110,7 @@
             <button
                 iconStart="@tui.home"
                 tuiAsideItem
+                type="button"
             >
                 <span tuiFade>A very very long product name</span>
             </button>
@@ -100,6 +118,7 @@
         <button
             iconStart="@tui.search"
             tuiAsideItem
+            type="button"
         >
             Search
         </button>
@@ -115,18 +134,35 @@
                 iconStart="@tui.settings"
                 tuiAsideItem
                 tuiChevron
+                type="button"
             >
                 Settings
                 <ng-template>
-                    <button tuiAsideItem>Account</button>
-                    <button tuiAsideItem>Notifications</button>
-                    <button tuiAsideItem>Privacy</button>
+                    <button
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Account
+                    </button>
+                    <button
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Notifications
+                    </button>
+                    <button
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Privacy
+                    </button>
                 </ng-template>
             </button>
         </tui-aside-group>
         <button
             iconStart="@tui.heart"
             tuiAsideItem
+            type="button"
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
@@ -136,6 +172,7 @@
             tuiAsideItem
             tuiDropdownHover
             tuiDropdownOpen
+            type="button"
             [tuiDropdown]="more"
         >
             More
@@ -148,6 +185,7 @@
                         iconStart="@tui.pencil"
                         tuiAsideItem
                         tuiOption
+                        type="button"
                     >
                         Write
                     </button>
@@ -155,6 +193,7 @@
                         iconStart="@tui.pie-chart"
                         tuiAsideItem
                         tuiOption
+                        type="button"
                         [tuiDropdown]="submenu"
                     >
                         Categories
@@ -162,12 +201,23 @@
                             <tui-data-list>
                                 <button
                                     tuiAsideItem
+                                    type="button"
                                     (click)="close()"
                                 >
                                     Fiction (will close menu)
                                 </button>
-                                <button tuiAsideItem>Non-Fiction</button>
-                                <button tuiAsideItem>Children</button>
+                                <button
+                                    tuiAsideItem
+                                    type="button"
+                                >
+                                    Non-Fiction
+                                </button>
+                                <button
+                                    tuiAsideItem
+                                    type="button"
+                                >
+                                    Children
+                                </button>
                             </tui-data-list>
                         </ng-template>
                     </button>
@@ -178,6 +228,7 @@
         <button
             iconStart="@tui.plus"
             tuiAsideItem
+            type="button"
         >
             Add
         </button>
@@ -185,11 +236,13 @@
             <button
                 iconStart="@tui.star"
                 tuiAsideItem
+                type="button"
             >
                 Favorites
             </button>
             <button
                 tuiAsideItem
+                type="button"
                 [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
                 (click)="expanded = !expanded"
             >
@@ -213,17 +266,38 @@
             </span>
             <hr />
             <tui-tabs tuiFade>
-                <button tuiTab>Default view</button>
-                <button tuiTab>Details</button>
-                <button tuiTab>Followers</button>
+                <button
+                    tuiTab
+                    type="button"
+                >
+                    Default view
+                </button>
+                <button
+                    tuiTab
+                    type="button"
+                >
+                    Details
+                </button>
+                <button
+                    tuiTab
+                    type="button"
+                >
+                    Followers
+                </button>
             </tui-tabs>
             <button
                 appearance="secondary"
                 tuiButton
+                type="button"
             >
                 Secondary
             </button>
-            <button tuiButton>Primary</button>
+            <button
+                tuiButton
+                type="button"
+            >
+                Primary
+            </button>
         </nav>
         <div
             *tuiRepeatTimes="let index of 10"

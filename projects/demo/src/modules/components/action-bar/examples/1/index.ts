@@ -12,6 +12,7 @@ import {
     TuiLink,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilter} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 @Component({
@@ -25,6 +26,7 @@ import {map} from 'rxjs';
         ReactiveFormsModule,
         TuiFilter,
         TuiIcon,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

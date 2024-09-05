@@ -6,6 +6,7 @@
         tuiDropdownAlign="left"
         tuiDropdownLimitWidth="auto"
         tuiLink
+        type="button"
         [tuiDropdown]="template"
         [(tuiDropdownOpen)]="open"
     >
@@ -19,6 +20,7 @@
             <ng-container *ngFor="let text of texts">
                 <button
                     tuiOption
+                    type="button"
                     class="dropdown-button"
                 >
                     <tui-line-clamp

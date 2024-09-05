@@ -5,6 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -16,6 +17,7 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
         TuiComboBoxModule,
         TuiDataList,
         TuiFilterByInputPipe,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiBreakpointService, TuiButton} from '@taiga-ui/core';
-import {TuiBlockStatus} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiBlockStatus} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, AsyncPipe, TuiBlockStatus, TuiButton],
+    imports: [NgIf, AsyncPipe, TuiBlockStatus, TuiButton, TuiAsideItemDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

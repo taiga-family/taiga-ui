@@ -4,6 +4,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TUI_THEME} from '@taiga-ui/core/tokens';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
@@ -22,7 +23,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
 @Component({
     standalone: true,
     selector: 'tui-doc-theme-switcher',
-    imports: [NgForOf, FormsModule, TuiDataList, TuiSelectModule],
+    imports: [NgForOf, FormsModule, TuiDataList, TuiSelectModule, TuiButton],
     templateUrl: './theme-switcher.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

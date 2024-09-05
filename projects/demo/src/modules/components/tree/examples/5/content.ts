@@ -1,5 +1,5 @@
 import {NgTemplateOutlet} from '@angular/common';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiTreeItemContent} from '@taiga-ui/kit';
 
@@ -13,7 +13,8 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
         ></tui-icon>
         <ng-container [ngTemplateOutlet]="context.template"></ng-container>
     `,
-    styleUrls: ['content.less'],
+    styleUrls: ['./content.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(click)': 'onClick()',
     },
