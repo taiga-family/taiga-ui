@@ -10,13 +10,13 @@ import {timer} from 'rxjs';
     selector: '[tuiNativeValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
     host: {
-        '(blur)': 'handleValidation()',
+        '(focusout)': 'handleValidation()',
     },
 })
 export class TuiNativeValidator implements Validator {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
-    private readonly host = tuiInjectElement<HTMLInputElement>();
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private control?: AbstractControl;
 
     @Input()
@@ -36,9 +36,5 @@ export class TuiNativeValidator implements Validator {
         this.el.setCustomValidity?.(
             this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
         );
-    }
-
-    private get el(): HTMLInputElement {
-        return this.host.querySelector('input,textarea,select') || this.host;
     }
 }
