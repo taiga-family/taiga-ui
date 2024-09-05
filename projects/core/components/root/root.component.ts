@@ -9,7 +9,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
@@ -64,7 +64,7 @@ export class TuiRoot {
         ? of(false)
         : inject<Observable<readonly unknown[]>>(TUI_DIALOGS).pipe(
               map(({length}) => !length),
-              debounceTime(0),
+              debounceTime(0, tuiZonefreeScheduler()),
           );
 
     constructor() {
