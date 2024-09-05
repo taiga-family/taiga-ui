@@ -178,6 +178,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             this.selectedActivePeriod = item;
             this.updateValue(item.range.dayLimit(this.min, this.max));
             this.itemChange.emit(item);
+            this.defaultViewedMonth =
+                (this.items.length ? this.value?.to : this.value?.from) ||
+                this.defaultViewedMonth;
         } else if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
             this.updateValue(null);
