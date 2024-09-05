@@ -29,7 +29,7 @@ global.window.resizeTo = (width) => {
     global.window.dispatchEvent(resizeEvent);
 };
 
-global.URL.createObjectURL = jest.fn((blob) => `${blob}`);
+global.URL.createObjectURL = jest.fn((blob) => String(blob));
 global.URL.revokeObjectURL = jest.fn();
 
 Object.defineProperty(global.window, 'CSS', {value: null});
