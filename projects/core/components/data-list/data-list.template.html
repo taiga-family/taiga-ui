@@ -1,6 +1,6 @@
 <ng-content />
 <div
-    *ngIf="empty"
+    *ngIf="empty()"
     class="t-empty"
 >
     <ng-container *polymorpheusOutlet="emptyContent || fallback() as text">
