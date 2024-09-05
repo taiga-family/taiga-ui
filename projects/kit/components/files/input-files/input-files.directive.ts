@@ -1,8 +1,8 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, forwardRef, inject, Output} from '@angular/core';
-import {TuiNativeValidator} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
