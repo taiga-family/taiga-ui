@@ -37,7 +37,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
         '(dragover.prevent.silent)': '0',
         '(drop.prevent)': 'onDropped($event)',
         '(dragenter)': 'onDrag($event.dataTransfer)',
-        '(dragleave.self)': 'onDrag(null)',
+        '(dragleave)': 'onDrag(null)',
         '[class._dragged]': 'fileDragged',
         '(change)': 'onFilesSelected($event.target)',
     },

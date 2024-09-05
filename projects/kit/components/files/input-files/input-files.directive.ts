@@ -1,5 +1,6 @@
 import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, forwardRef, inject, Output} from '@angular/core';
+import {TuiNativeValidator} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
@@ -24,6 +25,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         tuiAppearanceOptionsProvider(TuiInputFilesDirective),
     ],
     hostDirectives: [
+        TuiNativeValidator,
         TuiWithAppearance,
         {
             directive: TuiInputFilesValidator,
