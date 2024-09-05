@@ -21,6 +21,7 @@ import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
@@ -45,6 +46,7 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
         TuiTab,
         TuiTabsHorizontal,
         TuiChevron,
+        TuiOption,
     ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],

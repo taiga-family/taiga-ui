@@ -4,11 +4,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiCell, TuiDropdown, TuiGroup, TuiButton, TuiDataListWrapper, NgFor],
+    imports: [
+        TuiCell,
+        TuiDropdown,
+        TuiGroup,
+        TuiButton,
+        TuiDataListWrapper,
+        NgFor,
+        TuiAsideItemDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

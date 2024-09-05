@@ -4,11 +4,19 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiFade, TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAppBar, TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBar, TuiProgress, TuiButton, TuiTitle, TuiPlatform, TuiFade],
+    imports: [
+        TuiAppBar,
+        TuiProgress,
+        TuiButton,
+        TuiTitle,
+        TuiPlatform,
+        TuiFade,
+        TuiAsideItemDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

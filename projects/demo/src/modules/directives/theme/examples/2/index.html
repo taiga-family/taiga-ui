@@ -2,12 +2,14 @@ Dark mode enabled: {{ darkMode() }}
 <p>
     <button
         tuiButton
+        type="button"
         (click)="darkMode.set(!darkMode())"
     >
         Toggle
     </button>
     <button
         tuiButton
+        type="button"
         (click)="darkMode.reset()"
     >
         Reset

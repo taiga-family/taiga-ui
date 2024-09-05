@@ -4,7 +4,6 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
@@ -19,6 +18,8 @@ import {of} from 'rxjs';
 
 describe('InputPhoneInternational', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRoot, TuiInputPhoneInternational, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-phone-international
@@ -56,13 +57,7 @@ describe('InputPhoneInternational', () => {
     const initializeTestModule = (language: TuiLanguage = TUI_ENGLISH_LANGUAGE): void => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [
-                    TuiRoot,
-                    TuiInputPhoneInternational,
-                    ReactiveFormsModule,
-                    NoopAnimationsModule,
-                ],
-                declarations: [Test],
+                imports: [Test],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {

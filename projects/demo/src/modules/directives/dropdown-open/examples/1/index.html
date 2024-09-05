@@ -21,6 +21,7 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
+                type="button"
                 (click)="onClick()"
             >
                 {{ item }}
@@ -29,6 +30,7 @@
         <tui-opt-group>
             <button
                 tuiOption
+                type="button"
                 (click)="close()"
             >
                 Nevermind

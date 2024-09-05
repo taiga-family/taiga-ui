@@ -68,12 +68,14 @@
     <button
         *tuiRepeatTimes="let i of 3"
         tuiChip
+        type="button"
         (click)="onChip(i)"
     >
         Button {{ i + 1 }}
         <button
             iconStart="@tui.x"
             tuiIconButton
+            type="button"
             (click.stop)="onX(i)"
         >
             Remove

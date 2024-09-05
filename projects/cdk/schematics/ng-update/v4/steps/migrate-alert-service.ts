@@ -20,10 +20,10 @@ const OPTIONS_MIGRATIONS: Record<
         const [propertyKey, propertyValue] = property.getText().split(/\s?:\s?/);
 
         switch (propertyValue) {
-            case 'true':
-                return property.replaceWithText(`${propertyKey}: 3_000`);
             case 'false':
                 return property.replaceWithText(`${propertyKey}: 0`);
+            case 'true':
+                return property.replaceWithText(`${propertyKey}: 3_000`);
             default:
                 return null;
         }

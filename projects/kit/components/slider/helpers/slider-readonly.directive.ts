@@ -9,14 +9,14 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {combineLatest, filter, map, merge, tap} from 'rxjs';
 
 const SLIDER_INTERACTION_KEYS = new Set([
+    'ArrowDown',
     'ArrowLeft',
     'ArrowRight',
     'ArrowUp',
-    'ArrowDown',
-    'Home',
     'End',
-    'PageUp',
+    'Home',
     'PageDown',
+    'PageUp',
 ]);
 
 /**

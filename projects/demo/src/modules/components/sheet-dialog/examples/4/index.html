@@ -27,6 +27,7 @@
     >
         <button
             *ngFor="let user of users$ | async"
+            type="button"
             class="item"
             (click)="toggle(false)"
         >
@@ -41,6 +42,7 @@
     <footer class="footer">
         <button
             tuiButton
+            type="button"
             (click)="toggle(false)"
         >
             Invite more users

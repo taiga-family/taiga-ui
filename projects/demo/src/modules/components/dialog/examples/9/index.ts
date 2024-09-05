@@ -10,6 +10,7 @@ import {
     TuiIconPipe,
     TuiTextfield,
 } from '@taiga-ui/core';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
@@ -25,6 +26,7 @@ import {PayModal} from './pay-modal/pay-modal.component';
         TuiHint,
         TuiButton,
         TuiIconPipe,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

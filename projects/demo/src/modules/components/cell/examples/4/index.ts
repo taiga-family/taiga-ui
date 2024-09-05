@@ -10,7 +10,7 @@ import {
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -25,6 +25,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiIcon,
         TuiCheckbox,
         TuiTitle,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
     @Component({
+        standalone: true,
+        imports: [TuiElasticSticky],
         template: `
             <div
                 id="scroll"
@@ -21,10 +23,11 @@ describe('ElasticSticky', () => {
                 <div style="height: 100px">I'm footer</div>
             </div>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @Output()
-        public change = new EventEmitter<number>();
+        public readonly change = new EventEmitter<number>();
 
         protected transform(value: number): number {
             // sometimes tuiElasticSticky emit 0.5, 0.52 or 0.53 on CI

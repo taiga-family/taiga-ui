@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList} from '@taiga-ui/core';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,6 +15,7 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         FormsModule,
         TuiDataList,
         NgForOf,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -10,6 +10,8 @@ describe('TuiRange', () => {
     let fixture: ComponentFixture<Test>;
 
     @Component({
+        standalone: true,
+        imports: [TuiRange, ReactiveFormsModule],
         template: `
             <tui-range
                 [formControl]="testValue"
@@ -22,6 +24,7 @@ describe('TuiRange', () => {
                 [step]="step"
             ></tui-range>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiRange, {static: true})

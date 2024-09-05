@@ -8,6 +8,7 @@
             <button
                 *ngFor="let python of pythons"
                 tuiOption
+                type="button"
                 [value]="python"
             >
                 {{ python }}
@@ -16,12 +17,14 @@
         <tui-opt-group label="Open-source squad">
             <button
                 tuiOption
+                type="button"
                 value="Alexander Inkin"
             >
                 Alexander Inkin
             </button>
             <button
                 tuiOption
+                type="button"
                 value="Roman Sedov"
             >
                 Roman Sedov
@@ -29,6 +32,7 @@
         </tui-opt-group>
         <button
             tuiOption
+            type="button"
             class="more"
             (click)="addMore(select)"
         >

@@ -5,6 +5,7 @@
     >
         <button
             *ngFor="let button of buttons; let index = index"
+            type="button"
             [class.active]="index === active"
         >
             {{ button }}
@@ -13,13 +14,13 @@
 </header>
 
 <tui-segmented [style.border-radius.rem]="10">
-    <button>Border radius</button>
-    <button>Can be</button>
-    <button>Customized</button>
+    <button type="button">Border radius</button>
+    <button type="button">Can be</button>
+    <button type="button">Customized</button>
 </tui-segmented>
 
 <tui-segmented [style.font-weight]="'bold'">
-    <button>Fonts</button>
-    <button>Can also be</button>
-    <button>Overridden</button>
+    <button type="button">Fonts</button>
+    <button type="button">Can also be</button>
+    <button type="button">Overridden</button>
 </tui-segmented>

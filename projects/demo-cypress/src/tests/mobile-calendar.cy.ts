@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, ViewChild} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
@@ -17,6 +17,8 @@ describe('Mobile calendar', () => {
     const tomorrow = today.append({day: 1});
 
     @Component({
+        standalone: true,
+        imports: [TuiMobileCalendar],
         template: `
             <tui-mobile-calendar
                 style="height: 800px"
@@ -28,6 +30,7 @@ describe('Mobile calendar', () => {
                 (confirm)="onConfirm.emit($event)"
             ></tui-mobile-calendar>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
         providers: [
             {
                 provide: TUI_CALENDAR_DATE_STREAM,

@@ -2,6 +2,7 @@
     <button
         size="m"
         tuiButton
+        type="button"
         (click)="load$.next()"
     >
         Reload
@@ -11,6 +12,7 @@
     <button
         *ngFor="let item of items$ | async"
         tuiTabBarItem
+        type="button"
         [icon]="item.icon"
     >
         {{ item.text }}

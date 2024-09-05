@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTabs} from '@taiga-ui/kit';
 
@@ -6,6 +6,8 @@ describe('Tabs', () => {
     let component: Test;
 
     @Component({
+        standalone: true,
+        imports: [TuiTabs],
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">
                 <button
@@ -35,6 +37,7 @@ describe('Tabs', () => {
                 </button>
             </tui-tabs>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public activeItemIndex = 0;

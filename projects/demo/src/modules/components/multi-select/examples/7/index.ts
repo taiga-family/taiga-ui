@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -21,6 +22,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiDataList,
         CdkVirtualForOf,
         TuiScrollable,
+        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

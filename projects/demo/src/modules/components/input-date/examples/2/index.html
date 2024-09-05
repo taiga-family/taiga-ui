@@ -24,7 +24,12 @@
         tuiDropdownOpen
         [tuiDropdown]="dropdown"
     >
-        <button tuiButton>In dropdown</button>
+        <button
+            tuiButton
+            type="button"
+        >
+            In dropdown
+        </button>
         <ng-template #dropdown>
             <tui-input-date
                 formControlName="testValue"

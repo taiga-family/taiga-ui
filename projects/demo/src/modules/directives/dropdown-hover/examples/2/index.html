@@ -2,11 +2,17 @@
     tuiTabs
     [(activeItemIndex)]="index"
 >
-    <button tuiTab>Just a tab</button>
+    <button
+        tuiTab
+        type="button"
+    >
+        Just a tab
+    </button>
     <button
         tuiChevron
         tuiDropdownHover
         tuiTab
+        type="button"
         [tuiDropdown]="content"
         [(tuiDropdownOpen)]="open"
         (tui-tab-activate.stop)="(0)"
@@ -14,17 +20,38 @@
         Hoverable/Clickable
         <ng-template #content>
             <tui-data-list (click)="onClick()">
-                <button tuiOption>Option 1</button>
-                <button tuiOption>Option 2</button>
-                <button tuiOption>Option 3</button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 1
+                </button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 2
+                </button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 3
+                </button>
             </tui-data-list>
         </ng-template>
     </button>
-    <button tuiTab>Another tab</button>
+    <button
+        tuiTab
+        type="button"
+    >
+        Another tab
+    </button>
     <button
         iconStart="@tui.settings"
         tuiDropdownHover
         tuiTab
+        type="button"
         [tuiDropdown]="settings"
         [(tuiDropdownOpen)]="openSettings"
         (tui-tab-activate.stop)="(0)"

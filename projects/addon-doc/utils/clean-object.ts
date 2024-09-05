@@ -8,7 +8,7 @@ function checkValueIsEmpty<T>(value: EmptyValue | T): value is EmptyValue {
     // eslint-disable-next-line
     const nextValue: any = typeof value === 'string' ? value.trim() : value;
 
-    return [undefined, null, NaN, ''].includes(nextValue);
+    return ['', NaN, null, undefined].includes(nextValue);
 }
 
 export function tuiCleanObject<T>(object: T): TuiDeepPartial<T> {

@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 
 interface Item {
     badge?: number;
@@ -14,7 +14,7 @@ interface Item {
 @Component({
     standalone: true,
     selector: 'tui-tab-bar-example',
-    imports: [TuiTabBar, NgForOf],
+    imports: [TuiTabBar, NgForOf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -13,6 +13,7 @@
             <button
                 role="menuitem"
                 tuiOption
+                type="button"
             >
                 <span>
                     <tui-icon
@@ -25,6 +26,7 @@
             <button
                 role="menuitem"
                 tuiOption
+                type="button"
             >
                 <span>
                     <tui-icon
@@ -39,6 +41,7 @@
             <button
                 role="menuitem"
                 tuiOption
+                type="button"
                 [disabled]="selected === items.length"
                 (click)="control.setValue(items)"
             >
@@ -53,6 +56,7 @@
             <button
                 role="menuitem"
                 tuiOption
+                type="button"
                 (click)="close()"
             >
                 <span>
@@ -73,6 +77,7 @@
             *ngIf="!isMobile()"
             appearance="icon"
             tuiLink
+            type="button"
             class="tui-space_left-3"
             [pseudo]="true"
             (click)="toggleSelect()"
@@ -86,6 +91,7 @@
         iconStart="@tui.send"
         size="m"
         tuiButton
+        type="button"
         [disabled]="expanded"
     >
         {{ isMobile() ? '' : 'Send' }}
@@ -96,6 +102,7 @@
         iconStart="@tui.trash"
         size="m"
         tuiButton
+        type="button"
         [disabled]="expanded"
         (click)="close()"
     >
@@ -108,6 +115,7 @@
         iconStart="@tui.ellipsis"
         size="m"
         tuiIconButton
+        type="button"
         (click)="expanded = !expanded"
     >
         More
@@ -119,6 +127,7 @@
         iconStart="@tui.x"
         size="m"
         tuiIconButton
+        type="button"
         (click)="close()"
     >
         Close

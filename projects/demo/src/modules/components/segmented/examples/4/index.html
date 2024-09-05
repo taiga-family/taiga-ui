@@ -1,8 +1,8 @@
 <strong>Buttons</strong>
 <tui-segmented>
-    <button>Buttons</button>
-    <button>Can be</button>
-    <button>Used</button>
+    <button type="button">Buttons</button>
+    <button type="button">Can be</button>
+    <button type="button">Used</button>
 </tui-segmented>
 <hr />
 <strong>Links</strong>
@@ -32,10 +32,10 @@
 <hr />
 <strong>Icons</strong>
 <tui-segmented>
-    <button>
+    <button type="button">
         <tui-icon icon="@tui.sun" />
     </button>
-    <button>
+    <button type="button">
         <tui-icon icon="@tui.moon" />
     </button>
 </tui-segmented>
@@ -74,6 +74,7 @@
     appearance="floating"
     size="s"
     tuiButton
+    type="button"
     (click)="selected = 'b'"
 >
     Select second option

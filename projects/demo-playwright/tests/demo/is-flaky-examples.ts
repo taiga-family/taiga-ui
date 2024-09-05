@@ -8,13 +8,13 @@ const FLAKY_EXAMPLES = new Map<string, number[]>([
             3, // just button (to open dialog)
         ],
     ],
+    [DemoRoute.IconsCustomization, [0]], // TODO: investigate flaky test
     [DemoRoute.MultiSelect, [3]], // Imitating server response (timer(5000))
     [DemoRoute.Select, [4]], // Imitating server response (delay(3000))
-    [DemoRoute.Table, [3, 4]], // Imitating server response (delay(3000)) and virtual scroll
-    [DemoRoute.Tiles, [0]], // YouTube iframe player
-    [DemoRoute.IconsCustomization, [0]], // TODO: investigate flaky test
     [DemoRoute.Stepper, [2]], // TODO: flaky test for proprietary demo (autoscroll problems)
     [DemoRoute.TabBar, [3]], // Imitating server response (timer(3000))
+    [DemoRoute.Table, [3, 4]], // Imitating server response (delay(3000)) and virtual scroll
+    [DemoRoute.Tiles, [0]], // YouTube iframe player
 ]);
 
 export function tuiIsFlakyExample(path: string, exampleIndex: number): boolean {

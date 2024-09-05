@@ -1,5 +1,5 @@
 function isEmptyParamValue(value: string): boolean {
-    return ['undefined', 'null', 'NaN'].includes(value);
+    return ['NaN', 'null', 'undefined'].includes(value);
 }
 
 function isBooleanParamValue(value: string): boolean {

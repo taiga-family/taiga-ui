@@ -4,11 +4,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton],
+    imports: [TuiButton, TuiAsideItemDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

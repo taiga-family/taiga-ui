@@ -13,6 +13,7 @@
                             <div class="saved-card-preset__item__placeholder">Card number</div>
                             <div class="saved-card-preset__item__info">
                                 <img
+                                    alt="card"
                                     class="saved-card-preset__item__info__icon"
                                     [src]="
                                         (card.cardType === 'MasterCard'
@@ -92,6 +93,7 @@
             <button
                 iconStart="@tui.plus"
                 tuiLink
+                type="button"
                 (click)="payByNewCard()"
             >
                 New card

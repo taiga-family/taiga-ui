@@ -167,25 +167,25 @@ export const config: ApplicationConfig = {
             useValue: (type: string) => {
                 switch (type) {
                     case 'any':
-                    case 'null':
-                    case 'unknown':
-                    case 'undefined':
                     case 'boolean':
-                    case 'string':
-                    case 'void':
-                    case 'number':
                     case 'Map':
+                    case 'null':
+                    case 'number':
                     case 'Set':
+                    case 'string':
+                    case 'undefined':
+                    case 'unknown':
+                    case 'void':
                         return null;
                     case 'CustomEvent':
                     case 'Element':
                         return `https://developer.mozilla.org/en-US/docs/Web/API/${type}`;
                     case 'PolymorpheusContent':
                         return 'https://github.com/taiga-family/ng-polymorpheus';
-                    case 'TrackByFunction':
-                        return 'https://angular.dev/api/core/TrackByFunction';
                     case 'SafeResourceUrl':
                         return 'https://angular.dev/api/platform-browser/SafeResourceUrl';
+                    case 'TrackByFunction':
+                        return 'https://angular.dev/api/core/TrackByFunction';
                     default:
                         return `https://github.com/search?q=%2F%28enum%7Ctype%7Cinterface%7Cclass%7Cfunction%7Cconst%29+${type}%28%3C%7C%5Cs%29%2F+language%3ATypeScript+org%3Ataiga-family&type=code`;
                 }

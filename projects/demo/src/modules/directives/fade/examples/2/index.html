@@ -12,6 +12,7 @@
         <button
             *ngIf="expanded"
             tuiLink
+            type="button"
             (click)="toggle()"
         >
             Show less
@@ -19,6 +20,7 @@
     </div>
     <button
         tuiLink
+        type="button"
         class="expand"
         [class.expand_hidden]="expanded"
         (click)="toggle()"

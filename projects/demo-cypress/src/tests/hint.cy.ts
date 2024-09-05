@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -18,6 +18,7 @@ describe('TuiHint', () => {
                 <ng-content></ng-content>
             </ng-container>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Host {
         @Input()
@@ -34,6 +35,9 @@ describe('TuiHint', () => {
                 </my-host>
             </tui-root>
         `,
+        // TODO: check why hint doesn't work onPush
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         public hide = false;

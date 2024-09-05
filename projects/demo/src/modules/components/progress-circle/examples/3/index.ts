@@ -10,7 +10,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
     standalone: true,
     imports: [TuiProgress, NgIf, AsyncPipe],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

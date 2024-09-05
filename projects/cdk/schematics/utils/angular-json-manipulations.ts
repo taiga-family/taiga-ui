@@ -87,17 +87,17 @@ export function addStylesToAngularJson(
                 stylesToReplace &&
                 styles?.filter((style) => style !== stylesToReplace.from)
             ) {
-                targetOptions.styles = Array.from(
-                    new Set([
-                        ...taigaStyles,
-                        ...stylesToReplace.to,
-                        ...styles.filter((style) => style !== stylesToReplace.from),
-                    ]),
-                );
+                const orderList = [
+                    ...taigaStyles,
+                    ...stylesToReplace.to,
+                    ...styles.filter((style) => style !== stylesToReplace.from),
+                ];
+
+                targetOptions.styles = Array.from(new Set(orderList));
             } else {
-                targetOptions.styles = Array.from(
-                    new Set([...taigaStyles, ...(styles || [])]),
-                );
+                const orderList = [...taigaStyles, ...(styles || [])];
+
+                targetOptions.styles = Array.from(new Set(orderList));
             }
 
             if (tree && stylesToReplace) {

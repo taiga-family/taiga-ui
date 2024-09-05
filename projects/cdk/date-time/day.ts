@@ -119,18 +119,18 @@ export class TuiDay extends TuiMonth {
             );
 
         switch (dateMode) {
-            case 'YMD':
-                return {
-                    day: parseInt(date.slice(8, 10), 10),
-                    month: parseInt(date.slice(5, 7), 10) - 1,
-                    year: parseInt(date.slice(0, 4), 10),
-                };
-
             case 'MDY':
                 return {
                     day: parseInt(date.slice(3, 5), 10),
                     month: parseInt(date.slice(0, 2), 10) - 1,
                     year: parseInt(date.slice(6, 10), 10),
+                };
+
+            case 'YMD':
+                return {
+                    day: parseInt(date.slice(8, 10), 10),
+                    month: parseInt(date.slice(5, 7), 10) - 1,
+                    year: parseInt(date.slice(0, 4), 10),
                 };
 
             case 'DMY':
@@ -343,10 +343,10 @@ export class TuiDay extends TuiMonth {
         const yyyy = this.formattedYear;
 
         switch (dateFormat) {
-            case 'YMD':
-                return `${yyyy}${separator}${mm}${separator}${dd}`;
             case 'MDY':
                 return `${mm}${separator}${dd}${separator}${yyyy}`;
+            case 'YMD':
+                return `${yyyy}${separator}${mm}${separator}${dd}`;
             case 'DMY':
             default:
                 return `${dd}${separator}${mm}${separator}${yyyy}`;

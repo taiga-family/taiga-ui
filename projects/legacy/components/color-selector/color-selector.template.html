@@ -24,6 +24,7 @@
                     *ngFor="let mode of modes"
                     role="menuitemradio"
                     tuiOption
+                    type="button"
                     [attr.aria-checked]="isModeActive(mode)"
                     (click)="onModeSelect(mode)"
                     (keydown.enter.prevent)="onModeSelect(mode)"

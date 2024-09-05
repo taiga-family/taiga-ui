@@ -3,10 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLink} from '@taiga-ui/core';
 import {TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiElasticContainer, TuiLink],
+    imports: [TuiElasticContainer, TuiLink, TuiAsideItemDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

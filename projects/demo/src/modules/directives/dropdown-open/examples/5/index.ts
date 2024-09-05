@@ -7,6 +7,7 @@ import {
     TuiButton,
     TuiDropdown,
     TuiDropdownOpen,
+    TuiOption,
     type TuiPoint,
     TuiPositionAccessor,
 } from '@taiga-ui/core';
@@ -30,7 +31,7 @@ class TopRightDirective extends TuiPositionAccessor {
 
 @Component({
     standalone: true,
-    imports: [TopRightDirective, TuiDropdownOpen, TuiButton, TuiDropdown],
+    imports: [TopRightDirective, TuiDropdownOpen, TuiButton, TuiDropdown, TuiOption],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

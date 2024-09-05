@@ -4,12 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
+import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiInputModule, FormsModule, TuiButton],
+    imports: [TuiInputModule, FormsModule, TuiButton, TuiAsideItemDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

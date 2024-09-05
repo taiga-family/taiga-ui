@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiBlockStatus} from '@taiga-ui/layout';
+import {TuiAsideItemDirective, TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiBlockStatus, TuiButton, TuiPlatform],
+    imports: [TuiBlockStatus, TuiButton, TuiPlatform, TuiAsideItemDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

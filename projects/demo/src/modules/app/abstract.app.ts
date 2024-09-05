@@ -37,6 +37,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 };
 
 @Directive({
+    standalone: true,
     host: {
         '[attr.data-tui-major-version]': 'majorVersion',
     },

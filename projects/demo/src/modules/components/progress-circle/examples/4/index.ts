@@ -7,7 +7,7 @@ import {TuiProgress} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

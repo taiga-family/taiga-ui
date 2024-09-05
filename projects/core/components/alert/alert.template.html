@@ -17,6 +17,7 @@
     <button
         *ngIf="item.closeable"
         tuiIconButton
+        type="button"
         [iconStart]="icons.close"
         (click)="item.$implicit.complete()"
     >

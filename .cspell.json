@@ -18,7 +18,16 @@
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo-playwright/stubs"
     ],
-    "ignoreWords": ["preid", "Quarterpounder", "tuilabel", "fontawesome", "fortawesome", "svgs", "contentalign"],
+    "ignoreWords": [
+        "preid",
+        "Quarterpounder",
+        "tuilabel",
+        "fontawesome",
+        "fortawesome",
+        "svgs",
+        "contentalign",
+        "sber"
+    ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {

@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLink, TuiOption} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLink, TuiTabs],
+    imports: [TuiDemo, TuiLink, TuiTabs, TuiOption],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -13,6 +13,7 @@
         tuiChevron
         tuiDropdown="Set --tui-theme-color for :root and theme-color meta tag to the same color"
         tuiDropdownOpen
+        type="button"
     >
         How to?
     </button>
@@ -62,14 +63,21 @@
             <button
                 appearance="secondary"
                 tuiButton
+                type="button"
             >
                 Secondary
             </button>
-            <button tuiButton>Primary</button>
+            <button
+                tuiButton
+                type="button"
+            >
+                Primary
+            </button>
             <button
                 appearance="secondary"
                 iconStart="@tui.ellipsis"
                 tuiIconButton
+                type="button"
             >
                 More
             </button>
@@ -80,16 +88,37 @@
         [style.position]="'sticky'"
     >
         <tui-tabs>
-            <button tuiTab>Default view</button>
-            <button tuiTab>Details</button>
-            <button tuiTab>Followers</button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Default view
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Details
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Followers
+            </button>
         </tui-tabs>
         <hr />
-        <button tuiButton>Primary</button>
+        <button
+            tuiButton
+            type="button"
+        >
+            Primary
+        </button>
         <button
             appearance="secondary"
             iconStart="@tui.ellipsis"
             tuiIconButton
+            type="button"
         >
             More
         </button>

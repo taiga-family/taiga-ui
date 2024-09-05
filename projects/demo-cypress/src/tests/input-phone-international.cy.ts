@@ -1,4 +1,4 @@
-import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, type OnInit} from '@angular/core';
 import {Component, DestroyRef, EventEmitter, inject, Input, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -23,6 +23,7 @@ import {createOutputSpy} from 'cypress/angular';
             ></tui-input-phone-international>
         </tui-root>
     `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideAnimations(),
         tuiInputPhoneInternationalOptionsProvider({
@@ -43,7 +44,7 @@ export class Test implements OnInit {
     public countries: readonly TuiCountryIsoCode[] = ['RU', 'US', 'BY', 'KZ'];
 
     @Output()
-    public valueChange = new EventEmitter<string>();
+    public readonly valueChange = new EventEmitter<string>();
 
     public ngOnInit(): void {
         this.control.valueChanges

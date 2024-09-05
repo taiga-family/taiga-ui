@@ -2,6 +2,7 @@
     tuiChevron
     tuiDropdownAlign="right"
     tuiLink
+    type="button"
     class="link"
     [iconStart]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'"
     [tuiDropdown]="dropdown"
@@ -16,6 +17,7 @@
             <button
                 *ngFor="let item of group"
                 tuiOption
+                type="button"
                 class="item"
                 (click)="onClick(item)"
             >

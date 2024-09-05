@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiButton} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiOption} from '@taiga-ui/core';
 import {TuiFluidTypography} from '@taiga-ui/kit';
 
 const WORDS = ['Rock', 'Paper', 'Scissor'];
 
 @Component({
     standalone: true,
-    imports: [TuiFluidTypography, TuiButton, TuiAppearance],
+    imports: [TuiFluidTypography, TuiButton, TuiAppearance, TuiOption],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

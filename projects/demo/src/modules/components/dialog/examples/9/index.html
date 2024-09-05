@@ -18,13 +18,23 @@
 
     <button
         tuiButton
+        type="button"
         class="pay-button"
         (click)="payByCard()"
     >
         <div class="icon-group">
-            <img [src]="'@tui.visa' | tuiIcon" />
-            <img [src]="'@tui.maestro' | tuiIcon" />
-            <img [src]="'@tui.mir' | tuiIcon" />
+            <img
+                alt="visa"
+                [src]="'@tui.visa' | tuiIcon"
+            />
+            <img
+                alt="maestro"
+                [src]="'@tui.maestro' | tuiIcon"
+            />
+            <img
+                alt="mir"
+                [src]="'@tui.mir' | tuiIcon"
+            />
         </div>
         Pay
     </button>
