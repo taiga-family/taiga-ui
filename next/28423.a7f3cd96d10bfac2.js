@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[28423],{28423:n=>{n.exports='<button\n    *ngFor="let appearance of appearances"\n    tuiButton\n    type="button"\n    [appearance]="appearance"\n>\n    {{ appearance }}\n</button>\n'}}]);
