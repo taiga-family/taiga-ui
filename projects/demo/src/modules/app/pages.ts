@@ -458,12 +458,6 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputCopy',
-                keywords: 'поле, инпут, форма, копия, скопировать, ввод, input, copy',
-                route: DemoRoute.InputCopy,
-            },
-            {
-                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -517,12 +511,6 @@ export const pages: TuiDocRoutePages = [
                     'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
                     'cash, копейки, рубли, доллары, евро, control, контрол',
                 route: DemoRoute.InputNumber,
-            },
-            {
-                section: 'Components',
-                title: 'InputPassword',
-                keywords: 'поле, инпут, форма, ввод, input, password, пароль, код, шифр',
-                route: DemoRoute.InputPassword,
             },
             {
                 section: 'Components',
@@ -935,7 +923,8 @@ export const pages: TuiDocRoutePages = [
     {
         section: 'Components',
         title: 'Textfield',
-        keywords: 'form, input, select, textarea, combobox, ввод, форма, поле',
+        keywords:
+            'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
         route: DemoRoute.Textfield,
     },
     {

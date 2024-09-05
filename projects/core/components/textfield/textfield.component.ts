@@ -31,7 +31,6 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -79,7 +78,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected side = 0;
 
-    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly autoId = tuiInjectId();
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
@@ -103,13 +101,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public content: PolymorpheusContent<TuiContext<T>>;
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
+    public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     public get id(): string {
         return this.el?.nativeElement.id || this.autoId;
-    }
-
-    public get size(): TuiSizeL | TuiSizeS {
-        return this.options.size();
     }
 
     public handleOption(option: T): void {

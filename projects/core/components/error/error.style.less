@@ -9,6 +9,10 @@
 }
 
 .t-message-text {
-    margin-top: 0.25rem;
     white-space: pre-line;
+
+    &::before {
+        content: '';
+        line-height: 1.5rem;
+    }
 }

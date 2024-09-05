@@ -1,0 +1,23 @@
+<tui-textfield>
+    <label tuiLabel>Click icon to copy</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+    <tui-icon
+        icon="@tui.copy"
+        tuiCopy
+    />
+</tui-textfield>
+
+<tui-textfield>
+    <label tuiLabel>Click icon to toggle type</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        type="password"
+        [(ngModel)]="value"
+    />
+    <tui-icon tuiPassword />
+</tui-textfield>

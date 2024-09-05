@@ -405,11 +405,6 @@ export const ROUTES: Routes = [
         title: 'InputCardGroup',
     }),
     route({
-        path: DemoRoute.InputCopy,
-        loadComponent: async () => import('../components/input-copy'),
-        title: 'InputCopy',
-    }),
-    route({
         path: DemoRoute.InputDateTime,
         loadComponent: async () => import('../components/input-date-time'),
         title: 'InputDateTime',
@@ -428,11 +423,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputNumber,
         loadComponent: async () => import('../components/input-number'),
         title: 'InputNumber',
-    }),
-    route({
-        path: DemoRoute.InputPassword,
-        loadComponent: async () => import('../components/input-password'),
-        title: 'InputPassword',
     }),
     route({
         path: DemoRoute.InputPhone,
