@@ -67,6 +67,7 @@ const TEMPLATE_BEFORE = `
 <tui-avatar
     [src]="src"
     size="xxs"
+    tuiHintAppearance="onDark"
 ></tui-avatar>
 `;
 
@@ -98,6 +99,7 @@ const TEMPLATE_AFTER = `
 <tui-avatar
     [src]="src"
     size="xxs"
+    tuiHintAppearance="dark"
 ></tui-avatar>
 `;
 
