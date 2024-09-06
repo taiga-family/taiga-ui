@@ -41,7 +41,7 @@ export default class Example {
     protected size: TuiSizeL = this.sizeVariants[0]!;
 
     protected readonly examples = [
-        {name: 'Basic'},
+        {name: 'Basic', description: ''},
         {name: 'More button', description: 'Plus using DI options'},
     ];
 }

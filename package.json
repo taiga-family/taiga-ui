@@ -117,10 +117,6 @@
         "extends": [
             "@taiga-ui/stylelint-config"
         ],
-        "rules": {
-            "no-empty-source": null,
-            "selector-type-no-unknown": null
-        },
         "overrides": [
             {
                 "files": [

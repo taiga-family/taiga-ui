@@ -29,14 +29,14 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 })
 export default class Example {
     protected readonly examples = [
-        'Basic',
-        'Range',
-        'With markers',
-        'Localization',
-        'Color customization',
-        'Select multiple dates',
-        'Open in year view',
-    ];
+        {name: 'Basic', content: 'html,ts', fullsize: false},
+        {name: 'Range', content: 'html,ts,less', fullsize: true},
+        {name: 'With markers', content: 'html,ts,less', fullsize: true},
+        {name: 'Localization', content: 'html,ts', fullsize: false},
+        {name: 'Color customization', content: 'html,ts,less', fullsize: false},
+        {name: 'Select multiple dates', content: 'html,ts', fullsize: false},
+        {name: 'Open in year view', content: 'html,ts', fullsize: false},
+    ] as const;
 
     protected showAdjacent = true;
 

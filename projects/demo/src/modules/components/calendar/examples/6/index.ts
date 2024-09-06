@@ -8,7 +8,6 @@ import {TuiCalendar} from '@taiga-ui/core';
     standalone: true,
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

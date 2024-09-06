@@ -24,10 +24,11 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
+            [content]="index + 1 | tuiExample: example.content"
             [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
+            [fullsize]="example.fullsize"
+            [heading]="example.name"
+            [id]="example.name | tuiKebab"
         >
             <ng-template
                 #description

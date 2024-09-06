@@ -17,12 +17,12 @@ export default class Page {
     protected readonly colorVariants = ['', 'var(--tui-text-primary)', 'red', '#3aa981'];
 
     protected readonly examples = [
-        'Basic',
-        'External',
-        'Two colors',
-        'Bundled',
-        'Resolver',
-    ];
+        {name: 'Basic', content: 'html,ts,less'},
+        {name: 'External', content: 'html,ts,less'},
+        {name: 'Two colors', content: 'html,ts'},
+        {name: 'Bundled', content: 'html,ts,less'},
+        {name: 'Resolver', content: 'html,ts,less'},
+    ] as const;
 
     protected readonly descriptions = [
         '',

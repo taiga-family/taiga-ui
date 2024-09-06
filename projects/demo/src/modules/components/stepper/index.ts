@@ -14,11 +14,11 @@ export default class Page {
     protected activeItemIndex = 0;
 
     protected readonly examples = [
-        'Basic',
-        'Vertical',
-        'Vertical autoscroll',
-        'Vertical connected',
-    ];
+        {name: 'Basic', content: 'html,ts'},
+        {name: 'Vertical', content: 'html,ts'},
+        {name: 'Vertical autoscroll', content: 'html,ts,less'},
+        {name: 'Vertical connected', content: 'html,ts'},
+    ] as const;
 
     protected readonly orientationVariants: readonly TuiOrientation[] = [
         'horizontal',

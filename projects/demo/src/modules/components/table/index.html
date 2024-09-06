@@ -9,7 +9,7 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
+            [content]="index + 1 | tuiExample: (index + 1 === 7 ? 'html,ts' : 'html,ts,less')"
             [description]="index === 4 ? cdkVirtualScrollDescription : null"
             [fullsize]="index === 4 || index === 5"
             [heading]="example"

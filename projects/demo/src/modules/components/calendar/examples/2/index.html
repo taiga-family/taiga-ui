@@ -1,31 +1,30 @@
-<div class="wrapper">
-    <tui-calendar
-        [maxViewedMonth]="firstMonth"
-        [month]="firstMonth"
-        [showAdjacent]="false"
-        [value]="value"
-        [(hoveredItem)]="hoveredItem"
-        (dayClick)="onDayClick($event)"
-        (monthChange)="onMonthChangeFirst($event)"
-    />
-    <tui-calendar
-        [maxViewedMonth]="middleMonth"
-        [minViewedMonth]="middleMonth"
-        [month]="middleMonth"
-        [showAdjacent]="false"
-        [value]="value"
-        [(hoveredItem)]="hoveredItem"
-        (dayClick)="onDayClick($event)"
-        (monthChange)="onMonthChangeMiddle($event)"
-    />
-    <tui-calendar
-        [minViewedMonth]="lastMonth"
-        [month]="lastMonth"
-        [showAdjacent]="false"
-        [value]="value"
-        [(hoveredItem)]="hoveredItem"
-        (dayClick)="onDayClick($event)"
-        (monthChange)="onMonthChangeLast($event)"
-    />
-</div>
+<tui-calendar
+    [maxViewedMonth]="firstMonth"
+    [month]="firstMonth"
+    [showAdjacent]="false"
+    [value]="value"
+    [(hoveredItem)]="hoveredItem"
+    (dayClick)="onDayClick($event)"
+    (monthChange)="onMonthChangeFirst($event)"
+/>
+<tui-calendar
+    [maxViewedMonth]="middleMonth"
+    [minViewedMonth]="middleMonth"
+    [month]="middleMonth"
+    [showAdjacent]="false"
+    [value]="value"
+    [(hoveredItem)]="hoveredItem"
+    (dayClick)="onDayClick($event)"
+    (monthChange)="onMonthChangeMiddle($event)"
+/>
+<tui-calendar
+    [minViewedMonth]="lastMonth"
+    [month]="lastMonth"
+    [showAdjacent]="false"
+    [value]="value"
+    [(hoveredItem)]="hoveredItem"
+    (dayClick)="onDayClick($event)"
+    (monthChange)="onMonthChangeLast($event)"
+/>
+
 <div *ngIf="value">Chosen dates: {{ value }}</div>

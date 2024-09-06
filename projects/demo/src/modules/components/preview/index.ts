@@ -10,9 +10,9 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly examples = [
-        'Full preview',
-        'Preview with directive',
-        'Simple mode',
-        'With loading and unavailable image',
-    ];
+        {name: 'Full preview', content: 'html,ts,less'},
+        {name: 'Preview with directive', content: 'html,ts'},
+        {name: 'Simple mode', content: 'html,ts'},
+        {name: 'With loading and unavailable image', content: 'html,ts'},
+    ] as const;
 }

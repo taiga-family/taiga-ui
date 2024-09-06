@@ -16,14 +16,13 @@ export default class Page {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly examples = [
-        'Content types',
-        'Colors',
-        'Sizes',
-        'Stacking',
-        'Options with DI',
-        'Labeled',
-        'Outline',
-    ];
+        {name: 'Content types', content: 'html,ts,less'},
+        {name: 'Sizes', content: 'html,ts,less'},
+        {name: 'Stacking', content: 'html,ts,less'},
+        {name: 'Options with DI', content: 'html,ts'},
+        {name: 'Labeled', content: 'html,ts'},
+        {name: 'Outline', content: 'html,ts,less'},
+    ] as const;
 
     protected readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',

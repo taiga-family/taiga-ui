@@ -31,13 +31,13 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
 export default class PageComponent extends AbstractExampleTuiDropdown {
     protected readonly routes = DemoRoute;
     protected readonly examples = [
-        'Basic',
-        'Interesting',
-        'Change detection',
-        'Appearance',
-        'Manual',
-        'Mobile',
-    ];
+        {name: 'Basic', content: 'html,ts,less'},
+        {name: 'Interesting', content: 'html,ts,less'},
+        {name: 'Change detection', content: 'html,ts'},
+        {name: 'Appearance', content: 'html,ts,less'},
+        {name: 'Manual', content: 'html,ts,less'},
+        {name: 'Mobile', content: 'html,ts'},
+    ] as const;
 
     protected open = false;
 

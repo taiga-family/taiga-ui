@@ -14,10 +14,10 @@ export default class Example {
     protected card = false;
 
     protected readonly examples = [
-        'Basic',
-        'With actions',
-        'Cards',
-        'Customization',
-        'Mobile',
-    ];
+        {name: 'Basic', content: 'html,ts'},
+        {name: 'With actions', content: 'html,ts'},
+        {name: 'Cards', content: 'html,ts,less'},
+        {name: 'Customization', content: 'html,ts,less'},
+        {name: 'Mobile', content: 'html,ts,less'},
+    ] as const;
 }

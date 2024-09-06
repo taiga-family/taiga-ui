@@ -10,17 +10,17 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Example {
     protected readonly examples = [
-        'Basic',
-        'Avatar',
-        'Single item',
-        'Cards List',
-        'Cell List',
-        'Cell List (2 columns)',
-        'Cell List (actions)',
-        'Footer alignment',
-        'Map',
-        'Image',
-        'Image-dark',
-        'Paddings and radiuses',
-    ];
+        {name: 'Basic', content: 'html,less'},
+        {name: 'Avatar', content: 'html'},
+        {name: 'Single item', content: 'html,less'},
+        {name: 'Cards List', content: 'html,less'},
+        {name: 'Cell List', content: 'html'},
+        {name: 'Cell List (2 columns)', content: 'html,less'},
+        {name: 'Cell List (actions)', content: 'html,less'},
+        {name: 'Footer alignment', content: 'html,less'},
+        {name: 'Map', content: 'html'},
+        {name: 'Image', content: 'html,less'},
+        {name: 'Image-dark', content: 'html,less'},
+        {name: "Paddings and radius's", content: 'html'},
+    ] as const;
 }

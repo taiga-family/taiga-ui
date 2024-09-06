@@ -18,7 +18,13 @@ export default class Page {
     protected max = 5;
     protected segments = this.max;
 
-    protected examples = ['Basic', 'Sizes', 'Colors', 'With labels', 'No round corners'];
+    protected examples = [
+        {name: 'Basic', content: 'html,ts'},
+        {name: 'Sizes', content: 'html,ts,less'},
+        {name: 'Colors', content: 'html,ts,less'},
+        {name: 'With labels', content: 'html,ts,less'},
+        {name: 'No round corners', content: 'html,ts,less'},
+    ] as const;
 
     protected readonly sizeVariants: ReadonlyArray<TuiProgressBar['size']> = [
         'xs',

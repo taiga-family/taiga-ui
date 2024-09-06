@@ -17,7 +17,12 @@ import {InheritedDocumentation} from '../../components/abstract/inherited-docume
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiHint {
-    protected readonly examples = ['Basic', 'Customizing', 'Nested', 'Auto'];
+    protected readonly examples = [
+        {name: 'Basic', content: 'html,ts,less'},
+        {name: 'Customizing', content: 'html,ts,less'},
+        {name: 'Nested', content: 'html,ts'},
+        {name: 'Auto', content: 'html,ts,less'},
+    ] as const;
 
     protected showDelay = 500;
     protected hideDelay = 200;
