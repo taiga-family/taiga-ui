@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogCloseService} from '@taiga-ui/core';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -21,8 +21,7 @@ import type {PromptOptions} from './prompt-options';
     providers: [TuiDialogCloseService],
 })
 export class Prompt {
-    protected readonly context =
-        inject<TuiPopover<PromptOptions, boolean>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiPopover<PromptOptions, boolean>>();
 
     // Here you get options + content + id + observer
     constructor() {

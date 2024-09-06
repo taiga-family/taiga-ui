@@ -9,7 +9,7 @@ import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
 } from '@taiga-ui/polymorpheus';
@@ -25,7 +25,7 @@ import {TuiHintDirective} from './hint.directive';
     host: {'[@tuiParentAnimation]': ''},
 })
 export class TuiHintUnstyledComponent {
-    protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiContext<TuiPortalItem>>();
 }
 
 @Directive({

@@ -13,7 +13,7 @@ import {
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 
 import type {TuiAlertOptions} from './alert.interfaces';
@@ -42,8 +42,7 @@ export class TuiAlertComponent<O, I> {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
     protected readonly position = inject(TUI_ALERT_POSITION);
-    protected readonly item =
-        inject<TuiPopover<TuiAlertOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+    protected readonly item = injectContext<TuiPopover<TuiAlertOptions<I>, O>>();
 
     protected readonly animation = this.position.endsWith('auto')
         ? {...this.options, value: 'right'}

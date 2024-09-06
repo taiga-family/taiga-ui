@@ -14,8 +14,8 @@ import {
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {injectContext, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
 
@@ -70,8 +70,7 @@ export class TuiDialogComponent<O, I> {
 
     protected readonly close$ = new Subject<void>();
 
-    protected readonly context =
-        inject<TuiPopover<TuiDialogOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
 
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);

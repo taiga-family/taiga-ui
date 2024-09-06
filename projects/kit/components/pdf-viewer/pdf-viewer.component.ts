@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -35,8 +35,7 @@ export class TuiPdfViewerComponent<I, O> {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly context =
-        inject<TuiPopover<TuiPdfViewerOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiPopover<TuiPdfViewerOptions<I>, O>>();
 
     protected onKeyDownEsc(): void {
         this.context.$implicit.complete();

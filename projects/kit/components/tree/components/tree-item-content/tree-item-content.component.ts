@@ -3,7 +3,7 @@ import type {DoCheck} from '@angular/core';
 import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
@@ -28,7 +28,7 @@ export class TuiTreeItemContent implements DoCheck {
     private readonly change$ = new Subject<void>();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiTreeItemContext>();
 
     protected readonly expanded$ = this.change$.pipe(
         startWith(null),

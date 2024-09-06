@@ -13,7 +13,7 @@ import {
     TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -36,8 +36,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 })
 export class DialogExample {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly context =
-        inject<TuiDialogContext<number, number>>(POLYMORPHEUS_CONTEXT);
+    private readonly context = injectContext<TuiDialogContext<number, number>>();
 
     protected value: number | null = null;
     protected name = '';

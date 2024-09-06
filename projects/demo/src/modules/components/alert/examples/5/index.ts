@@ -6,7 +6,7 @@ import type {TuiPopover} from '@taiga-ui/cdk';
 import type {TuiAlertOptions} from '@taiga-ui/core';
 import {TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
@@ -40,7 +40,7 @@ class CustomLabel {}
 })
 class AlertExampleWithCustomLabel {
     protected readonly context =
-        inject<TuiPopover<TuiAlertOptions<unknown>, boolean>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiPopover<TuiAlertOptions<unknown>, boolean>>();
 }
 
 @Component({

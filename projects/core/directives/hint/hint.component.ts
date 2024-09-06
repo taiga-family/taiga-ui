@@ -15,8 +15,8 @@ import {
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {injectContext, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
@@ -67,8 +67,7 @@ export class TuiHintComponent<C = any> {
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
 
-    protected readonly hint =
-        inject<TuiContext<TuiHintDirective<C>>>(POLYMORPHEUS_CONTEXT).$implicit;
+    protected readonly hint = injectContext<TuiContext<TuiHintDirective<C>>>().$implicit;
 
     protected readonly appearance =
         this.hint.appearance ||

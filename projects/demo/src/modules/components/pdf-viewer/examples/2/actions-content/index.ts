@@ -1,9 +1,9 @@
 import {NgForOf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 
 import type {Buttons} from '../index';
 
@@ -15,5 +15,5 @@ import type {Buttons} from '../index';
 })
 export class ActionsContent {
     protected readonly context =
-        inject<TuiPopover<TuiPdfViewerOptions<Buttons>, string>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiPopover<TuiPdfViewerOptions<Buttons>, string>>();
 }

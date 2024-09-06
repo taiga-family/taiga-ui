@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -37,8 +37,7 @@ import type {TuiTableBarOptions} from './table-bar.options';
 export class TuiTableBarComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly context =
-        inject<TuiPopover<TuiTableBarOptions, void>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiPopover<TuiTableBarOptions, void>>();
 
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 

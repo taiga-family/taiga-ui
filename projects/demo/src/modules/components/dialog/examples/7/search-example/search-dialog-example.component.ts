@@ -1,9 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiTextfield} from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -13,7 +13,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export class SearchDialogExample {
-    private readonly context = inject<TuiDialogContext<boolean>>(POLYMORPHEUS_CONTEXT);
+    private readonly context = injectContext<TuiDialogContext<boolean>>();
 
     protected close(): void {
         this.context.completeWith(false);
