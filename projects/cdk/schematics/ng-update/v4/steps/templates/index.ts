@@ -1,3 +1,4 @@
+export * from './migrate-active-zone';
 export * from './migrate-avatar';
 export * from './migrate-axes';
 export * from './migrate-badge';
@@ -16,4 +17,3 @@ export * from './migrate-prevent-default';
 export * from './migrate-progress-segmented';
 export * from './migrate-thumbnail-card';
 export * from './toggles';
-export * from './migrate-active-zone';
