@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
@@ -33,7 +33,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     protected readonly dataList = inject(TuiDataListComponent<T>, {optional: true});
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context =
-        inject<TuiContext<TemplateRef<Record<string, unknown>>>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiContext<TemplateRef<Record<string, unknown>>>>();
 
     protected readonly selected$ = merge(
         this.changeDetection$,

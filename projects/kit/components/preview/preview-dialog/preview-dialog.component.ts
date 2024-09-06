@@ -9,7 +9,7 @@ import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -34,7 +34,7 @@ import {
     },
 })
 export class TuiPreviewDialog {
-    protected readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = injectContext<TuiPopover<void, void>>();
     protected readonly animation = {
         value: '',
         params: {

@@ -8,7 +8,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -41,10 +41,7 @@ import type {TuiPushOptions} from './push.options';
 })
 export class TuiPushAlert {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    protected readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiPopover<
-        TuiPushOptions,
-        string
-    >;
+    protected readonly context = injectContext<TuiPopover<TuiPushOptions, string>>();
 
     protected get isDirective(): boolean {
         return this.context.content instanceof TuiPushDirective;

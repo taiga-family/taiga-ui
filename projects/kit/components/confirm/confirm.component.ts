@@ -5,9 +5,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDialogContext} from '@taiga-ui/core/components/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {injectContext, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
-    POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
@@ -39,9 +38,7 @@ export class TuiConfirm {
     protected readonly words$ = inject(TUI_CONFIRM_WORDS);
 
     protected readonly context =
-        inject<TuiDialogContext<boolean, TuiConfirmData | undefined>>(
-            POLYMORPHEUS_CONTEXT,
-        );
+        injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {
         return this.isMobile ? 'secondary' : 'flat';

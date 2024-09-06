@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
 import {MICRO_OFFSET} from '../pull-to-refresh.service';
@@ -25,7 +25,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
     },
 })
 export class TuiMobileLoaderAndroid {
-    private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
+    private readonly context = injectContext<TuiContext<number>>();
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
     protected get percent(): number {

@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import type {TuiAlertOptions} from '@taiga-ui/core';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
@@ -30,7 +30,7 @@ import {switchMap, takeUntil} from 'rxjs';
 })
 export class AlertExample {
     protected readonly context =
-        inject<TuiPopover<TuiAlertOptions<void>, boolean>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiPopover<TuiAlertOptions<void>, boolean>>();
 }
 
 @Component({

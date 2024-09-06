@@ -7,7 +7,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import type {TuiAlertOptions} from '@taiga-ui/core';
 import {TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
@@ -39,7 +39,7 @@ import {switchMap, takeUntil} from 'rxjs';
 })
 export class AlertExampleWithData {
     protected readonly context =
-        inject<TuiPopover<TuiAlertOptions<number>, number>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiPopover<TuiAlertOptions<number>, number>>();
 
     protected value = this.context.data;
 

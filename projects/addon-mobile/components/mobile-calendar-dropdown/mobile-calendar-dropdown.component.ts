@@ -14,7 +14,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {TUI_DAY_CAPS_MAPPER} from '@taiga-ui/kit/components/calendar-range';
 import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
 
 export interface TuiMobileCalendarData {
@@ -43,7 +43,7 @@ export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
-    private readonly context = inject(POLYMORPHEUS_CONTEXT, {optional: true});
+    private readonly context = injectContext<Record<string, any>>({optional: true});
     private readonly observer?: Observer<any> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 

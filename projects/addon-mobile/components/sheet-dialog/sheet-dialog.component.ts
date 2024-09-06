@@ -23,7 +23,7 @@ import {
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
 import {
-    POLYMORPHEUS_CONTEXT,
+    injectContext,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
@@ -93,7 +93,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly context =
-        inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
     public ngAfterViewInit(): void {
         this.el.scrollTop =

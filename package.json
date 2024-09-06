@@ -80,7 +80,6 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "no-restricted-imports": "off",
             "@typescript-eslint/no-import-type-side-effects": "off",
             "@typescript-eslint/prefer-regexp-exec": "off",
             "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",

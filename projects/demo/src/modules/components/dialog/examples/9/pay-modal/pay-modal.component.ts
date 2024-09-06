@@ -28,7 +28,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiButtonLoading, TuiCheckbox} from '@taiga-ui/kit';
 import {TuiAsideItemDirective} from '@taiga-ui/layout';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {injectContext} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import type {AccountCard, DataForPayCardModal, FetchedCards} from '../helpers/models';
@@ -77,7 +77,7 @@ export class PayModal implements OnInit {
     });
 
     protected readonly context =
-        inject<TuiDialogContext<void, DataForPayCardModal>>(POLYMORPHEUS_CONTEXT);
+        injectContext<TuiDialogContext<void, DataForPayCardModal>>();
 
     protected readonly iOS = inject(TUI_IS_IOS);
 
