@@ -16,10 +16,10 @@ import type {TuiMobileDialogOptions} from './mobile-dialog.options';
     standalone: true,
     selector: 'tui-mobile-dialog',
     imports: [
+        NgForOf,
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        NgForOf,
         TuiButton,
         TuiRipple,
     ],

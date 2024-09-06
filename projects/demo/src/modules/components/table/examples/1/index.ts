@@ -7,7 +7,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiTable, NgForOf, TuiFormatNumberPipe, AsyncPipe],
+    imports: [AsyncPipe, NgForOf, TuiFormatNumberPipe, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

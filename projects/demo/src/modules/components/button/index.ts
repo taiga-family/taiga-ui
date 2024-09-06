@@ -7,7 +7,7 @@ import {TuiButtonLoading} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton, TuiButtonLoading],
+    imports: [TuiButton, TuiButtonLoading, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFade, NgIf, TuiLink, TuiOption],
+    imports: [NgIf, TuiFade, TuiLink, TuiOption],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

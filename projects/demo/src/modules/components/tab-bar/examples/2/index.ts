@@ -7,7 +7,7 @@ import {TuiTabBar} from '@taiga-ui/addon-mobile';
 
 @Component({
     standalone: true,
-    imports: [TuiTabBar, RouterLink, RouterLinkActive],
+    imports: [RouterLink, RouterLinkActive, TuiTabBar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

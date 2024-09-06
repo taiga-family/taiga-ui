@@ -11,7 +11,7 @@ const yesterday = today.append({day: -1});
 
 @Component({
     standalone: true,
-    imports: [TuiInputDateRangeModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputDateRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

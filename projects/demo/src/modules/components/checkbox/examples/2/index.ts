@@ -7,7 +7,7 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiCheckbox, TuiButton, TuiAsideItemDirective],
+    imports: [TuiAsideItemDirective, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

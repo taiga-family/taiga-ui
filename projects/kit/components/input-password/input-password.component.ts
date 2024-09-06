@@ -23,7 +23,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 @Component({
     standalone: true,
     selector: 'input[tuiInputPassword]',
-    imports: [TuiIcon, TuiTooltip, TuiTextfieldContent],
+    imports: [TuiIcon, TuiTextfieldContent, TuiTooltip],
     template: `
         <tui-icon
             *tuiTextfieldContent

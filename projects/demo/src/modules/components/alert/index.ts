@@ -13,7 +13,7 @@ import {AlertExampleWithData} from './examples/4';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton],
+    imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

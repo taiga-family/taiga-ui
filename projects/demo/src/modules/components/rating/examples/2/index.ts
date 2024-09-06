@@ -10,7 +10,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiRating, FormsModule, NgFor, NgIf, TuiButton],
+    imports: [FormsModule, NgFor, NgIf, TuiButton, TuiRating],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

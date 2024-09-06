@@ -13,7 +13,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 @Component({
     standalone: true,
     selector: 'tui-spin-button',
-    imports: [TuiButton, NgIf, AsyncPipe],
+    imports: [AsyncPipe, NgIf, TuiButton],
     templateUrl: './spin-button.template.html',
     styleUrls: ['./spin-button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

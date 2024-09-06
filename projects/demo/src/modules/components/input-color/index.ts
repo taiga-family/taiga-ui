@@ -4,7 +4,7 @@ import {TuiColorPickerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiColorPickerModule],
+    imports: [TuiColorPickerModule, TuiDemo],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

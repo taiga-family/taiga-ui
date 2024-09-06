@@ -9,14 +9,14 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
+        TuiAvatar,
+        TuiButton,
         TuiCardLarge,
-        TuiSurface,
+        TuiCell,
         TuiHeader,
         TuiRepeatTimes,
-        TuiAvatar,
+        TuiSurface,
         TuiTitle,
-        TuiCell,
-        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

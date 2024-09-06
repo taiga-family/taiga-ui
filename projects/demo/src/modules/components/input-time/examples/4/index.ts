@@ -11,7 +11,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [TuiTextfieldControllerModule, ReactiveFormsModule, TuiInputTimeModule],
+    imports: [ReactiveFormsModule, TuiInputTimeModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

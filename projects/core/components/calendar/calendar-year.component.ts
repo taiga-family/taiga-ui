@@ -29,7 +29,7 @@ const ITEMS_IN_ROW = 4;
 @Component({
     standalone: true,
     selector: 'tui-calendar-year',
-    imports: [TuiHovered, TuiRepeatTimes, TuiLet, TuiScrollIntoView],
+    imports: [TuiHovered, TuiLet, TuiRepeatTimes, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

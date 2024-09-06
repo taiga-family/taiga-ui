@@ -14,11 +14,11 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiInputCardGroup,
-        TuiFieldErrorPipe,
         AsyncPipe,
         ReactiveFormsModule,
         TuiError,
+        TuiFieldErrorPipe,
+        TuiInputCardGroup,
     ],
     templateUrl: './index.html',
     changeDetection,

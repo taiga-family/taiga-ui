@@ -7,7 +7,7 @@ import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputModule, FormsModule, TuiSwitch, TuiInputNumberModule],
+    imports: [FormsModule, TuiInputModule, TuiInputNumberModule, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

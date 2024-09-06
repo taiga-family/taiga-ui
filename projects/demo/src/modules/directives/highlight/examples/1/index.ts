@@ -9,11 +9,11 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiInputModule,
-        TuiTextfieldControllerModule,
         FormsModule,
         NgForOf,
         TuiHighlight,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

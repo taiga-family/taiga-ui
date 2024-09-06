@@ -12,12 +12,12 @@ import {
 @Component({
     standalone: true,
     imports: [
+        FormsModule,
         TuiGroup,
         TuiHint,
-        TuiTextfieldControllerModule,
         TuiInputModule,
         TuiInputTagModule,
-        FormsModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

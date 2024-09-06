@@ -23,7 +23,7 @@ class AbsTransformer extends TuiValueTransformer<number | null, number | null> {
 
 @Component({
     standalone: true,
-    imports: [AbsTransformer, TuiInputRangeModule, ReactiveFormsModule, JsonPipe],
+    imports: [AbsTransformer, JsonPipe, ReactiveFormsModule, TuiInputRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

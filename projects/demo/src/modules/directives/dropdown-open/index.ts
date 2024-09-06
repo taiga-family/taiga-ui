@@ -12,12 +12,12 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiInputModule,
-        FormsModule,
-        TuiDropdown,
-        TuiButton,
         DropdownDocumentation,
+        FormsModule,
+        TuiButton,
+        TuiDemo,
+        TuiDropdown,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

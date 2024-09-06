@@ -23,9 +23,9 @@ import {TextfieldControllerDocumentation} from '../textfield-controller-document
     selector: 'inherited-documentation',
     imports: [
         DropdownDocumentation,
+        HintControllerDocumentation,
         NgIf,
         NumberFormatDocumentation,
-        HintControllerDocumentation,
         TextfieldControllerDocumentation,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,

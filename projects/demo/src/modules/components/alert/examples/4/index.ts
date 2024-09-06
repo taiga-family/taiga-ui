@@ -12,7 +12,7 @@ import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiButton, TuiLink, TuiAmountPipe],
+    imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiLink],
     template: `
         <span tuiSubtitle>
             <em>Your balance:</em>

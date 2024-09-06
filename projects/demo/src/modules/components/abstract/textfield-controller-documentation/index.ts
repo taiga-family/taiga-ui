@@ -16,9 +16,9 @@ import type {AbstractExampleTuiControl} from '../control';
     selector: 'textfield-controller-documentation',
     imports: [
         RouterLink,
-        TuiLink,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,

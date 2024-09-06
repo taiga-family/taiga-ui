@@ -8,7 +8,7 @@ import {TuiButton, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiTitle, TuiSheetDialog, TuiAmountPipe, AsyncPipe],
+    imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiSheetDialog, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

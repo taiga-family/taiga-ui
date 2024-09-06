@@ -11,13 +11,13 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiDropdown,
-        TuiDataListDropdownManager,
-        TuiDataList,
-        TuiLet,
         NgForOf,
         TuiAsideItemDirective,
+        TuiButton,
+        TuiDataList,
+        TuiDataListDropdownManager,
+        TuiDropdown,
+        TuiLet,
     ],
     templateUrl: './index.html',
     encapsulation,

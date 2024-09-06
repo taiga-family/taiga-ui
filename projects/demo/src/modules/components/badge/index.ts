@@ -16,10 +16,8 @@ import {TuiBadgeExample6} from './examples/6';
 @Component({
     standalone: true,
     imports: [
-        TuiBadge,
-        TuiFade,
-        TuiRadioList,
         FormsModule,
+        TuiBadge,
         TuiBadgeExample1,
         TuiBadgeExample2,
         TuiBadgeExample3,
@@ -27,6 +25,8 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeExample5,
         TuiBadgeExample6,
         TuiDemo,
+        TuiFade,
+        TuiRadioList,
     ],
     templateUrl: './index.html',
     changeDetection,

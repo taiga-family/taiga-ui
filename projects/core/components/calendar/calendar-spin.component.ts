@@ -15,7 +15,7 @@ import {TuiMonthPipe} from '@taiga-ui/core/pipes';
 @Component({
     standalone: true,
     selector: 'tui-calendar-spin',
-    imports: [TuiSpinButton, TuiLink, TuiMonthPipe, NgIf, AsyncPipe],
+    imports: [AsyncPipe, NgIf, TuiLink, TuiMonthPipe, TuiSpinButton],
     templateUrl: './calendar-spin.template.html',
     styleUrls: ['./calendar-spin.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

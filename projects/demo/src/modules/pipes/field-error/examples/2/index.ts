@@ -16,14 +16,14 @@ import {interval, map, of, scan, startWith} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiInputModule,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiError,
         TuiFieldErrorPipe,
-        AsyncPipe,
+        TuiInputModule,
         TuiInputNumberModule,
+        TuiTextfield,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

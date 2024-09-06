@@ -30,11 +30,11 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     standalone: true,
     selector: 'tui-radio-list',
     imports: [
-        NgForOf,
-        TuiRadio,
         FormsModule,
+        NgForOf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        TuiRadio,
         TuiValidator,
     ],
     templateUrl: './radio-list.template.html',

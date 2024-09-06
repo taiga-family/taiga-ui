@@ -28,11 +28,11 @@ const GAP = 16;
     standalone: true,
     selector: 'tui-dropdown-mobile',
     imports: [
-        WaIntersectionObserver,
-        TuiSwipe,
         NgIf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        TuiSwipe,
+        WaIntersectionObserver,
     ],
     templateUrl: './dropdown-mobile.template.html',
     styleUrls: ['./dropdown-mobile.style.less'],

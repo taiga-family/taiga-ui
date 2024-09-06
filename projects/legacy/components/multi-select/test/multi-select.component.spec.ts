@@ -41,11 +41,11 @@ describe('MultiSelect', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRoot,
-                TuiMultiSelectModule,
                 ReactiveFormsModule,
-                TuiDataListWrapperComponent,
                 TuiDataListDirective,
+                TuiDataListWrapperComponent,
+                TuiMultiSelectModule,
+                TuiRoot,
             ],
             template: `
                 <tui-root>
@@ -254,11 +254,11 @@ describe('MultiSelect', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRoot,
-                TuiMultiSelectModule,
                 ReactiveFormsModule,
-                TuiDataListWrapperComponent,
                 TuiDataListDirective,
+                TuiDataListWrapperComponent,
+                TuiMultiSelectModule,
+                TuiRoot,
             ],
             template: `
                 <tui-root>

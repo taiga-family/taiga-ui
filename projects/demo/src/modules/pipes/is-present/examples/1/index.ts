@@ -8,7 +8,7 @@ import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, TuiLet, TuiIsPresentPipe, TuiButton],
+    imports: [CommonModule, TuiButton, TuiIsPresentPipe, TuiLet],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

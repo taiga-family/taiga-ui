@@ -9,11 +9,11 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiInputNumberModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
-        TuiHint,
         TuiCurrencyPipe,
+        TuiHint,
+        TuiInputNumberModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

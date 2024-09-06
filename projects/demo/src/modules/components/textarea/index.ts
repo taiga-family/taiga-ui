@@ -16,12 +16,12 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiTextareaModule,
-        ReactiveFormsModule,
-        TuiHint,
-        TuiTextfieldControllerModule,
         InheritedDocumentation,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiHint,
+        TuiTextareaModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     changeDetection,

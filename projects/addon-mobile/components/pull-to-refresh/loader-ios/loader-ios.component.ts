@@ -12,7 +12,7 @@ const ROTATE_X_STEP = 30;
 @Component({
     standalone: true,
     selector: 'tui-mobile-ios-loader',
-    imports: [TuiRepeatTimes, NgIf],
+    imports: [NgIf, TuiRepeatTimes],
     templateUrl: './loader-ios.template.html',
     styleUrls: ['./loader-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

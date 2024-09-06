@@ -6,7 +6,7 @@ import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCarousel, NgFor],
+    imports: [NgFor, TuiCarousel],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

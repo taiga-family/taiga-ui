@@ -20,7 +20,7 @@ import {TuiTableTd} from '../td/td.component';
 @Component({
     standalone: true,
     selector: 'tr[tuiTr]',
-    imports: [NgIf, AsyncPipe, NgForOf, NgTemplateOutlet, TuiTableTd],
+    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTd],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],

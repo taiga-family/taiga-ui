@@ -7,7 +7,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiTabs, TuiOption],
+    imports: [TuiDemo, TuiOption, TuiTabs],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],

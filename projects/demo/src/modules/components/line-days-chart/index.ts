@@ -11,7 +11,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiAxes, TuiLineDaysChart],
+    imports: [TuiAxes, TuiDemo, TuiLineDaysChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

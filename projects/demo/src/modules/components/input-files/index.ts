@@ -12,7 +12,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, ReactiveFormsModule, TuiFiles],
+    imports: [ReactiveFormsModule, TuiDemo, TuiFiles],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

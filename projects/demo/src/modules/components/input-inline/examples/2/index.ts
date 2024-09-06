@@ -9,7 +9,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiInputInline, TuiButton, TuiAutoFocus, FormsModule, NgIf],
+    imports: [FormsModule, NgIf, TuiAutoFocus, TuiButton, TuiInputInline],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

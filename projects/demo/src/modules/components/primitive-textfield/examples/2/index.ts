@@ -14,7 +14,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-primitive-textfield-example-2',
-    imports: [TuiTextfieldControllerModule, TuiPrimitiveTextfieldModule, TuiHint],
+    imports: [TuiHint, TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

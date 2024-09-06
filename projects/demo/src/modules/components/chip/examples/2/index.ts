@@ -9,13 +9,13 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiChip,
         NgForOf,
         NgIf,
-        TuiAvatar,
         SlicePipe,
-        TuiButton,
         TuiAsideItemDirective,
+        TuiAvatar,
+        TuiButton,
+        TuiChip,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

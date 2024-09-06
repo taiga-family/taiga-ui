@@ -8,11 +8,11 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

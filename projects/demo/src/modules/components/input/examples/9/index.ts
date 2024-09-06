@@ -8,10 +8,10 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiInputModule,
-        TuiTextfield,
         FormsModule,
         TuiHint,
+        TuiInputModule,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

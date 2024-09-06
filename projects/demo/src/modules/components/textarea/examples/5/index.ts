@@ -6,7 +6,7 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTextareaModule, FormsModule],
+    imports: [FormsModule, TuiTextareaModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -11,7 +11,7 @@ import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, NgForOf],
+    imports: [NgForOf, TuiButton],
     template: `
         <p>Yes?</p>
         <button

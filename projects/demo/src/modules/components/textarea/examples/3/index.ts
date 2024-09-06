@@ -9,9 +9,9 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiLabel,
         TuiTextareaModule,
         TuiTextfieldControllerModule,
-        TuiLabel,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -30,7 +30,7 @@ const ITEMS = [
 describe('Breadcrumbs Wrapper', () => {
     @Component({
         standalone: true,
-        imports: [TuiBreadcrumbs, NgFor, TuiItem, TuiLink, RouterTestingModule],
+        imports: [NgFor, RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"

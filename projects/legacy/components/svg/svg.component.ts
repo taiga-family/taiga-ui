@@ -45,7 +45,7 @@ export interface TuiIconError {
 @Component({
     standalone: true,
     selector: 'tui-svg',
-    imports: [TuiLet, AsyncPipe, NgIf],
+    imports: [AsyncPipe, NgIf, TuiLet],
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

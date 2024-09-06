@@ -6,7 +6,7 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
-    imports: [TuiThumbnailCard, NgFor],
+    imports: [NgFor, TuiThumbnailCard],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

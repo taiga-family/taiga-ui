@@ -7,7 +7,7 @@ import {TuiAsideItemDirective, TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiBlockStatus, TuiButton, TuiPlatform, TuiAsideItemDirective],
+    imports: [TuiAsideItemDirective, TuiBlockStatus, TuiButton, TuiPlatform],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

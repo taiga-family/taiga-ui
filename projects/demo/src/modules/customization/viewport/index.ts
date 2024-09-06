@@ -7,7 +7,7 @@ import {Example as Example2} from './examples/2';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, Example1, Example2],
+    imports: [Example1, Example2, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

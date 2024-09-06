@@ -7,7 +7,7 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
 
 @Component({
     standalone: true,
-    imports: [TuiTextareaModule, TuiHint, FormsModule, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiHint, TuiTextareaModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -14,7 +14,7 @@ import {TuiSidebarDirective} from './sidebar.directive';
 @Component({
     standalone: true,
     selector: 'aside[tuiSidebar]',
-    imports: [TuiActiveZone, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet, TuiActiveZone],
     templateUrl: './sidebar.template.html',
     styleUrls: ['./sidebar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -6,7 +6,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiProgress, NgForOf],
+    imports: [NgForOf, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

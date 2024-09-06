@@ -6,7 +6,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiFormatNumberPipe, AsyncPipe],
+    imports: [AsyncPipe, TuiFormatNumberPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

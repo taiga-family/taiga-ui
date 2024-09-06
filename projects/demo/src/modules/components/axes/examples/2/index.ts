@@ -16,7 +16,7 @@ const BENJI = 100;
 
 @Component({
     standalone: true,
-    imports: [TuiAxes, TuiBarChart, TuiHint, TuiAmountPipe, AsyncPipe, NgForOf],
+    imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

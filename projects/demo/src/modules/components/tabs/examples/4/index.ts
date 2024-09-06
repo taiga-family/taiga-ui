@@ -9,7 +9,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTabs, TuiIcon, NgIf, NgForOf, TuiInputNumberModule, FormsModule],
+    imports: [FormsModule, NgForOf, NgIf, TuiIcon, TuiInputNumberModule, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

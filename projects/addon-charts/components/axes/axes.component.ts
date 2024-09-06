@@ -12,7 +12,7 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 @Component({
     standalone: true,
     selector: 'tui-axes',
-    imports: [NgIf, NgForOf, TuiRepeatTimes],
+    imports: [NgForOf, NgIf, TuiRepeatTimes],
     templateUrl: './axes.template.html',
     styleUrls: ['./axes.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

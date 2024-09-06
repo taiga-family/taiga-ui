@@ -16,7 +16,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 @Component({
     standalone: true,
     selector: 'tui-doc-main',
-    imports: [TuiRoot, RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation],
+    imports: [RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation, TuiRoot],
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,

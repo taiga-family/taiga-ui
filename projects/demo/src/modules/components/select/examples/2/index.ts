@@ -27,14 +27,14 @@ class Account {
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiSelectModule,
-        TuiDataListWrapper,
+        TuiAmountPipe,
         TuiDataList,
+        TuiDataListWrapper,
+        TuiSelectModule,
         TuiTextfieldControllerModule,
         TuiThumbnailCard,
-        TuiAmountPipe,
-        AsyncPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

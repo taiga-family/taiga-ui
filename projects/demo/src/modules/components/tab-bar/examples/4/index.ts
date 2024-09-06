@@ -8,7 +8,7 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiTabBar, AsyncPipe, NgForOf],
+    imports: [AsyncPipe, NgForOf, TuiButton, TuiTabBar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

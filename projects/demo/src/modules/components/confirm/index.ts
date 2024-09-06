@@ -10,7 +10,7 @@ import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDemo, TuiAsideItemDirective],
+    imports: [TuiAsideItemDirective, TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

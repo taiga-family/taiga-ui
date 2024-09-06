@@ -7,7 +7,7 @@ import {of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputCardGroup, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputCardGroup],
     templateUrl: './index.html',
     changeDetection,
     providers: [

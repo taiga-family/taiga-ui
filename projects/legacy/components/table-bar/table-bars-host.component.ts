@@ -12,7 +12,7 @@ import {TUI_TABLE_BARS} from './table-bar.options';
 @Component({
     standalone: true,
     selector: 'tui-table-bars-host',
-    imports: [AsyncPipe, PolymorpheusOutlet, PolymorpheusTemplate, NgForOf],
+    imports: [AsyncPipe, NgForOf, PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
         <div
             *ngFor="let item of bars$ | async"

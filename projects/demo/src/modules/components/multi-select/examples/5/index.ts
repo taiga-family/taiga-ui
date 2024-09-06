@@ -10,12 +10,12 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
-        TuiTextfieldControllerModule,
         FormsModule,
-        TuiDataList,
         NgForOf,
         TuiAsideItemDirective,
+        TuiDataList,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -8,7 +8,7 @@ import {Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiSwipe, AsyncPipe],
+    imports: [AsyncPipe, TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

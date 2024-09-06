@@ -27,7 +27,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-tree-item',
-    imports: [PolymorpheusOutlet, TuiExpandComponent, NgIf, AsyncPipe],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiExpandComponent],
     templateUrl: './tree-item.template.html',
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

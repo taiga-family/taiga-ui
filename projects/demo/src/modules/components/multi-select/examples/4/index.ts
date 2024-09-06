@@ -22,13 +22,13 @@ const DICTIONARY = [
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
-        TuiLet,
         AsyncPipe,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
-        TuiDataListWrapper,
         TuiDataList,
+        TuiDataListWrapper,
+        TuiLet,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     changeDetection,

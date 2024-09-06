@@ -20,11 +20,11 @@ const ITEMS: readonly string[] = [
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
-        TuiDataListWrapper,
         TuiDataList,
+        TuiDataListWrapper,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

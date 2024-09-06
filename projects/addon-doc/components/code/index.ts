@@ -22,7 +22,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-doc-code',
-    imports: [NgIf, AsyncPipe, NgForOf, Highlight, TuiButton, ClipboardModule],
+    imports: [AsyncPipe, ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

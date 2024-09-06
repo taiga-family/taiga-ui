@@ -12,7 +12,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiButton, NgTemplateOutlet, AsyncPipe],
+    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiButton],
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

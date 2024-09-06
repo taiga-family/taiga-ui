@@ -30,10 +30,10 @@ describe('InputTime', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiInputTimeModule,
             ReactiveFormsModule,
             TuiHint,
+            TuiInputTimeModule,
+            TuiRoot,
             TuiTextfieldControllerModule,
         ],
         template: `
@@ -325,7 +325,7 @@ describe('InputTime', () => {
     describe('InputTime + TUI_TIME_VALUE_TRANSFORMER', () => {
         @Component({
             standalone: true,
-            imports: [TuiRoot, TuiInputTimeModule, ReactiveFormsModule],
+            imports: [ReactiveFormsModule, TuiInputTimeModule, TuiRoot],
             template: `
                 <tui-root>
                     <tui-input-time

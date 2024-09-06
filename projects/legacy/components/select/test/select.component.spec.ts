@@ -39,12 +39,12 @@ describe('Select', () => {
     @Component({
         standalone: true,
         imports: [
+            ReactiveFormsModule,
+            TuiDataListDirective,
+            TuiDataListWrapperComponent,
             TuiRoot,
             TuiSelectModule,
-            ReactiveFormsModule,
             TuiTextfieldControllerModule,
-            TuiDataListWrapperComponent,
-            TuiDataListDirective,
         ],
         template: `
             <tui-root>

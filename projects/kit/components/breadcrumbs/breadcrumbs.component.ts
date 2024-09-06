@@ -19,7 +19,7 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 @Component({
     standalone: true,
     selector: 'tui-breadcrumbs',
-    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiIcon],
+    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiIcon],
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

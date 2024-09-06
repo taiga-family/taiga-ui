@@ -9,13 +9,13 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCardLarge,
-        TuiSurface,
-        TuiHeader,
-        TuiRepeatTimes,
         TuiAvatar,
         TuiButton,
+        TuiCardLarge,
         TuiCell,
+        TuiHeader,
+        TuiRepeatTimes,
+        TuiSurface,
     ],
     templateUrl: './index.html',
     encapsulation,

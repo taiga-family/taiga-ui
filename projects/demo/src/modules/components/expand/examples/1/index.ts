@@ -6,7 +6,7 @@ import {TuiButton, TuiExpand} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiExpand, NgForOf],
+    imports: [NgForOf, TuiButton, TuiExpand],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

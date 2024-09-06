@@ -9,7 +9,7 @@ import {Subject} from 'rxjs';
 describe('TuiFor directive', () => {
     @Component({
         standalone: true,
-        imports: [TuiFor, NgFor, AsyncPipe],
+        imports: [AsyncPipe, NgFor, TuiFor],
         template: `
             <div *ngFor="let item of items$ | async; else: loading; empty: blank">
                 {{ item }}

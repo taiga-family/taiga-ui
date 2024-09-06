@@ -16,9 +16,9 @@ import type {AbstractExampleTuiNumberFormat} from '../number-format';
     selector: 'number-format-documentation',
     imports: [
         RouterLink,
-        TuiLink,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,

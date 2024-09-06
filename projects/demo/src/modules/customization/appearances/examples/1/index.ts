@@ -16,7 +16,7 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider, TuiStep} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'tui-wrapper-example-1',
-    imports: [FormsModule, TuiCheckbox, TuiButton, TuiTextfield, TuiStep],
+    imports: [FormsModule, TuiButton, TuiCheckbox, TuiStep, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

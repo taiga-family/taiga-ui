@@ -6,7 +6,7 @@ import {TuiBreakpointService} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [NgIf, AsyncPipe],
+    imports: [AsyncPipe, NgIf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -40,7 +40,7 @@ const TRANSFORM = {
 @Component({
     standalone: true,
     selector: 'tui-pie-chart',
-    imports: [TuiHint, TuiRepeatTimes, TuiHovered, TuiPieChartDirective],
+    imports: [TuiHint, TuiHovered, TuiPieChartDirective, TuiRepeatTimes],
     templateUrl: './pie-chart.template.html',
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

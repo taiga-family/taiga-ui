@@ -14,10 +14,10 @@ describe('TuiFieldErrorContentPipe', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiHintDirective,
             ReactiveFormsModule,
             TuiFieldErrorContentPipe,
+            TuiHintDirective,
+            TuiRoot,
         ],
         template: `
             <tui-root>

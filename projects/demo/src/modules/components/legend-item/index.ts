@@ -7,7 +7,7 @@ import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLegendItem, TuiAmountPipe],
+    imports: [TuiAmountPipe, TuiDemo, TuiLegendItem],
     templateUrl: './index.html',
     changeDetection,
 })

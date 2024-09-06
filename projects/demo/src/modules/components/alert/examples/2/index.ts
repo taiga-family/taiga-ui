@@ -12,10 +12,10 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     standalone: true,
     imports: [
         AsyncPipe,
-        TuiButton,
-        TuiAmountPipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        TuiAmountPipe,
+        TuiButton,
     ],
     templateUrl: './index.html',
     encapsulation,

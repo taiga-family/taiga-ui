@@ -25,7 +25,7 @@ import {TuiMore} from './more.directive';
 @Component({
     standalone: true,
     selector: 'tui-items-with-more',
-    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiLet],
+    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiLet],
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

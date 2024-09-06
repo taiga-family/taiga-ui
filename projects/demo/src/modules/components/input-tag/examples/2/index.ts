@@ -12,12 +12,12 @@ import {delay, of, startWith, Subject, switchMap} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
+        FormsModule,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiInputTagModule,
         TuiTextfieldControllerModule,
-        FormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
-        AsyncPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

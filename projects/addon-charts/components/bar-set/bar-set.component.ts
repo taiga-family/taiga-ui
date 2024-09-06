@@ -11,7 +11,7 @@ const FILLER_ARRAY: readonly number[] = [1];
 @Component({
     standalone: true,
     selector: 'tui-bar-set',
-    imports: [NgIf, NgForOf, NgTemplateOutlet, TuiBar],
+    imports: [NgForOf, NgIf, NgTemplateOutlet, TuiBar],
     templateUrl: './bar-set.template.html',
     styleUrls: ['./bar-set.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

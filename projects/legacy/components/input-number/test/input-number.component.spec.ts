@@ -19,10 +19,10 @@ describe('InputNumber', () => {
     @Component({
         standalone: true,
         imports: [
-            ReactiveFormsModule,
-            TuiInputNumberModule,
             NgIf,
+            ReactiveFormsModule,
             TuiHint,
+            TuiInputNumberModule,
             TuiNumberFormat,
             TuiTextfieldControllerModule,
         ],

@@ -8,7 +8,7 @@ import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputDateTimeModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputDateTimeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -9,12 +9,12 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiHint,
-        TuiDialog,
         ReactiveFormsModule,
-        TuiInputModule,
         TuiAutoFocus,
+        TuiButton,
+        TuiDialog,
+        TuiHint,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -11,12 +11,12 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiMultiSelectModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
-        TuiDataListWrapper,
+        TuiButton,
         TuiDataList,
+        TuiDataListWrapper,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

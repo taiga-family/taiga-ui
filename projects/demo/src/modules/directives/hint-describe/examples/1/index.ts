@@ -8,13 +8,13 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiButton,
-        TuiHintDirective,
-        TuiTooltip,
-        TuiInputModule,
-        TuiHint,
         FormsModule,
+        TuiButton,
+        TuiHint,
+        TuiHintDirective,
         TuiIcon,
+        TuiInputModule,
+        TuiTooltip,
     ],
     templateUrl: './index.html',
     changeDetection,

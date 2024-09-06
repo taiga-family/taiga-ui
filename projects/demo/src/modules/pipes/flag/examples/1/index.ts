@@ -8,7 +8,7 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFlagPipe, AsyncPipe],
+    imports: [AsyncPipe, TuiFlagPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

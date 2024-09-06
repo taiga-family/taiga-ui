@@ -12,12 +12,12 @@ import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
 @Component({
     standalone: true,
     imports: [
-        TuiComboBoxModule,
         ReactiveFormsModule,
-        TuiTextfieldControllerModule,
+        TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiStringifyContentPipe,
         TuiFilterByInputPipe,
+        TuiStringifyContentPipe,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

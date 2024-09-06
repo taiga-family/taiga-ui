@@ -7,7 +7,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 @Component({
     standalone: true,
     selector: 'tui-doc-see-also',
-    imports: [TuiLink, NgForOf, RouterLink, NgIf],
+    imports: [NgForOf, NgIf, RouterLink, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

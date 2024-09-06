@@ -6,7 +6,7 @@ import {TuiAppearance, TuiButton, TuiOption} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAppearance, TuiButton, NgForOf, TuiOption],
+    imports: [NgForOf, TuiAppearance, TuiButton, TuiOption],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

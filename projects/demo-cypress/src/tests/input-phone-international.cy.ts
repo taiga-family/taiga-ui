@@ -13,7 +13,7 @@ import {createOutputSpy} from 'cypress/angular';
 
 @Component({
     standalone: true,
-    imports: [TuiRoot, ReactiveFormsModule, TuiInputPhoneInternational],
+    imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
     template: `
         <tui-root>
             <tui-input-phone-international

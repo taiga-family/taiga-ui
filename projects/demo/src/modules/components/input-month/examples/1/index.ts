@@ -7,7 +7,7 @@ import {TuiInputMonthModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 
 @Component({
     standalone: true,
-    imports: [TuiInputMonthModule, ReactiveFormsModule, TuiTextfieldControllerModule],
+    imports: [ReactiveFormsModule, TuiInputMonthModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -8,7 +8,7 @@ import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputRangeModule, ReactiveFormsModule, NgForOf, JsonPipe],
+    imports: [JsonPipe, NgForOf, ReactiveFormsModule, TuiInputRangeModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

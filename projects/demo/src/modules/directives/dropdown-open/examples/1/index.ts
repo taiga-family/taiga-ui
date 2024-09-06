@@ -7,7 +7,7 @@ import {TuiStep} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDropdown, TuiDataList, NgForOf, TuiStep],
+    imports: [NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiStep],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

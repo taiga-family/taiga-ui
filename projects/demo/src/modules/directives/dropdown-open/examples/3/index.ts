@@ -8,13 +8,13 @@ import {TuiChevron, TuiStep} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiChevron,
-        TuiLink,
-        TuiDropdown,
-        TuiDataList,
         NgForOf,
-        TuiIcon,
         NgIf,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+        TuiIcon,
+        TuiLink,
         TuiStep,
     ],
     templateUrl: './index.html',

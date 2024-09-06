@@ -17,13 +17,13 @@ interface Hero {
 @Component({
     standalone: true,
     imports: [
+        NgForOf,
+        ReactiveFormsModule,
+        TuiAsideItemDirective,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        TuiDataList,
-        NgForOf,
-        TuiDataListWrapper,
-        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

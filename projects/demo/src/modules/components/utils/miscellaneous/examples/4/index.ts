@@ -8,7 +8,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiSelectModule, TuiDataListWrapper],
+    imports: [ReactiveFormsModule, TuiDataListWrapper, TuiSelectModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

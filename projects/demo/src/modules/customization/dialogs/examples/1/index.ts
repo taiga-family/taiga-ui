@@ -10,7 +10,7 @@ import {PromptService} from './prompt/prompt.service';
 @Component({
     standalone: true,
     selector: 'tui-dialogs-example-1',
-    imports: [TuiButton, TuiAvatar],
+    imports: [TuiAvatar, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

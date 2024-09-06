@@ -8,7 +8,7 @@ import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiPlatform, TuiRadio, TuiLabel, TuiButton],
+    imports: [FormsModule, TuiButton, TuiLabel, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

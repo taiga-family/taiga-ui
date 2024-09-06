@@ -8,7 +8,7 @@ import {CustomPortalService} from './service';
 @Component({
     standalone: true,
     selector: 'tui-portals-example-1',
-    imports: [TuiIcon, TuiButton],
+    imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

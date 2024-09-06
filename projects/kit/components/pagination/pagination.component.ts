@@ -35,7 +35,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 @Component({
     standalone: true,
     selector: 'tui-pagination',
-    imports: [NgIf, AsyncPipe, TuiButton, TuiRepeatTimes, TuiLet, PolymorpheusOutlet],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
     styleUrls: ['./pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

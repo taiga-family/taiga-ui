@@ -15,8 +15,8 @@ describe('InputPassword', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiInputPasswordModule,
             ReactiveFormsModule,
+            TuiInputPasswordModule,
             TuiTextfieldControllerModule,
         ],
         template: `

@@ -8,7 +8,7 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 describe('TuiActiveZone', () => {
     @Component({
         standalone: true,
-        imports: [TuiActiveZone, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiActiveZone],
         template: `
             <p id="parent-info">Parent zone: {{ parentActive }}</p>
             <p id="child-info">Child zone: {{ childActive }}</p>

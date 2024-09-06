@@ -16,7 +16,7 @@ import {TuiPreviewAction} from '../preview-action/preview-action.directive';
 @Component({
     standalone: true,
     selector: 'tui-preview-pagination',
-    imports: [NgIf, AsyncPipe, TuiButton, TuiPreviewAction],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiPreviewAction],
     templateUrl: './preview-pagination.template.html',
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

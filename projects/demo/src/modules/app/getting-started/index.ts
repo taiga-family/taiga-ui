@@ -10,7 +10,7 @@ export const TUI_HOME_COMPONENT = tuiCreateToken(Home);
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, NgComponentOutlet],
+    imports: [NgComponentOutlet, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
