@@ -24,7 +24,6 @@ tmp/
 *.iml
 */tmp
 .rpt2_cache
-.vscode
 quality-check
 .DS_Store
 dist
