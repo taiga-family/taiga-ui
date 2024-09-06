@@ -31,14 +31,14 @@ export function tuiHarnessWith<T>(
     with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
 } {
     return class extends ComponentHarness {
+        public static readonly locator?: T;
         public static hostSelector = hostSelector;
 
-        // @ts-ignore
-        public static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
+        public static with(
+            _options: BaseHarnessFilters = {},
+        ): HarnessPredicate<ComponentHarness> {
             throw new Error('Hummus');
         }
-    } as unknown as ComponentHarnessConstructor<ComponentHarness> & {
-        with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
     };
 }
 
