@@ -38,7 +38,6 @@ class TuiTableStylesComponent {}
     host: {
         '($.data-mode.attr)': 'mode$',
         '($.class._stuck)': 'stuck$',
-        style: 'border-collapse: separate',
     },
 })
 export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
