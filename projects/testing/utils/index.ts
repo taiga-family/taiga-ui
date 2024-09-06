@@ -1,5 +1,4 @@
 export * from './active-element';
-export * from './configure-test-suite';
 export * from './date';
 export * from './helpers';
 export * from './input/cleaner.unit-common';
