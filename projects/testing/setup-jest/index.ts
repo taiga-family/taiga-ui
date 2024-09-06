@@ -5,6 +5,11 @@ const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('no
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
 
+Object.defineProperty(global.document, 'execCommand', {
+    writable: true,
+    value: () => {},
+});
+
 // you can also pass the mock implementation
 // to jest.fn as an argument
 (global.window as any).IntersectionObserver = jest.fn(() => ({
