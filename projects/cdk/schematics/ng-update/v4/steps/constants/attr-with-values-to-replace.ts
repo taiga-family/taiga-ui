@@ -32,6 +32,11 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         ],
     },
     {
+        attrNames: ['tuiHintAppearance'],
+        newAttrName: 'tuiHintAppearance',
+        valueReplacer: [{from: 'onDark', to: 'dark'}],
+    },
+    {
         attrNames: ['[pseudoActive]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
