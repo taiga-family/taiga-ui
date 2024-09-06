@@ -54,7 +54,6 @@ class TuiTableStyles {}
     ],
     hostDirectives: [TuiStuck],
     host: {
-        style: 'border-collapse: separate',
         '[attr.data-size]': 'size()',
     },
 })
