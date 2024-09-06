@@ -7,6 +7,7 @@ import {
     forwardRef,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -63,7 +64,7 @@ export class TuiDataListComponent<T>
     private readonly el = tuiInjectElement();
 
     protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
-    protected empty = true;
+    protected readonly empty = signal(false);
 
     @Input()
     public emptyContent: PolymorpheusContent;
@@ -85,7 +86,7 @@ export class TuiDataListComponent<T>
 
     public ngAfterContentChecked(): void {
         // TODO: Refactor to :has after Safari support bumped to 15
-        this.empty = !this.el.querySelector('[tuiOption]');
+        this.empty.set(!this.options.length);
     }
 
     public getOptions(includeDisabled = false): readonly T[] {
