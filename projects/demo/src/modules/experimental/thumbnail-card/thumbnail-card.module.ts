@@ -6,6 +6,7 @@ import {TuiThumbnailCardModule} from '@taiga-ui/experimental';
 import {TuiThumbnailCardExample1} from './examples/1';
 import {TuiThumbnailCardExample2} from './examples/2';
 import {TuiThumbnailCardExample3} from './examples/3';
+import {TuiThumbnailCardExample4} from './examples/4';
 import {ExampleTuiThumbnailCardComponent} from './thumbnail-card.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import {ExampleTuiThumbnailCardComponent} from './thumbnail-card.component';
         TuiThumbnailCardExample1,
         TuiThumbnailCardExample2,
         TuiThumbnailCardExample3,
+        TuiThumbnailCardExample4,
     ],
     exports: [ExampleTuiThumbnailCardComponent],
 })

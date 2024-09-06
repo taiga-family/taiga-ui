@@ -29,6 +29,11 @@ export class ExampleTuiThumbnailCardComponent {
         LESS: import('./examples/3/index.less?raw'),
     };
 
+    readonly example4: TuiDocExample = {
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
+    };
+
     iconVariants = ['', 'tuiIconLock', 'tuiIconCloud', 'tuiIconUser'];
     iconLeft = this.iconVariants[0];
     iconRight = this.iconVariants[0];
