@@ -67,6 +67,15 @@
             </li>
             <li>
                 <a
+                    fragment="ng-event-plugins"
+                    routerLink="."
+                    tuiLink
+                >
+                    NG_EVENT_PLUGINS
+                </a>
+            </li>
+            <li>
+                <a
                     fragment="icons"
                     routerLink="."
                     tuiLink
@@ -153,43 +162,6 @@
         </tui-tabs-with-more>
         <ng-container *ngIf="styles.activeItemIndex === 0">
             <tui-doc-code [code]="angularJsonStyles" />
-
-            <tui-accordion class="tui-space_top-3">
-                <tui-accordion-item>
-                    How setup global styles from
-                    <code>&#64;taiga-ui/styles</code>
-                    ?
-
-                    <ng-template tuiAccordionItemContent>
-                        If you want use global styles with default fonts out-of-the-box, you need install
-                        <code>npm i &#64;taiga-ui/styles</code>
-                        and put this code:
-
-                        <tui-doc-code
-                            filename="angular.json"
-                            [code]="angularJsonGlobalSingleStyles"
-                        />
-
-                        <tui-doc-code
-                            filename="styles.less"
-                            [code]="stylesLess"
-                        />
-
-                        <tui-notification class="tui-space_top-3">
-                            <div>
-                                Also you can use not all styles from global, but only the ones you need, for example
-                                <code>&#64;taiga-ui/styles/markup/tui-mobile-only</code>
-                                or something else from the list below:
-                            </div>
-                        </tui-notification>
-
-                        <tui-doc-code
-                            filename="styles.less"
-                            [code]="customGlobalStyle"
-                        />
-                    </ng-template>
-                </tui-accordion-item>
-            </tui-accordion>
         </ng-container>
         <tui-doc-code
             *ngIf="styles.activeItemIndex === 1"
@@ -227,13 +199,6 @@
                 tuiTab
                 type="button"
             >
-                <tui-doc-tab src="assets/icons/ts.svg">main.ts</tui-doc-tab>
-            </button>
-            <button
-                *tuiItem
-                tuiTab
-                type="button"
-            >
                 <tui-doc-tab src="assets/icons/html.svg">app.component.html</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
@@ -243,18 +208,31 @@
         />
         <tui-doc-code
             *ngIf="ngStandalone.activeItemIndex === 1"
-            [code]="standaloneMain"
-        />
-        <tui-doc-code
-            *ngIf="ngStandalone.activeItemIndex === 2"
             [code]="appTemplate"
         />
+
+        <h2
+            id="ng-event-plugins"
+            class="tui-space_top-10"
+        >
+            4. NG_EVENT_PLUGINS
+        </h2>
+        <tui-tabs-with-more class="tabs">
+            <button
+                *tuiItem
+                tuiTab
+                type="button"
+            >
+                <tui-doc-tab src="assets/icons/ts.svg">main.ts</tui-doc-tab>
+            </button>
+        </tui-tabs-with-more>
+        <tui-doc-code [code]="standaloneMain" />
 
         <h2
             id="icons"
             class="tui-space_top-10"
         >
-            4. Icons
+            5. Icons
         </h2>
 
         <tui-tabs-with-more
