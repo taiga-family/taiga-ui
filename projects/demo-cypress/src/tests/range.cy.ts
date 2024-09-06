@@ -11,7 +11,7 @@ describe('TuiRange', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiRange, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiRange],
         template: `
             <tui-range
                 [formControl]="testValue"

@@ -9,7 +9,7 @@ import TuiTabBarExample from './examples/1';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCheckbox, TuiLabel, TuiTabBarExample, FormsModule, TuiDropdown],
+    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiDropdown, TuiLabel, TuiTabBarExample],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

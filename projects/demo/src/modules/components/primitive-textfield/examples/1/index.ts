@@ -14,10 +14,10 @@ import {
     standalone: true,
     selector: 'tui-primitive-textfield-example-1',
     imports: [
-        TuiPrimitiveTextfieldModule,
-        TuiTextfieldControllerModule,
         TuiButton,
         TuiHintDirective,
+        TuiPrimitiveTextfieldModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

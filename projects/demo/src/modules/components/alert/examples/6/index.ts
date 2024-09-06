@@ -7,7 +7,7 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-6',
-    imports: [TuiButton, TuiAlert, TuiAsideItemDirective],
+    imports: [TuiAlert, TuiAsideItemDirective, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

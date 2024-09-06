@@ -7,7 +7,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiFallbackSrcPipe, AsyncPipe, TuiIconPipe, TuiTitle],
+    imports: [AsyncPipe, TuiAvatar, TuiFallbackSrcPipe, TuiIconPipe, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -19,7 +19,7 @@ import {of} from 'rxjs';
 describe('InputPhoneInternational', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot, TuiInputPhoneInternational, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
         template: `
             <tui-root>
                 <tui-input-phone-international

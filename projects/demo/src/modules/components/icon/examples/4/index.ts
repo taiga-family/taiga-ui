@@ -10,7 +10,7 @@ import search from '@taiga-ui/icons/src/search.svg?raw';
 
 @Component({
     standalone: true,
-    imports: [TuiIcon, TuiDocCode],
+    imports: [TuiDocCode, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

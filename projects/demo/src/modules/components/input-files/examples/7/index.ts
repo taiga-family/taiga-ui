@@ -7,7 +7,7 @@ import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiFiles, FormsModule, NgForOf, AsyncPipe],
+    imports: [AsyncPipe, FormsModule, NgForOf, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

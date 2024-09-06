@@ -23,7 +23,7 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRange, TuiLink],
+    imports: [TuiCalendarRange, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

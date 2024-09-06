@@ -10,7 +10,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputDateModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -8,7 +8,7 @@ import {interval, NEVER, startWith} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiLet, TuiBadge, AsyncPipe],
+    imports: [AsyncPipe, TuiBadge, TuiLet],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

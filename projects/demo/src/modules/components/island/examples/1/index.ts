@@ -6,7 +6,7 @@ import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiIslandDirective, TuiLink, TuiButton],
+    imports: [TuiButton, TuiIslandDirective, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

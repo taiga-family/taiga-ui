@@ -6,7 +6,7 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiButtonGroup, TuiSurface, TuiIcon],
+    imports: [TuiButton, TuiButtonGroup, TuiIcon, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

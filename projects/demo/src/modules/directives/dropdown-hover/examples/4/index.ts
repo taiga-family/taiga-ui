@@ -5,7 +5,7 @@ import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDropdown, TuiGroup, TuiButton],
+    imports: [TuiButton, TuiDropdown, TuiGroup],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

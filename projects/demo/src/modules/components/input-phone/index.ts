@@ -13,13 +13,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiInputPhoneModule,
+        InheritedDocumentation,
         ReactiveFormsModule,
+        TuiDemo,
         TuiDropdown,
         TuiHint,
+        TuiInputPhoneModule,
         TuiTextfieldControllerModule,
-        InheritedDocumentation,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -6,7 +6,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTiles, NgForOf],
+    imports: [NgForOf, TuiTiles],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

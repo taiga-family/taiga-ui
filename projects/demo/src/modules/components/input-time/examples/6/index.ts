@@ -18,7 +18,7 @@ class ExampleTimeTransformer extends TuiValueTransformer<TuiTime | null, string 
 
 @Component({
     standalone: true,
-    imports: [TuiInputTimeModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiInputTimeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

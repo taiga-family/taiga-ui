@@ -10,7 +10,7 @@ import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [NgForOf, FormsModule, ReactiveFormsModule, TuiPlatform, TuiRadio],
+    imports: [FormsModule, NgForOf, ReactiveFormsModule, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

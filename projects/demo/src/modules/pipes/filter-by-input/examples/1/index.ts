@@ -9,9 +9,9 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        TuiInputModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     encapsulation,

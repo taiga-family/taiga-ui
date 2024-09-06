@@ -7,7 +7,7 @@ import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/leg
 
 @Component({
     standalone: true,
-    imports: [TuiInputNumberModule, FormsModule],
+    imports: [FormsModule, TuiInputNumberModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

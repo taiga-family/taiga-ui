@@ -8,7 +8,7 @@ import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatarStack, NgForOf, TuiAvatar, TuiInitialsPipe, TuiAutoColorPipe],
+    imports: [NgForOf, TuiAutoColorPipe, TuiAvatar, TuiAvatarStack, TuiInitialsPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -8,7 +8,7 @@ import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDialog, TuiCarousel, TuiLink, RouterLink, TuiPagination],
+    imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPagination],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

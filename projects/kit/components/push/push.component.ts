@@ -15,7 +15,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 @Component({
     standalone: true,
     selector: 'tui-push',
-    imports: [NgIf, AsyncPipe, TuiButton, TuiFormatDatePipe],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiFormatDatePipe],
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

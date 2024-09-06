@@ -8,7 +8,7 @@ import {map, of, startWith, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiProgress, AsyncPipe],
+    imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

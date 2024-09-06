@@ -13,7 +13,7 @@ interface User {
 
 @Component({
     standalone: true,
-    imports: [TuiLineClamp, TuiHintDirective],
+    imports: [TuiHintDirective, TuiLineClamp],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -12,13 +12,13 @@ import {
 @Component({
     standalone: true,
     imports: [
-        TuiInputModule,
-        MaskitoDirective,
-        TuiTextfieldControllerModule,
         FormsModule,
-        TuiSvgComponent,
-        TuiWrapperModule,
+        MaskitoDirective,
         TuiIcon,
+        TuiInputModule,
+        TuiSvgComponent,
+        TuiTextfieldControllerModule,
+        TuiWrapperModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

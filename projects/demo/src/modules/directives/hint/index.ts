@@ -11,7 +11,7 @@ import {InheritedDocumentation} from '../../components/abstract/inherited-docume
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiHint, InheritedDocumentation],
+    imports: [InheritedDocumentation, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],

@@ -18,13 +18,13 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     imports: [
-        TuiNumberFormat,
-        TuiAmountPipe,
         AsyncPipe,
-        TuiAvatar,
-        TuiElasticSticky,
-        TuiButton,
         NgIf,
+        TuiAmountPipe,
+        TuiAvatar,
+        TuiButton,
+        TuiElasticSticky,
+        TuiNumberFormat,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

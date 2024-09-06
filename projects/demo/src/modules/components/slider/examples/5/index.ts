@@ -8,7 +8,7 @@ import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSlider, ReactiveFormsModule, NgForOf, DecimalPipe],
+    imports: [DecimalPipe, NgForOf, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

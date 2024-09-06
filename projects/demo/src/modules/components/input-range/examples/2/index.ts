@@ -7,7 +7,7 @@ import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 
 @Component({
     standalone: true,
-    imports: [TuiInputRangeModule, ReactiveFormsModule, TuiTextfieldControllerModule],
+    imports: [ReactiveFormsModule, TuiInputRangeModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styles: [
         `

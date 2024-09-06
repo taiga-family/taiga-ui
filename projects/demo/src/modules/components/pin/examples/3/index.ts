@@ -6,7 +6,7 @@ import {TuiPin} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiPin, TuiIcon],
+    imports: [TuiIcon, TuiPin],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

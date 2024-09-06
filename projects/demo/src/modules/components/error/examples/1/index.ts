@@ -8,7 +8,7 @@ import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiLabel, TuiSwitch, TuiError],
+    imports: [FormsModule, TuiError, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -6,7 +6,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSurface, TuiAvatar],
+    imports: [TuiAvatar, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

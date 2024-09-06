@@ -34,15 +34,15 @@ class Account {
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
+        InheritedDocumentation,
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapper,
+        TuiDemo,
         TuiDropdown,
         TuiHint,
-        TuiTextfieldControllerModule,
         TuiIcon,
-        InheritedDocumentation,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

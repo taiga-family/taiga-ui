@@ -24,7 +24,7 @@ const Department = {
 
 @Component({
     standalone: true,
-    imports: [TuiButton, AsyncPipe, TuiFilter, FormsModule],
+    imports: [AsyncPipe, FormsModule, TuiButton, TuiFilter],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

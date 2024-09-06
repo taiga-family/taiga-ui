@@ -9,10 +9,10 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiHint,
         TuiInputModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiHint,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -8,7 +8,7 @@ import {OpenOnRouteFragment} from './open-accordion-on-route-fragment';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiAccordion, OpenOnRouteFragment],
+    imports: [OpenOnRouteFragment, TuiAccordion, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

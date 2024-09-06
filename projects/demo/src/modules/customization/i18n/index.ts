@@ -7,7 +7,7 @@ import {from, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLink, TuiDocLanguageSwitcher],
+    imports: [TuiDemo, TuiDocLanguageSwitcher, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

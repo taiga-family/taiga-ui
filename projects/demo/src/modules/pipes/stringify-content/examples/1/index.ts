@@ -17,11 +17,11 @@ interface User {
 @Component({
     standalone: true,
     imports: [
-        TuiComboBoxModule,
         FormsModule,
+        TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiStringifyContentPipe,
         TuiFilterByInputPipe,
+        TuiStringifyContentPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

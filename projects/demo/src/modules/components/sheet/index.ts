@@ -11,7 +11,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiButton, TuiAvatar, TuiSheetModule],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

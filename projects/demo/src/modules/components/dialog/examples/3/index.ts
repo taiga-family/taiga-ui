@@ -9,7 +9,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiAmountPipe, AsyncPipe],
+    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

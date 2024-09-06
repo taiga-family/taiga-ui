@@ -18,7 +18,7 @@ import {TuiHintService} from './hint.service';
 @Component({
     standalone: true,
     selector: 'tui-hints',
-    imports: [NgForOf, TuiActiveZone, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [NgForOf, PolymorpheusOutlet, PolymorpheusTemplate, TuiActiveZone],
     templateUrl: './hints.template.html',
     styleUrls: ['./hints.style.less'],
     // So that we do not force OnPush on custom hints

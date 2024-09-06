@@ -8,7 +8,7 @@ import {BehaviorSubject, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiPan, AsyncPipe],
+    imports: [AsyncPipe, TuiPan],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

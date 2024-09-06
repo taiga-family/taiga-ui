@@ -24,7 +24,7 @@ import type {TuiTableBarOptions} from './table-bar.options';
 @Component({
     standalone: true,
     selector: 'tui-table-bar',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, AsyncPipe, NgIf],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, PolymorpheusTemplate, TuiButton],
     templateUrl: './table-bar.template.html',
     styleUrls: ['./table-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

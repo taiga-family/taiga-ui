@@ -7,7 +7,7 @@ import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCarousel, TuiRepeatTimes, TuiButton],
+    imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

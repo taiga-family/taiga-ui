@@ -10,7 +10,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiNotification, TuiButton],
+    imports: [TuiButton, TuiNotification],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

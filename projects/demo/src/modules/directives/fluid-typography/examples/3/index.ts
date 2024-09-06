@@ -8,7 +8,7 @@ import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTextfield, TuiFluidTypography, FormsModule, TuiInputRangeModule],
+    imports: [FormsModule, TuiFluidTypography, TuiInputRangeModule, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

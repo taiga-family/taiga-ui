@@ -8,7 +8,7 @@ import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiTable, TuiLet, TuiButton],
+    imports: [NgForOf, TuiButton, TuiLet, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -8,7 +8,7 @@ import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiRange, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiDemo, TuiRange],
     templateUrl: './index.html',
     changeDetection,
 })

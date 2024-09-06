@@ -12,7 +12,7 @@ import {TuiLoaderHarness} from '@taiga-ui/testing';
 describe('Loader', () => {
     @Component({
         standalone: true,
-        imports: [TuiLoader, NgIf],
+        imports: [NgIf, TuiLoader],
         template: `
             <tui-loader
                 *ngIf="custom; else def"

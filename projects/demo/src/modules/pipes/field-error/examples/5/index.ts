@@ -24,11 +24,11 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiInputModule,
         TuiError,
         TuiFieldErrorPipe,
-        AsyncPipe,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

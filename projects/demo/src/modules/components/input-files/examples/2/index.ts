@@ -12,12 +12,12 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        ReactiveFormsModule,
-        TuiFiles,
-        NgForOf,
         AsyncPipe,
+        NgForOf,
+        ReactiveFormsModule,
         TuiError,
         TuiFieldErrorPipe,
+        TuiFiles,
     ],
     templateUrl: './index.html',
     encapsulation,

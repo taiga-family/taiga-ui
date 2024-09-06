@@ -27,7 +27,7 @@ describe('TuiHint', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiRoot, Host, TuiHintDirective],
+        imports: [Host, TuiHintDirective, TuiRoot],
         template: `
             <tui-root>
                 <my-host [hideElement]="hide">

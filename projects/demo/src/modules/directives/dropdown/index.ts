@@ -12,12 +12,12 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiDropdown,
+        DropdownDocumentation,
         TuiActiveZone,
         TuiButton,
+        TuiDemo,
+        TuiDropdown,
         TuiObscured,
-        DropdownDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

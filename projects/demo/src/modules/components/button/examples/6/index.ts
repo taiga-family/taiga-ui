@@ -6,7 +6,7 @@ import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiFade, TuiAvatar],
+    imports: [TuiAvatar, TuiButton, TuiFade],
     templateUrl: './index.html',
     styles: [':host { display: flex; gap: 1rem; align-items: flex-start; }'],
     encapsulation,

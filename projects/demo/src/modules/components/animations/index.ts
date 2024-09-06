@@ -8,7 +8,7 @@ import {AnimationState} from './state';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiSlider, FormsModule],
+    imports: [FormsModule, TuiDemo, TuiSlider],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

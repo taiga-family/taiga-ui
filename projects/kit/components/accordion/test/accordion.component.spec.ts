@@ -35,7 +35,7 @@ describe('Accordion', () => {
 
     @Component({
         standalone: true,
-        imports: [TuiAccordion, ReactiveFormsModule, TuiDataList],
+        imports: [ReactiveFormsModule, TuiAccordion, TuiDataList],
         template: `
             <tui-accordion
                 id="single-select"

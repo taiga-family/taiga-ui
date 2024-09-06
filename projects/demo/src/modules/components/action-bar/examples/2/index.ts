@@ -5,7 +5,7 @@ import {TuiActionBar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiActionBar],
+    imports: [TuiActionBar, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

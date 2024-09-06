@@ -5,7 +5,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiLink, TuiTabs, TuiOption],
+    imports: [TuiDemo, TuiLink, TuiOption, TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

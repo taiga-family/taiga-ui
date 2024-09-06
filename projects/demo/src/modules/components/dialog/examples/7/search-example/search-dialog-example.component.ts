@@ -7,7 +7,7 @@ import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiTextfield, TuiAutoFocus],
+    imports: [TuiAutoFocus, TuiTextfield],
     templateUrl: './search-dialog-example.template.html',
     styleUrls: ['./search-dialog-example.component.less'],
     changeDetection,

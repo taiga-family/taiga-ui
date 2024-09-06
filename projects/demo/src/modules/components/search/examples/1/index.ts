@@ -11,14 +11,14 @@ import {TuiSearch} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
+        JsonPipe,
         NgForOf,
         NgIf,
-        JsonPipe,
         ReactiveFormsModule,
-        TuiSearch,
-        TuiTextfield,
         TuiButton,
         TuiItemsWithMore,
+        TuiSearch,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

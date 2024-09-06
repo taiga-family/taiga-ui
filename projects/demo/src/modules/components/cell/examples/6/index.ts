@@ -9,13 +9,13 @@ import {TuiAsideItemDirective, TuiCell} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCell,
-        TuiDropdown,
-        TuiGroup,
-        TuiButton,
-        TuiDataListWrapper,
         NgFor,
         TuiAsideItemDirective,
+        TuiButton,
+        TuiCell,
+        TuiDataListWrapper,
+        TuiDropdown,
+        TuiGroup,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

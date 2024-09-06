@@ -8,7 +8,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiRingChart, TuiAmountPipe, AsyncPipe, TuiLegendItem, NgForOf, TuiHovered],
+    imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

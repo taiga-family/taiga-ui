@@ -11,7 +11,7 @@ import {timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiInputInline, TuiButton, FormsModule],
+    imports: [FormsModule, TuiButton, TuiInputInline],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

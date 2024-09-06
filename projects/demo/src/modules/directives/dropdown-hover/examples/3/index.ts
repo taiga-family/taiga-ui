@@ -10,13 +10,13 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        NgForOf,
+        ReactiveFormsModule,
         TuiButton,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiDropdown,
         TuiSelectModule,
-        ReactiveFormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
-        NgForOf,
     ],
     templateUrl: './index.html',
     encapsulation,

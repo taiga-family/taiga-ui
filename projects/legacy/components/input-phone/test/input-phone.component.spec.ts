@@ -10,7 +10,7 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 describe('InputPhone', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot, TuiInputPhoneModule, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiInputPhoneModule, TuiRoot],
         template: `
             <tui-root>
                 <tui-input-phone

@@ -6,7 +6,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTooltip, TuiIcon],
+    imports: [TuiIcon, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

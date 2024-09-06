@@ -5,7 +5,7 @@ import {TuiButton, TuiHint, TuiHintDirective, TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiHintDirective, TuiHint, RouterLink, TuiLink],
+    imports: [RouterLink, TuiButton, TuiHint, TuiHintDirective, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

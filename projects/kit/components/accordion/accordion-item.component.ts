@@ -21,7 +21,7 @@ import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.direc
 @Component({
     standalone: true,
     selector: 'tui-accordion-item',
-    imports: [NgIf, PolymorpheusOutlet, TuiIcon, TuiChevron, TuiExpand],
+    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiExpand, TuiIcon],
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -6,7 +6,7 @@ import {TuiButton, TuiOption} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [RouterLink, TuiButton, RouterOutlet, TuiOption],
+    imports: [RouterLink, RouterOutlet, TuiButton, TuiOption],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -15,10 +15,10 @@ import type {AbstractExampleTuiControl} from '../control';
     standalone: true,
     selector: 'hint-controller-documentation',
     imports: [
-        TuiLink,
+        RouterLink,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,
-        RouterLink,
+        TuiLink,
     ],
     templateUrl: './index.html',
     changeDetection,

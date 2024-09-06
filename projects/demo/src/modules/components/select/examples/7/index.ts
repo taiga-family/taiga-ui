@@ -48,13 +48,13 @@ const CASH: Account = {
 @Component({
     standalone: true,
     imports: [
-        TuiSelectModule,
         FormsModule,
+        NgForOf,
+        TuiButton,
         TuiDataList,
         TuiMultiSelectModule,
-        NgForOf,
+        TuiSelectModule,
         TuiTitle,
-        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

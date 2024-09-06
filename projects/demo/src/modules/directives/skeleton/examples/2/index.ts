@@ -7,7 +7,7 @@ import {TuiSkeleton, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiLabel, TuiSwitch, FormsModule, TuiSkeleton],
+    imports: [FormsModule, TuiLabel, TuiSkeleton, TuiSwitch],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

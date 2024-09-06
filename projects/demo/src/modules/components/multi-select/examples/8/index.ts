@@ -19,11 +19,11 @@ interface Employee {
 @Component({
     standalone: true,
     imports: [
+        ReactiveFormsModule,
+        TuiDataList,
+        TuiDataListWrapper,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
     ],
     templateUrl: './index.html',
     encapsulation,

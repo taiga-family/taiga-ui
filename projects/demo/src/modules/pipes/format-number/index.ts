@@ -14,12 +14,12 @@ import {NumberFormatDocumentation} from '../../components/abstract/number-format
 @Component({
     standalone: true,
     imports: [
+        NumberFormatDocumentation,
+        ReactiveFormsModule,
         TuiDemo,
         TuiFormatNumberPipe,
         TuiInputNumberModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        NumberFormatDocumentation,
     ],
     templateUrl: './index.html',
     changeDetection,

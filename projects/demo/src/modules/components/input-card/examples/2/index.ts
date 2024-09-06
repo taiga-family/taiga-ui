@@ -10,12 +10,12 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        NgIf,
         FormsModule,
-        TuiTextfield,
-        TuiInputCard,
-        TuiThumbnailCard,
+        NgIf,
         TuiCheckbox,
+        TuiInputCard,
+        TuiTextfield,
+        TuiThumbnailCard,
     ],
     templateUrl: './index.html',
     encapsulation,

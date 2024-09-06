@@ -6,7 +6,7 @@ import {TuiTagModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiTagModule, TuiOption],
+    imports: [TuiOption, TuiTagModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

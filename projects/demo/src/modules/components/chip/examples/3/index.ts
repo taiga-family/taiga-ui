@@ -10,12 +10,12 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiChip,
-        TuiRepeatTimes,
         FormsModule,
+        TuiAsideItemDirective,
         TuiButton,
         TuiCheckbox,
-        TuiAsideItemDirective,
+        TuiChip,
+        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

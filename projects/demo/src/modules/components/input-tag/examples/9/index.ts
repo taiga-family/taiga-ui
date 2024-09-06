@@ -12,10 +12,10 @@ import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
 @Component({
     standalone: true,
     imports: [
+        MaskitoDirective,
+        ReactiveFormsModule,
         TuiInputTagModule,
         TuiTextfieldControllerModule,
-        ReactiveFormsModule,
-        MaskitoDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -7,7 +7,7 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiElasticContainer, TuiLink, TuiAsideItemDirective],
+    imports: [TuiAsideItemDirective, TuiElasticContainer, TuiLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

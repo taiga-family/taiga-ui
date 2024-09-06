@@ -11,7 +11,7 @@ export interface Item {
 
 @Component({
     standalone: true,
-    imports: [TuiFilterPipe, NgForOf],
+    imports: [NgForOf, TuiFilterPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -19,7 +19,7 @@ import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarMonth, TuiLink, RouterModule, TuiInputMonthRangeModule],
+    imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiInputMonthRangeModule, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

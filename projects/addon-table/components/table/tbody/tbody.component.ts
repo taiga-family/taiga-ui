@@ -25,7 +25,7 @@ import {TuiTableTr} from '../tr/tr.component';
 @Component({
     standalone: true,
     selector: 'tbody[tuiTbody]',
-    imports: [NgIf, TuiIcon, PolymorpheusOutlet, TuiChevron, TuiMapperPipe],
+    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon, TuiMapperPipe],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

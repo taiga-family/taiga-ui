@@ -15,10 +15,10 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         TuiComboBoxModule,
-        TuiStringifyPipe,
         TuiDataListWrapper,
-        TuiStringifyContentPipe,
         TuiFilterByInputPipe,
+        TuiStringifyContentPipe,
+        TuiStringifyPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

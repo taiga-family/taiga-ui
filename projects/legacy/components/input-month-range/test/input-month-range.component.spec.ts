@@ -9,7 +9,7 @@ import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/l
 describe('InputMonthRange', () => {
     @Component({
         standalone: true,
-        imports: [TuiInputMonthRangeModule, ReactiveFormsModule],
+        imports: [ReactiveFormsModule, TuiInputMonthRangeModule],
         template: `
             <tui-input-month-range [formControl]="control"></tui-input-month-range>
         `,

@@ -9,7 +9,7 @@ import {TuiAvatar, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, TuiAvatar, TuiLink, TuiFiles, TuiIcon],
+    imports: [NgIf, ReactiveFormsModule, TuiAvatar, TuiFiles, TuiIcon, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -7,7 +7,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDropdown, TuiButton, TuiChevron, TuiActiveZone, TuiObscured],
+    imports: [TuiActiveZone, TuiButton, TuiChevron, TuiDropdown, TuiObscured],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

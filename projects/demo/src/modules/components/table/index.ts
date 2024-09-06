@@ -6,7 +6,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiAccordion, TuiLink],
+    imports: [TuiAccordion, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiSliderComponent, ReactiveFormsModule, NgForOf],
+    imports: [NgForOf, ReactiveFormsModule, TuiSliderComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -27,7 +27,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 @Component({
     standalone: true,
     selector: 'tui-scrollbar',
-    imports: [TuiScrollControls, NgIf],
+    imports: [NgIf, TuiScrollControls],
     templateUrl: './scrollbar.template.html',
     styleUrls: ['./scrollbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

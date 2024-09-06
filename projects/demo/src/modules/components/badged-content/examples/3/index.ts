@@ -8,12 +8,12 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
+        TuiBadge,
         TuiBadgedContent,
         TuiBadgeNotification,
-        TuiInputModule,
-        TuiIcon,
         TuiButton,
-        TuiBadge,
+        TuiIcon,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -43,13 +43,13 @@ describe('Input', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
             ReactiveFormsModule,
-            TuiInputModule,
-            TuiHint,
-            TuiTextfieldControllerModule,
-            TuiDataListWrapperComponent,
             TuiDataListDirective,
+            TuiDataListWrapperComponent,
+            TuiHint,
+            TuiInputModule,
+            TuiRoot,
+            TuiTextfieldControllerModule,
         ],
         template: `
             <tui-root>

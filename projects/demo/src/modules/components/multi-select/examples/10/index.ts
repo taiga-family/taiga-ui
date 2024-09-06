@@ -14,9 +14,9 @@ interface Item {
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
         ReactiveFormsModule,
         TuiHint,
+        TuiMultiSelectModule,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

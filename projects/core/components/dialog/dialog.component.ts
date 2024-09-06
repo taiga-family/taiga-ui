@@ -32,7 +32,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 @Component({
     standalone: true,
     selector: 'tui-dialog',
-    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, AsyncPipe],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     // So we don't force OnPush on dialog content

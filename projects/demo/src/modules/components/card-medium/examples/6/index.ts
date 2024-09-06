@@ -7,7 +7,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiCardMedium, TuiSurface, TuiTitle, TuiFade, TuiHint],
+    imports: [TuiCardMedium, TuiFade, TuiHint, TuiSurface, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -7,7 +7,7 @@ import {TuiElasticContainer} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiElasticContainer, TuiRepeatTimes, TuiButton],
+    imports: [TuiButton, TuiElasticContainer, TuiRepeatTimes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

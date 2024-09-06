@@ -10,7 +10,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiScrollbar, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -8,7 +8,7 @@ import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiRingChart, TuiAmountPipe, AsyncPipe],
+    imports: [AsyncPipe, TuiAmountPipe, TuiRingChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -10,14 +10,14 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiChip,
-        TuiAmountPipe,
         AsyncPipe,
+        TuiAmountPipe,
+        TuiAsideItemDirective,
         TuiBadgedContent,
         TuiBadgeNotification,
         TuiButton,
+        TuiChip,
         TuiFade,
-        TuiAsideItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

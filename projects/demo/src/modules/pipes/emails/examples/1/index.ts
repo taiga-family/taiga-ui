@@ -9,12 +9,12 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 @Component({
     standalone: true,
     imports: [
-        TuiInputModule,
-        NgIf,
         FormsModule,
+        NgIf,
         TuiDataList,
-        TuiEmailsPipe,
         TuiDataListWrapper,
+        TuiEmailsPipe,
+        TuiInputModule,
     ],
     templateUrl: './index.html',
     changeDetection,

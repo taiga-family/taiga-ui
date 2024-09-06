@@ -9,7 +9,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiActiveZone, TuiSidebar, TuiAccordion, NgForOf, TuiLink],
+    imports: [NgForOf, TuiAccordion, TuiActiveZone, TuiButton, TuiLink, TuiSidebar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -30,9 +30,9 @@ describe('InputDateRangeComponent', () => {
     @Component({
         standalone: true,
         imports: [
-            TuiRoot,
-            TuiInputDateRangeModule,
             ReactiveFormsModule,
+            TuiInputDateRangeModule,
+            TuiRoot,
             TuiTextfieldControllerModule,
         ],
         template: `
@@ -361,9 +361,9 @@ describe('InputDateRangeComponent', () => {
         @Component({
             standalone: true,
             imports: [
-                TuiRoot,
-                TuiInputDateRangeModule,
                 ReactiveFormsModule,
+                TuiInputDateRangeModule,
+                TuiRoot,
                 TuiTextfieldControllerModule,
             ],
             template: `

@@ -8,7 +8,7 @@ import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiCell, TuiAvatar, NgFor, TuiSurface],
+    imports: [NgFor, TuiAvatar, TuiCell, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -8,7 +8,7 @@ import {TuiAsideItemDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     selector: 'demo-home',
-    imports: [TuiDemo, TuiTabs, TuiAccordion, TuiAsideItemDirective],
+    imports: [TuiAccordion, TuiAsideItemDirective, TuiDemo, TuiTabs],
     templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
     encapsulation,

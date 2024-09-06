@@ -20,7 +20,7 @@ export class FormatService extends TuiFormatDateService {
 
 @Component({
     standalone: true,
-    imports: [TuiFormatDatePipe, AsyncPipe],
+    imports: [AsyncPipe, TuiFormatDatePipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

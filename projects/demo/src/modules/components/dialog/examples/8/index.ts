@@ -10,7 +10,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiInputModule, FormsModule, TuiButton, TuiAsideItemDirective],
+    imports: [FormsModule, TuiAsideItemDirective, TuiButton, TuiInputModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

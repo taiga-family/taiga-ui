@@ -8,7 +8,7 @@ import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiMedia, TuiButton, TuiSlider, FormsModule],
+    imports: [FormsModule, TuiButton, TuiMedia, TuiSlider],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

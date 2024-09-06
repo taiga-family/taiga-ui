@@ -16,13 +16,13 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     imports: [
-        TuiMultiSelectModule,
-        TuiTextfieldControllerModule,
         FormsModule,
-        TuiDataListWrapper,
-        TuiDataList,
         NgForOf,
+        TuiDataList,
+        TuiDataListWrapper,
+        TuiMultiSelectModule,
         TuiTagModule,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

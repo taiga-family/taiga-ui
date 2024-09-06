@@ -8,7 +8,7 @@ import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiRange, FormsModule, NgForOf, JsonPipe],
+    imports: [FormsModule, JsonPipe, NgForOf, TuiRange],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -5,7 +5,7 @@ import {TuiHighDpi, TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [TuiMedia, TuiHighDpi],
+    imports: [TuiHighDpi, TuiMedia],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
