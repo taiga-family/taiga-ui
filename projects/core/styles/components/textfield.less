@@ -25,10 +25,6 @@ tui-textfield {
         --t-right: 2.25rem;
     }
 
-    &::before {
-        margin-inline-end: 0.75rem;
-    }
-
     &::after {
         margin-inline-start: 0.25rem;
     }
@@ -120,6 +116,7 @@ tui-textfield {
 
     &::before {
         z-index: 1;
+        margin-inline-end: 0.75rem;
     }
 
     &:has(:disabled:not(.t-filler, button, option))::before,
@@ -228,6 +225,13 @@ tui-textfield {
                 }
             });
         }
+
+        .ios-only({
+            &._ios-fix {
+                position: fixed;
+                left: 1000rem;
+            }
+        });
     }
 
     label:not([data-orientation='vertical']) {
@@ -248,16 +252,6 @@ tui-textfield {
 
     select:not([data-mode='readonly']) {
         cursor: pointer;
-    }
-
-    input:defined,
-    select:defined {
-        .ios-only({
-            &._ios-fix {
-                position: fixed;
-                left: 1000rem;
-            }
-        });
     }
 
     button,
