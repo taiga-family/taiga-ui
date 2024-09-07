@@ -117,14 +117,16 @@
         "extends": [
             "@taiga-ui/stylelint-config"
         ],
-        "rules": {
-            "no-empty-source": null,
-            "selector-type-no-unknown": null
-        },
         "overrides": [
             {
                 "files": [
-                    "**/(!demo)/**/*.{less,css,scss}"
+                    "**/**/*.{less,css,scss}"
+                ],
+                "ignoreFiles": [
+                    "**/tests-report/**",
+                    "**/coverage/**",
+                    "**/demo/**",
+                    "**/dist/**"
                 ],
                 "rules": {
                     "selector-class-pattern": [
@@ -133,6 +135,14 @@
                             "resolveNestedSelectors": true
                         }
                     ]
+                }
+            },
+            {
+                "files": [
+                    "**/demo/**/*.{less,css,scss}"
+                ],
+                "rules": {
+                    "no-empty-source": null
                 }
             }
         ]
@@ -154,15 +164,15 @@
         "@nx/jest": "19.6.5",
         "@nx/workspace": "19.6.5",
         "@schematics/angular": "16.2.15",
-        "@taiga-ui/browserslist-config": "0.160.0",
-        "@taiga-ui/commitlint-config": "0.160.0",
-        "@taiga-ui/cspell-config": "0.160.0",
+        "@taiga-ui/browserslist-config": "0.160.1",
+        "@taiga-ui/commitlint-config": "0.160.1",
+        "@taiga-ui/cspell-config": "0.160.1",
         "@taiga-ui/design-tokens": "0.133.0",
-        "@taiga-ui/eslint-plugin-experience": "0.160.0",
+        "@taiga-ui/eslint-plugin-experience": "0.160.1",
         "@taiga-ui/event-plugins": "4.1.2",
-        "@taiga-ui/prettier-config": "0.160.0",
-        "@taiga-ui/stylelint-config": "0.160.0",
-        "@taiga-ui/tsconfig": "0.160.0",
+        "@taiga-ui/prettier-config": "0.160.1",
+        "@taiga-ui/stylelint-config": "0.160.1",
+        "@taiga-ui/tsconfig": "0.160.1",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/node": "22.5.4",
