@@ -3,6 +3,7 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import type {AfterViewInit} from '@angular/core';
 import {DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {timer} from 'rxjs';
 
 import {
@@ -37,7 +38,7 @@ export class TuiAutoFocus implements AfterViewInit {
         if (Number.isNaN(this.options.delay)) {
             void Promise.resolve().then(() => this.handler.setFocus());
         } else {
-            timer(this.options.delay)
+            timer(this.options.delay, tuiZonefreeScheduler())
                 .pipe(takeUntilDestroyed(this.destroyRef))
                 .subscribe(() => this.handler.setFocus());
         }
