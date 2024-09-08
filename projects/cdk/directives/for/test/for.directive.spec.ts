@@ -1,5 +1,5 @@
 import {AsyncPipe, NgFor} from '@angular/common';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiFor, tuiInjectElement} from '@taiga-ui/cdk';
@@ -17,6 +17,7 @@ describe('TuiFor directive', () => {
             <ng-template #loading>Loading</ng-template>
             <ng-template #blank>Blank</ng-template>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public readonly el = tuiInjectElement();

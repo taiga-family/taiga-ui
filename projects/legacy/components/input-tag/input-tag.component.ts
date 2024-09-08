@@ -63,6 +63,7 @@ const LINE_HEIGHT_REM = {
 const TAG_VERTICAL_SPACE_REM = 0.125;
 
 @Component({
+    standalone: false,
     selector: 'tui-input-tag',
     templateUrl: './input-tag.template.html',
     styleUrls: ['./input-tag.style.less'],

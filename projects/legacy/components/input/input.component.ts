@@ -28,6 +28,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
+    standalone: false,
     selector: 'tui-input',
     templateUrl: './input.template.html',
     styleUrls: ['./input.style.less'],

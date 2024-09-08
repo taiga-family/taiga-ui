@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -18,6 +18,7 @@ describe('TuiDroppable Directive', () => {
                 <div></div>
             </div>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public onDragOver: any = jest.fn();

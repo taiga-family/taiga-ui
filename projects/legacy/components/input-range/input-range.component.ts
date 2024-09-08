@@ -36,6 +36,7 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
     styleUrls: ['./input-range.style.less'],

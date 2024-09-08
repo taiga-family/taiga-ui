@@ -47,6 +47,7 @@ function processDragged(
 }
 
 @Directive({
+    standalone: false,
     selector: '[tuiSheetWrapper]',
     exportAs: 'tuiSheetWrapper',
 })

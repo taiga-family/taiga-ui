@@ -1,5 +1,5 @@
 import type {DebugElement, Type} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -8,7 +8,7 @@ import {TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
+import {TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputTimeComponent,
     TuiInputTimeModule,
@@ -50,6 +50,8 @@ describe('InputTime', () => {
                 ></tui-input-time>
             </tui-root>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild(TuiInputTimeComponent, {static: true})
@@ -334,6 +336,7 @@ describe('InputTime', () => {
                     ></tui-input-time>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TransformerTest extends Test {
             public override control = new FormControl('12:30');

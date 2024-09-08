@@ -24,6 +24,7 @@ import {
 } from '@taiga-ui/legacy/tokens';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-month-range',
     templateUrl: './input-month-range.template.html',
     styleUrls: ['./input-month-range.style.less'],

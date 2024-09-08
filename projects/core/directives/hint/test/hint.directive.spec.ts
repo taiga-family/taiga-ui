@@ -1,4 +1,4 @@
-import type {TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, type TemplateRef} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
@@ -32,6 +32,8 @@ describe('Hint', () => {
                 }
             `,
         ],
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         public hint: Hint = 'Tooltip text';

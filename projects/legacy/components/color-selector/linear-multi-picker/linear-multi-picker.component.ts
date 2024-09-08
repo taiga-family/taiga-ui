@@ -11,6 +11,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiPickerService} from '../services/picker.service';
 
 @Component({
+    standalone: false,
     selector: 'tui-linear-multi-picker',
     templateUrl: './linear-multi-picker.template.html',
     styleUrls: ['./linear-multi-picker.style.less'],

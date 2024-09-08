@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import type {TuiExpandComponent} from '@taiga-ui/core';
@@ -23,6 +23,8 @@ describe('expand', () => {
                 </ng-template>
             </tui-expand>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild('content')

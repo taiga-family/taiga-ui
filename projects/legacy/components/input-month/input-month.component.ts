@@ -25,6 +25,7 @@ import {
 } from '@taiga-ui/legacy/tokens';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-month',
     templateUrl: './input-month.template.html',
     styleUrls: ['./input-month.style.less'],

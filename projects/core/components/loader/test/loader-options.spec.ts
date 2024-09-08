@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
@@ -14,6 +14,7 @@ describe('Loader component options', () => {
         template: `
             <tui-loader></tui-loader>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiLoader, {static: true})

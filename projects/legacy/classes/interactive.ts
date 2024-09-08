@@ -6,6 +6,7 @@ const TUI = 'tui_interactive_';
  * @deprecated: drop in v5.0
  */
 @Directive({
+    standalone: false,
     host: {
         '[attr.data-focused]': 'pseudoFocus',
         '[class._disabled]': 'computedDisabled',

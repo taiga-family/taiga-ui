@@ -9,6 +9,7 @@ import {combineLatest, distinctUntilChanged, Subject, switchMap} from 'rxjs';
 import type {TuiInputMonthRangeComponent} from './input-month-range.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-input-month-range',
     providers: [tuiAsTextfieldHost(TuiInputMonthRangeDirective)],
 })

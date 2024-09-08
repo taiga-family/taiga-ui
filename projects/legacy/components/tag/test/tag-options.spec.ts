@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -14,6 +14,7 @@ describe('Tag component options', () => {
         template: `
             <tui-tag></tui-tag>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiTagComponent, {static: true})

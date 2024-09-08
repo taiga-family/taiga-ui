@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_POSTFIX = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldPostfix]',
     providers: [tuiProvide(TUI_TEXTFIELD_POSTFIX, TuiTextfieldPostfixDirective)],
 })

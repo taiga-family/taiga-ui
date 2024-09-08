@@ -44,6 +44,7 @@ import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-date[multiple]',
     templateUrl: './input-date-multi.template.html',
     styleUrls: ['../input-date/input-date.style.less'],

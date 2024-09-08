@@ -1,6 +1,6 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {tuiDialogOptionsProvider, TuiDialogService, TuiRoot} from '@taiga-ui/core';
@@ -14,6 +14,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
         template: `
             <tui-root></tui-root>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
 

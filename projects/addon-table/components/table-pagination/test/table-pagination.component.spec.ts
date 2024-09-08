@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
@@ -19,6 +19,7 @@ describe('TablePagination', () => {
                 (paginationChange)="update($event)"
             ></tui-table-pagination>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiTablePagination, {static: true})

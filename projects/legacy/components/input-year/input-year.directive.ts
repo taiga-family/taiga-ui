@@ -5,6 +5,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiInputYearComponent} from './input-year.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-input-year',
     providers: [tuiAsTextfieldHost(TuiInputYearDirective)],
 })

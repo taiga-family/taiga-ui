@@ -5,6 +5,7 @@ import type {TuiInteractiveState} from '@taiga-ui/core/types';
  * @deprecated: drop in v5.0
  */
 @Directive({
+    standalone: false,
     selector: '[tuiWrapper]',
     host: {
         '[attr.data-appearance]': 'appearance',

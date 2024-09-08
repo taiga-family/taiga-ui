@@ -35,6 +35,7 @@ import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-time',
     templateUrl: './input-time.template.html',
     styleUrls: ['./input-time.style.less'],

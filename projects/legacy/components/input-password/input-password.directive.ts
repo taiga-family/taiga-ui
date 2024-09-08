@@ -10,6 +10,7 @@ import type {TuiInputPasswordComponent} from './input-password.component';
  * @deprecated use {@link TuiInputPassword} instead
  */
 @Directive({
+    standalone: false,
     selector: 'tui-input-password',
     providers: [tuiAsTextfieldHost(TuiInputPasswordDirective)],
 })

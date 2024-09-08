@@ -54,6 +54,7 @@ import {TUI_MULTI_SELECT_OPTIONS} from './multi-select.options';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({
+    standalone: false,
     selector: 'tui-multi-select',
     templateUrl: './multi-select.template.html',
     styleUrls: ['./multi-select.style.less'],

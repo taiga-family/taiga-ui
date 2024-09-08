@@ -46,6 +46,7 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
 >('');
 
 @Component({
+    standalone: false,
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',
     styleUrls: ['./input-number.style.less'],

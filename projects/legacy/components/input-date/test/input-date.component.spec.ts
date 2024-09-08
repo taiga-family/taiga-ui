@@ -1,5 +1,5 @@
 import type {DebugElement, Type} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -7,7 +7,7 @@ import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
+import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputDateComponent,
     TuiInputDateModule,
@@ -41,6 +41,7 @@ describe('InputDate', () => {
                 </tui-input-date>
             </tui-root>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputDateComponent)
@@ -350,6 +351,7 @@ describe('InputDate', () => {
                     </tui-input-date>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TransformerTest extends Test {
             public override control = new FormControl(new Date(2022, 0, 31));

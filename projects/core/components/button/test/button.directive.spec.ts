@@ -1,6 +1,6 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiButtonHarness} from '@taiga-ui/testing';
 
@@ -50,6 +50,7 @@ describe('ButtonDirective', () => {
                 Extra small
             </button>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
 

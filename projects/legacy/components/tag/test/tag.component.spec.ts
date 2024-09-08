@@ -1,7 +1,7 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestKey} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -23,6 +23,7 @@ describe('Tag', () => {
                 (edited)="editedSpy($event)"
             ></tui-tag>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiTagComponent, {static: true})

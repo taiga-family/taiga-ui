@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiAxes} from '@taiga-ui/addon-charts';
@@ -19,6 +19,7 @@ describe('Axes', () => {
                 [axisYSecondaryName]="axisYSecondaryName"
             ></tui-axes>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild('defaultValues')

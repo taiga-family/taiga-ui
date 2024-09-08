@@ -6,6 +6,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Component({
+    standalone: false,
     selector: 'tui-sheet-bar',
     templateUrl: './sheet-bar.template.html',
     styleUrls: ['./sheet-bar.style.less'],

@@ -11,6 +11,7 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 const OFFSET = 10;
 
 @Directive({
+    standalone: false,
     selector: '[tuiSheetTop]',
 })
 export class TuiSheetTopDirective {

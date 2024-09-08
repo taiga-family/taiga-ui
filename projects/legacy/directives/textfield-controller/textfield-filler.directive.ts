@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_FILLER = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldFiller]',
     providers: [tuiProvide(TUI_TEXTFIELD_FILLER, TuiTextfieldFillerDirective)],
 })

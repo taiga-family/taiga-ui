@@ -43,6 +43,7 @@ function isText(value: string): boolean {
 }
 
 @Component({
+    standalone: false,
     selector: 'tui-input-phone',
     templateUrl: './input-phone.template.html',
     styleUrls: ['./input-phone.style.less'],

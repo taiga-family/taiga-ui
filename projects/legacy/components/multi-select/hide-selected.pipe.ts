@@ -7,6 +7,7 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 import {TuiMultiSelectComponent} from './multi-select.component';
 
 @Pipe({
+    standalone: false,
     name: 'tuiHideSelected',
     pure: false,
 })

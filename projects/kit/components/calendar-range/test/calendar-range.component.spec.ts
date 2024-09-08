@@ -1,4 +1,4 @@
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, Optional, Self, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -36,6 +36,8 @@ describe('rangeCalendarComponent', () => {
                 (valueChange)="onRangeChange($event)"
             />
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
         providers: [
             {
                 provide: TUI_CALENDAR_DATE_STREAM,

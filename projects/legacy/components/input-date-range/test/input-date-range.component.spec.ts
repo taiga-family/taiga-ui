@@ -1,4 +1,4 @@
-import type {DebugElement, Type} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement, type Type} from '@angular/core';
 import {Component, Optional, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -47,6 +47,8 @@ describe('InputDateRangeComponent', () => {
                 ></tui-input-date-range>
             </tui-root>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild(TuiInputDateRangeComponent)
@@ -378,6 +380,7 @@ describe('InputDateRangeComponent', () => {
                     ></tui-input-date-range>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TransformerTest extends Test {
             public override control = new FormControl<TuiDayRange | [Date, Date] | null>([

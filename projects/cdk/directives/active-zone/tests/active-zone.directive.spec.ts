@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -72,6 +72,7 @@ describe('TuiActiveZone', () => {
                 </button>
             </div>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         public readonly control = new FormControl();

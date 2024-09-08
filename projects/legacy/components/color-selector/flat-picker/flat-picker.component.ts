@@ -12,6 +12,7 @@ import type {TuiPoint} from '@taiga-ui/core/types';
 import {TuiPickerService} from '../services/picker.service';
 
 @Component({
+    standalone: false,
     selector: 'tui-flat-picker',
     templateUrl: './flat-picker.template.html',
     styleUrls: ['./flat-picker.style.less'],

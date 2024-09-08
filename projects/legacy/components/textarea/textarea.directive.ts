@@ -5,6 +5,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiTextareaComponent} from './textarea.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-textarea',
     providers: [tuiAsTextfieldHost(TuiTextareaDirective)],
 })

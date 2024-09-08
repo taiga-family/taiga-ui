@@ -9,6 +9,7 @@ import type {TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
 @Component({
+    standalone: false,
     selector: 'input[tuiTextfieldLegacy], textarea[tuiTextfieldLegacy]',
     template: '',
     styleUrls: ['./textfield.style.less'],

@@ -1,11 +1,11 @@
 import type {DebugElement} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
@@ -61,6 +61,7 @@ describe('MultiSelect', () => {
                     </tui-multi-select>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class Test {
             @ViewChild(TuiMultiSelectComponent, {static: true})
@@ -274,6 +275,7 @@ describe('MultiSelect', () => {
                     </tui-multi-select>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class Test {
             @ViewChild(TuiMultiSelectComponent, {static: true})

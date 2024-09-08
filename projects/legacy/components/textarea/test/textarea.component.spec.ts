@@ -1,5 +1,9 @@
-import type {DebugElement} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    ViewChild,
+} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -34,6 +38,7 @@ describe('Textarea', () => {
                 [tuiHintContent]="hintContent"
             ></tui-textarea>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiTextareaComponent, {static: true})

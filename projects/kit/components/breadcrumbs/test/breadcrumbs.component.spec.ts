@@ -1,5 +1,5 @@
 import {NgFor} from '@angular/common';
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -47,6 +47,8 @@ describe('Breadcrumbs Wrapper', () => {
                 </ng-container>
             </tui-breadcrumbs>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild(TuiBreadcrumbs, {static: true})

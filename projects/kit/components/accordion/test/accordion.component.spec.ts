@@ -1,7 +1,7 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {parallel} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import type {QueryList} from '@angular/core';
+import {ChangeDetectionStrategy, type QueryList} from '@angular/core';
 import {Component, ViewChild, ViewChildren} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -83,6 +83,8 @@ describe('Accordion', () => {
                 </tui-accordion-item>
             </tui-accordion>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild(TuiAccordionDirective, {static: true})

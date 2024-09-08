@@ -12,6 +12,7 @@ import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from '
 import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
+    standalone: false,
     selector: 'tui-value-decoration',
     templateUrl: './value-decoration.template.html',
     styleUrls: ['./value-decoration.style.less'],

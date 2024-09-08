@@ -44,6 +44,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
+    standalone: false,
     selector: 'tui-combo-box',
     templateUrl: './combo-box.template.html',
     styleUrls: ['./combo-box.style.less'],

@@ -18,6 +18,7 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
+    standalone: false,
     selector: 'tui-select-option',
     templateUrl: './select-option.template.html',
     styleUrls: ['./select-option.style.less'],

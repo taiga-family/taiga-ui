@@ -1,4 +1,4 @@
-import type {DebugElement, Type} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement, type Type} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -30,6 +30,7 @@ describe('InputDateTime', () => {
                 ></tui-input-date-time>
             </tui-root>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputDateTimeComponent)
@@ -359,6 +360,7 @@ describe('InputDateTime', () => {
                     ></tui-input-date-time>
                 </tui-root>
             `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TransformerTest extends Test {
             public override control = new FormControl<

@@ -13,6 +13,7 @@ import {AbstractTuiControl} from './control';
  * @deprecated: drop in v5.0
  */
 @Directive({
+    standalone: false,
     host: {
         '[id]': 'id',
     },

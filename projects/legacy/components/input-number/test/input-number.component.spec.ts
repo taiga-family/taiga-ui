@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -45,6 +45,7 @@ describe('InputNumber', () => {
                 ></tui-input-number>
             </ng-container>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputNumberComponent)

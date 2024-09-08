@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldAppearance]',
     providers: [
         tuiProvide(TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiTextfieldAppearanceDirective),

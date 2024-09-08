@@ -25,6 +25,7 @@ import {AbstractTuiInteractive} from './interactive';
  * Basic ControlValueAccessor class to build form components upon
  */
 @Directive({
+    standalone: false,
     host: {
         '[class._readonly]': 'readOnly',
         '[class._invalid]': 'computedInvalid',

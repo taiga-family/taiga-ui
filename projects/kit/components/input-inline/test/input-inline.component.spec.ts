@@ -1,4 +1,4 @@
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -20,6 +20,7 @@ describe('InputInline', () => {
                 />
             </tui-input-inline>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputInline, {static: true})

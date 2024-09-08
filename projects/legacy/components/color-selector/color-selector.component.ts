@@ -23,6 +23,7 @@ import {
 } from './color-selector.options';
 
 @Component({
+    standalone: false,
     selector: 'tui-color-selector',
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],

@@ -21,6 +21,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
  * @deprecated use {@link TuiInputPassword} instead
  */
 @Component({
+    standalone: false,
     selector: 'tui-input-password',
     templateUrl: './input-password.template.html',
     styleUrls: ['./input-password.style.less'],

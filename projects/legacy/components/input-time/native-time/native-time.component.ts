@@ -5,6 +5,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 import type {TuiInputTimeDirective} from '../input-time.directive';
 
 @Component({
+    standalone: false,
     selector: 'input[tuiTime]',
     template: `
         <datalist

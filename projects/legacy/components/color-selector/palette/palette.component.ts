@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'tui-palette',
     templateUrl: './palette.template.html',
     styleUrls: ['./palette.style.less'],
