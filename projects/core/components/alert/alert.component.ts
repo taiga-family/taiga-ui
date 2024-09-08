@@ -1,6 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
@@ -54,7 +55,9 @@ export class TuiAlertComponent<O, I> {
             : this.item.autoClose,
     )
         .pipe(
-            switchMap((autoClose) => (autoClose ? timer(autoClose) : EMPTY)),
+            switchMap((autoClose) =>
+                autoClose ? timer(autoClose, tuiZonefreeScheduler()) : EMPTY,
+            ),
             takeUntil(fromEvent(this.el, 'mouseenter')),
             repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
             takeUntilDestroyed(),
