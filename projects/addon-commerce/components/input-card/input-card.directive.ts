@@ -5,7 +5,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -43,7 +43,7 @@ export class TuiInputCard implements OnInit {
     public icon = this.options.icon;
 
     @Output()
-    public readonly binChange = timer(0).pipe(
+    public readonly binChange = timer(0, tuiZonefreeScheduler()).pipe(
         switchMap(() => tuiControlValue<string>(this.control)),
         map((value) => (value.length < 6 ? null : value.replace(' ', '').slice(0, 6))),
         startWith(null),
@@ -63,8 +63,7 @@ export class TuiInputCard implements OnInit {
 
     protected get backgroundImage(): string | null {
         const system = this.getPaymentSystem(this.control.value);
-        const icon = system && this.icons[system] && this.resolver(this.icons[system]);
-        const url = this.icon || icon;
+        const url = this.icon || this.getPaymentIcon(system);
 
         return url && this.icon !== '' ? `url(${url})` : null;
     }
@@ -72,5 +71,10 @@ export class TuiInputCard implements OnInit {
     @tuiPure
     private getPaymentSystem(value: string): TuiPaymentSystem | null {
         return this.options.paymentSystemHandler(value);
+    }
+
+    @tuiPure
+    private getPaymentIcon(system: TuiPaymentSystem | null): string | null {
+        return system && this.icons[system] && this.resolver(this.icons[system]);
     }
 }
