@@ -3,7 +3,7 @@ import {Directive, forwardRef, inject, Output} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
@@ -46,7 +46,7 @@ export class TuiInputFilesDirective
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
 
     @Output()
-    public readonly reject = timer(0).pipe(
+    public readonly reject = timer(0, tuiZonefreeScheduler()).pipe(
         switchMap(() => tuiControlValue(this.control.control)),
         map(() => tuiFilesRejected(this.control.control)),
         filter(({length}) => !!length),
