@@ -1,16 +1,15 @@
 import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    inject,
     Input,
     Output,
+    signal,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import {tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {TuiSizeXL} from '@taiga-ui/core/types';
 import type {Observable} from 'rxjs';
 import {map, merge, ReplaySubject, startWith, switchMap, tap, timer} from 'rxjs';
@@ -61,7 +60,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 export class TuiArcChart {
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
-    protected initialized = false;
+    protected initialized = signal(false);
 
     @Input()
     public value: readonly number[] = [];
@@ -95,11 +94,9 @@ export class TuiArcChart {
     );
 
     constructor() {
-        timer(0)
-            .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
-            .subscribe(() => {
-                this.initialized = true;
-            });
+        timer(0, tuiZonefreeScheduler())
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => this.initialized.set(true));
     }
 
     @ViewChildren('arc')
