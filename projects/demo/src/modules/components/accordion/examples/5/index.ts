@@ -5,10 +5,9 @@ import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-accordion-example-5',
     imports: [TuiAccordion],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiAccordionExample5 {}
+export default class Example {}

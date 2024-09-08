@@ -8,23 +8,9 @@ import {TUI_EXPAND_LOADED} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
-import {TuiAccordionExample1} from './examples/1';
-import {TuiAccordionExample2} from './examples/2';
-import {TuiAccordionExample3} from './examples/3';
-import {TuiAccordionExample4} from './examples/4';
-import {TuiAccordionExample5} from './examples/5';
-
 @Component({
     standalone: true,
-    imports: [
-        TuiAccordion,
-        TuiAccordionExample1,
-        TuiAccordionExample2,
-        TuiAccordionExample3,
-        TuiAccordionExample4,
-        TuiAccordionExample5,
-        TuiDemo,
-    ],
+    imports: [TuiAccordion, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -42,38 +28,6 @@ export default class Page {
     protected rounded = true;
     protected showArrow = true;
     protected disableHover = false;
-
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-    };
-
-    protected readonly example2 = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-    };
-
-    protected readonly example3 = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
-    };
-
-    protected readonly example4 = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-        LESS: import('./examples/4/index.less?raw'),
-    };
-
-    protected readonly example5 = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-    };
 
     protected readonly bordersVariants = ['all', 'top-bottom'] as const;
 

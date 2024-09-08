@@ -21,7 +21,6 @@ class Account {
 
 @Component({
     standalone: true,
-    selector: 'tui-accordion-example-2',
     imports: [
         AsyncPipe,
         NgIf,
@@ -39,7 +38,7 @@ class Account {
     encapsulation,
     changeDetection,
 })
-export class TuiAccordionExample2 {
+export default class Example {
     protected readonly accounts = [
         new Account('Rubles', 500),
         new Account('Dollar', 237),

@@ -5,10 +5,9 @@ import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-badge-example-2',
     imports: [TuiBadge],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiBadgeExample2 {}
+export default class Example {}
