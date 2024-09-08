@@ -22,6 +22,7 @@ import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
 
 @Component({
+    standalone: false,
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     templateUrl: './multi-select-group.template.html',
     styleUrls: ['./multi-select-group.style.less'],

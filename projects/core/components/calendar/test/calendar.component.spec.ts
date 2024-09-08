@@ -1,6 +1,6 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
@@ -35,6 +35,7 @@ describe('Calendar', () => {
                 initialView="year"
             />
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiCalendar, {static: true})

@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
@@ -28,6 +28,8 @@ describe('TuiPaginationComponent', () => {
                 [(index)]="index"
             ></tui-pagination>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @ViewChild(TuiPagination, {static: true})

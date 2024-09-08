@@ -6,6 +6,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiInputDateTimeComponent} from './input-date-time.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-input-date-time',
     providers: [tuiAsTextfieldHost(TuiInputDateTimeDirective)],
 })

@@ -32,6 +32,7 @@ export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
 
 @Component({
+    standalone: false,
     selector: 'tui-textarea',
     templateUrl: './textarea.template.html',
     styleUrls: ['./textarea.style.less'],

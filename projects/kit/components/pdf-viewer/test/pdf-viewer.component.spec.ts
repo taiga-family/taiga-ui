@@ -1,4 +1,4 @@
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -17,6 +17,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
         template: `
             <tui-root></tui-root>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
 

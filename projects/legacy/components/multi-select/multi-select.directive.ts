@@ -7,6 +7,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiMultiSelectComponent} from './multi-select.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-multi-select',
     providers: [tuiAsTextfieldHost(TuiMultiSelectDirective)],
 })

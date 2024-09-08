@@ -5,6 +5,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiComboBoxComponent} from './combo-box.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-combo-box',
     providers: [tuiAsTextfieldHost(TuiComboBoxDirective)],
 })

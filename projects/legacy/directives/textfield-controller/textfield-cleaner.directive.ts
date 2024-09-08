@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_CLEANER = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_CLEANER, TuiTextfieldCleanerDirective)],
 })

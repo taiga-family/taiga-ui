@@ -50,6 +50,7 @@ import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
 const DATE_TIME_SEPARATOR = ', ';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-date-time',
     templateUrl: './input-date-time.template.html',
     styleUrls: ['./input-date-time.style.less'],

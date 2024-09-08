@@ -1,4 +1,4 @@
-import type {TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, type TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -39,6 +39,7 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
             <ng-template #progressPercent>{{ percent }}%</ng-template>
         </tui-root>
     `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class Test {
     @ViewChild(TuiInputSliderComponent)

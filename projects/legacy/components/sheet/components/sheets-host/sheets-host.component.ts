@@ -17,6 +17,7 @@ import type {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
 
 @Component({
+    standalone: false,
     selector: 'tui-sheets-host',
     templateUrl: './sheets-host.template.html',
     styleUrls: ['./sheets-host.style.less'],

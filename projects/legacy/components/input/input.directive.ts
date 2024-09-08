@@ -5,6 +5,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiInputComponent} from './input.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-input',
     providers: [tuiAsTextfieldHost(TuiInputDirective)],
 })

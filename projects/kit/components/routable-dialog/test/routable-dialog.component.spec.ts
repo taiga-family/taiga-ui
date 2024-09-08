@@ -1,4 +1,4 @@
-import type {Provider} from '@angular/core';
+import {ChangeDetectionStrategy, type Provider} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed} from '@angular/core/testing';
@@ -24,7 +24,11 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
     };
 }
 
-@Component({standalone: true, template: ''})
+@Component({
+    standalone: true,
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
 class Dialog {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {

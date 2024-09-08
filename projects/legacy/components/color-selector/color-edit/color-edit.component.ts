@@ -11,6 +11,7 @@ import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk/utils/color';
 const HEX_MODE_LENGTH = 6;
 
 @Component({
+    standalone: false,
     selector: 'tui-color-edit',
     templateUrl: './color-edit.template.html',
     styleUrls: ['./color-edit.style.less'],

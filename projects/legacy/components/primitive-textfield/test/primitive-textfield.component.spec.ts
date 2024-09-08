@@ -1,6 +1,6 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {
@@ -43,6 +43,7 @@ describe('PrimitiveTextfield', () => {
                 />
             </tui-primitive-textfield>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         protected focused = false;

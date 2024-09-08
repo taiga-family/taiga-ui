@@ -8,6 +8,7 @@ export const TUI_SHEET_CLOSE = 'tui-sheet-close';
 export const TUI_SHEET_ID = 'tui-sheet-id';
 
 @Component({
+    standalone: false,
     selector: '[tuiSheetHeading]',
     templateUrl: './sheet-heading.template.html',
     styleUrls: ['./sheet-heading.style.less'],

@@ -6,6 +6,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiSelectComponent} from './select.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-select',
     providers: [tuiAsTextfieldHost(TuiSelectDirective)],
 })

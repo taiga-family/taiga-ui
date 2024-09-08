@@ -8,6 +8,7 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldCustomContent]',
     providers: [
         tuiProvide(TUI_TEXTFIELD_CUSTOM_CONTENT, TuiTextfieldCustomContentDirective),

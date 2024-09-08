@@ -23,6 +23,7 @@ import {TUI_TAG_OPTIONS} from './tag.options';
  * https://taiga-ui.dev/components/chip
  */
 @Component({
+    standalone: false,
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],

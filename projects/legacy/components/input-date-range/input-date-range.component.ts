@@ -56,6 +56,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
     styleUrls: ['./input-date-range.style.less'],

@@ -44,6 +44,7 @@ import type {TuiSelectOptions} from './select.options';
 import {TUI_SELECT_OPTIONS} from './select.options';
 
 @Component({
+    standalone: false,
     selector: 'tui-select',
     templateUrl: './select.template.html',
     styleUrls: ['./select.style.less'],

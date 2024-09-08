@@ -1,4 +1,4 @@
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -26,6 +26,7 @@ describe('InputPassword', () => {
                 [tuiTextfieldSize]="size"
             ></tui-input-password>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputPasswordComponent, {static: true})

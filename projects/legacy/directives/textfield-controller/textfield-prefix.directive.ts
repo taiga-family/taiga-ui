@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_PREFIX = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldPrefix]',
     providers: [tuiProvide(TUI_TEXTFIELD_PREFIX, TuiTextfieldPrefixDirective)],
 })

@@ -7,6 +7,7 @@ import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 import type {TuiSelectDirective} from '../select.directive';
 
 @Component({
+    standalone: false,
     selector: 'select[tuiSelect][labels]:not([multiple])',
     templateUrl: './native-select-group.template.html',
     styleUrls: ['./native-select.style.less'],

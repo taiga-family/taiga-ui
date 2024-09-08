@@ -5,6 +5,7 @@ import {tuiAsDataList} from '@taiga-ui/core/components/data-list';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select';
 
 @Component({
+    standalone: false,
     selector: 'select[multiple][tuiSelect][labels]',
     templateUrl: './native-multi-select-group.template.html',
     styleUrls: ['./native-multi-select.style.less'],

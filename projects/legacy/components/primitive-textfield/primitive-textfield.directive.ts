@@ -9,6 +9,7 @@ import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
  * https://taiga-ui.dev/components/textfield
  */
 @Directive({
+    standalone: false,
     selector: 'tui-primitive-textfield',
     providers: [tuiAsTextfieldHost(TuiPrimitiveTextfieldDirective)],
 })

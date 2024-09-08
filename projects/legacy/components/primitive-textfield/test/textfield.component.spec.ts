@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy';
@@ -25,6 +25,7 @@ describe('Textfield', () => {
                 [id]="value"
             />
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild('auto', {read: ElementRef})

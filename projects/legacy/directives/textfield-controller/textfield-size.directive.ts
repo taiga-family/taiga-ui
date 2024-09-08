@@ -8,6 +8,7 @@ export const TUI_TEXTFIELD_SIZE = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldSize]',
     providers: [tuiProvide(TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective)],
 })

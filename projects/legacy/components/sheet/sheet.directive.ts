@@ -12,6 +12,7 @@ import type {TuiSheetOptions} from './sheet-options';
  * https://taiga-ui.dev/components/sheet-dialog
  */
 @Directive({
+    standalone: false,
     selector: 'ng-template[tuiSheet]',
 })
 export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {

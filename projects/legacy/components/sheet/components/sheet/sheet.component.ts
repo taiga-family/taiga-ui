@@ -25,6 +25,7 @@ import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
 @Component({
+    standalone: false,
     selector: 'tui-sheet',
     templateUrl: './sheet.template.html',
     styleUrls: ['./sheet.style.less'],

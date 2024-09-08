@@ -14,6 +14,7 @@ import {
 import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Directive({
+    standalone: false,
     selector: '[tuiSheetStop]',
 })
 export class TuiSheetStopDirective {

@@ -5,6 +5,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 import type {TuiInputCopyComponent} from './input-copy.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-input-copy',
     providers: [tuiAsTextfieldHost(TuiInputCopyDirective)],
 })

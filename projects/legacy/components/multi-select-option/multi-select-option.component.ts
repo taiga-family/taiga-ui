@@ -4,6 +4,7 @@ import type {TuiSizeS} from '@taiga-ui/core/types';
 import {TuiSelectOptionComponent} from '@taiga-ui/legacy/components/select-option';
 
 @Component({
+    standalone: false,
     selector: 'tui-multi-select-option',
     templateUrl: './multi-select-option.template.html',
     styleUrls: ['./multi-select-option.style.less'],

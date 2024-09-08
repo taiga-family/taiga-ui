@@ -1,4 +1,4 @@
-import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
 import {Component, Input} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
@@ -24,6 +24,8 @@ describe('Highlight Directive', () => {
         template: `
             <code [highlight]="code || ''"></code>
         `,
+        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+        changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         @Input()

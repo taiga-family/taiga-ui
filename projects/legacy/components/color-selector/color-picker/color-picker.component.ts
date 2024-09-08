@@ -14,6 +14,7 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 @Component({
+    standalone: false,
     selector: 'tui-color-picker',
     templateUrl: './color-picker.template.html',
     styleUrls: ['./color-picker.style.less'],

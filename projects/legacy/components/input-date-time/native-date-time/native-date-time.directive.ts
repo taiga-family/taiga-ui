@@ -5,6 +5,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 import type {TuiInputDateTimeDirective} from '../input-date-time.directive';
 
 @Directive({
+    standalone: false,
     selector: 'input[tuiDateTime]',
     host: {
         type: 'datetime-local',

@@ -1,4 +1,4 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -23,6 +23,7 @@ describe('InputCardGroup', () => {
                 <tui-icon icon="@tui.visa" />
             </ng-template>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputCardGroup, {static: true})

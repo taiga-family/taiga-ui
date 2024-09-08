@@ -17,6 +17,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiMultiSelectGroup]',
     providers: [
         tuiAsOptionContent(TUI_MULTI_SELECT_OPTION),

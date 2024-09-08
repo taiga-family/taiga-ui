@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiHighlight} from '@taiga-ui/kit';
@@ -28,6 +28,7 @@ describe('TuiHighlight directive', () => {
                 aaabbb
             </div>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
 

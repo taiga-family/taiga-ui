@@ -7,6 +7,7 @@ export const TUI_TEXTFIELD_LABEL_OUTSIDE = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldLabelOutside]',
     providers: [
         tuiProvide(TUI_TEXTFIELD_LABEL_OUTSIDE, TuiTextfieldLabelOutsideDirective),

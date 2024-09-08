@@ -13,6 +13,7 @@ import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/h
  * https://taiga-ui.dev/components/tooltip
  */
 @Component({
+    standalone: false,
     selector: 'tui-tooltip',
     templateUrl: './tooltip.template.html',
     styleUrls: ['./tooltip.style.less'],

@@ -31,6 +31,7 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
+    standalone: false,
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
     styleUrls: ['./input-slider.style.less'],

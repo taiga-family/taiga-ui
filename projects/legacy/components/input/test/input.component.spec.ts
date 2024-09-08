@@ -1,12 +1,12 @@
 import type {DebugElement, ElementRef} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiDataListDirective, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -77,6 +77,7 @@ describe('Input', () => {
                 </form>
             </tui-root>
         `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @ViewChild(TuiInputComponent, {static: true})

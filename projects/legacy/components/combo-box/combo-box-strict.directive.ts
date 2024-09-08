@@ -3,6 +3,7 @@ import {Directive, inject, Input} from '@angular/core';
 import {TuiComboBoxComponent} from './combo-box.component';
 
 @Directive({
+    standalone: false,
     selector: 'tui-combo-box[strict]',
     host: {
         '(input)': 'onInput()',

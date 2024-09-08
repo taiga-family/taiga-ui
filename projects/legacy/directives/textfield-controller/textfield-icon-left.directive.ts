@@ -10,6 +10,7 @@ export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(
 );
 
 @Directive({
+    standalone: false,
     selector: '[tuiTextfieldIconLeft]',
     providers: [tuiProvide(TUI_TEXTFIELD_ICON_LEFT, TuiTextfieldIconLeftDirective)],
 })
