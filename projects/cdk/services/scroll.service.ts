@@ -1,6 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, NgZone} from '@angular/core';
 import {WA_ANIMATION_FRAME, WA_PERFORMANCE} from '@ng-web-apis/common';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
@@ -26,6 +27,7 @@ function getY(elementOrWindow: Element | Window): number {
 export class TuiScrollService {
     private readonly performanceRef = inject(WA_PERFORMANCE);
     private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
+    private readonly zone = inject(NgZone);
 
     public scroll$(
         elementOrWindow: Element | Window,
@@ -52,7 +54,7 @@ export class TuiScrollService {
                       initialTop + deltaTop * percent,
                       initialLeft + deltaLeft * percent,
                   ]),
-                  takeUntil(timer(duration)),
+                  takeUntil(timer(duration, tuiZonefreeScheduler(this.zone))),
                   endWith<[number, number]>([scrollTop, scrollLeft]),
               );
 
