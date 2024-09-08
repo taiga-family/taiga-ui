@@ -20,7 +20,7 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
     public setFocus(): void {
         if (this.isTextFieldElement) {
             race(
-                timer(TIMEOUT),
+                timer(TIMEOUT, tuiZonefreeScheduler(this.zone)),
                 this.animationFrame$.pipe(
                     throttleTime(100, tuiZonefreeScheduler(this.zone)),
                     map(() => this.element.closest(NG_ANIMATION_SELECTOR)),
