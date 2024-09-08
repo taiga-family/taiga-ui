@@ -1,7 +1,11 @@
 import {DestroyRef, Directive, inject, Input, NgZone} from '@angular/core';
 import type {AbstractControl, Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
-import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {
+    tuiTakeUntilDestroyed,
+    tuiZonefree,
+    tuiZonefreeScheduler,
+} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
 import {timer} from 'rxjs';
 
@@ -25,7 +29,7 @@ export class TuiNativeValidator implements Validator {
     public validate(control: AbstractControl): null {
         this.control = control;
 
-        timer(0)
+        timer(0, tuiZonefreeScheduler(this.zone))
             .pipe(tuiZonefree(this.zone), tuiTakeUntilDestroyed(this.destroyRef))
             .subscribe(() => this.handleValidation());
 
