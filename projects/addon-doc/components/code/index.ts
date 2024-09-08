@@ -14,6 +14,7 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {Highlight} from 'ngx-highlightjs';
@@ -46,7 +47,7 @@ export class TuiDocCode {
     protected readonly icon = toSignal(
         this.copy$.pipe(
             switchMap(() =>
-                timer(2000).pipe(
+                timer(2000, tuiZonefreeScheduler()).pipe(
                     map(() => this.icons.copy),
                     startWith(this.icons.check),
                 ),
