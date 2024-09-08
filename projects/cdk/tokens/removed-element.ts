@@ -1,5 +1,6 @@
 import {ɵAnimationEngine as AnimationEngine} from '@angular/animations/browser';
 import {inject} from '@angular/core';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 import {BehaviorSubject, map, share, startWith, switchMap, timer} from 'rxjs';
 
@@ -19,7 +20,7 @@ export const TUI_REMOVED_ELEMENT = tuiCreateTokenFromFactory(() => {
 
     return element$.pipe(
         switchMap((element) =>
-            timer(0).pipe(
+            timer(0, tuiZonefreeScheduler()).pipe(
                 map(() => null),
                 startWith(element),
             ),
