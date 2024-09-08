@@ -33,7 +33,7 @@ export default class Page {
         'Concurrency limit',
     ];
 
-    protected readonly method = import('./method.md?raw');
+    protected readonly method = import('./examples/import/method.md?raw');
 
     protected readonly exampleServiceUsage = import(
         './examples/import/service-usage.md?raw'

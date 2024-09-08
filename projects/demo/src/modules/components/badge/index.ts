@@ -2,44 +2,16 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
-import {TuiBadgeExample1} from './examples/1';
-import {TuiBadgeExample2} from './examples/2';
-import {TuiBadgeExample3} from './examples/3';
-import {TuiBadgeExample4} from './examples/4';
-import {TuiBadgeExample5} from './examples/5';
-import {TuiBadgeExample6} from './examples/6';
-
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        TuiBadge,
-        TuiBadgeExample1,
-        TuiBadgeExample2,
-        TuiBadgeExample3,
-        TuiBadgeExample4,
-        TuiBadgeExample5,
-        TuiBadgeExample6,
-        TuiDemo,
-        TuiFade,
-        TuiRadioList,
-    ],
+    imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    protected readonly exampleModule: TuiRawLoaderContent = import(
-        './examples/import/import-module.md?raw'
-    );
-
-    protected readonly exampleHtml: TuiRawLoaderContent = import(
-        './examples/import/insert-template.md?raw'
-    );
-
     protected readonly appearanceVariants = [
         '',
         'accent',
