@@ -114,15 +114,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public ngOnChanges(): void {
-        this.defaultViewedMonth =
-            (this.items.length ? this.value?.to : this.value?.from) ||
-            this.defaultViewedMonth;
+        this.initDefaultViewedMonth();
     }
 
     public ngOnInit(): void {
-        if (!this.value) {
-            this.updateDefaultViewedMonth();
-        }
+        this.initDefaultViewedMonth();
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
@@ -253,12 +249,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         };
     }
 
-    private updateDefaultViewedMonth(): void {
-        if (this.max && this.defaultViewedMonth.monthSameOrAfter(this.max)) {
+    private initDefaultViewedMonth(): void {
+        if (this.value) {
+            this.defaultViewedMonth = this.items.length ? this.value.to : this.value.from;
+        } else if (this.max && this.defaultViewedMonth.monthSameOrAfter(this.max)) {
             this.defaultViewedMonth = this.max.append({month: -1});
-        }
-
-        if (this.min && this.defaultViewedMonth.monthSameOrBefore(this.min)) {
+        } else if (this.min && this.defaultViewedMonth.monthSameOrBefore(this.min)) {
             this.defaultViewedMonth = this.min;
         }
     }
