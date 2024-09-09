@@ -17,6 +17,7 @@
             *ngFor="let image of images"
             #img
             alt=""
+            decoding="async"
             class="image"
             [src]="image"
             (waIntersectionObservee)="$event[0] && onIntersection($event[0], img)"

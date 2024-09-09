@@ -54,6 +54,7 @@
             >
                 <img
                     alt=""
+                    decoding="async"
                     class="t-flag"
                     [src]="item | tuiFlag"
                 />
@@ -69,6 +70,7 @@
 
     <ng-template #countryValueContent>
         <img
+            decoding="async"
             class="t-flag t-flag_select"
             [alt]="countriesNames[countryIsoCode]"
             [src]="countryIsoCode | tuiFlag"
