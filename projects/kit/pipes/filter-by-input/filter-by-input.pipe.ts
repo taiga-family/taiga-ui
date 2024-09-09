@@ -7,13 +7,6 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-type TuiArrayElement<A> =
-    A extends ReadonlyArray<infer T>
-        ? A extends ReadonlyArray<ReadonlyArray<infer G>>
-            ? G
-            : T
-        : never;
-
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
     standalone: true,
@@ -26,7 +19,6 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly host = inject(TUI_DATA_LIST_HOST);
 
     public transform<T>(items: readonly T[], matcher?: TuiStringMatcher<T>): readonly T[];
-    public transform<T>(items: T, matcher?: TuiStringMatcher<TuiArrayElement<T>>): T;
     public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,

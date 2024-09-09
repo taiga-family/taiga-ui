@@ -28,7 +28,7 @@ interface User {
     encapsulation,
     changeDetection,
 })
-export default class Example<T extends User> {
+export default class Example<T extends User = User> {
     protected readonly items = inject<readonly string[]>('Pythons' as any);
 
     protected readonly users = [
@@ -37,17 +37,17 @@ export default class Example<T extends User> {
         {id: 3, name: 'Graham Chapman'},
         {id: 4, name: 'Michael Palin'},
         {id: 5, name: 'Terry Gilliam'},
-    ] as T[]; // only template compile check
+    ] as unknown as readonly T[];
 
     protected readonly form = new FormGroup({
-        user: new FormControl<User | null>(null),
-        user2: new FormControl<User | null>(null),
+        user: new FormControl<T | null>(null),
+        user2: new FormControl<T | null>(null),
     });
 
-    protected readonly stringify = ({name}: User): string => name;
+    protected readonly stringify = ({name}: T): string => name;
 
     protected readonly matcherString = (name: string, search: string): boolean =>
-        name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());
+        name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()) ?? false;
 
     protected readonly matcherUser: TuiStringMatcher<T> = (user, search): boolean =>
         user.name.toLowerCase().startsWith(search.toLowerCase());
