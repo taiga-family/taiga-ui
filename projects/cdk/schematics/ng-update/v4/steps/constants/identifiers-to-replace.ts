@@ -362,6 +362,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiPrimitiveTextfieldModule', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TuiPrimitiveTextfieldComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiPrimitiveTextfieldComponent', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiOptionComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiOption', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiTextfieldControllerModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiTextfieldControllerModule', moduleSpecifier: '@taiga-ui/legacy'},
     },
