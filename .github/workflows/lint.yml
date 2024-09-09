@@ -17,12 +17,12 @@ jobs:
       - run: npm run cspell -- --no-progress
       - run: |
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
-              npm run prettier -- --write
               npm run stylelint -- --fix
+              npm run prettier -- --write
               npm run lint -- --fix
           else
-              npm run prettier -- --check
               npm run stylelint
+              npm run prettier -- --check
               npm run lint
           fi
       - uses: taiga-family/ci/actions/auto/push@v1.71.2
