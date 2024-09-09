@@ -10,6 +10,7 @@ import {
     NgZone,
     Output,
     Renderer2,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -65,6 +66,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     ],
     host: {
         '(transitionend)': 'updateView()',
+        '[class._initialized]': 'initialized()',
     },
 })
 export class TuiLineClamp implements DoCheck, AfterViewInit {
@@ -78,7 +80,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     private readonly zone: NgZone = inject(NgZone);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
-    private initialized = false;
+    protected initialized = signal(false);
 
     protected lineClamp$ = this.linesLimit$.pipe(
         startWith(1),
@@ -118,7 +120,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        this.initialized = true;
+        this.initialized.set(true);
     }
 
     protected get overflown(): boolean {
@@ -144,10 +146,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     private skipInitialTransition(): void {
         timer(0)
             .pipe(tuiZonefree(this.zone))
-            .subscribe(() => {
-                this.renderer.addClass(this.el, '_initialized');
-                this.cd.detectChanges();
-            });
+            .subscribe(() => this.initialized.set(true));
     }
 
     private update(): void {
@@ -159,7 +158,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             );
         }
 
-        if (this.initialized) {
+        if (this.initialized()) {
             this.renderer.setStyle(
                 this.el,
                 'max-height',
