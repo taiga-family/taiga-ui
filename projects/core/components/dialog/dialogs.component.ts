@@ -1,12 +1,12 @@
-import {CommonModule} from '@angular/common';
+import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHost} from '@taiga-ui/core/animations';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
 
 import {TUI_DIALOGS} from './dialog.tokens';
 
@@ -14,7 +14,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     standalone: true,
     selector: 'tui-dialogs',
     imports: [
-        CommonModule,
+        NgForOf,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiFocusTrap,
@@ -33,6 +33,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
 })
 export class TuiDialogs {
     protected readonly el = tuiInjectElement();
-    protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> =
-        inject(TUI_DIALOGS);
+    protected readonly dialogs = toSignal(inject(TUI_DIALOGS), {
+        initialValue: [] as ReadonlyArray<TuiPopover<any, any>>,
+    });
 }
