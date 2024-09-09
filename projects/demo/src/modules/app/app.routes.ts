@@ -617,6 +617,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Tabs,
         loadComponent: async () => import('../components/tabs'),
+        loadChildren: async () => import('../components/tabs/routes'),
         title: 'Tabs',
     }),
     route({

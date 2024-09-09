@@ -155,4 +155,10 @@
     </ng-template>
 
     <tui-setup *pageTab />
+
+    <ng-template pageTab="Routing">
+        <tui-doc-example [content]="8 | tuiExample: 'html,ts'">
+            <router-outlet />
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>
