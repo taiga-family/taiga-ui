@@ -34,6 +34,11 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
         HTML: import('./examples/2/index.html?raw'),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+    };
+
     override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     override size: TuiSizeL = this.sizeVariants[0];
