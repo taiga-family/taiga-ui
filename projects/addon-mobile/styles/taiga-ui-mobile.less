@@ -13,6 +13,14 @@
     @import './ios/checkbox';
     @import './ios/search';
     @import './ios/switch';
+
+    tui-segmented > *:not(tui-segmented_active):active {
+        background-color: var(--tui-background-neutral-1);
+    }
+
+    tui-segmented > .tui-segmented_active:active {
+        opacity: var(--tui-disabled-opacity);
+    }
 }
 
 [data-platform='android'],
@@ -23,4 +31,5 @@
     @import './common/button';
     @import './common/title';
     @import './common/card-large';
+    @import './common/segmented';
 }

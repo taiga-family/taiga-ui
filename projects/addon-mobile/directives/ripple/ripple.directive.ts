@@ -16,7 +16,6 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {first, merge, race, switchMap, tap} from 'rxjs';
 
-const DEFAULT_SELECTOR = ':scope';
 const TO_KEYFRAMES = [
     {
         transform: 'scale(0)',
@@ -35,10 +34,6 @@ const FROM_KEYFRAMES = [
     },
 ];
 
-function selectorScopeFallback(value: string): string {
-    return value === '' ? DEFAULT_SELECTOR : value;
-}
-
 @Component({
     standalone: true,
     template: '',
@@ -55,7 +50,8 @@ class TuiRippleStyles {}
     standalone: true,
     selector: '[tuiRipple]',
     host: {
-        '(pointerdown.silent)': 'start($event.clientX, $event.clientY, $event.target)',
+        '(pointerdown.silent)':
+            'start($event.clientX, $event.clientY, $event.target, $event.currentTarget)',
     },
 })
 export class TuiRipple {
@@ -67,14 +63,11 @@ export class TuiRipple {
 
     protected readonly nothing = tuiWithStyles(TuiRippleStyles);
 
-    @Input({
-        alias: 'tuiRipple',
-        transform: selectorScopeFallback,
-    })
-    public selector = DEFAULT_SELECTOR;
+    @Input()
+    public tuiRipple: string | '' = '';
 
-    protected start(x: number, y: number, target: HTMLElement): void {
-        const element = target.closest(this.selector);
+    protected start(x: number, y: number, target: HTMLElement, el: HTMLElement): void {
+        const element = this.tuiRipple ? target.closest(this.tuiRipple) : el;
 
         if (!tuiIsHTMLElement(element)) {
             return;

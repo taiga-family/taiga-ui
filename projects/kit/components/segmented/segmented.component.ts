@@ -61,23 +61,27 @@ export class TuiSegmented implements OnChanges {
         this.refresh();
     }
 
-    private get left(): number {
-        const element = this.activeElement;
-
-        return tuiIsHTMLElement(element) ? element.offsetLeft : 0;
-    }
-
-    private get width(): number {
-        return this.activeElement?.clientWidth || 0;
-    }
-
     private get activeElement(): Element | null {
         return this.el.children.item(this.activeItemIndex);
     }
 
-    // TODO: Switch to HostBinding signals in Angular 17+
     private refresh(): void {
-        this.el.style.setProperty('--t-left', tuiPx(this.left));
-        this.el.style.setProperty('--t-width', tuiPx(this.width));
+        const el = this.activeElement;
+
+        if (!tuiIsHTMLElement(el)) {
+            return;
+        }
+
+        Array.from(this.el.children).forEach((e) =>
+            e.classList.remove('tui-segmented_active'),
+        );
+
+        el.classList.add('tui-segmented_active');
+
+        const {offsetWidth = 0, offsetLeft = 0, offsetTop = 0} = el;
+
+        this.el.style.setProperty('--t-top', tuiPx(offsetTop));
+        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }
