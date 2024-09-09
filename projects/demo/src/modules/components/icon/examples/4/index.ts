@@ -3,8 +3,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCode} from '@taiga-ui/addon-doc';
 import {TuiIcon, tuiIconsProvider} from '@taiga-ui/core';
-// Note: depends on your method of importing static assets
-// https://github.com/tc39/proposal-import-attributes
 import heart from '@taiga-ui/icons/src/heart.svg?raw';
 import search from '@taiga-ui/icons/src/search.svg?raw';
 
@@ -22,6 +20,4 @@ import search from '@taiga-ui/icons/src/search.svg?raw';
         }),
     ],
 })
-export default class Example {
-    protected readonly server = import('./server.md?raw');
-}
+export default class Example {}
