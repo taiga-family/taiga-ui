@@ -1,6 +1,7 @@
 <tui-scrollbar>
     <tui-pull-to-refresh (pulled)="onPull()">
         <cdk-virtual-scroll-viewport
+            appendOnly
             itemSize="50"
             tuiScrollable
             class="example-viewport tui-zero-scrollbar"
