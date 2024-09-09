@@ -38,9 +38,12 @@ label[tuiInputFiles] {
 }
 
 [tuiAppearance][data-appearance='file'] {
+    .transition(background);
+
     border-radius: inherit;
     box-sizing: border-box;
     border: 1px dashed var(--tui-text-action);
+    outline: none;
 
     tui-root._mobile & {
         border-style: solid;
@@ -68,4 +71,8 @@ label[tuiInputFiles] {
     .appearance-focus({
         border: 0.125rem solid var(--tui-border-focus);
     });
+
+    &:invalid {
+        border-color: var(--tui-status-negative) !important;
+    }
 }

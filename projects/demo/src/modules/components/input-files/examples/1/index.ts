@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiFileLike} from '@taiga-ui/kit';
@@ -16,7 +16,11 @@ import {finalize, map, of, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl<TuiFileLike | null>(null);
+    protected readonly control = new FormControl<TuiFileLike | null>(
+        null,
+        Validators.required,
+    );
+
     protected readonly failedFiles$ = new Subject<TuiFileLike | null>();
     protected readonly loadingFiles$ = new Subject<TuiFileLike | null>();
     protected readonly loadedFiles$ = this.control.valueChanges.pipe(
