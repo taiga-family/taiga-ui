@@ -316,13 +316,12 @@ export class TuiInputTimeComponent
     }
 
     private findNearestTimeFromItems(value: TuiTime): TuiTime | null {
-        return this.items.reduce(
-            (previous, current) =>
-                Math.abs(current.valueOf() - value.valueOf()) <
-                Math.abs(previous.valueOf() - value.valueOf())
-                    ? current
-                    : previous,
-            new TuiTime(0, 0),
+        // eslint-disable-next-line no-restricted-syntax
+        return this.items.reduce((previous, current) =>
+            Math.abs(current.valueOf() - value.valueOf()) <
+            Math.abs(previous.valueOf() - value.valueOf())
+                ? current
+                : previous,
         );
     }
 
