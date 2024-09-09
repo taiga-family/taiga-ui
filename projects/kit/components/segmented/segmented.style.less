@@ -3,9 +3,7 @@
 tui-segmented {
     position: relative;
     display: flex;
-    box-sizing: border-box;
-    isolation: isolate;
-    color: var(--tui-background-elevation-3);
+    color: var(--tui-background-base);
     background: var(--tui-background-neutral-1);
     overflow: hidden;
 
@@ -135,4 +133,9 @@ tui-segmented {
         box-sizing: border-box;
         filter: drop-shadow(0 0.25rem 1.25rem rgb(0 0 0 / 10%));
     }
+}
+
+[tuiTheme='dark'] tui-segmented,
+tui-segmented[tuiTheme='dark'] {
+    --tui-background-base: var(--tui-background-neutral-1-hover);
 }
