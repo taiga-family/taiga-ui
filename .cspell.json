@@ -8,6 +8,7 @@
         "CHANGELOG.md",
         ".cspell.json",
         ".github/CODEOWNERS",
+        "**/*.less",
         "**/dist/**",
         "**/cspell/**",
         "**/assets/**",
