@@ -6,7 +6,7 @@
     [max]="max | tuiMapper: capsMapper : value : maxLength : false"
     [maxViewedMonth]="items.length ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
     [min]="min | tuiMapper: capsMapper : value : maxLength : true"
-    [month]="computedMonth"
+    [month]="defaultViewedMonth"
     [showAdjacent]="!!items.length"
     [value]="value"
     [(hoveredItem)]="hoveredItem"
