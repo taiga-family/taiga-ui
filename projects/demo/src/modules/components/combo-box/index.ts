@@ -96,7 +96,7 @@ export default class Example extends AbstractExampleTuiControl {
 
     protected readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         String,
-        (item) => String(String(item).match(/\d+/)),
+        (item) => String(/\d+/.exec(String(item))),
     ];
 
     protected stringify = this.stringifyVariants[0]!;

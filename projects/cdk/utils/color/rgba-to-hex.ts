@@ -4,7 +4,7 @@ export function tuiRgbaToHex(color: string): string {
     }
 
     const rgb =
-        color.replaceAll(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i) ??
+        /^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i.exec(color.replaceAll(/\s/g, '')) ??
         null;
 
     let alpha: number | string = (rgb?.[4] ?? '').toString().trim();

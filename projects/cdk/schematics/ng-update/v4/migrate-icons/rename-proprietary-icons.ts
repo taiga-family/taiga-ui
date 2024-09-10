@@ -18,7 +18,7 @@ export function renameProprietaryIcons(
         const invalidIcons = new Set();
 
         text = text.replaceAll(regex, (icon) => {
-            if (icon.match(/['"`]tuiIcon(?!Tds)\w*/)) {
+            if (/['"`]tuiIcon(?!Tds)\w*/.exec(icon)) {
                 logger.warn(
                     `[WARNING] in ${file.getSourceFile().getFilePath()}: Invalid icon name ${icon}. Please select an icon from the proprietary pack.`,
                 );
