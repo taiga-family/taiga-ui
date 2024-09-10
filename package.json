@@ -82,7 +82,6 @@
         "rules": {
             "@typescript-eslint/no-import-type-side-effects": "off",
             "@typescript-eslint/prefer-regexp-exec": "off",
-            "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",
             "jest/prefer-importing-jest-globals": "off",
             "sonarjs/arguments-order": "off",
             "sonarjs/concise-regex": "off",
