@@ -89,7 +89,6 @@
             "sonarjs/no-unused-expressions": "off",
             "sonarjs/prefer-nullish-coalescing": "off",
             "sonarjs/redundant-type-aliases": "off",
-            "sonarjs/single-character-alternation": "off",
             "unicorn/consistent-destructuring": "off"
         },
         "overrides": [
