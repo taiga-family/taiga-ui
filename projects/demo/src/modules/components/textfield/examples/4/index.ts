@@ -7,7 +7,7 @@ import {TuiCopy, TuiPassword} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiTextfield, TuiIcon, TuiCopy, TuiPassword],
+    imports: [FormsModule, TuiCopy, TuiIcon, TuiPassword, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

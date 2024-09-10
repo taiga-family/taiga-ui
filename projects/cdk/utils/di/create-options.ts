@@ -1,5 +1,5 @@
 import type {InjectionToken, Provider} from '@angular/core';
-import {type TuiHandler} from '@taiga-ui/cdk/types';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export function tuiCreateOptions<T>(
