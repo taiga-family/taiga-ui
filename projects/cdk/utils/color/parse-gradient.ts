@@ -64,7 +64,7 @@ function getPosition(match: string, stops: number): string {
 export function tuiParseGradient(input: string): TuiParsedGradient {
     const stopsRegexp = new RegExp(REGEXP_ARRAY.join(''), 'gi');
     const stopsString =
-        input.startsWith('to') || input.match(/^\d/)
+        input.startsWith('to') || /^\d/.exec(input)
             ? input.slice(Math.max(0, input.indexOf(',') + 1)).trim()
             : input;
 
