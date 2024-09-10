@@ -16,13 +16,15 @@ export function removeModules(
     options: TuiSchema,
     modules: readonly RemovedModule[],
 ): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing modules...`);
+    }
 
     modules.forEach(({name, moduleSpecifier}) => removeModule(name, moduleSpecifier));
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} modules removed \n`);
+    }
 }
 
 export function removeModule(name: string, moduleSpecifier: string): void {

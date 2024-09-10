@@ -13,7 +13,9 @@ export default class Example {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;
 
-        ngDevMode && console.assert(isFriday, 'Today is not a friday');
+        if (ngDevMode) {
+            console.assert(isFriday, 'Today is not a friday');
+        }
 
         return isFriday
             ? 'Nothing in console'

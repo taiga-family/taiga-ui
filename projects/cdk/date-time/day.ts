@@ -20,7 +20,10 @@ export class TuiDay extends TuiMonth {
         public readonly day: number,
     ) {
         super(year, month);
-        ngDevMode && console.assert(TuiDay.isValidDay(year, month, day));
+
+        if (ngDevMode) {
+            console.assert(TuiDay.isValidDay(year, month, day));
+        }
     }
 
     /**
@@ -112,11 +115,12 @@ export class TuiDay extends TuiMonth {
         date: string,
         dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 date.length === DATE_FILLER_LENGTH,
                 '[parseRawDateString]: wrong date string length',
             );
+        }
 
         switch (dateMode) {
             case 'MDY':
@@ -182,7 +186,9 @@ export class TuiDay extends TuiMonth {
     }
 
     public static normalizeDayPart(day: number, month: number, year: number): number {
-        ngDevMode && console.assert(TuiMonth.isValidMonth(year, month));
+        if (ngDevMode) {
+            console.assert(TuiMonth.isValidMonth(year, month));
+        }
 
         const monthDaysCount = TuiMonth.getMonthDaysCount(
             month,
@@ -332,11 +338,12 @@ export class TuiDay extends TuiMonth {
      * Returns formatted whole date
      */
     public getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 separator.length === 1,
                 'Separator should consist of only 1 symbol',
             );
+        }
 
         const dd = this.formattedDayPart;
         const mm = this.formattedMonthPart;

@@ -19,8 +19,9 @@ export function migrateIcons(options: TuiSchema): Rule {
         (tree: Tree, context: SchematicContext) => {
             const fileSystem = getFileSystem(tree);
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing icons...`);
+            }
 
             if (hasProprietaryIcons(tree)) {
                 renameProprietaryIcons(context);
@@ -31,8 +32,9 @@ export function migrateIcons(options: TuiSchema): Rule {
             fileSystem.commitEdits();
             saveActiveProject();
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 titleLog(`${FINISH_SYMBOL} Icons successfully migrated \n`);
+            }
         },
     ]);
 }

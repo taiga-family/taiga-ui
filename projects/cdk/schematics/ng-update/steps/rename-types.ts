@@ -80,11 +80,13 @@ function addGeneric(typeName: string, generics: TypeNode[]): string {
 }
 
 export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
+    }
 
     types.forEach(renameType);
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
+    }
 }

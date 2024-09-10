@@ -29,7 +29,9 @@ const dest =
         fs.mkdirSync(path.dirname(filePath), {recursive: true});
         fs.writeFileSync(filePath, content);
 
-        verbose && console.info('copied:', filePath);
+        if (verbose) {
+            console.info('copied:', filePath);
+        }
     });
 });
 
@@ -44,7 +46,9 @@ fs.readdirSync(flagsDir).forEach((filename: string) => {
     fs.mkdirSync(path.dirname(filePath), {recursive: true});
     fs.writeFileSync(filePath, content);
 
-    verbose && console.info('copied:', filePath);
+    if (verbose) {
+        console.info('copied:', filePath);
+    }
 });
 
 // 3. copy payment icons
@@ -56,5 +60,7 @@ PAYMENTS_ICONS.forEach((filename) => {
         fs.readFileSync(path.join(filePath), 'utf-8'),
     );
 
-    verbose && console.info('copied:', filePath);
+    if (verbose) {
+        console.info('copied:', filePath);
+    }
 });

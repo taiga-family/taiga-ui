@@ -5,10 +5,12 @@ export function tuiInRange(
     fromInclude: number,
     toExclude: number,
 ): boolean {
-    ngDevMode && console.assert(!Number.isNaN(value));
-    ngDevMode && console.assert(!Number.isNaN(fromInclude));
-    ngDevMode && console.assert(!Number.isNaN(toExclude));
-    ngDevMode && console.assert(fromInclude < toExclude);
+    if (ngDevMode) {
+        console.assert(!Number.isNaN(value));
+        console.assert(!Number.isNaN(fromInclude));
+        console.assert(!Number.isNaN(toExclude));
+        console.assert(fromInclude < toExclude);
+    }
 
     return value >= fromInclude && value < toExclude;
 }

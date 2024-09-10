@@ -12,10 +12,11 @@ import {
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 export function migrateAllCountryIsoCodes(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating Object.values(TuiCountryIsoCode)...`,
         );
+    }
 
     const references = getNamedImportReferences('TuiCountryIsoCode', '@taiga-ui/i18n');
 
@@ -38,5 +39,7 @@ export function migrateAllCountryIsoCodes(options: TuiSchema): void {
         }
     });
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }

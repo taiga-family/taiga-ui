@@ -18,16 +18,18 @@ export function migrateCssVars(options: TuiSchema): Rule {
         (tree: Tree, _: SchematicContext) => {
             const fileSystem = getFileSystem(tree);
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing css vars...`);
+            }
 
             renameCssVars();
 
             fileSystem.commitEdits();
             saveActiveProject();
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 titleLog(`${FINISH_SYMBOL} Css vars successfully migrated \n`);
+            }
         },
     ]);
 }

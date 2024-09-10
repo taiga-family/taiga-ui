@@ -14,8 +14,9 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {removeImport} from '../../../utils/import-manipulations';
 
 export function migrateRoot(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} updating TuiRoot`);
+    }
 
     const refs = [
         ...getNamedImportReferences('TuiRootModule', '@taiga-ui/core'),

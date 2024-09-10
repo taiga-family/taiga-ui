@@ -13,7 +13,9 @@ export function tuiGetElementOffset(
     host: Element,
     element: HTMLElement,
 ): {offsetLeft: number; offsetTop: number} {
-    ngDevMode && console.assert(host.contains(element), 'Host must contain element');
+    if (ngDevMode) {
+        console.assert(host.contains(element), 'Host must contain element');
+    }
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 

@@ -41,10 +41,12 @@ export const getDayFromMonthRowCol = ({
      */
     rowIndex: number;
 }): TuiDay => {
-    ngDevMode && console.assert(Number.isInteger(rowIndex));
-    ngDevMode && console.assert(tuiInRange(rowIndex, 0, 6));
-    ngDevMode && console.assert(Number.isInteger(colIndex));
-    ngDevMode && console.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
+    if (ngDevMode) {
+        console.assert(Number.isInteger(rowIndex));
+        console.assert(tuiInRange(rowIndex, 0, 6));
+        console.assert(Number.isInteger(colIndex));
+        console.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
+    }
 
     let day =
         rowIndex * DAYS_IN_WEEK +

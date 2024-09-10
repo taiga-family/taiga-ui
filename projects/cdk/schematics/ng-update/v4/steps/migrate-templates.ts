@@ -85,8 +85,9 @@ function getAction<T>({
 }
 
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
+    }
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
 
@@ -136,7 +137,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         actions.forEach((action, actionIndex) => {
             const isLastAction = actionIndex === actions.length - 1;
 
-            !options['skip-logs'] && progressLog(action.name, isLastAction);
+            if (!options['skip-logs']) {
+                progressLog(action.name, isLastAction);
+            }
+
             action({resource, fileSystem, recorder});
         });
     });
@@ -145,6 +149,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     saveAddedImports();
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
+    }
 }

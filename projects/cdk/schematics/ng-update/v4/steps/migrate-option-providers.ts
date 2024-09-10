@@ -13,17 +13,21 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {insertTodo} from '../../../utils/insert-todo';
 
 export function migrateOptionProviders(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating providers...`);
+    }
 
     migrateInputNumberOptions(options);
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }
 
 function migrateInputNumberOptions(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} tuiInputNumberOptionsProvider`);
+    }
 
     const references = [
         ...getNamedImportReferences('tuiInputNumberOptionsProvider', '@taiga-ui/kit'),

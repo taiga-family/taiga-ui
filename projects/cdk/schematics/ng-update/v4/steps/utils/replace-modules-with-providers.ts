@@ -23,15 +23,17 @@ export const replaceModulesWithProviders = (
     options: TuiSchema,
     list: ModuleToReplace[],
 ): void => {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing modules with providers...`,
         );
+    }
 
     list.forEach(replaceModule);
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} modules replaced \n`);
+    }
 };
 
 function replaceModule({from, to}: ModuleToReplace): void {

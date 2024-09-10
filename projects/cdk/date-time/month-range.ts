@@ -11,7 +11,9 @@ export class TuiMonthRange {
         public readonly from: TuiMonth,
         public readonly to: TuiMonth,
     ) {
-        ngDevMode && console.assert(from.monthSameOrBefore(to));
+        if (ngDevMode) {
+            console.assert(from.monthSameOrBefore(to));
+        }
     }
 
     public static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {

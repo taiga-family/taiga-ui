@@ -37,13 +37,14 @@ export function migrateOverscroll({
     elements.forEach(({attrs, sourceCodeLocation}: Element) => {
         const attrToRemove = findAttr(attrs, overscrollAttrName);
 
-        attrToRemove &&
+        if (attrToRemove) {
             removeAttrs(
                 [attrToRemove],
                 sourceCodeLocation as ElementLocation,
                 recorder,
                 templateOffset,
             );
+        }
     });
 
     const element = elements[0]?.sourceCodeLocation as ElementLocation | undefined;

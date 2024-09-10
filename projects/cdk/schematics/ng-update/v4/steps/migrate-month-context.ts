@@ -14,10 +14,11 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {removeImport} from '../../../utils/import-manipulations';
 
 export function migrateMonthContext(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> ...`,
         );
+    }
 
     const monthContextRefs = getNamedImportReferences('TuiMonthContext', '@taiga-ui/kit');
 
@@ -62,5 +63,7 @@ export function migrateMonthContext(options: TuiSchema): void {
         .filter((x): x is ImportSpecifier => !!x)
         .forEach(removeImport);
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }

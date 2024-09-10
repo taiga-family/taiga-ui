@@ -40,10 +40,11 @@ const OPTIONS_MIGRATIONS: Record<
 };
 
 export function migrateNumberFormatSettings(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating TuiNumberFormatSettings...`,
         );
+    }
 
     const asFunctionArgument = [
         ...getNamedImportReferences('tuiFormatNumber', '@taiga-ui/core'),
@@ -92,8 +93,9 @@ export function migrateNumberFormatSettings(options: TuiSchema): void {
             });
         });
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(
             `${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} migration of TuiNumberFormatSettings completes \n`,
         );
+    }
 }

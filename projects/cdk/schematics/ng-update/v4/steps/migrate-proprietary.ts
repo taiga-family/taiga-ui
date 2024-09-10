@@ -25,8 +25,9 @@ export function migrateProprietary(
             return;
         }
 
-        !options['skip-logs'] &&
+        if (!options['skip-logs']) {
             infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating proprietary...`);
+        }
 
         replaceScopePackages();
         replaceProprietaryIconPath();

@@ -16,7 +16,9 @@ export class TuiDayRange extends TuiMonthRange {
     ) {
         super(from, to);
 
-        ngDevMode && console.assert(from.daySameOrBefore(to));
+        if (ngDevMode) {
+            console.assert(from.daySameOrBefore(to));
+        }
     }
 
     /**

@@ -20,10 +20,11 @@ function replaceService(
     {from, to, replaceMethods}: ReplacementService,
     options: TuiSchema,
 ): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
         );
+    }
 
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
@@ -98,11 +99,13 @@ export function replaceServices(
     options: TuiSchema,
     services: readonly ReplacementService[],
 ): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
+    }
 
     services.forEach((service) => replaceService(service, options));
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
+    }
 }

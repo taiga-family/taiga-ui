@@ -18,11 +18,17 @@ export function tuiToFlatMapPages(pages: TuiDocRoutePages): Map<string, TuiDocRo
     pages.forEach((page) => {
         if ('subPages' in page) {
             page.subPages.forEach((subPage) => {
-                ngDevMode && assertTitle(subPage, map);
+                if (ngDevMode) {
+                    assertTitle(subPage, map);
+                }
+
                 map.set(subPage.title, subPage);
             });
         } else {
-            ngDevMode && assertTitle(page, map);
+            if (ngDevMode) {
+                assertTitle(page, map);
+            }
+
             map.set(page.title, page);
         }
     });

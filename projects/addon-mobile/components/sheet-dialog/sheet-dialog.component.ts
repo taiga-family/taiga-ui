@@ -125,7 +125,9 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (!delta) {
             const stuck = this.el.scrollTop > this.sheetTop;
 
-            this.stuck$.value !== stuck && this.stuck$.next(stuck);
+            if (this.stuck$.value !== stuck) {
+                this.stuck$.next(stuck);
+            }
         }
 
         if (this.context.closeable && !this.pointers && !this.el.scrollTop) {

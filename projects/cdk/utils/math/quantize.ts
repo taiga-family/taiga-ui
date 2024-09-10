@@ -7,9 +7,11 @@
  * @param quantum series step
  */
 export function tuiQuantize(value: number, quantum: number): number {
-    ngDevMode && console.assert(Number.isFinite(value));
-    ngDevMode && console.assert(Number.isFinite(quantum));
-    ngDevMode && console.assert(quantum > 0);
+    if (ngDevMode) {
+        console.assert(Number.isFinite(value));
+        console.assert(Number.isFinite(quantum));
+        console.assert(quantum > 0);
+    }
 
     const remainder = value % quantum;
 

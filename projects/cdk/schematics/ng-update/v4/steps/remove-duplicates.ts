@@ -11,8 +11,9 @@ import {
 } from '../../../utils/colored-log';
 
 export function removeDuplicates(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing duplicates...`);
+    }
 
     const classes = getClasses(ALL_TS_FILES);
     const modules = getDecorators(classes, {name: 'NgModule'});
@@ -51,6 +52,7 @@ export function removeDuplicates(options: TuiSchema): void {
         indexToRemove.forEach((index, i) => importsInitializer.removeElement(index - i));
     });
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} duplicates removed \n`);
+    }
 }

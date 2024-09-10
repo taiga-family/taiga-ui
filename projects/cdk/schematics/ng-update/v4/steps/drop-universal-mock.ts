@@ -15,10 +15,11 @@ export function dropUniversalMock(options: TuiSchema): void {
     const imports = getImports(ALL_TS_FILES, {moduleSpecifier});
 
     if (imports.length) {
-        !options['skip-logs'] &&
+        if (!options['skip-logs']) {
             infoLog(
                 `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} drop "${moduleSpecifier}" import`,
             );
+        }
 
         const match = new RegExp(
             `import\\s+[\\'\\"\`]${moduleSpecifier}[\\'\\"\`];`,
@@ -33,6 +34,8 @@ export function dropUniversalMock(options: TuiSchema): void {
                 ),
         );
 
-        !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+        if (!options['skip-logs']) {
+            titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+        }
     }
 }

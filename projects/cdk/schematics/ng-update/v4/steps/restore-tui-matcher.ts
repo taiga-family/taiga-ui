@@ -12,10 +12,11 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {replaceIdentifier} from '../../steps/replace-identifier';
 
 function updateTuiMatcher(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} updating TuiMatcher typing to the typed version`,
         );
+    }
 
     const refs = getNamedImportReferences('TuiMatcher', '@taiga-ui/cdk');
 
@@ -41,10 +42,11 @@ function updateTuiMatcher(options: TuiSchema): void {
 }
 
 function renameTuiTypedMatcher(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming TuiTypedMatcher to TuiMatcher`,
         );
+    }
 
     replaceIdentifier({
         from: {name: 'TuiTypedMatcher', moduleSpecifier: '@taiga-ui/cdk'},
@@ -56,5 +58,7 @@ export function restoreTuiMatcher(options: TuiSchema): void {
     updateTuiMatcher(options);
     renameTuiTypedMatcher(options);
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }

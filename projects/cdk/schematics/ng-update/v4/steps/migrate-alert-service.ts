@@ -55,10 +55,11 @@ const OPTIONS_MIGRATIONS: Record<
 };
 
 export function migrateAlertService(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing inject(TuiAlertService).open({autoClose: boolean})...`,
         );
+    }
 
     const alertServiceRefs = getNamedImportReferences(
         'TuiAlertService',
@@ -150,10 +151,11 @@ export function migrateAlertService(options: TuiSchema): void {
         });
     });
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(
             `${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} "true => 3_000" & "false => 0" were replaced  \n`,
         );
+    }
 }
 
 function toAlertServiceOpenCallExpression(node?: Node): CallExpression | undefined {

@@ -25,8 +25,9 @@ export function migrateAddonDoc(options: TuiSchema): Rule {
                 return;
             }
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing...`);
+            }
 
             removeModules(options, [
                 {
@@ -66,8 +67,9 @@ export function migrateAddonDoc(options: TuiSchema): Rule {
             fileSystem.commitEdits();
             saveActiveProject();
 
-            !options['skip-logs'] &&
+            if (!options['skip-logs']) {
                 titleLog(`${FINISH_SYMBOL} addon-doc successfully migrated \n`);
+            }
         },
     ]);
 }

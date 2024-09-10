@@ -18,8 +18,10 @@ function calculate(
         return value;
     }
 
-    ngDevMode && console.assert(!Number.isNaN(value), 'Value must be number');
-    ngDevMode && console.assert(Number.isInteger(precision), 'Precision must be integer');
+    if (ngDevMode) {
+        console.assert(!Number.isNaN(value), 'Value must be number');
+        console.assert(Number.isInteger(precision), 'Precision must be integer');
+    }
 
     precision = Math.min(precision, MAX_PRECISION);
 

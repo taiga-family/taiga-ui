@@ -33,9 +33,11 @@ export class TuiScrollService {
         scrollLeft: number = getX(elementOrWindow),
         duration: number = SCROLL_TIME,
     ): Observable<[number, number]> {
-        ngDevMode && console.assert(duration >= 0, 'duration cannot be negative');
-        ngDevMode && console.assert(scrollTop >= 0, 'scrollTop cannot be negative');
-        ngDevMode && console.assert(scrollLeft >= 0, 'scrollLeft cannot be negative');
+        if (ngDevMode) {
+            console.assert(duration >= 0, 'duration cannot be negative');
+            console.assert(scrollTop >= 0, 'scrollTop cannot be negative');
+            console.assert(scrollLeft >= 0, 'scrollLeft cannot be negative');
+        }
 
         const initialTop = getY(elementOrWindow);
         const initialLeft = getX(elementOrWindow);

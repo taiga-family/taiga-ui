@@ -18,8 +18,9 @@ export function replaceIdentifiers(
     options: TuiSchema,
     constants: readonly ReplacementIdentifierMulti[],
 ): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
+    }
 
     const progressLog = setupProgressLogger({
         total: constants.length,
@@ -28,16 +29,18 @@ export function replaceIdentifiers(
     constants.forEach(({from, to}) => {
         toArray(from).forEach((x) => replaceIdentifier({from: x, to}));
 
-        !options['skip-logs'] &&
+        if (!options['skip-logs']) {
             progressLog(
                 toArray(from)
                     .map((x) => x.name)
                     .join(', '),
             );
+        }
     });
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} identifiers replaced \n`);
+    }
 }
 
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {

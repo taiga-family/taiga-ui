@@ -44,11 +44,12 @@ export class TuiFormatPhonePipe implements PipeTransform {
         countryCode = `${CHAR_PLUS}7`,
         phoneMask = '(###) ###-##-##',
     ): string {
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 value !== undefined,
                 'Undefined was passed to tuiFormatPhone pipe',
             );
+        }
 
         return tuiFormatPhone(value, countryCode, phoneMask);
     }

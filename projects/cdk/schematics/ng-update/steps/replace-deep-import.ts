@@ -17,8 +17,9 @@ export function replaceDeepImports(options: TuiSchema): void {
         return;
     }
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deep imports...`);
+    }
 
     const deepImports = getImports(ALL_TS_FILES).filter((imp) =>
         DEEP_REGEX.test(imp.getModuleSpecifier().getLiteralValue()),
@@ -30,6 +31,7 @@ export function replaceDeepImports(options: TuiSchema): void {
         return {moduleSpecifier: specifier};
     });
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} deep imports replaced \n`);
+    }
 }

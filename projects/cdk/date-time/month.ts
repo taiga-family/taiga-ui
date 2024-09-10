@@ -20,7 +20,10 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         public readonly month: number,
     ) {
         super(year);
-        ngDevMode && console.assert(TuiMonth.isValidMonth(year, month));
+
+        if (ngDevMode) {
+            console.assert(TuiMonth.isValidMonth(year, month));
+        }
     }
 
     /**
@@ -34,7 +37,9 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns number of days in a month
      */
     public static getMonthDaysCount(month: number, isLeapYear: boolean): number {
-        ngDevMode && console.assert(TuiMonth.isValidMonthPart(month));
+        if (ngDevMode) {
+            console.assert(TuiMonth.isValidMonthPart(month));
+        }
 
         switch (month) {
             case TuiMonthNumber.April:

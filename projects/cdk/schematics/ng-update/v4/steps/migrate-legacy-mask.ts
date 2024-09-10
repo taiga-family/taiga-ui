@@ -13,18 +13,22 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {removeImport} from '../../../utils/import-manipulations';
 
 export function migrateLegacyMask(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating legacy mask utils...`);
+    }
 
     migrateTuiMaskedMoneyValueIsEmpty(options);
     migrateTuiMaskedNumberStringToNumber(options);
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }
 
 function migrateTuiMaskedMoneyValueIsEmpty(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} tuiMaskedMoneyValueIsEmpty`);
+    }
 
     const references = getNamedImportReferences(
         'tuiMaskedMoneyValueIsEmpty',
@@ -56,8 +60,9 @@ function migrateTuiMaskedMoneyValueIsEmpty(options: TuiSchema): void {
 }
 
 function migrateTuiMaskedNumberStringToNumber(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} tuiMaskedNumberStringToNumber`);
+    }
 
     const references = getNamedImportReferences(
         'tuiMaskedNumberStringToNumber',

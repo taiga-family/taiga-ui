@@ -26,8 +26,9 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
         return;
     }
 
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating editor...`);
+    }
 
     replaceIdentifiers(options, [
         {
@@ -102,5 +103,7 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
 
     saveActiveProject();
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }

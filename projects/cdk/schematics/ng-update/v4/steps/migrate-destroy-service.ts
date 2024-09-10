@@ -15,10 +15,11 @@ import {removeImport} from '../../../utils/import-manipulations';
 import {insertTodo} from '../../../utils/insert-todo';
 
 export function migrateDestroyService(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    if (!options['skip-logs']) {
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating TuiDestroyService => takeUntilDestroyed ...`,
         );
+    }
 
     const references = getNamedImportReferences('TuiDestroyService', '@taiga-ui/cdk');
     const nodesForComments: Node[] = [];
@@ -131,12 +132,13 @@ export function migrateDestroyService(options: TuiSchema): void {
             );
 
             if (componentClass) {
-                !componentClass.getProperty('destroyRef') &&
+                if (!componentClass.getProperty('destroyRef')) {
                     componentClass.addProperty({
                         name: 'destroyRef',
                         initializer: 'inject(DestroyRef)',
                         isReadonly: true,
                     });
+                }
 
                 possibleTakeUntil.replaceWithText('takeUntilDestroyed(this.destroyRef)');
 
@@ -166,14 +168,17 @@ export function migrateDestroyService(options: TuiSchema): void {
             ? ref
             : ref.getFirstAncestorByKind(SyntaxKind.Identifier);
 
-        identifier &&
+        if (identifier) {
             insertTodo(
                 identifier,
                 'use takeUntilDestroyed (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed) instead of legacy TuiDestroyService',
             );
+        }
     });
 
-    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    if (!options['skip-logs']) {
+        titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    }
 }
 
 function findTakeUntil(node: Node, maxDepth = 10): CallExpression | null {

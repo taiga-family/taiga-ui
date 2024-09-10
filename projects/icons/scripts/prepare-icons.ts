@@ -17,10 +17,12 @@ fs.readdirSync(src).forEach((filename: string) => {
     const fileFilledPath = path.join(dest, filledFilename);
 
     fs.writeFileSync(filePath, content);
-    verbose && console.info('copied:', filePath);
-
     fs.writeFileSync(fileFilledPath, filled);
-    verbose && console.info('copied:', fileFilledPath);
+
+    if (verbose) {
+        console.info('copied:', filePath);
+        console.info('copied:', fileFilledPath);
+    }
 });
 
 // 2. copy flags from design tokens
@@ -33,7 +35,10 @@ fs.readdirSync(flagsDir).forEach((filename: string) => {
 
     fs.mkdirSync(path.dirname(filePath), {recursive: true});
     fs.writeFileSync(filePath, content);
-    verbose && console.info('copied:', filePath);
+
+    if (verbose) {
+        console.info('copied:', filePath);
+    }
 });
 
 function renameToFilled(filename: string): string {

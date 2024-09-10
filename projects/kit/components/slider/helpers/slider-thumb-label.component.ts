@@ -23,12 +23,13 @@ export class TuiSliderThumbLabel implements AfterContentInit {
     protected readonly control?: NgControl;
 
     public ngAfterContentInit(): void {
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 Boolean(this.control?.valueChanges),
                 '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
                     'Use [(ngModel)] or [formControl] or formControlName for correct work.',
             );
+        }
     }
 
     protected get size(): TuiSizeS {

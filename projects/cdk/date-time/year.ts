@@ -10,7 +10,9 @@ import type {TuiYearLike} from './types';
  */
 export class TuiYear implements TuiYearLike {
     constructor(public readonly year: number) {
-        ngDevMode && console.assert(TuiYear.isValidYear(year));
+        if (ngDevMode) {
+            console.assert(TuiYear.isValidYear(year));
+        }
     }
 
     /**
@@ -24,7 +26,9 @@ export class TuiYear implements TuiYearLike {
      * Check if passed year is a leap year
      */
     public static isLeapYear(year: number): boolean {
-        ngDevMode && console.assert(TuiYear.isValidYear(year));
+        if (ngDevMode) {
+            console.assert(TuiYear.isValidYear(year));
+        }
 
         return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
     }
@@ -33,7 +37,9 @@ export class TuiYear implements TuiYearLike {
      * Returns amount of leap years from year 0 to the passed one
      */
     public static getAbsoluteLeapYears(year: number): number {
-        ngDevMode && console.assert(TuiYear.isValidYear(year));
+        if (ngDevMode) {
+            console.assert(TuiYear.isValidYear(year));
+        }
 
         return Math.ceil(year / 400) + (Math.ceil(year / 4) - Math.ceil(year / 100));
     }
@@ -103,11 +109,15 @@ export class TuiYear implements TuiYearLike {
      * Immutably offsets year
      */
     public append({year = 0}: TuiYearLike): TuiYear {
-        ngDevMode && console.assert(Number.isInteger(year));
+        if (ngDevMode) {
+            console.assert(Number.isInteger(year));
+        }
 
         const resultYear = this.year + year;
 
-        ngDevMode && console.assert(TuiYear.isValidYear(resultYear));
+        if (ngDevMode) {
+            console.assert(TuiYear.isValidYear(resultYear));
+        }
 
         return new TuiYear(resultYear);
     }

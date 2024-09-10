@@ -22,7 +22,7 @@ export class TuiTime implements TuiTimeLike {
         public readonly seconds = 0,
         public readonly ms = 0,
     ) {
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 // Currently `TuiTime` could have hours more than 23
                 // in order to not break current behaviour of `isValidTime` the logic is duplicated
@@ -40,6 +40,7 @@ export class TuiTime implements TuiTimeLike {
                 seconds,
                 ms,
             );
+        }
     }
 
     /**
@@ -86,12 +87,13 @@ export class TuiTime implements TuiTimeLike {
      * Calculates TuiTime from milliseconds
      */
     public static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
-        ngDevMode && console.assert(Number.isInteger(milliseconds));
-        ngDevMode &&
+        if (ngDevMode) {
+            console.assert(Number.isInteger(milliseconds));
             console.assert(
                 tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
                 `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
             );
+        }
 
         const hours = Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
         const minutes = Math.floor(
