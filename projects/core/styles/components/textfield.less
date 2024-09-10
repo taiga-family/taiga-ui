@@ -143,7 +143,7 @@ tui-textfield {
         select {
             padding-top: calc(var(--t-height) / 3);
 
-            &::placeholder,
+            &:not(:-webkit-autofill)::placeholder,
             &._empty {
                 caret-color: var(--tui-text-primary);
                 color: transparent !important;
@@ -159,7 +159,7 @@ tui-textfield {
         select {
             padding-top: calc(var(--t-height) / 3);
 
-            &::placeholder,
+            &:not(:-webkit-autofill)::placeholder,
             &._empty {
                 caret-color: var(--tui-text-primary);
                 color: transparent !important;
@@ -217,11 +217,6 @@ tui-textfield {
 
             &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
                 display: flex;
-            }
-
-            &::placeholder,
-            &._empty {
-                -webkit-text-fill-color: var(--tui-text-tertiary);
             }
         }
 
