@@ -31,6 +31,7 @@ import {
     TAGS_TO_REPLACE,
 } from './constants';
 import {
+    migrateActiveZoneParent,
     migrateAvatar,
     migrateAxes,
     migrateBadge,
@@ -121,6 +122,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateNumberPrecision,
         migrateNotification,
         migrateFilterPipe,
+        migrateActiveZoneParent,
     ] as const;
 
     const progressLog = setupProgressLogger({
