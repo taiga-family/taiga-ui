@@ -1,20 +1,17 @@
-<ng-container *ngIf="dialogs$ | async as dialogs">
-    <section
-        *ngFor="let item of dialogs"
-        aria-modal="true"
-        role="dialog"
-        tuiFocusTrap
-        tuiScrollRef
-        class="t-dialog"
-        @tuiHost
-        [attr.aria-labelledby]="item.id"
-        [class.t-dialog_closing]="!dialogs.length"
-    >
-        <ng-container *polymorpheusOutlet="item.component; context: item" />
-        <tui-scroll-controls class="t-scrollbars" />
-    </section>
-    <div
-        class="t-overlay"
-        [style.opacity]="dialogs.length"
-    ></div>
-</ng-container>
+<div
+    class="t-overlay"
+    [style.opacity]="dialogs().length"
+></div>
+<section
+    *ngFor="let item of dialogs()"
+    aria-modal="true"
+    role="dialog"
+    tuiFocusTrap
+    tuiScrollRef
+    class="t-dialog"
+    @tuiHost
+    [attr.aria-labelledby]="item.id"
+>
+    <ng-container *polymorpheusOutlet="item.component; context: item" />
+    <tui-scroll-controls class="t-scrollbars" />
+</section>
