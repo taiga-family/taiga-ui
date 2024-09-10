@@ -1,7 +1,7 @@
 import type {TuiDay} from '@taiga-ui/cdk/date-time';
 
 export function tuiToggleDay(
-    days: readonly TuiDay[] | null = [],
+    days: readonly TuiDay[] | null,
     day: TuiDay,
 ): readonly TuiDay[] {
     return (
