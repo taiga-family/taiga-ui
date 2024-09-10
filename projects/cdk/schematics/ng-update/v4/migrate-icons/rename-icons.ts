@@ -6,8 +6,13 @@ import {ALL_FILES} from '../../../constants';
 const CHANGED_ICONS = [
     {from: 'tuiIconClose', to: '@tui.x'},
     {from: 'tuiIconCloseLarge', to: '@tui.x'},
+    {from: 'tuiIconUploadCloud', to: '@tui.cloud-upload'},
+    {from: 'tuiIconUploadCloudLarge', to: '@tui.cloud-upload'},
+    {from: 'tuiIconEdit', to: '@tui.pencil'},
     {from: 'tuiIconEdit2', to: '@tui.pencil'},
     {from: 'tuiIconEdit2Large', to: '@tui.pencil'},
+    {from: 'tuiIconGitCommit', to: '@tui.git-commit-horizontal'},
+    {from: 'tuiIconGitCommitLarge', to: '@tui.git-commit-horizontal'},
     {from: 'tuiIconMoreHorizontal', to: '@tui.ellipsis'},
     {from: 'tuiIconMoreHorizontalLarge', to: '@tui.ellipsis'},
     {from: 'tuiIconMoreVertical', to: '@tui.ellipsis-vertical'},

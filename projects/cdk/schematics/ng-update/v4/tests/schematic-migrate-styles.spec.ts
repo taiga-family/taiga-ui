@@ -29,6 +29,7 @@ const STYLES_BEFORE = `
 }
 
 .example {
+    .text-overflow();
     .tui-space(vertical, 4);
     .text-h3();
     padding-top: @space * 2;
@@ -72,6 +73,7 @@ const STYLES_AFTER = `
 }
 
 .example {
+    .text-overflow();
     margin-top: 1rem;
 margin-bottom: 1rem;
     font: var(--tui-font-heading-3);
