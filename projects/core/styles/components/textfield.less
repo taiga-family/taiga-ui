@@ -145,7 +145,8 @@ tui-textfield {
 
             &::placeholder,
             &._empty {
-                color: transparent;
+                color: transparent !important;
+                -webkit-text-fill-color: transparent !important;
             }
         }
     }
@@ -159,7 +160,8 @@ tui-textfield {
 
             &::placeholder,
             &._empty {
-                color: transparent;
+                color: transparent !important;
+                -webkit-text-fill-color: transparent !important;
             }
         }
     }
@@ -220,7 +222,8 @@ tui-textfield {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    color: var(--tui-text-tertiary);
+                    color: transparent !important;
+                    -webkit-text-fill-color: var(--tui-text-tertiary) !important;
                 }
 
                 & ~ label {
@@ -252,7 +255,8 @@ tui-textfield {
     label:defined,
     input:defined::placeholder,
     select:defined._empty {
-        color: var(--tui-text-secondary);
+        color: transparent !important;
+        -webkit-text-fill-color: var(--tui-text-secondary) !important;
     }
 
     select:not([data-mode='readonly']) {
