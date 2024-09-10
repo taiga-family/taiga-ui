@@ -1,26 +1,19 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {NgForOf} from '@angular/common';
+import {ChangeDetectionStrategy, Component, inject, type Signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiHost} from '@taiga-ui/core/animations';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_DIALOGS} from './dialog.tokens';
 
 @Component({
     standalone: true,
     selector: 'tui-dialogs',
-    imports: [
-        CommonModule,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiFocusTrap,
-        TuiScrollControls,
-        TuiScrollRef,
-    ],
+    imports: [NgForOf, PolymorpheusOutlet, TuiFocusTrap, TuiScrollControls, TuiScrollRef],
     templateUrl: './dialogs.template.html',
     styleUrls: ['./dialogs.style.less'],
     // So that we do not force OnPush on custom dialogs
@@ -33,6 +26,8 @@ import {TUI_DIALOGS} from './dialog.tokens';
 })
 export class TuiDialogs {
     protected readonly el = tuiInjectElement();
-    protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> =
-        inject(TUI_DIALOGS);
+    protected readonly dialogs: Signal<ReadonlyArray<TuiPopover<any, any>>> = toSignal(
+        inject(TUI_DIALOGS),
+        {initialValue: []},
+    );
 }
