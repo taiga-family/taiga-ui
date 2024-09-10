@@ -237,8 +237,8 @@ export class TuiMultiSelectComponent<T>
     }
 
     protected onEnter(event: Event): void {
-        const {value} = this;
-        const options = this.accessor ? this.accessor.getOptions() : [];
+        const {value, accessor} = this;
+        const options = accessor ? accessor.getOptions() : [];
 
         if (options.length !== 1) {
             return;

@@ -37,8 +37,7 @@ export class TuiAccordionDirective implements AfterContentInit {
     }
 
     public ngAfterContentInit(): void {
-        const {accordionItems} = this;
-        const rows$ = tuiQueryListChanges(accordionItems);
+        const rows$ = tuiQueryListChanges(this.accordionItems);
         const newOpenRow$ = rows$.pipe(
             pairwise(),
             map(([previous, current]) =>
@@ -66,7 +65,7 @@ export class TuiAccordionDirective implements AfterContentInit {
         );
 
         rowsOpen$.subscribe((currentRow) => {
-            accordionItems.forEach((row) => {
+            this.accordionItems.forEach((row) => {
                 if (currentRow !== row) {
                     row.close();
                 }

@@ -87,8 +87,7 @@
             "sonarjs/no-redundant-type-constituents": "off",
             "sonarjs/no-unused-expressions": "off",
             "sonarjs/prefer-nullish-coalescing": "off",
-            "sonarjs/redundant-type-aliases": "off",
-            "unicorn/consistent-destructuring": "off"
+            "sonarjs/redundant-type-aliases": "off"
         },
         "overrides": [
             {

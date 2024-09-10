@@ -135,12 +135,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get activeElement(): HTMLElement | null {
-        const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
+        const {tabs, options, activeItemIndex, lastVisibleIndex, moreButton} = this;
+        const safeActiveIndex = tuiClamp(activeItemIndex || 0, 0, tabs.length - 2);
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
+        return options.exposeActive || lastVisibleIndex >= safeActiveIndex
             ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+            : moreButton?.nativeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -225,14 +225,14 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     private getMaxIndex(): number {
-        const {tabs, activeItemIndex, margin} = this;
+        const {tabs, activeItemIndex, margin, options, el} = this;
 
         if (tabs.length < 2) {
             return 0;
         }
 
-        const {exposeActive, minMoreWidth} = this.options;
-        const {clientWidth} = this.el;
+        const {clientWidth} = el;
+        const {exposeActive, minMoreWidth} = options;
         const active = tabs[activeItemIndex];
         const activeWidth = active?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1]?.scrollWidth ?? 0, minMoreWidth);

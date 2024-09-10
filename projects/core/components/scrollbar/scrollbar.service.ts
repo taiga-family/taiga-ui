@@ -37,8 +37,13 @@ export class TuiScrollbarService extends Observable<[number, number]> {
         offsetY: number,
         offsetX: number,
     ): [number, number] {
-        const {offsetHeight, offsetWidth} = this.el;
-        const {top, left, width, height} = this.el.parentElement!.getBoundingClientRect();
+        const {offsetHeight, offsetWidth, parentElement} = this.el;
+        const {
+            top = 0,
+            left = 0,
+            width = 0,
+            height = 0,
+        } = parentElement?.getBoundingClientRect() ?? {};
 
         const maxTop = this.element.scrollHeight - height;
         const maxLeft = this.element.scrollWidth - width;

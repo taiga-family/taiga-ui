@@ -195,11 +195,11 @@ export class TuiInputCardGroup
     }
 
     public override writeValue(value: TuiCard | null): void {
-        const {bin} = this;
+        const {bin, expire, cardPrefilled} = this;
 
         super.writeValue(value);
         this.updateBin(bin);
-        this.expirePrefilled = !!this.expire && this.cardPrefilled;
+        this.expirePrefilled = !!expire && cardPrefilled;
     }
 
     /** Public API for manual focus management */
@@ -217,11 +217,11 @@ export class TuiInputCardGroup
 
     public handleOption(option: Partial<TuiCard> | null): void {
         const {card = '', expire = '', cvc = ''} = option || {};
-        const {bin} = this;
+        const {bin, inputCard, inputExpire, inputCVC} = this;
         const element =
-            (!card && this.inputCard?.nativeElement) ||
-            (!expire && this.inputExpire?.nativeElement) ||
-            this.inputCVC?.nativeElement;
+            (!card && inputCard?.nativeElement) ||
+            (!expire && inputExpire?.nativeElement) ||
+            inputCVC?.nativeElement;
 
         this.onChange({card, expire, cvc});
         this.updateBin(bin);
@@ -295,7 +295,7 @@ export class TuiInputCardGroup
     }
 
     protected onCardChange(card: string): void {
-        const {value, bin} = this;
+        const {value, bin, inputExpire} = this;
         const parsed = card.split(' ').join('');
 
         if (value()?.card === parsed) {
@@ -305,7 +305,7 @@ export class TuiInputCardGroup
         this.updateProperty(parsed, 'card');
         this.updateBin(bin);
 
-        if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
+        if (this.cardValidator(this.card) && !value()?.expire && inputExpire) {
             this.focusExpire();
         }
     }
@@ -352,10 +352,8 @@ export class TuiInputCardGroup
     }
 
     private updateBin(oldBin: string | null): void {
-        const {bin} = this;
-
-        if (bin !== oldBin && !this.cardPrefilled) {
-            this.binChange.emit(bin);
+        if (this.bin !== oldBin && !this.cardPrefilled) {
+            this.binChange.emit(this.bin);
         }
     }
 

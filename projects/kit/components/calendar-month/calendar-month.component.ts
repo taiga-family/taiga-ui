@@ -101,7 +101,7 @@ export class TuiCalendarMonth {
     }
 
     public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value, hoveredItem} = this;
+        const {value, hoveredItem, isSingle} = this;
 
         if (!(value instanceof TuiMonthRange)) {
             return value?.monthSame(item) ? 'active' : null;
@@ -111,7 +111,7 @@ export class TuiCalendarMonth {
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
         const from = value.from.month + value.from.year * 12;
         const to = value.to.month + value.to.year * 12;
-        const picking = this.isSingle ? hovered : null;
+        const picking = isSingle ? hovered : null;
         const min = Math.min(from, to, picking ?? from);
         const max = Math.max(from, to, picking ?? from);
 

@@ -53,7 +53,7 @@ import {
     TUI_DONE_WORD,
 } from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
-import type {MonoTypeOperatorFunction} from 'rxjs';
+import {EMPTY, type MonoTypeOperatorFunction} from 'rxjs';
 import {
     BehaviorSubject,
     debounceTime,
@@ -367,29 +367,27 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private initYearScroll(): void {
-        const {yearsScrollRef} = this;
-
-        if (!yearsScrollRef) {
+        if (!this.yearsScrollRef) {
             return;
         }
 
         const touchstart$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
+            this.yearsScrollRef.elementRef.nativeElement,
             'touchstart',
             {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
+            this.yearsScrollRef.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
         const click$ = tuiTypedFromEvent(
-            yearsScrollRef.elementRef.nativeElement,
+            this.yearsScrollRef.elementRef.nativeElement,
             'click',
         );
 
         // Refresh activeYear
-        yearsScrollRef
+        this.yearsScrollRef
             .elementScrolled()
             .pipe(
                 // Ignore smooth scroll resulting from click on the exact year
@@ -400,7 +398,8 @@ export class TuiMobileCalendar implements AfterViewInit {
                 map(
                     () =>
                         Math.round(
-                            yearsScrollRef.measureScrollOffset() / this.yearWidth,
+                            (this.yearsScrollRef?.measureScrollOffset() ?? 0) /
+                                this.yearWidth,
                         ) +
                         Math.floor(YEARS_IN_ROW / 2) +
                         STARTING_YEAR,
@@ -420,7 +419,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() => touchend$),
                 switchMap(() =>
                     race(
-                        yearsScrollRef.elementScrolled(),
+                        this.yearsScrollRef?.elementScrolled() || EMPTY,
                         timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
                         debounceTime(
@@ -437,19 +436,17 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private initMonthScroll(): void {
-        const {monthsScrollRef} = this;
-
-        if (!monthsScrollRef) {
+        if (!this.monthsScrollRef) {
             return;
         }
 
         const touchstart$ = tuiTypedFromEvent(
-            monthsScrollRef.elementRef.nativeElement,
+            this.monthsScrollRef.elementRef.nativeElement,
             'touchstart',
             {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
-            monthsScrollRef.elementRef.nativeElement,
+            this.monthsScrollRef.elementRef.nativeElement,
             'touchend',
             {passive: true},
         );
@@ -460,7 +457,7 @@ export class TuiMobileCalendar implements AfterViewInit {
                 switchMap(() => touchend$),
                 switchMap(() =>
                     race(
-                        monthsScrollRef.elementScrolled(),
+                        this.monthsScrollRef?.elementScrolled() || EMPTY,
                         timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
                         debounceTime(

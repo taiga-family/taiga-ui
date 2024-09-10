@@ -69,7 +69,7 @@ export class TuiTablePagination {
     public readonly paginationChange = new EventEmitter<TuiTablePaginationEvent>();
 
     public onItem(size: number): void {
-        const {start} = this;
+        const start = this.start;
 
         this.size = size;
         this.open = false;

@@ -150,14 +150,14 @@ export class TuiInputDateRangeComponent
     }
 
     public get computedValue(): string {
-        const {value, nativeValue, activePeriod} = this;
+        const {value, nativeValue, activePeriod, dateFormat} = this;
 
         if (activePeriod) {
             return String(activePeriod);
         }
 
         return value
-            ? value.getFormattedDayRange(this.dateFormat.mode, this.dateFormat.separator)
+            ? value.getFormattedDayRange(dateFormat.mode, dateFormat.separator)
             : nativeValue;
     }
 

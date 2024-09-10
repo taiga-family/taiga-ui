@@ -14,13 +14,11 @@ import {tuiGetDocumentOrShadowRoot} from './get-document-or-shadow-root';
 export function tuiGetElementObscures(
     element: Element,
 ): readonly [Element, Element, Element, Element] | [] | null {
-    const {ownerDocument} = element;
-
-    if (!ownerDocument?.defaultView || !element.getBoundingClientRect) {
+    if (!element.ownerDocument?.defaultView || !element.getBoundingClientRect) {
         return null;
     }
 
-    const {innerWidth, innerHeight} = ownerDocument.defaultView;
+    const {innerWidth, innerHeight} = element.ownerDocument.defaultView;
     const doc = tuiGetDocumentOrShadowRoot(element);
     const rect = element.getBoundingClientRect();
 

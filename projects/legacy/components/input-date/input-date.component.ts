@@ -152,14 +152,14 @@ export class TuiInputDateComponent
     }
 
     public get computedValue(): string {
-        const {value, nativeValue, activeItem} = this;
+        const {value, nativeValue, activeItem, dateFormat} = this;
 
         if (activeItem) {
             return String(activeItem);
         }
 
         return value
-            ? value.toString(this.dateFormat.mode, this.dateFormat.separator)
+            ? value.toString(dateFormat.mode, dateFormat.separator)
             : nativeValue;
     }
 
@@ -224,9 +224,9 @@ export class TuiInputDateComponent
     }
 
     protected get activeItem(): TuiNamedDay | null {
-        const {value} = this;
+        const {value, items} = this;
 
-        return (value && this.items.find((item) => item.day.daySame(value))) || null;
+        return (value && items.find((item) => item.day.daySame(value))) || null;
     }
 
     protected onClick(): void {

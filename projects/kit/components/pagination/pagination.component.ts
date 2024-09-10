@@ -94,7 +94,7 @@ export class TuiPagination {
         }
 
         let activeElementIndex = 0;
-        const {elementsLength} = this;
+        const {elementsLength, index, els} = this;
 
         for (let i = 0; i < elementsLength; i++) {
             const itemIndex = this.getItemIndexByElementIndex(i);
@@ -103,14 +103,13 @@ export class TuiPagination {
                 activeElementIndex++;
             }
 
-            if (itemIndex === this.index) {
+            if (itemIndex === index) {
                 break;
             }
         }
 
         return (
-            this.els.find((_, index) => index === activeElementIndex)?.nativeElement ??
-            null
+            els.find((_, index) => index === activeElementIndex)?.nativeElement ?? null
         );
     }
 

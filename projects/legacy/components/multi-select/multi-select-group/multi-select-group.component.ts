@@ -83,8 +83,8 @@ export class TuiMultiSelectGroupComponent<T> {
             return;
         }
 
+        const values = this.values;
         const controlValue: readonly T[] = this.control.value || [];
-        const {values} = this;
         const filtered = controlValue.filter((current) =>
             values.every((item) => !this.matcher(current, item)),
         );

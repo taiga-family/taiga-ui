@@ -238,13 +238,13 @@ export class TuiInputDateTimeComponent
     }
 
     protected get computedActiveYearMonth(): TuiMonth {
-        const {computedMin, computedMax} = this;
+        const {computedMin, computedMax, month, defaultActiveYearMonth, value} = this;
 
         return (
-            this.month ||
-            this.value[0] ||
+            month ||
+            value[0] ||
             tuiDateClamp(
-                this.defaultActiveYearMonth,
+                defaultActiveYearMonth,
                 Array.isArray(computedMin) ? computedMin[0] : computedMin,
                 Array.isArray(computedMax) ? computedMax[0] : computedMax,
             )
@@ -377,15 +377,15 @@ export class TuiInputDateTimeComponent
     }
 
     private clampTime(time: TuiTime, day: TuiDay): TuiTime {
-        const {computedMin, computedMax} = this;
+        const {computedMin, computedMax, calendarMinDay, calendarMaxDay} = this;
 
         const ms = time.toAbsoluteMilliseconds();
         const min =
-            Array.isArray(computedMin) && day.daySame(this.calendarMinDay)
+            Array.isArray(computedMin) && day.daySame(calendarMinDay)
                 ? computedMin[1].toAbsoluteMilliseconds()
                 : -Infinity;
         const max =
-            Array.isArray(computedMax) && day.daySame(this.calendarMaxDay)
+            Array.isArray(computedMax) && day.daySame(calendarMaxDay)
                 ? computedMax[1].toAbsoluteMilliseconds()
                 : Infinity;
 

@@ -73,7 +73,7 @@ export class TuiCalendarYear {
     }
 
     public getItemRange(item: number): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value, hoveredItem} = this;
+        const {value, hoveredItem, isSingle} = this;
 
         if (value instanceof TuiYear) {
             return value.year === item ? 'active' : null;
@@ -87,7 +87,7 @@ export class TuiCalendarYear {
             return value?.find((day) => day.year === item) ? 'active' : null;
         }
 
-        const hovered = this.isSingle ? hoveredItem : null;
+        const hovered = isSingle ? hoveredItem : null;
         const from = Math.min(value.from.year, hovered ?? value.to.year);
         const to = Math.max(value.from.year, hovered ?? value.to.year);
 
