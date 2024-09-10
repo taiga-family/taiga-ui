@@ -218,6 +218,11 @@ tui-textfield {
             &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
                 display: flex;
             }
+
+            &::placeholder,
+            &._empty {
+                -webkit-text-fill-color: var(--tui-text-tertiary);
+            }
         }
 
         &:not([data-mode='readonly']) {
@@ -258,9 +263,7 @@ tui-textfield {
     label:defined,
     input:defined::placeholder,
     select:defined._empty {
-        caret-color: var(--tui-text-primary);
-        color: transparent !important;
-        -webkit-text-fill-color: var(--tui-text-secondary) !important;
+        color: var(--tui-text-secondary);
     }
 
     select:not([data-mode='readonly']) {
