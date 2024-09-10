@@ -46,7 +46,10 @@ export class TuiWrapperDirective {
         return this.focus && !this.disabled;
     }
 
-    protected get interactiveState(): TuiInteractiveState | string | null {
+    protected get interactiveState():
+        | TuiInteractiveState
+        | (Record<never, never> & string)
+        | null {
         if (this.disabled) {
             return 'disabled';
         }
