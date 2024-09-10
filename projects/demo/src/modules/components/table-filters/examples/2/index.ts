@@ -1,5 +1,6 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {
     FormArray,
     FormControl,
@@ -7,14 +8,13 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
 import {TuiButton, TuiFormatNumberPipe, TuiTextfieldComponent} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {map} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
     standalone: true,
@@ -23,14 +23,14 @@ import {toSignal} from '@angular/core/rxjs-interop';
         FormsModule,
         NgForOf,
         ReactiveFormsModule,
+        TuiButton,
         TuiFormatNumberPipe,
+        TuiInputModule,
         TuiInputNumberModule,
         TuiSwitch,
         TuiTable,
         TuiTableFilters,
-        TuiInputModule,
         TuiTextfieldComponent,
-        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -38,6 +38,14 @@ import {toSignal} from '@angular/core/rxjs-interop';
     changeDetection,
 })
 export default class Example {
+    private readonly testData = [
+        {name: 'James', balance: 10000},
+        {name: 'Michael', balance: 20000},
+        {name: 'Richard', balance: 30000},
+        {name: 'Robert', balance: 40000},
+        {name: 'Daniel', balance: 50000},
+    ] as const;
+
     protected readonly filterForm = new FormGroup({
         balance: new FormControl(0),
     });
@@ -49,24 +57,14 @@ export default class Example {
         {initialValue: []},
     );
 
-    private testData = [
-        {name: 'James', balance: 10000},
-        {name: 'Michael', balance: 20000},
-        {name: 'Richard', balance: 30000},
-        {name: 'Robert', balance: 40000},
-        {name: 'Daniel', balance: 50000},
-    ] as const;
-
     protected testIndex = 0;
 
     protected readonly columns = ['name', 'balance'];
 
-    protected readonly filter = (group: {balance: FormControl}, value: number) =>
-        group.balance.value >= value;
-
-    addRow() {
+    public addRow(): void {
         const name = this.testData[this.testIndex]?.name ?? '';
         const balance = this.testData?.[this.testIndex]?.balance ?? 0;
+
         this.array.push(
             new FormGroup({
                 name: new FormControl(name),
@@ -75,6 +73,11 @@ export default class Example {
         );
         this.testIndex++;
     }
+
+    protected readonly filter = (
+        {balance}: Record<string, FormControl>,
+        value: number,
+    ): boolean => balance?.value >= value;
 
     protected onToggle(enabled: boolean): void {
         if (enabled) {
