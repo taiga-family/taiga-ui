@@ -1,6 +1,6 @@
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
-const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
+const MASK_AFTER_CODE_REGEXP = /\(#+\)|[#\- ]/g;
 
 /**
  * @deprecated: drop in v5.0
