@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[72729],{72729:e=>{e.exports='<label tuiLabel>\n    <input\n        tuiSwitch\n        type="checkbox"\n        [(ngModel)]="enabled"\n    />\n    Show\n</label>\n<tui-error [error]="computedError" />\n'}}]);

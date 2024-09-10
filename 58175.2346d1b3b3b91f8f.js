@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58175],{58175:e=>{e.exports='<tui-textfield>\n    <input\n        placeholder="Type in long value"\n        tuiFluidTypography\n        tuiTextfield\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n'}}]);

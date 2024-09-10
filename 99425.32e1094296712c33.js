@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99425],{99425:e=>{e.exports='<tui-mobile-calendar\n    [max]="max"\n    [min]="min"\n/>\n'}}]);

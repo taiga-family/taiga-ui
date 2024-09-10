@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22415],{22415:n=>{n.exports='```json\n{\n  "projects": {\n    "your-app": {\n      "architect": {\n        "build": {\n          "options": {\n            "styles": ["src/styles.less"]\n          }\n        }\n      }\n    }\n  }\n}\n```\n'}}]);
