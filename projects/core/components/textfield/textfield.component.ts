@@ -1,6 +1,7 @@
 import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     computed,
     ContentChild,
@@ -81,6 +82,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly autoId = tuiInjectId();
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly cdr = inject(ChangeDetectorRef);
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
@@ -136,5 +138,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected onResize(entry: readonly ResizeObserverEntry[]): void {
         this.side = entry[0]?.contentRect?.width || 0;
+        this.cdr.detectChanges();
     }
 }
