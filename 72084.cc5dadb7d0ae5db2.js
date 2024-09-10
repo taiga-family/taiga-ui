@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[72084],{36863:s=>{s.exports='```html\n<span tuiStatus="var(--tui-status-positive)">Success</span>\n```\n'}}]);

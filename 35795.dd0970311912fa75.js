@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[35795],{35795:n=>{n.exports="```text\nopen<O>(\n  content: PolymorpheusContent<TuiDialogContext<O, I>,\n  options: Partial<TuiDialogOptions<I>>,\n): Observable<O>;\n```\n"}}]);

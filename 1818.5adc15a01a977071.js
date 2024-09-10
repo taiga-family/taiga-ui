@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1818],{1818:n=>{n.exports='```html\n<tui-line-chart\n  [x]="0"\n  [y]="0"\n  [width]="200"\n  [height]="100"\n  [value]="value"\n></tui-line-chart>\n```\n'}}]);

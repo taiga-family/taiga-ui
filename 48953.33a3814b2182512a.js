@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48953],{48953:e=>{e.exports="<p>100 {{ 'RUB' | tuiCurrency }}</p>\n"}}]);

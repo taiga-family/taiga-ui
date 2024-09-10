@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76205],{76205:e=>{e.exports=".rating {\n    fill: currentColor;\n    font-size: 0.625rem;\n    width: 10rem;\n}\n"}}]);

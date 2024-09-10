@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99608],{99608:s=>{s.exports="```less\n.class {\n  background-color: var(--tui-status-positive);\n}\n```\n"}}]);

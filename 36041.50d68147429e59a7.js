@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[36041],{72730:n=>{n.exports=".example {\n    margin-bottom: 0.5rem;\n    min-width: 20.25rem;\n}\n\n.form {\n    min-width: 300px;\n    overflow: hidden;\n}\n\n.exchange {\n    margin: 25px;\n}\n\n.group {\n    max-width: 30.25rem;\n}\n"}}]);

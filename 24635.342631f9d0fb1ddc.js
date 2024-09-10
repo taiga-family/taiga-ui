@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24635],{24635:e=>{e.exports='<tui-input-number [(ngModel)]="value">Only integers</tui-input-number>\n'}}]);

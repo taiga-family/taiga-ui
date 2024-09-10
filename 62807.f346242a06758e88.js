@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[62807],{62807:n=>{n.exports="```js\nimport 'jest-preset-angular/setup-jest';\n\n// allows you to do runtime reflection on types\nimport 'reflect-metadata';\n\n// make custom mocks\nwindow.AnimationEvent = {};\nwindow.TransitionEvent = {};\nwindow.DragEvent = class {};\n\n// ...\n```\n"}}]);

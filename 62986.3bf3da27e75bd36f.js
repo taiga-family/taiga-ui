@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[62986],{62986:e=>{e.exports=".axes {\n    height: 12.5rem;\n    width: 25rem;\n    color: #bc71c9;\n}\n"}}]);
