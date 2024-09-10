@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.6.0](https://github.com/taiga-family/taiga-ui/compare/v4.5.0...v4.6.0) (2024-09-10)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix autofill styles
+  ([#8794](https://github.com/taiga-family/taiga-ui/issues/8794))
+  ([de3a923](https://github.com/taiga-family/taiga-ui/commit/de3a9230508fccf9224023287ec35d3de07aabd8))
+- **addon-mobile:** `Card` fix paddings on mobile devices
+  ([#8949](https://github.com/taiga-family/taiga-ui/issues/8949))
+  ([12ebe35](https://github.com/taiga-family/taiga-ui/commit/12ebe35a0e21805fa3e3d8e57251f9c8559b8285))
+- **addon-table:** TuiTableDirective Content Security Policy error v4
+  ([#8872](https://github.com/taiga-family/taiga-ui/issues/8872))
+  ([a7ae8f3](https://github.com/taiga-family/taiga-ui/commit/a7ae8f329e3439b9b0b98c8b06cc0fb489c64446))
+- **cdk:** `NativeValidator` fix touched state ([#8818](https://github.com/taiga-family/taiga-ui/issues/8818))
+  ([2a5e754](https://github.com/taiga-family/taiga-ui/commit/2a5e754856545b3f59b4aacfb9bce76ae09d7b79))
+- **core:** `Textfield` fix expression change error ([#8809](https://github.com/taiga-family/taiga-ui/issues/8809))
+  ([7206c29](https://github.com/taiga-family/taiga-ui/commit/7206c2920e145cf6fead63c420c1709dcd1c968d))
+- **core:** show empty content in correct detect changes cycle
+  ([#8837](https://github.com/taiga-family/taiga-ui/issues/8837))
+  ([f102ad3](https://github.com/taiga-family/taiga-ui/commit/f102ad3ab38547868821bd33ce5da7cbd7740cec))
+- **kit:** `BadgedContent` icon is positioned incorrectly when it's shown with a delay
+  ([#8932](https://github.com/taiga-family/taiga-ui/issues/8932))
+  ([96c476b](https://github.com/taiga-family/taiga-ui/commit/96c476b9bcd21075083c3d48d0694ca0fae8f5e0))
+- **kit:** `CalendarRange` revert computedMonth changes ([#8909](https://github.com/taiga-family/taiga-ui/issues/8909))
+  ([848d12c](https://github.com/taiga-family/taiga-ui/commit/848d12cfcc8e0d391bdb5b5c3ff5338e6dbf328e))
+- **kit:** `InputFiles` fix validity and drag states ([#8845](https://github.com/taiga-family/taiga-ui/issues/8845))
+  ([a7f1332](https://github.com/taiga-family/taiga-ui/commit/a7f13325bbf247128758731de8778df6532836ac))
+- **kit:** `InputTime` fix selection of the nearest value from items
+  ([#8902](https://github.com/taiga-family/taiga-ui/issues/8902))
+  ([0b3894c](https://github.com/taiga-family/taiga-ui/commit/0b3894c85730037c9ada32083fc038f0734e23aa))
+- **kit:** BadgedContent: icon is positioned incorrectly when it's shown with a delay
+  ([4a26b1a](https://github.com/taiga-family/taiga-ui/commit/4a26b1a56f8e048eb5e5af0583584da491e1e630))
+- **kit:** CalendarRange click again on selected item not switch to item date
+  ([#8843](https://github.com/taiga-family/taiga-ui/issues/8843))
+  ([4853671](https://github.com/taiga-family/taiga-ui/commit/4853671fb67d7e57002c4ddefc6ffb3cefaf90d0))
+- **kit:** fix styles for input-inline when spellcheck marks word incorrect
+  ([#8836](https://github.com/taiga-family/taiga-ui/issues/8836))
+  ([7938dd5](https://github.com/taiga-family/taiga-ui/commit/7938dd5d51773781b04764b07eb7d820c07c2c65))
+- **layout:** `Card` fix `Label` title font weight when `Label` is placed inside a card
+  ([#8931](https://github.com/taiga-family/taiga-ui/issues/8931))
+  ([b7e871c](https://github.com/taiga-family/taiga-ui/commit/b7e871c46a2c99fbeeb55278ba505c76a73c721c))
+
+### 🚀 Features
+
+- **addon-mobile:** `InputSearch` add iOS imitating input
+  ([#8838](https://github.com/taiga-family/taiga-ui/issues/8838))
+  ([7437250](https://github.com/taiga-family/taiga-ui/commit/743725047d9221782f49264ddf18f371b94620f4))
+- **core:** `Dialog` add fade transition for multiple dialogs
+  ([#8950](https://github.com/taiga-family/taiga-ui/issues/8950))
+  ([5843da5](https://github.com/taiga-family/taiga-ui/commit/5843da5e2740a545298f3aa0385a840a7888265e))
+- **kit:** `Copy` and `Password` add interactive icons to `Textfield`
+  ([#8833](https://github.com/taiga-family/taiga-ui/issues/8833))
+  ([c8bdaf0](https://github.com/taiga-family/taiga-ui/commit/c8bdaf03ce8d1df76870d13a342681299312225c))
+- **kit:** `Segmented` update to the spec v1.1.0 ([#8825](https://github.com/taiga-family/taiga-ui/issues/8825))
+  ([44d7d5b](https://github.com/taiga-family/taiga-ui/commit/44d7d5b5e3622d183a7d05666e42954caba0751e))
+- **layout:** `Cell` add border-radius ([#8801](https://github.com/taiga-family/taiga-ui/issues/8801))
+  ([1b05ba4](https://github.com/taiga-family/taiga-ui/commit/1b05ba45a0756e6d81fa5a9d1feb521ab427ff87))
+- **testing:** adds link harness ([#8771](https://github.com/taiga-family/taiga-ui/issues/8771))
+  ([e38cdb5](https://github.com/taiga-family/taiga-ui/commit/e38cdb55e5134b68529af56e7de2bb4fd8a7b567))
+
 ## [4.5.0](https://github.com/taiga-family/taiga-ui/compare/v4.4.1...v4.5.0) (2024-09-02)
 
 ### 🐞 Bug Fixes
