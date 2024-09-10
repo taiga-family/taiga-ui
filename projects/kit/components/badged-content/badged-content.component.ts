@@ -1,4 +1,9 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    inject,
+} from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 
 import {TuiBadgedContentDirective} from './badged-content.directive';
@@ -11,4 +16,10 @@ import {TuiBadgedContentDirective} from './badged-content.directive';
     styleUrls: ['./badged-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiBadgedContentComponent {}
+export class TuiBadgedContentComponent {
+    private readonly cdr = inject(ChangeDetectorRef);
+
+    public onResize(): void {
+        this.cdr.detectChanges();
+    }
+}
