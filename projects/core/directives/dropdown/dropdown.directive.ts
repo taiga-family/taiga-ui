@@ -1,9 +1,4 @@
-import {
-    type AfterViewChecked,
-    type ComponentRef,
-    type OnChanges,
-    type OnDestroy,
-} from '@angular/core';
+import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,

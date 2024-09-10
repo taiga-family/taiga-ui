@@ -80,7 +80,6 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "@typescript-eslint/no-import-type-side-effects": "off",
             "@typescript-eslint/prefer-regexp-exec": "off",
             "jest/prefer-importing-jest-globals": "off",
             "sonarjs/arguments-order": "off",
