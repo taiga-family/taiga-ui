@@ -17,7 +17,6 @@ import {
 import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 const TIMES = [
-    new TuiTime(0, 0),
     new TuiTime(0, 30),
     new TuiTime(1, 0),
     new TuiTime(1, 30),
@@ -284,7 +283,7 @@ describe('InputTime', () => {
             pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();
 
             expect(testComponent.control.value?.toString().trim()).toBe(
-                TIMES[6]?.toString(),
+                TIMES[5]?.toString(),
             );
         });
 
@@ -320,6 +319,15 @@ describe('InputTime', () => {
                 fixture.detectChanges();
 
                 expect(testComponent.control.value?.toString().trim()).toBe('01:30');
+            });
+
+            it('with strict = true, the entered value is rounded to the nearest in items (00:00)', () => {
+                testComponent.strict = true;
+                fixture.detectChanges();
+                inputPO.sendText('00:00');
+                fixture.detectChanges();
+
+                expect(testComponent.control.value?.toString().trim()).toBe('00:30');
             });
         });
     });
