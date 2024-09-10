@@ -92,8 +92,7 @@
             "sonarjs/redundant-type-aliases": "off",
             "sonarjs/regex-complexity": "off",
             "sonarjs/single-character-alternation": "off",
-            "unicorn/consistent-destructuring": "off",
-            "unicorn/no-typeof-undefined": "off"
+            "unicorn/consistent-destructuring": "off"
         },
         "overrides": [
             {
