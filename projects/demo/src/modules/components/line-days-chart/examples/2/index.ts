@@ -158,23 +158,14 @@ export default class Example {
     ): ReadonlyArray<[TuiDay, number]> {
         return new Array(TuiDay.lengthBetween(from, to) + 1)
             .fill(0)
-            .reduce<ReadonlyArray<[TuiDay, number]>>(
-                (array, _, i) => [
-                    ...array,
-                    [
-                        from.append({day: i}),
-                        this.isE2E
-                            ? initial
-                            : Math.max(
-                                  (i ? (array[i - 1]?.[1] ?? 0) : initial) +
-                                      Math.random() * 10 -
-                                      5,
-                                  0,
-                              ),
-                    ],
-                ],
-                [],
-            )
+            .reduce<ReadonlyArray<[TuiDay, number]>>((array, _, i) => {
+                const salt = i ? (array[i - 1]?.[1] ?? 0) : initial;
+                const value = this.isE2E
+                    ? initial
+                    : Math.max(salt + Math.random() * 10 - 5, 0);
+
+                return [...array, [from.append({day: i}), value]];
+            }, [])
             .filter(([day]) => day.dayOfWeek() < 5);
     }
 

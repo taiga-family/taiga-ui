@@ -63,11 +63,11 @@ function migrateValue({
         return;
     }
 
+    const closeTag = selfClosing ? '</tui-thumbnail-card>' : '';
+
     recorder.insertRight(
         insertTo + templateOffset,
-        valueAttr.name === 'cardnumber'
-            ? attrValue
-            : `{{ ${attrValue} }}${selfClosing ? '</tui-thumbnail-card>' : ''}`,
+        valueAttr.name === 'cardnumber' ? attrValue : `{{ ${attrValue} }}${closeTag}`,
     );
 
     const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];

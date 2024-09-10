@@ -56,10 +56,13 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
             : this.interactive() && this.touched() && this.status() === 'INVALID',
     );
 
-    public readonly mode = computed(() =>
-        // eslint-disable-next-line no-nested-ternary
-        this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
-    );
+    public readonly mode = computed(() => {
+        if (this.readOnly()) {
+            return 'readonly';
+        }
+
+        return this.invalid() ? 'invalid' : 'valid';
+    });
 
     public onTouched = EMPTY_FUNCTION;
     public onChange: (value: T) => void = EMPTY_FUNCTION;

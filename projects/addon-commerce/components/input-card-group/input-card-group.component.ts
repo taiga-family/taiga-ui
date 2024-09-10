@@ -149,8 +149,13 @@ export class TuiInputCardGroup
     );
 
     protected readonly state: Signal<unknown> = tuiAppearanceState(
-        // eslint-disable-next-line no-nested-ternary
-        computed(() => (this.disabled() ? 'disabled' : this.hover() ? 'hover' : null)),
+        computed(() => {
+            if (this.disabled()) {
+                return 'disabled';
+            }
+
+            return this.hover() ? 'hover' : null;
+        }),
     );
 
     protected readonly focus = tuiAppearanceFocus(

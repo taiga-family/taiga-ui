@@ -22,9 +22,13 @@ class ExampleDateTimeTransformer extends TuiValueTransformer<
     }
 
     public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
-        return day
-            ? day.toString() + (time ? `${this.separator}${time.toString()}` : '')
-            : '';
+        if (day) {
+            const value = time ? `${this.separator}${time.toString()}` : '';
+
+            return `${day.toString()}${value}`;
+        }
+
+        return '';
     }
 }
 

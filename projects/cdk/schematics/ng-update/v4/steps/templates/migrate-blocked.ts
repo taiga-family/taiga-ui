@@ -53,8 +53,8 @@ export function migrateBlocked({
             ) || [];
         const sizeAttr = findAttr(attrs, 'size');
         const ngForAttr = findAttr(attrs, '*ngFor');
-
-        const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
+        const size = sizeAttr?.value === 'xs' ? 's' : sizeAttr?.value;
+        const newBlockAttr = `tuiBlock${sizeAttr ? `="${size}"` : ''}`;
 
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,

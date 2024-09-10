@@ -1,9 +1,8 @@
 export function tuiRgbToHsv(r: number, g: number, b: number): [number, number, number] {
-    const v = Math.max(r, g, b);
-    const n = v - Math.min(r, g, b);
+    const value = Math.max(r, g, b);
+    const brightness = value - Math.min(r, g, b);
+    const saturation = value === g ? 2 + (b - r) / brightness : 4 + (r - g) / brightness;
+    const hue = brightness && (value === r ? (g - b) / brightness : saturation);
 
-    // eslint-disable-next-line no-nested-ternary
-    const h = n && (v === r ? (g - b) / n : v === g ? 2 + (b - r) / n : 4 + (r - g) / n);
-
-    return [60 * (h < 0 ? h + 6 : h), v && n / v, v];
+    return [60 * (hue < 0 ? hue + 6 : hue), value && brightness / value, value];
 }
