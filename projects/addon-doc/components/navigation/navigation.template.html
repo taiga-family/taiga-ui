@@ -8,7 +8,10 @@
     [tuiTextfieldIconLeft]="docIcons.search"
     [tuiTextfieldLabelOutside]="true"
 >
-    {{ searchText }}
+    <div class="t-search-text">
+        {{ searchText }}
+        <code class="t-slash">/</code>
+    </div>
     <ng-container *ngIf="canOpen">
         <tui-data-list *tuiDataList>
             <tui-opt-group

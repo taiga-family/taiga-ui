@@ -4,6 +4,7 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
+    ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -34,8 +35,7 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
-import type {TuiInputComponent} from '@taiga-ui/legacy/components/input';
-import {TuiInputModule} from '@taiga-ui/legacy/components/input';
+import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
@@ -79,9 +79,13 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     providers: NAVIGATION_PROVIDERS,
     host: {
         '[class._open]': 'menuOpen',
+        '(window:keydown)': 'onFocusSearch($event)',
     },
 })
 export class TuiDocNavigation {
+    @ViewChild(TuiInputComponent, {static: true})
+    private readonly searchInput?: TuiInputComponent;
+
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
@@ -163,6 +167,16 @@ export class TuiDocNavigation {
         this.menuOpen = false;
         this.search.setValue('');
         this.openActivePageGroup();
+    }
+
+    protected onFocusSearch(event: KeyboardEvent): void {
+        if (
+            event.code === 'Slash' &&
+            !(this.doc.activeElement instanceof HTMLInputElement)
+        ) {
+            this.searchInput?.nativeFocusableElement?.focus();
+            event.preventDefault();
+        }
     }
 
     @tuiPure
