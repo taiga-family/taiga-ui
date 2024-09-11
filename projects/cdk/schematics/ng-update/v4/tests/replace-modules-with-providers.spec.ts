@@ -44,7 +44,9 @@ export class Test {
 
 const COMPONENT_BEFORE = `import { TuiMobileCalendarDialogModule } from "@taiga-ui/addon-mobile";
 import { OldModule } from "@namespace/cdk";
-import { TuiRootModule } from "@taiga-ui/core";
+import { TuiRootModule, TuiDialogModule, TuiAlertModule } from "@taiga-ui/core";
+import { TuiPushModule, TuiPdfViewerModule } from "@taiga-ui/kit";
+import { TuiPreviewModule, TuiPreviewActionModule } from "@taiga-ui/addon-preview";
 
 @Component({
     selector: 'app-my-component',
@@ -53,9 +55,25 @@ import { TuiRootModule } from "@taiga-ui/core";
     imports: [
         TuiRootModule,
         TuiMobileCalendarDialogModule,
-        OldModule
+        OldModule,
+        TuiDialogModule,
+        TuiPushModule,
+        TuiAlertModule,
+        TuiPreviewModule,
+        TuiPdfViewerModule,
+        TuiPreviewActionModule
     ],
-    providers: [importProvidersFrom(TuiRootModule, SomeModule)]
+    providers: [
+        importProvidersFrom(
+            TuiRootModule,
+            TuiDialogModule,
+            TuiPushModule,
+            TuiAlertModule,
+            TuiPreviewModule,
+            TuiPdfViewerModule,
+            SomeModule
+        )
+    ]
 })
 export class Test {
 }`;
@@ -64,16 +82,29 @@ const COMPONENT_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
 import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
-import { TuiRoot } from "@taiga-ui/core";
+import { TuiRoot, TuiAlert, TuiDialog, TuiPreview } from "@taiga-ui/core";
+import { TuiPush, TuiPreview } from "@taiga-ui/kit";
 
 @Component({
     selector: 'app-my-component',
     standalone: true,
     template: '',
     imports: [
-        TuiRoot
+        TuiRoot,
+        TuiDialog,
+        TuiPush,
+        TuiAlert,
+        TuiPreview
     ],
-    providers: [importProvidersFrom(SomeModule), NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
+    providers: [
+        importProvidersFrom(
+            SomeModule
+        ),
+        NG_EVENT_PLUGINS,
+        TBANK_PROVIDERS,
+        tuiProvideMobileCalendar(),
+        newProvider
+    ]
 })
 export class Test {
 }`;

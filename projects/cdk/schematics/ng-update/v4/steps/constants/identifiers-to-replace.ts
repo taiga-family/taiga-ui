@@ -1312,6 +1312,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiPreviewActionModule',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+        to: {
+            name: 'TuiPreview',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPreviewDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+        to: {
+            name: 'TuiPreviewDialog',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPreviewDialogService',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+        to: {
+            name: 'TuiPreviewDialogService',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {
             name: 'TuiBlockStatusModule',
             moduleSpecifier: '@taiga-ui/layout',
         },
@@ -1373,26 +1403,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             name: 'TuiFiles',
             moduleSpecifier: '@taiga-ui/kit',
             spreadInModule: true,
-        },
-    },
-    {
-        from: {
-            name: 'TuiPreviewDialogModule',
-            moduleSpecifier: '@taiga-ui/addon-preview',
-        },
-        to: {
-            name: 'TuiPreviewDialog',
-            moduleSpecifier: '@taiga-ui/kit',
-        },
-    },
-    {
-        from: {
-            name: 'TuiPreviewDialogService',
-            moduleSpecifier: '@taiga-ui/addon-preview',
-        },
-        to: {
-            name: 'TuiPreviewDialogService',
-            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
