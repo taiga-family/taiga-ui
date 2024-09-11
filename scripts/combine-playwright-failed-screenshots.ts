@@ -21,7 +21,7 @@ console.info('canvas:', version);
     });
 
     for (const {name} of filesOrDirs.filter(
-        (x) => x.isDirectory() && !x.name.match(/-retry\d$/),
+        (x) => x.isDirectory() && !/-retry\d$/.exec(x.name),
     )) {
         await combinePlaywrightFailedScreenshots(`${rootPath}/${name}`);
     }

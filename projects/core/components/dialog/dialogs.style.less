@@ -22,6 +22,7 @@
 
 .t-overlay,
 .t-dialog {
+    .transition(filter);
     .scrollbar-hidden();
     .fullsize(fixed, inset);
 
@@ -38,8 +39,8 @@
 
 .t-dialog {
     position: sticky;
-    pointer-events: auto;
     overscroll-behavior: none;
+    filter: brightness(0.25);
 }
 
 .t-overlay {
@@ -47,10 +48,12 @@
 
     background: var(--tui-service-backdrop);
     backdrop-filter: var(--tui-backdrop, none);
+    opacity: 0;
 }
 
-.t-dialog:last-of-type {
-    z-index: 1;
+.t-dialog:last-child {
+    pointer-events: auto;
+    filter: none;
 }
 
 .t-scrollbars {

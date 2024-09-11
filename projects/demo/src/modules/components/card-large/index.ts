@@ -21,6 +21,6 @@ export default class Example {
         'Map',
         'Image',
         'Image-dark',
-        'Paddings and radiuses',
+        'Paddings and radii',
     ];
 }

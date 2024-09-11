@@ -33,7 +33,7 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {type TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
 import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,

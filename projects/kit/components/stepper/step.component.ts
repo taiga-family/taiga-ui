@@ -1,10 +1,10 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 
 import {TuiStepperComponent} from './stepper.component';
@@ -29,8 +29,11 @@ import {TuiStepperComponent} from './stepper.component';
 export class TuiStep {
     private readonly stepper = inject(TuiStepperComponent);
     private readonly el = tuiInjectElement();
-    private readonly routerLinkActive$: Observable<boolean> =
-        inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
+    protected readonly $ = (
+        inject(RouterLinkActive, {optional: true})?.isActiveChange.asObservable() ?? EMPTY
+    )
+        .pipe(filter(Boolean), takeUntilDestroyed())
+        .subscribe(() => this.activate());
 
     protected focusVisible = false;
 
@@ -41,12 +44,6 @@ export class TuiStep {
 
     @Input()
     public icon = '';
-
-    constructor() {
-        this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
-            this.activate();
-        });
-    }
 
     protected get isActive(): boolean {
         return this.stepper.isActive(this.index);

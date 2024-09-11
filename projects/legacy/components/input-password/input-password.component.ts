@@ -18,7 +18,7 @@ import {EMPTY, map, startWith} from 'rxjs';
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 
 /**
- * @deprecated use {@link TuiInputPassword} instead
+ * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
  */
 @Component({
     standalone: false,

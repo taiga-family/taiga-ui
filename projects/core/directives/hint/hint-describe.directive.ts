@@ -1,6 +1,11 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input} from '@angular/core';
-import {tuiIfMap, tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {Directive, inject, Input, NgZone} from '@angular/core';
+import {
+    tuiIfMap,
+    tuiTypedFromEvent,
+    tuiZonefreeScheduler,
+    tuiZoneOptimized,
+} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -27,6 +32,7 @@ import {
 export class TuiHintDescribe extends TuiDriver {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
+    private readonly zone = inject(NgZone);
     private readonly id$ = new BehaviorSubject('');
     private readonly stream$ = this.id$.pipe(
         distinctUntilChanged(),
@@ -39,7 +45,9 @@ export class TuiHintDescribe extends TuiDriver {
                       tuiTypedFromEvent(this.element, 'blur'),
                   ).pipe(map(() => this.focused)),
         ),
-        debounce((visible) => (visible ? timer(1000) : of(null))),
+        debounce((visible) =>
+            visible ? timer(1000, tuiZonefreeScheduler(this.zone)) : of(null),
+        ),
         startWith(false),
         distinctUntilChanged(),
         skip(1),

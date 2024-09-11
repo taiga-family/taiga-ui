@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, type DebugElement, signal} from '@angular/core';
 import {Component, Input} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
@@ -22,14 +22,13 @@ describe('Highlight Directive', () => {
         standalone: true,
         imports: [Highlight],
         template: `
-            <code [highlight]="code || ''"></code>
+            <code [highlight]="code()"></code>
         `,
-        // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-        changeDetection: ChangeDetectionStrategy.Default,
+        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
         @Input()
-        public code?: string | null;
+        public code = signal('');
     }
 
     beforeEach(waitForAsync(async () => {
@@ -62,8 +61,9 @@ describe('Highlight Directive', () => {
     });
 
     it('should highlight given text', fakeAsync(() => {
-        component.code = testJsCode;
+        component.code.set(testJsCode);
         fixture.detectChanges();
+
         loader.ready.subscribe((lib: HighlightLibrary) => {
             highlightedCode = lib.highlightAuto(
                 testJsCode,
@@ -71,13 +71,14 @@ describe('Highlight Directive', () => {
                 null as unknown as string[],
             ).value;
         });
+
         tick(500);
 
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
     }));
 
     it('should reset text if empty string was passed', () => {
-        component.code = '';
+        component.code.set('');
         fixture.detectChanges();
 
         expect(directiveElement.nativeElement.innerHTML).toBe('');
@@ -85,14 +86,14 @@ describe('Highlight Directive', () => {
 
     it('should not highlight if code is undefined', () => {
         jest.spyOn(directiveInstance, 'highlightElement');
-        component.code = null;
+        component.code.set('');
         fixture.detectChanges();
 
         expect(directiveInstance.highlightElement).not.toHaveBeenCalled();
     });
 
     it('should highlight given text and highlight another text when change', fakeAsync(() => {
-        component.code = testJsCode;
+        component.code.set(testJsCode);
         fixture.detectChanges();
         loader.ready.subscribe((lib: HighlightLibrary) => {
             highlightedCode = lib.highlightAuto(
@@ -105,7 +106,7 @@ describe('Highlight Directive', () => {
 
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
 
-        component.code = testHtmlCode;
+        component.code.set(testHtmlCode);
         fixture.detectChanges();
         loader.ready.subscribe((lib: HighlightLibrary) => {
             highlightedCode = lib.highlightAuto(
@@ -118,13 +119,13 @@ describe('Highlight Directive', () => {
 
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
 
-        component.code = '';
+        component.code.set('');
         fixture.detectChanges();
         tick(300);
 
         expect(directiveElement.nativeElement.innerHTML).toBe('');
 
-        component.code = null;
+        component.code.set('');
         fixture.detectChanges();
         tick(300);
 

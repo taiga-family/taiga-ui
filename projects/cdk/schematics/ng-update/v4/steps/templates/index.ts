@@ -1,3 +1,4 @@
+export * from './migrate-active-zone';
 export * from './migrate-avatar';
 export * from './migrate-axes';
 export * from './migrate-badge';

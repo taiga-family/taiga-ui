@@ -96,6 +96,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe((value) => {
                 this.value = value;
+                this.initDefaultViewedMonth();
             });
     }
 
@@ -183,6 +184,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             this.updateValue(null);
             this.itemChange.emit(null);
         }
+
+        this.initDefaultViewedMonth();
     }
 
     protected onMonthChange(month: TuiMonth): void {

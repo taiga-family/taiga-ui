@@ -27,7 +27,8 @@
         "fortawesome",
         "svgs",
         "contentalign",
-        "sber"
+        "inputpassword",
+        "inputcopy"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

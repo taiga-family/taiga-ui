@@ -20,6 +20,9 @@ import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 
+/**
+ * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
+ */
 @Component({
     standalone: true,
     selector: 'input[tuiInputPassword]',
@@ -54,9 +57,9 @@ export class TuiInputPassword {
         this.hidden() ? this.texts()[0] : this.texts()[1],
     );
 
-    protected readonly icon = computed(() => {
+    protected readonly icon = computed((size = this.size()) => {
         const icon = this.hidden() ? this.options.icons.show : this.options.icons.hide;
 
-        return tuiIsString(icon) ? icon : icon(this.size());
+        return tuiIsString(icon) ? icon : icon(size);
     });
 }

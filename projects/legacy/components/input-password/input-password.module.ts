@@ -15,7 +15,7 @@ import {TuiInputPasswordComponent} from './input-password.component';
 import {TuiInputPasswordDirective} from './input-password.directive';
 
 /**
- * @deprecated use {@link TuiInputPassword} instead
+ * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
  */
 @NgModule({
     imports: [

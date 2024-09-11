@@ -11,6 +11,7 @@ function generateProjectsUsedIcons(): void {
     const excludedFolders = [
         'demo',
         'demo-cypress',
+        'demo-playwright',
         'eslint-plugin',
         'taiga-schematics',
         'testing',

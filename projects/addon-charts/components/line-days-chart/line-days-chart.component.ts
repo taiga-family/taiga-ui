@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import {type AfterViewInit, type QueryList} from '@angular/core';
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,

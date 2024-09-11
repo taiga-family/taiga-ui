@@ -1,5 +1,11 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    inject,
+    Input,
+} from '@angular/core';
 import {WaMutationObserver} from '@ng-web-apis/mutation-observer';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -51,6 +57,7 @@ export class TuiPreviewComponent {
     protected height = 0;
     protected readonly texts$ = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
     protected readonly rotation$ = new BehaviorSubject<number>(0);
     protected readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
@@ -115,6 +122,7 @@ export class TuiPreviewComponent {
     protected onResize([entry]: readonly ResizeObserverEntry[]): void {
         if (entry?.contentRect) {
             this.refresh(entry.contentRect.width, entry.contentRect.height);
+            this.cdr.detectChanges();
         }
     }
 

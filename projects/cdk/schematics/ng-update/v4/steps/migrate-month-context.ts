@@ -31,11 +31,9 @@ export function migrateMonthContext(options: TuiSchema): void {
             const booleanHandlerWithContext = ref.getFirstAncestor(
                 (node) =>
                     node.isKind(SyntaxKind.TypeReference) &&
-                    !!node
-                        .getText()
-                        .match(
-                            /TuiBooleanHandlerWithContext<\s*TuiMonth\s*,\s*TuiMonthContext\s*>/,
-                        ),
+                    !!/TuiBooleanHandlerWithContext<\s*TuiMonth\s*,\s*TuiMonthContext\s*>/.exec(
+                        node.getText(),
+                    ),
             );
 
             if (!booleanHandlerWithContext) {

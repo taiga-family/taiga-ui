@@ -236,6 +236,10 @@ export class TuiInputCardGroup
         this.focusCard();
     }
 
+    public onResize(): void {
+        this.cdr.detectChanges();
+    }
+
     protected get content(): PolymorpheusContent {
         const system = this.getPaymentSystem(this.card);
 

@@ -4,14 +4,17 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    DestroyRef,
     forwardRef,
     inject,
     Input,
+    NgZone,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiTakeUntilDestroyed, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -19,6 +22,7 @@ import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {timer} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
 import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
@@ -61,6 +65,8 @@ export class TuiDataListComponent<T>
     private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
+    private readonly ngZone = inject(NgZone);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
 
     protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
@@ -84,9 +90,11 @@ export class TuiDataListComponent<T>
         }
     }
 
+    // TODO: Refactor to :has after Safari support bumped to 15
     public ngAfterContentChecked(): void {
-        // TODO: Refactor to :has after Safari support bumped to 15
-        this.empty.set(!this.options.length);
+        timer(0, tuiZonefreeScheduler(this.ngZone))
+            .pipe(tuiTakeUntilDestroyed(this.destroyRef))
+            .subscribe(() => this.empty.set(!this.el.querySelector('[tuiOption]')));
     }
 
     public getOptions(includeDisabled = false): readonly T[] {

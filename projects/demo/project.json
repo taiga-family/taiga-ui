@@ -180,13 +180,6 @@
             ],
             "defaultConfiguration": "development"
         },
-        "serve-compiled": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "ws --port {args.port}  --directory {args.path} --spa index.html > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
-                "forwardAllArgs": false
-            }
-        },
         "server": {
             "executor": "@nx/angular:webpack-server",
             "options": {
