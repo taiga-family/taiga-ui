@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {inject} from '@angular/core';
+import {inject, NgZone} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {
     tuiCreateTokenFromFactory,
     tuiGetActualTarget,
@@ -62,6 +62,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
     const removedElement$ = inject(TUI_REMOVED_ELEMENT);
     const win = inject(WA_WINDOW);
     const doc = inject(DOCUMENT);
+    const zone = inject(NgZone);
     const focusout$ = tuiTypedFromEvent(win, 'focusout', {capture: true});
     const focusin$ = tuiTypedFromEvent(win, 'focusin', {capture: true});
     const blur$ = tuiTypedFromEvent(win, 'blur');
@@ -107,7 +108,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
                                */
                               () => actualTargetInCurrentTime,
                           ),
-                          takeUntil(timer(0)),
+                          takeUntil(timer(0, tuiZonefreeScheduler(zone))),
                       );
             }),
         ),
