@@ -1,6 +1,6 @@
 import type {WritableSignal} from '@angular/core';
 import {signal} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 const DEFAULT = {
     highlightColor: 'var(--tui-service-selection-background)',
