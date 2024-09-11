@@ -4,10 +4,11 @@ import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiTextfield} from '@taiga-ui/core';
 import {injectContext} from '@taiga-ui/polymorpheus';
+import {TuiPreventIOSScroll} from '@taiga-ui/addon-mobile';
 
 @Component({
     standalone: true,
-    imports: [TuiAutoFocus, TuiTextfield],
+    imports: [TuiAutoFocus, TuiPreventIOSScroll, TuiTextfield],
     templateUrl: './search-dialog-example.template.html',
     styleUrls: ['./search-dialog-example.component.less'],
     changeDetection,

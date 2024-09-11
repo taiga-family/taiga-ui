@@ -26,7 +26,6 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         options: TuiAutofocusOptions,
     ) {
         super(el, options);
-        this.patchCssStyles();
     }
 
     public setFocus(): void {
@@ -132,21 +131,6 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      */
     private insideDialog(): boolean {
         return !!this.element.closest('tui-dialog');
-    }
-
-    /**
-     * @note:
-     * This is necessary so that the viewport isn't recalculated
-     * and then the dialogs don't shake.
-     *
-     * Also, we need to fixed height viewport,
-     * so that when focusing the dialogs don't shake
-     */
-    private patchCssStyles(): void {
-        [this.win.document.documentElement, this.win.document.body].forEach((element) => {
-            element.style.setProperty('overflow', 'auto');
-            element.style.setProperty('height', '100%');
-        });
     }
 
     /**
