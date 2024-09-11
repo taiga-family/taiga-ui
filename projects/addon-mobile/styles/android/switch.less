@@ -19,7 +19,7 @@ input[tuiSwitch] {
         border-radius: 2rem;
         background: currentColor;
         background-clip: content-box;
-        opacity: 0.5;
+        opacity: 50%;
         transform: none;
         mask: none;
     }
@@ -38,9 +38,9 @@ input[tuiSwitch] {
         transform: none;
         outline: none;
         box-shadow:
-            0 0.0625rem 0.0625rem rgb(0 0 0 / 24%),
-            0 0 0.0625rem rgb(0 0 0 / 12%),
-            inset 0 0.0625rem rgb(255 255 255 / 12%) !important;
+            0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.24),
+            0 0 0.0625rem rgba(0, 0, 0, 0.12),
+            inset 0 0.0625rem rgba(255, 255, 255, 0.12) !important;
     }
 
     &:checked {
@@ -58,7 +58,7 @@ input[tuiSwitch] {
 
         &:not(:checked) {
             background: transparent;
-            opacity: 0.4;
+            opacity: 40%;
         }
 
         &::after {

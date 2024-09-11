@@ -34,12 +34,12 @@
     inline-size: 0.5rem;
     block-size: 0.5rem;
     border-radius: 100%;
-    opacity: 0;
+    opacity: 0%;
     background: #fff;
     margin: -0.25rem;
     box-shadow:
         0 0 0 2px currentColor,
-        0 0.0625rem 0.1875rem 0.125rem rgb(0 0 0 / 10%);
+        0 0.0625rem 0.1875rem 0.125rem rgba(0, 0, 0, 0.1);
     outline: none;
     pointer-events: none;
 
@@ -47,13 +47,13 @@
     .t-column_hovered &,
     .t-column:hover &,
     .t-column_hint_hovered & {
-        opacity: 1;
+        opacity: 100%;
     }
 }
 
 .t-line {
     position: absolute;
-    opacity: 0;
+    opacity: 0%;
     background: var(--tui-border-normal);
 
     &_vertical {
@@ -75,7 +75,7 @@
     :host[style^='z-index: 0'] .t-column_hovered + &,
     :host:not([style]) .t-column:hover + &,
     :host:not([style]) .t-column_hint_hovered + & {
-        opacity: 1;
+        opacity: 100%;
     }
 }
 

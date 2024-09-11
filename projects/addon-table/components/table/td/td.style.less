@@ -46,8 +46,8 @@
         left: 100%;
         inline-size: 0.3125rem;
         pointer-events: none;
-        background: rgb(237 237 237 / 70%);
-        opacity: 0;
+        background: rgba(237, 237, 237, 0.7);
+        opacity: 0%;
     }
 
     &:focus-within:not(:disabled) {
@@ -56,7 +56,7 @@
 }
 
 :host-context([tuiTheme='dark'])::after {
-    background: rgb(60 60 60 / 90%);
+    background: rgba(60, 60, 60, 0.9);
 }
 
 :host-context(table._stuck) {
@@ -64,7 +64,7 @@
 }
 
 :host-context(table._stuck):last-of-type::after {
-    opacity: 1;
+    opacity: 100%;
 }
 
 :host-context(table[data-size='l']) {
