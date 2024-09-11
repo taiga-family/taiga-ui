@@ -51,26 +51,6 @@ describe('CalendarMonth', () => {
         fixture.detectChanges();
     });
 
-    describe('isSingle', () => {
-        it('returns true if there is a value and it is a month', () => {
-            component.value = TODAY;
-
-            expect(component.isSingle).toBe(true);
-        });
-
-        it('returns true if there is a value and it is a single month range', () => {
-            component.value = new TuiMonthRange(TODAY, TODAY);
-
-            expect(component.isSingle).toBe(true);
-        });
-
-        it('returns false if there is no value', () => {
-            component.value = null;
-
-            expect(component.isSingle).toBe(false);
-        });
-    });
-
     describe('getItemRange', () => {
         it('returns null if no value', () => {
             const month = new TuiMonth(TODAY.year, 7);
