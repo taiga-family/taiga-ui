@@ -47,31 +47,29 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - name: Serve ${{ env.DIST }} in background
-        run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
+      - uses: taiga-family/ci/actions/run/serve@v1.72.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST }}
         run: npx nx e2e demo-playwright -- --update-snapshots --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
-      - name: Clean up resources
-        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
+      - uses: taiga-family/ci/actions/run/clone@v1.72.0
+        with:
+          branch: snapshots/demo/next/${{ github.base_ref }}
+          destination: ${{ env.DIST_NEXT }}
 
-      - name: Download ${{ env.DIST_NEXT }} for serve locally
-        run: |
-          git clone \
-                --depth 1 \
-                --branch snapshots/demo/next/${{ github.base_ref }} \
-                https://github.com/${{ github.repository }}.git ${{ env.DIST_NEXT }}
-
-      - name: Serve ${{ env.DIST_NEXT }} in background
-        run: npx nx serve-compiled demo --path ${{ env.DIST_NEXT }} --port ${{ env.NG_SERVER_PORT }}
+      - uses: taiga-family/ci/actions/run/serve@v1.72.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST_NEXT }}
+          replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
         run: npx nx e2e demo-playwright --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-
-      - name: Clean up resources
-        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
       - name: Combine images to get diff reports
         run: |

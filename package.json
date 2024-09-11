@@ -164,9 +164,7 @@
         "cpy-cli": "5.0.0",
         "glob": "10.4.5",
         "husky": "9.1.5",
-        "kill-port": "2.0.1",
         "lint-staged": "15.2.10",
-        "local-web-server": "5.4.0",
         "ng-morph": "4.6.5",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
@@ -177,7 +175,6 @@
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
-        "wait-on": "8.0.1",
         "webpack": "5.94.0"
     },
     "engines": {
