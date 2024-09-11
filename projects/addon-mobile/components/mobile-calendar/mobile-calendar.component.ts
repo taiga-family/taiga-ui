@@ -463,7 +463,10 @@ export class TuiMobileCalendar implements AfterViewInit {
                         monthsScrollRef.elementScrolled(),
                         timer(SCROLL_DEBOUNCE_TIME, tuiZonefreeScheduler(this.ngZone)),
                     ).pipe(
-                        debounceTime(SCROLL_DEBOUNCE_TIME * 2),
+                        debounceTime(
+                            SCROLL_DEBOUNCE_TIME * 2,
+                            tuiZonefreeScheduler(this.ngZone),
+                        ),
                         take(1),
                         takeUntil(touchstart$),
                     ),
