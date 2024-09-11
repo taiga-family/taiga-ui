@@ -42,6 +42,8 @@ export const TUI_USED_ICONS = [
     '@tui.chevron-right',
     '@tui.chevron-left',
     '@tui.calendar',
+    '@tui.settings',
+    '@tui.heart',
     '@tui.minus',
     '@tui.file',
     '@tui.trash',
