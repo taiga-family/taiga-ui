@@ -28,7 +28,7 @@ export default class Page {
         '',
         '',
         '',
-        'You can provide SVG source code in a dictionary to be bundled with the app, for example on the server side so they are loaded immediately with the page',
+        'You can provide SVG source code in a dictionary to be bundled with the app',
         'IMPORTANT: Icon names are not allowed to have "/" symbol',
     ];
 
