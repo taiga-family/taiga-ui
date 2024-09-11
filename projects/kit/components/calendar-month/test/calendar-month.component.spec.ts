@@ -71,58 +71,6 @@ describe('CalendarMonth', () => {
         });
     });
 
-    describe('isItemInsideRange', () => {
-        it('returns false if no value', () => {
-            component.value = null;
-
-            const candidate = new TuiMonth(TODAY.year, 5);
-
-            expect(component.isItemInsideRange(candidate)).toBe(false);
-        });
-
-        it('returns false if value is month', () => {
-            const candidate = new TuiMonth(TODAY.year, 5);
-
-            component.value = candidate;
-
-            expect(component.isItemInsideRange(candidate)).toBe(false);
-        });
-
-        it('returns false if it is not hovered item inside singe month range', () => {
-            const candidate = new TuiMonth(TODAY.year, 5);
-
-            component.value = new TuiMonthRange(
-                new TuiMonth(TODAY.year, 5),
-                new TuiMonth(TODAY.year, 5),
-            );
-
-            expect(component.isItemInsideRange(candidate)).toBe(false);
-        });
-
-        it('returns true if it is hovered item inside singe month range', () => {
-            const candidate = new TuiMonth(TODAY.year, 5);
-
-            component.hoveredItem = candidate;
-            component.value = new TuiMonthRange(
-                new TuiMonth(TODAY.year, 5),
-                new TuiMonth(TODAY.year, 5),
-            );
-
-            expect(component.isItemInsideRange(candidate)).toBe(false);
-        });
-
-        it('returns true if value inside a month range', () => {
-            const candidate = new TuiMonth(TODAY.year, 5);
-
-            component.value = new TuiMonthRange(
-                new TuiMonth(TODAY.year, 2),
-                new TuiMonth(TODAY.year, 7),
-            );
-
-            expect(component.isItemInsideRange(candidate)).toBe(true);
-        });
-    });
-
     describe('getItemRange', () => {
         it('returns null if no value', () => {
             const month = new TuiMonth(TODAY.year, 7);
@@ -132,12 +80,12 @@ describe('CalendarMonth', () => {
             expect(component.getItemRange(month)).toBeNull();
         });
 
-        it('returns single if value is single month choice', () => {
+        it('returns active if value is single month choice', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
             component.value = month;
 
-            expect(component.getItemRange(month)).toBe('single');
+            expect(component.getItemRange(month)).toBe('active');
         });
 
         it('returns start if item is start of range', () => {

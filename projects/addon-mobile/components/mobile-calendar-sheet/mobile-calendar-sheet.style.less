@@ -1,12 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@itemSize: 2.75rem;
-@accent: var(--tui-text-action);
-@faded: var(--tui-background-base-alt);
-
-.picker(@itemSize);
+.date-picker();
 
 :host {
+    display: block;
     inline-size: 20.75rem;
     // TODO: investigate problem in mobile calendar
     /* stylelint-disable-next-line */
@@ -14,118 +11,74 @@
 
     &._ios {
         inline-size: 22.625rem;
+
+        .t-row {
+            block-size: 3.125rem;
+            font-size: 1.0625rem;
+        }
+
+        .t-cell[data-range='start'],
+        .t-cell[data-range='end'],
+        .t-cell[data-range='active'] {
+            font-weight: 600;
+        }
     }
 }
 
 .t-row {
     block-size: 3rem;
-    justify-content: flex-start;
+    justify-content: space-between !important;
+    font-family: inherit;
+    font-size: 1.125rem;
+    padding: 0.125rem;
+    box-sizing: border-box;
 
-    &:first-child {
-        justify-content: flex-end;
+    &:first-child .t-cell:not(.t-cell_empty) ~ .t-cell_empty,
+    &:last-child .t-cell_empty {
+        display: none;
     }
 
-    :host._ios & {
-        block-size: 3.125rem;
+    &:last-child .t-cell:not(.t-cell_empty) ~ .t-cell_empty {
+        display: flex;
     }
 }
 
 .t-cell {
-    block-size: @itemSize;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
     border-radius: 100%;
     overflow: hidden;
-    margin-right: 0.25rem;
+    mask: none;
+    border: none;
+    text-decoration: none;
 
-    &:last-child,
-    :host._ios &:last-child {
-        margin-right: 0;
+    &_empty {
+        visibility: hidden;
     }
 
-    &::before {
-        // TODO: investigate problem in mobile calendar
-        /* stylelint-disable-next-line */
-        right: -100vw;
-    }
-
-    &:first-child::before {
-        // TODO: investigate problem in mobile calendar
-        /* stylelint-disable-next-line */
-        left: -100vw;
-    }
-
-    &_today::after {
-        block-size: 0.375rem;
-        inline-size: 0.375rem;
-        background-color: @accent;
-    }
-
-    &_interval {
-        &::before {
-            background-color: @faded;
-        }
-
-        &:last-child:first-child::before {
-            // TODO: investigate problem in mobile calendar
-            /* stylelint-disable-next-line */
-            right: -100vw;
-        }
-    }
-
-    &_disabled {
-        opacity: var(--tui-disabled-opacity);
-    }
-
-    &[data-range='single'],
-    &[data-range='start'],
-    &[data-range='end'] {
-        border-radius: 100%;
-        background-color: @accent;
-        color: var(--tui-text-primary-on-accent-2);
-        font-weight: 500;
-
+    &_today {
         &::after {
-            background-color: var(--tui-background-base);
+            content: '•';
+            text-align: center;
+            line-height: 4rem;
+            font-size: 1.5rem;
+            color: var(--tui-text-action);
         }
 
-        :host._ios & {
-            font-weight: 600;
+        &[data-range='start']::after,
+        &[data-range='end']::after,
+        &[data-range='active']::after {
+            color: inherit;
         }
     }
 
-    &[data-range='start']::before {
-        left: 50%;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+    &[data-range='start'],
+    &[data-range='end'],
+    &[data-range='active'] {
+        font-weight: 500;
     }
 
-    &[data-range='end']:not(:first-child)::before {
-        left: 50%;
-        background: var(--tui-background-base);
-        border-radius: 0;
-    }
-
-    &[data-range='end']:first-child::before {
-        right: 50%;
-        background-color: @faded;
-    }
-
-    :host._ios & {
-        margin-right: 0.5625rem;
-
-        &::before {
-            border-radius: 0.5rem;
-        }
-    }
-}
-
-@media screen and (max-width: 22.4375rem) {
-    .t-cell,
-    :host._ios .t-cell {
-        margin-right: 0.125rem;
-    }
-
-    .t-cell:last-child,
-    :host._ios .t-cell:last-child {
-        margin-right: 0;
+    &::after {
+        mask: none;
     }
 }

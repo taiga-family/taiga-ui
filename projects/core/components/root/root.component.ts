@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
@@ -19,6 +20,7 @@ import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
+import {PreventEventPlugin} from '@taiga-ui/event-plugins';
 import type {Observable} from 'rxjs';
 import {debounceTime, map, of} from 'rxjs';
 
@@ -72,5 +74,13 @@ export class TuiRoot {
             'data-tui-theme',
             inject(TUI_THEME).toLowerCase(),
         );
+
+        ngDevMode &&
+            console.assert(
+                inject(EVENT_MANAGER_PLUGINS).find(
+                    (plugin) => plugin instanceof PreventEventPlugin,
+                ),
+                'NG_EVENT_PLUGINS is missing from global providers',
+            );
     }
 }

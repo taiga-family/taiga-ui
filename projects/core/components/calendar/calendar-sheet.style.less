@@ -1,11 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@itemSize: 2.25rem;
+.date-picker();
 
-.picker(@itemSize);
-
-:host {
-    inline-size: @itemSize * 7;
+.t-cell {
+    inline-size: 2.25rem;
 }
 
 [data-type='weekday'] {
@@ -30,12 +28,7 @@
     }
 }
 
-.t-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.t-item_unavailable {
+.t-cell_unavailable {
     opacity: var(--tui-disabled-opacity);
 }
 
