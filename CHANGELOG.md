@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.94.0](https://github.com/taiga-family/taiga-ui/compare/v3.93.0...v3.94.0) (2024-09-11)
+
+### Features
+
+- **experimental:** `Cell` add border-radius ([#8802](https://github.com/taiga-family/taiga-ui/issues/8802))
+  ([81b1c5d](https://github.com/taiga-family/taiga-ui/commit/81b1c5d4653aedac1053de41600e4768bbd571b6))
+- **experimental:** `ThumbnailCard` add external `<img>` support
+  ([#8865](https://github.com/taiga-family/taiga-ui/issues/8865))
+  ([064944c](https://github.com/taiga-family/taiga-ui/commit/064944cbbe8641bddcf40adcfd351ef28da4067c))
+
+### Bug Fixes
+
+- **addon-table:** TuiTableDirective Content Security Policy error
+  ([#8871](https://github.com/taiga-family/taiga-ui/issues/8871))
+  ([6a67760](https://github.com/taiga-family/taiga-ui/commit/6a67760b9f695dacc2cd75f739c62f94d2a62d76))
+- **kit:** `InputTime` fix selection of the nearest value from items
+  ([#8903](https://github.com/taiga-family/taiga-ui/issues/8903))
+  ([96a7728](https://github.com/taiga-family/taiga-ui/commit/96a772852207ab1540db9e28a0d900bc23e45d64))
+- **kit:** fix styles for input-inline when spellcheck marks word incorrect
+  ([#8868](https://github.com/taiga-family/taiga-ui/issues/8868))
+  ([ee0b4bf](https://github.com/taiga-family/taiga-ui/commit/ee0b4bf693dfac54477751bce868b492b644e33f))
+
 ## [3.93.0](https://github.com/taiga-family/taiga-ui/compare/v3.92.0...v3.93.0) (2024-08-26)
 
 ### Bug Fixes
