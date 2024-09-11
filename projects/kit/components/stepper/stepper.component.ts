@@ -60,17 +60,15 @@ export class TuiStepperComponent {
 
     protected activeItemIndex = 0;
 
+    protected readonly $ = inject(ResizeObserverService, {self: true})
+        .pipe(takeUntilDestroyed())
+        .subscribe(() => this.scrollIntoView(this.activeItemIndex));
+
     @Input()
     public orientation: TuiOrientation = 'horizontal';
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    constructor() {
-        inject(ResizeObserverService, {self: true})
-            .pipe(takeUntilDestroyed())
-            .subscribe(() => this.scrollIntoView(this.activeItemIndex));
-    }
 
     @Input('activeItemIndex')
     public set activeIndex(index: number) {
