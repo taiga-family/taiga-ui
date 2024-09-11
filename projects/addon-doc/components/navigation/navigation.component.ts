@@ -16,7 +16,11 @@ import {
     RouterLinkActive,
     Scroll,
 } from '@angular/router';
-import {TUI_DOC_ICONS, TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_ICONS,
+    TUI_DOC_PAGE_LOADED,
+    TUI_DOC_SEARCH_TEXT,
+} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
@@ -90,6 +94,7 @@ export class TuiDocNavigation {
     protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
+    protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
     protected readonly activatedRoute = inject(ActivatedRoute);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
