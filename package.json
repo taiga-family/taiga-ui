@@ -84,7 +84,6 @@
             "sonarjs/arguments-order": "off",
             "sonarjs/concise-regex": "off",
             "sonarjs/no-angular-bypass-sanitization": "off",
-            "sonarjs/no-base-to-string": "off",
             "sonarjs/no-nested-conditional": "off",
             "sonarjs/no-redundant-type-constituents": "off",
             "sonarjs/no-unused-expressions": "off",
