@@ -22,6 +22,10 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         moduleSpecifier: '@taiga-ui/kit',
     },
     {
+        name: 'TuiPdfViewerModule',
+        moduleSpecifier: '@taiga-ui/kit',
+    },
+    {
         name: 'TuiThemeTinkoff2023NightModule',
         moduleSpecifier: '@taiga-ui/proprietary-core',
     },
