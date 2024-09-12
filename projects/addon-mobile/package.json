@@ -14,7 +14,7 @@
         "@angular/cdk": ">=16.0.0",
         "@angular/common": ">=16.0.0",
         "@angular/core": ">=16.0.0",
-        "@ng-web-apis/common": "^4.3.0",
+        "@ng-web-apis/common": "^4.5.0",
         "@taiga-ui/cdk": "^4.6.0",
         "@taiga-ui/core": "^4.6.0",
         "@taiga-ui/kit": "^4.6.0",
