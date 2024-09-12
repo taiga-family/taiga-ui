@@ -10,6 +10,7 @@ import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs';
+import {tuiAutoFocusOptionsProvider} from '@taiga-ui/cdk';
 
 function labelsProviderFactory(pages: TuiDocRoutePages): readonly string[] {
     return pages
@@ -39,6 +40,7 @@ export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocRoutePages[]> =
     new InjectionToken<readonly TuiDocRoutePages[]>('[NAVIGATION_ITEMS]');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
+    tuiAutoFocusOptionsProvider({preventScroll: true}),
     tuiLinkOptionsProvider({appearance: 'icon'}),
     {
         provide: NAVIGATION_TITLE,

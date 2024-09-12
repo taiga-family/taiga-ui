@@ -18,7 +18,6 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
-import {TuiPreventIOSScroll} from '@taiga-ui/addon-mobile/directives/prevent-ios-scroll';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
@@ -65,7 +64,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiIcon,
         TuiInputModule,
         TuiLink,
-        TuiPreventIOSScroll,
         TuiScrollbar,
         TuiTextfield,
         TuiTextfieldControllerModule,

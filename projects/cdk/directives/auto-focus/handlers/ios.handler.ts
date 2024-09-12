@@ -53,7 +53,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
                 fakeInput.removeEventListener('focus', focusHandler);
 
                 elementFocusTimeoutId = this.win.setTimeout(() => {
-                    this.element.focus({preventScroll: false});
+                    this.element.focus({preventScroll: this.options.preventScroll});
                     fakeInput.remove();
                 }, duration);
             });
