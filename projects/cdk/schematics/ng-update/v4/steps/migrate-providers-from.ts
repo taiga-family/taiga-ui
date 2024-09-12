@@ -14,7 +14,6 @@ export function migrateImportProvidersFrom(options: TuiSchema): void {
         ...getNamedImportReferences('TuiPushModule', '@taiga-ui/kit'),
         ...getNamedImportReferences('TuiPdfViewerModule', '@taiga-ui/kit'),
         ...getNamedImportReferences('TuiPreviewModule', '@taiga-ui/addon-preview'),
-        ...getNamedImportReferences('TuiPreviewActionModule', '@taiga-ui/addon-preview'),
     ];
 
     for (const ref of refs) {

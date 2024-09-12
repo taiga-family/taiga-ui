@@ -82,7 +82,7 @@ const COMPONENT_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
 import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
-import { TuiRoot, TuiAlert, TuiDialog, TuiPreview } from "@taiga-ui/core";
+import { TuiRoot, TuiAlert, TuiDialog } from "@taiga-ui/core";
 import { TuiPush, TuiPreview } from "@taiga-ui/kit";
 
 @Component({

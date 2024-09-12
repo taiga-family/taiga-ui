@@ -49,4 +49,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiMobileTabsModule',
         moduleSpecifier: '@taiga-ui/addon-mobile',
     },
+    {
+        name: 'TuiPreviewActionModule',
+        moduleSpecifier: '@taiga-ui/addon-preview',
+    },
 ];
