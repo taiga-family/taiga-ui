@@ -6,10 +6,11 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {TuiDayRange, TuiDay} from '@taiga-ui/cdk/date-time';
+import type {TuiDay} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
     MIN_YEAR,
+    TuiDayRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -71,7 +72,7 @@ export class TuiCalendarYear {
         );
     }
 
-    public getItemRange(item: number): 'start' | 'end' | 'middle' | 'active' | null {
+    public getItemRange(item: number): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
         if (value instanceof TuiYear) {

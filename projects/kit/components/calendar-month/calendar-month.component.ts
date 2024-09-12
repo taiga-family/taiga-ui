@@ -8,7 +8,6 @@ import {
     Output,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     TUI_FIRST_DAY,
@@ -20,6 +19,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
@@ -41,9 +41,9 @@ const TODAY = TuiDay.currentLocal();
         TuiHovered,
         TuiLet,
         TuiLink,
+        TuiRepeatTimes,
         TuiScrollbar,
         TuiSpinButton,
-        TuiRepeatTimes,
     ],
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
@@ -100,7 +100,7 @@ export class TuiCalendarMonth {
         this.updateActiveYear(this.year.append({year: -1}));
     }
 
-    public getItemRange(item: TuiMonth): 'start' | 'end' | 'middle' | 'active' | null {
+    public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
         if (!(value instanceof TuiMonthRange)) {

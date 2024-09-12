@@ -93,7 +93,7 @@ export class TuiCalendarSheet {
         this.updateHoveredItem(item || null);
     }
 
-    public getItemRange(item: TuiDay): 'start' | 'end' | 'middle' | 'active' | null {
+    public getItemRange(item: TuiDay): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
         if (value instanceof TuiDay) {
