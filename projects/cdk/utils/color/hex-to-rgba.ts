@@ -5,7 +5,7 @@ const convertHexUnitTo256 = (hexStr: string): number =>
     parseInt(hexStr.repeat(2 / hexStr.length), 16);
 
 const getAlphaFloat = (a?: number, alpha?: number): number => {
-    if (typeof a !== 'undefined') {
+    if (a !== undefined) {
         return Number((a / 255).toFixed(2));
     }
 
