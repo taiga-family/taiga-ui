@@ -41,16 +41,16 @@
             Add a
             <code>setupFilesAfterEnv</code>
             property to your
-            <code>jest.config.js</code>
+            <code>jest.config.ts</code>
             or
             <code>package.json</code>
             jest configuration (depending on where your configuration is) with the path to
-            <code>setup-jest.js</code>
+            <code>setup-jest.ts</code>
             if you have not already.
 
             <tui-doc-code
-                filename="jest.config.js"
-                [code]="jestConfigJs"
+                filename="jest.config.ts"
+                [code]="jestConfig"
             />
             or
             <tui-doc-code
@@ -60,20 +60,20 @@
         </li>
         <li class="tui-list__item">
             Create the file
-            <code>setup-jest.js</code>
+            <code>setup-jest.ts</code>
             (wherever you want as long as it's at the path referenced above) if you have not already. For example here
             at the root of the project.
         </li>
         <li class="tui-list__item">
             Add the following line to the
-            <code>setup-jest.js</code>
+            <code>setup-jest.ts</code>
             :
-            <code>import '&#64;ng-web-apis/universal/mocks';</code>
+            <code>import '&#64;taiga-ui/testing/setup-jest';</code>
             .
 
             <tui-doc-code
-                filename="setup-jest.js"
-                [code]="setupJestJs"
+                filename="setup-jest.ts"
+                [code]="setupJest"
             />
         </li>
     </ol>
