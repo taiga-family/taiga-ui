@@ -3,7 +3,6 @@ import {tuiPointToClientRect} from '@taiga-ui/cdk';
 describe('tuiPointToClientRect', () => {
     it('default', () => {
         expect(tuiPointToClientRect()).toEqual(
-            // @ts-ignore
             expect.objectContaining({
                 x: 0,
                 y: 0,
@@ -19,7 +18,6 @@ describe('tuiPointToClientRect', () => {
 
     it('x=100,y=200', () => {
         expect(tuiPointToClientRect(100, 200)).toEqual(
-            // @ts-ignore
             expect.objectContaining({
                 x: 100,
                 y: 200,
