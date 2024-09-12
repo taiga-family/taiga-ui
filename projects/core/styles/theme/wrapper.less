@@ -195,10 +195,10 @@
     .transition(opacity);
 
     color: var(--tui-text-primary);
-    opacity: 50%;
+    opacity: 0.5;
 
     [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
-        opacity: 65%;
+        opacity: 0.65;
     }
 
     .wrapper-hover({
@@ -217,7 +217,7 @@
 [tuiTheme='dark'] [tuiWrapper][data-appearance='icon'],
 [tuiTheme='dark'][tuiWrapper][data-appearance='icon'] {
     [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
-        opacity: 100%;
+        opacity: 1;
     }
 
     .wrapper-focus({

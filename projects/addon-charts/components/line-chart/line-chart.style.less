@@ -34,7 +34,7 @@
     inline-size: 0.5rem;
     block-size: 0.5rem;
     border-radius: 100%;
-    opacity: 0%;
+    opacity: 0;
     background: #fff;
     margin: -0.25rem;
     box-shadow:
@@ -47,13 +47,13 @@
     .t-column_hovered &,
     .t-column:hover &,
     .t-column_hint_hovered & {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
 .t-line {
     position: absolute;
-    opacity: 0%;
+    opacity: 0;
     background: var(--tui-border-normal);
 
     &_vertical {
@@ -75,7 +75,7 @@
     :host[style^='z-index: 0'] .t-column_hovered + &,
     :host:not([style]) .t-column:hover + &,
     :host:not([style]) .t-column_hint_hovered + & {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 

@@ -47,7 +47,7 @@
             inline-size: 0.3125rem;
             pointer-events: none;
             background: rgba(237, 237, 237, 0.7);
-            opacity: 0%;
+            opacity: 0;
         }
     }
 
@@ -79,7 +79,7 @@
 }
 
 :host-context(table._stuck)._sticky::after {
-    opacity: 100%;
+    opacity: 1;
 }
 
 :host-context(thead[tuiThead]._stuck) {
@@ -147,11 +147,11 @@
     background: var(--tui-status-warning);
     background-clip: content-box;
     cursor: ew-resize;
-    opacity: 0%;
+    opacity: 0;
 
     &:hover,
     &:active {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
