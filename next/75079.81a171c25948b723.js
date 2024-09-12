@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75079],{75079:e=>{e.exports=".header {\n    display: flex;\n    block-size: 1.5rem;\n    align-items: center;\n    white-space: nowrap;\n    line-height: 1.5rem;\n\n    &_empty {\n        opacity: 0.3;\n    }\n}\n"}}]);

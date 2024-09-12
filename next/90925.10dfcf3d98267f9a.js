@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[90925],{90925:e=>{e.exports=".image {\n    background: url('/assets/images/road-illustration.jpg') no-repeat center / cover;\n\n    &::before {\n        background: rgb(0 0 0 / 50%);\n    }\n}\n"}}]);
