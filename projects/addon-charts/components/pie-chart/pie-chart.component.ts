@@ -28,14 +28,15 @@ const RADII = {
     m: '77.8',
     l: '81.9',
     xl: '81.3',
-};
+} as const;
+
 const TRANSFORM = {
     xs: 1.15,
     s: 1.25,
     m: 1.11,
     l: 1.09,
     xl: 1.08,
-};
+} as const;
 
 @Component({
     standalone: true,
@@ -92,7 +93,7 @@ export class TuiPieChart {
         return this.masked ? `url(#${this.maskId})` : null;
     }
 
-    protected get radius(): string {
+    protected get radius(): (typeof RADII)[keyof typeof RADII] {
         return RADII[this.size];
     }
 
@@ -100,10 +101,12 @@ export class TuiPieChart {
         return this.getSegments(this.value);
     }
 
-    protected getTransform(index: number): string | null {
+    protected getTransform(
+        index: number,
+    ): `scale(${(typeof TRANSFORM)[keyof typeof TRANSFORM]})` | null {
         const transform = this.masked
-            ? `scale(${TRANSFORM[this.size]})`
-            : `scale(${TRANSFORM.xs})`;
+            ? (`scale(${TRANSFORM[this.size]})` as const)
+            : (`scale(${TRANSFORM.xs})` as const);
 
         return index === this.activeItemIndex ? transform : null;
     }

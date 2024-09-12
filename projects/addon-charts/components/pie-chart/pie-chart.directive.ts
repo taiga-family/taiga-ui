@@ -1,9 +1,8 @@
-import {Directive, inject, Input} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, Input, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_ANIMATION_FRAME, WA_PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -13,44 +12,50 @@ import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
 @Directive({
     standalone: true,
     selector: 'path[tuiPieChart]',
+    host: {
+        '[attr.d]': 'path()',
+    },
 })
 export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
+    private readonly performance = inject(WA_PERFORMANCE);
+    private readonly cd = inject(ChangeDetectorRef);
+    private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
+    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
+    protected readonly path = signal('');
+    protected readonly $ = this.sector$
+        .pipe(
+            pairwise(),
+            switchMap(([prev, cur]) => {
+                const now = this.performance.now();
+                const startDelta = cur[0] - prev[0];
+                const endDelta = cur[1] - prev[1];
 
-    constructor() {
-        const el = tuiInjectElement<SVGPathElement>();
-        const performance = inject(WA_PERFORMANCE);
-        const animationFrame$ = inject(WA_ANIMATION_FRAME);
-        const speed = inject(TUI_ANIMATIONS_SPEED);
-
-        this.sector$
-            .pipe(
-                pairwise(),
-                switchMap(([prev, cur]) => {
-                    const now = performance.now();
-                    const startDelta = cur[0] - prev[0];
-                    const endDelta = cur[1] - prev[1];
-
-                    return animationFrame$.pipe(
-                        map((timestamp) =>
-                            tuiEaseInOutQuad(
-                                tuiClamp((timestamp - now) / tuiGetDuration(speed), 0, 1),
+                return this.animationFrame$.pipe(
+                    map((timestamp) =>
+                        tuiEaseInOutQuad(
+                            tuiClamp(
+                                (timestamp - now) / tuiGetDuration(this.speed),
+                                0,
+                                1,
                             ),
                         ),
-                        takeWhile((progress) => progress < 1, true),
-                        map((progress) => [
-                            prev[0] + startDelta * progress,
-                            cur[1] > 359 ? cur[1] : prev[1] + endDelta * progress,
-                        ]),
-                    );
-                }),
-                tuiZonefree(),
-                takeUntilDestroyed(),
-            )
-            .subscribe(([start, end]) =>
-                el.setAttribute('d', tuiDescribeSector(start, end)),
-            );
-    }
+                    ),
+                    takeWhile((progress) => progress < 1, true),
+                    map((progress) => [
+                        prev[0] + startDelta * progress,
+                        cur[1] > 359 ? cur[1] : prev[1] + endDelta * progress,
+                    ]),
+                );
+            }),
+            map(([start, end]) => tuiDescribeSector(start, end)),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        )
+        .subscribe((path) => {
+            this.path.set(path);
+            this.cd.detectChanges();
+        });
 
     @Input()
     public set tuiPieChart(sector: readonly [number, number]) {
