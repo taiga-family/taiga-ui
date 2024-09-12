@@ -131,7 +131,7 @@ export class TuiCalendarSheet {
         range: string | null,
         markerHandler: TuiMarkerHandler | null,
     ): [string, string] | [string] | null => {
-        if (today || ['start', 'end', 'active'].includes(range || '')) {
+        if (today || ['active', 'end', 'start'].includes(range || '')) {
             return null;
         }
 
