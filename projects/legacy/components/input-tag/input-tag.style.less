@@ -255,13 +255,13 @@
 
     // Hide blinking caret even in IE
     &_hidden {
-        opacity: 0;
+        opacity: 0%;
         text-indent: -10em;
     }
 
     &::placeholder {
         color: var(--tui-text-tertiary);
-        opacity: 0;
+        opacity: 0%;
     }
 
     :host-context([tuiTheme='dark']) &::placeholder {
@@ -269,7 +269,7 @@
     }
 
     :host._focused &:not(:read-only)::placeholder {
-        opacity: 1;
+        opacity: 100%;
     }
 }
 

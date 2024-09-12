@@ -123,7 +123,7 @@
     font-weight: bold;
     letter-spacing: 0.015625rem;
     cursor: pointer;
-    opacity: 0.1;
+    opacity: 10%;
     transform: scale(0.73);
     transition:
         color,
@@ -132,12 +132,12 @@
 
     &[data-state='adjacent'] {
         transform: scale(0.86);
-        opacity: 0.3;
+        opacity: 30%;
     }
 
     &[data-state='active'] {
         color: @accent;
-        opacity: 1;
+        opacity: 100%;
         transform: scale(1);
     }
 }
@@ -221,9 +221,9 @@
 .t-months {
     .transition(opacity);
 
-    opacity: 0;
+    opacity: 0%;
 
     :host(._initialized) & {
-        opacity: 1;
+        opacity: 100%;
     }
 }
