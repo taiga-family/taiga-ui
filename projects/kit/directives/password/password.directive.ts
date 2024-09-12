@@ -31,7 +31,6 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
     host: {
         style: 'cursor: pointer',
         '(click)': 'toggle()',
-        '[style.pointer-events]': 'disabled ? "none" : null',
         '[style.border]':
             'textfield.options.size() === "s" ? "0.25rem solid transparent" : null',
     },
@@ -61,10 +60,6 @@ export class TuiPassword {
         'tuiHint',
         computed(() => (this.hidden() ? this.texts()[0] : this.texts()[1])),
     );
-
-    protected get disabled(): boolean {
-        return !this.textfield.el?.nativeElement.value;
-    }
 
     protected toggle(): void {
         this.hidden.set(!this.hidden());

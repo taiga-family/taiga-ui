@@ -128,10 +128,10 @@ export class TuiCalendarSheet {
     protected readonly toMarkers = (
         day: TuiDay,
         today: boolean,
-        inRange: boolean,
+        range: string | null,
         markerHandler: TuiMarkerHandler | null,
     ): [string, string] | [string] | null => {
-        if (today || inRange) {
+        if (today || ['start', 'end', 'active'].includes(range || '')) {
             return null;
         }
 
