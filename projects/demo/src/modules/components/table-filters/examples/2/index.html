@@ -1,0 +1,74 @@
+<ng-container tuiTableFilters>
+    <form [formGroup]="filterForm">
+        <tui-input-number
+            formControlName="balance"
+            tuiTableFilter="controls"
+            [tuiGenericFilter]="filter"
+        >
+            Minimal balance
+        </tui-input-number>
+        <label class="toggle">
+            <input
+                size="s"
+                tuiSwitch
+                type="checkbox"
+                [ngModel]="filterForm.enabled"
+                [ngModelOptions]="{standalone: true}"
+                [showIcons]="false"
+                (ngModelChange)="onToggle($event)"
+            />
+            Enable filtering
+        </label>
+    </form>
+    <table
+        tuiTable
+        class="table"
+        [columns]="columns"
+    >
+        <thead>
+            <tr tuiThGroup>
+                <th tuiTh>Name</th>
+                <th tuiTh>Balance</th>
+            </tr>
+        </thead>
+        <tbody tuiTbody>
+            <tr
+                *ngFor="let item of items() | tuiTableFilters | async"
+                tuiTr
+                [formGroup]="item"
+            >
+                <td
+                    *tuiCell="'name'"
+                    tuiTd
+                >
+                    <tui-input
+                        formControlName="name"
+                        tuiTextfieldSize="s"
+                    >
+                        Type an name
+                        <input
+                            autocomplete="name"
+                            tuiTextfieldLegacy
+                            type="name"
+                        />
+                    </tui-input>
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    <tui-input-number formControlName="balance">Type a balance</tui-input-number>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_top-2"
+        (click)="addRow()"
+    >
+        Add
+    </button>
+</ng-container>
