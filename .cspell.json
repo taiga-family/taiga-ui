@@ -28,7 +28,8 @@
         "svgs",
         "contentalign",
         "inputpassword",
-        "inputcopy"
+        "inputcopy",
+        "docsearch"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
