@@ -1,5 +1,3 @@
-import type {WritableSignal} from '@angular/core';
-import {signal} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 const DEFAULT = {
@@ -7,9 +5,9 @@ const DEFAULT = {
 } as const;
 
 export interface TuiHighlightOptions {
-    readonly highlightColor: WritableSignal<string>;
+    readonly highlightColor: string;
 }
 
 export const TUI_HIGHLIGHT_OPTIONS = tuiCreateToken<TuiHighlightOptions>({
-    highlightColor: signal(DEFAULT.highlightColor),
+    highlightColor: DEFAULT.highlightColor,
 });

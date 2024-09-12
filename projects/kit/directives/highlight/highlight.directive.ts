@@ -34,7 +34,7 @@ export class TuiHighlight implements OnChanges {
     public tuiHighlight = '';
 
     @Input()
-    public tuiHighlightColor = this.options.highlightColor();
+    public tuiHighlightColor = this.options.highlightColor;
 
     constructor() {
         inject(ResizeObserverService, {self: true})
