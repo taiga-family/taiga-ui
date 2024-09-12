@@ -14,7 +14,7 @@
 
 .overlay {
     &::after {
-        opacity: 0%;
+        opacity: 0;
         background: linear-gradient(
             -45deg,
             #a1a1b3 0.36%,
@@ -27,12 +27,12 @@
 
     @media (hover: hover) and (pointer: fine) {
         &:hover::after {
-            opacity: 50%;
+            opacity: 0.5;
         }
     }
 
     &:active::after {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 

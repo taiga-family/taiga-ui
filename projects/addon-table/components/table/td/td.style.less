@@ -47,7 +47,7 @@
         inline-size: 0.3125rem;
         pointer-events: none;
         background: rgba(237, 237, 237, 0.7);
-        opacity: 0%;
+        opacity: 0;
     }
 
     &:focus-within:not(:disabled) {
@@ -64,7 +64,7 @@
 }
 
 :host-context(table._stuck):last-of-type::after {
-    opacity: 100%;
+    opacity: 1;
 }
 
 :host-context(table[data-size='l']) {

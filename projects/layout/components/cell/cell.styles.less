@@ -42,10 +42,10 @@
         & a {
             .transition(opacity);
 
-            opacity: 0%;
+            opacity: 0;
 
             &:focus-visible {
-                opacity: 100%;
+                opacity: 1;
             }
         }
     }
@@ -159,12 +159,12 @@
     }
 
     &:hover [tuiCellActions] ~ * {
-        opacity: 0%;
+        opacity: 0;
     }
 
     &:hover [tuiCellActions] button,
     &:hover [tuiCellActions] a {
-        opacity: 100%;
+        opacity: 1;
     }
 
     [tuiOption] &,
