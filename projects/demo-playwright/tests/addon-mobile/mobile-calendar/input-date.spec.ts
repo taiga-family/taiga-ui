@@ -6,7 +6,7 @@ import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate and mobile user agent', () => {
     const date = new Date(2023, 10, 1);
-    const november = '.t-month-wrapper:nth-child(2) .t-cell';
+    const november = '.t-month-wrapper:nth-child(2) .t-cell:not(.t-cell_empty)';
 
     test.use({
         viewport: {width: 430, height: 932},

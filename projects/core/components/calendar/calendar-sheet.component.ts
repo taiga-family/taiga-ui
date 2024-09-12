@@ -152,6 +152,13 @@ export class TuiCalendarSheet {
         this.dayClick.emit(item);
     }
 
+    @tuiPure
+    private getRange(value: TuiDayRange, hoveredItem: TuiDay | null): TuiDayRange {
+        return value.isSingleDay
+            ? TuiDayRange.sort(value.from, hoveredItem ?? value.to)
+            : value;
+    }
+
     private updateHoveredItem(day: TuiDay | null): void {
         if (tuiNullableSame(this.hoveredItem, day, (a, b) => a.daySame(b))) {
             return;
@@ -159,12 +166,5 @@ export class TuiCalendarSheet {
 
         this.hoveredItem = day;
         this.hoveredItemChange.emit(day);
-    }
-
-    @tuiPure
-    private getRange(value: TuiDayRange, hoveredItem: TuiDay | null): TuiDayRange {
-        return value.isSingleDay
-            ? TuiDayRange.sort(value.from, hoveredItem ?? value.to)
-            : value;
     }
 }
