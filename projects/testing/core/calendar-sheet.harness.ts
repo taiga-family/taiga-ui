@@ -21,7 +21,7 @@ class TuiDayCellHarness extends ComponentHarness {
     }
 
     public async getText(): Promise<string> {
-        return (await this.locatorFor('.t-item')()).text();
+        return (await this.host()).text();
     }
 
     public async click(): Promise<void> {
