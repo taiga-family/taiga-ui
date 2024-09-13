@@ -24,7 +24,7 @@
         "@maskito/core": "^3.0.1",
         "@maskito/kit": "^3.0.1",
         "@maskito/phone": "^3.0.1",
-        "@ng-web-apis/common": "^4.3.0",
+        "@ng-web-apis/common": "^4.5.0",
         "@ng-web-apis/intersection-observer": "^4.3.0",
         "@ng-web-apis/mutation-observer": "^4.3.0",
         "@ng-web-apis/resize-observer": "^4.3.0",
