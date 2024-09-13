@@ -99,6 +99,14 @@
                 "rules": {
                     "@angular-eslint/prefer-standalone": "off"
                 }
+            },
+            {
+                "files": [
+                    "**/demo/**/*.ts"
+                ],
+                "rules": {
+                    "max-classes-per-file": "off"
+                }
             }
         ],
         "root": true
