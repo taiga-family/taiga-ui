@@ -9,15 +9,13 @@ import {
     Input,
     NgZone,
     Output,
-    Renderer2,
     signal,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_HINT_COMPONENT,
     TuiHint,
@@ -51,7 +49,6 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiHint,
-        TuiLet,
         TuiLineClampPositionDirective,
         WaResizeObserver,
     ],
@@ -65,8 +62,12 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         },
     ],
     host: {
-        '(transitionend)': 'updateView()',
+        '[style.height.px]': 'height()',
+        '[style.max-height.px]': 'maxHeight()',
         '[class._initialized]': 'initialized()',
+        '(transitionend)': 'updateView()',
+        '(mouseenter)': 'updateView()',
+        '(resize)': 'updateView()',
     },
 })
 export class TuiLineClamp implements DoCheck, AfterViewInit {
@@ -75,24 +76,33 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
 
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly renderer = inject(Renderer2);
     private readonly cd = inject(ChangeDetectorRef);
     private readonly zone: NgZone = inject(NgZone);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
     protected initialized = signal(false);
+    protected maxHeight = signal(0);
+    protected height = signal(0);
 
-    protected lineClamp$ = this.linesLimit$.pipe(
-        startWith(1),
-        pairwise(),
-        switchMap(([prev, next]) =>
-            next >= prev
-                ? of(next)
-                : tuiTypedFromEvent(this.el, 'transitionend').pipe(
-                      filter(tuiIsCurrentTarget),
-                      map(() => next),
-                  ),
+    protected readonly $ = timer(0)
+        .pipe(tuiZonefree(this.zone), takeUntilDestroyed())
+        .subscribe(() => this.initialized.set(true));
+
+    protected lineClamp = toSignal(
+        this.linesLimit$.pipe(
+            startWith(1),
+            pairwise(),
+            switchMap(([prev, next]) =>
+                next >= prev
+                    ? of(next)
+                    : tuiTypedFromEvent(this.el, 'transitionend').pipe(
+                          filter(tuiIsCurrentTarget),
+                          map(() => next),
+                      ),
+            ),
+            takeUntilDestroyed(),
         ),
+        {initialValue: 0},
     );
 
     @Input()
@@ -104,10 +114,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     @Output()
     public readonly overflownChange: Observable<boolean> =
         this.isOverflown$.pipe(distinctUntilChanged());
-
-    constructor() {
-        this.skipInitialTransition();
-    }
 
     @Input()
     public set linesLimit(linesLimit: number) {
@@ -143,27 +149,13 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
         this.cd.detectChanges();
     }
 
-    private skipInitialTransition(): void {
-        timer(0)
-            .pipe(tuiZonefree(this.zone))
-            .subscribe(() => this.initialized.set(true));
-    }
-
     private update(): void {
         if (this.outlet) {
-            this.renderer.setStyle(
-                this.el,
-                'height',
-                tuiPx(this.outlet.nativeElement.scrollHeight + 4),
-            );
+            this.height.set(this.outlet.nativeElement.scrollHeight + 4);
         }
 
         if (this.initialized()) {
-            this.renderer.setStyle(
-                this.el,
-                'max-height',
-                tuiPx(this.lineHeight * this.linesLimit$.value),
-            );
+            this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
         }
     }
 }

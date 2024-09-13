@@ -1,12 +1,9 @@
 <div
-    *tuiLet="lineClamp$ | async as lineClamp"
     tuiLineClampPosition
     class="t-wrapper"
-    [style.-webkit-line-clamp]="lineClamp"
-    [style.word-break]="(lineClamp || 0) > 1 ? 'break-word' : 'break-all'"
+    [style.-webkit-line-clamp]="lineClamp()"
+    [style.word-break]="lineClamp() > 1 ? 'break-word' : 'break-all'"
     [tuiHint]="computedContent"
-    (mouseenter)="updateView()"
-    (waResizeObserver)="updateView()"
 >
     <ng-container *polymorpheusOutlet="content as text">
         {{ text }}
