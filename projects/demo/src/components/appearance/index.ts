@@ -7,9 +7,9 @@ import {type TuiInteractiveState, TuiLink, TuiTitle} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocAppearance]',
+    imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TuiDocAPIItem, TuiTitle, TuiLink, RouterLink],
 })
 export class TuiDocAppearance {
     protected readonly routes = DemoRoute;
@@ -50,7 +50,7 @@ export class TuiDocAppearance {
     public focus: boolean | null = null;
     public mode: string | null = null;
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.selected || this.tuiDocAppearance[0] || this.appearances[0];
     }
 }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocAppearance} from '@demo/components/appearance';
+import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeL, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
@@ -10,13 +10,13 @@ import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiDemo,
-        TuiBlock,
-        TuiSwitch,
-        TuiTitle,
         FormsModule,
+        TuiBlock,
+        TuiDemo,
         TuiDocAppearance,
         TuiDocIcons,
+        TuiSwitch,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     changeDetection,

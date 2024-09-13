@@ -7,35 +7,39 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSwitch} from '@taiga-ui/kit';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiSwitch} from '@taiga-ui/kit/components/switch';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 
-import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
 import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
+import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
 
 @Component({
     standalone: true,
     selector: 'tr[tuiDocAPIItem]',
+    imports: [
+        FormsModule,
+        NgForOf,
+        NgIf,
+        NgSwitch,
+        NgSwitchCase,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDocTypeReferencePipe,
+        TuiIcon,
+        TuiInputNumberModule,
+        TuiInspectPipe,
+        TuiSwitch,
+        TuiTextfield,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgIf,
-        NgForOf,
-        NgSwitch,
-        NgSwitchCase,
-        FormsModule,
-        TuiDocTypeReferencePipe,
-        TuiInspectPipe,
-        TuiIcon,
-        TuiSwitch,
-        TuiChevron,
-        TuiTextfield,
-        TuiDataListWrapper,
-        TuiInputNumberModule,
-        TuiTextfieldControllerModule,
-    ],
 })
 export class TuiDocAPIItem<T> {
     @Input()

@@ -5,9 +5,9 @@ import {TuiTitle} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocIcons]',
+    imports: [TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TuiDocAPIItem, TuiTitle],
 })
 export class TuiDocIcons {
     protected readonly icons = [
