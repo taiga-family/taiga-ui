@@ -6,6 +6,9 @@
  */
 export const TUI_USED_ICONS = [
     '@tui.search',
+    '@tui.heart',
+    '@tui.settings',
+    '@tui.chevron-down',
     '@tui.calendar',
     '@tui.visa-mono',
     '@tui.mastercard-mono',
@@ -16,10 +19,8 @@ export const TUI_USED_ICONS = [
     '@tui.layout-grid',
     '@tui.x',
     '@tui.ellipsis',
-    '@tui.heart',
     '@tui.check',
     '@tui.user',
-    '@tui.settings',
     '@tui.chevron-left',
     '@tui.mastercard',
     '@tui.box',
@@ -28,7 +29,6 @@ export const TUI_USED_ICONS = [
     '@tui.gift',
     '@tui.arrow-right',
     '@tui.users',
-    '@tui.chevron-down',
     '@tui.clock',
     '@tui.circle-plus',
     '@tui.circle-arrow-right',

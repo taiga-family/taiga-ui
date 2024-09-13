@@ -1,0 +1,50 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <a
+                tuiLink
+                [routerLink]="routes.Appearance"
+            >
+                <strong>Appearance</strong>
+            </a>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+<tr
+    name="[appearance]"
+    tuiDocAPIItem
+    type="string"
+    [items]="tuiDocAppearance || appearances"
+    [value]="appearance"
+    (valueChange)="selected = $event"
+>
+    Appearance of the element
+</tr>
+<tr
+    name="[tuiAppearanceState]"
+    tuiDocAPIItem
+    type="TuiInteractiveState | null"
+    [items]="states"
+    [(value)]="state"
+>
+    Manual interactive state override
+</tr>
+<tr
+    name="[tuiAppearanceFocus]"
+    tuiDocAPIItem
+    type="boolean | null"
+    [items]="focuses"
+    [(value)]="focus"
+>
+    Manual focus state override
+</tr>
+<tr
+    name="[attr.data-mode]"
+    tuiDocAPIItem
+    type="string | null"
+    [items]="modes"
+    [(value)]="mode"
+>
+    Custom manual mode for the appearance
+</tr>

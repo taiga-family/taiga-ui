@@ -16,7 +16,7 @@
         type="button"
         class="t-clear"
         [iconStart]="icons.close"
-        (click)="directive?.setValue('')"
+        (click)="directive?.setValue(null)"
         (pointerdown.silent.prevent)="el?.nativeElement?.focus()"
     ></button>
     <ng-container #vcr />
