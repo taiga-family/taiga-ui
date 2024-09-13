@@ -18,5 +18,48 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <label
+                [appearance]="appearance.appearance"
+                [attr.data-mode]="appearance.mode"
+                [iconEnd]="icons.iconEnd"
+                [iconStart]="icons.iconStart"
+                [tuiAppearanceFocus]="appearance.focus"
+                [tuiAppearanceState]="appearance.state"
+                [tuiBlock]="size"
+            >
+                <span tuiTitle>
+                    tuiTitle
+                    <span tuiSubtitle>tuiSubtitle</span>
+                </span>
+                <input
+                    tuiSwitch
+                    type="checkbox"
+                    [(ngModel)]="value"
+                />
+            </label>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[tuiBlock]"
+                tuiDocAPIItem
+                type="TuiSizeL | TuiSizeS"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Size of the block
+            </tr>
+            <tbody
+                #appearance
+                [tuiDocAppearance]="appearances"
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>

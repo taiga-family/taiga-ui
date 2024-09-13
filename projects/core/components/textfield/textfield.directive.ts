@@ -58,8 +58,8 @@ export class TuiTextfieldBase {
         return null;
     }
 
-    public setValue(value: string): void {
-        this.el.value = value;
+    public setValue(value: string | null): void {
+        this.el.value = value || '';
         this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 }

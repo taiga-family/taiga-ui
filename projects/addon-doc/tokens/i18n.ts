@@ -22,16 +22,19 @@ export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
  * @string word 'type',
  * @string 'name and description',
  * @string word 'value'
- * @string message for tooltip about ng-polymorpheus
+ * @string @deprecated message for tooltip about ng-polymorpheus
  * ]
  */
 export const TUI_DOC_DOCUMENTATION_TEXTS = tuiCreateToken<
-    [string, string, string, string, string]
+    [argument: string, type: string, name: string, value: string, tooltip: string]
 >([
     'Argument',
     'Type',
     'Name and description',
     'Value',
+    /**
+     * @deprecated
+     */
     'Learn about our dynamic templates from ',
 ]);
 

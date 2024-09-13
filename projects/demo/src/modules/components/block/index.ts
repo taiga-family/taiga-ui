@@ -1,13 +1,31 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {type TuiSizeL, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
+import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [
+        TuiDemo,
+        TuiBlock,
+        TuiSwitch,
+        TuiTitle,
+        FormsModule,
+        TuiDocAppearance,
+        TuiDocIcons,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Example {
     protected readonly examples = ['Sizes', 'Groups', 'Custom'];
+    protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly appearances = ['whiteblock', 'secondary'];
+
+    protected value = false;
+    protected size = this.sizes[2]!;
 }

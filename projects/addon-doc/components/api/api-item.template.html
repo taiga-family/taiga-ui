@@ -1,0 +1,97 @@
+<td class="t-td">
+    <code
+        class="t-name"
+        [class.t-name_banana]="name.startsWith('[(')"
+        [class.t-name_input]="name.startsWith('[')"
+        [class.t-name_output]="name.startsWith('(')"
+    >
+        {{ name }}
+    </code>
+    <ng-content />
+</td>
+<td class="t-td">
+    <code class="t-type">
+        <ng-container *ngFor="let item of type | tuiDocTypeReference; let last = last">
+            <a
+                *ngIf="item.reference; else default"
+                target="_blank"
+                class="t-reference"
+                [attr.href]="item.reference"
+            >
+                {{ item.type }}
+                <tui-icon
+                    icon="@tui.external-link"
+                    [style.font-size.rem]="1"
+                />
+            </a>
+            <ng-template #default>
+                {{ item.type }}
+            </ng-template>
+            <span *ngIf="!last">&nbsp;|&nbsp;</span>
+        </ng-container>
+    </code>
+</td>
+<td class="t-td">
+    <tui-textfield
+        *ngIf="items.length; else noItems"
+        tuiChevron
+        tuiTextfieldSize="m"
+        class="t-input"
+        [content]="content"
+        [tuiTextfieldCleaner]="type.includes('null')"
+    >
+        <select
+            placeholder="null"
+            tuiTextfield
+            [ngModel]="value ?? null"
+            (ngModelChange)="valueChange.emit($event)"
+        ></select>
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            [itemContent]="content"
+            [items]="items"
+        />
+    </tui-textfield>
+    <ng-template
+        #content
+        let-data
+    >
+        <code [style.margin]="0">{{ data | tuiInspectAny }}</code>
+    </ng-template>
+    <ng-template #noItems>
+        <ng-container [ngSwitch]="type">
+            <input
+                *ngSwitchCase="'boolean'"
+                tuiSwitch
+                type="checkbox"
+                [id]="name"
+                [ngModel]="value"
+                (ngModelChange)="valueChange.emit($event)"
+            />
+
+            <tui-textfield
+                *ngSwitchCase="'string'"
+                tuiTextfieldSize="m"
+                class="t-input"
+            >
+                <input
+                    tuiTextfield
+                    [id]="name"
+                    [ngModel]="value || ''"
+                    (ngModelChange)="valueChange.emit($event)"
+                />
+            </tui-textfield>
+
+            <tui-input-number
+                *ngSwitchCase="'number'"
+                tuiTextfieldSize="m"
+                class="t-input"
+                [nativeId]="name"
+                [ngModel]="value"
+                [step]="1"
+                [tuiTextfieldLabelOutside]="true"
+                (ngModelChange)="valueChange.emit($event || 0)"
+            />
+        </ng-container>
+    </ng-template>
+</td>

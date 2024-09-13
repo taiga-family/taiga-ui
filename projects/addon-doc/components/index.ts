@@ -1,3 +1,5 @@
+export * from './api/api.component';
+export * from './api/api-item.component';
 export * from './code';
 export * from './copy';
 export * from './demo';
