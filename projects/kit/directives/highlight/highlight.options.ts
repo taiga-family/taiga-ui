@@ -7,4 +7,4 @@ export interface TuiHighlightOptions {
 export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] =
     tuiCreateOptions<TuiHighlightOptions>({
         highlightColor: 'var(--tui-service-selection-background)',
-    });
+    } as const);
