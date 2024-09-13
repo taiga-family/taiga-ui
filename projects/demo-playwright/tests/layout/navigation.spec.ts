@@ -11,7 +11,7 @@ test.describe('Navigation', () => {
 
         await expect(example).toHaveScreenshot('01-navigation.png');
 
-        await example.locator('aside [iconStart="@tui.settings"]').hover();
+        await example.locator('[automation-id="setting"]').hover();
 
         await expect(example).toHaveScreenshot('02-navigation.png');
     });
@@ -22,7 +22,7 @@ test.describe('Navigation', () => {
 
         await example.scrollIntoViewIfNeeded();
 
-        await example.locator('aside [iconStart="@tui.heart"]').hover();
+        await example.locator('[automation-id="hint"]').hover();
 
         await expect(example).toHaveScreenshot('03-navigation.png');
     });
@@ -36,12 +36,12 @@ test.describe('Navigation', () => {
 
         await expect(example).toHaveScreenshot('04-navigation.png');
 
-        await example.locator('aside [iconStart="@tui.settings"]').focus();
+        await example.locator('[automation-id="setting"]').focus();
         await page.keyboard.press('Enter');
 
         await expect(example).toHaveScreenshot('05-navigation.png');
 
-        await example.locator('aside [iconStart="@tui.heart"]').focus();
+        await example.locator('[automation-id="hint"]').focus();
         await page.keyboard.press('Tab');
         await page.keyboard.press('Space');
 
