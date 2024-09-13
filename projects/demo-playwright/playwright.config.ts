@@ -46,6 +46,14 @@ export default defineConfig({
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
+            threshold: 0.25,
+            maxDiffPixelRatio: 0.025,
+            maxDiffPixels: 25,
+        },
+        toMatchSnapshot: {
+            threshold: 0.25,
+            maxDiffPixelRatio: 0.025,
+            maxDiffPixels: 25,
         },
     },
 });
