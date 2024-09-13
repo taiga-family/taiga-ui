@@ -59,21 +59,15 @@ export function updatePackages({tree}: DevkitFileSystem): void {
     }
 
     try {
-        if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
-            addPackageJsonDependency(tree, {
-                name: '@taiga-ui/layout',
-                version: TUI_VERSION,
-                type: cdk?.type,
-            });
-        }
-
-        if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/legacy'}).length) {
-            addPackageJsonDependency(tree, {
-                name: '@taiga-ui/legacy',
-                version: TUI_VERSION,
-                type: cdk?.type,
-            });
-        }
+        ['@taiga-ui/layout', '@taiga-ui/legacy'].forEach((moduleSpecifier) => {
+            if (getImports(ALL_TS_FILES, {moduleSpecifier}).length) {
+                addPackageJsonDependency(tree, {
+                    name: moduleSpecifier,
+                    version: TUI_VERSION,
+                    type: cdk?.type,
+                });
+            }
+        });
     } catch (e) {
         const error = e as Error;
 
