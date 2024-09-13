@@ -9,14 +9,14 @@ import {
 
 import {TUI_VERSION} from '../../../../constants/version';
 import {ALL_TS_FILES} from '../../../constants';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {errorLog} from '../../../utils/colored-log';
 import {replacePackageName} from '../../steps';
 
 export const TUI_POLYMORPHEUS_VERSION = '^4.6.4';
 export const TUI_DOMPURIFY_VERSION = '^4.1.2';
 export const TUI_EVENT_PLUGINS_VERSION = '^4.0.1';
 
-export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
+export function updatePackages({tree}: DevkitFileSystem): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
 
     packagesToRemove.forEach((pkg) => {
@@ -58,19 +58,27 @@ export function updatePackages({tree}: DevkitFileSystem, _: TuiSchema): void {
         });
     }
 
-    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
-        addPackageJsonDependency(tree, {
-            name: '@taiga-ui/layout',
-            version: TUI_VERSION,
-            type: cdk?.type,
-        });
-    }
+    try {
+        if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/layout'}).length) {
+            addPackageJsonDependency(tree, {
+                name: '@taiga-ui/layout',
+                version: TUI_VERSION,
+                type: cdk?.type,
+            });
+        }
 
-    if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/legacy'}).length) {
-        addPackageJsonDependency(tree, {
-            name: '@taiga-ui/legacy',
-            version: TUI_VERSION,
-            type: cdk?.type,
-        });
+        if (getImports(ALL_TS_FILES, {moduleSpecifier: '@taiga-ui/legacy'}).length) {
+            addPackageJsonDependency(tree, {
+                name: '@taiga-ui/legacy',
+                version: TUI_VERSION,
+                type: cdk?.type,
+            });
+        }
+    } catch (e) {
+        const error = e as Error;
+
+        errorLog(
+            `ATTENTION: An error occurred during migration: ${error.message}\n${error.stack}`,
+        );
     }
 }
