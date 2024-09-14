@@ -1,39 +1,22 @@
-import type {ElementRef, QueryList} from '@angular/core';
+import {type ElementRef, type QueryList, signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    inject,
     Input,
     Output,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import {tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiSizeXL} from '@taiga-ui/core/types';
 import type {Observable} from 'rxjs';
 import {map, merge, ReplaySubject, startWith, switchMap, tap, timer} from 'rxjs';
-// 3/4 with 1% safety offset
-const ARC = 0.76;
 
-const SIZE: Record<TuiSizeXL, number> = {
-    m: 9,
-    l: 11,
-    xl: 16,
-};
-
-const WIDTH: Record<TuiSizeXL, number> = {
-    m: 0.25,
-    l: 0.375,
-    xl: 0.5625,
-};
-
-const GAP: Record<TuiSizeXL, number> = {
-    m: 0.125,
-    l: 0.1875,
-    xl: 0.25,
-};
+const ARC = 0.76; // 3/4 with 1% safety offset
+const SIZE = {m: 9, l: 11, xl: 16} as const;
+const WIDTH = {m: 0.25, l: 0.375, xl: 0.5625} as const;
+const GAP = {m: 0.125, l: 0.1875, xl: 0.25} as const;
 
 function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
     return arcs.map(({nativeElement}, index) =>
@@ -61,7 +44,11 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 export class TuiArcChart {
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
-    protected initialized = false;
+    protected initialized = signal(false);
+
+    protected readonly $ = timer(0)
+        .pipe(tuiZonefree(), takeUntilDestroyed())
+        .subscribe(() => this.initialized.set(true));
 
     @Input()
     public value: readonly number[] = [];
@@ -93,14 +80,6 @@ export class TuiArcChart {
             this.activeItemIndex = index;
         }),
     );
-
-    constructor() {
-        timer(0)
-            .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
-            .subscribe(() => {
-                this.initialized = true;
-            });
-    }
 
     @ViewChildren('arc')
     protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
