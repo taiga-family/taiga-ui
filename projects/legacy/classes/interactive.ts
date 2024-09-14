@@ -21,7 +21,7 @@ export abstract class AbstractTuiInteractive {
 
     public abstract focused: boolean;
 
-    private readonly autoIdString: string;
+    private readonly autoIdString: string = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
 
     protected focusVisible = false;
 
@@ -51,10 +51,6 @@ export abstract class AbstractTuiInteractive {
 
     @Output()
     public readonly focusVisibleChange = new EventEmitter<boolean>();
-
-    constructor() {
-        this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
-    }
 
     public get computedDisabled(): boolean {
         return this.disabled;
