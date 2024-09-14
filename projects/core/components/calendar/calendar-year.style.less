@@ -1,21 +1,14 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@itemSize: 3.9375rem;
-
-.picker(@itemSize);
+.date-picker();
 
 :host {
-    inline-size: @itemSize * 4;
+    display: block;
+    inline-size: 16rem;
 }
 
-.t-row {
-    margin: 0.875rem 0;
-
-    &:first-child {
-        margin-top: 0;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
-    }
+.t-cell {
+    inline-size: 4rem;
+    border-block-start-width: 0.5rem;
+    border-block-end-width: 0.5rem;
 }

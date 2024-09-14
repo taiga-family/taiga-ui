@@ -7,6 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     TUI_FIRST_DAY,
@@ -18,13 +19,13 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
-import type {TuiRangeState} from '@taiga-ui/core/types';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();
@@ -40,6 +41,7 @@ const TODAY = TuiDay.currentLocal();
         TuiHovered,
         TuiLet,
         TuiLink,
+        TuiRepeatTimes,
         TuiScrollbar,
         TuiSpinButton,
     ],
@@ -47,12 +49,12 @@ const TODAY = TuiDay.currentLocal();
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._single]': 'isSingle',
+        '[class._picking]': 'isSingle',
     },
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;
-    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
+    protected readonly months = toSignal(inject(TUI_CALENDAR_MONTHS));
 
     @Input()
     public value: TuiMonth | TuiMonthRange | null = null;
@@ -87,10 +89,7 @@ export class TuiCalendarMonth {
     public hoveredItem: TuiMonth | null = null;
 
     public get isSingle(): boolean {
-        return (
-            this.value !== null &&
-            (this.value instanceof TuiMonth || this.value.isSingleMonth)
-        );
+        return this.value instanceof TuiMonthRange && this.value.isSingleMonth;
     }
 
     public onNextYear(): void {
@@ -101,66 +100,34 @@ export class TuiCalendarMonth {
         this.updateActiveYear(this.year.append({year: -1}));
     }
 
-    public isItemInsideRange(month: TuiMonth): boolean {
+    public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
-        if (value === null || value instanceof TuiMonth) {
-            return false;
+        if (!(value instanceof TuiMonthRange)) {
+            return value?.monthSame(item) ? 'active' : null;
         }
 
-        if (!value.isSingleMonth) {
-            return value.from.monthSameOrBefore(month) && value.to.monthAfter(month);
+        const months = item.month + item.year * 12;
+        const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
+        const from = value.from.month + value.from.year * 12;
+        const to = value.to.month + value.to.year * 12;
+        const picking = this.isSingle ? hovered : null;
+        const min = Math.min(from, to, picking ?? from);
+        const max = Math.max(from, to, picking ?? from);
+
+        if (min === max && min === months) {
+            return 'active';
         }
 
-        if (hoveredItem === null) {
-            return false;
-        }
-
-        const range = TuiMonthRange.sort(value.from, hoveredItem);
-
-        return range.from.monthSameOrBefore(month) && range.to.monthAfter(month);
-    }
-
-    public getItemRange(item: TuiMonth): TuiRangeState | null {
-        const {value, hoveredItem} = this;
-
-        if (value === null) {
-            return null;
-        }
-
-        if (value instanceof TuiMonth) {
-            return value.monthSame(item) ? 'single' : null;
-        }
-
-        const theFirstOfRange = value.from.monthSame(item) && !value.isSingleMonth;
-        const hoveredItemAfterFrom =
-            hoveredItem?.monthAfter(value.from) &&
-            value.from.monthSame(item) &&
-            value.isSingleMonth;
-        const hoveredItemIsCandidateToBeFrom =
-            hoveredItem?.monthSame(item) &&
-            hoveredItem?.monthBefore(value.from) &&
-            value.isSingleMonth;
-
-        if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidateToBeFrom) {
+        if (min === months) {
             return 'start';
         }
 
-        const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
-        const hoveredItemBeforeTo =
-            value.to.monthSame(item) &&
-            hoveredItem?.monthBefore(value.to) &&
-            value.isSingleMonth;
-        const hoveredItemIsCandidateToBeTo =
-            hoveredItem?.monthSame(item) &&
-            hoveredItem?.monthAfter(value.from) &&
-            value.isSingleMonth;
-
-        if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidateToBeTo) {
+        if (max === months) {
             return 'end';
         }
 
-        return value.isSingleMonth && value.from.monthSame(item) ? 'single' : null;
+        return min < months && months < max ? 'middle' : null;
     }
 
     protected get computedMin(): TuiMonth {

@@ -1,5 +1,6 @@
 @import 'mixins.scss';
 
+// @deprecated
 @mixin picker($itemSize) {
     :host {
         display: block;

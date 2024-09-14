@@ -12,6 +12,7 @@
 </tui-scrollbar>
 <ng-template #monthSelect>
     <tui-spin-button
+        class="t-spin"
         [focusable]="false"
         [leftDisabled]="previousYearDisabled"
         [rightDisabled]="nextYearDisabled"
@@ -28,19 +29,21 @@
             {{ year.formattedYear }}
         </button>
     </tui-spin-button>
-    <div class="t-row">
-        <ng-container *ngFor="let month of months$ | async; let index = index">
+    <div
+        *tuiRepeatTimes="let row of 3"
+        class="t-row"
+    >
+        <ng-container *tuiRepeatTimes="let column of 4">
             <div
-                *tuiLet="getTuiMonth(index, year.year) as item"
+                *tuiLet="getTuiMonth(row * 4 + column, year.year) as item"
                 class="t-cell"
                 [attr.data-range]="getItemRange(item)"
                 [class.t-cell_disabled]="disabledItemHandlerWithMinMax(item)"
-                [class.t-cell_interval]="isItemInsideRange(item)"
                 [class.t-cell_today]="isItemToday(item)"
                 (click)="onItemClick(item)"
                 (tuiHoveredChange)="onItemHovered($event, item)"
             >
-                <div class="t-item">{{ month }}</div>
+                {{ months()?.[row * 4 + column] }}
             </div>
         </ng-container>
     </div>

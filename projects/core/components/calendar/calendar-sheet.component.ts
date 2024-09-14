@@ -14,10 +14,9 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
-import type {TuiRangeState} from '@taiga-ui/core/types';
 
 export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [string]>;
 
@@ -37,7 +36,7 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     styleUrls: ['./calendar-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._single]': 'isSingleDayRange',
+        '[class._picking]': 'isSingleDayRange',
     },
 })
 export class TuiCalendarSheet {
@@ -94,46 +93,32 @@ export class TuiCalendarSheet {
         this.updateHoveredItem(item || null);
     }
 
-    public getItemRange(item: TuiDay): TuiRangeState | null {
+    public getItemRange(item: TuiDay): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
-        if (!value) {
-            return null;
-        }
-
         if (value instanceof TuiDay) {
-            return value.daySame(item) ? 'single' : null;
+            return value.daySame(item) ? 'active' : null;
         }
 
-        if (!(value instanceof TuiDayRange)) {
-            return value.find((day) => day.daySame(item)) ? 'single' : null;
+        if (!value || !(value instanceof TuiDayRange)) {
+            return value?.find((day) => day.daySame(item)) ? 'active' : null;
         }
 
-        if (
-            (value.from.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem?.dayAfter(value.from) &&
-                value.from.daySame(item) &&
-                value.isSingleDay) ||
-            (hoveredItem?.daySame(item) &&
-                hoveredItem.dayBefore(value.from) &&
-                value.isSingleDay)
-        ) {
+        const range = this.getRange(value, hoveredItem);
+
+        if (value.isSingleDay && range.isSingleDay && value.from.daySame(item)) {
+            return 'active';
+        }
+
+        if (range.from.daySame(item)) {
             return 'start';
         }
 
-        if (
-            (value.to.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem?.dayBefore(value.from) &&
-                value.from.daySame(item) &&
-                value.isSingleDay) ||
-            (hoveredItem?.daySame(item) &&
-                hoveredItem.dayAfter(value.from) &&
-                value.isSingleDay)
-        ) {
+        if (range.to.daySame(item)) {
             return 'end';
         }
 
-        return value.isSingleDay && value.from.daySame(item) ? 'single' : null;
+        return range.from.dayBefore(item) && range.to.dayAfter(item) ? 'middle' : null;
     }
 
     protected get isSingleDayRange(): boolean {
@@ -143,10 +128,10 @@ export class TuiCalendarSheet {
     protected readonly toMarkers = (
         day: TuiDay,
         today: boolean,
-        inRange: boolean,
+        range: string | null,
         markerHandler: TuiMarkerHandler | null,
     ): [string, string] | [string] | null => {
-        if (today || inRange) {
+        if (today || ['active', 'end', 'start'].includes(range || '')) {
             return null;
         }
 
@@ -165,6 +150,13 @@ export class TuiCalendarSheet {
 
     protected onItemClick(item: TuiDay): void {
         this.dayClick.emit(item);
+    }
+
+    @tuiPure
+    private getRange(value: TuiDayRange, hoveredItem: TuiDay | null): TuiDayRange {
+        return value.isSingleDay
+            ? TuiDayRange.sort(value.from, hoveredItem ?? value.to)
+            : value;
     }
 
     private updateHoveredItem(day: TuiDay | null): void {

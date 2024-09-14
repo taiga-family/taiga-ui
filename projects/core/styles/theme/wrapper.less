@@ -132,14 +132,6 @@
         background-size: 0.5rem 0.5rem;
     }
 
-    table &[data-appearance='table']:not(._focused)::after {
-        border-width: 0;
-    }
-
-    table &._focused {
-        z-index: 1;
-    }
-
     &[data-appearance='table']::after {
         border-width: 1px;
         color: var(--tui-border-normal);
@@ -189,6 +181,16 @@
             }
         });
     });
+}
+
+table [tuiWrapper][data-appearance='table'] {
+    &[data-appearance='table']:not(._focused)::after {
+        border-width: 0;
+    }
+
+    &._focused {
+        z-index: 1;
+    }
 }
 
 [tuiWrapper][data-appearance='icon'] {

@@ -142,7 +142,7 @@ describe('CalendarSheet', () => {
 
                 component.value = new TuiDayRange(day1, day1);
 
-                expect(component.getItemRange(day1)).toBe('single');
+                expect(component.getItemRange(day1)).toBe('active');
             });
         });
 

@@ -88,7 +88,7 @@ describe('TuiCalendarYearComponent', () => {
             expect(component.getItemRange(item)).toBe('end');
         });
 
-        it('returns single correctly', () => {
+        it('returns active correctly', () => {
             const item = 2018;
 
             component.value = new TuiDayRange(
@@ -96,37 +96,7 @@ describe('TuiCalendarYearComponent', () => {
                 new TuiDay(item, 2, 2),
             );
 
-            expect(component.getItemRange(item)).toBe('single');
-        });
-    });
-
-    describe('itemIsInterval', () => {
-        it('works correctly if item is in value range', () => {
-            component.value = new TuiDayRange(
-                new TuiDay(2018, 4, 20),
-                new TuiDay(2020, 4, 22),
-            );
-
-            expect(component.itemIsInterval(2019)).toBe(true);
-        });
-
-        it('returns false if item is in value range of same year and no item is hovered', () => {
-            component.value = new TuiDayRange(
-                new TuiDay(2019, 4, 20),
-                new TuiDay(2019, 4, 22),
-            );
-
-            expect(component.itemIsInterval(2019)).toBe(false);
-        });
-
-        it('works correctly if item is in value range of same year and there is hovered item', () => {
-            component.value = new TuiDayRange(
-                new TuiDay(2019, 4, 20),
-                new TuiDay(2019, 4, 22),
-            );
-            component.onItemHovered(true, 2017);
-
-            expect(component.itemIsInterval(2018)).toBe(true);
+            expect(component.getItemRange(item)).toBe('active');
         });
     });
 });

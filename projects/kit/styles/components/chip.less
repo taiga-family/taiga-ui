@@ -31,6 +31,7 @@ tui-chip,
     padding: var(--t-padding);
     block-size: var(--t-size);
     inline-size: fit-content;
+    isolation: isolate;
 
     .interactive({
         cursor: pointer;
@@ -94,6 +95,7 @@ tui-chip,
     & > input[tuiChip] {
         .fullsize();
 
+        z-index: -1;
         margin: 0;
     }
 
