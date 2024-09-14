@@ -6,12 +6,13 @@ import {
     INJECTOR,
     Input,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
-import {take} from 'rxjs';
+import {EMPTY, take} from 'rxjs';
 
 import {TuiSliderKeySteps} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
@@ -39,8 +40,21 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
-
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
+
+    /**
+     * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
+     * when a control is bound using [(ngModel)], first time with a phantom null value.
+     * With `changeDetection: ChangeDetectionStrategy.OnPush` the second call of writeValue with real value don't re-render the view.
+     * ___
+     * See this {@link https://github.com/angular/angular/issues/14988 issue}
+     */
+    protected readonly $ = (this.control instanceof NgModel
+        ? this.control?.valueChanges
+        : EMPTY
+    )
+        ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1), takeUntilDestroyed())
+        .subscribe();
 
     @Input()
     public size: TuiSizeS = this.options.size;
@@ -49,21 +63,6 @@ export class TuiSliderComponent {
     public segments = 1;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
-
-    constructor() {
-        if (this.control instanceof NgModel) {
-            /**
-             * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
-             * when a control is bound using [(ngModel)], first time with a phantom null value.
-             * With `changeDetection: ChangeDetectionStrategy.OnPush` the second call of writeValue with real value don't re-render the view.
-             * ___
-             * See this {@link https://github.com/angular/angular/issues/14988 issue}
-             */
-            this.control.valueChanges
-                ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1))
-                .subscribe();
-        }
-    }
 
     public get valueRatio(): number {
         return (this.value - this.min) / (this.max - this.min) || 0;
@@ -78,7 +77,7 @@ export class TuiSliderComponent {
     }
 
     public get value(): number {
-        if (!this.hasKeySteps && this.control instanceof NgModel) {
+        if (this.control instanceof NgModel && !this.hasKeySteps) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `el.nativeElement.value` is equal to the previous value at this moment.
