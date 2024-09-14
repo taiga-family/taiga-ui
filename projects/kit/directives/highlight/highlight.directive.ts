@@ -27,17 +27,15 @@ export class TuiHighlight implements OnChanges {
         svgNodeFilter,
     );
 
+    protected readonly $ = inject(ResizeObserverService, {self: true})
+        .pipe(takeUntilDestroyed())
+        .subscribe(() => this.updateStyles());
+
     @Input()
     public tuiHighlight = '';
 
     @Input()
     public tuiHighlightColor = 'var(--tui-service-selection-background)';
-
-    constructor() {
-        inject(ResizeObserverService, {self: true})
-            .pipe(takeUntilDestroyed())
-            .subscribe(() => this.updateStyles());
-    }
 
     public ngOnChanges(): void {
         this.updateStyles();

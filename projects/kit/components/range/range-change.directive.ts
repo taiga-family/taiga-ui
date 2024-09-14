@@ -40,34 +40,32 @@ export class TuiRangeChange {
         tuiTypedFromEvent(this.doc, 'mouseup', {passive: true}),
     );
 
+    private activeThumb: '' | 'left' | 'right' = '';
+
+    protected readonly $ = this.pointerDown$
+        .pipe(
+            tap(({clientX, target}) => {
+                this.activeThumb = this.detectActiveThumb(clientX, target);
+                this.activeThumbChange.emit(this.activeThumb);
+
+                if (this.range.focusable) {
+                    this.el.focus();
+                }
+            }),
+            switchMap((event) => this.pointerMove$.pipe(startWith(event))),
+            map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
+            takeUntil(this.pointerUp$),
+            repeat(),
+            takeUntilDestroyed(),
+        )
+        .subscribe((fraction) => {
+            const value = this.range.toValue(fraction);
+
+            this.range.processValue(value, this.activeThumb === 'right');
+        });
+
     @Output()
     public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
-
-    constructor() {
-        let activeThumb: 'left' | 'right';
-
-        this.pointerDown$
-            .pipe(
-                tap(({clientX, target}) => {
-                    activeThumb = this.detectActiveThumb(clientX, target);
-                    this.activeThumbChange.emit(activeThumb);
-
-                    if (this.range.focusable) {
-                        this.el.focus();
-                    }
-                }),
-                switchMap((event) => this.pointerMove$.pipe(startWith(event))),
-                map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
-                takeUntil(this.pointerUp$),
-                repeat(),
-                takeUntilDestroyed(),
-            )
-            .subscribe((fraction) => {
-                const value = this.range.toValue(fraction);
-
-                this.range.processValue(value, activeThumb === 'right');
-            });
-    }
 
     private getFractionFromEvents(clickClientX: number): number {
         const hostRect = this.el.getBoundingClientRect();

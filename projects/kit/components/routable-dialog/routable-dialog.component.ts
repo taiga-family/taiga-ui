@@ -18,22 +18,23 @@ export default class TuiRoutableDialog {
     private readonly injector = inject(INJECTOR);
     private readonly initialUrl = this.router.url;
     private readonly dialog = inject(TuiDialogService);
+    private readonly snapshot = this.route.snapshot.data;
 
-    constructor() {
-        const dialog = this.route.snapshot.data['dialog'];
-
-        from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
-            .pipe(
-                switchMap((dialog: any) =>
-                    this.dialog.open(
-                        new PolymorpheusComponent<Type<any>>(dialog, this.injector),
-                        this.route.snapshot.data['dialogOptions'],
-                    ),
+    protected readonly $ = from(
+        isClass(this.snapshot['dialog'])
+            ? of(this.snapshot['dialog'])
+            : this.snapshot['dialog']().then((m: any) => m.default ?? m),
+    )
+        .pipe(
+            switchMap((dialog: any) =>
+                this.dialog.open(
+                    new PolymorpheusComponent<Type<any>>(dialog, this.injector),
+                    this.snapshot['dialogOptions'],
                 ),
-                takeUntilDestroyed(),
-            )
-            .subscribe({complete: () => this.onDialogClosing()});
-    }
+            ),
+            takeUntilDestroyed(),
+        )
+        .subscribe({complete: () => this.onDialogClosing()});
 
     private get lazyLoadedBackUrl(): string {
         return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');

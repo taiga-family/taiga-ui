@@ -52,6 +52,24 @@ class TuiFadeStyles {}
     },
 })
 export class TuiFade {
+    private readonly el = tuiInjectElement();
+
+    protected readonly nothing = tuiWithStyles(TuiFadeStyles);
+
+    protected readonly $ = merge(
+        inject(ResizeObserverService, {self: true}),
+        inject(MutationObserverService, {self: true}),
+        fromEvent(this.el, 'scroll'),
+    )
+        .pipe(tuiZonefree(), takeUntilDestroyed())
+        .subscribe(() => {
+            this.el.classList.toggle(
+                '_start',
+                !!this.el.scrollLeft || !!this.el.scrollTop,
+            );
+            this.el.classList.toggle('_end', this.isEnd(this.el));
+        });
+
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
     public lineHeight: string | null = null;
@@ -64,22 +82,6 @@ export class TuiFade {
 
     @Input('tuiFade')
     public orientation: TuiOrientation | '' = 'horizontal';
-
-    constructor() {
-        const el = tuiInjectElement();
-
-        tuiWithStyles(TuiFadeStyles);
-        merge(
-            inject(ResizeObserverService, {self: true}),
-            inject(MutationObserverService, {self: true}),
-            fromEvent(el, 'scroll'),
-        )
-            .pipe(tuiZonefree(), takeUntilDestroyed())
-            .subscribe(() => {
-                el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
-                el.classList.toggle('_end', this.isEnd(el));
-            });
-    }
 
     private isEnd(el: HTMLElement): boolean {
         if (this.orientation === 'vertical') {

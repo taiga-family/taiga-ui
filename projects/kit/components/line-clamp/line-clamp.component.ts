@@ -82,6 +82,10 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     private readonly isOverflown$ = new Subject<boolean>();
     protected initialized = signal(false);
 
+    protected readonly $ = timer(0)
+        .pipe(tuiZonefree(this.zone))
+        .subscribe(() => this.initialized.set(true));
+
     protected lineClamp$ = this.linesLimit$.pipe(
         startWith(1),
         pairwise(),
@@ -104,10 +108,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     @Output()
     public readonly overflownChange: Observable<boolean> =
         this.isOverflown$.pipe(distinctUntilChanged());
-
-    constructor() {
-        this.skipInitialTransition();
-    }
 
     @Input()
     public set linesLimit(linesLimit: number) {
@@ -141,12 +141,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
 
     protected updateView(): void {
         this.cd.detectChanges();
-    }
-
-    private skipInitialTransition(): void {
-        timer(0)
-            .pipe(tuiZonefree(this.zone))
-            .subscribe(() => this.initialized.set(true));
     }
 
     private update(): void {

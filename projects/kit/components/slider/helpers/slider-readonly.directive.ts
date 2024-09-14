@@ -35,42 +35,33 @@ export class TuiSliderReadonly {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
 
+    private readonly start$ = tuiTypedFromEvent(this.el, 'touchstart', {passive: false});
+    private readonly move$ = tuiTypedFromEvent(this.doc, 'touchmove', {passive: false});
+    private readonly end$ = tuiTypedFromEvent(this.doc, 'touchend', {passive: true});
+    private readonly preventMove$ = merge(
+        this.start$.pipe(
+            tap((e) => this.preventEvent(e)),
+            map(TUI_TRUE_HANDLER),
+        ),
+        this.end$.pipe(map(TUI_FALSE_HANDLER)),
+    );
+
+    /**
+     * @bad TODO think about another solution.
+     * Keep in mind that preventing touch event (on slider) inside `@HostListener('touchstart')` doesn't work for mobile chrome.
+     */
+    protected readonly $ = combineLatest([this.move$, this.preventMove$])
+        .pipe(
+            filter(([_, shouldPreventMove]) => shouldPreventMove),
+            takeUntilDestroyed(),
+        )
+        .subscribe(([event]) => this.preventEvent(event));
+
     @Input({transform: coerceBooleanProperty})
     public readonly: BooleanInput = true;
 
-    constructor() {
-        const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
-            passive: false,
-        });
-        const touchMove$ = tuiTypedFromEvent(this.doc, 'touchmove', {
-            passive: false,
-        });
-        const touchEnd$ = tuiTypedFromEvent(this.doc, 'touchend', {
-            passive: true,
-        });
-
-        const shouldPreventMove$ = merge(
-            touchStart$.pipe(
-                tap((e) => this.preventEvent(e)),
-                map(TUI_TRUE_HANDLER),
-            ),
-            touchEnd$.pipe(map(TUI_FALSE_HANDLER)),
-        );
-
-        /**
-         * @bad TODO think about another solution.
-         * Keep in mind that preventing touch event (on slider) inside `@HostListener('touchstart')` doesn't work for mobile chrome.
-         */
-        combineLatest([touchMove$, shouldPreventMove$])
-            .pipe(
-                filter(([_, shouldPreventMove]) => shouldPreventMove),
-                takeUntilDestroyed(),
-            )
-            .subscribe(([moveEvent]) => this.preventEvent(moveEvent));
-    }
-
     protected preventEvent(event: Event): void {
-        if (event.cancelable && this.readonly) {
+        if (this.readonly && event.cancelable) {
             event.preventDefault();
         }
     }
