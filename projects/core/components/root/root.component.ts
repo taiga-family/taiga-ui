@@ -78,7 +78,7 @@ export class TuiRoot {
 
         ngDevMode &&
             console.assert(
-                inject(EVENT_MANAGER_PLUGINS).find(
+                !!inject<unknown[]>(EVENT_MANAGER_PLUGINS).find(
                     (plugin) => plugin instanceof PreventEventPlugin,
                 ),
                 'NG_EVENT_PLUGINS is missing from global providers',
