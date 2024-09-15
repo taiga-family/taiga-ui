@@ -21,9 +21,9 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         el: ElementRef<HTMLElement>,
         private readonly renderer: Renderer2,
         private readonly zone: NgZone,
-        private readonly win: Window,
+        win: Window,
     ) {
-        super(el);
+        super(el, win);
         this.patchCssStyles();
     }
 
@@ -32,6 +32,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
             this.zone.runOutsideAngular(() => this.iosWebkitAutofocus());
         } else {
             this.element.focus({preventScroll: true});
+            this.collapseToEnd();
         }
     }
 

@@ -13,8 +13,9 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
         el: ElementRef<HTMLElement>,
         private readonly animationFrame$: Observable<number>,
         private readonly zone: NgZone,
+        win: Window,
     ) {
-        super(el);
+        super(el, win);
     }
 
     public setFocus(): void {
@@ -27,9 +28,12 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
                     skipWhile(Boolean),
                     take(1),
                 ),
-            ).subscribe(() => this.element.focus({preventScroll: true}));
+            ).subscribe(() => {
+                this.element.focus({preventScroll: true});
+            });
         } else {
             this.element.focus({preventScroll: true});
+            this.collapseToEnd();
         }
     }
 }

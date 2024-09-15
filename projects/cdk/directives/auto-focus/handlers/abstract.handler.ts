@@ -3,7 +3,10 @@ import type {ElementRef} from '@angular/core';
 import type {TuiAutofocusHandler} from '../autofocus.options';
 
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
-    constructor(protected readonly el: ElementRef<HTMLElement>) {}
+    constructor(
+        protected readonly el: ElementRef<HTMLElement>,
+        protected readonly win: Window,
+    ) {}
 
     public abstract setFocus(): void;
 
@@ -17,6 +20,15 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
     }
 
     protected get isTextFieldElement(): boolean {
-        return this.element.matches('input, textarea, [contenteditable]');
+        return this.element.matches('input, textarea');
+    }
+
+    protected collapseToEnd(): void {
+        if (this.element.isContentEditable) {
+            const selection = this.win.getSelection();
+
+            selection?.selectAllChildren(this.element);
+            selection?.collapseToEnd();
+        }
     }
 }
