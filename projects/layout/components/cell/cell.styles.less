@@ -134,6 +134,8 @@
         & > [tuiAccessories] tui-avatar,
         & > [tuiAccessories] tui-avatar-stack tui-avatar {
             --t-size: 2rem;
+
+            align-self: flex-start;
         }
     }
 
@@ -155,6 +157,7 @@
 
             font: var(--tui-font-text-m);
             font-weight: bold;
+            align-self: flex-start;
         }
     }
 
@@ -170,10 +173,6 @@
     [tuiOption] &,
     tui-primitive-textfield & {
         padding: 0;
-    }
-
-    > tui-avatar {
-        align-self: flex-start;
     }
 }
 
