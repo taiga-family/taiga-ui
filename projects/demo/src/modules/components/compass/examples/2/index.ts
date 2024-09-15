@@ -26,6 +26,6 @@ export default class Example {
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
         const y = Math.ceil(event.clientY - (rect.top + rect.height / 2));
 
-        this.degrees = 180 - Math.atan2(x, y) * (180 / Math.PI);
+        this.degrees = Math.atan2(y, x) * (180 / Math.PI) + 90;
     }
 }
