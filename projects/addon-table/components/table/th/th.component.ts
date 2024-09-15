@@ -26,6 +26,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     host: {
         '[style.width.px]': 'width',
         '[class._sticky]': 'sticky',
+        '[attr.requiredSort]': 'requiredSort',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
@@ -53,6 +54,9 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     @Input()
     public sticky = this.options.sticky;
 
+    @Input()
+    public requiredSort = this.options.requiredSort;
+
     public get key(): keyof T {
         if (!this.head) {
             throw new TuiTableSortKeyException();
@@ -77,7 +81,11 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
 
     protected updateSorterAndDirection(): void {
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndAscDirection ? null : this.sorter,
+            this.isCurrentAndAscDirection
+                ? this.requiredSort
+                    ? this.sorter
+                    : null
+                : this.sorter,
         );
     }
 
