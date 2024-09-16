@@ -1,12 +1,13 @@
+import {DOCUMENT} from '@angular/common';
 import {
-    type AfterViewInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
+    effect,
     inject,
+    ViewEncapsulation,
 } from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {TuiLink, TuiNotification} from '@taiga-ui/core';
-
+import {TUI_DARK_MODE} from '@taiga-ui/core';
 import {SEARCH_CONFIG} from './env';
 
 const docsearch = require('@docsearch/js').default;
@@ -14,18 +15,39 @@ const docsearch = require('@docsearch/js').default;
 @Component({
     standalone: true,
     selector: 'tui-demo-search',
-    imports: [RouterLink, TuiLink, TuiNotification],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDemoSearch implements AfterViewInit {
+export class TuiDemoSearch {
     private readonly config = inject(SEARCH_CONFIG);
 
-    public ngAfterViewInit(): void {
-        this.enableSearch();
+    constructor() {
+        this.setSearchDocDarkMode();
+
+        afterNextRender(() => {
+            this.enableDocSearch();
+        });
     }
 
-    private enableSearch(): void {
-        docsearch(this.config);
+    private enableDocSearch(): void {
+        docsearch({
+            ...this.config,
+            transformItems: (items: {url: string}[]) =>
+                items.map((item) => ({
+                    ...item,
+                    url: item.url.replace('https://taiga-ui.dev/', ''),
+                })),
+        });
+    }
+
+    private setSearchDocDarkMode(): void {
+        const documentElement = inject(DOCUMENT).defaultView?.document.documentElement;
+        const darkMode = inject(TUI_DARK_MODE);
+
+        effect(() => {
+            documentElement?.setAttribute('data-theme', darkMode() ? 'dark' : 'light');
+        });
     }
 }
