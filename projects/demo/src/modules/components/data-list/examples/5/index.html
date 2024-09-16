@@ -3,9 +3,9 @@
     iconStart="@tui.ellipsis-vertical"
     size="m"
     tuiButton
-    tuiDropdownAlign="right"
-    tuiTextfieldSize="m"
+    tuiDropdownLimitWidth="fixed"
     type="button"
+    class="example"
     [tuiDropdown]="content"
     [(tuiDropdownOpen)]="dropdownOpen"
 >
@@ -66,18 +66,18 @@
     </tui-data-list>
 
     <ng-template #money>
+        <tui-input
+            automation-id="tui-data-money-input"
+            [(ngModel)]="moneyValue"
+        >
+            RUB
+            <input
+                name="moneyValue"
+                tuiTextfieldLegacy
+            />
+        </tui-input>
+
         <tui-data-list tuiDataListDropdownManager>
-            <tui-input
-                automation-id="tui-data-money-input"
-                [style.margin-block-end.rem]="0.25"
-                [(ngModel)]="moneyValue"
-            >
-                RUB
-                <input
-                    name="moneyValue"
-                    tuiTextfieldLegacy
-                />
-            </tui-input>
             <button
                 iconEnd="@tui.chevron-right"
                 tuiDropdownAlign="right"
@@ -104,7 +104,6 @@
     <ng-template #input>
         <tui-input
             automation-id="tui-data-list-email-field"
-            [style.margin.rem]="0.25"
             [(ngModel)]="emailValue"
         >
             Email
@@ -119,16 +118,13 @@
         <div class="example">
             <div
                 tuiGroup
-                [style.margin.rem]="0.25"
+                class="group"
             >
-                <tui-input [(ngModel)]="dollar">Dollars</tui-input>
-                <tui-input [(ngModel)]="euro">Euros</tui-input>
+                <tui-input [(ngModel)]="dollar">1 Rub = (X) Dollars</tui-input>
+                <tui-input [(ngModel)]="euro">1 Rub = (Y) Euros</tui-input>
             </div>
 
-            <ul
-                class="tui-list tui-list_large"
-                [style.margin.rem]="1"
-            >
+            <ul class="exchange tui-list tui-list_large">
                 <li class="tui-list__item">
                     <span>{{ moneyValue / dollar | tuiAmount: 'USD' | async }}</span>
                 </li>
@@ -142,7 +138,7 @@
     <ng-template #range>
         <tui-input-date-range
             automation-id="tui-data-list-range-field"
-            [style.margin.rem]="0.25"
+            class="form"
             [(ngModel)]="rangeValue"
         >
             Range

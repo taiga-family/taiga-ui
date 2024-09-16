@@ -8,11 +8,7 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiButton, TuiCalendar, TuiDataList, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 import {TuiAsideItemDirective} from '@taiga-ui/layout';
-import {
-    TuiInputDateRangeModule,
-    TuiInputModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -29,9 +25,9 @@ import {
         TuiGroup,
         TuiInputDateRangeModule,
         TuiInputModule,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
