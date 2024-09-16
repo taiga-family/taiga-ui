@@ -4,7 +4,7 @@
 
 <div
     class="t-actions"
-    (waResizeObserver)="$event[0] && onResize($event[0])"
+    (resize)="onResize($event)"
 >
     <ng-content select="[tuiSwipeAction]" />
 </div>

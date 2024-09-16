@@ -31,7 +31,7 @@
             class="t-collapsed"
             [attr.data-before]="masked"
             [class.t-collapsed_enable-mask]="cardCollapsed"
-            (waResizeObserver)="onResize()"
+            (resize)="onResize()"
         >
             <span
                 #ghost
