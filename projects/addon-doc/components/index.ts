@@ -24,6 +24,7 @@ export * from './language-switcher';
 export * from './main/main.component';
 export * from './navigation/navigation.component';
 export * from './navigation/navigation.providers';
+export * from './navigation/scroll-into-view.directive';
 export * from './page/page.component';
 export * from './page/page.providers';
 export * from './page/page-tab.directive';
