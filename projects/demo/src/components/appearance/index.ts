@@ -14,7 +14,7 @@ import {type TuiInteractiveState, TuiLink, TuiTitle} from '@taiga-ui/core';
 export class TuiDocAppearance {
     protected readonly routes = DemoRoute;
     protected selected = '';
-    protected readonly modes = ['invalid', 'checked'];
+    protected readonly modes = ['invalid', 'checked', ['invalid', 'checked']];
     protected readonly appearances = [
         'primary',
         'secondary',
@@ -48,7 +48,7 @@ export class TuiDocAppearance {
 
     public state: TuiInteractiveState | null = null;
     public focus: boolean | null = null;
-    public mode: string | null = null;
+    public mode: string | readonly string[] | null = null;
 
     public get appearance(): string {
         return this.selected || this.tuiDocAppearance[0] || this.appearances[0];

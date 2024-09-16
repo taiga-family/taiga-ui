@@ -45,6 +45,7 @@ import {
     TuiAppearance,
     tuiAppearance,
     tuiAppearanceFocus,
+    tuiAppearanceMode,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import {
@@ -104,7 +105,6 @@ export interface TuiCard {
     ],
     host: {
         'data-size': 'l',
-        '[attr.data-mode]': 'mode()',
         '(mousedown)': 'onMouseDown($event)',
     },
 })
@@ -144,6 +144,7 @@ export class TuiInputCardGroup
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
 
+    protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly appearance = tuiAppearance(
         inject(TUI_TEXTFIELD_OPTIONS).appearance,
     );

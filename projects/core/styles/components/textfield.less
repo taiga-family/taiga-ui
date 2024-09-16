@@ -114,7 +114,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
 
         &:has(input:read-only),
-        &:has(select[data-mode='readonly']) {
+        &:has(select[data-mode~='readonly']) {
             color: var(--tui-text-tertiary);
         }
     }
@@ -219,17 +219,17 @@ tui-textfield {
                 transform: translateY(-0.7em);
             }
 
-            &:not(:disabled)[data-mode='invalid'] ~ label,
+            &:not(:disabled)[data-mode~='invalid'] ~ label,
             &:invalid:not(:disabled):not([data-mode]) ~ label {
                 color: var(--tui-text-negative);
             }
 
-            &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
+            &:not(:disabled):not([data-mode~='readonly']) ~ .t-content .t-clear {
                 display: flex;
             }
         }
 
-        &:not([data-mode='readonly']) {
+        &:not([data-mode~='readonly']) {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
@@ -270,7 +270,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
 
-    select:not([data-mode='readonly']) {
+    select:not([data-mode~='readonly']) {
         cursor: pointer;
     }
 

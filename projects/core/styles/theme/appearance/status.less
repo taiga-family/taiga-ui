@@ -7,7 +7,8 @@
 [tuiAppearance][data-appearance='neutral'] {
     background: var(--t-bg);
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         color: #fff;
     }
 }
@@ -28,7 +29,8 @@
         --t-bg: var(--tui-status-negative-pale-hover);
     });
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         background: var(--tui-status-negative);
     }
 }
@@ -49,7 +51,8 @@
         --t-bg: var(--tui-status-positive-pale-hover);
     });
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         background: var(--tui-status-positive);
     }
 }
@@ -70,7 +73,8 @@
         --t-bg: var(--tui-status-warning-pale-hover);
     });
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         background: var(--tui-status-warning);
     }
 }
@@ -91,7 +95,8 @@
         --t-bg: var(--tui-status-info-pale-hover);
     });
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         background: var(--tui-status-info);
     }
 }
@@ -112,7 +117,8 @@
         --t-bg: var(--tui-background-neutral-1-pressed);
     });
 
-    &:checked {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         background: var(--tui-status-neutral);
     }
 }

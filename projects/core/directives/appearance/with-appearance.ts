@@ -11,6 +11,7 @@ import {TuiAppearance} from './appearance.directive';
                 'tuiAppearance: appearance',
                 'tuiAppearanceState',
                 'tuiAppearanceFocus',
+                'tuiAppearanceMode',
             ],
         },
     ],

@@ -3,7 +3,7 @@
         appearance="whiteblock"
         tuiButton
         type="button"
-        [attr.data-mode]="length ? 'checked' : null"
+        [tuiAppearanceMode]="length ? 'checked' : null"
         [tuiDropdown]="dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.delete)="form.reset()"
