@@ -6,10 +6,10 @@
     <select
         ngModel=""
         tuiTextfield
+        [attr.data-mode]="mode()"
         [disabled]="disabled()"
         [focused]="open() || null"
         [ngModelOptions]="{standalone: true}"
-        [readOnly]="readOnly()"
     ></select>
 
     <ng-template #flag>
@@ -22,14 +22,15 @@
 </tui-textfield>
 
 <tui-textfield>
+    <!--TODO: Replace attribute bindings with inputs after Angular updated and signal bindings properly update-->
     <input
         autocomplete="new-password"
         tuiTextfield
+        [attr.data-mode]="mode()"
+        [attr.readonly]="readOnly() || null"
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [maskito]="mask()"
         [ngModelOptions]="{standalone: true}"
-        [readOnly]="readOnly()"
         [(ngModel)]="textfieldValue"
         (beforeinput.capture)="onPaste($event)"
         (blur)="onTouched()"
