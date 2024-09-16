@@ -15,13 +15,13 @@ const docsearch = require('@docsearch/js').default;
 
 @Component({
     standalone: true,
-    selector: 'tui-demo-search',
+    selector: 'tui-algolia-search',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDemoSearch {
+export class TuiAlgoliaSearch {
     private readonly config = inject(SEARCH_CONFIG);
 
     constructor() {
