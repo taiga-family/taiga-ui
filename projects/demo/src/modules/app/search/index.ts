@@ -8,6 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
+
 import {SEARCH_CONFIG} from './env';
 
 const docsearch = require('@docsearch/js').default;
@@ -34,7 +35,7 @@ export class TuiDemoSearch {
     private enableDocSearch(): void {
         docsearch({
             ...this.config,
-            transformItems: (items: {url: string}[]) =>
+            transformItems: (items: Array<{url: string}>) =>
                 items.map((item) => ({
                     ...item,
                     url: item.url.replace('https://taiga-ui.dev/', ''),
