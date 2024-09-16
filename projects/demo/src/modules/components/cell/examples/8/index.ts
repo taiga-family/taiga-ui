@@ -50,7 +50,8 @@ export default class Example {
         {
             icon: '@tui.mail',
             title: 'Send message',
-            subtitle: 'Keep it short',
+            subtitle:
+                'Allow outgoing unusual call that can change your life in an unusual way',
         },
         {
             icon: '@tui.lock',

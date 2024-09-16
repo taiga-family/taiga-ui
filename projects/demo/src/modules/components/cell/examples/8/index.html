@@ -1,3 +1,32 @@
+<tui-notification>
+    <div>
+        Can be attached as host directive:
+        <code>hostDirectives: [TuiConnected]</code>
+    </div>
+</tui-notification>
+
+<div
+    tuiCardLarge
+    tuiConnected
+    tuiSurface="elevated"
+>
+    <h3 tuiTitle="m">Inside a block</h3>
+    <button
+        *ngFor="let item of items"
+        tuiCell
+        type="button"
+    >
+        <tui-avatar
+            appearance="accent"
+            [src]="item.icon"
+        />
+        <span tuiTitle>
+            {{ item.title }}
+            <span tuiSubtitle>{{ item.subtitle }}</span>
+        </span>
+    </button>
+</div>
+
 <div tuiConnected>
     <label tuiCell>
         <tui-badged-content>
@@ -68,10 +97,3 @@
         />
     </label>
 </div>
-
-<tui-notification>
-    <div>
-        Can be attached as host directive:
-        <code>hostDirectives: [TuiConnected]</code>
-    </div>
-</tui-notification>

@@ -4,6 +4,10 @@
     --t-image-size: 2.5rem;
     --t-connected-height: calc(100% - var(--t-image-size) - 0.5rem);
 
+    &[tuiCardLarge] {
+        --t-connected-height: calc(100% - var(--t-image-size) - 0.25rem);
+    }
+
     [tuiCell],
     [tuiStep] {
         &:not(:last-of-type)::after {
