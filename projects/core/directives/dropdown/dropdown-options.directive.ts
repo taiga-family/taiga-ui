@@ -1,4 +1,4 @@
-import type {FactoryProvider} from '@angular/core';
+import {type FactoryProvider, Self} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiVerticalDirection} from '@taiga-ui/core/types';
@@ -38,7 +38,7 @@ export const tuiDropdownOptionsProvider: (
 ) => FactoryProvider = (override: Partial<TuiDropdownOptions>) => ({
     provide: TUI_DROPDOWN_OPTIONS,
     deps: [
-        [new Optional(), TuiDropdownOptionsDirective],
+        [new Optional(), new Self(), TuiDropdownOptionsDirective],
         [new Optional(), new SkipSelf(), TUI_DROPDOWN_OPTIONS],
     ],
     useFactory: tuiOverrideOptions(override, TUI_DROPDOWN_DEFAULT_OPTIONS),
