@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.7.0](https://github.com/taiga-family/taiga-ui/compare/v4.6.0...v4.7.0) (2024-09-16)
+
+### 🚀 Features
+
+- **addon-doc:** `API` add new component ([#9015](https://github.com/taiga-family/taiga-ui/issues/9015))
+  ([a87b608](https://github.com/taiga-family/taiga-ui/commit/a87b60879bf6318a04b1b83c5d2a7e04227288f1))
+- **addon-doc:** adds keybindings to the search field ([#8830](https://github.com/taiga-family/taiga-ui/issues/8830))
+  ([8d03673](https://github.com/taiga-family/taiga-ui/commit/8d03673bc6597dfaceb54ec1512acf96cb8eb23b))
+- **core:** `Appearance` allow multiple modes ([#9042](https://github.com/taiga-family/taiga-ui/issues/9042))
+  ([e1853dd](https://github.com/taiga-family/taiga-ui/commit/e1853dd2842352cbe67f7c82447250b206c49db3))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `TuiDocScrollIntoViewLink` should be export from root
+  ([#9039](https://github.com/taiga-family/taiga-ui/issues/9039))
+  ([ad1979a](https://github.com/taiga-family/taiga-ui/commit/ad1979a31bfaa48fbb94131377f01b513fab17a7))
+- **addon-mobile:** export styles ([#9007](https://github.com/taiga-family/taiga-ui/issues/9007))
+  ([d9915bb](https://github.com/taiga-family/taiga-ui/commit/d9915bbe38d6aea9b998ff73a753ad2004363172))
+- **core:** `Calendar` fix visual gaps in range ([#8961](https://github.com/taiga-family/taiga-ui/issues/8961))
+  ([8ec81aa](https://github.com/taiga-family/taiga-ui/commit/8ec81aa86356af764ac881177c207abd4b71b925))
+- **core:** `Dropdown` fix options leaking upwards ([#9051](https://github.com/taiga-family/taiga-ui/issues/9051))
+  ([350ba52](https://github.com/taiga-family/taiga-ui/commit/350ba524cc5a15b970fcd1157f3553899050e7a2))
+- **core:** rely only on `[tuiOption]` html attribute for search options
+  ([#8965](https://github.com/taiga-family/taiga-ui/issues/8965))
+  ([df8228c](https://github.com/taiga-family/taiga-ui/commit/df8228ca3f2bf83a6b3ee3923da45f750d7ec3d4))
+- **deps:** update dependency ng-morph to v4.7.0 ([#9008](https://github.com/taiga-family/taiga-ui/issues/9008))
+  ([e6d273d](https://github.com/taiga-family/taiga-ui/commit/e6d273d7b2a30df9cd5684caf3c51f152c16a5a6))
+- **deps:** update dependency ng-morph to v4.8.0 ([#9011](https://github.com/taiga-family/taiga-ui/issues/9011))
+  ([99fabf5](https://github.com/taiga-family/taiga-ui/commit/99fabf5fbd1d3d046007215dd36c07e9f02ab21d))
+- **deps:** update dependency ng-morph to v4.8.1 ([#9013](https://github.com/taiga-family/taiga-ui/issues/9013))
+  ([1f814e0](https://github.com/taiga-family/taiga-ui/commit/1f814e09657cd272adafcd8d49aa72b664e17ec8))
+- **deps:** update ng-web-apis to ^4.5.0 ([#9006](https://github.com/taiga-family/taiga-ui/issues/9006))
+  ([1377647](https://github.com/taiga-family/taiga-ui/commit/1377647103c72c164d229e72672ce9cc391c9a19))
+- **deps:** update ng-web-apis to ^4.6.0 ([#9046](https://github.com/taiga-family/taiga-ui/issues/9046))
+  ([40943ea](https://github.com/taiga-family/taiga-ui/commit/40943ea7901794dc2f3049eccc3b08e52d564db2))
+- **kit:** `Connected` work with `CardLarge` ([#9040](https://github.com/taiga-family/taiga-ui/issues/9040))
+  ([71f699c](https://github.com/taiga-family/taiga-ui/commit/71f699cec9cda4ba0e4890f10620112e5a009320))
+- **kit:** add overload for `TuiFilterByInputPipe` ([#8912](https://github.com/taiga-family/taiga-ui/issues/8912))
+  ([6883ea6](https://github.com/taiga-family/taiga-ui/commit/6883ea63666157e4e1ca91850459419405398c60))
+- **kit:** block user selection in skeleton ([#9001](https://github.com/taiga-family/taiga-ui/issues/9001))
+  ([49b0e03](https://github.com/taiga-family/taiga-ui/commit/49b0e0375155b5cca4e29be78a8ff05f9b35f2ab))
+
 ## [4.6.0](https://github.com/taiga-family/taiga-ui/compare/v4.5.0...v4.6.0) (2024-09-10)
 
 ### 🐞 Bug Fixes
