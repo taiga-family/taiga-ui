@@ -70,7 +70,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective))
-    protected readonly directive?: TuiTextfieldDirective;
+    protected readonly directive?: TuiTextfieldDirective<T>;
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
@@ -114,7 +114,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     public handleOption(option: T): void {
-        this.directive?.setValue(this.stringify(option));
+        this.directive?.setValue(option);
         this.open.set(false);
     }
 

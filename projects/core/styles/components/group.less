@@ -38,15 +38,15 @@
             z-index: 0;
         }
 
-        &:invalid,
-        &[data-mode='invalid'] {
+        &:invalid:not([data-mode]),
+        &[data-mode~='invalid'] {
             z-index: 2;
 
             --t-group-clip: none;
         }
 
-        &:has(:invalid),
-        &:has([data-mode='invalid']) {
+        &:has(:invalid:not([data-mode])),
+        &:has([data-mode~='invalid']) {
             z-index: 2;
 
             --t-group-clip: none;
@@ -64,7 +64,8 @@
             --t-group-clip: none;
         }
 
-        &[data-mode='checked'] {
+        &:checked:not([data-mode]),
+        &[data-mode~='checked'] {
             z-index: 4;
 
             --t-group-clip: none;

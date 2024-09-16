@@ -26,12 +26,12 @@
         box-shadow: none;
     });
 
-    &[data-mode='invalid'][data-mode='invalid'],
+    &[data-mode~='invalid'][data-mode~='invalid'],
     &:invalid:not([data-mode]) {
         outline-color: var(--tui-status-negative);
     }
 
-    &[data-mode='readonly'],
+    &[data-mode~='readonly'],
     input&:read-only:not([data-mode]) {
         box-shadow: none;
         outline-color: var(--tui-border-normal) !important;
