@@ -2,11 +2,7 @@
 import {TuiLanguageName} from '@taiga-ui/i18n/types';
 import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
 
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-  ],
+bootstrapApplication(App, {
   providers: [
     // ...
     tuiDocLanguageSwitcher(
@@ -23,6 +19,5 @@ import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
         ),
     ),
   ],
-})
-export class Example {}
+}).catch((err: unknown) => console.error(err));
 ```
