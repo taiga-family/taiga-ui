@@ -155,7 +155,7 @@
         "@taiga-ui/browserslist-config": "0.182.0",
         "@taiga-ui/commitlint-config": "0.182.0",
         "@taiga-ui/cspell-config": "0.182.0",
-        "@taiga-ui/design-tokens": "0.134.0",
+        "@taiga-ui/design-tokens": "0.135.0",
         "@taiga-ui/eslint-plugin-experience": "0.182.0",
         "@taiga-ui/event-plugins": "4.2.0",
         "@taiga-ui/prettier-config": "0.182.0",
