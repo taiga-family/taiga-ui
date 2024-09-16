@@ -4,7 +4,7 @@
             size="s"
             tuiSwitch
             type="checkbox"
-            [ngModel]="dark"
+            [ngModel]="dark()"
             (ngModelChange)="onModeChange($event)"
         />
         {{ texts[0] }}
@@ -23,7 +23,7 @@
 <div
     tuiResizable
     class="t-wrapper"
-    [attr.tuiTheme]="dark ? 'dark' : 'light'"
+    [attr.tuiTheme]="theme()"
     [class.t-wrapper_transparent]="!opaque"
 >
     <div class="t-content">
