@@ -9,7 +9,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
