@@ -57,7 +57,8 @@ export class TuiAppearance {
         afterNextRender(() => {
             this.el.classList.toggle(
                 'tui-appearance-initializing',
-                // eslint-disable-next-line Triggering reflow so there's no transition
+                // Triggering reflow so there's no transition
+                // eslint-disable-next-line
                 !!this.el.offsetWidth && false,
             );
         });
