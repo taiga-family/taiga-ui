@@ -10,12 +10,18 @@ import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 export class TuiFlagPipe implements PipeTransform {
     private readonly staticPath = inject(TUI_ASSETS_PATH);
 
-    public transform(countryIsoCode: TuiCountryIsoCode | string): string;
     public transform(
-        countryIsoCode: TuiCountryIsoCode | string | undefined,
+        countryIsoCode: TuiCountryIsoCode | (Record<never, never> & string),
+    ): string;
+    public transform(
+        countryIsoCode: TuiCountryIsoCode | (Record<never, never> & string) | undefined,
     ): string | null;
-    public transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null;
-    public transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null {
+    public transform(
+        countryIsoCode?: TuiCountryIsoCode | (Record<never, never> & string) | null,
+    ): string | null;
+    public transform(
+        countryIsoCode?: TuiCountryIsoCode | (Record<never, never> & string) | null,
+    ): string | null {
         if (!countryIsoCode) {
             return null;
         }

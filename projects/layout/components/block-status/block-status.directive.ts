@@ -6,5 +6,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class TuiBlockStatusDirective {
     @Input()
-    public tuiSlot: string | 'action' | 'top' = 'top';
+    public tuiSlot: 'action' | 'top' | (Record<never, never> & string) = 'top';
 }

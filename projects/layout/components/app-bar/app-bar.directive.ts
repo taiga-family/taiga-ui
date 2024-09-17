@@ -6,5 +6,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class TuiAppBarDirective {
     @Input()
-    public tuiSlot: string | 'left' | 'right' = 'left';
+    public tuiSlot: 'left' | 'right' | (Record<never, never> & string) = 'left';
 }

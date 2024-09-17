@@ -6,7 +6,7 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
 })
 export class TuiDocPageTabConnector {
     @Input()
-    public pageTab?: string | '';
+    public pageTab?: string;
 
     public readonly template = inject(TemplateRef<Record<string, unknown>>);
 }

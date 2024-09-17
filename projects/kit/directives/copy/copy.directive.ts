@@ -75,7 +75,7 @@ export class TuiCopy {
     );
 
     @Input()
-    public tuiCopy: string | '' = '';
+    public tuiCopy = '';
 
     protected get disabled(): boolean {
         return !this.textfield.el?.nativeElement.value;
