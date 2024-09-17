@@ -18,6 +18,7 @@ import {TuiPickerService} from '../services/picker.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
     host: {
+        ngSkipHydration: 'true',
         '(document:mouseup)': 'onMouseUp()',
     },
 })

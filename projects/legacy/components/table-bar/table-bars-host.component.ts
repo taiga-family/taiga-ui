@@ -25,6 +25,9 @@ import {TUI_TABLE_BARS} from './table-bar.options';
     styleUrls: ['./table-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiTableBarsHostComponent {
     protected bars$ = inject(TUI_TABLE_BARS);

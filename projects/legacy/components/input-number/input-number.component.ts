@@ -57,6 +57,7 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(keydown.arrowDown)': 'onArrow(-step)',
         '(keydown.arrowUp)': 'onArrow(step)',

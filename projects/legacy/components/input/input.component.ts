@@ -41,6 +41,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

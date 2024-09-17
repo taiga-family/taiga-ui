@@ -67,6 +67,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '[class._editable]': 'editable',
         '[class._expandable]': 'rows > 1',

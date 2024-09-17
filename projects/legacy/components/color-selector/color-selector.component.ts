@@ -28,6 +28,9 @@ import {
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiColorSelectorComponent {
     private readonly selectorOptions = inject(TUI_COLOR_SELECTOR_OPTIONS);
