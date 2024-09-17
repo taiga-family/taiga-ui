@@ -1,6 +1,7 @@
 import type {ElementRef, NgZone, Renderer2} from '@angular/core';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
+import type {TuiAutofocusOptions} from '../autofocus.options';
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TEXTFIELD_ATTRS = [
@@ -22,8 +23,9 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         private readonly renderer: Renderer2,
         private readonly zone: NgZone,
         private readonly win: Window,
+        options: TuiAutofocusOptions,
     ) {
-        super(el);
+        super(el, options);
         this.patchCssStyles();
     }
 
