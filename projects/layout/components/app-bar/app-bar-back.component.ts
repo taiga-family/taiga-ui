@@ -1,19 +1,19 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
     TuiAppearance,
-    type TuiAppearanceOptions,
     tuiAppearanceOptionsProvider,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/directives/appearance';
 
 @Component({
     standalone: true,
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
     templateUrl: './app-bar-back.template.html',
     styleUrls: ['./app-bar-back.style.less'],
-    hostDirectives: [TuiAppearance],
-    providers: [tuiAppearanceOptionsProvider(TuiAppBarBack)],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAppearanceOptionsProvider(TuiAppBarBack)],
+    hostDirectives: [TuiAppearance],
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
-    appearance = 'link';
+    public appearance = 'link';
 }
