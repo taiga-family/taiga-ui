@@ -1,4 +1,5 @@
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -8,6 +9,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
@@ -29,6 +31,7 @@ class TuiAppearanceStyles {}
     standalone: true,
     selector: '[tuiAppearance]',
     host: {
+        class: 'tui-appearance-initializing',
         tuiAppearance: '',
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-state]': 'state()',
@@ -37,6 +40,8 @@ class TuiAppearanceStyles {}
     },
 })
 export class TuiAppearance {
+    private readonly el = tuiInjectElement();
+
     protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
     protected readonly modes = computed((mode = this.mode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
@@ -47,6 +52,12 @@ export class TuiAppearance {
     public readonly state = signal<TuiInteractiveState | null>(null);
     public readonly focus = signal<boolean | null>(null);
     public readonly mode = signal<string | readonly string[] | null>(null);
+
+    constructor() {
+        afterNextRender(() => {
+            this.el.classList.remove('tui-appearance-initializing');
+        });
+    }
 
     @Input()
     public set tuiAppearance(appearance: TuiAppearanceOptions['appearance']) {
