@@ -27,6 +27,10 @@
     outline: 0.125rem solid transparent;
     outline-offset: -0.125rem;
 
+    &.tui-appearance-initializing {
+        transition: none !important;
+    }
+
     .appearance-focus({
         outline-color: var(--tui-border-focus);
     });
