@@ -1,4 +1,5 @@
 import {Directive, Input} from '@angular/core';
+import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,
@@ -6,5 +7,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class TuiBlockStatusDirective {
     @Input()
-    public tuiSlot: 'action' | 'top' | (Record<never, never> & string) = 'top';
+    public tuiSlot: TuiLooseUnion<'action' | 'top'> = 'top';
 }

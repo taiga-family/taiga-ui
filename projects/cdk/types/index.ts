@@ -1,5 +1,6 @@
 export * from './context';
 export * from './handler';
+export * from './loose-union';
 export * from './mapper';
 export * from './matcher';
 export * from './rounding';
