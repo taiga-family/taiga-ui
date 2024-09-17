@@ -55,7 +55,11 @@ export class TuiAppearance {
 
     constructor() {
         afterNextRender(() => {
-            this.el.classList.remove('tui-appearance-initializing');
+            this.el.classList.toggle(
+                'tui-appearance-initializing',
+                // Triggering reflow so there's no transition
+                !!this.el.offsetWidth && false,
+            );
         });
     }
 
