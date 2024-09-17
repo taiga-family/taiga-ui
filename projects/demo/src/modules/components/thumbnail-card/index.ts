@@ -19,6 +19,7 @@ export default class Example {
         'A cool one',
         'Backgrounds',
         'External colored icon',
+        'Textfield',
     ];
 
     protected readonly iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
