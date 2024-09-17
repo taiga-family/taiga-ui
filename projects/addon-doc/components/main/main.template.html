@@ -1,4 +1,4 @@
-<tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null">
+<tui-root [attr.tuiTheme]="theme()">
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />
@@ -15,7 +15,7 @@
             tuiIconButton
             type="button"
             class="tui-doc-dark-mode-switch"
-            [iconStart]="icon"
+            [iconStart]="icon()"
             [style.border-radius.%]="100"
             (click)="darkMode.set(!darkMode())"
         ></button>
