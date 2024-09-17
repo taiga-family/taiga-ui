@@ -21,19 +21,15 @@ export class TuiInputMonthDirective
 
     private localizedValue = '';
 
-    constructor() {
-        super();
-
-        this.value$
-            .pipe(
-                distinctUntilChanged(),
-                switchMap(inject(TUI_MONTH_FORMATTER)),
-                takeUntilDestroyed(),
-            )
-            .subscribe((localizedValue) => {
-                this.localizedValue = localizedValue;
-            });
-    }
+    protected readonly $ = this.value$
+        .pipe(
+            distinctUntilChanged(),
+            switchMap(inject(TUI_MONTH_FORMATTER)),
+            takeUntilDestroyed(),
+        )
+        .subscribe((localizedValue) => {
+            this.localizedValue = localizedValue;
+        });
 
     public override get readOnly(): boolean {
         return true;

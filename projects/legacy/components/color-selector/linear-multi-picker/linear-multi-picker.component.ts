@@ -22,6 +22,10 @@ import {TuiPickerService} from '../services/picker.service';
     },
 })
 export class TuiLinearMultiPickerComponent {
+    protected readonly $ = inject(TuiPickerService)
+        .pipe(takeUntilDestroyed())
+        .subscribe(([x]) => this.onPicker(x));
+
     @Input()
     public value = [0, 1];
 
@@ -32,12 +36,6 @@ export class TuiLinearMultiPickerComponent {
     public readonly indexChange = new EventEmitter<number>();
 
     public index = NaN;
-
-    constructor() {
-        inject(TuiPickerService)
-            .pipe(takeUntilDestroyed())
-            .subscribe(([x]) => this.onPicker(x));
-    }
 
     public onMouseUp(): void {
         this.index = NaN;

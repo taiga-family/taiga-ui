@@ -1,10 +1,17 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import type {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {TUI_MONTH_FORMATTER, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
-import {combineLatest, distinctUntilChanged, Subject, switchMap} from 'rxjs';
+import {
+    combineLatest,
+    distinctUntilChanged,
+    type Observable,
+    Subject,
+    switchMap,
+} from 'rxjs';
 
 import type {TuiInputMonthRangeComponent} from './input-month-range.component';
 
@@ -21,26 +28,23 @@ export class TuiInputMonthRangeDirective
 
     private localizedValue: [string, string] = ['', ''];
 
-    constructor() {
-        super();
+    protected readonly formatter: TuiHandler<TuiMonth | null, Observable<string>> =
+        inject(TUI_MONTH_FORMATTER);
 
-        const formatter = inject(TUI_MONTH_FORMATTER);
-
-        this.value$
-            .pipe(
-                distinctUntilChanged(),
-                switchMap((value: TuiMonthRange | null) =>
-                    combineLatest([
-                        formatter(value?.from || null),
-                        formatter(value?.to || null),
-                    ]),
-                ),
-                takeUntilDestroyed(),
-            )
-            .subscribe((localizedValue) => {
-                this.localizedValue = localizedValue;
-            });
-    }
+    protected readonly $ = this.value$
+        .pipe(
+            distinctUntilChanged(),
+            switchMap((value: TuiMonthRange | null) =>
+                combineLatest([
+                    this.formatter(value?.from || null),
+                    this.formatter(value?.to || null),
+                ]),
+            ),
+            takeUntilDestroyed(),
+        )
+        .subscribe((localizedValue) => {
+            this.localizedValue = localizedValue;
+        });
 
     public override get readOnly(): boolean {
         return true;

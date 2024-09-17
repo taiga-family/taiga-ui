@@ -18,32 +18,30 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
     selector: '[tuiSheetStop]',
 })
 export class TuiSheetStopDirective {
-    constructor() {
-        const scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-        const destroyRef = inject(DestroyRef);
-        const el = tuiInjectElement();
+    private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly el = tuiInjectElement();
 
-        inject(TUI_SHEET_SCROLL)
-            .pipe(
-                map((y) => Math.floor(y) > el.offsetTop),
-                distinctUntilChanged(),
-                withLatestFrom(inject(TUI_SHEET_DRAGGED)),
-                map(([above, dragged]) => !above && !dragged),
-                filter(Boolean),
-                throttleTime(100),
-                takeUntilDestroyed(destroyRef),
-            )
-            .subscribe(() => {
-                scrollRef.style.overflow = 'hidden';
-                scrollRef.classList.remove('_stuck'); // iOS
-                scrollRef.scrollTop = el.offsetTop;
+    protected readonly $ = inject(TUI_SHEET_SCROLL)
+        .pipe(
+            map((y) => Math.floor(y) > this.el.offsetTop),
+            distinctUntilChanged(),
+            withLatestFrom(inject(TUI_SHEET_DRAGGED)),
+            map(([above, dragged]) => !above && !dragged),
+            filter(Boolean),
+            throttleTime(100),
+            takeUntilDestroyed(this.destroyRef),
+        )
+        .subscribe(() => {
+            this.scrollRef.style.overflow = 'hidden';
+            this.scrollRef.classList.remove('_stuck'); // iOS
+            this.scrollRef.scrollTop = this.el.offsetTop;
 
-                timer(100)
-                    .pipe(takeUntilDestroyed(destroyRef))
-                    // eslint-disable-next-line rxjs/no-nested-subscribe
-                    .subscribe(() => {
-                        scrollRef.style.overflow = '';
-                    });
-            });
-    }
+            timer(100)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                // eslint-disable-next-line rxjs/no-nested-subscribe
+                .subscribe(() => {
+                    this.scrollRef.style.overflow = '';
+                });
+        });
 }
