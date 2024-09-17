@@ -8,7 +8,7 @@
   providers: [
     tuiAutoFocusOptionsProvider({
       delay: 300, // NaN = no delay/sync
-      preventScroll: true  
+      preventScroll: true,
     }),
   ],
 })
