@@ -13,7 +13,7 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         ngSkipHydration: 'true',
-    }
+    },
 })
 export class TuiSheetBarComponent {
     private readonly sheet = inject(TUI_SHEET);

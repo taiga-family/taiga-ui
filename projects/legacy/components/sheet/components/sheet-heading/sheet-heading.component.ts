@@ -15,7 +15,7 @@ export const TUI_SHEET_ID = 'tui-sheet-id';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         ngSkipHydration: 'true',
-    }
+    },
 })
 export class TuiSheetHeadingComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
