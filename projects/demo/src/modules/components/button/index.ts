@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {TuiDocAppearance} from '@demo/components/appearance';
+import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
@@ -7,7 +9,7 @@ import {TuiButtonLoading} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiButtonLoading, TuiDemo],
+    imports: [TuiButton, TuiButtonLoading, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -36,13 +38,6 @@ export default class Page {
         'glass',
         'floating',
     ];
-
-    protected appearance = this.appearances[0]!;
-
-    protected readonly icons = ['', '@tui.search', '@tui.chevron-down'];
-
-    protected iconStart = this.icons[0]!;
-    protected iconEnd = this.icons[0]!;
 
     protected loading = false;
 }
