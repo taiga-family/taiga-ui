@@ -7,13 +7,11 @@ import {
     HostListener,
     Inject,
     QueryList,
-    Self,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {NgControl, RadioControlValueAccessor} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
-import {EMPTY_QUERY, TuiDestroyService, tuiQueryListChanges} from '@taiga-ui/cdk';
-import {EMPTY, Observable} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {EMPTY_QUERY, tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {map, switchMap} from 'rxjs/operators';
 
 import {TuiSegmentedComponent} from './segmented.component';
 
@@ -24,6 +22,9 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     @ContentChildren(NgControl, {descendants: true})
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
+    @ContentChildren(RadioControlValueAccessor, {descendants: true})
+    private readonly radios: QueryList<RadioControlValueAccessor> = EMPTY_QUERY;
+
     @ContentChildren(RouterLinkActive)
     private readonly links: QueryList<RouterLinkActive> = EMPTY_QUERY;
 
@@ -31,28 +32,22 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
         @Inject(TuiSegmentedComponent) private readonly component: TuiSegmentedComponent,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {}
 
     @HostListener('click', ['$event.target'])
     update(target: Element | null): void {
-        const index = this.getIndex(target);
-
-        if (index >= 0) {
-            this.component.update(index);
-        }
+        this.component.update(this.getIndex(target));
     }
 
     ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
-                switchMap(() => this.controls.last?.valueChanges || EMPTY),
-                takeUntil(this.destroy$),
+                switchMap(() => tuiControlValue(this.controls.first)),
+                map(value => this.radios.toArray().findIndex(c => c.value === value)),
             )
-            .subscribe(() => {
-                this.update(this.el.nativeElement.querySelector(':checked'));
+            .subscribe(index => {
+                this.component.update(index);
             });
     }
 
