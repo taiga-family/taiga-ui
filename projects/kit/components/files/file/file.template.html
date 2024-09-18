@@ -47,6 +47,7 @@
     <img
         *ngIf="preview; else loader"
         alt="file preview"
+        fetchpriority="low"
         class="t-image"
         [src]="preview"
     />

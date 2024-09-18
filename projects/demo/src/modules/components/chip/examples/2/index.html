@@ -38,6 +38,7 @@
         <img
             *ngIf="size === 'm' || size === 's'"
             alt="Avatar"
+            fetchpriority="low"
             src="/assets/images/avatar.jpg"
             [style.border-radius.rem]="size === 'm' ? 0.25 : 0.5"
         />

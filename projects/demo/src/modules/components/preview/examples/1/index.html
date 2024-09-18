@@ -55,6 +55,7 @@
         <img
             *polymorpheusOutlet="previewContent as src"
             alt="preview"
+            fetchpriority="low"
             [src]="src"
         />
     </tui-preview>
@@ -75,6 +76,7 @@
 
         <img
             alt="logo"
+            fetchpriority="low"
             src="https://raw.githubusercontent.com/taiga-family/ng-polymorpheus/main/projects/demo/assets/logo.svg"
             class="polymorpheus"
         />

@@ -29,6 +29,7 @@
         />
         <ng-template #colored>
             <img
+                fetchpriority="low"
                 class="t-logo"
                 [alt]="paymentSystem"
                 [src]="options.icons[paymentSystem] | tuiIcon"

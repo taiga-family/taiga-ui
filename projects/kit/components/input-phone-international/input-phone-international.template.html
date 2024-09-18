@@ -14,6 +14,7 @@
 
     <ng-template #flag>
         <img
+            fetchpriority="low"
             class="t-flag t-flag_select"
             [alt]="names()?.[countryIsoCode()]"
             [src]="countryIsoCode() | tuiFlag"
@@ -62,6 +63,7 @@
     >
         <img
             alt=""
+            fetchpriority="low"
             class="t-flag"
             [src]="item | tuiFlag"
         />

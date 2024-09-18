@@ -22,6 +22,7 @@
         <img
             *polymorpheusOutlet="item.image as src; context: context"
             alt=""
+            fetchpriority="low"
             class="t-image"
             [src]="src"
         />
