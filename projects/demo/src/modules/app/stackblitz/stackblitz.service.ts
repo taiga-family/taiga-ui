@@ -5,9 +5,9 @@ import type {TuiCodeEditor} from '@taiga-ui/addon-doc';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TsFileComponentParser} from '../classes';
+import {StackblitzEditButton} from './edit';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
-import {StackblitzEditButton} from './starter/stackblitz-edit';
 import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
 const APP_COMP_META = {
