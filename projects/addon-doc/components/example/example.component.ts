@@ -12,8 +12,8 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -49,6 +49,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiButton,
         TuiDocCode,
         TuiDocExampleGetTabsPipe,
+        TuiLet,
         TuiLink,
         TuiLoader,
         TuiMapperPipe,
@@ -81,7 +82,6 @@ export class TuiDocExample {
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
-    protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
             TUI_DOC_CODE_ACTIONS,
