@@ -14,6 +14,7 @@ import {distinctUntilChanged, filter, map} from 'rxjs';
 import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
+import {TuiAlgoliaSearch} from './search';
 import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
@@ -22,6 +23,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     selector: 'app',
     imports: [
         CustomHost,
+        TuiAlgoliaSearch,
         TuiDemo,
         TuiDocLanguageSwitcher,
         TuiSheetModule,
