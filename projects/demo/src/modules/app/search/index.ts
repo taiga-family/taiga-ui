@@ -16,10 +16,13 @@ const docsearch = require('@docsearch/js').default;
 @Component({
     standalone: true,
     selector: 'tui-algolia-search',
-    templateUrl: './index.html',
+    template: '',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.id]': "'docsearch'",
+    },
 })
 export class TuiAlgoliaSearch {
     private readonly config = inject(SEARCH_CONFIG);
