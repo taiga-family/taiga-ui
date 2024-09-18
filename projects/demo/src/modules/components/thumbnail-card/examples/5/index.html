@@ -1,0 +1,29 @@
+<tui-segmented>
+    <button
+        *ngFor="let state of statuses"
+        type="button"
+        (click)="status = state"
+    >
+        {{ state }}
+    </button>
+</tui-segmented>
+
+<tui-textfield>
+    <label tuiLabel>Card number</label>
+    <input
+        icon=""
+        tuiInputCard
+        tuiTextfield
+        [disabled]="status === 'disabled'"
+        [invalid]="status === 'invalid'"
+        [readOnly]="status === 'readOnly'"
+        [(ngModel)]="card"
+    />
+    <tui-thumbnail-card
+        *ngIf="card.startsWith('1234')"
+        iconStart="@tui.dollar-sign"
+        paymentSystem="visa"
+        size="s"
+        [style.background]="background"
+    />
+</tui-textfield>
