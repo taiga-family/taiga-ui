@@ -14,7 +14,7 @@ export class TuiTextfieldDropdownDirective {}
 export class TuiWithTextfieldDropdown {
     private readonly dropdown = tuiDropdown(null);
 
-    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
+    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef, descendants: true})
     protected set template(template: PolymorpheusContent) {
         this.dropdown.set(template);
     }
