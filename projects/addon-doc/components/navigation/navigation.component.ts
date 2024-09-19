@@ -4,18 +4,13 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {
-    ActivatedRoute,
-    Router,
-    RouterLink,
-    RouterLinkActive,
-    Scroll,
-} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, Scroll} from '@angular/router';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
@@ -89,13 +84,13 @@ export class TuiDocNavigation {
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
+    protected open = signal(false);
     protected menuOpen = false;
 
     protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
-    protected readonly activatedRoute = inject(ActivatedRoute);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
@@ -162,8 +157,8 @@ export class TuiDocNavigation {
         this.menuOpen = false;
     }
 
-    protected onClick(input: TuiInputComponent): void {
-        input.open = false;
+    protected onClick(): void {
+        this.open.set(false);
         this.menuOpen = false;
         this.search.setValue('');
         this.openActivePageGroup();
