@@ -13,7 +13,6 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
@@ -53,7 +52,6 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         TuiHint,
         TuiLet,
         TuiLineClampPositionDirective,
-        WaResizeObserver,
     ],
     templateUrl: './line-clamp.template.html',
     styleUrls: ['./line-clamp.style.less'],

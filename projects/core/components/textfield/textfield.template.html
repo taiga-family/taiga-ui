@@ -4,7 +4,7 @@
 <span
     class="t-content"
     (mousedown.prevent)="el?.nativeElement?.focus()"
-    (waResizeObserver)="onResize($event)"
+    (resize)="onResize($event)"
 >
     <ng-content />
     <button
