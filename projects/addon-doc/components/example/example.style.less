@@ -4,15 +4,15 @@
 :host {
     position: relative;
     display: block;
-    padding-top: 3.5rem;
+    padding-top: 2rem;
     clear: inline-end;
 
     &:target {
         animation: 1s 300ms tuiShaking;
     }
 
-    @media @tui-mobile {
-        padding-top: 2rem;
+    &::ng-deep + tui-doc-example {
+        padding-top: 3.5rem;
     }
 }
 
