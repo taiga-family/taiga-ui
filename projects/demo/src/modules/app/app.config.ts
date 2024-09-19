@@ -12,6 +12,7 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
+    TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
@@ -134,6 +135,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_LOGO,
             useValue: LOGO_CONTENT,
+        },
+        {
+            provide: TUI_DOC_SEARCH_ENABLED,
+            useValue: false,
         },
         {
             provide: TUI_DOC_CODE_EDITOR,
