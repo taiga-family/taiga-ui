@@ -62,7 +62,7 @@ export class TuiSegmentedComponent implements OnChanges {
     }
 
     update(activeItemIndex: number): void {
-        if (activeItemIndex === this.activeItemIndex) {
+        if (activeItemIndex === this.activeItemIndex || activeItemIndex < 0) {
             return;
         }
 
