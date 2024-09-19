@@ -72,6 +72,8 @@ npm i @taiga-ui/addon-doc
 
    `TUI_DOC_SEE_ALSO` — a two dimensional array of related pages by their titles
 
+   `TUI_DOC_SEARCH_ENABLED` — enable doc search. Default value is true
+
 4. Configure routing:
 
    ```typescript
