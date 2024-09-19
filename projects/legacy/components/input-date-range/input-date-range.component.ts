@@ -30,8 +30,8 @@ import {
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiAsDataListHost} from '@taiga-ui/core';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
