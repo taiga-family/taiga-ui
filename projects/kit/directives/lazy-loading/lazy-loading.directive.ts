@@ -26,14 +26,17 @@ export class TuiImgLazyLoading {
     protected animation = signal('tuiSkeletonVibe ease-in-out 1s infinite alternate');
     protected background = signal('var(--tui-background-neutral-2)');
 
-    protected readonly $ = this.loading$
-        .pipe(takeUntilDestroyed())
-        .subscribe((src) => this.src.set(src));
+    protected readonly $ =
+        !this.supported &&
+        this.loading$.pipe(takeUntilDestroyed()).subscribe((src) => this.src.set(src));
 
     @Input('src')
     public set srcSetter(src: SafeResourceUrl | string) {
-        this.src.set(this.supported ? src : null);
-        this.loading$.next(src);
+        if (this.supported) {
+            this.src.set(src);
+        } else {
+            this.loading$.next(src);
+        }
     }
 
     protected unset(): void {
