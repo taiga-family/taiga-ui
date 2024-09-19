@@ -40,39 +40,58 @@
         </label>
     </p>
     <ng-template pageTab="Text">
-        <table [colors]="text"></table>
         <table
-            tuiTheme="dark"
             [colors]="text"
+            [tuiPlatform]="platform"
+        ></table>
+        <table
+            [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
+            [colors]="text"
+            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Backgrounds">
-        <table [colors]="backgrounds"></table>
         <table
-            tuiTheme="dark"
             [colors]="backgrounds"
+            [tuiPlatform]="platform"
+        ></table>
+        <table
+            [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
+            [colors]="backgrounds"
+            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Statuses">
-        <table [colors]="statuses"></table>
         <table
-            tuiTheme="dark"
             [colors]="statuses"
+            [tuiPlatform]="platform"
+        ></table>
+        <table
+            [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
+            [colors]="statuses"
+            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Others">
-        <table [colors]="others"></table>
         <table
-            tuiTheme="dark"
             [colors]="others"
+            [tuiPlatform]="platform"
+        ></table>
+        <table
+            [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
+            [colors]="others"
+            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Charts">
-        <table [colors]="charts"></table>
+        <table
+            [colors]="charts"
+            [tuiPlatform]="platform"
+        ></table>
     </ng-template>
 
     <ng-template pageTab="Setup">

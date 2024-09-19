@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiGroup} from '@taiga-ui/core';
+import {TUI_DARK_MODE, TuiGroup} from '@taiga-ui/core';
 import {TuiBlock} from '@taiga-ui/kit';
 
 import {BACKGROUNDS, CHARTS, OTHERS, STATUSES, TEXT} from './constants';
@@ -17,6 +17,8 @@ import {TableColors} from './examples/table';
     changeDetection,
 })
 export default class Page {
+    protected readonly darkMode = inject(TUI_DARK_MODE);
+
     protected readonly basicImportsLess = import(
         './examples/import/basic-imports-less.md?raw'
     );
