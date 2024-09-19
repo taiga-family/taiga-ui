@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,13 +13,24 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
 @Component({
     standalone: true,
     selector: 'tui-icon',
-    template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icon.less";'],
+    imports: [NgIf],
+    template: '<span *ngIf="alt" class="sr-only">{{alt}}</span>',
+    styles: [
+        `
+        @import '@taiga-ui/core/styles/taiga-ui-local.less';
+        @import "@taiga-ui/core/styles/components/icon.less";
+
+        .sr-only {
+            .sr-only();
+        }
+    `,
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-icon]': 'iconSrc() || "url()"',
         '[style.--t-icon-bg]': 'backgroundSrc()',
+        '[attr.aria-hidden]': 'true',
     },
 })
 export class TuiIcon {
@@ -30,6 +42,9 @@ export class TuiIcon {
                 inject(TUI_ICON_END, {self: true, optional: true}),
         ),
     );
+
+    @Input()
+    public alt = '';
 
     @Input()
     public set icon(icon: string) {
