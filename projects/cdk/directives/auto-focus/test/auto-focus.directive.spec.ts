@@ -9,8 +9,10 @@ import {
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
+import type {TuiAutofocusOptions} from '@taiga-ui/cdk';
 import {
     TUI_AUTOFOCUS_HANDLER,
+    TUI_AUTOFOCUS_OPTIONS,
     TuiAutoFocus,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
@@ -81,13 +83,20 @@ describe('TuiAutoFocus directive', () => {
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
                         useClass: TuiIosAutofocusHandler,
+                        deps: [
+                            ElementRef,
+                            Renderer2,
+                            NgZone,
+                            WA_WINDOW,
+                            TUI_AUTOFOCUS_OPTIONS,
+                        ],
                         useFactory: (
                             el: ElementRef<HTMLElement>,
                             renderer: Renderer2,
                             zone: NgZone,
                             win: Window,
-                        ) => new TuiIosAutofocusHandler(el, renderer, zone, win),
-                        deps: [ElementRef, Renderer2, NgZone, WA_WINDOW],
+                            options: TuiAutofocusOptions,
+                        ) => new TuiIosAutofocusHandler(el, renderer, zone, win, options),
                     },
                 ],
             });
