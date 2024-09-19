@@ -53,4 +53,7 @@ export default class Example {
     protected monoHandler = this.monoHandlerVariants[0]!;
 
     protected paymentSystem: TuiPaymentSystem | null = null;
+
+    protected background =
+        '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }
