@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/redundant-type-aliases */
 import type {Signal, WritableSignal} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';

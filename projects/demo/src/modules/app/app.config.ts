@@ -165,7 +165,7 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_URL_STATE_HANDLER,
             useFactory: () => (tree: UrlTree) =>
-                String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
+                String(tree).replace(/^\/(next|v\d+)\//, ''),
         },
         {
             provide: TUI_DOC_TYPE_REFERENCE_HANDLER,

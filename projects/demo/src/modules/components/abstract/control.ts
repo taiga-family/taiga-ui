@@ -24,8 +24,6 @@ viewBox="0 0 24 24">
 
 const CUSTOM_SVG_NAME = 'Bell';
 
-type TuiPossibleGenericType = any;
-
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
     implements AbstractExampleTuiDropdown
@@ -48,7 +46,7 @@ export abstract class AbstractExampleTuiControl
         'url',
     ];
 
-    public readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
+    public readonly maxLengthVariants: readonly any[] = [10];
 
     public readonly inputModeVariants: readonly string[] = ['text', 'numeric'];
 
@@ -65,7 +63,7 @@ export abstract class AbstractExampleTuiControl
 
     public inputMode = this.inputModeVariants[0]!;
 
-    public maxLength: TuiPossibleGenericType | null = null;
+    public maxLength: any = null;
 
     public type = this.typeVariants[0]!;
 
