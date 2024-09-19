@@ -1,19 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@keyframes tuiLikeScale {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.4);
-    }
-
-    100% {
-        transform: scale(1.1);
-    }
-}
-
 /**
  * @name Like
  * @selector [tuiLike]
@@ -69,7 +55,6 @@
 
         &::after {
             opacity: 1;
-            animation: tuiLikeScale var(--tui-duration) forwards;
         }
 
         &:not([tuiLike=''])::after {
