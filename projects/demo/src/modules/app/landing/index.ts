@@ -16,6 +16,7 @@ import {
 } from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiAutoFocus, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
+import {TuiImgLazyLoading} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -24,6 +25,7 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
         RouterLink,
         TuiAutoFocus,
         TuiButton,
+        TuiImgLazyLoading,
         TuiRepeatTimes,
         WaIntersectionObserver,
     ],

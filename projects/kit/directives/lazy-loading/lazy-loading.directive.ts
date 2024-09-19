@@ -8,20 +8,20 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({
     standalone: true,
-    selector: 'img[loading="lazy"]',
+    selector: 'img[loading="lazy"],img[tuiLoading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
     host: {
         '[style.animation]': 'animation()',
         '[style.background]': 'background()',
+        '[attr.loading]': 'supported ? "lazy" : null',
         '[attr.src]': 'src()',
         '(load)': 'unset()',
         '(error)': 'unset()',
     },
 })
 export class TuiImgLazyLoading {
-    private readonly el = tuiInjectElement<HTMLImageElement>();
     private readonly loading$ = inject(TuiLazyLoadingService);
-    private readonly supported = 'loading' in this.el;
+    protected readonly supported = 'loading' in tuiInjectElement<HTMLImageElement>();
     protected src = signal<SafeResourceUrl | string | null>(null);
     protected animation = signal('tuiSkeletonVibe ease-in-out 1s infinite alternate');
     protected background = signal('var(--tui-background-neutral-2)');
