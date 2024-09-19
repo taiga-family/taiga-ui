@@ -16,6 +16,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TEXTFIELD_CONTROLLER_PROVIDER],
     host: {
+        ngSkipHydration: 'true',
         type: 'text',
         '[attr.id]': 'id',
         '[attr.inputMode]': 'inputMode',

@@ -37,6 +37,7 @@ import {
         TuiMonthPipe,
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

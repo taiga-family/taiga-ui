@@ -23,6 +23,9 @@ import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs'
     templateUrl: './select-option.template.html',
     styleUrls: ['./select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
