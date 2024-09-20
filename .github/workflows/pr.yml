@@ -50,6 +50,40 @@ jobs:
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
+  label-when-approved:
+    name: Label when approved
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: taiga-family/ci/actions/setup/variables@v1.80.0
+      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.80.0
+        with:
+          approvals: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  assign-author:
+    name: PR author as an assignee
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: taiga-family/ci/actions/setup/variables@v1.80.0
+      - uses: toshimaru/auto-author-assign@v2.1.1
+        if: env.IS_OWNER_MODE == 'true'
+        with:
+          repo-token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+  label-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.76.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.76.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.76.0
+        id: nodejs-workspace
+      - uses: actions-ecosystem/action-add-labels@v1
+        continue-on-error: true
+        with:
+          labels: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
+
 concurrency:
   group: auto-approve-${{ github.head_ref }}
   cancel-in-progress: true
