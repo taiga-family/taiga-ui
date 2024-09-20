@@ -34,11 +34,12 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
         'Custom labels',
     ];
 
-    protected readonly cards: Record<string, string> = {
+    protected readonly cards: Record<string, PolymorpheusContent | string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         mutation:
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+        TemplateRef: '',
     };
 
     protected iconVariants: readonly string[] = Object.keys(this.cards);
@@ -80,6 +81,8 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     protected getContentVariants(
         template: PolymorpheusContent,
     ): readonly PolymorpheusContent[] | null {
-        return [...this.iconVariants, template];
+        this.cards['TemplateRef'] = template;
+
+        return [...this.iconVariants];
     }
 }
