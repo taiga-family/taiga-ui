@@ -1,9 +1,8 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiBlurNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -23,12 +22,9 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     },
 })
 export class TuiLoader {
-    private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiInjectElement();
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
-    protected loading = true;
-    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
+    protected readonly isApple = tuiIsSafari(tuiInjectElement()) || this.isIOS;
 
     @Input()
     public size = this.options.size;
@@ -42,29 +38,11 @@ export class TuiLoader {
     @Input()
     public textContent: PolymorpheusContent;
 
-    @Input()
-    public set showLoader(value: boolean) {
-        // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
-        if (value && this.focused) {
-            tuiBlurNativeFocused(this.doc);
-        }
-
-        this.loading = value;
-    }
-
-    protected get hasOverlay(): boolean {
-        return this.overlay && this.loading;
-    }
-
-    protected get hasText(): boolean {
-        return !!this.textContent;
-    }
+    // TODO: Drop alias in v5
+    @Input('showLoader')
+    public loading = true;
 
     protected get isHorizontal(): boolean {
         return !tuiSizeBigger(this.size);
-    }
-
-    protected get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
     }
 }

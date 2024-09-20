@@ -1,7 +1,7 @@
 <fieldset
     class="t-content"
     [attr.inert]="loading || null"
-    [class.t-content_has-overlay]="hasOverlay"
+    [class.t-content_has-overlay]="overlay && loading"
     [class.t-content_loading]="loading"
     [disabled]="loading && !isApple"
 >
@@ -29,7 +29,7 @@
     </svg>
 
     <div
-        *ngIf="hasText"
+        *ngIf="textContent"
         automation-id="tui-loader__text"
         class="t-text"
         [class.t-text_horizontal]="isHorizontal"
