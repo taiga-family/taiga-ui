@@ -11,6 +11,7 @@
         "**/*.less",
         "**/dist/**",
         "**/cspell/**",
+        "**/.vscode/**",
         "**/assets/**",
         "**/node_modules/**",
         "*.{log,svg,snap,png,ogv,yml}",
