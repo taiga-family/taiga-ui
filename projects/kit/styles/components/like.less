@@ -36,7 +36,7 @@
     &::before,
     &::after {
         .fullsize();
-        .transition(~'transform, opacity, color');
+        .transition(~'transform, opacity');
 
         content: '';
         background: currentColor;
@@ -46,6 +46,8 @@
     &::after {
         mask-image: var(--t-checked-icon);
         opacity: 0;
+        color: var(--t-icon-color, inherit);
+        transform: scale(0);
     }
 
     &:checked {
@@ -55,10 +57,8 @@
 
         &::after {
             opacity: 1;
-        }
-
-        &:not([tuiLike=''])::after {
-            color: var(--t-icon-color);
+            transform: scale(1);
+            transition-timing-function: cubic-bezier(0.2, 0.6, 0.5, 1.8), ease-in-out;
         }
     }
 
