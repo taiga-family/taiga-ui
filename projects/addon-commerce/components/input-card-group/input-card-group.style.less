@@ -13,7 +13,7 @@
     block-size: var(--tui-height-l);
     inline-size: @width-full;
     border-radius: var(--tui-radius-l);
-    overflow: clip;
+    overflow: hidden;
 
     :host-context(tui-root._mobile) {
         inline-size: @width-mobile;
@@ -38,8 +38,9 @@
     block-size: 100%;
 
     &_cvc {
+        inline-size: 50%;
         margin-left: @offset-full;
-        transform: translate3d(100%, 0, 0);
+        transform: translate3d(200%, 0, 0);
 
         :host-context(tui-root._mobile) & {
             margin-left: @offset-small;
@@ -47,7 +48,18 @@
     }
 
     &_expire {
-        transform: translate3d(100%, 0, 0);
+        inline-size: 50%;
+        transform: translate3d(@wrapper-offset-full, 0, 0);
+
+        :host-context(tui-root._mobile) & {
+            transform: translate3d(@wrapper-offset-small, 0, 0);
+        }
+
+        .t-label,
+        .t-input {
+            margin-inline-start: 0;
+            padding-inline-start: 100%;
+        }
     }
 
     &_active {
@@ -55,6 +67,13 @@
 
         :host-context(tui-root._mobile) & {
             transform: translate3d(@wrapper-offset-small, 0, 0);
+        }
+
+        &.t-wrapper_expire {
+            .t-label,
+            .t-input {
+                padding-inline-start: var(--tui-padding-l);
+            }
         }
     }
 }
@@ -105,6 +124,7 @@
 
 .t-input {
     .fullsize();
+    .transition(padding);
 
     border: 0;
     margin: 0;
@@ -122,7 +142,9 @@
     &:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
         caret-color: var(--tui-text-primary) !important;
-        transition: background-color 600000s 0s;
+        transition:
+            background-color 600000s 0s,
+            padding var(--tui-duration) ease-in-out;
     }
 
     &&&_card {
