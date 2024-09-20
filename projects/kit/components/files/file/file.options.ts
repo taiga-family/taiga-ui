@@ -1,5 +1,5 @@
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -31,4 +31,6 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
 /**
  * Default parameters for file component
  */
-export const TUI_FILE_OPTIONS = tuiCreateToken(TUI_FILE_DEFAULT_OPTIONS);
+export const [TUI_FILE_OPTIONS, tuiFileOptionsProvider] = tuiCreateOptions(
+    TUI_FILE_DEFAULT_OPTIONS,
+);
