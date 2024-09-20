@@ -1,9 +1,10 @@
 <tui-mobile-calendar
-    [disabledItemHandler]="disabledItemHandler"
-    [max]="max"
-    [min]="min"
+    [disabledItemHandler]="calculatedDisabledItemHandler"
+    [max]="max()"
+    [min]="min()"
     [multi]="multi"
     [single]="single"
     (cancel)="close()"
     (confirm)="confirm($event)"
+    (valueChange)="onValueChange($event)"
 />

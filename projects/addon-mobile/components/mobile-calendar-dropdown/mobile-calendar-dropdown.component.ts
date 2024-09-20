@@ -4,15 +4,17 @@ import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calend
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {TUI_DAY_CAPS_MAPPER} from '@taiga-ui/kit/components/calendar-range';
+import {
+    calculateDisabledItemHandler,
+    TUI_DAY_CAPS_MAPPER,
+} from '@taiga-ui/kit/components/calendar-range';
 import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
@@ -47,6 +49,8 @@ export class TuiMobileCalendarDropdown {
     private readonly observer?: Observer<any> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
+    private selectedPeriod: TuiDayRange | null = null;
+
     protected readonly animation = {
         value: '',
         params: {
@@ -62,37 +66,60 @@ export class TuiMobileCalendarDropdown {
     protected readonly single =
         this.data.single || this.is('tui-input-date:not([multiple])');
 
-    protected readonly min =
-        this.data.min ||
-        (this.range
-            ? TUI_DAY_CAPS_MAPPER(
-                  this.control.min,
-                  this.control.value,
-                  this.control.maxLength,
-                  true,
-              )
-            : this.control?.min) ||
-        TUI_FIRST_DAY;
-
-    protected readonly max =
-        this.data.max ||
-        (this.range
-            ? TUI_DAY_CAPS_MAPPER(
-                  this.control.max,
-                  this.control.value,
-                  this.control.maxLength,
-                  false,
-              )
-            : this.control?.max) ||
-        TUI_LAST_DAY;
-
-    protected readonly disabledItemHandler =
-        this.data.disabledItemHandler ||
-        this.control?.disabledItemHandler ||
-        TUI_FALSE_HANDLER;
-
     constructor() {
         this.keyboard.hide();
+    }
+
+    public max(): TuiDay {
+        return (
+            this.data.max ||
+            (this.range
+                ? TUI_DAY_CAPS_MAPPER(
+                      this.control.max,
+                      this.selectedPeriod,
+                      this.control.maxLength,
+                      false,
+                  )
+                : this.control?.max) ||
+            TUI_LAST_DAY
+        );
+    }
+
+    public min(): TuiDay {
+        return (
+            this.data.min ||
+            (this.range
+                ? TUI_DAY_CAPS_MAPPER(
+                      this.control.min,
+                      this.selectedPeriod,
+                      this.control.maxLength,
+                      true,
+                  )
+                : this.control?.min) ||
+            TUI_FIRST_DAY
+        );
+    }
+
+    public onValueChange(value: TuiDay | TuiDayRange | readonly TuiDay[] | null): void {
+        if (!this.range) {
+            return;
+        }
+
+        if (value === null || value instanceof TuiDayRange) {
+            this.selectedPeriod = value;
+        } else if (value instanceof TuiDay) {
+            this.selectedPeriod = new TuiDayRange(value, value);
+        }
+    }
+
+    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
+        return calculateDisabledItemHandler(
+            this.data.disabledItemHandler ||
+                this.control?.disabledItemHandler ||
+                TUI_FALSE_HANDLER,
+            this.selectedPeriod,
+            this.control.minLength,
+        );
     }
 
     protected close(): void {
