@@ -2,16 +2,14 @@
     appearance="whiteblock"
     iconStart="@tui.languages"
     size="s"
-    tuiButton
+    tuiButtonSelect
     tuiIconButton
     type="button"
-    [tuiDropdown]="content"
-    [(tuiDropdownOpen)]="open"
-></button>
-
-<ng-template #content>
-    <tui-data-list [formControl]="language">
-        <tui-opt-group label="Lang of components">
+    [formControl]="language"
+>
+    Language
+    <tui-data-list *tuiTextfieldDropdown>
+        <tui-opt-group label="Language of components">
             <button
                 *ngFor="let name of names"
                 tuiOption
@@ -28,4 +26,4 @@
             </button>
         </tui-opt-group>
     </tui-data-list>
-</ng-template>
+</button>
