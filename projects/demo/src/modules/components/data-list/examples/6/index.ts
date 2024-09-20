@@ -5,18 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        NgForOf,
-        TuiAsideItemDirective,
-        TuiButton,
-        TuiChevron,
-        TuiDataList,
-        TuiDropdown,
-    ],
+    imports: [NgForOf, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     styles: [
         `

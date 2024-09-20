@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 import {IndexChange} from './index-change.directive';
@@ -18,7 +17,6 @@ import {IndexChange} from './index-change.directive';
         FormsModule,
         IndexChange,
         ScrollingModule,
-        TuiAsideItemDirective,
         TuiComboBoxModule,
         TuiDataList,
         TuiFilterByInputPipe,

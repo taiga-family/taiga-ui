@@ -15,7 +15,6 @@ import {
     TuiTextfield,
     TuiTextfieldDirective,
 } from '@taiga-ui/core';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 interface Items<T> {
@@ -30,7 +29,6 @@ interface Items<T> {
         FormsModule,
         NgForOf,
         NgIf,
-        TuiAsideItemDirective,
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,

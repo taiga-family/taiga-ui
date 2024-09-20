@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Hero {
@@ -19,7 +18,6 @@ interface Hero {
     imports: [
         NgForOf,
         ReactiveFormsModule,
-        TuiAsideItemDirective,
         TuiDataList,
         TuiDataListWrapper,
         TuiMultiSelectModule,

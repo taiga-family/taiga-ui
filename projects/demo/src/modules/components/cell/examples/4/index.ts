@@ -10,13 +10,12 @@ import {
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiAsideItemDirective, TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
-        TuiAsideItemDirective,
         TuiAvatar,
         TuiBadgeNotification,
         TuiCell,

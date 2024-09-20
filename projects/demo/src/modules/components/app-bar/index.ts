@@ -13,5 +13,6 @@ export default class Page {
         'Mobile — medium size',
         'Desktop — large size',
         'Variants',
+        'Dialog',
     ];
 }

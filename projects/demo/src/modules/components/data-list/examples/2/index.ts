@@ -6,13 +6,11 @@ import {TuiLet} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         NgForOf,
-        TuiAsideItemDirective,
         TuiButton,
         TuiDataList,
         TuiDataListDropdownManager,

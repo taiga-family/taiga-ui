@@ -27,7 +27,6 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiButtonLoading, TuiCheckbox} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
@@ -44,7 +43,6 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         NgForOf,
         NgIf,
         ReactiveFormsModule,
-        TuiAsideItemDirective,
         TuiAutoFocus,
         TuiButton,
         TuiButtonLoading,

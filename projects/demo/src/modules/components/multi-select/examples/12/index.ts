@@ -5,7 +5,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAsOptionContent, TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Directive({
@@ -21,7 +20,6 @@ export class MoreOption {}
         FormsModule,
         MoreOption,
         NgForOf,
-        TuiAsideItemDirective,
         TuiButton,
         TuiDataList,
         TuiDataListDropdownManager,

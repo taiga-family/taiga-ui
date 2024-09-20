@@ -88,7 +88,7 @@
             margin: auto 0 0;
 
             .t-content {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
             .t-heading {
@@ -154,7 +154,7 @@
 .t-close {
     .transition(background);
 
-    position: fixed;
+    position: absolute;
     top: 1.5rem;
     right: 1.5rem;
     display: none;
@@ -173,15 +173,10 @@
         }
     }
 
-    :host:not([data-size='fullscreen']).ng-animating & {
-        display: none;
-    }
-
     :host-context(tui-root._mobile) & {
         &[data-size] {
             --tui-fade-end: 0.5;
 
-            position: absolute;
             top: 0;
             right: 0;
             background: transparent !important;

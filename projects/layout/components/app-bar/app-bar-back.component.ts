@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TUI_SPIN_ICONS, TuiIcon} from '@taiga-ui/core';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
     TuiAppearance,
@@ -13,7 +14,10 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TuiAppBarBack)],
     hostDirectives: [TuiAppearance],
+    imports: [TuiIcon],
 })
 export class TuiAppBarBack implements TuiAppearanceOptions {
-    public appearance = 'link';
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+
+    public readonly appearance = 'link';
 }
