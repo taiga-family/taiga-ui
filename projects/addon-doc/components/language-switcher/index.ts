@@ -1,15 +1,15 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiTextfield} from '@taiga-ui/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
-import {TuiButtonSelect} from '@taiga-ui/kit';
+import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
 
 @Component({
     standalone: true,
@@ -19,10 +19,10 @@ import {TuiButtonSelect} from '@taiga-ui/kit';
         ReactiveFormsModule,
         TitleCasePipe,
         TuiButton,
+        TuiButtonSelect,
         TuiDataList,
         TuiDropdown,
         TuiFlagPipe,
-        TuiButtonSelect,
         TuiTextfield,
     ],
     templateUrl: './index.html',
