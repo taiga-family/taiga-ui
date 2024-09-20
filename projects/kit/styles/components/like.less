@@ -1,0 +1,84 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes tuiLikeScale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/**
+ * @name Like
+ * @selector [tuiLike]
+ *
+ * @description
+ * A stylized input type="checkbox"
+ *
+ * @attributes
+ * data-size — size (default: 'm') ('s' | 'm')
+ *
+ * @vars
+ * --t-icon-color - custom color for `:checked` state
+ * --t-unchecked-icon — default state icon
+ * --t-checked-icon — checkmark icon
+ *
+ * @example
+ * <input tuiLike />
+ *
+ * @see-also
+ * Checkbox, Switch, Radio, Appearance
+ */
+[tuiLike] {
+    --t-size: var(--tui-height-m);
+    --t-border-width: 0.75rem;
+
+    inline-size: var(--t-size);
+    block-size: var(--t-size);
+    border: var(--t-border-width) transparent solid;
+    border-radius: 100%;
+    cursor: pointer;
+    margin: 0;
+    flex-shrink: 0;
+
+    &::before,
+    &::after {
+        .fullsize();
+        .transition(~'transform, opacity, color');
+
+        content: '';
+        background: currentColor;
+        mask: var(--t-unchecked-icon) no-repeat center/contain;
+    }
+
+    &::after {
+        mask-image: var(--t-checked-icon);
+        opacity: 0;
+    }
+
+    &:checked {
+        &::before {
+            opacity: 0;
+        }
+
+        &::after {
+            opacity: 1;
+            animation: tuiLikeScale var(--tui-duration) forwards;
+        }
+
+        &:not([tuiLike=''])::after {
+            color: var(--t-icon-color);
+        }
+    }
+
+    &[data-size='s'] {
+        --t-size: var(--tui-height-s);
+        --t-border-width: 0.5rem;
+    }
+}

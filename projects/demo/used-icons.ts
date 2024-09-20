@@ -65,6 +65,7 @@ export const TUI_USED_ICONS = [
     '@tui.thumbs-down',
     '@tui.circle-check',
     '@tui.circle-x',
+    '@tui.star-filled',
     '@tui.external-link',
     '@tui.gitlab',
     '@tui.alarm-clock',

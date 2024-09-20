@@ -117,6 +117,7 @@ export const DemoRoute = {
     Status: '/components/status',
     Stepper: '/navigation/stepper',
     Preview: '/components/preview',
+    Like: '/components/like',
     AppBar: '/navigation/app-bar',
     TabBar: '/navigation/tab-bar',
     Tabs: '/navigation/tabs',
