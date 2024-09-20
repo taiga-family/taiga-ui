@@ -296,4 +296,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: '[tuiAppearanceFocus]',
         },
     },
+    {
+        from: {
+            attrName: '*tuiRow',
+            withTagNames: ['tr'],
+        },
+        to: {
+            attrName: '*ngFor',
+        },
+    },
 ];
