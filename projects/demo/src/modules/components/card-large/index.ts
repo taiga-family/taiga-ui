@@ -17,10 +17,11 @@ export default class Example {
         'Cell List',
         'Cell List (2 columns)',
         'Cell List (actions)',
+        'Cell List (headless)',
         'Footer alignment',
-        'Map',
         'Image',
         'Image-dark',
         'Paddings and radii',
+        'Map',
     ];
 }
