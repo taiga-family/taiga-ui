@@ -217,5 +217,25 @@ describe('MultiSelect', () => {
 
             await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });
+
+        test('placeholder with value content', async ({page}) => {
+            await tuiGoto(
+                page,
+                'components/multi-select/API?valueContent$=1&placeholder=test',
+            );
+
+            await multiSelect.arrow.click();
+
+            await multiSelect.selectOptions([0]);
+            await multiSelect.closeDropdown();
+
+            await multiSelect.textfield.blur();
+
+            await documentationPage.prepareApiPageBeforeScreenshot();
+
+            await expect(page).toHaveScreenshot(
+                '10-multi-select-placeholder-with-value-content.png',
+            );
+        });
     });
 });
