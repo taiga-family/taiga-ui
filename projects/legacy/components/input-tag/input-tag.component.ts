@@ -1,4 +1,4 @@
-import type {QueryList} from '@angular/core';
+import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -88,7 +88,11 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
 })
 export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
-    implements TuiFocusableElementAccessor, TuiDataListHost<string>
+    implements
+        TuiFocusableElementAccessor,
+        TuiDataListHost<string>,
+        AfterContentInit,
+        AfterContentChecked
 {
     @ViewChild(TuiDropdownOpen)
     private readonly dropdown?: TuiDropdownOpen;
@@ -114,8 +118,8 @@ export class TuiInputTagComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZone>>;
 
-    @ContentChild(PolymorpheusOutlet, {read: ElementRef})
-    protected readonly valueContent?: ElementRef<HTMLSpanElement>;
+    @ContentChild(PolymorpheusOutlet)
+    protected readonly valueContent?: unknown;
 
     @ViewChild('errorIcon')
     protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
@@ -231,6 +235,16 @@ export class TuiInputTagComponent
                 !this.placeholder) ||
             !!this.valueContent
         );
+    }
+
+    public ngAfterContentInit(): void {
+        // eslint-disable-next-line
+        console.log(this.valueContent);
+    }
+
+    public ngAfterContentChecked(): void {
+        // eslint-disable-next-line
+        console.log(this.valueContent);
     }
 
     public onTagEdited(value: string, index: number): void {
