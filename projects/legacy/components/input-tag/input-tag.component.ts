@@ -46,6 +46,7 @@ import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
@@ -112,6 +113,9 @@ export class TuiInputTagComponent
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZone>>;
+
+    @ContentChild(PolymorpheusOutlet)
+    protected readonly valueContent?: unknown;
 
     @ViewChild('errorIcon')
     protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
@@ -217,6 +221,16 @@ export class TuiInputTagComponent
 
     public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen;
+    }
+
+    public get tagsEmpty(): boolean {
+        return (
+            ((!this.focused || this.inputHidden) &&
+                !this.value.length &&
+                !this.search?.trim()?.length &&
+                !this.placeholder) ||
+            !!this.valueContent
+        );
     }
 
     public onTagEdited(value: string, index: number): void {
