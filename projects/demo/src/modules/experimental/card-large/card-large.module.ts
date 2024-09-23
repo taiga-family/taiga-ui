@@ -46,6 +46,7 @@ import {TuiCardLargeExample9} from './examples/9';
 import {TuiCardLargeExample10} from './examples/10';
 import {TuiCardLargeExample11} from './examples/11';
 import {TuiCardLargeExample12} from './examples/12';
+import {TuiCardLargeExample13} from './examples/13';
 
 @NgModule({
     imports: [
@@ -94,6 +95,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiCardLargeExample10,
         TuiCardLargeExample11,
         TuiCardLargeExample12,
+        TuiCardLargeExample13,
     ],
     exports: [ExampleTuiCardLargeComponent],
 })
