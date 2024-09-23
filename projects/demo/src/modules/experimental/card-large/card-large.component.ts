@@ -70,4 +70,9 @@ export class ExampleTuiCardLargeComponent {
     readonly example12: TuiDocExample = {
         HTML: import('./examples/12/index.html?raw'),
     };
+
+    readonly example13: TuiDocExample = {
+        HTML: import('./examples/13/index.html?raw'),
+        LESS: import('./examples/11/index.less?raw'),
+    };
 }
