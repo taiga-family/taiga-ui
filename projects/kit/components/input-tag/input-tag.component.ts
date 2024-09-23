@@ -58,7 +58,7 @@ import {
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {Observable, timer} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -170,6 +170,9 @@ export class TuiInputTagComponent
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+
+    @ContentChild(PolymorpheusOutletDirective)
+    readonly valueContent?: unknown;
 
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
@@ -303,6 +306,16 @@ export class TuiInputTagComponent
 
     get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
+    }
+
+    get tagsEmpty(): boolean {
+        return (
+            ((!this.focused || this.inputHidden) &&
+                !this.value.length &&
+                !this.search?.trim()?.length &&
+                !this.placeholder) ||
+            !!this.valueContent
+        );
     }
 
     @HostListener('focusin.capture.silent')
