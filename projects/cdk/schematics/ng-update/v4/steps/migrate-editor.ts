@@ -62,11 +62,12 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
         {
             from: [
                 {name: 'defaultEditorTools', moduleSpecifier},
-                {
-                    name: 'TUI_EDITOR_DEFAULT_TOOLS',
-                    moduleSpecifier: '@tinkoff/tui-editor',
-                },
+                {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier},
             ],
+            to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
+        },
+        {
+            from: {name: 'TUI_EDITOR_DEFAULT_EDITOR_TOOLS', moduleSpecifier},
             to: {name: 'TUI_EDITOR_DEFAULT_TOOLS', moduleSpecifier: '@taiga-ui/editor'},
         },
         {
