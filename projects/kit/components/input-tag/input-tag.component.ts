@@ -171,8 +171,8 @@ export class TuiInputTagComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
-    @ContentChild(PolymorpheusOutletDirective, {read: ElementRef})
-    readonly valueContent?: ElementRef<HTMLSpanElement>;
+    @ContentChild(PolymorpheusOutletDirective)
+    readonly valueContent?: unknown;
 
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
