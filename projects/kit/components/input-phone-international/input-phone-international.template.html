@@ -1,5 +1,5 @@
 <tui-textfield
-    class="t-country-select"
+    class="t-select"
     [content]="flag"
     [tuiChevron]="open()"
 >
@@ -14,7 +14,7 @@
 
     <ng-template #flag>
         <img
-            class="t-flag t-flag_select"
+            class="t-flag"
             [alt]="names()?.[countryIsoCode()]"
             [src]="countryIsoCode() | tuiFlag"
         />
@@ -65,8 +65,8 @@
             class="t-flag"
             [src]="item | tuiFlag"
         />
-        <span class="t-country-item-name">{{ names()?.[item] }}</span>
-        <span class="t-country-item-code">
+        <span class="t-name">{{ names()?.[item] }}</span>
+        <span class="t-code">
             {{ item | tuiGetCountryCallingCode: metadata() }}
         </span>
     </button>
