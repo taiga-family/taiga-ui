@@ -9,7 +9,7 @@ import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import {distinctUntilChanged, filter, map} from 'rxjs';
+import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
 import {AbstractDemo, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
@@ -59,8 +59,10 @@ export class App extends AbstractDemo implements OnInit {
     protected readonly routes = DemoRoute;
 
     protected readonly isLanding$ = this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd),
         map(() => this.url === '' || this.url === '/'),
         distinctUntilChanged(),
+        startWith(true),
     );
 
     public override async ngOnInit(): Promise<void> {
