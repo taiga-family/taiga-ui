@@ -480,6 +480,11 @@ export const ROUTES: Routes = [
         title: 'LineClamp',
     }),
     route({
+        path: DemoRoute.Like,
+        loadComponent: async () => import('../components/like'),
+        title: 'Like',
+    }),
+    route({
         path: DemoRoute.Link,
         loadComponent: async () => import('../components/link'),
         title: 'Link',

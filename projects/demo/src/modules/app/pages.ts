@@ -603,6 +603,12 @@ export const pages: TuiDocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Like',
+        keywords: 'like, лайк, эмодзи, смайлик, стикер',
+        route: DemoRoute.Like,
+    },
+    {
+        section: 'Components',
         title: 'LineClamp',
         keywords: 'обрезание, текст, ticker, тикер, overflow',
         route: DemoRoute.LineClamp,
