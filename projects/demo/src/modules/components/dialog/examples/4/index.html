@@ -25,10 +25,9 @@
 <ng-template #long>
     <div class="background"></div>
     <header
+        #header
         class="header"
-        [style.transform]="transform"
-        [style.width]="width"
-        (tuiElasticSticky)="onElastic($event)"
+        (tuiElasticSticky)="onElastic($event, header)"
     >
         <section class="logo">
             <label class="date">8 March, 23:51</label>
