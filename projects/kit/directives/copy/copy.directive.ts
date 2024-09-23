@@ -78,11 +78,11 @@ export class TuiCopy {
     public tuiCopy = '';
 
     protected get disabled(): boolean {
-        return !this.textfield.el?.nativeElement.value;
+        return !this.textfield.input?.nativeElement.value;
     }
 
     protected copy(): void {
-        this.textfield.el?.nativeElement.select();
+        this.textfield.input?.nativeElement.select();
         this.doc.execCommand('copy');
         this.copied$.next();
     }

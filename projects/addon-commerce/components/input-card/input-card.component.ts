@@ -30,6 +30,7 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
             *tuiTextfieldContent
             alt=""
             class="t-payment-system"
+            [hidden]="!image()"
             [src]="image()"
         />
     `,
