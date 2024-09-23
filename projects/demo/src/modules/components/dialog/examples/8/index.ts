@@ -34,11 +34,13 @@ export default class Example {
             },
         });
 
-        this.dialogs.open(content, {closeable, dismissible: closeable}).subscribe({
-            complete: () => {
-                this.value = '';
-                this.confirm.markAsPristine();
-            },
-        });
+        this.dialogs
+            .open(content, {label: 'Form', closeable, dismissible: closeable})
+            .subscribe({
+                complete: () => {
+                    this.value = '';
+                    this.confirm.markAsPristine();
+                },
+            });
     }
 }

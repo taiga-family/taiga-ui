@@ -7,7 +7,7 @@
     flex-direction: column;
     box-sizing: border-box;
     margin: auto;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     border: 2.5rem solid transparent;
 
     &::after {
@@ -31,26 +31,16 @@
         }
 
         .t-heading {
-            margin-bottom: 0.5rem;
             font: var(--tui-font-heading-5);
         }
     }
 
     &[data-size='m'] {
         inline-size: 42.5rem;
-
-        .t-heading {
-            margin-bottom: 0.75rem;
-            font: var(--tui-font-heading-4);
-        }
     }
 
     &[data-size='l'] {
         inline-size: 55rem;
-
-        .t-heading {
-            margin-bottom: 1rem;
-        }
     }
 
     &[data-size='fullscreen'],
@@ -70,7 +60,7 @@
         }
 
         .t-heading {
-            margin-bottom: 1rem;
+            font: var(--tui-font-heading-3);
         }
     }
 
@@ -92,7 +82,6 @@
             }
 
             .t-heading {
-                margin-bottom: 0.5rem;
                 font: var(--tui-font-heading-5);
             }
         }
@@ -107,9 +96,9 @@
 }
 
 .t-heading {
-    margin: 0;
+    margin: 0 0 0.5rem;
     word-wrap: break-word;
-    font: var(--tui-font-heading-3);
+    font: var(--tui-font-heading-4);
 
     &:empty {
         display: none;
@@ -131,7 +120,7 @@
 
 .t-content {
     border-radius: inherit;
-    padding: 2rem;
+    padding: 1.75rem;
     background: var(--tui-background-elevation-1);
 
     &:not(:first-child) {
@@ -155,35 +144,8 @@
     .transition(background);
 
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    display: none;
-
-    :host-context(.t-dialog:last-of-type) & {
-        display: inline-flex;
-    }
-
-    :host:not([data-size='fullscreen']):not([data-size='page']) & {
-        animation: tuiFadeIn var(--tui-duration);
-        background: rgba(104, 104, 104, 0.96);
-        color: var(--tui-background-base);
-
-        &:hover {
-            background: rgba(159, 159, 159, 0.86);
-        }
-    }
-
-    :host-context(tui-root._mobile) & {
-        &[data-size] {
-            --tui-fade-end: 0.5;
-
-            top: 0;
-            right: 0;
-            background: transparent !important;
-            color: var(--tui-text-primary);
-            opacity: 0.5;
-        }
-    }
+    top: 1rem;
+    right: 1rem;
 }
 
 .t-buttons {

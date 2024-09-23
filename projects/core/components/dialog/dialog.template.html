@@ -38,12 +38,12 @@
 >
     <button
         automation-id="tui-dialog__close"
-        size="s"
         tuiIconButton
         type="button"
         class="t-close"
-        [appearance]="fullscreen ? 'secondary' : ''"
+        [appearance]="isMobile() ? 'icon' : 'neutral'"
         [iconStart]="icons.close"
+        [size]="isMobile() ? 'xs' : 's'"
         [style.border-radius.%]="100"
         (click)="close$.next()"
         (mousedown.prevent.silent)="(0)"
