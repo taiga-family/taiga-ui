@@ -1,5 +1,5 @@
 <div class="t-title-block">
-    <h3
+    <h2
         *ngIf="heading"
         class="t-title"
     >
@@ -7,7 +7,7 @@
             *polymorpheusOutlet="heading as text"
             [textContent]="text"
         ></span>
-    </h3>
+    </h2>
     <a
         *ngIf="id"
         routerLink="."
@@ -23,14 +23,14 @@
         #
     </a>
 </div>
-<h4
+<h3
     *ngIf="description"
     class="t-description"
 >
     <ng-container *polymorpheusOutlet="description as text">
         {{ text }}
     </ng-container>
-</h4>
+</h3>
 
 <div
     *ngIf="processor$ | async as files"
