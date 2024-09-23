@@ -4,6 +4,7 @@ tui-textfield {
     .transition(color);
 
     --t-height: var(--tui-height-l);
+    --t-padding: var(--tui-padding-l);
 
     position: relative;
     display: flex;
@@ -12,7 +13,7 @@ tui-textfield {
     cursor: pointer;
     block-size: var(--t-height);
     color: var(--tui-text-tertiary);
-    padding: 0 var(--tui-padding-l);
+    padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
     font: var(--tui-font-text-m);
     box-sizing: border-box;
@@ -36,8 +37,8 @@ tui-textfield {
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
+        --t-padding: var(--tui-padding-s);
 
-        padding: 0 var(--tui-padding-s);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
 
@@ -72,8 +73,8 @@ tui-textfield {
 
     &[data-size='m'] {
         --t-height: var(--tui-height-m);
+        --t-padding: var(--tui-padding-m);
 
-        padding: 0 var(--tui-padding-m);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
 
@@ -175,11 +176,11 @@ tui-textfield {
 
         appearance: none;
         box-sizing: border-box;
-        border: none;
-        border-inline-start: var(--t-left, 0) solid transparent !important;
-        border-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side)) solid transparent !important;
         border-radius: inherit;
         padding: inherit;
+        border: none;
+        text-indent: var(--t-left, 0);
+        padding-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side) + var(--t-padding));
     }
 
     .t-template {
