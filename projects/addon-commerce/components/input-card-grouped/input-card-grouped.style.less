@@ -60,10 +60,10 @@
             transform: translate3d(@wrapper-offset-small, 0, 0);
         }
 
-        .t-label,
+        .t-placeholder,
         .t-input {
             margin-inline-start: 0;
-            padding-inline-start: 100%;
+            padding-inline-start: 100% !important;
         }
     }
 
@@ -75,9 +75,9 @@
         }
 
         &.t-wrapper_expire {
-            .t-label,
+            .t-placeholder,
             .t-input {
-                padding-inline-start: var(--tui-padding-l);
+                padding-inline-start: var(--tui-padding-l) !important;
             }
         }
     }
@@ -199,12 +199,13 @@
     .textfield-placeholder();
     margin: 1.125rem 1rem;
     line-height: 1.25rem;
+    width: auto;
 }
 
 .t-ghost {
     visibility: hidden;
 }
 
-tui-icon {
+tui-svg {
     z-index: 1;
 }
