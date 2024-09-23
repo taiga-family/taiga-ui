@@ -1,7 +1,10 @@
 <router-outlet *ngIf="isLanding$ | async; else portal" />
 <ng-template #portal>
     <tui-doc-main>
-        <ng-container ngProjectAs="tuiDocHeader">
+        <div
+            ngProjectAs="tuiDocHeader"
+            class="app-links"
+        >
             <img
                 *ngIf="isChristmas"
                 alt="Santa hat"
@@ -9,7 +12,64 @@
                 class="app-christmas"
             />
 
+            <tui-doc-language-switcher />
+
             <tui-algolia-search />
+
+            <button
+                appearance="whiteblock"
+                iconStart="@tui.ellipsis"
+                size="s"
+                tuiDropdownOpen
+                tuiIconButton
+                type="button"
+                class="app-links-dropdown"
+                [tuiDropdown]="more"
+            >
+                More
+                <ng-template #more>
+                    <tui-data-list size="m">
+                        <a
+                            href="https://github.com/taiga-family/taiga-ui"
+                            iconStart="assets/images/github.svg"
+                            rel="noreferrer"
+                            target="_blank"
+                            tuiOption
+                            class="app-link-dropdown"
+                        >
+                            GitHub
+                        </a>
+                        <a
+                            href="https://t.me/taiga_ui"
+                            iconStart="assets/icons/telegram.svg"
+                            rel="noreferrer"
+                            target="_blank"
+                            tuiOption
+                            class="app-link-dropdown"
+                        >
+                            Telegram chat
+                        </a>
+                        <a
+                            href="https://discord.gg/zrB2EdJjEy"
+                            iconStart="assets/icons/discord.svg"
+                            rel="noreferrer"
+                            target="_blank"
+                            tuiOption
+                            class="app-link-dropdown"
+                        >
+                            Angular Discord
+                        </a>
+                        <a
+                            iconStart="assets/icons/stackblitz.svg"
+                            tuiOption
+                            class="app-link-dropdown"
+                            [routerLink]="routes.StackblitzStarter"
+                        >
+                            StackBlitz Starter
+                        </a>
+                    </tui-data-list>
+                </ng-template>
+            </button>
 
             <a
                 appearance="icon"
@@ -49,17 +109,16 @@
                 iconStart="assets/icons/stackblitz.svg"
                 title="Taiga UI StackBlitz Starter"
                 tuiLink
-                class="app-link stackblitz"
+                class="app-link"
                 [routerLink]="routes.StackblitzStarter"
             ></a>
-        </ng-container>
+        </div>
         <div
             ngProjectAs="tuiDocNavigation"
             tuiTextfieldAppearance="none"
             tuiTextfieldSize="m"
             class="app-selects"
         >
-            <tui-doc-language-switcher>Language of components</tui-doc-language-switcher>
             <version-manager>Version</version-manager>
         </div>
         <tui-sheets-host ngProjectAs="tuiOverContent" />

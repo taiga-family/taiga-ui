@@ -1,19 +1,29 @@
-<tui-select [formControl]="language">
-    <ng-content />
-    <tui-data-list *tuiDataList>
-        <button
-            *ngFor="let name of names"
-            tuiOption
-            type="button"
-            [value]="name | titlecase"
-            (click)="switcher.setLanguage(name)"
-        >
-            <img
-                alt=""
-                class="t-flag"
-                [src]="flags.get(name) | tuiFlag"
-            />
-            {{ name | titlecase }}
-        </button>
+<button
+    appearance="whiteblock"
+    iconStart="@tui.languages"
+    size="s"
+    tuiButtonSelect
+    tuiIconButton
+    type="button"
+    [formControl]="language"
+>
+    Language
+    <tui-data-list *tuiTextfieldDropdown>
+        <tui-opt-group label="Language of components">
+            <button
+                *ngFor="let name of names"
+                tuiOption
+                type="button"
+                [value]="name | titlecase"
+                (click)="setLang(name)"
+            >
+                <img
+                    alt=""
+                    class="t-flag"
+                    [src]="flags.get(name) | tuiFlag"
+                />
+                {{ name | titlecase }}
+            </button>
+        </tui-opt-group>
     </tui-data-list>
-</tui-select>
+</button>

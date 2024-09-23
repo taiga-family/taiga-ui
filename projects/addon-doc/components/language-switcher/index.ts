@@ -3,10 +3,13 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
-import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
+import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
 
 @Component({
     standalone: true,
@@ -16,17 +19,22 @@ import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
         ReactiveFormsModule,
         TitleCasePipe,
         TuiButton,
+        TuiButtonSelect,
         TuiDataList,
+        TuiDropdown,
         TuiFlagPipe,
-        TuiSelectModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
 })
 export class TuiDocLanguageSwitcher {
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected readonly language = new FormControl(capitalize(this.switcher.language));
+
+    protected open = false;
 
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['belarusian', 'BY'],
@@ -51,6 +59,12 @@ export class TuiDocLanguageSwitcher {
     ]);
 
     public readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+
+    public setLang(lang: TuiLanguageName): void {
+        this.language.setValue(lang);
+        this.switcher.setLanguage(lang);
+        this.open = false;
+    }
 }
 
 function capitalize(value: string): string {

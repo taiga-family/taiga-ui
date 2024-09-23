@@ -20,6 +20,7 @@ export const TUI_USED_ICONS = [
     '@tui.uzcard',
     '@tui.verve',
     '@tui.external-link',
+    '@tui.languages',
     '@tui.search',
     '@tui.sun',
     '@tui.moon',
