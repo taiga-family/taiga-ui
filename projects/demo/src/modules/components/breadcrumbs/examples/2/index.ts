@@ -5,14 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
 import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
-        TuiAsideItemDirective,
         TuiBreadcrumbs,
         TuiButton,
         TuiDataList,

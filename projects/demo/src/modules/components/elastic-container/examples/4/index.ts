@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
 import {TuiButton, TuiExpand} from '@taiga-ui/core';
 import {TuiChevron, TuiElasticContainer} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,7 +13,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         NgForOf,
-        TuiAsideItemDirective,
         TuiButton,
         TuiChevron,
         TuiElasticContainer,

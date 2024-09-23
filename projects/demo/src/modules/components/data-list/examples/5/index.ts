@@ -7,7 +7,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiButton, TuiCalendar, TuiDataList, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -16,7 +15,6 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
         AsyncPipe,
         FormsModule,
         TuiAmountPipe,
-        TuiAsideItemDirective,
         TuiButton,
         TuiCalendar,
         TuiDataList,

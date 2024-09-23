@@ -7,7 +7,6 @@ import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map, of, startWith, switchMap} from 'rxjs';
@@ -38,7 +37,6 @@ const DATA: readonly User[] = [
         NgForOf,
         NgIf,
         ReactiveFormsModule,
-        TuiAsideItemDirective,
         TuiAvatar,
         TuiDataList,
         TuiInitialsPipe,

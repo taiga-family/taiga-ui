@@ -37,18 +37,11 @@ export default class Example {
 
     protected filters = false;
 
-    protected scale = 1;
+    protected onElastic(value: number, {style}: HTMLElement): void {
+        const scale = tuiClamp(value, 0.7, 1);
 
-    protected get transform(): string {
-        return `scale(${this.scale})`;
-    }
-
-    protected get width(): string {
-        return `calc((100% + 4rem) * ${1 / this.scale})`;
-    }
-
-    protected onElastic(value: number): void {
-        this.scale = tuiClamp(value, 0.5, 1);
+        style.setProperty('transform', `scale(${scale})`);
+        style.setProperty('width', `calc((100% + 3.5rem) / ${scale})`);
     }
 
     protected onFilterClick(): void {

@@ -1,26 +1,16 @@
-import {
-    afterNextRender,
-    ChangeDetectorRef,
-    DestroyRef,
-    inject,
-    Injectable,
-    INJECTOR,
-    NgZone,
-} from '@angular/core';
+import {afterNextRender, DestroyRef, inject, Injectable, INJECTOR} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {SCROLL_REF_SELECTOR} from '@taiga-ui/core/components/scrollbar';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, Observable, Subscription, tap} from 'rxjs';
+import {map, Observable, Subscription} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
     private readonly injector = inject(INJECTOR);
     private readonly el = tuiInjectElement();
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly zone = inject(NgZone);
-    private readonly cd = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
 
     constructor() {
@@ -34,7 +24,6 @@ export class TuiElasticStickyService extends Observable<number> {
                     const {offsetHeight} = this.el;
                     const teardown = tuiScrollFrom(host)
                         .pipe(
-                            tuiZonefree(this.zone),
                             map(() =>
                                 Math.max(
                                     1 -
@@ -46,7 +35,6 @@ export class TuiElasticStickyService extends Observable<number> {
                                     0,
                                 ),
                             ),
-                            tap(() => this.cd.detectChanges()),
                             takeUntilDestroyed(this.destroyRef),
                         )
                         .subscribe(subscriber);

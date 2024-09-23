@@ -12,16 +12,27 @@
         font-size: 0;
         padding: 0 0.625rem;
 
-        .t-ios {
-            display: none;
-        }
-
         .t-android {
             display: block;
+        }
+
+        .t-web {
+            display: none;
+        }
+    }
+
+    :host-context([data-platform='ios']) {
+        .t-ios {
+            display: block;
+        }
+
+        .t-web {
+            display: none;
         }
     }
 }
 
-.t-android {
+.t-android,
+.t-ios {
     display: none;
 }

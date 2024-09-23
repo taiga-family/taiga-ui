@@ -1,21 +1,23 @@
-import type {AnimationOptions} from '@angular/animations';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
-import {injectContext, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    injectContext,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
 
@@ -41,8 +43,8 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     providers: [TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
     host: {
-        '[@tuiSlideInTop]': 'slideInTop',
-        '[@tuiFadeIn]': 'slideInTop',
+        '[@tuiSlideInTop]': 'slideInTop()',
+        '[@tuiFadeIn]': 'slideInTop()',
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'size',
         '[class._centered]': 'header',
@@ -50,7 +52,6 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 })
 export class TuiDialogComponent<O, I> {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
 
     private readonly animation = {
         value: '',
@@ -69,11 +70,18 @@ export class TuiDialogComponent<O, I> {
     } as const;
 
     protected readonly close$ = new Subject<void>();
-
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
-
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly slideInTop = computed(() =>
+        this.size === 'fullscreen' || this.size === 'page' || this.isMobile()
+            ? this.fullscreenAnimation
+            : this.animation,
+    );
+
+    protected readonly isMobile = toSignal(
+        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
+    );
 
     constructor() {
         merge(
@@ -95,16 +103,6 @@ export class TuiDialogComponent<O, I> {
 
     protected get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
         return this.context.header;
-    }
-
-    protected get slideInTop(): AnimationOptions {
-        return this.fullscreen || this.isMobile
-            ? this.fullscreenAnimation
-            : this.animation;
-    }
-
-    protected get fullscreen(): boolean {
-        return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
     }
 
     private close(): void {
