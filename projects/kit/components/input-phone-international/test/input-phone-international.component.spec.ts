@@ -216,7 +216,7 @@ describe('InputPhoneInternational', () => {
 
     function getDropdownCountryNames(): string[] {
         const countryNameContainers =
-            fixture.debugElement.queryAll(By.css('.t-country-item-name')) || [];
+            fixture.debugElement.queryAll(By.css('.t-name')) || [];
 
         return countryNameContainers.map((container) =>
             container.nativeElement.textContent?.trim(),
@@ -224,6 +224,6 @@ describe('InputPhoneInternational', () => {
     }
 
     function getCountrySelector(): DebugElement {
-        return fixture.debugElement.query(By.css('.t-country-select select'));
+        return fixture.debugElement.query(By.css('.t-select select'));
     }
 });
