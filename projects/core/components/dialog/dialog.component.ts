@@ -20,10 +20,10 @@ import {
 } from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
-import {TuiDialogCloseService} from './dialog-close.service';
 
 import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
+import {TuiDialogCloseService} from './dialog-close.service';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
