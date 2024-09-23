@@ -14,12 +14,14 @@ export interface TuiAutofocusHandler {
 export interface TuiAutofocusOptions {
     readonly delay: number;
     readonly query: string;
+    readonly preventScroll: boolean;
 }
 
 export const [TUI_AUTOFOCUS_OPTIONS, tuiAutoFocusOptionsProvider] =
     tuiCreateOptions<TuiAutofocusOptions>({
         delay: NaN, // NaN = no delay/sync
         query: 'input, textarea, select, [contenteditable]',
+        preventScroll: false,
     });
 
 export const TUI_AUTOFOCUS_HANDLER = tuiCreateToken<TuiAutofocusHandler>();

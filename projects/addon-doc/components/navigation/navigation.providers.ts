@@ -5,6 +5,7 @@ import type {Event} from '@angular/router';
 import {ActivatedRoute, NavigationEnd, Router, Scroll} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {tuiAutoFocusOptionsProvider} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
@@ -39,6 +40,7 @@ export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocRoutePages[]> =
     new InjectionToken<readonly TuiDocRoutePages[]>('[NAVIGATION_ITEMS]');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
+    tuiAutoFocusOptionsProvider({preventScroll: true}),
     tuiLinkOptionsProvider({appearance: 'icon'}),
     {
         provide: NAVIGATION_TITLE,
