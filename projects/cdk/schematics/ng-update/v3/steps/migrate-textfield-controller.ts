@@ -1,6 +1,5 @@
 import {UpdateRecorder} from '@angular-devkit/schematics';
-import {arrayFlat} from 'ng-morph';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {arrayFlat, DevkitFileSystem} from 'ng-morph';
 import {Attribute, Element} from 'parse5';
 
 import {

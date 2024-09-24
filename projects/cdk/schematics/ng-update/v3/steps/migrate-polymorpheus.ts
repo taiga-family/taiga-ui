@@ -1,5 +1,5 @@
 import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {DevkitFileSystem} from 'ng-morph';
 import {Element} from 'parse5';
 
 import {

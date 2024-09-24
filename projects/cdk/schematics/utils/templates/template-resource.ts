@@ -12,7 +12,7 @@ export function getTemplateFromTemplateResource(
 
     const path = fileSystem.resolve(templateRes.templatePath);
 
-    return fileSystem.read(path);
+    return fileSystem.read(path) ?? '';
 }
 
 export function getPathFromTemplateResource(templateRes: TemplateResource): string {
