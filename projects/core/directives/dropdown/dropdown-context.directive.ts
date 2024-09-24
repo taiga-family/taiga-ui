@@ -2,14 +2,14 @@ import {computed, Directive, inject} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_IOS, TUI_IS_TOUCH} from '@taiga-ui/cdk/tokens';
-import {tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetActualTarget, tuiPointToClientRect} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
 import {TuiDropdownDriver} from './dropdown.driver';
 
-function activeZoneFilter(this: TuiDropdownContext, target: Element): boolean {
-    return !this.activeZone.contains(target);
+function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
+    return !event || !this.activeZone.contains(tuiGetActualTarget(event));
 }
 
 const TAP_DELAY = 700;
@@ -34,9 +34,9 @@ const MOVE_THRESHOLD = 15;
             'onTouchMove($event.touches[0].clientX, $event.touches[0].clientY)',
         '(touchstart.silent.passive)':
             'onTouchStart($event.touches[0].clientX, $event.touches[0].clientY)',
-        '(document:pointerdown.silent)': 'closeDropdown($event.target)',
-        '(document:contextmenu.capture.silent)': 'closeDropdown($event.target)',
-        '(document:keydown.esc)': 'closeDropdown($event.currentTarget)',
+        '(document:pointerdown.silent)': 'closeDropdown($event)',
+        '(document:contextmenu.capture.silent)': 'closeDropdown($event)',
+        '(document:keydown.esc)': 'closeDropdown()',
         '(contextmenu.prevent.stop)': 'onContextMenu($event.clientX, $event.clientY)',
     },
 })
@@ -57,7 +57,7 @@ export class TuiDropdownContext extends TuiRectAccessor {
     }
 
     @shouldCall(activeZoneFilter)
-    protected closeDropdown(_element: Element): void {
+    protected closeDropdown(_event?: Event): void {
         this.driver.next(false);
         this.currentRect = EMPTY_CLIENT_RECT;
     }
