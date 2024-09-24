@@ -47,6 +47,7 @@ export default class Example {
         new TuiDay(2018, 9, 30),
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
+        TuiDay.currentLocal(),
     ];
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
