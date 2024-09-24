@@ -14,7 +14,7 @@ test.describe('MultiSelect', () => {
         });
 
         test('does not overflow arrow icon by many tags', async () => {
-            const example = documentationPage.getExample('#object-array');
+            const example = documentationPage.getExample('#objects-array');
             const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
 
             await multiSelect.textfield.click();
@@ -67,9 +67,7 @@ test.describe('MultiSelect', () => {
                 test(`multiselect inside dialog with tuiTextfieldSize=${size}`, async ({
                     page,
                 }) => {
-                    const example = documentationPage.getExample(
-                        '#multiselect-inside-dialog-with-different-size',
-                    );
+                    const example = documentationPage.getExample('#inside-dialog');
 
                     await example.getByRole('button').nth(index).click();
 

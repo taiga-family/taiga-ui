@@ -10,105 +10,11 @@
         </div>
 
         <tui-doc-example
-            id="string-array"
-            heading="String array"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="object-array"
-            heading="Custom template, async items loading"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="sizes"
-            heading="sizes"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="ids"
-            heading="With IDs"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="datalist"
-            heading="DataList"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="rtl"
-            heading="Direction: RTL"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="virtual"
-            heading="Virtual scroll"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
-            [description]="cdkVirtualScrollDescription"
-        >
-            <ng-template #cdkVirtualScrollDescription>
-                You can use
-                <code>MultiSelect</code>
-                with
-                <code>ScrollingModule</code>
-                from
-                <a
-                    href="https://material.angular.io/cdk/scrolling/overview"
-                    rel="noreferrer"
-                    target="_blank"
-                    tuiLink
-                >
-                    &#64;angular/cdk/scrolling
-                </a>
-                .
-            </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="options-stringify"
-            heading="Options (stringify)"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="multiselect-inside-dialog-with-different-size"
-            heading="Multiselect inside dialog with different textfield sizes"
-            [component]="9 | tuiComponent"
-            [content]="9 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="native-select"
-            heading="Native select"
-            [component]="10 | tuiComponent"
-            [content]="10 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="value-content"
-            heading="Value content"
-            [component]="11 | tuiComponent"
-            [content]="11 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="nested-datalist"
-            heading="Nested datalist"
-            [component]="12 | tuiComponent"
-            [content]="12 | tuiExample: 'html,ts'"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
