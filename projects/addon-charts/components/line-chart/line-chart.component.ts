@@ -56,6 +56,7 @@ export class TuiLineChart implements OnChanges {
         ),
         {initialValue: 0},
     );
+
     private readonly box = signal('');
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
