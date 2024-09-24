@@ -12,6 +12,8 @@
     height: var(--tui-height-l);
     width: @width-full;
     border-radius: var(--tui-radius-m);
+    overflow: hidden;
+    isolation: isolate;
 
     &[data-mode='onDark'] {
         --tui-autofill: var(--tui-autofill-night);
@@ -41,8 +43,9 @@
     height: 100%;
 
     &_cvc {
+        inline-size: 50%;
         margin-left: @offset-full;
-        transform: translate3d(100%, 0, 0);
+        transform: translate3d(200%, 0, 0);
 
         :host-context(tui-root._mobile) & {
             margin-left: @offset-small;
@@ -50,7 +53,18 @@
     }
 
     &_expire {
-        transform: translate3d(100%, 0, 0);
+        inline-size: 50%;
+        transform: translate3d(@wrapper-offset-full, 0, 0);
+
+        :host-context(tui-root._mobile) & {
+            transform: translate3d(@wrapper-offset-small, 0, 0);
+        }
+
+        .t-placeholder,
+        .t-input {
+            margin-inline-start: 0;
+            padding-inline-start: 100% !important;
+        }
     }
 
     &_active {
@@ -58,6 +72,13 @@
 
         :host-context(tui-root._mobile) & {
             transform: translate3d(@wrapper-offset-small, 0, 0);
+        }
+
+        &.t-wrapper_expire {
+            .t-placeholder,
+            .t-input {
+                padding-inline-start: var(--tui-padding-l) !important;
+            }
         }
     }
 }
@@ -106,7 +127,8 @@
 
 .t-input {
     .textfield-input();
-    .transition(background);
+    .transition(~'background, padding');
+
     border: 0;
     padding: 0 1rem;
 
@@ -128,11 +150,18 @@
             caret-color: var(--tui-base-09);
             color: transparent !important;
             -webkit-text-fill-color: transparent !important;
+            transition:
+                background-color 600000s 0s,
+                padding var(--tui-duration) ease-in-out;
         }
 
         //noinspection CssInvalidPseudoSelector
         &::-webkit-credit-card-auto-fill-button {
             .webkit-auto-fill-button-hidden();
+        }
+
+        &:focus {
+            z-index: 1;
         }
     }
 
@@ -170,8 +199,13 @@
     .textfield-placeholder();
     margin: 1.125rem 1rem;
     line-height: 1.25rem;
+    width: auto;
 }
 
 .t-ghost {
     visibility: hidden;
+}
+
+tui-svg {
+    z-index: 1;
 }
