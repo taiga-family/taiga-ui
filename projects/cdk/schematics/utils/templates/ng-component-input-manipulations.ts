@@ -1,4 +1,4 @@
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import {DevkitFileSystem} from 'ng-morph';
 import {Element} from 'parse5';
 
 import {TemplateResource} from '../../ng-update/interfaces/template-resource';

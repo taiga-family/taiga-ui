@@ -258,6 +258,10 @@ export function addTaigaModules(options: TuiSchema): Rule {
         } else {
             const mainClass = getMainModule(mainFilePath);
 
+            if (!mainClass) {
+                return;
+            }
+
             addTuiModules({mainClass, options, context});
             addExtraTuiProvidersToRootComponent({mainClass, options});
         }
