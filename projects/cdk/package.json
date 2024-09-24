@@ -27,7 +27,7 @@
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
         "@angular/forms": ">=12.0.0",
-        "rxjs": ">=6.0.0 || >=7.0.0"
+        "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {
         "ng-morph": "^4.8.2",
