@@ -20,12 +20,12 @@
         "@maskito/angular": "^3.0.1",
         "@maskito/core": "^3.0.1",
         "@maskito/kit": "^3.0.1",
-        "@ng-web-apis/common": "^4.6.0",
+        "@ng-web-apis/common": "^4.6.3",
         "@taiga-ui/cdk": "^4.7.0",
         "@taiga-ui/core": "^4.7.0",
         "@taiga-ui/i18n": "^4.7.0",
         "@taiga-ui/kit": "^4.7.0",
-        "@taiga-ui/polymorpheus": "^4.7.1",
+        "@taiga-ui/polymorpheus": "^4.7.3",
         "rxjs": ">=7.0.0",
         "tslib": "^2.7.0"
     }

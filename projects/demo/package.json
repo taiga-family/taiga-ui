@@ -13,7 +13,7 @@
         "@angular/platform-server": "16.2.12",
         "@angular/router": "16.2.12",
         "@docsearch/js": "3.6.1",
-        "@ng-web-apis/universal": "4.6.0",
+        "@ng-web-apis/universal": "4.6.3",
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.11.0",
         "@taiga-ui/dompurify": "4.1.7",
