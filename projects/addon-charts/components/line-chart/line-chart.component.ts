@@ -1,5 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
+import {computed, type OnChanges, type QueryList, signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +8,8 @@ import {
     NgZone,
     ViewChildren,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -24,7 +26,7 @@ import {
 } from '@taiga-ui/core/directives/hint';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 import {distinctUntilChanged, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
@@ -37,20 +39,33 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ResizeObserverService],
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
     host: {
         '(mouseleave)': 'onMouseLeave()',
     },
 })
-export class TuiLineChart {
+export class TuiLineChart implements OnChanges {
     private readonly zone = inject(NgZone);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();
     private readonly autoId = tuiInjectId();
+    private readonly resize = toSignal(
+        inject(ResizeObserverService, {self: true}).pipe(
+            map(([e]) => e?.contentRect.height || 0),
+        ),
+        {initialValue: 0},
+    );
+    private readonly box = signal('');
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
-
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly viewBox = computed(() => {
+        const offset = this.height / this.resize();
+        const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
+
+        return `${x} ${y - offset} ${width} ${height + 2 * offset}`;
+    });
 
     @ViewChildren(TuiHintHover)
     public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
@@ -89,6 +104,10 @@ export class TuiLineChart {
         this.value = value.filter((item) => !item.some(Number.isNaN));
     }
 
+    public ngOnChanges(): void {
+        this.box.set(`${this.x} ${this.y} ${this.width} ${this.height}`);
+    }
+
     public onHovered(index: number): void {
         this.hover$.next(index);
     }
@@ -108,10 +127,6 @@ export class TuiLineChart {
 
     protected get fill(): string {
         return this.filled ? `url(#${this.fillId})` : 'none';
-    }
-
-    protected get viewBox(): string {
-        return `${this.x} ${this.y} ${this.width} ${this.height}`;
     }
 
     protected get d(): string {
