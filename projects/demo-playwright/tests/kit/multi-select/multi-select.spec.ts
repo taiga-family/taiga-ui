@@ -67,9 +67,7 @@ test.describe('MultiSelect', () => {
                 test(`multiselect inside dialog with tuiTextfieldSize=${size}`, async ({
                     page,
                 }) => {
-                    const example = documentationPage.getExample(
-                        '#multiselect-inside-dialog-with-different-size',
-                    );
+                    const example = documentationPage.getExample('#inside-dialog');
 
                     await example.getByRole('button').nth(index).click();
 
