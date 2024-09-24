@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish canary
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.84.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.84.0
-      - uses: taiga-family/ci/actions/setup/node@v1.84.0
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.84.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.85.0
+      - uses: taiga-family/ci/actions/setup/node@v1.85.0
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.85.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs
