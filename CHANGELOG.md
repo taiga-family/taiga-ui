@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.95.0](https://github.com/taiga-family/taiga-ui/compare/v3.94.0...v3.95.0) (2024-09-24)
+
+### Features
+
+- upgrade peer dependencies ([#9138](https://github.com/taiga-family/taiga-ui/issues/9138))
+  ([8ff5986](https://github.com/taiga-family/taiga-ui/commit/8ff5986dd79983f2322afee0fea6f2e6c6beefdc))
+
+### Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix for older Safari
+  ([#9134](https://github.com/taiga-family/taiga-ui/issues/9134))
+  ([009f5f9](https://github.com/taiga-family/taiga-ui/commit/009f5f9c0d4f35335e368b1256e3588757ecc63c))
+- **core:** fix scroll jumping on readonly input focusing in safari
+  ([#9094](https://github.com/taiga-family/taiga-ui/issues/9094))
+  ([98e0509](https://github.com/taiga-family/taiga-ui/commit/98e0509ad8ff9abf0affbe64bc7a3c2d3d21cb57))
+- **experimental:** `CardLarge` with headless `Cell` list
+  ([#9132](https://github.com/taiga-family/taiga-ui/issues/9132))
+  ([d48bb48](https://github.com/taiga-family/taiga-ui/commit/d48bb489f9250923257080bf3654a28a4dfc05f0))
+- **experimental:** `Segmented` fix initial radio value ([#9074](https://github.com/taiga-family/taiga-ui/issues/9074))
+  ([95e7e7b](https://github.com/taiga-family/taiga-ui/commit/95e7e7b60a46c41a1bd2c73dd3ddcf90cc64a24b))
+- **kit:** `MultiSelect` empty line when non empty `placeholder` and `valueContent`
+  ([a435702](https://github.com/taiga-family/taiga-ui/commit/a435702de1de437639addec954a7b7ab2d416a46))
+- **kit:** `MultiSelect` empty line when non empty `placeholder` and `valueContent`
+  ([#9127](https://github.com/taiga-family/taiga-ui/issues/9127))
+  ([28f1845](https://github.com/taiga-family/taiga-ui/commit/28f18456f0a5a35c7aa0c153476f355d1cc00350))
+
 ## [3.94.0](https://github.com/taiga-family/taiga-ui/compare/v3.93.0...v3.94.0) (2024-09-11)
 
 ### Features
