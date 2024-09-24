@@ -8,7 +8,6 @@ test.describe('Navigation', () => {
     test('getting started / [light mode]', async ({page}) => {
         await tuiGoto(page, DemoRoute.GettingStarted, {
             hideHeader: false,
-            hideLanguageSwitcher: true,
             hideVersionManager: true,
         });
         const sideNavigation = page.locator('tui-doc-navigation');
@@ -24,7 +23,6 @@ test.describe('Navigation', () => {
         await tuiGoto(page, DemoRoute.GettingStarted, {
             hideHeader: false,
             enableNightMode: true,
-            hideLanguageSwitcher: true,
             hideVersionManager: true,
         });
         const sideNavigation = page.locator('tui-doc-navigation');
