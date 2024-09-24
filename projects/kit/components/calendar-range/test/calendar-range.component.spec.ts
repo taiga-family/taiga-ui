@@ -258,6 +258,18 @@ describe('rangeCalendarComponent', () => {
             expect(component.defaultViewedMonth).toEqual(minDate);
         });
 
+        it('when max and items not empty, defaultViewedMonth is max', () => {
+            const maxDate = TuiDay.currentLocal();
+
+            testComponent.max = maxDate;
+            fixture.detectChanges();
+
+            component.ngOnInit();
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth).toEqual(maxDate);
+        });
+
         it('isItemActive returns true when value is set to today after being changed to yesterday', () => {
             const today = TuiDay.currentLocal();
             const yesterday = today.append({day: -1});
