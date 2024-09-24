@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.8.1](https://github.com/taiga-family/taiga-ui/compare/v4.8.0...v4.8.1) (2024-09-24)
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** `LineChart` fix line thickness on 0 and max
+  ([#9167](https://github.com/taiga-family/taiga-ui/issues/9167))
+  ([c51f8ec](https://github.com/taiga-family/taiga-ui/commit/c51f8ecd8cfa4f0e9acef426aa7d17a4940f361c))
+- **core:** `DropdownContext` fix for Shadow DOM ([#9171](https://github.com/taiga-family/taiga-ui/issues/9171))
+  ([e76e27e](https://github.com/taiga-family/taiga-ui/commit/e76e27ebe0cde3f4993e381eb4600e4821702181))
+- **kit:** export password options ([#9159](https://github.com/taiga-family/taiga-ui/issues/9159))
+  ([688405e](https://github.com/taiga-family/taiga-ui/commit/688405eb375c095c699fc9b8dd82982879fe2e57))
+- **legacy:** `MultiSelect` fix for long items overflowing
+  ([#9160](https://github.com/taiga-family/taiga-ui/issues/9160))
+  ([80fdfd0](https://github.com/taiga-family/taiga-ui/commit/80fdfd0a1bd28f34d86b837c1f33c67ec9d7d139))
+
 ## [4.8.0](https://github.com/taiga-family/taiga-ui/compare/v4.7.0...v4.8.0) (2024-09-24)
 
 ### 🚀 Features
