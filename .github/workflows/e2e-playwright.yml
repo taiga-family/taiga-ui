@@ -8,13 +8,13 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.76.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.84.0
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.76.0
-      - uses: taiga-family/ci/actions/run/rebase@v1.76.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.84.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.84.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.76.0
+      - uses: taiga-family/ci/actions/setup/node@v1.84.0
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo
@@ -36,10 +36,10 @@ jobs:
         shardTotal: [9]
     name: playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.76.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.76.0
-      - uses: taiga-family/ci/actions/setup/node@v1.76.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.76.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.84.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.84.0
+      - uses: taiga-family/ci/actions/setup/node@v1.84.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.84.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.0.2
@@ -47,7 +47,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.76.0
+      - uses: taiga-family/ci/actions/run/serve@v1.84.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -56,12 +56,12 @@ jobs:
       - name: Run screenshot tests on ${{ env.DIST }}
         run: npx nx e2e demo-playwright -- --update-snapshots --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
-      - uses: taiga-family/ci/actions/run/clone@v1.76.0
+      - uses: taiga-family/ci/actions/run/clone@v1.84.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.76.0
+      - uses: taiga-family/ci/actions/run/serve@v1.84.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -115,8 +115,8 @@ jobs:
     needs: [playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.76.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.76.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.84.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.84.0
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
