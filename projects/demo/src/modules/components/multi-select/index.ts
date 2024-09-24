@@ -62,7 +62,7 @@ class Account {
 export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly examples = [
         'Strings array',
-        'Async objects',
+        'Objects array',
         'Sizes',
         'With IDs',
         'Datalist',

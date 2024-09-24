@@ -14,7 +14,7 @@ test.describe('MultiSelect', () => {
         });
 
         test('does not overflow arrow icon by many tags', async () => {
-            const example = documentationPage.getExample('#object-array');
+            const example = documentationPage.getExample('#objects-array');
             const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
 
             await multiSelect.textfield.click();
