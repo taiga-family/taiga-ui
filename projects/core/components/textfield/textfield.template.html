@@ -3,8 +3,8 @@
 <ng-content select="label" />
 <span
     class="t-content"
-    (mousedown.prevent)="el?.nativeElement?.focus()"
-    (waResizeObserver)="onResize($event)"
+    (mousedown.prevent)="input?.nativeElement?.focus()"
+    (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
     <button
@@ -17,7 +17,7 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="directive?.setValue(null)"
-        (pointerdown.silent.prevent)="el?.nativeElement?.focus()"
+        (pointerdown.silent.prevent)="input?.nativeElement?.focus()"
     ></button>
     <ng-container #vcr />
     <ng-content select="tui-icon" />

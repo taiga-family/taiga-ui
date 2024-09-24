@@ -1,7 +1,6 @@
 import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     computed,
     ContentChild,
@@ -19,6 +18,7 @@ import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
@@ -58,14 +58,15 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         TuiWithIcons,
     ],
     host: {
-        '[style.--t-side.px]': 'side',
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content',
-        '[class._disabled]': 'el?.nativeElement.disabled',
+        '[class._disabled]': 'input?.nativeElement.disabled',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
+    private readonly autoId = tuiInjectId();
+    private readonly el = tuiInjectElement();
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
 
@@ -78,11 +79,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     @ContentChild(NgControl)
     protected readonly control?: NgControl;
 
-    protected side = 0;
-
-    protected readonly autoId = tuiInjectId();
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly cdr = inject(ChangeDetectorRef);
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
@@ -91,7 +88,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         read: ElementRef,
         static: true,
     })
-    public readonly el?: ElementRef<HTMLInputElement>;
+    public readonly input?: ElementRef<HTMLInputElement>;
 
     @Input()
     public filler = '';
@@ -106,7 +103,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     public get id(): string {
-        return this.el?.nativeElement.id || this.autoId;
+        return this.input?.nativeElement.id || this.autoId;
     }
 
     public get size(): TuiSizeL | TuiSizeS {
@@ -119,7 +116,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     protected get computedFiller(): string {
-        const value = this.el?.nativeElement.value || '';
+        const value = this.input?.nativeElement.value || '';
         const filler = value + this.filler.slice(value.length);
 
         return filler.length > value.length ? filler : '';
@@ -129,7 +126,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return (
             this.focused() &&
             !!this.computedFiller &&
-            (!!this.el?.nativeElement.value || !this.el?.nativeElement.placeholder)
+            (!!this.input?.nativeElement.value || !this.input?.nativeElement.placeholder)
         );
     }
 
@@ -137,8 +134,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label?.nativeElement?.childNodes.length);
     }
 
-    protected onResize(entry: readonly ResizeObserverEntry[]): void {
-        this.side = entry[0]?.contentRect?.width || 0;
-        this.cdr.detectChanges();
+    protected onResize({contentRect}: ResizeObserverEntry): void {
+        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
     }
 }
