@@ -7,7 +7,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiDataListWrapper, TuiMultiSelectModule, TuiFade],
+    imports: [FormsModule, TuiDataListWrapper, TuiFade, TuiMultiSelectModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
