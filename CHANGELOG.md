@@ -87,8 +87,6 @@ All notable changes to this project will be documented in this file. See
 - **deps:** update taiga-ui ([#9142](https://github.com/taiga-family/taiga-ui/issues/9142))
   ([dc80717](https://github.com/taiga-family/taiga-ui/commit/dc807171e09e513e9defe287a6e3c9d1feddaf0d))
 - **kit:** `CalendarRange` shows last available month when max and items set
-  ([6d3665a](https://github.com/taiga-family/taiga-ui/commit/6d3665af626467d508ffd586d842e2862c36486c))
-- **kit:** `CalendarRange` shows last available month when max and items set
   ([#9147](https://github.com/taiga-family/taiga-ui/issues/9147))
   ([14d644f](https://github.com/taiga-family/taiga-ui/commit/14d644f191ed9257a9b79d36ea865b271c792621))
 - **kit:** `InputDateRange` fix dark mode issues and list item size
@@ -107,12 +105,8 @@ All notable changes to this project will be documented in this file. See
   ([6019863](https://github.com/taiga-family/taiga-ui/commit/601986355e64b21a232fe42a034be7810492b031))
 - **layout:** `CardLarge` fix style leaking into `Badge` ([#9097](https://github.com/taiga-family/taiga-ui/issues/9097))
   ([83300f1](https://github.com/taiga-family/taiga-ui/commit/83300f1c9552310b8a3ddc142a09d16829d8eaa1))
-- **layout:** `CardLarge` with headless `Cell` list
-  ([253906e](https://github.com/taiga-family/taiga-ui/commit/253906e9a3f419ea7815b84537c5b0ccba43c6d0))
 - **layout:** `CardLarge` with headless `Cell` list ([#9114](https://github.com/taiga-family/taiga-ui/issues/9114))
   ([941c856](https://github.com/taiga-family/taiga-ui/commit/941c85601f59f838bdcf97876165afce37be2e8d))
-- **legacy:** `MultiSelect` empty line when non empty `placeholder` and `valueContent`
-  ([073b991](https://github.com/taiga-family/taiga-ui/commit/073b9917754b5423440540e41781d7d9ec984b39))
 - **legacy:** `MultiSelect` empty line when non empty `placeholder` and `valueContent`
   ([#9123](https://github.com/taiga-family/taiga-ui/issues/9123))
   ([eda9293](https://github.com/taiga-family/taiga-ui/commit/eda9293cfd488b72e822b25799d1ce56d5454164))
