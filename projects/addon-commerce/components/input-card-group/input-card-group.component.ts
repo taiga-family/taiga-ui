@@ -106,6 +106,7 @@ export interface TuiCard {
     host: {
         'data-size': 'l',
         '(mousedown)': 'onMouseDown($event)',
+        '(scroll.silent)': '$event.target.scrollLeft = 0',
     },
 })
 export class TuiInputCardGroup
