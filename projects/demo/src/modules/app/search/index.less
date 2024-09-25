@@ -99,8 +99,10 @@ html[data-theme='dark'] {
     }
 }
 
-@media @tui-mobile {
-    .DocSearch-Container {
+.DocSearch-Container {
+    backdrop-filter: blur(4px);
+
+    @media @tui-mobile {
         position: fixed;
     }
 }
