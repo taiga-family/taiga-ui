@@ -19,6 +19,7 @@ class Root {}
 bootstrapApplication(Root, {
   providers: [
     provideAnimations(),
+    tuiAssetsPathProvider('https://taiga-ui.dev/assets/taiga-ui/icons'),
     NG_EVENT_PLUGINS,
     {
       provide: 'Pythons',
