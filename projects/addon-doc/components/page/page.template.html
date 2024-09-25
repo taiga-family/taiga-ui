@@ -47,13 +47,21 @@
             </ng-container>
         </ng-container>
     </tui-tabs-with-more>
-    <tui-doc-source-code
-        class="t-source-code"
-        [header]="header"
-        [package]="package"
-        [path]="path"
-        [type]="type"
-    />
+
+    <div
+        *ngIf="package || path || type"
+        class="t-right-side"
+    >
+        <tui-doc-source-code
+            class="t-source-code"
+            [header]="header"
+            [package]="package"
+            [path]="path"
+            [type]="type"
+        />
+
+        <tui-doc-language-switcher />
+    </div>
 </header>
 <div class="t-content">
     <ng-content />

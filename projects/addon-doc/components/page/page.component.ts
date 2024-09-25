@@ -10,7 +10,6 @@ import {
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiReplacePipe} from '@taiga-ui/cdk/pipes/replace';
 import {TuiAutoColorPipe} from '@taiga-ui/core/pipes/auto-color';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
@@ -18,6 +17,7 @@ import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 
 import {TuiDocSeeAlso} from '../internal/see-also';
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
+import {TuiDocLanguageSwitcher} from '../language-switcher';
 import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
@@ -32,9 +32,9 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         RouterLinkActive,
         TuiAutoColorPipe,
         TuiChip,
+        TuiDocLanguageSwitcher,
         TuiDocSeeAlso,
         TuiDocSourceCode,
-        TuiItem,
         TuiReplacePipe,
         TuiTabs,
     ],

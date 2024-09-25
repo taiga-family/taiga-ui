@@ -1,14 +1,15 @@
-import {NgForOf, TitleCasePipe} from '@angular/common';
+import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
+import {TuiBadge} from '@taiga-ui/kit/components/badge';
+import {TuiBadgedContent} from '@taiga-ui/kit/components/badged-content';
 import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
 
 @Component({
@@ -16,12 +17,14 @@ import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
     selector: 'tui-doc-language-switcher',
     imports: [
         NgForOf,
+        NgIf,
         ReactiveFormsModule,
         TitleCasePipe,
+        TuiBadge,
+        TuiBadgedContent,
         TuiButton,
         TuiButtonSelect,
         TuiDataList,
-        TuiDropdown,
         TuiFlagPipe,
         TuiTextfield,
     ],
