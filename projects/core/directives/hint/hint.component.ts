@@ -74,9 +74,11 @@ export class TuiHintComponent<C = any> {
         this.hint.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
 
     constructor() {
+        const hostStyle = getComputedStyle(this.hint.el);
+
         inject(TuiPositionService)
             .pipe(
-                takeWhile(() => this.hint.el.isConnected),
+                takeWhile(() => this.hint.el.isConnected && hostStyle.display !== 'none'),
                 map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
