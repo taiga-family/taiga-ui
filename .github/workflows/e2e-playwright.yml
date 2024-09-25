@@ -8,7 +8,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
@@ -36,7 +36,7 @@ jobs:
         shardTotal: [9]
     name: playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.85.0
@@ -115,7 +115,7 @@ jobs:
     needs: [playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
