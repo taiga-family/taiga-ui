@@ -75,7 +75,7 @@ export class TuiDropdownComponent {
         )
         .subscribe({
             next: (styles) => Object.assign(this.el.style, styles),
-            complete: () => this.close(),
+            complete: () => this.close?.(),
         });
 
     protected readonly close = (): void => this.directive.toggle(false);

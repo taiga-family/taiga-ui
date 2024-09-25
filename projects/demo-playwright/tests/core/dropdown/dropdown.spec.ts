@@ -106,4 +106,20 @@ test.describe('Dropdown', () => {
 
         await expect(page.locator('tui-dropdown')).not.toBeVisible();
     });
+
+    test('hidden-host', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+
+        expect(page.locator('tui-dropdown')).toBeDefined();
+
+        await example.locator('button').evaluate((el) => {
+            el.style.display = 'none';
+        });
+
+        await expect(page).toHaveScreenshot('12-dropdown-hidden-host.png');
+    });
 });
