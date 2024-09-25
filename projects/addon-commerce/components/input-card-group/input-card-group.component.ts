@@ -122,6 +122,7 @@ export class TuiInputCardGroup
     @ViewChild('inputCVC')
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
 
+    private timeout = NaN;
     private expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
@@ -309,12 +310,13 @@ export class TuiInputCardGroup
             return;
         }
 
+        clearInterval(this.timeout);
         this.updateProperty(parsed, 'card');
         this.updateBin(bin);
 
         if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
             // Safari autofill focus jerk workaround
-            setTimeout(() => this.focusExpire());
+            this.timeout = Number(setTimeout(() => this.focusExpire(), 100));
         }
     }
 

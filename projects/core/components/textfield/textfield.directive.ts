@@ -69,11 +69,16 @@ export class TuiTextfieldBase<T> implements OnChanges {
     public setValue(value: T | null): void {
         this.el.focus();
         this.el.select();
-        this.el.ownerDocument.execCommand(
-            'insertText',
-            false,
-            value == null ? '' : this.textfield.stringify(value),
-        );
+
+        if (value == null) {
+            this.el.ownerDocument.execCommand('delete');
+        } else {
+            this.el.ownerDocument.execCommand(
+                'insertText',
+                false,
+                this.textfield.stringify(value),
+            );
+        }
     }
 }
 
