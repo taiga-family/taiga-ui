@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.95.1](https://github.com/taiga-family/taiga-ui/compare/v3.95.0...v3.95.1) (2024-09-25)
+
+### Bug Fixes
+
+- **core:** invalid peer dependency ([#9173](https://github.com/taiga-family/taiga-ui/issues/9173))
+  ([689f6a2](https://github.com/taiga-family/taiga-ui/commit/689f6a25123ae5c36753aeb080bf0d3516148158))
+- **kit:** fix tslib version ([#9181](https://github.com/taiga-family/taiga-ui/issues/9181))
+  ([12ab259](https://github.com/taiga-family/taiga-ui/commit/12ab259eb499e4432e6e6d89feaacae6826e1fcc))
+
 ## [3.95.0](https://github.com/taiga-family/taiga-ui/compare/v3.94.0...v3.95.0) (2024-09-24)
 
 ### Features
