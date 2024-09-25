@@ -1,4 +1,5 @@
-import {Directive, inject, Input, signal} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {Directive, inject, Input, PLATFORM_ID, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
@@ -6,6 +7,9 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
+/**
+ * @deprecated: Drop in v5.0
+ */
 @Directive({
     standalone: true,
     selector: 'img[loading="lazy"],img[tuiLoading="lazy"]',
@@ -20,11 +24,14 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     },
 })
 export class TuiImgLazyLoading {
+    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly loading$ = inject(TuiLazyLoadingService);
     protected readonly supported = 'loading' in tuiInjectElement<HTMLImageElement>();
     protected src = signal<SafeResourceUrl | string | null>(null);
-    protected animation = signal('tuiSkeletonVibe ease-in-out 1s infinite alternate');
-    protected background = signal('var(--tui-background-neutral-2)');
+    protected background = signal(this.isServer ? '' : 'var(--tui-background-neutral-2)');
+    protected animation = signal(
+        this.isServer ? '' : 'tuiSkeletonVibe ease-in-out 1s infinite alternate',
+    );
 
     protected readonly $ =
         !this.supported &&
