@@ -37,7 +37,6 @@ import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
-import {TUI_DEFAULT_TABS} from './app.tabs';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
@@ -130,7 +129,7 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_DEFAULT_TABS,
-            useValue: TUI_DEFAULT_TABS,
+            useValue: ['Examples', 'API', 'Setup', 'How to use'],
         },
         {
             provide: TUI_DOC_LOGO,
