@@ -1,10 +1,17 @@
-<tui-select
-    *ngIf="versions.length"
-    [ngModel]="initialVersion"
-    [valueContent]="'label' | tuiStringify | tuiStringifyContent"
+<button
+    appearance="whiteblock"
+    size="s"
+    tuiButton
+    tuiChevron
+    type="button"
+    [tuiDropdown]="content"
+    [(tuiDropdownOpen)]="open"
 >
-    <ng-content />
-    <tui-data-list *tuiDataList>
+    {{ initialVersion?.label }}
+</button>
+
+<ng-template #content>
+    <tui-data-list size="s">
         <a
             *ngFor="let version of versions"
             tuiOption
@@ -14,4 +21,4 @@
             {{ version.label }}
         </a>
     </tui-data-list>
-</tui-select>
+</ng-template>
