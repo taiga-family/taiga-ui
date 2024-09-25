@@ -1,0 +1,75 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <a
+                tuiLink
+                [routerLink]="routes.Dropdown"
+            >
+                <strong>Dropdown</strong>
+            </a>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+<tr
+    name="[(tuiDropdownOpen)]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="open"
+>
+    Manual control/monitor for the dropdown being visible
+</tr>
+<tr
+    name="[tuiDropdownAlign]"
+    tuiDocAPIItem
+    type="tuiDropdownAlign"
+    [items]="aligns"
+    [(value)]="align"
+>
+    Align of dropdown (does not work together with
+    <code>limitWidth === 'fixed'</code>
+    )
+</tr>
+<tr
+    name="[tuiDropdownDirection]"
+    tuiDocAPIItem
+    type="TuiVerticalDirection | null"
+    [items]="directions"
+    [(value)]="direction"
+>
+    Set a vertical direction of dropdown
+</tr>
+<tr
+    name="[tuiDropdownLimitWidth]"
+    tuiDocAPIItem
+    type="TuiDropdownWidth"
+    [items]="limitWidths"
+    [(value)]="limitWidth"
+>
+    Limit width of dropdown
+</tr>
+<tr
+    name="[tuiDropdownMinHeight]"
+    tuiDocAPIItem
+    type="number"
+    [(value)]="minHeight"
+>
+    Minimum height to calculate that dropdown fits to set
+    <code>tuiDropdownDirection</code>
+</tr>
+<tr
+    name="[tuiDropdownMaxHeight]"
+    tuiDocAPIItem
+    type="number"
+    [(value)]="maxHeight"
+>
+    Maximum height of dropdown
+</tr>
+<tr
+    name="[tuiDropdownOffset]"
+    tuiDocAPIItem
+    type="number"
+    [(value)]="offset"
+>
+    Dropdown offset
+</tr>
