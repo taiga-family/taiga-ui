@@ -1,5 +1,8 @@
-name: 🤖 Auto approve validation
-on: pull_request
+name: 🤖 PR suites
+on:
+  pull_request:
+  pull_request_review:
+    types: [submitted]
 
 env:
   PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Unit tests", "Component testing result", "E2E result" ]'
@@ -52,6 +55,7 @@ jobs:
 
   label-when-approved:
     name: Label when approved
+    if: github.event.review.state == 'APPROVED'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.7
@@ -85,5 +89,5 @@ jobs:
           labels: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
 
 concurrency:
-  group: auto-approve-${{ github.head_ref }}
+  group: pr-suites-${{ github.head_ref }}
   cancel-in-progress: true
