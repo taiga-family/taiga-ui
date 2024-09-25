@@ -12,6 +12,7 @@
     </td>
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('open')"
     name="[(tuiDropdownOpen)]"
     tuiDocAPIItem
     type="boolean"
@@ -20,6 +21,7 @@
     Manual control/monitor for the dropdown being visible
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('align')"
     name="[tuiDropdownAlign]"
     tuiDocAPIItem
     type="tuiDropdownAlign"
@@ -31,6 +33,7 @@
     )
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('direction')"
     name="[tuiDropdownDirection]"
     tuiDocAPIItem
     type="TuiVerticalDirection | null"
@@ -40,6 +43,7 @@
     Set a vertical direction of dropdown
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('limitWidth')"
     name="[tuiDropdownLimitWidth]"
     tuiDocAPIItem
     type="TuiDropdownWidth"
@@ -49,6 +53,7 @@
     Limit width of dropdown
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('minHeight')"
     name="[tuiDropdownMinHeight]"
     tuiDocAPIItem
     type="number"
@@ -58,6 +63,7 @@
     <code>tuiDropdownDirection</code>
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('maxHeight')"
     name="[tuiDropdownMaxHeight]"
     tuiDocAPIItem
     type="number"
@@ -66,6 +72,7 @@
     Maximum height of dropdown
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('offset')"
     name="[tuiDropdownOffset]"
     tuiDocAPIItem
     type="number"

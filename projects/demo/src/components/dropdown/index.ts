@@ -1,10 +1,13 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
+import type {TuiLooseUnion} from '@taiga-ui/cdk';
 import {
     TuiDropdown,
     type TuiDropdownAlign,
+    type TuiDropdownOptions,
     type TuiDropdownWidth,
     TuiLink,
     TuiTitle,
@@ -14,7 +17,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocDropdown]',
-    imports: [RouterLink, TuiDocAPIItem, TuiDropdown, TuiLink, TuiTitle],
+    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiDropdown, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -31,6 +34,9 @@ export class TuiDocDropdown {
 
     @Input()
     public tuiDocDropdown: readonly string[] | '' = '';
+
+    @Input()
+    public hiddenOptions: Array<TuiLooseUnion<keyof TuiDropdownOptions>> = [];
 
     public open = false;
 

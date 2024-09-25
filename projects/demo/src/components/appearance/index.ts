@@ -1,13 +1,20 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiInteractiveState, TuiLink, TuiTitle} from '@taiga-ui/core';
+import type {TuiLooseUnion} from '@taiga-ui/cdk';
+import {
+    type TuiAppearanceOptions,
+    type TuiInteractiveState,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocAppearance]',
-    imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
+    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,6 +52,9 @@ export class TuiDocAppearance {
 
     @Input()
     public tuiDocAppearance: readonly string[] | '' = '';
+
+    @Input()
+    public hiddenOptions: Array<TuiLooseUnion<keyof TuiAppearanceOptions>> = [];
 
     public state: TuiInteractiveState | null = null;
     public focus: boolean | null = null;
