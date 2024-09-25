@@ -32,6 +32,6 @@
         "@taiga-ui/i18n": ">=3.95.0 <4",
         "@tinkoff/ng-polymorpheus": ">=4.3.0",
         "rxjs": ">=6.0.0",
-        "tslib": ">2.7.0"
+        "tslib": ">=2.7.0"
     }
 }
