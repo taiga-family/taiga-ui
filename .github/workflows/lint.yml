@@ -10,7 +10,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run typecheck

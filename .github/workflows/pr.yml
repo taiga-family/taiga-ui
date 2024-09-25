@@ -14,7 +14,7 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - id: matrix
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
@@ -42,7 +42,7 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/auto/approve/double@v1.85.0
         with:
@@ -79,7 +79,7 @@ jobs:
   label-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.1.7
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/run/node-info@v1.85.0
         id: nodejs-workspace
