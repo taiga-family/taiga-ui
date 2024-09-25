@@ -67,8 +67,13 @@ export class TuiTextfieldBase<T> implements OnChanges {
     }
 
     public setValue(value: T | null): void {
-        this.el.value = value == null ? '' : this.textfield.stringify(value);
-        this.el.dispatchEvent(new Event('input', {bubbles: true}));
+        this.el.focus();
+        this.el.select();
+        this.el.ownerDocument.execCommand(
+            'insertText',
+            false,
+            value == null ? '' : this.textfield.stringify(value),
+        );
     }
 }
 

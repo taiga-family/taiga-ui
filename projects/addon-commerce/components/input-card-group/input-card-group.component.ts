@@ -234,8 +234,14 @@ export class TuiInputCardGroup
 
     public clear(): void {
         this.expirePrefilled = false;
+
+        [this.inputCVC, this.inputExpire, this.inputCard].forEach((e) => {
+            e?.nativeElement.focus();
+            e?.nativeElement.select();
+            e?.nativeElement.ownerDocument.execCommand('delete');
+        });
+
         this.onChange(null);
-        this.focusCard();
     }
 
     public onResize(): void {
@@ -307,7 +313,8 @@ export class TuiInputCardGroup
         this.updateBin(bin);
 
         if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
-            this.focusExpire();
+            // Safari autofill focus jerk workaround
+            setTimeout(() => this.focusExpire());
         }
     }
 

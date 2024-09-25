@@ -140,15 +140,13 @@ tui-textfield {
 
     &:has(label:not(:empty)) {
         .t-template,
-        input,
-        select {
+        input:defined,
+        select:defined {
             padding-top: calc(var(--t-height) / 3);
 
-            &:not(:-webkit-autofill)::placeholder,
+            &::placeholder,
             &._empty {
-                caret-color: var(--tui-text-primary);
-                color: transparent !important;
-                -webkit-text-fill-color: transparent !important;
+                color: transparent;
             }
         }
     }
@@ -156,15 +154,13 @@ tui-textfield {
     // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        input,
-        select {
+        input:defined,
+        select:defined {
             padding-top: calc(var(--t-height) / 3);
 
-            &:not(:-webkit-autofill)::placeholder,
+            &::placeholder,
             &._empty {
-                caret-color: var(--tui-text-primary);
-                color: transparent !important;
-                -webkit-text-fill-color: transparent !important;
+                color: transparent;
             }
         }
     }
@@ -172,7 +168,7 @@ tui-textfield {
     .t-template,
     input:defined,
     select:defined {
-        .fullsize(absolute, inset);
+        .fullsize();
 
         appearance: none;
         box-sizing: border-box;
@@ -233,9 +229,7 @@ tui-textfield {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    caret-color: var(--tui-text-primary);
-                    color: transparent !important;
-                    -webkit-text-fill-color: var(--tui-text-tertiary) !important;
+                    color: var(--tui-text-tertiary);
                 }
 
                 & ~ label {
