@@ -1,4 +1,3 @@
-import {InjectionToken} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -8,9 +7,7 @@ import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.in
 /**
  * Controller for tracking value - TuiTreeItemComponent pairs
  */
-export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
-    '[TUI_TREE_ACCESSOR]',
-);
+export const TUI_TREE_ACCESSOR = tuiCreateToken<TuiTreeAccessor<unknown>>();
 
 /**
  * Controller for expanding the tree
@@ -20,7 +17,7 @@ export const TUI_TREE_CONTROLLER = tuiCreateToken(TUI_DEFAULT_TREE_CONTROLLER);
 /**
  * A node of a tree view
  */
-export const TUI_TREE_NODE = new InjectionToken('[TUI_TREE_NODE]');
+export const TUI_TREE_NODE = tuiCreateToken();
 
 /**
  * A tree node placeholder for loading
@@ -30,14 +27,12 @@ export const TUI_TREE_LOADING = tuiCreateToken({});
 /**
  * A tree node starting point
  */
-export const TUI_TREE_START = new InjectionToken('[TUI_TREE_START]');
+export const TUI_TREE_START = tuiCreateToken();
 
 /**
  * A service to load tree progressively
  */
-export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
-    '[TUI_TREE_LOADER]',
-);
+export const TUI_TREE_LOADER = tuiCreateToken<TuiTreeLoader<unknown>>();
 
 /**
  * Content for a tree item

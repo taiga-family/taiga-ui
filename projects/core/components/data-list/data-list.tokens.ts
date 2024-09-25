@@ -1,7 +1,6 @@
 import type {Provider, TemplateRef, Type} from '@angular/core';
-import {InjectionToken} from '@angular/core';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -21,9 +20,10 @@ export interface TuiDataListHost<T> {
 /**
  * Content for tuiOption component
  */
-export const TUI_OPTION_CONTENT = new InjectionToken<
-    PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>
->('[TUI_OPTION_CONTENT]');
+export const TUI_OPTION_CONTENT =
+    tuiCreateToken<
+        PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>
+    >();
 
 export function tuiAsOptionContent(
     useValue: PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>,
@@ -37,9 +37,7 @@ export function tuiAsOptionContent(
 /**
  * Accessor for data-list options
  */
-export const TUI_DATA_LIST_ACCESSOR = new InjectionToken<TuiDataListAccessor>(
-    '[TUI_DATA_LIST_ACCESSOR]',
-);
+export const TUI_DATA_LIST_ACCESSOR = tuiCreateToken<TuiDataListAccessor>();
 
 export function tuiAsDataListAccessor(accessor: Type<TuiDataListAccessor>): Provider {
     return tuiProvide(TUI_DATA_LIST_ACCESSOR, accessor);
@@ -48,9 +46,7 @@ export function tuiAsDataListAccessor(accessor: Type<TuiDataListAccessor>): Prov
 /**
  * DataList controller
  */
-export const TUI_DATA_LIST_HOST = new InjectionToken<TuiDataListHost<unknown>>(
-    '[TUI_DATA_LIST_HOST]',
-);
+export const TUI_DATA_LIST_HOST = tuiCreateToken<TuiDataListHost<unknown>>();
 
 export function tuiAsDataListHost<T>(host: Type<TuiDataListHost<T>>): Provider {
     return tuiProvide(TUI_DATA_LIST_HOST, host);

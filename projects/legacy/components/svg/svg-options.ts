@@ -1,7 +1,11 @@
 import type {FactoryProvider, Provider} from '@angular/core';
-import {InjectionToken, Optional, SkipSelf} from '@angular/core';
+import {Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateTokenFromFactory, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    tuiCreateToken,
+    tuiCreateTokenFromFactory,
+    tuiIsString,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIconsPathFactory} from '@taiga-ui/legacy/utils';
 import {identity} from 'rxjs';
 
@@ -69,9 +73,7 @@ export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
  * @deprecated: drop in v5.0 use {@link TuiIcon}
  * https://taiga-ui.dev/components/icon
  */
-export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
-    '[TUI_SVG_SRC_INTERCEPTORS]',
-);
+export const TUI_SVG_SRC_INTERCEPTORS = tuiCreateToken<TuiSvgInterceptorHandler>();
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiIcon}
