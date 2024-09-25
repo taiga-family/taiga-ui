@@ -81,8 +81,7 @@
         ],
         "rules": {
             "jest/prefer-importing-jest-globals": "off",
-            "sonarjs/prefer-nullish-coalescing": "off",
-            "unicorn/consistent-destructuring": "off"
+            "sonarjs/prefer-nullish-coalescing": "off"
         },
         "overrides": [
             {
@@ -91,14 +90,6 @@
                 ],
                 "rules": {
                     "@angular-eslint/prefer-standalone": "off"
-                }
-            },
-            {
-                "files": [
-                    "**/demo/**/*.ts"
-                ],
-                "rules": {
-                    "max-classes-per-file": "off"
                 }
             }
         ],
