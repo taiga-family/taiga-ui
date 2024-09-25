@@ -49,7 +49,7 @@ const PACKAGE_JSON_BEFORE = `{
 const PACKAGE_JSON_AFTER = `{
     "dependencies": {
         "@angular/core": "~13.0.0",
-        "@taiga-ui/event-plugins": "^4.0.1"
+        "@taiga-ui/event-plugins": "^4.2.3"
     }
 }`.trim();
 

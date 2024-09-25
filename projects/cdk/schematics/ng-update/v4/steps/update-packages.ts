@@ -12,9 +12,9 @@ import {ALL_TS_FILES} from '../../../constants';
 import {errorLog} from '../../../utils/colored-log';
 import {replacePackageName} from '../../steps';
 
-export const TUI_POLYMORPHEUS_VERSION = '^4.6.4';
-export const TUI_DOMPURIFY_VERSION = '^4.1.2';
-export const TUI_EVENT_PLUGINS_VERSION = '^4.0.1';
+export const TUI_POLYMORPHEUS_VERSION = '^4.7.3';
+export const TUI_DOMPURIFY_VERSION = '^4.7.3';
+export const TUI_EVENT_PLUGINS_VERSION = '^4.2.3';
 
 export function updatePackages({tree}: DevkitFileSystem): void {
     const packagesToRemove = ['@taiga-ui/addon-tablebars', '@taiga-ui/addon-preview'];
