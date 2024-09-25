@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, TemplateRef} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -39,7 +39,6 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         mutation:
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
-        TemplateRef: '',
     };
 
     protected iconVariants: readonly string[] = Object.keys(this.cards);
@@ -81,7 +80,10 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     protected getContentVariants(
         template: PolymorpheusContent,
     ): readonly PolymorpheusContent[] | null {
-        this.cards['TemplateRef'] = template;
+        if (template instanceof TemplateRef) {
+            this.cards['TemplateRef'] = template;
+            this.iconVariants = Object.keys(this.cards);
+        }
 
         return [...this.iconVariants];
     }
