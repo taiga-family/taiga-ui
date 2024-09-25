@@ -15,6 +15,7 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
+    TUI_DOC_SUPPORT_LANGUAGE,
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
@@ -43,6 +44,18 @@ import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
+
+export const TUI_DEFAULT_LANGUAGE_PAGE = new Set([
+    'Calendar',
+    'CalendarMonth',
+    'CalendarRange',
+    'InputCardGroup',
+    'InputFiles',
+    'InputPhoneInternational',
+    'MobileCalendar',
+    'Table',
+    'TablePagination',
+]);
 
 export const config: ApplicationConfig = {
     providers: [
@@ -161,6 +174,10 @@ export const config: ApplicationConfig = {
                 inject(TUI_IS_E2E)
                     ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                     : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
+        },
+        {
+            provide: TUI_DOC_SUPPORT_LANGUAGE,
+            useValue: TUI_DEFAULT_LANGUAGE_PAGE,
         },
         {
             provide: TUI_DOC_URL_STATE_HANDLER,
