@@ -102,10 +102,10 @@ const PACKAGE_JSON_AFTER = `{
         "@angular/core": "~13.0.0",
         "@taiga-ui/core": "~3.42.0",
         "@taiga-ui/cdk": "~3.42.0",
-        "@taiga-ui/editor": "^4.0.0",
-        "@taiga-ui/event-plugins": "^4.0.1",
+        "@taiga-ui/editor": "^4.10.0",
+        "@taiga-ui/event-plugins": "^4.2.3",
         "@taiga-ui/legacy": "${TUI_VERSION}",
-        "@taiga-ui/polymorpheus": "^4.6.4"
+        "@taiga-ui/polymorpheus": "^4.7.3"
     }
 }`.trim();
 
