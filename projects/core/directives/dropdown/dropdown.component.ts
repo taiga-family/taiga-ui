@@ -64,11 +64,10 @@ export class TuiDropdownComponent {
         .closest('[tuiTheme]')
         ?.getAttribute('tuiTheme');
 
-    protected readonly hostStyle = getComputedStyle(this.directive.el);
     protected readonly sub = inject(TuiPositionService)
         .pipe(
             takeWhile(
-                () => this.directive.el.isConnected && this.hostStyle.display !== 'none',
+                () => this.directive.el.isConnected && !!this.directive.el.offsetParent,
             ),
             map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
             map(([top, left]) => this.getStyles(top, left)),
