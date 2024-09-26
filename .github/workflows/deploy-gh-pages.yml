@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.7
-      - uses: taiga-family/ci/actions/setup/variables@v1.85.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.0
 
       - name: Prepare demo before deploy from snapshots
         run: |
