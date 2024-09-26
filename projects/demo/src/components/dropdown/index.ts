@@ -1,10 +1,11 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiLooseUnion} from '@taiga-ui/cdk';
 import {
+    TUI_DROPDOWN_OPTIONS,
     TuiDropdown,
     type TuiDropdownAlign,
     type TuiDropdownOptions,
@@ -22,6 +23,8 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDropdown {
+    private readonly options = inject(TUI_DROPDOWN_OPTIONS);
+
     protected readonly routes = DemoRoute;
 
     protected readonly aligns: readonly TuiDropdownAlign[] = ['left', 'right', 'center'];
@@ -38,13 +41,13 @@ export class TuiDocDropdown {
     @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiDropdownOptions>> = [];
 
-    public open = false;
-
-    public align: TuiDropdownAlign = 'left';
-    public direction: TuiVerticalDirection | null = null;
+    public align: TuiDropdownAlign = this.options.align;
+    public direction: TuiVerticalDirection | null = this.options.direction;
+    public minHeight = this.options.minHeight;
+    public maxHeight = this.options.maxHeight;
+    public offset = this.options.offset;
+    public appearance = this.options.appearance;
     public limitWidth: TuiDropdownWidth = 'fixed';
-    public minHeight = 80;
-    public maxHeight = 400;
-    public offset = 4;
-    public appearance = '';
+
+    public open = false;
 }
