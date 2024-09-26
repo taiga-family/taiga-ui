@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, merge, Observable, switchMap, takeUntil} from 'rxjs';
+import {filter, map, merge, Observable, switchMap, takeUntil} from 'rxjs';
 
 @Injectable()
 export class TuiScrollbarService extends Observable<[number, number]> {
@@ -10,6 +10,7 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
     private readonly scroll$ = merge(
         tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
+            filter(({target}) => target !== this.el),
             map((event) => this.getScrolled(event, 0.5, 0.5)),
         ),
         tuiTypedFromEvent(this.el, 'mousedown').pipe(
