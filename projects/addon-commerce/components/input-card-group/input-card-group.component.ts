@@ -22,6 +22,7 @@ import {
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {TUI_IS_WEBKIT} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -58,7 +59,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {map, merge, Subject, switchMap, timer} from 'rxjs';
+import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
 import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
@@ -145,12 +146,14 @@ export class TuiInputCardGroup
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
-    protected readonly $ = this.focus$
-        .pipe(
-            switchMap(() => timer(100)),
-            takeUntilDestroyed(),
-        )
-        .subscribe(() => this.focusExpire());
+    protected readonly $ = inject(TUI_IS_WEBKIT)
+        ? this.focus$
+              .pipe(
+                  switchMap(() => timer(100)),
+                  takeUntilDestroyed(),
+              )
+              .subscribe(() => this.focusExpire())
+        : EMPTY;
 
     protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly appearance = tuiAppearance(
@@ -320,8 +323,8 @@ export class TuiInputCardGroup
         this.updateBin(bin);
 
         if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
-            // Safari autofill focus jerk workaround
             this.focusExpire();
+            // Safari autofill focus jerk workaround
             this.focus$.next();
         }
     }
