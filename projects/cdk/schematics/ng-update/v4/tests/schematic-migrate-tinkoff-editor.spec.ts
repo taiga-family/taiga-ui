@@ -12,6 +12,12 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {TUI_EDITOR_VERSION} from '../steps/migrate-editor';
+import {
+    TUI_EVENT_PLUGINS_VERSION,
+    TUI_POLYMORPHEUS_VERSION,
+} from '../steps/update-packages';
+
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
@@ -102,10 +108,10 @@ const PACKAGE_JSON_AFTER = `{
         "@angular/core": "~13.0.0",
         "@taiga-ui/core": "~3.42.0",
         "@taiga-ui/cdk": "~3.42.0",
-        "@taiga-ui/editor": "^4.10.0",
-        "@taiga-ui/event-plugins": "^4.2.3",
+        "@taiga-ui/editor": "${TUI_EDITOR_VERSION}",
+        "@taiga-ui/event-plugins": "${TUI_EVENT_PLUGINS_VERSION}",
         "@taiga-ui/legacy": "${TUI_VERSION}",
-        "@taiga-ui/polymorpheus": "^4.7.3"
+        "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}"
     }
 }`.trim();
 
