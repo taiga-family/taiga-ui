@@ -10,10 +10,7 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
-import {
-    TUI_SELECTED_VERSION_META,
-    TUI_VERSION_MANAGER_PROVIDERS,
-} from './version-manager/version-manager.providers';
+import {TUI_SELECTED_VERSION_META} from './version-manager/version-manager.providers';
 import {TuiVersionMeta} from './version-manager/versions.constants';
 
 @Component({
@@ -22,12 +19,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     styleUrls: ['./app.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
-    providers: [
-        TuiResizeService,
-        TuiDestroyService,
-        DEMO_PAGE_LOADED_PROVIDER,
-        TUI_VERSION_MANAGER_PROVIDERS,
-    ],
+    providers: [TuiResizeService, TuiDestroyService, DEMO_PAGE_LOADED_PROVIDER],
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
     readonly isLanding$ = this.router.events.pipe(

@@ -6,18 +6,16 @@ export interface TuiVersionMeta {
     title: string;
 }
 
-export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
-
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: 'next',
-        baseHref: '/next/',
-        title: `v${TUI_CURRENT_MAJOR_VERSION}.next`,
+        label: 'v4',
+        baseHref: '/',
+        title: 'v4',
     },
     {
-        label: `latest (v${TUI_VERSION})`,
-        baseHref: '/',
-        title: `v${TUI_CURRENT_MAJOR_VERSION}`,
+        label: `v${TUI_VERSION} (lts)`,
+        baseHref: '/v3/',
+        title: 'v3',
     },
     {
         label: 'v2',
