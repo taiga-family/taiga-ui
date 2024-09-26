@@ -3,11 +3,11 @@ import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {EMPTY, filter, merge} from 'rxjs';
+import {debounceTime, EMPTY, filter, merge} from 'rxjs';
 
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 
@@ -34,7 +34,7 @@ export class TuiTab implements OnDestroy {
         this.rla?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
         this.el.matches('button') ? tuiTypedFromEvent(this.el, 'click') : EMPTY,
     )
-        .pipe(takeUntilDestroyed())
+        .pipe(debounceTime(0, tuiZonefreeScheduler()), takeUntilDestroyed())
         .subscribe(() =>
             this.el.dispatchEvent(new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true})),
         );
