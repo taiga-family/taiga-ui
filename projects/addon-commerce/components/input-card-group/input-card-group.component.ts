@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -58,7 +58,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {map, merge} from 'rxjs';
+import {map, merge, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
 import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
@@ -122,7 +122,7 @@ export class TuiInputCardGroup
     @ViewChild('inputCVC')
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
 
-    private timeout = NaN;
+    private readonly focus$ = new Subject<void>();
     private expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
@@ -145,6 +145,12 @@ export class TuiInputCardGroup
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
+    protected readonly $ = this.focus$
+        .pipe(
+            switchMap(() => timer(100)),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => this.focusExpire());
 
     protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly appearance = tuiAppearance(
@@ -310,13 +316,13 @@ export class TuiInputCardGroup
             return;
         }
 
-        clearInterval(this.timeout);
         this.updateProperty(parsed, 'card');
         this.updateBin(bin);
 
         if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
             // Safari autofill focus jerk workaround
-            this.timeout = Number(setTimeout(() => this.focusExpire(), 100));
+            this.focusExpire();
+            this.focus$.next();
         }
     }
 
