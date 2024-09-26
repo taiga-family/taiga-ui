@@ -15,7 +15,7 @@ jobs:
     if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.87.0
       - uses: taiga-family/ci/actions/setup/node@v1.87.0
 
@@ -34,7 +34,7 @@ jobs:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.87.0
       - uses: taiga-family/ci/actions/setup/node@v1.87.0
         id: nodejs-workspace
