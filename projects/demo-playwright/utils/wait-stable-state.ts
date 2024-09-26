@@ -1,6 +1,6 @@
 import type {Locator} from '@playwright/test';
 
-export async function waitStableState(locator: Locator): Promise<void> {
+export async function waitStableState(locator: Locator): Promise<boolean> {
     try {
         const handle = await locator.elementHandle();
 
@@ -12,6 +12,10 @@ export async function waitStableState(locator: Locator): Promise<void> {
 
         // https://playwright.dev/docs/actionability#visible
         // Element is considered visible when it has non-empty bounding box
-        await handle?.waitForElementState('visible');
-    } catch {}
+        await handle?.waitForElementState('visible', {timeout: 1000});
+
+        return true;
+    } catch {
+        return false;
+    }
 }

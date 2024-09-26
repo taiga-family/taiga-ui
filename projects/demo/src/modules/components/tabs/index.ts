@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
@@ -14,6 +15,8 @@ import {TuiTabs} from '@taiga-ui/kit';
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
+    protected readonly path = inject(Router);
+
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
 
     protected readonly moreContentVariants = ['', 'And more'];

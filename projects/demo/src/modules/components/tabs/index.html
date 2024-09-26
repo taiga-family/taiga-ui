@@ -158,7 +158,7 @@
 
     <ng-template pageTab="Routing">
         <tui-doc-example [content]="8 | tuiExample: 'html,ts'">
-            <router-outlet />
+            <router-outlet *ngIf="path.url.endsWith('Routing')" />
         </tui-doc-example>
     </ng-template>
 </tui-doc-page>

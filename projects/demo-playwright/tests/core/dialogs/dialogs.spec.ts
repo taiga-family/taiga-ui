@@ -150,7 +150,11 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?closeable=true&dismissible=false`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page
+                .locator('button[data-appearance="primary"]:visible')
+                .getByText('Show')
+                .click();
+
             await page.mouse.click(100, 100);
 
             await expect(page.locator('tui-dialog')).toHaveCount(1);
@@ -162,7 +166,11 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?closeable=false&dismissible=true`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page
+                .locator('button[data-appearance="primary"]:visible')
+                .getByText('Show')
+                .click();
+
             await page.mouse.click(100, 100);
 
             await expect(page.locator('tui-dialog')).toHaveCount(0);
@@ -174,7 +182,11 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?closeable=true&dismissible=false`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page
+                .locator('button[data-appearance="primary"]:visible')
+                .getByText('Show')
+                .click();
+
             await page.mouse.click(100, 100);
 
             await expect(page.locator('tui-dialog')).toHaveCount(1);
@@ -190,7 +202,11 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?size=fullscreen&dismissible=true`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page
+                .locator('button[data-appearance="primary"]:visible')
+                .getByText('Show')
+                .click();
+
             await page.mouse.click(100, 100);
 
             await expect(page.locator('tui-dialog')).toHaveCount(1);
@@ -205,7 +221,11 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?size=fullscreen&dismissible=true`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page
+                .locator('button[data-appearance="primary"]:visible')
+                .getByText('Show')
+                .click();
+
             await page.mouse.click(100, 100);
 
             await expect(page.locator('tui-dialog')).toHaveCount(1);

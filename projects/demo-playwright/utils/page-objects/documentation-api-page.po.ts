@@ -6,7 +6,7 @@ import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    public readonly apiPageExample: Locator = this.page.locator('#demo-content');
+    public readonly apiPageExample: Locator = this.page.locator('#demo-content:visible');
 
     constructor(protected readonly page: Page) {}
 

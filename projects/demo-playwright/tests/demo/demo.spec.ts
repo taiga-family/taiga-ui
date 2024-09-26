@@ -1,4 +1,10 @@
-import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    tuiMockImages,
+    waitStableState,
+} from '@demo-playwright/utils';
+import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
 import {tuiIsFlakyExample} from './is-flaky-examples';
@@ -24,9 +30,16 @@ test.describe('Demo', () => {
                 }
             }).toPass();
 
+            const visibleExamples: Locator[] = [];
             const examples = await page.getByTestId('tui-doc-example').all();
 
-            for (const [i, example] of examples.entries()) {
+            for (const example of examples) {
+                if (await waitStableState(example)) {
+                    visibleExamples.push(example);
+                }
+            }
+
+            for (const [i, example] of visibleExamples.entries()) {
                 if (tuiIsFlakyExample(path, i)) {
                     continue;
                 }

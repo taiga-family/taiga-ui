@@ -70,10 +70,9 @@
         class="t-see-also"
         [seeAlso]="seeAlso"
     />
-    <ng-container *ngFor="let tab of tabConnectors; index as index">
-        <ng-container
-            *ngIf="index === activeItemIndex"
-            [ngTemplateOutlet]="tab.template"
-        />
+    <ng-container *ngFor="let tab of tabConnectors; let index = index">
+        <div [style.display]="index === activeItemIndex ? 'block' : 'none'">
+            <ng-container [ngTemplateOutlet]="tab.template" />
+        </div>
     </ng-container>
 </div>

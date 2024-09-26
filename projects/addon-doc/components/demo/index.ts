@@ -1,10 +1,11 @@
-import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
+import {JsonPipe, Location, NgTemplateOutlet} from '@angular/common';
 import type {ElementRef, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
+    DestroyRef,
     inject,
     Input,
     signal,
@@ -13,7 +14,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import type {AbstractControl} from '@angular/forms';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
@@ -32,7 +33,7 @@ import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
-import {skip} from 'rxjs';
+import {skip, timer} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -42,7 +43,6 @@ const MIN_WIDTH = 160;
     imports: [
         FormsModule,
         JsonPipe,
-        NgIf,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiButton,
@@ -76,6 +76,7 @@ export class TuiDocDemo implements OnInit {
     private readonly resizer?: ElementRef<HTMLElement>;
 
     private readonly el = tuiInjectElement();
+    private readonly destroyRef = inject(DestroyRef);
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
@@ -83,6 +84,8 @@ export class TuiDocDemo implements OnInit {
 
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
+
+    protected readonly rendered = signal(false);
 
     protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
 
@@ -94,7 +97,9 @@ export class TuiDocDemo implements OnInit {
         .pipe(skip(1), takeUntilDestroyed())
         .subscribe((mode) => this.onModeChange(mode));
 
-    protected testForm?: FormGroup;
+    protected testForm = new FormGroup<{testValue: AbstractControl}>({
+        testValue: new FormControl(null),
+    });
 
     protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
@@ -113,8 +118,13 @@ export class TuiDocDemo implements OnInit {
     public sticky = true;
 
     public ngOnInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
+        timer(0)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this.createForm();
+                this.updateWidth(this.sandboxWidth + this.delta);
+                this.rendered.set(true);
+            });
     }
 
     protected onResize(): void {
