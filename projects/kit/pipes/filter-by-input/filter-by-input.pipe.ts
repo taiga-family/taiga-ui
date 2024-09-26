@@ -2,7 +2,7 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk/types';
-import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
@@ -57,7 +57,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
     ): readonly T[] {
         const match = this.getMatch(items, stringify, query);
 
-        return tuiIsPresent(match)
+        return match != null
             ? items
             : items.filter((item) => matcher(item, query, stringify));
     }
@@ -68,11 +68,9 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        const match = items.find((item) =>
-            tuiIsPresent(this.getMatch(item, stringify, query)),
-        );
+        const match = items.find((item) => this.getMatch(item, stringify, query) != null);
 
-        return tuiIsPresent(match)
+        return match != null
             ? items
             : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
     }
@@ -82,6 +80,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): T | undefined {
+        // TODO: Refactor when tui-textfield[multi] is ready
+        if ((this.host as any).tagValidator) {
+            return undefined;
+        }
+
         return items.find(
             (item) => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
         );
