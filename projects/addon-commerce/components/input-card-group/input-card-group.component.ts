@@ -22,7 +22,6 @@ import {
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {TUI_IS_WEBKIT} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -31,6 +30,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
+import {TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
