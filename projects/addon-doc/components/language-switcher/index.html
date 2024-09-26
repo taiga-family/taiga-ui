@@ -1,11 +1,10 @@
 <tui-badged-content>
     <img
-        *ngIf="flags.get(language.value ?? '') | tuiFlag as flag"
         alt=""
         size="s"
         tuiBadge
         tuiSlot="bottom"
-        [src]="flag"
+        [src]="flags.get(language.value ?? '') || flags.get(switcher.language) | tuiFlag"
     />
 
     <button

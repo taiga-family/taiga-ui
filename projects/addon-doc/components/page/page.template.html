@@ -60,7 +60,7 @@
             [type]="type"
         />
 
-        <tui-doc-language-switcher />
+        <tui-doc-language-switcher *ngIf="supportLanguage.has(header)" />
     </div>
 </header>
 <div class="t-content">
