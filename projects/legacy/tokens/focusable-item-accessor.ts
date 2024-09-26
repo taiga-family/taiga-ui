@@ -1,6 +1,5 @@
 import type {Provider, Type} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 
 /**
@@ -22,8 +21,7 @@ export interface TuiFocusableElementAccessor {
  * @deprecated: drop in v5.0
  * A component that can be focused
  */
-export const TUI_FOCUSABLE_ITEM_ACCESSOR =
-    new InjectionToken<TuiFocusableElementAccessor>('[TUI_FOCUSABLE_ITEM_ACCESSOR]');
+export const TUI_FOCUSABLE_ITEM_ACCESSOR = tuiCreateToken<TuiFocusableElementAccessor>();
 
 /**
  * @deprecated: drop in v5.0
