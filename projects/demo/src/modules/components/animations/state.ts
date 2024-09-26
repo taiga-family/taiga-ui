@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable()
 export class AnimationState extends BehaviorSubject<number> {
     constructor() {
-        super(1000);
+        super(tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)));
     }
 }

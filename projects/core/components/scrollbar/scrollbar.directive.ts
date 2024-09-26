@@ -36,7 +36,13 @@ export class TuiScrollbarDirective {
         .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
             this.el.style.scrollBehavior = 'auto';
-            this.el.scrollTo({top, left});
+
+            if (this.tuiScrollbar === 'horizontal') {
+                this.el.scrollLeft = left;
+            } else {
+                this.el.scrollTop = top;
+            }
+
             this.el.style.scrollBehavior = '';
         });
 
