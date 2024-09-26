@@ -15,7 +15,7 @@
         tuiLink
         type="button"
         class="t-link"
-        [attr.title]="copy$ | async"
+        [attr.title]="copy()"
         [fragment]="id"
         [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'}"
         (click)="copyExampleLink($event.currentTarget)"
@@ -32,11 +32,8 @@
     </ng-container>
 </h3>
 
-<div
-    *ngIf="processor$ | async as files"
-    class="t-example"
->
-    <ng-container *ngIf="files | tuiDocExampleGetTabs: defaultTab as tabs">
+<div class="t-example">
+    <ng-container *ngIf="processor() | tuiDocExampleGetTabs: defaultTab as tabs">
         <div
             *ngIf="tabs.length > 1"
             class="t-tabs-wrapper"
@@ -59,12 +56,12 @@
             </tui-tabs-with-more>
 
             <tui-loader
-                *ngIf="files | tuiMapper: visible"
+                *ngIf="processor() | tuiMapper: visible"
                 size="xs"
                 class="t-code-editor"
                 [overlay]="true"
-                [showLoader]="!!(loading$ | async)"
-                (click)="edit(files)"
+                [showLoader]="loading()"
+                (click)="edit(processor())"
             >
                 <ng-container *ngIf="codeEditor?.content as content; else defaultEditContent">
                     <ng-container *polymorpheusOutlet="content as editContent">
@@ -96,13 +93,13 @@
                 [style.display]="activeItemIndex === index && index === defaultTabIndex ? 'block' : 'none'"
             >
                 <ng-content />
-                <ng-container *polymorpheusOutlet="lazyComponent$ | async as text">
+                <ng-container *polymorpheusOutlet="lazyComponent() as text">
                     {{ text }}
                 </ng-container>
             </div>
 
             <tui-doc-code
-                *tuiLet="files?.[tabs?.[index] || 0] || '' as code"
+                *tuiLet="processor()[tabs[index] || 0] || '' as code"
                 [code]="code"
                 [style.display]="activeItemIndex === index && index !== defaultTabIndex ? 'block' : 'none'"
             >

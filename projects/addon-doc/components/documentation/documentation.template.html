@@ -150,7 +150,7 @@
                 <ng-template #elseEmitter>
                     <tui-notification
                         class="t-output"
-                        [@emitEvent]="propertyConnector.emits$ | async"
+                        [@emitEvent]="propertyConnector.emits()"
                     >
                         Emit!
                     </tui-notification>

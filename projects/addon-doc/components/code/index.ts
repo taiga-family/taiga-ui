@@ -1,5 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {AsyncPipe, isPlatformServer, NgForOf, NgIf} from '@angular/common';
+import {isPlatformServer, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,7 +22,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-doc-code',
-    imports: [AsyncPipe, ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
+    imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,9 +37,8 @@ export class TuiDocCode {
 
     protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
-    protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
-        TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
-    );
+    protected readonly markdownCodeProcessor: TuiHandler<string, readonly string[]> =
+        inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR);
 
     protected readonly copy$ = new Subject<void>();
 
@@ -55,9 +54,12 @@ export class TuiDocCode {
         {initialValue: this.icons.copy},
     );
 
-    protected readonly processor$ = this.rawLoader$$.pipe(
-        switchMap(tuiRawLoad),
-        map((value: string): string[] => this.markdownCodeProcessor(value)),
+    protected readonly processor = toSignal(
+        this.rawLoader$$.pipe(
+            switchMap(tuiRawLoad),
+            map((value: string) => this.markdownCodeProcessor(value)),
+        ),
+        {initialValue: []},
     );
 
     @Input()

@@ -1,4 +1,4 @@
-import {AsyncPipe, DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -8,7 +8,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {Router, RouterLink, RouterLinkActive, Scroll} from '@angular/router';
@@ -49,7 +49,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     standalone: true,
     selector: 'tui-doc-navigation',
     imports: [
-        AsyncPipe,
         NgForOf,
         NgIf,
         NgTemplateOutlet,
@@ -103,9 +102,12 @@ export class TuiDocNavigation {
 
     protected readonly search = new FormControl('');
 
-    protected readonly filtered$ = tuiControlValue<string>(this.search).pipe(
-        filter((search) => search.trim().length > 2),
-        map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
+    protected readonly filtered = toSignal(
+        tuiControlValue<string>(this.search).pipe(
+            filter((search) => search.trim().length > 2),
+            map((search) => this.filterItems(this.flattenSubPages(this.items), search)),
+        ),
+        {initialValue: []},
     );
 
     constructor() {

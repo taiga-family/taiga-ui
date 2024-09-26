@@ -1,11 +1,9 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 const COPIED_TIMEOUT = 1500;
@@ -13,7 +11,7 @@ const COPIED_TIMEOUT = 1500;
 @Component({
     standalone: true,
     selector: 'tui-doc-copy',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiLet],
+    imports: [NgIf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,16 +19,18 @@ const COPIED_TIMEOUT = 1500;
 export class TuiDocCopy {
     private readonly copy$ = new Subject<void>();
 
-    protected readonly texts$ = inject(TUI_COPY_TEXTS);
+    protected readonly texts = toSignal(inject(TUI_COPY_TEXTS), {
+        initialValue: ['', ''] as const,
+    });
 
-    @tuiPure
-    protected get copied$(): Observable<boolean> {
-        return this.copy$.pipe(
+    protected readonly copied = toSignal(
+        this.copy$.pipe(
             switchMap(() =>
                 timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
             ),
-        );
-    }
+        ),
+        {initialValue: true},
+    );
 
     protected onClick(): void {
         this.copy$.next();

@@ -13,5 +13,5 @@ export const TUI_DOC_EXAMPLE_CONTENT_PROCESSOR =
  * Processes markdown in code block
  */
 export const TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR = tuiCreateToken<
-    TuiHandler<string, string[]>
+    TuiHandler<string, readonly string[]>
 >(tuiTryParseMarkdownCodeBlock);

@@ -9,7 +9,7 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-doc-navigation
-        *tuiSidebar="!!(open$ | async)"
+        *tuiSidebar="open()"
         class="t-navigation"
     />
 </button>

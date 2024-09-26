@@ -1,5 +1,4 @@
 <button
-    *ngIf="texts$ | async as texts"
     appearance=""
     size="s"
     tuiButton
@@ -7,18 +6,15 @@
     class="t-copy"
     (click)="onClick()"
 >
-    <span
-        *tuiLet="copied$ | async as copied"
-        class="t-content"
-    >
+    <span class="t-content">
         <span
             class="t-initial"
-            [attr.data-text]="copied ? '' : texts[0]"
+            [attr.data-text]="copied() ? '' : texts()[0]"
         >
-            <ng-container *ngIf="!copied">
+            <ng-container *ngIf="!copied()">
                 <ng-content />
             </ng-container>
         </span>
-        {{ copied ? texts[1] : '' }}
+        {{ copied() ? texts()[1] : '' }}
     </span>
 </button>

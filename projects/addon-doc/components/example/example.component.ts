@@ -1,6 +1,7 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
@@ -27,8 +28,7 @@ import {
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
+import {BehaviorSubject, map, ReplaySubject, switchAll, switchMap} from 'rxjs';
 
 import {TuiDocCode} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
@@ -38,7 +38,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     standalone: true,
     selector: 'tui-doc-example',
     imports: [
-        AsyncPipe,
         NgForOf,
         NgIf,
         NgTemplateOutlet,
@@ -90,18 +89,26 @@ export class TuiDocExample {
     protected readonly defaultTabIndex = 0;
     protected readonly defaultTab = this.texts[this.defaultTabIndex];
     protected activeItemIndex = this.defaultTabIndex;
-    protected readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
-    protected readonly loading$ = new Subject<boolean>();
 
-    protected readonly processor$: Observable<Record<string, string>> =
+    protected readonly copy = toSignal(this.copyTexts$.pipe(map(([copy]) => copy)), {
+        initialValue: '',
+    });
+
+    protected readonly loading = signal(false);
+
+    protected readonly processor = toSignal(
         this.rawLoader$$.pipe(
             switchMap(tuiRawLoadRecord),
             map((value) => this.processContent(value)),
-        );
+        ),
+        {initialValue: {} as unknown as Record<string, string>},
+    );
 
-    protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
-        switchAll(),
-        map((module) => new PolymorpheusComponent(module.default)),
+    protected readonly lazyComponent = toSignal(
+        this.lazyLoader$$.pipe(
+            switchAll(),
+            map((module) => new PolymorpheusComponent(module.default)),
+        ),
     );
 
     @Input()
@@ -144,9 +151,9 @@ export class TuiDocExample {
     }
 
     protected edit(files: Record<string, string>): void {
-        this.loading$.next(true);
+        this.loading.set(true);
         this.codeEditor
             ?.edit(this.componentName, this.id || '', files)
-            .finally(() => this.loading$.next(false));
+            .finally(() => this.loading.set(false));
     }
 }
