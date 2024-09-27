@@ -6,13 +6,6 @@
     <ng-template pageTab>
         <p>A component to use icons and color them with CSS.</p>
 
-        <tui-notification>
-            <code>img</code>
-            tag is not restricted to CORS policy but the
-            <code>tui-icon</code>
-            is.
-        </tui-notification>
-
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
