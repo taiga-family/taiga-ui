@@ -120,7 +120,7 @@ export class TuiMobileCalendarDropdown {
                 this.control?.disabledItemHandler ||
                 TUI_FALSE_HANDLER,
             this.selectedPeriod,
-            this.control.minLength,
+            this.control?.minLength ?? null,
         );
     }
 
