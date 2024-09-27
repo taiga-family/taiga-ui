@@ -10,6 +10,7 @@ export interface TuiDocIcons {
     readonly copy: string;
     readonly check: string;
     readonly link: string;
+    readonly languages: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
@@ -21,6 +22,7 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     copy: '@tui.copy',
     check: '@tui.check',
     link: '@tui.link',
+    languages: '@tui.languages',
 };
 
 export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);
