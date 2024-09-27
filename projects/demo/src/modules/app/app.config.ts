@@ -36,25 +36,13 @@ import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
-import {SEE_ALSO_GROUPS} from './app.const';
+import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
-
-export const TUI_DEFAULT_LANGUAGE_PAGE = new Set([
-    'Calendar',
-    'CalendarMonth',
-    'CalendarRange',
-    'InputCardGroup',
-    'InputFiles',
-    'InputPhoneInternational',
-    'MobileCalendar',
-    'Table',
-    'TablePagination',
-]);
 
 export const config: ApplicationConfig = {
     providers: [
@@ -176,7 +164,7 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_SUPPORT_LANGUAGE,
-            useValue: TUI_DEFAULT_LANGUAGE_PAGE,
+            useValue: DEFAULT_LANGUAGE_PAGE,
         },
         {
             provide: TUI_DOC_URL_STATE_HANDLER,
