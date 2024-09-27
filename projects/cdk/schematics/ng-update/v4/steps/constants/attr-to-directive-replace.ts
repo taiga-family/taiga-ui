@@ -60,4 +60,13 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
             hasElementAttribute(el, 'tuiButton') ||
             hasElementAttribute(el, 'tuiIconButton'),
     },
+    {
+        componentSelector: ['*'],
+        inputProperty: 'pseudoFocus',
+        directive: 'tuiAppearanceFocus',
+        directiveModule: {
+            name: 'TuiAppearance',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];

@@ -44,7 +44,7 @@ export class Test {
 
 const TEMPLATE_BEFORE = `
 <button
-    appearance="primary"
+    appearance="secondary-destructive"
     tuiButton
     type="button"
     [icon]="icon"
@@ -82,7 +82,7 @@ const TEMPLATE_BEFORE = `
 const TEMPLATE_AFTER = `
 <!-- TODO: (Taiga UI migration) [shape] input has been removed. Please use border-radius css property for rounding borders https://taiga-ui.dev/components/button -->
 <button
-    appearance="primary"
+    appearance="destructive"
     tuiButton
     type="button"
     [iconStart]="icon"
