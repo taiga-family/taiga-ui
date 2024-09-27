@@ -1,6 +1,7 @@
 import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
@@ -34,6 +35,7 @@ import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
 })
 export class TuiDocLanguageSwitcher {
+    protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly switcher = inject(TuiLanguageSwitcherService);
     protected readonly language = new FormControl(capitalize(this.switcher.language));
 
