@@ -31,5 +31,6 @@ export default class Example {
         'warning',
         'info',
         'glass',
+        'icon',
     ] as const;
 }

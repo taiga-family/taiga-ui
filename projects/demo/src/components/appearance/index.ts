@@ -40,6 +40,7 @@ export class TuiDocAppearance {
         'warning',
         'info',
         'glass',
+        'icon',
     ] as const;
 
     protected readonly states: readonly TuiInteractiveState[] = [
