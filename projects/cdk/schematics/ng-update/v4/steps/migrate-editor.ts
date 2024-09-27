@@ -14,7 +14,7 @@ import {
 import {replaceIdentifiers} from '../../steps/replace-identifier';
 import {replacePackageName} from '../../steps/replace-package-name';
 
-export const TUI_EDITOR_VERSION = '^4.10.0';
+export const TUI_EDITOR_VERSION = '^4.11.0';
 
 export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema): void {
     const moduleSpecifier = ['@tinkoff/tui-editor', '@taiga-ui/addon-editor'];
