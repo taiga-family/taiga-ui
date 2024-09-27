@@ -1,4 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -16,6 +17,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         TuiActiveZone,
         TuiButton,
         TuiDemo,
+        TuiDocDropdown,
         TuiDropdown,
         TuiObscured,
     ],

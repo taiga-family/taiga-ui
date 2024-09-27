@@ -12,6 +12,7 @@
     </td>
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('appearance')"
     name="[appearance]"
     tuiDocAPIItem
     type="string"
@@ -22,6 +23,7 @@
     Appearance of the element
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('state')"
     name="[tuiAppearanceState]"
     tuiDocAPIItem
     type="TuiInteractiveState | null"
@@ -31,6 +33,7 @@
     Manual interactive state override
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('focus')"
     name="[tuiAppearanceFocus]"
     tuiDocAPIItem
     type="boolean | null"
@@ -40,6 +43,7 @@
     Manual focus state override
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('mode')"
     name="[tuiAppearanceMode]"
     tuiDocAPIItem
     type="string | string[] | null"
