@@ -29,9 +29,6 @@ export class TuiDocTextfield {
     protected readonly customContentVariants = ['', '@tui.bell'];
 
     @Input()
-    public tuiDocTextfield: readonly string[] | '' = '';
-
-    @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiTextfieldOptions>> = [];
 
     public cleaner: boolean = this.options.cleaner();
