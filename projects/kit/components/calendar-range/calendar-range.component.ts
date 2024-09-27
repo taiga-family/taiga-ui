@@ -21,7 +21,7 @@ import {
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
-import {tuiIsString, tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -124,7 +124,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return calculateDisabledItemHandler(
+        return this.calculateDisabledItemHandler(
             this.disabledItemHandler,
             this.value,
             this.minLength,
@@ -228,6 +228,15 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             ) ||
                 null)
         );
+    }
+
+    @tuiPure
+    private calculateDisabledItemHandler(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        value: TuiDayRange | null,
+        minLength: TuiDayLike | null,
+    ): TuiBooleanHandler<TuiDay> {
+        return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
     private initDefaultViewedMonth(): void {

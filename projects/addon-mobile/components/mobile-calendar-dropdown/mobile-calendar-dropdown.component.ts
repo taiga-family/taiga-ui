@@ -4,9 +4,11 @@ import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calend
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -113,7 +115,7 @@ export class TuiMobileCalendarDropdown {
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return calculateDisabledItemHandler(
+        return this.calculateDisabledItemHandler(
             this.data.disabledItemHandler ||
                 this.control?.disabledItemHandler ||
                 TUI_FALSE_HANDLER,
@@ -135,6 +137,15 @@ export class TuiMobileCalendarDropdown {
 
         this.observer?.next(value);
         this.close();
+    }
+
+    @tuiPure
+    private calculateDisabledItemHandler(
+        disabledItemHandler: TuiBooleanHandler<TuiDay>,
+        value: TuiDayRange | null,
+        minLength: TuiDayLike | null,
+    ): TuiBooleanHandler<TuiDay> {
+        return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
     private is(selector: string): boolean {
