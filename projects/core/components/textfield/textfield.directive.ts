@@ -1,4 +1,5 @@
 import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -9,6 +10,7 @@ import {
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
+import {fromEvent} from 'rxjs';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -34,6 +36,11 @@ export class TuiTextfieldBase<T> implements OnChanges {
 
     @Input()
     public invalid: boolean | null = null;
+
+    public nativeValue = toSignal(
+        fromEvent(this.el, 'input', () => this.el.value),
+        {initialValue: this.el.value},
+    );
 
     @Input('focused')
     public set focusedSetter(focused: boolean | null) {
