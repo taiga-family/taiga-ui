@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
-import {tuiIsNumber, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
@@ -80,7 +80,6 @@ export class TuiDocAPIItem<T> implements OnInit {
         this.setQueryParam(value);
     }
 
-    @tuiPure
     private clearBrackets(value: string): string {
         return value.replaceAll(/[()[\]]/g, '');
     }
