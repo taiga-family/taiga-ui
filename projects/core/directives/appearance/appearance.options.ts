@@ -12,6 +12,7 @@ type Appearance = TuiLooseUnion<
     | 'flat'
     | 'floating'
     | 'glass'
+    | 'icon'
     | 'info'
     | 'link'
     | 'neutral'
