@@ -1,0 +1,57 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <a
+                tuiLink
+                [routerLink]="routes.Textfield"
+            >
+                <strong>Textfield</strong>
+            </a>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('cleaner')"
+    name="[tuiTextfieldCleaner]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="cleaner"
+>
+    Shows a cross to reset a value
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('customContent')"
+    name="[tuiTextfieldCustomContent]"
+    tuiDocAPIItem
+    type="PolymorpheusContent"
+    [items]="customContentVariants"
+    [(value)]="customContent"
+>
+    Right content (e.g. avatar with maximum size 32x32px)
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('labelOutside')"
+    name="[tuiTextfieldLabelOutside]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="labelOutside"
+>
+    Label is outside a component and made with
+    <a
+        tuiLink
+        [routerLink]="routes.Label"
+    >
+        <code>Label</code>
+    </a>
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('size')"
+    name="[tuiTextfieldSize]"
+    tuiDocAPIItem
+    type="TuiSizeS | TuiSizeL"
+    [items]="sizeVariants"
+    [(value)]="size"
+>
+    Size
+</tr>
