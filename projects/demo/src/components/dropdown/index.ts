@@ -36,9 +36,6 @@ export class TuiDocDropdown {
     ];
 
     @Input()
-    public tuiDocDropdown: readonly string[] | '' = '';
-
-    @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiDropdownOptions>> = [];
 
     public align: TuiDropdownAlign = this.options.align;
