@@ -44,7 +44,7 @@
             placeholder="null"
             tuiTextfield
             [ngModel]="value ?? null"
-            (ngModelChange)="valueChange.emit($event)"
+            (ngModelChange)="onValueChange($event)"
         ></select>
         <tui-data-list-wrapper
             *tuiTextfieldDropdown
@@ -66,7 +66,7 @@
                 type="checkbox"
                 [id]="name"
                 [ngModel]="value"
-                (ngModelChange)="valueChange.emit($event)"
+                (ngModelChange)="onValueChange($event)"
             />
 
             <tui-textfield
@@ -78,7 +78,7 @@
                     tuiTextfield
                     [id]="name"
                     [ngModel]="value || ''"
-                    (ngModelChange)="valueChange.emit($event)"
+                    (ngModelChange)="onValueChange($event)"
                 />
             </tui-textfield>
 
@@ -90,7 +90,7 @@
                 [ngModel]="value"
                 [step]="1"
                 [tuiTextfieldLabelOutside]="true"
-                (ngModelChange)="valueChange.emit($event || 0)"
+                (ngModelChange)="onValueChange($event || 0)"
             />
         </ng-container>
     </ng-template>
