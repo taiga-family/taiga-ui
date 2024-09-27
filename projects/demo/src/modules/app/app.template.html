@@ -1,4 +1,4 @@
-<router-outlet *ngIf="isLanding$ | async; else portal" />
+<router-outlet *ngIf="isLanding(); else portal" />
 <ng-template #portal>
     <tui-doc-main>
         <div
