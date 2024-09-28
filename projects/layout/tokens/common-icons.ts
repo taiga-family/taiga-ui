@@ -30,4 +30,4 @@ export const tuiCommonIconsProvider = tuiLayoutIconsProvider;
 /**
  * @deprecated use {@link TuiLayoutIcons} instead
  */
-export interface TuiCommonIcons extends TuiLayoutIcons {}
+export type TuiCommonIcons = TuiLayoutIcons;
