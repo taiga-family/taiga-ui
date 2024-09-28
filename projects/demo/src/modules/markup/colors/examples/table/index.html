@@ -2,7 +2,7 @@
     *ngFor="let color of colors"
     class="color"
 >
-    <ng-container *ngIf="getValue(color, tuiPlatform, darkMode()) as value">
+    <ng-container *ngIf="getValue(color, platform.tuiPlatform, darkMode()) as value">
         <td>
             <h3 class="name">
                 <tui-doc-copy

@@ -1,19 +1,15 @@
 import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TUI_DARK_MODE, TuiGroup} from '@taiga-ui/core';
-import {TuiBlock} from '@taiga-ui/kit';
+import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 import {BACKGROUNDS, CHARTS, OTHERS, STATUSES, TEXT} from './constants';
 import {TableColors} from './examples/table';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TableColors, TuiBlock, TuiDemo, TuiGroup, TuiPlatform],
+    imports: [TableColors, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
@@ -28,6 +24,4 @@ export default class Page {
     protected readonly statuses = STATUSES;
     protected readonly others = OTHERS;
     protected readonly charts = CHARTS;
-
-    protected platform: 'android' | 'web' = 'web';
 }

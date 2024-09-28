@@ -1,97 +1,38 @@
-<tui-doc-page
-    header="Colors"
-    [tuiPlatform]="platform"
->
-    <p
-        tuiGroup
-        class="mobile-colors-switch"
-        [collapsed]="true"
-        [style.width]="'fit-content'"
-    >
-        <label
-            appearance=""
-            iconStart="@tui.monitor"
-            tuiBlock
-        >
-            Web
-            <input
-                appearance="whiteblock"
-                name="platform"
-                tuiBlock
-                type="radio"
-                value="web"
-                [(ngModel)]="platform"
-            />
-        </label>
-        <label
-            appearance=""
-            iconStart="@tui.smartphone"
-            tuiBlock
-        >
-            Mobile
-            <input
-                appearance="whiteblock"
-                name="platform"
-                tuiBlock
-                type="radio"
-                value="android"
-                [(ngModel)]="platform"
-            />
-        </label>
-    </p>
+<tui-doc-page header="Colors">
     <ng-template pageTab="Text">
-        <table
-            [colors]="text"
-            [tuiPlatform]="platform"
-        ></table>
+        <table [colors]="text"></table>
         <table
             [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
             [colors]="text"
-            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Backgrounds">
-        <table
-            [colors]="backgrounds"
-            [tuiPlatform]="platform"
-        ></table>
+        <table [colors]="backgrounds"></table>
         <table
             [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
             [colors]="backgrounds"
-            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Statuses">
-        <table
-            [colors]="statuses"
-            [tuiPlatform]="platform"
-        ></table>
+        <table [colors]="statuses"></table>
         <table
             [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
             [colors]="statuses"
-            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Others">
-        <table
-            [colors]="others"
-            [tuiPlatform]="platform"
-        ></table>
+        <table [colors]="others"></table>
         <table
             [attr.tuiTheme]="darkMode() ? 'light' : 'dark'"
             [colors]="others"
-            [tuiPlatform]="platform"
         ></table>
     </ng-template>
 
     <ng-template pageTab="Charts">
-        <table
-            [colors]="charts"
-            [tuiPlatform]="platform"
-        ></table>
+        <table [colors]="charts"></table>
     </ng-template>
 
     <ng-template pageTab="Setup">
