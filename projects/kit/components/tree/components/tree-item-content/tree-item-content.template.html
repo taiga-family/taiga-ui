@@ -5,7 +5,7 @@
     tuiIconButton
     type="button"
     class="t-button"
-    [class.t-button_expanded]="expanded$ | async"
+    [class.t-button_expanded]="expanded()"
     [iconStart]="icons.more"
     [style.border-radius.%]="100"
     (click)="onClick()"
