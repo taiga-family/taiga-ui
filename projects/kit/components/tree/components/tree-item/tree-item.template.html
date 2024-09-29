@@ -8,11 +8,11 @@
     *ngIf="isExpandable"
     role="group"
     class="t-children"
-    [expanded]="expanded$ | async"
+    [expanded]="expanded()"
 >
     <div>
         <ng-content select="tui-tree-item" />
         <ng-content select="tui-tree" />
     </div>
 </tui-expand>
-<ng-container *ngIf="attached$ | async" />
+<ng-container *ngIf="attached()" />
