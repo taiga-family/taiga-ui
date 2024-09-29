@@ -1370,6 +1370,12 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'RepeatTimes',
+                keywords: 'повторение, repeat, пайп, pipe',
+                route: DemoRoute.RepeatTimes,
+            },
+            {
+                section: 'Tools',
                 title: 'FieldError',
                 keywords: 'error, field, hint, ошибка, преобразование, пайп, pipe',
                 route: DemoRoute.FieldError,

@@ -192,6 +192,7 @@ export const DemoRoute = {
     FormatNumber: '/pipes/format-number',
     IsPresent: '/pipes/is-present',
     Mapper: '/pipes/mapper',
+    RepeatTimes: '/pipes/repeat-times',
     Stringify: '/pipes/stringify',
     StringifyContent: '/pipes/stringify-content',
     Alert: '/components/alert',

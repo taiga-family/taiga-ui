@@ -1,0 +1,17 @@
+<tui-doc-page
+    header="RepeatTimes"
+    package="CDK"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="base"
+            description="Pipe for making an array of elements by length"
+            heading="Base"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

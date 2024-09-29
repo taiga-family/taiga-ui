@@ -971,6 +971,11 @@ export const ROUTES: Routes = [
         title: 'Mapper',
     }),
     route({
+        path: DemoRoute.RepeatTimes,
+        loadComponent: async () => import('../pipes/repeat-times'),
+        title: 'RepeatTimes',
+    }),
+    route({
         path: DemoRoute.Stringify,
         loadComponent: async () => import('../pipes/stringify'),
         title: 'Stringify',
