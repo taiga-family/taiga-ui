@@ -1,15 +1,10 @@
 ```ts
-import {TuiLanguageName} from '@taiga-ui/i18n/types';
-import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/utils';
+import {tuiLanguageSwitcher, TuiLanguageName} from '@taiga-ui/i18n';
 
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-  ],
+bootstrapApplication(App, {
   providers: [
     // ...
-    tuiDocLanguageSwitcher(async (language: TuiLanguageName): Promise<unknown> => {
+    tuiLanguageSwitcher(async (language: TuiLanguageName): Promise<unknown> => {
       switch (language) {
         case 'belarusian':
           return import('@taiga-ui/i18n/languages/belarusian');
@@ -46,6 +41,5 @@ import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/utils';
       }
     }),
   ],
-})
-export class Example {}
+}).catch((err: unknown) => console.error(err));
 ```

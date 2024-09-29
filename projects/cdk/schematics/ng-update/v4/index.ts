@@ -41,18 +41,21 @@ import {
     MODULES_TO_REMOVE,
     SERVICES_TO_REPLACE,
 } from './steps/constants';
+import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';
 import {dropUniversalMock} from './steps/drop-universal-mock';
 import {migrateEditor} from './steps/migrate-editor';
 import {migrateImportProvidersFrom} from './steps/migrate-providers-from';
 import {migrateRoot} from './steps/migrate-root';
+import {replaceFunctions} from './steps/replace-functions';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        replaceFunctions(REPLACE_FUNCTIONS);
         migrateImportProvidersFrom(options);
         migrateEditor(fileSystem, options);
         replaceEnums(options, ENUMS_TO_REPLACE);
