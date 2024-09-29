@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,14 +7,14 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import type { TuiComparator } from '@taiga-ui/addon-table/types';
-import { tuiDefaultSort } from '@taiga-ui/cdk/utils/miscellaneous';
-import { TuiIcon } from '@taiga-ui/core/components/icon';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 
-import { TuiTableHead } from '../directives/head.directive';
-import { TuiTableResized } from '../directives/resized.directive';
-import { TuiTableDirective } from '../directives/table.directive';
-import { TUI_TABLE_OPTIONS } from '../table.options';
+import {TuiTableHead} from '../directives/head.directive';
+import {TuiTableResized} from '../directives/resized.directive';
+import {TuiTableDirective} from '../directives/table.directive';
+import {TUI_TABLE_OPTIONS} from '../table.options';
 
 @Component({
     standalone: true,
@@ -40,7 +40,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
-        { optional: true },
+        {optional: true},
     );
 
     @Input()
@@ -80,13 +80,10 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     protected updateSorterAndDirection(): void {
-        const sorter = this.requiredSort
-            ? this.sorter
-            : null;
+        const sorter = this.requiredSort ? this.sorter : null;
 
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndAscDirection
-                ? sorter : this.sorter
+            this.isCurrentAndAscDirection ? sorter : this.sorter,
         );
     }
 
