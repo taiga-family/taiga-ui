@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -26,10 +27,9 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 })
 export class TuiDocMain {
     private readonly icons = inject(TUI_DOC_ICONS);
-
     protected readonly darkMode = inject(TUI_DARK_MODE);
-
-    protected get icon(): string {
-        return this.darkMode() ? this.icons.light : this.icons.dark;
-    }
+    protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));
+    protected readonly icon = computed(() =>
+        this.darkMode() ? this.icons.light : this.icons.dark,
+    );
 }

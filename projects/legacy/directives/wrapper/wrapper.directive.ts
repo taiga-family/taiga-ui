@@ -1,4 +1,5 @@
 import {Directive, Input} from '@angular/core';
+import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 /**
@@ -46,7 +47,7 @@ export class TuiWrapperDirective {
         return this.focus && !this.disabled;
     }
 
-    protected get interactiveState(): TuiInteractiveState | string | null {
+    protected get interactiveState(): TuiLooseUnion<TuiInteractiveState> | null {
         if (this.disabled) {
             return 'disabled';
         }

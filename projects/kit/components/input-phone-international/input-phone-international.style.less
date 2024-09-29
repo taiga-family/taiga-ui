@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-.t-country-select {
+.t-select {
     inline-size: 5.625rem;
     flex: none;
 
@@ -16,22 +16,14 @@
 .t-flag {
     inline-size: 1.75rem;
     block-size: 1.75rem;
-    border-radius: 50%;
-
-    &_select {
-        .fullsize(absolute, inset);
-
-        left: 0.5rem;
-        margin: auto;
-    }
+    border-radius: 100%;
 }
 
-.t-country-item-name {
-    margin-inline-start: 0.75rem;
-    margin-inline-end: auto;
+.t-name {
+    margin: 0 auto 0 0.75rem;
 }
 
-.t-country-item-code {
+.t-code {
     color: var(--tui-text-secondary);
     margin-inline-end: 0.25rem;
 }

@@ -57,6 +57,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         new TuiDay(2017, 11, 11),
         new TuiDay(new Date().getFullYear() + 3, 1, 1),
         TUI_LAST_DAY,
+        TuiDay.currentLocal(),
     ];
 
     protected min: TuiDay = this.dayVariants[0]!;
@@ -65,7 +66,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected minLength: TuiDayLike | null = null;
 
-    protected max = this.dayVariants[this.dayVariants.length - 1]!;
+    protected max = this.dayVariants[this.dayVariants.length - 2]!;
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),

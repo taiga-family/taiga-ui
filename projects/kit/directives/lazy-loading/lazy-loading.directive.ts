@@ -1,4 +1,5 @@
-import {Directive, inject, Input} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {Directive, inject, Input, PLATFORM_ID, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
@@ -6,46 +7,47 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
+/**
+ * @deprecated: Drop in v5.0
+ */
 @Directive({
     standalone: true,
-    selector: 'img[loading="lazy"]',
+    selector: 'img[loading="lazy"],img[tuiLoading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
     host: {
-        '[style.animation]': 'animation',
-        '[style.background]': 'background',
-        '[attr.src]': 'src',
-        '(load)': 'onLoad()',
+        '[style.animation]': 'animation()',
+        '[style.background]': 'background()',
+        '[attr.loading]': 'supported ? "lazy" : null',
+        '[attr.src]': 'src()',
+        '(load)': 'unset()',
+        '(error)': 'unset()',
     },
 })
 export class TuiImgLazyLoading {
-    private readonly el = tuiInjectElement<HTMLImageElement>();
-    private readonly src$ = inject(TuiLazyLoadingService);
-    protected animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
-    protected background = 'var(--tui-background-neutral-2)';
-    protected src: SafeResourceUrl | string | null = null;
+    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
+    private readonly loading$ = inject(TuiLazyLoadingService);
+    protected readonly supported = 'loading' in tuiInjectElement<HTMLImageElement>();
+    protected src = signal<SafeResourceUrl | string | null>(null);
+    protected background = signal(this.isServer ? '' : 'var(--tui-background-neutral-2)');
+    protected animation = signal(
+        this.isServer ? '' : 'tuiSkeletonVibe ease-in-out 1s infinite alternate',
+    );
 
-    constructor() {
-        if (this.supported) {
-            return;
-        }
-
-        this.src$.pipe(takeUntilDestroyed()).subscribe((src) => {
-            this.src = src;
-        });
-    }
+    protected readonly $ =
+        !this.supported &&
+        this.loading$.pipe(takeUntilDestroyed()).subscribe((src) => this.src.set(src));
 
     @Input('src')
     public set srcSetter(src: SafeResourceUrl | string) {
-        this.src = this.supported ? src : null;
-        this.src$.next(src);
+        if (this.supported) {
+            this.src.set(src);
+        } else {
+            this.loading$.next(src);
+        }
     }
 
-    protected onLoad(): void {
-        this.background = '';
-        this.animation = '';
-    }
-
-    private get supported(): boolean {
-        return 'loading' in this.el;
+    protected unset(): void {
+        this.background.set('');
+        this.animation.set('');
     }
 }

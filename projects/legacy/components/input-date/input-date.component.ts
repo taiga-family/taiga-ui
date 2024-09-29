@@ -67,6 +67,7 @@ import {map} from 'rxjs';
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(click)': 'onClick()',
     },

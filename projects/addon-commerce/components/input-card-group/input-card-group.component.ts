@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -30,6 +30,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
+import {TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
@@ -45,6 +46,7 @@ import {
     TuiAppearance,
     tuiAppearance,
     tuiAppearanceFocus,
+    tuiAppearanceMode,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import {
@@ -57,7 +59,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {map, merge} from 'rxjs';
+import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
 import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
@@ -104,8 +106,8 @@ export interface TuiCard {
     ],
     host: {
         'data-size': 'l',
-        '[attr.data-mode]': 'mode()',
         '(mousedown)': 'onMouseDown($event)',
+        '(scroll.silent)': '$event.target.scrollLeft = 0',
     },
 })
 export class TuiInputCardGroup
@@ -121,6 +123,7 @@ export class TuiInputCardGroup
     @ViewChild('inputCVC')
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
 
+    private readonly focus$ = new Subject<void>();
     private expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
@@ -143,7 +146,16 @@ export class TuiInputCardGroup
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
+    protected readonly $ = inject(TUI_IS_WEBKIT)
+        ? this.focus$
+              .pipe(
+                  switchMap(() => timer(100)),
+                  takeUntilDestroyed(),
+              )
+              .subscribe(() => this.focusExpire())
+        : EMPTY;
 
+    protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly appearance = tuiAppearance(
         inject(TUI_TEXTFIELD_OPTIONS).appearance,
     );
@@ -232,8 +244,14 @@ export class TuiInputCardGroup
 
     public clear(): void {
         this.expirePrefilled = false;
+
+        [this.inputCVC, this.inputExpire, this.inputCard].forEach((e) => {
+            e?.nativeElement.focus();
+            e?.nativeElement.select();
+            e?.nativeElement.ownerDocument.execCommand('delete');
+        });
+
         this.onChange(null);
-        this.focusCard();
     }
 
     public onResize(): void {
@@ -306,6 +324,8 @@ export class TuiInputCardGroup
 
         if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire) {
             this.focusExpire();
+            // Safari autofill focus jerk workaround
+            this.focus$.next();
         }
     }
 

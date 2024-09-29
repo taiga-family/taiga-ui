@@ -11,9 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Unit tests
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.73.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.73.1
-      - uses: taiga-family/ci/actions/setup/node@v1.73.1
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - uses: taiga-family/ci/actions/setup/node@v1.87.5
+      - uses: taiga-family/ci/actions/run/node-info@v1.87.5
+        id: info
+      - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
       - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v4.5.0

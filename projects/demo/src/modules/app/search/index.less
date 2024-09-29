@@ -1,0 +1,112 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:root {
+    --docsearch-primary-color: var(--tui-background-accent-1);
+    --docsearch-text-color: var(--tui-text-primary);
+    --docsearch-spacing: 0.75rem;
+    --docsearch-icon-stroke-width: 1.4;
+    --docsearch-highlight-color: var(--docsearch-primary-color);
+    --docsearch-muted-color: var(--tui-text-secondary);
+    --docsearch-container-background: var(--tui-service-backdrop);
+    --docsearch-logo-color: var(--tui-background-accent-1);
+
+    /* modal */
+    --docsearch-modal-width: 35rem;
+    --docsearch-modal-height: 37rem;
+    --docsearch-modal-background: var(--tui-background-elevation-1);
+    --docsearch-modal-shadow: inset 0.0625rem 0.0625rem 0 0 rgba(255, 255, 255, 0.5),
+        0 0.1875rem 0.5rem 0 rgb(85, 90, 100);
+
+    /* searchbox */
+    --docsearch-searchbox-height: 3.5rem;
+    --docsearch-searchbox-background: var(--tui-background-base);
+    --docsearch-searchbox-focus-background: var(--tui-background-base);
+    --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
+
+    /* hit */
+    --docsearch-hit-height: 3.5rem;
+    --docsearch-hit-color: var(--tui-text-primary);
+    --docsearch-hit-active-color: var(--tui-background-base);
+    --docsearch-hit-background: var(--tui-background-base);
+    --docsearch-hit-shadow: 0 1px 3px 0 rgb(212, 217, 225);
+
+    /* key */
+    --docsearch-key-gradient: none;
+    --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230), inset 0 0 1px 1px #fff,
+        0 1px 2px 1px rgba(30, 35, 90, 0.4);
+    --docsearch-key-pressed-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 1px 0 rgba(30, 35, 90, 0.4);
+    /* footer */
+    --docsearch-footer-height: 2.75rem;
+    --docsearch-footer-background: var(--tui-background-base);
+    --docsearch-footer-shadow: 0 -0.0625rem 0 0 rgb(224, 227, 232), 0 -0.1875rem 0.375rem 0 rgba(69, 98, 155, 0.12);
+}
+
+/* Darkmode */
+
+html[data-theme='dark'] {
+    --docsearch-text-color: #fff;
+    --docsearch-container-background: rgba(9, 10, 17, 0.8);
+    --docsearch-modal-background: #292929;
+    --docsearch-modal-shadow: inset 0.0625rem 0.0625rem 0 0 rgba(44, 46, 64), 0 0.1875rem 0.5rem 0 rgb(0, 3, 9);
+    --docsearch-searchbox-background: #202020;
+    --docsearch-searchbox-focus-background: #202020;
+    --docsearch-hit-color: rgb(190, 195, 201);
+    --docsearch-hit-shadow: none;
+    --docsearch-hit-background: #333;
+    --docsearch-key-gradient: none;
+    --docsearch-key-shadow: inset 0 -2px 0 0 rgb(40, 45, 85), inset 0 0 1px 1px rgb(81, 87, 125),
+        0 2px 2px 0 rgba(3, 4, 9, 0.3);
+    --docsearch-key-pressed-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 1px 1px 0 rgba(3, 4, 9, 0.3);
+    --docsearch-footer-background: #383838;
+    --docsearch-footer-shadow: inset 0 0.0625rem 0 0 rgba(73, 76, 106, 0.5), 0 -0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    --docsearch-logo-color: rgb(255, 255, 255);
+    --docsearch-muted-color: rgb(127, 132, 151);
+}
+
+.DocSearch-Form {
+    border-radius: var(--tui-radius-l);
+}
+
+.DocSearch.DocSearch-Button-Placeholder {
+    font: var(--tui-font-text-s);
+}
+
+.DocSearch.DocSearch-Button {
+    position: relative;
+    block-size: var(--tui-height-s);
+    margin: 0;
+    border-radius: var(--tui-radius-m);
+    .transition(~'box-shadow, color');
+
+    .DocSearch-Search-Icon {
+        color: var(--docsearch-muted-color);
+        inline-size: 1rem;
+    }
+
+    &::after {
+        .fullsize(absolute, inset);
+
+        content: '';
+        border-radius: inherit;
+        border: 1px solid currentColor;
+        pointer-events: none;
+        color: var(--tui-border-normal);
+    }
+
+    &:active,
+    &:hover {
+        color: var(--docsearch-muted-color);
+    }
+}
+
+.DocSearch-Hit-content-wrapper {
+    overflow: hidden;
+}
+
+.DocSearch-Container {
+    backdrop-filter: blur(4px);
+
+    @media @tui-mobile {
+        position: fixed;
+    }
+}

@@ -4,7 +4,6 @@ import {
     Component,
     ContentChildren,
     inject,
-    InjectionToken,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -20,7 +19,7 @@ import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDecimalMode} from '@taiga-ui/core/tokens';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -41,9 +40,8 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
-export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
-    TuiValueTransformer<number | null>
->('');
+export const TUI_NUMBER_VALUE_TRANSFORMER =
+    tuiCreateToken<TuiValueTransformer<number | null>>();
 
 @Component({
     standalone: false,
@@ -57,6 +55,7 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(keydown.arrowDown)': 'onArrow(-step)',
         '(keydown.arrowUp)': 'onArrow(step)',

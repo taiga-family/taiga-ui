@@ -18,22 +18,23 @@ import {TuiPickerService} from '../services/picker.service';
     styleUrls: ['./flat-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiFlatPickerComponent {
+    protected readonly $ = inject(TuiPickerService)
+        .pipe(takeUntilDestroyed())
+        .subscribe((point) => {
+            this.value = point;
+            this.valueChange.emit([point[0], point[1]]);
+        });
+
     @Input()
     public value: TuiPoint = [0, 0];
 
     @Output()
     public readonly valueChange = new EventEmitter<[number, number]>();
-
-    constructor() {
-        inject(TuiPickerService)
-            .pipe(takeUntilDestroyed())
-            .subscribe((point) => {
-                this.value = point;
-                this.valueChange.emit([point[0], point[1]]);
-            });
-    }
 
     public get left(): number {
         return this.value[0] * 100;

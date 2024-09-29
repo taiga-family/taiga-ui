@@ -1,4 +1,4 @@
-import type {FactoryProvider, OnChanges} from '@angular/core';
+import {type FactoryProvider, type OnChanges, Self} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
@@ -61,7 +61,7 @@ export const tuiHintOptionsProvider: (
 ) => FactoryProvider = (override: Partial<TuiHintOptions>) => ({
     provide: TUI_HINT_OPTIONS,
     deps: [
-        [new Optional(), TuiHintOptionsDirective],
+        [new Optional(), new Self(), TuiHintOptionsDirective],
         [new Optional(), new SkipSelf(), TUI_HINT_OPTIONS],
     ],
     useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),

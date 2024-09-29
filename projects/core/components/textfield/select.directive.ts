@@ -20,7 +20,6 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'textfield.id',
-        '[attr.data-mode]': 'mode',
         '[class._empty]': 'value === ""',
         '(input)': '0',
         '(focusin)': '0',
@@ -33,14 +32,14 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
         '(keydown.meta.c)': 'onCopy()',
     },
 })
-export class TuiSelect extends TuiTextfieldBase {
+export class TuiSelect<T> extends TuiTextfieldBase<T> {
     private readonly nav = inject(WA_NAVIGATOR);
     private readonly control = inject(NgControl);
 
     @Input()
     public placeholder = '';
 
-    public override setValue(value: string): void {
+    public override setValue(value: T): void {
         this.control.control?.setValue(value);
         this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }

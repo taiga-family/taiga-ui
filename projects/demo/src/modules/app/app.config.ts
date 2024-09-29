@@ -12,8 +12,10 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
+    TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
+    TUI_DOC_SUPPORT_LANGUAGE,
     TUI_DOC_TITLE,
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
@@ -34,9 +36,8 @@ import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
-import {SEE_ALSO_GROUPS} from './app.const';
+import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
-import {TUI_DEFAULT_TABS} from './app.tabs';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
@@ -129,11 +130,15 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_DEFAULT_TABS,
-            useValue: TUI_DEFAULT_TABS,
+            useValue: ['Examples', 'API', 'Setup', 'How to use'],
         },
         {
             provide: TUI_DOC_LOGO,
             useValue: LOGO_CONTENT,
+        },
+        {
+            provide: TUI_DOC_SEARCH_ENABLED,
+            useValue: false,
         },
         {
             provide: TUI_DOC_CODE_EDITOR,
@@ -158,9 +163,13 @@ export const config: ApplicationConfig = {
                     : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
         },
         {
+            provide: TUI_DOC_SUPPORT_LANGUAGE,
+            useValue: DEFAULT_LANGUAGE_PAGE,
+        },
+        {
             provide: TUI_DOC_URL_STATE_HANDLER,
             useFactory: () => (tree: UrlTree) =>
-                String(tree).replace(/^\/(next|v[0-9]+)\//, ''),
+                String(tree).replace(/^\/(next|v\d+)\//, ''),
         },
         {
             provide: TUI_DOC_TYPE_REFERENCE_HANDLER,

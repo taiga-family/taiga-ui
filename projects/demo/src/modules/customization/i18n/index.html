@@ -1,12 +1,30 @@
 <tui-doc-page header="Internationalization">
     <ng-template pageTab="Supported languages">
-        <tui-doc-code [code]="(readme | async) || ''" />
+        <p>
+            You have English by default. If you want to change it, you need to provide
+            <code>TUI_LANGUAGE</code>
+            token in your configuration. Full list of supported language
+            <a
+                href="https://github.com/taiga-family/taiga-ui/tree/main/projects/i18n/languages"
+                target="_blank"
+                tuiLink
+            >
+                here
+            </a>
+            .
+        </p>
+
+        <tui-doc-code
+            filename="main.ts"
+            class="tui-space_top-5"
+            [code]="example.base"
+        />
     </ng-template>
 
     <ng-template pageTab="Dynamic loader">
         <tui-doc-code
-            filename="app.module.ts"
-            [code]="exampleModule"
+            filename="main.ts"
+            [code]="example.dynamic"
         />
 
         <tui-doc-example
@@ -22,6 +40,7 @@
             processed at build time. This is a limitation of the underlying bundler but is
             <a
                 href="https://github.com/evanw/esbuild/pull/2508"
+                target="_blank"
                 tuiLink
             >
                 planned
@@ -31,6 +50,34 @@
             known potential files.
         </p>
 
-        <tui-doc-code [code]="exampleEsbuildModule" />
+        <tui-doc-code [code]="example.esbuild" />
+    </ng-template>
+
+    <ng-template pageTab="How to add a language">
+        <p>
+            1. Go to
+            <a
+                href="https://github.com/taiga-family/taiga-ui/tree/main/projects/i18n/languages"
+                target="_blank"
+                tuiLink
+            >
+                languages
+            </a>
+            folder
+        </p>
+
+        <p>
+            2. Copy
+            <code>english</code>
+            folder and rename new folder with the name of language you speak
+        </p>
+
+        <p>3. Translate entities in files. If you need some clarification, take a look at interfaces of entities</p>
+
+        <tui-doc-code
+            filename="main.ts"
+            class="tui-space_top-5"
+            [code]="example.custom"
+        />
     </ng-template>
 </tui-doc-page>

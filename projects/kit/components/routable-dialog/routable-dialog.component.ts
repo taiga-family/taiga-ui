@@ -56,7 +56,7 @@ export default class TuiRoutableDialog {
     }
 }
 
-function isClass(fn: Type<any> | unknown): boolean {
+function isClass(fn: unknown): boolean {
     return (
         typeof fn === 'function' &&
         Object.getOwnPropertyDescriptor(fn, 'prototype')?.writable === false

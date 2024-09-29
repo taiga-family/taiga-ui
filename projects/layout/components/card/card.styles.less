@@ -49,7 +49,7 @@
 }
 
 [tuiCardLarge][data-space] {
-    --t-gap: 0.75rem;
+    --t-space: 0.75rem;
     --t-radius: var(--tui-radius-l);
     --t-comp: -0.25rem;
     --t-padding: 0.75rem;
@@ -63,18 +63,18 @@
     &[data-space='normal'] {
         --t-radius: 1.5rem;
         --t-padding: 1.5rem;
-        --t-gap: 1.5rem;
+        --t-space: 1.5rem;
     }
 
     &[data-space='compact'] {
         --t-radius: 1rem;
         --t-padding: 1.25rem;
-        --t-gap: 1.25rem;
+        --t-space: 1.25rem;
     }
 
     &:not([tuiCell], [tuiHeader]) {
         flex-direction: column;
-        gap: var(--t-gap);
+        gap: var(--t-space);
         align-items: stretch;
 
         > :last-child:not([tuiCell]) {
@@ -103,6 +103,10 @@
         padding: 0.5rem;
         margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
+
+        &:last-of-type {
+            margin-bottom: -0.5rem;
+        }
     }
 
     > [tuiLink]:last-child {

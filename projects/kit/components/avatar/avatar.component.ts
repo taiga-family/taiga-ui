@@ -7,13 +7,14 @@ import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
+import {TuiImgLazyLoading} from '@taiga-ui/kit/directives';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     standalone: true,
     selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
-    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TuiIcon],
+    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TuiIcon, TuiImgLazyLoading],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

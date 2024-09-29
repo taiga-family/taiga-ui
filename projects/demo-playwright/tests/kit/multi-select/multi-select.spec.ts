@@ -14,7 +14,7 @@ test.describe('MultiSelect', () => {
         });
 
         test('does not overflow arrow icon by many tags', async () => {
-            const example = documentationPage.getExample('#object-array');
+            const example = documentationPage.getExample('#objects-array');
             const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
 
             await multiSelect.textfield.click();
@@ -67,9 +67,7 @@ test.describe('MultiSelect', () => {
                 test(`multiselect inside dialog with tuiTextfieldSize=${size}`, async ({
                     page,
                 }) => {
-                    const example = documentationPage.getExample(
-                        '#multiselect-inside-dialog-with-different-size',
-                    );
+                    const example = documentationPage.getExample('#inside-dialog');
 
                     await example.getByRole('button').nth(index).click();
 
@@ -236,6 +234,27 @@ test.describe('MultiSelect', () => {
             await documentationPage.waitStableState();
 
             await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
+        });
+
+        test('placeholder with value content', async ({page}) => {
+            await tuiGoto(
+                page,
+                'components/multi-select/API?valueContent$=1&placeholder=test',
+            );
+
+            await multiSelect.arrow.click();
+
+            await multiSelect.selectOptions([0]);
+            await multiSelect.closeDropdown();
+
+            await multiSelect.textfield.blur();
+
+            await documentationPage.prepareBeforeScreenshot();
+            await documentationPage.waitStableState();
+
+            await expect(page).toHaveScreenshot(
+                '10-multi-select-placeholder-with-value-content.png',
+            );
         });
     });
 });

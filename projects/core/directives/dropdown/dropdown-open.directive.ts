@@ -100,7 +100,7 @@ export class TuiDropdownOpen implements OnChanges {
     public readonly driver = inject(TuiDropdownDriver);
 
     public ngOnChanges(): void {
-        this.drive();
+        this.update(!!this.tuiDropdownOpen && this.tuiDropdownEnabled);
     }
 
     public toggle(open: boolean): void {
@@ -142,6 +142,7 @@ export class TuiDropdownOpen implements OnChanges {
             !tuiIsEditingKey(key) ||
             !this.editable ||
             !this.focused ||
+            !this.directive.content ||
             !tuiIsHTMLElement(target) ||
             (tuiIsElementEditable(target) && target !== this.host)
         ) {
@@ -179,9 +180,9 @@ export class TuiDropdownOpen implements OnChanges {
         this.drive();
     }
 
-    private drive(open = this.tuiDropdownOpen && this.tuiDropdownEnabled): void {
-        this.obscured.tuiObscuredEnabled = !!open;
-        this.driver.next(!!open);
+    private drive(open = !!this.tuiDropdownOpen && this.tuiDropdownEnabled): void {
+        this.obscured.tuiObscuredEnabled = open;
+        this.driver.next(open);
     }
 
     private focusDropdown(previous: boolean): void {

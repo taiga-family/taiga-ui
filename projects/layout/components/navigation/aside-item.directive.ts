@@ -18,6 +18,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
+import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiHintAsideDirective} from './hint-aside.directive';
 
@@ -60,6 +61,10 @@ function provideIcon(): FactoryProvider {
     return {
         provide: TUI_ICON_END,
         useFactory: (): string => {
+            if (inject(TuiChevron, {optional: true, self: true})) {
+                return inject(TUI_CHEVRON);
+            }
+
             const {check, more} = inject(TUI_COMMON_ICONS);
             const active =
                 inject(TuiDataListComponent, {optional: true}) &&

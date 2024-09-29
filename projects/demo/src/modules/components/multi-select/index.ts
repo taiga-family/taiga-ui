@@ -60,6 +60,22 @@ class Account {
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly examples = [
+        'Strings array',
+        'Objects array',
+        'Sizes',
+        'With IDs',
+        'Datalist',
+        'Direction: RTL',
+        'Virtual scroll',
+        'Options (stringify)',
+        'Inside dialog',
+        'Native select',
+        'Value content',
+        'Nested datalist',
+        'Long items',
+    ];
+
     protected readonly items = [
         new Account('Ruble', 500),
         new Account('Dollar', 500),

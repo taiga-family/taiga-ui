@@ -97,6 +97,18 @@ test.describe('InputDateRange', () => {
             });
         });
 
+        test('Maximum month when items not empty', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1&max$=7`);
+            await inputDateRange.textfield.click();
+
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '06-textfield-maximum-month-with-items.png',
+            );
+            await expect(inputDateRange.calendarRange).toHaveScreenshot(
+                '06-calendar-maximum-month-with-items.png',
+            );
+        });
+
         test.describe('prevents changes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);

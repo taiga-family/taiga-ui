@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiError, TuiLink} from '@taiga-ui/core';
 import {TuiAvatar, TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiAsideItemDirective, TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 import {
     TuiInputPhoneModule,
     TuiIslandDirective,
@@ -18,7 +18,6 @@ import {
         AsyncPipe,
         NgIf,
         ReactiveFormsModule,
-        TuiAsideItemDirective,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,

@@ -49,13 +49,13 @@
                     tuiButton
                     type="button"
                     [tuiDropdown]="dropdownContent"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownLimitWidth]="dropdown.limitWidth"
                     [tuiDropdownManual]="open"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
                     (click)="onClick()"
                     (tuiObscured)="onObscured($event)"
                 >
@@ -78,24 +78,28 @@
                 </ng-template>
             </span>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownManual"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="open"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiDropdownManual]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="open"
             >
                 Show dropdown (basic manual implementation, see related pages for other options)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdown"
-                documentationPropertyType="PolymorpheusContent"
+            </tr>
+            <tr
+                name="[tuiDropdown]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <dropdown-documentation />
-        </tui-doc-documentation>
+            </tr>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

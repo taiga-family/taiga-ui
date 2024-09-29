@@ -5,12 +5,18 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
+import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy/directives';
 
 import {TuiInputComponent} from './input.component';
 import {TuiInputDirective} from './input.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiPrimitiveTextfieldModule, ...TuiDropdown],
+    imports: [
+        CommonModule,
+        TuiPrimitiveTextfieldModule,
+        ...TuiDropdown,
+        TuiLegacyDropdownOpenMonitorDirective,
+    ],
     declarations: [TuiInputComponent, TuiInputDirective],
     exports: [
         TuiInputComponent,

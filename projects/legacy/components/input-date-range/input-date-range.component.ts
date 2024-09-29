@@ -31,6 +31,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
@@ -66,9 +67,11 @@ import {map} from 'rxjs';
         tuiAsControl(TuiInputDateRangeComponent as any),
         tuiAsLegacyControl(TuiInputDateRangeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
+        tuiAsDataListHost(TuiInputDateRangeComponent),
         TUI_MOBILE_CALENDAR_PROVIDER,
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(click)': 'onClick()',
     },
@@ -161,6 +164,10 @@ export class TuiInputDateRangeComponent
             : nativeValue;
     }
 
+    public get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     public onClick(): void {
         if (!this.isMobile && this.interactive) {
             this.toggle();
@@ -200,10 +207,6 @@ export class TuiInputDateRangeComponent
     public override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
-    }
-
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected get computedMobile(): boolean {

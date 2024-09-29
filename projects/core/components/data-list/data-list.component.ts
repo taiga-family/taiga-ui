@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentChecked, QueryList} from '@angular/core';
+import {type AfterContentChecked, ChangeDetectorRef, type QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiTakeUntilDestroyed, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
+import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -68,6 +68,7 @@ export class TuiDataListComponent<T>
     private readonly ngZone = inject(NgZone);
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
+    private readonly cdr = inject(ChangeDetectorRef);
 
     protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
     protected readonly empty = signal(false);
@@ -92,9 +93,12 @@ export class TuiDataListComponent<T>
 
     // TODO: Refactor to :has after Safari support bumped to 15
     public ngAfterContentChecked(): void {
-        timer(0, tuiZonefreeScheduler(this.ngZone))
-            .pipe(tuiTakeUntilDestroyed(this.destroyRef))
-            .subscribe(() => this.empty.set(!this.el.querySelector('[tuiOption]')));
+        timer(0)
+            .pipe(tuiZonefree(this.ngZone), tuiTakeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this.empty.set(!this.el.querySelector('[tuiOption]'));
+                this.cdr.detectChanges();
+            });
     }
 
     public getOptions(includeDisabled = false): readonly T[] {

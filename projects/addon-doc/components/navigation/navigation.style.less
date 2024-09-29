@@ -15,17 +15,11 @@
     ::ng-deep tui-icon {
         border: 0.25rem solid transparent;
     }
+}
 
-    .t-search-text {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .t-slash {
-            block-size: 1rem;
-            font-size: 0.5rem;
-        }
-    }
+.t-slash {
+    block-size: 1rem;
+    font-size: 0.5rem;
 }
 
 .t-navigation {
@@ -38,6 +32,10 @@
     tui-scrollbar {
         overscroll-behavior: none;
     }
+}
+
+.t-accordion-standalone {
+    margin-top: 1rem;
 }
 
 .t-scrollbar {
@@ -69,6 +67,10 @@
         margin: 0.5rem 0;
         border-inline-start: 1px solid var(--tui-border-normal);
     }
+}
+
+.t-prevent-ios-scroll {
+    .tui-prevent-ios-scroll();
 }
 
 .t-subsection {

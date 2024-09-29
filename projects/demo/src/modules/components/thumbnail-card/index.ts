@@ -19,6 +19,7 @@ export default class Example {
         'A cool one',
         'Backgrounds',
         'External colored icon',
+        'Textfield',
     ];
 
     protected readonly iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
@@ -52,4 +53,7 @@ export default class Example {
     protected monoHandler = this.monoHandlerVariants[0]!;
 
     protected paymentSystem: TuiPaymentSystem | null = null;
+
+    protected background =
+        '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }

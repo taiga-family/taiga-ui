@@ -129,3 +129,20 @@
     overflow: hidden;
     padding: 0;
 }
+
+// prevent scrolling to focused element on IOS
+.tui-prevent-ios-scroll() {
+    &:focus {
+        animation: tuiPreventIOSScroll 0.001s;
+    }
+
+    @keyframes tuiPreventIOSScroll {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}

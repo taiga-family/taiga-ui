@@ -14,8 +14,9 @@
         background: var(--tui-background-neutral-1-pressed);
     });
 
-    &:checked,
-    &[type='checkbox']:indeterminate {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'],
+    &[type='checkbox']:indeterminate:not([data-mode]) {
         background: var(--tui-background-accent-1);
         color: var(--tui-text-primary-on-accent-1);
 
@@ -27,7 +28,8 @@
             background: var(--tui-background-accent-1-pressed);
         });
 
-        &:invalid {
+        &:invalid:not([data-mode]),
+        &[data-mode~='invalid'] {
             background: var(--tui-status-negative);
             color: #fff;
 
@@ -43,7 +45,8 @@
         }
     }
 
-    &:invalid {
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
         color: var(--tui-text-negative);
         background: var(--tui-status-negative-pale);
 
@@ -60,11 +63,13 @@
 }
 
 [tuiAppearance][data-appearance='flat'],
-[tuiAppearance][data-appearance='flat']:invalid {
+[tuiAppearance][data-appearance='flat']:invalid:not([data-mode]),
+[tuiAppearance][data-appearance='flat'][data-mode~='invalid'] {
     background: transparent;
 }
 
-[tuiAppearance][data-appearance='flat']:checked {
+[tuiAppearance][data-appearance='flat']:checked:not([data-mode]),
+[tuiAppearance][data-appearance='flat'][data-mode~='checked'] {
     background: var(--tui-background-neutral-1);
 
     .appearance-hover({

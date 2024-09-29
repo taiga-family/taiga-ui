@@ -1,16 +1,18 @@
 import type {ExistingProvider, ProviderToken} from '@angular/core';
+import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Bundled appearances for autocomplete purposes, not exported on purpose
  */
-type Appearance =
+type Appearance = TuiLooseUnion<
     | 'accent'
     | 'destructive'
     | 'error'
     | 'flat'
     | 'floating'
     | 'glass'
+    | 'icon'
     | 'info'
     | 'link'
     | 'neutral'
@@ -22,7 +24,7 @@ type Appearance =
     | 'textfield'
     | 'warning'
     | 'whiteblock'
-    | (Record<never, never> & string);
+>;
 
 export interface TuiAppearanceOptions {
     readonly appearance: Appearance;

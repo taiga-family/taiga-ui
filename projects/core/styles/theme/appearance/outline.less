@@ -7,8 +7,8 @@
     color: var(--tui-text-action);
     box-shadow: inset 0 0 0 1px var(--t-bs);
 
-    &:checked,
-    &[data-mode='checked'] {
+    &:checked:not([data-mode]),
+    &[data-mode~='checked'] {
         --t-bs: var(--tui-background-accent-1);
 
         box-shadow: inset 0 0 0 2px var(--t-bs);
@@ -22,12 +22,13 @@
         });
     }
 
-    &:invalid {
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
         box-shadow: inset 0 0 0 1px var(--tui-status-negative-pale-hover);
     }
 
-    &:checked:invalid,
-    &[data-mode='checked']:invalid {
+    &:checked:invalid:not([data-mode]),
+    &[data-mode~='checked'][data-mode~='invalid'] {
         box-shadow: inset 0 0 0 2px var(--tui-status-negative);
     }
 

@@ -21,6 +21,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     styleUrls: ['./native-time.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        ngSkipHydration: 'true',
         type: 'time',
         '[attr.list]': 'autoId',
         '[tabIndex]': '-1',

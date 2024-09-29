@@ -1,20 +1,27 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiInteractiveState, TuiLink, TuiTitle} from '@taiga-ui/core';
+import type {TuiLooseUnion} from '@taiga-ui/cdk';
+import {
+    type TuiAppearanceOptions,
+    type TuiInteractiveState,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocAppearance]',
-    imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
+    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAppearance {
     protected readonly routes = DemoRoute;
     protected selected = '';
-    protected readonly modes = ['invalid', 'checked'];
+    protected readonly modes = ['invalid', 'checked', ['invalid', 'checked']];
     protected readonly appearances = [
         'primary',
         'secondary',
@@ -33,6 +40,7 @@ export class TuiDocAppearance {
         'warning',
         'info',
         'glass',
+        'icon',
     ] as const;
 
     protected readonly states: readonly TuiInteractiveState[] = [
@@ -46,9 +54,12 @@ export class TuiDocAppearance {
     @Input()
     public tuiDocAppearance: readonly string[] | '' = '';
 
+    @Input()
+    public hiddenOptions: Array<TuiLooseUnion<keyof TuiAppearanceOptions>> = [];
+
     public state: TuiInteractiveState | null = null;
     public focus: boolean | null = null;
-    public mode: string | null = null;
+    public mode: string | readonly string[] | null = null;
 
     public get appearance(): string {
         return this.selected || this.tuiDocAppearance[0] || this.appearances[0];

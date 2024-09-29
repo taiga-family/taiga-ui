@@ -5,7 +5,7 @@ test.describe('Button', () => {
     test('darkMode=true + appearance=icon + hovered state', async ({page}) => {
         await tuiGoto(
             page,
-            '/components/button/API?darkMode=true&appearance=icon&icon=tuiIconEyeOff',
+            '/components/button/API?darkMode=true&appearance=icon&iconStart=@tui.eye-off',
         );
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 

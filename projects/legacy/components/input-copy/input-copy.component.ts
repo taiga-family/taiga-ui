@@ -43,6 +43,7 @@ import {TUI_INPUT_COPY_OPTIONS} from './input-copy.options';
         tuiAsControl(TuiInputCopyComponent),
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

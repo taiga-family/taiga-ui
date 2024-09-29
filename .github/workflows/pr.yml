@@ -1,0 +1,93 @@
+name: 🤖 PR suites
+on:
+  pull_request:
+  pull_request_review:
+    types: [submitted]
+
+env:
+  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Unit tests", "Component testing result", "E2E result" ]'
+  RELEASE_JOBS_NAME: '[ "Publish" ]'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.value }}
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - id: matrix
+        if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
+        run: |
+          if [[ "${{ env.IS_RELEASE_BRANCH }}" == "false" ]]; then
+              echo "value=$PR_JOBS_NAME" >> $GITHUB_OUTPUT
+          else
+            echo "value=$RELEASE_JOBS_NAME" >> $GITHUB_OUTPUT
+          fi
+
+  wait:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        value: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - uses: taiga-family/ci/actions/run/wait-job@v1.87.5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          job: ${{ matrix.value }}
+
+  approve:
+    needs: [wait]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - uses: taiga-family/ci/actions/auto/approve/double@v1.87.5
+        with:
+          token1: ${{ secrets.GITHUB_TOKEN }}
+          token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
+      - uses: taiga-family/ci/actions/run/merge@v1.87.5
+        if: env.IS_RELEASE_BRANCH == 'false'
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+  label-when-approved:
+    name: Label when approved
+    if: github.event.review.state == 'APPROVED'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.87.5
+        with:
+          approvals: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  assign-author:
+    name: PR author as an assignee
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - uses: toshimaru/auto-author-assign@v2.1.1
+        if: env.IS_OWNER_MODE == 'true'
+        with:
+          repo-token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+  label-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.5
+      - uses: taiga-family/ci/actions/run/node-info@v1.87.5
+        id: nodejs-workspace
+      - uses: actions-ecosystem/action-add-labels@v1
+        continue-on-error: true
+        with:
+          labels: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
+
+concurrency:
+  group: pr-suites-${{ github.head_ref }}
+  cancel-in-progress: true

@@ -16,6 +16,9 @@ const HEX_MODE_LENGTH = 6;
     templateUrl: './color-edit.template.html',
     styleUrls: ['./color-edit.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiColorEditComponent {
     @Input()

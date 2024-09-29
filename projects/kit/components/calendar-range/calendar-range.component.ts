@@ -256,7 +256,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         if (this.value) {
             this.defaultViewedMonth = this.items.length ? this.value.to : this.value.from;
         } else if (this.max && this.defaultViewedMonth.monthSameOrAfter(this.max)) {
-            this.defaultViewedMonth = this.max.append({month: -1});
+            this.defaultViewedMonth = this.items.length
+                ? this.max
+                : this.max.append({month: -1});
         } else if (this.min && this.defaultViewedMonth.monthSameOrBefore(this.min)) {
             this.defaultViewedMonth = this.min;
         }

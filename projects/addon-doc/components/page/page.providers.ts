@@ -1,11 +1,12 @@
 import type {Provider} from '@angular/core';
-import {ElementRef, InjectionToken} from '@angular/core';
+import {ElementRef} from '@angular/core';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * Array if related page titles
  */
-export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>('[PAGE_SEE_ALSO]');
+export const PAGE_SEE_ALSO = tuiCreateToken<readonly string[]>();
 
 export const PAGE_PROVIDERS: Provider[] = [
     {

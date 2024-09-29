@@ -49,6 +49,9 @@ export interface TuiIconError {
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiSvgComponent {
     private icon: TuiSafeHtml = '';
@@ -66,22 +69,18 @@ export class TuiSvgComponent {
         optional: true,
     }) as readonly TuiSvgInterceptorHandler[] | null;
 
-    protected readonly innerHTML$: Observable<SafeHtml>;
+    protected readonly innerHTML$: Observable<SafeHtml> = this.src$.pipe(
+        switchMap(() => {
+            if (tuiIsString(this.icon)) {
+                return this.isExternal
+                    ? this.getExternalIcon(this.icon)
+                    : of(this.getSafeHtml(this.icon));
+            }
 
-    constructor() {
-        this.innerHTML$ = this.src$.pipe(
-            switchMap(() => {
-                if (tuiIsString(this.icon)) {
-                    return this.isExternal
-                        ? this.getExternalIcon(this.icon)
-                        : of(this.getSafeHtml(this.icon));
-                }
-
-                return of(this.icon);
-            }),
-            startWith(''),
-        );
-    }
+            return of(this.icon);
+        }),
+        startWith(''),
+    );
 
     @Input()
     public set src(src: TuiSafeHtml | null | undefined) {

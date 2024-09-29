@@ -4,8 +4,13 @@ import {Directive, inject, Input, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+
+export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOptions({
+    highlightColor: 'var(--tui-service-selection-background)',
+});
 
 @Directive({
     standalone: true,
@@ -20,6 +25,7 @@ export class TuiHighlight implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
+
     private readonly highlight: HTMLElement = this.setUpHighlight();
     private readonly treeWalker = this.doc.createTreeWalker(
         this.el,
@@ -31,7 +37,7 @@ export class TuiHighlight implements OnChanges {
     public tuiHighlight = '';
 
     @Input()
-    public tuiHighlightColor = 'var(--tui-service-selection-background)';
+    public tuiHighlightColor = inject(TUI_HIGHLIGHT_OPTIONS).highlightColor;
 
     constructor() {
         inject(ResizeObserverService, {self: true})

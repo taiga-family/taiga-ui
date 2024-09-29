@@ -64,7 +64,7 @@ export class TuiRipple {
     protected readonly nothing = tuiWithStyles(TuiRippleStyles);
 
     @Input()
-    public tuiRipple: string | '' = '';
+    public tuiRipple = '';
 
     protected start(x: number, y: number, target: HTMLElement, el: HTMLElement): void {
         const element = this.tuiRipple ? target.closest(this.tuiRipple) : el;

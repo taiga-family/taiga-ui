@@ -3,7 +3,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
-import {from, map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -12,14 +11,12 @@ import {from, map} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    protected readonly readme = from(
-        import('../../../../../i18n/README.md?raw') as Promise<{
-            default: string;
-        }>,
-    ).pipe(map((readme) => readme.default.split('Supported languages:')[1]));
-
-    protected exampleModule = import('./app.module.md?raw');
-    protected exampleEsbuildModule = import('./app.esbuild.module.md?raw');
+    protected example = {
+        base: import('./base.md?raw'),
+        dynamic: import('./dynamic.md?raw'),
+        esbuild: import('./esbuild.md?raw'),
+        custom: import('./custom.md?raw'),
+    };
 
     protected example1 = {
         'language-switcher.component.html': import(

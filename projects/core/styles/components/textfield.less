@@ -4,6 +4,7 @@ tui-textfield {
     .transition(color);
 
     --t-height: var(--tui-height-l);
+    --t-padding: var(--tui-padding-l);
 
     position: relative;
     display: flex;
@@ -12,7 +13,7 @@ tui-textfield {
     cursor: pointer;
     block-size: var(--t-height);
     color: var(--tui-text-tertiary);
-    padding: 0 var(--tui-padding-l);
+    padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
     font: var(--tui-font-text-m);
     box-sizing: border-box;
@@ -36,8 +37,8 @@ tui-textfield {
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
+        --t-padding: var(--tui-padding-s);
 
-        padding: 0 var(--tui-padding-s);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
 
@@ -72,8 +73,8 @@ tui-textfield {
 
     &[data-size='m'] {
         --t-height: var(--tui-height-m);
+        --t-padding: var(--tui-padding-m);
 
-        padding: 0 var(--tui-padding-m);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
 
@@ -114,7 +115,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
 
         &:has(input:read-only),
-        &:has(select[data-mode='readonly']) {
+        &:has(select[data-mode~='readonly']) {
             color: var(--tui-text-tertiary);
         }
     }
@@ -139,15 +140,13 @@ tui-textfield {
 
     &:has(label:not(:empty)) {
         .t-template,
-        input,
-        select {
+        input:defined,
+        select:defined {
             padding-top: calc(var(--t-height) / 3);
 
-            &:not(:-webkit-autofill)::placeholder,
+            &::placeholder,
             &._empty {
-                caret-color: var(--tui-text-primary);
-                color: transparent !important;
-                -webkit-text-fill-color: transparent !important;
+                color: transparent;
             }
         }
     }
@@ -155,15 +154,13 @@ tui-textfield {
     // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        input,
-        select {
+        input:defined,
+        select:defined {
             padding-top: calc(var(--t-height) / 3);
 
-            &:not(:-webkit-autofill)::placeholder,
+            &::placeholder,
             &._empty {
-                caret-color: var(--tui-text-primary);
-                color: transparent !important;
-                -webkit-text-fill-color: transparent !important;
+                color: transparent;
             }
         }
     }
@@ -171,15 +168,15 @@ tui-textfield {
     .t-template,
     input:defined,
     select:defined {
-        .fullsize(absolute, inset);
+        .fullsize();
 
         appearance: none;
         box-sizing: border-box;
-        border: none;
-        border-inline-start: var(--t-left, 0) solid transparent !important;
-        border-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side)) solid transparent !important;
         border-radius: inherit;
         padding: inherit;
+        border: none;
+        text-indent: var(--t-left, 0);
+        padding-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side) + var(--t-padding));
     }
 
     .t-template {
@@ -194,8 +191,7 @@ tui-textfield {
     input:defined,
     select:defined {
         pointer-events: auto;
-        background: transparent no-repeat center right 1rem / 2rem;
-        background-clip: border-box, padding-box;
+        background: transparent;
 
         &:read-only ~ .t-filler {
             display: none;
@@ -206,7 +202,7 @@ tui-textfield {
             & ~ .t-content {
                 opacity: var(--tui-disabled-opacity);
 
-                tui-icon {
+                > tui-icon {
                     display: none;
                 }
             }
@@ -219,23 +215,21 @@ tui-textfield {
                 transform: translateY(-0.7em);
             }
 
-            &:not(:disabled)[data-mode='invalid'] ~ label,
+            &:not(:disabled)[data-mode~='invalid'] ~ label,
             &:invalid:not(:disabled):not([data-mode]) ~ label {
                 color: var(--tui-text-negative);
             }
 
-            &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
+            &:not(:disabled):not([data-mode~='readonly']) ~ .t-content .t-clear {
                 display: flex;
             }
         }
 
-        &:not([data-mode='readonly']) {
+        &:not([data-mode~='readonly']) {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
-                    caret-color: var(--tui-text-primary);
-                    color: transparent !important;
-                    -webkit-text-fill-color: var(--tui-text-tertiary) !important;
+                    color: var(--tui-text-tertiary);
                 }
 
                 & ~ label {
@@ -270,7 +264,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
 
-    select:not([data-mode='readonly']) {
+    select:not([data-mode~='readonly']) {
         cursor: pointer;
     }
 
@@ -286,7 +280,7 @@ tui-textfield {
         margin-inline-start: auto;
         isolation: isolate;
 
-        tui-icon {
+        > tui-icon {
             pointer-events: auto;
         }
     }

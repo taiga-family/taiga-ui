@@ -12,6 +12,12 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {TUI_EDITOR_VERSION} from '../steps/migrate-editor';
+import {
+    TUI_EVENT_PLUGINS_VERSION,
+    TUI_POLYMORPHEUS_VERSION,
+} from '../steps/update-packages';
+
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
@@ -23,7 +29,7 @@ import {
 } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
-import {TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TuiEditorTool, TUI_EDITOR_DEFAULT_EDITOR_TOOLS} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
@@ -49,10 +55,11 @@ import {TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
 })
 export class Test {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly allTools = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;
 }`;
 
 const COMPONENT_AFTER = `import { TUI_SANITIZER } from "@taiga-ui/legacy";
-import { TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS } from "@taiga-ui/editor";
+import { TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_DEFAULT_TOOLS } from "@taiga-ui/editor";
 
 import { TuiRoot, TuiAlert, TuiDialog } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
@@ -83,6 +90,7 @@ import {TuiEditorTool} from '@taiga-ui/editor';
 })
 export class Test {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly allTools = TUI_EDITOR_DEFAULT_TOOLS;
 }
 `.trim();
 
@@ -102,10 +110,10 @@ const PACKAGE_JSON_AFTER = `{
         "@angular/core": "~13.0.0",
         "@taiga-ui/core": "~3.35.0",
         "@taiga-ui/cdk": "~3.35.0",
-        "@taiga-ui/editor": "^4.0.0",
-        "@taiga-ui/event-plugins": "^4.0.1",
+        "@taiga-ui/editor": "${TUI_EDITOR_VERSION}",
+        "@taiga-ui/event-plugins": "${TUI_EVENT_PLUGINS_VERSION}",
         "@taiga-ui/legacy": "${TUI_VERSION}",
-        "@taiga-ui/polymorpheus": "^4.6.4"
+        "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}"
     }
 }`.trim();
 

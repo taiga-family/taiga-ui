@@ -5,12 +5,11 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiAsideItemDirective, TuiButton, TuiDemo],
+    imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

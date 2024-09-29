@@ -1,3 +1,4 @@
+// TODO: Drop change to Document in v5
 export function tuiIsSafari({ownerDocument: doc}: Element): boolean {
     const win = doc?.defaultView as unknown as Window & {safari?: any};
 

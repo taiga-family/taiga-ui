@@ -2,7 +2,6 @@ import type {Provider, Type} from '@angular/core';
 import {
     ChangeDetectorRef,
     computed,
-    DestroyRef,
     Directive,
     inject,
     Input,
@@ -40,7 +39,6 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly internal = signal(this.fallback);
 
     protected readonly control = inject(NgControl, {self: true});
-    protected readonly destroyRef = inject(DestroyRef);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly transformer = inject(TuiValueTransformer, FLAGS);
 
@@ -74,7 +72,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 filter(Boolean),
                 distinctUntilChanged(),
                 switchMap((c) => merge(c.valueChanges, c.statusChanges)),
-                takeUntilDestroyed(this.destroyRef),
+                takeUntilDestroyed(),
             )
             .subscribe(() => this.update());
     }
@@ -89,7 +87,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         this.pseudoInvalid.set(invalid);
     }
 
-    public registerOnChange(onChange: (value: T | unknown) => void): void {
+    public registerOnChange(onChange: (value: unknown) => void): void {
         this.refresh$.next();
 
         this.onChange = (value: T) => {

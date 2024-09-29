@@ -4,6 +4,20 @@ app {
     display: block;
 }
 
+.app-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.app-links-dropdown {
+    display: none !important;
+}
+
+.app-link-dropdown {
+    justify-content: flex-start !important;
+}
+
 .app-christmas {
     position: absolute;
     left: 0.3125rem;
@@ -18,11 +32,12 @@ app {
     }
 }
 
-.app-selects {
-    padding: 0.25rem 0.125rem 0.5rem 0.75rem;
-    box-shadow: 0 -1px var(--tui-border-normal);
-}
+@media @tui-mobile {
+    .app-link {
+        display: none;
+    }
 
-.app-link {
-    margin-left: 1.25rem;
+    .app-links-dropdown {
+        display: flex !important;
+    }
 }

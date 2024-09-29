@@ -3,22 +3,19 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     inject,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {
-    ActivatedRoute,
-    Router,
-    RouterLink,
-    RouterLinkActive,
-    Scroll,
-} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, Scroll} from '@angular/router';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
+    TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
@@ -32,10 +29,10 @@ import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
-import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy/components/input';
+import {TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
@@ -83,19 +80,20 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
     },
 })
 export class TuiDocNavigation {
-    @ViewChild(TuiInputComponent, {static: true})
-    private readonly searchInput?: TuiInputComponent;
+    @ViewChild(TuiTextfieldDirective, {read: ElementRef})
+    private readonly searchInput?: ElementRef<HTMLInputElement>;
 
     private readonly router = inject(Router);
     private readonly doc = inject(DOCUMENT);
 
+    protected open = signal(false);
     protected menuOpen = false;
 
     protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
-    protected readonly activatedRoute = inject(ActivatedRoute);
+    protected readonly searchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
     protected readonly docIcons = inject(TUI_DOC_ICONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
@@ -162,8 +160,8 @@ export class TuiDocNavigation {
         this.menuOpen = false;
     }
 
-    protected onClick(input: TuiInputComponent): void {
-        input.open = false;
+    protected onClick(): void {
+        this.open.set(false);
         this.menuOpen = false;
         this.search.setValue('');
         this.openActivePageGroup();
@@ -172,9 +170,9 @@ export class TuiDocNavigation {
     protected onFocusSearch(event: KeyboardEvent): void {
         if (
             event.code === 'Slash' &&
-            !(this.doc.activeElement instanceof HTMLInputElement)
+            !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
-            this.searchInput?.nativeFocusableElement?.focus();
+            this.searchInput?.nativeElement?.focus();
             event.preventDefault();
         }
     }

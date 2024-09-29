@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 
 import type {TuiSheetRequiredProps} from './sheet';
@@ -7,20 +7,16 @@ import type {TuiSheetRequiredProps} from './sheet';
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
  * https://taiga-ui.dev/components/sheet-dialog
  */
-export const TUI_SHEET = new InjectionToken<TuiSheetRequiredProps>('[TUI_SHEET]');
+export const TUI_SHEET = tuiCreateToken<TuiSheetRequiredProps>();
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
  * https://taiga-ui.dev/components/sheet-dialog
  */
-export const TUI_SHEET_SCROLL = new InjectionToken<Observable<number>>(
-    '[TUI_SHEET_SCROLL]',
-);
+export const TUI_SHEET_SCROLL = tuiCreateToken<Observable<number>>();
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
  * https://taiga-ui.dev/components/sheet-dialog
  */
-export const TUI_SHEET_DRAGGED = new InjectionToken<Observable<boolean>>(
-    '[TUI_SHEET_DRAGGED]',
-);
+export const TUI_SHEET_DRAGGED = tuiCreateToken<Observable<boolean>>();

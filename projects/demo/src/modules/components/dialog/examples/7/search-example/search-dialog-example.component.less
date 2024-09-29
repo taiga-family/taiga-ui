@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
     .search-content {
         padding: 2rem 1.5rem;
@@ -13,4 +15,8 @@
 .search-title {
     font: var(--tui-font-heading-6);
     margin: 0 0 1.25rem;
+}
+
+.t-prevent-ios-scroll {
+    .tui-prevent-ios-scroll();
 }

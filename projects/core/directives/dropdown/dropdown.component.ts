@@ -66,14 +66,16 @@ export class TuiDropdownComponent {
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
-            takeWhile(() => this.directive.el.isConnected),
+            takeWhile(
+                () => this.directive.el.isConnected && !!this.directive.el.offsetParent,
+            ),
             map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
             map(([top, left]) => this.getStyles(top, left)),
             takeUntilDestroyed(),
         )
         .subscribe({
             next: (styles) => Object.assign(this.el.style, styles),
-            complete: () => this.close(),
+            complete: () => this.close?.(),
         });
 
     protected readonly close = (): void => this.directive.toggle(false);

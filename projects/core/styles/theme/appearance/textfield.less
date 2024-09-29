@@ -26,12 +26,12 @@
         box-shadow: none;
     });
 
-    &[data-mode='invalid'][data-mode='invalid'],
+    &[data-mode~='invalid'][data-mode~='invalid'],
     &:invalid:not([data-mode]) {
         outline-color: var(--tui-status-negative);
     }
 
-    &[data-mode='readonly'],
+    &[data-mode~='readonly'],
     input&:read-only:not([data-mode]) {
         box-shadow: none;
         outline-color: var(--tui-border-normal) !important;
@@ -40,13 +40,8 @@
     &:-webkit-autofill {
         -webkit-text-fill-color: var(--tui-text-primary) !important;
         caret-color: var(--tui-text-primary) !important;
-        border-color: var(--tui-service-autofill-background) !important;
         box-shadow: 0 0 0 100rem var(--tui-service-autofill-background) inset !important;
         transition: background-color 600000s 0s;
-
-        &::placeholder {
-            -webkit-text-fill-color: var(--tui-text-secondary);
-        }
     }
 }
 

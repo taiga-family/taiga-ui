@@ -33,6 +33,7 @@ const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
         tuiAsControl(TuiInputYearComponent),
     ],
     host: {
+        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

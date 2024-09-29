@@ -1,5 +1,5 @@
 <div class="t-title-block">
-    <h3
+    <h2
         *ngIf="heading"
         class="t-title"
     >
@@ -7,7 +7,7 @@
             *polymorpheusOutlet="heading as text"
             [textContent]="text"
         ></span>
-    </h3>
+    </h2>
     <a
         *ngIf="id"
         routerLink="."
@@ -23,14 +23,14 @@
         #
     </a>
 </div>
-<h4
+<h3
     *ngIf="description"
     class="t-description"
 >
     <ng-container *polymorpheusOutlet="description as text">
         {{ text }}
     </ng-container>
-</h4>
+</h3>
 
 <div
     *ngIf="processor$ | async as files"
@@ -88,44 +88,30 @@
         <div
             *ngFor="let tab of tabs; let index = index"
             class="t-content"
-            [class.t-content_animated]="!isE2E"
-            [class.t-content_visible]="activeItemIndex === index"
         >
-            <ng-container
-                *ngIf="index === defaultTabIndex; else anotherTab"
-                [ngTemplateOutlet]="preview"
-            />
-            <ng-template #anotherTab>
-                <ng-container
-                    [ngTemplateOutlet]="codeSection"
-                    [ngTemplateOutletContext]="{$implicit: files?.[tabs?.[activeItemIndex] || 0] || ''}"
-                />
-            </ng-template>
+            <div
+                *ngIf="index === defaultTabIndex"
+                automation-id="tui-doc-example"
+                class="t-demo"
+                [style.display]="activeItemIndex === index && index === defaultTabIndex ? 'block' : 'none'"
+            >
+                <ng-content />
+                <ng-container *polymorpheusOutlet="lazyComponent$ | async as text">
+                    {{ text }}
+                </ng-container>
+            </div>
+
+            <tui-doc-code
+                *tuiLet="files?.[tabs?.[index] || 0] || '' as code"
+                [code]="code"
+                [style.display]="activeItemIndex === index && index !== defaultTabIndex ? 'block' : 'none'"
+            >
+                <ng-container *ngFor="let action of codeActions">
+                    <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
+                        {{ text }}
+                    </ng-container>
+                </ng-container>
+            </tui-doc-code>
         </div>
     </ng-container>
 </div>
-
-<ng-template #preview>
-    <div
-        automation-id="tui-doc-example"
-        class="t-demo"
-    >
-        <ng-content />
-        <ng-container *polymorpheusOutlet="lazyComponent$ | async as text">
-            {{ text }}
-        </ng-container>
-    </div>
-</ng-template>
-
-<ng-template
-    #codeSection
-    let-code
->
-    <tui-doc-code [code]="code">
-        <ng-container *ngFor="let action of codeActions">
-            <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
-                {{ text }}
-            </ng-container>
-        </ng-container>
-    </tui-doc-code>
-</ng-template>

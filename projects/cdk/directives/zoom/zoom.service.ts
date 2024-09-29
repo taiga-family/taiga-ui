@@ -14,7 +14,7 @@ export class TuiZoomService extends Observable<TuiZoomEvent> {
         const el = tuiInjectElement();
         const {wheelSensitivity} = inject(TUI_ZOOM_OPTIONS);
 
-        super((subscriber) => {
+        super((subscriber) =>
             merge(
                 tuiTypedFromEvent(el, 'touchstart', {passive: true}).pipe(
                     filter(({touches}) => touches.length > 1),
@@ -64,7 +64,7 @@ export class TuiZoomService extends Observable<TuiZoomEvent> {
                         event: wheel,
                     })),
                 ),
-            ).subscribe(subscriber);
-        });
+            ).subscribe(subscriber),
+        );
     }
 }

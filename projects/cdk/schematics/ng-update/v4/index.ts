@@ -83,7 +83,7 @@ function main(options: TuiSchema): Rule {
         removeDuplicates(options);
         migrateStyles();
         migrateProprietary(fileSystem, options);
-        updatePackages(fileSystem, options);
+        updatePackages(fileSystem);
 
         fileSystem.commitEdits();
         saveActiveProject();

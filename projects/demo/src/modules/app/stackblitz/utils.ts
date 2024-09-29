@@ -2,10 +2,6 @@ import type {Project} from '@stackblitz/sdk';
 
 import {isLess, isPrimaryComponentFile} from '../utils';
 
-type FileName = string;
-
-type FileContent = string;
-
 export const prepareLess = (content: string): string =>
     content.replaceAll(
         /@import.+taiga-ui-local(.less)?';/g,
@@ -17,13 +13,13 @@ export const appPrefix = (stringsPart: TemplateStringsArray, path = ''): string 
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
-): Array<[FileName, FileContent]> =>
+): Array<[fileName: string, fileContent: string]> =>
     Object.entries(files).filter(
         ([fileName, content]) => content && !isPrimaryComponentFile(fileName),
     );
 
 export const prepareSupportFiles = (
-    files: Array<[FileName, FileContent]>,
+    files: Array<[fileName: string, fileContent: string]>,
 ): Project['files'] => {
     const processedContent: Project['files'] = {};
 

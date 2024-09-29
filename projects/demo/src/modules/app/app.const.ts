@@ -28,3 +28,15 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Preview', 'PdfViewer'],
     ['Table', 'TablePagination', 'TableFilters'],
 ];
+
+export const DEFAULT_LANGUAGE_PAGE = new Set([
+    'Calendar',
+    'CalendarMonth',
+    'CalendarRange',
+    'InputCardGroup',
+    'InputFiles',
+    'InputPhoneInternational',
+    'MobileCalendar',
+    'Table',
+    'TablePagination',
+]);

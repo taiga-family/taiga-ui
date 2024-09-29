@@ -12,7 +12,6 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     hideHeader?: boolean;
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
-    hideLanguageSwitcher?: boolean;
 }
 
 export async function tuiGoto(
@@ -23,7 +22,6 @@ export async function tuiGoto(
         hideHeader = true,
         enableNightMode = false,
         hideVersionManager = false,
-        hideLanguageSwitcher = false,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -69,10 +67,6 @@ export async function tuiGoto(
 
     if (hideVersionManager) {
         await tuiRemoveElement(page.locator('version-manager'));
-    }
-
-    if (hideLanguageSwitcher) {
-        await tuiRemoveElement(page.locator('tui-doc-language-switcher'));
     }
 
     expect(

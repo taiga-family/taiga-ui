@@ -1,6 +1,7 @@
 import type {ElementRef, NgZone, Renderer2} from '@angular/core';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
+import type {TuiAutofocusOptions} from '../autofocus.options';
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TEXTFIELD_ATTRS = [
@@ -22,9 +23,9 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         private readonly renderer: Renderer2,
         private readonly zone: NgZone,
         private readonly win: Window,
+        options: TuiAutofocusOptions,
     ) {
-        super(el);
-        this.patchCssStyles();
+        super(el, options);
     }
 
     public setFocus(): void {
@@ -52,7 +53,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
                 fakeInput.removeEventListener('focus', focusHandler);
 
                 elementFocusTimeoutId = this.win.setTimeout(() => {
-                    this.element.focus({preventScroll: false});
+                    this.element.focus({preventScroll: this.options.preventScroll});
                     fakeInput.remove();
                 }, duration);
             });
@@ -130,21 +131,6 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      */
     private insideDialog(): boolean {
         return !!this.element.closest('tui-dialog');
-    }
-
-    /**
-     * @note:
-     * This is necessary so that the viewport isn't recalculated
-     * and then the dialogs don't shake.
-     *
-     * Also, we need to fixed height viewport,
-     * so that when focusing the dialogs don't shake
-     */
-    private patchCssStyles(): void {
-        [this.win.document.documentElement, this.win.document.body].forEach((element) => {
-            element.style.setProperty('overflow', 'auto');
-            element.style.setProperty('height', '100%');
-        });
     }
 
     /**

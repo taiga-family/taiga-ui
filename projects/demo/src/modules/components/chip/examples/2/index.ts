@@ -4,19 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
-import {TuiAsideItemDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        NgForOf,
-        NgIf,
-        SlicePipe,
-        TuiAsideItemDirective,
-        TuiAvatar,
-        TuiButton,
-        TuiChip,
-    ],
+    imports: [NgForOf, NgIf, SlicePipe, TuiAvatar, TuiButton, TuiChip],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -13,7 +13,7 @@
     block-size: var(--tui-height-l);
     inline-size: @width-full;
     border-radius: var(--tui-radius-l);
-    overflow: clip;
+    overflow: hidden;
 
     :host-context(tui-root._mobile) {
         inline-size: @width-mobile;
@@ -196,7 +196,7 @@
         transform: translateY(-0.7em);
     }
 
-    :host([data-mode='invalid']) & {
+    :host([data-mode~='invalid']) & {
         color: var(--tui-text-negative);
     }
 

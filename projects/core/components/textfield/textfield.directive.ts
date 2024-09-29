@@ -1,10 +1,11 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiAppearance,
     tuiAppearance,
     tuiAppearanceFocus,
+    tuiAppearanceMode,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
@@ -13,18 +14,20 @@ import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
 @Directive()
-export class TuiTextfieldBase {
+export class TuiTextfieldBase<T> implements OnChanges {
     // TODO: refactor to signal inputs after Angular update
     private readonly focused = signal<boolean | null>(null);
 
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(null);
+    protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() || this.textfield.focused()),
     );
 
-    protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly el = tuiInjectElement<HTMLInputElement>();
+    protected readonly textfield: TuiTextfieldComponent<T> =
+        inject(TuiTextfieldComponent);
 
     @Input()
     public readOnly = false;
@@ -58,9 +61,24 @@ export class TuiTextfieldBase {
         return null;
     }
 
-    public setValue(value: string | null): void {
-        this.el.value = value || '';
-        this.el.dispatchEvent(new Event('input', {bubbles: true}));
+    // TODO: refactor to signal inputs after Angular update
+    public ngOnChanges(): void {
+        this.m.set(this.mode);
+    }
+
+    public setValue(value: T | null): void {
+        this.el.focus();
+        this.el.select();
+
+        if (value == null) {
+            this.el.ownerDocument.execCommand('delete');
+        } else {
+            this.el.ownerDocument.execCommand(
+                'insertText',
+                false,
+                this.textfield.stringify(value),
+            );
+        }
     }
 }
 
@@ -72,10 +90,9 @@ export class TuiTextfieldBase {
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
         '[class._empty]': 'el.value === ""',
-        '[attr.data-mode]': 'mode',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
     },
 })
-export class TuiTextfieldDirective extends TuiTextfieldBase {}
+export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}

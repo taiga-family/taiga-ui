@@ -16,22 +16,20 @@ export class TuiLegacyDropdownOpenMonitorDirective {
         optional: true,
     });
 
-    constructor() {
-        this.host.driver
-            .pipe(distinctUntilChanged(), takeUntilDestroyed())
-            .subscribe((open) => this.external?.tuiDropdownOpenChange.next(open));
+    protected readonly $ = this.host.driver
+        .pipe(distinctUntilChanged(), takeUntilDestroyed())
+        .subscribe((open) => this.external?.tuiDropdownOpenChange.next(open));
 
-        this.external?.tuiDropdownOpenChange
-            .pipe(distinctUntilChanged(), takeUntilDestroyed())
-            .subscribe((open) => {
-                if (open) {
-                    tuiGetClosestFocusable({
-                        initial: this.el,
-                        root: this.el,
-                    })?.focus();
-                }
+    protected readonly $1 = this.external?.tuiDropdownOpenChange
+        .pipe(distinctUntilChanged(), takeUntilDestroyed())
+        .subscribe((open) => {
+            if (open) {
+                tuiGetClosestFocusable({
+                    initial: this.el,
+                    root: this.el,
+                })?.focus();
+            }
 
-                this.host.toggle(open);
-            });
-    }
+            this.host.toggle(open);
+        });
 }

@@ -1,20 +1,20 @@
 <tui-textfield
-    class="t-country-select"
+    class="t-select"
     [content]="flag"
     [tuiChevron]="open()"
 >
     <select
         ngModel=""
         tuiTextfield
+        [attr.data-mode]="mode()"
         [disabled]="disabled()"
         [focused]="open() || null"
         [ngModelOptions]="{standalone: true}"
-        [readOnly]="readOnly()"
     ></select>
 
     <ng-template #flag>
         <img
-            class="t-flag t-flag_select"
+            class="t-flag"
             [alt]="names()?.[countryIsoCode()]"
             [src]="countryIsoCode() | tuiFlag"
         />
@@ -22,14 +22,15 @@
 </tui-textfield>
 
 <tui-textfield>
+    <!--TODO: Replace attribute bindings with inputs after Angular updated and signal bindings properly update-->
     <input
         autocomplete="new-password"
         tuiTextfield
+        [attr.data-mode]="mode()"
+        [attr.readonly]="readOnly() || null"
         [disabled]="disabled()"
-        [invalid]="invalid()"
         [maskito]="mask()"
         [ngModelOptions]="{standalone: true}"
-        [readOnly]="readOnly()"
         [(ngModel)]="textfieldValue"
         (beforeinput.capture)="onPaste($event)"
         (blur)="onTouched()"
@@ -64,8 +65,8 @@
             class="t-flag"
             [src]="item | tuiFlag"
         />
-        <span class="t-country-item-name">{{ names()?.[item] }}</span>
-        <span class="t-country-item-code">
+        <span class="t-name">{{ names()?.[item] }}</span>
+        <span class="t-code">
             {{ item | tuiGetCountryCallingCode: metadata() }}
         </span>
     </button>

@@ -1,19 +1,27 @@
-<tui-input
-    #input
+<tui-textfield
+    *ngIf="searchEnabled"
     tuiTextfieldSize="m"
     class="t-input"
-    [formControl]="search"
-    [tuiAutoFocus]="!!sidebar"
-    [tuiTextfieldCleaner]="true"
-    [tuiTextfieldIconLeft]="docIcons.search"
-    [tuiTextfieldLabelOutside]="true"
+    [iconStart]="docIcons.search"
+    [open]="open() && canOpen"
+    (keyup)="open.set(canOpen && $event.code !== 'Escape')"
+    (openChange)="open.set($event)"
 >
-    <div class="t-search-text">
-        {{ searchText }}
-        <code class="t-slash">/</code>
-    </div>
+    <code
+        *ngIf="!search.value"
+        class="t-slash"
+    >
+        /
+    </code>
+    <input
+        tuiTextfield
+        class="t-prevent-ios-scroll"
+        [formControl]="search"
+        [placeholder]="searchText"
+        [tuiAutoFocus]="!!sidebar"
+    />
     <ng-container *ngIf="canOpen">
-        <tui-data-list *tuiDataList>
+        <tui-data-list *tuiTextfieldDropdown>
             <tui-opt-group
                 *ngFor="let group of filtered$ | async; let index = index"
                 [label]="labels[index] || ''"
@@ -41,7 +49,7 @@
                             [fragment]="item.fragment"
                             [routerLink]="item.route"
                             [target]="item.target || '_self'"
-                            (click)="onClick(input)"
+                            (click)="onClick()"
                         >
                             {{ item.title }}
                             <tui-icon
@@ -55,11 +63,12 @@
             </tui-opt-group>
         </tui-data-list>
     </ng-container>
-</tui-input>
+</tui-textfield>
 
 <nav class="t-navigation">
     <tui-scrollbar class="t-scrollbar">
         <tui-accordion
+            [class.t-accordion-standalone]="!searchEnabled"
             [closeOthers]="false"
             [rounded]="false"
         >
