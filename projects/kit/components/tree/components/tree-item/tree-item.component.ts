@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import type {DoCheck, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -8,6 +8,7 @@ import {
     inject,
     SkipSelf,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -27,7 +28,7 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-tree-item',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiExpandComponent],
+    imports: [NgIf, PolymorpheusOutlet, TuiExpandComponent],
     templateUrl: './tree-item.template.html',
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +46,7 @@ import {
     },
 })
 export class TuiTreeItem implements DoCheck {
-    @ContentChildren(TUI_TREE_NODE as any)
+    @ContentChildren(TUI_TREE_NODE)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 
     private readonly el = tuiInjectElement();
@@ -62,14 +63,20 @@ export class TuiTreeItem implements DoCheck {
         forwardRef(() => TUI_TREE_CONTENT),
     );
 
-    protected readonly expanded$ = this.change$.pipe(
-        startWith(null),
-        map(() => this.isExpanded),
+    protected readonly expanded = toSignal(
+        this.change$.pipe(
+            startWith(null),
+            map(() => this.isExpanded),
+        ),
+        {initialValue: this.isExpanded},
     );
 
-    protected readonly attached$ = this.change$.pipe(
-        map(() => this.el.isConnected),
-        distinctUntilChanged(),
+    protected readonly attached = toSignal(
+        this.change$.pipe(
+            map(() => this.el.isConnected),
+            distinctUntilChanged(),
+        ),
+        {initialValue: this.el.isConnected},
     );
 
     public get isExpandable(): boolean {
