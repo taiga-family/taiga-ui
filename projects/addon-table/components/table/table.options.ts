@@ -4,6 +4,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTableOptions {
     readonly direction: -1 | 1;
+    readonly requiredSort: boolean;
     readonly open: boolean;
     readonly resizable: boolean;
     readonly size: TuiSizeL | TuiSizeS;
@@ -21,6 +22,7 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     open: true,
     size: 'm',
     direction: 1,
+    requiredSort: false,
     sortIcons: {
         asc: 'tuiIconSortAscending',
         desc: 'tuiIconSortDescending',
