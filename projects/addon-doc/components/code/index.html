@@ -5,7 +5,7 @@
     {{ filename }}
 </p>
 <pre
-    *ngFor="let content of processor$ | async"
+    *ngFor="let content of processor()"
     class="t-code"
 >
     <code [lineNumbers]="true" [highlight]="content"></code>

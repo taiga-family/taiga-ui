@@ -1,5 +1,5 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiSidebar} from '@taiga-ui/addon-mobile/directives/sidebar';
@@ -15,7 +15,6 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
     standalone: true,
     selector: 'header[tuiDocHeader]',
     imports: [
-        AsyncPipe,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiActiveZone,
@@ -33,10 +32,14 @@ export class TuiDocHeader {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly logo = inject(TUI_DOC_LOGO);
     protected readonly menu = inject(TUI_DOC_MENU_TEXT);
-    protected readonly open$ = merge(
-        this.router.events.pipe(map(TUI_FALSE_HANDLER)),
-        this.stream$,
-    ).pipe(startWith(false), distinctUntilChanged());
+
+    protected readonly open = toSignal(
+        merge(this.router.events.pipe(map(TUI_FALSE_HANDLER)), this.stream$).pipe(
+            startWith(false),
+            distinctUntilChanged(),
+        ),
+        {initialValue: false},
+    );
 
     protected onClick(): void {
         this.stream$.next(true);

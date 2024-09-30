@@ -23,7 +23,7 @@
     <ng-container *ngIf="canOpen">
         <tui-data-list *tuiTextfieldDropdown>
             <tui-opt-group
-                *ngFor="let group of filtered$ | async; let index = index"
+                *ngFor="let group of filtered(); let index = index"
                 [label]="labels[index] || ''"
             >
                 <ng-container *ngFor="let item of group">

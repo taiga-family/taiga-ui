@@ -1,12 +1,5 @@
 import {animate, style, transition, trigger} from '@angular/animations';
-import {
-    AsyncPipe,
-    NgForOf,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
-    NgTemplateOutlet,
-} from '@angular/common';
+import {NgForOf, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet} from '@angular/common';
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -57,7 +50,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
     standalone: true,
     selector: 'tui-doc-documentation',
     imports: [
-        AsyncPipe,
         FormsModule,
         NgForOf,
         NgIf,

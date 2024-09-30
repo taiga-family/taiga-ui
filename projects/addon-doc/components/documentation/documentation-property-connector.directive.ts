@@ -1,5 +1,5 @@
 import {Location} from '@angular/common';
-import type {OnChanges, OnInit} from '@angular/core';
+import {type OnChanges, type OnInit, signal} from '@angular/core';
 import {Directive, EventEmitter, inject, Input, Output, TemplateRef} from '@angular/core';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
@@ -7,7 +7,7 @@ import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -49,7 +49,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
 
     public readonly changed$ = new Subject<void>();
 
-    public readonly emits$ = new BehaviorSubject(1);
+    public readonly emits = signal(1);
 
     public readonly template = inject(TemplateRef);
 
@@ -92,7 +92,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
         // For more convenient debugging
         console.info(this.attrName, event);
 
-        this.emits$.next(this.emits$.value + 1);
+        this.emits.update((x) => ++x);
 
         let content: string | undefined;
 
