@@ -6,14 +6,6 @@
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
-        "build": {
-            "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
-            "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "{projectRoot}/ng-package.json"
-            }
-        },
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
@@ -22,6 +14,14 @@
                     "ts-node ./{projectRoot}/scripts/prepare-icons.ts",
                     "prettier ./{projectRoot}/src/* --write --log-level silent"
                 ]
+            }
+        },
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "{projectRoot}/ng-package.json"
             }
         },
         "test": {
@@ -37,7 +37,14 @@
             "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }
