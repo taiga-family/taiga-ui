@@ -1,11 +1,10 @@
 ```ts
-import {TuiLanguageName} from '@taiga-ui/i18n/types';
-import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n/switch';
+import {tuiLanguageSwitcher, TuiLanguageName} from '@taiga-ui/i18';
 
 bootstrapApplication(App, {
   providers: [
     // ...
-    tuiDocLanguageSwitcher(
+    tuiLanguageSwitcher(
       /**
        * @note:
        * then the i18n language files will be loaded from node_modules

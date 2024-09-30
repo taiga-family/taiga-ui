@@ -1,59 +1,59 @@
-<tui-doc-page header="Internationalization">
-    <ng-template pageTab="Supported languages">
-        <p>
-            You have English by default. If you want to change it, you need to provide
-            <code>TUI_LANGUAGE</code>
-            token in your configuration. Full list of supported language
-            <a
-                href="https://github.com/taiga-family/taiga-ui/tree/main/projects/i18n/languages"
-                target="_blank"
-                tuiLink
-            >
-                here
-            </a>
-            .
-        </p>
-
-        <tui-doc-code
-            filename="main.ts"
-            class="tui-space_top-5"
-            [code]="example.base"
-        />
-    </ng-template>
-
-    <ng-template pageTab="Dynamic loader">
-        <tui-doc-code
-            filename="main.ts"
-            [code]="example.dynamic"
-        />
-
-        <tui-doc-example
-            id="theme-switcher"
-            [content]="example1"
+<tui-doc-page header="Internationalization (i18n)">
+    <p>
+        Some components in Taiga UI embedded texts and they use English translate by default. If you want to change it,
+        you need to provide
+        <code>TUI_LANGUAGE</code>
+        token in your configuration. Full list of supported language
+        <a
+            href="https://github.com/taiga-family/taiga-ui/tree/main/projects/i18n/languages"
+            target="_blank"
+            tuiLink
         >
-            <tui-doc-language-switcher>Language</tui-doc-language-switcher>
-        </tui-doc-example>
+            here.
+        </a>
+    </p>
 
-        <h2 class="tui-space_top-10">CLI's esbuild-based build system</h2>
-        <p>
-            Dynamic import expressions that do not contain static values will be kept in their original form and not
-            processed at build time. This is a limitation of the underlying bundler but is
-            <a
-                href="https://github.com/evanw/esbuild/pull/2508"
-                target="_blank"
-                tuiLink
-            >
-                planned
-            </a>
-            to be implemented in the future. In many cases, application code can be made to work by changing the import
-            expressions into static strings with some form of conditional statement such as an if or switch for the
-            known potential files.
-        </p>
+    <tui-doc-code
+        class="tui-space_top-5"
+        [code]="example.base"
+    />
 
-        <tui-doc-code [code]="example.esbuild" />
-    </ng-template>
+    <tui-doc-example
+        id="theme-switcher"
+        description="Making custom toggling between different languages"
+        heading="Language Switcher"
+        [content]="example1"
+        [fullsize]="true"
+    >
+        <tui-doc-language-switcher />
 
-    <ng-template pageTab="How to add a language">
+        <tui-table-pagination
+            class="tui-space_top-5"
+            [page]="0"
+            [size]="10"
+            [total]="237"
+        />
+    </tui-doc-example>
+
+    <tui-accordion class="tui-space_top-5">
+        <tui-accordion-item>
+            CLI's webpack-based build system
+            <ng-template tuiAccordionItemContent>
+                <tui-doc-code [code]="example.dynamic" />
+            </ng-template>
+        </tui-accordion-item>
+        <tui-accordion-item>
+            CLI's esbuild-based build system
+            <ng-template tuiAccordionItemContent>
+                <tui-doc-code [code]="example.esbuild" />
+            </ng-template>
+        </tui-accordion-item>
+    </tui-accordion>
+
+    <tui-doc-example
+        heading="How to add a language"
+        [fullsize]="true"
+    >
         <p>
             1. Go to
             <a
@@ -75,9 +75,8 @@
         <p>3. Translate entities in files. If you need some clarification, take a look at interfaces of entities</p>
 
         <tui-doc-code
-            filename="main.ts"
             class="tui-space_top-5"
             [code]="example.custom"
         />
-    </ng-template>
+    </tui-doc-example>
 </tui-doc-page>

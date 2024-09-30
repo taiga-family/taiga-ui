@@ -2,11 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDocLanguageSwitcher} from '@taiga-ui/addon-doc';
+import {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiLink} from '@taiga-ui/core';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiDocLanguageSwitcher, TuiLink],
+    imports: [TuiAccordion, TuiDemo, TuiDocLanguageSwitcher, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -19,13 +21,13 @@ export default class Page {
     };
 
     protected example1 = {
-        'language-switcher.component.html': import(
+        'language-switcher.html': import(
             '../../../../../addon-doc/components/language-switcher/index.html?raw'
         ),
-        'language-switcher.component.ts': import(
+        'language-switcher.ts': import(
             '../../../../../addon-doc/components/language-switcher/index.ts?raw'
         ),
-        'language-switcher.module.less': import(
+        'language-switcher.less': import(
             '../../../../../addon-doc/components/language-switcher/index.less?raw'
         ),
     };
