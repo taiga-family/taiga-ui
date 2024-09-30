@@ -98,6 +98,4 @@ export const TUI_USED_ICONS = [
     '@tui.chevron-up',
     '@tui.play',
     '@tui.pause',
-    '@tui.monitor',
-    '@tui.smartphone',
 ] as const;

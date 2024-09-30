@@ -26,6 +26,15 @@
         color: var(--tui-text-action);
         text-align: center;
         text-decoration: none;
+        clip-path: inset(0);
+
+        &:first-child {
+            clip-path: inset(0 0 0 -10rem);
+        }
+
+        &:last-child {
+            clip-path: inset(0 -10rem 0 0);
+        }
 
         &:active {
             background: var(--tui-background-neutral-1);

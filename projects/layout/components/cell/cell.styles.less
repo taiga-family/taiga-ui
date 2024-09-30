@@ -166,7 +166,8 @@
     }
 
     &:hover [tuiCellActions] button,
-    &:hover [tuiCellActions] a {
+    &:hover [tuiCellActions] a,
+    &:hover [tuiCellActions] label {
         opacity: 1;
     }
 
@@ -178,7 +179,8 @@
 
 @media (hover: hover) and (pointer: fine) {
     a[tuiCell]:not([tuiSurface]):hover,
-    button[tuiCell]:not([tuiSurface]):hover {
+    button[tuiCell]:not([tuiSurface]):hover,
+    label[tuiCell]:not([tuiSurface]):hover {
         background: var(--tui-background-neutral-1);
         cursor: pointer;
     }

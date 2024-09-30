@@ -25,7 +25,7 @@ import {TuiButton, TuiDataList, TuiIcon, TuiTextfield, TuiTitle} from '@taiga-ui
 })
 export default class Example {
     protected readonly items = [
-        {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Tbank'},
+        {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Wachovia Bank'},
         {
             card: '8765***5678',
             expire: '03/42',
