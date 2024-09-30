@@ -1,26 +1,29 @@
-<ng-container *ngIf="refresh$ | async as bars">
-    <div
-        *ngIf="bars[0]"
-        class="t-bar t-bar_vertical"
-        [@tuiFadeIn]="options"
-        [class.t-bar_has-horizontal]="bars[1]"
-        (mousedown.capture.prevent)="(0)"
-    >
+<ng-container *ngIf="nativeScrollbar; else custom" />
+<ng-template #custom>
+    <ng-container *ngIf="refresh$ | async as bars">
         <div
-            tuiScrollbar="vertical"
-            class="t-thumb"
-        ></div>
-    </div>
-    <div
-        *ngIf="bars[1]"
-        class="t-bar t-bar_horizontal"
-        [@tuiFadeIn]="options"
-        [class.t-bar_has-vertical]="bars[0]"
-        (mousedown.capture.prevent)="(0)"
-    >
+            *ngIf="bars[0]"
+            class="t-bar t-bar_vertical"
+            [@tuiFadeIn]="options"
+            [class.t-bar_has-horizontal]="bars[1]"
+            (mousedown.capture.prevent)="(0)"
+        >
+            <div
+                tuiScrollbar="vertical"
+                class="t-thumb"
+            ></div>
+        </div>
         <div
-            tuiScrollbar="horizontal"
-            class="t-thumb"
-        ></div>
-    </div>
-</ng-container>
+            *ngIf="bars[1]"
+            class="t-bar t-bar_horizontal"
+            [@tuiFadeIn]="options"
+            [class.t-bar_has-vertical]="bars[0]"
+            (mousedown.capture.prevent)="(0)"
+        >
+            <div
+                tuiScrollbar="horizontal"
+                class="t-thumb"
+            ></div>
+        </div>
+    </ng-container>
+</ng-template>
