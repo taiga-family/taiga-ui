@@ -91,12 +91,11 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return filledValue.length > value.length ? filledValue : '';
     });
 
-    protected showFiller = computed(() =>
-        Boolean(
+    protected showFiller = computed<boolean>(
+        () =>
             this.focused() &&
-                this.computedFiller() &&
-                (this.directive?.nativeValue() || !this.input?.nativeElement.placeholder),
-        ),
+            !!this.computedFiller() &&
+            (!!this.directive?.nativeValue() || !this.input?.nativeElement.placeholder),
     );
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
