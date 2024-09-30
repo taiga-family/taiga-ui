@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, type Provider} from '@angular/core';
-import {Component} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed} from '@angular/core/testing';
 import type {

@@ -1,6 +1,6 @@
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     addProviderToNgModule,
-    type DevkitFileSystem,
     getActiveProject,
     getNgModules,
     getPackageJsonDependency,

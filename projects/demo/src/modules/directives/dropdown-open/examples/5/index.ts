@@ -2,13 +2,13 @@ import {Component, Directive} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInjectElement} from '@taiga-ui/cdk';
+import type {TuiPoint} from '@taiga-ui/core';
 import {
     tuiAsPositionAccessor,
     TuiButton,
     TuiDropdown,
     TuiDropdownOpen,
     TuiOption,
-    type TuiPoint,
     TuiPositionAccessor,
 } from '@taiga-ui/core';
 

@@ -1,11 +1,13 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {computed, type OnChanges, type QueryList, signal} from '@angular/core';
+import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     Input,
     NgZone,
+    signal,
     ViewChildren,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -26,8 +28,8 @@ import {
 } from '@taiga-ui/core/directives/hint';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, type Observable} from 'rxjs';
-import {distinctUntilChanged, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {distinctUntilChanged, map, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';

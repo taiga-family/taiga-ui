@@ -14,7 +14,8 @@ import {
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
-import {TUI_LIKE_OPTIONS, type TuiLikeOptions} from './like.options';
+import type {TuiLikeOptions} from './like.options';
+import {TUI_LIKE_OPTIONS} from './like.options';
 
 @Component({
     standalone: true,

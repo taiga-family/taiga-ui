@@ -4,7 +4,8 @@ import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {type TuiSizeL, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({

@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, type TemplateRef} from '@angular/core';
-import {Component} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TuiHint, TuiRoot} from '@taiga-ui/core';

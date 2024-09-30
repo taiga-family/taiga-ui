@@ -1,5 +1,13 @@
-import {ChangeDetectionStrategy, type OnInit} from '@angular/core';
-import {Component, DestroyRef, EventEmitter, inject, Input, Output} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    EventEmitter,
+    inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';

@@ -5,8 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {TuiButton, type TuiValueContentContext} from '@taiga-ui/core';
-import {TuiDataList, TuiTitle} from '@taiga-ui/core';
+import type {TuiValueContentContext} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiTitle} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Account {

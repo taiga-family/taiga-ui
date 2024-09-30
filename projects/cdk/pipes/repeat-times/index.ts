@@ -1,4 +1,5 @@
-import {Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Pipe} from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk/utils';
 
 @Pipe({
