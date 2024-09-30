@@ -15,7 +15,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/config/npm@v1.87.6
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
-      - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
