@@ -74,7 +74,7 @@ jobs:
       - name: Combine images to get diff reports
         run: |
           npm install canvas
-          npx ts-node ./scripts/combine-playwright-failed-screenshots.ts
+          npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
 
       - name: Debug output
         continue-on-error: true

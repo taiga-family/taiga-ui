@@ -1,4 +1,7 @@
 import {mount} from 'cypress/angular';
+import addCompareSnapshotCommand from 'cypress-image-diff-js/command';
+
+addCompareSnapshotCommand();
 
 declare global {
     namespace Cypress {

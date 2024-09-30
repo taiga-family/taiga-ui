@@ -36,6 +36,7 @@ RELEASE_BODY.md
 *tsbuildinfo
 .angular
 .nx
+/projects/demo-cypress/tests-results/
 /projects/demo-playwright/tests-results/
 /projects/demo-playwright/tests-report/
 /projects/demo-playwright/snapshots/

@@ -22,4 +22,4 @@ branchesIgnore = ["^release/.*", "^v[0-9].x$"]
 screenshotImageAttrs = []
 
 # Text which is placed at the beginning of section "Failed tests"
-failedTestsReportDescription = '**After <= Diff => Before**'
+failedTestsReportDescription = '**Before <= Diff => After**'
