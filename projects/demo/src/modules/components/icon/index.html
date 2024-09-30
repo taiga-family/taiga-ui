@@ -4,7 +4,20 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>A component to use icons and color them with CSS.</p>
+        <p>
+            A component to use icons and color them with CSS. By default,
+            <code>tui-icon</code>
+            expects the
+            <a
+                href="https://lucide.dev/icons/"
+                target="_blank"
+                tuiLink
+            >
+                Lucide icons.
+            </a>
+            To associate a name with icon you should use that pattern
+            <code>&#64;tui.[name]</code>
+        </p>
 
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
@@ -80,4 +93,146 @@
     </ng-template>
 
     <tui-setup *pageTab />
+
+    <ng-template pageTab="Available icons">
+        <tui-doc-example
+            id="lucide"
+            heading="Lucide"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [description]="lucideInfo"
+        >
+            <ng-template #lucideInfo>
+                Open source theme for Taiga UI
+                <a
+                    href="https://lucide.dev/"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    Lucide Icons
+                </a>
+                by default. You can browse all the icons from this pack
+                <a
+                    href="https://lucide.dev/icons/"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    here.
+                </a>
+
+                <tui-accordion
+                    class="tui-space_top-5"
+                    [rounded]="true"
+                >
+                    <tui-accordion-item>
+                        Setup
+                        <ng-template tuiAccordionItemContent>
+                            <tui-doc-code code="npm i @taiga-ui/icons" />
+
+                            <tui-doc-code
+                                filename="angular.json"
+                                [code]="lucide"
+                            />
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="material"
+            heading="Material"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+            [description]="materialInfo"
+        >
+            <ng-template #materialInfo>
+                Taiga UI supports
+                <a
+                    href="https://fonts.google.com/icons?icon.set=Material+Icons"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    Material Icons.
+                </a>
+                You can browse all the icons from this pack and find the one that suits you
+                <a
+                    href="https://marella.me/material-design-icons/demo/font/"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    here.
+                </a>
+                You can replace icons used inside components as well through DI options, see example below.
+
+                <tui-accordion
+                    class="tui-space_top-5"
+                    [rounded]="true"
+                >
+                    <tui-accordion-item>
+                        Setup
+                        <ng-template tuiAccordionItemContent>
+                            <tui-doc-code code="npm i @taiga-ui/icons-material" />
+
+                            <tui-doc-code
+                                filename="angular.json"
+                                [code]="material"
+                            />
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="font-awesome"
+            heading="FontAwesome"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+            [description]="fontAwesomeInfo"
+        >
+            <ng-template #fontAwesomeInfo>
+                Taiga UI supports
+                <a
+                    href="https://fontawesome.com/"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    FontAwesome Icons (free pack).
+                </a>
+                You can browse all the icons from this pack
+                <a
+                    href="https://fontawesome.com/search?m=free&o=r"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    here
+                </a>
+                . You can replace icons used inside components as well through DI options, see example below.
+
+                <tui-accordion
+                    class="tui-space_top-5"
+                    [rounded]="true"
+                >
+                    <tui-accordion-item>
+                        Setup
+                        <ng-template tuiAccordionItemContent>
+                            <tui-doc-code code="npm i @taiga-ui/icons-font-awesome" />
+
+                            <tui-doc-code
+                                filename="angular.json"
+                                [code]="fontAwesome"
+                            />
+                        </ng-template>
+                    </tui-accordion-item>
+                </tui-accordion>
+            </ng-template>
+        </tui-doc-example>
+    </ng-template>
 </tui-doc-page>
