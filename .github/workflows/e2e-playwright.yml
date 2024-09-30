@@ -139,5 +139,5 @@ jobs:
           exit 1
 
 concurrency:
-  group: e2e-playwright-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

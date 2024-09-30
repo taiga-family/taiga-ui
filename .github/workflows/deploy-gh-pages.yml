@@ -65,5 +65,5 @@ jobs:
           cname: taiga-ui.dev
 
 concurrency:
-  group: deploy-gh-pages
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

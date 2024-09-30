@@ -1,0 +1,21 @@
+name: 🤖 PR is ready to merge
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  label-when-approved:
+    name: Label when approved
+    runs-on: ubuntu-latest
+    if: github.event.review.state == 'approved'
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.0
+      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.87.0
+        with:
+          approvals: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

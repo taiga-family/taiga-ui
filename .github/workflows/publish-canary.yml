@@ -19,5 +19,5 @@ jobs:
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
-  group: publish-canary-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

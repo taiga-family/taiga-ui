@@ -45,5 +45,5 @@ jobs:
           textLink: '@taiga-ui/cdk'
 
 concurrency:
-  group: release-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

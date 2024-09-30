@@ -32,5 +32,5 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
-  group: lint-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

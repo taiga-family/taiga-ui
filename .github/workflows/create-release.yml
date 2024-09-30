@@ -83,5 +83,5 @@ jobs:
         run: git push origin tag v${{ steps.run-release.outputs.new_version }} || echo ""
 
 concurrency:
-  group: create-release-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

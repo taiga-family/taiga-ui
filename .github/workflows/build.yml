@@ -31,5 +31,5 @@ jobs:
           CI_COMMIT_SHA: ${{ env.CI_COMMIT_SHA }}
 
 concurrency:
-  group: build-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
