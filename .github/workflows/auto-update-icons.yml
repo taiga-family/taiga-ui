@@ -36,3 +36,7 @@ jobs:
         with:
           message: icons have changed
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
