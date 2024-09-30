@@ -12,8 +12,8 @@ jobs:
     name: Component testing result
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.87.6
-      - uses: taiga-family/ci/actions/setup/node@v1.87.6
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.7
+      - uses: taiga-family/ci/actions/setup/node@v1.87.7
       - run: npx tsc -p projects/demo-cypress/tsconfig.json
       - run: npx nx component-test demo-cypress
 
