@@ -10,7 +10,7 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance, TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
@@ -23,7 +23,13 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
     styles: ['@import "@taiga-ui/kit/styles/components/switch.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithAppearance, TuiNativeValidator],
+    hostDirectives: [
+        {
+            directive: TuiAppearance,
+            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus'],
+        },
+        TuiNativeValidator,
+    ],
     host: {
         role: 'switch',
         '[disabled]': '!control || control.disabled',
