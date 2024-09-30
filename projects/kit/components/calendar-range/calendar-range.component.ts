@@ -30,6 +30,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 
+import {calculateDisabledItemHandler} from './calculate-disabled-item-handler';
 import {TUI_DAY_CAPS_MAPPER} from './day-caps-mapper';
 import type {TuiDayRangePeriod} from './day-range-period';
 
@@ -235,21 +236,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         value: TuiDayRange | null,
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
-        return (item) => {
-            if (!value?.isSingleDay || !minLength) {
-                return disabledItemHandler(item);
-            }
-
-            const negativeMinLength = Object.fromEntries(
-                Object.entries(minLength).map(([key, value]) => [key, -value]),
-            );
-            const disabledBefore = value.from.append(negativeMinLength).append({day: 1});
-            const disabledAfter = value.from.append(minLength).append({day: -1});
-            const inDisabledRange =
-                disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
-
-            return inDisabledRange || disabledItemHandler(item);
-        };
+        return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
     private initDefaultViewedMonth(): void {
