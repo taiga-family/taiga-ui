@@ -41,6 +41,10 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     @HostBinding('class._sticky')
     sticky = this.options.sticky;
 
+    @Input()
+    @HostBinding('attr.requiredSort')
+    requiredSort = this.options.requiredSort;
+
     @HostBinding('style.width.px')
     width: number | null = null;
 
@@ -77,8 +81,10 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     }
 
     updateSorterAndDirection(): void {
+        const sorter = this.requiredSort ? this.sorter : null;
+
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndAscDirection ? null : this.sorter,
+            this.isCurrentAndAscDirection ? sorter : this.sorter,
         );
     }
 
