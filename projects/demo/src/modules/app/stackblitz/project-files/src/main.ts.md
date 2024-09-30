@@ -19,17 +19,16 @@ class Root {}
 bootstrapApplication(Root, {
   providers: [
     provideAnimations(),
+    /**
+     * A workaround for StackBlitz only (it does not support assets).
+     * Don't use this approach in real-world applications!
+     */
+    tuiAssetsPathProvider('https://taiga-ui.dev/assets/taiga-ui/icons'),
     NG_EVENT_PLUGINS,
     {
       provide: 'Pythons',
       useValue: ['John Cleese', 'Eric Idle', 'Michael Palin', 'Graham Chapman', 'Terry Gilliam', 'Terry Jones'],
     },
-    /**
-     * A workaround for StackBlitz only (it does not support assets).
-     * Don't use this approach in real-world applications!
-     */
-    // TODO: remove `next/` after 4.0 release
-    tuiAssetsPathProvider('https://taiga-ui.dev/next/assets/taiga-ui/icons'),
   ],
 });
 ```
