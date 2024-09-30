@@ -17,7 +17,7 @@
         "@taiga-ui/cdk": "^4.8.1",
         "@taiga-ui/core": "^4.8.1",
         "@taiga-ui/kit": "^4.8.1",
-        "@taiga-ui/polymorpheus": "^4.7.3",
+        "@taiga-ui/polymorpheus": "^4.7.4",
         "rxjs": ">=7.0.0",
         "tslib": "^2.7.0"
     }
