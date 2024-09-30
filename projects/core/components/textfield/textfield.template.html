@@ -28,9 +28,9 @@
     </ng-container>
 </span>
 <input
-    *ngIf="showFiller"
+    *ngIf="showFiller()"
     aria-hidden="true"
     disabled
     class="t-filler"
-    [value]="computedFiller"
+    [value]="computedFiller()"
 />

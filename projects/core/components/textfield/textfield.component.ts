@@ -8,6 +8,7 @@ import {
     forwardRef,
     inject,
     Input,
+    signal,
     ViewChild,
     ViewContainerRef,
     ViewEncapsulation,
@@ -65,6 +66,8 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
+    // TODO: refactor to signal inputs after Angular update
+    private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly el = tuiInjectElement();
     private readonly open = tuiDropdownOpen();
@@ -81,6 +84,20 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
+    protected computedFiller = computed(() => {
+        const value = this.directive?.nativeValue() || '';
+        const filledValue = value + this.filler().slice(value.length);
+
+        return filledValue.length > value.length ? filledValue : '';
+    });
+
+    protected showFiller = computed<boolean>(
+        () =>
+            this.focused() &&
+            !!this.computedFiller() &&
+            (!!this.directive?.nativeValue() || !this.input?.nativeElement.placeholder),
+    );
+
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
 
@@ -91,9 +108,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly input?: ElementRef<HTMLInputElement>;
 
     @Input()
-    public filler = '';
-
-    @Input()
     public stringify: TuiStringHandler<T> = String;
 
     @Input()
@@ -101,6 +115,11 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+
+    @Input('filler')
+    public set fillerSetter(filler: string) {
+        this.filler.set(filler);
+    }
 
     public get id(): string {
         return this.input?.nativeElement.id || this.autoId;
@@ -113,21 +132,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public handleOption(option: T): void {
         this.directive?.setValue(option);
         this.open.set(false);
-    }
-
-    protected get computedFiller(): string {
-        const value = this.input?.nativeElement.value || '';
-        const filler = value + this.filler.slice(value.length);
-
-        return filler.length > value.length ? filler : '';
-    }
-
-    protected get showFiller(): boolean {
-        return (
-            this.focused() &&
-            !!this.computedFiller &&
-            (!!this.input?.nativeElement.value || !this.input?.nativeElement.placeholder)
-        );
     }
 
     protected get hasLabel(): boolean {
