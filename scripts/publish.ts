@@ -1,10 +1,7 @@
 import {resolve} from 'node:path';
 
-import {
-    errorLog,
-    infoLog,
-    successLog,
-} from '../projects/cdk/schematics/utils/colored-log';
+import {errorLog, infoLog, successLog} from 'ng-morph';
+
 import {getValueByFlag} from './shared/argv.utils';
 import {execute} from './shared/execute';
 import {getAllTags} from './shared/get-all-tags';

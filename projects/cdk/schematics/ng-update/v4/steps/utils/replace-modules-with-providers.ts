@@ -3,18 +3,16 @@ import {
     addProviderToNgModule,
     getNgComponents,
     getNgModules,
-    Node,
-} from 'ng-morph';
-
-import type {TuiSchema} from '../../../../ng-add/schema';
-import {addUniqueImport} from '../../../../utils/add-unique-import';
-import {
     infoLog,
+    Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from '../../../../utils/colored-log';
+} from 'ng-morph';
+
+import type {TuiSchema} from '../../../../ng-add/schema';
+import {addUniqueImport} from '../../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
 import {removeImport} from '../../../../utils/import-manipulations';
 import type {ModuleToReplace, ProviderToReplace} from '../constants/modules-to-replace';

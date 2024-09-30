@@ -7,7 +7,6 @@ export * from './ng-add/schema';
 export * from './utils/add-import-to-closest-module';
 export * from './utils/add-unique-import';
 export * from './utils/angular-json-manipulations';
-export * from './utils/colored-log';
 export * from './utils/create-angular-json';
 export * from './utils/get-component-from-identifier';
 export * from './utils/get-execution-time';

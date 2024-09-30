@@ -1,15 +1,16 @@
 import type {ObjectLiteralExpression, PropertyAccessExpression} from 'ng-morph';
-import {Node, SyntaxKind} from 'ng-morph';
-import type {CallExpression, ObjectLiteralElementLike} from 'ts-morph';
-
-import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
+    Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from '../../../utils/colored-log';
+    SyntaxKind,
+} from 'ng-morph';
+import type {CallExpression, ObjectLiteralElementLike} from 'ts-morph';
+
+import type {TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 const OPTIONS_MIGRATIONS: Record<

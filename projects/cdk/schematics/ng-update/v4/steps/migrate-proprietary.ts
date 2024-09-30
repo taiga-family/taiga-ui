@@ -4,13 +4,15 @@ import {
     addPackageJsonDependency,
     getActiveProject,
     getPackageJsonDependency,
+    infoLog,
     removePackageJsonDependency,
+    REPLACE_SYMBOL,
     saveActiveProject,
+    SMALL_TAB_SYMBOL,
 } from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
 import type {TuiSchema} from '../../../ng-add/schema';
-import {infoLog, REPLACE_SYMBOL, SMALL_TAB_SYMBOL} from '../../../utils/colored-log';
 
 export function migrateProprietary(
     fileSystem: DevkitFileSystem,

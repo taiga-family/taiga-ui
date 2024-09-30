@@ -1,15 +1,15 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
-import {saveActiveProject} from 'ng-morph';
-
-import type {TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
     infoLog,
     REPLACE_SYMBOL,
+    saveActiveProject,
     SMALL_TAB_SYMBOL,
     titleLog,
-} from '../../../utils/colored-log';
+} from 'ng-morph';
+
+import type {TuiSchema} from '../../../ng-add/schema';
 import {getFileSystem} from '../../utils/get-file-system';
 import {renameCssVars} from './rename-css-vars';
 

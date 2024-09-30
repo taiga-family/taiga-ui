@@ -1,8 +1,7 @@
 import {Location} from '@angular/common';
 import type {ErrorHandler} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
-// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
-import {errorLog} from '@taiga-ui/cdk/schematics/utils/colored-log';
+import {errorLog} from 'ng-morph';
 
 // TODO
 const KNOWN_ISSUES: string[] = [

@@ -1,15 +1,16 @@
-import {Node, SyntaxKind} from 'ng-morph';
+import {
+    FINISH_SYMBOL,
+    infoLog,
+    Node,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SyntaxKind,
+    titleLog,
+} from 'ng-morph';
 import type {CallExpression} from 'ts-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
-import {
-    FINISH_SYMBOL,
-    infoLog,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    titleLog,
-} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';
 import {insertTodo} from '../../../utils/insert-todo';

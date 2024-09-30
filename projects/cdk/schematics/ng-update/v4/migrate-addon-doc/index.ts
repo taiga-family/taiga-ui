@@ -1,16 +1,18 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
-import {getPackageJsonDependency, getSourceFiles, saveActiveProject} from 'ng-morph';
+import {
+    FINISH_SYMBOL,
+    getPackageJsonDependency,
+    getSourceFiles,
+    infoLog,
+    REPLACE_SYMBOL,
+    saveActiveProject,
+    SMALL_TAB_SYMBOL,
+    titleLog,
+} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import type {TuiSchema} from '../../../ng-add/schema';
-import {
-    FINISH_SYMBOL,
-    infoLog,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    titleLog,
-} from '../../../utils/colored-log';
 import {renameTypes, replaceIdentifiers} from '../../steps';
 import {removeModules} from '../../steps/remove-module';
 import {getFileSystem} from '../../utils/get-file-system';
