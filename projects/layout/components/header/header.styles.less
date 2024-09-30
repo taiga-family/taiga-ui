@@ -80,6 +80,10 @@
     }
 
     &[data-size='xxs'] {
+        [tuiTitle] {
+            gap: 0.125rem;
+        }
+
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-xl);
@@ -91,19 +95,6 @@
     &[data-size='l'] {
         [tuiSubtitle] {
             font: var(--tui-font-text-l);
-        }
-    }
-}
-
-tui-root._mobile [tuiHeader] {
-    [tuiAccessories] {
-        gap: 1rem;
-    }
-
-    &[data-size='xxs'] {
-        [tuiTitle],
-        [tuiAccessories] {
-            font: var(--tui-font-heading-6);
         }
     }
 }
