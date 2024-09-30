@@ -47,6 +47,8 @@ const TEMPLATE_BEFORE = `
 <label [tuiLabel]="label">
   Some
 </label>
+
+<label tuiLabel="Foo">Bar</label>
 `;
 
 const TEMPLATE_AFTER = `
@@ -59,9 +61,11 @@ const TEMPLATE_AFTER = `
     >
 </label>
 
-<label tuiLabel>{{ label }}
+<label tuiLabel><span tuiTitle><span tuiSubtitle>{{ label }}</span>
   Some
-</label>
+</span></label>
+
+<label tuiLabel><span tuiTitle><span tuiSubtitle>Foo</span>Bar</span></label>
 `;
 
 describe('ng-update', () => {
