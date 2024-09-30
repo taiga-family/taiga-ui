@@ -1,9 +1,10 @@
 import {NgForOf} from '@angular/common';
-import {inject, type QueryList} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    inject,
     Input,
     ViewChildren,
     ViewEncapsulation,

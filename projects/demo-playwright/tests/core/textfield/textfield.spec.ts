@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, type Locator, test} from '@playwright/test';
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 test.describe('Textfield', () => {
     test.describe('interactivity on hover', () => {

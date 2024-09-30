@@ -1,6 +1,6 @@
 /// <reference lib="es2021" />
-import {type DevkitFileSystem, getPackageJsonDependency} from 'ng-morph';
-import {getSourceFiles, saveActiveProject} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
+import {getPackageJsonDependency, getSourceFiles, saveActiveProject} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import type {TuiSchema} from '../../../ng-add/schema';

@@ -1,5 +1,11 @@
-import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
-import {Component, Optional, Self, ViewChild} from '@angular/core';
+import type {DebugElement} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Optional,
+    Self,
+    ViewChild,
+} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl} from '@angular/forms';

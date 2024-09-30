@@ -1,15 +1,16 @@
 import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     inject,
     Input,
-    type OnInit,
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
+import type {Params} from '@angular/router';
+import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';

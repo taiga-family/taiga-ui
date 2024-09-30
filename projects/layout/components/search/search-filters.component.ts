@@ -1,6 +1,6 @@
 import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -8,7 +8,6 @@ import {
     ElementRef,
     inject,
     Input,
-    type QueryList,
     signal,
     TemplateRef,
     ViewChild,

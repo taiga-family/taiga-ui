@@ -1,4 +1,5 @@
-import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';

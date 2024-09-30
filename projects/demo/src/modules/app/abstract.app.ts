@@ -5,7 +5,8 @@ import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {tuiInjectElement, tuiPure, tuiZonefreeScheduler} from '@taiga-ui/cdk';
-import {debounceTime, map, type Observable, startWith} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {debounceTime, map, startWith} from 'rxjs';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,

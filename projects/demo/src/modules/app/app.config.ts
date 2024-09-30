@@ -6,6 +6,7 @@ import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -20,7 +21,6 @@ import {
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
-    type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TUI_IS_PLAYWRIGHT, TUI_PLATFORM} from '@taiga-ui/cdk';

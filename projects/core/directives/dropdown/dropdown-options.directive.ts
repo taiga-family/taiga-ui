@@ -1,5 +1,5 @@
-import {type FactoryProvider, Self} from '@angular/core';
-import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
+import type {FactoryProvider} from '@angular/core';
+import {Directive, inject, Input, Optional, Self, SkipSelf} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiVerticalDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';

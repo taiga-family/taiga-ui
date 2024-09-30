@@ -13,7 +13,8 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
-import {TUI_APPEARANCE_OPTIONS, type TuiAppearanceOptions} from './appearance.options';
+import type {TuiAppearanceOptions} from './appearance.options';
+import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
     standalone: true,

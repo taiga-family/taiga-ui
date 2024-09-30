@@ -1,7 +1,7 @@
 import type {Routes} from '@angular/router';
 
+import Page from '.';
 import {routes as children} from './examples/8';
-import Page from './index';
 
 export default [
     {

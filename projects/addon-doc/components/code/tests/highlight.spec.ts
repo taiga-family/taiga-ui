@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, type DebugElement, signal} from '@angular/core';
-import {Component, Input} from '@angular/core';
+import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';

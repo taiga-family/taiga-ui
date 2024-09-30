@@ -2,7 +2,8 @@ import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import type {MetadataJson} from 'libphonenumber-js/core';
-import {type Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];

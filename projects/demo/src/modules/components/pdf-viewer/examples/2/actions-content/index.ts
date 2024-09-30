@@ -5,7 +5,7 @@ import {TuiButton} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
-import type {Buttons} from '../index';
+import type {Buttons} from '..';
 
 @Component({
     standalone: true,

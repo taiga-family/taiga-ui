@@ -1,9 +1,10 @@
-import {type ElementRef, type QueryList, signal} from '@angular/core';
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Input,
     Output,
+    signal,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';

@@ -1,8 +1,8 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {parallel} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ChangeDetectionStrategy, type QueryList} from '@angular/core';
-import {Component, ViewChild, ViewChildren} from '@angular/core';
+import type {QueryList} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild, ViewChildren} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';

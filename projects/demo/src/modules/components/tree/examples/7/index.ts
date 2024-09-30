@@ -4,12 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {TuiLoader} from '@taiga-ui/core';
+import type {TuiTreeLoader} from '@taiga-ui/kit';
 import {
     TUI_TREE_LOADER,
     TUI_TREE_LOADING,
     TUI_TREE_START,
     TuiTree,
-    type TuiTreeLoader,
     TuiTreeService,
 } from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';

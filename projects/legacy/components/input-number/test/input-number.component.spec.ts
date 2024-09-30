@@ -1,6 +1,6 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, type DebugElement} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import type {DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';

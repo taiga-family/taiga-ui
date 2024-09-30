@@ -1,7 +1,8 @@
 import {NgIf} from '@angular/common';
-import {type AfterContentChecked, ChangeDetectorRef, type QueryList} from '@angular/core';
+import type {AfterContentChecked, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     DestroyRef,

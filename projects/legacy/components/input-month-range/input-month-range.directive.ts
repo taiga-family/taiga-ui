@@ -5,13 +5,8 @@ import type {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk/date-time';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {TUI_MONTH_FORMATTER, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
-import {
-    combineLatest,
-    distinctUntilChanged,
-    type Observable,
-    Subject,
-    switchMap,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest, distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthRangeComponent} from './input-month-range.component';
 

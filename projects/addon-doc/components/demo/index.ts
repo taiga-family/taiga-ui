@@ -1,13 +1,12 @@
 import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
+import type {ElementRef, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
-    type ElementRef,
     inject,
     Input,
-    type OnInit,
     signal,
     TemplateRef,
     ViewChild,

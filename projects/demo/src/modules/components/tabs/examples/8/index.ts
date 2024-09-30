@@ -1,6 +1,7 @@
 import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet, type Routes} from '@angular/router';
+import type {Routes} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabs} from '@taiga-ui/kit';

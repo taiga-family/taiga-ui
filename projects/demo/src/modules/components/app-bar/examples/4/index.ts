@@ -1,4 +1,5 @@
-import {Component, inject, type TemplateRef} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAppearance, TuiButton, TuiDialogService, TuiTitle} from '@taiga-ui/core';

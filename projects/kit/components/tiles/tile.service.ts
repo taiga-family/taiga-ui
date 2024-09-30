@@ -1,5 +1,6 @@
 import {isPlatformBrowser} from '@angular/common';
-import {inject, Injectable, type OnDestroy, PLATFORM_ID} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';

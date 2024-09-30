@@ -15,8 +15,8 @@ import {
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {injectContext, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
