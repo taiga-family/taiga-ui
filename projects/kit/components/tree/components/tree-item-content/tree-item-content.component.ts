@@ -1,6 +1,7 @@
-import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgIf, NgTemplateOutlet} from '@angular/common';
 import type {DoCheck} from '@angular/core';
 import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -12,7 +13,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiButton],
+    imports: [NgIf, NgTemplateOutlet, TuiButton],
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,10 +31,13 @@ export class TuiTreeItemContent implements DoCheck {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiTreeItemContext>();
 
-    protected readonly expanded$ = this.change$.pipe(
-        startWith(null),
-        map(() => this.isExpanded),
-        distinctUntilChanged(),
+    protected readonly expanded = toSignal(
+        this.change$.pipe(
+            startWith(null),
+            map(() => this.isExpanded),
+            distinctUntilChanged(),
+        ),
+        {initialValue: this.isExpanded},
     );
 
     public ngDoCheck(): void {
