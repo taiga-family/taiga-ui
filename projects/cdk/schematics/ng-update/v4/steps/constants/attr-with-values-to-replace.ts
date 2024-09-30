@@ -37,6 +37,11 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         valueReplacer: [{from: 'onDark', to: 'dark'}],
     },
     {
+        attrNames: ['appearance'],
+        newAttrName: 'appearance',
+        valueReplacer: [{from: 'secondary-destructive', to: 'destructive'}],
+    },
+    {
         attrNames: ['[pseudoActive]'],
         newAttrName: '[tuiAppearanceState]',
         withTagNames: hasPseudo,
