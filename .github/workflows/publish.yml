@@ -17,11 +17,7 @@ jobs:
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
-      - name: Build publishable libraries
-        run: npm run run-many:build:libs
-
-      - name: Publish libraries
-        run: npm run run-many:publish:libs
+      - run: npx nx run-many -t publish
 
       - uses: taiga-family/ci/actions/run/read-package-json@v1.87.6
         id: info
