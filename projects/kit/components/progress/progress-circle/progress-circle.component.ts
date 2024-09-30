@@ -20,9 +20,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 export class TuiProgressCircle {
     private readonly options = inject(TUI_PROGRESS_OPTIONS);
 
-    protected readonly animationDelay = toSignal(of(true).pipe(delay(0)), {
-        initialValue: false,
-    });
+    protected readonly animationDelay = toSignal(of(true).pipe(delay(0)));
 
     @Input()
     public value = 0;
