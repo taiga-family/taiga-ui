@@ -26,7 +26,7 @@
                 "parallel": false,
                 "commands": [
                     "cp ./LICENSE ./dist/{projectName}",
-                    "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+                    "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag} || echo \"success\""
                 ]
             },
             "dependsOn": [
