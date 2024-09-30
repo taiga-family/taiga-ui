@@ -11,6 +11,16 @@ describe('tuiIsValidUrl', () => {
         expect(tuiIsValidUrl('127.0.0.1:8080')).toBe(true);
         expect(tuiIsValidUrl('localhost:3333')).toBe(true);
         expect(tuiIsValidUrl('ftp://ftp.example:21/')).toBe(true);
+
+        expect(
+            tuiIsValidUrl(
+                'https://jira.com/browse/ETC-5972?filter=411557&jql=project%20%3D%ETC%20AND%20component%20in%20(Auth)',
+            ),
+        ).toBe(true);
+
+        expect(
+            tuiIsValidUrl('jira.com/?jql=project%20%3D%ETC%20AND%%20in%20(Auth)'),
+        ).toBe(true);
     });
 
     it('invalid', () => {
