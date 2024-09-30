@@ -1,6 +1,14 @@
 import {Location} from '@angular/common';
-import {type OnChanges, type OnInit, signal} from '@angular/core';
-import {Directive, EventEmitter, inject, Input, Output, TemplateRef} from '@angular/core';
+import type {OnChanges, OnInit} from '@angular/core';
+import {
+    Directive,
+    EventEmitter,
+    inject,
+    Input,
+    Output,
+    signal,
+    TemplateRef,
+} from '@angular/core';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
