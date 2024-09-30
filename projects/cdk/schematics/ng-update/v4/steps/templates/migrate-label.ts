@@ -1,6 +1,7 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
+import type {ChildNode} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -26,7 +27,7 @@ export function migrateLabel({
         attrs.some(({name}) => name === 'tuilabel' || name === '[tuilabel]'),
     );
 
-    labelElements.forEach(({attrs, sourceCodeLocation}) => {
+    labelElements.forEach(({attrs, sourceCodeLocation, childNodes}) => {
         const labelAttr = findAttr(attrs, 'tuilabel');
 
         if (!labelAttr || !sourceCodeLocation) {
@@ -38,6 +39,7 @@ export function migrateLabel({
             sourceCodeLocation,
             recorder,
             templateOffset,
+            childNodes,
         });
     });
 }
@@ -47,23 +49,36 @@ function migrateValue({
     sourceCodeLocation,
     recorder,
     templateOffset,
+    childNodes,
 }: {
     valueAttr: Attribute;
     sourceCodeLocation: ElementLocation;
     recorder: UpdateRecorder;
     templateOffset: number;
+    childNodes: ChildNode[];
 }): void {
     const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
+    const {startTag, endTag} = sourceCodeLocation;
+    const insertTo = startTag?.endOffset;
 
     if (!attrValue || !insertTo) {
         return;
     }
 
-    recorder.insertRight(
-        insertTo + templateOffset,
-        valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`,
-    );
+    const onlyTextContent =
+        childNodes.length && childNodes.every((node) => node.nodeName === '#text');
+
+    if (onlyTextContent && startTag && endTag) {
+        const content = `<span tuiTitle><span tuiSubtitle>${valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`}</span>`;
+
+        recorder.insertRight(templateOffset + insertTo, content);
+        recorder.insertLeft(templateOffset + endTag.startOffset, '</span>');
+    } else {
+        recorder.insertRight(
+            insertTo + templateOffset,
+            valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`,
+        );
+    }
 
     const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
 

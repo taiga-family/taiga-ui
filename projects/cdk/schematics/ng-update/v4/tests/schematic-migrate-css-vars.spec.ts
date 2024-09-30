@@ -54,9 +54,11 @@ export class Test {
 const STYLES_BEFORE = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    color: var(--tui-text-primary);
+    box-shadow: var(--tui-shadow-navigation);
+    color: var(--tui-text-01-night);
     --tui-base-01: 'black';
     --tui-info-bg-night: 'blue';
+    --tui-shadow-sidebar: #fff;
 
     &_error {
         color: var(--tui-error-fill);
@@ -66,10 +68,12 @@ const STYLES_BEFORE = `@import '@taiga-ui/core/styles/taiga-ui-local';
 const STYLES_AFTER = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    box-shadow: var(--tui-shadow-small);
     color: var(--tui-text-primary);
     --tui-background-base: 'black';
 // TODO: use tuiTheme="dark" on an element to switch colors to dark theme
     --tui-status-info-pale: 'blue';
+    --tui-shadow-medium: #fff;
 
     &_error {
         color: var(--tui-status-negative);

@@ -24,15 +24,31 @@ export function renameCssVars(pattern = ALL_FILES): void {
             });
         }
 
+        const placeholders: Record<string, string> = {};
+
+        Object.keys(DEPRECATED_VARS).forEach((key, index) => {
+            placeholders[key] = `__PLACEHOLDER_${index}__`;
+        });
+
         Object.entries(DEPRECATED_VARS)
             .sort(([prev], [next]) => (prev.length < next.length ? 1 : -1))
             .map(([from, to]) => ({
                 from: new RegExp(`${from}`, 'g'),
                 to,
             }))
-            .forEach(({from, to}) => {
-                text = text.replaceAll(from, to);
+            .forEach(({from}) => {
+                text = text.replace(from, (matched) => placeholders[matched] ?? '');
             });
+
+        const placeholderPattern = new RegExp(Object.values(placeholders).join('|'), 'g');
+
+        text = text.replaceAll(placeholderPattern, (matched) => {
+            const originalKey = Object.keys(placeholders).find(
+                (key) => placeholders[key] === matched,
+            );
+
+            return DEPRECATED_VARS[originalKey as keyof typeof DEPRECATED_VARS];
+        });
 
         Object.entries(DEPRECATED_NUMERIC_VARS)
             .map(([from, to]) => ({
