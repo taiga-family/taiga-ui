@@ -1,7 +1,8 @@
 /// <reference types="node" />
 import {clearLine, cursorTo} from 'node:readline';
 
-import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';
+import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from 'ng-morph';
+
 import {tuiIsCI} from './is-ci';
 
 export function setupProgressLogger({

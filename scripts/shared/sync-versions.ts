@@ -1,8 +1,8 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 
 import {glob} from 'glob';
+import {processLog, successLog} from 'ng-morph';
 
-import {processLog, successLog} from '../../projects/cdk/schematics/utils/colored-log';
 import {updatePackageJsonStructure} from './update-package-json-structure';
 
 const INDENTATION = 4;

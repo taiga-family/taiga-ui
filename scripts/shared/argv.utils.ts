@@ -1,6 +1,6 @@
 import process from 'node:process';
 
-import {processLog} from '../../projects/cdk/schematics/utils/colored-log';
+import {processLog} from 'ng-morph';
 
 export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     const index = findIndexFlag(flag);

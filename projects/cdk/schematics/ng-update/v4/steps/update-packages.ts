@@ -2,6 +2,7 @@
 import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
+    errorLog,
     getImports,
     getPackageJsonDependency,
     removePackageJsonDependency,
@@ -9,7 +10,6 @@ import {
 
 import {TUI_VERSION} from '../../../../constants/version';
 import {ALL_TS_FILES} from '../../../constants';
-import {errorLog} from '../../../utils/colored-log';
 import {replacePackageName} from '../../steps';
 
 export const TUI_POLYMORPHEUS_VERSION = '^4.7.3';

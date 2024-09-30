@@ -1,14 +1,14 @@
-import {SyntaxKind} from 'ng-morph';
-
-import type {TuiSchema} from '../../../ng-add/schema';
-import {addUniqueImport} from '../../../utils/add-unique-import';
 import {
     FINISH_SYMBOL,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
+    SyntaxKind,
     titleLog,
-} from '../../../utils/colored-log';
+} from 'ng-morph';
+
+import type {TuiSchema} from '../../../ng-add/schema';
+import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 export function migrateAllCountryIsoCodes(options: TuiSchema): void {

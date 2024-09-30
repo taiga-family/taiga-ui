@@ -2,11 +2,8 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 import {join} from 'node:path';
 
-import {
-    infoLog,
-    SMALL_TAB_SYMBOL,
-    titleLog,
-} from '../projects/cdk/schematics/utils/colored-log';
+import {infoLog, SMALL_TAB_SYMBOL, titleLog} from 'ng-morph';
+
 import {DemoRoute} from '../projects/demo/src/modules/app/demo-routes';
 
 const EXCEPTIONS = [

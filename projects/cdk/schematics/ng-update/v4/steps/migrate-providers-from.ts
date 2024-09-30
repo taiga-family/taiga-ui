@@ -1,7 +1,6 @@
-import {Node} from 'ng-morph';
+import {infoLog, Node, REPLACE_SYMBOL, SMALL_TAB_SYMBOL} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
-import {infoLog, REPLACE_SYMBOL, SMALL_TAB_SYMBOL} from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 
 export function migrateImportProvidersFrom(options: TuiSchema): void {

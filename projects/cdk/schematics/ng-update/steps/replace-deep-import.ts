@@ -1,14 +1,15 @@
-import {editImports, getImports} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../constants';
-import type {TuiSchema} from '../../ng-add/schema';
 import {
+    editImports,
+    getImports,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from '../../utils/colored-log';
+} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../constants';
+import type {TuiSchema} from '../../ng-add/schema';
 
 const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 

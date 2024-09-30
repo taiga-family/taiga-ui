@@ -1,14 +1,14 @@
-import {getImports} from 'ng-morph';
-
-import {ALL_TS_FILES} from '../../../constants/file-globs';
-import type {TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
+    getImports,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     titleLog,
-} from '../../../utils/colored-log';
+} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../../constants/file-globs';
+import type {TuiSchema} from '../../../ng-add/schema';
 
 export function dropUniversalMock(options: TuiSchema): void {
     const moduleSpecifier = '@ng-web-apis/universal/mocks';

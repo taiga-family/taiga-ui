@@ -1,17 +1,18 @@
 import type {PropertyAccessExpression, TypeReferenceNode} from 'ng-morph';
-import {Node, SyntaxKind} from 'ng-morph';
-
-import type {TuiSchema} from '../../ng-add/schema';
-import {addUniqueImport} from '../../utils/add-unique-import';
 import {
     infoLog,
+    Node,
     PROCESSING_SYMBOL,
     processLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
-} from '../../utils/colored-log';
+    SyntaxKind,
+} from 'ng-morph';
+
+import type {TuiSchema} from '../../ng-add/schema';
+import {addUniqueImport} from '../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
 import type {ReplacementService} from '../interfaces/replacement-service';
