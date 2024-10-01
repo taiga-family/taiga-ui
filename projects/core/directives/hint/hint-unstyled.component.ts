@@ -37,6 +37,6 @@ export class TuiHintUnstyled<C> {
         const hint = inject(TuiHintDirective<C>);
 
         hint.component = new PolymorpheusComponent(TuiHintUnstyledComponent);
-        hint.content = inject(TemplateRef<C>);
+        hint.content.set(inject(TemplateRef<C>));
     }
 }
