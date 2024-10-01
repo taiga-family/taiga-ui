@@ -10,8 +10,8 @@ jobs:
     if: github.event.review.state == 'approved'
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.87.7
-      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.87.7
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.8
+      - uses: taiga-family/ci/actions/auto/label-when-approved@v1.87.8
         with:
           approvals: 1
           token: ${{ secrets.GITHUB_TOKEN }}
