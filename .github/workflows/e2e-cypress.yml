@@ -1,21 +1,59 @@
 name: ⚙️ Cypress component testing
 on:
   pull_request:
-  push:
-    branches:
-      - main
+
+env:
+  CYPRESS_BASELINE_REPO: 'baseline'
+  CYPRESS_RESULTS_FOLDER: 'projects/demo-cypress/tests-results'
+  CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
 
 jobs:
   cypress:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     name: Component testing result
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.1
-      - uses: taiga-family/ci/actions/setup/node@v1.93.1
-      - run: npx tsc -p projects/demo-cypress/tsconfig.json
-      - run: npx nx component-test demo-cypress
+      - uses: actions/checkout@v4.2.0
+        with:
+          ref: ${{ github.base_ref }}
+          path: ${{ env.CYPRESS_BASELINE_REPO }}
+      - uses: taiga-family/ci/actions/setup/variables@v1.92.0
+      - uses: taiga-family/ci/actions/setup/node@v1.92.0
+
+      - name: Share node_modules between current and baseline repos
+        run: |
+          cp -r node_modules ${{ env.CYPRESS_BASELINE_REPO }}/node_modules
+          tree -d -L 1
+          tree -d ${{ env.CYPRESS_BASELINE_REPO }} -L 1
+
+      - name: Run tests for baseline state
+        run: |
+          cd ${{ env.CYPRESS_BASELINE_REPO }}
+          npx nx component-test demo-cypress
+          cd ../
+          mkdir -p ${{ env.CYPRESS_BASELINE_SNAPSHOTS }} && cp -r ${{ env.CYPRESS_BASELINE_REPO }}/${{env.CYPRESS_BASELINE_SNAPSHOTS }}/. ${{ env.CYPRESS_BASELINE_SNAPSHOTS }}
+          rm -r ${{ env.CYPRESS_BASELINE_REPO }}
+
+      - name: Run tests for current state
+        run: npx nx component-test demo-cypress
+
+      - name: Prepare diff screenshots
+        run: |
+          npm install canvas
+          npx ts-node ./scripts/visual-testing/combine-cypress-failed-screenshots.ts
+
+      - name: Debug output
+        continue-on-error: true
+        run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
+          name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
