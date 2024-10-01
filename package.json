@@ -168,6 +168,7 @@
         "npm": ">= 10",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
+    "engineStrict": true,
     "authors": [
         "Alex Inkin <alexander@inkin.ru>",
         "Roman Sedov <79601794011@ya.ru>"
