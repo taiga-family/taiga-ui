@@ -12,9 +12,9 @@ jobs:
     name: Unit tests
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.90.0
-      - uses: taiga-family/ci/actions/setup/node@v1.90.0
-      - uses: taiga-family/ci/actions/run/node-info@v1.90.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.91.0
+      - uses: taiga-family/ci/actions/setup/node@v1.91.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.91.0
         id: info
       - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
       - run: npm test
