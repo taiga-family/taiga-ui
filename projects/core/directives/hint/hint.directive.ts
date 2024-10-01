@@ -1,5 +1,5 @@
-import {type OnDestroy, signal} from '@angular/core';
-import {Directive, inject, INJECTOR, Input} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, inject, INJECTOR, Input, signal} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
