@@ -1,5 +1,6 @@
 import {nxComponentTestingPreset} from '@nx/angular/plugins/component-testing';
 import {defineConfig} from 'cypress';
+import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
 const preset = nxComponentTestingPreset(__filename);
 
@@ -44,5 +45,8 @@ export default defineConfig({
         indexHtmlFile: 'src/support/component-index.html',
         specPattern: 'src/tests/**/*.cy.ts',
         experimentalSingleTabRunMode: true,
+        setupNodeEvents(on, config) {
+            return getCompareSnapshotsPlugin(on, config);
+        },
     },
 });
