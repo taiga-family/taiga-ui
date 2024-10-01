@@ -72,8 +72,10 @@ export class TuiDropdownContext extends TuiRectAccessor {
             return;
         }
 
-        this.currentRect = tuiPointToClientRect(x, y);
-        this.longTapTimeout = setTimeout(() => this.driver.next(true), TAP_DELAY);
+        this.longTapTimeout = setTimeout(() => {
+            this.currentRect = tuiPointToClientRect(x, y);
+            this.driver.next(true);
+        }, TAP_DELAY);
     }
 
     protected onTouchMove(x: number, y: number): void {
