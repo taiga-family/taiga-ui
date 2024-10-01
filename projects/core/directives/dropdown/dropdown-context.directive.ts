@@ -95,8 +95,8 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
             return;
         }
 
-        this.currentRect = tuiPointToClientRect(x, y);
         this.longTapTimeout = setTimeout(() => {
+            this.currentRect = tuiPointToClientRect(x, y);
             this.stream$.next(true);
         }, TAP_DELAY);
     }
