@@ -13,7 +13,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.87.8
       - uses: taiga-family/ci/actions/auto/label-when-approved@v1.87.8
         with:
-          approvals: 1
+          approvals: 2
           token: ${{ secrets.GITHUB_TOKEN }}
 
 concurrency:
