@@ -25,6 +25,7 @@ import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
+    TUI_DROPDOWN_OPTIONS,
     TuiDropdownDirective,
     tuiDropdownOpen,
     tuiDropdownOptionsProvider,
@@ -33,6 +34,7 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {tuiOverrideDefaultOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -48,10 +50,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListHost(TuiTextfieldComponent),
-        tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
-    ],
+    providers: [tuiAsDataListHost(TuiTextfieldComponent), tuiDropdownOptionsProvider({})],
     hostDirectives: [
         TuiDropdownDirective,
         TuiWithDropdownOpen,
@@ -83,6 +82,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly control?: NgControl;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly override = tuiOverrideDefaultOptions(TUI_DROPDOWN_OPTIONS, {
+        limitWidth: 'fixed',
+    });
 
     protected computedFiller = computed(() => {
         const value = this.directive?.nativeValue() || '';
