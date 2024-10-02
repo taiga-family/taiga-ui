@@ -164,8 +164,9 @@
         "webpack": "5.95.0"
     },
     "engines": {
-        "node": ">= 20",
-        "npm": ">= 10",
+        "node": "^18 || ^20 || ^22",
+        "npm": "^8 || ^10 || ^12",
+        "pnpm": "Please use npm instead of pnpm to install dependencies",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },
     "authors": [
