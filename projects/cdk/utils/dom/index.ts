@@ -8,6 +8,7 @@ export * from './get-element-obscurers';
 export * from './get-element-offset';
 export * from './get-element-point';
 export * from './get-selected-text';
+export * from './inject-document-element';
 export * from './inject-element';
 export * from './is-current-target';
 export * from './is-element-editable';

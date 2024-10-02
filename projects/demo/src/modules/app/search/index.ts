@@ -1,4 +1,3 @@
-import {DOCUMENT} from '@angular/common';
 import {
     afterNextRender,
     ChangeDetectionStrategy,
@@ -7,6 +6,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiInjectDocElement} from '@taiga-ui/cdk';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 import {SEARCH_CONFIG} from './env';
@@ -47,7 +47,7 @@ export class TuiAlgoliaSearch {
     }
 
     private setSearchDocDarkMode(): void {
-        const documentElement = inject(DOCUMENT).defaultView?.document.documentElement;
+        const documentElement = tuiInjectDocElement();
         const darkMode = inject(TUI_DARK_MODE);
 
         effect(() => {

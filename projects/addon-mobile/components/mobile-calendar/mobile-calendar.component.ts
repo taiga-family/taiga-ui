@@ -3,7 +3,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -36,6 +36,7 @@ import {
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {tuiInjectDocElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
@@ -126,7 +127,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     private activeYear = 0;
     private activeMonth = 0;
     private readonly destroyRef = inject(DestroyRef);
-    private readonly doc = inject(DOCUMENT);
+    private readonly documentElement = tuiInjectDocElement();
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
 
@@ -222,7 +223,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     protected get yearWidth(): number {
-        return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
+        return this.documentElement.clientWidth / YEARS_IN_ROW;
     }
 
     protected onClose(): void {

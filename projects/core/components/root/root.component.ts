@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {DOCUMENT, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -14,6 +14,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectDocElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -68,7 +69,7 @@ export class TuiRoot {
           );
 
     constructor() {
-        inject(DOCUMENT).defaultView?.document.documentElement.setAttribute(
+        tuiInjectDocElement().setAttribute(
             'data-tui-theme',
             inject(TUI_THEME).toLowerCase(),
         );
