@@ -141,24 +141,31 @@
     </tui-items-with-more>
 
     <button
+        *ngIf="!isMobile()"
         iconStart="@tui.send"
         tuiButton
         type="button"
-        [disabled]="expanded"
     >
-        {{ isMobile() ? '' : 'Send' }}
+        Send
     </button>
     <button
         *ngIf="!isMobile()"
         iconStart="@tui.trash"
         tuiButton
         type="button"
-        [disabled]="expanded"
         (click)="close()"
     >
         Delete
     </button>
 
+    <button
+        *ngIf="isMobile()"
+        iconStart="@tui.send"
+        tuiIconButton
+        type="button"
+    >
+        Send
+    </button>
     <button
         *ngIf="isMobile()"
         iconStart="@tui.ellipsis"
