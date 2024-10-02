@@ -6,7 +6,7 @@ import {TUI_LITHUANIAN_LANGUAGE_ADDON_TABLE} from './addon-table';
 import {TUI_LITHUANIAN_LANGUAGE_CORE} from './core';
 import {TUI_LITHUANIAN_LANGUAGE_KIT} from './kit';
 
-export const TUI_ENGLISH_LANGUAGE: TuiLanguage = {
+export const TUI_LITHUANIAN_LANGUAGE: TuiLanguage = {
     name: 'lithuanian',
     ...TUI_LITHUANIAN_LANGUAGE_CORE,
     ...TUI_LITHUANIAN_LANGUAGE_KIT,
