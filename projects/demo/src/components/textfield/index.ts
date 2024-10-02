@@ -26,13 +26,10 @@ export class TuiDocTextfield {
     protected readonly routes = DemoRoute;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected readonly customContentVariants = ['', '@tui.bell'];
 
     @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiTextfieldOptions>> = [];
 
     public cleaner: boolean = this.options.cleaner();
     public size: TuiSizeL | TuiSizeS = this.options.size();
-    public labelOutside = false;
-    public customContent = this.customContentVariants[0];
 }
