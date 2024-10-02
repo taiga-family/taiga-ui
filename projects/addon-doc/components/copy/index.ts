@@ -29,7 +29,7 @@ export class TuiDocCopy {
                 timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
             ),
         ),
-        {initialValue: true},
+        {initialValue: false},
     );
 
     protected onClick(): void {
