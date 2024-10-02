@@ -8,6 +8,8 @@ export * from '@taiga-ui/i18n/languages/hebrew';
 export * from '@taiga-ui/i18n/languages/italian';
 export * from '@taiga-ui/i18n/languages/japan';
 export * from '@taiga-ui/i18n/languages/kazakh';
+export * from '@taiga-ui/i18n/languages/korean';
+export * from '@taiga-ui/i18n/languages/lithuanian';
 export * from '@taiga-ui/i18n/languages/malay';
 export * from '@taiga-ui/i18n/languages/polish';
 export * from '@taiga-ui/i18n/languages/portuguese';
