@@ -33,7 +33,6 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
     host: {
-        ngSkipHydration: 'true',
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
         '[class._ios]': 'isIos',

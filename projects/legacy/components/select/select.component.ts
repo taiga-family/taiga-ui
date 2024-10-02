@@ -57,7 +57,6 @@ import {TUI_SELECT_OPTIONS} from './select.options';
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

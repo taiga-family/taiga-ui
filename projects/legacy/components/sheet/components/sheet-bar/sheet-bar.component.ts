@@ -11,9 +11,6 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
     templateUrl: './sheet-bar.template.html',
     styleUrls: ['./sheet-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiSheetBarComponent {
     private readonly sheet = inject(TUI_SHEET);

@@ -20,7 +20,6 @@ import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     host: {
-        ngSkipHydration: 'true',
         '[class._table]': 'isContextTable',
         '[class._filler]': 'filler',
         '(animationstart)': 'ngDoCheck()',

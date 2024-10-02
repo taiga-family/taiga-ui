@@ -13,9 +13,6 @@ import {
     templateUrl: './palette.template.html',
     styleUrls: ['./palette.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiPaletteComponent {
     @Input()

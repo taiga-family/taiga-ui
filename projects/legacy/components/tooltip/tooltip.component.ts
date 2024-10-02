@@ -20,7 +20,6 @@ import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/h
     changeDetection: ChangeDetectionStrategy.OnPush,
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-appearance]': 'computedAppearance',
         '(mousedown)': 'stopOnMobile($event)',
     },

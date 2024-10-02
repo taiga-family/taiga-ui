@@ -21,7 +21,6 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         },
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',

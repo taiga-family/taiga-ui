@@ -23,9 +23,6 @@ import {TuiSheetService} from '../../sheet.service';
     styleUrls: ['./sheets-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiSheetsHostComponent implements OnInit {
     private readonly service = inject(TuiSheetService);

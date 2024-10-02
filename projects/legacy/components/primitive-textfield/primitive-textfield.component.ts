@@ -52,7 +52,6 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '[class._readonly]': 'readOnly',
         '[class._hidden]': 'inputHidden',

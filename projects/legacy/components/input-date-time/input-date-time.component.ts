@@ -61,7 +61,6 @@ const DATE_TIME_SEPARATOR = ', ';
         tuiDateStreamWithTransformer(TUI_DATE_TIME_VALUE_TRANSFORMER),
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(click)': 'onClick()',
     },

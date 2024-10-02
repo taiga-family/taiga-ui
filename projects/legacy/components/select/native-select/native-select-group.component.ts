@@ -22,7 +22,6 @@ import type {TuiSelectDirective} from '../select.directive';
         },
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',

@@ -13,9 +13,6 @@ export const TUI_SHEET_ID = 'tui-sheet-id';
     templateUrl: './sheet-heading.template.html',
     styleUrls: ['./sheet-heading.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiSheetHeadingComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();

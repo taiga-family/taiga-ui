@@ -29,7 +29,6 @@ import {TUI_TAG_OPTIONS} from './tag.options';
     styleUrls: ['./tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '[attr.data-status]': 'status',
         '[class._editing]': 'editing',

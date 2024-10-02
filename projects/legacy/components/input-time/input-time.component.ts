@@ -48,7 +48,6 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        ngSkipHydration: 'true',
         '(click)': 'onClick()',
         '[attr.data-size]': 'size',
     },

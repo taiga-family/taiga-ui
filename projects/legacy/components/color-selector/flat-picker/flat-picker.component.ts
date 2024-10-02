@@ -18,9 +18,6 @@ import {TuiPickerService} from '../services/picker.service';
     styleUrls: ['./flat-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiFlatPickerComponent {
     protected readonly $ = inject(TuiPickerService)

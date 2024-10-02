@@ -25,7 +25,6 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        ngSkipHydration: 'true',
         '[class._rotated]': 'rotated',
         '[class._small]': 'small',
     },

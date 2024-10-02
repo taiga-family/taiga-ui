@@ -17,9 +17,6 @@ import {TuiPickerService} from '../services/picker.service';
     styleUrls: ['./linear-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiLinearPickerComponent {
     protected readonly $ = inject(TuiPickerService)
