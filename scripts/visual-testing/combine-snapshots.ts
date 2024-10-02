@@ -4,13 +4,11 @@
  * (not friendly for our external contributors).
  * https://github.com/Automattic/node-canvas/issues/1511
  */
-import {createCanvas, loadImage, version} from 'canvas';
+import {createCanvas, loadImage} from 'canvas';
 
 export async function combineSnapshots(
     imagesPaths: string[],
 ): Promise<NodeJS.ArrayBufferView> {
-    console.info('canvas:', version);
-
     const images = await Promise.all(imagesPaths.map(loadImage));
     const totalWidth = images.reduce((acc: number, {width}) => acc + width, 0);
     const maxHeight = Math.max(...images.map(({height}) => height));
