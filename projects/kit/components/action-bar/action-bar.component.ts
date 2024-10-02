@@ -1,14 +1,12 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TUI_BUTTON_OPTIONS,
-    type TuiButtonOptions,
-    tuiLinkOptionsProvider,
-    type TuiSizeS,
-} from '@taiga-ui/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import type {TuiButtonOptions} from '@taiga-ui/core/components/button';
+import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({

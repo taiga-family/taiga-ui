@@ -9,7 +9,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiActionBar, TuiButton, NgIf],
+    imports: [NgIf, TuiActionBar, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
