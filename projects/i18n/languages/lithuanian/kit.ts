@@ -7,7 +7,11 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: 'Kita data...',
     showAll: 'Rodyti viską',
     hide: 'Slėpti',
-    mobileCalendarTexts: ['Pasirinkite dieną', 'Pasirinkite intervalą', 'Pasirinkite dienas'],
+    mobileCalendarTexts: [
+        'Pasirinkite dieną',
+        'Pasirinkite intervalą',
+        'Pasirinkite dienas',
+    ],
     range: ['nuo', 'iki'],
     countTexts: ['Plius', 'Minus'],
     time: {
