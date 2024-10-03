@@ -47,7 +47,7 @@ export class TuiAlgoliaSearch {
     }
 
     private setSearchDocDarkMode(): void {
-        const documentElement = inject(DOCUMENT).defaultView?.document.documentElement;
+        const documentElement = inject(DOCUMENT).documentElement;
         const darkMode = inject(TUI_DARK_MODE);
 
         effect(() => {

@@ -68,7 +68,7 @@ export class TuiRoot {
           );
 
     constructor() {
-        inject(DOCUMENT).defaultView?.document.documentElement.setAttribute(
+        inject(DOCUMENT).documentElement.setAttribute(
             'data-tui-theme',
             inject(TUI_THEME).toLowerCase(),
         );
