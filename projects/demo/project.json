@@ -39,6 +39,11 @@
                         "output": "./"
                     },
                     {
+                        "glob": "**/sitemap.xml",
+                        "input": "{projectRoot}/",
+                        "output": "./"
+                    },
+                    {
                         "glob": "**/*",
                         "input": "{projectRoot}/src/assets/",
                         "output": "./assets/"
@@ -213,6 +218,18 @@
                 "command": "ts-node ./scripts/generate-demo-routes-file.ts"
             }
         },
+        "generate-sitemap-file": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/generate-sitemap.ts"
+            },
+            "dependsOn": [
+                {
+                    "target": "generate-routes-file",
+                    "params": "ignore"
+                }
+            ]
+        },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
@@ -232,6 +249,10 @@
                 },
                 {
                     "target": "generate-routes-file",
+                    "params": "ignore"
+                },
+                {
+                    "target": "generate-sitemap-file",
                     "params": "ignore"
                 }
             ],
