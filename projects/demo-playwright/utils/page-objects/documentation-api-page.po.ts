@@ -50,26 +50,11 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    public async prepareBeforeScreenshot(hasNot = ''): Promise<void> {
+    public async prepareBeforeScreenshot(): Promise<void> {
         await this.hideDocumentation();
         await this.hideScrollControls();
         await this.hideNavigation();
         await this.hideNotifications();
-
-        const wrapper = this.page.locator('tui-doc-page');
-        const hideElements = [
-            ...(await wrapper
-                .locator(`header:not(.t-content > *:not(tui-doc-demo)${hasNot} header)`)
-                .all()),
-            ...(await wrapper
-                .locator(`> .t-content > *:not(tui-doc-demo)${hasNot}`)
-                .all()),
-            ...(await wrapper.locator('.t-bg-toggle').all()),
-        ];
-
-        for (const element of hideElements) {
-            await tuiHideElement(element);
-        }
 
         if ((await this.apiPageExample.all()).length) {
             await this.apiPageExample.evaluate((el) => el.scrollIntoView());

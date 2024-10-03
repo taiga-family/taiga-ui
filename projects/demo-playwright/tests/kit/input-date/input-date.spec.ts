@@ -20,7 +20,7 @@ test.describe('InputDate', () => {
             const api = new TuiDocumentationPagePO(page);
             const example = api.getExample('#sizes');
 
-            await api.prepareBeforeScreenshot(':not(#sizes)');
+            await api.prepareBeforeScreenshot();
 
             for (const size of ['s', 'm', 'l']) {
                 const input = example
@@ -164,7 +164,7 @@ test.describe('InputDate', () => {
                 const example = api.getExample('#base');
 
                 await example.scrollIntoViewIfNeeded();
-                await api.prepareBeforeScreenshot(':not(#base)');
+                await api.prepareBeforeScreenshot();
                 await example.locator('tui-input-date .t-icon tui-icon').click();
 
                 await expect(page).toHaveScreenshot(`08-input-date-${language}.png`);
