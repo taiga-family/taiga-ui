@@ -17,7 +17,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.93.0
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo
+        run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v4.0.2
