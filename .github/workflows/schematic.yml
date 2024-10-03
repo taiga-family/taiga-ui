@@ -1,0 +1,18 @@
+name: ⚙️ Schematics
+on:
+  pull_request:
+
+jobs:
+  schematics:
+    runs-on: ubuntu-latest
+    name: Run the latest migration
+    steps:
+      - uses: actions/checkout@v4.2.0
+      - uses: taiga-family/ci/actions/setup/node@v1.93.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.93.0
+        id: info
+      - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
