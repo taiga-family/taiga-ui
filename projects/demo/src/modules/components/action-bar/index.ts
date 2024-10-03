@@ -9,4 +9,6 @@ import {TuiDemo} from '@demo/utils';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = ['Size M', 'Size S'];
+}

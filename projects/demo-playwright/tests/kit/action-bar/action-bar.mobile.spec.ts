@@ -19,7 +19,7 @@ test.describe('ActionBar', () => {
 
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
-        const example = page.locator('#base');
+        const example = page.locator('#size--m');
         const showActionBarButton = example.locator('label').first();
 
         await showActionBarButton.click();

@@ -68,42 +68,91 @@
                 </span>
             </button>
         </tui-opt-group>
+        <tui-opt-group>
+            <button
+                *tuiRepeatTimes="let index of 5"
+                role="menuitem"
+                tuiOption
+                type="button"
+            >
+                <span>
+                    <tui-icon
+                        icon="@tui.star"
+                        class="tui-space_right-3"
+                    />
+                    Action {{ index + 1 }}
+                </span>
+            </button>
+        </tui-opt-group>
     </tui-data-list>
 
     <div>
-        Selected: {{ selected }} of {{ items.length }}
-
+        <strong>Selected: {{ selected }} of {{ items.length }}</strong>
         <button
             *ngIf="!isMobile()"
-            appearance="icon"
             tuiLink
             type="button"
             class="tui-space_left-3"
-            [pseudo]="true"
             (click)="toggleSelect()"
         >
             {{ selected < items.length ? 'Select all' : 'Select none' }}
         </button>
     </div>
 
+    <tui-items-with-more>
+        <ng-container *tuiRepeatTimes="let index of 5">
+            <button
+                *tuiItem
+                iconStart="@tui.star"
+                tuiButton
+                type="button"
+            >
+                Action {{ index + 1 }}
+            </button>
+        </ng-container>
+        <ng-template
+            let-lastIndex
+            tuiMore
+        >
+            <button
+                iconStart="@tui.ellipsis"
+                tuiButton
+                tuiDropdownAlign="right"
+                tuiDropdownOpen
+                type="button"
+                [tuiDropdown]="dropdown"
+            >
+                More
+            </button>
+            <ng-template #dropdown>
+                <tui-data-list size="l">
+                    <ng-container *tuiRepeatTimes="let index of 5">
+                        <button
+                            *ngIf="index > lastIndex"
+                            tuiOption
+                            type="button"
+                        >
+                            Action {{ index + 1 }}
+                        </button>
+                    </ng-container>
+                </tui-data-list>
+            </ng-template>
+        </ng-template>
+    </tui-items-with-more>
+
     <button
-        appearance="glass"
+        *ngIf="!isMobile()"
         iconStart="@tui.send"
-        size="m"
         tuiButton
         type="button"
-        [disabled]="expanded"
     >
-        {{ isMobile() ? '' : 'Send' }}
+        Send
     </button>
     <button
         *ngIf="!isMobile()"
-        appearance="glass"
         iconStart="@tui.trash"
-        size="m"
         tuiButton
         type="button"
-        [disabled]="expanded"
         (click)="close()"
     >
         Delete
@@ -111,9 +160,15 @@
 
     <button
         *ngIf="isMobile()"
-        appearance="glass"
+        iconStart="@tui.send"
+        tuiIconButton
+        type="button"
+    >
+        Send
+    </button>
+    <button
+        *ngIf="isMobile()"
         iconStart="@tui.ellipsis"
-        size="m"
         tuiIconButton
         type="button"
         (click)="expanded = !expanded"
@@ -125,7 +180,6 @@
         *ngIf="!isMobile()"
         appearance="icon"
         iconStart="@tui.x"
-        size="m"
         tuiIconButton
         type="button"
         (click)="close()"

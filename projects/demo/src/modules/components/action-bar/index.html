@@ -4,23 +4,15 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>
-            It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
-            content.
-        </p>
+        It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
+        content.
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="directive"
-            heading="Customization"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 

@@ -891,7 +891,7 @@ export const pages: TuiDocRoutePages = [
     {
         section: 'Navigation',
         title: 'Segmented',
-        keywords: 'tabs, control, radio, navigation, навигация, beaver, вкладки, таб',
+        keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
         route: DemoRoute.Segmented,
     },
     {
@@ -934,7 +934,7 @@ export const pages: TuiDocRoutePages = [
     {
         section: 'Layout',
         title: 'Navigation',
-        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
+        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
         route: DemoRoute.Navigation,
     },
     {
