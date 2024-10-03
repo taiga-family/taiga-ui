@@ -16,6 +16,7 @@ import {tuiProvide, tuiPure} from '@taiga-ui/cdk/utils';
 import {
     delay,
     distinctUntilChanged,
+    EMPTY,
     filter,
     map,
     merge,
@@ -71,7 +72,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 map(() => this.control.control),
                 filter(Boolean),
                 distinctUntilChanged(),
-                switchMap((c) => merge(c.valueChanges, c.statusChanges)),
+                switchMap((c) =>
+                    merge(c.valueChanges, c.statusChanges, (c as any).events || EMPTY),
+                ),
                 takeUntilDestroyed(),
             )
             .subscribe(() => this.update());

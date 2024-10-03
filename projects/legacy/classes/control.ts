@@ -10,6 +10,7 @@ import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     delay,
     distinctUntilChanged,
+    EMPTY,
     filter,
     map,
     merge,
@@ -138,7 +139,11 @@ export abstract class AbstractTuiControl<T>
                 filter(tuiIsPresent),
                 distinctUntilChanged(),
                 switchMap((control) =>
-                    merge(control.valueChanges, control.statusChanges),
+                    merge(
+                        control.valueChanges,
+                        control.statusChanges,
+                        (control as any).events || EMPTY,
+                    ),
                 ),
                 takeUntilDestroyed(this.destroyRef),
             )

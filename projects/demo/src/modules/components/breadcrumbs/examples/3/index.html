@@ -1,0 +1,36 @@
+<h3>Truncate</h3>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <button
+            *tuiItem
+            tuiLink
+            class="link"
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>
+<h3>Fade</h3>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <button
+            *tuiItem
+            tuiFade
+            tuiLink
+            class="link"
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>
+<h3>Scroll</h3>
+<tui-breadcrumbs tuiFade>
+    <ng-container *ngFor="let item of items">
+        <button
+            *tuiItem
+            tuiLink
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>

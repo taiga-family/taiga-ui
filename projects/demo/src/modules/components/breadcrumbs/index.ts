@@ -43,5 +43,6 @@ export default class Example {
     protected readonly examples = [
         {name: 'Basic'},
         {name: 'More button', description: 'Plus using DI options'},
+        {name: 'Overflow', description: 'Different overflow strategies'},
     ];
 }
