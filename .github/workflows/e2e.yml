@@ -41,15 +41,25 @@ jobs:
           path: ${{ env.CYPRESS_BASELINE_REPO }}
       - uses: taiga-family/ci/actions/setup/variables@v1.93.0
       - uses: taiga-family/ci/actions/setup/node@v1.93.0
+        id: node
 
-      - name: Share node_modules between current and baseline repos
-        run: |
-          cp -r node_modules ${{ env.CYPRESS_BASELINE_REPO }}/node_modules
-          tree -d -L 1
-          tree -d ${{ env.CYPRESS_BASELINE_REPO }} -L 1
+      - name: Restore cache for baseline
+        uses: actions/cache/restore@v4.0.2
+        id: baseline_cache
+        with:
+          path: ${{ env.CYPRESS_BASELINE_REPO }}/node_modules
+          # TODO: replace with ${{ steps.node.outputs.node-version }}
+          key:
+            "${{ runner.os }}-node-20.x__${{ hashFiles(format('{0}/package-lock.json', env.CYPRESS_BASELINE_REPO)) }}"
+
+      - name: Install dependencies for baseline state
+        if: steps.baseline_cache.outputs.cache-hit != 'true'
+        run: cd ${{ env.CYPRESS_BASELINE_REPO }} && npm i --workspaces --include-workspace-root
 
       - name: Run tests for baseline state
         run: |
+          tree -d -L 1
+          tree -d ${{ env.CYPRESS_BASELINE_REPO }} -L 1
           cd ${{ env.CYPRESS_BASELINE_REPO }}
           npx nx component-test demo-cypress
           cd ../
