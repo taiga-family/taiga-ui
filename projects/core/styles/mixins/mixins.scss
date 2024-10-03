@@ -145,3 +145,10 @@
         }
     }
 }
+
+@mixin text-truncate() {
+    @include text-overflow();
+    flex: 1;
+    min-inline-size: 0;
+    max-inline-size: max-content;
+}

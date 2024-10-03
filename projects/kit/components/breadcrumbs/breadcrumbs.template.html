@@ -1,9 +1,12 @@
 <ng-container *ngIf="items.changes | async" />
 <ng-container *ngFor="let item of items; let last = last">
     <ng-container [ngTemplateOutlet]="item" />
-    <tui-icon
-        *ngIf="!last"
-        class="t-icon"
-        [icon]="options.icon"
-    />
+    <ng-container *ngIf="!last">
+        <tui-icon
+            *ngIf="options.icon.length > 1; else char"
+            class="t-icon"
+            [icon]="options.icon"
+        />
+        <ng-template #char>&nbsp;{{ options.icon }}&nbsp;</ng-template>
+    </ng-container>
 </ng-container>
