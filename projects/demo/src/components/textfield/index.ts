@@ -4,14 +4,8 @@ import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiLooseUnion} from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiLink,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiTextfieldOptions,
-    TuiTitle,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS, TuiTextfieldOptions} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS, TuiLink, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

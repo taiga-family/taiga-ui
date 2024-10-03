@@ -20,5 +20,69 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-textfield
+                [iconEnd]="icons.iconEnd"
+                [iconStart]="icons.iconStart"
+                [tuiTextfieldCleaner]="textfield.cleaner"
+                [tuiTextfieldSize]="textfield.size"
+            >
+                <label tuiLabel>I am a label</label>
+                <input
+                    placeholder="I am placeholder"
+                    tuiTextfield
+                    [disabled]="disabled"
+                    [invalid]="invalid"
+                    [readOnly]="readonly"
+                    [(ngModel)]="value"
+                />
+                <tui-icon tuiTooltip="I am a hint" />
+            </tui-textfield>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[readonly]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="readonly"
+            >
+                Readonly state
+            </tr>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
+            >
+                Disabled state
+            </tr>
+            <tr
+                name="[invalid]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="invalid"
+            >
+                Invalid state
+            </tr>
+            <tr
+                name="[(ngModel)]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="value"
+            >
+                Value
+            </tr>
+            <tbody
+                #textfield
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>
