@@ -1,4 +1,4 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -80,11 +80,6 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     protected getContentVariants(
         template: PolymorpheusContent,
     ): readonly PolymorpheusContent[] | null {
-        if (template instanceof TemplateRef) {
-            this.cards['TemplateRef'] = template;
-            this.iconVariants = Object.keys(this.cards);
-        }
-
-        return [...this.iconVariants];
+        return [...this.iconVariants, template];
     }
 }
