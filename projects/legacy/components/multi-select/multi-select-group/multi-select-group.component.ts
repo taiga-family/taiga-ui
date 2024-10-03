@@ -28,7 +28,6 @@ import {combineLatest, map} from 'rxjs';
     styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        ngSkipHydration: 'true',
         '[class._label]': 'label',
     },
 })

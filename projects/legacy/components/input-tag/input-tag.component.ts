@@ -77,7 +77,6 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '[class._icon-start]': 'iconStart',
         '[class._expandable]': 'expandable',

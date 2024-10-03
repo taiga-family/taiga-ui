@@ -19,9 +19,6 @@ import type {TuiPoint} from '@taiga-ui/core/types';
     templateUrl: './color-picker.template.html',
     styleUrls: ['./color-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiColorPickerComponent {
     private readonly sanitizer = inject(DomSanitizer);

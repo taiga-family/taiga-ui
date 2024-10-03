@@ -30,7 +30,6 @@ import type {TuiTableBarOptions} from './table-bar.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiParentAnimation],
     host: {
-        ngSkipHydration: 'true',
         '[@tuiSlideInTop]': 'animation',
         '[attr.data-appearance]': 'context.mode',
     },

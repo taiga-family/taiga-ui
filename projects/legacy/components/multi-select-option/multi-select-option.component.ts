@@ -9,9 +9,6 @@ import {TuiSelectOptionComponent} from '@taiga-ui/legacy/components/select-optio
     templateUrl: './multi-select-option.template.html',
     styleUrls: ['./multi-select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiMultiSelectOptionComponent<
     T extends any[],

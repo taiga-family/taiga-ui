@@ -89,7 +89,6 @@ const MASK_SYMBOLS = /[ \-_()]/g;
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '(paste.capture.prevent.stop)': 'onPaste($event)',
         '(drop.capture.prevent.stop)': 'onPaste($event)',

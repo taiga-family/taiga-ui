@@ -31,7 +31,6 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
         tuiAsControl(TuiInputPasswordComponent),
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

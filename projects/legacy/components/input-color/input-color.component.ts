@@ -32,7 +32,6 @@ type MaskMode = 'gradient' | 'hex' | 'rgb';
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiDropdownOptionsProvider({maxHeight: 600})],
     host: {
-        ngSkipHydration: 'true',
         '(click)': 'onClick()',
     },
 })

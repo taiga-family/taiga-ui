@@ -48,7 +48,6 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'controller.size',
         '[class._label-outside]': 'controller.labelOutside',
     },

@@ -49,9 +49,6 @@ export interface TuiIconError {
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        ngSkipHydration: 'true',
-    },
 })
 export class TuiSvgComponent {
     private icon: TuiSafeHtml = '';

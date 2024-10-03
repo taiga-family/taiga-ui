@@ -55,7 +55,6 @@ function isText(value: string): boolean {
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
     },
 })

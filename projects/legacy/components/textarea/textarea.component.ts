@@ -43,7 +43,6 @@ export const LINE_HEIGHT_L = 24;
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
-        ngSkipHydration: 'true',
         '[attr.data-size]': 'size',
         '[class._ios]': 'isIOS',
         '[class._expandable]': 'expandable',
