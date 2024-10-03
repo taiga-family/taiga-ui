@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiHint, TuiLink} from '@taiga-ui/core';
 import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiBreadcrumbs, TuiItem, TuiLink, NgForOf, TuiFade],
+    imports: [TuiBreadcrumbs, TuiItem, TuiLink, NgForOf, TuiFade, TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],

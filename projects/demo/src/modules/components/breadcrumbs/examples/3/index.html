@@ -3,7 +3,9 @@
     <ng-container *ngFor="let item of items">
         <button
             *tuiItem
+            tuiHintOverflow
             tuiLink
+            type="button"
             class="link"
         >
             {{ item }}
@@ -16,7 +18,9 @@
         <button
             *tuiItem
             tuiFade
+            tuiHintOverflow
             tuiLink
+            type="button"
             class="link"
         >
             {{ item }}
@@ -29,6 +33,7 @@
         <button
             *tuiItem
             tuiLink
+            type="button"
         >
             {{ item }}
         </button>
