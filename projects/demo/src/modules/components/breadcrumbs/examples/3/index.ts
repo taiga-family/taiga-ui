@@ -8,12 +8,12 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/
 
 @Component({
     standalone: true,
-    imports: [TuiBreadcrumbs, TuiItem, TuiLink, NgForOf, TuiFade, TuiHint],
+    imports: [NgForOf, TuiBreadcrumbs, TuiFade, TuiHint, TuiItem, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],
     encapsulation,
     changeDetection,
+    providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],
 })
 export default class Example {
     protected readonly items = [
