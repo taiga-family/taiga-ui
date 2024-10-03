@@ -14,9 +14,6 @@ jobs:
       - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.93.0
       - uses: taiga-family/ci/actions/setup/node@v1.93.0
-      - uses: taiga-family/ci/actions/run/node-info@v1.93.0
-        id: info
-      - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
       - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v4.6.0
