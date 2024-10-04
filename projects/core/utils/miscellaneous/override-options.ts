@@ -1,6 +1,3 @@
-import type {ProviderToken} from '@angular/core';
-import {inject} from '@angular/core';
-
 export function tuiOverrideOptions<T>(
     override: Partial<T>,
     fallback: T,
@@ -15,15 +12,4 @@ export function tuiOverrideOptions<T>(
 
         return result;
     };
-}
-
-export function tuiOverrideDefaultOptions<T>(
-    key: ProviderToken<T>,
-    options: Partial<T>,
-): void {
-    const defaultOptions = inject(key, {self: true});
-
-    Object.keys(options).forEach((key) => {
-        (defaultOptions as Record<string, unknown>)[key] = options[key as keyof T];
-    });
 }

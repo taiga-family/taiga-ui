@@ -18,3 +18,4 @@ export * from './dropdown-position-sided.directive';
 export * from './dropdown-selection.directive';
 export * from './dropdowns.component';
 export * from './with-dropdown-open.directive';
+export * from './dropdown-fixed.directive';
