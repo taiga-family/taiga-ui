@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 import {
     TuiInputModule,
     TuiInputNumberModule,
@@ -29,22 +29,19 @@ import {interval, map, of, scan, startWith} from 'rxjs';
     encapsulation,
     changeDetection,
     providers: [
-        {
-            provide: TUI_VALIDATION_ERRORS,
-            useValue: {
-                required: 'Enter this!',
-                email: 'Enter a valid email',
-                maxlength: ({requiredLength}: {requiredLength: string}) =>
-                    `Maximum length — ${requiredLength}`,
-                minlength: ({requiredLength}: {requiredLength: string}) =>
-                    of(`Minimum length — ${requiredLength}`),
-                min: interval(2000).pipe(
-                    scan(tuiIsFalsy, false),
-                    map((val) => (val ? 'Fix please' : 'Min number 3')),
-                    startWith('Min number 3'),
-                ),
-            },
-        },
+        tuiValidationErrorsProvider({
+            required: 'Enter this!',
+            email: 'Enter a valid email',
+            maxlength: ({requiredLength}: {requiredLength: string}) =>
+                `Maximum length — ${requiredLength}`,
+            minlength: ({requiredLength}: {requiredLength: string}) =>
+                of(`Minimum length — ${requiredLength}`),
+            min: interval(2000).pipe(
+                scan(tuiIsFalsy, false),
+                map((val) => (val ? 'Fix please' : 'Min number 3')),
+                startWith('Min number 3'),
+            ),
+        }),
     ],
 })
 export default class Example {

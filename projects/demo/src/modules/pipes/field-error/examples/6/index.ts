@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiHintDirective} from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
+import {TuiFieldErrorContentPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -26,14 +26,10 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
     encapsulation,
     changeDetection,
     providers: [
-        {
-            provide: TUI_VALIDATION_ERRORS,
-            useValue: {
-                required: 'Enter this!',
-                max: (context: {max: number}): string =>
-                    `Too expensive, max ${context.max}`,
-            },
-        },
+        tuiValidationErrorsProvider({
+            required: 'Enter this!',
+            max: (context: {max: number}): string => `Too expensive, max ${context.max}`,
+        }),
     ],
 })
 export default class Example {
