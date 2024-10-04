@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiImgLazyLoading} from '@taiga-ui/kit';
 
 describe('LazyLoading', () => {
@@ -29,7 +28,6 @@ describe('LazyLoading', () => {
 
     beforeEach(() =>
         cy.mount(Test, {
-            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 src: '',
             },

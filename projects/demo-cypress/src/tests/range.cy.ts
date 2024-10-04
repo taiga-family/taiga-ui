@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiRange} from '@taiga-ui/kit';
 
@@ -44,10 +43,7 @@ describe('TuiRange', () => {
     }
 
     beforeEach(() => {
-        cy.mount(Test, {
-            imports: [TuiRange, ReactiveFormsModule],
-            providers: [NG_EVENT_PLUGINS],
-        }).then((wrapper) => {
+        cy.mount(Test).then((wrapper) => {
             component = wrapper.component;
             fixture = wrapper.fixture;
         });

@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiZoomEvent} from '@taiga-ui/cdk';
 import {tuiFloor, TuiZoom} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiZoom', () => {
     let component: Test;
@@ -26,14 +25,9 @@ describe('TuiZoom', () => {
     }
 
     beforeEach(() =>
-        cy
-            .mount(Test, {
-                imports: [TuiZoom],
-                providers: [NG_EVENT_PLUGINS],
-            })
-            .then((wrapper) => {
-                component = wrapper.component;
-            }),
+        cy.mount(Test).then((wrapper) => {
+            component = wrapper.component;
+        }),
     );
 
     it('pinch', () => {

@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTabs} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
@@ -44,14 +43,9 @@ describe('Tabs', () => {
     }
 
     beforeEach(() =>
-        cy
-            .mount(Test, {
-                imports: [TuiTabs],
-                providers: [NG_EVENT_PLUGINS],
-            })
-            .then((wrapper) => {
-                component = wrapper.component;
-            }),
+        cy.mount(Test).then((wrapper) => {
+            component = wrapper.component;
+        }),
     );
 
     it('navigation by arrows works when going right', () => {
