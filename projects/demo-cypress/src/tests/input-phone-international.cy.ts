@@ -29,7 +29,7 @@ import {createOutputSpy} from 'cypress/angular';
                 [formControl]="control"
                 [(countryIsoCode)]="countryIsoCode"
             >
-                <tui-icon icon="@tui.phone" />
+                <tui-icon icon="@tui.sun" />
             </tui-input-phone-international>
         </tui-root>
     `,

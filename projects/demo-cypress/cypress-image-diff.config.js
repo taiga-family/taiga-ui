@@ -6,4 +6,7 @@ module.exports = {
         FILENAME: 'report-summary',
         OVERWRITE: true,
     },
+    RETRY_OPTIONS: {
+        doNotFail: process.env.CI || false,
+    },
 };
