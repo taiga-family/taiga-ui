@@ -19,6 +19,7 @@ import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiDropdownFixed} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_TIME_TEXTS, TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -32,7 +33,6 @@ import {map, timer} from 'rxjs';
 
 import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
-import {TuiDropdownFixed} from '@taiga-ui/core';
 
 @Component({
     standalone: false,
