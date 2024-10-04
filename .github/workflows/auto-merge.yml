@@ -43,10 +43,12 @@ jobs:
       - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.93.1
       - uses: taiga-family/ci/actions/auto/approve/double@v1.93.1
+        if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
       - uses: taiga-family/ci/actions/run/merge@v1.93.1
+        if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
