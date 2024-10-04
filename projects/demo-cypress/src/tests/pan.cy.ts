@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiPan} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiPan', () => {
     let component: Test;
@@ -22,14 +21,9 @@ describe('TuiPan', () => {
     }
 
     beforeEach(() =>
-        cy
-            .mount(Test, {
-                imports: [TuiPan],
-                providers: [NG_EVENT_PLUGINS],
-            })
-            .then((wrapper) => {
-                component = wrapper.component;
-            }),
+        cy.mount(Test).then((wrapper) => {
+            component = wrapper.component;
+        }),
     );
 
     it('emits delta', () => {

@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk';
 import {TuiSwipe} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiSwipe', () => {
     let component: Test;
@@ -26,14 +25,9 @@ describe('TuiSwipe', () => {
     }
 
     beforeEach(() =>
-        cy
-            .mount(Test, {
-                imports: [TuiSwipe],
-                providers: [NG_EVENT_PLUGINS],
-            })
-            .then((wrapper) => {
-                component = wrapper.component;
-            }),
+        cy.mount(Test).then((wrapper) => {
+            component = wrapper.component;
+        }),
     );
 
     it('emits events bottom', () => {

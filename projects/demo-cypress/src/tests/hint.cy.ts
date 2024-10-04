@@ -2,7 +2,6 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {MountResponse} from 'cypress/angular';
 
 describe('TuiHint', () => {
@@ -47,7 +46,6 @@ describe('TuiHint', () => {
         cy
             .mount(Test, {
                 imports: [NoopAnimationsModule, Host],
-                providers: [NG_EVENT_PLUGINS],
             })
             .then((wrap) => {
                 component = wrap.component;
