@@ -73,4 +73,5 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Didinti',
         reset: 'Atstatyti',
     },
+    phoneSearch: 'Ievadiet valsti vai kodu',
 };

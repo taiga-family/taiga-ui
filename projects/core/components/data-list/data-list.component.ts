@@ -70,7 +70,6 @@ export class TuiDataListComponent<T>
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
-
     protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
     protected readonly empty = signal(false);
 

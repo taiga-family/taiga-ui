@@ -47,6 +47,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected countries = this.countriesVariants[0]!;
+    protected countrySearch = false;
 
     protected readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
         'RU',

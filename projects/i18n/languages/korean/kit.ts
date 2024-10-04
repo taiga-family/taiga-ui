@@ -69,4 +69,5 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: '확대하다',
         reset: '다시 놓기',
     },
+    phoneSearch: '국가 또는 코드를 입력하세요',
 };

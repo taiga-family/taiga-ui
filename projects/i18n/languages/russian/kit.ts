@@ -69,4 +69,5 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomOut: 'Уменьшить масштаб',
         reset: 'Сбросить масштаб',
     },
+    phoneSearch: 'Введите страну или код',
 };

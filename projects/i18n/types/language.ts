@@ -109,6 +109,7 @@ export interface TuiLanguageKit {
         zoomOut: string;
         reset: string;
     };
+    phoneSearch: string;
 }
 
 export interface TuiLanguageCommerce {

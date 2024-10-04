@@ -69,4 +69,5 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'לְהִתְמַקֵד',
         reset: 'אִתחוּל',
     },
+    phoneSearch: 'הקלד מדינה או קוד',
 };

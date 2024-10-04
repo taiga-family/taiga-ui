@@ -6,6 +6,7 @@ const COMMON_ICONS: TuiCommonIcons = {
     close: '@tui.x',
     error: '@tui.circle-alert',
     more: '@tui.chevron-right',
+    search: '@tui.search',
 };
 
 export interface TuiCommonIcons {
@@ -13,6 +14,7 @@ export interface TuiCommonIcons {
     readonly close: string;
     readonly error: string;
     readonly more: string;
+    readonly search: string;
 }
 
 export const TUI_COMMON_ICONS = tuiCreateToken(COMMON_ICONS);

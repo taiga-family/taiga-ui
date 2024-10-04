@@ -70,4 +70,5 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomIn: 'Vergrößern',
         reset: 'Zurücksetzen',
     },
+    phoneSearch: 'Geben Sie das Land oder den Code ein',
 };

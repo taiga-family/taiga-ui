@@ -69,4 +69,5 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         zoomOut: 'Паменшыць',
         reset: 'Скінуць маштаб',
     },
+    phoneSearch: 'Увядзіце краіну або код',
 };
