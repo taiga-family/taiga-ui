@@ -72,11 +72,13 @@ html[data-theme='dark'] {
 }
 
 .DocSearch.DocSearch-Button {
+    .transition(~'box-shadow, color');
+
     position: relative;
     block-size: var(--tui-height-s);
     margin: 0;
     border-radius: var(--tui-radius-m);
-    .transition(~'box-shadow, color');
+    background: transparent;
 
     .DocSearch-Search-Icon {
         color: var(--docsearch-muted-color);
