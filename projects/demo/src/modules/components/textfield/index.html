@@ -23,6 +23,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-textfield
+                [filler]="filler"
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
                 [tuiTextfieldCleaner]="textfield.cleaner"
@@ -32,39 +33,15 @@
                 <input
                     placeholder="I am placeholder"
                     tuiTextfield
-                    [disabled]="disabled"
-                    [invalid]="invalid"
-                    [readOnly]="readonly"
+                    [disabled]="control.disabled"
+                    [invalid]="control.invalid"
+                    [readOnly]="control.readonly"
                     [(ngModel)]="value"
                 />
                 <tui-icon tuiTooltip="I am a hint" />
             </tui-textfield>
         </tui-doc-demo>
         <table tuiDocAPI>
-            <tr
-                name="[readonly]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="readonly"
-            >
-                Readonly state
-            </tr>
-            <tr
-                name="[disabled]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="disabled"
-            >
-                Disabled state
-            </tr>
-            <tr
-                name="[invalid]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="invalid"
-            >
-                Invalid state
-            </tr>
             <tr
                 name="[(ngModel)]"
                 tuiDocAPIItem
@@ -73,6 +50,18 @@
             >
                 Value
             </tr>
+            <tr
+                name="[filler]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="filler"
+            >
+                Filler
+            </tr>
+            <tbody
+                #control
+                tuiDocControl
+            ></tbody>
             <tbody
                 #textfield
                 tuiDocTextfield

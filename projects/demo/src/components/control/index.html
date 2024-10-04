@@ -1,0 +1,36 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>ControlOptions</strong>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('readonly')"
+    name="[readonly]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="readonly"
+>
+    Readonly state
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('disabled')"
+    name="[disabled]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="disabled"
+>
+    Disabled state
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('invalid')"
+    name="[invalid]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="invalid"
+>
+    Invalid state
+</tr>

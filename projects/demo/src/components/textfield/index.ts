@@ -1,16 +1,15 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiLooseUnion} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiTextfieldOptions} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_OPTIONS, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocTextfield]',
-    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
+    imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

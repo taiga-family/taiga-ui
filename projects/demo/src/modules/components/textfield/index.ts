@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,6 +13,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
     imports: [
         FormsModule,
         TuiDemo,
+        TuiDocControl,
         TuiDocIcons,
         TuiDocTextfield,
         TuiIcon,
@@ -31,6 +33,8 @@ export default class Page {
     ];
 
     protected value = '';
+    protected filler = '';
+
     protected readonly = false;
     protected disabled = false;
     protected invalid = false;
