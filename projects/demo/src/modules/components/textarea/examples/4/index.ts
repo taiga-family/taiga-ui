@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiError, TuiHint, TuiLabel} from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 const LONG_TEXT_EXAMPLE = `
@@ -36,13 +36,10 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
     encapsulation,
     changeDetection,
     providers: [
-        {
-            provide: TUI_VALIDATION_ERRORS,
-            useValue: {
-                required: 'Enter this!',
-                maxlength: maxLengthMessageFactory,
-            },
-        },
+        tuiValidationErrorsProvider({
+            required: 'Enter this!',
+            maxlength: maxLengthMessageFactory,
+        }),
     ],
 })
 export default class Example implements AfterViewInit {

@@ -5,7 +5,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiFieldErrorContentPipe} from '@taiga-ui/kit/pipes';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
+import {tuiValidationErrorsProvider} from '@taiga-ui/kit/tokens';
 
 describe('TuiFieldErrorContentPipe', () => {
     const testError = 'testError';
@@ -43,13 +43,10 @@ describe('TuiFieldErrorContentPipe', () => {
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
         providers: [
-            {
-                provide: TUI_VALIDATION_ERRORS,
-                useValue: {
-                    min: testError,
-                    max: ({max}: {max: number}) => `error ${max}`,
-                },
-            },
+            tuiValidationErrorsProvider({
+                min: testError,
+                max: ({max}: {max: number}) => `error ${max}`,
+            }),
         ],
     })
     class Test {

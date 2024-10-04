@@ -7,11 +7,7 @@
         <p>
             FieldErrorPipe takes order of errors as array and transform it to
             <code>TuiValidationError</code>
-            . Can be used with
-            <code>TuiError</code>
-        </p>
-        <p>
-            You can also use
+            . Can be used with TuiError component. You can also use
             <code>tuiFieldErrorContentPipe</code>
             with
             <code>TuiHint</code>
@@ -23,7 +19,17 @@
             >
                 tuiFieldErrorContentPipe example
             </a>
-            ). It returns a content of the TuiValidationError.
+            ). It returns a content of the TuiValidationError. The idea of
+            <code>tuiFieldError</code>
+            is to link
+            <code>tui-error</code>
+            with form controls. Also you can use
+            <code>tuiValidationErrorsProvider</code>
+            which provided
+            <code>TUI_VALIDATION_ERRORS</code>
+            . The idea of
+            <code>TUI_VALIDATION_ERRORS</code>
+            is to provide presentation for arbitrary error objects stored inside controls
         </p>
 
         <tui-doc-example
