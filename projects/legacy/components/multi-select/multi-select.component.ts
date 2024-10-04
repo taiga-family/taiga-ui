@@ -18,6 +18,7 @@ import type {
     TuiMapper,
     TuiStringHandler,
 } from '@taiga-ui/cdk/types';
+import {tuiGetClipboardDataText} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayToggle, tuiIsString, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {
@@ -39,7 +40,10 @@ import {
     TuiStringifiableItem,
 } from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
-import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
+import {
+    TUI_INPUT_TAG_OPTIONS,
+    TuiInputTagComponent,
+} from '@taiga-ui/legacy/components/input-tag';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -91,6 +95,7 @@ export class TuiMultiSelectComponent<T>
     private readonly arrowMode = inject(TUI_ARROW_MODE);
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
+    private readonly inputTagOptions = inject(TUI_INPUT_TAG_OPTIONS);
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZone>>;
@@ -249,6 +254,31 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
+    protected onKeyDown(event: KeyboardEvent): void {
+        if (event.key === this.inputTagOptions.separator) {
+            this.onEnter(event);
+        }
+    }
+
+    protected onPaste(event: Event): void {
+        const pasted = tuiGetClipboardDataText(event as ClipboardEvent);
+        const tags = pasted
+            .split(this.inputTagOptions.separator)
+            .map((tag) => tag.trim());
+        const options = this.accessor?.getOptions() ?? [];
+        const separator = tuiIsString(this.inputTagOptions.separator)
+            ? this.inputTagOptions.separator
+            : ',';
+
+        const matches =
+            options?.filter((option) => tags.includes(this.stringify(option))) ?? [];
+        const matchingStrings = matches.map((v) => String(v));
+        const invalid = tags.filter((value) => !matchingStrings.includes(value));
+
+        this.value = this.filterValue([...this.value, ...matches]);
+        this.updateSearch(invalid.length ? invalid.join(separator) : null);
+    }
+
     protected onClick({nativeFocusableElement}: TuiInputTagComponent): void {
         if (
             this.interactive &&
@@ -265,6 +295,15 @@ export class TuiMultiSelectComponent<T>
 
     protected onActiveZone(active: boolean): void {
         this.updateFocused(active);
+    }
+
+    private filterValue(value: T[]): T[] {
+        const seen = new Set();
+
+        return value
+            .reverse()
+            .filter((item) => item && !seen.has(item) && seen.add(item))
+            .reverse();
     }
 
     private updateSearch(search: string | null): void {

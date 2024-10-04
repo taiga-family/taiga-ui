@@ -32,7 +32,9 @@
         (click.prevent)="onClick(inputTag)"
         (keydown.enter)="onEnter($event)"
         (keydown.space)="onSpace($event)"
+        (keydown)="onKeyDown($event)"
         (ngModelChange)="onInput($event)"
+        (paste.capture.stop.prevent)="onPaste($event)"
         (searchChange)="onSearch($event)"
     >
         <ng-content />
