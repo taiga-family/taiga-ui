@@ -1,12 +1,14 @@
 import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {ElementRef, OnInit} from '@angular/core';
+import type {AfterViewInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
+    DestroyRef,
     inject,
     Input,
+    NgZone,
     signal,
     TemplateRef,
     ViewChild,
@@ -20,6 +22,7 @@ import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
+import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -32,7 +35,7 @@ import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
-import {skip} from 'rxjs';
+import {skip, timer} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -65,7 +68,7 @@ const MIN_WIDTH = 160;
         '(document:mouseup.silent)': 'onMouseUp()',
     },
 })
-export class TuiDocDemo implements OnInit {
+export class TuiDocDemo implements AfterViewInit {
     @ViewChild(TuiResizable, {static: true})
     private readonly resizable?: ElementRef<HTMLElement>;
 
@@ -76,6 +79,8 @@ export class TuiDocDemo implements OnInit {
     private readonly resizer?: ElementRef<HTMLElement>;
 
     private readonly el = tuiInjectElement();
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly ngZone = inject(NgZone);
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
@@ -83,6 +88,8 @@ export class TuiDocDemo implements OnInit {
 
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
+
+    protected readonly rendered = signal(false);
 
     protected theme = computed(() => (this.dark() ? 'dark' : 'light'));
 
@@ -112,9 +119,14 @@ export class TuiDocDemo implements OnInit {
     @Input()
     public sticky = true;
 
-    public ngOnInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
+    public ngAfterViewInit(): void {
+        timer(0, tuiZonefreeScheduler(this.ngZone))
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this.createForm();
+                this.updateWidth(this.sandboxWidth + this.delta);
+                this.rendered.set(true);
+            });
     }
 
     protected onResize(): void {

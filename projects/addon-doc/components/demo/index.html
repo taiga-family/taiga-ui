@@ -25,6 +25,7 @@
     class="t-wrapper"
     [attr.tuiTheme]="theme()"
     [class.t-wrapper_transparent]="!opaque"
+    [style.visibility]="rendered() ? 'visible' : 'hidden'"
 >
     <div class="t-content">
         <div
