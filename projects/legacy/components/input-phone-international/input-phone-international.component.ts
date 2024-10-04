@@ -15,7 +15,7 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdown, TuiDropdownFixed} from '@taiga-ui/core/directives/dropdown';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
@@ -40,11 +40,7 @@ import {
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {TUI_COUNTRIES_MASKS, tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {
-    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-    tuiGetMaxAllowedPhoneLength,
-    tuiIsoToCountryCode,
-} from '@taiga-ui/legacy/utils';
+import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -87,7 +83,7 @@ const MASK_SYMBOLS = /[ \-_()]/g;
         tuiAsControl(TuiInputPhoneInternationalComponent),
         TuiToCountryCodePipe,
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
         '(paste.capture.prevent.stop)': 'onPaste($event)',

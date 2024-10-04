@@ -29,7 +29,7 @@ import {
     tuiAsDataListHost,
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
-import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
@@ -46,7 +46,6 @@ import {
 } from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiMultiSelectOptions} from './multi-select.options';
@@ -65,7 +64,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
         tuiAsDataListHost(TuiMultiSelectComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
         '[class._editable]': 'editable',

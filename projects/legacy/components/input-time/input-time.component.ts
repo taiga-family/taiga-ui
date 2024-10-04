@@ -27,12 +27,12 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map, timer} from 'rxjs';
 
 import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
+import {TuiDropdownFixed} from '@taiga-ui/core';
 
 @Component({
     standalone: false,
@@ -46,7 +46,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
         tuiAsDataListHost(TuiInputTimeComponent),
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '(click)': 'onClick()',
         '[attr.data-size]': 'size',
