@@ -7,7 +7,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
     standalone: true,
     imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
-        <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
+        <ng-container *polymorpheusOutlet="content() as text">{{ text }}</ng-container>
     `,
     styleUrls: ['./line-clamp-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

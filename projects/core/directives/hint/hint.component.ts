@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -15,7 +15,6 @@ import {
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
@@ -41,7 +40,7 @@ export const TUI_HINT_PROVIDERS = [
     template: `
         <ng-content />
         <span
-            *polymorpheusOutlet="content as text; context: hint.context"
+            *polymorpheusOutlet="content() as text; context: hint.context"
             [innerHTML]="text"
         ></span>
     `,
@@ -69,6 +68,11 @@ export class TuiHintComponent<C = any> {
 
     protected readonly hint = injectContext<TuiContext<TuiHintDirective<C>>>().$implicit;
 
+    protected readonly content =
+        this.hint.component.component === TuiHintUnstyledComponent
+            ? signal('')
+            : this.hint.content;
+
     protected readonly appearance =
         this.hint.appearance ||
         this.hint.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
@@ -88,12 +92,6 @@ export class TuiHintComponent<C = any> {
         inject(TuiHoveredService)
             .pipe(takeUntilDestroyed())
             .subscribe((hover) => this.hover.toggle(hover));
-    }
-
-    protected get content(): PolymorpheusContent<C> {
-        return this.hint.component.component === TuiHintUnstyledComponent
-            ? ''
-            : this.hint.content;
     }
 
     protected onClick(target: HTMLElement): void {

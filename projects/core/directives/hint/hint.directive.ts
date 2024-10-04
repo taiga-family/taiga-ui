@@ -1,5 +1,5 @@
 import type {OnDestroy} from '@angular/core';
-import {Directive, inject, INJECTOR, Input} from '@angular/core';
+import {Directive, inject, INJECTOR, Input, signal} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
@@ -50,7 +50,7 @@ export class TuiHintDirective<C>
     @Input('tuiHintAppearance')
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
-    public content: PolymorpheusContent<C>;
+    public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly activeZone? = inject(TuiActiveZone, {optional: true});
@@ -58,7 +58,7 @@ export class TuiHintDirective<C>
 
     @Input()
     public set tuiHint(content: PolymorpheusContent<C>) {
-        this.content = content;
+        this.content.set(content);
 
         if (!content) {
             this.toggle(false);
@@ -74,7 +74,7 @@ export class TuiHintDirective<C>
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content) {
+        if (show && this.content()) {
             this.service.add(this);
         } else {
             this.service.remove(this);
