@@ -24,7 +24,7 @@ import {
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiArrayRemove} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiArrayRemove, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
@@ -415,9 +415,14 @@ export class TuiInputTagComponent
             .map((item) => this.clippedValue(item.trim()))
             .filter((item, index, {length}) => item.length > 0 && index !== length - 1);
         const validated = tags.filter((tag) => !this.disabledItemHandler(tag));
+        const invalid = tags.filter((tag) => this.disabledItemHandler(tag));
 
         if (array.length > 1) {
-            this.updateSearch(this.clippedValue(array[array.length - 1]?.trim() ?? ''));
+            const search = invalid.length
+                ? invalid.join(tuiIsString(this.separator) ? this.separator : ',')
+                : (array[array.length - 1]?.trim() ?? '');
+
+            this.updateSearch(this.clippedValue(search));
             this.value = this.filterValue([...this.value, ...validated]);
         } else {
             this.updateSearch(this.clippedValue(value));
