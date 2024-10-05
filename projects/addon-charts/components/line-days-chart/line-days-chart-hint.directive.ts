@@ -78,7 +78,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
 
     @tuiPure
     private getMap(
-        ...values: Array<ReadonlyArray<[TuiDay, number]>>
+        ...values: ReadonlyArray<ReadonlyArray<[TuiDay, number]>>
     ): Map<string, ReadonlyArray<[TuiDay, number]>> {
         return (values[0] || []).reduce(
             (map, [day]) =>

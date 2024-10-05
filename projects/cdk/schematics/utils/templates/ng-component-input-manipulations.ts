@@ -113,7 +113,7 @@ export function getInputPropertyOffsets(
     tags: string[],
     // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
-): Array<[number, number]> {
+): ReadonlyArray<[number, number]> {
     return findElementsWithAttribute(html, attrName)
         .filter(
             (element) =>
@@ -139,13 +139,13 @@ export function getInputPropertyValueOffsets(
     template: string,
     attrName: string,
     tags: string[],
-): Array<[number, number]> {
-    const stringProperties: Array<[number, number]> = getInputPropertyOffsets(
+): ReadonlyArray<[number, number]> {
+    const stringProperties: ReadonlyArray<[number, number]> = getInputPropertyOffsets(
         template,
         attrName,
         tags,
     ).map(([start, end]) => [start + attrName.length + '="'.length, end - 1]);
-    const propertyBindings: Array<[number, number]> = getInputPropertyOffsets(
+    const propertyBindings: ReadonlyArray<[number, number]> = getInputPropertyOffsets(
         template,
         `[${attrName}]`,
         tags,

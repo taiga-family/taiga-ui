@@ -1,4 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
+import {tuiIsArray} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
@@ -56,7 +57,7 @@ export function replaceAttrValues({
                 const attributeName =
                     attrNames.find((attrName) => attrName.toLowerCase() === name) || '';
 
-                if (Array.isArray(valueReplacer)) {
+                if (tuiIsArray(valueReplacer)) {
                     valueReplacer.forEach(({from, to}) => {
                         if (value === from) {
                             replaceValue({

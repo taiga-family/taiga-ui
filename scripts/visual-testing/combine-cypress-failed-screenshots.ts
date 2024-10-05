@@ -14,7 +14,7 @@ interface TestResult {
 }
 
 interface Report {
-    suites: Array<{tests: TestResult[]}>;
+    suites: ReadonlyArray<{tests: TestResult[]}>;
 }
 
 (async function combineCypressFailedScreenshots(): Promise<void> {

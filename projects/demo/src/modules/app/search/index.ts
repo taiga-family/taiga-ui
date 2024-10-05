@@ -38,7 +38,7 @@ export class TuiAlgoliaSearch {
     private enableDocSearch(): void {
         docsearch({
             ...this.config,
-            transformItems: (items: Array<{url: string}>) =>
+            transformItems: (items: ReadonlyArray<{url: string}>) =>
                 items.map((item) => ({
                     ...item,
                     url: item.url.replace('https://taiga-ui.dev/', ''),

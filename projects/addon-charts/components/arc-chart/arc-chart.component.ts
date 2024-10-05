@@ -19,7 +19,9 @@ const SIZE = {m: 9, l: 11, xl: 16} as const;
 const WIDTH = {m: 0.25, l: 0.375, xl: 0.5625} as const;
 const GAP = {m: 0.125, l: 0.1875, xl: 0.25} as const;
 
-function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
+function arcsToIndex(
+    arcs: QueryList<ElementRef<SVGElement>>,
+): ReadonlyArray<Observable<number>> {
     return arcs.map(({nativeElement}, index) =>
         merge(
             tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(map(() => index)),

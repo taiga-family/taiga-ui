@@ -23,7 +23,11 @@ export const TUI_FLOATING_PRECISION = 7;
  *  ];
  *
  */
-export type TuiKeySteps = [[0, number], ...Array<[number, number]>, [100, number]];
+export type TuiKeySteps = [
+    [0, number],
+    ...ReadonlyArray<[number, number]>,
+    [100, number],
+];
 
 function tuiFindKeyStepsBoundariesByFn(
     keySteps: TuiKeySteps,

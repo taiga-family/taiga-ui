@@ -1,3 +1,4 @@
+import {tuiToArray} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     infoLog,
     Node,
@@ -27,11 +28,11 @@ export function replaceIdentifiers(
     });
 
     constants.forEach(({from, to}) => {
-        toArray(from).forEach((x) => replaceIdentifier({from: x, to}));
+        tuiToArray(from).forEach((x) => replaceIdentifier({from: x, to}));
 
         !options['skip-logs'] &&
             progressLog(
-                toArray(from)
+                tuiToArray(from)
                     .map((x) => x.name)
                     .join(', '),
             );
@@ -42,7 +43,7 @@ export function replaceIdentifiers(
 }
 
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
-    const references = toArray(from)
+    const references = tuiToArray(from)
         .map(({name, moduleSpecifier}) => getNamedImportReferences(name, moduleSpecifier))
         .flat();
 
@@ -74,22 +75,18 @@ function addImports(
     identifier: ReplacementIdentifierMulti['to'],
     filePath: string,
 ): void {
-    toArray(identifier).forEach(({name, namedImport, moduleSpecifier}) => {
-        addUniqueImport(filePath, namedImport || name, moduleSpecifier);
-    });
+    tuiToArray(identifier).forEach(({name, namedImport, moduleSpecifier}) =>
+        addUniqueImport(filePath, namedImport || name, moduleSpecifier),
+    );
 }
 
 function getReplacementText(
     to: ReplacementIdentifierMulti['to'],
     inModule: boolean,
 ): string {
-    return toArray(to)
+    return tuiToArray(to)
         .map(({name, spreadInModule}) =>
             spreadInModule && inModule ? `...${name}` : name,
         )
         .join(', ');
-}
-
-function toArray<T>(x: T | T[]): T[] {
-    return Array.isArray(x) ? x : [x];
 }

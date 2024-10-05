@@ -13,13 +13,13 @@ export const appPrefix = (stringsPart: TemplateStringsArray, path = ''): string 
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
-): Array<[fileName: string, fileContent: string]> =>
+): ReadonlyArray<[fileName: string, fileContent: string]> =>
     Object.entries(files).filter(
         ([fileName, content]) => content && !isPrimaryComponentFile(fileName),
     );
 
 export const prepareSupportFiles = (
-    files: Array<[fileName: string, fileContent: string]>,
+    files: ReadonlyArray<[fileName: string, fileContent: string]>,
 ): Project['files'] => {
     const processedContent: Project['files'] = {};
 

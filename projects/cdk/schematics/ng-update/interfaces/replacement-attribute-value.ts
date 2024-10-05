@@ -4,7 +4,7 @@ export interface ReplacementAttributeValue {
     readonly attrNames: string[];
     readonly newAttrName?: string;
     readonly valueReplacer:
-        | Array<{
+        | ReadonlyArray<{
               readonly from: string;
               readonly to: string;
           }>

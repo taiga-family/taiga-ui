@@ -19,7 +19,7 @@ import {TUI_SHEET_OPTIONS} from './sheet-options';
 export class TuiSheetService {
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject<TuiSheetOptions>(TUI_SHEET_OPTIONS);
-    public readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);
+    public readonly sheets$ = new BehaviorSubject<ReadonlyArray<TuiSheet<any, any>>>([]);
 
     public open<G>(
         content: PolymorpheusContent<TuiSheet<G>>,

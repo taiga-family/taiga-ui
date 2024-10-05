@@ -97,7 +97,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         '@tui.credit-card',
     ];
 
-    protected stringifyVariants: Array<TuiStringHandler<Account | string>> = [
+    protected stringifyVariants: ReadonlyArray<TuiStringHandler<Account | string>> = [
         String,
         (item) => String(/\d+/.exec(String(item))),
     ];

@@ -26,7 +26,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected accept = '';
     protected acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
 
-    protected readonly showDeleteVariants: Array<boolean | 'always'> = [
+    protected readonly showDeleteVariants: ReadonlyArray<boolean | 'always'> = [
         true,
         false,
         'always',

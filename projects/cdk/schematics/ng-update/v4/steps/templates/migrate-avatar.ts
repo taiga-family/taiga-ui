@@ -26,7 +26,7 @@ const sizeMap: Record<string, string> = {
 
 function addModules(
     componentPath: string,
-    modules: Array<{moduleName: string; moduleSpecifier: string}>,
+    modules: ReadonlyArray<{moduleName: string; moduleSpecifier: string}>,
 ): void {
     modules.forEach(({moduleName, moduleSpecifier}) => {
         addImportToClosestModule(componentPath, moduleName, moduleSpecifier);

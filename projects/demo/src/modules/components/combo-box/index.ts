@@ -94,10 +94,9 @@ export default class Example extends AbstractExampleTuiControl {
 
     protected selectedValueTemplate = '';
 
-    protected readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
-        String,
-        (item) => String(/\d+/.exec(String(item))),
-    ];
+    protected readonly stringifyVariants: ReadonlyArray<
+        TuiStringHandler<Account | string>
+    > = [String, (item) => String(/\d+/.exec(String(item)))];
 
     protected stringify = this.stringifyVariants[0]!;
 

@@ -31,7 +31,7 @@ class ItemWithBadge {
 export default class Page {
     protected initialItems = ['Alex Inkin', 'Roman Sedov'];
 
-    protected itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [
+    protected itemsVariants: ReadonlyArray<ReadonlyArray<ItemWithBadge | string>> = [
         ['Alex Inkin', 'Roman Sedov'],
         [
             new ItemWithBadge('Focused Zone', 10),

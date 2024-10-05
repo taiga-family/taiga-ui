@@ -17,7 +17,7 @@ import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw'
  */
 const CODE_COMMENTS = /(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;
 
-function parseBreakpoints(file: string): Array<{name: string; value: string}> {
+function parseBreakpoints(file: string): ReadonlyArray<{name: string; value: string}> {
     return file
         .replaceAll(CODE_COMMENTS, '')
         .split(';')

@@ -68,7 +68,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected inputHidden = false;
 
-    protected readonly disabledItemHandlerVariants: Array<
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiStringifiableItem<string> | string>
     > = [TUI_FALSE_HANDLER, (item) => String(item).startsWith('T')];
 

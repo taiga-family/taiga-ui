@@ -12,6 +12,8 @@ export interface ReplacementIdentifier {
 }
 
 export interface ReplacementIdentifierMulti {
-    readonly from: Array<ReplacementIdentifier['from']> | ReplacementIdentifier['from'];
-    readonly to: Array<ReplacementIdentifier['to']> | ReplacementIdentifier['to'];
+    readonly from:
+        | ReadonlyArray<ReplacementIdentifier['from']>
+        | ReplacementIdentifier['from'];
+    readonly to: ReadonlyArray<ReplacementIdentifier['to']> | ReplacementIdentifier['to'];
 }

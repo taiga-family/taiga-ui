@@ -51,7 +51,7 @@ export class TuiDocAppearance {
     public tuiDocAppearance: readonly string[] | '' = '';
 
     @Input()
-    public hiddenOptions: Array<TuiLooseUnion<keyof TuiAppearanceOptions>> = [];
+    public hiddenOptions: ReadonlyArray<TuiLooseUnion<keyof TuiAppearanceOptions>> = [];
 
     public state: TuiInteractiveState | null = null;
     public focus: boolean | null = null;

@@ -33,7 +33,7 @@ export class TuiDocDropdown {
     ];
 
     @Input()
-    public hiddenOptions: Array<TuiLooseUnion<keyof TuiDropdownOptions>> = [];
+    public hiddenOptions: ReadonlyArray<TuiLooseUnion<keyof TuiDropdownOptions>> = [];
 
     public align: TuiDropdownAlign = this.options.align;
     public direction: TuiVerticalDirection | null = this.options.direction;

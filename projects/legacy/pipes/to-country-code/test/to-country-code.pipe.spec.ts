@@ -6,7 +6,7 @@ import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy';
 describe('TuiToCountryCodePipe', () => {
     let pipe: TuiToCountryCodePipe;
 
-    const testCases: Array<{
+    const testCases: ReadonlyArray<{
         countries: TuiCountryIsoCode[];
         expected: TuiCountryIsoCode | undefined;
         input: string;
