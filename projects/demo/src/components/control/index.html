@@ -1,14 +1,14 @@
 <tr>
     <td colspan="3">
         <span tuiTitle>
-            <strong>ControlOptions</strong>
+            <strong>Control</strong>
             <span tuiSubtitle>Applied as a host directive</span>
         </span>
     </td>
 </tr>
 
 <tr
-    *ngIf="!hiddenOptions.includes('readonly')"
+    *ngIf="!hiddenOptions.includes('readOnly')"
     name="[readonly]"
     tuiDocAPIItem
     type="boolean"
@@ -23,13 +23,16 @@
     type="boolean"
     [(value)]="disabled"
 >
-    Disabled state
+    Disabled state (use
+    <code>control.disable()/.enable()</code>
+    for reactive forms)
 </tr>
 <tr
     *ngIf="!hiddenOptions.includes('invalid')"
     name="[invalid]"
     tuiDocAPIItem
-    type="boolean"
+    type="boolean | null"
+    [items]="[true, false]"
     [(value)]="invalid"
 >
     Invalid state

@@ -1,6 +1,5 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiLooseUnion} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiTextfieldOptions} from '@taiga-ui/core';
@@ -15,8 +14,6 @@ import {TUI_TEXTFIELD_OPTIONS, TuiTitle} from '@taiga-ui/core';
 })
 export class TuiDocTextfield {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-
-    protected readonly routes = DemoRoute;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
