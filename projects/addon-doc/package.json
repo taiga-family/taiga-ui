@@ -26,6 +26,7 @@
         "@taiga-ui/addon-mobile": "^4.9.0",
         "@taiga-ui/cdk": "^4.9.0",
         "@taiga-ui/core": "^4.9.0",
+        "@taiga-ui/legacy": "^4.9.0",
         "@taiga-ui/kit": "^4.9.0",
         "@taiga-ui/polymorpheus": "^4.7.4",
         "markdown-it": ">=14.1.0",
