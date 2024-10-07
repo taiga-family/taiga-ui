@@ -1,45 +1,103 @@
-<tui-breadcrumbs [style.color]="'red'">
-    <button
-        *tuiItem
-        appearance="secondary"
-        iconStart="@tui.ellipsis"
-        size="xs"
-        tuiDropdownOpen
-        tuiIconButton
-        type="button"
-        [tuiDropdown]="content"
-    >
-        More
-    </button>
-    <ng-template #content>
-        <tui-data-list>
-            <a
-                *tuiRepeatTimes="let index of items.length - max"
-                tuiOption
-                [href]="items[index]?.link"
-            >
-                {{ items[index]?.caption }}
-            </a>
-        </tui-data-list>
-    </ng-template>
-    <ng-container *tuiRepeatTimes="let index of max">
-        <a
+<h3 tuiTitle>
+    <strong>Truncate</strong>
+    <span tuiSubtitle>
+        Using
+        <code>.text-truncate()</code>
+        mixin
+    </span>
+</h3>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items; let last = last">
+        <button
             *tuiItem
-            appearance="link"
+            tuiHintOverflow
             tuiLink
-            [href]="items[index + items.length - max]?.link"
+            type="button"
+            class="link"
+            [class.link_last]="last"
         >
-            {{ items[index + items.length - max]?.caption }}
-        </a>
+            {{ item }}
+        </button>
     </ng-container>
 </tui-breadcrumbs>
-<p>
-    <tui-input-number
-        [max]="4"
-        [min]="2"
-        [step]="1"
-        [(ngModel)]="max"
-    >
-        Max tabs
-    </tui-input-number>
-</p>
+<hr />
+<h3 tuiTitle>
+    <strong>Fade</strong>
+    <span tuiSubtitle>
+        Combining
+        <code>.text-truncate()</code>
+        mixin with
+        <code>
+            <a
+                tuiLink
+                [routerLink]="fade"
+            >
+                Fade
+            </a>
+        </code>
+        directive
+    </span>
+</h3>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items; let last = last">
+        <button
+            *tuiItem
+            tuiFade
+            tuiHintOverflow
+            tuiLink
+            type="button"
+            class="link"
+            [class.link_last]="last"
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>
+<hr />
+<h3 tuiTitle>
+    <strong>Scroll</strong>
+    <span tuiSubtitle>
+        Putting
+        <code>
+            <a
+                tuiLink
+                [routerLink]="fade"
+            >
+                Fade
+            </a>
+        </code>
+        directive on entire component
+    </span>
+</h3>
+<tui-breadcrumbs tuiFade>
+    <ng-container *ngFor="let item of items; let last = last">
+        <button
+            *tuiItem
+            tuiLink
+            type="button"
+            [class.link_last]="last"
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>
+<hr />
+<h3 tuiTitle>
+    <strong>Collapse</strong>
+    <span tuiSubtitle>
+        Using
+        <code>itemsLimit: number</code>
+    </span>
+</h3>
+<tui-breadcrumbs [itemsLimit]="10">
+    <ng-container *ngFor="let item of items; let last = last">
+        <button
+            *tuiItem
+            tuiLink
+            type="button"
+            [class.link_last]="last"
+        >
+            {{ item }}
+        </button>
+    </ng-container>
+</tui-breadcrumbs>

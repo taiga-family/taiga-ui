@@ -8,11 +8,17 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    tuiHintOptionsProvider,
+} from '@taiga-ui/core';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
-import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {TuiItemsWithMore} from '@taiga-ui/kit/components/items-with-more';
 
 import type {TuiBreadcrumbsOptions} from './breadcrumbs.options';
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
@@ -20,7 +26,17 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 @Component({
     standalone: true,
     selector: 'tui-breadcrumbs',
-    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiIcon],
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        NgIf,
+        NgTemplateOutlet,
+        TuiIcon,
+        TuiItemsWithMore,
+        TuiButton,
+        TuiDropdown,
+        TuiDataList,
+    ],
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,4 +57,15 @@ export class TuiBreadcrumbs {
 
     @Input()
     public size: TuiBreadcrumbsOptions['size'] = this.options.size;
+
+    @Input()
+    public itemsLimit = this.options.itemsLimit;
+
+    protected get limit(): number {
+        return this.itemsLimit ? this.itemsLimit - 2 : Infinity;
+    }
+
+    protected get offset(): number {
+        return this.itemsLimit === 2 ? 1 : 0;
+    }
 }

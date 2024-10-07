@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItem} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiBreadcrumbs} from '@taiga-ui/kit';
+import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -13,36 +13,21 @@ import {TuiBreadcrumbs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly itemsVariants = [
-        [
-            {
-                caption: 'Select',
-                routerLink: '/tui-select',
-            },
-            {
-                caption: 'MultiSelect',
-                routerLink: '/tui-multi-select',
-            },
-            {
-                caption: 'InputTag',
-                routerLink: '/tui-input-tag',
-            },
-            {
-                caption: 'Current',
-                routerLink: '/tui-breadcrumbs',
-            },
-        ],
-    ];
+    private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
-    protected items = this.itemsVariants[0]!;
+    protected readonly examples = ['Basic', 'Overflow'];
+    protected readonly items = [
+        'Item 1',
+        'Item 2',
+        'Item 3',
+        'Item 4',
+        'Item 5',
+        'Item 6',
+        'Item 7',
+        'Item 8',
+    ];
 
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    protected size: TuiSizeL = this.sizeVariants[0]!;
-
-    protected readonly examples = [
-        {name: 'Basic'},
-        {name: 'More button', description: 'Plus using DI options'},
-        {name: 'Overflow', description: 'Different overflow strategies'},
-    ];
+    protected size: TuiSizeL = this.options.size;
+    protected itemsLimit = this.options.itemsLimit;
 }
