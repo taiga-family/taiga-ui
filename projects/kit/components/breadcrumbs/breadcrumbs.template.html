@@ -27,14 +27,14 @@
             <span class="t-more">
                 <button
                     appearance="flat"
-                    iconStart="@tui.ellipsis"
                     size="xs"
                     tuiDropdownOpen
                     tuiIconButton
                     type="button"
+                    [iconStart]="icons.ellipsis"
                     [tuiDropdown]="dropdown"
                 >
-                    More
+                    {{ more() }}
                 </button>
                 <ng-container [ngTemplateOutlet]="separator" />
             </span>
