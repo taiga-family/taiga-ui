@@ -44,6 +44,13 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
     host: {
+        /**
+         * TODO: fix later
+         * Be careful and thoughtful about using this attribute.
+         * It is intended as a last resort workaround.
+         * Components that break hydration should be
+         * considered bugs that need to be fixed.
+         */
         ngSkipHydration: 'true',
         '[style.height.px]': 'height',
         '[class._loading]': 'loading',
