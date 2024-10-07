@@ -11,14 +11,14 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/
 @Component({
     standalone: true,
     imports: [
-        TuiBreadcrumbs,
-        TuiItem,
-        TuiLink,
         NgForOf,
+        RouterLink,
+        TuiBreadcrumbs,
         TuiFade,
         TuiHint,
+        TuiItem,
+        TuiLink,
         TuiTitle,
-        RouterLink,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

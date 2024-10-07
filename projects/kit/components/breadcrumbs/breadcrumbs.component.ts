@@ -8,16 +8,14 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    tuiHintOptionsProvider,
-} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {TuiItemsWithMore} from '@taiga-ui/kit/components/items-with-more';
 
 import type {TuiBreadcrumbsOptions} from './breadcrumbs.options';
@@ -31,11 +29,11 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
         NgForOf,
         NgIf,
         NgTemplateOutlet,
+        TuiButton,
+        TuiDataList,
+        TuiDropdown,
         TuiIcon,
         TuiItemsWithMore,
-        TuiButton,
-        TuiDropdown,
-        TuiDataList,
     ],
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
