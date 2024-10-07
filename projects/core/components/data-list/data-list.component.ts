@@ -115,8 +115,6 @@ export class TuiDataListComponent<T>
     }
 
     private get elements(): readonly HTMLElement[] {
-        return Array.from(
-            this.el.querySelectorAll('a[tuiOption],button[tuiOption],input'),
-        );
+        return Array.from(this.el.querySelectorAll('a,button,input'));
     }
 }
