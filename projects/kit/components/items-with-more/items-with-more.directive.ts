@@ -13,7 +13,7 @@ export class TuiItemsWithMoreDirective implements OnChanges {
     public required = -1;
 
     @Input()
-    public side: 'start' | 'end' = 'end';
+    public side: 'end' | 'start' = 'end';
 
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();
