@@ -4,15 +4,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    merge,
-    Observable,
-    share,
-    tap,
-} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, merge, Observable, share} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
@@ -28,7 +20,6 @@ export class TuiItemsWithMoreService extends Observable<number> {
     ).pipe(
         debounceTime(0, tuiZonefreeScheduler()),
         map(() => this.getOverflowIndex()),
-        tap(console.log),
         distinctUntilChanged(),
         tuiZoneOptimized(),
         share(),
