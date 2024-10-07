@@ -7,14 +7,13 @@ import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiImgLazyLoading} from '@taiga-ui/kit/directives';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     standalone: true,
     selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
-    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TuiIcon, TuiImgLazyLoading],
+    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TuiIcon],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,10 +37,6 @@ export class TuiAvatar {
 
     @Input()
     public src?: SafeResourceUrl | string | null;
-
-    protected get safeSrc(): string {
-        return this.src?.toString() ?? '';
-    }
 
     protected get value(): SafeResourceUrl | string {
         return this.src || '';
