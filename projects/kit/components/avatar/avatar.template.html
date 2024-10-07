@@ -10,6 +10,9 @@
         [icon]="value.toString()"
     />
     <ng-container *ngSwitchCase="'text'">{{ value }}</ng-container>
+    <ng-container *ngSwitchCase="'template'">
+        <ng-container *polymorpheusOutlet="value as text">{{ text }}</ng-container>
+    </ng-container>
     <ng-container *ngSwitchDefault>
         <ng-content />
     </ng-container>

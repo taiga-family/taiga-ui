@@ -1,5 +1,11 @@
 import {NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    TemplateRef,
+} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -8,13 +14,21 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiImgLazyLoading} from '@taiga-ui/kit/directives';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     standalone: true,
     selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
-    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TuiIcon, TuiImgLazyLoading],
+    imports: [
+        NgSwitch,
+        NgSwitchCase,
+        NgSwitchDefault,
+        PolymorpheusOutlet,
+        TuiIcon,
+        TuiImgLazyLoading,
+    ],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +41,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
         '[class._svg]': 'svg',
     },
 })
-export class TuiAvatar {
+export class TuiAvatar<T> {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
     @Input()
@@ -37,13 +51,13 @@ export class TuiAvatar {
     public round = this.options.round;
 
     @Input()
-    public src?: SafeResourceUrl | string | null;
+    public src?: SafeResourceUrl | TemplateRef<T> | string | null;
 
     protected get safeSrc(): string {
         return this.src?.toString() ?? '';
     }
 
-    protected get value(): SafeResourceUrl | string {
+    protected get value(): SafeResourceUrl | TemplateRef<T> | string {
         return this.src || '';
     }
 
@@ -51,7 +65,11 @@ export class TuiAvatar {
         return tuiIsString(this.value) && this.value.endsWith('.svg');
     }
 
-    protected get type(): 'content' | 'icon' | 'img' | 'text' {
+    protected get type(): 'content' | 'icon' | 'img' | 'template' | 'text' {
+        if (this.value instanceof TemplateRef) {
+            return 'template';
+        }
+
         if (this.value && !tuiIsString(this.value)) {
             return 'img';
         }
