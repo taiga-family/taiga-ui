@@ -33,7 +33,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
         inject(TuiTextfieldComponent);
 
     @Input()
-    public readOnly = false;
+    public readOnly = inject(TUI_TEXTFIELD_OPTIONS).readOnly();
 
     @Input()
     public invalid: boolean | null = null;

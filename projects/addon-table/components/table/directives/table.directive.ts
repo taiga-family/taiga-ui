@@ -80,6 +80,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public readonly appearance = signal('table');
     public readonly size = signal(this.options.size);
     public readonly cleaner = signal(false);
+    public readonly readOnly = signal(false);
 
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();

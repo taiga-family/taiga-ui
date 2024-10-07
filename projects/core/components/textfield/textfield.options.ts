@@ -7,18 +7,21 @@ const DEFAULT = {
     appearance: 'textfield',
     size: 'l',
     cleaner: true,
+    readOnly: false,
 } as const;
 
 export interface TuiTextfieldOptions {
     readonly appearance: WritableSignal<string>;
     readonly size: WritableSignal<TuiSizeL | TuiSizeS>;
     readonly cleaner: WritableSignal<boolean>;
+    readonly readOnly: WritableSignal<boolean>;
 }
 
 export const TUI_TEXTFIELD_OPTIONS = tuiCreateToken<TuiTextfieldOptions>({
     appearance: signal(DEFAULT.appearance),
     size: signal(DEFAULT.size),
     cleaner: signal(DEFAULT.cleaner),
+    readOnly: signal(DEFAULT.readOnly),
 });
 
 export function tuiTextfieldOptionsProvider(
@@ -27,10 +30,11 @@ export function tuiTextfieldOptionsProvider(
     return {
         provide: TUI_TEXTFIELD_OPTIONS,
         deps: [[new Optional(), new SkipSelf(), TUI_TEXTFIELD_OPTIONS]],
-        useFactory: (parent: TuiTextfieldOptions | null) => ({
+        useFactory: (parent: TuiTextfieldOptions | null): TuiTextfieldOptions => ({
             appearance: signal(parent?.appearance() ?? DEFAULT.appearance),
             size: signal(parent?.size() ?? DEFAULT.size),
             cleaner: signal(parent?.cleaner() ?? DEFAULT.cleaner),
+            readOnly: signal(parent?.readOnly() ?? DEFAULT.readOnly),
             ...options,
         }),
     };
@@ -48,6 +52,7 @@ export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
     public appearance = signal(this.options.appearance());
     public size = signal(this.options.size());
     public cleaner = signal(this.options.cleaner());
+    public readOnly = signal(this.options.readOnly());
 
     @Input()
     public set tuiTextfieldAppearance(appearance: string) {
