@@ -6,6 +6,7 @@ export * from './dropdown.driver';
 export * from './dropdown.providers';
 export * from './dropdown.service';
 export * from './dropdown-context.directive';
+export * from './dropdown-fixed.directive';
 export * from './dropdown-hover.directive';
 export * from './dropdown-hover.options';
 export * from './dropdown-manual.directive';

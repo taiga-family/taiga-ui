@@ -19,6 +19,7 @@ import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {TuiDropdownFixed} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_TIME_TEXTS, TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -27,7 +28,6 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map, timer} from 'rxjs';
 
@@ -46,7 +46,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
         tuiAsDataListHost(TuiInputTimeComponent),
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '(click)': 'onClick()',
         '[attr.data-size]': 'size',

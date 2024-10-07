@@ -21,14 +21,13 @@ import {
     tuiAsDataListHost,
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
-import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
 import {
@@ -53,7 +52,7 @@ function isText(value: string): boolean {
         tuiAsControl(TuiInputPhoneComponent),
         tuiAsDataListHost(TuiInputPhoneComponent),
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
     },

@@ -31,7 +31,7 @@ import {
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -44,7 +44,6 @@ import {
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
@@ -75,7 +74,7 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
         tuiAsDataListHost(TuiInputTagComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
         '[class._icon-start]': 'iconStart',

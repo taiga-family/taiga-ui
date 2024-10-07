@@ -24,7 +24,7 @@ import {
     tuiAsOptionContent,
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
-import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {
     TuiSizeL,
     TuiSizeM,
@@ -40,7 +40,6 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -55,7 +54,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         tuiAsControl(TuiComboBoxComponent),
         tuiAsOptionContent(TUI_SELECT_OPTION),
     ],
-    viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
     },

@@ -26,8 +26,8 @@ import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
+    TuiDropdownFixed,
     tuiDropdownOpen,
-    tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
@@ -48,11 +48,9 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListHost(TuiTextfieldComponent),
-        tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
-    ],
+    providers: [tuiAsDataListHost(TuiTextfieldComponent)],
     hostDirectives: [
+        TuiDropdownFixed,
         TuiDropdownDirective,
         TuiWithDropdownOpen,
         TuiWithTextfieldDropdown,
