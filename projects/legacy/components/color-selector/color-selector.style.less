@@ -6,6 +6,10 @@
     display: block;
     isolation: isolate;
     inline-size: 22.6rem;
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 .t-wrapper {

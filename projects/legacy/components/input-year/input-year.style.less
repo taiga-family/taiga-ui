@@ -4,6 +4,10 @@
     display: block;
     border-radius: var(--tui-radius-m);
     text-align: start;
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 .t-container {

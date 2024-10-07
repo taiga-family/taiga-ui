@@ -19,6 +19,10 @@
 :host {
     display: block;
     border-radius: var(--tui-radius-m);
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 .t-range {

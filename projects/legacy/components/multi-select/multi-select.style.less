@@ -5,7 +5,8 @@
     display: block;
     border-radius: var(--tui-radius-m);
 
-    &._disabled {
+    &._disabled,
+    :host-context(*:disabled) {
         pointer-events: none;
     }
 }

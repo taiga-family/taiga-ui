@@ -14,6 +14,10 @@
         cursor: default;
     }
     /* stylelint-enable */
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 .t-hosted {

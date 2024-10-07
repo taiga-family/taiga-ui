@@ -13,6 +13,10 @@
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-primary);
 
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
+
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
         --tui-textarea-height: 4.5625rem;
