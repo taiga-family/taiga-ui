@@ -16,8 +16,8 @@
 />
 <ng-template #template>
     <span
+        *ngIf="!isMoreHidden"
         class="t-item"
-        [class.t-item_hidden]="isMoreHidden"
     >
         <ng-container
             [ngTemplateOutlet]="more || null"

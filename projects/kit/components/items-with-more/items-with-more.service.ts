@@ -29,12 +29,6 @@ export class TuiItemsWithMoreService extends Observable<number> {
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
-    private get maxItems(): number {
-        return this.directive.itemsLimit > this.directive.required
-            ? this.directive.itemsLimit - 1
-            : this.directive.itemsLimit - 2;
-    }
-
     private getOverflowIndex(): number {
         const {side, itemsLimit} = this.directive;
         const {clientWidth, children} = this.el;
@@ -44,7 +38,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && itemsLimit >= items.length) {
-            return side === 'end' ? this.maxItems : 0;
+            return side === 'end' ? itemsLimit : 0;
         }
 
         return side === 'start'
@@ -53,8 +47,9 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getIndexStart(items: number[], total: number, more: number): number {
-        const {required} = this.directive;
+        const {required, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
+        const min = Number.isFinite(itemsLimit) ? items.length - itemsLimit - 1 : 0;
         const last = items.length - 1;
         const mandatory = required === -1 ? last : required;
 
@@ -66,7 +61,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
             total -= items[i] ?? 0;
 
             if (total + more <= clientWidth) {
-                return tuiClamp(i, items.length - this.maxItems, items.length);
+                return tuiClamp(i, mandatory < min ? min + 1 : min, items.length);
             }
         }
 
@@ -74,8 +69,9 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getIndexEnd(items: number[], total: number, more: number): number {
-        const {required} = this.directive;
+        const {required, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
+        const max = itemsLimit > required ? itemsLimit - 1 : itemsLimit - 2;
         const last = items.length - 1;
         const mandatory = required === -1 ? 0 : required;
 
@@ -87,7 +83,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
             total -= items[i] ?? 0;
 
             if (total + more <= clientWidth) {
-                return tuiClamp(i - 1, -1, this.maxItems);
+                return tuiClamp(i - 1, -1, max);
             }
         }
 
