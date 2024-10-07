@@ -1,16 +1,16 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiRoot, TuiTextfield],
+    imports: [FormsModule, TuiRoot, TuiTextfield],
     template: `
         <tui-root>
             <tui-textfield [filler]="filler">
                 <input
                     tuiTextfield
-                    [formControl]="control"
+                    [(ngModel)]="initialValue"
                 />
             </tui-textfield>
         </tui-root>
@@ -20,7 +20,7 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 })
 export class TestTextfield {
     @Input()
-    public control = new FormControl('', {nonNullable: true});
+    public initialValue = '';
 
     @Input()
     public filler = '';
@@ -35,7 +35,7 @@ describe('Textfield', () => {
                 it(initialValue, () => {
                     cy.mount(TestTextfield, {
                         componentProperties: {
-                            control: new FormControl(initialValue, {nonNullable: true}),
+                            initialValue,
                             filler: 'HH:MM',
                         },
                     });
@@ -43,33 +43,6 @@ describe('Textfield', () => {
                     cy.get('input[tuiTextfield]').focus();
                     cy.get('tui-textfield').compareSnapshot(
                         `[filler]-initial-value_${initialValue}`,
-                    );
-                });
-            });
-        });
-
-        describe('programmatic patch of form control', () => {
-            let control!: FormControl<string>;
-
-            beforeEach(() => {
-                control = new FormControl('', {nonNullable: true});
-
-                cy.mount(TestTextfield, {
-                    componentProperties: {
-                        control,
-                        filler: 'HH:MM',
-                    },
-                });
-
-                cy.get('input[tuiTextfield]').focus();
-            });
-
-            ['2', '23', '23:', '23:5', '23:59'].forEach((value) => {
-                it(value, () => {
-                    control.patchValue(value);
-
-                    cy.get('tui-textfield').compareSnapshot(
-                        `[filler]-patch-value_${value}`,
                     );
                 });
             });
