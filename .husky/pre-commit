@@ -1,3 +1,2 @@
-npx commitlint --edit $1
-npx lint-staged
+npx --no-install lint-staged
 npm run typecheck
