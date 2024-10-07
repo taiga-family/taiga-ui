@@ -11,13 +11,13 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {TUI_COMMON_ICONS,
-    TuiButton} from '@taiga-ui/core/components/button';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiItemsWithMore} from '@taiga-ui/kit/components/items-with-more';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 
