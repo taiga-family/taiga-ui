@@ -1,20 +1,27 @@
 <ng-container *ngIf="items.changes | async" />
-<ng-container *tuiLet="(lastVisibleIndex$ | async) || 0 as lastIndex">
-    <div
-        *ngFor="let item of items; let index = index"
-        class="t-item"
-        [class.t-item_hidden]="index > lastIndex && index !== directive.required"
-    >
-        <ng-container *ngTemplateOutlet="item" />
-    </div>
+<ng-container
+    *ngIf="directive.side === 'start'"
+    [ngTemplateOutlet]="template"
+/>
+<div
+    *ngFor="let item of items; let index = index"
+    class="t-item"
+    [class.t-item_hidden]="isHidden(index)"
+>
+    <ng-container *ngTemplateOutlet="item" />
+</div>
+<ng-container
+    *ngIf="directive.side === 'end'"
+    [ngTemplateOutlet]="template"
+/>
+<ng-template #template>
     <span
-        *ngIf="more && lastIndex < items.length - 1"
+        *ngIf="!isMoreHidden"
         class="t-item"
-        [class.t-item_hidden]="lastIndex >= items.length - 1"
     >
         <ng-container
-            [ngTemplateOutlet]="more"
-            [ngTemplateOutletContext]="{$implicit: lastIndex}"
+            [ngTemplateOutlet]="more || null"
+            [ngTemplateOutletContext]="{$implicit: lastIndex()}"
         />
     </span>
-</ng-container>
+</ng-template>

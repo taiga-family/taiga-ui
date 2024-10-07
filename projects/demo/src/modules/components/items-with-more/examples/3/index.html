@@ -1,0 +1,52 @@
+<tui-items-with-more
+    side="start"
+    [itemsLimit]="3"
+>
+    <ng-container *ngFor="let item of items; let first = first">
+        <ng-container *tuiItem>
+            <tui-icon
+                *ngIf="!first"
+                icon="@tui.chevron-right"
+                [style.border-width.rem]="0.25"
+                [style.opacity]="0.25"
+            />
+            <button
+                appearance="flat"
+                size="xs"
+                tuiButton
+                type="button"
+            >
+                {{ item }}
+            </button>
+        </ng-container>
+    </ng-container>
+    <ng-template
+        let-index
+        tuiMore
+    >
+        <button
+            appearance="flat"
+            iconStart="@tui.ellipsis"
+            size="xs"
+            tuiDropdownOpen
+            tuiIconButton
+            type="button"
+            [tuiDropdown]="dropdown"
+        >
+            More
+        </button>
+        <ng-template #dropdown>
+            <tui-data-list size="s">
+                <ng-container *ngFor="let item of items; let i = index">
+                    <button
+                        *ngIf="i < index"
+                        tuiOption
+                        type="button"
+                    >
+                        {{ item }}
+                    </button>
+                </ng-container>
+            </tui-data-list>
+        </ng-template>
+    </ng-template>
+</tui-items-with-more>

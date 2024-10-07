@@ -8,6 +8,7 @@ import {
     inject,
     TemplateRef,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
@@ -15,7 +16,6 @@ import {
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
@@ -25,7 +25,7 @@ import {TuiMore} from './more.directive';
 @Component({
     standalone: true,
     selector: 'tui-items-with-more',
-    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiLet],
+    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet],
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +45,7 @@ import {TuiMore} from './more.directive';
     hostDirectives: [
         {
             directive: TuiItemsWithMoreDirective,
-            inputs: ['itemsLimit', 'required'],
+            inputs: ['itemsLimit', 'required', 'side'],
         },
     ],
 })
@@ -57,5 +57,25 @@ export class TuiItemsWithMoreComponent {
     protected readonly more?: TemplateRef<TuiContext<number>>;
 
     protected readonly directive = inject(TuiItemsWithMoreDirective);
-    protected readonly lastVisibleIndex$ = inject(TuiItemsWithMoreService);
+    protected readonly lastIndex = toSignal(inject(TuiItemsWithMoreService), {
+        initialValue: 0,
+    });
+
+    protected get isMoreHidden(): boolean {
+        const {side} = this.directive;
+
+        return (
+            (this.lastIndex() >= this.items.length - 1 && side === 'end') ||
+            (!this.lastIndex() && side === 'start')
+        );
+    }
+
+    protected isHidden(index: number): boolean {
+        const {side, required} = this.directive;
+
+        return (
+            (index > this.lastIndex() && index !== required && side === 'end') ||
+            (index < this.lastIndex() && index !== required && side === 'start')
+        );
+    }
 }

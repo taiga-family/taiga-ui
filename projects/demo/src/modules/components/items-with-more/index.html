@@ -4,26 +4,17 @@
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">Component to hide overflown items behind custom content.</div>
+        <p>Component to hide overflown items behind custom content.</p>
+
+        <tui-notification>Resize the screen to see extra items disappear</tui-notification>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html'"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
             [fullsize]="true"
-        >
-            <tui-notification class="tui-space_bottom-3">
-                Resize the screen to see extra items disappear
-            </tui-notification>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="dropdown"
-            heading="Dropdown"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [fullsize]="true"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
@@ -32,6 +23,7 @@
             <tui-items-with-more
                 [itemsLimit]="itemsLimit"
                 [required]="required"
+                [side]="side"
             >
                 <ng-container *ngFor="let item of items">
                     <tui-chip
@@ -41,39 +33,53 @@
                         {{ item }}
                     </tui-chip>
                 </ng-container>
-                <span *tuiMore>and now for something completely different!</span>
+                <span
+                    *tuiMore
+                    class="tui-space_right-2"
+                >
+                    and now !
+                </span>
             </tui-items-with-more>
         </tui-doc-demo>
         <p>
             Use
-            <code>tuiItem</code>
+            <code>Item</code>
             directive for each item
         </p>
         <p>
             Use
-            <code>tuiMore</code>
+            <code>More</code>
             directive for "See more" content
         </p>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="itemsLimit"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="itemsLimitVariants"
-                [(documentationPropertyValue)]="itemsLimit"
+        <table tuiDocAPI>
+            <tr
+                name="[itemsLimit]"
+                tuiDocAPIItem
+                type="number"
+                [items]="itemsLimitVariants"
+                [(value)]="itemsLimit"
             >
                 Artificial limit on visible items
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="required"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="requiredVariants"
-                [(documentationPropertyValue)]="required"
+            </tr>
+            <tr
+                name="[required]"
+                tuiDocAPIItem
+                type="number"
+                [items]="requiredVariants"
+                [(value)]="required"
             >
                 Index of an item that must remain visible
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+            <tr
+                name="[side]"
+                tuiDocAPIItem
+                type="number"
+                [items]="sideVariants"
+                [(value)]="side"
+            >
+                Side of the "See more" content
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
