@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.95.2](https://github.com/taiga-family/taiga-ui/compare/v3.95.1...v3.95.2) (2024-10-08)
+
+### Bug Fixes
+
+- **core:** fix open DropdownContext after single touch on iOS
+  ([#9286](https://github.com/taiga-family/taiga-ui/issues/9286))
+  ([20b1c61](https://github.com/taiga-family/taiga-ui/commit/20b1c6103d38d0f55159af34becc9e23e74e61bd))
+- **kit:** `Chip` size ([#9170](https://github.com/taiga-family/taiga-ui/issues/9170))
+  ([e5178bf](https://github.com/taiga-family/taiga-ui/commit/e5178bf12d9b0fd3c7b6e4a36272bc1473946845))
+
 ### [3.95.1](https://github.com/taiga-family/taiga-ui/compare/v3.95.0...v3.95.1) (2024-09-25)
 
 ### Bug Fixes
