@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -34,13 +33,12 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
 })
 export class TuiSelect<T> extends TuiTextfieldBase<T> {
     private readonly nav = inject(WA_NAVIGATOR);
-    private readonly control = inject(NgControl);
 
     @Input()
     public placeholder = '';
 
     public override setValue(value: T): void {
-        this.control.control?.setValue(value);
+        this.control?.control?.setValue(value);
         this.el.dispatchEvent(new Event('input', {bubbles: true}));
     }
 
@@ -51,7 +49,7 @@ export class TuiSelect<T> extends TuiTextfieldBase<T> {
     }
 
     protected get value(): string {
-        return this.textfield.stringify(this.control.value ?? '');
+        return this.textfield.stringify(this.control?.value ?? '');
     }
 
     protected async onCopy(): Promise<void> {
