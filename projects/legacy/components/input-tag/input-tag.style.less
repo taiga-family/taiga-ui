@@ -13,7 +13,8 @@
         max-block-size: none;
     }
 
-    &._disabled {
+    &._disabled,
+    :host-context(*:disabled) {
         pointer-events: none;
     }
 

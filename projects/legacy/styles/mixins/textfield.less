@@ -25,6 +25,10 @@
         font: var(--tui-font-text-m);
         line-height: 1.25rem;
     }
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 .textfield-content() {

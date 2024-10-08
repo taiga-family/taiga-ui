@@ -157,7 +157,8 @@
         background: transparent !important;
     }
 
-    &._disabled {
+    &._disabled,
+    :host-context(*:disabled) {
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
     }

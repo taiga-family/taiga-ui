@@ -12,6 +12,10 @@
     &[data-size='l'] {
         --tui-radius: var(--tui-radius-l);
     }
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
 }
 
 tui-input-number {
