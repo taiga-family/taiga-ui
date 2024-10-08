@@ -90,16 +90,16 @@ function migrateIcon({
         return;
     }
 
-    const insertTo = templateOffset + (sourceCodeLocation?.startTag?.endOffset || 0) - 1;
+    const insertTo = templateOffset + (sourceCodeLocation?.startTag?.endOffset ?? 0) - 1;
 
     recorder.insertRight(
         insertTo,
         `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
     recorder.remove(
-        svg.sourceCodeLocation?.startOffset || 0,
-        (svg.sourceCodeLocation?.endOffset || 0) -
-            (svg.sourceCodeLocation?.startOffset || 0),
+        svg.sourceCodeLocation?.startOffset ?? 0,
+        (svg.sourceCodeLocation?.endOffset ?? 0) -
+            (svg.sourceCodeLocation?.startOffset ?? 0),
     );
 }
 

@@ -47,7 +47,7 @@ export function migrateNumberPrecision({
             const formatPart = `[tuiNumberFormat]="${format}"`;
 
             const insertTo =
-                (sourceCodeLocation?.startTag?.startOffset || 0) +
+                (sourceCodeLocation?.startTag?.startOffset ?? 0) +
                 '<tui-input-number '.length;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);

@@ -42,7 +42,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
             right: viewportRect.right - offset,
             left: viewportRect.left + offset,
         } as const;
-        const previous = this.previous || direction || 'bottom';
+        const previous = this.previous ?? direction ?? 'bottom';
         const available = {
             top: hostRect.top - 2 * offset - viewport.top,
             bottom: viewport.bottom - hostRect.bottom - 2 * offset,

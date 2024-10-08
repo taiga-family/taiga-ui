@@ -8,7 +8,7 @@ import {tuiIsCI} from '../../cdk/schematics';
 
 const verbose = !tuiIsCI();
 const dest =
-    process.argv[2] || path.join(process.cwd(), 'projects', 'icons-material', 'src');
+    process.argv[2] ?? path.join(process.cwd(), 'projects', 'icons-material', 'src');
 
 // 1. copy material icons
 ['filled', 'outlined', 'round', 'sharp', 'two-tone'].forEach((type) => {

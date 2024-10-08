@@ -116,6 +116,6 @@ export class TuiInputYearComponent
     }
 
     private updateNativeValue(value: number | null): void {
-        this.nativeValue = value?.toString() || '';
+        this.nativeValue = value?.toString() ?? '';
     }
 }

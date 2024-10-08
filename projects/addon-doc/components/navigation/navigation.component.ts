@@ -131,7 +131,7 @@ export class TuiDocNavigation {
         ])
             .pipe(
                 take(1),
-                map(([event]) => event.anchor || ''),
+                map(([event]) => event.anchor ?? ''),
                 filter<string>(Boolean),
                 takeUntilDestroyed(),
             )

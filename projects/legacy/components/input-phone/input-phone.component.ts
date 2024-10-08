@@ -117,7 +117,7 @@ export class TuiInputPhoneComponent
 
     public get nativeValue(): string {
         return (
-            this.nativeFocusableElement?.value ||
+            this.nativeFocusableElement?.value ??
             maskitoTransform(this.value, this.maskOptions)
         );
     }
@@ -161,7 +161,7 @@ export class TuiInputPhoneComponent
 
     public override writeValue(value: string | null): void {
         super.writeValue(value);
-        this.nativeValue = maskitoTransform(value || '', this.maskOptions);
+        this.nativeValue = maskitoTransform(value ?? '', this.maskOptions);
         this.updateSearch('');
     }
 

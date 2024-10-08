@@ -75,12 +75,7 @@ export abstract class AbstractTuiControl<T>
     protected abstract getFallbackValue(): T;
 
     public get computedInvalid(): boolean {
-        return (
-            this.interactive &&
-            (this.pseudoInvalid !== null
-                ? this.pseudoInvalid
-                : this.touched && this.invalid)
-        );
+        return this.interactive && (this.pseudoInvalid ?? (this.touched && this.invalid));
     }
 
     public get value(): T {

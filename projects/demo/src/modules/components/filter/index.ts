@@ -18,7 +18,7 @@ class ItemWithBadge {
     }
 
     public valueOf(): number | null {
-        return this.badgeValue || null;
+        return this.badgeValue ?? null;
     }
 }
 

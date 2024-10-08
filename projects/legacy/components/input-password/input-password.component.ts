@@ -49,7 +49,7 @@ export class TuiInputPasswordComponent
 
     protected readonly computedAppearance$: Observable<string> = this.directive$.pipe(
         startWith(null),
-        map(() => this.hintOptions?.appearance || ''),
+        map(() => this.hintOptions?.appearance ?? ''),
         startWith(''),
     );
 

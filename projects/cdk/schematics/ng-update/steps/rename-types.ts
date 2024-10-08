@@ -39,7 +39,7 @@ function renameType({
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
 
-            parent.replaceWithText(targetType || 'any');
+            parent.replaceWithText(targetType ?? 'any');
             newImports.forEach(({name, moduleSpecifier}) => {
                 addUniqueImport(
                     parent.getSourceFile().getFilePath(),

@@ -67,7 +67,7 @@ export function migrateLabeled({
         );
 
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
+            templateOffset + (sourceCodeLocation.startTag?.startOffset ?? 1) - 1,
             `<label${ngForAttr ? ` *ngFor="${ngForAttr.value}"` : ''} tuiLabel>`,
         );
         recorder.remove(
@@ -75,7 +75,7 @@ export function migrateLabeled({
             `<${tagName}/>`.length,
         );
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.endTag?.startOffset || 1),
+            templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 1),
             '</label>',
         );
 

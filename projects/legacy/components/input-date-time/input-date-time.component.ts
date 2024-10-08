@@ -252,7 +252,7 @@ export class TuiInputDateTimeComponent
     }
 
     protected get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
+        return this.nativeFocusableElement?.value ?? '';
     }
 
     protected set nativeValue(value: string) {
@@ -363,7 +363,8 @@ export class TuiInputDateTimeComponent
             date instanceof TuiDay
                 ? date.toString(this.dateFormat.mode, this.dateFormat.separator)
                 : date;
-        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
+        const timeString =
+            time instanceof TuiTime ? time.toString(timeMode) : (time ?? '');
 
         return timeString
             ? `${dateString}${DATE_TIME_SEPARATOR}${timeString}`
@@ -371,7 +372,7 @@ export class TuiInputDateTimeComponent
     }
 
     private updateNativeValue(day: TuiDay): void {
-        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] ?? '';
 
         this.nativeValue = this.getDateTimeString(day, time);
     }

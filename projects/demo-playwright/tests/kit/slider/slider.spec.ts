@@ -51,7 +51,7 @@ test.describe('Slider', () => {
                 const controlValue = await example
                     .getByTestId('key-steps-example-control-value')
                     .textContent()
-                    .then((x) => maskitoParseNumber(x || ''));
+                    .then((x) => maskitoParseNumber(x ?? ''));
 
                 expect(controlValue).toBe(expectedControlValue);
                 await expect(example).toHaveScreenshot(

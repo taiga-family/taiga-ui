@@ -26,7 +26,7 @@ export class TuiIcon {
     protected readonly backgroundSrc = signal<string | null>(null);
     protected readonly iconSrc = signal(
         this.resolve(
-            inject(TUI_ICON_START, {self: true, optional: true}) ||
+            inject(TUI_ICON_START, {self: true, optional: true}) ??
                 inject(TUI_ICON_END, {self: true, optional: true}),
         ),
     );

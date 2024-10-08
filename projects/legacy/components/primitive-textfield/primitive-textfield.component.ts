@@ -195,10 +195,8 @@ export class TuiPrimitiveTextfieldComponent
 
     protected get placeholderVisible(): boolean {
         const hasDecor =
-            this.nativeFocusableElement?.placeholder ||
-            this.prefix ||
-            this.postfix ||
-            this.filler;
+            this.nativeFocusableElement?.placeholder ??
+            (this.prefix || this.postfix || this.filler);
         const showDecor = hasDecor && !this.readOnly && this.computedFocused;
 
         return !this.hasValue && !showDecor;
@@ -240,7 +238,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     protected get computedId(): string {
-        return this.nativeFocusableElement?.id || '';
+        return this.nativeFocusableElement?.id ?? '';
     }
 
     @tuiPure

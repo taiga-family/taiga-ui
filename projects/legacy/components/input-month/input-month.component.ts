@@ -132,7 +132,7 @@ export class TuiInputMonthComponent
     }
 
     protected get nativeValue(): string {
-        return this.value?.toJSON() || '';
+        return this.value?.toJSON() ?? '';
     }
 
     protected onNativeChange(value: string): void {

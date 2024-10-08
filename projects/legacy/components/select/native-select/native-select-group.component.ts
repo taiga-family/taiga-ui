@@ -51,6 +51,6 @@ export class TuiNativeSelectGroupComponent<T> extends AbstractTuiNativeSelect<
     protected onValueChange(index: number): void {
         const flatItems = this.items?.reduce((acc, val) => acc.concat(val), []);
 
-        this.host.onValueChange(flatItems?.[index] || null);
+        this.host.onValueChange(flatItems?.[index] ?? null);
     }
 }

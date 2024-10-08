@@ -75,7 +75,7 @@ function addImports(
     filePath: string,
 ): void {
     toArray(identifier).forEach(({name, namedImport, moduleSpecifier}) => {
-        addUniqueImport(filePath, namedImport || name, moduleSpecifier);
+        addUniqueImport(filePath, namedImport ?? name, moduleSpecifier);
     });
 }
 

@@ -186,7 +186,7 @@ export class TuiSvgComponent {
             this.onError(UNDEFINED_NAMED_ICON);
         }
 
-        return this.sanitize(icon || '');
+        return this.sanitize(icon ?? '');
     }
 
     private sanitize(src: TuiSafeHtml): TuiSafeHtml {
@@ -194,7 +194,7 @@ export class TuiSvgComponent {
 
         return this.tuiSanitizer && tuiIsString(src)
             ? this.sanitizer.bypassSecurityTrustHtml(
-                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) ?? '',
               )
             : src;
     }

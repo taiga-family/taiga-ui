@@ -14,6 +14,6 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 export class TuiUnfinishedValidator implements Validator {
     public readonly validate = tuiCreateUnfinishedValidator(
         tuiInjectElement(),
-        tuiInjectElement().getAttribute('tuiUnfinishedValidator') || '',
+        tuiInjectElement().getAttribute('tuiUnfinishedValidator') ?? '',
     );
 }

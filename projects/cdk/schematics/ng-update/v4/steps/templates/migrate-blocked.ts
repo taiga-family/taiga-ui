@@ -57,7 +57,7 @@ export function migrateBlocked({
         const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
 
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,
+            templateOffset + (sourceCodeLocation.startTag?.startOffset ?? 1) - 1,
             `<label${ngForAttr ? ` *ngFor="${ngForAttr.value}"` : ''} ${newBlockAttr}${hideIconAttrLocation ? ' appearance=""' : ''}>`,
         );
 
@@ -66,7 +66,7 @@ export function migrateBlocked({
             `<${tagName}/>`.length,
         );
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation.endTag?.startOffset || 1),
+            templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 1),
             '</label>',
         );
 

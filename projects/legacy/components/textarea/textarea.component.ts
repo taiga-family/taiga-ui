@@ -189,11 +189,11 @@ export class TuiTextareaComponent
     }
 
     protected get fittedContent(): string {
-        return this.value.slice(0, this.maxLength || Infinity);
+        return this.value.slice(0, this.maxLength ?? Infinity);
     }
 
     protected get extraContent(): string {
-        return this.value.slice(this.maxLength || Infinity);
+        return this.value.slice(this.maxLength ?? Infinity);
     }
 
     protected onFocused(focused: boolean): void {

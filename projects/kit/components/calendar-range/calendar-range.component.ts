@@ -162,7 +162,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
                 (min === null || item.range.to.daySameOrAfter(min)) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
-        otherDateText || '',
+        otherDateText ?? '',
     ];
 
     protected isItemActive(item: TuiDayRangePeriod | string): boolean {

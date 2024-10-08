@@ -154,7 +154,7 @@ export class TuiDocDocumentation implements AfterContentInit {
     ): void {
         const hex = this.getColor.transform(connector.documentationPropertyValue || '');
         const rgb = tuiHexToRgb(hex);
-        const result = `rgba(${rgb}, ${(opacity || 0) / 100})`;
+        const result = `rgba(${rgb}, ${(opacity ?? 0) / 100})`;
 
         connector.onValueChange(result);
     }

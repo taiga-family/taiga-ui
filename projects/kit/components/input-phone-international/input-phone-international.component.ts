@@ -112,7 +112,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.countries
             .map((iso) => ({
                 iso,
-                name: this.names()?.[iso] || '',
+                name: this.names()?.[iso] ?? '',
                 code: tuiGetCallingCode(iso, this.metadata()),
             }))
             .filter(({name, code}) => TUI_DEFAULT_MATCHER(name + code, this.search())),
@@ -161,7 +161,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             return;
         }
 
-        const newValue = event.data || '';
+        const newValue = event.data ?? '';
         const prefixedValue = newValue.startsWith(CHAR_PLUS)
             ? newValue
             : CHAR_PLUS + newValue;

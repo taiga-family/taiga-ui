@@ -3,7 +3,7 @@ export function tuiOverrideOptions<T>(
     fallback: T,
 ): (directive: T | null, options: T | null) => T {
     return (directive, options) => {
-        const result: T = directive || {...(options || fallback)};
+        const result: T = directive ?? {...(options ?? fallback)};
 
         Object.keys(override).forEach((key) => {
             // Update directive props with new defaults before inputs are processed

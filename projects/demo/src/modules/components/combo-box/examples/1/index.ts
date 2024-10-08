@@ -71,7 +71,7 @@ export default class Example {
      */
     private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
         const result = databaseMockData.filter((user) =>
-            TUI_DEFAULT_MATCHER(user, searchQuery || ''),
+            TUI_DEFAULT_MATCHER(user, searchQuery ?? ''),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

@@ -27,7 +27,7 @@ describe('TUI_MASK_CARD_HOLDER', () => {
                 process(
                     {elementState: {value: '', selection: [0, 0]}, data: value},
                     'insert',
-                ).data || ''
+                ).data ?? ''
             );
         };
 

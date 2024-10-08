@@ -35,8 +35,8 @@ export class TuiIcons {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     @Input()
-    public iconStart = inject(TUI_ICON_START, {self: true, optional: true}) || '';
+    public iconStart = inject(TUI_ICON_START, {self: true, optional: true}) ?? '';
 
     @Input()
-    public iconEnd = inject(TUI_ICON_END, {self: true, optional: true}) || '';
+    public iconEnd = inject(TUI_ICON_END, {self: true, optional: true}) ?? '';
 }

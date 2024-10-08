@@ -107,10 +107,10 @@ export class TuiSearchFiltersComponent implements AfterContentInit {
     }
 
     private get unit(): number {
-        return this.rem?.nativeElement.offsetWidth || 16;
+        return this.rem?.nativeElement.offsetWidth ?? 16;
     }
 
     private get more(): number {
-        return this.button?.nativeElement.clientWidth || 0;
+        return this.button?.nativeElement.clientWidth ?? 0;
     }
 }

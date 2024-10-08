@@ -63,7 +63,7 @@ export class TuiInputCard implements OnInit {
     protected readonly image = computed(() => {
         const system = this.options.paymentSystemHandler(this.value());
         const icon = system && this.icons[system] && this.resolver(this.icons[system]);
-        const url = this.icon || icon;
+        const url = this.icon ?? icon;
 
         return url && this.icon !== '' ? url : null;
     });

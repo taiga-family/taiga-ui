@@ -17,6 +17,6 @@ export class TuiUnfinishedValidator implements Validator {
 
     public readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
-        tuiInjectElement().getAttribute('tuiUnfinishedValidator') || '',
+        tuiInjectElement().getAttribute('tuiUnfinishedValidator') ?? '',
     );
 }

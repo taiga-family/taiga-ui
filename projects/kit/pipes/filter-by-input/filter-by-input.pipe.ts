@@ -27,8 +27,8 @@ export class TuiFilterByInputPipe implements PipeTransform {
             items,
             matcher,
             this.host.stringify || String,
-            this.textfield?.input?.nativeElement.value ||
-                (this.host as any).nativeFocusableElement?.value ||
+            this.textfield?.input?.nativeElement.value ??
+                (this.host as any).nativeFocusableElement?.value ??
                 '',
         );
     }

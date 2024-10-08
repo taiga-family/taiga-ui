@@ -119,7 +119,7 @@ export class TuiComboBoxComponent<T>
     }
 
     public get nativeValue(): string {
-        return this.value === null ? this.search || '' : this.stringify(this.value);
+        return this.value === null ? (this.search ?? '') : this.stringify(this.value);
     }
 
     public checkOption(option: T): void {

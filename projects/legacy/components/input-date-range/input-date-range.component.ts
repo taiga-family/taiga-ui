@@ -147,7 +147,7 @@ export class TuiInputDateRangeComponent
 
     public get computedExampleText(): string {
         return this.items.length
-            ? this.textfield?.nativeFocusableElement?.placeholder || ''
+            ? (this.textfield?.nativeFocusableElement?.placeholder ?? '')
             : '';
     }
 
@@ -266,7 +266,7 @@ export class TuiInputDateRangeComponent
     }
 
     protected get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
+        return this.nativeFocusableElement?.value ?? '';
     }
 
     protected set nativeValue(value: string) {

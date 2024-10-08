@@ -58,6 +58,6 @@ describe('TuiFor directive', () => {
     });
 
     function text(): string {
-        return testComponent.el.textContent?.trim() || '';
+        return testComponent.el.textContent?.trim() ?? '';
     }
 });

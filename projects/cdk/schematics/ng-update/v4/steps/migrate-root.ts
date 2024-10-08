@@ -90,7 +90,7 @@ function addProviders({
 
     const path = providersArray
         ? providersArray.getSourceFile().getFilePath()
-        : modulePath || '';
+        : (modulePath ?? '');
 
     if (providersArray) {
         providersArray.addElement('NG_EVENT_PLUGINS');

@@ -46,6 +46,6 @@ export class TuiNativeSelectComponent<T> extends AbstractTuiNativeSelect<
     }
 
     protected onValueChange(index: number): void {
-        this.host.onValueChange(this.items?.[index] || null);
+        this.host.onValueChange(this.items?.[index] ?? null);
     }
 }

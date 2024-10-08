@@ -80,8 +80,7 @@
             "plugin:@taiga-ui/experience/entry-points"
         ],
         "rules": {
-            "jest/prefer-importing-jest-globals": "off",
-            "sonarjs/prefer-nullish-coalescing": "off"
+            "jest/prefer-importing-jest-globals": "off"
         },
         "overrides": [
             {

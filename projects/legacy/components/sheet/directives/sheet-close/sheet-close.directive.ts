@@ -38,7 +38,7 @@ export class TuiSheetCloseDirective {
             this.win.innerHeight,
             this.el.scrollHeight - this.win.innerHeight,
         );
-        const min = Math.min(height, this.sheet.stops[0] || Infinity);
+        const min = Math.min(height, this.sheet.stops[0] ?? Infinity);
 
         return scrollTop < min / 2;
     }

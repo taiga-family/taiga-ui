@@ -16,7 +16,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
     return {
         provide: TUI_THEME,
         useFactory: () =>
-            inject(WA_LOCAL_STORAGE).getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
+            inject(WA_LOCAL_STORAGE).getItem(inject(TUI_THEME_KEY)) ?? 'Taiga UI',
     };
 }
 

@@ -37,7 +37,7 @@ export function replaceImports(
                 removeImport(namedImport);
                 addUniqueImport(
                     namedImport.getSourceFile().getFilePath(),
-                    to.namedImport || to.name,
+                    to.namedImport ?? to.name,
                     to.moduleSpecifier,
                 );
             }

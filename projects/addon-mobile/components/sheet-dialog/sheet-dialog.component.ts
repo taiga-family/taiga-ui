@@ -109,7 +109,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     protected get isSmall(): boolean {
-        return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
+        return this.sheetTop > (this.sheet?.nativeElement.clientHeight ?? Infinity);
     }
 
     @shouldCall(isCloseable)

@@ -32,14 +32,14 @@ export class TuiSliderThumbLabel implements AfterContentInit {
     }
 
     protected get size(): TuiSizeS {
-        return this.slider?.size || 'm';
+        return this.slider?.size ?? 'm';
     }
 
     protected get ratio(): number {
-        return this.slider?.valueRatio || 0;
+        return this.slider?.valueRatio ?? 0;
     }
 
     protected get ghostLeft(): number {
-        return this.ratio * (this.slider?.el.offsetWidth || 0);
+        return this.ratio * (this.slider?.el.offsetWidth ?? 0);
     }
 }

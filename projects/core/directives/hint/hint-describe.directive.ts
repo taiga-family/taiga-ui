@@ -62,7 +62,7 @@ export class TuiHintDescribe extends TuiDriver {
 
     @Input()
     public set tuiHintDescribe(id: string | null | undefined) {
-        this.id$.next(id || '');
+        this.id$.next(id ?? '');
     }
 
     @tuiPure

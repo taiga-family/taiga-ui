@@ -46,7 +46,7 @@ export function addHTMLCommentTags({
                 : []),
         ].map(
             ({sourceCodeLocation}) =>
-                (sourceCodeLocation?.startOffset || 0) + templateOffset,
+                (sourceCodeLocation?.startOffset ?? 0) + templateOffset,
         );
 
         elementStartOffsets.forEach((offset) => {

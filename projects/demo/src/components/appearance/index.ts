@@ -58,6 +58,6 @@ export class TuiDocAppearance {
     public mode: string | readonly string[] | null = null;
 
     public get appearance(): string {
-        return this.selected || this.tuiDocAppearance[0] || this.appearances[0];
+        return this.selected || (this.tuiDocAppearance[0] ?? this.appearances[0]);
     }
 }

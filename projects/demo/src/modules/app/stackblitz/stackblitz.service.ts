@@ -52,7 +52,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 ...modifiedSupportFiles,
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.template.html`]: content.HTML,
-                [appPrefix`app.style.less`]: prepareLess(content.LESS || ''),
+                [appPrefix`app.style.less`]: prepareLess(content.LESS ?? ''),
             },
         });
     }

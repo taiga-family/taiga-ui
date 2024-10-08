@@ -334,7 +334,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private getYearsViewportSize(): number {
-        return this.yearsScrollRef?.getViewportSize() || 0;
+        return this.yearsScrollRef?.getViewportSize() ?? 0;
     }
 
     private updateViewportDimension(): void {

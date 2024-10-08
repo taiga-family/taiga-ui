@@ -7,7 +7,7 @@ import {tuiIsCI} from '../../cdk/schematics';
 
 const verbose = !tuiIsCI();
 const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');
-const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 'src');
+const dest = process.argv[2] ?? path.join(process.cwd(), 'projects', 'icons', 'src');
 
 fs.readdirSync(src).forEach((filename: string) => {
     const filledFilename = renameToFilled(filename);

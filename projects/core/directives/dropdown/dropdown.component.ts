@@ -87,8 +87,8 @@ export class TuiDropdownComponent {
         const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
-        const offsetX = position === 'fixed' ? 0 : -(clientRect?.left || 0);
-        const offsetY = position === 'fixed' ? 0 : -(clientRect?.top || 0);
+        const offsetX = position === 'fixed' ? 0 : -(clientRect?.left ?? 0);
+        const offsetY = position === 'fixed' ? 0 : -(clientRect?.top ?? 0);
 
         top += offsetY;
         left += offsetX;

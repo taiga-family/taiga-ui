@@ -52,6 +52,6 @@ export default class Example {
     protected stringify(items: readonly Python[]): TuiStringHandler<TuiContext<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 
-        return ({$implicit}: TuiContext<number>) => map.get($implicit) || '';
+        return ({$implicit}: TuiContext<number>) => map.get($implicit) ?? '';
     }
 }

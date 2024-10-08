@@ -34,7 +34,7 @@ export class RequestService {
     );
 
     public request(query: string | null): Observable<readonly User[] | null> {
-        this.request$.next(query || '');
+        this.request$.next(query ?? '');
 
         return this.response$;
     }

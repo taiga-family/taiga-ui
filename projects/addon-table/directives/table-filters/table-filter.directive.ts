@@ -48,6 +48,6 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     }
 
     private get key(): string | keyof T | undefined {
-        return this.tuiTableFilter || this.head?.tuiHead;
+        return this.tuiTableFilter ?? this.head?.tuiHead;
     }
 }

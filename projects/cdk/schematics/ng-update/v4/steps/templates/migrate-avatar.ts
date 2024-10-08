@@ -37,7 +37,7 @@ function getFallbackValue(
     textValue: string | undefined,
     fallbackValue: string | undefined,
 ): string {
-    return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || '';
+    return textValue ? `(${textValue} | tuiInitials)` : (fallbackValue ?? '');
 }
 
 export function migrateAvatar({
@@ -99,7 +99,7 @@ export function migrateAvatar({
         }
 
         const mainSrc =
-            urlAttrValue || (textAttrValue ? `${textAttrValue} | tuiInitials` : '');
+            urlAttrValue ?? (textAttrValue ? `${textAttrValue} | tuiInitials` : '');
         const fallbackValue = urlAttrValue
             ? getFallbackValue(textAttrValue, fallbackAttrValue)
             : '';
@@ -122,7 +122,7 @@ export function migrateAvatar({
             autoColorAttr,
         ].filter((attr): attr is Attribute => attr !== undefined);
 
-        const fallbackModule = !!((avatarUrlAttr && textAttrValue) || fallbackAttr);
+        const fallbackModule = !!((avatarUrlAttr && textAttrValue) ?? fallbackAttr);
         const initialsModule = !!textAttrValue;
         const autoColorModule = !!autoColorValue && autoColorValue === 'true';
 

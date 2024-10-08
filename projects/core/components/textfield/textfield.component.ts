@@ -83,7 +83,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected computedFiller = computed(() => {
-        const value = this.directive?.nativeValue() || '';
+        const value = this.directive?.nativeValue() ?? '';
         const filledValue = value + this.filler().slice(value.length);
 
         return filledValue.length > value.length ? filledValue : '';
@@ -120,7 +120,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     public get id(): string {
-        return this.input?.nativeElement.id || this.autoId;
+        return this.input?.nativeElement.id ?? this.autoId;
     }
 
     public get size(): TuiSizeL | TuiSizeS {

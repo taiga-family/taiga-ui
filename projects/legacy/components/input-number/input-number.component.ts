@@ -187,11 +187,11 @@ export class TuiInputNumberComponent
     }
 
     protected get canDecrement(): boolean {
-        return this.interactive && (this.value || 0) > this.computedMin;
+        return this.interactive && (this.value ?? 0) > this.computedMin;
     }
 
     protected get canIncrement(): boolean {
-        return this.interactive && (this.value || 0) < this.computedMax;
+        return this.interactive && (this.value ?? 0) < this.computedMax;
     }
 
     protected get computedPrefix(): string {
@@ -218,7 +218,7 @@ export class TuiInputNumberComponent
     }
 
     protected get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
+        return this.nativeFocusableElement?.value ?? '';
     }
 
     protected set nativeValue(value: string) {
@@ -236,7 +236,7 @@ export class TuiInputNumberComponent
         }
 
         this.value = tuiClamp(
-            (this.value || 0) + step,
+            (this.value ?? 0) + step,
             this.computedMin,
             this.computedMax,
         );

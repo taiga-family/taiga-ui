@@ -198,7 +198,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     protected get searchString(): string {
-        return this.search === null ? '' : this.search;
+        return this.search ?? '';
     }
 
     protected get computedGroup(): boolean {

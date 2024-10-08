@@ -39,7 +39,7 @@ export default class Example {
     protected readonly initial =
         this.doc.head
             .querySelector('meta[name="theme-color"]')
-            ?.getAttribute('content') || '';
+            ?.getAttribute('content') ?? '';
 
     protected onColor(color: boolean): void {
         this.color = color;

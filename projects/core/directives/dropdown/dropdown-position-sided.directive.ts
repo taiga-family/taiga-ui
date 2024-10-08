@@ -17,7 +17,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vertical = inject(TuiDropdownPosition);
 
-    private previous = this.options.direction || 'bottom';
+    private previous = this.options.direction ?? 'bottom';
 
     @Input()
     public tuiDropdownSided: boolean | string = '';

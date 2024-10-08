@@ -72,7 +72,7 @@ export class IconsGroup implements OnInit {
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
-                map((search) => search || ''),
+                map((search) => search ?? ''),
                 filter((search) => search.length > 2 || search.length === 0),
                 takeUntilDestroyed(this.destroyRef),
             )

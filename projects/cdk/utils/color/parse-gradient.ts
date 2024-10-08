@@ -77,8 +77,8 @@ export function tuiParseGradient(input: string): TuiParsedGradient {
 
     while (matchColorStop !== null) {
         stops = stops.concat({
-            color: matchColorStop[1] || '',
-            position: getPosition(matchColorStop[2] || '', stops.length),
+            color: matchColorStop[1] ?? '',
+            position: getPosition(matchColorStop[2] ?? '', stops.length),
         });
 
         matchColorStop = stopsRegexp.exec(stopsString);

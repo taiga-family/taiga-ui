@@ -37,7 +37,7 @@ export function migrateBadgedContent({
         const sizeAttr = findAttr(attrs, 'size');
         const rounded = findAttr(attrs, 'rounded');
 
-        const size = sizeAttr?.value || 'm';
+        const size = sizeAttr?.value ?? 'm';
 
         if (!contentBottomAttr) {
             migrateColor({

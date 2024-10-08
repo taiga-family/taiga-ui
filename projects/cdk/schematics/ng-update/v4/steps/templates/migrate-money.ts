@@ -71,7 +71,7 @@ export function migrateMoney({
 
             const formatPart = `[tuiNumberFormat]='${format}'`;
 
-            const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
+            const insertTo = (sourceCodeLocation?.startTag?.startOffset ?? 0) + 1;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);
         }

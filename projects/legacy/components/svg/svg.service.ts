@@ -35,7 +35,7 @@ export class TuiSvgService {
     }
 
     public getOriginal(name: string): string | null {
-        return this.originals[name] || null;
+        return this.originals[name] ?? null;
     }
 
     private defineIcon(name: string, src: string, map: Map<string, SafeHtml>): void {
@@ -66,7 +66,7 @@ export class TuiSvgService {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
+                : this.sanitizer.sanitize(SecurityContext.HTML, src)) ?? '',
         );
     }
 }

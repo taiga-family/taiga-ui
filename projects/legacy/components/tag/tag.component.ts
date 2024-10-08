@@ -104,7 +104,7 @@ export class TuiTagComponent {
     }
 
     protected get displayText(): string {
-        return this.editedText === null ? this.value : this.editedText;
+        return this.editedText ?? this.value;
     }
 
     protected get loaderSize(): TuiSizeXS {
@@ -149,7 +149,7 @@ export class TuiTagComponent {
         switch (event.key.toLowerCase()) {
             case 'enter':
                 event.preventDefault();
-                this.save(this.editedText || '');
+                this.save(this.editedText ?? '');
                 break;
             case 'escape':
             case 'esc':

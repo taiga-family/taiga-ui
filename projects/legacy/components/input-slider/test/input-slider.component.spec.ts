@@ -60,7 +60,7 @@ class Test {
     public postfix = 'things';
 
     public get percent(): number {
-        return Math.round(((this.control.value || 0) / (this.max - this.min)) * 100);
+        return Math.round(((this.control.value ?? 0) / (this.max - this.min)) * 100);
     }
 }
 

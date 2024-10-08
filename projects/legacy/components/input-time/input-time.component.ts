@@ -102,7 +102,7 @@ export class TuiInputTimeComponent
     }
 
     public get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
+        return this.nativeFocusableElement?.value ?? '';
     }
 
     public set nativeValue(value: string) {
@@ -305,7 +305,7 @@ export class TuiInputTimeComponent
             return;
         }
 
-        const selectionStart = target.selectionStart || 0;
+        const selectionStart = target.selectionStart ?? 0;
 
         this.shiftTime(this.calculateShift(selectionStart, shift));
 

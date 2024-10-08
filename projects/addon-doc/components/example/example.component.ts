@@ -153,7 +153,7 @@ export class TuiDocExample {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id || '', files)
+            ?.edit(this.componentName, this.id ?? '', files)
             .finally(() => this.loading.set(false));
     }
 }

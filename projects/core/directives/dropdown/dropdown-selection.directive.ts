@@ -159,8 +159,8 @@ export class TuiDropdownSelection
         ghost.style.height = tuiPx(height);
         ghost.textContent = CHAR_ZERO_WIDTH_SPACE + value + CHAR_NO_BREAK_SPACE;
 
-        range.setStart(ghost.firstChild as Node, selectionStart || 0);
-        range.setEnd(ghost.firstChild as Node, selectionEnd || 0);
+        range.setStart(ghost.firstChild as Node, selectionStart ?? 0);
+        range.setEnd(ghost.firstChild as Node, selectionEnd ?? 0);
 
         return range;
     }

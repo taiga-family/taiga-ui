@@ -133,7 +133,7 @@ export default class Example extends AbstractExampleTuiControl {
 
     @tuiPure
     protected filter(query: string | null): readonly Account[] {
-        return this.items.filter((item) => TUI_DEFAULT_MATCHER(item, query || ''));
+        return this.items.filter((item) => TUI_DEFAULT_MATCHER(item, query ?? ''));
     }
 
     protected setValue(): void {

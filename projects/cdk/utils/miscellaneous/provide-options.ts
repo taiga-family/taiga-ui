@@ -10,7 +10,7 @@ export function tuiProvideOptions<T>(
         provide,
         deps: [[new Optional(), new SkipSelf(), provide]],
         useFactory: (parent: T | null): T => ({
-            ...(parent || fallback),
+            ...(parent ?? fallback),
             ...options,
         }),
     };

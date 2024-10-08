@@ -46,7 +46,7 @@ export function replaceSizeAttr(
         recorder.remove(templateOffset + startOffset, endOffset - startOffset);
         recorder.insertRight(
             templateOffset + startOffset,
-            `${sizeAttr.name}="${map[sizeAttr.value] || sizeAttr.value}"`,
+            `${sizeAttr.name}="${map[sizeAttr.value] ?? sizeAttr.value}"`,
         );
     }
 }

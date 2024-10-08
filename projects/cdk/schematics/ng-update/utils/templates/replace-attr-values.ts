@@ -54,7 +54,7 @@ export function replaceAttrValues({
                 }
 
                 const attributeName =
-                    attrNames.find((attrName) => attrName.toLowerCase() === name) || '';
+                    attrNames.find((attrName) => attrName.toLowerCase() === name) ?? '';
 
                 if (Array.isArray(valueReplacer)) {
                     valueReplacer.forEach(({from, to}) => {
@@ -64,7 +64,7 @@ export function replaceAttrValues({
                                 recorder,
                                 templateOffset,
                                 attrName: name,
-                                attrNewName: newAttrName || attributeName,
+                                attrNewName: newAttrName ?? attributeName,
                                 attrValue: to,
                             });
                         }
@@ -75,7 +75,7 @@ export function replaceAttrValues({
                         recorder,
                         templateOffset,
                         attrName: name,
-                        attrNewName: newAttrName || attributeName,
+                        attrNewName: newAttrName ?? attributeName,
                         attrValue: valueReplacer(value),
                     });
                 }

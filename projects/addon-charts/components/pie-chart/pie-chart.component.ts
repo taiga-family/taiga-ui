@@ -127,7 +127,7 @@ export class TuiPieChart {
                 ),
             )
             .map((angle, index, array) => [
-                array[index - 1] || 0,
+                array[index - 1] ?? 0,
                 Math.min(angle, 359.9999),
             ]);
     }

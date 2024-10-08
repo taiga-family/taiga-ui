@@ -9,7 +9,7 @@ function convertToSundayFirstWeekFormat(
 ): readonly string[] {
     const sundayIndex = weekDaysNames.length - 1;
 
-    return [weekDaysNames[sundayIndex] || '', ...weekDaysNames.slice(0, sundayIndex)];
+    return [weekDaysNames[sundayIndex] ?? '', ...weekDaysNames.slice(0, sundayIndex)];
 }
 
 @Pipe({

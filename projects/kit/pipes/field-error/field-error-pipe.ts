@@ -131,6 +131,6 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         const id = order?.find((errorId) => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || '';
+        return id ?? fallback ?? '';
     }
 }

@@ -33,7 +33,7 @@ export function tuiFallbackAccessor<T extends TuiAccessor>(
     return (accessors, fallback) =>
         accessors?.find?.(
             (accessor) => accessor !== fallback && accessor.type === type,
-        ) || fallback;
+        ) ?? fallback;
 }
 
 export function tuiPositionAccessorFor(

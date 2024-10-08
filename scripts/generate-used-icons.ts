@@ -7,7 +7,7 @@ import {basename, join} from 'node:path';
 })();
 
 function generateProjectsUsedIcons(): void {
-    const rootDirectory = process.env.ROOT_FOLDER || './projects';
+    const rootDirectory = process.env.ROOT_FOLDER ?? './projects';
     const excludedFolders = [
         'demo',
         'demo-cypress',
@@ -27,7 +27,7 @@ function generateProjectsUsedIcons(): void {
 }
 
 function generateDemoUsedIcons(): void {
-    const rootDirectory = process.env.ROOT_DEMO_FOLDER || './projects/demo';
+    const rootDirectory = process.env.ROOT_DEMO_FOLDER ?? './projects/demo';
     const excludedFiles = ['used-icons.ts'];
 
     generateUsedIcons(rootDirectory, {

@@ -8,7 +8,7 @@ import {tuiIsCI} from '../../cdk/schematics';
 
 const verbose = !tuiIsCI();
 const dest =
-    process.argv[2] || path.join(process.cwd(), 'projects', 'icons-fontawesome', 'src');
+    process.argv[2] ?? path.join(process.cwd(), 'projects', 'icons-fontawesome', 'src');
 
 // 1. copy fontawesome icons
 ['brands', 'regular', 'solid'].forEach((type) => {

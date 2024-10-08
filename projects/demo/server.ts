@@ -12,10 +12,10 @@ import bootstrap from './src/main.server';
 
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule?.filename || '';
+const moduleFilename = mainModule?.filename ?? '';
 
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
-    const port = process.env['PORT'] || 4000;
+    const port = process.env['PORT'] ?? 4000;
 
     const server = express();
     const dist = join(process.cwd(), 'dist/demo/browser');

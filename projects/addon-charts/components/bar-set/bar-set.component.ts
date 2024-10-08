@@ -35,7 +35,7 @@ export class TuiBarSet {
     }
 
     protected get computedSize(): TuiSizeL | TuiSizeS {
-        return this.size || 'm';
+        return this.size ?? 'm';
     }
 
     protected getHeight(value: number): number {

@@ -72,6 +72,6 @@ export default class Example {
     protected readonly control = new FormControl([2, 3]);
 
     protected onSearch(search: string | null): void {
-        this.search$.next(search || '');
+        this.search$.next(search ?? '');
     }
 }

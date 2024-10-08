@@ -459,7 +459,7 @@ export class TuiInputTagComponent
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 if (this.scrollBar) {
-                    this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;
+                    this.scrollBar.nativeElement.scrollLeft = scrollLeft ?? 0;
                 }
             });
     }
@@ -530,6 +530,6 @@ export class TuiInputTagComponent
     }
 
     private clippedValue(value: string): string {
-        return value.slice(0, this.maxLength || value.length);
+        return value.slice(0, this.maxLength ?? value.length);
     }
 }

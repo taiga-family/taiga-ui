@@ -79,7 +79,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             this.checkPosition(this.points[direction], width, height),
         );
 
-        return this.points[direction || this.fallback];
+        return this.points[direction ?? this.fallback];
     }
 
     private get fallback(): TuiHintDirection {

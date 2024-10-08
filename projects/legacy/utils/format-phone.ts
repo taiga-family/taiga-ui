@@ -61,7 +61,7 @@ export function tuiFormatPhone(
         }
 
         if (mask === '#') {
-            result += splitValue[0] || '';
+            result += splitValue[0] ?? '';
             splitValue.splice(0, 1);
         } else {
             result += mask;

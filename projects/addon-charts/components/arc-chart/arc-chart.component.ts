@@ -113,7 +113,7 @@ export class TuiArcChart {
 
     protected getOffset(index: number): number {
         return (
-            this.getLength(index) * (1 - Math.min((this.value[index] || 0) / this.max, 1))
+            this.getLength(index) * (1 - Math.min((this.value[index] ?? 0) / this.max, 1))
         );
     }
 }

@@ -76,7 +76,7 @@ export class TuiAxes {
     }
 
     public fallback(label: string | null): string {
-        return label || CHAR_NO_BREAK_SPACE;
+        return label ?? CHAR_NO_BREAK_SPACE;
     }
 
     protected get centeredXLabels(): boolean {

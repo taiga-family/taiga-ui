@@ -54,7 +54,7 @@ export class TuiLineChart implements OnChanges {
     private readonly autoId = tuiInjectId();
     private readonly resize = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
-            map(([e]) => e?.contentRect.height || 0),
+            map(([e]) => e?.contentRect.height ?? 0),
         ),
         {initialValue: 0},
     );
@@ -163,12 +163,12 @@ export class TuiLineChart implements OnChanges {
 
     protected getX(index: number): number {
         if (this.isSinglePoint) {
-            return (this.value[0]?.[0] || 0) / 2;
+            return (this.value[0]?.[0] ?? 0) / 2;
         }
 
         return index
-            ? ((this.value[index - 1]?.[0] || 0) + (this.value[index]?.[0] || 0)) / 2
-            : 2 * (this.value[0]?.[0] || 0) - this.getX(1);
+            ? ((this.value[index - 1]?.[0] ?? 0) + (this.value[index]?.[0] ?? 0)) / 2
+            : 2 * (this.value[0]?.[0] ?? 0) - this.getX(1);
     }
 
     protected getWidth(index: number): number {
@@ -204,7 +204,7 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getOffset(x: number): number {
-        return (100 * ((this.value[x]?.[0] || 0) - this.getX(x))) / this.computeWidth(x);
+        return (100 * ((this.value[x]?.[0] ?? 0) - this.getX(x))) / this.computeWidth(x);
     }
 
     protected onMouseEnter(index: number): void {
@@ -230,7 +230,7 @@ export class TuiLineChart implements OnChanges {
 
     private computeWidth(index: number): number {
         return index === this.value.length - 1
-            ? 2 * ((this.value[index]?.[0] || 0) - this.getX(index))
+            ? 2 * ((this.value[index]?.[0] ?? 0) - this.getX(index))
             : this.getX(index + 1) - this.getX(index);
     }
 }

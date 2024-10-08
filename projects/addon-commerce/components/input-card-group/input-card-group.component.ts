@@ -265,15 +265,15 @@ export class TuiInputCardGroup
     }
 
     protected get card(): string {
-        return this.value()?.card || '';
+        return this.value()?.card ?? '';
     }
 
     protected get expire(): string {
-        return this.value()?.expire || '';
+        return this.value()?.expire ?? '';
     }
 
     protected get cvc(): string {
-        return this.value()?.cvc || '';
+        return this.value()?.cvc ?? '';
     }
 
     protected get cardCollapsed(): boolean {

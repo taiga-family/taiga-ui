@@ -30,7 +30,7 @@ export default class Example {
     ]);
 
     protected get card(): string | null {
-        const value = this.control.value?.card || '';
+        const value = this.control.value?.card ?? '';
 
         if (value.length < 7) {
             return null;

@@ -39,8 +39,8 @@ export function migrateNotification({
 
         const {startTag, endTag} = sourceCodeLocation || {};
         const hideCloseAttrLocation =
-            sourceCodeLocation?.attrs?.[hideCloseAttr?.name || ''];
-        const hasIconAttrLocation = sourceCodeLocation?.attrs?.[hasIconAttr?.name || ''];
+            sourceCodeLocation?.attrs?.[hideCloseAttr?.name ?? ''];
+        const hasIconAttrLocation = sourceCodeLocation?.attrs?.[hasIconAttr?.name ?? ''];
 
         if (!sizeAttr) {
             recorder.insertRight(
@@ -89,7 +89,7 @@ export function migrateNotification({
                     break;
                 default:
                     recorder.insertLeft(
-                        templateOffset + (startTag?.startOffset || 0),
+                        templateOffset + (startTag?.startOffset ?? 0),
                         '<!-- TODO: (Taiga UI migration) "hasIcon" is deleted. Use icon="" to hide icon. Or pass TUI_NOTIFICATION_DEFAULT_OPTIONS["icon"] to show it again. Learn more: https://taiga-ui.dev/components/notification -->\n',
                     );
             }

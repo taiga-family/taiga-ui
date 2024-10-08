@@ -33,7 +33,7 @@ export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
 }
 
 function checkFormat({name, type}: File, formats: readonly string[]): boolean {
-    const extension = `.${(name.split('.').pop() || '').toLowerCase()}`;
+    const extension = `.${(name.split('.').pop() ?? '').toLowerCase()}`;
 
     return formats.some(
         (format) =>
