@@ -10,12 +10,21 @@
         Find on page
     </tui-input>
     <tui-input-number
-        decimal="never"
-        class="tui-space_horizontal-3"
         [formControl]="minAge"
+        [tuiNumberFormat]="{precision: 0}"
     >
         Minimum age
     </tui-input-number>
+</p>
+<p class="filters">
+    <label tuiLabel>
+        <input
+            tuiCheckbox
+            type="checkbox"
+            [(ngModel)]="dob"
+        />
+        Enable sorting by DOB
+    </label>
     <button
         size="m"
         tuiButton
@@ -60,8 +69,8 @@
                 </th>
                 <th
                     *tuiHead="'dob'"
-                    tuiSortable
                     tuiTh
+                    [tuiSortable]="dob"
                 >
                     Date of Birth
                 </th>
