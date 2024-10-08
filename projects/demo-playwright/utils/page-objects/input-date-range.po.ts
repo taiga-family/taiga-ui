@@ -3,18 +3,22 @@ import {expect} from '@playwright/test';
 
 export class TuiInputDateRangePO {
     public readonly textfield: Locator = this.host.getByRole('textbox');
-    public readonly calendarRange: Locator = this.host
-        .page()
-        .locator('tui-calendar-range');
+    public readonly textfieldIcon: Locator = this.host.getByTestId(
+        'tui-input-date-range__icon',
+    );
 
-    public readonly items = this.calendarRange.locator(
+    public readonly calendar: Locator = this.host
+        .page()
+        .locator('tui-calendar-range, tui-mobile-calendar');
+
+    public readonly items = this.calendar.locator(
         '[automation-id="tui-calendar-range__menu"]',
     );
 
     constructor(private readonly host: Locator) {}
 
     public async getItems(): Promise<Locator[]> {
-        const dataList = this.calendarRange.locator(
+        const dataList = this.calendar.locator(
             '[automation-id="tui-calendar-range__menu"]',
         );
 
