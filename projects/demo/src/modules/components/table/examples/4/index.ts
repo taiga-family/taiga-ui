@@ -15,8 +15,14 @@ import {
     TuiLet,
     tuiToInt,
 } from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiLoader} from '@taiga-ui/core';
-import {TuiChevron} from '@taiga-ui/kit';
+import {
+    TuiButton,
+    TuiDropdown,
+    TuiLabel,
+    TuiLoader,
+    TuiNumberFormat,
+} from '@taiga-ui/core';
+import {TuiCheckbox, TuiChevron} from '@taiga-ui/kit';
 import {
     TuiInputModule,
     TuiInputNumberModule,
@@ -108,12 +114,15 @@ function getAge({dob}: User): number {
         NgIf,
         ReactiveFormsModule,
         TuiButton,
+        TuiCheckbox,
         TuiChevron,
         TuiDropdown,
         TuiInputModule,
         TuiInputNumberModule,
+        TuiLabel,
         TuiLet,
         TuiLoader,
+        TuiNumberFormat,
         TuiReorder,
         TuiTable,
         TuiTablePagination,
@@ -151,6 +160,8 @@ export default class Example {
     protected enabled = this.initial;
 
     protected columns = ['name', 'dob', 'age'];
+
+    protected dob = false;
 
     protected search = '';
 
