@@ -45,7 +45,7 @@ jobs:
         run: npx nx component-test demo-cypress
 
       - name: Save Cypress Baseline Snapshots
-        uses: actions/upload-artifact@v4.4.1
+        uses: actions/upload-artifact@v4.4.2
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
           name: ${{env.CYPRESS_BASELINE_SNAPSHOTS_KEY}}
@@ -77,7 +77,7 @@ jobs:
         run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4.4.1
+        uses: actions/upload-artifact@v4.4.2
         with:
           path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
@@ -142,7 +142,7 @@ jobs:
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.4.1
+        uses: actions/upload-artifact@v4.4.2
         with:
           path: |
             ./projects/demo-playwright/tests-results/**/*.diff.png
