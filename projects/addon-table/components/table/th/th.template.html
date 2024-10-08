@@ -1,5 +1,5 @@
 <button
-    *ngIf="sorter && table; else content"
+    *ngIf="requiredSort && table; else content"
     type="button"
     class="t-sort"
     [class.t-sort_sorted]="isCurrent"

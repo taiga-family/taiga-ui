@@ -53,7 +53,6 @@
             <tr tuiThGroup>
                 <th
                     *tuiHead="'name'"
-                    tuiSortable
                     tuiTh
                 >
                     Name
@@ -62,6 +61,7 @@
                     *tuiHead="'dob'"
                     tuiSortable
                     tuiTh
+                    [requiredSort]="true"
                 >
                     Date of Birth
                 </th>
