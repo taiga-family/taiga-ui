@@ -24,6 +24,16 @@ import {TuiTableTh} from '../th/th.component';
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
+    host: {
+        /**
+         * TODO: fix later
+         * Be careful and thoughtful about using this attribute.
+         * It is intended as a last resort workaround.
+         * Components that break hydration should be
+         * considered bugs that need to be fixed.
+         */
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiTableThGroup<T extends Partial<Record<keyof T, any>>>
     implements AfterContentInit
