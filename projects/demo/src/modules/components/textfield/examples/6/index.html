@@ -1,0 +1,36 @@
+<fieldset [disabled]="disable()">
+    <legend>Payment fieldset</legend>
+
+    <tui-textfield
+        iconStart="@tui.credit-card"
+        tuiTextfieldSize="s"
+    >
+        <label tuiLabel>Card number</label>
+        <input
+            tuiTextfield
+            [(ngModel)]="card"
+        />
+    </tui-textfield>
+
+    <tui-textfield
+        iconStart="@tui.user"
+        tuiTextfieldSize="s"
+    >
+        <label tuiLabel>Card holder</label>
+        <input
+            tuiTextfield
+            [(ngModel)]="name"
+        />
+    </tui-textfield>
+</fieldset>
+
+<label class="t-label">
+    <input
+        size="s"
+        tuiSwitch
+        type="checkbox"
+        [ngModel]="disable()"
+        (ngModelChange)="disable.set($event)"
+    />
+    Disable
+</label>

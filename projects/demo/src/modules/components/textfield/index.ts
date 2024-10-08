@@ -30,6 +30,7 @@ export default class Page {
         'Dropdown',
         'Interactive icons',
         'Mask',
+        'Fieldset',
     ];
 
     protected value = '';
