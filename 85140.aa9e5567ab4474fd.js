@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85140],{85140:n=>{n.exports="fieldset {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\n.t-label {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    margin-top: 0.25rem;\n    inline-size: fit-content;\n    cursor: pointer;\n}\n"}}]);
