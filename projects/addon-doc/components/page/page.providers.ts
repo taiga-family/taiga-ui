@@ -2,7 +2,7 @@ import type {Provider} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import type {ActivatedRouteSnapshot} from '@angular/router';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
-import type {TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
