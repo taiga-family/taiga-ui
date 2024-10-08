@@ -1,17 +1,37 @@
 :host {
     display: flex;
     align-items: center;
-    block-size: 2.5rem;
     white-space: nowrap;
-    font: var(--tui-font-text-s);
     color: var(--tui-text-secondary);
+
+    &[data-size='m'] {
+        font: var(--tui-font-text-s);
+        line-height: 1.5rem;
+        block-size: 1.5rem;
+    }
 
     &[data-size='l'] {
         font: var(--tui-font-text-m);
+        line-height: 2.5rem;
+        block-size: 2.5rem;
     }
 }
 
+.t-more {
+    display: flex;
+    align-items: center;
+}
+
+.t-option ::ng-deep > * {
+    color: var(--tui-text-primary) !important;
+    background: transparent !important;
+}
+
 .t-icon {
-    margin: 0 0.25rem;
-    border: 0.25rem solid transparent;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.t-char {
+    margin: 0 0.375rem;
 }

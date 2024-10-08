@@ -1,58 +1,37 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItem, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown, TuiLink} from '@taiga-ui/core';
-import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {DemoRoute} from '@demo/routes';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiHint, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        FormsModule,
+        NgForOf,
+        RouterLink,
         TuiBreadcrumbs,
-        TuiButton,
-        TuiDataList,
-        TuiDropdown,
-        TuiInputNumberModule,
+        TuiFade,
+        TuiHint,
         TuiItem,
         TuiLink,
-        TuiRepeatTimes,
+        TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        tuiBreadcrumbsOptionsProvider({
-            icon: '@tui.arrow-right',
-            size: 'l',
-        }),
-    ],
+    providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],
 })
 export default class Example {
+    protected readonly fade = DemoRoute.Fade;
     protected readonly items = [
-        {
-            caption: 'Open Source',
-            link: 'https://github.com',
-        },
-        {
-            caption: 'Angular',
-            link: 'https://github.com/topics/angular',
-        },
-        {
-            caption: 'Taiga UI',
-            link: 'https://github.com/taiga-family/taiga-ui',
-        },
-        {
-            caption: 'Components',
-            link: 'https://taiga-ui.dev',
-        },
-        {
-            caption: 'Breadcrumbs',
-            link: 'https://taiga-ui.dev/navigation/breadcrumbs',
-        },
+        'First item',
+        'Very very long second item that must overflow',
+        'Third item',
+        'One last super long item that is never gonna fit',
     ];
-
-    protected max = 4;
 }

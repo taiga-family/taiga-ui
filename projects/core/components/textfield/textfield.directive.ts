@@ -1,7 +1,9 @@
 import type {OnChanges} from '@angular/core';
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiAppearance,
@@ -11,7 +13,7 @@ import {
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
-import {fromEvent} from 'rxjs';
+import {fromEvent, map, merge, switchMap, timer} from 'rxjs';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -21,6 +23,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
     // TODO: refactor to signal inputs after Angular update
     private readonly focused = signal<boolean | null>(null);
 
+    protected readonly control = inject(NgControl, {optional: true});
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(null);
     protected readonly m = tuiAppearanceMode(this.mode);
@@ -39,7 +42,11 @@ export class TuiTextfieldBase<T> implements OnChanges {
     public invalid: boolean | null = null;
 
     public nativeValue = toSignal(
-        fromEvent(this.el, 'input', () => this.el.value),
+        merge(
+            fromEvent(this.el, 'input'),
+            timer(0) // https://github.com/angular/angular/issues/54418
+                .pipe(switchMap(() => tuiControlValue(this.control))),
+        ).pipe(map(() => this.el.value)),
         {initialValue: this.el.value},
     );
 

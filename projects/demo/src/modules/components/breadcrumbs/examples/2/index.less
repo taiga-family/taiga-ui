@@ -5,11 +5,16 @@
     max-inline-size: 30rem;
 }
 
-[tuiLink]:last-child {
-    font-weight: bold;
-    color: var(--tui-text-primary);
+hr,
+h3 {
+    margin: 1rem 0;
 }
 
 .link {
     .text-truncate();
+
+    &_last {
+        font-weight: bold;
+        color: var(--tui-text-primary);
+    }
 }

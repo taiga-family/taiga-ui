@@ -10,37 +10,47 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
-            [description]="example.description"
-            [heading]="example.name"
-            [id]="example.name | tuiKebab"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-breadcrumbs [size]="size">
+            <tui-breadcrumbs
+                [itemsLimit]="itemsLimit"
+                [size]="size"
+            >
                 <ng-container *ngFor="let item of items">
-                    <a
+                    <button
                         *tuiItem
                         tuiLink
-                        [routerLink]="item.routerLink"
+                        type="button"
                     >
-                        {{ item.caption }}
-                    </a>
+                        {{ item }}
+                    </button>
                 </ng-container>
             </tui-breadcrumbs>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+        <table tuiDocAPI>
+            <tr
+                name="[itemsLimit]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="itemsLimit"
+            >
+                Limit on visible items
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Text size
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
