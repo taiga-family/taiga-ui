@@ -5,10 +5,12 @@ import {
     EventEmitter,
     Inject,
     Input,
+    OnChanges,
     OnInit,
     Optional,
     Output,
     Self,
+    SimpleChanges,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -37,7 +39,7 @@ import {takeUntil} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
-export class TuiPrimitiveCalendarRangeComponent implements OnInit {
+export class TuiPrimitiveCalendarRangeComponent implements OnInit, OnChanges {
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
@@ -99,6 +101,19 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
         value.append({month: offset});
 
+    ngOnChanges({
+        defaultViewedMonthFirst,
+        defaultViewedMonthSecond,
+        value,
+    }: SimpleChanges): void {
+        if (!value) {
+            this.updateViewedMonths(
+                defaultViewedMonthFirst?.currentValue,
+                defaultViewedMonthSecond?.currentValue,
+            );
+        }
+    }
+
     ngOnInit(): void {
         this.setInitialMonths();
     }
@@ -157,10 +172,18 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         return month;
     }
 
-    private updateViewedMonths(): void {
-        this.userViewedMonthFirst =
-            this.value === null ? this.defaultViewedMonthFirst : this.value.from;
+    private updateViewedMonths(firstMonth?: TuiMonth, secondMonth?: TuiMonth): void {
+        if (this.value) {
+            this.userViewedMonthFirst = this.value.from;
+            this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
+        } else {
+            this.userViewedMonthSecond = this.updatedViewedMonthSecond(
+                secondMonth ?? this.userViewedMonthSecond,
+            );
 
-        this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
+            this.userViewedMonthFirst = this.updatedViewedMonthFirst(
+                firstMonth ?? this.userViewedMonthFirst,
+            );
+        }
     }
 }
