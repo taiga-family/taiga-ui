@@ -46,6 +46,16 @@
                 </a>
             </ng-container>
         </ng-container>
+        <ng-container *ngFor="let tab of tabs | keyvalue">
+            <a
+                *tuiItem
+                routerLinkActive
+                tuiTab
+                [routerLink]="tab.key"
+            >
+                {{ tab.key }}
+            </a>
+        </ng-container>
     </tui-tabs-with-more>
 
     <div
@@ -75,5 +85,10 @@
             *ngIf="index === activeItemIndex"
             [ngTemplateOutlet]="tab.template"
         />
+    </ng-container>
+    <ng-container *ngFor="let tab of tabs | keyvalue; index as index">
+        <ng-container *ngIf="index + tabConnectors.length === activeItemIndex">
+            <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
+        </ng-container>
     </ng-container>
 </div>
