@@ -42,7 +42,7 @@ describe('Textfield', () => {
 
                     cy.get('input[tuiTextfield]').focus();
                     cy.get('tui-textfield').compareSnapshot(
-                        `[filler]-initial-value_${initialValue}`,
+                        `[filler]-initial-value_${initialValue.replaceAll(':', '-')}`,
                     );
                 });
             });
@@ -64,7 +64,7 @@ describe('Textfield', () => {
                     cy.get('input[tuiTextfield]').type(value);
 
                     cy.get('tui-textfield').compareSnapshot(
-                        `[filler]-user-types_${value}`,
+                        `[filler]-user-types_${value.replaceAll(':', '-')}`,
                     );
                 });
             });
