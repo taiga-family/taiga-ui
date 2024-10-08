@@ -27,7 +27,6 @@ export const TUI_USED_ICONS = [
     '@tui.box',
     '@tui.lock',
     '@tui.gift',
-    '@tui.arrow-right',
     '@tui.users',
     '@tui.clock',
     '@tui.circle-plus',
