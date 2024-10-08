@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[33574],{33574:e=>{e.exports=".context-menu {\n    inline-size: 8rem;\n}\n\n.icon {\n    border-width: 0.25rem;\n}\n"}}]);
