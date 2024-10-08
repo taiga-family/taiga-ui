@@ -34,8 +34,4 @@ export default class Page {
 
     protected value = '';
     protected filler = '';
-
-    protected readonly = false;
-    protected disabled = false;
-    protected invalid = false;
 }

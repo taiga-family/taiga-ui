@@ -12,7 +12,7 @@ import {TuiTitle} from '@taiga-ui/core';
 })
 export class TuiDocControl {
     @Input()
-    public hiddenOptions: Array<'disabled' | 'invalid' | 'readOnly'> = [];
+    public hiddenOptions: ReadonlyArray<'disabled' | 'invalid' | 'readOnly'> = [];
 
     public readonly = false;
     public disabled = false;
