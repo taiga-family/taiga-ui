@@ -27,6 +27,7 @@ export default class Page {
         'Two colors',
         'Bundled',
         'Resolver',
+        'Base64',
     ];
 
     protected readonly descriptions = [
