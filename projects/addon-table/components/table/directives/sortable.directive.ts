@@ -1,5 +1,7 @@
-import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
-import {Directive, forwardRef, inject, Input, type OnChanges} from '@angular/core';
+import type {BooleanInput} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import type {OnChanges} from '@angular/core';
+import {Directive, forwardRef, inject, Input} from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiTableTh} from '../th/th.component';
