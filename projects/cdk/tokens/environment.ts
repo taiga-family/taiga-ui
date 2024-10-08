@@ -1,8 +1,9 @@
 import {inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_NAVIGATOR, WA_USER_AGENT, WA_WINDOW} from '@ng-web-apis/common';
+import {isIos} from '@ng-web-apis/platform';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {tuiCreateTokenFromFactory, tuiIsIos} from '@taiga-ui/cdk/utils';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 import {fromEvent, map} from 'rxjs';
 
 // https://stackoverflow.com/a/11381730/2706426 http://detectmobilebrowsers.com/
@@ -19,7 +20,7 @@ export const TUI_IS_MOBILE = tuiCreateTokenFromFactory(
         secondRegex.test(inject(WA_USER_AGENT).slice(0, 4).toLowerCase()),
 );
 
-export const TUI_IS_IOS = tuiCreateTokenFromFactory(() => tuiIsIos(inject(WA_NAVIGATOR)));
+export const TUI_IS_IOS = tuiCreateTokenFromFactory(() => isIos(inject(WA_NAVIGATOR)));
 
 export const TUI_IS_ANDROID = tuiCreateTokenFromFactory(
     () => inject(TUI_IS_MOBILE) && !inject(TUI_IS_IOS),
