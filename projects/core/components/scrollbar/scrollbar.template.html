@@ -1,5 +1,5 @@
 <tui-scroll-controls
-    *ngIf="!hidden && !isIOS"
+    *ngIf="!hidden && !isIOS && options.mode !== 'native'"
     class="t-bars"
     [class.t-hover-mode]="options.mode === 'hover'"
 />

@@ -17,5 +17,6 @@ export default class Page {
         'Light scrollbar',
         'Virtual scroll',
         'Show scroll bars on hover',
+        'Native scrollbar',
     ];
 }

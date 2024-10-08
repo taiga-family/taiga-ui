@@ -16,7 +16,10 @@ import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
-import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
+import {
+    TUI_SCROLLBAR_OPTIONS,
+    TuiScrollControls,
+} from '@taiga-ui/core/components/scrollbar';
 import {TuiDropdowns} from '@taiga-ui/core/directives';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
@@ -57,21 +60,30 @@ export class TuiRoot {
         {initialValue: false},
     );
 
-    protected readonly scrollbars = inject(TUI_IS_MOBILE)
-        ? signal(false)
-        : toSignal(
-              inject<Observable<readonly unknown[]>>(TUI_DIALOGS).pipe(
-                  map(({length}) => !length),
-                  debounceTime(0, tuiZonefreeScheduler()),
-              ),
-              {initialValue: false},
-          );
+    protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
+
+    protected readonly scrollbars =
+        this.nativeScrollbar || inject(TUI_IS_MOBILE)
+            ? signal(false)
+            : toSignal(
+                  inject<Observable<readonly unknown[]>>(TUI_DIALOGS).pipe(
+                      map(({length}) => !length),
+                      debounceTime(0, tuiZonefreeScheduler()),
+                  ),
+                  {initialValue: false},
+              );
 
     constructor() {
         inject(DOCUMENT).documentElement.setAttribute(
             'data-tui-theme',
             inject(TUI_THEME).toLowerCase(),
         );
+
+        if (!this.nativeScrollbar) {
+            inject(DOCUMENT).defaultView?.document.documentElement.classList.add(
+                'tui-zero-scrollbar',
+            );
+        }
 
         ngDevMode &&
             console.assert(
