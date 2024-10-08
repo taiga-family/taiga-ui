@@ -20,5 +20,58 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-textfield
+                [filler]="filler"
+                [iconEnd]="icons.iconEnd"
+                [iconStart]="icons.iconStart"
+                [tuiTextfieldCleaner]="textfield.cleaner"
+                [tuiTextfieldSize]="textfield.size"
+            >
+                <label tuiLabel>I am a label</label>
+                <input
+                    placeholder="I am placeholder"
+                    tuiTextfield
+                    [disabled]="control.disabled"
+                    [invalid]="control.invalid"
+                    [readOnly]="control.readonly"
+                    [(ngModel)]="value"
+                />
+                <tui-icon tuiTooltip="I am a hint" />
+            </tui-textfield>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[(ngModel)]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="value"
+            >
+                Value (or reactive control directives)
+            </tr>
+            <tr
+                name="[filler]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="filler"
+            >
+                Filler
+            </tr>
+            <tbody
+                #control
+                tuiDocControl
+            ></tbody>
+            <tbody
+                #textfield
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>

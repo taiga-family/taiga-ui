@@ -1,0 +1,27 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>TextfieldOptions</strong>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('cleaner')"
+    name="[tuiTextfieldCleaner]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="cleaner"
+>
+    Shows a cross to reset a value
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('size')"
+    name="[tuiTextfieldSize]"
+    tuiDocAPIItem
+    type="TuiSizeS | TuiSizeL"
+    [items]="sizeVariants"
+    [(value)]="size"
+>
+    Size
+</tr>

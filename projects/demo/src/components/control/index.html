@@ -1,0 +1,39 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>Control</strong>
+            <span tuiSubtitle>Applied as a host directive</span>
+        </span>
+    </td>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('readOnly')"
+    name="[readOnly]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="readonly"
+>
+    Readonly state
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('disabled')"
+    name="[disabled]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="disabled"
+>
+    Disabled state (use
+    <code>formControl.disable()/.enable()</code>
+    for reactive forms)
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('invalid')"
+    name="[invalid]"
+    tuiDocAPIItem
+    type="boolean | null"
+    [items]="[true, false]"
+    [(value)]="invalid"
+>
+    Invalid state
+</tr>
