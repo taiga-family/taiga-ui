@@ -2,6 +2,7 @@ import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {AfterViewInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     computed,
     ContentChild,
@@ -80,6 +81,7 @@ export class TuiDocDemo implements AfterViewInit {
 
     private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly ngZone = inject(NgZone);
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -126,6 +128,8 @@ export class TuiDocDemo implements AfterViewInit {
                 this.createForm();
                 this.updateWidth(this.sandboxWidth + this.delta);
                 this.rendered.set(true);
+
+                this.cdr.detectChanges();
             });
     }
 
