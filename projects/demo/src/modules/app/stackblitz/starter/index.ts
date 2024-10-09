@@ -3,9 +3,9 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
+import {tuiLazyInject} from '@taiga-ui/cdk';
 import {TuiLoader} from '@taiga-ui/core';
 
-import {TuiStackblitzService} from '../stackblitz.service';
 import {appPrefix} from '../utils';
 
 @Component({
@@ -14,11 +14,12 @@ import {appPrefix} from '../utils';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiStackblitzService],
 })
 export default class Page implements OnInit {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly stackblitz = inject(TuiStackblitzService);
+    private readonly stackblitz = tuiLazyInject(
+        async () => (await import('../stackblitz.service')).TuiStackblitzService,
+    );
 
     public async ngOnInit(): Promise<void> {
         if (this.isBrowser) {
@@ -34,7 +35,7 @@ export default class Page implements OnInit {
             ].map(tuiRawLoad),
         ).then((markdowns) => markdowns.map((md) => tuiTryParseMarkdownCodeBlock(md)[0]));
 
-        return this.stackblitz.openStarter(
+        return (await this.stackblitz).openStarter(
             {
                 title: 'Taiga UI Starter',
                 description:

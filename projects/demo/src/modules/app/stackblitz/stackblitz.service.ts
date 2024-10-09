@@ -1,12 +1,12 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import type {OpenOptions, Project} from '@stackblitz/sdk';
 import stackblitz from '@stackblitz/sdk';
 import type {TuiCodeEditor} from '@taiga-ui/addon-doc';
+import {tuiLazyInject} from '@taiga-ui/cdk';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TsFileComponentParser} from '../classes';
 import {StackblitzEditButton} from './edit';
-import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
@@ -19,7 +19,9 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    private readonly deps = inject(StackblitzDepsService);
+    private readonly stackblitz = tuiLazyInject(
+        async () => (await import('./stackblitz-deps.service')).StackblitzDepsService,
+    );
 
     public readonly name = 'Stackblitz';
     public readonly content = new PolymorpheusComponent(StackblitzEditButton);
@@ -93,7 +95,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     > {
         return {
             template: 'angular-cli',
-            dependencies: await this.deps.get(),
+            dependencies: await (await this.stackblitz).get(),
             tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
     }
