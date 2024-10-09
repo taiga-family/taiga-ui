@@ -24,14 +24,14 @@
         "@angular/forms": ">=16.0.0",
         "@angular/platform-browser": ">=16.0.0",
         "@angular/router": ">=16.0.0",
-        "@ng-web-apis/common": "^4.8.0",
-        "@ng-web-apis/mutation-observer": "^4.8.0",
-        "@taiga-ui/cdk": "^4.10.0",
-        "@taiga-ui/event-plugins": "^4.2.4",
-        "@taiga-ui/i18n": "^4.10.0",
-        "@taiga-ui/polymorpheus": "^4.7.4",
+        "@ng-web-apis/common": ">=4.8.0 <5",
+        "@ng-web-apis/mutation-observer": ">=4.8.0 <5",
+        "@taiga-ui/cdk": ">=4.10.0 <5",
+        "@taiga-ui/event-plugins": ">=4.2.4 <5",
+        "@taiga-ui/i18n": ">=4.10.0 <5",
+        "@taiga-ui/polymorpheus": ">=4.7.4 <5",
         "rxjs": ">=7.0.0",
-        "tslib": "^2.7.0"
+        "tslib": ">=2.7.0"
     },
     "schematics": "./schematics/collection.json"
 }

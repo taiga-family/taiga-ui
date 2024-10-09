@@ -15,13 +15,13 @@
     "peerDependencies": {
         "@angular/common": ">=16.0.0",
         "@angular/core": ">=16.0.0",
-        "@ng-web-apis/intersection-observer": "^4.8.0",
-        "@taiga-ui/cdk": "^4.10.0",
-        "@taiga-ui/core": "^4.10.0",
-        "@taiga-ui/i18n": "^4.10.0",
-        "@taiga-ui/kit": "^4.10.0",
-        "@taiga-ui/polymorpheus": "^4.7.4",
+        "@ng-web-apis/intersection-observer": ">=4.8.0 <5",
+        "@taiga-ui/cdk": ">=4.10.0 <5",
+        "@taiga-ui/core": ">=4.10.0 <5",
+        "@taiga-ui/i18n": ">=4.10.0 <5",
+        "@taiga-ui/kit": ">=4.10.0 <5",
+        "@taiga-ui/polymorpheus": ">=4.7.4 <5",
         "rxjs": ">=7.0.0",
-        "tslib": "^2.7.0"
+        "tslib": ">=2.7.0"
     }
 }

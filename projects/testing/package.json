@@ -9,7 +9,7 @@
         "ts-jest": "29.2.5"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": "^4.10.0",
-        "tslib": "^2.7.0"
+        "@taiga-ui/cdk": ">=4.10.0 <5",
+        "tslib": ">=2.7.0"
     }
 }
