@@ -18,7 +18,7 @@ const config: JestConfigWithTsJest = {
     preset: 'jest-preset-angular',
     testEnvironment: 'jsdom',
     extensionsToTreatAsEsm: ['.ts'],
-    setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+    setupFilesAfterEnv: ['./node_modules/@taiga-ui/testing/setup-jest/index.ts'],
     transform: {
         '^.+\\.(ts|js|mjs|html|svg)$': [
             'jest-preset-angular',

@@ -1,4 +1,9 @@
 /// <reference types="jest" />
+import 'jest-preset-angular/setup-jest';
+
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing/mocks';
+
+tuiSwitchNgDevMode(false);
 
 const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('node:util');
 

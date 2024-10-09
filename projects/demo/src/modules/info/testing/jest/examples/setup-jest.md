@@ -1,5 +1,4 @@
 ```ts
-import 'jest-preset-angular/setup-jest';
 import '@taiga-ui/testing/setup-jest';
 
 // allows you to do runtime reflection on types
