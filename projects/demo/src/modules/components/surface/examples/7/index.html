@@ -97,8 +97,8 @@
 </div>
 
 <div
+    tuiAppearance="floating"
     tuiCardLarge
-    tuiSurface="elevated"
     class="reviews"
 >
     <h3 class="heading">
@@ -118,7 +118,7 @@
         <div class="wrapper">
             <div
                 *ngFor="let review of reviews"
-                tuiSurface="flat"
+                tuiAppearance="neutral"
                 class="review"
             >
                 {{ review.body }}

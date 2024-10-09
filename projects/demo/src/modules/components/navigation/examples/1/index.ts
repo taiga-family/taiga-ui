@@ -13,7 +13,6 @@ import {
     TuiDropdown,
     TuiDropdownService,
     TuiIcon,
-    TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -54,7 +53,6 @@ const ICON =
         TuiIcon,
         TuiNavigation,
         TuiRepeatTimes,
-        TuiSurface,
         TuiSwitch,
         TuiTabs,
         TuiTitle,

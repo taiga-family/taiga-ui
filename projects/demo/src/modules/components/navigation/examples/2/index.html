@@ -11,7 +11,7 @@
     <button
         tuiButton
         tuiChevron
-        tuiDropdown="Set --tui-theme-color for :root and theme-color meta tag to the same color"
+        tuiDropdown="Use TuiThemeColorService to control color"
         tuiDropdownOpen
         type="button"
     >
@@ -125,9 +125,9 @@
     </nav>
     <div
         *tuiRepeatTimes="let index of 10"
+        tuiAppearance="floating"
         tuiCardLarge
         tuiHeader
-        tuiSurface="elevated"
         [style.grid-column]="'span 6'"
     >
         <h2 tuiTitle>

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSurface} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
 import {TuiRange} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
@@ -15,7 +15,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         ReactiveFormsModule,
         TuiCardLarge,
         TuiRange,
-        TuiSurface,
+        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

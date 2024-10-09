@@ -24,11 +24,11 @@
     }
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
-    @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
+    .chrome-only({
         &::before {
             mix-blend-mode: multiply;
         }
-    }
+    })
 }
 
 button[data-surface] {
@@ -129,40 +129,42 @@ input[tuiSurfaceLayer] {
     }
 }
 
-[tuiSurface][data-surface='elevated'] {
+// TODO: Drop elevated and box-shadow/background-color
+[tuiSurface][data-surface='elevated'],
+[tuiSurface][data-surface='floating'] {
     box-shadow: var(--tui-shadow-small);
     background-color: var(--tui-background-elevation-1);
 
-    button&,
-    a& {
+    .interactive({
         &:active {
             box-shadow: var(--tui-shadow-small);
             transform: scale(0.95);
         }
 
-        @media (hover: hover) and (pointer: fine) {
+        @media (hover: hover) {
             &:hover {
                 box-shadow: var(--tui-shadow-small-hover);
                 transform: translate3d(0, -0.25rem, 0);
                 background: var(--tui-background-elevation-1);
             }
         }
-    }
+    });
 }
 
-[tuiSurface][data-surface='flat'] {
+// TODO: Drop flat and background-color
+[tuiSurface][data-surface='flat'],
+[tuiSurface][data-surface='neutral'] {
     background-color: var(--tui-background-neutral-1);
 
-    button&,
-    a& {
+    .interactive({
         &:active {
             transform: scale(0.95);
         }
 
-        @media (hover: hover) and (pointer: fine) {
+        @media (hover: hover) {
             &:hover {
                 transform: scale(1.15);
             }
         }
-    }
+    });
 }

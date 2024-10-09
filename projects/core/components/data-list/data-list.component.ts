@@ -96,7 +96,7 @@ export class TuiDataListComponent<T>
         timer(0)
             .pipe(tuiZonefree(this.ngZone), tuiTakeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
-                this.empty.set(!this.el.querySelector('[tuiOption]'));
+                this.empty.set(!this.elements.length);
                 this.cdr.detectChanges();
             });
     }

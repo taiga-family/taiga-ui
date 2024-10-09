@@ -9,7 +9,7 @@ import {
     TuiDropdown,
     TuiIcon,
     TuiLink,
-    TuiSurface,
+    TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
@@ -28,7 +28,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiIcon,
         TuiLink,
         TuiRepeatTimes,
-        TuiSurface,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

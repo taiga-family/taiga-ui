@@ -1,4 +1,9 @@
-<div #host><ng-content /></div>
+<div
+    #host
+    (click)="toggle()"
+>
+    <ng-content />
+</div>
 <tui-expand [expanded]="expanded()">
     <ng-container *polymorpheusOutlet="template" />
 </tui-expand>
