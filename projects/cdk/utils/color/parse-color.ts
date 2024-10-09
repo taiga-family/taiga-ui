@@ -27,9 +27,9 @@ export function tuiParseColor(color: string): [number, number, number, number] {
     );
 
     return [
-        parsed[0] || DEFAULT[0],
-        parsed[1] || DEFAULT[1],
-        parsed[2] || DEFAULT[2],
-        parsed[3] === undefined ? DEFAULT[3] : parsed[3],
+        parsed[0] ?? DEFAULT[0],
+        parsed[1] ?? DEFAULT[1],
+        parsed[2] ?? DEFAULT[2],
+        parsed[3] ?? DEFAULT[3],
     ];
 }
