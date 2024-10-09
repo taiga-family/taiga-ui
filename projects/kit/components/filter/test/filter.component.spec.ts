@@ -21,7 +21,7 @@ class ItemWithBadge {
     }
 
     public valueOf(): number | null {
-        return this.badgeValue !== undefined ? this.badgeValue : null;
+        return this.badgeValue ?? null;
     }
 }
 

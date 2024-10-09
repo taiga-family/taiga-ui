@@ -104,7 +104,7 @@ export class TuiTagComponent {
     }
 
     protected get displayText(): string {
-        return this.editedText === null ? this.value : this.editedText;
+        return this.editedText ?? this.value;
     }
 
     protected get loaderSize(): TuiSizeXS {
