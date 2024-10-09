@@ -6,6 +6,7 @@ import {
     inject,
     Input,
     Output,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
@@ -54,6 +55,8 @@ export class TuiInputCard implements OnInit {
         {initialValue: ''},
     );
 
+    private readonly icon = signal<string | null>(this.options.icon);
+
     private readonly accessor = inject(DefaultValueAccessor, {
         self: true,
         optional: true,
@@ -63,16 +66,13 @@ export class TuiInputCard implements OnInit {
     protected readonly image = computed(() => {
         const system = this.options.paymentSystemHandler(this.value());
         const icon = system && this.icons[system] && this.resolver(this.icons[system]);
-        const url = this.icon || icon;
+        const url = this.icon() || icon;
 
-        return url && this.icon !== '' ? url : null;
+        return url && this.icon() !== '' ? url : null;
     });
 
     @Input()
     public autocomplete = this.options.autocomplete;
-
-    @Input()
-    public icon = this.options.icon;
 
     @Output()
     public readonly binChange = toObservable(this.value).pipe(
@@ -81,6 +81,11 @@ export class TuiInputCard implements OnInit {
         distinctUntilChanged(),
         skip(1),
     );
+
+    @Input('icon')
+    public set iconValue(icon: string | null) {
+        this.icon.set(icon);
+    }
 
     public ngOnInit(): void {
         if (!this.accessor) {
