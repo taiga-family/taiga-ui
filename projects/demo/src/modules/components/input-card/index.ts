@@ -5,7 +5,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
+import {TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
@@ -19,13 +19,13 @@ import {TuiTextfield} from '@taiga-ui/core';
         TuiDocTextfield,
         TuiInputCard,
         TuiTextfield,
-        TuiThumbnailCard,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
     protected card = '';
+    protected iconSelected: string | null = null;
 
     protected readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
@@ -35,7 +35,6 @@ export default class Page {
     };
 
     protected readonly iconVariants: readonly string[] = Object.keys(this.cards);
-    protected iconSelected: string | null = null;
 
     protected get icon(): string | null {
         return (this.iconSelected && this.cards[this.iconSelected]) || null;
