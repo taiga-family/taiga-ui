@@ -78,7 +78,7 @@ export class TuiCheckboxLabeledComponent
         this.updateFocused(focused);
     }
 
-    stopReadonlyChangePropagation(event: Event): void {
+    stopReadonlyChanging(event: Event): void {
         if (this.readOnly) {
             event.preventDefault();
         }

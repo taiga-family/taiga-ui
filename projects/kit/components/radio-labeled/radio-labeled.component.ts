@@ -85,7 +85,7 @@ export class TuiRadioLabeledComponent<T>
         return this.disabled || this.pseudoDisabled;
     }
 
-    stopReadonlyChangePropagation(event: Event): void {
+    stopReadonlyChanging(event: Event): void {
         if (this.readOnly) {
             event.preventDefault();
         }

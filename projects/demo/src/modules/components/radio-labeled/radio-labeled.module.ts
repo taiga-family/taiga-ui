@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkModule, TuiTooltipModule} from '@taiga-ui/core';
 import {TuiRadioLabeledModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -23,6 +23,7 @@ import {ExampleTuiRadioLabeledComponent} from './radio-labeled.component';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRadioLabeledComponent)),
+        TuiTooltipModule,
     ],
     declarations: [
         ExampleTuiRadioLabeledComponent,
