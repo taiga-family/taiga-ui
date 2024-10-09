@@ -120,7 +120,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     }
 
     public get id(): string {
-        return this.input?.nativeElement.id || this.autoId;
+        return this.input?.nativeElement.id ?? this.autoId;
     }
 
     public get size(): TuiSizeL | TuiSizeS {
