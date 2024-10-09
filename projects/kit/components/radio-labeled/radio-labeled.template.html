@@ -1,4 +1,7 @@
-<label class="t-wrapper">
+<label
+    class="t-wrapper"
+    (click)="stopReadonlyChangePropagation($event)"
+>
     <tui-radio
         [focusable]="focusable"
         [identityMatcher]="identityMatcher"

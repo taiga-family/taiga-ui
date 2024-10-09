@@ -78,6 +78,12 @@ export class TuiCheckboxLabeledComponent
         this.updateFocused(focused);
     }
 
+    stopReadonlyChangePropagation(event: Event): void {
+        if (this.readOnly) {
+            event.preventDefault();
+        }
+    }
+
     /** @deprecated use 'value' setter */
     onModelChange(value: boolean): void {
         this.value = value;
