@@ -59,7 +59,7 @@ export class StackblitzDepsService {
     }
 
     private async getCommonPackages(): Promise<Record<string, string>> {
-        const {dependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
+        const {devDependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
         const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');
