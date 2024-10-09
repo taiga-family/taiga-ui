@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule, TuiTooltipModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
 import {MarkdownModule} from 'ngx-markdown';
 
@@ -26,7 +26,6 @@ import {TuiCheckboxLabeledExample3} from './examples/3';
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCheckboxLabeledComponent)),
         TuiButtonModule,
-        TuiTooltipModule,
     ],
     declarations: [
         ExampleTuiCheckboxLabeledComponent,
