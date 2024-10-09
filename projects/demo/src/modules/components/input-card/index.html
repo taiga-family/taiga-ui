@@ -44,7 +44,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="formControl">
+        <tui-doc-demo>
             <tui-textfield
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
@@ -75,7 +75,7 @@
             <tr
                 name="[icon]"
                 tuiDocAPIItem
-                type="string"
+                type="string | null"
                 [items]="iconVariants"
                 [(value)]="iconSelected"
             >

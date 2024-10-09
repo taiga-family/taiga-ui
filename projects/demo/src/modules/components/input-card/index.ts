@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
@@ -28,12 +27,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 export default class Page {
     protected card = '';
 
-    protected readonly form = new FormGroup({
-        card: new FormControl(''),
-    });
-
-    protected formControl = new FormControl<TuiCard['card'] | null>(null);
-
     protected readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
@@ -42,9 +35,9 @@ export default class Page {
     };
 
     protected readonly iconVariants: readonly string[] = Object.keys(this.cards);
-    protected iconSelected = '';
+    protected iconSelected: string | null = null;
 
     protected get icon(): string | null {
-        return this.cards[this.iconSelected] ?? '';
+        return (this.iconSelected && this.cards[this.iconSelected]) || null;
     }
 }
