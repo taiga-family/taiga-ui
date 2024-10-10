@@ -266,6 +266,10 @@ design your app with Taiga UI components.
     </tr>
 </table>
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=taiga-family/taiga-ui)](https://star-history.com/#taiga-family/taiga-ui&Date)
+
 ## Contributors
 
 See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
