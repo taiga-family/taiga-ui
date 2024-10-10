@@ -85,6 +85,12 @@ export class TuiRadioLabeledComponent<T>
         return this.disabled || this.pseudoDisabled;
     }
 
+    stopReadonlyChanging(event: Event): void {
+        if (this.readOnly) {
+            event.preventDefault();
+        }
+    }
+
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

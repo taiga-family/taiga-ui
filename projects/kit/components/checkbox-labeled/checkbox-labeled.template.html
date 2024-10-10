@@ -1,4 +1,7 @@
-<label class="t-wrapper">
+<label
+    class="t-wrapper"
+    (click)="stopReadonlyChanging($event)"
+>
     <tui-checkbox
         [disabled]="computedDisabled"
         [focusable]="focusable"
