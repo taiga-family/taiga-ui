@@ -8,8 +8,13 @@ export interface TuiVersionMeta {
 
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: 'v4',
+        label: 'v5',
         baseHref: '/',
+        title: 'v5',
+    },
+    {
+        label: 'v4',
+        baseHref: '/v4/',
         title: 'v4',
     },
     {
