@@ -70,15 +70,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly el = tuiInjectElement();
-    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-
     private pointers = 0;
 
     protected readonly slideInTop = {
         value: '',
         params: {
             start: '100vh',
-            duration: tuiGetDuration(this.speed),
+            duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
         },
     };
 
