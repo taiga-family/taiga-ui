@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -23,6 +27,10 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocControl,
+        TuiDocDropdown,
+        TuiDocIcons,
+        TuiDocTextfield,
         TuiDropdown,
         TuiHint,
         TuiIcon,

@@ -201,61 +201,64 @@
                     [countries]="countries"
                     [countrySearch]="countrySearch"
                     [formControl]="control"
-                    [invalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldSize]="size"
+                    [invalid]="docControl.invalid"
+                    [readOnly]="docControl.readonly"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownAppearance]="dropdown.appearance"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
+                    [tuiTextfieldCleaner]="textfield.cleaner"
+                    [tuiTextfieldSize]="textfield.size"
                     [(countryIsoCode)]="countryIsoCode"
                 >
                     Type a phone number
                 </tui-input-phone-international>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
-            >
-                Disabled state (use
-                <code>formControl.disable()</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="countries"
-                documentationPropertyType="ReadonlyArray<TuiCountryIsoCode>"
-                [documentationPropertyValues]="countriesVariants"
-                [(documentationPropertyValue)]="countries"
+        <table tuiDocAPI>
+            <tr
+                name="[countries]"
+                tuiDocAPIItem
+                type="ReadonlyArray<TuiCountryIsoCode>"
+                [items]="countriesVariants"
+                [(value)]="countries"
             >
                 Array of ISO-codes of countries to choose
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="countrySearch"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="countrySearch"
+            </tr>
+            <tr
+                name="[countrySearch]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="countrySearch"
             >
                 Enable filter input for countries
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="countryIsoCode"
-                documentationPropertyType="TuiCountryIsoCode"
-                [documentationPropertyValues]="countryIsoCodeVariants"
-                [(documentationPropertyValue)]="countryIsoCode"
+            </tr>
+            <tr
+                name="[(countryIsoCode)]"
+                tuiDocAPIItem
+                type="boolean"
+                [items]="countryIsoCodeVariants"
+                [(value)]="countryIsoCode"
             >
                 ISO-code of selected country
-            </ng-template>
-        </tui-doc-documentation>
-        <inherited-documentation [withHint]="false" />
+            </tr>
+            <tbody
+                #textfield
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #docControl
+                tuiDocControl
+            ></tbody>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
