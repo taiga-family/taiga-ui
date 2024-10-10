@@ -50,7 +50,6 @@ const SERIALIZED_SUFFIX = '$';
     ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],
-    exportAs: 'docAPIItem',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAPIItem<T> implements OnInit {
@@ -90,13 +89,9 @@ export class TuiDocAPIItem<T> implements OnInit {
     public emitEvent(event: unknown): void {
         this.emits.update((x) => ++x);
 
-        let content: string | undefined;
-
-        if (event !== undefined) {
-            content = tuiInspectAny(event, 2);
-        }
-
-        this.alerts.open(content, {label: this.name}).subscribe();
+        this.alerts
+            .open(event ?? tuiInspectAny(event, 2), {label: this.name})
+            .subscribe();
     }
 
     private clearBrackets(value: string): string {

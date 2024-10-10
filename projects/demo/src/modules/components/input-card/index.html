@@ -61,7 +61,7 @@
                     [invalid]="control.invalid"
                     [readOnly]="control.readonly"
                     [(ngModel)]="card"
-                    (binChange)="docAPIItemBinChange.emitEvent($event)"
+                    (binChange)="binChange.emitEvent($event)"
                 />
             </tui-textfield>
         </tui-doc-demo>
@@ -92,7 +92,7 @@
                 Card icon
             </tr>
             <tr
-                #docAPIItemBinChange="docAPIItem"
+                #binChange
                 name="(binChange)"
                 tuiDocAPIItem
                 type="string | null"
