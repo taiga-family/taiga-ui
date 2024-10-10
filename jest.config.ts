@@ -4,8 +4,6 @@ import {resolve} from 'node:path';
 import type {JestConfigWithTsJest} from 'ts-jest';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
-import {tuiIsCI} from './projects/cdk/schematics';
-
 process.env.TZ = 'Europe/Moscow';
 process.env.FORCE_COLOR = 'true';
 process.env.TS_JEST_DISABLE_VER_CHECKER = 'true';
@@ -54,7 +52,7 @@ const config: JestConfigWithTsJest = {
     cacheDirectory: '<rootDir>/node_modules/.cache/jest',
     maxConcurrency: maxParallel,
     maxWorkers: maxParallel,
-    verbose: !tuiIsCI(),
+    verbose: !process.env.CI,
     bail: 1,
     reporters: ['default'],
     passWithNoTests: true,
