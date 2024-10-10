@@ -64,15 +64,15 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
         computed(() => (this.aside.expanded() ? null : this.datalist)),
     );
 
-    @Input('open')
-    public set openSetter(open: boolean) {
-        this.toggle(open);
-    }
-
     @Output()
     public readonly openChange = toObservable(this.open).pipe(skip(1));
 
     public readonly size = 's';
+
+    @Input('open')
+    public set openSetter(open: boolean) {
+        this.toggle(open);
+    }
 
     protected toggle(open = !this.open()): void {
         this.open.set(open && this.aside.expanded());
