@@ -7,7 +7,6 @@ import {
     inject,
     Input,
     Output,
-    signal,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import type {Params} from '@angular/router';
@@ -74,8 +73,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     @Output()
     public readonly valueChange = new EventEmitter<T>();
 
-    public readonly emits = signal(1);
-
     public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
@@ -87,8 +84,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     }
 
     public emitEvent(event: unknown): void {
-        this.emits.update((x) => ++x);
-
         this.alerts
             .open(event ?? tuiInspectAny(event, 2), {label: this.name})
             .subscribe();
