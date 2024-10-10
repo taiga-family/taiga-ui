@@ -70,11 +70,6 @@ design your app with Taiga UI components.
 
 💬 For Russian live chat join [taiga_ui](https://t.me/taiga_ui) Telegram group
 
-## Contributing
-
-See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
-[make pull request](https://pr.new/github.com/taiga-family/taiga-ui) online from Web IDE.
-
 ## Core team
 
 <table>
@@ -270,6 +265,15 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
         </td>
     </tr>
 </table>
+
+## Contributors
+
+See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
+[make pull request](https://pr.new/github.com/taiga-family/taiga-ui) online from Web IDE.
+
+<a href="https://github.com/taiga-family/taiga-ui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=taiga-family/taiga-ui" />
+</a>
 
 ## License
 
