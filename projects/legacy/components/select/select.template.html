@@ -30,17 +30,12 @@
             select="input"
         />
 
-        <ng-template #select>
-            <ng-content
-                *ngIf="isMobile"
-                select="select"
-            />
-        </ng-template>
-
         <ng-container
-            *ngTemplateOutlet="select"
+            *ngIf="isMobile"
             ngProjectAs="select"
-        />
+        >
+            <ng-content select="select" />
+        </ng-container>
 
         <div
             *ngIf="value !== null"
