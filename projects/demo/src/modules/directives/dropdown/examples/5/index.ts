@@ -8,7 +8,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiCardLarge, TuiDropdown, TuiLabel, TuiSwitch, TuiAppearance],
+    imports: [FormsModule, TuiAppearance, TuiCardLarge, TuiDropdown, TuiLabel, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

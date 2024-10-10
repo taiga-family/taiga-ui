@@ -8,6 +8,7 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
+        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiCardMedium,
@@ -15,7 +16,6 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
         TuiIcon,
         TuiRepeatTimes,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

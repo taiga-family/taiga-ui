@@ -19,6 +19,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         TuiAmountPipe,
+        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
@@ -27,7 +28,6 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
         TuiDropdown,
         TuiSwipeActions,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

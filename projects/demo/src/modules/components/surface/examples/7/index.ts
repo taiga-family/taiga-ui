@@ -12,6 +12,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
     imports: [
         CommonModule,
         TuiAmountPipe,
+        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -21,7 +22,6 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
         TuiScrollbar,
         TuiThumbnailCard,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],

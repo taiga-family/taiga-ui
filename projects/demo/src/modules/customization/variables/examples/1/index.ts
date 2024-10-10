@@ -12,11 +12,11 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     selector: 'tui-variables-example-1',
     imports: [
         FormsModule,
+        TuiAppearance,
         TuiCardLarge,
         TuiCheckbox,
         TuiInputModule,
         TuiLabel,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

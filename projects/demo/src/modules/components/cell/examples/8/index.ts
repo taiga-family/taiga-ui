@@ -20,6 +20,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         NgFor,
+        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiBadgedContent,
@@ -33,7 +34,6 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiSwitch,
         TuiTextfieldControllerModule,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

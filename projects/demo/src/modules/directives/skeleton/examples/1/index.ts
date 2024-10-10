@@ -17,6 +17,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
+        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -29,7 +30,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiStep,
         TuiSwitch,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

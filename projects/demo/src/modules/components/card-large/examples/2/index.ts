@@ -9,12 +9,12 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
+        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
         TuiHeader,
         TuiPlatform,
-        TuiAppearance,
         TuiTitle,
     ],
     templateUrl: './index.html',
