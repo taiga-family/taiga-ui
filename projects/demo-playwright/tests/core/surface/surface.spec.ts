@@ -4,7 +4,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Surface', () => {
     test('Layers', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.Dropdown}/Layers`);
+        await tuiGoto(page, `${DemoRoute.Surface}/Layers`);
 
         const example = new TuiDocumentationPagePO(page).getExample('#layers');
 
