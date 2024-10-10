@@ -5,10 +5,8 @@ import {
     Component,
     computed,
     ContentChild,
-    DestroyRef,
     inject,
     Input,
-    NgZone,
     signal,
     TemplateRef,
     ViewChild,
@@ -22,7 +20,6 @@ import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
-import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -35,7 +32,7 @@ import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
-import {skip, timer} from 'rxjs';
+import {skip} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -79,8 +76,6 @@ export class TuiDocDemo implements AfterViewInit {
     private readonly resizer?: ElementRef<HTMLElement>;
 
     private readonly el = tuiInjectElement();
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly ngZone = inject(NgZone);
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
@@ -120,13 +115,9 @@ export class TuiDocDemo implements AfterViewInit {
     public sticky = true;
 
     public ngAfterViewInit(): void {
-        timer(0, tuiZonefreeScheduler(this.ngZone))
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-                this.createForm();
-                this.updateWidth(this.sandboxWidth + this.delta);
-                this.rendered.set(true);
-            });
+        this.createForm();
+        this.updateWidth(this.sandboxWidth + this.delta);
+        this.rendered.set(true);
     }
 
     protected onResize(): void {
