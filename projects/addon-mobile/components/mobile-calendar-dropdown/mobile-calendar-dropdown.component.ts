@@ -131,11 +131,13 @@ export class TuiMobileCalendarDropdown {
     }
 
     protected confirm(value: any): void {
+        const normalizedValue = this.range ? this.selectedPeriod : value;
+
         if (this.control) {
-            this.control.value = value;
+            this.control.value = normalizedValue;
         }
 
-        this.observer?.next(value);
+        this.observer?.next(normalizedValue);
         this.close();
     }
 

@@ -1,13 +1,17 @@
 import type {Locator} from '@playwright/test';
 
-export class TuiCalendarPO {
+export class TuiCalendarSheetPO {
     constructor(private readonly host: Locator) {}
 
     public async getDays(): Promise<Locator[]> {
-        return this.host.locator('[automation-id="tui-calendar-sheet__cell"]').all();
+        return this.host
+            .locator(
+                '[automation-id="tui-calendar-sheet__cell"], [automation-id="tui-primitive-calendar-mobile__cell"]',
+            )
+            .all();
     }
 
-    public async clickOnCalendarDay(day: number): Promise<void> {
+    public async clickOnDay(day: number): Promise<void> {
         const cells = await this.getDays();
 
         for (const cell of cells) {
