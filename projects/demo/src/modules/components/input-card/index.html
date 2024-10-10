@@ -55,11 +55,13 @@
                 <input
                     tuiInputCard
                     tuiTextfield
+                    [autocomplete]="autocomplete"
                     [disabled]="control.disabled"
                     [icon]="icon"
                     [invalid]="control.invalid"
                     [readOnly]="control.readonly"
                     [(ngModel)]="card"
+                    (binChange)="docAPIItemBinChange.emitEvent($event)"
                 />
             </tui-textfield>
         </tui-doc-demo>
@@ -70,7 +72,15 @@
                 type="string"
                 [(value)]="card"
             >
-                Card number
+                Card number (also works with a reactive control)
+            </tr>
+            <tr
+                name="[autocomplete]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="autocomplete"
+            >
+                Browser autocomplete of card
             </tr>
             <tr
                 name="[icon]"
@@ -80,6 +90,14 @@
                 [(value)]="iconSelected"
             >
                 Card icon
+            </tr>
+            <tr
+                #docAPIItemBinChange="docAPIItem"
+                name="(binChange)"
+                tuiDocAPIItem
+                type="string | null"
+            >
+                BIN value (card first 6 symbols)
             </tr>
             <tbody
                 #control

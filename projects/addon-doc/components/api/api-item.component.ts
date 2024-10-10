@@ -7,13 +7,15 @@ import {
     inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
+import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
@@ -48,6 +50,7 @@ const SERIALIZED_SUFFIX = '$';
     ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],
+    exportAs: 'docAPIItem',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAPIItem<T> implements OnInit {
@@ -55,6 +58,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    private readonly alerts = inject(TuiAlertService);
 
     @Input()
     public name = '';
@@ -71,6 +75,8 @@ export class TuiDocAPIItem<T> implements OnInit {
     @Output()
     public readonly valueChange = new EventEmitter<T>();
 
+    public readonly emits = signal(1);
+
     public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
@@ -79,6 +85,21 @@ export class TuiDocAPIItem<T> implements OnInit {
         this.value = value;
         this.valueChange.emit(value);
         this.setQueryParam(value);
+    }
+
+    public emitEvent(event: unknown): void {
+        // For more convenient debugging
+        console.info(this.name, event);
+
+        this.emits.update((x) => ++x);
+
+        let content: string | undefined;
+
+        if (event !== undefined) {
+            content = tuiInspectAny(event, 2);
+        }
+
+        this.alerts.open(content, {label: this.name}).subscribe();
     }
 
     private clearBrackets(value: string): string {
