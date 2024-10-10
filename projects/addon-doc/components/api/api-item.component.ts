@@ -88,9 +88,6 @@ export class TuiDocAPIItem<T> implements OnInit {
     }
 
     public emitEvent(event: unknown): void {
-        // For more convenient debugging
-        console.info(this.name, event);
-
         this.emits.update((x) => ++x);
 
         let content: string | undefined;
