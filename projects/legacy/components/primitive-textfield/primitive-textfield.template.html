@@ -31,9 +31,9 @@
         (ngModelChange)="onModelChange($event)"
     />
     <div
-        *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
         class="t-input t-input_template"
+        [class.t-input_template_hidden]="!inputHidden"
     >
         <ng-content select="tuiContent" />
     </div>
