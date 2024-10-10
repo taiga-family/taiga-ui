@@ -2,7 +2,12 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiFallbackSrcPipe, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiAutoColorPipe,
+    TuiFallbackSrcPipe,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
@@ -11,12 +16,12 @@ import {TuiCardMedium} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         NgForOf,
+        TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiAvatarStack,
         TuiCardMedium,
         TuiFallbackSrcPipe,
-        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './index.html',

@@ -6,6 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 @Component({
     standalone: true,
@@ -22,6 +23,12 @@ class TuiSurfaceStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiSurface]',
+    hostDirectives: [
+        {
+            directive: TuiAppearance,
+            inputs: ['tuiAppearance: tuiSurface'],
+        },
+    ],
     host: {
         tuiSurface: '',
         '[attr.data-surface]': 'tuiSurface',

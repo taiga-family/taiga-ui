@@ -16,15 +16,20 @@ interface TuiThemeColor {
     providedIn: 'root',
 })
 export class TuiThemeColorService implements TuiThemeColor {
-    private readonly current = inject(TUI_THEME_COLOR);
+    private current = inject(TUI_THEME_COLOR);
     private readonly doc = inject(DOCUMENT);
     private readonly meta = inject(Meta);
+
+    constructor() {
+        this.color = this.current;
+    }
 
     public get color(): string {
         return this.current;
     }
 
     public set color(content: string) {
+        this.current = content;
         this.meta.updateTag({name: 'theme-color', content});
         this.doc.documentElement.style.setProperty('--tui-theme-color', content);
     }
