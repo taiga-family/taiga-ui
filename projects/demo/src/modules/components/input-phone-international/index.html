@@ -195,14 +195,14 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
+        <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-input-phone-international
                     [countries]="countries"
                     [countrySearch]="countrySearch"
-                    [formControl]="control"
-                    [invalid]="docControl.invalid"
-                    [readOnly]="docControl.readonly"
+                    [formControl]="formControl"
+                    [invalid]="control.invalid"
+                    [readOnly]="control.readonly"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -250,7 +250,7 @@
                 tuiDocTextfield
             ></tbody>
             <tbody
-                #docControl
+                #control
                 tuiDocControl
             ></tbody>
             <tbody
