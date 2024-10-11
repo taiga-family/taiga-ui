@@ -103,13 +103,14 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly open = tuiDropdownOpen();
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly metadata = toSignal(from(this.options.metadata));
+    protected readonly countries = signal(this.options.countries);
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly internationalSearchLabel$ = inject(TUI_INTERNATIONAL_SEARCH);
     protected readonly search = signal<string>('');
 
     protected readonly filtered = computed(() =>
-        this.countries
+        this.countries()
             .map((iso) => ({
                 iso,
                 name: this.names()?.[iso] || '',
@@ -131,15 +132,17 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected textfieldValue = '';
 
     @Input()
-    public countries = this.options.countries;
-
-    @Input()
     public countrySearch = false;
 
     @Output()
     public readonly countryIsoCodeChange = toObservable(this.countryIsoCode).pipe(
         skip(1),
     );
+
+    @Input('countries')
+    public set countriesValue(value: readonly TuiCountryIsoCode[]) {
+        this.countries.set(value);
+    }
 
     @Input('countryIsoCode')
     public set isoCode(code: TuiCountryIsoCode) {
