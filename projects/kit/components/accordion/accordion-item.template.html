@@ -44,7 +44,7 @@
             *ngIf="eagerContent"
             class="t-content"
         >
-            <ng-content select="[tuiAccordionItemContent]" />
+            <ng-content select="[tuiAccordionItemContent]:not(ng-template)" />
         </div>
     </tui-expand>
 </div>
