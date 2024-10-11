@@ -130,12 +130,6 @@ export const pages: TuiDocRoutePages = [
             },
             {
                 section: 'Foundations',
-                title: 'Tables',
-                keywords: 'верстка, markup, таблицы, tables',
-                route: DemoRoute.Tables,
-            },
-            {
-                section: 'Foundations',
                 title: 'Form',
                 keywords: 'верстка, markup, форма, ввод, пример, input, form',
                 route: DemoRoute.Form,
