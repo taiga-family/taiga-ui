@@ -754,11 +754,6 @@ export const ROUTES: Routes = [
         title: 'Spaces',
     }),
     route({
-        path: DemoRoute.Tables,
-        loadComponent: async () => import('../markup/tables'),
-        title: 'Tables',
-    }),
-    route({
         path: DemoRoute.Typography,
         loadComponent: async () => import('../markup/typography'),
         title: 'Typography',

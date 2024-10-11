@@ -149,7 +149,6 @@ export const DemoRoute = {
     Lists: '/lists',
     Shadows: '/shadows',
     Spaces: '/spaces',
-    Tables: '/tables',
     Typography: '/typography',
     Breakpoints: '/breakpoints',
     ActiveZone: '/directives/active-zone',
