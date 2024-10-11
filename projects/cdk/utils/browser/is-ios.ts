@@ -1,10 +1,7 @@
-import {tuiIsApple} from './is-apple';
+import {isIos} from '@ng-web-apis/platform';
 
-const IOS_REG_EXP = /ipad|iphone|ipod/;
-
-export function tuiIsIos(navigator: Navigator): boolean {
-    return (
-        IOS_REG_EXP.test(navigator.userAgent.toLowerCase()) ||
-        (tuiIsApple(navigator) && navigator.maxTouchPoints > 1)
-    );
-}
+/**
+ * @deprecated: drop in v5, use import {isApple} from '@ng-web-apis/platform';
+ * @param navigator
+ */
+export const tuiIsIos = isIos;
