@@ -12,8 +12,9 @@ import {FormsModule} from '@angular/forms';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
+import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
@@ -55,6 +56,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    private readonly alerts = inject(TuiAlertService);
 
     @Input()
     public name = '';
@@ -79,6 +81,12 @@ export class TuiDocAPIItem<T> implements OnInit {
         this.value = value;
         this.valueChange.emit(value);
         this.setQueryParam(value);
+    }
+
+    public emitEvent(event: unknown): void {
+        this.alerts
+            .open(event ?? tuiInspectAny(event, 2), {label: this.name})
+            .subscribe();
     }
 
     private clearBrackets(value: string): string {
