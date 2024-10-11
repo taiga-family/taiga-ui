@@ -18,6 +18,7 @@ export const TUI_MALAY_LANGUAGE_CORE: TuiLanguageCore = {
         'Disember',
     ],
     close: 'Tutup',
+    clear: 'Kosongkan medan',
     nothingFoundMessage: 'Tiada apa-apa Dijumpai',
     defaultErrorMessage: 'Nilai tidak sah',
     spinTexts: ['Sebelum', 'Selepas'],

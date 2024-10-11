@@ -18,6 +18,7 @@ export const TUI_KOREAN_LANGUAGE_CORE: TuiLanguageCore = {
         '12월',
     ],
     close: '닫다',
+    clear: '필드 지우기',
     nothingFoundMessage: '아무것도 발견되지 않았습니다',
     defaultErrorMessage: '값이 잘못되었습니다',
     spinTexts: ['이전의', '다음'],

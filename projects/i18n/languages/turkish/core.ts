@@ -17,6 +17,7 @@ export const TUI_TURKISH_LANGUAGE_CORE: TuiLanguageCore = {
         'Aralık',
     ],
     close: 'Kapat',
+    clear: 'Alanı temizle',
     nothingFoundMessage: 'Kayıt Bulunamadı',
     defaultErrorMessage: 'Değer hatalı',
     spinTexts: ['Geri', 'İleri'],

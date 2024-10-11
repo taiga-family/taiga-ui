@@ -18,6 +18,7 @@ export const TUI_VIETNAMESE_LANGUAGE_CORE: TuiLanguageCore = {
         'Tháng 12',
     ],
     close: 'Đóng',
+    clear: 'Xóa trường',
     nothingFoundMessage: 'Không tìm thấy',
     defaultErrorMessage: 'Giá trị không hợp lệ',
     spinTexts: ['Trước', 'Sau'],

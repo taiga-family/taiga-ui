@@ -18,7 +18,9 @@
         [iconStart]="icons.close"
         (click)="directive?.setValue(null)"
         (pointerdown.silent.prevent)="input?.nativeElement?.focus()"
-    ></button>
+    >
+        {{ clear() }}
+    </button>
     <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
