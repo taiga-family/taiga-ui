@@ -125,6 +125,9 @@
             }
         ]
     },
+    "jest": {
+        "preset": "@taiga-ui/jest-config"
+    },
     "devDependencies": {
         "@angular-devkit/build-angular": "16.2.16",
         "@angular-devkit/core": "16.2.16",
@@ -148,6 +151,7 @@
         "@taiga-ui/design-tokens": "0.142.0",
         "@taiga-ui/eslint-plugin-experience": "0.225.0",
         "@taiga-ui/event-plugins": "4.3.1",
+        "@taiga-ui/jest-config": "0.225.0",
         "@taiga-ui/prettier-config": "0.225.0",
         "@taiga-ui/stylelint-config": "0.225.0",
         "@taiga-ui/tsconfig": "0.225.0",
