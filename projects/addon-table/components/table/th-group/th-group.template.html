@@ -4,7 +4,7 @@
         *ngFor="let key of table.columns"
         [ngTemplateOutlet]="(headings[key] && headings[key].template) || plain"
         [ngTemplateOutletContext]="{$implicit: key}"
-    ></ng-container>
+    />
     <ng-template
         #plain
         let-key
