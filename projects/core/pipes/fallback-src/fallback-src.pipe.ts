@@ -14,7 +14,7 @@ export class TuiFallbackSrcPipe implements PipeTransform {
     public transform(src: string, fallback: string): Observable<string> {
         return fromEvent(this.el, 'error', {capture: true}).pipe(
             map(() => fallback),
-            startWith(src),
+            startWith(src || fallback),
         );
     }
 }
