@@ -3,14 +3,17 @@
     <ng-container
         *ngFor="let key of table.columns"
         [ngTemplateOutlet]="(headings[key] && headings[key].template) || plain"
+        [ngTemplateOutletContext]="{$implicit: key}"
+    />
+    <ng-template
+        #plain
+        let-key
     >
-        <ng-template #plain>
-            <th
-                *ngIf="!th && !heads.length"
-                tuiTh
-            >
-                {{ key.toString() }}
-            </th>
-        </ng-template>
-    </ng-container>
+        <th
+            *ngIf="!th && !heads.length"
+            tuiTh
+        >
+            {{ key.toString() }}
+        </th>
+    </ng-template>
 </ng-container>
