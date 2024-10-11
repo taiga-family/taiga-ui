@@ -1,4 +1,4 @@
-<ng-container *ngIf="cells$ | async as items">
+<ng-container *ngIf="cells$ | async as items; else dummy">
     <ng-container
         *ngFor="let key of table.columns"
         [ngTemplateOutlet]="(items[key] && items[key].template) || plain"
@@ -13,3 +13,4 @@
         </ng-template>
     </ng-container>
 </ng-container>
+<ng-template #dummy><td></td></ng-template>
