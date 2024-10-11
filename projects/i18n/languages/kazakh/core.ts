@@ -18,6 +18,7 @@ export const TUI_KAZAKH_LANGUAGE_CORE: TuiLanguageCore = {
         'Желтоқсан',
     ],
     close: 'Жабық',
+    clear: 'Өрісті тазалау',
     nothingFoundMessage: 'Ештеңе табылмады',
     defaultErrorMessage: 'Мән жарамсыз',
     spinTexts: ['Алдыңғы', 'Келесі'],

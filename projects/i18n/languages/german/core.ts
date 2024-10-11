@@ -17,6 +17,7 @@ export const TUI_GERMAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Dezember',
     ],
     close: 'Schließen',
+    clear: 'Leeres Feld',
     nothingFoundMessage: 'Keine Ergebnisse',
     defaultErrorMessage: 'Wert ist ungültig',
     spinTexts: ['Zurück', 'Weiter'],

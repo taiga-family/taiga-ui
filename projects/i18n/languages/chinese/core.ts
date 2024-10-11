@@ -18,6 +18,7 @@ export const TUI_CHINESE_LANGUAGE_CORE: TuiLanguageCore = {
         '十二月',
     ],
     close: '关闭',
+    clear: '清除',
     nothingFoundMessage: '什么都没找到',
     defaultErrorMessage: '无效值',
     spinTexts: ['前', '后'],

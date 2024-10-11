@@ -18,6 +18,7 @@ export const TUI_ITALIAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Dicembre',
     ],
     close: 'Chiudi',
+    clear: 'Campo libero',
     nothingFoundMessage: 'Non abbiamo trovato nulla',
     defaultErrorMessage: 'Il valore non è valido',
     spinTexts: ['Precedente', 'Prossimo'],

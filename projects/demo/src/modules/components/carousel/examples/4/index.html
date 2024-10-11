@@ -30,7 +30,9 @@
             type="button"
             class="tui-space_right-4"
             (click)="navigate(-1)"
-        ></button>
+        >
+            Previous
+        </button>
         <tui-carousel [(index)]="index">
             <div *tuiItem>
                 <h2>Carousel is awesome</h2>
@@ -66,7 +68,9 @@
             type="button"
             class="tui-space_left-4"
             (click)="navigate(1)"
-        ></button>
+        >
+            Next
+        </button>
     </div>
     <tui-pagination
         size="s"

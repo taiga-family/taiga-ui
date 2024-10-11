@@ -18,6 +18,7 @@ export const TUI_SPANISH_LANGUAGE_CORE: TuiLanguageCore = {
         'Diciembre',
     ],
     close: 'Cerrar',
+    clear: 'Borrar campo',
     nothingFoundMessage: 'Nada encontrado',
     defaultErrorMessage: 'El valor es inválido',
     spinTexts: ['Previo', 'Siguiente'],
