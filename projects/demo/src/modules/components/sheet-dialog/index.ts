@@ -15,7 +15,14 @@ import {TuiAvatar} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly exampleComponent = import('./examples/import/component.md?raw');
-    protected readonly examples = ['String', 'Basic', 'Advanced', 'Sticky elements'];
+    protected readonly examples = [
+        'String',
+        'Basic',
+        'Advanced',
+        'Sticky elements',
+        'Responsive',
+        'AppBar',
+    ];
 
     protected closeable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closeable;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;

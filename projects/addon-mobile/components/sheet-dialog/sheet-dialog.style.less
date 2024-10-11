@@ -7,12 +7,10 @@
     inline-size: 100%;
     block-size: 100%;
     flex-direction: column;
-    clip-path: inset(0 0 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     overscroll-behavior: none;
-    box-shadow: 0 20rem var(--tui-background-elevation-1);
 
     &._closeable {
         display: block;
@@ -28,6 +26,7 @@
     block-size: 100%;
     scroll-snap-stop: always;
     scroll-snap-align: start;
+    pointer-events: none;
 }
 
 .t-stop {
@@ -38,14 +37,25 @@
 }
 
 .t-sheet {
+    .scrollbar-hidden();
+
+    inline-size: 100%;
+    max-inline-size: 40rem;
+    max-block-size: calc(100% - var(--t-offset));
     box-shadow: var(--tui-shadow-small);
     border-radius: 0.75rem 0.75rem 0 0;
     padding: 0 1rem;
-    margin-top: auto;
+    margin: auto auto 0;
     background: var(--tui-background-elevation-1);
     box-sizing: border-box;
     scroll-snap-stop: always;
     scroll-snap-align: start;
+    scroll-margin-block-start: var(--t-offset);
+    border-image: linear-gradient(var(--tui-background-elevation-1), var(--tui-background-elevation-1)) 1 0/0 0 100vh/100vh;
+
+    &_stuck {
+        overflow: auto;
+    }
 }
 
 @supports (-moz-appearance: none) {
@@ -59,6 +69,8 @@
     top: 0;
     z-index: 1;
     block-size: 1.5rem;
+    margin: 0 -1rem;
+    border-radius: inherit;
     background: var(--tui-background-elevation-1);
 
     &::after {
@@ -76,52 +88,28 @@
 
 .t-heading {
     position: sticky;
-    top: 1.5rem;
+    top: 0;
     z-index: 1;
-    display: flex;
-    margin: 0;
-    padding-bottom: 1rem;
+    margin: 0 -1rem;
+    padding: 0.75rem 1rem;
     font: var(--tui-font-heading-6);
     background: var(--tui-background-elevation-1);
 
+    &_bar {
+        top: 1.5rem;
+    }
+
+    &:first-child {
+        border-radius: inherit;
+    }
+
     &:last-child {
-        margin-bottom: -0.75rem;
+        padding-block-end: 1.5rem;
     }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        block-size: 1px;
-        background: var(--tui-border-normal);
-        opacity: 0;
-    }
-
-    :host._stuck &::after {
-        opacity: 1;
-    }
-}
-
-.t-close {
-    right: -0.25rem;
-    flex-shrink: 0;
-    margin-left: auto;
 }
 
 .t-content {
     position: relative;
     isolation: isolate;
-
-    &:nth-child(3) {
-        margin-top: 1rem;
-    }
-}
-
-.t-footer {
-    block-size: 1rem;
-    scroll-snap-stop: always;
-    scroll-snap-align: end;
-    background: var(--tui-background-elevation-1);
+    padding-block-end: calc(1.5em + env(safe-area-inset-bottom));
 }

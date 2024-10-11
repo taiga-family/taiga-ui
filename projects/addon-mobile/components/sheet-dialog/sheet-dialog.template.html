@@ -8,31 +8,26 @@
 </div>
 <div
     #sheet
+    waIntersectionObserver
+    waIntersectionThreshold="1"
     class="t-sheet"
     [class.t-sheet_small]="isSmall"
-    (tuiClickOutside)="close()"
+    [class.t-sheet_stuck]="stuck"
+    (waIntersectionObservee)="$event[0] && onIntersecting($event[0])"
 >
-    <div class="t-top"></div>
+    <div
+        *ngIf="context.bar"
+        class="t-top"
+    ></div>
     <h2
         *ngIf="context.label"
         class="t-heading"
+        [class.t-heading_bar]="context.bar"
         [id]="context.id"
     >
         <ng-container *polymorpheusOutlet="context.label as label">
             {{ label }}
         </ng-container>
-        <button
-            *ngIf="context.closeable"
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="t-close"
-            [iconStart]="icons.close"
-            (click)="close()"
-        >
-            {{ closeWord$ | async }}
-        </button>
     </h2>
     <div
         *ngIf="context.content"
@@ -43,4 +38,3 @@
         </ng-container>
     </div>
 </div>
-<div class="t-footer"></div>

@@ -1,0 +1,67 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show
+</button>
+<ng-template
+    #bar
+    let-observer
+>
+    <tui-app-bar>
+        <button
+            tuiButton
+            tuiSlot="left"
+            type="button"
+            (click)="observer.complete()"
+        >
+            Close
+        </button>
+        Search contacts
+    </tui-app-bar>
+    <input
+        placeholder="Search contacts"
+        tuiSearch
+        type="search"
+        class="input"
+        [(ngModel)]="search"
+    />
+</ng-template>
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="{label: bar, bar: false}"
+    [(tuiSheetDialog)]="open"
+>
+    <div class="content">
+        <div class="favorites">
+            <tui-avatar-labeled
+                *ngFor="let item of items | slice: 0 : 6"
+                [label]="item.name"
+            >
+                <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+            </tui-avatar-labeled>
+        </div>
+        <button
+            *ngFor="let item of items | tuiFilter: filter : search"
+            tuiCell
+            type="button"
+            class="cell"
+            (click)="open = false"
+        >
+            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+            <span tuiTitle>
+                <span tuiFade>{{ item.name }}</span>
+                <span tuiSubtitle>{{ item.email }}</span>
+            </span>
+        </button>
+        <button
+            tuiButton
+            type="button"
+            class="button"
+            (click)="open = false"
+        >
+            Add contact
+        </button>
+    </div>
+</ng-template>
