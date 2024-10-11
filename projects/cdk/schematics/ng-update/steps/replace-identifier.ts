@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import {
     infoLog,
     Node,
@@ -27,11 +28,11 @@ export function replaceIdentifiers(
     });
 
     constants.forEach(({from, to}) => {
-        toArray(from).forEach((x) => replaceIdentifier({from: x, to}));
+        coerceArray(from).forEach((x) => replaceIdentifier({from: x, to}));
 
         !options['skip-logs'] &&
             progressLog(
-                toArray(from)
+                coerceArray(from)
                     .map((x) => x.name)
                     .join(', '),
             );
@@ -42,7 +43,7 @@ export function replaceIdentifiers(
 }
 
 export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
-    const references = toArray(from)
+    const references = coerceArray(from)
         .map(({name, moduleSpecifier}) => getNamedImportReferences(name, moduleSpecifier))
         .flat();
 
@@ -74,7 +75,7 @@ function addImports(
     identifier: ReplacementIdentifierMulti['to'],
     filePath: string,
 ): void {
-    toArray(identifier).forEach(({name, namedImport, moduleSpecifier}) => {
+    coerceArray(identifier).forEach(({name, namedImport, moduleSpecifier}) => {
         addUniqueImport(filePath, namedImport || name, moduleSpecifier);
     });
 }
@@ -83,13 +84,9 @@ function getReplacementText(
     to: ReplacementIdentifierMulti['to'],
     inModule: boolean,
 ): string {
-    return toArray(to)
+    return coerceArray(to)
         .map(({name, spreadInModule}) =>
             spreadInModule && inModule ? `...${name}` : name,
         )
         .join(', ');
-}
-
-function toArray<T>(x: T | T[]): T[] {
-    return Array.isArray(x) ? x : [x];
 }
