@@ -16,7 +16,7 @@ export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInput
     }
 
     public get rawValue(): [TuiDay | null, TuiTime | null] {
-        return this.host.value;
+        return this.host.value ?? [null, null];
     }
 
     public onValueChange(value: string): void {
