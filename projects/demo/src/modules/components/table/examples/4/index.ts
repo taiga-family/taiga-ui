@@ -35,6 +35,7 @@ import {
     debounceTime,
     filter,
     map,
+    tap,
     share,
     startWith,
     switchMap,
@@ -135,19 +136,23 @@ function getAge({dob}: User): number {
 })
 export default class Example {
     private readonly size$ = new BehaviorSubject(10);
-    private readonly page$ = new BehaviorSubject(0);
+    protected readonly page$ = new BehaviorSubject(0);
 
     protected readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
     protected readonly sorter$ = new BehaviorSubject<Key>('name');
 
     protected readonly minAge = new FormControl(21);
+    protected readonly minAge$ = tuiControlValue<number>(this.minAge).pipe(
+        debounceTime(1000),
+        tap(() => this.page$.next(0)),
+    );
 
     protected readonly request$ = combineLatest([
         this.sorter$,
         this.direction$,
         this.page$,
         this.size$,
-        tuiControlValue<number>(this.minAge),
+        this.minAge$,
     ]).pipe(
         // zero time debounce for a case when both key and direction change
         debounceTime(0),

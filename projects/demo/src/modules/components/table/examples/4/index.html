@@ -121,6 +121,7 @@
                 <td [colSpan]="columns.length">
                     <tui-table-pagination
                         class="tui-space_top-2"
+                        [page]="(page$ | async) || 0"
                         [total]="(total$ | async) || 0"
                         (paginationChange)="onPagination($event)"
                     />
