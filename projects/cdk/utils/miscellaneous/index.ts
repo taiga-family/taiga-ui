@@ -19,6 +19,7 @@ export * from './is-present';
 export * from './is-string';
 export * from './is-valid-url';
 export * from './mark-control-as-touched-and-validate';
+export * from './memo';
 export * from './nullable-same';
 export * from './provide';
 export * from './provide-options';
