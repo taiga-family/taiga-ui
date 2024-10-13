@@ -16,7 +16,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.93.3
       - uses: taiga-family/ci/actions/setup/node@v1.93.3
       - run: npm run typecheck
-      - run: npm run cspell -- --no-progress
+      - run: npm run cspell
       - run: |
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
               npm run stylelint -- --fix
