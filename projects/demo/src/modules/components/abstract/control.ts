@@ -63,7 +63,7 @@ export abstract class AbstractExampleTuiControl
 
     public inputMode = this.inputModeVariants[0]!;
 
-    public maxLength: any = null;
+    public maxLength: unknown = null;
 
     public type = this.typeVariants[0]!;
 
