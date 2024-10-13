@@ -9,7 +9,7 @@ export class TuiReplacePipe implements PipeTransform {
     public transform(
         value: string | null | undefined,
         search: RegExp | string,
-        replaceValue: string | ((substring: string, ...args: any[]) => string),
+        replaceValue: string | ((substring: string, ...args: unknown[]) => string),
     ): string {
         return (
             value?.replace(
