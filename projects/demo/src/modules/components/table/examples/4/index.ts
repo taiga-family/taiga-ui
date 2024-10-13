@@ -145,7 +145,7 @@ export default class Example {
     protected readonly minAge$ = tuiControlValue<number>(this.minAge).pipe(
         debounceTime(1000),
         tap(() => this.page$.next(0)),
-    );
+      );
 
     protected readonly request$ = combineLatest([
         this.sorter$,
