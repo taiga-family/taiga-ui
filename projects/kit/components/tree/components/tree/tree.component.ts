@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import type {DoCheck, TrackByFunction} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -8,7 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {toSignal} from '@angular/core/rxjs-interop';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -24,15 +24,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
 @Component({
     standalone: true,
     selector: 'tui-tree',
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        NgIf,
-        PolymorpheusOutlet,
-        TuiLet,
-        TuiTreeItem,
-        TuiTreeNode,
-    ],
+    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiTreeItem, TuiTreeNode],
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,10 +40,12 @@ export class TuiTreeComponent<T> implements DoCheck {
     @ViewChild(forwardRef(() => TuiTreeComponent))
     protected readonly child?: TuiTreeComponent<T>;
 
-    protected readonly children$ = this.check$.pipe(
-        startWith(null),
-        map(() => this.handler(this.value)),
-        distinctUntilChanged(),
+    protected readonly children = toSignal(
+        this.check$.pipe(
+            startWith(null),
+            map(() => this.handler(this.value)),
+            distinctUntilChanged(),
+        ),
     );
 
     protected readonly directive = inject<TuiTreeChildren<T>>(TuiTreeChildren, {
