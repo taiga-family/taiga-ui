@@ -3,24 +3,26 @@
 :host {
     .scrollbar-hidden();
 
-    display: flex;
+    //display: flex;
+    display: block;
     inline-size: 100%;
-    block-size: calc(100% - var(--t-offset));
+    max-inline-size: 40rem;
+    block-size: calc(100% - var(--tui-offset) - var(--tui-viewport-y));
     flex-direction: column;
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    overscroll-behavior: none;
-    margin-block-start: var(--t-offset);
+    margin: calc(var(--tui-offset) + var(--tui-viewport-y)) auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
+    background: var(--tui-background-elevation-1);
+    background-clip: text;
+    box-shadow: 0 10rem var(--tui-background-elevation-1);
 
     &::before {
+        .fullsize(fixed);
+
         content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        block-size: var(--t-offset);
+        z-index: -1;
     }
 
     &._closeable {
@@ -33,7 +35,8 @@
 }
 
 .t-stops {
-    display: none;
+    //display: none;
+    display: flex;
     block-size: 100%;
     scroll-snap-stop: always;
     scroll-snap-align: start;
@@ -51,11 +54,10 @@
     .scrollbar-hidden();
 
     inline-size: 100%;
-    max-inline-size: 40rem;
     box-shadow: var(--tui-shadow-small);
     border-radius: inherit;
     padding: 0 1rem;
-    margin: auto auto 0;
+    margin-block-start: auto;
     background: var(--tui-background-elevation-1);
     box-sizing: border-box;
     scroll-snap-stop: always;

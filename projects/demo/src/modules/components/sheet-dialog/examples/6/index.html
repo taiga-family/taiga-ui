@@ -1,20 +1,31 @@
-<button
-    tuiButton
-    type="button"
-    (click)="open.set(true)"
->
-    Show
-</button>
-<ng-template
-    #bar
-    let-observer
->
+<tui-notification>
+    <div>
+        Taiga UI watches for
+        <code>visualViewport</code>
+        changes and updates following CSS variables automatically:
+        <code>--tui-viewport-x</code>
+        <code>--tui-viewport-y</code>
+        <code>--tui-viewport-width</code>
+        <code>--tui-viewport-height</code>
+        <code>--tui-viewport-scale</code>
+    </div>
+</tui-notification>
+<p>
+    <button
+        tuiButton
+        type="button"
+        (click)="open.set(true)"
+    >
+        Show
+    </button>
+</p>
+<ng-template #bar>
     <tui-app-bar>
         <button
             tuiButton
             tuiSlot="left"
             type="button"
-            (click)="observer.complete()"
+            (click)="open.set(false)"
         >
             Close
         </button>
@@ -29,7 +40,6 @@
     />
 </ng-template>
 <ng-template
-    let-observer
     [tuiSheetDialog]="open()"
     [tuiSheetDialogOptions]="{label: bar, bar: false}"
     (tuiSheetDialogChange)="open.set($event)"
@@ -42,19 +52,21 @@
             <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
         </tui-avatar-labeled>
     </div>
-    <button
-        *ngFor="let item of items | tuiFilter: filter : search"
-        tuiCell
-        type="button"
-        class="cell"
-        (click)="open.set(false)"
-    >
-        <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
-        <span tuiTitle>
-            <span tuiFade>{{ item.name }}</span>
-            <span tuiSubtitle>{{ item.email }}</span>
-        </span>
-    </button>
+    <div class="items">
+        <button
+            *ngFor="let item of items | tuiFilter: filter : search"
+            tuiCell
+            type="button"
+            class="cell"
+            (click)="open.set(false)"
+        >
+            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+            <span tuiTitle>
+                <span tuiFade>{{ item.name }}</span>
+                <span tuiSubtitle>{{ item.email }}</span>
+            </span>
+        </button>
+    </div>
 </ng-template>
 <button
     *tuiDropdown="open()"

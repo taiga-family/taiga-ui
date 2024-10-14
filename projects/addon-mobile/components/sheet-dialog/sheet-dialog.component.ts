@@ -1,16 +1,9 @@
 import {NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    ViewChild,
-    ViewChildren,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChildren} from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
@@ -35,8 +28,8 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     animations: [tuiSlideInTop],
     host: {
         '[@tuiSlideInTop]': 'slideInTop',
-        '[style.--t-offset.px]': 'context.offset',
-        '[class._closeable]': 'context.closeable === true',
+        '[style.--tui-offset.px]': 'context.offset',
+        // '[class._closeable]': 'context.closeable === true',
         '(document:touchstart.passive.silent)': 'onPointerChange(1)',
         '(document:touchend.silent)': 'onPointerChange(-1)',
         '(document:touchcancel.silent)': 'onPointerChange(-1)',
@@ -45,11 +38,8 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
-    @ViewChild('sheet')
-    private readonly sheet?: ElementRef<HTMLElement>;
-
     @ViewChildren('stops')
-    private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly stops: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly el = tuiInjectElement();
     private pointers = 0;
@@ -68,8 +58,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     public ngAfterViewInit(): void {
         this.el.scrollTop =
             [
-                ...this.getStops(this.stopsRefs),
-                this.sheet?.nativeElement.offsetTop ?? Infinity,
+                ...this.stops.map((e) => e.nativeElement.offsetTop - this.context.offset),
+                this.el.clientHeight ?? Infinity,
             ][this.context.initial] ?? 0;
     }
 
@@ -84,12 +74,5 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (!this.pointers && !this.el.scrollTop) {
             this.close();
         }
-    }
-
-    @tuiPure
-    private getStops(stops: QueryList<ElementRef<HTMLElement>>): readonly number[] {
-        return stops.map(
-            ({nativeElement}) => nativeElement.offsetTop + nativeElement.clientHeight,
-        );
     }
 }
