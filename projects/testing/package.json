@@ -8,7 +8,7 @@
         "ts-jest": "29.2.5"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": ">=4.10.0 <5",
+        "@taiga-ui/cdk": ">=4.10.0",
         "jest-preset-angular": ">=14.2.4",
         "tslib": ">=2.7.0"
     }
