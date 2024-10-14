@@ -1,7 +1,7 @@
 <button
     tuiButton
     type="button"
-    (click)="open = true"
+    (click)="open.set(true)"
 >
     Show
 </button>
@@ -30,8 +30,9 @@
 </ng-template>
 <ng-template
     let-observer
+    [tuiSheetDialog]="open()"
     [tuiSheetDialogOptions]="{label: bar, bar: false}"
-    [(tuiSheetDialog)]="open"
+    (tuiSheetDialogChange)="open.set($event)"
 >
     <div class="favorites">
         <tui-avatar-labeled
@@ -46,7 +47,7 @@
         tuiCell
         type="button"
         class="cell"
-        (click)="open = false"
+        (click)="open.set(false)"
     >
         <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
         <span tuiTitle>
@@ -54,13 +55,15 @@
             <span tuiSubtitle>{{ item.email }}</span>
         </span>
     </button>
-    <button
-        *tuiDropdown="true"
-        tuiButton
-        type="button"
-        class="button"
-        (click)="observer.complete()"
-    >
-        Add contact
-    </button>
 </ng-template>
+<button
+    *tuiDropdown="open()"
+    tuiButton
+    type="button"
+    class="button"
+    [@tuiFadeIn]="animation"
+    [@tuiSlideInTop]="animation"
+    (click)="open.set(false)"
+>
+    Add contact
+</button>

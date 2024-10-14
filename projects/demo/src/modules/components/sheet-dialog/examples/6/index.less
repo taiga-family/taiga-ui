@@ -22,7 +22,7 @@
     overflow: hidden;
 
     &:last-child {
-        margin-block-end: 4rem;
+        margin-block-end: calc(4rem + 100vh - var(--tui-viewport-height));
     }
 }
 
@@ -31,6 +31,7 @@
 
     position: fixed;
     top: var(--tui-viewport-height);
-    left: 50%;
-    transform: translate(-50%, calc(-1rem - 100%));
+    inline-size: stretch;
+    max-inline-size: 20rem;
+    margin: -4.5rem max(calc(50vw - 10rem), 1rem) 0;
 }

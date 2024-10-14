@@ -1,11 +1,20 @@
 import {AsyncPipe, NgForOf, SlicePipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiFallbackSrcPipe, TuiTitle} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TuiButton,
+    TuiDropdown,
+    tuiFadeIn,
+    TuiFallbackSrcPipe,
+    tuiSlideInTop,
+    TuiTitle,
+    tuiToAnimationOptions,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarLabeled, TuiFade} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
 
@@ -28,15 +37,17 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiFade,
         TuiDropdown,
     ],
+    animations: [tuiFadeIn, tuiSlideInTop],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected open = false;
+    protected open = signal(false);
     protected search = '';
 
+    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly items = [
         {
             name: 'Grigori Constantinopolsky',
