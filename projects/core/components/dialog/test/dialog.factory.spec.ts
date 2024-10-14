@@ -1,139 +1,106 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+/* eslint-disable rxjs/no-ignored-observable */
+import type {tuiDialog, TuiDialogContext} from '@taiga-ui/core';
+import {EMPTY} from 'rxjs';
 
-import ts from 'typescript';
+const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
 
-import tsconfig from '../../../../../tsconfig.json';
+{
+    // empty component
+    class TestComponent {}
+
+    const dialog = tuiDialogMock(TestComponent);
+
+    dialog().subscribe((_value: void) => {});
+    dialog(undefined).subscribe((_value: void) => {});
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `void`
+    dialog('test').subscribe((_value: void) => {});
+    // @ts-expect-error TS2769: Type `void` is not assignable to type `string`
+    dialog().subscribe((_value: string) => {});
+}
+
+{
+    // component with context
+    class TestComponent {
+        public readonly someContextProp!: TuiDialogContext<string, number>;
+    }
+
+    const dialog = tuiDialogMock(TestComponent);
+
+    dialog(123).subscribe((_value: string) => {});
+    // @ts-expect-error TS2554: Expected 1 arguments, but got 0
+    dialog();
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog('');
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog(123).subscribe((_value: number) => {});
+}
+
+{
+    // component with context and some other property
+    class TestComponent {
+        public readonly someContextProp!: TuiDialogContext<string, number>;
+
+        public readonly someOtherProperty!: string;
+    }
+
+    const dialog = tuiDialogMock(TestComponent);
+
+    dialog(123).subscribe((_value: string) => {});
+    // @ts-expect-error TS2554: Expected 1 arguments, but got 0
+    dialog();
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog('');
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog(123).subscribe((_value: number) => {});
+}
+
+{
+    // component with context and some other property that any
+    class TestComponent {
+        public readonly someContextProp!: TuiDialogContext<string, number>;
+
+        public readonly someOtherProperty!: any;
+    }
+
+    const dialog = tuiDialogMock(TestComponent);
+
+    dialog(123).subscribe((_value: string) => {});
+    // @ts-expect-error TS2554: Expected 1 arguments, but got 0
+    dialog();
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog('');
+    // @ts-expect-error TS2345: Argument of type `string` is not assignable to parameter of type `number`
+    dialog(123).subscribe((_value: number) => {});
+}
+
+{
+    // component with multiple context
+    class TestComponent {
+        public readonly someContextProp!: TuiDialogContext<string, number>;
+        public readonly someContextProp2!: TuiDialogContext<number, string>;
+    }
+
+    // @ts-expect-error
+    tuiDialogMock(TestComponent);
+}
+
+{
+    // component with context with union
+    class TestComponent {
+        public readonly someContextProp!: TuiDialogContext<
+            boolean | object,
+            number | string
+        >;
+    }
+
+    const dialog = tuiDialogMock(TestComponent);
+
+    dialog(123);
+    dialog('test');
+}
 
 describe('tuiDialog', () => {
-    describe('typing tests', () => {
-        let checker: ts.TypeChecker;
-        let sourceFile: ts.SourceFile;
-
-        function findVariable(variableName: string): ts.VariableDeclaration | undefined {
-            function findVariableCb(node: ts.Node): ts.VariableDeclaration | undefined {
-                if (
-                    ts.isVariableDeclaration(node) &&
-                    ts.isIdentifier(node.name) &&
-                    node.name.text === variableName
-                ) {
-                    return node;
-                }
-
-                return ts.forEachChild(node, findVariableCb);
-            }
-
-            return findVariableCb(sourceFile);
-        }
-
-        function getVariableType(variableName: string): string {
-            const variableNode = findVariable(variableName);
-
-            if (!variableNode) {
-                throw new Error(`Cannot find variable: ${variableName}`);
-            }
-
-            const type = checker.getTypeAtLocation(variableNode);
-
-            return checker.typeToString(type);
-        }
-
-        beforeAll(() => {
-            // language=TypeScript
-            const sourceCode = `;
-                import {tuiDialog} from "../dialog.factory";
-                import {TuiDialogContext} from "../dialog.interfaces";
-
-                class Test1Component {
-                }
-
-                const dialog1 = tuiDialog(Test1Component);
-
-                class Test2Component {
-                    context!: TuiDialogContext<string, number>;
-                }
-
-                const dialog2 = tuiDialog(Test2Component);
-
-                class Test3Component {
-                    context!: TuiDialogContext<string, number>;
-
-                    otherMember: string;
-                }
-
-                const dialog3 = tuiDialog(Test3Component);
-
-                class Test4Component {
-                    context!: TuiDialogContext<string, number>;
-
-                    otherMember: any;
-                }
-
-                const dialog4 = tuiDialog(Test4Component);
-            `;
-
-            const sourceFilePath = path.join(__dirname, 'input.ts');
-            const options: ts.CompilerOptions = {
-                noEmit: true,
-                target: ts.ScriptTarget.ESNext,
-                module: ts.ModuleKind.ES2020,
-                lib: ['lib.esnext.d.ts', 'lib.dom.d.ts'],
-                typeRoots: ['node_modules/@types'],
-                types: ['node'],
-                moduleResolution: ts.ModuleResolutionKind.Node10,
-                paths: tsconfig.compilerOptions.paths,
-                baseUrl: './',
-                strict: true,
-            };
-            const host = ts.createCompilerHost(options);
-            const program = ts.createProgram([sourceFilePath], options, {
-                ...host,
-                getSourceFile: (filePath, languageVersion) => {
-                    if (filePath === sourceFilePath) {
-                        return ts.createSourceFile(
-                            filePath,
-                            sourceCode,
-                            languageVersion,
-                            true,
-                        );
-                    }
-
-                    const fileContent = fs.readFileSync(filePath, 'utf8');
-
-                    return ts.createSourceFile(
-                        filePath,
-                        fileContent,
-                        languageVersion,
-                        true,
-                    );
-                },
-                getCurrentDirectory: () => process.cwd(),
-            });
-
-            checker = program.getTypeChecker();
-            sourceFile = program.getSourceFile(sourceFilePath)!;
-        });
-
-        it('should have void data and void result for empty component', () => {
-            expect(getVariableType('dialog1')).toBe('(data: void) => Observable<void>');
-        });
-
-        it('should have number data and string result for component with TuiDialogContext<string, number>', () => {
-            expect(getVariableType('dialog2')).toBe(
-                '(data: number) => Observable<string>',
-            );
-        });
-
-        it('should have number data and string result for component with TuiDialogContext<string, number> and other member', () => {
-            expect(getVariableType('dialog3')).toBe(
-                '(data: number) => Observable<string>',
-            );
-        });
-
-        it('should have number data and string result for component with TuiDialogContext<string, number> and other member that any', () => {
-            expect(getVariableType('dialog4')).toBe(
-                '(data: number) => Observable<string>',
-            );
-        });
+    it('stub', () => {
+        expect(true).toBeTruthy();
     });
 });
