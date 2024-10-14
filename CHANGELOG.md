@@ -3,6 +3,176 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.11.0](https://github.com/taiga-family/taiga-ui/compare/v4.8.1...v4.11.0) (2024-10-14)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCard` icon to signal ([#9421](https://github.com/taiga-family/taiga-ui/issues/9421))
+  ([41270d6](https://github.com/taiga-family/taiga-ui/commit/41270d66cd1503bb965a522f1c033c471340eb36))
+- **addon-commerce:** `InputCardGroup` fix Safari autofill
+  ([#9198](https://github.com/taiga-family/taiga-ui/issues/9198))
+  ([1f5dfa5](https://github.com/taiga-family/taiga-ui/commit/1f5dfa57839157c7690e0ce1ad246d732aeaa106))
+- **addon-doc:** `DocDemo` remove `timer` and `tuiZonefreeScheduler`
+  ([170ec4b](https://github.com/taiga-family/taiga-ui/commit/170ec4b0ccdaa3571d312ceb5852f6df579d053a))
+- **addon-doc:** `DocDemo` remove `timer` and `tuiZonefreeScheduler`
+  ([#9422](https://github.com/taiga-family/taiga-ui/issues/9422))
+  ([25d9bfa](https://github.com/taiga-family/taiga-ui/commit/25d9bfab0d77f7573fe2ad0bac3bf12fe3d1134f))
+- **addon-doc:** `DocDemo` trigger cd manually within zone-free
+  ([2756608](https://github.com/taiga-family/taiga-ui/commit/27566081972d338784d26d0d393e78389e6379a0))
+- **addon-doc:** add `legacy` package as peer dependency ([#9367](https://github.com/taiga-family/taiga-ui/issues/9367))
+  ([069b680](https://github.com/taiga-family/taiga-ui/commit/069b680507605d7fbf08c052d94f54153f6194ea))
+- **addon-doc:** glitch width content between value from DOM and sandbox width from url
+  ([#9341](https://github.com/taiga-family/taiga-ui/issues/9341))
+  ([b5c4156](https://github.com/taiga-family/taiga-ui/commit/b5c4156ab7277865b6ab28c37e0e146875a4acc5))
+- **addon-doc:** provide languages icon ([#9236](https://github.com/taiga-family/taiga-ui/issues/9236))
+  ([bc5caf7](https://github.com/taiga-family/taiga-ui/commit/bc5caf71856a1b10fbea957af40b1694c3426acd))
+- **addon-mobile:** `InputDateRange` throws error on single date selection
+  ([#9411](https://github.com/taiga-family/taiga-ui/issues/9411))
+  ([93c08d4](https://github.com/taiga-family/taiga-ui/commit/93c08d483c5dff47258188176e0865945355f1ce))
+- **addon-mobile:** fix minLength and maxLength properties for range in mobile calendar
+  ([#9118](https://github.com/taiga-family/taiga-ui/issues/9118))
+  ([c84dd39](https://github.com/taiga-family/taiga-ui/commit/c84dd39af211b89fa0c27f5abf1864d5b772175a))
+- **addon-table:** `tr`, `thGroup` fix hydration issues ([#9460](https://github.com/taiga-family/taiga-ui/issues/9460))
+  ([c5fd3f9](https://github.com/taiga-family/taiga-ui/commit/c5fd3f9b0d21fab9c37fcbbc1769842573dfa118))
+- **addon-table:** drop legacy package dependency ([#9373](https://github.com/taiga-family/taiga-ui/issues/9373))
+  ([1171fbc](https://github.com/taiga-family/taiga-ui/commit/1171fbc3807ece6ec0b5baefa57b3535ebed2b9e))
+- **addon-table:** hydration error while configuring table
+  ([#9374](https://github.com/taiga-family/taiga-ui/issues/9374))
+  ([7100f73](https://github.com/taiga-family/taiga-ui/commit/7100f730b34b71d4ffdef0c858c07112e6cb18a2))
+- allow to install the same cdk of peer dependencies ([#9414](https://github.com/taiga-family/taiga-ui/issues/9414))
+  ([0d9ac9d](https://github.com/taiga-family/taiga-ui/commit/0d9ac9d0df670b5a1200652c79ced3722b3a8d16))
+- **cdk:** `Control` react to `markAsTouched` on Angular 18+
+  ([#9330](https://github.com/taiga-family/taiga-ui/issues/9330))
+  ([1b732e8](https://github.com/taiga-family/taiga-ui/commit/1b732e8d63473532025e0ca70289865e92a85536))
+- **cdk:** support any query string inside URL ([#9254](https://github.com/taiga-family/taiga-ui/issues/9254))
+  ([af4aa7e](https://github.com/taiga-family/taiga-ui/commit/af4aa7e3bb8a780f18b793ad5c4d8e258aec9129))
+- **core:** `Hint` fix change detection when changing content programmatically
+  ([#9291](https://github.com/taiga-family/taiga-ui/issues/9291))
+  ([57f80ed](https://github.com/taiga-family/taiga-ui/commit/57f80edb688d12e0fc144dc5a698a8b55e901a8b))
+- **core:** `Scrollbar` fix scroll leaking to both directions
+  ([#9217](https://github.com/taiga-family/taiga-ui/issues/9217))
+  ([ff829fc](https://github.com/taiga-family/taiga-ui/commit/ff829fcdf68bf1461be5dbf18f0d0a8625a1a22d))
+- **core:** `Textfield` has change detection problems for `[filler]`
+  ([#9243](https://github.com/taiga-family/taiga-ui/issues/9243))
+  ([a45df07](https://github.com/taiga-family/taiga-ui/commit/a45df07ca6e8fae2bc28b2b0fb101e8cf9bec785))
+- **core:** `Textfield` with initial value has change detection problems with `filler`
+  ([#9375](https://github.com/taiga-family/taiga-ui/issues/9375))
+  ([8217c90](https://github.com/taiga-family/taiga-ui/commit/8217c9030781b30ae6102f57dc4d13f64199f6c1))
+- **core:** close dropdown when dropdown host is hidden via css
+  ([#9189](https://github.com/taiga-family/taiga-ui/issues/9189))
+  ([3e991f9](https://github.com/taiga-family/taiga-ui/commit/3e991f91323b43664f5466b60e1a599a8bf6c81b))
+- **core:** fix open DropdownContext after single touch on iOS
+  ([#9287](https://github.com/taiga-family/taiga-ui/issues/9287))
+  ([8a5ff74](https://github.com/taiga-family/taiga-ui/commit/8a5ff7446ddf2330b5ae9750af3aaaccd9af96c4))
+- **core:** fix overriding default dropdown options ([#9348](https://github.com/taiga-family/taiga-ui/issues/9348))
+  ([db84c4c](https://github.com/taiga-family/taiga-ui/commit/db84c4c9c5e782e4f6280e347a002987f6fca7e1))
+- **core:** support provide empty avatar src ([#9454](https://github.com/taiga-family/taiga-ui/issues/9454))
+  ([8a52bbc](https://github.com/taiga-family/taiga-ui/commit/8a52bbc88b5a6f1c545d0fa472a092db0fe406dd))
+- **core:** support provide empty icon value ([#9408](https://github.com/taiga-family/taiga-ui/issues/9408))
+  ([d0577d6](https://github.com/taiga-family/taiga-ui/commit/d0577d6f34da51b478a101c40cc5a155c2ac9487))
+- **deps:** update angular web apis plugins to ^4.7.0 ([#9395](https://github.com/taiga-family/taiga-ui/issues/9395))
+  ([43ca14f](https://github.com/taiga-family/taiga-ui/commit/43ca14f247bf8e5b6841d955939a029301404229))
+- **deps:** update angular web apis plugins to ^4.8.0 ([#9400](https://github.com/taiga-family/taiga-ui/issues/9400))
+  ([91b968e](https://github.com/taiga-family/taiga-ui/commit/91b968e3fe7e6eda818a3b3f1f75866b06dcbe87))
+- **deps:** update dependency @ng-web-apis/universal to v4.8.0
+  ([#9401](https://github.com/taiga-family/taiga-ui/issues/9401))
+  ([bf0bc15](https://github.com/taiga-family/taiga-ui/commit/bf0bc151a2d0d13eb2e3fea00fa6dac890d32767))
+- **deps:** update dependency @playwright/test to v1.48.0
+  ([#9393](https://github.com/taiga-family/taiga-ui/issues/9393))
+  ([efd2e3d](https://github.com/taiga-family/taiga-ui/commit/efd2e3de7735a538888dadd9fdb3974ec2869310))
+- **deps:** update dependency lucide-static to v0.447.0 ([#9305](https://github.com/taiga-family/taiga-ui/issues/9305))
+  ([9ac86a3](https://github.com/taiga-family/taiga-ui/commit/9ac86a3e9ef7a223c587cfb75d4d8fd5d960a700))
+- **deps:** update dependency lucide-static to v0.449.0 ([#9383](https://github.com/taiga-family/taiga-ui/issues/9383))
+  ([7aa6ee4](https://github.com/taiga-family/taiga-ui/commit/7aa6ee463e0f5064bcfe530cba72a718d049df91))
+- **deps:** update dependency lucide-static to v0.451.0 ([#9387](https://github.com/taiga-family/taiga-ui/issues/9387))
+  ([7c33c90](https://github.com/taiga-family/taiga-ui/commit/7c33c90d442322c7e5d5375e66f0747148e3c767))
+- **deps:** update dependency ng-morph to v4.8.4 ([#9264](https://github.com/taiga-family/taiga-ui/issues/9264))
+  ([91dab47](https://github.com/taiga-family/taiga-ui/commit/91dab47d788652be07440554105f2d039d3960f2))
+- **deps:** update maskito to ^3.0.3 ([#9191](https://github.com/taiga-family/taiga-ui/issues/9191))
+  ([61170a6](https://github.com/taiga-family/taiga-ui/commit/61170a6cdfeb71b57ef1da2e12a125d15551f6e4))
+- **deps:** update taiga-ui family dependencies ([#9265](https://github.com/taiga-family/taiga-ui/issues/9265))
+  ([bcd1ef4](https://github.com/taiga-family/taiga-ui/commit/bcd1ef4c7c319923bd3bee0cf4f8bab32fa0ec34))
+- **deps:** update taiga-ui to ^4.6.4 ([#9180](https://github.com/taiga-family/taiga-ui/issues/9180))
+  ([ffbee63](https://github.com/taiga-family/taiga-ui/commit/ffbee63587b516dbd60b27c796e037ebb0368246))
+- **kit:** `Accordion` fix hydration issue ([#9453](https://github.com/taiga-family/taiga-ui/issues/9453))
+  ([e22d2ba](https://github.com/taiga-family/taiga-ui/commit/e22d2baf1649564fa6276701be5d3fbc63ed2383))
+- **kit:** `Chip` size
+  ([904725c](https://github.com/taiga-family/taiga-ui/commit/904725c7e43e182fe12a4ed1e9ba9101b39d958d))
+- **kit:** `Chip` size ([#9169](https://github.com/taiga-family/taiga-ui/issues/9169))
+  ([a92153a](https://github.com/taiga-family/taiga-ui/commit/a92153ae08ae17dcf93edfd06d23ba021bdc47ee))
+- **kit:** `InputPhoneInternational` signal `countries` ([#9452](https://github.com/taiga-family/taiga-ui/issues/9452))
+  ([4f614b2](https://github.com/taiga-family/taiga-ui/commit/4f614b2d487e46eeb2d1b9a82f579d1ab10b8e3a))
+- **kit:** `Radio`, `Checkbox`, `Switch` remove non-functioning `appearance` input
+  ([#9221](https://github.com/taiga-family/taiga-ui/issues/9221))
+  ([6dc4ce0](https://github.com/taiga-family/taiga-ui/commit/6dc4ce05f5b100ac5045de74097109ebcd6a7e47))
+- **kit:** `TuiImgLazyLoading` compat with SSR ([#9184](https://github.com/taiga-family/taiga-ui/issues/9184))
+  ([710166f](https://github.com/taiga-family/taiga-ui/commit/710166f199334b3f851e503ff765c48b29e67a5a))
+- **layout:** `Header` fix subtitile padding on mobile ([#9282](https://github.com/taiga-family/taiga-ui/issues/9282))
+  ([faeca9e](https://github.com/taiga-family/taiga-ui/commit/faeca9e9f506c78e63581a9564ea49be55c2aa16))
+- **legacy:** `Input` fix [(tuiDropdownOpen)] ([#9214](https://github.com/taiga-family/taiga-ui/issues/9214))
+  ([65981bc](https://github.com/taiga-family/taiga-ui/commit/65981bcaefcce811891887a697c496d53108fce2))
+- **legacy:** `InputDateTime` fix native option for empty value
+  ([#9464](https://github.com/taiga-family/taiga-ui/issues/9464))
+  ([b36e9dc](https://github.com/taiga-family/taiga-ui/commit/b36e9dc9e3e16bb3364188c2678c3ee1c8dca7d8))
+- **legacy:** `InputTag` fix pasting multiple invalid tags
+  ([#9340](https://github.com/taiga-family/taiga-ui/issues/9340))
+  ([8b8161d](https://github.com/taiga-family/taiga-ui/commit/8b8161d8fb36b08830b6dc7db2aa9ef3f2c2d2cf))
+- **legacy:** `Multiselect` do not clear input on separator keydown, fix pasting
+  ([#9345](https://github.com/taiga-family/taiga-ui/issues/9345))
+  ([56d4a18](https://github.com/taiga-family/taiga-ui/commit/56d4a18a38a9c9e19184c5ce7c14c150024397a1))
+- **legacy:** `Select` fix hydration ([#9433](https://github.com/taiga-family/taiga-ui/issues/9433))
+  ([7f597a6](https://github.com/taiga-family/taiga-ui/commit/7f597a68d404d490c91dc7a0e50adbfa6c8fd56f))
+- **legacy:** revert `ngSkipHydration` ([#9320](https://github.com/taiga-family/taiga-ui/issues/9320))
+  ([7c43df8](https://github.com/taiga-family/taiga-ui/commit/7c43df8cc75c1d37dde82a62499c4cd6d5d6c74c))
+
+### 🚀 Features
+
+- **addon-doc:** add `TUI_DOC_SUPPORT_LANGUAGE` token ([#9201](https://github.com/taiga-family/taiga-ui/issues/9201))
+  ([7aef5f8](https://github.com/taiga-family/taiga-ui/commit/7aef5f8a6166b8a5610a696985e7efc0bdfcc936))
+- **addon-doc:** allow adding extra tabs with DI ([#9381](https://github.com/taiga-family/taiga-ui/issues/9381))
+  ([421a92e](https://github.com/taiga-family/taiga-ui/commit/421a92e274b6d531aa67d8b2a5177fca75423e6e))
+- **addon-doc:** improve UX when switch global dark mode on API page
+  ([#9053](https://github.com/taiga-family/taiga-ui/issues/9053))
+  ([f9579da](https://github.com/taiga-family/taiga-ui/commit/f9579dac98dbed9b86701592b287f57db3ad0bef))
+- **addon-doc:** move language switcher to page from header
+  ([#9155](https://github.com/taiga-family/taiga-ui/issues/9155))
+  ([e1768c4](https://github.com/taiga-family/taiga-ui/commit/e1768c47f8de7d15c2854375ebcfd74940e278a4))
+- **addon-table:** `Sortable` make dynamic ([#9384](https://github.com/taiga-family/taiga-ui/issues/9384))
+  ([ea62a09](https://github.com/taiga-family/taiga-ui/commit/ea62a09e23c6279046406a820097aa5dad4b90a1))
+- **cdk:** add `TuiRepeatTimes` pipe ([#9262](https://github.com/taiga-family/taiga-ui/issues/9262))
+  ([712c5b3](https://github.com/taiga-family/taiga-ui/commit/712c5b3e31d65874abeb13e57a2a104ceca00b00))
+- **core:** add `color-scheme` by default for `tuiTheme` ([#9315](https://github.com/taiga-family/taiga-ui/issues/9315))
+  ([d3ce6b1](https://github.com/taiga-family/taiga-ui/commit/d3ce6b1c0ca3345c1407482a25cc088fded6c4e3))
+- **core:** add animation params ([#9312](https://github.com/taiga-family/taiga-ui/issues/9312))
+  ([f3f104a](https://github.com/taiga-family/taiga-ui/commit/f3f104a4a570a200cf79df42dc77451558c8de13))
+- **core:** migrate to longtap event ([#9444](https://github.com/taiga-family/taiga-ui/issues/9444))
+  ([e6ed552](https://github.com/taiga-family/taiga-ui/commit/e6ed552d9688545651f0e85367101888bfbcf353))
+- **core:** support using native scrollbar ([#9276](https://github.com/taiga-family/taiga-ui/issues/9276))
+  ([d144675](https://github.com/taiga-family/taiga-ui/commit/d144675c6b7d8f0bf4e19f84ba4961c96f1acf3f))
+- **i18n:** add `Lithuanian` ([#9307](https://github.com/taiga-family/taiga-ui/issues/9307))
+  ([29fabea](https://github.com/taiga-family/taiga-ui/commit/29fabea9cc325534ebaf729f143d3835c3741c50))
+- **kit:** `ActionBar` add `s` size and update according to spec
+  ([#9310](https://github.com/taiga-family/taiga-ui/issues/9310))
+  ([3cb028b](https://github.com/taiga-family/taiga-ui/commit/3cb028b2a1918af3e1288064522f1e1dcf000f53))
+- **kit:** `Breadcrumbs` add `itemsLimit` option ([#9370](https://github.com/taiga-family/taiga-ui/issues/9370))
+  ([b20f6bf](https://github.com/taiga-family/taiga-ui/commit/b20f6bf94fd2bae3e5be84aa126becaa73d8fe12))
+- **kit:** `ItemsWithMore` add `side` option ([#9363](https://github.com/taiga-family/taiga-ui/issues/9363))
+  ([47d7178](https://github.com/taiga-family/taiga-ui/commit/47d717827f05a682f5fa6ecd819be0dc26fc6c71))
+- **kit:** add `tuiValidationErrorsProvider` ([#9342](https://github.com/taiga-family/taiga-ui/issues/9342))
+  ([b22e9c2](https://github.com/taiga-family/taiga-ui/commit/b22e9c2f0a4f54df75e277e2b7b9584f9a2ee62d))
+- **kit:** added search function in international phone component
+  ([#8546](https://github.com/taiga-family/taiga-ui/issues/8546))
+  ([24572b1](https://github.com/taiga-family/taiga-ui/commit/24572b1cdc7e0bbd48b3bcbf7faf3960e80c4372))
+- **layout:** `Navigation` allow manual control of `AsideGroup`
+  ([#9412](https://github.com/taiga-family/taiga-ui/issues/9412))
+  ([b7f75d9](https://github.com/taiga-family/taiga-ui/commit/b7f75d9344ca7c8ebdb12c118c0acfb1300fff00))
+- **legacy:** support fieldset disable ([#9376](https://github.com/taiga-family/taiga-ui/issues/9376))
+  ([cb31858](https://github.com/taiga-family/taiga-ui/commit/cb3185874af2a0aeb7bc1db52dcf26d09dec71a4))
+- **table-addon:** add requireSort option to table ([#9036](https://github.com/taiga-family/taiga-ui/issues/9036))
+  ([38c5b20](https://github.com/taiga-family/taiga-ui/commit/38c5b20c6e511c6be2ac8c89abcb317c1c182531))
+- **testing:** use jest-preset-angular by default ([#9418](https://github.com/taiga-family/taiga-ui/issues/9418))
+  ([e064549](https://github.com/taiga-family/taiga-ui/commit/e0645495453c3b8d9bf6f99808064007ebb7b07d))
+
 ## [4.10.0](https://github.com/taiga-family/taiga-ui/compare/v4.8.1...v4.10.0) (2024-10-08)
 
 ### 🐞 Bug Fixes
