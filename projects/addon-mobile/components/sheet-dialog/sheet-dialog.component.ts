@@ -7,7 +7,6 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -29,7 +28,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
 @Component({
     standalone: true,
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton, WaIntersectionObserver],
+    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,26 +62,20 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         },
     };
 
-    protected stuck = false;
     protected readonly context =
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
     public ngAfterViewInit(): void {
         this.el.scrollTop =
-            [...this.getStops(this.stopsRefs), this.sheetTop][this.context.initial] ?? 0;
-    }
-
-    protected get isSmall(): boolean {
-        return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
+            [
+                ...this.getStops(this.stopsRefs),
+                this.sheet?.nativeElement.offsetTop ?? Infinity,
+            ][this.context.initial] ?? 0;
     }
 
     @shouldCall(isCloseable)
     protected close(): void {
         this.context.$implicit.complete();
-    }
-
-    protected onIntersecting({isIntersecting}: IntersectionObserverEntry) {
-        this.stuck = isIntersecting;
     }
 
     protected onPointerChange(delta: number): void {
@@ -91,10 +84,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (!this.pointers && !this.el.scrollTop) {
             this.close();
         }
-    }
-
-    private get sheetTop(): number {
-        return this.sheet?.nativeElement.offsetTop ?? Infinity;
     }
 
     @tuiPure
