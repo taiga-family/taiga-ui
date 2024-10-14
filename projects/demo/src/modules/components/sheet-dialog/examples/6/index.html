@@ -33,35 +33,34 @@
     [tuiSheetDialogOptions]="{label: bar, bar: false}"
     [(tuiSheetDialog)]="open"
 >
-    <div class="content">
-        <div class="favorites">
-            <tui-avatar-labeled
-                *ngFor="let item of items | slice: 0 : 6"
-                [label]="item.name"
-            >
-                <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
-            </tui-avatar-labeled>
-        </div>
-        <button
-            *ngFor="let item of items | tuiFilter: filter : search"
-            tuiCell
-            type="button"
-            class="cell"
-            (click)="open = false"
+    <div class="favorites">
+        <tui-avatar-labeled
+            *ngFor="let item of items | slice: 0 : 6"
+            [label]="item.name"
         >
             <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
-            <span tuiTitle>
-                <span tuiFade>{{ item.name }}</span>
-                <span tuiSubtitle>{{ item.email }}</span>
-            </span>
-        </button>
-        <button
-            tuiButton
-            type="button"
-            class="button"
-            (click)="open = false"
-        >
-            Add contact
-        </button>
+        </tui-avatar-labeled>
     </div>
+    <button
+        *ngFor="let item of items | tuiFilter: filter : search"
+        tuiCell
+        type="button"
+        class="cell"
+        (click)="open = false"
+    >
+        <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+        <span tuiTitle>
+            <span tuiFade>{{ item.name }}</span>
+            <span tuiSubtitle>{{ item.email }}</span>
+        </span>
+    </button>
+    <button
+        *tuiDropdown="true"
+        tuiButton
+        type="button"
+        class="button"
+        (click)="observer.complete()"
+    >
+        Add contact
+    </button>
 </ng-template>

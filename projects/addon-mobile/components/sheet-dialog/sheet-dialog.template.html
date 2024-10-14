@@ -19,7 +19,7 @@
         class="t-heading"
         [id]="context.id"
     >
-        <ng-container *polymorpheusOutlet="context.label as label">
+        <ng-container *polymorpheusOutlet="context.label as label; context: context">
             {{ label }}
         </ng-container>
     </h2>

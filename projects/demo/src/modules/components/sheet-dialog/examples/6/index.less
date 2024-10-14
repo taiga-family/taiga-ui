@@ -5,10 +5,6 @@
     margin-block-start: 0.75rem;
 }
 
-.content {
-    block-size: calc(100vh - 9.5rem);
-}
-
 .favorites {
     .scrollbar-hidden();
 
@@ -24,11 +20,17 @@
     margin: 0 -1rem;
     white-space: nowrap;
     overflow: hidden;
+
+    &:last-child {
+        margin-block-end: 4rem;
+    }
 }
 
 .button {
-    position: sticky;
-    bottom: 1.5rem;
-    inline-size: 100%;
-    margin-block-start: calc(100vh - 19.5rem);
+    .transition(top);
+
+    position: fixed;
+    top: var(--tui-viewport-height);
+    left: 50%;
+    transform: translate(-50%, calc(-1rem - 100%));
 }

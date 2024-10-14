@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
+import {TuiVisualViewport} from '@taiga-ui/cdk';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
@@ -38,7 +39,7 @@ import {debounceTime, map} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform],
+    hostDirectives: [TuiPlatform, TuiVisualViewport],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',

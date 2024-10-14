@@ -1,4 +1,5 @@
 import type {Provider} from '@angular/core';
+import type {TuiPopover} from '@taiga-ui/cdk';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
@@ -7,7 +8,7 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I;
     readonly initial: number;
-    readonly label: PolymorpheusContent;
+    readonly label: PolymorpheusContent<TuiPopover<TuiSheetDialogOptions<I>, any>>;
     readonly offset: number;
     readonly stops: readonly string[];
     readonly bar: boolean;
