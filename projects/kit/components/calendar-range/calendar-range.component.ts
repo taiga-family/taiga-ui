@@ -2,7 +2,6 @@ import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {OnChanges, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     EventEmitter,
     inject,
@@ -94,7 +93,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
-            ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
+            ?.pipe(tuiWatch(), takeUntilDestroyed())
             .subscribe((value) => {
                 this.value = value;
                 this.initDefaultViewedMonth();

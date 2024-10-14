@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    inject,
-    INJECTOR,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, INJECTOR, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -59,9 +52,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            this.control.valueChanges
-                ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1))
-                .subscribe();
+            this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
     }
 

@@ -1,6 +1,5 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     Directive,
     inject,
@@ -50,7 +49,7 @@ export class TuiSensitive {
             }),
             map(([rows, height]) => height * (rowsInSvg / rows)),
             tuiZonefull(),
-            tuiWatch(inject(ChangeDetectorRef)),
+            tuiWatch(),
         ),
     );
 

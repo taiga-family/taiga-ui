@@ -2,7 +2,6 @@
 import {DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     inject,
     signal,
@@ -56,7 +55,7 @@ export class TuiRoot {
     protected readonly isMobileRes = toSignal(
         inject(TuiBreakpointService).pipe(
             map((breakpoint) => breakpoint === 'mobile'),
-            tuiWatch(inject(ChangeDetectorRef)),
+            tuiWatch(),
         ),
         {initialValue: false},
     );

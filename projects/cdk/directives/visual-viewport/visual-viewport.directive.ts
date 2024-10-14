@@ -2,6 +2,7 @@ import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {ViewportService} from '@ng-web-apis/screen-orientation';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 
 @Directive({
     standalone: true,
@@ -15,7 +16,7 @@ import {ViewportService} from '@ng-web-apis/screen-orientation';
     },
 })
 export class TuiVisualViewport {
-    protected readonly viewport = toSignal(inject(ViewportService), {
+    protected readonly viewport = toSignal(inject(ViewportService).pipe(tuiWatch()), {
         initialValue: inject(WA_WINDOW).visualViewport,
     });
 }

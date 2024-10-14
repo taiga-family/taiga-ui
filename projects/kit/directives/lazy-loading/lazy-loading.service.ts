@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -16,7 +16,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
                 take(1),
             ),
         ),
-        tuiWatch(inject(ChangeDetectorRef)),
+        tuiWatch(),
     );
 
     constructor() {

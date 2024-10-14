@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {ChangeDetectorRef, SkipSelf} from '@angular/core';
+import {SkipSelf} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 
@@ -11,12 +11,9 @@ import {TuiTableDirective} from '../directives/table.directive';
 export const TUI_TABLE_PROVIDER: Provider[] = [
     {
         provide: TuiTableDirective,
-        deps: [[new SkipSelf(), TuiTableDirective], ChangeDetectorRef],
-        useFactory: (
-            controller: TuiTableDirective<any>,
-            cdr: ChangeDetectorRef,
-        ): TuiTableDirective<any> => {
-            controller.change$.pipe(tuiWatch(cdr), takeUntilDestroyed()).subscribe();
+        deps: [[new SkipSelf(), TuiTableDirective]],
+        useFactory: (controller: TuiTableDirective<any>): TuiTableDirective<any> => {
+            controller.change$.pipe(tuiWatch(), takeUntilDestroyed()).subscribe();
 
             return controller;
         },
