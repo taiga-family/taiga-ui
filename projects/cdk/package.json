@@ -29,19 +29,19 @@
         "@angular/common": ">=16.0.0",
         "@angular/core": ">=16.0.0",
         "@angular/forms": ">=16.0.0",
-        "@ng-web-apis/common": ">=4.8.0 <5",
-        "@ng-web-apis/mutation-observer": ">=4.8.0 <5",
-        "@ng-web-apis/platform": ">=4.10.2 <5",
-        "@ng-web-apis/resize-observer": ">=4.8.0 <5",
-        "@taiga-ui/event-plugins": ">=4.3.1 <5",
-        "@taiga-ui/polymorpheus": ">=4.7.4 <5",
+        "@ng-web-apis/common": "^4.8.0",
+        "@ng-web-apis/mutation-observer": "^4.8.0",
+        "@ng-web-apis/platform": "^4.10.2",
+        "@ng-web-apis/resize-observer": "^4.8.0",
+        "@taiga-ui/event-plugins": "^4.3.1",
+        "@taiga-ui/polymorpheus": "^4.7.4",
         "rxjs": ">=7.0.0"
     },
     "optionalDependencies": {
         "@angular-devkit/core": ">=16.0.0",
         "@angular-devkit/schematics": ">=16.0.0",
         "@schematics/angular": ">=16.0.0",
-        "ng-morph": ">=4.8.4 <5",
+        "ng-morph": "^4.8.4",
         "parse5": ">=7.2.0"
     },
     "ng-update": {
