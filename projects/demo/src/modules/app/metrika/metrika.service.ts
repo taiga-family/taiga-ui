@@ -1,7 +1,6 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import type {Provider} from '@angular/core';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {TUI_IS_E2E, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, tuiCreateOptions} from '@taiga-ui/cdk';
 
 declare global {
     interface Window {
@@ -25,18 +24,8 @@ interface YaMetrikaOptions {
     debug: boolean;
 }
 
-const YA_METRIKA_DEFAULT_OPTIONS: YaMetrikaOptions = {
-    id: '',
-    debug: false,
-};
-
-export const YA_METRIKA_OPTIONS = tuiCreateToken<YaMetrikaOptions>(
-    YA_METRIKA_DEFAULT_OPTIONS,
-);
-
-export function metrikaOptionsProvider(options: Partial<YaMetrikaOptions>): Provider {
-    return tuiProvideOptions(YA_METRIKA_OPTIONS, options, YA_METRIKA_DEFAULT_OPTIONS);
-}
+export const [YA_METRIKA_OPTIONS, metrikaOptionsProvider] =
+    tuiCreateOptions<YaMetrikaOptions>({id: '', debug: false});
 
 @Injectable({
     providedIn: 'root',
@@ -44,12 +33,15 @@ export function metrikaOptionsProvider(options: Partial<YaMetrikaOptions>): Prov
 export class YaMetrikaService {
     private readonly options = inject(YA_METRIKA_OPTIONS);
     private readonly doc = inject(DOCUMENT);
+    private readonly support =
+        !!this.options.id &&
+        (this.options.debug ||
+            (isPlatformBrowser(inject(PLATFORM_ID)) &&
+                !ngDevMode &&
+                !inject(TUI_IS_E2E)));
 
     constructor() {
-        if (
-            this.options.debug ||
-            (isPlatformBrowser(inject(PLATFORM_ID)) && !ngDevMode && !inject(TUI_IS_E2E))
-        ) {
+        if (this.support) {
             const script = this.doc.createElement('script');
 
             script.async = true;
