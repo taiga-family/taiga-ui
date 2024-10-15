@@ -32,7 +32,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     host: {
         '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
-        // '[class._closeable]': 'context.closeable === true',
+        '[class._closeable]': 'context.closeable === true',
         '(document:touchstart.passive.silent)': 'onPointerChange(1)',
         '(document:touchend.silent)': 'onPointerChange(-1)',
         '(document:touchcancel.silent)': 'onPointerChange(-1)',

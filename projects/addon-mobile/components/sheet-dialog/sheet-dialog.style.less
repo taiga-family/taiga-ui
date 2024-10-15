@@ -3,8 +3,7 @@
 :host {
     .scrollbar-hidden();
 
-    //display: flex;
-    display: block;
+    display: flex;
     inline-size: 100%;
     max-inline-size: 40rem;
     block-size: calc(100% - var(--tui-offset) - var(--tui-viewport-y));
@@ -25,7 +24,15 @@
     }
 
     &::after {
-        top: var(--t-sheet-scroll, 100vh);
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 50%;
+        z-index: -1;
+        inline-size: 100%;
+        block-size: 100%;
+        max-inline-size: 40rem;
+        transform: translate(-50%, calc(var(--t-sheet-scroll, 200vh) - 3rem));
         background: var(--tui-background-elevation-1);
     }
 
@@ -39,8 +46,7 @@
 }
 
 .t-stops {
-    //display: none;
-    display: flex;
+    display: none;
     block-size: 100%;
     scroll-snap-stop: always;
     scroll-snap-align: start;
