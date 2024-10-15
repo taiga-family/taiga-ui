@@ -12,7 +12,6 @@ import {
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
-export interface TuiResponsiveDialogContext<O> extends TuiDialogContext<O> {}
 export interface TuiResponsiveDialogOptions<I = undefined>
     extends Omit<TuiDialogOptions<I>, 'label'>,
         TuiSheetDialogOptions<unknown> {
@@ -33,7 +32,7 @@ export class TuiResponsiveDialogService {
 
     public open<G = void>(
         content: PolymorpheusContent<
-            TuiResponsiveDialogOptions<any> & TuiResponsiveDialogContext<G>
+            TuiResponsiveDialogOptions<any> & TuiDialogContext<G>
         >,
         options: Partial<TuiResponsiveDialogOptions<any>> = {},
     ): Observable<G> {
