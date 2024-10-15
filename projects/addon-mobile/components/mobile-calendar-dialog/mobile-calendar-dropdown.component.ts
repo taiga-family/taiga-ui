@@ -11,6 +11,8 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiActiveZoneDirective,
+    TuiDay,
+    TuiDayRange,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -96,11 +98,14 @@ export class TuiMobileCalendarDropdownComponent {
         this.keyboard.show();
     }
 
-    confirm(value: any): void {
+    confirm(value: TuiDay | TuiDayRange | readonly TuiDay[] | null): void {
         const control = this.single || this.multi || this.range;
 
         if (control) {
-            control.value = value;
+            control.value =
+                this.range && value instanceof TuiDay
+                    ? new TuiDayRange(value, value)
+                    : value;
         }
 
         this.close();
