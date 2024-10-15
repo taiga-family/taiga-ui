@@ -83,7 +83,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     protected onPointerChange(delta: number): void {
         this.pointers += delta;
 
-        if (!this.pointers && !this.el.scrollTop) {
+        if (!this.pointers && this.el.scrollTop <= 0) {
             this.close();
         }
     }
