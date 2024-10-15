@@ -58,7 +58,12 @@
     box-sizing: border-box;
     scroll-snap-stop: always;
     scroll-snap-align: start;
-    border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/1rem 0/0 0 100vh;
+
+    &::after {
+        content: '';
+        display: block;
+        border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/0/0 0 100vh;
+    }
 }
 
 .t-top {
