@@ -15,23 +15,22 @@
     overflow: auto;
 }
 
+.items {
+    min-block-size: calc(100 * var(--tui-viewport-vh) - var(--tui-offset) - 19.5rem);
+}
+
 .cell {
     inline-size: stretch;
     margin: 0 -1rem;
     white-space: nowrap;
     overflow: hidden;
-
-    &:last-child {
-        margin-block-end: calc(4rem + 100vh - var(--tui-viewport-height) + var(--tui-viewport-y));
-    }
 }
 
 .button {
-    .transition(top);
+    .transition(bottom);
 
-    position: fixed;
-    top: var(--tui-viewport-height);
-    inline-size: stretch;
-    max-inline-size: 20rem;
-    margin: ~'-4.5rem max(calc(50vw - 10rem), 1rem) 0';
+    position: sticky;
+    bottom: calc(100vh - var(--tui-viewport-height) + 1.5rem);
+    inline-size: 100%;
+    margin-block-start: 1rem;
 }

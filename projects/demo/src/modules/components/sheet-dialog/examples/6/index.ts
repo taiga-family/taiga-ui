@@ -7,15 +7,11 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import type {TuiMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe} from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_SPEED,
     TuiButton,
     TuiDropdown,
-    tuiFadeIn,
     TuiFallbackSrcPipe,
     TuiNotification,
-    tuiSlideInTop,
     TuiTitle,
-    tuiToAnimationOptions,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarLabeled, TuiFade} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
@@ -44,13 +40,11 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiFadeIn, tuiSlideInTop],
 })
 export default class Example {
     protected open = signal(false);
     protected search = '';
 
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly items = [
         {
             name: 'Grigori Constantinopolsky',
