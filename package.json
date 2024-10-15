@@ -28,6 +28,7 @@
     "scripts": {
         "prepare": "husky",
         "start": "nx serve demo",
+        "start:ssl": "nx serve-ssl demo",
         "start:default": "nx serve demo -c def",
         "start:shadow": "nx serve demo -c shadow",
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
