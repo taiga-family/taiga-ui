@@ -1,22 +1,22 @@
 import {Directive, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {WA_WINDOW} from '@ng-web-apis/common';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ViewportService} from '@ng-web-apis/screen-orientation';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement, tuiPx} from '@taiga-ui/cdk/utils';
 
 @Directive({
     standalone: true,
     selector: '[tuiVisualViewport]',
-    host: {
-        '[style.--tui-viewport-x.px]': 'viewport()?.offsetLeft',
-        '[style.--tui-viewport-y.px]': 'viewport()?.offsetTop',
-        '[style.--tui-viewport-height.px]': 'viewport()?.height',
-        '[style.--tui-viewport-width.px]': 'viewport()?.width',
-        '[style.--tui-viewport-scale]': 'viewport()?.scale',
-    },
 })
 export class TuiVisualViewport {
-    protected readonly viewport = toSignal(inject(ViewportService).pipe(tuiWatch()), {
-        initialValue: inject(WA_WINDOW).visualViewport,
-    });
+    private readonly style = tuiInjectElement().style;
+
+    protected readonly $ = inject(ViewportService)
+        .pipe(takeUntilDestroyed())
+        .subscribe(({offsetLeft, offsetTop, height, width, scale}) => {
+            this.style.setProperty('--tui-viewport-x', tuiPx(offsetLeft));
+            this.style.setProperty('--tui-viewport-y', tuiPx(offsetTop));
+            this.style.setProperty('--tui-viewport-height', tuiPx(height));
+            this.style.setProperty('--tui-viewport-width', tuiPx(width));
+            this.style.setProperty('--tui-viewport-scale', String(scale));
+        });
 }
