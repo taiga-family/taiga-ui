@@ -1,6 +1,8 @@
 import {NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, ViewChildren} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiPx} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -10,6 +12,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {fromEvent} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -54,6 +57,15 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected readonly context =
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
+
+    protected readonly $ = fromEvent(this.el, 'scroll')
+        .pipe(takeUntilDestroyed())
+        .subscribe(() => {
+            this.el.style.setProperty(
+                '--t-sheet-scroll',
+                tuiPx(this.el.scrollHeight - this.el.scrollTop),
+            );
+        });
 
     public ngAfterViewInit(): void {
         this.el.scrollTop =
