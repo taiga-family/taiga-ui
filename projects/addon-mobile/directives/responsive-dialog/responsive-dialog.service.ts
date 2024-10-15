@@ -1,14 +1,13 @@
 import {inject, Injectable} from '@angular/core';
-import {
-    type TuiSheetDialogOptions,
-    TuiSheetDialogService,
-} from '@taiga-ui/addon-mobile/components/sheet-dialog';
-import {TUI_IS_MOBILE, tuiIsString} from '@taiga-ui/cdk';
-import {
-    type TuiDialogContext,
-    type TuiDialogOptions,
+import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile/components/sheet-dialog';
+import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {
+    TuiDialogContext,
+    TuiDialogOptions,
     TuiDialogService,
-} from '@taiga-ui/core';
+} from '@taiga-ui/core/components/dialog';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
@@ -32,7 +31,7 @@ export class TuiResponsiveDialogService {
 
     public open<G = void>(
         content: PolymorpheusContent<
-            TuiResponsiveDialogOptions<any> & TuiDialogContext<G>
+            TuiDialogContext<G> & TuiResponsiveDialogOptions<any>
         >,
         options: Partial<TuiResponsiveDialogOptions<any>> = {},
     ): Observable<G> {

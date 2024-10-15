@@ -4,7 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
+import type {TuiMatcher} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiFilterPipe} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
@@ -23,27 +24,27 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         AsyncPipe,
-        SlicePipe,
-        NgForOf,
         FormsModule,
-        TuiButton,
-        TuiSheetDialog,
+        NgForOf,
+        SlicePipe,
         TuiAppBar,
-        TuiAvatarLabeled,
         TuiAvatar,
-        TuiFallbackSrcPipe,
+        TuiAvatarLabeled,
+        TuiButton,
         TuiCell,
-        TuiTitle,
-        TuiFilterPipe,
-        TuiFade,
         TuiDropdown,
+        TuiFade,
+        TuiFallbackSrcPipe,
+        TuiFilterPipe,
         TuiNotification,
+        TuiSheetDialog,
+        TuiTitle,
     ],
-    animations: [tuiFadeIn, tuiSlideInTop],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    animations: [tuiFadeIn, tuiSlideInTop],
 })
 export default class Example {
     protected open = signal(false);

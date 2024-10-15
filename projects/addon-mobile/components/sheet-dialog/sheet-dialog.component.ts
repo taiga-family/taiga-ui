@@ -2,7 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, ViewChildren} from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';

@@ -2,10 +2,8 @@ import {Directive} from '@angular/core';
 import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
 import {tuiAsPopover} from '@taiga-ui/cdk/services';
 
-import {
-    type TuiResponsiveDialogOptions,
-    TuiResponsiveDialogService,
-} from './responsive-dialog.service';
+import type {TuiResponsiveDialogOptions} from './responsive-dialog.service';
+import {TuiResponsiveDialogService} from './responsive-dialog.service';
 
 @Directive({
     standalone: true,

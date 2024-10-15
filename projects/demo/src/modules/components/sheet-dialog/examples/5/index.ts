@@ -9,7 +9,7 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiResponsiveDialog, RouterLink, TuiLink],
+    imports: [RouterLink, TuiButton, TuiLink, TuiResponsiveDialog],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
