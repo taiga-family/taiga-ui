@@ -6,12 +6,12 @@
     display: flex;
     inline-size: 100%;
     max-inline-size: 40rem;
-    block-size: calc(100% - var(--tui-offset) - var(--tui-viewport-y));
+    block-size: calc(100% - var(--tui-offset));
     flex-direction: column;
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    margin: calc(var(--tui-offset) + var(--tui-viewport-y)) auto 0;
+    margin: var(--tui-offset) auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
 
     &::before {
@@ -39,6 +39,8 @@
 }
 
 .t-stop {
+    position: relative;
+    top: env(safe-area-inset-bottom);
     scroll-snap-stop: normal;
     scroll-snap-align: start;
     block-size: 1rem;
@@ -57,12 +59,6 @@
     box-sizing: border-box;
     scroll-snap-stop: always;
     scroll-snap-align: start;
-
-    &::after {
-        content: '';
-        display: block;
-        border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/0/0 0 100vh;
-    }
 }
 
 .t-top {
@@ -113,7 +109,12 @@
 
     &::after {
         content: '';
+        position: relative;
+        top: calc(1.5em + env(safe-area-inset-bottom));
+        z-index: -1;
         display: block;
+        scroll-snap-stop: always;
+        scroll-snap-align: end;
         border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/0/0 100vh 100vh;
     }
 }
