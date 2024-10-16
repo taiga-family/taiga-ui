@@ -80,15 +80,12 @@ export class PayModal implements OnInit {
     protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
-    protected amount = 0;
     protected readonly PAYMENT_MODE = PaymentMode;
 
     public readonly context =
         injectContext<TuiDialogContext<void, DataForPayCardModal>>();
 
-    constructor() {
-        this.amount = this.context?.data?.amount ?? 0;
-    }
+    public readonly amount = this.context.data.amount;
 
     public ngOnInit(): void {
         this.fetchCardsAndSetPrimaryCard();
