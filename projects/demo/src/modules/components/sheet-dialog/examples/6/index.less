@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .input {
+    .tui-prevent-ios-scroll();
+
     inline-size: 100%;
     margin-block-start: 0.75rem;
 }
@@ -30,7 +32,7 @@
     .transition(bottom);
 
     position: sticky;
-    bottom: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) + 1.5rem);
+    bottom: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y) + 1.5rem);
     inline-size: 100%;
     margin-block-start: 1rem;
 }
