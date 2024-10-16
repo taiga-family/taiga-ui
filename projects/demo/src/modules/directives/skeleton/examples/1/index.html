@@ -40,6 +40,31 @@
     aliqua.
 </section>
 <p>
+    <tui-progress-circle
+        [tuiSkeleton]="skeleton"
+        [value]="0.33"
+    />
+    <tui-avatar-stack>
+        <tui-avatar
+            src="AI"
+            [tuiSkeleton]="skeleton"
+        />
+        <tui-avatar
+            src="https://avatars.githubusercontent.com/u/11832552"
+            [tuiSkeleton]="skeleton"
+        />
+        <tui-avatar
+            src="❤️"
+            [tuiSkeleton]="skeleton"
+        />
+        <tui-avatar
+            appearance="primary"
+            src="$"
+            [tuiSkeleton]="skeleton"
+        />
+    </tui-avatar-stack>
+</p>
+<p>
     <button
         tuiButton
         type="button"
