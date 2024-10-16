@@ -152,7 +152,7 @@ export class TuiInputCardGroup
                   switchMap(() => timer(100)),
                   takeUntilDestroyed(),
               )
-              .subscribe(() => this.focusExpire())
+              .subscribe(() => (this.expire ? this.focusCVC() : this.focusExpire()))
         : EMPTY;
 
     protected readonly m = tuiAppearanceMode(this.mode);
