@@ -20,10 +20,7 @@
             {{ label }}
         </ng-container>
     </h2>
-    <div
-        *ngIf="context.content"
-        class="t-content"
-    >
+    <div class="t-content">
         <ng-container *polymorpheusOutlet="context.content as text; context: context">
             {{ text }}
         </ng-container>
