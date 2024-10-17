@@ -42,6 +42,7 @@ export default class Example {
 
     constructor() {
         this.form = this.fb.group({
+            // eslint-disable-next-line i18n/no-russian-character
             text: ['русский текст', Validators.required],
         });
 

@@ -1,3 +1,4 @@
+/* eslint-disable i18n/no-russian-character */
 import type {TuiDocRoutePages} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';

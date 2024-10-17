@@ -84,7 +84,6 @@
             "@typescript-eslint/max-params": "off",
             "i18n/no-greek-character": "off",
             "i18n/no-japanese-character": "off",
-            "i18n/no-russian-character": "off",
             "i18n/no-thai-character": "off",
             "jest/prefer-importing-jest-globals": "off",
             "sonarjs/prefer-nullish-coalescing": "off",
