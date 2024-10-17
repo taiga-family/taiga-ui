@@ -13,6 +13,7 @@ import {
     ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
@@ -31,7 +32,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -81,6 +82,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly control?: NgControl;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
     protected computedFiller = computed(() => {
         const value = this.directive?.nativeValue() || '';

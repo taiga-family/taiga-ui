@@ -18,6 +18,7 @@ export const TUI_LITHUANIAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Gruodis',
     ],
     close: 'Uždaryti',
+    clear: 'Notīrīt lauku',
     nothingFoundMessage: 'Nieko nerasta',
     defaultErrorMessage: 'Reikšmė neteisinga',
     spinTexts: ['Ankstesnis', 'Kitas'],

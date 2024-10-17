@@ -4,6 +4,7 @@ import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/c
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -29,6 +30,7 @@ export class TuiTreeItemContent implements DoCheck {
     private readonly change$ = new Subject<void>();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly more = toSignal(inject(TUI_MORE_WORD));
     protected readonly context = injectContext<TuiTreeItemContext>();
 
     protected readonly expanded = toSignal(

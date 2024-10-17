@@ -12,6 +12,11 @@ export const TUI_MONTHS = tuiCreateTokenFromFactory(tuiExtractI18n('months'));
 export const TUI_CLOSE_WORD = tuiCreateTokenFromFactory(tuiExtractI18n('close'));
 
 /**
+ * i18n 'clear' word
+ */
+export const TUI_CLEAR_WORD = tuiCreateTokenFromFactory(tuiExtractI18n('clear'));
+
+/**
  * i18n 'Nothing found' message
  */
 export const TUI_NOTHING_FOUND_MESSAGE = tuiCreateTokenFromFactory(

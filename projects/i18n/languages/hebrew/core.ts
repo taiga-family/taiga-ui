@@ -18,6 +18,7 @@ export const TUI_HEBREW_LANGUAGE_CORE: TuiLanguageCore = {
         'דֵצֶמבֶּר',
     ],
     close: 'סגור',
+    clear: 'נקה שדה',
     nothingFoundMessage: 'שום דבר לא נמצא',
     defaultErrorMessage: 'הערך לא חוקי',
     spinTexts: ['קודם', 'הַבָּא'],
