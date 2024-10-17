@@ -43,6 +43,8 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     host: {
         tuiTheme: 'dark',
         '[@tuiSlideInLeft]': 'animation',
+        '[style.top.px]':
+            'directive.el.offsetParent?.offsetTop + directive.el.offsetParent?.offsetHeight',
     },
 })
 class TuiDrawerComponent {
