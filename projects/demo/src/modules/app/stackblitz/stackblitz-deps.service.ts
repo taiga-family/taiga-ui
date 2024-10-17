@@ -71,7 +71,9 @@ export class StackblitzDepsService {
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
             '@ng-web-apis/intersection-observer':
                 kitDeps['@ng-web-apis/intersection-observer'],
+            '@ng-web-apis/platform': cdkDeps['@ng-web-apis/platform'],
             '@ng-web-apis/resize-observer': cdkDeps['@ng-web-apis/resize-observer'],
+            '@ng-web-apis/screen-orientation': cdkDeps['@ng-web-apis/screen-orientation'],
             '@ng-web-apis/mutation-observer': cdkDeps['@ng-web-apis/mutation-observer'],
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
