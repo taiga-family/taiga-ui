@@ -36,11 +36,12 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 })
 export class DialogExample {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly context = injectContext<TuiDialogContext<number, number>>();
 
     protected value: number | null = null;
     protected name = '';
     protected items = [10, 50, 100];
+
+    public readonly context = injectContext<TuiDialogContext<number, number>>();
 
     protected get hasValue(): boolean {
         return this.value !== null;

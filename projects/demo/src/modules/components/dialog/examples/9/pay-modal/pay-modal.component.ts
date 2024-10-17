@@ -74,17 +74,18 @@ export class PayModal implements OnInit {
         saveCard: new FormControl(true),
     });
 
-    protected readonly context =
-        injectContext<TuiDialogContext<void, DataForPayCardModal>>();
-
     protected readonly iOS = inject(TUI_IS_IOS);
 
     protected cards: AccountCard[] = [];
     protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
-    protected amount: number = this.context?.data?.amount ?? 0;
     protected readonly PAYMENT_MODE = PaymentMode;
+
+    public readonly context =
+        injectContext<TuiDialogContext<void, DataForPayCardModal>>();
+
+    public readonly amount = this.context.data.amount;
 
     public ngOnInit(): void {
         this.fetchCardsAndSetPrimaryCard();
