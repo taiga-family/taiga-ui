@@ -1,7 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
+import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
@@ -14,7 +15,7 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
+    private readonly dialogs = inject(TuiResponsiveDialogService);
     private readonly alerts = inject(TuiAlertService);
 
     protected onClick(): void {

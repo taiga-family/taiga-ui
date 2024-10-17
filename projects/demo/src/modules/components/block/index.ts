@@ -25,7 +25,7 @@ import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 export default class Example {
     protected readonly examples = ['Sizes', 'Groups', 'Custom'];
     protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected readonly appearances = ['whiteblock', 'secondary'];
+    protected readonly appearances = ['outline-grayscale', 'secondary'];
 
     protected value = false;
     protected size = this.sizes[2]!;

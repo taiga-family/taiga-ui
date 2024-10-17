@@ -16,7 +16,7 @@ import {switchMap, takeUntil} from 'rxjs';
         <p>Yes?</p>
         <button
             *ngFor="let response of [true, false]"
-            appearance="whiteblock"
+            appearance="outline-grayscale"
             size="s"
             tuiButton
             type="button"

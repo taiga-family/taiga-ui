@@ -1,7 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='secondary'],
-[tuiAppearance][data-appearance='flat'],
+[tuiAppearance][data-appearance='secondary-destructive'],
+[tuiAppearance][data-appearance='secondary-grayscale'],
+/* TODO @deprecated remove in v5 */
 [tuiAppearance][data-appearance='destructive'] {
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-action);
@@ -62,27 +64,14 @@
     }
 }
 
-[tuiAppearance][data-appearance='flat'],
-[tuiAppearance][data-appearance='flat']:invalid:not([data-mode]),
-[tuiAppearance][data-appearance='flat'][data-mode~='invalid'] {
-    background: transparent;
-}
-
-[tuiAppearance][data-appearance='flat']:checked:not([data-mode]),
-[tuiAppearance][data-appearance='flat'][data-mode~='checked'] {
-    background: var(--tui-background-neutral-1);
-
-    .appearance-hover({
-        background: var(--tui-background-neutral-1-hover);
-    });
-
-    .appearance-active({
-        background: var(--tui-background-neutral-1-pressed);
-    });
-}
-
+[tuiAppearance][data-appearance='secondary-destructive'],
+/* TODO @deprecated remove in v5 */
 [tuiAppearance][data-appearance='destructive'] {
     color: var(--tui-text-negative);
+}
+
+[tuiAppearance][data-appearance='secondary-grayscale'] {
+    color: var(--tui-text-primary);
 }
 
 // Overriding to darker colors for small items

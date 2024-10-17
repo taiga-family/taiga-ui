@@ -1,4 +1,4 @@
-import type {Type} from '@angular/core';
+import type {FactoryProvider, Type} from '@angular/core';
 import {inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -53,3 +53,17 @@ export const TUI_ALERTS_GROUPED = tuiCreateTokenFromFactory(() =>
         }),
     ),
 );
+
+export function tuiAlertOptionsProvider(
+    options: Partial<TuiAlertOptions>,
+): FactoryProvider {
+    return {
+        provide: TUI_ALERT_OPTIONS,
+        useFactory: (): TuiAlertOptions => ({
+            ...TUI_ALERT_DEFAULT_OPTIONS,
+            ...(inject(TUI_ALERT_OPTIONS, {optional: true, skipSelf: true}) ||
+                inject(TUI_NOTIFICATION_OPTIONS)),
+            ...options,
+        }),
+    };
+}

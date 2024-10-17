@@ -33,7 +33,7 @@ test.describe('CalendarRange', () => {
             calendarRange = new TuiCalendarRangePO(example.locator('tui-calendar-range'));
 
             const getRangeSwitcher = (): Locator =>
-                example.locator('p button[data-appearance="link"]');
+                example.locator('p button[data-appearance="action"]');
 
             await expect(example).toHaveScreenshot(
                 '05-calendar-range-correct-display-defaults-items-and-values.png',

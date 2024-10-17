@@ -19,3 +19,33 @@
         --t-bg: var(--tui-background-accent-1-pressed);
     });
 }
+
+[tuiAppearance][data-appearance='primary-destructive'] {
+    .transition(filter);
+
+    color: #fff;
+    background: var(--tui-status-negative);
+
+    .appearance-hover({
+        filter: saturate(1) brightness(1.3);
+    });
+
+    .appearance-active({
+        filter: saturate(0.8) brightness(1);
+    });
+}
+
+[tuiAppearance][data-appearance='primary-grayscale'] {
+    --tui-border-focus: #979797;
+
+    background: var(--tui-background-accent-opposite);
+    color: var(--tui-background-base);
+
+    .appearance-hover({
+        background: var(--tui-background-accent-opposite-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-background-accent-opposite-pressed);
+    });
+}

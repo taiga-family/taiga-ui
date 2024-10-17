@@ -9,6 +9,7 @@ import type {TuiInteractiveState} from '@taiga-ui/core/types';
     standalone: false,
     selector: '[tuiWrapper]',
     host: {
+        tuiAppearance: '', // So that basic appearance also works
         '[attr.data-appearance]': 'appearance',
         '[class._invalid]': 'computedInvalid',
         '[class._focused]': 'computedFocused',

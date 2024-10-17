@@ -66,7 +66,7 @@ export function migrateButtonAppearance({
 
             recorder.insertLeft(
                 startOffset + templateOffset,
-                ` ${appearanceInputName}="whiteblock"`,
+                ` ${appearanceInputName}="outline-grayscale"`,
             );
             recorder.insertLeft(
                 startOffset + templateOffset,
@@ -90,6 +90,6 @@ export function migrateButtonAppearance({
 function addTodo(recorder: UpdateRecorder, templateOffset: number): void {
     recorder.insertRight(
         templateOffset,
-        '<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use \'appearance="whiteblock" tuiAppearanceMode="checked"\' -->\n',
+        '<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use \'appearance="outline-grayscale" tuiAppearanceMode="checked"\' -->\n',
     );
 }

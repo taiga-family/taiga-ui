@@ -1,12 +1,12 @@
 ```ts
-import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
+import {tuiAlertOptionsProvider} from '@taiga-ui/core';
 
 // ...
 
 @Component({
   standalone: true,
   providers: [
-    tuiNotificationOptionsProvider({
+    tuiAlertOptionsProvider({
       label: ({status}: any) => status[0].toUpperCase() + status.slice(1),
       appearance: 'error',
       autoClose: 7000,

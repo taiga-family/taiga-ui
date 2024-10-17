@@ -18,6 +18,6 @@ export const TUI_APP_BAR_PROVIDERS: Provider[] = [
         },
     },
     tuiButtonOptionsProvider({
-        appearance: 'link',
+        appearance: 'action',
     }),
 ];

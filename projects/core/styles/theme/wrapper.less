@@ -14,35 +14,9 @@
     appearance: none;
     border-radius: inherit;
 
-    &::after {
-        .transition(~'box-shadow, color');
-        .fullsize(absolute, inset);
-
-        content: '';
-        border-radius: inherit;
-        border: 1px solid currentColor;
-        pointer-events: none;
-        color: transparent;
-    }
-
-    .wrapper-focus({
-        &:after {
-            border-width: 2px;
-            color: var(--tui-border-focus);
-        }
-    });
-
     .wrapper-disabled({
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
-    });
-
-    // Temporary hide focus in Safari until we figure out a better approach
-    .safari-only({
-        :focus-visible &,
-        &:focus-visible {
-            --tui-border-focus: transparent !important;
-        }
     });
 }
 
@@ -51,11 +25,17 @@
 
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
+    outline: none !important;
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     &::after {
         .transition(color);
+        .fullsize(absolute, inset);
 
+        content: '';
+        border-radius: inherit;
+        border: 1px solid currentColor;
+        pointer-events: none;
         color: var(--tui-border-normal);
     }
 
@@ -67,7 +47,8 @@
         box-shadow: none;
 
         &:after {
-            --tui-border-focus: var(--tui-background-accent-1);
+            border-width: 2px;
+            color: var(--tui-background-accent-1);
         }
     });
 
@@ -87,7 +68,6 @@
     .wrapper-invalid({
         &:after {
             color: var(--tui-text-negative);
-            --tui-border-focus: var(--tui-status-negative);
         }
     });
 }
