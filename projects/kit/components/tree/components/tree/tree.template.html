@@ -1,15 +1,14 @@
 <tui-tree-item
-    *tuiLet="children$ | async as children"
     #view
     [tuiTreeNode]="value"
 >
-    <ng-container *ngIf="value !== children">
+    <ng-container *ngIf="value !== children()">
         <ng-container *polymorpheusOutlet="content as text; context: {$implicit: value, node: view}">
             {{ text }}
         </ng-container>
     </ng-container>
     <tui-tree
-        *ngFor="let child of children; trackBy: trackBy"
+        *ngFor="let child of children(); trackBy: trackBy"
         [content]="content"
         [trackBy]="trackBy"
         [value]="child"
