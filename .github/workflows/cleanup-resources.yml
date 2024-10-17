@@ -1,10 +1,18 @@
-name: Close PR delete firebase channel
+name: Cleanup resources after close PR
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  delete_firebase_channel:
+  purge-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.93.2
+      - run: gh cache delete ${{ env.CACHE_DIST_KEY }}
+        continue-on-error: true
+
+  delete-firebase-channel:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
