@@ -42,7 +42,6 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     sticky = this.options.sticky;
 
     @Input()
-    @HostBinding('attr.requiredSort')
     requiredSort = this.options.requiredSort;
 
     @HostBinding('style.width.px')
