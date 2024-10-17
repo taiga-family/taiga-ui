@@ -141,4 +141,20 @@ describe('PrimitiveRangeCalendar component', () => {
             expect(component.cappedUserViewedMonthSecond).toBe(day);
         });
     });
+
+    it('When handle any changes, current viewed month do not updates', () => {
+        const date = TuiMonth.currentLocal().append({month: 3});
+
+        component.userViewedMonthFirst = date;
+        component.userViewedMonthSecond = date.append({month: 1});
+
+        component.markerHandler = (day: TuiDay) =>
+            day.day % 2 === 0 ? ['first'] : ['second'];
+        component.ngOnChanges({});
+
+        expect(component.userViewedMonthFirst.toString()).toBe(date.toString());
+        expect(component.userViewedMonthSecond.toString()).toBe(
+            date.append({month: 1}).toString(),
+        );
+    });
 });
