@@ -65,10 +65,10 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
         switch (this.documentationPropertyMode) {
             case 'input':
                 return `[${this.documentationPropertyName}]`;
-            case 'output':
-                return `(${this.documentationPropertyName})`;
             case 'input-output':
                 return `[(${this.documentationPropertyName})]`;
+            case 'output':
+                return `(${this.documentationPropertyName})`;
             default:
                 return this.documentationPropertyName;
         }
