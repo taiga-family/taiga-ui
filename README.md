@@ -268,8 +268,8 @@ design your app with Taiga UI components.
 
 ## Contributors
 
-See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
-[make pull request](https://pr.new/github.com/taiga-family/taiga-ui) online from Web IDE.
+See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to [make pull request](https://github.dev/taiga-family/taiga-ui)
+online from Web IDE.
 
 <a href="https://github.com/taiga-family/taiga-ui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=taiga-family/taiga-ui" />
