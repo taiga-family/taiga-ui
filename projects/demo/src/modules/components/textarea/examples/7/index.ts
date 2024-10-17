@@ -1,18 +1,16 @@
 import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
+import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, RouterLink, TuiLink],
+    imports: [FormsModule, TuiTextareaModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly routes = DemoRoute;
+    protected value = 'Using TuiTextfieldControllerModule';
 }

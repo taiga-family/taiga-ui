@@ -36,7 +36,7 @@
 }
 
 [tuiAppearance][data-appearance='primary-grayscale'] {
-    --tui-border-focus: rgba(255, 255, 255, 0.64);
+    --tui-border-focus: #979797;
 
     background: var(--tui-background-accent-opposite);
     color: var(--tui-background-base);
@@ -48,9 +48,4 @@
     .appearance-active({
         background: var(--tui-background-accent-opposite-pressed);
     });
-}
-
-[tuiTheme='dark'] [tuiAppearance][data-appearance='primary-grayscale'],
-[tuiTheme='dark'][tuiAppearance][data-appearance='primary-grayscale'] {
-    --tui-border-focus: rgba(51, 51, 51, 0.48);
 }

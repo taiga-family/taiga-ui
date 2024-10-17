@@ -58,7 +58,7 @@ class TuiDrawerComponent {
     template: '<ng-template><ng-content /></ng-template>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider({appearance: 'secondary'}),
+        tuiButtonOptionsProvider({appearance: 'secondary-grayscale'}),
         {
             provide: TUI_ICON_END,
             useFactory: () => inject(TUI_LAYOUT_ICONS).grid,

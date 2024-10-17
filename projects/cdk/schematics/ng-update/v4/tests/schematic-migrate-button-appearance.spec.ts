@@ -62,18 +62,18 @@ const TEMPLATE_WITH_CONDITION_BEFORE = `
 const TEMPLATE_AFTER = `
 <button tuiButton></button>
 
-<button tuiButton appearance="whiteblock" tuiAppearanceMode="checked"></button>
+<button tuiButton appearance="outline-grayscale" tuiAppearanceMode="checked"></button>
 
-<button tuiButton appearance="whiteblock" tuiAppearanceMode="checked"></button>
+<button tuiButton appearance="outline-grayscale" tuiAppearanceMode="checked"></button>
 
-<a tuiIconButton appearance="whiteblock" tuiAppearanceMode="checked"></a>
+<a tuiIconButton appearance="outline-grayscale" tuiAppearanceMode="checked"></a>
 
 <a tuiButton [appearance]="
   'flat'
 "></a>
 `;
 
-const TEMPLATE_WITH_CONDITION_AFTER = `<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use 'appearance="whiteblock" tuiAppearanceMode="checked"' -->
+const TEMPLATE_WITH_CONDITION_AFTER = `<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use 'appearance="outline-grayscale" tuiAppearanceMode="checked"' -->
 
 <a tuiButton [appearance]="
   true ? appearance : 'flat'
