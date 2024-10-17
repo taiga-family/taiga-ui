@@ -1,3 +1,5 @@
+@import './common/search';
+
 [data-platform='android'] {
     @import './android/app-bar';
     @import './android/checkbox';
@@ -12,7 +14,6 @@
 [data-platform='ios'] {
     @import './ios/app-bar';
     @import './ios/checkbox';
-    @import './ios/search';
     @import './ios/switch';
 
     tui-segmented > *:not(tui-segmented_active):active {

@@ -1,6 +1,6 @@
 import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 import type {Provider} from '@angular/core';
-import {ChangeDetectorRef, Optional} from '@angular/core';
+import {Optional} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -27,11 +27,10 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_VALUE_STREAM,
-        deps: [[new Optional(), TUI_CALENDAR_DATE_STREAM], ChangeDetectorRef],
+        deps: [[new Optional(), TUI_CALENDAR_DATE_STREAM]],
         useFactory: (
             value$: Observable<TuiDayRange | null> | null,
-            cdr: ChangeDetectorRef,
         ): Observable<TuiDayRange | null> =>
-            (value$ || EMPTY).pipe(tuiWatch(cdr), takeUntilDestroyed()),
+            (value$ || EMPTY).pipe(tuiWatch(), takeUntilDestroyed()),
     },
 ];

@@ -2,7 +2,6 @@
 import {DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     inject,
     signal,
@@ -12,6 +11,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
+import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
@@ -38,7 +38,7 @@ import {debounceTime, map} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform],
+    hostDirectives: [TuiPlatform, TuiVisualViewport],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
@@ -55,7 +55,7 @@ export class TuiRoot {
     protected readonly isMobileRes = toSignal(
         inject(TuiBreakpointService).pipe(
             map((breakpoint) => breakpoint === 'mobile'),
-            tuiWatch(inject(ChangeDetectorRef)),
+            tuiWatch(),
         ),
         {initialValue: false},
     );

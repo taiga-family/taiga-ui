@@ -6,8 +6,7 @@ tui-app-bar {
     block-size: 3rem;
     align-items: center;
     justify-content: space-between;
-    border: solid transparent;
-    border-width: 0 0.375rem;
+    flex: 1;
     box-sizing: border-box;
     font: var(--tui-font-text-m);
     font-weight: bold;
@@ -32,8 +31,21 @@ tui-app-bar {
         white-space: nowrap;
     }
 
-    [tuiButton][data-size='m'] {
+    > :last-child [tuiIconButton] {
+        margin: 0 -0.375rem;
+
+        &:last-child {
+            margin-inline-end: 0;
+        }
+
+        &:only-child {
+            margin: 0;
+        }
+    }
+
+    [tuiButton][data-size='l'] {
         font-weight: normal;
+        margin: 0 -0.25rem;
     }
 
     [tuiTitle] {
@@ -53,12 +65,11 @@ tui-app-bar {
     }
 
     &[data-size='l'] {
-        border: 0;
         block-size: 4rem;
 
         & > :first-child,
         & > :last-child {
-            margin: 0 -0.75rem;
+            margin: 0 -1em;
         }
     }
 
@@ -73,4 +84,10 @@ tui-dialog tui-app-bar[data-size='l'] {
 
 tui-dialog tui-app-bar[data-size='m'] {
     margin: -1rem -1rem 0.75rem;
+}
+
+tui-sheet-dialog tui-app-bar {
+    margin: -0.75rem -1rem;
+    background: none;
+    backdrop-filter: none;
 }

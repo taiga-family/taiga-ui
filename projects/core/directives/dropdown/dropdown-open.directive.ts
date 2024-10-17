@@ -1,6 +1,5 @@
 import type {OnChanges} from '@angular/core';
 import {
-    ChangeDetectorRef,
     computed,
     ContentChild,
     Directive,
@@ -84,7 +83,7 @@ export class TuiDropdownOpen implements OnChanges {
             filter((target) => !this.host.contains(target) || !this.directive.ref()),
         ),
     )
-        .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
+        .pipe(tuiWatch(), takeUntilDestroyed())
         .subscribe(() => this.toggle(false));
 
     @Input()

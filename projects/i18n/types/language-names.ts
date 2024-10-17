@@ -12,6 +12,7 @@ export type TuiLanguageName = TuiLooseUnion<
     | 'japan'
     | 'kazakh'
     | 'korean'
+    | 'lithuanian'
     | 'malay'
     | 'polish'
     | 'portuguese'

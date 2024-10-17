@@ -1,0 +1,41 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.input {
+    .tui-prevent-ios-scroll();
+
+    inline-size: 100%;
+    margin-block-start: 0.75rem;
+}
+
+.favorites {
+    .scrollbar-hidden();
+
+    display: flex;
+    gap: 0.75rem;
+    margin: 1rem -1rem;
+    padding: 0 0.5rem;
+    overflow: auto;
+}
+
+.items {
+    min-block-size: calc(100 * var(--tui-viewport-vh) - var(--tui-offset) - 19.5rem);
+}
+
+.cell {
+    inline-size: stretch;
+    margin: 0 -1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button {
+    .transition(bottom);
+
+    position: sticky;
+    bottom: max(
+        calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y) + 1.5rem),
+        calc(env(safe-area-inset-bottom) + 1.5rem)
+    );
+    inline-size: 100%;
+    margin-block-start: 1rem;
+}

@@ -1,7 +1,6 @@
 import type {DoCheck, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     Directive,
     inject,
@@ -78,7 +77,7 @@ export class TuiTooltip implements DoCheck {
         toSignal(
             inject(TuiHintHover).pipe(
                 map((hover) => (hover ? 'hover' : null)),
-                tuiWatch(inject(ChangeDetectorRef)),
+                tuiWatch(),
             ),
             {initialValue: null},
         ),

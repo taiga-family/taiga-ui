@@ -33,6 +33,7 @@
         "@ng-web-apis/mutation-observer": "^4.11.1",
         "@ng-web-apis/platform": "^4.11.1",
         "@ng-web-apis/resize-observer": "^4.11.1",
+        "@ng-web-apis/screen-orientation": ">=4.8.0 <5",
         "@taiga-ui/event-plugins": "^4.3.1",
         "@taiga-ui/polymorpheus": "^4.7.4",
         "rxjs": ">=7.0.0"

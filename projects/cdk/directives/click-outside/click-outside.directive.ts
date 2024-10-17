@@ -9,6 +9,9 @@ import {
 import type {Observable} from 'rxjs';
 import {filter, fromEvent, map} from 'rxjs';
 
+/**
+ * @deprecated use {@link TuiActiveZone} instead
+ */
 @Directive({
     standalone: true,
     selector: '[tuiClickOutside]',

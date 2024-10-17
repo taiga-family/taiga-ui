@@ -1,0 +1,42 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show
+</button>
+<ng-template
+    let-observer
+    [tuiResponsiveDialogOptions]="options"
+    [(tuiResponsiveDialog)]="open"
+>
+    This dialog would show up as regular
+    <a
+        tuiLink
+        [routerLink]="routes.Dialog"
+    >
+        Dialog
+    </a>
+    on desktop and as a
+    <code>SheetDialog</code>
+    on a mobile device.
+    <footer class="footer">
+        <button
+            size="m"
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            This is really cool
+        </button>
+        <button
+            appearance="secondary"
+            size="m"
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Glad to know that
+        </button>
+    </footer>
+</ng-template>

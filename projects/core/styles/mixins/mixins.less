@@ -132,9 +132,11 @@
 
 // prevent scrolling to focused element on IOS
 .tui-prevent-ios-scroll() {
-    &:focus {
-        animation: tuiPreventIOSScroll 0.001s;
-    }
+    .ios-only({
+        &:focus {
+            animation: tuiPreventIOSScroll 0.001s;
+        }
+    });
 
     @keyframes tuiPreventIOSScroll {
         0% {
