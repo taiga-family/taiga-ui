@@ -1,4 +1,5 @@
-import {type FactoryProvider, inject, type Type} from '@angular/core';
+import type {FactoryProvider, Type} from '@angular/core';
+import {inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
