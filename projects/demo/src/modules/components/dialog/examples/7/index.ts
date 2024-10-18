@@ -1,8 +1,7 @@
-import {Component, inject, INJECTOR} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {TuiButton, tuiDialog} from '@taiga-ui/core';
 
 import {SearchDialogExample} from './search-example/search-dialog-example.component';
 
@@ -14,16 +13,13 @@ import {SearchDialogExample} from './search-example/search-dialog-example.compon
     changeDetection,
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
-    private readonly injector = inject(INJECTOR);
+    private readonly dialog = tuiDialog(SearchDialogExample, {
+        size: 'page',
+        closeable: true,
+        dismissible: true,
+    });
 
     protected showDialog(): void {
-        this.dialogs
-            .open(new PolymorpheusComponent(SearchDialogExample, this.injector), {
-                size: 'page',
-                closeable: true,
-                dismissible: true,
-            })
-            .subscribe();
+        this.dialog().subscribe();
     }
 }
