@@ -1,6 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,

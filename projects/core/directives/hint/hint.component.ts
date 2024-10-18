@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -69,6 +69,7 @@ export class TuiHintComponent<C = any> {
         inject(TUI_ANIMATIONS_SPEED),
         'cubic-bezier(0.35, 1.3, 0.25, 1)',
     );
+
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
     protected readonly hint = injectContext<TuiContext<TuiHintDirective<C>>>().$implicit;
