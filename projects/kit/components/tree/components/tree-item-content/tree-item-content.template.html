@@ -9,5 +9,7 @@
     [iconStart]="icons.more"
     [style.border-radius.%]="100"
     (click)="onClick()"
-></button>
+>
+    {{ more() }}
+</button>
 <ng-container [ngTemplateOutlet]="context.template" />

@@ -18,6 +18,7 @@ export const TUI_JAPAN_LANGUAGE_CORE: TuiLanguageCore = {
         '12月',
     ],
     close: '近い',
+    clear: 'フィールドをクリアする',
     nothingFoundMessage: '何も見つかりません',
     defaultErrorMessage: '値が無効です',
     spinTexts: ['前の', '次'],
