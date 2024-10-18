@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputTimeDirective} from '../input-time.directive';
+import {TuiInputTimeDirective} from '../input-time.directive';
 
 @Component({
     standalone: false,
@@ -32,7 +31,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     },
 })
 export class TuiNativeTimeComponent {
-    protected readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
+    protected readonly host = inject(TuiInputTimeDirective);
 
     protected readonly autoId = tuiInjectId();
 
