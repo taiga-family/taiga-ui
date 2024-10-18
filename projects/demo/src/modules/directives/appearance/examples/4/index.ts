@@ -19,7 +19,7 @@ export default class Example {
         Flat: ['flat', 'flat-destructive', 'flat-grayscale'],
         Outline: ['outline', 'outline-destructive', 'outline-grayscale'],
         Action: ['action', 'action-destructive', 'action-grayscale'],
-        Status: ['neutral', 'error', 'success', 'warning', 'info'],
+        Status: ['neutral', 'negative', 'positive', 'warning', 'info'],
         Others: ['icon', 'floating', 'textfield', 'glass', 'accent'],
     };
 

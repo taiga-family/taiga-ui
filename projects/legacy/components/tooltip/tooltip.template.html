@@ -1,9 +1,10 @@
 <span
     #driver="tuiHintHover"
+    appearance="icon"
     automation-id="tui-tooltip__icon"
-    tuiAppearance="icon"
+    tuiWrapper
     class="t-tooltip-icon"
-    [tuiAppearanceState]="(driver | async) ? 'hover' : null"
+    [hover]="(driver | async) || null"
     [tuiHint]="content"
     [tuiHintAppearance]="computedAppearance"
     [tuiHintContext]="context"

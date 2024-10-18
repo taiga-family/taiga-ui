@@ -8,7 +8,7 @@ import {tuiAlertOptionsProvider} from '@taiga-ui/core';
   providers: [
     tuiAlertOptionsProvider({
       label: ({status}: any) => status[0].toUpperCase() + status.slice(1),
-      appearance: 'error',
+      appearance: 'negative',
       autoClose: 7000,
     }),
   ],
