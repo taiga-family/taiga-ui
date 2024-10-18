@@ -179,7 +179,7 @@ export const pages: DocRoutePages = [
                 name: 'tui-avatar',
             },
             {
-                name: 'tui-avatar-labeled',
+                name: 'tui-avatar-labelled',
             },
             {
                 name: 'tui-avatar-stack',
