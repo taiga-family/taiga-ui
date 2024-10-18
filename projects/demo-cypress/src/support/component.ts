@@ -21,9 +21,11 @@ export const stableMount: typeof mount = (component, config) =>
         cy
             .get('body')
             .find('[data-cy-root]')
-            .then(async () =>
-                mountResponse.fixture.whenStable().then(() => mountResponse),
-            ),
+            .then(async () => {
+                cy.document().its('fonts.status').should('equal', 'loaded');
+
+                return mountResponse.fixture.whenStable().then(() => mountResponse);
+            }),
     );
 
 Cypress.Commands.add('mount', stableMount);
