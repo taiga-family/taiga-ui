@@ -234,9 +234,9 @@ export const tuiScaleIn = trigger('tuiScaleIn', [
         ':enter',
         [
             style({transform: 'scale({{start}})'}),
-            animate(TRANSITION, style({transform: 'scale({{end}})'})),
+            animate('{{duration}}ms {{easing}}', style({transform: 'scale({{end}})'})),
         ],
-        {params: {end: 1, start: 0, duration: 300}},
+        {params: {end: 1, start: 0, duration: 300, easing: 'ease-in-out'}},
     ),
     transition(
         ':leave',

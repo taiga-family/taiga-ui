@@ -8,7 +8,10 @@ export abstract class TuiAccessor {
 }
 
 export abstract class TuiPositionAccessor extends TuiAccessor {
-    public abstract getPosition(rect: DOMRect): TuiPoint;
+    /*
+     * TODO @deprecated switching from DOMRect to HTMLElement in v5
+     */
+    public abstract getPosition(rect: DOMRect, element?: HTMLElement): TuiPoint;
 }
 
 export abstract class TuiRectAccessor extends TuiAccessor {

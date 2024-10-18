@@ -54,7 +54,7 @@ class TuiTooltipStyles {}
         TuiWithAppearance,
         {
             directive: TuiHintDescribe,
-            inputs: ['tuiHintDescribe'],
+            inputs: ['tuiHintDescribe: tuiTooltipDescribe'],
         },
         {
             directive: TuiHintDirective,
