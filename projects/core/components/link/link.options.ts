@@ -7,7 +7,7 @@ export interface TuiLinkOptions extends TuiAppearanceOptions {
 }
 
 export const TUI_LINK_DEFAULT_OPTIONS: TuiLinkOptions = {
-    appearance: 'link',
+    appearance: 'action',
     pseudo: false,
 };
 

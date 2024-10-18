@@ -58,10 +58,10 @@ export default class Example {
     private readonly notification = this.alerts
         .open(new PolymorpheusComponent(AlertExampleWithCustomLabel), {
             label: ({appearance}) =>
-                appearance === 'error'
+                appearance === 'negative'
                     ? 'Error label from function'
                     : 'Info label from function',
-            appearance: 'error',
+            appearance: 'negative',
             autoClose: 0,
         })
         .pipe(takeUntil(this.router.events));

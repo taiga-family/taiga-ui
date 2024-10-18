@@ -26,7 +26,6 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     host: {
         '[style.width.px]': 'width',
         '[class._sticky]': 'sticky',
-        '[attr.requiredSort]': 'requiredSort',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {

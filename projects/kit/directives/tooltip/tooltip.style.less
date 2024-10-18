@@ -4,3 +4,9 @@
     cursor: pointer;
     pointer-events: auto;
 }
+
+@media (hover: hover) {
+    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after {
+        color: var(--tui-text-secondary);
+    }
+}

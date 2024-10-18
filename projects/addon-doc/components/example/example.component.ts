@@ -146,7 +146,7 @@ export class TuiDocExample {
     protected copyExampleLink(target: EventTarget | null): void {
         this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
         this.alerts
-            .open(this.texts[1], {label: this.texts[2], appearance: 'success'})
+            .open(this.texts[1], {label: this.texts[2], appearance: 'positive'})
             .subscribe();
     }
 

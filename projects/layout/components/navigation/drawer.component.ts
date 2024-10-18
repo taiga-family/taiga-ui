@@ -43,6 +43,8 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     host: {
         tuiTheme: 'dark',
         '[@tuiSlideInLeft]': 'animation',
+        '[style.top.px]':
+            'directive.el.offsetParent?.offsetTop + directive.el.offsetParent?.offsetHeight',
     },
 })
 class TuiDrawerComponent {
@@ -56,7 +58,7 @@ class TuiDrawerComponent {
     template: '<ng-template><ng-content /></ng-template>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider({appearance: 'secondary'}),
+        tuiButtonOptionsProvider({appearance: 'secondary-grayscale'}),
         {
             provide: TUI_ICON_END,
             useFactory: () => inject(TUI_LAYOUT_ICONS).grid,
