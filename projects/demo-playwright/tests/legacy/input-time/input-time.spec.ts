@@ -52,9 +52,16 @@ test.describe('InputTime', () => {
             inputTime = new TuiInputTimePO(apiPageExample.locator('tui-input-time'));
         });
 
-        ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'].forEach((mode) => {
+        [
+            'HH:MM',
+            'HH:MM AA',
+            'HH:MM:SS',
+            'HH:MM:SS AA',
+            'HH:MM:SS.MSS',
+            'HH:MM:SS.MSS AA',
+        ].forEach((mode) => {
             test(`the input is configured for ${mode} mode`, async ({page}) => {
-                await tuiGoto(page, `components/input-time/API?mode=${mode}`, {
+                await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=${mode}`, {
                     date: MOCK_DATE,
                 });
 
@@ -82,7 +89,7 @@ test.describe('InputTime', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    'components/input-time/API?disabledItemHandler$=1&items$=1',
+                    `${DemoRoute.InputTime}/API?disabledItemHandler$=1&items$=1`,
                     {
                         date: MOCK_DATE,
                     },
@@ -100,7 +107,7 @@ test.describe('InputTime', () => {
                 test(`the dropdown is configured for ${size} size`, async ({page}) => {
                     await tuiGoto(
                         page,
-                        `components/input-time/API?items$=1&itemSize=${size}`,
+                        `${DemoRoute.InputTime}/API?items$=1&itemSize=${size}`,
                         {
                             date: MOCK_DATE,
                         },
@@ -130,61 +137,125 @@ test.describe('InputTime', () => {
         });
 
         test.describe('Basic typing from keyboard', () => {
-            test.beforeEach(async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
-                await inputTime.textfield.clear();
+            test.describe('HH:MM', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
+                    await inputTime.textfield.clear();
 
-                await expect(inputTime.textfield).toHaveValue('');
+                    await expect(inputTime.textfield).toHaveValue('');
+                });
+
+                test('3 => 03', async () => {
+                    await inputTime.textfield.pressSequentially('3');
+
+                    await expect(inputTime.textfield).toHaveValue('03');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        2,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 2);
+                });
+
+                test('1111 => 11:11', async () => {
+                    await inputTime.textfield.pressSequentially('1111');
+
+                    await expect(inputTime.textfield).toHaveValue('11:11');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '11:11'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '11:11'.length,
+                    );
+                });
+
+                test('0130 => 01:30', async () => {
+                    await inputTime.textfield.pressSequentially('0130');
+
+                    await expect(inputTime.textfield).toHaveValue('01:30');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '01:30'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '01:30'.length,
+                    );
+                });
+
+                test('99 => 09:09', async () => {
+                    await inputTime.textfield.pressSequentially('99');
+
+                    await expect(inputTime.textfield).toHaveValue('09:09');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '09:09'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '09:09'.length,
+                    );
+                });
             });
 
-            test('3 => 03', async () => {
-                await inputTime.textfield.pressSequentially('3');
+            test.describe('HH:MM AA', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM%20AA`);
+                    await inputTime.textfield.clear();
 
-                await expect(inputTime.textfield).toHaveValue('03');
-                await expect(inputTime.textfield).toHaveJSProperty('selectionStart', 2);
-                await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 2);
-            });
+                    await expect(inputTime.textfield).toHaveValue('');
+                });
 
-            test('1111 => 11:11', async () => {
-                await inputTime.textfield.pressSequentially('1111');
+                test('2 => 02', async () => {
+                    await inputTime.textfield.pressSequentially('2');
 
-                await expect(inputTime.textfield).toHaveValue('11:11');
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionStart',
-                    '11:11'.length,
-                );
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionEnd',
-                    '11:11'.length,
-                );
-            });
+                    await expect(inputTime.textfield).toHaveValue('02');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        2,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 2);
+                });
 
-            test('0130 => 01:30', async () => {
-                await inputTime.textfield.pressSequentially('0130');
+                test('333a => 03:33 AM', async () => {
+                    await inputTime.textfield.pressSequentially('333a');
 
-                await expect(inputTime.textfield).toHaveValue('01:30');
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionStart',
-                    '01:30'.length,
-                );
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionEnd',
-                    '01:30'.length,
-                );
-            });
+                    await expect(inputTime.textfield).toHaveValue('03:33 AM');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '03:33 AM'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '03:33 AM'.length,
+                    );
+                });
 
-            test('99 => 09:09', async () => {
-                await inputTime.textfield.pressSequentially('99');
+                test('00 => 0', async () => {
+                    await inputTime.textfield.pressSequentially('00');
 
-                await expect(inputTime.textfield).toHaveValue('09:09');
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionStart',
-                    '09:09'.length,
-                );
-                await expect(inputTime.textfield).toHaveJSProperty(
-                    'selectionEnd',
-                    '09:09'.length,
-                );
+                    await expect(inputTime.textfield).toHaveValue('0');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty('selectionEnd', 1);
+                });
+
+                test('1234p => 12:34 PM', async () => {
+                    await inputTime.textfield.pressSequentially('1234p');
+
+                    await expect(inputTime.textfield).toHaveValue('12:34 PM');
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        '12:34 PM'.length,
+                    );
+                    await expect(inputTime.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        '12:34 PM'.length,
+                    );
+                });
             });
         });
 
@@ -204,7 +275,7 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, 'components/input-time/API?mode=HH:MM');
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
                 });
 
                 check('1', '01:00');
@@ -215,9 +286,20 @@ test.describe('InputTime', () => {
                 check('12:34', '12:34');
             });
 
+            test.describe('HH:MM AA', () => {
+                test.beforeEach(async ({page}) => {
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM%20AA`);
+                });
+
+                check('0', '12:00 AM');
+                check('01', '01:00 AM');
+                check('012', '01:02 AM');
+                check('0123', '01:23 AM');
+            });
+
             test.describe('HH:MM:SS', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, 'components/input-time/API?mode=HH:MM:SS');
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM:SS`);
                 });
 
                 check('1', '01:00:00');
@@ -233,7 +315,7 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM:SS.MSS', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, 'components/input-time/API?mode=HH:MM:SS.MSS');
+                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM:SS.MSS`);
                 });
 
                 check('1', '01:00:00.000');

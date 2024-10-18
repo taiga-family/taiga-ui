@@ -8,13 +8,16 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly itemSize: TuiSizeL | TuiSizeS;
+    // TODO(v5): timeSegmentMaxValues: Partial<MaskitoTimeSegments<number>>
     readonly maxValues: Record<TuiTimeFormatParts, number>;
     readonly mode: TuiTimeMode;
     readonly nativePicker?: boolean;
 }
 
+// TODO(v5): delete it
 export type TuiTimeFormatParts = 'HH' | 'MM' | 'MS' | 'SS';
 
+// TODO(v5): delete it
 export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     HH: 23,
     MM: 59,
@@ -25,7 +28,7 @@ export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: () => '@tui.clock',
     mode: 'HH:MM',
-    maxValues: MAX_TIME_VALUES,
+    maxValues: MAX_TIME_VALUES, // TODO(v5): use empty object
     itemSize: 'm',
     nativePicker: false,
 };
