@@ -10,11 +10,10 @@ import type {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiTimeLike, TuiTimeMode} from '@taiga-ui/cdk/date-time';
+import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
@@ -182,7 +181,7 @@ export class TuiInputTimeComponent
     }
 
     protected get maskOptions(): MaskitoOptions {
-        return this.calculateMask(this.mode);
+        return this.calculateMask(this.mode, this.readOnly);
     }
 
     protected get computedSearch(): string {
@@ -232,22 +231,6 @@ export class TuiInputTimeComponent
             });
     }
 
-    protected onArrowUp(event: Event): void {
-        if (this.items.length) {
-            return;
-        }
-
-        this.processArrow(event, 1);
-    }
-
-    protected onArrowDown(event: Event): void {
-        if (this.items.length) {
-            return;
-        }
-
-        this.processArrow(event, -1);
-    }
-
     protected onOpen(open: boolean): void {
         this.open = open;
     }
@@ -257,11 +240,12 @@ export class TuiInputTimeComponent
     }
 
     @tuiPure
-    private calculateMask(mode: TuiTimeMode): MaskitoOptions {
+    private calculateMask(mode: TuiTimeMode, readOnly: boolean): MaskitoOptions {
         const {HH, MM, SS, MS} = this.options.maxValues;
 
         return maskitoTimeOptionsGenerator({
             mode,
+            step: readOnly ? 0 : 1,
             timeSegmentMaxValues: {
                 hours: HH,
                 minutes: MM,
@@ -296,49 +280,6 @@ export class TuiInputTimeComponent
 
     private close(): void {
         this.open = false;
-    }
-
-    private processArrow(event: Event, shift: -1 | 1): void {
-        const {target} = event;
-
-        if (this.readOnly || !tuiIsElement(target) || !tuiIsInput(target)) {
-            return;
-        }
-
-        const selectionStart = target.selectionStart || 0;
-
-        this.shiftTime(this.calculateShift(selectionStart, shift));
-
-        target.setSelectionRange(selectionStart, selectionStart);
-        event.preventDefault();
-    }
-
-    private calculateShift(selectionStart: number, shift: number): TuiTimeLike {
-        if (selectionStart <= 2) {
-            return {hours: shift};
-        }
-
-        if (selectionStart <= 5) {
-            return {minutes: shift};
-        }
-
-        if (selectionStart <= 8) {
-            return {seconds: shift};
-        }
-
-        return {ms: shift};
-    }
-
-    private shiftTime(shift: TuiTimeLike): void {
-        if (this.value === null) {
-            return;
-        }
-
-        const increasedTime = this.value.shift(shift);
-
-        // Manual update so we can set caret position properly
-        this.nativeValue = increasedTime.toString(this.mode);
-        this.value = increasedTime;
     }
 
     private focusInput(preventScroll = false): void {
