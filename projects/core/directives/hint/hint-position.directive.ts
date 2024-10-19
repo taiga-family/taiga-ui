@@ -22,7 +22,7 @@ const LEFT = 1;
     standalone: true,
 })
 export class TuiHintPosition extends TuiPositionAccessor {
-    private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 4;
+    private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor),
