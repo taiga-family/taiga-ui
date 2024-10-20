@@ -35,9 +35,9 @@ export class TuiHintHover extends TuiDriver {
     private readonly stream$ = merge(
         this.toggle$.pipe(
             switchMap((visible) =>
-                of(visible).pipe(
-                    delay(visible || this.isMobile ? 0 : this.tuiHintHideDelay),
-                ),
+                this.isMobile
+                    ? of(visible)
+                    : of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
             ),
             takeUntil(this.hovered$),
             repeat(),
