@@ -1,6 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
-import {TUI_TEXTFIELD_HOST, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
+import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import {TuiInputDateDirective} from '../input-date.directive';
 
@@ -21,7 +21,7 @@ import {TuiInputDateDirective} from '../input-date.directive';
     },
 })
 export class TuiNativeDateDirective {
-    protected readonly host = inject<TuiInputDateDirective>(TUI_TEXTFIELD_HOST);
+    protected readonly host = inject(TuiInputDateDirective);
 
     protected get value(): string {
         return this.host.value.length === DATE_FILLER_LENGTH
