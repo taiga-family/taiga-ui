@@ -12,6 +12,7 @@ test.describe('Demo', () => {
 
             await tuiMockImages(page);
             await tuiGoto(page, path);
+            await documentation.waitTuiIcons();
             await documentation.waitStableState();
 
             await expect(async () => {
@@ -34,7 +35,7 @@ test.describe('Demo', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
-                await page.waitForTimeout(100);
+                await page.waitForTimeout(150);
 
                 await expect(example).toHaveScreenshot([
                     path.replace('/', '').replaceAll('/', '-'),

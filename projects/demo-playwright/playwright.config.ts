@@ -46,6 +46,13 @@ export default defineConfig({
                 viewport: DEFAULT_VIEWPORT,
             },
         },
+        {
+            name: 'webkit',
+            use: {
+                ...devices['Desktop Safari'],
+                viewport: DEFAULT_VIEWPORT,
+            },
+        },
     ],
     expect: {
         toHaveScreenshot: {
