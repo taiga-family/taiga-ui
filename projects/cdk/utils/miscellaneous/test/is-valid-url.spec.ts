@@ -11,6 +11,7 @@ describe('tuiIsValidUrl', () => {
         expect(tuiIsValidUrl('127.0.0.1:8080')).toBe(true);
         expect(tuiIsValidUrl('localhost:3333')).toBe(true);
         expect(tuiIsValidUrl('ftp://ftp.example:21/')).toBe(true);
+        expect(tuiIsValidUrl('https://domain.com/path:some:schema:data:test')).toBe(true);
 
         expect(
             tuiIsValidUrl(
