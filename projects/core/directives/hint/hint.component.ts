@@ -50,7 +50,7 @@ export const TUI_HINT_PROVIDERS = [
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn, tuiScaleIn],
     host: {
-        '[@tuiScaleIn]': 'isMobile ? options : null',
+        '[@tuiScaleIn]': 'isMobile ? options : desktop',
         '[@tuiFadeIn]': 'options',
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
@@ -65,6 +65,7 @@ export class TuiHintComponent<C = any> {
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
 
+    protected readonly desktop = {value: '', params: {end: 1, start: 1}};
     protected readonly options = tuiToAnimationOptions(
         inject(TUI_ANIMATIONS_SPEED),
         'cubic-bezier(0.35, 1.3, 0.25, 1)',

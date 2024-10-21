@@ -63,13 +63,14 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
-        '(mousedown)': 'stopOnMobile($event)',
+        '(mousedown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly describe = inject(TuiHintDescribe);
+    private readonly driver = inject(TuiHintHover);
 
     protected readonly nothing = tuiWithStyles(TuiTooltipStyles);
     protected readonly state: Signal<unknown> = tuiAppearanceState(
@@ -88,10 +89,12 @@ export class TuiTooltip implements DoCheck {
         }
     }
 
-    protected stopOnMobile(event: MouseEvent): void {
+    protected onClick(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            this.driver.toggle();
         }
     }
 }

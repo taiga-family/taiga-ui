@@ -1,6 +1,12 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    ViewChild,
+} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiTooltip}
@@ -21,6 +27,9 @@ import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
 
+    @ViewChild(TuiHintHover)
+    protected readonly driver$?: TuiHintHover;
+
     @Input()
     public describeId = '';
 
@@ -35,6 +44,8 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            this.driver$?.toggle();
         }
     }
 }
