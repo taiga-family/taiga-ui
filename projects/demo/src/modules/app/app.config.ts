@@ -1,6 +1,8 @@
 import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {HttpClient, provideHttpClient} from '@angular/common/http';
 import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -23,7 +25,12 @@ import {
     tuiDocExampleOptionsProvider,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TUI_IS_PLAYWRIGHT, TUI_PLATFORM} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_IS_E2E,
+    TUI_IS_PLAYWRIGHT,
+    TUI_PLATFORM,
+} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
@@ -35,12 +42,14 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {catchError, map, of} from 'rxjs';
 
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
+import {SEARCH_CONFIG} from './search/env';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
 
@@ -56,6 +65,7 @@ export const config: ApplicationConfig = {
         ),
         NG_EVENT_PLUGINS,
         tuiNotificationOptionsProvider({size: 'm'}),
+        provideHttpClient(),
         {
             provide: TUI_PLATFORM,
             useValue: 'web',
@@ -138,7 +148,23 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_SEARCH_ENABLED,
-            useValue: false,
+            deps: [HttpClient, SEARCH_CONFIG],
+            useFactory: (
+                client: HttpClient,
+                {appId, apiKey}: {appId: string; apiKey: string},
+            ) =>
+                toSignal(
+                    client
+                        .post(
+                            `https://${appId}-dsn.algolia.net/1/indexes/*/queries?&x-algolia-api-key=${apiKey}&x-algolia-application-id=${appId.toUpperCase()}`,
+                            {requests: []},
+                        )
+                        .pipe(
+                            map(TUI_FALSE_HANDLER),
+                            catchError(() => of(true)),
+                        ),
+                    {initialValue: false},
+                ),
         },
         {
             provide: TUI_DOC_CODE_EDITOR,

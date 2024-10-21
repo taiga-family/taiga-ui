@@ -1,3 +1,4 @@
+import {signal} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
@@ -57,4 +58,4 @@ export const TUI_DOC_MENU_TEXT = tuiCreateToken('Menu');
 export const TUI_DOC_SEARCH_TEXT = tuiCreateToken('Search');
 export const TUI_DOC_SEE_ALSO_TEXT = tuiCreateToken('See also');
 export const TUI_DOC_SOURCE_CODE_TEXT = tuiCreateToken('Source code');
-export const TUI_DOC_SEARCH_ENABLED = tuiCreateToken(true);
+export const TUI_DOC_SEARCH_ENABLED = tuiCreateToken(signal(true));

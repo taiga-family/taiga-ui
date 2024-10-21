@@ -1,5 +1,5 @@
 <tui-textfield
-    *ngIf="searchEnabled"
+    *ngIf="searchEnabled()"
     tuiTextfieldSize="m"
     class="t-input"
     [iconStart]="docIcons.search"
@@ -68,7 +68,7 @@
 <nav class="t-navigation">
     <tui-scrollbar class="t-scrollbar">
         <tui-accordion
-            [class.t-accordion-standalone]="!searchEnabled"
+            [class.t-accordion-standalone]="!searchEnabled()"
             [closeOthers]="false"
             [rounded]="false"
         >
