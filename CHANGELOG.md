@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.96.0](https://github.com/taiga-family/taiga-ui/compare/v3.95.2...v3.96.0) (2024-10-21)
+
+### Features
+
+- **addon-table:** add requiredSort option to table ([#9487](https://github.com/taiga-family/taiga-ui/issues/9487))
+  ([f2929c5](https://github.com/taiga-family/taiga-ui/commit/f2929c5a5ffe488a8df80c6322831eae07919016))
+
+### Bug Fixes
+
+- **addon-mobile:** `InputDateRange` + `MobileCalendar` throw error on single date selection
+  ([#9502](https://github.com/taiga-family/taiga-ui/issues/9502))
+  ([086bda4](https://github.com/taiga-family/taiga-ui/commit/086bda4d2b0b299319293e5d47466dabdcdd466d))
+- **kit:** `CheckboxLabeled`/`RadioLabeled` fix changing in readonly mode
+  ([bd6d1e2](https://github.com/taiga-family/taiga-ui/commit/bd6d1e2a67e2faf87a928342190152aa4a954ded))
+
 ### [3.95.2](https://github.com/taiga-family/taiga-ui/compare/v3.95.1...v3.95.2) (2024-10-08)
 
 ### Bug Fixes
