@@ -6,6 +6,8 @@ on:
 jobs:
   purge-cache:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4.2.1
       - uses: taiga-family/ci/actions/setup/variables@v1.93.4
