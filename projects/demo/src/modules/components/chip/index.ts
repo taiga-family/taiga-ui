@@ -15,5 +15,6 @@ export default class Example {
         'Sizes and content',
         'Interactive',
         'Use cases',
+        'Chat messages',
     ];
 }
