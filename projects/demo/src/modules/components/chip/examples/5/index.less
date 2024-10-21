@@ -1,0 +1,34 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+tui-chip {
+    block-size: auto;
+    max-inline-size: calc(100% - 2rem);
+}
+
+.container {
+    display: flex;
+    inline-size: 100%;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.fade {
+    max-inline-size: 11rem;
+}
+
+.multiline {
+    white-space: initial;
+}
