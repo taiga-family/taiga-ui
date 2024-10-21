@@ -1,5 +1,5 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {signal} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * TODO: think about reorganization in @taiga-ui/i18n way
