@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.12.0](https://github.com/taiga-family/taiga-ui/compare/v4.11.0...v4.12.0) (2024-10-21)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` safari autofill focus
+  ([23e32c4](https://github.com/taiga-family/taiga-ui/commit/23e32c48501e5bcdea8c34168728746804d39754))
+- **addon-commerce:** `InputCardGroup` safari autofill focus
+  ([#9520](https://github.com/taiga-family/taiga-ui/issues/9520))
+  ([7858373](https://github.com/taiga-family/taiga-ui/commit/78583732bc2c7a6fe3965ec9d0a51b677a31b634))
+- **cdk:** `Control` fix initial status ([#9539](https://github.com/taiga-family/taiga-ui/issues/9539))
+  ([cb5f29a](https://github.com/taiga-family/taiga-ui/commit/cb5f29af07040183809755769450519008e567ae))
+- **cdk:** support `:` inside path segment in url ([#9549](https://github.com/taiga-family/taiga-ui/issues/9549))
+  ([8317b67](https://github.com/taiga-family/taiga-ui/commit/8317b67ea8e5fc89b4326f4e85661fbaec6c5ae1))
+- **core:** fix `floating` appearance not reacting to the theme
+  ([#9504](https://github.com/taiga-family/taiga-ui/issues/9504))
+  ([847305a](https://github.com/taiga-family/taiga-ui/commit/847305aad700ac0a4691faf52a48245bc90b96fd))
+- **kit:** `Skeleton` fix for `ProgressCircle` ([#9507](https://github.com/taiga-family/taiga-ui/issues/9507))
+  ([2598626](https://github.com/taiga-family/taiga-ui/commit/25986264429ef19da78946823cc062b86f5e77df))
+- **legacy:** `InputNumber` fix hydration ([#9434](https://github.com/taiga-family/taiga-ui/issues/9434))
+  ([e0aac04](https://github.com/taiga-family/taiga-ui/commit/e0aac049cbbb931e60278c21c168cbf1e51693a7))
+- **legacy:** `InputTime` has broken support of native date picker
+  ([#9540](https://github.com/taiga-family/taiga-ui/issues/9540))
+  ([049b289](https://github.com/taiga-family/taiga-ui/commit/049b2898f68dbf34b00aac63ec75ad57dc06b3b6))
+
+### 🚀 Features
+
+- **addon-doc:** improve active zone for copy button ([#9510](https://github.com/taiga-family/taiga-ui/issues/9510))
+  ([424496b](https://github.com/taiga-family/taiga-ui/commit/424496b4a489c7db5a5bc274fc3f5e38ec47f087))
+- **addon-mobile:** `ResponsiveDialog` add new service and refactor `SheetDialog` to new spec
+  ([#9459](https://github.com/taiga-family/taiga-ui/issues/9459))
+  ([10198a1](https://github.com/taiga-family/taiga-ui/commit/10198a1e32c14576d03fdcb8cfe2753e8136096a))
+- **core:** `Hint` add mobile behavior ([#9547](https://github.com/taiga-family/taiga-ui/issues/9547))
+  ([e650f38](https://github.com/taiga-family/taiga-ui/commit/e650f3856b62eb4b026c0f635f565134cadf3f08))
+- **core:** add `tuiDialog` typed factory util ([#9446](https://github.com/taiga-family/taiga-ui/issues/9446))
+  ([f507d2e](https://github.com/taiga-family/taiga-ui/commit/f507d2e7116ed67ac0485bdd477e8dfe559fa384))
+- **core:** add new appearances ([#9526](https://github.com/taiga-family/taiga-ui/issues/9526))
+  ([c3cd8f2](https://github.com/taiga-family/taiga-ui/commit/c3cd8f260d1be566ac7822a9c8a7000432ba71f3))
+- **core:** improve `a11y` for textfield ([#9449](https://github.com/taiga-family/taiga-ui/issues/9449))
+  ([19fbbe6](https://github.com/taiga-family/taiga-ui/commit/19fbbe646688671c4c0a232cf5d9c7d9bb5b12a2))
+
 ## [4.11.0](https://github.com/taiga-family/taiga-ui/compare/v4.8.1...v4.11.0) (2024-10-14)
 
 ### 🐞 Bug Fixes
