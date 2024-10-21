@@ -1,5 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
@@ -25,6 +26,7 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
     exportAs: 'tuiHintHover',
 })
 export class TuiHintHover extends TuiDriver {
+    private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_HINT_OPTIONS);
@@ -33,16 +35,20 @@ export class TuiHintHover extends TuiDriver {
     private readonly stream$ = merge(
         this.toggle$.pipe(
             switchMap((visible) =>
-                of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
+                this.isMobile
+                    ? of(visible)
+                    : of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
             ),
             takeUntil(this.hovered$),
             repeat(),
         ),
         this.hovered$.pipe(
             switchMap((visible) =>
-                of(visible).pipe(
-                    delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
-                ),
+                this.isMobile
+                    ? of(visible)
+                    : of(visible).pipe(
+                          delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                      ),
             ),
             takeUntil(this.toggle$),
             repeat(),

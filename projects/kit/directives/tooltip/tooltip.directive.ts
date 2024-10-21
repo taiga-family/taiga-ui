@@ -54,7 +54,7 @@ class TuiTooltipStyles {}
         TuiWithAppearance,
         {
             directive: TuiHintDescribe,
-            inputs: ['tuiHintDescribe'],
+            inputs: ['tuiHintDescribe: tuiTooltipDescribe'],
         },
         {
             directive: TuiHintDirective,
@@ -63,7 +63,7 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
-        '(mousedown)': 'stopOnMobile($event)',
+        '(mousedown)': 'onClick($event)',
     },
 })
 export class TuiTooltip implements DoCheck {
@@ -89,12 +89,12 @@ export class TuiTooltip implements DoCheck {
         }
     }
 
-    protected stopOnMobile(event: MouseEvent): void {
+    protected onClick(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            this.driver.toggle();
         }
-
-        this.driver.toggle();
     }
 }

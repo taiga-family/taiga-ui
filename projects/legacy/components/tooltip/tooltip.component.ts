@@ -44,8 +44,8 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            this.driver$?.toggle();
         }
-
-        this.driver$?.toggle();
     }
 }
