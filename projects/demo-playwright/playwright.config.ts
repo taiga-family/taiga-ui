@@ -40,6 +40,22 @@ export default defineConfig({
                 viewport: DEFAULT_VIEWPORT,
             },
         },
+        {
+            name: 'webkit',
+            use: {
+                ...devices['Desktop Safari'],
+                viewport: DEFAULT_VIEWPORT,
+            },
+            timeout: 5 * 60 * 1000,
+            expect: {
+                toHaveScreenshot: {
+                    maxDiffPixelRatio: 0.1,
+                },
+                toMatchSnapshot: {
+                    maxDiffPixelRatio: 0.1,
+                },
+            },
+        },
     ],
     expect: {
         toHaveScreenshot: {

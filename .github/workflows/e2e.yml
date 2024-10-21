@@ -22,6 +22,7 @@ jobs:
         continue-on-error: true
       - uses: taiga-family/ci/actions/setup/node@v1.93.3
 
+      - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
@@ -87,19 +88,60 @@ jobs:
 
   playwright:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    runs-on: ubuntu-latest
     needs: [build-demo]
     strategy:
       fail-fast: false
+      max-parallel: 9
       matrix:
-        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        shardTotal: [9]
-    name: Playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
+        shard: [
+            # Safari
+            {index: 1, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 2, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 3, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 4, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 5, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 6, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 7, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 8, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 9, os: 'macos-latest', project: 'webkit', total: 9},
+            # Chrome
+            {index: 1, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 2, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 3, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 4, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 5, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 6, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 7, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 8, os: 'ubuntu-latest', project: 'chromium', total: 9},
+            {index: 9, os: 'ubuntu-latest', project: 'chromium', total: 9},
+          ]
+    name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
+    runs-on: ${{ matrix.shard.os }}
     steps:
       - uses: actions/checkout@v4.2.1
       - uses: taiga-family/ci/actions/setup/variables@v1.93.3
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/Library/Caches/ms-playwright
+            ~/.cache/ms-playwright
+            **/node_modules/playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
       - uses: taiga-family/ci/actions/setup/node@v1.93.3
-      - uses: taiga-family/ci/actions/setup/playwright@v1.93.3
+
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.1.1
@@ -114,7 +156,11 @@ jobs:
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-playwright -- --update-snapshots --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: |
+          npx nx e2e demo-playwright -- \
+            --update-snapshots \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
       - uses: taiga-family/ci/actions/run/clone@v1.93.3
         with:
@@ -129,7 +175,14 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: npx nx e2e demo-playwright --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+
+      - name: Mac OS X building all dependencies
+        if: ${{ contains( matrix.shard.os, 'macos') }}
+        run: brew install pkg-config cairo pango libpng jpeg giflib librsvg
 
       - name: Combine images to get diff reports
         run: |
@@ -137,17 +190,13 @@ jobs:
           npm view canvas version
           npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
 
-      - name: Debug output
-        continue-on-error: true
-        run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
-
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.4.3
         with:
           path: |
             ./projects/demo-playwright/tests-results/**/*.diff.png
             !./projects/demo-playwright/tests-results/**/*-retry*/*.diff.png
-          name: '${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shardIndex }}'
+          name: '${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.project }}_${{ matrix.shard.index }}'
           if-no-files-found: ignore
           compression-level: 0
           retention-days: 1
@@ -157,8 +206,7 @@ jobs:
   playwright-composite-result:
     name: Playwright E2E Tests matrix result
     if: ${{ always() }}
-    needs:
-      - playwright
+    needs: [playwright]
     runs-on: ubuntu-latest
     steps:
       - run: |
