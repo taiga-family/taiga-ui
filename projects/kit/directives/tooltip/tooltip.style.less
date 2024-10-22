@@ -7,6 +7,12 @@
     pointer-events: auto;
     background-clip: content-box !important;
 
+    [tuiBlock],
+    [tuiCell][data-size='s'],
+    [tuiLabel][data-orientation='horizontal'] {
+        border-width: 0.25rem;
+    }
+
     &::after {
         .center-all();
 
