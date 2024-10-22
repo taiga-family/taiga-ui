@@ -63,6 +63,7 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
+        '(click.prevent)': '0',
         '(mousedown)': 'onClick($event)',
     },
 })
