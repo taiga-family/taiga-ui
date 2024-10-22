@@ -56,20 +56,22 @@
 <ng-container *tuiTextfieldDropdown>
     <tui-textfield
         *ngIf="countrySearch"
+        tuiTextfieldSize="m"
         class="t-search"
         [iconStart]="icons.search"
     >
-        <label tuiLabel>{{ internationalSearchLabel$ | async }}</label>
         <input
-            tuiAutoFocus
             tuiTextfield
+            [focused]="true"
             [ngModel]="search()"
+            [placeholder]="label()"
+            [tuiAutoFocus]="!isIos"
             (keydown.arrowDown)="focusFirstItem()"
             (ngModelChange)="search.set($event)"
         />
     </tui-textfield>
 
-    <tui-data-list>
+    <tui-data-list (keydown)="onKeyDown($event)">
         <button
             *ngFor="let item of filtered()"
             tuiOption
