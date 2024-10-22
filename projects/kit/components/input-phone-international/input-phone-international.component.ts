@@ -23,10 +23,14 @@ import {maskitoRemoveOnBlurPlugin} from '@maskito/kit';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
-import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {
+    TuiAutoFocus,
+    tuiAutoFocusOptionsProvider,
+} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsEditingKey} from '@taiga-ui/core';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -79,6 +83,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     providers: [
         tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
+        tuiAutoFocusOptionsProvider({preventScroll: true}),
         tuiTextfieldOptionsProvider({cleaner: signal(false)}),
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',
@@ -93,6 +98,9 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
+
+    @ViewChild(TuiAutoFocus, {read: ElementRef})
+    private readonly filter?: ElementRef<HTMLInputElement>;
 
     @ViewChildren(TuiOption, {read: ElementRef})
     private readonly listOptions?: QueryList<ElementRef<HTMLButtonElement>>;
@@ -218,6 +226,12 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             : '';
 
         this.onChange(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
+    }
+
+    protected onKeyDown({key}: KeyboardEvent): void {
+        if (tuiIsEditingKey(key)) {
+            this.filter?.nativeElement.focus({preventScroll: true});
+        }
     }
 
     private computeMask(
