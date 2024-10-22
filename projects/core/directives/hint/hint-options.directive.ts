@@ -48,6 +48,7 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     showDelay: 500,
     hideDelay: 200,
     appearance: '',
+    /** TODO @deprecated use {@link TUI_TOOLTIP_OPTIONS} instead **/
     icon: '@tui.circle-help',
 };
 

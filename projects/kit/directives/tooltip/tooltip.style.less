@@ -1,8 +1,24 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 [tuiTooltip] {
-    border-width: 0.25rem;
+    border-width: 0.125rem;
     border-radius: 100%;
     cursor: pointer;
     pointer-events: auto;
+    background-clip: content-box !important;
+
+    [tuiBlock],
+    [tuiCell][data-size='s'],
+    [tuiLabel][data-orientation='horizontal'] {
+        border-width: 0.25rem;
+    }
+
+    &::after {
+        .center-all();
+
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
 }
 
 @media (hover: hover) {

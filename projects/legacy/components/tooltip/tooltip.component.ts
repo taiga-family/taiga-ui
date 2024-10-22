@@ -21,6 +21,7 @@ import {TuiHintHover, TuiHintOptionsDirective} from '@taiga-ui/core/directives/h
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
     host: {
         '[attr.data-appearance]': 'computedAppearance',
+        '(click.prevent)': '0',
         '(mousedown)': 'stopOnMobile($event)',
     },
 })
