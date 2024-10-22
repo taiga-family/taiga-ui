@@ -12,7 +12,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
-    TUI_APPEARANCE_OPTIONS,
+    tuiAppearanceOptionsProvider,
     tuiAppearanceState,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
@@ -24,6 +24,8 @@ import {
 } from '@taiga-ui/core/directives/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {map} from 'rxjs';
+
+import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 @Component({
     standalone: true,
@@ -41,13 +43,11 @@ class TuiTooltipStyles {}
     standalone: true,
     selector: 'tui-icon[tuiTooltip]',
     providers: [
-        {
-            provide: TUI_APPEARANCE_OPTIONS,
-            useValue: {appearance: 'icon'},
-        },
+        tuiAppearanceOptionsProvider(TUI_TOOLTIP_OPTIONS),
         {
             provide: TUI_ICON_START,
-            useFactory: () => inject(TUI_HINT_OPTIONS).icon,
+            useFactory: () =>
+                inject(TUI_TOOLTIP_OPTIONS).icon || inject(TUI_HINT_OPTIONS).icon,
         },
     ],
     hostDirectives: [
