@@ -30,7 +30,6 @@ import {
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiIsEditingKey} from '@taiga-ui/core';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -49,6 +48,7 @@ import {
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
