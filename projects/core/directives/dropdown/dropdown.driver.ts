@@ -1,11 +1,15 @@
 import {Directive, Injectable} from '@angular/core';
 import type {TuiDriver} from '@taiga-ui/core/classes';
 import {TuiDriverDirective} from '@taiga-ui/core/classes';
-import {Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable()
-export class TuiDropdownDriver extends Subject<boolean> implements TuiDriver {
+export class TuiDropdownDriver extends BehaviorSubject<boolean> implements TuiDriver {
     public readonly type = 'dropdown';
+
+    constructor() {
+        super(false);
+    }
 }
 
 @Directive({
