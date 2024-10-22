@@ -28,6 +28,7 @@ import {YaMetrikaService} from './metrika/metrika.service';
 import {TuiAlgoliaSearch} from './search';
 import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
+import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
@@ -76,6 +77,7 @@ export class App extends AbstractDemo implements OnInit {
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
     protected readonly stars = signal('');
+    protected readonly defaultSearchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
 
     protected readonly isLanding = toSignal(
         this.router.events.pipe(
