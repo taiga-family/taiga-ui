@@ -6,13 +6,6 @@
     <ng-template pageTab>
         A mobile draggable sheet dialog
 
-        <tui-notification
-            *ngIf="!isMobile"
-            class="tui-space_top-4"
-        >
-            This component only works on mobile devices. Enable emulation in DevTools and refresh the page.
-        </tui-notification>
-
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
