@@ -61,11 +61,11 @@
         [iconStart]="icons.search"
     >
         <input
-            tuiAutoFocus
             tuiTextfield
             [focused]="true"
             [ngModel]="search()"
-            [placeholder]="internationalSearchLabel$ | async"
+            [placeholder]="label()"
+            [tuiAutoFocus]="!isIos"
             (keydown.arrowDown)="focusFirstItem()"
             (ngModelChange)="search.set($event)"
         />

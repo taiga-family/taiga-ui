@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -27,7 +27,7 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
@@ -67,7 +67,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     standalone: true,
     selector: 'tui-input-phone-international',
     imports: [
-        AsyncPipe,
         CommonModule,
         FormsModule,
         MaskitoDirective,
@@ -105,6 +104,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChildren(TuiOption, {read: ElementRef})
     private readonly listOptions?: QueryList<ElementRef<HTMLButtonElement>>;
 
+    protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly dropdown = tuiDropdown(null);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
@@ -114,7 +114,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly countries = signal(this.options.countries);
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly internationalSearchLabel$ = inject(TUI_INTERNATIONAL_SEARCH);
+    protected readonly label = toSignal(inject(TUI_INTERNATIONAL_SEARCH));
     protected readonly search = signal<string>('');
 
     protected readonly filtered = computed(() =>
