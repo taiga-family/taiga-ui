@@ -17,6 +17,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -28,7 +29,6 @@ import {YaMetrikaService} from './metrika/metrika.service';
 import {TuiAlgoliaSearch} from './search';
 import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
-import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
