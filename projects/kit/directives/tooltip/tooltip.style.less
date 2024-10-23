@@ -22,7 +22,10 @@
 }
 
 @media (hover: hover) {
-    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after {
+    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-textarea:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-primitive-textfield:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-input-tag:hover [tuiTooltip][data-appearance='icon']::after {
         color: var(--tui-text-secondary);
     }
 }
