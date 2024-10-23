@@ -30,7 +30,7 @@ test.describe('InputDate', () => {
             await tuiGoto(page, 'components/input-date/API?items$=1');
 
             await inputDate.textfield.click();
-            await inputDate.clickItemButton();
+            await inputDate.itemButton.click();
 
             await inputDate.textfield.click();
             await calendar.clickOnCalendarDay(1);
