@@ -1,11 +1,8 @@
 import {Locator} from '@playwright/test';
 
-import {TuiCalendarPO} from './calendar.po';
-
 export class TuiInputDatePO {
-    readonly textfield: Locator = this.host.locator(
-        '[automation-id="tui-primitive-textfield__native-input"]',
-    );
+    readonly textfield: Locator = this.host.getByRole('textbox');
+    readonly calendar: Locator = this.host.page().locator('tui-calendar');
 
     constructor(private readonly host: Locator) {}
 
@@ -15,11 +12,5 @@ export class TuiInputDatePO {
             .locator('[automation-id="tui-input-date__button"]');
 
         await itemButton.click();
-    }
-
-    async clickOnCalendarDay(day: number): Promise<void> {
-        const calendar = new TuiCalendarPO(this.host.page().locator('tui-calendar'));
-
-        await calendar.clickOnCalendarDay(day);
     }
 }

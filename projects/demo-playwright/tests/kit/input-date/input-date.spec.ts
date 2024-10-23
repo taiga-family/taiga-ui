@@ -2,13 +2,14 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
-import {TuiInputDatePO} from '../../../utils';
+import {TuiCalendarPO, TuiInputDatePO} from '../../../utils';
 
 test.describe('InputDate', () => {
     test.describe('API', () => {
+        let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
         let inputDate!: TuiInputDatePO;
-        let documentationPage: TuiDocumentationPagePO;
+        let calendar!: TuiCalendarPO;
 
         test.use({
             viewport: {
@@ -22,6 +23,7 @@ test.describe('InputDate', () => {
             example = documentationPage.apiPageExample;
 
             inputDate = new TuiInputDatePO(example.locator('tui-input-date'));
+            calendar = new TuiCalendarPO(inputDate.calendar);
         });
 
         test('Click any day after `Until today` was selected', async ({page}) => {
@@ -31,7 +33,7 @@ test.describe('InputDate', () => {
             await inputDate.clickItemButton();
 
             await inputDate.textfield.click();
-            await inputDate.clickOnCalendarDay(1);
+            await calendar.clickOnCalendarDay(1);
 
             await expect(inputDate.textfield).toHaveScreenshot('01-input-date.png');
         });
