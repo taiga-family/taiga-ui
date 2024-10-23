@@ -6,8 +6,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {tuiIsHTMLElement} from '@taiga-ui/cdk';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSlideInLeft} from '@taiga-ui/core/animations';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
