@@ -9,7 +9,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.93.4
       - run: gh cache delete ${{ env.CACHE_DIST_KEY }}
         continue-on-error: true
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
       - uses: w9jds/firebase-action@v13.23.0
         continue-on-error: true
         with:
