@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TuiTooltip} from '@taiga-ui/kit';
+import {TuiTooltip} from '@taiga-ui/kit/directives/tooltip';
 
 import {TuiTooltipComponent} from './tooltip.component';
 
