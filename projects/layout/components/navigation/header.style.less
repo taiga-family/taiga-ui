@@ -16,26 +16,28 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
 
-    &::before,
     &::after {
         content: '';
         position: absolute;
         top: 100%;
+        left: 0;
+        right: 0;
         z-index: -1;
         block-size: 3rem;
-        inline-size: 3rem;
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
+        border-radius: 1.25rem 1.25rem 0 0;
     }
 
     &::before {
+        content: '';
+        position: fixed;
+        top: inherit;
         left: 0;
-        border-start-start-radius: 1.25rem;
-    }
-
-    &::after {
         right: 0;
-        border-start-end-radius: 1.25rem;
+        z-index: -1;
+        block-size: inherit;
+        background: inherit;
     }
 
     [tuiNavigationLogo] {
