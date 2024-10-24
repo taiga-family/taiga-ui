@@ -15,6 +15,7 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
+            [description]="index === 3 ? 'Example of input-password and input-copy with interactive icons' : ''"
             [heading]="example"
             [id]="example | tuiKebab"
         />
