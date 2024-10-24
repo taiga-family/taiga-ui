@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {
     TuiCalendarPO,
+    TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDatePO,
@@ -57,8 +58,10 @@ test.describe('InputDate', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
+
         let inputDate!: TuiInputDatePO;
         let calendar!: TuiCalendarPO;
+        let calendarSheet!: TuiCalendarSheetPO;
 
         test.use({
             viewport: {
@@ -72,7 +75,9 @@ test.describe('InputDate', () => {
             example = documentationPage.apiPageExample;
 
             inputDate = new TuiInputDatePO(example.locator('tui-input-date'));
+
             calendar = new TuiCalendarPO(inputDate.calendar);
+            calendarSheet = new TuiCalendarSheetPO(inputDate.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -165,13 +170,13 @@ test.describe('InputDate', () => {
         });
 
         test('Click any day after `Until today` was selected', async ({page}) => {
-            await tuiGoto(page, 'components/input-date/API?items$=1');
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
 
             await inputDate.textfield.click();
-            await inputDate.itemButton.click();
+            await calendar.itemButton.click();
 
             await inputDate.textfield.click();
-            await calendar.clickOnCalendarDay(1);
+            await calendarSheet.clickOnDay(1);
 
             await expect(inputDate.textfield).toHaveScreenshot('10-input-date.png');
         });
