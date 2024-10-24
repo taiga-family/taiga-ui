@@ -42,3 +42,13 @@ app {
         display: flex !important;
     }
 }
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+
+    .safari-only({
+        /* stylelint-disable-next-line */
+        font: -apple-system-body;
+    });
+}
