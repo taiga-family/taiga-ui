@@ -72,7 +72,8 @@ export function migrateLabeled({
         );
         recorder.remove(
             templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 0),
-            `<${tagName}/>`.length,
+            (sourceCodeLocation.endTag?.endOffset ?? 0) -
+                (sourceCodeLocation.endTag?.startOffset ?? 0),
         );
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.endTag?.startOffset || 1),
