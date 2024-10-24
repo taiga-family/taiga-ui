@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
     TuiCalendarPO,
-    TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDatePO,
@@ -61,7 +60,6 @@ test.describe('InputDate', () => {
 
         let inputDate!: TuiInputDatePO;
         let calendar!: TuiCalendarPO;
-        let calendarSheet!: TuiCalendarSheetPO;
 
         test.use({
             viewport: {
@@ -77,7 +75,6 @@ test.describe('InputDate', () => {
             inputDate = new TuiInputDatePO(example.locator('tui-input-date'));
 
             calendar = new TuiCalendarPO(inputDate.calendar);
-            calendarSheet = new TuiCalendarSheetPO(inputDate.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -176,7 +173,10 @@ test.describe('InputDate', () => {
             await calendar.itemButton.click();
 
             await inputDate.textfield.click();
-            await calendarSheet.clickOnDay(1);
+
+            const [calendarSheet] = await calendar.getCalendarSheets();
+
+            await calendarSheet?.clickOnDay(1);
 
             await expect(inputDate.textfield).toHaveScreenshot('10-input-date.png');
         });
