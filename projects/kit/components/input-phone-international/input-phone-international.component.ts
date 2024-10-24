@@ -116,6 +116,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly label = toSignal(inject(TUI_INTERNATIONAL_SEARCH));
     protected readonly search = signal<string>('');
+    protected readonly separator = signal(this.options.separator);
 
     protected readonly filtered = computed(() =>
         this.countries()
@@ -128,7 +129,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     );
 
     protected readonly mask = computed(() =>
-        this.computeMask(this.countryIsoCode(), this.metadata()),
+        this.computeMask(this.countryIsoCode(), this.metadata(), this.separator()),
     );
 
     protected readonly $ = tuiDirectiveBinding(
@@ -237,6 +238,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     private computeMask(
         countryIsoCode: TuiCountryIsoCode,
         metadata?: MetadataJson,
+        separator?: string,
     ): MaskitoOptions | null {
         if (!metadata) {
             return null;
@@ -245,6 +247,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         const {plugins, ...restOptions} = maskitoPhoneOptionsGenerator({
             countryIsoCode,
             metadata,
+            separator,
         });
 
         return {
