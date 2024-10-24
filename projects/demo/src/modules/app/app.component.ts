@@ -17,6 +17,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -76,6 +77,7 @@ export class App extends AbstractDemo implements OnInit {
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
     protected readonly stars = signal('');
+    protected readonly defaultSearchEnabled = inject(TUI_DOC_SEARCH_ENABLED);
 
     protected readonly isLanding = toSignal(
         this.router.events.pipe(
