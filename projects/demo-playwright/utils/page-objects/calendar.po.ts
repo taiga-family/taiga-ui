@@ -1,19 +1,20 @@
 import type {Locator} from '@playwright/test';
 
+import {TuiCalendarSheetPO} from './calendar-sheet.po';
+
 export class TuiCalendarPO {
+    public readonly itemButton: Locator = this.host
+        .page()
+        .locator('tui-dropdown tui-calendar ~ * button');
+
     constructor(private readonly host: Locator) {}
 
-    public async getDays(): Promise<Locator[]> {
-        return this.host.locator('[automation-id="tui-primitive-calendar__cell"]').all();
-    }
+    public async getCalendarSheets(): Promise<TuiCalendarSheetPO[]> {
+        const locators = await this.host
+            .page()
+            .locator('tui-calendar-sheet, tui-mobile-calendar-sheet')
+            .all();
 
-    public async clickOnCalendarDay(day: number): Promise<void> {
-        const cells = await this.getDays();
-
-        for (const cell of cells) {
-            if ((await cell.textContent())?.trim() === day.toString()) {
-                return cell.click();
-            }
-        }
+        return locators.map((x) => new TuiCalendarSheetPO(x));
     }
 }
