@@ -21,6 +21,7 @@ export abstract class TuiDriverDirective implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
     private readonly drivers: readonly TuiDriver[] =
         inject<any>(TuiDriver, {self: true, optional: true}) || [];
+
     private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle, {
         self: true,
         optional: true,
