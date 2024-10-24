@@ -1,4 +1,4 @@
-import type {ExistingProvider, OnInit, Type} from '@angular/core';
+import type {AfterViewInit, ExistingProvider, Type} from '@angular/core';
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -15,15 +15,20 @@ export function tuiAsDriver(driver: Type<TuiDriver>): ExistingProvider {
 }
 
 @Directive()
-export abstract class TuiDriverDirective implements OnInit {
+export abstract class TuiDriverDirective implements AfterViewInit {
     public abstract type: string;
 
     private readonly destroyRef = inject(DestroyRef);
-    private readonly drivers: readonly TuiDriver[] = inject<any>(TuiDriver);
-    private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle);
+    private readonly drivers: readonly TuiDriver[] =
+        inject<any>(TuiDriver, {self: true, optional: true}) || [];
 
-    public ngOnInit(): void {
-        const vehicle = this.vehicles.find(({type}) => type === this.type);
+    private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle, {
+        self: true,
+        optional: true,
+    });
+
+    public ngAfterViewInit(): void {
+        const vehicle = this.vehicles?.find(({type}) => type === this.type);
 
         merge(...this.drivers.filter(({type}) => type === this.type))
             .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
