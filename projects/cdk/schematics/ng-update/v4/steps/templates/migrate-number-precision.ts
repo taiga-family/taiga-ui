@@ -42,7 +42,11 @@ export function migrateNumberPrecision({
                 '@taiga-ui/core',
             );
 
-            const format = `{${decimalAttr ? `decimalMode: ${normalizeAttrValue(decimalAttr.name, decimalAttr.value)}` : ''}${decimalAttr ? ', ' : ''}${precisionAttr ? `precision: ${normalizeAttrValue(precisionAttr.name, precisionAttr.value)}` : ''}`;
+            const decimalValue = decimalAttr?.value === 'never' ? '' : decimalAttr?.value;
+            const precisionValue =
+                decimalAttr?.value === 'never' ? 0 : (precisionAttr?.value ?? '');
+
+            const format = `{${decimalAttr && decimalValue ? `decimalMode: ${normalizeAttrValue(decimalAttr.name, decimalValue)}` : ''}${decimalValue && precisionValue ? ', ' : ''}${precisionValue || decimalAttr?.value === 'never' ? `precision: ${precisionValue}` : ''}}`;
 
             const formatPart = `[tuiNumberFormat]="${format}"`;
 

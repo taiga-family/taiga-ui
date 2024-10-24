@@ -98,7 +98,7 @@ export const DEPRECATED_NUMERIC_VARS = {
 };
 
 export const NIGHT_VAR_COMMENT =
-    'TODO: use tuiTheme="dark" on an element to switch colors to dark theme';
+    'TODO: night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme';
 
 export const DEPRECATE_VARS_WITH_COMMENT = [
     '--tui-clear-inverse',
@@ -114,7 +114,7 @@ export const DEPRECATE_VARS_WITH_COMMENT = [
     '--tui-warning-bg-night',
     '--tui-warning-bg-night-hover',
     '--tui-info-fill-night',
-    'tui-info-bg-night',
+    '--tui-info-bg-night',
     '--tui-info-bg-night-hover',
     '--tui-neutral-fill-night',
     '--tui-neutral-bg-night',
