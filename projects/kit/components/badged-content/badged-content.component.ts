@@ -4,14 +4,13 @@ import {
     Component,
     inject,
 } from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 
 import {TuiBadgedContentDirective} from './badged-content.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-badged-content',
-    imports: [TuiBadgedContentDirective, WaResizeObserver],
+    imports: [TuiBadgedContentDirective],
     templateUrl: './badged-content.template.html',
     styleUrls: ['./badged-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

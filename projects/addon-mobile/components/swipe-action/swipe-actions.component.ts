@@ -4,12 +4,10 @@ import {
     Component,
     inject,
 } from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 
 @Component({
     standalone: true,
     selector: 'tui-swipe-actions',
-    imports: [WaResizeObserver],
     templateUrl: './swipe-actions.template.html',
     styleUrls: ['./swipe-actions.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,8 +20,14 @@ export class TuiSwipeActions {
 
     protected readonly cdr = inject(ChangeDetectorRef);
 
-    protected onResize({target}: ResizeObserverEntry): void {
-        this.actionsWidth = target.clientWidth;
+    protected onResize(event: UIEvent): void {
+        const [entry] = event as unknown as ResizeObserverEntry[];
+
+        if (!entry) {
+            return;
+        }
+
+        this.actionsWidth = entry.target.clientWidth;
         this.cdr.detectChanges();
     }
 }
