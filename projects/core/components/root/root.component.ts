@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
-import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
