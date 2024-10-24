@@ -109,6 +109,7 @@ import {
     host: {
         '[class._ios]': 'isIOS',
         '[class._initialized]': 'initialized',
+        '(mousedown.prevent)': '0',
     },
 })
 export class TuiMobileCalendar implements AfterViewInit {
