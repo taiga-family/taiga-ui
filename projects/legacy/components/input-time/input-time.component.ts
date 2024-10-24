@@ -47,7 +47,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     ],
     hostDirectives: [TuiDropdownFixed],
     host: {
-        '(click)': 'onClick()',
+        '(click)': 'open = !open',
         '[attr.data-size]': 'size',
     },
 })
@@ -209,10 +209,6 @@ export class TuiInputTimeComponent
         return this.timeTexts$.pipe(map((texts) => texts[mode]));
     }
 
-    protected onClick(): void {
-        this.open = !this.open;
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
@@ -246,8 +242,9 @@ export class TuiInputTimeComponent
         return maskitoTimeOptionsGenerator({
             mode,
             step: readOnly ? 0 : 1,
+            // TODO(v5): timeSegmentMaxValues: this.options.timeSegmentMaxValues
             timeSegmentMaxValues: {
-                hours: HH,
+                hours: mode.includes('AA') ? 12 : HH,
                 minutes: MM,
                 seconds: SS,
                 milliseconds: MS,
@@ -278,14 +275,10 @@ export class TuiInputTimeComponent
         return this.items.find((item) => TUI_STRICT_MATCHER(item, value));
     }
 
-    private close(): void {
-        this.open = false;
-    }
-
     private focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
-            this.close();
+            this.open = false;
         }
     }
 }

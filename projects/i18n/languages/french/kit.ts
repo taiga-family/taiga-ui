@@ -16,8 +16,11 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
     countTexts: ['Plus', 'Moins'],
     time: {
         'HH:MM': 'HH:MM',
+        'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
+        'HH:MM:SS AA': 'HH:MM:SS AA',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
+        'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
     },
     dateTexts: {
         DMY: 'jj.mm.aaaa',

@@ -12,8 +12,11 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
     countTexts: ['加', '减'],
     time: {
         'HH:MM': 'HH:MM',
+        'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
+        'HH:MM:SS AA': 'HH:MM:SS AA',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
+        'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
     },
     dateTexts: {
         DMY: 'dd.mm.yyyy',

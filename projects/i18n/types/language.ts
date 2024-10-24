@@ -99,8 +99,11 @@ export interface TuiLanguageKit {
     showAll: string;
     time: {
         'HH:MM': string;
+        'HH:MM AA': string;
         'HH:MM:SS': string;
+        'HH:MM:SS AA': string;
         'HH:MM:SS.MSS': string;
+        'HH:MM:SS.MSS AA': string;
     };
     previewTexts: {
         rotate: string;
