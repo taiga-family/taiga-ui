@@ -51,6 +51,7 @@ jobs:
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          merge-method: ${{ (contains(github.head_ref, 'release/') && 'merge') || 'squash' }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
