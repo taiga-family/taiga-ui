@@ -104,9 +104,8 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit, OnChanges {
     ngOnChanges({
         defaultViewedMonthFirst,
         defaultViewedMonthSecond,
-        value,
     }: SimpleChanges): void {
-        if (!value) {
+        if (!this.value) {
             this.updateViewedMonths(
                 defaultViewedMonthFirst?.currentValue,
                 defaultViewedMonthSecond?.currentValue,
