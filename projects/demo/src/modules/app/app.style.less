@@ -42,3 +42,12 @@ app {
         display: flex !important;
     }
 }
+
+html {
+    font-size: 100%;
+
+    .ios-only({
+        /* stylelint-disable-next-line */
+        font: -apple-system-body;
+    });
+}
