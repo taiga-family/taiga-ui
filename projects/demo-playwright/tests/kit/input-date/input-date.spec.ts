@@ -8,6 +8,7 @@ test.describe('InputDate', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
+
         let inputDate!: TuiInputDatePO;
         let calendar!: TuiCalendarPO;
 
@@ -23,6 +24,7 @@ test.describe('InputDate', () => {
             example = documentationPage.apiPageExample;
 
             inputDate = new TuiInputDatePO(example.locator('tui-input-date'));
+
             calendar = new TuiCalendarPO(inputDate.calendar);
         });
 
@@ -30,10 +32,13 @@ test.describe('InputDate', () => {
             await tuiGoto(page, 'components/input-date/API?items$=1');
 
             await inputDate.textfield.click();
-            await inputDate.itemButton.click();
+            await calendar.itemButton.click();
 
             await inputDate.textfield.click();
-            await calendar.clickOnCalendarDay(1);
+
+            const [calendarSheet] = await calendar.getCalendarSheets();
+
+            await calendarSheet?.clickOnDay(1);
 
             await expect(inputDate.textfield).toHaveScreenshot('01-input-date.png');
         });
