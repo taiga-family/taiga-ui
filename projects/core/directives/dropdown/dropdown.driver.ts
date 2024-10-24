@@ -14,7 +14,6 @@ export class TuiDropdownDriver extends BehaviorSubject<boolean> implements TuiDr
 
 @Directive({
     standalone: true,
-    selector: '[tuiDropdownDriver]',
 })
 export class TuiDropdownDriverDirective extends TuiDriverDirective {
     public readonly type = 'dropdown';
