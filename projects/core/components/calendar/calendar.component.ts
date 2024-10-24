@@ -9,6 +9,7 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TUI_LAST_DISPLAYED_DAY,
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
@@ -68,7 +69,11 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
         this.day = value;
 
-        if (this.showAdjacent && value instanceof TuiDay) {
+        if (
+            this.showAdjacent &&
+            value instanceof TuiDay &&
+            value.dayBefore(TUI_LAST_DISPLAYED_DAY)
+        ) {
             this.month = value;
         }
     }

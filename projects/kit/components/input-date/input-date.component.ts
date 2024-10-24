@@ -25,6 +25,7 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_IS_MOBILE,
+    TUI_LAST_DISPLAYED_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -188,15 +189,21 @@ export class TuiInputDateComponent
     }
 
     get computedActiveYearMonth(): TuiMonth {
-        if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
+        const clampedDate = tuiDateClamp(
+            this.defaultActiveYearMonth,
+            this.computedMin,
+            this.computedMax,
+        );
+
+        if (this.value?.dayAfter(TUI_LAST_DISPLAYED_DAY)) {
+            return this.month || clampedDate;
+        }
+
+        if (this.items[0] && this.value?.daySame(this.items[0].day)) {
             return this.items[0].displayDay;
         }
 
-        return (
-            this.month ||
-            this.value ||
-            tuiDateClamp(this.defaultActiveYearMonth, this.computedMin, this.computedMax)
-        );
+        return this.month || this.value || clampedDate;
     }
 
     get nativeValue(): string {
