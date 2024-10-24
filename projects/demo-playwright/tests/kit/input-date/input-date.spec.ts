@@ -42,5 +42,18 @@ test.describe('InputDate', () => {
 
             await expect(inputDate.textfield).toHaveScreenshot('01-input-date.png');
         });
+
+        test('Click `Until today`', async ({page}) => {
+            await tuiGoto(page, 'components/input-date/API?items$=1');
+
+            await inputDate.textfield.click();
+            await calendar.itemButton.click();
+
+            await inputDate.textfield.click();
+
+            await expect(inputDate.calendar).toHaveScreenshot(
+                '02-input-date-calendar.png',
+            );
+        });
     });
 });
