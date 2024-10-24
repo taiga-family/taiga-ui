@@ -151,7 +151,10 @@ test.describe('InputDateRange', () => {
             await expect(inputDateRange.textfield).toHaveValue('Today');
 
             await inputDateRange.textfield.click();
-            await calendar.clickOnCalendarDay(21);
+
+            const [calendarSheet] = await calendar.getCalendarSheets();
+
+            await calendarSheet?.clickOnDay(21);
 
             await expect(inputDateRange.textfield).toHaveValue(
                 `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
