@@ -135,20 +135,27 @@ export class TuiTime implements TuiTimeLike {
         );
     }
 
+    private static parseMeridiemPeriod(time: string): 'AM' | 'PM' | null {
+        return (
+            (/[AP]M/.exec(time.toUpperCase().replaceAll(/\W/g, ''))?.[0] as
+                | 'AM'
+                | 'PM') || null
+        );
+    }
+
     private static parseHours(time: string): number {
         const hours = Number(time.slice(0, 2));
-        const [meridiem = ''] =
-            /[ap]m/.exec(time.toLowerCase().replaceAll(/\W/g, '')) || [];
+        const meridiem = this.parseMeridiemPeriod(time);
 
         if (!meridiem) {
             return hours;
         }
 
         if (hours === 12) {
-            return meridiem === 'am' ? 0 : 12;
+            return meridiem === 'AM' ? 0 : 12;
         }
 
-        return meridiem === 'pm' ? hours + 12 : hours;
+        return meridiem === 'PM' ? hours + 12 : hours;
     }
 
     /**

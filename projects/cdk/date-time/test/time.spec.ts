@@ -134,7 +134,6 @@ describe('TuiTime', () => {
                         ['12:00 AM', {hours: 0, minutes: 0}],
                         ['12:34 AM', {hours: 0, minutes: 34}],
                         ['12:59 AM', {hours: 0, minutes: 59}],
-                        ['12:59 AM', {hours: 0, minutes: 59}],
                         ['01:00 AM', {hours: 1, minutes: 0}],
                         ['11:00 AM', {hours: 11, minutes: 0}],
                         ['11:59 AM', {hours: 11, minutes: 59}],
