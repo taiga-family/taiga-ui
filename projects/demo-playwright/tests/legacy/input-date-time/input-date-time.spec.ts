@@ -174,13 +174,19 @@ test.describe('InputDateTime', () => {
             );
 
             await timeModeSelect.textfield.click();
-            await timeModeSelect.selectOptions([1]);
+            await timeModeSelect.selectOptions([2]);
+
+            await expect(timeModeSelect.textfield).toHaveValue('HH:MM:SS');
+
             await inputDateTime.textfield.focus();
 
             await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.SS.png');
 
             await timeModeSelect.textfield.click();
-            await timeModeSelect.selectOptions([2]);
+            await timeModeSelect.selectOptions([4]);
+
+            await expect(timeModeSelect.textfield).toHaveValue('HH:MM:SS.MSS');
+
             await inputDateTime.textfield.focus();
 
             await expect(inputDateTime.host).toHaveScreenshot(
@@ -195,6 +201,27 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.blur();
 
             await expect(inputDateTime.textfield).toHaveValue('07.06.2024, 23:59:00.000');
+        });
+
+        test.describe('AM / PM', () => {
+            test.beforeEach(async ({page}) => {
+                await tuiGoto(page, `${DemoRoute.InputDateTime}/API?timeMode=HH:MM%20AA`);
+                await inputDateTime.textfield.pressSequentially('2092020');
+
+                await expect(inputDateTime.textfield).toHaveValue('20.09.2020');
+            });
+
+            test('330a => 03:30 AM', async () => {
+                await inputDateTime.textfield.pressSequentially('330a');
+
+                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 AM');
+            });
+
+            test('330p => 03:30 PM', async () => {
+                await inputDateTime.textfield.pressSequentially('330p');
+
+                await expect(inputDateTime.textfield).toHaveValue('20.09.2020, 03:30 PM');
+            });
         });
     });
 

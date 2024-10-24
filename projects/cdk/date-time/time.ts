@@ -1,5 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {
@@ -113,7 +114,7 @@ export class TuiTime implements TuiTimeLike {
      * Parses string into TuiTime object
      */
     public static fromString(time: string): TuiTime {
-        const hours = Number(time.slice(0, 2));
+        const hours = this.parseHours(time);
         const minutes = Number(time.slice(3, 5)) || 0;
         const seconds = Number(time.slice(6, 8)) || 0;
         const ms = Number(time.slice(9, 12)) || 0;
@@ -132,6 +133,29 @@ export class TuiTime implements TuiTimeLike {
             date.getSeconds(),
             date.getMilliseconds(),
         );
+    }
+
+    private static parseMeridiemPeriod(time: string): 'AM' | 'PM' | null {
+        return (
+            (/[AP]M/.exec(time.toUpperCase().replaceAll(/\W/g, ''))?.[0] as
+                | 'AM'
+                | 'PM') || null
+        );
+    }
+
+    private static parseHours(time: string): number {
+        const hours = Number(time.slice(0, 2));
+        const meridiem = this.parseMeridiemPeriod(time);
+
+        if (!meridiem) {
+            return hours;
+        }
+
+        if (hours === 12) {
+            return meridiem === 'AM' ? 0 : 12;
+        }
+
+        return meridiem === 'PM' ? hours + 12 : hours;
     }
 
     /**
@@ -165,14 +189,18 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     public toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
+        const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
         const needAddSeconds =
-            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
-        const hhMm = `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}`;
+            needAddMs || mode?.startsWith('HH:MM:SS') || (!mode && this.seconds > 0);
+        const {hours = this.hours, meridiem = ''} = mode?.includes('AA')
+            ? this.toTwelveHour(this.hours)
+            : {};
+        const hhMm = `${this.formatTime(hours)}:${this.formatTime(this.minutes)}`;
         const ss = needAddSeconds ? `:${this.formatTime(this.seconds)}` : '';
         const mss = needAddMs ? `.${this.formatTime(this.ms, 3)}` : '';
+        const aa = meridiem && `${CHAR_NO_BREAK_SPACE}${meridiem}`;
 
-        return `${hhMm}${ss}${mss}`;
+        return `${hhMm}${ss}${mss}${aa}`;
     }
 
     public valueOf(): number {
@@ -202,5 +230,15 @@ export class TuiTime implements TuiTimeLike {
 
     private formatTime(time: number, digits = 2): string {
         return String(time).padStart(digits, '0');
+    }
+
+    private toTwelveHour(hours: number): {hours: number; meridiem: string} {
+        const meridiem = hours >= 12 ? 'PM' : 'AM';
+
+        if (hours === 0 || hours === 12) {
+            return {meridiem, hours: 12};
+        }
+
+        return {meridiem, hours: hours % 12};
     }
 }

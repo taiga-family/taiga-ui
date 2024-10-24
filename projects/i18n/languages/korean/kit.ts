@@ -12,8 +12,11 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
     countTexts: ['을 더한', '마이너스'],
     time: {
         'HH:MM': 'HH:MM',
+        'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
+        'HH:MM:SS AA': 'HH:MM:SS AA',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
+        'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
     },
     dateTexts: {
         DMY: 'dd.mm.yyyy',
