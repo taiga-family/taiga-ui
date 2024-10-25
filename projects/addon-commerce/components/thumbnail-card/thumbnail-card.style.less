@@ -17,6 +17,18 @@
         border-radius: inherit;
     }
 
+    // card backface
+    &::after {
+        .fullsize();
+
+        content: '';
+        backface-visibility: hidden;
+        transform: rotateY(180deg) translate3d(0, 0, 1px);
+        color: #b0b0b0;
+        border-radius: inherit;
+        background: linear-gradient(to bottom, currentColor 0 20%, #959595 20% 40%, currentColor 40%);
+    }
+
     &[data-size='s'] {
         inline-size: 2.5rem;
         block-size: 1.625rem;
@@ -131,16 +143,4 @@
 .t-icon {
     inline-size: 1rem;
     block-size: 1rem;
-}
-
-// card backface
-:host::after {
-    .fullsize();
-
-    content: '';
-    backface-visibility: hidden;
-    transform: rotateY(180deg) translate3d(0, 0, 1px);
-    color: #b0b0b0;
-    border-radius: inherit;
-    background: linear-gradient(to bottom, currentColor 0 20%, #959595 20% 40%, currentColor 40%);
 }
