@@ -31,7 +31,7 @@ export class TuiConfirm {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly words$ = inject(TUI_CONFIRM_WORDS);
 
-    protected readonly context =
+    public readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {
