@@ -1,6 +1,6 @@
 import type {ComponentRef, OnDestroy} from '@angular/core';
 import {Directive, inject, INJECTOR, Input, TemplateRef} from '@angular/core';
-import {TuiDropdownService} from '@taiga-ui/core/directives/dropdown';
+import {TuiPopupService} from '@taiga-ui/core/services';
 import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
@@ -15,7 +15,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     implements OnDestroy
 {
     private readonly injector = inject(INJECTOR);
-    private readonly portalService = inject(TuiDropdownService);
+    private readonly service = inject(TuiPopupService);
 
     private readonly component = new PolymorpheusComponent(
         TuiSidebarComponent,
@@ -50,7 +50,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
             return;
         }
 
-        this.sidebarRef = this.portalService.add(this.component);
+        this.sidebarRef = this.service.add(this.component);
         this.sidebarRef.changeDetectorRef.detectChanges();
     }
 
@@ -59,7 +59,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
             return;
         }
 
-        this.portalService.remove(this.sidebarRef);
+        this.service.remove(this.sidebarRef);
         this.sidebarRef = null;
     }
 }
