@@ -4,6 +4,10 @@
     [icon]="iconStart"
 />
 
+<div class="t-left t-icon">
+    <ng-content select="img" />
+</div>
+
 <div
     *ngIf="iconEnd"
     class="t-right"
@@ -12,10 +16,6 @@
         class="t-icon"
         [icon]="iconEnd"
     />
-</div>
-
-<div class="t-left t-icon">
-    <ng-content select="img" />
 </div>
 
 <div class="t-content">
