@@ -3,5 +3,10 @@
         <ng-content select="header" />
         <div class="t-content"><ng-content /></div>
     </tui-scrollbar>
-    <ng-content select="footer" />
+    <tui-scrollbar
+        class="t-footer"
+        [hidden]="true"
+    >
+        <ng-content select="footer" />
+    </tui-scrollbar>
 </aside>

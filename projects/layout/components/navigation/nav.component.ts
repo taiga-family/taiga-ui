@@ -12,7 +12,7 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiBadgeOptionsProvider({size: 'm'}),
-        tuiButtonOptionsProvider({size: 'xs'}),
+        tuiButtonOptionsProvider({size: 's'}),
         tuiTabsOptionsProvider({size: 'm'}),
     ],
 })
