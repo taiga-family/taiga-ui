@@ -3,6 +3,9 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
 
 import {TuiDropdownService} from './dropdown.service';
 
+/**
+ * @deprecated use {@link TuiPopup} directive instead
+ */
 @Directive({
     standalone: true,
     selector: 'ng-template[tuiDropdown]',

@@ -11,6 +11,9 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 
+/**
+ * @deprecated use {@link TuiDrawer} instead
+ */
 @Component({
     standalone: true,
     selector: 'aside[tuiSidebar]',

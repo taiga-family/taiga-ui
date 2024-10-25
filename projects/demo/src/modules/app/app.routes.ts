@@ -285,6 +285,11 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
+        path: DemoRoute.Drawer,
+        loadComponent: async () => import('../components/drawer'),
+        title: 'Drawer',
+    }),
+    route({
         path: DemoRoute.Error,
         loadComponent: async () => import('../components/error'),
         title: 'Error',
