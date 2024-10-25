@@ -17,14 +17,14 @@ import {filter} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
+        ReactiveFormsModule,
         TuiButton,
         TuiDrawer,
         TuiHeader,
         TuiPopup,
-        TuiTitle,
-        TuiTextfield,
-        ReactiveFormsModule,
         TuiRepeatTimes,
+        TuiTextfield,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -36,7 +36,7 @@ export default class Example {
     protected readonly control = new FormControl('Some value');
     protected readonly open = signal(false);
 
-    onClose(): void {
+    public onClose(): void {
         if (this.control.pristine) {
             this.open.set(false);
 
