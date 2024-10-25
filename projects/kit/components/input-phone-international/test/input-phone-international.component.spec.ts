@@ -7,7 +7,12 @@ import {By} from '@angular/platform-browser';
 import {TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
-import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
+import {
+    TUI_ENGLISH_LANGUAGE,
+    TUI_FRENCH_LANGUAGE,
+    TUI_LANGUAGE,
+    TUI_RUSSIAN_LANGUAGE,
+} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
@@ -31,11 +36,6 @@ describe('InputPhoneInternational', () => {
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
-        providers: [
-            tuiInputPhoneInternationalOptionsProvider({
-                metadata: of(metadata),
-            }),
-        ],
     })
     class Test {
         @ViewChild(TuiInputPhoneInternational, {static: true})
@@ -55,7 +55,10 @@ describe('InputPhoneInternational', () => {
     let component: TuiInputPhoneInternational;
     let inputPO: TuiNativeInputPO;
 
-    const initializeTestModule = (language: TuiLanguage = TUI_ENGLISH_LANGUAGE): void => {
+    const initializeTestModule = (
+        language: TuiLanguage = TUI_ENGLISH_LANGUAGE,
+        separator?: string,
+    ): void => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
@@ -65,6 +68,10 @@ describe('InputPhoneInternational', () => {
                         provide: TUI_LANGUAGE,
                         useValue: of(language),
                     },
+                    tuiInputPhoneInternationalOptionsProvider({
+                        metadata: of(metadata),
+                        separator,
+                    }),
                 ],
             });
             await TestBed.compileComponents();
@@ -211,6 +218,20 @@ describe('InputPhoneInternational', () => {
                     'Bangladesh',
                 ]);
             });
+        });
+    });
+
+    describe('separator', () => {
+        initializeTestModule(TUI_FRENCH_LANGUAGE, ' ');
+
+        it('should have correct input value with provided custom separator', () => {
+            const phoneNumber = '+33724783794';
+
+            testComponent.countryIsoCode = 'FR';
+
+            inputPO.sendText(phoneNumber);
+
+            expect(inputPO.value).toBe('+33 7 24 78 37 94');
         });
     });
 

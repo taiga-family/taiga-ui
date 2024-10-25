@@ -190,6 +190,22 @@
                 at the right side of the textfield.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="customize-separator"
+            heading="Customize separator"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+            [description]="separatorDescription"
+        >
+            <ng-template #separatorDescription>
+                Using
+                <code>tuiInputPhoneInternationalOptionsProvider</code>
+                you can provide custom separator for input instead of the default
+                <code>-</code>
+                .
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

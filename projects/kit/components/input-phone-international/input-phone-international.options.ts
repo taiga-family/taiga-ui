@@ -9,6 +9,7 @@ export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];
     readonly countryIsoCode: TuiCountryIsoCode;
     readonly metadata: Observable<MetadataJson> | Promise<MetadataJson>;
+    readonly separator: string;
 }
 
 export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInternationalOptions =
@@ -16,6 +17,7 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
         countries: [],
         countryIsoCode: 'RU',
         metadata: of({countries: {}, country_calling_codes: {}}),
+        separator: '-',
     };
 
 /**
