@@ -12,6 +12,8 @@
     border-start-end-radius: 1.25rem;
 
     &._overlay::before {
+        .transition(opacity);
+
         content: '';
         position: fixed;
         top: -100vh;
@@ -19,6 +21,12 @@
         right: -100vw;
         bottom: -100vh;
         background: var(--tui-service-backdrop);
+        transition-timing-function: ease-out;
+
+        tui-root:has(tui-dialogs .t-overlay_visible) & {
+            opacity: 0;
+            transition-timing-function: ease-in;
+        }
     }
 
     ::ng-deep header {

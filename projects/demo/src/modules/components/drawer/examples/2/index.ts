@@ -36,7 +36,7 @@ export default class Example {
     protected readonly control = new FormControl('Some value');
     protected readonly open = signal(false);
 
-    onClose() {
+    onClose(): void {
         if (this.control.pristine) {
             this.open.set(false);
 
