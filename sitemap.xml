@@ -163,6 +163,9 @@
     <loc>https://taiga-ui.dev/components/dialog/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/drawer/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/error/</loc>
   </url>
   <url>
@@ -857,6 +860,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/dialog/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/drawer/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/drawer/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/error/API/</loc>
