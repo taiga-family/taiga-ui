@@ -39,6 +39,19 @@ export class Test {
 
 const TEMPLATE_BEFORE = `
 <tui-input-number
+  decimal="never"
+  [formControl]="control"
+>
+</tui-input-number>
+
+<tui-input-number
+  decimal="never"
+  [precision]="2"
+  [formControl]="control"
+>
+</tui-input-number>
+
+<tui-input-number
   [formControl]="control"
   [precision]="2"
   decimal="always"
@@ -54,13 +67,26 @@ const TEMPLATE_BEFORE = `
 
 const TEMPLATE_AFTER = `
 <tui-input-number
-[tuiNumberFormat]="{decimalMode: 'always', precision: 2"  [formControl]="control"
+[tuiNumberFormat]="{precision: 0}" ${''}
+  [formControl]="control"
+>
+</tui-input-number>
+
+<tui-input-number
+[tuiNumberFormat]="{precision: 0}" ${''}
+ ${''}
+  [formControl]="control"
+>
+</tui-input-number>
+
+<tui-input-number
+[tuiNumberFormat]="{decimalMode: 'always', precision: 2}"  [formControl]="control"
  ${''}
  ${''}
 >
 </tui-input-number>
 <tui-input-number
-[tuiNumberFormat]="{decimalMode: decimal(), precision: 2"  [formControl]="control"
+[tuiNumberFormat]="{decimalMode: decimal(), precision: 2}"  [formControl]="control"
  ${''}
  ${''}
 >
