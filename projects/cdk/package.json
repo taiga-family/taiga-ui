@@ -43,7 +43,7 @@
         "@angular-devkit/schematics": ">=16.0.0",
         "@schematics/angular": ">=16.0.0",
         "ng-morph": "^4.8.4",
-        "parse5": ">=7.2.0"
+        "parse5": ">=7.2.1"
     },
     "ng-update": {
         "migrations": "./schematics/migration.json",
