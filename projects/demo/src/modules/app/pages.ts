@@ -335,6 +335,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Drawer',
+        keywords:
+            'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
+        route: DemoRoute.Drawer,
+    },
+    {
+        section: 'Components',
         title: 'Dropdown',
         subPages: [
             {

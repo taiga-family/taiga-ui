@@ -21,9 +21,10 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdowns} from '@taiga-ui/core/directives';
+import {TuiDropdowns} from '@taiga-ui/core/directives/dropdown';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
-import {TuiBreakpointService, TuiPopupService} from '@taiga-ui/core/services';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {PreventEventPlugin} from '@taiga-ui/event-plugins';

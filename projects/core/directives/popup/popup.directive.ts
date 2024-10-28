@@ -1,23 +1,20 @@
 import type {EmbeddedViewRef, OnDestroy} from '@angular/core';
 import {Directive, inject, Input, TemplateRef} from '@angular/core';
 
-import {TuiDropdownService} from './dropdown.service';
+import {TuiPopupService} from './popup.service';
 
-/**
- * @deprecated use {@link TuiPopup} directive instead
- */
 @Directive({
     standalone: true,
-    selector: 'ng-template[tuiDropdown]',
+    selector: 'ng-template[tuiPopup]',
 })
-export class TuiDropdownPortal implements OnDestroy {
+export class TuiPopup implements OnDestroy {
     private readonly template = inject(TemplateRef);
-    private readonly service = inject(TuiDropdownService);
+    private readonly service = inject(TuiPopupService);
 
     private viewRef?: EmbeddedViewRef<unknown>;
 
     @Input()
-    public set tuiDropdown(show: boolean) {
+    public set tuiPopup(show: boolean) {
         this.viewRef?.destroy();
 
         if (show) {

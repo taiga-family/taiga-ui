@@ -1,4 +1,5 @@
 <tui-doc-page
+    deprecated
     header="Sidebar"
     package="ADDON-MOBILE"
     type="directives"
@@ -8,6 +9,17 @@
             Directive allows to show arbitrary content in a sidebar above all content. A darkening overlay is shown
             under the sidebar.
         </p>
+
+        <tui-notification appearance="negative">
+            This directive is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.Drawer"
+            >
+                Drawer
+            </a>
+            instead.
+        </tui-notification>
 
         <tui-doc-example
             id="basic"
