@@ -14,7 +14,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
+import {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
@@ -217,22 +217,12 @@ export class TuiInputDateComponent
     }
 
     get computedMask(): MaskitoOptions {
-        /**
-         * TODO: we can delete this workaround in v4.0
-         * after solving this issue:
-         * https://github.com/taiga-family/maskito/issues/604
-         */
-        const nativeValueIsNotSynced =
-            this.textfield?.nativeFocusableElement?.value !== this.computedValue;
-
-        return this.activeItem || nativeValueIsNotSynced
-            ? MASKITO_DEFAULT_OPTIONS
-            : this.computeMaskOptions(
-                  this.dateFormat,
-                  this.dateSeparator,
-                  this.computedMin,
-                  this.computedMax,
-              );
+        return this.computeMaskOptions(
+            this.dateFormat,
+            this.dateSeparator,
+            this.computedMin,
+            this.computedMax,
+        );
     }
 
     get activeItem(): TuiNamedDay | null {
