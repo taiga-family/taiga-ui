@@ -44,6 +44,14 @@ const TEMPLATE_BEFORE = `<tui-checkbox-labeled [(ngModel)]="value">
 <tui-radio-labeled size="l" [formControl]="control" [item]="value" [identityMatcher]="matcher" [pseudoDisabled]="disabled">
   Label
 </tui-radio-labeled>
+
+<tui-checkbox-labeled
+  *ngFor="let language of getLanguages()"
+  [formControlName]="language.name"
+  size="l"
+  class="test"
+  >{{ language.name }}</tui-checkbox-labeled
+  >
 `;
 
 const TEMPLATE_AFTER = `<label tuiLabel><input tuiCheckbox type="checkbox" [(ngModel)]="value">
@@ -55,6 +63,13 @@ const TEMPLATE_AFTER = `<label tuiLabel><input tuiCheckbox type="checkbox" [(ngM
 <input tuiRadio type="radio" size="m" [formControl]="control" [value]="value" [identityMatcher]="matcher" [tuiAppearanceState]="disabled ? 'disabled' : null">
   Label
 </label>
+<label *ngFor="let language of getLanguages()" tuiLabel>
+<input tuiCheckbox type="checkbox"
+  ${''}
+  [formControlName]="language.name"
+  size="m"
+  class="test"
+  >{{ language.name }}</label>
 `;
 
 describe('ng-update', () => {
