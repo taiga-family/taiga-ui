@@ -10,7 +10,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.93.5
       - run: gh cache delete ${{ env.CACHE_DIST_KEY }}
         continue-on-error: true
 
