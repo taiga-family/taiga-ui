@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.13.0](https://github.com/taiga-family/taiga-ui/compare/v4.12.0...v4.13.0) (2024-10-28)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `ThumbnailCard` with blur effect should keep its initial border-radius
+  ([#9604](https://github.com/taiga-family/taiga-ui/issues/9604))
+  ([b25cbd5](https://github.com/taiga-family/taiga-ui/commit/b25cbd5fdaa66effdc2114bc23a2248da3d0c0a5))
+- **core:** `DropdownOpen` fix initial open state ([#9581](https://github.com/taiga-family/taiga-ui/issues/9581))
+  ([6b6863e](https://github.com/taiga-family/taiga-ui/commit/6b6863e9c97781fa83db5644ced097883faa0244))
+- **core:** `Notification` remove flex layout ([#9580](https://github.com/taiga-family/taiga-ui/issues/9580))
+  ([b4f4f32](https://github.com/taiga-family/taiga-ui/commit/b4f4f32b43e78a47aa66cdaa6ed411c5ccb02f71))
+- **kit:** `Badge` fix font size on desktop ([#9593](https://github.com/taiga-family/taiga-ui/issues/9593))
+  ([9828c85](https://github.com/taiga-family/taiga-ui/commit/9828c8528566d59d9603fe162590cd9f6697d9fd))
+- **kit:** `InputPhoneInternational` fix dropdown issues ([#9569](https://github.com/taiga-family/taiga-ui/issues/9569))
+  ([e996d18](https://github.com/taiga-family/taiga-ui/commit/e996d189546c568f9ee0394f813721def2739e2e))
+- **layout:** `Navigation` fix drawer positioning ([#9594](https://github.com/taiga-family/taiga-ui/issues/9594))
+  ([d0560c8](https://github.com/taiga-family/taiga-ui/commit/d0560c89091ab6475a8e9960611c15863d98ea31))
+
+### 🚀 Features
+
+- **addon-mobile:** `MobileCalendar` add (mousedown.prevent)
+  ([3efbd50](https://github.com/taiga-family/taiga-ui/commit/3efbd5023a0be72f7959da8d35da18fa2dd5dd3f))
+- **core:** `Calendar` not switch to large date
+  ([683e6bc](https://github.com/taiga-family/taiga-ui/commit/683e6bc631ba4c6d0b1d84576b7868de81620168))
+- **core:** `Calendar` not switch to large date ([#9587](https://github.com/taiga-family/taiga-ui/issues/9587))
+  ([4575a40](https://github.com/taiga-family/taiga-ui/commit/4575a40e836ff2260f0b7c24ba0bd6bfcb0bbb0e))
+- **core:** `Popup` add service for arbitrary portal items
+  ([#9605](https://github.com/taiga-family/taiga-ui/issues/9605))
+  ([6ab1756](https://github.com/taiga-family/taiga-ui/commit/6ab17567882ec42f9e8396fe7e9556c2388c2c1a))
+- **kit:** `Drawer` add new component ([#9614](https://github.com/taiga-family/taiga-ui/issues/9614))
+  ([5b43400](https://github.com/taiga-family/taiga-ui/commit/5b43400212f7dba94f1350cd27a6003f91d677c0))
+- **kit:** `Tooltip` add DI options ([#9571](https://github.com/taiga-family/taiga-ui/issues/9571))
+  ([e2f17c4](https://github.com/taiga-family/taiga-ui/commit/e2f17c40c8e36d44f99fb790d0df6376f7f7c9c5))
+- **kit:** `TuiInputPhoneInternational` has separator customization
+  ([#9601](https://github.com/taiga-family/taiga-ui/issues/9601))
+  ([7939bc5](https://github.com/taiga-family/taiga-ui/commit/7939bc5aa3e015dcef81a5f7c93386764886f860))
+- **legacy:** `InputTime` & `InputDateTime` support `AM` / `PM` formats
+  ([#9595](https://github.com/taiga-family/taiga-ui/issues/9595))
+  ([0f67a78](https://github.com/taiga-family/taiga-ui/commit/0f67a78475ef771ac95d03b5abcff568b299d5eb))
+
 ## [4.12.0](https://github.com/taiga-family/taiga-ui/compare/v4.11.0...v4.12.0) (2024-10-21)
 
 ### 🐞 Bug Fixes
