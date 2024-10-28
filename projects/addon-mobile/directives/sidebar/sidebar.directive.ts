@@ -1,11 +1,14 @@
 import type {ComponentRef, OnDestroy} from '@angular/core';
 import {Directive, inject, INJECTOR, Input, TemplateRef} from '@angular/core';
-import {TuiPopupService} from '@taiga-ui/core/services';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiSidebarComponent} from './sidebar.component';
 
+/**
+ * @deprecated use {@link TuiDrawer} instead
+ */
 @Directive({
     standalone: true,
     selector: '[tuiSidebar]',

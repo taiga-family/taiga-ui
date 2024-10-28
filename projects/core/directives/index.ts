@@ -5,5 +5,6 @@ export * from '@taiga-ui/core/directives/group';
 export * from '@taiga-ui/core/directives/hint';
 export * from '@taiga-ui/core/directives/icons';
 export * from '@taiga-ui/core/directives/number-format';
+export * from '@taiga-ui/core/directives/popup';
 export * from '@taiga-ui/core/directives/surface';
 export * from '@taiga-ui/core/directives/title';

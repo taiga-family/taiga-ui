@@ -1,0 +1,38 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Open
+</button>
+
+<tui-drawer
+    *tuiPopup="open()"
+    direction="left"
+    class="drawer"
+    [overlay]="true"
+    (click.self)="onClose()"
+>
+    <header class="header">
+        <h2 tuiHeader>
+            <div tuiTitle>Sticky header</div>
+            <div tuiAccessories>
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="onClose()"
+                >
+                    Close
+                </button>
+            </div>
+        </h2>
+    </header>
+    <tui-textfield>
+        <label tuiLabel>Enter value</label>
+        <input
+            tuiTextfield
+            [formControl]="control"
+        />
+    </tui-textfield>
+    <p *tuiRepeatTimes="let index of 30">Content</p>
+</tui-drawer>

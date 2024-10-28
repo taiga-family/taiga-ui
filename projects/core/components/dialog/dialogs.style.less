@@ -49,6 +49,12 @@
     background: var(--tui-service-backdrop);
     backdrop-filter: var(--tui-backdrop, none);
     opacity: 0;
+    transition-timing-function: ease-in;
+
+    &_visible {
+        opacity: 1;
+        transition-timing-function: ease-out;
+    }
 }
 
 .t-dialog:last-child {
