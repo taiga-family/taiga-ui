@@ -93,6 +93,7 @@ export const TUI_USED_ICONS = [
     '@tui.circle-alert',
     '@tui.copy',
     '@tui.cloud',
+    '@tui.snowflake',
     '@tui.grip-vertical',
     '@tui.camera',
     '@tui.folder',
