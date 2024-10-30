@@ -9,6 +9,7 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import {TuiDropdownService} from './dropdown.service';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 @Directive({
@@ -18,6 +19,8 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
+
+    private readonly dropdownService = inject(TuiDropdownService);
 
     private previous?: TuiVerticalDirection;
 
@@ -60,7 +63,10 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
                     : right,
             left: Math.max(viewport.left, left),
         } as const;
-        const better = available.top > available.bottom ? 'top' : 'bottom';
+        const better: TuiVerticalDirection =
+            available.top > available.bottom ? 'top' : 'bottom';
+
+        this.dropdownService.publishDropdownDirection(better);
 
         if (
             (available[previous] > minHeight && direction) ||
