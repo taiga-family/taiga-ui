@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTime} from '@taiga-ui/cdk';
 import {
     TuiInputTimeModule,
+    TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
     TuiUnfinishedValidator,
 } from '@taiga-ui/legacy';
@@ -14,6 +15,7 @@ import {
     imports: [
         ReactiveFormsModule,
         TuiInputTimeModule,
+        TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiUnfinishedValidator,
     ],

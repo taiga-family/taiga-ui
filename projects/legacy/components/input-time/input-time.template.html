@@ -25,6 +25,11 @@
         (valueChange)="onValueChange($event)"
     >
         <ng-content />
+        <ng-content
+            ngProjectAs="input"
+            select="input"
+        />
+        <!-- TODO: don't set it by default in a new version of this component -->
         <input
             inputmode="numeric"
             tuiTextfieldLegacy

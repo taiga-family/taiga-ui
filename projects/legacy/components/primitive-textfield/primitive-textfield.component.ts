@@ -128,7 +128,7 @@ export class TuiPrimitiveTextfieldComponent
 
         const {nativeElement} = this.focusableElement;
 
-        return (nativeElement.previousElementSibling ||
+        return (nativeElement.parentElement?.firstElementChild ||
             nativeElement) as HTMLInputElement | null;
     }
 
