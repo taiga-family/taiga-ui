@@ -8,10 +8,13 @@
     </ng-container>
 
     <ng-container *ngFor="let file of rejectedFiles">
-        <tui-file
+        <a
             *tuiItem
+            rel="noreferrer"
             state="error"
+            target="_blank"
+            tuiFile
             [file]="file"
-        />
+        ></a>
     </ng-container>
 </tui-files>
