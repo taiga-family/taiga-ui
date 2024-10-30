@@ -10,6 +10,7 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {TuiHintDirective} from './hint.directive';
+import {TuiHintService} from './hint.service';
 import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
 import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
 
@@ -28,6 +29,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
         inject<any>(TuiRectAccessor),
         inject(TuiHintDirective),
     );
+
+    private readonly hintService = inject(TuiHintService);
 
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
@@ -76,12 +79,16 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
         if (this.checkPosition(this.points[this.direction], width, height)) {
+            this.hintService.publishHintDirection(this.direction);
+
             return this.points[this.direction];
         }
 
         const direction = TUI_HINT_DIRECTIONS.find((direction) =>
             this.checkPosition(this.points[direction], width, height),
         );
+
+        this.hintService.publishHintDirection(direction || this.fallback);
 
         return this.points[direction || this.fallback];
     }
