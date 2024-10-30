@@ -1,6 +1,17 @@
 import type {OnDestroy} from '@angular/core';
-import {Directive, inject, INJECTOR, Input, signal} from '@angular/core';
+import {
+    Directive,
+    EventEmitter,
+    inject,
+    INJECTOR,
+    Input,
+    NgZone,
+    Output,
+    signal,
+} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
@@ -12,6 +23,7 @@ import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintService} from './hint.service';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHover} from './hint-hover.directive';
+import type {TuiHintDirection} from './hint-options.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 import {TuiHintPosition} from './hint-position.directive';
 
@@ -43,6 +55,7 @@ export class TuiHintDirective<C>
     implements OnDestroy, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiHintService);
+    private readonly zone: NgZone = inject(NgZone);
 
     @Input('tuiHintContext')
     public context?: C;
@@ -50,11 +63,18 @@ export class TuiHintDirective<C>
     @Input('tuiHintAppearance')
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
+    @Output('tuiHintDirectionChange')
+    public readonly directionChange = new EventEmitter<TuiHintDirection>();
+
     public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly activeZone? = inject(TuiActiveZone, {optional: true});
     public readonly type = 'hint';
+
+    constructor() {
+        this.hintDirectionObserver();
+    }
 
     @Input()
     public set tuiHint(content: PolymorpheusContent<C>) {
@@ -79,5 +99,13 @@ export class TuiHintDirective<C>
         } else {
             this.service.remove(this);
         }
+    }
+
+    public hintDirectionObserver(): void {
+        this.service.hintDirection$
+            .pipe(tuiZonefree(this.zone), takeUntilDestroyed())
+            .subscribe((direction: TuiHintDirection) => {
+                this.directionChange.emit(direction);
+            });
     }
 }
