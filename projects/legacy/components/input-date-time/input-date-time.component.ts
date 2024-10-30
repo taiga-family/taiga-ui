@@ -356,7 +356,10 @@ export class TuiInputDateTimeComponent
         });
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
-                element.selectionStart! >= timeMode.indexOf(' AA') ? 'text' : 'numeric';
+                element.selectionStart! >=
+                DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + timeMode.indexOf(' AA')
+                    ? 'text'
+                    : 'numeric';
         });
 
         return {
