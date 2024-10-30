@@ -500,6 +500,11 @@ export const ROUTES: Routes = [
         title: 'InputPhone',
     }),
     route({
+        path: DemoRoute.InputPhoneLegacy,
+        loadComponent: async () => import('../components/input-phone-legacy'),
+        title: 'InputPhone ⛔',
+    }),
+    route({
         path: DemoRoute.InputPin,
         loadComponent: async () => import('../components/input-pin'),
         title: 'InputPin',
