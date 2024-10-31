@@ -21,7 +21,7 @@ test.describe('ActionBar', () => {
     test('should show on top', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
         const example = page.locator('#top-position');
-        const showActionBarButton = example.locator('label').first();
+        const showActionBarButton = example.getByTestId('open-table-bar-on-top').first();
 
         await showActionBarButton.click();
         const actionBarExample = page.locator('tui-action-bar');
