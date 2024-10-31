@@ -1,0 +1,34 @@
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open.set(true)"
+>
+    Show TableBar on top
+</button>
+
+<tui-action-bar
+    *tuiActionBar="open()"
+    size="s"
+>
+    <span [style.width.%]="isMobile() ? 100 : null">Table bar opened</span>
+
+    <button
+        appearance="glass"
+        iconStart="@tui.trash"
+        tuiButton
+        type="button"
+        (click)="open.set(false)"
+    >
+        Remove
+    </button>
+    <button
+        iconStart="@tui.x"
+        tuiIconButton
+        type="button"
+        [appearance]="isMobile() ? 'glass' : 'icon'"
+        (click)="open.set(false)"
+    >
+        Close
+    </button>
+</tui-action-bar>
