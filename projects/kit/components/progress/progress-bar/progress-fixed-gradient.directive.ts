@@ -8,7 +8,7 @@ import {Directive, ElementRef, inject} from '@angular/core';
     },
 })
 export class TuiProgressFixedGradientDirective {
-    private nativeElement = inject(ElementRef<HTMLProgressElement>);
+    private readonly nativeElement = inject(ElementRef<HTMLProgressElement>);
 
     public get progressPercent(): number {
         const value = this.nativeElement.nativeElement.value;
