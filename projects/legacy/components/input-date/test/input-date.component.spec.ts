@@ -117,6 +117,14 @@ describe('InputDate', () => {
             expect(inputPO.value).toBe('14.03.2017');
         });
 
+        it('if there is min and an initial value and an initial value less than min - keep the initial value', () => {
+            testComponent.min = new TuiDay(2023, 5, 17);
+
+            fixture.detectChanges();
+
+            expect(inputPO.value).toBe('01.03.2017');
+        });
+
         describe('Keyboard input', () => {
             it('the passed date is inserted into the field', () => {
                 inputPO.sendText('01.03.2017');

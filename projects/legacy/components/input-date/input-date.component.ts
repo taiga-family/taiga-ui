@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_FALSE_HANDLER, TUI_LETTER_REGEXP} from '@taiga-ui/cdk/constants';
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {
     DATE_FILLER_LENGTH,
@@ -174,9 +174,13 @@ export class TuiInputDateComponent
         }
 
         this.value =
-            value.length !== DATE_FILLER_LENGTH
+            value.length !== DATE_FILLER_LENGTH || TUI_LETTER_REGEXP.test(value)
                 ? null
                 : TuiDay.normalizeParse(value, this.dateFormat.mode);
+
+        if (TUI_LETTER_REGEXP.test(this.nativeValue)) {
+            this.nativeValue = maskitoTransform(this.nativeValue, this.computedMask);
+        }
     }
 
     public override setDisabledState(): void {
