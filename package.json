@@ -110,6 +110,15 @@
                 {
                     "resolveNestedSelectors": true
                 }
+            ],
+            "color-named": [
+                "never",
+                {
+                    "ignoreProperties": [
+                        "mask",
+                        "mask-image"
+                    ]
+                }
             ]
         },
         "overrides": [
