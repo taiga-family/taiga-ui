@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER, TUI_LETTER_REGEXP} from '@taiga-ui/cdk/constants';
@@ -179,7 +179,7 @@ export class TuiInputDateComponent
                 : TuiDay.normalizeParse(value, this.dateFormat.mode);
 
         if (TUI_LETTER_REGEXP.test(this.nativeValue)) {
-            this.nativeValue = maskitoTransform(this.nativeValue, this.computedMask);
+            this.nativeValue = '';
         }
     }
 
