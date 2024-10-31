@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: w9jds/firebase-action@v13.23.0
+      - uses: w9jds/firebase-action@v13.23.1
         continue-on-error: true
         with:
           args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }} --force
