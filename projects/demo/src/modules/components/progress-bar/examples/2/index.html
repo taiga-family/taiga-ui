@@ -18,13 +18,24 @@
 <p>
     Set component's input property
     <code>color</code>
-    to get more complex color combinations.
+    to get more complex color combinations. Use directive
+    <code>tuiProgressFixedGradient</code>
+    to make gradient fixed.
 </p>
 
 <progress
     color="linear-gradient(to right, var(--tui-chart-categorical-02), var(--tui-chart-categorical-14), var(--tui-chart-categorical-12))"
     max="100"
     tuiProgressBar
+    class="progress"
+    [value]="fastValue$ | async"
+></progress>
+
+<progress
+    color="linear-gradient(to right, var(--tui-chart-categorical-02), var(--tui-chart-categorical-14), var(--tui-chart-categorical-12))"
+    max="100"
+    tuiProgressBar
+    tuiProgressFixedGradient
     class="progress"
     [value]="fastValue$ | async"
 ></progress>
