@@ -19,5 +19,6 @@ export default class Example {
         'Cards',
         'Customization',
         'Mobile',
+        'Desktop medium',
     ];
 }
