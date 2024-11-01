@@ -8,7 +8,6 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
     standalone: true,
     imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
