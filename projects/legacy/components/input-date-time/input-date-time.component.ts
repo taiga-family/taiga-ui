@@ -365,7 +365,7 @@ export class TuiInputDateTimeComponent
         return {
             ...options,
             plugins: options.plugins.concat(
-                timeMode.includes(' AA') ? inputModeSwitchPlugin : [],
+                timeMode.includes('AA') ? inputModeSwitchPlugin : [],
             ),
         };
     }
