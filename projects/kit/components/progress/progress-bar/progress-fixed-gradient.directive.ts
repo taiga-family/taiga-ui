@@ -4,7 +4,7 @@ import {Directive, ElementRef, inject} from '@angular/core';
     standalone: true,
     selector: 'progress[tuiProgressBar][tuiProgressFixedGradient]',
     host: {
-        '[style.--tui-progress-percent]': "progressPercent + '%'",
+        '[style.--tui-progress-percent.%]': 'progressPercent',
     },
 })
 export class TuiProgressFixedGradientDirective {
@@ -12,11 +12,7 @@ export class TuiProgressFixedGradientDirective {
 
     public get progressPercent(): number {
         const value = this.nativeElement.nativeElement.value;
-        const max = this.nativeElement.nativeElement.max;
-
-        if (!max) {
-            return 0;
-        }
+        const max = this.nativeElement.nativeElement.max ?? 1;
 
         return Math.min((value / max) * 100, 100);
     }

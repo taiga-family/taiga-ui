@@ -107,11 +107,12 @@
     &[tuiProgressFixedGradient] {
         .progressValue({
             border-radius: inherit;
+
             width: 100% !important;
+            margin-right: calc(-100% + var(--tui-progress-percent));
 
             clip-path: inset(0 calc(100% - var(--tui-progress-percent)) 0 0 round var(--tui-radius-m));
-
-            transition: clip-path var(--tui-duration) linear;
+            transition: all var(--tui-duration) linear;
         });
     }
 
