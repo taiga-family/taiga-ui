@@ -6,3 +6,4 @@ export const TUI_MASK_SYMBOLS_REGEXP = /[ \-_()]/g;
 export const TUI_LAST_PUNCTUATION_MARK_REGEXP = /[.,\\/#!$%\\^&\\*;:{}=\\-_`~()]$/;
 export const TUI_LATIN_REGEXP = /[A-z]/;
 export const TUI_LATIN_AND_NUMBERS_REGEXP = /[A-z|0-9]/;
+export const TUI_LETTER_REGEXP = /\p{L}/u;

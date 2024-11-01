@@ -14,7 +14,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {MaskitoOptions} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
@@ -42,6 +42,7 @@ import {
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_DROPDOWN_COMPONENT,
+    TUI_LETTER_REGEXP,
     TUI_TEXTFIELD_SIZE,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
@@ -148,10 +149,28 @@ export class TuiInputDateComponent
     }
 
     get computedMin(): TuiDay {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return this.options.min;
+        }
+
         return this.min ?? this.options.min;
     }
 
     get computedMax(): TuiDay {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return this.options.max;
+        }
+
         return this.max ?? this.options.max;
     }
 
@@ -217,12 +236,21 @@ export class TuiInputDateComponent
     }
 
     get computedMask(): MaskitoOptions {
-        return this.computeMaskOptions(
-            this.dateFormat,
-            this.dateSeparator,
-            this.computedMin,
-            this.computedMax,
-        );
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        const nativeValueIsNotSynced = this.nativeValue !== this.computedValue;
+
+        return this.activeItem || nativeValueIsNotSynced
+            ? MASKITO_DEFAULT_OPTIONS
+            : this.computeMaskOptions(
+                  this.dateFormat,
+                  this.dateSeparator,
+                  this.computedMin,
+                  this.computedMax,
+              );
     }
 
     get activeItem(): TuiNamedDay | null {
@@ -267,7 +295,7 @@ export class TuiInputDateComponent
         }
 
         this.value =
-            value.length !== DATE_FILLER_LENGTH
+            value.length !== DATE_FILLER_LENGTH || TUI_LETTER_REGEXP.test(value)
                 ? null
                 : TuiDay.normalizeParse(value, this.dateFormat);
     }
