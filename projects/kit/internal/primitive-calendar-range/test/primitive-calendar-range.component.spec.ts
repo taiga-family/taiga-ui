@@ -1,7 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiPrimitiveCalendarRangeComponent,
     TuiPrimitiveCalendarRangeModule,
@@ -10,12 +11,24 @@ import {
 describe('PrimitiveRangeCalendar component', () => {
     @Component({
         template: `
-            <tui-primitive-calendar-range></tui-primitive-calendar-range>
+            <tui-primitive-calendar-range
+                [defaultViewedMonthFirst]="defaultViewedMonthFirst"
+                [defaultViewedMonthSecond]="defaultViewedMonthSecond"
+                [markerHandler]="markerHandler"
+                [value]="value"
+            ></tui-primitive-calendar-range>
         `,
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveCalendarRangeComponent, {static: true})
         component!: TuiPrimitiveCalendarRangeComponent;
+
+        defaultViewedMonthFirst = TuiMonth.currentLocal();
+        defaultViewedMonthSecond = TuiMonth.currentLocal().append({month: 1});
+
+        value: TuiDayRange | null = null;
+
+        markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -139,6 +152,68 @@ describe('PrimitiveRangeCalendar component', () => {
             component.userViewedMonthSecond = day.append({day: 1});
 
             expect(component.cappedUserViewedMonthSecond).toBe(day);
+        });
+    });
+
+    describe('defaultViewedMonths updating', () => {
+        const defaultMonth = TuiMonth.currentLocal();
+        const updatedMonth = TuiMonth.currentLocal().append({
+            year: 1,
+        });
+
+        it('If other input updates after defaultViewedMonth was updated, new viewed months do not change', () => {
+            testComponent.defaultViewedMonthFirst = updatedMonth;
+            testComponent.defaultViewedMonthSecond = updatedMonth.append({
+                month: 1,
+            });
+            fixture.detectChanges();
+
+            testComponent.markerHandler = (day: TuiDay) =>
+                day.day % 2 === 0 ? ['first'] : ['second'];
+            fixture.detectChanges();
+
+            expect(component.userViewedMonthFirst.toString()).toBe(
+                updatedMonth.toString(),
+            );
+            expect(component.userViewedMonthSecond.toString()).toBe(
+                updatedMonth.append({month: 1}).toString(),
+            );
+        });
+
+        it('If value not selected, updating defaultViewedMonth change viewed months', () => {
+            testComponent.defaultViewedMonthFirst = updatedMonth;
+            testComponent.defaultViewedMonthSecond = updatedMonth.append({
+                month: 1,
+            });
+            fixture.detectChanges();
+
+            expect(component.userViewedMonthFirst.toString()).toBe(
+                updatedMonth.toString(),
+            );
+            expect(component.userViewedMonthSecond.toString()).toBe(
+                updatedMonth.append({month: 1}).toString(),
+            );
+        });
+
+        it('If value selected, updating defaultViewedMonth do not change viewed month', () => {
+            testComponent.value = new TuiDayRange(
+                new TuiDay(2024, 9, 25),
+                new TuiDay(2024, 9, 25),
+            );
+            fixture.detectChanges();
+
+            testComponent.defaultViewedMonthFirst = updatedMonth;
+            testComponent.defaultViewedMonthSecond = updatedMonth.append({
+                month: 1,
+            });
+            fixture.detectChanges();
+
+            expect(component.userViewedMonthFirst.toString()).toBe(
+                defaultMonth.toString(),
+            );
+            expect(component.userViewedMonthSecond.toString()).toBe(
+                defaultMonth.append({month: 1}).toString(),
+            );
         });
     });
 });
