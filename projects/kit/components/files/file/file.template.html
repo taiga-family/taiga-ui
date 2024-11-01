@@ -8,7 +8,12 @@
 </div>
 <div class="t-wrapper">
     <div class="t-text">
-        <div class="t-name">{{ name }}</div>
+        <div
+            tuiHintOverflow
+            class="t-name"
+        >
+            {{ name }}
+        </div>
         <div class="t-type">{{ type }}</div>
         <div
             *ngIf="showSize && (fileSize$ | async) as fileSize"

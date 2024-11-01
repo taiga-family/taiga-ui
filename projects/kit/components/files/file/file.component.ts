@@ -28,6 +28,7 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
+import {TuiHintOverflow} from '../../../../core';
 import type {TuiFileLike, TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
@@ -39,6 +40,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiButton,
+        TuiHintOverflow,
         TuiIcon,
         TuiLoader,
     ],
