@@ -27,6 +27,6 @@
         "@taiga-ui/kit": "^4.13.0",
         "@taiga-ui/polymorpheus": "^4.7.4",
         "rxjs": ">=7.0.0",
-        "tslib": ">=2.8.0"
+        "tslib": ">=2.8.1"
     }
 }
