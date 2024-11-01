@@ -1,7 +1,11 @@
 import {join} from 'node:path';
 
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    TuiDocumentationApiPagePO,
+    TuiDocumentationPagePO,
+    tuiGoto,
+} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
@@ -40,4 +44,13 @@ test.describe('InputFiles', () => {
             await expect(example).toHaveScreenshot(`02-${language}-input-files.png`);
         }),
     );
+
+    test('With button', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputFiles);
+        const example = new TuiDocumentationPagePO(page).getExample('#with-button');
+
+        await example.locator('button').first().click();
+
+        await expect(example).toHaveScreenshot('03-with-button.png');
+    });
 });

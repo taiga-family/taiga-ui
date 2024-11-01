@@ -20,9 +20,9 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
 
     const trimCountryPrefix = (value: string): string =>
         countryCode === '+7'
-            ? value.replace(/^(\+?7?\s?8?)\s?/, '')
+            ? value.replace(/^(\+?\s*7?\s?8?)\s?/, '')
             : value.replace(
-                  new RegExp(`^(\\+?${countryCode.replace('+', '')}?)\\s?`),
+                  new RegExp(`^(\\+?\\s*${countryCode.replace('+', '')}?)\\s?`),
                   '',
               );
 
