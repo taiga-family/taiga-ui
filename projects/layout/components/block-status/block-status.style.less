@@ -55,3 +55,32 @@ tui-block-status {
         margin-bottom: 0.75rem;
     }
 }
+
+[data-platform='web'] tui-block-status {
+    &[data-size='m'] {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font: var(--tui-font-heading-6);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        img {
+            inline-size: 6rem;
+            block-size: 6rem;
+        }
+
+        .t-block-text:not(:empty) {
+            font: var(--tui-font-text-s);
+            margin-bottom: 1.5rem;
+        }
+
+        .t-block-image {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
