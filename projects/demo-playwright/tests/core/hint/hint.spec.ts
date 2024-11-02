@@ -1,7 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import type {TuiHintDirection} from '@taiga-ui/core';
+import type {TuiHintOptions} from '@taiga-ui/core';
 
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {
@@ -14,7 +14,7 @@ test.describe('TuiHint', () => {
     });
 
     test.describe('Manual hint works', () => {
-        const directions: readonly TuiHintDirection[] = [
+        const directions: TuiHintOptions['direction'][] = [
             'bottom-left',
             'bottom-right',
             'bottom',
@@ -27,9 +27,10 @@ test.describe('TuiHint', () => {
             'top-left',
             'top-right',
             'top',
+            ['right-bottom', 'right-top'],
         ];
 
-        directions.forEach((direction) => {
+        directions.forEach((direction, directionIndex) => {
             [256, 1280].forEach((width) => {
                 test(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
                     page,
@@ -37,7 +38,7 @@ test.describe('TuiHint', () => {
                     await page.setViewportSize({width, height: 300});
                     await tuiGoto(
                         page,
-                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection=${direction}`,
+                        `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=${directionIndex}`,
                     );
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
