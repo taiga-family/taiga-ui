@@ -32,6 +32,6 @@ export class TuiInputTimeDirective extends AbstractTuiTextfieldHost<TuiInputTime
     }
 
     public override process(input: HTMLInputElement): void {
-        input.inputMode = 'numeric';
+        input.inputMode = this.host.inputMode;
     }
 }

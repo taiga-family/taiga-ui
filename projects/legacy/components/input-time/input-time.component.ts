@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {maskitoTimeOptionsGenerator} from '@maskito/kit';
+import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
@@ -86,6 +86,10 @@ export class TuiInputTimeComponent
 
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
+    }
+
+    public get inputMode(): string {
+        return this.mode.includes('AA') ? 'text' : 'numeric';
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -239,7 +243,7 @@ export class TuiInputTimeComponent
     private calculateMask(mode: TuiTimeMode, readOnly: boolean): MaskitoOptions {
         const {HH, MM, SS, MS} = this.options.maxValues;
 
-        return maskitoTimeOptionsGenerator({
+        const options = maskitoTimeOptionsGenerator({
             mode,
             step: readOnly ? 0 : 1,
             // TODO(v5): timeSegmentMaxValues: this.options.timeSegmentMaxValues
@@ -250,6 +254,17 @@ export class TuiInputTimeComponent
                 milliseconds: MS,
             },
         });
+        const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
+            element.inputMode =
+                element.selectionStart! >= mode.indexOf(' AA') ? 'text' : 'numeric';
+        });
+
+        return {
+            ...options,
+            plugins: options.plugins.concat(
+                mode.includes('AA') ? inputModeSwitchPlugin : [],
+            ),
+        };
     }
 
     @tuiPure

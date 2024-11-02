@@ -26,8 +26,8 @@
     >
         <ng-content />
         <input
-            inputmode="numeric"
             tuiTextfieldLegacy
+            [attr.inputmode]="inputMode"
         />
     </tui-primitive-textfield>
 </div>
