@@ -7,7 +7,7 @@ export type DocRoutePages = ReadonlyArray<DocRoutePage | DocRoutePageGroup>;
 
 export interface DocMeta {
     readonly name?: string; // name in figma, ex. tui-tooltip-button
-    readonly scheme?: 'taiga' | 'beaver'; // scheme name in db
+    readonly scheme?: 'beaver' | 'taiga'; // scheme name in db
     readonly status?: 'alpha' | 'beta' | 'stable';
     readonly version?: string;
     readonly qualifiedName?: string; // name in Taiga UI, ex. Hint
