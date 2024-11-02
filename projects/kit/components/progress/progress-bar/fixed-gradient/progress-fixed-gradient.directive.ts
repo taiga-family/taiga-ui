@@ -6,7 +6,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     standalone: true,
@@ -28,9 +28,8 @@ class TuiProgressFixedGradientStyles {}
     },
 })
 export class TuiProgressFixedGradientDirective {
-    protected readonly nothing = tuiWithStyles(TuiProgressFixedGradientStyles);
-
     private readonly nativeElement = inject(ElementRef<HTMLProgressElement>);
+    protected readonly nothing = tuiWithStyles(TuiProgressFixedGradientStyles);
 
     protected get progressPercent(): number {
         const value = this.nativeElement.nativeElement.value;
