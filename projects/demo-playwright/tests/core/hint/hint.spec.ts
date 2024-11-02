@@ -14,7 +14,7 @@ test.describe('TuiHint', () => {
     });
 
     test.describe('Manual hint works', () => {
-        const directions: TuiHintOptions['direction'][] = [
+        const directions: Array<TuiHintOptions['direction']> = [
             'bottom-left',
             'bottom-right',
             'bottom',
