@@ -11,7 +11,7 @@ import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
-import {TUI_FALSE_HANDLER, TUI_LETTER_REGEXP} from '@taiga-ui/cdk/constants';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {
     DATE_FILLER_LENGTH,
@@ -173,14 +173,14 @@ export class TuiInputDateComponent
             this.onOpenChange(true);
         }
 
-        this.value =
-            value.length !== DATE_FILLER_LENGTH || TUI_LETTER_REGEXP.test(value)
-                ? null
-                : TuiDay.normalizeParse(value, this.dateFormat.mode);
-
-        if (TUI_LETTER_REGEXP.test(this.nativeValue)) {
+        if (this.activeItem) {
             this.nativeValue = '';
         }
+
+        this.value =
+            value.length !== DATE_FILLER_LENGTH || this.activeItem
+                ? null
+                : TuiDay.normalizeParse(value, this.dateFormat.mode);
     }
 
     public override setDisabledState(): void {
