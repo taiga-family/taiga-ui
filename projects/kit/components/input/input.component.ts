@@ -76,7 +76,7 @@ export class TuiInputComponent
     }
 
     openedExternally = false;
-    open = true;
+    open = false;
 
     constructor(
         @Optional()
