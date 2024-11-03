@@ -125,13 +125,13 @@ export class TuiInputComponent
 
     onActiveZone(active: boolean): void {
         this.updateFocused(active);
-        this.open = false;
     }
 
     handleOption(item: unknown): void {
         this.setNativeValue(String(item));
         this.focusInput();
         this.value = String(item);
+        this.open = false;
     }
 
     protected getFallbackValue(): string {
