@@ -24,7 +24,9 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_FIRST_DAY,
     TUI_IS_MOBILE,
+    TUI_LAST_DAY,
     TUI_LAST_DISPLAYED_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
@@ -155,7 +157,7 @@ export class TuiInputDateComponent
          * https://github.com/taiga-family/maskito/issues/604
          */
         if (this.value && this.control?.pristine) {
-            return this.options.min;
+            return TUI_FIRST_DAY;
         }
 
         return this.min ?? this.options.min;
@@ -168,7 +170,7 @@ export class TuiInputDateComponent
          * https://github.com/taiga-family/maskito/issues/604
          */
         if (this.value && this.control?.pristine) {
-            return this.options.max;
+            return TUI_LAST_DAY;
         }
 
         return this.max ?? this.options.max;
