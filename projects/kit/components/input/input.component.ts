@@ -76,7 +76,7 @@ export class TuiInputComponent
     }
 
     openedExternally = false;
-    open = false;
+    open = true;
 
     constructor(
         @Optional()
@@ -111,6 +111,10 @@ export class TuiInputComponent
         );
     }
 
+    get canOpen(): boolean {
+        return this.interactive && !!this.datalist;
+    }
+
     onValueChange(value: string): void {
         if (!this.openedExternally) {
             this.open = true;
@@ -121,6 +125,7 @@ export class TuiInputComponent
 
     onActiveZone(active: boolean): void {
         this.updateFocused(active);
+        this.open = false;
     }
 
     handleOption(item: unknown): void {
