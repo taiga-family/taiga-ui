@@ -44,7 +44,6 @@ import {
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_DROPDOWN_COMPONENT,
-    TUI_LETTER_REGEXP,
     TUI_TEXTFIELD_SIZE,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
@@ -296,8 +295,12 @@ export class TuiInputDateComponent
             this.onOpenChange(true);
         }
 
+        if (this.activeItem) {
+            this.nativeValue = '';
+        }
+
         this.value =
-            value.length !== DATE_FILLER_LENGTH || TUI_LETTER_REGEXP.test(value)
+            value.length !== DATE_FILLER_LENGTH || this.activeItem
                 ? null
                 : TuiDay.normalizeParse(value, this.dateFormat);
     }
