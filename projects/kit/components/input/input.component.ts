@@ -5,6 +5,7 @@ import {
     ContentChild,
     HostBinding,
     Inject,
+    Input,
     Optional,
     Self,
     TemplateRef,
@@ -66,6 +67,15 @@ export class TuiInputComponent
         TuiContextWithImplicit<TuiActiveZoneDirective>
     >;
 
+    @Input()
+    set isOpened(value: boolean | null) {
+        if (value !== null) {
+            this.open = value;
+            this.openedExternally = true;
+        }
+    }
+
+    openedExternally = false;
     open = false;
 
     constructor(
@@ -101,13 +111,12 @@ export class TuiInputComponent
         );
     }
 
-    get canOpen(): boolean {
-        return this.interactive && !!this.datalist;
-    }
-
     onValueChange(value: string): void {
+        if (!this.openedExternally) {
+            this.open = true;
+        }
+
         this.value = value;
-        this.open = true;
     }
 
     onActiveZone(active: boolean): void {
@@ -118,7 +127,6 @@ export class TuiInputComponent
         this.setNativeValue(String(item));
         this.focusInput();
         this.value = String(item);
-        this.open = false;
     }
 
     protected getFallbackValue(): string {

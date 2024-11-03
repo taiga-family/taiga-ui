@@ -3,25 +3,43 @@
     tuiTextfieldSize="m"
     class="t-input"
     [formControl]="search"
+    [isOpened]="isOpened$ | async"
     [tuiAutoFocus]="!!sidebar"
     [tuiTextfieldCleaner]="true"
     [tuiTextfieldIconLeft]="docIcons.search"
     [tuiTextfieldLabelOutside]="true"
 >
     {{ searchText }}
-    <ng-container *ngIf="canOpen">
-        <tui-data-list *tuiDataList>
-            <tui-opt-group
-                *ngFor="let group of filtered$ | async; let index = index"
-                [label]="labels[index] || ''"
-            >
-                <ng-container *ngFor="let item of group">
+
+    <tui-data-list *tuiDataList>
+        <tui-opt-group
+            *ngFor="let group of filtered$ | async; let index = index"
+            [label]="labels[index] || ''"
+        >
+            <ng-container *ngFor="let item of group">
+                <a
+                    *ngIf="item.route.includes('://'); else internal"
+                    tuiOption
+                    [attr.rel]="item.rel"
+                    [href]="item.route"
+                    [target]="item.target || '_self'"
+                >
+                    {{ item.title }}
+                    <tui-svg
+                        *polymorpheusOutlet="item.icon as icon"
+                        class="t-icon"
+                        [src]="icon"
+                    ></tui-svg>
+                </a>
+
+                <ng-template #internal>
                     <a
-                        *ngIf="item.route.includes('://'); else internal"
                         tuiOption
                         [attr.rel]="item.rel"
-                        [href]="item.route"
+                        [fragment]="item.fragment"
+                        [routerLink]="item.route"
                         [target]="item.target || '_self'"
+                        (click)="onClick(input)"
                     >
                         {{ item.title }}
                         <tui-svg
@@ -30,28 +48,10 @@
                             [src]="icon"
                         ></tui-svg>
                     </a>
-
-                    <ng-template #internal>
-                        <a
-                            tuiOption
-                            [attr.rel]="item.rel"
-                            [fragment]="item.fragment"
-                            [routerLink]="item.route"
-                            [target]="item.target || '_self'"
-                            (click)="onClick(input)"
-                        >
-                            {{ item.title }}
-                            <tui-svg
-                                *polymorpheusOutlet="item.icon as icon"
-                                class="t-icon"
-                                [src]="icon"
-                            ></tui-svg>
-                        </a>
-                    </ng-template>
-                </ng-container>
-            </tui-opt-group>
-        </tui-data-list>
-    </ng-container>
+                </ng-template>
+            </ng-container>
+        </tui-opt-group>
+    </tui-data-list>
 </tui-input>
 
 <nav class="t-navigation">

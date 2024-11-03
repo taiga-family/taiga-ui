@@ -56,8 +56,12 @@ export class TuiDocNavigationComponent {
 
     readonly search = new FormControl('');
 
+    readonly isOpened$ = tuiControlValue<string>(this.search).pipe(
+        map(val => this.isValidSearch(val)),
+    );
+
     readonly filtered$ = tuiControlValue<string>(this.search).pipe(
-        filter(search => search.trim().length > 2),
+        filter(val => this.isValidSearch(val)),
         map(search => this.filterItems(this.flattenSubPages(this.items), search)),
     );
 
@@ -109,12 +113,12 @@ export class TuiDocNavigationComponent {
             .subscribe(anchor => this.navigateToAnchorLink(anchor));
     }
 
-    get canOpen(): boolean {
-        return (this.search.value?.length ?? 0) > 2;
-    }
-
     get itemsWithoutSections(): TuiDocPages {
         return this.items[this.items.length - 1];
+    }
+
+    isValidSearch(search: string): boolean {
+        return search.trim().length > 2;
     }
 
     $pages(pages: any): readonly TuiDocPage[] {
