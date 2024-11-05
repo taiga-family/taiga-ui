@@ -24,7 +24,9 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_FIRST_DAY,
     TUI_IS_MOBILE,
+    TUI_LAST_DAY,
     TUI_LAST_DISPLAYED_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
@@ -148,10 +150,28 @@ export class TuiInputDateComponent
     }
 
     get computedMin(): TuiDay {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_FIRST_DAY;
+        }
+
         return this.min ?? this.options.min;
     }
 
     get computedMax(): TuiDay {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_LAST_DAY;
+        }
+
         return this.max ?? this.options.max;
     }
 
@@ -222,8 +242,7 @@ export class TuiInputDateComponent
          * after solving this issue:
          * https://github.com/taiga-family/maskito/issues/604
          */
-        const nativeValueIsNotSynced =
-            this.textfield?.nativeFocusableElement?.value !== this.computedValue;
+        const nativeValueIsNotSynced = this.nativeValue !== this.computedValue;
 
         return this.activeItem || nativeValueIsNotSynced
             ? MASKITO_DEFAULT_OPTIONS
@@ -276,8 +295,12 @@ export class TuiInputDateComponent
             this.onOpenChange(true);
         }
 
+        if (this.activeItem) {
+            this.nativeValue = '';
+        }
+
         this.value =
-            value.length !== DATE_FILLER_LENGTH
+            value.length !== DATE_FILLER_LENGTH || this.activeItem
                 ? null
                 : TuiDay.normalizeParse(value, this.dateFormat);
     }
