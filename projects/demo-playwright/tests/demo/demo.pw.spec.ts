@@ -1,7 +1,7 @@
 import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {tuiIsFlakyExample} from './is-flaky-examples';
+import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
