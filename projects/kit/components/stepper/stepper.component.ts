@@ -98,9 +98,11 @@ export class TuiStepperComponent {
     }
 
     indexOf(step: HTMLElement): number {
-        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
+        const index = tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
         );
+
+        return index < 0 ? NaN : index;
     }
 
     isActive(index: number): boolean {
