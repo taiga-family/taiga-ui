@@ -162,7 +162,7 @@
         "@taiga-ui/browserslist-config": "0.231.0",
         "@taiga-ui/commitlint-config": "0.231.0",
         "@taiga-ui/cspell-config": "0.231.0",
-        "@taiga-ui/design-tokens": "0.146.0",
+        "@taiga-ui/design-tokens": "0.147.0",
         "@taiga-ui/eslint-plugin-experience": "0.231.0",
         "@taiga-ui/event-plugins": "4.3.1",
         "@taiga-ui/jest-config": "0.231.0",
