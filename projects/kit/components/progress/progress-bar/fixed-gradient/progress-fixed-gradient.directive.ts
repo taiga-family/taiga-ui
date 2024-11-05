@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    ElementRef,
-    inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
@@ -28,12 +27,12 @@ class TuiProgressFixedGradientStyles {}
     },
 })
 export class TuiProgressFixedGradientDirective {
-    private readonly nativeElement = inject(ElementRef<HTMLProgressElement>);
+    private readonly nativeProgress = tuiInjectElement<HTMLProgressElement>();
     protected readonly nothing = tuiWithStyles(TuiProgressFixedGradientStyles);
 
     protected get progressPercent(): number {
-        const value = this.nativeElement.nativeElement.value;
-        const max = this.nativeElement.nativeElement.max ?? 1;
+        const value = this.nativeProgress.value;
+        const max = this.nativeProgress.max ?? 1;
 
         return Math.min((value / max) * 100, 100);
     }
