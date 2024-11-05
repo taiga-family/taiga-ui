@@ -14,19 +14,15 @@
         "e2e": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "playwright test --config {projectRoot}/playwright.config.ts"
-            },
-            "dependsOn": [
-                {
-                    "target": "type-check",
-                    "params": "ignore"
-                }
-            ]
+                "command": "playwright test --config {projectRoot}/playwright.config.ts",
+                "forwardAllArgs": true
+            }
         },
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx e2e {projectName} -- --ui --debug --update-snapshots"
+                "command": "playwright test --config {projectRoot}/playwright.config.ts --ui --debug --update-snapshots",
+                "forwardAllArgs": true
             }
         }
     }
