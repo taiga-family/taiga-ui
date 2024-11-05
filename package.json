@@ -96,6 +96,21 @@
                 "rules": {
                     "@angular-eslint/prefer-standalone": "off"
                 }
+            },
+            {
+                "files": [
+                    "**/*.ts"
+                ],
+                "rules": {
+                    "@typescript-eslint/switch-exhaustiveness-check": [
+                        "error",
+                        {
+                            "allowDefaultCaseForExhaustiveSwitch": true,
+                            "considerDefaultExhaustiveForUnions": true,
+                            "requireDefaultForNonUnion": false
+                        }
+                    ]
+                }
             }
         ],
         "root": true
@@ -140,23 +155,23 @@
         "@angular/forms": "16.2.12",
         "@angular/platform-browser": "16.2.12",
         "@angular/router": "16.2.12",
-        "@nx/angular": "20.0.6",
-        "@nx/jest": "20.0.6",
-        "@nx/workspace": "20.0.6",
+        "@nx/angular": "20.0.8",
+        "@nx/jest": "20.0.8",
+        "@nx/workspace": "20.0.8",
         "@schematics/angular": "16.2.16",
-        "@taiga-ui/browserslist-config": "0.228.0",
-        "@taiga-ui/commitlint-config": "0.228.0",
-        "@taiga-ui/cspell-config": "0.228.0",
+        "@taiga-ui/browserslist-config": "0.231.0",
+        "@taiga-ui/commitlint-config": "0.231.0",
+        "@taiga-ui/cspell-config": "0.231.0",
         "@taiga-ui/design-tokens": "0.146.0",
-        "@taiga-ui/eslint-plugin-experience": "0.228.0",
+        "@taiga-ui/eslint-plugin-experience": "0.231.0",
         "@taiga-ui/event-plugins": "4.3.1",
-        "@taiga-ui/jest-config": "0.228.0",
-        "@taiga-ui/prettier-config": "0.228.0",
-        "@taiga-ui/stylelint-config": "0.228.0",
-        "@taiga-ui/tsconfig": "0.228.0",
+        "@taiga-ui/jest-config": "0.231.0",
+        "@taiga-ui/prettier-config": "0.231.0",
+        "@taiga-ui/stylelint-config": "0.231.0",
+        "@taiga-ui/tsconfig": "0.231.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
-        "@types/node": "22.8.6",
+        "@types/node": "22.9.0",
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
         "husky": "9.1.6",
@@ -164,13 +179,13 @@
         "ng-morph": "4.8.4",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
-        "nx": "20.0.6",
+        "nx": "20.0.8",
         "rxjs": "7.8.1",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
-        "webpack": "5.95.0"
+        "webpack": "5.96.1"
     },
     "engines": {
         "node": ">= 20",

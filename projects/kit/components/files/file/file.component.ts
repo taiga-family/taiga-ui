@@ -19,6 +19,7 @@ import {
     TuiAppearance,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core/directives/appearance';
+import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import type {TuiLanguage} from '@taiga-ui/i18n/types';
@@ -39,6 +40,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiButton,
+        TuiHintOverflow,
         TuiIcon,
         TuiLoader,
     ],
