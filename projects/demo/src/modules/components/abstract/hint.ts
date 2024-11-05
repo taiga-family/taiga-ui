@@ -7,7 +7,7 @@ export abstract class AbstractExampleTuiHint {
 
     public readonly directionVariants = [
         ...TUI_HINT_DIRECTIONS,
-        ['right-bottom', 'right-top'] satisfies TuiHintDirection[],
+        ['bottom', 'left'] satisfies TuiHintDirection[],
     ];
 
     public direction = this.directionVariants[0]!;

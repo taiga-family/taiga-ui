@@ -27,7 +27,7 @@ test.describe('TuiHint', () => {
             'top-left',
             'top-right',
             'top',
-            ['right-bottom', 'right-top'],
+            ['bottom', 'left'],
         ];
 
         directions.forEach((direction, directionIndex) => {
@@ -115,5 +115,21 @@ test.describe('TuiHint', () => {
         await example.locator('[tuiTooltip]').nth(0).hover();
 
         await expect(example).toHaveScreenshot('05-tooltip-bottom.png');
+    });
+
+    test('Hint direction with priority -> bottom, left', async ({page}) => {
+        await page.setViewportSize({width: 1280, height: 300});
+        await tuiGoto(
+            page,
+            `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection$=12`,
+        );
+
+        await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
+
+        await expect(page).toHaveScreenshot(`06-hint-direction__bottom.png`);
+
+        await page.setViewportSize({width: 1280, height: 150});
+
+        await expect(page).toHaveScreenshot(`06-hint-direction__left.png`);
     });
 });

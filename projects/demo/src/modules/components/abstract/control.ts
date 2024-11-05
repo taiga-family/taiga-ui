@@ -37,7 +37,7 @@ export abstract class AbstractExampleTuiControl
 
     public readonly hintDirectionVariants = [
         ...TUI_HINT_DIRECTIONS,
-        ['right-bottom', 'right-top'] satisfies TuiHintDirection[],
+        ['bottom', 'left'] satisfies TuiHintDirection[],
     ];
 
     public readonly hintAppearanceVariants = ['', 'error', 'dark'];

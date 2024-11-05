@@ -37,7 +37,7 @@ export class InheritedDocumentation {
     protected readonly booleanVariants: readonly boolean[] = [false, true];
     protected readonly directionVariants = [
         ...TUI_HINT_DIRECTIONS,
-        ['right-bottom', 'right-top'] satisfies TuiHintDirection[],
+        ['bottom', 'left'] satisfies TuiHintDirection[],
     ];
     protected readonly appearanceVariants = ['', 'error', 'dark'];
     protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
