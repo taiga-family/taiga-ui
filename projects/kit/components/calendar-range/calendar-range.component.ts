@@ -49,14 +49,14 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      * @deprecated use `item`
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
-    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
-    protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
+    protected month: TuiMonth = TuiMonth.currentLocal();
 
-    @Input()
-    public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
+    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -100,6 +100,17 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             });
     }
 
+    @Input()
+    public set defaultViewedMonth(month: TuiMonth) {
+        if (!this.value) {
+            this.month = month;
+        }
+    }
+
+    public get defaultViewedMonth(): TuiMonth {
+        return this.month;
+    }
+
     /**
      * @deprecated use `item`
      */
@@ -115,7 +126,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     public ngOnChanges(): void {
-        this.initDefaultViewedMonth();
+        if (!this.value) {
+            this.initDefaultViewedMonth();
+        }
     }
 
     public ngOnInit(): void {
@@ -240,13 +253,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
 
     private initDefaultViewedMonth(): void {
         if (this.value) {
-            this.defaultViewedMonth = this.items.length ? this.value.to : this.value.from;
-        } else if (this.max && this.defaultViewedMonth.monthSameOrAfter(this.max)) {
-            this.defaultViewedMonth = this.items.length
-                ? this.max
-                : this.max.append({month: -1});
-        } else if (this.min && this.defaultViewedMonth.monthSameOrBefore(this.min)) {
-            this.defaultViewedMonth = this.min;
+            this.month = this.items.length ? this.value.to : this.value.from;
+        } else if (this.max && this.month.monthSameOrAfter(this.max)) {
+            this.month = this.items.length ? this.max : this.max.append({month: -1});
+        } else if (this.min && this.month.monthSameOrBefore(this.min)) {
+            this.month = this.min;
         }
     }
 
