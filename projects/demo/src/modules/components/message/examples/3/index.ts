@@ -8,7 +8,6 @@ import {TuiMessage} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiLink, TuiMessage],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
