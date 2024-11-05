@@ -11,7 +11,7 @@ import {tuiScrollFrom, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {SCROLL_REF_SELECTOR} from '@taiga-ui/core/components/scrollbar';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, Observable, Subscription} from 'rxjs';
+import {distinctUntilChanged, map, Observable, Subscription} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
@@ -43,6 +43,7 @@ export class TuiElasticStickyService extends Observable<number> {
                                     0,
                                 ),
                             ),
+                            distinctUntilChanged(),
                             tuiZoneOptimized(this.zone),
                             takeUntilDestroyed(this.destroyRef),
                         )
