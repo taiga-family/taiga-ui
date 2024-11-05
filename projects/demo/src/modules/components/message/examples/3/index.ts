@@ -6,7 +6,7 @@ import {TuiMessage} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiMessage, TuiLink],
+    imports: [TuiLink, TuiMessage],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
