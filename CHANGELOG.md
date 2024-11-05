@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.97.0](https://github.com/taiga-family/taiga-ui/compare/v3.96.0...v3.97.0) (2024-11-05)
+
+### Features
+
+- **addon-mobile:** `MobileCalendar` add (mousedown.prevent)
+  ([5b90b0f](https://github.com/taiga-family/taiga-ui/commit/5b90b0fdc21a6094e6c447a7f652587da79c53c6))
+- **core:** `Calendar` not switch to large date
+  ([48283fc](https://github.com/taiga-family/taiga-ui/commit/48283fc33e9f16f5d9f03ea01fb2a4788e860467))
+- **core:** `Calendar` not switch to large date ([#9586](https://github.com/taiga-family/taiga-ui/issues/9586))
+  ([397316a](https://github.com/taiga-family/taiga-ui/commit/397316a48f308e67806d99eb93fd2a3a2f440da5))
+
+### Bug Fixes
+
+- **kit:** `CalendarRange` show actual `defaultViewedMonth`
+  ([363d164](https://github.com/taiga-family/taiga-ui/commit/363d1646dee4231ff8f2e28c0ebf5d3a0e87b75c))
+- **kit:** `CalendarRange` shows actual `defaultViewedMonth`
+  ([#9009](https://github.com/taiga-family/taiga-ui/issues/9009))
+  ([3446afd](https://github.com/taiga-family/taiga-ui/commit/3446afdb942227afe037acc3f0a048c98abb0e75))
+- **kit:** `InputDate` click any day after `Until today` selected
+  ([1a15f35](https://github.com/taiga-family/taiga-ui/commit/1a15f35c4550f2ed67a2df019943ad37b7731f33))
+- **kit:** `InputDate` click any day after `Until today` selected
+  ([#9582](https://github.com/taiga-family/taiga-ui/issues/9582))
+  ([6d8a4df](https://github.com/taiga-family/taiga-ui/commit/6d8a4dfbf38438e61f04f577354bb69e1bb99b7b))
+- **kit:** `InputDate` hold initial value with min/max defined
+  ([#9623](https://github.com/taiga-family/taiga-ui/issues/9623))
+  ([18a40c2](https://github.com/taiga-family/taiga-ui/commit/18a40c208f4d843a975830c59eb32bff6d615d68))
+- **kit:** `Stepper` fix flashing styles ([#9640](https://github.com/taiga-family/taiga-ui/issues/9640))
+  ([f47554a](https://github.com/taiga-family/taiga-ui/commit/f47554ab343760e31daa0cc55232d27f79ef1180))
+
 ## [3.96.0](https://github.com/taiga-family/taiga-ui/compare/v3.95.2...v3.96.0) (2024-10-21)
 
 ### Features
