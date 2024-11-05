@@ -75,11 +75,12 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
         this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
-        if (this.checkPosition(this.points[this.direction], width, height)) {
-            return this.points[this.direction];
-        }
+        const priorityDirections = Array.isArray(this.direction)
+            ? this.direction
+            : [this.direction];
+        const sortedDirections = priorityDirections.concat(TUI_HINT_DIRECTIONS);
 
-        const direction = TUI_HINT_DIRECTIONS.find((direction) =>
+        const direction = sortedDirections.find((direction) =>
             this.checkPosition(this.points[direction], width, height),
         );
 
