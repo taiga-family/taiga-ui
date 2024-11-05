@@ -948,6 +948,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Message',
+        keywords: 'message, sms, сообщение, смс',
+        route: DemoRoute.Message,
+        meta: {},
+    },
+    {
+        section: 'Components',
         title: 'Comment',
         keywords: 'comment, tip, коммент',
         route: DemoRoute.Comment,
