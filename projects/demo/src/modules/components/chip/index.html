@@ -15,5 +15,38 @@
         />
     </ng-template>
 
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-chip
+                [appearance]="appearance.appearance"
+                [iconEnd]="icons.iconEnd"
+                [iconStart]="icons.iconStart"
+                [size]="size"
+            >
+                Chip
+            </tui-chip>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeL"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Size of the chip
+            </tr>
+            <tbody
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['state', 'focus', 'mode']"
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+        </table>
+    </ng-template>
+
     <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>
