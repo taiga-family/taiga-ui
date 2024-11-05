@@ -22,6 +22,7 @@ jobs:
         continue-on-error: true
       - uses: taiga-family/ci/actions/setup/node@v1.94.0
 
+      - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
