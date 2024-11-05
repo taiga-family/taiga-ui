@@ -1,11 +1,22 @@
-<tui-textfield>
-    <strong>π</strong>
-    -value
+<tui-textfield [tuiTextfieldCleaner]="false">
+    <label tuiLabel>Flat angle</label>
 
     <input
+        #input
         placeholder="3,14"
         tuiTextfield
         [maskito]="options"
         [(ngModel)]="value"
     />
+
+    <button
+        *ngIf="value"
+        appearance="icon"
+        iconStart="@tui.x"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        (click)="clear()"
+        (pointerdown.silent.prevent)="input.focus()"
+    ></button>
 </tui-textfield>

@@ -15,10 +15,53 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
-            [description]="index === 3 ? 'Example of input-password and input-copy with interactive icons' : ''"
+            [description]="description"
             [heading]="example"
             [id]="example | tuiKebab"
-        />
+        >
+            <ng-template #description>
+                <ng-container [ngSwitch]="index">
+                    <span *ngSwitchCase="3">Example of input-password and input-copy with interactive icons</span>
+
+                    <div *ngSwitchCase="4">
+                        We recommends using
+                        <a
+                            href="https://maskito.dev"
+                            target="_blank"
+                            tuiLink
+                        >
+                            Maskito
+                        </a>
+                        for input masking.
+                        <strong>Maskito</strong>
+                        is supported by
+                        <a
+                            tuiLink
+                            [routerLink]="routes.Related"
+                        >
+                            Taiga Family
+                        </a>
+                        team and it is already peer-dependency of
+                        <code>&#64;taiga-ui/kit</code>
+                        library.
+
+                        <p class="tui-space_bottom-0">
+                            This example demonstrates how to use built-in
+                            <a
+                                href="https://maskito.dev/kit/number"
+                                target="_blank"
+                                tuiLink
+                            >
+                                Number
+                            </a>
+                            mask with postfix and augment it by several
+                            <strong>Maskito</strong>
+                            's plugins.
+                        </p>
+                    </div>
+                </ng-container>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
