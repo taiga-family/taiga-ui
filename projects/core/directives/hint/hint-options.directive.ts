@@ -36,7 +36,7 @@ export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
 
 export interface TuiHintOptions {
     readonly appearance: string;
-    readonly direction: TuiHintDirection;
+    readonly direction: TuiHintDirection | TuiHintDirection[];
     readonly hideDelay: number;
     readonly icon: string;
     readonly showDelay: number;
