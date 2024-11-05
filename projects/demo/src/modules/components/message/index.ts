@@ -4,7 +4,6 @@ import {TuiDemo} from '@demo/utils';
 
 @Component({
     standalone: true,
-    selector: 'example-message',
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
