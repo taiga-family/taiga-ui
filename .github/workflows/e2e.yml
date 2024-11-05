@@ -98,9 +98,25 @@ jobs:
     name: Playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.94.0
-      - uses: taiga-family/ci/actions/setup/node@v1.94.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.94.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.93.5
+      - uses: taiga-family/ci/actions/setup/node@v1.93.5
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
+      - uses: actions/cache/restore@v4.1.2
+        id: playwright-cache
+        with:
+          path: |
+            ~/Library/Caches/ms-playwright
+            ~/.cache/ms-playwright
+            **/node_modules/playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.1.2
@@ -158,8 +174,7 @@ jobs:
   playwright-composite-result:
     name: Playwright E2E Tests matrix result
     if: ${{ always() }}
-    needs:
-      - playwright
+    needs: [playwright]
     runs-on: ubuntu-latest
     steps:
       - run: |
