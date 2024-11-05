@@ -1,5 +1,7 @@
+@import '../variables/media.scss';
+
 @mixin wrapper-hover {
-    @media (hover: hover) {
+    @media ($tui-mouse) {
         &:hover:not(._no-hover),
         &[data-state='hover'] {
             @content;
