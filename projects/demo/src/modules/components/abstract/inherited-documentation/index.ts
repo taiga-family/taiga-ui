@@ -5,8 +5,8 @@ import {
     TuiDocDocumentation,
     TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
-import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 import type {TuiHintDirection} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../control';
