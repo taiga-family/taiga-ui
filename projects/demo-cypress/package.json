@@ -4,6 +4,6 @@
     "devDependencies": {
         "@nx/cypress": "20.0.8",
         "cypress": "13.15.1",
-        "cypress-image-diff-js": "2.2.2"
+        "cypress-image-diff-js": "2.3.0"
     }
 }
