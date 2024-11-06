@@ -8,11 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.96.0
-      - run: gh cache delete ${{ env.CACHE_DIST_KEY }}
         continue-on-error: true
+      - run: |
+          gh cache list --ref $BRANCH > cache.log && cat cache.log
+
+          for cacheId in $(gh cache list --ref $BRANCH --json id | jq -r .[].id); do
+              echo "> gh cache delete $cacheId"
+              gh cache delete $cacheId
+          done
 
   delete-firebase-channel:
     runs-on: ubuntu-latest
