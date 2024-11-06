@@ -50,7 +50,7 @@ test.describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `components/input-date-range/API?tuiTextfieldSize=${size}`,
+                    `${DemoRoute.InputDateRange}/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDateRange.textfield.click();
@@ -177,7 +177,7 @@ test.describe('InputDateRange', () => {
 
             await tuiGoto(
                 page,
-                'components/input-date-range/API?items$=1&sandboxExpanded=true',
+                `${DemoRoute.InputDateRange}/API?items$=1&sandboxExpanded=true`,
             );
 
             await inputDateRange.textfield.click();
@@ -197,7 +197,7 @@ test.describe('InputDateRange', () => {
         });
 
         test('Calendar shows end of period, when selected any range', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-range/API?items$=1');
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
 
             await inputDateRange.textfield.click();
             await inputDateRange.selectItem(0);
@@ -218,7 +218,7 @@ test.describe('InputDateRange', () => {
 
             await expect(inputDateRange.textfield).toHaveValue('');
             await expect(inputDateRange.textfield).toHaveScreenshot(
-                '12-input-date-range.png',
+                '10-input-date-range.png',
             );
         });
 
@@ -230,7 +230,7 @@ test.describe('InputDateRange', () => {
 
             await expect(inputDateRange.textfield).toHaveValue('Today');
             await expect(inputDateRange.textfield).toHaveScreenshot(
-                '13-input-date-range.png',
+                '11-input-date-range.png',
             );
         });
 
