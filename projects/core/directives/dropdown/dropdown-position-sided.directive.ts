@@ -1,10 +1,10 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
+import {tuiEmitWhenChanged} from '@taiga-ui/core/utils';
 
-import {TuiDropdownService} from './dropdown.service';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
@@ -17,14 +17,17 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vertical = inject(TuiDropdownPosition);
-    private readonly dropdownService = inject(TuiDropdownService);
     private previous = this.options.direction || 'bottom';
+    private lastDirection!: TuiVerticalDirection;
 
     @Input()
     public tuiDropdownSided: boolean | string = '';
 
     @Input()
     public tuiDropdownSidedOffset = 4;
+
+    @Output('tuiDropdownDirectionChange')
+    public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
 
     public readonly type = 'dropdown';
 
@@ -58,12 +61,22 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
             (available[this.previous] > minHeight && direction) ||
             this.previous === better
         ) {
+            this.emitDirection(better);
+
             return [position[this.previous], left];
         }
 
         this.previous = better;
-        this.dropdownService.publishDropdownDirection(better);
+        this.emitDirection(better);
 
         return [position[better], left];
+    }
+
+    public emitDirection(direction: TuiVerticalDirection): void {
+        this.lastDirection = tuiEmitWhenChanged<TuiVerticalDirection>(
+            direction,
+            this.lastDirection,
+            this.directionChange,
+        );
     }
 }

@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
@@ -8,9 +8,9 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
+import {tuiEmitWhenChanged} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TuiHintDirective} from './hint.directive';
-import {TuiHintService} from './hint.service';
 import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
 import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
 
@@ -30,16 +30,19 @@ export class TuiHintPosition extends TuiPositionAccessor {
         inject(TuiHintDirective),
     );
 
-    private readonly hintService = inject(TuiHintService);
-
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
+    private lastDirection!: TuiHintDirection;
+
     @Input('tuiHintDirection')
     public direction: TuiHintOptions['direction'] = inject(TUI_HINT_OPTIONS).direction;
+
+    @Output('tuiHintDirectionChange')
+    public readonly directionChange = new EventEmitter<TuiHintDirection>();
 
     public readonly type = 'hint';
 
@@ -87,7 +90,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
             this.checkPosition(this.points[direction], width, height),
         );
 
-        this.hintService.publishHintDirection(direction || this.fallback);
+        this.lastDirection = tuiEmitWhenChanged<TuiHintDirection>(
+            direction || this.fallback,
+            this.lastDirection,
+            this.directionChange,
+        );
 
         return this.points[direction || this.fallback];
     }
