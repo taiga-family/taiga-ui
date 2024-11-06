@@ -362,6 +362,19 @@ describe('rangeCalendarComponent', () => {
 
             expect(component.defaultViewedMonth.toString()).toBe(defaultMonth.toString());
         });
+
+        it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
+            testComponent.value = new TuiDayRange(
+                TuiDay.currentLocal().append({month: 1}),
+                TuiDay.currentLocal().append({month: 1}),
+            );
+            fixture.detectChanges();
+
+            component['onMonthChange'](updatedMonth);
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+        });
     });
 
     function getCalendar(): DebugElement | null {

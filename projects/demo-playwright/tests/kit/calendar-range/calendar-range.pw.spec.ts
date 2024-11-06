@@ -64,6 +64,24 @@ test.describe('CalendarRange', () => {
                 '05-calendar-range-correct-display-defaults-items-and-values.png',
             );
         });
+
+        test.describe('With value', () => {
+            test('Month switching via chevron', async () => {
+                example = documentationPage.getExample('#with-value');
+                calendarRange = new TuiCalendarRangePO(
+                    example.locator('tui-calendar-range'),
+                );
+
+                const getPreviousMonthChevron = (): Locator =>
+                    example.locator('tui-spin-button > button').first();
+
+                await getPreviousMonthChevron().click();
+
+                await expect(example).toHaveScreenshot(
+                    '07-calendar-range-with-value-click-chevron.png',
+                );
+            });
+        });
     });
 
     test.describe('API', () => {

@@ -202,7 +202,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected onMonthChange(month: TuiMonth): void {
-        this.defaultViewedMonth = month;
+        this.month = month;
     }
 
     protected onDayClick(day: TuiDay): void {
