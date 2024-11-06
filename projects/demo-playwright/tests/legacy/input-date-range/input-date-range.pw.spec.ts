@@ -9,12 +9,14 @@ import {
 } from '../../../playwright.options';
 import {
     CHAR_NO_BREAK_SPACE,
+    TuiCalendarPO,
     TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateRangePO,
     TuiMobileCalendarPO,
 } from '../../../utils';
+// import {TuiDay} from '@taiga-ui/cdk';
 
 test.describe('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
@@ -31,11 +33,20 @@ test.describe('InputDateRange', () => {
     test.describe('API', () => {
         let example!: Locator;
 
+        let calendar!: TuiCalendarPO;
+
+        // let today = TuiDay.currentLocal();
+        let todayDate = `${new Date().toString()}-${new Date().toString()}`;
+        // const string = `${today.toString()}-${today.toString()}`;
+
         test.beforeEach(() => {
             example = documentationPage.apiPageExample;
+
             inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-input-date-range'),
             );
+
+            calendar = new TuiCalendarPO(inputDateRange.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -199,6 +210,33 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.click();
 
             await expect(example).toHaveScreenshot('09-calendar-shows-end-of-period.png');
+        });
+
+        test('Press backspace to remove item, textfield is empty', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+
+            await inputDateRange.textfield.click();
+            await calendar.itemButton.first().click();
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.press('Backspace');
+
+            await expect(inputDateRange.textfield).toHaveValue('');
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '12-input-date-range.png',
+            );
+        });
+
+        test('Enter item date, it converts to item name', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
+
+            await expect(inputDateRange.textfield).toHaveValue('Today');
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '13-input-date-range.png',
+            );
         });
 
         test.describe('Mobile emulation', () => {
