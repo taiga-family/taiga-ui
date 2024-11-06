@@ -1,3 +1,3 @@
 ```html
-<div tuiMessage>{{ value }}</tui-chip>
+<span tuiMessage>{{ value }}</span>
 ```

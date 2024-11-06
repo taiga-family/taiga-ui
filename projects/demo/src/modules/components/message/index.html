@@ -15,5 +15,23 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <span
+                tuiMessage
+                [appearance]="appearance.appearance"
+            >
+                Message
+            </span>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tbody
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['state', 'focus', 'mode']"
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>
