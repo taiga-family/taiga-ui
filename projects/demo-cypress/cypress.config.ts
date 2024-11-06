@@ -51,13 +51,23 @@ export default defineConfig({
             on('before:browser:launch', (browser, launchOptions) => {
                 if (browser.name === 'chrome') {
                     launchOptions.args.push(
-                        '--font-render-hinting=none', // prevent inconsistent text rendering in headless mode
-                        '--force-device-scale-factor=2', // force screen to be retina
+                        '--no-sandbox',
+                        '-–no-first-run',
+                        '--disable-setuid-sandbox',
+                        '--hide-scrollbars',
+                        '--printBackground=true',
+                        '--disable-dev-shm-usage',
+                        '--disable-gpu',
+                        '--font-render-hinting=medium',
+                        '--disable-skia-runtime-opts',
+                        '--disable-lcd-text',
+                        '--disable-accelerated-2d-canvas',
+                        '--disable-canvas-aa',
+                        '--disable-composited-antialiasing',
+                        '--force-device-scale-factor=2',
                         '--high-dpi-support=1',
                         '--force-prefers-reduced-motion',
                         '--force-color-profile=srgb',
-                        '--disable-dev-shm-usage',
-                        '--disable-gpu',
                         '--incognito',
                     );
                 }
