@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.14.0](https://github.com/taiga-family/taiga-ui/compare/v4.13.0...v4.14.0) (2024-11-05)
+
+### 🚀 Features
+
+- **core:** tuiHintDirection priority list ([#9669](https://github.com/taiga-family/taiga-ui/issues/9669))
+  ([bbf13b5](https://github.com/taiga-family/taiga-ui/commit/bbf13b5747a141236c25a82d19403e32db18c61f))
+- **kit:** `TuiFile` added tuiHintOverflow for file name ([#9659](https://github.com/taiga-family/taiga-ui/issues/9659))
+  ([b5062bc](https://github.com/taiga-family/taiga-ui/commit/b5062bce0e7a5d7db995393d6ce3ab1722a32e72))
+- **layout:** `BlockStatus` add desktop "m" size ([#9651](https://github.com/taiga-family/taiga-ui/issues/9651))
+  ([8cd3eb8](https://github.com/taiga-family/taiga-ui/commit/8cd3eb8780dac69d7d58902ad77b3c83b3e77a1a))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `TuiElasticStickyService` teardown observable zone fix
+  ([#9657](https://github.com/taiga-family/taiga-ui/issues/9657))
+  ([5908330](https://github.com/taiga-family/taiga-ui/commit/5908330f97cd6edeb4657ae7b2b561ccd2f9d12f))
+- **core:** do not hide scrollbars on desktop when dialog is open
+  ([#9633](https://github.com/taiga-family/taiga-ui/issues/9633))
+  ([5075a74](https://github.com/taiga-family/taiga-ui/commit/5075a746aa8713c34c20c354944431e53b3f3afc))
+- **kit:** `CalendarRange` switch months if any input updated, when date range selected
+  ([#9665](https://github.com/taiga-family/taiga-ui/issues/9665))
+  ([f43bc2b](https://github.com/taiga-family/taiga-ui/commit/f43bc2b7a185f20f309a0cfbcbdfa8d9184c2634))
+- **kit:** `Files` fix link styles ([#9635](https://github.com/taiga-family/taiga-ui/issues/9635))
+  ([6923102](https://github.com/taiga-family/taiga-ui/commit/6923102fa6b4ba3355b578e06a10ebc824937661))
+- **kit:** `Stepper` fix flashing styles ([#9638](https://github.com/taiga-family/taiga-ui/issues/9638))
+  ([059c1de](https://github.com/taiga-family/taiga-ui/commit/059c1dea61464fca072faac90052d1050d923c5a))
+- **kit:** `Switch` should have dark knob for the dark theme in web platform
+  ([#9658](https://github.com/taiga-family/taiga-ui/issues/9658))
+  ([1c9664a](https://github.com/taiga-family/taiga-ui/commit/1c9664a46da2278cd93d7a3a7cfe3ae9f07a2411))
+- **legacy:** `InputDate` incorrect value after backspace
+  ([466fda7](https://github.com/taiga-family/taiga-ui/commit/466fda7544ffe55564b0318e974d86d3ac7e5a14))
+- **legacy:** `InputDate` incorrect value after backspace
+  ([#9650](https://github.com/taiga-family/taiga-ui/issues/9650))
+  ([6a10460](https://github.com/taiga-family/taiga-ui/commit/6a1046031cffa605c66c27ff0fbe9d2835c1a437))
+- **legacy:** `InputDate` nativeValue set empty instead of handle mask
+  ([ff8d5b3](https://github.com/taiga-family/taiga-ui/commit/ff8d5b3d11e3baed388f1b5314a0eb7cc1bc6a69))
+- **legacy:** `InputPhone` fix format paste if value has space after plus sign
+  ([#9634](https://github.com/taiga-family/taiga-ui/issues/9634))
+  ([2b54390](https://github.com/taiga-family/taiga-ui/commit/2b543906f2ebf59a03bd2c141a4a110ded1e7b59))
+- **legacy:** `InputTime` & `InputDateTime` should switch `inputMode` for time modes with AM / PM
+  ([#9643](https://github.com/taiga-family/taiga-ui/issues/9643))
+  ([ee53428](https://github.com/taiga-family/taiga-ui/commit/ee534287ab22af645adadaedb924fa881f06689b))
+
 ## [4.13.0](https://github.com/taiga-family/taiga-ui/compare/v4.12.0...v4.13.0) (2024-10-28)
 
 ### 🐞 Bug Fixes

@@ -173,8 +173,12 @@ export class TuiInputDateComponent
             this.onOpenChange(true);
         }
 
+        if (this.activeItem) {
+            this.nativeValue = '';
+        }
+
         this.value =
-            value.length !== DATE_FILLER_LENGTH
+            value.length !== DATE_FILLER_LENGTH || this.activeItem
                 ? null
                 : TuiDay.normalizeParse(value, this.dateFormat.mode);
     }

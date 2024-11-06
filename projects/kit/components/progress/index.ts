@@ -1,5 +1,6 @@
 export * from './progress';
 export * from './progress.options';
+export * from './progress-bar/fixed-gradient/progress-fixed-gradient.directive';
 export * from './progress-bar/progress-bar.component';
 export * from './progress-bar/progress-color-segments.directive';
 export * from './progress-circle/progress-circle.component';

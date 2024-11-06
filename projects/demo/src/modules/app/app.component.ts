@@ -18,6 +18,7 @@ import {TuiDemo} from '@demo/utils';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
 import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -69,6 +70,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     ],
 })
 export class App extends AbstractDemo implements OnInit {
+    private readonly isE2E = inject(TUI_IS_E2E);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly destroyRef = inject(DestroyRef);
     private readonly http = inject(HttpClient);
@@ -91,11 +93,12 @@ export class App extends AbstractDemo implements OnInit {
 
     public override async ngOnInit(): Promise<void> {
         await super.ngOnInit();
-        this.enableYandexMetrika();
 
-        if (this.isServer) {
+        if (this.isServer || this.isE2E) {
             return;
         }
+
+        this.enableYandexMetrika();
 
         this.http
             .get<Record<string, any>>(environment.github)

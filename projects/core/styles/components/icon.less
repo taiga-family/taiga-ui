@@ -29,7 +29,7 @@ tui-icon {
     box-sizing: border-box;
     mask: var(--t-icon-bg) no-repeat center/contain;
 
-    @media (hover: hover) {
+    @media @tui-mouse {
         &[data-appearance='icon']:hover {
             color: var(--tui-text-secondary);
         }

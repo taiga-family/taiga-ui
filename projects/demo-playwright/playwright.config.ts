@@ -2,7 +2,7 @@ import {defineConfig, devices} from '@playwright/test';
 import type {ViewportSize} from 'playwright-core';
 
 import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
-import {tuiGetDemoPathsForE2E} from './tests/demo/get-demo-paths';
+import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 
@@ -13,7 +13,7 @@ process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
  */
 export default defineConfig({
     testDir: __dirname,
-    testMatch: '**/*.spec.ts',
+    testMatch: '**/*.pw.spec.ts',
     outputDir: 'tests-results',
     snapshotDir: 'snapshots',
     reporter: process.env.CI ? 'github' : [['html', {outputFolder: 'tests-report'}]],
@@ -38,6 +38,28 @@ export default defineConfig({
             use: {
                 ...devices['Desktop Chrome HiDPI'],
                 viewport: DEFAULT_VIEWPORT,
+                launchOptions: {
+                    args: [
+                        '--no-sandbox',
+                        '-–no-first-run',
+                        '--disable-setuid-sandbox',
+                        '--hide-scrollbars',
+                        '--printBackground=true',
+                        '--disable-dev-shm-usage',
+                        '--disable-gpu',
+                        '--font-render-hinting=medium',
+                        '--disable-skia-runtime-opts',
+                        '--disable-lcd-text',
+                        '--disable-accelerated-2d-canvas',
+                        '--disable-canvas-aa',
+                        '--disable-composited-antialiasing',
+                        '--force-device-scale-factor=2',
+                        '--high-dpi-support=1',
+                        '--force-prefers-reduced-motion',
+                        '--force-color-profile=srgb',
+                        '--incognito',
+                    ],
+                },
             },
         },
     ],

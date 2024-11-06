@@ -181,17 +181,42 @@ test.describe('InputDate', () => {
             await expect(inputDate.textfield).toHaveScreenshot('10-input-date.png');
         });
 
-        test('Click `Until today`', async ({page}) => {
-            await tuiGoto(page, 'components/input-date/API?items$=1');
+        test('Click `Until today`, calendar not switched to large date', async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
 
             await inputDate.textfield.click();
             await calendar.itemButton.click();
 
             await inputDate.textfield.click();
 
-            await expect(inputDate.calendar).toHaveScreenshot(
-                '02-input-date-calendar.png',
-            );
+            await expect(inputDate.calendar).toHaveScreenshot('11-input-date.png');
+        });
+
+        test('Press backspace to remove `Until today`, textfield is empty', async ({
+            page,
+        }) => {
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+
+            await inputDate.textfield.click();
+            await calendar.itemButton.click();
+
+            await inputDate.textfield.focus();
+            await inputDate.textfield.press('Backspace');
+
+            await expect(inputDate.textfield).toHaveValue('');
+            await expect(inputDate.textfield).toHaveScreenshot('12-input-date.png');
+        });
+
+        test('Enter item date, it converts to item name', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+
+            await inputDate.textfield.focus();
+            await inputDate.textfield.fill('31.12.9998');
+
+            await expect(inputDate.textfield).toHaveValue('Until today');
+            await expect(inputDate.textfield).toHaveScreenshot('13-input-date.png');
         });
     });
 

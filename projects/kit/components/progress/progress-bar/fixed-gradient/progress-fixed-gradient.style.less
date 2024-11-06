@@ -1,0 +1,17 @@
+.fixed-gradient() {
+    inline-size: 100% !important;
+    clip-path: inset(0 calc(100% - var(--tui-progress-percent)) 0 0 round var(--tui-radius-m));
+    transition: clip-path var(--tui-duration) linear;
+}
+
+[tuiProgressFixedGradient] {
+    &::-moz-progress-bar {
+        .fixed-gradient();
+
+        margin-right: calc(-100% + var(--tui-progress-percent));
+    }
+
+    &::-webkit-progress-value {
+        .fixed-gradient();
+    }
+}

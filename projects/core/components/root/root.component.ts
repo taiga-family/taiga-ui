@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -13,10 +12,10 @@ import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
-import {tuiWatch, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
-import {TUI_DIALOGS, TuiDialogs} from '@taiga-ui/core/components/dialog';
+import {TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
@@ -28,8 +27,7 @@ import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {PreventEventPlugin} from '@taiga-ui/event-plugins';
-import type {Observable} from 'rxjs';
-import {debounceTime, map} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -65,16 +63,7 @@ export class TuiRoot extends TuiPortals {
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
 
-    protected readonly scrollbars =
-        this.nativeScrollbar || inject(TUI_IS_MOBILE)
-            ? signal(false)
-            : toSignal(
-                  inject<Observable<readonly unknown[]>>(TUI_DIALOGS).pipe(
-                      map(({length}) => !length),
-                      debounceTime(0, tuiZonefreeScheduler()),
-                  ),
-                  {initialValue: false},
-              );
+    protected readonly scrollbars = !(this.nativeScrollbar || inject(TUI_IS_MOBILE));
 
     constructor() {
         super();
