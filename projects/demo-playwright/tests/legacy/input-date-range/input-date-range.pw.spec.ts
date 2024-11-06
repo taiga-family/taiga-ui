@@ -16,7 +16,6 @@ import {
     TuiInputDateRangePO,
     TuiMobileCalendarPO,
 } from '../../../utils';
-// import {TuiDay} from '@taiga-ui/cdk';
 
 test.describe('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
@@ -34,10 +33,6 @@ test.describe('InputDateRange', () => {
         let example!: Locator;
 
         let calendar!: TuiCalendarPO;
-
-        // let today = TuiDay.currentLocal();
-        let todayDate = `${new Date().toString()}-${new Date().toString()}`;
-        // const string = `${today.toString()}-${today.toString()}`;
 
         test.beforeEach(() => {
             example = documentationPage.apiPageExample;
