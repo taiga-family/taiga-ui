@@ -1,3 +1,4 @@
+export * from './emit-when-changed';
 export * from './is-editing-key';
 export * from './is-obscured';
 export * from './override-options';
