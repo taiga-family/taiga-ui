@@ -31,11 +31,11 @@ describe('InputDateRangeComponent', () => {
     @Component({
         standalone: true,
         imports: [
+            FormsModule,
             ReactiveFormsModule,
             TuiInputDateRangeModule,
             TuiRoot,
             TuiTextfieldControllerModule,
-            FormsModule,
         ],
         template: `
             <tui-root>
