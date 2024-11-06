@@ -16,3 +16,8 @@ $tui-desktop-min: 'screen and (min-width: 64em)';
 $tui-desktop-interval: '(min-width: 64em) and (max-width: 79.9625em)';
 
 $tui-desktop-lg-min: 'screen and (min-width: 80em)';
+
+$tui-touch: '(hover: none) and (pointer: coarse)';
+$tui-stylus: '(hover: none) and (pointer: fine)';
+$tui-pointer: '(hover: hover) and (pointer: coarse)';
+$tui-mouse: '(hover: hover) and (pointer: fine)';
