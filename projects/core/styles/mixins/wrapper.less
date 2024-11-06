@@ -2,7 +2,7 @@
  * @deprecated use appearance instead
  */
 .wrapper-hover(@ruleset) {
-    @media (hover: hover) {
+    @media @tui-mouse {
         &:hover:not(._no-hover),
         &[data-state='hover'] {
             @ruleset();

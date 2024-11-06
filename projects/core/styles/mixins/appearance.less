@@ -2,7 +2,7 @@
 
 .appearance-hover(@content) {
     .interactive({
-        @media (hover: hover) {
+        @media @tui-mouse {
             &:hover:not(:disabled):not([data-state]) {
                 @content();
             }
@@ -14,7 +14,7 @@
     }
 
     /* @deprecated TODO remove in v5 */
-    @media (hover: hover) {
+    @media @tui-mouse {
         &[tuiWrapper]:hover:not(._no-hover),
         &[tuiWrapper][data-state='hover'] {
             @content();
