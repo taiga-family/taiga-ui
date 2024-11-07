@@ -6,11 +6,9 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    tuiAppearanceOptionsProvider,
+    TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-
-import {TUI_MESSAGE_OPTIONS} from './message.options';
 
 @Component({
     standalone: true,
@@ -27,7 +25,12 @@ class TuiMessageStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiMessage]',
-    providers: [tuiAppearanceOptionsProvider(TUI_MESSAGE_OPTIONS)],
+    providers: [
+        {
+            provide: TUI_APPEARANCE_OPTIONS,
+            useValue: {appearance: 'neutral'},
+        },
+    ],
     hostDirectives: [TuiWithAppearance],
 })
 export class TuiMessage {
