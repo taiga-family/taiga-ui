@@ -152,6 +152,7 @@
 
 .t-close {
     .transition(background);
+
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -177,9 +178,6 @@
     }
 
     :host-context(tui-root._mobile) & {
-        position: absolute;
-        top: 0;
-        right: 0;
         background: transparent !important;
         color: var(--tui-text-01);
         opacity: 0.5;
