@@ -22,4 +22,5 @@ export * from './range.po';
 export * from './select.po';
 export * from './slider.po';
 export * from './table-pagination-page.po';
+export * from './tabs';
 export * from './textfield-with-data-list.po';
