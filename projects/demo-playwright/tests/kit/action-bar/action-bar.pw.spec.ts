@@ -17,4 +17,15 @@ test.describe('ActionBar', () => {
 
         await expect(actionBarExample).toHaveScreenshot('01-actions-bar.png');
     });
+
+    test('should show on top', async ({page}) => {
+        await tuiGoto(page, DemoRoute.ActionBar);
+        const example = page.locator('#top-position');
+        const showActionBarButton = example.getByTestId('open-table-bar-on-top').first();
+
+        await showActionBarButton.click();
+        const actionBarExample = page.locator('tui-action-bar');
+
+        await expect(actionBarExample).toHaveScreenshot('02-actions-bar.png');
+    });
 });
