@@ -14,6 +14,11 @@ import {TuiYear} from './year';
  * Immutable date object, consisting of day, month and year
  */
 export class TuiDay extends TuiMonth {
+    /**
+     * @param year
+     * @param month (starting with 0)
+     * @param day
+     */
     constructor(
         year: number,
         month: number,

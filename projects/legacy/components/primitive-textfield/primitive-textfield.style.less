@@ -65,3 +65,16 @@
     position: relative;
     pointer-events: none;
 }
+
+:host._readonly .t-textfield-icon ::ng-deep [tuiAppearance][data-appearance='icon'] {
+    pointer-events: none;
+}
+
+@media @tui-mouse {
+    :host:not(._readonly):not(._disabled):hover
+        .t-textfield-icon
+        ::ng-deep
+        [tuiAppearance][data-appearance='icon']::after {
+        color: var(--tui-text-secondary);
+    }
+}
