@@ -316,7 +316,10 @@
 }
 
 @media @tui-mouse {
-    :host:not(._readonly):not(._disabled):hover .t-textfield-icon ::ng-deep [tuiAppearance][data-appearance='icon']::after {
+    :host:not(._readonly):not(._disabled):hover
+        .t-textfield-icon
+        ::ng-deep
+        [tuiAppearance][data-appearance='icon']::after {
         color: var(--tui-text-secondary);
     }
 }
