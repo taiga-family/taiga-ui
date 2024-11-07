@@ -33,11 +33,13 @@ export class TuiDialogExampleComponent8 {
             },
         });
 
-        this.dialogs.open(content, {closeable, dismissible: closeable}).subscribe({
-            complete: () => {
-                this.value = '';
-                this.dialogForm.markAsPristine();
-            },
-        });
+        this.dialogs
+            .open(content, {label: 'Form', closeable, dismissible: closeable})
+            .subscribe({
+                complete: () => {
+                    this.value = '';
+                    this.dialogForm.markAsPristine();
+                },
+            });
     }
 }

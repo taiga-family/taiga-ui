@@ -104,6 +104,10 @@ export class TuiDialogComponent<O, I> {
             : this.animation;
     }
 
+    get mobile(): boolean {
+        return this.isMobile;
+    }
+
     get fullscreen(): boolean {
         return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
     }

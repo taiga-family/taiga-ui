@@ -106,6 +106,7 @@
 
 .t-heading {
     margin: 0;
+    padding-inline-end: 2rem;
     word-wrap: break-word;
     font: var(--tui-font-heading-3);
 
@@ -151,26 +152,27 @@
 
 .t-close {
     .transition(background);
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
     display: none;
-    color: var(--tui-base-01);
+    color: var(--tui-neutral-fill);
 
     :host-context(.t-dialog:last-of-type) & {
         display: block;
     }
 
-    :host:not([data-size='fullscreen']):not([data-size='page']) & {
+    :host:not([data-size='page']) & {
         animation: tuiFadeIn var(--tui-duration);
-        background: rgba(104, 104, 104, 0.96);
+        background: var(--tui-neutral-bg);
 
         &:hover {
-            background: rgba(159, 159, 159, 0.86);
+            background: var(--tui-neutral-bg-hover);
         }
     }
 
-    :host:not([data-size='fullscreen']).ng-animating & {
+    :host.ng-animating & {
         display: none;
     }
 
