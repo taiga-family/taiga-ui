@@ -216,10 +216,10 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.focus();
             await inputDateRange.textfield.press('Backspace');
 
+            await expect(inputDateRange.textfield).toHaveValue('');
             await expect(inputDateRange.textfield).toHaveScreenshot(
                 '10-input-date-range.png',
             );
-            await expect(inputDateRange.textfield).toHaveValue('');
         });
 
         test('Enter item date, it converts to item name', async ({page}) => {
@@ -228,10 +228,10 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.focus();
             await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
 
+            await expect(inputDateRange.textfield).toHaveValue('Today');
             await expect(inputDateRange.textfield).toHaveScreenshot(
                 '11-input-date-range.png',
             );
-            await expect(inputDateRange.textfield).toHaveValue('Today');
         });
 
         test.describe('Mobile emulation', () => {
