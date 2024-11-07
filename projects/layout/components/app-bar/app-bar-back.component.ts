@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
-    type TuiAppearanceOptions,
+    tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
