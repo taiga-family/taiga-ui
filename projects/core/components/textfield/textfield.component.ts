@@ -21,7 +21,7 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
@@ -49,7 +49,10 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListHost(TuiTextfieldComponent)],
+    providers: [
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiAsDataListHost(TuiTextfieldComponent),
+    ],
     hostDirectives: [
         TuiDropdownFixed,
         TuiDropdownDirective,
