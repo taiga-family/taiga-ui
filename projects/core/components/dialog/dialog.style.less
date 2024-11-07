@@ -175,6 +175,12 @@
     :host.ng-animating & {
         display: none;
     }
+
+    :host-context(tui-root._mobile) & {
+        background: transparent !important;
+        color: var(--tui-text-01);
+        opacity: 0.5;
+    }
 }
 
 .t-buttons {
