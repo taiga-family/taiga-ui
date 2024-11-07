@@ -341,6 +341,7 @@ export const pages: DocRoutePages = [
         keywords:
             'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
         route: DemoRoute.Drawer,
+        meta: {scheme: 'beaver', name: 'drawer'},
     },
     {
         section: 'Components',
@@ -897,6 +898,10 @@ export const pages: DocRoutePages = [
                 title: 'Table',
                 keywords: 'таблица, data, cell, tr, th, td, row, col, grid, beaver',
                 route: DemoRoute.Table,
+                meta: [
+                    {scheme: 'beaver', anchor: 'custom', name: 'table'},
+                    {scheme: 'beaver', anchor: 'footer', name: 'pagination'},
+                ],
             },
         ],
     },
@@ -937,7 +942,11 @@ export const pages: DocRoutePages = [
         title: 'Cell',
         keywords: 'cell, feed, item',
         route: DemoRoute.Cell,
-        meta: [{name: 'tui-cell'}, {name: 'tui-cell-connected'}],
+        meta: [
+            {name: 'tui-cell'},
+            {name: 'tui-cell-connected'},
+            {name: 'list-item', scheme: 'beaver'},
+        ],
     },
     {
         section: 'Components',
@@ -1019,12 +1028,14 @@ export const pages: DocRoutePages = [
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
         route: DemoRoute.Navigation,
+        meta: {scheme: 'beaver', name: 'navigation'},
     },
     {
         section: 'Layout',
         title: 'Search',
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
+        meta: {scheme: 'beaver', name: 'filters'},
     },
     // Charts
     {
@@ -1102,6 +1113,7 @@ export const pages: DocRoutePages = [
         title: 'Breadcrumbs',
         keywords: 'шаги, навигация, nav, хлебные, крошки, breadcrumbs',
         route: DemoRoute.Breadcrumbs,
+        meta: {scheme: 'beaver', name: 'breadcrumbs'},
     },
     {
         section: 'Navigation',
