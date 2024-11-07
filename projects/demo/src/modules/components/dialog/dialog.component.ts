@@ -145,7 +145,7 @@ export class ExampleTuiDialogComponent {
 
     size: TuiDialogSize = this.sizeVariants[1];
 
-    label = '';
+    label = 'Form';
 
     appearance = '';
 
