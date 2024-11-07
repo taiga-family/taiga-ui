@@ -60,7 +60,7 @@ describe('Tabs', () => {
                 await expect(example).toHaveScreenshot('01-tabs-8.png');
             });
 
-            test.only('shows only a single dropdown for the nested item (with [tuiDropdown]) inside more section', async ({
+            test('shows only a single dropdown for the nested item (with [tuiDropdown]) inside more section', async ({
                 page,
             }) => {
                 await page.setViewportSize({width: 600, height: 700});
