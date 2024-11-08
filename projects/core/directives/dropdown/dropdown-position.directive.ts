@@ -1,5 +1,6 @@
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -7,21 +8,18 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
-import {tuiEmitWhenChanged} from '@taiga-ui/core/utils';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiDropdownPosition]',
 })
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
 
     private previous?: TuiVerticalDirection;
-    private lastDirection!: TuiVerticalDirection;
 
     @Output('tuiDropdownDirectionChange')
     public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
@@ -32,6 +30,11 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
             inject<any>(TuiRectAccessor),
             inject(TuiDropdownDirective, {optional: true})!,
         );
+
+    @tuiPure
+    public emitDirection(direction: TuiVerticalDirection): void {
+        this.directionChange.emit(direction);
+    }
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {
@@ -68,11 +71,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         const better: TuiVerticalDirection =
             available.top > available.bottom ? 'top' : 'bottom';
 
-        this.lastDirection = tuiEmitWhenChanged<TuiVerticalDirection>(
-            better,
-            this.lastDirection,
-            this.directionChange,
-        );
+        this.emitDirection(better);
 
         if (
             (available[previous] > minHeight && direction) ||

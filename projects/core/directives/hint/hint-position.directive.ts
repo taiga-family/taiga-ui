@@ -1,6 +1,7 @@
 import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -8,7 +9,6 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
-import {tuiEmitWhenChanged} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TuiHintDirective} from './hint.directive';
 import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
@@ -36,8 +36,6 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
-    private lastDirection!: TuiHintDirection;
-
     @Input('tuiHintDirection')
     public direction: TuiHintOptions['direction'] = inject(TUI_HINT_OPTIONS).direction;
 
@@ -45,6 +43,11 @@ export class TuiHintPosition extends TuiPositionAccessor {
     public readonly directionChange = new EventEmitter<TuiHintDirection>();
 
     public readonly type = 'hint';
+
+    @tuiPure
+    public emitDirection(direction: TuiHintDirection): void {
+        this.directionChange.emit(direction);
+    }
 
     public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
         const width = el?.clientWidth ?? rect.width;
@@ -90,11 +93,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
             this.checkPosition(this.points[direction], width, height),
         );
 
-        this.lastDirection = tuiEmitWhenChanged<TuiHintDirection>(
-            direction || this.fallback,
-            this.lastDirection,
-            this.directionChange,
-        );
+        this.emitDirection(direction || this.fallback);
 
         return this.points[direction || this.fallback];
     }
