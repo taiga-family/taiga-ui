@@ -104,7 +104,7 @@ test.describe('Dropdown', () => {
         await textarea.press('@');
         await textarea.press('Backspace');
 
-        await expect(page.locator('tui-dropdown')).not.toBeVisible();
+        await expect(page.locator('tui-dropdown')).toBeHidden();
     });
 
     test('hidden-host', async ({page}) => {

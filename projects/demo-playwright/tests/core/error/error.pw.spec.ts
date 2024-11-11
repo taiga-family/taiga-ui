@@ -10,7 +10,7 @@ test.describe('TuiError', () => {
         const checkbox = example.locator('input[tuiSwitch]');
         const error = example.locator('tui-error');
 
-        await expect(error).not.toBeVisible();
+        await expect(error).toBeHidden();
 
         await checkbox.click();
 
