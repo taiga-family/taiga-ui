@@ -5,6 +5,7 @@ aside[tuiNavigationAside] {
 
     position: sticky;
     top: 3rem;
+    left: 0;
     z-index: 1;
     display: flex;
     inline-size: 3rem;
@@ -25,6 +26,17 @@ aside[tuiNavigationAside] {
         pointer-events: none;
         border-start-start-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
+    }
+
+    &::after {
+        content: '';
+        position: fixed;
+        top: inherit;
+        left: 0;
+        bottom: -3rem;
+        z-index: -1;
+        inline-size: 3rem;
+        background: inherit;
     }
 
     &._expanded {
