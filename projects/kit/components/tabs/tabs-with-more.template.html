@@ -70,10 +70,9 @@
             class="t-dropdown-item"
             (tui-tab-activate)="onClick(index)"
         >
-            <ng-container
-                *ngIf="shouldShow(index)"
-                [ngTemplateOutlet]="item"
-            />
+            <ng-container *ngIf="shouldShow(index)">
+                <ng-container *polymorpheusOutlet="item" />
+            </ng-container>
         </div>
     </div>
 </ng-template>
