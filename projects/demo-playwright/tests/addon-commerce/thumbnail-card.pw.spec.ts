@@ -15,7 +15,7 @@ describe('ThumbnailCard', () => {
         });
 
         ['mastercard', 'visa', 'mir'].forEach((paymentSystem) => {
-            describe(paymentSystem, () => {
+            describe(`${paymentSystem}`, () => {
                 ['m', 'l'].forEach((size) => {
                     describe(`size = ${size}`, () => {
                         [
@@ -30,7 +30,7 @@ describe('ThumbnailCard', () => {
                             '8888',
                             '9999',
                         ].forEach((cardNumber) => {
-                            test(cardNumber, async ({page}) => {
+                            test(`${cardNumber}`, async ({page}) => {
                                 await tuiGoto(
                                     page,
                                     `${DemoRoute.ThumbnailCard}/API?paymentSystem=${paymentSystem}&size=${size}&iconStart=@tui.snowflake&iconEnd=@tui.lock`,

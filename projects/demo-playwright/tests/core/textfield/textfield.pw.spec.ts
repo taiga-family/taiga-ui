@@ -15,6 +15,8 @@ test.describe('Textfield', () => {
         test('disable state', async () => {
             const textfield = example.locator('tui-textfield:has(input:disabled)');
 
+            // Special check hover state
+            // eslint-disable-next-line playwright/no-force-option
             await textfield.hover({force: true});
 
             await expect(example).toHaveScreenshot('textfield-disabled-hover.png');

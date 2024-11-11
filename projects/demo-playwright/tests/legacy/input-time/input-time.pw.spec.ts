@@ -20,7 +20,7 @@ test.describe('InputTime', () => {
                 'options-max-and-postfix',
             ].entries(),
         ).forEach(([exampleIndex, id]) => {
-            test(id, async ({page}) => {
+            test(`${id}`, async ({page}) => {
                 await tuiGoto(page, DemoRoute.InputTime, {date: MOCK_DATE});
 
                 documentationPage = new TuiDocumentationPagePO(page);
