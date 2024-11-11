@@ -17,6 +17,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
+                "forwardAllArgs": false,
                 "commands": [
                     "cp ./LICENSE ./dist/{projectName}",
                     "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
