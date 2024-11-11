@@ -12,6 +12,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {MaskitoDirective} from '@maskito/angular';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {
@@ -122,6 +124,8 @@ export class TuiInputCardGroup
 
     @ViewChild('inputCVC')
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
+
+    private readonly domSanitizer = inject(DomSanitizer);
 
     private readonly focus$ = new Subject<void>();
     private expirePrefilled = false;
@@ -343,8 +347,12 @@ export class TuiInputCardGroup
         this.updateProperty(cvc, 'cvc');
     }
 
-    protected transform({offsetWidth}: HTMLSpanElement): string {
-        return this.cardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
+    protected transform({offsetWidth}: HTMLSpanElement): SafeStyle | string {
+        return this.cardCollapsed
+            ? this.domSanitizer.bypassSecurityTrustStyle(
+                  `translate3d(${offsetWidth}px, 0, 0)`,
+              )
+            : '';
     }
 
     protected onMouseDown(event: MouseEvent): void {
