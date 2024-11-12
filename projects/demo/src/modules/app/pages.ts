@@ -900,7 +900,12 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Table,
                 meta: [
                     {scheme: 'beaver', anchor: 'custom', name: 'table'},
-                    {scheme: 'beaver', anchor: 'footer', name: 'pagination'},
+                    {
+                        scheme: 'beaver',
+                        anchor: 'footer',
+                        name: 'pagination',
+                        qualifiedName: 'pagination',
+                    },
                 ],
             },
         ],
