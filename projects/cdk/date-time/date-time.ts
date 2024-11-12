@@ -14,7 +14,7 @@ export const MIN_MONTH = 0;
 
 export const MAX_MONTH = 11;
 
-export const MIN_YEAR = 100;
+export const MIN_YEAR = 0;
 
 export const MAX_YEAR = 9999;
 
