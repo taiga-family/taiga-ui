@@ -22,13 +22,13 @@ tui-block-status {
         tui-root._mobile & {
             padding: 1.25rem;
 
-            & .t-block-image {
+            & .t-block-image:not(:empty) {
                 margin-top: 0.75rem;
             }
         }
     }
 
-    .t-block-image {
+    .t-block-image:not(:empty) {
         margin-bottom: 2rem;
 
         tui-root._mobile & {
