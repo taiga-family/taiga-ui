@@ -9,6 +9,7 @@ import {
 } from '../../../playwright.options';
 import {
     CHAR_NO_BREAK_SPACE,
+    TuiCalendarPO,
     TuiCalendarSheetPO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -31,11 +32,16 @@ test.describe('InputDateRange', () => {
     test.describe('API', () => {
         let example!: Locator;
 
+        let calendar!: TuiCalendarPO;
+
         test.beforeEach(() => {
             example = documentationPage.apiPageExample;
+
             inputDateRange = new TuiInputDateRangePO(
                 example.locator('tui-input-date-range'),
             );
+
+            calendar = new TuiCalendarPO(inputDateRange.calendar);
         });
 
         ['s', 'm', 'l'].forEach((size) => {
@@ -44,7 +50,7 @@ test.describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `components/input-date-range/API?tuiTextfieldSize=${size}`,
+                    `${DemoRoute.InputDateRange}/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDateRange.textfield.click();
@@ -171,7 +177,7 @@ test.describe('InputDateRange', () => {
 
             await tuiGoto(
                 page,
-                'components/input-date-range/API?items$=1&sandboxExpanded=true',
+                `${DemoRoute.InputDateRange}/API?items$=1&sandboxExpanded=true`,
             );
 
             await inputDateRange.textfield.click();
@@ -191,7 +197,7 @@ test.describe('InputDateRange', () => {
         });
 
         test('Calendar shows end of period, when selected any range', async ({page}) => {
-            await tuiGoto(page, 'components/input-date-range/API?items$=1');
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
 
             await inputDateRange.textfield.click();
             await inputDateRange.selectItem(0);
@@ -199,6 +205,33 @@ test.describe('InputDateRange', () => {
             await inputDateRange.textfield.click();
 
             await expect(example).toHaveScreenshot('09-calendar-shows-end-of-period.png');
+        });
+
+        test('Press backspace to remove item, textfield is empty', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+
+            await inputDateRange.textfield.click();
+            await calendar.itemButton.first().click();
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.press('Backspace');
+
+            await expect(inputDateRange.textfield).toHaveValue('');
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '10-input-date-range.png',
+            );
+        });
+
+        test('Enter item date, it converts to item name', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+
+            await inputDateRange.textfield.focus();
+            await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
+
+            await expect(inputDateRange.textfield).toHaveValue('Today');
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '11-input-date-range.png',
+            );
         });
 
         test.describe('Mobile emulation', () => {

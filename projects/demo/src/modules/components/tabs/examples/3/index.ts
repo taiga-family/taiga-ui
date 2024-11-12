@@ -24,7 +24,6 @@ import {TuiChevron, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected open = false;
     protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 
     protected readonly tabs = [

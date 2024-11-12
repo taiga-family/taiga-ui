@@ -10,7 +10,7 @@ test.describe('Deep / Select', () => {
     );
 
     deepPaths.forEach((path) =>
-        test(path, async ({page}) => {
+        test(`${path}`, async ({page}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -23,6 +23,7 @@ test.describe('Deep / Select', () => {
                 const select = await api.getSelect(row);
                 const name = await api.getNameProperty(row);
 
+                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (!select) {
                     continue;
                 }
@@ -54,6 +55,7 @@ test.describe('Deep / Select', () => {
 
                 const cleaner = await api.getCleaner(select);
 
+                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (cleaner) {
                     await cleaner.click();
                 } else {

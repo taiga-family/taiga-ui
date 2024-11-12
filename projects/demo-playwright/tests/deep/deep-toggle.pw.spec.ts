@@ -5,7 +5,7 @@ test.describe('Deep / Toggle', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>
-        test(path, async ({page}) => {
+        test(`${path}`, async ({page}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -18,6 +18,7 @@ test.describe('Deep / Toggle', () => {
                 const toggle = await api.getToggle(row);
                 const name = await api.getNameProperty(row);
 
+                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (!toggle) {
                     continue;
                 }

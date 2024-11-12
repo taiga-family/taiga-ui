@@ -27,6 +27,7 @@ test.describe('InputTable', () => {
 
             await expect(example).toHaveScreenshot(`01-input_table__${index}_2.png`);
 
+            // eslint-disable-next-line playwright/no-conditional-in-test
             if (index > 0) {
                 await example
                     .locator('tbody tr td')
@@ -38,6 +39,7 @@ test.describe('InputTable', () => {
 
                 await page.waitForTimeout(300);
 
+                // eslint-disable-next-line playwright/no-conditional-expect
                 await expect(example).toHaveScreenshot(`01-input_table__${index}_3.png`);
             }
         }

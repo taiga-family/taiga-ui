@@ -182,8 +182,12 @@ export class TuiInputDateRangeComponent
             this.onOpenChange(true);
         }
 
+        if (this.activePeriod) {
+            this.nativeValue = '';
+        }
+
         this.value =
-            value.length === DATE_RANGE_FILLER_LENGTH
+            value.length === DATE_RANGE_FILLER_LENGTH && !this.activePeriod
                 ? TuiDayRange.normalizeParse(value, this.dateFormat.mode)
                 : null;
 

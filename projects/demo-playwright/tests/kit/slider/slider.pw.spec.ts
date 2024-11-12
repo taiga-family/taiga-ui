@@ -71,7 +71,7 @@ test.describe('Slider', () => {
         );
     });
 
-    test('with [min] < 0 && [max] > 0 ', async ({page}) => {
+    test('with [min] < 0 && [max] > 0', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Slider}/API?min=-5&max=5&segments=5`);
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
