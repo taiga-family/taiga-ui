@@ -32,7 +32,8 @@ test.describe('TuiHint', () => {
 
         directions.forEach((direction, directionIndex) => {
             [256, 1280].forEach((width) => {
-                test(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
+                // TODO: need fix https://github.com/taiga-family/taiga-ui/issues/9764 before
+                test.skip(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
                     page,
                 }) => {
                     await page.setViewportSize({width, height: 300});

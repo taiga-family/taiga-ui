@@ -5,13 +5,17 @@ import {combineSnapshots} from './combine-snapshots';
 const FAILED_SCREENSHOTS_PATH = 'projects/demo-playwright/tests-results';
 const DIFF_IMAGE_POSTFIX = '-diff.png';
 const OUTPUT_DIFF_IMAGE_POSTFIX = '.diff.png';
+const RETRY_COUNT = Number(process.env.RETRY_COUNT ?? 2);
+const REG_EXP = new RegExp(`retry${RETRY_COUNT}$`);
 
 (async function combinePlaywrightFailedScreenshots(
     rootPath = FAILED_SCREENSHOTS_PATH,
 ): Promise<void> {
     const filesOrDirs = readdirSync(rootPath, {
         withFileTypes: true,
-    }).filter((x) => !/-retry\d$/.exec(x.name));
+    }).filter((x) =>
+        x.isDirectory() ? REG_EXP.exec(x.name) : REG_EXP.exec(x.parentPath),
+    );
 
     for (const {name} of filesOrDirs.filter((x) => x.isDirectory())) {
         await combinePlaywrightFailedScreenshots(`${rootPath}/${name}`);
@@ -34,6 +38,9 @@ const OUTPUT_DIFF_IMAGE_POSTFIX = '.diff.png';
 
     const buffer = await combineSnapshots(imagesPaths);
     const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
+    const path = `${rootPath}/${diffImageName}${OUTPUT_DIFF_IMAGE_POSTFIX}`;
 
-    writeFileSync(`${rootPath}/${diffImageName}${OUTPUT_DIFF_IMAGE_POSTFIX}`, buffer);
+    writeFileSync(path, buffer);
+
+    console.info(`Write new diff: ${path}`);
 })();
