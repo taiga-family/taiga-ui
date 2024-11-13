@@ -82,6 +82,9 @@
     <loc>https://taiga-ui.dev/components/chip/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/message/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/title/</loc>
   </url>
   <url>
@@ -698,6 +701,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/chip/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/message/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/message/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/title/API/</loc>
