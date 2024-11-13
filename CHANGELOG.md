@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.98.0](https://github.com/taiga-family/taiga-ui/compare/v3.97.0...v3.98.0) (2024-11-13)
+
+### Features
+
+- **core:** `Dialog` move close button inside dialog
+  ([739ff25](https://github.com/taiga-family/taiga-ui/commit/739ff25f0d8379738fc0032e1c66e50c7b252513))
+- **core:** `Dialog` move close button inside dialog ([#9712](https://github.com/taiga-family/taiga-ui/issues/9712))
+  ([446e2ea](https://github.com/taiga-family/taiga-ui/commit/446e2eaf3c52fae38abe2ab73c927491b8a1967e))
+
+### Bug Fixes
+
+- **layout:** tui-block-status remove margins for empty t-block-image
+  ([#9742](https://github.com/taiga-family/taiga-ui/issues/9742))
+  ([7f742f4](https://github.com/taiga-family/taiga-ui/commit/7f742f437a1283856f26ded6a25d2914b180c38a))
+
 ## [3.97.0](https://github.com/taiga-family/taiga-ui/compare/v3.96.0...v3.97.0) (2024-11-05)
 
 ### Features
