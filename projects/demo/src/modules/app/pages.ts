@@ -900,7 +900,12 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Table,
                 meta: [
                     {scheme: 'beaver', anchor: 'custom', name: 'table'},
-                    {scheme: 'beaver', anchor: 'footer', name: 'pagination'},
+                    {
+                        scheme: 'beaver',
+                        anchor: 'footer',
+                        name: 'pagination',
+                        qualifiedName: 'pagination',
+                    },
                 ],
             },
         ],
@@ -953,6 +958,13 @@ export const pages: DocRoutePages = [
         title: 'Chip',
         keywords: 'tag, тэг, badge',
         route: DemoRoute.Chip,
+        meta: {},
+    },
+    {
+        section: 'Components',
+        title: 'Message',
+        keywords: 'message, sms, сообщение, смс',
+        route: DemoRoute.Message,
         meta: {},
     },
     {
