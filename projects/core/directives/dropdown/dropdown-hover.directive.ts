@@ -9,7 +9,6 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives';
 import {
     delay,
     distinctUntilChanged,
@@ -23,6 +22,7 @@ import {
     tap,
 } from 'rxjs';
 
+import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpen} from './dropdown-open.directive';
 
