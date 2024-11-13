@@ -1,5 +1,7 @@
+import type {DemoRoute} from '@demo/routes';
 import type {Page} from '@playwright/test';
 import {expect} from '@playwright/test';
+import type {TuiLooseUnion} from '@taiga-ui/cdk';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
@@ -14,9 +16,11 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     hideVersionManager?: boolean;
 }
 
+type URLs = TuiLooseUnion<(typeof DemoRoute)[keyof typeof DemoRoute]>;
+
 export async function tuiGoto(
     page: Page,
-    url: string,
+    url: URLs,
     {
         date = new Date(2020, 8, 25, 19, 19),
         hideHeader = true,
