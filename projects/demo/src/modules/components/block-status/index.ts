@@ -25,5 +25,6 @@ export default class Example {
         'Customization',
         'Mobile',
         'Desktop medium',
+        'Empty image block',
     ];
 }
