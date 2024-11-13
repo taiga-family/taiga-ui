@@ -60,6 +60,7 @@ export class TuiDropdownHover extends TuiDriver {
             switchMap(() =>
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
                     map(tuiGetActualTarget),
+                    delay(this.hideDelay),
                     take(1),
                 ),
             ),
