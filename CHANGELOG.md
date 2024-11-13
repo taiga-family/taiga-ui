@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.15.0](https://github.com/taiga-family/taiga-ui/compare/v4.14.0...v4.15.0) (2024-11-13)
+
+### 🚀 Features
+
+- **core:** add readable media aliases ([#9696](https://github.com/taiga-family/taiga-ui/issues/9696))
+  ([41d89b3](https://github.com/taiga-family/taiga-ui/commit/41d89b3882e68de82079c1bda05b2072261300eb))
+- **kit:** `Message` add component
+  ([5b03210](https://github.com/taiga-family/taiga-ui/commit/5b03210d7d9ec0790cd8cf8f27120d3cd9446cc3))
+- **kit:** `Message` add component ([#9694](https://github.com/taiga-family/taiga-ui/issues/9694))
+  ([0b08fb4](https://github.com/taiga-family/taiga-ui/commit/0b08fb4140b4bcaaf680230bca32f825cb4cf71f))
+- **kit:** add `ProgressFixedGradient` directive for `ProgressBar`
+  ([#9648](https://github.com/taiga-family/taiga-ui/issues/9648))
+  ([ca81b5c](https://github.com/taiga-family/taiga-ui/commit/ca81b5cb599a509ea106cf50993f253cfad508c7))
+- **layout:** `AppBarBack` add ability to use custom appearance
+  ([#9715](https://github.com/taiga-family/taiga-ui/issues/9715))
+  ([1e0928d](https://github.com/taiga-family/taiga-ui/commit/1e0928db9678064edb887a01800a40bb6651598b))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** fix division by zero in LineChart ([#9722](https://github.com/taiga-family/taiga-ui/issues/9722))
+  ([c12a315](https://github.com/taiga-family/taiga-ui/commit/c12a315eefc768a26bae831323587555c9e3d5a7))
+- **addon-mobile:** `TuiPullToRefreshService` fix pulling$ stream by calling `TUI_PULL_TO_REFRESH_LOADED.next()` on
+  `onPull` event ([#9716](https://github.com/taiga-family/taiga-ui/issues/9716))
+  ([3b978be](https://github.com/taiga-family/taiga-ui/commit/3b978bef943d96d5f90ded1c49860ac388e89e12))
+- **kit:** `CalendarRange` not switch month with selected value
+  ([#9695](https://github.com/taiga-family/taiga-ui/issues/9695))
+  ([0e5f250](https://github.com/taiga-family/taiga-ui/commit/0e5f250f75e13e003fc036a0aaa26e7c38ed0c64))
+- **kit:** `TuiTabsWithMore` should share `TuiActiveZone` for nested dropdowns inside `more`-section
+  ([#9714](https://github.com/taiga-family/taiga-ui/issues/9714))
+  ([f7c8fd5](https://github.com/taiga-family/taiga-ui/commit/f7c8fd5fd699b821d18d6935db87bd8dd6f53d93))
+- **layout:** `Navigation` fix various style issues ([#9723](https://github.com/taiga-family/taiga-ui/issues/9723))
+  ([a8aaf04](https://github.com/taiga-family/taiga-ui/commit/a8aaf046472413fd4b9893d23aa76fc70d2c48bc))
+- **layout:** TuiBlockStatus remove margins for empty t-block-image
+  ([#9741](https://github.com/taiga-family/taiga-ui/issues/9741))
+  ([e86afea](https://github.com/taiga-family/taiga-ui/commit/e86afeabf143cb3aa918e20457783d74a3f8cc3d))
+- **legacy:** `InputDateRange` double backspace to clear textfield
+  ([#9707](https://github.com/taiga-family/taiga-ui/issues/9707))
+  ([c80cadc](https://github.com/taiga-family/taiga-ui/commit/c80cadc72b7d1f5f248f9464e0784c440847403e))
+- **legacy:** fix icons looking interactive in readonly textfields
+  ([#9711](https://github.com/taiga-family/taiga-ui/issues/9711))
+  ([85d6afd](https://github.com/taiga-family/taiga-ui/commit/85d6afdeba660f30db28ed66b6eadf9a193ba8b9))
+- remove default styling from `a` tag in card component ([#9681](https://github.com/taiga-family/taiga-ui/issues/9681))
+  ([1b6e32b](https://github.com/taiga-family/taiga-ui/commit/1b6e32b8c2c1a18986a1f47de999439cff10d09e))
+
 ## [4.14.0](https://github.com/taiga-family/taiga-ui/compare/v4.13.0...v4.14.0) (2024-11-05)
 
 ### 🚀 Features
