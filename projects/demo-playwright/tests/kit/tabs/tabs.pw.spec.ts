@@ -63,7 +63,7 @@ describe('Tabs', () => {
             test('shows only a single dropdown for the nested item (with [tuiDropdown]) inside more section', async ({
                 page,
             }) => {
-                await page.setViewportSize({width: 600, height: 700});
+                await page.setViewportSize({width: 550, height: 700});
 
                 await expect(tabsPO.more).toBeVisible();
 
