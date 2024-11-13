@@ -145,6 +145,11 @@ export const ROUTES: Routes = [
         title: 'Chip',
     }),
     route({
+        path: DemoRoute.Message,
+        loadComponent: async () => import('../components/message'),
+        title: 'Message',
+    }),
+    route({
         path: DemoRoute.Title,
         title: 'Title',
         loadComponent: async () => import('../directives/title'),

@@ -1,0 +1,44 @@
+<div tuiCell>
+    <tui-avatar
+        src="/assets/images/avatar.jpg"
+        tuiAccessories
+    />
+    <div tuiTitle>
+        Alexander I.
+        <div tuiSubtitle>USD</div>
+        <span tuiMessage>Don't deny yourself anything</span>
+    </div>
+    <div
+        tuiAccessories
+        tuiTitle
+        [style.white-space]="'nowrap'"
+        [style.width]="0"
+    >
+        + $123 456
+        <div tuiSubtitle>June 2</div>
+    </div>
+</div>
+
+<div tuiCell>
+    <tui-avatar
+        tuiAccessories
+        [src]="'https://avatars.githubusercontent.com/u/87331898' | tuiFallbackSrc: '@tui.user' | async"
+    />
+    <div
+        tuiAccessories
+        tuiTitle
+    >
+        German P.
+        <div tuiSubtitle>USD</div>
+    </div>
+    <div tuiTitle>
+        – $10 000
+        <div tuiSubtitle>September 6</div>
+        <span
+            appearance="accent"
+            tuiMessage
+        >
+            For game
+        </span>
+    </div>
+</div>
