@@ -13,12 +13,13 @@ import {
     delay,
     distinctUntilChanged,
     filter,
+    fromEvent,
     map,
     merge,
     of,
     share,
     switchMap,
-    take,
+    takeUntil,
     tap,
 } from 'rxjs';
 
@@ -61,7 +62,7 @@ export class TuiDropdownHover extends TuiDriver {
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
                     map(tuiGetActualTarget),
                     delay(this.hideDelay),
-                    take(1),
+                    takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
         ),
