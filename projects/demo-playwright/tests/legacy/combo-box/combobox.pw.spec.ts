@@ -57,7 +57,7 @@ test.describe('ComboBox', () => {
                 );
 
                 await comboBoxPO.selectOptions([0]);
-                await apiPageExample.click({force: true});
+                await page.locator('body').click({position: {x: 0, y: 0}});
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-focused-${strict}.png`,
@@ -65,7 +65,7 @@ test.describe('ComboBox', () => {
 
                 await textfield.click();
                 await page.keyboard.press('Backspace');
-                await apiPageExample.click({force: true});
+                await page.locator('body').click({position: {x: 0, y: 0}});
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-backspaced-${strict}.png`,
@@ -74,7 +74,7 @@ test.describe('ComboBox', () => {
                 await textfield.click();
                 await page.keyboard.press('Control+A');
                 await page.keyboard.press('Backspace');
-                await apiPageExample.click({force: true});
+                await page.locator('body').click({position: {x: 0, y: 0}});
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-remove-all-${strict}.png`,
@@ -108,7 +108,7 @@ test.describe('ComboBox', () => {
                     `correct-word-match-when-strict-backspaced-${strict}.png`,
                 );
 
-                await apiPageExample.click({force: true});
+                await page.locator('body').click({position: {x: 0, y: 0}});
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-focused-${strict}.png`,
