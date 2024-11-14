@@ -59,10 +59,10 @@ export class TuiDropdownHover extends TuiDriver {
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
                     map(tuiGetActualTarget),
                     delay(this.hideDelay),
+                    startWith(null),
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
-            startWith(null),
         ),
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
         tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
