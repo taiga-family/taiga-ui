@@ -4,6 +4,7 @@ import {
     Component,
     inject,
     Input,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -18,7 +19,7 @@ import {TuiTilesComponent} from './tiles.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiTileService],
     host: {
-        '[class._dragged]': 'dragged',
+        '[class._dragged]': 'dragged()',
         '[style.gridColumn]': 'column',
         '[style.gridRow]': 'row',
         '(pointerenter)': 'onEnter()',
@@ -31,7 +32,7 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     private readonly service = inject(TuiTileService);
     private readonly tiles = inject(TuiTilesComponent);
 
-    protected dragged = false;
+    protected dragged = signal(false);
 
     @Input()
     public width = 1;
@@ -44,8 +45,14 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     public onDrag(offset: readonly [number, number]): void {
         const dragged = !Number.isNaN(offset[0]);
 
-        this.dragged = this.dragged || dragged;
-        this.tiles.element = dragged ? this.element : null;
+        /**
+         * TODO: should be this.dragged.set(this.dragged() || dragged);
+         * but transitionend doesn't work like that for some unknown reason
+         * due to a conflict with parent change detection
+         */
+        this.dragged.set(dragged);
+
+        this.tiles.element.set(dragged ? this.element : null);
         this.service.setOffset(offset);
     }
 
@@ -56,8 +63,8 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     }
 
     public ngOnDestroy(): void {
-        if (this.tiles.element === this.element) {
-            this.tiles.element = null;
+        if (this.tiles.element() === this.element) {
+            this.tiles.element.set(null);
         }
     }
 
@@ -74,6 +81,6 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     }
 
     protected onTransitionEnd(): void {
-        this.dragged = false;
+        this.dragged.set(false);
     }
 }

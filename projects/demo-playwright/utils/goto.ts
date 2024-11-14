@@ -52,6 +52,10 @@ export async function tuiGoto(
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
     );
 
+    await page.route('https://www.youtube.com/**', async (route) =>
+        route.fulfill({path: `${__dirname}/../stubs/angular-logo.mp4`}),
+    );
+
     const response = await page.goto(url, playwrightGotoOptions);
     const app = page.locator('app');
 
