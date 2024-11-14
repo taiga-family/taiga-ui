@@ -276,6 +276,10 @@ online from Web IDE.
   <img src="https://contrib.rocks/image?repo=taiga-family/taiga-ui" />
 </a>
 
+## Stars 🌟
+
+[![Popular](https://starchart.cc/taiga-family/taiga-ui.svg?variant=adaptive)](https://starchart.cc/taiga-family/taiga-ui)
+
 ## License
 
 🆓 Feel free to use our library in your commercial and private applications
