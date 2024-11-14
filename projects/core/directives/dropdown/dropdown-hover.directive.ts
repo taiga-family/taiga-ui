@@ -18,6 +18,7 @@ import {
     merge,
     of,
     share,
+    startWith,
     switchMap,
     takeUntil,
     tap,
@@ -50,13 +51,9 @@ export class TuiDropdownHover extends TuiDriver {
      */
     private readonly dropdownExternalRemoval$ = toObservable(
         inject(TuiDropdownDirective).ref,
-    ).pipe(
-        filter((x) => !x && this.hovered),
-        share(),
-    );
+    ).pipe(filter((x) => !x && this.hovered));
 
     private readonly stream$ = merge(
-        this.dropdownExternalRemoval$.pipe(map(() => null)),
         this.dropdownExternalRemoval$.pipe(
             switchMap(() =>
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
@@ -65,6 +62,7 @@ export class TuiDropdownHover extends TuiDriver {
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
             ),
+            startWith(null),
         ),
         tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
         tuiTypedFromEvent(this.doc, 'mouseout').pipe(map((e) => e.relatedTarget)),
