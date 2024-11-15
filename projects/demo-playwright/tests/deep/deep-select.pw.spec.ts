@@ -44,10 +44,10 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
+                    await page.waitForTimeout(100);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
-                        {threshold: 0.02},
                     );
 
                     await select.click();

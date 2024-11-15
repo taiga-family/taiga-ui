@@ -20,7 +20,7 @@ export default defineConfig({
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
-    retries: process.env.CI ? 2 : 0,
+    retries: process.env.CI ? Number(process.env.RETRY_COUNT ?? 2) : 0,
     workers: process.env.CI ? '100%' : '50%',
     timeout: 5 * 60 * 1000,
     use: {
@@ -50,14 +50,10 @@ export default defineConfig({
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
-            threshold: 0.25,
-            maxDiffPixelRatio: 0.025,
-            maxDiffPixels: 25,
+            threshold: 0.02,
         },
         toMatchSnapshot: {
-            threshold: 0.25,
-            maxDiffPixelRatio: 0.025,
-            maxDiffPixels: 25,
+            threshold: 0.02,
         },
     },
 });
