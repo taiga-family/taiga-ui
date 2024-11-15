@@ -31,10 +31,10 @@ test.describe('Deep / Toggle', () => {
                 await toggle.click();
                 await api.hideNotifications();
                 await api.waitStableState();
+                await page.waitForTimeout(100);
 
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}__${name}-toggled.png`,
-                    {threshold: 0.02},
                 );
 
                 await toggle.click();

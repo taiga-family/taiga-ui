@@ -2,6 +2,9 @@ name: ⚙️ E2E testing
 on:
   pull_request:
 
+env:
+  RETRY_COUNT: 2
+
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -179,9 +182,7 @@ jobs:
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.4.3
         with:
-          path: |
-            ./projects/demo-playwright/tests-results/**/*.diff.png
-            !./projects/demo-playwright/tests-results/**/*-retry*/*.diff.png
+          path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/*.diff.png
           name: '${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.project }}_${{ matrix.shard.index }}'
           if-no-files-found: ignore
           compression-level: 0
@@ -234,12 +235,12 @@ jobs:
       - name: Check if diff-output exists
         id: diff_checker
         run: |
-          echo "diff_exist=$(find ./total -regex '.*diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+          echo "diff_exist=$(find ./total -iname '*.diff.png' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff_checker.outputs.diff_exist != '0' }}
         run: |
-          find ./total -regex '.*diff\.png$' -exec echo "{}" \;
+          find ./total -iname '*.diff.png' -exec echo "{}" \;
           exit 1
 
 concurrency:

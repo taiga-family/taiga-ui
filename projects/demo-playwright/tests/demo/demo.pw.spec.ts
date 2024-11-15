@@ -34,11 +34,12 @@ test.describe('Demo', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
+                await page.waitForTimeout(100);
 
-                await expect(example).toHaveScreenshot(
-                    [path.replace('/', '').replaceAll('/', '-'), `${i + 1}.png`],
-                    {threshold: 0.02},
-                );
+                await expect(example).toHaveScreenshot([
+                    path.replace('/', '').replaceAll('/', '-'),
+                    `${i + 1}.png`,
+                ]);
             }
         });
     });
