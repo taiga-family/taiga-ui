@@ -7,13 +7,16 @@ test.describe('Tiles', () => {
         await tuiGoto(page, `${DemoRoute.Tiles}#vertical`);
 
         const example = new TuiDocumentationPagePO(page).getExample('#vertical');
-        const first = example.locator('tui-tile').first();
-        const last = example.locator('tui-tile').last();
+        const drag = example.locator('tui-tile').first();
+        const drop = example.locator('tui-tile').last();
 
         await expect(example).toHaveScreenshot('01-tiles-drag-and-drop.png');
 
-        await first.dragTo(last);
-        await page.waitForTimeout(300);
+        // Dragging manually (dragTo is flaky method)
+        await drag.hover();
+        await page.mouse.down();
+        await drop.hover();
+        await page.mouse.up();
 
         await expect(example).toHaveScreenshot('02-tiles-drag-and-drop.png');
     });
