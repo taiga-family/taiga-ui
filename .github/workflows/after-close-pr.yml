@@ -1,4 +1,4 @@
-name: Cleanup resources after close PR
+name: 🤖 After closed Pull Request
 on:
   pull_request:
     types: [closed]
@@ -43,3 +43,16 @@ jobs:
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           PROJECT_ID: taiga-previews
+
+  community-contribution:
+    if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions-ecosystem/action-add-labels@v1.1.0
+        if: ${{ github.event.pull_request.merged == true }}
+        with:
+          github_token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
+          with:
+            labels: |
+              community contribution
