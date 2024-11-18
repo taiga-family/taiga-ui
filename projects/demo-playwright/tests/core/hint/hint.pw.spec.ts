@@ -32,8 +32,7 @@ test.describe('TuiHint', () => {
 
         directions.forEach((direction, directionIndex) => {
             [256, 1280].forEach((width) => {
-                // TODO: need fix https://github.com/taiga-family/taiga-ui/issues/9764 before
-                test.skip(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
+                test(`tuiHintDirection is ${direction}, viewport width is ${width}px`, async ({
                     page,
                 }) => {
                     await page.setViewportSize({width, height: 300});
@@ -44,7 +43,7 @@ test.describe('TuiHint', () => {
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
                     await expect(page).toHaveScreenshot(
-                        `02-hint-manual-direction__${direction}-and-width__${width}.png`,
+                        `02-hint-manual-direction-${directionIndex}__${direction}-and-width__${width}.png`,
                     );
                 });
             });
