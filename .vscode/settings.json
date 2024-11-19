@@ -2,6 +2,7 @@
     "explorer.sortOrder": "type",
     "typescript.tsdk": "node_modules/typescript/lib",
     "git.autofetch": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "line"
