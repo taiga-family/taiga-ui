@@ -188,6 +188,17 @@ jobs:
           compression-level: 0
           retention-days: 1
 
+      - name:
+          Upload reports / blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.os }}_${{
+          matrix.shard.index }}
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          path: ./projects/demo-playwright/blob-report
+          name:
+            blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.os }}_${{ matrix.shard.index }}
+          compression-level: 0
+          retention-days: 1
+
   # workaround for status checks -- check this one job instead of each individual E2E job in the matrix
   # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809
   playwright-composite-result:
@@ -213,6 +224,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.96.0
+      - uses: taiga-family/ci/actions/setup/node@v1.96.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -231,6 +243,40 @@ jobs:
           pattern: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
           merge-multiple: true
       - run: ls -R ./total/cypress || echo "not found"
+
+      - name: Download blob reports for Playwright
+        continue-on-error: true
+        uses: actions/download-artifact@v4.1.8
+        with:
+          path: all-blob-reports
+          pattern: blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
+          merge-multiple: true
+      - run: ls -R ./all-blob-reports || echo "not found"
+
+      - name: Merge into HTML Report
+        run: npx playwright merge-reports --reporter html,json ./all-blob-reports > ./all-blob-reports/results.json
+
+      - name: Deploy e2e report
+        id: e2e-report
+        uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+        if: env.IS_OWNER_MODE == 'true'
+        continue-on-error: true
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          projectId: taiga-previews
+          expires: 1d
+          target: taiga-previews-demo-e2e-report
+          disableComment: 'true'
+
+      - name: Create report comment
+        id: report-summary
+        continue-on-error: true
+        uses: daun/playwright-report-summary@v3.6.0
+        with:
+          comment-title: 'Playwright test results'
+          report-file: ./all-blob-reports/results.json
+          report-url: ${{ steps.e2e-report.outputs.details_url }}
 
       - name: Check if diff-output exists
         id: diff_checker

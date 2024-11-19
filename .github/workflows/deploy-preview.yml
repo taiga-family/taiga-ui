@@ -20,6 +20,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           projectId: taiga-previews
+          target: taiga-previews-demo
           expires: 1d
 
 concurrency:

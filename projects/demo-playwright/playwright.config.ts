@@ -16,7 +16,9 @@ export default defineConfig({
     testMatch: '**/*.pw.spec.ts',
     outputDir: 'tests-results',
     snapshotDir: 'snapshots',
-    reporter: process.env.CI ? 'github' : [['html', {outputFolder: 'tests-report'}]],
+    reporter: process.env.CI
+        ? [['blob'], ['github']]
+        : [['html', {outputFolder: 'tests-report'}]],
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
