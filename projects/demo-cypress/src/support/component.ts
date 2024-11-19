@@ -1,3 +1,5 @@
+import 'cypress-plugin-tab';
+
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {mount} from 'cypress/angular';
 import addCompareSnapshotCommand from 'cypress-image-diff-js/command';
