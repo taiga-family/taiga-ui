@@ -32,6 +32,7 @@ const STYLES_BEFORE = `
     .text-overflow();
     .tui-space(vertical, 4);
     .text-h3();
+    .customize-scroll();
     padding-top: @space * 2;
 }
 
@@ -57,7 +58,8 @@ const STYLES_BEFORE = `
 }
 `;
 
-const STYLES_AFTER = `
+const STYLES_AFTER = `@import '@taiga-ui/legacy/styles/taiga-ui-local';
+
 @import '@taiga-ui/proprietary/styles/tbank-fonts';
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
@@ -79,6 +81,7 @@ const STYLES_AFTER = `
     margin-top: 1rem;
 margin-bottom: 1rem;
     font: var(--tui-font-heading-3);
+    .customize-scroll();
     padding-top: 0.25rem * 2;
 }
 
