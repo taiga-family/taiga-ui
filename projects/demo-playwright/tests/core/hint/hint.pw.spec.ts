@@ -132,4 +132,13 @@ test.describe('TuiHint', () => {
 
         await expect(page).toHaveScreenshot('06-hint-direction__left.png');
     });
+
+    test('TuiHint customizing works', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Hint);
+        const example = new TuiDocumentationPagePO(page).getExample('#customizing');
+
+        await example.locator('tui-avatar').hover();
+
+        await expect(example).toHaveScreenshot('07-hint.png');
+    });
 });

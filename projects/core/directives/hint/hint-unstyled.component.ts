@@ -1,3 +1,4 @@
+import type {WritableSignal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +9,7 @@ import {
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     injectContext,
     PolymorpheusComponent,
@@ -19,13 +21,16 @@ import {TuiHintDirective} from './hint.directive';
 @Component({
     standalone: true,
     imports: [PolymorpheusOutlet],
-    template: '<ng-container *polymorpheusOutlet="context.$implicit.content" />',
+    template: '<ng-container *polymorpheusOutlet="context.$implicit.content()" />',
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
     host: {'[@tuiParentAnimation]': ''},
 })
 export class TuiHintUnstyledComponent {
-    protected readonly context = injectContext<TuiContext<TuiPortalItem>>();
+    protected readonly context =
+        injectContext<
+            TuiContext<TuiPortalItem & {content: WritableSignal<PolymorpheusContent>}>
+        >();
 }
 
 @Directive({
