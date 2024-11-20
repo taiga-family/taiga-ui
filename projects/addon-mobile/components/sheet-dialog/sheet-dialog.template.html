@@ -21,17 +21,6 @@
         <ng-container *polymorpheusOutlet="context.label as label">
             {{ label }}
         </ng-container>
-        <button
-            *ngIf="context.closeable"
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            class="t-close"
-            [icon]="icons.close"
-            (click)="close()"
-        >
-            {{ closeWord$ | async }}
-        </button>
     </h2>
     <div
         *ngIf="context.content"
