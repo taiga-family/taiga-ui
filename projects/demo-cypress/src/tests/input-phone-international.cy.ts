@@ -67,6 +67,10 @@ export class Test implements OnInit {
 }
 
 describe('InputPhoneInternational', () => {
+    beforeEach(() => {
+        cy.viewport(400, 300);
+    });
+
     describe('Count form control updates', () => {
         let control!: FormControl<string>;
 
@@ -150,6 +154,8 @@ describe('InputPhoneInternational', () => {
         describe('select new country from dropdown', () => {
             it('Initially empty textfield => select new country => no form control emits', () => {
                 cy.get('tui-input-phone-international').click('left');
+
+                cy.compareSnapshot('phone-18n-dropdown');
 
                 selectCountry('Kazakhstan');
 
@@ -249,28 +255,11 @@ describe('InputPhoneInternational', () => {
                 cy.wait(1);
 
                 cy.get('@textfield').should('have.value', '+7 777 777-7777');
+                cy.get('tui-input-phone-international').compareSnapshot({
+                    name: 'phone-18n-formatted-value',
+                    cypressScreenshotOptions: {padding: 8},
+                });
             });
-        });
-    });
-
-    describe('debug screenshot testing', () => {
-        beforeEach(() => {
-            cy.viewport(400, 300);
-
-            cy.mount(Test, {
-                componentProperties: {
-                    countryIsoCode: 'US',
-                },
-            });
-        });
-
-        it('entire page', () => {
-            cy.get('tui-input-phone-international').click('left');
-            cy.compareSnapshot('entire-page');
-        });
-
-        it('only textfield', () => {
-            cy.get('tui-input-phone-international').compareSnapshot('only-textfield');
         });
     });
 });
