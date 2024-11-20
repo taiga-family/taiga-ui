@@ -170,7 +170,10 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         ...items.filter(
             (item) =>
                 (minLength === null ||
-                    item.range.from.append(minLength).daySameOrBefore(item.range.to)) &&
+                    item.range.from
+                        .append(minLength)
+                        .append({day: -1})
+                        .daySameOrBefore(item.range.to)) &&
                 (min === null || item.range.to.daySameOrAfter(min)) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),

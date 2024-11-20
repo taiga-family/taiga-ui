@@ -10,6 +10,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import type {TuiDayLike} from '@taiga-ui/cdk';
 import {
     TUI_LAST_DAY,
     tuiControlValue,
@@ -40,7 +41,9 @@ describe('rangeCalendarComponent', () => {
                 [items]="items"
                 [markerHandler]="markerHandler"
                 [max]="max"
+                [maxLength]="maxLength"
                 [min]="min"
+                [minLength]="minLength"
                 [value]="value"
                 (valueChange)="onRangeChange($event)"
             />
@@ -71,6 +74,10 @@ describe('rangeCalendarComponent', () => {
         public min = new TuiDay(1900, 0, 1);
 
         public max = TUI_LAST_DAY;
+
+        public minLength: TuiDayLike | null = null;
+
+        public maxLength: TuiDayLike | null = null;
 
         public value: TuiDayRange | null = null;
 
@@ -252,6 +259,23 @@ describe('rangeCalendarComponent', () => {
 
             expect(items[0]?.nativeElement.contains(getCheckmark())).toBe(false);
             expect(items[1]?.nativeElement.contains(getCheckmark())).toBe(true);
+        });
+
+        it('show item if it matches with minLength and maxLength', () => {
+            const today = TuiDay.currentLocal();
+            const length = {day: 1};
+            const title = 'Период';
+
+            testComponent.minLength = length;
+            testComponent.maxLength = length;
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(today, today), title),
+            ];
+
+            fixture.detectChanges();
+
+            expect(getItems()[0]?.nativeElement.textContent.trim()).toBe(title);
         });
 
         it('should update selectedActivePeriod after onItemSelect', () => {
