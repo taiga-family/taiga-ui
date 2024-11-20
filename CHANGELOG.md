@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.16.0](https://github.com/taiga-family/taiga-ui/compare/v4.15.0...v4.16.0) (2024-11-20)
+
+### 🚀 Features
+
+- **addon-doc:** use only one property on route for expose input prop value
+  ([#9774](https://github.com/taiga-family/taiga-ui/issues/9774))
+  ([8602e4e](https://github.com/taiga-family/taiga-ui/commit/8602e4e9b40bbb7ef5305430a13ecd71caf7b3ca))
+- **i18n:** add greek language ([#9762](https://github.com/taiga-family/taiga-ui/issues/9762))
+  ([f81c996](https://github.com/taiga-family/taiga-ui/commit/f81c996718a6a2c908911607a08cc2a11829c571))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `DropdownMobile` is not compatible with `DropdownHover`
+  ([#9736](https://github.com/taiga-family/taiga-ui/issues/9736))
+  ([b57149a](https://github.com/taiga-family/taiga-ui/commit/b57149aa7a36d69c8dbe446d0a64224be2107f59))
+- **cdk:** `FocusTrap` has race condition problems ([#9759](https://github.com/taiga-family/taiga-ui/issues/9759))
+  ([d84b437](https://github.com/taiga-family/taiga-ui/commit/d84b437a518fe3b1f29e78a1971acd68437a0b82))
+- **core:** fix custom hint ([#9776](https://github.com/taiga-family/taiga-ui/issues/9776))
+  ([ae83d2d](https://github.com/taiga-family/taiga-ui/commit/ae83d2d36b0d965431f183f6ce991edcd638f48f))
+- **kit:** correctly loose box shadow on tile after dragged
+  ([#9733](https://github.com/taiga-family/taiga-ui/issues/9733))
+  ([91af99f](https://github.com/taiga-family/taiga-ui/commit/91af99f655c966bb18bd6479c8167e1f1890584e))
+- **kit:** fix calendar range presets filtration ([#9777](https://github.com/taiga-family/taiga-ui/issues/9777))
+  ([bfeb254](https://github.com/taiga-family/taiga-ui/commit/bfeb25404fb4f8c9b65bb7d04b3a36bc45862f3c))
+
 ## [4.15.0](https://github.com/taiga-family/taiga-ui/compare/v4.14.0...v4.15.0) (2024-11-13)
 
 ### 🚀 Features
