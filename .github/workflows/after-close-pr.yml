@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions-ecosystem/action-add-labels@v1.1.0
+      - uses: actions-ecosystem/action-add-labels@v1.1.3
         if: ${{ github.event.pull_request.merged == true }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
