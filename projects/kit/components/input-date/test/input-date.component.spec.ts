@@ -47,7 +47,7 @@ describe('InputDate', () => {
 
         readOnly = false;
 
-        min = new TuiDay(1900, 0, 1);
+        min: TuiDay | null = new TuiDay(1500, 0, 1);
 
         labelOutside = false;
 
@@ -123,6 +123,15 @@ describe('InputDate', () => {
             await fixture.whenStable();
 
             expect(inputPO.value).toBe('14.03.2017');
+        });
+
+        it('correct shows value less than 01.01.1900', async () => {
+            testComponent.control.patchValue(new TuiDay(1000, 0, 1));
+            fixture.detectChanges();
+
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('01.01.1000');
         });
 
         describe('Keyboard input', () => {
@@ -206,15 +215,17 @@ describe('InputDate', () => {
             expect(typedDay.year).toBe(2021);
         });
 
-        it('does not accept mm.dd.yyyy (and set min day if it is less min day)', () => {
+        it('does not accept mm.dd.yyyy (and set min day if it is less min day)', async () => {
             inputPO.sendText('12.23.2021');
+
+            await fixture.whenStable();
 
             const typedDay = testComponent.control.value;
 
-            expect(inputPO.value).toBe('1900.01.01');
+            expect(inputPO.value).toBe('1500.01.01');
             expect(typedDay.day).toBe(1);
             expect(typedDay.month).toBe(0);
-            expect(typedDay.year).toBe(1900);
+            expect(typedDay.year).toBe(1500);
         });
 
         it('sets valid day if date selected via calendar', async () => {
@@ -253,15 +264,17 @@ describe('InputDate', () => {
             expect(typedDay.year).toBe(2021);
         });
 
-        it('does not accept yyyy.mm.dd (and set min day if it is less min day)', () => {
+        it('does not accept yyyy.mm.dd (and set min day if it is less min day)', async () => {
             inputPO.sendText('2021.12.23');
+
+            await fixture.whenStable();
 
             const typedDay = testComponent.control.value;
 
-            expect(inputPO.value).toBe('01.01.1900');
+            expect(inputPO.value).toBe('01.01.1500');
             expect(typedDay.day).toBe(1);
             expect(typedDay.month).toBe(0);
-            expect(typedDay.year).toBe(1900);
+            expect(typedDay.year).toBe(1500);
         });
 
         it('sets valid day if date selected via calendar', async () => {
@@ -360,11 +373,13 @@ describe('InputDate', () => {
             expect(testComponent.control.value).toEqual(new Date(1905, 0, 9));
         });
 
-        it('transforms min day as output (if typed day is less than min day)', () => {
-            inputPO.sendText('19.02.1861');
+        it('transforms min day as output (if typed day is less than min day)', async () => {
+            inputPO.sendText('19.02.1300');
 
-            expect(inputPO.value).toBe('01.01.1900');
-            expect(testComponent.control.value).toEqual(new Date(1900, 0, 1));
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('01.01.1500');
+            expect(testComponent.control.value).toEqual(new Date(1500, 0, 1));
         });
 
         it('transforms value which was selected via calendar', async () => {
