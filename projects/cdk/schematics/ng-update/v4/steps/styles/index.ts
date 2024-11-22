@@ -1,6 +1,7 @@
 /// <reference lib="es2021" />
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
+import {migrateLegacyMixins} from './migrate-legacy-mixins';
 import {migrateLessSCSSConstants} from './migrate-less-scss-constants';
 import {migrateMixins} from './migrate-mixins';
 import {migrateShadowMixins} from './migrate-shadow-mixins';
@@ -49,6 +50,7 @@ export function migrateStyles(): void {
                 migrateShadowMixins,
                 migrateLessSCSSConstants,
                 migrateMixins,
+                migrateLegacyMixins,
             ].reduce((text, migrate) => migrate(text), fullText);
 
             sourceFile.replaceWithText(newFileContent);
