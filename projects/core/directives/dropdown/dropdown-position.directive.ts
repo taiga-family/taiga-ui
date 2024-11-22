@@ -71,16 +71,17 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         const better: TuiVerticalDirection =
             available.top > available.bottom ? 'top' : 'bottom';
 
-        this.emitDirection(better);
-
         if (
             (available[previous] > minHeight && direction) ||
             available[previous] > height
         ) {
+            this.emitDirection(previous);
+
             return [position[previous], position[align]];
         }
 
         this.previous = better;
+        this.emitDirection(better);
 
         return [position[better], position[align]];
     }

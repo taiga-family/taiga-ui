@@ -10,7 +10,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 @Directive({
     standalone: true,
     selector: '[tuiDropdownSided]',
-    providers: [tuiAsPositionAccessor(TuiDropdownPositionSided)],
+    providers: [TuiDropdownPosition, tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })
 export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -56,7 +56,7 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
             (available[this.previous] > minHeight && direction) ||
             this.previous === better
         ) {
-            this.vertical.emitDirection(better);
+            this.vertical.emitDirection(this.previous);
 
             return [position[this.previous], left];
         }
