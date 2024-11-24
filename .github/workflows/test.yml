@@ -16,7 +16,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.98.0
       - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
-      - uses: codecov/codecov-action@v5.0.4
+      - uses: codecov/codecov-action@v5.0.7
         with:
           codecov_yml_path: ./.github/codecov.yml
           directory: ./coverage/
