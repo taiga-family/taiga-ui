@@ -9,7 +9,6 @@ import {TuiCalendar} from '@taiga-ui/core';
     standalone: true,
     imports: [NgIf, TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

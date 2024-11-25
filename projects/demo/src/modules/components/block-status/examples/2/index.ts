@@ -12,7 +12,6 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
