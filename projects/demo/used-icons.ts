@@ -54,6 +54,7 @@ export const TUI_USED_ICONS = [
     '@tui.message-square',
     '@tui.info-filled',
     '@tui.info',
+    '@tui.heart-filled',
     '@tui.dollar-sign',
     '@tui.paint-bucket',
     '@tui.file',
