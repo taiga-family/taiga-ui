@@ -18,6 +18,8 @@ import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 
+import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
+
 export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [string]>;
 
 @Component({
@@ -36,10 +38,11 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     styleUrls: ['./calendar-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._picking]': 'isSingleDayRange',
+        '[class._picking]': 'isRangePicking',
     },
 })
 export class TuiCalendarSheet {
+    private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
     private readonly today = TuiDay.currentLocal();
 
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
@@ -63,12 +66,25 @@ export class TuiCalendarSheet {
     @Input()
     public showAdjacent = true;
 
+    /**
+     * @deprecated use static DI options instead
+     * ```
+     * tuiCalendarSheetOptionsProvider({rangeMode: true})
+     * ```
+     * TODO(v5): delete it
+     */
+    @Input()
+    public single = true;
+
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
 
+    /**
+     * @deprecated TODO(v5): delete it. It is used nowhere except unit tests
+     */
     public itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
@@ -96,17 +112,25 @@ export class TuiCalendarSheet {
     public getItemRange(item: TuiDay): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
-        if (value instanceof TuiDay) {
+        if (!value) {
+            return null;
+        }
+
+        if (value instanceof TuiDay && !this.computedRangeMode) {
             return value.daySame(item) ? 'active' : null;
         }
 
-        if (!value || !(value instanceof TuiDayRange)) {
-            return value?.find((day) => day.daySame(item)) ? 'active' : null;
+        if (value instanceof TuiDayRange && value.isSingleDay) {
+            return value.from.daySame(item) ? 'active' : null;
+        }
+
+        if (!(value instanceof TuiDay) && !(value instanceof TuiDayRange)) {
+            return value.find((day) => day.daySame(item)) ? 'active' : null;
         }
 
         const range = this.getRange(value, hoveredItem);
 
-        if (value.isSingleDay && range.isSingleDay && value.from.daySame(item)) {
+        if (range.isSingleDay && range.from.daySame(item)) {
             return 'active';
         }
 
@@ -121,8 +145,18 @@ export class TuiCalendarSheet {
         return range.from.dayBefore(item) && range.to.dayAfter(item) ? 'middle' : null;
     }
 
-    protected get isSingleDayRange(): boolean {
-        return this.value instanceof TuiDayRange && this.value.isSingleDay;
+    protected get computedRangeMode(): boolean {
+        return !this.single || this.options.rangeMode;
+    }
+
+    protected get isRangePicking(): boolean {
+        return this.computedRangeMode
+            ? this.value instanceof TuiDay
+            : /**
+               * Only for backward compatibility!
+               * TODO(v5): replace with `this.options.rangeMode && this.value instanceof TuiDay`
+               */
+              this.value instanceof TuiDayRange && this.value.isSingleDay;
     }
 
     protected readonly toMarkers = (
@@ -148,12 +182,15 @@ export class TuiCalendarSheet {
         return !this.month.monthSame(item);
     }
 
-    protected onItemClick(item: TuiDay): void {
-        this.dayClick.emit(item);
-    }
-
     @tuiPure
-    private getRange(value: TuiDayRange, hoveredItem: TuiDay | null): TuiDayRange {
+    private getRange(
+        value: TuiDay | TuiDayRange,
+        hoveredItem: TuiDay | null,
+    ): TuiDayRange {
+        if (value instanceof TuiDay) {
+            return TuiDayRange.sort(value, hoveredItem ?? value);
+        }
+
         return value.isSingleDay
             ? TuiDayRange.sort(value.from, hoveredItem ?? value.to)
             : value;

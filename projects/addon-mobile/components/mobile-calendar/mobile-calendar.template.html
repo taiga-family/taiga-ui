@@ -81,6 +81,7 @@
             class="t-calendar"
             [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : min : max"
             [month]="month"
+            [single]="single"
             [value]="value"
             (dayClick)="onDayClick($event)"
         />
