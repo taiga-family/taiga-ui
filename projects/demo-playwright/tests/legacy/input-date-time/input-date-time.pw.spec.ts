@@ -337,6 +337,7 @@ test.describe('InputDateTime', () => {
             await inputDateTime.textfield.fill('11');
             await inputDateTime.textfield.blur();
 
+            // allow animations to capture tui-error validation message on screenshot
             await expect(example).toHaveScreenshot(
                 '04-input-data-time-with-validator.png',
                 {animations: 'allow'},
