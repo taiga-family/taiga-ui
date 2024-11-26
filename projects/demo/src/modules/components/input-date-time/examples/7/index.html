@@ -1,11 +1,9 @@
-<form [formGroup]="testForm">
-    <tui-input-date-time formControlName="testValue">Choose date and time</tui-input-date-time>
-    <tui-error
-        formControlName="testValue"
-        [error]="[] | tuiFieldError | async"
-    ></tui-error>
+<tui-input-date-time [formControl]="control">Choose date and time</tui-input-date-time>
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="control"
+></tui-error>
 
-    <p>Form value:</p>
+<p>Form value:</p>
 
-    <pre><code>{{ testForm.value | json }}</code></pre>
-</form>
+<pre><code>{{ control.value | json }}</code></pre>

@@ -3,7 +3,6 @@ import {Component} from '@angular/core';
 import {
     AbstractControl,
     FormControl,
-    FormGroup,
     ReactiveFormsModule,
     type ValidationErrors,
     type ValidatorFn,
@@ -35,10 +34,8 @@ const completeDateTimeValidator: ValidatorFn = (
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl(
-            [new TuiDay(2017, 2, 15), null],
-            completeDateTimeValidator,
-        ),
-    });
+    protected readonly control = new FormControl(
+        [new TuiDay(2017, 2, 15), null],
+        completeDateTimeValidator,
+    );
 }
