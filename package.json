@@ -133,7 +133,6 @@
                     "**/demo/**/*.{less,css,scss}"
                 ],
                 "rules": {
-                    "no-empty-source": null,
                     "selector-class-pattern": null
                 }
             }
