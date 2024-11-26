@@ -115,6 +115,20 @@
                 is 12-hour time format with meridiem part
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="with-validator"
+            heading="With validator"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample: 'html,ts'"
+            [description]="withValidatorDescription"
+        >
+            <ng-template #withValidatorDescription>
+                Create custom validator function to verify input value. Custom
+                <code>completeDateTimeValidator</code>
+                using to check if data is complete
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
