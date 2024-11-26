@@ -241,4 +241,37 @@ describe('InputDateTime', () => {
             });
         });
     });
+
+    test.describe('Examples', () => {
+        let example!: Locator;
+        let documentationPage!: TuiDocumentationPagePO;
+        let inputDateTime!: TuiInputDateTimePO;
+
+        test.beforeEach(async ({page}) => {
+            await tuiGoto(page, 'components/input-date-time');
+
+            documentationPage = new TuiDocumentationPagePO(page);
+            example = documentationPage.apiPageExample;
+
+            inputDateTime = new TuiInputDateTimePO(
+                example.locator('tui-input-date-time'),
+            );
+        });
+
+        test('With validator: enter incomplete date -> validator error', async () => {
+            example = documentationPage.getExample('#with-validator');
+            inputDateTime = new TuiInputDateTimePO(
+                example.locator('tui-input-date-time'),
+            );
+
+            await inputDateTime.textfield.clear();
+            await inputDateTime.textfield.fill('11');
+            await inputDateTime.textfield.blur();
+
+            await expect(example).toHaveScreenshot(
+                '04-input-data-time-with-validator.png',
+                {animations: 'allow'},
+            );
+        });
+    });
 });

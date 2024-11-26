@@ -257,6 +257,10 @@ export class TuiInputDateTimeComponent
     }
 
     onValueChange(value: string): void {
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
+        }
+
         if (!value) {
             this.onOpenChange(true);
         }
