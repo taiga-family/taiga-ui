@@ -5,12 +5,13 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDropdownModule,
+    TuiErrorModule,
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateTimeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipeModule, TuiInputDateTimeModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateTimeExample1} from './examples/1';
@@ -18,10 +19,13 @@ import {TuiInputDateTimeExample2} from './examples/2';
 import {TuiInputDateTimeExample3} from './examples/3';
 import {TuiInputDateTimeExample4} from './examples/4';
 import {TuiInputDateTimeExample5} from './examples/5';
+import {TuiInputDateTimeExample6} from './examples/6';
 import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
 
 @NgModule({
     imports: [
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
         ReactiveFormsModule,
@@ -42,6 +46,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiInputDateTimeExample3,
         TuiInputDateTimeExample4,
         TuiInputDateTimeExample5,
+        TuiInputDateTimeExample6,
     ],
     exports: [ExampleTuiInputDateTimeComponent],
 })

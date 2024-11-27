@@ -61,6 +61,11 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         HTML: import('./examples/5/index.html?raw'),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+    };
+
     readonly minVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
