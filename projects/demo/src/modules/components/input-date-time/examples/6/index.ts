@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {
     AbstractControl,
     FormControl,
-    FormGroup,
     ValidationErrors,
     ValidatorFn,
 } from '@angular/forms';
@@ -22,10 +21,8 @@ const completeDateTimeValidator: ValidatorFn = (
     changeDetection,
 })
 export class TuiInputDateTimeExample6 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl(
-            [new TuiDay(2017, 2, 15), null],
-            completeDateTimeValidator,
-        ),
-    });
+    readonly control = new FormControl(
+        [new TuiDay(2017, 2, 15), null],
+        completeDateTimeValidator,
+    );
 }
