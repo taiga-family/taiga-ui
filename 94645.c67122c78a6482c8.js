@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[94645],{94645:o=>{o.exports='<tui-input-date-time [formControl]="control">Choose date and time</tui-input-date-time>\n<tui-error\n    [error]="[] | tuiFieldError | async"\n    [formControl]="control"\n/>\n\n<p>Form value:</p>\n\n<pre><code>{{ control.value | json }}</code></pre>\n'}}]);
