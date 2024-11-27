@@ -94,7 +94,7 @@ export class App extends AbstractDemo implements OnInit {
     public override async ngOnInit(): Promise<void> {
         await super.ngOnInit();
 
-        if (this.isServer || this.isE2E) {
+        if (this.isServer || this.isE2E || !environment.production) {
             return;
         }
 
