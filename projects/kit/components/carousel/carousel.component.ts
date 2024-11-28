@@ -16,7 +16,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk/directives/swipe';
-import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
+import {TUI_SWIPE_OPTIONS, TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -44,6 +44,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{provide: TUI_SWIPE_OPTIONS, useValue: {timeout: 200, threshold: 30}}],
     hostDirectives: [
         {
             directive: TuiCarouselDirective,
@@ -134,8 +135,8 @@ export class TuiCarouselComponent {
         {intersectionRatio}: IntersectionObserverEntry,
         index: number,
     ): void {
-        if (intersectionRatio && intersectionRatio !== 1 && !this.transitioned) {
-            this.updateIndex(index - Math.floor(this.itemsCount / 2));
+        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
+            this.updateIndex(this.index < index ? index - this.itemsCount + 1 : index);
         }
     }
 
