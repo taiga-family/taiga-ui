@@ -35,7 +35,7 @@ export const NAVIGATION_ITEMS = tuiCreateToken<readonly TuiDocRoutePages[]>();
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     tuiAutoFocusOptionsProvider({preventScroll: true}),
-    tuiLinkOptionsProvider({appearance: 'icon'}),
+    tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
     {
         provide: NAVIGATION_TITLE,
         deps: [Router, ActivatedRoute, TUI_DOC_TITLE],

@@ -175,6 +175,7 @@ describe('InputTime', () => {
             fixture.detectChanges();
 
             expect(input.value).toBe('13:30');
+            expect(testComponent.control.value).toEqual(new TuiTime(13, 30));
         });
 
         it('if the cursor is at position 4, then pressing UP increases the minute by 1', () => {
@@ -184,6 +185,7 @@ describe('InputTime', () => {
             fixture.detectChanges();
 
             expect(input.value).toBe('12:31');
+            expect(testComponent.control.value).toEqual(new TuiTime(12, 31));
         });
 
         it('if the cursor is at position 0, then pressing DOWN decreases the hour by 1', () => {
@@ -193,6 +195,7 @@ describe('InputTime', () => {
             fixture.detectChanges();
 
             expect(input.value).toBe('11:30');
+            expect(testComponent.control.value).toEqual(new TuiTime(11, 30));
         });
 
         it('if the cursor is at position 4, then pressing DOWN decreases the minute by 1', () => {
@@ -202,6 +205,7 @@ describe('InputTime', () => {
             fixture.detectChanges();
 
             expect(input.value).toBe('12:29');
+            expect(testComponent.control.value).toEqual(new TuiTime(12, 29));
         });
 
         it('when readOnly is ignored', async () => {
@@ -215,11 +219,13 @@ describe('InputTime', () => {
             fixture.detectChanges();
 
             expect(input.value).toBe('12:30');
+            expect(testComponent.control.value).toEqual(new TuiTime(12, 30));
 
             input.dispatchEvent(tuiCreateKeyboardEvent('ArrowDown', 'keydown'));
             fixture.detectChanges();
 
             expect(input.value).toBe('12:30');
+            expect(testComponent.control.value).toEqual(new TuiTime(12, 30));
         });
     });
 

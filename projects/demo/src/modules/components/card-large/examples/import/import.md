@@ -1,5 +1,6 @@
 ```ts
 import {Component} from '@angular/core';
+import {TuiAppearance} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 // ...
 
@@ -7,6 +8,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
   standalone: true,
   imports: [
     // ...
+    TuiAppearance,
     TuiCardLarge,
   ],
 })

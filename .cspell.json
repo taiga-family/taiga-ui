@@ -2,38 +2,8 @@
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
-    "ignorePaths": [
-        ".git",
-        "LICENSE",
-        "CHANGELOG.md",
-        ".cspell.json",
-        ".github/CODEOWNERS",
-        "**/*.less",
-        "**/dist/**",
-        "**/cspell/**",
-        "**/.vscode/**",
-        "**/assets/**",
-        "**/node_modules/**",
-        "*.{log,svg,snap,png,ogv,yml}",
-        "**/projects/i18n/languages/**",
-        "**/addon-commerce/enums/currency-code.ts",
-        "**/addon-commerce/utils/get-currency-symbol.ts",
-        "**/demo-playwright/stubs"
-    ],
-    "ignoreWords": [
-        "preid",
-        "Quarterpounder",
-        "tuilabel",
-        "fontawesome",
-        "fortawesome",
-        "svgs",
-        "contentalign",
-        "inputpassword",
-        "inputcopy",
-        "docsearch",
-        "Wachovia",
-        "urlset"
-    ],
+    "ignorePaths": ["**/projects/i18n/languages/**", "**/addon-commerce/utils/get-currency-symbol.ts"],
+    "ignoreWords": ["Wachovia", "bottomsheet", "appbar", "qwertypgj_", "antialiasing"],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {
@@ -41,20 +11,8 @@
             "ignoreWords": ["protestin", "spittin", "callin", "yellin"]
         },
         {
-            "filename": ["**/i18n/README.md"],
-            "ignoreWords": ["odzumiraj", "zumiraj", "rotiraj"]
-        },
-        {
-            "filename": ["**/example.md"],
-            "ignoreWords": ["xxxHTMLyyy"]
-        },
-        {
             "filename": ["**/highlight/test/highlight.directive.spec.ts"],
             "ignoreWords": ["aaabbb"]
-        },
-        {
-            "filename": ["**/tests/kit/input-tag/input-tag.cy.ts"],
-            "ignoreWords": ["looooooooooooooooooooooooong"]
         },
         {
             "filename": ["**/tests/schematic-replace-consts.spec.ts", "**/constants/constants.ts"],
@@ -69,11 +27,6 @@
             "languageId": "ts",
             "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
             "ignoreWords": ["Maxxxxx"]
-        },
-        {
-            "languageId": "ts",
-            "filename": ["**/textarea.spec.ts"],
-            "ignoreWords": ["qwertypgj_"]
         }
     ]
 }

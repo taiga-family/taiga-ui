@@ -31,7 +31,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider({size: 's', appearance: 'flat'}),
+        tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({
             appearance: 'dropdown-navigation',
             align: 'right',

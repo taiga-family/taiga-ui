@@ -109,6 +109,7 @@ import {
     host: {
         '[class._ios]': 'isIOS',
         '[class._initialized]': 'initialized',
+        '(mousedown.prevent)': '0',
     },
 })
 export class TuiMobileCalendar implements AfterViewInit {
@@ -329,7 +330,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         );
     }
 
-    private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
+    private isMultiValue(day: unknown): day is readonly TuiDay[] | undefined {
         return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
     }
 

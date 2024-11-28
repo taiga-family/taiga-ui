@@ -10,13 +10,13 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.3
-      - uses: taiga-family/ci/actions/setup/node@v1.93.3
+      - uses: taiga-family/ci/actions/setup/variables@v1.100.0
+      - uses: taiga-family/ci/actions/setup/node@v1.100.0
       - run: npm run typecheck
-      - run: npm run cspell -- --no-progress
+      - run: npm run cspell
       - run: |
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
               npm run stylelint -- --fix
@@ -27,7 +27,7 @@ jobs:
               npm run prettier -- --check
               npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.93.3
+      - uses: taiga-family/ci/actions/auto/push@v1.100.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 

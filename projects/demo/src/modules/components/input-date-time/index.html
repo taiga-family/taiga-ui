@@ -60,13 +60,11 @@
             [content]="1 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-4">
-                <div>
-                    If you need to set some attributes or listen to events on native
-                    <code>input</code>
-                    , you can put it inside with
-                    <code>Textfield</code>
-                    directive as shown below
-                </div>
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
             </tui-notification>
         </tui-doc-example>
 
@@ -101,6 +99,29 @@
                 Please note that native input datetime only supports HH:MM time mode
             </tui-notification>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="am-pm"
+            heading="AM / PM"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample: 'html,ts'"
+            [description]="amPmDescription"
+        >
+            <ng-template #amPmDescription>
+                Any
+                <code>timeMode</code>
+                ending with
+                <code>AA</code>
+                is 12-hour time format with meridiem part
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="with-validator"
+            heading="With validator"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample: 'html,ts'"
+        />
     </ng-template>
 
     <ng-template pageTab>

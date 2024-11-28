@@ -2,11 +2,12 @@ import type {AnimationOptions} from '@angular/animations';
 
 export const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
 
-export function tuiToAnimationOptions(speed: number): AnimationOptions {
+export function tuiToAnimationOptions(speed: number, easing?: string): AnimationOptions {
     return {
         value: '',
         params: {
             duration: tuiGetDuration(speed),
+            easing,
         },
     } as unknown as AnimationOptions;
 }

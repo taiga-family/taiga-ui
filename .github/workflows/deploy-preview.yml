@@ -7,9 +7,9 @@ jobs:
     name: Firebase
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.3
-      - uses: taiga-family/ci/actions/setup/node@v1.93.3
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.100.0
+      - uses: taiga-family/ci/actions/setup/node@v1.100.0
       - run: npx nx build demo
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
@@ -17,9 +17,11 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         if: env.IS_OWNER_MODE == 'true'
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
           firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-previews
+          target: taiga-previews-demo
           expires: 1d
 
 concurrency:

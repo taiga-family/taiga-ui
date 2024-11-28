@@ -18,7 +18,7 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiProvide(TUI_BUTTON_OPTIONS, TuiActionBarComponent),
-        tuiLinkOptionsProvider({appearance: 'icon', pseudo: true}),
+        tuiLinkOptionsProvider({appearance: 'action-grayscale', pseudo: true}),
     ],
     animations: [tuiFadeIn, tuiSlideInTop],
     host: {

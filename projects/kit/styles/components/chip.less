@@ -99,8 +99,10 @@ tui-chip,
         margin: 0;
     }
 
-    &[tuiAppearance][data-appearance='error'],
-    &[tuiAppearance][data-appearance='success'],
+    &[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
+    &[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
+    &[tuiAppearance][data-appearance='negative'],
+    &[tuiAppearance][data-appearance='positive'],
     &[tuiAppearance][data-appearance='warning'],
     &[tuiAppearance][data-appearance='info'],
     &[tuiAppearance][data-appearance='neutral'] {

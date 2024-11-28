@@ -57,13 +57,13 @@ export function tuiInspectAny<T>(data: T, depth: number): string {
     }
 
     switch (typeof data) {
-        case 'string':
-            return `'${data}'`;
-        case 'undefined':
-        case 'number':
         case 'boolean':
         case 'function':
+        case 'number':
+        case 'undefined':
             return String(data);
+        case 'string':
+            return `'${data}'`;
         default:
             break;
     }

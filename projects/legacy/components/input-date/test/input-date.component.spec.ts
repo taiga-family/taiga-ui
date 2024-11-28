@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
+import {TUI_LAST_DAY, TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_DATE_FORMAT, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -13,6 +13,7 @@ import {
     TuiInputDateModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
+import {TuiNamedDay} from '@taiga-ui/legacy/classes';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
@@ -30,12 +31,14 @@ describe('InputDate', () => {
             <tui-root>
                 <tui-input-date
                     [formControl]="control"
+                    [items]="items"
                     [min]="min"
                     [readOnly]="readOnly"
                     [tuiHintContent]="hintContent"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [(ngModel)]="value"
                 >
                     Select date
                 </tui-input-date>
@@ -56,6 +59,10 @@ describe('InputDate', () => {
         public min = new TuiDay(1900, 0, 1);
 
         public labelOutside = false;
+
+        public items: TuiNamedDay[] = [];
+
+        public value: TuiDay | null = new TuiDay(2017, 2, 1);
 
         public size: TuiSizeL | TuiSizeS = 'm';
 
@@ -117,6 +124,14 @@ describe('InputDate', () => {
             expect(inputPO.value).toBe('14.03.2017');
         });
 
+        it('if there is min and an initial value and an initial value less than min - keep the initial value', () => {
+            testComponent.min = new TuiDay(2023, 5, 17);
+
+            fixture.detectChanges();
+
+            expect(inputPO.value).toBe('01.03.2017');
+        });
+
         describe('Keyboard input', () => {
             it('the passed date is inserted into the field', () => {
                 inputPO.sendText('01.03.2017');
@@ -173,6 +188,64 @@ describe('InputDate', () => {
                         });
                     });
                 });
+            });
+        });
+
+        describe('With items', () => {
+            beforeEach(() => {
+                testComponent.items = [
+                    new TuiNamedDay(
+                        new TuiDay(2017, 2, 1),
+                        'Current',
+                        TuiDay.currentLocal(),
+                    ),
+                    new TuiNamedDay(
+                        TUI_LAST_DAY.append({year: -1}),
+                        'Until today',
+                        TuiDay.currentLocal(),
+                    ),
+                ];
+            });
+
+            it('when entering item date, input shows named date', async () => {
+                inputPO.sendText('01.02.2017');
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Current');
+            });
+
+            it('when control value updated with item date, input shows named date', async () => {
+                testComponent.control.setValue(TUI_LAST_DAY.append({year: -1}));
+                fixture.detectChanges();
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Until today');
+            });
+
+            it('when ngModel value updated with item date, input shows named date', async () => {
+                testComponent.value = TUI_LAST_DAY.append({year: -1});
+                fixture.detectChanges();
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Until today');
+            });
+
+            it('when selected item date via calendar, input shows named date', async () => {
+                mouseDownOnTextfield();
+
+                expect(getCalendar()).not.toBeNull();
+
+                const calendarCell = getCalendarCell(1);
+
+                calendarCell?.nativeElement.click();
+
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Current');
             });
         });
     });

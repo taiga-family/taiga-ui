@@ -67,7 +67,9 @@
             (click)="onElementClick(indexItem)"
             (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
             (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
-        ></button>
+        >
+            {{ indexItem + 1 }}
+        </button>
     </ng-template>
     <ng-template #dotsTemplate>
         <div

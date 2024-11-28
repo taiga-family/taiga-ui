@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
@@ -34,7 +34,7 @@ export class TuiProgressColorSegments {
                 return `linear-gradient(to right ${colorsString})`;
             }),
             tuiZonefull(),
-            tuiWatch(inject(ChangeDetectorRef)),
+            tuiWatch(),
         ),
     );
 

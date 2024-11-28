@@ -18,14 +18,14 @@
         (pointerup)="onClick(max - index)"
     >
         <tui-icon
-            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
             class="t-icon t-icon_blank"
             [class.t-icon_fraction]="isFraction(index)"
             [icon]="src.toString()"
             [style.--t-cut.%]="100 - getCut(index)"
         />
         <tui-icon
-            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
             class="t-icon"
             [icon]="src.toString()"
             [style.--t-cut.%]="getCut(index)"

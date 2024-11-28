@@ -3,9 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import {prepareSvg} from '../../../scripts/prepare-svg';
-import {tuiIsCI} from '../../cdk/schematics';
 
-const verbose = !tuiIsCI();
+const verbose = !process.env.CI;
 const src = path.join(process.cwd(), 'node_modules', 'lucide-static', 'icons');
 const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 'src');
 

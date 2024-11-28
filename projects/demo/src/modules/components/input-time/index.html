@@ -61,11 +61,20 @@
         />
 
         <tui-doc-example
-            id="options-max-and-postfix"
-            heading="Options (max values and postfix)"
+            id="am-pm"
+            heading="AM / PM"
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample: 'html,ts'"
-        />
+            [description]="amPmDescription"
+        >
+            <ng-template #amPmDescription>
+                Any
+                <code>mode</code>
+                ending with
+                <code>AA</code>
+                is 12-hour time format with meridiem part
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="string-control-output"

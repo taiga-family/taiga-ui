@@ -53,6 +53,7 @@ export class TuiDocLanguageSwitcher {
         ['japan', 'JP'],
         ['kazakh', 'KZ'],
         ['korean', 'KR'],
+        ['lithuanian', 'LT'],
         ['malay', 'MY'],
         ['polish', 'PL'],
         ['portuguese', 'PT'],

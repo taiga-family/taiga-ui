@@ -73,7 +73,11 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 filter(Boolean),
                 distinctUntilChanged(),
                 switchMap((c) =>
-                    merge(c.valueChanges, c.statusChanges, (c as any).events || EMPTY),
+                    merge(
+                        c.valueChanges,
+                        c.statusChanges,
+                        (c as any).events || EMPTY,
+                    ).pipe(startWith(null)),
                 ),
                 takeUntilDestroyed(),
             )

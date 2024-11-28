@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish canary
     steps:
-      - uses: actions/checkout@v4.2.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.3
-      - uses: taiga-family/ci/actions/setup/node@v1.93.3
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.93.3
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.100.0
+      - uses: taiga-family/ci/actions/setup/node@v1.100.0
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.100.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npx ts-node ./scripts/publish-canary.ts

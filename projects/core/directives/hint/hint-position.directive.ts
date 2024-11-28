@@ -1,5 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -12,8 +13,8 @@ import {TuiHintDirective} from './hint.directive';
 import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
 import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
 
-const OFFSET = 8;
-const ARROW_OFFSET = 22;
+const GAP = 8;
+const ARROW_OFFSET = 24;
 const TOP = 0;
 const LEFT = 1;
 
@@ -21,6 +22,7 @@ const LEFT = 1;
     standalone: true,
 })
 export class TuiHintPosition extends TuiPositionAccessor {
+    private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
         inject<any>(TuiRectAccessor),
@@ -38,19 +40,21 @@ export class TuiHintPosition extends TuiPositionAccessor {
 
     public readonly type = 'hint';
 
-    public getPosition({width, height}: DOMRect): TuiPoint {
+    public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
+        const width = el?.clientWidth ?? rect.width;
+        const height = el?.clientHeight ?? rect.height;
         const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
 
-        this.points['top-left'][TOP] = hostRect.top - height - OFFSET;
+        this.points['top-left'][TOP] = hostRect.top - height - this.offset;
         this.points['top-left'][LEFT] = leftCenter - width + ARROW_OFFSET;
         this.points.top[TOP] = this.points['top-left'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
         this.points['top-right'][TOP] = this.points['top-left'][TOP];
         this.points['top-right'][LEFT] = leftCenter - ARROW_OFFSET;
 
-        this.points['bottom-left'][TOP] = hostRect.bottom + OFFSET;
+        this.points['bottom-left'][TOP] = hostRect.bottom + this.offset;
         this.points['bottom-left'][LEFT] = this.points['top-left'][LEFT];
         this.points.bottom[TOP] = this.points['bottom-left'][TOP];
         this.points.bottom[LEFT] = this.points.top[LEFT];
@@ -58,24 +62,25 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['bottom-right'][LEFT] = this.points['top-right'][LEFT];
 
         this.points['left-top'][TOP] = topCenter - height + ARROW_OFFSET;
-        this.points['left-top'][LEFT] = hostRect.left - width - OFFSET;
+        this.points['left-top'][LEFT] = hostRect.left - width - this.offset;
         this.points.left[TOP] = topCenter - height / 2;
         this.points.left[LEFT] = this.points['left-top'][LEFT];
         this.points['left-bottom'][TOP] = topCenter - ARROW_OFFSET;
         this.points['left-bottom'][LEFT] = this.points['left-top'][LEFT];
 
         this.points['right-top'][TOP] = this.points['left-top'][TOP];
-        this.points['right-top'][LEFT] = hostRect.right + OFFSET;
+        this.points['right-top'][LEFT] = hostRect.right + this.offset;
         this.points.right[TOP] = this.points.left[TOP];
         this.points.right[LEFT] = this.points['right-top'][LEFT];
         this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
         this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
-        if (this.checkPosition(this.points[this.direction], width, height)) {
-            return this.points[this.direction];
-        }
+        const priorityDirections = Array.isArray(this.direction)
+            ? this.direction
+            : [this.direction];
+        const sortedDirections = priorityDirections.concat(TUI_HINT_DIRECTIONS);
 
-        const direction = TUI_HINT_DIRECTIONS.find((direction) =>
+        const direction = sortedDirections.find((direction) =>
             this.checkPosition(this.points[direction], width, height),
         );
 
@@ -93,10 +98,10 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const viewport = this.viewport.getClientRect();
 
         return (
-            top > OFFSET / 4 &&
-            left > OFFSET / 4 &&
-            top + height < viewport.bottom - OFFSET / 4 &&
-            left + width < viewport.right - OFFSET / 4
+            top > GAP &&
+            left > GAP &&
+            top + height < viewport.bottom - GAP &&
+            left + width < viewport.right - GAP
         );
     }
 }

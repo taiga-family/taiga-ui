@@ -11,10 +11,14 @@ export interface TuiNotificationOptions extends TuiAppearanceOptions {
 
 const ICONS: Record<string, string> = {
     info: '@tui.info',
-    success: '@tui.circle-check',
-    error: '@tui.circle-x',
+    positive: '@tui.circle-check',
+    negative: '@tui.circle-x',
     warning: '@tui.circle-alert',
     neutral: '@tui.info',
+    /* TODO @deprecated remove in v5 */
+    success: '@tui.circle-check',
+    /* TODO @deprecated remove in v5 */
+    error: '@tui.circle-x',
 };
 
 /** Default values for the notification options. */

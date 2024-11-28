@@ -22,4 +22,5 @@ export * from '@taiga-ui/cdk/directives/resizer';
 export * from '@taiga-ui/cdk/directives/swipe';
 export * from '@taiga-ui/cdk/directives/validator';
 export * from '@taiga-ui/cdk/directives/value-changes';
+export * from '@taiga-ui/cdk/directives/visual-viewport';
 export * from '@taiga-ui/cdk/directives/zoom';

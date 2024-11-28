@@ -33,11 +33,21 @@ app {
 }
 
 @media @tui-mobile {
-    .app-link {
+    // Increasing specificity
+    .app-link.app-link {
         display: none;
     }
 
     .app-links-dropdown {
         display: flex !important;
     }
+}
+
+html {
+    font-size: 100%;
+
+    .ios-only({
+        /* stylelint-disable-next-line */
+        font: -apple-system-body;
+    });
 }

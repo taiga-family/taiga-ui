@@ -22,14 +22,12 @@
         [tuiTextfieldFiller]="(getFiller$(mode) | async) || ''"
         [tuiTextfieldIcon]="iconContent"
         [value]="computedValue"
-        (keydown.arrowDown)="onArrowDown($event)"
-        (keydown.arrowUp)="onArrowUp($event)"
         (valueChange)="onValueChange($event)"
     >
         <ng-content />
         <input
-            inputmode="numeric"
             tuiTextfieldLegacy
+            [attr.inputmode]="inputMode"
         />
     </tui-primitive-textfield>
 </div>

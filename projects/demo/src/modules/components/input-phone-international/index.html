@@ -28,32 +28,30 @@
         </p>
 
         <tui-notification>
-            <div>
-                <a
-                    href="https://github.com/google/libphonenumber"
-                    target="_blank"
-                    tuiLink
-                >
-                    <strong>libphonenumber</strong>
-                </a>
-                is an ultimate phone number formatting and parsing library developed by
-                <strong>Google</strong>
-                .
+            <a
+                href="https://github.com/google/libphonenumber"
+                target="_blank"
+                tuiLink
+            >
+                <strong>libphonenumber</strong>
+            </a>
+            is an ultimate phone number formatting and parsing library developed by
+            <strong>Google</strong>
+            .
 
-                <p>
-                    This library
-                    <a
-                        tuiLink="https://github.com/google/libphonenumber/blob/master/FAQ.md#where-do-we-get-information-from-to-determine-if-a-number-range-is-valid"
-                    >
-                        collects
-                    </a>
-                    the latest phone number rules from ITU documents, user bug reports, telecom company home pages and
-                    government telecommunication authorities. It is always up-to-date (for more than 10 years), and
-                    releases are published almost every month. It means that
-                    <code>InputPhoneInternational</code>
-                    has the robust source of truth!
-                </p>
-            </div>
+            <p>
+                This library
+                <a
+                    tuiLink="https://github.com/google/libphonenumber/blob/master/FAQ.md#where-do-we-get-information-from-to-determine-if-a-number-range-is-valid"
+                >
+                    collects
+                </a>
+                the latest phone number rules from ITU documents, user bug reports, telecom company home pages and
+                government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases
+                are published almost every month. It means that
+                <code>InputPhoneInternational</code>
+                has the robust source of truth!
+            </p>
         </tui-notification>
 
         <tui-doc-example
@@ -76,7 +74,7 @@
                         <ng-template #metadataDefinition>
                             <strong>Google</strong>
                             <a
-                                appearance="icon"
+                                appearance="action-grayscale"
                                 href="https://github.com/google/libphonenumber/blob/master/FAQ.md#what-do-we-mean-by-metadata"
                                 target="_blank"
                                 tuiLink
@@ -192,70 +190,89 @@
                 at the right side of the textfield.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="customize-separator"
+            heading="Customize separator"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+            [description]="separatorDescription"
+        >
+            <ng-template #separatorDescription>
+                Using
+                <code>tuiInputPhoneInternationalOptionsProvider</code>
+                you can provide custom separator for input instead of the default
+                <code>-</code>
+                .
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
+        <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-input-phone-international
                     [countries]="countries"
                     [countrySearch]="countrySearch"
-                    [formControl]="control"
-                    [invalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldSize]="size"
+                    [formControl]="formControl"
+                    [invalid]="control.invalid"
+                    [readOnly]="control.readonly"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownAppearance]="dropdown.appearance"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
+                    [tuiTextfieldCleaner]="textfield.cleaner"
+                    [tuiTextfieldSize]="textfield.size"
                     [(countryIsoCode)]="countryIsoCode"
                 >
                     Type a phone number
                 </tui-input-phone-international>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
-            >
-                Disabled state (use
-                <code>formControl.disable()</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="countries"
-                documentationPropertyType="ReadonlyArray<TuiCountryIsoCode>"
-                [documentationPropertyValues]="countriesVariants"
-                [(documentationPropertyValue)]="countries"
+        <table tuiDocAPI>
+            <tr
+                name="[countries]"
+                tuiDocAPIItem
+                type="ReadonlyArray<TuiCountryIsoCode>"
+                [items]="countriesVariants"
+                [(value)]="countries"
             >
                 Array of ISO-codes of countries to choose
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="countrySearch"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="countrySearch"
+            </tr>
+            <tr
+                name="[countrySearch]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="countrySearch"
             >
                 Enable filter input for countries
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="countryIsoCode"
-                documentationPropertyType="TuiCountryIsoCode"
-                [documentationPropertyValues]="countryIsoCodeVariants"
-                [(documentationPropertyValue)]="countryIsoCode"
+            </tr>
+            <tr
+                name="[(countryIsoCode)]"
+                tuiDocAPIItem
+                type="boolean"
+                [items]="countryIsoCodeVariants"
+                [(value)]="countryIsoCode"
             >
                 ISO-code of selected country
-            </ng-template>
-        </tui-doc-documentation>
-        <inherited-documentation [withHint]="false" />
+            </tr>
+            <tbody
+                #textfield
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #control
+                tuiDocControl
+            ></tbody>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

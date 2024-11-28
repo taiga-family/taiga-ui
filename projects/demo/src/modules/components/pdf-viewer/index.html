@@ -10,32 +10,30 @@
             appearance="warning"
             class="tui-space_top-5"
         >
-            <div>
-                PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party
-                code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying
-                PDFs in iframe. Check it
-                <a
-                    href="https://caniuse.com/pdf-viewer"
-                    target="_blank"
-                    tuiLink
-                >
-                    here
-                </a>
-                . The only way to enforce rendering consistency in all browsers is to do the rendering server-side,
-                bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it
-                yourself, so you need to rely on
-                <code>TUI_IS_MOBILE</code>
-                token to provide suitable alternative behavior. For example, you can use third-party service
-                <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
-                or your own service to render PDF by
-                <a
-                    href="https://github.com/mozilla/pdf.js/wiki/Frequently-Asked-Questions#which-browsersenvironments-are-supported"
-                    target="_blank"
-                    tuiLink
-                >
-                    pdf.js.
-                </a>
-            </div>
+            PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party
+            code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs
+            in iframe. Check it
+            <a
+                href="https://caniuse.com/pdf-viewer"
+                target="_blank"
+                tuiLink
+            >
+                here
+            </a>
+            . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle
+            your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you
+            need to rely on
+            <code>TUI_IS_MOBILE</code>
+            token to provide suitable alternative behavior. For example, you can use third-party service
+            <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
+            or your own service to render PDF by
+            <a
+                href="https://github.com/mozilla/pdf.js/wiki/Frequently-Asked-Questions#which-browsersenvironments-are-supported"
+                target="_blank"
+                tuiLink
+            >
+                pdf.js.
+            </a>
         </tui-notification>
 
         <tui-doc-example

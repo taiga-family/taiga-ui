@@ -1,3 +1,3 @@
 ```html
-<tui-notification appearance="error">Some content</tui-notification>
+<tui-notification appearance="negative">Some content</tui-notification>
 ```

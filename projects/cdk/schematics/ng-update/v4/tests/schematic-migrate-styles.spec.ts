@@ -32,6 +32,7 @@ const STYLES_BEFORE = `
     .text-overflow();
     .tui-space(vertical, 4);
     .text-h3();
+    .customize-scroll();
     padding-top: @space * 2;
 }
 
@@ -39,11 +40,13 @@ const STYLES_BEFORE = `
     .tui-space(horizontal, -4);
     .text-body-m-bold(1);
     .shadow(3);
+    .createStackingContext() !important;
 }
 
 .hack {
     .tui-space(top, 0) !important;
     .tui-space(horizontal, -4) !important;
+    .createStackingContext();
 }
 
 .t-scrollbar {
@@ -55,7 +58,8 @@ const STYLES_BEFORE = `
 }
 `;
 
-const STYLES_AFTER = `
+const STYLES_AFTER = `@import '@taiga-ui/legacy/styles/taiga-ui-local';
+
 @import '@taiga-ui/proprietary/styles/tbank-fonts';
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
@@ -77,6 +81,7 @@ const STYLES_AFTER = `
     margin-top: 1rem;
 margin-bottom: 1rem;
     font: var(--tui-font-heading-3);
+    .customize-scroll();
     padding-top: 0.25rem * 2;
 }
 
@@ -85,12 +90,14 @@ margin-bottom: 1rem;
 margin-right: -1rem;
     .text-body-m-bold(1); // TODO: this mixin was deleted. Replace it with inline styles. Find it source code in https://github.com/taiga-family/taiga-ui/blob/v3.x/projects/core/styles/mixins/text.less
     box-shadow: var(--tui-shadow-popup);
+    isolation: isolate !important;
 }
 
 .hack {
     margin-top: 0rem !important;
     margin-left: -1rem !important;
 margin-right: -1rem !important;
+    isolation: isolate;
 }
 
 .t-scrollbar {

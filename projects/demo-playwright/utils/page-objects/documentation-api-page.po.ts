@@ -44,15 +44,8 @@ export class TuiDocumentationApiPagePO {
         return tuiHideElement(this.page.locator('tui-doc-navigation'));
     }
 
-    public async hideScrollControls(): Promise<void> {
-        for (const element of await this.page.locator('tui-scroll-controls').all()) {
-            await tuiHideElement(element);
-        }
-    }
-
     public async prepareBeforeScreenshot(): Promise<void> {
         await this.hideDocumentation();
-        await this.hideScrollControls();
         await this.hideNavigation();
         await this.hideNotifications();
 

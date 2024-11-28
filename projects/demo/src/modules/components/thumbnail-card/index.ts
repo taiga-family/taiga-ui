@@ -22,7 +22,14 @@ export default class Example {
         'Textfield',
     ];
 
-    protected readonly iconVariants = ['', '@tui.lock', '@tui.cloud', '@tui.user'];
+    protected readonly iconVariants = [
+        '',
+        '@tui.lock',
+        '@tui.cloud',
+        '@tui.user',
+        '@tui.snowflake',
+    ];
+
     protected iconStart = this.iconVariants[0]!;
     protected iconEnd = this.iconVariants[0]!;
 
@@ -54,6 +61,7 @@ export default class Example {
 
     protected paymentSystem: TuiPaymentSystem | null = null;
 
+    protected contentProjection = '1234';
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }

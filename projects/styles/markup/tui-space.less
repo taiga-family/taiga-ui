@@ -3,7 +3,7 @@
 .generate-space(@direction, @i: 0) when (@i =< @sizes) {
     .generate-space(@direction, @i + 1);
 
-    &_@{direction}-@{i} {
+    &_@{direction}-@{i}&_@{direction}-@{i} {
         & when (@direction = all) {
             margin: 0.25rem * @i;
         }

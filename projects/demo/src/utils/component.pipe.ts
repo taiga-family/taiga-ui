@@ -11,7 +11,7 @@ import {toKebab} from './kebab.pipe';
 export class TuiComponentPipe implements PipeTransform {
     private readonly page = inject(TuiDocPage);
 
-    public async transform(index: number): Promise<{readonly default: any}> {
+    public async transform(index: number): Promise<{readonly default: unknown}> {
         return import(
             `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.ts`
         );

@@ -55,7 +55,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">5</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button" data-appearance="icon" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="xs">
+        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem
@@ -71,7 +71,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button" data-appearance="icon" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="xs">
+        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem
@@ -89,7 +89,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">15</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button" data-appearance="icon" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="xs">
+        <button tuiappearance="" tuiicons="" type="button" tuiiconbutton="" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem

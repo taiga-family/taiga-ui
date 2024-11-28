@@ -1,9 +1,6 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {TuiTooltip} from '@taiga-ui/kit/directives/tooltip';
 
 import {TuiTooltipComponent} from './tooltip.component';
 
@@ -12,7 +9,7 @@ import {TuiTooltipComponent} from './tooltip.component';
  * https://taiga-ui.dev/components/tooltip
  */
 @NgModule({
-    imports: [CommonModule, TuiIcon, PolymorpheusOutlet, TuiAppearance, ...TuiHint],
+    imports: [TuiIcon, TuiTooltip],
     declarations: [TuiTooltipComponent],
     exports: [TuiTooltipComponent],
 })

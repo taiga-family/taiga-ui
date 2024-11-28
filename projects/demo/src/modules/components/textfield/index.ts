@@ -4,6 +4,7 @@ import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
@@ -24,6 +25,7 @@ import {TuiTooltip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected routes = DemoRoute;
     protected readonly examples = [
         'Size',
         'States',

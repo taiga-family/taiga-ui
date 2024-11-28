@@ -5,8 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAppearance, TuiButton, TuiLabel, TuiOption, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
+    TuiAvatarStack,
     TuiBadge,
     TuiChip,
+    TuiProgressCircle,
     TuiSkeleton,
     TuiStep,
     TuiSwitch,
@@ -19,6 +21,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         FormsModule,
         TuiAppearance,
         TuiAvatar,
+        TuiAvatarStack,
         TuiBadge,
         TuiButton,
         TuiCardLarge,
@@ -26,6 +29,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiLabel,
         TuiOption,
+        TuiProgressCircle,
         TuiSkeleton,
         TuiStep,
         TuiSwitch,

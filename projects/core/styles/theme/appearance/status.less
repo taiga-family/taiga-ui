@@ -1,11 +1,14 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-[tuiAppearance][data-appearance='error'],
-[tuiAppearance][data-appearance='success'],
+[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
+[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
+[tuiAppearance][data-appearance='negative'],
+[tuiAppearance][data-appearance='positive'],
 [tuiAppearance][data-appearance='warning'],
 [tuiAppearance][data-appearance='info'],
 [tuiAppearance][data-appearance='neutral'] {
     background: var(--t-bg);
+    color: var(--tui-text-primary);
 
     &:checked:not([data-mode]),
     &[data-mode~='checked'] {
@@ -13,7 +16,8 @@
     }
 }
 
-[tuiAppearance][data-appearance='error'] {
+[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
+[tuiAppearance][data-appearance='negative'] {
     --t-bg: var(--tui-status-negative-pale);
 
     &::before,
@@ -35,7 +39,8 @@
     }
 }
 
-[tuiAppearance][data-appearance='success'] {
+[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
+[tuiAppearance][data-appearance='positive'] {
     --t-bg: var(--tui-status-positive-pale);
 
     &::before,

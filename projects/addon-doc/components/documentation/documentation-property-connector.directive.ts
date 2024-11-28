@@ -12,7 +12,7 @@ import {
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
+import {tuiCleanObject, tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {Subject} from 'rxjs';
@@ -65,10 +65,10 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
         switch (this.documentationPropertyMode) {
             case 'input':
                 return `[${this.documentationPropertyName}]`;
-            case 'output':
-                return `(${this.documentationPropertyName})`;
             case 'input-output':
                 return `[(${this.documentationPropertyName})]`;
+            case 'output':
+                return `(${this.documentationPropertyName})`;
             default:
                 return this.documentationPropertyName;
         }
@@ -132,22 +132,33 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
         this.onValueChange(value as T);
     }
 
-    private setQueryParam(value: T | boolean | number | string | null): void {
+    private setQueryParam(value: unknown): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
-
         const isValueAvailableByKey = value instanceof Object;
+        const name = this.documentationPropertyName;
+        const nameWithSuffix = `${name}${SERIALIZED_SUFFIX}`;
+
         const computedValue =
             isValueAvailableByKey && this.documentationPropertyValues
                 ? this.documentationPropertyValues.indexOf(value as T)
                 : value;
 
-        const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
-        const propName = this.documentationPropertyName + suffix;
-
-        tree.queryParams = {
+        tree.queryParams = tuiCleanObject({
             ...tree.queryParams,
-            [propName]: computedValue,
-        };
+            /**
+             * Caretaker note: reset previous conflicted param in route
+             * issue: https://github.com/taiga-family/taiga-ui/issues/9764
+             */
+            ...(isValueAvailableByKey
+                ? {
+                      [nameWithSuffix]: computedValue,
+                      [name]: undefined,
+                  }
+                : {
+                      [nameWithSuffix]: undefined,
+                      [name]: computedValue,
+                  }),
+        });
 
         this.locationRef.go(this.urlStateHandler(tree));
     }

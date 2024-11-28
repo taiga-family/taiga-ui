@@ -14,10 +14,10 @@
 
             <version-manager />
 
-            <tui-algolia-search />
+            <tui-algolia-search *ngIf="!defaultSearchEnabled()" />
 
             <button
-                appearance="whiteblock"
+                appearance="outline-grayscale"
                 iconStart="@tui.ellipsis"
                 size="s"
                 tuiDropdownOpen
@@ -71,16 +71,36 @@
                 </ng-template>
             </button>
 
-            <a
-                appearance="icon"
-                href="https://github.com/taiga-family/taiga-ui"
-                iconStart="assets/images/github.svg"
-                rel="noreferrer"
-                target="_blank"
-                title="Taiga UI source code on GitHub"
-                tuiLink
-                class="app-link"
-            ></a>
+            <tui-badged-content class="app-link">
+                <tui-icon
+                    icon="@tui.star"
+                    size="s"
+                    tuiSlot="bottom"
+                    [style.color]="'orange'"
+                    [style.font-size.rem]="1"
+                />
+
+                <a
+                    href="https://github.com/taiga-family/taiga-ui"
+                    rel="noreferrer"
+                    target="_blank"
+                    title="Taiga UI source code on GitHub"
+                >
+                    <button
+                        appearance="outline-grayscale"
+                        size="s"
+                        tuiButton
+                        type="button"
+                        class="app-link"
+                    >
+                        <tui-icon
+                            icon="@tui.github"
+                            [style.height.rem]="1"
+                        />
+                        {{ stars() }}
+                    </button>
+                </a>
+            </tui-badged-content>
 
             <a
                 appearance="icon"

@@ -1,6 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='outline'],
+[tuiAppearance][data-appearance='outline-destructive'],
+[tuiAppearance][data-appearance='outline-grayscale'],
+/* TODO @deprecated remove in v5 */
 [tuiAppearance][data-appearance='whiteblock'] {
     --t-bs: var(--tui-border-normal);
 
@@ -44,6 +47,41 @@
     });
 }
 
+[tuiAppearance][data-appearance='outline-grayscale'],
+/* TODO @deprecated remove in v5 */
 [tuiAppearance][data-appearance='whiteblock'] {
     color: var(--tui-text-primary);
+}
+
+[tuiAppearance][data-appearance='outline-destructive'] {
+    color: var(--tui-text-negative);
+}
+
+[tuiAppearance][data-appearance='icon'],
+[tuiAppearance][data-appearance='outline-grayscale'],
+[tuiAppearance][data-appearance='floating'],
+/* TODO @deprecated remove in v5 */
+[tuiAppearance][data-appearance='whiteblock'] {
+    color: var(--tui-text-primary);
+
+    &::before,
+    &::after {
+        .transition(color);
+
+        color: var(--tui-text-tertiary);
+    }
+
+    .appearance-hover({
+        &:before,
+        &:after {
+            color: var(--tui-text-secondary);
+        }
+    });
+
+    .appearance-active({
+        &:before,
+        &:after {
+            color: var(--tui-text-primary);
+        }
+    });
 }

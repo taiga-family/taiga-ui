@@ -2,7 +2,7 @@ import {defineConfig, devices} from '@playwright/test';
 import type {ViewportSize} from 'playwright-core';
 
 import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
-import {tuiGetDemoPathsForE2E} from './tests/demo/get-demo-paths';
+import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 
@@ -13,23 +13,29 @@ process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
  */
 export default defineConfig({
     testDir: __dirname,
-    testMatch: '**/*.spec.ts',
+    testMatch: '**/*.pw.spec.ts',
     outputDir: 'tests-results',
     snapshotDir: 'snapshots',
-    reporter: process.env.CI ? 'github' : [['html', {outputFolder: 'tests-report'}]],
+    reporter: process.env.CI
+        ? [['blob'], ['github']]
+        : [['html', {outputFolder: 'tests-report'}]],
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
-    retries: process.env.CI ? 2 : 0,
+    retries: process.env.CI ? Number(process.env.RETRY_COUNT ?? 2) : 0,
     workers: process.env.CI ? '100%' : '50%',
+    timeout: 5 * 60 * 1000,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
         trace: 'on-first-retry',
-        viewport: DEFAULT_VIEWPORT,
         testIdAttribute: 'automation-id',
         actionTimeout: 10_000,
         contextOptions: {
+            deviceScaleFactor: 2,
             reducedMotion: 'reduce',
+            viewport: DEFAULT_VIEWPORT,
+            screen: DEFAULT_VIEWPORT,
+            hasTouch: true,
         },
     },
     projects: [
@@ -46,14 +52,10 @@ export default defineConfig({
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
-            threshold: 0.25,
-            maxDiffPixelRatio: 0.025,
-            maxDiffPixels: 25,
+            threshold: 0.02,
         },
         toMatchSnapshot: {
-            threshold: 0.25,
-            maxDiffPixelRatio: 0.025,
-            maxDiffPixels: 25,
+            threshold: 0.02,
         },
     },
 });

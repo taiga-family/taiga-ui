@@ -192,4 +192,22 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message:
             'TUI_ANIMATIONS_DURATION is deleted. Use TUI_ANIMATIONS_SPEED instead (300ms divided by your previous value of TUI_ANIMATIONS_DURATION)',
     },
+    {
+        name: 'TUI_DIALOG_CLOSES_ON_BACK',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_DIALOG_CLOSES_ON_BACK is deleted, you can create your own approach based on window.history property',
+    },
+    {
+        name: 'TUI_DATE_SEPARATOR',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message:
+            'TUI_DATE_SEPARATOR is deleted, use tuiDateFormatProvider from @taiga-ui/core. See example https://taiga-ui.dev/components/input-date#date-localization',
+    },
+    {
+        name: 'TUI_NUMBER_FORMAT',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            '"zeroPadding" property from TUI_NUMBER_FORMAT has been removed. Use "decimalMode" instead https://taiga-ui.dev/pipes/format-number/API',
+    },
 ];

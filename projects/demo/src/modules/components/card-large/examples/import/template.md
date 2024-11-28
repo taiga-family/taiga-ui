@@ -1,7 +1,7 @@
 ```html
 <div
   tuiCardLarge
-  tuiSurface="elevated"
+  tuiAppearance="floating"
 >
   <div tuiHeader>
     <h2 tuiTitle>Header</h2>

@@ -12,8 +12,11 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
     countTexts: ['Plus', 'Min'],
     time: {
         'HH:MM': 'HH:MM',
+        'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
+        'HH:MM:SS AA': 'HH:MM:SS AA',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
+        'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
     },
     dateTexts: {
         DMY: 'dd.mm.yyyy',

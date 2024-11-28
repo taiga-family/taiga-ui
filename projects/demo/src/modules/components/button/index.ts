@@ -27,17 +27,5 @@ export default class Page {
 
     protected size = this.sizes[3]!;
 
-    protected readonly appearances = [
-        'primary',
-        'accent',
-        'secondary',
-        'destructive',
-        'flat',
-        'outline',
-        'opposite',
-        'glass',
-        'floating',
-    ];
-
     protected loading = false;
 }

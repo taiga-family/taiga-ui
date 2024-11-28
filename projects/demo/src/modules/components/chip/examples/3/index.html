@@ -1,41 +1,43 @@
 <h3>Checkbox</h3>
 <section>
-    <tui-chip
+    <label
         *tuiRepeatTimes="let i of checked.length"
         appearance=""
+        tuiChip
     >
         Checkbox {{ i + 1 }}
         <input
-            appearance="whiteblock"
+            appearance="outline-grayscale"
             tuiChip
             type="checkbox"
             [(ngModel)]="checked[i]"
         />
-    </tui-chip>
+    </label>
 </section>
 
 <h3>Radio</h3>
 <section>
-    <tui-chip
+    <label
         *tuiRepeatTimes="let i of 3"
         appearance=""
+        tuiChip
     >
         Radio {{ i + 1 }}
         <input
-            appearance="whiteblock"
+            appearance="outline-grayscale"
             name="radio"
             tuiChip
             type="radio"
             [value]="i"
         />
-    </tui-chip>
+    </label>
 </section>
 
-<h3>Label whiteblock</h3>
+<h3>Label outline</h3>
 <section>
     <label
         *tuiRepeatTimes="let i of checked.length"
-        appearance="whiteblock"
+        appearance="outline-grayscale"
         tuiChip
     >
         <input

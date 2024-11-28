@@ -1,0 +1,76 @@
+<tui-notification>
+    Taiga UI watches for
+    <code>visualViewport</code>
+    changes and updates following CSS variables automatically:
+    <code>--tui-viewport-x</code>
+    <code>--tui-viewport-y</code>
+    <code>--tui-viewport-width</code>
+    <code>--tui-viewport-height</code>
+    <code>--tui-viewport-scale</code>
+</tui-notification>
+<p>
+    <button
+        tuiButton
+        type="button"
+        (click)="open.set(true)"
+    >
+        Show
+    </button>
+</p>
+<ng-template #bar>
+    <tui-app-bar>
+        <button
+            tuiButton
+            tuiSlot="left"
+            type="button"
+            (click)="open.set(false)"
+        >
+            Close
+        </button>
+        Search contacts
+    </tui-app-bar>
+    <input
+        placeholder="Search contacts"
+        tuiSearch
+        type="search"
+        class="input"
+        [(ngModel)]="search"
+    />
+</ng-template>
+<ng-template
+    [tuiSheetDialog]="open()"
+    [tuiSheetDialogOptions]="{label: bar, bar: false}"
+    (tuiSheetDialogChange)="open.set($event)"
+>
+    <div class="favorites">
+        <tui-avatar-labeled
+            *ngFor="let item of items | slice: 0 : 6"
+            [label]="item.name"
+        >
+            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+        </tui-avatar-labeled>
+    </div>
+    <div class="items">
+        <button
+            *ngFor="let item of items | tuiFilter: filter : search"
+            tuiCell
+            type="button"
+            class="cell"
+            (click)="open.set(false)"
+        >
+            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+            <span tuiTitle>
+                <span tuiFade>{{ item.name }}</span>
+                <span tuiSubtitle>{{ item.email }}</span>
+            </span>
+        </button>
+    </div>
+    <button
+        tuiButton
+        type="button"
+        class="button"
+        (click)="open.set(false)"
+    >
+        Add contact
+    </button>
+</ng-template>

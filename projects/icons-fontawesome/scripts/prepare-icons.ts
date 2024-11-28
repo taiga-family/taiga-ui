@@ -4,9 +4,8 @@ import path from 'node:path';
 
 import {PAYMENTS_ICONS} from '../../../scripts/custom-icons';
 import {prepareSvg} from '../../../scripts/prepare-svg';
-import {tuiIsCI} from '../../cdk/schematics';
 
-const verbose = !tuiIsCI();
+const verbose = !process.env.CI;
 const dest =
     process.argv[2] || path.join(process.cwd(), 'projects', 'icons-fontawesome', 'src');
 

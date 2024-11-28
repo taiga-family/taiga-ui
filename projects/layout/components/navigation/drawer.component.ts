@@ -7,6 +7,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSlideInLeft} from '@taiga-ui/core/animations';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
@@ -43,11 +44,18 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     host: {
         tuiTheme: 'dark',
         '[@tuiSlideInLeft]': 'animation',
+        '[style.top.px]': 'top',
     },
 })
 class TuiDrawerComponent {
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly top =
+        tuiIsHTMLElement(this.directive.el.offsetParent) &&
+        tuiIsHTMLElement(this.directive.el.offsetParent.offsetParent)
+            ? this.directive.el.offsetParent.getBoundingClientRect().bottom -
+              this.directive.el.offsetParent.offsetParent.getBoundingClientRect().top
+            : 0;
 }
 
 @Component({
@@ -56,7 +64,7 @@ class TuiDrawerComponent {
     template: '<ng-template><ng-content /></ng-template>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider({appearance: 'secondary'}),
+        tuiButtonOptionsProvider({appearance: 'secondary-grayscale'}),
         {
             provide: TUI_ICON_END,
             useFactory: () => inject(TUI_LAYOUT_ICONS).grid,

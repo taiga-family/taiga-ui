@@ -15,9 +15,9 @@ jobs:
     if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.3
-      - uses: taiga-family/ci/actions/setup/node@v1.93.3
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.100.0
+      - uses: taiga-family/ci/actions/setup/node@v1.100.0
 
       - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -34,9 +34,9 @@ jobs:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.3
-      - uses: taiga-family/ci/actions/setup/node@v1.93.3
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.100.0
+      - uses: taiga-family/ci/actions/setup/node@v1.100.0
         id: nodejs-workspace
 
       - run: npx nx prerender demo

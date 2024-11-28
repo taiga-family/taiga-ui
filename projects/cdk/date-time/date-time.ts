@@ -18,6 +18,8 @@ export const MIN_YEAR = 0;
 
 export const MAX_YEAR = 9999;
 
+export const MAX_DISPLAYED_YEAR = 2099;
+
 export const RANGE_SEPARATOR_CHAR = `${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}`;
 
 export const MILLISECONDS_IN_SECOND = 1000;

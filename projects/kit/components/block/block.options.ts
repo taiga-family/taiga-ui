@@ -8,7 +8,7 @@ export interface TuiBlockOptions extends TuiAppearanceOptions {
 }
 
 export const TUI_BLOCK_DEFAULT_OPTIONS: TuiBlockOptions = {
-    appearance: 'whiteblock',
+    appearance: 'outline-grayscale',
     size: 'l',
 };
 

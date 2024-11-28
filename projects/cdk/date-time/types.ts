@@ -4,7 +4,13 @@
  * * YMD - yyyy.mm.dd
  */
 export type TuiDateMode = 'DMY' | 'MDY' | 'YMD';
-export type TuiTimeMode = 'HH:MM:SS.MSS' | 'HH:MM:SS' | 'HH:MM';
+export type TuiTimeMode =
+    | 'HH:MM AA'
+    | 'HH:MM:SS AA'
+    | 'HH:MM:SS.MSS AA'
+    | 'HH:MM:SS.MSS'
+    | 'HH:MM:SS'
+    | 'HH:MM';
 
 /**
  * Optionally has year and/or month and/or day

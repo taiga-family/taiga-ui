@@ -36,7 +36,7 @@ export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
 
 export interface TuiHintOptions {
     readonly appearance: string;
-    readonly direction: TuiHintDirection;
+    readonly direction: TuiHintDirection | TuiHintDirection[];
     readonly hideDelay: number;
     readonly icon: string;
     readonly showDelay: number;
@@ -48,6 +48,7 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     showDelay: 500,
     hideDelay: 200,
     appearance: '',
+    /** TODO @deprecated use {@link TUI_TOOLTIP_OPTIONS} instead **/
     icon: '@tui.circle-help',
 };
 

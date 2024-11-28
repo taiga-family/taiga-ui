@@ -22,6 +22,7 @@ import {TuiRadioList} from '@taiga-ui/kit';
 export default class Example {
     protected readonly form = new FormGroup({
         vertical: new FormControl(null, Validators.required),
+        disabled: new FormControl({value: null, disabled: true}),
     });
 
     protected readonly objects = [

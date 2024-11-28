@@ -13,5 +13,5 @@ import {TuiLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly appearances = ['error', 'success', 'warning', 'flat'] as const;
+    protected readonly appearances = ['negative', 'positive', 'warning', 'flat'] as const;
 }

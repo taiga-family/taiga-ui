@@ -41,7 +41,7 @@ class TuiNotificationStyles {}
             pseudo: true,
         }),
         tuiButtonOptionsProvider({
-            appearance: 'whiteblock',
+            appearance: 'outline-grayscale',
             size: 's',
         }),
     ],

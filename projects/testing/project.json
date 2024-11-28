@@ -15,7 +15,7 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "params": "forward",
+                    "params": "ignore",
                     "dependencies": true
                 }
             ]
@@ -24,7 +24,7 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
-                "jestConfig": "jest.config.ts",
+                "jestConfig": "package.json",
                 "collectCoverage": false,
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
@@ -33,6 +33,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
+                "forwardAllArgs": false,
                 "commands": [
                     "cp ./LICENSE ./dist/{projectName}",
                     "ts-node ./scripts/publish.ts --path ./dist/{projectName} --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"

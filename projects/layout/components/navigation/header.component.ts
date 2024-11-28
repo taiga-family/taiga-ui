@@ -13,10 +13,10 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAvatarOptionsProvider({size: 's', appearance: 'secondary'}),
+        tuiAvatarOptionsProvider({size: 's', appearance: 'secondary-grayscale'}),
         tuiBadgeNotificationOptionsProvider({size: 'xs'}),
         tuiBadgeOptionsProvider({size: 'm', appearance: 'primary'}),
-        tuiButtonOptionsProvider({size: 's', appearance: 'flat'}),
+        tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({appearance: 'dropdown-navigation'}),
     ],
     host: {

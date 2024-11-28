@@ -25,7 +25,7 @@
                 [size]="size"
                 [style.background]="background"
             >
-                1234
+                {{ contentProjection }}
             </tui-thumbnail-card>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -82,6 +82,16 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="background"
             />
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="Content projection">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="ng-content"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="contentProjection"
+            />
+            <tui-doc-code code="<tui-thumbnail-card>{{ contentProjection }}</tui-thumbnail-card>" />
         </tui-doc-documentation>
     </ng-template>
 

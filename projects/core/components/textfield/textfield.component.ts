@@ -13,6 +13,7 @@ import {
     ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
@@ -20,7 +21,7 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
@@ -31,7 +32,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -48,7 +49,10 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListHost(TuiTextfieldComponent)],
+    providers: [
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiAsDataListHost(TuiTextfieldComponent),
+    ],
     hostDirectives: [
         TuiDropdownFixed,
         TuiDropdownDirective,
@@ -81,6 +85,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly control?: NgControl;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
     protected computedFiller = computed(() => {
         const value = this.directive?.nativeValue() || '';

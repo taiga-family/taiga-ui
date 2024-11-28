@@ -1,9 +1,15 @@
 import type {ElementRef} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
-import {tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {
+    tuiScrollFrom,
+    tuiTypedFromEvent,
+    tuiZonefreeScheduler,
+    tuiZoneOptimized,
+} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
+    debounceTime,
     distinctUntilChanged,
     EMPTY,
     endWith,
@@ -78,7 +84,9 @@ export class TuiPullToRefreshService extends Observable<number> {
                 startWith(0),
             ),
         ),
+        debounceTime(0, tuiZonefreeScheduler()),
         distinctUntilChanged(),
+        tuiZoneOptimized(),
         share(),
     );
 

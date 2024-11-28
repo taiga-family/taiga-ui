@@ -18,8 +18,10 @@ export function tuiIsElement(
     return !!node && 'nodeType' in node && node.nodeType === Node.ELEMENT_NODE;
 }
 
-export function tuiIsHTMLElement(node: any): node is HTMLElement {
-    return !!node && node instanceof node.ownerDocument.defaultView.HTMLElement;
+export function tuiIsHTMLElement(node: unknown): node is HTMLElement {
+    const defaultView = (node as Element | undefined)?.ownerDocument.defaultView;
+
+    return !!node && !!defaultView && node instanceof defaultView.HTMLElement;
 }
 
 export function tuiIsTextNode(node: Node): node is Text {

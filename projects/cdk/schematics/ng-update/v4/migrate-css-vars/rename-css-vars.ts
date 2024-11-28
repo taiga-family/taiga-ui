@@ -18,7 +18,7 @@ export function renameCssVars(pattern = ALL_FILES): void {
         // leave comments
         if (!file.getFilePath().endsWith('html')) {
             DEPRECATE_VARS_WITH_COMMENT.forEach((variable) => {
-                const wordRegex = new RegExp(`(^|\\n)(?=[^\\n]*\\b${variable}\\b)`, 'g');
+                const wordRegex = new RegExp(`(^|\\n)(?=[^\\n]*${variable}\\b)`, 'g');
 
                 text = text.replaceAll(wordRegex, `$1// ${NIGHT_VAR_COMMENT}\n`);
             });

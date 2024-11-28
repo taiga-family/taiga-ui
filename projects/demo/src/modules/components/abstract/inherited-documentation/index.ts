@@ -5,6 +5,7 @@ import {
     TuiDocDocumentation,
     TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
+import type {TuiHintDirection} from '@taiga-ui/core';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
@@ -35,7 +36,11 @@ import {TextfieldControllerDocumentation} from '../textfield-controller-document
 })
 export class InheritedDocumentation {
     protected readonly booleanVariants: readonly boolean[] = [false, true];
-    protected readonly directionVariants = TUI_HINT_DIRECTIONS;
+    protected readonly directionVariants = [
+        ...TUI_HINT_DIRECTIONS,
+        ['bottom', 'left'] satisfies TuiHintDirection[],
+    ];
+
     protected readonly appearanceVariants = ['', 'error', 'dark'];
     protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 

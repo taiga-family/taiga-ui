@@ -46,7 +46,7 @@ export default class Example {
         this.alerts
             .open(this.depositTemplate || '', {
                 label: 'A template sample',
-                appearance: 'success',
+                appearance: 'positive',
                 autoClose: 0,
             })
             .subscribe();

@@ -1,8 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='floating'] {
-    background: #fff;
-    color: rgba(0, 0, 0, 0.8);
+    background: var(--tui-background-elevation-2);
+    color: var(--tui-text-primary);
     box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
 
     .appearance-hover({
@@ -10,7 +10,7 @@
     });
 
     .appearance-active({
-        background: #f6f7f8;
+        background: var(--tui-background-base-alt);
         box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
     });
 }

@@ -1,6 +1,6 @@
 <div
     class="t-overlay"
-    [style.opacity]="dialogs().length"
+    [class.t-overlay_visible]="dialogs().length"
 ></div>
 <section
     *ngFor="let item of dialogs()"

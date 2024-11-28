@@ -4,7 +4,7 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiRatingOptions {
-    readonly icon: PolymorpheusContent<TuiContext<number>>;
+    readonly icon: PolymorpheusContent<TuiContext<number> & {value: number}>;
     readonly max: number;
 }
 

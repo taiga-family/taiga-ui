@@ -1,7 +1,6 @@
 import {DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     inject,
@@ -115,7 +114,7 @@ export class TuiDocNavigation {
         const readyToScroll$ = inject(TUI_DOC_PAGE_LOADED);
 
         inject(NAVIGATION_TITLE)
-            .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
+            .pipe(tuiWatch(), takeUntilDestroyed())
             .subscribe((title) => {
                 titleService.setTitle(title);
                 this.openActivePageGroup();

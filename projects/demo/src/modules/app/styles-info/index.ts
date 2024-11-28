@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {DemoRoute} from '@demo/routes';
 import {TuiLink, TuiNotification} from '@taiga-ui/core';
 
 @Component({
@@ -10,6 +9,4 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StylesInfo {
-    protected readonly routes = DemoRoute;
-}
+export class StylesInfo {}

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     IntersectionObserverService,
@@ -25,7 +25,7 @@ export class TuiStuck {
         inject(IntersectionObserverService).pipe(
             map((entries) => (entries[entries.length - 1]?.intersectionRatio ?? 0) < 1),
             distinctUntilChanged(),
-            tuiWatch(inject(ChangeDetectorRef)),
+            tuiWatch(),
             catchError(() => EMPTY), // SSR
         ),
     );

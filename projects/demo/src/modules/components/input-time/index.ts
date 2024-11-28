@@ -61,8 +61,11 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected readonly modeVariants: readonly TuiTimeMode[] = [
         'HH:MM',
+        'HH:MM AA',
         'HH:MM:SS',
+        'HH:MM:SS AA',
         'HH:MM:SS.MSS',
+        'HH:MM:SS.MSS AA',
     ];
 
     protected mode = this.modeVariants[0]!;

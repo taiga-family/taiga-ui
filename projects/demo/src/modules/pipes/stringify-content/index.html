@@ -17,19 +17,17 @@
             [content]="1 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_top-4">
-                <div>
-                    With
-                    <a
-                        tuiLink
-                        [routerLink]="routes.FilterByInput"
-                    >
-                        <code>FilterByInput</code>
-                    </a>
-                    pipe.
-                </div>
+                With
+                <a
+                    tuiLink
+                    [routerLink]="routes.FilterByInput"
+                >
+                    <code>FilterByInput</code>
+                </a>
+                pipe.
             </tui-notification>
         </tui-doc-example>
     </ng-template>
 
-    <tui-setup *pageTab />
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

@@ -7,14 +7,13 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {maskitoTimeOptionsGenerator} from '@maskito/kit';
+import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiTimeLike, TuiTimeMode} from '@taiga-ui/cdk/date-time';
+import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
@@ -48,7 +47,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     ],
     hostDirectives: [TuiDropdownFixed],
     host: {
-        '(click)': 'onClick()',
+        '(click)': 'open = !open',
         '[attr.data-size]': 'size',
     },
 })
@@ -87,6 +86,10 @@ export class TuiInputTimeComponent
 
     public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
+    }
+
+    public get inputMode(): string {
+        return this.mode.includes('AA') ? 'text' : 'numeric';
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -182,7 +185,7 @@ export class TuiInputTimeComponent
     }
 
     protected get maskOptions(): MaskitoOptions {
-        return this.calculateMask(this.mode);
+        return this.calculateMask(this.mode, this.readOnly);
     }
 
     protected get computedSearch(): string {
@@ -210,10 +213,6 @@ export class TuiInputTimeComponent
         return this.timeTexts$.pipe(map((texts) => texts[mode]));
     }
 
-    protected onClick(): void {
-        this.open = !this.open;
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
@@ -232,22 +231,6 @@ export class TuiInputTimeComponent
             });
     }
 
-    protected onArrowUp(event: Event): void {
-        if (this.items.length) {
-            return;
-        }
-
-        this.processArrow(event, 1);
-    }
-
-    protected onArrowDown(event: Event): void {
-        if (this.items.length) {
-            return;
-        }
-
-        this.processArrow(event, -1);
-    }
-
     protected onOpen(open: boolean): void {
         this.open = open;
     }
@@ -257,18 +240,31 @@ export class TuiInputTimeComponent
     }
 
     @tuiPure
-    private calculateMask(mode: TuiTimeMode): MaskitoOptions {
+    private calculateMask(mode: TuiTimeMode, readOnly: boolean): MaskitoOptions {
         const {HH, MM, SS, MS} = this.options.maxValues;
 
-        return maskitoTimeOptionsGenerator({
+        const options = maskitoTimeOptionsGenerator({
             mode,
+            step: readOnly ? 0 : 1,
+            // TODO(v5): timeSegmentMaxValues: this.options.timeSegmentMaxValues
             timeSegmentMaxValues: {
-                hours: HH,
+                hours: mode.includes('AA') ? 12 : HH,
                 minutes: MM,
                 seconds: SS,
                 milliseconds: MS,
             },
         });
+        const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
+            element.inputMode =
+                element.selectionStart! >= mode.indexOf(' AA') ? 'text' : 'numeric';
+        });
+
+        return {
+            ...options,
+            plugins: options.plugins.concat(
+                mode.includes('AA') ? inputModeSwitchPlugin : [],
+            ),
+        };
     }
 
     @tuiPure
@@ -294,57 +290,10 @@ export class TuiInputTimeComponent
         return this.items.find((item) => TUI_STRICT_MATCHER(item, value));
     }
 
-    private close(): void {
-        this.open = false;
-    }
-
-    private processArrow(event: Event, shift: -1 | 1): void {
-        const {target} = event;
-
-        if (this.readOnly || !tuiIsElement(target) || !tuiIsInput(target)) {
-            return;
-        }
-
-        const selectionStart = target.selectionStart || 0;
-
-        this.shiftTime(this.calculateShift(selectionStart, shift));
-
-        target.setSelectionRange(selectionStart, selectionStart);
-        event.preventDefault();
-    }
-
-    private calculateShift(selectionStart: number, shift: number): TuiTimeLike {
-        if (selectionStart <= 2) {
-            return {hours: shift};
-        }
-
-        if (selectionStart <= 5) {
-            return {minutes: shift};
-        }
-
-        if (selectionStart <= 8) {
-            return {seconds: shift};
-        }
-
-        return {ms: shift};
-    }
-
-    private shiftTime(shift: TuiTimeLike): void {
-        if (this.value === null) {
-            return;
-        }
-
-        const increasedTime = this.value.shift(shift);
-
-        // Manual update so we can set caret position properly
-        this.nativeValue = increasedTime.toString(this.mode);
-        this.value = increasedTime;
-    }
-
     private focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
-            this.close();
+            this.open = false;
         }
     }
 }

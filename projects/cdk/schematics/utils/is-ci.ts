@@ -1,5 +1,8 @@
 /// <reference types="node" />
 
+/**
+ * @deprecated: drop in v5.0
+ */
 export function tuiIsCI(): boolean {
     return (
         process.env.TUI_CI === 'true' ||

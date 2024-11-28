@@ -16,7 +16,7 @@ import {switchMap, takeUntil} from 'rxjs';
         <p>Yes?</p>
         <button
             *ngFor="let response of [true, false]"
-            appearance="whiteblock"
+            appearance="outline-grayscale"
             size="s"
             tuiButton
             type="button"
@@ -45,7 +45,7 @@ export default class Example {
     private readonly notification = this.alerts
         .open<boolean>(new PolymorpheusComponent(AlertExample), {
             label: 'Question',
-            appearance: 'error',
+            appearance: 'negative',
             autoClose: 0,
         })
         .pipe(

@@ -32,22 +32,18 @@
 <div class="t-filler"></div>
 
 <!-- Close button is insensitive to `context.closeable === Observable<false>` by design -->
-<div
+<button
     *ngIf="context.closeable"
-    class="t-wrapper"
+    automation-id="tui-dialog__close"
+    tuiIconButton
+    type="button"
+    class="t-close"
+    [appearance]="isMobile() ? 'icon' : 'neutral'"
+    [iconStart]="icons.close"
+    [size]="isMobile() ? 'xs' : 's'"
+    [style.border-radius.%]="100"
+    (click)="close$.next()"
+    (mousedown.prevent.silent)="(0)"
 >
-    <button
-        automation-id="tui-dialog__close"
-        tuiIconButton
-        type="button"
-        class="t-close"
-        [appearance]="isMobile() ? 'icon' : 'neutral'"
-        [iconStart]="icons.close"
-        [size]="isMobile() ? 'xs' : 's'"
-        [style.border-radius.%]="100"
-        (click)="close$.next()"
-        (mousedown.prevent.silent)="(0)"
-    >
-        {{ closeWord$ | async }}
-    </button>
-</div>
+    {{ closeWord$ | async }}
+</button>

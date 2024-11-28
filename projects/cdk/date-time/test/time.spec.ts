@@ -127,6 +127,35 @@ describe('TuiTime', () => {
                 expect(time.seconds).toBe(0);
                 expect(time.ms).toBe(888);
             });
+
+            describe('mode with AM / PM', () => {
+                (
+                    [
+                        ['12:00 AM', {hours: 0, minutes: 0}],
+                        ['12:34 AM', {hours: 0, minutes: 34}],
+                        ['12:59 AM', {hours: 0, minutes: 59}],
+                        ['01:00 AM', {hours: 1, minutes: 0}],
+                        ['11:00 AM', {hours: 11, minutes: 0}],
+                        ['11:59 AM', {hours: 11, minutes: 59}],
+                        ['12:00 PM', {hours: 12, minutes: 0}],
+                        ['12:01 PM', {hours: 12, minutes: 1}],
+                        ['12:59 PM', {hours: 12, minutes: 59}],
+                        ['01:00 PM', {hours: 13, minutes: 0}],
+                        ['11:00 PM', {hours: 23, minutes: 0}],
+                        ['11:59 PM', {hours: 23, minutes: 59}],
+                        ['04:59', {hours: 4, minutes: 59}],
+                    ] as const
+                ).forEach(([timeString, {hours, minutes}]) => {
+                    it(`from ${timeString}`, () => {
+                        const time = TuiTime.fromString(timeString);
+
+                        expect(time.hours).toBe(hours);
+                        expect(time.minutes).toBe(minutes);
+                        expect(time.seconds).toBe(0);
+                        expect(time.ms).toBe(0);
+                    });
+                });
+            });
         });
 
         describe('current', () => {
@@ -334,22 +363,45 @@ describe('TuiTime', () => {
         });
     });
 
-    it('stringify', () => {
-        const time = new TuiTime(6, 36, 1, 1);
+    describe('toString(mode) method', () => {
+        it('without mode parameter', () => {
+            const time = new TuiTime(6, 36, 1, 1);
 
-        expect(time.toString()).toBe('06:36:01.001');
-    });
+            expect(time.toString()).toBe('06:36:01.001');
+        });
 
-    it('stringify and fill zeros for seconds', () => {
-        const time = new TuiTime(6, 36, 0, 0);
+        it('stringify and fill zeros for seconds', () => {
+            const time = new TuiTime(6, 36, 0, 0);
 
-        expect(time.toString('HH:MM:SS')).toBe('06:36:00');
-    });
+            expect(time.toString('HH:MM:SS')).toBe('06:36:00');
+        });
 
-    it('stringify and fill zeros for seconds and ms', () => {
-        const time = new TuiTime(6, 36, 0, 0);
+        it('stringify and fill zeros for seconds and ms', () => {
+            const time = new TuiTime(6, 36, 0, 0);
 
-        expect(time.toString('HH:MM:SS.MSS')).toBe('06:36:00.000');
+            expect(time.toString('HH:MM:SS.MSS')).toBe('06:36:00.000');
+        });
+
+        describe('HH:MM AA', () => {
+            (
+                [
+                    [new TuiTime(0, 0), '12:00 AM'],
+                    [new TuiTime(0, 30), '12:30 AM'],
+                    [new TuiTime(0, 59), '12:59 AM'],
+                    [new TuiTime(1, 1), '01:01 AM'],
+                    [new TuiTime(11, 11), '11:11 AM'],
+                    [new TuiTime(11, 59), '11:59 AM'],
+                    [new TuiTime(12, 0), '12:00 PM'],
+                    [new TuiTime(13, 0), '01:00 PM'],
+                    [new TuiTime(16, 0), '04:00 PM'],
+                    [new TuiTime(23, 59), '11:59 PM'],
+                ] as const
+            ).forEach(([time, timeString]) => {
+                it(`{hours: ${time.hours}, minutes: ${time.minutes}} => ${timeString}`, () => {
+                    expect(time.toString('HH:MM AA')).toBe(timeString);
+                });
+            });
+        });
     });
 
     describe('valueOf returns', () => {

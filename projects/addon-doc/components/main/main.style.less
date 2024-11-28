@@ -47,7 +47,7 @@ code:not(pre code) {
         .transition(background);
 
         display: inline-flex;
-        background: var(--tui-background-base-alt);
+        background: var(--tui-background-neutral-1);
         color: var(--tui-text-secondary);
         vertical-align: middle;
         align-items: center;
@@ -59,14 +59,6 @@ code:not(pre code) {
         margin: 0.125rem 0.1875rem;
         //noinspection CssInvalidPropertyValue
         text-wrap: wrap;
-
-        tui-notification & {
-            mix-blend-mode: color-burn;
-        }
-
-        [tuiTheme='dark'] tui-notification & {
-            mix-blend-mode: luminosity;
-        }
 
         a & {
             color: var(--tui-text-action);

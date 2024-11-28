@@ -46,11 +46,13 @@ tui-badge,
         font-size: var(--t-icon-size) !important;
     }
 
-    &[data-appearance='error'] {
+    &[data-appearance='error'], /* TODO @deprecated remove in v5 */
+    &[data-appearance='negative'] {
         --t-status: var(--tui-status-negative);
     }
 
-    &[data-appearance='success'] {
+    &[data-appearance='success'], /* TODO @deprecated remove in v5 */
+    &[data-appearance='positive'] {
         --t-status: var(--tui-status-positive);
     }
 
@@ -66,8 +68,10 @@ tui-badge,
         --t-status: var(--tui-status-neutral);
     }
 
-    &[tuiStatus][data-appearance='error']::before,
-    &[tuiStatus][data-appearance='success']::before,
+    &[tuiStatus][data-appearance='error']::before, /* TODO @deprecated remove in v5 */
+    &[tuiStatus][data-appearance='success']::before, /* TODO @deprecated remove in v5 */
+    &[tuiStatus][data-appearance='negative']::before,
+    &[tuiStatus][data-appearance='positive']::before,
     &[tuiStatus][data-appearance='warning']::before,
     &[tuiStatus][data-appearance='info']::before,
     &[tuiStatus][data-appearance='neutral']::before {
@@ -81,6 +85,8 @@ tui-badge,
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
         --t-margin: -0.125rem;
+
+        font: var(--tui-font-text-xs);
 
         &[tuiStatus]::before {
             inline-size: 0.25rem;
@@ -110,8 +116,10 @@ tui-badge,
         }
     }
 
-    &[tuiAppearance][data-appearance='error'],
-    &[tuiAppearance][data-appearance='success'],
+    &[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
+    &[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
+    &[tuiAppearance][data-appearance='negative'],
+    &[tuiAppearance][data-appearance='positive'],
     &[tuiAppearance][data-appearance='warning'],
     &[tuiAppearance][data-appearance='info'],
     &[tuiAppearance][data-appearance='neutral'] {

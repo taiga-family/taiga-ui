@@ -1,0 +1,9 @@
+<tui-input-date-time [formControl]="control">Choose date and time</tui-input-date-time>
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="control"
+/>
+
+<p>Form value:</p>
+
+<pre><code>{{ control.value | json }}</code></pre>

@@ -42,7 +42,7 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiLinkOptionsProvider({appearance: 'icon'}),
+        tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
         tuiHintOptionsProvider({direction: 'bottom'}),
     ],
     host: {

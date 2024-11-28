@@ -1,20 +1,10 @@
-<span
-    #driver="tuiHintHover"
+<tui-icon
     automation-id="tui-tooltip__icon"
-    tuiAppearance="icon"
-    class="t-tooltip-icon"
-    [tuiAppearanceState]="(driver | async) ? 'hover' : null"
-    [tuiHint]="content"
-    [tuiHintAppearance]="computedAppearance"
+    [tuiHintAppearance]="appearance || ''"
     [tuiHintContext]="context"
-    [tuiHintDescribe]="describeId"
     [tuiHintDirection]="direction"
     [tuiHintHideDelay]="hideDelay"
     [tuiHintShowDelay]="showDelay"
->
-    <tui-icon
-        *polymorpheusOutlet="icon as src"
-        class="t-icon"
-        [icon]="src"
-    />
-</span>
+    [tuiTooltip]="content"
+    [tuiTooltipDescribe]="describeId"
+/>

@@ -1,5 +1,6 @@
 ```ts
 import 'zone.js';
+import {provideRouter} from '@angular/router';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {Component} from '@angular/core';
@@ -19,6 +20,7 @@ class Root {}
 bootstrapApplication(Root, {
   providers: [
     provideAnimations(),
+    provideRouter([]),
     /**
      * A workaround for StackBlitz only (it does not support assets).
      * Don't use this approach in real-world applications!

@@ -18,6 +18,7 @@ export const BACKGROUNDS = [
     '--tui-background-accent-opposite-pressed',
     '--tui-background-elevation-1',
     '--tui-background-elevation-2',
+    '--tui-background-elevation-3',
 ];
 
 export const STATUSES = [
@@ -56,6 +57,7 @@ export const OTHERS = [
     '--tui-border-focus',
     '--tui-service-autofill-background',
     '--tui-service-selection-background',
+    '--tui-service-backdrop',
 ];
 
 export const CHARTS = Array.from(

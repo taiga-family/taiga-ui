@@ -54,7 +54,13 @@ export default class Page {
 
     protected label = 'Heading';
 
-    protected readonly appearanceVariants = ['info', 'success', 'error', 'warning'];
+    protected readonly appearanceVariants = [
+        'info',
+        'positive',
+        'negative',
+        'warning',
+        'neutral',
+    ];
 
     protected appearance = this.appearanceVariants[0]!;
 

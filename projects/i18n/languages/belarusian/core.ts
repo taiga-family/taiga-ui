@@ -18,6 +18,7 @@ export const TUI_BELARUSIAN_LANGUAGE_CORE: TuiLanguageCore = {
         'Снежань',
     ],
     close: 'Закрыць',
+    clear: 'Ачысціць',
     nothingFoundMessage: 'Нічога не знойдзена',
     defaultErrorMessage: 'Недапушчальнае значэнне',
     spinTexts: ['Папярэдні', 'Наступны'],

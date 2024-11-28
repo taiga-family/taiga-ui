@@ -1,15 +1,9 @@
-<form [formGroup]="testForm">
-    <tui-input-time
-        formControlName="testValue"
-        class="tui-space_bottom-2"
-        [tuiTextfieldPostfix]="postfix"
-    >
-        12h time
-    </tui-input-time>
-    <input
-        formControlName="isPm"
-        tuiSwitch
-        type="checkbox"
-        [showIcons]="false"
-    />
-</form>
+<tui-input-time
+    mode="HH:MM AA"
+    [formControl]="control"
+>
+    Enter 12-hour time format
+</tui-input-time>
+
+<p><strong>Control value:</strong></p>
+<pre><code>{{ control.value | json }}</code></pre>

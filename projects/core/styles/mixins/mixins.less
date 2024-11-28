@@ -1,7 +1,7 @@
 @import 'browsers.less';
 
 .interactive(@ruleset) {
-    // TODO switch to :is after Safari 14 and FF 78 support
+    // TODO switch to :is after Safari 14 support
     &:-webkit-any(a, button, select, textarea, input, label) {
         @ruleset();
     }
@@ -132,9 +132,11 @@
 
 // prevent scrolling to focused element on IOS
 .tui-prevent-ios-scroll() {
-    &:focus {
-        animation: tuiPreventIOSScroll 0.001s;
-    }
+    .ios-only({
+        &:focus {
+            animation: tuiPreventIOSScroll 0.001s;
+        }
+    });
 
     @keyframes tuiPreventIOSScroll {
         0% {

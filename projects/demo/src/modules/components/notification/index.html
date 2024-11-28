@@ -4,12 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        An inline message with a type (info, success, warning, error) that does not interrupt user actions
+        An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user
+        actions
 
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample: 'html,ts'"
+            [content]="index + 1 | tuiExample"
             [heading]="example"
             [id]="example | tuiKebab"
         />

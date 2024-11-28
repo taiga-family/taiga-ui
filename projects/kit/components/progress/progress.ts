@@ -1,3 +1,4 @@
+import {TuiProgressFixedGradientDirective} from './progress-bar/fixed-gradient/progress-fixed-gradient.directive';
 import {TuiProgressBar} from './progress-bar/progress-bar.component';
 import {TuiProgressColorSegments} from './progress-bar/progress-color-segments.directive';
 import {TuiProgressCircle} from './progress-circle/progress-circle.component';
@@ -8,6 +9,7 @@ export const TuiProgress = [
     TuiProgressBar,
     TuiProgressCircle,
     TuiProgressColorSegments,
+    TuiProgressFixedGradientDirective,
     TuiProgressLabel,
     TuiProgressSegmented,
 ] as const;

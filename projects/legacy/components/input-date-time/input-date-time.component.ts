@@ -7,7 +7,10 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
+import {
+    maskitoDateTimeOptionsGenerator,
+    maskitoSelectionChangeHandler,
+} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDateMode, TuiTimeMode} from '@taiga-ui/cdk/date-time';
@@ -166,6 +169,10 @@ export class TuiInputDateTimeComponent
     }
 
     public onValueChange(value: string): void {
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
+        }
+
         if (!value) {
             this.onOpenChange(true);
         }
@@ -344,13 +351,27 @@ export class TuiInputDateTimeComponent
         dateFormat: TuiDateMode,
         dateSeparator: string,
     ): MaskitoOptions {
-        return maskitoDateTimeOptionsGenerator({
+        const options = maskitoDateTimeOptionsGenerator({
             timeMode,
             dateSeparator,
             dateMode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
             min: this.toNativeDate(min),
             max: this.toNativeDate(max),
         });
+        const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
+            element.inputMode =
+                element.selectionStart! >=
+                DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + timeMode.indexOf(' AA')
+                    ? 'text'
+                    : 'numeric';
+        });
+
+        return {
+            ...options,
+            plugins: options.plugins.concat(
+                timeMode.includes('AA') ? inputModeSwitchPlugin : [],
+            ),
+        };
     }
 
     @tuiPure

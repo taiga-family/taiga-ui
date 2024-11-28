@@ -151,8 +151,8 @@ export class TuiTagComponent {
                 event.preventDefault();
                 this.save(this.editedText || '');
                 break;
-            case 'escape':
             case 'esc':
+            case 'escape':
                 event.preventDefault();
                 this.stopEditing();
                 this.el.focus();

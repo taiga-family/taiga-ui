@@ -5,6 +5,7 @@ aside[tuiNavigationAside] {
 
     position: sticky;
     top: 3rem;
+    left: 0;
     z-index: 1;
     display: flex;
     inline-size: 3rem;
@@ -27,11 +28,22 @@ aside[tuiNavigationAside] {
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
     }
 
+    &::after {
+        content: '';
+        position: fixed;
+        top: inherit;
+        left: 0;
+        bottom: -3rem;
+        z-index: -1;
+        inline-size: 3rem;
+        background: inherit;
+    }
+
     &._expanded {
-        inline-size: 13.75rem;
+        inline-size: 14.375rem;
 
         + main[tuiNavigationMain] {
-            max-inline-size: calc(100% - 13.75rem);
+            max-inline-size: calc(100% - 14.375rem);
         }
     }
 
@@ -79,7 +91,6 @@ aside[tuiNavigationAside] {
     justify-content: flex-start;
     gap: 0.625rem;
     margin-bottom: 0.25rem;
-    color: var(--tui-text-primary) !important;
 
     &::after {
         border: none !important;

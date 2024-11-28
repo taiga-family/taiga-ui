@@ -10,6 +10,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import type {TuiDayLike} from '@taiga-ui/cdk';
 import {
     TUI_LAST_DAY,
     tuiControlValue,
@@ -18,6 +19,7 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
+import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_CALENDAR_DATE_STREAM,
@@ -35,9 +37,13 @@ describe('rangeCalendarComponent', () => {
         imports: [TuiCalendarRange],
         template: `
             <tui-calendar-range
+                [defaultViewedMonth]="defaultViewedMonth"
                 [items]="items"
+                [markerHandler]="markerHandler"
                 [max]="max"
+                [maxLength]="maxLength"
                 [min]="min"
+                [minLength]="minLength"
                 [value]="value"
                 (valueChange)="onRangeChange($event)"
             />
@@ -69,7 +75,15 @@ describe('rangeCalendarComponent', () => {
 
         public max = TUI_LAST_DAY;
 
+        public minLength: TuiDayLike | null = null;
+
+        public maxLength: TuiDayLike | null = null;
+
         public value: TuiDayRange | null = null;
+
+        public defaultViewedMonth = TuiMonth.currentLocal();
+
+        public markerHandler: TuiMarkerHandler | null = null;
 
         public onRangeChange(range: TuiDayRange | null): void {
             this.control.setValue(range);
@@ -86,12 +100,17 @@ describe('rangeCalendarComponent', () => {
             imports: [Test],
             providers: [NG_EVENT_PLUGINS],
         });
+
         await TestBed.compileComponents();
+
         fixture = TestBed.createComponent(Test);
         pageObject = new TuiPageObject(fixture);
+
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
+
         component = testComponent.component;
+
         await fixture.whenStable();
         fixture.detectChanges();
     });
@@ -242,6 +261,23 @@ describe('rangeCalendarComponent', () => {
             expect(items[1]?.nativeElement.contains(getCheckmark())).toBe(true);
         });
 
+        it('show item if it matches with minLength and maxLength', () => {
+            const today = TuiDay.currentLocal();
+            const length = {day: 1};
+            const title = 'Период';
+
+            testComponent.minLength = length;
+            testComponent.maxLength = length;
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(today, today), title),
+            ];
+
+            fixture.detectChanges();
+
+            expect(getItems()[0]?.nativeElement.textContent.trim()).toBe(title);
+        });
+
         it('should update selectedActivePeriod after onItemSelect', () => {
             if (component.items[1]) {
                 component['onItemSelect'](component.items[1]);
@@ -306,6 +342,62 @@ describe('rangeCalendarComponent', () => {
                     new TuiDayRangePeriod(new TuiDayRange(today, today), 'Today'),
                 ),
             ).toBe(true);
+        });
+    });
+
+    describe('defaultViewedMonth updating', () => {
+        beforeEach(() => {
+            testComponent.items = [];
+            fixture.detectChanges();
+        });
+
+        const defaultMonth = TuiMonth.currentLocal();
+        const updatedMonth = defaultMonth.append({
+            year: 1,
+        });
+
+        it('if other input updates after defaultViewedMonth was updated, new viewed months do not change', () => {
+            testComponent.defaultViewedMonth = updatedMonth;
+            fixture.detectChanges();
+
+            testComponent.markerHandler = (day: TuiDay) =>
+                day.day % 2 === 0 ? ['first'] : ['second'];
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+        });
+
+        it('if value not selected, updating defaultViewedMonth change viewed months', () => {
+            testComponent.defaultViewedMonth = updatedMonth;
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
+        });
+
+        it('if value selected, updating defaultViewedMonth do not change viewed month', () => {
+            testComponent.value = new TuiDayRange(
+                TuiDay.currentLocal().append({month: 1}),
+                TuiDay.currentLocal().append({month: 1}),
+            );
+            fixture.detectChanges();
+
+            testComponent.defaultViewedMonth = updatedMonth;
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(defaultMonth.toString());
+        });
+
+        it('if value selected, updating defaultViewedMonth via chevron change viewed month', () => {
+            testComponent.value = new TuiDayRange(
+                TuiDay.currentLocal().append({month: 1}),
+                TuiDay.currentLocal().append({month: 1}),
+            );
+            fixture.detectChanges();
+
+            component['onMonthChange'](updatedMonth);
+            fixture.detectChanges();
+
+            expect(component.defaultViewedMonth.toString()).toBe(updatedMonth.toString());
         });
     });
 

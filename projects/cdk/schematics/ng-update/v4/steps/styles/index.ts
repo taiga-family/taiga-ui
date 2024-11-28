@@ -1,8 +1,9 @@
 /// <reference lib="es2021" />
 import {getActiveProject, saveActiveProject} from 'ng-morph';
 
+import {migrateLegacyMixins} from './migrate-legacy-mixins';
 import {migrateLessSCSSConstants} from './migrate-less-scss-constants';
-import {migrateScrollbarBehavior} from './migrate-scrollbar-behavior';
+import {migrateMixins} from './migrate-mixins';
 import {migrateShadowMixins} from './migrate-shadow-mixins';
 import {migrateSpaceMixins} from './migrate-space-mixins';
 import {migrateTextMixins} from './migrate-text-mixins';
@@ -48,7 +49,8 @@ export function migrateStyles(): void {
                 migrateTextMixins,
                 migrateShadowMixins,
                 migrateLessSCSSConstants,
-                migrateScrollbarBehavior,
+                migrateMixins,
+                migrateLegacyMixins,
             ].reduce((text, migrate) => migrate(text), fullText);
 
             sourceFile.replaceWithText(newFileContent);

@@ -64,7 +64,7 @@ export class TuiLineChart implements OnChanges {
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly viewBox = computed(() => {
-        const offset = this.height / this.resize();
+        const offset = this.height / Math.max(this.resize(), 1);
         const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
 
         return `${x} ${y - offset} ${width} ${height + 2 * offset}`;

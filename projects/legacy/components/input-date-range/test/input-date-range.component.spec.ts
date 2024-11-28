@@ -2,7 +2,7 @@ import type {DebugElement, Type} from '@angular/core';
 import {ChangeDetectionStrategy, Component, Optional, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {
     RANGE_SEPARATOR_CHAR,
@@ -16,6 +16,7 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
+    tuiCreateDefaultDayRangePeriods,
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {
@@ -30,6 +31,7 @@ describe('InputDateRangeComponent', () => {
     @Component({
         standalone: true,
         imports: [
+            FormsModule,
             ReactiveFormsModule,
             TuiInputDateRangeModule,
             TuiRoot,
@@ -44,6 +46,7 @@ describe('InputDateRangeComponent', () => {
                     [min]="min"
                     [readOnly]="readOnly"
                     [tuiTextfieldCleaner]="cleaner"
+                    [(ngModel)]="value"
                 ></tui-input-date-range>
             </tui-root>
         `,
@@ -59,6 +62,11 @@ describe('InputDateRangeComponent', () => {
                 TuiDay.currentLocal().append({day: -2}),
                 TuiDay.currentLocal().append({day: -2}),
             ),
+        );
+
+        public value: TuiDayRange | [Date, Date] | null = new TuiDayRange(
+            TuiDay.currentLocal().append({day: -2}),
+            TuiDay.currentLocal().append({day: -2}),
         );
 
         public cleaner = false;
@@ -200,6 +208,69 @@ describe('InputDateRangeComponent', () => {
                 fixture.detectChanges();
 
                 expect(component.open).toBe(true);
+            });
+        });
+
+        describe('With items', () => {
+            beforeEach(() => {
+                testComponent.items = tuiCreateDefaultDayRangePeriods();
+            });
+
+            it('when entering item date, input shows named date', async () => {
+                const today = TuiDay.currentLocal();
+
+                inputPO.sendText(
+                    `${today.toString()}${RANGE_SEPARATOR_CHAR}${today.toString()}`,
+                );
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Today');
+            });
+
+            it('when control value updated with item date, input shows named date', async () => {
+                const today = TuiDay.currentLocal();
+
+                testComponent.control.setValue(new TuiDayRange(today, today));
+                fixture.detectChanges();
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Today');
+            });
+
+            it('when ngModel value updated with item date, input shows named date', async () => {
+                const today = TuiDay.currentLocal();
+
+                testComponent.value = new TuiDayRange(today, today);
+                fixture.detectChanges();
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Today');
+            });
+
+            it('when selected item date via calendar, input shows named date', async () => {
+                inputPO.sendText('');
+
+                fixture.detectChanges();
+
+                const [leftCalendar] = getCalendars();
+
+                expect(leftCalendar).toBeTruthy();
+
+                if (leftCalendar) {
+                    getCalendarCell(
+                        leftCalendar,
+                        TuiDay.currentLocal().day,
+                    )?.nativeElement?.click();
+                }
+
+                fixture.detectChanges();
+
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe('Today');
             });
         });
     });

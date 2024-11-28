@@ -1,8 +1,30 @@
-import type {TuiDocRoutePages} from '@taiga-ui/addon-doc';
+/* eslint-disable i18n/no-russian-character */
+import type {TuiDocRoutePage, TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
 
-export const pages: TuiDocRoutePages = [
+export type DocRoutePages = ReadonlyArray<DocRoutePage | DocRoutePageGroup>;
+
+export interface DocMeta {
+    readonly name?: string; // name in figma, ex. tui-tooltip-button
+    readonly scheme?: 'beaver' | 'taiga'; // scheme name in db
+    readonly status?: 'alpha' | 'beta' | 'stable';
+    readonly version?: string;
+    readonly qualifiedName?: string; // name in Taiga UI, ex. Hint
+    readonly documentationLink?: string;
+    readonly figmaLink?: string;
+    readonly anchor?: string; // anchor link, ex. 'full', 'card-heading'
+}
+
+export type DocRoutePage = TuiDocRoutePage & {
+    readonly meta?: DocMeta | readonly DocMeta[];
+};
+
+export type DocRoutePageGroup = TuiDocRoutePageBase & {
+    readonly subPages: readonly DocRoutePage[];
+};
+
+export const pages: DocRoutePages = [
     // Documentation
     {
         section: 'Documentation',
@@ -154,6 +176,20 @@ export const pages: TuiDocRoutePages = [
         title: 'Avatar',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: DemoRoute.Avatar,
+        meta: [
+            {
+                name: 'tui-avatar',
+            },
+            {
+                name: 'tui-avatar-labelled',
+            },
+            {
+                name: 'tui-avatar-stack',
+            },
+            {
+                name: 'tui-avatar-subscription',
+            },
+        ],
     },
     {
         section: 'Components',
@@ -164,18 +200,21 @@ export const pages: TuiDocRoutePages = [
                 title: 'Badge',
                 keywords: 'бэдж, овал, badge',
                 route: DemoRoute.Badge,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'BadgedContent',
                 keywords: 'бэдж, бейдж, circle, овал, круг, badge, нотификация',
                 route: DemoRoute.BadgedContent,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'BadgeNotification',
                 keywords: 'бэдж, бейдж, circle, круг, badge, alert, нотификация',
                 route: DemoRoute.BadgeNotification,
+                meta: {},
             },
         ],
     },
@@ -190,6 +229,7 @@ export const pages: TuiDocRoutePages = [
         title: 'BlockStatus',
         keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
         route: DemoRoute.BlockStatus,
+        meta: {},
     },
     {
         section: 'Components',
@@ -200,18 +240,23 @@ export const pages: TuiDocRoutePages = [
                 title: 'Button',
                 keywords: 'кнопка, button, icon-button, иконка',
                 route: DemoRoute.Button,
+                meta: [{name: 'tui-button'}, {name: 'tui-button-vertical'}],
             },
             {
                 section: 'Components',
                 title: 'ButtonClose',
                 keywords: 'кнопка, button, close, закрыть',
                 route: DemoRoute.ButtonClose,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'ButtonGroup',
                 keywords: 'кнопка, button, group, группа',
                 route: DemoRoute.ButtonGroup,
+                meta: {
+                    name: 'tui-button-group-card',
+                },
             },
         ],
     },
@@ -248,6 +293,7 @@ export const pages: TuiDocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
+        meta: {},
     },
     {
         section: 'Components',
@@ -264,18 +310,21 @@ export const pages: TuiDocRoutePages = [
                 title: 'Checkbox',
                 keywords: 'чек, ввод, форма, form, checkbox',
                 route: DemoRoute.Checkbox,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'Radio',
                 keywords: 'инпут, форма, ввод, radio, радио',
                 route: DemoRoute.Radio,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'Switch',
                 keywords: 'инпут, форма, ввод, toggle, переключение',
                 route: DemoRoute.Switch,
+                meta: {},
             },
         ],
     },
@@ -284,6 +333,15 @@ export const pages: TuiDocRoutePages = [
         title: 'Dialog',
         keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
         route: DemoRoute.Dialog,
+        meta: {},
+    },
+    {
+        section: 'Components',
+        title: 'Drawer',
+        keywords:
+            'попап, модал, popup, dialog, диалог, modal, окно, шторка, overlay, sidebar, сайдбар',
+        route: DemoRoute.Drawer,
+        meta: {scheme: 'beaver', name: 'drawer'},
     },
     {
         section: 'Components',
@@ -310,6 +368,7 @@ export const pages: TuiDocRoutePages = [
                 title: 'Dropdown',
                 keywords: 'dropdown, контекст, выпадашка, дропдаун, Context',
                 route: DemoRoute.Dropdown,
+                meta: {},
             },
             {
                 section: 'Tools',
@@ -377,12 +436,18 @@ export const pages: TuiDocRoutePages = [
                 title: 'Tooltip',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
                 route: DemoRoute.Tooltip,
+                meta: {
+                    name: 'tui-button-tooltip',
+                },
             },
             {
                 section: 'Tools',
                 title: 'Hint',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт',
                 route: DemoRoute.Hint,
+                meta: {
+                    name: 'tui-tooltip',
+                },
             },
             {
                 section: 'Tools',
@@ -580,6 +645,9 @@ export const pages: TuiDocRoutePages = [
         title: 'Like',
         keywords: 'like, лайк, эмодзи, смайлик, стикер',
         route: DemoRoute.Like,
+        meta: {
+            name: 'tui-button-like',
+        },
     },
     {
         section: 'Components',
@@ -592,6 +660,9 @@ export const pages: TuiDocRoutePages = [
         title: 'Link',
         keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: DemoRoute.Link,
+        meta: {
+            name: 'tui-button-link',
+        },
     },
     {
         section: 'Components',
@@ -599,12 +670,14 @@ export const pages: TuiDocRoutePages = [
         keywords:
             'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: DemoRoute.Loader,
+        meta: {},
     },
     {
         section: 'Components',
         title: 'Notification',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Notification,
+        meta: {},
     },
     {
         section: 'Components',
@@ -656,6 +729,7 @@ export const pages: TuiDocRoutePages = [
         title: 'Pin',
         keywords: 'пин, pin, map, карта, точка, dot, point',
         route: DemoRoute.Pin,
+        meta: {},
     },
     {
         section: 'Components',
@@ -667,6 +741,7 @@ export const pages: TuiDocRoutePages = [
                 keywords:
                     'progress, bar, progress-bar, индикатор, загрузка, прогресс, бар',
                 route: DemoRoute.ProgressBar,
+                meta: {},
             },
             {
                 section: 'Components',
@@ -674,6 +749,7 @@ export const pages: TuiDocRoutePages = [
                 keywords:
                     'progress, circle, ring, progress-circle, progress-ring, индикатор, загрузка, прогресс',
                 route: DemoRoute.ProgressCircle,
+                meta: {},
             },
             {
                 section: 'Components',
@@ -696,6 +772,7 @@ export const pages: TuiDocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
+        meta: {},
     },
     {
         section: 'Components',
@@ -746,6 +823,9 @@ export const pages: TuiDocRoutePages = [
         title: 'SheetDialog',
         keywords: 'mobile, dialog, popup, map, details, шторка',
         route: DemoRoute.SheetDialog,
+        meta: {
+            name: 'tui-bottomsheet',
+        },
     },
     {
         section: 'Components',
@@ -818,6 +898,15 @@ export const pages: TuiDocRoutePages = [
                 title: 'Table',
                 keywords: 'таблица, data, cell, tr, th, td, row, col, grid, beaver',
                 route: DemoRoute.Table,
+                meta: [
+                    {scheme: 'beaver', anchor: 'custom', name: 'table'},
+                    {
+                        scheme: 'beaver',
+                        anchor: 'footer',
+                        name: 'pagination',
+                        qualifiedName: 'pagination',
+                    },
+                ],
             },
         ],
     },
@@ -851,18 +940,32 @@ export const pages: TuiDocRoutePages = [
         title: 'BlockDetails',
         keywords: 'details, block, детали, блок',
         route: DemoRoute.BlockDetails,
+        meta: {},
     },
     {
         section: 'Layout',
         title: 'Cell',
         keywords: 'cell, feed, item',
         route: DemoRoute.Cell,
+        meta: [
+            {name: 'tui-cell'},
+            {name: 'tui-cell-connected'},
+            {name: 'list-item', scheme: 'beaver'},
+        ],
     },
     {
         section: 'Components',
         title: 'Chip',
         keywords: 'tag, тэг, badge',
         route: DemoRoute.Chip,
+        meta: {},
+    },
+    {
+        section: 'Components',
+        title: 'Message',
+        keywords: 'message, sms, сообщение, смс',
+        route: DemoRoute.Message,
+        meta: {},
     },
     {
         section: 'Components',
@@ -875,6 +978,7 @@ export const pages: TuiDocRoutePages = [
         title: 'Header',
         keywords: 'header, заголовок, item',
         route: DemoRoute.Header,
+        meta: {},
     },
     {
         section: 'Components',
@@ -887,18 +991,21 @@ export const pages: TuiDocRoutePages = [
         title: 'Segmented',
         keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
         route: DemoRoute.Segmented,
+        meta: {},
     },
     {
         section: 'Components',
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: DemoRoute.Surface,
+        meta: {},
     },
     {
         section: 'Components',
         title: 'SwipeActions',
         keywords: 'swipe, action, свайп, card, действие',
         route: DemoRoute.SwipeActions,
+        meta: {},
     },
     {
         section: 'Components',
@@ -906,6 +1013,7 @@ export const pages: TuiDocRoutePages = [
         keywords:
             'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
         route: DemoRoute.Textfield,
+        meta: {},
     },
     {
         section: 'Components',
@@ -918,24 +1026,28 @@ export const pages: TuiDocRoutePages = [
         title: 'CardMedium',
         keywords: 'card, card-medium, medium, block, карточка, блок',
         route: DemoRoute.CardMedium,
+        meta: {},
     },
     {
         section: 'Layout',
         title: 'CardLarge',
         keywords: 'card, card-large, large, block, карточка, блок',
         route: DemoRoute.CardLarge,
+        meta: {},
     },
     {
         section: 'Layout',
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
         route: DemoRoute.Navigation,
+        meta: {scheme: 'beaver', name: 'navigation'},
     },
     {
         section: 'Layout',
         title: 'Search',
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
+        meta: {scheme: 'beaver', name: 'filters'},
     },
     // Charts
     {
@@ -1004,12 +1116,16 @@ export const pages: TuiDocRoutePages = [
         title: 'AppBar',
         keywords: 'mobile, ios, android, header, bar, navigation',
         route: DemoRoute.AppBar,
+        meta: {
+            name: 'tui-appbar',
+        },
     },
     {
         section: 'Navigation',
         title: 'Breadcrumbs',
         keywords: 'шаги, навигация, nav, хлебные, крошки, breadcrumbs',
         route: DemoRoute.Breadcrumbs,
+        meta: {scheme: 'beaver', name: 'breadcrumbs'},
     },
     {
         section: 'Navigation',
@@ -1276,6 +1392,7 @@ export const pages: TuiDocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
+                meta: {},
             },
             {
                 section: 'Tools',
@@ -1283,6 +1400,7 @@ export const pages: TuiDocRoutePages = [
                 keywords:
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
+                meta: {},
             },
         ],
     },

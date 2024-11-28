@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -19,10 +19,8 @@ export class TuiTabBarItemDirective {
         const link: Observable<boolean> =
             inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 
-        link.pipe(
-            filter(Boolean),
-            tuiWatch(inject(ChangeDetectorRef)),
-            takeUntilDestroyed(),
-        ).subscribe(() => tabs.setActive(el));
+        link.pipe(filter(Boolean), tuiWatch(), takeUntilDestroyed()).subscribe(() =>
+            tabs.setActive(el),
+        );
     }
 }

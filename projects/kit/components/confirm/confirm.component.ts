@@ -10,7 +10,6 @@ import {
     injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
-    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 
 export interface TuiConfirmData {
@@ -23,13 +22,7 @@ export interface TuiConfirmData {
 @Component({
     standalone: true,
     selector: 'tui-confirm',
-    imports: [
-        CommonModule,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiAutoFocus,
-        TuiButton,
-    ],
+    imports: [CommonModule, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
     styleUrls: ['./confirm.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,7 +31,7 @@ export class TuiConfirm {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly words$ = inject(TUI_CONFIRM_WORDS);
 
-    protected readonly context =
+    public readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
 
     protected get appearance(): string {

@@ -17,13 +17,14 @@ import {
     selector: '[tuiFocusTrap]',
     host: {
         tabIndex: '0',
-        '(window:focusin.silent)': 'onFocusIn($event.target)',
+        '(window:focusin.silent)': 'initialized && onFocusIn($event.target)',
     },
 })
 export class TuiFocusTrap implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
-    private readonly activeElement = tuiGetNativeFocused(this.doc);
+    private activeElement: Element | null = null;
+    protected initialized = false;
 
     constructor() {
         /**
@@ -31,7 +32,17 @@ export class TuiFocusTrap implements OnDestroy {
          * but it might cause ExpressionChanged error due to potential HostBinding.
          * Microtask keeps it in the same frame but allows change detection to run
          */
-        void Promise.resolve().then(() => this.el.focus());
+        Promise.resolve().then(() => {
+            /**
+             * The same event can synchronously close already opened focus trap and open another one.
+             * All focus traps have microtask inside its `ngOnDestroy` –
+             * they should be resolved before enabling of new focus trap.
+             * Don't enable any new event listeners before `initialized` equals to `true`!
+             */
+            this.initialized = true;
+            this.activeElement = tuiGetNativeFocused(this.doc);
+            this.el.focus();
+        });
     }
 
     public ngOnDestroy(): void {
@@ -43,7 +54,6 @@ export class TuiFocusTrap implements OnDestroy {
          * so we need to delay it but stay in the same sync cycle,
          * therefore using Promise instead of setTimeout
          */
-        // eslint-disable-next-line
         Promise.resolve().then(() => {
             if (tuiIsHTMLElement(this.activeElement)) {
                 this.activeElement.focus();

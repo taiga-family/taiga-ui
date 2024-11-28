@@ -1,15 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 header[tuiNavigationHeader][tuiNavigationHeader] {
-    --tui-text-action: var(--tui-text-primary);
-    --tui-text-action-hover: var(--tui-text-primary);
-
     position: sticky;
     top: 0;
-    z-index: 1;
+    left: 0;
+    z-index: 2;
     display: flex;
     block-size: 3rem;
-    inline-size: 100%;
+    inline-size: 100vw;
     align-items: center;
     gap: 0.25rem;
     padding: 0.5rem;
@@ -19,26 +17,28 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
 
-    &::before,
-    &::after {
+    &::before {
         content: '';
         position: absolute;
         top: 100%;
+        left: 0;
+        right: 0;
         z-index: -1;
         block-size: 3rem;
-        inline-size: 3rem;
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
-    }
-
-    &::before {
-        left: 0;
-        border-start-start-radius: 1.25rem;
+        border-radius: 1.25rem 1.25rem 0 0;
     }
 
     &::after {
+        content: '';
+        position: fixed;
+        top: inherit;
+        left: 0;
         right: 0;
-        border-start-end-radius: 1.25rem;
+        z-index: -1;
+        block-size: inherit;
+        background: inherit;
     }
 
     [tuiNavigationLogo] {

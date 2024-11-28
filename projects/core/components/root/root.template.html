@@ -1,17 +1,15 @@
+<div class="t-root-content"><ng-content /></div>
 <tui-scroll-controls
-    *ngIf="scrollbars()"
+    *ngIf="scrollbars"
     class="t-root-scrollbar"
 />
-<tui-dropdowns>
-    <div class="t-root-content">
-        <ng-content />
-    </div>
-    <ng-content select="tuiOverContent" />
-    <tui-dialogs />
-    <ng-content select="tuiOverDialogs" />
-    <tui-alerts />
-    <ng-content select="tuiOverAlerts" />
-</tui-dropdowns>
+<ng-container #viewContainer />
+<ng-content select="tuiOverContent" />
+<tui-dialogs />
+<ng-content select="tuiOverDialogs" />
+<tui-alerts />
+<ng-content select="tuiOverAlerts" />
+<tui-dropdowns />
 <ng-content select="tuiOverDropdowns" />
 <tui-hints />
 <ng-content select="tuiOverHints" />

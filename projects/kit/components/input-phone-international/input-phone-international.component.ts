@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -23,8 +23,11 @@ import {maskitoRemoveOnBlurPlugin} from '@maskito/kit';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
-import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {
+    TuiAutoFocus,
+    tuiAutoFocusOptionsProvider,
+} from '@taiga-ui/cdk/directives/auto-focus';
+import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
@@ -45,6 +48,7 @@ import {
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
@@ -63,7 +67,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     standalone: true,
     selector: 'tui-input-phone-international',
     imports: [
-        AsyncPipe,
         CommonModule,
         FormsModule,
         MaskitoDirective,
@@ -79,6 +82,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     providers: [
         tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
+        tuiAutoFocusOptionsProvider({preventScroll: true}),
         tuiTextfieldOptionsProvider({cleaner: signal(false)}),
         tuiDropdownOptionsProvider({
             limitWidth: 'fixed',
@@ -94,9 +98,13 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChild(MaskitoDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
+    @ViewChild(TuiAutoFocus, {read: ElementRef})
+    private readonly filter?: ElementRef<HTMLInputElement>;
+
     @ViewChildren(TuiOption, {read: ElementRef})
     private readonly listOptions?: QueryList<ElementRef<HTMLButtonElement>>;
 
+    protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly dropdown = tuiDropdown(null);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
@@ -106,8 +114,9 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly countries = signal(this.options.countries);
     protected readonly countryIsoCode = signal(this.options.countryIsoCode);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly internationalSearchLabel$ = inject(TUI_INTERNATIONAL_SEARCH);
+    protected readonly label = toSignal(inject(TUI_INTERNATIONAL_SEARCH));
     protected readonly search = signal<string>('');
+    protected readonly separator = signal(this.options.separator);
 
     protected readonly filtered = computed(() =>
         this.countries()
@@ -120,7 +129,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     );
 
     protected readonly mask = computed(() =>
-        this.computeMask(this.countryIsoCode(), this.metadata()),
+        this.computeMask(this.countryIsoCode(), this.metadata(), this.separator()),
     );
 
     protected readonly $ = tuiDirectiveBinding(
@@ -220,9 +229,16 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.onChange(unmaskedValue === countryCallingCode ? '' : unmaskedValue);
     }
 
+    protected onKeyDown({key}: KeyboardEvent): void {
+        if (tuiIsEditingKey(key)) {
+            this.filter?.nativeElement.focus({preventScroll: true});
+        }
+    }
+
     private computeMask(
         countryIsoCode: TuiCountryIsoCode,
         metadata?: MetadataJson,
+        separator?: string,
     ): MaskitoOptions | null {
         if (!metadata) {
             return null;
@@ -231,6 +247,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         const {plugins, ...restOptions} = maskitoPhoneOptionsGenerator({
             countryIsoCode,
             metadata,
+            separator,
         });
 
         return {

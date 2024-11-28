@@ -145,6 +145,11 @@ export const ROUTES: Routes = [
         title: 'Chip',
     }),
     route({
+        path: DemoRoute.Message,
+        loadComponent: async () => import('../components/message'),
+        title: 'Message',
+    }),
+    route({
         path: DemoRoute.Title,
         title: 'Title',
         loadComponent: async () => import('../directives/title'),
@@ -283,6 +288,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Dialog,
         loadComponent: async () => import('../components/dialog'),
         title: 'Dialog',
+    }),
+    route({
+        path: DemoRoute.Drawer,
+        loadComponent: async () => import('../components/drawer'),
+        title: 'Drawer',
     }),
     route({
         path: DemoRoute.Error,

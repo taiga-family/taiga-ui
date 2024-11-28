@@ -6,41 +6,23 @@
         [style.margin-top]="stop"
     ></div>
 </div>
-<div
-    #sheet
-    class="t-sheet"
-    [class.t-sheet_small]="isSmall"
-    (tuiClickOutside)="close()"
->
-    <div class="t-top"></div>
+<div class="t-sheet">
+    <div
+        *ngIf="context.bar"
+        class="t-top"
+    ></div>
     <h2
         *ngIf="context.label"
         class="t-heading"
         [id]="context.id"
     >
-        <ng-container *polymorpheusOutlet="context.label as label">
+        <ng-container *polymorpheusOutlet="context.label as label; context: context">
             {{ label }}
         </ng-container>
-        <button
-            *ngIf="context.closeable"
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="t-close"
-            [iconStart]="icons.close"
-            (click)="close()"
-        >
-            {{ closeWord$ | async }}
-        </button>
     </h2>
-    <div
-        *ngIf="context.content"
-        class="t-content"
-    >
+    <div class="t-content">
         <ng-container *polymorpheusOutlet="context.content as text; context: context">
             {{ text }}
         </ng-container>
     </div>
 </div>
-<div class="t-footer"></div>

@@ -1,8 +1,14 @@
-<button
-    *ngFor="let appearance of appearances"
-    tuiButton
-    type="button"
-    [appearance]="appearance"
->
-    {{ appearance }}
-</button>
+<ng-container *ngFor="let group of appearances | keyvalue: asIs">
+    <h3>{{ group.key }}</h3>
+    <section class="section">
+        <button
+            *ngFor="let appearance of group.value"
+            iconStart="@tui.star"
+            tuiButton
+            type="button"
+            [appearance]="appearance"
+        >
+            {{ appearance }}
+        </button>
+    </section>
+</ng-container>

@@ -82,7 +82,7 @@ const TEMPLATE_BEFORE = `
 const TEMPLATE_AFTER = `
 <!-- TODO: (Taiga UI migration) [shape] input has been removed. Please use border-radius css property for rounding borders https://taiga-ui.dev/components/button -->
 <button
-    appearance="destructive"
+    appearance="secondary-destructive"
     tuiButton
     type="button"
     [iconStart]="icon"

@@ -23,7 +23,9 @@
         type="button"
         class="fallback"
         [tuiDropdown]="content"
-    ></button>
+    >
+        Actions
+    </button>
 
     <ng-template #content>
         <tui-data-list>
@@ -48,12 +50,16 @@
         tuiIconButton
         tuiSwipeAction
         type="button"
-    ></button>
+    >
+        Show
+    </button>
     <button
         iconStart="@tui.pencil-line"
         size="m"
         tuiIconButton
         tuiSwipeAction
         type="button"
-    ></button>
+    >
+        Edit
+    </button>
 </tui-swipe-actions>

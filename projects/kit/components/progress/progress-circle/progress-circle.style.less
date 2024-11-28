@@ -25,6 +25,12 @@
     font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
     inline-size: var(--t-diameter);
     block-size: var(--t-diameter);
+    border-radius: 100%;
+    mask: radial-gradient(
+        closest-side,
+        transparent calc(100% - var(--t-track-stroke)),
+        #000 calc(100% - var(--t-track-stroke) + 0.5px)
+    );
 
     &[data-size='xxs'] {
         --t-diameter: @diameter[xxs];

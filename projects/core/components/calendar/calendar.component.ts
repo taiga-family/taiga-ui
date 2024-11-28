@@ -8,7 +8,13 @@ import {
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TUI_LAST_DISPLAYED_DAY,
+    TuiDay,
+    TuiMonth,
+} from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -79,7 +85,11 @@ export class TuiCalendar {
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
         this.day = value;
 
-        if (this.showAdjacent && value instanceof TuiDay) {
+        if (
+            this.showAdjacent &&
+            value instanceof TuiDay &&
+            value.daySameOrBefore(TUI_LAST_DISPLAYED_DAY)
+        ) {
             this.month = value;
         }
     }

@@ -14,35 +14,9 @@
     appearance: none;
     border-radius: inherit;
 
-    &::after {
-        .transition(~'box-shadow, color');
-        .fullsize(absolute, inset);
-
-        content: '';
-        border-radius: inherit;
-        border: 1px solid currentColor;
-        pointer-events: none;
-        color: transparent;
-    }
-
-    .wrapper-focus({
-        &:after {
-            border-width: 2px;
-            color: var(--tui-border-focus);
-        }
-    });
-
     .wrapper-disabled({
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
-    });
-
-    // Temporary hide focus in Safari until we figure out a better approach
-    .safari-only({
-        :focus-visible &,
-        &:focus-visible {
-            --tui-border-focus: transparent !important;
-        }
     });
 }
 
@@ -51,11 +25,17 @@
 
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
+    outline: none !important;
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     &::after {
         .transition(color);
+        .fullsize(absolute, inset);
 
+        content: '';
+        border-radius: inherit;
+        border: 1px solid currentColor;
+        pointer-events: none;
         color: var(--tui-border-normal);
     }
 
@@ -67,7 +47,8 @@
         box-shadow: none;
 
         &:after {
-            --tui-border-focus: var(--tui-background-accent-1);
+            border-width: 2px;
+            color: var(--tui-background-accent-1);
         }
     });
 
@@ -87,7 +68,6 @@
     .wrapper-invalid({
         &:after {
             color: var(--tui-text-negative);
-            --tui-border-focus: var(--tui-status-negative);
         }
     });
 }
@@ -110,10 +90,12 @@
     border-radius: 0;
     background: transparent;
     color: var(--tui-text-primary);
+    outline: none !important;
 
     /* stylelint-disable meowtec/no-px */
     &::before,
     &[data-appearance='table']::after {
+        content: '';
         position: fixed;
         top: -0.03125rem;
         left: -1px;
@@ -125,7 +107,6 @@
     &::before {
         .transition(background);
 
-        content: '';
         z-index: -1;
         background-repeat: no-repeat;
         background-position: top right;
@@ -133,7 +114,9 @@
     }
 
     &[data-appearance='table']::after {
-        border-width: 1px;
+        border: 1px solid currentColor;
+        border-radius: inherit;
+        pointer-events: none;
         color: var(--tui-border-normal);
     }
 
@@ -194,40 +177,18 @@ table [tuiWrapper][data-appearance='table'] {
 }
 
 [tuiWrapper][data-appearance='icon'] {
-    .transition(opacity);
-
-    color: var(--tui-text-primary);
-    opacity: 0.5;
+    color: var(--tui-text-tertiary);
 
     [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
-        opacity: 0.65;
+        color: var(--tui-text-secondary);
     }
 
     .wrapper-hover({
-        opacity: 0.65;
+        color: var(--tui-text-secondary);
     });
 
     .wrapper-active({
-        opacity: 1;
-    });
-
-    .wrapper-disabled({
-        opacity: calc(0.5 * var(--tui-disabled-opacity));
-    });
-}
-
-[tuiTheme='dark'] [tuiWrapper][data-appearance='icon'],
-[tuiTheme='dark'][tuiWrapper][data-appearance='icon'] {
-    [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
-        opacity: 1;
-    }
-
-    .wrapper-focus({
-        --tui-border-focus: var(--tui-background-base);
-    });
-
-    .wrapper-hover({
-        opacity: 1;
+        color: var(--tui-text-primary);
     });
 }
 
@@ -235,18 +196,15 @@ tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='i
 tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
 tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'] {
     color: var(--tui-text-secondary);
-}
 
-[tuiTheme='dark'] tui-primitive-textfield:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
-[tuiTheme='dark'] tui-textarea:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
-[tuiTheme='dark'] tui-input-tag:hover:not(._disabled) [tuiAppearance][data-appearance='icon'],
-tui-primitive-textfield:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'],
-tui-textarea:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'],
-tui-input-tag:hover:not(._disabled)[tuiTheme='dark'] [tuiAppearance][data-appearance='icon'] {
-    color: var(--tui-text-primary);
+    .wrapper-active({
+        color: var(--tui-text-primary);
+    });
 }
 
 [tuiWrapper][data-appearance='none'] {
+    outline: none;
+
     &::after {
         border: none;
     }

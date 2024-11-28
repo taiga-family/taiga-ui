@@ -278,4 +278,22 @@ describe('InputPhone', () => {
             expect(testComponent.control.value).toBe('+71234567890');
         });
     });
+
+    describe('Entering the value with space after plus sign', () => {
+        it('value with space after plus sign', () => {
+            component.onValueChange('+ 712345678901');
+            fixture.detectChanges();
+
+            expect(testComponent.control.value).toBe('+71234567890');
+        });
+    });
+
+    describe('Entering the value with multiple spaces after plus sign', () => {
+        it('value with multiple spaces after plus sign', () => {
+            component.onValueChange('+    712345678901');
+            fixture.detectChanges();
+
+            expect(testComponent.control.value).toBe('+71234567890');
+        });
+    });
 });

@@ -10,6 +10,7 @@
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![Renovate](https://img.shields.io/badge/renovate-configured-green?logo=renovatebot)](https://docs.renovatebot.com/)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Ftaiga-family%2Ftaiga-ui&label=Visitors&countColor=%232ccce4&style=plastic&labelStyle=lower)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Ftaiga-family%2Ftaiga-ui)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/taiga-family/taiga-ui)
 [![Code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -43,7 +44,8 @@ is developed with `strict` TypeScript mode
 🏗 **Maintained!** The library started as an internal product in our company. It is used by 50+ projects in production
 now, and it is here to stay.
 
-Read more about Taiga UI main features in [this article](https://indepth.dev/posts/1413/taiga-ui) on inDepth
+Read more about Taiga UI main features in
+[this article](https://angular.love/taiga-ui-is-a-new-angular-ui-kit-that-you-should-try) on angular.love
 
 ## Version compatibility
 
@@ -268,12 +270,16 @@ design your app with Taiga UI components.
 
 ## Contributors
 
-See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
-[make pull request](https://pr.new/github.com/taiga-family/taiga-ui) online from Web IDE.
+See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to [make pull request](https://github.dev/taiga-family/taiga-ui)
+online from Web IDE.
 
 <a href="https://github.com/taiga-family/taiga-ui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=taiga-family/taiga-ui" />
 </a>
+
+## Stars 🌟
+
+[![Popular](https://starchart.cc/taiga-family/taiga-ui.svg?variant=adaptive)](https://starchart.cc/taiga-family/taiga-ui)
 
 ## License
 

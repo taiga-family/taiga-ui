@@ -42,11 +42,11 @@ export default class Page {
 
     protected get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {
-            case 'template': {
-                return this.textTemplate || '';
-            }
             case 'string': {
                 return 'string';
+            }
+            case 'template': {
+                return this.textTemplate || '';
             }
             default: {
                 return '';

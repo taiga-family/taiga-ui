@@ -1,6 +1,36 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 [tuiTooltip] {
-    border-width: 0.25rem;
+    border-width: 0.125rem;
     border-radius: 100%;
     cursor: pointer;
     pointer-events: auto;
+    background-clip: content-box !important;
+
+    [tuiBlock],
+    [tuiCell][data-size='s'],
+    [tuiLabel][data-orientation='horizontal'] & {
+        border-width: 0.25rem;
+    }
+
+    [tuiTitle] & {
+        font-size: 1rem;
+        border: none;
+    }
+
+    &::after {
+        .center-all();
+
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+}
+
+@media @tui-mouse {
+    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-textarea:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-primitive-textfield:hover [tuiTooltip][data-appearance='icon']::after,
+    tui-input-tag:hover [tuiTooltip][data-appearance='icon']::after {
+        color: var(--tui-text-secondary);
+    }
 }

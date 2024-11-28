@@ -2,6 +2,7 @@ import type {AbstractControl} from '@angular/forms';
 import type {
     TuiDropdownAlign,
     TuiDropdownWidth,
+    TuiHintDirection,
     TuiSizeL,
     TuiSizeS,
     TuiVerticalDirection,
@@ -34,7 +35,10 @@ export abstract class AbstractExampleTuiControl
 
     public readonly hintContentVariants: readonly string[] = ['', 'Some content'];
 
-    public readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
+    public readonly hintDirectionVariants = [
+        ...TUI_HINT_DIRECTIONS,
+        ['bottom', 'left'] satisfies TuiHintDirection[],
+    ];
 
     public readonly hintAppearanceVariants = ['', 'error', 'dark'];
 
@@ -63,7 +67,7 @@ export abstract class AbstractExampleTuiControl
 
     public inputMode = this.inputModeVariants[0]!;
 
-    public maxLength: any = null;
+    public maxLength: unknown = null;
 
     public type = this.typeVariants[0]!;
 

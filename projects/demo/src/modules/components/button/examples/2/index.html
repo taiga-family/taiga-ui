@@ -23,14 +23,6 @@
 </button>
 
 <button
-    appearance="destructive"
-    tuiButton
-    type="button"
->
-    Destructive
-</button>
-
-<button
     appearance="flat"
     tuiButton
     type="button"
@@ -47,30 +39,6 @@
 </button>
 
 <button
-    appearance="whiteblock"
-    tuiButton
-    type="button"
->
-    Whiteblock
-</button>
-
-<button
-    appearance="opposite"
-    tuiButton
-    type="button"
->
-    Opposite
-</button>
-
-<button
-    appearance="glass"
-    tuiButton
-    type="button"
->
-    Glass
-</button>
-
-<button
     appearance="floating"
     tuiButton
     type="button"
@@ -78,15 +46,26 @@
     Floating
 </button>
 
-<p>
+<div>
+    See
+    <a
+        tuiLink
+        [routerLink]="routes.Appearance"
+    >
+        Appearance
+    </a>
+    directive for more.
+</div>
+
+<div>
     Use
     <code>tuiAppearanceMode</code>
     to emulate
     <code>:checked</code>
     /
     <code>:invalid</code>
-    CSS state for whiteblock/outline appearance:
-</p>
+    CSS state for outline appearance:
+</div>
 
 <button
     appearance="outline"
@@ -98,7 +77,7 @@
 </button>
 
 <button
-    appearance="whiteblock"
+    appearance="outline-grayscale"
     tuiAppearanceMode="checked invalid"
     tuiButton
     type="button"

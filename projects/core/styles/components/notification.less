@@ -11,7 +11,7 @@
  * data-size — size (default: 'l') ('s' | 'm' | 'l')
  *
  * @example
- * <tui-notification tuiAppearance data-appearance="error">
+ * <tui-notification tuiAppearance data-appearance="negative">
  *   <span tuiTitle>
  *     Error
  *     <span tuiSubtitle>Something went wrong</span>
@@ -26,36 +26,66 @@ tui-notification,
     .button-clear();
 
     position: relative;
-    display: flex;
+    display: block;
     max-block-size: 100%;
     color: var(--tui-text-primary);
-    gap: 0.5rem;
     padding: 1rem;
     font: var(--tui-font-text-m);
+    line-height: 1.5rem;
     border-radius: var(--tui-radius-l);
     box-sizing: border-box;
-    overflow: hidden;
     text-align: start;
     text-decoration: none;
+    border-inline-start: var(--t-left) solid transparent;
+    border-inline-end: var(--t-right) solid transparent;
+
+    --t-left: 0;
+    --t-right: 0;
+
+    &[style*='--t-icon-start:'] {
+        --t-left: 2rem;
+    }
+
+    &[style*='--t-icon-end:'] {
+        --t-right: 1.5rem;
+    }
+
+    &::before {
+        position: absolute;
+        left: -1rem;
+    }
 
     &::after {
+        .center-top();
+
+        right: -0.5rem;
         font-size: 1rem;
         margin: 0 -0.25rem 0 auto;
-        align-self: center;
         color: var(--tui-text-tertiary) !important;
     }
 
     &[data-size='s'] {
-        gap: 0.5rem;
         padding: 0.375rem 0.625rem;
         font: var(--tui-font-text-s);
+        line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
 
-        &::before,
+        &[style*='--t-icon-start:'] {
+            --t-left: 1.5rem;
+        }
+
+        &::before {
+            top: 0.5rem;
+            left: -0.875rem;
+            font-size: 1rem;
+        }
+
+        &::after {
+            right: -0.875rem;
+        }
+
         tui-icon {
             font-size: 1rem;
-            margin-top: 0.125rem;
-            margin-bottom: 0.125rem;
         }
 
         [tuiTitle] {
@@ -73,17 +103,30 @@ tui-notification,
         }
 
         > [tuiIconButton] {
-            margin: -0.375rem -0.625rem -0.375rem auto;
+            top: 0;
+            right: 0;
         }
     }
 
     &[data-size='m'] {
-        gap: 0.375rem;
         padding: 0.75rem;
         font: var(--tui-font-text-s);
+        line-height: 1.25rem;
         border-radius: var(--tui-radius-m);
 
-        &::before,
+        &[style*='--t-icon-start:'] {
+            --t-left: 1.625rem;
+        }
+
+        &::before {
+            left: -0.875rem;
+            font-size: 1.25rem;
+        }
+
+        &::after {
+            right: -0.75rem;
+        }
+
         tui-icon {
             font-size: 1.25rem;
         }
@@ -103,7 +146,8 @@ tui-notification,
         }
 
         > [tuiIconButton] {
-            margin: -0.375rem -0.25rem -0.375rem auto;
+            top: 0.375rem;
+            right: 0.5rem;
         }
     }
 
@@ -126,9 +170,11 @@ tui-notification,
     }
 
     > [tuiIconButton] {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
         box-shadow: none !important;
         background: transparent !important;
-        margin: -0.25rem -0.25rem -0.25rem auto;
     }
 }
 

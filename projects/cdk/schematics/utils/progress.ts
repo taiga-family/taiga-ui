@@ -3,8 +3,6 @@ import {clearLine, cursorTo} from 'node:readline';
 
 import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from 'ng-morph';
 
-import {tuiIsCI} from './is-ci';
-
 export function setupProgressLogger({
     total,
     prefix = '',
@@ -17,7 +15,7 @@ export function setupProgressLogger({
     let i = 1;
 
     return (message: string, incrementIndex = true): void => {
-        if (tuiIsCI()) {
+        if (process.env.CI) {
             return;
         }
 
