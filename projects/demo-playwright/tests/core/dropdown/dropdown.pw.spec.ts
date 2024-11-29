@@ -55,6 +55,16 @@ test.describe('Dropdown', () => {
         await expect(page).toHaveScreenshot('05-dropdown.png');
     });
 
+    test('Hosted dropdown initial width', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Viewport);
+        const example = new TuiDocumentationPagePO(page).getExample('#portal');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('.t2').click({force: true});
+
+        await expect(page).toHaveScreenshot('13-dropdown.png');
+    });
+
     test('Esc -> Hosted Dropdown', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
