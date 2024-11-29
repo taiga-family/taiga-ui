@@ -8,7 +8,7 @@
     "useLightClient": false,
     "namedInputs": {
         "sharedGlobals": [
-            "{workspaceRoot}/project/testing/**/*.ts",
+            "{workspaceRoot}/projects/testing/**/*.ts",
             "{workspaceRoot}/nx.json",
             "{workspaceRoot}/package-lock.json",
             "{workspaceRoot}/tsconfig.*.json",

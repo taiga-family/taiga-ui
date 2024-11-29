@@ -142,7 +142,7 @@ class TransferMockEvent {
 global.DragEvent = TransferMockEvent as unknown as typeof DragEvent;
 global.ClipboardEvent = TransferMockEvent as unknown as typeof ClipboardEvent;
 
-const originalDate = global.Date;
+class OriginalDate extends Date {}
 
 class MockDate extends Date {
     constructor() {
@@ -155,7 +155,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-    global.Date = originalDate;
+    global.Date = OriginalDate as unknown as DateConstructor;
 });
 
 /**
