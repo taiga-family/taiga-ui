@@ -19,7 +19,7 @@ export class TuiDropdownOpenMonitorDirective {
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_HOSTED_DROPDOWN_COMPONENT)
-        readonly hosted: TuiInjectionTokenType<typeof TUI_HOSTED_DROPDOWN_COMPONENT>,
+        hosted: TuiInjectionTokenType<typeof TUI_HOSTED_DROPDOWN_COMPONENT>,
         @Self() @Inject(TuiDropdownDirective) dropdown: TuiDropdownDirective,
         @Optional()
         @Inject(TuiDropdownOpenDirective)
