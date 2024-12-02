@@ -21,11 +21,10 @@ import {tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
 import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
 import type {TuiMatcher} from '@taiga-ui/cdk/types';
-import {tuiHexToRgb} from '@taiga-ui/cdk/utils/color';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
+import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
@@ -36,11 +35,8 @@ import {merge, switchMap} from 'rxjs';
 
 import {TuiDocDocumentationPropertyConnector} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
-import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiInspectPipe} from './pipes/inspect.pipe';
-import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 import {TuiIsOptionalPipe} from './pipes/optional.pipe';
-import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
 import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 
@@ -61,13 +57,9 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocTypeReferencePipe,
         TuiDropdown,
         TuiFilterPipe,
-        TuiGetColorPipe,
-        TuiGetOpacityPipe,
-        TuiGroup,
         TuiInputNumberModule,
         TuiInspectPipe,
         TuiIsOptionalPipe,
-        TuiIsPrimitivePolymorpheusContentPipe,
         TuiNotification,
         TuiSelectModule,
         TuiShowCleanerPipe,
@@ -80,7 +72,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiGetColorPipe, TuiGetOpacityPipe],
+    providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
     animations: [
         trigger('emitEvent', [
             transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
@@ -90,12 +82,11 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 export class TuiDocDocumentation implements AfterContentInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
-    private readonly getColor = inject(TuiGetColorPipe);
-    private readonly getOpacity = inject(TuiGetOpacityPipe);
 
     @ContentChildren(TuiDocDocumentationPropertyConnector)
-    protected propertiesConnectors: QueryList<TuiDocDocumentationPropertyConnector<any>> =
-        EMPTY_QUERY;
+    protected propertiesConnectors: QueryList<
+        TuiDocDocumentationPropertyConnector<unknown>
+    > = EMPTY_QUERY;
 
     protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
     protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
@@ -125,37 +116,6 @@ export class TuiDocDocumentation implements AfterContentInit {
     }
 
     protected matcher: TuiMatcher<
-        [TuiDocDocumentationPropertyConnector<any>, Set<string>]
+        [TuiDocDocumentationPropertyConnector<unknown>, Set<string>]
     > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
-
-    protected onColorChange(
-        connector: TuiDocDocumentationPropertyConnector<string>,
-        color: string,
-    ): void {
-        const opacity = this.getOpacity.transform(
-            connector.documentationPropertyValue || '',
-        );
-
-        if (opacity === 100) {
-            connector.onValueChange(color);
-
-            return;
-        }
-
-        const rgb = tuiHexToRgb(color).join(', ');
-        const result = `rgba(${rgb}, ${opacity / 100})`;
-
-        connector.onValueChange(result);
-    }
-
-    protected onOpacityChange(
-        connector: TuiDocDocumentationPropertyConnector<string>,
-        opacity: number | null,
-    ): void {
-        const hex = this.getColor.transform(connector.documentationPropertyValue || '');
-        const rgb = tuiHexToRgb(hex);
-        const result = `rgba(${rgb}, ${(opacity || 0) / 100})`;
-
-        connector.onValueChange(result);
-    }
 }
