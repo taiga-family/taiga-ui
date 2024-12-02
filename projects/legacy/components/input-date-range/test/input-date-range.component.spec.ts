@@ -212,8 +212,18 @@ describe('InputDateRangeComponent', () => {
         });
 
         describe('With items', () => {
+            beforeAll(() => {
+                jest.useFakeTimers({advanceTimers: true}).setSystemTime(
+                    new Date('2024-01-15'),
+                );
+            });
+
             beforeEach(() => {
                 testComponent.items = tuiCreateDefaultDayRangePeriods();
+            });
+
+            afterAll(() => {
+                jest.useRealTimers();
             });
 
             it('when entering item date, input shows named date', async () => {
@@ -250,21 +260,18 @@ describe('InputDateRangeComponent', () => {
                 expect(inputPO.value).toBe('Today');
             });
 
-            // TODO: check what's wrong with the test https://github.com/taiga-family/taiga-ui/pull/9707
-            it.skip('when selected item date via calendar, input shows named date', async () => {
-                inputPO.sendText('');
+            it('when selected item date via calendar, input shows named date', async () => {
+                const todayDay = TuiDay.currentLocal().day;
 
-                fixture.detectChanges();
+                inputPO.sendText('');
 
                 const [leftCalendar] = getCalendars();
 
                 expect(leftCalendar).toBeTruthy();
 
                 if (leftCalendar) {
-                    getCalendarCell(
-                        leftCalendar,
-                        TuiDay.currentLocal().day,
-                    )?.nativeElement?.click();
+                    getCalendarCell(leftCalendar, todayDay)?.nativeElement?.click();
+                    getCalendarCell(leftCalendar, todayDay)?.nativeElement?.click();
                 }
 
                 fixture.detectChanges();
