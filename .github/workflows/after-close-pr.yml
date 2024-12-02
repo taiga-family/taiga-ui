@@ -53,6 +53,5 @@ jobs:
         if: ${{ github.event.pull_request.merged == true }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-          with:
-            labels: |
-              community contribution
+          labels: |
+            community contribution
