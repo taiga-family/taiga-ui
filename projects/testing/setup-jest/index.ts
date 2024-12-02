@@ -1,9 +1,10 @@
 /// <reference types="jest" />
-import 'jest-preset-angular/setup-jest';
-
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing/mocks';
+import {setupZoneTestEnv} from 'jest-preset-angular/setup-env/zone';
 
 tuiSwitchNgDevMode(false);
+
+setupZoneTestEnv(); // drop it after migrate zone less mode
 
 const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('node:util');
 
