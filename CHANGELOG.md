@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.99.0](https://github.com/taiga-family/taiga-ui/compare/v3.98.0...v3.99.0) (2024-12-02)
+
+### Bug Fixes
+
+- **addon-mobile:** drop close button for sheet dialog ([#9804](https://github.com/taiga-family/taiga-ui/issues/9804))
+  ([f191380](https://github.com/taiga-family/taiga-ui/commit/f191380ffc5216f4735e33ac0b16a505d595e528))
+- **addon-mobile:** update font of large buttons on mobile
+  ([#9821](https://github.com/taiga-family/taiga-ui/issues/9821))
+  ([541ebea](https://github.com/taiga-family/taiga-ui/commit/541ebeaf6a0f025da4c03447564131860f826ea2))
+- **cdk:** `MIN_YEAR` incorrect work with `new Date()` constructor
+  ([d0cd2e0](https://github.com/taiga-family/taiga-ui/commit/d0cd2e094daa8797b4c3d79e4875cda404d0825b))
+- **cdk:** `toLocalNativeDate` correct work with years less 1900
+  ([ee1be0a](https://github.com/taiga-family/taiga-ui/commit/ee1be0ab135873748675642b1cf15a2d4bd392c7))
+- **kit:** `InputDate` incorrect works with date less than 1900
+  ([#9719](https://github.com/taiga-family/taiga-ui/issues/9719))
+  ([5a8d751](https://github.com/taiga-family/taiga-ui/commit/5a8d7516ca4fa24ea99bbb94de1d06bf37971e42))
+- **kit:** `InputDateTime` validators not triggered when value change
+  ([#9846](https://github.com/taiga-family/taiga-ui/issues/9846))
+  ([9650a0c](https://github.com/taiga-family/taiga-ui/commit/9650a0ced002e31170fcfc03a2bf839a4b410612))
+- **layout:** `Navigation` fix aside width according to spec
+  ([#9820](https://github.com/taiga-family/taiga-ui/issues/9820))
+  ([e56f98c](https://github.com/taiga-family/taiga-ui/commit/e56f98cb786060deb17dcc7242b691af84506a8a))
+
 ## [3.98.0](https://github.com/taiga-family/taiga-ui/compare/v3.97.0...v3.98.0) (2024-11-13)
 
 ### Features
