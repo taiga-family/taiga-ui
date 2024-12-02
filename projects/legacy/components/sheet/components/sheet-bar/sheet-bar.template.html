@@ -1,11 +1,11 @@
 <ng-container *tuiLet="rotate$ | async as deg">
     <div
         class="t-bar"
-        [ngStyle]="{transform: 'rotate(-' + deg + 'deg)'}"
+        [style]="{transform: 'rotate(-' + deg + 'deg)'}"
     ></div>
     <ng-content *ngIf="deg" />
     <div
         class="t-bar"
-        [ngStyle]="{transform: 'rotate(' + deg + 'deg)'}"
+        [style]="{transform: 'rotate(' + deg + 'deg)'}"
     ></div>
 </ng-container>

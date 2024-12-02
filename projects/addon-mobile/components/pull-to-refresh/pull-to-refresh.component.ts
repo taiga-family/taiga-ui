@@ -1,4 +1,4 @@
-import {AsyncPipe, NgStyle} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
@@ -7,7 +7,7 @@ import type {TuiContext, TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
@@ -20,7 +20,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 @Component({
     standalone: true,
     selector: 'tui-pull-to-refresh',
-    imports: [AsyncPipe, NgStyle, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [AsyncPipe, PolymorpheusOutlet],
     templateUrl: './pull-to-refresh.template.html',
     styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +41,7 @@ export class TuiPullToRefresh {
     );
 
     @Input()
-    public styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
+    public styleHandler: TuiHandler<number, Record<string, unknown> | null> = this.isIOS
         ? (distance) => ({top: tuiPx(distance / 2)})
         : () => null;
 

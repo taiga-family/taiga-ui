@@ -2,7 +2,7 @@
 
 <div
     [class.t-drop]="dropped$ | async"
-    [ngStyle]="styleHandler((pulling$ | async) || 0)"
+    [style]="styleHandler((pulling$ | async) || 0)"
     [style.position]="'relative'"
 >
     <ng-content />

@@ -16,15 +16,10 @@ npm-debug.log
 /compiled/
 dll/
 tmp/
-*.ngfactory.ts
-*.css.shim.ts
-*.ngsummary.json
-*.shim.ngstyle.ts
 .idea
 *.iml
 */tmp
 .rpt2_cache
-quality-check
 .DS_Store
 dist
 **/cypress/screenshots

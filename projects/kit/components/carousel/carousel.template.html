@@ -19,7 +19,7 @@
                 *ngFor="let item of items; let i = index"
                 class="t-item"
                 [disabled]="isDisabled(i)"
-                [ngStyle]="getStyle(itemsCount)"
+                [style]="getStyle(itemsCount)"
                 (waIntersectionObservee)="$event[0] && onIntersection($event[0], i)"
             >
                 <ng-container [ngTemplateOutlet]="item" />
