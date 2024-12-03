@@ -212,12 +212,6 @@ describe('InputDateRangeComponent', () => {
         });
 
         describe('With items', () => {
-            beforeAll(() => {
-                jest.useFakeTimers({advanceTimers: true}).setSystemTime(
-                    new Date('2024-01-15'),
-                );
-            });
-
             beforeEach(() => {
                 testComponent.items = tuiCreateDefaultDayRangePeriods();
             });
