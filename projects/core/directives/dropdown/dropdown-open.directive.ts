@@ -99,7 +99,7 @@ export class TuiDropdownOpen implements OnChanges {
     public readonly driver = inject(TuiDropdownDriver);
 
     public ngOnChanges(): void {
-        this.update(!!this.tuiDropdownOpen && this.tuiDropdownEnabled);
+        this.update(!!this.tuiDropdownOpen);
     }
 
     public toggle(open: boolean): void {
@@ -171,7 +171,7 @@ export class TuiDropdownOpen implements OnChanges {
 
     private update(open: boolean): void {
         if (open && !this.tuiDropdownEnabled) {
-            return;
+            return this.drive();
         }
 
         this.tuiDropdownOpen = open;
