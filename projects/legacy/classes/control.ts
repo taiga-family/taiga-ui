@@ -56,6 +56,9 @@ export abstract class AbstractTuiControl<T>
     @Input()
     public pseudoInvalid: boolean | null = null;
 
+    // Workaround for legacy control to notify of internal change in case updateOn: 'blur' is used
+    public readonly update$ = new Subject<void>();
+
     constructor() {
         super();
 
@@ -89,6 +92,7 @@ export abstract class AbstractTuiControl<T>
 
     public set value(value: T) {
         this.updateValue(value);
+        this.update$.next();
     }
 
     public get safeCurrentValue(): T {
