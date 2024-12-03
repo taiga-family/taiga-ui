@@ -68,13 +68,16 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
             ],
         },
     ],
+    host: {
+        '[@.disabled]': 'isE2E',
+    },
 })
 export class App extends AbstractDemo implements OnInit {
-    private readonly isE2E = inject(TUI_IS_E2E);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly destroyRef = inject(DestroyRef);
     private readonly http = inject(HttpClient);
     private readonly ym = inject(YaMetrikaService);
+    protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly router = inject(Router);
     protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
