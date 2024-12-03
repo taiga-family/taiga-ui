@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
+import {maskitoInitialCalibrationPlugin} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -336,11 +337,19 @@ export class TuiInputNumberComponent
             decimalZeroPadding: decimalMode === 'always',
         };
         const {plugins, ...options} = maskitoNumberOptionsGenerator(generatorParams);
+        const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
+            maskitoNumberOptionsGenerator({
+                ...generatorParams,
+                min: Number.MIN_SAFE_INTEGER,
+                max: Number.MAX_SAFE_INTEGER,
+            }),
+        );
 
         return {
             ...options,
             plugins: [
                 ...plugins,
+                initialCalibrationPlugin,
                 maskitoCaretGuard((value) => [
                     prefix.length,
                     value.length - postfix.length,
