@@ -8,5 +8,6 @@ export * from './owner-document.exception';
 export * from './pure.exception';
 export * from './table-sort-key.exception';
 export * from './ts-parser.exception';
+export * from './value-changes.exception';
 export * from './value-present.exception';
 export * from './xml-parsing.exception';
