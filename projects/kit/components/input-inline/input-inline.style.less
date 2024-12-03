@@ -1,5 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+@safari-safe-space: 1px;
+
 tui-input-inline {
     position: relative;
     display: inline-block;
@@ -12,7 +14,7 @@ tui-input-inline {
 
     > .t-before {
         padding-right: 0.02em; // to prevent caret shaking
-        margin-left: 1px; // to prevent hiding characters in safari
+        margin-left: @safari-safe-space; // to prevent hiding characters in safari
         white-space: pre;
         visibility: hidden;
     }
@@ -20,6 +22,7 @@ tui-input-inline {
     > .t-placeholder {
         display: inline-block;
         min-inline-size: 1px;
+        margin-left: -@safari-safe-space;
     }
 
     > input {
