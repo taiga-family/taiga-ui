@@ -25,7 +25,7 @@ export class TestInputWithDatalist {
 }
 
 describe('Input + Datalist', () => {
-    describe('Shows dropdown only textfield contains >2 characters', () => {
+    describe('Shows dropdown only if textfield contains >2 characters', () => {
         beforeEach(() => {
             cy.mount(TestInputWithDatalist, {
                 componentProperties: {
