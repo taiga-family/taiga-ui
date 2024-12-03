@@ -53,7 +53,7 @@ export function tuiGetClosestFocusable({
 
     treeWalker.currentNode = initial;
 
-    while (previous ? treeWalker.previousNode() : treeWalker.nextNode()) {
+    do {
         if (tuiIsHTMLElement(treeWalker.currentNode)) {
             initial = treeWalker.currentNode;
         }
@@ -61,7 +61,7 @@ export function tuiGetClosestFocusable({
         if (tuiIsHTMLElement(initial) && check(initial)) {
             return initial;
         }
-    }
+    } while (previous ? treeWalker.previousNode() : treeWalker.nextNode());
 
     return null;
 }

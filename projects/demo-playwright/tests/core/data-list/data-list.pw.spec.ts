@@ -36,20 +36,14 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#submenu');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
+
+        await example.locator('button').click();
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
-        await page.waitForTimeout(100);
-        await page.keyboard.down('Enter');
-        await page.waitForTimeout(100);
 
         await expect(page).toHaveScreenshot('03-1-data-list.png');
 
-        await page.keyboard.down('ArrowRight');
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
-        await page.keyboard.down('ArrowDown');
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
@@ -57,16 +51,35 @@ test.describe('DataList', () => {
         await expect(page).toHaveScreenshot('03-2-data-list.png');
 
         await page.keyboard.down('ArrowRight');
+
+        await expect(page).toHaveScreenshot('03-3-data-list.png');
+
+        await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
 
-        await expect(page).toHaveScreenshot('03-3-data-list.png');
+        await expect(page).toHaveScreenshot('03-4-data-list.png');
 
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
-        await expect(page).toHaveScreenshot('03-4-data-list.png');
+        await expect(page).toHaveScreenshot('03-5-data-list.png');
+
+        await page.keyboard.down('ArrowRight');
+
+        await expect(page).toHaveScreenshot('03-6-data-list.png');
+
+        await page.keyboard.down('ArrowDown');
+        await page.keyboard.down('ArrowDown');
+
+        await expect(page).toHaveScreenshot('03-7-data-list.png');
+
+        await page.waitForTimeout(100);
+        await page.keyboard.down('Enter');
+        await page.waitForTimeout(100);
+
+        await expect(page).toHaveScreenshot('03-8-data-list.png');
     });
 
     test('Form control', async ({page}) => {

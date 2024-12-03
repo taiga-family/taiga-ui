@@ -163,8 +163,6 @@ export class TuiDataListDropdownManager implements AfterViewInit {
             root: content,
         });
 
-        if (item) {
-            item.focus();
-        }
+        item?.focus();
     }
 }
