@@ -14,15 +14,12 @@ export class TuiDropdownOpenMonitorDirective {
     @Input()
     set tuiDropdownOpenMonitor(open: boolean) {
         this.open?.update(open);
-        this.hosted.updateOpen(open);
     }
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_HOSTED_DROPDOWN_COMPONENT)
-        private readonly hosted: TuiInjectionTokenType<
-            typeof TUI_HOSTED_DROPDOWN_COMPONENT
-        >,
+        hosted: TuiInjectionTokenType<typeof TUI_HOSTED_DROPDOWN_COMPONENT>,
         @Self() @Inject(TuiDropdownDirective) dropdown: TuiDropdownDirective,
         @Optional()
         @Inject(TuiDropdownOpenDirective)
