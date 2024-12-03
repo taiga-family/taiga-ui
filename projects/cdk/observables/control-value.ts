@@ -1,5 +1,4 @@
 import {AbstractControl, AbstractControlDirective} from '@angular/forms';
-import {TuiValueChangesException} from '@taiga-ui/cdk/exceptions';
 import {Observable} from 'rxjs';
 import {startWith} from 'rxjs/operators';
 
@@ -9,11 +8,8 @@ import {startWith} from 'rxjs/operators';
 export function tuiControlValue<T>(
     control: AbstractControl | AbstractControlDirective,
 ): Observable<T> {
-    return new Observable(subscriber => {
-        if (!control.valueChanges) {
-            throw new TuiValueChangesException();
-        }
-
-        return control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);
-    });
+    return new Observable(
+        subscriber =>
+            control?.valueChanges?.pipe(startWith(control.value)).subscribe(subscriber),
+    );
 }
