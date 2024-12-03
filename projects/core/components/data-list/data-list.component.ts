@@ -55,8 +55,8 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
         '(keydown.tab)': 'handleFocusLossIfNecessary()',
         '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
-        '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
-        '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
+        '(document:keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
+        '(document:keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
     },
 })
 export class TuiDataListComponent<T>
