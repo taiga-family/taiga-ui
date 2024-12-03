@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgStyle, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -33,7 +33,6 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         AsyncPipe,
         NgForOf,
         NgIf,
-        NgStyle,
         NgTemplateOutlet,
         TuiCarouselAutoscroll,
         TuiCarouselScroll,
