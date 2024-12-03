@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Drop e2e report site
-        uses: w9jds/firebase-action@v13.26.0
+        uses: w9jds/firebase-action@v13.27.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-previews-demo-e2e-report -f
@@ -36,7 +36,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           PROJECT_ID: taiga-previews
       - name: Drop preview demo site
-        uses: w9jds/firebase-action@v13.26.0
+        uses: w9jds/firebase-action@v13.27.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-previews-demo -f
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions-ecosystem/action-add-labels@v1.1.0
+      - uses: actions-ecosystem/action-add-labels@v1.1.3
         if: ${{ github.event.pull_request.merged == true }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}

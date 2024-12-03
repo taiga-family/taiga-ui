@@ -44,7 +44,8 @@ is developed with `strict` TypeScript mode
 🏗 **Maintained!** The library started as an internal product in our company. It is used by 50+ projects in production
 now, and it is here to stay.
 
-Read more about Taiga UI main features in [this article](https://indepth.dev/posts/1413/taiga-ui) on inDepth
+Read more about Taiga UI main features in
+[this article](https://angular.love/taiga-ui-is-a-new-angular-ui-kit-that-you-should-try) on angular.love
 
 ## Version compatibility
 

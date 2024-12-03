@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.17.0](https://github.com/taiga-family/taiga-ui/compare/v4.16.0...v4.17.0) (2024-11-27)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** update font of large buttons on mobile
+  ([#9816](https://github.com/taiga-family/taiga-ui/issues/9816))
+  ([b45de14](https://github.com/taiga-family/taiga-ui/commit/b45de144503f8a60d4c6c81581966972e5a0dc49))
+- **cdk:** Angular v19 `allowSignalWrites` warning ([#9810](https://github.com/taiga-family/taiga-ui/issues/9810))
+  ([8b6b78a](https://github.com/taiga-family/taiga-ui/commit/8b6b78a3a01da05786d960c353cd3e7684164087))
+- **cdk:** missing migration schematic for `createStackingContext` mixin
+  ([#9800](https://github.com/taiga-family/taiga-ui/issues/9800))
+  ([e5aa261](https://github.com/taiga-family/taiga-ui/commit/e5aa261c5d3d90bb39cd4854369bd7ad22e05a46))
+- **cdk:** missing migration schematic for mixins from `@taiga-ui/legacy/styles/taiga-ui-local`
+  ([#9802](https://github.com/taiga-family/taiga-ui/issues/9802))
+  ([ca9e2e0](https://github.com/taiga-family/taiga-ui/commit/ca9e2e093cf7cd4d54292facf701c394dc8f859e))
+- **layout:** `Navigation` fix aside width according to spec
+  ([#9815](https://github.com/taiga-family/taiga-ui/issues/9815))
+  ([b92202e](https://github.com/taiga-family/taiga-ui/commit/b92202efe6bb0daf2647468bbad97a110e56f4ab))
+- **legacy:** `InputDateTime` validators not triggered when value change
+  ([d7291cd](https://github.com/taiga-family/taiga-ui/commit/d7291cda2bcc8381d90885997fc948706c018191))
+- **legacy:** `InputDateTime` validators not triggered when value change
+  ([#9838](https://github.com/taiga-family/taiga-ui/issues/9838))
+  ([a515c2c](https://github.com/taiga-family/taiga-ui/commit/a515c2c55f328f10742ecaba67bd07660958fcbe))
+- **legacy:** add `styles` entrypoint to `exports` of `package.json`
+  ([#9813](https://github.com/taiga-family/taiga-ui/issues/9813))
+  ([eee448d](https://github.com/taiga-family/taiga-ui/commit/eee448d02dc4fc971bfbdde3cb6459320ddf9ea1))
+
 ## [4.16.0](https://github.com/taiga-family/taiga-ui/compare/v4.15.0...v4.16.0) (2024-11-20)
 
 ### 🚀 Features

@@ -48,15 +48,31 @@
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
-            />
+            >
+                Icon name. Default
+                <code>&#64;tui.[name]</code>
+                pattern associate a name with an icon by URL via the default icon resolver. You can also simply pass a
+                direct URL path to your icon or set up own icon name patterns,
+                <a
+                    fragment="resolver"
+                    tuiLink
+                    [routerLink]="[routes.Icon]"
+                >
+                    learn more
+                </a>
+                .
+            </ng-template>
 
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="background"
                 documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
+                [documentationPropertyValues]="backgroundVariants"
                 [(documentationPropertyValue)]="backgroundIcon"
-            />
+            >
+                You can limit the area of your icon by shape which refers to removing part of icon area defined by other
+                icon.
+            </ng-template>
         </tui-doc-documentation>
 
         <tui-doc-documentation heading="CSS customization">

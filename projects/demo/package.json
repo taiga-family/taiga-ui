@@ -17,7 +17,7 @@
         "@nguniversal/builders": "16.2.0",
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.11.0",
-        "@taiga-ui/dompurify": "4.1.7",
+        "@taiga-ui/dompurify": "4.1.10",
         "@types/express": "5.0.0",
         "date-fns": "4.1.0",
         "express": "4.21.1",

@@ -23,7 +23,6 @@ import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit'
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

@@ -15,7 +15,7 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "params": "forward",
+                    "params": "ignore",
                     "dependencies": true
                 }
             ]

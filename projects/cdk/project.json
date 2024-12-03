@@ -15,7 +15,7 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "params": "forward",
+                    "params": "ignore",
                     "dependencies": true
                 }
             ]
@@ -58,7 +58,7 @@
             "dependsOn": [
                 {
                     "target": "postbuild",
-                    "params": "forward"
+                    "params": "ignore"
                 }
             ]
         },

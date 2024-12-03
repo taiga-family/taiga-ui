@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.98.0
-      - uses: taiga-family/ci/actions/run/rebase@v1.98.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.101.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.98.0
+      - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
@@ -41,8 +41,8 @@ jobs:
       - uses: actions/checkout@v4.2.2
         with:
           ref: ${{ github.base_ref }}
-      - uses: taiga-family/ci/actions/setup/variables@v1.98.0
-      - uses: taiga-family/ci/actions/setup/node@v1.98.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+      - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - name: Run tests for baseline state
         run: npx nx component-test demo-cypress
@@ -57,8 +57,8 @@ jobs:
           retention-days: 1
 
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.98.0
-      - uses: taiga-family/ci/actions/setup/node@v1.98.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+      - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - name: Download Cypress Baseline Snapshots
         uses: actions/download-artifact@v4.1.8
@@ -90,7 +90,6 @@ jobs:
 
   playwright:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    runs-on: ubuntu-latest
     needs: [build-demo]
     strategy:
       fail-fast: false
@@ -109,10 +108,11 @@ jobs:
             {index: 9, os: 'ubuntu-latest', project: 'chromium', total: 9},
           ]
     name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
+    runs-on: ${{ matrix.shard.os }}
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.98.0
-      - uses: taiga-family/ci/actions/setup/node@v1.98.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+      - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - name: Get installed Playwright version
         id: playwright-version
@@ -138,7 +138,7 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.98.0
+      - uses: taiga-family/ci/actions/run/serve@v1.101.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -151,12 +151,12 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
-      - uses: taiga-family/ci/actions/run/clone@v1.98.0
+      - uses: taiga-family/ci/actions/run/clone@v1.101.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.98.0
+      - uses: taiga-family/ci/actions/run/serve@v1.101.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -171,31 +171,24 @@ jobs:
 
       - name: Combine images to get diff reports
         run: |
-          npm install canvas --no-save
+          npm install canvas --no-save --silent
           npm view canvas version
           npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
-
-      - name: Debug output
-        continue-on-error: true
-        run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.4.3
         with:
-          path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/*.diff.png
-          name: '${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.project }}_${{ matrix.shard.index }}'
+          path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/**/*.diff.png
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
           if-no-files-found: ignore
           compression-level: 0
           retention-days: 1
 
-      - name:
-          Upload reports / blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.os }}_${{
-          matrix.shard.index }}
+      - name: Upload reports / ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
         uses: actions/upload-artifact@v4.4.3
         with:
           path: ./projects/demo-playwright/blob-report
-          name:
-            blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.os }}_${{ matrix.shard.index }}
+          name: ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
           compression-level: 0
           retention-days: 1
 
@@ -223,15 +216,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.98.0
-      - uses: taiga-family/ci/actions/setup/node@v1.98.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+      - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
         uses: actions/download-artifact@v4.1.8
         with:
           path: ./total/playwright
-          pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
+          pattern: playwright-snapshots-artifacts--*
           merge-multiple: true
       - run: ls -R ./total/playwright || echo "not found"
 
@@ -240,7 +233,7 @@ jobs:
         uses: actions/download-artifact@v4.1.8
         with:
           path: ./total/cypress
-          pattern: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
+          pattern: cypress-snapshots-artifacts--*
           merge-multiple: true
       - run: ls -R ./total/cypress || echo "not found"
 
@@ -249,12 +242,12 @@ jobs:
         uses: actions/download-artifact@v4.1.8
         with:
           path: all-blob-reports
-          pattern: blob-reports_${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
+          pattern: playwright-blob-artifacts--*
           merge-multiple: true
       - run: ls -R ./all-blob-reports || echo "not found"
 
       - name: Merge into HTML Report
-        run: npx playwright merge-reports --reporter html,json ./all-blob-reports > ./all-blob-reports/results.json
+        run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 
       - name: Deploy e2e report
         id: e2e-report
@@ -273,7 +266,7 @@ jobs:
       - name: Create report comment
         id: report-summary
         continue-on-error: true
-        uses: daun/playwright-report-summary@v3.6.0
+        uses: daun/playwright-report-summary@v3.7.0
         with:
           comment-title: 'Playwright test results'
           report-file: ./all-blob-reports/results.json
