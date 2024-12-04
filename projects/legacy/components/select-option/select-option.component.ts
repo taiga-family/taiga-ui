@@ -36,7 +36,8 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     protected readonly context =
         injectContext<TuiContext<TemplateRef<Record<string, unknown>>>>();
 
-    protected readonly selected$ = merge(
+    protected readonly selected$ = merge<unknown[]>(
+        this.abstractControl?.update$ || EMPTY,
         this.changeDetection$,
         this.control.valueChanges || EMPTY,
         tuiTypedFromEvent(this.el, 'animationstart'),

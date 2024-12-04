@@ -1,4 +1,4 @@
-import {Directive, forwardRef, Optional} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -7,6 +7,7 @@ import {
     TUI_DATA_LIST_HOST,
     tuiAsOptionContent,
 } from '@taiga-ui/core/components/data-list';
+import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/legacy/components/multi-select-option';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
@@ -23,20 +24,25 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
         tuiAsOptionContent(TUI_MULTI_SELECT_OPTION),
         {
             provide: TUI_DATA_LIST_HOST,
-            deps: [
-                NgControl,
-                [new Optional(), forwardRef(() => TuiMultiSelectComponent)],
-            ],
-            useFactory: <T>(
-                control: NgControl,
-                host: TuiDataListHost<T> | null,
-            ): TuiDataListHost<T> =>
-                host || {
-                    handleOption: (option) =>
-                        control.control?.setValue(
-                            tuiArrayToggle(control.value || [], option),
-                        ),
-                },
+            useFactory: <T>(): TuiDataListHost<T> => {
+                const multiSelect = inject(TuiMultiSelectComponent, {optional: true});
+                const {control} = inject(NgControl);
+                const host = inject(AbstractTuiControl, {optional: true});
+
+                return (
+                    multiSelect || {
+                        handleOption: (option) => {
+                            if (host) {
+                                host.value = tuiArrayToggle(host.value, option);
+                            } else {
+                                control?.setValue(
+                                    tuiArrayToggle(control.value || [], option),
+                                );
+                            }
+                        },
+                    }
+                );
+            },
         },
         {
             provide: NG_VALUE_ACCESSOR,

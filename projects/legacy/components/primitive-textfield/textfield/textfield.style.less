@@ -12,4 +12,13 @@ textarea:host {
     :host-context(tui-text-area._ios) {
         padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
     }
+
+    :host-context(tui-textarea[data-size='s']),
+    :host-context(tui-textarea[data-size='m']) {
+        font: var(--tui-font-text-s);
+    }
+
+    :host-context(tui-textarea[data-size='l']) {
+        font: var(--tui-font-text-m);
+    }
 }
