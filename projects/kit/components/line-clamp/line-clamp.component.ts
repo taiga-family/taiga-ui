@@ -13,7 +13,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -50,7 +49,6 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         PolymorpheusTemplate,
         TuiHint,
         TuiLineClampPositionDirective,
-        WaResizeObserver,
     ],
     templateUrl: './line-clamp.template.html',
     styleUrls: ['./line-clamp.style.less'],
@@ -76,7 +74,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
 
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly cd = inject(ChangeDetectorRef);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly zone: NgZone = inject(NgZone);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
@@ -146,7 +144,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     }
 
     protected updateView(): void {
-        this.cd.detectChanges();
+        this.cdr.detectChanges();
     }
 
     private update(): void {

@@ -10,10 +10,10 @@
         [class.t-transitive]="transitioned$ | async"
         [style.cursor]="cursor$ | async"
         [style.transform]="wrapperTransform$ | async"
+        (resize)="onResize($event)"
         (tuiPan)="onPan($event)"
         (tuiZoom)="onZoom($event)"
         (waMutationObserver)="onMutation(contentWrapper)"
-        (waResizeObserver)="onResize($event)"
     >
         <ng-content />
     </section>
