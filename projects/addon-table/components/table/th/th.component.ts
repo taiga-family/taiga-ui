@@ -14,7 +14,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableResized} from '../directives/resized.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_TABLE_OPTIONS} from '../table.options';
+import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
     standalone: true,
@@ -70,9 +70,9 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
 
     protected get icon(): string {
         if (this.isCurrent) {
-            return this.table?.direction === 1
-                ? this.options.sortIcons.desc
-                : this.options.sortIcons.asc;
+            return this.table?.direction === TuiSortDirection.Asc
+                ? this.options.sortIcons.asc
+                : this.options.sortIcons.desc;
         }
 
         return this.options.sortIcons.off;
@@ -82,7 +82,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
         const sorter = this.requiredSort ? this.sorter : null;
 
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndAscDirection ? sorter : this.sorter,
+            this.isCurrentAndDescDirection ? sorter : this.sorter,
         );
     }
 
@@ -90,8 +90,11 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
         this.width = width;
     }
 
-    private get isCurrentAndAscDirection(): boolean {
-        return this.sorter === this.table?.sorter && this.table?.direction === -1;
+    private get isCurrentAndDescDirection(): boolean {
+        return (
+            this.sorter === this.table?.sorter &&
+            this.table?.direction === TuiSortDirection.Desc
+        );
     }
 }
 
