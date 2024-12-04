@@ -92,6 +92,8 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     items = this.itemsVariants[0];
 
+    itemsHidden = false;
+
     strict = false;
 
     readonly modeVariants: readonly TuiTimeMode[] = ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'];
