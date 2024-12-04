@@ -103,6 +103,7 @@
                     [focusable]="focusable"
                     [formControl]="control"
                     [items]="items"
+                    [itemsHidden]="itemsHidden"
                     [itemSize]="itemSize"
                     [mode]="mode"
                     [pseudoFocus]="pseudoFocused"
@@ -157,6 +158,14 @@
                 [(documentationPropertyValue)]="items"
             >
                 Items to choose
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="itemsHidden"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="itemsHidden"
+            >
+                Disable the display of the dropdown list
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

@@ -76,6 +76,9 @@ export class TuiInputTimeComponent
     public items: readonly TuiTime[] = [];
 
     @Input()
+    public itemsHidden = false;
+
+    @Input()
     public itemSize: TuiInputTimeOptions['itemSize'] = this.options.itemSize;
 
     @Input()
@@ -166,7 +169,7 @@ export class TuiInputTimeComponent
     }
 
     protected get canOpen(): boolean {
-        return this.interactive && !!this.filtered.length;
+        return this.interactive && !!this.filtered.length && !this.itemsHidden;
     }
 
     protected get filtered(): readonly TuiTime[] {
