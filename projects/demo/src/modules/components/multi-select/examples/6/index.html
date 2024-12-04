@@ -6,6 +6,6 @@
 >
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items"
+        [items]="items | tuiHideSelected"
     />
 </tui-multi-select>
