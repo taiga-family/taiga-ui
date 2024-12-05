@@ -184,7 +184,7 @@
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
-        "webpack": "5.97.0"
+        "webpack": "5.97.1"
     },
     "engines": {
         "node": ">= 20",
