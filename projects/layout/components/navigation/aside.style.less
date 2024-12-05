@@ -77,8 +77,17 @@ aside[tuiNavigationAside] {
     }
 
     footer {
-        margin-top: auto;
-        border-block-start: 1.75rem solid transparent;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        &::before {
+            content: '';
+            min-block-size: 1.75rem;
+            margin: 0 -0.5rem;
+            flex: 1;
+            mask: linear-gradient(transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
+        }
     }
 
     + main[tuiNavigationMain] {

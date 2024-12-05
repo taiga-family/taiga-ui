@@ -59,11 +59,13 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     }
 
     hr {
-        inline-size: 2rem;
-        margin: 0 0 0 auto;
+        flex: 1;
+        block-size: calc(100% + 1rem);
+        min-inline-size: 2rem;
+        margin: -0.5rem 0;
         border: none;
-        visibility: hidden;
         flex-shrink: 0;
+        mask: linear-gradient(to right, transparent 0, black 3rem, black calc(100% - 3rem), transparent 100%);
 
         ~ [tuiButton] {
             margin-right: 0.5rem;
