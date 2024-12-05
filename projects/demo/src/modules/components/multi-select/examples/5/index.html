@@ -13,9 +13,10 @@
                 *ngFor="let item of jedi"
                 tuiOption
                 type="button"
+                [style.flex-direction]="'row-reverse'"
                 [value]="item"
             >
-                {{ item }}
+                <span [style.flex]="1">{{ item }}</span>
             </button>
         </tui-opt-group>
         <tui-opt-group label="Sith">
