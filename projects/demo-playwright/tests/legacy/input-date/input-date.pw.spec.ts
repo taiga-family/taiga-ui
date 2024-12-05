@@ -12,6 +12,8 @@ import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate', () => {
     test.describe('Examples', () => {
+        let documentationPage!: TuiDocumentationPagePO;
+
         test.use({
             viewport: {
                 width: 450,
@@ -19,13 +21,16 @@ test.describe('InputDate', () => {
             },
         });
 
-        test('correct filler display for size', async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDate);
 
-            const api = new TuiDocumentationPagePO(page);
-            const example = api.getExample('#sizes');
+            documentationPage = new TuiDocumentationPagePO(page);
+        });
 
-            await api.prepareBeforeScreenshot();
+        test('correct filler display for size', async ({page}) => {
+            const example = documentationPage.getExample('#sizes');
+
+            await documentationPage.prepareBeforeScreenshot();
 
             for (const size of ['s', 'm', 'l']) {
                 const input = example
@@ -51,6 +56,37 @@ test.describe('InputDate', () => {
 
                 await expect(page).toHaveScreenshot(`01-04-input-date-${size}.png`);
             }
+        });
+
+        test.describe('with `input[tuiTextfieldLegacy]` inside', () => {
+            test('filler has no change detection problems', async () => {
+                const example = documentationPage.getExample('#date-localization');
+                const inputDate = new TuiInputDatePO(example.locator('tui-input-date'));
+
+                /**
+                 * To ensure that example is not changed and
+                 * still contains InputDate with projected <input tuiTextfieldLegacy>
+                 */
+                await expect(
+                    inputDate.host.locator('input[tuiTextfieldLegacy]'),
+                ).toBeAttached();
+
+                await inputDate.textfield.focus();
+
+                await expect(inputDate.host).toHaveScreenshot(
+                    '14-backspace-pressed-0-times.png',
+                );
+
+                for (let i = 1; i <= 8; i++) {
+                    await inputDate.textfield.press('Backspace');
+
+                    await expect(inputDate.host).toHaveScreenshot(
+                        `14-backspace-pressed-${i}-times.png`,
+                    );
+                }
+
+                await expect(inputDate.textfield).toHaveValue('');
+            });
         });
     });
 
