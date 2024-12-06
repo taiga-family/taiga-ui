@@ -22,7 +22,7 @@ test.describe('Breakpoint service', () => {
             await tuiGoto(page, DemoRoute.BreakpointService);
             const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
-            await expect(example).toHaveScreenshot(`breakpoint_${width}x${height}.png`);
+            await expect(example).toHaveScreenshot(`breakpoint-${width}x${height}.png`);
         });
     });
 });

@@ -47,7 +47,7 @@ test.describe('Deep / Select', () => {
                     await page.waitForTimeout(100);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
-                        `deep-${path}__${name}-select-option-${index}.png`,
+                        `deep-${path}-${name}-select-option-${index}.png`,
                     );
 
                     await select.click();

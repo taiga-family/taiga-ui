@@ -21,11 +21,11 @@ test.describe('InputTable', () => {
 
             await page.waitForTimeout(300);
 
-            await expect(example).toHaveScreenshot(`01-input_table__${index}_1.png`);
+            await expect(example).toHaveScreenshot(`01-input-table-${index}-1.png`);
 
             await example.locator('th').nth(index).click();
 
-            await expect(example).toHaveScreenshot(`01-input_table__${index}_2.png`);
+            await expect(example).toHaveScreenshot(`01-input-table-${index}-2.png`);
 
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (index > 0) {
@@ -40,7 +40,7 @@ test.describe('InputTable', () => {
                 await page.waitForTimeout(300);
 
                 // eslint-disable-next-line playwright/no-conditional-expect
-                await expect(example).toHaveScreenshot(`01-input_table__${index}_3.png`);
+                await expect(example).toHaveScreenshot(`01-input-table-${index}-3.png`);
             }
         }
     });

@@ -234,56 +234,48 @@ test.describe('TuiRange', () => {
                     await range.right.focus();
 
                     await expect(output).toContainText('[ 0, 100000 ]');
-                    await expect(example).toHaveScreenshot('09-range-0-100_000.png');
+                    await expect(example).toHaveScreenshot('09-range-0-100000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 0, 300000 ]');
-                    await expect(example).toHaveScreenshot('09-range-0-300_000.png');
+                    await expect(example).toHaveScreenshot('09-range-0-300000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 0, 500000 ]');
-                    await expect(example).toHaveScreenshot('09-range-0-500_000.png');
+                    await expect(example).toHaveScreenshot('09-range-0-500000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 0, 750000 ]');
-                    await expect(example).toHaveScreenshot('09-range-0-750_000.png');
+                    await expect(example).toHaveScreenshot('09-range-0-750000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 0, 1000000 ]');
-                    await expect(example).toHaveScreenshot('09-range-0-1_000_000.png');
+                    await expect(example).toHaveScreenshot('09-range-0-1_000000.png');
 
                     await range.left.focus();
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 5000, 1000000 ]');
-                    await expect(example).toHaveScreenshot(
-                        '09-range-5_000-1_000_000.png',
-                    );
+                    await expect(example).toHaveScreenshot('09-range-5-000-1-000000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 10000, 1000000 ]');
-                    await expect(example).toHaveScreenshot(
-                        '09-range-10_000-1_000_000.png',
-                    );
+                    await expect(example).toHaveScreenshot('09-range-10000-1000000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 55000, 1000000 ]');
-                    await expect(example).toHaveScreenshot(
-                        '09-range-55_000-1_000_000.png',
-                    );
+                    await expect(example).toHaveScreenshot('09-range-55000-1000000.png');
 
                     await page.keyboard.down('ArrowUp');
 
                     await expect(output).toContainText('[ 100000, 1000000 ]');
-                    await expect(example).toHaveScreenshot(
-                        '09-range-100_000-1_000_000.png',
-                    );
+                    await expect(example).toHaveScreenshot('09-range-100000-1000000.png');
                 });
 
                 test('ArrowDown decreases value of the focused slider', async ({
@@ -293,17 +285,17 @@ test.describe('TuiRange', () => {
                     await page.keyboard.down('ArrowDown');
 
                     await expect(output).toContainText('[ 0, 55000 ]');
-                    await expect(example).toHaveScreenshot('10-range-0-55_000.png');
+                    await expect(example).toHaveScreenshot('10-range-0-55000.png');
 
                     await page.keyboard.down('ArrowDown');
 
                     await expect(output).toContainText('[ 0, 10000 ]');
-                    await expect(example).toHaveScreenshot('10-range-0-10_000.png');
+                    await expect(example).toHaveScreenshot('10-range-0-10000.png');
 
                     await page.keyboard.down('ArrowDown');
 
                     await expect(output).toContainText('[ 0, 5000 ]');
-                    await expect(example).toHaveScreenshot('10-range-0-5_000.png');
+                    await expect(example).toHaveScreenshot('10-range-0-5000.png');
                 });
 
                 test('cannot set position of the LEFT slider MORE THAN position of the RIGHT slider (by ArrowUp)', async ({

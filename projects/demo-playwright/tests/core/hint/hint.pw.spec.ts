@@ -43,7 +43,7 @@ test.describe('TuiHint', () => {
                     await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
                     await expect(page).toHaveScreenshot(
-                        `02-hint-manual-direction-${directionIndex}__${direction}-and-width__${width}.png`,
+                        `02-hint-manual-direction-${directionIndex}-${direction}-and-width-${width}.png`,
                     );
                 });
             });
@@ -80,19 +80,19 @@ test.describe('TuiHint', () => {
             await example.apiPageExample.locator('span').hover();
 
             await expect(page).toHaveScreenshot(
-                `03-hint-mode-${mode}-tuiHintShowDelay-1000__wait-0.png`,
+                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-0.png`,
             );
 
             await page.waitForTimeout(500);
 
             await expect(page).toHaveScreenshot(
-                `03-hint-mode-${mode}-tuiHintShowDelay-1000_wait-500.png`,
+                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-500.png`,
             );
 
             await page.waitForTimeout(500);
 
             await expect(page).toHaveScreenshot(
-                `03-hint-mode-${mode}-tuiHintShowDelay-1000_wait-1000.png`,
+                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-1000.png`,
             );
         });
     });
@@ -126,11 +126,11 @@ test.describe('TuiHint', () => {
 
         await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
 
-        await expect(page).toHaveScreenshot('06-hint-direction__bottom.png');
+        await expect(page).toHaveScreenshot('06-hint-direction-bottom.png');
 
         await page.setViewportSize({width: 1280, height: 150});
 
-        await expect(page).toHaveScreenshot('06-hint-direction__left.png');
+        await expect(page).toHaveScreenshot('06-hint-direction-left.png');
     });
 
     test('TuiHint customizing works', async ({page}) => {

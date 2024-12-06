@@ -67,7 +67,7 @@ test.describe('InputTime', () => {
 
                 await inputTime.textfield.click();
 
-                await expect(apiPageExample).toHaveScreenshot(`time_mode_${mode}.png`);
+                await expect(apiPageExample).toHaveScreenshot(`time-mode-${mode}.png`);
             });
         });
 

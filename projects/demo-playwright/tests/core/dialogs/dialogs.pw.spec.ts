@@ -21,7 +21,7 @@ test.describe('Dialogs', () => {
             await documentationPagePO.apiPageExample.locator('button').click();
             await documentationPagePO.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot(`01-prompt_${width}x${height}.png`);
+            await expect(page).toHaveScreenshot(`01-prompt-${width}x${height}.png`);
         });
 
         test.describe(`${width}x${height}`, () => {
@@ -39,13 +39,13 @@ test.describe('Dialogs', () => {
                 await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
-                    `02-dialogs-level-1_${width}x${height}.png`,
+                    `02-dialogs-level-1-${width}x${height}.png`,
                 );
 
                 await page.locator('tui-dialog button').nth(1).click();
 
                 await expect(page).toHaveScreenshot(
-                    `02-dialogs-level-2_${width}x${height}.png`,
+                    `02-dialogs-level-2-${width}x${height}.png`,
                 );
             });
 
@@ -58,7 +58,7 @@ test.describe('Dialogs', () => {
                 await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
-                    `03-mobile-dialog_${width}x${height}.png`,
+                    `03-mobile-dialog-${width}x${height}.png`,
                 );
             });
 
@@ -71,7 +71,7 @@ test.describe('Dialogs', () => {
                 await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
-                    `04-dialogs-dialog-directive_${width}x${height}.png`,
+                    `04-dialogs-dialog-directive-${width}x${height}.png`,
                 );
             });
 
@@ -84,7 +84,7 @@ test.describe('Dialogs', () => {
                 await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
-                    `05-default-button_${width}x${height}.png`,
+                    `05-default-button-${width}x${height}.png`,
                 );
             });
 
@@ -97,7 +97,7 @@ test.describe('Dialogs', () => {
                 await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
-                    `06-custom-button_${width}x${height}.png`,
+                    `06-custom-button-${width}x${height}.png`,
                 );
             });
 
@@ -113,7 +113,7 @@ test.describe('Dialogs', () => {
 
                 test('Prompt', async ({page}) => {
                     await expect(page).toHaveScreenshot(
-                        `07-prompt_${width}x${height}.png`,
+                        `07-prompt-${width}x${height}.png`,
                     );
                 });
 
@@ -128,7 +128,7 @@ test.describe('Dialogs', () => {
                     await page.locator('tui-dialog .t-close').click();
 
                     await expect(page).toHaveScreenshot(
-                        `08-prompt-confirm_${width}x${height}.png`,
+                        `08-prompt-confirm-${width}x${height}.png`,
                     );
                 });
 
