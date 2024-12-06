@@ -22,7 +22,7 @@
                     [class.t-cell_disabled]="disabledItemHandler(item)"
                     [class.t-cell_today]="itemIsToday(item)"
                     [class.t-cell_unavailable]="itemIsUnavailable(item)"
-                    (click)="onItemClick(item)"
+                    (click)="dayClick.emit(item)"
                     (tuiHoveredChange)="onItemHovered($event && item)"
                 >
                     {{ item.day }}

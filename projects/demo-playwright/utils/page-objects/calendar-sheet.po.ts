@@ -11,15 +11,21 @@ export class TuiCalendarSheetPO {
             .all();
     }
 
-    public async clickOnDay(day: number): Promise<void> {
+    public async getCalendarDay(day: number): Promise<Locator | null> {
         const cells = await this.getDays();
 
         for (const cell of cells) {
             if ((await cell.textContent())?.trim() === day.toString()) {
-                await cell.click();
-
-                break;
+                return cell;
             }
         }
+
+        return null;
+    }
+
+    public async clickOnDay(day: number): Promise<void> {
+        const element = await this.getCalendarDay(day);
+
+        return element!.click();
     }
 }
