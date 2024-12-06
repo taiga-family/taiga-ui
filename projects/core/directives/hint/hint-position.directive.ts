@@ -1,6 +1,7 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -38,7 +39,15 @@ export class TuiHintPosition extends TuiPositionAccessor {
     @Input('tuiHintDirection')
     public direction: TuiHintOptions['direction'] = inject(TUI_HINT_OPTIONS).direction;
 
+    @Output('tuiHintDirectionChange')
+    public readonly directionChange = new EventEmitter<TuiHintDirection>();
+
     public readonly type = 'hint';
+
+    @tuiPure
+    public emitDirection(direction: TuiHintDirection): void {
+        this.directionChange.emit(direction);
+    }
 
     public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
         const width = el?.clientWidth ?? rect.width;
@@ -83,6 +92,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const direction = sortedDirections.find((direction) =>
             this.checkPosition(this.points[direction], width, height),
         );
+
+        this.emitDirection(direction || this.fallback);
 
         return this.points[direction || this.fallback];
     }

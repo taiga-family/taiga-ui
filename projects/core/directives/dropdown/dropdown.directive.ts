@@ -34,7 +34,13 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         tuiAsVehicle(TuiDropdownDirective),
     ],
     exportAs: 'tuiDropdown',
-    hostDirectives: [TuiDropdownDriverDirective, TuiDropdownPosition],
+    hostDirectives: [
+        TuiDropdownDriverDirective,
+        {
+            directive: TuiDropdownPosition,
+            outputs: ['tuiDropdownDirectionChange'],
+        },
+    ],
 })
 export class TuiDropdownDirective
     implements

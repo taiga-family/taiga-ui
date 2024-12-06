@@ -1,5 +1,6 @@
-import {Directive, inject} from '@angular/core';
+import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
@@ -13,7 +14,6 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiDropdownPosition]',
 })
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -21,12 +21,20 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 
     private previous?: TuiVerticalDirection;
 
+    @Output('tuiDropdownDirectionChange')
+    public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
+
     public readonly type = 'dropdown';
     public readonly accessor: TuiRectAccessor | null =
         tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
             inject<any>(TuiRectAccessor),
             inject(TuiDropdownDirective, {optional: true})!,
         );
+
+    @tuiPure
+    public emitDirection(direction: TuiVerticalDirection): void {
+        this.directionChange.emit(direction);
+    }
 
     public getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {
@@ -60,16 +68,20 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
                     : right,
             left: Math.max(viewport.left, left),
         } as const;
-        const better = available.top > available.bottom ? 'top' : 'bottom';
+        const better: TuiVerticalDirection =
+            available.top > available.bottom ? 'top' : 'bottom';
 
         if (
             (available[previous] > minHeight && direction) ||
             available[previous] > height
         ) {
+            this.emitDirection(previous);
+
             return [position[previous], position[align]];
         }
 
         this.previous = better;
+        this.emitDirection(better);
 
         return [position[better], position[align]];
     }

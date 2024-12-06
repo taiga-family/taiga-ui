@@ -16,7 +16,6 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vertical = inject(TuiDropdownPosition);
-
     private previous = this.options.direction || 'bottom';
 
     @Input()
@@ -57,10 +56,13 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
             (available[this.previous] > minHeight && direction) ||
             this.previous === better
         ) {
+            this.vertical.emitDirection(this.previous);
+
             return [position[this.previous], left];
         }
 
         this.previous = better;
+        this.vertical.emitDirection(better);
 
         return [position[better], left];
     }
