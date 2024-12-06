@@ -57,6 +57,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected items = this.itemsVariants[0]!;
 
+    protected itemsHidden = false;
+
     protected strict = false;
 
     protected readonly modeVariants: readonly TuiTimeMode[] = [
