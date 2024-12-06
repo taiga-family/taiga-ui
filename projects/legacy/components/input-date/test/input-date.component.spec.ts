@@ -1,5 +1,5 @@
 import type {DebugElement, Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -47,6 +47,9 @@ describe('InputDate', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
+        @Input()
+        public value: TuiDay | null = new TuiDay(2017, 2, 1);
+
         @ViewChild(TuiInputDateComponent)
         public readonly component!: TuiInputDateComponent;
 
@@ -61,8 +64,6 @@ describe('InputDate', () => {
         public labelOutside = false;
 
         public items: TuiNamedDay[] = [];
-
-        public value: TuiDay | null = new TuiDay(2017, 2, 1);
 
         public size: TuiSizeL | TuiSizeS = 'm';
 
@@ -192,10 +193,10 @@ describe('InputDate', () => {
         });
 
         describe('With items', () => {
-            beforeEach(() => {
+            beforeEach(async () => {
                 testComponent.items = [
                     new TuiNamedDay(
-                        new TuiDay(2017, 2, 1),
+                        new TuiDay(2017, 2, 5),
                         'Current',
                         TuiDay.currentLocal(),
                     ),
@@ -205,11 +206,13 @@ describe('InputDate', () => {
                         TuiDay.currentLocal(),
                     ),
                 ];
+
+                fixture.detectChanges();
+                await fixture.whenStable();
             });
 
             it('when entering item date, input shows named date', async () => {
-                inputPO.sendText('01.02.2017');
-
+                inputPO.sendText('05.03.2017');
                 await fixture.whenStable();
 
                 expect(inputPO.value).toBe('Current');
@@ -225,7 +228,7 @@ describe('InputDate', () => {
             });
 
             it('when ngModel value updated with item date, input shows named date', async () => {
-                testComponent.value = TUI_LAST_DAY.append({year: -1});
+                fixture.componentRef.setInput('value', TUI_LAST_DAY.append({year: -1}));
                 fixture.detectChanges();
 
                 await fixture.whenStable();
@@ -238,7 +241,7 @@ describe('InputDate', () => {
 
                 expect(getCalendar()).not.toBeNull();
 
-                const calendarCell = getCalendarCell(1);
+                const calendarCell = getCalendarCell(5);
 
                 calendarCell?.nativeElement.click();
 
@@ -479,8 +482,11 @@ describe('InputDate', () => {
             expect(testComponent.control.value).toEqual(new Date(2022, 0, 20));
         });
 
-        it('transforms value which was programmatically patched', () => {
+        it('transforms value which was programmatically patched', async () => {
             testComponent.control.patchValue(new Date(1991, 11, 26));
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe('26.12.1991');
             expect(testComponent.control.value).toEqual(new Date(1991, 11, 26));

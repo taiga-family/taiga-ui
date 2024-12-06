@@ -291,5 +291,38 @@ test.describe('InputDateRange', () => {
                 '08-calendar-correct-selected-period-after-close-open.png',
             );
         });
+
+        test.describe('with `input[tuiTextfieldLegacy]` inside', () => {
+            test('filler has no change detection problems', async () => {
+                const example = documentationPage.getExample('#base');
+                const inputDateRange = new TuiInputDateRangePO(
+                    example.locator('tui-input-date-range'),
+                );
+
+                /**
+                 * To ensure that example is not changed and
+                 * still contains InputDateRange with projected <input tuiTextfieldLegacy>
+                 */
+                await expect(
+                    inputDateRange.host.locator('input[tuiTextfieldLegacy]'),
+                ).toBeAttached();
+
+                await inputDateRange.textfield.focus();
+
+                await expect(inputDateRange.host).toHaveScreenshot(
+                    '12-backspace-pressed-0-times.png',
+                );
+
+                for (let i = 1; i <= 16; i++) {
+                    await inputDateRange.textfield.press('Backspace');
+
+                    await expect(inputDateRange.host).toHaveScreenshot(
+                        `12-backspace-pressed-${i}-times.png`,
+                    );
+                }
+
+                await expect(inputDateRange.textfield).toHaveValue('');
+            });
+        });
     });
 });

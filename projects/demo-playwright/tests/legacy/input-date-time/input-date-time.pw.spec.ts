@@ -312,24 +312,17 @@ test.describe('InputDateTime', () => {
     });
 
     test.describe('Examples', () => {
-        let example!: Locator;
         let documentationPage!: TuiDocumentationPagePO;
-        let inputDateTime!: TuiInputDateTimePO;
 
         test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDateTime);
 
             documentationPage = new TuiDocumentationPagePO(page);
-            example = documentationPage.apiPageExample;
-
-            inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-input-date-time'),
-            );
         });
 
         test('With validator: enter incomplete date -> validator error', async () => {
-            example = documentationPage.getExample('#with-validator');
-            inputDateTime = new TuiInputDateTimePO(
+            const example = documentationPage.getExample('#with-validator');
+            const inputDateTime = new TuiInputDateTimePO(
                 example.locator('tui-input-date-time'),
             );
 
@@ -342,6 +335,39 @@ test.describe('InputDateTime', () => {
                 '04-input-data-time-with-validator.png',
                 {animations: 'allow'},
             );
+        });
+
+        test.describe('with `input[tuiTextfieldLegacy]` inside', () => {
+            test('filler has no change detection problems', async () => {
+                const example = documentationPage.getExample('#base');
+                const inputDateTime = new TuiInputDateTimePO(
+                    example.locator('tui-input-date-time'),
+                );
+
+                /**
+                 * To ensure that example is not changed and
+                 * still contains InputDateTime with projected <input tuiTextfieldLegacy>
+                 */
+                await expect(
+                    inputDateTime.host.locator('input[tuiTextfieldLegacy]'),
+                ).toBeAttached();
+
+                await inputDateTime.textfield.focus();
+
+                await expect(inputDateTime.host).toHaveScreenshot(
+                    '05-backspace-pressed-0-times.png',
+                );
+
+                for (let i = 1; i <= 8; i++) {
+                    await inputDateTime.textfield.press('Backspace');
+
+                    await expect(inputDateTime.host).toHaveScreenshot(
+                        `05-backspace-pressed-${i}-times.png`,
+                    );
+                }
+
+                await expect(inputDateTime.textfield).toHaveValue('');
+            });
         });
     });
 });
