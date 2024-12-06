@@ -8,16 +8,14 @@ import {
     type Provider,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    tuiButtonOptionsProvider,
-    tuiNotificationOptionsProvider,
-    type TuiSizeL,
-    type TuiSizeS,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core';
-import {TUI_SEGMENTED_OPTIONS, TUI_SWITCH_OPTIONS} from '@taiga-ui/kit';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiNotificationOptionsProvider} from '@taiga-ui/core/components/notification';
+import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
+import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 const HEADER_SIZE: Record<string, string> = {
