@@ -2,14 +2,20 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
+
+export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions({
+    size: 's' as TuiSizeXXL | TuiSizeXXS,
+});
 
 @Component({
     standalone: true,
@@ -33,12 +39,13 @@ class TuiHeaderStyles {}
     ],
     host: {
         tuiHeader: '',
-        '[attr.data-size]': 'size || "s"',
+        '[attr.data-size]': 'size || options.size',
     },
 })
 export class TuiHeader {
+    protected readonly options = inject(TUI_HEADER_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 
     @Input('tuiHeader')
-    public size: TuiSizeXXL | TuiSizeXXS | '' = 's';
+    public size: TuiSizeXXL | TuiSizeXXS | '' = '';
 }
