@@ -3,7 +3,7 @@ import {inject} from '@angular/core';
 
 export function tuiProvideOptions<T>(
     provide: InjectionToken<T>,
-    options: ProviderToken<Partial<T>> | Partial<T>,
+    options: Partial<T> | ProviderToken<Partial<T>>,
     fallback: T,
 ): FactoryProvider {
     return {

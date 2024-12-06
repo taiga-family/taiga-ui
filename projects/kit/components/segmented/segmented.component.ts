@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiCreateOptions} from '@taiga-ui/cdk';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -20,7 +20,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
 import {TuiSegmentedDirective} from './segmented.directive';
 
 export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOptions({
-    size: 's' as TuiSizeS | TuiSizeL,
+    size: 's' as TuiSizeL | TuiSizeS,
 });
 
 @Component({

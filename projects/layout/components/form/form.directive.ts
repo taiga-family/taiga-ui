@@ -1,11 +1,10 @@
+import type {InjectionToken, Provider} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
-    type InjectionToken,
     Input,
-    type Provider,
     ViewEncapsulation,
 } from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
@@ -39,10 +38,13 @@ class TuiFormStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiForm]',
-    host: {
-        tuiForm: '',
-        '[attr.data-size]': 'size',
-    },
+    providers: [
+        tuiButtonOptionsProvider(TuiForm),
+        tuiNotificationOptionsProvider(TuiForm),
+        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]!),
+        projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+    ],
     hostDirectives: [
         {
             directive: TuiTextfieldOptionsDirective,
@@ -53,19 +55,16 @@ class TuiFormStyles {}
             ],
         },
     ],
-    providers: [
-        tuiButtonOptionsProvider(TuiForm),
-        tuiNotificationOptionsProvider(TuiForm),
-        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]!),
-        projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
-        projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
-    ],
+    host: {
+        tuiForm: '',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiForm {
     protected readonly nothing = tuiWithStyles(TuiFormStyles);
 
     @Input('tuiForm')
-    size: TuiSizeS | TuiSizeL = 'l';
+    public size: TuiSizeL | TuiSizeS = 'l';
 }
 
 function projectSize(

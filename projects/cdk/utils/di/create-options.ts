@@ -5,7 +5,7 @@ export function tuiCreateOptions<T>(
     defaults: T,
 ): [
     token: InjectionToken<T>,
-    provider: (item: ProviderToken<Partial<T>> | Partial<T>) => FactoryProvider,
+    provider: (item: Partial<T> | ProviderToken<Partial<T>>) => FactoryProvider,
 ] {
     const token = tuiCreateToken(defaults);
 

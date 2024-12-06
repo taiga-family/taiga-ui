@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiCreateOptions} from '@taiga-ui/cdk';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';

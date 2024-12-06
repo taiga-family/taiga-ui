@@ -1,4 +1,4 @@
-import {tuiCreateOptions} from '@taiga-ui/cdk';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 

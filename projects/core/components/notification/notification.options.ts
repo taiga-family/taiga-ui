@@ -1,5 +1,5 @@
-import {tuiCreateOptions} from '@taiga-ui/cdk';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
