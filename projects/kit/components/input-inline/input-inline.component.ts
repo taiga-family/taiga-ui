@@ -8,7 +8,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {defer} from 'rxjs';
 
 @Component({
@@ -19,21 +18,10 @@ import {defer} from 'rxjs';
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '(scroll.capture)': 'onScroll($event.target)',
-    },
 })
 export class TuiInputInline {
     @ContentChild(NgControl)
     private readonly control?: NgControl;
 
     protected readonly value$ = defer(() => tuiControlValue(this.control!));
-
-    protected indent = -1;
-
-    protected onScroll(target: EventTarget | null): void {
-        if (tuiIsElement(target) && tuiIsInput(target)) {
-            this.indent = -target.scrollLeft - 1; // -1 for Safari (see styles)
-        }
-    }
 }

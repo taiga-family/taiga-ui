@@ -1,26 +1,24 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+@safari-safe-space: 1px;
+
 tui-input-inline {
     position: relative;
     display: inline-block;
-    overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
 
-    ::spelling-error {
-        color: transparent;
-    }
-
     > .t-before {
-        display: block;
         padding-right: 0.02em; // to prevent caret shaking
-        margin-left: 1px; // to prevent hiding characters in safari
+        margin-left: @safari-safe-space; // to prevent hiding characters in safari
         white-space: pre;
+        visibility: hidden;
     }
 
     > .t-placeholder {
         display: inline-block;
         min-inline-size: 1px;
+        margin-left: -@safari-safe-space;
     }
 
     > input {
@@ -30,7 +28,7 @@ tui-input-inline {
         background-color: transparent;
         padding: inherit;
         font: inherit;
-        -webkit-text-fill-color: transparent;
+        color: inherit;
         box-sizing: border-box;
         inline-size: 100%;
         block-size: 100%;
