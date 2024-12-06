@@ -4,14 +4,22 @@ import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/cor
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiTabs, TuiTabsDirective, TuiTabsHorizontal} from '@taiga-ui/kit';
+import {
+    TUI_TAB_ACTIVATE,
+    TuiTabs,
+    TuiTabsDirective,
+    TuiTabsHorizontal,
+} from '@taiga-ui/kit';
 
 describe('Tabs', () => {
     @Component({
         standalone: true,
         imports: [AsyncPipe, CommonModule, TuiTabs],
         template: `
-            <tui-tabs [(activeItemIndex)]="activeItemIndex">
+            <tui-tabs
+                [(activeItemIndex)]="activeItemIndex"
+                (${TUI_TAB_ACTIVATE})="onTabActivate()"
+            >
                 <button
                     *ngFor="let tab of tabs"
                     tuiTab
@@ -34,6 +42,8 @@ describe('Tabs', () => {
 
         @Input()
         public tabs = [1, 2, 3];
+
+        public onTabActivate(): void {}
     }
 
     let fixture: ComponentFixture<Test>;
@@ -76,6 +86,23 @@ describe('Tabs', () => {
 
             expect(firstTab).not.toEqual(component.tabsDirective.activeElement);
             expect(secondTab).toEqual(component.tabsDirective.activeElement);
+        });
+
+        it('when you click on a tab tui-tab-activate event emits once', () => {
+            const [firstTab, secondTab] = getTabs().map(
+                (tab) => tab.nativeElement as HTMLButtonElement,
+            );
+
+            secondTab?.click();
+            fixture.detectChanges();
+
+            jest.spyOn(component, 'onTabActivate');
+
+            firstTab?.click();
+            fixture.detectChanges();
+
+            expect(component.activeItemIndex).toBe(0);
+            expect(component.onTabActivate).toHaveBeenCalledTimes(1);
         });
 
         it('when a tab is active, it has the class _active', () => {
