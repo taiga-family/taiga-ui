@@ -11,12 +11,17 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 import {TuiSegmentedDirective} from './segmented.directive';
+
+export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOptions({
+    size: 's' as TuiSizeL | TuiSizeS,
+});
 
 @Component({
     standalone: true,
@@ -39,7 +44,7 @@ export class TuiSegmented implements OnChanges {
         .subscribe(() => this.refresh());
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = 's';
+    public size: TuiSizeL | TuiSizeS = inject(TUI_SEGMENTED_OPTIONS).size;
 
     @Input()
     public activeItemIndex = 0;

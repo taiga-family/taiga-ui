@@ -423,6 +423,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Form',
+        keywords: 'форма, поле, кнопка, группировка, группа',
+        route: DemoRoute.FormLayout,
+    },
+    {
+        section: 'Components',
         title: 'Group',
         keywords: 'buttongroup, форма, поле, кнопка, группировка, группа, Group',
         route: DemoRoute.Group,

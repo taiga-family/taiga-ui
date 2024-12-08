@@ -1,0 +1,24 @@
+<tui-doc-page
+    header="Form"
+    package="LAYOUT"
+    type="components"
+>
+    <tui-notification appearance="warning">
+        Size sets DI options, therefore it only works for static values like
+        <code>tuiForm="m"</code>
+        . If you need dynamic binding for the size, you would have to set it for buttons, segmented control and header
+        manually as well.
+    </tui-notification>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [fullsize]="true"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
