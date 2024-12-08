@@ -7,7 +7,7 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {EMPTY, filter, merge, switchMap} from 'rxjs';
+import {EMPTY, filter, merge, switchMap, take} from 'rxjs';
 
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 
@@ -35,7 +35,9 @@ export class TuiTab implements OnDestroy {
         this.el.matches('button')
             ? tuiTypedFromEvent(this.el, 'click').pipe(
                   // Delaying execution until after all other click callbacks
-                  switchMap(() => tuiTypedFromEvent(this.el.parentElement!, 'click')),
+                  switchMap(() =>
+                      tuiTypedFromEvent(this.el.parentElement!, 'click').pipe(take(1)),
+                  ),
               )
             : EMPTY,
     )
