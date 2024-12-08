@@ -21,7 +21,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 })
 export default class Example {
     protected items = [
-        'Luke Skywalker',
+        'Luke Skywalker and a long time ago in a galaxy far, far away..',
         'Leia Organa Solo',
         'Darth Vader',
         'Han Solo',

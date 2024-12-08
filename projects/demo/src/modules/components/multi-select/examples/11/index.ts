@@ -31,7 +31,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Example {
     protected readonly items = [
-        'Luke Skywalker',
+        'Luke Skywalker and a long time ago in a galaxy far, far away..',
         'Leia Organa Solo',
         'Darth Vader',
         'Han Solo',

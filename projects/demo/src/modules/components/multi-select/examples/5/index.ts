@@ -21,7 +21,7 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 })
 export default class Example {
     protected readonly jedi: readonly string[] = [
-        'Luke Skywalker',
+        'Luke Skywalker and a long time ago in a galaxy far, far away..',
         'Princess Leia',
         'Han Solo',
         'Obi-Wan Kenobi',

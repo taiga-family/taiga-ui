@@ -28,7 +28,7 @@ export default class Example {
     protected readonly testValue = new FormControl<string[]>([]);
 
     protected readonly items: readonly string[] = [
-        'Luke Skywalker',
+        'Luke Skywalker and a long time ago in a galaxy far, far away..',
         'Leia Organa Solo',
         'Darth Vader',
         'Han Solo',

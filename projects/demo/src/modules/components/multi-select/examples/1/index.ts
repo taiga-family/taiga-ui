@@ -9,7 +9,7 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 const ITEMS: readonly string[] = [
-    'Luke Skywalker',
+    'Luke Skywalker and a long time ago in a galaxy far, far away..',
     'Leia Organa Solo',
     'Darth Vader',
     'Han Solo',

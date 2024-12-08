@@ -30,7 +30,7 @@ export default class Example {
     protected itemGroupControl = new FormControl<Item[]>([]);
 
     protected items = [
-        'Luke Skywalker',
+        'Luke Skywalker and a long time ago in a galaxy far, far away..',
         'Leia Organa Solo',
         'Darth Vader',
         'Han Solo',
@@ -39,7 +39,7 @@ export default class Example {
     ];
 
     protected customItems: readonly Item[] = [
-        {name: 'Luke Skywalker', id: 1},
+        {name: 'Luke Skywalker and a long time ago in a galaxy far, far away..', id: 1},
         {name: 'Leia Organa Solo', id: 2},
         {name: 'Darth Vader', id: 3},
         {name: 'Han Solo', id: 4},

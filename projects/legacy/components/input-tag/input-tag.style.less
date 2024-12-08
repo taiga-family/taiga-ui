@@ -82,6 +82,10 @@
     :host[data-size='l']:not(._label-outside) & {
         padding: 0;
     }
+
+    & > tui-tag:has(+ .t-input-wrapper) {
+        max-inline-size: 80%;
+    }
 }
 
 .t-content {
