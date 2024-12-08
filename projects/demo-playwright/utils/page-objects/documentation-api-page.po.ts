@@ -2,9 +2,11 @@ import type {Locator, Page} from '@playwright/test';
 import {expect} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
+import {waitIcons} from '../wait-icons';
 import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
+    private readonly loadedIcons = new Set<string>();
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
     public readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
@@ -72,7 +74,9 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getNameProperty(row: Locator): Promise<string> {
-        return (await row.locator('.t-property code').textContent())?.trim() ?? '';
+        return decodeURI(
+            (await row.locator('.t-property code').textContent())?.trim() ?? '',
+        );
     }
 
     public async getOptions(): Promise<Locator[]> {
@@ -96,5 +100,11 @@ export class TuiDocumentationApiPagePO {
             ((await row.locator('.t-cell_value input[tuiSwitch]').all()) ?? [])?.[0] ??
             null
         );
+    }
+
+    public async waitTuiIcons(): Promise<void> {
+        const icons = await this.page.locator('tui-icon').all();
+
+        await waitIcons({page: this.page, icons, cache: this.loadedIcons});
     }
 }

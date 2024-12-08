@@ -19,7 +19,9 @@ test.describe('Deep / Select', () => {
 
             test.setTimeout(30_000 * rows.length);
 
-            for (const row of rows) {
+            await api.waitTuiIcons();
+
+            for (const [rowIndex, row] of rows.entries()) {
                 const select = await api.getSelect(row);
                 const name = await api.getNameProperty(row);
 
@@ -35,6 +37,7 @@ test.describe('Deep / Select', () => {
                 await expect(select).toBeVisible();
 
                 await select.click();
+                await api.waitTuiIcons();
 
                 const options = await api.getOptions();
 
@@ -44,13 +47,14 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
-                    await page.waitForTimeout(100);
+                    await api.waitTuiIcons();
 
                     await expect(api.apiPageExample).toHaveScreenshot(
-                        `deep-${path}__${name}-select-option-${index}.png`,
+                        `deep-${path}__${name}-row—${rowIndex}-select-option-${index}.png`,
                     );
 
                     await select.click();
+                    await api.waitTuiIcons();
                 }
 
                 const cleaner = await api.getCleaner(select);
@@ -65,6 +69,7 @@ test.describe('Deep / Select', () => {
 
                 await api.waitStableState();
                 await api.focusOnBody();
+                await api.waitTuiIcons();
             }
         }),
     );

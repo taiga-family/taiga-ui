@@ -32,6 +32,8 @@ test.describe('Carousel', () => {
         await page.mouse.move(125, 300, {steps: 10});
         await page.mouse.up();
 
+        await page.waitForTimeout(500);
+
         await expect(apiPageExample).toHaveScreenshot('carousel-draggable.png');
     });
 });

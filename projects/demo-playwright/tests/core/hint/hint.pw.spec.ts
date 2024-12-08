@@ -61,6 +61,7 @@ test.describe('TuiHint', () => {
 
             await example.prepareBeforeScreenshot();
             await example.apiPageExample.locator('span').hover();
+            await page.waitForTimeout(0);
 
             await expect(page).toHaveScreenshot(
                 `03-hint-mode-${mode}-tuiHintShowDelay-0.png`,
@@ -78,6 +79,7 @@ test.describe('TuiHint', () => {
             await example.prepareBeforeScreenshot();
 
             await example.apiPageExample.locator('span').hover();
+            await page.waitForTimeout(0);
 
             await expect(page).toHaveScreenshot(
                 `03-hint-mode-${mode}-tuiHintShowDelay-1000__wait-0.png`,
@@ -113,6 +115,7 @@ test.describe('TuiHint', () => {
         );
 
         await example.locator('[tuiTooltip]').nth(0).hover();
+        await page.waitForTimeout(300);
 
         await expect(example).toHaveScreenshot('05-tooltip-bottom.png');
     });
@@ -138,6 +141,7 @@ test.describe('TuiHint', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#customizing');
 
         await example.locator('tui-avatar').hover();
+        await page.waitForTimeout(300);
 
         await expect(example).toHaveScreenshot('07-hint.png');
     });

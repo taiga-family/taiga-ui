@@ -14,7 +14,9 @@ test.describe('Deep / Toggle', () => {
 
             test.setTimeout(30_000 * rows.length);
 
-            for (const row of rows) {
+            await api.waitTuiIcons();
+
+            for (const [rowIndex, row] of rows.entries()) {
                 const toggle = await api.getToggle(row);
                 const name = await api.getNameProperty(row);
 
@@ -29,15 +31,17 @@ test.describe('Deep / Toggle', () => {
                 await expect(toggle).toBeVisible();
 
                 await toggle.click();
+                await api.waitTuiIcons();
                 await api.hideNotifications();
                 await api.waitStableState();
                 await page.waitForTimeout(100);
 
                 await expect(api.apiPageExample).toHaveScreenshot(
-                    `deep-${path}__${name}-toggled.png`,
+                    `deep-${path}__${name}-row-${rowIndex}-toggled.png`,
                 );
 
                 await toggle.click();
+                await api.waitTuiIcons();
             }
         }),
     );

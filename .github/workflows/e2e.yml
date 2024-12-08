@@ -96,6 +96,16 @@ jobs:
       max-parallel: 9
       matrix:
         shard: [
+            # Safari
+            {index: 1, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 2, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 3, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 4, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 5, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 6, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 7, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 8, os: 'macos-latest', project: 'webkit', total: 9},
+            {index: 9, os: 'macos-latest', project: 'webkit', total: 9},
             # Chrome
             {index: 1, os: 'ubuntu-latest', project: 'chromium', total: 9},
             {index: 2, os: 'ubuntu-latest', project: 'chromium', total: 9},
@@ -112,6 +122,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.101.0
+
+      - name: Mac OS X building all dependencies
+        if: ${{ contains( matrix.shard.os, 'macos') }}
+        run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
+
       - uses: taiga-family/ci/actions/setup/node@v1.101.0
 
       - name: Get installed Playwright version
