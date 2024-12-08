@@ -2,7 +2,7 @@
     "name": "@taiga-ui/demo-cypress",
     "private": true,
     "devDependencies": {
-        "@nx/cypress": "20.1.4",
+        "@nx/cypress": "20.2.1",
         "cypress": "13.16.1",
         "cypress-image-diff-js": "2.3.0",
         "cypress-plugin-tab": "1.0.5"
