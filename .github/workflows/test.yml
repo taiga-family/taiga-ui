@@ -17,6 +17,8 @@ jobs:
       - run: npm test
       - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v5.1.1
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           directory: ./coverage/
           flags: summary

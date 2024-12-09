@@ -143,6 +143,14 @@ class TransferMockEvent {
 global.DragEvent = TransferMockEvent as unknown as typeof DragEvent;
 global.ClipboardEvent = TransferMockEvent as unknown as typeof ClipboardEvent;
 
+// Need before initialize any static methods
+global.Date = class extends Date {
+    constructor(...args: DateConstructor[]) {
+        // @ts-ignore
+        super(...(args.length === 0 ? ['2023-02-15T00:00:00Z'] : args));
+    }
+} as unknown as DateConstructor;
+
 /**
  * in our jest setupFilesAfterEnv file,
  * however when running with ng test those
