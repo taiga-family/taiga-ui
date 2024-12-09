@@ -3,6 +3,7 @@ import {
     Component,
     inject,
     Input,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -79,6 +80,7 @@ export class TuiInputDateTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
+    private readonly nativeValue = signal('');
 
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
@@ -147,10 +149,10 @@ export class TuiInputDateTimeComponent
     public get computedValue(): string {
         const {value, nativeValue, timeMode} = this;
         const [date, time] = value;
-        const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
+        const hasTimeInputChars = nativeValue().length > DATE_FILLER_LENGTH;
 
         if (!date || (!time && hasTimeInputChars)) {
-            return nativeValue;
+            return nativeValue();
         }
 
         return this.getDateTimeString(date, time, timeMode);
@@ -164,11 +166,14 @@ export class TuiInputDateTimeComponent
     public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
-        this.nativeValue =
-            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
+        this.nativeValue.set(
+            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
+        );
     }
 
     public onValueChange(value: string): void {
+        this.nativeValue.set(value);
+
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -258,18 +263,6 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    protected get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
-    }
-
-    protected set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
-        }
-
-        this.nativeFocusableElement.value = value;
-    }
-
     protected onClick(): void {
         this.open = !this.open;
     }
@@ -279,8 +272,12 @@ export class TuiInputDateTimeComponent
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
-        this.updateNativeValue(day);
-        this.nativeFocusableElement?.setSelectionRange(newCaretIndex, newCaretIndex);
+        this.nativeValue.update((x) =>
+            this.getDateTimeString(day, x.split(DATE_TIME_SEPARATOR)[1] || ''),
+        );
+        setTimeout(() =>
+            this.nativeFocusableElement?.setSelectionRange(newCaretIndex, newCaretIndex),
+        );
         this.open = false;
     }
 
@@ -302,19 +299,19 @@ export class TuiInputDateTimeComponent
         timer(0)
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
-                this.nativeValue = this.trimTrailingSeparator(this.nativeValue);
+                this.nativeValue.update((x) => this.trimTrailingSeparator(x));
             });
 
         if (
             this.value[0] === null ||
             this.value[1] !== null ||
-            this.nativeValue.length === this.fillerLength ||
+            this.nativeValue().length === this.fillerLength ||
             this.timeMode === 'HH:MM'
         ) {
             return;
         }
 
-        const [, time] = this.nativeValue.split(DATE_TIME_SEPARATOR);
+        const [, time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
 
         if (!time) {
             return;
@@ -389,12 +386,6 @@ export class TuiInputDateTimeComponent
         return timeString
             ? `${dateString}${DATE_TIME_SEPARATOR}${timeString}`
             : dateString;
-    }
-
-    private updateNativeValue(day: TuiDay): void {
-        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
-
-        this.nativeValue = this.getDateTimeString(day, time);
     }
 
     private clampTime(time: TuiTime, day: TuiDay): TuiTime {

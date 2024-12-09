@@ -29,10 +29,6 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
     }
 
     public onValueChange(value: string): void {
-        if (!value) {
-            this.host.nativeValue = '';
-        }
-
         this.host.onValueChange(value);
     }
 

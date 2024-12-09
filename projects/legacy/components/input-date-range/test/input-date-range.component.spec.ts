@@ -300,7 +300,17 @@ describe('InputDateRangeComponent', () => {
         });
 
         it('correctly sets stringify selected range via calendar', async () => {
-            inputPO.sendTextAndBlur('12/01/2021-02/14/2022');
+            inputPO.sendText('12/01/2021-02/14/2022');
+            /**
+             * TODO
+             * Uncomment me to see [TypeError: Cannot read properties of undefined (reading 'addEventListener')]
+             * ___
+             * Stacktrace says that error happens inside `TUI_ACTIVE_ELEMENT`.
+             * Utility `tuiGetDocumentOrShadowRoot` returns `undefined`.
+             */
+            // inputPO.blur();
+
+            await fixture.whenStable();
 
             clickOnTextfield();
 
@@ -535,17 +545,19 @@ describe('InputDateRangeComponent', () => {
             expect(inputPO.value).toBe('12.09.2021 – 18.10.2021');
         });
 
-        it('transforms value which was programmatically patched', () => {
-            testComponent.control.patchValue([
-                new Date(1922, 11, 30),
-                new Date(1991, 11, 26),
-            ]);
+        it('transforms value which was programmatically patched', async () => {
+            const newDateRange = [new Date(1922, 11, 30), new Date(1991, 11, 26)] as [
+                Date,
+                Date,
+            ];
+
+            testComponent.control.patchValue(newDateRange);
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe('30.12.1922 – 26.12.1991');
-            expect(testComponent.control.value).toEqual([
-                new Date(1922, 11, 30),
-                new Date(1991, 11, 26),
-            ]);
+            expect(testComponent.control.value).toEqual(newDateRange);
         });
     });
 

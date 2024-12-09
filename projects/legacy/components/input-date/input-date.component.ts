@@ -4,6 +4,7 @@ import {
     Component,
     inject,
     Input,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -83,6 +84,7 @@ export class TuiInputDateComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private month: TuiMonth | null = null;
+    private readonly nativeValue = signal('');
 
     @Input()
     public min: TuiDay | null = this.options.min;
@@ -142,16 +144,6 @@ export class TuiInputDateComponent
         return !!this.textfield?.focused;
     }
 
-    public get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
-    }
-
-    public set nativeValue(value: string) {
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.value = value;
-        }
-    }
-
     public get computedValue(): string {
         const {value, nativeValue, activeItem} = this;
 
@@ -161,10 +153,12 @@ export class TuiInputDateComponent
 
         return value
             ? value.toString(this.dateFormat.mode, this.dateFormat.separator)
-            : nativeValue;
+            : nativeValue();
     }
 
     public onValueChange(value: string): void {
+        this.nativeValue.set(value);
+
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -174,7 +168,7 @@ export class TuiInputDateComponent
         }
 
         if (this.activeItem) {
-            this.nativeValue = '';
+            this.nativeValue.set('');
         }
 
         this.value =
@@ -190,7 +184,7 @@ export class TuiInputDateComponent
 
     public override writeValue(value: TuiDay | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
+        this.nativeValue.set(value ? this.computedValue : '');
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
