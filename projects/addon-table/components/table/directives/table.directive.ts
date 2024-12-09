@@ -23,7 +23,7 @@ import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
 import {Subject} from 'rxjs';
 
-import {TUI_TABLE_OPTIONS} from '../table.options';
+import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 import {TuiStuck} from './stuck.directive';
 
 @Component({
@@ -72,7 +72,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     public direction = this.options.direction;
 
     @Output()
-    public readonly directionChange = new EventEmitter<-1 | 1>();
+    public readonly directionChange = new EventEmitter<TuiSortDirection>();
 
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
@@ -94,7 +94,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
-            this.updateDirection(this.direction === 1 ? -1 : 1);
+            this.updateDirection(
+                this.direction === TuiSortDirection.Asc
+                    ? TuiSortDirection.Desc
+                    : TuiSortDirection.Asc,
+            );
         } else {
             this.updateSorter(sorter);
             this.updateDirection(1);
@@ -115,7 +119,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         this.change$.next();
     }
 
-    private updateDirection(direction: -1 | 1): void {
+    private updateDirection(direction: TuiSortDirection): void {
         this.direction = direction;
         this.directionChange.emit(this.direction);
         this.change$.next();

@@ -1,6 +1,7 @@
 import {Directive, inject, Input, Output} from '@angular/core';
 import {map} from 'rxjs';
 
+import {TuiSortDirection} from '../table.options';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
@@ -17,6 +18,7 @@ export class TuiTableDirectionOrder<T> {
 
     @Input()
     public set directionOrder(order: 'asc' | 'desc') {
-        this.table.direction = order === 'asc' ? 1 : -1;
+        this.table.direction =
+            order === 'asc' ? TuiSortDirection.Asc : TuiSortDirection.Desc;
     }
 }
