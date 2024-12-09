@@ -17,7 +17,7 @@
                 [attr.data-range]="getItemRange(item)"
                 [class.t-cell_disabled]="disabledItemHandler(item)"
                 [class.t-cell_today]="itemIsToday(item)"
-                (click)="onItemClick(item)"
+                (click)="dayClick.emit(item)"
             >
                 {{ item.day }}
             </div>
