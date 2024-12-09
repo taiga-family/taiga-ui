@@ -87,7 +87,7 @@ export class TuiInputDateRangeComponent
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly nativeValue = signal(this.nativeFocusableElement?.value || '');
+    private readonly nativeValue = signal('');
 
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(

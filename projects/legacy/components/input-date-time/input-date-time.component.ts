@@ -80,7 +80,7 @@ export class TuiInputDateTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
-    private readonly nativeValue = signal(this.nativeFocusableElement?.value || '');
+    private readonly nativeValue = signal('');
 
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);

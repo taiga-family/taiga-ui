@@ -84,7 +84,7 @@ export class TuiInputDateComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private month: TuiMonth | null = null;
-    private readonly nativeValue = signal(this.nativeFocusableElement?.value || '');
+    private readonly nativeValue = signal('');
 
     @Input()
     public min: TuiDay | null = this.options.min;
