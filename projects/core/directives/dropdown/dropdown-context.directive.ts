@@ -21,6 +21,7 @@ function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
         tuiAsDriver(TuiDropdownDriver),
         tuiAsRectAccessor(TuiDropdownContext),
     ],
+    exportAs: 'tuiDropdownContext',
     host: {
         '[style.user-select]': 'userSelect()',
         '[style.-webkit-user-select]': 'userSelect()',
@@ -45,10 +46,14 @@ export class TuiDropdownContext extends TuiRectAccessor {
         return this.currentRect;
     }
 
-    @shouldCall(activeZoneFilter)
-    protected closeDropdown(_event?: Event): void {
+    public close(): void {
         this.driver.next(false);
         this.currentRect = EMPTY_CLIENT_RECT;
+    }
+
+    @shouldCall(activeZoneFilter)
+    protected closeDropdown(_event?: Event): void {
+        this.close();
     }
 
     protected onContextMenu(x: number, y: number): void {

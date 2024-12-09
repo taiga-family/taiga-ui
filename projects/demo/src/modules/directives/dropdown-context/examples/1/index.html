@@ -1,7 +1,7 @@
 <p>
     Make right click on this icon ->
     <tui-icon
-        #dropdown="tuiDropdown"
+        #dropdown="tuiDropdownContext"
         icon="@tui.settings"
         tuiDropdownContext
         class="icon"
@@ -15,7 +15,7 @@
                 size="s"
                 tuiIconButton
                 type="button"
-                (click)="dropdown.toggle(false)"
+                (click)="dropdown.close()"
             >
                 Close
             </button>
