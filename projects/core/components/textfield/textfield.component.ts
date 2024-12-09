@@ -1,6 +1,7 @@
 import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     computed,
     ContentChild,
@@ -15,7 +16,6 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -44,7 +44,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    imports: [NgIf, PolymorpheusOutlet, TuiButton],
     templateUrl: './textfield.template.html',
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
@@ -83,6 +83,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     @ContentChild(NgControl)
     protected readonly control?: NgControl;
+
+    protected readonly cdr = inject(ChangeDetectorRef);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
@@ -141,7 +143,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         return Boolean(this.label?.nativeElement?.childNodes.length);
     }
 
-    protected onResize({contentRect}: ResizeObserverEntry): void {
-        this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    protected onResize(event: UIEvent): void {
+        const [entry] = event as unknown as ResizeObserverEntry[];
+
+        if (!entry) {
+            return;
+        }
+
+        this.el.style.setProperty('--t-side', tuiPx(entry.contentRect.width));
+        this.cdr.detectChanges();
     }
 }
