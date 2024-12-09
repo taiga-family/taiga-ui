@@ -299,16 +299,54 @@
                 Primary
             </button>
         </nav>
-        <div
-            *tuiRepeatTimes="let index of 10"
-            tuiAppearance="floating"
-            tuiCardLarge
-            tuiHeader
-        >
-            <h2 tuiTitle>
-                Some random content
-                <span tuiSubtitle>A subtitle</span>
-            </h2>
-        </div>
+        <ng-container *tuiRepeatTimes="let index of 10">
+            <form
+                tuiAppearance="floating"
+                tuiCardLarge
+                tuiForm="m"
+                [style.grid-column]="'2 / span 7'"
+                [style.margin-top.rem]="1"
+            >
+                <header tuiHeader>
+                    <h2 tuiTitle>
+                        Registration form
+                        <span tuiSubtitle>Tell us about yourself</span>
+                    </h2>
+                </header>
+                <tui-textfield>
+                    <label tuiLabel>Name</label>
+                    <input
+                        placeholder="John Wick"
+                        tuiTextfield
+                    />
+                </tui-textfield>
+                <footer>
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        tuiButton
+                        type="submit"
+                    >
+                        Ok
+                    </button>
+                </footer>
+            </form>
+            <div
+                tuiAppearance="outline-grayscale"
+                tuiCardLarge
+                [style.grid-column]="'span 3'"
+                [style.margin-top.rem]="1"
+            >
+                <h2 tuiTitle>
+                    Sidebar content
+                    <span tuiSubtitle>Use CSS grid to position</span>
+                </h2>
+            </div>
+        </ng-container>
     </main>
 </div>
