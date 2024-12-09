@@ -3,6 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
@@ -11,7 +12,7 @@ const yesterday = today.append({day: -1});
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputDateRangeModule],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputDateRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -36,4 +37,8 @@ export default class Example {
             ({$implicit}) => `Yet another yesterday (${$implicit.from})`,
         ),
     ];
+
+    protected selectToday(): void {
+        this.control.setValue(new TuiDayRange(today, today));
+    }
 }
