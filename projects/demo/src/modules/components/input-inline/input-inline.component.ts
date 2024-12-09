@@ -33,6 +33,12 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/3/style.less?raw'),
     };
 
+    readonly example4: TuiDocExample = {
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
+    };
+
     control = new FormControl('111', Validators.required);
 
     override readonly maxLengthVariants: readonly number[] = [10];
