@@ -91,11 +91,11 @@ test.describe('LineClamp', () => {
                 );
                 await pagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(`05-1-line-clamp__${index}.png`);
+                await expect(page).toHaveScreenshot(`05-1-line-clamp-${index}.png`);
 
                 await pagePO.apiPageExample.locator('tui-line-clamp').hover();
 
-                await expect(page).toHaveScreenshot(`05-2-line-clamp__${index}.png`);
+                await expect(page).toHaveScreenshot(`05-2-line-clamp-${index}.png`);
             });
         });
     });

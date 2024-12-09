@@ -67,7 +67,7 @@ test.describe('Slider', () => {
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await expect(apiPageExample).toHaveScreenshot(
-            '03-min_1__max_10__value_1__segments_9.png',
+            '03-min-1-max-10-value-1-segments-9.png',
         );
     });
 
@@ -77,7 +77,7 @@ test.describe('Slider', () => {
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await expect(apiPageExample).toHaveScreenshot(
-            '04-min_-5__max_5__value_1__segments_5.png',
+            '04-min--5-max-5-value-1-segments_5.png',
         );
     });
 
