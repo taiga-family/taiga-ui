@@ -36,13 +36,8 @@ export class TuiInputInlineComponent
     @ViewChild('native')
     private readonly native?: ElementRef<HTMLInputElement>;
 
-    @ViewChild('text')
-    private readonly text?: ElementRef<HTMLElement>;
-
     @Input()
     maxLength: number | null = null;
-
-    indent = -1;
 
     constructor(
         @Optional()
@@ -62,30 +57,12 @@ export class TuiInputInlineComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get hasValue(): boolean {
-        return this.value !== '';
-    }
-
     onValueChange(value: string): void {
-        if (!this.text) {
-            return;
-        }
-
-        // Sync update so width is calculated immediately
-        this.text.nativeElement.textContent = value;
-        this.text.nativeElement.style.textIndent = '';
         this.value = value;
     }
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    onScroll(): void {
-        const indent = this.native?.nativeElement.scrollLeft || 0;
-
-        // -1 for Safari (see styles)
-        this.indent = -1 - indent;
     }
 
     protected getFallbackValue(): string {
