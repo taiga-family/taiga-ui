@@ -13,7 +13,7 @@ import {TuiHintHover} from './hint-hover.directive';
 })
 export class TuiHintManual extends TuiDriver implements OnChanges {
     private readonly hover = inject(TuiHintHover);
-    private readonly stream$ = new BehaviorSubject<boolean | null>(false);
+    private readonly stream$ = new BehaviorSubject(false);
 
     @Input()
     public tuiHintManual: boolean | null = false;
@@ -28,7 +28,7 @@ export class TuiHintManual extends TuiDriver implements OnChanges {
     }
 
     public ngOnChanges(): void {
-        this.stream$.next(this.tuiHintManual);
+        this.stream$.next(!!this.tuiHintManual);
         this.hover.enabled = this.tuiHintManual === null;
     }
 }
