@@ -1,12 +1,10 @@
 <span
-    #text
     class="t-before"
-    [style.text-indent.px]="indent"
     [textContent]="value"
 ></span>
 
 <span
-    *ngIf="!hasValue"
+    *ngIf="!value"
     automation-id="tui-input-inline__placeholder"
     class="t-placeholder"
 >
@@ -26,6 +24,5 @@
     [readOnly]="readOnly"
     [tuiFocusable]="focusable"
     (ngModelChange)="onValueChange($event)"
-    (scroll)="onScroll()"
     (tuiFocusedChange)="onFocused($event)"
 />
