@@ -2,7 +2,7 @@ import type {TemplateRef} from '@angular/core';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {TuiHint, TuiHintManual, TuiRoot} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
@@ -95,6 +95,15 @@ describe('Hint', () => {
 
             expect(getTooltip()).toBeNull();
         }));
+
+        it('enables hover when tuiHintManual is null', () => {
+            const hintManualDirective = TestBed.inject(TuiHintManual);
+
+            hintManualDirective.tuiHintManual = null;
+            hintManualDirective.ngOnChanges();
+
+            expect(hintManualDirective['hover'].enabled).toBeTruthy();
+        });
     });
 
     describe('Hint is not shown', () => {
