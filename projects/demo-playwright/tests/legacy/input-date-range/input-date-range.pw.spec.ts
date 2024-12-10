@@ -325,4 +325,43 @@ test.describe('InputDateRange', () => {
             });
         });
     });
+
+    test('check valid active period', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputDateRange);
+
+        const example = documentationPage.getExample('#custom-period');
+        const inputDateRange = new TuiInputDateRangePO(
+            example.locator('tui-input-date-range'),
+        );
+
+        await inputDateRange.textfield.focus();
+        await inputDateRange.textfieldIcon.click();
+        await inputDateRange.selectItem(1);
+
+        await expect(inputDateRange.textfield).toHaveValue('Yesterday');
+        await expect(inputDateRange.host).toHaveScreenshot(
+            '13-data-range-custom-period-yesterday-focused.png',
+        );
+
+        await inputDateRange.textfield.blur();
+
+        await expect(inputDateRange.host).toHaveScreenshot(
+            '14-data-range-custom-period-yesterday-unfocused.png',
+        );
+
+        await inputDateRange.textfield.focus();
+        await inputDateRange.textfieldIcon.click();
+        await inputDateRange.selectItem(0);
+
+        await expect(inputDateRange.textfield).toHaveValue('Today');
+        await expect(inputDateRange.host).toHaveScreenshot(
+            '15-data-range-custom-period-today-focused.png',
+        );
+
+        await inputDateRange.textfield.blur();
+
+        await expect(inputDateRange.host).toHaveScreenshot(
+            '16-data-range-custom-period-today-unfocused.png',
+        );
+    });
 });
