@@ -5,7 +5,6 @@
         <!--8 = data list padding-->
         <cdk-virtual-scroll-viewport
             *tuiLet="countries | tuiFilterByInput as items"
-            appendOnly
             tuiScrollable
             class="scroll"
             [itemSize]="48"
@@ -14,7 +13,7 @@
         >
             <tui-data-list #list>
                 <button
-                    *cdkVirtualFor="let item of items"
+                    *cdkVirtualFor="let item of items; templateCacheSize: 0"
                     tuiOption
                     type="button"
                     [value]="item"
