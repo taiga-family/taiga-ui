@@ -1,4 +1,10 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>taiga-family/renovate-config"]
+    "extends": ["github>taiga-family/renovate-config"],
+    "packageRules": [
+        {
+            "matchPackageNames": ["/^@nx.*/", "/^nx$/"],
+            "enabled": false
+        }
+    ]
 }
