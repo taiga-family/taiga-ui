@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.18.0](https://github.com/taiga-family/taiga-ui/compare/v4.17.0...v4.18.0) (2024-12-10)
+
+### 🐞 Bug Fixes
+
+- **addon-table:** sort icons are reversed ([#9904](https://github.com/taiga-family/taiga-ui/issues/9904))
+  ([a6c0a36](https://github.com/taiga-family/taiga-ui/commit/a6c0a3604df7ef63b361ed4b63cbe99305498195))
+- **core:** `Dropdown` fix initial width ([#9867](https://github.com/taiga-family/taiga-ui/issues/9867))
+  ([76d8d01](https://github.com/taiga-family/taiga-ui/commit/76d8d01006481564500ec1e1f328fe748b6d9879))
+- **core:** `DropdownOpen` has CD problems after switching of `tuiDropdownEnabled` (`false`=>`true`)
+  ([#9888](https://github.com/taiga-family/taiga-ui/issues/9888))
+  ([4249cd9](https://github.com/taiga-family/taiga-ui/commit/4249cd926f73a3378c9d94ebd740723a6827dc6a))
+- **core:** `Icon` fix for old safari ([#9917](https://github.com/taiga-family/taiga-ui/issues/9917))
+  ([8c3a228](https://github.com/taiga-family/taiga-ui/commit/8c3a228152f5b74662c12bf115f9a3f44ae62d57))
+- **core:** focus first element in data-list ([#9891](https://github.com/taiga-family/taiga-ui/issues/9891))
+  ([ab7dfde](https://github.com/taiga-family/taiga-ui/commit/ab7dfde75788131943e68cbbcf84dc6f230c42a9))
+- **core:** transform breaks fixed position in tiles ([#9905](https://github.com/taiga-family/taiga-ui/issues/9905))
+  ([369d9a4](https://github.com/taiga-family/taiga-ui/commit/369d9a45489012dcca454992c3532459c106f991))
+- **kit:** `Carousel` fix dragging in chrome ([#9864](https://github.com/taiga-family/taiga-ui/issues/9864))
+  ([6b1f985](https://github.com/taiga-family/taiga-ui/commit/6b1f9855c16ac58b382769bab60bb3f1fcbc7ee0))
+- **kit:** `InputInline` has broken scroll in Safari & Firefox
+  ([#9818](https://github.com/taiga-family/taiga-ui/issues/9818))
+  ([76634f1](https://github.com/taiga-family/taiga-ui/commit/76634f1d55bff5858d4139c9f21f020e504e42fc))
+- **kit:** `Segmented` fix shadow clipping in Safari ([#9931](https://github.com/taiga-family/taiga-ui/issues/9931))
+  ([c6c9c38](https://github.com/taiga-family/taiga-ui/commit/c6c9c3819ad2595afc6bd5ed35ffb445e9d06687))
+- **kit:** `Tabs` fix multiple emitting of activeItemIndexChange
+  ([#9934](https://github.com/taiga-family/taiga-ui/issues/9934))
+  ([4d4dbf1](https://github.com/taiga-family/taiga-ui/commit/4d4dbf1dcac03ce283ecf7640e6eca88d53ad1f1))
+- **kit:** fix parallel lazy loading tree nodes ([#9939](https://github.com/taiga-family/taiga-ui/issues/9939))
+  ([c2a88d4](https://github.com/taiga-family/taiga-ui/commit/c2a88d4a83abaac8e2279762631ee957d63654fc))
+- **kit:** removed redundant space ([#9916](https://github.com/taiga-family/taiga-ui/issues/9916))
+  ([e10d0eb](https://github.com/taiga-family/taiga-ui/commit/e10d0ebd7cee8ce577afdc472ca2a51248363fc6))
+- **legacy:** `InputDate{Range|Time}` + `input[tuiTextfieldLegacy]` + `tuiTextfieldFiller` has CD problems
+  ([#9932](https://github.com/taiga-family/taiga-ui/issues/9932))
+  ([026d13c](https://github.com/taiga-family/taiga-ui/commit/026d13c3ce2d28d62799cd77476fec1ea5a6a813))
+- **legacy:** `InputNumber` has bad support of dynamic postfix
+  ([#9899](https://github.com/taiga-family/taiga-ui/issues/9899))
+  ([fefdcff](https://github.com/taiga-family/taiga-ui/commit/fefdcff14f5579727ae3aeb24400f728b25029af))
+- **legacy:** `MultiSelect` fix pristine and updateOn: blur issues
+  ([#9900](https://github.com/taiga-family/taiga-ui/issues/9900))
+  ([d70edfb](https://github.com/taiga-family/taiga-ui/commit/d70edfbb350cb2b191a78cd2955a847402bdc67d))
+
+### 🚀 Features
+
+- **addon-doc:** limit select width ([#9880](https://github.com/taiga-family/taiga-ui/issues/9880))
+  ([84fd6e4](https://github.com/taiga-family/taiga-ui/commit/84fd6e4bb73e99d808dcbc63e1bb4eafd32f5423))
+- **layout:** `Form` add new component ([#9933](https://github.com/taiga-family/taiga-ui/issues/9933))
+  ([52ab367](https://github.com/taiga-family/taiga-ui/commit/52ab3677ba7bc2dc8f84ac17d48c7e38586e6ad2))
+- **legacy:** `MultiSelect` allow checkbox on the right side
+  ([#9910](https://github.com/taiga-family/taiga-ui/issues/9910))
+  ([8aa063b](https://github.com/taiga-family/taiga-ui/commit/8aa063baafc1c91e4d937c2b3321d9d94ce46a61))
+- **legacy:** add `itemsHidden` prop to `tui-input-time` ([#9908](https://github.com/taiga-family/taiga-ui/issues/9908))
+  ([b3db7bc](https://github.com/taiga-family/taiga-ui/commit/b3db7bcf8bbefef7034cd7f11556588d563c31e6))
+- **legacy:** limit `tui-tag` width to `80%` to avoid wrapping in selects
+  ([#9886](https://github.com/taiga-family/taiga-ui/issues/9886))
+  ([54f5c65](https://github.com/taiga-family/taiga-ui/commit/54f5c65eed218de02020ed16f16cc343293684e0))
+
 ## [4.17.0](https://github.com/taiga-family/taiga-ui/compare/v4.16.0...v4.17.0) (2024-11-27)
 
 ### 🐞 Bug Fixes
