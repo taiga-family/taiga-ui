@@ -19,5 +19,6 @@ export default class Page {
         'Virtual scroll',
         'Dynamic columns',
         'Footer',
+        'Allow resize more than 100%',
     ];
 }
