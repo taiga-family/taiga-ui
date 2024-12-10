@@ -11,8 +11,8 @@ jobs:
       BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
       - uses: actions/checkout@v4.2.2
-        continue-on-error: true
-      - run: |
+      - continue-on-error: true
+        run: |
           gh cache list --ref $BRANCH > cache.log && cat cache.log
 
           for cacheId in $(gh cache list --ref $BRANCH --json id | jq -r .[].id); do
@@ -43,15 +43,3 @@ jobs:
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
           PROJECT_ID: taiga-previews
-
-  community-contribution:
-    if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.2.2
-      - uses: actions-ecosystem/action-add-labels@v1.1.3
-        if: ${{ github.event.pull_request.merged == true }}
-        with:
-          github_token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-          labels: |
-            community contribution
