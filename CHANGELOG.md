@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.100.0](https://github.com/taiga-family/taiga-ui/compare/v3.99.0...v3.100.0) (2024-12-10)
+
+### Features
+
+- **core:** add margin right for left icons in small textfield
+  ([#9914](https://github.com/taiga-family/taiga-ui/issues/9914))
+  ([ecd96bc](https://github.com/taiga-family/taiga-ui/commit/ecd96bc09011f986018ec2a3140a0676b6cb715e))
+- **kit:** add `itemsHidden` prop to `tui-input-time` ([#9909](https://github.com/taiga-family/taiga-ui/issues/9909))
+  ([7aced14](https://github.com/taiga-family/taiga-ui/commit/7aced146d750abee23eeafcf9bb03c64095bbfee))
+- **legacy:** `MultiSelect` allow checkbox on the right side
+  ([#9911](https://github.com/taiga-family/taiga-ui/issues/9911))
+  ([a8294a2](https://github.com/taiga-family/taiga-ui/commit/a8294a28ea2dfd2a4fd17a8f34bf4cd6283aea73))
+
+### Bug Fixes
+
+- **addon-mobile:** `Card` fix paddings on mobile devices
+  ([#9912](https://github.com/taiga-family/taiga-ui/issues/9912))
+  ([8579228](https://github.com/taiga-family/taiga-ui/commit/8579228b47fc9436fa09bb49fbc2b231748b926d))
+- **cdk:** optional chaining for tuiControlValue subscription
+  ([#9865](https://github.com/taiga-family/taiga-ui/issues/9865))
+  ([e77b631](https://github.com/taiga-family/taiga-ui/commit/e77b6315f34494b9cb7aed41fff8df064ba12bb7))
+- **core:** `Input` with `DataList` never shows dropdown after its 1st closing
+  ([#9881](https://github.com/taiga-family/taiga-ui/issues/9881))
+  ([eb71369](https://github.com/taiga-family/taiga-ui/commit/eb71369e5ad3e298deac3aa27359c8ba891f7885))
+
 ## [3.99.0](https://github.com/taiga-family/taiga-ui/compare/v3.98.0...v3.99.0) (2024-12-02)
 
 ### Bug Fixes
