@@ -15,7 +15,7 @@ export class TuiInputDateRangePO {
         '[automation-id="tui-calendar-range__menu"]',
     );
 
-    constructor(private readonly host: Locator) {}
+    constructor(public readonly host: Locator) {}
 
     public async getItems(): Promise<Locator[]> {
         const dataList = this.calendar.locator(

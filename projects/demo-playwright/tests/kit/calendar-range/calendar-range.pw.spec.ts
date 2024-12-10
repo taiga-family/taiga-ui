@@ -36,7 +36,7 @@ test.describe('CalendarRange', () => {
                 example.locator('p button[data-appearance="action"]');
 
             await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-defaults-items-and-values_1.png',
+                '05-calendar-range-correct-display-defaults-items-and-values-1.png',
             );
 
             await calendarRange.selectItem(1);
@@ -61,7 +61,7 @@ test.describe('CalendarRange', () => {
             await getRangeSwitcher().click();
 
             await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-defaults-items-and-values_2.png',
+                '05-calendar-range-correct-display-defaults-items-and-values-2.png',
             );
         });
 

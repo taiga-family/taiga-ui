@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {map, startWith, Subject, switchMap, tap} from 'rxjs';
+import {map, mergeMap, startWith, Subject, tap} from 'rxjs';
 
 import type {TuiTreeLoader} from './tree.interfaces';
 import {TUI_TREE_LOADER, TUI_TREE_LOADING, TUI_TREE_START} from './tree.tokens';
@@ -13,7 +13,7 @@ export class TuiTreeService<T> {
     private readonly load$ = new Subject<T>();
 
     public readonly data$ = this.load$.pipe(
-        switchMap((item) =>
+        mergeMap((item) =>
             this.loader.loadChildren(item).pipe(
                 tap((children) => this.map.set(item, children)),
                 map((children) =>

@@ -1,0 +1,63 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiForm] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    &[data-size='s'] {
+        gap: 0.75rem;
+        font: var(--tui-font-text-s);
+
+        tui-error {
+            margin-top: -0.75rem;
+        }
+
+        [tuiHeader] {
+            padding-bottom: 0.5rem;
+
+            [tuiSubtitle] {
+                font: var(--tui-font-text-ui-s);
+            }
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 1rem;
+        font: var(--tui-font-text-s);
+
+        tui-error {
+            margin-top: -1rem;
+        }
+    }
+
+    &[data-size='l'] {
+        gap: 1.25rem;
+        font: var(--tui-font-text-m);
+
+        tui-error {
+            margin-top: -1.25rem;
+        }
+    }
+
+    [tuiHeader] {
+        padding-bottom: 0.25rem;
+    }
+
+    footer {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.25rem;
+    }
+
+    [tuiLabel]:not([data-orientation='vertical']) {
+        font: inherit;
+    }
+
+    &[data-size='s'],
+    &[data-size='m'] {
+        [tuiLabel]:not([data-orientation='vertical']) [tuiTooltip] {
+            block-size: 1.25rem;
+        }
+    }
+}

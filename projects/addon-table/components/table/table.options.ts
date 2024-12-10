@@ -2,8 +2,14 @@ import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
+export const TuiSortDirection = {
+    Asc: 1,
+    Desc: -1,
+} as const;
+export type TuiSortDirection = (typeof TuiSortDirection)[keyof typeof TuiSortDirection];
+
 export interface TuiTableOptions {
-    readonly direction: -1 | 1;
+    readonly direction: TuiSortDirection;
     readonly requiredSort: boolean;
     readonly open: boolean;
     readonly resizable: boolean;
@@ -21,7 +27,7 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     resizable: false,
     open: true,
     size: 'm',
-    direction: 1,
+    direction: TuiSortDirection.Asc,
     requiredSort: false,
     sortIcons: {
         asc: '@tui.chevron-up',

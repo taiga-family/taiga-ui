@@ -421,8 +421,10 @@ describe('InputDateTime', () => {
             expect(inputPO.value).toBe('17.03.2022, 12:11');
         });
 
-        it('transforms value which was programmatically patched', () => {
+        it('transforms value which was programmatically patched', async () => {
             component.control.patchValue('09.05.1945, 00:43');
+
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe('09.05.1945, 00:43');
             expect(component.control.value).toBe('09.05.1945, 00:43');

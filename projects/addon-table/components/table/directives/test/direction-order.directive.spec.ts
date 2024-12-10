@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiTable, TuiTableDirective} from '@taiga-ui/addon-table';
+import {TuiSortDirection, TuiTable, TuiTableDirective} from '@taiga-ui/addon-table';
 
 describe('TuiDirectionOrder directive', () => {
     @Component({
@@ -44,31 +44,31 @@ describe('TuiDirectionOrder directive', () => {
     it('sets the sort direction of table to ascending', () => {
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toBe(1);
+        expect(testComponent.table.direction).toBe(TuiSortDirection.Asc);
     });
 
     it('sets the sort direction of table to descending', () => {
         testComponent.directionOrder = 'desc';
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toBe(-1);
+        expect(testComponent.table.direction).toBe(TuiSortDirection.Desc);
     });
 
     describe('when table emits direction change', () => {
         it('emits ascending directionOrder', () => {
-            testComponent.table.directionChange.emit(1);
+            testComponent.table.directionChange.emit(TuiSortDirection.Asc);
 
             expect(testComponent.directionOrderChange).toHaveBeenCalledWith('asc');
         });
 
         it('emits descending directionOrder', () => {
-            testComponent.table.directionChange.emit(-1);
+            testComponent.table.directionChange.emit(TuiSortDirection.Desc);
 
             expect(testComponent.directionOrderChange).toHaveBeenCalledWith('desc');
         });
 
         it('should not emit directionChange when updating sorter programmatically', () => {
-            testComponent.table.updateSorter(() => -1);
+            testComponent.table.updateSorter(() => TuiSortDirection.Desc);
 
             expect(testComponent.directionOrderChange).not.toHaveBeenCalled();
         });
