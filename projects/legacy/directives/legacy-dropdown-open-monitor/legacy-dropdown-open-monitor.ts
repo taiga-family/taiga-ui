@@ -34,6 +34,6 @@ export class TuiLegacyDropdownOpenMonitorDirective implements AfterViewInit {
 
         this.host.driver
             .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
-            .subscribe((open) => this.external?.tuiDropdownOpenChange.next(open));
+            .subscribe((open) => this.external?.emitOpenChange(open));
     }
 }

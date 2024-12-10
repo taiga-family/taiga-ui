@@ -1,5 +1,5 @@
 import {Directive, Input, Output} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {distinctUntilChanged, Subject} from 'rxjs';
 
 /**
  * @deprecated TODO: remove in v.5 when legacy controls are dropped
@@ -10,11 +10,19 @@ import {BehaviorSubject} from 'rxjs';
         '[tuiDropdownOpen]:not([tuiDropdown]),[tuiDropdownOpenChange]:not([tuiDropdown])',
 })
 export class TuiDropdownOpenLegacy {
+    private readonly openStateSub = new Subject<boolean>();
+
     @Output()
-    public readonly tuiDropdownOpenChange = new BehaviorSubject(false);
+    public readonly tuiDropdownOpenChange = this.openStateSub
+        .asObservable()
+        .pipe(distinctUntilChanged());
 
     @Input()
     public set tuiDropdownOpen(open: boolean) {
-        this.tuiDropdownOpenChange.next(open);
+        this.emitOpenChange(open);
+    }
+
+    public emitOpenChange(open: boolean): void {
+        this.openStateSub.next(open);
     }
 }
