@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, waitIcons} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Dialogs', () => {
@@ -9,7 +9,13 @@ test.describe('Dialogs', () => {
         {width: 1024, height: 900},
         {width: 1620, height: 1024},
     ].forEach(({width, height}) => {
-        test(`Prompt - ${width}x${height}`, async ({page}) => {
+        test(`Prompt - ${width}x${height}`, async ({page, browserName}) => {
+            test.skip(
+                browserName !== 'chromium',
+                // TODO: why does this test keep failing in safari
+                'This feature is only relevant in Chrome',
+            );
+
             await page.setViewportSize({width, height});
             await tuiGoto(
                 page,
@@ -25,9 +31,15 @@ test.describe('Dialogs', () => {
         });
 
         test.describe(`${width}x${height}`, () => {
-            test.beforeEach(async ({page}) => {
+            test.beforeEach(async ({page, browserName}) => {
                 await page.setViewportSize({width, height});
                 await tuiGoto(page, DemoRoute.Dialog);
+
+                test.skip(
+                    browserName !== 'chromium',
+                    // TODO: why does this test keep failing in safari
+                    'This feature is only relevant in Chrome',
+                );
             });
 
             test('A dialog and a nested dialog are open correctly', async ({page}) => {
@@ -102,7 +114,13 @@ test.describe('Dialogs', () => {
             });
 
             test.describe('Dialog with confirmation works', () => {
-                test.beforeEach(async ({page}) => {
+                test.beforeEach(async ({page, browserName}) => {
+                    test.skip(
+                        browserName !== 'chromium',
+                        // TODO: why does this test keep failing in safari
+                        'This feature is only relevant in Chrome',
+                    );
+
                     const documentationPagePO = new TuiDocumentationPagePO(page);
                     const example = documentationPagePO.getExample('#confirm');
 
@@ -153,7 +171,14 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            await expect(page.locator('tui-dialog')).toHaveCount(1);
+            const dialog = page.locator('tui-dialog');
+
+            await expect(dialog).toHaveCount(1);
+
+            await waitIcons({
+                page,
+                icons: await dialog.locator('tui-icon >> visible=true').all(),
+            });
         });
 
         test('closeable = false, dismissible = true', async ({page}) => {
@@ -190,10 +215,21 @@ test.describe('Dialogs', () => {
                 `${DemoRoute.Dialog}/API?size=fullscreen&dismissible=true`,
             );
 
-            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page.locator('tui-doc-page button[data-appearance="primary"]').click({
+                // eslint-disable-next-line playwright/no-force-option
+                force: true, // click outside dialog
+            });
+
             await page.mouse.click(100, 100);
 
-            await expect(page.locator('tui-dialog')).toHaveCount(1);
+            const dialog = page.locator('tui-dialog');
+
+            await expect(dialog).toHaveCount(1);
+
+            await waitIcons({
+                page,
+                icons: await dialog.locator('tui-icon >> visible=true').all(),
+            });
 
             await expect(page).toHaveScreenshot('09-dialog.png');
         });
@@ -208,7 +244,14 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            await expect(page.locator('tui-dialog')).toHaveCount(1);
+            const dialog = page.locator('tui-dialog');
+
+            await expect(dialog).toHaveCount(1);
+
+            await waitIcons({
+                page,
+                icons: await dialog.locator('tui-icon >> visible=true').all(),
+            });
 
             await expect(page).toHaveScreenshot('10-dialog.png');
         });

@@ -18,6 +18,8 @@ test.describe('Tiles', () => {
         await drop.hover();
         await page.mouse.up();
 
+        await page.mouse.click(100, 100); // clear focus
+
         await expect(example).toHaveScreenshot('02-tiles-drag-and-drop.png');
     });
 });

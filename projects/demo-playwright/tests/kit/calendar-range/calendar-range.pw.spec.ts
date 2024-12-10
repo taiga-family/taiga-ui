@@ -66,7 +66,7 @@ test.describe('CalendarRange', () => {
         });
 
         test.describe('With value', () => {
-            test('Month switching via chevron', async () => {
+            test('Month switching via chevron', async ({page}) => {
                 example = documentationPage.getExample('#with-value');
                 calendarRange = new TuiCalendarRangePO(
                     example.locator('tui-calendar-range'),
@@ -76,6 +76,8 @@ test.describe('CalendarRange', () => {
                     example.locator('tui-spin-button > button').first();
 
                 await getPreviousMonthChevron().click();
+
+                await page.mouse.click(100, 100); // clear focus
 
                 await expect(example).toHaveScreenshot(
                     '07-calendar-range-with-value-click-chevron.png',
