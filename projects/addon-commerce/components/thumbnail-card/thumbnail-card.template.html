@@ -1,22 +1,19 @@
+<!-- TODO: use this icon as a fallback for <ng-content select="img" /> (Angular 18)  -->
 <tui-icon
     *ngIf="iconStart"
     class="t-icon t-left"
     [icon]="iconStart"
 />
 
-<div
-    *ngIf="iconEnd"
-    class="t-right"
->
-    <tui-icon
-        class="t-icon"
-        [icon]="iconEnd"
-    />
-</div>
-
 <div class="t-left t-icon">
     <ng-content select="img" />
 </div>
+
+<tui-icon
+    *ngIf="iconEnd"
+    class="t-right t-icon"
+    [icon]="iconEnd"
+/>
 
 <div class="t-content">
     <ng-content />

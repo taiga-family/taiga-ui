@@ -51,15 +51,17 @@ describe('ThumbnailCard', () => {
                     });
                 });
 
-                test('size = s', async ({page}) => {
-                    await tuiGoto(
-                        page,
-                        `${DemoRoute.ThumbnailCard}/API?paymentSystem=${paymentSystem}&size=s&iconStart=@tui.snowflake&iconEnd=@tui.lock&ng-content=8888`,
-                    );
+                ['s', 'xs'].forEach((size) => {
+                    test(`size = ${size}`, async ({page}) => {
+                        await tuiGoto(
+                            page,
+                            `${DemoRoute.ThumbnailCard}/API?paymentSystem=${paymentSystem}&size=${size}&iconStart=@tui.snowflake&iconEnd=@tui.lock&ng-content=8888`,
+                        );
 
-                    await expect(documentationPage.apiPageExample).toHaveScreenshot(
-                        `ps-${paymentSystem}-size-s-8888.png`,
-                    );
+                        await expect(documentationPage.apiPageExample).toHaveScreenshot(
+                            `ps-${paymentSystem}-size-${size}-8888.png`,
+                        );
+                    });
                 });
             });
         });
