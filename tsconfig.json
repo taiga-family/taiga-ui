@@ -13,8 +13,8 @@
             "@demo/emulate/ng-zone-options": ["projects/demo/src/emulate/ng-zone-options.ts"],
             "@demo/environments/*": ["projects/demo/src/environments/*"],
             "@demo/root-package": ["package.json"],
-            "@demo/utils": ["projects/demo/src/utils/index"],
             "@demo/routes": ["projects/demo/src/modules/app/demo-routes"],
+            "@demo/utils": ["projects/demo/src/utils/index"],
             "@taiga-ui/addon-charts": ["projects/addon-charts/index"],
             "@taiga-ui/addon-charts/*": ["projects/addon-charts/*"],
             "@taiga-ui/addon-commerce": ["projects/addon-commerce/index"],
@@ -38,10 +38,10 @@
             "@taiga-ui/kit/*": ["projects/kit/*"],
             "@taiga-ui/layout": ["projects/layout/index"],
             "@taiga-ui/layout/*": ["projects/layout/*"],
-            "@taiga-ui/testing": ["projects/testing/index"],
-            "@taiga-ui/testing/*": ["projects/testing/*"],
             "@taiga-ui/legacy": ["projects/legacy/index"],
-            "@taiga-ui/legacy/*": ["projects/legacy/*"]
+            "@taiga-ui/legacy/*": ["projects/legacy/*"],
+            "@taiga-ui/testing": ["projects/testing/index"],
+            "@taiga-ui/testing/*": ["projects/testing/*"]
         }
     }
 }
