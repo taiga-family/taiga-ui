@@ -18,10 +18,12 @@ export default class Example {
         {
             name: 'Alex Inkin',
             balance: 1323525,
+            country: 'UAE',
         },
         {
             name: 'Roman Sedov',
             balance: 423242,
+            country: 'Russia',
         },
     ] as const;
 

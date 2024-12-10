@@ -24,7 +24,9 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[style.min-width.px]': 'width',
         '[style.width.px]': 'width',
+        '[style.max-width.px]': 'width',
         '[class._sticky]': 'sticky',
     },
 })

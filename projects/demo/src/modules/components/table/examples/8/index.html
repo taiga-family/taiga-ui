@@ -1,0 +1,60 @@
+<table
+    tuiTable
+    [columns]="['a', 'b', 'c']"
+>
+    <thead>
+        <tr tuiThGroup>
+            <th
+                *tuiHead="'a'"
+                tuiTh
+                [resizable]="true"
+            >
+                a
+            </th>
+            <th
+                *tuiHead="'b'"
+                tuiTh
+                [resizable]="true"
+            >
+                b
+            </th>
+            <th
+                *tuiHead="'c'"
+                tuiTh
+            >
+                c
+            </th>
+        </tr>
+    </thead>
+    <tbody
+        tuiTbody
+        [data]="[{a: 1, b: 2, c: 3}]"
+    >
+        <tr tuiTr>
+            <td
+                *tuiCell="'a'"
+                tuiTd
+            >
+                a
+            </td>
+            <td
+                *tuiCell="'b'"
+                tuiTd
+            >
+                b
+            </td>
+            <td
+                *tuiCell="'c'"
+                tuiTd
+            >
+                content content
+                ntcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcon
+                tentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+                contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentconten
+                tcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentconten
+                tcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentco
+                ntentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
+            </td>
+        </tr>
+    </tbody>
+</table>
