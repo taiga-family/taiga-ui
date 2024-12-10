@@ -25,7 +25,7 @@ export class TuiTileHandleDirective {
 
     constructor(@Inject(TuiTileComponent) private readonly tile: TuiTileComponent) {}
 
-    @HostListener('pointerdown.silent', ['$event'])
+    @HostListener('pointerdown.silent.prevent', ['$event'])
     onStart(event: PointerEvent): void {
         const target = tuiGetActualTarget(event);
         const {x, y, pointerId} = event;
