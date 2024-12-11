@@ -9,29 +9,38 @@ test.describe('Carousel', () => {
 
     test('default padding', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Carousel}/API`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const document = new TuiDocumentationPagePO(page);
 
-        await expect(apiPageExample).toBeVisible();
-        await expect(apiPageExample).toHaveScreenshot('carousel-padding-default.png');
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toBeVisible();
+        await expect(document.apiPageExample).toHaveScreenshot(
+            'carousel-padding-default.png',
+        );
     });
 
     test('padding has zero value', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Carousel}/API?style.--tui-carousel-padding=0`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const document = new TuiDocumentationPagePO(page);
 
-        await expect(apiPageExample).toBeVisible();
-        await expect(apiPageExample).toHaveScreenshot('carousel-padding-0.png');
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toBeVisible();
+        await expect(document.apiPageExample).toHaveScreenshot('carousel-padding-0.png');
     });
 
     test('should show next item after drag', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Carousel}/API?draggable=true`);
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const document = new TuiDocumentationPagePO(page);
 
+        await document.waitTuiIcons();
         await page.mouse.move(375, 300);
         await page.mouse.down();
         await page.mouse.move(125, 300, {steps: 10});
         await page.mouse.up();
 
-        await expect(apiPageExample).toHaveScreenshot('carousel-draggable.png');
+        await page.waitForTimeout(1000);
+
+        await expect(document.apiPageExample).toHaveScreenshot('carousel-draggable.png');
     });
 });

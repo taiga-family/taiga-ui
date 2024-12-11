@@ -15,7 +15,11 @@ test.describe('Input', () => {
             '/components/input/API?tuiTextfieldCustomContent=<span>LongTextContent<%2Fspan>&tuiHintContent=Some%20content',
         );
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toHaveScreenshot(
             '01-custom-text-content-cleaner-hint.png',
         );
     });
@@ -26,7 +30,11 @@ test.describe('Input', () => {
             '/components/input/API?tuiTextfieldCustomContent=@tui.calendar',
         );
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toHaveScreenshot(
             '02-custom-large-icon-content.png',
         );
     });
@@ -39,7 +47,11 @@ test.describe('Input', () => {
             '/components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=@tui.search&tuiHintContent=Some%20content',
         );
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toHaveScreenshot(
             '03-custom-large-icon-content-cleaner-hint.png',
         );
     });
@@ -52,7 +64,11 @@ test.describe('Input', () => {
             'components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=@tui.visa-mono&tuiHintContent=Some%20content',
         );
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        await expect(document.apiPageExample).toHaveScreenshot(
             '04-custom-normal-icon-content-cleaner-hint.png',
         );
     });
@@ -63,12 +79,16 @@ test.describe('Input', () => {
             'components/input/API?tuiTextfieldIconLeft=@tui.search&pseudoFocus=true&placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore',
         );
 
-        const example = new TuiDocumentationPagePO(page).apiPageExample;
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        const example = document.apiPageExample;
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.focus();
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+        await expect(document.apiPageExample).toHaveScreenshot(
             '05-placeholder-will-be-hidden-inside.png',
         );
 
@@ -86,7 +106,11 @@ test.describe('Input', () => {
             '/components/input/API?&pseudoFocus=true&placeholder=big, placeholder, qwerty, jackson, yellow and more',
         );
 
-        const example = new TuiDocumentationPagePO(page).apiPageExample;
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        const example = document.apiPageExample;
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.clear();
@@ -106,7 +130,11 @@ test.describe('Input', () => {
     test('can be horizontally scrolled', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Input}/API?sandboxWidth=300`);
 
-        const example = new TuiDocumentationPagePO(page).apiPageExample;
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        const example = document.apiPageExample;
         const input = example.locator('input[tuiTextfieldLegacy]');
 
         await expect(input).toHaveCSS('text-overflow', 'clip');
@@ -123,7 +151,7 @@ test.describe('Input', () => {
         await expect(example).toHaveScreenshot('10-horizontally-scrolled.png');
 
         await page.evaluate(() => {
-            const input = document.querySelector('input[tuiTextfieldLegacy]');
+            const input = window.document.querySelector('input[tuiTextfieldLegacy]');
 
             if (input) {
                 input.scrollLeft = input.clientWidth / 2;
@@ -155,9 +183,11 @@ test.describe('Input', () => {
                     `components/input/API?tuiTextfieldIcon=@tui.calendar&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
 
-                await expect(
-                    new TuiDocumentationPagePO(page).apiPageExample,
-                ).toHaveScreenshot(
+                const document = new TuiDocumentationPagePO(page);
+
+                await document.waitTuiIcons();
+
+                await expect(document.apiPageExample).toHaveScreenshot(
                     `12-input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
                 );
             });
