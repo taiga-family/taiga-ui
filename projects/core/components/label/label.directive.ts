@@ -1,3 +1,4 @@
+import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -28,11 +29,11 @@ class TuiLabelStyles {}
     standalone: true,
     selector: 'label[tuiLabel]',
     host: {
-        '[attr.for]': 'el.htmlFor || parent?.id',
+        '[attr.for]': 'el.htmlFor || parent?.id || projectionId',
         '[attr.data-orientation]': 'textfield ? "vertical" : "horizontal"',
     },
 })
-export class TuiLabel {
+export class TuiLabel implements AfterViewInit {
     @ContentChild(forwardRef(() => TUI_DATA_LIST_HOST))
     protected readonly textfield?: unknown;
 
@@ -42,4 +43,10 @@ export class TuiLabel {
         forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},
     );
+
+    protected projectionId?: string;
+
+    public ngAfterViewInit(): void {
+        this.projectionId = this.el.querySelector('[tuiTextfieldLegacy]')?.id;
+    }
 }
