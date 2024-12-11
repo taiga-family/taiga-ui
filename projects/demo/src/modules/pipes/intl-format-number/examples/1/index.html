@@ -1,0 +1,8 @@
+<p>Formatted number if in US English locale: {{ 123456.789 | tuiIntlFormatNumber }}</p>
+<p>German uses comma as decimal separator and period for thousands: {{ 123456.789 | tuiIntlFormatNumber: 'de-DE' }}</p>
+<p>Arabic in most Arabic speaking countries uses real Arabic digits: {{ 123456.789 | tuiIntlFormatNumber: 'ar-EG' }}</p>
+<p>India uses thousands/lakh/crore separators: {{ 123456.789 | tuiIntlFormatNumber: 'en-IN' }}</p>
+<p>
+    the nu extension key requests a numbering system, e.g. Chinese decimal:
+    {{ 123456.789 | tuiIntlFormatNumber: 'zh-Hans-CN-u-nu-hanidec' }}
+</p>

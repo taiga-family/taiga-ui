@@ -1,0 +1,40 @@
+<p>
+    request a currency format:
+    {{ 123456.789 | tuiIntlFormatNumber: 'de-DE' : {style: 'currency', currency: 'EUR'} }}
+</p>
+
+<p>
+    the Japanese yen doesn't use a minor unit:
+    {{ 123456.789 | tuiIntlFormatNumber: 'ja-JP' : {style: 'currency', currency: 'JPY'} }}
+</p>
+
+<p>
+    limit to three significant digits: {{ 123456.789 | tuiIntlFormatNumber: 'en-IN' : {maximumSignificantDigits: 3} }}
+</p>
+
+<p>
+    Formatting with units:
+    {{
+        50
+            | tuiIntlFormatNumber
+                : 'pt-PT'
+                : {
+                      style: 'unit',
+                      unit: 'kilometer-per-hour',
+                  }
+    }}
+</p>
+
+<p>
+    Formatting with units:
+    {{
+        16
+            | tuiIntlFormatNumber
+                : 'en-GB'
+                : {
+                      style: 'unit',
+                      unit: 'liter',
+                      unitDisplay: 'long',
+                  }
+    }}
+</p>

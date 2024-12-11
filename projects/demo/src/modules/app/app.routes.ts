@@ -951,6 +951,11 @@ export const ROUTES: Routes = [
         title: 'FormatDate',
     }),
     route({
+        path: DemoRoute.IntlFormatNumber,
+        loadComponent: async () => import('../pipes/intl-format-number'),
+        title: 'IntlFormatNumber',
+    }),
+    route({
         path: DemoRoute.FormatNumber,
         loadComponent: async () => import('../pipes/format-number'),
         title: 'FormatNumber',

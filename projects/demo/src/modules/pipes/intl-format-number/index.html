@@ -1,0 +1,72 @@
+<tui-doc-page
+    header="IntlFormatNumber"
+    package="CORE"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>
+            Pipe to format number by the
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat"
+                tuiLink
+            >
+                Intl.NumberFormat
+            </a>
+            object which enables language-sensitive number formatting.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="options"
+            heading="Using options"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <div [style.max-width.rem]="20">
+            <tui-input-number
+                tuiTextfieldSize="m"
+                class="tui-space_bottom-4"
+                [formControl]="control"
+                [tuiTextfieldLabelOutside]="true"
+            />
+            Formatted number:
+            <b>
+                {{ control.value ?? 0 | tuiIntlFormatNumber: locale : option }}
+            </b>
+        </div>
+
+        <table tuiDocAPI>
+            <tr
+                name="locales"
+                tuiDocAPIItem
+                type="string | string[]"
+                [items]="locales"
+                [(value)]="locale"
+            >
+                Size of the button
+            </tr>
+            <tr
+                name="options"
+                tuiDocAPIItem
+                type="Intl.NumberOptions"
+                [items]="options"
+                [(value)]="option"
+            >
+                Loading indicator (import
+                <code>TuiButtonLoading</code>
+                )
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

@@ -1448,6 +1448,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'IntlFormatNumber',
+                keywords:
+                    'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',
+                route: DemoRoute.IntlFormatNumber,
+            },
+            {
+                section: 'Tools',
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',

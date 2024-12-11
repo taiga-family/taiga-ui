@@ -188,6 +188,7 @@ export const DemoRoute = {
     FilterByInput: '/pipes/filter-by-input',
     Flag: '/pipes/flag',
     FormatDate: '/pipes/format-date',
+    IntlFormatNumber: '/pipes/intl-format-number',
     FormatNumber: '/pipes/format-number',
     IsPresent: '/pipes/is-present',
     Mapper: '/pipes/mapper',
