@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
@@ -22,7 +22,7 @@ export class TuiThumbnailCard {
     protected readonly options = inject(TUI_THUMBNAIL_CARD_OPTIONS);
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = this.options.size;
+    public size: TuiSizeL | TuiSizeXS = this.options.size;
 
     @Input()
     public paymentSystem: TuiPaymentSystem | null = null;

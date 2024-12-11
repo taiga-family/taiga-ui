@@ -5,7 +5,6 @@ import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -34,6 +33,7 @@ export default class Example {
     protected iconEnd = this.iconVariants[0]!;
 
     protected readonly paymentSystemVariants: readonly TuiPaymentSystem[] = [
+        'mastercard',
         'amex',
         'dinersclub',
         'discover',
@@ -41,7 +41,6 @@ export default class Example {
         'humo',
         'jcb',
         'maestro',
-        'mastercard',
         'mir',
         'rupay',
         'unionpay',
@@ -50,8 +49,14 @@ export default class Example {
         'visa',
     ];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
-    protected size = this.sizeVariants[1]!;
+    protected readonly sizeVariants: ReadonlyArray<TuiThumbnailCard['size']> = [
+        'l',
+        'm',
+        's',
+        'xs',
+    ];
+
+    protected size = this.sizeVariants[0]!;
 
     protected readonly monoHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiPaymentSystem>
@@ -59,7 +64,7 @@ export default class Example {
 
     protected monoHandler = this.monoHandlerVariants[0]!;
 
-    protected paymentSystem: TuiPaymentSystem | null = null;
+    protected paymentSystem = this.paymentSystemVariants[0]!;
 
     protected contentProjection = '1234';
     protected background =

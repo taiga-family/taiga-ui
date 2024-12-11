@@ -13,5 +13,5 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export default class Example {
-    protected readonly sizes = ['s', 'm', 'l'] as const;
+    protected readonly sizes = ['xs', 's', 'm', 'l'] as const;
 }
