@@ -13,7 +13,7 @@
             [style.transform]="transform"
             (tuiCarouselAutoscroll)="onAutoscroll()"
             (tuiPan)="onPan($event[0])"
-            (tuiSwipe)="onSwipe($event.direction)"
+            (tuiSwipe)="draggable ? onSwipe($event.direction) : 0"
         >
             <fieldset
                 *ngFor="let item of items; let i = index"
