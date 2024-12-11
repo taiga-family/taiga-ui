@@ -4,6 +4,7 @@
     "include": ["scripts", "**/*.spec.ts", "**/*.d.ts"],
     "compilerOptions": {
         "target": "es2016",
-        "types": ["jest", "node", "webpack-env"]
+        "types": ["jest", "node", "webpack-env"],
+        "sourceMap": true
     }
 }
