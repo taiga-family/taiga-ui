@@ -140,4 +140,14 @@ describe('Number formatting', () => {
             }),
         ).toBe('0');
     });
+
+    it('does not mutate value if precision is infinite', () => {
+        expect(
+            tuiFormatNumber(123_456_789_012_345.67, {
+                precision: Infinity,
+                thousandSeparator: ',',
+                rounding: 'round',
+            }),
+        ).toBe('123,456,789,012,345.67');
+    });
 });
