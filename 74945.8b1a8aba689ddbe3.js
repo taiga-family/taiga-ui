@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74945],{74945:n=>{n.exports='<tui-input-date-range\n    [formControl]="control"\n    [items]="items"\n>\n    Choose dates\n</tui-input-date-range>\n\n<button\n    size="s"\n    tuiButton\n    type="button"\n    class="tui-space_top-4"\n    (click)="selectToday()"\n>\n    Select today\n</button>\n'}}]);
