@@ -13,9 +13,8 @@ export class TuiDropdownOpenLegacy {
     private readonly openStateSub = new Subject<boolean>();
 
     @Output()
-    public readonly tuiDropdownOpenChange = this.openStateSub
-        .asObservable()
-        .pipe(distinctUntilChanged());
+    public readonly tuiDropdownOpenChange =
+        this.openStateSub.pipe(distinctUntilChanged());
 
     @Input()
     public set tuiDropdownOpen(open: boolean) {
