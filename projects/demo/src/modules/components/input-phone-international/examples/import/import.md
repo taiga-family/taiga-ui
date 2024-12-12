@@ -1,5 +1,6 @@
 ```ts
 import {ReactiveFormsModule} from '@angular/forms';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 
 @Component({
@@ -12,11 +13,6 @@ export class Example {
     testValue: new FormControl('+78005553535'),
   });
 
-  readonly countries: ReadonlyArray<TuiCountryIsoCode> = [
-    TuiCountryIsoCode.RU,
-    TuiCountryIsoCode.KZ,
-    TuiCountryIsoCode.UA,
-    TuiCountryIsoCode.BY,
-  ];
+  readonly countries: ReadonlyArray<TuiCountryIsoCode> = ['RU', 'KZ', 'UA', 'BY'];
 }
 ```
