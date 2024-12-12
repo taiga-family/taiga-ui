@@ -12,8 +12,20 @@
     outline-offset: -1px;
     border: none;
 
+    &::before,
+    &::after {
+        .transition(color);
+
+        color: var(--tui-text-tertiary);
+    }
+
     .appearance-hover({
         --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+
+        &:before,
+        &:after {
+            color: var(--tui-text-secondary);
+        }
     });
 
     .appearance-focus({

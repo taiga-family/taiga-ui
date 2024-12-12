@@ -1,28 +1,24 @@
 <ng-container *tuiTextfieldContent>
-    <select
-        ngModel=""
+    <button
+        appearance="textfield"
         tabindex="-1"
-        tuiTextfield
+        tuiButton
+        tuiChevron
         class="t-ipi-select"
-        [attr.data-focus]="open()"
         [attr.data-mode]="mode()"
         [class.t-ipi-select_readonly]="readOnly()"
         [disabled]="disabled()"
-        [focused]="false"
-        [ngModelOptions]="{standalone: true}"
+        [size]="size()"
+        [tuiAppearanceFocus]="open()"
         (mousedown.prevent)="interactive() && open.set(!open())"
-    ></select>
-    <div class="t-ipi-value">
+    >
         <img
             class="t-ipi-flag"
             [alt]="names()?.[code()]"
+            [class.t-ipi-flag_small]="size() === 's'"
             [src]="code() | tuiFlag"
         />
-        <tui-icon
-            tuiChevron
-            class="t-ipi-chevron"
-        />
-    </div>
+    </button>
 </ng-container>
 <ng-container *tuiTextfieldDropdown>
     <div
@@ -30,16 +26,16 @@
         class="t-ipi-search"
     >
         <tui-textfield
-            tuiTextfieldSize="m"
             [iconStart]="icons.search"
+            [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
         >
             <input
+                tuiAutoFocus
                 tuiTextfield
                 [focused]="true"
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
-                [tuiAutoFocus]="!isIos"
                 (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />
@@ -49,14 +45,15 @@
     <tui-data-list class="t-ipi-options">
         <button
             *ngFor="let item of filtered()"
-            tuiCell
             tuiOption
             type="button"
+            [tuiCell]="size()"
             (click)="onItemClick(item.iso)"
         >
             <img
                 alt=""
                 class="t-ipi-flag"
+                [class.t-ipi-flag_small]="size() === 's'"
                 [src]="item.iso | tuiFlag"
             />
             <span tuiTitle>{{ item.name }}</span>

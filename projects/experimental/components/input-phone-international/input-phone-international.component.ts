@@ -27,9 +27,10 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
-import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_TEXTFIELD_OPTIONS, TuiButton} from '@taiga-ui/core';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
@@ -75,6 +76,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTextfield,
         TuiTextfieldContent,
         TuiTitle,
+        TuiButton,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
@@ -93,6 +95,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[value]': 'value() || el.value',
         '(blur)': 'onTouched()',
         '(input)': 'onInput()',
+        '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
     },
 })
@@ -101,7 +104,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly countries = signal(this.options.countries);
@@ -112,6 +114,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly open = tuiDropdownOpen();
     protected readonly dropdown = tuiDropdown(null);
     protected readonly search = signal<string>('');
+    protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
 
     protected readonly mask = tuiMaskito(
         computed(() => this.computeMask(this.code(), this.metadata())),
