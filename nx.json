@@ -50,6 +50,5 @@
     "cli": {
         "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
     },
-    "defaultBase": "origin/main",
-    "useLegacyCache": true
+    "defaultBase": "origin/main"
 }
