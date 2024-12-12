@@ -29,6 +29,22 @@ test.describe('InputNumber', () => {
             await expect(example).toHaveScreenshot('01-input-number.png');
         });
 
+        test('does not mutate already valid too large number on blur', async ({page}) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputNumber}/API?thousandSeparator=_&precision=2`,
+            );
+            await input.focus();
+            await input.clear();
+            await input.pressSequentially('123456789012345.6789');
+
+            await expect(input).toHaveValue('123_456_789_012_345.67');
+
+            await input.blur();
+
+            await expect(input).toHaveValue('123_456_789_012_345.67');
+        });
+
         test('prefix + value + postfix', async ({page}) => {
             await tuiGoto(
                 page,

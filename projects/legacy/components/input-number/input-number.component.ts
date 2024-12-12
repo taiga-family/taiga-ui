@@ -19,7 +19,7 @@ import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
 import {tuiCreateToken, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDecimalMode} from '@taiga-ui/core/tokens';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
@@ -274,7 +274,15 @@ export class TuiInputNumberComponent
             this.computedPrefix +
             tuiFormatNumber(value, {
                 ...this.numberFormat,
-                precision: this.precision,
+                /**
+                 * Number can satisfy interval [Number.MIN_SAFE_INTEGER; Number.MAX_SAFE_INTEGER]
+                 * but its rounding can violate it.
+                 * Before BigInt support there is no perfect solution – only trade off.
+                 * No rounding is better than lose precision and incorrect mutation of already valid value.
+                 */
+                precision: tuiIsSafeToRound(value, this.precision)
+                    ? this.precision
+                    : Infinity,
             }).replace(CHAR_HYPHEN, CHAR_MINUS) +
             this.computedPostfix
         );

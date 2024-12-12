@@ -23,9 +23,19 @@ function calculate(
 
     precision = Math.min(precision, MAX_PRECISION);
 
-    const pair = `${value}e`.split('e');
-    const tempValue = func(Number(`${pair[0]}e${Number(pair[1]) + precision}`));
-    const processedPair = `${tempValue}e`.split('e');
+    const [significand, exponent = ''] = `${value}`.split('e');
+    const roundedInt = func(Number(`${significand}e${Number(exponent) + precision}`));
+
+    /**
+     * TODO: use BigInt after bumping Safari to 14+
+     */
+    ngDevMode &&
+        console.assert(
+            Number.isSafeInteger(roundedInt),
+            'Impossible to correctly round the such large number',
+        );
+
+    const processedPair = `${roundedInt}e`.split('e');
 
     return Number(`${processedPair[0]}e${Number(processedPair[1]) - precision}`);
 }
@@ -44,4 +54,8 @@ export function tuiFloor(value: number, precision = 0): number {
 
 export function tuiTrunc(value: number, precision = 0): number {
     return calculate(value, precision, Math.trunc);
+}
+
+export function tuiIsSafeToRound(value: number, precision = 0): boolean {
+    return Number.isSafeInteger(Math.trunc(value * 10 ** precision));
 }
