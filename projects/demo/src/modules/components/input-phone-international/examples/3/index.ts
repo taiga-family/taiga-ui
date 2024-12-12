@@ -1,31 +1,53 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {MaskitoPipe} from '@maskito/angular';
-import {maskitoTransform} from '@maskito/core';
-import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
-import metadata from 'libphonenumber-js/max/metadata';
+import {TuiTextfield} from '@taiga-ui/core';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {
+    TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
+} from '@taiga-ui/kit';
+import {defer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [MaskitoPipe],
-    template: `
-        Phone: {{ rawValue | maskito: mask }}
-    `,
+    imports: [FormsModule, TuiInputPhoneInternational, TuiTextfield],
+    templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    host: {
-        '(click)': 'showUtilityPower()',
-    },
+    providers: [
+        /**
+         * You can choose: lazily load metadata or include it in your bundle.
+         * Lazy loading:
+         */
+        tuiInputPhoneInternationalOptionsProvider({
+            metadata: defer(async () =>
+                import('libphonenumber-js/max/metadata').then((m) => m.default),
+            ),
+        }),
+        /**
+         * Eager loading:
+         * ```ts
+         * import metadata from 'libphonenumber-js/mobile/metadata';
+         * import {of} from 'rxjs';
+         * // [...]
+         * tuiInputPhoneInternationalOptionsProvider({
+         *     metadata: of(metadata),
+         * }),
+         * ```
+         */
+    ],
 })
 export default class Example {
-    protected rawValue = '12125552368';
-    protected readonly mask = maskitoPhoneOptionsGenerator({
-        metadata,
-        countryIsoCode: 'US',
-    });
+    protected readonly countries: readonly TuiCountryIsoCode[] = [
+        'IN',
+        'CN',
+        'US',
+        'ID',
+        'PK',
+    ];
 
-    protected showUtilityPower(): void {
-        console.info(maskitoTransform(this.rawValue, this.mask));
-    }
+    protected countryIsoCode: TuiCountryIsoCode = 'US';
+    protected value = '+12125552368';
 }

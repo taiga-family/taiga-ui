@@ -1,0 +1,10 @@
+<tui-textfield tuiDropdownMobile="Select country">
+    <label tuiLabel>Phone number</label>
+    <input
+        tuiInputPhoneInternational
+        [countries]="(countries | tuiSortCountries | async) || []"
+        [countrySearch]="true"
+        [(countryIsoCode)]="countryIsoCode"
+        [(ngModel)]="value"
+    />
+</tui-textfield>

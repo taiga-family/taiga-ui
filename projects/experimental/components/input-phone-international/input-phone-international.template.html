@@ -6,6 +6,7 @@
         class="t-ipi-select"
         [attr.data-focus]="open()"
         [attr.data-mode]="mode()"
+        [class.t-ipi-select_readonly]="readOnly()"
         [disabled]="disabled()"
         [focused]="false"
         [ngModelOptions]="{standalone: true}"
@@ -24,23 +25,24 @@
     </div>
 </ng-container>
 <ng-container *tuiTextfieldDropdown>
-    <tui-textfield
-        *ngIf="countrySearch"
-        tuiTextfieldSize="m"
-        class="t-ipi-search"
-        [iconStart]="icons.search"
-    >
-        <input
-            tuiTextfield
-            [focused]="true"
-            [ngModel]="search()"
-            [ngModelOptions]="{standalone: true}"
-            [placeholder]="label()"
-            [tuiAutoFocus]="!isIos"
-            (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
-            (ngModelChange)="search.set($event)"
-        />
-    </tui-textfield>
+    <div class="t-ipi-search">
+        <tui-textfield
+            *ngIf="countrySearch"
+            tuiTextfieldSize="m"
+            [iconStart]="icons.search"
+        >
+            <input
+                tuiTextfield
+                [focused]="true"
+                [ngModel]="search()"
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!isIos"
+                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (ngModelChange)="search.set($event)"
+            />
+        </tui-textfield>
+    </div>
 
     <tui-data-list>
         <button

@@ -87,6 +87,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     ],
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
+        '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[attr.readonly]': 'readOnly() || null',
         '[disabled]': 'disabled()',
         '[value]': 'value() || el.value',
