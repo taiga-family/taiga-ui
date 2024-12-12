@@ -1,6 +1,6 @@
 <tui-doc-page
     header="InputPhoneInternational"
-    package="KIT"
+    package="EXPERIMENTAL"
     type="components"
 >
     <ng-template pageTab>
@@ -211,12 +211,7 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="formControl">
             <ng-template>
-                <tui-input-phone-international
-                    [countries]="countries"
-                    [countrySearch]="countrySearch"
-                    [formControl]="formControl"
-                    [invalid]="control.invalid"
-                    [readOnly]="control.readonly"
+                <tui-textfield
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -226,10 +221,18 @@
                     [tuiDropdownOffset]="dropdown.offset"
                     [tuiTextfieldCleaner]="textfield.cleaner"
                     [tuiTextfieldSize]="textfield.size"
-                    [(countryIsoCode)]="countryIsoCode"
                 >
-                    Type a phone number
-                </tui-input-phone-international>
+                    <label tuiLabel>Type a phone number</label>
+                    <input
+                        tuiInputPhoneInternational
+                        [countries]="countries"
+                        [countrySearch]="countrySearch"
+                        [formControl]="formControl"
+                        [invalid]="control.invalid"
+                        [readOnly]="control.readonly"
+                        [(countryIsoCode)]="countryIsoCode"
+                    />
+                </tui-textfield>
             </ng-template>
         </tui-doc-demo>
         <table tuiDocAPI>

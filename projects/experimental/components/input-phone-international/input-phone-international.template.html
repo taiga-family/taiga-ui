@@ -1,0 +1,62 @@
+<ng-container *tuiTextfieldContent>
+    <select
+        ngModel=""
+        tabindex="-1"
+        tuiTextfield
+        class="t-ipi-select"
+        [attr.data-focus]="open()"
+        [attr.data-mode]="mode()"
+        [disabled]="disabled()"
+        [focused]="false"
+        [ngModelOptions]="{standalone: true}"
+        (mousedown.prevent)="interactive() && open.set(!open())"
+    ></select>
+    <div class="t-ipi-value">
+        <img
+            class="t-ipi-flag"
+            [alt]="names()?.[code()]"
+            [src]="code() | tuiFlag"
+        />
+        <tui-icon
+            tuiChevron
+            class="t-ipi-chevron"
+        />
+    </div>
+</ng-container>
+<ng-container *tuiTextfieldDropdown>
+    <tui-textfield
+        *ngIf="countrySearch"
+        tuiTextfieldSize="m"
+        class="t-ipi-search"
+        [iconStart]="icons.search"
+    >
+        <input
+            tuiTextfield
+            [focused]="true"
+            [ngModel]="search()"
+            [ngModelOptions]="{standalone: true}"
+            [placeholder]="label()"
+            [tuiAutoFocus]="!isIos"
+            (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+            (ngModelChange)="search.set($event)"
+        />
+    </tui-textfield>
+
+    <tui-data-list>
+        <button
+            *ngFor="let item of filtered()"
+            tuiCell
+            tuiOption
+            type="button"
+            (click)="onItemClick(item.iso)"
+        >
+            <img
+                alt=""
+                class="t-ipi-flag"
+                [src]="item.iso | tuiFlag"
+            />
+            <span tuiTitle>{{ item.name }}</span>
+            <span class="t-ipi-code">{{ item.code }}</span>
+        </button>
+    </tui-data-list>
+</ng-container>

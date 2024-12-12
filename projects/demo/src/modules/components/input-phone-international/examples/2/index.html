@@ -1,8 +1,10 @@
-<tui-input-phone-international
-    [countries]="(countries | tuiSortCountries | async) || []"
-    [countrySearch]="true"
-    [(countryIsoCode)]="countryIsoCode"
-    [(ngModel)]="value"
->
-    Type your number
-</tui-input-phone-international>
+<tui-textfield>
+    <label tuiLabel>Phone number</label>
+    <input
+        tuiInputPhoneInternational
+        [countries]="(countries | tuiSortCountries | async) || []"
+        [countrySearch]="true"
+        [(countryIsoCode)]="countryIsoCode"
+        [(ngModel)]="value"
+    />
+</tui-textfield>
