@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
+import {TUI_PAYMENT_SYSTEM_ICONS, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 
@@ -32,22 +32,9 @@ export default class Example {
     protected iconStart = this.iconVariants[0]!;
     protected iconEnd = this.iconVariants[0]!;
 
-    protected readonly paymentSystemVariants: readonly TuiPaymentSystem[] = [
-        'mastercard',
-        'amex',
-        'dinersclub',
-        'discover',
-        'electron',
-        'humo',
-        'jcb',
-        'maestro',
-        'mir',
-        'rupay',
-        'unionpay',
-        'uzcard',
-        'verve',
-        'visa',
-    ];
+    protected readonly paymentSystemVariants = Object.keys(
+        inject(TUI_PAYMENT_SYSTEM_ICONS),
+    ) as readonly TuiPaymentSystem[];
 
     protected readonly sizeVariants: ReadonlyArray<TuiThumbnailCard['size']> = [
         'l',
