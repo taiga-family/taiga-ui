@@ -32,7 +32,7 @@ function calculate(
     ngDevMode &&
         console.assert(
             Number.isSafeInteger(roundedInt),
-            'Impossible to correctly round a such large number',
+            'Impossible to correctly round such a large number',
         );
 
     const processedPair = `${roundedInt}e`.split('e');
