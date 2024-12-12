@@ -25,9 +25,11 @@
     </div>
 </ng-container>
 <ng-container *tuiTextfieldDropdown>
-    <div class="t-ipi-search">
+    <div
+        *ngIf="countrySearch"
+        class="t-ipi-search"
+    >
         <tui-textfield
-            *ngIf="countrySearch"
             tuiTextfieldSize="m"
             [iconStart]="icons.search"
         >
@@ -44,7 +46,7 @@
         </tui-textfield>
     </div>
 
-    <tui-data-list>
+    <tui-data-list class="t-ipi-options">
         <button
             *ngFor="let item of filtered()"
             tuiCell
