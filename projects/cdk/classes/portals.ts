@@ -1,5 +1,11 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {ComponentRef, EmbeddedViewRef, Provider, TemplateRef} from '@angular/core';
+import type {
+    ComponentRef,
+    EmbeddedViewRef,
+    Provider,
+    TemplateRef,
+    ViewRef,
+} from '@angular/core';
 import {
     Directive,
     inject,
@@ -56,16 +62,14 @@ export abstract class TuiPortalService {
     }
 
     public remove<C>({hostView}: ComponentRef<C>): void {
-        if (!hostView.destroyed) {
-            hostView.destroy();
-        }
+        this.removeTemplate(hostView);
     }
 
     public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
         return this.safeHost.addTemplateChild(templateRef, context);
     }
 
-    public removeTemplate<C>(viewRef: EmbeddedViewRef<C>): void {
+    public removeTemplate<C>(viewRef: EmbeddedViewRef<C> | ViewRef): void {
         if (!viewRef.destroyed) {
             viewRef.destroy();
         }
