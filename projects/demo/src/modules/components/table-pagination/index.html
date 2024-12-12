@@ -59,6 +59,7 @@
                 documentationPropertyName="total"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="total"
+                (documentationPropertyValueChange)="totalChange($event)"
             >
                 Total amount of items/lines in the table.
             </ng-template>
