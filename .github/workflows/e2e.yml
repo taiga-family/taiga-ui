@@ -93,7 +93,6 @@ jobs:
     needs: [build-demo]
     strategy:
       fail-fast: false
-      max-parallel: 9
       matrix:
         shard: [
             # Safari
