@@ -91,10 +91,10 @@ test.describe('TuiHint', () => {
                 `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-500.png`,
             );
 
-            await page.waitForTimeout(500);
+            await page.waitForTimeout(1500);
 
             await expect(page).toHaveScreenshot(
-                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-1000.png`,
+                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-more-1000.png`,
             );
         });
     });

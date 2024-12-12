@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-conditional-in-test */
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
@@ -10,7 +11,7 @@ test.describe('Deep / Select', () => {
     );
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page}) => {
+        test(`${path}`, async ({page, browserName}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -25,7 +26,6 @@ test.describe('Deep / Select', () => {
                 const select = await api.getSelect(row);
                 const name = await api.getNameProperty(row);
 
-                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (!select) {
                     continue;
                 }
@@ -37,7 +37,11 @@ test.describe('Deep / Select', () => {
                 await expect(select).toBeVisible();
 
                 await select.click();
-                await api.waitTuiIcons();
+
+                // note: hello Safari
+                if (browserName === 'webkit') {
+                    await page.waitForTimeout(200);
+                }
 
                 const options = await api.getOptions();
 
@@ -47,19 +51,26 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
-                    await api.waitTuiIcons();
+
+                    // note: hello Safari
+                    if (browserName === 'webkit') {
+                        await page.waitForTimeout(200);
+                    }
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
                     );
 
                     await select.click();
-                    await api.waitTuiIcons();
+
+                    // note: hello Safari
+                    if (browserName === 'webkit') {
+                        await page.waitForTimeout(200);
+                    }
                 }
 
                 const cleaner = await api.getCleaner(select);
 
-                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (cleaner) {
                     await cleaner.click();
                 } else {
@@ -69,7 +80,11 @@ test.describe('Deep / Select', () => {
 
                 await api.waitStableState();
                 await api.focusOnBody();
-                await api.waitTuiIcons();
+
+                // note: hello Safari
+                if (browserName === 'webkit') {
+                    await page.waitForTimeout(200);
+                }
             }
         }),
     );
