@@ -90,7 +90,7 @@ export class TuiTablePagination {
     }
 
     protected get start(): number {
-        return this.page * this.size;
+        return Math.min(this.page * this.size, Math.max(this.total - this.size, 0));
     }
 
     protected get end(): number {

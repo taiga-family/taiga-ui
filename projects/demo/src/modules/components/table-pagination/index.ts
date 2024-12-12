@@ -27,4 +27,9 @@ export default class Page {
         this.page = page;
         this.size = size;
     }
+
+    protected totalChange(total: number): void {
+        this.total = total;
+        this.size = Math.min(this.size, Math.max(total, 1));
+    }
 }
