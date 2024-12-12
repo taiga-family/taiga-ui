@@ -1,4 +1,5 @@
 import {NgForOf, NgIf} from '@angular/common';
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,7 +8,6 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     signal,
     TemplateRef,
     ViewChild,
@@ -17,53 +17,44 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
+import {maskitoInitialCalibrationPlugin} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
-import {
-    CHAR_PLUS,
-    EMPTY_QUERY,
-    TUI_DEFAULT_MATCHER,
-    TuiActiveZone,
-    tuiDirectiveBinding,
-    tuiInjectElement,
-    tuiIsInputEvent,
-} from '@taiga-ui/cdk';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {
-    TUI_COMMON_ICONS,
-    TuiDataList,
-    tuiDropdown,
-    TuiDropdownOpen,
-    tuiDropdownOpen,
-    TuiOption,
-    TuiTextfieldDropdownDirective,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
     TuiTextfield,
     TuiTextfieldContent,
+    TuiTextfieldDropdownDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiFlagPipe} from '@taiga-ui/core/pipes';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
-    TUI_COUNTRIES,
-    TUI_INTERNATIONAL_SEARCH,
-    tuiGetCallingCode,
-    tuiMaskito,
-} from '@taiga-ui/kit';
+    tuiDropdown,
+    TuiDropdownOpen,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
+import {TuiTitle} from '@taiga-ui/core/directives/title';
+import {TuiFlagPipe} from '@taiga-ui/core/pipes';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from '@taiga-ui/kit/components/input-phone-international';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
+import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
+import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
 import {TuiCell} from '@taiga-ui/layout/components/cell';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
-import {type MetadataJson} from 'libphonenumber-js/core';
+import type {MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';
 
 const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
@@ -75,20 +66,20 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         FormsModule,
         NgForOf,
         NgIf,
-        TuiTextfieldContent,
-        TuiTextfield,
-        TuiIcon,
-        TuiChevron,
-        TuiFlagPipe,
-        TuiDataList,
         TuiAutoFocus,
         TuiCell,
+        TuiChevron,
+        TuiDataList,
+        TuiFlagPipe,
+        TuiIcon,
+        TuiTextfield,
+        TuiTextfieldContent,
         TuiTitle,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputPhoneInternational),
         tuiFallbackValueProvider(''),
@@ -107,6 +98,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 export class TuiInputPhoneInternational extends TuiControl<string> {
     @ViewChildren(TuiOption, {read: ElementRef})
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
+
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
