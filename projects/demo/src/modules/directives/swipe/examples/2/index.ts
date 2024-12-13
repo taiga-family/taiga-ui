@@ -2,13 +2,14 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSidebar} from '@taiga-ui/addon-mobile';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk';
 import {TuiSwipe} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiSwipe],
+    imports: [AsyncPipe, TuiSidebar, TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
