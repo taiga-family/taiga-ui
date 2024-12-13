@@ -19,11 +19,11 @@ import {defer} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
+        TuiButton,
+        TuiDropdownMobile,
         TuiInputPhoneInternational,
         TuiSortCountriesPipe,
         TuiTextfield,
-        TuiButton,
-        TuiDropdownMobile,
     ],
     templateUrl: './index.html',
     encapsulation,

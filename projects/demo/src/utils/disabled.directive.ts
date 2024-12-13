@@ -9,7 +9,7 @@ export class TuiDisabledDirective {
     private readonly control = inject(NgControl);
 
     @Input()
-    set tuiDisabled(disabled: boolean) {
+    public set tuiDisabled(disabled: boolean) {
         if (disabled) {
             this.control.control?.disable();
         } else {
