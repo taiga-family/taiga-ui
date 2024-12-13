@@ -17,7 +17,7 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
@@ -92,7 +92,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[attr.readonly]': 'readOnly() || null',
         '[disabled]': 'disabled()',
-        '[value]': 'value() || el.value',
+        '[value]': 'masked()',
         '(blur)': 'onTouched()',
         '(input)': 'onInput()',
         '(click)': 'open.set(false)',
@@ -118,6 +118,11 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
     protected readonly mask = tuiMaskito(
         computed(() => this.computeMask(this.code(), this.metadata())),
+    );
+
+    protected readonly masked = computed(
+        () =>
+            maskitoTransform(this.value(), this.mask() || {mask: /.*/}) || this.el.value,
     );
 
     protected readonly filtered = computed(() =>

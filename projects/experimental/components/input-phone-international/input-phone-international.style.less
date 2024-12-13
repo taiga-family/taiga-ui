@@ -68,6 +68,10 @@ tui-textfield[data-size='l'] {
     z-index: 1;
     background: var(--tui-background-elevation-3);
     padding: 0.375rem 0.375rem 0;
+
+    input {
+        .tui-prevent-ios-scroll();
+    }
 }
 
 tui-dropdown-mobile {

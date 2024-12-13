@@ -12,8 +12,9 @@
     outline-offset: -1px;
     border: none;
 
-    &::before,
-    &::after {
+    // TODO: Remove tuiWrapper hack in v5
+    &:not([tuiWrapper])::before,
+    &:not([tuiWrapper])::after {
         .transition(color);
 
         color: var(--tui-text-tertiary);
@@ -22,8 +23,8 @@
     .appearance-hover({
         --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
 
-        &:before,
-        &:after {
+        &:not([tuiWrapper]):before,
+        &:not([tuiWrapper]):after {
             color: var(--tui-text-secondary);
         }
     });
