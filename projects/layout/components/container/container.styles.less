@@ -1,0 +1,63 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiContainer] {
+    margin-right: auto;
+    margin-left: auto;
+
+    &[data-type='adaptive'] {
+        @media @tui-desktop-lg-min {
+            inline-size: 69rem;
+        }
+
+        @media @tui-desktop {
+            inline-size: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            inline-size: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    @media @tui-desktop-lg-min {
+        inline-size: 69rem;
+    }
+
+    @media @tui-desktop {
+        inline-size: 51.5rem;
+        padding: 0 3rem;
+    }
+
+    &[data-type='menu'] {
+        @media @tui-desktop-lg-min {
+            inline-size: 69rem;
+        }
+
+        @media @tui-desktop-interval {
+            inline-size: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            inline-size: auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    &[data-type='fullwidth'] {
+        inline-size: auto;
+        padding: 0 1.5rem;
+
+        @media @tui-mobile {
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    &[data-type='fixed'] {
+        @media @tui-desktop {
+            inline-size: 69rem;
+        }
+    }
+}
