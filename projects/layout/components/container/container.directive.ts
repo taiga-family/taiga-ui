@@ -7,8 +7,6 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
-type ContainerType = '' | 'adaptive' | 'fixed' | 'fullwidth' | 'menu';
-
 @Component({
     standalone: true,
     template: '',
@@ -32,6 +30,6 @@ class TuiContainerStyles {}
 export class TuiContainer {
     protected readonly nothing = tuiWithStyles(TuiContainerStyles);
 
-    @Input('tuiContainer')
-    public type!: ContainerType;
+    @Input({alias: 'tuiContainer', required: true})
+    public type!: '' | 'adaptive' | 'fixed' | 'fullwidth' | 'menu';
 }
