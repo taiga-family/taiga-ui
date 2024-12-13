@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
-type ContainerType = 'adaptive' | 'fixed' | 'fullWidth' | 'menu';
+type ContainerType = '' | 'adaptive' | 'fixed' | 'fullwidth' | 'menu';
 
 @Component({
     standalone: true,

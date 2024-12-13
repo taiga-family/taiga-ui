@@ -13,6 +13,7 @@ import {
     TuiRadio,
     TuiStepper,
 } from '@taiga-ui/kit';
+import {TuiContainer} from '@taiga-ui/layout';
 import {
     TuiInputDateModule,
     TuiInputModule,
@@ -55,6 +56,7 @@ class Account {
         TuiBlock,
         TuiButton,
         TuiCheckbox,
+        TuiContainer,
         TuiCurrencyPipe,
         TuiDataListWrapper,
         TuiError,

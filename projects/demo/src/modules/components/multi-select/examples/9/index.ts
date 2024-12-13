@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDialogContext, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiButton, TuiDataList, TuiDialogService} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiContainer} from '@taiga-ui/layout';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -13,6 +14,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiContainer,
         TuiDataList,
         TuiDataListWrapper,
         TuiMultiSelectModule,
