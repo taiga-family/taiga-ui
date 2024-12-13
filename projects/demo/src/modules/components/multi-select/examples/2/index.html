@@ -2,6 +2,7 @@
     Type a name:
     <tui-multi-select
         *tuiLet="items$ | async as items"
+        ngSkipHydration
         placeholder="Find by ..."
         [formControl]="testValue"
         [rows]="1"

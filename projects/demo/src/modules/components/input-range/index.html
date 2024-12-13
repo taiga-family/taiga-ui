@@ -86,6 +86,7 @@
         <tui-doc-example
             id="key-steps"
             heading="KeySteps"
+            ngSkipHydration
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
         >
@@ -100,6 +101,7 @@
         <tui-doc-example
             id="negative"
             heading="Using negative values without minus sign"
+            ngSkipHydration
             [component]="6 | tuiComponent"
             [content]="6 | tuiExample: 'html,ts'"
         />
@@ -109,6 +111,7 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-range
+                    ngSkipHydration
                     [formControl]="control"
                     [keySteps]="keySteps"
                     [leftValueContent]="leftValueContent"

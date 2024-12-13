@@ -1,6 +1,7 @@
 <span class="tui-text_body-l">Strings:</span>
 
 <tui-multi-select
+    ngSkipHydration
     class="tui-space_top-5"
     [editable]="false"
     [formControl]="itemStringControl"
@@ -18,6 +19,7 @@
 </tui-multi-select>
 
 <tui-multi-select
+    ngSkipHydration
     class="tui-space_vertical-5"
     [disabledItemHandler]="disableHandler"
     [editable]="false"
@@ -36,6 +38,7 @@
 
 <span class="tui-text_body-l">Objects (stringify):</span>
 <tui-multi-select
+    ngSkipHydration
     class="tui-space_top-5"
     [editable]="false"
     [formControl]="itemControl"
@@ -54,6 +57,7 @@
 </tui-multi-select>
 
 <tui-multi-select
+    ngSkipHydration
     class="tui-space_top-5"
     [disabledItemHandler]="disableItemHandler"
     [editable]="false"

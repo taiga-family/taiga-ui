@@ -1,5 +1,6 @@
 <section class="control">
     <tui-input-slider
+        ngSkipHydration
         tuiTextfieldSize="m"
         [formControl]="smallControl"
         [max]="max"
@@ -17,6 +18,7 @@
 </section>
 
 <tui-input-slider
+    ngSkipHydration
     class="control"
     [formControl]="bigControl"
     [max]="max"

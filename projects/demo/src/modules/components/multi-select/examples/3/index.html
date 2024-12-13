@@ -1,5 +1,6 @@
 <form>
     <tui-multi-select
+        ngSkipHydration
         tuiTextfieldSize="s"
         [formControl]="control"
         [identityMatcher]="identityMatcher"
@@ -22,6 +23,7 @@
         </tui-data-list>
     </tui-multi-select>
     <tui-multi-select
+        ngSkipHydration
         tuiTextfieldSize="m"
         class="tui-space_top-2"
         [editable]="false"
@@ -47,6 +49,7 @@
         </tui-data-list>
     </tui-multi-select>
     <tui-multi-select
+        ngSkipHydration
         class="tui-space_top-2"
         [editable]="false"
         [formControl]="control"

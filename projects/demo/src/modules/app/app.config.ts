@@ -3,6 +3,7 @@ import {HttpClient, provideHttpClient} from '@angular/common/http';
 import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {provideClientHydration} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -55,6 +56,7 @@ import {exampleContentProcessor} from './utils';
 
 export const config: ApplicationConfig = {
     providers: [
+        provideClientHydration(),
         provideAnimations(),
         provideRouter(
             ROUTES,

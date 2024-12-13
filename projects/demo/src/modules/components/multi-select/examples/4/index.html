@@ -1,5 +1,6 @@
 <tui-multi-select
     *tuiLet="items$ | async as items"
+    ngSkipHydration
     [formControl]="control"
     [stringify]="(stringify$ | async)!"
     [tuiTextfieldLabelOutside]="true"

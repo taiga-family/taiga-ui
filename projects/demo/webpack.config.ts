@@ -100,6 +100,10 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                     ...ngConfigs.module,
                     rules: [
                         {
+                            test: /.node$/,
+                            loader: 'node-loader',
+                        },
+                        {
                             include: globSync(
                                 path.resolve(
                                     __dirname,

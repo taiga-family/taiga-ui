@@ -1,4 +1,7 @@
-<tui-multi-select [(ngModel)]="value">
+<tui-multi-select
+    ngSkipHydration
+    [(ngModel)]="value"
+>
     Multiple lines
     <tui-data-list-wrapper
         *tuiDataList
@@ -7,7 +10,10 @@
     />
 </tui-multi-select>
 <p>
-    <tui-multi-select [(ngModel)]="value">
+    <tui-multi-select
+        ngSkipHydration
+        [(ngModel)]="value"
+    >
         Scrollable with fade
         <tui-data-list-wrapper
             *tuiDataList
@@ -28,7 +34,10 @@
         </ng-template>
     </tui-multi-select>
 </p>
-<tui-multi-select [(ngModel)]="value">
+<tui-multi-select
+    ngSkipHydration
+    [(ngModel)]="value"
+>
     Ellipsis
     <tui-data-list-wrapper
         *tuiDataList
