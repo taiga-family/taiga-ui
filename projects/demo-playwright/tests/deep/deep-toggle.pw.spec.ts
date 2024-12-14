@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-conditional-in-test */
 import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -5,7 +6,7 @@ test.describe('Deep / Toggle', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page}) => {
+        test(`${path}`, async ({page, browserName}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -20,7 +21,6 @@ test.describe('Deep / Toggle', () => {
                 const toggle = await api.getToggle(row);
                 const name = await api.getNameProperty(row);
 
-                // eslint-disable-next-line playwright/no-conditional-in-test
                 if (!toggle) {
                     continue;
                 }
@@ -31,17 +31,24 @@ test.describe('Deep / Toggle', () => {
                 await expect(toggle).toBeVisible();
 
                 await toggle.click();
-                await api.waitTuiIcons();
                 await api.hideNotifications();
                 await api.waitStableState();
-                await page.waitForTimeout(100);
+
+                // note: hello Safari
+                if (browserName === 'webkit') {
+                    await page.waitForTimeout(300);
+                }
 
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}-${name}-row-${rowIndex}-toggled.png`,
                 );
 
                 await toggle.click();
-                await api.waitTuiIcons();
+
+                // note: hello Safari
+                if (browserName === 'webkit') {
+                    await page.waitForTimeout(200);
+                }
             }
         }),
     );

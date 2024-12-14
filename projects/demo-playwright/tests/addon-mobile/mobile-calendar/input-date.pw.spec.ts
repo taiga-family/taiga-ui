@@ -21,6 +21,7 @@ test.describe('InputDate and mobile user agent', () => {
             .click();
 
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
+        await page.waitForTimeout(300); // safari flaky
 
         await expect(page).toHaveScreenshot('01-input-date-range-mobile-1.png');
 
@@ -49,6 +50,7 @@ test.describe('InputDate and mobile user agent', () => {
             .click();
 
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
+        await page.waitForTimeout(300); // safari flaky
 
         await expect(page).toHaveScreenshot('02-input-date-range-mobile-1.png');
 
@@ -84,6 +86,7 @@ test.describe('InputDate and mobile user agent', () => {
             .click();
 
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
+        await page.waitForTimeout(300); // safari flaky
 
         await expect(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
 

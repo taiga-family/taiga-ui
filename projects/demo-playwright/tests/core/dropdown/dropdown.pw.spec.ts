@@ -11,6 +11,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('01-dropdown.png');
     });
@@ -21,6 +22,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input').click();
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('02-dropdown.png');
     });
@@ -31,6 +33,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input').click();
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('03-dropdown.png');
     });
@@ -41,6 +44,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('04-dropdown.png');
     });
@@ -51,6 +55,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('05-dropdown.png');
     });
@@ -60,7 +65,9 @@ test.describe('Dropdown', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#portal');
 
         await example.scrollIntoViewIfNeeded();
+        // eslint-disable-next-line playwright/no-force-option
         await example.locator('.t2').click({force: true});
+        await page.waitForTimeout(300);
 
         await expect(page).toHaveScreenshot('13-dropdown.png');
     });
@@ -123,6 +130,7 @@ test.describe('Dropdown', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
+        await page.waitForTimeout(300);
 
         expect(page.locator('tui-dropdown')).toBeDefined();
 

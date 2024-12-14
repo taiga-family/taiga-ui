@@ -7,7 +7,7 @@ test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     demoPaths.forEach((path) => {
-        test(`${path}`, async ({page}) => {
+        test(`${path}`, async ({page, browserName}) => {
             const documentation = new TuiDocumentationPagePO(page);
 
             await tuiMockImages(page);
@@ -29,7 +29,7 @@ test.describe('Demo', () => {
 
             for (const [i, example] of examples.entries()) {
                 // eslint-disable-next-line playwright/no-conditional-in-test
-                if (tuiIsFlakyExample(path, i)) {
+                if (tuiIsFlakyExample(path, i, browserName)) {
                     continue;
                 }
 

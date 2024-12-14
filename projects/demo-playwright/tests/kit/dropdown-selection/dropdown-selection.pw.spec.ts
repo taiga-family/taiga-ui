@@ -15,6 +15,7 @@ test.describe('DropdownSelection', () => {
         await example.locator('textarea').focus();
         await page.keyboard.press('Control+ArrowLeft');
         await api.waitStableState();
+        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('01-dropdown-selection.png');
 
@@ -24,17 +25,20 @@ test.describe('DropdownSelection', () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await api.waitStableState();
+        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('02-dropdown-selection.png');
 
         await example.locator('textarea').fill('');
         await example.locator('textarea').fill('@');
         await api.waitStableState();
+        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('03-dropdown-selection.png');
 
         await page.locator('button[tuiOption]').first().click();
         await api.waitStableState();
+        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('04-dropdown-selection.png');
     });
