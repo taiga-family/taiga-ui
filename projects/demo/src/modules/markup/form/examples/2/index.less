@@ -1,5 +1,10 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+@fields-space: 1.25rem;
+@fields-space-mobile: 1rem;
+@fields-space-large: 0.75rem;
+@fields-space-large-mobile: 1.5rem;
+
 :host {
     display: block;
 }
@@ -23,4 +28,100 @@
 
     color: var(--tui-text-secondary);
     margin-top: 0.25rem;
+}
+
+.example2-form {
+    .multi-fields {
+        display: flex;
+
+        @media @tui-mobile {
+            flex-wrap: wrap;
+        }
+
+        .multi-field {
+            flex: 1 1 0;
+            min-inline-size: 0;
+            margin-left: @fields-space;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            @media @tui-mobile {
+                flex-basis: 100%;
+                margin-top: @fields-space-mobile;
+                margin-left: 0;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    .field-note {
+        font: var(--tui-font-text-s);
+        margin-top: 0.25rem;
+        color: var(--tui-text-secondary);
+    }
+
+    .half-width {
+        inline-size: ~'calc(50% - (@{fields-space} / 2))';
+
+        @media @tui-mobile {
+            inline-size: 100%;
+        }
+    }
+
+    .checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+
+        .checkbox {
+            flex: ~'1 1 calc(50% - 0.625rem)';
+
+            &:nth-child(even) {
+                margin-left: 1.25rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    .text-normal {
+        font: var(--tui-font-text-s);
+    }
+
+    .buttons {
+        display: flex;
+        margin-top: @fields-space-large;
+
+        &_align_end {
+            justify-content: flex-end;
+        }
+
+        &_align_center {
+            justify-content: center;
+        }
+
+        @media @tui-mobile {
+            flex-direction: column;
+            margin-top: @fields-space-large-mobile;
+        }
+
+        .button {
+            margin-left: 0.75rem;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            @media @tui-mobile {
+                margin-top: 0.5rem;
+                margin-left: 0;
+            }
+        }
+    }
 }

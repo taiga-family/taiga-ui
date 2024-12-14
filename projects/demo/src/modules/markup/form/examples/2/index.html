@@ -30,270 +30,277 @@
             </button>
         </tui-stepper>
     </div>
-    <form [formGroup]="testForm">
-        <div class="tui-row tui-row_sme">
-            <div class="tui-col_8">
-                <h3 class="tui-form__header tui-form__header_margin-top_none">A header</h3>
-                <div class="tui-form__row">
-                    <tui-input
-                        formControlName="nameValue"
-                        tuiHintContent="A tooltip"
-                    >
-                        Textfield
-                        <input
-                            placeholder="Field placeholder"
-                            tuiTextfieldLegacy
-                        />
-                        <span class="tui-required"></span>
-                    </tui-input>
-                    <tui-error
-                        formControlName="nameValue"
-                        [error]="[] | tuiFieldError | async"
-                    />
-                </div>
-                <div class="tui-form__row">
-                    <tui-input-date formControlName="periodValue">
-                        Input date
-                        <input
-                            placeholder="Placeholder"
-                            tuiTextfieldLegacy
-                        />
-                        <span class="tui-required"></span>
-                    </tui-input-date>
-                    <tui-error
-                        formControlName="periodValue"
-                        [error]="[] | tuiFieldError | async"
-                    />
-                </div>
-                <div class="tui-form__row tui-form__row_multi-fields">
-                    <div class="tui-form__multi-field">
-                        <tui-input-password formControlName="passwordValue">Input password</tui-input-password>
-                        <tui-error
-                            formControlName="passwordValue"
-                            [error]="[] | tuiFieldError | async"
-                        />
-                    </div>
-                    <div class="tui-form__multi-field">
-                        <tui-input-number
-                            formControlName="moneyValue"
-                            [tuiTextfieldPostfix]="'RUB' | tuiCurrency"
-                        >
-                            Input money
-                        </tui-input-number>
-                        <tui-error
-                            formControlName="moneyValue"
-                            [error]="[] | tuiFieldError | async"
-                        />
-                    </div>
-                </div>
-                <div class="tui-form__row">
-                    <tui-input-slider
-                        formControlName="quantityValue"
-                        tuiTextfieldPostfix="₽"
-                        [max]="3000000"
-                        [min]="50000"
-                        [segments]="1"
-                    >
-                        Some slider
-                    </tui-input-slider>
-                    <div class="ticks-labels">
-                        <span>from 50 000 ₽</span>
-                        <span>to 3 000 000 ₽</span>
-                    </div>
-                    <div class="tui-form__field-note">Some additional text</div>
-                    <tui-error
-                        formControlName="quantityValue"
-                        [error]="[] | tuiFieldError | async"
-                    />
-                </div>
-                <div class="tui-form__row tui-form__row_multi-fields">
-                    <div class="tui-form__multi-field">
-                        <tui-select
-                            formControlName="personValue"
-                            [valueContent]="personValueContent"
-                        >
-                            Choose a person
-                            <tui-data-list-wrapper
-                                *tuiDataList
-                                [items]="persons"
-                            />
-                        </tui-select>
-                        <ng-template
-                            #personValueContent
-                            let-data
-                        >
-                            <div class="uppercase-name">{{ data.firstName }} {{ data.lastName }}</div>
-                        </ng-template>
-                        <tui-error
-                            formControlName="personValue"
-                            [error]="[] | tuiFieldError | async"
-                        />
-                    </div>
-                    <div class="tui-form__multi-field">
-                        <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
-                        <tui-error
-                            formControlName="phoneValue"
-                            [error]="[] | tuiFieldError | async"
-                        />
-                    </div>
-                </div>
-                <h3 class="tui-form__header">Header</h3>
-                <div
-                    tuiGroup
-                    class="tui-form__row"
-                    [collapsed]="true"
-                >
-                    <label tuiBlock>
-                        One option
-                        <input
-                            formControlName="radioValue"
-                            tuiRadio
-                            type="radio"
-                            value="with-commission"
-                            [style.margin-left]="'auto'"
-                        />
-                    </label>
-                    <label tuiBlock>
-                        An alternative one
-                        <input
-                            formControlName="radioValue"
-                            tuiRadio
-                            type="radio"
-                            value="without-commission"
-                            [style.margin-left]="'auto'"
-                        />
-                    </label>
-                </div>
-                <div class="tui-form__row tui-form__row_half-width">
-                    <tui-input-time formControlName="timeValue">Input time</tui-input-time>
-                </div>
-                <div class="tui-form__row tui-form__row_checkboxes">
-                    <label
-                        tuiLabel
-                        class="tui-form__checkbox"
-                    >
-                        <input
-                            formControlName="osnoValue"
-                            tuiCheckbox
-                            type="checkbox"
-                        />
-                        First option
-                    </label>
-                    <label
-                        tuiLabel
-                        class="tui-form__checkbox"
-                    >
-                        <input
-                            formControlName="usnValue"
-                            tuiCheckbox
-                            type="checkbox"
-                        />
-                        Cool option
-                    </label>
-                    <label
-                        tuiLabel
-                        class="tui-form__checkbox"
-                    >
-                        <input
-                            formControlName="eshnValue"
-                            tuiCheckbox
-                            type="checkbox"
-                        />
-                        Boring option
-                    </label>
-                    <label
-                        tuiLabel
-                        class="tui-form__checkbox"
-                    >
-                        <input
-                            formControlName="envdValue"
-                            tuiCheckbox
-                            type="checkbox"
-                        />
-                        Interesting option
-                    </label>
-                </div>
-                <h3 class="tui-form__header tui-form__header_margin-bottom_small">Header</h3>
-                <div class="tui-form__row">
-                    <label>
-                        From
-                        <tui-select
-                            formControlName="accountWherefrom"
-                            class="accounts-select"
-                            [tuiTextfieldLabelOutside]="true"
-                            [valueContent]="accountContent"
-                        >
-                            Choose an account
-                            <tui-data-list-wrapper
-                                *tuiDataList
-                                [itemContent]="accountContent"
-                                [items]="accounts"
-                            />
-                        </tui-select>
-                    </label>
-                </div>
-                <div class="tui-form__row">
-                    <label>
-                        To
-                        <tui-select
-                            formControlName="accountWhere"
-                            class="accounts-select"
-                            [tuiTextfieldLabelOutside]="true"
-                            [valueContent]="accountContent"
-                        >
-                            Choose an account
-                            <tui-data-list-wrapper
-                                *tuiDataList
-                                [itemContent]="accountContent"
-                                [items]="accounts"
-                            />
-                        </tui-select>
-                    </label>
-                </div>
-                <h3 class="tui-form__header">Header</h3>
-                <div class="tui-form__row">
-                    <tui-input
-                        formControlName="textValue"
-                        tuiHintContent="A tooltip"
-                    >
-                        Textfield
-                        <input
-                            placeholder="Placeholder"
-                            tuiTextfieldLegacy
-                        />
-                    </tui-input>
-                    <label
-                        tuiLabel
-                        class="tui-form__field-checkbox"
-                    >
-                        <input
-                            formControlName="checkboxValue"
-                            tuiCheckbox
-                            type="checkbox"
-                        />
-                        Try this
-                    </label>
-                </div>
-                <div class="tui-form__buttons">
-                    <button
-                        size="l"
-                        tuiButton
-                        type="submit"
-                        class="tui-form__button"
-                    >
-                        Submit
-                    </button>
-                    <button
-                        appearance="flat"
-                        size="l"
-                        tuiButton
-                        type="button"
-                        class="tui-form__button"
-                    >
-                        Cancel
-                    </button>
-                </div>
+
+    <form
+        tuiForm="l"
+        class="example2-form"
+        [formGroup]="testForm"
+        [style.max-width.rem]="45"
+    >
+        <header tuiHeader>
+            <h3 tuiTitle>A header</h3>
+        </header>
+
+        <tui-input
+            formControlName="nameValue"
+            tuiHintContent="A tooltip"
+        >
+            Textfield
+            <input
+                placeholder="Field placeholder"
+                tuiTextfieldLegacy
+            />
+            <span class="tui-required"></span>
+        </tui-input>
+        <tui-error
+            formControlName="nameValue"
+            [error]="[] | tuiFieldError | async"
+        />
+
+        <tui-input-date formControlName="periodValue">
+            Input date
+            <input
+                placeholder="Placeholder"
+                tuiTextfieldLegacy
+            />
+            <span class="tui-required"></span>
+        </tui-input-date>
+        <tui-error
+            formControlName="periodValue"
+            [error]="[] | tuiFieldError | async"
+        />
+        <div class="multi-fields">
+            <div class="multi-field">
+                <tui-input-password formControlName="passwordValue">Input password</tui-input-password>
+                <tui-error
+                    formControlName="passwordValue"
+                    class="tui-space-top-none"
+                    [error]="[] | tuiFieldError | async"
+                />
             </div>
+            <div class="multi-field">
+                <tui-input-number
+                    formControlName="moneyValue"
+                    [tuiTextfieldPostfix]="'RUB' | tuiCurrency"
+                >
+                    Input money
+                </tui-input-number>
+                <tui-error
+                    formControlName="moneyValue"
+                    class="tui-space-top-none"
+                    [error]="[] | tuiFieldError | async"
+                />
+            </div>
+        </div>
+        <div class="slider">
+            <tui-input-slider
+                formControlName="quantityValue"
+                tuiTextfieldPostfix="₽"
+                [max]="3000000"
+                [min]="50000"
+                [segments]="1"
+            >
+                Some slider
+            </tui-input-slider>
+            <div class="ticks-labels">
+                <span>from 50 000 ₽</span>
+                <span>to 3 000 000 ₽</span>
+            </div>
+            <div class="field-note">Some additional text</div>
+            <tui-error
+                formControlName="quantityValue"
+                [error]="[] | tuiFieldError | async"
+            />
+        </div>
+        <div class="multi-fields tui-space_top-5">
+            <div class="multi-field">
+                <tui-select
+                    formControlName="personValue"
+                    [valueContent]="personValueContent"
+                >
+                    Choose a person
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="persons"
+                    />
+                </tui-select>
+                <ng-template
+                    #personValueContent
+                    let-data
+                >
+                    <div class="uppercase-name">{{ data.firstName }} {{ data.lastName }}</div>
+                </ng-template>
+                <tui-error
+                    formControlName="personValue"
+                    class="tui-space-top-none"
+                    [error]="[] | tuiFieldError | async"
+                />
+            </div>
+            <div class="multi-field">
+                <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
+                <tui-error
+                    formControlName="phoneValue"
+                    class="tui-space-top-none"
+                    [error]="[] | tuiFieldError | async"
+                />
+            </div>
+        </div>
+        <header tuiHeader>
+            <h3 tuiTitle>Header</h3>
+        </header>
+        <div
+            tuiGroup
+            [collapsed]="true"
+        >
+            <label tuiBlock>
+                One option
+                <input
+                    formControlName="radioValue"
+                    tuiRadio
+                    type="radio"
+                    value="with-commission"
+                    [style.margin-left]="'auto'"
+                />
+            </label>
+            <label tuiBlock>
+                An alternative one
+                <input
+                    formControlName="radioValue"
+                    tuiRadio
+                    type="radio"
+                    value="without-commission"
+                    [style.margin-left]="'auto'"
+                />
+            </label>
+        </div>
+        <div class="half-width">
+            <tui-input-time formControlName="timeValue">Input time</tui-input-time>
+        </div>
+        <div class="checkboxes">
+            <label
+                tuiLabel
+                class="checkbox"
+            >
+                <input
+                    formControlName="osnoValue"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                First option
+            </label>
+            <label
+                tuiLabel
+                class="checkbox"
+            >
+                <input
+                    formControlName="usnValue"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Cool option
+            </label>
+            <label
+                tuiLabel
+                class="checkbox"
+            >
+                <input
+                    formControlName="eshnValue"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Boring option
+            </label>
+            <label
+                tuiLabel
+                class="checkbox"
+            >
+                <input
+                    formControlName="envdValue"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Interesting option
+            </label>
+        </div>
+        <header tuiHeader>
+            <h3 tuiTitle>Header</h3>
+        </header>
+        <label class="text-normal">
+            From
+            <tui-select
+                formControlName="accountWherefrom"
+                class="accounts-select"
+                [tuiTextfieldLabelOutside]="true"
+                [valueContent]="accountContent"
+            >
+                Choose an account
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [itemContent]="accountContent"
+                    [items]="accounts"
+                />
+            </tui-select>
+        </label>
+        <label class="text-normal">
+            To
+            <tui-select
+                formControlName="accountWhere"
+                class="accounts-select"
+                [tuiTextfieldLabelOutside]="true"
+                [valueContent]="accountContent"
+            >
+                Choose an account
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [itemContent]="accountContent"
+                    [items]="accounts"
+                />
+            </tui-select>
+        </label>
+        <header tuiHeader>
+            <h3 tuiTitle>Header</h3>
+        </header>
+        <div class="select-with-checkbox">
+            <tui-input
+                formControlName="textValue"
+                tuiHintContent="A tooltip"
+            >
+                Textfield
+                <input
+                    placeholder="Placeholder"
+                    tuiTextfieldLegacy
+                />
+            </tui-input>
+            <label
+                tuiLabel
+                class="tui-space_top-2"
+            >
+                <input
+                    formControlName="checkboxValue"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Try this
+            </label>
+        </div>
+        <div class="buttons">
+            <button
+                size="l"
+                tuiButton
+                type="submit"
+                class=""
+            >
+                Submit
+            </button>
+            <button
+                appearance="flat"
+                size="l"
+                tuiButton
+                type="button"
+                class=""
+            >
+                Cancel
+            </button>
         </div>
         <ng-template
             #accountContent
