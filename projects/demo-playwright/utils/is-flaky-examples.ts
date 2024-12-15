@@ -5,6 +5,7 @@ const FLAKY_EXAMPLES = new Map<
     Array<{exampleIndex: number; browserName?: string}>
 >([
     [DemoRoute.AppBar, [{exampleIndex: 0, browserName: 'webkit'}]], // Flaky in safari, need to investigate a problem
+    [DemoRoute.Breadcrumbs, [{exampleIndex: 1, browserName: 'webkit'}]],
     [
         DemoRoute.Carousel,
         [
@@ -16,7 +17,6 @@ const FLAKY_EXAMPLES = new Map<
     [DemoRoute.IconsCustomization, [{exampleIndex: 0}]], // TODO: investigate flaky test
     [DemoRoute.LegendItem, [{exampleIndex: 0, browserName: 'webkit'}]], // Flaky in safari, need to investigate a problem
     [DemoRoute.MultiSelect, [{exampleIndex: 3}]], // Imitating server response (timer(5000))
-    [DemoRoute.Breadcrumbs, [{exampleIndex: 1, browserName: 'webkit'}]],
     [
         DemoRoute.RingChart,
         [
