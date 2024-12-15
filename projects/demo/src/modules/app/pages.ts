@@ -422,7 +422,7 @@ export const pages: DocRoutePages = [
         route: DemoRoute.Filter,
     },
     {
-        section: 'Components',
+        section: 'Layout',
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',
         route: DemoRoute.FormLayout,
