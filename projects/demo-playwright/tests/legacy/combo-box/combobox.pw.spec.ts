@@ -40,6 +40,8 @@ test.describe('ComboBox', () => {
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
+                await page.waitForTimeout(300); // safari flaky
+
                 await tuiGoto(
                     page,
                     `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,

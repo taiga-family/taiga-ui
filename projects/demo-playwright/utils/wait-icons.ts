@@ -4,10 +4,11 @@ interface Options {
     page: Page;
     icons: Locator[];
     cache?: Set<string>;
+    timeout?: number;
 }
 
 export async function waitIcons(options: Options): Promise<void> {
-    const {page, icons, cache = new Set()} = options;
+    const {page, icons, cache = new Set(), timeout = 500} = options;
 
     // eslint-disable-next-line @taiga-ui/experience/no-simple-for-of
     for (const icon of icons) {
@@ -28,7 +29,7 @@ export async function waitIcons(options: Options): Promise<void> {
 
         if (url.endsWith('.svg') && !cache.has(url)) {
             try {
-                const response = await page.waitForResponse(url, {timeout: 500});
+                const response = await page.waitForResponse(url, {timeout});
 
                 await response.finished();
             } catch {
