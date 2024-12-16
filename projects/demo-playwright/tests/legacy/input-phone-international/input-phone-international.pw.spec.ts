@@ -11,7 +11,7 @@ test.describe('InputPhoneInternational', () => {
 
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
-            select = example.locator('tui-input-phone-international select');
+            select = example.locator('tui-textfield .t-ipi-select');
             dropdown = page.locator('tui-dropdown');
         });
 
