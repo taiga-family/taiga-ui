@@ -35,17 +35,17 @@ test.describe('ComboBox', () => {
             test(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, async ({
                 page,
             }) => {
+                await tuiGoto(
+                    page,
+                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                );
+
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
                 await page.waitForTimeout(300); // safari flaky
-
-                await tuiGoto(
-                    page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
-                );
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,

@@ -65,11 +65,7 @@
                     }
                 ],
                 "baseHref": "/",
-                "styles": [
-                    "{projectRoot}/src/styles/styles.less",
-                    "{projectRoot}/src/styles/styles.scss",
-                    "@docsearch/css/dist/style.css"
-                ],
+                "styles": ["{projectRoot}/src/styles/styles.less", "{projectRoot}/src/styles/styles.scss"],
                 "scripts": [],
                 "allowedCommonJsDependencies": ["markdown-it"],
                 "vendorChunk": true,
