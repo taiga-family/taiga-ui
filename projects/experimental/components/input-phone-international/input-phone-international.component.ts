@@ -27,8 +27,7 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
-import {TuiInputMode} from '@taiga-ui/cdk/directives/input-mode';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -89,8 +88,9 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithTextfield, TuiInputMode],
+    hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
+        '[attr.inputmode]': '!ios && open() ? "none" : "numeric"',
         '[attr.readonly]': 'readOnly() || null',
         '[disabled]': 'disabled()',
         '[value]': 'masked()',
@@ -105,6 +105,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
+    protected readonly ios = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly countries = signal(this.options.countries);
@@ -124,12 +125,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly masked = computed(
         () =>
             maskitoTransform(this.value(), this.mask() || {mask: /.*/}) || this.el.value,
-    );
-
-    protected readonly inputMode = tuiDirectiveBinding(
-        TuiInputMode,
-        'tuiInputMode',
-        computed(() => (this.open() ? 'none' : 'numeric')),
     );
 
     protected readonly filtered = computed(() =>

@@ -24,6 +24,7 @@
 <ng-container *tuiTextfieldDropdown>
     <div
         *ngIf="countrySearch"
+        #element
         class="t-ipi-search"
     >
         <tui-textfield
@@ -31,12 +32,12 @@
             [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
         >
             <input
-                tuiAutoFocus
                 tuiTextfield
                 [focused]="true"
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
+                [tuiAutoFocus]="!!element.closest('tui-dropdown-mobile')"
                 (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />

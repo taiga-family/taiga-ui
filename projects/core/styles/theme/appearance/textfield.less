@@ -29,6 +29,13 @@
         }
     });
 
+    .appearance-active({
+        &:not([tuiWrapper]):before,
+        &:not([tuiWrapper]):after {
+            color: var(--tui-text-primary);
+        }
+    });
+
     .appearance-focus({
         box-shadow: none;
         outline: 0.125rem solid var(--tui-background-accent-1);
