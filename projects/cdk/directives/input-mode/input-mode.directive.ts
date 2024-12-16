@@ -14,7 +14,7 @@ export class TuiInputMode {
     private readonly ios = inject(TUI_IS_IOS);
 
     @Input()
-    set tuiInputMode(mode: string) {
+    public set tuiInputMode(mode: string) {
         const {inputMode} = this.el;
 
         this.el.inputMode = mode;

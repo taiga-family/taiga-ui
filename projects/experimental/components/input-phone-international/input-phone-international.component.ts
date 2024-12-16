@@ -17,11 +17,8 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {
-    maskitoInitialCalibrationPlugin,
-    type MaskitoOptions,
-    maskitoTransform,
-} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
+import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
@@ -34,10 +31,11 @@ import {TuiInputMode} from '@taiga-ui/cdk/directives/input-mode';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_TEXTFIELD_OPTIONS, TuiButton} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
+    TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
     TuiTextfieldContent,
     TuiTextfieldDropdownDirective,
@@ -72,6 +70,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         NgForOf,
         NgIf,
         TuiAutoFocus,
+        TuiButton,
         TuiCell,
         TuiChevron,
         TuiDataList,
@@ -80,7 +79,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTextfield,
         TuiTextfieldContent,
         TuiTitle,
-        TuiButton,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
