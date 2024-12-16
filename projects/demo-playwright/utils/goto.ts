@@ -4,6 +4,7 @@ import {expect} from '@playwright/test';
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
+import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
@@ -62,6 +63,13 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toHaveClass(/_loaded/, {timeout: 30_000});
+
+    await waitIcons({
+        page,
+        timeout: 200,
+        icons: await page.locator('tui-icon >> visible=true').all(),
+    });
+
     await tuiWaitForFonts(page);
     await waitStableState(app);
 

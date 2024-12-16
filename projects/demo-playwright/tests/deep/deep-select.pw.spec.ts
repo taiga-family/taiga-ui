@@ -51,22 +51,14 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
-
-                    // note: hello Safari
-                    if (browserName === 'webkit') {
-                        await page.waitForTimeout(200);
-                    }
+                    await page.waitForTimeout(200);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
                     );
 
                     await select.click();
-
-                    // note: hello Safari
-                    if (browserName === 'webkit') {
-                        await page.waitForTimeout(200);
-                    }
+                    await page.waitForTimeout(200);
                 }
 
                 const cleaner = await api.getCleaner(select);
@@ -80,11 +72,7 @@ test.describe('Deep / Select', () => {
 
                 await api.waitStableState();
                 await api.focusOnBody();
-
-                // note: hello Safari
-                if (browserName === 'webkit') {
-                    await page.waitForTimeout(200);
-                }
+                await page.waitForTimeout(200);
             }
         }),
     );

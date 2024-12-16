@@ -12,10 +12,11 @@ test.describe('DropdownSelection', () => {
         const example = api.getExample('#textarea');
 
         await example.scrollIntoViewIfNeeded();
+        await api.waitStableState();
+        await page.waitForTimeout(500); // flaky in Safari
+
         await example.locator('textarea').focus();
         await page.keyboard.press('Control+ArrowLeft');
-        await api.waitStableState();
-        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('01-dropdown-selection.png');
 
@@ -25,14 +26,12 @@ test.describe('DropdownSelection', () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await api.waitStableState();
-        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('02-dropdown-selection.png');
 
         await example.locator('textarea').fill('');
         await example.locator('textarea').fill('@');
         await api.waitStableState();
-        await page.waitForTimeout(300); // flaky in Safari
 
         await expect(page).toHaveScreenshot('03-dropdown-selection.png');
 
