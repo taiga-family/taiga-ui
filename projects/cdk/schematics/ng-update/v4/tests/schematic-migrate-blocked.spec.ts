@@ -112,7 +112,7 @@ const TEMPLATE_AFTER = `
   </label>
 </form>
 <label *ngFor="let block of blocks" tuiBlock="m" appearance="">
-<input tuiCheckbox type="checkbox"
+<input tuiCheckbox type="checkbox" tuiBlock
   ${''}
   ${''}
   ${''}
@@ -122,7 +122,7 @@ const TEMPLATE_AFTER = `
   {{ block.name }}
 </label>
 <label tuiBlock="s" appearance="">
-<input tuiCheckbox type="checkbox"
+<input tuiCheckbox type="checkbox" tuiBlock
     formControlName="testValue3"
     ${''}
     ${''}
@@ -130,7 +130,7 @@ const TEMPLATE_AFTER = `
     Pineapples
 </label>
 <label tuiBlock="l" appearance="">
-<input tuiRadio type="radio"
+<input tuiRadio type="radio" tuiBlock
     formControlName="testValue"
     ${''}
     ${''}
