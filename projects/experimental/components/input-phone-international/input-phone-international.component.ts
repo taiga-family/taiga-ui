@@ -17,8 +17,11 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
-import {maskitoInitialCalibrationPlugin} from '@maskito/core';
+import {
+    maskitoInitialCalibrationPlugin,
+    type MaskitoOptions,
+    maskitoTransform,
+} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
@@ -27,6 +30,7 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
+import {TuiInputMode} from '@taiga-ui/cdk/directives/input-mode';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -87,9 +91,8 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiFallbackValueProvider(''),
         tuiAutoFocusOptionsProvider({preventScroll: true}),
     ],
-    hostDirectives: [MaskitoDirective, TuiWithTextfield],
+    hostDirectives: [MaskitoDirective, TuiWithTextfield, TuiInputMode],
     host: {
-        '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[attr.readonly]': 'readOnly() || null',
         '[disabled]': 'disabled()',
         '[value]': 'masked()',
@@ -123,6 +126,12 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly masked = computed(
         () =>
             maskitoTransform(this.value(), this.mask() || {mask: /.*/}) || this.el.value,
+    );
+
+    protected readonly inputMode = tuiDirectiveBinding(
+        TuiInputMode,
+        'tuiInputMode',
+        computed(() => (this.open() ? 'none' : 'numeric')),
     );
 
     protected readonly filtered = computed(() =>

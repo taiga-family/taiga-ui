@@ -6,6 +6,10 @@
     border-end-start-radius: 0;
     inline-size: calc(100% - var(--t-offset));
 
+    tui-root:has(tui-dropdown-mobile) & {
+        caret-color: transparent;
+    }
+
     & + label {
         padding-left: var(--t-offset);
     }
