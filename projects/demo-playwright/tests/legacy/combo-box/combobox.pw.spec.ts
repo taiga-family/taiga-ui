@@ -13,6 +13,7 @@ test.describe('ComboBox', () => {
         const input = example.locator('tui-combo-box input[tuiTextfieldLegacy]');
 
         await example.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(300); // safari flaky
         await input.click();
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
