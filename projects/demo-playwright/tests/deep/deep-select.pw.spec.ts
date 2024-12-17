@@ -11,7 +11,7 @@ test.describe('Deep / Select', () => {
     );
 
     deepPaths.forEach((path) =>
-        test(`${path}`, async ({page, browserName}) => {
+        test(`${path}`, async ({page}) => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API`);
 
@@ -37,11 +37,7 @@ test.describe('Deep / Select', () => {
                 await expect(select).toBeVisible();
 
                 await select.click();
-
-                // note: hello Safari
-                if (browserName === 'webkit') {
-                    await page.waitForTimeout(200);
-                }
+                await page.waitForTimeout(200);
 
                 const options = await api.getOptions();
 
@@ -51,14 +47,14 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
-                    await page.waitForTimeout(200);
+                    await page.waitForTimeout(300);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
                     );
 
                     await select.click();
-                    await page.waitForTimeout(200);
+                    await page.waitForTimeout(100);
                 }
 
                 const cleaner = await api.getCleaner(select);
