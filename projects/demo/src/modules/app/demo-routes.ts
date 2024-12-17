@@ -81,6 +81,7 @@ export const DemoRoute = {
     InputMonth: '/components/input-month',
     InputMonthRange: '/components/input-month-range',
     InputNumber: '/components/input-number',
+    InputNumberLegacy: '/legacy/input-number',
     InputPhone: '/components/input-phone',
     InputRange: '/components/input-range',
     InputDateRange: '/components/input-date-range',

@@ -1,15 +1,25 @@
 ```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {ReactiveFormsModule} from '@angular/forms';
+import {TuiNumberFormat} from '@taiga-ui/core';
+import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, TuiInputNumberModule],
-  // ...
+  imports: [ReactiveFormsModule, TuiInputNumber, TuiNumberFormat],
+  providers: [
+    /**
+     * (Optional)
+     * Customize default behavior for all InputNumber-s
+     * inside specific Dependency Injection scope
+     */
+    tuiInputNumberOptionsProvider({
+      min: 0,
+      max: 100,
+      postfix: '%',
+    }),
+  ],
 })
 export class Example {
-  testForm = new FormGroup({
-    testValue: new FormControl(5000),
-  });
+  protected readonly control = new FormControl(42);
 }
 ```

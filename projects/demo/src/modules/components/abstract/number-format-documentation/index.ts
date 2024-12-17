@@ -11,6 +11,9 @@ import {TuiLink} from '@taiga-ui/core';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import type {AbstractExampleTuiNumberFormat} from '../number-format';
 
+/**
+ * @deprecated use {@link TuiDocNumberFormat}
+ */
 @Component({
     standalone: true,
     selector: 'number-format-documentation',
