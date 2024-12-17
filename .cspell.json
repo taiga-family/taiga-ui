@@ -3,7 +3,17 @@
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
     "ignorePaths": ["**/projects/i18n/languages/**", "**/addon-commerce/utils/get-currency-symbol.ts"],
-    "ignoreWords": ["Wachovia", "bottomsheet", "appbar", "qwertypgj_", "antialiasing", "xxxs", "significand"],
+    "ignoreWords": [
+        "Wachovia",
+        "bottomsheet",
+        "appbar",
+        "qwertypgj_",
+        "antialiasing",
+        "xxxs",
+        "significand",
+        "hidecheckbox",
+        "hideradio"
+    ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {
