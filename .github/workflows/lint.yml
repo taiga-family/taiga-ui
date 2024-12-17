@@ -28,6 +28,7 @@ jobs:
               npm run lint
           fi
       - uses: taiga-family/ci/actions/auto/push@v1.103.0
+        continue-on-error: true
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
