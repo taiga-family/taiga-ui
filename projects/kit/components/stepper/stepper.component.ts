@@ -72,8 +72,10 @@ export class TuiStepperComponent {
 
     @Input('activeItemIndex')
     public set activeIndex(index: number) {
-        this.activeItemIndex = index;
-        this.scrollIntoView(index);
+        if (this.steps.get(index)?.nativeElement) {
+            this.activeItemIndex = index;
+            this.scrollIntoView(index);
+        }
     }
 
     public indexOf(step: HTMLElement): number {
