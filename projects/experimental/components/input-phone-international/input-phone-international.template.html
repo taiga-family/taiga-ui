@@ -32,7 +32,9 @@
             [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
         >
             <input
+                autocomplete="off"
                 tuiTextfield
+                type="text"
                 [focused]="true"
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"

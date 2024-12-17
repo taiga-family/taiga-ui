@@ -1,18 +1,24 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiInputPhoneInternationalPO,
+} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
 test.describe('InputPhoneInternational', () => {
     test.describe('API page', () => {
         let example: Locator;
-        let select!: Locator;
         let dropdown!: Locator;
+        let inputPhoneInternational!: TuiInputPhoneInternationalPO;
 
         test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
-            select = example.locator('tui-textfield .t-ipi-select');
             dropdown = page.locator('tui-dropdown');
+            inputPhoneInternational = new TuiInputPhoneInternationalPO(
+                example.locator('tui-textfield'),
+            );
         });
 
         test('Open dropdown if readonly=false', async ({page}) => {
@@ -23,7 +29,7 @@ test.describe('InputPhoneInternational', () => {
 
             await expect(dropdown).not.toBeAttached();
 
-            await select.click();
+            await inputPhoneInternational.select.click();
 
             await expect(dropdown).toBeAttached();
         });
@@ -33,7 +39,9 @@ test.describe('InputPhoneInternational', () => {
 
             await expect(dropdown).not.toBeAttached();
 
-            await select.click();
+            await expect(async () => {
+                await inputPhoneInternational.select.click();
+            }).rejects.toThrow();
 
             await expect(dropdown).not.toBeAttached();
         });
