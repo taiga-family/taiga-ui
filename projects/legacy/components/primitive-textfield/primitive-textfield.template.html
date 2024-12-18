@@ -50,7 +50,7 @@
         </div>
         <div class="t-wrapper">
             <label
-                *ngIf="hasPlaceholder"
+                *ngIf="hasPlaceholder && !isContextTable"
                 automation-id="tui-primitive-textfield__placeholder"
                 class="t-placeholder"
                 [class.t-placeholder_raised]="placeholderRaised"

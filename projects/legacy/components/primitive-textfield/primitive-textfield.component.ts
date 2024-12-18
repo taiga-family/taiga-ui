@@ -243,6 +243,10 @@ export class TuiPrimitiveTextfieldComponent
         return this.nativeFocusableElement?.id || '';
     }
 
+    protected get isContextTable(): boolean {
+        return this.appearance === 'table';
+    }
+
     @tuiPure
     protected getIndent$(element: HTMLElement): Observable<number> {
         return fromEvent(element, 'scroll').pipe(
