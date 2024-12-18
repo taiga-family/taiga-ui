@@ -31,7 +31,7 @@ import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
-import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -94,7 +94,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     ],
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
-        '[attr.inputmode]': '!ios && open() ? "none" : "numeric"',
+        type: 'tel',
         '[attr.readonly]': 'readOnly() || null',
         '[disabled]': 'disabled()',
         '[value]': 'masked()',
@@ -109,7 +109,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly ios = inject(TUI_IS_IOS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
     protected readonly countries = signal(this.options.countries);
