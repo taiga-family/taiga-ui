@@ -17,8 +17,12 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
-import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
+import {
+    MASKITO_DEFAULT_OPTIONS,
+    maskitoInitialCalibrationPlugin,
+    type MaskitoOptions,
+    maskitoTransform,
+} from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
@@ -124,7 +128,8 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
     protected readonly masked = computed(
         () =>
-            maskitoTransform(this.value(), this.mask() || {mask: /.*/}) || this.el.value,
+            maskitoTransform(this.value(), this.mask() || MASKITO_DEFAULT_OPTIONS) ||
+            this.el.value,
     );
 
     protected readonly filtered = computed(() =>
