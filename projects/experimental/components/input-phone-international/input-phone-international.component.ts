@@ -96,6 +96,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     host: {
         type: 'tel',
         '[attr.readonly]': 'readOnly() || null',
+        '[attr.inputmode]': 'open() ? "none" : null',
         '[disabled]': 'disabled()',
         '[value]': 'masked()',
         '(blur)': 'onTouched()',
