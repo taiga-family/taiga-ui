@@ -17,10 +17,10 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
+import type {MaskitoOptions} from '@maskito/core';
 import {
     MASKITO_DEFAULT_OPTIONS,
     maskitoInitialCalibrationPlugin,
-    type MaskitoOptions,
     maskitoTransform,
 } from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
