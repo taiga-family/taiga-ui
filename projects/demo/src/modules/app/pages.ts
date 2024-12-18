@@ -150,12 +150,6 @@ export const pages: DocRoutePages = [
                     'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
                 route: DemoRoute.Spaces,
             },
-            {
-                section: 'Foundations',
-                title: 'Form',
-                keywords: 'верстка, markup, форма, ввод, пример, input, form',
-                route: DemoRoute.Form,
-            },
         ],
     },
     // Components
@@ -425,7 +419,7 @@ export const pages: DocRoutePages = [
         section: 'Layout',
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',
-        route: DemoRoute.FormLayout,
+        route: DemoRoute.Form,
     },
     {
         section: 'Components',
