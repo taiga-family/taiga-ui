@@ -19,7 +19,14 @@
     <tbody tuiTbody>
         <tr *ngFor="let item of data">
             <td tuiTd>{{ item.name }}</td>
-            <td tuiTd>{{ item.balance }}</td>
+            <td tuiTd>
+                <tui-input
+                    tuiTextfieldPrefix="$"
+                    [(ngModel)]="item.balance"
+                >
+                    Value
+                </tui-input>
+            </td>
             <td
                 tuiTd
                 [style.white-space]="'nowrap'"
