@@ -261,7 +261,7 @@ test.describe('InputDateRange', () => {
                 await mobileCalendar.confirmButton.click();
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    `17.08.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}17.08.2020`,
+                    `17.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}17.09.2020`,
                 );
             });
         });

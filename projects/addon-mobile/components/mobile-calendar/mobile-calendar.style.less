@@ -177,11 +177,15 @@
 }
 
 .t-month-wrapper {
+    display: flex;
     margin: 0.625rem 0 -0.625rem;
+    block-size: 22.125rem; // itemSize: 354px;
+    flex-direction: column;
 }
 
 .t-month {
     block-size: 2.75rem;
+    inline-size: 100%;
     line-height: 2.75rem;
     padding-left: 1rem;
     font-size: 0.875rem;
