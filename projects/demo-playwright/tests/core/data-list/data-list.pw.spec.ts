@@ -11,7 +11,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-select').click();
-        await documentationPagePO.prepareBeforeScreenshot();
+        await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
 
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-data-list.png');
     });
@@ -23,7 +23,8 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiDropdownOpen]').click();
-        await documentationPagePO.prepareBeforeScreenshot();
+        await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('02-data-list.png');
     });

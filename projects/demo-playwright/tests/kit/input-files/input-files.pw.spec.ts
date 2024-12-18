@@ -5,6 +5,7 @@ import {
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
+    waitIcons,
 } from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -26,6 +27,11 @@ test.describe('InputFiles', () => {
                 .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
 
+            await waitIcons({
+                page,
+                icons: await example.locator('tui-icon >> visible=true').all(),
+            });
+
             await expect(example).toHaveScreenshot(`01-${language}-input-files.png`);
         }),
     );
@@ -40,6 +46,11 @@ test.describe('InputFiles', () => {
             await example
                 .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
+
+            await waitIcons({
+                page,
+                icons: await example.locator('tui-icon >> visible=true').all(),
+            });
 
             await expect(example).toHaveScreenshot(`02-${language}-input-files.png`);
         }),

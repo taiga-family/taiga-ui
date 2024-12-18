@@ -149,6 +149,10 @@ export class TuiCalendarSheet {
     }
 
     protected onItemClick(item: TuiDay): void {
+        if (this.rangeHasDisabledDay(item)) {
+            return;
+        }
+
         this.dayClick.emit(item);
     }
 
@@ -166,5 +170,25 @@ export class TuiCalendarSheet {
 
         this.hoveredItem = day;
         this.hoveredItemChange.emit(day);
+    }
+
+    private rangeHasDisabledDay(item: TuiDay): boolean {
+        if (this.value instanceof TuiDayRange) {
+            const range = this.getRange(this.value, item);
+
+            for (
+                const day = range.from.toUtcNativeDate();
+                day <= range.to.toUtcNativeDate();
+                day.setDate(day.getDate() + 1)
+            ) {
+                const tuiDay = TuiDay.fromLocalNativeDate(day);
+
+                if (this.disabledItemHandler(tuiDay)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
