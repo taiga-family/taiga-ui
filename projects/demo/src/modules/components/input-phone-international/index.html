@@ -149,18 +149,16 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="old-syntax"
-            heading="Old syntax"
+            id="mobile-dropdown"
+            heading="Mobile dropdown"
             [component]="3 | tuiComponent"
             [content]="3 | tuiExample"
-            [description]="oldSyntaxDescription"
+            [description]="mobileDescription"
         >
-            <ng-template #oldSyntaxDescription>
-                This component has been refactored to maintain uniformity across new textfield components. Newest
-                version is in the
-                <code>&#64;taiga-ui/experimental</code>
-                package and will replace previous syntax in the next major release. Old syntax is displayed in the
-                example below:
+            <ng-template #mobileDescription>
+                You can enable mobile specific dropdown design on mobile devices by adding
+                <code>TuiDropdownMobile</code>
+                directive.
             </ng-template>
         </tui-doc-example>
 
@@ -224,16 +222,18 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="mobile-dropdown"
-            heading="Mobile dropdown"
+            id="old-syntax"
+            heading="Old syntax"
             [component]="7 | tuiComponent"
             [content]="7 | tuiExample"
-            [description]="mobileDescription"
+            [description]="oldSyntaxDescription"
         >
-            <ng-template #mobileDescription>
-                You can enable mobile specific dropdown design on mobile devices by adding
-                <code>TuiDropdownMobile</code>
-                directive.
+            <ng-template #oldSyntaxDescription>
+                This component has been refactored to maintain uniformity across new textfield components. Newest
+                version is in the
+                <code>&#64;taiga-ui/experimental</code>
+                package and will replace previous syntax in the next major release. Old syntax is displayed in the
+                example below:
             </ng-template>
         </tui-doc-example>
     </ng-template>
