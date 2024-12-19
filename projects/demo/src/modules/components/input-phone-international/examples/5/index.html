@@ -1,7 +1,9 @@
-<tui-input-phone-international
-    [countries]="countries"
-    [(countryIsoCode)]="countryIsoCode"
-    [(ngModel)]="value"
->
-    Type your number
-</tui-input-phone-international>
+<tui-textfield>
+    <label tuiLabel>Type your number</label>
+    <input
+        tuiInputPhoneInternational
+        [countries]="countries"
+        [(countryIsoCode)]="countryIsoCode"
+        [(ngModel)]="value"
+    />
+</tui-textfield>

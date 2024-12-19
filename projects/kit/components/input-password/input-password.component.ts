@@ -13,7 +13,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldContent,
-    TuiTextfieldDirective,
+    TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiTooltip} from '@taiga-ui/kit/directives';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
@@ -39,7 +39,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider('')],
-    hostDirectives: [TuiTextfieldDirective],
+    hostDirectives: [TuiWithTextfield],
     host: {
         '[type]': 'hidden() ? "password" : "text"',
     },

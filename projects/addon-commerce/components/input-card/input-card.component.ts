@@ -15,7 +15,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
@@ -38,7 +38,7 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
     styleUrls: ['./input-card.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [MaskitoDirective],
+    hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
         inputmode: 'numeric',
         placeholder: '0000 0000 0000 0000',

@@ -426,6 +426,7 @@ export const pages: DocRoutePages = [
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',
         route: DemoRoute.FormLayout,
+        meta: {scheme: 'beaver', name: 'form'},
     },
     {
         section: 'Components',

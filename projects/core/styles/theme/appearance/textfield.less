@@ -12,8 +12,28 @@
     outline-offset: -1px;
     border: none;
 
+    // TODO: Remove tuiWrapper hack in v5
+    &:not([tuiWrapper])::before,
+    &:not([tuiWrapper])::after {
+        .transition(~'color, transform');
+
+        color: var(--tui-text-tertiary);
+    }
+
     .appearance-hover({
         --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+
+        &:not([tuiWrapper]):before,
+        &:not([tuiWrapper]):after {
+            color: var(--tui-text-secondary);
+        }
+    });
+
+    .appearance-active({
+        &:not([tuiWrapper]):before,
+        &:not([tuiWrapper]):after {
+            color: var(--tui-text-primary);
+        }
     });
 
     .appearance-focus({
@@ -33,7 +53,8 @@
 
     &[data-mode~='readonly'],
     input&:read-only:not([data-mode]) {
-        box-shadow: none;
+        background: transparent !important;
+        box-shadow: none !important;
         outline-color: var(--tui-border-normal) !important;
     }
 

@@ -1,9 +1,11 @@
-<tui-input-phone-international
-    [countries]="countries"
-    [(countryIsoCode)]="countryIsoCode"
-    [(ngModel)]="value"
->
-    Phone number
+<tui-textfield [style.inline-size.rem]="19">
+    <label tuiLabel>Phone number</label>
+    <input
+        tuiInputPhoneInternational
+        [countries]="countries"
+        [(countryIsoCode)]="countryIsoCode"
+        [(ngModel)]="value"
+    />
     <tui-icon
         appearance="negative"
         tuiHintAppearance="error"
@@ -11,4 +13,4 @@
         tuiTooltip="I am a hint"
     />
     <tui-icon icon="@tui.phone" />
-</tui-input-phone-international>
+</tui-textfield>

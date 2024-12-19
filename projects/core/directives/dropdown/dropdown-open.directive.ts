@@ -137,19 +137,15 @@ export class TuiDropdownOpen implements OnChanges {
 
     protected onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
         if (
-            defaultPrevented ||
-            !tuiIsEditingKey(key) ||
-            !this.editable ||
-            !this.focused ||
-            !this.directive.content ||
-            !tuiIsHTMLElement(target) ||
-            (tuiIsElementEditable(target) && target !== this.host)
+            !defaultPrevented &&
+            tuiIsEditingKey(key) &&
+            this.editable &&
+            this.focused &&
+            tuiIsHTMLElement(target) &&
+            !tuiIsElementEditable(target)
         ) {
-            return;
+            this.host.focus({preventScroll: true});
         }
-
-        this.update(true);
-        this.host.focus({preventScroll: true});
     }
 
     private get host(): HTMLElement {

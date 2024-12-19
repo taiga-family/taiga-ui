@@ -32,7 +32,8 @@ export class TuiDropdownMobile {
         if (
             !this.isMobile ||
             !tuiIsHTMLElement(event.target) ||
-            !event.target.matches('input,textarea')
+            !event.target.matches('input,textarea') ||
+            this.tuiDropdownMobile
         ) {
             return;
         }
