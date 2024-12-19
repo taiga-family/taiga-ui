@@ -33,17 +33,29 @@
                 [formControl]="control"
                 [tuiTextfieldLabelOutside]="true"
             />
-            Formatted number:
-            <b>
+            <strong>Formatted number:</strong>
+            <br />
+            <code>
                 {{
                     control.value ?? 0
                         | tuiFormatNumber
-                            : {precision, decimalMode: decimalMode, rounding, thousandSeparator, decimalSeparator}
+                            : {
+                                  precision: numberFormatDoc.precision(),
+                                  decimalMode: numberFormatDoc.decimalMode(),
+                                  rounding: numberFormatDoc.rounding(),
+                                  thousandSeparator: numberFormatDoc.thousandSeparator(),
+                                  decimalSeparator: numberFormatDoc.decimalSeparator(),
+                              }
                         | async
                 }}
-            </b>
+            </code>
         </div>
-        <number-format-documentation />
+        <table tuiDocAPI>
+            <tbody
+                #numberFormatDoc
+                tuiDocNumberFormat
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
