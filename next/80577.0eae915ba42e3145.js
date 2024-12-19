@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80577],{80577:n=>{n.exports="tui-input-phone-international {\n    min-inline-size: min(20rem, 80vw);\n}\n"}}]);
