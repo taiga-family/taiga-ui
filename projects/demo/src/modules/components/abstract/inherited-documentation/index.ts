@@ -14,8 +14,6 @@ import {DropdownDocumentation} from '../dropdown-documentation';
 import {AbstractExampleTuiHint} from '../hint';
 import {HintControllerDocumentation} from '../hint-controller-documentation';
 import {AbstractExampleTuiInteractive} from '../interactive';
-import {AbstractExampleTuiNumberFormat} from '../number-format';
-import {NumberFormatDocumentation} from '../number-format-documentation';
 import type {TuiSupportingDocumentationComponent} from '../supporting-documentation-component';
 import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
@@ -26,7 +24,6 @@ import {TextfieldControllerDocumentation} from '../textfield-controller-document
         DropdownDocumentation,
         HintControllerDocumentation,
         NgIf,
-        NumberFormatDocumentation,
         TextfieldControllerDocumentation,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,
@@ -69,11 +66,5 @@ export class InheritedDocumentation {
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;
-    }
-
-    protected isTuiFormatNumber(
-        documentedComponent: TuiSupportingDocumentationComponent,
-    ): documentedComponent is AbstractExampleTuiHint {
-        return documentedComponent instanceof AbstractExampleTuiNumberFormat;
     }
 }

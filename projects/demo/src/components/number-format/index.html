@@ -1,0 +1,141 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <a
+                target="_blank"
+                tuiLink
+                [routerLink]="routes.NumberFormat"
+            >
+                <strong>TuiNumberFormat</strong>
+            </a>
+            <div tuiSubtitle>
+                Usage example:
+                <br />
+                <code>[tuiNumberFormat]="&#123;thousandSeparator, decimalSeparator, ..., rounding&#125;"</code>
+            </div>
+        </span>
+    </td>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('thousandSeparator')"
+    name="[thousandSeparator]"
+    tuiDocAPIItem
+    type="string"
+    [value]="thousandSeparator()"
+    (valueChange)="thousandSeparator.set($event)"
+>
+    Symbol for separating thousands
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('decimalSeparator')"
+    name="[decimalSeparator]"
+    tuiDocAPIItem
+    type="string"
+    [value]="decimalSeparator()"
+    (valueChange)="decimalSeparator.set($event)"
+>
+    Symbol for separating fraction
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('precision')"
+    name="[precision]"
+    tuiDocAPIItem
+    type="number"
+    [value]="precision()"
+    (valueChange)="precision.set($event)"
+>
+    A number of digits after
+    <code>[decimalSeparator]</code>
+    (
+    <code>Infinity</code>
+    for an untouched decimal part)
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('decimalMode')"
+    name="[decimalMode]"
+    tuiDocAPIItem
+    type="TuiDecimalMode"
+    [items]="decimalVariants"
+    [value]="decimalMode()"
+    (valueChange)="decimalMode.set($event)"
+>
+    <dl>
+        <dt>
+            <code>always</code>
+        </dt>
+        <dd>
+            number of digits after
+            <code>[decimalSeparator]</code>
+            is
+            <b>always</b>
+            equal to the precision.
+        </dd>
+
+        <dt>
+            <code>pad</code>
+        </dt>
+        <dd>pads trailing zeroes up to precision, if the number is fractional</dd>
+
+        <dt>
+            <code>not-zero</code>
+        </dt>
+        <dd>drops trailing zeroes</dd>
+    </dl>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('rounding')"
+    name="[rounding]"
+    tuiDocAPIItem
+    type="TuiRounding"
+    [items]="roundingVariants"
+    [value]="rounding()"
+    (valueChange)="rounding.set($event)"
+>
+    <dl>
+        <dt>
+            <code>round</code>
+        </dt>
+        <dd>
+            rounds to the
+            <strong>nearest</strong>
+            number with the specified
+            <code>[precision]</code>
+        </dd>
+
+        <dt>
+            <code>floor</code>
+        </dt>
+        <dd>
+            rounds down (the
+            <strong>largest</strong>
+            number with the specified
+            <code>[precision]</code>
+            less than or equal to a given number)
+        </dd>
+
+        <dt>
+            <code>ceil</code>
+        </dt>
+        <dd>
+            rounds up (the
+            <strong>smallest</strong>
+            number with the specified
+            <code>[precision]</code>
+            greater than or equal to a given number)
+        </dd>
+
+        <dt>
+            <code>truncate</code>
+        </dt>
+        <dd>
+            returns the number with the specified
+            <code>[precision]</code>
+            by just removing extra fractional digits
+        </dd>
+    </dl>
+</tr>
