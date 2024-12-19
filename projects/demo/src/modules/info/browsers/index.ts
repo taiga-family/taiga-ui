@@ -1,27 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
-import {
-    TuiTable,
-    TuiTableHead,
-    TuiTableTbody,
-    TuiTableTd,
-    TuiTableTh,
-    TuiTableThGroup,
-    TuiTableTr,
-} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDemo,
-        TuiTable,
-        TuiTableHead,
-        TuiTableTbody,
-        TuiTableTd,
-        TuiTableTh,
-        TuiTableThGroup,
-        TuiTableTr,
-    ],
+    imports: [TuiDemo, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

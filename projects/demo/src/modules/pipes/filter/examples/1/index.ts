@@ -2,14 +2,7 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiTable,
-    TuiTableHead,
-    TuiTableTbody,
-    TuiTableTd,
-    TuiTableTh,
-    TuiTableThGroup,
-} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiFilterPipe} from '@taiga-ui/cdk';
 
 export interface Item {
@@ -19,16 +12,7 @@ export interface Item {
 
 @Component({
     standalone: true,
-    imports: [
-        NgForOf,
-        TuiFilterPipe,
-        TuiTable,
-        TuiTableHead,
-        TuiTableThGroup,
-        TuiTableTh,
-        TuiTableTbody,
-        TuiTableTd,
-    ],
+    imports: [NgForOf, TuiFilterPipe, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
