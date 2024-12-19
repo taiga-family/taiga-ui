@@ -25,7 +25,7 @@
             class="t-row"
             [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
         >
-            <td class="t-cell">
+            <td class="t-cell t-no-overflow">
                 <div
                     automation-id="tui-documentation__property-name"
                     class="t-property t-additional-info"
@@ -54,7 +54,7 @@
                 </div>
                 <ng-container [ngTemplateOutlet]="propertyConnector.template" />
             </td>
-            <td class="t-cell">
+            <td class="t-cell t-no-overflow">
                 <span class="type">
                     <code class="t-code-type">
                         <ng-container
