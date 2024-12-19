@@ -38,7 +38,7 @@
         tuiTextfieldSize="m"
         class="t-input"
         [content]="content"
-        [tuiTextfieldCleaner]="type.includes('null')"
+        [tuiTextfieldCleaner]="type.includes('null') || type.includes('PolymorpheusContent')"
     >
         <select
             placeholder="null"

@@ -1,31 +1,33 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiCard} from '@taiga-ui/addon-commerce';
+import {
+    TUI_INPUT_CARD_GROUP_OPTIONS,
+    type TuiCard,
+    type TuiCardInputs,
+} from '@taiga-ui/addon-commerce';
 import {TuiInputCardGroup, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
+import {tuiIsString} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {InheritedDocumentation} from '../abstract/inherited-documentation';
-import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     standalone: true,
     imports: [
-        InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
         TuiInputCardGroup,
         TuiThumbnailCard,
+        TuiDocControl,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiInteractive {
+export default class PageComponent {
+    private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
+
     protected readonly examples = [
         'With validation',
         'With saved cards',
@@ -42,22 +44,25 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     };
 
     protected iconVariants: readonly string[] = Object.keys(this.cards);
-
     protected iconSelected: PolymorpheusContent = null;
 
-    protected autocomplete = false;
-
-    protected exampleText = '0000 0000 0000 0000';
+    protected id = '';
+    protected autocomplete = this.options.autocomplete;
+    protected placeholder = this.options.exampleText;
 
     protected readonly codeLengthVariants = [3, 4] as const;
-
     protected codeLength: 3 | 4 = this.codeLengthVariants[0];
 
-    protected pseudoInvalid: boolean | null = null;
+    protected readonly inputsVariants: readonly TuiCardInputs[] = [
+        {cvc: true, expire: true},
+        {cvc: false, expire: true},
+        {cvc: false, expire: false},
+        {cvc: true, expire: false},
+    ];
 
-    protected readOnly = false;
+    protected inputs = this.options.inputs;
 
-    protected control = new FormControl<TuiCard | null>(null);
+    protected formControl = new FormControl<TuiCard | null>(null);
 
     protected get icon(): PolymorpheusContent {
         return tuiIsString(this.iconSelected)
@@ -65,21 +70,9 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
             : this.iconSelected;
     }
 
-    protected get disabled(): boolean {
-        return this.control.disabled;
-    }
-
-    protected set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-        } else {
-            this.control.enable();
-        }
-    }
-
     protected getContentVariants(
         template: PolymorpheusContent,
-    ): readonly PolymorpheusContent[] | null {
+    ): readonly PolymorpheusContent[] {
         return [...this.iconVariants, template];
     }
 }
