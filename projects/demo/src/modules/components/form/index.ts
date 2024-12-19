@@ -10,5 +10,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic'];
+    protected readonly examples = ['Basic', 'Custom Layout'];
 }
