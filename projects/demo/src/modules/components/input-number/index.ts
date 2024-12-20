@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -8,8 +9,8 @@ import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
-import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({
     standalone: true,
@@ -17,6 +18,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
         InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocNumberFormat,
         TuiHint,
         TuiInputNumberModule,
         TuiNumberFormat,
@@ -26,7 +28,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiNumberFormat {
+export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected docPages = DemoRoute;
 
@@ -41,6 +43,5 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
     protected step = 0;
 
     public override cleaner = false;
-    public override precision = 2;
     public readonly control = new FormControl(6432, Validators.required);
 }
