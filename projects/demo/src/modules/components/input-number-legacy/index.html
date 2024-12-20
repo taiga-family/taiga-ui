@@ -176,11 +176,11 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiNumberFormat]="{
-                        precision,
-                        decimalMode: decimalMode,
-                        rounding,
-                        thousandSeparator,
-                        decimalSeparator,
+                        precision: numberFormatDoc.precision(),
+                        decimalMode: numberFormatDoc.decimalMode(),
+                        rounding: numberFormatDoc.rounding(),
+                        thousandSeparator: numberFormatDoc.thousandSeparator(),
+                        decimalSeparator: numberFormatDoc.decimalSeparator(),
                     }"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
@@ -232,6 +232,14 @@
                 Step to increase/decrease value with keyboard and buttons on the side
             </ng-template>
         </tui-doc-documentation>
+
+        <table tuiDocAPI>
+            <tbody
+                #numberFormatDoc
+                tuiDocNumberFormat
+            ></tbody>
+        </table>
+
         <inherited-documentation />
         <tui-doc-documentation heading="CSS customization">
             <ng-template
