@@ -5,11 +5,17 @@ import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
+export interface TuiCardInputs {
+    cvc: boolean;
+    expire: boolean;
+}
+
 export interface TuiInputCardGroupOptions extends TuiInputCardOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
     readonly exampleText: string;
     readonly exampleTextCVC: string;
     readonly cvcHidden: boolean;
+    readonly inputs: TuiCardInputs;
 }
 
 export const TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
@@ -18,6 +24,7 @@ export const TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
     exampleText: '0000 0000 0000 0000',
     exampleTextCVC: '000',
     cvcHidden: true,
+    inputs: {cvc: true, expire: true},
 };
 
 export const TUI_INPUT_CARD_GROUP_OPTIONS = tuiCreateToken(
