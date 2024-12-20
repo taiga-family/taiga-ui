@@ -1,5 +1,9 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-input-number formControlName="testValue">Type a sum</tui-input-number>
-</form>
+<tui-textfield>
+  <input
+    tuiInputNumber
+    [formControl]="control"
+    [tuiNumberFormat]="{precision: 2}"
+  />
+</tui-textfield>
 ```

@@ -544,13 +544,22 @@ export const pages: DocRoutePages = [
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthRange,
             },
+            // TODO: it will be revealed later
+            // {
+            //     section: 'Components',
+            //     title: 'InputNumber',
+            //     keywords:
+            //         'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
+            //         'cash, копейки, рубли, доллары, евро, control, контрол',
+            //     route: DemoRoute.InputNumber,
+            // },
             {
                 section: 'Components',
-                title: 'InputNumber',
+                title: 'InputNumber [deprecated]',
                 keywords:
                     'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
                     'cash, копейки, рубли, доллары, евро, control, контрол',
-                route: DemoRoute.InputNumber,
+                route: DemoRoute.InputNumberLegacy,
             },
             {
                 section: 'Components',

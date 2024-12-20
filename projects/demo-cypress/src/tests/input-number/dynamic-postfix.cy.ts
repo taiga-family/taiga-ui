@@ -3,24 +3,21 @@ import '@angular/common/locales/global/ru';
 import {I18nPluralPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        I18nPluralPipe,
-        TuiInputNumberModule,
-        TuiRoot,
-        TuiTextfieldControllerModule,
-    ],
+    imports: [FormsModule, I18nPluralPipe, TuiInputNumber, TuiRoot, TuiTextfield],
     template: `
         <tui-root>
-            <tui-input-number
-                [tuiTextfieldPostfix]="value | i18nPlural: pluralMap : 'ru-RU'"
-                [(ngModel)]="value"
-            ></tui-input-number>
+            <tui-textfield>
+                <input
+                    tuiInputNumber
+                    [postfix]="value | i18nPlural: pluralMap : 'ru-RU'"
+                    [(ngModel)]="value"
+                />
+            </tui-textfield>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,10 +25,10 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 export class TestInputNumberWithPostfix {
     protected value: number | null = null;
     protected pluralMap = {
-        one: 'секунда',
-        few: 'секунды',
-        many: 'секунд',
-        other: 'секунды',
+        one: ' секунда',
+        few: ' секунды',
+        many: ' секунд',
+        other: ' секунды',
     };
 }
 
@@ -39,7 +36,7 @@ describe('InputNumber with dynamic postfix', () => {
     describe('Plural forms of seconds (locale ru-RU)', () => {
         beforeEach(() => {
             cy.mount(TestInputNumberWithPostfix);
-            cy.get('tui-input-number input').as('textfield');
+            cy.get('[tuiInputNumber]').as('textfield');
         });
 
         const withPostfix = (

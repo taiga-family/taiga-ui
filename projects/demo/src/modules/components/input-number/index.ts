@@ -1,47 +1,36 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
+import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
-import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentation} from '../abstract/inherited-documentation';
+import {TuiHint, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocControl,
         TuiDocNumberFormat,
+        TuiDocTextfield,
         TuiHint,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiNumberFormat,
-        TuiTextfieldControllerModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export default class PageComponent extends AbstractExampleTuiControl {
-    protected readonly routes = DemoRoute;
-    protected docPages = DemoRoute;
-
+export default class PageComponent {
+    protected readonly control = new FormControl(null, Validators.required);
+    protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
     protected readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
 
     protected min = this.minVariants[0]!;
-
-    protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
-
     protected max = this.maxVariants[0]!;
-
-    protected step = 0;
-
-    public override cleaner = false;
-    public readonly control = new FormControl(6432, Validators.required);
+    protected prefix = '';
+    protected postfix = '';
 }
