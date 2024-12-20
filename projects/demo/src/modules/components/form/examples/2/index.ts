@@ -4,7 +4,15 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe, TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-import {TuiButton, TuiError, TuiGroup, TuiLabel} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiError,
+    TuiGroup,
+    TuiLabel,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {
     TuiBlock,
     TuiCheckbox,
@@ -13,6 +21,7 @@ import {
     TuiRadio,
     TuiStepper,
 } from '@taiga-ui/kit';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputDateModule,
     TuiInputModule,
@@ -52,6 +61,7 @@ class Account {
         AsyncPipe,
         ReactiveFormsModule,
         TuiAmountPipe,
+        TuiAppearance,
         TuiBlock,
         TuiButton,
         TuiCheckbox,
@@ -59,7 +69,9 @@ class Account {
         TuiDataListWrapper,
         TuiError,
         TuiFieldErrorPipe,
+        TuiForm,
         TuiGroup,
+        TuiHeader,
         TuiInputDateModule,
         TuiInputModule,
         TuiInputNumberModule,
@@ -71,7 +83,9 @@ class Account {
         TuiRadio,
         TuiSelectModule,
         TuiStepper,
+        TuiTextfield,
         TuiTextfieldControllerModule,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

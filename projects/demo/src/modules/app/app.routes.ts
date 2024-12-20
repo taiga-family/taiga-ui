@@ -325,7 +325,7 @@ export const ROUTES: Routes = [
         title: 'InputColor',
     }),
     route({
-        path: DemoRoute.FormLayout,
+        path: DemoRoute.Form,
         loadComponent: async () => import('../components/form'),
         title: 'Form',
     }),
@@ -747,11 +747,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Colors,
         loadComponent: async () => import('../markup/colors'),
         title: 'Colors',
-    }),
-    route({
-        path: DemoRoute.Form,
-        loadComponent: async () => import('../markup/form'),
-        title: 'Form ',
     }),
     route({
         path: DemoRoute.Lists,
