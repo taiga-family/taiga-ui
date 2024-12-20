@@ -1,0 +1,67 @@
+<ng-container *tuiTextfieldContent>
+    <button
+        appearance="textfield"
+        tabindex="-1"
+        tuiButton
+        tuiChevron
+        type="button"
+        class="t-ipi-select"
+        [attr.data-mode]="mode()"
+        [class.t-ipi-select_readonly]="readOnly()"
+        [disabled]="disabled()"
+        [size]="size()"
+        [tuiAppearanceFocus]="open()"
+        (mousedown.prevent)="interactive() && open.set(!open())"
+    >
+        <img
+            class="t-ipi-flag"
+            [alt]="names()?.[code()]"
+            [class.t-ipi-flag_small]="size() === 's'"
+            [src]="code() | tuiFlag"
+        />
+    </button>
+</ng-container>
+<ng-container *tuiTextfieldDropdown>
+    <div
+        *ngIf="countrySearch"
+        #element
+        class="t-ipi-search"
+    >
+        <tui-textfield
+            [iconStart]="icons.search"
+            [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
+        >
+            <input
+                autocomplete="off"
+                tuiTextfield
+                type="text"
+                [focused]="true"
+                [ngModel]="search()"
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!!element.closest('tui-dropdown-mobile')"
+                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (ngModelChange)="search.set($event)"
+            />
+        </tui-textfield>
+    </div>
+
+    <tui-data-list class="t-ipi-options">
+        <button
+            *ngFor="let item of filtered()"
+            tuiOption
+            type="button"
+            [tuiCell]="size()"
+            (click)="onItemClick(item.iso)"
+        >
+            <img
+                alt=""
+                class="t-ipi-flag"
+                [class.t-ipi-flag_small]="size() === 's'"
+                [src]="item.iso | tuiFlag"
+            />
+            <span tuiTitle>{{ item.name }}</span>
+            <span class="t-ipi-code">{{ item.code }}</span>
+        </button>
+    </tui-data-list>
+</ng-container>

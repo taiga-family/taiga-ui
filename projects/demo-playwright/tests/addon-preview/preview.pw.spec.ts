@@ -23,10 +23,10 @@ test.describe('Preview', () => {
 
             await expect(preview).toBeAttached();
 
-            await page.waitForLoadState('networkidle');
-
             await preview.click(); // requires for mouse wheel
             await page.mouse.wheel(0, -50);
+
+            await page.waitForLoadState('networkidle'); // wait load image in dialog
 
             await expect(preview).toHaveScreenshot('01-preview-zoom-by-wheel.png');
         });

@@ -92,5 +92,32 @@ test.describe('CalendarRange', () => {
 
             await expect(example).toHaveScreenshot('06-maximum-month-with-items.png');
         });
+
+        test('Dont allow to select disabled dates in calendar', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.CalendarRange}/API?disabledItemHandler$=1`);
+
+            await expect(example).toHaveScreenshot('08-disabled-dates-1-default.png');
+
+            const getCells = (): Locator =>
+                page.locator('[automation-id="tui-calendar-sheet__cell"]');
+
+            await getCells().nth(1).click();
+
+            await expect(example).toHaveScreenshot('08-disabled-dates-2-select-from.png');
+
+            await getCells().nth(9).hover();
+
+            await expect(example).toHaveScreenshot('08-disabled-dates-3-hover-to.png');
+
+            await getCells().nth(9).click();
+            await page.mouse.click(100, 100); // clear focus
+
+            await expect(example).toHaveScreenshot('08-disabled-dates-4-click-to.png');
+
+            await getCells().nth(0).click();
+            await page.mouse.click(100, 100); // clear focus
+
+            await expect(example).toHaveScreenshot('08-disabled-dates-5-click-to.png');
+        });
     });
 });

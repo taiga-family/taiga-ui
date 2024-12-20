@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
+import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiTable],
     templateUrl: './index.html',
-    styles: ['td {width: 18.75rem}'],
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {

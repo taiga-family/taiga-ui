@@ -19,6 +19,9 @@ export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page'
  */
 export interface TuiDialogOptions<I> {
     readonly appearance: string;
+    /**
+     * TODO: rename to closable in v5.0
+     */
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I extends void ? undefined : I & {button?: string};
     readonly dismissible: Observable<boolean> | boolean;

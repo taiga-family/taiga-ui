@@ -1,7 +1,27 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 .context-menu {
     inline-size: 8rem;
 }
 
 .icon {
     border-width: 0.25rem;
+}
+
+[tuiTable] {
+    inline-size: 100%;
+}
+
+[tuiTh],
+[tuiTd] {
+    border-inline-start: none;
+    border-inline-end: none;
+}
+
+[tuiTh] {
+    border-block-start: none;
+}
+
+[tuiTd] {
+    font: var(--tui-font-text-m) !important;
 }

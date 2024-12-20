@@ -1,0 +1,89 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiInputPhoneInternational][tuiInputPhoneInternational] {
+    left: var(--t-offset);
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    inline-size: calc(100% - var(--t-offset));
+
+    tui-root:has(tui-dropdown-mobile) & {
+        caret-color: transparent;
+    }
+
+    & + label {
+        padding-left: var(--t-offset);
+    }
+}
+
+tui-textfield[data-size='s'] {
+    --t-offset: 4.125rem;
+
+    .t-ipi-flag {
+        margin: 0 0.1875rem;
+    }
+}
+
+tui-textfield[data-size='m'] {
+    --t-offset: 4.875rem;
+
+    .t-ipi-flag {
+        margin: 0 -0.1875rem;
+    }
+}
+
+tui-textfield[data-size='l'] {
+    --t-offset: 5.25rem;
+
+    .t-ipi-flag {
+        margin: 0 -0.1875rem;
+    }
+}
+
+.t-ipi-select {
+    position: absolute;
+    left: 0;
+    border-radius: inherit;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+
+    &_readonly {
+        pointer-events: none;
+    }
+}
+
+.t-ipi-flag {
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    border-radius: 100%;
+
+    &_small {
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+    }
+}
+
+.t-ipi-code {
+    color: var(--tui-text-secondary);
+}
+
+.t-ipi-search {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--tui-background-elevation-3);
+    padding: 0.375rem 0.375rem 0;
+
+    input {
+        .tui-prevent-ios-scroll();
+    }
+}
+
+tui-dropdown-mobile {
+    .t-ipi-search {
+        background: var(--tui-background-elevation-1);
+    }
+
+    .t-ipi-options:not(:first-child) {
+        min-block-size: calc(100 * var(--tui-viewport-vh) - 8.75rem);
+    }
+}

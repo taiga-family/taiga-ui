@@ -76,7 +76,7 @@ export default class Example {
     );
 
     protected readonly height$ = this.size$.pipe(
-        map(({height}) => `calc(${height - this.offset}px - 14.5rem`),
+        map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
 
     protected toggle(open: boolean): void {

@@ -5,7 +5,6 @@
     <input
       formControlName="card"
       tuiInputCard
-      tuiTextfield
     />
   </tui-textfield>
   <tui-textfield>
@@ -13,7 +12,6 @@
     <input
       formControlName="expire"
       tuiInputExpire
-      tuiTextfield
     />
   </tui-textfield>
   <tui-textfield>
@@ -21,7 +19,6 @@
     <input
       formControlName="cvc"
       tuiInputCVC
-      tuiTextfield
     />
   </tui-textfield>
 </form>

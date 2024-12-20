@@ -13,6 +13,7 @@ test.describe('ComboBox', () => {
         const input = example.locator('tui-combo-box input[tuiTextfieldLegacy]');
 
         await example.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(300); // safari flaky
         await input.click();
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
@@ -35,15 +36,17 @@ test.describe('ComboBox', () => {
             test(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, async ({
                 page,
             }) => {
+                await tuiGoto(
+                    page,
+                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                );
+
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
-                await tuiGoto(
-                    page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
-                );
+                await page.waitForTimeout(300); // safari flaky
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,

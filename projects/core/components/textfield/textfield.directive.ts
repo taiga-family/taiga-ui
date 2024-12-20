@@ -28,7 +28,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
     protected readonly s = tuiAppearanceState(null);
     protected readonly m = tuiAppearanceMode(this.mode);
     protected readonly f = tuiAppearanceFocus(
-        computed(() => this.focused() || this.textfield.focused()),
+        computed(() => this.focused() ?? this.textfield.focused()),
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
@@ -99,7 +99,9 @@ export class TuiTextfieldBase<T> implements OnChanges {
 
 @Directive({
     standalone: true,
-    selector: 'input[tuiTextfield]',
+    // TODO: Remove :not in v.5
+    selector:
+        'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'textfield.id',
@@ -111,3 +113,14 @@ export class TuiTextfieldBase<T> implements OnChanges {
     },
 })
 export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}
+
+@Directive({
+    standalone: true,
+    hostDirectives: [
+        {
+            directive: TuiTextfieldDirective,
+            inputs: ['invalid', 'focused', 'readOnly', 'state'],
+        },
+    ],
+})
+export class TuiWithTextfield {}
