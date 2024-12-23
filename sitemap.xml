@@ -181,7 +181,7 @@
     <loc>https://taiga-ui.dev/pipes/field-error/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/form/</loc>
+    <loc>https://taiga-ui.dev/layout/form/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-files/</loc>
@@ -446,9 +446,6 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/colors/</loc>
-  </url>
-  <url>
-    <loc>https://taiga-ui.dev/form/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/lists/</loc>
@@ -904,10 +901,10 @@
     <loc>https://taiga-ui.dev/pipes/field-error/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/form/API/</loc>
+    <loc>https://taiga-ui.dev/layout/form/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/form/Setup/</loc>
+    <loc>https://taiga-ui.dev/layout/form/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-files/API/</loc>
