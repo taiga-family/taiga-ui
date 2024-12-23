@@ -1052,12 +1052,14 @@ export const pages: DocRoutePages = [
             {
                 scheme: 'beaver',
                 anchor: 'subheader-compact',
-                name: 'subheader-compact',
+                name: 'subheaders',
+                qualifiedName: 'subheader-compact',
             },
             {
                 scheme: 'beaver',
                 anchor: 'subheader-object',
-                name: 'subheader-object',
+                name: 'subheaders',
+                qualifiedName: 'subheader-object',
             },
         ],
     },
