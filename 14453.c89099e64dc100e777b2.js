@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[14453],{14453:n=>{n.exports=".task:first-child tui-input-inline {\n    text-decoration: underline;\n    text-align: center;\n}\n\n.placeholder {\n    color: var(--tui-text-03);\n}\n"}}]);
