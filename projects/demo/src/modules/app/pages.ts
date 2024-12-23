@@ -1047,7 +1047,19 @@ export const pages: DocRoutePages = [
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
         route: DemoRoute.Navigation,
-        meta: {scheme: 'beaver', name: 'navigation'},
+        meta: [
+            {scheme: 'beaver', anchor: 'full', name: 'navigation'},
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-compact',
+                name: 'subheader-compact',
+            },
+            {
+                scheme: 'beaver',
+                anchor: 'subheader-object',
+                name: 'subheader-object',
+            },
+        ],
     },
     {
         section: 'Layout',

@@ -252,19 +252,31 @@
     </aside>
     <main tuiNavigationMain>
         <nav
-            tuiNavigationNav
+            compact
+            tuiSubheader
             [style.position]="'sticky'"
         >
-            <a routerLink=".">
-                <tui-icon icon="@tui.chevron-left" />
-                Back
-            </a>
-            /
-            <span tuiNavigationLogo>
-                <span tuiFade>Groups</span>
-                <tui-badge iconStart="@tui.lock">Status</tui-badge>
-            </span>
-            <hr />
+            <tui-breadcrumbs [itemsLimit]="10">
+                <ng-container *ngFor="let item of breadcrumbs; let last = last">
+                    <ng-container *ngIf="last">
+                        <strong
+                            *tuiItem
+                            tuiFade
+                        >
+                            {{ item }}
+                        </strong>
+                    </ng-container>
+                    <ng-container *ngIf="!last">
+                        <button
+                            *tuiItem
+                            tuiLink
+                            type="button"
+                        >
+                            {{ item }}
+                        </button>
+                    </ng-container>
+                </ng-container>
+            </tui-breadcrumbs>
             <tui-tabs tuiFade>
                 <button
                     tuiTab
