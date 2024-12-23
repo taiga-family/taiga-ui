@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.19.0](https://github.com/taiga-family/taiga-ui/compare/v4.18.0...v4.19.0) (2024-12-23)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** virtual-scroll flickers during scroll in zoneless mode
+  ([#10023](https://github.com/taiga-family/taiga-ui/issues/10023))
+  ([e3cfbc9](https://github.com/taiga-family/taiga-ui/commit/e3cfbc940e2cb0c196b551e39ff58a9ffa8ff1cb))
+- **addon-table:** fix calculating start page ([#9980](https://github.com/taiga-family/taiga-ui/issues/9980))
+  ([d26f32b](https://github.com/taiga-family/taiga-ui/commit/d26f32b11948a3060e7840a9844a6b97e8a58ef8))
+- **cdk:** fix tuiFocusedIn error when focus events happened in reactive context
+  ([#10020](https://github.com/taiga-family/taiga-ui/issues/10020))
+  ([12e9a29](https://github.com/taiga-family/taiga-ui/commit/12e9a29436b309f5d7b2229249c1113b06a2ff3d))
+- **core:** dialog has padding for close button event when not closeable
+  ([#10012](https://github.com/taiga-family/taiga-ui/issues/10012))
+  ([97d24ad](https://github.com/taiga-family/taiga-ui/commit/97d24ad3a7c74f7c0447804234badc46997aca34))
+- **core:** dont allow to select disabled dates in calendar
+  ([#10007](https://github.com/taiga-family/taiga-ui/issues/10007))
+  ([b5d328c](https://github.com/taiga-family/taiga-ui/commit/b5d328cb41a0e8c663c5fe875ef2db9a8f929036))
+- **core:** emit tuiDropdownOpenChange on distinct values
+  ([#9962](https://github.com/taiga-family/taiga-ui/issues/9962))
+  ([f8ea2f2](https://github.com/taiga-family/taiga-ui/commit/f8ea2f2d41351dae33362acee7dd12e99767eea2))
+- **kit:** `Carousel` fix scrolling page on mobile devices
+  ([#10009](https://github.com/taiga-family/taiga-ui/issues/10009))
+  ([13dcf7c](https://github.com/taiga-family/taiga-ui/commit/13dcf7c8c92f7d1198325f79816823dd0ee7eea4))
+- **kit:** `InputNumber` has rounding problems on blur with float large numbers
+  ([#9974](https://github.com/taiga-family/taiga-ui/issues/9974))
+  ([9ec1e7b](https://github.com/taiga-family/taiga-ui/commit/9ec1e7b27301594df2e7f3d86862a16dc3d9b691))
+- **kit:** skeleton animation speed slow down after speed up `TUI_ANIMATION`
+  ([#9984](https://github.com/taiga-family/taiga-ui/issues/9984))
+  ([b8bb938](https://github.com/taiga-family/taiga-ui/commit/b8bb938ec1f9b47d8b9b9e3f9e2f12e04841da28))
+- **kit:** strange behavior in Safari when working with tiles
+  ([#9952](https://github.com/taiga-family/taiga-ui/issues/9952))
+  ([80614b3](https://github.com/taiga-family/taiga-ui/commit/80614b310e626092e3b0e316713e1a595ab4a693))
+- **legacy:** reset cached active period in `tui-input-date-range`
+  ([#9946](https://github.com/taiga-family/taiga-ui/issues/9946))
+  ([1144fae](https://github.com/taiga-family/taiga-ui/commit/1144fae8c7589118c7ebe62eded7a3a7e9f219fd))
+
+### 🚀 Features
+
+- **addon-commerce:** `InputCardGroup` add `inputs` option
+  ([#10033](https://github.com/taiga-family/taiga-ui/issues/10033))
+  ([5e20a26](https://github.com/taiga-family/taiga-ui/commit/5e20a2612839a5c7be2b49df26be6175bb22b431))
+- **addon-commerce:** `ThumbnailCard` has new `xs` size
+  ([fc1ec3e](https://github.com/taiga-family/taiga-ui/commit/fc1ec3eba8e1e4d2e944a43f59f39f14b7dca99e))
+- **addon-commerce:** `ThumbnailCard` has new `xs` size ([#9969](https://github.com/taiga-family/taiga-ui/issues/9969))
+  ([436e351](https://github.com/taiga-family/taiga-ui/commit/436e351a4c65d866db6b14056087256660222008))
+- **addon-table:** allow resize more than 100% width of table
+  ([#9961](https://github.com/taiga-family/taiga-ui/issues/9961))
+  ([a16071a](https://github.com/taiga-family/taiga-ui/commit/a16071af434df266afd09b7bae4d5330c595b674))
+- **experimental:** `InputPhoneInternational` refactor to new textfield approach
+  ([#9976](https://github.com/taiga-family/taiga-ui/issues/9976))
+  ([08f924d](https://github.com/taiga-family/taiga-ui/commit/08f924de9c3f756a72ce8cee0ac0f3072557b338))
+- **kit:** safety change active index in stepper ([#10004](https://github.com/taiga-family/taiga-ui/issues/10004))
+  ([286b6d2](https://github.com/taiga-family/taiga-ui/commit/286b6d2274b1adeaa467b4fa4401f32bd9d0a72a))
+- **layout:** `Navigation` add `Subheader` component ([#10041](https://github.com/taiga-family/taiga-ui/issues/10041))
+  ([7de5985](https://github.com/taiga-family/taiga-ui/commit/7de59857276cddbbb608343524932668b1a243f6))
+
 ## [4.18.0](https://github.com/taiga-family/taiga-ui/compare/v4.17.0...v4.18.0) (2024-12-10)
 
 ### 🐞 Bug Fixes
