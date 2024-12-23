@@ -125,7 +125,7 @@ export default class Example {
         periodValue: new FormControl(new TuiDay(2017, 2, 15), Validators.required),
         timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
         personValue: new FormControl(this.persons[0]),
-        quantityValue: new FormControl(50_000, Validators.required),
+        quantityValue: new FormControl(50_000),
         radioValue: new FormControl('with-commission'),
         accountWherefrom: new FormControl<Account | null>(null),
         accountWhere: new FormControl<Account | null>(null),
