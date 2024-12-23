@@ -7,16 +7,10 @@ test.describe('MultiSelect', () => {
     test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        test.beforeEach(async ({page, browserName}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.MultiSelect);
 
             documentationPage = new TuiDocumentationPagePO(page);
-
-            // TODO: why does this test keep failing in safari
-            test.skip(
-                browserName !== 'chromium',
-                'This feature is only relevant in Chrome',
-            );
         });
 
         test('does not overflow arrow icon by many tags', async () => {
@@ -37,7 +31,7 @@ test.describe('MultiSelect', () => {
             );
         });
 
-        test('multi-select with data list with label', async () => {
+        test('multi-select with data list with label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
             const multiSelect = new TuiMultiSelectPO(
                 example.locator('tui-multi-select').first(),
@@ -45,13 +39,15 @@ test.describe('MultiSelect', () => {
 
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
+            await page.waitForTimeout(300);
+            await page.locator('tui-dropdown [tuiOption]').first().hover();
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
-                '02-with-data-list__with-label.png',
+                '02-with-data-list-with-label.png',
             );
         });
 
-        test('multi-select with data list without label', async () => {
+        test('multi-select with data list without label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
             const multiSelect = new TuiMultiSelectPO(
                 example.locator('tui-multi-select').nth(1),
@@ -59,9 +55,11 @@ test.describe('MultiSelect', () => {
 
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
+            await page.waitForTimeout(300);
+            await page.locator('tui-dropdown [tuiOption]').first().hover();
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
-                '03-with-data-list__without-label.png',
+                '03-with-data-list-without-label.png',
             );
         });
 
@@ -144,7 +142,7 @@ test.describe('MultiSelect', () => {
                     await documentationPage.waitStableState();
 
                     await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}__1_initial.png`,
+                        `06-update-on-${type}-1_initial.png`,
                     );
 
                     await multiSelect.arrow.click();
@@ -153,35 +151,35 @@ test.describe('MultiSelect', () => {
                     await documentationPage.waitStableState();
 
                     await expect(multiSelect.dropdown).toHaveScreenshot(
-                        `06-update-on-${type}__2_selected-values.png`,
+                        `06-update-on-${type}-2_selected-values.png`,
                     );
 
                     await multiSelect.closeDropdown();
                     await documentationPage.waitStableState();
 
                     await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}__3_hide-dropdown.png`,
+                        `06-update-on-${type}-3_hide-dropdown.png`,
                     );
 
                     await multiSelect.textfield.blur();
                     await documentationPage.waitStableState();
 
                     await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}__4_blur-event.png`,
+                        `06-update-on-${type}-4_blur-event.png`,
                     );
 
                     await documentationPage.submitFormControlButton.click();
                     await documentationPage.waitStableState();
 
                     await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}__5_submit-event.png`,
+                        `06-update-on-${type}-5_submit-event.png`,
                     );
 
                     await documentationPage.resetFormControlButton.click();
                     await documentationPage.waitStableState();
 
                     await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}__6_reset.png`,
+                        `06-update-on-${type}-6_reset.png`,
                     );
                 });
             });

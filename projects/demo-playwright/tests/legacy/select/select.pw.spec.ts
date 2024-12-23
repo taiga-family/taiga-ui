@@ -16,8 +16,10 @@ test.describe('Select', () => {
 
         test('checkmark size', async ({page}) => {
             const example = documentationPage.getExample('#template');
-            const select = new TuiSelectPO(example.locator('tui-select').first());
+            const selectLocator = example.locator('tui-select').first();
+            const select = new TuiSelectPO(selectLocator);
 
+            await selectLocator.scrollIntoViewIfNeeded();
             await select.textfield.click();
 
             await expect(select.dropdown).toBeVisible();
@@ -32,8 +34,10 @@ test.describe('Select', () => {
 
         test('opens dropdown by click on icon', async ({page}) => {
             const example = documentationPage.getExample('#base');
-            const select = new TuiSelectPO(example.locator('tui-select').last());
+            const selectLocator = example.locator('tui-select').first();
+            const select = new TuiSelectPO(selectLocator);
 
+            await selectLocator.scrollIntoViewIfNeeded();
             await select.textfield.click({position: {x: 200, y: 30}});
 
             await expect(select.dropdown).toBeVisible();
