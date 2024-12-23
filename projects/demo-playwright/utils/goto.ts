@@ -67,7 +67,7 @@ export async function tuiGoto(
     await waitIcons({
         page,
         timeout: 200,
-        icons: await page.locator('tui-icon >> visible=true').all(),
+        icons: await page.locator('tui-icon').all(),
     });
 
     await tuiWaitForFonts(page);
