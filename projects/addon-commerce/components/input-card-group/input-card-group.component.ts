@@ -177,8 +177,17 @@ export class TuiInputCardGroup
         () => !!this.value()?.card && this.interactive(),
     );
 
+    /**
+     * @deprecated use 'placeholder' instead
+     */
     @Input()
     public exampleText = this.options.exampleText;
+
+    @Input()
+    public placeholder = this.options.exampleText;
+
+    @Input()
+    public inputs = this.options.inputs;
 
     @Input()
     public cardValidator: TuiBooleanHandler<string> = this.options.cardValidator;
@@ -219,7 +228,11 @@ export class TuiInputCardGroup
     }
 
     public focusExpire(): void {
-        this.inputExpire?.nativeElement.focus({preventScroll: true});
+        if (this.inputs.expire) {
+            this.inputExpire?.nativeElement.focus({preventScroll: true});
+        } else {
+            this.inputCVC?.nativeElement.focus({preventScroll: true});
+        }
     }
 
     public focusCVC(): void {
@@ -292,7 +305,7 @@ export class TuiInputCardGroup
     }
 
     protected get cvcPrefilled(): boolean {
-        return !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
+        return !this.inputs.cvc || !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
     }
 
     protected get cardFocusable(): boolean {

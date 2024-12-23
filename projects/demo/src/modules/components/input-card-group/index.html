@@ -19,17 +19,19 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
+        <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-input-card-group
                     [autocomplete]="autocomplete"
                     [codeLength]="codeLength"
-                    [exampleText]="exampleText"
-                    [formControl]="control"
+                    [formControl]="formControl"
                     [icon]="icon"
-                    [invalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    (binChange)="documentationPropertyBinChange.emitEvent($event)"
+                    [id]="id"
+                    [inputs]="inputs"
+                    [invalid]="control.invalid"
+                    [placeholder]="placeholder"
+                    [readOnly]="control.readonly"
+                    [tuiDisabled]="control.disabled"
                 />
             </ng-template>
         </tui-doc-demo>
@@ -51,60 +53,84 @@
             </tui-thumbnail-card>
         </ng-template>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="[autocomplete]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="autocomplete"
             >
-                Disabled state (use
-                <code>formControl.disable()</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="autocomplete"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="autocomplete"
+                Browser autofill
+            </tr>
+            <tr
+                name="[cardValidator]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<string>"
             >
-                Browser autocomplete of card
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="icon"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="getContentVariants(template)"
-                [(documentationPropertyValue)]="iconSelected"
-            >
-                SVG card icon
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="exampleText"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="exampleText"
-            >
-                An example of input
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="codeLength"
-                documentationPropertyType="3 | 4"
-                [documentationPropertyValues]="codeLengthVariants"
-                [(documentationPropertyValue)]="codeLength"
+                Custom card validator for moving focus to the next field
+            </tr>
+            <tr
+                name="[codeLength]"
+                tuiDocAPIItem
+                type="3 | 4"
+                [items]="codeLengthVariants"
+                [(value)]="codeLength"
             >
                 Code length
-            </ng-template>
-            <ng-template
-                #documentationPropertyBinChange="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="binChange"
-                documentationPropertyType="string | null"
+            </tr>
+            <tr
+                name="[icon]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="getContentVariants(template)"
+                [(value)]="iconSelected"
+            >
+                Custom card icon
+            </tr>
+            <tr
+                name="[id]"
+                tuiDocAPIItem
+                type="string"
+                [id]="id"
+            >
+                <code>id</code>
+                attribute for input tags (adds
+                <code>_card</code>
+                ,
+                <code>_expire</code>
+                and
+                <code>_cvc</code>
+                accordingly). Auto-generated when not provided.
+            </tr>
+            <tr
+                name="[inputs]"
+                tuiDocAPIItem
+                type="TuiCardInputs"
+                [items]="inputsVariants"
+                [(value)]="inputs"
+            >
+                Toggle availability of inputs
+            </tr>
+            <tr
+                name="[placeholder]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="placeholder"
+            >
+                Placeholder
+            </tr>
+            <tr
+                name="(binChange)"
+                tuiDocAPIItem
+                type="string | null"
             >
                 BIN value (card first 6 symbols)
-            </ng-template>
-        </tui-doc-documentation>
-        <inherited-documentation />
+            </tr>
+            <tbody
+                #control
+                tuiDocControl
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
