@@ -39,8 +39,7 @@ test.describe('MultiSelect', () => {
 
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
-            await page.locator('tui-dropdown [tuiOption]').first().hover();
-            await page.waitForTimeout(300);
+            await page.mouse.move(0, 0); // clear focus
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '02-with-data-list-with-label.png',
@@ -55,8 +54,7 @@ test.describe('MultiSelect', () => {
 
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
-            await page.locator('tui-dropdown [tuiOption]').first().hover();
-            await page.waitForTimeout(300);
+            await page.mouse.move(0, 0); // clear focus
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '03-with-data-list-without-label.png',
