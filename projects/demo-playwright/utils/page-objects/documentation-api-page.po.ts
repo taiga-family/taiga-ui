@@ -31,6 +31,14 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async hideContent(): Promise<void> {
+        const bars = await this.page
+            .locator('tui-root > tui-scroll-controls .t-bar')
+            .all();
+
+        for (const bar of bars) {
+            await tuiHideElement(bar);
+        }
+
         return tuiHideElement(this.page.locator('tui-doc-page'));
     }
 
