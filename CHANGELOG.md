@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.101.0](https://github.com/taiga-family/taiga-ui/compare/v3.100.0...v3.101.0) (2024-12-23)
+
+### Bug Fixes
+
+- **core:** dialog has padding for close button event when not closeable
+  ([#10018](https://github.com/taiga-family/taiga-ui/issues/10018))
+  ([b74300e](https://github.com/taiga-family/taiga-ui/commit/b74300e526ea3252efca0939726a32112b022a04))
+- **experimental:** `Fade` fix mask-position ([#10008](https://github.com/taiga-family/taiga-ui/issues/10008))
+  ([8920ad3](https://github.com/taiga-family/taiga-ui/commit/8920ad3dbbb02d170662c504d35e7de80d7b9dd0))
+- **kit:** `InputInline` has broken scroll in Safari & Firefox
+  ([#9947](https://github.com/taiga-family/taiga-ui/issues/9947))
+  ([ac13a6f](https://github.com/taiga-family/taiga-ui/commit/ac13a6fc1f128510a960a2119dd533ebe8e15894))
+- **kit:** strange behavior in Safari when working with tiles
+  ([#9956](https://github.com/taiga-family/taiga-ui/issues/9956))
+  ([4f02d38](https://github.com/taiga-family/taiga-ui/commit/4f02d38d1a84d438173152fe53d74de1dc950f8f))
+
 ## [3.100.0](https://github.com/taiga-family/taiga-ui/compare/v3.99.0...v3.100.0) (2024-12-10)
 
 ### Features
