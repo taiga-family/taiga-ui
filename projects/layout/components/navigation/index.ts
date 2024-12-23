@@ -8,3 +8,4 @@ export * from './logo.component';
 export * from './main.component';
 export * from './nav.component';
 export * from './navigation';
+export * from './subheader.component';

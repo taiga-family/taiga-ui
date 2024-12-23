@@ -7,6 +7,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
 import {TuiLogoComponent} from './logo.component';
 import {TuiMainComponent} from './main.component';
 import {TuiNavComponent} from './nav.component';
+import {TuiSubheaderCompactComponent, TuiSubheaderComponent} from './subheader.component';
 
 export const TuiNavigation = [
     TuiHeaderComponent,
@@ -18,4 +19,6 @@ export const TuiNavigation = [
     TuiNavComponent,
     TuiHintAsideDirective,
     TuiDrawerDirective,
+    TuiSubheaderComponent,
+    TuiSubheaderCompactComponent,
 ] as const;

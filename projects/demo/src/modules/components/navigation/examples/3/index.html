@@ -1,90 +1,201 @@
 <header tuiNavigationHeader>
-    <span tuiNavigationLogo>
-        <tui-icon icon="@tui.gitlab" />
-        Project name
-    </span>
-    <hr />
-    <tui-avatar src="T" />
+    <div
+        tuiGroup
+        [style.margin]="'auto'"
+    >
+        <label
+            appearance=""
+            tuiBlock="s"
+        >
+            <input
+                tuiBlock="s"
+                type="radio"
+                value="basic"
+                [(ngModel)]="current"
+            />
+            Basic
+        </label>
+        <label
+            appearance=""
+            tuiBlock="s"
+        >
+            <input
+                tuiBlock="s"
+                type="radio"
+                value="input"
+                [(ngModel)]="current"
+            />
+            Input
+        </label>
+        <label
+            appearance=""
+            tuiBlock="s"
+        >
+            <input
+                tuiBlock="s"
+                type="radio"
+                value="card"
+                [(ngModel)]="current"
+            />
+            Card
+        </label>
+    </div>
 </header>
 <main tuiNavigationMain>
-    <tui-breadcrumbs>
-        <a
-            *tuiItem
-            tuiLink
-        >
-            Home
-        </a>
-        <a
-            *tuiItem
-            tuiLink
-        >
-            Projects
-        </a>
-        <a *tuiItem>Project name</a>
-    </tui-breadcrumbs>
-    <header
-        tuiAppearance="outline-grayscale"
-        tuiCardLarge="compact"
-        tuiHeader
-    >
-        <h1 tuiTitle>
-            Project name
-            <div tuiSubtitle>
-                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-                visual form of a document or a typeface without relying on meaningful content.
+    <header tuiSubheader>
+        <ng-container *ngIf="current === 'basic'">
+            <a
+                iconStart="@tui.chevron-left"
+                tuiLink
+                [textContent]="'Repositories'"
+            ></a>
+            <h2 tuiHeader>
+                <div tuiTitle>
+                    <div tuiNavigationLogo>
+                        <tui-icon icon="@tui.gitlab" />
+                        <span tuiFade>Research and Development Platform</span>
+                        <tui-icon
+                            icon="@tui.heart"
+                            tuiBadge
+                        />
+                    </div>
+                    <div tuiSubtitle>
+                        Here you can initiate and participate in the review of package objects. Each object have up to 3
+                        groups of reviewers, with one response required from each type, and any other participant can
+                        change both positive.
+                    </div>
+                    <div
+                        tuiSubtitle
+                        [style.display]="'flex'"
+                        [style.gap.rem]="1"
+                    >
+                        <span>
+                            <tui-icon icon="@tui.user" />
+                            Alex Inkin
+                        </span>
+                        Edited 6 minutes ago
+                        <span>
+                            <tui-icon icon="@tui.lock" />
+                            Private
+                        </span>
+                    </div>
+                </div>
+                <div tuiAccessories>
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
+                    <button
+                        appearance="primary"
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
+                    <button
+                        iconStart="@tui.ellipsis"
+                        tuiIconButton
+                        type="button"
+                    >
+                        More
+                    </button>
+                </div>
+            </h2>
+        </ng-container>
+        <ng-container *ngIf="current === 'input'">
+            <h2 tuiHeader>
+                <div tuiTitle>Projects</div>
+                <div tuiAccessories>
+                    <button
+                        appearance="primary"
+                        tuiButton
+                        type="button"
+                    >
+                        Create
+                    </button>
+                </div>
+            </h2>
+            <tui-textfield iconStart="@tui.search">
+                <input
+                    placeholder="Search"
+                    tuiTextfield
+                />
+            </tui-textfield>
+        </ng-container>
+        <ng-container *ngIf="current === 'card'">
+            <tui-breadcrumbs>
+                <a
+                    *tuiItem
+                    tuiLink
+                >
+                    Code
+                </a>
+                <a
+                    *tuiItem
+                    tuiLink
+                >
+                    Repositories
+                </a>
+                <span *tuiItem>Taiga UI</span>
+            </tui-breadcrumbs>
+            <div
+                tuiAppearance="floating"
+                tuiCardLarge="compact"
+                tuiHeader
+            >
+                <h2 tuiTitle>
+                    Personal and Development Plan
+                    <span tuiSubtitle>
+                        Here you can initiate and participate in the review of package objects. Each object have up to 3
+                        groups of reviewers, with one response required from each type, and any other participant can
+                        change both positive
+                    </span>
+                </h2>
             </div>
-        </h1>
-        <button
-            appearance="secondary"
-            size="m"
-            tuiButton
-            type="button"
-        >
-            Action
-        </button>
+        </ng-container>
+
+        <nav tuiTabs>
+            <button
+                tuiTab
+                type="button"
+            >
+                First tab
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Second tab
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Third tab
+            </button>
+            <button
+                tuiButton
+                type="button"
+            >
+                Button
+            </button>
+            <button
+                tuiButton
+                type="button"
+            >
+                Button
+            </button>
+        </nav>
     </header>
-    <nav tuiNavigationNav>
-        <tui-tabs>
-            <button
-                tuiTab
-                type="button"
-            >
-                Default view
-            </button>
-            <button
-                tuiTab
-                type="button"
-            >
-                Details
-            </button>
-            <button
-                tuiTab
-                type="button"
-            >
-                Followers
-            </button>
-        </tui-tabs>
-        <hr />
-        <button
-            tuiButton
-            type="button"
-        >
-            Primary
-        </button>
-        <button
-            appearance="secondary"
-            iconStart="@tui.ellipsis"
-            tuiIconButton
-            type="button"
-        >
-            More
-        </button>
-    </nav>
+
     <div
         *tuiRepeatTimes="let index of 10"
         tuiAppearance="floating"
-        tuiCardLarge
+        tuiCardLarge="compact"
         tuiHeader
+        [style.grid-column]="'span 6'"
     >
         <h2 tuiTitle>
             Some random content

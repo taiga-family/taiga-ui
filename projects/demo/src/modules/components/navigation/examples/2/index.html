@@ -19,108 +19,70 @@
     </button>
 </header>
 <main tuiNavigationMain>
-    <a
-        appearance="action-grayscale"
-        iconStart="@tui.chevron-left"
-        size="xs"
-        tuiButton
-    >
-        Back
-    </a>
-    <header tuiHeader>
-        <h1 tuiTitle>
-            <div tuiNavigationLogo>
-                <tui-icon icon="@tui.gitlab" />
-                <span tuiFade>Research and Development Platform</span>
-                <tui-icon
-                    icon="@tui.heart"
-                    tuiBadge
-                />
-            </div>
-            <div tuiSubtitle>
-                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-                visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
-                as a placeholder before the final copy is available. It is also used to temporarily replace text, which
-                allows designers to consider the form of a webpage or publication, without the meaning of the text
-                influencing the design.
-            </div>
-            <div
-                tuiCaption
-                tuiFade
-            >
-                <span>
-                    <tui-icon icon="@tui.user" />
-                    Alex Inkin
-                </span>
-                <span>Edited 6 minutes ago</span>
-                <span>
-                    <tui-icon icon="@tui.lock" />
-                    Private
-                </span>
-            </div>
-        </h1>
-        <aside tuiAccessories>
-            <button
-                appearance="secondary"
-                tuiButton
-                type="button"
-            >
-                Secondary
-            </button>
-            <button
-                tuiButton
-                type="button"
-            >
-                Primary
-            </button>
-            <button
-                appearance="secondary"
-                iconStart="@tui.ellipsis"
-                tuiIconButton
-                type="button"
-            >
-                More
-            </button>
-        </aside>
-    </header>
     <nav
-        tuiNavigationNav
-        [style.position]="'sticky'"
+        compact
+        tuiSubheader
     >
+        <a
+            iconStart="@tui.chevron-left"
+            tuiLink
+            [textContent]="'Repositories'"
+        ></a>
+        /
+        <strong tuiFade>Very long repository name</strong>
+        <tui-avatar
+            size="xs"
+            src="@tui.lock"
+        />
         <tui-tabs>
-            <button
-                tuiTab
-                type="button"
-            >
-                Default view
-            </button>
-            <button
-                tuiTab
-                type="button"
-            >
-                Details
-            </button>
-            <button
-                tuiTab
-                type="button"
-            >
-                Followers
-            </button>
+            <a tuiTab>Default view</a>
+            <a tuiTab>Contributors</a>
+            <a tuiTab>Code</a>
         </tui-tabs>
-        <hr />
+        <button
+            appearance="secondary"
+            tuiButton
+            type="button"
+        >
+            Button
+        </button>
         <button
             tuiButton
             type="button"
         >
-            Primary
+            Button
         </button>
         <button
             appearance="secondary"
             iconStart="@tui.ellipsis"
+            tuiDropdownOpen
             tuiIconButton
             type="button"
+            [tuiDropdown]="menu"
         >
             More
+            <ng-template #menu>
+                <tui-data-list>
+                    <button
+                        tuiOption
+                        type="button"
+                    >
+                        Button
+                    </button>
+                    <button
+                        tuiOption
+                        type="button"
+                    >
+                        Button
+                    </button>
+                    <button
+                        tuiOption
+                        type="button"
+                    >
+                        Button
+                    </button>
+                </tui-data-list>
+            </ng-template>
         </button>
     </nav>
     <div

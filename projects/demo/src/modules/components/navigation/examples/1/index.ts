@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -13,6 +13,7 @@ import {
     TuiDropdown,
     TuiDropdownService,
     TuiIcon,
+    TuiLink,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
@@ -20,6 +21,7 @@ import {
     TuiAvatar,
     TuiBadge,
     TuiBadgeNotification,
+    TuiBreadcrumbs,
     TuiChevron,
     TuiDataListDropdownManager,
     TuiFade,
@@ -37,12 +39,14 @@ const ICON =
         FormsModule,
         KeyValuePipe,
         NgForOf,
+        NgIf,
         RouterLink,
         RouterLinkActive,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiBadgeNotification,
+        TuiBreadcrumbs,
         TuiButton,
         TuiCardLarge,
         TuiChevron,
@@ -53,6 +57,7 @@ const ICON =
         TuiForm,
         TuiHeader,
         TuiIcon,
+        TuiLink,
         TuiNavigation,
         TuiRepeatTimes,
         TuiSwitch,
@@ -71,6 +76,7 @@ export default class Example extends TuiPortals {
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;
+    protected readonly breadcrumbs = ['Home', 'Angular', 'Repositories', 'Taiga UI'];
 
     protected readonly drawer = {
         Components: [

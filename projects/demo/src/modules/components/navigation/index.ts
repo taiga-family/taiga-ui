@@ -17,8 +17,8 @@ export default class Page implements OnDestroy {
     protected readonly theme = inject(TuiThemeColorService);
     protected readonly examples = [
         'Full',
-        'Expansive heading',
-        'Card heading',
+        'Subheader compact',
+        'Subheader object',
         'Customization',
     ];
 

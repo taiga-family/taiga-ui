@@ -3,8 +3,23 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes, TuiThemeColorService} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiDropdown, TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiIcon,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiAvatar,
+    TuiBadge,
+    TuiChevron,
+    TuiFade,
+    TuiSwitch,
+    TuiTabs,
+} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
@@ -12,14 +27,17 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     imports: [
         FormsModule,
         TuiAppearance,
+        TuiAvatar,
         TuiBadge,
         TuiButton,
         TuiCardLarge,
         TuiChevron,
+        TuiDataList,
         TuiDropdown,
         TuiFade,
         TuiHeader,
         TuiIcon,
+        TuiLink,
         TuiNavigation,
         TuiRepeatTimes,
         TuiSwitch,

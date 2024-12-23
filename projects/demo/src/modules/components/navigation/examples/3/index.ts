@@ -1,38 +1,47 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiItem, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
+    TuiGroup,
     TuiIcon,
     TuiLink,
-    TuiSurface,
+    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiBreadcrumbs, TuiTabs} from '@taiga-ui/kit';
+import {TuiBadge, TuiBlock, TuiBreadcrumbs, TuiFade, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
+        FormsModule,
+        NgIf,
         TuiAppearance,
-        TuiAvatar,
+        TuiBadge,
+        TuiBlock,
         TuiBreadcrumbs,
         TuiButton,
         TuiCardLarge,
+        TuiFade,
+        TuiGroup,
         TuiHeader,
         TuiIcon,
-        TuiItem,
         TuiLink,
         TuiNavigation,
         TuiRepeatTimes,
-        TuiSurface,
         TuiTabs,
+        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected current = 'basic';
+}
