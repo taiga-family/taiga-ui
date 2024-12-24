@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98741],{98741:e=>{e.exports=".input {\n    text-align: end;\n    inline-size: 20rem;\n}\n"}}]);
