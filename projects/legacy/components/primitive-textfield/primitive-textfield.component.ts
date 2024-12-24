@@ -310,7 +310,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== 's' && !this.labelOutside;
+        return !this.labelOutside;
     }
 
     private updateAutofilled(autofilled: boolean): void {
