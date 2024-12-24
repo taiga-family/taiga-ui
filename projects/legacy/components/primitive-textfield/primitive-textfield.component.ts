@@ -205,7 +205,13 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     protected get hasPlaceholder(): boolean {
-        return this.placeholderRaisable || this.placeholderVisible;
+        const placeholder = this.placeholderRaisable || this.placeholderVisible;
+
+        return this.appearance === 'table' &&
+            !this.nativeFocusableElement?.readOnly &&
+            (this.prefix || this.postfix)
+            ? placeholder && !this.value && !this.computedFocused
+            : placeholder;
     }
 
     protected get placeholderRaised(): boolean {
