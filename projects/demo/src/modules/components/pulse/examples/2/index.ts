@@ -8,12 +8,12 @@ import {TuiAvatar, TuiPulse} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiPulse, TuiAvatar, NgIf, TuiHint, TuiTitle],
+    imports: [NgIf, TuiAvatar, TuiButton, TuiHint, TuiPulse, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [tuiProvideExperimentalHint()],
     encapsulation,
     changeDetection,
+    providers: [tuiProvideExperimentalHint()],
 })
 export default class Example {
     protected readonly step = signal(0);

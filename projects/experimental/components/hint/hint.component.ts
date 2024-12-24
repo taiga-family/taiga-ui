@@ -1,10 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    type Provider,
-    signal,
-} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -13,19 +8,18 @@ import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
+import {tuiFadeIn, tuiScaleIn} from '@taiga-ui/core/animations';
+import {TuiRectAccessor} from '@taiga-ui/core/classes';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
+import type {
     TUI_HINT_COMPONENT,
     TUI_HINT_PROVIDERS,
-    tuiAppearance,
-    TuiAppearance,
     TuiHintDirective,
     TuiHintHover,
     TuiHintPointer,
     TuiHintUnstyledComponent,
-} from '@taiga-ui/core';
-import {tuiFadeIn, tuiScaleIn} from '@taiga-ui/core/animations';
-import {TuiRectAccessor} from '@taiga-ui/core/classes';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+} from '@taiga-ui/core/directives/hint';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
@@ -47,9 +41,9 @@ const GAP = 8;
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAppearance],
     providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
     animations: [tuiFadeIn, tuiScaleIn],
+    hostDirectives: [TuiAppearance],
     host: {
         '[@tuiScaleIn]': 'isMobile ? options : dummy',
         '[@tuiFadeIn]': 'options',
