@@ -20,7 +20,7 @@ import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
-import {TuiTextfieldDirective} from '@taiga-ui/core/components/textfield';
+import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -35,14 +35,7 @@ const DEFAULT_MAX_LENGTH = 18;
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider(null)],
-    hostDirectives: [
-        // TODO: replace with `TuiWithTextfield` after merging of https://github.com/taiga-family/taiga-ui/pull/9976
-        {
-            directive: TuiTextfieldDirective,
-            inputs: ['invalid', 'focused', 'readOnly', 'state'],
-        },
-        MaskitoDirective,
-    ],
+    hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
         '[value]': 'textfieldValue()',
         '[disabled]': 'disabled()',

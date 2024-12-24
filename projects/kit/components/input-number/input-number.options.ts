@@ -1,6 +1,5 @@
-import type {Provider} from '@angular/core';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputNumberOptions {
     readonly max: number;
@@ -18,14 +17,6 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     valueTransformer: null,
 };
 
-export const TUI_INPUT_NUMBER_OPTIONS = tuiCreateToken(TUI_INPUT_NUMBER_DEFAULT_OPTIONS);
-
-export function tuiInputNumberOptionsProvider(
-    options: Partial<TuiInputNumberOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_INPUT_NUMBER_OPTIONS,
-        options,
-        TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
-    );
-}
+export const [TUI_INPUT_NUMBER_OPTIONS, tuiInputNumberOptionsProvider] = tuiCreateOptions(
+    TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
+);
