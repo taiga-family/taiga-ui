@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {ALWAYS_TRUE_HANDLER, TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-thumbnail-card',
@@ -39,6 +39,7 @@ export class ExampleTuiThumbnailCardComponent {
     iconRight = this.iconVariants[0];
 
     paymentSystemVariants: readonly TuiPaymentSystem[] = [
+        'mastercard',
         'amex',
         'dinersclub',
         'discover',
@@ -46,7 +47,6 @@ export class ExampleTuiThumbnailCardComponent {
         'humo',
         'jcb',
         'maestro',
-        'mastercard',
         'mir',
         'rupay',
         'unionpay',
@@ -55,7 +55,7 @@ export class ExampleTuiThumbnailCardComponent {
         'visa',
     ];
 
-    sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
     size = this.sizeVariants[1];
 
     monoHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiPaymentSystem>> = [
@@ -65,5 +65,5 @@ export class ExampleTuiThumbnailCardComponent {
 
     monoHandler = this.monoHandlerVariants[0];
 
-    paymentSystem: TuiPaymentSystem | null = null;
+    paymentSystem: TuiPaymentSystem | null = this.paymentSystemVariants[0];
 }

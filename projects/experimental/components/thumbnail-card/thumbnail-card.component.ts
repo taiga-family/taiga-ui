@@ -1,13 +1,7 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Input,
-} from '@angular/core';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import type {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {
@@ -20,20 +14,22 @@ import {
     templateUrl: './thumbnail-card.template.html',
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiThumbnailCardComponent {
     @Input()
-    @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = this.options.size;
+    size: TuiSizeL | TuiSizeXS = this.options.size;
 
     @Input()
     paymentSystem: TuiPaymentSystem | null = null;
 
-    @Input()
-    iconLeft = '';
+    @Input('iconLeft')
+    iconStart = '';
 
-    @Input()
-    iconRight = '';
+    @Input('iconRight')
+    iconEnd = '';
 
     @Input()
     monoHandler: TuiBooleanHandler<TuiPaymentSystem> = this.options.monoHandler;

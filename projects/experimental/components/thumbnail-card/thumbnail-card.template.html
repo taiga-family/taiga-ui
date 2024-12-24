@@ -1,39 +1,34 @@
-<div class="t-front">
-    <div
-        *ngIf="iconLeft"
-        class="t-left"
-    >
-        <tui-icon
-            class="t-icon"
-            [icon]="iconLeft"
-        ></tui-icon>
-    </div>
-    <div
-        *ngIf="iconRight"
-        class="t-right"
-    >
-        <tui-icon
-            class="t-icon"
-            [icon]="iconRight"
-        ></tui-icon>
-    </div>
-    <div class="t-left t-icon">
-        <ng-content select="img"></ng-content>
-    </div>
-    <ng-content></ng-content>
-    <ng-container *ngIf="paymentSystem">
-        <tui-icon
-            *ngIf="monoHandler(paymentSystem); else colored"
-            class="t-logo"
-            [icon]="options.icons[paymentSystem]"
-        ></tui-icon>
-        <ng-template #colored>
-            <img
-                class="t-logo"
-                [alt]="paymentSystem"
-                [src]="resolver(options.icons[paymentSystem]).replace('Outline', '')"
-            />
-        </ng-template>
-    </ng-container>
+<tui-icon
+    *ngIf="iconStart"
+    class="t-icon t-left"
+    [icon]="iconStart"
+></tui-icon>
+
+<div class="t-left t-icon">
+    <ng-content select="img"></ng-content>
 </div>
-<div class="t-back"></div>
+
+<tui-icon
+    *ngIf="iconEnd"
+    class="t-right t-icon"
+    [icon]="iconEnd"
+></tui-icon>
+
+<div class="t-content">
+    <ng-content></ng-content>
+</div>
+
+<ng-container *ngIf="paymentSystem">
+    <tui-icon
+        *ngIf="monoHandler(paymentSystem); else colored"
+        class="t-logo"
+        [icon]="options.icons[paymentSystem]"
+    ></tui-icon>
+    <ng-template #colored>
+        <img
+            class="t-logo"
+            [alt]="paymentSystem"
+            [src]="resolver(options.icons[paymentSystem]).replace('Outline', '')"
+        />
+    </ng-template>
+</ng-container>
