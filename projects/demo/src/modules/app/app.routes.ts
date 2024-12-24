@@ -425,6 +425,11 @@ export const ROUTES: Routes = [
         title: 'InputNumber',
     }),
     route({
+        path: DemoRoute.InputNumberLegacy,
+        loadComponent: async () => import('../components/input-number-legacy'),
+        title: 'InputNumber [deprecated]',
+    }),
+    route({
         path: DemoRoute.InputPhone,
         loadComponent: async () => import('../components/input-phone'),
         title: 'InputPhone',
