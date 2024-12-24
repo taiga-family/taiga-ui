@@ -419,12 +419,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/input-month-range'),
         title: 'InputMonthRange',
     }),
-    // TODO: it will be revealed later
-    // route({
-    //     path: DemoRoute.InputNumber,
-    //     loadComponent: async () => import('../components/input-number'),
-    //     title: 'InputNumber',
-    // }),
+    route({
+        path: DemoRoute.InputNumber,
+        loadComponent: async () => import('../components/input-number'),
+        title: 'InputNumber',
+    }),
     route({
         path: DemoRoute.InputNumberLegacy,
         loadComponent: async () => import('../components/input-number-legacy'),
