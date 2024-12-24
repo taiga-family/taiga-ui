@@ -15,7 +15,7 @@ import {
     maskitoNumberOptionsGenerator,
     maskitoParseNumber,
 } from '@maskito/kit';
-import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -34,7 +34,10 @@ const DEFAULT_MAX_LENGTH = 18;
     selector: 'input[tuiInputNumber]',
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiFallbackValueProvider(null)],
+    providers: [
+        tuiFallbackValueProvider(null),
+        tuiValueTransformerFrom(TUI_INPUT_NUMBER_OPTIONS),
+    ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
         '[value]': 'textfieldValue()',
@@ -73,7 +76,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
     });
 
     protected textfieldValue = signal(this.element.value || '');
-    protected override readonly transformer = this.options.valueTransformer;
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS && this.min() < 0) {
