@@ -11,7 +11,13 @@
                 tuiTh
                 [resizable]="true"
             >
-                Age
+                Items
+            </th>
+            <th
+                tuiTh
+                [resizable]="true"
+            >
+                Balance
             </th>
             <th tuiTh>Description</th>
         </tr>
@@ -19,6 +25,9 @@
     <tbody tuiTbody>
         <tr *ngFor="let item of data">
             <td tuiTd>{{ item.name }}</td>
+            <td tuiTd>
+                <tui-input-tag [(ngModel)]="item.items">Items</tui-input-tag>
+            </td>
             <td tuiTd>
                 <tui-input
                     tuiTextfieldPrefix="$"
