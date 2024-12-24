@@ -7,24 +7,11 @@
         <p>Notifications in style of native browser push</p>
 
         <tui-doc-example
-            id="base"
-            heading="basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="service"
-            heading="with service"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="directive"
-            heading="with directive"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html,ts'"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 

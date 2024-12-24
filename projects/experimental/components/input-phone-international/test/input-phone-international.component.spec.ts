@@ -4,8 +4,9 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiRoot} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {
     TUI_ENGLISH_LANGUAGE,
@@ -13,10 +14,7 @@ import {
     TUI_LANGUAGE,
     TUI_RUSSIAN_LANGUAGE,
 } from '@taiga-ui/i18n';
-import {
-    TuiInputPhoneInternational,
-    tuiInputPhoneInternationalOptionsProvider,
-} from '@taiga-ui/kit';
+import {tuiInputPhoneInternationalOptionsProvider} from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import metadata from 'libphonenumber-js/max/metadata';
 import {of} from 'rxjs';
@@ -24,15 +22,18 @@ import {of} from 'rxjs';
 describe('InputPhoneInternational', () => {
     @Component({
         standalone: true,
-        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
+        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
-                <tui-input-phone-international
-                    [countries]="countries"
-                    [formControl]="control"
-                    [readOnly]="readOnly"
-                    [(countryIsoCode)]="countryIsoCode"
-                />
+                <tui-textfield>
+                    <input
+                        tuiInputPhoneInternational
+                        [countries]="countries"
+                        [formControl]="control"
+                        [readOnly]="readOnly"
+                        [(countryIsoCode)]="countryIsoCode"
+                    />
+                </tui-textfield>
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -90,7 +91,7 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component.onItemClick('UA');
+            component['onItemClick']('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();
@@ -108,7 +109,7 @@ describe('InputPhoneInternational', () => {
                 data,
             });
 
-            component.onPaste(event);
+            component['onPaste'](event);
             fixture.detectChanges();
 
             inputPO.sendText(data);

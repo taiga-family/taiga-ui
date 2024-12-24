@@ -14,6 +14,7 @@ import {TuiPush} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Basic', 'Service', 'Directive'];
     protected heading = '';
     protected type = '';
 

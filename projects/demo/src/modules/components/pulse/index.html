@@ -5,10 +5,11 @@
 >
     <ng-template pageTab>
         <tui-doc-example
-            id="pulse"
-            heading="Pulse"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html,ts'"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 

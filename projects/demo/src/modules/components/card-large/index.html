@@ -8,8 +8,8 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample: 'html,less'"
-            [fullsize]="index === 5 || index === 8"
+            [content]="index + 1 | tuiExample"
+            [fullsize]="index === 5 || index === 8 || index === 12"
             [heading]="example"
             [id]="example | tuiKebab"
         />
