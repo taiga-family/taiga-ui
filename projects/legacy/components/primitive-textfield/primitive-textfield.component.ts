@@ -146,9 +146,11 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     protected get labelOutside(): boolean {
-        const {size, labelOutside} = this.controller;
-
-        return this.appearance === 'table' || size === 's' || labelOutside;
+        return (
+            this.appearance === 'table' ||
+            this.size === 's' ||
+            this.controller.labelOutside
+        );
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
