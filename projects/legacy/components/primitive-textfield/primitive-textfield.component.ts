@@ -59,8 +59,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
         '[class._autofilled]': 'autofilled',
         '[style.--border-start.rem]': 'borderStart',
         '[style.--border-end.rem]': 'borderEnd',
-        '[class._label-outside]':
-            'options.appearance() === "table" || controller.labelOutside',
+        '[class._label-outside]': 'labelOutside',
         '(focusin)': 'onFocused(true)',
         '(focusout)': 'onFocused(false)',
         '(transitionstart.capture)': 'transitionStartHandler($event)',
@@ -144,6 +143,12 @@ export class TuiPrimitiveTextfieldComponent
 
     public onModelChange(value: string): void {
         this.updateValue(value);
+    }
+
+    protected get labelOutside(): boolean {
+        const {size, labelOutside} = this.controller;
+
+        return this.appearance === 'table' || size === 's' || labelOutside;
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
@@ -303,7 +308,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== 's' && !this.controller.labelOutside;
+        return this.size !== 's' && !this.labelOutside;
     }
 
     private updateAutofilled(autofilled: boolean): void {
