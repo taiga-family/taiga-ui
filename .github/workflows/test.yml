@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.105.0
       - uses: taiga-family/ci/actions/setup/node@v1.105.0
+      - run: node -e 'console.log(require("node:os"))'
+      - run: node -e 'console.log(require("node:os").EOL.charCodeAt())'
       - run: npm test
       - uses: codecov/codecov-action@v5.1.2
         if: ${{ matrix.os == 'ubuntu-latest' }}

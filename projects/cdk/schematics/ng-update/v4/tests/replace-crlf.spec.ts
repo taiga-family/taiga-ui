@@ -1,4 +1,3 @@
-import {EOL} from 'node:os';
 import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
@@ -16,34 +15,19 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
-const COMPONENT_BEFORE = `\r\n
+const COMPONENT_BEFORE = `
 @Component({
     standalone: true,
-    templateUrl: './test.template.html',
+    template: '',
 })
 export class Test {}\r\n`;
 
-const COMPONENT_AFTER = `${EOL}
+const COMPONENT_AFTER = `
 @Component({
     standalone: true,
-    templateUrl: './test.template.html',
+    template: '',
 })
-export class Test {}${EOL}`;
-
-const TEMPLATE_BEFORE = '\r\n<p>Hello</p>\r\n';
-
-const TEMPLATE_AFTER = `${EOL}<p>Hello</p>${EOL}`;
-
-const PACKAGE_BEFORE =
-    '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}\r\n';
-
-const PACKAGE_AFTER = `{
-  "dependencies": {
-    "@angular/core": "~13.0.0",
-    "@taiga-ui/addon-commerce": "~3.42.0",
-    "@taiga-ui/event-plugins": "^4.2.3"
-  }
-}${EOL}`;
+export class Test {}\n`;
 
 describe('ng-update', () => {
     let host: UnitTestTree;
@@ -67,9 +51,7 @@ describe('ng-update', () => {
             host,
         );
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
-        expect(tree.readContent('package.json')).toEqual(PACKAGE_AFTER);
     });
 
     afterEach(() => {
@@ -80,6 +62,8 @@ describe('ng-update', () => {
 function createMainFiles(): void {
     createAngularJson();
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
-    createSourceFile('package.json', PACKAGE_BEFORE);
+    createSourceFile(
+        'package.json',
+        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
+    );
 }

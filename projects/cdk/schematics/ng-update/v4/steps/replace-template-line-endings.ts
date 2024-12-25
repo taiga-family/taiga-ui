@@ -13,7 +13,7 @@ export function replaceTemplateLineEndings(
     getActiveProject();
 
     getSourceFiles(pattern).forEach((file) => {
-        file.replaceWithText(file.getFullText().replaceAll(/\r?\n/g, EOL));
+        file.replaceWithText(file.getFullText().replaceAll(/\r?\n|\r|\n/g, EOL));
     });
 
     fileSystem.commitEdits();
