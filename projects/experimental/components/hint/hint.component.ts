@@ -12,7 +12,7 @@ import {tuiFadeIn, tuiScaleIn} from '@taiga-ui/core/animations';
 import {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
-import type {
+import {
     TUI_HINT_COMPONENT,
     TUI_HINT_PROVIDERS,
     TuiHintDirective,
