@@ -1,5 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
@@ -11,6 +12,7 @@ import {
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
+import {of} from 'rxjs';
 
 import {TUI_ARROW_OPTIONS} from './arrow.options';
 
@@ -25,7 +27,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._rotated]': 'rotated',
+        '[class._rotated]': 'rotated()',
         '[class._small]': 'small',
     },
 })
@@ -33,11 +35,13 @@ export class TuiArrowComponent {
     private readonly control: any = inject(AbstractTuiControl, {optional: true});
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly options = inject(TUI_ARROW_OPTIONS);
-    protected readonly directive = inject(TuiDropdownOpen, {optional: true});
+    protected readonly dropdownOpen = toSignal(
+        inject(TuiDropdownOpen, {optional: true})?.tuiDropdownOpenChange || of(false),
+    );
 
-    protected get rotated(): boolean {
-        return this.directive?.tuiDropdownOpen || !!this.control.pseudoOpen || false;
-    }
+    protected readonly rotated = computed(
+        () => this.dropdownOpen() || this.control.pseudoOpen?.(),
+    );
 
     protected get small(): boolean {
         return !tuiSizeBigger(this.textfieldSize.size);

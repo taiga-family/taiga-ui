@@ -8,6 +8,7 @@ import {
     inject,
     Input,
     Output,
+    signal,
     TemplateRef,
     ViewChild,
     ViewChildren,
@@ -159,18 +160,14 @@ export class TuiInputTagComponent
     @Input()
     public removable = true;
 
-    /**
-     * @deprecated hack
-     */
-    @Input()
-    public pseudoOpen = false;
-
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         TUI_FALSE_HANDLER;
 
     @Output()
     public readonly searchChange = new EventEmitter<string>();
+
+    public pseudoOpen = signal(false);
 
     @Input('pseudoFocused')
     public set pseudoFocusedSetter(value: boolean | null) {
@@ -179,6 +176,14 @@ export class TuiInputTagComponent
         }
 
         this.pseudoFocus = value;
+    }
+
+    /**
+     * @deprecated hack
+     */
+    @Input('pseudoOpen')
+    public set setPseudoOpen(value: boolean) {
+        this.pseudoOpen.set(value);
     }
 
     public get labelOutside(): boolean {
