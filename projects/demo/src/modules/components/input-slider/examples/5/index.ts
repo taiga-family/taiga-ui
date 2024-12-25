@@ -22,7 +22,7 @@ export default class Example {
 
     protected readonly customLabel = ({
         $implicit,
-    }: TuiContext<number>): number | string => {
+    }: TuiContext<number | null>): number | string => {
         switch ($implicit) {
             case (this.max - this.min) / 2:
                 return 'Middle';
@@ -31,7 +31,7 @@ export default class Example {
             case this.min:
                 return 'Just a label for min value';
             default:
-                return $implicit;
+                return $implicit ?? '';
         }
     };
 }

@@ -1,33 +1,57 @@
-<tui-input-number
-    [disabled]="computedDisabled"
-    [max]="max"
-    [min]="min"
-    [ngModelOptions]="{standalone: true}"
-    [pseudoActive]="pseudoActive"
-    [pseudoFocus]="computedFocused"
-    [pseudoHover]="pseudoHover"
-    [pseudoInvalid]="pseudoInvalid"
-    [readOnly]="readOnly"
-    [tuiNumberFormat]="{precision}"
-    [tuiTextfieldPostfix]="postfix"
-    [tuiTextfieldPrefix]="prefix"
-    [(ngModel)]="textfieldValue"
-    (focusedChange)="onFocused($event)"
-    (keydown.arrowDown.prevent)="onVerticalArrowKeyDown(-1)"
-    (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
-    (ngModelChange)="safelyUpdateValue($event)"
+<tui-textfield
+    [content]="showValueContent ? valueContent : ''"
+    [filler]="controller.filler"
+    [iconStart]="$any(controller.iconStart)"
+    [tuiTextfieldCleaner]="controller.cleaner"
+    [tuiTextfieldSize]="controller.size"
 >
-    <ng-content />
-    <div
-        *ngIf="showValueContent"
-        automation-id="tui-input-slider__value-content"
-        ngProjectAs="tuiContent"
+    <label
+        *ngIf="!controller.labelOutside"
+        tuiLabel
     >
-        <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
-            {{ text }}
-        </ng-container>
-    </div>
-</tui-input-number>
+        <ng-content />
+    </label>
+
+    <input
+        tuiInputNumber
+        [disabled]="computedDisabled"
+        [focused]="computedFocused"
+        [invalid]="pseudoInvalid"
+        [max]="max"
+        [min]="min"
+        [ngModelOptions]="{standalone: true}"
+        [postfix]="postfix && ' ' + postfix"
+        [prefix]="prefix"
+        [readOnly]="readOnly"
+        [state]="state"
+        [tuiNumberFormat]="{precision}"
+        [(ngModel)]="textfieldValue"
+        (focusin)="onFocused(true)"
+        (focusout)="onFocused(false)"
+        (keydown.arrowDown.prevent)="onVerticalArrowKeyDown(-1)"
+        (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
+        (ngModelChange)="safelyUpdateValue($event)"
+    />
+
+    <ng-container
+        *ngIf="controller.customContent"
+        ngProjectAs="tui-icon"
+    >
+        <tui-icon
+            *polymorpheusOutlet="controller.customContent as src"
+            [icon]="src"
+        />
+    </ng-container>
+
+    <tui-icon
+        *ngIf="!computedDisabled && hint && hint.content"
+        [tuiHintAppearance]="hint.appearance"
+        [tuiHintDirection]="hint.direction"
+        [tuiHintHideDelay]="hint.hideDelay"
+        [tuiHintShowDelay]="hint.showDelay"
+        [tuiTooltip]="hint.content"
+    />
+</tui-textfield>
 
 <input
     tabIndex="-1"

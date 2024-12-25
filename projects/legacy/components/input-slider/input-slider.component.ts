@@ -10,7 +10,10 @@ import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import type {TuiInteractiveState} from '@taiga-ui/core/types';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
+import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_FLOATING_PRECISION,
@@ -18,7 +21,6 @@ import {
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
-import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -51,14 +53,15 @@ export class TuiInputSliderComponent
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(TuiInputNumberComponent)
-    private readonly inputNumberRef?: TuiInputNumberComponent;
+    @ViewChild(TuiInputNumber, {read: ElementRef})
+    private readonly inputNumberRef?: ElementRef<HTMLInputElement>;
 
     @ViewChild(TuiSliderComponent, {read: ElementRef})
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
     protected textfieldValue = this.safeCurrentValue;
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly hint = inject(TuiHintOptionsDirective, {optional: true});
 
     @Input()
     public min = 0;
@@ -82,9 +85,9 @@ export class TuiInputSliderComponent
     public valueContent: PolymorpheusContent<TuiContext<number>>;
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return !this.inputNumberRef?.nativeFocusableElement || this.computedDisabled
+        return !this.inputNumberRef?.nativeElement || this.computedDisabled
             ? null
-            : this.inputNumberRef.nativeFocusableElement;
+            : this.inputNumberRef.nativeElement;
     }
 
     public get focused(): boolean {
@@ -97,6 +100,14 @@ export class TuiInputSliderComponent
     public override writeValue(value: number | null): void {
         super.writeValue(value);
         this.textfieldValue = this.value;
+    }
+
+    protected get state(): TuiInteractiveState | null {
+        if (this.pseudoActive) {
+            return 'active';
+        }
+
+        return this.pseudoHover ? 'hover' : null;
     }
 
     protected get prefix(): string {
@@ -138,7 +149,7 @@ export class TuiInputSliderComponent
     }
 
     protected focusTextInput(): void {
-        const focusableElement = this.inputNumberRef?.nativeFocusableElement;
+        const focusableElement = this.inputNumberRef?.nativeElement;
 
         if (focusableElement) {
             focusableElement.focus();
