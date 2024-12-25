@@ -32,6 +32,7 @@ import {
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -119,6 +120,7 @@ export class TuiInputTagComponent
     @ViewChild('errorIcon')
     protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
 
+    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
@@ -189,7 +191,7 @@ export class TuiInputTagComponent
     public get labelOutside(): boolean {
         const {size, labelOutside} = this.controller;
 
-        return size === 's' || labelOutside;
+        return this.appearance === 'table' || size === 's' || labelOutside;
     }
 
     public get size(): TuiSizeL | TuiSizeS {
@@ -273,7 +275,9 @@ export class TuiInputTagComponent
     }
 
     protected get appearance(): string {
-        return this.controller.appearance;
+        return this.textfieldOptions.appearance() === 'table'
+            ? 'table'
+            : this.controller.appearance;
     }
 
     protected get expandable(): boolean {
