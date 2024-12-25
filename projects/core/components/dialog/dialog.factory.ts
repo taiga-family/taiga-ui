@@ -1,4 +1,5 @@
-import {inject, INJECTOR} from '@angular/core';
+import type {Injector} from '@angular/core';
+import {assertInInjectionContext, inject, INJECTOR} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
@@ -41,6 +42,8 @@ type ExtractDialogResult<T, K extends keyof T = ContextKeys<T>> = [K] extends [n
         ? R
         : void;
 
+type Options<T> = Omit<TuiDialogOptions<T>, 'data'> & {injector: Injector};
+
 export function tuiDialog<
     T,
     K extends ContextKeys<T>,
@@ -48,10 +51,14 @@ export function tuiDialog<
     R extends ExtractDialogResult<T, K>,
 >(
     component: AssertNotMultipleContexts<T, K>,
-    options?: Partial<Omit<TuiDialogOptions<D>, 'data'>>,
+    {injector, ...options}: Partial<Options<D>> = {},
 ): (data: D) => Observable<R> {
-    const dialogService = inject(TuiDialogService);
-    const injector = inject(INJECTOR);
+    if (!injector) {
+        assertInInjectionContext(tuiDialog);
+        injector = inject(INJECTOR);
+    }
+
+    const dialogService = injector.get(TuiDialogService);
 
     return (data) =>
         dialogService.open(
