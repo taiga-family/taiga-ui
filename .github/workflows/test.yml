@@ -8,15 +8,19 @@ on:
 jobs:
   test:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    runs-on: ubuntu-latest
-    name: Unit tests
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    name: Unit tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.105.0
       - uses: taiga-family/ci/actions/setup/node@v1.105.0
       - run: npm test
-      - run: tree -L 2 ./coverage -P 'lcov.info'
       - uses: codecov/codecov-action@v5.1.2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
