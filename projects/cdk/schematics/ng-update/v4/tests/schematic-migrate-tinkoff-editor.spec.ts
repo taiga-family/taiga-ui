@@ -115,6 +115,31 @@ const PACKAGE_JSON_AFTER = `{
     }
 }`.trim();
 
+const MAIN_BEFORE = `
+import '@ng-web-apis/universal/mocks';
+
+import {bootstrapApplication} from '@angular/platform-browser';
+import {TuiEditorModule} from '@tinkoff/tui-editor';
+import {Test} from './app/app/test.component';
+
+bootstrapApplication(AppComponent, {
+    providers: [importProvidersFrom(TuiEditorModule)]
+}).catch((err: unknown) => console.error(err));
+`;
+
+const MAIN_AFTER = `
+import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
+
+
+
+import {bootstrapApplication} from '@angular/platform-browser';
+import {Test} from './app/app/test.component';
+
+bootstrapApplication(AppComponent, {
+    providers: [importProvidersFrom()]
+}).catch((err: unknown) => console.error(err));
+`.trim();
+
 describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
@@ -138,6 +163,7 @@ describe('ng-update', () => {
         );
 
         expect(tree.readContent('package.json').trim()).toEqual(PACKAGE_JSON_AFTER);
+        expect(tree.readContent('test/main.ts').trim()).toEqual(MAIN_AFTER);
         expect(tree.readContent('test/app/test.component.ts').trim()).toEqual(
             COMPONENT_AFTER,
         );
@@ -149,6 +175,7 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
+    createSourceFile('test/main.ts', MAIN_BEFORE);
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
     createSourceFile('test/app/test.template.html', '');
     createSourceFile('package.json', PACKAGE_JSON_BEFORE);
