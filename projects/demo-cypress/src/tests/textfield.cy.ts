@@ -88,7 +88,7 @@ describe('Textfield', () => {
             });
         });
 
-        it('shows content for untouched field without focused', () => {
+        it('shows content for untouched field without focus', () => {
             cy.get('tui-textfield').compareSnapshot('[content]-pristine-unfocused');
         });
 
