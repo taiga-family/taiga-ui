@@ -8,6 +8,7 @@ import {
     MILLISECONDS_IN_DAY,
     MILLISECONDS_IN_HOUR,
     MILLISECONDS_IN_MINUTE,
+    MILLISECONDS_IN_SECOND,
     MINUTES_IN_HOUR,
     SECONDS_IN_MINUTE,
 } from './date-time';
@@ -162,27 +163,22 @@ export class TuiTime implements TuiTimeLike {
      * Shifts time by hours and minutes
      */
     public shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
-        const newMs = (1000 + this.ms + (ms % 1000)) % 1000;
+        const totalMs =
+            this.toAbsoluteMilliseconds() +
+            hours * MILLISECONDS_IN_HOUR +
+            minutes * MILLISECONDS_IN_MINUTE +
+            seconds * MILLISECONDS_IN_SECOND +
+            ms;
+        const totalSeconds = Math.floor(totalMs / MILLISECONDS_IN_SECOND);
+        const totalMinutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
+        const totalHours = Math.floor(totalMinutes / MINUTES_IN_HOUR);
 
-        const secondsInMs = ms < 0 ? Math.ceil(ms / 1000) : Math.floor(ms / 1000);
-        const secondsToAdd = secondsInMs + seconds;
-        const newSeconds = (60 + this.seconds + (secondsToAdd % 60)) % 60;
-
-        const minutesInSeconds =
-            secondsToAdd < 0
-                ? Math.ceil(secondsToAdd / 60)
-                : Math.floor(secondsToAdd / 60);
-        const minutesToAdd = minutesInSeconds + minutes;
-        const newMinutes = (60 + this.minutes + (minutesToAdd % 60)) % 60;
-
-        const hoursInMinutes =
-            minutesToAdd < 0
-                ? Math.ceil(minutesToAdd / 60)
-                : Math.floor(minutesToAdd / 60);
-        const hoursToAdd = hoursInMinutes + hours;
-        const newHours = (24 + this.hours + (hoursToAdd % 24)) % 24;
-
-        return new TuiTime(newHours, newMinutes, newSeconds, newMs);
+        return new TuiTime(
+            this.normalizeToRange(totalHours, HOURS_IN_DAY),
+            this.normalizeToRange(totalMinutes, MINUTES_IN_HOUR),
+            this.normalizeToRange(totalSeconds, SECONDS_IN_MINUTE),
+            this.normalizeToRange(totalMs, MILLISECONDS_IN_SECOND),
+        );
     }
 
     /**
@@ -240,5 +236,9 @@ export class TuiTime implements TuiTimeLike {
         }
 
         return {meridiem, hours: hours % 12};
+    }
+
+    private normalizeToRange(value: number, modulus: number): number {
+        return ((value % modulus) + modulus) % modulus;
     }
 }

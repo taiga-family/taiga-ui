@@ -359,7 +359,28 @@ describe('TuiTime', () => {
                 ms: -1000 * 60 * 60 - 1000 * 60 - 1000 - 10,
             });
 
-            expect(increasedTime.toString()).toBe('03:23:55.990');
+            expect(increasedTime.toString()).toBe('03:22:54.990');
+        });
+
+        it('seconds are increased if milliseconds reach 1000', () => {
+            const time = new TuiTime(15, 0, 0, 999);
+            const increasedTime = time.shift({ms: 1});
+
+            expect(increasedTime.toString()).toBe('15:00:01');
+        });
+
+        it('minutes are increased if seconds reach 60', () => {
+            const time = new TuiTime(15, 0, 59);
+            const increasedTime = time.shift({seconds: 1});
+
+            expect(increasedTime.toString()).toBe('15:01');
+        });
+
+        it('hours are increased if minutes reach 60', () => {
+            const time = new TuiTime(15, 59);
+            const increasedTime = time.shift({minutes: 1});
+
+            expect(increasedTime.toString()).toBe('16:00');
         });
     });
 
