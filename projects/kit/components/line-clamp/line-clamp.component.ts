@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import type {AfterViewInit, DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -7,14 +6,12 @@ import {
     ElementRef,
     inject,
     Input,
-    NgZone,
     Output,
     signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
 import {
     TUI_HINT_COMPONENT,
@@ -22,7 +19,7 @@ import {
     TuiHintDirective,
 } from '@taiga-ui/core/directives/hint';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -34,7 +31,6 @@ import {
     startWith,
     Subject,
     switchMap,
-    timer,
 } from 'rxjs';
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
@@ -44,14 +40,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-line-clamp',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiHint,
-        TuiLineClampPositionDirective,
-        WaResizeObserver,
-    ],
+    imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
     templateUrl: './line-clamp.template.html',
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -77,16 +66,11 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly cd = inject(ChangeDetectorRef);
-    private readonly zone: NgZone = inject(NgZone);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
     protected initialized = signal(false);
     protected maxHeight = signal(0);
     protected height = signal(0);
-
-    protected readonly $ = timer(0)
-        .pipe(tuiZonefree(this.zone), takeUntilDestroyed())
-        .subscribe(() => this.initialized.set(true));
 
     protected lineClamp = toSignal(
         this.linesLimit$.pipe(
@@ -154,8 +138,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             this.height.set(this.outlet.nativeElement.scrollHeight + 4);
         }
 
-        if (this.initialized()) {
-            this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
-        }
+        this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
     }
 }
