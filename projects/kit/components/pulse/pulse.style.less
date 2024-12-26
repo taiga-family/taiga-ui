@@ -1,47 +1,9 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 @keyframes tuiPulse {
-    0% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-
-    20% {
+    to {
         opacity: 0;
-        transform: scale(0.5);
-    }
-
-    25% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-
-    45% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    50% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-
-    70% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    75% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-
-    95% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    100% {
-        opacity: 0.3;
-        transform: scale(1);
+        transform: scale(2.5);
     }
 }
 
@@ -49,27 +11,25 @@
     position: relative;
     color: var(--tui-background-accent-1);
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: -0.5rem;
-        left: -0.5rem;
-        inline-size: 1rem;
-        block-size: 1rem;
-        border-radius: 100%;
-        background: currentColor;
-        opacity: 0.3;
-        animation: tuiPulse 3s ease-in-out infinite;
-        animation-play-state: var(--t-animation-state);
-    }
-
+    &::before,
     &::after {
         content: '';
         position: absolute;
         inline-size: 0.5rem;
         block-size: 0.5rem;
         border-radius: 100%;
-        transform: translate(-50%, -50%);
+        margin: -0.25rem;
         background: currentColor;
+    }
+
+    &::before {
+        opacity: 1;
+        transform: scale(0);
+        animation: tuiPulse 1s 1s ease-in-out infinite;
+        animation-play-state: var(--t-animation-state);
+    }
+
+    &::after {
+        box-shadow: 0 0 0.5rem;
     }
 }

@@ -23,5 +23,6 @@ export default class Example {
         'Image-dark',
         'Paddings and radii',
         'Map',
+        'In portal',
     ];
 }

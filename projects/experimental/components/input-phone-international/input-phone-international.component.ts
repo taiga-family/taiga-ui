@@ -100,7 +100,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[disabled]': 'disabled()',
         '[value]': 'masked()',
         '(blur)': 'onTouched()',
-        '(input)': 'onInput()',
+        '(input)': 'onChange(unmasked)',
         '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
     },
@@ -184,12 +184,10 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.dropdown.set(template);
     }
 
-    protected onInput(): void {
+    protected get unmasked(): string {
         const value = this.el.value.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
 
-        this.onChange(
-            value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value,
-        );
+        return value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value;
     }
 
     protected onPaste(event: Event): void {
@@ -212,12 +210,17 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         }
     }
 
-    protected onItemClick(isoCode: TuiCountryIsoCode): void {
+    protected onItemClick(code: TuiCountryIsoCode): void {
         this.el.focus();
-        this.el.value = this.el.value || tuiGetCallingCode(this.code(), this.metadata());
+        this.el.value = this.unmasked;
         this.open.set(false);
-        this.code.set(isoCode);
+        this.code.set(code);
         this.search.set('');
+        this.el.value = maskitoTransform(
+            this.el.value || tuiGetCallingCode(code, this.metadata()),
+            this.mask() || MASKITO_DEFAULT_OPTIONS,
+        );
+        this.onChange(this.unmasked);
     }
 
     private computeMask(
