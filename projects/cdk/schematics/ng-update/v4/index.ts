@@ -54,9 +54,9 @@ function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        migrateEditor(fileSystem, options);
         replaceFunctions(REPLACE_FUNCTIONS);
         migrateImportProvidersFrom(options);
-        migrateEditor(fileSystem, options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateRoot(fileSystem, options);
         replaceServices(options, SERVICES_TO_REPLACE);
