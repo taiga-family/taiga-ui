@@ -11,6 +11,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives';
 @Component({
     standalone: true,
     selector: 'tui-expand',
+    imports: [NgIf, NgTemplateOutlet],
     template: `
         <div class="t-wrapper">
             <ng-container
@@ -21,16 +22,16 @@ import {TuiItem} from '@taiga-ui/cdk/directives';
         </div>
     `,
     styleUrls: ['./expand.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._expanded]': 'expanded',
         '(transitionend.self)': 'onTransitionEnd($event)',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgTemplateOutlet, NgIf],
 })
 export class TuiExpand {
     @ContentChild(TuiItem, {read: TemplateRef})
     protected content?: TemplateRef<any>;
+
     protected animating = false;
 
     @Input()
