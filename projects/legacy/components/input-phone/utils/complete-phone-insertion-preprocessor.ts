@@ -40,13 +40,12 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
                      * and mask are ready to reject "extra" characters.
                      * We should cut leading country prefix to save trailing characters!
                      */
-                    countDigits(value) > completePhoneLength ||
-                    value.startsWith(countryCode)
+                    countDigits(value) > completePhoneLength
                         ? trimCountryPrefix(value)
                         : value,
             },
             data:
-                countDigits(data) >= completePhoneLength || value.startsWith(countryCode)
+                countDigits(data) >= completePhoneLength || data.startsWith(countryCode)
                     ? /**
                        * User tries to insert/drop the complete phone number (with country prefix).
                        * We should drop already existing non-removable prefix.
