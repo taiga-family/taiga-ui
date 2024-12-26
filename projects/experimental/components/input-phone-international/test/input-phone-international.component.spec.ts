@@ -1,4 +1,3 @@
-import type {DebugElement} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -189,7 +188,7 @@ describe('InputPhoneInternational', () => {
             initializeTestModule(TUI_RUSSIAN_LANGUAGE);
 
             it('displays country names in Russian inside dropdown', () => {
-                getCountrySelector().nativeElement.click();
+                clickCountrySelector();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -207,7 +206,7 @@ describe('InputPhoneInternational', () => {
             initializeTestModule(TUI_ENGLISH_LANGUAGE);
 
             it('displays country names in English inside dropdown', () => {
-                getCountrySelector().nativeElement.click();
+                clickCountrySelector();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -245,7 +244,9 @@ describe('InputPhoneInternational', () => {
         );
     }
 
-    function getCountrySelector(): DebugElement {
-        return fixture.debugElement.query(By.css('.t-ipi-select'));
+    function clickCountrySelector(): void {
+        return fixture.debugElement
+            .query(By.css('.t-ipi-select'))
+            .nativeElement.dispatchEvent(new Event('mousedown'));
     }
 });
