@@ -33,13 +33,14 @@ test.describe('MultiSelect', () => {
 
         test('multi-select with data list with label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
-            const multiSelect = new TuiMultiSelectPO(
-                example.locator('tui-multi-select').first(),
-            );
+            const multiSelectEl = example.locator('tui-multi-select').first();
+            const multiSelect = new TuiMultiSelectPO(multiSelectEl);
 
             await multiSelect.arrow.click();
+            await multiSelectEl.scrollIntoViewIfNeeded();
             await documentationPage.waitStableState();
             await page.mouse.move(0, 0); // clear focus
+            await documentationPage.hideContent(); // hide content under dropdown before screenshot
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '02-with-data-list-with-label.png',
@@ -48,13 +49,14 @@ test.describe('MultiSelect', () => {
 
         test('multi-select with data list without label', async ({page}) => {
             const example = documentationPage.getExample('#datalist');
-            const multiSelect = new TuiMultiSelectPO(
-                example.locator('tui-multi-select').nth(1),
-            );
+            const multiSelectEl = example.locator('tui-multi-select').nth(1);
+            const multiSelect = new TuiMultiSelectPO(multiSelectEl);
 
             await multiSelect.arrow.click();
+            await multiSelectEl.scrollIntoViewIfNeeded();
             await documentationPage.waitStableState();
             await page.mouse.move(0, 0); // clear focus
+            await documentationPage.hideContent(); // hide content under dropdown before screenshot
 
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '03-with-data-list-without-label.png',

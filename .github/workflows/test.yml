@@ -28,6 +28,16 @@ jobs:
           flags: summary
           name: units
 
+  test-result:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    name: Tests result
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.105.0
+      - uses: taiga-family/ci/actions/setup/node@v1.105.0
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

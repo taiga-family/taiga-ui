@@ -85,10 +85,10 @@ test.describe('TuiHint', () => {
                 `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-0.png`,
             );
 
-            await page.waitForTimeout(500);
+            await page.waitForTimeout(600);
 
             await expect(page).toHaveScreenshot(
-                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-500.png`,
+                `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-after-500.png`,
             );
 
             await page.waitForTimeout(1500);
