@@ -7,7 +7,11 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
     imports: [FormsModule, TuiRoot, TuiTextfield],
     template: `
         <tui-root>
-            <tui-textfield [filler]="filler">
+            <tui-textfield
+                #textfield
+                [content]="textfield.focused() ? '' : content"
+                [filler]="filler"
+            >
                 <input
                     tuiTextfield
                     [(ngModel)]="initialValue"
@@ -24,12 +28,15 @@ export class TestTextfield {
 
     @Input()
     public filler = '';
+
+    @Input()
+    public content = '';
 }
 
 describe('Textfield', () => {
-    describe('[filler] property', () => {
-        beforeEach(() => cy.viewport(200, 150));
+    beforeEach(() => cy.viewport(200, 150));
 
+    describe('[filler] property', () => {
         describe('with initial value', () => {
             ['2', '23', '23:', '23:5', '23:59'].forEach((initialValue) => {
                 it(initialValue, () => {
@@ -68,6 +75,36 @@ describe('Textfield', () => {
                     );
                 });
             });
+        });
+    });
+
+    describe('[content] property', () => {
+        beforeEach(() => {
+            cy.mount(TestTextfield, {
+                componentProperties: {
+                    initialValue: '42',
+                    content: 'TOP-SECRET',
+                },
+            });
+        });
+
+        it('shows content for untouched field without focused', () => {
+            cy.get('tui-textfield').compareSnapshot('[content]-pristine-unfocused');
+        });
+
+        it('hides content and show value on focus', () => {
+            cy.get('input[tuiTextfield]').focus();
+
+            cy.get('tui-textfield').compareSnapshot('[content]-focused');
+        });
+
+        it('shows content again after blur', () => {
+            cy.get('input[tuiTextfield]')
+                .focus()
+                .wait(300) // to ensure that all possible operations are finished
+                .blur();
+
+            cy.get('tui-textfield').compareSnapshot('[content]-after-blur');
         });
     });
 });
