@@ -31,6 +31,7 @@ export default class PageComponent {
 
     protected min = this.minVariants[0]!;
     protected max = this.maxVariants[0]!;
+    protected step = 0;
     protected prefix = '';
     protected postfix = '';
 }

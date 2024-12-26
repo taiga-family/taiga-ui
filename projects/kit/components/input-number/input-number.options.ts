@@ -6,6 +6,11 @@ export interface TuiInputNumberOptions {
     readonly min: number;
     readonly prefix: string;
     readonly postfix: string;
+    readonly step: number;
+    readonly icons: Readonly<{
+        down: string;
+        up: string;
+    }>;
     readonly valueTransformer: TuiValueTransformer<number | null> | null;
 }
 
@@ -14,6 +19,11 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     max: Number.MAX_SAFE_INTEGER,
     prefix: '',
     postfix: '',
+    step: 0,
+    icons: {
+        up: '@tui.plus',
+        down: '@tui.minus',
+    },
     valueTransformer: null,
 };
 
