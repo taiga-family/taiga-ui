@@ -45,7 +45,7 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
                         : value,
             },
             data:
-                countDigits(data) >= completePhoneLength
+                countDigits(data) >= completePhoneLength || data.startsWith(countryCode)
                     ? /**
                        * User tries to insert/drop the complete phone number (with country prefix).
                        * We should drop already existing non-removable prefix.
