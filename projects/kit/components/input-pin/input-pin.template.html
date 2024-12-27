@@ -1,0 +1,19 @@
+<div
+    *tuiTextfieldContent
+    class="t-wrapper"
+>
+    <label
+        *tuiRepeatTimes="let index of el.maxLength"
+        class="t-item"
+        [tuiAppearance]="appearance()"
+        [tuiAppearanceFocus]="isFocused(index)"
+        [tuiAppearanceMode]="control.invalid && control.touched ? 'invalid' : null"
+        (mousedown.prevent)="onClick(index)"
+    >
+        <span
+            class="t-value"
+            [class.t-value_filled]="el.value[index]"
+            [textContent]="el.value[index] || el.placeholder[index]"
+        ></span>
+    </label>
+</div>

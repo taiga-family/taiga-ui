@@ -17,6 +17,7 @@ tui-textfield {
     border-radius: var(--tui-radius-l);
     font: var(--tui-font-text-m);
     box-sizing: border-box;
+    gap: 0.25rem;
 
     &[style*='--t-icon-start:'] {
         --t-left: 2.25rem;
@@ -40,6 +41,7 @@ tui-textfield {
         --t-padding: var(--tui-padding-s);
 
         border-radius: var(--tui-radius-m);
+        gap: 0;
         font: var(--tui-font-text-s);
 
         &[style*='--t-icon-start:'] {
@@ -66,7 +68,6 @@ tui-textfield {
         }
 
         .t-content {
-            gap: 0;
             margin-inline-end: -0.325rem;
         }
     }
@@ -278,7 +279,7 @@ tui-textfield {
     .t-content {
         display: flex;
         align-items: center;
-        gap: 0.25rem;
+        gap: inherit;
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;

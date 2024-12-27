@@ -24,6 +24,7 @@ export * from '@taiga-ui/kit/components/input-inline';
 export * from '@taiga-ui/kit/components/input-number';
 export * from '@taiga-ui/kit/components/input-password';
 export * from '@taiga-ui/kit/components/input-phone-international';
+export * from '@taiga-ui/kit/components/input-pin';
 export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/like';
 export * from '@taiga-ui/kit/components/line-clamp';

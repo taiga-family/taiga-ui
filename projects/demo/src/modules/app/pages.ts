@@ -573,6 +573,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputPin',
+                keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
+                route: DemoRoute.InputPin,
+            },
+            {
+                section: 'Components',
                 title: 'InputRange',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputRange,
