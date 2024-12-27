@@ -11,6 +11,7 @@ export * from './input-date-range.po';
 export * from './input-date-time.po';
 export * from './input-month.po';
 export * from './input-month-range.po';
+export * from './input-number.po';
 export * from './input-phone.po';
 export * from './input-phone-international.po';
 export * from './input-range.po';
