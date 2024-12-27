@@ -9,23 +9,24 @@ import {
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoMask} from '@maskito/core';
+import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    tuiInjectElement,
-    tuiIsNativeFocused,
-    tuiIsString,
-    TuiRepeatTimes,
-} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_OPTIONS, TuiAppearance} from '@taiga-ui/core';
-import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
+    TUI_TEXTFIELD_OPTIONS,
+    TuiTextfieldContent,
+} from '@taiga-ui/core/components/textfield';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Component({
     standalone: true,
     selector: 'input[tuiInputPin]',
+    imports: [TuiAppearance, TuiRepeatTimes, TuiTextfieldContent],
     templateUrl: './input-pin.template.html',
     styleUrls: ['./input-pin.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TuiTextfieldContent, TuiRepeatTimes, TuiAppearance],
     hostDirectives: [MaskitoDirective],
     host: {
         '(selectionchange)': 'onSelection()',
@@ -46,22 +47,22 @@ export class TuiInputPin {
     );
 
     @Input('mask')
-    set maskSetter(mask: MaskitoMask | string) {
+    public set maskSetter(mask: MaskitoMask | string) {
         this.mask.set(tuiIsString(mask) ? new RegExp(mask) : mask);
     }
 
-    onClick(index: number): void {
+    public onClick(index: number): void {
         this.el.focus();
         this.el.setSelectionRange(index, index + 1);
     }
 
-    onSelection(): void {
+    public onSelection(): void {
         if (this.el.selectionStart === this.el.maxLength) {
             this.el.setSelectionRange(this.el.maxLength - 1, this.el.maxLength);
         }
     }
 
-    onArrow(): void {
+    public onArrow(): void {
         if (
             this.el.selectionStart === this.el.maxLength - 1 &&
             this.el.selectionEnd === this.el.maxLength
@@ -70,7 +71,7 @@ export class TuiInputPin {
         }
     }
 
-    isFocused(index: number): boolean {
+    public isFocused(index: number): boolean {
         return (
             tuiIsNativeFocused(this.el) &&
             (this.el.selectionStart === index ||

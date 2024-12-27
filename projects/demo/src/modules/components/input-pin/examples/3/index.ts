@@ -7,7 +7,7 @@ import {TuiInputPin} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiTextfield, TuiInputPin],
+    imports: [ReactiveFormsModule, TuiInputPin, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
