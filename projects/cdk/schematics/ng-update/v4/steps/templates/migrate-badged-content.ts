@@ -120,7 +120,7 @@ function migrateColor({
 
     const value = attr.value;
     const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
-    const hasBinding = attr ? isBinding(attr) : false;
+    const hasBinding = Boolean(attr) && isBinding(attr);
 
     recorder.insertRight(
         insertTo + templateOffset + 1,
