@@ -1,0 +1,24 @@
+<button
+    tuiButton
+    type="button"
+    (click)="expanded = !expanded"
+>
+    Show/Hide
+</button>
+<tui-expand [expanded]="expanded">
+    <tui-elastic-container *tuiItem>
+        <tui-loader
+            *ngIf="loading$ | async; else content"
+            [style.margin.rem]="1"
+        />
+        <ng-template #content>
+            <p>
+                You can use
+                <code>ElasticContainer</code>
+                to animate height changes
+            </p>
+            <p>Just some more content</p>
+            Making this section bigger than loader
+        </ng-template>
+    </tui-elastic-container>
+</tui-expand>
