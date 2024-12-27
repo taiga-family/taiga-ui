@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22709],{22709:e=>{e.exports='<button\n    tuiButton\n    type="button"\n    (click)="expanded = !expanded"\n>\n    Show/Hide\n</button>\n<tui-expand [expanded]="expanded">\n    <p *tuiRepeatTimes="let index of 3">I am eagerly loaded but hidden</p>\n</tui-expand>\n'}}]);
