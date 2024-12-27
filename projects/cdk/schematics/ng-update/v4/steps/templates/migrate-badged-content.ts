@@ -3,7 +3,7 @@ import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
-import {findAttr} from '../../../../utils/templates/inputs';
+import {findAttr, isBinding} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -120,13 +120,14 @@ function migrateColor({
 
     const value = attr.value;
     const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
+    const hasBinding = Boolean(attr) && isBinding(attr);
 
     recorder.insertRight(
         insertTo + templateOffset + 1,
         `<tui-badge-notification
         size="xs"
         tuiSlot="${slot}"
-        [style.color]="'${value}'"
+        [style.color]="${hasBinding ? value : `'${value}'`}"
     ></tui-badge-notification>\n`,
     );
 }
