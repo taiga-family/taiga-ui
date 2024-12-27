@@ -44,6 +44,9 @@ const TEMPLATE_BEFORE = `
   </p>
 </tui-badged-content>
 <tui-badged-content
+  [colorTop]="(unsavedChanges.value$ | async) ? 'var(--tui-warning-fill)' : ''">
+</tui-badged-content>
+<tui-badged-content
      colorTop="var(--tui-error-fill)"
      size="l"
      class="tui-space_right-5"
@@ -81,11 +84,19 @@ const TEMPLATE_AFTER = `
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
-        [style.color]="'status || '''"
+        [style.color]="status || ''"
     ></tui-badge-notification>
   <p class="day">
       {{ day?.activity?.date?.day }}
   </p>
+</tui-badged-content>
+<tui-badged-content
+  [style.--tui-radius.%]="50">
+<tui-badge-notification
+        size="xs"
+        tuiSlot="top"
+        [style.color]="(unsavedChanges.value$ | async) ? 'var(--tui-warning-fill)' : ''"
+    ></tui-badge-notification>
 </tui-badged-content>
 <tui-badged-content
     ${''}
