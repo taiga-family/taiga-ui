@@ -29,6 +29,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {
+        inputmode: 'numeric',
         '(selectionchange)': 'onSelection()',
         '(keydown.arrowLeft)': 'onArrow()',
     },

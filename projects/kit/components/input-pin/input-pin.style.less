@@ -7,7 +7,15 @@
 }
 
 :host {
-    opacity: 0;
+    color: transparent;
+    caret-color: transparent;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::selection {
+        background: transparent;
+    }
 
     ::ng-deep + .t-content .t-clear {
         display: none !important;
