@@ -60,8 +60,19 @@ const TEMPLATE_BEFORE = `
 </tui-badge>
 <tui-badge
     status="success"
+    value="Taiga"
+>
+    <tui-svg [src]="iconOrNull"></tui-svg>
+</tui-badge>
+<tui-badge
+    status="success"
 >
     <tui-svg src="tuiIconHelpCircle"></tui-svg>
+</tui-badge>
+<tui-badge
+    status="success"
+>
+    <tui-svg [src]="iconOrUndefined"></tui-svg>
 </tui-badge>
 
 <ng-container [ngSwitch]="state$ | async">
@@ -87,11 +98,23 @@ const TEMPLATE_AFTER = `
 iconStart="tuiIconHelpCircle">Taiga
     ${''}
 </tui-badge>
+<tui-badge
+    appearance="success"
+   ${''}
+[iconStart]="iconOrNull">Taiga
+    ${''}
+</tui-badge>
 <!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
 <tui-badge
     appearance="success"
 >
     <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
+</tui-badge>
+<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
+<tui-badge
+    appearance="success"
+>
+    <tui-icon  [icon]="iconOrUndefined"></tui-icon>
 </tui-badge>
 
 <ng-container [ngSwitch]="state$ | async">

@@ -32,12 +32,12 @@ export class TuiIcon {
     );
 
     @Input()
-    public set icon(icon: string) {
+    public set icon(icon: string | null | undefined) {
         this.iconSrc.set(this.resolve(icon));
     }
 
     @Input()
-    public set background(background: string) {
+    public set background(background: string | null | undefined) {
         this.backgroundSrc.set(this.resolve(background));
     }
 
