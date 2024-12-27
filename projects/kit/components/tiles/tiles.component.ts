@@ -17,7 +17,7 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
 import {
     TUI_REORDER_BY_STRATEGY,
-    TuiReorderTilesProvider,
+    TuiTilesReorderProvider,
 } from './tiles-reorder.providers';
 
 @Component({
@@ -34,7 +34,7 @@ import {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {childList: true},
         },
-        TuiReorderTilesProvider,
+        TuiTilesReorderProvider,
     ],
     host: {
         '[class._dragged]': 'element()',
