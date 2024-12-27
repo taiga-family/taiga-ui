@@ -8,12 +8,12 @@ import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/co
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
-
+import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {AlertExampleWithData} from './examples/4';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDemo],
+    imports: [TuiButton, TuiDemo, TuiDocAPI, TuiDocAPIItem],
     templateUrl: './index.html',
     changeDetection,
 })
