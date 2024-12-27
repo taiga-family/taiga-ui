@@ -30,6 +30,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     hostDirectives: [MaskitoDirective],
     host: {
         inputmode: 'numeric',
+        spellcheck: 'false',
         '(selectionchange)': 'onSelection()',
         '(keydown.arrowLeft)': 'onArrow()',
     },
