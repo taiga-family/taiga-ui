@@ -1,0 +1,80 @@
+/*
+TODO: if :has() is supported by all browsers
+ - use tui-textfield:has([tuiInputNumber]) .t-input-number {...}
+ - rename .t-input-number-buttons => .t-buttons
+ */
+.t-input-number {
+    &-buttons {
+        position: absolute;
+        right: 0;
+        display: flex;
+        block-size: var(--t-height);
+        flex-direction: column;
+        gap: 0.125rem;
+        border-radius: inherit;
+
+        tui-textfield[data-size='s'] & {
+            flex-direction: row-reverse;
+        }
+
+        & > * {
+            flex: 1 1 0;
+            border-radius: 0;
+
+            &:first-child {
+                border-start-end-radius: inherit;
+            }
+
+            &:last-child {
+                border-end-end-radius: inherit;
+            }
+
+            tui-textfield[data-size='s'] & {
+                &:first-child {
+                    border-start-end-radius: inherit;
+                    border-end-end-radius: inherit;
+                }
+
+                &:last-child {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+[tuiInputNumber]._with-buttons {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+}
+
+/*
+TODO: if :has() is supported by all browsers
+ - use tui-textfield:has([tuiInputNumber]) {...}
+ - rename --t-input-number-offset-end => --t-offset-end
+ */
+tui-textfield {
+    &[data-size='l'] {
+        --t-input-number-offset-end: calc(
+            var(--tui-height-m) // width of step button
+            + 0.125rem
+        );
+    }
+
+    &[data-size='m'] {
+        --t-input-number-offset-end: calc(var(--tui-height-s) + 0.125rem);
+    }
+
+    &[data-size='s'] {
+        --t-input-number-offset-end: calc(2 * var(--tui-height-s) + 0.25rem);
+    }
+}
+
+[tuiInputNumber]._with-buttons,
+[tuiInputNumber]._with-buttons ~ .t-template {
+    inline-size: calc(100% - var(--t-input-number-offset-end));
+}
+
+[tuiInputNumber]._with-buttons ~ .t-content {
+    margin-inline-end: var(--t-input-number-offset-end);
+}

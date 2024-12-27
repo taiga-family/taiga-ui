@@ -23,6 +23,7 @@
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
+                        [step]="step"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
                             thousandSeparator: numberFormatDoc.thousandSeparator(),
@@ -55,6 +56,15 @@
                     [(value)]="max"
                 >
                     The greatest value in the range of permitted values
+                </tr>
+
+                <tr
+                    name="[step]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="step"
+                >
+                    Step to increase/decrease value with keyboard and buttons on the side
                 </tr>
 
                 <tr

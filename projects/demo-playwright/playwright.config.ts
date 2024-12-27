@@ -46,14 +46,16 @@ export default defineConfig({
                 viewport: DEFAULT_VIEWPORT,
             },
         },
-        {
-            name: 'webkit',
-            use: {
-                ...devices['Desktop Safari'],
-                viewport: DEFAULT_VIEWPORT,
-            },
-        },
-    ],
+        process.env.CI
+            ? {
+                  name: 'webkit',
+                  use: {
+                      ...devices['Desktop Safari'],
+                      viewport: DEFAULT_VIEWPORT,
+                  },
+              }
+            : null,
+    ].filter(<T>(x: T | null): x is T => !!x),
     expect: {
         toHaveScreenshot: {
             animations: 'disabled',
