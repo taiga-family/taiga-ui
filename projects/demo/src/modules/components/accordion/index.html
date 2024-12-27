@@ -91,100 +91,108 @@
             <tui-accordion-item [open]="true">
                 TuiAccordionDirective
                 <ng-template tuiAccordionItemContent>
-                    <tui-doc-documentation>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="closeOthers"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="closeOthers"
+                    <table tuiDocAPI>
+                        <tr
+                            name="[closeOthers]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="closeOthers"
                         >
                             Other sections are closed when user opens one
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="rounded"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="rounded"
+                        </tr>
+
+                        <tr
+                            name="[rounded]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="rounded"
                         >
                             Rounded accordion style
-                        </ng-template>
-                    </tui-doc-documentation>
+                        </tr>
+                    </table>
                 </ng-template>
             </tui-accordion-item>
             <tui-accordion-item>
                 TuiAccordionItemComponent
                 <ng-template tuiAccordionItemContent>
-                    <tui-doc-documentation>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="async"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="async"
+                    <table tuiDocAPI>
+                        <tr
+                            name="[async]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="async"
                         >
                             Waits for a custom event
                             <code>TUI_EXPAND_LOADED</code>
                             before opening. Content is initialized when opening starts
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="borders"
-                            documentationPropertyType="'all' | 'top-bottom' | null"
-                            [documentationPropertyValues]="bordersVariants"
-                            [(documentationPropertyValue)]="borders"
+                        </tr>
+
+                        <tr
+                            name="[borders]"
+                            tuiDocAPIItem
+                            type="'all' | 'top-bottom' | null"
+                            [items]="bordersVariants"
+                            [(value)]="borders"
                         >
                             Borders variants
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="disabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="disabled"
+                        </tr>
+
+                        <tr
+                            name="[disabled]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="disabled"
                         >
                             Disabled state for an item
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="noPadding"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="noPadding"
+                        </tr>
+
+                        <tr
+                            name="[noPadding]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="noPadding"
                         >
                             Removes default paddings
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="disableHover"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="disableHover"
+                        </tr>
+
+                        <tr
+                            name="[disableHover]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="disableHover"
                         >
                             Disabled header hover state
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input-output"
-                            documentationPropertyName="open"
-                            documentationPropertyType="boolean"
-                            [documentationPropertyValue]="open"
-                            (documentationPropertyValueChange)="onOpenChange($event)"
+                        </tr>
+
+                        <tr
+                            name="[(open)]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="open"
+                            (valueChange)="onOpenChange($event)"
                         >
                             Open / close state of section
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="size"
-                            documentationPropertyType="TuiSizeS"
-                            [documentationPropertyValues]="sizeVariants"
-                            [(documentationPropertyValue)]="size"
+                        </tr>
+
+                        <tr
+                            name="[size]"
+                            tuiDocAPIItem
+                            type="TuiSizeS"
+                            [items]="sizeVariants"
+                            [(value)]="size"
                         >
                             Size of an accordion item
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="showArrow"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="showArrow"
+                        </tr>
+
+                        <tr
+                            name="[showArrow]"
+                            tuiDocAPIItem
+                            type="boolean"
+                            [(value)]="showArrow"
                         >
                             Show / hide an arrow
-                        </ng-template>
-                    </tui-doc-documentation>
+                        </tr>
+                    </table>
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>
