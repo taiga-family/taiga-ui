@@ -717,7 +717,27 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiTablePagination',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+        to: {
+            name: 'TuiTablePaginationEvent',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+    },
+    {
+        from: {
             name: 'TuiTablePaginationModule',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+        to: {
+            name: 'TuiTablePagination',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTablePaginationComponent',
             moduleSpecifier: '@taiga-ui/addon-table',
         },
         to: {
