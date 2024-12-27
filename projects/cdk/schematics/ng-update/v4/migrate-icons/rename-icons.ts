@@ -29,6 +29,10 @@ const CHANGED_ICONS = [
     {from: 'tuiIconAlertTriangle', to: '@tui.triangle-alert'},
     {from: 'tuiIconUploadCloud', to: '@tui.cloud-upload'},
     {from: 'tuiIconDownloadCloud', to: '@tui.cloud-download'},
+    {from: 'tuiIconAddRowLarge', to: '@tui.copy-plus'},
+    {from: 'tuiIconColumns', to: '@tui.columns-2'},
+    {from: 'tuiIconTool', to: '@tui.wrench'},
+    {from: 'tuiIconCheckSquare', to: '@tui.square-check-big'},
 ];
 
 export function renameIcons(pattern = ALL_FILES): void {
