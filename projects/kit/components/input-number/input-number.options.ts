@@ -8,8 +8,8 @@ export interface TuiInputNumberOptions {
     readonly postfix: string;
     readonly step: number;
     readonly icons: Readonly<{
-        down: string;
-        up: string;
+        decrease: string;
+        increase: string;
     }>;
     readonly valueTransformer: TuiValueTransformer<number | null> | null;
 }
@@ -21,8 +21,8 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     postfix: '',
     step: 0,
     icons: {
-        up: '@tui.plus',
-        down: '@tui.minus',
+        increase: '@tui.plus',
+        decrease: '@tui.minus',
     },
     valueTransformer: null,
 };
