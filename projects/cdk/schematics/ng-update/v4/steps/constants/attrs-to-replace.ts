@@ -296,4 +296,13 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             attrName: '*ngFor',
         },
     },
+    {
+        from: {
+            attrName: 'tuiResizeable',
+            withTagNames: ['*'],
+        },
+        to: {
+            attrName: 'tuiResizable',
+        },
+    },
 ];
