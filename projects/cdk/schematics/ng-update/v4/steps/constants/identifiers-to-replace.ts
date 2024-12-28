@@ -334,7 +334,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFieldErrorPipeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiFieldErrorContentPipe', moduleSpecifier: '@taiga-ui/kit'},
+        ],
     },
     {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
