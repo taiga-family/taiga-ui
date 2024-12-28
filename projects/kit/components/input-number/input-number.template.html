@@ -4,6 +4,7 @@
         class="t-input-number-buttons"
     >
         <button
+            size="s"
             tabindex="-1"
             tuiIconButton
             type="button"
@@ -11,7 +12,6 @@
             [appearance]="textfieldOptions.appearance()"
             [disabled]="!interactive() || value()! >= max()"
             [iconStart]="options.icons.increase"
-            [size]="textfieldOptions.size() === 'l' ? 'm' : 's'"
             (click.prevent)="onStep(step())"
             (mousedown.prevent)="element.focus()"
         >
@@ -19,6 +19,7 @@
         </button>
 
         <button
+            size="s"
             tabindex="-1"
             tuiIconButton
             type="button"
@@ -26,7 +27,6 @@
             [appearance]="textfieldOptions.appearance()"
             [disabled]="!interactive() || value()! <= min()"
             [iconStart]="options.icons.decrease"
-            [size]="textfieldOptions.size() === 'l' ? 'm' : 's'"
             (click.prevent)="onStep(-step())"
             (mousedown.prevent)="element.focus()"
         >
