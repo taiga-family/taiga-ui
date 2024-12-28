@@ -2,9 +2,21 @@
     header="InputNumberLegacy"
     package="LEGACY"
     type="components"
+    [deprecated]="true"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">A component to input numbers. Control value is also of number type.</div>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputNumber"
+            >
+                <strong>new version of InputNumber</strong>
+            </a>
+            instead!
+        </tui-notification>
+
+        <p>A component to input numbers. Control value is also of number type.</p>
 
         <section>
             <h3>There are also other components to input numbers:</h3>

@@ -3,7 +3,154 @@
     package="KIT"
     type="components"
 >
-    <ng-template pageTab>Coming soon, stay tuned...</ng-template>
+    <ng-template pageTab>
+        <strong>InputNumber</strong>
+        is a form field to provide numerical input.
+
+        <tui-doc-example
+            id="form-control-value"
+            heading="Form control value"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [description]="formControlDescription"
+            [fullsize]="true"
+        >
+            <ng-template #formControlDescription>
+                <tui-notification style="display: inline-block">
+                    Form control value is of
+                    <code>null</code>
+                    (for empty textfield only) and
+                    <code>number</code>
+                    (all other cases) types.
+                </tui-notification>
+
+                <p>
+                    Use
+                    <a
+                        href="https://angular.dev/api/forms/Validators#required"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <strong>Validators.required</strong>
+                    </a>
+                    (built-in validator provided by Angular team) with our
+                    <a
+                        target="_blank"
+                        tuiLink
+                        [routerLink]="routes.FieldError"
+                    >
+                        <strong>FieldError</strong>
+                    </a>
+                    pipe to notify your users about required field.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="texfield-based"
+            heading="Textfield-based"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [description]="textfieldBasedDescription"
+            [fullsize]="true"
+        >
+            <ng-template #textfieldBasedDescription>
+                Use all powers of
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    <strong>Textfield</strong>
+                </a>
+                : put any number of
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Icon"
+                >
+                    <strong>Icons</strong>
+                </a>
+                and
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Tooltip"
+                >
+                    <strong>Tooltips</strong>
+                </a>
+                inside (and control their order and color), modify the size of the textbox and etc. Explore its
+                documentation page for more customization options.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="localization"
+            heading="Localization"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="numberFormatDescription"
+            [fullsize]="true"
+        >
+            <ng-template #numberFormatDescription>
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.NumberFormat"
+                >
+                    <strong>TuiNumberFormat</strong>
+                </a>
+                allows to customize separators specific for your locale.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="affixes"
+            heading="Affixes"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+            [description]="affixesDescription"
+            [fullsize]="true"
+        >
+            <ng-template #affixesDescription>
+                Use
+                <code>prefix</code>
+                /
+                <code>postfix</code>
+                parameters to set non-removable text before / after the number.
+                <br />
+                To get currency symbol use
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Currency"
+                >
+                    <strong>Currency</strong>
+                </a>
+                pipe.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="step"
+            heading="Step"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+            [description]="stepDescription"
+            [fullsize]="true"
+        >
+            <ng-template #stepDescription>
+                Positive value of
+                <code>step</code>
+                property enables sided button to increase / decrease the number by the specified step's value. Moreover,
+                keyboard keys
+                <code>ArrowUp</code>
+                /
+                <code>ArrowDown</code>
+                will also work in the same way.
+            </ng-template>
+        </tui-doc-example>
+    </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo [control]="control">

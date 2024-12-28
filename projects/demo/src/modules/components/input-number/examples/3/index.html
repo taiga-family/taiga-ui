@@ -1,0 +1,15 @@
+<tui-textfield>
+    <label tuiLabel>Type number like a German</label>
+
+    <input
+        inputmode="decimal"
+        tuiInputNumber
+        [tuiNumberFormat]="numberFormat"
+        [(ngModel)]="value"
+    />
+
+    <tui-icon
+        tuiHintDirection="right"
+        tuiTooltip="In Germany people use comma as decimal separator and point for thousands"
+    />
+</tui-textfield>
