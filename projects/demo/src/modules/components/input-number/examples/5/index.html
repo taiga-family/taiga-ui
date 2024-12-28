@@ -1,0 +1,13 @@
+<tui-textfield>
+    <label tuiLabel>Percentage</label>
+
+    <input
+        inputmode="decimal"
+        postfix="%"
+        tuiInputNumber
+        [max]="100"
+        [min]="0"
+        [step]="1"
+        [(ngModel)]="value"
+    />
+</tui-textfield>

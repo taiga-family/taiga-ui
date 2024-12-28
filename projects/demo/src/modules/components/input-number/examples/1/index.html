@@ -1,0 +1,17 @@
+<tui-textfield>
+    <label tuiLabel>Enter a number</label>
+
+    <input
+        inputmode="decimal"
+        tuiInputNumber
+        [formControl]="control"
+    />
+</tui-textfield>
+
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="control"
+/>
+
+<p><strong>Control value:</strong></p>
+<code>{{ control.value | json }}</code>

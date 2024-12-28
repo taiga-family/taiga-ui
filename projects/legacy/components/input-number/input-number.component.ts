@@ -41,9 +41,17 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
+/**
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-number tuiInputNumberOptionsProvider} (from @taiga-ui/kit) (property `valueTransformer`) instead
+ * TODO(v5): delete it
+ */
 export const TUI_NUMBER_VALUE_TRANSFORMER =
     tuiCreateToken<TuiValueTransformer<number | null>>();
 
+/**
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-number TuiInputNumber} (from @taiga-ui/kit) instead
+ * TODO(v5): delete it
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-number',
