@@ -33,7 +33,7 @@ class TuiGroupStyles {}
         '[attr.data-size]': 'size',
         '[style.--t-group-radius]': 'rounded ? null : 0',
         '[style.--t-group-margin.rem]': 'collapsed ? null : 0.125',
-        '[style.--t-group-clip]': 'collapsed ? null : 0',
+        '[style.--t-group-mask]': 'collapsed ? null : "none"',
     },
 })
 export class TuiGroup {
