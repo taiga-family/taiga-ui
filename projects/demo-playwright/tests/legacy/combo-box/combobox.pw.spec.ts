@@ -1,6 +1,13 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    TuiComboBoxPO,
+    TuiDocumentationPagePO,
+    tuiGoto,
+    waitIcons,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {scrollToExample} from '../../../utils/scroll-to-example';
 
 test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
@@ -12,8 +19,7 @@ test.describe('ComboBox', () => {
         const example = documentationPage.getExample('#ignore-disabled');
         const input = example.locator('tui-combo-box input[tuiTextfieldLegacy]');
 
-        await example.scrollIntoViewIfNeeded();
-        await page.waitForTimeout(300); // safari flaky
+        await scrollToExample(page, example);
         await input.click();
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
@@ -23,6 +29,7 @@ test.describe('ComboBox', () => {
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-02.png');
 
         await page.click('body');
+        await scrollToExample(page, example);
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-03.png');
 
@@ -46,7 +53,10 @@ test.describe('ComboBox', () => {
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
-                await page.waitForTimeout(300); // safari flaky
+                await waitIcons({
+                    page,
+                    icons: await page.locator('tui-icon >> visible=true').all(),
+                });
 
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,
