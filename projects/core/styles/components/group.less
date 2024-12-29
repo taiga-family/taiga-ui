@@ -26,12 +26,22 @@
 
     --t-group-radius: var(--tui-radius-l);
     --t-group-margin: -1px;
-    --t-group-clip: inset(-1rem 1px -1rem -1rem);
+    --t-group-mask: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5) 1px,
+        #000 2px,
+        #000 calc(100% - 2px),
+        rgba(0, 0, 0, 0.5)
+    );
+    --t-group-mask-end: linear-gradient(to right, rgba(0, 0, 0, 0.5) 1px, #000 2px);
+    --t-group-mask-start: linear-gradient(to right, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5) calc(100% - 1px));
 
     & > * {
         z-index: 1;
         flex: 1 1 0;
         min-inline-size: 0;
+        mask: var(--t-group-mask);
+        mask-clip: no-clip;
 
         &:disabled,
         &._disabled {
@@ -42,44 +52,43 @@
         &[data-mode~='invalid'] {
             z-index: 2;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:has(:invalid:not([data-mode])),
         &:has([data-mode~='invalid']) {
             z-index: 2;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:focus-within {
             z-index: 3;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:has([data-focus='true']) {
             z-index: 3;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:checked:not([data-mode]),
         &[data-mode~='checked'] {
             z-index: 4;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:has([tuiBlock]:checked) {
             z-index: 4;
 
-            --t-group-clip: none;
+            --t-group-mask: none;
         }
 
         &:not(:last-child) {
             margin-inline-end: var(--t-group-margin);
-            clip-path: var(--t-group-clip);
         }
 
         &:nth-child(n) {
@@ -87,13 +96,18 @@
         }
 
         &:first-child {
-            border-top-left-radius: var(--t-group-radius);
-            border-bottom-left-radius: var(--t-group-radius);
+            border-radius: var(--t-group-radius) 0 0 var(--t-group-radius);
+            mask-image: var(--t-group-mask-start);
         }
 
         &:last-child {
-            border-top-right-radius: var(--t-group-radius);
-            border-bottom-right-radius: var(--t-group-radius);
+            border-radius: 0 var(--t-group-radius) var(--t-group-radius) 0;
+            mask-image: var(--t-group-mask-end);
+        }
+
+        &:only-child {
+            border-radius: var(--t-group-radius);
+            mask: none;
         }
     }
 
@@ -106,7 +120,15 @@
         display: inline-flex;
         flex-direction: column;
 
-        --t-group-clip: inset(-1rem -1rem 1px -1rem);
+        --t-group-mask: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5) 1px,
+            #000 2px,
+            #000 calc(100% - 2px),
+            rgba(0, 0, 0, 0.5)
+        );
+        --t-group-mask-start: linear-gradient(to bottom, #000 calc(100% - 2px), rgba(0, 0, 0, 0.5) calc(100% - 1px));
+        --t-group-mask-end: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 1px, #000 2px);
 
         & > * {
             min-block-size: auto;
