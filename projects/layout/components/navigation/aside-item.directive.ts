@@ -41,6 +41,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         },
     ],
     host: {
+        tuiButton: '',
         '[class._link]': 'link',
         '[class._active]': 'active()',
         '[class._custom]': 'icon !== icons.iconEnd',

@@ -33,7 +33,6 @@ class TuiButtonStyles {}
     providers: [tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
-        tuiButton: '',
         '[attr.data-size]': 'size',
     },
 })
