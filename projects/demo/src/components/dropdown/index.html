@@ -21,6 +21,15 @@
     Manual control/monitor for the dropdown being visible
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('tuiDropdownEnabled')"
+    name="[tuiDropdownEnabled]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="tuiDropdownEnabled"
+>
+    Enabling built-in open/close mechanics.
+</tr>
+<tr
     *ngIf="!hiddenOptions.includes('align')"
     name="[tuiDropdownAlign]"
     tuiDocAPIItem

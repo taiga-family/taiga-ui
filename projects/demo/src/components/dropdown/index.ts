@@ -42,6 +42,7 @@ export class TuiDocDropdown {
     public offset = this.options.offset;
     public appearance = this.options.appearance;
     public limitWidth: TuiDropdownWidth = 'fixed';
+    public tuiDropdownEnabled = false;
 
     public open = false;
 }

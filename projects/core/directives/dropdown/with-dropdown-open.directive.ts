@@ -7,7 +7,7 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
     hostDirectives: [
         {
             directive: TuiDropdownOpen,
-            inputs: ['tuiDropdownOpen: open'],
+            inputs: ['tuiDropdownOpen: open', 'tuiDropdownEnabled'],
             outputs: ['tuiDropdownOpenChange: openChange'],
         },
     ],
