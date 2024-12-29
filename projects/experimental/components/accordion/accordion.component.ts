@@ -43,6 +43,9 @@ export class TuiAccordionComponent {
     @ContentChildren(TuiAccordionDirective, {static: true} as any)
     public readonly directives: QueryList<TuiAccordionDirective> = EMPTY_QUERY;
 
+    @Input()
+    public closeOthers = true;
+
     public readonly size = signal<TuiSizeS | TuiSizeL>('l');
 
     @Input('size')
@@ -50,12 +53,12 @@ export class TuiAccordionComponent {
         this.size.set(size);
     }
 
-    @Input()
-    public closeOthers = true;
-
     toggle(directive: TuiAccordionDirective, value: boolean): void {
         if (this.closeOthers && value) {
-            this.expands.forEach((expand) => (expand.expanded = false));
+            this.expands.forEach((expand) => {
+                expand.expanded = false;
+            });
+
             this.directives.forEach((dir) => {
                 if (dir === directive) {
                     return;
