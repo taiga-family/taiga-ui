@@ -1,12 +1,16 @@
-import type {DoCheck} from '@angular/core';
+import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    DestroyRef,
     inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
+import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -35,8 +39,10 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
         '[class._readonly]': '!control',
     },
 })
-export class TuiRadioComponent implements DoCheck {
+export class TuiRadioComponent implements DoCheck, OnInit {
     private readonly appearance = inject(TuiAppearance);
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly options = inject(TUI_RADIO_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 
@@ -49,5 +55,11 @@ export class TuiRadioComponent implements DoCheck {
         this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
             ? this.options.appearance
             : this.options.appearance(this.el);
+    }
+
+    public ngOnInit(): void {
+        this.control?.valueChanges
+            ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
+            .subscribe();
     }
 }

@@ -1,12 +1,16 @@
-import type {DoCheck} from '@angular/core';
+import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    DestroyRef,
     inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
+import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -38,9 +42,11 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
         '[style.--t-checked-icon]': 'icon',
     },
 })
-export class TuiSwitch implements DoCheck {
+export class TuiSwitch implements DoCheck, OnInit {
     private readonly appearance = inject(TuiAppearance);
     private readonly resolver = tuiInjectIconResolver();
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly options = inject(TUI_SWITCH_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 
@@ -54,6 +60,12 @@ export class TuiSwitch implements DoCheck {
 
     public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
+    }
+
+    public ngOnInit(): void {
+        this.control?.valueChanges
+            ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
+            .subscribe();
     }
 
     protected get icon(): string | null {

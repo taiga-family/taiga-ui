@@ -1,6 +1,7 @@
 import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     DestroyRef,
     inject,
@@ -10,7 +11,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
@@ -45,6 +46,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 export class TuiCheckbox implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearance);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+    private readonly cdr = inject(ChangeDetectorRef);
     private readonly resolver = tuiInjectIconResolver();
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement<HTMLInputElement>();
@@ -63,7 +65,7 @@ export class TuiCheckbox implements OnInit, DoCheck {
         }
 
         tuiControlValue(this.control)
-            .pipe(takeUntilDestroyed(this.destroyRef))
+            .pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
             .subscribe((value) => {
                 // https://github.com/angular/angular/issues/14988
                 const fix =
