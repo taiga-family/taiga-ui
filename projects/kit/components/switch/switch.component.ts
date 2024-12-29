@@ -58,14 +58,14 @@ export class TuiSwitch implements DoCheck, OnInit {
     @Input()
     public showIcons = this.options.showIcons;
 
-    public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.options.appearance(this.el);
-    }
-
     public ngOnInit(): void {
         this.control?.valueChanges
             ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
             .subscribe();
+    }
+
+    public ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
     protected get icon(): string | null {

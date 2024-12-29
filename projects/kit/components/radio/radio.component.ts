@@ -51,15 +51,15 @@ export class TuiRadioComponent implements DoCheck, OnInit {
     @Input()
     public size: TuiSizeS = this.options.size;
 
-    public ngDoCheck(): void {
-        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
-            ? this.options.appearance
-            : this.options.appearance(this.el);
-    }
-
     public ngOnInit(): void {
         this.control?.valueChanges
             ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
             .subscribe();
+    }
+
+    public ngDoCheck(): void {
+        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
+            ? this.options.appearance
+            : this.options.appearance(this.el);
     }
 }
