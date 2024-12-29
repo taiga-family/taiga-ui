@@ -1,0 +1,209 @@
+<tui-accordion
+    class="container"
+    [rounded]="false"
+>
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
+        <div class="operation-header">
+            <div class="operation-date">
+                4
+                <div class="operation-month">May</div>
+            </div>
+            <div class="operation-pic">
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
+                    class="operation-icon"
+                />
+            </div>
+            <div class="operation-title">Get your money</div>
+            <div class="operation-info">
+                <span class="operation-amount">{{ 23000 | tuiAmount: 'RUB' | async }}</span>
+                <div class="operation-status">Waiting for approve</div>
+            </div>
+        </div>
+        <ng-template tuiAccordionItemContent>
+            <h3 class="form-title">Payment form</h3>
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
+                <tui-input
+                    formControlName="name"
+                    class="input"
+                >
+                    Your name
+                    <input
+                        placeholder="Roman Sedov"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input>
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
+                    Choose an account
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="accounts"
+                    />
+                </tui-select>
+                <div class="buttons">
+                    <button
+                        size="l"
+                        tuiButton
+                        type="submit"
+                        class="tui-space_right-2"
+                    >
+                        Send
+                    </button>
+                    <button
+                        appearance="flat"
+                        size="l"
+                        tuiButton
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
+        <div class="operation-header">
+            <div class="operation-date">
+                5
+                <div class="operation-month">May</div>
+            </div>
+            <div class="operation-pic">
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
+                    class="operation-icon"
+                />
+            </div>
+            <div class="operation-title">Get your money back</div>
+            <div class="operation-info">
+                <span class="operation-amount">{{ 23000 | tuiAmount: 'RUB' | async }}</span>
+                <div class="operation-status operation-status_success">Approved</div>
+            </div>
+        </div>
+        <ng-template tuiAccordionItemContent>
+            <h3 class="form-title">Payment form</h3>
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
+                <tui-input
+                    formControlName="name"
+                    class="input"
+                >
+                    Your name
+                    <input
+                        placeholder="Roman Sedov"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input>
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
+                    Choose an account
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="accounts"
+                    />
+                </tui-select>
+                <div class="buttons">
+                    <button
+                        size="l"
+                        tuiButton
+                        type="submit"
+                        class="tui-space_right-2"
+                    >
+                        Send
+                    </button>
+                    <button
+                        appearance="flat"
+                        size="l"
+                        tuiButton
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item
+        borders="top-bottom"
+        [showArrow]="false"
+    >
+        <div class="operation-header">
+            <div class="operation-date">
+                6
+                <div class="operation-month">May</div>
+            </div>
+            <div class="operation-pic">
+                <tui-icon
+                    icon="assets/icons/rubles.svg"
+                    class="operation-icon"
+                />
+            </div>
+            <div class="operation-title">Get your neighbor's money</div>
+            <div class="operation-info">
+                <span class="operation-amount">{{ 23000 | tuiAmount: 'RUB' | async }}</span>
+                <div class="operation-status operation-status_error">Declined</div>
+            </div>
+        </div>
+        <ng-template tuiAccordionItemContent>
+            <h3 class="form-title">Payment form</h3>
+            <form
+                class="operation-form"
+                [formGroup]="testForm"
+            >
+                <tui-input
+                    formControlName="name"
+                    class="input"
+                >
+                    Your name
+                    <input
+                        placeholder="Roman Sedov"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input>
+                <tui-select
+                    formControlName="accounts"
+                    class="input"
+                >
+                    Choose an account
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="accounts"
+                    />
+                </tui-select>
+                <div class="buttons">
+                    <button
+                        size="l"
+                        tuiButton
+                        type="submit"
+                        class="tui-space_right-2"
+                    >
+                        Send
+                    </button>
+                    <button
+                        appearance="flat"
+                        size="l"
+                        tuiButton
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </ng-template>
+    </tui-accordion-item>
+</tui-accordion>
