@@ -27,10 +27,6 @@ tui-textfield {
         --t-right: 2.25rem;
     }
 
-    &::after {
-        margin-inline-start: 0.25rem;
-    }
-
     input,
     select {
         font: var(--tui-font-text-m);
@@ -92,7 +88,7 @@ tui-textfield {
         }
 
         &::after {
-            margin: 0 -0.125rem 0 0.5rem;
+            margin: 0 -0.125rem 0 0.25rem;
         }
 
         input,
@@ -123,7 +119,7 @@ tui-textfield {
 
     &::before {
         z-index: 1;
-        margin-inline-end: 0.75rem;
+        margin-inline-end: 0.5rem;
     }
 
     &:has(:disabled:not(.t-filler, button, option))::before,
