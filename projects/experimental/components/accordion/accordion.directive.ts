@@ -7,9 +7,9 @@ import {
     Output,
     signal,
 } from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk';
-import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core';
-import {TuiChevron} from '@taiga-ui/kit';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiAccordionComponent} from './accordion.component';
 
@@ -31,13 +31,13 @@ export class TuiAccordionDirective implements OnChanges {
 
     protected readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
 
-    public readonly open = tuiDirectiveBinding(TuiChevron, 'tuiChevron', signal(false));
-
     @Input()
     public tuiAccordion: boolean | string = '';
 
     @Output()
     public readonly tuiAccordionChange = new EventEmitter<boolean>();
+
+    public readonly open = tuiDirectiveBinding(TuiChevron, 'tuiChevron', signal(false));
 
     public ngOnChanges(): void {
         this.open.set(!!this.tuiAccordion);
