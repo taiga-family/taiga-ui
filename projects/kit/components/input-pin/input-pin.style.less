@@ -1,0 +1,70 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+:host {
+    color: transparent;
+    caret-color: transparent;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::selection {
+        background: transparent;
+    }
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    ::ng-deep + .t-content .t-clear {
+        display: none !important;
+    }
+}
+
+.t-wrapper {
+    .fullsize();
+
+    display: flex;
+    gap: inherit;
+    border-radius: inherit;
+}
+
+.t-item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+    pointer-events: auto;
+    cursor: text;
+
+    &[data-focus='true'] .t-value {
+        &_filled {
+            background: var(--tui-service-selection-background);
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &::before {
+            content: '';
+            block-size: 1em;
+            border-left: 1px solid var(--tui-text-primary);
+            animation: blink 1s steps(1) infinite;
+        }
+    }
+}
+
+.t-value {
+    color: var(--tui-text-tertiary);
+
+    &_filled {
+        color: var(--tui-text-primary);
+    }
+}

@@ -89,6 +89,7 @@ export const DemoRoute = {
     InputTag: '/components/input-tag',
     InputTime: '/components/input-time',
     InputPhoneInternational: '/components/input-phone-international',
+    InputPin: '/components/input-pin',
     InputYear: '/components/input-year',
     Island: '/components/island',
     ItemsWithMore: '/components/items-with-more',

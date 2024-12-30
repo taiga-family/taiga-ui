@@ -17,6 +17,7 @@ tui-textfield {
     border-radius: var(--tui-radius-l);
     font: var(--tui-font-text-m);
     box-sizing: border-box;
+    gap: 0.25rem;
 
     &[style*='--t-icon-start:'] {
         --t-left: 2.25rem;
@@ -24,10 +25,6 @@ tui-textfield {
 
     &[style*='--t-icon-end:'] {
         --t-right: 2.25rem;
-    }
-
-    &::after {
-        margin-inline-start: 0.25rem;
     }
 
     input,
@@ -40,6 +37,7 @@ tui-textfield {
         --t-padding: var(--tui-padding-s);
 
         border-radius: var(--tui-radius-m);
+        gap: 0;
         font: var(--tui-font-text-s);
 
         &[style*='--t-icon-start:'] {
@@ -66,7 +64,6 @@ tui-textfield {
         }
 
         .t-content {
-            gap: 0;
             margin-inline-end: -0.325rem;
         }
     }
@@ -87,11 +84,11 @@ tui-textfield {
         }
 
         &::before {
-            margin: 0 0.375rem 0 -0.125rem;
+            margin: 0 0.125rem 0 -0.125rem;
         }
 
         &::after {
-            margin: 0 -0.125rem 0 0.5rem;
+            margin: 0 -0.125rem 0 0.25rem;
         }
 
         input,
@@ -122,7 +119,7 @@ tui-textfield {
 
     &::before {
         z-index: 1;
-        margin-inline-end: 0.75rem;
+        margin-inline-end: 0.5rem;
     }
 
     &:has(:disabled:not(.t-filler, button, option))::before,
@@ -278,7 +275,7 @@ tui-textfield {
     .t-content {
         display: flex;
         align-items: center;
-        gap: 0.25rem;
+        gap: inherit;
         margin-inline-start: auto;
         isolation: isolate;
         border-radius: inherit;

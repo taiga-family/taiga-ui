@@ -1,3 +1,4 @@
+import type {DoCheck} from '@angular/core';
 import {Directive, inject, TemplateRef} from '@angular/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
@@ -6,8 +7,12 @@ import {TuiTextfieldComponent} from './textfield.component';
     standalone: true,
     selector: 'ng-template[tuiTextfieldContent]',
 })
-export class TuiTextfieldContent {
-    constructor() {
-        inject(TuiTextfieldComponent).vcr?.createEmbeddedView(inject(TemplateRef));
+export class TuiTextfieldContent implements DoCheck {
+    private readonly ref = inject(TuiTextfieldComponent).vcr?.createEmbeddedView(
+        inject(TemplateRef),
+    );
+
+    public ngDoCheck(): void {
+        this.ref?.detectChanges();
     }
 }
