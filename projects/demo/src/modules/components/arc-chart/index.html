@@ -25,60 +25,59 @@
                 [(activeItemIndex)]="activeItemIndex"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+        <table tuiDocAPI>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Maximum value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxLabel"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="maxLabel"
+            </tr>
+            <tr
+                name="[maxLabel]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="maxLabel"
             >
                 Label for maximum value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="minLabel"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="minLabel"
+            </tr>
+            <tr
+                name="[minLabel]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="minLabel"
             >
                 Label for minimum value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="readonly number[]"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 Value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="activeItemIndex"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="activeItemIndex"
+            </tr>
+            <tr
+                name="[(activeItemIndex)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="activeItemIndex"
             >
                 Index of selected arc
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
-
     <tui-setup *pageTab />
 </tui-doc-page>
