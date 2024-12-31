@@ -86,6 +86,8 @@ const TEMPLATE_BEFORE = `
 >
     {{ fruit }}
 </tui-radio-block>
+
+<tui-primitive-textfield [(value)]="value" [pseudoFocus]="pseudoFocus">Type something</tui-primitive-textfield>
 `.trim();
 
 const TEMPLATE_AFTER = `
@@ -138,6 +140,8 @@ const TEMPLATE_AFTER = `
 >
     {{ fruit }}
 </label>
+
+<tui-primitive-textfield [(value)]="value" [pseudoFocus]="pseudoFocus">Type something</tui-primitive-textfield>
 `.trim();
 
 describe('ng-update', () => {

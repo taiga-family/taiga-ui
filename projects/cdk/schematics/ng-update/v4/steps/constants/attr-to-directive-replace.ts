@@ -68,5 +68,6 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
             name: 'TuiAppearance',
             moduleSpecifier: '@taiga-ui/core',
         },
+        filterFn: (el) => !['tui-primitive-textfield'].includes(el.tagName),
     },
 ];
