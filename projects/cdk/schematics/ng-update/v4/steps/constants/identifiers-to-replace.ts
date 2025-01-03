@@ -295,6 +295,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
+        from: {name: 'TuiTreeItemComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItem', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeItemContentComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItemContent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeChildrenDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeChildren', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeItemControllerDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItemController', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeNodeDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeNode', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {
             name: 'TuiDataListDropdownManagerModule',
             moduleSpecifier: '@taiga-ui/kit',
