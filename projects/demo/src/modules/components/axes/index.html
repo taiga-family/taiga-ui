@@ -34,121 +34,133 @@
                 [verticalLinesHandler]="verticalLinesHandler"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisX"
-                documentationPropertyType="TuiLineType"
-                [documentationPropertyValues]="lineVariants"
-                [(documentationPropertyValue)]="axisX"
+        <table tuiDocAPI>
+            <tr
+                name="[axisX]"
+                tuiDocAPIItem
+                type="TuiLineType"
+                [items]="lineVariants"
+                [(value)]="axisX"
             >
                 Axis X
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisXLabels"
-                documentationPropertyType="ReadonlyArray<string | null>"
-                [documentationPropertyValues]="labelsXVariants"
-                [(documentationPropertyValue)]="axisXLabels"
+            </tr>
+
+            <tr
+                name="[axisXLabels]"
+                tuiDocAPIItem
+                type="ReadonlyArray<string | null>"
+                [items]="labelsXVariants"
+                [(value)]="axisXLabels"
             >
                 Labels for X. Empty string is empty stroke,
                 <code>null</code>
                 — no stroke
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisY"
-                documentationPropertyType="TuiLineType"
-                [documentationPropertyValues]="lineVariants"
-                [(documentationPropertyValue)]="axisY"
+            </tr>
+
+            <tr
+                name="[axisY]"
+                tuiDocAPIItem
+                type="TuiLineType"
+                [items]="lineVariants"
+                [(value)]="axisY"
             >
                 Axis Y
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYInset"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="axisYInset"
+            </tr>
+
+            <tr
+                name="[axisYInset]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="axisYInset"
             >
                 Inset of labels on axis Y
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYLabels"
-                documentationPropertyType="readonly string[]"
-                [documentationPropertyValues]="labelsYVariants"
-                [(documentationPropertyValue)]="axisYLabels"
+            </tr>
+
+            <tr
+                name="[axisYLabels]"
+                tuiDocAPIItem
+                type="readonly string[]"
+                [items]="labelsYVariants"
+                [(value)]="axisYLabels"
             >
                 Labels for Y
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYName"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="axisYName"
+            </tr>
+
+            <tr
+                name="[axisYName]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="axisYName"
             >
                 Name of Y axis
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYSecondaryInset"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="axisYSecondaryInset"
+            </tr>
+
+            <tr
+                name="[axisYSecondaryInset]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="axisYSecondaryInset"
             >
                 Inset labels for Y
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYSecondaryLabels"
-                documentationPropertyType="readonly string[]"
-                [documentationPropertyValues]="labelsYVariants"
-                [(documentationPropertyValue)]="axisYSecondaryLabels"
+            </tr>
+
+            <tr
+                name="[axisYSecondaryLabels]"
+                tuiDocAPIItem
+                type="readonly string[]"
+                [items]="labelsYVariants"
+                [(value)]="axisYSecondaryLabels"
             >
                 Secondary Y axis labels
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="axisYSecondaryName"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="axisYSecondaryName"
+            </tr>
+
+            <tr
+                name="[axisYSecondaryName]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="axisYSecondaryName"
             >
                 Secondary Y axis name
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="horizontalLines"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="horizontalLines"
+            </tr>
+
+            <tr
+                name="[horizontalLines]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="horizontalLines"
             >
                 Horizontal lines number
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="horizontalLinesHandler"
-                documentationPropertyType="TuiLineHandler"
-                [documentationPropertyValues]="handlerVariants"
-                [(documentationPropertyValue)]="horizontalLinesHandler"
+            </tr>
+
+            <tr
+                name="[horizontalLinesHandler]"
+                tuiDocAPIItem
+                type="TuiLineHandler"
+                [items]="handlerVariants"
+                [(value)]="horizontalLinesHandler"
             >
                 Horizontal lines type handler
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="verticalLines"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="verticalLines"
+            </tr>
+
+            <tr
+                name="[verticalLines]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="verticalLines"
             >
                 Number of vertical lines
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="verticalLinesHandler"
-                documentationPropertyType="TuiLineHandler"
-                [documentationPropertyValues]="handlerVariants"
-                [(documentationPropertyValue)]="verticalLinesHandler"
+            </tr>
+
+            <tr
+                name="[verticalLinesHandle]"
+                tuiDocAPIItem
+                type="TuiLineHandler"
+                [items]="handlerVariants"
+                [(value)]="verticalLinesHandler"
             >
                 Vertical lines type handler
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
