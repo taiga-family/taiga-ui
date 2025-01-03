@@ -1,11 +1,15 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .transition(grid-template-rows);
+    .transition(~'grid-template-rows, padding');
 
     display: grid;
     grid-template-rows: 0fr;
     transition-delay: 1ms;
+
+    &:not(._expanded) {
+        padding-block: 0;
+    }
 
     &._expanded {
         grid-template-rows: 1fr;

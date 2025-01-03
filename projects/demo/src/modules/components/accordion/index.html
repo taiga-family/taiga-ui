@@ -1,47 +1,15 @@
 <tui-doc-page
     header="Accordion"
-    package="KIT"
+    package="EXPERIMENTAL"
     type="components"
 >
     <ng-template pageTab>
-        <p>An element that allows to show and hide content in sections</p>
-
-        <p>Only one section of accordion can be opened by default</p>
-
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="with custom design"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="single"
-            heading="alone"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="eager-and-lazy"
-            heading="Eager and Lazy content"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="nested"
-            heading="Nested"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample: 'html,ts'"
-            [fullsize]="true"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
@@ -49,153 +17,47 @@
         <tui-doc-demo>
             <tui-accordion
                 [closeOthers]="closeOthers"
-                [rounded]="rounded"
+                [size]="size"
             >
-                <tui-accordion-item
-                    [borders]="borders"
-                    [disabled]="disabled"
-                    [disableHover]="disableHover"
-                    [noPadding]="noPadding"
-                    [showArrow]="showArrow"
-                    [size]="size"
-                >
-                    Taiga UI cdk
-                    <ng-template tuiAccordionItemContent>
-                        Development kit consisting of the low level tools and abstractions used to develop Taiga UI
-                        Angular entities
-                    </ng-template>
-                </tui-accordion-item>
-                <tui-accordion-item
-                    [async]="async"
-                    [borders]="borders"
-                    [disabled]="disabled"
-                    [disableHover]="disableHover"
-                    [noPadding]="noPadding"
-                    [open]="open"
-                    [showArrow]="showArrow"
-                    [size]="size"
-                    (openChange)="onOpenChange($event)"
-                >
-                    Taiga UI core
-                    <ng-template tuiAccordionItemContent>
-                        <div #content>
-                            Basic elements needed to develop components, directives and more using Taiga UI design
-                            system
-                        </div>
-                    </ng-template>
-                </tui-accordion-item>
+                <button tuiAccordion>Taiga UI cdk</button>
+                <tui-expand>
+                    Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular
+                    entities
+                </tui-expand>
+                <button [(tuiAccordion)]="open">Taiga UI core</button>
+                <tui-expand>
+                    Basic elements needed to develop components, directives and more using Taiga UI design system
+                </tui-expand>
             </tui-accordion>
         </tui-doc-demo>
 
-        <tui-accordion [closeOthers]="false">
-            <tui-accordion-item [open]="true">
-                TuiAccordionDirective
-                <ng-template tuiAccordionItemContent>
-                    <table tuiDocAPI>
-                        <tr
-                            name="[closeOthers]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="closeOthers"
-                        >
-                            Other sections are closed when user opens one
-                        </tr>
-
-                        <tr
-                            name="[rounded]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="rounded"
-                        >
-                            Rounded accordion style
-                        </tr>
-                    </table>
-                </ng-template>
-            </tui-accordion-item>
-            <tui-accordion-item>
-                TuiAccordionItemComponent
-                <ng-template tuiAccordionItemContent>
-                    <table tuiDocAPI>
-                        <tr
-                            name="[async]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="async"
-                        >
-                            Waits for a custom event
-                            <code>TUI_EXPAND_LOADED</code>
-                            before opening. Content is initialized when opening starts
-                        </tr>
-
-                        <tr
-                            name="[borders]"
-                            tuiDocAPIItem
-                            type="'all' | 'top-bottom' | null"
-                            [items]="bordersVariants"
-                            [(value)]="borders"
-                        >
-                            Borders variants
-                        </tr>
-
-                        <tr
-                            name="[disabled]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="disabled"
-                        >
-                            Disabled state for an item
-                        </tr>
-
-                        <tr
-                            name="[noPadding]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="noPadding"
-                        >
-                            Removes default paddings
-                        </tr>
-
-                        <tr
-                            name="[disableHover]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="disableHover"
-                        >
-                            Disabled header hover state
-                        </tr>
-
-                        <tr
-                            name="[(open)]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="open"
-                            (valueChange)="onOpenChange($event)"
-                        >
-                            Open / close state of section
-                        </tr>
-
-                        <tr
-                            name="[size]"
-                            tuiDocAPIItem
-                            type="TuiSizeS"
-                            [items]="sizeVariants"
-                            [(value)]="size"
-                        >
-                            Size of an accordion item
-                        </tr>
-
-                        <tr
-                            name="[showArrow]"
-                            tuiDocAPIItem
-                            type="boolean"
-                            [(value)]="showArrow"
-                        >
-                            Show / hide an arrow
-                        </tr>
-                    </table>
-                </ng-template>
-            </tui-accordion-item>
-        </tui-accordion>
+        <table tuiDocAPI>
+            <tr
+                name="[closeOthers]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeOthers"
+            >
+                Other sections are closed when user opens one
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[(tuiAccordion)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="open"
+            >
+                Individual item open state
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
