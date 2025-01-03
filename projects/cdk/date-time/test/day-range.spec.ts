@@ -183,6 +183,24 @@ describe('TuiDayRange', () => {
         });
     });
 
+    describe('toArray', () => {
+        it('returns array with all dates between `from` and `to` (including `from` and `to` day)', () => {
+            const range = new TuiDayRange(
+                new TuiDay(2024, 11, 29),
+                new TuiDay(2025, 0, 3),
+            );
+
+            expect(range.toArray()).toEqual([
+                new TuiDay(2024, 11, 29),
+                new TuiDay(2024, 11, 30),
+                new TuiDay(2024, 11, 31),
+                new TuiDay(2025, 0, 1),
+                new TuiDay(2025, 0, 2),
+                new TuiDay(2025, 0, 3),
+            ]);
+        });
+    });
+
     describe('dayLimit', () => {
         it('limits from one side if the other is null', () => {
             const y2000m0d1 = new TuiDay(2000, 0, 1);

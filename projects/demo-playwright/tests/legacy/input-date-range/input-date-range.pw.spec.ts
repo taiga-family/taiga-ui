@@ -17,7 +17,9 @@ import {
     TuiMobileCalendarPO,
 } from '../../../utils';
 
-test.describe('InputDateRange', () => {
+const {describe, beforeEach} = test;
+
+describe('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
     let documentationPage!: TuiDocumentationPagePO;
 
@@ -25,16 +27,16 @@ test.describe('InputDateRange', () => {
         viewport: {width: 650, height: 650},
     });
 
-    test.beforeEach(({page}) => {
+    beforeEach(({page}) => {
         documentationPage = new TuiDocumentationPagePO(page);
     });
 
-    test.describe('API', () => {
+    describe('API', () => {
         let example!: Locator;
 
         let calendar!: TuiCalendarPO;
 
-        test.beforeEach(() => {
+        beforeEach(() => {
             example = documentationPage.apiPageExample;
 
             inputDateRange = new TuiInputDateRangePO(
@@ -124,7 +126,7 @@ test.describe('InputDateRange', () => {
             );
         });
 
-        test.describe('prevents changes if you enter an invalid date', () => {
+        describe('prevents changes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
@@ -187,6 +189,7 @@ test.describe('InputDateRange', () => {
 
             await inputDateRange.textfield.click();
             await calendarSheet.clickOnDay(21);
+            await calendarSheet.clickOnDay(25);
 
             await expect(inputDateRange.textfield).toHaveValue(
                 `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
@@ -234,7 +237,7 @@ test.describe('InputDateRange', () => {
             );
         });
 
-        test.describe('Mobile emulation', () => {
+        describe('Mobile emulation', () => {
             test.use({
                 viewport: {
                     width: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
@@ -245,7 +248,7 @@ test.describe('InputDateRange', () => {
 
             let mobileCalendar!: TuiMobileCalendarPO;
 
-            test.beforeEach(() => {
+            beforeEach(() => {
                 mobileCalendar = new TuiMobileCalendarPO(inputDateRange.calendar);
             });
 
@@ -265,10 +268,108 @@ test.describe('InputDateRange', () => {
                 );
             });
         });
+
+        describe('Selecting range consisting of the same start/end date', () => {
+            test('double click on the same day - selects single-day range', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+
+                await inputDateRange.textfield.click();
+
+                const calendarSheet = new TuiCalendarSheetPO(
+                    inputDateRange.calendar.locator('tui-calendar-sheet'),
+                );
+
+                await calendarSheet.clickOnDay(15);
+
+                await expect(inputDateRange.textfield).toHaveValue('');
+
+                await calendarSheet.clickOnDay(15);
+
+                await expect(inputDateRange.textfield).toHaveValue(
+                    '15.09.2020 – 15.09.2020',
+                );
+            });
+
+            test('allows to select new range start after double click on the same day', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+
+                await inputDateRange.textfield.click();
+
+                const calendarSheet = new TuiCalendarSheetPO(
+                    inputDateRange.calendar.locator('tui-calendar-sheet'),
+                );
+
+                await calendarSheet.clickOnDay(15);
+                await calendarSheet.clickOnDay(15);
+
+                await expect(inputDateRange.calendar).not.toBeAttached();
+
+                await inputDateRange.textfield.click();
+
+                await expect(inputDateRange.calendar).toBeAttached();
+
+                await calendarSheet.clickOnDay(22);
+
+                await expect(inputDateRange.textfield).toHaveValue(
+                    '15.09.2020 – 15.09.2020',
+                );
+
+                await calendarSheet.clickOnDay(25);
+
+                await expect(inputDateRange.textfield).toHaveValue(
+                    '22.09.2020 – 25.09.2020',
+                );
+            });
+
+            test('no highlighting hover effect after double click on the same day', async ({
+                page,
+            }) => {
+                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+
+                await inputDateRange.textfield.click();
+
+                const calendarSheet = new TuiCalendarSheetPO(
+                    inputDateRange.calendar.locator('tui-calendar-sheet'),
+                );
+
+                await calendarSheet.clickOnDay(15);
+                await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
+
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    '12-1-has-hover-effect.png',
+                );
+
+                await calendarSheet.clickOnDay(15);
+
+                await expect(inputDateRange.textfield).toHaveValue(
+                    '15.09.2020 – 15.09.2020',
+                );
+                await expect(inputDateRange.calendar).not.toBeAttached();
+
+                await inputDateRange.textfield.click();
+                await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
+
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    '12-2-no-hover-effect.png',
+                );
+
+                await calendarSheet.clickOnDay(22);
+
+                await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
+
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    '12-3-has-hover-effect.png',
+                );
+            });
+        });
     });
 
-    test.describe('Examples', () => {
-        test.beforeEach(async ({page}) => {
+    describe('Examples', () => {
+        beforeEach(async ({page}) => {
             await tuiGoto(page, DemoRoute.InputDateRange);
         });
 
