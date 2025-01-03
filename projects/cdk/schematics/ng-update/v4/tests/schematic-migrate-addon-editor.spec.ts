@@ -59,12 +59,10 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TUI_SANITIZER } from "@taiga-ui/legacy";
-import { TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_DEFAULT_TOOLS } from "@taiga-ui/editor";
+import { TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_DEFAULT_TOOLS, TuiEditorTool, TUI_EDITOR_EXTENSIONS } from "@taiga-ui/editor";
 
 import { TuiRoot, TuiAlert, TuiDialog } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
-import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
-import {TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
