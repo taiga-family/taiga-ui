@@ -3,12 +3,13 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiDemo],
+    imports: [TuiAvatar, TuiDemo, TuiDocAPI, TuiDocAPIItem],
     templateUrl: './index.html',
     changeDetection,
 })

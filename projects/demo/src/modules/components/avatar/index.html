@@ -21,36 +21,39 @@
                 [src]="src"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="round"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="round"
+
+        <table tuiDocAPI>
+            <tr
+                name="round"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="round"
             >
                 Use round shape
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizes"
-                [(documentationPropertyValue)]="size"
+            </tr>
+
+            <tr
+                name="src"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizes"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="src"
-                documentationPropertyType="SafeResourceUrl | string | null"
-                [documentationPropertyValues]="srcVariants"
-                [(documentationPropertyValue)]="src"
+            </tr>
+
+            <tr
+                name="size"
+                tuiDocAPIItem
+                type="SafeResourceUrl | string | null"
+                [items]="srcVariants"
+                [(value)]="src"
             >
                 Initials, image URL, or icon name. Alternatively you can pass text as
                 <code>ng-content</code>
                 which would be styled differently from initials and fade if overflown
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
