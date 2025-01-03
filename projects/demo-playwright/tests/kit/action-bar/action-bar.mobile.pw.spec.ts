@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {
@@ -19,17 +19,25 @@ test.describe('ActionBar', () => {
 
     test('works', async ({page}) => {
         await tuiGoto(page, DemoRoute.ActionBar);
+
+        const api = new TuiDocumentationApiPagePO(page);
         const example = page.locator('#size--m');
         const showActionBarButton = example.locator('label').first();
 
         await showActionBarButton.click();
         const actionBarExample = page.locator('tui-action-bar');
 
+        await api.hideContent();
+        await api.prepareBeforeScreenshot();
+
         await expect(actionBarExample).toHaveScreenshot('01-actions-bar-mobile.png');
 
         const more = actionBarExample.locator('button:has-text("More")');
 
         await more.click();
+
+        await api.hideContent();
+        await api.prepareBeforeScreenshot();
 
         await expect(actionBarExample).toHaveScreenshot(
             '01-action-bar-mobile-expanded.png',
