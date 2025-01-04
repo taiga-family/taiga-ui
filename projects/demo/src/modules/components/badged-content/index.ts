@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
@@ -13,6 +14,8 @@ import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
         TuiBadgedContent,
         TuiBadgeNotification,
         TuiDemo,
+        TuiDocAPI,
+        TuiDocAPIItem,
         TuiFallbackSrcPipe,
     ],
     templateUrl: './index.html',

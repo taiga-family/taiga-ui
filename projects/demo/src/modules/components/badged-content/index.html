@@ -35,17 +35,16 @@
                 />
             </tui-badged-content>
         </tui-doc-demo>
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.--t-radius"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="radiusVariants"
-                [(documentationPropertyValue)]="radius"
-            >
-                Border radius
-            </ng-template>
-        </tui-doc-documentation>
+        <span tuiTitle="l">CSS customization</span>
+        <table tuiDocAPI>
+            <tr
+                name="style.--t-radius"
+                tuiDocAPIItem
+                type="string"
+                [items]="radiusVariants"
+                [(value)]="radius"
+            ></tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
