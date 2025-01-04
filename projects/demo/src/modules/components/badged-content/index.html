@@ -35,7 +35,7 @@
                 />
             </tui-badged-content>
         </tui-doc-demo>
-        <span tuiTitle="l">CSS customization</span>
+        <h1 [style.font]="'--tui-font-heading-4;'">CSS customization</h1>
         <table tuiDocAPI>
             <tr
                 name="style.--t-radius"
@@ -43,7 +43,9 @@
                 type="string"
                 [items]="radiusVariants"
                 [(value)]="radius"
-            ></tr>
+            >
+                Border radius
+            </tr>
         </table>
     </ng-template>
 
