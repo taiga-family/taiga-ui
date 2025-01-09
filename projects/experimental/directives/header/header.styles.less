@@ -77,6 +77,10 @@
     }
 
     &[data-size='xxs'] {
+        [tuiTitle] {
+            gap: 0.125rem;
+        }
+
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-xl);
@@ -93,6 +97,20 @@
 }
 
 tui-root._mobile [tuiHeader] {
+    &[data-size='xxl'],
+    &[data-size='xl'],
+    &[data-size='l'] {
+        [tuiTitle] {
+            gap: 1rem;
+        }
+    }
+
+    &[data-size='m'] {
+        [tuiTitle] {
+            gap: 0.5rem;
+        }
+    }
+
     [tuiAccessories] {
         gap: 1rem;
     }
