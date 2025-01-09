@@ -1,5 +1,5 @@
 ```ts
-import {TuiExpand} from '@taiga-ui/core';
+import {TuiExpand} from '@taiga-ui/experimental';
 
 // ...
 

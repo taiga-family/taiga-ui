@@ -1,0 +1,27 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .transition(grid-template-rows);
+
+    display: grid;
+    grid-template-rows: 0fr;
+    transition-delay: 1ms;
+
+    &._expanded {
+        grid-template-rows: 1fr;
+
+        .t-wrapper {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.t-wrapper {
+    .transition(all);
+
+    grid-row: 1 / span 2;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}

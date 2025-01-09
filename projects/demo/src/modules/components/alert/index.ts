@@ -2,6 +2,7 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions} from '@taiga-ui/core';
 import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/core';
