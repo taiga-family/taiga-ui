@@ -2,19 +2,18 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions} from '@taiga-ui/core';
 import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
-import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
+
 import {AlertExampleWithData} from './examples/4';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiDemo, TuiDocAPI, TuiDocAPIItem],
+    imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
