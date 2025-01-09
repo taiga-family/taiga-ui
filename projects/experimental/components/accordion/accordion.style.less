@@ -18,6 +18,10 @@ tui-accordion {
         &:first-child {
             border-start-start-radius: inherit !important;
             border-start-end-radius: inherit !important;
+
+            &:last-of-type:not(._open) {
+                mask: none;
+            }
         }
 
         &::after {
