@@ -11,3 +11,7 @@
 <div [tuiNumberFormat]="{decimalMode: 'always'}">
     {{ 800 | tuiAmount: 'USD' : 'left' | async }}
 </div>
+
+<span [tuiNumberFormat]="{precision: 0}">
+    {{ -0.83 | tuiAmount: 'RUB' : 'right' | async }}
+</span>
