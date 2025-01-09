@@ -2,6 +2,7 @@ import type {DevkitFileSystem} from 'ng-morph';
 import {
     addProviderToNgModule,
     getActiveProject,
+    getImports,
     getNgModules,
     getPackageJsonDependency,
     infoLog,
@@ -98,7 +99,11 @@ function addProviders({
         addProviderToNgModule(module, 'NG_EVENT_PLUGINS', {unique: true});
     }
 
-    if (providersArray || module) {
+    const shouldAddImport =
+        (providersArray || module) &&
+        !getImports(path, {moduleSpecifier: '@tinkoff/ng-event-plugins'}).length;
+
+    if (shouldAddImport) {
         addUniqueImport(path, 'NG_EVENT_PLUGINS', '@taiga-ui/event-plugins');
     }
 

@@ -7,7 +7,6 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
-import {swapNamedImports} from '../../utils/swap-named-imports';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 
@@ -18,7 +17,6 @@ export function replacePackageName(
 ): void {
     const fileSystem = getFileSystem(tree);
 
-    swapNamedImports(oldPackage, newPackage.name);
     replaceText([{from: oldPackage, to: newPackage.name}], ALL_TS_FILES);
 
     const old = getPackageJsonDependency(tree, oldPackage);
