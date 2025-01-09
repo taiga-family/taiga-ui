@@ -60,4 +60,9 @@ export const ATTR_WITH_VALUES_TO_REPLACE: ReplacementAttributeValue[] = [
         withTagNames: ['tui-radio-block', 'tui-radio-labeled', 'tui-radio'],
         valueReplacer: (condition) => `${condition} ? 'disabled' : null`,
     },
+    {
+        attrNames: ['size'],
+        withTagNames: ['tui-data-list-wrapper'],
+        valueReplacer: [{from: 'xs', to: 's'}],
+    },
 ];

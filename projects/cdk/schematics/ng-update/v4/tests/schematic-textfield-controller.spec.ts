@@ -55,6 +55,7 @@ const TEMPLATE_BEFORE = `
     />
     <tui-data-list-wrapper
         *tuiDataList
+        size="xs"
         tuiMultiSelectGroup
         [items]="items | tuiFilterByInputWith : matcher"
     ></tui-data-list-wrapper>
@@ -83,6 +84,7 @@ const TEMPLATE_AFTER = `
     />
     <tui-data-list-wrapper
         *tuiDataList
+        size="s"
         tuiMultiSelectGroup
         [items]="items | tuiFilterByInput"
     ></tui-data-list-wrapper>
