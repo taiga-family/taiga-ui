@@ -2,12 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiBar} from '@taiga-ui/addon-charts';
-import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiBar, TuiDemo, TuiDocAPI, TuiDocAPIItem],
+    imports: [TuiBar, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
