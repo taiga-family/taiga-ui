@@ -12,4 +12,11 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
         tags: ['button', 'a'],
         filterFn: (el) => hasElementAttribute(el, 'tuiLink'),
     },
+    {
+        inputName: 'disabled',
+        tags: ['a'],
+        filterFn: (el) =>
+            hasElementAttribute(el, 'tuiIconButton') ||
+            hasElementAttribute(el, 'tuiButton'),
+    },
 ];
