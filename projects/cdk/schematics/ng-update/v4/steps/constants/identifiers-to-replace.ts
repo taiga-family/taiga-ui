@@ -545,7 +545,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
             {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
         ],
-        to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
+        to: [
+            {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiScrollable', moduleSpecifier: '@taiga-ui/core'},
+        ],
     },
     {
         from: [
