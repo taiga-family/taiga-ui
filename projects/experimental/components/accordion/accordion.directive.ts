@@ -1,12 +1,5 @@
-import {
-    Directive,
-    EventEmitter,
-    inject,
-    Input,
-    type OnChanges,
-    Output,
-    signal,
-} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output, signal} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';

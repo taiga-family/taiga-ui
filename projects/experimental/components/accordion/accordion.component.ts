@@ -1,19 +1,15 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     Input,
-    type QueryList,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {
-    TuiGroup,
-    tuiGroupOptionsProvider,
-    type TuiSizeL,
-    type TuiSizeS,
-} from '@taiga-ui/core';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TuiExpand} from '@taiga-ui/experimental/components/expand';
 
 import {TuiAccordionDirective} from './accordion.directive';
@@ -23,6 +19,8 @@ import {TuiAccordionDirective} from './accordion.directive';
     selector: 'tui-accordion',
     template: '<ng-content />',
     styleUrls: ['./accordion.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiGroupOptionsProvider({
             orientation: 'vertical',
@@ -30,8 +28,6 @@ import {TuiAccordionDirective} from './accordion.directive';
         }),
     ],
     hostDirectives: [TuiGroup],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size()',
     },
@@ -46,14 +42,14 @@ export class TuiAccordionComponent {
     @Input()
     public closeOthers = true;
 
-    public readonly size = signal<TuiSizeS | TuiSizeL>('l');
+    public readonly size = signal<TuiSizeL | TuiSizeS>('l');
 
     @Input('size')
-    set sizeSetter(size: TuiSizeS | TuiSizeL) {
+    public set sizeSetter(size: TuiSizeL | TuiSizeS) {
         this.size.set(size);
     }
 
-    toggle(directive: TuiAccordionDirective, value: boolean): void {
+    public toggle(directive: TuiAccordionDirective, value: boolean): void {
         if (this.closeOthers && value) {
             this.expands.forEach((expand) => {
                 expand.expanded = false;

@@ -5,8 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {type TuiSizeS, TuiTitle} from '@taiga-ui/core';
-import {TUI_EXPAND_LOADED} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED, TuiTitle} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 

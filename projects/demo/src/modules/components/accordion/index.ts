@@ -19,7 +19,7 @@ export default class Page {
         'Nested',
     ];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[2]!;
     protected closeOthers = true;
     protected open = false;
