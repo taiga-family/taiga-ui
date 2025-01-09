@@ -132,10 +132,6 @@
     --tui-shadow-popup: 0 1.25rem 3rem rgba(0, 0, 0, 0.2);
 }
 
-&:root {
-    .light();
-}
-
 @media screen {
     [tuiTheme='dark'] {
         color-scheme: dark;
@@ -145,12 +141,16 @@
 
     [tuiTheme='light'] {
         color-scheme: light;
+    }
 
+    &:root,
+    [tuiTheme='light'] {
         .light();
     }
 }
 
 @media print {
+    &:root,
     [tuiTheme] {
         color-scheme: light;
 
