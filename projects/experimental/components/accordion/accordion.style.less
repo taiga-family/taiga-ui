@@ -2,13 +2,18 @@
 
 tui-accordion {
     inline-size: stretch;
-    box-shadow: inset 0 0 0 1px var(--tui-border-normal);
     border-radius: var(--t-group-radius);
     overflow: hidden;
 
     > [tuiAccordion] {
         text-align: start;
         justify-content: flex-start;
+
+        &:last-of-type:not(._open) {
+            mask-image: var(--t-group-mask-end);
+            border-end-start-radius: inherit;
+            border-end-end-radius: inherit;
+        }
 
         &:first-child {
             border-start-start-radius: inherit !important;
@@ -29,9 +34,8 @@ tui-accordion {
         min-block-size: 1px !important;
         padding: 1.25rem;
         font: var(--tui-font-text-m);
-        box-shadow:
-            inset 0 1px var(--tui-border-normal),
-            inset 0 -1px var(--tui-border-normal);
+        transition-property: grid-template-rows, padding, visibility !important;
+        box-shadow: inset 0 0 0 1px var(--tui-border-normal);
 
         &:last-child {
             border-end-start-radius: inherit !important;
