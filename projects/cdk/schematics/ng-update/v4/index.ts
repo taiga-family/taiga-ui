@@ -48,6 +48,7 @@ import {migrateEditor} from './steps/migrate-editor';
 import {migrateImportProvidersFrom} from './steps/migrate-providers-from';
 import {migrateRoot} from './steps/migrate-root';
 import {replaceFunctions} from './steps/replace-functions';
+import {replaceTemplateLineEndings} from './steps/replace-template-line-endings';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {
@@ -104,6 +105,7 @@ export function updateToV4(options: TuiSchema): Rule {
 
     return chain([
         main(options),
+        (tree) => replaceTemplateLineEndings(tree),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
