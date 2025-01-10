@@ -35,7 +35,10 @@ test.describe('Demo', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await documentation.waitStableState(); // note: load lazy loading images
-                await page.waitForTimeout(150);
+
+                // e2e flaky: wait more time for charts graphics
+                // eslint-disable-next-line playwright/no-conditional-in-test
+                await page.waitForTimeout(path.includes('charts') ? 500 : 150);
 
                 await expect(example).toHaveScreenshot([
                     path.replace('/', '').replaceAll('/', '-'),
