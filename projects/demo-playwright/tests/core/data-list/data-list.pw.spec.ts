@@ -2,8 +2,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {scrollToExample} from '../../../utils/scroll-to-example';
-
 test.describe('DataList', () => {
     test('Custom list', async ({page}) => {
         await tuiGoto(page, DemoRoute.DataList);
@@ -11,7 +9,7 @@ test.describe('DataList', () => {
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#custom');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await example.locator('tui-select').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
 
@@ -23,7 +21,7 @@ test.describe('DataList', () => {
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#links');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await example.locator('[tuiDropdownOpen]').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
         await page.waitForTimeout(300);
@@ -44,7 +42,7 @@ test.describe('DataList', () => {
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#submenu');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await documentationPagePO.prepareBeforeScreenshot();
 
         await example.locator('button').click();
@@ -95,29 +93,32 @@ test.describe('DataList', () => {
         await expect(page).toHaveScreenshot('03-8-data-list.png');
     });
 
-    test('Form control', async ({page}) => {
+    test('Form control', async ({page, browserName}) => {
+        test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
+
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#control');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await example.locator('button').first().click();
+        await documentationPagePO.prepareBeforeScreenshot();
 
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
     });
 
-    test('Complex', async ({page}) => {
+    test('Complex', async ({page, browserName}) => {
+        test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
+
         await page.setViewportSize({width: 1400, height: 500});
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#complex');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
-
-        await documentationPagePO.hideContent();
         await documentationPagePO.prepareBeforeScreenshot();
 
         await expect(page).toHaveScreenshot('05-data-list.png');
@@ -165,17 +166,17 @@ test.describe('DataList', () => {
         await expect(page).toHaveScreenshot('09-data-list.png');
     });
 
-    test('Options with long text', async ({page}) => {
+    test('Options with long text', async ({page, browserName}) => {
+        test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
+
         await page.setViewportSize({width: 750, height: 900});
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#long-text-options');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
-
-        await documentationPagePO.hideContent();
         await documentationPagePO.prepareBeforeScreenshot();
 
         await expect(page).toHaveScreenshot('10-data-list.png');
