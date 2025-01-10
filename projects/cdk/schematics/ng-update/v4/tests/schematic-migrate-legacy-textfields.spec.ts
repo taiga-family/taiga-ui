@@ -16,25 +16,77 @@ const collectionPath = join(__dirname, '../../../migration.json');
 const COMPONENT_BEFORE = `
 import {Component} from '@angular/core';
 import { TuiInputModule } from "@taiga-ui/kit";
+import {
+    TUI_TEXTFIELD_SIZE,
+    TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
+} from '@taiga-ui/core';
+import {TuiStatus, TUI_ARROW_MODE, TUI_ARROW, TuiArrowMode, TuiComboBoxComponent, TuiSelectComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiInputModule]
+    imports: [TuiInputModule],
+    providers: [
+        {
+            provide: TUI_ARROW_MODE,
+            useValue: {interactive: TUI_ARROW, disabled: ''},
+        },
+    ],
 })
-export class Test {}
+export class Test {
+    status: TuiStatus = 'default';
+
+    constructor(
+        @Inject(TUI_TEXTFIELD_SIZE)
+        readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_ARROW_MODE) readonly arrowMode: TuiArrowMode,
+        @Inject(TuiComboBoxComponent) readonly comboBox: TuiComboBoxComponent,
+        @Inject(TuiSelectComponent) readonly select: TuiSelectComponent,
+    ) {}
+
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+}
 `.trim();
 
 const COMPONENT_AFTER = `
-import { TuiInputModule } from "@taiga-ui/legacy";
+import { TuiPrimitiveTextfieldComponent, TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective, TuiStatus, TUI_ARROW, TUI_ARROW_MODE, TuiArrowMode, TuiComboBoxComponent, TuiSelectComponent, TuiInputModule } from "@taiga-ui/legacy";
 import {Component} from '@angular/core';
+import {
+    TuiSizeL,
+    TuiSizeS
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiInputModule]
+    imports: [TuiInputModule],
+    providers: [
+        {
+            provide: TUI_ARROW_MODE,
+            useValue: {interactive: TUI_ARROW, disabled: ''},
+        },
+    ],
 })
-export class Test {}
+export class Test {
+    status: TuiStatus = 'default';
+
+    constructor(
+        @Inject(TUI_TEXTFIELD_SIZE)
+        readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_ARROW_MODE) readonly arrowMode: TuiArrowMode,
+        @Inject(TuiComboBoxComponent) readonly comboBox: TuiComboBoxComponent,
+        @Inject(TuiSelectComponent) readonly select: TuiSelectComponent,
+    ) {}
+
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+}
 `.trim();
 
 const TEMPLATE_BEFORE = `
