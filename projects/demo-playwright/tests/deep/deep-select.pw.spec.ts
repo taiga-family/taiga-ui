@@ -47,14 +47,18 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitStableState();
-                    await page.waitForTimeout(300);
+
+                    // e2e flaky: wait more time for charts graphics
+                    await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
                     );
 
                     await select.click();
-                    await page.waitForTimeout(100);
+
+                    // e2e flaky: wait more time for charts graphics
+                    await page.waitForTimeout(path.includes('charts') ? 500 : 100);
                 }
 
                 const cleaner = await api.getCleaner(select);

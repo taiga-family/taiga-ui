@@ -7,8 +7,6 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {scrollToExample} from '../../../utils/scroll-to-example';
-
 test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
 
@@ -19,7 +17,7 @@ test.describe('ComboBox', () => {
         const example = documentationPage.getExample('#ignore-disabled');
         const input = example.locator('tui-combo-box input[tuiTextfieldLegacy]');
 
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
         await input.click();
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
@@ -29,7 +27,7 @@ test.describe('ComboBox', () => {
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-02.png');
 
         await page.click('body');
-        await scrollToExample(page, example);
+        await example.scrollIntoViewIfNeeded();
 
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-03.png');
 
