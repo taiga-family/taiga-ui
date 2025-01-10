@@ -48,62 +48,75 @@
                 Show
             </button>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="content"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="content"
+        <table tuiDocAPI>
+            <tr
+                name="[content]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="contentVariants"
+                [(value)]="content"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyName="appearance"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="appearanceVariants"
-                [(documentationPropertyValue)]="appearance"
+            </tr>
+
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
             >
                 Appearance
-            </ng-template>
-            <ng-template
-                documentationPropertyName="label"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="label"
+            </tr>
+
+            <tr
+                name="[label]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="label"
             >
                 Heading
-            </ng-template>
-            <ng-template
-                documentationPropertyName="data"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="data"
+            </tr>
+
+            <tr
+                name="[data]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="data"
             >
                 Input data of notification, type:
                 <code [textContent]="'<I>'"></code>
-            </ng-template>
-            <ng-template
-                documentationPropertyName="autoClose"
-                documentationPropertyType="TuiHandler | number"
-                [documentationPropertyValues]="autoCloseVariants"
-                [(documentationPropertyValue)]="autoClose"
+            </tr>
+
+            <tr
+                name="[autoClose]"
+                tuiDocAPIItem
+                type="TuiHandler | number"
+                [items]="autoCloseVariants"
+                [(value)]="autoClose"
             >
                 Auto close timeout, 0 for no auto close
-            </ng-template>
-            <ng-template
-                documentationPropertyName="closeable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="closeable"
+            </tr>
+
+            <tr
+                name="[closeable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeable"
             >
                 Has close button
-            </ng-template>
-            <ng-template
-                documentationPropertyName="icon"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+            </tr>
+
+            <tr
+                name="[icon]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="iconVariants"
+                [(value)]="icon"
             >
                 Icon
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
     <ng-template pageTab>
         <ol class="tui-list tui-list_ordered">
