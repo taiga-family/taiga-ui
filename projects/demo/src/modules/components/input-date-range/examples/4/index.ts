@@ -6,6 +6,7 @@ import {TuiDay, TuiDayRange, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
+    tuiCreateDefaultDayRangePeriods,
 } from '@taiga-ui/kit';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
@@ -77,6 +78,8 @@ export function getExampleDateRangeTransformer(
     ],
 })
 export default class Example {
+    protected readonly dateRangeItems = tuiCreateDefaultDayRangePeriods();
+
     protected readonly control = new FormControl([
         new Date(2018, 2, 10),
         new Date(2018, 3, 20),
