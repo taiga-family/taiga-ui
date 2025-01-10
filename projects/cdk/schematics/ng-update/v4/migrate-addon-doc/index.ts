@@ -58,7 +58,7 @@ export function migrateAddonDoc(options: TuiSchema): Rule {
                         .getFullText()
                         .replaceAll(
                             /RouterModule\.forChild\(tuiGenerateRoutes\(\w+\)\)/g,
-                            'RouterModule',
+                            'RouterModule /* use tuiProvideRoutePageTab in provideRouter */',
                         ),
                 ),
             );
