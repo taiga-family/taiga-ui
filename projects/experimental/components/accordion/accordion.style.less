@@ -1,0 +1,63 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-accordion {
+    inline-size: stretch;
+    border-radius: var(--t-group-radius);
+    overflow: hidden;
+
+    > [tuiAccordion] {
+        text-align: start;
+        justify-content: flex-start;
+
+        &:last-of-type:not(._open) {
+            mask-image: var(--t-group-mask-end);
+            border-end-start-radius: inherit;
+            border-end-end-radius: inherit;
+        }
+
+        &:first-child {
+            border-start-start-radius: inherit !important;
+            border-start-end-radius: inherit !important;
+
+            &:last-of-type:not(._open) {
+                mask: none;
+            }
+        }
+
+        &::after {
+            margin-inline-start: auto !important;
+        }
+
+        &._open + tui-expand {
+            visibility: visible;
+        }
+    }
+
+    > tui-expand {
+        visibility: hidden;
+        min-block-size: 1px !important;
+        padding: 1.25rem;
+        font: var(--tui-font-text-m);
+        transition-property: grid-template-rows, padding, visibility !important;
+        box-shadow: inset 0 0 0 1px var(--tui-border-normal);
+
+        &:last-child {
+            border-end-start-radius: inherit !important;
+            border-end-end-radius: inherit !important;
+        }
+    }
+
+    &[data-size='m'] {
+        > tui-expand {
+            padding: 1rem;
+            font: var(--tui-font-text-s);
+        }
+    }
+
+    &[data-size='s'] {
+        > tui-expand {
+            padding: 0.625rem;
+            font: var(--tui-font-text-s);
+        }
+    }
+}

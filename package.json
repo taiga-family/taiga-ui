@@ -99,6 +99,14 @@
             },
             {
                 "files": [
+                    "**/accordion/**/*.html"
+                ],
+                "rules": {
+                    "@angular-eslint/template/button-has-type": "off"
+                }
+            },
+            {
+                "files": [
                     "**/*.ts"
                 ],
                 "rules": {
