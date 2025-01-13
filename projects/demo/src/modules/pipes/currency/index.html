@@ -19,8 +19,8 @@
             [content]="1 | tuiExample: 'html,ts'"
         />
         <tui-doc-example
-            id="with-input"
-            heading="With Input"
+            id="with-textfield"
+            heading="With Textfield"
             [component]="2 | tuiComponent"
             [content]="2 | tuiExample: 'html,ts'"
         />
@@ -30,12 +30,15 @@
         <tui-doc-documentation>
             <tui-doc-demo [control]="control">
                 <ng-template>
-                    <tui-input-number
-                        [formControl]="control"
-                        [tuiTextfieldPostfix]="currency || '' | tuiCurrency"
-                    >
-                        Type a sum
-                    </tui-input-number>
+                    <tui-textfield>
+                        <label tuiLabel>Type a sum</label>
+
+                        <input
+                            tuiInputNumber
+                            [formControl]="control"
+                            [postfix]="' ' + (currency || '' | tuiCurrency)"
+                        />
+                    </tui-textfield>
                 </ng-template>
             </tui-doc-demo>
             <ng-template
