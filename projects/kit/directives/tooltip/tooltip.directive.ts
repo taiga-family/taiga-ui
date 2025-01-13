@@ -4,6 +4,7 @@ import {
     Component,
     Directive,
     inject,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -23,6 +24,7 @@ import {
     TuiHintHover,
 } from '@taiga-ui/core/directives/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
@@ -63,6 +65,7 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
+        '[attr.data-size]': 'size',
         '(click.prevent)': '0',
         '(mousedown)': 'onClick($event)',
     },
@@ -83,6 +86,9 @@ export class TuiTooltip implements DoCheck {
             {initialValue: null},
         ),
     );
+
+    @Input()
+    public size: TuiSizeS = 'm';
 
     public ngDoCheck(): void {
         if (this.textfield?.id) {

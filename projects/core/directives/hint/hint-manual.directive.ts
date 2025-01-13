@@ -15,7 +15,7 @@ export class TuiHintManual extends TuiDriver implements OnChanges {
     private readonly stream$ = new BehaviorSubject(false);
 
     @Input()
-    public tuiHintManual = false;
+    public tuiHintManual: boolean | null = false;
 
     public readonly type = 'hint';
 
@@ -25,6 +25,7 @@ export class TuiHintManual extends TuiDriver implements OnChanges {
     }
 
     public ngOnChanges(): void {
-        this.stream$.next(this.tuiHintManual);
+        this.stream$.next(!!this.tuiHintManual);
+        this.hover.enabled = this.tuiHintManual === null;
     }
 }
