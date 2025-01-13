@@ -88,6 +88,10 @@ const TEMPLATE_BEFORE = `
 </tui-radio-block>
 
 <tui-primitive-textfield [(value)]="value" [pseudoFocus]="pseudoFocus">Type something</tui-primitive-textfield>
+
+<tui-checkbox-block [formControl]="control" [size]="size">
+    {{ label() }}
+</tui-checkbox-block>
 `.trim();
 
 const TEMPLATE_AFTER = `
@@ -142,6 +146,10 @@ const TEMPLATE_AFTER = `
 </label>
 
 <tui-primitive-textfield [(value)]="value" [pseudoFocus]="pseudoFocus">Type something</tui-primitive-textfield>
+<label [tuiBlock]="size">
+<input tuiCheckbox type="checkbox" [formControl]="control" >
+    {{ label() }}
+</label>
 `.trim();
 
 describe('ng-update', () => {
