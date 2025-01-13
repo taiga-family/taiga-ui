@@ -26,7 +26,6 @@ export class TuiAmountPipe implements PipeTransform {
     ): Observable<string> {
         return this.format.pipe(
             map((format) => {
-                const sign = tuiFormatSignSymbol(value, this.options.sign);
                 const currencySymbol = tuiFormatCurrency(currency);
                 const formatted = tuiFormatNumber(Math.abs(value), {
                     ...format,
@@ -34,6 +33,10 @@ export class TuiAmountPipe implements PipeTransform {
                         ? DEFAULT_PRECISION
                         : format.precision,
                 });
+                const sign =
+                    formatted === '0'
+                        ? ''
+                        : tuiFormatSignSymbol(value, this.options.sign);
                 const space =
                     currencySymbol &&
                     (currencySymbol?.length > 1 || currencyAlign === 'right')
