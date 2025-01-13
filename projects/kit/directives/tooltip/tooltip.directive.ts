@@ -1,4 +1,4 @@
-import type {DoCheck, Signal} from '@angular/core';
+import {type DoCheck, Input, type Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,6 +10,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     tuiAppearanceOptionsProvider,
@@ -63,6 +64,7 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
+        '[attr.data-size]': 'size',
         '(click.prevent)': '0',
         '(mousedown)': 'onClick($event)',
     },
@@ -83,6 +85,9 @@ export class TuiTooltip implements DoCheck {
             {initialValue: null},
         ),
     );
+
+    @Input()
+    public size: TuiSizeS = 'm';
 
     public ngDoCheck(): void {
         if (this.textfield?.id) {
