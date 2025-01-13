@@ -389,6 +389,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiPrimitiveTextfieldComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TUI_TEXTFIELD_SIZE', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TUI_TEXTFIELD_SIZE', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiTextfieldSizeDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiTextfieldSizeDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiOptionComponent', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiOption', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -491,6 +499,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiTextAreaDirective', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiTextAreaComponent', moduleSpecifier: '@taiga-ui/kit'},
@@ -809,10 +821,23 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/kit'},
-        to: {
-            name: 'TUI_ARROW',
-            moduleSpecifier: '@taiga-ui/legacy',
-        },
+        to: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TUI_ARROW_MODE', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TUI_ARROW_MODE', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiArrowMode', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiArrowMode', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiComboBoxComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiComboBoxComponent', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiSelectComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSelectComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiArrowComponent', moduleSpecifier: '@taiga-ui/kit'},
