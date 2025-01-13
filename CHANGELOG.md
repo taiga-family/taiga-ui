@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.102.0](https://github.com/taiga-family/taiga-ui/compare/v3.101.0...v3.102.0) (2025-01-13)
+
+### Features
+
+- **experimental:** `ThumbnailCard` has new `xs` size ([#10049](https://github.com/taiga-family/taiga-ui/issues/10049))
+  ([9e2e17c](https://github.com/taiga-family/taiga-ui/commit/9e2e17c2f1bd7decdfd9ef9130e7f233a34ce85d))
+
+### Bug Fixes
+
+- **cdk:** `TuiTime.shift` doesn't shift higher order units
+  ([#10082](https://github.com/taiga-family/taiga-ui/issues/10082))
+  ([352f1b7](https://github.com/taiga-family/taiga-ui/commit/352f1b79a66226e5912734773a584cdb632eab7e))
+- **experimental:** `ButtonVertical` fix style priority
+  ([#10054](https://github.com/taiga-family/taiga-ui/issues/10054))
+  ([0f3e976](https://github.com/taiga-family/taiga-ui/commit/0f3e97611083d4fa0e1729707b6e5fa756a547ae))
+- **experimental:** `Header` fix subtitle padding on mobile
+  ([#10126](https://github.com/taiga-family/taiga-ui/issues/10126))
+  ([c44ec38](https://github.com/taiga-family/taiga-ui/commit/c44ec38e028856910fc0bb2766d4dd131fbbe57f))
+- **kit:** fix text overflow in Prompt component ([#10086](https://github.com/taiga-family/taiga-ui/issues/10086))
+  ([c7f5c8c](https://github.com/taiga-family/taiga-ui/commit/c7f5c8c9bfa4f2421ac8b12879098a2dd840ed75))
+- **layout:** `BlockStatus` fix image height ([#10122](https://github.com/taiga-family/taiga-ui/issues/10122))
+  ([70da553](https://github.com/taiga-family/taiga-ui/commit/70da5537d75c7c764cfb99cdb633196f049e75dc))
+
 ## [3.101.0](https://github.com/taiga-family/taiga-ui/compare/v3.100.0...v3.101.0) (2024-12-23)
 
 ### Bug Fixes
