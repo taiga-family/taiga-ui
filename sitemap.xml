@@ -49,6 +49,9 @@
     <loc>https://taiga-ui.dev/components/accordion/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/accordion-deprecated/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/avatar/</loc>
   </url>
   <url>
@@ -247,6 +250,9 @@
     <loc>https://taiga-ui.dev/components/input-number/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-number/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-phone/</loc>
   </url>
   <url>
@@ -266,6 +272,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-phone-international/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-pin/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-year/</loc>
@@ -641,6 +650,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/accordion/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/accordion-deprecated/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/accordion-deprecated/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/avatar/API/</loc>
@@ -1073,6 +1088,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-phone-international/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-pin/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-pin/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-year/API/</loc>

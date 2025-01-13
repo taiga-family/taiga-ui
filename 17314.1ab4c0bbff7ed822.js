@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[17314],{17314:n=>{n.exports=".popover {\n    position: fixed;\n    right: 1.5rem;\n    bottom: 1.5rem;\n    inline-size: 20rem;\n}\n\n.close {\n    position: absolute;\n    top: 0.5rem;\n    right: 0.75rem;\n}\n\n.footer {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n"}}]);
