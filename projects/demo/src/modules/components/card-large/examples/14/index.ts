@@ -34,9 +34,9 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    animations: [tuiFadeIn, tuiSlideIn],
     encapsulation,
     changeDetection,
+    animations: [tuiFadeIn, tuiSlideIn],
 })
 export default class Example {
     protected readonly animation = {...tuiToAnimationOptions(), value: 'right'};
