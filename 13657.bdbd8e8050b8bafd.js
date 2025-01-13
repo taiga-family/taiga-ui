@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[13657],{13657:e=>{e.exports='<tui-input-number\n    [max]="max"\n    [min]="min"\n    [tuiTextfieldLabelOutside]="true"\n    [(ngModel)]="value"\n>\n    Enter value between {{ min }} and {{ max }}\n    <input tuiTextfieldLegacy />\n</tui-input-number>\n'}}]);
