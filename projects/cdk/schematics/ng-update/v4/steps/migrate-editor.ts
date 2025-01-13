@@ -1,10 +1,15 @@
 /// <reference lib="es2021" />
 import type {DevkitFileSystem} from 'ng-morph';
 import {
+    addProviderToComponent,
+    addProviderToNgModule,
     FINISH_SYMBOL,
+    getNgComponents,
+    getNgModules,
     getPackageJsonDependency,
     getSourceFiles,
     infoLog,
+    Node,
     REPLACE_SYMBOL,
     saveActiveProject,
     SMALL_TAB_SYMBOL,
@@ -13,10 +18,12 @@ import {
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import type {TuiSchema} from '../../../ng-add/schema';
+import {addUniqueImport} from '../../../utils/add-unique-import';
+import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifiers} from '../../steps/replace-identifier';
 import {replacePackageName} from '../../steps/replace-package-name';
 
-export const TUI_EDITOR_VERSION = '^4.11.0';
+export const TUI_EDITOR_VERSION = '^4.21.0';
 
 export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema): void {
     const moduleSpecifier = ['@tinkoff/tui-editor', '@taiga-ui/addon-editor'];
@@ -30,6 +37,8 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
 
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating editor...`);
+
+    addProprietaryProviders(fileSystem);
 
     replaceIdentifiers(options, [
         {
@@ -106,4 +115,50 @@ export function migrateEditor(fileSystem: DevkitFileSystem, options: TuiSchema):
     saveActiveProject();
 
     !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+}
+
+function addProprietaryProviders(fileSystem: DevkitFileSystem): void {
+    const proprietary =
+        getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary-core') ||
+        getPackageJsonDependency(fileSystem.tree, '@taiga-ui/proprietary');
+
+    if (!proprietary) {
+        return;
+    }
+
+    const refs = [
+        ...getNamedImportReferences('TuiEditorModule', '@tinkoff/tui-editor'),
+        ...getNamedImportReferences('TuiEditorModule', '@taiga-ui/addon-editor'),
+    ];
+
+    for (const ref of refs) {
+        if (ref.wasForgotten()) {
+            return;
+        }
+
+        const parent = ref.getParent();
+        const filePath = parent?.getSourceFile().getFilePath() ?? '';
+
+        if (Node.isImportSpecifier(parent)) {
+            addUniqueImport(filePath, 'tuiEditorOptionsProvider', '@taiga-ui/editor');
+            addUniqueImport(
+                filePath,
+                'TUI_PROPRIETARY_EDITOR_ICONS',
+                '@taiga-ui/proprietary',
+            );
+        } else if (Node.isArrayLiteralExpression(parent)) {
+            const componentClass = getNgComponents(filePath)[0];
+            const moduleClass = getNgModules(filePath)[0];
+            const provider =
+                'tuiEditorOptionsProvider({icons: TUI_PROPRIETARY_EDITOR_ICONS})';
+
+            if (componentClass) {
+                addProviderToComponent(componentClass, provider);
+            }
+
+            if (moduleClass) {
+                addProviderToNgModule(moduleClass, provider);
+            }
+        }
+    }
 }

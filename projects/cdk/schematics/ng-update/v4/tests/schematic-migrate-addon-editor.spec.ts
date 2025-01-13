@@ -59,7 +59,8 @@ export class Test {
 }`;
 
 const COMPONENT_AFTER = `import { TUI_SANITIZER } from "@taiga-ui/legacy";
-import { TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_DEFAULT_TOOLS } from "@taiga-ui/editor";
+import { TUI_PROPRIETARY_EDITOR_ICONS } from "@taiga-ui/proprietary";
+import { tuiEditorOptionsProvider, TuiEditor, TuiEditorSocket, TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_DEFAULT_TOOLS } from "@taiga-ui/editor";
 
 import { TuiRoot, TuiAlert, TuiDialog } from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
@@ -85,7 +86,8 @@ import {TuiEditorTool} from '@taiga-ui/editor';
         {
             provide: TUI_SANITIZER,
             useClass: NgDompurifySanitizer,
-        }
+        },
+        tuiEditorOptionsProvider({icons: TUI_PROPRIETARY_EDITOR_ICONS})
     ],
 })
 export class Test {
@@ -99,6 +101,7 @@ const PACKAGE_JSON_BEFORE = `{
         "@angular/core": "~13.0.0",
         "@taiga-ui/core": "~3.35.0",
         "@taiga-ui/cdk": "~3.35.0",
+        "@taiga-ui/proprietary-core": "~3.35.0",
         "@taiga-ui/addon-editor": "~3.35.0",
         "@tinkoff/ng-polymorpheus": "1.2.3",
         "@tinkoff/ng-event-plugins": "4.5.6"
@@ -113,7 +116,8 @@ const PACKAGE_JSON_AFTER = `{
         "@taiga-ui/editor": "${TUI_EDITOR_VERSION}",
         "@taiga-ui/event-plugins": "${TUI_EVENT_PLUGINS_VERSION}",
         "@taiga-ui/legacy": "${TUI_VERSION}",
-        "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}"
+        "@taiga-ui/polymorpheus": "${TUI_POLYMORPHEUS_VERSION}",
+        "@taiga-ui/proprietary": "${TUI_VERSION}"
     }
 }`.trim();
 
