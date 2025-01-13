@@ -1,7 +1,6 @@
 import type {OnChanges} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
-import type {Subscriber} from 'rxjs';
 import {BehaviorSubject} from 'rxjs';
 
 import {TuiHintHover} from './hint-hover.directive';
@@ -21,9 +20,7 @@ export class TuiHintManual extends TuiDriver implements OnChanges {
     public readonly type = 'hint';
 
     constructor() {
-        super((subscriber: Subscriber<boolean | null>) =>
-            this.stream$.subscribe(subscriber),
-        );
+        super((subscriber) => this.stream$.subscribe(subscriber));
         this.hover.enabled = false;
     }
 
