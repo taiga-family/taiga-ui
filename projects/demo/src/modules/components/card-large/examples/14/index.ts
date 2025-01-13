@@ -4,7 +4,15 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiPopup, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    tuiFadeIn,
+    TuiPopup,
+    tuiSlideIn,
+    TuiTitle,
+    tuiToAnimationOptions,
+} from '@taiga-ui/core';
 import {TuiRating} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -26,10 +34,12 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    animations: [tuiFadeIn, tuiSlideIn],
     encapsulation,
     changeDetection,
 })
 export default class Example {
+    protected readonly animation = {...tuiToAnimationOptions(), value: 'right'};
     protected readonly step = signal(0);
     protected rating = 0;
     protected comment = '';
