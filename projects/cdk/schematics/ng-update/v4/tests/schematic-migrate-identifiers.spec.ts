@@ -17,12 +17,14 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiDialogModule } from "@taiga-ui/core/components";
+import { TuiStepState } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     imports: [TuiDialogModule]
 })
 export class Test {
+    protected readonly step: TuiStepState = 'error';
 }`;
 
 const COMPONENT_AFTER = `import { TuiDialog } from "@taiga-ui/core";
@@ -32,6 +34,7 @@ const COMPONENT_AFTER = `import { TuiDialog } from "@taiga-ui/core";
     imports: [TuiDialog]
 })
 export class Test {
+    protected readonly step: 'error' | 'normal' | 'pass' = 'error';
 }`;
 
 const MODULE_BEFORE = `import { TuiTabBarModule } from "@taiga-ui/addon-mobile";

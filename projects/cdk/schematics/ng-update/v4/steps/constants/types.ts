@@ -8,6 +8,12 @@ export const TYPES_TO_RENAME: readonly ReplacementType[] = [
         removeImport: true,
     },
     {
+        from: 'TuiStepState',
+        to: "'error' | 'normal' | 'pass'",
+        moduleSpecifier: ['@taiga-ui/kit'],
+        removeImport: true,
+    },
+    {
         from: 'TuiIllustrationName',
         moduleSpecifier: ['@taiga-ui/proprietary-icons'],
         to: 'string',
