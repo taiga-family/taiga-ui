@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.20.0](https://github.com/taiga-family/taiga-ui/compare/v4.19.0...v4.20.0) (2025-01-13)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** tuiAmount hiding negative sign when value is zero
+  ([#10147](https://github.com/taiga-family/taiga-ui/issues/10147))
+  ([9244f1a](https://github.com/taiga-family/taiga-ui/commit/9244f1a1f24cc28049e1b8ed0e7731e22ae8ebda))
+- **cdk:** `TuiTime.shift` doesn't shift higher order units
+  ([#10065](https://github.com/taiga-family/taiga-ui/issues/10065))
+  ([5939585](https://github.com/taiga-family/taiga-ui/commit/5939585c90acdba148a57b15b86ab27c4ec9b8a6))
+- **core:** `Group` fix overlayed border in collapsed mode
+  ([#10094](https://github.com/taiga-family/taiga-ui/issues/10094))
+  ([1b7628a](https://github.com/taiga-family/taiga-ui/commit/1b7628a26c733eae91dba96506bc9682eb96d035))
+- **core:** `Textfield` with `[content]` property has invalid behavior for `<input />`
+  ([#10066](https://github.com/taiga-family/taiga-ui/issues/10066))
+  ([aa9ff64](https://github.com/taiga-family/taiga-ui/commit/aa9ff64bd66a726afc49e4da96a6f2a2d19bca3b))
+- **kit:** `LineClamp` fix initial transition ([#10070](https://github.com/taiga-family/taiga-ui/issues/10070))
+  ([14426cd](https://github.com/taiga-family/taiga-ui/commit/14426cddecc050b3a606ae9c9ba426da70444399))
+- **kit:** fix change detection in `Radio`, `Checkbox` and `Switch`
+  ([#10102](https://github.com/taiga-family/taiga-ui/issues/10102))
+  ([824da0c](https://github.com/taiga-family/taiga-ui/commit/824da0c41154f868889865e4f05748d25263ca2d))
+- **kit:** fix text overflow in Confirm component ([#10085](https://github.com/taiga-family/taiga-ui/issues/10085))
+  ([166bc37](https://github.com/taiga-family/taiga-ui/commit/166bc37617d58cc26970528afb8e127cc99fe468))
+- **layout:** `BlockStatus` fix image height ([#10121](https://github.com/taiga-family/taiga-ui/issues/10121))
+  ([570f67c](https://github.com/taiga-family/taiga-ui/commit/570f67cc642694bdc59b4ff93246f920b6c61efe))
+- **legacy:** `InputPhone` incorrectly parses paste of the shorten phone number
+  ([#10063](https://github.com/taiga-family/taiga-ui/issues/10063))
+  ([1df2480](https://github.com/taiga-family/taiga-ui/commit/1df2480178fde2f5c5769fed4d88a809bafd760e))
+- **legacy:** `TuiMultiSelect` fix arrow ([#10050](https://github.com/taiga-family/taiga-ui/issues/10050))
+  ([e96d4eb](https://github.com/taiga-family/taiga-ui/commit/e96d4eb76604f6dcfd96594778ee1b87109d9259))
+- **legacy:** incorrect InputTag table appearance and PrimitiveTextfield placeholderRaisable calculation
+  ([#10052](https://github.com/taiga-family/taiga-ui/issues/10052))
+  ([416dd8b](https://github.com/taiga-family/taiga-ui/commit/416dd8bf28e20f7b8b600acfa771b5c1bef18308))
+- **legacy:** use transformed value in `tui-input-date-range` for find active period
+  ([#10135](https://github.com/taiga-family/taiga-ui/issues/10135))
+  ([3b8651b](https://github.com/taiga-family/taiga-ui/commit/3b8651bca8083eb33fa4164c6df2c7b3bd254061))
+- **legacy:** wrong prefix placement in table context ([#10045](https://github.com/taiga-family/taiga-ui/issues/10045))
+  ([99cb0bc](https://github.com/taiga-family/taiga-ui/commit/99cb0bcd250d310e3612dc56b0f4b64d1738903c))
+
+### 🚀 Features
+
+- **core:** add `injector` to tuiDialog options ([#10056](https://github.com/taiga-family/taiga-ui/issues/10056))
+  ([bcc02bc](https://github.com/taiga-family/taiga-ui/commit/bcc02bc88350be9ec7cbffe6a4baf1696b837493))
+- **core:** added `tuiDropdownEnabled` to exposed inputs of `TuiWithDropdownOpen`
+  ([#10101](https://github.com/taiga-family/taiga-ui/issues/10101))
+  ([562bbc6](https://github.com/taiga-family/taiga-ui/commit/562bbc6accf83b375c5a18c7792de65572c0e987))
+- **core:** disable dark theme for print mode ([#10110](https://github.com/taiga-family/taiga-ui/issues/10110))
+  ([8c9c616](https://github.com/taiga-family/taiga-ui/commit/8c9c6168cf37842ce5fe62e0ab898f8df39cb168))
+- **core:** enable TuiHint hover when TuiHintManual is null
+  ([#9955](https://github.com/taiga-family/taiga-ui/issues/9955))
+  ([e0e5861](https://github.com/taiga-family/taiga-ui/commit/e0e58614e7a8b6d16dd6abcbfee7ff8807ea023c))
+- **experimental:** `Accordion` add new component ([#10103](https://github.com/taiga-family/taiga-ui/issues/10103))
+  ([62109de](https://github.com/taiga-family/taiga-ui/commit/62109dec07637af61faa996629ffde155132e823))
+- **experimental:** `Expand` add new component ([#10069](https://github.com/taiga-family/taiga-ui/issues/10069))
+  ([272db9b](https://github.com/taiga-family/taiga-ui/commit/272db9b5f5ad753d441a3db2909e0340c40db81c))
+- **experimental:** `Hint` add new component with updated styles
+  ([#10051](https://github.com/taiga-family/taiga-ui/issues/10051))
+  ([92e8b21](https://github.com/taiga-family/taiga-ui/commit/92e8b21213e08e22d8bc92d8b7bf6225fa09c651))
+- **kit:** `InputPin` add new component ([#10084](https://github.com/taiga-family/taiga-ui/issues/10084))
+  ([36b45fa](https://github.com/taiga-family/taiga-ui/commit/36b45fa55aa7eb22e8d5aff711c5fedef2c64029))
+- **kit:** `Tooltip` add small size ([#10154](https://github.com/taiga-family/taiga-ui/issues/10154))
+  ([32e78bf](https://github.com/taiga-family/taiga-ui/commit/32e78bfe4e90fdf2e74c7ce50e8a8d08018e5886))
+- **kit:** introduce new version of `InputNumber` ([#10099](https://github.com/taiga-family/taiga-ui/issues/10099))
+  ([a32d2a4](https://github.com/taiga-family/taiga-ui/commit/a32d2a4d88598dfd28bef3d838f0613cdc4f22f2))
+
 ## [4.19.0](https://github.com/taiga-family/taiga-ui/compare/v4.18.0...v4.19.0) (2024-12-23)
 
 ### 🐞 Bug Fixes
