@@ -513,11 +513,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/experimental'},
             {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
         ],
-        to: {
-            name: 'TuiBadgedContent',
-            moduleSpecifier: '@taiga-ui/kit',
-            spreadInModule: true,
-        },
+        to: [
+            {
+                name: 'TuiBadgedContent',
+                moduleSpecifier: '@taiga-ui/kit',
+                spreadInModule: true,
+            },
+            {
+                name: 'TuiBadgeNotification',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+        ],
     },
     {
         from: {
