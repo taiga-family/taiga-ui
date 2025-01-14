@@ -139,7 +139,7 @@ export class TuiInputTimeComponent
 
     public override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
+        this.nativeValue = this.value ? this.computedValue : '';
     }
 
     public onValueChange(value: string): void {

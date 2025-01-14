@@ -184,7 +184,7 @@ export class TuiInputDateComponent
 
     public override writeValue(value: TuiDay | null): void {
         super.writeValue(value);
-        this.nativeValue.set(value ? this.computedValue : '');
+        this.nativeValue.set(this.value ? this.computedValue : '');
     }
 
     protected get size(): TuiSizeL | TuiSizeS {

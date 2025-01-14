@@ -74,7 +74,7 @@ export class TuiInputYearComponent
 
     public override writeValue(value: number | null): void {
         super.writeValue(value);
-        this.updateNativeValue(value);
+        this.updateNativeValue(this.value);
     }
 
     protected get size(): TuiSizeL | TuiSizeS {

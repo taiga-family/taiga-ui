@@ -161,7 +161,7 @@ export class TuiInputPhoneComponent
 
     public override writeValue(value: string | null): void {
         super.writeValue(value);
-        this.nativeValue = maskitoTransform(value || '', this.maskOptions);
+        this.nativeValue = maskitoTransform(this.value || '', this.maskOptions);
         this.updateSearch('');
     }
 
