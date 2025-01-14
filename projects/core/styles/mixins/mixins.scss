@@ -1,12 +1,12 @@
 @import 'browsers.scss';
 
 @mixin interactive {
-    // TODO switch to :is after Safari 14 and FF 78 support
-    &:-webkit-any(a, button, select, textarea, input) {
+    // TODO remove after dropping Safari 13 support
+    &:matches(a, button, select, textarea, input) {
         @content;
     }
 
-    &:-moz-any(a, button, select, textarea, input) {
+    &:is(a, button, select, textarea, input) {
         @content;
     }
 }
