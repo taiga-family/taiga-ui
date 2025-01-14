@@ -2,23 +2,16 @@
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-input-number
-            formControlName="value"
+        <tui-textfield
+            *ngFor="let parameter of ['value', 'min', 'max']"
             class="tui-space_top-2"
         >
-            value
-        </tui-input-number>
-        <tui-input-number
-            formControlName="min"
-            class="tui-space_top-2"
-        >
-            min
-        </tui-input-number>
-        <tui-input-number
-            formControlName="max"
-            class="tui-space_top-2"
-        >
-            max
-        </tui-input-number>
+            <label tuiLabel>{{ parameter }}</label>
+
+            <input
+                tuiInputNumber
+                [formControlName]="parameter"
+            />
+        </tui-textfield>
     </div>
 </form>
