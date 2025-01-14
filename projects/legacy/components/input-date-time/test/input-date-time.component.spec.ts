@@ -13,7 +13,11 @@ import {
 import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
-import {TuiInputDateTimeComponent, TuiInputDateTimeModule} from '@taiga-ui/legacy';
+import {
+    TuiInputDateTimeComponent,
+    TuiInputDateTimeModule,
+    TuiUnfinishedValidator,
+} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
@@ -428,6 +432,91 @@ describe('InputDateTime', () => {
 
             expect(inputPO.value).toBe('09.05.1945, 00:43');
             expect(component.control.value).toBe('09.05.1945, 00:43');
+        });
+    });
+
+    describe('With tuiUnfinishedValidator', () => {
+        @Component({
+            standalone: true,
+            imports: [
+                ReactiveFormsModule,
+                TuiInputDateTimeModule,
+                TuiRoot,
+                TuiUnfinishedValidator,
+            ],
+            template: `
+                <tui-root>
+                    <tui-input-date-time
+                        tuiUnfinishedValidator="Finish filling the field"
+                        [formControl]="control"
+                        [max]="max"
+                        [min]="min"
+                    ></tui-input-date-time>
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class UnfinishedValidatorTest extends Test {
+            public override readonly control = new FormControl<
+                string | [TuiDay | null, TuiDay | null] | null
+            >([new TuiDay(2021, 6, 12), null]);
+
+            public override min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
+            public override max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
+        }
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [Test, UnfinishedValidatorTest, TuiUnfinishedValidator],
+            });
+            await TestBed.compileComponents();
+            initializeEnvironment(UnfinishedValidatorTest);
+        });
+
+        it('displays initial value with correct date', () => {
+            expect(inputPO.value).toBe('12.07.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('12.07.2021'),
+                null,
+            ]);
+        });
+
+        it('type value with correct date without time', () => {
+            inputPO.sendText('19.01.2023');
+            inputPO.blur();
+
+            expect(inputPO.value).toBe('19.01.2023');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('19.01.2023'),
+                null,
+            ]);
+        });
+
+        it('type value with partial date', () => {
+            inputPO.sendText('19.01.202');
+            inputPO.blur();
+
+            expect(inputPO.value).toBe('19.01.202');
+            expect(component.control.value).toBeNull();
+        });
+
+        it('type value with full date and partial time', () => {
+            inputPO.sendText('19.01.2023, 1');
+            inputPO.blur();
+
+            expect(inputPO.value).toBe('19.01.2023, 1');
+            expect(component.control.value).toBeNull();
+        });
+
+        it('type value with correct date and time', () => {
+            inputPO.sendText('19.01.2023, 11:11');
+            inputPO.blur();
+
+            expect(inputPO.value).toBe('19.01.2023, 11:11');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('19.01.2023'),
+                TuiTime.fromString('11:11'),
+            ]);
         });
     });
 
