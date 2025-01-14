@@ -179,7 +179,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
 
     public override writeValue(value: number | null): void {
         super.writeValue(value);
-        this.textfieldValue.set(this.formatNumber(value));
+        this.textfieldValue.set(this.formatNumber(this.value()));
     }
 
     protected onBlur(): void {
