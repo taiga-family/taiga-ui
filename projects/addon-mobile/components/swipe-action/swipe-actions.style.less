@@ -31,12 +31,19 @@
     align-items: center;
     transform-style: preserve-3d;
 
+    // safari bug https://bugs.webkit.org/show_bug.cgi?id=285857
+    pointer-events: none;
+    /* stylelint-disable-next-line */
+    transform: translateZ(-0.00001px);
+
     &:empty {
         display: none;
     }
 
     ::ng-deep & > * {
         .loop(6);
+
+        pointer-events: auto;
     }
 
     @media @tui-mouse {
