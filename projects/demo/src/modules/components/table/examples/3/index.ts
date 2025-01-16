@@ -15,13 +15,8 @@ import {
     TuiScrollbar,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
-import {
-    TuiInputDateModule,
-    TuiInputNumberModule,
-    TuiSelectModule,
-    TuiTextareaModule,
-} from '@taiga-ui/legacy';
+import {TuiChevron, TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiInputDateModule, TuiTextareaModule} from '@taiga-ui/legacy';
 
 interface Item {
     readonly date: TuiDay;
@@ -38,16 +33,15 @@ interface Item {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFormatNumberPipe,
         TuiIcon,
         TuiInputDateModule,
         TuiInputNumber,
-        TuiInputNumberModule,
         TuiLet,
         TuiNumberFormat,
         TuiScrollbar,
-        TuiSelectModule,
         TuiTable,
         TuiTextareaModule,
         TuiTextfield,
