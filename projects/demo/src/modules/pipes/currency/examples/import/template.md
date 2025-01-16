@@ -5,7 +5,7 @@
   <input
     formControlName="testValue"
     tuiInputNumber
-    [postfix]="826 | tuiCurrency"
+    [prefix]="'USD' | tuiCurrency"
   />
 </tui-textfield>
 ```
