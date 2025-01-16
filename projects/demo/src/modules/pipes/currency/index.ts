@@ -4,7 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -12,8 +13,8 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         ReactiveFormsModule,
         TuiCurrencyPipe,
         TuiDemo,
-        TuiInputNumberModule,
-        TuiTextfieldControllerModule,
+        TuiInputNumber,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

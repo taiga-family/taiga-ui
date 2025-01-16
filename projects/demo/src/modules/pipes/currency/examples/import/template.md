@@ -1,3 +1,11 @@
 ```html
-<tui-input-number [postfix]="826 | tuiCurrency">Type a sum</tui-input-number>
+<tui-textfield>
+  <label tuiLabel>Type a sum</label>
+
+  <input
+    formControlName="testValue"
+    tuiInputNumber
+    [prefix]="'USD' | tuiCurrency"
+  />
+</tui-textfield>
 ```
