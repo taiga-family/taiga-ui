@@ -104,7 +104,7 @@
 <div [style.display]="'flex'">
     <aside
         [style.height.rem]="27"
-        [tuiNavigationAside]="expanded"
+        [tuiNavigationAside]="expanded()"
     >
         <header>
             <button
@@ -121,6 +121,10 @@
             type="button"
         >
             Search
+
+            <ng-container *ngIf="expanded()">
+                <tui-badge appearance="accent">12</tui-badge>
+            </ng-container>
         </button>
         <a
             iconStart="@tui.users"
@@ -243,10 +247,10 @@
             <button
                 tuiAsideItem
                 type="button"
-                [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
-                (click)="expanded = !expanded"
+                [iconStart]="expanded() ? '@tui.chevron-left' : '@tui.chevron-right'"
+                (click)="handleToggle()"
             >
-                {{ expanded ? 'Collapse' : 'Expand' }}
+                {{ expanded() ? 'Collapse' : 'Expand' }}
             </button>
         </footer>
     </aside>

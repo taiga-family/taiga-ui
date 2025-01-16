@@ -1,5 +1,5 @@
 import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -72,7 +72,7 @@ const ICON =
     providers: [TuiDropdownService, tuiAsPortal(TuiDropdownService)],
 })
 export default class Example extends TuiPortals {
-    protected expanded = false;
+    protected expanded = signal(false);
     protected open = false;
     protected switch = false;
     protected readonly routes = DemoRoute;
@@ -90,4 +90,8 @@ export default class Example extends TuiPortals {
             {name: 'Typography', icon: ICON},
         ],
     };
+
+    protected handleToggle(): void {
+        this.expanded.update((e) => !e);
+    }
 }
