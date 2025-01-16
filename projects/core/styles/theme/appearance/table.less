@@ -18,7 +18,7 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
     color: var(--tui-text-primary);
     border: none;
     outline: none;
-    padding-bottom: var(--t-table-offset);
+    padding-bottom: calc(var(--t-row-height) - var(--t-height));
 
     .appearance-hover({
         &[data-focus='false'] {
