@@ -135,15 +135,18 @@
                                 />
                             </tui-textfield>
 
-                            <tui-input-number
+                            <tui-textfield
                                 *ngSwitchCase="'number'"
                                 tuiTextfieldSize="m"
-                                [nativeId]="propertyConnector.attrName"
-                                [ngModel]="propertyConnector.documentationPropertyValue"
-                                [step]="1"
-                                [tuiTextfieldLabelOutside]="true"
-                                (ngModelChange)="propertyConnector.onValueChange($event || 0)"
-                            />
+                            >
+                                <input
+                                    tuiInputNumber
+                                    [id]="propertyConnector.attrName"
+                                    [ngModel]="propertyConnector.documentationPropertyValue"
+                                    [step]="1"
+                                    (ngModelChange)="propertyConnector.onValueChange($event || 0)"
+                                />
+                            </tui-textfield>
                         </ng-container>
                     </ng-template>
                 </ng-container>

@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {TuiLink} from '@taiga-ui/core';
-import {TuiProgress} from '@taiga-ui/kit';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
+import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

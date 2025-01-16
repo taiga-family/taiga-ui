@@ -18,10 +18,9 @@ import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 
 import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
 import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
@@ -41,11 +40,10 @@ const SERIALIZED_SUFFIX = '$';
         TuiDataListWrapper,
         TuiDocTypeReferencePipe,
         TuiIcon,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiInspectPipe,
         TuiSwitch,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],
