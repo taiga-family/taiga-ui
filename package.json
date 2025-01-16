@@ -182,7 +182,7 @@
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
         "husky": "9.1.7",
-        "lint-staged": "15.4.0",
+        "lint-staged": "15.4.1",
         "ng-morph": "4.8.4",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
