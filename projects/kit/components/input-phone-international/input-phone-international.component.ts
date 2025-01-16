@@ -201,8 +201,8 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         const maskOptions = this.mask();
 
         this.textfieldValue = maskOptions
-            ? maskitoTransform(unmaskedValue, maskOptions)
-            : unmaskedValue; // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
+            ? maskitoTransform(this.value(), maskOptions)
+            : this.value(); // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
         this.cdr.detectChanges();
     }
 
