@@ -150,6 +150,34 @@
                 will also work in the same way.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-step-buttons"
+            heading="Custom step buttons"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="fluid-typography"
+            heading="Fluid typography"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+            [description]="fluidTypographyDescription"
+        >
+            <ng-template #fluidTypographyDescription>
+                Use
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.FluidTypography"
+                >
+                    <strong>FluidTypography</strong>
+                </a>
+                directive to adjusts font size for the textfield value to fit in the textfield box.
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
