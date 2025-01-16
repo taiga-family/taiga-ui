@@ -4,18 +4,23 @@
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-input-number
-            formControlName="value"
-            class="tui-space_top-2"
-            [tuiNumberFormat]="{precision: 3}"
-        >
-            value
-        </tui-input-number>
-        <tui-input-number
-            formControlName="precision"
-            class="tui-space_top-2"
-        >
-            precision
-        </tui-input-number>
+        <tui-textfield class="tui-space_top-2">
+            <label tuiLabel>value</label>
+
+            <input
+                formControlName="value"
+                tuiInputNumber
+                [tuiNumberFormat]="{precision: 3}"
+            />
+        </tui-textfield>
+
+        <tui-textfield class="tui-space_top-2">
+            <label tuiLabel>precision</label>
+
+            <input
+                formControlName="precision"
+                tuiInputNumber
+            />
+        </tui-textfield>
     </div>
 </form>
