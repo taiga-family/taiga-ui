@@ -65,6 +65,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content',
         '[class._disabled]': 'input?.nativeElement.disabled',
+        '[style.--t-table-offset.px]': 'tableOffset',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
@@ -130,6 +131,13 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public get size(): TuiSizeL | TuiSizeS {
         return this.options.size();
+    }
+
+    public get tableOffset(): number | null {
+        return this.options.appearance() === 'table'
+            ? (this.input?.nativeElement.getBoundingClientRect?.()?.height ?? 0) -
+                  (this.el.getBoundingClientRect?.()?.height ?? 0)
+            : null;
     }
 
     public handleOption(option: T): void {
