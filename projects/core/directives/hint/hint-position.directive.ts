@@ -89,13 +89,14 @@ export class TuiHintPosition extends TuiPositionAccessor {
             : [this.direction];
         const sortedDirections = priorityDirections.concat(TUI_HINT_DIRECTIONS);
 
-        const direction = sortedDirections.find((direction) =>
-            this.checkPosition(this.points[direction], width, height),
-        );
+        const direction =
+            sortedDirections.find((direction) =>
+                this.checkPosition(this.points[direction], width, height),
+            ) || this.fallback;
 
-        this.emitDirection(direction || this.fallback);
+        this.emitDirection(direction);
 
-        return this.points[direction || this.fallback];
+        return this.points[direction];
     }
 
     private get fallback(): TuiHintDirection {
@@ -109,8 +110,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const viewport = this.viewport.getClientRect();
 
         return (
-            top > GAP &&
-            left > GAP &&
+            top > viewport.top + GAP &&
+            left > viewport.left + GAP &&
             top + height < viewport.bottom - GAP &&
             left + width < viewport.right - GAP
         );

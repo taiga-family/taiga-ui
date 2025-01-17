@@ -1,6 +1,7 @@
 <tui-doc-page
     header="Viewport"
     package="CORE"
+    type="customization"
 >
     <ng-template pageTab>
         <p>
@@ -11,26 +12,13 @@
         </p>
 
         <tui-doc-example
-            id="base"
-            description="Here we just limit viewport relative to which the position of the dropdown will be calculated"
-            heading="Dropdown"
-            class="dropdown"
-            [content]="example1"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
             [fullsize]="true"
-        >
-            <tui-viewport-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="portal"
-            description="If you want your dropdown to open in specific viewport in DOM of your web application, then you need to create your own portal"
-            heading="Dropdown with custom portal"
-            class="dropdown"
-            [content]="example2"
-            [fullsize]="true"
-        >
-            <tui-viewport-example-2 />
-        </tui-doc-example>
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab="Setup">
