@@ -32,14 +32,17 @@
                 *tuiCell="'price'"
                 tuiTd
             >
-                <tui-input-number
-                    tuiHintDirection="right"
-                    [formControl]="controls[i]!"
-                    [tuiHint]="[] | tuiFieldErrorContent"
-                    [tuiTextfieldPostfix]="'UGX' | tuiCurrency"
-                >
-                    Price
-                </tui-input-number>
+                <tui-textfield>
+                    <label tuiLabel>Price</label>
+
+                    <input
+                        tuiHintDirection="right"
+                        tuiInputNumber
+                        [formControl]="controls[i]!"
+                        [postfix]="' ' + 'UGX' | tuiCurrency"
+                        [tuiHint]="[] | tuiFieldErrorContent"
+                    />
+                </tui-textfield>
             </td>
         </tr>
     </tbody>

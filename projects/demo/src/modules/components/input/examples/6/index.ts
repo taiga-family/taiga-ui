@@ -3,12 +3,10 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiTextfield} from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
-    TuiInputModule,
-    TuiInputNumberModule,
     TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
@@ -17,10 +15,11 @@ import {
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiInputDateModule,
-        TuiInputModule,
-        TuiInputNumberModule,
+        TuiInputNumber,
+        TuiNumberFormat,
         TuiSelectModule,
         TuiTable,
         TuiTextfield,
