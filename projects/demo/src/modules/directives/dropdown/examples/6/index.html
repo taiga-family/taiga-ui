@@ -55,13 +55,14 @@
     </ng-container>
 </tui-multi-select>
 
-<tui-input-number
-    tuiTextfieldPrefix="$"
-    [(ngModel)]="sum"
->
-    Sum
-    <input tuiTextfieldLegacy />
-</tui-input-number>
+<tui-textfield>
+    <label tuiLabel>Sum</label>
+    <input
+        prefix="$"
+        tuiInputNumber
+        [(ngModel)]="sum"
+    />
+</tui-textfield>
 
 <ng-template
     #template

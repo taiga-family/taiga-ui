@@ -3,8 +3,15 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, tuiDialog, TuiHint, TuiIconPipe, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {
+    TuiButton,
+    tuiDialog,
+    TuiHint,
+    TuiIcon,
+    TuiIconPipe,
+    TuiTextfield,
+} from '@taiga-ui/core';
+import {TuiInputNumber, TuiTooltip} from '@taiga-ui/kit';
 
 import {PayModal} from './pay-modal/pay-modal.component';
 
@@ -14,10 +21,11 @@ import {PayModal} from './pay-modal/pay-modal.component';
         ReactiveFormsModule,
         TuiButton,
         TuiHint,
+        TuiIcon,
         TuiIconPipe,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiTextfield,
-        TuiTextfieldControllerModule,
+        TuiTooltip,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

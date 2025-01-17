@@ -1,37 +1,37 @@
-<div class="flex">
-    <tui-input-number
-        decimal="never"
-        class="element"
-        [step]="1"
-        [(ngModel)]="scrollTop"
-    >
-        scrollTop
-    </tui-input-number>
-    <tui-input-number
-        decimal="never"
-        class="element"
-        [step]="1"
-        [(ngModel)]="scrollLeft"
-    >
-        scrollLeft
-    </tui-input-number>
-    <tui-input-number
-        decimal="never"
-        class="element"
-        [step]="1"
-        [(ngModel)]="duration"
-    >
-        duration
-    </tui-input-number>
+<div class="parameters">
+    <tui-textfield>
+        <label tuiLabel>scrollTop</label>
+        <input
+            tuiInputNumber
+            [(ngModel)]="scrollTop"
+        />
+    </tui-textfield>
+
+    <tui-textfield>
+        <label tuiLabel>scrollLeft</label>
+        <input
+            tuiInputNumber
+            [(ngModel)]="scrollLeft"
+        />
+    </tui-textfield>
+
+    <tui-textfield>
+        <label tuiLabel>duration</label>
+        <input
+            tuiInputNumber
+            [(ngModel)]="duration"
+        />
+    </tui-textfield>
+
     <button
         tuiButton
         type="button"
-        class="element"
         (click)="onClick(scrollRef)"
     >
         Go!
     </button>
 </div>
+
 <tui-scrollbar
     #scrollRef="elementRef"
     tuiElement

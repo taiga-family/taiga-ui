@@ -4,8 +4,8 @@ import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -14,8 +14,8 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiDemo,
         TuiDocNumberFormat,
         TuiFormatNumberPipe,
-        TuiInputNumberModule,
-        TuiTextfieldControllerModule,
+        TuiInputNumber,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,

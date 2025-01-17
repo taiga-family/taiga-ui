@@ -27,12 +27,16 @@
 
     <ng-template pageTab>
         <div [style.max-width.rem]="20">
-            <tui-input-number
+            <tui-textfield
                 tuiTextfieldSize="m"
                 class="tui-space_bottom-4"
-                [formControl]="control"
-                [tuiTextfieldLabelOutside]="true"
-            />
+            >
+                <input
+                    tuiInputNumber
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
             <strong>Formatted number:</strong>
             <br />
             <code>

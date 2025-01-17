@@ -1,14 +1,11 @@
 <!-- Works in several levels-->
-<div
-    class="wrapper tui-space_top-3"
-    [tuiNumberFormat]="{decimalMode: 'always', decimalSeparator: '.'}"
->
-    <!-- You can also put directive directly on input-number -->
-    <tui-input-number
-        [formControl]="control"
-        [tuiNumberFormat]="{precision: 3}"
-    >
-        Cool
-        <input tuiTextfieldLegacy />
-    </tui-input-number>
-</div>
+<tui-textfield [tuiNumberFormat]="{precision: 1, thousandSeparator: '_'}">
+    <label tuiLabel>Label: {{ value | tuiFormatNumber | async }}</label>
+
+    <!-- You can also put directive directly on [tuiInputNumber] -->
+    <input
+        tuiInputNumber
+        [tuiNumberFormat]="{precision: 2}"
+        [(ngModel)]="value"
+    />
+</tui-textfield>

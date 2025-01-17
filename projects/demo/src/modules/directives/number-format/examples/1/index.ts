@@ -1,17 +1,25 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiFormatNumberPipe, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormat],
+    imports: [
+        AsyncPipe,
+        FormsModule,
+        TuiFormatNumberPipe,
+        TuiInputNumber,
+        TuiNumberFormat,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl(120.234);
+    protected value = 123456.789;
 }

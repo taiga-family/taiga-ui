@@ -5,13 +5,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiCopyProcessor} from '@taiga-ui/cdk';
-import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TUI_NUMBER_FORMAT, TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumberModule],
+    imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -20,17 +20,15 @@ import {map} from 'rxjs';
     },
 })
 export default class Example {
-    private readonly format = inject(TUI_NUMBER_FORMAT);
     private readonly alerts = inject(TuiAlertService);
 
     protected value = 12345.67;
 
-    protected numberProcessor$ = this.format.pipe(
+    protected numberProcessor$ = inject(TUI_NUMBER_FORMAT).pipe(
         map(
-            (format) => (text: string) =>
-                text
-                    .replace(format.decimalSeparator, '.')
-                    .replaceAll(new RegExp(format.thousandSeparator, 'g'), ''),
+            ({decimalSeparator, thousandSeparator}) =>
+                (text: string) =>
+                    text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
         ),
     );
 
