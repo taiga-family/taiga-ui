@@ -5,7 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
-import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {
+    TuiInputDateModule,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -14,6 +18,7 @@ import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy
         TuiChevron,
         TuiDataListWrapper,
         TuiInputDateModule,
+        TuiInputModule,
         TuiInputNumber,
         TuiNumberFormat,
         TuiTable,

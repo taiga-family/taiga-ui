@@ -7,6 +7,7 @@
 <form
     tuiTextfieldSize="m"
     [formGroup]="form"
+    [tuiTextfieldLabelOutside]="true"
 >
     <table
         tuiTable
@@ -29,21 +30,16 @@
         <tbody>
             <tr>
                 <td tuiTd>
-                    <tui-textfield #el>
+                    <tui-input formControlName="name">
+                        Name
                         <input
-                            formControlName="name"
-                            tuiTextfield
-                            [placeholder]="el.focused() ? 'Ivan Ivanov' : 'Name'"
+                            placeholder="Ivan Ivanov"
+                            tuiTextfieldLegacy
                         />
-                    </tui-textfield>
+                    </tui-input>
                 </td>
                 <td tuiTd>
-                    <tui-input-date
-                        formControlName="date"
-                        [tuiTextfieldLabelOutside]="true"
-                    >
-                        Date
-                    </tui-input-date>
+                    <tui-input-date formControlName="date">Date</tui-input-date>
                 </td>
                 <td tuiTd>
                     <tui-textfield tuiChevron>
