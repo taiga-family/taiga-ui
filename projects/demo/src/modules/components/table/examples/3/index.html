@@ -217,6 +217,7 @@
                             tuiInputNumber
                             [ngModel]="item.quantity"
                             [ngModelOptions]="options"
+                            [tuiNumberFormat]="{precision: 0}"
                             (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
                         />
                     </tui-textfield>

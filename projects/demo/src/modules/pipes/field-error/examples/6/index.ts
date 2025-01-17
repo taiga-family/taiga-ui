@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiFieldErrorContentPipe,
     TuiInputNumber,
@@ -20,7 +20,6 @@ import {
         TuiCurrencyPipe,
         TuiFieldErrorContentPipe,
         TuiHint,
-        TuiIcon,
         TuiInputNumber,
         TuiTable,
         TuiTextfield,
