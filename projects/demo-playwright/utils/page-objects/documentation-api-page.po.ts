@@ -30,7 +30,7 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    public async hideContent(): Promise<void> {
+    public async hideScrollbars(): Promise<void> {
         const bars = await this.page
             .locator('tui-root > tui-scroll-controls .t-bar')
             .all();
@@ -38,12 +38,18 @@ export class TuiDocumentationApiPagePO {
         for (const bar of bars) {
             await tuiHideElement(bar);
         }
+    }
+
+    public async hideContent(): Promise<void> {
+        await this.hideScrollbars();
 
         return tuiHideElement(this.page.locator('tui-doc-page'));
     }
 
     public async hideDocumentation(): Promise<void> {
-        const documentations = await this.page.locator('tui-doc-documentation').all();
+        const documentations = await this.page
+            .locator('tui-doc-documentation, [tuiDocApi]')
+            .all();
 
         for (const documentation of documentations) {
             await tuiHideElement(documentation);
@@ -58,6 +64,7 @@ export class TuiDocumentationApiPagePO {
         await this.hideDocumentation();
         await this.hideNavigation();
         await this.hideNotifications();
+        await this.hideScrollbars();
 
         if ((await this.apiPageExample.all()).length) {
             await this.apiPageExample.evaluate((el) => el.scrollIntoView());

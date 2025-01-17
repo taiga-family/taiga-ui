@@ -2,12 +2,13 @@
     <div
         #parent
         class="line-clamp-box"
+        (waResizeObserver)="onResize(parent)"
     >
         <tui-line-clamp
             class="line-clamp"
             [content]="content"
-            [lineHeight]="getDynamicLineHeight(parent)"
-            [linesLimit]="getDynamicLineLimit(parent)"
+            [lineHeight]="lineHeight || getDynamicLineHeight(parent)"
+            [linesLimit]="lineLimit || getDynamicLineLimit(parent)"
         />
 
         <ng-template #content>
