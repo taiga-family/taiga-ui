@@ -6,7 +6,7 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
 [tuiAppearance][data-appearance='table']:not([tuiWrapper]) {
     content: '';
     position: fixed;
-    /* Use inset: -1px after Safari 14+ support */
+    /* TODO: Use inset: -1px after Safari 14+ support */
     top: -1px;
     bottom: -1px;
     left: -1px;
@@ -15,10 +15,13 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
     block-size: auto;
     border-radius: 0;
     background: transparent;
-    color: var(--tui-text-primary);
     border: none;
     outline: none;
     padding-bottom: calc(var(--t-row-height) - var(--t-height));
+
+    &:not(._empty) {
+        color: var(--tui-text-primary);
+    }
 
     .appearance-hover({
         &[data-focus='false'] {
