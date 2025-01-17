@@ -3,11 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID, TuiAxes} from '@taiga-ui/addon-charts';
-import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiAxes, TuiDemo, TuiDocAPI, TuiDocAPIItem],
+    imports: [TuiAxes, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
