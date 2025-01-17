@@ -34,12 +34,13 @@ export class TuiAccordionDirective implements OnChanges {
 
     public ngOnChanges(): void {
         this.open.set(!!this.tuiAccordion);
-        this.accordion.toggle(this, this.open());
+        this.accordion.toggle(this);
     }
 
     public toggle(): void {
         this.open.set(!this.open());
+        this.tuiAccordion = this.open();
         this.tuiAccordionChange.emit(this.open());
-        this.accordion.toggle(this, this.open());
+        this.accordion.toggle(this);
     }
 }

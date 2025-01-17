@@ -1,12 +1,15 @@
 import {NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChild,
+    inject,
     Input,
     signal,
     TemplateRef,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 @Component({
@@ -30,6 +33,9 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
     },
 })
 export class TuiExpand {
+    private readonly el = tuiInjectElement();
+    private readonly cdr = inject(ChangeDetectorRef);
+
     @ContentChild(TuiItem, {read: TemplateRef})
     protected content?: TemplateRef<any>;
 
@@ -38,7 +44,14 @@ export class TuiExpand {
 
     @Input()
     public set expanded(expanded: boolean) {
+        if (expanded === this.signal()) {
+            return;
+        }
+
         this.signal.set(expanded);
+        // TODO: try removing in Angular 17
+        this.cdr.detectChanges();
+        this.el.classList.toggle('_expanded', expanded);
     }
 
     protected onTransitionEnd({propertyName}: TransitionEvent): void {
