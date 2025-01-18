@@ -6,7 +6,7 @@ import {TuiAccordion} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [TuiAccordion, NgForOf, KeyValuePipe],
+    imports: [KeyValuePipe, NgForOf, TuiAccordion],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

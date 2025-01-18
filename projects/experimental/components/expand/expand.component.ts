@@ -9,8 +9,8 @@ import {
     signal,
     TemplateRef,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
     standalone: true,

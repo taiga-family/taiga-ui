@@ -1,12 +1,11 @@
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     DestroyRef,
     inject,
     Input,
-    type QueryList,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
