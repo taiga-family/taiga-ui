@@ -42,10 +42,14 @@ export function migrateExpandable({
 
         if (expandableValue === 'false') {
             const rowsAttr = findAttr(attrs, 'rows');
-
             const insertTo = (sourceCodeLocation?.startTag?.endOffset ?? 0) - 1;
+            const insertOffset = templateOffset + insertTo;
+            const selfClosing = template[insertOffset - 1] === '/';
 
-            recorder.insertRight(templateOffset + insertTo, rowsAttr ? '' : '[rows]="1"');
+            recorder.insertRight(
+                selfClosing ? insertOffset - 1 : insertOffset,
+                rowsAttr ? '' : '[rows]="1"',
+            );
         }
 
         if (expandableValue !== 'false' && expandableValue !== 'true') {

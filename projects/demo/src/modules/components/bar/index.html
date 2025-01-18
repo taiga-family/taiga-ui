@@ -23,26 +23,26 @@
                 [value]="value"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="readonly number[]"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 An array of segments
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

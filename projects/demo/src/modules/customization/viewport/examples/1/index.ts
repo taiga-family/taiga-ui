@@ -6,7 +6,6 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-viewport-example-1',
     imports: [TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -14,7 +13,7 @@ import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from '@taiga-ui/core';
     changeDetection,
     providers: [tuiAsViewport(Example)],
 })
-export class Example extends TuiRectAccessor {
+export default class Example extends TuiRectAccessor {
     private readonly el = tuiInjectElement();
 
     public readonly type = 'viewport';

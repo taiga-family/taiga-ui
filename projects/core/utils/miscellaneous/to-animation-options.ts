@@ -1,8 +1,13 @@
 import type {AnimationOptions} from '@angular/animations';
+import {inject} from '@angular/core';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 
 export const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
 
-export function tuiToAnimationOptions(speed: number, easing?: string): AnimationOptions {
+export function tuiToAnimationOptions(
+    speed: number = inject(TUI_ANIMATIONS_SPEED),
+    easing?: string,
+): AnimationOptions {
     return {
         value: '',
         params: {

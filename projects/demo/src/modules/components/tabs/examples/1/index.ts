@@ -2,13 +2,12 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
-import {TuiTabs} from '@taiga-ui/kit';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiInputNumberModule, TuiTabs],
+    imports: [FormsModule, TuiInputNumber, TuiTabs, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -3,8 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon} from '@taiga-ui/core';
-import {TUI_PREVIEW_ICONS, TuiAccordion} from '@taiga-ui/kit';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
+import {
+    TUI_PREVIEW_ICONS,
+    TuiAccordion,
+    tuiInputNumberOptionsProvider,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

@@ -21,7 +21,9 @@ export class TuiHintAsideDirective {
         TuiHintDirective,
         'tuiHint',
         computed(() =>
-            this.aside.expanded() || this.dropdown ? '' : this.el.textContent?.trim(),
+            this.aside.expanded() || this.dropdown
+                ? ''
+                : () => this.el.textContent?.trim(),
         ),
     );
 }

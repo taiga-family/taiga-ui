@@ -4,9 +4,10 @@ import {
     Component,
     ContentChild,
     Input,
+    signal,
     TemplateRef,
 } from '@angular/core';
-import {TuiItem} from '@taiga-ui/cdk/directives';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 
 @Component({
     standalone: true,
@@ -15,7 +16,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives';
     template: `
         <div class="t-wrapper">
             <ng-container
-                *ngIf="expanded || animating"
+                *ngIf="signal() || animating()"
                 [ngTemplateOutlet]="content || null"
             />
             <ng-content />
@@ -24,7 +25,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives';
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._expanded]': 'expanded',
+        '[class._expanded]': 'signal()',
         '(transitionend.self)': 'onTransitionEnd($event)',
     },
 })
@@ -32,14 +33,17 @@ export class TuiExpand {
     @ContentChild(TuiItem, {read: TemplateRef})
     protected content?: TemplateRef<any>;
 
-    protected animating = false;
+    protected readonly signal = signal(false);
+    protected readonly animating = signal(false);
 
     @Input()
-    public expanded = false;
+    public set expanded(expanded: boolean) {
+        this.signal.set(expanded);
+    }
 
     protected onTransitionEnd({propertyName}: TransitionEvent): void {
         if (propertyName === 'grid-template-rows') {
-            this.animating = this.expanded;
+            this.animating.set(this.signal());
         }
     }
 }

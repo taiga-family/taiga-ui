@@ -62,7 +62,9 @@ test.describe('Dropdown', () => {
 
     test('Hosted dropdown initial width', async ({page}) => {
         await tuiGoto(page, DemoRoute.Viewport);
-        const example = new TuiDocumentationPagePO(page).getExample('#portal');
+        const example = new TuiDocumentationPagePO(page).getExample(
+            '#dropdown-and-custom-portal',
+        );
 
         await example.scrollIntoViewIfNeeded();
         // eslint-disable-next-line playwright/no-force-option

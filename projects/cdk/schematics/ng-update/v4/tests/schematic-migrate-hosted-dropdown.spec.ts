@@ -55,6 +55,10 @@ const TEMPLATE_BEFORE = `
   <button>One</button>
 </tui-hosted-dropdown>
 <ng-template #template>Wow</ng-template>
+
+<tui-hosted-dropdown #ref>
+  <button (click)="ref.close()"></button>
+</tui-hosted-dropdown>
 `;
 
 const TEMPLATE_AFTER = `
@@ -77,6 +81,11 @@ const TEMPLATE_AFTER = `
   <button>One</button>
 </div>
 <ng-template #template>Wow</ng-template>
+
+<!-- TODO: (Taiga UI migration) use <div ... tuiDropdown #ref="tuiDropdown"> and (event)="#ref.toggle(false)" -->
+<div tuiDropdownOpen #ref>
+  <button (click)="ref.close()"></button>
+</div>
 `;
 
 describe('ng-update', () => {

@@ -1,0 +1,74 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.container {
+    max-inline-size: 46.875rem;
+}
+
+.operation-header {
+    display: flex;
+    font: var(--tui-font-text-l);
+    align-items: center;
+}
+
+.operation-date {
+    font: var(--tui-font-text-xl);
+    text-align: center;
+}
+
+.operation-date,
+.operation-info {
+    color: var(--tui-text-secondary);
+}
+
+.operation-month,
+.operation-status {
+    font: var(--tui-font-text-s);
+}
+
+.operation-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0 1.5rem;
+    background: var(--tui-background-neutral-1);
+    border-radius: 100%;
+    inline-size: 3rem;
+    block-size: 3rem;
+    color: var(--tui-text-tertiary);
+}
+
+.operation-title {
+    .text-overflow();
+
+    margin-right: 1.5rem;
+    flex-grow: 1;
+}
+
+.operation-info {
+    text-align: end;
+}
+
+.operation-status {
+    &_success {
+        color: var(--tui-text-positive);
+    }
+
+    &_error {
+        color: var(--tui-text-negative);
+    }
+}
+
+.form-title {
+    font: var(--tui-font-heading-6);
+    margin: 0 0 1.25rem;
+}
+
+.input {
+    max-inline-size: 28.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.buttons {
+    display: flex;
+}

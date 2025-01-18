@@ -3,13 +3,21 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiTabs} from '@taiga-ui/kit';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, NgForOf, TuiButton, TuiIcon, TuiInputNumberModule, TuiTabs],
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiButton,
+        TuiIcon,
+        TuiInputNumber,
+        TuiNumberFormat,
+        TuiTabs,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

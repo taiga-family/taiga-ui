@@ -7,7 +7,7 @@ import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import type {TuiLooseUnion, TuiRounding} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiNumberFormatSettings} from '@taiga-ui/core';
 import {TUI_DEFAULT_NUMBER_FORMAT, TuiLink, TuiTitle} from '@taiga-ui/core';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
+import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

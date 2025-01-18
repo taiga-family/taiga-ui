@@ -95,6 +95,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/accordion'),
     }),
     route({
+        path: DemoRoute.AccordionOld,
+        title: 'Accordion (Deprecated)',
+        loadComponent: async () => import('../components/accordion-'),
+    }),
+    route({
         path: DemoRoute.Avatar,
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar'),

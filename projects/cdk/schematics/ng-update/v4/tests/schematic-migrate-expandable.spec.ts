@@ -37,6 +37,11 @@ const TEMPLATE_BEFORE = `
     [formControl]="test"
 ></tui-input-tag>
 
+<tui-input-tag
+    [expandable]="false"
+    [formControl]="test"
+/>
+
 <tui-multi-select
     [expandable]="false"
 >
@@ -69,6 +74,11 @@ const TEMPLATE_AFTER = `
     ${''}
     [formControl]="test"
 [rows]="1"></tui-input-tag>
+
+<tui-input-tag
+    ${''}
+    [formControl]="test"
+[rows]="1"/>
 
 <tui-multi-select
     ${''}

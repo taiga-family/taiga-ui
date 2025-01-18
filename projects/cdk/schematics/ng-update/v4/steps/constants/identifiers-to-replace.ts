@@ -295,6 +295,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit', spreadInModule: true},
     },
     {
+        from: {name: 'TuiTreeItemComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItem', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeItemContentComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItemContent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeChildrenDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeChildren', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeItemControllerDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeItemController', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeNodeDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTreeNode', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {
             name: 'TuiDataListDropdownManagerModule',
             moduleSpecifier: '@taiga-ui/kit',
@@ -334,7 +354,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFieldErrorPipeModule', moduleSpecifier: '@taiga-ui/kit'},
-        to: {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiFieldErrorContentPipe', moduleSpecifier: '@taiga-ui/kit'},
+        ],
     },
     {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -364,6 +387,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiPrimitiveTextfieldComponent', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiPrimitiveTextfieldComponent', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TUI_TEXTFIELD_SIZE', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TUI_TEXTFIELD_SIZE', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiTextfieldSizeDirective', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiTextfieldSizeDirective', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiOptionComponent', moduleSpecifier: '@taiga-ui/core'},
@@ -470,6 +501,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStatus', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiTextAreaComponent', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
@@ -478,11 +513,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/experimental'},
             {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
         ],
-        to: {
-            name: 'TuiBadgedContent',
-            moduleSpecifier: '@taiga-ui/kit',
-            spreadInModule: true,
-        },
+        to: [
+            {
+                name: 'TuiBadgedContent',
+                moduleSpecifier: '@taiga-ui/kit',
+                spreadInModule: true,
+            },
+            {
+                name: 'TuiBadgeNotification',
+                moduleSpecifier: '@taiga-ui/kit',
+            },
+        ],
     },
     {
         from: {
@@ -522,7 +563,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
             {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
         ],
-        to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
+        to: [
+            {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
+            {name: 'TuiScrollable', moduleSpecifier: '@taiga-ui/core'},
+        ],
     },
     {
         from: [
@@ -783,10 +827,23 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/kit'},
-        to: {
-            name: 'TUI_ARROW',
-            moduleSpecifier: '@taiga-ui/legacy',
-        },
+        to: {name: 'TUI_ARROW', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TUI_ARROW_MODE', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TUI_ARROW_MODE', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiArrowMode', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiArrowMode', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiComboBoxComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiComboBoxComponent', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiSelectComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSelectComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiArrowComponent', moduleSpecifier: '@taiga-ui/kit'},
@@ -2532,5 +2589,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiObscuredModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiObscured', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiResizerModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: [
+            {name: 'TuiResizable', moduleSpecifier: '@taiga-ui/cdk'},
+            {name: 'TuiResizer', moduleSpecifier: '@taiga-ui/cdk'},
+        ],
+    },
+    {
+        from: {name: 'TuiResizeableDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiResizable', moduleSpecifier: '@taiga-ui/cdk'},
     },
 ];

@@ -16,13 +16,16 @@
         />
     </ng-container>
 </tui-tabs>
-<tui-input-number
-    decimal="never"
-    class="tui-space_top-4"
-    [max]="2"
-    [min]="0"
-    [step]="1"
-    [(ngModel)]="activeItemIndex"
->
-    activeItemIndex
-</tui-input-number>
+
+<tui-textfield class="tui-space_top-4">
+    <label tuiLabel>activeItemIndex</label>
+
+    <input
+        tuiInputNumber
+        [max]="2"
+        [min]="0"
+        [step]="1"
+        [tuiNumberFormat]="{precision: 0}"
+        [(ngModel)]="activeItemIndex"
+    />
+</tui-textfield>

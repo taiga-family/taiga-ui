@@ -42,7 +42,7 @@ import {ClassesComponent} from './classes.component';
 @NgModule({
     imports: [
         ...TuiAddonDoc,
-        RouterModule,
+        RouterModule /* use tuiProvideRoutePageTab in provideRouter */,
     ],
     declarations: [ClassesComponent],
     exports: [ClassesComponent],

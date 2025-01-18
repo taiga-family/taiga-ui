@@ -90,26 +90,27 @@
                 [(ngModel)]="contentType"
             />
         </div>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="appearance"
-                documentationPropertyType="TuiStatus"
-                [documentationPropertyValues]="appearanceVariants"
-                [(documentationPropertyValue)]="appearance"
+            </tr>
+
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="TuiStatus"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
             >
                 Appearance
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

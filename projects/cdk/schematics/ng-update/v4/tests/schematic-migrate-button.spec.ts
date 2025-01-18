@@ -77,6 +77,20 @@ const TEMPLATE_BEFORE = `
     [showLoader]="true"
     href="https://taiga-ui.dev"
 ></a>
+
+<button
+    tuiIconButton
+    type="button"
+    [icon]="icon"
+    [disabled]="true"
+></button>
+
+<a
+    tuiIconButton
+    [icon]="icon"
+    [disabled]="true"
+    href="https://taiga-ui.dev"
+></a>
 `;
 
 const TEMPLATE_AFTER = `
@@ -113,6 +127,21 @@ const TEMPLATE_AFTER = `
     tuiIconButton
     [iconStart]="icon"
     [loading]="true"
+    href="https://taiga-ui.dev"
+></a>
+
+<button
+    tuiIconButton
+    type="button"
+    [iconStart]="icon"
+    [disabled]="true"
+></button>
+
+<!-- TODO: (Taiga UI migration) A link cannot have a "disabled" attribute. If you want a disabled appearance, use the tuiAppearanceState directive. See https://taiga-ui.dev/directives/appearance/API?tuiAppearanceState=disabled -->
+<a
+    tuiIconButton
+    [iconStart]="icon"
+    ${''}
     href="https://taiga-ui.dev"
 ></a>
 `;

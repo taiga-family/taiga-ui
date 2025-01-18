@@ -15,6 +15,7 @@ export const DemoRoute = {
     Portals: '/portals',
     Viewport: '/viewport',
     Accordion: '/components/accordion',
+    AccordionOld: '/components/accordion-deprecated',
     Avatar: '/components/avatar',
     Badge: '/components/badge',
     BadgedContent: '/components/badged-content',

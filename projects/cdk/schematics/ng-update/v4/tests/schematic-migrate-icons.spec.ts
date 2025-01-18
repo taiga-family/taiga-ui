@@ -88,6 +88,11 @@ const TEMPLATE_BEFORE = `
 <button tuiIconButton icon="tuiIconClose">Button</button>
 <button tuiIconButton icon="tuiIconCloseLarge">Button</button>
 <tui-icon [icon]="featureValue.value === 'true' ? 'tuiIconCheck' : 'tuiIconClose'"></tui-icon>
+<tui-svg src="tuiIconClose" />
+<tui-svg src="tuiIconAddRowLarge" />
+<tui-svg src="tuiIconColumns" />
+<tui-svg src="tuiIconTool" />
+<tui-svg src="tuiIconCheckSquare" />
 `;
 
 const TEMPLATE_AFTER = `
@@ -102,6 +107,11 @@ const TEMPLATE_AFTER = `
 <button tuiIconButton icon="@tui.x">Button</button>
 <button tuiIconButton icon="@tui.x">Button</button>
 <tui-icon [icon]="featureValue.value === 'true' ? '@tui.check' : '@tui.x'"></tui-icon>
+<tui-svg src="@tui.x" />
+<tui-svg src="@tui.copy-plus" />
+<tui-svg src="@tui.columns-2" />
+<tui-svg src="@tui.wrench" />
+<tui-svg src="@tui.square-check-big" />
 `;
 
 const PROPRIETARY_TEMPLATE_BEFORE = `
@@ -121,9 +131,14 @@ const PROPRIETARY_TEMPLATE_BEFORE = `
 <button tuiIconButton icon="tuiIconTdsGooglePlayLogoSquare">Button</button>
 <button tuiIconButton icon="tuiIconTdsTBankInverseLogo">Button</button>
 <button tuiIconButton icon="tuiIconCancelOutline">Button</button>
+<tui-svg src="tuiIconClose" />
+<tui-svg src="tuiIconAddRowLarge" />
+<tui-svg src="tuiIconColumns" />
+<tui-svg src="tuiIconTool" />
+<tui-svg src="tuiIconCheckSquare" />
 `;
 
-const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icons tuiIconCancelOutline. Please select an icon from the proprietary pack -->
+const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icons tuiIconCancelOutline, tuiIconClose, tuiIconAddRowLarge, tuiIconColumns, tuiIconTool, tuiIconCheckSquare. Please select an icon from the proprietary pack -->
 
 <tui-avatar
     avatarUrl="@tui.fancy.small.lock"
@@ -141,6 +156,11 @@ const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icon
 <button tuiIconButton icon="@tui.logo.square.google-play">Button</button>
 <button tuiIconButton icon="@tui.logo.t-bank-inverse">Button</button>
 <button tuiIconButton icon="tuiIconCancelOutline">Button</button>
+<tui-svg src="tuiIconClose" />
+<tui-svg src="tuiIconAddRowLarge" />
+<tui-svg src="tuiIconColumns" />
+<tui-svg src="tuiIconTool" />
+<tui-svg src="tuiIconCheckSquare" />
 `;
 
 describe('ng-update', () => {

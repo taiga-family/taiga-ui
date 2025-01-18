@@ -1,11 +1,12 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiAccordion, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 class Account {
@@ -23,7 +24,6 @@ class Account {
     standalone: true,
     imports: [
         AsyncPipe,
-        NgIf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiAmountPipe,

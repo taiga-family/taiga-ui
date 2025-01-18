@@ -213,8 +213,8 @@ export class TuiInputDateRangeComponent
 
     public override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
-        this.nativeValue.set(value ? this.computedValue : '');
-        this.selectedActivePeriod = this.findActivePeriodBy(value);
+        this.nativeValue.set(this.value ? this.computedValue : '');
+        this.selectedActivePeriod = this.findActivePeriodBy(this.value);
     }
 
     protected get computedMobile(): boolean {

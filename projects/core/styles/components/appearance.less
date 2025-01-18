@@ -20,12 +20,13 @@
  * Button
  */
 [tuiAppearance] {
-    .transition(~'color, background, opacity, box-shadow, border');
+    .transition(all);
 
     position: relative;
     appearance: none;
     outline: 0.125rem solid transparent;
     outline-offset: -0.125rem;
+    transition-property: color, background, opacity, box-shadow, border, border-radius;
 
     &.tui-appearance-initializing {
         transition: none !important;

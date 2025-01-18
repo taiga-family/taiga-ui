@@ -72,4 +72,11 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration',
     },
+    {
+        tag: 'a',
+        pattern: /\|\s?(tuiIconButton|tuiButton)\s?:/g,
+        withAttrs: ['disabled'],
+        comment:
+            'A link cannot have a "disabled" attribute. If you want a disabled appearance, use the tuiAppearanceState directive. See https://taiga-ui.dev/directives/appearance/API?tuiAppearanceState=disabled',
+    },
 ];

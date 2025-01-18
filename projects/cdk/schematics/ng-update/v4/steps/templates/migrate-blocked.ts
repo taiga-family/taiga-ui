@@ -3,7 +3,7 @@ import type {DevkitFileSystem} from 'ng-morph';
 import type {Location} from 'parse5/dist/common/token';
 
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
-import {findAttr} from '../../../../utils/templates/inputs';
+import {findAttr, isBinding} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -53,8 +53,8 @@ export function migrateBlocked({
             ) || [];
         const sizeAttr = findAttr(attrs, 'size');
         const ngForAttr = findAttr(attrs, '*ngFor');
-
-        const newBlockAttr = `tuiBlock${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
+        const tuiBlock = sizeAttr && isBinding(sizeAttr) ? '[tuiBlock]' : 'tuiBlock';
+        const newBlockAttr = `${tuiBlock}${sizeAttr ? `="${sizeAttr.value === 'xs' ? 's' : sizeAttr.value}"` : ''}`;
 
         recorder.insertRight(
             templateOffset + (sourceCodeLocation.startTag?.startOffset || 1) - 1,

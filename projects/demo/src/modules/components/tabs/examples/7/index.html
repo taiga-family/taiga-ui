@@ -86,16 +86,18 @@
     </nav>
 </section>
 
-<tui-input-number
-    decimal="never"
-    class="horizontal tui-space_top-4 tui-space_bottom-4"
-    [max]="12"
-    [min]="0"
-    [step]="1"
-    [(ngModel)]="horizontalActiveIndex"
->
-    horizontalActiveIndex
-</tui-input-number>
+<tui-textfield class="input tui-space_top-4 tui-space_bottom-4">
+    <label tuiLabel>horizontalActiveIndex</label>
+
+    <input
+        tuiInputNumber
+        [max]="12"
+        [min]="0"
+        [step]="1"
+        [tuiNumberFormat]="{precision: 0}"
+        [(ngModel)]="horizontalActiveIndex"
+    />
+</tui-textfield>
 
 <h5 class="title">Vertical</h5>
 
@@ -186,13 +188,15 @@
     </nav>
 </tui-scrollbar>
 
-<tui-input-number
-    decimal="never"
-    class="input tui-space_top-4"
-    [max]="12"
-    [min]="0"
-    [step]="1"
-    [(ngModel)]="verticalActiveIndex"
->
-    verticalActiveIndex
-</tui-input-number>
+<tui-textfield class="input tui-space_top-4">
+    <label tuiLabel>verticalActiveIndex</label>
+
+    <input
+        tuiInputNumber
+        [max]="12"
+        [min]="0"
+        [step]="1"
+        [tuiNumberFormat]="{precision: 0}"
+        [(ngModel)]="verticalActiveIndex"
+    />
+</tui-textfield>

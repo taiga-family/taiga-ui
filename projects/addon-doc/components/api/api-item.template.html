@@ -82,16 +82,18 @@
                 />
             </tui-textfield>
 
-            <tui-input-number
+            <tui-textfield
                 *ngSwitchCase="'number'"
                 tuiTextfieldSize="m"
-                class="t-input"
-                [nativeId]="name"
-                [ngModel]="value"
-                [step]="1"
-                [tuiTextfieldLabelOutside]="true"
-                (ngModelChange)="onValueChange($event || 0)"
-            />
+            >
+                <input
+                    tuiInputNumber
+                    [id]="name"
+                    [ngModel]="value"
+                    [step]="1"
+                    (ngModelChange)="onValueChange($event || 0)"
+                />
+            </tui-textfield>
         </ng-container>
     </ng-template>
 </td>
