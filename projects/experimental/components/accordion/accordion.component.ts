@@ -39,7 +39,7 @@ import {TuiAccordionDirective} from './accordion.directive';
 })
 export class TuiAccordionComponent implements AfterViewInit {
     private readonly destroyRef = inject(DestroyRef);
-    private readonly toggle$ = new ReplaySubject<TuiAccordionDirective>();
+    private readonly toggle$ = new ReplaySubject<TuiAccordionDirective>(Infinity);
 
     @ContentChildren(TuiExpand)
     public readonly expands: QueryList<TuiExpand> = EMPTY_QUERY;
