@@ -53,6 +53,7 @@ import {
     migrateThumbnailCard,
     migrateToggle,
 } from './templates';
+import {dropdownRefComment} from './templates/dropdown-ref-comment';
 import {migrateBlocked} from './templates/migrate-blocked';
 import {migrateNumberPrecision} from './templates/migrate-number-precision';
 
@@ -100,6 +101,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
+        dropdownRefComment,
         migrateAxes,
         migrateBadge,
         migrateCheckbox,
