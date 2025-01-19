@@ -12,7 +12,7 @@ import {TuiInputDateTimeModule, TuiUnfinishedValidator} from '@taiga-ui/legacy';
 const completeDateTimeValidator: ValidatorFn = (
     control: AbstractControl,
 ): ValidationErrors | null =>
-    control.value.every(Boolean) ? null : {incompleteDateTime: true};
+    control.value?.every(Boolean) ? null : {incompleteDateTime: true};
 
 @Component({
     standalone: true,

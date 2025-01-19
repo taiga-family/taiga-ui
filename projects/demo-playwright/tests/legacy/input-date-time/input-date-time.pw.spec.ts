@@ -323,7 +323,7 @@ test.describe('InputDateTime', () => {
         test('With validator: enter incomplete date -> validator error', async () => {
             const example = documentationPage.getExample('#with-validator');
             const inputDateTime = new TuiInputDateTimePO(
-                example.locator('tui-input-date-time'),
+                example.locator('tui-input-date-time').first(),
             );
 
             await inputDateTime.textfield.clear();

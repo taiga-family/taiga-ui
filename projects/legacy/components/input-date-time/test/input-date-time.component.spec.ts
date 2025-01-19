@@ -13,11 +13,7 @@ import {
 import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
-import {
-    TuiInputDateTimeComponent,
-    TuiInputDateTimeModule,
-    TuiUnfinishedValidator,
-} from '@taiga-ui/legacy';
+import {TuiInputDateTimeComponent, TuiInputDateTimeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
@@ -41,7 +37,7 @@ describe('InputDateTime', () => {
         public dateTimeComponent!: TuiInputDateTimeComponent;
 
         public readonly control = new FormControl<
-            string | [TuiDay | null, TuiDay | null] | null
+            string | [TuiDay, TuiDay | null] | null
         >([new TuiDay(2021, 6, 12), null]);
 
         public min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
@@ -82,6 +78,10 @@ describe('InputDateTime', () => {
 
         it('displays initial value', () => {
             expect(inputPO.value).toBe('12.07.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('12.07.2021'),
+                null,
+            ]);
         });
 
         it('does not clear not finished time string on the first blur', () => {
@@ -89,6 +89,7 @@ describe('InputDateTime', () => {
             inputPO.blur();
 
             expect(inputPO.value).toBe('12.07.2021, 1');
+            expect(component.control.value).toBeNull();
         });
 
         it('does not clear not finished time string on the second blur', () => {
@@ -99,16 +100,22 @@ describe('InputDateTime', () => {
             inputPO.blur();
 
             expect(inputPO.value).toBe('12.07.2021, 1');
+            expect(component.control.value).toBeNull();
         });
 
         it('does not clear all date string if 1 char of date was erased', () => {
             inputPO.sendText('14.07.2021');
 
             expect(inputPO.value).toBe('14.07.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('14.07.2021'),
+                null,
+            ]);
 
             inputPO.sendText('14.07.202');
 
             expect(inputPO.value).toBe('14.07.202');
+            expect(component.control.value).toBeNull();
         });
 
         it('keeps not finished time string if date was changed using calendar', () => {
@@ -120,9 +127,17 @@ describe('InputDateTime', () => {
             expect(inputPO.value).toBe(`05.07.2021, ${timeString}`);
             expect(getCalendar()).not.toBeFalsy();
 
-            clickOnCellInsideCalendar(27);
+            clickOnCellInsideCalendar(TuiDay.currentLocal().day + 1);
 
-            expect(inputPO.value).toBe(`27.07.2021, ${timeString}`);
+            const today = TuiDay.currentLocal().append({
+                day: 1,
+            });
+
+            expect(inputPO.value).toBe(`${today.toLocaleString()}, ${timeString}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse(today.toLocaleString()),
+                null,
+            ]);
         });
 
         it('min day works', () => {
@@ -131,6 +146,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('12.08.2021');
 
             expect(inputPO.value).toBe('13.08.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                null,
+            ]);
         });
 
         it('max day works', () => {
@@ -139,6 +158,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('14.08.2021');
 
             expect(inputPO.value).toBe('13.08.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                null,
+            ]);
         });
 
         it('min day + time work', () => {
@@ -150,6 +173,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('13.08.2021, 10:00');
 
             expect(inputPO.value).toBe('13.08.2021, 12:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                TuiTime.fromString('12:00'),
+            ]);
         });
 
         it('min day + time work within min day only', () => {
@@ -161,6 +188,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('14.08.2021 10:00');
 
             expect(inputPO.value).toBe('14.08.2021, 10:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('14.08.2021'),
+                TuiTime.fromString('10:00'),
+            ]);
         });
 
         it('max day + time work', () => {
@@ -172,6 +203,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('13.08.2021, 14:00');
 
             expect(inputPO.value).toBe('13.08.2021, 12:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                TuiTime.fromString('12:00'),
+            ]);
         });
 
         it('max day + time work within max day only', () => {
@@ -183,6 +218,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('12.08.2021, 14:00');
 
             expect(inputPO.value).toBe('12.08.2021, 14:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('12.08.2021'),
+                TuiTime.fromString('14:00'),
+            ]);
         });
 
         it('keeps finished time string if date was changed using calendar', () => {
@@ -198,6 +237,10 @@ describe('InputDateTime', () => {
             clickOnCellInsideCalendar(10);
 
             expect(inputPO.value).toBe(`10.07.2021, ${time}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('10.07.2021'),
+                TuiTime.fromString(time),
+            ]);
         });
 
         it('changes time if max day was selected (via calendar) and time is more than max time now', () => {
@@ -221,6 +264,10 @@ describe('InputDateTime', () => {
             clickOnCellInsideCalendar(maxDay.day);
 
             expect(inputPO.value).toBe(`${maxDateString}, ${maxTimeString}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse(maxDateString),
+                TuiTime.fromString(maxTimeString),
+            ]);
         });
 
         it('empty value opens dropdown', () => {
@@ -321,18 +368,18 @@ describe('InputDateTime', () => {
 
     describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
         class ExampleDateTimeTransformer extends TuiValueTransformer<
-            [TuiDay | null, TuiTime | null],
+            [TuiDay, TuiTime | null] | null,
             string
         > {
             private readonly separator = ', ';
 
             public fromControlValue(
                 controlValue: string,
-            ): [TuiDay | null, TuiTime | null] {
+            ): [TuiDay, TuiTime | null] | null {
                 const [day, time = ''] = controlValue.split(this.separator);
 
                 if (!day) {
-                    return [null, null];
+                    return null;
                 }
 
                 return [
@@ -341,7 +388,7 @@ describe('InputDateTime', () => {
                 ];
             }
 
-            public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+            public toControlValue([day, time]: [TuiDay, TuiTime | null]): string {
                 if (!day) {
                     return '';
                 }
@@ -368,7 +415,7 @@ describe('InputDateTime', () => {
         })
         class TransformerTest extends Test {
             public override control = new FormControl<
-                string | [TuiDay | null, TuiDay | null] | null
+                string | [TuiDay, TuiDay | null] | null
             >('19.01.2022, 12:33');
 
             public override min = new TuiDay(1900, 0, 1);
@@ -432,91 +479,6 @@ describe('InputDateTime', () => {
 
             expect(inputPO.value).toBe('09.05.1945, 00:43');
             expect(component.control.value).toBe('09.05.1945, 00:43');
-        });
-    });
-
-    describe('With tuiUnfinishedValidator', () => {
-        @Component({
-            standalone: true,
-            imports: [
-                ReactiveFormsModule,
-                TuiInputDateTimeModule,
-                TuiRoot,
-                TuiUnfinishedValidator,
-            ],
-            template: `
-                <tui-root>
-                    <tui-input-date-time
-                        tuiUnfinishedValidator="Finish filling the field"
-                        [formControl]="control"
-                        [max]="max"
-                        [min]="min"
-                    ></tui-input-date-time>
-                </tui-root>
-            `,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-        })
-        class UnfinishedValidatorTest extends Test {
-            public override readonly control = new FormControl<
-                string | [TuiDay | null, TuiDay | null] | null
-            >([new TuiDay(2021, 6, 12), null]);
-
-            public override min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
-            public override max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
-        }
-
-        beforeEach(async () => {
-            TestBed.configureTestingModule({
-                imports: [Test, UnfinishedValidatorTest, TuiUnfinishedValidator],
-            });
-            await TestBed.compileComponents();
-            initializeEnvironment(UnfinishedValidatorTest);
-        });
-
-        it('displays initial value with correct date', () => {
-            expect(inputPO.value).toBe('12.07.2021');
-            expect(component.control.value).toStrictEqual([
-                TuiDay.normalizeParse('12.07.2021'),
-                null,
-            ]);
-        });
-
-        it('type value with correct date without time', () => {
-            inputPO.sendText('19.01.2023');
-            inputPO.blur();
-
-            expect(inputPO.value).toBe('19.01.2023');
-            expect(component.control.value).toStrictEqual([
-                TuiDay.normalizeParse('19.01.2023'),
-                null,
-            ]);
-        });
-
-        it('type value with partial date', () => {
-            inputPO.sendText('19.01.202');
-            inputPO.blur();
-
-            expect(inputPO.value).toBe('19.01.202');
-            expect(component.control.value).toBeNull();
-        });
-
-        it('type value with full date and partial time', () => {
-            inputPO.sendText('19.01.2023, 1');
-            inputPO.blur();
-
-            expect(inputPO.value).toBe('19.01.2023, 1');
-            expect(component.control.value).toBeNull();
-        });
-
-        it('type value with correct date and time', () => {
-            inputPO.sendText('19.01.2023, 11:11');
-            inputPO.blur();
-
-            expect(inputPO.value).toBe('19.01.2023, 11:11');
-            expect(component.control.value).toStrictEqual([
-                TuiDay.normalizeParse('19.01.2023'),
-                TuiTime.fromString('11:11'),
-            ]);
         });
     });
 

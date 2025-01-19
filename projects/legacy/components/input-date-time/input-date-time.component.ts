@@ -44,7 +44,7 @@ import {
 } from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
-import {TUI_TEXTFIELD_SIZE, TuiUnfinishedValidator} from '@taiga-ui/legacy/directives';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
@@ -70,7 +70,7 @@ const DATE_TIME_SEPARATOR = ', ';
     },
 })
 export class TuiInputDateTimeComponent
-    extends AbstractTuiControl<[TuiDay | null, TuiTime | null] | null>
+    extends AbstractTuiControl<[TuiDay, TuiTime | null] | null>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -78,10 +78,6 @@ export class TuiInputDateTimeComponent
 
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly tuiUnfinishedValidator = inject(TuiUnfinishedValidator, {
-        optional: true,
-        self: true,
-    });
 
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
@@ -90,7 +86,7 @@ export class TuiInputDateTimeComponent
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer: TuiValueTransformer<
-        [TuiDay | null, TuiTime | null]
+        [TuiDay, TuiTime | null] | null
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly type!: TuiContext<TuiActiveZone>;
@@ -121,10 +117,10 @@ export class TuiInputDateTimeComponent
         });
 
     @Input()
-    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
+    public min: TuiDay | [TuiDay, TuiTime | null] | null = this.options.min;
 
     @Input()
-    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
+    public max: TuiDay | [TuiDay, TuiTime | null] | null = this.options.max;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -168,7 +164,7 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+    public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
         super.writeValue(value);
 
         this.nativeValue.set(
@@ -188,7 +184,7 @@ export class TuiInputDateTimeComponent
         }
 
         if (value.length < DATE_FILLER_LENGTH) {
-            this.value = this.tuiUnfinishedValidator ? null : [null, null];
+            this.value = null;
 
             return;
         }
@@ -201,10 +197,7 @@ export class TuiInputDateTimeComponent
                 : null;
 
         this.open = false;
-        this.value =
-            this.tuiUnfinishedValidator && time && !parsedTime
-                ? null
-                : [parsedDate, parsedTime];
+        this.value = time && !parsedTime ? null : [parsedDate, parsedTime];
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
@@ -313,33 +306,31 @@ export class TuiInputDateTimeComponent
             });
 
         if (
-            this.value &&
-            (this.value[0] === null ||
-                this.value[1] !== null ||
-                this.nativeValue().length === this.fillerLength ||
-                this.timeMode === 'HH:MM')
+            this.nativeValue().length === this.fillerLength ||
+            this.timeMode === 'HH:MM'
         ) {
             return;
         }
 
-        const [, time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
+        const [date = '', time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
 
         if (!time) {
             return;
         }
 
         const parsedTime = TuiTime.fromString(time);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
 
-        this.value = [this.value ? this.value[0] : null, parsedTime];
+        this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 
-    protected getFallbackValue(): [TuiDay | null, TuiTime | null] | null {
-        return this.tuiUnfinishedValidator ? null : [null, null];
+    protected getFallbackValue(): [TuiDay, TuiTime | null] | null {
+        return null;
     }
 
     protected override valueIdenticalComparator(
-        oldValue: [TuiDay | null, TuiTime | null] | null,
-        newValue: [TuiDay | null, TuiTime | null] | null,
+        oldValue: [TuiDay, TuiTime | null] | null,
+        newValue: [TuiDay, TuiTime | null] | null,
     ): boolean {
         return (
             tuiNullableSame(
@@ -441,7 +432,7 @@ export class TuiInputDateTimeComponent
     }
 
     private toTuiDay(
-        value: TuiDay | [TuiDay | null, TuiTime | null] | null,
+        value: TuiDay | [TuiDay, TuiTime | null] | null,
         fallback: TuiDay,
     ): TuiDay | [TuiDay, TuiTime] {
         if (!value) {
