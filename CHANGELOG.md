@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.21.0](https://github.com/taiga-family/taiga-ui/compare/v4.20.0...v4.21.0) (2025-01-20)
+
+### 🚀 Features
+
+- **core:** new appearance `table` (compatible with new `Textfield`)
+  ([#10179](https://github.com/taiga-family/taiga-ui/issues/10179))
+  ([6cea767](https://github.com/taiga-family/taiga-ui/commit/6cea7678f5ca6a75e2fd641c54a9415ed86ee4d1))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** pin "ngx-highlightjs" peer dependency version
+  ([#10186](https://github.com/taiga-family/taiga-ui/issues/10186))
+  ([a66d891](https://github.com/taiga-family/taiga-ui/commit/a66d89148f7a6fdba62f23962aed9cbbbedd8f87))
+- **addon-mobile:** `SwipeActions` fix actions in IOS safari
+  ([#10163](https://github.com/taiga-family/taiga-ui/issues/10163))
+  ([bd53957](https://github.com/taiga-family/taiga-ui/commit/bd539579e8274ca3046af52d5b4cc9365ad2eca6))
+- **core:** correct reuse of viewport for hint position
+  ([#10183](https://github.com/taiga-family/taiga-ui/issues/10183))
+  ([0dc9b76](https://github.com/taiga-family/taiga-ui/commit/0dc9b76876c63a71d129ecb79f57d4d9e7290da1))
+- **core:** fix tuiDialog typings for classes with constructor parameters
+  ([#10193](https://github.com/taiga-family/taiga-ui/issues/10193))
+  ([6568200](https://github.com/taiga-family/taiga-ui/commit/65682009a6f92d96b5d329bce6da75d0b30a6693))
+- **core:** fix unknown selector warnings in Angular 17+
+  ([#10162](https://github.com/taiga-family/taiga-ui/issues/10162))
+  ([f7192b9](https://github.com/taiga-family/taiga-ui/commit/f7192b9621d8fcfd67ae2c36942727ba3e70a0d2))
+- **experimental:** `Accordion` fix error with dynamic items
+  ([#10182](https://github.com/taiga-family/taiga-ui/issues/10182))
+  ([a4fe7b3](https://github.com/taiga-family/taiga-ui/commit/a4fe7b3058885bc75037951b82e7537bbd135a3d))
+- **kit,legacy:** all textfield controls should handle initial `ngModel` phantom `null` value
+  ([#10171](https://github.com/taiga-family/taiga-ui/issues/10171))
+  ([b490860](https://github.com/taiga-family/taiga-ui/commit/b490860bb8ff14a2b6eba781eec1e70d892bad54))
+- **kit:** `InputNumber` should handle initial `ngModel` phantom `null` value
+  ([#10168](https://github.com/taiga-family/taiga-ui/issues/10168))
+  ([f259826](https://github.com/taiga-family/taiga-ui/commit/f2598260085297f494bed5b115e0ccf9eec663d1))
+- **kit:** new version of `InputNumber` should provide `TuiControl` for DI
+  ([#10176](https://github.com/taiga-family/taiga-ui/issues/10176))
+  ([be0c38c](https://github.com/taiga-family/taiga-ui/commit/be0c38c5cc39b2157cec45f12b5edec68f9c46f5))
+- **layout:** get view only on demand in `tuiAsideItem`
+  ([#10173](https://github.com/taiga-family/taiga-ui/issues/10173))
+  ([96797d5](https://github.com/taiga-family/taiga-ui/commit/96797d54a2a0610f79a3a3251f53a3a55b8ed4b8))
+- **layout:** update justify-content to place-content for improved main content
+  ([#10191](https://github.com/taiga-family/taiga-ui/issues/10191))
+  ([967ae88](https://github.com/taiga-family/taiga-ui/commit/967ae88d50ec3206cb6439001bcbfb79506cbeef))
+
 ## [4.20.0](https://github.com/taiga-family/taiga-ui/compare/v4.19.0...v4.20.0) (2025-01-13)
 
 ### 🐞 Bug Fixes
