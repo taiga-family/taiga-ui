@@ -8,14 +8,15 @@ import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort, TuiLet, TuiValidator} from '@taiga-ui/cdk';
-import {TuiFormatNumberPipe, TuiIcon, TuiScrollbar} from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
-    TuiInputDateModule,
-    TuiInputNumberModule,
-    TuiSelectModule,
-    TuiTextareaModule,
-} from '@taiga-ui/legacy';
+    TuiFormatNumberPipe,
+    TuiIcon,
+    TuiNumberFormat,
+    TuiScrollbar,
+    TuiTextfield,
+} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiInputDateModule, TuiTextareaModule} from '@taiga-ui/legacy';
 
 interface Item {
     readonly date: TuiDay;
@@ -32,16 +33,18 @@ interface Item {
         FormsModule,
         NgForOf,
         NgIf,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFormatNumberPipe,
         TuiIcon,
         TuiInputDateModule,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiLet,
+        TuiNumberFormat,
         TuiScrollbar,
-        TuiSelectModule,
         TuiTable,
         TuiTextareaModule,
+        TuiTextfield,
         TuiValidator,
         WaIntersectionObserver,
     ],

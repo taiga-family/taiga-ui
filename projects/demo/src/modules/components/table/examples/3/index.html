@@ -104,41 +104,52 @@
                         tuiTd
                         class="second"
                     >
-                        <tui-input-number
-                            class="number"
-                            [ngModel]="item.price"
-                            [ngModelOptions]="options"
-                            [tuiValidator]="minPrice"
-                            (ngModelChange)="onValueChange($event, 'price', item, pythons)"
-                        />
+                        <tui-textfield>
+                            <input
+                                tuiInputNumber
+                                class="number"
+                                [ngModel]="item.price"
+                                [ngModelOptions]="options"
+                                [tuiValidator]="minPrice"
+                                (ngModelChange)="onValueChange($event, 'price', item, pythons)"
+                            />
+                        </tui-textfield>
                     </th>
                 </ng-container>
                 <td
                     *tuiCell="'quantity'"
                     tuiTd
                 >
-                    <tui-input-number
-                        decimal="never"
-                        [ngModel]="item.quantity"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
-                    />
+                    <tui-textfield>
+                        <input
+                            tuiInputNumber
+                            [ngModel]="item.quantity"
+                            [ngModelOptions]="options"
+                            [tuiNumberFormat]="{precision: 0}"
+                            (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
+                        />
+                    </tui-textfield>
                 </td>
                 <td
                     *tuiCell="'unit'"
                     tuiTd
                 >
-                    <tui-select
+                    <tui-textfield
+                        tuiChevron
                         class="select"
-                        [ngModel]="item.unit"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'unit', item, pythons)"
                     >
+                        <select
+                            tuiTextfield
+                            [ngModel]="item.unit"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'unit', item, pythons)"
+                        ></select>
+
                         <tui-data-list-wrapper
-                            *tuiDataList
+                            *tuiTextfieldDropdown
                             [items]="units"
                         />
-                    </tui-select>
+                    </tui-textfield>
                 </td>
                 <td
                     *tuiCell="'date'"
@@ -187,39 +198,50 @@
                     tuiTd
                     class="second"
                 >
-                    <tui-input-number
-                        [ngModel]="item.price"
-                        [ngModelOptions]="options"
-                        [tuiValidator]="minPrice"
-                        (ngModelChange)="onValueChange($event, 'price', item, starwars)"
-                    />
+                    <tui-textfield>
+                        <input
+                            tuiInputNumber
+                            [ngModel]="item.price"
+                            [ngModelOptions]="options"
+                            [tuiValidator]="minPrice"
+                            (ngModelChange)="onValueChange($event, 'price', item, starwars)"
+                        />
+                    </tui-textfield>
                 </th>
                 <td
                     *tuiCell="'quantity'"
                     tuiTd
                 >
-                    <tui-input-number
-                        decimal="never"
-                        [ngModel]="item.quantity"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
-                    />
+                    <tui-textfield>
+                        <input
+                            tuiInputNumber
+                            [ngModel]="item.quantity"
+                            [ngModelOptions]="options"
+                            [tuiNumberFormat]="{precision: 0}"
+                            (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
+                        />
+                    </tui-textfield>
                 </td>
                 <td
                     *tuiCell="'unit'"
                     tuiTd
                 >
-                    <tui-select
+                    <tui-textfield
+                        tuiChevron
                         class="select"
-                        [ngModel]="item.unit"
-                        [ngModelOptions]="options"
-                        (ngModelChange)="onValueChange($event, 'unit', item, starwars)"
                     >
+                        <select
+                            tuiTextfield
+                            [ngModel]="item.unit"
+                            [ngModelOptions]="options"
+                            (ngModelChange)="onValueChange($event, 'unit', item, starwars)"
+                        ></select>
+
                         <tui-data-list-wrapper
-                            *tuiDataList
+                            *tuiTextfieldDropdown
                             [items]="units"
                         />
-                    </tui-select>
+                    </tui-textfield>
                 </td>
                 <td
                     *tuiCell="'date'"

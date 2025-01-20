@@ -1,0 +1,66 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/*
+TODO: remove :not([tuiWrapper]) after legacy controls deletion
+*/
+[tuiAppearance][data-appearance='table']:not([tuiWrapper]) {
+    content: '';
+    position: fixed;
+    /* TODO: Use inset: -0.0625rem after Safari 14+ support */
+    top: -0.0625rem;
+    bottom: -0.0625rem;
+    left: -0.0625rem;
+    right: -0.0625rem;
+    inline-size: auto;
+    block-size: auto;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: calc(var(--t-row-height) - var(--t-height));
+
+    &:not(._empty) {
+        color: var(--tui-text-primary);
+    }
+
+    .appearance-hover({
+        &[data-focus='false'] {
+            background-color: var(--tui-background-neutral-1);
+        }
+    });
+
+    .appearance-focus({
+        outline-offset: -0.125rem;
+        outline: 0.125rem solid var(--tui-border-focus);
+    });
+
+    &:invalid,
+    &[data-mode~='invalid'] {
+        background-origin: border-box;
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(to top right, transparent 0% 50%, var(--tui-status-negative) 50% 100%);
+        background-size: 0.5rem 0.5rem;
+
+        &[data-focus='false'] {
+            background-color: var(--tui-status-negative-pale);
+        }
+
+        .appearance-hover({
+            &[data-focus='false'] {
+                background-color: var(--tui-status-negative-pale-hover);
+            }
+        });
+
+        .appearance-disabled({
+            background: transparent;
+            outline: none;
+        });
+
+        .appearance-focus({
+            background-color: transparent;
+            outline-offset: -0.0625rem;
+            outline: 0.0625rem solid var(--tui-status-negative);
+        });
+    }
+}

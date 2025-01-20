@@ -42,29 +42,38 @@
                     <tui-input-date formControlName="date">Date</tui-input-date>
                 </td>
                 <td tuiTd>
-                    <tui-select formControlName="color">
-                        Color
+                    <tui-textfield tuiChevron>
+                        <select
+                            formControlName="color"
+                            placeholder="Color"
+                            tuiTextfield
+                        ></select>
+
                         <tui-data-list-wrapper
-                            *tuiDataList
+                            *tuiTextfieldDropdown
                             [items]="items"
                         />
-                    </tui-select>
+                    </tui-textfield>
                 </td>
                 <td tuiTd>
-                    <tui-input-number
-                        decimal="never"
-                        formControlName="quantity"
-                    >
-                        Quantity
-                    </tui-input-number>
+                    <tui-textfield>
+                        <input
+                            formControlName="quantity"
+                            placeholder="Quantity"
+                            tuiInputNumber
+                            [tuiNumberFormat]="{precision: 0}"
+                        />
+                    </tui-textfield>
                 </td>
                 <td tuiTd>
-                    <tui-input-number
-                        formControlName="sum"
-                        [readOnly]="true"
-                    >
-                        Sum
-                    </tui-input-number>
+                    <tui-textfield>
+                        <input
+                            formControlName="sum"
+                            placeholder="Sum"
+                            tuiInputNumber
+                            [readOnly]="true"
+                        />
+                    </tui-textfield>
                 </td>
             </tr>
         </tbody>

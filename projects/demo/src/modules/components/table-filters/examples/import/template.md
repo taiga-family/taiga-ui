@@ -16,13 +16,15 @@
         *tuiHead="'balance'"
         tuiTh
       >
-        <tui-input-number
-          tuiTableFilter
-          [tuiGenericFilter]="filter"
-          [formControl]="balance"
-        >
-          Minimal balance
-        </tui-input-number>
+        <tui-textfield>
+          <label tuiLabel>Minimal balance</label>
+          <input
+            tuiInputNumber
+            tuiTableFilter
+            [tuiGenericFilter]="filter"
+            [formControl]="balance"
+          />
+        </tui-textfield>
       </th>
     </tr>
   </thead>

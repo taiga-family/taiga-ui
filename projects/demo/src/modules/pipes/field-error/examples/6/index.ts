@@ -5,9 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiHintDirective} from '@taiga-ui/core';
-import {TuiFieldErrorContentPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
-import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiFieldErrorContentPipe,
+    TuiInputNumber,
+    tuiValidationErrorsProvider,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -16,10 +19,10 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         ReactiveFormsModule,
         TuiCurrencyPipe,
         TuiFieldErrorContentPipe,
-        TuiHintDirective,
-        TuiInputNumberModule,
+        TuiHint,
+        TuiInputNumber,
         TuiTable,
-        TuiTextfieldControllerModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

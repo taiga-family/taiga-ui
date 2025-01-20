@@ -14,33 +14,39 @@ test.describe('InputTable', () => {
             await example
                 .locator('tbody tr td')
                 .nth(index)
-                .getByTestId('tui-primitive-textfield__wrapper')
-                .locator('input')
-                .nth(0)
+                .locator('tui-primitive-textfield,tui-textfield')
+                .locator('input,select')
+                .first()
                 .focus();
 
             await page.waitForTimeout(300);
 
-            await expect(example).toHaveScreenshot(`01-input-table-${index}-1.png`);
+            await expect(example).toHaveScreenshot(
+                `01-input-table-step-1--index-${index}.png`,
+            );
 
             await example.locator('th').nth(index).click();
 
-            await expect(example).toHaveScreenshot(`01-input-table-${index}-2.png`);
+            await expect(example).toHaveScreenshot(
+                `01-input-table-step-2--index-${index}.png`,
+            );
 
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (index > 0) {
                 await example
                     .locator('tbody tr td')
                     .nth(index)
-                    .getByTestId('tui-primitive-textfield__wrapper')
-                    .locator('input')
-                    .nth(0)
+                    .locator('tui-primitive-textfield,tui-textfield')
+                    .locator('input,select')
+                    .first()
                     .focus();
 
                 await page.waitForTimeout(300);
 
                 // eslint-disable-next-line playwright/no-conditional-expect
-                await expect(example).toHaveScreenshot(`01-input-table-${index}-3.png`);
+                await expect(example).toHaveScreenshot(
+                    `01-input-table-step-3--index-${index}.png`,
+                );
             }
         }
     });

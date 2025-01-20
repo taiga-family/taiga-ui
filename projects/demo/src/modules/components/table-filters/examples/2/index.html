@@ -1,12 +1,15 @@
 <ng-container tuiTableFilters>
     <form [formGroup]="filterForm">
-        <tui-input-number
-            formControlName="balance"
-            tuiTableFilter="controls"
-            [tuiGenericFilter]="filter"
-        >
-            Minimal balance
-        </tui-input-number>
+        <tui-textfield>
+            <label tuiLabel>Minimal balance</label>
+            <input
+                formControlName="balance"
+                tuiInputNumber
+                tuiTableFilter="controls"
+                [tuiGenericFilter]="filter"
+            />
+        </tui-textfield>
+
         <label class="toggle">
             <input
                 size="s"
@@ -41,23 +44,26 @@
                     *tuiCell="'name'"
                     tuiTd
                 >
-                    <tui-input
-                        formControlName="name"
-                        tuiTextfieldSize="s"
-                    >
-                        Type an name
+                    <tui-textfield>
                         <input
                             autocomplete="name"
-                            tuiTextfieldLegacy
-                            type="name"
+                            formControlName="name"
+                            placeholder="Type an name"
+                            tuiTextfield
                         />
-                    </tui-input>
+                    </tui-textfield>
                 </td>
                 <td
                     *tuiCell="'balance'"
                     tuiTd
                 >
-                    <tui-input-number formControlName="balance">Type a balance</tui-input-number>
+                    <tui-textfield>
+                        <input
+                            formControlName="balance"
+                            placeholder="Type a balance"
+                            tuiInputNumber
+                        />
+                    </tui-textfield>
                 </td>
             </tr>
         </tbody>

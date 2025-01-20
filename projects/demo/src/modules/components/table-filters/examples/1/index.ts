@@ -4,9 +4,8 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
-import {TuiFormatNumberPipe} from '@taiga-ui/core';
-import {TuiSwitch} from '@taiga-ui/kit';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -16,10 +15,11 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         NgForOf,
         ReactiveFormsModule,
         TuiFormatNumberPipe,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiSwitch,
         TuiTable,
         TuiTableFilters,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
