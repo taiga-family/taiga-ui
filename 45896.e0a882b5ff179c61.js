@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45896],{45896:e=>{e.exports='<tui-textfield\n    tuiTextfieldSize="s"\n    [style.width.rem]="10"\n>\n    <input\n        placeholder="Enter weight (kg)"\n        postfix=" kg"\n        tuiInputNumber\n        [min]="0"\n        [tuiFluidTypography]="[0.5, 1]"\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n'}}]);
