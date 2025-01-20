@@ -23,6 +23,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
+    debounceTime,
     distinctUntilChanged,
     filter,
     map,
@@ -36,6 +37,9 @@ import {
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
+
+// 4px buffer for IE/Edge incorrectly rounding scrollHeight
+const BUFFER = 4;
 
 @Component({
     standalone: true,
@@ -96,8 +100,10 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     public content: PolymorpheusContent;
 
     @Output()
-    public readonly overflownChange: Observable<boolean> =
-        this.isOverflown$.pipe(distinctUntilChanged());
+    public readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(
+        debounceTime(0),
+        distinctUntilChanged(),
+    );
 
     @Input()
     public set linesLimit(linesLimit: number) {
@@ -118,11 +124,18 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             return false;
         }
 
-        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
+        const {
+            scrollHeight,
+            scrollWidth,
+            clientHeight: outletHeight,
+        } = this.outlet.nativeElement;
         const {clientHeight, clientWidth} = this.el;
 
-        // 4px buffer for IE/Edge incorrectly rounding scrollHeight
-        return scrollHeight - clientHeight > 4 || scrollWidth - clientWidth > 0;
+        return (
+            scrollHeight - clientHeight > BUFFER ||
+            scrollWidth - clientWidth > 0 ||
+            scrollHeight > outletHeight
+        );
     }
 
     protected get computedContent(): PolymorpheusContent {
@@ -135,7 +148,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
 
     private update(): void {
         if (this.outlet) {
-            this.height.set(this.outlet.nativeElement.scrollHeight + 4);
+            this.height.set(this.outlet.nativeElement.scrollHeight + BUFFER);
         }
 
         this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
