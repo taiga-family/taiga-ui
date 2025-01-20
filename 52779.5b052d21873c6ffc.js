@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[52779],{52779:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n    inline-size: 18rem;\n    margin: 1rem 0;\n}\n\ntui-swipe-actions {\n    margin: -1.5rem -1rem;\n}\n\n[tuiCardLarge] {\n    margin: 1.5rem 1rem;\n}\n\nbutton[tuiSwipeAction] {\n    border-radius: 100%;\n}\n"}}]);
