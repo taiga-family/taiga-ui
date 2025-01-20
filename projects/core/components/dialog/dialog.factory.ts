@@ -21,10 +21,10 @@ type ContextKeys<T> = {
 }[keyof T];
 
 type AssertNotMultipleContexts<T, K extends keyof T> = [K] extends [never]
-    ? new () => T
+    ? new (...args: any[]) => T
     : [SingleUnionOrNever<K>] extends [never]
       ? 'Component has multiple context. Cannot determine the type...'
-      : new () => T;
+      : new (...args: any[]) => T;
 
 type ExtractDialogData<T, K extends keyof T = ContextKeys<T>> = [K] extends [never]
     ? void
