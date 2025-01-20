@@ -1,16 +1,20 @@
-import type {QueryList} from '@angular/core';
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    DestroyRef,
+    inject,
     Input,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TuiExpand} from '@taiga-ui/experimental/components/expand';
+import {ReplaySubject} from 'rxjs';
 
 import {TuiAccordionDirective} from './accordion.directive';
 
@@ -32,11 +36,14 @@ import {TuiAccordionDirective} from './accordion.directive';
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiAccordionComponent {
-    @ContentChildren(TuiExpand, {static: true} as any)
+export class TuiAccordionComponent implements AfterViewInit {
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly toggle$ = new ReplaySubject<TuiAccordionDirective>(Infinity);
+
+    @ContentChildren(TuiExpand)
     public readonly expands: QueryList<TuiExpand> = EMPTY_QUERY;
 
-    @ContentChildren(TuiAccordionDirective, {static: true} as any)
+    @ContentChildren(TuiAccordionDirective)
     public readonly directives: QueryList<TuiAccordionDirective> = EMPTY_QUERY;
 
     @Input()
@@ -49,22 +56,29 @@ export class TuiAccordionComponent {
         this.size.set(size);
     }
 
-    public toggle(directive: TuiAccordionDirective, value: boolean): void {
-        if (this.closeOthers && value) {
-            this.expands.forEach((expand) => {
-                expand.expanded = false;
-            });
+    public ngAfterViewInit(): void {
+        this.toggle$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((d) => {
+            if (this.closeOthers && d.open()) {
+                this.expands.forEach((expand) => {
+                    expand.expanded = false;
+                });
 
-            this.directives.forEach((dir) => {
-                if (dir === directive) {
-                    return;
-                }
+                this.directives.forEach((dir) => {
+                    if (dir === d) {
+                        return;
+                    }
 
-                dir.open.set(false);
-                dir.tuiAccordionChange.emit(false);
-            });
-        }
+                    dir.open.set(false);
+                    dir.tuiAccordion = false;
+                    dir.tuiAccordionChange.emit(false);
+                });
+            }
 
-        this.expands.get(this.directives.toArray().indexOf(directive))!.expanded = value;
+            this.expands.get(this.directives.toArray().indexOf(d))!.expanded = d.open();
+        });
+    }
+
+    public toggle(directive: TuiAccordionDirective): void {
+        this.toggle$.next(directive);
     }
 }
