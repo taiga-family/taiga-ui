@@ -41,7 +41,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
     @Input()
     public invalid: boolean | null = null;
 
-    public nativeValue = toSignal(
+    public readonly value = toSignal(
         merge(
             fromEvent(this.el, 'input'),
             timer(0) // https://github.com/angular/angular/issues/54418

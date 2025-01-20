@@ -5,6 +5,7 @@ import {TUI_MALAY_LANGUAGE_ADDON_EDITOR} from './addon-editor';
 import {TUI_MALAY_LANGUAGE_ADDON_TABLE} from './addon-table';
 import {TUI_MALAY_LANGUAGE_CORE} from './core';
 import {TUI_MALAY_LANGUAGE_KIT} from './kit';
+import {TUI_MALAY_LANGUAGE_LAYOUT} from './layout';
 
 export const TUI_MALAY_LANGUAGE: TuiLanguage = {
     name: 'malay',
@@ -13,4 +14,5 @@ export const TUI_MALAY_LANGUAGE: TuiLanguage = {
     ...TUI_MALAY_LANGUAGE_ADDON_TABLE,
     ...TUI_MALAY_LANGUAGE_ADDON_COMMERCE,
     ...TUI_MALAY_LANGUAGE_ADDON_EDITOR,
+    ...TUI_MALAY_LANGUAGE_LAYOUT,
 };

@@ -116,6 +116,17 @@ export interface TuiLanguageKit {
     phoneSearch: string;
 }
 
+export interface TuiLanguageLayout {
+    inputSearch: {
+        popular: string;
+        history: string;
+        placeholder: string;
+        hotkey: string;
+        all: string;
+        empty: string;
+    };
+}
+
 export interface TuiLanguageCommerce {
     cardExpiry: readonly [expiry: string, expiry_date: string];
     cardNumber: readonly [number: string, card_number: string];
@@ -199,6 +210,7 @@ export interface TuiLanguageMeta {
 export interface TuiLanguage
     extends TuiLanguageCore,
         TuiLanguageKit,
+        TuiLanguageLayout,
         TuiLanguageCommerce,
         TuiLanguageTable,
         TuiLanguageEditor,

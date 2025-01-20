@@ -5,6 +5,7 @@ import {TUI_GERMAN_LANGUAGE_ADDON_EDITOR} from './addon-editor';
 import {TUI_GERMAN_LANGUAGE_ADDON_TABLE} from './addon-table';
 import {TUI_GERMAN_LANGUAGE_CORE} from './core';
 import {TUI_GERMAN_LANGUAGE_KIT} from './kit';
+import {TUI_GERMAN_LANGUAGE_LAYOUT} from './layout';
 
 export const TUI_GERMAN_LANGUAGE: TuiLanguage = {
     name: 'german',
@@ -13,4 +14,5 @@ export const TUI_GERMAN_LANGUAGE: TuiLanguage = {
     ...TUI_GERMAN_LANGUAGE_ADDON_TABLE,
     ...TUI_GERMAN_LANGUAGE_ADDON_COMMERCE,
     ...TUI_GERMAN_LANGUAGE_ADDON_EDITOR,
+    ...TUI_GERMAN_LANGUAGE_LAYOUT,
 };

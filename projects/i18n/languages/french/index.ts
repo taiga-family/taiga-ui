@@ -5,3 +5,4 @@ export * from './core';
 export * from './countries';
 export * from './french';
 export * from './kit';
+export * from './layout';

@@ -964,7 +964,7 @@ export const pages: DocRoutePages = [
     {
         section: 'Layout',
         title: 'Cell',
-        keywords: 'cell, feed, item',
+        keywords: 'cell, feed, item, tuiaccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
             {name: 'tui-cell'},
@@ -995,7 +995,7 @@ export const pages: DocRoutePages = [
     {
         section: 'Layout',
         title: 'Header',
-        keywords: 'header, заголовок, item',
+        keywords: 'header, заголовок, item, tuiaccessories, accessories',
         route: DemoRoute.Header,
         meta: {},
     },
@@ -1037,7 +1037,8 @@ export const pages: DocRoutePages = [
     {
         section: 'Components',
         title: 'Title',
-        keywords: 'subtitle, заголовок, caption, description, подзаголовок',
+        keywords:
+            'subtitle, заголовок, caption, description, подзаголовок, tuisubtitle, title',
         route: DemoRoute.Title,
     },
     {
@@ -1081,6 +1082,13 @@ export const pages: DocRoutePages = [
         keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
         route: DemoRoute.Search,
         meta: {scheme: 'beaver', name: 'filters'},
+    },
+    {
+        section: 'Layout',
+        title: 'InputSearch',
+        keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
+        route: DemoRoute.InputSearch,
+        meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
     {

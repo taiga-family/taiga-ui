@@ -1,0 +1,52 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--tui-radius-l);
+    background: var(--tui-background-base);
+    box-shadow: inset 0 0 0 1px var(--tui-border-normal);
+
+    ::ng-deep {
+        [tuiCell] {
+            inline-size: stretch;
+            padding: 0.375rem;
+            margin: 0.25rem 0.625rem;
+            border-radius: var(--tui-radius-l);
+
+            > tui-avatar {
+                border-radius: var(--tui-radius-m);
+            }
+        }
+
+        .t-sr-label {
+            display: block;
+            font: var(--tui-font-text-ui-s);
+            color: var(--tui-text-secondary);
+            margin: 0.75rem 1rem 0.5rem;
+        }
+    }
+}
+
+.t-loader {
+    margin: 1rem 0;
+}
+
+.t-empty {
+    margin-block-start: 1.5rem;
+    filter: invert(1);
+}
+
+.t-tabs {
+    order: -1;
+    margin: 0 1rem;
+    box-shadow: none;
+    border-image: linear-gradient(0deg, var(--tui-border-normal) 1px, transparent 0) fill 0/0/0 1rem;
+
+    &::before {
+        background: var(--tui-background-accent-opposite-pressed);
+    }
+}
+
+.t-scrollbar {
+    max-block-size: 30rem;
+    padding: 0.325rem 0;
+}
