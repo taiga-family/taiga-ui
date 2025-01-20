@@ -6,11 +6,11 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
 [tuiAppearance][data-appearance='table']:not([tuiWrapper]) {
     content: '';
     position: fixed;
-    /* TODO: Use inset: -1px after Safari 14+ support */
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
+    /* TODO: Use inset: -0.0625rem after Safari 14+ support */
+    top: -0.0625rem;
+    bottom: -0.0625rem;
+    left: -0.0625rem;
+    right: -0.0625rem;
     inline-size: auto;
     block-size: auto;
     border-radius: 0;
@@ -30,8 +30,8 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
     });
 
     .appearance-focus({
-        outline-offset: -2px;
-        outline: 2px solid var(--tui-border-focus);
+        outline-offset: -0.125rem;
+        outline: 0.125rem solid var(--tui-border-focus);
     });
 
     &:invalid,
@@ -59,8 +59,8 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
 
         .appearance-focus({
             background-color: transparent;
-            outline-offset: -1px;
-            outline: 1px solid var(--tui-status-negative);
+            outline-offset: -0.0625rem;
+            outline: 0.0625rem solid var(--tui-status-negative);
         });
     }
 }
