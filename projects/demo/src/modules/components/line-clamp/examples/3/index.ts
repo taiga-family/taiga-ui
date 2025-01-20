@@ -15,7 +15,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 })
 export default class Example {
     private readonly win = inject(WA_WINDOW);
-    private readonly cd = inject(ChangeDetectorRef);
+    private readonly cdr = inject(ChangeDetectorRef);
     protected lineHeight = NaN;
     protected lineLimit = NaN;
 
@@ -30,6 +30,6 @@ export default class Example {
     protected onResize(element: HTMLDivElement): void {
         this.lineHeight = this.getDynamicLineHeight(element);
         this.lineLimit = this.getDynamicLineLimit(element);
-        this.cd.detectChanges();
+        this.cdr.detectChanges();
     }
 }
