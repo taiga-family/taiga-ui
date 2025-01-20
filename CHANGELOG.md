@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.102.1](https://github.com/taiga-family/taiga-ui/compare/v3.102.0...v3.102.1) (2025-01-20)
+
+### Bug Fixes
+
+- **experimental:** `SwipeActions` fix actions in IOS safari
+  ([#10165](https://github.com/taiga-family/taiga-ui/issues/10165))
+  ([3916e5a](https://github.com/taiga-family/taiga-ui/commit/3916e5ae369104f88f3765f291c7bc6dea142a4c))
+
 ## [3.102.0](https://github.com/taiga-family/taiga-ui/compare/v3.101.0...v3.102.0) (2025-01-13)
 
 ### Features
