@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56406],{50276:(e,s,a)=>{a.r(s),a.d(s,{TUI_JAPAN_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"表示または非表示",paginationTexts:{pages:"ページ",linesPerPage:"1ページあたりの行数",of:"の"}}}}]);

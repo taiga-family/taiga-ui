@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8151],{89931:(e,o,l)=>{l.r(o),l.d(o,{TUI_UKRAINIAN_LANGUAGE_LAYOUT:()=>p});const p={inputSearch:{popular:"Popular",history:"Recent",placeholder:"Type query",hotkey:"to search",all:"All",empty:"Nothing found"}}}}]);

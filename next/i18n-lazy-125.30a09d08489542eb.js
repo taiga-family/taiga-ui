@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[20291],{47968:(e,s,a)=>{a.r(s),a.d(s,{TUI_GREEK_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Εμφάνιση/Απόκρυψη",paginationTexts:{pages:"Σελίδες",linesPerPage:"Γραμμές ανά σελίδα",of:"από"}}}}]);
