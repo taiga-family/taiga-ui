@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26057],{40472:(e,p,h)=>{h.r(p),h.d(p,{TUI_RUSSIAN_LANGUAGE_LAYOUT:()=>l});const l={inputSearch:{popular:"Часто ищут",history:"Недавние",placeholder:"Введите запрос",hotkey:"для поиска",all:"Все",empty:"Не нашли подходящих результатов"}}}}]);
