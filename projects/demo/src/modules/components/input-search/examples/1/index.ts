@@ -10,52 +10,6 @@ import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {filter, map, startWith, switchMap, timer} from 'rxjs';
 import {TuiSearchResults} from '@taiga-ui/experimental';
 
-@Component({
-    standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        TuiNavigation,
-        TuiTextfield,
-        TuiInputSearch,
-        TuiSearchResults,
-        TuiAvatar,
-        TuiCell,
-        TuiTitle,
-        AsyncPipe,
-    ],
-    templateUrl: './index.html',
-    styleUrls: ['index.less'],
-    encapsulation,
-    changeDetection,
-})
-export default class ExampleComponent {
-    protected readonly popular = ['Taiga UI', 'Maskito', 'Web APIs for Angular'];
-
-    protected readonly control = new FormControl('');
-
-    protected readonly results$ = this.control.valueChanges.pipe(
-        filter(Boolean),
-        switchMap((value: string) =>
-            timer(2000).pipe(
-                map(() => this.filter(value)),
-                startWith(null),
-            ),
-        ),
-    );
-
-    private filter(query: string): Record<string, readonly Result[]> {
-        return Object.entries(DATA).reduce(
-            (result, [key, value]) => ({
-                ...result,
-                [key]: value.filter(({title, href, subtitle = ''}) =>
-                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
-                ),
-            }),
-            {},
-        );
-    }
-}
-
 interface Result {
     href: string;
     title: string;
@@ -101,3 +55,49 @@ const DATA: Record<string, readonly Result[]> = {
         },
     ],
 };
+
+@Component({
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiNavigation,
+        TuiTextfield,
+        TuiInputSearch,
+        TuiSearchResults,
+        TuiAvatar,
+        TuiCell,
+        TuiTitle,
+        AsyncPipe,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class ExampleComponent {
+    protected readonly popular = ['Taiga UI', 'Maskito', 'Web APIs for Angular'];
+
+    protected readonly control = new FormControl('');
+
+    protected readonly results$ = this.control.valueChanges.pipe(
+        filter(Boolean),
+        switchMap((value: string) =>
+            timer(2000).pipe(
+                map(() => this.filter(value)),
+                startWith(null),
+            ),
+        ),
+    );
+
+    private filter(query: string): Record<string, readonly Result[]> {
+        return Object.entries(DATA).reduce(
+            (result, [key, value]) => ({
+                ...result,
+                [key]: value.filter(({title, href, subtitle = ''}) =>
+                    TUI_DEFAULT_MATCHER(title + href + subtitle, query),
+                ),
+            }),
+            {},
+        );
+    }
+}
