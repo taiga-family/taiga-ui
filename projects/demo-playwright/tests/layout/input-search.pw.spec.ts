@@ -21,7 +21,7 @@ test.describe('InputSearch', () => {
         const input = example.locator('input').first();
 
         await input.focus();
-        await page.locator('[tuitheme="dark"].t-container').click();
+        await page.locator('[tuiTheme="dark"].t-container').click();
 
         await expect(example).toHaveScreenshot('02-input-search.png');
     });
