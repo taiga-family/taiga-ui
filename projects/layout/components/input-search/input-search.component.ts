@@ -1,39 +1,39 @@
+import type {ElementRef, EmbeddedViewRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
-    type EmbeddedViewRef,
     inject,
     Input,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {
-    TUI_COMMON_ICONS,
-    TuiIcons,
-    TuiPopupService,
-    TuiTextfieldComponent,
-    TuiWithTextfield,
-} from '@taiga-ui/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {
     tuiContainsOrAfter,
-    tuiDirectiveBinding,
-    tuiGetClosestFocusable,
     tuiInjectElement,
     tuiIsElement,
-} from '@taiga-ui/cdk';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {toSignal} from '@angular/core/rxjs-interop';
+} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TuiTextfieldComponent,
+    TuiWithTextfield,
+} from '@taiga-ui/core/components/textfield';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'input[tuiInputSearch]',
     imports: [PolymorpheusOutlet],
-    hostDirectives: [TuiWithTextfield],
-    styleUrls: ['./input-search.component.less'],
     templateUrl: './input-search.component.html',
+    styleUrls: ['./input-search.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiWithTextfield],
     host: {
         '(focus)': 'open()',
         '(keydown.tab.prevent)': '0',

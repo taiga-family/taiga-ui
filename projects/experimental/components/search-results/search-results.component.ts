@@ -1,59 +1,51 @@
-import {
-    type KeyValue,
-    KeyValuePipe,
-    NgForOf,
-    NgIf,
-    NgTemplateOutlet,
-} from '@angular/common';
+import type {KeyValue} from '@angular/common';
+import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
     inject,
     Input,
-    type OnChanges,
     TemplateRef,
 } from '@angular/core';
-import {TuiTabs} from '@taiga-ui/kit';
-import {
-    TuiIconPipe,
-    TuiLoader,
-    TuiScrollbar,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core';
-import {
-    tuiClamp,
-    type TuiContext,
-    TuiFilterPipe,
-    tuiInjectElement,
-    TuiLet,
-    tuiMoveFocus,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {TUI_INPUT_SEARCH, TuiBlockStatus} from '@taiga-ui/layout';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiIconPipe} from '@taiga-ui/core/components/icon';
+import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {TuiTabs} from '@taiga-ui/kit/components/tabs';
+import {TuiBlockStatus} from '@taiga-ui/layout/components/block-status';
+import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
 @Component({
     standalone: true,
     selector: 'tui-search-results',
-    styleUrls: ['./search-results.component.less'],
-    templateUrl: './search-results.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        NgIf,
-        NgForOf,
-        NgTemplateOutlet,
         KeyValuePipe,
-        TuiTabs,
-        TuiScrollbar,
-        TuiLoader,
+        NgForOf,
+        NgIf,
+        NgTemplateOutlet,
         TuiBlockStatus,
+        TuiFilterPipe,
         TuiIconPipe,
         TuiLet,
-        TuiFilterPipe,
+        TuiLoader,
+        TuiScrollbar,
+        TuiTabs,
     ],
+    templateUrl: './search-results.component.html',
+    styleUrls: ['./search-results.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(keydown.arrowDown.prevent)': 'onArrow($event.target, 1)',
         '(keydown.arrowUp.prevent)': 'onArrow($event.target, -1)',
@@ -71,7 +63,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     public readonly template?: TemplateRef<TuiContext<T>>;
 
     @Input()
-    results: Record<string, readonly T[]> | null = {};
+    public results: Record<string, readonly T[]> | null = {};
 
     public ngOnChanges(): void {
         this.active = 0;

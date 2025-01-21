@@ -1,9 +1,9 @@
 import {Directive, inject} from '@angular/core';
-import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiInputSearch} from '@taiga-ui/layout/components/input-search';
+import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {map} from 'rxjs';
-import {TUI_INPUT_SEARCH} from '@taiga-ui/layout';
 
 @Directive({
     standalone: true,

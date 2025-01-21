@@ -1,4 +1,4 @@
-import {tuiCreateOptions} from '@taiga-ui/cdk';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export const [TUI_SEARCH_RESULTS_OPTIONS, tuiSearchResultsOptionsProvider] =
     tuiCreateOptions({

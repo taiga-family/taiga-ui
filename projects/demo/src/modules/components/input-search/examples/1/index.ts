@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCell, TuiNavigation, TuiInputSearch} from '@taiga-ui/layout';
-import {TuiAvatar} from '@taiga-ui/kit';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {filter, map, startWith, switchMap, timer} from 'rxjs';
 import {TuiSearchResults} from '@taiga-ui/experimental';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiCell, TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
+import {filter, map, startWith, switchMap, timer} from 'rxjs';
 
 interface Result {
     href: string;
@@ -59,15 +59,15 @@ const DATA: Record<string, readonly Result[]> = {
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         ReactiveFormsModule,
-        TuiNavigation,
-        TuiTextfield,
-        TuiInputSearch,
-        TuiSearchResults,
         TuiAvatar,
         TuiCell,
+        TuiInputSearch,
+        TuiNavigation,
+        TuiSearchResults,
+        TuiTextfield,
         TuiTitle,
-        AsyncPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
