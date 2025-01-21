@@ -2,9 +2,9 @@
     <div
         tuiTheme="dark"
         class="t-container"
-        (click.self)="close()"
         (document:focusin)="onFocus($event)"
         (keydown.esc)="close()"
+        (pointerdown.self)="close()"
     >
         <div
             #container

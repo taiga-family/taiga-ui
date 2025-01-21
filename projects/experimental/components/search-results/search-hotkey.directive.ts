@@ -10,7 +10,8 @@ import {map} from 'rxjs';
     selector: 'input[tuiSearchHotkey]',
     host: {
         '[placeholder]': 'placeholder()',
-        '(document:keydown.meta.k)': 'search.open()',
+        '(document:keydown.meta.k.stop)': 'search.open()',
+        '(document:keydown.alt.k.stop)': 'search.open()',
     },
 })
 export class TuiSearchHotkey {
@@ -20,7 +21,7 @@ export class TuiSearchHotkey {
     protected readonly placeholder = toSignal(
         inject(TUI_INPUT_SEARCH).pipe(
             map(({hotkey}) =>
-                this.platform.startsWith('Mac') ? `⌘+K ${hotkey}` : `Win+K ${hotkey}`,
+                this.platform.startsWith('Mac') ? `⌘+K ${hotkey}` : `Alt+K ${hotkey}`,
             ),
         ),
     );
