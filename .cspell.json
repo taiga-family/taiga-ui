@@ -16,7 +16,11 @@
         "Clintock",
         "Bonorum",
         "hidecheckbox",
-        "hideradio"
+        "hideradio",
+        "tuiaccessories",
+        "tuisubtitle",
+        "бивер",
+        "finedog"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

@@ -171,6 +171,11 @@
         opacity: 1;
     }
 
+    &:focus-visible {
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: -0.125rem;
+    }
+
     [tuiOption] &,
     tui-primitive-textfield & {
         padding: 0;

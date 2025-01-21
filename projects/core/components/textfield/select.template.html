@@ -1,5 +1,5 @@
 <option
-    *ngIf="placeholder && !value; else selected"
+    *ngIf="placeholder && !stringified; else selected"
     disabled
     selected
     value=""
@@ -8,7 +8,7 @@
 </option>
 <ng-template #selected>
     <option
-        *ngFor="let item of [value]"
+        *ngFor="let item of [stringified]"
         selected
         [value]="item"
     >

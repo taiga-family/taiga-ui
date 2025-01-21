@@ -86,7 +86,8 @@
             "i18n/no-japanese-character": "off",
             "i18n/no-thai-character": "off",
             "jest/prefer-importing-jest-globals": "off",
-            "sonarjs/prefer-nullish-coalescing": "off"
+            "sonarjs/prefer-nullish-coalescing": "off",
+            "@angular-eslint/template/button-has-type": "off"
         },
         "overrides": [
             {
@@ -95,14 +96,6 @@
                 ],
                 "rules": {
                     "@angular-eslint/prefer-standalone": "off"
-                }
-            },
-            {
-                "files": [
-                    "**/accordion/**/*.html"
-                ],
-                "rules": {
-                    "@angular-eslint/template/button-has-type": "off"
                 }
             },
             {

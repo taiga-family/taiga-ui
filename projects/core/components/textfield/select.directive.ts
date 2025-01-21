@@ -19,7 +19,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'textfield.id',
-        '[class._empty]': 'value === ""',
+        '[class._empty]': 'stringified === ""',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
@@ -48,11 +48,11 @@ export class TuiSelect<T> extends TuiTextfieldBase<T> {
         this.el.classList.remove('_ios-fix');
     }
 
-    protected get value(): string {
+    protected get stringified(): string {
         return this.textfield.stringify(this.control?.value ?? '');
     }
 
     protected async onCopy(): Promise<void> {
-        await this.nav.clipboard.writeText(this.value);
+        await this.nav.clipboard.writeText(this.stringified);
     }
 }

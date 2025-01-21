@@ -4,3 +4,4 @@ export * from './addon-table';
 export * from './core';
 export * from './german';
 export * from './kit';
+export * from './layout';

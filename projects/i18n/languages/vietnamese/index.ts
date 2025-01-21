@@ -4,4 +4,5 @@ export * from './addon-table';
 export * from './core';
 export * from './countries';
 export * from './kit';
+export * from './layout';
 export * from './vietnamese';

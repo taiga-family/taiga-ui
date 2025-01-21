@@ -1,0 +1,30 @@
+<header tuiNavigationHeader>
+    <strong>Taiga UI</strong>
+    <hr />
+    <tui-textfield>
+        <input
+            tuiSearchHotkey
+            [formControl]="control"
+            [tuiInputSearch]="search"
+        />
+        <ng-template #search>
+            <tui-search-results [results]="results$ | async">
+                <tui-search-history [popular]="popular" />
+                <ng-template let-item>
+                    <a
+                        tuiCell="m"
+                        [href]="item.href"
+                    >
+                        <tui-avatar [src]="item.icon || '@tui.file'" />
+                        <span tuiTitle>
+                            {{ item.title }}
+                            <span tuiSubtitle>{{ item.subtitle }}</span>
+                        </span>
+                    </a>
+                </ng-template>
+            </tui-search-results>
+        </ng-template>
+    </tui-textfield>
+    Alex Inkin
+    <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+</header>

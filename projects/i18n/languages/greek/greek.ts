@@ -5,6 +5,7 @@ import {TUI_GREEK_LANGUAGE_ADDON_EDITOR} from './addon-editor';
 import {TUI_GREEK_LANGUAGE_ADDON_TABLE} from './addon-table';
 import {TUI_GREEK_LANGUAGE_CORE} from './core';
 import {TUI_GREEK_LANGUAGE_KIT} from './kit';
+import {TUI_GREEK_LANGUAGE_LAYOUT} from './layout';
 
 export const TUI_GREEK_LANGUAGE: TuiLanguage = {
     name: 'greek',
@@ -13,4 +14,5 @@ export const TUI_GREEK_LANGUAGE: TuiLanguage = {
     ...TUI_GREEK_LANGUAGE_ADDON_TABLE,
     ...TUI_GREEK_LANGUAGE_ADDON_COMMERCE,
     ...TUI_GREEK_LANGUAGE_ADDON_EDITOR,
+    ...TUI_GREEK_LANGUAGE_LAYOUT,
 };

@@ -71,12 +71,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
-    private readonly el = tuiInjectElement();
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
-
-    @ContentChild(forwardRef(() => TuiTextfieldDirective))
-    protected readonly directive?: TuiTextfieldDirective<T>;
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
@@ -88,7 +84,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
     protected computedFiller = computed(() => {
-        const value = this.directive?.nativeValue() || '';
+        const value = this.directive?.value() || '';
         const filledValue = value + this.filler().slice(value.length);
 
         return filledValue.length > value.length ? filledValue : '';
@@ -98,11 +94,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         () =>
             this.focused() &&
             !!this.computedFiller() &&
-            (!!this.directive?.nativeValue() || !this.input?.nativeElement.placeholder),
+            (!!this.directive?.value() || !this.input?.nativeElement.placeholder),
     );
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
+
+    @ContentChild(forwardRef(() => TuiTextfieldDirective), {static: true})
+    public readonly directive?: TuiTextfieldDirective<T>;
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {
         read: ElementRef,
@@ -118,6 +117,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    public readonly el = tuiInjectElement();
 
     @Input('filler')
     public set fillerSetter(filler: string) {

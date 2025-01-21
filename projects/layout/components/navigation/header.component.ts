@@ -1,5 +1,11 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    signal,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
@@ -18,6 +24,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiBadgeOptionsProvider({size: 'm', appearance: 'primary'}),
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({appearance: 'dropdown-navigation'}),
+        tuiTextfieldOptionsProvider({size: signal('s')}),
     ],
     host: {
         tuiTheme: 'dark',

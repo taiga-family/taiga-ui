@@ -5,6 +5,7 @@ import {TUI_HEBREW_LANGUAGE_ADDON_EDITOR} from './addon-editor';
 import {TUI_HEBREW_LANGUAGE_ADDON_TABLE} from './addon-table';
 import {TUI_HEBREW_LANGUAGE_CORE} from './core';
 import {TUI_HEBREW_LANGUAGE_KIT} from './kit';
+import {TUI_HEBREW_LANGUAGE_LAYOUT} from './layout';
 
 export const TUI_HEBREW_LANGUAGE: TuiLanguage = {
     name: 'hebrew',
@@ -13,4 +14,5 @@ export const TUI_HEBREW_LANGUAGE: TuiLanguage = {
     ...TUI_HEBREW_LANGUAGE_ADDON_TABLE,
     ...TUI_HEBREW_LANGUAGE_ADDON_COMMERCE,
     ...TUI_HEBREW_LANGUAGE_ADDON_EDITOR,
+    ...TUI_HEBREW_LANGUAGE_LAYOUT,
 };

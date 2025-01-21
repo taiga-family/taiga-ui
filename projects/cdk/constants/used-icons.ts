@@ -44,9 +44,10 @@ export const TUI_USED_ICONS = [
     '@tui.chevron-right',
     '@tui.ellipsis',
     '@tui.chevron-left',
+    '@tui.clock',
+    '@tui.trash',
     '@tui.minus',
     '@tui.file',
-    '@tui.trash',
     '@tui.plus',
     '@tui.phone',
     '@tui.heart',
@@ -67,5 +68,4 @@ export const TUI_USED_ICONS = [
     '@tui.move-left',
     '@tui.move-up-left',
     '@tui.move-up',
-    '@tui.clock',
 ] as const;

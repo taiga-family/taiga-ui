@@ -43,6 +43,7 @@ export const DemoRoute = {
     Textfield: '/components/textfield',
     Navigation: '/components/navigation',
     Search: '/components/search',
+    InputSearch: '/components/input-search',
     Breadcrumbs: '/navigation/breadcrumbs',
     Button: '/components/button',
     ButtonClose: '/components/button-close',

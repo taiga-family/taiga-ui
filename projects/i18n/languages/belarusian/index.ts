@@ -5,3 +5,4 @@ export * from './belarusian';
 export * from './core';
 export * from './countries';
 export * from './kit';
+export * from './layout';

@@ -1,0 +1,45 @@
+<label
+    *ngIf="history.length"
+    class="t-sr-label"
+>
+    {{ i18n()?.history }}
+</label>
+<button
+    *ngFor="let item of history"
+    tuiCell="m"
+    type="button"
+    (click)="select(item)"
+    (keydown.backspace)="remove(item)"
+    (keydown.delete)="remove(item)"
+    (mousedown.prevent)="(0)"
+>
+    <tui-avatar [src]="options.history" />
+    <span tuiTitle>{{ item }}</span>
+    <button
+        appearance="icon"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        [iconStart]="options.remove"
+        (click.stop)="remove(item)"
+    >
+        🗑️
+    </button>
+</button>
+<label
+    *ngIf="popular.length"
+    class="t-sr-label"
+>
+    {{ i18n()?.popular }}
+</label>
+<button
+    *ngFor="let item of popular"
+    tuiCell="m"
+    type="button"
+    (click)="select(item)"
+    (mousedown.prevent)="(0)"
+>
+    <tui-avatar [src]="options.popular" />
+    <span tuiTitle>{{ item }}</span>
+</button>
