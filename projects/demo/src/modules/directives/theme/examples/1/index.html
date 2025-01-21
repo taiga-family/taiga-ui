@@ -3,7 +3,13 @@
     class="dark"
 >
     <p>
-        <tui-input [(ngModel)]="text">Text</tui-input>
+        <tui-textfield>
+            <label tuiLabel>Text</label>
+            <input
+                tuiTextfield
+                [(ngModel)]="text"
+            />
+        </tui-textfield>
     </p>
     <p>
         <input
@@ -13,14 +19,26 @@
         />
     </p>
     <p>
-        <tui-input-number [(ngModel)]="money">Sum</tui-input-number>
+        <tui-textfield>
+            <label tuiLabel>Sum</label>
+            <input
+                tuiInputNumber
+                [(ngModel)]="money"
+            />
+        </tui-textfield>
     </p>
     <div
         tuiTheme="light"
         class="light"
     >
         <p>
-            <tui-input [(ngModel)]="text">Text</tui-input>
+            <tui-textfield>
+                <label tuiLabel>Text</label>
+                <input
+                    tuiTextfield
+                    [(ngModel)]="text"
+                />
+            </tui-textfield>
         </p>
         <p>
             <input
@@ -30,7 +48,13 @@
             />
         </p>
         <p>
-            <tui-input-number [(ngModel)]="money">Sum</tui-input-number>
+            <tui-textfield>
+                <label tuiLabel>Sum</label>
+                <input
+                    tuiInputNumber
+                    [(ngModel)]="money"
+                />
+            </tui-textfield>
         </p>
     </div>
 </div>

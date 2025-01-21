@@ -2,12 +2,20 @@
     [formGroup]="form"
     (tuiValueChanges)="onChanges($event)"
 >
-    <tui-input formControlName="name">Value changes on blur</tui-input>
-    <tui-input-number
-        formControlName="age"
-        class="tui-space_top-4"
-        [step]="1"
-    >
-        Value changes on edit
-    </tui-input-number>
+    <tui-textfield>
+        <label tuiLabel>Value changes on blur</label>
+        <input
+            formControlName="name"
+            tuiTextfield
+        />
+    </tui-textfield>
+
+    <tui-textfield class="tui-space_top-4">
+        <label tuiLabel>Value changes on edit</label>
+        <input
+            formControlName="age"
+            tuiInputNumber
+            [step]="1"
+        />
+    </tui-textfield>
 </form>

@@ -1,20 +1,19 @@
 <div class="container">
-    <tui-input-number
-        tuiHintContent="The amount must be less than 1000 ₽"
-        tuiHintDirection="top"
-        tuiTextfieldPostfix="₽"
-        tuiTextfieldSize="l"
-        [formControl]="amountControl"
-        [tuiTextfieldCleaner]="true"
-        [tuiTextfieldLabelOutside]="true"
-    >
-        0 ... 999 ₽
+    <tui-textfield>
         <input
-            inputmode="numeric"
             maxlength="5"
-            tuiTextfieldLegacy
+            placeholder="0 ... 999 ₽"
+            postfix=" ₽"
+            tuiInputNumber
+            [formControl]="amountControl"
+            [min]="0"
         />
-    </tui-input-number>
+
+        <tui-icon
+            tuiHintDirection="top"
+            tuiTooltip="The amount must be less than 1000 ₽"
+        />
+    </tui-textfield>
 
     <button
         tuiButton
