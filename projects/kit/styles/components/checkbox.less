@@ -32,9 +32,12 @@
     flex-shrink: 0;
 
     &::before {
-        .fullsize();
+        .fullsize(absolute, inset);
 
         content: '';
+        inline-size: 1rem;
+        block-size: 1rem;
+        margin: auto;
         background: currentColor;
         mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center/100%;
         transform: scale(0);
@@ -65,5 +68,10 @@
     &[data-size='s'] {
         --t-size: 1rem;
         --t-radius: var(--tui-radius-xs);
+
+        &::before {
+            inline-size: 0.875rem;
+            block-size: 0.875rem;
+        }
     }
 }

@@ -20,8 +20,8 @@ export default class Example implements OnInit {
     protected readonly platforms: ReadonlyArray<'android' | 'ios' | 'web'> = [
         'web',
         'web',
-        'android',
         'ios',
+        'android',
     ];
 
     protected readonly invalidTrue = new FormControl(true, () => ({invalid: true}));

@@ -1,8 +1,8 @@
 input[tuiCheckbox] {
-    --t-size: 1.125rem;
+    --t-size: 1.375rem;
 
     color: var(--tui-text-primary-on-accent-2) !important;
-    border-radius: 0.125rem;
+    border-radius: 100%;
     outline: 0.125rem solid var(--tui-background-neutral-2);
     outline-offset: -0.125rem;
     transition: none;
@@ -30,7 +30,7 @@ input[tuiCheckbox] {
     }
 
     &::before {
-        mask-image: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M2.7 8.5L7 12.7L15.3 4.7" fill="none" stroke="black" stroke-width="2"/></svg>');
+        mask-image: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 13L1 8.19231L2.4 6.84615L6 10.3077L13.6 3L15 4.34615L6 13Z" fill="black"/></svg>');
         transition:
             clip-path var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
@@ -38,10 +38,15 @@ input[tuiCheckbox] {
     }
 
     &:indeterminate::before {
-        mask-image: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M3 9H15" fill="none" stroke="black" stroke-width="2"/></svg>');
+        mask-image: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="12" height="2" fill="black" /></svg>');
     }
 
     &:invalid {
         outline-color: var(--tui-status-negative-pale-hover);
+    }
+
+    &[data-size='s']::before {
+        inline-size: 1rem;
+        block-size: 1rem;
     }
 }
