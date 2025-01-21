@@ -5,20 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiArcChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [
-        AsyncPipe,
-        FormsModule,
-        TuiAmountPipe,
-        TuiArcChart,
-        TuiInputNumber,
-        TuiNumberFormat,
-        TuiTextfield,
-    ],
+    imports: [AsyncPipe, FormsModule, TuiAmountPipe, TuiArcChart, TuiInputNumberModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

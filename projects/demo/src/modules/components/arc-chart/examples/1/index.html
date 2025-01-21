@@ -1,12 +1,11 @@
-<tui-textfield class="index-controller">
-    <label tuiLabel>activeItemIndex</label>
-    <input
-        tuiInputNumber
-        [step]="1"
-        [tuiNumberFormat]="{precision: 0}"
-        [(ngModel)]="activeItemIndex"
-    />
-</tui-textfield>
+<tui-input-number
+    decimal="never"
+    class="index-controller"
+    [step]="1"
+    [(ngModel)]="activeItemIndex"
+>
+    activeItemIndex
+</tui-input-number>
 
 <div class="wrapper">
     <tui-arc-chart
