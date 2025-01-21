@@ -1,4 +1,4 @@
-import type {Provider, ProviderToken, Type} from '@angular/core';
+import {INJECTOR, type Provider, type ProviderToken, type Type} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
@@ -33,7 +33,7 @@ export abstract class TuiPopoverService<T, K = void> {
         component: Type<any>,
         protected readonly options: T = {} as T,
     ) {
-        this.component = new PolymorpheusComponent(component);
+        this.component = new PolymorpheusComponent(component, inject(INJECTOR));
         this.items$ = inject(items);
     }
 
