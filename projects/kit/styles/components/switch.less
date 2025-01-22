@@ -93,4 +93,9 @@
         outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
         outline-offset: var(--t-checked-icon, 20rem);
     }
+
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
+        color: #fff;
+    }
 }
