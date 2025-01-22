@@ -559,14 +559,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
-        from: [
-            {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
-            {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
-        ],
+        from: {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
         to: [
             {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
             {name: 'TuiScrollable', moduleSpecifier: '@taiga-ui/core'},
         ],
+    },
+    {
+        from: {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiScrollbar', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: [
