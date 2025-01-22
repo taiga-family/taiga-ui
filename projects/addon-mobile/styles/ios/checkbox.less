@@ -32,16 +32,21 @@ input[tuiRadio] {
     }
 
     &::before {
-        --t-icon: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 11.25L9.8 15.2L15.2 7" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        --t-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" preserveAspectRatio="xMidYMid meet" height="100%" width="100%"><path d="M12.3368 4.33683C12.7859 3.88772 13.5141 3.88772 13.9632 4.33683C14.4123 4.78593 14.4123 5.51407 13.9632 5.96317L6.96317 12.9632C6.51407 13.4123 5.78593 13.4123 5.33683 12.9632L2.33683 9.96317C1.88772 9.51407 1.88772 8.78593 2.33683 8.33683C2.78593 7.88772 3.51407 7.88772 3.96317 8.33683L6.15 10.5237L12.3368 4.33683Z" fill="black"/></svg>');
 
         display: none;
     }
 
     &:not([tuiRadio]):indeterminate::before {
-        --t-icon: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6 11H16" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round"/></svg>');
+        --t-icon: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="12" height="2.3" rx="1.15" fill="black" /></svg>');
     }
 
     &:invalid {
         outline-color: var(--tui-status-negative-pale-hover);
+    }
+
+    &[data-size='s']::before {
+        inline-size: 1rem;
+        block-size: 1rem;
     }
 }
