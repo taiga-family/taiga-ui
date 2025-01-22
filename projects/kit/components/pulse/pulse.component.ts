@@ -23,7 +23,7 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         '[@tuiFadeIn]': 'animation',
         '[@tuiScaleIn]': 'animation',
-        '[style.--t-animation-state]': "playing ? 'running' : 'paused'",
+        '[class._playing]': 'playing',
     },
 })
 export class TuiPulse extends TuiRectAccessor {
