@@ -14,9 +14,20 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 
 export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
-    size: TuiSizeXXL | TuiSizeXXS | 'body-l' | 'body-m';
+    size:
+        | TuiSizeXXL
+        | TuiSizeXXS
+        | 'body-l'
+        | 'body-m'
+        | 'body-xl'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6';
 }>({
-    size: 's',
+    size: 'h5',
 });
 
 @Component({
@@ -48,6 +59,19 @@ export class TuiHeader {
     protected readonly options = inject(TUI_HEADER_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 
+    // @deprecated: remove alpha sizes in 5.0
     @Input('tuiHeader')
-    public size: TuiSizeXXL | TuiSizeXXS | 'body-l' | 'body-m' = this.options.size;
+    public size:
+        | TuiSizeXXL
+        | TuiSizeXXS
+        | ''
+        | 'body-l'
+        | 'body-m'
+        | 'body-xl'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6' = this.options.size;
 }

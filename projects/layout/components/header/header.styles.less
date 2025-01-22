@@ -41,49 +41,56 @@
         text-transform: uppercase;
     }
 
-    &[data-size='xxl'] {
+    &[data-size='xxl'],
+    &[data-size='h1'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-1);
         }
     }
 
-    &[data-size='xl'] {
+    &[data-size='xl'],
+    &[data-size='h2'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-2);
         }
     }
 
-    &[data-size='l'] {
+    &[data-size='l'],
+    &[data-size='h3'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-3);
         }
     }
 
-    &[data-size='m'] {
+    &[data-size='m'],
+    &[data-size='h4'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-4);
         }
     }
 
-    &[data-size='s'] {
+    &[data-size='s'],
+    &[data-size='h5'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-5);
         }
     }
 
-    &[data-size='xs'] {
+    &[data-size='xs'],
+    &[data-size='h6'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-6);
         }
     }
 
-    &[data-size='xxs'] {
+    &[data-size='xxs'],
+    &[data-size='body-xl'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-xl);
@@ -115,9 +122,13 @@
         }
     }
 
+    // TODO: remove alpha sizes in 5.0
     &[data-size='xxl'],
     &[data-size='xl'],
-    &[data-size='l'] {
+    &[data-size='l'],
+    &[data-size='h1'],
+    &[data-size='h2'],
+    &[data-size='h3'] {
         [tuiSubtitle] {
             font: var(--tui-font-text-l);
         }
