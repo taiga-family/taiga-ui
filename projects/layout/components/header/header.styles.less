@@ -18,6 +18,10 @@
         align-items: center;
         gap: 0.75rem;
 
+        &:has([tuiLink]) {
+            align-items: baseline;
+        }
+
         &::before {
             /* stylelint-disable-next-line */
             content: '​';
@@ -80,13 +84,34 @@
     }
 
     &[data-size='xxs'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-text-xl);
+        }
+    }
+
+    &[data-size='body-l'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-text-l);
+        }
+    }
+
+    &[data-size='body-m'] {
         [tuiTitle] {
             gap: 0.125rem;
         }
 
         [tuiTitle],
         [tuiAccessories] {
-            font: var(--tui-font-text-xl);
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &[data-size='body-m'],
+    &[data-size='body-l'] {
+        [tuiSubtitle] {
+            font: var(--tui-font-text-s);
         }
     }
 
