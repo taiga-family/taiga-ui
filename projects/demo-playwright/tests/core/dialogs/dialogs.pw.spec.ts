@@ -10,6 +10,7 @@ test.describe('Dialogs', () => {
         {width: 1620, height: 1024},
     ].forEach(({width, height}) => {
         test(`Prompt - ${width}x${height}`, async ({page, browserName}) => {
+            // eslint-disable-next-line playwright/no-skipped-test
             test.skip(
                 browserName !== 'chromium',
                 // TODO: why does this test keep failing in safari
@@ -35,6 +36,7 @@ test.describe('Dialogs', () => {
                 await page.setViewportSize({width, height});
                 await tuiGoto(page, DemoRoute.Dialog);
 
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     // TODO: why does this test keep failing in safari
@@ -115,6 +117,7 @@ test.describe('Dialogs', () => {
 
             test.describe('Dialog with confirmation works', () => {
                 test.beforeEach(async ({page, browserName}) => {
+                    // eslint-disable-next-line playwright/no-skipped-test
                     test.skip(
                         browserName !== 'chromium',
                         // TODO: why does this test keep failing in safari

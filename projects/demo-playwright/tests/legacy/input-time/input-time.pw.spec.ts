@@ -77,6 +77,7 @@ test.describe('InputTime', () => {
                 browserName,
             }) => {
                 // TODO: why does this test keep failing in safari
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',
@@ -117,6 +118,7 @@ test.describe('InputTime', () => {
                     page,
                     browserName,
                 }) => {
+                    // eslint-disable-next-line playwright/no-skipped-test
                     test.skip(
                         browserName !== 'chromium',
                         // TODO: why does this test keep failing in safari

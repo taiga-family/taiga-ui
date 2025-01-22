@@ -4,6 +4,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Navigation', () => {
     test('Show settings in aside', async ({page, browserName}) => {
+        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(
             browserName !== 'chromium',
             // TODO: why does this test keep failing in safari
@@ -23,6 +24,7 @@ test.describe('Navigation', () => {
     });
 
     test('Show hint in aside', async ({page, browserName}) => {
+        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(
             browserName !== 'chromium',
             // TODO: why does this test keep failing in safari
@@ -41,6 +43,7 @@ test.describe('Navigation', () => {
     });
 
     test('A12y', async ({page, browserName}) => {
+        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(
             browserName !== 'chromium',
             // TODO: why does this test keep failing in safari
