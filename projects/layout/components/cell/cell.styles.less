@@ -82,8 +82,17 @@
     }
 
     &[data-size='s'] {
-        --t-height: calc(var(--tui-height-s) - 0.5rem);
-        --t-padding: 0.125rem 1rem;
+        --t-height: calc(var(--tui-height-s) - 0.125rem);
+        --t-padding: 0.1875rem 1rem;
+
+        &[data-height='spacious'] {
+            --t-padding: 0.4375rem 1rem;
+        }
+
+        &[data-height='compact'] {
+            --t-height: calc(var(--tui-height-s) - 0.25rem);
+            --t-padding: 0 1rem;
+        }
 
         [tuiTitle] {
             max-block-size: 100%;
@@ -115,6 +124,15 @@
         --t-height: calc(var(--tui-height-m) - 0.75rem);
         --t-padding: 0.375rem 1rem;
 
+        &[data-height='spacious'] {
+            --t-padding: 1rem;
+        }
+
+        &[data-height='compact'] {
+            --t-height: calc(var(--tui-height-m) - 0.5rem);
+            --t-padding: 0 1rem;
+        }
+
         [tuiTitle] {
             font: var(--tui-font-text-ui-s);
             gap: 0.125rem;
@@ -126,7 +144,7 @@
 
         & > *:not(:first-child),
         & > [tuiAccessories] > *:not(:first-child) {
-            margin-inline-start: 0.75rem;
+            margin-inline-start: 0.5rem;
         }
 
         & > tui-avatar,
@@ -143,6 +161,15 @@
         --t-height: calc(var(--tui-height-l) - 1rem);
         --t-padding: 0.5rem 1rem;
         --t-radius: var(--tui-radius-l);
+
+        &[data-height='spacious'] {
+            --t-padding: 1.25rem 1rem;
+        }
+
+        &[data-height='compact'] {
+            --t-height: calc(var(--tui-height-l) - 1rem);
+            --t-padding: 0 1rem;
+        }
 
         & > *:not(:first-child),
         & > [tuiAccessories] > *:not(:first-child) {
