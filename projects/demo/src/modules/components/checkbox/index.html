@@ -6,18 +6,18 @@
     <ng-template pageTab>
         <p>A checkbox component that is able to imitate native control on mobile platforms.</p>
 
+        <tui-notification class="tui-space_bottom-4">
+            Use
+            <code>--tui-background-accent-2</code>
+            CSS variable to customize color of native control emulation
+        </tui-notification>
+
         <tui-doc-example
             id="platforms"
             heading="Platforms"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample: 'html,ts'"
-        >
-            <tui-notification class="tui-space_bottom-4">
-                Use
-                <code>--tui-background-accent-2</code>
-                CSS variable to customize color of native control emulation
-            </tui-notification>
-        </tui-doc-example>
+        />
 
         <tui-doc-example
             id="decorative"

@@ -34,10 +34,11 @@
     }
 
     &::before {
-        .fullsize();
+        .fullsize(absolute, inset);
         .transition(transform);
 
         content: '';
+        margin: auto;
         border-radius: 100%;
         background: currentColor;
         transform: scale(0);
@@ -49,5 +50,10 @@
 
     &[data-size='s'] {
         --t-size: 1rem;
+    }
+
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'] {
+        color: #fff;
     }
 }
