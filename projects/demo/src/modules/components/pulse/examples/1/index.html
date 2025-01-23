@@ -2,7 +2,8 @@
     appearance="outline"
     tuiButton
     type="button"
+    (click)="playing = !playing"
 >
     Pulse
-    <tui-pulse />
+    <tui-pulse [playing]="playing" />
 </button>

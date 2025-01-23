@@ -13,6 +13,8 @@
 
     &::before,
     &::after {
+        .transition(box-shadow);
+
         content: '';
         position: absolute;
         inline-size: 0.5rem;
@@ -25,11 +27,15 @@
     &::before {
         opacity: 1;
         transform: scale(0);
-        animation: tuiPulse 1s 1s ease-in-out infinite;
-        animation-play-state: var(--t-animation-state);
     }
 
-    &::after {
-        box-shadow: 0 0 0.5rem;
+    &._playing {
+        &::before {
+            animation: tuiPulse 1s 1s ease-in-out infinite;
+        }
+
+        &::after {
+            box-shadow: 0 0 0.5rem;
+        }
     }
 }

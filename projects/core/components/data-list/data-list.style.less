@@ -126,12 +126,14 @@ tui-opt-group {
     position: relative;
     display: flex;
     font: var(--tui-font-text-xs);
-    color: var(--tui-text-secondary);
+    font-weight: bold;
+    color: var(--tui-text-primary);
     flex-direction: column;
     line-height: 1rem;
 
     tui-data-list[data-size='l'] & {
         font: var(--tui-font-text-s);
+        font-weight: bold;
         line-height: 1.25rem;
 
         &::before {

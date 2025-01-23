@@ -11,4 +11,6 @@ import {TuiPulse} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected playing = true;
+}
