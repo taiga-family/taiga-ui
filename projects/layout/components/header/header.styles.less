@@ -34,6 +34,10 @@
         color: var(--tui-text-secondary);
     }
 
+    [tuiLink] {
+        font: var(--tui-font-text-m);
+    }
+
     [tuiCaption] {
         font: var(--tui-font-text-s);
         color: var(--tui-text-secondary);
@@ -117,19 +121,21 @@
 
     &[data-size='body-m'],
     &[data-size='body-l'] {
-        [tuiSubtitle] {
+        [tuiSubtitle],
+        [tuiLink] {
             font: var(--tui-font-text-s);
         }
     }
 
-    // TODO: remove alpha sizes in 5.0
+    // @deprecated: remove alpha sizes in 5.0
     &[data-size='xxl'],
     &[data-size='xl'],
     &[data-size='l'],
     &[data-size='h1'],
     &[data-size='h2'],
     &[data-size='h3'] {
-        [tuiSubtitle] {
+        [tuiSubtitle],
+        [tuiLink] {
             font: var(--tui-font-text-l);
         }
     }

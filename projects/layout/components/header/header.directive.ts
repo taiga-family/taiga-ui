@@ -59,7 +59,6 @@ export class TuiHeader {
     protected readonly options = inject(TUI_HEADER_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 
-    // @deprecated: remove alpha sizes in 5.0
     @Input('tuiHeader')
     public size:
         | TuiSizeXXL
