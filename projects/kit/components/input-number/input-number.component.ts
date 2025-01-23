@@ -6,6 +6,7 @@ import {
     effect,
     inject,
     Input,
+    Renderer2,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -52,7 +53,6 @@ const DEFAULT_MAX_LENGTH = 18;
     ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
-        '[value]': 'textfieldValue()',
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]': 'maxLength()',
@@ -65,6 +65,8 @@ const DEFAULT_MAX_LENGTH = 18;
     },
 })
 export class TuiInputNumber extends TuiControl<number | null> {
+    private readonly el = tuiInjectElement<HTMLInputElement>();
+    private readonly render = inject(Renderer2);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
@@ -84,6 +86,8 @@ export class TuiInputNumber extends TuiControl<number | null> {
     });
 
     protected readonly onChangeEffect = effect(() => {
+        // Host binding `host: {'[value]': 'textfieldValue()'}` has change detection problem with empty string
+        this.render.setProperty(this.el, 'value', this.textfieldValue());
         const value = maskitoParseNumber(
             this.textfieldValue(),
             this.numberFormat().decimalSeparator,
