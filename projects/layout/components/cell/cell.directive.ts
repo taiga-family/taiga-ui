@@ -47,5 +47,5 @@ export class TuiCell {
     public size: TuiCellOptions['size'] | '' = this.options.size;
 
     @Input('tuiCellHeight')
-    public height: TuiCellOptions['height'] | '' = this.options.height;
+    public height: TuiCellOptions['height'] = this.options.height;
 }
