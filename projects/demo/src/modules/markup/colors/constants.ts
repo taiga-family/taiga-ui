@@ -13,6 +13,7 @@ export const BACKGROUNDS = [
     '--tui-background-accent-2',
     '--tui-background-accent-2-hover',
     '--tui-background-accent-2-pressed',
+    // TODO not used, consider removing in v5
     '--tui-background-accent-opposite',
     '--tui-background-accent-opposite-hover',
     '--tui-background-accent-opposite-pressed',

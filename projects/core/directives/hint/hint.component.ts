@@ -53,7 +53,7 @@ export const TUI_HINT_PROVIDERS = [
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
         '[attr.data-appearance]': 'appearance',
-        '[attr.tuiTheme]': 'appearance',
+        '[attr.tuiTheme]': 'appearance === "dark" ? "light" : null',
         '(document:click)': 'onClick($event.target)',
     },
 })
