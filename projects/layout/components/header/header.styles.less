@@ -18,6 +18,10 @@
         align-items: center;
         gap: 0.75rem;
 
+        &:has([tuiLink]) {
+            align-items: baseline;
+        }
+
         &::before {
             /* stylelint-disable-next-line */
             content: '​';
@@ -30,6 +34,10 @@
         color: var(--tui-text-secondary);
     }
 
+    [tuiLink] {
+        font: var(--tui-font-text-m);
+    }
+
     [tuiCaption] {
         font: var(--tui-font-text-s);
         color: var(--tui-text-secondary);
@@ -37,63 +45,97 @@
         text-transform: uppercase;
     }
 
-    &[data-size='xxl'] {
+    &[data-size='xxl'],
+    &[data-size='h1'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-1);
         }
     }
 
-    &[data-size='xl'] {
+    &[data-size='xl'],
+    &[data-size='h2'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-2);
         }
     }
 
-    &[data-size='l'] {
+    &[data-size='l'],
+    &[data-size='h3'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-3);
         }
     }
 
-    &[data-size='m'] {
+    &[data-size='m'],
+    &[data-size='h4'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-4);
         }
     }
 
-    &[data-size='s'] {
+    &[data-size='s'],
+    &[data-size='h5'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-5);
         }
     }
 
-    &[data-size='xs'] {
+    &[data-size='xs'],
+    &[data-size='h6'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-6);
         }
     }
 
-    &[data-size='xxs'] {
-        [tuiTitle] {
-            gap: 0.125rem;
-        }
-
+    &[data-size='xxs'],
+    &[data-size='body-xl'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-xl);
         }
     }
 
+    &[data-size='body-l'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-text-l);
+        }
+    }
+
+    &[data-size='body-m'] {
+        [tuiTitle] {
+            gap: 0.125rem;
+        }
+
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &[data-size='body-m'],
+    &[data-size='body-l'] {
+        [tuiSubtitle],
+        [tuiLink] {
+            font: var(--tui-font-text-s);
+        }
+    }
+
+    // @deprecated: remove alpha sizes in 5.0
     &[data-size='xxl'],
     &[data-size='xl'],
-    &[data-size='l'] {
-        [tuiSubtitle] {
+    &[data-size='l'],
+    &[data-size='h1'],
+    &[data-size='h2'],
+    &[data-size='h3'] {
+        [tuiSubtitle],
+        [tuiLink] {
             font: var(--tui-font-text-l);
         }
     }

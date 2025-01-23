@@ -1,13 +1,17 @@
 [tuiHeader] {
     &[data-size='xxl'],
     &[data-size='xl'],
-    &[data-size='l'] {
+    &[data-size='l'],
+    &[data-size='h1'],
+    &[data-size='h2'],
+    &[data-size='h3'] {
         [tuiTitle] {
             gap: 1rem;
         }
     }
 
-    &[data-size='m'] {
+    &[data-size='m'],
+    &[data-size='h4'] {
         [tuiTitle] {
             gap: 0.5rem;
         }
@@ -17,7 +21,10 @@
         gap: 1rem;
     }
 
-    &[data-size='xxs'] {
+    &[data-size='xxs'],
+    &[data-size='h6'],
+    &[data-size='body-l'],
+    &[data-size='body-m'] {
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-heading-6);

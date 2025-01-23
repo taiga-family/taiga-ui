@@ -13,8 +13,21 @@ import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 
-export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions({
-    size: 's' as TuiSizeXXL | TuiSizeXXS,
+export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
+    size:
+        | TuiSizeXXL
+        | TuiSizeXXS
+        | 'body-l'
+        | 'body-m'
+        | 'body-xl'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6';
+}>({
+    size: 'h5',
 });
 
 @Component({
@@ -47,5 +60,17 @@ export class TuiHeader {
     protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 
     @Input('tuiHeader')
-    public size: TuiSizeXXL | TuiSizeXXS | '' = '';
+    public size:
+        | TuiSizeXXL
+        | TuiSizeXXS
+        | ''
+        | 'body-l'
+        | 'body-m'
+        | 'body-xl'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6' = this.options.size;
 }
