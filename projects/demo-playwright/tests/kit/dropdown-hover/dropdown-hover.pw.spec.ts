@@ -7,11 +7,7 @@ import {
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
-import {
-    TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-    TUI_PLAYWRIGHT_MOBILE_VIEWPORT_HEIGHT,
-    TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
-} from '../../../playwright.options';
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 const {describe, beforeEach} = test;
 
@@ -25,14 +21,7 @@ test.describe('DropdownHover', () => {
             let example!: Locator;
             let mobileCalendar: TuiMobileDropdownPO;
 
-            test.use({
-                viewport: {
-                    width: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
-                    height: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_HEIGHT,
-                },
-                userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-                isMobile: true,
-            });
+            test.use(TUI_PLAYWRIGHT_MOBILE);
 
             beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#dropdown-mobile');

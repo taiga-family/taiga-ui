@@ -26,9 +26,13 @@ tui-data-list {
 
         & > .t-empty,
         [tuiOption] {
+            --t-option-padding-inline: 0.5rem;
+
             font: var(--tui-font-text-s);
             min-block-size: 2rem;
-            padding: 0.3125rem 0.5rem;
+            // TODO: use padding-block after Safari 14+
+            padding-top: 0.3125rem;
+            padding-bottom: 0.3125rem;
 
             &::before {
                 font-size: 1rem;
@@ -38,9 +42,13 @@ tui-data-list {
 
     &[data-size='m'] > .t-empty,
     &[data-size='m'] [tuiOption] {
+        --t-option-padding-inline: 0.5rem;
+
         font: var(--tui-font-text-s);
         min-block-size: 2.5rem;
-        padding: 0.375rem 0.5rem;
+        // TODO: use padding-block after Safari 14+
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
     }
 
     &[data-size='l'] {
@@ -49,9 +57,13 @@ tui-data-list {
 
         & > .t-empty,
         [tuiOption] {
+            --t-option-padding-inline: 0.625rem;
+
             font: var(--tui-font-text-m);
             min-block-size: 2.75rem;
-            padding: 0.375rem 0.625rem;
+            // TODO: use padding-block after Safari 14+
+            padding-top: 0.375rem;
+            padding-bottom: 0.375rem;
         }
     }
 
@@ -100,6 +112,13 @@ tui-data-list {
             border-left: 0.5rem solid;
             border-right: 0.5rem solid;
         }
+    }
+
+    & > .t-empty,
+    [tuiOption] {
+        // TODO: use padding-inline after Safari 14+
+        padding-left: var(--t-option-padding-inline);
+        padding-right: var(--t-option-padding-inline);
     }
 }
 

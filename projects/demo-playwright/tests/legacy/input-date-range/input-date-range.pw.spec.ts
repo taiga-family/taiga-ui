@@ -2,11 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
-import {
-    TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-    TUI_PLAYWRIGHT_MOBILE_VIEWPORT_HEIGHT,
-    TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
-} from '../../../playwright.options';
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 import {
     CHAR_NO_BREAK_SPACE,
     TuiCalendarPO,
@@ -235,13 +231,7 @@ test.describe('InputDateRange', () => {
         });
 
         test.describe('Mobile emulation', () => {
-            test.use({
-                viewport: {
-                    width: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
-                    height: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_HEIGHT,
-                },
-                userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
-            });
+            test.use(TUI_PLAYWRIGHT_MOBILE);
 
             let mobileCalendar!: TuiMobileCalendarPO;
 
