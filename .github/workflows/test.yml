@@ -19,7 +19,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.108.0
       - uses: taiga-family/ci/actions/setup/node@v1.108.0
       - run: npm test
-      - uses: codecov/codecov-action@v5.2.0
+      - uses: codecov/codecov-action@v5.3.0
         if: ${{ matrix.os == 'ubuntu-latest' }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
