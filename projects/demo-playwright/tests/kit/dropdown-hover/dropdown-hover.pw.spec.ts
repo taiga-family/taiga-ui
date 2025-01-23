@@ -44,6 +44,7 @@ test.describe('DropdownHover', () => {
 
             test('Closes dropdown on click on overlay', async ({page, browserName}) => {
                 // TODO: why does this test keep failing in safari
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',
@@ -63,6 +64,7 @@ test.describe('DropdownHover', () => {
                 browserName,
             }) => {
                 // TODO: why does this test keep failing in safari
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',

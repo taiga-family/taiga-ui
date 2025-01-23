@@ -24,6 +24,7 @@ describe('Tabs', () => {
 
             test('no extra margin after the last tab', async ({page, browserName}) => {
                 // TODO: why does this test keep failing in safari
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',
@@ -70,6 +71,7 @@ describe('Tabs', () => {
                 page,
                 browserName,
             }) => {
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     // TODO: bug https://github.com/taiga-family/taiga-ui/issues/9836

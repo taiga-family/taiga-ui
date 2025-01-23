@@ -92,6 +92,7 @@ test.describe('Slider', () => {
 
             test.beforeEach(async ({page, browserName}) => {
                 // TODO: why does this test keep failing in safari
+                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',

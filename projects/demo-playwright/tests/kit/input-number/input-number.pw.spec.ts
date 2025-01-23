@@ -320,6 +320,7 @@ describe('InputNumber', () => {
 
                     await expect(inputNumber.stepUp).toBeDisabled();
 
+                    // eslint-disable-next-line playwright/no-force-option
                     await inputNumber.stepUp.click({force: true});
                     await inputNumber.stepUp.press('ArrowUp');
 
@@ -332,6 +333,7 @@ describe('InputNumber', () => {
                 test('Minimum limit cannot be violated via steps', async () => {
                     await expect(inputNumber.stepDown).toBeDisabled();
 
+                    // eslint-disable-next-line playwright/no-force-option
                     await inputNumber.stepDown.click({force: true});
                     await inputNumber.textfield.press('ArrowDown');
 
@@ -502,6 +504,7 @@ describe('InputNumber', () => {
                         browserName,
                     }) => {
                         // TODO
+                        // eslint-disable-next-line playwright/no-skipped-test
                         test.skip(
                             browserName !== 'chromium',
                             'Investigate why it fails in Safari',
