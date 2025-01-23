@@ -35,7 +35,7 @@ class TuiCellStyles {}
     host: {
         tuiCell: '',
         '[attr.data-size]': 'size || options.size',
-        '[attr.data-height]': 'height || options.height',
+        '[attr.data-height]': 'height',
     },
 })
 export class TuiCell {
