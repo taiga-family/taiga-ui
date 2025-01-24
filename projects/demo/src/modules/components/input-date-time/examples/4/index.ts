@@ -8,7 +8,7 @@ import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
 @Injectable()
 class ExampleDateTimeTransformer extends TuiValueTransformer<
-    [TuiDay | null, TuiTime | null] | null,
+    [TuiDay, TuiTime | null] | null,
     string
 > {
     private readonly separator = ', ';
