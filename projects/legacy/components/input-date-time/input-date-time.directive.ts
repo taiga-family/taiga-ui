@@ -15,7 +15,7 @@ export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInput
         return this.host.computedValue;
     }
 
-    public get rawValue(): [TuiDay, TuiTime | null] | null {
+    public get rawValue(): [TuiDay | null, TuiTime | null] | null {
         return this.host.value ?? null;
     }
 
@@ -23,7 +23,7 @@ export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInput
         this.host.onValueChange(value);
     }
 
-    public writeValue(value: [TuiDay, TuiTime | null] | null): void {
+    public writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         this.host.writeValue(value);
     }
 

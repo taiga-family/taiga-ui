@@ -70,7 +70,7 @@ const DATE_TIME_SEPARATOR = ', ';
     },
 })
 export class TuiInputDateTimeComponent
-    extends AbstractTuiControl<[TuiDay, TuiTime | null] | null>
+    extends AbstractTuiControl<[TuiDay | null, TuiTime | null] | null>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -86,7 +86,7 @@ export class TuiInputDateTimeComponent
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer: TuiValueTransformer<
-        [TuiDay, TuiTime | null] | null
+        [TuiDay | null, TuiTime | null]
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly type!: TuiContext<TuiActiveZone>;
@@ -117,10 +117,10 @@ export class TuiInputDateTimeComponent
         });
 
     @Input()
-    public min: TuiDay | [TuiDay, TuiTime | null] | null = this.options.min;
+    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
 
     @Input()
-    public max: TuiDay | [TuiDay, TuiTime | null] | null = this.options.max;
+    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
@@ -164,8 +164,12 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
-        super.writeValue(value);
+    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+        if (value?.[0]) {
+            super.writeValue(value);
+        } else {
+            super.writeValue(null);
+        }
 
         this.nativeValue.set(
             this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
@@ -324,13 +328,13 @@ export class TuiInputDateTimeComponent
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 
-    protected getFallbackValue(): [TuiDay, TuiTime | null] | null {
+    protected getFallbackValue(): null {
         return null;
     }
 
     protected override valueIdenticalComparator(
-        oldValue: [TuiDay, TuiTime | null] | null,
-        newValue: [TuiDay, TuiTime | null] | null,
+        oldValue: [TuiDay | null, TuiTime | null] | null,
+        newValue: [TuiDay | null, TuiTime | null] | null,
     ): boolean {
         return (
             tuiNullableSame(
@@ -432,7 +436,7 @@ export class TuiInputDateTimeComponent
     }
 
     private toTuiDay(
-        value: TuiDay | [TuiDay, TuiTime | null] | null,
+        value: TuiDay | [TuiDay | null, TuiTime | null] | null,
         fallback: TuiDay,
     ): TuiDay | [TuiDay, TuiTime] {
         if (!value) {
