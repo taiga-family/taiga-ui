@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiLabel, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -18,6 +18,7 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiCardLarge,
         TuiCell,
         TuiDataListWrapper,
+        TuiLabel,
         TuiNotification,
         TuiSelectModule,
         TuiTextfieldControllerModule,

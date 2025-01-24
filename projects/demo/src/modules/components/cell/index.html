@@ -13,5 +13,59 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div
+                [tuiCell]="size"
+                [tuiCellHeight]="height"
+            >
+                <tui-avatar
+                    *ngIf="height !== 'compact'"
+                    appearance="primary"
+                    src="@tui.star"
+                />
+                <div tuiTitle>
+                    Title
+                    <div
+                        *ngIf="height !== 'compact'"
+                        tuiSubtitle
+                    >
+                        Description
+                    </div>
+                </div>
+                <div tuiTitle>
+                    Secondary title
+                    <div
+                        *ngIf="height !== 'compact'"
+                        tuiSubtitle
+                    >
+                        Another description
+                    </div>
+                </div>
+            </div>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="[tuiCell]"
+                tuiDocAPIItem
+                type="'l' | 'm' | 's'"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Layout size
+            </tr>
+            <tr
+                name="[tuiCellHeight]"
+                tuiDocAPIItem
+                type="'normal' | 'compact' | 'spacious'"
+                [items]="heights"
+                [(value)]="height"
+            >
+                Height mode
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>
