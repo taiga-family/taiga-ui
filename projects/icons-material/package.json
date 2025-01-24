@@ -12,6 +12,6 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "devDependencies": {
-        "@material-design-icons/svg": "0.14.13"
+        "@material-design-icons/svg": "0.14.14"
     }
 }
