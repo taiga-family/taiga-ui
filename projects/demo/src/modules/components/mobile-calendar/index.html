@@ -123,14 +123,6 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="single"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="single"
-            >
-                Single date or a range
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="multi"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="multi"
@@ -152,6 +144,21 @@
                 documentationPropertyType="TuiDayRange | TuiDay"
             >
                 "Confirm" button clicked
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="single"
+                documentationPropertyType="boolean"
+                [documentationPropertyDeprecated]="true"
+                [(documentationPropertyValue)]="single"
+            >
+                Single date or a range
+
+                <p>
+                    Use
+                    <code>tuiCalendarSheetOptionsProvider(&#123;rangeMode: boolean"&#125;)</code>
+                    instead
+                </p>
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

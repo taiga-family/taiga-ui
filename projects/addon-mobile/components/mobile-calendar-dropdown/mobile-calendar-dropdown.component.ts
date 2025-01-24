@@ -66,7 +66,8 @@ export class TuiMobileCalendarDropdown {
     protected readonly range = this.is('tui-input-date-range');
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly single =
-        this.data.single || this.is('tui-input-date:not([multiple])');
+        this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
+        this.is('tui-input-date:not([multiple])');
 
     constructor() {
         this.keyboard.hide();

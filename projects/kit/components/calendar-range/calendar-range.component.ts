@@ -10,10 +10,11 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
+import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiDay,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
@@ -22,7 +23,10 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {
+    TuiCalendar,
+    tuiCalendarSheetOptionsProvider,
+} from '@taiga-ui/core/components/calendar';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -40,6 +44,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiCalendarSheetOptionsProvider({rangeMode: true})],
     host: {
         '(document:keydown.capture)': 'onEsc($event)',
     },
@@ -50,7 +55,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
      */
     private selectedPeriod: TuiDayRangePeriod | null = null;
 
-    protected previousValue: TuiDayRange | null = null;
+    protected value: TuiDay | TuiDayRange | null = null;
+    protected previousValue: TuiDay | TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
     protected month: TuiMonth = TuiMonth.currentLocal();
 
@@ -80,9 +86,6 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     public maxLength: TuiDayLike | null = null;
 
     @Input()
-    public value: TuiDayRange | null = null;
-
-    @Input()
     public item: TuiDayRangePeriod | null = null;
 
     @Output()
@@ -98,6 +101,11 @@ export class TuiCalendarRange implements OnInit, OnChanges {
                 this.value = value;
                 this.initDefaultViewedMonth();
             });
+    }
+
+    @Input('value')
+    public set valueSetter(value: TuiDayRange | null) {
+        this.value = value;
     }
 
     @Input()
@@ -144,7 +152,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     }
 
     protected onEsc(event: KeyboardEvent): void {
-        if (event.key !== 'Escape' || !this.value?.isSingleDay) {
+        if (event.key !== 'Escape' || !(this.value instanceof TuiDay)) {
             return;
         }
 
@@ -212,14 +220,14 @@ export class TuiCalendarRange implements OnInit, OnChanges {
         this.previousValue = this.value;
         this.selectedActivePeriod = null;
 
-        if (!this.value?.isSingleDay) {
-            this.value = new TuiDayRange(day, day);
-            this.itemChange.emit(this.findItemByDayRange(this.value));
-        } else {
-            const sortedDayRange = TuiDayRange.sort(this.value.from, day);
+        if (this.value instanceof TuiDay) {
+            const range = TuiDayRange.sort(this.value, day);
 
-            this.updateValue(sortedDayRange);
-            this.itemChange.emit(this.findItemByDayRange(sortedDayRange));
+            this.value = range;
+            this.updateValue(range);
+            this.itemChange.emit(this.findItemByDayRange(range));
+        } else {
+            this.value = day;
         }
     }
 
@@ -234,7 +242,9 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             this.selectedActivePeriod ??
             (this.items.find((item) =>
                 tuiNullableSame<TuiDayRange>(
-                    this.value,
+                    this.value instanceof TuiDay
+                        ? new TuiDayRange(this.value, this.value)
+                        : this.value,
                     item.range,
                     (a, b) =>
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
@@ -248,14 +258,16 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     @tuiPure
     private calculateDisabledItemHandler(
         disabledItemHandler: TuiBooleanHandler<TuiDay>,
-        value: TuiDayRange | null,
+        value: TuiDay | TuiDayRange | null,
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
         return calculateDisabledItemHandler(disabledItemHandler, value, minLength);
     }
 
     private initDefaultViewedMonth(): void {
-        if (this.value) {
+        if (this.value instanceof TuiDay) {
+            this.month = this.value;
+        } else if (this.value) {
             this.month = this.items.length ? this.value.to : this.value.from;
         } else if (this.max && this.month.monthSameOrAfter(this.max)) {
             this.month = this.items.length ? this.max : this.max.append({month: -1});

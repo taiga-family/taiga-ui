@@ -9,12 +9,17 @@ export class TuiCalendarPO {
 
     constructor(private readonly host: Locator) {}
 
-    public async getCalendarSheets(): Promise<TuiCalendarSheetPO[]> {
+    public async getCalendarSheets(): Promise<
+        [TuiCalendarSheetPO, ...TuiCalendarSheetPO[]]
+    > {
         const locators = await this.host
             .page()
             .locator('tui-calendar-sheet, tui-mobile-calendar-sheet')
             .all();
 
-        return locators.map((x) => new TuiCalendarSheetPO(x));
+        return locators.map((x) => new TuiCalendarSheetPO(x)) as [
+            TuiCalendarSheetPO,
+            ...TuiCalendarSheetPO[],
+        ];
     }
 }

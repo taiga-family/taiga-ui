@@ -37,6 +37,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_CALENDAR_SHEET_OPTIONS} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
 import {TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes/order-week-days';
@@ -153,8 +154,15 @@ export class TuiMobileCalendar implements AfterViewInit {
             ),
     );
 
+    /**
+     * @deprecated use static DI options instead
+     * ```
+     * tuiCalendarSheetOptionsProvider({rangeMode: boolean})
+     * ```
+     * TODO(v5): delete it
+     */
     @Input()
-    public single = true;
+    public single = !inject(TUI_CALENDAR_SHEET_OPTIONS).rangeMode;
 
     @Input()
     public multi = false;
@@ -180,7 +188,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly valueChange = this.value$.pipe(
         skip(1),
         distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
-        takeUntilDestroyed(),
+        map((x) => (!this.single && x instanceof TuiDay ? new TuiDayRange(x, x) : x)),
     );
 
     constructor() {
@@ -245,10 +253,8 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = tuiToggleDay(this.value, day);
         } else if (this.value instanceof TuiDay) {
             this.value = TuiDayRange.sort(this.value, day);
-        } else if (this.value instanceof TuiDayRange && !this.value.isSingleDay) {
-            this.value = day;
         } else if (this.value instanceof TuiDayRange) {
-            this.value = TuiDayRange.sort(this.value.from, day);
+            this.value = day;
         } else if (!this.value) {
             this.value = day;
         }

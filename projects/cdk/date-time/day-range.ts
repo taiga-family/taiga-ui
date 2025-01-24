@@ -102,4 +102,19 @@ export class TuiDayRange extends TuiMonthRange {
     ): string {
         return this.getFormattedDayRange(dateFormat, dateSeparator);
     }
+
+    public toArray(): readonly TuiDay[] {
+        const {from, to} = this;
+        const arr = [];
+
+        for (
+            const day = from.toUtcNativeDate();
+            day <= to.toUtcNativeDate();
+            day.setDate(day.getDate() + 1)
+        ) {
+            arr.push(TuiDay.fromLocalNativeDate(day));
+        }
+
+        return arr;
+    }
 }
