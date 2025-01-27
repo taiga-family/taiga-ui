@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.22.0](https://github.com/taiga-family/taiga-ui/compare/v4.21.0...v4.22.0) (2025-01-27)
+
+### 🚀 Features
+
+- **addon-mobile:** new android/ios icon behaviour for checkbox
+  ([#10204](https://github.com/taiga-family/taiga-ui/issues/10204))
+  ([10c4174](https://github.com/taiga-family/taiga-ui/commit/10c4174f1958ec8139b9c3d7ee9682523d0ee90d))
+- **core:** `DataList` update labels design according to specs
+  ([#10205](https://github.com/taiga-family/taiga-ui/issues/10205))
+  ([b2081d7](https://github.com/taiga-family/taiga-ui/commit/b2081d72cccb3d0568771b0b9bd710c299f8a5bf))
+- **demo:** `Button` add example with two labels ([#10242](https://github.com/taiga-family/taiga-ui/issues/10242))
+  ([5f24171](https://github.com/taiga-family/taiga-ui/commit/5f241713f5f694234659c97d4f813351d96d03e7))
+- **layout:** `Header` add body-l and body-m sizes ([#10212](https://github.com/taiga-family/taiga-ui/issues/10212))
+  ([fa92c17](https://github.com/taiga-family/taiga-ui/commit/fa92c17257995a6a024812ecd0774e656ed21c13))
+- **layout:** `InputSearch` add new component ([#10197](https://github.com/taiga-family/taiga-ui/issues/10197))
+  ([e810a15](https://github.com/taiga-family/taiga-ui/commit/e810a15cc5db431e21de4f3dac9fadbd61d2ad12))
+- **layout:** add new height modes on `tuiCell` ([#10209](https://github.com/taiga-family/taiga-ui/issues/10209))
+  ([e8e1986](https://github.com/taiga-family/taiga-ui/commit/e8e198642375b1be50cd37146f5de789cc35f7b1))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `DataList` inside `DropdownMobile` should not have built-in horizontal indent
+  ([#10213](https://github.com/taiga-family/taiga-ui/issues/10213))
+  ([fe5d3f5](https://github.com/taiga-family/taiga-ui/commit/fe5d3f59ae6f6b6a7e8d3045368937fedbe3d8da))
+- **addon-mobile:** background blackout do not disappear on mobile after longtap event
+  ([#10244](https://github.com/taiga-family/taiga-ui/issues/10244))
+  ([bbff629](https://github.com/taiga-family/taiga-ui/commit/bbff629f4355259282571c4aa1dd632fcebe3f40))
+- **core:** `Hint` fix dark mode colors ([#10225](https://github.com/taiga-family/taiga-ui/issues/10225))
+  ([64c269f](https://github.com/taiga-family/taiga-ui/commit/64c269f7d08eaaac80b48f6f79d4e305f6d3ae6b))
+- **experimental:** increase css-specificity for select's styles inside `TuiInputPhoneInternational`
+  ([#10223](https://github.com/taiga-family/taiga-ui/issues/10223))
+  ([c61bf00](https://github.com/taiga-family/taiga-ui/commit/c61bf0031d055ff0314fe1b4e929ebaa89c886f0))
+- inputs with `extends TuiControl` has CD problems for `writeValue` of empty value
+  ([#10220](https://github.com/taiga-family/taiga-ui/issues/10220))
+  ([647dcaa](https://github.com/taiga-family/taiga-ui/commit/647dcaade43175382097ea51166e352ca72594ce))
+- **kit:** `CalendarRange` should not require extra click to start new range after same day range
+  ([#9847](https://github.com/taiga-family/taiga-ui/issues/9847))
+  ([2643187](https://github.com/taiga-family/taiga-ui/commit/2643187007f9c849b4b03c12cb3a9dfc0aad20ab))
+- **kit:** debounce `overflownChange` event ([#10188](https://github.com/taiga-family/taiga-ui/issues/10188))
+  ([07e335a](https://github.com/taiga-family/taiga-ui/commit/07e335ad1cde0340333c7fe2cc53893a52d0a7b8))
+- **kit:** increase css-specificity for step button's styles inside `TuiInputNumber`
+  ([#10237](https://github.com/taiga-family/taiga-ui/issues/10237))
+  ([a516aca](https://github.com/taiga-family/taiga-ui/commit/a516aca477960be83c33af90a495ea43241cc1fa))
+- **legacy:** fixed color picker pointer ([#10201](https://github.com/taiga-family/taiga-ui/issues/10201))
+  ([30b57fe](https://github.com/taiga-family/taiga-ui/commit/30b57fedd3e7a49b9f4911e8bf0d11bbd3375414))
+
 ## [4.21.0](https://github.com/taiga-family/taiga-ui/compare/v4.20.0...v4.21.0) (2025-01-20)
 
 ### 🚀 Features
