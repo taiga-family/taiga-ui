@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6934],{14888:(e,s,a)=>{a.r(s),a.d(s,{TUI_KOREAN_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"표시 또는 숨기기",paginationTexts:{pages:"페이지",linesPerPage:"페이지당 줄 수",of:"~의"}}}}]);

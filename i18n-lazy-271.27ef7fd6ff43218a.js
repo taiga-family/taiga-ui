@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6875],{76229:(e,i,p)=>{p.r(i),p.d(i,{TUI_LITHUANIAN_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"Rodyti/Slėpti",paginationTexts:{pages:"Puslapiai",linesPerPage:"Eilučių per puslapį",of:"iš"}}}}]);

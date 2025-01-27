@@ -133,6 +133,9 @@
     <loc>https://taiga-ui.dev/components/search/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-search/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/navigation/breadcrumbs/</loc>
   </url>
   <url>
@@ -812,6 +815,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/search/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-search/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-search/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/navigation/breadcrumbs/API/</loc>

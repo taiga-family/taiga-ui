@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83324],{14425:(e,a,r)=>{r.r(a),r.d(a,{TUI_SPANISH_LANGUAGE_ADDON_COMMERCE:()=>c});const c={cardNumber:["Número","Número de la tarjeta"],cardExpiry:["Expira","Fecha de expiración"]}}}]);
