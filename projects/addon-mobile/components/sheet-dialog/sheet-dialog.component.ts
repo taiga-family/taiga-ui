@@ -88,7 +88,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @HostListener('document:touchcancel.silent', ['-1'])
     @HostListener('scroll.silent', ['0'])
     onPointerChange(delta: number): void {
-        this.pointers += delta;
+        this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!delta) {
             const stuck = this.el.nativeElement.scrollTop > this.sheetTop;
@@ -99,7 +99,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (
             this.context.closeable &&
             !this.pointers &&
-            !this.el.nativeElement.scrollTop
+            this.el.nativeElement.scrollTop <= 0
         ) {
             this.close();
         }
