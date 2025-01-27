@@ -22,7 +22,15 @@
                 type="button"
                 (click)="toggle()"
             >
-                Toggle
+                Click
+            </button>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_left-4"
+                (longtap)="toggle()"
+            >
+                Long tap
             </button>
             <ng-template #template>
                 <div class="label">
