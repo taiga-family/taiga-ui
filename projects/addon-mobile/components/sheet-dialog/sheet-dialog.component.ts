@@ -5,7 +5,6 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
@@ -21,7 +20,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
 @Component({
     standalone: true,
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton],
+    imports: [NgForOf, NgIf, PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -69,7 +68,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     protected onPointerChange(delta: number): void {
-        this.pointers += delta;
+        this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!this.pointers && this.el.scrollTop <= 0) {
             this.close();
