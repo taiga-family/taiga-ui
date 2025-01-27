@@ -6,7 +6,6 @@ import {
     effect,
     inject,
     Input,
-    Renderer2,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -53,10 +52,11 @@ const DEFAULT_MAX_LENGTH = 18;
     ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
+        '[value]': 'rawValue()',
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]': 'maxLength()',
-        '(input)': 'textfieldValue.set(element.value)',
+        '(input)': 'rawValue.set(element.value)',
         '(blur)': 'onBlur()',
         '(focus)': 'onFocus()',
         '(keydown.arrowDown)': 'onStep(-step())',
@@ -65,8 +65,6 @@ const DEFAULT_MAX_LENGTH = 18;
     },
 })
 export class TuiInputNumber extends TuiControl<number | null> {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly render = inject(Renderer2);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
@@ -78,7 +76,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
 
     private readonly isIntermediateState = computed(() => {
         const value = maskitoParseNumber(
-            this.textfieldValue(),
+            this.rawValue(),
             this.numberFormat().decimalSeparator,
         );
 
@@ -86,10 +84,8 @@ export class TuiInputNumber extends TuiControl<number | null> {
     });
 
     protected readonly onChangeEffect = effect(() => {
-        // Host binding `host: {'[value]': 'textfieldValue()'}` has change detection problem with empty string
-        this.render.setProperty(this.el, 'value', this.textfieldValue());
         const value = maskitoParseNumber(
-            this.textfieldValue(),
+            this.rawValue(),
             this.numberFormat().decimalSeparator,
         );
 
@@ -119,7 +115,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
     protected readonly postfix = signal(this.options.postfix);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
-    protected readonly textfieldValue = signal(this.element.value || '');
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS && this.min() < 0) {
@@ -133,7 +128,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
     protected readonly maxLength = computed(() => {
         const {decimalSeparator, thousandSeparator} = this.numberFormat();
         const decimalPart =
-            !!this.precision() && this.textfieldValue().includes(decimalSeparator);
+            !!this.precision() && this.rawValue().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
 
@@ -184,30 +179,30 @@ export class TuiInputNumber extends TuiControl<number | null> {
 
     public override writeValue(value: number | null): void {
         super.writeValue(value);
-        this.textfieldValue.set(this.formatNumber(this.value()));
+        this.rawValue.set(this.formatNumber(this.value()));
     }
 
     protected onBlur(): void {
         this.onTouched();
 
         if (!this.isIntermediateState()) {
-            this.textfieldValue.set(this.formatNumber(this.value()));
+            this.rawValue.set(this.formatNumber(this.value()));
         }
     }
 
     protected onFocus(): void {
         const value = maskitoParseNumber(
-            this.textfieldValue(),
+            this.rawValue(),
             this.numberFormat().decimalSeparator,
         );
 
         if (Number.isNaN(value) && !this.readOnly()) {
-            this.textfieldValue.set(this.prefix() + this.postfix());
+            this.rawValue.set(this.prefix() + this.postfix());
         }
     }
 
     protected onStep(step: number): void {
-        this.textfieldValue.set(
+        this.rawValue.set(
             this.formatNumber(
                 tuiClamp((this.value() ?? 0) + step, this.min(), this.max()),
             ),

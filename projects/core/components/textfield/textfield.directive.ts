@@ -2,6 +2,7 @@ import type {OnChanges} from '@angular/core';
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -24,6 +25,11 @@ export class TuiTextfieldBase<T> implements OnChanges {
     private readonly focused = signal<boolean | null>(null);
 
     protected readonly control = inject(NgControl, {optional: true});
+    protected readonly tuiControl = inject(TuiControl, {optional: true});
+    protected readonly empty = computed(
+        () => (this.tuiControl?.rawValue() ?? this.value()) === '',
+    );
+
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
     protected readonly s = tuiAppearanceState(null);
     protected readonly m = tuiAppearanceMode(this.mode);
@@ -106,7 +112,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
     host: {
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
-        '[class._empty]': 'el.value === ""',
+        '[class._empty]': 'empty()',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',

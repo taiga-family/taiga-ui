@@ -9,7 +9,6 @@ import {
     inject,
     Input,
     Output,
-    Renderer2,
     signal,
     TemplateRef,
     ViewChild,
@@ -103,15 +102,14 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[attr.readonly]': 'readOnly() || null',
         '[attr.inputmode]': '!ios && open() ? "none" : null',
         '[disabled]': 'disabled()',
+        '[value]': 'rawValue()',
         '(blur)': 'onTouched()',
-        '(input)': 'masked.set($event.target.value)',
+        '(input)': 'rawValue.set($event.target.value)',
         '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
     },
 })
 export class TuiInputPhoneInternational extends TuiControl<string> {
-    private readonly render = inject(Renderer2);
-
     @ViewChildren(TuiOption, {read: ElementRef})
     protected readonly list: QueryList<ElementRef<HTMLButtonElement>> = EMPTY_QUERY;
 
@@ -133,12 +131,8 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         computed(() => this.computeMask(this.code(), this.metadata())),
     );
 
-    protected readonly masked = signal(this.el.value);
-
     protected valueChangeEffect = effect(() => {
-        this.onChange(this.unmask(this.masked()));
-        // Host binding `host: {'[value]': 'masked()'}` has change detection problem with empty string
-        this.render.setProperty(this.el, 'value', this.masked());
+        this.onChange(this.unmask(this.rawValue()));
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly filtered = computed(() =>
@@ -167,7 +161,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             const prefix = `${tuiGetCallingCode(this.code(), this.metadata())} `;
 
             this.search.set('');
-            this.masked.update((value) => {
+            this.rawValue.update((value) => {
                 const fallback = active ? value || prefix : value;
 
                 return value === prefix ? '' : fallback;
@@ -192,7 +186,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
     public override writeValue(unmasked: string): void {
         super.writeValue(unmasked);
-        this.masked.set(
+        this.rawValue.set(
             maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
         );
     }
@@ -227,7 +221,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.open.set(false);
         this.code.set(code);
         this.search.set('');
-        this.masked.set(
+        this.rawValue.set(
             maskitoTransform(
                 this.value() || tuiGetCallingCode(code, this.metadata()),
                 this.mask() || MASKITO_DEFAULT_OPTIONS,

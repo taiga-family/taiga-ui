@@ -43,6 +43,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly transformer = inject(TuiValueTransformer, FLAGS);
 
+    public readonly rawValue = signal('');
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = signal(false);
     public readonly touched = signal(false);
