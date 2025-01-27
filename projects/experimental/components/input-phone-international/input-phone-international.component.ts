@@ -38,7 +38,11 @@ import {
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiInjectElement,
+    tuiIsInputEvent,
+    tuiValueBinding,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
@@ -130,16 +134,9 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         computed(() => this.computeMask(this.code(), this.metadata())),
     );
 
-    protected readonly masked = signal(this.el.value);
+    protected readonly masked = tuiValueBinding();
 
     protected valueChangeEffect = effect(() => {
-        /**
-         * Host binding `host: {'[value]': 'masked()'}` is not an option – we use {@link TuiTextfieldDirective} as a host directive.
-         * `TuiTextfieldDirective` has host binding which depends on native input's value.
-         * Host bindings of the host directives are re-calculated BEFORE component's ones –
-         * native input's value should be updated SYNCHRONOUSLY before next change detection iteration.
-         */
-        this.el.value = this.masked();
         this.onChange(this.unmask(this.masked()));
     }, TUI_ALLOW_SIGNAL_WRITES);
 
