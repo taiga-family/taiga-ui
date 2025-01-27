@@ -31,4 +31,7 @@ export default class Example {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiDay(2017, 0, 15)),
     });
+
+    protected readonly min = new TuiDay(2017, 0, 21);
+    protected readonly max = new TuiDay(2017, 0, 28);
 }
