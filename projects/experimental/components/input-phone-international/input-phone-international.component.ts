@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     ElementRef,
     inject,
     Input,
@@ -25,18 +26,26 @@ import {
 } from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {CHAR_PLUS, EMPTY_QUERY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
+import {
+    CHAR_PLUS,
+    EMPTY_QUERY,
+    TUI_ALLOW_SIGNAL_WRITES,
+    TUI_DEFAULT_MATCHER,
+} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiInjectElement,
+    tuiIsInputEvent,
+    tuiValueBinding,
+} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
@@ -78,7 +87,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiChevron,
         TuiDataList,
         TuiFlagPipe,
-        TuiIcon,
         TuiTextfield,
         TuiTextfieldContent,
         TuiTitle,
@@ -98,9 +106,8 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         '[attr.readonly]': 'readOnly() || null',
         '[attr.inputmode]': '!ios && open() ? "none" : null',
         '[disabled]': 'disabled()',
-        '[value]': 'masked()',
         '(blur)': 'onTouched()',
-        '(input)': 'onChange(unmasked)',
+        '(input)': 'masked.set($event.target.value)',
         '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
     },
@@ -127,11 +134,11 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         computed(() => this.computeMask(this.code(), this.metadata())),
     );
 
-    protected readonly masked = computed(
-        () =>
-            maskitoTransform(this.value(), this.mask() || MASKITO_DEFAULT_OPTIONS) ||
-            this.el.value,
-    );
+    protected readonly masked = tuiValueBinding();
+
+    protected valueChangeEffect = effect(() => {
+        this.onChange(this.unmask(this.masked()));
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly filtered = computed(() =>
         this.countries()
@@ -157,10 +164,13 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         )
         .subscribe((active) => {
             const prefix = `${tuiGetCallingCode(this.code(), this.metadata())} `;
-            const fallback = active ? this.el.value || prefix : this.el.value;
 
             this.search.set('');
-            this.el.value = this.el.value === prefix ? '' : fallback;
+            this.masked.update((value) => {
+                const fallback = active ? value || prefix : value;
+
+                return value === prefix ? '' : fallback;
+            });
         });
 
     @Input()
@@ -179,15 +189,16 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.code.set(code);
     }
 
+    public override writeValue(unmasked: string): void {
+        super.writeValue(unmasked);
+        this.masked.set(
+            maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
+        );
+    }
+
     @ViewChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
         this.dropdown.set(template);
-    }
-
-    protected get unmasked(): string {
-        const value = this.el.value.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
-
-        return value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value;
     }
 
     protected onPaste(event: Event): void {
@@ -212,15 +223,15 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
     protected onItemClick(code: TuiCountryIsoCode): void {
         this.el.focus();
-        this.el.value = this.unmasked;
         this.open.set(false);
         this.code.set(code);
         this.search.set('');
-        this.el.value = maskitoTransform(
-            this.el.value || tuiGetCallingCode(code, this.metadata()),
-            this.mask() || MASKITO_DEFAULT_OPTIONS,
+        this.masked.set(
+            maskitoTransform(
+                this.value() || tuiGetCallingCode(code, this.metadata()),
+                this.mask() || MASKITO_DEFAULT_OPTIONS,
+            ),
         );
-        this.onChange(this.unmasked);
     }
 
     private computeMask(
@@ -241,5 +252,11 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             ...options,
             plugins: [...plugins, maskitoInitialCalibrationPlugin()],
         };
+    }
+
+    private unmask(maskedValue: string): string {
+        const value = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
+
+        return value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value;
     }
 }

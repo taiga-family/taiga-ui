@@ -21,7 +21,7 @@ import {
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -52,7 +52,6 @@ const DEFAULT_MAX_LENGTH = 18;
     ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
-        '[value]': 'textfieldValue()',
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]': 'maxLength()',
@@ -115,7 +114,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
     protected readonly postfix = signal(this.options.postfix);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
-    protected readonly textfieldValue = signal(this.element.value || '');
+    protected readonly textfieldValue = tuiValueBinding();
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS && this.min() < 0) {
