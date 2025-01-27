@@ -3,45 +3,43 @@ TODO: if :has() is supported by all browsers
  - use tui-textfield:has([tuiInputNumber]) .t-input-number {...}
  - rename .t-input-number-buttons => .t-buttons
  */
-.t-input-number {
-    &-buttons {
-        position: absolute;
-        right: 0;
-        display: flex;
-        block-size: var(--t-height);
-        flex-direction: column;
-        gap: 0.125rem;
-        border-radius: inherit;
+.t-input-number-buttons.t-input-number-buttons {
+    position: absolute;
+    right: 0;
+    display: flex;
+    block-size: var(--t-height);
+    flex-direction: column;
+    gap: 0.125rem;
+    border-radius: inherit;
 
-        tui-textfield[data-size='s'] & {
-            flex-direction: row-reverse;
+    tui-textfield[data-size='s'] & {
+        flex-direction: row-reverse;
+    }
+
+    & > * {
+        flex: 1 1 0;
+        border-radius: 0;
+
+        &:first-child {
+            border-start-end-radius: inherit;
         }
 
-        & > * {
-            flex: 1 1 0;
-            border-radius: 0;
+        &:last-child {
+            border-end-end-radius: inherit;
+        }
 
+        tui-textfield[data-size='l'] & {
+            inline-size: var(--tui-height-m);
+        }
+
+        tui-textfield[data-size='s'] & {
             &:first-child {
                 border-start-end-radius: inherit;
-            }
-
-            &:last-child {
                 border-end-end-radius: inherit;
             }
 
-            tui-textfield[data-size='l'] & {
-                inline-size: var(--tui-height-m);
-            }
-
-            tui-textfield[data-size='s'] & {
-                &:first-child {
-                    border-start-end-radius: inherit;
-                    border-end-end-radius: inherit;
-                }
-
-                &:last-child {
-                    border-radius: 0;
-                }
+            &:last-child {
+                border-radius: 0;
             }
         }
     }
