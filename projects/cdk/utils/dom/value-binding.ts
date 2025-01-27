@@ -1,7 +1,9 @@
-import type {WritableSignal} from '@angular/core';
+import type {Signal, WritableSignal} from '@angular/core';
 import {effect, signal} from '@angular/core';
 
 import {tuiInjectElement} from './inject-element';
+
+export function tuiValueBinding(value?: WritableSignal<string>): WritableSignal<string>;
 
 /**
  * Host binding `host: {'[value]': 'yourSignal()'}` is not an option for our textfields –
@@ -11,10 +13,9 @@ import {tuiInjectElement} from './inject-element';
  * native input's value should be updated SYNCHRONOUSLY before next change detection iteration.
  */
 export function tuiValueBinding(
-    initialValue: string = tuiInjectElement<HTMLInputElement>().value || '',
-): WritableSignal<string> {
+    value: Signal<string> = signal(tuiInjectElement<HTMLInputElement>().value || ''),
+): Signal<string> {
     const el = tuiInjectElement<HTMLInputElement>();
-    const value = signal(initialValue);
 
     effect(() => {
         el.value = value();
