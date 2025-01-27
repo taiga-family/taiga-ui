@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85068],{27450:(e,o,l)=>{l.r(o),l.d(o,{TUI_HEBREW_LANGUAGE_LAYOUT:()=>p});const p={inputSearch:{popular:"Popular",history:"Recent",placeholder:"Type query",hotkey:"to search",all:"All",empty:"Nothing found"}}}}]);

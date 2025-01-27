@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[35666],{94493:(e,E,c)=>{c.r(E),c.d(E,{TUI_GREEK_LANGUAGE_ADDON_COMMERCE:()=>d});const d={cardNumber:["Νούμερο","Αριθμός Κάρτας"],cardExpiry:["Λήγει","Ισχύει μέχρι"]}}}]);

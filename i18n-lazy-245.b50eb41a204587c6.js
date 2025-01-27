@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9754],{71765:(e,c,d)=>{d.r(c),d.d(c,{TUI_KOREAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["숫자","카드번호"],cardExpiry:["만료","유효 기간:"]}}}]);

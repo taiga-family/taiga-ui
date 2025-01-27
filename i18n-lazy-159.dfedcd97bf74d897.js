@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[55390],{36417:(e,s,a)=>{a.r(s),a.d(s,{TUI_HEBREW_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"הצג הסתר",paginationTexts:{pages:"דפים",linesPerPage:"שורות בעמוד",of:"שֶׁל"}}}}]);

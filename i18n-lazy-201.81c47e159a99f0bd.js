@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[37394],{76361:(e,c,d)=>{d.r(c),d.d(c,{TUI_JAPAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["番号","カード番号"],cardExpiry:["期限切れ","有効期間"]}}}]);

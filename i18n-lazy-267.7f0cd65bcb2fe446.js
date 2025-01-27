@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71714],{86530:(e,i,a)=>{a.r(i),a.d(i,{TUI_LITHUANIAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["Numeris","Kortelės numeris"],cardExpiry:["Galioja iki","Galioja iki"]}}}]);
