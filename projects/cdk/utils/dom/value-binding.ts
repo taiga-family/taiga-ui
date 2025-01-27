@@ -4,6 +4,7 @@ import {effect, signal} from '@angular/core';
 import {tuiInjectElement} from './inject-element';
 
 export function tuiValueBinding(value?: WritableSignal<string>): WritableSignal<string>;
+export function tuiValueBinding(value?: Signal<string>): Signal<string>;
 
 /**
  * Host binding `host: {'[value]': 'yourSignal()'}` is not an option for our textfields –
