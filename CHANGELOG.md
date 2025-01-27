@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.103.0](https://github.com/taiga-family/taiga-ui/compare/v3.102.1...v3.103.0) (2025-01-27)
+
+### Features
+
+- **experimental:** add new styles to `tuiCell` ([#10231](https://github.com/taiga-family/taiga-ui/issues/10231))
+  ([7068b5d](https://github.com/taiga-family/taiga-ui/commit/7068b5d8509da9c410fe68b58fe67a20417a33bd))
+
+### Bug Fixes
+
+- **addon-mobile:** background blackout do not disappear on mobile after longtap event
+  ([#10245](https://github.com/taiga-family/taiga-ui/issues/10245))
+  ([65be79b](https://github.com/taiga-family/taiga-ui/commit/65be79bc399c2665b0b6fe0d63e8b3ecfad17f3a))
+- **kit:** `InputDate` show actual min/max in `Calendar`
+  ([#10240](https://github.com/taiga-family/taiga-ui/issues/10240))
+  ([0987388](https://github.com/taiga-family/taiga-ui/commit/098738846ed99099bdde75cd98547f29e82e2501))
+
 ### [3.102.1](https://github.com/taiga-family/taiga-ui/compare/v3.102.0...v3.102.1) (2025-01-20)
 
 ### Bug Fixes
