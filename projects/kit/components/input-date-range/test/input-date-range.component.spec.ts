@@ -180,9 +180,15 @@ describe('InputDateRangeComponent', () => {
             it('When entering two dates, the value is truncated by min / max is updated', () => {
                 testComponent.min = new TuiDay(2001, 6, 15);
                 testComponent.max = new TuiDay(2019, 6, 15);
+
                 fixture.detectChanges();
+
+                // min-max mask triggered only if value changed via UI (is not pristine)
+                testComponent.control.markAsDirty();
+
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
+                expect(inputPO.value).toBe('15.07.2001 – 15.07.2019');
                 expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
                     `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
                 );
@@ -376,6 +382,9 @@ describe('InputDateRangeComponent', () => {
         });
 
         it('transforms min day as output (if typed day is less than min day)', () => {
+            // min-max mask triggered only if value changed via UI (is not pristine)
+            testComponent.control.markAsDirty();
+
             inputPO.sendText('19.02.1861-10.03.1995');
 
             expect(inputPO.value).toBe('01.01.1900 – 10.03.1995');
