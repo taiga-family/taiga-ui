@@ -189,11 +189,29 @@ export class TuiInputDateRangeComponent
     }
 
     get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_FIRST_DAY;
+        }
+
+        return this.min ?? this.options.min;
     }
 
     get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_LAST_DAY;
+        }
+
+        return this.max ?? this.options.max;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

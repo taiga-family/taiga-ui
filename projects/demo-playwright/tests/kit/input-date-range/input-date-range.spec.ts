@@ -185,5 +185,22 @@ test.describe('InputDateRange', () => {
                 '08-calendar-correct-selected-period-after-close-open.png',
             );
         });
+
+        test('Actual min/max in calendar', async () => {
+            const example = documentationPage.getExample('#base');
+
+            const inputDateRange = new TuiInputDateRangePO(
+                example.locator('tui-input-date-range'),
+            );
+
+            await inputDateRange.textfield.click();
+
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                '09-input-date-range-actual-min-max.png',
+            );
+            await expect(inputDateRange.calendarRange).toHaveScreenshot(
+                '09-input-date-range-calendar-actual-min-max.png',
+            );
+        });
     });
 });

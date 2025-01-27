@@ -17,7 +17,7 @@ export class TuiInputDateRangeExample1 {
         ),
     });
 
-    readonly min = new TuiDay(2000, 2, 20);
+    readonly min = new TuiDay(2018, 2, 25);
 
     readonly max = new TuiDay(2040, 2, 20);
 }
