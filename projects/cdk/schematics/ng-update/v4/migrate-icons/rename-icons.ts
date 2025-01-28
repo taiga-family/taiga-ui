@@ -33,6 +33,7 @@ const CHANGED_ICONS = [
     {from: 'tuiIconColumns', to: '@tui.columns-2'},
     {from: 'tuiIconTool', to: '@tui.wrench'},
     {from: 'tuiIconCheckSquare', to: '@tui.square-check-big'},
+    {from: 'tuiIconOL', to: '@tui.list-ordered'},
 ];
 
 export function renameIcons(pattern = ALL_FILES): void {

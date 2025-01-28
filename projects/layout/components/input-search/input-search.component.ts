@@ -22,6 +22,7 @@ import {
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {tuiCellOptionsProvider} from '@taiga-ui/layout/components/cell';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -33,6 +34,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     templateUrl: './input-search.component.html',
     styleUrls: ['./input-search.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiCellOptionsProvider({size: 'm'})],
     hostDirectives: [TuiWithTextfield],
     host: {
         '(focus)': 'open()',

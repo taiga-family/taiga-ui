@@ -1,0 +1,47 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .scrollbar-hidden();
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: block;
+    block-size: 100%;
+    max-inline-size: 40rem;
+    margin: calc(-1 * var(--t-start)) auto 0;
+    background: var(--tui-background-elevation-1)
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="1.5rem" viewBox="0 0 32 24" fill="none" stroke="rgba(0, 16, 36, 0.22)" stroke-width="4" stroke-linecap="round"><line x1="2" y1="12" x2="30" y2="12"></line></svg>')
+        no-repeat center -1.5rem;
+    border-start-start-radius: var(--tui-radius-l);
+    border-start-end-radius: var(--tui-radius-l);
+    border-top: 1.5rem solid transparent;
+    box-shadow: var(--tui-shadow-medium);
+    box-sizing: border-box;
+    overflow: auto;
+
+    :host-context([tuiTheme='dark']) {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="1.5rem" viewBox="0 0 32 24" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="4" stroke-linecap="round"><line x1="2" y1="12" x2="30" y2="12"></line></svg>');
+    }
+}
+
+.t-content {
+    position: sticky;
+    top: 0;
+    padding: 0.75rem 1rem 1.5rem;
+}
+
+.t-bottom {
+    block-size: calc(100% - var(--t-start));
+}
+
+.t-stops {
+    position: absolute;
+    inline-size: 1rem;
+    pointer-events: none;
+
+    &:first-child {
+        block-size: var(--t-start);
+    }
+}

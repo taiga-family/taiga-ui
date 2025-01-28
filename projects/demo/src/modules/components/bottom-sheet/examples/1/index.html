@@ -1,0 +1,54 @@
+<div class="messages">
+    <tui-scrollbar>
+        <div tuiMessage>What's up?</div>
+        <div
+            *ngFor="let message of messages"
+            appearance="accent"
+            tuiMessage
+            class="message"
+        >
+            {{ message }}
+        </div>
+    </tui-scrollbar>
+    <tui-bottom-sheet>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+    </tui-bottom-sheet>
+</div>
+<form
+    class="bottom"
+    (ngSubmit)="onSubmit()"
+>
+    <tui-textarea
+        name="message"
+        class="textarea"
+        [expandable]="true"
+        [rows]="3"
+        [(ngModel)]="value"
+        (keydown.control.enter)="onSubmit()"
+    >
+        Type your message
+    </tui-textarea>
+    <button
+        tuiButton
+        type="submit"
+    >
+        Send
+    </button>
+</form>
