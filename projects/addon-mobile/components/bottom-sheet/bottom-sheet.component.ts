@@ -33,16 +33,12 @@ export class TuiBottomSheet {
     protected onScroll(): void {
         const offset = this.elements.get(0)?.nativeElement.clientHeight || 0;
         const scrolled = Math.min(this.el.scrollTop / (this.el.clientHeight - offset), 1);
+        const transform = `translate3d(0, calc((var(--t-start) - 100%) * ${scrolled}), 0)`;
 
-        this.el.style.setProperty(
-            'transform',
-            `translate3d(0, calc((var(--t-start) - 100%) * ${scrolled}), 0)`,
-        );
-
-        // this.el.animate([{transform: `translate3d(0, ${-100 * scrolled}%, 0)`}], {
-        //     duration: 20,
-        //     easing: 'ease-in',
-        //     fill: 'forwards',
-        // });
+        this.el.animate([{transform}], {
+            duration: 20,
+            easing: 'ease-in',
+            fill: 'forwards',
+        });
     }
 }

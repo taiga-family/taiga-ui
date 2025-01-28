@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     display: block;
-    block-size: 100%;
+    block-size: calc(100% - 1rem);
     max-inline-size: 40rem;
     margin: calc(-1 * var(--t-start)) auto 0;
     background: var(--tui-background-elevation-1)
@@ -16,20 +16,31 @@
         no-repeat center -1.5rem;
     border-start-start-radius: var(--tui-radius-l);
     border-start-end-radius: var(--tui-radius-l);
-    border-top: 1.5rem solid transparent;
     box-shadow: var(--tui-shadow-medium);
-    box-sizing: border-box;
     overflow: auto;
 
-    :host-context([tuiTheme='dark']) {
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="1.5rem" viewBox="0 0 32 24" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="4" stroke-linecap="round"><line x1="2" y1="12" x2="30" y2="12"></line></svg>');
+    &::before {
+        content: '';
+        position: sticky;
+        top: 0.625rem;
+        left: 50%;
+        z-index: 1;
+        display: block;
+        inline-size: 2rem;
+        block-size: 0.25rem;
+        margin-block-end: -0.25rem;
+        transform: translateX(-50%);
+        background: var(--tui-border-normal);
+        box-shadow: 0 0 0 10rem var(--tui-background-elevation-1);
+        border-radius: 1rem;
+        clip-path: polygon(-100vw -1rem, 100vw -1rem, 100vw calc(100% + 0.625rem), -100vw calc(100% + 0.625rem));
     }
 }
 
 .t-content {
     position: sticky;
     top: 0;
-    padding: 0.75rem 1rem 1.5rem;
+    padding: 2.25rem 1rem 1.5rem;
 }
 
 .t-bottom {

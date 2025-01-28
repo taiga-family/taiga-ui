@@ -29,3 +29,13 @@
     min-block-size: var(--tui-height-l);
     margin: 1rem 0;
 }
+
+.actions {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    :first-child {
+        grid-column: span 2;
+    }
+}

@@ -1,23 +1,26 @@
 import {NgForOf} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiScrollbar} from '@taiga-ui/core';
 import {TuiMessage} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
-        TuiTextareaModule,
+        NgForOf,
         FormsModule,
+        TuiTextareaModule,
         TuiMessage,
         TuiButton,
-        NgForOf,
         TuiBottomSheet,
         TuiScrollbar,
+        TuiCardLarge,
+        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -25,8 +28,15 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
+    @ViewChild(TuiBottomSheet, {read: ElementRef})
+    private readonly sheet?: ElementRef<HTMLElement>;
+
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
+
+    onClick() {
+        this.sheet?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
+    }
 
     onSubmit() {
         this.messages = this.messages.concat(this.value);
