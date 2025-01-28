@@ -1,3 +1,4 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -5,15 +6,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDayLike} from '@taiga-ui/cdk';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiInputDateRangeModule, TuiUnfinishedValidator} from '@taiga-ui/legacy';
-import {JsonPipe} from '@angular/common';
 
 @Component({
     standalone: true,
     imports: [
+        JsonPipe,
         ReactiveFormsModule,
         TuiInputDateRangeModule,
         TuiUnfinishedValidator,
-        JsonPipe,
     ],
     templateUrl: './index.html',
     encapsulation,
