@@ -369,5 +369,21 @@ test.describe('InputDateTime', () => {
                 await expect(inputDateTime.textfield).toHaveValue('');
             });
         });
+
+        test('Actual min/max in calendar', async () => {
+            const example = documentationPage.getExample('#base');
+            const inputDateTime = new TuiInputDateTimePO(
+                example.locator('tui-input-date-time'),
+            );
+
+            await inputDateTime.textfield.click();
+
+            await expect(inputDateTime.textfield).toHaveScreenshot(
+                '06-input-date-time-actual-min-max.png',
+            );
+            await expect(inputDateTime.calendar).toHaveScreenshot(
+                '06-input-date-time-calendar-actual-min-max.png',
+            );
+        });
     });
 });
