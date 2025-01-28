@@ -52,44 +52,44 @@
                 [value]="value"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="collapsed"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="collapsed"
+        <table tuiDocAPI>
+            <tr
+                name="[collapsed]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="collapsed"
             >
                 Shows data set in a single bar
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
             >
                 Sets chart max manually
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL | null"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL | null"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size (use
                 <code>null</code>
                 for autosize)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="ReadonlyArray<readonly number[]>"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="ReadonlyArray<readonly number[]>"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 Array of segments
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
