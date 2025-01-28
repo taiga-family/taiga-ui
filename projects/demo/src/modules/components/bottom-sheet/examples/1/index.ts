@@ -4,7 +4,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiScrollbar} from '@taiga-ui/core';
+import {TuiAccordion} from '@taiga-ui/experimental';
 import {TuiMessage} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
@@ -21,6 +23,8 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
         TuiScrollbar,
         TuiCardLarge,
         TuiAppearance,
+        TuiAccordion,
+        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -34,7 +38,8 @@ export default class Example {
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
 
-    onClick() {
+    onClick(message: string) {
+        this.messages = this.messages.concat(message);
         this.sheet?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
     }
 

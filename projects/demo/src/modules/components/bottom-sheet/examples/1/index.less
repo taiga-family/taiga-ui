@@ -7,6 +7,7 @@
 .messages {
     position: relative;
     flex: 1;
+    padding-inline-start: 1rem;
     overflow: hidden;
 }
 
@@ -22,6 +23,7 @@
 }
 
 .form {
+    padding: 0 1rem 1rem;
     background: var(--tui-background-elevation-1);
 }
 
@@ -35,7 +37,7 @@
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
 
-    :first-child {
+    :last-child {
         grid-column: span 2;
     }
 }

@@ -6,9 +6,8 @@
             appearance="accent"
             tuiMessage
             class="message"
-        >
-            {{ message }}
-        </div>
+            [textContent]="message"
+        ></div>
     </tui-scrollbar>
     <tui-bottom-sheet>
         <div class="actions">
@@ -16,31 +15,29 @@
                 tuiAppearance="floating"
                 tuiCardLarge
                 type="button"
-                (click)="onClick()"
+                (click)="onClick('Thanks!')"
             >
-                Test
+                Thanks!
             </button>
             <button
                 tuiAppearance="floating"
                 tuiCardLarge
                 type="button"
-                (click)="onClick()"
+                (click)="onClick('Bye!')"
             >
-                Test
+                Bye!
             </button>
-            <button
-                tuiAppearance="floating"
-                tuiCardLarge
-                type="button"
-                (click)="onClick()"
-            >
-                Test
-            </button>
+            <tui-accordion>
+                <button tuiAccordion>Show more content</button>
+                <tui-expand>
+                    <div *tuiRepeatTimes="let index of 10">Content</div>
+                </tui-expand>
+            </tui-accordion>
         </div>
     </tui-bottom-sheet>
 </div>
 <form
-    class="bottom"
+    class="form"
     (ngSubmit)="onSubmit()"
 >
     <tui-textarea

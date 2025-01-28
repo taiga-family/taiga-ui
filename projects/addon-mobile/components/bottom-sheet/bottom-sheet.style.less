@@ -11,13 +11,13 @@
     block-size: calc(100% - 1rem);
     max-inline-size: 40rem;
     margin: calc(-1 * var(--t-start)) auto 0;
-    background: var(--tui-background-elevation-1)
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="1.5rem" viewBox="0 0 32 24" fill="none" stroke="rgba(0, 16, 36, 0.22)" stroke-width="4" stroke-linecap="round"><line x1="2" y1="12" x2="30" y2="12"></line></svg>')
-        no-repeat center -1.5rem;
+    background: var(--tui-background-elevation-1);
     border-start-start-radius: var(--tui-radius-l);
     border-start-end-radius: var(--tui-radius-l);
-    box-shadow: var(--tui-shadow-medium);
     overflow: auto;
+    box-shadow:
+        var(--tui-shadow-medium),
+        0 1rem var(--tui-background-elevation-1);
 
     &::before {
         content: '';
@@ -47,7 +47,7 @@
     block-size: calc(100% - var(--t-start));
 }
 
-.t-stops {
+.t-stop {
     position: absolute;
     inline-size: 1rem;
     pointer-events: none;
