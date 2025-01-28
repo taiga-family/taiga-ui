@@ -16,8 +16,8 @@
     border-start-end-radius: var(--tui-radius-l);
     overflow: auto;
     box-shadow:
-        var(--tui-shadow-medium),
-        0 1rem var(--tui-background-elevation-1);
+        0 1rem var(--tui-background-elevation-1),
+        var(--tui-shadow-medium);
 
     &::before {
         content: '';
@@ -30,8 +30,10 @@
         block-size: 0.25rem;
         margin-block-end: -0.25rem;
         transform: translateX(-50%);
-        background: var(--tui-border-normal);
-        box-shadow: 0 0 0 10rem var(--tui-background-elevation-1);
+        background: var(--tui-background-elevation-1);
+        box-shadow:
+            0 0 0 20rem var(--tui-background-elevation-1),
+            inset 0 0 0 1rem var(--tui-border-normal);
         border-radius: 1rem;
         clip-path: polygon(-100vw -1rem, 100vw -1rem, 100vw calc(100% + 0.625rem), -100vw calc(100% + 0.625rem));
     }

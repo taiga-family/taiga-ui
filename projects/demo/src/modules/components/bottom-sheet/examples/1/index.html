@@ -15,9 +15,9 @@
                 tuiAppearance="floating"
                 tuiCardLarge
                 type="button"
-                (click)="onClick('Thanks!')"
+                (click)="onClick('Ok')"
             >
-                Thanks!
+                Ok
             </button>
             <button
                 tuiAppearance="floating"
@@ -27,12 +27,14 @@
             >
                 Bye!
             </button>
-            <tui-accordion>
-                <button tuiAccordion>Show more content</button>
-                <tui-expand>
-                    <div *tuiRepeatTimes="let index of 10">Content</div>
-                </tui-expand>
-            </tui-accordion>
+            <button
+                tuiAppearance="floating"
+                tuiCardLarge
+                type="button"
+                (click)="onClick('Taiga UI is awesome!')"
+            >
+                Taiga UI is awesome!
+            </button>
         </div>
     </tui-bottom-sheet>
 </div>
@@ -44,7 +46,7 @@
         name="message"
         class="textarea"
         [expandable]="true"
-        [rows]="3"
+        [rows]="6"
         [(ngModel)]="value"
         (keydown.control.enter)="onSubmit()"
     >

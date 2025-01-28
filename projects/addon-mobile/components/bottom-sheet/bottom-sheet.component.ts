@@ -27,6 +27,7 @@ const OPTIONS = {
     host: {
         '[style.--t-start]': 'stops[0]',
         '(scroll)': 'onScroll()',
+        '(resize)': 'onScroll()',
     },
     imports: [NgForOf],
 })
@@ -51,7 +52,7 @@ export class TuiBottomSheet {
         const max = this.content?.nativeElement.clientHeight || Infinity;
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
-        const transform = `translate3d(0, -${scrolled}px, 0)`;
+        const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
         this.el.animate([{transform}], OPTIONS);
         this.position.emit(scrolled);
