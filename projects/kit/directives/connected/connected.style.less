@@ -8,22 +8,23 @@
         --t-connected-height: calc(100% - var(--t-image-size) - 0.25rem);
     }
 
-    [tuiCell],
-    [tuiStep] {
-        &:not(:last-of-type)::after {
+    > [tuiCell],
+    > [tuiStep] {
+        &:not(:last-of-type)::before {
             content: '';
             position: absolute;
             top: calc(var(--t-image-size) + 0.25rem);
             left: calc(var(--t-image-size) / 2);
             block-size: var(--t-connected-height);
             inline-size: 1px;
-            background-color: var(--tui-border-normal);
+            color: var(--tui-border-normal);
+            background: linear-gradient(to bottom, currentColor 75%, transparent 75%) top center / 300% 300%;
             background-clip: content-box;
             padding: inherit;
         }
     }
 
-    [tuiStep] {
+    > [tuiStep] {
         --t-image-size: 2rem;
         --t-connected-height: calc(100% - var(--t-image-size) + 0.75rem);
     }
