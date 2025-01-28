@@ -2,7 +2,7 @@ import type {QueryList} from '@angular/core';
 import {ContentChildren, Directive, inject, Input, Output} from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {delay, filter, map} from 'rxjs';
+import {combineLatest, debounceTime, delay, filter, map} from 'rxjs';
 
 import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
@@ -17,12 +17,24 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
 
     private readonly table = inject(TuiTableDirective<T>);
 
+    /**
+     * @deprecated: use tuiSortChange
+     */
     @Output()
     public readonly tuiSortByChange = this.table.sorterChange.pipe(
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
         delay(0),
         filter(() => !!this.sortables.length),
         map((sorter) => this.getKey(sorter)),
+    );
+
+    @Output()
+    public readonly tuiSortChange = combineLatest([
+        this.tuiSortByChange,
+        this.table.directionChange,
+    ]).pipe(
+        debounceTime(0),
+        map(([sortBy, orderBy]) => ({sortBy, orderBy})),
     );
 
     public tuiSortBy: string | keyof T | null = null;

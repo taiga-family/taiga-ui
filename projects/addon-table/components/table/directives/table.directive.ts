@@ -21,7 +21,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
-import {Subject} from 'rxjs';
+import {combineLatest, debounceTime, map, Subject} from 'rxjs';
 
 import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 import {TuiStuck} from './stuck.directive';
@@ -71,11 +71,26 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     @Input()
     public direction = this.options.direction;
 
+    /**
+     * @deprecated: use sortChange
+     */
     @Output()
     public readonly directionChange = new EventEmitter<TuiSortDirection>();
 
+    /**
+     * @deprecated: use sortChange
+     */
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
+
+    @Output()
+    public readonly sortChange = combineLatest([
+        this.sorterChange,
+        this.directionChange,
+    ]).pipe(
+        debounceTime(0),
+        map(([sortBy, orderBy]) => ({sortBy, orderBy})),
+    );
 
     public readonly appearance = signal('table');
     public readonly size = signal(this.options.size);
