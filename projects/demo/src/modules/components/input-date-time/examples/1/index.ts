@@ -14,4 +14,8 @@ export class TuiInputDateTimeExample1 {
     readonly testForm = new FormGroup({
         testValue: new FormControl([new TuiDay(2017, 2, 15), null]),
     });
+
+    readonly min = new TuiDay(2017, 2, 25);
+
+    readonly max = new TuiDay(2040, 2, 20);
 }

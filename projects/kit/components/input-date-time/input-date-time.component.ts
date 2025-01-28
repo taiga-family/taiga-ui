@@ -21,8 +21,10 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_FIRST_DAY,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
+    TUI_LAST_DAY,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -156,10 +158,28 @@ export class TuiInputDateTimeComponent
     }
 
     get computedMin(): TuiDay | [TuiDay, TuiTime] {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_FIRST_DAY;
+        }
+
         return this.toTuiDay(this.min, this.options.min);
     }
 
     get computedMax(): TuiDay | [TuiDay, TuiTime] {
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        if (this.value && this.control?.pristine) {
+            return TUI_LAST_DAY;
+        }
+
         return this.toTuiDay(this.max, this.options.max);
     }
 
@@ -214,13 +234,13 @@ export class TuiInputDateTimeComponent
     }
 
     get calendarMinDay(): TuiDay {
-        const min = this.computedMin;
+        const min = this.toTuiDay(this.min, this.options.min);
 
         return Array.isArray(min) ? min[0] : min;
     }
 
     get calendarMaxDay(): TuiDay {
-        const max = this.computedMax;
+        const max = this.toTuiDay(this.max, this.options.max);
 
         return Array.isArray(max) ? max[0] : max;
     }
