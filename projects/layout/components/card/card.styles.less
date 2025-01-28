@@ -12,11 +12,6 @@
     overscroll-behavior: contain;
     overflow: hidden;
 
-    &[tuiTitle],
-    [tuiTitle]:not([tuiCell] *):not([tuiLabel] *) {
-        font-weight: bold;
-    }
-
     [tuiTitle],
     [tuiSubtitle] {
         max-inline-size: 100%;
@@ -46,6 +41,11 @@
 
     [tuiSubtitle] {
         color: var(--tui-text-primary);
+    }
+
+    &[tuiTitle],
+    [tuiTitle]:not([tuiCell] *):not([tuiLabel] *) {
+        font-weight: bold;
     }
 }
 
