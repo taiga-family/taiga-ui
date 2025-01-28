@@ -1,0 +1,10 @@
+<form [formGroup]="testForm">
+    <tui-input-date-range
+        formControlName="testValue"
+        [minLength]="minlength"
+    >
+        Choose dates
+    </tui-input-date-range>
+</form>
+
+<pre>{{ testForm.value | json }}</pre>
