@@ -429,7 +429,7 @@ export class TuiInputTagComponent
             const search = invalid.length
                 ? invalid.join(tuiIsString(this.separator) ? this.separator : ',')
                 : '';
-            console.log(search, search.length);
+
             this.updateSearch(this.clippedValue(search));
 
             this.value = this.filterValue([...this.value, ...validated]);
@@ -437,7 +437,6 @@ export class TuiInputTagComponent
             this.updateSearch(this.clippedValue(value));
         }
 
-        console.log(this.value, this.value.length);
         this.open = this.hasNativeValue;
     }
 
