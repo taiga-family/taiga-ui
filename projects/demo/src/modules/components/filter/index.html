@@ -48,80 +48,80 @@
                     [formControl]="control"
                     [items]="items"
                     [size]="size"
-                    (toggledItem)="documentationPropertyToggledItem.emitEvent($event)"
+                    (toggledItem)="itemToggle.emitEvent($event)"
                 />
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="badgeHandler"
-                documentationPropertyType="TuiHandler<T>"
-                [documentationPropertyValues]="badgeHandlerVariants"
-                [(documentationPropertyValue)]="badgeHandler"
+        <table tuiDocAPI>
+            <tr
+                name="[badgeHandler]"
+                tuiDocAPIItem
+                type="TuiHandler<T>"
+                [items]="badgeHandlerVariants"
+                [(value)]="badgeHandler"
             >
                 Function that gets and item and returns a badge value. Uses
                 <code>valueOf</code>
                 to get a number to show by default
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="content"
-                documentationPropertyType="PolymorpheusContent"
+            </tr>
+            <tr
+                name="[content]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Template for custom content in filter
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<T>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+            </tr>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="identityMatcher"
-                documentationPropertyType="TuiIdentityMatcher"
+            </tr>
+            <tr
+                name="[identityMatcher]"
+                tuiDocAPIItem
+                type="TuiIdentityMatcher"
             >
                 Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="items"
-                documentationPropertyType="T[]"
-                [documentationPropertyValues]="itemsVariants"
-                [(documentationPropertyValue)]="items"
+            </tr>
+            <tr
+                name="[items]"
+                tuiDocAPIItem
+                type="T[]"
+                [items]="itemsVariants"
+                [(value)]="items"
             >
                 Filter items. Can be an array of strings or an array of objects. If no custom template provided, it uses
                 <code>toString</code>
                 for view
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                #documentationPropertyToggledItem="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="toggledItem"
-                documentationPropertyType="T"
+            </tr>
+            <tr
+                #itemToggle
+                name="(toggledItem)"
+                tuiDocAPIItem
+                type="T"
             >
-                toggled event of item
-            </ng-template>
-        </tui-doc-documentation>
+                Toggled event of item
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
