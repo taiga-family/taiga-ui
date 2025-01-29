@@ -5,12 +5,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {TuiFieldErrorPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 import {
-    TuiInputModule,
-    TuiInputNumberModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+    TuiFieldErrorPipe,
+    TuiInputNumber,
+    tuiValidationErrorsProvider,
+} from '@taiga-ui/kit';
 import {interval, map, of, scan, startWith} from 'rxjs';
 
 @Component({
@@ -20,10 +19,8 @@ import {interval, map, of, scan, startWith} from 'rxjs';
         ReactiveFormsModule,
         TuiError,
         TuiFieldErrorPipe,
-        TuiInputModule,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiTextfield,
-        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

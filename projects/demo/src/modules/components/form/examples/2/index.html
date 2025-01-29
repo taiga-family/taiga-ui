@@ -43,16 +43,16 @@
         </h3>
     </header>
 
-    <tui-input
-        formControlName="nameValue"
-        tuiHintContent="A tooltip"
-    >
-        Textfield
+    <tui-textfield>
+        <label tuiLabel>Textfield</label>
         <input
+            formControlName="nameValue"
             placeholder="Field placeholder"
-            tuiTextfieldLegacy
+            tuiTextfield
         />
-    </tui-input>
+        <tui-icon tuiTooltip="A tooltip" />
+    </tui-textfield>
+
     <tui-error
         formControlName="nameValue"
         [error]="[] | tuiFieldError | async"
@@ -72,19 +72,30 @@
 
     <div class="grid">
         <div class="stack">
-            <tui-input-password formControlName="passwordValue">Input password</tui-input-password>
+            <tui-textfield>
+                <label tuiLabel>Input password</label>
+                <input
+                    formControlName="passwordValue"
+                    tuiTextfield
+                    type="password"
+                />
+                <tui-icon tuiPassword />
+            </tui-textfield>
+
             <tui-error
                 formControlName="passwordValue"
                 [error]="[] | tuiFieldError | async"
             />
         </div>
         <div class="stack">
-            <tui-input-number
-                formControlName="moneyValue"
-                [tuiTextfieldPostfix]="'RUB' | tuiCurrency"
-            >
-                Input money
-            </tui-input-number>
+            <tui-textfield>
+                <label tuiLabel>Input money</label>
+                <input
+                    formControlName="moneyValue"
+                    tuiInputNumber
+                    [postfix]="' ' + 'RUB' | tuiCurrency"
+                />
+            </tui-textfield>
             <tui-error
                 formControlName="moneyValue"
                 [error]="[] | tuiFieldError | async"

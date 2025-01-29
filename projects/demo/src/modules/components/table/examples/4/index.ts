@@ -21,13 +21,9 @@ import {
     TuiLabel,
     TuiLoader,
     TuiNumberFormat,
+    TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiCheckbox, TuiChevron} from '@taiga-ui/kit';
-import {
-    TuiInputModule,
-    TuiInputNumberModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiCheckbox, TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -118,8 +114,7 @@ function getAge({dob}: User): number {
         TuiCheckbox,
         TuiChevron,
         TuiDropdown,
-        TuiInputModule,
-        TuiInputNumberModule,
+        TuiInputNumber,
         TuiLabel,
         TuiLet,
         TuiLoader,
@@ -127,7 +122,7 @@ function getAge({dob}: User): number {
         TuiReorder,
         TuiTable,
         TuiTablePagination,
-        TuiTextfieldControllerModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

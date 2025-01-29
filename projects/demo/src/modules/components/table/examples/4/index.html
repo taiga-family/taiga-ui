@@ -2,19 +2,22 @@
     tuiTextfieldSize="m"
     class="filters"
 >
-    <tui-input
-        class="input"
-        [tuiTextfieldCleaner]="true"
-        [(ngModel)]="search"
-    >
-        Find on page
-    </tui-input>
-    <tui-input-number
-        [formControl]="minAge"
-        [tuiNumberFormat]="{precision: 0}"
-    >
-        Minimum age
-    </tui-input-number>
+    <tui-textfield class="input">
+        <label tuiLabel>Find on page</label>
+        <input
+            tuiTextfield
+            [(ngModel)]="search"
+        />
+    </tui-textfield>
+
+    <tui-textfield>
+        <label tuiLabel>Minimum age</label>
+        <input
+            tuiInputNumber
+            [formControl]="minAge"
+            [tuiNumberFormat]="{precision: 0}"
+        />
+    </tui-textfield>
 </p>
 <p class="filters">
     <label tuiLabel>
