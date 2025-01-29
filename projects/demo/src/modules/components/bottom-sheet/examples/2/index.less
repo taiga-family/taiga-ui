@@ -9,7 +9,7 @@
 }
 
 .map {
-    inline-size: 20rem;
+    inline-size: 18rem;
     block-size: 30rem;
     border: none;
 }
@@ -25,7 +25,7 @@
     justify-content: flex-end;
     box-sizing: border-box;
     pointer-events: none;
-    transform: translateY(calc(-1px * var(--top)));
+    transform: translate3d(0, calc(-1px * var(--top)), 0);
 
     &::before {
         .fullsize();

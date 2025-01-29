@@ -25,8 +25,7 @@
             tuiButton
             type="button"
         >
-            Buy
-            <span class="tui-space_left-1">{{ 12.99 | tuiAmount: 'USD' | async }}</span>
+            Buy {{ 12.99 | tuiAmount: 'USD' | async }}
         </button>
         <button
             appearance="secondary"
@@ -34,8 +33,7 @@
             tuiButton
             type="button"
         >
-            Rent
-            <span class="tui-space_left-1">{{ 4.99 | tuiAmount: 'USD' | async }}</span>
+            Rent {{ 4.99 | tuiAmount: 'USD' | async }}
         </button>
     </p>
     <button
@@ -72,14 +70,10 @@
     <p>Terry Jones</p>
     <hr />
     <h3>Budget:</h3>
-    <p>
-        <span>{{ 400000 | tuiAmount: 'USD' | async }}</span>
-    </p>
+    <p>{{ 400000 | tuiAmount: 'USD' | async }}</p>
     <hr />
     <h3>Box office:</h3>
-    <p>
-        <span>{{ 5000000 | tuiAmount: 'USD' | async }}</span>
-    </p>
+    <p>{{ 5000000 | tuiAmount: 'USD' | async }}</p>
     <hr />
     <h3>Release date</h3>
     <p>April 3, 1975</p>

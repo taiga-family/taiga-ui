@@ -26,6 +26,7 @@ const OPTIONS = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-start]': 'stops[0]',
+        '[style.scroll-snap-type]': 'stops.length > 1 ? "y mandatory" : null',
         '(scroll.silent)': 'onScroll()',
         '(resize)': 'onScroll()',
     },
@@ -44,13 +45,16 @@ export class TuiBottomSheet {
     public stops: readonly string[] = ['1.5rem'];
 
     protected onScroll(): void {
-        const {clientHeight, scrollTop} = this.el;
+        const {clientHeight, scrollTop, scrollHeight} = this.el;
         const top = this.elements.get(0)?.nativeElement.clientHeight || 0;
         const max = this.content?.nativeElement.clientHeight || Infinity;
         const height = Math.min(clientHeight, max);
         const scrolled = Math.min(scrollTop, height - top);
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
+        this.el.style.setProperty('--t-height', `${scrollHeight}px`);
         this.el.animate([{transform}], OPTIONS);
     }
+
+    protected readonly stop = stop;
 }
