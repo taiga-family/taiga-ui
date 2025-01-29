@@ -66,6 +66,7 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
     @HostListener('document:click.silent', ['$event.target'])
     @HostListener('document:contextmenu.capture.silent', ['$event.target'])
     @HostListener('document:keydown.esc', ['$event.currentTarget'])
+    @HostListener('document:pointerdown.silent', ['$event.target'])
     closeDropdown(): void {
         this.stream$.next(false);
         this.currentRect = EMPTY_CLIENT_RECT;
