@@ -5,11 +5,20 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiArcChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, FormsModule, TuiAmountPipe, TuiArcChart, TuiInputNumberModule],
+    imports: [
+        AsyncPipe,
+        FormsModule,
+        TuiAmountPipe,
+        TuiArcChart,
+        TuiInputNumber,
+        TuiNumberFormat,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -19,4 +28,8 @@ export default class Example {
     protected readonly value = [40, 30, 20, 10];
 
     protected activeItemIndex = NaN;
+
+    public onTextfieldChange(value: number | null): void {
+        this.activeItemIndex = value ?? NaN;
+    }
 }

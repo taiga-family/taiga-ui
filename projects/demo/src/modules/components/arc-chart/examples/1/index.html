@@ -1,11 +1,19 @@
-<tui-input-number
-    decimal="never"
+<tui-textfield
     class="index-controller"
-    [step]="1"
-    [(ngModel)]="activeItemIndex"
+    [tuiTextfieldCleaner]="false"
 >
-    activeItemIndex
-</tui-input-number>
+    <label tuiLabel>activeItemIndex</label>
+
+    <input
+        tuiInputNumber
+        [max]="value.length - 1"
+        [min]="0"
+        [ngModel]="activeItemIndex"
+        [step]="1"
+        [tuiNumberFormat]="{precision: 0}"
+        (ngModelChange)="onTextfieldChange($event)"
+    />
+</tui-textfield>
 
 <div class="wrapper">
     <tui-arc-chart
