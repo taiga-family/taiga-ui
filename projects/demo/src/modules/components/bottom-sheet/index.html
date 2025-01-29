@@ -16,21 +16,13 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>kek</tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[size]"
+                name="[stops]"
                 tuiDocAPIItem
-                type="TuiSizeS | TuiSizeL"
+                type="readonly string[]"
             >
-                Size
-            </tr>
-            <tr
-                name="[value]"
-                tuiDocAPIItem
-                type="readonly number[]"
-            >
-                An array of segments
+                Scroll snap stops
             </tr>
         </table>
     </ng-template>

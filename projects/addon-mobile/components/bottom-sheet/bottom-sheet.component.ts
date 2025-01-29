@@ -3,14 +3,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
-    EventEmitter,
     Input,
-    Output,
     type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiInjectElement} from '@taiga-ui/cdk';
+import {tuiHeaderOptionsProvider} from '@taiga-ui/layout';
 
 const OPTIONS = {
     duration: 20,
@@ -23,6 +22,7 @@ const OPTIONS = {
     selector: 'tui-bottom-sheet',
     templateUrl: './bottom-sheet.template.html',
     styleUrls: ['./bottom-sheet.style.less'],
+    providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-start]': 'stops[0]',
@@ -41,10 +41,7 @@ export class TuiBottomSheet {
     private readonly el = tuiInjectElement();
 
     @Input()
-    public readonly stops = ['1.5rem'];
-
-    @Output()
-    public readonly position = new EventEmitter<number>();
+    public stops = ['1.5rem'];
 
     protected onScroll(): void {
         const {clientHeight, scrollTop} = this.el;
@@ -55,6 +52,5 @@ export class TuiBottomSheet {
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
         this.el.animate([{transform}], OPTIONS);
-        this.position.emit(scrolled);
     }
 }

@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation,
     changeDetection,
 })
-export default class Page {
-    protected readonly examples = ['Basic', 'Reacting to scroll', 'Stops'];
-}
+export default class Example {}

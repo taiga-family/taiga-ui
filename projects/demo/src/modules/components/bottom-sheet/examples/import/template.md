@@ -1,3 +1,3 @@
 ```html
-<tui-bar [value]="value"></tui-bar>
+<tui-bottom-sheet>Content</tui-bottom-sheet>
 ```
