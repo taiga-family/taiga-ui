@@ -88,47 +88,47 @@
                 </button>
             </div>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="collapsed"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="collapsed"
+        <table tuiDocAPI>
+            <tr
+                name="[collapsed]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="collapsed"
             >
                 Remove margin between items (
                 <code>2px</code>
                 by default)
-            </ng-template>
+            </tr>
 
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="rounded"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="rounded"
+            <tr
+                name="[rounded]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="rounded"
             >
                 The first and the last items are rounded
-            </ng-template>
+            </tr>
 
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="orientation"
-                documentationPropertyType="TuiOrientation"
-                [documentationPropertyValues]="orientationVariants"
-                [(documentationPropertyValue)]="orientation"
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="TuiOrientation"
+                [items]="orientationVariants"
+                [(value)]="orientation"
             >
                 Horizontal or vertical direction of group
-            </ng-template>
+            </tr>
 
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size of rounding
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
