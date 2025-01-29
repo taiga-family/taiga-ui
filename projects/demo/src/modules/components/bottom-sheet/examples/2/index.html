@@ -32,7 +32,7 @@
 <tui-bottom-sheet
     class="sheet"
     [stops]="['7rem']"
-    (scroll)="onScroll()"
+    (scroll.silent)="onScroll()"
 >
     <h3 tuiHeader>
         <span tuiTitle>

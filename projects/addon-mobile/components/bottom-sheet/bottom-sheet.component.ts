@@ -26,7 +26,7 @@ const OPTIONS = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-start]': 'stops[0]',
-        '(scroll)': 'onScroll()',
+        '(scroll.silent)': 'onScroll()',
         '(resize)': 'onScroll()',
     },
     imports: [NgForOf],
