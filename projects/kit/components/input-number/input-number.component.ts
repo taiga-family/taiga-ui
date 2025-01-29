@@ -178,7 +178,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }
 
     public override writeValue(value: number | null): void {
-        super.writeValue(value);
+        super.writeValue(Number.isNaN(value) ? null : value);
         this.textfieldValue.set(this.formatNumber(this.value()));
     }
 
@@ -210,7 +210,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }
 
     private formatNumber(value: number | null): string {
-        if (value === null) {
+        if (value === null || Number.isNaN(value)) {
             return '';
         }
 
