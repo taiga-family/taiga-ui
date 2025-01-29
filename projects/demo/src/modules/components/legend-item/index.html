@@ -37,50 +37,50 @@
                 pipe is used to format currency and fraction
             </p>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="active"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="active"
+        <table tuiDocAPI>
+            <tr
+                name="[active]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="active"
             >
                 Active state from outside
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="color"
-                documentationPropertyType="TuiColor | string | null"
-                [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="color"
+            </tr>
+            <tr
+                name="[color]"
+                tuiDocAPIItem
+                type="TuiColor | string | null"
+                [items]="colorVariants"
+                [(value)]="color"
             >
                 Indicator color
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+            </tr>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled item (i.e. hidden from the related chart)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="text"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="text"
             >
                 Text inside
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
