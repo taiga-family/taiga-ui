@@ -4,6 +4,8 @@
     position: relative;
     display: block;
     overflow: hidden;
+
+    --top: 0;
 }
 
 .map {
@@ -23,13 +25,14 @@
     justify-content: flex-end;
     box-sizing: border-box;
     pointer-events: none;
+    transform: translateY(calc(-1px * var(--top)));
 
     &::before {
         .fullsize();
 
         content: '';
         background: var(--tui-service-backdrop);
-        opacity: 0;
+        opacity: calc(var(--top) / 300);
     }
 
     & > * {

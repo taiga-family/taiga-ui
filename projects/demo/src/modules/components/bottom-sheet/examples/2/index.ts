@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
@@ -15,14 +15,14 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiBottomSheet, {read: ElementRef})
-    private readonly sheet?: ElementRef<HTMLElement>;
     private readonly el = tuiInjectElement();
 
-    protected onScroll() {
-        this.el.style.setProperty(
-            '--top',
-            String(this.sheet?.nativeElement.scrollTop || 0),
-        );
+    protected readonly stops = ['112px'] as const;
+
+    protected onScroll({clientHeight, scrollTop}: HTMLElement) {
+        const offset = Number.parseInt(this.stops[0], 10);
+        const top = Math.min(scrollTop, clientHeight - offset);
+
+        this.el.style.setProperty('--top', String(top));
     }
 }

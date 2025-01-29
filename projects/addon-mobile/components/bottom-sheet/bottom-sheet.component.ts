@@ -41,7 +41,7 @@ export class TuiBottomSheet {
     private readonly el = tuiInjectElement();
 
     @Input()
-    public stops = ['1.5rem'];
+    public stops: readonly string[] = ['1.5rem'];
 
     protected onScroll(): void {
         const {clientHeight, scrollTop} = this.el;

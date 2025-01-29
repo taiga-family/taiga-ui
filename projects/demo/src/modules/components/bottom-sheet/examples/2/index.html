@@ -31,7 +31,8 @@
 </div>
 <tui-bottom-sheet
     class="sheet"
-    [stops]="['7rem']"
+    [stops]="stops"
+    (scroll.silent)="onScroll($any($event.target))"
 >
     <h3 tuiHeader>
         <span tuiTitle>
