@@ -1,5 +1,6 @@
 codecov:
   branch: main
+  max_report_age: off
   notify:
     require_ci_to_pass: no
 
