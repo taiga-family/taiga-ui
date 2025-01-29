@@ -140,13 +140,14 @@ describe('InputTag', () => {
         });
 
         it('when exiting the field adds input as a tag', async () => {
+            inputPO.sendText('0');
             focusStealer.focus();
             fixture.detectChanges();
 
             await fixture.whenStable();
 
-            expect(component.value.length).toBe(4);
-            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(5);
+            expect(component.value[4]).toBe('0');
         });
 
         it('does not add empty tags when leaving the field', () => {
@@ -167,7 +168,7 @@ describe('InputTag', () => {
         });
 
         it('pressing Enter on the field adds the input as a tag', () => {
-            inputPO.sendText('0');
+            inputPO.sendText(' 0');
             inputPO.sendKeydown('enter');
 
             expect(component.value[4]).toBe('0');
