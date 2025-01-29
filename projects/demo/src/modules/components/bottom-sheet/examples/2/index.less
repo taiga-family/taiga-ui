@@ -23,14 +23,13 @@
     justify-content: flex-end;
     box-sizing: border-box;
     pointer-events: none;
-    transform: translateY(~'max(-1px * var(--top), -18.75rem)');
 
     &::before {
         .fullsize();
 
         content: '';
         background: var(--tui-service-backdrop);
-        opacity: calc(var(--top) / 300);
+        opacity: 0;
     }
 
     & > * {
