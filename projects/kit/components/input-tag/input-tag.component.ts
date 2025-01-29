@@ -34,6 +34,7 @@ import {
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
+    tuiIsString,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import {
@@ -439,11 +440,16 @@ export class TuiInputTagComponent
         const array = value.split(this.separator);
         const tags = array
             .map(item => this.clippedValue(item.trim()))
-            .filter((item, index, {length}) => item.length > 0 && index !== length - 1);
+            .filter(item => item.length > 0);
         const validated = tags.filter(tag => !this.disabledItemHandler(tag));
 
         if (array.length > 1) {
-            this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
+            const invalid = tags.filter(tag => this.disabledItemHandler(tag));
+            const search = invalid.length
+                ? invalid.join(tuiIsString(this.separator) ? this.separator : ',')
+                : '';
+
+            this.updateSearch(search);
             this.value = this.filterValue([...this.value, ...validated]);
         } else {
             this.updateSearch(this.clippedValue(value));
