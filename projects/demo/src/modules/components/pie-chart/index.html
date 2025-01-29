@@ -40,35 +40,35 @@
                 [(activeItemIndex)]="activeItemIndex"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="activeItemIndex"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="activeItemIndexVariants"
-                [(documentationPropertyValue)]="activeItemIndex"
+        <table tuiDocAPI>
+            <tr
+                name="[(activeItemIndex)]"
+                tuiDocAPIItem
+                type="number"
+                [items]="activeItemIndexVariants"
+                [(value)]="activeItemIndex"
             >
                 Active fragment
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="readonly number[]"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 Value
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
