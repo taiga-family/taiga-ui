@@ -129,27 +129,25 @@ describe('InputTag', () => {
         it('Adds tags separated by commas', () => {
             expect(component.value[1]).toBe('1234');
             expect(component.value[2]).toBe('567');
-            expect(component.value.length).toBe(3);
-        });
-
-        it('Leaves the value after the last comma in the input field', () => {
-            expect(inputPO.value).toBe('89');
+            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(4);
         });
 
         it("Doesn't create empty tags", () => {
             inputPO.sendText(' ,  ,,,');
 
-            expect(component.value.length).toBe(3);
+            expect(component.value.length).toBe(4);
         });
 
         it('When exiting the field adds input as a tag', async () => {
+            inputPO.sendText('0');
             focusStealer.focus();
             fixture.detectChanges();
 
             await fixture.whenStable();
 
-            expect(component.value.length).toBe(4);
-            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(5);
+            expect(component.value[4]).toBe('0');
         });
 
         it('Does not add empty tags when leaving the field', () => {
@@ -157,7 +155,7 @@ describe('InputTag', () => {
             focusStealer.focus();
             fixture.detectChanges();
 
-            expect(component.value.length).toBe(3);
+            expect(component.value.length).toBe(4);
         });
 
         it('When adding a tag on leaving the field, the field is cleared', async () => {
@@ -170,20 +168,22 @@ describe('InputTag', () => {
         });
 
         it('Pressing Enter on the field adds the input as a tag', () => {
+            inputPO.sendText(' 0');
             inputPO.sendKeydown('enter');
 
-            expect(component.value.length).toBe(4);
-            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(5);
+            expect(component.value[4]).toBe('0');
         });
 
         it('Pressing Enter on the field does not add empty tags', () => {
             inputPO.sendText('   ');
             inputPO.sendKeydown('enter');
 
-            expect(component.value.length).toBe(3);
+            expect(component.value.length).toBe(4);
         });
 
         it('Pressing Enter on a field clears the field', async () => {
+            inputPO.sendText(' 0');
             inputPO.sendKeydown('enter');
             fixture.detectChanges();
 
@@ -196,7 +196,7 @@ describe('InputTag', () => {
             inputPO.sendText('Tag');
             inputPO.sendKeydown('enter');
 
-            expect(component.value.length).toBe(3);
+            expect(component.value.length).toBe(4);
         });
     });
 
@@ -206,6 +206,18 @@ describe('InputTag', () => {
             inputPO.focus();
             fixture.detectChanges();
             inputPO.sendText('10,5;12,2');
+            focusStealer.focus();
+            fixture.detectChanges();
+
+            expect(component.value[1]).toBe('10,5');
+            expect(component.value[2]).toBe('12,2');
+        });
+
+        it('adds tags last tag without separator', () => {
+            testComponent.separator = ';';
+            inputPO.focus();
+            fixture.detectChanges();
+            inputPO.sendText('10,5;12,2;');
             focusStealer.focus();
             fixture.detectChanges();
 
@@ -238,7 +250,8 @@ describe('InputTag', () => {
 
             expect(component.value[1]).toBe('1234');
             expect(component.value[2]).toBe('567');
-            expect(component.value.length).toBe(3);
+            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(4);
         });
 
         it('breaks into tags on non-breaking space', () => {
@@ -246,7 +259,8 @@ describe('InputTag', () => {
 
             expect(component.value[1]).toBe('1234');
             expect(component.value[2]).toBe('567');
-            expect(component.value.length).toBe(3);
+            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(4);
         });
 
         it('splits into tags by comma', () => {
@@ -254,7 +268,8 @@ describe('InputTag', () => {
 
             expect(component.value[1]).toBe('1234');
             expect(component.value[2]).toBe('567');
-            expect(component.value.length).toBe(3);
+            expect(component.value[3]).toBe('89');
+            expect(component.value.length).toBe(4);
         });
 
         it('When adding Space does not add tag or change value if tagValidator returned false', () => {
