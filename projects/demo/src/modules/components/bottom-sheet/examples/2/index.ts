@@ -23,7 +23,7 @@ export default class Example {
     protected onScroll({clientHeight, scrollTop}: HTMLElement): void {
         const offset = Number.parseInt(this.stops[0], 10);
         const top = Math.min(scrollTop, clientHeight - offset);
-        const transform = `translate3d(0, -${top}px, 0)`;
+        const transform = `translate3d(0, ${-top}px, 0)`;
 
         this.button?.nativeElement.style.setProperty('transform', transform);
     }
