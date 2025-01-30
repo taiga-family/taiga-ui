@@ -1,10 +1,25 @@
-<tui-input-slider
-    [formControl]="control"
-    [max]="max"
-    [min]="min"
-    [quantum]="quantum"
-    [steps]="steps"
-    [tuiHintContent]="hint"
+<tui-textfield
+    iconStart="@tui.euro"
+    tuiInputSlider
+    tuiTextfieldSize="m"
+    [(ngModel)]="value"
 >
-    Select interest rate
-</tui-input-slider>
+    <input
+        placeholder="I am placeholder"
+        tuiInputNumber
+        [max]="100"
+        [min]="0"
+    />
+
+    <input
+        tuiSlider
+        type="range"
+    />
+
+    <tui-icon
+        icon="@tui.circle-alert"
+        style="color: var(--tui-status-negative)"
+    />
+
+    <tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>

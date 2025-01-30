@@ -64,8 +64,24 @@ export class TuiSliderComponent {
         return Number(this.el.min);
     }
 
+    public set min(x: number) {
+        this.el.min = String(x);
+    }
+
     public get max(): number {
         return Number(this.el.max || 100);
+    }
+
+    public set max(x: number) {
+        this.el.max = String(x);
+    }
+
+    public get step(): number {
+        return Number(this.el.step) || 1;
+    }
+
+    public set step(x: number) {
+        this.el.step = String(x);
     }
 
     public get value(): number {
@@ -91,9 +107,5 @@ export class TuiSliderComponent {
 
     protected get segmentWidth(): number {
         return 100 / Math.max(1, this.segments);
-    }
-
-    protected get step(): number {
-        return Number(this.el.step) || 1;
     }
 }

@@ -1,18 +1,20 @@
 ```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputSliderModule} from '@taiga-ui/legacy';
-
-// ...
+import {FormsModule} from '@angular/forms';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
   imports: [
     // ...
     FormsModule,
-    ReactiveFormsModule,
-    TuiInputSliderModule,
+    TuiTextfield,
+    TuiInputSlider,
+    TuiNumberFormat,
   ],
   // ...
 })
-export class Example {}
+export class Example {
+  value = 0;
+}
 ```

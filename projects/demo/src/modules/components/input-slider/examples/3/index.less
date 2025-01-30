@@ -4,5 +4,18 @@
     .tui-slider-ticks-labels();
 
     color: var(--tui-text-secondary);
-    margin-top: 0.5rem;
+    align-items: center;
+    margin-top: 0.25rem;
+
+    & > [tuiIconButton]:first-child {
+        justify-content: start;
+    }
+
+    & > [tuiIconButton]:last-child {
+        justify-content: end;
+    }
+
+    & > [tuiIconButton]::before {
+        margin: 0;
+    }
 }

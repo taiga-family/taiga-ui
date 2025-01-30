@@ -1,4 +1,7 @@
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
+
+import type {TuiSliderComponent} from '../slider.component';
 
 /**
  * Used as a limit for eliminating JS issues with floating point math
@@ -66,4 +69,27 @@ export function tuiKeyStepValueToPercentage(
     const ratio = (value - lowerStepValue) / (upperStepValue - lowerStepValue) || 0;
 
     return (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;
+}
+
+export function tuiCreateKeyStepsTransformer(
+    keySteps: TuiKeySteps,
+    slider: TuiSliderComponent,
+): TuiValueTransformer<number, number> {
+    return new (class implements TuiValueTransformer<number, number> {
+        public fromControlValue(controlValue: number): number {
+            const newValuePercentage = tuiKeyStepValueToPercentage(
+                controlValue,
+                keySteps,
+            );
+
+            return (newValuePercentage * (slider.max - slider.min)) / 100 + slider.min;
+        }
+
+        public toControlValue(nativeValue: number): number {
+            const valueRatio =
+                (nativeValue - slider.min) / (slider.max - slider.min) || 0;
+
+            return tuiPercentageToKeyStepValue(valueRatio * 100, keySteps);
+        }
+    })();
 }
