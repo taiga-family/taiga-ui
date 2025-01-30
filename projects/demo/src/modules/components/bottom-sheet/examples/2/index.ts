@@ -1,4 +1,5 @@
-import {Component, type ElementRef, ViewChild} from '@angular/core';
+import type {ElementRef} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
@@ -7,7 +8,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiBottomSheet, TuiHeader, TuiTitle, TuiButton],
+    imports: [TuiBottomSheet, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -16,6 +17,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 export default class Example {
     @ViewChild('buttons')
     protected readonly button?: ElementRef<HTMLElement>;
+
     protected readonly stops = ['112px'] as const;
 
     protected onScroll({clientHeight, scrollTop}: HTMLElement): void {

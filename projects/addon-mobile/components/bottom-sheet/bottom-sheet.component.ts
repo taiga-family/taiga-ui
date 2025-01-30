@@ -1,10 +1,9 @@
 import {NgForOf} from '@angular/common';
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
     Input,
-    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -21,17 +20,17 @@ const OPTIONS = {
 @Component({
     standalone: true,
     selector: 'tui-bottom-sheet',
+    imports: [NgForOf],
     templateUrl: './bottom-sheet.template.html',
     styleUrls: ['./bottom-sheet.style.less'],
-    providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {
         '[style.--t-start]': 'stops[0]',
         '[style.scroll-snap-type]': 'stops.length > 1 ? "y mandatory" : null',
         '(scroll.silent)': 'onScroll()',
         '(resize)': 'onScroll()',
     },
-    imports: [NgForOf],
 })
 export class TuiBottomSheet {
     @ViewChildren('stops')
