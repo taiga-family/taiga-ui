@@ -34,12 +34,12 @@ export default class Example {
     protected messages = ['Check that awesome bottom sheet out!'];
     protected value = '';
 
-    onClick(message: string) {
+    protected onClick(message: string): void {
         this.messages = this.messages.concat(message);
         this.sheet?.nativeElement.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    onSubmit() {
+    protected onSubmit(): void {
         this.messages = this.messages.concat(this.value);
         this.value = '';
     }

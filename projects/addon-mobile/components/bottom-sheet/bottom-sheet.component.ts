@@ -8,8 +8,9 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiInjectElement} from '@taiga-ui/cdk';
-import {tuiHeaderOptionsProvider} from '@taiga-ui/layout';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
 const OPTIONS = {
     duration: 20,
