@@ -55,6 +55,4 @@ export class TuiBottomSheet {
         this.el.style.setProperty('--t-height', `${scrollHeight}px`);
         this.el.animate([{transform}], OPTIONS);
     }
-
-    protected readonly stop = stop;
 }
