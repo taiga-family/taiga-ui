@@ -1,9 +1,11 @@
 import {NgIf} from '@angular/common';
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
+    ContentChildren,
     ElementRef,
     forwardRef,
     inject,
@@ -16,6 +18,8 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -102,6 +106,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {static: true})
     public readonly directive?: TuiTextfieldDirective<T>;
+
+    @ContentChildren(TuiControl)
+    public readonly controlQuery: QueryList<TuiControl<unknown>> = EMPTY_QUERY;
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {
         read: ElementRef,

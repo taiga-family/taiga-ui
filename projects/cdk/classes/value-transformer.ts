@@ -14,3 +14,21 @@ export function tuiValueTransformerFrom<
         useFactory: () => inject(token).valueTransformer,
     };
 }
+
+export class TuiNonNullableValueTransformer<T>
+    implements TuiValueTransformer<T | null, T>
+{
+    private prevValue!: T;
+
+    public fromControlValue(value: T): T {
+        this.prevValue = value;
+
+        return value;
+    }
+
+    public toControlValue(value: T | null): T {
+        this.prevValue = value ?? this.prevValue;
+
+        return this.prevValue;
+    }
+}

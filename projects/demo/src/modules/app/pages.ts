@@ -596,6 +596,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputSlider [deprecated]',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: DemoRoute.InputSliderLegacy,
+            },
+            {
+                section: 'Components',
                 title: 'InputTag',
                 keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: DemoRoute.InputTag,
@@ -863,9 +869,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider',
+                title: 'InputSlider [deprecated]',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSlider,
+                route: DemoRoute.InputSliderLegacy,
             },
             {
                 section: 'Components',

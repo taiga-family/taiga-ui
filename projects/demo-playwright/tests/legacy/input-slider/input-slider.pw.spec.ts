@@ -11,7 +11,7 @@ test.describe('InputSlider', () => {
         let documentationPage!: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputSlider);
+            await tuiGoto(page, DemoRoute.InputSliderLegacy);
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
@@ -208,7 +208,10 @@ test.describe('InputSlider', () => {
     test('disables both text field and slider when host component has disabled state', async ({
         page,
     }) => {
-        await tuiGoto(page, `${DemoRoute.InputSlider}/API?min=-10&max=10&disabled=true`);
+        await tuiGoto(
+            page,
+            `${DemoRoute.InputSliderLegacy}/API?min=-10&max=10&disabled=true`,
+        );
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 

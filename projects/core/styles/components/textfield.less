@@ -182,12 +182,12 @@ tui-textfield {
         color: var(--tui-text-primary);
     }
 
-    &._with-template input,
+    &._with-template input:first-of-type,
     &._with-template select {
         color: transparent !important;
     }
 
-    input:defined,
+    input:defined:first-of-type,
     select:defined {
         pointer-events: auto;
         background: transparent;
