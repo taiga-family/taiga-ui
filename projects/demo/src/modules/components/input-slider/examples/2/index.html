@@ -1,39 +1,22 @@
-<tui-input-slider
-    [formControl]="control"
-    [max]="max"
-    [min]="min"
-    [segments]="5"
+<tui-textfield
+    tuiInputSlider
+    [(ngModel)]="value"
 >
-    Rate your mind
-</tui-input-slider>
+    <input
+        placeholder="Form control value is still {{ value }}"
+        prefix="$"
+        tuiInputNumber
+        [max]="10000"
+        [min]="0"
+        [tuiNumberFormat]="{
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+            precision: 1,
+        }"
+    />
 
-<div class="slider-ticks-labels">
-    <span>
-        <button
-            appearance="icon"
-            iconStart="@tui.thumbs-down"
-            size="xs"
-            tuiIconButton
-            type="button"
-            (click)="decrease()"
-        >
-            Decrease
-        </button>
-    </span>
-    <span>20%</span>
-    <span>40%</span>
-    <span>60%</span>
-    <span>80%</span>
-    <span>
-        <button
-            appearance="icon"
-            iconStart="@tui.thumbs-up"
-            size="xs"
-            tuiIconButton
-            type="button"
-            (click)="increase()"
-        >
-            Increase
-        </button>
-    </span>
-</div>
+    <input
+        tuiSlider
+        type="range"
+    />
+</tui-textfield>

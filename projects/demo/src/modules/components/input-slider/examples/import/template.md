@@ -1,9 +1,23 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-input-slider
-    formControlName="testValue"
-    max="1000"
-    quantum="10"
-  ></tui-input-slider>
-</form>
+<tui-textfield
+  tuiInputSlider
+  [(ngModel)]="value"
+>
+  <input
+    tuiInputNumber
+    prefix="$"
+    postfix="%"
+    [min]="0"
+    [max]="100"
+    [tuiNumberFormat]="{precision: 3}"
+  />
+
+  <input
+    tuiSlider
+    type="range"
+    [keySteps]="keySteps"
+    [segments]="segments"
+    [step]="step"
+  />
+</tui-textfield>
 ```
