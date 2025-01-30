@@ -1,0 +1,15 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    position: absolute;
+    display: flex;
+    inline-size: 100%;
+    block-size: 100%;
+    pointer-events: none;
+}
+
+.t-svg {
+    block-size: calc(100% + 1px);
+    transform: scale(1, -1);
+    margin: -0.03125rem 0;
+}

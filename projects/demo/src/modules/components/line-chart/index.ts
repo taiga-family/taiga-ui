@@ -19,6 +19,8 @@ export default class Page {
         'Dotted',
         'Hint',
         'Several lines with hints',
+        'Experimental',
+        'Experimental with several lines',
     ];
 
     protected readonly value: readonly TuiPoint[] = [

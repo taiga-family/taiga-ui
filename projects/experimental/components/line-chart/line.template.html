@@ -1,0 +1,42 @@
+<svg
+    focusable="false"
+    height="100%"
+    preserveAspectRatio="none"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+    class="t-svg"
+    [attr.viewBox]="viewBox()"
+>
+    <defs>
+        <linearGradient
+            x1="0"
+            x2="0"
+            y1="1"
+            y2="0"
+            [attr.id]="fillId"
+        >
+            <stop
+                offset="0%"
+                stop-color="currentColor"
+                stop-opacity="0.5"
+            />
+            <stop
+                offset="100%"
+                stop-color="currentColor"
+                stop-opacity="0"
+            />
+        </linearGradient>
+    </defs>
+    <path
+        stroke="none"
+        [attr.d]="fillD"
+        [attr.fill]="fill"
+    />
+    <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+        [attr.d]="d"
+    />
+</svg>

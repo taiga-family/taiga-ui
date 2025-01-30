@@ -1,0 +1,61 @@
+<ng-container *ngFor="let value of values(); let i = index">
+    <tui-line
+        [height]="height"
+        [smoothingFactor]="smoothingFactor"
+        [style.color]="'var(--tui-chart-categorical-0' + i + ')'"
+        [value]="value"
+        [width]="width"
+        [x]="x"
+        [y]="y"
+    />
+
+    <ng-container *ngIf="dots">
+        <div
+            *ngFor="let point of points()[i]"
+            class="t-dot"
+            [style.bottom.%]="point.bottom"
+            [style.color]="'var(--tui-chart-categorical-0' + i + ')'"
+            [style.left.%]="point.left"
+        ></div>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="hasHints && currentPoints()[0] as point">
+    <div
+        class="t-line t-line_vertical"
+        [style.left.%]="point.left"
+    ></div>
+    <div
+        *ngIf="isFocusable && values().length === 1"
+        class="t-line t-line_horizontal"
+        [style.bottom.%]="point.bottom"
+    ></div>
+
+    <div
+        *ngIf="xStringify"
+        class="t-hint t-hint_x"
+        [style.left.%]="point.left"
+    >
+        {{ xStringify(point.value[0]) }}
+    </div>
+    <div
+        *ngIf="yStringify"
+        class="t-hint t-hint_y"
+        [style.bottom.%]="point.bottom"
+    >
+        {{ yStringify(point.value[1]) }}
+    </div>
+
+    <ng-container *ngFor="let point of currentPoints(); let i = index; trackBy: trackByIndex">
+        <div
+            #hintHost
+            id="tui-hint-chart"
+            class="t-host"
+            [style.bottom.%]="point.bottom"
+            [style.color]="'var(--tui-chart-categorical-0' + i + ')'"
+            [style.left.%]="point.left"
+            [style.zIndex]="point.bottom * 10"
+            [tabIndex]="isFocusable ? 0 : -1"
+        ></div>
+    </ng-container>
+</ng-container>
