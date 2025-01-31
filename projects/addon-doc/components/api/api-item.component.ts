@@ -1,5 +1,5 @@
 import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
-import type {OnInit} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -49,7 +49,7 @@ const SERIALIZED_SUFFIX = '$';
     styleUrls: ['./api-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocAPIItem<T> implements OnInit {
+export class TuiDocAPIItem<T> implements AfterViewInit {
     private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -71,7 +71,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     @Output()
     public readonly valueChange = new EventEmitter<T>();
 
-    public ngOnInit(): void {
+    public ngAfterViewInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
