@@ -102,9 +102,6 @@ export class TuiInputSliderDirective {
     });
 
     constructor() {
-        // TODO: remove it after CSS pseudo-class :has() becomes fully supported
-        this.host.el.classList.add('_hide-buttons');
-
         effect(() => {
             const inputNumber = this.inputNumber();
 
