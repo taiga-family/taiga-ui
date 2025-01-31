@@ -107,6 +107,7 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    protected readonly step = signal(this.options.step);
     protected readonly prefix = signal(this.options.prefix);
     protected readonly postfix = signal(this.options.postfix);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
@@ -148,7 +149,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
 
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
-    public readonly step = signal(this.options.step);
 
     @Input('min')
     public set minSetter(x: number | null) {
