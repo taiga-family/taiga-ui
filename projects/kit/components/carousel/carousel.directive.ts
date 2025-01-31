@@ -1,4 +1,5 @@
-import {Directive, inject, Input} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {Directive, inject, Input, PLATFORM_ID} from '@angular/core';
 import {WA_PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIfMap, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -10,6 +11,7 @@ import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from '
 })
 export class TuiCarouselDirective extends Observable<unknown> {
     private readonly el = tuiInjectElement();
+    private readonly platform = inject(PLATFORM_ID);
     private readonly visible$ = inject(WA_PAGE_VISIBILITY);
     private readonly duration$ = new BehaviorSubject(0);
     private readonly running$ = merge(
@@ -20,7 +22,12 @@ export class TuiCarouselDirective extends Observable<unknown> {
         this.visible$,
     );
 
-    private readonly output$ = combineLatest([this.duration$, this.running$]).pipe(
+    private readonly output$ = combineLatest([
+        this.duration$.pipe(
+            map((duration) => (isPlatformServer(this.platform) ? 0 : duration)),
+        ),
+        this.running$,
+    ]).pipe(
         tuiIfMap(
             ([duration]) => interval(duration),
             (values) => values.every(Boolean),
