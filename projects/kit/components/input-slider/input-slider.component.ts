@@ -1,7 +1,5 @@
 import type {QueryList, WritableSignal} from '@angular/core';
 import {
-    ChangeDetectionStrategy,
-    Component,
     computed,
     Directive,
     effect,
@@ -9,7 +7,6 @@ import {
     INJECTOR,
     Input,
     signal,
-    ViewEncapsulation,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
@@ -17,7 +14,7 @@ import {TuiNonNullableValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiContentChild} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiIsPresent, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import type {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
@@ -27,18 +24,6 @@ import {
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {filter, map, pairwise, startWith, switchMap} from 'rxjs';
-
-@Component({
-    standalone: true,
-    template: '',
-    styleUrls: ['./input-slider.style.less'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-input-slider',
-    },
-})
-class TuiInputSliderStyles {}
 
 @Directive({
     standalone: true,
@@ -60,7 +45,6 @@ export class TuiInputSliderDirective {
     private readonly step: WritableSignal<number> = signal(1);
     private keyStepsTransformer: TuiValueTransformer<number, number> | null = null;
 
-    protected readonly $ = tuiWithStyles(TuiInputSliderStyles);
     protected readonly host = inject(TuiTextfieldComponent);
     protected readonly slider = inject(TuiSliderComponent);
     protected readonly inputNumber = tuiContentChild(
