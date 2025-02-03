@@ -263,8 +263,10 @@ test.describe('InputDate', () => {
         test('Enter item date, it converts to item name', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
 
+            const today = new Date(2020, 8, 25).toLocaleDateString('fr-FR');
+
             await inputDate.textfield.focus();
-            await inputDate.textfield.fill('31.12.9998');
+            await inputDate.textfield.fill(today);
 
             await expect(inputDate.textfield).toHaveValue('Until today');
             await expect(inputDate.textfield).toHaveScreenshot('13-input-date.png');
