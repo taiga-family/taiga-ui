@@ -11,7 +11,7 @@ import {tuiScrollFrom, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {SCROLL_REF_SELECTOR} from '@taiga-ui/core/components/scrollbar';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, Observable, Subscription} from 'rxjs';
+import {distinctUntilChanged, map, Observable, scan, Subscription} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
@@ -27,19 +27,20 @@ export class TuiElasticStickyService extends Observable<number> {
 
             afterNextRender(
                 () => {
-                    const host = this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
-                    const {offsetTop} = tuiGetElementOffset(host, this.el);
-                    const {offsetHeight} = this.el;
-                    const teardown = tuiScrollFrom(host)
+                    const teardown = tuiScrollFrom(this.host)
                         .pipe(
-                            map(() =>
+                            scan(
+                                (top) => (this.pinned ? top : this.offsetTop),
+                                this.offsetTop,
+                            ),
+                            map((top) =>
                                 Math.max(
                                     1 -
                                         Math.max(
-                                            Math.round(host.scrollTop) - offsetTop,
+                                            Math.round(this.host.scrollTop) - top,
                                             0,
                                         ) /
-                                            offsetHeight,
+                                            this.el.offsetHeight,
                                     0,
                                 ),
                             ),
@@ -60,5 +61,21 @@ export class TuiElasticStickyService extends Observable<number> {
 
             return subscription;
         });
+    }
+
+    private get host(): Element {
+        return this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
+    }
+
+    private get offsetTop(): number {
+        return tuiGetElementOffset(this.host, this.el).offsetTop;
+    }
+
+    private get pinned(): boolean {
+        return (
+            this.el.getBoundingClientRect().top -
+                this.host.getBoundingClientRect().top ===
+            0
+        );
     }
 }
