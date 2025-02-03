@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
+import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {
     tuiContainsOrAfter,
@@ -24,7 +25,9 @@ export class TuiDialogCloseService extends Observable<unknown> {
             const target = tuiGetActualTarget(event);
 
             return (
-                event.key === 'Escape' &&
+                // @ts-ignore
+                typeof CloseWatcher === 'undefined' &&
+                event.key.toLowerCase() === 'escape' &&
                 !event.defaultPrevented &&
                 (this.el.contains(target) || this.isOutside(target))
             );
@@ -47,7 +50,13 @@ export class TuiDialogCloseService extends Observable<unknown> {
     );
 
     constructor() {
-        super((subscriber) => merge(this.esc$, this.mousedown$).subscribe(subscriber));
+        super((subscriber) =>
+            merge(
+                this.esc$,
+                this.mousedown$,
+                tuiCloseWatcher().pipe(tuiZonefull()),
+            ).subscribe(subscriber),
+        );
     }
 
     private isOutside(target: EventTarget): boolean {

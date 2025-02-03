@@ -7,6 +7,8 @@ import {
     inject,
     ViewChildren,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,15 +16,10 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {shouldCall} from '@taiga-ui/event-plugins';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {filter, isObservable, merge, of, Subject, switchMap} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
-
-// So we re-enter ngZone and trigger change detection
-function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
-    return this.context.closeable === true;
-}
 
 @Component({
     standalone: true,
@@ -36,13 +33,13 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     host: {
         '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
-        '[class._closeable]': 'context.closeable === true',
+        '[class._closeable]': 'context.closeable',
         '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
         '(scroll.zoneless)': 'onPointerChange(0)',
-        '(click.self)': 'close()',
+        '(click.self)': 'close$.next()',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
@@ -63,24 +60,43 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     protected readonly context =
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
-    public ngAfterViewInit(): void {
-        this.el.scrollTop =
-            [
-                ...this.stops.map((e) => e.nativeElement.offsetTop - this.context.offset),
-                this.el.clientHeight ?? Infinity,
-            ][this.context.initial] ?? 0;
-    }
+    protected readonly close$ = new Subject<void>();
+    protected readonly $ = merge(this.close$, tuiCloseWatcher())
+        .pipe(
+            tuiZonefull(),
+            switchMap(() => {
+                if (isObservable(this.context.closeable)) {
+                    if (this.el.scrollTop <= 0) {
+                        this.el.scrollTo({top: this.initial, behavior: 'smooth'});
+                    }
 
-    @shouldCall(isCloseable)
-    protected close(): void {
-        this.context.$implicit.complete();
+                    return this.context.closeable;
+                }
+
+                return of(this.context.closeable);
+            }),
+            filter(Boolean),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => this.context.$implicit.complete());
+
+    public ngAfterViewInit(): void {
+        this.el.scrollTop = this.initial;
     }
 
     protected onPointerChange(delta: number): void {
         this.pointers = Math.max(this.pointers + delta, 0);
 
         if (!this.pointers && this.el.scrollTop <= 0) {
-            this.close();
+            this.close$.next();
         }
+    }
+
+    private get initial(): number {
+        return (
+            this.stops
+                .map((e) => e.nativeElement.offsetTop - this.context.offset)
+                .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
+        );
     }
 }

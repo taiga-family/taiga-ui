@@ -10,6 +10,7 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -35,6 +36,8 @@ import {TuiDropdownDriver} from './dropdown.driver';
 
 function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boolean {
     return (
+        // @ts-ignore
+        typeof CloseWatcher === 'undefined' &&
         'key' in event &&
         event.key.toLowerCase() === 'escape' &&
         this.tuiDropdownEnabled &&
@@ -76,6 +79,7 @@ export class TuiDropdownOpen implements OnChanges {
     );
 
     protected readonly sub = merge(
+        tuiCloseWatcher(),
         this.obscured.tuiObscured.pipe(filter(Boolean)),
         inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
         fromEvent(this.el, 'focusin').pipe(
@@ -83,7 +87,12 @@ export class TuiDropdownOpen implements OnChanges {
             filter((target) => !this.host.contains(target) || !this.directive.ref()),
         ),
     )
-        .pipe(tuiWatch(), takeUntilDestroyed())
+        .pipe(
+            filter(() => !!this.tuiDropdownOpen),
+            tuiZonefull(),
+            tuiWatch(),
+            takeUntilDestroyed(),
+        )
         .subscribe(() => this.toggle(false));
 
     @Input()
