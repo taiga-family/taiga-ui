@@ -8,12 +8,14 @@ import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
 @Injectable()
 class ExampleDateTimeTransformer extends TuiValueTransformer<
-    [TuiDay, TuiTime | null] | null,
+    [TuiDay | null, TuiTime | null] | null,
     string
 > {
     private readonly separator = ', ';
 
-    public fromControlValue(controlValue: string): [TuiDay, TuiTime | null] | null {
+    public fromControlValue(
+        controlValue: string,
+    ): [TuiDay | null, TuiTime | null] | null {
         const [day, time = ''] = controlValue.split(this.separator);
 
         return day
@@ -21,7 +23,7 @@ class ExampleDateTimeTransformer extends TuiValueTransformer<
             : null;
     }
 
-    public toControlValue([day, time]: [TuiDay, TuiTime | null]): string {
+    public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
         return day
             ? day.toString() + (time ? `${this.separator}${time.toString()}` : '')
             : '';

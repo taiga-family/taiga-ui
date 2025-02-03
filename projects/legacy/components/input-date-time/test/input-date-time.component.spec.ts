@@ -37,7 +37,7 @@ describe('InputDateTime', () => {
         public dateTimeComponent!: TuiInputDateTimeComponent;
 
         public readonly control = new FormControl<
-            string | [TuiDay, TuiDay | null] | null
+            string | [TuiDay | null, TuiDay | null] | null
         >([new TuiDay(2021, 6, 12), null]);
 
         public min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
@@ -368,14 +368,14 @@ describe('InputDateTime', () => {
 
     describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
         class ExampleDateTimeTransformer extends TuiValueTransformer<
-            [TuiDay, TuiTime | null] | null,
+            [TuiDay | null, TuiTime | null] | null,
             string
         > {
             private readonly separator = ', ';
 
             public fromControlValue(
                 controlValue: string,
-            ): [TuiDay, TuiTime | null] | null {
+            ): [TuiDay | null, TuiTime | null] | null {
                 const [day, time = ''] = controlValue.split(this.separator);
 
                 if (!day) {
@@ -388,7 +388,7 @@ describe('InputDateTime', () => {
                 ];
             }
 
-            public toControlValue([day, time]: [TuiDay, TuiTime | null]): string {
+            public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
                 if (!day) {
                     return '';
                 }
@@ -415,7 +415,7 @@ describe('InputDateTime', () => {
         })
         class TransformerTest extends Test {
             public override control = new FormControl<
-                string | [TuiDay, TuiDay | null] | null
+                string | [TuiDay | null, TuiDay | null] | null
             >('19.01.2022, 12:33');
 
             public override min = new TuiDay(1900, 0, 1);

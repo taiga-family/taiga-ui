@@ -70,7 +70,7 @@ const DATE_TIME_SEPARATOR = ', ';
     },
 })
 export class TuiInputDateTimeComponent
-    extends AbstractTuiControl<[TuiDay, TuiTime | null] | null>
+    extends AbstractTuiControl<[TuiDay | null, TuiTime | null] | null>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -86,7 +86,7 @@ export class TuiInputDateTimeComponent
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer: TuiValueTransformer<
-        [TuiDay, TuiTime | null]
+        [TuiDay | null, TuiTime | null]
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly type!: TuiContext<TuiActiveZone>;
@@ -166,7 +166,7 @@ export class TuiInputDateTimeComponent
 
     public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         if (value?.[0]) {
-            super.writeValue(value as [TuiDay, TuiTime | null]);
+            super.writeValue(value);
         } else {
             super.writeValue(null);
         }
@@ -239,7 +239,7 @@ export class TuiInputDateTimeComponent
     }
 
     protected get calendarValue(): TuiDay | null {
-        return this.value ? this.value[0] : null;
+        return this.value?.[0] ?? null;
     }
 
     protected get calendarMinDay(): TuiDay {
@@ -259,7 +259,7 @@ export class TuiInputDateTimeComponent
 
         return (
             this.month ||
-            (this.value ? this.value[0] : null) ||
+            this.value?.[0] ||
             tuiDateClamp(
                 this.defaultActiveYearMonth,
                 Array.isArray(computedMin) ? computedMin[0] : computedMin,
@@ -273,9 +273,8 @@ export class TuiInputDateTimeComponent
     }
 
     protected onDayClick(day: TuiDay): void {
-        const modifiedTime = this.value
-            ? this.value[1] && this.clampTime(this.value[1], day)
-            : null;
+        const modifiedTime =
+            (this.value?.[1] && this.clampTime(this.value?.[1], day)) ?? null;
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
@@ -328,23 +327,21 @@ export class TuiInputDateTimeComponent
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 
-    protected getFallbackValue(): null {
+    protected getFallbackValue(): [TuiDay | null, TuiTime | null] | null {
         return null;
     }
 
     protected override valueIdenticalComparator(
-        oldValue: [TuiDay, TuiTime | null] | null,
-        newValue: [TuiDay, TuiTime | null] | null,
+        oldValue: [TuiDay | null, TuiTime | null] | null,
+        newValue: [TuiDay | null, TuiTime | null] | null,
     ): boolean {
         return (
-            tuiNullableSame(
-                oldValue ? oldValue[0] : null,
-                newValue ? newValue[0] : null,
-                (a, b) => a.daySame(b),
+            tuiNullableSame(oldValue?.[0] ?? null, newValue?.[0] ?? null, (a, b) =>
+                a.daySame(b),
             ) &&
             tuiNullableSame(
-                oldValue ? oldValue[1] : null,
-                newValue ? newValue[1] : null,
+                oldValue?.[1] ?? null,
+                newValue?.[1] ?? null,
                 (a, b) => String(a) === String(b),
             )
         );

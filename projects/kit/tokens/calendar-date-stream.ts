@@ -28,7 +28,7 @@ export function tuiDateStreamWithTransformer(
 }
 
 function tuiControlValueFactory<
-    T extends TuiDay | TuiDayRange | [TuiDay, TuiTime | null],
+    T extends TuiDay | TuiDayRange | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
     transformer?: TuiValueTransformer<T> | null,

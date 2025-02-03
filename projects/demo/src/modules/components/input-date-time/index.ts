@@ -97,7 +97,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     public override cleaner = false;
 
-    public readonly control = new FormControl<[TuiDay, TuiTime | null] | null>(
+    public readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
         null,
         Validators.required,
     );
