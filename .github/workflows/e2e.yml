@@ -72,7 +72,7 @@ jobs:
 
       - name: Prepare diff screenshots
         run: |
-          npm install canvas
+          npm install canvas --no-save --silent --force
           npx ts-node ./scripts/visual-testing/combine-cypress-failed-screenshots.ts
 
       - name: Debug output
@@ -185,8 +185,7 @@ jobs:
 
       - name: Combine images to get diff reports
         run: |
-          npm install canvas --no-save --silent
-          npm view canvas version
+          npm install canvas --no-save --silent --force
           npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
