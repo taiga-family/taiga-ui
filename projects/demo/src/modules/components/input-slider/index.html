@@ -10,6 +10,7 @@
             <ng-template>
                 <tui-textfield
                     #textfield
+                    tuiInputSlider
                     [content]="textfield.focused() ? '' : textfieldContent"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
@@ -20,6 +21,8 @@
                         [invalid]="controlDoc.invalid"
                         [max]="max()"
                         [min]="min()"
+                        [postfix]="postfix"
+                        [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -75,6 +78,28 @@
                     (valueChange)="max.set($event)"
                 >
                     The greatest value in the range of permitted values
+                </tr>
+
+                <tr
+                    name="[prefix]"
+                    tuiDocAPIItem
+                    type="string"
+                    [(value)]="prefix"
+                >
+                    Uneditable text
+                    <strong>before</strong>
+                    number
+                </tr>
+
+                <tr
+                    name="[postfix]"
+                    tuiDocAPIItem
+                    type="string"
+                    [(value)]="postfix"
+                >
+                    Uneditable text
+                    <strong>after</strong>
+                    number
                 </tr>
 
                 <!--TODO-->

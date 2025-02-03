@@ -11,7 +11,7 @@ export interface TuiInputNumberOptions {
         decrease: string;
         increase: string;
     }>;
-    readonly valueTransformer: TuiValueTransformer<number | null> | null;
+    readonly valueTransformer: TuiValueTransformer<number | null, any> | null;
 }
 
 export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {

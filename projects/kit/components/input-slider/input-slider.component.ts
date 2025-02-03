@@ -1,62 +1,67 @@
-import type {QueryList, WritableSignal} from '@angular/core';
+import type {WritableSignal} from '@angular/core';
 import {
     computed,
+    ContentChild,
     Directive,
     effect,
     inject,
     INJECTOR,
-    Input,
     signal,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TuiNonNullableValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import {tuiContentChild} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import type {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
-import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
-    tuiCreateKeyStepsTransformer,
+    TuiInputNumber,
+    tuiInputNumberOptionsProvider,
+} from '@taiga-ui/kit/components/input-number';
+import {
     TuiSliderComponent,
+    TuiSliderKeyStepsBase,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {filter, map, pairwise, startWith, switchMap} from 'rxjs';
 
 @Directive({
     standalone: true,
-    selector: 'input[type="range"][tuiSlider]',
-    providers: [tuiSliderOptionsProvider({trackColor: 'transparent'})],
+    selector: 'tui-textfield[tuiInputSlider]',
+    providers: [
+        tuiSliderOptionsProvider({trackColor: 'transparent'}),
+        tuiInputNumberOptionsProvider({
+            valueTransformer: new TuiNonNullableValueTransformer(),
+        }),
+    ],
     host: {
-        tabIndex: '-1',
-        class: 't-input-slider', // TODO: use :has()
-        '(input)': 'onInput($event.target.value)',
-        '(change)': 'onInput($event.target.value)',
-        '(click)': 'host.input.nativeElement.focus()',
-        '(document:keydown.arrowUp)': 'onStep(1)',
-        '(document:keydown.arrowDown)': 'onStep(-1)',
+        '(input)': 'onSliderInput($event)',
+        '(change)': 'onSliderInput($event)',
+        '(click)': 'textfield.input.nativeElement.focus()',
+        '(focusout)': 'onBlur()',
+        '(keydown.arrowUp)': 'onStep(1)',
+        '(keydown.arrowDown)': 'onStep(-1)',
     },
 })
 export class TuiInputSliderDirective {
     private readonly injector = inject(INJECTOR);
-    private readonly keySteps: WritableSignal<TuiKeySteps | null> = signal(null);
-    private readonly step: WritableSignal<number> = signal(1);
-    private keyStepsTransformer: TuiValueTransformer<number, number> | null = null;
+    private keyStepsTransformer: WritableSignal<TuiValueTransformer<
+        number,
+        number
+    > | null> = signal(null);
 
-    protected readonly host = inject(TuiTextfieldComponent);
-    protected readonly slider = inject(TuiSliderComponent);
-    protected readonly inputNumber = tuiContentChild(
-        () => this.host.controlQuery as QueryList<TuiInputNumber>,
-    );
+    private readonly inputNumber = signal<TuiInputNumber | null>(null);
+    private readonly slider = signal<TuiSliderComponent | null>(null);
+    protected readonly textfield = inject(TuiTextfieldComponent);
 
-    protected min = computed(() => this.inputNumber()?.min() ?? this.slider.min);
-    protected max = computed(() => this.inputNumber()?.max() ?? this.slider.max);
-    protected nativeStep = computed(() =>
-        this.keySteps() // For non-linear slider step means percentage
-            ? ((this.max() - this.min()) / 100) * this.step()
-            : this.step(),
+    protected min = computed(() => this.inputNumber()?.min() ?? 0);
+    protected max = computed(() => this.inputNumber()?.max() ?? 100);
+    protected step = computed((slider = this.slider()) =>
+        slider && this.keyStepsTransformer() // For non-linear slider step means percentage
+            ? ((this.max() - this.min()) / 100) * slider.step()
+            : (slider?.step() ?? 1),
     );
 
     protected disabled = computed(
@@ -75,63 +80,66 @@ export class TuiInputSliderDirective {
     );
 
     protected readonly textfieldToSliderSync = effect(() => {
-        const value = this.safeInputNumberValue() ?? this.slider.value;
+        const slider = this.slider();
 
-        this.slider.value = this.keyStepsTransformer?.fromControlValue(value) ?? value;
-        // Don't use host binding – it will throw ExpressionChangedAfterItHasBeenCheckedError
-        this.slider.el.disabled = this.disabled();
-        this.slider.min = this.min();
-        this.slider.max = this.max();
-        this.slider.step = this.nativeStep();
-    });
+        if (!slider) {
+            return;
+        }
 
-    constructor() {
-        effect(() => {
-            const inputNumber = this.inputNumber();
+        const value = this.safeInputNumberValue() ?? slider.value;
 
-            if (inputNumber) {
-                inputNumber.transformer = new TuiNonNullableValueTransformer();
-            }
-        });
+        slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
+        slider.el.disabled = this.disabled();
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
-        effect(() => {
-            if (!this.host.focused() && !this.host.input?.nativeElement.value) {
-                this.inputNumber()?.setValue(this.safeInputNumberValue() ?? null);
-            }
-        }, TUI_ALLOW_SIGNAL_WRITES);
+    @ContentChild(TuiInputNumber)
+    protected set inputNumberSetter(x: TuiInputNumber) {
+        this.inputNumber.set(x);
     }
 
-    @Input('step')
-    public set stepSetter(step: number) {
-        this.step.set(step);
+    @ContentChild(TuiSliderComponent)
+    protected set sliderSetter(slider: TuiSliderComponent) {
+        this.slider.set(slider);
+        slider.min = this.min;
+        slider.max = this.max;
+        slider.computedStep = this.step;
+        slider.el.setAttribute('tabindex', '-1');
     }
 
-    @Input('keySteps')
-    public set keyStepsSetter(steps: TuiKeySteps | null) {
-        this.keySteps.set(steps);
-        this.keyStepsTransformer =
-            steps && tuiCreateKeyStepsTransformer(steps, this.slider);
+    @ContentChild(TuiSliderKeyStepsBase)
+    protected set keyStepsSetter({transformer}: TuiSliderKeyStepsBase) {
+        this.keyStepsTransformer = transformer;
     }
 
-    protected onInput(nativeValue: string): void {
-        const value = Number(nativeValue);
+    protected onSliderInput({target}: Event): void {
+        if (tuiIsElement(target) && tuiIsInput(target) && target.type === 'range') {
+            const value = Number(target.value);
 
-        this.inputNumber()?.setValue(
-            this.keyStepsTransformer?.toControlValue(value) ?? value,
-        );
+            this.inputNumber()?.setValue(
+                this.keyStepsTransformer()?.toControlValue(value) ?? value,
+            );
+        }
     }
 
     protected onStep(coefficient: number): void {
-        if (this.host.focused()) {
+        const slider = this.slider();
+
+        if (this.textfield.focused() && slider) {
             const newValue = tuiClamp(
-                this.slider.value + coefficient * this.nativeStep(),
+                slider.value + coefficient * this.step(),
                 this.min(),
                 this.max(),
             );
 
             this.inputNumber()?.setValue(
-                this.keyStepsTransformer?.toControlValue(newValue) ?? newValue,
+                this.keyStepsTransformer()?.toControlValue(newValue) ?? newValue,
             );
+        }
+    }
+
+    protected onBlur(): void {
+        if (!this.textfield.input?.nativeElement.value) {
+            this.inputNumber()?.setValue(this.safeInputNumberValue() ?? null);
         }
     }
 }

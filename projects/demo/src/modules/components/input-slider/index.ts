@@ -35,6 +35,8 @@ export default class PageComponent {
 
     protected min = signal(0);
     protected max = signal(100);
+    protected prefix = '';
+    protected postfix = '';
     protected segments = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;

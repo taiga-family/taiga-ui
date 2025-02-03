@@ -41,6 +41,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
+    protected transformer = inject(TuiValueTransformer, FLAGS);
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = signal(false);
@@ -59,7 +60,6 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
     );
 
-    public transformer = inject(TuiValueTransformer, FLAGS);
     public onTouched = EMPTY_FUNCTION;
     public onChange: (value: T) => void = EMPTY_FUNCTION;
 
