@@ -8,11 +8,11 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCloseWatcher, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
