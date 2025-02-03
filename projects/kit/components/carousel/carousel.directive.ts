@@ -4,7 +4,15 @@ import {WA_PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiIfMap, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
+import {
+    BehaviorSubject,
+    combineLatest,
+    EMPTY,
+    interval,
+    map,
+    merge,
+    Observable,
+} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -22,17 +30,14 @@ export class TuiCarouselDirective extends Observable<unknown> {
         this.visible$,
     );
 
-    private readonly output$ = combineLatest([
-        this.duration$.pipe(
-            map((duration) => (isPlatformServer(this.platform) ? 0 : duration)),
-        ),
-        this.running$,
-    ]).pipe(
-        tuiIfMap(
-            ([duration]) => interval(duration),
-            (values) => values.every(Boolean),
-        ),
-    );
+    private readonly output$ = isPlatformServer(this.platform)
+        ? EMPTY
+        : combineLatest([this.duration$, this.running$]).pipe(
+              tuiIfMap(
+                  ([duration]) => interval(duration),
+                  (values) => values.every(Boolean),
+              ),
+          );
 
     constructor() {
         super((subscriber) => this.output$.subscribe(subscriber));
