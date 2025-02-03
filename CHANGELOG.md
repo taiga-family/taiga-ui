@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.104.0](https://github.com/taiga-family/taiga-ui/compare/v3.103.0...v3.104.0) (2025-02-03)
+
+### Features
+
+- **kit:** input tag converts the last element to tag after paste event
+  ([#10277](https://github.com/taiga-family/taiga-ui/issues/10277))
+  ([16cb47a](https://github.com/taiga-family/taiga-ui/commit/16cb47ab22e3d43d44acb10a9bd37c9c52b6af31))
+
+### Bug Fixes
+
+- **core:** `tuiDropdownContext` menu remains open after long tap
+  ([#10278](https://github.com/taiga-family/taiga-ui/issues/10278))
+  ([c965f55](https://github.com/taiga-family/taiga-ui/commit/c965f55b7daf193728f7a67fa51024a652c519cb))
+- **experimental:** `CardLarge` fix title boldness ([#10272](https://github.com/taiga-family/taiga-ui/issues/10272))
+  ([8b8103c](https://github.com/taiga-family/taiga-ui/commit/8b8103c22be49cf82935926710a73f921b419736))
+- **kit:** `InputDateRange` not reset initial value to min/max and show actual in calendar
+  ([#10250](https://github.com/taiga-family/taiga-ui/issues/10250))
+  ([1e7d185](https://github.com/taiga-family/taiga-ui/commit/1e7d185549eb85e9158ffdaac4d8b6b39e669222))
+- **kit:** `InputDateTime` not reset initial value to min/max and show actual in calendar
+  ([#10258](https://github.com/taiga-family/taiga-ui/issues/10258))
+  ([4be8fb0](https://github.com/taiga-family/taiga-ui/commit/4be8fb0c16b60a26e492e0404b66a41671419860))
+
 ## [3.103.0](https://github.com/taiga-family/taiga-ui/compare/v3.102.1...v3.103.0) (2025-01-27)
 
 ### Features
