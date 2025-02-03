@@ -1,0 +1,22 @@
+<tui-pager
+    [index]="index"
+    [length]="length"
+/>
+
+<div class="tui-space_top-3">
+    <button
+        size="xs"
+        tuiButton
+        (click)="prev()"
+    >
+        prev
+    </button>
+    <button
+        size="xs"
+        tuiButton
+        class="tui-space_left-3"
+        (click)="next()"
+    >
+        next
+    </button>
+</div>

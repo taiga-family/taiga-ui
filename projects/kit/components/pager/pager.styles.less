@@ -1,0 +1,60 @@
+:host {
+    --size: 0.5rem;
+
+    :host-context(tui-root._mobile) & {
+        --size: 0.375rem;
+    }
+
+    display: block;
+    overflow: hidden;
+
+    .t-items {
+        display: flex;
+        gap: var(--t-gap);
+        transition: transform var(--tui-duration-fast, 150ms)
+            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+    }
+
+    .t-item {
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        color: var(--tui-background-neutral-2);
+        transition: all var(--tui-duration-fast, 150ms)
+            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+
+        &._active {
+            color: var(--tui-background-accent-1);
+        }
+
+        &:empty::before {
+            content: '';
+            display: flex;
+            min-inline-size: var(--size);
+            min-block-size: var(--size);
+            border-radius: 100%;
+            background: currentColor;
+            transition: inherit;
+        }
+    }
+
+    .t-item:empty:not(._visible)::before,
+    .t-item:empty:not(._visible) + .t-item:empty::before,
+    .t-item:empty:not(._last):nth-last-child(1 of ._visible)::before {
+        transform: scale(0.25) !important;
+
+        :host-context(tui-root._mobile) & {
+            transform: scale(0.333) !important;
+        }
+    }
+
+    .t-item:empty:not(._visible) + .t-item:empty + .t-item:empty::before,
+    .t-item:empty:not(._pre-last):nth-last-child(2 of ._visible)::before {
+        transform: scale(0.5);
+
+        :host-context(tui-root._mobile) & {
+            transform: scale(0.666);
+        }
+    }
+}

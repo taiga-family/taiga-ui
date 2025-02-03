@@ -78,6 +78,7 @@ export const TUI_USED_ICONS = [
     '@tui.star-filled',
     '@tui.align-justify',
     '@tui.alarm-clock',
+    '@tui.view',
     '@tui.download',
     '@tui.eye-off',
     '@tui.video',

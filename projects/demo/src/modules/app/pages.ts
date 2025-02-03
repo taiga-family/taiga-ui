@@ -764,6 +764,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Pager',
+        keywords: 'pager, точка, dot',
+        route: DemoRoute.Pager,
+        meta: {},
+    },
+    {
+        section: 'Components',
         title: 'Progress',
         subPages: [
             {
