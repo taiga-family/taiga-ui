@@ -124,6 +124,9 @@
     <loc>https://taiga-ui.dev/components/swipe-actions/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/bottom-sheet/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/textfield/</loc>
   </url>
   <url>
@@ -133,7 +136,7 @@
     <loc>https://taiga-ui.dev/components/search/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-search/</loc>
+    <loc>https://taiga-ui.dev/layout/input-search/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/navigation/breadcrumbs/</loc>
@@ -799,6 +802,12 @@
     <loc>https://taiga-ui.dev/components/swipe-actions/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/bottom-sheet/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/bottom-sheet/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/textfield/API/</loc>
   </url>
   <url>
@@ -817,10 +826,10 @@
     <loc>https://taiga-ui.dev/components/search/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-search/API/</loc>
+    <loc>https://taiga-ui.dev/layout/input-search/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-search/Setup/</loc>
+    <loc>https://taiga-ui.dev/layout/input-search/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/navigation/breadcrumbs/API/</loc>
