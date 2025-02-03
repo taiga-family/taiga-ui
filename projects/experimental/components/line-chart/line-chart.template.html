@@ -26,7 +26,7 @@
         [style.left.%]="point.left"
     ></div>
     <div
-        *ngIf="isFocusable && values().length === 1"
+        *ngIf="values().length === 1"
         class="t-line t-line_horizontal"
         [style.bottom.%]="point.bottom"
     ></div>
@@ -55,7 +55,6 @@
             [style.color]="'var(--tui-chart-categorical-0' + i + ')'"
             [style.left.%]="point.left"
             [style.zIndex]="point.bottom * 10"
-            [tabIndex]="isFocusable ? 0 : -1"
         ></div>
     </ng-container>
 </ng-container>

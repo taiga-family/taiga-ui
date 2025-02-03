@@ -45,11 +45,10 @@ export class TuiHintDirective<C>
 {
     private readonly service = inject(TuiHintService);
 
-    public contextSignal = signal<C | undefined>(undefined);
-
     @Input('tuiHintAppearance')
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
+    public contextSignal = signal<C | undefined>(undefined);
     public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();

@@ -60,7 +60,7 @@ export class TuiLine implements OnChanges {
     @Input()
     public filled = false;
 
-    @Input('value')
+    @Input()
     public value: readonly TuiPoint[] = [];
 
     public ngOnChanges(): void {

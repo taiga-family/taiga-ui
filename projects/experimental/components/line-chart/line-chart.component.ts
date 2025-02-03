@@ -1,5 +1,5 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {ElementRef, QueryList} from '@angular/core';
+import type {ElementRef, OnChanges, QueryList, SimpleChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -31,7 +31,7 @@ export interface TuiLineChartPoint {
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineChart {
+export class TuiLineChart implements OnChanges {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     protected readonly hint = inject(TuiHintDirective, {optional: true});
     protected readonly values = signal<readonly TuiPoint[][]>([]);
@@ -85,8 +85,10 @@ export class TuiLineChart {
         );
     }
 
-    protected get isFocusable(): boolean {
-        return this.hasHints;
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes.x || changes.y || changes.width || changes.height) {
+            this.values.set(this.values());
+        }
     }
 
     protected get hasHints(): boolean {
