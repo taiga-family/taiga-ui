@@ -131,6 +131,7 @@ export const DemoRoute = {
     PrimitiveTextfield: '/components/primitive-textfield',
     PdfViewer: '/components/pdf-viewer',
     Pin: '/components/pin',
+    Pager: '/components/pager',
     Compass: '/components/compass',
     ProgressBar: '/components/progress-bar',
     ProgressCircle: '/components/progress-circle',
