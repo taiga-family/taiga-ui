@@ -2,6 +2,7 @@ export * from './array-remove';
 export * from './array-shallow-equals';
 export * from './array-toggle';
 export * from './change-date-separator';
+export * from './close-watcher';
 export * from './count-filled-controls';
 export * from './create-token';
 export * from './default-sort';
