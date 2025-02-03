@@ -1,5 +1,9 @@
 <form [formGroup]="testForm">
-    <tui-input-date-time formControlName="testValue">
+    <tui-input-date-time
+        formControlName="testValue"
+        [max]="max"
+        [min]="min"
+    >
         Choose date and time
         <input
             placeholder="OCT 26 1985 01:22"
