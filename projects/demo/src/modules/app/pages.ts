@@ -839,6 +839,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'BottomSheet',
+        keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
+        route: DemoRoute.BottomSheet,
+    },
+    {
+        section: 'Components',
         title: 'SheetDialog',
         keywords: 'mobile, dialog, popup, map, details, шторка',
         route: DemoRoute.SheetDialog,

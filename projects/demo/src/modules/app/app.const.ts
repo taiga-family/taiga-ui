@@ -27,6 +27,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['ProgressBar', 'ProgressCircle', 'ProgressSegmented', 'Loader'],
     ['Preview', 'PdfViewer'],
     ['Table', 'TablePagination', 'TableFilters'],
+    ['SheetDialog', 'Dialog', 'BottomSheet'],
 ];
 
 export const DEFAULT_LANGUAGE_PAGE = new Set([

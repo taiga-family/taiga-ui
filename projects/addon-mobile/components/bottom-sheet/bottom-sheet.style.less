@@ -1,0 +1,74 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .scrollbar-hidden();
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: block;
+    block-size: calc(100% - 1rem);
+    max-inline-size: 40rem;
+    margin: calc(-1 * var(--t-start)) auto 0;
+    background: var(--tui-background-elevation-1);
+    border-top-left-radius: var(--tui-radius-l);
+    border-top-right-radius: var(--tui-radius-l);
+    overflow: auto;
+    box-shadow:
+        0 1rem var(--tui-background-elevation-1),
+        var(--tui-shadow-medium);
+
+    &::before {
+        content: '';
+        position: sticky;
+        top: 0.625rem;
+        left: 50%;
+        z-index: 1;
+        display: block;
+        inline-size: 2rem;
+        block-size: 0.25rem;
+        margin-block-end: -0.25rem;
+        transform: translateX(-50%);
+        background: var(--tui-background-elevation-1);
+        box-shadow:
+            0 0 0 20rem var(--tui-background-elevation-1),
+            inset 0 0 0 1rem var(--tui-border-normal);
+        border-radius: 1rem;
+        clip-path: polygon(-100vw -1rem, 100vw -1rem, 100vw calc(100% + 0.625rem), -100vw calc(100% + 0.625rem));
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: calc(100% - var(--t-start));
+        inline-size: 1rem;
+        block-size: calc(var(--t-height) - 100% + var(--t-start));
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+}
+
+.t-content {
+    position: sticky;
+    top: 0;
+    padding: 2.25rem 1rem 1.5rem;
+}
+
+.t-bottom {
+    block-size: calc(100% - var(--t-start));
+}
+
+.t-stop {
+    position: absolute;
+    block-size: var(--t-start);
+    inline-size: 1rem;
+    pointer-events: none;
+    transform: translateY(-100%);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    &:last-child {
+        scroll-snap-align: none;
+    }
+}

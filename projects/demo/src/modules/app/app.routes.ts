@@ -595,6 +595,11 @@ export const ROUTES: Routes = [
         title: 'Sheet',
     }),
     route({
+        path: DemoRoute.BottomSheet,
+        loadComponent: async () => import('../components/bottom-sheet'),
+        title: 'BottomSheet',
+    }),
+    route({
         path: DemoRoute.SheetDialog,
         loadComponent: async () => import('../components/sheet-dialog'),
         title: 'SheetDialog',

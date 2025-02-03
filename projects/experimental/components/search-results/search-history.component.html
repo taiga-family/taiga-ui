@@ -6,7 +6,7 @@
 </label>
 <button
     *ngFor="let item of history"
-    tuiCell="m"
+    tuiCell
     type="button"
     (click)="select(item)"
     (keydown.backspace)="remove(item)"
@@ -35,7 +35,7 @@
 </label>
 <button
     *ngFor="let item of popular"
-    tuiCell="m"
+    tuiCell
     type="button"
     (click)="select(item)"
     (mousedown.prevent)="(0)"
