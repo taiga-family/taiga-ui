@@ -19,7 +19,6 @@ export default class Example {
         ),
     });
 
-    protected readonly min = new TuiDay(2000, 2, 20);
-
+    protected readonly min = new TuiDay(2018, 2, 25);
     protected readonly max = new TuiDay(2040, 2, 20);
 }
