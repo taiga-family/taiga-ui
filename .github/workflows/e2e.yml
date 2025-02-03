@@ -280,7 +280,7 @@ jobs:
       - name: Create report comment
         id: report-summary
         continue-on-error: true
-        uses: daun/playwright-report-summary@v3.7.0
+        uses: daun/playwright-report-summary@v3.8.0
         with:
           comment-title: 'Playwright test results'
           report-file: ./all-blob-reports/results.json
