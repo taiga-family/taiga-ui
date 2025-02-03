@@ -82,7 +82,7 @@ export default class Example extends AbstractExampleTuiControl {
 
     protected readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Until today')],
+        [new TuiNamedDay(TuiDay.currentLocal(), 'Until today')],
     ];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
