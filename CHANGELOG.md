@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.23.0](https://github.com/taiga-family/taiga-ui/compare/v4.22.0...v4.23.0) (2025-02-03)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `DocAPIItem` throws error for signal-based output handlers
+  ([#10292](https://github.com/taiga-family/taiga-ui/issues/10292))
+  ([548a212](https://github.com/taiga-family/taiga-ui/commit/548a2122a9515e4be22da77d6873d0dc3a24a1d8))
+- **addon-mobile:** `ElasticSticky` recalculates offsetTop if host content was changed
+  ([#10253](https://github.com/taiga-family/taiga-ui/issues/10253))
+  ([a93868b](https://github.com/taiga-family/taiga-ui/commit/a93868b0564cb273ad9aa09de2d8bbc556e1ab02))
+- **kit:** `Carousel` fix autoscroll in ssr ([#10293](https://github.com/taiga-family/taiga-ui/issues/10293))
+  ([63e0564](https://github.com/taiga-family/taiga-ui/commit/63e056491b6092487d7be9148eae415e178fb713))
+- **kit:** `Connected` make compatible with `Chevron` ([#10265](https://github.com/taiga-family/taiga-ui/issues/10265))
+  ([a9640fb](https://github.com/taiga-family/taiga-ui/commit/a9640fb0d8c27e29fcbedcb51f69444d72caf9f4))
+- **kit:** `InputNumber` should handle programmatic control update with `NaN` as empty textfield
+  ([#10276](https://github.com/taiga-family/taiga-ui/issues/10276))
+  ([ede4715](https://github.com/taiga-family/taiga-ui/commit/ede471512306858fb398b17997976d1f8ab996c9))
+- **layout:** `CardLarge` fix title boldness ([#10271](https://github.com/taiga-family/taiga-ui/issues/10271))
+  ([0c9a4e9](https://github.com/taiga-family/taiga-ui/commit/0c9a4e927e0f7ef2617513b2eac2d8256c37c1db))
+- **layout:** `Search` allow other elements via `[tuiSearchField]` attribute
+  ([#10294](https://github.com/taiga-family/taiga-ui/issues/10294))
+  ([f5c80ea](https://github.com/taiga-family/taiga-ui/commit/f5c80ead36eccb4fafe96d853b3f398104f42e15))
+
+### 🚀 Features
+
+- **addon-mobile:** `BottomSheet` add new component ([#10269](https://github.com/taiga-family/taiga-ui/issues/10269))
+  ([1fff4f5](https://github.com/taiga-family/taiga-ui/commit/1fff4f574eb24118a585a438724488e5bf584a28))
+- **legacy:** input tag converts the last element to tag after paste event
+  ([#10270](https://github.com/taiga-family/taiga-ui/issues/10270))
+  ([89076b3](https://github.com/taiga-family/taiga-ui/commit/89076b387f7f3bfd10fb5822a79b0aab45333d26))
+
 ## [4.22.0](https://github.com/taiga-family/taiga-ui/compare/v4.21.0...v4.22.0) (2025-01-27)
 
 ### 🚀 Features
