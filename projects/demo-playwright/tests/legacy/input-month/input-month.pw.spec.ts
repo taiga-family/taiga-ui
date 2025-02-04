@@ -16,7 +16,9 @@ test.describe('InputMonth', () => {
         test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
-            inputMonth = new TuiInputMonthPO(example.locator('tui-input-month'));
+            inputMonth = new TuiInputMonthPO(
+                example.locator('tui-textfield:has([tuiInputMonth])'),
+            );
         });
 
         test('Maximum month less than current month', async ({page}) => {
@@ -29,7 +31,7 @@ test.describe('InputMonth', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputMonth}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputMonth}/API?min$=6`);
             await inputMonth.textfield.click();
 
             await documentationPage.prepareBeforeScreenshot();

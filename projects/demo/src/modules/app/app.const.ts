@@ -36,6 +36,7 @@ export const DEFAULT_LANGUAGE_PAGE = new Set([
     'CalendarRange',
     'InputCardGroup',
     'InputFiles',
+    'InputMonth',
     'InputPhoneInternational',
     'InputTime',
     'MobileCalendar',
