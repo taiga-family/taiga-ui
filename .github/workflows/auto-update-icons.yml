@@ -13,10 +13,14 @@ jobs:
           persist-credentials: false
       - uses: taiga-family/ci/actions/setup/variables@v1.109.0
       - uses: taiga-family/ci/actions/setup/node@v1.109.0
-      - name: Lucide icons
+      - name: Legacy icons # legacy, drop in 5.0
         run: |
           npx nx prebuild icons
           npx nx build icons
+      - name: Lucide icons
+        run: |
+          npx nx prebuild icons-lucide
+          npx nx build icons-lucide
       - name: Material icons
         run: |
           npx nx prebuild icons-material
