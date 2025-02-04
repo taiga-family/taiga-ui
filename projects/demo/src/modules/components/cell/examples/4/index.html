@@ -60,3 +60,16 @@
         <div tuiSubtitle>Sky's the limit</div>
     </div>
 </div>
+
+<button
+    disabled
+    tuiCell
+>
+    <div tuiTitle>Disabled cell</div>
+    <tui-badge-notification size="l">1</tui-badge-notification>
+    <tui-icon
+        tuiTooltip="A cell can be a link"
+        (click.prevent)="(0)"
+    />
+    <div tuiSubtitle>Hint enabled</div>
+</button>

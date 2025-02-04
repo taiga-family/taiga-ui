@@ -18,6 +18,10 @@
 
     &:disabled {
         pointer-events: none;
+
+        & > *:not([tuiTooltip]) {
+            opacity: var(--tui-disabled-opacity);
+        }
     }
 
     [tuiAccessories] {
@@ -213,7 +217,9 @@
     a[tuiCell]:not([tuiSurface]):hover,
     button[tuiCell]:not([tuiSurface]):hover,
     label[tuiCell]:not([tuiSurface]):hover {
-        background: var(--tui-background-neutral-1);
-        cursor: pointer;
+        &:not(:disabled) {
+            background: var(--tui-background-neutral-1);
+            cursor: pointer;
+        }
     }
 }
