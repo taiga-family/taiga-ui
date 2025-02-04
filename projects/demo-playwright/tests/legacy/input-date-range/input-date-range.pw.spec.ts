@@ -356,6 +356,27 @@ describe('InputDateRange', () => {
                 );
             });
         });
+
+        test('minLength=15', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
+
+            const calendarSheet = new TuiCalendarSheetPO(
+                inputDateRange.calendar.locator('tui-calendar-sheet'),
+            );
+
+            await inputDateRange.textfield.click();
+            await calendarSheet.clickOnDay(1);
+
+            await expect(
+                page.locator('tui-dropdown tui-calendar-range'),
+            ).toHaveScreenshot('input-date-range-min-length-15-1.png');
+
+            await calendarSheet.clickOnDay(18);
+
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                'input-date-range-min-length-15-2.png',
+            );
+        });
     });
 
     describe('Examples', () => {

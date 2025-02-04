@@ -183,10 +183,6 @@ export class TuiCalendarSheet {
     }
 
     protected onItemClick(item: TuiDay): void {
-        if (this.rangeHasDisabledDay(item)) {
-            return;
-        }
-
         this.dayClick.emit(item);
     }
 
@@ -211,15 +207,5 @@ export class TuiCalendarSheet {
 
         this.hoveredItem = day;
         this.hoveredItemChange.emit(day);
-    }
-
-    private rangeHasDisabledDay(item: TuiDay): boolean {
-        if (this.isRangePicking && this.value instanceof TuiDay) {
-            return this.getRange(this.value, item)
-                .toArray()
-                .some((x) => this.disabledItemHandler(x));
-        }
-
-        return false;
     }
 }
