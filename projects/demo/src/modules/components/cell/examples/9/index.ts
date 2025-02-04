@@ -10,6 +10,7 @@ import {TuiCell} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
+        TuiAppearance,
         TuiBadgeNotification,
         TuiCell,
         TuiCheckbox,
@@ -17,7 +18,6 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiLoader,
         TuiTitle,
         TuiTooltip,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
