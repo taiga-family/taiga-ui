@@ -1,0 +1,21 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+input[tuiInputMonth] {
+    caret-color: transparent;
+}
+
+// TODO: use tui-textfield:has([tuiInputMonth]) input[type='month']
+input[type='month'].t-native-input-month {
+    .fullsize();
+
+    opacity: 0;
+    border: 0;
+
+    &::-webkit-calendar-picker-indicator {
+        .fullsize(); // Extends clickable area for icon to open native calendar
+    }
+}
+
+tui-textfield:has([tuiInputMonth]) .t-clear {
+    z-index: 1;
+}
