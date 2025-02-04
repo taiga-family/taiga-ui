@@ -1,5 +1,11 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-input-month formControlName="testValue">Choose a month</tui-input-month>
-</form>
+<tui-textfield>
+  <input
+    tuiInputMonth
+    [max]="max"
+    [min]="min"
+    [disabledItemHandler]="disabledItemHandler"
+    [(ngModel)]="value"
+  />
+</tui-textfield>
 ```
