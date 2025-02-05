@@ -16,8 +16,23 @@
     min-block-size: var(--t-height);
     border-radius: var(--t-radius);
 
-    &:disabled {
+    &:disabled,
+    &[data-state='disabled'] {
+        opacity: initial;
         pointer-events: none;
+
+        & > *:not([tuiTooltip]) {
+            opacity: var(--tui-disabled-opacity);
+        }
+    }
+
+    &:has(input:disabled) {
+        opacity: initial;
+        pointer-events: none;
+
+        & > *:not([tuiTooltip]) {
+            opacity: var(--tui-disabled-opacity);
+        }
     }
 
     [tuiAccessories] {
@@ -213,7 +228,16 @@
     a[tuiCell]:not([tuiSurface]):hover,
     button[tuiCell]:not([tuiSurface]):hover,
     label[tuiCell]:not([tuiSurface]):hover {
-        background: var(--tui-background-neutral-1);
-        cursor: pointer;
+        &:not(:disabled, [data-state='disabled']) {
+            background: var(--tui-background-neutral-1);
+            cursor: pointer;
+        }
+    }
+
+    label[tuiCell]:not([tuiSurface]):hover {
+        &:not(:has(input:disabled)) {
+            background: var(--tui-background-neutral-1);
+            cursor: pointer;
+        }
     }
 }
