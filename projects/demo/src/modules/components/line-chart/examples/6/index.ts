@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {type TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 import {TuiLineChart, TuiLineChartHint} from '@taiga-ui/experimental';
 
 @Component({
@@ -29,7 +29,6 @@ export default class Example {
 
     protected readonly stringify = String;
 
-    protected readonly hintContent = ({$implicit}: TuiContext<TuiPoint[]>): number => {
-        return $implicit[0]?.[1] ?? 0;
-    };
+    protected readonly hintContent = ({$implicit}: TuiContext<TuiPoint[]>): number =>
+        $implicit[0]?.[1] ?? 0;
 }

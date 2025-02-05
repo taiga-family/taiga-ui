@@ -141,7 +141,7 @@ export class TuiHintBaseComponent<C = any> {
     template: `
         <ng-content />
         <span
-            *polymorpheusOutlet="content() as text; context: hint.context: hint.contextSignal()"
+            *polymorpheusOutlet="content() as text; context: hint.contextSignal()"
             [innerHTML]="text"
         ></span>
     `,
