@@ -45,7 +45,8 @@ const GAP = 16;
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
         '(document:click.zoneless.capture)': 'onClick($event)',
-        '(window>scroll.zoneless.capture)': 'refresh($event.currentTarget.visualViewport)',
+        '(window>scroll.zoneless.capture)':
+            'refresh($event.currentTarget.visualViewport)',
         '(visualViewport>resize.zoneless)': 'refresh($event.target)',
         '(visualViewport>scroll.zoneless)': 'refresh($event.target)',
     },
