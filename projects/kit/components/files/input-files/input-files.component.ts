@@ -34,7 +34,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '(dragover.prevent.silent)': '0',
+        '(dragover.prevent.zoneless)': '0',
         '(drop.prevent)': 'onDropped($event)',
         '(dragenter)': 'onDrag($event.dataTransfer)',
         '(dragleave)': 'onDrag(null)',

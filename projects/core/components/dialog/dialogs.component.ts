@@ -22,7 +22,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [tuiHost],
     host: {
-        '(keydown.silent)': 'el.scrollTop = el.scrollHeight / 2',
+        '(keydown.zoneless)': 'el.scrollTop = el.scrollHeight / 2',
     },
 })
 export class TuiDialogs {

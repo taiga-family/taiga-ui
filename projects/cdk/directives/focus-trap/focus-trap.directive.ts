@@ -17,7 +17,7 @@ import {
     selector: '[tuiFocusTrap]',
     host: {
         tabIndex: '0',
-        '(window:focusin.silent)': 'initialized && onFocusIn($event.target)',
+        '(window:focusin.zoneless)': 'initialized && onFocusIn($event.target)',
     },
 })
 export class TuiFocusTrap implements OnDestroy {

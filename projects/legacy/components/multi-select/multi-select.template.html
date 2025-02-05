@@ -72,7 +72,7 @@
             tuiWrapper
             class="t-arrow"
             [class.t-arrow_native-dropdown]="nativeDropdownMode"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         >
             <ng-container *polymorpheusOutlet="arrow as text">
                 {{ text }}

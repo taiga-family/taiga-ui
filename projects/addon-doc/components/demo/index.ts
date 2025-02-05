@@ -62,7 +62,7 @@ const MIN_WIDTH = 160;
     host: {
         '[class._sticky]': 'sticky',
         '(window:resize)': 'onResize()',
-        '(document:mouseup.silent)': 'onMouseUp()',
+        '(document:mouseup.zoneless)': 'onMouseUp()',
     },
 })
 export class TuiDocDemo implements AfterViewInit {

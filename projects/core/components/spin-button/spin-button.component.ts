@@ -18,7 +18,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
     styleUrls: ['./spin-button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '(mousedown.silent.prevent)': '(0)',
+        '(mousedown.zoneless.prevent)': '(0)',
         '(keydown.arrowLeft.prevent)': 'onLeftClick()',
         '(keydown.arrowRight.prevent)': 'onRightClick()',
     },

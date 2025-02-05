@@ -53,14 +53,14 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<button tuiButton (mousedown.prevent.silent)="0">
+<button tuiButton (mousedown.prevent.zoneless)="0">
     Button
 </button>
 
 <a
   href="https://taiga-ui.dev"
   target="_blank"
-  (click.prevent.silent)="0"
+  (click.prevent.zoneless)="0"
 >
   Link
 </a>

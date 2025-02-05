@@ -34,8 +34,8 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(focusout.stop)': '(0)',
-        '(pointerdown.silent)': 'onDrag()',
-        '(document:pointerup.silent)': 'onDrop()',
+        '(pointerdown.zoneless)': 'onDrag()',
+        '(document:pointerup.zoneless)': 'onDrop()',
     },
 })
 export class TuiReorder<T> {

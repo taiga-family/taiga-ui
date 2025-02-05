@@ -40,7 +40,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
         '[attr.disabled]': 'disabled || null',
         '[class._with-dropdown]': 'dropdown?.()',
         '(click)': 'onClick()',
-        '(mousemove.silent)': 'onMouseMove()',
+        '(mousemove.zoneless)': 'onMouseMove()',
     },
 })
 export class TuiOption<T = unknown> implements OnDestroy {

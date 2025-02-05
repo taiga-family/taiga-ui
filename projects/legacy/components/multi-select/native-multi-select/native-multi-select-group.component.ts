@@ -25,8 +25,8 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
         '(change)': 'onValueChange($event.target.selectedOptions)',
-        '(click.stop.silent)': '0',
-        '(mousedown.stop.silent)': '0',
+        '(click.stop.zoneless)': '0',
+        '(mousedown.stop.zoneless)': '0',
     },
 })
 export class TuiNativeMultiSelectGroupComponent<

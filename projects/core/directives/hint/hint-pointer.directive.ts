@@ -11,7 +11,7 @@ import {TuiHintHover} from './hint-hover.directive';
     selector: '[tuiHint][tuiHintPointer]',
     providers: [tuiAsRectAccessor(TuiHintPointer), tuiAsDriver(TuiHintPointer)],
     host: {
-        '(mousemove.silent)': 'onMove($event)',
+        '(mousemove.zoneless)': 'onMove($event)',
     },
 })
 export class TuiHintPointer extends TuiHintHover implements TuiRectAccessor {

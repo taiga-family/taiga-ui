@@ -44,10 +44,11 @@ const GAP = 16;
         '[@tuiFadeIn]': 'animation',
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
-        '(document:click.silent.capture)': 'onClick($event)',
-        '(window>scroll.silent.capture)': 'refresh($event.currentTarget.visualViewport)',
-        '(visualViewport>resize.silent)': 'refresh($event.target)',
-        '(visualViewport>scroll.silent)': 'refresh($event.target)',
+        '(document:click.zoneless.capture)': 'onClick($event)',
+        '(window>scroll.zoneless.capture)':
+            'refresh($event.currentTarget.visualViewport)',
+        '(visualViewport>resize.zoneless)': 'refresh($event.target)',
+        '(visualViewport>scroll.zoneless)': 'refresh($event.target)',
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {

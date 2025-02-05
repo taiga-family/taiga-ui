@@ -58,7 +58,7 @@
             [value]="calendarValue"
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         />
     </ng-template>
 </div>

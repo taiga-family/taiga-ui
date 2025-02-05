@@ -8,7 +8,7 @@ import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rx
     standalone: true,
     selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
     host: {
-        '(dragover.prevent.silent)': '0',
+        '(dragover.prevent.zoneless)': '0',
     },
 })
 export class TuiDroppable {

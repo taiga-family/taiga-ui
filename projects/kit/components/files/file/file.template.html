@@ -42,7 +42,7 @@
         class="t-remove"
         [iconStart]="icons.close"
         (click.prevent)="remove.emit()"
-        (mousedown.prevent.silent)="(0)"
+        (mousedown.prevent.zoneless)="(0)"
     >
         {{ texts.remove }}
     </button>

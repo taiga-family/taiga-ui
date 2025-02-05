@@ -5,8 +5,8 @@ import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
     standalone: true,
     selector: 'tui-swipe-actions[autoClose]',
     host: {
-        '(document:pointerdown.silent)': 'handleEvent($event)',
-        '(document:focusin.silent)': 'handleEvent($event)',
+        '(document:pointerdown.zoneless)': 'handleEvent($event)',
+        '(document:focusin.zoneless)': 'handleEvent($event)',
     },
 })
 export class TuiSwipeActionsAutoClose {
