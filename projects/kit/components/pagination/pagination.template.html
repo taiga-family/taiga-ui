@@ -11,7 +11,7 @@
                 [iconStart]="icons.decrement"
                 [size]="buttonSize"
                 (click)="onArrowClick('left')"
-                (mousedown.silent.prevent)="(0)"
+                (mousedown.zoneless.prevent)="(0)"
             >
                 {{ texts[0] }}
             </button>
@@ -48,7 +48,7 @@
                 [iconStart]="icons.increment"
                 [size]="buttonSize"
                 (click)="onArrowClick('right')"
-                (mousedown.silent.prevent)="(0)"
+                (mousedown.zoneless.prevent)="(0)"
             >
                 {{ texts[1] }}
             </button>

@@ -16,7 +16,7 @@
         tuiIconButton
         type="button"
         (click)="clear()"
-        (pointerdown.silent.prevent)="input.focus()"
+        (pointerdown.zoneless.prevent)="input.focus()"
     >
         Clear
     </button>

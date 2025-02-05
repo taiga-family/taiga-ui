@@ -82,8 +82,8 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
         '[class._icon-start]': 'iconStart',
         '[class._expandable]': 'expandable',
         '[class._label-outside]': 'labelOutside',
-        '(focusin.capture.silent)': 'onFocusInOut()',
-        '(focusout.capture.silent)': 'onFocusInOut()',
+        '(focusin.capture.zoneless)': 'onFocusInOut()',
+        '(focusout.capture.zoneless)': 'onFocusInOut()',
     },
 })
 export class TuiInputTagComponent

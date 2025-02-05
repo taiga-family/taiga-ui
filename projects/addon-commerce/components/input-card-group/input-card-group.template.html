@@ -1,7 +1,7 @@
 <div class="t-wrapper">
     <label
         *tuiLet="value()?.card | tuiFormatCard: cardPrefilled as formattedCard"
-        (click.silent.prevent)="(0)"
+        (click.zoneless.prevent)="(0)"
     >
         <input
             #inputCard
@@ -60,7 +60,7 @@
     class="t-wrapper t-wrapper_expire"
     [class.t-wrapper_active]="cardCollapsed"
 >
-    <label (click.silent.prevent)="(0)">
+    <label (click.zoneless.prevent)="(0)">
         <input
             #inputExpire
             automation-id="tui-input-card-group__expire"
@@ -95,7 +95,7 @@
     class="t-wrapper t-wrapper_cvc"
     [class.t-wrapper_active]="cardCollapsed"
 >
-    <label (click.silent.prevent)="(0)">
+    <label (click.zoneless.prevent)="(0)">
         <input
             #inputCVC
             automation-id="tui-input-card-group__cvc"

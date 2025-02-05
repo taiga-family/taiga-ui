@@ -17,7 +17,7 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="directive?.setValue(null)"
-        (pointerdown.silent.prevent)="input?.nativeElement?.focus()"
+        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
     >
         {{ clear() }}
     </button>

@@ -33,7 +33,7 @@
                 [max]="max"
                 [min]="min"
                 [value]="value === null ? null : value"
-                (mousedown.prevent.silent)="(0)"
+                (mousedown.prevent.zoneless)="(0)"
                 (yearClick)="onYearClick($event)"
             />
         </tui-scrollbar>

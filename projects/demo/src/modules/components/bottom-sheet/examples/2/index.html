@@ -35,7 +35,7 @@
 <tui-bottom-sheet
     class="sheet"
     [stops]="stops"
-    (scroll.silent)="onScroll($any($event.target))"
+    (scroll.zoneless)="onScroll($any($event.target))"
 >
     <h3 tuiHeader>
         <span tuiTitle>

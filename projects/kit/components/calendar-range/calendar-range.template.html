@@ -12,7 +12,7 @@
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event)"
-    (mousedown.prevent.silent)="(0)"
+    (mousedown.prevent.zoneless)="(0)"
 />
 <tui-calendar
     *ngIf="!items.length; else presets"
@@ -27,7 +27,7 @@
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event.append({month: -1}))"
-    (mousedown.prevent.silent)="(0)"
+    (mousedown.prevent.zoneless)="(0)"
 />
 <ng-template #presets>
     <tui-data-list
@@ -43,7 +43,7 @@
             type="button"
             [attr.aria-checked]="isItemActive(item)"
             (click)="onItemSelect(item)"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         >
             {{ item }}
             <tui-icon

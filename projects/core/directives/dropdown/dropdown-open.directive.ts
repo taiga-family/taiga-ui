@@ -59,8 +59,8 @@ function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boole
         '(click)': 'onClick($event.target)',
         '(keydown.arrowDown)': 'onArrow($event, false)',
         '(keydown.arrowUp)': 'onArrow($event, true)',
-        '(document:keydown.silent.capture)': 'onEsc($event)',
-        '(document:keydown.silent)': 'onKeydown($event)',
+        '(document:keydown.zoneless.capture)': 'onEsc($event)',
+        '(document:keydown.zoneless)': 'onKeydown($event)',
     },
 })
 export class TuiDropdownOpen implements OnChanges {

@@ -50,7 +50,7 @@ class TuiRippleStyles {}
     standalone: true,
     selector: '[tuiRipple]',
     host: {
-        '(pointerdown.silent)':
+        '(pointerdown.zoneless)':
             'start($event.clientX, $event.clientY, $event.target, $event.currentTarget)',
     },
 })

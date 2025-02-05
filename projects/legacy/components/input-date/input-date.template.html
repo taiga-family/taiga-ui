@@ -63,12 +63,12 @@
             [value]="value"
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         />
         <div
             *ngIf="items.length === 1"
             class="t-button"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         >
             <button
                 tuiLink

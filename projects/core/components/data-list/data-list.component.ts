@@ -51,7 +51,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         '[attr.data-size]': 'size',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
         '(mousedown.prevent)': '(0)',
-        '(wheel.silent.passive)': 'handleFocusLossIfNecessary()',
+        '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
         '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
         '(keydown.tab)': 'handleFocusLossIfNecessary()',
         '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',

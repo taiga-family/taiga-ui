@@ -28,7 +28,7 @@ const OPTIONS = {
     host: {
         '[style.--t-start]': 'stops[0]',
         '[style.scroll-snap-type]': 'stops.length > 1 ? "y mandatory" : null',
-        '(scroll.silent)': 'onScroll()',
+        '(scroll.zoneless)': 'onScroll()',
         '(resize)': 'onScroll()',
     },
 })

@@ -97,7 +97,7 @@
         <tui-calendar
             [value]="dateValue"
             (dayClick)="onDayClick($event)"
-            (mousedown.silent.prevent)="(0)"
+            (mousedown.zoneless.prevent)="(0)"
         />
     </ng-template>
 

@@ -41,7 +41,7 @@
             [value]="value"
             [year]="computedDefaultActiveYear"
             (monthClick)="onMonthClick($event)"
-            (mousedown.prevent.silent)="(0)"
+            (mousedown.prevent.zoneless)="(0)"
         />
     </ng-template>
 </div>

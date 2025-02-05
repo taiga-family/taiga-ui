@@ -10,9 +10,9 @@ import {TuiResizable} from './resizable.directive';
     host: {
         '[style.cursor]': 'cursor',
         '[style.touchAction]': '"none"',
-        '(pointerdown.silent.prevent)': 'onPointerDown($event.x, $event.y)',
-        '(document:pointermove.silent)': 'onPointerMove($event)',
-        '(document:pointerup.silent)': 'onPointerUp()',
+        '(pointerdown.zoneless.prevent)': 'onPointerDown($event.x, $event.y)',
+        '(document:pointermove.zoneless)': 'onPointerMove($event)',
+        '(document:pointerup.zoneless)': 'onPointerUp()',
     },
 })
 export class TuiResizer {

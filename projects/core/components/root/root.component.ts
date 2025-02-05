@@ -46,7 +46,7 @@ import {map} from 'rxjs';
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
         '[class._mobile]': 'isMobileRes()',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
-        '(touchstart.passive.silent)': '0',
+        '(touchstart.passive.zoneless)': '0',
     },
 })
 export class TuiRoot extends TuiPortals {

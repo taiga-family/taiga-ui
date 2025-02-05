@@ -44,7 +44,7 @@
     [size]="isMobile() ? 'xs' : 's'"
     [style.border-radius.%]="100"
     (click)="close$.next()"
-    (mousedown.prevent.silent)="(0)"
+    (mousedown.prevent.zoneless)="(0)"
 >
     {{ closeWord$ | async }}
 </button>

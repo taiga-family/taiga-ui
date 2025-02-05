@@ -18,9 +18,9 @@ function isDragging(this: TuiTileHandle): boolean {
     host: {
         '[style.touchAction]': '"none"',
         '[style.userSelect]': '"none"',
-        '(pointerdown.silent.prevent)': 'onStart($event)',
-        '(document:pointerup.silent)': 'onPointer()',
-        '(document:pointermove.silent)': 'onMove($event.x, $event.y)',
+        '(pointerdown.zoneless.prevent)': 'onStart($event)',
+        '(document:pointerup.zoneless)': 'onPointer()',
+        '(document:pointermove.zoneless)': 'onMove($event.x, $event.y)',
     },
 })
 export class TuiTileHandle {
