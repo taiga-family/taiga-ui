@@ -101,8 +101,9 @@ export class TuiInputSliderDirective {
     }
 
     @ContentChild(TuiSliderKeyStepsBase)
-    protected set keyStepsSetter({transformer}: TuiSliderKeyStepsBase) {
-        this.keyStepsTransformer = transformer;
+    protected set keyStepsSetter(keyStepsHost: TuiSliderKeyStepsBase) {
+        keyStepsHost.value = this.value;
+        this.keyStepsTransformer = keyStepsHost.transformer;
     }
 
     protected onSliderInput({target}: Event): void {
