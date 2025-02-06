@@ -76,7 +76,7 @@ export class TuiSliderComponent {
     public get valueRatio(): number {
         const range = this.max() - this.min();
 
-        return (range && (this.value - this.min()) / range) || 0;
+        return range && (this.value - this.min()) / range;
     }
 
     public get value(): number {

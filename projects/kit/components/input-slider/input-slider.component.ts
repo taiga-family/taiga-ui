@@ -1,4 +1,3 @@
-import type {WritableSignal} from '@angular/core';
 import {
     computed,
     ContentChild,
@@ -47,10 +46,9 @@ import {filter, map, pairwise, startWith, switchMap} from 'rxjs';
 })
 export class TuiInputSliderDirective {
     private readonly injector = inject(INJECTOR);
-    private keyStepsTransformer: WritableSignal<TuiValueTransformer<
-        number,
-        number
-    > | null> = signal(null);
+    private keyStepsTransformer = signal<TuiValueTransformer<number, number> | null>(
+        null,
+    );
 
     private readonly inputNumber = signal<TuiInputNumber | null>(null);
     private readonly slider = signal<TuiSliderComponent | null>(null);
@@ -64,11 +62,7 @@ export class TuiInputSliderDirective {
             : (slider?.step() ?? 1),
     );
 
-    protected disabled = computed(
-        () => (this.inputNumber()?.disabled() || this.inputNumber()?.readOnly()) ?? false,
-    );
-
-    protected safeInputNumberValue = toSignal(
+    protected value = toSignal(
         toObservable(this.inputNumber).pipe(
             filter(tuiIsPresent),
             switchMap(({value}) =>
@@ -86,10 +80,10 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        const value = this.safeInputNumberValue() ?? slider.value;
+        const value = this.value() ?? slider.value;
 
         slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
-        slider.el.disabled = this.disabled();
+        slider.el.disabled = !this.inputNumber()?.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     @ContentChild(TuiInputNumber)
@@ -112,34 +106,38 @@ export class TuiInputSliderDirective {
     }
 
     protected onSliderInput({target}: Event): void {
-        if (tuiIsElement(target) && tuiIsInput(target) && target.type === 'range') {
-            const value = Number(target.value);
-
-            this.inputNumber()?.setValue(
-                this.keyStepsTransformer()?.toControlValue(value) ?? value,
-            );
+        if (!(tuiIsElement(target) && tuiIsInput(target) && target.type === 'range')) {
+            return;
         }
+
+        const transformed =
+            this.keyStepsTransformer()?.toControlValue(target.valueAsNumber) ??
+            target.valueAsNumber;
+
+        this.inputNumber()?.setValue(transformed);
     }
 
     protected onStep(coefficient: number): void {
         const slider = this.slider();
 
-        if (this.textfield.focused() && slider) {
-            const newValue = tuiClamp(
-                slider.value + coefficient * this.step(),
-                this.min(),
-                this.max(),
-            );
-
-            this.inputNumber()?.setValue(
-                this.keyStepsTransformer()?.toControlValue(newValue) ?? newValue,
-            );
+        if (!slider) {
+            return;
         }
+
+        const newValue = tuiClamp(
+            slider.value + coefficient * this.step(),
+            this.min(),
+            this.max(),
+        );
+
+        this.inputNumber()?.setValue(
+            this.keyStepsTransformer()?.toControlValue(newValue) ?? newValue,
+        );
     }
 
     protected onBlur(): void {
         if (!this.textfield.input?.nativeElement.value) {
-            this.inputNumber()?.setValue(this.safeInputNumberValue() ?? null);
+            this.inputNumber()?.setValue(this.value() ?? null);
         }
     }
 }
