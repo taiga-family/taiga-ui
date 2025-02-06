@@ -1,11 +1,11 @@
 ```ts
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {TuiDialogContext} from '@taiga-ui/core';
+import {injectContext} from '@taiga-ui/polymorpheus';
 
 // ...
 
 export class Example {
-  private readonly context: TuiDialogContext<boolean> = inject(POLYMORPHEUS_CONTEXT);
+  public readonly context = injectContext<TuiDialogContext<boolean>>();
 
   ok() {
     this.context.completeWith(true);
