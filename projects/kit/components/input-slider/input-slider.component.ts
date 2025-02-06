@@ -1,19 +1,10 @@
-import {
-    computed,
-    ContentChild,
-    Directive,
-    effect,
-    inject,
-    INJECTOR,
-    signal,
-} from '@angular/core';
-import {toObservable, toSignal} from '@angular/core/rxjs-interop';
+import type {CreateComputedOptions, Signal} from '@angular/core';
+import {computed, ContentChild, Directive, effect, inject, signal} from '@angular/core';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TuiNonNullableValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -24,7 +15,6 @@ import {
     TuiSliderKeyStepsBase,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
-import {filter, map, pairwise, startWith, switchMap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -45,7 +35,6 @@ import {filter, map, pairwise, startWith, switchMap} from 'rxjs';
     },
 })
 export class TuiInputSliderDirective {
-    private readonly injector = inject(INJECTOR);
     private keyStepsTransformer = signal<TuiValueTransformer<number, number> | null>(
         null,
     );
@@ -62,15 +51,8 @@ export class TuiInputSliderDirective {
             : (slider?.step() ?? 1),
     );
 
-    protected value = toSignal(
-        toObservable(this.inputNumber).pipe(
-            filter(tuiIsPresent),
-            switchMap(({value}) =>
-                toObservable(value, {injector: this.injector}).pipe(startWith(value())),
-            ),
-            pairwise(),
-            map(([prev, cur]) => cur ?? prev!),
-        ),
+    protected value = computedWithPrev<number>(
+        (prev) => this.inputNumber()?.value() ?? prev!,
     );
 
     protected readonly textfieldToSliderSync = effect(() => {
@@ -141,4 +123,17 @@ export class TuiInputSliderDirective {
             this.inputNumber()?.setValue(this.value() ?? null);
         }
     }
+}
+
+function computedWithPrev<T>(
+    fn: (prev?: T) => T,
+    options?: CreateComputedOptions<T>,
+): Signal<T> {
+    let prev: T;
+
+    return computed<T>(() => {
+        prev = fn(prev);
+
+        return prev;
+    }, options);
 }
