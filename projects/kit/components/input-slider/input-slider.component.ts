@@ -103,7 +103,7 @@ export class TuiInputSliderDirective {
     protected onStep(coefficient: number): void {
         const slider = this.slider();
 
-        if (!slider) {
+        if (!slider || !this.inputNumber()?.interactive()) {
             return;
         }
 
