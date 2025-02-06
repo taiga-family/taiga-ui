@@ -30,6 +30,7 @@ const FLAKY_EXAMPLES = new Map<
     [DemoRoute.TabBar, [{exampleIndex: 3}]], // Imitating server response (timer(3000))
     [DemoRoute.Table, [{exampleIndex: 3}, {exampleIndex: 4}]], // Imitating server response (delay(3000)) and virtual scroll
     [DemoRoute.Tiles, [{exampleIndex: 0}]], // YouTube iframe player
+    [DemoRoute.BottomSheet, [{exampleIndex: 1}]], // Google maps
 ]);
 
 export function tuiIsFlakyExample(
