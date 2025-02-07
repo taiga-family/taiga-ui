@@ -164,6 +164,10 @@ export class TuiInputDateTimeComponent
     }
 
     public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+        if (this.value === null && value === this.value) {
+            return;
+        }
+
         super.writeValue(value);
 
         this.nativeValue.set(
