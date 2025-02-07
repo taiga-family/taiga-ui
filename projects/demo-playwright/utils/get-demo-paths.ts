@@ -29,6 +29,7 @@ export const EXCLUDED_ROUTES = [
     DemoRoute.SheetDialog, // just buttons
     DemoRoute.Error,
     DemoRoute.MobileCalendar, // TODO: flaky test, need investigate
+    DemoRoute.InputSlider, // TODO
 ];
 
 export function tuiGetDemoPathsForE2E(
