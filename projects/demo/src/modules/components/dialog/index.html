@@ -327,9 +327,21 @@
                 </p>
 
                 <tui-doc-code
-                    filename="myDialog.component.ts"
+                    filename="my-dialog.component.ts"
                     [code]="exampleCustomDialog"
                 />
+
+                <tui-notification class="tui-space_top-3">
+                    <code [innerText]="'TuiDialogContext<Type1 = void, Type2 = undefined>'"></code>
+                    , the first type is the return type of value, for example:
+                    <code [innerText]="'this.dialogs.open(...).subscribe((value: Type1) => ... )'"></code>
+                    . The second type is type of passed data to the dialog:
+                    <code [innerText]="'this.dialogs.open(..., { data: Type2 })'"></code>
+                    . Accordingly, in the dialog component the context will be as follows:
+                    <code [innerText]="'this.context.data: Type2'"></code>
+                    and
+                    <code [innerText]="'this.context.$implicit / completeWith: Type1'"></code>
+                </tui-notification>
             </li>
 
             <li class="tui-list__item">
@@ -343,8 +355,8 @@
                 </p>
 
                 <tui-doc-code
-                    filename="myDialog.component.ts"
-                    [code]="exampleLazyModule"
+                    filename="my-dialog.component.ts"
+                    [code]="exampleLazyDialog"
                 />
             </li>
         </ol>
