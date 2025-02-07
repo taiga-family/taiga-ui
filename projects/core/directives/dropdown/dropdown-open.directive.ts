@@ -12,7 +12,12 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiObscured} from '@taiga-ui/cdk/directives/obscured';
-import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
+import {
+    tuiCloseWatcher,
+    tuiIfMap,
+    tuiWatch,
+    tuiZonefull,
+} from '@taiga-ui/cdk/observables';
 import {
     tuiGetActualTarget,
     tuiInjectElement,
@@ -25,20 +30,18 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
-import {tuiCloseWatcher} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
-import {filter, fromEvent, map, merge} from 'rxjs';
+import {filter, fromEvent, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
 
-function shouldClose(this: TuiDropdownOpen, event: Event | KeyboardEvent): boolean {
+function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     return (
         // @ts-ignore
         typeof CloseWatcher === 'undefined' &&
-        'key' in event &&
         event.key.toLowerCase() === 'escape' &&
         this.tuiDropdownEnabled &&
         !!this.tuiDropdownOpen &&
@@ -73,27 +76,11 @@ export class TuiDropdownOpen implements OnChanges {
     private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
     private readonly obscured = inject(TuiObscured);
+    private readonly activeZone = inject(TuiActiveZone);
 
     private readonly dropdown = computed(
         () => this.directive.ref()?.location.nativeElement,
     );
-
-    protected readonly sub = merge(
-        tuiCloseWatcher(),
-        this.obscured.tuiObscured.pipe(filter(Boolean)),
-        inject(TuiActiveZone).tuiActiveZoneChange.pipe(filter((a) => !a)),
-        fromEvent(this.el, 'focusin').pipe(
-            map(tuiGetActualTarget),
-            filter((target) => !this.host.contains(target) || !this.directive.ref()),
-        ),
-    )
-        .pipe(
-            filter(() => !!this.tuiDropdownOpen),
-            tuiZonefull(),
-            tuiWatch(),
-            takeUntilDestroyed(),
-        )
-        .subscribe(() => this.toggle(false));
 
     @Input()
     public tuiDropdownEnabled = true;
@@ -106,6 +93,27 @@ export class TuiDropdownOpen implements OnChanges {
 
     // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
     public readonly driver = inject(TuiDropdownDriver);
+    public readonly sub = this.driver
+        .pipe(
+            tuiIfMap(() =>
+                merge(
+                    tuiCloseWatcher(),
+                    this.obscured.tuiObscured.pipe(filter(Boolean)),
+                    this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
+                    fromEvent(this.el, 'focusin').pipe(
+                        filter(
+                            (event) =>
+                                !this.host.contains(tuiGetActualTarget(event)) ||
+                                !this.directive.ref(),
+                        ),
+                    ),
+                ),
+            ),
+            tuiZonefull(),
+            tuiWatch(),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => this.toggle(false));
 
     public ngOnChanges(): void {
         this.update(!!this.tuiDropdownOpen);
@@ -120,7 +128,7 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     @shouldCall(shouldClose)
-    protected onEsc(event: Event): void {
+    protected onEsc(event: KeyboardEvent): void {
         event.preventDefault();
         this.toggle(false);
     }
