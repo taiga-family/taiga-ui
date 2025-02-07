@@ -81,9 +81,7 @@ export default class Page {
         './examples/import/custom-dialog.md?raw'
     );
 
-    protected readonly exampleLazyDialog = import(
-        './examples/import/lazy-dialog.md?raw'
-    );
+    protected readonly exampleLazyDialog = import('./examples/import/lazy-dialog.md?raw');
 
     protected data = 100;
 
