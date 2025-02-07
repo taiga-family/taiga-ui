@@ -9,15 +9,15 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiCloseWatcher, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {filter, isObservable, merge, of, Subject, switchMap} from 'rxjs';
+import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -64,13 +64,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     protected readonly $ = merge(this.close$, tuiCloseWatcher())
         .pipe(
             tuiZonefull(),
-            switchMap(() => {
+            exhaustMap(() => {
                 if (isObservable(this.context.closeable)) {
                     if (this.el.scrollTop <= 0) {
                         this.el.scrollTo({top: this.initial, behavior: 'smooth'});
                     }
 
-                    return this.context.closeable;
+                    return this.context.closeable.pipe(take(1));
                 }
 
                 return of(this.context.closeable);

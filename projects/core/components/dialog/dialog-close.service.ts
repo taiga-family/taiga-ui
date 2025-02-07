@@ -1,14 +1,13 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiCloseWatcher, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {
     tuiContainsOrAfter,
     tuiGetActualTarget,
     tuiInjectElement,
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiCloseWatcher} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
 import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 

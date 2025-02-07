@@ -1,3 +1,4 @@
+export * from './close-watcher';
 export * from './control-value';
 export * from './drag-and-drop-from';
 export * from './events';
