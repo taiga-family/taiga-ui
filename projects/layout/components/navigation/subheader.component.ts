@@ -21,7 +21,7 @@ const PROVIDERS = [
 
 @Component({
     standalone: true,
-    selector: '[tuiSubheader]:not([compact])',
+    selector: '[tuiSubheader]:not([compact]),[tuiNavigationSubheader]:not([compact])',
     template: `
         <ng-content select="[tuiLink]" />
         <ng-content select="tui-breadcrumbs" />
@@ -41,7 +41,7 @@ export class TuiSubheaderComponent {}
 
 @Component({
     standalone: true,
-    selector: '[tuiSubheader][compact]',
+    selector: '[tuiSubheader][compact],[tuiNavigationSubheader][compact]',
     template: `
         <div class="t-nav-subheader">
             <ng-content />

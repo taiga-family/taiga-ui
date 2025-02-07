@@ -85,11 +85,9 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     }
 
     protected tab(step: number): void {
-        this.active = tuiClamp(
-            this.active + step,
-            0,
-            Object.keys(this.results || {}).length,
-        );
+        const max = Object.values(this.results || {}).filter((v) => v.length).length;
+
+        this.active = tuiClamp(this.active + step, 0, max);
         this.textfield.input?.nativeElement.focus();
     }
 
