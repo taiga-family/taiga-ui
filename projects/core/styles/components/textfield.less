@@ -137,7 +137,7 @@ tui-textfield {
 
     &:has(label:not(:empty)) {
         .t-template,
-        input:defined,
+        input:first-of-type,
         select:defined {
             padding-top: calc(var(--t-height) / 3);
 
@@ -151,7 +151,7 @@ tui-textfield {
     // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        input:defined,
+        input:first-of-type,
         select:defined {
             padding-top: calc(var(--t-height) / 3);
 

@@ -1,0 +1,25 @@
+<tui-textfield
+    iconStart="@tui.euro"
+    tuiInputSlider
+    tuiTextfieldSize="m"
+>
+    <input
+        placeholder="I am placeholder"
+        tuiInputNumber
+        [max]="100"
+        [min]="0"
+        [(ngModel)]="value"
+    />
+
+    <input
+        tuiSlider
+        type="range"
+    />
+
+    <tui-icon
+        icon="@tui.circle-alert"
+        style="color: var(--tui-status-negative)"
+    />
+
+    <tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>

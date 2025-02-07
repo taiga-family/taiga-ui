@@ -1,0 +1,27 @@
+<tui-textfield tuiInputSlider>
+    <label tuiLabel>Not linear growing slider</label>
+
+    <input
+        tuiInputNumber
+        [max]="max"
+        [min]="min"
+        [(ngModel)]="value"
+    />
+
+    <input
+        tuiSlider
+        type="range"
+        [keySteps]="keySteps"
+        [segments]="ticksLabels.length - 1"
+        [step]="step"
+    />
+</tui-textfield>
+
+<div class="slider-ticks-labels">
+    <span *ngFor="let label of ticksLabels">{{ label }}</span>
+</div>
+
+<p>
+    Control value:
+    <code>{{ value }}</code>
+</p>

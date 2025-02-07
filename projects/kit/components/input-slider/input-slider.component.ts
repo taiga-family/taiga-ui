@@ -64,10 +64,10 @@ export class TuiInputSliderDirective {
 
         const value = this.value() ?? slider.value;
 
-        slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
         slider.min = this.min();
         slider.max = this.max();
         slider.step = this.step();
+        slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
         slider.el.disabled = !this.inputNumber()?.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -83,9 +83,11 @@ export class TuiInputSliderDirective {
     }
 
     @ContentChild(TuiSliderKeyStepsBase)
-    protected set keyStepsSetter(keyStepsHost: TuiSliderKeyStepsBase) {
-        keyStepsHost.value = this.value;
-        this.keyStepsTransformer = keyStepsHost.transformer;
+    protected set keyStepsSetter(keyStepsHost: TuiSliderKeyStepsBase | null) {
+        if (keyStepsHost) {
+            keyStepsHost.value = this.value;
+            this.keyStepsTransformer = keyStepsHost.transformer;
+        }
     }
 
     protected onSliderInput({target}: Event): void {
