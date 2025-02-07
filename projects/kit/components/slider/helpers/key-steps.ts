@@ -82,14 +82,12 @@ export function tuiCreateKeyStepsTransformer(
                 keySteps,
             );
 
-            return (
-                (newValuePercentage * (slider.max() - slider.min())) / 100 + slider.min()
-            );
+            return (newValuePercentage * (slider.max - slider.min)) / 100 + slider.min;
         }
 
         public toControlValue(nativeValue: number): number {
             const valueRatio =
-                (nativeValue - slider.min()) / (slider.max() - slider.min()) || 0;
+                (nativeValue - slider.min) / (slider.max - slider.min) || 0;
 
             return tuiPercentageToKeyStepValue(valueRatio * 100, keySteps);
         }

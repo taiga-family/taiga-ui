@@ -26,8 +26,8 @@ export class TuiSliderKeyStepsBase {
         forwardRef(() => TuiSliderComponent),
     );
 
-    protected min?: number = this.slider.min();
-    protected max?: number = this.slider.max();
+    protected min?: number = this.slider.min;
+    protected max?: number = this.slider.max;
 
     public transformer = signal<TuiValueTransformer<number, number> | null>(null);
     public value = toSignal(

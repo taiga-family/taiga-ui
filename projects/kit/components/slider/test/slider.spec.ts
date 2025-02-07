@@ -194,11 +194,11 @@ describe('Slider', () => {
         // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#validation
 
         it('max === 100', () => {
-            expect(testComponent.nativeUsageAllDefaultsComponentRef.max()).toBe(100);
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.max).toBe(100);
         });
 
         it('min === 0', () => {
-            expect(testComponent.nativeUsageAllDefaultsComponentRef.min()).toBe(0);
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.min).toBe(0);
         });
 
         it('value === 50', () => {
@@ -220,7 +220,7 @@ describe('Slider', () => {
         fixture.detectChanges();
         await fixture.whenStable();
 
-        expect(testComponent.ngModelComponentRef.max()).toBe(0);
+        expect(testComponent.ngModelComponentRef.max).toBe(0);
         expect(
             getFillPercentage(testComponent.ngModelElementRef.nativeElement, '80%'),
         ).toBe('80%');

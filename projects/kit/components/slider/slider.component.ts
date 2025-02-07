@@ -1,14 +1,4 @@
-import {coerceNumberProperty} from '@angular/cdk/coercion';
-import type {Signal, WritableSignal} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    INJECTOR,
-    Input,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, INJECTOR, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -37,9 +27,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-segment-width.%]': 'segmentWidth',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
-        '[min]': 'min()',
-        '[max]': 'max()',
-        '[step]': 'computedStep()',
     },
 })
 export class TuiSliderComponent {
@@ -55,10 +42,6 @@ export class TuiSliderComponent {
     public segments = 1;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
-    public min: Signal<number> | WritableSignal<number> = signal(0);
-    public max: Signal<number> | WritableSignal<number> = signal(100);
-    public step = signal(1);
-    public computedStep = computed(() => this.step()); // For external management (e.g. InputSlider)
 
     constructor() {
         if (this.control instanceof NgModel) {
@@ -74,9 +57,31 @@ export class TuiSliderComponent {
     }
 
     public get valueRatio(): number {
-        const range = this.max() - this.min();
+        return (this.value - this.min) / (this.max - this.min) || 0;
+    }
 
-        return range && (this.value - this.min()) / range;
+    public get min(): number {
+        return Number(this.el.min);
+    }
+
+    public set min(x: number) {
+        this.el.min = String(x);
+    }
+
+    public get max(): number {
+        return Number(this.el.max || 100);
+    }
+
+    public set max(x: number) {
+        this.el.max = String(x);
+    }
+
+    public get step(): number {
+        return Number(this.el.step) || 1;
+    }
+
+    public set step(x: number) {
+        this.el.step = String(x);
     }
 
     public get value(): number {
@@ -95,31 +100,6 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    @Input({
-        alias: 'min',
-        transform: (x: number | string) => coerceNumberProperty(x), // TODO: remove `transform` in v5
-    })
-    protected set minSetter(x: number) {
-        isWritableSignal(this.min) && this.min.set(x);
-    }
-
-    @Input({
-        alias: 'max',
-        transform: (x: number | string) => coerceNumberProperty(x), // TODO: remove `transform` in v5
-    })
-    protected set maxSetter(x: number) {
-        isWritableSignal(this.max) && this.max.set(x);
-    }
-
-    // TODO(v5): use signal input
-    @Input({
-        alias: 'step',
-        transform: (x: number | string) => coerceNumberProperty(x, 'any'),
-    })
-    protected set stepSetter(x: number) {
-        this.step.set(x);
-    }
-
     @tuiPure
     protected get hasKeySteps(): boolean {
         return Boolean(this.injector.get(TuiSliderKeySteps, null));
@@ -128,8 +108,4 @@ export class TuiSliderComponent {
     protected get segmentWidth(): number {
         return 100 / Math.max(1, this.segments);
     }
-}
-
-function isWritableSignal<T>(x: Signal<T>): x is WritableSignal<T> {
-    return 'set' in x;
 }

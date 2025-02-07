@@ -47,8 +47,8 @@ export class TuiInputSliderDirective {
     protected max = computed(() => this.inputNumber()?.max() ?? 100);
     protected step = computed((slider = this.slider()) =>
         slider && this.keyStepsTransformer() // For non-linear slider step means percentage
-            ? ((this.max() - this.min()) / 100) * slider.step()
-            : (slider?.step() ?? 1),
+            ? ((this.max() - this.min()) / 100) * slider.step
+            : (slider?.step ?? 1),
     );
 
     protected value = computedWithPrev<number>(
@@ -65,6 +65,9 @@ export class TuiInputSliderDirective {
         const value = this.value() ?? slider.value;
 
         slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
+        slider.min = this.min();
+        slider.max = this.max();
+        slider.step = this.step();
         slider.el.disabled = !this.inputNumber()?.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -76,9 +79,6 @@ export class TuiInputSliderDirective {
     @ContentChild(TuiSliderComponent)
     protected set sliderSetter(slider: TuiSliderComponent) {
         this.slider.set(slider);
-        slider.min = this.min;
-        slider.max = this.max;
-        slider.computedStep = this.step;
         slider.el.setAttribute('tabindex', '-1');
     }
 
