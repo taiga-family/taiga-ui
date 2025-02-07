@@ -70,7 +70,7 @@ const DATE_TIME_SEPARATOR = ', ';
     },
 })
 export class TuiInputDateTimeComponent
-    extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
+    extends AbstractTuiControl<[TuiDay | null, TuiTime | null] | null>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -78,6 +78,7 @@ export class TuiInputDateTimeComponent
 
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
     private readonly nativeValue = signal('');
@@ -148,7 +149,7 @@ export class TuiInputDateTimeComponent
 
     public get computedValue(): string {
         const {value, nativeValue, timeMode} = this;
-        const [date, time] = value;
+        const [date, time] = value ?? [null, null];
         const hasTimeInputChars = nativeValue().length > DATE_FILLER_LENGTH;
 
         if (!date || (!time && hasTimeInputChars)) {
@@ -164,7 +165,11 @@ export class TuiInputDateTimeComponent
     }
 
     public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
-        super.writeValue(value);
+        if (value?.[0]) {
+            super.writeValue(value);
+        } else {
+            super.writeValue(null);
+        }
 
         this.nativeValue.set(
             this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
@@ -183,7 +188,7 @@ export class TuiInputDateTimeComponent
         }
 
         if (value.length < DATE_FILLER_LENGTH) {
-            this.value = [null, null];
+            this.value = null;
 
             return;
         }
@@ -196,7 +201,7 @@ export class TuiInputDateTimeComponent
                 : null;
 
         this.open = false;
-        this.value = [parsedDate, parsedTime];
+        this.value = time && !parsedTime ? null : [parsedDate, parsedTime];
     }
 
     protected get size(): TuiSizeL | TuiSizeS {
@@ -234,7 +239,7 @@ export class TuiInputDateTimeComponent
     }
 
     protected get calendarValue(): TuiDay | null {
-        return this.value[0];
+        return this.value?.[0] ?? null;
     }
 
     protected get calendarMinDay(): TuiDay {
@@ -254,7 +259,7 @@ export class TuiInputDateTimeComponent
 
         return (
             this.month ||
-            this.value[0] ||
+            this.value?.[0] ||
             tuiDateClamp(
                 this.defaultActiveYearMonth,
                 Array.isArray(computedMin) ? computedMin[0] : computedMin,
@@ -268,7 +273,8 @@ export class TuiInputDateTimeComponent
     }
 
     protected onDayClick(day: TuiDay): void {
-        const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
+        const modifiedTime =
+            (this.value?.[1] && this.clampTime(this.value?.[1], day)) ?? null;
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
@@ -303,36 +309,41 @@ export class TuiInputDateTimeComponent
             });
 
         if (
-            this.value[0] === null ||
-            this.value[1] !== null ||
             this.nativeValue().length === this.fillerLength ||
             this.timeMode === 'HH:MM'
         ) {
             return;
         }
 
-        const [, time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
+        const [date = '', time] = this.nativeValue().split(DATE_TIME_SEPARATOR);
 
         if (!time) {
             return;
         }
 
         const parsedTime = TuiTime.fromString(time);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
 
-        this.value = [this.value[0], parsedTime];
+        this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 
-    protected getFallbackValue(): [TuiDay | null, TuiTime | null] {
-        return [null, null];
+    protected getFallbackValue(): [TuiDay | null, TuiTime | null] | null {
+        return null;
     }
 
     protected override valueIdenticalComparator(
-        oldValue: [TuiDay | null, TuiTime | null],
-        newValue: [TuiDay | null, TuiTime | null],
+        oldValue: [TuiDay | null, TuiTime | null] | null,
+        newValue: [TuiDay | null, TuiTime | null] | null,
     ): boolean {
         return (
-            tuiNullableSame(oldValue[0], newValue[0], (a, b) => a.daySame(b)) &&
-            tuiNullableSame(oldValue[1], newValue[1], (a, b) => String(a) === String(b))
+            tuiNullableSame(oldValue?.[0] ?? null, newValue?.[0] ?? null, (a, b) =>
+                a.daySame(b),
+            ) &&
+            tuiNullableSame(
+                oldValue?.[1] ?? null,
+                newValue?.[1] ?? null,
+                (a, b) => String(a) === String(b),
+            )
         );
     }
 

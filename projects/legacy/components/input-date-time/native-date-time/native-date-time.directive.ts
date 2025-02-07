@@ -20,7 +20,7 @@ export class TuiNativeDateTimeDirective {
     protected readonly host = inject(TuiInputDateTimeDirective);
 
     protected get value(): string {
-        if (!this.host.rawValue[0] || !this.host.rawValue[1]) {
+        if (!this.host.rawValue?.[0] || !this.host.rawValue?.[1]) {
             return '';
         }
 
@@ -32,7 +32,7 @@ export class TuiNativeDateTimeDirective {
 
     protected onChange(value: string): void {
         if (!value) {
-            this.host.writeValue([null, null]);
+            this.host.writeValue(null);
 
             return;
         }
