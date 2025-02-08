@@ -1,88 +1,17 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
-
 .accordion {
+    inline-size: 20rem;
     border-radius: 0;
-}
 
-.expand {
-    box-shadow:
-        inset 0 1px var(--tui-border-normal),
-        inset 0 -1px var(--tui-border-normal);
-}
-
-.operation {
-    block-size: 4.5rem;
-    box-shadow:
-        inset 0 1px var(--tui-border-normal),
-        inset 0 -1px var(--tui-border-normal);
-}
-
-.operation-header {
-    display: flex;
-    flex: 1;
-    font: var(--tui-font-text-l);
-    align-items: center;
-}
-
-.operation-date {
-    font: var(--tui-font-text-xl);
-    text-align: center;
-}
-
-.operation-date,
-.operation-info {
-    color: var(--tui-text-secondary);
-}
-
-.operation-month,
-.operation-status {
-    font: var(--tui-font-text-s);
-}
-
-.operation-pic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin: 0 1.5rem;
-    background: var(--tui-background-neutral-1);
-    border-radius: 100%;
-    inline-size: 3rem;
-    block-size: 3rem;
-    color: var(--tui-text-tertiary);
-}
-
-.operation-title {
-    .text-overflow();
-
-    margin-right: 1.5rem;
-    flex-grow: 1;
-}
-
-.operation-info {
-    text-align: end;
-}
-
-.operation-status {
-    &_success {
-        color: var(--tui-text-positive);
+    [tuiAccordion] {
+        border-top: 1px solid var(--tui-border-normal);
+        background: transparent !important;
+        mask: none;
     }
 
-    &_error {
-        color: var(--tui-text-negative);
+    tui-expand,
+    [tuiCell] {
+        padding-left: 0;
+        padding-right: 0;
+        box-shadow: none;
     }
-}
-
-.form-title {
-    font: var(--tui-font-heading-6);
-    margin: 0 0 1.25rem;
-}
-
-.input {
-    max-inline-size: 28.75rem;
-    margin-bottom: 1.25rem;
-}
-
-.buttons {
-    display: flex;
 }
