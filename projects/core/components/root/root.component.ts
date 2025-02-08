@@ -10,6 +10,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
+import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -39,7 +40,7 @@ import {map} from 'rxjs';
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     viewProviders: [tuiAsPortal(TuiPopupService)],
-    hostDirectives: [TuiPlatform, TuiVisualViewport],
+    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
