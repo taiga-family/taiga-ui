@@ -12,14 +12,14 @@ import {TuiCell} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
+        FormsModule,
         KeyValuePipe,
         NgForOf,
         TuiAccordion,
         TuiAvatar,
-        TuiConnected,
         TuiCell,
         TuiCheckbox,
-        FormsModule,
+        TuiConnected,
         TuiTitle,
     ],
     templateUrl: './index.html',
