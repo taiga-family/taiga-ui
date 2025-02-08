@@ -1,5 +1,6 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {DestroyRef, Directive, inject, type OnInit, PLATFORM_ID} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {DestroyRef, Directive, inject, PLATFORM_ID} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateTokenFromFactory, tuiInjectElement} from '@taiga-ui/cdk/utils';
 
