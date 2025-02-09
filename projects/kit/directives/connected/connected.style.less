@@ -28,45 +28,57 @@
         padding: inherit;
     }
 
-    > [tuiAccordion]::before {
-        top: 0;
-        left: calc(var(--t-image-size) / 2);
-        block-size: 100%;
-        margin: 0;
-        background: var(--tui-border-normal);
-        mask: linear-gradient(
-            to top,
-            black calc(50% - var(--t-image-size) / 2),
-            transparent calc(50% - var(--t-image-size) / 2),
-            transparent calc(50% + var(--t-image-size) / 2),
-            black calc(50% + var(--t-image-size) / 2)
-        );
+    > [tuiAccordion] {
+        gap: 1rem;
+
+        --t-margin: 0;
+
+        &::before {
+            top: 0;
+            left: calc(var(--t-image-size) / 2);
+            block-size: 100%;
+            margin: 0;
+            background: var(--tui-border-normal);
+            mask: linear-gradient(
+                to top,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% + var(--t-image-size) / 2),
+                black calc(50% + var(--t-image-size) / 2)
+            );
+        }
+
+        &:first-of-type::before {
+            mask: linear-gradient(
+                to top,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2)
+            );
+        }
+
+        &:last-of-type::before {
+            mask: linear-gradient(
+                to bottom,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2)
+            );
+        }
     }
 
-    > [tuiAccordion]:first-of-type::before {
-        mask: linear-gradient(
-            to top,
-            black calc(50% - var(--t-image-size) / 2),
-            transparent calc(50% - var(--t-image-size) / 2)
-        );
-    }
+    > tui-expand {
+        > * {
+            padding: 0 0 0 3rem;
+        }
 
-    > [tuiAccordion]:last-of-type::before {
-        mask: linear-gradient(
-            to bottom,
-            black calc(50% - var(--t-image-size) / 2),
-            transparent calc(50% - var(--t-image-size) / 2)
-        );
-    }
-
-    > tui-expand::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc(var(--t-image-size) / 2);
-        block-size: 100%;
-        inline-size: 1px;
-        background: var(--tui-border-normal);
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(var(--t-image-size) / 2);
+            block-size: 100%;
+            inline-size: 1px;
+            background: var(--tui-border-normal);
+        }
     }
 
     > [tuiStep] {
