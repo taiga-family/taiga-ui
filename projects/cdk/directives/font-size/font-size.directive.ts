@@ -1,11 +1,13 @@
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import type {OnInit} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {DestroyRef, Directive, inject, PLATFORM_ID} from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
+import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateTokenFromFactory, tuiInjectElement} from '@taiga-ui/cdk/utils';
-
-const IFRAME = 'position: fixed; visibility: hidden; pointer-events: none';
-const BODY = 'height: fit-content; line-height: 1em;';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {
+    tuiCreateTokenFromFactory,
+    tuiFontSizeWatcher,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const TUI_FONT_SIZE_HANDLER = tuiCreateTokenFromFactory<TuiStringHandler<number>>(
     () => (size) => `${Math.max(size, 16)}`,
@@ -13,53 +15,16 @@ export const TUI_FONT_SIZE_HANDLER = tuiCreateTokenFromFactory<TuiStringHandler<
 
 @Directive({
     standalone: true,
-    host: {
-        '(window:resize.zoneless)': 'onResize()',
-    },
 })
-export class TuiFontSize implements OnInit {
+export class TuiFontSize {
     private readonly el = tuiInjectElement();
-    private readonly doc = inject(DOCUMENT);
-    private readonly iframe = this.doc.createElement('iframe');
     private readonly handler = inject(TUI_FONT_SIZE_HANDLER);
-    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly destroyRef = inject(DestroyRef);
+    private readonly callback = (size: number) =>
+        this.el.style.setProperty('--tui-font-size', this.handler(size));
 
-    public ngOnInit(): void {
-        this.doc.body.append(this.iframe);
-        this.iframe.setAttribute('style', IFRAME);
-        this.onResize();
-
-        if (!this.isBrowser) {
-            return;
-        }
-
-        const doc = this.iframe.contentWindow?.document;
-        const observer = new ResizeObserver(() =>
-            this.el.style.setProperty(
-                '--tui-font-size',
-                this.handler(doc?.body.offsetHeight || 0),
-            ),
-        );
-
-        doc?.documentElement.style.setProperty('font', '-apple-system-body');
-        doc?.body.setAttribute('style', BODY);
-        doc?.body.insertAdjacentText('beforeend', '.'.repeat(1000));
-        observer.observe(doc?.body || this.iframe);
-
-        this.destroyRef.onDestroy(() => {
-            observer.disconnect();
-            this.iframe.remove();
-        });
-    }
-
-    protected onResize(): void {
-        const {
-            innerWidth = 0,
-            outerWidth = 0,
-            devicePixelRatio = 1,
-        } = this.doc.defaultView || {};
-
-        this.iframe.width = `${innerWidth === outerWidth ? innerWidth : innerWidth / devicePixelRatio}`;
-    }
+    protected readonly nothing = inject(DestroyRef).onDestroy(
+        isPlatformBrowser(inject(PLATFORM_ID))
+            ? tuiFontSizeWatcher(this.callback, inject(WA_WINDOW))
+            : EMPTY_FUNCTION,
+    );
 }
