@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.104.1](https://github.com/taiga-family/taiga-ui/compare/v3.104.0...v3.104.1) (2025-02-10)
+
+### Bug Fixes
+
+- **experimental:** `Avatar` colored icon object-fit ([#10333](https://github.com/taiga-family/taiga-ui/issues/10333))
+  ([ee904c9](https://github.com/taiga-family/taiga-ui/commit/ee904c9f30b9970686d63e50d1ba77cd6554e963))
+
 ## [3.104.0](https://github.com/taiga-family/taiga-ui/compare/v3.103.0...v3.104.0) (2025-02-03)
 
 ### Features
