@@ -81,13 +81,13 @@
 
             &:not(:last-child)::before {
                 right: -0.1875rem;
-                border-start-end-radius: 0;
-                border-end-end-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
 
             &:not([data-range='start']):not(:first-child)::before {
-                border-start-start-radius: 0;
-                border-end-start-radius: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
 
             &:last-child:first-child::before {
@@ -95,13 +95,13 @@
             }
 
             &:first-child > .t-item {
-                border-start-start-radius: var(--tui-radius-m);
-                border-end-start-radius: var(--tui-radius-m);
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
             }
 
             &:last-child > .t-item {
-                border-start-end-radius: var(--tui-radius-m);
-                border-end-end-radius: var(--tui-radius-m);
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
             }
 
             & > .t-item {
@@ -144,16 +144,16 @@
             }
 
             &:not(:first-child)::before {
-                border-start-start-radius: 0;
-                border-end-start-radius: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
         }
 
         &[data-range='end'] > .t-item {
             &::before {
                 left: 0.625rem;
-                border-start-start-radius: 0;
-                border-end-start-radius: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
 
             &::after {
@@ -166,8 +166,8 @@
         &[data-range='start'] > .t-item {
             &::before {
                 right: 0.625rem;
-                border-start-end-radius: 0;
-                border-end-end-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
 
             &::after {

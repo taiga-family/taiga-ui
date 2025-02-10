@@ -17,6 +17,7 @@ export default class Page {
         'Single',
         'Eager and Lazy',
         'Nested',
+        'Connected',
     ];
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];

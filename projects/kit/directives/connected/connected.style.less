@@ -8,19 +8,76 @@
         --t-connected-height: calc(100% - var(--t-image-size) - 0.25rem);
     }
 
-    > [tuiCell],
-    > [tuiStep] {
-        &:not(:last-of-type)::before {
+    tui-accordion& {
+        --t-image-size: 2rem;
+    }
+
+    > [tuiAccordion]::before,
+    > [tuiCell]:not(:last-of-type)::before,
+    > [tuiStep]:not(:last-of-type)::before {
+        content: '';
+        position: absolute;
+        top: calc(var(--t-image-size) + 0.25rem);
+        left: calc(var(--t-image-size) / 2);
+        display: block;
+        block-size: var(--t-connected-height);
+        inline-size: 1px;
+        color: var(--tui-border-normal);
+        background: linear-gradient(to bottom, currentColor 75%, transparent 75%) top center / 300% 300%;
+        background-clip: content-box;
+        padding: inherit;
+    }
+
+    > [tuiAccordion] {
+        gap: 1rem;
+
+        --t-margin: 0;
+
+        &::before {
+            top: 0;
+            left: calc(var(--t-image-size) / 2);
+            block-size: 100%;
+            margin: 0;
+            background: var(--tui-border-normal);
+            mask: linear-gradient(
+                to top,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% + var(--t-image-size) / 2),
+                black calc(50% + var(--t-image-size) / 2)
+            );
+        }
+
+        &:first-of-type::before {
+            mask: linear-gradient(
+                to top,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2)
+            );
+        }
+
+        &:last-of-type::before {
+            mask: linear-gradient(
+                to bottom,
+                black calc(50% - var(--t-image-size) / 2),
+                transparent calc(50% - var(--t-image-size) / 2)
+            );
+        }
+    }
+
+    > tui-expand {
+        > * {
+            padding: 0 0 0 3rem;
+        }
+
+        &:not(:last-child)::before {
             content: '';
             position: absolute;
-            top: calc(var(--t-image-size) + 0.25rem);
+            top: 0;
             left: calc(var(--t-image-size) / 2);
-            block-size: var(--t-connected-height);
+            block-size: 100%;
             inline-size: 1px;
-            color: var(--tui-border-normal);
-            background: linear-gradient(to bottom, currentColor 75%, transparent 75%) top center / 300% 300%;
-            background-clip: content-box;
-            padding: inherit;
+            background: var(--tui-border-normal);
         }
     }
 

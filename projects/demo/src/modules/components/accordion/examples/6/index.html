@@ -1,0 +1,32 @@
+<tui-accordion
+    tuiConnected
+    class="accordion"
+>
+    <ng-container *ngFor="let item of steps | keyvalue: orderBy; let index = index">
+        <button
+            appearance="icon"
+            [tuiAccordion]="index === 1"
+        >
+            <tui-avatar
+                [appearance]="isChecked(item.value.steps) ? 'info' : ''"
+                [src]="isChecked(item.value.steps) ? '@tui.check' : ''"
+            />
+            {{ item.key }}
+        </button>
+        <tui-expand>
+            {{ item.value.text }}
+            <label
+                *ngFor="let step of item.value.steps"
+                tuiCell
+            >
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [ngModel]="selected.includes(step)"
+                    (ngModelChange)="toggle(step)"
+                />
+                <span tuiTitle>{{ step }}</span>
+            </label>
+        </tui-expand>
+    </ng-container>
+</tui-accordion>
