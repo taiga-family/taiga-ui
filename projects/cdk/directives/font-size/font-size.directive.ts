@@ -24,7 +24,7 @@ export class TuiFontSize {
         this.el.style.setProperty('--tui-font-size', this.handler(size));
 
     protected readonly nothing = inject(DestroyRef).onDestroy(
-        isPlatformBrowser(inject(PLATFORM_ID))
+        isPlatformBrowser(inject(PLATFORM_ID)) && typeof ResizeObserver !== 'undefined'
             ? tuiFontSizeWatcher(this.callback, inject(WA_WINDOW))
             : EMPTY_FUNCTION,
     );
