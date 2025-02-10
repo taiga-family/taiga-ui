@@ -7,3 +7,23 @@
 <p>Form value:</p>
 
 <pre><code>{{ control.value | json }}</code></pre>
+
+<p>
+    If a field is optional, but unfinished field should be marked as invalid, use
+    <code>tuiUnfinishedValidator</code>
+    directive
+</p>
+<tui-input-date-time
+    tuiUnfinishedValidator="Finish filling the field"
+    [formControl]="controlWithUnfinishedValidator"
+>
+    Choose date and time
+</tui-input-date-time>
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="controlWithUnfinishedValidator"
+/>
+
+<p>Form value:</p>
+
+<pre><code>{{ controlWithUnfinishedValidator.value | json }}</code></pre>

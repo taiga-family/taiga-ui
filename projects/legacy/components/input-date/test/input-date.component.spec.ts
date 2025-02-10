@@ -154,6 +154,18 @@ describe('InputDate', () => {
         });
 
         describe('textfield', () => {
+            it('do not clear input value if previous internal value is null', async () => {
+                testComponent.control.setValue(null);
+                fixture.detectChanges();
+                inputPO.sendText('10');
+                fixture.detectChanges();
+                testComponent.control.setValue(null);
+
+                await fixture.whenStable();
+
+                expect(inputPO.nativeElement?.value).toBe('10');
+            });
+
             describe('when mousedown on it', () => {
                 describe('unless the field is locked and not read-only', () => {
                     it('opens the calendar', () => {

@@ -15,15 +15,15 @@ export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInput
         return this.host.computedValue;
     }
 
-    public get rawValue(): [TuiDay | null, TuiTime | null] {
-        return this.host.value ?? [null, null];
+    public get rawValue(): [TuiDay | null, TuiTime | null] | null {
+        return this.host.value ?? null;
     }
 
     public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    public writeValue(value: [TuiDay | null, TuiTime | null]): void {
+    public writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         this.host.writeValue(value);
     }
 

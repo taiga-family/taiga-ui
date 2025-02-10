@@ -5,6 +5,7 @@ const FLAKY_EXAMPLES = new Map<
     Array<{exampleIndex: number; browserName?: string}>
 >([
     [DemoRoute.AppBar, [{exampleIndex: 0, browserName: 'webkit'}]], // Flaky in safari, need to investigate a problem
+    [DemoRoute.BottomSheet, [{exampleIndex: 1}]], // Google maps
     [DemoRoute.Breadcrumbs, [{exampleIndex: 1, browserName: 'webkit'}]],
     [
         DemoRoute.Carousel,

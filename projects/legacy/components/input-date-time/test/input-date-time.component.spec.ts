@@ -78,6 +78,10 @@ describe('InputDateTime', () => {
 
         it('displays initial value', () => {
             expect(inputPO.value).toBe('12.07.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('12.07.2021'),
+                null,
+            ]);
         });
 
         it('does not clear not finished time string on the first blur', () => {
@@ -85,6 +89,7 @@ describe('InputDateTime', () => {
             inputPO.blur();
 
             expect(inputPO.value).toBe('12.07.2021, 1');
+            expect(component.control.value).toBeNull();
         });
 
         it('does not clear not finished time string on the second blur', () => {
@@ -95,16 +100,22 @@ describe('InputDateTime', () => {
             inputPO.blur();
 
             expect(inputPO.value).toBe('12.07.2021, 1');
+            expect(component.control.value).toBeNull();
         });
 
         it('does not clear all date string if 1 char of date was erased', () => {
             inputPO.sendText('14.07.2021');
 
             expect(inputPO.value).toBe('14.07.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('14.07.2021'),
+                null,
+            ]);
 
             inputPO.sendText('14.07.202');
 
             expect(inputPO.value).toBe('14.07.202');
+            expect(component.control.value).toBeNull();
         });
 
         it('keeps not finished time string if date was changed using calendar', () => {
@@ -116,9 +127,17 @@ describe('InputDateTime', () => {
             expect(inputPO.value).toBe(`05.07.2021, ${timeString}`);
             expect(getCalendar()).not.toBeFalsy();
 
-            clickOnCellInsideCalendar(27);
+            clickOnCellInsideCalendar(TuiDay.currentLocal().day + 1);
 
-            expect(inputPO.value).toBe(`27.07.2021, ${timeString}`);
+            const today = TuiDay.currentLocal().append({
+                day: 1,
+            });
+
+            expect(inputPO.value).toBe(`${today.toLocaleString()}, ${timeString}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse(today.toLocaleString()),
+                null,
+            ]);
         });
 
         it('min day works', () => {
@@ -127,6 +146,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('12.08.2021');
 
             expect(inputPO.value).toBe('13.08.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                null,
+            ]);
         });
 
         it('max day works', () => {
@@ -135,6 +158,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('14.08.2021');
 
             expect(inputPO.value).toBe('13.08.2021');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                null,
+            ]);
         });
 
         it('min day + time work', () => {
@@ -146,6 +173,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('13.08.2021, 10:00');
 
             expect(inputPO.value).toBe('13.08.2021, 12:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                TuiTime.fromString('12:00'),
+            ]);
         });
 
         it('min day + time work within min day only', () => {
@@ -157,6 +188,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('14.08.2021 10:00');
 
             expect(inputPO.value).toBe('14.08.2021, 10:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('14.08.2021'),
+                TuiTime.fromString('10:00'),
+            ]);
         });
 
         it('max day + time work', () => {
@@ -168,6 +203,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('13.08.2021, 14:00');
 
             expect(inputPO.value).toBe('13.08.2021, 12:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('13.08.2021'),
+                TuiTime.fromString('12:00'),
+            ]);
         });
 
         it('max day + time work within max day only', () => {
@@ -179,6 +218,10 @@ describe('InputDateTime', () => {
             inputPO.sendText('12.08.2021, 14:00');
 
             expect(inputPO.value).toBe('12.08.2021, 14:00');
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('12.08.2021'),
+                TuiTime.fromString('14:00'),
+            ]);
         });
 
         it('keeps finished time string if date was changed using calendar', () => {
@@ -194,6 +237,10 @@ describe('InputDateTime', () => {
             clickOnCellInsideCalendar(10);
 
             expect(inputPO.value).toBe(`10.07.2021, ${time}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse('10.07.2021'),
+                TuiTime.fromString(time),
+            ]);
         });
 
         it('changes time if max day was selected (via calendar) and time is more than max time now', () => {
@@ -217,6 +264,10 @@ describe('InputDateTime', () => {
             clickOnCellInsideCalendar(maxDay.day);
 
             expect(inputPO.value).toBe(`${maxDateString}, ${maxTimeString}`);
+            expect(component.control.value).toStrictEqual([
+                TuiDay.normalizeParse(maxDateString),
+                TuiTime.fromString(maxTimeString),
+            ]);
         });
 
         it('empty value opens dropdown', () => {
@@ -317,18 +368,18 @@ describe('InputDateTime', () => {
 
     describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
         class ExampleDateTimeTransformer extends TuiValueTransformer<
-            [TuiDay | null, TuiTime | null],
+            [TuiDay | null, TuiTime | null] | null,
             string
         > {
             private readonly separator = ', ';
 
             public fromControlValue(
                 controlValue: string,
-            ): [TuiDay | null, TuiTime | null] {
+            ): [TuiDay | null, TuiTime | null] | null {
                 const [day, time = ''] = controlValue.split(this.separator);
 
                 if (!day) {
-                    return [null, null];
+                    return null;
                 }
 
                 return [

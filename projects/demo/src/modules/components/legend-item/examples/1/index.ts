@@ -26,6 +26,6 @@ export default class Example {
     }
 
     protected onHover(index: number, hovered: boolean): void {
-        this.activeItemIndex = hovered ? index : 0;
+        this.activeItemIndex = hovered ? index : NaN;
     }
 }
