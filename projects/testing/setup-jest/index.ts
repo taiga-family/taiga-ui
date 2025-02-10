@@ -163,5 +163,14 @@ if (!('Zone' in global)) {
     require('zone.js/testing');
 }
 
+global.beforeAll(async () => {
+    const {PLATFORM_ID} = await import('@angular/core');
+    const {TestBed} = await import('@angular/core/testing');
+
+    TestBed.configureTestingModule({
+        providers: [{provide: PLATFORM_ID, useValue: 'server'}],
+    });
+});
+
 // @note: build empty entry point
 export {};
