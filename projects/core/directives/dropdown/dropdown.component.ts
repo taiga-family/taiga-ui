@@ -61,7 +61,11 @@ export class TuiDropdownComponent {
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
     protected readonly darkMode = inject(TUI_DARK_MODE);
-    protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));
+    protected readonly theme = computed(() =>
+        this.darkMode()
+            ? 'dark'
+            : this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
+    );
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
