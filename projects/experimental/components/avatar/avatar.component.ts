@@ -74,5 +74,6 @@ export class TuiAvatarComponent {
     @HostListener(TUI_ICON_COLORED, ['$event.target'])
     onColoredIcon(target: HTMLElement): void {
         this.renderer.setStyle(target, 'padding', '20%');
+        this.renderer.setStyle(target, 'object-fit', 'contain');
     }
 }
