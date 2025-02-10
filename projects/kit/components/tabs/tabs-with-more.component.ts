@@ -47,6 +47,9 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],
+    host: {
+        '[attr.data-size]': 'size',
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
 })

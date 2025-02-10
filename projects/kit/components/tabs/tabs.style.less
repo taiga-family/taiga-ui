@@ -16,7 +16,7 @@
     outline: none;
     color: inherit;
     /* stylelint-disable-next-line */
-    margin-left: 24px;
+    margin-left: var(--tui-tab-margin, 24px);
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -44,16 +44,9 @@
         margin-left: 0;
     }
 
-    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child,
-    [tuiTabs] > [tuiTab] ~ :not(.t-overflown) > &:first-child {
+    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
         /* stylelint-disable-next-line */
-        margin-left: 24px;
-    }
-
-    tui-tabs[data-size='m'] > [tuiTab] ~ :not(.t-overflown) > &:first-child,
-    [tuiTabs][data-size='m'] > [tuiTab] ~ :not(.t-overflown) > &:first-child {
-        /* stylelint-disable-next-line */
-        margin-left: 16px;
+        margin-left: var(--tui-tab-margin, 24px);
     }
 
     &[tuiIcons]::before {
@@ -92,12 +85,8 @@ tui-tabs {
 
     &[data-size='m'] {
         font: var(--tui-font-text-s);
-
-        [tuiTab],
-        + [tuiTab] {
-            /* stylelint-disable-next-line */
-            margin-left: 16px;
-        }
+        /* stylelint-disable-next-line */
+        --tui-tab-margin: 16px;
     }
 
     &[data-size='l']:not([data-vertical]) {
