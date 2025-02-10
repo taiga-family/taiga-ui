@@ -105,12 +105,21 @@
         }
     }
 
+    &[data-type]::before {
+        display: none;
+    }
+
     &[data-type='img']:not(._svg) {
         background: transparent;
     }
 
     &[data-type='icon']::before {
+        .center-all();
+
         content: '';
+        display: block;
+        inline-size: 60%;
+        block-size: 60%;
     }
 
     &._round {
@@ -120,13 +129,6 @@
     &._svg img {
         padding: 20%;
         object-fit: contain;
-    }
-
-    tui-icon {
-        .center-all();
-
-        inline-size: 60%;
-        block-size: 60%;
     }
 
     ::ng-deep img,

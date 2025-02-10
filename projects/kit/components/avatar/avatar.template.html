@@ -1,14 +1,8 @@
-<ng-container [ngSwitch]="type">
-    <img
-        *ngSwitchCase="'img'"
-        alt=""
-        loading="lazy"
-        [src]="value"
-    />
-    <tui-icon
-        *ngSwitchCase="'icon'"
-        [icon]="value.toString()"
-    />
-    <ng-container *ngSwitchCase="'text'">{{ value }}</ng-container>
-    <ng-content />
-</ng-container>
+<img
+    *ngIf="type === 'img'"
+    alt=""
+    loading="lazy"
+    [src]="value"
+/>
+<ng-container *ngIf="type === 'text'">{{ value }}</ng-container>
+<ng-content />
