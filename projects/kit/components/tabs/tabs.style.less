@@ -18,13 +18,6 @@
     /* stylelint-disable-next-line */
     margin-left: 24px;
 
-    tui-tabs[data-size='m'] + &,
-    tui-tabs[data-size='m'] &,
-    [tuiTabs][data-size='m'] & {
-        margin-left: 16px;
-        font: var(--tui-font-text-s);
-    }
-
     &:disabled {
         opacity: var(--tui-disabled-opacity);
         pointer-events: none;
@@ -36,13 +29,13 @@
     }
 
     &:focus-visible {
-        outline: 2px solid var(--tui-border-focus);
-        outline-offset: -2px;
+        outline: 0.125rem solid var(--tui-border-focus);
+        outline-offset: -0.125rem;
     }
 
     tui-tabs._underline &:hover:not(._active),
     [tuiTabs]._underline &:hover:not(._active) {
-        box-shadow: inset 0 -2px var(--tui-border-normal);
+        box-shadow: inset 0 -0.125rem var(--tui-border-normal);
     }
 
     tui-tabs > &:first-child,
@@ -51,8 +44,16 @@
         margin-left: 0;
     }
 
-    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
-        margin-left: var(--tui-tab-margin, 1.5rem);
+    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child,
+    [tuiTabs] > [tuiTab] ~ :not(.t-overflown) > &:first-child {
+        /* stylelint-disable-next-line */
+        margin-left: 24px;
+    }
+
+    tui-tabs[data-size='m'] > [tuiTab] ~ :not(.t-overflown) > &:first-child,
+    [tuiTabs][data-size='m'] > [tuiTab] ~ :not(.t-overflown) > &:first-child {
+        /* stylelint-disable-next-line */
+        margin-left: 16px;
     }
 
     &[tuiIcons]::before {
@@ -89,6 +90,16 @@ tui-tabs {
     overflow: auto;
     isolation: isolate;
 
+    &[data-size='m'] {
+        font: var(--tui-font-text-s);
+
+        [tuiTab],
+        + [tuiTab] {
+            /* stylelint-disable-next-line */
+            margin-left: 16px;
+        }
+    }
+
     &[data-size='l']:not([data-vertical]) {
         block-size: var(--tui-height-l);
     }
@@ -103,7 +114,7 @@ tui-tabs {
         position: absolute;
         left: var(--t-left);
         bottom: 0;
-        block-size: 2px;
+        block-size: 0.125rem;
         inline-size: var(--t-width);
         background: var(--t-color);
         animation: tuiPresent 1ms;
@@ -136,7 +147,7 @@ tui-tabs[data-vertical],
             right: 0;
             display: block;
             block-size: 100%;
-            inline-size: 2px;
+            inline-size: 0.125rem;
             background: var(--tui-background-accent-1);
             transform: scaleX(0);
             transform-origin: right;
@@ -144,7 +155,7 @@ tui-tabs[data-vertical],
         }
 
         &:hover {
-            box-shadow: inset -2px 0 var(--tui-border-normal);
+            box-shadow: inset -0.125rem 0 var(--tui-border-normal);
         }
 
         &._active::after {
@@ -171,7 +182,7 @@ tui-tabs[data-vertical],
             }
 
             &:hover {
-                box-shadow: inset 2px 0 var(--tui-border-normal);
+                box-shadow: inset 0.125rem 0 var(--tui-border-normal);
             }
         }
     }

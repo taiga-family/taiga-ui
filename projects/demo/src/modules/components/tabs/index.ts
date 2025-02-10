@@ -3,17 +3,26 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiOption} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiOption, TuiTabs],
+    imports: [TuiDemo, TuiTabs],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class Page {
+    protected readonly examples = [
+        'Basic',
+        'TabsWithMore',
+        'Complex',
+        'Stepper',
+        'Closing',
+        'Vertical',
+        'Styles',
+    ];
+
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
 
     protected readonly moreContentVariants = ['', 'And more'];
