@@ -47,11 +47,11 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: TUI_TABS_PROVIDERS,
     host: {
         '[attr.data-size]': 'size',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TABS_PROVIDERS,
 })
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     @ViewChild(TuiTab, {read: ElementRef})
