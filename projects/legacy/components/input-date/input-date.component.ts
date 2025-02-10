@@ -183,6 +183,10 @@ export class TuiInputDateComponent
     }
 
     public override writeValue(value: TuiDay | null): void {
+        if (this.value === null && value === this.value) {
+            return;
+        }
+
         super.writeValue(value);
         this.nativeValue.set(this.value ? this.computedValue : '');
     }
