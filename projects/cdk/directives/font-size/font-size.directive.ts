@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import {isPlatformBrowser} from '@angular/common';
 import {DestroyRef, Directive, inject, PLATFORM_ID} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -19,7 +20,7 @@ export const TUI_FONT_SIZE_HANDLER = tuiCreateTokenFromFactory<TuiStringHandler<
 export class TuiFontSize {
     private readonly el = tuiInjectElement();
     private readonly handler = inject(TUI_FONT_SIZE_HANDLER);
-    private readonly callback = (size: number) =>
+    private readonly callback = (size: number): void =>
         this.el.style.setProperty('--tui-font-size', this.handler(size));
 
     protected readonly nothing = inject(DestroyRef).onDestroy(

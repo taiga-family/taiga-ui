@@ -6,7 +6,7 @@ export function tuiFontSizeWatcher(
     win: Window = window,
 ): () => void {
     const iframe = win.document.createElement('iframe');
-    const resize = () => {
+    const resize = (): void => {
         const {innerWidth, outerWidth, devicePixelRatio} = win;
 
         iframe.width = `${innerWidth === outerWidth ? innerWidth : innerWidth / devicePixelRatio}`;
