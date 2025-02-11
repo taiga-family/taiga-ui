@@ -20,6 +20,7 @@ export default class Example {
         'Interactive',
         'Use cases',
         'Auto color',
+        'Fade in complex designs',
     ];
 
     protected readonly sizes: readonly TuiSizeXXS[] = ['xxs', 'xs', 's', 'm'];
