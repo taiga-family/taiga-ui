@@ -5,7 +5,6 @@ export type TuiDeepPartial<T> = {
 type EmptyValue = '' | null | undefined;
 
 function checkValueIsEmpty<T>(value: EmptyValue | T): value is EmptyValue {
-    // eslint-disable-next-line
     const nextValue: any = typeof value === 'string' ? value.trim() : value;
 
     return ['', NaN, null, undefined].includes(nextValue);

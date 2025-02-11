@@ -330,7 +330,7 @@ export class TuiInputNumberComponent
         );
     }
 
-    // eslint-disable-next-line sonarjs/sonar-max-params
+    // eslint-disable-next-line max-params
     @tuiPure
     private calculateMask(
         precision: number,

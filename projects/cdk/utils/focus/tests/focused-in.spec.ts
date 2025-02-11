@@ -3,7 +3,6 @@
 // import {tuiFocusedIn} from '@taiga-ui/cdk';
 
 describe('tuiFocusedIn', () => {
-    // eslint-disable-next-line jest/prefer-todo
     it('should change value in reactive context', () => {
         // TODO uncomment after update to angular@18
         // const element = document.createElement('input');

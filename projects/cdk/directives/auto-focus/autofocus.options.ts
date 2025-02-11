@@ -38,6 +38,7 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             TUI_IS_IOS,
             TUI_AUTOFOCUS_OPTIONS,
         ],
+        // eslint-disable-next-line max-params
         useFactory: (
             el: ElementRef<HTMLElement>,
             animationFrame$: Observable<number>,
