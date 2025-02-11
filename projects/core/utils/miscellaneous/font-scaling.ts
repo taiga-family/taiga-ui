@@ -1,6 +1,8 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, type Provider} from '@angular/core';
-import {TUI_FONT_SIZE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
+import type {Provider} from '@angular/core';
+import {inject} from '@angular/core';
+import {TUI_FONT_SIZE_HANDLER} from '@taiga-ui/cdk/directives/font-size';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 export function tuiEnableFontScaling(): Provider {
     return {
