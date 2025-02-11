@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.24.0](https://github.com/taiga-family/taiga-ui/compare/v4.23.0...v4.24.0) (2025-02-10)
+
+### 🐞 Bug Fixes
+
+- **core:** regression of selecting day when used min length
+  ([#10302](https://github.com/taiga-family/taiga-ui/issues/10302))
+  ([30ca18a](https://github.com/taiga-family/taiga-ui/commit/30ca18a28bc5511d3310350a9e30c595b3b8dbdd))
+- **experimental:** `SearchResults` fix focusing hidden tabs
+  ([#10318](https://github.com/taiga-family/taiga-ui/issues/10318))
+  ([fb1ade2](https://github.com/taiga-family/taiga-ui/commit/fb1ade2e26f22722ceee225065d74032bce36f86))
+- **kit:** `Avatar` fix icon color for appearances ([#10328](https://github.com/taiga-family/taiga-ui/issues/10328))
+  ([d9c821c](https://github.com/taiga-family/taiga-ui/commit/d9c821c3d08687e6783f06ed718882b97fcc1012))
+- **kit:** `Tabs` properly inherit font styles ([#10336](https://github.com/taiga-family/taiga-ui/issues/10336))
+  ([e830f55](https://github.com/taiga-family/taiga-ui/commit/e830f552568f78ade56143ec9ebe45fc04762b54))
+- **legacy:** `InputDate` ignore null value if internal value is already null
+  ([#10322](https://github.com/taiga-family/taiga-ui/issues/10322))
+  ([5e8430e](https://github.com/taiga-family/taiga-ui/commit/5e8430eecf1282d3d9dbd84efc45374c815a8e77))
+- **legacy:** add tuiUnfinishedValidator behaviour for InputDateTimeComponent
+  ([#10164](https://github.com/taiga-family/taiga-ui/issues/10164))
+  ([fa4c079](https://github.com/taiga-family/taiga-ui/commit/fa4c079ae0c8eaf83eb827c3b815a3dd5afbec02))
+
+### 🚀 Features
+
+- **addon-mobile:** `@taiga-ui/layout` should be peer dependency
+  ([#10332](https://github.com/taiga-family/taiga-ui/issues/10332))
+  ([91dbb6c](https://github.com/taiga-family/taiga-ui/commit/91dbb6cf64ec4a31da7185dfbb8a8b271515d6af))
+- **addon-mobile:** `SheetDialog` content inherit border-radius
+  ([#10320](https://github.com/taiga-family/taiga-ui/issues/10320))
+  ([b52e9da](https://github.com/taiga-family/taiga-ui/commit/b52e9da0e85bae9113a9d5378dfae0bd8b759c20))
+- **cdk:** `FontSize` add new directive ([#10327](https://github.com/taiga-family/taiga-ui/issues/10327))
+  ([dac1ba5](https://github.com/taiga-family/taiga-ui/commit/dac1ba5a3ae7c7964d2cf4842876bdb842481b0b))
+- **kit:** `Connected` add support for `Accordion` ([#10329](https://github.com/taiga-family/taiga-ui/issues/10329))
+  ([74fdab5](https://github.com/taiga-family/taiga-ui/commit/74fdab54054a5412c017ff67d467cdae889035d7))
+- **layout:** `Cell` add disabled state ([#10307](https://github.com/taiga-family/taiga-ui/issues/10307))
+  ([bd06ee0](https://github.com/taiga-family/taiga-ui/commit/bd06ee0cde806574e2b9f6d15a83323b6ca91908))
+- **testing:** change `PLATFORM_ID` to server on jest environment
+  ([#10335](https://github.com/taiga-family/taiga-ui/issues/10335))
+  ([ec9752d](https://github.com/taiga-family/taiga-ui/commit/ec9752dd8a1a74faf5eb859b1ad8377f1710d71d))
+
 ## [4.23.0](https://github.com/taiga-family/taiga-ui/compare/v4.22.0...v4.23.0) (2025-02-03)
 
 ### 🐞 Bug Fixes

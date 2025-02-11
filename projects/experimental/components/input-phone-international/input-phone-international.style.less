@@ -2,8 +2,8 @@
 
 [tuiInputPhoneInternational][tuiInputPhoneInternational] {
     left: var(--t-offset);
-    border-start-start-radius: 0;
-    border-end-start-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     inline-size: calc(100% - var(--t-offset));
 
     tui-root:has(tui-dropdown-mobile) & {
@@ -43,8 +43,8 @@ tui-textfield .t-ipi-select {
     position: absolute;
     left: 0;
     border-radius: inherit;
-    border-start-end-radius: 0;
-    border-end-end-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 
     &_readonly {
         pointer-events: none;

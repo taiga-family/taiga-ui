@@ -21,13 +21,12 @@ import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiOption} from '@taiga-ui/core/components/data-list';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, map, tap} from 'rxjs';
 
 import {TuiTab} from './tab.directive';
@@ -41,10 +40,8 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     imports: [
         CommonModule,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         TuiChevron,
         TuiDropdown,
-        TuiOption,
         TuiTab,
         TuiTabsHorizontal,
     ],
@@ -52,6 +49,9 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     styleUrls: ['./tabs-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     @ViewChild(TuiTab, {read: ElementRef})
