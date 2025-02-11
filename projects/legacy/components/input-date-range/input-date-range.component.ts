@@ -308,6 +308,7 @@ export class TuiInputDateRangeComponent
         return this.items.findIndex((item) => String(item) === this.nativeValue()) !== -1;
     }
 
+    // eslint-disable-next-line max-params
     @tuiPure
     private calculateMask(
         dateFormat: TuiDateMode,

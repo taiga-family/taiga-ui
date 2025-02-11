@@ -162,7 +162,7 @@ All notable changes to this project will be documented in this file. See
 - **core:** `Group` fix overlaid border in collapsed mode
   ([#10094](https://github.com/taiga-family/taiga-ui/issues/10094))
   ([1b7628a](https://github.com/taiga-family/taiga-ui/commit/1b7628a26c733eae91dba96506bc9682eb96d035))
-- **core:** `Textfield` with `[content]` property has invalid behavior for `<input />`
+- **core:** `Textfield` with `[content]` property has invalid behavior for `<input />`
   ([#10066](https://github.com/taiga-family/taiga-ui/issues/10066))
   ([aa9ff64](https://github.com/taiga-family/taiga-ui/commit/aa9ff64bd66a726afc49e4da96a6f2a2d19bca3b))
 - **kit:** `LineClamp` fix initial transition ([#10070](https://github.com/taiga-family/taiga-ui/issues/10070))
