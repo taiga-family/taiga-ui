@@ -199,6 +199,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'components/bottom-sheet',
+        loadChildren: async () =>
+            (await import('../components/bottom-sheet/bottom-sheet.module'))
+                .ExampleTuiBottomSheetModule,
+        data: {
+            title: 'BottomSheet',
+        },
+    },
+    {
         path: 'layout/block-status',
         loadChildren: async () =>
             (await import('../components/block-status/block-status.module'))
