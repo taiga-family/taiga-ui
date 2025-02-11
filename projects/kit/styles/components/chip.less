@@ -48,7 +48,8 @@ tui-chip,
     }
 
     &[data-size='xxs'] {
-        --t-gap: var(--t-0, 0rem);
+        // StackBlitz changes "0rem" to "0" breaking calc
+        --t-gap: ~'0rem';
         --t-padding: 0 0.25rem;
         --t-size: 1rem;
         --t-icon-size: 0.75rem;

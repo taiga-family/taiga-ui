@@ -173,7 +173,8 @@ tui-textfield {
         padding: inherit;
         border: none;
         text-indent: var(--t-left, 0);
-        padding-inline-end: calc(var(--t-right, var(--t-0, 0rem)) + var(--t-side) + var(--t-padding));
+        // StackBlitz changes "0rem" to "0" breaking calc
+        padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side) + var(--t-padding));
     }
 
     .t-template {
