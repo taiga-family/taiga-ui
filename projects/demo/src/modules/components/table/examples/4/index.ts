@@ -3,7 +3,11 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiComparator, TuiTablePaginationEvent} from '@taiga-ui/addon-table';
+import type {
+    TuiComparator,
+    TuiSortAndOrder,
+    TuiTablePaginationEvent,
+} from '@taiga-ui/addon-table';
 import {TuiReorder, TuiTable, TuiTablePagination} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
@@ -188,10 +192,6 @@ export default class Example {
             .map((column) => KEYS[column] ?? '');
     }
 
-    protected onDirection(direction: -1 | 1): void {
-        this.direction$.next(direction);
-    }
-
     protected onPagination({page, size}: TuiTablePaginationEvent): void {
         this.page$.next(page);
         this.size$.next(size);
@@ -199,6 +199,11 @@ export default class Example {
 
     protected isMatch(value: unknown): boolean {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
+    }
+
+    protected change<T>({sortBy, orderBy}: TuiSortAndOrder<T>): void {
+        this.sorter$.next(sortBy as Key);
+        this.direction$.next(orderBy);
     }
 
     private getData(

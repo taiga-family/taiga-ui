@@ -8,6 +8,11 @@ export const TuiSortDirection = {
 } as const;
 export type TuiSortDirection = (typeof TuiSortDirection)[keyof typeof TuiSortDirection];
 
+export interface TuiSortAndOrder<T> {
+    sortBy: keyof T | null;
+    orderBy: -1 | 1;
+}
+
 export interface TuiTableOptions {
     readonly direction: TuiSortDirection;
     readonly requiredSort: boolean;

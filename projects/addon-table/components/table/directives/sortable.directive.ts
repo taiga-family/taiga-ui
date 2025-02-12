@@ -15,8 +15,8 @@ import {TuiTableDirective} from './table.directive';
 export class TuiTableSortable<T extends Partial<Record<keyof T, any>>>
     implements OnChanges
 {
-    private readonly table = inject(TuiTableDirective<T>);
-    private readonly th = inject(TuiTableTh<T>);
+    private readonly table: TuiTableDirective<T> = inject(TuiTableDirective<T>);
+    private readonly th: TuiTableTh<T> = inject(TuiTableTh<T>);
     private readonly sortBy = inject<TuiTableSortBy<T>>(forwardRef(() => TuiTableSortBy));
 
     @Input({
