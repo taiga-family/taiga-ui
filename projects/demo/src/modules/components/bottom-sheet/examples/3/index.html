@@ -1,0 +1,21 @@
+<tui-bottom-sheet [stops]="['8.5rem', '17.5rem', '100%']">
+    <header class="header">
+        Taiga UI
+        <a
+            href="https://github.com/taiga-family/taiga-ui"
+            iconLeft="tuiIconStar"
+            rel="noopener noreferrer"
+            size="m"
+            target="_blank"
+            tuiButton
+        >
+            Give us a Star
+        </a>
+    </header>
+    <img
+        alt=""
+        src="assets/images/taiga-family.png"
+        [style.inline-size.%]="100"
+    />
+    <p *tuiRepeatTimes="let index of 20">All work and no play makes Jack a dull boy</p>
+</tui-bottom-sheet>

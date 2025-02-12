@@ -183,6 +183,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'BottomSheet',
+        keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
+        route: '/components/bottom-sheet',
+    },
+    {
+        section: 'Components',
         title: 'Button',
         keywords: 'кнопка, button, icon-button, иконка',
         route: '/components/button',

@@ -1,0 +1,53 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    block-size: 30rem;
+}
+
+.messages {
+    position: relative;
+    flex: 1;
+    padding-inline-start: 1rem;
+    overflow: hidden;
+}
+
+.message {
+    display: block;
+    padding: 0.5rem 0.625rem;
+    inline-size: fit-content;
+    isolation: isolate;
+    text-align: start;
+    font: var(--tui-font-text-m);
+    border-radius: var(--tui-radius-l);
+    margin: 1rem 1rem 1rem auto;
+    max-inline-size: 80%;
+    white-space: pre-wrap;
+
+    &:first-child {
+        margin: 1rem auto 1rem 0;
+    }
+
+    &:last-child {
+        margin-block-end: 4rem;
+    }
+}
+
+.form {
+    padding: 0 1rem 1rem;
+    background: var(--tui-elevation-01);
+}
+
+.textarea {
+    min-block-size: var(--tui-height-l);
+    margin: 1rem 0;
+}
+
+.actions {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    :last-child {
+        grid-column: span 2;
+    }
+}
