@@ -6,6 +6,7 @@ const CONTENT_SIZE = 2.5;
 /**
  * @deprecated: drop in v5.0
  */
+
 export function tuiGetBorder(
     hasIcon: boolean,
     hasCleaner = false,

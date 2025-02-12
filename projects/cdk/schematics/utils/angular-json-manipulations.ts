@@ -33,7 +33,7 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     );
 }
 
-// eslint-disable-next-line max-params
+// eslint-disable-next-line @typescript-eslint/max-params
 export function addStylesToAngularJson(
     options: TuiSchema,
     context: SchematicContext,
