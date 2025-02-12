@@ -6,7 +6,7 @@ export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<stri
     () => icon =>
         !icon || icon.includes('/')
             ? icon
-            : `/assets/taiga-ui/icons/${
+            : `assets/taiga-ui/icons/${
                   icon.includes('Outline')
                       ? icon
                       : icon.replace('Large', '').concat('Outline')
