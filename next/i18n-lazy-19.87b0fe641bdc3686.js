@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3529],{15325:(e,p,h)=>{h.r(p),h.d(p,{TUI_BELARUSIAN_LANGUAGE_LAYOUT:()=>l});const l={inputSearch:{popular:"Папулярныя",history:"Нядаўнія",placeholder:"Увядзіце запыт",hotkey:"для пошуку",all:"Усе вынікі",empty:"Нічога не знойдзена"}}}}]);
