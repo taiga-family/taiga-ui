@@ -92,6 +92,17 @@ tui-chip,
         margin-inline-start: -0.375rem;
     }
 
+    & > [tuiFade] {
+        &:first-of-type {
+            flex: 1 0 30%;
+            max-inline-size: fit-content;
+        }
+
+        &:last-of-type {
+            flex: 0 1 auto;
+        }
+    }
+
     & > input[tuiChip] {
         .fullsize();
 
