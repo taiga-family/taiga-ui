@@ -16,6 +16,7 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     line-height: 1rem;
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-primary);
+    box-shadow: 0 -100rem 0 100rem var(--tui-theme-color, #000);
 
     &::before {
         content: '';
@@ -28,17 +29,6 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
         pointer-events: none;
         box-shadow: 0 -1.5rem var(--tui-theme-color, #000);
         border-radius: 1.25rem 1.25rem 0 0;
-    }
-
-    &::after {
-        content: '';
-        position: fixed;
-        top: inherit;
-        left: 0;
-        right: 0;
-        z-index: -1;
-        block-size: inherit;
-        background: inherit;
     }
 
     [tuiNavigationLogo] {
