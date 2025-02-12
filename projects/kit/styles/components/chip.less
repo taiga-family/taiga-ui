@@ -93,11 +93,12 @@ tui-chip,
     }
 
     & > [tuiFade] {
-        &:first-child {
-            flex: 1 1 30%;
+        &:first-of-type {
+            flex: 1 0 30%;
+            max-inline-size: fit-content;
         }
 
-        &:last-child {
+        &:last-of-type {
             flex: 0 1 auto;
         }
     }

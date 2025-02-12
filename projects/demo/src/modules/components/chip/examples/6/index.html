@@ -6,17 +6,17 @@
     <div tuiFade>{{ 9000 | tuiAmount: 'USD' | async }}</div>
 </tui-chip>
 
-<tui-chip
-    appearance="accent"
-    iconStart="@tui.shower-head"
->
-    <div tuiFade>HSE</div>
+<tui-chip appearance="accent">
+    <tui-avatar src="/assets/images/avatar.jpg" />
+    <div tuiFade>AI</div>
     <div tuiFade>{{ 9870043000 | tuiAmount: 'USD' | async }}</div>
 </tui-chip>
 
-<tui-chip appearance="accent">
+<tui-chip
+    appearance="accent"
+    iconEnd="@tui.shower-head"
+>
     <div tuiFade>Long category name</div>
-    <tui-avatar src="/assets/images/avatar.jpg" />
 </tui-chip>
 
 <p>Use CSS to set a custom priority for the fade:</p>
