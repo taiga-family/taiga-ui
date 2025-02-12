@@ -34,6 +34,7 @@ import {createOutputSpy} from 'cypress/angular';
                     [countries]="countries"
                     [formControl]="control"
                     [(countryIsoCode)]="countryIsoCode"
+                    (countryIsoCodeChange)="countryIsoCodeChange.emit($event)"
                 />
 
                 <tui-icon icon="@tui.sun" />
@@ -63,6 +64,9 @@ export class Test implements OnInit {
 
     @Output()
     public readonly valueChange = new EventEmitter<string>();
+
+    @Output()
+    public readonly countryIsoCodeChange = new EventEmitter<string>();
 
     public ngOnInit(): void {
         this.control.valueChanges
@@ -238,6 +242,7 @@ describe('InputPhoneInternational', () => {
                         countryIsoCode: 'KZ',
                         control,
                         valueChange: createOutputSpy('valueChange'),
+                        countryIsoCodeChange: createOutputSpy('countryIsoCodeChange'),
                     },
                 });
 
@@ -265,6 +270,15 @@ describe('InputPhoneInternational', () => {
                     name: 'phone-18n-formatted-value',
                     cypressScreenshotOptions: {padding: 8},
                 });
+            });
+
+            it('automatically detects new [countryIsoCode] for complete phone', () => {
+                cy.get('@input').focus();
+
+                control.patchValue('+375123456789');
+
+                cy.get('@input').should('have.value', '+375 12 345-67-89');
+                cy.get('@countryIsoCodeChange').should('have.been.calledWith', 'BY');
             });
         });
     });
