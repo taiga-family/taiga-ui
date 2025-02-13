@@ -2,8 +2,6 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute} from 'parse5/dist/common/token';
 
-import type {TemplateResource} from '../../../../ng-update/interfaces';
-import {removeAttrs} from '../../../../ng-update/v4/steps/utils/remove-attrs';
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr, isBinding} from '../../../../utils/templates/inputs';
@@ -11,7 +9,9 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
+import type {TemplateResource} from '../../../interfaces';
 import {cleanObject} from '../utils/clean-object';
+import {removeAttrs} from '../utils/remove-attrs';
 
 export function migrateMoney({
     resource,
