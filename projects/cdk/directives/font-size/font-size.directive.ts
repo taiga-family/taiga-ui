@@ -12,7 +12,7 @@ export const TUI_FONT_SIZE_HANDLER =
 })
 export class TuiFontSize {
     protected readonly nothing = inject(DestroyRef).onDestroy(
-        isPlatformBrowser(inject(PLATFORM_ID))
+        isPlatformBrowser(inject(PLATFORM_ID)) && typeof ResizeObserver !== 'undefined'
             ? tuiFontSizeWatcher(inject(TUI_FONT_SIZE_HANDLER), inject(WA_WINDOW))
             : EMPTY_FUNCTION,
     );
