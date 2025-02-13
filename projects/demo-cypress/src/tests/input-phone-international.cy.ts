@@ -11,26 +11,33 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {
-    TuiInputPhoneInternational,
-    tuiInputPhoneInternationalOptionsProvider,
-} from '@taiga-ui/kit';
+import {tuiInputPhoneInternationalOptionsProvider} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiIcon, TuiInputPhoneInternational, TuiRoot],
+    imports: [
+        ReactiveFormsModule,
+        TuiIcon,
+        TuiInputPhoneInternational,
+        TuiRoot,
+        TuiTextfield,
+    ],
     template: `
         <tui-root>
-            <tui-input-phone-international
-                [countries]="countries"
-                [formControl]="control"
-                [(countryIsoCode)]="countryIsoCode"
-            >
+            <tui-textfield>
+                <input
+                    tuiInputPhoneInternational
+                    [countries]="countries"
+                    [formControl]="control"
+                    [(countryIsoCode)]="countryIsoCode"
+                />
+
                 <tui-icon icon="@tui.sun" />
-            </tui-input-phone-international>
+            </tui-textfield>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -85,14 +92,11 @@ describe('InputPhoneInternational', () => {
                 },
             });
 
-            initAliases('tui-input-phone-international');
+            initAliases();
         });
 
         it('Empty textfield => focus => country calling code appears => no form control value changes', () => {
-            cy.get('@textfield')
-                .should('have.value', '')
-                .focus()
-                .should('have.value', '+1 ');
+            cy.get('@input').should('have.value', '').focus().should('have.value', '+1 ');
 
             cy.get('@valueChange')
                 .should('not.be.called')
@@ -102,7 +106,7 @@ describe('InputPhoneInternational', () => {
         });
 
         it('Focused textfield with country calling code only => blur => empty textfield => no form control value changes', () => {
-            cy.get('@textfield')
+            cy.get('@input')
                 .focus()
                 .should('have.value', '+1 ')
                 .blur()
@@ -117,7 +121,7 @@ describe('InputPhoneInternational', () => {
 
         describe('basic keyboard typing', () => {
             it('Type 212 => form control emits 3 events', () => {
-                cy.get('@textfield').type('212').should('have.value', '+1 212');
+                cy.get('@input').type('212').should('have.value', '+1 212');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 3)
@@ -127,7 +131,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212| => Type 5 => +1 212 5 (space and 5 were added) => only one form control event', () => {
-                cy.get('@textfield').type('2125').should('have.value', '+1 212 5');
+                cy.get('@input').type('2125').should('have.value', '+1 212 5');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 4)
@@ -137,11 +141,11 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212 555| => Type 2 => +1 212 555-2 (hyphen and 2 were added) => only one form control event', () => {
-                cy.get('@textfield').type('212555').should('have.value', '+1 212 555');
+                cy.get('@input').type('212555').should('have.value', '+1 212 555');
 
                 cy.get('@valueChange').should('have.callCount', 6);
 
-                cy.get('@textfield').type('2').should('have.value', '+1 212 555-2');
+                cy.get('@input').type('2').should('have.value', '+1 212 555-2');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 7)
@@ -153,13 +157,13 @@ describe('InputPhoneInternational', () => {
 
         describe('select new country from dropdown', () => {
             it('Initially empty textfield => select new country => no form control emits', () => {
-                cy.get('tui-input-phone-international').click('left');
+                cy.get('@select').click();
 
                 cy.compareSnapshot('phone-18n-dropdown');
 
                 selectCountry('Kazakhstan');
 
-                cy.get('@textfield').should('be.focused').should('have.value', '+7 ');
+                cy.get('@input').should('be.focused').should('have.value', '+7 ');
 
                 cy.get('@valueChange')
                     .should('not.be.called')
@@ -169,7 +173,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('Textfield contains +1 212 555-2368 => select new country => form control emits once and contains new value', () => {
-                cy.get('@textfield')
+                cy.get('@input')
                     .type('2125552368')
                     .should('have.value', '+1 212 555-2368');
 
@@ -179,11 +183,11 @@ describe('InputPhoneInternational', () => {
                         expect(control.value).equal('+12125552368');
                     });
 
-                cy.get('tui-input-phone-international').click('left');
+                cy.get('@select').click();
 
                 selectCountry('Russia');
 
-                cy.get('@textfield')
+                cy.get('@input')
                     .should('be.focused')
                     .should('have.value', '+7 2125552368');
 
@@ -211,7 +215,7 @@ describe('InputPhoneInternational', () => {
                     },
                 });
 
-                initAliases('tui-input-phone-international');
+                initAliases();
             });
 
             it('form control emits nothing', () => {
@@ -219,7 +223,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('textfield value is formatted', () => {
-                cy.get('@textfield').should('have.value', '+1 212 555-2368');
+                cy.get('@input').should('have.value', '+1 212 555-2368');
             });
         });
 
@@ -237,7 +241,7 @@ describe('InputPhoneInternational', () => {
                     },
                 });
 
-                initAliases('tui-input-phone-international');
+                initAliases();
             });
 
             it('does not trigger subsequent form control emits', () => {
@@ -254,8 +258,10 @@ describe('InputPhoneInternational', () => {
                 control.patchValue('+77777777777');
                 cy.wait(1);
 
-                cy.get('@textfield').should('have.value', '+7 777 777-7777');
-                cy.get('tui-input-phone-international').compareSnapshot({
+                cy.get('@input')
+                    .focus() // TODO: remove after update to Angular 17+ (https://github.com/taiga-family/taiga-ui/issues/9389#issuecomment-2551055582)
+                    .should('have.value', '+7 777 777-7777');
+                cy.get('tui-textfield').compareSnapshot({
                     name: 'phone-18n-formatted-value',
                     cypressScreenshotOptions: {padding: 8},
                 });
@@ -264,8 +270,9 @@ describe('InputPhoneInternational', () => {
     });
 });
 
-function initAliases(wrapperSelector: string): void {
-    cy.get(`${wrapperSelector} input`).first().as('textfield');
+function initAliases(): void {
+    cy.get('tui-textfield input[tuiInputPhoneInternational]').as('input');
+    cy.get('tui-textfield button[tuiChevron]').as('select');
 }
 
 function selectCountry(countryName: string): void {
