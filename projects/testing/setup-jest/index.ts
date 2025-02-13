@@ -163,7 +163,7 @@ if (!('Zone' in global)) {
     require('zone.js/testing');
 }
 
-global.beforeAll(async () => {
+global.beforeEach(async () => {
     const {PLATFORM_ID} = await import('@angular/core');
     const {TestBed} = await import('@angular/core/testing');
 
