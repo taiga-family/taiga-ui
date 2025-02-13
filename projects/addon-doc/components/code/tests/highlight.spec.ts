@@ -1,5 +1,11 @@
 import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    PLATFORM_ID,
+    signal,
+} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -35,6 +41,7 @@ describe('Highlight Directive', () => {
         await TestBed.configureTestingModule({
             imports: [Test],
             providers: [
+                {provide: PLATFORM_ID, useValue: 'browser'},
                 {
                     provide: HighlightLoader,
                     useValue: {
