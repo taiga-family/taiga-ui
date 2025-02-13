@@ -5,7 +5,11 @@ import {TuiNonNullableValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {
+    TuiTextfieldComponent,
+    TuiTextfieldOptionsDirective,
+    tuiTextfieldOptionsProvider,
+} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
     tuiInputNumberOptionsProvider,
@@ -24,6 +28,7 @@ import {
         tuiInputNumberOptionsProvider({
             valueTransformer: new TuiNonNullableValueTransformer(),
         }),
+        tuiTextfieldOptionsProvider({cleaner: signal(false)}),
     ],
     host: {
         '(input)': 'onSliderInput($event)',
@@ -42,6 +47,17 @@ export class TuiInputSliderDirective {
     private readonly inputNumber = signal<TuiInputNumber | null>(null);
     private readonly slider = signal<TuiSliderComponent | null>(null);
     protected readonly textfield = inject(TuiTextfieldComponent);
+
+    constructor() {
+        const options = inject(TuiTextfieldOptionsDirective, {
+            self: true,
+            optional: true,
+        });
+
+        if (options) {
+            options.cleaner = signal(false); // change default value before the first ngOnChanges hook is called
+        }
+    }
 
     protected min = computed(() => this.inputNumber()?.min() ?? 0);
     protected max = computed(() => this.inputNumber()?.max() ?? 100);
