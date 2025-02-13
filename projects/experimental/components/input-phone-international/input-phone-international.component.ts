@@ -189,8 +189,8 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.code.set(code);
     }
 
-    public override writeValue(unmasked: string): void {
-        const code = this.getCountryCode(unmasked);
+    public override writeValue(unmasked: string | null): void {
+        const code = this.getCountryCode(unmasked ?? '');
 
         if (code) {
             this.code.set(code);
