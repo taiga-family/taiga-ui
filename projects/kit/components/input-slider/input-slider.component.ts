@@ -48,17 +48,6 @@ export class TuiInputSliderDirective {
     private readonly slider = signal<TuiSliderComponent | null>(null);
     protected readonly textfield = inject(TuiTextfieldComponent);
 
-    constructor() {
-        const options = inject(TuiTextfieldOptionsDirective, {
-            self: true,
-            optional: true,
-        });
-
-        if (options) {
-            options.cleaner = signal(false); // change default value before the first ngOnChanges hook is called
-        }
-    }
-
     protected min = computed(() => this.inputNumber()?.min() ?? 0);
     protected max = computed(() => this.inputNumber()?.max() ?? 100);
     protected step = computed((slider = this.slider()) =>
@@ -86,6 +75,17 @@ export class TuiInputSliderDirective {
         slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
         slider.el.disabled = !this.inputNumber()?.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
+
+    constructor() {
+        const options = inject(TuiTextfieldOptionsDirective, {
+            self: true,
+            optional: true,
+        });
+
+        if (options) {
+            options.cleaner = signal(false); // change default value before the first ngOnChanges hook is called
+        }
+    }
 
     @ContentChild(TuiInputNumber)
     protected set inputNumberSetter(x: TuiInputNumber) {
