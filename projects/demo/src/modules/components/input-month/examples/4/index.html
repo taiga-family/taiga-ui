@@ -1,0 +1,14 @@
+<tui-textfield
+    tuiInputMonth
+    [max]="max"
+    [min]="min"
+    [(ngModel)]="value"
+>
+    <input
+        placeholder="Use mobile device"
+        tuiTextfield
+        type="month"
+    />
+
+    <tui-calendar-month *tuiTextfieldDropdown />
+</tui-textfield>
