@@ -2,12 +2,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import {TuiMonth} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
-
-const NEXT_YEAR = TuiMonth.currentLocal().year + 1;
 
 @Component({
     standalone: true,
@@ -17,11 +14,7 @@ const NEXT_YEAR = TuiMonth.currentLocal().year + 1;
     changeDetection,
 })
 export default class Example {
-    protected readonly min = TuiMonth.currentLocal().append({month: +1});
-    protected readonly max = new TuiMonth(NEXT_YEAR, 11);
+    protected readonly min = TuiMonth.currentLocal().append({month: -12});
+    protected readonly max = TuiMonth.currentLocal().append({month: 12});
     protected value: TuiMonth | null = null;
-    protected activeYear = new TuiYear(NEXT_YEAR);
-
-    protected readonly isSummerHandler: TuiBooleanHandler<TuiMonth> = ({month}) =>
-        [5, 6, 7].includes(month);
 }

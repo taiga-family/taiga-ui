@@ -1,0 +1,22 @@
+<tui-textfield
+    iconStart="@tui.calendar"
+    tuiInputMonth
+    tuiTextfieldSize="m"
+    [(ngModel)]="value"
+>
+    <label tuiLabel>I am a label</label>
+
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+    />
+
+    <tui-calendar-month *tuiTextfieldDropdown />
+
+    <tui-icon
+        icon="@tui.circle-alert"
+        style="color: var(--tui-status-negative); pointer-events: none"
+    />
+
+    <tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>

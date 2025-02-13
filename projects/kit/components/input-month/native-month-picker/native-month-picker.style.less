@@ -1,11 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-input[tuiInputMonth] {
-    caret-color: transparent;
-}
-
-// TODO: use tui-textfield:has([tuiInputMonth]) input[type='month']
-input[type='month'].t-native-input-month {
+tui-textfield[tuiInputMonth] input[type='month'] {
     .fullsize();
 
     opacity: 0;
@@ -16,6 +11,6 @@ input[type='month'].t-native-input-month {
     }
 }
 
-tui-textfield:has([tuiInputMonth]) .t-clear {
+tui-textfield[tuiInputMonth] .t-clear {
     z-index: 1;
 }

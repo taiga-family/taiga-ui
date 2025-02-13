@@ -55,7 +55,7 @@ describe('CalendarMonth', () => {
         it('returns null if no value', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value = null;
+            component.value.set(null);
 
             expect(component.getItemRange(month)).toBeNull();
         });
@@ -63,7 +63,7 @@ describe('CalendarMonth', () => {
         it('returns active if value is single month choice', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value = month;
+            component.value.set(month);
 
             expect(component.getItemRange(month)).toBe('active');
         });
@@ -71,7 +71,7 @@ describe('CalendarMonth', () => {
         it('returns start if item is start of range', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value = new TuiMonthRange(month, month.append({month: 2}));
+            component.value.set(new TuiMonthRange(month, month.append({month: 2})));
 
             expect(component.getItemRange(month)).toBe('start');
         });
@@ -79,7 +79,7 @@ describe('CalendarMonth', () => {
         it('returns end if item is start of range', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value = new TuiMonthRange(month.append({month: -2}), month);
+            component.value.set(new TuiMonthRange(month.append({month: -2}), month));
 
             expect(component.getItemRange(month)).toBe('end');
         });
@@ -87,7 +87,7 @@ describe('CalendarMonth', () => {
         it('returns end if hovered item before item', () => {
             const month = new TuiMonth(TODAY.year, 7);
 
-            component.value = new TuiMonthRange(month, month);
+            component.value.set(new TuiMonthRange(month, month));
             component.hoveredItem = new TuiMonth(TODAY.year, 4);
 
             expect(component.getItemRange(month)).toBe('end');

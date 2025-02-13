@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
@@ -6,8 +6,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TuiDay, TuiMonth} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TUI_FALSE_HANDLER, TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 
 const TAIGA_BIRTHDAY = new TuiDay(2020, 8, 20);
@@ -23,8 +23,11 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
         TuiDocTextfield,
         TuiInputMonth,
         TuiTextfield,
+        TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export default class PageComponent {
@@ -41,6 +44,12 @@ export default class PageComponent {
         TuiDay.currentLocal().append({year: +100, month: +1}),
     ] as const satisfies readonly TuiMonth[];
 
+    protected readonly yearVariants = [
+        new TuiYear(TuiDay.currentLocal().year),
+        new TuiYear(2077),
+        new TuiYear(2007),
+    ] as const satisfies readonly TuiYear[];
+
     protected readonly disabledItemHandlerVariants = [
         TUI_FALSE_HANDLER,
         ({month}) => month % 3 === 0,
@@ -48,6 +57,7 @@ export default class PageComponent {
 
     protected min: TuiMonth | null = null;
     protected max: TuiMonth | null = null;
+    protected year: TuiYear = this.yearVariants[0];
     protected disabledItemHandler: TuiBooleanHandler<TuiMonth> =
         this.disabledItemHandlerVariants[0];
 }
