@@ -152,12 +152,12 @@
                     #textfield
                     tuiInputSlider
                     [content]="textfield.focused() ? '' : textfieldContent"
+                    [formControl]="control"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
                         tuiInputNumber
-                        [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max()"
                         [min]="min()"

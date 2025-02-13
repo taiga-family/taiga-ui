@@ -1,4 +1,7 @@
-<tui-textfield tuiInputSlider>
+<tui-textfield
+    tuiInputSlider
+    [(ngModel)]="value"
+>
     <input
         placeholder="Form control value is still {{ value }}"
         prefix="$"
@@ -10,7 +13,6 @@
             thousandSeparator: '.',
             precision: 1,
         }"
-        [(ngModel)]="value"
     />
 
     <input
