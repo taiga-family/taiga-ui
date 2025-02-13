@@ -21,3 +21,18 @@ export class TuiDropdownFixed {
         override(inject(TUI_DROPDOWN_OPTIONS, {self: true, optional: true}), null);
     }
 }
+
+@Directive({
+    standalone: true,
+    providers: [tuiDropdownOptionsProvider({})],
+})
+export class TuiDropdownAuto {
+    constructor() {
+        const override = tuiOverrideOptions(
+            {limitWidth: 'auto'},
+            TUI_DROPDOWN_DEFAULT_OPTIONS,
+        );
+
+        override(inject(TUI_DROPDOWN_OPTIONS, {self: true, optional: true}), null);
+    }
+}

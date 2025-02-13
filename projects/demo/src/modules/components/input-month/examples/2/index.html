@@ -1,10 +1,16 @@
-<tui-textfield>
+<tui-textfield
+    tuiInputMonth
+    [formControl]="control"
+>
     <input
-        placeholder="Use mobile device"
-        tuiInputMonth
-        type="month"
-        [max]="max"
-        [min]="min"
-        [(ngModel)]="value"
+        placeholder="Annoying required field"
+        tuiTextfield
     />
+
+    <tui-calendar-month *tuiTextfieldDropdown />
 </tui-textfield>
+
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="control"
+/>

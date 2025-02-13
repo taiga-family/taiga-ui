@@ -1,22 +1,17 @@
 <tui-textfield
-    iconStart="@tui.calendar"
-    tuiTextfieldSize="m"
+    tuiInputMonth
+    [max]="max"
+    [min]="min"
+    [(ngModel)]="value"
 >
-    <label tuiLabel>I am a label</label>
-
     <input
-        placeholder="I am placeholder"
-        tuiInputMonth
-        [(ngModel)]="value"
+        placeholder="Select vacation month"
+        tuiTextfield
     />
 
-    <tui-icon
-        icon="@tui.circle-alert"
-        style="color: var(--tui-status-negative); pointer-events: none"
-    />
-
-    <tui-icon
-        tuiTooltip="I am a hint"
-        (mousedown.stop)="(0)"
+    <tui-calendar-month
+        *tuiTextfieldDropdown
+        [disabledItemHandler]="isSummerHandler"
+        [(year)]="activeYear"
     />
 </tui-textfield>
