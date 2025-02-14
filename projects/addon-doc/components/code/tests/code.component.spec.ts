@@ -1,5 +1,4 @@
 // cspell:disable
-import {PLATFORM_ID} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDocCode} from '@taiga-ui/addon-doc';
@@ -13,7 +12,6 @@ describe('TuiDocCodeComponent', () => {
         TestBed.configureTestingModule({
             imports: [HighlightModule, TuiDocCode],
             providers: [
-                {provide: PLATFORM_ID, useValue: 'browser'},
                 {
                     provide: HIGHLIGHT_OPTIONS,
                     useValue: {

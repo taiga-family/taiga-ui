@@ -1,6 +1,7 @@
 /// <reference types="jest" />
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing/mocks';
 import {setupZoneTestEnv} from 'jest-preset-angular/setup-env/zone';
+import ResizeObserver from 'resize-observer-polyfill';
 
 tuiSwitchNgDevMode(false);
 
@@ -10,6 +11,7 @@ const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('no
 
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
+global.ResizeObserver = ResizeObserver;
 
 Object.defineProperty(global.document, 'execCommand', {
     writable: true,
@@ -162,15 +164,6 @@ if (!('Zone' in global)) {
     require('zone.js');
     require('zone.js/testing');
 }
-
-global.beforeEach(async () => {
-    const {PLATFORM_ID} = await import('@angular/core');
-    const {TestBed} = await import('@angular/core/testing');
-
-    TestBed.configureTestingModule({
-        providers: [{provide: PLATFORM_ID, useValue: 'server'}],
-    });
-});
 
 // @note: build empty entry point
 export {};
