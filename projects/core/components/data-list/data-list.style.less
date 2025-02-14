@@ -21,8 +21,8 @@ tui-data-list {
     }
 
     &[data-size='s'] {
-        /* stylelint-disable-next-line */
-        --tui-data-list-margin: var(--t-0, 0rem);
+        // StackBlitz changes "0rem" to "0" breaking calc
+        --tui-data-list-margin: ~'0rem';
 
         & > .t-empty,
         [tuiOption] {
