@@ -1,15 +1,6 @@
-import {isPlatformBrowser} from '@angular/common';
-import {inject, PLATFORM_ID} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
 import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 describe('Browsers', () => {
-    it('isPlatformBrowser returns false', () => {
-        TestBed.runInInjectionContext(() => {
-            expect(isPlatformBrowser(inject(PLATFORM_ID))).toBe(false);
-        });
-    });
-
     it('isEdge', () => {
         expect(tuiIsEdge('edge')).toBe(true);
     });

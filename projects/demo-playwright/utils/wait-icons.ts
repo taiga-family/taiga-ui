@@ -10,7 +10,6 @@ interface Options {
 export async function waitIcons(options: Options): Promise<void> {
     const {page, icons, cache = new Set(), timeout = 500} = options;
 
-    // eslint-disable-next-line @taiga-ui/experience/no-simple-for-of
     for (const icon of icons) {
         const url = await icon.evaluate((element: HTMLElement) => {
             const location = window.location;

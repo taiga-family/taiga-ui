@@ -9,7 +9,10 @@ import {shouldCall} from '@taiga-ui/event-plugins';
 import {TuiDropdownDriver} from './dropdown.driver';
 
 function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
-    return !event || !this.activeZone.contains(tuiGetActualTarget(event));
+    return (
+        !event ||
+        (this.driver.value && !this.activeZone.contains(tuiGetActualTarget(event)))
+    );
 }
 
 @Directive({
@@ -33,11 +36,11 @@ function activeZoneFilter(this: TuiDropdownContext, event?: Event): boolean {
 })
 export class TuiDropdownContext extends TuiRectAccessor {
     private readonly isTouch = inject(TUI_IS_TOUCH);
-    private readonly driver = inject(TuiDropdownDriver);
     private currentRect = EMPTY_CLIENT_RECT;
 
     protected readonly userSelect = computed(() => (this.isTouch() ? 'none' : null));
     protected readonly activeZone = inject(TuiActiveZone);
+    protected readonly driver = inject(TuiDropdownDriver);
 
     public readonly type = 'dropdown';
 

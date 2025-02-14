@@ -5,13 +5,10 @@
 
 app {
   display: block;
-  padding: 1.5625rem;
+  padding: 1.5rem;
   height: 100%;
   box-sizing: border-box;
   font-size: 16px;
-
-  // StackBlitz changes "0px" to "0" breaking calc
-  --t-0: 0.001px;
 }
 
 .header {

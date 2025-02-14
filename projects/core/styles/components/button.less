@@ -111,8 +111,9 @@
     }
 
     &[tuiButtonVertical] {
+        // StackBlitz changes "0rem" to "0" breaking calc
+        --t-margin: ~'0rem' !important;
         --t-line-height: 1rem;
-        --t-margin: var(--t-0, 0rem) !important;
 
         flex-direction: column;
         flex-shrink: 1;

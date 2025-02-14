@@ -36,6 +36,7 @@ import {
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
+    tuiEnableFontScaling,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
@@ -64,6 +65,7 @@ export const config: ApplicationConfig = {
             }),
         ),
         NG_EVENT_PLUGINS,
+        tuiEnableFontScaling(),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(),
         {

@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
@@ -14,7 +14,7 @@ import {
 describe('Tabs', () => {
     @Component({
         standalone: true,
-        imports: [AsyncPipe, CommonModule, TuiTabs],
+        imports: [CommonModule, TuiTabs],
         template: `
             <tui-tabs
                 [(activeItemIndex)]="activeItemIndex"

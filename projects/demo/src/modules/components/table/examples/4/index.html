@@ -58,8 +58,7 @@
         [columns]="columns"
         [direction]="(direction$ | async) || 1"
         [tuiSortBy]="sorter$ | async"
-        (directionChange)="direction$.next($event)"
-        (tuiSortByChange)="sorter$.next($event!)"
+        (tuiSortChange)="change($event)"
     >
         <thead>
             <tr tuiThGroup>

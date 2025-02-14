@@ -49,6 +49,8 @@ export const TUI_USED_ICONS = [
     '@tui.home',
     '@tui.circle-help',
     '@tui.plus',
+    '@tui.shopping-cart',
+    '@tui.shower-head',
     '@tui.credit-card',
     '@tui.ellipsis-vertical',
     '@tui.menu',

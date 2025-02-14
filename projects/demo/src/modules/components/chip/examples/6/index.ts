@@ -1,14 +1,13 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAccordion, TuiBottomSheet, TuiButton, TuiRepeatTimes],
+    imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
