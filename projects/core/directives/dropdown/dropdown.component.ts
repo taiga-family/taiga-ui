@@ -1,14 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    effect,
-    inject,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -71,23 +63,12 @@ export class TuiDropdownComponent {
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     // TODO(v5): use `TUI_DARK_MODE` instead of element attribute to get current theme
-    protected theme = computed(() =>
-        this.darkMode()
-            ? this.themeSignal()
-            : this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
-    );
+    protected readonly theme = computed(() => {
+        // @ts-ignore
+        const _ = this.darkMode();
 
-    // TODO(v5): delete it
-    protected themeSignal = signal(
-        this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
-    );
-
-    // TODO(v5): delete it
-    protected readonly updateTheme = effect(() => {
-        this.themeSignal.set(
-            this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
-        );
-    }, TUI_ALLOW_SIGNAL_WRITES);
+        return this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
+    });
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
