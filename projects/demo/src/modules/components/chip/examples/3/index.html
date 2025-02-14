@@ -74,6 +74,12 @@
         (click)="onChip(i)"
     >
         Button {{ i + 1 }}
+    </button>
+</section>
+
+<section>
+    <tui-chip *tuiRepeatTimes="let i of 3">
+        Close button {{ i + 1 }}
         <button
             iconStart="@tui.x"
             tuiIconButton
@@ -82,7 +88,7 @@
         >
             Remove
         </button>
-    </button>
+    </tui-chip>
 </section>
 
 <h3>Input</h3>
