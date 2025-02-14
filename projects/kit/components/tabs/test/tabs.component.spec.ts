@@ -1,6 +1,12 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    PLATFORM_ID,
+    ViewChild,
+} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -14,7 +20,7 @@ import {
 describe('Tabs', () => {
     @Component({
         standalone: true,
-        imports: [AsyncPipe, CommonModule, TuiTabs],
+        imports: [CommonModule, TuiTabs],
         template: `
             <tui-tabs
                 [(activeItemIndex)]="activeItemIndex"
@@ -52,6 +58,7 @@ describe('Tabs', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
+            providers: [{provide: PLATFORM_ID, useValue: 'browser'}],
         });
         await TestBed.compileComponents();
 
