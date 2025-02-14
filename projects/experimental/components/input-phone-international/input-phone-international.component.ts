@@ -189,7 +189,13 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.code.set(code);
     }
 
-    public override writeValue(unmasked: string): void {
+    public override writeValue(unmasked: string | null): void {
+        const code = this.getCountryCode(unmasked ?? '');
+
+        if (code) {
+            this.code.set(code);
+        }
+
         super.writeValue(unmasked);
         this.masked.set(
             maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
@@ -202,21 +208,18 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     }
 
     protected onPaste(event: Event): void {
-        const metadata = this.metadata();
         const data = tuiIsInputEvent(event) && event.data;
 
         if (
             !data ||
-            !metadata ||
             (!event.inputType.includes('Drop') && !event.inputType.includes('Paste'))
         ) {
             return;
         }
 
-        const value = data.startsWith(CHAR_PLUS) ? data : CHAR_PLUS + data;
-        const code = maskitoGetCountryFromNumber(value, metadata);
+        const code = this.getCountryCode(data);
 
-        if (code && validatePhoneNumberLength(value) !== 'TOO_SHORT') {
+        if (code) {
             this.code.set(code);
         }
     }
@@ -258,5 +261,14 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         const value = maskedValue.replaceAll(NOT_FORM_CONTROL_SYMBOLS, '');
 
         return value === tuiGetCallingCode(this.code(), this.metadata()) ? '' : value;
+    }
+
+    private getCountryCode(value: string): TuiCountryIsoCode | null {
+        const metadata = this.metadata();
+        const phone = value.startsWith(CHAR_PLUS) ? value : CHAR_PLUS + value;
+
+        return metadata && validatePhoneNumberLength(phone) !== 'TOO_SHORT'
+            ? (maskitoGetCountryFromNumber(phone, metadata) ?? null)
+            : null;
     }
 }
