@@ -64,8 +64,7 @@ export class TuiDropdownComponent {
 
     // TODO(v5): use `TUI_DARK_MODE` instead of element attribute to get current theme
     protected readonly theme = computed(() => {
-        // @ts-ignore
-        const _ = this.darkMode();
+        this.darkMode();
 
         return this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
     });
