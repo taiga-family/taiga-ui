@@ -15,10 +15,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
-import {
-    TUI_REORDER_BY_STRATEGY,
-    TuiTilesReorderProvider,
-} from './tiles-reorder.providers';
+import {TUI_TILE_REORDER} from './tile-reorder.provider';
 
 @Component({
     standalone: true,
@@ -34,7 +31,6 @@ import {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {childList: true},
         },
-        TuiTilesReorderProvider,
     ],
     host: {
         '[class._dragged]': 'element()',
@@ -45,7 +41,7 @@ export class TuiTilesComponent {
     private readonly el = tuiInjectElement();
     private readonly el$ = new Subject<Element | undefined>();
 
-    private readonly reorderByStrategy = inject(TUI_REORDER_BY_STRATEGY);
+    private readonly tuiTileReorder = inject(TUI_TILE_REORDER);
 
     @Input()
     public debounce = 0;
@@ -86,7 +82,7 @@ export class TuiTilesComponent {
             ? new Map(this.order)
             : new Map(elements.map((_, index) => [index, index]));
 
-        const reordered = this.reorderByStrategy(order, currentIndex, newIndex);
+        const reordered = this.tuiTileReorder(order, currentIndex, newIndex);
 
         this.order$.next(reordered);
 

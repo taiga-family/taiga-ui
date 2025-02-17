@@ -3,4 +3,5 @@ export * from './tile.service';
 export * from './tile-handle.directive';
 export * from './tiles';
 export * from './tiles.component';
-export {TUI_TILES_REORDER_STRATEGY} from './tiles-reorder.providers';
+export * from './tile-reorder.provider';
+export * from './helpers/reorder-functions';

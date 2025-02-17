@@ -4,7 +4,7 @@ export type TuiReorderFunction = (
     newIndex: number,
 ) => Map<number, number>;
 
-export const swap: TuiReorderFunction = (order, currentIndex, newIndex) => {
+export const tuiTileSwap: TuiReorderFunction = (order, currentIndex, newIndex) => {
     if (!order.has(currentIndex) || !order.has(newIndex)) {
         return order;
     }
@@ -20,7 +20,7 @@ export const swap: TuiReorderFunction = (order, currentIndex, newIndex) => {
     return newOrder;
 };
 
-export const shift: TuiReorderFunction = (order, currentIndex, newIndex) => {
+export const tuiTileShift: TuiReorderFunction = (order, currentIndex, newIndex) => {
     if (!order.has(currentIndex) || !order.has(newIndex)) {
         return order;
     }
