@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED, TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
@@ -47,7 +47,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
-        '[attr.tuiTheme]': 'theme',
+        '[attr.tuiTheme]': 'theme()',
     },
 })
 export class TuiDropdownComponent {
@@ -60,9 +60,14 @@ export class TuiDropdownComponent {
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
-    protected readonly theme = this.directive.el
-        .closest('[tuiTheme]')
-        ?.getAttribute('tuiTheme');
+    protected readonly darkMode = inject(TUI_DARK_MODE);
+
+    // TODO(v5): use `TUI_DARK_MODE` instead of element attribute to get current theme
+    protected readonly theme = computed(() => {
+        this.darkMode();
+
+        return this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
+    });
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
