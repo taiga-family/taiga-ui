@@ -64,14 +64,14 @@ const TEMPLATE_BEFORE = `
 
 const TEMPLATE_AFTER = `
 <a
-    iconEnd="tuiIconSettings"
+    iconEnd="@tui.settings"
     tuiLink
     [tuiChevron]="true"
 >
     Link with icon right
 </a>
 <a
-    iconStart="tuiIconSettings"
+    iconStart="@tui.settings"
     ${''}
     tuiLink
 >

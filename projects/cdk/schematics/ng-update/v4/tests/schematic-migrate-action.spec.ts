@@ -69,7 +69,7 @@ const TEMPLATE_BEFORE = `
 const TEMPLATE_AFTER = `
 <!-- TODO: (Taiga UI migration) tuiAction has been removed in favour of tuiCardLarge + tuiSurface. Change the template according to this example https://taiga-ui.dev/layout/card-large -->
 <button
-    icon="tuiIconStarLarge"
+    icon="@tui.star"
     tuiCardLarge tuiSurface="elevated"
     type="button"
     class="action"
@@ -90,7 +90,7 @@ const TEMPLATE_AFTER = `
     </section>
     <tui-avatar${' '}
         size="s"
-        src="tuiIconStarLarge"
+        src="@tui.star"
         class="tui-island__marker icon"
         [appearance]="mode"
     ></tui-avatar>

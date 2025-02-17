@@ -72,14 +72,14 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `
-<tui-avatar [src]="'tuiIconUser' | tuiFallbackSrc : ('alex inkin' | tuiInitials) | async" [style.background]="'alex inkin' | tuiAutoColor"
+<tui-avatar [src]="'@tui.user' | tuiFallbackSrc : ('alex inkin' | tuiInitials) | async" [style.background]="'alex inkin' | tuiAutoColor"
    ${''}
    ${''}
     [round]="true"
     size="xs"
    ${''}
 ></tui-avatar>
-<tui-avatar [src]="'tuiIconUser'" [round]="false"
+<tui-avatar [src]="'@tui.user'" [round]="false"
    ${''}
     [size]="size"
 ></tui-avatar>

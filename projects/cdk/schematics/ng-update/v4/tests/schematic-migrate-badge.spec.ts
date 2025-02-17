@@ -84,14 +84,14 @@ const TEMPLATE_AFTER = `
 <tui-badge
     appearance="success"
    ${''}
-iconStart="tuiIconHelpCircle">Taiga
+iconStart="@tui.circle-help">Taiga
     ${''}
 </tui-badge>
 <!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
 <tui-badge
     appearance="success"
 >
-    <tui-icon  icon="tuiIconHelpCircle"></tui-icon>
+    <tui-icon  icon="@tui.circle-help"></tui-icon>
 </tui-badge>
 
 <ng-container [ngSwitch]="state$ | async">

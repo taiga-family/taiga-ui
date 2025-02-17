@@ -17,6 +17,8 @@ import {
 } from '../steps';
 import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
+import {migrateCssVars} from './migrate-css-vars';
+import {migrateIcons} from './migrate-icons';
 import {
     migrateAlertService,
     migrateAllCountryIsoCodes,
@@ -104,6 +106,8 @@ export function updateToV4(options: TuiSchema): Rule {
 
     return chain([
         main(options),
+        migrateCssVars(options),
+        migrateIcons(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 

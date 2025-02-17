@@ -44,7 +44,7 @@ const TEMPLATE_BEFORE = `
   </p>
 </tui-badged-content>
 <tui-badged-content
-  [colorTop]="(unsavedChanges.value$ | async) ? 'var(--tui-warning-fill)' : ''">
+  [colorTop]="(unsavedChanges.value$ | async) ? 'var(--tui-status-warning)' : ''">
 </tui-badged-content>
 <tui-badged-content
      colorTop="var(--tui-error-fill)"
@@ -95,7 +95,7 @@ const TEMPLATE_AFTER = `
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
-        [style.color]="(unsavedChanges.value$ | async) ? 'var(--tui-warning-fill)' : ''"
+        [style.color]="(unsavedChanges.value$ | async) ? 'var(--tui-status-warning)' : ''"
     ></tui-badge-notification>
 </tui-badged-content>
 <tui-badged-content
@@ -107,7 +107,7 @@ const TEMPLATE_AFTER = `
 <tui-badge-notification
         size="xs"
         tuiSlot="top"
-        [style.color]="'var(--tui-error-fill)'"
+        [style.color]="'var(--tui-status-negative)'"
     ></tui-badge-notification>
      <tui-avatar [src]="'a b' | tuiInitials"
          size="xl"
@@ -129,11 +129,11 @@ const TEMPLATE_AFTER = `
     ></tui-badge-notification>
 <tui-icon
         appearance="accent"
-        icon="tuiIconCheckCircleLarge"
+        icon="@tui.circle-check"
         size="l"
         tuiBadge
         tuiSlot="bottom"
-        [style.color]="'var(--tui-error-fill)'"
+        [style.color]="'var(--tui-status-negative)'"
     ></tui-icon>
 
     <tui-avatar [src]="'e' | tuiInitials" [round]="false"
