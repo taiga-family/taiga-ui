@@ -37,5 +37,5 @@ export class TuiActionBarComponent implements TuiButtonOptions {
     @Input()
     public size: TuiSizeS = 'm';
 
-    public readonly appearance = 'glass';
+    public readonly appearance = 'secondary-grayscale';
 }
