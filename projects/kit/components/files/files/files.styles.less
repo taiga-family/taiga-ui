@@ -5,6 +5,11 @@ tui-files {
     overflow: hidden;
     border-radius: var(--tui-radius-m);
 
+    // Increased specificity due to no encapsulation
+    &:empty:empty {
+        display: none;
+    }
+
     .t-files {
         position: relative;
         display: block;
