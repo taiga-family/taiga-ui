@@ -156,8 +156,8 @@ export class TuiInputDateMultiComponent
 
         return (
             (TuiDay.isValidDay(year, month, day) &&
-                this.min?.dayBefore(date) &&
-                this.max?.dayAfter(date)) ??
+                this.min?.daySameOrBefore(date) &&
+                this.max?.daySameOrAfter(date)) ??
             false
         );
     };
