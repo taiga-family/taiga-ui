@@ -18,7 +18,7 @@ export class TuiUnfinishedValidator implements Validator {
     private readonly injector = inject(INJECTOR);
 
     @Input()
-    tuiUnfinishedValidator = '';
+    public tuiUnfinishedValidator = '';
 
     public readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),

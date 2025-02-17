@@ -18,7 +18,7 @@ export class TuiUnfinishedValidator implements Validator {
     private readonly el = tuiInjectElement<HTMLInputElement>();
 
     @Input()
-    tuiUnfinishedValidator = '';
+    public tuiUnfinishedValidator = '';
 
     public readonly validate = tuiCreateUnfinishedValidator(
         this.el,
