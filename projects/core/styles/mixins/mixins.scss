@@ -2,11 +2,11 @@
 
 @mixin interactive {
     // TODO remove after dropping Safari 13 support
-    &:matches(a, button, select, textarea, input) {
+    &:matches(a, button, select, textarea, input):not(:disabled) {
         @content;
     }
 
-    &:is(a, button, select, textarea, input) {
+    &:is(a, button, select, textarea, input):not(:disabled) {
         @content;
     }
 }
