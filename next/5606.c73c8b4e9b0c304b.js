@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5606],{83225:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.t-list-search {\n    position: sticky;\n    top: 0;\n    z-index: 1;\n    background: var(--tui-background-elevation-3);\n    padding: 0.375rem 0.375rem 0;\n\n    input {\n        .tui-prevent-ios-scroll();\n    }\n}\n"}}]);
