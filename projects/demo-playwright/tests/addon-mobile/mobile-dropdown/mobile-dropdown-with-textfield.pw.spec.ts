@@ -12,10 +12,13 @@ describe('DropdownMobile for textfields', () => {
     test('with select', async ({page}) => {
         await page.goto(DemoRoute.Dropdown);
 
-        const example = new TuiDocumentationPagePO(page).getExample('#mobile');
+        const documentation = new TuiDocumentationPagePO(page);
+        const example = documentation.getExample('#mobile');
 
         await example.locator('tui-select').click();
+        await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
 
+        await documentation.hideContent();
         await expect(page).toHaveScreenshot('dropdown-mobile-with-select.png');
     });
 });

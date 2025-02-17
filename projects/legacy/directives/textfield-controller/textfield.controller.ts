@@ -16,7 +16,7 @@ import type {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
-    // eslint-disable-next-line @typescript-eslint/max-params
+    // eslint-disable-next-line @typescript-eslint/max-params,max-params
     constructor(
         public readonly change$: Observable<void>,
         public readonly options: TuiTextfieldOptions,
