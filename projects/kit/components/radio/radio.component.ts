@@ -29,7 +29,7 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     hostDirectives: [
         {
             directive: TuiAppearance,
-            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus'],
+            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus', 'tuiAppearanceMode'],
         },
         TuiNativeValidator,
     ],

@@ -30,7 +30,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
     hostDirectives: [
         {
             directive: TuiAppearance,
-            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus'],
+            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus', 'tuiAppearanceMode'],
         },
         TuiNativeValidator,
     ],

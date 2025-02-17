@@ -30,7 +30,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     hostDirectives: [
         {
             directive: TuiAppearance,
-            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus'],
+            inputs: ['tuiAppearanceState', 'tuiAppearanceFocus', 'tuiAppearanceMode'],
         },
 
         TuiNativeValidator,
