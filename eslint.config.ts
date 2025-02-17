@@ -11,9 +11,9 @@ export default [
     {
         files: ['**/*.ts'],
         rules: {
-            'max-params': ['error', 5],
-            'no-nested-ternary': 'error',
-            'rxjs/no-nested-subscribe': 'error',
+            'import/export': 'off',
+            'import/no-cycle': 'off',
+            '@typescript-eslint/max-params': ['error', {countVoidThis: true, max: 5}],
         },
     },
     {
@@ -21,10 +21,7 @@ export default [
         rules: {
             '@angular-eslint/template/button-has-type': 'off',
             '@angular-eslint/template/elements-content': 'off',
-            '@typescript-eslint/max-params': 'off',
             'jest/prefer-importing-jest-globals': 'off',
-            'sonarjs/prefer-nullish-coalescing': 'off',
-            'no-irregular-whitespace': 'off',
         },
     },
 ];

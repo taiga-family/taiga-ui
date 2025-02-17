@@ -71,7 +71,8 @@
     overflow: hidden;
     vertical-align: middle;
     max-inline-size: 100%;
-    gap: calc(var(--t-gap, var(--t-0, 0rem)) - 2 * var(--t-margin, 0rem));
+    // StackBlitz changes "0rem" to "0" breaking calc
+    gap: calc(var(--t-gap, ~'0rem') - 2 * var(--t-margin, 0rem));
 
     > img,
     > tui-svg,

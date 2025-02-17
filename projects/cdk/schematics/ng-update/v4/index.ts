@@ -17,7 +17,6 @@ import {
 } from '../steps';
 import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
-import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
     migrateAlertService,
     migrateAllCountryIsoCodes,
@@ -40,6 +39,7 @@ import {
     MODULES_TO_REMOVE,
     SERVICES_TO_REPLACE,
 } from './steps/constants';
+import {ENUMS_TO_REPLACE} from './steps/constants/enums';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
 import {MODULES_TO_REPLACE_WITH_PROVIDERS} from './steps/constants/modules-to-replace';
 import {TYPES_TO_RENAME} from './steps/constants/types';

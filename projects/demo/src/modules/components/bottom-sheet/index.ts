@@ -6,7 +6,6 @@ import {TuiDemo} from '@demo/utils';
     standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
