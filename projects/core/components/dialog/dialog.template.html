@@ -9,7 +9,7 @@
 <div class="t-content">
     <h2
         class="t-heading"
-        [class.t-heading_closable]="context.closeable"
+        [class.t-heading_closable]="context.closeable && !header"
         [id]="context.id"
         [textContent]="context.label"
     ></h2>
