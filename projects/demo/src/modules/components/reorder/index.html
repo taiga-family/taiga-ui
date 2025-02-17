@@ -14,33 +14,5 @@
         />
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                <p>Add an import:</p>
-
-                <tui-doc-code [code]="importCode" />
-            </li>
-
-            <li class="tui-list__item">
-                <p>Add to the template:</p>
-
-                <tui-doc-code [code]="templateCode" />
-            </li>
-
-            <li class="tui-list__item">
-                <p>
-                    By default reordering has swap behaviour. You can overwrite it by providing either
-                    <code>shift</code>
-                    or
-                    <code>swap</code>
-                    string value using
-                    <code>TUI_TILES_REORDER_STRATEGY</code>
-                    injection token.
-                </p>
-
-                <tui-doc-code [code]="reorderStrategyCode" />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

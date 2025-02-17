@@ -8,10 +8,4 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {
-    protected readonly importCode = import('./examples/import/import.md?raw');
-    protected readonly templateCode = import('./examples/import/template.md?raw');
-    protected readonly reorderStrategyCode = import(
-        './examples/import/reorder-strategy.md?raw'
-    );
-}
+export default class Page {}
