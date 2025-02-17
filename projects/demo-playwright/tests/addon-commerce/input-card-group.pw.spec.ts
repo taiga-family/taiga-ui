@@ -54,7 +54,7 @@ test.describe('InputCardGroup', () => {
 
             const {numberTextfield} = new TuiInputCardGroupPO(apiPageExample);
 
-            await expect(numberTextfield).toHaveCSS('pointer-events', 'none');
+            await expect(numberTextfield).toHaveAttribute('disabled');
             await expect(numberTextfield).toHaveScreenshot(
                 '04-input-card-group-disabled.png',
             );
