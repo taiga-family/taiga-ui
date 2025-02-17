@@ -37,6 +37,7 @@ interface Items<T> {
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
 export class CustomListComponent<T> {

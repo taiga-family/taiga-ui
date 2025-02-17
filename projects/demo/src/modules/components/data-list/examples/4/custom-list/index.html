@@ -1,15 +1,14 @@
-<tui-textfield
-    iconStart="@tui.search"
-    class="tui-space_all-2"
->
-    <input
-        placeholder="Search categories"
-        tuiAutoFocus
-        tuiTextfield
-        [focused]="true"
-        [(ngModel)]="value"
-    />
-</tui-textfield>
+<div class="t-list-search">
+    <tui-textfield iconStart="@tui.search">
+        <input
+            placeholder="Search categories"
+            tuiAutoFocus
+            tuiTextfield
+            [focused]="true"
+            [(ngModel)]="value"
+        />
+    </tui-textfield>
+</div>
 <hr />
 <tui-data-list
     emptyContent="No results found"
