@@ -1,4 +1,4 @@
-import {tuiTileShift, tuiTileSwap} from '../helpers/reorder-functions';
+import {tuiTilesShift, tuiTilesSwap} from '@taiga-ui/kit';
 
 describe('reorder functions', () => {
     describe('swap', () => {
@@ -14,7 +14,7 @@ describe('reorder functions', () => {
              * 1 -> 3
              * 3 -> 1
              */
-            const result = tuiTileSwap(source, 1, 3);
+            const result = tuiTilesSwap(source, 1, 3);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(3);
@@ -35,7 +35,7 @@ describe('reorder functions', () => {
              * 3 -> 1
              * 1 -> 3
              */
-            const result = tuiTileSwap(source, 3, 1);
+            const result = tuiTilesSwap(source, 3, 1);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(3);
@@ -51,7 +51,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileSwap(source, 3, 0);
+            const result = tuiTilesSwap(source, 3, 0);
 
             expect(result).toBe(result);
             expect(result.size).toBe(source.size);
@@ -64,7 +64,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileSwap(source, 0, 3);
+            const result = tuiTilesSwap(source, 0, 3);
 
             expect(result).toBe(result);
             expect(result.size).toBe(source.size);
@@ -77,7 +77,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileSwap(source, 1, 1);
+            const result = tuiTilesSwap(source, 1, 1);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(1);
@@ -102,7 +102,7 @@ describe('reorder functions', () => {
              * 3 -> 2
              * 2 -> 1
              */
-            const result = tuiTileShift(source, 1, 4);
+            const result = tuiTilesShift(source, 1, 4);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(4);
@@ -127,7 +127,7 @@ describe('reorder functions', () => {
              * 2 -> 3
              * 3 -> 4
              */
-            const result = tuiTileShift(source, 4, 1);
+            const result = tuiTilesShift(source, 4, 1);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(2);
@@ -144,7 +144,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileShift(source, 3, 0);
+            const result = tuiTilesShift(source, 3, 0);
 
             expect(result).toBe(result);
             expect(result.size).toBe(source.size);
@@ -157,7 +157,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileShift(source, 0, 3);
+            const result = tuiTilesShift(source, 0, 3);
 
             expect(result).toBe(result);
             expect(result.size).toBe(source.size);
@@ -170,7 +170,7 @@ describe('reorder functions', () => {
                 [2, 2],
             ]);
 
-            const result = tuiTileShift(source, 1, 1);
+            const result = tuiTilesShift(source, 1, 1);
 
             expect(result.get(0)).toBe(0);
             expect(result.get(1)).toBe(1);

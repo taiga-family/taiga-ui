@@ -1,17 +1,18 @@
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+
 export type TuiReorderFunction = (
     order: Map<number, number>,
     currentIndex: number,
     newIndex: number,
 ) => Map<number, number>;
 
-export const tuiTileSwap: TuiReorderFunction = (order, currentIndex, newIndex) => {
+export const tuiTilesSwap: TuiReorderFunction = (order, currentIndex, newIndex) => {
     if (!order.has(currentIndex) || !order.has(newIndex)) {
         return order;
     }
 
     const dragged = order.get(currentIndex) ?? currentIndex;
     const placement = order.get(newIndex) ?? newIndex;
-
     const newOrder = new Map(order);
 
     newOrder.set(currentIndex, placement);
@@ -20,33 +21,23 @@ export const tuiTileSwap: TuiReorderFunction = (order, currentIndex, newIndex) =
     return newOrder;
 };
 
-export const tuiTileShift: TuiReorderFunction = (order, currentIndex, newIndex) => {
+export const tuiTilesShift: TuiReorderFunction = (order, currentIndex, newIndex) => {
     if (!order.has(currentIndex) || !order.has(newIndex)) {
         return order;
     }
 
     const dragged = order.get(currentIndex) ?? currentIndex;
     const placement = order.get(newIndex) ?? newIndex;
-
-    const reversedOrder = new Map(
-        Array.from(order).map(([elemIndex, orderIndex]) => [orderIndex, elemIndex]),
-    );
-
     const newOrder = new Map(order);
+    const flipped = new Map(Array.from(order).map(([a, b]) => [b, a]));
 
-    const direction = (placement - dragged) / Math.abs(placement - dragged);
-
-    if (direction > 0) {
+    if ((placement - dragged) / Math.abs(placement - dragged) > 0) {
         for (let i = placement; i > dragged; i--) {
-            const tmp = reversedOrder.get(i) ?? i;
-
-            newOrder.set(tmp, i - 1);
+            newOrder.set(flipped.get(i) ?? i, i - 1);
         }
     } else {
         for (let i = placement; i < dragged; i++) {
-            const tmp = reversedOrder.get(i) ?? i;
-
-            newOrder.set(tmp, i + 1);
+            newOrder.set(flipped.get(i) ?? i, i + 1);
         }
     }
 
@@ -54,3 +45,5 @@ export const tuiTileShift: TuiReorderFunction = (order, currentIndex, newIndex) 
 
     return newOrder;
 };
+
+export const TUI_TILES_REORDER = tuiCreateToken<TuiReorderFunction>(tuiTilesSwap);
