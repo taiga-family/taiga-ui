@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
@@ -26,6 +26,8 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
         TuiTitle,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export default class PageComponent {

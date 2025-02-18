@@ -1,9 +1,21 @@
 <tui-doc-page
+    deprecated
     header="InputMonthLegacy"
     package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputMonth"
+            >
+                <strong>new version of InputMonth</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <p>Component to input a single month</p>
 
         <tui-doc-example
