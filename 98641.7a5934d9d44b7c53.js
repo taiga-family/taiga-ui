@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98641],{98641:n=>{n.exports=":host {\n    display: block;\n    transform: translate3d(0, 0, 0);\n}\n\n[tuiNavigationHeader] {\n    white-space: nowrap;\n    inline-size: 100% !important;\n\n    &::before {\n        display: none;\n    }\n}\n"}}]);
