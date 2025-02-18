@@ -107,8 +107,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    protected readonly min = signal(this.options.min);
-    protected readonly max = signal(this.options.max);
     protected readonly step = signal(this.options.step);
     protected readonly prefix = signal(this.options.prefix);
     protected readonly postfix = signal(this.options.postfix);
@@ -149,6 +147,9 @@ export class TuiInputNumber extends TuiControl<number | null> {
         ),
     );
 
+    public readonly min = signal(this.options.min);
+    public readonly max = signal(this.options.max);
+
     @Input('min')
     public set minSetter(x: number | null) {
         this.updateMinMaxLimits(x, this.max());
@@ -179,7 +180,11 @@ export class TuiInputNumber extends TuiControl<number | null> {
 
     public override writeValue(value: number | null): void {
         super.writeValue(Number.isNaN(value) ? null : value);
-        this.textfieldValue.set(this.formatNumber(this.value()));
+        this.setValue(this.value());
+    }
+
+    public setValue(value: number | null): void {
+        this.textfieldValue.set(this.formatNumber(value));
     }
 
     protected onBlur(): void {
