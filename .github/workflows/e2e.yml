@@ -24,7 +24,7 @@ jobs:
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.2.0
+        uses: actions/cache/save@v4.2.1
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -133,7 +133,7 @@ jobs:
         run: |
           echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
 
-      - uses: actions/cache/restore@v4.2.0
+      - uses: actions/cache/restore@v4.2.1
         id: playwright-cache
         with:
           path: |
@@ -147,7 +147,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.2.0
+        uses: actions/cache/restore@v4.2.1
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
