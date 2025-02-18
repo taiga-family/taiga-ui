@@ -17,7 +17,7 @@ test.describe('InputMonth', () => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputMonth = new TuiInputMonthPO(
-                example.locator('tui-textfield:has([tuiInputMonth])'),
+                example.locator('tui-textfield[tuiInputMonth]'),
             );
         });
 
