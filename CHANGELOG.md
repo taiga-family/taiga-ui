@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.25.0](https://github.com/taiga-family/taiga-ui/compare/v4.24.0...v4.25.0) (2025-02-18)
+
+### 🚀 Features
+
+- **addon-table:** add new output event with sort and direction changes
+  ([#10268](https://github.com/taiga-family/taiga-ui/issues/10268))
+  ([6bc1db2](https://github.com/taiga-family/taiga-ui/commit/6bc1db240b61cbdd1ca7e806c06c497474ad8616))
+- **core:** add font scaling option ([#10343](https://github.com/taiga-family/taiga-ui/issues/10343))
+  ([6fb390a](https://github.com/taiga-family/taiga-ui/commit/6fb390ac3c92e680d496cd6226d0a93d1b2fc408))
+- **i18n:** update Belarusian translation ([#10348](https://github.com/taiga-family/taiga-ui/issues/10348))
+  ([b2bd352](https://github.com/taiga-family/taiga-ui/commit/b2bd35292f0bff2474f8b3b0db2cfd69f6d153f3))
+- **kit:** `Chip` add default rules for `Fade` ([#10347](https://github.com/taiga-family/taiga-ui/issues/10347))
+  ([882462c](https://github.com/taiga-family/taiga-ui/commit/882462c7fce21dc2c0af561ddf6b676d6cf1bc3b))
+- **kit:** `Tiles` add reorder strategies ([#10360](https://github.com/taiga-family/taiga-ui/issues/10360))
+  ([1277754](https://github.com/taiga-family/taiga-ui/commit/12777547f086f12db86b58db2ab60e146579c507))
+- **kit:** `UnfinishedValidator` allow dynamic messages
+  ([#10377](https://github.com/taiga-family/taiga-ui/issues/10377))
+  ([bda084a](https://github.com/taiga-family/taiga-ui/commit/bda084a88a0a83a0c564d7d95a1881bd4edfad89))
+- **testing:** add resize observer polyfill ([#10370](https://github.com/taiga-family/taiga-ui/issues/10370))
+  ([5da8fec](https://github.com/taiga-family/taiga-ui/commit/5da8feca9c22481fe2f6c9c32d419f421ac11e55))
+
+### 🐞 Bug Fixes
+
+- **core:** check tuiDropdownContext activeZone only when dropdown is open
+  ([#10353](https://github.com/taiga-family/taiga-ui/issues/10353))
+  ([15da31b](https://github.com/taiga-family/taiga-ui/commit/15da31bf648e25cd470d8b892a09a8ccfb98c6f7))
+- **core:** enable pointer events on disabled button ([#10378](https://github.com/taiga-family/taiga-ui/issues/10378))
+  ([bf14135](https://github.com/taiga-family/taiga-ui/commit/bf1413509e5685e8583d3df2d07a2ab36de9f359))
+- **core:** redundant padding around title when header block exists
+  ([#10386](https://github.com/taiga-family/taiga-ui/issues/10386))
+  ([3832adf](https://github.com/taiga-family/taiga-ui/commit/3832adfd3f7bcc3caca85ae2f01de0613ed6fd9a))
+- **core:** use `TUI_DARK_MODE` instead of element in dropdown
+  ([#10341](https://github.com/taiga-family/taiga-ui/issues/10341))
+  ([d63f358](https://github.com/taiga-family/taiga-ui/commit/d63f358b2badde610166cfdaf79f90bcda3c1b94))
+- **experimental:** `InputPhoneInternational` detects `countryIsoCode` on control update with complete phone
+  ([#10358](https://github.com/taiga-family/taiga-ui/issues/10358))
+  ([106c961](https://github.com/taiga-family/taiga-ui/commit/106c961db85eb7838455ec1e5d3ac339b3db644d))
+- **kit:** `ActionBar` fix background color ([#10379](https://github.com/taiga-family/taiga-ui/issues/10379))
+  ([5fdc0f1](https://github.com/taiga-family/taiga-ui/commit/5fdc0f16d2b6e3e73b4d94954c47637dd0e23c5f))
+- **kit:** `Checkbox`, `Radio`, `Switch` return the lost appearance mode
+  ([#10390](https://github.com/taiga-family/taiga-ui/issues/10390))
+  ([eaaecf8](https://github.com/taiga-family/taiga-ui/commit/eaaecf8976b3fd66833aed1237e7119ad71aa991))
+- **kit:** `Files` hide element when empty ([#10380](https://github.com/taiga-family/taiga-ui/issues/10380))
+  ([189ee07](https://github.com/taiga-family/taiga-ui/commit/189ee07d7dc686e7ac2ee0c55f8d76199ef4aa70))
+- **kit:** input should be below text ([#10324](https://github.com/taiga-family/taiga-ui/issues/10324))
+  ([4301760](https://github.com/taiga-family/taiga-ui/commit/4301760d158abd3618af3bd58b571c9f3359ce9e))
+- **kit:** valid font size for stepper ([#10392](https://github.com/taiga-family/taiga-ui/issues/10392))
+  ([923be34](https://github.com/taiga-family/taiga-ui/commit/923be34f48c0e119458105384cc9d1a7004e713e))
+- **layout:** `Card` add default background color ([#10388](https://github.com/taiga-family/taiga-ui/issues/10388))
+  ([636ca10](https://github.com/taiga-family/taiga-ui/commit/636ca105fc587b0f862badc762bf2d2e6d022863))
+- **legacy:** `InputDateMulti` include first/last date as valid
+  ([#10373](https://github.com/taiga-family/taiga-ui/issues/10373))
+  ([5021999](https://github.com/taiga-family/taiga-ui/commit/50219990f3d83156ea875e657d709a76b8c5d53e))
+- **testing:** mock the platform before each test ([#10361](https://github.com/taiga-family/taiga-ui/issues/10361))
+  ([2c11b56](https://github.com/taiga-family/taiga-ui/commit/2c11b5674c69707961dc7085cd0490664b55172b))
+
 ## [4.24.0](https://github.com/taiga-family/taiga-ui/compare/v4.23.0...v4.24.0) (2025-02-10)
 
 ### 🐞 Bug Fixes
