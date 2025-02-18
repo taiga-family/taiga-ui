@@ -19,7 +19,21 @@ export function tuiValueBinding(
     const el = tuiInjectElement<HTMLInputElement>();
 
     effect(() => {
+        if (el.value === value()) {
+            return;
+        }
+
+        const {selectionStart, selectionEnd} = el;
+
         el.value = value();
+
+        if (el.matches(':focus')) {
+            /**
+             * After programmatic updates of input's value, caret is automatically placed at the end –
+             * revert to the previous position
+             */
+            el.setSelectionRange(selectionStart, selectionEnd);
+        }
     });
 
     return value;
