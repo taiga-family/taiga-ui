@@ -1,7 +1,7 @@
 import type {Locator, Page} from '@playwright/test';
 import {expect} from '@playwright/test';
 
-import {tuiHideElement} from '../hide-element';
+import {tuiHideElement, tuiRemoveElement} from '../hide-element';
 import {waitIcons} from '../wait-icons';
 import {waitStableState} from '../wait-stable-state';
 
@@ -30,6 +30,14 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
+    public async hideHeader(): Promise<void> {
+        const headers = await this.page.locator('[tuiDocHeader]').all();
+
+        for (const header of headers) {
+            await tuiRemoveElement(header);
+        }
+    }
+
     public async hideScrollbars(): Promise<void> {
         const bars = await this.page
             .locator('tui-root > tui-scroll-controls .t-bar')
@@ -42,6 +50,7 @@ export class TuiDocumentationApiPagePO {
 
     public async hideContent(): Promise<void> {
         await this.hideScrollbars();
+        await this.hideHeader();
 
         return tuiHideElement(this.page.locator('tui-doc-page'));
     }

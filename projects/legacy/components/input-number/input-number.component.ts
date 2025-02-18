@@ -330,7 +330,7 @@ export class TuiInputNumberComponent
         );
     }
 
-    // eslint-disable-next-line @typescript-eslint/max-params
+    // eslint-disable-next-line @typescript-eslint/max-params,max-params
     @tuiPure
     private calculateMask(
         precision: number,

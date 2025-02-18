@@ -4,7 +4,7 @@ import type {ElementLocation} from 'parse5/dist/common/token';
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;
 
-// eslint-disable-next-line @typescript-eslint/max-params
+// eslint-disable-next-line @typescript-eslint/max-params,max-params
 export function replaceTag(
     recorder: UpdateRecorder,
     sourceCodeLocation: ElementLocation | null | undefined,

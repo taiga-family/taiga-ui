@@ -187,7 +187,7 @@ export class TuiCalendarMonth {
         this.updateHoveredItem(hovered ? item : null);
     }
 
-    // eslint-disable-next-line @typescript-eslint/max-params
+    // eslint-disable-next-line @typescript-eslint/max-params,max-params
     @tuiPure
     private calculateDisabledItemHandlerWithMinMax(
         disabledItemHandler: TuiBooleanHandler<TuiMonth>,

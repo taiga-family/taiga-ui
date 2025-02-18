@@ -39,7 +39,7 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             TUI_AUTOFOCUS_OPTIONS,
         ],
 
-        // eslint-disable-next-line @typescript-eslint/max-params
+        // eslint-disable-next-line @typescript-eslint/max-params,max-params
         useFactory: (
             el: ElementRef<HTMLElement>,
             animationFrame$: Observable<number>,
