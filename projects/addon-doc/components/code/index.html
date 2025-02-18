@@ -10,16 +10,17 @@
 >
     <code [lineNumbers]="true" [highlight]="content"></code>
     <div class="t-code-actions">
-        <button type="button"
+        <button
             tuiIconButton
+            type="button"
             appearance="outline-grayscale"
             size="s"
             class="t-copy-button"
-            title="Copy"
             [iconStart]="icon()"
             [cdkCopyToClipboard]="content"
             (click)="copy$.next()"
         >
+            {{ copyText$ | async }}
         </button>
         <ng-content />
     </div>
