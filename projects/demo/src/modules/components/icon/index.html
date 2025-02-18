@@ -27,6 +27,13 @@
             [heading]="example"
             [id]="example | tuiKebab"
         />
+
+        <tui-doc-example
+            id="sizes"
+            heading="Sizes"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample: 'html,ts'"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -36,8 +43,7 @@
                 [icon]="icon"
                 [style.background]="backgroundColor"
                 [style.color]="color"
-                [style.height.px]="size"
-                [style.width.px]="size"
+                [style.font-size.px]="size"
             />
         </tui-doc-demo>
 
@@ -94,17 +100,10 @@
 
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="style.height.px"
+                documentationPropertyName="style.font-size.px"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="size"
-            >
-                <code
-                    style="color: var(--tui-background-accent-2-pressed); font-family: monospace"
-                    class="tui-text_body-m"
-                >
-                    [style.width.px]
-                </code>
-            </ng-template>
+            />
         </tui-doc-documentation>
     </ng-template>
 
