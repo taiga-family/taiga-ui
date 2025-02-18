@@ -20,7 +20,7 @@
             [cdkCopyToClipboard]="content"
             (click)="copy$.next()"
         >
-            {{ copyText$ | async }}
+            {{ copyText()}}
         </button>
         <ng-content />
     </div>

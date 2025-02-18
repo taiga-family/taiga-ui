@@ -1,5 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {AsyncPipe, isPlatformServer, NgForOf, NgIf} from '@angular/common';
+import {isPlatformServer, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,7 +23,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-doc-code',
-    imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton, AsyncPipe],
+    imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +42,9 @@ export class TuiDocCode {
         inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR);
 
     protected readonly copy$ = new Subject<void>();
-    protected readonly copyText$ = inject(TUI_COPY_TEXTS).pipe(map(([copy]) => copy));
+    protected readonly copyText = toSignal(
+        inject(TUI_COPY_TEXTS).pipe(map(([copy]) => copy)),
+    );
 
     protected readonly icon = toSignal(
         this.copy$.pipe(
