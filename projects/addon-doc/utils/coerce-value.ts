@@ -35,6 +35,11 @@ export function tuiCoerceValue<T>(
         return Number(prepared);
     }
 
+    if (prepared === '%') {
+        // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent#exceptions
+        return prepared;
+    }
+
     const decodedValue = decodeURIComponent(prepared);
 
     try {
