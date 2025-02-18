@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.105.0](https://github.com/taiga-family/taiga-ui/compare/v3.104.1...v3.105.0) (2025-02-18)
+
+### Features
+
+- **addon-mobile:** `BottomSheet` add new component ([#10342](https://github.com/taiga-family/taiga-ui/issues/10342))
+  ([1dac30b](https://github.com/taiga-family/taiga-ui/commit/1dac30b21b30f92069a919194cf645f2028326ae))
+
+### Bug Fixes
+
+- **core:** enable pointer-events on disabled button ([#10375](https://github.com/taiga-family/taiga-ui/issues/10375))
+  ([32b1330](https://github.com/taiga-family/taiga-ui/commit/32b13307c73dea1b58f60b14e944669824d7c3ff))
+- **core:** redundant padding around title when header block exists
+  ([#10387](https://github.com/taiga-family/taiga-ui/issues/10387))
+  ([482caf4](https://github.com/taiga-family/taiga-ui/commit/482caf49ce9843e17a009afb00d862261a171d1e))
+- **experimental:** `TUI_ICON_RESOLVER` fix default path to respect base href
+  ([#10354](https://github.com/taiga-family/taiga-ui/issues/10354))
+  ([0923d6c](https://github.com/taiga-family/taiga-ui/commit/0923d6c3155a547cd7f10d77f16749e8612aa30a))
+- **legacy:** `InputDateMulti` include first/last date as valid
+  ([#10374](https://github.com/taiga-family/taiga-ui/issues/10374))
+  ([fbad6b9](https://github.com/taiga-family/taiga-ui/commit/fbad6b96883f13832af55cbb5983698ff829704f))
+
 ### [3.104.1](https://github.com/taiga-family/taiga-ui/compare/v3.104.0...v3.104.1) (2025-02-10)
 
 ### Bug Fixes
