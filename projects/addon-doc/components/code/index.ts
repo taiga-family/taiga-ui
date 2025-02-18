@@ -16,9 +16,9 @@ import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
