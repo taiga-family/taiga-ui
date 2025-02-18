@@ -21,7 +21,6 @@ test.describe('Demo', () => {
                     {id: 'heading-order', enabled: false},
                     {id: 'label', enabled: false},
                     {id: 'landmark-unique', enabled: false},
-                    {id: 'color-contrast', enabled: false},
                     {id: 'landmark-no-duplicate-main', enabled: false},
                     {id: 'nested-interactive', enabled: false},
                 ],
