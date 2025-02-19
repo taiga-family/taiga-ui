@@ -11,6 +11,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -70,11 +71,11 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         const calendar = this.calendar();
 
         if (calendar) {
-            calendar.value = this.value();
-            calendar.min = this.min();
-            calendar.max = this.max();
+            calendar.value.set(this.value());
+            calendar.min.set(this.min() ?? TUI_FIRST_DAY); // TODO(v5): remove TUI_FIRST_DAY fallback
+            calendar.max.set(this.max() ?? TUI_LAST_DAY); // TODO(v5): remove TUI_LAST_DAY fallback
         }
-    });
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected $ = effect(() => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
