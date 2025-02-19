@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -20,6 +20,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     host: {
         '[id]': 'textfield.id',
         '[class._empty]': 'stringified === ""',
+        '[attr.aria-label]': 'ariaLabel',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
@@ -33,6 +34,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
 })
 export class TuiSelect<T> extends TuiTextfieldBase<T> {
     private readonly nav = inject(WA_NAVIGATOR);
+    private readonly doc = inject(DOCUMENT);
 
     @Input()
     public placeholder = '';
@@ -46,6 +48,12 @@ export class TuiSelect<T> extends TuiTextfieldBase<T> {
         this.el.classList.add('_ios-fix');
         this.el.focus();
         this.el.classList.remove('_ios-fix');
+    }
+
+    protected get ariaLabel(): string | null {
+        return this.doc.querySelector(`label[for="${this.el.id}"]`)
+            ? null
+            : this.el.getAttribute('aria-label') || this.placeholder;
     }
 
     protected get stringified(): string {

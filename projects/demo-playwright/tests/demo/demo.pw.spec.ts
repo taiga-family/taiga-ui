@@ -1,5 +1,6 @@
 import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
@@ -12,6 +13,18 @@ test.describe('Demo', () => {
 
             await tuiMockImages(page);
             await tuiGoto(page, path);
+            await injectAxe(page);
+            await configureAxe(page, {
+                reporter: 'v2',
+                rules: [
+                    {id: 'scrollable-region-focusable', enabled: false},
+                    {id: 'heading-order', enabled: false},
+                    {id: 'label', enabled: false},
+                    {id: 'landmark-unique', enabled: false},
+                    {id: 'landmark-no-duplicate-main', enabled: false},
+                    {id: 'nested-interactive', enabled: false},
+                ],
+            });
             await documentation.waitTuiIcons();
             await documentation.waitStableState();
 
@@ -44,6 +57,8 @@ test.describe('Demo', () => {
                     `${i + 1}.png`,
                 ]);
             }
+
+            await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});
         });
     });
 });

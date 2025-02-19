@@ -86,7 +86,7 @@
             *ngFor="let tab of tabs; let index = index"
             class="t-content"
         >
-            <div
+            <section
                 *ngIf="index === defaultTabIndex"
                 automation-id="tui-doc-example"
                 class="t-demo"
@@ -96,7 +96,7 @@
                 <ng-container *polymorpheusOutlet="lazyComponent() as text">
                     {{ text }}
                 </ng-container>
-            </div>
+            </section>
 
             <tui-doc-code
                 *tuiLet="processor()[tabs[index] || 0] || '' as code"
