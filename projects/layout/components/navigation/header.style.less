@@ -33,10 +33,25 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
 
     [tuiNavigationLogo] {
         padding: 0 0.5rem;
-        margin-inline-start: 0.25rem;
+        margin: 0 1rem;
 
         tui-icon {
             font-size: 1rem;
+        }
+    }
+
+    [tuiNavigationSegments] {
+        display: flex;
+        gap: 0.5rem;
+        min-inline-size: 12rem;
+
+        > *:not(:last-child) {
+            flex: 1 0 auto;
+        }
+
+        > *:last-child {
+            min-inline-size: 3rem;
+            flex: 1 1 auto;
         }
     }
 
@@ -45,13 +60,13 @@ header[tuiNavigationHeader][tuiNavigationHeader] {
     [tuiChip],
     tui-badge,
     tui-chip {
-        max-inline-size: 8rem;
+        max-inline-size: 12.5rem;
     }
 
     hr {
         flex: 1;
         block-size: calc(100% + 1rem);
-        min-inline-size: 2rem;
+        min-inline-size: 4rem;
         margin: -0.5rem 0;
         border: none;
         flex-shrink: 0;
