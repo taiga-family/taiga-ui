@@ -18,6 +18,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly host = inject(TUI_DATA_LIST_HOST);
 
+    public transform<T>(items: null, matcher?: TuiStringMatcher<T>): null;
     public transform<T>(items: readonly T[], matcher?: TuiStringMatcher<T>): readonly T[];
     public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
