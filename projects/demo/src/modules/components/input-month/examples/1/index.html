@@ -1,10 +1,17 @@
-<tui-input-month
-    [formControl]="control"
-    [tuiTextfieldCleaner]="true"
+<tui-textfield
+    tuiInputMonth
+    [max]="max"
+    [min]="min"
+    [(ngModel)]="value"
 >
-    Choose a month
     <input
-        placeholder="Not September please"
-        tuiTextfieldLegacy
+        placeholder="Select vacation month"
+        tuiTextfield
     />
-</tui-input-month>
+
+    <tui-calendar-month
+        *tuiTextfieldDropdown
+        [disabledItemHandler]="isSummerHandler"
+        [(year)]="activeYear"
+    />
+</tui-textfield>

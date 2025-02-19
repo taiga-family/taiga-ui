@@ -425,6 +425,11 @@ export const ROUTES: Routes = [
         title: 'InputMonth',
     }),
     route({
+        path: DemoRoute.InputMonthLegacy,
+        loadComponent: async () => import('../components/input-month-legacy'),
+        title: 'InputMonth [deprecated]',
+    }),
+    route({
         path: DemoRoute.InputMonthRange,
         loadComponent: async () => import('../components/input-month-range'),
         title: 'InputMonthRange',
