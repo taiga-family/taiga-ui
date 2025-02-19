@@ -44,37 +44,58 @@
         <span tuiFade>A very very long product name</span>
         <tui-badge>Test</tui-badge>
     </span>
-    <button
-        appearance="secondary-grayscale"
-        tuiButton
-        tuiChevron
-        tuiDropdownOpen
-        type="button"
-        [tuiDropdown]="products"
-    >
-        <span tuiFade>A very very long project</span>
-        <ng-template #products>
-            <tui-data-list size="s">
-                <button
-                    tuiOption
-                    type="button"
-                >
-                    A very very long project
-                    <tui-icon
-                        icon="@tui.check"
-                        [style.font-size.em]="1"
-                        [style.margin-left.rem]="0.5"
-                    />
-                </button>
-                <button
-                    tuiOption
-                    type="button"
-                >
-                    Something else
-                </button>
-            </tui-data-list>
-        </ng-template>
-    </button>
+    <span tuiNavigationSegments>
+        <button
+            appearance="secondary-grayscale"
+            tuiButton
+            type="button"
+        >
+            Link 1
+        </button>
+        <button
+            appearance="secondary-grayscale"
+            tuiButton
+            type="button"
+        >
+            Link 2
+        </button>
+        <button
+            appearance="secondary-grayscale"
+            tuiButton
+            tuiChevron
+            tuiDropdownOpen
+            type="button"
+            [tuiDropdown]="products"
+        >
+            <span
+                [style.overflow]="'hidden'"
+                [style.text-overflow]="'ellipsis'"
+            >
+                A very very long project
+            </span>
+            <ng-template #products>
+                <tui-data-list size="s">
+                    <button
+                        tuiOption
+                        type="button"
+                    >
+                        A very very long project
+                        <tui-icon
+                            icon="@tui.check"
+                            [style.font-size.em]="1"
+                            [style.margin-left.rem]="0.5"
+                        />
+                    </button>
+                    <button
+                        tuiOption
+                        type="button"
+                    >
+                        Something else
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </button>
+    </span>
     <hr />
     <button
         appearance="secondary-grayscale"
