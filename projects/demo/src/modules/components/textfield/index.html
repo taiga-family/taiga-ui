@@ -73,7 +73,12 @@
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
-                <label tuiLabel>I am a label</label>
+                <label
+                    *ngIf="textfield.size !== 's'"
+                    tuiLabel
+                >
+                    I am a label
+                </label>
                 <input
                     placeholder="I am placeholder"
                     tuiTextfield
