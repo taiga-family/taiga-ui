@@ -382,6 +382,96 @@ describe('InputNumber', () => {
                     });
                 });
             });
+
+            describe('caret position on step action', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(page, `${DemoRoute.InputNumber}/API?step=1&postfix=kg`);
+
+                    await expect(inputNumber.textfield).toHaveValue('');
+                    await expect(inputNumber.textfield).not.toBeFocused();
+                });
+
+                test('Empty unfocused textfield => Click + => Textfield is focused & Caret is placed before postfix', async () => {
+                    await inputNumber.stepUp.click();
+
+                    await expect(inputNumber.textfield).toHaveValue('1kg');
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        1,
+                    );
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        1,
+                    );
+                });
+
+                test('Focused textfield with postfix only => Press ArrowDown => Caret is placed before postfix', async () => {
+                    await inputNumber.textfield.focus();
+                    await expect(inputNumber.textfield).toHaveValue('kg');
+                    await inputNumber.textfield.press('ArrowDown');
+
+                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1kg`);
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionStart',
+                        2,
+                    );
+                    await expect(inputNumber.textfield).toHaveJSProperty(
+                        'selectionEnd',
+                        2,
+                    );
+                });
+
+                describe('Keeps caret position on step', () => {
+                    beforeEach(async () => {
+                        await inputNumber.textfield.fill('42');
+
+                        await expect(inputNumber.textfield).toHaveValue('42kg');
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionStart',
+                            2,
+                        );
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionEnd',
+                            2,
+                        );
+                        await inputNumber.textfield.press('ArrowLeft');
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionStart',
+                            1,
+                        );
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionEnd',
+                            1,
+                        );
+                    });
+
+                    test('via button', async () => {
+                        await inputNumber.stepUp.click();
+                        await expect(inputNumber.textfield).toHaveValue('43kg');
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionStart',
+                            1,
+                        );
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionEnd',
+                            1,
+                        );
+                    });
+
+                    test('via keyboard arrow', async () => {
+                        await inputNumber.textfield.press('ArrowUp');
+                        await expect(inputNumber.textfield).toHaveValue('43kg');
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionStart',
+                            1,
+                        );
+                        await expect(inputNumber.textfield).toHaveJSProperty(
+                            'selectionEnd',
+                            1,
+                        );
+                    });
+                });
+            });
         });
 
         describe('[prefix] & [postfix] props', () => {

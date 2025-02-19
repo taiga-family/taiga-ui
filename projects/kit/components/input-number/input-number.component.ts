@@ -202,11 +202,17 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }
 
     protected onStep(step: number): void {
-        this.textfieldValue.set(
-            this.formatNumber(
-                tuiClamp((this.value() ?? 0) + step, this.min(), this.max()),
-            ),
+        const newValue = this.formatNumber(
+            tuiClamp((this.value() ?? 0) + step, this.min(), this.max()),
         );
+
+        if (this.value() === null) {
+            const caretIndex = newValue.length - this.postfix().length;
+
+            setTimeout(() => this.element.setSelectionRange(caretIndex, caretIndex));
+        }
+
+        this.textfieldValue.set(newValue);
     }
 
     private formatNumber(value: number | null): string {
