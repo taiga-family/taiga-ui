@@ -3,7 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {debounceTime, filter, ReplaySubject, switchMap} from 'rxjs';
+import {debounceTime, filter, ReplaySubject, switchMap, take} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -16,6 +16,7 @@ export class TuiDocScrollIntoViewLink {
     protected readonly sub = inject(TUI_DOC_PAGE_LOADED)
         .pipe(
             filter(Boolean),
+            take(1),
             switchMap(() => this.scroll$),
             debounceTime(750, tuiZonefreeScheduler()),
             filter((shallWe) => shallWe && !!tuiGetElementObscures(this.el)),

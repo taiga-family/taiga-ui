@@ -1,8 +1,14 @@
-import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {
+    isPlatformBrowser,
+    LocationStrategy,
+    PathLocationStrategy,
+    ViewportScroller,
+} from '@angular/common';
 import {HttpClient, provideHttpClient} from '@angular/common/http';
 import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {provideClientHydration} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -53,10 +59,12 @@ import {pages} from './pages';
 import {SEARCH_CONFIG} from './search/env';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
+import {TuiViewportScroller} from './utils/viewport-scroller.service';
 
 export const config: ApplicationConfig = {
     providers: [
         provideAnimations(),
+        provideClientHydration(),
         provideRouter(
             ROUTES,
             withInMemoryScrolling({
@@ -68,6 +76,10 @@ export const config: ApplicationConfig = {
         tuiEnableFontScaling(),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(),
+        {
+            provide: ViewportScroller,
+            useClass: TuiViewportScroller,
+        },
         {
             provide: TUI_PLATFORM,
             useValue: 'web',

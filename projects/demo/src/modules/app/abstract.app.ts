@@ -1,35 +1,38 @@
 import type {OnInit} from '@angular/core';
-import {Directive, ElementRef, inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {tuiInjectElement, tuiPure, tuiZonefreeScheduler} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure, tuiZoneOptimized} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
-import {debounceTime, map, startWith} from 'rxjs';
+import {distinctUntilChanged, filter, map, shareReplay, startWith, take} from 'rxjs';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
-    deps: [ElementRef, ResizeObserverService],
-    useFactory(
-        hostElement: ElementRef<HTMLElement>,
-        resize$: Observable<unknown>,
-    ): Observable<boolean> {
-        return resize$.pipe(
+    useFactory(): Observable<boolean> {
+        const host = tuiInjectElement();
+
+        return inject(ResizeObserverService).pipe(
+            map(([entry]) => entry?.contentRect.height ?? 0),
+            distinctUntilChanged(),
             startWith(null),
-            debounceTime(0, tuiZonefreeScheduler()), // Synchronous scrollIntoView (after click) does not work https://stackoverflow.com/a/56971002
             map(() => {
-                const host = hostElement.nativeElement;
                 const exampleElements = Array.from(
                     host.querySelectorAll('tui-doc-example'),
                 );
                 const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
 
                 return (
-                    exampleElements.every((el) => el.querySelector('.t-example')) &&
+                    Boolean(host.querySelector('tui-root')) &&
+                    exampleElements.every((el) =>
+                        el.querySelector('.t-demo')?.matches(':not(:empty)'),
+                    ) &&
                     codeElements.every((el) => el.querySelector('.t-code'))
                 );
             }),
+            shareReplay(1),
+            tuiZoneOptimized(),
             takeUntilDestroyed(),
         );
     },
@@ -45,7 +48,7 @@ export abstract class AbstractDemo implements OnInit {
     private readonly element = tuiInjectElement();
 
     protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED)
-        .pipe(takeUntilDestroyed())
+        .pipe(filter(Boolean), take(1), takeUntilDestroyed())
         .subscribe(() => this.element.classList.add('_loaded'));
 
     public async ngOnInit(): Promise<void> {
