@@ -128,10 +128,8 @@ export class TuiInputRangeComponent
         return Boolean(
             this.leftValueContent &&
                 !tuiIsNativeFocused(this.leftFocusableElement) &&
-                !(
-                    tuiIsNativeFocusedIn(this.range?.nativeElement) &&
-                    this.lastActiveSide === 'left'
-                ),
+                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                    this.lastActiveSide !== 'left'),
         );
     }
 
@@ -139,10 +137,8 @@ export class TuiInputRangeComponent
         return Boolean(
             this.rightValueContent &&
                 !tuiIsNativeFocused(this.rightFocusableElement) &&
-                !(
-                    tuiIsNativeFocusedIn(this.range?.nativeElement) &&
-                    this.lastActiveSide === 'right'
-                ),
+                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                    this.lastActiveSide !== 'right'),
         );
     }
 
