@@ -64,7 +64,7 @@ export class TuiRoot extends TuiPortals {
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
 
-    protected readonly scrollbars = !(this.nativeScrollbar || inject(TUI_IS_MOBILE));
+    protected readonly scrollbars = !this.nativeScrollbar && !inject(TUI_IS_MOBILE);
 
     constructor() {
         super();

@@ -27,7 +27,7 @@ function replaceEnumWithString(
 
         const parent = ref.getParent();
 
-        if (Node.isImportSpecifier(parent) && !(keepAsType && containTypeRef(parent))) {
+        if (Node.isImportSpecifier(parent) && (!keepAsType || !containTypeRef(parent))) {
             removeImport(parent);
             continue;
         }
