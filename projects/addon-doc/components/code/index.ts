@@ -16,6 +16,7 @@ import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -41,6 +42,9 @@ export class TuiDocCode {
         inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR);
 
     protected readonly copy$ = new Subject<void>();
+    protected readonly copyText = toSignal(
+        inject(TUI_COPY_TEXTS).pipe(map(([copy]) => copy)),
+    );
 
     protected readonly icon = toSignal(
         this.copy$.pipe(

@@ -18,7 +18,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     standalone: true,
     selector: 'button[tuiSearchFilter]',
-    template: '<ng-template><ng-content /></ng-template>',
+    template: '<ng-template><ng-content /></ng-template>filters',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiDropdownOptionsProvider({align: 'right'}),
