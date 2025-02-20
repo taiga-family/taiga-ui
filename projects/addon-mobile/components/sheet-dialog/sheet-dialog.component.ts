@@ -7,6 +7,7 @@ import {
     inject,
     ViewChildren,
 } from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -31,12 +32,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
-    providers: [
-        {
-            provide: TUI_SCROLL_REF,
-            useFactory: () => new ElementRef(inject(TuiSheetDialogComponent).el),
-        },
-    ],
+    providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     host: {
         '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
