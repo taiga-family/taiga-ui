@@ -51,13 +51,20 @@
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
-                <label tuiLabel>Card number</label>
+                <label
+                    *ngIf="textfield.size !== 's'"
+                    tuiLabel
+                >
+                    Card number
+                </label>
+
                 <input
                     tuiInputCard
                     [autocomplete]="autocomplete"
                     [disabled]="control.disabled"
                     [icon]="icon"
                     [invalid]="control.invalid"
+                    [placeholder]="textfield.size === 's' ? 'Card number' : ''"
                     [readOnly]="control.readonly"
                     [(ngModel)]="card"
                     (binChange)="binChange.emitEvent($event)"

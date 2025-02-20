@@ -187,7 +187,12 @@
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
-                    <label tuiLabel>Enter a number</label>
+                    <label
+                        *ngIf="textfieldDoc.size !== 's'"
+                        tuiLabel
+                    >
+                        Enter a number
+                    </label>
 
                     <input
                         tuiInputNumber
@@ -195,6 +200,7 @@
                         [invalid]="controlDoc.invalid"
                         [max]="max"
                         [min]="min"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''"
                         [postfix]="postfix"
                         [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"

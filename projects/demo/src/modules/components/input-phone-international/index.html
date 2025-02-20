@@ -252,13 +252,19 @@
                     [tuiTextfieldCleaner]="textfield.cleaner"
                     [tuiTextfieldSize]="textfield.size"
                 >
-                    <label tuiLabel>Type a phone number</label>
+                    <label
+                        *ngIf="textfield.size !== 's'"
+                        tuiLabel
+                    >
+                        Type a phone number
+                    </label>
                     <input
                         tuiInputPhoneInternational
                         [countries]="countries"
                         [countrySearch]="countrySearch"
                         [formControl]="formControl"
                         [invalid]="control.invalid"
+                        [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''"
                         [readOnly]="control.readonly"
                         [tuiDisabled]="control.disabled"
                         [(countryIsoCode)]="countryIsoCode"
