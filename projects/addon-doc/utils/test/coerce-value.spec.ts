@@ -5,6 +5,8 @@ describe('coercing values', () => {
         expect(tuiCoerceValue(' +7965')).toBe('+7965');
         expect(tuiCoerceValue('%2B7')).toBe('+7');
         expect(tuiCoerceValue('%20%20%20123%20%20')).toBe('   123  ');
+        expect(tuiCoerceValue('%')).toBe('%');
+        expect(tuiCoerceValue('%25')).toBe('%');
         expect(tuiCoerceValue('Hello world')).toBe('Hello world');
         expect(tuiCoerceValue('2+5')).toBe('2+5');
         expect(tuiCoerceValue('')).toBe('');
