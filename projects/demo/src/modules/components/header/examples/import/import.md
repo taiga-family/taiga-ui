@@ -1,6 +1,7 @@
 ```ts
 import {Component} from '@angular/core';
 import {TuiHeader} from '@taiga-ui/layout';
+import {TuiTitle} from '@taiga-ui/core';
 // ...
 
 @Component({
@@ -8,6 +9,7 @@ import {TuiHeader} from '@taiga-ui/layout';
   imports: [
     // ...
     TuiHeader,
+    TuiTitle,
   ],
 })
 export class Example {}
