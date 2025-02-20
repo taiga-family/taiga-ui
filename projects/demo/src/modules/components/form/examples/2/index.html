@@ -70,7 +70,7 @@
         [error]="[] | tuiFieldError | async"
     />
 
-    <div class="grid">
+    <fieldset>
         <div class="stack">
             <tui-textfield>
                 <label tuiLabel>Input password</label>
@@ -101,7 +101,7 @@
                 [error]="[] | tuiFieldError | async"
             />
         </div>
-    </div>
+    </fieldset>
 
     <tui-input-slider
         formControlName="quantityValue"
@@ -117,7 +117,7 @@
         <span>to 3 000 000 ₽</span>
     </div>
 
-    <div class="grid">
+    <fieldset>
         <div class="stack">
             <tui-select formControlName="personValue">
                 Choose a person
@@ -138,7 +138,7 @@
                 [error]="[] | tuiFieldError | async"
             />
         </div>
-    </div>
+    </fieldset>
     <div
         tuiGroup
         [collapsed]="true"
@@ -164,7 +164,7 @@
             />
         </label>
     </div>
-    <div class="grid">
+    <fieldset>
         <label tuiLabel>
             <input
                 formControlName="osnoValue"
@@ -181,6 +181,8 @@
             />
             Cool option
         </label>
+    </fieldset>
+    <fieldset>
         <label tuiLabel>
             <input
                 formControlName="eshnValue"
@@ -197,7 +199,7 @@
             />
             Interesting option
         </label>
-    </div>
+    </fieldset>
 
     <footer>
         <button
