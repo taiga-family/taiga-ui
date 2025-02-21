@@ -34,7 +34,7 @@ import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {combineLatest, filter, map, switchMap, take} from 'rxjs';
+import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
 import {
     NAVIGATION_ITEMS,
@@ -123,6 +123,11 @@ export class TuiDocNavigation {
         combineLatest([
             this.router.events.pipe(
                 filter((event): event is Scroll => event instanceof Scroll),
+                switchMap(({anchor}) =>
+                    'onscrollend' in this.doc
+                        ? fromEvent(this.doc, 'scrollend').pipe(map(() => anchor))
+                        : of(anchor),
+                ),
             ),
             inject(NAVIGATION_TITLE).pipe(
                 switchMap(() => readyToScroll$.pipe(filter(Boolean))),
@@ -130,7 +135,7 @@ export class TuiDocNavigation {
         ])
             .pipe(
                 take(1),
-                map(([event]) => event.anchor || ''),
+                map(([anchor]) => anchor || ''),
                 filter<string>(Boolean),
                 takeUntilDestroyed(),
             )

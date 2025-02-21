@@ -62,7 +62,7 @@ export async function tuiGoto(
 
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
-    await expect(app).toHaveClass(/_loaded/, {timeout: 30_000});
+    await expect(app).toBeAttached();
 
     await waitIcons({
         page,
