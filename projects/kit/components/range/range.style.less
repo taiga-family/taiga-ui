@@ -45,8 +45,8 @@
         content: '';
         position: absolute;
         top: 0;
-        left: ~'max(calc(var(--left) - 1px), 1px)';
-        right: ~'max(var(--right), 1px)';
+        left: ~'max(calc(var(--t-left) - 1px), 1px)';
+        right: ~'max(var(--t-right), 1px)';
         block-size: 100%;
         background: var(--tui-background-accent-1);
         margin: 0 calc(-@thumb-width / 2);
@@ -62,11 +62,11 @@
         background-image: repeating-linear-gradient(
             to right,
             var(--tui-text-tertiary) 0 @tick-thickness,
-            transparent 0 calc(var(--segment-width) / var(--bg-size-ratio))
+            transparent 0 calc(var(--t-segment-width) / var(--t-bg-size-ratio))
         );
         background-position-x: right;
         background-repeat: no-repeat;
-        background-size: calc(100% * var(--bg-size-ratio));
+        background-size: calc(100% * var(--t-bg-size-ratio));
     }
 }
 

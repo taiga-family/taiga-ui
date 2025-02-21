@@ -358,8 +358,8 @@ describe('TuiRange', () => {
         const computedStyles = component.el.nativeElement;
 
         return {
-            left: getComputedStyle(computedStyles).getPropertyValue('--left'),
-            right: getComputedStyle(computedStyles).getPropertyValue('--right'),
+            left: getComputedStyle(computedStyles).getPropertyValue('--t-left'),
+            right: getComputedStyle(computedStyles).getPropertyValue('--t-right'),
         };
     }
 });

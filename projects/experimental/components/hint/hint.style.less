@@ -11,18 +11,18 @@
     font: var(--tui-font-text-s);
     white-space: pre-line;
     overflow-wrap: break-word;
-    transform-origin: var(--left) var(--top);
+    transform-origin: var(--t-left) var(--t-top);
 
     &::before {
         content: '';
         position: absolute;
-        top: var(--top);
-        left: var(--left);
+        top: var(--t-top);
+        left: var(--t-left);
         inline-size: 0.75rem;
         block-size: 0.5rem;
         background: inherit;
         mask-image: url('data:image/svg+xml,<svg viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg"><path d="M3.61336 1.69607L2.44882 2.96493C1.84795 3.61964 0.949361 3.99951 0.00053941 4C0.000359608 4 0.000179805 4 0 4C0.000179863 4 0.000359764 4 0.000539623 4C0.949362 4.00049 1.84795 4.38036 2.44882 5.03506L3.61336 6.30394C4.55981 7.33517 5.03303 7.85079 5.63254 7.96535C5.87433 8.01155 6.12436 8.01155 6.36616 7.96535C6.96567 7.85079 7.43889 7.33517 8.38534 6.30393L9.54988 5.03507C10.1511 4.37994 11.0505 4 12 4C11.0505 4 10.1511 3.62006 9.54988 2.96493L8.38534 1.69606C7.43889 0.664826 6.96567 0.149207 6.36616 0.0346517C6.12436 -0.0115506 5.87433 -0.0115506 5.63254 0.0346517C5.03303 0.149207 4.55981 0.664827 3.61336 1.69607Z" /></svg>');
-        transform: translate(-50%, -50%) rotate(var(--rotate));
+        transform: translate(-50%, -50%) rotate(var(--t-rotate));
     }
 
     &._mobile {

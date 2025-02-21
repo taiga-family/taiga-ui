@@ -45,9 +45,9 @@ class TuiFadeStyles {}
     ],
     host: {
         '[style.line-height]': 'lineHeight',
-        '[style.--line-height]': 'lineHeight',
-        '[style.--fade-size]': 'size',
-        '[style.--fade-offset]': 'offset',
+        '[style.--t-line-height]': 'lineHeight',
+        '[style.--t-fade-size]': 'size',
+        '[style.--t-fade-offset]': 'offset',
         '[attr.data-orientation]': 'orientation',
     },
 })
