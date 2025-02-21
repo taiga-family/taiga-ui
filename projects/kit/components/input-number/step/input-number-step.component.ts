@@ -16,6 +16,7 @@ import {
 } from '@taiga-ui/core/components/textfield';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
+import type {TuiInputNumberOptions} from '../input-number.options';
 import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 
 @Component({
@@ -35,7 +36,7 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 export class TuiInputNumberStep {
     protected readonly element = tuiInjectElement<HTMLInputElement>();
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+    protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
 
