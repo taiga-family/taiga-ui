@@ -48,7 +48,7 @@ jobs:
         run: npx nx component-test demo-cypress
 
       - name: Save Cypress Baseline Snapshots
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
           name: ${{env.CYPRESS_BASELINE_SNAPSHOTS_KEY}}
@@ -80,7 +80,7 @@ jobs:
         run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
@@ -189,7 +189,7 @@ jobs:
           npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
@@ -198,7 +198,7 @@ jobs:
           retention-days: 1
 
       - name: Upload reports / ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: ./projects/demo-playwright/blob-report
           name: ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
