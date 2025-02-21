@@ -6,7 +6,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {tuiInjectElement, tuiPure, tuiZoneOptimized} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, shareReplay, startWith, take} from 'rxjs';
+import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
@@ -16,15 +16,15 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
         return inject(ResizeObserverService).pipe(
             map(([entry]) => entry?.contentRect.height ?? 0),
             distinctUntilChanged(),
-            startWith(null),
-            map(() => {
+            startWith(0),
+            map((hostHeight) => {
                 const exampleElements = Array.from(
                     host.querySelectorAll('tui-doc-example'),
                 );
                 const codeElements = Array.from(host.querySelectorAll('tui-doc-code'));
 
                 return (
-                    Boolean(host.querySelector('tui-root')) &&
+                    Boolean(hostHeight) &&
                     exampleElements.every((el) =>
                         el.querySelector('.t-demo')?.matches(':not(:empty)'),
                     ) &&
@@ -44,12 +44,6 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 export abstract class AbstractDemo implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
-
-    private readonly element = tuiInjectElement();
-
-    protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED)
-        .pipe(filter(Boolean), take(1), takeUntilDestroyed())
-        .subscribe(() => this.element.classList.add('_loaded'));
 
     public async ngOnInit(): Promise<void> {
         await this.replaceEnvInURI();
