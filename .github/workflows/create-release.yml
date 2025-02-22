@@ -71,7 +71,7 @@ jobs:
 
       - name: Create GitHub Release
         if: ${{ env.IS_RRE_RELEASE_MODE == 'false' }}
-        uses: ncipollo/release-action@v1.15.0
+        uses: ncipollo/release-action@v1.16.0
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
           tag: ${{ steps.generate_body.outputs.tag_name }}
