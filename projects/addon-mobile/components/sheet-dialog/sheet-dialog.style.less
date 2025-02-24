@@ -40,7 +40,7 @@
             display: flex;
             min-block-size: calc(var(--t-sheet-height) - var(--t-bar, 0px) - var(--t-heading, 0px));
             flex-direction: column;
-            box-sizing: border-box;
+            // box-sizing: border-box;
         }
 
         &._closeable {
@@ -128,6 +128,7 @@
     isolation: isolate;
     padding-block-end: calc(1.5rem + env(safe-area-inset-bottom));
     border-radius: inherit;
+    box-sizing: border-box;
 
     &::after {
         content: '';
