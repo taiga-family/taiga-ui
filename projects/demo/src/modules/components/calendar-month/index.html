@@ -36,79 +36,79 @@
                 (monthClick)="documentationPropertyMonthClick.emitEvent($event)"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiMonth>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+        <table tuiDocAPI>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiMonth>"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 <div>A handler that gets a month and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="TuiMonth | null"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="TuiMonth | null"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Maximal month
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="min"
-                documentationPropertyType="TuiMonth | null"
-                [documentationPropertyValues]="minVariants"
-                [(documentationPropertyValue)]="min"
+            </tr>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="TuiMonth | null"
+                [items]="minVariants"
+                [(value)]="min"
             >
                 Minimal month
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxLength"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="maxLength"
+            </tr>
+            <tr
+                name="[maxLength]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="maxLength"
             >
                 Maximum length
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="minLength"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="minLength"
+            </tr>
+            <tr
+                name="[minLength]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="minLength"
             >
                 Minimum length
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="TuiMonth | TuiMonthRange | null"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="TuiMonth | TuiMonthRange | null"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 A single month or a range of months
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="year"
-                documentationPropertyType="TuiYear"
-                [documentationPropertyValues]="yearVariants"
-                [(documentationPropertyValue)]="year"
+            </tr>
+            <tr
+                name="[(year)]"
+                tuiDocAPIItem
+                type="TuiYear"
+                [items]="yearVariants"
+                [(value)]="year"
             >
                 Current year
-            </ng-template>
-            <ng-template
-                #documentationPropertyMonthClick="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="monthClick"
-                documentationPropertyType="TuiMonth"
+            </tr>
+            <tr
+                #documentationPropertyMonthClick
+                name="(monthClick)"
+                tuiDocAPIItem
+                type="TuiMonth"
             >
                 Selected month
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
