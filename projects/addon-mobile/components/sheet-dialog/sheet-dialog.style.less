@@ -28,6 +28,27 @@
             display: flex;
         }
     }
+
+    &._fullsize {
+        --t-sheet-height: calc(var(--tui-viewport-height) - var(--tui-offset) - env(safe-area-inset-bottom));
+
+        .t-sheet {
+            flex-grow: 1;
+        }
+
+        .t-content {
+            display: flex;
+            min-block-size: calc(var(--t-sheet-height) - var(--t-bar, 0px) - var(--t-heading, 0px));
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        &._closeable {
+            .t-sheet {
+                min-block-size: var(--t-sheet-height);
+            }
+        }
+    }
 }
 
 .t-stops {
