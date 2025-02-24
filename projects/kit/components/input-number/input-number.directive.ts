@@ -34,7 +34,8 @@ const DEFAULT_MAX_LENGTH = 18;
     host: {
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
-        '[attr.maxLength]': 'maxLength()',
+        '[attr.maxLength]':
+            'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
         '(input)': 'textfieldValue.set(element.value)',
         '(blur)': 'onBlur()',
         '(focus)': 'onFocus()',
@@ -96,7 +97,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         return this.precision() ? 'decimal' : 'numeric';
     });
 
-    protected readonly maxLength = computed(() => {
+    protected readonly defaultMaxLength = computed(() => {
         const {decimalSeparator, thousandSeparator} = this.numberFormat();
         const decimalPart =
             !!this.precision() && this.textfieldValue().includes(decimalSeparator);
