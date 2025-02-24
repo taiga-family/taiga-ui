@@ -28,7 +28,9 @@ export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | nul
 
     private readonly stream$ = inject(TUI_WINDOW_SIZE).pipe(
         map(({width}) => this.sorted.find((size) => size > width)),
-        map((key) => this.invert[key || this.sorted[this.sorted.length - 1] || 0]),
+        map(
+            (key) => this.invert[key || this.sorted[this.sorted.length - 1] || 0] ?? null,
+        ),
         distinctUntilChanged(),
         tuiZoneOptimized(),
         shareReplay({bufferSize: 1, refCount: true}),
