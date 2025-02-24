@@ -1,6 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-textfield[tuiInputMonth] input[type='month'] {
+// TODO: add tui-textfield:has([tuiInputMonth])
+tui-textfield input[type='month'] {
     .fullsize();
 
     opacity: 0;
@@ -11,6 +12,6 @@ tui-textfield[tuiInputMonth] input[type='month'] {
     }
 }
 
-tui-textfield[tuiInputMonth] .t-clear {
+tui-textfield:has([tuiInputMonth]) .t-clear {
     z-index: 1;
 }

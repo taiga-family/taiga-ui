@@ -148,19 +148,18 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
-                    tuiInputMonth
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [tuiDisabled]="controlDoc.disabled"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
                         placeholder="Month"
-                        tuiTextfield
+                        tuiInputMonth
+                        [formControl]="control"
                         [invalid]="controlDoc.invalid"
+                        [max]="max"
+                        [min]="min"
                         [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
                     />
 
                     <tui-calendar-month

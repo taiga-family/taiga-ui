@@ -1,12 +1,10 @@
-<tui-textfield
-    tuiInputMonth
-    [max]="max"
-    [min]="min"
-    [(ngModel)]="value"
->
+<tui-textfield>
     <input
         placeholder="Select vacation month"
-        tuiTextfield
+        tuiInputMonth
+        [max]="max"
+        [min]="min"
+        [(ngModel)]="value"
     />
 
     <tui-calendar-month

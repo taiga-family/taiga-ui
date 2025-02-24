@@ -2,7 +2,10 @@ import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
+    forwardRef,
     inject,
+    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_IS_MOBILE, TuiControl, TuiMonth} from '@taiga-ui/cdk';
@@ -12,7 +15,7 @@ import {TuiInputMonthDirective} from '../input-month.directive';
 
 @Component({
     standalone: true,
-    selector: 'input[tuiTextfield][type="month"]',
+    selector: 'input[tuiInputMonth][type="month"]',
     templateUrl: './native-month-picker.template.html',
     styleUrls: ['./native-month-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,9 +27,20 @@ import {TuiInputMonthDirective} from '../input-month.directive';
 })
 export class TuiNativeMonthPicker {
     private readonly control = inject(TuiControl);
-    protected readonly host = inject(TuiInputMonthDirective);
+
+    @ViewChild('input', {read: ElementRef})
+    protected input?: ElementRef<HTMLInputElement>;
+
+    protected readonly host = inject<TuiInputMonthDirective>(
+        forwardRef(() => TuiInputMonthDirective),
+    );
 
     public enabled = inject(TUI_IS_MOBILE);
+
+    public showPicker(): void {
+        // TODO: remove the last optional chaining after Safari 16+ & Chrome 101+
+        this.input?.nativeElement.showPicker?.();
+    }
 
     protected onInput(value: string): void {
         if (!value) {
