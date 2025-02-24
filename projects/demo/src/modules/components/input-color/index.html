@@ -53,15 +53,15 @@
         <tui-doc-demo>
             <tui-color-picker />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="color"
-                documentationPropertyType="[number, number, number, number]"
+        <table tuiDocAPI>
+            <tr
+                name="[(color)]"
+                tuiDocAPIItem
+                type="[number, number, number, number]"
             >
                 RGBA color tuple
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
