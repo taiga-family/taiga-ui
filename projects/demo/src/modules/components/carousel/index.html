@@ -44,52 +44,53 @@
                 </ng-container>
             </tui-carousel>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="draggable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="draggable"
+        <table tuiDocAPI>
+            <tr
+                name="[draggable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="draggable"
             >
                 Whether or not slider can be dragged by clicking and holding
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="duration"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="durationVariants"
-                [(documentationPropertyValue)]="duration"
+            </tr>
+            <tr
+                name="[duration]"
+                tuiDocAPIItem
+                type="number"
+                [items]="durationVariants"
+                [(value)]="duration"
             >
                 Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="itemsCount"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="itemsCount"
+            </tr>
+            <tr
+                name="[itemsCount]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="itemsCount"
             >
                 Number of slides shown at the same time
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="index"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="index"
+            </tr>
+            <tr
+                name="[(index)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="index"
             >
                 Current index
-            </ng-template>
-        </tui-doc-documentation>
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.--tui-carousel-padding"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="itemPaddingVariants"
-                [(documentationPropertyValue)]="itemPadding"
+            </tr>
+        </table>
+        <h3>CSS customization</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[style.--tui-carousel-padding]"
+                tuiDocAPIItem
+                type="string"
+                [items]="itemPaddingVariants"
+                [(value)]="itemPadding"
             >
                 Custom color
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
