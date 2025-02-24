@@ -1,14 +1,13 @@
 <tui-textfield
     iconStart="@tui.calendar"
-    tuiInputMonth
     tuiTextfieldSize="m"
-    [(ngModel)]="value"
 >
     <label tuiLabel>I am a label</label>
 
     <input
         placeholder="I am placeholder"
-        tuiTextfield
+        tuiInputMonth
+        [(ngModel)]="value"
     />
 
     <tui-calendar-month *tuiTextfieldDropdown />

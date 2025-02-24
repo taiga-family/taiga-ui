@@ -1,4 +1,5 @@
 import {NgIf} from '@angular/common';
+import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -39,6 +40,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+import {TUI_AUXILIARY} from './textfield-auxiliary';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
@@ -118,6 +120,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
+    public readonly auxiliary = signal<Type<unknown> | null>(null);
 
     @Input('filler')
     public set fillerSetter(filler: string) {
@@ -135,6 +138,11 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public handleOption(option: T): void {
         this.directive?.setValue(option);
         this.open.set(false);
+    }
+
+    @ContentChild(TUI_AUXILIARY, {descendants: true})
+    protected set auxiliarySetter(x: Type<unknown>) {
+        this.auxiliary.set(x);
     }
 
     protected get hasLabel(): boolean {

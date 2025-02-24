@@ -28,6 +28,7 @@ import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
+import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();
@@ -48,6 +49,7 @@ const TODAY = TuiDay.currentLocal();
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiCalendarMonth)],
     host: {
         '[class._picking]': 'isSingle()',
     },

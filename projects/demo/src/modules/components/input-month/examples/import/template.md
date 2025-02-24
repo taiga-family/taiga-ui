@@ -1,11 +1,11 @@
 ```html
-<tui-textfield
-  tuiInputMonth
-  [min]="min"
-  [max]="max"
-  [(ngModel)]="value"
->
-  <input tuiTextfield />
+<tui-textfield>
+  <input
+    tuiInputMonth
+    [min]="min"
+    [max]="max"
+    [(ngModel)]="value"
+  />
 
   <tui-calendar-month
     *tuiTextfieldDropdown

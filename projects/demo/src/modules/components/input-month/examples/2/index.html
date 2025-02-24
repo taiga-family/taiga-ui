@@ -1,10 +1,8 @@
-<tui-textfield
-    tuiInputMonth
-    [formControl]="control"
->
+<tui-textfield>
     <input
         placeholder="Annoying required field"
-        tuiTextfield
+        tuiInputMonth
+        [formControl]="control"
     />
 
     <tui-calendar-month *tuiTextfieldDropdown />
