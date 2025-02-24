@@ -85,50 +85,50 @@
                 </ng-template>
             </div>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="showLoader"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="showLoader"
+        <table tuiDocAPI>
+            <tr
+                name="[showLoader]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="showLoader"
             >
                 Show/hide loader
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="inheritColor"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="inheritColor"
+            </tr>
+            <tr
+                name="[inheritColor]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="inheritColor"
             >
                 Inherit parent color
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="overlay"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="overlay"
+            </tr>
+            <tr
+                name="[overlay]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="overlay"
             >
                 Content overlay when loader is showed
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXS | TuiSizeXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeXL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="textContent"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="textVariants"
-                [(documentationPropertyValue)]="selectedTemplate"
+            </tr>
+            <tr
+                name="[textContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="textVariants"
+                [(value)]="selectedTemplate"
             >
                 Custom content under loader
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
