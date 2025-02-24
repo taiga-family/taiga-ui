@@ -1,14 +1,4 @@
-import {NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    effect,
-    inject,
-    Input,
-    signal,
-    ViewEncapsulation,
-} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
@@ -22,13 +12,8 @@ import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/c
 import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
-import {TuiButton} from '@taiga-ui/core/components/button';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldContent,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
+import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -37,16 +22,11 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
-@Component({
+@Directive({
     standalone: true,
     selector: 'input[tuiInputNumber]',
-    imports: [NgIf, TuiButton, TuiTextfieldContent],
-    templateUrl: './input-number.template.html',
-    styleUrls: ['./input-number.style.less'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputNumber),
+        tuiAsControl(TuiInputNumberDirective),
         tuiFallbackValueProvider(null),
         tuiValueTransformerFrom(TUI_INPUT_NUMBER_OPTIONS),
     ],
@@ -58,12 +38,9 @@ const DEFAULT_MAX_LENGTH = 18;
         '(input)': 'textfieldValue.set(element.value)',
         '(blur)': 'onBlur()',
         '(focus)': 'onFocus()',
-        '(keydown.arrowDown)': 'onStep(-step())',
-        '(keydown.arrowUp)': 'onStep(step())',
-        '[class._with-buttons]': 'step()',
     },
 })
-export class TuiInputNumber extends TuiControl<number | null> {
+export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
@@ -107,12 +84,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-    protected readonly min = signal(this.options.min);
-    protected readonly max = signal(this.options.max);
-    protected readonly step = signal(this.options.step);
-    protected readonly prefix = signal(this.options.prefix);
-    protected readonly postfix = signal(this.options.postfix);
-    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
     protected readonly textfieldValue = tuiValueBinding();
 
@@ -149,6 +120,11 @@ export class TuiInputNumber extends TuiControl<number | null> {
         ),
     );
 
+    public readonly min = signal(this.options.min);
+    public readonly max = signal(this.options.max);
+    public readonly prefix = signal(this.options.prefix);
+    public readonly postfix = signal(this.options.postfix);
+
     @Input('min')
     public set minSetter(x: number | null) {
         this.updateMinMaxLimits(x, this.max());
@@ -171,22 +147,20 @@ export class TuiInputNumber extends TuiControl<number | null> {
         this.postfix.set(x);
     }
 
-    // TODO(v5): replace with signal input
-    @Input('step')
-    public set stepSetter(x: number) {
-        this.step.set(x);
-    }
-
     public override writeValue(value: number | null): void {
         super.writeValue(Number.isNaN(value) ? null : value);
-        this.textfieldValue.set(this.formatNumber(this.value()));
+        this.setValue(this.value());
+    }
+
+    public setValue(value: number | null): void {
+        this.textfieldValue.set(this.formatNumber(value));
     }
 
     protected onBlur(): void {
         this.onTouched();
 
         if (!this.isIntermediateState()) {
-            this.textfieldValue.set(this.formatNumber(this.value()));
+            this.setValue(this.value());
         }
     }
 
@@ -199,20 +173,6 @@ export class TuiInputNumber extends TuiControl<number | null> {
         if (Number.isNaN(value) && !this.readOnly()) {
             this.textfieldValue.set(this.prefix() + this.postfix());
         }
-    }
-
-    protected onStep(step: number): void {
-        const newValue = this.formatNumber(
-            tuiClamp((this.value() ?? 0) + step, this.min(), this.max()),
-        );
-
-        if (this.value() === null) {
-            const caretIndex = newValue.length - this.postfix().length;
-
-            setTimeout(() => this.element.setSelectionRange(caretIndex, caretIndex));
-        }
-
-        this.textfieldValue.set(newValue);
     }
 
     private formatNumber(value: number | null): string {
