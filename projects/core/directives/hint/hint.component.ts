@@ -112,10 +112,10 @@ export class TuiHintComponent<C = any> {
     private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
         this.el.style.top = top;
         this.el.style.left = left;
-        this.el.style.setProperty('--top', `${beakTop}%`);
-        this.el.style.setProperty('--left', `${beakLeft}%`);
+        this.el.style.setProperty('--t-top', `${beakTop}%`);
+        this.el.style.setProperty('--t-left', `${beakLeft}%`);
         this.el.style.setProperty(
-            '--rotate',
+            '--t-rotate',
             !beakLeft || Math.ceil(beakLeft) === 100 ? '90deg' : '0deg',
         );
     }

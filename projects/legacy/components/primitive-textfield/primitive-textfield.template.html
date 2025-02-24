@@ -10,7 +10,7 @@
     [hover]="pseudoHover"
     [invalid]="computedInvalid"
     [readOnly]="readOnly"
-    [style.--text-indent.px]="decor.pre$ | async"
+    [style.--t-text-indent.px]="decor.pre$ | async"
     (click.prevent.zoneless)="detectRetargetFromLabel($event)"
     (mousedown)="onMouseDown($event)"
 >
