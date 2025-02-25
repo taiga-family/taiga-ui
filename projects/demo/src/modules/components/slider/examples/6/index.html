@@ -10,6 +10,7 @@
     >
         Minus
     </button>
+
     <label
         tuiSliderThumbLabel
         class="slider-wrapper"
@@ -17,13 +18,9 @@
         <div
             tuiHintAppearance="dark"
             tuiHintDirection="top"
-            [tuiHint]="hint"
+            [tuiHint]="value | percent"
             [tuiHintManual]="!!(showHint$ | async)"
         ></div>
-
-        <ng-template #hint>
-            {{ value | percent }}
-        </ng-template>
 
         <input
             step="any"
@@ -34,6 +31,7 @@
             [(ngModel)]="value"
         />
     </label>
+
     <button
         appearance="icon"
         iconStart="@tui.plus"
