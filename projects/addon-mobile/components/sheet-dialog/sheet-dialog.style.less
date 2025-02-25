@@ -29,7 +29,7 @@
         }
     }
 
-    &._fullsize {
+    &._fullscreen {
         --t-sheet-height: calc(var(--tui-viewport-height) - var(--tui-offset) - env(safe-area-inset-bottom));
 
         .t-sheet {
@@ -38,8 +38,8 @@
 
         .t-content {
             display: flex;
-            min-block-size: calc(var(--t-sheet-height) - var(--t-bar, 0px) - var(--t-heading, 0px));
             flex-direction: column;
+            min-block-size: calc(var(--t-sheet-height) - var(--t-bar, 0px) - var(--t-heading, 0px));
         }
 
         &._closeable {

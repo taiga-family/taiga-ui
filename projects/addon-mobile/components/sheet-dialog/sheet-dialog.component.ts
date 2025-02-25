@@ -40,7 +40,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
         '[style.--t-bar.px]': 'bar?.nativeElement.clientHeight',
         '[style.--t-heading.px]': 'heading?.nativeElement.clientHeight',
         '[class._closeable]': 'context.closeable === true',
-        '[class._fullsize]': 'context.fullsize === true',
+        '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchcancel.zoneless)': 'onPointerChange(-1)',

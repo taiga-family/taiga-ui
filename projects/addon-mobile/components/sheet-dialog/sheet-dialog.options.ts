@@ -12,7 +12,7 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly offset: number;
     readonly stops: readonly string[];
     readonly bar: boolean;
-    readonly fullsize: boolean;
+    readonly fullscreen: boolean;
 }
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
@@ -23,7 +23,7 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     closeable: true,
     data: undefined,
     bar: true,
-    fullsize: false,
+    fullscreen: false,
 };
 
 /**

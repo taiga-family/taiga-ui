@@ -21,11 +21,11 @@ export default class Page {
         'Sticky elements',
         'Responsive',
         'AppBar',
-        'Fullsize',
+        'Fullscreen',
     ];
 
     protected closeable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closeable;
-    protected fullsize = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullsize;
+    protected fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
     protected bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
     protected stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
