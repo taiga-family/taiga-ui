@@ -1,15 +1,13 @@
 ```html
-<tui-textfield
-  tuiInputSlider
-  [(ngModel)]="value"
->
+<tui-textfield>
   <input
-    tuiInputNumber
+    tuiInputSlider
     prefix="$"
     postfix="%"
     [min]="0"
     [max]="100"
     [tuiNumberFormat]="{precision: 3}"
+    [(ngModel)]="value"
   />
 
   <input

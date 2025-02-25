@@ -1,13 +1,11 @@
-<tui-textfield
-    tuiInputSlider
-    [(ngModel)]="value"
->
+<tui-textfield>
     <label tuiLabel>Not linear growing slider</label>
 
     <input
-        tuiInputNumber
+        tuiInputSlider
         [max]="max"
         [min]="min"
+        [(ngModel)]="value"
     />
 
     <input

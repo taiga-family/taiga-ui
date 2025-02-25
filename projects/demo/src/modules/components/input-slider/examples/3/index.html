@@ -1,13 +1,11 @@
-<tui-textfield
-    tuiInputSlider
-    [(ngModel)]="value"
->
+<tui-textfield>
     <label tuiLabel>Rate your mind</label>
 
     <input
-        tuiInputNumber
+        tuiInputSlider
         [max]="max"
         [min]="min"
+        [(ngModel)]="value"
     />
 
     <input

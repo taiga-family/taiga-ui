@@ -39,7 +39,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
     private readonly pseudoInvalid = signal<boolean | null>(null);
     private readonly internal = signal(this.fallback);
 
-    protected readonly control = inject(NgControl, {host: true});
+    protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
     protected transformer = inject(TuiValueTransformer, FLAGS);
 

@@ -1,14 +1,13 @@
 <tui-textfield
     iconStart="@tui.euro"
-    tuiInputSlider
     tuiTextfieldSize="m"
-    [(ngModel)]="value"
 >
     <input
         placeholder="I am placeholder"
-        tuiInputNumber
+        tuiInputSlider
         [max]="100"
         [min]="0"
+        [(ngModel)]="value"
     />
 
     <input

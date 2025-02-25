@@ -20,6 +20,8 @@ export class TuiDocTextfield {
     @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiTextfieldOptions>> = [];
 
+    @Input()
     public cleaner: boolean = this.options.cleaner();
+
     public size: TuiSizeL | TuiSizeS = this.options.size();
 }
