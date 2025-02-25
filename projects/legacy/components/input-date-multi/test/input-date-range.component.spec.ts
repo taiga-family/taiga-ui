@@ -9,7 +9,7 @@ import {TuiInputDateMultiComponent, TuiInputDateMultiModule} from '@taiga-ui/leg
 describe('InputDateMultiComponent', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot, TuiInputDateMultiModule],
+        imports: [TuiInputDateMultiModule, TuiRoot],
         template: `
             <tui-root>
                 <tui-input-date

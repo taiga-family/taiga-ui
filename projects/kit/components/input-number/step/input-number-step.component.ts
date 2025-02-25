@@ -27,11 +27,11 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
 @Component({
     standalone: true,
     selector: 'input[tuiInputNumber][step]',
-    templateUrl: './input-number-step.template.html',
     imports: [NgIf, TuiButton, TuiTextfieldContent],
+    templateUrl: './input-number-step.template.html',
+    styleUrls: ['./input-number-step.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./input-number-step.style.less'],
     host: {
         '(keydown.arrowDown)': 'onStep(-step())',
         '(keydown.arrowUp)': 'onStep(step())',

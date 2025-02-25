@@ -32,17 +32,17 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '(focusout.stop)': '(0)',
-        '(pointerdown.zoneless)': 'onDrag()',
-        '(document:pointerup.zoneless)': 'onDrop()',
-    },
     providers: [
         {
             provide: TUI_TILES_REORDER,
             useValue: tuiTilesShift,
         },
     ],
+    host: {
+        '(focusout.stop)': '(0)',
+        '(pointerdown.zoneless)': 'onDrag()',
+        '(document:pointerup.zoneless)': 'onDrop()',
+    },
 })
 export class TuiReorder<T> {
     private dragging = false;
