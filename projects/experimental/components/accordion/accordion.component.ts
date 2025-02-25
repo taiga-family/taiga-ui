@@ -14,7 +14,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TuiExpand} from '@taiga-ui/experimental/components/expand';
-import {ReplaySubject} from 'rxjs';
+import {delay, ReplaySubject} from 'rxjs';
 
 import {TuiAccordionDirective} from './accordion.directive';
 
@@ -57,25 +57,33 @@ export class TuiAccordionComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        this.toggle$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((d) => {
-            if (this.closeOthers && d.open()) {
-                this.expands.forEach((expand) => {
-                    expand.expanded = false;
-                });
+        this.toggle$
+            .pipe(delay(0), takeUntilDestroyed(this.destroyRef))
+            .subscribe((accordion) => {
+                if (this.closeOthers && accordion.open()) {
+                    this.expands.forEach((expand) => {
+                        expand.expanded = false;
+                    });
 
-                this.directives.forEach((dir) => {
-                    if (dir === d) {
-                        return;
-                    }
+                    this.directives.forEach((dir) => {
+                        if (dir === accordion) {
+                            return;
+                        }
 
-                    dir.open.set(false);
-                    dir.tuiAccordion = false;
-                    dir.tuiAccordionChange.emit(false);
-                });
-            }
+                        dir.open.set(false);
+                        dir.tuiAccordion = false;
+                        dir.tuiAccordionChange.emit(false);
+                    });
+                }
 
-            this.expands.get(this.directives.toArray().indexOf(d))!.expanded = d.open();
-        });
+                const expand = this.expands.get(
+                    this.directives.toArray().indexOf(accordion),
+                );
+
+                if (expand) {
+                    expand.expanded = accordion.open();
+                }
+            });
     }
 
     public toggle(directive: TuiAccordionDirective): void {
