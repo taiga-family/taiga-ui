@@ -150,14 +150,14 @@
             <ng-template>
                 <tui-textfield
                     #textfield
-                    tuiInputSlider
                     [content]="textfield.focused() ? '' : textfieldContent"
-                    [formControl]="control"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
-                        tuiInputNumber
+                        placeholder="Form control value is still {{ control.value }}"
+                        tuiInputSlider
+                        [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max()"
                         [min]="min()"
@@ -207,7 +207,9 @@
                     [value]="min()"
                     (valueChange)="min.set($event)"
                 >
-                    The lowest value in the range of permitted values
+                    The
+                    <strong>lowest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -217,7 +219,9 @@
                     [value]="max()"
                     (valueChange)="max.set($event)"
                 >
-                    The greatest value in the range of permitted values
+                    The
+                    <strong>greatest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -305,6 +309,7 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+                [cleaner]="false"
             >
                 <!--TODO: create the inherited documentation for Textfield ([content] + [filler] props)-->
                 <tr

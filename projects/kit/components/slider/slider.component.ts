@@ -3,10 +3,11 @@ import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
-import {TuiSliderKeySteps} from './helpers/slider-key-steps.directive';
+import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
@@ -28,6 +29,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
     },
+    providers: [tuiAsAuxiliary(TuiSliderComponent)],
 })
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);
@@ -54,6 +56,11 @@ export class TuiSliderComponent {
              */
             this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
+    }
+
+    @tuiPure
+    public get keySteps(): TuiSliderKeyStepsBase | null {
+        return this.injector.get(TuiSliderKeyStepsBase, null);
     }
 
     public get valueRatio(): number {
@@ -85,7 +92,7 @@ export class TuiSliderComponent {
     }
 
     public get value(): number {
-        if (!this.hasKeySteps && this.control instanceof NgModel) {
+        if (!this.keySteps && this.control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `el.nativeElement.value` is equal to the previous value at this moment.
@@ -98,11 +105,6 @@ export class TuiSliderComponent {
 
     public set value(newValue: number) {
         this.el.value = `${newValue}`;
-    }
-
-    @tuiPure
-    protected get hasKeySteps(): boolean {
-        return Boolean(this.injector.get(TuiSliderKeySteps, null));
     }
 
     protected get segmentWidth(): number {
