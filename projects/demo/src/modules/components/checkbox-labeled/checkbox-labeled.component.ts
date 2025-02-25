@@ -48,14 +48,4 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
         testValue2: new FormControl(),
         testValue3: new FormControl(true),
     });
-
-    constructor() {
-        super();
-
-        this.control.get('testValue1')!.valueChanges.subscribe(value => {
-            if (value) {
-                this.control.get('testValue1')!.setValue(false);
-            }
-        });
-    }
 }
