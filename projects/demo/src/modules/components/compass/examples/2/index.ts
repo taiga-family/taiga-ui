@@ -7,7 +7,7 @@ import {TuiCompass} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [TuiCompass],
-    template: '<tui-compass [degrees]="degrees"></tui-compass>',
+    template: '<tui-compass [degrees]="degrees" />',
     encapsulation,
     changeDetection,
     host: {

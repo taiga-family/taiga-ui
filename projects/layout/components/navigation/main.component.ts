@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 @Component({
     standalone: true,
     selector: 'main[tuiNavigationMain]',
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

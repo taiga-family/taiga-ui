@@ -20,7 +20,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
     selector: 'label[tuiInputFiles]',
     imports: [PolymorpheusOutlet, PolymorpheusTemplate],
     template: `
-        <ng-content></ng-content>
+        <ng-content />
         <span
             *polymorpheusOutlet="
                 template || content as text;

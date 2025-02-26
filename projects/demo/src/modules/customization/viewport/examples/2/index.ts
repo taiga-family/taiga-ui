@@ -9,8 +9,8 @@ import {tuiAsViewport, TuiDropdown, TuiDropdownService} from '@taiga-ui/core';
     standalone: true,
     selector: 'portal-host',
     template: `
-        <ng-content></ng-content>
-        <ng-container #viewContainer></ng-container>
+        <ng-content />
+        <ng-container #viewContainer />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService), tuiAsViewport(PortalHost)],

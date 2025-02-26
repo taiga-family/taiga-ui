@@ -14,7 +14,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
 @Component({
     standalone: true,
     selector: 'header[tuiNavigationHeader]',
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./header.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

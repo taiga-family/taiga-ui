@@ -10,8 +10,8 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
         <tui-icon
             class="tui-space_right-2"
             [icon]="icon"
-        ></tui-icon>
-        <ng-container [ngTemplateOutlet]="context.template"></ng-container>
+        />
+        <ng-container [ngTemplateOutlet]="context.template" />
     `,
     styleUrls: ['./content.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

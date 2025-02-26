@@ -34,7 +34,7 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
                 [tuiTextfieldPostfix]="postfix"
                 [tuiTextfieldPrefix]="prefix"
                 [valueContent]="valueContent"
-            ></tui-input-slider>
+            />
 
             <ng-template #progressPercent>{{ percent }}%</ng-template>
         </tui-root>

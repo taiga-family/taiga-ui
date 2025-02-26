@@ -6,7 +6,7 @@ import {TuiCompass} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [TuiCompass],
-    template: '<tui-compass></tui-compass>',
+    template: '<tui-compass />',
     encapsulation,
     changeDetection,
 })

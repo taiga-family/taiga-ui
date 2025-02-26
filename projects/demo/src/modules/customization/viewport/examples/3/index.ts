@@ -12,7 +12,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
     standalone: true,
     selector: 'portal-host',
     template: `
-        <ng-content></ng-content>
+        <ng-content />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsViewport(PortalHost)],
