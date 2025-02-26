@@ -4,7 +4,7 @@ import type {Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DEFAULT_ERROR_MESSAGE} from '@taiga-ui/core';
+import {TUI_DEFAULT_ERROR_MESSAGE} from '@taiga-ui/core/tokens';
 
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 

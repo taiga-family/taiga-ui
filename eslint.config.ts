@@ -1,7 +1,9 @@
-import config from '@taiga-ui/eslint-plugin-experience-next';
+import taiga from '@taiga-ui/eslint-plugin-experience-next';
 
 export default [
-    ...config,
+    ...taiga.configs.recommended,
+    ...taiga.configs['entry-points'],
+    ...taiga.configs['taiga-naming'],
     {
         files: ['**/legacy/**/*.ts'],
         rules: {

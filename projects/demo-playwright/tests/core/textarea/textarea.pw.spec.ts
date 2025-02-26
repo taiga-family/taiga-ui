@@ -18,7 +18,10 @@ test.describe('Textarea', () => {
         });
     });
 
-    test('line break text', async ({page}) => {
+    test('line break text', async ({page, browserName}) => {
+        // eslint-disable-next-line playwright/no-skipped-test
+        test.skip(browserName !== 'chromium', 'Font flaky');
+
         await tuiGoto(page, `${DemoRoute.Textarea}/API`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const textAreaComponent = apiPageExample.locator('tui-textarea');
