@@ -13,7 +13,6 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         TuiAxes,
-        TuiAxes,
         TuiBarChart,
         TuiDataListWrapper,
         TuiHint,

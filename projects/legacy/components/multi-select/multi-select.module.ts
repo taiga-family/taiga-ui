@@ -35,7 +35,6 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiWrapperModule,
         TuiArrowComponent,
         TuiLet,
-        TuiMapperPipe,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
         TuiMapperPipe,
