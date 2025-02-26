@@ -13,7 +13,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     selector: 'tui-avatar-labeled',
     imports: [NgForOf, NgIf, TuiFade],
     template: `
-        <ng-content></ng-content>
+        <ng-content />
         <ng-container *ngIf="label.length">
             <span
                 *ngFor="let item of split(label)"

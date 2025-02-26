@@ -6,7 +6,7 @@ import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
 @Component({
     standalone: true,
     selector: 'nav[tuiNavigationNav]',
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./nav.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

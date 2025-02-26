@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     standalone: true,
     selector: 'tui-preview-title',
     template: `
-        <ng-content></ng-content>
+        <ng-content />
     `,
     styleUrls: ['./preview-title.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

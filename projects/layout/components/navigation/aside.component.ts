@@ -15,17 +15,17 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     selector: 'aside[tuiNavigationAside]',
     imports: [TuiFade, TuiScrollable, TuiScrollbar],
     template: `
-        <ng-content select="header"></ng-content>
+        <ng-content select="header" />
         <tui-scrollbar class="t-nav-scrollbar">
             <div
                 tuiFade="vertical"
                 tuiScrollable
                 class="t-nav-content"
             >
-                <ng-content></ng-content>
+                <ng-content />
             </div>
         </tui-scrollbar>
-        <ng-content select="footer"></ng-content>
+        <ng-content select="footer" />
     `,
     styleUrls: ['./aside.style.less'],
     encapsulation: ViewEncapsulation.None,

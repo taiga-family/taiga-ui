@@ -20,7 +20,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
 @Component({
     standalone: true,
     selector: 'tui-tiles',
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./tiles.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
