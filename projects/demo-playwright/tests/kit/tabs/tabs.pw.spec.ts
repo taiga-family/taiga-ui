@@ -22,14 +22,7 @@ describe('Tabs', () => {
                 await example.scrollIntoViewIfNeeded();
             });
 
-            test('no extra margin after the last tab', async ({page, browserName}) => {
-                // TODO: why does this test keep failing in safari
-                // eslint-disable-next-line playwright/no-skipped-test
-                test.skip(
-                    browserName !== 'chromium',
-                    'This feature is only relevant in Chrome',
-                );
-
+            test('no extra margin after the last tab', async ({page}) => {
                 await page.setViewportSize({width: 1500, height: 500});
 
                 await expect(example).toHaveScreenshot('01-tabs-1.png');
@@ -69,15 +62,7 @@ describe('Tabs', () => {
 
             test('shows only a single dropdown for the nested item (with [tuiDropdown]) inside more section', async ({
                 page,
-                browserName,
             }) => {
-                // eslint-disable-next-line playwright/no-skipped-test
-                test.skip(
-                    browserName !== 'chromium',
-                    // TODO: bug https://github.com/taiga-family/taiga-ui/issues/9836
-                    'This feature is only relevant in Chrome',
-                );
-
                 await page.setViewportSize({width: 550, height: 700});
 
                 await expect(tabsPO.more).toBeVisible();
@@ -100,6 +85,16 @@ describe('Tabs', () => {
 
                 await expect(page).toHaveScreenshot(
                     'tabs-dropdown-inside-more-dropdown-hover-item.png',
+                );
+
+                await page
+                    .locator('tui-dropdown [tuiOption]', {
+                        hasText: 'Carol Cleveland',
+                    })
+                    .click();
+
+                await expect(page).toHaveScreenshot(
+                    'tabs-dropdown-inside-more-dropdown-clicked-item.png',
                 );
             });
         });

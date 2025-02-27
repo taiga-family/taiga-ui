@@ -112,5 +112,10 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
                       );
             }),
         ),
+        mousedown$.pipe(
+            switchMap(() => removedElement$),
+            filter((removedElement) => !doc.body.contains(removedElement)),
+            map(() => doc.activeElement),
+        ),
     ).pipe(distinctUntilChanged(), share());
 });
