@@ -14,9 +14,6 @@ All notable changes to this project will be documented in this file. See
   ([18e6cbc](https://github.com/taiga-family/taiga-ui/commit/18e6cbc853b4e56c6813684045c5899c08601f9d))
 - **core:** fix dropdown when host is svg element ([#10430](https://github.com/taiga-family/taiga-ui/issues/10430))
   ([6d065a8](https://github.com/taiga-family/taiga-ui/commit/6d065a83160afdbb29f8f8bd06dab527d9ba7600))
-- **demo:** `TuiHeader` add `TuiTitle` to import example
-  ([#10416](https://github.com/taiga-family/taiga-ui/issues/10416))
-  ([49a845a](https://github.com/taiga-family/taiga-ui/commit/49a845a14cf97db370222269779ac4276ac6c854))
 - **kit:** `InputNumber` should support `[attr.maxLength]`
   ([#10455](https://github.com/taiga-family/taiga-ui/issues/10455))
   ([aba9d25](https://github.com/taiga-family/taiga-ui/commit/aba9d25fc44062273ce4cb6fce851450b21307ab))
