@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.26.0](https://github.com/taiga-family/taiga-ui/compare/v4.25.0...v4.26.0) (2025-02-27)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `tuiCoerceValue` fails to parse `%` symbol
+  ([#10403](https://github.com/taiga-family/taiga-ui/issues/10403))
+  ([f4fac1d](https://github.com/taiga-family/taiga-ui/commit/f4fac1da4664fb2dd65451cea96ffe7716c3f099))
+- **core:** `DataList` fix empty content ([#10431](https://github.com/taiga-family/taiga-ui/issues/10431))
+  ([18e6cbc](https://github.com/taiga-family/taiga-ui/commit/18e6cbc853b4e56c6813684045c5899c08601f9d))
+- **core:** fix dropdown when host is svg element ([#10430](https://github.com/taiga-family/taiga-ui/issues/10430))
+  ([6d065a8](https://github.com/taiga-family/taiga-ui/commit/6d065a83160afdbb29f8f8bd06dab527d9ba7600))
+- **demo:** `TuiHeader` add `TuiTitle` to import example
+  ([#10416](https://github.com/taiga-family/taiga-ui/issues/10416))
+  ([49a845a](https://github.com/taiga-family/taiga-ui/commit/49a845a14cf97db370222269779ac4276ac6c854))
+- **kit:** `InputNumber` should support `[attr.maxLength]`
+  ([#10455](https://github.com/taiga-family/taiga-ui/issues/10455))
+  ([aba9d25](https://github.com/taiga-family/taiga-ui/commit/aba9d25fc44062273ce4cb6fce851450b21307ab))
+- **kit:** add additional overload to `tuiFilterByInput` pipe
+  ([#10408](https://github.com/taiga-family/taiga-ui/issues/10408))
+  ([47a9809](https://github.com/taiga-family/taiga-ui/commit/47a98092c2f683a18d201e02459b30ec70e55b91))
+- **kit:** improve caret management for `InputNumber` on step action
+  ([#10405](https://github.com/taiga-family/taiga-ui/issues/10405))
+  ([0422514](https://github.com/taiga-family/taiga-ui/commit/042251451106184d880c60b82cc008af7a338cbd))
+
+### 🚀 Features
+
+- **addon-mobile:** `Chip` add mobile styles ([#10461](https://github.com/taiga-family/taiga-ui/issues/10461))
+  ([4f9f612](https://github.com/taiga-family/taiga-ui/commit/4f9f612088a425c428a05093d53759b335f4038f))
+- **addon-mobile:** `TuiSheetDialog` provide `TUI_SCROLL_REF`
+  ([#10418](https://github.com/taiga-family/taiga-ui/issues/10418))
+  ([6920680](https://github.com/taiga-family/taiga-ui/commit/6920680ed0a87a103ac68628bc18d9d6a314708a))
+- **layout:** `Form` simplify columns ([#10412](https://github.com/taiga-family/taiga-ui/issues/10412))
+  ([d7e0661](https://github.com/taiga-family/taiga-ui/commit/d7e0661b8f5b2046878c83ce2c9a422f2e1532cf))
+- **layout:** `Navigation` update according to specs ([#10411](https://github.com/taiga-family/taiga-ui/issues/10411))
+  ([7ac5898](https://github.com/taiga-family/taiga-ui/commit/7ac5898c5f05784d62bc1f7606530e5f5132a5da))
+
 ## [4.25.0](https://github.com/taiga-family/taiga-ui/compare/v4.24.0...v4.25.0) (2025-02-18)
 
 ### 🚀 Features
