@@ -23,6 +23,6 @@
         "date-fns": "4.1.0",
         "express": "4.21.2",
         "rxjs": "7.8.2",
-        "terser-webpack-plugin": "5.3.11"
+        "terser-webpack-plugin": "5.3.12"
     }
 }
