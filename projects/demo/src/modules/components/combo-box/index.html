@@ -178,41 +178,42 @@
             </button>
         </div>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="disabled"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="search"
-                documentationPropertyType="string | null"
-                [(documentationPropertyValue)]="search"
+            </tr>
+            <tr
+                name="[(search)]"
+                tuiDocAPIItem
+                type="string | null"
+                [(value)]="search"
             >
                 Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="identityMatcher"
-                documentationPropertyType="TuiIdentityMatcher"
-                [documentationPropertyValues]="identityMatcherVariants"
-                [(documentationPropertyValue)]="identityMatcher"
+            </tr>
+            <tr
+                name="[identityMatcher]"
+                tuiDocAPIItem
+                type="TuiIdentityMatcher"
+                [items]="identityMatcherVariants"
+                [(value)]="identityMatcher"
             >
                 A function that compares search and value to define a match between them.
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="strict"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="strict"
+            </tr>
+            <tr
+                name="[strict]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="strict"
             >
                 Value must only be an item of suggestions&nbsp;
                 <code [textContent]="'<T>'"></code>
@@ -229,40 +230,40 @@
                         <code [textContent]="'<T>'"></code>
                     </strong>
                 </p>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="strictMatcher"
-                documentationPropertyType="TuiStringMatcher | null"
-                [documentationPropertyValues]="strictMatcherVariants"
-                [(documentationPropertyValue)]="strictMatcher"
+            </tr>
+            <tr
+                name="[strictMatcher]"
+                tuiDocAPIItem
+                type="TuiStringMatcher | null"
+                [items]="strictMatcherVariants"
+                [(value)]="strictMatcher"
             >
                 A function that compares search text and item to define a match between them. Lowercase string
                 comparison function by default.
                 <strong>Should be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="stringify"
-                documentationPropertyType="TuiStringHandler"
-                [documentationPropertyValues]="stringifyVariants"
-                [(documentationPropertyValue)]="stringify"
+            </tr>
+            <tr
+                name="[stringify]"
+                tuiDocAPIItem
+                type="TuiStringHandler"
+                [items]="stringifyVariants"
+                [(value)]="stringify"
             >
                 A function that transforms object into a string.
                 <code>String(value)</code>
                 by default.
                 <strong>Should be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="valueContent"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="valueTemplateVariants"
-                [(documentationPropertyValue)]="selectedValueTemplate"
+            </tr>
+            <tr
+                name="[valueContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="valueTemplateVariants"
+                [(value)]="selectedValueTemplate"
             >
                 A template for custom view of selected value
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation [dropdown]="true" />
     </ng-template>
     <ng-template pageTab>
