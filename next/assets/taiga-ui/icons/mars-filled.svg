@@ -9,6 +9,7 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M22 2 2 22" />
-    <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="10" />
+    <path vector-effect="non-scaling-stroke" d="M16 3h5v5" />
+    <path vector-effect="non-scaling-stroke" d="m21 3-6.75 6.75" />
+    <circle vector-effect="non-scaling-stroke" cx="10" cy="14" r="6" />
 </svg>
