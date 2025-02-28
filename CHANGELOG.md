@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.26.1](https://github.com/taiga-family/taiga-ui/compare/v4.26.0...v4.26.1) (2025-02-28)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` should remove browser autofill styles for Chrome on IOS
+  ([#10480](https://github.com/taiga-family/taiga-ui/issues/10480))
+  ([834fd1c](https://github.com/taiga-family/taiga-ui/commit/834fd1c869e3dc63a899905984a84b95c95b5da7))
+
 ## [4.26.0](https://github.com/taiga-family/taiga-ui/compare/v4.25.0...v4.26.0) (2025-02-27)
 
 ### 🐞 Bug Fixes
