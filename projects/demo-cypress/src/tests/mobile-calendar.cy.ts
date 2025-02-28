@@ -12,8 +12,12 @@ import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
 describe('Mobile calendar', () => {
-    const today = TuiDay.currentLocal();
+    const today = new TuiDay(2020, 8, 20);
     const tomorrow = today.append({day: 1});
+
+    beforeEach(() => {
+        cy.clock(today.toLocalNativeDate(), ['Date']);
+    });
 
     @Component({
         standalone: true,
