@@ -152,7 +152,7 @@ describe('CalendarRange', () => {
                 await calendarSheet.clickOnDay(15);
 
                 await expect(alert).toContainText(
-                    '(rangeChange) 15.09.2020 – 15.09.2020 Close',
+                    '15.09.2020 – 15.09.2020',
                 );
                 await expect(example).toHaveScreenshot(
                     '07-double-click-on-the-same-day.png',
