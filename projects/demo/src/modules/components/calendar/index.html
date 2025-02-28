@@ -73,105 +73,105 @@
                 (dayClick)="documentationPropertyDayClick.emitEvent($event)"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiDay>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+        <table tuiDocAPI>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiDay>"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="showAdjacent"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="showAdjacent"
+            </tr>
+            <tr
+                name="[showAdjacent]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="showAdjacent"
             >
                 Show adjacent months days
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="hoveredItem"
-                documentationPropertyType="TuiDay | null"
-                [(documentationPropertyValue)]="hoveredItem"
+            </tr>
+            <tr
+                name="[(hoveredItem)]"
+                tuiDocAPIItem
+                type="TuiDay | null"
+                [(value)]="hoveredItem"
             >
                 Hovered date
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="markerHandler"
-                documentationPropertyType="TuiMarkerHandler | null"
-                [documentationPropertyValues]="markerHandlerVariants"
-                [(documentationPropertyValue)]="markerHandler"
+            </tr>
+            <tr
+                name="[markerHandler]"
+                tuiDocAPIItem
+                type="TuiMarkerHandler | null"
+                [items]="markerHandlerVariants"
+                [(value)]="markerHandler"
             >
                 A handler that gets date and returns null or a tuple with circled marker colors
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="TuiDay | null"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="TuiDay | null"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Maximal date to choose
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxViewedMonth"
-                documentationPropertyType="TuiMonth | null"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[maxViewedMonth]"
+                tuiDocAPIItem
+                type="TuiMonth | null"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Maximal month to access
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="min"
-                documentationPropertyType="TuiDay | null"
-                [documentationPropertyValues]="minVariants"
-                [(documentationPropertyValue)]="min"
+            </tr>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="TuiDay | null"
+                [items]="minVariants"
+                [(value)]="min"
             >
                 Minimum date to choose
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="minViewedMonth"
-                documentationPropertyType="TuiMonth | null"
-                [documentationPropertyValues]="minVariants"
-                [(documentationPropertyValue)]="min"
+            </tr>
+            <tr
+                name="[minViewedMonth]"
+                tuiDocAPIItem
+                type="TuiMonth | null"
+                [items]="minVariants"
+                [(value)]="min"
             >
                 Minimum month to access
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="month"
-                documentationPropertyType="TuiMonth"
-                [(documentationPropertyValue)]="month"
+            </tr>
+            <tr
+                name="[(month)]"
+                tuiDocAPIItem
+                type="TuiMonth"
+                [(value)]="month"
             >
                 Current month
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="TuiDay | TuiDayRange | null"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="TuiDay | TuiDayRange | null"
+                [items]="valueVariants"
+                [(value)]="value"
             >
                 Selected day or range
-            </ng-template>
-            <ng-template
-                #documentationPropertyDayClick="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="dayClick"
-                documentationPropertyType="TuiDay"
+            </tr>
+            <tr
+                #documentationPropertyDayClick
+                name="(dayClick)"
+                tuiDocAPIItem
+                type="TuiDay"
             >
                 Date click
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <ng-template pageTab>
