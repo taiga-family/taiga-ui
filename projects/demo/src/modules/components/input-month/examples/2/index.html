@@ -1,17 +1,14 @@
-<form [formGroup]="testForm">
-    <tui-input-month
-        formControlName="testValue"
-        tuiTextfieldSize="s"
-        class="tui-space_bottom-2"
-    >
-        Choose a month
-    </tui-input-month>
-    <tui-input-month
-        formControlName="testValue"
-        tuiTextfieldSize="m"
-        class="tui-space_bottom-2"
-    >
-        Choose a month
-    </tui-input-month>
-    <tui-input-month formControlName="testValue">Choose a month</tui-input-month>
-</form>
+<tui-textfield>
+    <input
+        placeholder="Annoying required field"
+        tuiInputMonth
+        [formControl]="control"
+    />
+
+    <tui-calendar-month *tuiTextfieldDropdown />
+</tui-textfield>
+
+<tui-error
+    [error]="[] | tuiFieldError | async"
+    [formControl]="control"
+/>
