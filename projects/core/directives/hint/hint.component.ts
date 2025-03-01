@@ -39,7 +39,7 @@ export const TUI_HINT_PROVIDERS = [
     template: `
         <ng-content />
         <span
-            *polymorpheusOutlet="content() as text; context: hint.context"
+            *polymorpheusOutlet="content() as text; context: hint.contextSignal()"
             [innerHTML]="text"
         ></span>
     `,
