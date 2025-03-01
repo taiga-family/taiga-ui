@@ -9,10 +9,12 @@
 <div class="t-sheet">
     <div
         *ngIf="context.bar"
+        #bar
         class="t-top"
     ></div>
     <h2
         *ngIf="context.label"
+        #heading
         class="t-heading"
         [id]="context.id"
     >

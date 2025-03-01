@@ -37,6 +37,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
         '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
         '[class._closeable]': 'context.closeable === true',
+        '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
