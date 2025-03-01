@@ -5,7 +5,6 @@ import {
     Component,
     ElementRef,
     inject,
-    ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -37,8 +36,6 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     host: {
         '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
-        '[style.--t-bar.px]': 'bar?.nativeElement.clientHeight',
-        '[style.--t-heading.px]': 'heading?.nativeElement.clientHeight',
         '[class._closeable]': 'context.closeable === true',
         '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
@@ -54,12 +51,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     private readonly el = tuiInjectElement();
     private pointers = 0;
-
-    @ViewChild('bar')
-    protected readonly bar?: ElementRef<HTMLElement>;
-
-    @ViewChild('heading')
-    protected readonly heading?: ElementRef<HTMLElement>;
 
     protected readonly slideInTop = {
         value: '',
