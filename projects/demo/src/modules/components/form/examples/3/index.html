@@ -1,0 +1,217 @@
+<tui-segmented
+    size="m"
+    [style.margin-bottom.rem]="2"
+    [style.max-width]="'fit-content'"
+    [(activeItemIndex)]="segmentedIndex"
+>
+    <button type="button">Stepper</button>
+    <button type="button">Tabs</button>
+</tui-segmented>
+
+<ng-container [ngSwitch]="segmentedIndex">
+    <ng-container *ngSwitchCase="0">
+        <tui-stepper
+            class="stepper"
+            [activeItemIndex]="index()"
+        >
+            <button
+                tuiStep
+                type="button"
+                [disabled]="true"
+            >
+                Common
+            </button>
+            <button
+                tuiStep
+                type="button"
+                [disabled]="true"
+            >
+                Network access
+            </button>
+        </tui-stepper>
+    </ng-container>
+    <ng-container *ngSwitchCase="1">
+        <tui-tabs
+            underline="var(--tui-background-accent-opposite-pressed)"
+            class="tabs"
+            [activeItemIndex]="index()"
+            (activeItemIndexChange)="index.set($event)"
+        >
+            <button
+                tuiTab
+                type="button"
+            >
+                Common
+            </button>
+            <button
+                tuiTab
+                type="button"
+            >
+                Network access
+            </button>
+        </tui-tabs>
+    </ng-container>
+</ng-container>
+
+<ng-container [ngSwitch]="index()">
+    <ng-container *ngSwitchCase="0">
+        <form
+            tuiAppearance="floating"
+            tuiCardLarge
+            tuiForm="m"
+            [formGroup]="first"
+        >
+            <header tuiHeader>
+                <h2 tuiTitle>
+                    Registration form
+                    <span tuiSubtitle>Tell us about yourself</span>
+                </h2>
+                <span tuiAccessories>
+                    <tui-segmented>
+                        <label>
+                            <input
+                                formControlName="basic"
+                                type="radio"
+                                [value]="true"
+                            />
+                            Brief
+                        </label>
+                        <label>
+                            <input
+                                formControlName="basic"
+                                type="radio"
+                                [value]="false"
+                            />
+                            Detailed
+                        </label>
+                    </tui-segmented>
+                </span>
+            </header>
+            <tui-textfield>
+                <label tuiLabel>Name</label>
+                <input
+                    formControlName="name"
+                    placeholder="John Wick"
+                    tuiTextfield
+                />
+            </tui-textfield>
+            <tui-error
+                formControlName="name"
+                [error]="[] | tuiFieldError | async"
+            />
+            <ng-container *ngIf="!first.controls.basic.value">
+                <tui-textfield>
+                    <label tuiLabel>Email</label>
+                    <input
+                        formControlName="email"
+                        placeholder="john@wick.com"
+                        tuiTextfield
+                        type="email"
+                    />
+                </tui-textfield>
+                <label tuiLabel>
+                    <input
+                        formControlName="subscribe"
+                        tuiSwitch
+                        type="checkbox"
+                    />
+                    Subscribe for newsletter
+                    <tui-icon tuiTooltip="We will not send you spam, pinky promise!" />
+                </label>
+            </ng-container>
+        </form>
+
+        <footer>
+            <button
+                appearance="secondary"
+                tuiButton
+                type="button"
+            >
+                Cancel
+            </button>
+            <button
+                tuiButton
+                type="submit"
+                (click)="next()"
+            >
+                Next
+            </button>
+        </footer>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="1">
+        <form
+            tuiAppearance="floating"
+            tuiCardLarge
+            tuiForm="m"
+            [formGroup]="second"
+        >
+            <header tuiHeader>
+                <h2 tuiTitle>
+                    Configuration network
+                    <span tuiSubtitle>Fill network settings</span>
+                </h2>
+                <span tuiAccessories>
+                    <tui-segmented>
+                        <label>
+                            <input
+                                formControlName="basic"
+                                type="radio"
+                                [value]="true"
+                            />
+                            Brief
+                        </label>
+                        <label>
+                            <input
+                                formControlName="basic"
+                                type="radio"
+                                [value]="false"
+                            />
+                            Detailed
+                        </label>
+                    </tui-segmented>
+                </span>
+            </header>
+            <tui-textfield>
+                <label tuiLabel>IP-address</label>
+                <input
+                    formControlName="ip"
+                    placeholder="192.0.2.1"
+                    tuiTextfield
+                />
+            </tui-textfield>
+            <tui-error
+                formControlName="ip"
+                [error]="[] | tuiFieldError | async"
+            />
+            <ng-container *ngIf="!second.controls.basic.value">
+                <tui-textfield>
+                    <label tuiLabel>Mask</label>
+                    <input
+                        formControlName="mask"
+                        placeholder="255.255.255.0"
+                        tuiTextfield
+                        type="text"
+                    />
+                </tui-textfield>
+            </ng-container>
+        </form>
+
+        <footer>
+            <button
+                appearance="secondary"
+                tuiButton
+                type="button"
+                (click)="previous()"
+            >
+                Back
+            </button>
+            <button
+                tuiButton
+                type="submit"
+            >
+                Save
+            </button>
+        </footer>
+    </ng-container>
+</ng-container>
