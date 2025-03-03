@@ -66,11 +66,11 @@ export default class Example {
         basic: new FormControl(true),
     });
 
-    protected previous() {
+    protected previous(): void {
         this.index.update((index) => index - 1);
     }
 
-    protected next() {
+    protected next(): void {
         this.index.update((index) => index + 1);
     }
 }
