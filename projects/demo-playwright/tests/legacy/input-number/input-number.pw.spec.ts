@@ -455,8 +455,8 @@ test.describe('InputNumber', () => {
                     page,
                     `${DemoRoute.InputNumberLegacy}/API?tuiTextfieldPrefix=$&tuiTextfieldPostfix=kg`,
                 );
-                await input.clear();
                 await input.focus();
+                await input.clear();
 
                 await expect(input).toHaveValue('$ kg');
                 await expect(input).toHaveJSProperty('selectionStart', 1);
