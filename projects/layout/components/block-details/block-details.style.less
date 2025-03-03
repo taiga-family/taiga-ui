@@ -11,7 +11,11 @@
         gap: 0;
     }
 
-    [tuiSubtitle] {
+    [tuiSubtitle],
+    [tuiDetailsStatus] {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
         font: var(--tui-font-text-m);
         color: var(--tui-text-secondary);
         margin-top: 0.25rem;
@@ -19,6 +23,11 @@
         :host-context(tui-root._mobile) & {
             font: var(--tui-font-text-s);
         }
+    }
+
+    [tuiSubtitle] + [tuiSubtitle],
+    [tuiDetailsStatus] {
+        margin-top: 1rem;
     }
 
     [tuiComment] {

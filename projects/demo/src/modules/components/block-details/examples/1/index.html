@@ -10,9 +10,17 @@
 
     <span>{{ -1050 | tuiAmount: 'USD' | async }}</span>
     <span tuiSubtitle>today</span>
+    <span tuiSubtitle>extra subtitle</span>
     <span tuiComment>Birthday gift</span>
     <div tuiAccessories>
         <tui-badge appearance="neutral">private</tui-badge>
         <tui-badge appearance="default">fast</tui-badge>
+    </div>
+    <div tuiDetailsStatus>
+        <tui-icon
+            icon="@tui.clock"
+            [style.font-size.rem]="1"
+        />
+        Pending
     </div>
 </div>
