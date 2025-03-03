@@ -14,7 +14,7 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
@@ -31,6 +31,8 @@ export const TUI_HINT_PROVIDERS = [
     tuiPositionAccessorFor('hint', TuiHintPosition),
     tuiRectAccessorFor('hint', TuiHintDirective),
 ];
+
+const GAP = 8;
 
 @Component({
     standalone: true,
@@ -61,6 +63,7 @@ export class TuiHintComponent<C = any> {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
+    private readonly viewport = inject(TUI_VIEWPORT);
 
     protected readonly desktop = {value: '', params: {end: 1, start: 1}};
     protected readonly options = tuiToAnimationOptions(
@@ -128,14 +131,21 @@ export class TuiHintComponent<C = any> {
             return;
         }
 
+        const viewport = this.viewport.getClientRect();
+        const safeLeft = tuiClamp(
+            Math.max(GAP, left),
+            viewport.left + GAP,
+            Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
+        );
+
         const [beakTop, beakLeft] = this.vvs.correct([
             rect.top + rect.height / 2 - top,
-            rect.left + rect.width / 2 - left,
+            rect.left + rect.width / 2 - safeLeft,
         ]);
 
         this.apply(
             tuiPx(Math.round(top)),
-            tuiPx(Math.round(left)),
+            tuiPx(Math.round(safeLeft)),
             Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
             Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
         );

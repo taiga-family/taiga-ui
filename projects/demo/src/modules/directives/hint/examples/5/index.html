@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+    <tui-select
+        formControlName="period"
+        tuiHintDirection="top-left"
+        [tuiHintContent]="periodHint"
+        [tuiTextfieldSize]="'m'"
+        [valueContent]="stringify | tuiStringifyContent"
+    >
+        Term
+        <tui-data-list-wrapper
+            *tuiDataList
+            [itemContent]="stringify | tuiStringifyContent"
+            [items]="items | tuiFilterByInput"
+        />
+    </tui-select>
+    <ng-template #periodHint>
+        You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis
+    </ng-template>
+</form>
+
+<button
+    tuiHintAppearance="dark"
+    tuiHintDirection="top-left"
+    tuiLink
+    type="button"
+    class="tui-space_top-4"
+    [pseudo]="true"
+    [tuiHint]="howToBuyTooltip"
+>
+    How to buy
+
+    <ng-template #howToBuyTooltip>
+        <ol class="tui-list tui-list_ordered tui-list_small">
+            <li class="tui-list__item">Choose an installment plan</li>
+            <li class="tui-list__item">Fill in the application</li>
+            <li class="tui-list__item">
+                When the bank approves, sign the contract via SMS or get it delivered to sign
+            </li>
+        </ol>
+    </ng-template>
+</button>
