@@ -28,6 +28,23 @@
             display: flex;
         }
     }
+
+    &._fullscreen {
+        display: block;
+
+        .t-sheet {
+            display: flex;
+            flex-direction: column;
+            min-block-size: 100%;
+        }
+
+        // TODO: make default in v5
+        .t-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+    }
 }
 
 .t-stops {
