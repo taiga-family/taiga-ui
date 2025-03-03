@@ -55,6 +55,15 @@
                 </ng-container>
             </tui-tabs-with-more>
 
+            <button
+                appearance="flat"
+                size="xs"
+                tuiIconButton
+                type="button"
+                [iconStart]="fullscreen.state() === id ? '@tui.shrink' : '@tui.expand'"
+                (click)="fullscreen.state() === id ? fullscreen.shrink() : fullscreen.expand(id)"
+            ></button>
+
             <tui-loader
                 *ngIf="processor() | tuiMapper: visible"
                 size="xs"

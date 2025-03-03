@@ -67,6 +67,19 @@
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
+    :host._fullscreen & {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background: var(--tui-background-base);
+        inline-size: 100%;
+        block-size: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
     @media @tui-mobile {
         margin-top: 0.75rem;
     }

@@ -4,6 +4,7 @@ import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angula
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
+import {TuiExampleFullscreenService} from '@taiga-ui/addon-doc/services';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
@@ -60,6 +61,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     host: {
         '[attr.id]': 'id',
         '[class._fullsize]': 'fullsize',
+        '[class._fullscreen]': 'fullscreen.state() === id',
     },
 })
 export class TuiDocExample {
@@ -81,6 +83,8 @@ export class TuiDocExample {
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+    protected readonly fullscreen = inject(TuiExampleFullscreenService);
+
     protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
             TUI_DOC_CODE_ACTIONS,
