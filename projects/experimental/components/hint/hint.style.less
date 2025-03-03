@@ -2,7 +2,7 @@
 
 :host {
     position: absolute;
-    max-inline-size: 20rem;
+    max-inline-size: ~'min(20rem, calc(100% - 1rem))';
     padding: 0.75rem 1rem;
     background: var(--tui-background-accent-1);
     border-radius: var(--tui-radius-l);
@@ -71,6 +71,7 @@
             justify-content: flex-end;
             gap: 0.5rem;
             inline-size: 18rem;
+            max-inline-size: 100%;
             margin: 1rem 0 0.25rem;
         }
     }
