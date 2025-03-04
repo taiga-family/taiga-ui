@@ -27,7 +27,7 @@ describe('InputDateTime', () => {
                     [formControl]="control"
                     [max]="max"
                     [min]="min"
-                ></tui-input-date-time>
+                />
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -408,7 +408,7 @@ describe('InputDateTime', () => {
                         [formControl]="control"
                         [max]="max"
                         [min]="min"
-                    ></tui-input-date-time>
+                    />
                 </tui-root>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,

@@ -19,7 +19,7 @@ describe('InputPhone', () => {
                     [formControl]="control"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
                     [readOnly]="readOnly"
-                ></tui-input-phone>
+                />
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

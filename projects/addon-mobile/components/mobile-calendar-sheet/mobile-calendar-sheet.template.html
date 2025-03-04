@@ -7,7 +7,7 @@
         <div
             *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
             class="t-cell t-cell_empty"
-        ></div>
+        />
         <ng-container *tuiRepeatTimes="let colIndex of sheet[rowIndex]?.length ?? 0">
             <div
                 *ngIf="sheet[rowIndex]?.[colIndex] as item"
@@ -25,6 +25,6 @@
         <div
             *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
             class="t-cell t-cell_empty"
-        ></div>
+        />
     </div>
 </ng-container>

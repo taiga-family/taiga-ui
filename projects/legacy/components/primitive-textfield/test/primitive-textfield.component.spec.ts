@@ -14,24 +14,24 @@ describe('PrimitiveTextfield', () => {
         standalone: true,
         imports: [TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule],
         template: `
-            <tui-primitive-textfield id="test1"></tui-primitive-textfield>
+            <tui-primitive-textfield id="test1" />
             <tui-primitive-textfield
                 id="test2"
                 [pseudoFocus]="true"
                 [tuiTextfieldFiller]="'filler'"
                 [tuiTextfieldPostfix]="'post'"
                 [value]="'value'"
-            ></tui-primitive-textfield>
+            />
             <tui-primitive-textfield
                 id="test3"
                 [tuiTextfieldPostfix]="'post'"
                 [value]="'value'"
-            ></tui-primitive-textfield>
-            <tui-primitive-textfield id="test4"></tui-primitive-textfield>
+            />
+            <tui-primitive-textfield id="test4" />
             <tui-primitive-textfield
                 id="test5"
                 [value]="'value'"
-            ></tui-primitive-textfield>
+            />
             <tui-primitive-textfield
                 id="test6"
                 [pseudoFocus]="focused"

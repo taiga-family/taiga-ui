@@ -15,7 +15,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
         standalone: true,
         imports: [TuiRoot],
         template: `
-            <tui-root></tui-root>
+            <tui-root />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

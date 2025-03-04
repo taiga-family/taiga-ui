@@ -18,7 +18,7 @@ describe('CalendarMonth', () => {
                 [min]="min"
                 [value]="value"
                 [(year)]="year"
-            ></tui-calendar-month>
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

@@ -41,7 +41,7 @@ describe('InputTag', () => {
                 <tui-input-tag
                     *ngIf="defaultInputs"
                     [formControl]="control"
-                ></tui-input-tag>
+                />
                 <tui-input-tag
                     *ngIf="!defaultInputs"
                     [formControl]="control"

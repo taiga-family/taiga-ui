@@ -26,7 +26,7 @@ describe('TuiPaginationComponent', () => {
                 [length]="length"
                 [sidePadding]="sidePadding"
                 [(index)]="index"
-            ></tui-pagination>
+            />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
