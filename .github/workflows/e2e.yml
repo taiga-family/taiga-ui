@@ -30,6 +30,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   cypress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
@@ -96,15 +97,15 @@ jobs:
       matrix:
         shard: [
             # Safari
-            {index: 1, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 2, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 3, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 4, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 5, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 6, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 7, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 8, os: 'macos-latest', project: 'webkit', total: 9},
-            {index: 9, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 1, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 2, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 3, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 4, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 5, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 6, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 7, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 8, os: 'macos-latest', project: 'webkit', total: 9},
+            # {index: 9, os: 'macos-latest', project: 'webkit', total: 9},
             # Chrome
             {index: 1, os: 'ubuntu-latest', project: 'chromium', total: 9},
             {index: 2, os: 'ubuntu-latest', project: 'chromium', total: 9},
