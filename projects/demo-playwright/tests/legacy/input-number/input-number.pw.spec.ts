@@ -53,8 +53,10 @@ test.describe('InputNumber', () => {
 
             await expect(example).toHaveScreenshot('02-input-number.png');
 
+            await input.focus();
             await input.clear();
 
+            await expect(input).toHaveValue('$ GBP');
             await expect(example).toHaveScreenshot('03-input-number.png');
         });
 
@@ -479,9 +481,10 @@ test.describe('InputNumber', () => {
                 .all();
 
             for (const [i, input] of inputs.entries()) {
-                await input.clear();
                 await input.focus();
+                await input.clear();
 
+                await expect(input).toHaveValue(/\D/);
                 await expect(example).toHaveScreenshot(`06-input-number-${i}.png`);
             }
         });
