@@ -1,24 +1,59 @@
-import {Directive, forwardRef, inject, Input} from '@angular/core';
+import {Directive, forwardRef, inject, Input, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {NgControl} from '@angular/forms';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {switchMap, timer} from 'rxjs';
 
 import {TuiSliderComponent} from '../slider.component';
 import type {TuiKeySteps} from './key-steps';
-import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-steps';
+import {tuiCreateKeyStepsTransformer} from './key-steps';
 
 @Directive({
     standalone: true,
     selector: 'input[tuiSlider][keySteps]',
-    providers: [tuiFallbackValueProvider(0)],
     host: {
-        '[attr.aria-valuenow]': 'value()',
         '[attr.aria-valuemin]': 'min',
         '[attr.aria-valuemax]': 'max',
+        '[attr.aria-valuenow]': 'value()',
+    },
+})
+export class TuiSliderKeyStepsBase {
+    private readonly control = inject(NgControl, {self: true, optional: true});
+    protected readonly slider = inject<TuiSliderComponent>(
+        forwardRef(() => TuiSliderComponent),
+    );
+
+    protected min?: number = this.slider.min;
+    protected max?: number = this.slider.max;
+
+    public transformer = signal<TuiValueTransformer<number, number> | null>(null);
+    public value = toSignal(
+        timer(0) // https://github.com/angular/angular/issues/54418
+            .pipe(switchMap(() => tuiControlValue<number>(this.control))),
+    );
+
+    @Input()
+    public set keySteps(steps: TuiKeySteps | null) {
+        this.transformer.set(steps && tuiCreateKeyStepsTransformer(steps, this.slider));
+        this.min = steps?.[0][1];
+        this.max = steps?.[steps.length - 1]?.[1];
+    }
+}
+
+@Directive({
+    standalone: true,
+    selector:
+        'input[tuiSlider][keySteps][ngModel],input[tuiSlider][keySteps][formControl],input[tuiSlider][keySteps][formControlName]',
+    providers: [tuiFallbackValueProvider(0)],
+    host: {
+        '[value]': 'this.value()',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
-        '(input)': 'updateControlValue()',
-        '(change)': 'updateControlValue()',
+        '(input)': 'onChange($event.target.value)',
+        '(change)': 'onChange($event.target.value)',
     },
 })
 export class TuiSliderKeySteps extends TuiControl<number> {
@@ -27,45 +62,7 @@ export class TuiSliderKeySteps extends TuiControl<number> {
     );
 
     @Input()
-    public keySteps!: TuiKeySteps;
-
-    public override writeValue(controlValue: number | null): void {
-        if (controlValue === null) {
-            return;
-        }
-
-        const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
-
-        ngDevMode &&
-            console.assert(
-                controlValue === clampedControlValue,
-                '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
-            );
-
-        this.slider.value = this.transformToNativeValue(clampedControlValue);
-    }
-
-    protected get min(): number {
-        return this.keySteps[0][1];
-    }
-
-    protected get max(): number {
-        return this.keySteps[this.keySteps.length - 1]?.[1] ?? 0;
-    }
-
-    protected updateControlValue(): void {
-        this.onChange(
-            tuiPercentageToKeyStepValue(this.slider.valueRatio * 100, this.keySteps),
-        );
-    }
-
-    private transformToNativeValue(controlValue: number): number {
-        const {min, max} = this.slider;
-        const newValuePercentage = tuiKeyStepValueToPercentage(
-            controlValue,
-            this.keySteps,
-        );
-
-        return (newValuePercentage * (max - min)) / 100 + min;
+    public set keySteps(steps: TuiKeySteps) {
+        this.transformer = tuiCreateKeyStepsTransformer(steps, this.slider);
     }
 }
