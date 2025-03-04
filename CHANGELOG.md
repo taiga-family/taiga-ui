@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.27.0](https://github.com/taiga-family/taiga-ui/compare/v4.26.1...v4.27.0) (2025-03-04)
+
+### 🚀 Features
+
+- **addon-mobile:** `SheetDialog` add `fullscreen` ([#10442](https://github.com/taiga-family/taiga-ui/issues/10442))
+  ([a0a1709](https://github.com/taiga-family/taiga-ui/commit/a0a1709414d8ec004761115a65ab99be7d558c5b))
+- **layout:** `BlockStatus` add extra-description and status blocks
+  ([#10486](https://github.com/taiga-family/taiga-ui/issues/10486))
+  ([818eb20](https://github.com/taiga-family/taiga-ui/commit/818eb20b20197f31fe384b1158fe4c50fc87c912))
+
+### 🐞 Bug Fixes
+
+- **core:** reuse safe position for hint depend on viewport
+  ([#10498](https://github.com/taiga-family/taiga-ui/issues/10498))
+  ([59441d1](https://github.com/taiga-family/taiga-ui/commit/59441d11e7626844d580ce1183f16421585f010c))
+- **kit:** `Comment` add min-width ([#10500](https://github.com/taiga-family/taiga-ui/issues/10500))
+  ([05a7b85](https://github.com/taiga-family/taiga-ui/commit/05a7b857848417aa02132e79876080323a5509ec))
+- **kit:** add additional overload to `tuiFilterByInput` pipe
+  ([#10493](https://github.com/taiga-family/taiga-ui/issues/10493))
+  ([f31e0b9](https://github.com/taiga-family/taiga-ui/commit/f31e0b931fb5fcd1a5146f062da1a9ed0364db64))
+
 ### [4.26.1](https://github.com/taiga-family/taiga-ui/compare/v4.26.0...v4.26.1) (2025-02-28)
 
 ### 🐞 Bug Fixes
