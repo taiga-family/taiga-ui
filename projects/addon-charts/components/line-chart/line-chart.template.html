@@ -47,7 +47,7 @@
             class="t-dot"
             [style.bottom.%]="getBottom(point[1])"
             [style.left.%]="getLeft(point[0])"
-        ></div>
+        />
     </ng-container>
     <ng-container *ngIf="hasHints">
         <ng-container *ngFor="let point of value; let index = index">
@@ -82,7 +82,7 @@
                 *ngIf="isFocusable"
                 class="t-line t-line_horizontal"
                 [style.bottom.%]="getBottom(point[1])"
-            ></div>
+            />
         </ng-container>
     </ng-container>
     <ng-container *ngIf="getHovered(hovered) as point">

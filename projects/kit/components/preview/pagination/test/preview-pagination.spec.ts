@@ -15,7 +15,7 @@ describe('PreviewPagination', () => {
             <tui-preview-pagination
                 [length]="length"
                 [(index)]="index"
-            ></tui-preview-pagination>
+            />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,

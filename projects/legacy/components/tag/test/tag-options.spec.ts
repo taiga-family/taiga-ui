@@ -12,7 +12,7 @@ describe('Tag component options', () => {
         standalone: true,
         imports: [TuiTagModule],
         template: `
-            <tui-tag></tui-tag>
+            <tui-tag />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

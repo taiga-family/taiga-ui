@@ -42,7 +42,7 @@ describe('InputNumber', () => {
                 <tui-input-number
                     *ngIf="defaultValues"
                     formControlName="control"
-                ></tui-input-number>
+                />
             </ng-container>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
