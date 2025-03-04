@@ -21,7 +21,6 @@ import {
     TuiInputNumber,
     TuiPassword,
     TuiRadio,
-    TuiStepper,
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
@@ -82,7 +81,6 @@ class Account {
         TuiPassword,
         TuiRadio,
         TuiSelectModule,
-        TuiStepper,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
