@@ -1,32 +1,16 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-form,
-footer,
-.stepper,
-.tabs {
+:host {
+    display: block;
     max-inline-size: 32rem;
+}
+
+form {
+    margin: 1.25rem 0;
 }
 
 footer {
     display: flex;
     justify-content: space-between;
-    gap: 0.75rem;
     margin-top: 1.25rem;
-}
-
-.stepper,
-.tabs {
-    margin-bottom: 2rem;
-}
-
-.stepper {
-    min-block-size: var(--tui-height-l);
-
-    > button {
-        align-self: center;
-    }
-}
-
-.tabs {
-    box-shadow: inset 0 -1px var(--tui-border-normal);
 }
