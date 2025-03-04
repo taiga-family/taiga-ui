@@ -151,9 +151,7 @@ describe('CalendarRange', () => {
 
                 await calendarSheet.clickOnDay(15);
 
-                await expect(alert).toContainText(
-                    '{from: {year: 2020, month: 8, day: 15}, to: {year: 2020, month: 8, day: 15}}',
-                );
+                await expect(alert).toContainText('15.09.2020 – 15.09.2020');
                 await expect(example).toHaveScreenshot(
                     '07-double-click-on-the-same-day.png',
                 );
@@ -177,9 +175,7 @@ describe('CalendarRange', () => {
 
                 await calendarSheet.clickOnDay(25);
 
-                await expect(alert).toContainText(
-                    '{from: {year: 2020, month: 8, day: 22}, to: {year: 2020, month: 8, day: 25}}',
-                );
+                await expect(alert).toContainText('22.09.2020 – 25.09.2020');
                 await expect(example).toHaveScreenshot(
                     '08-new-range-after-double-click-on-the-same-day.png',
                 );
