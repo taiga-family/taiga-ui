@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.27.1](https://github.com/taiga-family/taiga-ui/compare/v4.27.0...v4.27.1) (2025-03-05)
+
+### 🐞 Bug Fixes
+
+- skeleton view without animation ([#10509](https://github.com/taiga-family/taiga-ui/issues/10509))
+  ([2311df9](https://github.com/taiga-family/taiga-ui/commit/2311df9d483da461512770e8abc406d11257bbdc))
+
 ## [4.27.0](https://github.com/taiga-family/taiga-ui/compare/v4.26.1...v4.27.0) (2025-03-04)
 
 ### 🚀 Features
