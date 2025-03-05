@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.106.0](https://github.com/taiga-family/taiga-ui/compare/v3.105.0...v3.106.0) (2025-03-05)
+
+### Bug Fixes
+
+- **demo:** `TuiHeader` add `TuiTitle` to import example
+  ([#10417](https://github.com/taiga-family/taiga-ui/issues/10417))
+  ([49b5df5](https://github.com/taiga-family/taiga-ui/commit/49b5df574a56f6b57acb045066dd56bb9aa32775))
+- skeleton view without animation ([#10512](https://github.com/taiga-family/taiga-ui/issues/10512))
+  ([b61c2a7](https://github.com/taiga-family/taiga-ui/commit/b61c2a7a62008a71760894aea959305661e6cf03))
+
 ## [3.105.0](https://github.com/taiga-family/taiga-ui/compare/v3.104.1...v3.105.0) (2025-02-18)
 
 ### Features
