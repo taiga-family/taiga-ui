@@ -22,6 +22,7 @@ tui-app-bar {
         display: flex;
         block-size: 100%;
         max-inline-size: calc(100% - var(--t-sides, 0px));
+        inline-size: calc(100% - var(--t-sides, 0px));
         flex-direction: column;
         justify-content: center;
         flex: 1;
@@ -29,6 +30,10 @@ tui-app-bar {
         box-sizing: border-box;
         text-align: inherit;
         white-space: nowrap;
+
+        progress {
+            margin: auto;
+        }
     }
 
     > :last-child [tuiIconButton] {
