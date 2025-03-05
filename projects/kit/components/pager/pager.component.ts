@@ -20,8 +20,8 @@ import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
-import {tuiWatch} from '@taiga-ui/cdk';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {delay, map} from 'rxjs';
 
 @Component({
