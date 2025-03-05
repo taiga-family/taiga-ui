@@ -10,10 +10,7 @@
 
 <ng-container [ngSwitch]="segmentedIndex">
     <ng-container *ngSwitchCase="0">
-        <tui-stepper
-            class="stepper"
-            [activeItemIndex]="index()"
-        >
+        <tui-stepper [activeItemIndex]="index()">
             <button
                 tuiStep
                 type="button"
@@ -34,7 +31,6 @@
         <tui-tabs
             size="m"
             underline="var(--tui-background-accent-opposite-pressed)"
-            class="tabs"
             [activeItemIndex]="index()"
             (activeItemIndexChange)="index.set($event)"
         >
