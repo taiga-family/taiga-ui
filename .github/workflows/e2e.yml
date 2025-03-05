@@ -13,19 +13,21 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
+      - uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.1
-      - uses: taiga-family/ci/actions/run/rebase@v1.45.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.114.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.114.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.45.1
+      - uses: taiga-family/ci/actions/setup/node@v1.114.0
+        with:
+          validate-peer-deps: false
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo -c next --output-path ${{ env.DIST }}
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v3.3.2
+        uses: actions/cache/save@v4.2.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -40,12 +42,14 @@ jobs:
         project: [core, deep, kit]
     name: ${{ matrix.project }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.1
-      - uses: taiga-family/ci/actions/setup/node@v1.45.1
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.114.0
+      - uses: taiga-family/ci/actions/setup/node@v1.114.0
+        with:
+          validate-peer-deps: false
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.2
+        uses: actions/cache/restore@v4.2.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -81,7 +85,7 @@ jobs:
         run: tree ${{ env.CYPRESS_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: ${{ env.CYPRESS_SNAPSHOTS_PATH }}/**/*.diff.png
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
@@ -100,15 +104,17 @@ jobs:
         shard: [1, 2, 3, 4]
     name: playwright / (${{ matrix.shard }} of 4)
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.1
-      - uses: taiga-family/ci/actions/setup/node@v1.45.1
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.114.0
+      - uses: taiga-family/ci/actions/setup/node@v1.114.0
+        with:
+          validate-peer-deps: false
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.2
+        uses: actions/cache/restore@v4.2.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -149,10 +155,10 @@ jobs:
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.1
         with:
           path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*.diff.png
-          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}-${{ matrix.shard }}
           if-no-files-found: ignore
           retention-days: 1
 
@@ -162,8 +168,8 @@ jobs:
     needs: [cypress, playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.1
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.114.0
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
@@ -176,8 +182,9 @@ jobs:
         continue-on-error: true
         uses: actions/download-artifact@v3.0.2
         with:
-          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
+          merge-multiple: true
           path: ./total/playwright
+          pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}*
 
       - name: Check if diff-output exists
         id: diff-checker
