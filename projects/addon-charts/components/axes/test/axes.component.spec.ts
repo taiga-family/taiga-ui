@@ -9,7 +9,7 @@ describe('Axes', () => {
         standalone: true,
         imports: [TuiAxes],
         template: `
-            <tui-axes #defaultValues />
+            <tui-axes #defaultValues></tui-axes>
             <tui-axes
                 #customValues
                 [axisXLabels]="axisXLabels"
@@ -17,7 +17,7 @@ describe('Axes', () => {
                 [axisYName]="axisYName"
                 [axisYSecondaryLabels]="axisYSecondaryLabels"
                 [axisYSecondaryName]="axisYSecondaryName"
-            />
+            ></tui-axes>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

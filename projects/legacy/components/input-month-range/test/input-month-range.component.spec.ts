@@ -11,7 +11,7 @@ describe('InputMonthRange', () => {
         standalone: true,
         imports: [ReactiveFormsModule, TuiInputMonthRangeModule],
         template: `
-            <tui-input-month-range [formControl]="control" />
+            <tui-input-month-range [formControl]="control"></tui-input-month-range>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

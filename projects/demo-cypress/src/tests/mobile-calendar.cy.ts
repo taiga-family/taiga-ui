@@ -31,7 +31,7 @@ describe('Mobile calendar', () => {
                 [single]="single"
                 (cancel)="onCancel.emit(true)"
                 (confirm)="onConfirm.emit($event)"
-            />
+            ></tui-mobile-calendar>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
         providers: [

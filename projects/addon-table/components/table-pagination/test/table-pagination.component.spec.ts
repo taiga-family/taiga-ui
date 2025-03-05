@@ -17,7 +17,7 @@ describe('TablePagination', () => {
                 [size]="size"
                 [total]="237"
                 (paginationChange)="update($event)"
-            />
+            ></tui-table-pagination>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

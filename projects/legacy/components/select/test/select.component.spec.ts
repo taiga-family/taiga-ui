@@ -57,7 +57,7 @@ describe('Select', () => {
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="items"
-                    />
+                    ></tui-data-list-wrapper>
                 </tui-select>
             </tui-root>
         `,

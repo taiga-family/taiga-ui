@@ -57,7 +57,7 @@ describe('MultiSelect', () => {
                             *tuiDataList
                             automation-id="tui-multi-select__menu"
                             [items]="items"
-                        />
+                        ></tui-data-list-wrapper>
                     </tui-multi-select>
                 </tui-root>
             `,
@@ -271,7 +271,7 @@ describe('MultiSelect', () => {
                             *tuiDataList
                             automation-id="tui-multi-select__menu"
                             [items]="items"
-                        />
+                        ></tui-data-list-wrapper>
                     </tui-multi-select>
                 </tui-root>
             `,

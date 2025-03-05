@@ -18,9 +18,9 @@ describe('Loader', () => {
                 *ngIf="custom; else def"
                 [showLoader]="showLoader"
                 [textContent]="content"
-            />
+            ></tui-loader>
             <ng-template #def>
-                <tui-loader />
+                <tui-loader></tui-loader>
             </ng-template>
             <ng-template #template>Loading...</ng-template>
         `,

@@ -32,7 +32,7 @@ describe('Textarea', () => {
                 [readOnly]="readOnly"
                 [rows]="rows"
                 [tuiHintContent]="hintContent"
-            />
+            ></tui-textarea>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

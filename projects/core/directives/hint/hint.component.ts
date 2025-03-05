@@ -43,7 +43,7 @@ const GAP = 8;
         <span
             *polymorpheusOutlet="content() as text; context: hint.context"
             [innerHTML]="text"
-        />
+        ></span>
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

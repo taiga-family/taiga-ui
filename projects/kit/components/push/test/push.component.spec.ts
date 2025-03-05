@@ -14,7 +14,7 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
         standalone: true,
         imports: [TuiRoot],
         template: `
-            <tui-root />
+            <tui-root></tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

@@ -24,7 +24,7 @@ describe('InputPassword', () => {
                 [formControl]="control"
                 [readOnly]="readOnly"
                 [tuiTextfieldSize]="size"
-            />
+            ></tui-input-password>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

@@ -14,7 +14,7 @@ import {TuiInputTimeDirective} from '../input-time.directive';
             <option
                 *ngFor="let item of items"
                 value="{{ item }}"
-            />
+            ></option>
         </datalist>
     `,
     styleUrls: ['./native-time.style.less'],

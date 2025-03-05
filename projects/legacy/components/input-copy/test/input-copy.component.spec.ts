@@ -21,7 +21,7 @@ describe('InputCopy', () => {
                 [formControl]="control"
                 [readOnly]="readOnly"
                 [tuiTextfieldSize]="size"
-            />
+            ></tui-input-copy>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

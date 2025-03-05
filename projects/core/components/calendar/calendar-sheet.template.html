@@ -3,7 +3,7 @@
         *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays | async"
         class="t-cell"
         [textContent]="day"
-    />
+    ></div>
 </div>
 <div *tuiLet="month | tuiCalendarSheet: true as sheet">
     <div
@@ -45,7 +45,7 @@
                             *ngIf="markers.length > 1"
                             class="t-dot"
                             [style.background]="markers?.[1] || ''"
-                        />
+                        ></div>
                     </div>
                 </div>
             </ng-container>
