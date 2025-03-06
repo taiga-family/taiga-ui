@@ -37,9 +37,7 @@ import {TuiNativeMonthPicker} from './native-month-picker/native-month-picker.co
         '(click)': 'toggleDropdown()',
         '(blur)': 'onTouched()',
         '[disabled]': 'disabled()',
-        // Make <input /> readonly (without readonly appearance)
         inputmode: 'none',
-        '[style.caretColor]': '"transparent"',
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
