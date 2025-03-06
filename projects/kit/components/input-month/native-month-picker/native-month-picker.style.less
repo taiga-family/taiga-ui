@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-// TODO: add tui-textfield:has([tuiInputMonth])
-tui-textfield input[type='month'] {
+// TODO: replace with `tui-textfield:has([tuiInputMonth]) input[type='month']` (when all browsers supports :has())
+tui-textfield input[tuiInputMonth] + .t-content input[type='month'] {
     .fullsize();
 
     opacity: 0;

@@ -12,7 +12,6 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -31,7 +30,7 @@ import {TuiNativeMonthPicker} from './native-month-picker/native-month-picker.co
 @Directive({
     standalone: true,
     selector: 'input[tuiInputMonth]',
-    providers: [tuiAsControl(TuiInputMonthDirective), tuiFallbackValueProvider(null)],
+    providers: [tuiAsControl(TuiInputMonthDirective)],
     hostDirectives: [TuiWithTextfield],
     host: {
         '(click)': 'toggleDropdown()',
