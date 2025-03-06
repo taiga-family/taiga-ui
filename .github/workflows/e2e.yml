@@ -4,7 +4,6 @@ on:
 
 env:
   RETRY_COUNT: 2
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
   build-demo:
