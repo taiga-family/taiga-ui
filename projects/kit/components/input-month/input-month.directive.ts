@@ -73,13 +73,13 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    protected onMonthClickEffect = effect(() => {
+    protected onMonthClickEffect = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
             this.onChange(month);
             this.open.set(false);
         });
 
-        return () => subscription?.unsubscribe();
+        onCleanup(() => subscription?.unsubscribe());
     });
 
     public readonly min = signal<TuiMonth | null>(null);
