@@ -130,13 +130,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     public readonly el = tuiInjectElement();
     public readonly auxiliaries = signal<ReadonlyArray<Type<unknown>>>([]);
 
-    // TODO: Refactor to signal queries when Angular is updated
-    public ngAfterContentInit(): void {
-        tuiQueryListChanges(this.auxiliaryQuery)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((auxiliaries) => this.auxiliaries.set(auxiliaries));
-    }
-
     @Input('filler')
     public set fillerSetter(filler: string) {
         this.filler.set(filler);
@@ -148,6 +141,13 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     public get size(): TuiSizeL | TuiSizeS {
         return this.options.size();
+    }
+
+    // TODO: Refactor to signal queries when Angular is updated
+    public ngAfterContentInit(): void {
+        tuiQueryListChanges(this.auxiliaryQuery)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe((auxiliaries) => this.auxiliaries.set(auxiliaries));
     }
 
     public handleOption(option: T): void {
