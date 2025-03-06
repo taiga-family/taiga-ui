@@ -2,7 +2,6 @@ import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -27,9 +26,7 @@ import {TuiInputMonthDirective} from '../input-month.directive';
 export class TuiNativeMonthPicker {
     private readonly control = inject(TuiControl);
 
-    protected readonly host = inject<TuiInputMonthDirective>(
-        forwardRef(() => TuiInputMonthDirective),
-    );
+    protected readonly host = inject(TuiInputMonthDirective);
 
     protected onInput(value: string): void {
         if (!value) {

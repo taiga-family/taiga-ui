@@ -1,7 +1,6 @@
 <ng-container *ngIf="host.nativePickerEnabled">
     <input
         *tuiTextfieldContent
-        #input
         type="month"
         [max]="host.max()?.toJSON()"
         [min]="host.min()?.toJSON()"
