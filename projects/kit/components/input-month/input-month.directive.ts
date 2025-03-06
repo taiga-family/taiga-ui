@@ -120,9 +120,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     protected clear(): void {
         this.onChange(null);
 
-        if (this.nativePicker?.enabled) {
-            this.nativePicker.showPicker();
-        } else {
+        if (!this.nativePicker?.enabled) {
             this.open.set(true);
         }
     }

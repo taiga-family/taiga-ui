@@ -39,11 +39,6 @@ export class TuiNativeMonthPicker {
 
     public enabled = inject(TUI_IS_MOBILE);
 
-    public showPicker(): void {
-        // TODO: remove the last optional chaining after Safari 16+ & Chrome 101+
-        this.input?.nativeElement.showPicker?.();
-    }
-
     protected onInput(value: string): void {
         if (!value) {
             return this.control.onChange(null);
