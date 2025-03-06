@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TUI_DROPDOWN_OPTIONS, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import type {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
+import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
@@ -25,10 +25,10 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
     providers: [tuiAsControl(TuiInputMonthDirective)],
     hostDirectives: [TuiWithTextfield],
     host: {
+        inputmode: 'none',
+        '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
         '(blur)': 'onTouched()',
-        '[disabled]': 'disabled()',
-        inputmode: 'none',
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
@@ -75,7 +75,10 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     public readonly min = signal<TuiMonth | null>(null);
     public readonly max = signal<TuiMonth | null>(null);
-    public readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>();
+    public readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
+        (x) => x instanceof TuiCalendarMonth,
+    );
+
     public readonly nativePickerEnabled =
         tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
 

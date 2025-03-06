@@ -1,11 +1,12 @@
 import {NgIf} from '@angular/common';
-import type {Type} from '@angular/core';
+import type {AfterContentInit, QueryList, Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
     ContentChildren,
+    DestroyRef,
     ElementRef,
     forwardRef,
     inject,
@@ -15,9 +16,11 @@ import {
     ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -70,18 +73,22 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._disabled]': 'input?.nativeElement.disabled',
     },
 })
-export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
+export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
+    private readonly destroyRef = inject(DestroyRef);
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
 
     @ContentChild(NgControl)
     protected readonly control?: NgControl;
+
+    @ContentChildren(TUI_AUXILIARY, {descendants: true})
+    protected readonly auxiliaryQuery: QueryList<Type<unknown>> = EMPTY_QUERY;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
@@ -123,6 +130,13 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly el = tuiInjectElement();
     public readonly auxiliaries = signal<ReadonlyArray<Type<unknown>>>([]);
 
+    // TODO: Refactor to signal queries when Angular is updated
+    public ngAfterContentInit(): void {
+        tuiQueryListChanges(this.auxiliaryQuery)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe((auxiliaries) => this.auxiliaries.set(auxiliaries));
+    }
+
     @Input('filler')
     public set fillerSetter(filler: string) {
         this.filler.set(filler);
@@ -139,11 +153,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public handleOption(option: T): void {
         this.directive?.setValue(option);
         this.open.set(false);
-    }
-
-    @ContentChildren(TUI_AUXILIARY, {descendants: true})
-    protected set auxiliariesSetter(x: ReadonlyArray<Type<unknown>>) {
-        this.auxiliaries.set(x);
     }
 
     protected get hasLabel(): boolean {

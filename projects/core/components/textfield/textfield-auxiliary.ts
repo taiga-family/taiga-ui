@@ -7,15 +7,13 @@ import {TuiTextfieldComponent} from './textfield.component';
 export const TUI_AUXILIARY = tuiCreateToken(null);
 
 export function tuiAsAuxiliary(x: Type<unknown>): Provider {
-    return tuiProvide(TUI_AUXILIARY, x, true);
+    return tuiProvide(TUI_AUXILIARY, x);
 }
 
 export function tuiInjectAuxiliary<T>(
-    predicate: (
-        auxiliaries: ReadonlyArray<Type<unknown>>,
-    ) => Type<unknown> | null | undefined = ([auxiliary]) => auxiliary ?? null,
+    predicate: (auxiliary: Type<unknown>, index: number) => boolean,
 ): Signal<T | null> {
     const {auxiliaries} = inject(TuiTextfieldComponent);
 
-    return computed(() => (predicate(auxiliaries()) ?? null) as T | null);
+    return computed(() => (auxiliaries().find(predicate) ?? null) as T | null);
 }
