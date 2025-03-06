@@ -1,4 +1,7 @@
-<tui-textfield>
+<tui-textfield
+    [open]="open()"
+    (openChange)="open.set($event)"
+>
     <input
         placeholder="Your happiest life moment"
         tuiInputMonth
