@@ -8,22 +8,24 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_IS_MOBILE, TuiControl, TuiMonth} from '@taiga-ui/cdk';
-import {TuiTextfieldContent} from '@taiga-ui/core';
+import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiMonth} from '@taiga-ui/cdk/date-time';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 
 import {TuiInputMonthDirective} from '../input-month.directive';
 
 @Component({
     standalone: true,
     selector: 'input[tuiInputMonth][type="month"]',
+    imports: [NgIf, TuiTextfieldContent],
     templateUrl: './native-month-picker.template.html',
     styleUrls: ['./native-month-picker.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[type]': '"text"',
     },
-    imports: [TuiTextfieldContent, NgIf],
 })
 export class TuiNativeMonthPicker {
     private readonly control = inject(TuiControl);
