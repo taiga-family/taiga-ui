@@ -1,18 +1,11 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    INJECTOR,
-    Input,
-    signal,
-} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
-import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -25,7 +18,6 @@ import type {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
-import {TuiNativeMonthPicker} from './native-month-picker/native-month-picker.component';
 
 @Directive({
     standalone: true,
@@ -44,7 +36,6 @@ import {TuiNativeMonthPicker} from './native-month-picker/native-month-picker.co
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly options = inject(TUI_INPUT_MONTH_OPTIONS);
     private readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-    private readonly injector = inject(INJECTOR);
 
     private readonly open = tuiDropdownOpen();
 
@@ -85,6 +76,8 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     public readonly min = signal<TuiMonth | null>(null);
     public readonly max = signal<TuiMonth | null>(null);
     public readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>();
+    public readonly nativePickerEnabled =
+        tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
 
     constructor() {
         super();
@@ -112,7 +105,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     }
 
     protected toggleDropdown(): void {
-        if (this.interactive() && !this.nativePicker?.enabled) {
+        if (this.interactive() && !this.nativePickerEnabled) {
             this.open.update((x) => !x);
         }
     }
@@ -120,12 +113,8 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     protected clear(): void {
         this.onChange(null);
 
-        if (!this.nativePicker?.enabled) {
+        if (!this.nativePickerEnabled) {
             this.open.set(true);
         }
-    }
-
-    private get nativePicker(): TuiNativeMonthPicker | null {
-        return this.injector.get(TuiNativeMonthPicker, null);
     }
 }
