@@ -2,15 +2,12 @@ import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     forwardRef,
     inject,
-    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 
 import {TuiInputMonthDirective} from '../input-month.directive';
@@ -30,14 +27,9 @@ import {TuiInputMonthDirective} from '../input-month.directive';
 export class TuiNativeMonthPicker {
     private readonly control = inject(TuiControl);
 
-    @ViewChild('input', {read: ElementRef})
-    protected input?: ElementRef<HTMLInputElement>;
-
     protected readonly host = inject<TuiInputMonthDirective>(
         forwardRef(() => TuiInputMonthDirective),
     );
-
-    public enabled = inject(TUI_IS_MOBILE);
 
     protected onInput(value: string): void {
         if (!value) {
