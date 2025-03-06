@@ -5,6 +5,7 @@ import {
     Component,
     computed,
     ContentChild,
+    ContentChildren,
     ElementRef,
     forwardRef,
     inject,
@@ -120,7 +121,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
-    public readonly auxiliary = signal<Type<unknown> | null>(null);
+    public readonly auxiliaries = signal<ReadonlyArray<Type<unknown>>>([]);
 
     @Input('filler')
     public set fillerSetter(filler: string) {
@@ -140,9 +141,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T> {
         this.open.set(false);
     }
 
-    @ContentChild(TUI_AUXILIARY, {descendants: true})
-    protected set auxiliarySetter(x: Type<unknown>) {
-        this.auxiliary.set(x);
+    @ContentChildren(TUI_AUXILIARY, {descendants: true})
+    protected set auxiliariesSetter(x: ReadonlyArray<Type<unknown>>) {
+        this.auxiliaries.set(x);
     }
 
     protected get hasLabel(): boolean {
