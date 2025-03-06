@@ -67,6 +67,8 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
         '(keydown.arrowUp)': 'onArrow($event, true)',
         '(document:keydown.zoneless.capture)': 'onEsc($event)',
         '(document:keydown.zoneless)': 'onKeydown($event)',
+        // TODO: Necessary because startWith(false) + distinctUntilChanged() in TuiActiveZone, think of better solution
+        '(tuiActiveZoneChange)': '0',
     },
 })
 export class TuiDropdownOpen implements OnChanges {
