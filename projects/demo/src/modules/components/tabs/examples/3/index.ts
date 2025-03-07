@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
-import {TuiChevron, TuiTabs} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -17,6 +17,7 @@ import {TuiChevron, TuiTabs} from '@taiga-ui/kit';
         TuiDropdown,
         TuiIcon,
         TuiTabs,
+        TuiDataListDropdownManager,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
