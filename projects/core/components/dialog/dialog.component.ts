@@ -16,7 +16,17 @@ import {tuiGetDuration} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
-import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
+import {
+    exhaustMap,
+    filter,
+    isObservable,
+    map,
+    merge,
+    of,
+    Subject,
+    switchMap,
+    take,
+} from 'rxjs';
 
 import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
@@ -84,7 +94,7 @@ export class TuiDialogComponent<O, I> {
         merge(
             this.close$.pipe(switchMap(() => toObservable(this.context.closeable))),
             inject(TuiDialogCloseService).pipe(
-                switchMap(() => toObservable(this.context.dismissible)),
+                exhaustMap(() => toObservable(this.context.dismissible).pipe(take(1))),
             ),
             inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
         )

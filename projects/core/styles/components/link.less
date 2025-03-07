@@ -29,8 +29,10 @@
     text-decoration-color: color-mix(in lch, currentColor, transparent);
 
     // TODO: Remove in v5
-    &:hover {
-        --tui-text-secondary: var(--tui-text-primary);
+    @media @tui-mouse {
+        &:hover {
+            --tui-text-secondary: var(--tui-text-primary);
+        }
     }
 
     &::before {
@@ -56,4 +58,14 @@
         background: var(--tui-service-selection-background);
         background: color-mix(in lch, currentColor 12%, transparent);
     });
+
+    @media @tui-mouse {
+        &[data-appearance='']:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &[data-appearance='']:active {
+        opacity: 0.7;
+    }
 }
