@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_SHEET_DIALOG_DEFAULT_OPTIONS, TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFloating} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiButton, TuiDemo, TuiSheetDialog, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloating, TuiSheetDialog, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -33,6 +33,8 @@ export default class Page {
     protected offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
 
     protected open = false;
+
+    protected substrate = false;
 
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     protected readonly labelVariants = [this.label, 'String label', 'Template'];

@@ -1,0 +1,66 @@
+<h2>Scroll to see the floating</h2>
+
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="floating"
+        />
+        Floating visibility
+    </label>
+</p>
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [ngModel]="secondAction()"
+            (ngModelChange)="secondAction.set($event)"
+        />
+        Second action visibility
+    </label>
+</p>
+
+<div
+    #content
+    class="content"
+    (scroll)="onScroll(content)"
+>
+    <div
+        *tuiRepeatTimes="let i of 30"
+        tuiCell
+    >
+        <tui-avatar
+            appearance="primary"
+            src="@tui.star"
+        />
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
+    </div>
+
+    <footer
+        *ngIf="floating"
+        tuiFloating
+        @tuiSlideInTop
+        [tuiSubstrate]="substrate()"
+    >
+        <button
+            tuiButton
+            type="button"
+        >
+            Main action
+        </button>
+        <button
+            *ngIf="secondAction()"
+            appearance="flat"
+            tuiButton
+            type="button"
+            @tuiHeightCollapse
+        >
+            Secondary action
+        </button>
+    </footer>
+</div>

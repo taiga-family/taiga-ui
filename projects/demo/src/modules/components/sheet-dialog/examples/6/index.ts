@@ -13,7 +13,7 @@ import {
     TuiNotification,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarLabeled, TuiFade} from '@taiga-ui/kit';
+import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloating} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
 
 @Component({
@@ -32,6 +32,7 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiFade,
         TuiFallbackSrcPipe,
         TuiFilterPipe,
+        TuiFloating,
         TuiNotification,
         TuiSheetDialog,
         TuiTitle,

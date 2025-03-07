@@ -121,6 +121,53 @@ export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     ),
 ]);
 
+// TODO: think about hardcoding :leave parameters
+export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
+    transition(
+        ':enter',
+        [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
+        DURATION,
+    ),
+    transition(
+        ':leave',
+        [
+            style({opacity: 1, position: 'absolute', left: '1rem', right: '1rem'}),
+            animate(TRANSITION, style({opacity: 0})),
+        ],
+        DURATION,
+    ),
+]);
+
+// TODO: think about hardcoding :leave parameters
+export const tuiCrossFadeInBottom = trigger('tuiCrossFadeInBottom', [
+    transition(
+        ':enter',
+        [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
+        DURATION,
+    ),
+    transition(
+        ':leave',
+        [
+            style({
+                opacity: 1,
+                position: 'absolute',
+                bottom: '1rem',
+                left: '1rem',
+                right: '1rem',
+            }),
+            animate(TRANSITION, style({opacity: 0})),
+        ],
+        DURATION,
+    ),
+]);
+
+// export const tuiDynamicHeightCollapse = trigger('tuiDynamicHeightCollapse', [
+//     transition('void <=> *', []),
+//     transition('* <=> *', [style({height: '{{start}}px'}), animate(TRANSITION)], {
+//         params: {start: 0, duration: 300},
+//     }),
+// ]);
+
 export const tuiFadeIn = trigger('tuiFadeIn', [
     transition(
         ':enter',

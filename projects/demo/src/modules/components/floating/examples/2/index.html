@@ -1,0 +1,91 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show
+</button>
+
+<ng-template #template>
+    <div tuiHeader>
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Subtitle</div>
+        </div>
+    </div>
+    <label
+        tuiLabel
+        [style.margin-top.rem]="1"
+    >
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="floating"
+        />
+        Floating visibility
+    </label>
+    <label
+        tuiLabel
+        [style.margin-top.rem]="0.5"
+    >
+        <input
+            tuiSwitch
+            type="checkbox"
+            [ngModel]="secondAction()"
+            (ngModelChange)="secondAction.set($event)"
+        />
+        Second action visibility
+    </label>
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="{
+        label: template,
+    }"
+    [(tuiSheetDialog)]="open"
+>
+    <div
+        #content
+        (scroll)="onScroll(content)"
+    >
+        <div
+            *tuiRepeatTimes="let i of 30"
+            tuiCell
+        >
+            <tui-avatar
+                appearance="primary"
+                src="@tui.star"
+            />
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
+        </div>
+
+        <footer
+            *ngIf="floating"
+            tuiFloating
+            @tuiSlideInTop
+            [tuiSubstrate]="substrate()"
+        >
+            <button
+                tuiButton
+                type="button"
+                (click)="observer.complete()"
+            >
+                Main action
+            </button>
+            <button
+                *ngIf="secondAction()"
+                appearance="flat"
+                tuiButton
+                type="button"
+                @tuiHeightCollapse
+                (click)="observer.complete()"
+            >
+                Secondary action
+            </button>
+        </footer>
+    </div>
+</ng-template>
