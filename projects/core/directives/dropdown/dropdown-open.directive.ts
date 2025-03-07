@@ -119,6 +119,7 @@ export class TuiDropdownOpen implements OnChanges {
 
     public ngOnChanges(): void {
         this.drive(!!this.tuiDropdownOpen);
+        this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen);
     }
 
     public toggle(open: boolean): void {

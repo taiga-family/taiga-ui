@@ -10,7 +10,7 @@ export function tuiCloseWatcher(): Observable<void> {
     return new Observable((subscriber) => {
         let watcher = getWatcher();
 
-        const setup = () => {
+        const setup = (): void => {
             watcher = getWatcher();
             watcher.onclose = () => setup();
             watcher.oncancel = (event) => {
