@@ -109,10 +109,37 @@
         />
 
         <tui-doc-example
-            id="native"
-            heading="Native picker"
+            id="month-formatter"
+            heading="Selected value customization"
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
+            [description]="monthFormatterDescription"
+        >
+            <ng-template #monthFormatterDescription>
+                Use
+                <code>TUI_MONTH_FORMATTER</code>
+                to customize view of selected value
+                <strong>inside textfield</strong>
+                .
+
+                <p>
+                    To switch language inside calendar – read documentation page
+                    <a
+                        tuiLink
+                        [routerLink]="routes.I18N"
+                    >
+                        "Internationalization"
+                    </a>
+                    .
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native"
+            heading="Native picker"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
             [description]="nativePickerDescription"
         >
             <ng-template #nativePickerDescription>
