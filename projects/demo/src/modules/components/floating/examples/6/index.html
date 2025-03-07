@@ -1,0 +1,60 @@
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="floating"
+        />
+        Floating visibility
+    </label>
+</p>
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="action"
+        />
+        Primary action
+    </label>
+</p>
+
+<div class="content">
+    <div
+        *tuiRepeatTimes="let i of 30"
+        tuiCell
+    >
+        <tui-avatar
+            appearance="primary"
+            src="@tui.star"
+        />
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
+    </div>
+
+    <footer
+        *ngIf="floating"
+        tuiFloating
+        @tuiSlideInTop
+    >
+        <button
+            *ngIf="!action"
+            tuiButton
+            type="button"
+            @tuiCrossFadeIn
+        >
+            Main action
+        </button>
+        <button
+            *ngIf="action"
+            appearance="primary-grayscale"
+            tuiButton
+            type="button"
+            @tuiCrossFadeIn
+        >
+            Add to Apple Wallet
+        </button>
+    </footer>
+</div>
