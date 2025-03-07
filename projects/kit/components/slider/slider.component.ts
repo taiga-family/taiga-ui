@@ -16,6 +16,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
     template: '',
     styleUrls: ['./slider.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiSliderComponent)],
     host: {
         /**
          * For change detection.
@@ -29,7 +30,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
     },
-    providers: [tuiAsAuxiliary(TuiSliderComponent)],
 })
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);
