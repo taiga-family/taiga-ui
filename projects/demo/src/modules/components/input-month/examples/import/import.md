@@ -1,19 +1,18 @@
 ```ts
-import {TuiInputMonthModule} from '@taiga-ui/legacy';
-
-// ...
+import {FormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputMonth} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiInputMonthModule,
+    FormsModule,
+    TuiTextfield,
+    TuiInputMonth,
   ],
-  // ...
 })
 export class Example {
-  readonly testForm = new FormGroup({
-    testValue: new FormControl(null),
-  });
+  value: TuiMonth | null = null;
 }
 ```

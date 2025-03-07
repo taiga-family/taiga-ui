@@ -1,0 +1,23 @@
+<tui-textfield
+    [open]="open()"
+    (openChange)="open.set($event)"
+>
+    <input
+        placeholder="Your happiest life moment"
+        tuiInputMonth
+        [(ngModel)]="value"
+    />
+
+    <ng-container *tuiTextfieldDropdown>
+        <tui-calendar-month />
+
+        <button
+            tuiLink
+            type="button"
+            class="option"
+            (click)="chooseTheOnlyCorrectOption()"
+        >
+            My wife's birthday
+        </button>
+    </ng-container>
+</tui-textfield>

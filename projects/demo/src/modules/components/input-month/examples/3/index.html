@@ -1,12 +1,21 @@
-<tui-input-month
-    [formControl]="control"
-    [max]="max"
-    [min]="min"
-    [tuiTextfieldCleaner]="true"
+<tui-textfield
+    iconStart="@tui.calendar"
+    tuiTextfieldSize="m"
 >
-    Choose a month
+    <label tuiLabel>I am a label</label>
+
     <input
-        placeholder="Not September please"
-        tuiTextfieldLegacy
+        placeholder="I am placeholder"
+        tuiInputMonth
+        [(ngModel)]="value"
     />
-</tui-input-month>
+
+    <tui-calendar-month *tuiTextfieldDropdown />
+
+    <tui-icon
+        icon="@tui.circle-alert"
+        style="color: var(--tui-status-negative); pointer-events: none"
+    />
+
+    <tui-icon tuiTooltip="I am a hint" />
+</tui-textfield>

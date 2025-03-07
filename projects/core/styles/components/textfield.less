@@ -30,6 +30,10 @@ tui-textfield {
     input,
     select {
         font: var(--tui-font-text-m);
+
+        &[inputmode='none'] {
+            caret-color: transparent;
+        }
     }
 
     &[data-size='s'] {
@@ -287,6 +291,7 @@ tui-textfield {
     }
 
     .t-clear {
+        z-index: 1;
         display: none;
         pointer-events: auto;
     }

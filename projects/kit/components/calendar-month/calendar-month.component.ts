@@ -1,11 +1,13 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     EventEmitter,
     inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -26,6 +28,7 @@ import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
+import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();
@@ -34,8 +37,6 @@ const TODAY = TuiDay.currentLocal();
     standalone: true,
     selector: 'tui-calendar-month',
     imports: [
-        AsyncPipe,
-        NgForOf,
         NgIf,
         TuiCalendarYear,
         TuiHovered,
@@ -48,16 +49,17 @@ const TODAY = TuiDay.currentLocal();
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiCalendarMonth)],
     host: {
-        '[class._picking]': 'isSingle',
+        '[class._picking]': 'isSingle()',
     },
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;
     protected readonly months = toSignal(inject(TUI_CALENDAR_MONTHS));
-
-    @Input()
-    public value: TuiMonth | TuiMonthRange | null = null;
+    protected readonly isSingle = computed(
+        (x = this.value()) => x instanceof TuiMonthRange && x.isSingleMonth,
+    );
 
     @Input()
     public year: TuiYear = TODAY;
@@ -71,12 +73,6 @@ export class TuiCalendarMonth {
     @Input()
     public maxLength: number | null = null;
 
-    @Input()
-    public min: TuiMonth | null = TUI_FIRST_DAY;
-
-    @Input()
-    public max: TuiMonth | null = TUI_LAST_DAY;
-
     @Output()
     public readonly monthClick = new EventEmitter<TuiMonth>();
 
@@ -86,10 +82,27 @@ export class TuiCalendarMonth {
     @Output()
     public readonly yearChange = new EventEmitter<TuiYear>();
 
+    public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
+    public readonly max = signal<TuiMonth>(TUI_LAST_DAY);
+    public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
     public hoveredItem: TuiMonth | null = null;
 
-    public get isSingle(): boolean {
-        return this.value instanceof TuiMonthRange && this.value.isSingleMonth;
+    // TODO(v5): use signal inputs
+    @Input({alias: 'min', transform: (x: TuiMonth | null) => x ?? TUI_FIRST_DAY})
+    public set minSetter(x: TuiMonth) {
+        this.min.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input({alias: 'max', transform: (x: TuiMonth | null) => x ?? TUI_LAST_DAY})
+    public set maxSetter(x: TuiMonth) {
+        this.max.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input('value')
+    public set valueSetter(x: TuiMonth | TuiMonthRange | null) {
+        this.value.set(x);
     }
 
     public onNextYear(): void {
@@ -101,7 +114,8 @@ export class TuiCalendarMonth {
     }
 
     public getItemRange(item: TuiMonth): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value, hoveredItem} = this;
+        const value = this.value();
+        const {hoveredItem} = this;
 
         if (!(value instanceof TuiMonthRange)) {
             return value?.monthSame(item) ? 'active' : null;
@@ -111,7 +125,7 @@ export class TuiCalendarMonth {
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
         const from = value.from.month + value.from.year * 12;
         const to = value.to.month + value.to.year * 12;
-        const picking = this.isSingle ? hovered : null;
+        const picking = this.isSingle() ? hovered : null;
         const min = Math.min(from, to, picking ?? from);
         const max = Math.max(from, to, picking ?? from);
 
@@ -130,28 +144,12 @@ export class TuiCalendarMonth {
         return min < months && months < max ? 'middle' : null;
     }
 
-    protected get computedMin(): TuiMonth {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiMonth {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
-    protected get previousYearDisabled(): boolean {
-        return this.year.yearSameOrBefore(this.computedMin);
-    }
-
-    protected get nextYearDisabled(): boolean {
-        return this.year.yearSameOrAfter(this.computedMax);
-    }
-
     protected get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
         return this.calculateDisabledItemHandlerWithMinMax(
             this.disabledItemHandler,
-            this.value,
-            this.computedMin,
-            this.computedMax,
+            this.value(),
+            this.min(),
+            this.max(),
             this.minLength,
             this.maxLength,
         );

@@ -4,9 +4,9 @@
 >
     <tui-calendar-year
         [initialItem]="year.year"
-        [max]="computedMax.year"
-        [min]="computedMin.year"
-        [value]="value"
+        [max]="max().year"
+        [min]="min().year"
+        [value]="value()"
         (yearClick)="onPickerYearClick($event)"
     />
 </tui-scrollbar>
@@ -14,8 +14,8 @@
     <tui-spin-button
         class="t-spin"
         [focusable]="false"
-        [leftDisabled]="previousYearDisabled"
-        [rightDisabled]="nextYearDisabled"
+        [leftDisabled]="year.yearSameOrBefore(min())"
+        [rightDisabled]="year.yearSameOrAfter(max())"
         (leftClick)="onPreviousYear()"
         (rightClick)="onNextYear()"
     >

@@ -1,21 +1,24 @@
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMonth} from '@taiga-ui/cdk';
-import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
-import {TuiInputMonthModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import type {TuiMonth} from '@taiga-ui/cdk';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputMonth, tuiInputMonthOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputMonthModule, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiIcon, TuiInputMonth, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiInputDateOptionsProvider({nativePicker: true})],
+    providers: [
+        tuiInputMonthOptionsProvider({
+            // Callback has the first argument – size of the textfield box ('s' | 'm' | 'l')
+            icon: () => '',
+        }),
+    ],
 })
 export default class Example {
-    protected readonly control = new FormControl<TuiMonth | null>(null);
-    protected readonly min = TuiMonth.currentLocal().append({month: -12});
-    protected readonly max = TuiMonth.currentLocal().append({month: 12});
+    protected value: TuiMonth | null = null;
 }

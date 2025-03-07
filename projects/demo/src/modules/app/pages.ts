@@ -545,6 +545,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputMonth [deprecated]',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                route: DemoRoute.InputMonthLegacy,
+            },
+            {
+                section: 'Components',
                 title: 'InputMonthRange',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthRange,
