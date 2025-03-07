@@ -118,7 +118,7 @@ export class TuiDropdownOpen implements OnChanges {
         .subscribe(() => this.toggle(false));
 
     public ngOnChanges(): void {
-        this.update(!!this.tuiDropdownOpen);
+        this.drive(!!this.tuiDropdownOpen);
     }
 
     public toggle(open: boolean): void {
