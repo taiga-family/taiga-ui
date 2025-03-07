@@ -1,9 +1,8 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -55,13 +54,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     protected readonly calendarSync = effect(() => {
-        const calendar = this.calendar();
-
-        if (calendar) {
-            calendar.value.set(this.value());
-            calendar.min.set(this.min() ?? TUI_FIRST_DAY); // TODO(v5): remove TUI_FIRST_DAY fallback
-            calendar.max.set(this.max() ?? TUI_LAST_DAY); // TODO(v5): remove TUI_LAST_DAY fallback
-        }
+        this.calendar()?.value.set(this.value());
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected onMonthClickEffect = effect((onCleanup) => {
@@ -73,8 +66,6 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly min = signal<TuiMonth | null>(null);
-    public readonly max = signal<TuiMonth | null>(null);
     public readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
         (x) => x instanceof TuiCalendarMonth,
     );
@@ -90,16 +81,6 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
          * TODO: find better way to override TuiDropdownFixed host directive from TuiTextfieldComponent
          */
         (inject(TUI_DROPDOWN_OPTIONS) as any).limitWidth = 'auto';
-    }
-
-    @Input('min')
-    public set minSetter(x: TuiMonth | null) {
-        this.min.set(x);
-    }
-
-    @Input('max')
-    public set maxSetter(x: TuiMonth | null) {
-        this.max.set(x);
     }
 
     public override setDisabledState(): void {
