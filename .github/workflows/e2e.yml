@@ -4,6 +4,7 @@ on:
 
 env:
   RETRY_COUNT: 2
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
   build-demo:
@@ -46,7 +47,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.114.0
 
       - name: Run tests for baseline state
-        run: npx nx component-test demo-cypress --no-cloud
+        run: npx nx component-test demo-cypress
 
       - name: Save Cypress Baseline Snapshots
         uses: actions/upload-artifact@v4.6.1
@@ -69,7 +70,7 @@ jobs:
           merge-multiple: true
 
       - name: Run tests for current state
-        run: npx nx component-test demo-cypress --no-cloud
+        run: npx nx component-test demo-cypress
 
       - name: Prepare diff screenshots
         run: |

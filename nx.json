@@ -1,9 +1,9 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "defaultProject": "demo",
+    "nxCloudId": "65379685bc6d4d78e25c18d9",
     "parallel": 3,
     "showUsageWarnings": true,
-    "neverConnectToCloud": true,
     "namedInputs": {
         "sharedGlobals": [
             "{workspaceRoot}/projects/testing/**/*.ts",
