@@ -36,7 +36,11 @@ function shouldFocus(
     this: TuiOptionComponent,
     {currentTarget}: TuiEventWith<MouseEvent, HTMLElement>,
 ): boolean {
-    return !this.isMobile && !tuiIsNativeFocused(currentTarget);
+    return (
+        !this.isMobile &&
+        !tuiIsNativeFocused(currentTarget) &&
+        !!currentTarget.closest('[tuiDataListDropdownManager]')
+    );
 }
 
 // TODO: Consider all use cases for aria roles
