@@ -219,3 +219,25 @@
         border-bottom-right-radius: 0;
     }
 }
+
+:host-context(tui-textfield) :host([type='range']) {
+    --tui-radius: var(--tui-radius-m);
+    @left-gap: calc(var(--tui-radius) / 2);
+
+    position: absolute;
+    top: 100%;
+    left: @left-gap;
+    right: 0;
+    inline-size: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
+    box-sizing: border-box;
+    block-size: 1rem;
+    margin: -0.5625rem 0 0;
+    padding: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
+    pointer-events: auto;
+}
+
+:host-context(tui-textfield[data-size='l']) :host([type='range']) {
+    --tui-radius: var(--tui-radius-l);
+}
