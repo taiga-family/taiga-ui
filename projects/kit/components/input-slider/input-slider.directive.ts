@@ -12,7 +12,7 @@ import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
 } from '@taiga-ui/kit/components/input-number';
-import type {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
+import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
 
 @Directive({
@@ -39,7 +39,10 @@ export class TuiInputSliderDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly element = tuiInjectElement<HTMLInputElement>();
     private readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
-    private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>();
+    private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
+        (x) => x instanceof TuiSliderComponent,
+    );
+
     private readonly controlTransformer = inject(TuiValueTransformer, {self: true});
     private readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
@@ -74,7 +77,7 @@ export class TuiInputSliderDirective {
         slider.el.disabled = !this.inputNumber.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    protected readonly sliderInitEffect = effect(() => {
+    protected readonly sliderInitEffect = effect((onCleanup) => {
         const slider = this.slider();
 
         if (!slider) {
@@ -91,7 +94,7 @@ export class TuiInputSliderDirective {
             .pipe(filter(tuiIsElement), filter(tuiIsInput))
             .subscribe((x) => this.onSliderInput(x.valueAsNumber));
 
-        return () => subscription?.unsubscribe();
+        onCleanup(() => subscription.unsubscribe());
     });
 
     constructor() {
