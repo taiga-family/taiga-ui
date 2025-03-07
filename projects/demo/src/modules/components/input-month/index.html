@@ -133,11 +133,11 @@
                         feature.
                     </div>
                     <div>
-                        Built-in Safari native picker does not support
+                        Also, we discourage to use
                         <code>[min]</code>
                         /
                         <code>[max]</code>
-                        properties.
+                        properties with enabled native picker – it has rather limited browser support.
                     </div>
                 </tui-notification>
             </ng-template>
@@ -156,8 +156,6 @@
                         tuiInputMonth
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
-                        [max]="max"
-                        [min]="min"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -165,6 +163,8 @@
                     <tui-calendar-month
                         *tuiTextfieldDropdown
                         [disabledItemHandler]="disabledItemHandler"
+                        [max]="max"
+                        [min]="min"
                         [(year)]="year"
                     />
                 </tui-textfield>
@@ -172,6 +172,20 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.CalendarMonth"
+                            >
+                                <strong>CalendarMonth</strong>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+
                 <tr
                     name="[min]"
                     tuiDocAPIItem
@@ -190,22 +204,6 @@
                     [(value)]="max"
                 >
                     The greatest value in the range of permitted dates
-                </tr>
-            </tbody>
-
-            <tbody>
-                <tr>
-                    <td colspan="3">
-                        <span tuiTitle>
-                            <a
-                                target="_blank"
-                                tuiLink
-                                [routerLink]="routes.CalendarMonth"
-                            >
-                                <strong>CalendarMonth</strong>
-                            </a>
-                        </span>
-                    </td>
                 </tr>
 
                 <tr

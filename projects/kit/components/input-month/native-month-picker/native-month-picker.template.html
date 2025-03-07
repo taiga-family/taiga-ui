@@ -2,8 +2,8 @@
     <input
         *tuiTextfieldContent
         type="month"
-        [max]="host.max()?.toJSON()"
-        [min]="host.min()?.toJSON()"
+        [max]="max()?.toJSON()"
+        [min]="min()?.toJSON()"
         [value]="host.value()?.toJSON()"
         (click.stop.zoneless)="(0)"
         (input)="onInput($any($event.target).value)"
