@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    block-size: 100%;
+    align-items: center;
+    justify-content: center;
+
+    :host-context([data-platform='android']) & {
+        justify-content: start;
+    }
+}
+
+.ng-animating:not(:first-of-type) {
+    position: absolute;
+}
