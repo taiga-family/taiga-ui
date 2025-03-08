@@ -1,0 +1,68 @@
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="floating"
+        />
+        Floating visibility
+    </label>
+</p>
+
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="additional"
+        />
+        Additional content
+    </label>
+</p>
+
+<div class="content">
+    <div
+        *tuiRepeatTimes="let i of 30"
+        tuiCell
+    >
+        <tui-avatar
+            appearance="primary"
+            src="@tui.star"
+        />
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
+    </div>
+
+    <!-- TODO: Add dynamic height collapse -->
+    <footer
+        *ngIf="floating"
+        tuiFloating
+        @tuiSlideInTop
+        [tuiSubstrate]="true"
+    >
+        <button
+            tuiButton
+            type="button"
+        >
+            Main action
+        </button>
+        <span
+            *ngIf="additional"
+            tuiLegal
+            @tuiCrossFadeInBottom
+        >
+            Legal text, max 3 lines
+        </span>
+        <button
+            *ngIf="!additional"
+            appearance="flat"
+            tuiButton
+            type="button"
+            @tuiCrossFadeInBottom
+        >
+            Secondary action
+        </button>
+    </footer>
+</div>
