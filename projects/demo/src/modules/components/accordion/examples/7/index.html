@@ -1,0 +1,14 @@
+<button
+    size="s"
+    tuiButton
+    (click)="changeData()"
+>
+    Change data
+</button>
+
+<tui-accordion class="tui-space_top-3">
+    <ng-container *ngFor="let item of data | keyvalue; let index = index">
+        <button [tuiAccordion]="index === 1">{{ item.key }}</button>
+        <tui-expand>{{ item.value }}</tui-expand>
+    </ng-container>
+</tui-accordion>
