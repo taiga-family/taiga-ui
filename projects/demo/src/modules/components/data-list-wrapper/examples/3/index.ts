@@ -18,7 +18,7 @@ export default class Example {
     protected readonly items = [
         ['Caesar', 'Greek', 'Apple and Chicken'],
         ['Broccoli Cheddar', 'Chicken and Rice', 'Chicken Noodle'],
-    ];
+    ] as const;
 
-    protected labels = ['Salad', 'Soup'];
+    protected labels = ['Salad', 'Soup'] as const;
 }

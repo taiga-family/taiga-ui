@@ -12,24 +12,11 @@
         </p>
 
         <tui-doc-example
-            id="disable"
-            heading="Disables items that start with T"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="Custom item content"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="group-by"
-            heading="Group by labels"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample: 'html,ts'"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
@@ -40,7 +27,7 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="items"
-                documentationPropertyType="T[] | T[][] | null"
+                documentationPropertyType="readonly T[] | ReadonlyArray<readonly T[]> | null"
             >
                 Items to select
             </ng-template>
@@ -77,7 +64,7 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="labels"
-                documentationPropertyType="string[]"
+                documentationPropertyType="readonly string[]"
             >
                 Group label
             </ng-template>
