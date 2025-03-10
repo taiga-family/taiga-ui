@@ -17,6 +17,7 @@ export default class Page {
     protected readonly examples = ['Basic', 'Service', 'Directive'];
     protected heading = '';
     protected type = '';
+    protected lines = 2;
 
     protected readonly timestampVars = ['', 'A moment ago', 123456789];
     protected timestamp = this.timestampVars[0]!;

@@ -19,6 +19,7 @@
         <tui-doc-demo>
             <tui-push
                 [heading]="heading"
+                [lines]="lines"
                 [timestamp]="timestamp"
                 [type]="type"
                 (close)="documentationPropertyClose.emitEvent($event)"
@@ -60,6 +61,13 @@
                 [(documentationPropertyValue)]="type"
             >
                 Small text near icon, typically, category of the message
+            </ng-template>
+            <ng-template
+                documentationPropertyName="lines"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="lines"
+            >
+                A number of visible lines
             </ng-template>
             <ng-template
                 documentationPropertyName="timestamp"
