@@ -89,7 +89,7 @@ export class TuiFade {
         return (
             Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth - BUFFER ||
             // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
-            el.scrollHeight > el.clientHeight + 4 * BUFFER
+            (!!this.lineHeight && el.scrollHeight > el.clientHeight + 4 * BUFFER)
         );
     }
 }
