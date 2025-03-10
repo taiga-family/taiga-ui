@@ -2,13 +2,13 @@
 <tui-textfield>
   <input
     tuiInputMonth
-    [min]="min"
-    [max]="max"
     [(ngModel)]="value"
   />
 
   <tui-calendar-month
     *tuiTextfieldDropdown
+    [min]="min"
+    [max]="max"
     [disabledItemHandler]="disabledItemHandler"
     [(year)]="activeYear"
   />

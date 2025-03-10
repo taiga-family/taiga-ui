@@ -2,14 +2,14 @@
     <input
         placeholder="Select vacation month"
         tuiInputMonth
-        [max]="max"
-        [min]="min"
         [(ngModel)]="value"
     />
 
     <tui-calendar-month
         *tuiTextfieldDropdown
         [disabledItemHandler]="isSummerHandler"
+        [max]="max"
+        [min]="min"
         [(year)]="activeYear"
     />
 </tui-textfield>
