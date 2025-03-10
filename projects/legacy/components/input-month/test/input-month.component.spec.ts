@@ -14,7 +14,7 @@ describe('InputMonth', () => {
         imports: [ReactiveFormsModule, TuiInputMonthModule, TuiRoot],
         template: `
             <tui-root>
-                <tui-input-month [formControl]="control"></tui-input-month>
+                <tui-input-month [formControl]="control" />
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

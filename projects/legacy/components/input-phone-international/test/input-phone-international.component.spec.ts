@@ -22,7 +22,7 @@ describe('InputPhoneInternational', () => {
                     [countryIsoCode]="countryIsoCode"
                     [formControl]="control"
                     [readOnly]="readOnly"
-                ></tui-input-phone-international>
+                />
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

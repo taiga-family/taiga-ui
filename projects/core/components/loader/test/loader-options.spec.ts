@@ -12,7 +12,7 @@ describe('Loader component options', () => {
         standalone: true,
         imports: [TuiLoader],
         template: `
-            <tui-loader></tui-loader>
+            <tui-loader />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

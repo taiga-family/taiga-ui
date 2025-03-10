@@ -21,7 +21,7 @@ describe('TuiRange', () => {
                 [min]="min"
                 [segments]="segments"
                 [step]="step"
-            ></tui-range>
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

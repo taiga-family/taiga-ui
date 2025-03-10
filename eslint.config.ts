@@ -23,8 +23,6 @@ export default [
             '@angular-eslint/template/button-has-type': 'off',
             '@angular-eslint/template/elements-content': 'off',
             'jest/prefer-importing-jest-globals': 'off',
-            // TODO: https://github.com/angular-eslint/angular-eslint/issues/2280
-            '@angular-eslint/template/prefer-self-closing-tags': 'off',
         },
     },
 ];

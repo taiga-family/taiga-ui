@@ -70,7 +70,7 @@ describe('ComboBox', () => {
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="items"
-                    ></tui-data-list-wrapper>
+                    />
                 </tui-combo-box>
             </tui-root>
         `,

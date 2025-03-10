@@ -47,7 +47,7 @@ describe('InputDateRangeComponent', () => {
                     [readOnly]="readOnly"
                     [tuiTextfieldCleaner]="cleaner"
                     [(ngModel)]="value"
-                ></tui-input-date-range>
+                />
             </tui-root>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -460,7 +460,7 @@ describe('InputDateRangeComponent', () => {
                         [min]="min"
                         [readOnly]="readOnly"
                         [tuiTextfieldCleaner]="cleaner"
-                    ></tui-input-date-range>
+                    />
                 </tui-root>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,

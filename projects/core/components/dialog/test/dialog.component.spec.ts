@@ -12,7 +12,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
         standalone: true,
         imports: [TuiRoot],
         template: `
-            <tui-root></tui-root>
+            <tui-root />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

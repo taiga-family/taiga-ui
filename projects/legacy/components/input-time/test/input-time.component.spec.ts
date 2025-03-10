@@ -46,7 +46,7 @@ describe('InputTime', () => {
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                ></tui-input-time>
+                />
             </tui-root>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -347,7 +347,7 @@ describe('InputTime', () => {
                     <tui-input-time
                         [formControl]="control"
                         [items]="items"
-                    ></tui-input-time>
+                    />
                 </tui-root>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
