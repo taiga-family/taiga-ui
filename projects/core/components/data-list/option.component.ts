@@ -82,7 +82,12 @@ export class TuiOption<T = unknown> implements OnDestroy {
     }
 
     protected onMouseMove(): void {
-        if (!this.isMobile && !tuiIsNativeFocused(this.el) && this.dataList) {
+        if (
+            !this.isMobile &&
+            !tuiIsNativeFocused(this.el) &&
+            this.dataList &&
+            this.el.closest('[tuiDataListDropdownManager]')
+        ) {
             this.el.focus({preventScroll: true});
         }
     }
