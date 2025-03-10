@@ -12,7 +12,7 @@ describe('BarSet', () => {
             <tui-bar-set
                 [collapsed]="collapsed"
                 [value]="value"
-            ></tui-bar-set>
+            />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,

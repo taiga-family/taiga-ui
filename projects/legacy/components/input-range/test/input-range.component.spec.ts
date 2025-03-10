@@ -18,7 +18,7 @@ describe('InputRange', () => {
             <tui-input-range
                 *ngIf="default"
                 [formControl]="control"
-            ></tui-input-range>
+            />
             <tui-input-range
                 *ngIf="!default"
                 [formControl]="control"
@@ -28,7 +28,7 @@ describe('InputRange', () => {
                 [quantum]="quantum"
                 [readOnly]="readOnly"
                 [steps]="steps"
-            ></tui-input-range>
+            />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,

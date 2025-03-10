@@ -42,7 +42,7 @@ describe('Filter', () => {
                 [formControl]="control"
                 [items]="items"
                 [size]="size"
-            ></tui-filter>
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

@@ -66,7 +66,7 @@ describe('Input', () => {
                             *tuiDataList
                             automation-id="tui-data-list-wrapper"
                             [items]="items"
-                        ></tui-data-list-wrapper>
+                        />
                     </tui-input>
                     <button
                         #submit
