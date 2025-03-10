@@ -18,7 +18,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 })
 export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<
     T,
-    T[]
+    readonly T[]
 > {
     @Input()
     public labels: readonly string[] = [];

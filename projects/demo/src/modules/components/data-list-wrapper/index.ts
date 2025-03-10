@@ -8,4 +8,10 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly examples = [
+        'Disables items that start with T',
+        'Custom item content',
+        'Group by labels',
+    ];
+}

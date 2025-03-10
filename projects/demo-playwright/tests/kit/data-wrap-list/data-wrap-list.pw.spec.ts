@@ -7,7 +7,7 @@ test.describe('DataListWrapper', () => {
 
     test('show nothing found', async ({page}) => {
         const api = new TuiDocumentationPagePO(page);
-        const example = api.getExample('#disable');
+        const example = api.getExample('[id^="disables"]');
 
         await example.scrollIntoViewIfNeeded();
         await api.waitStableState();
