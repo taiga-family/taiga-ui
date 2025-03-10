@@ -1,4 +1,5 @@
 import type {Provider} from '@angular/core';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
@@ -8,9 +9,30 @@ export const TuiSortDirection = {
 } as const;
 export type TuiSortDirection = (typeof TuiSortDirection)[keyof typeof TuiSortDirection];
 
-export interface TuiSortAndOrder<T> {
+export interface TuiSortChange<T> {
+    /**
+     * @deprecated use sortKey
+     */
     sortBy: keyof T | null;
-    orderBy: -1 | 1;
+    sortKey: keyof T | null;
+    /**
+     * @deprecated use sortDirection
+     */
+    orderBy: TuiSortDirection;
+    sortDirection: TuiSortDirection;
+}
+
+export interface TuiTableSortChange<T> {
+    /**
+     * @deprecated use sortComparator
+     */
+    sortBy: TuiComparator<T> | null;
+    sortComparator: TuiComparator<T> | null;
+    /**
+     * @deprecated use sortDirection
+     */
+    orderBy: TuiSortDirection;
+    sortDirection: TuiSortDirection;
 }
 
 export interface TuiTableOptions {
