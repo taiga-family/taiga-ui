@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.28.0](https://github.com/taiga-family/taiga-ui/compare/v4.27.1...v4.28.0) (2025-03-11)
+
+### 🚀 Features
+
+- **kit:** `InputMonth` refactor to new `Textfield` ([#10345](https://github.com/taiga-family/taiga-ui/issues/10345))
+  ([03068fb](https://github.com/taiga-family/taiga-ui/commit/03068fb0c0de2ffd4f1785a0c4cbf4abe763a186))
+- **nx-cloud:** set up nx workspace ([#10520](https://github.com/taiga-family/taiga-ui/issues/10520))
+  ([a76b804](https://github.com/taiga-family/taiga-ui/commit/a76b8048d0c54dadf74c90cccde25e3719a766cd))
+
+### 🐞 Bug Fixes
+
+- **core:** `TuiDataList` attr(data-label) not correct working in Chrome
+  ([#10551](https://github.com/taiga-family/taiga-ui/issues/10551))
+  ([1dc4778](https://github.com/taiga-family/taiga-ui/commit/1dc4778e950c2917b3344d8901084a287c3bb7a8))
+- **core:** focus option by mousemove only in dropdown manager
+  ([#10534](https://github.com/taiga-family/taiga-ui/issues/10534))
+  ([a5b4a02](https://github.com/taiga-family/taiga-ui/commit/a5b4a02387b115c2a1368170885ff177f1a0b7ea))
+- **kit:** expand `tui-data-list-wrapper[labels]` generic type
+  ([#10545](https://github.com/taiga-family/taiga-ui/issues/10545))
+  ([65dc556](https://github.com/taiga-family/taiga-ui/commit/65dc556d839013fc852f0f8ac85520b5cce9bb94))
+- **kit:** support customizing number of visible lines in `tui-push`
+  ([#10554](https://github.com/taiga-family/taiga-ui/issues/10554))
+  ([a48bd61](https://github.com/taiga-family/taiga-ui/commit/a48bd61cf5f3356c0900445610533af1c713807a))
+- **legacy:** textarea flickering when type space ([#10557](https://github.com/taiga-family/taiga-ui/issues/10557))
+  ([98bd592](https://github.com/taiga-family/taiga-ui/commit/98bd5924ab108e828d03d1c15a0d788ac454fa48))
+
 ### [4.27.1](https://github.com/taiga-family/taiga-ui/compare/v4.27.0...v4.27.1) (2025-03-05)
 
 ### 🐞 Bug Fixes
