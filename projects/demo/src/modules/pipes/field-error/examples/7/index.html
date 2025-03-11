@@ -1,0 +1,14 @@
+<label tuiLabel="Type the ultimate answer">
+    <tui-input
+        tuiTextfieldSize="m"
+        [formControl]="test"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        to the Question of Life, the Universe, and Everything
+    </tui-input>
+
+    <tui-error
+        [error]="[] | tuiFieldError | async"
+        [formControl]="test"
+    />
+</label>
