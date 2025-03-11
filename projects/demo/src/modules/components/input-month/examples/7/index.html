@@ -1,0 +1,15 @@
+<tui-textfield>
+    <input
+        placeholder="Choose a range of months"
+        tuiInputMonthRange
+        [(ngModel)]="value"
+    />
+
+    <tui-calendar-month
+        *tuiTextfieldDropdown
+        [maxLength]="6"
+        [minLength]="3"
+    />
+
+    <tui-icon tuiTooltip="Make double click on the same month – form control contains single-day range" />
+</tui-textfield>

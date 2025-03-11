@@ -31,6 +31,8 @@ import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
 import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
+import {TUI_CALENDAR_MONTH_OPTIONS} from './calendar-month.options';
+
 const TODAY = TuiDay.currentLocal();
 
 @Component({
@@ -51,14 +53,16 @@ const TODAY = TuiDay.currentLocal();
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarMonth)],
     host: {
-        '[class._picking]': 'isSingle()',
+        '[class._picking]': 'isRangePicking()',
     },
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;
     protected readonly months = toSignal(inject(TUI_CALENDAR_MONTHS));
-    protected readonly isSingle = computed(
-        (x = this.value()) => x instanceof TuiMonthRange && x.isSingleMonth,
+    protected readonly isRangePicking = computed(
+        (x = this.value()) =>
+            (!this.options.rangeMode && x instanceof TuiMonthRange && x.isSingleMonth) || // TODO(v5): remove this condition
+            (this.options.rangeMode && x instanceof TuiMonth),
     );
 
     @Input()
@@ -82,6 +86,7 @@ export class TuiCalendarMonth {
     @Output()
     public readonly yearChange = new EventEmitter<TuiYear>();
 
+    public options = inject(TUI_CALENDAR_MONTH_OPTIONS);
     public readonly min = signal<TuiMonth>(TUI_FIRST_DAY);
     public readonly max = signal<TuiMonth>(TUI_LAST_DAY);
     public readonly value = signal<TuiMonth | TuiMonthRange | null>(null);
@@ -117,15 +122,21 @@ export class TuiCalendarMonth {
         const value = this.value();
         const {hoveredItem} = this;
 
-        if (!(value instanceof TuiMonthRange)) {
+        if (!value) {
+            return null;
+        }
+
+        if (!this.options.rangeMode && value instanceof TuiMonth) {
             return value?.monthSame(item) ? 'active' : null;
         }
 
+        const selectedRange =
+            value instanceof TuiMonth ? new TuiMonthRange(value, value) : value;
         const months = item.month + item.year * 12;
         const hovered = hoveredItem ? hoveredItem.month + hoveredItem.year * 12 : null;
-        const from = value.from.month + value.from.year * 12;
-        const to = value.to.month + value.to.year * 12;
-        const picking = this.isSingle() ? hovered : null;
+        const from = selectedRange.from.month + selectedRange.from.year * 12;
+        const to = selectedRange.to.month + selectedRange.to.year * 12;
+        const picking = this.isRangePicking() ? hovered : null;
         const min = Math.min(from, to, picking ?? from);
         const max = Math.max(from, to, picking ?? from);
 
@@ -148,6 +159,7 @@ export class TuiCalendarMonth {
         return this.calculateDisabledItemHandlerWithMinMax(
             this.disabledItemHandler,
             this.value(),
+            this.isRangePicking(),
             this.min(),
             this.max(),
             this.minLength,
@@ -190,19 +202,21 @@ export class TuiCalendarMonth {
     private calculateDisabledItemHandlerWithMinMax(
         disabledItemHandler: TuiBooleanHandler<TuiMonth>,
         value: TuiMonth | TuiMonthRange | null,
+        isRangePicking: boolean,
         min: TuiMonth,
         max: TuiMonth,
         minLength: number | null,
         maxLength: number | null,
     ): TuiBooleanHandler<TuiMonth> {
         return (item) => {
+            const selectedMonth = value instanceof TuiMonthRange ? value.from : value;
             const delta =
-                value instanceof TuiMonthRange && value.isSingleMonth
+                isRangePicking && selectedMonth
                     ? Math.abs(
                           item.year * 12 +
                               item.month -
-                              value.from.year * 12 -
-                              value.from.month,
+                              selectedMonth.year * 12 -
+                              selectedMonth.month,
                       )
                     : 0;
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
-import {TuiCalendarMonth} from '@taiga-ui/kit';
+import {TuiCalendarMonth, tuiCalendarMonthOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -10,20 +10,18 @@ import {TuiCalendarMonth} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    providers: [tuiCalendarMonthOptionsProvider({rangeMode: true})],
 })
 export default class Example {
-    protected value: TuiMonthRange | null = null;
+    protected value: TuiMonth | TuiMonthRange | null = null;
 
-    protected max = new TuiMonth(2024, 11);
+    protected max = TuiMonth.currentLocal().append({year: +1});
     protected min = new TuiMonth(2019, 7);
 
     protected onMonthClick(month: TuiMonth): void {
-        if (!this.value?.isSingleMonth) {
-            this.value = new TuiMonthRange(month, month);
-
-            return;
-        }
-
-        this.value = TuiMonthRange.sort(this.value.from, month);
+        this.value =
+            this.value instanceof TuiMonth
+                ? TuiMonthRange.sort(this.value, month)
+                : month;
     }
 }
