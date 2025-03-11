@@ -11,7 +11,7 @@ describe('BarChart', () => {
             <tui-bar-chart
                 [max]="max"
                 [value]="value"
-            ></tui-bar-chart>
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

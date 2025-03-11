@@ -13,7 +13,7 @@ describe('Tag', () => {
         standalone: true,
         imports: [TuiTagModule],
         template: `
-            <tui-tag id="default"></tui-tag>
+            <tui-tag id="default" />
             <tui-tag
                 id="changed"
                 [autoColor]="false"
@@ -21,7 +21,7 @@ describe('Tag', () => {
                 [removable]="true"
                 [value]="'Tag'"
                 (edited)="editedSpy($event)"
-            ></tui-tag>
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

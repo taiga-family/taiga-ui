@@ -18,7 +18,7 @@ describe('InputNumber - backward compatibility for separators', () => {
                 <tui-input-number
                     formControlName="control"
                     [tuiNumberFormat]="{decimalMode, precision}"
-                ></tui-input-number>
+                />
             </ng-container>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
