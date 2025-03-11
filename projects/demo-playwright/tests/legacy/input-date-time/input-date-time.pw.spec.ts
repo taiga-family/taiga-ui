@@ -170,7 +170,7 @@ test.describe('InputDateTime', () => {
 
             const timeModeRow = documentationPage.getRow('[timeMode]');
             const timeModeSelect = new TuiSelectPO(
-                (await documentationPage.getSelect(timeModeRow)) as Locator,
+                (await documentationPage.getSelect(timeModeRow))!,
             );
 
             await timeModeSelect.textfield.click();

@@ -1,5 +1,5 @@
-export * from './country-iso-code';
-export * from './language';
-export * from './language-loader';
-export * from './language-names';
-export * from './language-storage';
+export type * from './country-iso-code';
+export type * from './language';
+export type * from './language-loader';
+export type * from './language-names';
+export type * from './language-storage';

@@ -1,7 +1,7 @@
 export * from './file/file.component';
 export * from './file/file.options';
 export * from './files';
-export * from './files.types';
+export type * from './files.types';
 export * from './files.utils';
 export * from './files.validators';
 export * from './files/files.component';

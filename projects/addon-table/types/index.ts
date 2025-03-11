@@ -1,1 +1,1 @@
-export * from './comparator';
+export type * from './comparator';
