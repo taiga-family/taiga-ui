@@ -40,3 +40,4 @@ projects/demo/routes.txt
 migrations.json
 sitemap.xml
 blob-report
+.env.local
