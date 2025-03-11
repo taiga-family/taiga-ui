@@ -250,6 +250,9 @@
     <loc>https://taiga-ui.dev/components/input-month/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-month/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-month-range/</loc>
   </url>
   <url>

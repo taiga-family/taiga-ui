@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85119],{85119:e=>{e.exports='<tui-textfield>\n    <input\n        placeholder="Use mobile device"\n        tuiInputMonth\n        type="month"\n        [(ngModel)]="value"\n    />\n\n    <tui-calendar-month *tuiTextfieldDropdown />\n</tui-textfield>\n'}}]);
