@@ -41,21 +41,21 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
 })
 export class TuiDynamicHeaderComponent {
     protected speed = inject(TUI_ANIMATIONS_SPEED);
-    protected readonly fadeOptions = tuiToAnimationOptions(this.speed);
+    protected readonly fadeOptions = tuiToAnimationOptions();
     protected readonly container = inject(TuiDynamicHeaderContainerDirective);
 
     protected slideOptions = computed(() => {
-        return this.getSlideOptions(this.container.scrollDir() || 'DOWN');
+        return this.getSlideOptions(this.container.scrollDir() || -1);
     });
 
-    private getSlideOptions(direction: 'DOWN' | 'UP'): AnimationOptions {
+    private getSlideOptions(direction: -1 | 1): AnimationOptions {
         return {
             value: '',
             params: {
                 duration: tuiGetDuration(this.speed),
                 leaveEnd: 0,
-                leaveStart: direction === 'UP' ? '200%' : '-200%',
-                enterStart: direction === 'UP' ? '-200%' : '200%',
+                leaveStart: direction > 0 ? '200%' : '-200%',
+                enterStart: direction > 0 ? '-200%' : '200%',
                 enterEnd: 0,
             },
         } as unknown as AnimationOptions;

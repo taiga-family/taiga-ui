@@ -9,7 +9,7 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index; let last = last"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample: (last ? 'html,ts,less' : 'html,ts')"
+            [content]="index + 1 | tuiExample"
             [heading]="example"
             [id]="example | tuiKebab"
         />

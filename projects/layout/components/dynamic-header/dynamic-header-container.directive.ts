@@ -34,7 +34,7 @@ export class TuiDynamicHeaderContainerDirective {
         fromEvent(this.el, 'scroll').pipe(
             map(({target}) => (target as HTMLElement).scrollTop),
             pairwise(),
-            map(([prev, next]) => (next > prev ? 'DOWN' : 'UP')),
+            map(([prev, next]) => (next > prev ? -1 : 1)),
             distinctUntilChanged(),
             tuiZoneOptimized(),
         ),
