@@ -600,9 +600,14 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar-range'),
     }),
     route({
+        path: DemoRoute.Select,
+        loadComponent: async () => import('../components/select'),
+        title: 'Select',
+    }),
+    route({
         path: DemoRoute.SelectLegacy,
         loadComponent: async () => import('../components/select-legacy'),
-        title: 'Select',
+        title: 'Select [deprecated]',
     }),
     route({
         path: DemoRoute.Scrollbar,
