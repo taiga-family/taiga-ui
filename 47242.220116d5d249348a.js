@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47242],{47242:n=>{n.exports=".wrapper {\n    inline-size: 18.75rem;\n}\n\n.link {\n    color: var(--tui-text-action);\n\n    &:hover {\n        color: var(--tui-text-action-hover);\n    }\n}\n\n.icon {\n    margin-right: 0.5rem;\n}\n"}}]);
