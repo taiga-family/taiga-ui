@@ -1,0 +1,39 @@
+<tui-segmented
+    [style.inline-size]="'max-content'"
+    [(activeItemIndex)]="active"
+>
+    <button
+        *ngFor="let size of ['l', 'm']; let index = index"
+        type="button"
+        [class.active]="index === active"
+    >
+        Size: {{ size }}
+    </button>
+</tui-segmented>
+
+<tui-block-status
+    *ngFor="let block of blocks"
+    [card]="true"
+    [size]="active ? 'm' : 'l'"
+    [style.background-color]="'var(--tui-background-base-alt)'"
+    [style.margin]="'1rem 0'"
+>
+    <img
+        *ngIf="block.image"
+        alt=""
+        tuiSlot="top"
+        [src]="block.image"
+    />
+
+    <h4 *ngIf="block.title">{{ block.title }}</h4>
+    <span *ngIf="block.descriptionText">{{ block.descriptionText }}</span>
+
+    <button
+        *ngIf="block.buttonText"
+        appearance="primary"
+        tuiButton
+        [size]="active ? 's' : 'm'"
+    >
+        {{ block.buttonText }}
+    </button>
+</tui-block-status>

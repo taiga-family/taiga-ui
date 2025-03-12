@@ -11,6 +11,10 @@ tui-block-status {
     inline-size: 100%;
     block-size: 100%;
 
+    --t-image-comp: 2rem;
+    --t-header-comp: 1rem;
+    --t-text-comp: 2rem;
+
     &._card {
         border-radius: var(--tui-radius-xl);
         padding: 2rem;
@@ -18,14 +22,17 @@ tui-block-status {
 
     .t-block-image:not(:empty) {
         display: flex;
-        margin-bottom: 2rem;
+        margin-bottom: var(--t-image-comp);
     }
 
     .t-block-text:not(:empty) {
         font: var(--tui-font-text-m);
         color: var(--tui-text-secondary);
-        margin-bottom: 2rem;
         white-space: pre-line;
+
+        & + .t-block-actions:not(:empty) {
+            margin-top: var(--t-text-comp);
+        }
     }
 
     .t-block-actions:not(:empty) {
@@ -42,8 +49,12 @@ tui-block-status {
     h5,
     h6 {
         font: var(--tui-font-heading-4);
-        margin-top: 0;
-        margin-bottom: 1rem;
+        margin: 0;
+
+        & + .t-block-text:not(:empty),
+        & + .t-block-text:empty + .t-block-actions:not(:empty) {
+            margin-top: var(--t-header-comp);
+        }
     }
 
     img {
@@ -59,6 +70,10 @@ tui-block-status {
 
 [data-platform='web'] tui-block-status {
     &[data-size='m'] {
+        --t-header-comp: 0.75rem;
+        --t-image-comp: 1.5rem;
+        --t-text-comp: 1.5rem;
+
         h1,
         h2,
         h3,
@@ -66,8 +81,6 @@ tui-block-status {
         h5,
         h6 {
             font: var(--tui-font-heading-6);
-            margin-top: 0;
-            margin-bottom: 0.75rem;
         }
 
         img {
@@ -77,11 +90,6 @@ tui-block-status {
 
         .t-block-text:not(:empty) {
             font: var(--tui-font-text-s);
-            margin-bottom: 1.5rem;
-        }
-
-        .t-block-image:not(:empty) {
-            margin-bottom: 1.5rem;
         }
     }
 }
