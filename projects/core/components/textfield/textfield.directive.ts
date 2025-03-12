@@ -17,9 +17,11 @@ import {fromEvent, map, merge, switchMap, timer} from 'rxjs';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+import type {TuiTextfieldAccessor} from './textfield-accessor';
+import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
 @Directive()
-export class TuiTextfieldBase<T> implements OnChanges {
+export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
     private readonly focused = signal<boolean | null>(null);
 
@@ -102,6 +104,7 @@ export class TuiTextfieldBase<T> implements OnChanges {
     // TODO: Remove :not in v.5
     selector:
         'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
+    providers: [tuiAsTextfieldAccessor(TuiTextfieldDirective)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'textfield.id',

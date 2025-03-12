@@ -1,0 +1,12 @@
+<ng-container [ngTemplateOutlet]="content" />
+
+<tui-icon
+    *ngIf="selected$ | async; else dummy"
+    class="t-checkmark"
+    [icon]="icon"
+    [tuiScrollIntoView]="true"
+/>
+
+<ng-template #dummy>
+    <span class="t-dummy"></span>
+</ng-template>

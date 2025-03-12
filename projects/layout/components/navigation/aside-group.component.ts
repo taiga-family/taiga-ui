@@ -12,9 +12,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATA_LIST_HOST, TuiDataList} from '@taiga-ui/core/components/data-list';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {
     TuiDropdownDirective,
@@ -22,6 +21,8 @@ import {
     TuiDropdownOpen,
     TuiDropdownPositionSided,
 } from '@taiga-ui/core/directives/dropdown';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -36,7 +37,7 @@ import {TuiAsideComponent} from './aside.component';
     templateUrl: './aside-group.template.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiProvide(TUI_DATA_LIST_HOST, TuiAsideGroupComponent)],
+    providers: [tuiAsDataListHost(TuiAsideGroupComponent)],
     hostDirectives: [
         TuiDropdownDirective,
         TuiDropdownHover,

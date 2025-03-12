@@ -2,6 +2,7 @@ export * from './animations-speed';
 export * from './assets-path';
 export * from './common-icons';
 export * from './dark-mode';
+export * from './data-list-host';
 export * from './date-format';
 export * from './day-type-handler';
 export * from './first-day-of-week';

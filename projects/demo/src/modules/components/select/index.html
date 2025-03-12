@@ -1,0 +1,138 @@
+<tui-doc-page
+    header="Select"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="textfield-customization"
+            heading="Textfield customization"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [description]="textfieldBasedDescription"
+        >
+            <ng-template #textfieldBasedDescription>
+                Use all powers of
+                <code>Textfield</code>
+                : put any number of
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Icon"
+                >
+                    <strong>Icons</strong>
+                </a>
+                and
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Tooltip"
+                >
+                    <strong>Tooltips</strong>
+                </a>
+                inside (and control their order and color), modify the size of the textbox and etc. Explore
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    <strong>Textfield</strong>
+                </a>
+                documentation page for more customization options.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="option-content"
+            heading="Customize option content"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+        />
+
+        <tui-doc-example
+            id="virtual-scroll"
+            heading="Virtual scroll"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="virtualScrollDescription"
+        >
+            <ng-template #virtualScrollDescription>
+                You can use
+                <code>Select</code>
+                with virtual scrolling from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-picker-disabled-option"
+            heading="Native picker with disabled option"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+            [description]="nativePickerDescription"
+        >
+            <ng-template #nativePickerDescription>
+                Put
+                <code>&lt;select tuiSelect/&gt;</code>
+                (instead of
+                <code>&lt;input tuiSelect/&gt;</code>
+                ) to enable native browser picker.
+
+                <p>This example demonstrates how enable this feature for mobile devices only.</p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-picker-groups"
+            heading="Native picker with grouping options"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    tuiChevron
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <input
+                        placeholder="Select something"
+                        tuiSelect
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+
+                    <tui-data-list-wrapper
+                        *tuiTextfieldDropdown
+                        [items]="items"
+                    />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            ></tbody>
+
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
