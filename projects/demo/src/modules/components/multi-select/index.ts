@@ -74,6 +74,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'Value content',
         'Nested datalist',
         'Long items',
+        'Readonly',
     ];
 
     protected readonly items = [

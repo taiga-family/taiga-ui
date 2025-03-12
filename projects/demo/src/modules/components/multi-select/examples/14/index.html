@@ -1,0 +1,32 @@
+<tui-multi-select
+    [editable]="false"
+    [formControl]="formControl"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="categoryNames"
+>
+    Castles
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [itemContent]="categoryName"
+        [items]="categories"
+    />
+</tui-multi-select>
+
+<ng-template
+    #categoryNames
+    let-categories
+>
+    <ng-container *ngFor="let category of categories; let last = last">
+        {{ category.name }}
+        <ng-container *ngIf="!last">&nbsp;•&nbsp;</ng-container>
+    </ng-container>
+</ng-template>
+
+<ng-template
+    #categoryName
+    let-category
+>
+    {{ category.name }}
+</ng-template>
