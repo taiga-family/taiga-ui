@@ -7,21 +7,42 @@
         *ngFor="let group of items; let index = index"
         [label]="labels[index]"
     >
-        <button
-            *ngFor="let item of group"
-            #elementRef="elementRef"
-            automation-id="tui-data-list-wrapper__option"
-            tuiElement
-            tuiOption
-            type="button"
-            [disabled]="disabledItemHandler(item)"
-            [value]="item"
-            (click)="itemClick.emit(item)"
-        >
-            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                {{ text }}
-            </ng-container>
-        </button>
+        <ng-container *ngIf="newOptionMode; else legacyOptionFallback">
+            <button
+                *ngFor="let item of group"
+                #elementRef="elementRef"
+                new
+                tuiElement
+                tuiOption
+                type="button"
+                [disabled]="disabledItemHandler(item)"
+                [value]="item"
+                (click)="itemClick.emit(item)"
+            >
+                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                    {{ text }}
+                </ng-container>
+            </button>
+        </ng-container>
+
+        <!-- TODO(v5): delete fallback -->
+        <ng-template #legacyOptionFallback>
+            <button
+                *ngFor="let item of group"
+                #elementRef="elementRef"
+                automation-id="tui-data-list-wrapper__option"
+                tuiElement
+                tuiOption
+                type="button"
+                [disabled]="disabledItemHandler(item)"
+                [value]="item"
+                (click)="itemClick.emit(item)"
+            >
+                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                    {{ text }}
+                </ng-container>
+            </button>
+        </ng-template>
     </tui-opt-group>
 </tui-data-list>
 <ng-template #loading>

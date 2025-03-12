@@ -11,7 +11,7 @@ export function tuiAsAuxiliary(x: Type<unknown>): Provider {
 }
 
 export function tuiInjectAuxiliary<T>(
-    predicate: (auxiliary: Type<unknown>, index: number) => boolean,
+    predicate: (auxiliary: any, index: number) => boolean,
 ): Signal<T | null> {
     const {auxiliaries} = inject(TuiTextfieldComponent);
 

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDataList} from '@taiga-ui/core/components/data-list';
-import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/core/tokens';
 import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 
 import type {TuiSelectDirective} from '../select.directive';

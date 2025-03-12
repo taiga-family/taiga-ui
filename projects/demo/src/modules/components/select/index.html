@@ -1,0 +1,285 @@
+<tui-doc-page
+    header="Select"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <code>Select</code>
+        is a form control for selecting a
+        <strong>single</strong>
+        value from a set of options, similar to the native
+        <a
+            href="https://developer.mozilla.org/docs/Web/HTML/Element/select"
+            target="_blank"
+            tuiLink
+        >
+            &lt;select&gt;
+        </a>
+        element.
+
+        <tui-doc-example
+            id="textfield-customization"
+            heading="Textfield customization"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [description]="textfieldBasedDescription"
+        >
+            <ng-template #textfieldBasedDescription>
+                Use all powers of
+                <code>Textfield</code>
+                : put any number of
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Icon"
+                >
+                    <strong>Icons</strong>
+                </a>
+                and
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Tooltip"
+                >
+                    <strong>Tooltips</strong>
+                </a>
+                inside (and control their order and color), modify the size of the textbox and etc. Explore
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    <strong>Textfield</strong>
+                </a>
+                documentation page for more customization options.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="items-handlers"
+            heading="Items handlers"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [description]="itemsHandlersDescription"
+        >
+            <ng-template #itemsHandlersDescription>
+                Use
+                <code>tuiItemsHandlersProvider</code>
+                to override default behavior of all
+                <code>Select</code>
+                -s below the current DI scope.
+
+                <p>
+                    Use input properties
+                    <code>[identityMatcher]</code>
+                    /
+                    <code>[stringify]</code>
+                    (from
+                    <code>Textfield</code>
+                    ) and
+                    <code>disabledItemHandler</code>
+                    (from
+                    <code>DataListWrapper</code>
+                    ) to do the same for the specific
+                    <code>Select</code>
+                    only.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="content-customization"
+            heading="Customize content"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="contentDescription"
+        >
+            <ng-template #contentDescription>
+                <a
+                    tuiLink
+                    [routerLink]="routes.DataListWrapper"
+                >
+                    DataListWrapper
+                </a>
+                provides an opportunity to customize appearance of options inside dropdown by
+                <code>[itemContent]</code>
+                -property. Also,
+                <a
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    Textfield
+                </a>
+                has
+                <code>[content]</code>
+                -property to customize appearance of selected option inside textbox.
+
+                <p>
+                    Both properties accept
+                    <code>PolymorpheusContent</code>
+                    – it empowers you with extremely large possibilities for customization.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="data-list"
+            heading="With DataList"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+            [description]="datalistDescription"
+        >
+            <ng-template #datalistDescription>
+                <code>DataListWrapper</code>
+                is just a helper to solve most popular use cases. Use
+                <code>DataList</code>
+                for more complex cases when great flexibility is required.
+
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.DataList"
+                >
+                    <strong>DataList</strong>
+                </a>
+                documentation page for more customization options.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="virtual-scroll"
+            heading="Virtual scroll"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+            [description]="virtualScrollDescription"
+        >
+            <ng-template #virtualScrollDescription>
+                You can use
+                <code>Select</code>
+                with virtual scrolling from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-picker-disabled-option"
+            heading="Native picker with disabled option"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [description]="nativePickerDescription"
+        >
+            <ng-template #nativePickerDescription>
+                Put
+                <code>&lt;select tuiSelect/&gt;</code>
+                (instead of
+                <code>&lt;input tuiSelect/&gt;</code>
+                ) to enable native browser picker.
+
+                <p>This example demonstrates how enable this feature for mobile devices only.</p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-picker-groups"
+            heading="Native picker with grouping options"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="override-option-component"
+            heading="Override option component"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+            [description]="overrideOptionDescription"
+        >
+            <ng-template #overrideOptionDescription>
+                You can override default behavior and appearance of all options inside dropdown. Just provide your
+                custom component by
+                <code>tuiAsOptionContent</code>
+                -utility.
+
+                <tui-notification appearance="warning">
+                    <strong>Double check if you really need this feature!</strong>
+
+                    <div>
+                        For the most cases
+                        <code>&lt;tui-data-list-wrapper [itemContent]="..." /&gt;</code>
+                        can be enough for your task.
+                    </div>
+
+                    <div>
+                        Explore
+                        <a
+                            fragment="content-customization"
+                            routerLink="."
+                            tuiLink
+                        >
+                            this example
+                        </a>
+                        for more details.
+                    </div>
+                </tui-notification>
+            </ng-template>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    tuiChevron
+                    [content]="control.value && textfieldContent"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <input
+                        placeholder="Select something"
+                        tuiSelect
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+
+                    <tui-data-list-wrapper
+                        *tuiTextfieldDropdown
+                        new
+                        [items]="items"
+                    />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            >
+                <!--TODO: create the inherited documentation for Textfield [content] prop)-->
+                <tr
+                    name="[content]"
+                    tuiDocAPIItem
+                    type="PolymorpheusContent"
+                    [items]="textfieldContentVariants()"
+                    [(value)]="textfieldContent"
+                >
+                    A template for custom view of textfield value.
+                </tr>
+            </tbody>
+
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

@@ -1,0 +1,25 @@
+:host {
+    justify-content: space-between;
+}
+
+:host(._with-value) {
+    flex-direction: row-reverse;
+}
+
+.t-checkmark {
+    inline-size: 1.75rem;
+    border-width: 0.25rem;
+    color: var(--tui-text-action);
+
+    :host-context(tui-data-list[data-size='s']) & {
+        margin-inline-end: -0.375rem;
+    }
+
+    :host-context(tui-data-list[data-size='m']) & {
+        margin-inline-end: -0.125rem;
+    }
+}
+
+:host(._with-value) .t-dummy {
+    inline-size: 1.75rem;
+}
