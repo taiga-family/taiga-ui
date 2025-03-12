@@ -11,7 +11,7 @@ import {
     tuiSlideInTop,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiFloating, TuiSwitch} from '@taiga-ui/kit';
+import {TuiAvatar, TuiElasticContainer, TuiFloating, TuiSwitch} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
@@ -22,6 +22,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiElasticContainer,
         TuiFloating,
         TuiLabel,
         TuiRepeatTimes,
