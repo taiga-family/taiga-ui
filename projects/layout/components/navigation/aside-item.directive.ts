@@ -3,11 +3,7 @@ import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {
-    tuiAsDataListHost,
-    TuiDataListComponent,
-} from '@taiga-ui/core/components/data-list';
+import {TuiDataListComponent} from '@taiga-ui/core/components/data-list';
 import type {TuiDropdownOptions} from '@taiga-ui/core/directives/dropdown';
 import {
     TUI_DROPDOWN_OPTIONS,
@@ -16,7 +12,8 @@ import {
     TuiDropdownPositionSided,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {TUI_COMMON_ICONS, TUI_ICON_END} from '@taiga-ui/core/tokens';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS, TUI_ICON_END, tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiHintAsideDirective} from './hint-aside.directive';

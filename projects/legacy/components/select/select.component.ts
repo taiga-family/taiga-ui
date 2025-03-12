@@ -11,13 +11,13 @@ import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
-    tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import type {
     TuiSizeL,
     TuiSizeM,

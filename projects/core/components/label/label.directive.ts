@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,

@@ -14,17 +14,15 @@ import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {
-    TuiDataListAccessor,
-    TuiDataListHost,
-} from '@taiga-ui/core/components/data-list';
+import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_ACCESSOR,
-    tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import type {
     TuiSizeL,
     TuiSizeM,

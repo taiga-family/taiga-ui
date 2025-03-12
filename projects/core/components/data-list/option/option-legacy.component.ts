@@ -12,12 +12,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
-import type {TuiDataListHost} from '../data-list.tokens';
-import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
 /**
