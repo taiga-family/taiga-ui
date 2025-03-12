@@ -21,12 +21,12 @@ import {
     TuiHintUnstyledComponent,
 } from '@taiga-ui/core/directives/hint';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {map, takeWhile} from 'rxjs';
+import {takeWhile} from 'rxjs';
 
-const GAP = 8;
+const BEAK_EDGE_OFFSET = 24;
 
 @Component({
     standalone: true,
@@ -57,7 +57,6 @@ export class TuiHintComponent<C = any> {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
-    private readonly viewport = inject(TUI_VIEWPORT);
 
     protected readonly dummy = {value: '', params: {end: 1, start: 1}};
     protected readonly options = tuiToAnimationOptions(
@@ -85,7 +84,6 @@ export class TuiHintComponent<C = any> {
         inject(TuiPositionService)
             .pipe(
                 takeWhile(() => this.hint.el.isConnected),
-                map((point) => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe({
@@ -108,43 +106,73 @@ export class TuiHintComponent<C = any> {
     }
 
     @tuiPure
-    private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.top = top;
-        this.el.style.left = left;
-        this.el.style.setProperty('--t-top', `${beakTop}%`);
-        this.el.style.setProperty('--t-left', `${beakLeft}%`);
-        this.el.style.setProperty(
-            '--t-rotate',
-            !beakLeft || Math.ceil(beakLeft) === 100 ? '90deg' : '0deg',
+    private applyElementStyles(top: number, left: number, isFixed: boolean): void {
+        this.el.style.top = tuiPx(top);
+        this.el.style.left = tuiPx(left);
+        this.el.style.position = isFixed ? 'fixed' : 'absolute';
+    }
+
+    @tuiPure
+    private toggleBeak(visible: boolean): void {
+        this.el.style.setProperty('--t-beak-display', visible ? 'block' : 'none');
+    }
+
+    @tuiPure
+    private applyBeakStyles(top: number, left: number, rotate: boolean): void {
+        this.el.style.setProperty('--t-top', `${top}px`);
+        this.el.style.setProperty('--t-left', `${left}px`);
+        this.el.style.setProperty('--t-rotate', `${rotate ? 90 : 0}deg`);
+    }
+
+    private isBeakRelevant(hintRect: DOMRect, accessorRect: DOMRect): boolean {
+        return (
+            (hintRect.right - BEAK_EDGE_OFFSET > accessorRect.left &&
+                hintRect.left + BEAK_EDGE_OFFSET < accessorRect.right) ||
+            (hintRect.bottom - BEAK_EDGE_OFFSET > accessorRect.top &&
+                hintRect.top + BEAK_EDGE_OFFSET < accessorRect.bottom)
         );
     }
 
-    private update(top: number, left: number): void {
-        const {clientHeight, clientWidth} = this.el;
-        const rect = this.accessor.getClientRect();
+    private positionBeak(accessorRect: DOMRect, hintRect: DOMRect): void {
+        const beakRotate =
+            accessorRect.left >= hintRect.right || hintRect.left >= accessorRect.right;
+        const [beakTop, beakLeft] = this.vvs.correct([
+            tuiClamp(
+                accessorRect.top + accessorRect.height / 2 - hintRect.top,
+                beakRotate ? BEAK_EDGE_OFFSET : 0,
+                beakRotate ? hintRect.height - BEAK_EDGE_OFFSET : hintRect.height,
+            ),
+            tuiClamp(
+                accessorRect.left + accessorRect.width / 2 - hintRect.left,
+                beakRotate ? 0 : BEAK_EDGE_OFFSET,
+                beakRotate ? hintRect.width : hintRect.width - BEAK_EDGE_OFFSET,
+            ),
+        ]);
 
-        if (rect === EMPTY_CLIENT_RECT || !clientHeight || !clientWidth) {
+        this.applyBeakStyles(beakTop, beakLeft, beakRotate);
+    }
+
+    private update(top: number, left: number): void {
+        const hintRect = this.el.getBoundingClientRect();
+        const accessorRect = this.accessor.getClientRect();
+
+        if (accessorRect === EMPTY_CLIENT_RECT || !hintRect.height || !hintRect.width) {
             return;
         }
 
-        const viewport = this.viewport.getClientRect();
-        const safeLeft = tuiClamp(
-            Math.max(GAP, left),
-            viewport.left + GAP,
-            Math.max(GAP, viewport.width + viewport.left - clientWidth - GAP),
+        this.applyElementStyles(
+            Math.round(top),
+            Math.round(left),
+            this.hint.isFixedPosition,
         );
 
-        const [beakTop, beakLeft] = this.vvs.correct([
-            rect.top + rect.height / 2 - top,
-            rect.left + rect.width / 2 - safeLeft,
-        ]);
+        const beakRelevant = this.isBeakRelevant(hintRect, accessorRect);
 
-        this.apply(
-            tuiPx(Math.round(top)),
-            tuiPx(Math.round(safeLeft)),
-            Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
-            Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
-        );
+        this.toggleBeak(beakRelevant);
+
+        if (beakRelevant) {
+            this.positionBeak(accessorRect, hintRect);
+        }
     }
 }
 
