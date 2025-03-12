@@ -19,6 +19,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.115.0
       - uses: taiga-family/ci/actions/setup/node@v1.115.0
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
+        if: github.event_name == 'pull_request'
       - run: npm run typecheck
       - run: npm run cspell
       - run: |
