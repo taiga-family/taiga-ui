@@ -34,7 +34,7 @@ const FLAKY_EXAMPLES = new Map<
         ],
     ], // Flaky in safari, need to investigate a problem
     [DemoRoute.RingChart, [{exampleIndex: 1, browserName: 'chromium'}]], // Font flaky
-    [DemoRoute.Select, [{exampleIndex: 4}]], // Imitating server response (delay(3000))
+    [DemoRoute.SelectLegacy, [{exampleIndex: 4}]], // Imitating server response (delay(3000))
     [DemoRoute.Stepper, [{exampleIndex: 2}]], // TODO: flaky test for proprietary demo (autoscroll problems)
     [DemoRoute.TabBar, [{exampleIndex: 3}]], // Imitating server response (timer(3000))
     [DemoRoute.Table, [{exampleIndex: 3}, {exampleIndex: 4}]], // Imitating server response (delay(3000)) and virtual scroll

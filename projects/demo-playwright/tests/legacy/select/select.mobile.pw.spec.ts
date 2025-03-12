@@ -8,7 +8,7 @@ test.describe('Select', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
     test('native select value', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Select);
+        await tuiGoto(page, DemoRoute.SelectLegacy);
         const dropdown = page.locator('#native-select select').first();
 
         await dropdown.selectOption({index: 1});

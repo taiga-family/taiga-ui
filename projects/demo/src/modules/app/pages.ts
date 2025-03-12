@@ -826,7 +826,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'Select',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.Select,
+                route: DemoRoute.SelectLegacy,
             },
         ],
     },
