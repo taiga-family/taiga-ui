@@ -25,3 +25,14 @@ export function tuiGetElementOffset(
 
     return {offsetTop, offsetLeft};
 }
+
+export function tuiGetOffsetParentOffset(el?: HTMLElement): {
+    offsetTop: number;
+    offsetLeft: number;
+} {
+    const offsetParentRect = el?.offsetParent?.getBoundingClientRect();
+    const offsetTop = -(offsetParentRect?.top || 0);
+    const offsetLeft = -(offsetParentRect?.left || 0);
+
+    return {offsetTop, offsetLeft};
+}
