@@ -5,8 +5,8 @@ tui-block-status {
         margin-bottom: 1.5rem;
     }
 
-    .t-block-text:not(:empty) {
-        margin-bottom: 1.5rem;
+    .t-block-actions:not(:empty) {
+        margin-top: 1.5rem;
     }
 
     &._card {
@@ -25,7 +25,10 @@ tui-block-status {
     h5,
     h6 {
         font: var(--tui-font-heading-5);
-        margin-bottom: 0.5rem;
+
+        & ~ .t-block-text:not(:empty) {
+            margin-top: 0.5rem;
+        }
     }
 
     img {
