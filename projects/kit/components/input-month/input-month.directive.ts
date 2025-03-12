@@ -11,7 +11,11 @@ import {
     tuiInjectAuxiliary,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_DROPDOWN_OPTIONS, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {
+    TUI_DROPDOWN_OPTIONS,
+    tuiDropdownEnabled,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
@@ -26,7 +30,6 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
     host: {
         inputmode: 'none',
         '[disabled]': 'disabled()',
-        '(click)': 'toggleDropdown()',
         '(blur)': 'onTouched()',
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
@@ -41,6 +44,10 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER), {
         initialValue: () => '',
     });
+
+    protected readonly dropdownEnabled = tuiDropdownEnabled(
+        computed(() => !this.nativePickerEnabled && this.interactive()),
+    );
 
     protected readonly textfieldValue = tuiValueBinding(
         computed(() => this.formatter()(this.value())),
@@ -83,22 +90,8 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         (inject(TUI_DROPDOWN_OPTIONS) as any).limitWidth = 'auto';
     }
 
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open.set(false);
-    }
-
-    protected toggleDropdown(): void {
-        if (this.interactive() && !this.nativePickerEnabled) {
-            this.open.update((x) => !x);
-        }
-    }
-
     protected clear(): void {
         this.onChange(null);
-
-        if (!this.nativePickerEnabled) {
-            this.open.set(true);
-        }
+        this.open.set(true);
     }
 }
