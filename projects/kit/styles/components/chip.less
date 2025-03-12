@@ -107,8 +107,12 @@ tui-chip,
     & > input[tuiChip] {
         .fullsize();
 
-        z-index: -1;
         margin: 0;
+
+        &[type='checkbox'],
+        &[type='radio'] {
+            z-index: -1;
+        }
     }
 
     &[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
