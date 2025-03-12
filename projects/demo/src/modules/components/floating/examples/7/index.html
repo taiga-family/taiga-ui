@@ -35,34 +35,35 @@
         </div>
     </div>
 
-    <!-- TODO: Add dynamic height collapse -->
     <footer
         *ngIf="floating"
         tuiFloating
         @tuiSlideInTop
         [tuiSubstrate]="true"
     >
-        <button
-            tuiButton
-            type="button"
-        >
-            Main action
-        </button>
-        <span
-            *ngIf="additional"
-            tuiLegal
-            @tuiCrossFadeInBottom
-        >
-            Legal text, max 3 lines
-        </span>
-        <button
-            *ngIf="!additional"
-            appearance="flat"
-            tuiButton
-            type="button"
-            @tuiCrossFadeInBottom
-        >
-            Secondary action
-        </button>
+        <tui-elastic-container>
+            <button
+                tuiButton
+                type="button"
+            >
+                Main action
+            </button>
+            <span
+                *ngIf="additional"
+                tuiLegal
+                @tuiCrossFadeInBottom
+            >
+                Legal text, max 3 lines
+            </span>
+            <button
+                *ngIf="!additional"
+                appearance="flat"
+                tuiButton
+                type="button"
+                @tuiCrossFadeInBottom
+            >
+                Secondary action
+            </button>
+        </tui-elastic-container>
     </footer>
 </div>

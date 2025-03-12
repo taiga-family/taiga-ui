@@ -27,12 +27,21 @@
         calc(env(safe-area-inset-bottom))
     );
     z-index: 1;
-    display: flex;
     padding: 0 1rem 1rem;
-    flex-direction: column;
-    gap: 0.5rem;
 
-    > [tuiLegal] {
+    &,
+    & > tui-elastic-container > .t-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    > tui-elastic-container > .t-wrapper > [tuiButton] {
+        inline-size: 100%;
+    }
+
+    > [tuiLegal],
+    > tui-elastic-container > .t-wrapper > [tuiLegal] {
         display: -webkit-box;
         min-block-size: 2rem;
         margin: 0.5rem 0 0;

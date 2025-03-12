@@ -131,7 +131,13 @@ export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
     transition(
         ':leave',
         [
-            style({opacity: 1, position: 'absolute', left: '1rem', right: '1rem'}),
+            style({
+                opacity: 1,
+                position: 'absolute',
+                inlineSize: 'auto',
+                left: '1rem',
+                right: '1rem',
+            }),
             animate(TRANSITION, style({opacity: 0})),
         ],
         DURATION,
@@ -151,6 +157,7 @@ export const tuiCrossFadeInBottom = trigger('tuiCrossFadeInBottom', [
             style({
                 opacity: 1,
                 position: 'absolute',
+                inlineSize: 'auto',
                 bottom: '1rem',
                 left: '1rem',
                 right: '1rem',
