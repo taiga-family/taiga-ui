@@ -9,7 +9,7 @@ test.describe('Select', () => {
         let documentationPage: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.Select);
+            await tuiGoto(page, DemoRoute.SelectLegacy);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
