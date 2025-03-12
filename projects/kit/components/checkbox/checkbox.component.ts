@@ -36,7 +36,7 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
         TuiNativeValidator,
     ],
     host: {
-        '[disabled]': '!control || control.disabled',
+        '[disabled]': 'disabled ?? (!control || control.disabled)',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',
         '[style.--t-checked-icon]': 'getIcon("checked")',
@@ -53,6 +53,9 @@ export class TuiCheckbox implements OnInit, DoCheck {
 
     @Input()
     public size: TuiSizeS = this.options.size;
+
+    @Input()
+    public disabled: boolean | '' | null = null;
 
     public readonly control: NgControl | null = inject(NgControl, {
         optional: true,
