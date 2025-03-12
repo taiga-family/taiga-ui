@@ -40,19 +40,19 @@ tui-block-status {
     .t-block-text {
         font: var(--tui-font-text-m);
         color: var(--tui-text-02);
-        margin-bottom: 2rem;
         white-space: pre-line;
-
-        tui-root._mobile & {
-            margin-bottom: 1.5rem;
-        }
     }
 
-    .t-block-actions {
+    .t-block-actions:not(:empty) {
         display: flex;
         flex-direction: column;
         align-items: center;
         inline-size: 100%;
+        margin-top: 2rem;
+
+        tui-root._mobile & {
+            margin-top: 1.5rem;
+        }
     }
 
     h1,
@@ -62,12 +62,18 @@ tui-block-status {
     h5,
     h6 {
         font: var(--tui-font-heading-4);
-        margin-top: 0;
-        margin-bottom: 1rem;
+        margin: 0;
+
+        & ~ .t-block-text:not(:empty) {
+            margin-top: 1rem;
+        }
 
         tui-root._mobile & {
             font: var(--tui-font-heading-5);
-            margin-bottom: 0.5rem;
+
+            & ~ .t-block-text:not(:empty) {
+                margin-top: 0.5rem;
+            }
         }
     }
 
