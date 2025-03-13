@@ -3,7 +3,7 @@ export * from './constants/taiga-styles';
 export * from './ng-add/constants/modules';
 export * from './ng-add/constants/packages';
 export * from './ng-add/constants/versions';
-export * from './ng-add/schema';
+export type * from './ng-add/schema';
 export * from './utils/add-import-to-closest-module';
 export * from './utils/add-unique-import';
 export * from './utils/angular-json-manipulations';

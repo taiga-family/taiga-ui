@@ -181,10 +181,8 @@ export class TuiLineChart implements OnChanges {
 
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
-            (this.hintDirective?.getContext(
-                this.value.indexOf($implicit),
-                this,
-            ) as readonly TuiPoint[]) ?? $implicit
+            this.hintDirective?.getContext(this.value.indexOf($implicit), this) ??
+            $implicit
         );
     }
 

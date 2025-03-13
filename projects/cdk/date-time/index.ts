@@ -9,5 +9,5 @@ export * from './month';
 export * from './month-number';
 export * from './month-range';
 export * from './time';
-export * from './types';
+export type * from './types';
 export * from './year';

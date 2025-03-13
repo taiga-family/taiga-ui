@@ -11,4 +11,4 @@ export * from './iso-to-country-code';
 export * from './not-kz-region';
 export * from './process-icon';
 export * from './specific-dropdown-controllers';
-export * from './status';
+export type * from './status';

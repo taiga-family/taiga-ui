@@ -7,7 +7,7 @@ export * from './directives/sheet-close/sheet-close.directive';
 export * from './directives/sheet-stop/sheet-stop.directive';
 export * from './directives/sheet-top/sheet-top.directive';
 export * from './directives/sheet-wrapper/sheet-wrapper.directive';
-export * from './sheet';
+export type * from './sheet';
 export * from './sheet.directive';
 export * from './sheet.module';
 export * from './sheet.service';

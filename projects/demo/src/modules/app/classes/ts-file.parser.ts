@@ -7,7 +7,11 @@ export class TuiTsParserException extends Error {
 }
 
 export class TsFileParser {
-    constructor(protected rawFileContent: string) {
+    protected rawFileContent: string;
+
+    constructor(rawFileContent: string) {
+        this.rawFileContent = rawFileContent;
+
         const classesInside = rawFileContent.match(/export class/gi) || [];
 
         if (classesInside.length > 1) {

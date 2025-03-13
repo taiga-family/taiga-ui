@@ -2,7 +2,7 @@ import type {DebugElement, Predicate} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 
 export class TuiPageObject<T> {
-    constructor(protected fixture: ComponentFixture<T>) {}
+    constructor(protected readonly fixture: ComponentFixture<T>) {}
 
     public static getIds({nativeElement}: DebugElement): string[] {
         const attributeValue: string | null = nativeElement.getAttribute('automation-id');
