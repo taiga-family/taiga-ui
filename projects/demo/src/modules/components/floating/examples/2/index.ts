@@ -13,7 +13,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloating, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -27,6 +27,7 @@ import {TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiLabel,
         TuiRepeatTimes,
+        TuiSearch,
         TuiSheetDialog,
         TuiSwitch,
         TuiTitle,
