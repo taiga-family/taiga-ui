@@ -7,6 +7,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     tuiCrossFadeIn,
+    tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
     TuiTitle,
@@ -32,9 +33,10 @@ import {TuiCell} from '@taiga-ui/layout';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiCrossFadeIn],
+    animations: [tuiSlideInTop, tuiCrossFadeIn, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = false;
     protected action = false;
+    protected secondAction = false;
 }
