@@ -1,6 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
-import type {ElementLocation} from 'parse5/dist/common/token';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsWithDirective} from '../../../../utils/templates/elements';
@@ -55,7 +54,7 @@ export function migrateButtonAppearance({
         if (whiteBlockActiveAttr) {
             removeAttrs(
                 [whiteBlockActiveAttr],
-                sourceCodeLocation as ElementLocation,
+                sourceCodeLocation!,
                 recorder,
                 templateOffset,
             );

@@ -164,6 +164,3 @@ if (!('Zone' in global)) {
     require('zone.js');
     require('zone.js/testing');
 }
-
-// @note: build empty entry point
-export {};

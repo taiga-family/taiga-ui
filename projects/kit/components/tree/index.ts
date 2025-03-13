@@ -6,7 +6,7 @@ export * from './directives/tree-controller.directive';
 export * from './directives/tree-item-controller.directive';
 export * from './directives/tree-node.directive';
 export * from './misc/tree.constants';
-export * from './misc/tree.interfaces';
+export type * from './misc/tree.interfaces';
 export * from './misc/tree.service';
 export * from './misc/tree.tokens';
 export * from './tree';

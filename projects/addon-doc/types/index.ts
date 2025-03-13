@@ -1,4 +1,4 @@
-export * from './code-editor';
-export * from './demo-params';
+export type * from './code-editor';
+export type * from './demo-params';
 export * from './page';
-export * from './source-code-path-options';
+export type * from './source-code-path-options';
