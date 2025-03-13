@@ -6,4 +6,4 @@ export const TuiSearchResults = [
     TuiSearchHotkey,
     TuiSearchHistory,
     TuiSearchResultsComponent,
-];
+] as const;
