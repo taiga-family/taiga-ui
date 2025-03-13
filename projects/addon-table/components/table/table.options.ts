@@ -7,7 +7,6 @@ export const TuiSortDirection = {
     Desc: -1,
 } as const;
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export type TuiSortDirection = (typeof TuiSortDirection)[keyof typeof TuiSortDirection];
 
 export interface TuiSortAndOrder<T> {
