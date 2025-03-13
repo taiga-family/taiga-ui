@@ -126,7 +126,7 @@ export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
     transition(
         ':enter',
         [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
-        DURATION,
+        {params: {duration: 75}},
     ),
     transition(
         ':leave',
@@ -140,40 +140,9 @@ export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
             }),
             animate(TRANSITION, style({opacity: 0})),
         ],
-        DURATION,
+        {params: {duration: 75}},
     ),
 ]);
-
-// TODO: think about hardcoding :leave parameters
-export const tuiCrossFadeInBottom = trigger('tuiCrossFadeInBottom', [
-    transition(
-        ':enter',
-        [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
-        DURATION,
-    ),
-    transition(
-        ':leave',
-        [
-            style({
-                opacity: 1,
-                position: 'absolute',
-                inlineSize: 'auto',
-                bottom: '1rem',
-                left: '1rem',
-                right: '1rem',
-            }),
-            animate(TRANSITION, style({opacity: 0})),
-        ],
-        DURATION,
-    ),
-]);
-
-// export const tuiDynamicHeightCollapse = trigger('tuiDynamicHeightCollapse', [
-//     transition('void <=> *', []),
-//     transition('* <=> *', [style({height: '{{start}}px'}), animate(TRANSITION)], {
-//         params: {start: 0, duration: 300},
-//     }),
-// ]);
 
 export const tuiFadeIn = trigger('tuiFadeIn', [
     transition(
@@ -258,6 +227,30 @@ export const tuiFadeInBottom = trigger('tuiFadeInBottom', [
             ),
         ],
         {params: {end: 0, start: 10, duration: 300}},
+    ),
+]);
+
+// TODO: think about hardcoding :leave parameters
+export const tuiCrossFadeInBottom = trigger('tuiCrossFadeInBottom', [
+    transition(
+        ':enter',
+        [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
+        {params: {duration: 200}},
+    ),
+    transition(
+        ':leave',
+        [
+            style({
+                opacity: 1,
+                position: 'absolute',
+                inlineSize: 'auto',
+                left: '1rem',
+                right: '1rem',
+                bottom: '{{offsetBottom}}',
+            }),
+            animate(TRANSITION, style({opacity: 0})),
+        ],
+        {params: {offsetBottom: '1rem', duration: 300}},
     ),
 ]);
 

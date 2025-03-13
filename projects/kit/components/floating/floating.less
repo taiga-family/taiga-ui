@@ -55,9 +55,19 @@
         color: var(--tui-text-secondary);
     }
 
-    // > *:first-child:last-child {
-    //     margin-block-end: 0.5rem;
-    // }
+    // TODO: use :has after safari support bumped to 15.4+
+    > [tuiButton] {
+        &:only-child,
+        &.ng-animating:not(:last-child),
+        &.ng-animating:first-child ~ .ng-animating:last-child {
+            margin-block-end: 0.5rem;
+        }
+
+        &.ng-animating:not(:first-child) ~ [tuiButton],
+        &.ng-animating:not(:first-child) ~ [tuiLegal] {
+            margin-block-start: -0.5rem;
+        }
+    }
 
     &::before {
         .fullsize(absolute, inset);
