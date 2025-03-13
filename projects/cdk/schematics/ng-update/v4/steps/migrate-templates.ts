@@ -57,7 +57,7 @@ import {dropdownRefComment} from './templates/dropdown-ref-comment';
 import {migrateBlocked} from './templates/migrate-blocked';
 import {migrateNumberPrecision} from './templates/migrate-number-precision';
 
-function getAction<T>({
+export function getAction<T>({
     action,
     requiredData,
 }: {

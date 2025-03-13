@@ -93,6 +93,7 @@ const TEMPLATE_BEFORE = `
 <tui-svg src="tuiIconColumns" />
 <tui-svg src="tuiIconTool" />
 <tui-svg src="tuiIconCheckSquare" />
+<tui-svg [src]="'tuiIconCheckTestLarge'" />
 `;
 
 const TEMPLATE_AFTER = `
@@ -108,10 +109,11 @@ const TEMPLATE_AFTER = `
 <button tuiIconButton icon="@tui.x">Button</button>
 <tui-icon [icon]="featureValue.value === 'true' ? '@tui.check' : '@tui.x'"></tui-icon>
 <tui-svg src="@tui.x" />
-<tui-svg src="@tui.copy-plus" />
+<tui-svg [style.border-width.rem]="0.25" src="@tui.copy-plus" />
 <tui-svg src="@tui.columns-2" />
 <tui-svg src="@tui.wrench" />
 <tui-svg src="@tui.square-check-big" />
+<tui-svg [style.border-width.rem]="0.25" [src]="'@tui.check-test'" />
 `;
 
 const PROPRIETARY_TEMPLATE_BEFORE = `
@@ -136,9 +138,10 @@ const PROPRIETARY_TEMPLATE_BEFORE = `
 <tui-svg src="tuiIconColumns" />
 <tui-svg src="tuiIconTool" />
 <tui-svg src="tuiIconCheckSquare" />
+<tui-svg [src]="'tuiIconCheckTestLarge'" />
 `;
 
-const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icons tuiIconCancelOutline, tuiIconClose, tuiIconAddRowLarge, tuiIconColumns, tuiIconTool, tuiIconCheckSquare. Please select an icon from the proprietary pack -->
+const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icons tuiIconCancelOutline, tuiIconClose, tuiIconAddRowLarge, tuiIconColumns, tuiIconTool, tuiIconCheckSquare, tuiIconCheckTestLarge. Please select an icon from the proprietary pack -->
 
 <tui-avatar
     avatarUrl="@tui.fancy.small.lock"
@@ -161,6 +164,7 @@ const PROPRIETARY_TEMPLATE_AFTER = `<!-- TODO (Taiga UI migration): invalid icon
 <tui-svg src="tuiIconColumns" />
 <tui-svg src="tuiIconTool" />
 <tui-svg src="tuiIconCheckSquare" />
+<tui-svg [src]="'tuiIconCheckTestLarge'" />
 `;
 
 describe('ng-update', () => {
