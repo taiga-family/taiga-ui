@@ -14,5 +14,6 @@ export default class Page {
         'Desktop — large size',
         'Variants',
         'Dialog',
+        'Dynamic header',
     ];
 }
