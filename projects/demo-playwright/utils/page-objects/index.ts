@@ -1,4 +1,5 @@
 export * from './calendar.po';
+export * from './calendar-month.po';
 export * from './calendar-range.po';
 export * from './calendar-sheet.po';
 export * from './combo-box.po';
