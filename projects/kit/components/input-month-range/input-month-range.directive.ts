@@ -1,10 +1,10 @@
-import {computed, Directive, effect, inject} from '@angular/core';
+import {computed, Directive, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {RANGE_SEPARATOR_CHAR, TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
@@ -15,12 +15,12 @@ import {TuiDropdownAuto, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdo
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
-import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
+import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 
 @Directive({
     standalone: true,
-    selector: 'input[tuiInputMonth]',
-    providers: [tuiAsControl(TuiInputMonthDirective)],
+    selector: 'input[tuiInputMonthRange]',
+    providers: [tuiAsControl(TuiInputMonthRangeDirective)],
     hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
@@ -29,36 +29,58 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
-export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
+export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
     private readonly open = tuiDropdownOpen();
+    private readonly intermediateValue = signal<TuiMonth | null>(null);
+
+    private readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
+        (x) => x instanceof TuiCalendarMonth,
+    );
+
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER), {
         initialValue: () => '',
     });
 
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_MONTH_OPTIONS);
+    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_MONTH_RANGE_OPTIONS);
     protected readonly textfieldValue = tuiValueBinding(
-        computed(() => this.formatter()(this.value())),
+        computed((value = this.value(), format = this.formatter()) =>
+            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
+        ),
     );
 
+    protected readonly calendarInit = effect(() => {
+        const calendar = this.calendar();
+
+        if (calendar) {
+            calendar.options.rangeMode = true;
+        }
+    });
+
     protected readonly calendarSync = effect(() => {
-        this.calendar()?.value.set(this.value());
+        this.calendar()?.value.set(this.intermediateValue() ?? this.value());
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
+    // TODO: use linked signal (Angular 19+)
+    protected readonly resetIntermediateValue = effect(() => {
+        this.intermediateValue.set(this.value() && null);
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected onMonthClickEffect = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
-            this.onChange(month);
+            const intermediateValue = this.intermediateValue();
+
+            if (!intermediateValue) {
+                this.intermediateValue.set(month);
+
+                return;
+            }
+
+            this.onChange(TuiMonthRange.sort(intermediateValue, month));
             this.open.set(false);
         });
 
         onCleanup(() => subscription?.unsubscribe());
     });
-
-    public readonly calendar = tuiInjectAuxiliary<TuiCalendarMonth>(
-        (x) => x instanceof TuiCalendarMonth,
-    );
-
-    public readonly nativePickerEnabled =
-        tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
 
     public override setDisabledState(): void {
         super.setDisabledState();
@@ -66,16 +88,13 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     }
 
     protected toggleDropdown(): void {
-        if (this.interactive() && !this.nativePickerEnabled) {
+        if (this.interactive()) {
             this.open.update((x) => !x);
         }
     }
 
     protected clear(): void {
         this.onChange(null);
-
-        if (!this.nativePickerEnabled) {
-            this.open.set(true);
-        }
+        this.open.set(true);
     }
 }

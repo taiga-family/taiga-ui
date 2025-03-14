@@ -21,3 +21,14 @@ export class TuiDropdownFixed {
         override(inject(TUI_DROPDOWN_OPTIONS, {self: true, optional: true}), null);
     }
 }
+
+@Directive({standalone: true})
+export class TuiDropdownAuto {
+    constructor() {
+        /**
+         * Update directive props with new defaults before inputs are processed
+         * TODO: find better way to override TuiDropdownFixed host directive from parent component
+         */
+        (inject(TUI_DROPDOWN_OPTIONS) as any).limitWidth = 'auto';
+    }
+}
