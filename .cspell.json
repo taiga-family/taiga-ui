@@ -20,7 +20,9 @@
         "tuiaccessories",
         "tuisubtitle",
         "бивер",
-        "finedog"
+        "finedog",
+        "Kryal",
+        "Tureborg"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
