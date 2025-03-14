@@ -2,7 +2,7 @@ import type {AfterViewInit, ExistingProvider, Type} from '@angular/core';
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {distinctUntilChanged, merge, Observable} from 'rxjs';
+import {merge, Observable} from 'rxjs';
 
 import {TuiVehicle} from './vehicle';
 
@@ -31,7 +31,7 @@ export abstract class TuiDriverDirective implements AfterViewInit {
         const vehicle = this.vehicles?.find(({type}) => type === this.type);
 
         merge(...this.drivers.filter(({type}) => type === this.type))
-            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe((value) => {
                 vehicle?.toggle(value);
             });
