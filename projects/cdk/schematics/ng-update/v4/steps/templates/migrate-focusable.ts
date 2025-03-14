@@ -65,7 +65,7 @@ function replaceAttribute({
 
     recorder.remove(startOffset, length);
 
-    const value = attr.value;
+    const {value} = attr;
 
     if (isBooleanLiteral(value)) {
         recorder.insertRight(

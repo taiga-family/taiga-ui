@@ -153,7 +153,7 @@ test.describe('InputNumber', () => {
                 });
 
                 test('1| 000 => Delete => 1 |000', async ({page}) => {
-                    const length = (await input.inputValue()).length;
+                    const {length} = await input.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');
@@ -171,7 +171,7 @@ test.describe('InputNumber', () => {
                 });
 
                 test('1 |000 => Backspace => 1| 000', async ({page}) => {
-                    const length = (await input.inputValue()).length;
+                    const {length} = await input.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');

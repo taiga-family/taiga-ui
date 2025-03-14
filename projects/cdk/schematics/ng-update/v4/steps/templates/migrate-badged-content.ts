@@ -118,7 +118,7 @@ function migrateColor({
         return;
     }
 
-    const value = attr.value;
+    const {value} = attr;
     const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
     const hasBinding = Boolean(attr) && isBinding(attr);
 
@@ -153,7 +153,7 @@ function migrateContent({
         return;
     }
 
-    const value = attr.value;
+    const {value} = attr;
     const colorAttrValue = colorAttr?.value;
     const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 

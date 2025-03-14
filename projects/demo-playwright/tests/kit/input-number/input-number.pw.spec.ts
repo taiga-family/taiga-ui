@@ -865,7 +865,7 @@ describe('InputNumber', () => {
                 });
 
                 test('1| 000 => Delete => 1 |000', async ({page}) => {
-                    const length = (await inputNumber.textfield.inputValue()).length;
+                    const {length} = await inputNumber.textfield.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');
@@ -895,7 +895,7 @@ describe('InputNumber', () => {
                 });
 
                 test('1 |000 => Backspace => 1| 000', async ({page}) => {
-                    const length = (await inputNumber.textfield.inputValue()).length;
+                    const {length} = await inputNumber.textfield.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');

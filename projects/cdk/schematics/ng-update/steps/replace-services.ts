@@ -59,7 +59,7 @@ function replaceProperties(
     replaceProperties: ReplacementService['replaceMethods'],
 ): void {
     const statement = parent.getParent();
-    const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
+    const [identifier] = statement.getChildrenOfKind(SyntaxKind.Identifier);
 
     identifier?.findReferencesAsNodes().forEach((ref) => {
         let parent = ref.getParent();

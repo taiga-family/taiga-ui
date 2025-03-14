@@ -130,7 +130,7 @@ function getTemplateInitializer(
 export function wrapWithTuiRoot(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         const workspace = await getWorkspace(tree);
-        const project = getProjects(options, workspace)[0];
+        const [project] = getProjects(options, workspace);
 
         if (!project) {
             return;

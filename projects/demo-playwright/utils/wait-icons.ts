@@ -12,7 +12,7 @@ export async function waitIcons(options: Options): Promise<void> {
 
     for (const icon of icons) {
         const url = await icon.evaluate((element: HTMLElement) => {
-            const location = window.location;
+            const {location} = window;
             const baseUrl = `${location.protocol}//${location.host}/`;
 
             return window

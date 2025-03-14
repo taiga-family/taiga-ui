@@ -32,7 +32,7 @@ export class TuiNativeInputPO {
     public sendText(value: string): void {
         this.focus(); // need focus before initial value for emulate user interaction
 
-        const nativeElement = this.nativeElement;
+        const {nativeElement} = this;
 
         if (nativeElement) {
             nativeElement.value = value;

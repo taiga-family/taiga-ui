@@ -18,7 +18,7 @@ export function addTaigaIcons(options: TuiSchema): Rule {
 
 export function addTaigaAssetsToAngularJson(options: TuiSchema): Rule {
     return updateWorkspace((workspace) => {
-        const project = getProjects(options, workspace)[0];
+        const [project] = getProjects(options, workspace);
 
         if (project) {
             const targetOptions = getProjectTargetOptions(project, 'build');

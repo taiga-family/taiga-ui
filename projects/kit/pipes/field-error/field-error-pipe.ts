@@ -129,7 +129,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         controlErrors: Record<string, unknown>,
     ): string {
         const id = order?.find((errorId) => controlErrors[errorId]);
-        const fallback = Object.keys(controlErrors)[0];
+        const [fallback] = Object.keys(controlErrors);
 
         return id || fallback || '';
     }
