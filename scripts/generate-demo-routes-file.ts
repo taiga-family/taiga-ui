@@ -61,7 +61,7 @@ const EXCEPTIONS = [
              * use ng-morph (DemoRoute + `app.routes.ts` file + `*pageTab` directive) to create more accurate algorithm.
              *
              */
-            /^\/(components|directives|pipes|services|utils|layout|navigation|charts|experimental)/.exec(
+            /^\/(components|directives|pipes|services|utils|layout|navigation|charts|experimental|legacy)/.exec(
                 route,
             )
         ) {
