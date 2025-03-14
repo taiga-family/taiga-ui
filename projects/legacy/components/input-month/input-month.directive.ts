@@ -8,6 +8,10 @@ import {distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthComponent} from './input-month.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-month TuiInputMonth} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input-month',
