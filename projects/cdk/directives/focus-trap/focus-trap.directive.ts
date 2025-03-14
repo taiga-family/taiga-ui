@@ -62,7 +62,7 @@ export class TuiFocusTrap implements OnDestroy {
     }
 
     protected onFocusIn(node: Node): void {
-        const firstElementChild = this.el.firstElementChild;
+        const {firstElementChild} = this.el;
 
         if (!tuiContainsOrAfter(this.el, node) && firstElementChild) {
             tuiGetClosestFocusable({

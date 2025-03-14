@@ -1375,7 +1375,7 @@ test.describe('InputPhone', () => {
                 test('cannot be removed via Delete', async ({page}) => {
                     await input.fill('9123456789');
 
-                    const length = (await input.inputValue()).length;
+                    const {length} = await input.inputValue();
 
                     for (let i = 0; i < length; i++) {
                         await page.keyboard.press('ArrowLeft');

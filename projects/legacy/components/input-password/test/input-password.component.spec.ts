@@ -62,7 +62,7 @@ describe('InputPassword', () => {
 
     describe('Field visibility', () => {
         it('initially, the field is type = "password", so only dots are visible when entering', () => {
-            const inputType = component.inputType;
+            const {inputType} = component;
 
             expect(inputType).toBe('password');
         });
@@ -70,7 +70,7 @@ describe('InputPassword', () => {
         it('when you click on the "Show password" icon, the field becomes type = "text"', () => {
             getIcon()!.nativeElement.click();
 
-            const inputType = component.inputType;
+            const {inputType} = component;
 
             expect(inputType).toBe('text');
         });
@@ -79,7 +79,7 @@ describe('InputPassword', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
-            const inputType = component.inputType;
+            const {inputType} = component;
 
             expect(inputType).toBe('password');
         });
@@ -88,7 +88,7 @@ describe('InputPassword', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
-            const inputType = component.inputType;
+            const {inputType} = component;
 
             expect(inputType).toBe('password');
         });
