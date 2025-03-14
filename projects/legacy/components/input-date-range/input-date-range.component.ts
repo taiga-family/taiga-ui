@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
-import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -55,7 +55,7 @@ import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map} from 'rxjs';
+import {map, timer} from 'rxjs';
 
 @Component({
     standalone: false,
@@ -178,9 +178,7 @@ export class TuiInputDateRangeComponent
     public onValueChange(value: string): void {
         this.nativeValue.set(value);
 
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
+        this.control?.updateValueAndValidity({emitEvent: false});
 
         if (!value && !this.mobileCalendar) {
             this.onOpenChange(true);
@@ -217,12 +215,15 @@ export class TuiInputDateRangeComponent
         }
 
         super.writeValue(value);
-        this.nativeValue.set(this.value ? this.computedValue : '');
-        this.selectedActivePeriod = this.findActivePeriodBy(this.value);
-    }
 
-    protected get computedMobile(): boolean {
-        return this.isMobile && !!this.mobileCalendar;
+        const masked = value
+            ? maskitoTransform(this.computedValue, this.computedMask)
+            : '';
+
+        this.nativeValue.set(masked);
+        this.selectedActivePeriod = this.findActivePeriodBy(this.value);
+
+        this.syncMaskValue(value, masked);
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
@@ -333,9 +334,7 @@ export class TuiInputDateRangeComponent
     }
 
     private focusInput(preventScroll = false): void {
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.focus({preventScroll});
-        }
+        this.nativeFocusableElement?.focus({preventScroll});
     }
 
     private getDateRangeFiller(dateFiller: string): string {
@@ -354,5 +353,21 @@ export class TuiInputDateRangeComponent
                 ),
             ) ?? null
         );
+    }
+
+    private syncMaskValue(value: TuiDayRange | null, masked: string): void {
+        if (!(value instanceof TuiDayRange) || !masked.includes(RANGE_SEPARATOR_CHAR)) {
+            return;
+        }
+
+        const transformed = TuiDayRange.normalizeParse(masked);
+
+        if (!transformed.daySame(value)) {
+            super.writeValue(transformed);
+
+            timer(0)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe(() => this.control?.setValue(this.value, {emitEvent: false}));
+        }
     }
 }
