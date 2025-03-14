@@ -117,13 +117,15 @@ export class PayModal implements OnInit {
         this.payService
             .pay()
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(
-                () => {
+            .subscribe({
+                next: () => {
                     this.payProcessing$.next(false);
                     this.context.$implicit.complete();
                 },
-                () => this.payProcessing$.next(false),
-            );
+                error: () => {
+                    this.payProcessing$.next(false);
+                },
+            });
     }
 
     protected cardValidator(card: string): boolean {
