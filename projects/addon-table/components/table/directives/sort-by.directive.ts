@@ -2,8 +2,10 @@ import type {QueryList} from '@angular/core';
 import {ContentChildren, Directive, inject, Input, Output} from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import type {Observable} from 'rxjs';
 import {combineLatest, debounceTime, delay, filter, map} from 'rxjs';
 
+import type {TuiSortChange} from '../table.options';
 import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
@@ -29,12 +31,17 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
     );
 
     @Output()
-    public readonly tuiSortChange = combineLatest([
+    public readonly tuiSortChange: Observable<TuiSortChange<T>> = combineLatest([
         this.tuiSortByChange,
         this.table.directionChange,
     ]).pipe(
         debounceTime(0),
-        map(([sortBy, orderBy]) => ({sortBy, orderBy})),
+        map(([sortKey, sortDirection]) => ({
+            sortBy: sortKey,
+            orderBy: sortDirection,
+            sortKey,
+            sortDirection,
+        })),
     );
 
     public tuiSortBy: string | keyof T | null = null;

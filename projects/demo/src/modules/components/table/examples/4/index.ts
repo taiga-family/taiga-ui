@@ -5,10 +5,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {
     TuiComparator,
-    TuiSortAndOrder,
+    TuiSortChange,
     TuiTablePaginationEvent,
 } from '@taiga-ui/addon-table';
-import {TuiReorder, TuiTable, TuiTablePagination} from '@taiga-ui/addon-table';
+import {
+    TuiReorder,
+    TuiSortDirection,
+    TuiTable,
+    TuiTablePagination,
+} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -45,6 +50,7 @@ import {
 interface User {
     readonly dob: TuiDay;
     readonly name: string;
+    readonly age: number;
 }
 
 const TODAY = TuiDay.currentLocal();
@@ -75,29 +81,25 @@ const LAST = [
     'Wilson',
 ];
 
-type Key = 'age' | 'dob' | 'name';
+const DATA: readonly User[] = Array.from({length: 300}, () => {
+    const dob = TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
+        age = getAge(dob),
+        name = `${LAST[Math.floor(Math.random() * 10)]}, ${FIRST[Math.floor(Math.random() * 10)]}`;
 
-const DATA: readonly User[] = Array.from({length: 300}, () => ({
-    name: `${LAST[Math.floor(Math.random() * 10)]}, ${
-        FIRST[Math.floor(Math.random() * 10)]
-    }`,
-    dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
-}));
+    return {name, dob, age};
+});
 
-const KEYS: Record<string, Key> = {
+const KEYS: Record<string, keyof User> = {
     Name: 'name',
     Age: 'age',
     'Date of Birth': 'dob',
 };
 
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<User> {
-    return (a, b) =>
-        key === 'age'
-            ? direction * tuiDefaultSort(getAge(a), getAge(b))
-            : direction * tuiDefaultSort(a[key], b[key]);
+function sortBy(key: keyof User, direction: TuiSortDirection): TuiComparator<User> {
+    return (a, b) => direction * tuiDefaultSort(a[key], b[key]);
 }
 
-function getAge({dob}: User): number {
+function getAge(dob: TuiDay): number {
     const years = TODAY.year - dob.year;
     const months = TODAY.month - dob.month;
     const days = TODAY.day - dob.day;
@@ -137,8 +139,11 @@ export default class Example {
     private readonly size$ = new BehaviorSubject(10);
     protected readonly page$ = new BehaviorSubject(0);
 
-    protected readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
-    protected readonly sorter$ = new BehaviorSubject<Key>('name');
+    protected readonly direction$ = new BehaviorSubject<TuiSortDirection>(
+        TuiSortDirection.Desc,
+    );
+
+    protected readonly sortKey$ = new BehaviorSubject<keyof User>('name');
 
     protected readonly minAge = new FormControl(21);
     protected readonly minAge$ = tuiControlValue<number>(this.minAge).pipe(
@@ -147,7 +152,7 @@ export default class Example {
     );
 
     protected readonly request$ = combineLatest([
-        this.sorter$,
+        this.sortKey$,
         this.direction$,
         this.page$,
         this.size$,
@@ -183,8 +188,6 @@ export default class Example {
         startWith([]),
     );
 
-    protected readonly getAge = getAge;
-
     protected onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
@@ -201,14 +204,14 @@ export default class Example {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
-    protected change<T>({sortBy, orderBy}: TuiSortAndOrder<T>): void {
-        this.sorter$.next(sortBy as Key);
-        this.direction$.next(orderBy);
+    protected change({sortKey, sortDirection}: TuiSortChange<User>): void {
+        this.sortKey$.next(sortKey!);
+        this.direction$.next(sortDirection);
     }
 
     private getData(
-        key: 'age' | 'dob' | 'name',
-        direction: -1 | 1,
+        key: keyof User,
+        direction: TuiSortDirection,
         page: number,
         size: number,
         minAge: number,
@@ -219,7 +222,7 @@ export default class Example {
         const end = start + size;
         const result = [...DATA]
             .sort(sortBy(key, direction))
-            .filter((user) => getAge(user) >= minAge)
+            .filter((user) => user.age >= minAge)
             .map((user, index) => (index >= start && index < end ? user : null));
 
         // Imitating server response

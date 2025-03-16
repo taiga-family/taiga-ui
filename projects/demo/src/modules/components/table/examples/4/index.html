@@ -56,8 +56,8 @@
         tuiTable
         class="table"
         [columns]="columns"
-        [direction]="(direction$ | async) || 1"
-        [tuiSortBy]="sorter$ | async"
+        [direction]="(direction$ | async) ?? -1"
+        [tuiSortBy]="sortKey$ | async"
         (tuiSortChange)="change($event)"
     >
         <thead>
@@ -112,9 +112,9 @@
                 <td
                     *tuiCell="'age'"
                     tuiTd
-                    [class.match]="isMatch(getAge(item))"
+                    [class.match]="isMatch(item.age)"
                 >
-                    {{ getAge(item) }}
+                    {{ item.age }}
                 </td>
             </tr>
         </tbody>
