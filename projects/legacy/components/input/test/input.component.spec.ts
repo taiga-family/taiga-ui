@@ -154,8 +154,10 @@ describe('Input', () => {
             });
 
             it('down arrow when readonly is on', () => {
+                inputPO.blur();
                 testComponent.readOnly = true;
                 fixture.detectChanges();
+                inputPO.focus();
                 inputPO.sendKeydown('arrowDown');
 
                 expect(getDropdown()).toBeNull();
