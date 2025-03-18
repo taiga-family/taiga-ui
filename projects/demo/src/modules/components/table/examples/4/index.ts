@@ -226,6 +226,6 @@ export default class Example {
             .map((user, index) => (index >= start && index < end ? user : null));
 
         // Imitating server response
-        return timer(3000).pipe(map(() => result));
+        return timer(Math.random() * 1e3 + 1e3).pipe(map(() => result));
     }
 }

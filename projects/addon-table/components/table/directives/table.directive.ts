@@ -122,9 +122,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
                     : TuiSortDirection.Asc,
             );
         } else {
-            this.updateSorter(sorter);
             this.updateDirection(1);
         }
+
+        this.updateSorter(sorter);
     }
 
     public ngOnChanges(): void {
