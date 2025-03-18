@@ -48,10 +48,9 @@ export class TuiInputSliderDirective {
         this.controlTransformer.toControlValue(this.inputNumber.value()),
     );
 
-    private readonly keyStepsTransformer = computed<TuiValueTransformer<
-        number,
-        number
-    > | null>(() => this.slider()?.keySteps?.transformer() ?? null);
+    private readonly keyStepsTransformer = computed(() =>
+        this.slider()?.keySteps?.transformer(),
+    );
 
     private readonly step = computed((slider = this.slider()) =>
         slider && this.keyStepsTransformer() // For non-linear slider step means percentage
