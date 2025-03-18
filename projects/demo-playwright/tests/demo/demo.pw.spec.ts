@@ -6,6 +6,7 @@ import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+    const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {
         test(`${path}`, async ({page, browserName}) => {
@@ -14,17 +15,7 @@ test.describe('Demo', () => {
             await tuiMockImages(page);
             await tuiGoto(page, path);
             await injectAxe(page);
-            await configureAxe(page, {
-                reporter: 'v2',
-                rules: [
-                    {id: 'scrollable-region-focusable', enabled: false},
-                    {id: 'heading-order', enabled: false},
-                    {id: 'label', enabled: false},
-                    {id: 'landmark-unique', enabled: false},
-                    {id: 'landmark-no-duplicate-main', enabled: false},
-                    {id: 'nested-interactive', enabled: false},
-                ],
-            });
+            await configureAxe(page, axeConfig);
             await documentation.waitTuiIcons();
             await documentation.waitStableState();
 
