@@ -63,7 +63,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.117.0
 
       - name: Download Cypress Baseline Snapshots
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.2.0
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
           pattern: ${{ env.CYPRESS_BASELINE_SNAPSHOTS_KEY }}
@@ -236,7 +236,7 @@ jobs:
 
       - name: Download artifacts for Playwright
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.2.0
         with:
           path: ./total/playwright
           pattern: playwright-snapshots-artifacts--*
@@ -245,7 +245,7 @@ jobs:
 
       - name: Download artifacts for Cypress
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.2.0
         with:
           path: ./total/cypress
           pattern: cypress-snapshots-artifacts--*
@@ -254,7 +254,7 @@ jobs:
 
       - name: Download blob reports for Playwright
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.2.0
         with:
           path: all-blob-reports
           pattern: playwright-blob-artifacts--*
