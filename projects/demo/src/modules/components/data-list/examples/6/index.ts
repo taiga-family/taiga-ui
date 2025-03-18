@@ -1,25 +1,25 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         NgForOf,
+        NgIf,
+        ReactiveFormsModule,
         TuiButton,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        AsyncPipe,
-        NgIf,
         TuiInputModule,
-        ReactiveFormsModule,
     ],
     templateUrl: './index.html',
     styles: [
@@ -55,5 +55,5 @@ export default class Example {
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
-    control = new FormControl('');
+    public control = new FormControl('');
 }
