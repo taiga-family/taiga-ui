@@ -22,6 +22,7 @@ export * from '@taiga-ui/kit/components/files';
 export * from '@taiga-ui/kit/components/filter';
 export * from '@taiga-ui/kit/components/input-inline';
 export * from '@taiga-ui/kit/components/input-month';
+export * from '@taiga-ui/kit/components/input-month-range';
 export * from '@taiga-ui/kit/components/input-number';
 export * from '@taiga-ui/kit/components/input-password';
 export * from '@taiga-ui/kit/components/input-phone-international';

@@ -10,6 +10,10 @@ import {combineLatest, distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthRangeComponent} from './input-month-range.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-month#range TuiInputMonth} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input-month-range',

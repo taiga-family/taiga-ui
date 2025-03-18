@@ -169,6 +169,44 @@
                 </tui-notification>
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="range"
+            heading="Range mode"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+            [description]="rangeModeDescription"
+            [fullsize]="true"
+        >
+            <ng-template #rangeModeDescription>
+                Use
+                <code>tuiInputMonthRange</code>
+                to enable possibility to select range of months.
+
+                <p>
+                    All features described above are applicable for it too. Moreover, it provides two additional
+                    features:
+                    <code>minLength</code>
+                    /
+                    <code>maxLength</code>
+                    – minimal / maximal length of the selected range.
+                </p>
+                <tui-notification style="display: inline-block">
+                    Form control value is
+                    <a
+                        href="https://github.com/search?q=%2Fexport+class+TuiMonthRange%28%3C%7C%5Cs%29%2F+language%3ATypeScript+repo%3Ataiga-family%2Ftaiga-ui+&type=code"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        TuiMonthRange
+                    </a>
+                    or
+                    <code>null</code>
+                    (for uncompleted range or empty textfield) types.
+                </tui-notification>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

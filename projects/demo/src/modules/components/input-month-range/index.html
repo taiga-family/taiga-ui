@@ -1,9 +1,22 @@
 <tui-doc-page
+    deprecated
     header="InputMonthRange"
     package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                fragment="range"
+                tuiLink
+                [routerLink]="routes.InputMonth"
+            >
+                <strong>new version of InputMonth</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <p>Component to input a range of months</p>
 
         <tui-doc-example
