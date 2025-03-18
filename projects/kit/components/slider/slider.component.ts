@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, inject, INJECTOR, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
@@ -32,7 +31,6 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
     },
 })
 export class TuiSliderComponent {
-    private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
@@ -44,6 +42,10 @@ export class TuiSliderComponent {
     public segments = 1;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
+    public readonly keySteps = inject(TuiSliderKeyStepsBase, {
+        self: true,
+        optional: true,
+    });
 
     constructor() {
         if (this.control instanceof NgModel) {
@@ -56,11 +58,6 @@ export class TuiSliderComponent {
              */
             this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
-    }
-
-    @tuiPure
-    public get keySteps(): TuiSliderKeyStepsBase | null {
-        return this.injector.get(TuiSliderKeyStepsBase, null);
     }
 
     public get valueRatio(): number {

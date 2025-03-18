@@ -1,10 +1,11 @@
-import {Directive, forwardRef, inject, Input, signal} from '@angular/core';
+import {Directive, forwardRef, inject, INJECTOR, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {switchMap, timer} from 'rxjs';
 
 import {TuiSliderComponent} from '../slider.component';
@@ -21,19 +22,22 @@ import {tuiCreateKeyStepsTransformer} from './key-steps';
     },
 })
 export class TuiSliderKeyStepsBase {
+    private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
-    protected readonly slider = inject<TuiSliderComponent>(
-        forwardRef(() => TuiSliderComponent),
-    );
 
-    protected min?: number = this.slider.min;
-    protected max?: number = this.slider.max;
+    protected min?: number;
+    protected max?: number;
 
     public transformer = signal<TuiValueTransformer<number, number> | null>(null);
     public value = toSignal(
         timer(0) // https://github.com/angular/angular/issues/54418
             .pipe(switchMap(() => tuiControlValue<number>(this.control))),
     );
+
+    @tuiPure
+    public get slider(): TuiSliderComponent {
+        return this.injector.get(TuiSliderComponent);
+    }
 
     @Input()
     public set keySteps(steps: TuiKeySteps | null) {
