@@ -160,7 +160,7 @@ function getOptionsObject(
         return options;
     }
 
-    const definition = options.getDefinitionNodes()[0];
+    const [definition] = options.getDefinitionNodes();
 
     return definition?.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0] ?? null;
 }
@@ -168,7 +168,7 @@ function getOptionsObject(
 export function addTaigaModules(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         const workspace = await getWorkspace(tree);
-        const project = getProjects(options, workspace)[0];
+        const [project] = getProjects(options, workspace);
 
         if (!project) {
             context.logger.warn(

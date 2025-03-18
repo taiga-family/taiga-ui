@@ -20,7 +20,7 @@ export default class TuiRoutableDialog {
     private readonly dialog = inject(TuiDialogService);
 
     constructor() {
-        const dialog = this.route.snapshot.data['dialog'];
+        const {dialog} = this.route.snapshot.data;
 
         from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
             .pipe(

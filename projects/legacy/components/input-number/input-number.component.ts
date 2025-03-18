@@ -208,7 +208,7 @@ export class TuiInputNumberComponent
     }
 
     protected get computedPostfix(): string {
-        const postfix = this.controller.postfix;
+        const {postfix} = this.controller;
 
         return postfix && ` ${postfix}`;
     }
@@ -297,7 +297,7 @@ export class TuiInputNumberComponent
     }
 
     private get isNativeValueNotFinished(): boolean {
-        const nativeNumberValue = this.nativeNumberValue;
+        const {nativeNumberValue} = this;
 
         return nativeNumberValue < 0
             ? nativeNumberValue > this.computedMax

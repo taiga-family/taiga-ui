@@ -150,7 +150,7 @@ export default class Example {
     );
 
     protected get card(): string | null {
-        const value = this.testForm.get('card')!.value;
+        const {value} = this.testForm.get('card')!;
 
         if ((value?.length ?? 0) < 7) {
             return null;
