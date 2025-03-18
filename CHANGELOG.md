@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.108.0](https://github.com/taiga-family/taiga-ui/compare/v3.105.0...v3.108.0) (2025-03-18)
+
+### Bug Fixes
+
+- **core:** `TuiDataList` attr(data-label) not correct working in Chrome
+  ([#10552](https://github.com/taiga-family/taiga-ui/issues/10552))
+  ([bb17192](https://github.com/taiga-family/taiga-ui/commit/bb1719234291f4b4a291575756239f8ce7383a7f))
+- **core:** focus option by mousemove only in dropdown manager
+  ([#10538](https://github.com/taiga-family/taiga-ui/issues/10538))
+  ([8ae5cca](https://github.com/taiga-family/taiga-ui/commit/8ae5ccaafb74a1316200664a58ec7ca010449751))
+- **demo:** `TuiHeader` add `TuiTitle` to import example
+  ([#10417](https://github.com/taiga-family/taiga-ui/issues/10417))
+  ([49b5df5](https://github.com/taiga-family/taiga-ui/commit/49b5df574a56f6b57acb045066dd56bb9aa32775))
+- **kit:** do not expand textarea horizontally for long word
+  ([#10611](https://github.com/taiga-family/taiga-ui/issues/10611))
+  ([4b4e64a](https://github.com/taiga-family/taiga-ui/commit/4b4e64aa1b3b66d581a9662ddfef91451039843c))
+- **kit:** scrollbar in multi-select with data-list-wrapper
+  ([#10613](https://github.com/taiga-family/taiga-ui/issues/10613))
+  ([cb4df39](https://github.com/taiga-family/taiga-ui/commit/cb4df3919c02a0c6017117cfb58793bd82e3555a))
+- **kit:** textarea flickering when type space ([#10565](https://github.com/taiga-family/taiga-ui/issues/10565))
+  ([ac96325](https://github.com/taiga-family/taiga-ui/commit/ac963256d5f3d464cd82650a1329b155ac49b069))
+- **layout:** `BlockStatus` fix margin when description block is empty
+  ([#10581](https://github.com/taiga-family/taiga-ui/issues/10581))
+  ([a2946a7](https://github.com/taiga-family/taiga-ui/commit/a2946a7b4cee4da250b4aaeb9dca937d644677e1))
+- skeleton view without animation ([#10512](https://github.com/taiga-family/taiga-ui/issues/10512))
+  ([b61c2a7](https://github.com/taiga-family/taiga-ui/commit/b61c2a7a62008a71760894aea959305661e6cf03))
+
 ## [3.107.0](https://github.com/taiga-family/taiga-ui/compare/v3.105.0...v3.107.0) (2025-03-11)
 
 ### Bug Fixes
