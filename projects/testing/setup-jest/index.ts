@@ -26,15 +26,12 @@ Object.defineProperty(global.document, 'execCommand', {
     disconnect: jest.fn(),
 }));
 
-// Simulate window resize events
-const resizeEvent = document.createEvent('Event');
-
-resizeEvent.initEvent('resize', true, true);
-
 global.window.resizeTo = (width) => {
     (global.window as any).innerWidth = width || global.window.innerWidth;
     (global.window as any).innerHeight = width || global.window.innerHeight;
-    global.window.dispatchEvent(resizeEvent);
+
+    // Simulate window resize events
+    global.window.dispatchEvent(new Event('resize', {bubbles: true, cancelable: true}));
 };
 
 global.URL.createObjectURL = jest.fn(String);
