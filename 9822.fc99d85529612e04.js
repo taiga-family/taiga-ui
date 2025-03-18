@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9822],{9822:e=>{e.exports='<form>\n    <tui-select\n        tuiTextfieldSize="m"\n        [formControl]="testValue"\n        [tuiTextfieldLabelOutside]="true"\n    >\n        Employee\n        <tui-data-list-wrapper\n            *tuiDataList\n            [items]="items"\n        />\n    </tui-select>\n</form>\n'}}]);

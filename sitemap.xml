@@ -349,7 +349,7 @@
     <loc>https://taiga-ui.dev/components/calendar-range/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/select/</loc>
+    <loc>https://taiga-ui.dev/legacy/select/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/scrollbar/</loc>
@@ -1057,6 +1057,12 @@
     <loc>https://taiga-ui.dev/components/input-month/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-month/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-month/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-month-range/API/</loc>
   </url>
   <url>
@@ -1067,6 +1073,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-number/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-number/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-number/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-phone/API/</loc>
@@ -1237,10 +1249,10 @@
     <loc>https://taiga-ui.dev/components/calendar-range/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/select/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/select/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/select/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/select/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/scrollbar/API/</loc>
