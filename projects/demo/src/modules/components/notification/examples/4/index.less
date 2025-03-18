@@ -1,13 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
 [tuiNotification]::before {
     .center-top();
 
-    color: #000;
+    color: var(--tui-text-negative);
 }
