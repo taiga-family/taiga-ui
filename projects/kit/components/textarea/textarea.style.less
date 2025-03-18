@@ -157,7 +157,6 @@
 .t-pseudo-content {
     white-space: pre-wrap;
     word-wrap: break-word;
-    word-break: keep-all;
     pointer-events: none;
     color: transparent;
     overflow: hidden;
@@ -232,6 +231,11 @@
             padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
         }
     }
+}
+
+.t-pseudo-content,
+.t-input {
+    word-break: break-word;
 }
 
 .t-placeholder {
