@@ -7,6 +7,17 @@ import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 
 process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
+process.env['AXE_CONFIG'] = JSON.stringify({
+    reporter: 'v2',
+    rules: [
+        {id: 'scrollable-region-focusable', enabled: false},
+        {id: 'heading-order', enabled: false},
+        {id: 'label', enabled: false},
+        {id: 'landmark-unique', enabled: false},
+        {id: 'landmark-no-duplicate-main', enabled: false},
+        {id: 'nested-interactive', enabled: false},
+    ],
+});
 
 /**
  * See https://playwright.dev/docs/test-configuration.
