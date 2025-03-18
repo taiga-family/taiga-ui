@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.29.0](https://github.com/taiga-family/taiga-ui/compare/v4.28.0...v4.29.0) (2025-03-18)
+
+### 🚀 Features
+
+- **cdk:** add `tuiAnimation` ([#10609](https://github.com/taiga-family/taiga-ui/issues/10609))
+  ([f1d3230](https://github.com/taiga-family/taiga-ui/commit/f1d32306c244e5825aabd963155547437f8092d0))
+- **kit:** `InputMonthRange` refactor to new `Textfield`
+  ([#10569](https://github.com/taiga-family/taiga-ui/issues/10569))
+  ([6ff50eb](https://github.com/taiga-family/taiga-ui/commit/6ff50ebc490b3df1f229151a7ebadf3d09165c1a))
+
+### 🐞 Bug Fixes
+
+- **addon-table:** `tuiSortChange` event should emit when `requiredSort` is enabled
+  ([#10619](https://github.com/taiga-family/taiga-ui/issues/10619))
+  ([78f2d01](https://github.com/taiga-family/taiga-ui/commit/78f2d01e0b9c4f95b2f4ffdfe56ddbe70edbfdc6))
+- **addon-table:** improve `tuiSortChange` event type ([#10556](https://github.com/taiga-family/taiga-ui/issues/10556))
+  ([443b218](https://github.com/taiga-family/taiga-ui/commit/443b218d3eb4550e9462e298363ed314df3692de))
+- **experimental:** `Accordion` fix dynamic children ([#10457](https://github.com/taiga-family/taiga-ui/issues/10457))
+  ([1a14a32](https://github.com/taiga-family/taiga-ui/commit/1a14a3291800eb56843a1341f8c1a88f3e15a32a))
+- **kit:** `Block` fix style for input inside ([#10604](https://github.com/taiga-family/taiga-ui/issues/10604))
+  ([7a42e5e](https://github.com/taiga-family/taiga-ui/commit/7a42e5e07d21240b0e54148cc24cf4a22bd990ac))
+- **kit:** `Chip` as text input is not properly clickable
+  ([#10572](https://github.com/taiga-family/taiga-ui/issues/10572))
+  ([4112ac6](https://github.com/taiga-family/taiga-ui/commit/4112ac6a865ffb23c930065ba711cb4e04049078))
+- **kit:** disabled checkbox must not be interactive ([#10583](https://github.com/taiga-family/taiga-ui/issues/10583))
+  ([20d966e](https://github.com/taiga-family/taiga-ui/commit/20d966ee7d78dc33bebfe6e747bc39369071e1e8))
+- **layout:** `BlockStatus` fix margin when description block is empty
+  ([#10579](https://github.com/taiga-family/taiga-ui/issues/10579))
+  ([678f185](https://github.com/taiga-family/taiga-ui/commit/678f18533ba7df7af3952a018c1960762df65f4c))
+- **legacy:** `InputTag` remove unnecessary scrollbar ([#10582](https://github.com/taiga-family/taiga-ui/issues/10582))
+  ([b4b2fb6](https://github.com/taiga-family/taiga-ui/commit/b4b2fb6eae91e4ea9965aba9cfa00a56ea67a570))
+- **legacy:** do not expand textarea horizontally for long word
+  ([#10566](https://github.com/taiga-family/taiga-ui/issues/10566))
+  ([9b3570b](https://github.com/taiga-family/taiga-ui/commit/9b3570b86ef02f7d89742160e5f3cf984fb9f547))
+
 ## [4.28.0](https://github.com/taiga-family/taiga-ui/compare/v4.27.1...v4.28.0) (2025-03-11)
 
 ### 🚀 Features
