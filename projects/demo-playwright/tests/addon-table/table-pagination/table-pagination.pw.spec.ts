@@ -62,4 +62,34 @@ test.describe('TablePagination', () => {
             '2-[sizeOptionContent]-dropdown.png',
         );
     });
+
+    test.describe('LinesPerPageButton', () => {
+        test('Size is larger than total', async ({page}) => {
+            await tuiGoto(
+                page,
+                '/components/table-pagination/API?total=25&size=100&page=1',
+            );
+
+            const documentationPage = new TuiDocumentationPagePO(page);
+            const tablePagination = new TuiTablePaginationPO(
+                documentationPage.apiPageExample.locator('tui-table-pagination'),
+            );
+
+            await expect(tablePagination.linesPerPageButton).toHaveText('1–25');
+        });
+
+        test('Last page', async ({page}) => {
+            await tuiGoto(
+                page,
+                '/components/table-pagination/API?total=25&size=10&page=2',
+            );
+
+            const documentationPage = new TuiDocumentationPagePO(page);
+            const tablePagination = new TuiTablePaginationPO(
+                documentationPage.apiPageExample.locator('tui-table-pagination'),
+            );
+
+            await expect(tablePagination.linesPerPageButton).toHaveText('21–25');
+        });
+    });
 });
