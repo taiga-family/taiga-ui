@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    Directive,
+    effect,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
     TuiNonNullableValueTransformer,
@@ -8,10 +16,8 @@ import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {
-    tuiInjectAuxiliary,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core/components/textfield';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
@@ -59,7 +65,7 @@ export class TuiInputSliderDirective {
         () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
     );
 
-    protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly nothing = tuiWithStyles(TuiInputSliderStyles);
 
     protected readonly textfieldToSliderSync = effect(() => {
         const slider = this.slider();
@@ -102,10 +108,6 @@ export class TuiInputSliderDirective {
         onCleanup(() => subscription.unsubscribe());
     });
 
-    constructor() {
-        this.textfield.options.cleaner.set(false);
-    }
-
     protected onStep(coefficient: number): void {
         const slider = this.slider();
 
@@ -122,7 +124,7 @@ export class TuiInputSliderDirective {
     }
 
     protected onBlur(): void {
-        if (!this.textfield.input?.nativeElement.value) {
+        if (!this.element.value) {
             this.inputNumber.setValue(this.value() ?? null);
         }
     }
@@ -135,3 +137,18 @@ export class TuiInputSliderDirective {
         }
     }
 }
+
+@Component({
+    standalone: true,
+    template: '',
+    styles: [
+        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
+        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-input-slider',
+    },
+})
+class TuiInputSliderStyles {}
