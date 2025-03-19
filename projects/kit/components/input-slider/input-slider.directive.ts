@@ -1,5 +1,9 @@
 import {computed, Directive, effect, inject} from '@angular/core';
-import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {
+    TUI_IDENTITY_VALUE_TRANSFORMER,
+    TuiNonNullableValueTransformer,
+    TuiValueTransformer,
+} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
@@ -43,19 +47,16 @@ export class TuiInputSliderDirective {
         (x) => x instanceof TuiSliderComponent,
     );
 
-    private readonly controlTransformer = inject(TuiValueTransformer, {self: true});
+    private readonly controlTransformer = inject<
+        TuiValueTransformer<number | null, number>
+    >(TuiValueTransformer, {self: true});
+
     private readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
     );
 
-    private readonly keyStepsTransformer = computed(() =>
-        this.slider()?.keySteps?.transformer(),
-    );
-
-    private readonly step = computed((slider = this.slider()) =>
-        slider && this.keyStepsTransformer() // For non-linear slider step means percentage
-            ? ((this.inputNumber.max() - this.inputNumber.min()) / 100) * slider.step
-            : (slider?.step ?? 1),
+    private readonly keyStepsTransformer = computed(
+        () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
     );
 
     protected readonly textfield = inject(TuiTextfieldComponent);
@@ -67,12 +68,17 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        const value = this.value() ?? slider.value;
+        if (slider.keySteps && Number.isFinite(slider.keySteps?.totalSteps)) {
+            // TODO(v5): move all if-condition body inside `TuiSliderKeyStepsBase`
+            slider.min = 0;
+            slider.step = 1;
+            slider.max = slider.keySteps?.totalSteps ?? 100;
+        } else {
+            slider.min = this.inputNumber.min();
+            slider.max = this.inputNumber.max();
+        }
 
-        slider.min = this.inputNumber.min();
-        slider.max = this.inputNumber.max();
-        slider.step = this.step();
-        slider.value = this.keyStepsTransformer()?.fromControlValue(value) ?? value;
+        slider.value = this.keyStepsTransformer().fromControlValue(this.value());
         slider.el.disabled = !this.inputNumber.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -103,19 +109,16 @@ export class TuiInputSliderDirective {
     protected onStep(coefficient: number): void {
         const slider = this.slider();
 
-        if (!slider || !this.inputNumber.interactive()) {
-            return;
+        if (slider && this.inputNumber.interactive()) {
+            const newValue = tuiClamp(
+                slider.keySteps?.takeStep(coefficient) ??
+                    slider.value + coefficient * slider.step,
+                this.inputNumber.min(),
+                this.inputNumber.max(),
+            );
+
+            this.inputNumber.setValue(newValue);
         }
-
-        const newValue = tuiClamp(
-            slider.value + coefficient * this.step(),
-            this.inputNumber.min(),
-            this.inputNumber.max(),
-        );
-
-        this.inputNumber.setValue(
-            this.keyStepsTransformer()?.toControlValue(newValue) ?? newValue,
-        );
     }
 
     protected onBlur(): void {
@@ -125,9 +128,7 @@ export class TuiInputSliderDirective {
     }
 
     private onSliderInput(value: number): void {
-        this.inputNumber.setValue(
-            this.keyStepsTransformer()?.toControlValue(value) ?? value,
-        );
+        this.inputNumber.setValue(this.keyStepsTransformer().toControlValue(value));
 
         if (!this.isMobile) {
             this.element.focus();

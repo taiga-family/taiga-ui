@@ -28,6 +28,9 @@ export class TuiSliderKeyStepsBase {
     protected min?: number;
     protected max?: number;
 
+    @Input({transform: (x: number | 'any') => (x === 'any' ? null : x)})
+    public step: number | null = 1;
+
     public transformer = signal<TuiValueTransformer<number, number> | null>(null);
     public value = toSignal(
         timer(0) // https://github.com/angular/angular/issues/54418
@@ -44,6 +47,37 @@ export class TuiSliderKeyStepsBase {
         this.transformer.set(steps && tuiCreateKeyStepsTransformer(steps, this.slider));
         this.min = steps?.[0][1];
         this.max = steps?.[steps.length - 1]?.[1];
+    }
+
+    /**
+     * TODO(v5): standardize logic between `TuiSlider` & `TuiInputSlider` (for non-linear slider `step` means percentage)
+     * Add these host-bindings to `TuiSliderKeyStepsBase`:
+     * ```
+     * host: {
+     *     '[attr.min]': '0',
+     *     '[attr.step]': '1',
+     *     '[attr.max]': 'totalSteps',
+     * },
+     * ```
+     */
+    public get totalSteps(): number {
+        /**
+         * Not-integer amount of steps is invalid usage of native sliders
+         * ```html
+         * <input type="range" [max]="100" [step]="3.33" />
+         * ```
+         * (impossible to select 100; 99.9 is max allowed value)
+         */
+        return this.step ? Math.round(100 / this.step) : Infinity;
+    }
+
+    public takeStep(coefficient: number): number {
+        const newValue = this.slider.value + coefficient;
+
+        return (
+            this.transformer()?.toControlValue(this.slider.value + coefficient) ??
+            newValue
+        );
     }
 }
 
