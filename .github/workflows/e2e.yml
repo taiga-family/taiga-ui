@@ -25,7 +25,7 @@ jobs:
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.2.2
+        uses: actions/cache/save@v4.2.3
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -50,7 +50,7 @@ jobs:
         run: npx nx component-test demo-cypress
 
       - name: Save Cypress Baseline Snapshots
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4.6.2
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
           name: ${{env.CYPRESS_BASELINE_SNAPSHOTS_KEY}}
@@ -82,7 +82,7 @@ jobs:
         run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4.6.2
         with:
           path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
@@ -135,7 +135,7 @@ jobs:
         run: |
           echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
 
-      - uses: actions/cache/restore@v4.2.2
+      - uses: actions/cache/restore@v4.2.3
         id: playwright-cache
         with:
           path: |
@@ -149,7 +149,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.2.2
+        uses: actions/cache/restore@v4.2.3
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -191,7 +191,7 @@ jobs:
           npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4.6.2
         with:
           path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
@@ -200,7 +200,7 @@ jobs:
           retention-days: 1
 
       - name: Upload reports / ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4.6.2
         with:
           path: ./projects/demo-playwright/blob-report
           name: ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
