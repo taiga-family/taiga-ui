@@ -37,6 +37,7 @@ export const TUI_USED_ICONS = [
     '@tui.users',
     '@tui.circle-plus',
     '@tui.circle-arrow-right',
+    '@tui.wallet',
     '@tui.square-plus',
     '@tui.chevron-right',
     '@tui.target',
