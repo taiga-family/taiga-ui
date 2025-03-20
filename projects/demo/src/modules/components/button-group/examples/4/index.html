@@ -1,0 +1,73 @@
+<tui-carousel
+    [draggable]="true"
+    [itemsCount]="1"
+    [(index)]="index"
+>
+    <ng-container *ngFor="let item of items; let i = index">
+        <div
+            *tuiItem
+            tuiCardMedium
+            tuiSurface
+            class="card"
+            [style.background]="item.gradient"
+        >
+            <h2 tuiTitle>
+                BANK
+                <span tuiSubtitle>{{ item.title }}</span>
+            </h2>
+
+            <tui-badge class="money">
+                <tui-icon icon="@tui.wallet" />
+                {{ item.content }}
+            </tui-badge>
+        </div>
+    </ng-container>
+</tui-carousel>
+
+<div
+    #group="tuiButtonGroup"
+    [style.background-color]="items[group.currentIndex]?.color"
+    [template]="template"
+    [tuiButtonGroup]="index"
+></div>
+
+<ng-template
+    #template
+    let-activeIndex
+>
+    <ng-container *ngIf="activeIndex === 0">
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Create a payment
+        </button>
+
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Pay the bill
+        </button>
+
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Remove from favorites
+        </button>
+    </ng-container>
+
+    <ng-container *ngIf="activeIndex === 1">
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Remove from favorites
+        </button>
+    </ng-container>
+
+    <ng-container *ngIf="activeIndex === 2">
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Create a payment
+        </button>
+
+        <button type="button">
+            <tui-icon icon="@tui.circle-plus" />
+            Remove from favorites
+        </button>
+    </ng-container>
+</ng-template>

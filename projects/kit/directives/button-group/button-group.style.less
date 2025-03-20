@@ -6,9 +6,24 @@
     justify-content: center;
     overflow: hidden;
 
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all calc(var(--tui-duration-moderate, 300ms) / 3)
+            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+    }
+
+    &._fade {
+        > button,
+        > a {
+            opacity: 0;
+        }
+    }
+
     > button,
     > a {
-        .transition(background);
+        @media (prefers-reduced-motion: no-preference) {
+            transition: all calc(var(--tui-duration-moderate, 300ms) / 3)
+                var(--tui-curve-productive-exit, cubic-bezier(0.2, 0, 1, 1));
+        }
 
         position: relative;
         display: flex;
