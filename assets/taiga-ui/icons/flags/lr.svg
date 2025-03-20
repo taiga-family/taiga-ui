@@ -1,25 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-    <g clip-path="url(#clip0_28106_2515)">
-        <rect y="0.000213623" width="40" height="3.63636" fill="#D80027" />
-        <rect y="3.63684" width="40" height="3.63636" fill="#F0F0F0" />
-        <rect y="7.27289" width="40" height="3.63636" fill="#D80027" />
-        <rect y="10.9095" width="40" height="3.63636" fill="#F0F0F0" />
-        <rect y="14.5456" width="40" height="3.63636" fill="#D80027" />
-        <rect y="18.1822" width="40" height="3.63636" fill="#F0F0F0" />
-        <rect y="21.8183" width="40" height="3.63636" fill="#D80027" />
-        <rect y="25.4549" width="40" height="3.63636" fill="#F0F0F0" />
-        <rect y="29.0909" width="40" height="3.63636" fill="#D80027" />
-        <rect y="32.7275" width="40" height="3.63636" fill="#F0F0F0" />
-        <rect y="36.3636" width="40" height="3.63636" fill="#D80027" />
-        <rect y="0.000213623" width="20" height="18.1778" fill="#0052B4" />
-        <path
-            d="M9.92779 3.33356L11.2222 7.31911H15.4133L12.0222 9.78245L13.3167 13.768L9.92779 11.3047L6.5389 13.768L7.83335 9.78245L4.44446 7.31911H8.63335L9.92779 3.33356Z"
-            fill="#F0F0F0"
-        />
-    </g>
-    <defs>
-        <clipPath id="clip0_28106_2515">
-            <rect width="40" height="40" fill="white" />
-        </clipPath>
-    </defs>
+    <rect y="0.00024414" width="40" height="3.63636" fill="#D80027" />
+    <rect y="3.63684" width="40" height="3.63636" fill="#F0F0F0" />
+    <rect y="7.27294" width="40" height="3.63636" fill="#D80027" />
+    <rect y="10.9095" width="40" height="3.63636" fill="#F0F0F0" />
+    <rect y="14.5455" width="40" height="3.63636" fill="#D80027" />
+    <rect y="18.1821" width="40" height="3.63636" fill="#F0F0F0" />
+    <rect y="21.8182" width="40" height="3.63636" fill="#D80027" />
+    <rect y="25.4548" width="40" height="3.63636" fill="#F0F0F0" />
+    <rect y="29.0909" width="40" height="3.63636" fill="#D80027" />
+    <rect y="32.7275" width="40" height="3.63636" fill="#F0F0F0" />
+    <rect y="36.3636" width="40" height="3.63636" fill="#D80027" />
+    <rect y="0.00024414" width="20" height="18.1778" fill="#0052B4" />
+    <path
+        d="M9.92775 3.33349L11.2222 7.31905H15.4133L12.0222 9.78238L13.3166 13.7679L9.92775 11.3046L6.53887 13.7679L7.83331 9.78238L4.44442 7.31905H8.63331L9.92775 3.33349Z"
+        fill="#F0F0F0"
+    />
 </svg>
