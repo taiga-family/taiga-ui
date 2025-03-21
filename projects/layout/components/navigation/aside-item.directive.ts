@@ -2,11 +2,10 @@ import type {FactoryProvider} from '@angular/core';
 import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
-    TUI_DATA_LIST_HOST,
+    tuiAsDataListHost,
     TuiDataListComponent,
 } from '@taiga-ui/core/components/data-list';
 import type {TuiDropdownOptions} from '@taiga-ui/core/directives/dropdown';
@@ -26,7 +25,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
     standalone: true,
     selector: '[tuiAsideItem]',
     providers: [
-        tuiProvide(TUI_DATA_LIST_HOST, TuiAsideItemDirective),
+        tuiAsDataListHost(TuiAsideItemDirective),
         provideIcon(),
         provideDropdown(),
     ],
