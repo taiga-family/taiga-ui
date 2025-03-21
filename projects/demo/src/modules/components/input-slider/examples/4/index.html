@@ -1,23 +1,27 @@
-<tui-input-slider
-    tuiHintContent="Select the answer to see how the right custom content changes"
-    [max]="10"
-    [min]="0"
-    [tuiTextfieldCustomContent]="userAnswer === 4 ? right : wrong"
-    [(ngModel)]="userAnswer"
->
-    2+2=?
-</tui-input-slider>
+<tui-textfield>
+    <label tuiLabel>Not linear growing slider</label>
 
-<ng-template #right>
-    <tui-icon
-        icon="@tui.circle-check"
-        class="success"
+    <input
+        tuiInputSlider
+        [max]="max"
+        [min]="min"
+        [(ngModel)]="value"
     />
-</ng-template>
 
-<ng-template #wrong>
-    <tui-icon
-        icon="@tui.circle-x"
-        class="error"
+    <input
+        tuiSlider
+        type="range"
+        [keySteps]="keySteps"
+        [segments]="ticksLabels.length - 1"
+        [step]="step"
     />
-</ng-template>
+</tui-textfield>
+
+<div class="slider-ticks-labels">
+    <span *ngFor="let label of ticksLabels">{{ label }}</span>
+</div>
+
+<p>
+    Control value:
+    <code>{{ value }}</code>
+</p>
