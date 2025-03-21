@@ -7,7 +7,7 @@
         Component for the main app header
 
         <tui-doc-example
-            *ngFor="let example of examples; let index = index; let last = last"
+            *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
             [heading]="example"
