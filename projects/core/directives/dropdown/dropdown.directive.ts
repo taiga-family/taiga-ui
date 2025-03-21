@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
@@ -21,7 +22,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {Subject, throttleTime} from 'rxjs';
 
-import {TuiDropdownDriverDirective} from './dropdown.driver';
+import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownService} from './dropdown.service';
 import {TuiDropdownPosition} from './dropdown-position.directive';
@@ -54,6 +55,14 @@ export class TuiDropdownDirective
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
+
+    // TODO: think of a better solution later
+    private readonly drivers = coerceArray(
+        inject(TuiDropdownDriver, {
+            self: true,
+            optional: true,
+        }),
+    );
 
     protected readonly sub = this.refresh$
         .pipe(throttleTime(0, tuiZonefreeScheduler()), takeUntilDestroyed())
@@ -112,5 +121,7 @@ export class TuiDropdownDirective
             this.ref.set(null);
             this.service.remove(ref);
         }
+
+        this.drivers.forEach((driver) => driver?.next(show));
     }
 }
