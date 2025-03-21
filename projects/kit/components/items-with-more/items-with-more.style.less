@@ -5,6 +5,10 @@
     flex: 1;
     align-items: center;
     white-space: nowrap;
+
+    &._multiline {
+        flex-wrap: wrap;
+    }
 }
 
 .t-item {
@@ -12,6 +16,7 @@
 
     &_hidden {
         position: absolute;
+        bottom: 0;
         visibility: hidden;
     }
 }
