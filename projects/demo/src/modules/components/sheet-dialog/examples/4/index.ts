@@ -12,7 +12,7 @@ import {
     TuiSwipe,
 } from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFloating} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -48,6 +48,7 @@ const USERS = [
         TuiAutoColorPipe,
         TuiAvatar,
         TuiButton,
+        TuiFloating,
         TuiInitialsPipe,
         TuiInputModule,
         TuiSheetDialog,
