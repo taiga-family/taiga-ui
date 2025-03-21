@@ -82,9 +82,14 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
     }
 
     public emitEvent(event: unknown): void {
-        this.alerts
-            .open(event ?? tuiInspectAny(event, 2), {label: this.name})
-            .subscribe();
+        console.info('emitEvent', event);
+
+        const alert =
+            !event || event?.toString() === '[object Object]'
+                ? tuiInspectAny(event, 2)
+                : (event as string);
+
+        this.alerts.open(alert, {label: this.name}).subscribe();
     }
 
     private clearBrackets(value: string): string {
