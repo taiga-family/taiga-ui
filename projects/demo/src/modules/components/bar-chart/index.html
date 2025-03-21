@@ -50,6 +50,7 @@
                 [max]="max"
                 [size]="size"
                 [value]="value"
+                (tapColumn)="documentationPropertyTapColumn.emitEvent($event)"
             />
         </tui-doc-demo>
         <table tuiDocAPI>
@@ -88,6 +89,14 @@
                 [(value)]="value"
             >
                 Array of segments
+            </tr>
+            <tr
+                #documentationPropertyTapColumn
+                name="(tapColumn)"
+                tuiDocAPIItem
+                type="number"
+            >
+                Bar column click/enter event
             </tr>
         </table>
     </ng-template>

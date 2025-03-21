@@ -7,6 +7,8 @@
     [tuiHintContext]="{$implicit: index}"
     [tuiHintDescribe]="getHintId(index)"
     [tuiHintHost]="hintHost"
+    (click)="tapColumn.emit(index)"
+    (keydown.enter)="tapColumn.emit(index)"
     (mouseenter.once)="(0)"
 >
     <div
