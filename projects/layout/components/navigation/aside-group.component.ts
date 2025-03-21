@@ -12,9 +12,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATA_LIST_HOST, TuiDataList} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {
     TuiDropdownDirective,
@@ -36,7 +36,7 @@ import {TuiAsideComponent} from './aside.component';
     templateUrl: './aside-group.template.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiProvide(TUI_DATA_LIST_HOST, TuiAsideGroupComponent)],
+    providers: [tuiAsDataListHost(TuiAsideGroupComponent)],
     hostDirectives: [
         TuiDropdownDirective,
         TuiDropdownHover,
