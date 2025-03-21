@@ -1,0 +1,33 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+.container {
+    max-block-size: 4.5rem;
+    overflow: hidden;
+
+    &_expanded {
+        max-block-size: 100%;
+    }
+}
+
+.item {
+    .transition(~'scale, opacity');
+
+    opacity: 0;
+    scale: 0.9;
+    margin: 0 0.25rem 0.25rem 0;
+
+    &_visible {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.more {
+    inline-size: 5rem;
+    margin: 0 0.25rem 0.25rem 0;
+}
