@@ -6,6 +6,7 @@ import {
     ContentChild,
     ContentChildren,
     inject,
+    Output,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -45,7 +46,7 @@ import {TuiMore} from './more.directive';
     hostDirectives: [
         {
             directive: TuiItemsWithMoreDirective,
-            inputs: ['itemsLimit', 'required', 'side'],
+            inputs: ['itemsLimit', 'required', 'side', 'linesLimit'],
         },
     ],
 })
@@ -57,7 +58,11 @@ export class TuiItemsWithMoreComponent {
     protected readonly more?: TemplateRef<TuiContext<number>>;
 
     protected readonly directive = inject(TuiItemsWithMoreDirective);
-    protected readonly lastIndex = toSignal(inject(TuiItemsWithMoreService), {
+
+    @Output()
+    public readonly lastIndexChange = inject(TuiItemsWithMoreService);
+
+    public readonly lastIndex = toSignal(this.lastIndexChange, {
         initialValue: 0,
     });
 
