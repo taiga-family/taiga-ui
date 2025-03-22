@@ -3,8 +3,8 @@ import {inject, Pipe} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields

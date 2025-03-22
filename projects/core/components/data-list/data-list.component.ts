@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentChecked, QueryList} from '@angular/core';
+import type {AfterContentChecked, QueryList, TemplateRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -16,17 +16,19 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
+import {TUI_DATA_LIST_HOST, TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
-import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
+import {tuiAsDataListAccessor} from './data-list.tokens';
 import {TuiOption} from './option.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
@@ -45,7 +47,10 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
+    providers: [
+        tuiAsDataListAccessor(TuiDataListComponent),
+        tuiAsAuxiliary(TuiDataListComponent),
+    ],
     host: {
         role: 'listbox',
         '[attr.data-size]': 'size',
@@ -78,6 +83,11 @@ export class TuiDataListComponent<T>
 
     @Input()
     public size = tuiInjectDataListSize();
+
+    public readonly optionContent =
+        signal<PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>>(
+            null,
+        );
 
     public onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;

@@ -26,16 +26,13 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayRemove, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {
-    tuiAsDataListHost,
-    TuiDataListDirective,
-} from '@taiga-ui/core/components/data-list';
+import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS, tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {AbstractTuiMultipleControl, tuiAsControl} from '@taiga-ui/legacy/classes';

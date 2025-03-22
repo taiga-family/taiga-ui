@@ -35,8 +35,6 @@ import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -55,7 +53,8 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS, tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';

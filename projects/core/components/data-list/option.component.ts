@@ -12,12 +12,13 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
-import type {TuiDataListHost} from './data-list.tokens';
-import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
+import {TUI_OPTION_CONTENT} from './data-list.tokens';
 
 // TODO: Consider all use cases for aria roles
 @Component({
@@ -25,7 +26,12 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
     selector: 'button[tuiOption], a[tuiOption], label[tuiOption]',
     imports: [PolymorpheusOutlet],
     template: `
-        <ng-container *polymorpheusOutlet="content || t as text; context: {$implicit: t}">
+        <ng-container
+            *polymorpheusOutlet="
+                dataList?.optionContent() || legacyApproachFallback || t as text;
+                context: {$implicit: t}
+            "
+        >
             {{ text }}
         </ng-container>
         <ng-template #t>
@@ -46,18 +52,22 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from './data-list.tokens';
 export class TuiOption<T = unknown> implements OnDestroy {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
-    private readonly dataList = inject<TuiDataListComponent<T>>(
-        forwardRef(() => TuiDataListComponent),
-        {optional: true},
-    );
 
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
         optional: true,
     });
 
-    protected readonly content: PolymorpheusContent<
+    // TODO(v5): remove with deletion of TUI_OPTION_CONTENT token
+    protected readonly legacyApproachFallback: PolymorpheusContent<
         TuiContext<TemplateRef<Record<string, unknown>>>
-    > = inject(TUI_OPTION_CONTENT, {optional: true});
+    > = inject(TUI_OPTION_CONTENT, {
+        optional: true,
+    });
+
+    protected readonly dataList = inject<TuiDataListComponent<T>>(
+        forwardRef(() => TuiDataListComponent),
+        {optional: true},
+    );
 
     protected readonly dropdown = inject(TuiDropdownDirective, {
         self: true,

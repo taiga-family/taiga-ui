@@ -9,12 +9,10 @@ import {
 import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {
-    tuiAsDataListHost,
-    TuiDataListDirective,
-} from '@taiga-ui/core/components/data-list';
+import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiDataListHost} from '@taiga-ui/core/tokens';
+import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';

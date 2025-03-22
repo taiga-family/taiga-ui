@@ -1,0 +1,17 @@
+<tui-textfield tuiChevron>
+    <input
+        placeholder="Select something"
+        tuiSelect
+        [formControl]="control"
+    />
+
+    <custom-option
+        *tuiOptionContent
+        [checkedItemHandler]="checkedItemHandler"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        [items]="items"
+    />
+</tui-textfield>
