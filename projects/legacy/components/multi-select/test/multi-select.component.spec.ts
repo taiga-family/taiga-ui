@@ -112,6 +112,7 @@ describe('MultiSelect', () => {
 
                 describe('does not open the dropdown', () => {
                     it('in readOnly mode', () => {
+                        inputPO.blur();
                         testComponent.readOnly = true;
                         fixture.detectChanges();
                         getInputTag(pageObject).nativeElement.click();
@@ -197,7 +198,9 @@ describe('MultiSelect', () => {
             });
 
             it('down arrow does not open dropdown in readOnly mode', () => {
+                inputPO.blur();
                 testComponent.readOnly = true;
+                inputPO.focus();
                 fixture.detectChanges();
                 inputPO.sendKeydown('ArrowDown');
                 fixture.detectChanges();
