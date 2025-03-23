@@ -117,6 +117,7 @@
         "@nx/jest": "20.1.4",
         "@nx/workspace": "20.1.4",
         "@schematics/angular": "16.2.16",
+        "angular-eslint": "19.3.0",
         "@taiga-ui/browserslist-config": "0.265.0",
         "@taiga-ui/commitlint-config": "0.265.0",
         "@taiga-ui/cspell-config": "0.265.0",

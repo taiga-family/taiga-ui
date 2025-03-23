@@ -19,7 +19,12 @@ import {TuiInputNumber} from '@taiga-ui/kit';
                 />
             </tui-textfield>
 
-            <button (click)="maxLength = 5; max = 5000">Increase limits</button>
+            <button
+                type="button"
+                (click)="maxLength = 5; max = 5000"
+            >
+                Increase limits
+            </button>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
