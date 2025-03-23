@@ -21,12 +21,14 @@ describe('InputNumber | Form control is patched with empty string', () => {
 
                 <button
                     id="42"
+                    type="button"
                     (click)="value = 42"
                 >
                     Click me to set "42"
                 </button>
                 <button
                     id="null"
+                    type="button"
                     (click)="value = null"
                 >
                     Click me to set "null"

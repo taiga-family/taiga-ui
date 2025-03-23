@@ -13,7 +13,12 @@ describe('LazyLoading', () => {
                 [attr.src]="src"
             />
 
-            <button (click)="updateSrc()">click</button>
+            <button
+                type="button"
+                (click)="updateSrc()"
+            >
+                click
+            </button>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

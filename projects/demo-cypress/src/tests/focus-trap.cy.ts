@@ -11,6 +11,7 @@ describe('FocusTrap', () => {
         template: `
             <button
                 id="increase"
+                type="button"
                 (click)="increase()"
             >
                 Increase counter
@@ -22,7 +23,12 @@ describe('FocusTrap', () => {
                 class="even"
             >
                 <input />
-                <button (click)="i = -1">Close</button>
+                <button
+                    type="button"
+                    (click)="i = -1"
+                >
+                    Close
+                </button>
             </div>
 
             <div
@@ -31,7 +37,12 @@ describe('FocusTrap', () => {
                 class="odd"
             >
                 <input (focus)="markTouched($event.target)" />
-                <button (click)="i = -1">Close</button>
+                <button
+                    type="button"
+                    (click)="i = -1"
+                >
+                    Close
+                </button>
             </div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

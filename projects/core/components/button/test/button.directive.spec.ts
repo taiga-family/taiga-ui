@@ -15,6 +15,7 @@ describe('ButtonDirective', () => {
             <button
                 id="size-unspecified"
                 tuiButton
+                type="button"
             >
                 Unspecified
             </button>
@@ -23,6 +24,7 @@ describe('ButtonDirective', () => {
                 id="size-l"
                 size="l"
                 tuiButton
+                type="button"
             >
                 Large
             </button>
@@ -31,6 +33,7 @@ describe('ButtonDirective', () => {
                 id="size-m"
                 size="m"
                 tuiButton
+                type="button"
             >
                 Medium
             </button>
@@ -39,6 +42,7 @@ describe('ButtonDirective', () => {
                 id="size-s"
                 size="s"
                 tuiButton
+                type="button"
             >
                 Small
             </button>
@@ -47,6 +51,7 @@ describe('ButtonDirective', () => {
                 id="size-xs"
                 size="xs"
                 tuiButton
+                type="button"
             >
                 Extra small
             </button>
