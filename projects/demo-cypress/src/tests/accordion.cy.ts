@@ -11,6 +11,7 @@ import {TuiAccordion} from '@taiga-ui/experimental';
         <tui-root>
             <button
                 tuiButton
+                type="button"
                 (click)="change()"
             >
                 Change data
