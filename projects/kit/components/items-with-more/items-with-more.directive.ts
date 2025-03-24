@@ -9,6 +9,8 @@ import {Subject} from 'rxjs';
     },
 })
 export class TuiItemsWithMoreDirective implements OnChanges {
+    private moreSide: 'end' | 'start' = 'end';
+
     @Input()
     public itemsLimit = Infinity;
 
@@ -18,11 +20,17 @@ export class TuiItemsWithMoreDirective implements OnChanges {
     @Input()
     public linesLimit = 1;
 
-    @Input()
-    public side: 'end' | 'start' = 'end';
-
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();
+
+    @Input('side')
+    public set setSide(side: 'end' | 'start') {
+        this.moreSide = side;
+    }
+
+    public get side(): 'end' | 'start' {
+        return this.linesLimit > 1 ? 'end' : this.moreSide;
+    }
 
     public ngOnChanges(): void {
         this.change$.next();
