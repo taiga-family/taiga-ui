@@ -1,0 +1,19 @@
+<tui-input-slider
+    [formControl]="control"
+    [keySteps]="keySteps"
+    [max]="max"
+    [min]="min"
+    [segments]="ticksLabels.length - 1"
+    [steps]="totalSteps"
+>
+    Not linear growing slider
+</tui-input-slider>
+
+<div class="slider-ticks-labels">
+    <span *ngFor="let label of ticksLabels">{{ label }}</span>
+</div>
+
+<p>
+    Control value:
+    <code>{{ control.value }}</code>
+</p>
