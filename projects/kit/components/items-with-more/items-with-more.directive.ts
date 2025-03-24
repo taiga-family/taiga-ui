@@ -1,7 +1,7 @@
 import type {OnChanges} from '@angular/core';
 import {Directive, Input} from '@angular/core';
-import {Subject} from 'rxjs';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {Subject} from 'rxjs';
 
 @Directive({
     standalone: true,
