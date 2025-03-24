@@ -1,3 +1,4 @@
+import {findAttr} from '../../../../utils/templates/inputs';
 import type {HtmlComment} from '../../../interfaces';
 
 export const HTML_COMMENTS: HtmlComment[] = [
@@ -78,5 +79,21 @@ export const HTML_COMMENTS: HtmlComment[] = [
         withAttrs: ['disabled'],
         comment:
             'A link cannot have a "disabled" attribute. If you want a disabled appearance, use the tuiAppearanceState directive. See https://taiga-ui.dev/directives/appearance/API?tuiAppearanceState=disabled',
+    },
+    {
+        tag: 'tui-svg',
+        withAttrs: ['src'],
+        comment:
+            'For colored icons, please use <img src="\'name\' | tuiIcon" alt="icon" />',
+        filterFn: (element) => {
+            const icon = findAttr(element.attrs, 'src')?.value.replaceAll(/['"]/g, '');
+
+            return (
+                !!icon &&
+                ((icon.startsWith('tuiIconTds') &&
+                    !!/Logo|LogoSquare|LogoSiteheader|Flags$/.exec(icon)) ||
+                    !icon.startsWith('tuiIcon'))
+            );
+        },
     },
 ];

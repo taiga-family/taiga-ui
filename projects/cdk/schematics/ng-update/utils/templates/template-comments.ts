@@ -23,7 +23,7 @@ export function addHTMLCommentTags({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    data.forEach(({comment, tag, withAttrs, pattern}) => {
+    data.forEach(({comment, tag, withAttrs, pattern, filterFn}) => {
         if (pattern && template.match(pattern)) {
             recorder.insertRight(
                 templateOffset && templateOffset + 1,
@@ -36,12 +36,13 @@ export function addHTMLCommentTags({
         }
 
         const elementStartOffsets = [
-            ...findElementsWithAttributeOnTag(template, withAttrs, [tag]),
+            ...findElementsWithAttributeOnTag(template, withAttrs, [tag], filterFn),
             ...(withAttrs.length
                 ? findElementsWithAttributeOnTag(
                       template,
                       withAttrs.map((attr) => `[${attr}]`),
                       [tag],
+                      filterFn,
                   )
                 : []),
         ].map(
