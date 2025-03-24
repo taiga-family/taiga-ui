@@ -1,10 +1,9 @@
 ```html
-<div tuiHeader>
-  <div tuiTitle>
-    Title
-    <div tuiSubtitle>Subtitle</div>
-  </div>
-
-  <div tuiAccessories>Accessories</div>
-</div>
+<header tuiHeader>
+  <hgroup tuiTitle>
+    <h1>Title</h1>
+    <p tuiSubtitle>Subtitle</p>
+  </hgroup>
+  <aside tuiAccessories>Accessories</aside>
+</header>
 ```
