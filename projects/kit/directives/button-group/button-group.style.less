@@ -1,13 +1,27 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiButtonGroup] {
-    display: flex;
-    border-radius: var(--tui-radius-xl);
-    justify-content: center;
-    overflow: hidden;
+    &,
+    tui-elastic-container {
+        transition: all calc(var(--tui-duration-moderate, 300ms) / 3)
+            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+        transition-property: background, height, border-radius;
+        border-radius: var(--tui-radius-xl);
+        overflow: hidden;
+    }
 
-    > button,
-    > a {
+    &,
+    tui-elastic-container .t-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    tui-elastic-container {
+        inline-size: 100%;
+    }
+
+    button,
+    a {
         .transition(background);
 
         position: relative;
@@ -68,8 +82,8 @@
         border-radius: 1rem;
     }
 
-    > button:only-child,
-    > a:only-child {
+    button:only-child,
+    a:only-child {
         inline-size: 100%;
         flex-direction: row;
         font: var(--tui-font-text-ui-l);
