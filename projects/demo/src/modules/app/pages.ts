@@ -222,6 +222,7 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
+        meta: [{name: 'tui-checkbox-block'}, {name: 'tui-radio-block'}],
     },
     {
         section: 'Layout',
@@ -1543,6 +1544,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
+                meta: {scheme: 'taiga'},
             },
             {
                 section: 'Tools',
