@@ -8,8 +8,6 @@ import {debounceTime, distinctUntilChanged, map, merge, Observable, share} from 
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
-const SAFE_MARGIN_PX = 3;
-
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
     private readonly el = tuiInjectElement();
@@ -41,8 +39,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const index = side === 'start' ? 0 : items.length - 1;
         const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
-        const total =
-            items.reduce((sum, width) => sum + width, 0) - more + SAFE_MARGIN_PX;
+        const total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && itemsLimit >= items.length) {
             return side === 'end' ? itemsLimit : 0;

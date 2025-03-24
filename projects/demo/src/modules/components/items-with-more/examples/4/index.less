@@ -15,19 +15,18 @@
 }
 
 .item {
-    .transition(~'scale, opacity');
+    .transition(~'transform, opacity');
 
     opacity: 0;
-    scale: 0.9;
+    transform: scale(0.9);
     margin: 0 0.25rem 0.25rem 0;
 
     &_visible {
         opacity: 1;
-        scale: 1;
+        transform: scale(1);
     }
 }
 
 .more {
-    inline-size: 5rem;
     margin: 0 0.25rem 0.25rem 0;
 }

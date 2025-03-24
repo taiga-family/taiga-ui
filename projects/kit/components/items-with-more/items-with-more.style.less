@@ -19,4 +19,10 @@
         bottom: 0;
         visibility: hidden;
     }
+
+    :host._multiline & {
+        &_more {
+            min-inline-size: var(--t-min-width, 0);
+        }
+    }
 }

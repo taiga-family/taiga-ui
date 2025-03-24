@@ -1,14 +1,17 @@
 import type {OnChanges} from '@angular/core';
 import {Directive, Input} from '@angular/core';
 import {Subject} from 'rxjs';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
     standalone: true,
     host: {
         '[class._multiline]': 'linesLimit > 1',
+        '[style.--t-min-width.px]': 'maxWidth()',
     },
 })
 export class TuiItemsWithMoreDirective implements OnChanges {
+    private readonly el = tuiInjectElement();
     private moreSide: 'end' | 'start' = 'end';
 
     @Input()
@@ -34,5 +37,9 @@ export class TuiItemsWithMoreDirective implements OnChanges {
 
     public ngOnChanges(): void {
         this.change$.next();
+    }
+
+    protected maxWidth(): number {
+        return Math.max(...Array.from(this.el.children, ({clientWidth}) => clientWidth));
     }
 }
