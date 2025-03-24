@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.30.0](https://github.com/taiga-family/taiga-ui/compare/v4.29.0...v4.30.0) (2025-03-24)
+
+### 🐞 Bug Fixes
+
+- **addon-table:** `TablePagination` fix incorrect calculating start page
+  ([#10623](https://github.com/taiga-family/taiga-ui/issues/10623))
+  ([ae887a2](https://github.com/taiga-family/taiga-ui/commit/ae887a2b9addfe17084566a3cd1c6891a75e18db))
+- **core:** synchronize driver's state ([#10592](https://github.com/taiga-family/taiga-ui/issues/10592))
+  ([32a9a1a](https://github.com/taiga-family/taiga-ui/commit/32a9a1af4e7145fb026e7023d119c17a68d2b19d))
+
+### 🚀 Features
+
+- **addon-charts:** add `tapColumn` output event in `tui-bar-chart`
+  ([#10636](https://github.com/taiga-family/taiga-ui/issues/10636))
+  ([9081a1a](https://github.com/taiga-family/taiga-ui/commit/9081a1ae072c5a95b057a434022e78f00c9b4f8a))
+- **addon-doc:** prettify object in popup notification ([#10637](https://github.com/taiga-family/taiga-ui/issues/10637))
+  ([dd5f606](https://github.com/taiga-family/taiga-ui/commit/dd5f6063f78e5eafd210884a2684fcf6f8b0ea05))
+- **kit:** `InputSlider` refactor to new `Textfield` ([#10288](https://github.com/taiga-family/taiga-ui/issues/10288))
+  ([c02c28f](https://github.com/taiga-family/taiga-ui/commit/c02c28f939df0d34386e3c7ee9cc1e58075f0923))
+- **kit:** elastic container integration in button group
+  ([#10651](https://github.com/taiga-family/taiga-ui/issues/10651))
+  ([633ed27](https://github.com/taiga-family/taiga-ui/commit/633ed2763096b042f7f5e62de2187dbeb1a56ebb))
+- **layout:** `DynamicHeader` add directive ([#10523](https://github.com/taiga-family/taiga-ui/issues/10523))
+  ([82c7e04](https://github.com/taiga-family/taiga-ui/commit/82c7e04cd4e43bdf1a5b145c81f2a00dbd777fb5))
+
 ## [4.29.0](https://github.com/taiga-family/taiga-ui/compare/v4.28.0...v4.29.0) (2025-03-18)
 
 ### 🚀 Features
