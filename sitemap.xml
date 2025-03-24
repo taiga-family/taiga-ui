@@ -274,6 +274,9 @@
     <loc>https://taiga-ui.dev/components/input-slider/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-slider/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-tag/</loc>
   </url>
   <url>
@@ -1103,6 +1106,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-slider/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-slider/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-slider/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-tag/API/</loc>
