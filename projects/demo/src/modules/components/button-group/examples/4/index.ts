@@ -3,7 +3,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiElasticContainer, TuiPagination} from '@taiga-ui/kit';
+import {
+    TuiBadge,
+    TuiButtonGroup,
+    TuiCarousel,
+    TuiElasticContainer,
+    TuiPagination,
+} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
@@ -17,9 +23,9 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         TuiCarousel,
         TuiElasticContainer,
         TuiIcon,
+        TuiPagination,
         TuiSurface,
         TuiTitle,
-        TuiPagination,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
