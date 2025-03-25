@@ -27,7 +27,8 @@ import {timer} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
 import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
-import {TuiOption} from './option.component';
+import {TuiOptionWithValue} from './option/option.directive';
+import {TuiOption} from './option/option-legacy.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
@@ -63,7 +64,10 @@ export class TuiDataListComponent<T>
     implements TuiDataListAccessor<T>, AfterContentChecked
 {
     @ContentChildren(forwardRef(() => TuiOption), {descendants: true})
-    private readonly options: QueryList<TuiOption<T>> = EMPTY_QUERY;
+    private readonly legacyOptions: QueryList<TuiOption<T>> = EMPTY_QUERY;
+
+    @ContentChildren(forwardRef(() => TuiOptionWithValue), {descendants: true})
+    private readonly options: QueryList<TuiOptionWithValue<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
     private readonly ngZone = inject(NgZone);
@@ -102,7 +106,10 @@ export class TuiDataListComponent<T>
     }
 
     public getOptions(includeDisabled = false): readonly T[] {
-        return this.options
+        return [
+            ...this.legacyOptions, // TODO(v5): delete
+            ...this.options,
+        ]
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);
