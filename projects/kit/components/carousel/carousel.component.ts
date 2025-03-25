@@ -105,7 +105,7 @@ export class TuiCarouselComponent {
     }
 
     protected get transform(): string {
-        return `translateX(${100 * this.getX()}%)`;
+        return `translateX(${100 * this.x}%)`;
     }
 
     @tuiPure
@@ -117,10 +117,6 @@ export class TuiCarouselComponent {
             minWidth: percent,
             maxWidth: percent,
         };
-    }
-
-    protected getX(): number {
-        return this.transitioned ? this.computedTranslate : this.translate;
     }
 
     protected onTransitioned(transitioned: boolean): void {
@@ -181,7 +177,11 @@ export class TuiCarouselComponent {
     }
 
     protected onShift(): void {
-        this.shift.emit(Math.abs(100 * this.getX()) - 100 * this.index);
+        this.shift.emit(Math.abs((this.x % 1) + 0.5) * 2);
+    }
+
+    private get x(): number {
+        return this.transitioned ? this.computedTranslate : this.translate;
     }
 
     private get computedTranslate(): number {

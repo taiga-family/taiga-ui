@@ -2,7 +2,7 @@
     [draggable]="true"
     [itemsCount]="1"
     [(index)]="index"
-    (shift)="onShift($event)"
+    (shift)="opacity = $event"
 >
     <ng-container *ngFor="let item of items; let i = index">
         <div
@@ -35,7 +35,7 @@
     tuiButtonGroup
     [style.background-color]="items[index]?.color"
 >
-    <tui-elastic-container [style.opacity.%]="opacity">
+    <tui-elastic-container [style.opacity]="opacity * 2">
         <ng-container *ngIf="index === 0">
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />

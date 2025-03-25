@@ -34,7 +34,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 })
 export default class Example {
     protected index = 0;
-    protected opacity = 100;
+    protected opacity = 1;
 
     protected readonly items = [
         {
@@ -56,11 +56,4 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
-
-    protected onShift(percent: number): void {
-        const x2 = Math.floor(percent * 2);
-        const opacity = percent < 0 ? 100 + x2 : 100 - x2;
-
-        this.opacity = opacity < 20 ? 0 : opacity;
-    }
 }
