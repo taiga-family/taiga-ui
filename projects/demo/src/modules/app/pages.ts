@@ -222,6 +222,7 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
+        meta: [{name: 'tui-checkbox-block'}, {name: 'tui-radio-block'}],
     },
     {
         section: 'Layout',
@@ -884,6 +885,7 @@ export const pages: DocRoutePages = [
                 title: 'Slider',
                 keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
                 route: DemoRoute.Slider,
+                meta: {},
             },
             {
                 section: 'Components',
@@ -986,6 +988,7 @@ export const pages: DocRoutePages = [
         meta: [
             {name: 'tui-cell'},
             {name: 'tui-cell-connected'},
+            {name: 'tui-button-cell'},
             {name: 'list-item', scheme: 'beaver'},
         ],
     },
@@ -1001,7 +1004,7 @@ export const pages: DocRoutePages = [
         title: 'Message',
         keywords: 'message, sms, сообщение, смс',
         route: DemoRoute.Message,
-        meta: {},
+        meta: {name: 'tui-message-bubble'},
     },
     {
         section: 'Components',
@@ -1203,12 +1206,14 @@ export const pages: DocRoutePages = [
         title: 'TabBar',
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs, bar, navigation',
         route: DemoRoute.TabBar,
+        meta: {},
     },
     {
         section: 'Navigation',
         title: 'Tabs',
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs, vertical, navigation',
         route: DemoRoute.Tabs,
+        meta: {},
     },
     // Customization
     {
@@ -1549,6 +1554,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
+                meta: {scheme: 'taiga'},
             },
             {
                 section: 'Tools',
