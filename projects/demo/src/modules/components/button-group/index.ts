@@ -9,5 +9,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Elevated', 'Flat', 'Dark', 'Animation'];
+    protected readonly examples = ['Elevated', 'Flat', 'Dark', 'Swiped animation'];
 }

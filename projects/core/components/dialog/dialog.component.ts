@@ -53,7 +53,7 @@ export class TuiDialogComponent<O, I> {
     private readonly animation = {
         value: '',
         params: {
-            start: '40px',
+            start: '2.5rem',
             duration: tuiGetDuration(this.speed),
         },
     } as const;
