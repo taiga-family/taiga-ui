@@ -2,6 +2,7 @@
     [draggable]="true"
     [itemsCount]="1"
     [(index)]="index"
+    (shift)="onShift($event)"
 >
     <ng-container *ngFor="let item of items; let i = index">
         <div
@@ -24,11 +25,17 @@
     </ng-container>
 </tui-carousel>
 
+<tui-pagination
+    size="s"
+    [length]="items.length"
+    [(index)]="index"
+/>
+
 <div
     tuiButtonGroup
     [style.background-color]="items[index]?.color"
 >
-    <tui-elastic-container>
+    <tui-elastic-container [style.opacity.%]="opacity">
         <ng-container *ngIf="index === 0">
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />

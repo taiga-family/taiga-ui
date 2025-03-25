@@ -83,6 +83,9 @@ export class TuiCarouselComponent {
     @Output()
     public readonly indexChange = new EventEmitter<number>();
 
+    @Output()
+    public readonly shift = new EventEmitter<number>();
+
     @Input('index')
     public set indexSetter(index: number) {
         this.index = index;
@@ -102,9 +105,7 @@ export class TuiCarouselComponent {
     }
 
     protected get transform(): string {
-        const x = this.transitioned ? this.computedTranslate : this.translate;
-
-        return `translateX(${100 * x}%)`;
+        return `translateX(${100 * this.getX()}%)`;
     }
 
     @tuiPure
@@ -118,12 +119,18 @@ export class TuiCarouselComponent {
         };
     }
 
+    protected getX(): number {
+        return this.transitioned ? this.computedTranslate : this.translate;
+    }
+
     protected onTransitioned(transitioned: boolean): void {
         this.transitioned = transitioned;
 
         if (!transitioned) {
             this.translate = this.computedTranslate;
         }
+
+        this.onShift();
     }
 
     protected isDisabled(index: number): boolean {
@@ -157,6 +164,8 @@ export class TuiCarouselComponent {
         const min = 1 - this.items.length / this.itemsCount;
 
         this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
+
+        this.onShift();
     }
 
     protected onSwipe(direction: TuiSwipeDirection): void {
@@ -169,6 +178,10 @@ export class TuiCarouselComponent {
 
     protected onAutoscroll(): void {
         this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
+    }
+
+    protected onShift(): void {
+        this.shift.emit(Math.abs(100 * this.getX()) - 100 * this.index);
     }
 
     private get computedTranslate(): number {

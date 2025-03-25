@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiElasticContainer} from '@taiga-ui/kit';
+import {TuiBadge, TuiButtonGroup, TuiCarousel, TuiElasticContainer, TuiPagination} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
@@ -19,6 +19,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         TuiIcon,
         TuiSurface,
         TuiTitle,
+        TuiPagination,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -27,6 +28,7 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 })
 export default class Example {
     protected index = 0;
+    protected opacity = 100;
 
     protected readonly items = [
         {
@@ -48,4 +50,11 @@ export default class Example {
             color: 'rgb(158 178 129)',
         },
     ];
+
+    protected onShift(percent: number): void {
+        const x2 = Math.floor(percent * 2);
+        const opacity = percent < 0 ? 100 + x2 : 100 - x2;
+
+        this.opacity = opacity < 20 ? 0 : opacity;
+    }
 }
