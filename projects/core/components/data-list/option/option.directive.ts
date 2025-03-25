@@ -97,7 +97,6 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
     },
 })
 export class TuiOptionWithValue<T = unknown> {
-    private readonly option = inject<TuiOptionNew<T>>(TuiOptionNew<T>, {self: true});
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
         optional: true,
     });
@@ -105,9 +104,8 @@ export class TuiOptionWithValue<T = unknown> {
     @Input()
     public value?: T;
 
-    public get disabled(): boolean {
-        return this.option.disabled;
-    }
+    @Input()
+    public disabled = false;
 
     protected onClick(): void {
         if (this.host?.handleOption && this.value !== undefined) {
