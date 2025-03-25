@@ -2,11 +2,11 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton, TuiOption} from '@taiga-ui/core';
+import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiOption],
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

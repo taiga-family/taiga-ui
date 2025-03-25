@@ -1,8 +1,7 @@
-import type {Provider, TemplateRef, Type} from '@angular/core';
-import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {Provider, Type} from '@angular/core';
+import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiDataListAccessor<T = unknown> {
     getOptions(includeDisabled?: boolean): readonly T[];
@@ -15,23 +14,6 @@ export interface TuiDataListHost<T> {
     readonly identityMatcher?: TuiIdentityMatcher<T>;
     readonly stringify?: TuiStringHandler<T>;
     readonly size?: TuiSizeL | TuiSizeS;
-}
-
-/**
- * Content for tuiOption component
- */
-export const TUI_OPTION_CONTENT =
-    tuiCreateToken<
-        PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>
-    >();
-
-export function tuiAsOptionContent(
-    useValue: PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>>,
-): Provider {
-    return {
-        provide: TUI_OPTION_CONTENT,
-        useValue,
-    };
 }
 
 /**
