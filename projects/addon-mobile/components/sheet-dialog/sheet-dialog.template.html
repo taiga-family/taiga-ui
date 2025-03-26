@@ -12,13 +12,16 @@
     [class.t-sheet_small]="isSmall"
     (tuiClickOutside)="close()"
 >
-    <div class="t-top"></div>
+    <div
+        *ngIf="context.bar"
+        class="t-top"
+    ></div>
     <h2
         *ngIf="context.label"
         class="t-heading"
         [id]="context.id"
     >
-        <ng-container *polymorpheusOutlet="context.label as label">
+        <ng-container *polymorpheusOutlet="context.label as label; context: context">
             {{ label }}
         </ng-container>
     </h2>

@@ -10,7 +10,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiDialog, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TUI_SCROLL_REF, TuiDialog, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
     TUI_CLOSE_WORD,
@@ -34,10 +34,12 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{provide: TUI_SCROLL_REF, useExisting: ElementRef}],
     animations: [tuiSlideInTop],
     host: {
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
+        '[class._fullscreen]': 'context.fullscreen === true',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {

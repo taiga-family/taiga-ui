@@ -34,6 +34,12 @@ export class ExampleTuiSheetDialogComponent {
         LESS: import('./examples/4/index.less?raw'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
+    };
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleComponent = import('./examples/import/insert-component.md?raw');
 
@@ -41,6 +47,9 @@ export class ExampleTuiSheetDialogComponent {
     initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
     stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
     label = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.label;
+    bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
+    fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
+    offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
 
     open = false;
 
