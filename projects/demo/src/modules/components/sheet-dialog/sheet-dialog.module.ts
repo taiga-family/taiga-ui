@@ -4,11 +4,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
+import {TuiResponsiveDialogModule, TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLabelModule,
+    TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -19,6 +20,7 @@ import {TuiSheetDialogExample2} from './examples/2';
 import {TuiSheetDialogExample3} from './examples/3';
 import {TuiSheetDialogExample4} from './examples/4';
 import {TuiSheetDialogExample5} from './examples/5';
+import {TuiSheetDialogExample6} from './examples/6';
 import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
 
 @NgModule({
@@ -33,6 +35,8 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiAvatarModule,
         TuiNotificationModule,
         TuiSheetDialogModule,
+        TuiResponsiveDialogModule,
+        TuiLinkModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetDialogComponent)),
         TuiSwipeModule,
@@ -44,6 +48,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiSheetDialogExample3,
         TuiSheetDialogExample4,
         TuiSheetDialogExample5,
+        TuiSheetDialogExample6,
     ],
     exports: [ExampleTuiSheetDialogComponent],
 })
