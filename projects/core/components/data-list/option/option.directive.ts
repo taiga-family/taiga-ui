@@ -17,8 +17,6 @@ import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TuiDataListComponent} from '../data-list.component';
-import type {TuiDataListHost} from '../data-list.tokens';
-import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
 // TODO(v5): rename `TuiOptionNew` => `TuiOption` & remove [new] from selector
@@ -93,15 +91,8 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
     standalone: true,
     selector:
         'button[tuiOption][value][new], a[tuiOption][value][new], label[tuiOption][value][new]',
-    host: {
-        '(click)': 'onClick()',
-    },
 })
 export class TuiOptionWithValue<T = unknown> {
-    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
-        optional: true,
-    });
-
     @Input()
     public disabled = false;
 
@@ -111,13 +102,5 @@ export class TuiOptionWithValue<T = unknown> {
     @Input({alias: 'value', required: true})
     public set valueSetter(x: T) {
         this.value.set(x);
-    }
-
-    protected onClick(): void {
-        const value = this.value();
-
-        if (this.host?.handleOption && value !== undefined) {
-            this.host.handleOption(value);
-        }
     }
 }
