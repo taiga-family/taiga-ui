@@ -15,6 +15,7 @@ import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {
@@ -51,6 +52,8 @@ import {map} from 'rxjs';
     },
 })
 export class TuiRoot extends TuiPortals {
+    private readonly doc = inject(DOCUMENT);
+    private readonly el = tuiInjectElement();
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
@@ -69,13 +72,17 @@ export class TuiRoot extends TuiPortals {
     constructor() {
         super();
 
-        inject(DOCUMENT).documentElement.setAttribute(
+        if (!this.isTopLayer) {
+            return;
+        }
+
+        this.doc.documentElement.setAttribute(
             'data-tui-theme',
             inject(TUI_THEME).toLowerCase(),
         );
 
         if (!this.nativeScrollbar) {
-            inject(DOCUMENT).defaultView?.document.documentElement.classList.add(
+            this.doc.defaultView?.document.documentElement.classList.add(
                 'tui-zero-scrollbar',
             );
         }
@@ -87,5 +94,11 @@ export class TuiRoot extends TuiPortals {
                 ),
                 'NG_EVENT_PLUGINS is missing from global providers',
             );
+    }
+
+    protected get isTopLayer(): boolean {
+        return this.doc.fullscreenElement
+            ? this.doc.fullscreenElement === this.el
+            : !this.el.parentElement?.closest('tui-root');
     }
 }
