@@ -9,6 +9,7 @@ import {
     forwardRef,
     inject,
     Input,
+    isSignal,
     NgZone,
     signal,
     ViewEncapsulation,
@@ -111,7 +112,7 @@ export class TuiDataListComponent<T>
             ...this.options,
         ]
             .filter(({disabled}) => includeDisabled || !disabled)
-            .map(({value}) => value)
+            .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
     }
 

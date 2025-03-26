@@ -7,6 +7,7 @@ import {
     inject,
     INJECTOR,
     Input,
+    signal,
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -102,14 +103,21 @@ export class TuiOptionWithValue<T = unknown> {
     });
 
     @Input()
-    public value?: T;
-
-    @Input()
     public disabled = false;
 
+    public readonly value = signal<T | undefined>(undefined);
+
+    // TODO(v5): use `input.required<T>()` to remove `undefined` from `this.value()`
+    @Input({alias: 'value', required: true})
+    public set valueSetter(x: T) {
+        this.value.set(x);
+    }
+
     protected onClick(): void {
-        if (this.host?.handleOption && this.value !== undefined) {
-            this.host.handleOption(this.value);
+        const value = this.value();
+
+        if (this.host?.handleOption && value !== undefined) {
+            this.host.handleOption(value);
         }
     }
 }
