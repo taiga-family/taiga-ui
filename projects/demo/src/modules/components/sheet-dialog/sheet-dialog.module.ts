@@ -18,6 +18,7 @@ import {TuiSheetDialogExample1} from './examples/1';
 import {TuiSheetDialogExample2} from './examples/2';
 import {TuiSheetDialogExample3} from './examples/3';
 import {TuiSheetDialogExample4} from './examples/4';
+import {TuiSheetDialogExample5} from './examples/5';
 import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiSheetDialogExample2,
         TuiSheetDialogExample3,
         TuiSheetDialogExample4,
+        TuiSheetDialogExample5,
     ],
     exports: [ExampleTuiSheetDialogComponent],
 })

@@ -11,6 +11,8 @@ export interface TuiSheetDialogOptions<I = never> {
     readonly label: PolymorpheusContent;
     readonly offset: number;
     readonly stops: readonly string[];
+    readonly bar: boolean;
+    readonly fullscreen: boolean;
 }
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
@@ -19,6 +21,8 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
     initial: 0,
     offset: 16,
     closeable: true,
+    bar: true,
+    fullscreen: false,
 };
 
 /**

@@ -44,6 +44,14 @@
         >
             <tui-sheet-dialog-example-4></tui-sheet-dialog-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="fullscreen"
+            heading="Fullscreen"
+            [content]="example5"
+        >
+            <tui-sheet-dialog-example-5></tui-sheet-dialog-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -70,24 +78,28 @@
                     label: label === 'Template' ? template : label,
                     closeable: closeable,
                     stops: stops,
-                    initial: initial
+                    initial: initial,
+                    bar: bar,
+                    fullscreen: fullscreen,
+                    offset: offset
                 }"
                 [(tuiSheetDialog)]="open"
             >
-                Karl Gambolputty de von
-                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
-                von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von
-                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
-                von Hautkopft of Ulm.
-                <div class="tui-space_top-4">
+                <p [style.flex-grow]="1">
+                    Karl Gambolputty de von
+                    Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber
+                    von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von.
+                </p>
+                <footer class="footer">
                     <button
                         tuiButton
                         type="button"
+                        [style.inline-size.%]="100"
                         (click)="toggle()"
                     >
                         Close
                     </button>
-                </div>
+                </footer>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -97,6 +109,20 @@
                 [(documentationPropertyValue)]="closeable"
             >
                 Whether or not a sheet can be closed by user.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="fullscreen"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="fullscreen"
+            >
+                Fullscreen
+            </ng-template>
+            <ng-template
+                documentationPropertyName="bar"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="bar"
+            >
+                Show bar
             </ng-template>
             <ng-template
                 documentationPropertyName="data"
@@ -128,6 +154,15 @@
                 Initial stop index to open on. Index exceeding
                 <code>stops</code>
                 means to stop on top of the sheet's content.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="offset"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="offset"
+            >
+                Top offset px (
+                <code>--tui-offset</code>
+                )
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
