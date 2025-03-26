@@ -87,21 +87,6 @@ export class TuiPager implements OnChanges, AfterViewInit {
         this.move();
     }
 
-    private move(): void {
-        const [start, end] = this.visibleRange;
-
-        this.start = start;
-        this.end = end;
-
-        let left = this.start * this.gap;
-
-        for (let i = 0; i < this.start; i++) {
-            left += this.items?.get(i)?.nativeElement.offsetWidth ?? 0;
-        }
-
-        this.left.set(-1 * left);
-    }
-
     private get visibleRange(): [start: number, end: number] {
         const start = Math.min(
             Math.max(this.index - Math.floor(this.max / 2), 0),
@@ -117,5 +102,20 @@ export class TuiPager implements OnChanges, AfterViewInit {
                 .slice(this.start, this.end + 1)
                 .reduce((sum, item) => sum + item + this.gap, 0) - this.gap
         );
+    }
+
+    private move(): void {
+        const [start, end] = this.visibleRange;
+
+        this.start = start;
+        this.end = end;
+
+        let left = this.start * this.gap;
+
+        for (let i = 0; i < this.start; i++) {
+            left += this.items?.get(i)?.nativeElement.offsetWidth ?? 0;
+        }
+
+        this.left.set(-1 * left);
     }
 }
