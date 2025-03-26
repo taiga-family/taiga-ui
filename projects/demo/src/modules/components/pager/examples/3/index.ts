@@ -5,11 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiPager, TuiProgress} from '@taiga-ui/kit';
-import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map, of, takeWhile, tap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, TuiMapperPipe, TuiButton, TuiPager, TuiProgress],
+    imports: [AsyncPipe, TuiButton, TuiMapperPipe, TuiPager, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
