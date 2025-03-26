@@ -1,13 +1,15 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiLink],
+    imports: [TuiButton],
     template: `
         <button
+            appearance="flat"
             iconStart="assets/icons/stackblitz.svg"
-            tuiLink
+            size="xs"
+            tuiButton
             type="button"
         >
             Edit
