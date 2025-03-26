@@ -14,5 +14,57 @@
         />
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pager
+                [index]="index"
+                [length]="length"
+                [max]="max"
+                [template]="valueContent"
+            />
+
+            <ng-template #templateRef>
+                <tui-icon icon="@tui.heart-filled" />
+            </ng-template>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="[index]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="index"
+            >
+                Current active dot
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
+            >
+                Max visible dots
+            </tr>
+            <tr
+                name="[length]"
+                tuiDocAPIItem
+                type="number"
+                [items]="lengthVariants"
+                [(value)]="length"
+            >
+                Length of dots
+            </tr>
+            <tr
+                name="[template]"
+                tuiDocAPIItem
+                type="TemplateRef"
+                [items]="templateVariants"
+                [(value)]="selectedTemplate"
+            >
+                Custom template for dot
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>

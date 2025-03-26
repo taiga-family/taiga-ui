@@ -88,12 +88,14 @@ export class TuiPager implements OnChanges, AfterViewInit {
     }
 
     private get visibleRange(): [start: number, end: number] {
+        const max = this.max > this.length ? this.length : this.max;
+
         const start = Math.min(
-            Math.max(this.index - Math.floor(this.max / 2), 0),
-            this.length - this.max,
+            Math.max(this.index - Math.floor(max / 2), 0),
+            this.length - max,
         );
 
-        return [start, start + (this.max - 1)];
+        return [start, start + (max - 1)];
     }
 
     private get visibleWidth(): number {
