@@ -28,6 +28,10 @@ export class TuiItemsWithMoreDirective implements OnChanges {
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();
 
+    public get computedSide(): 'end' |'start' {
+        return this.linesLimit > 1 ? 'end' : this.side;
+    }
+
     public ngOnChanges(): void {
         this.change$.next();
     }
