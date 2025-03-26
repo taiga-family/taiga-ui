@@ -74,6 +74,10 @@ tui-data-list {
         margin: var(--tui-data-list-margin) 0;
     }
 
+    [tuiOption]:not([new]) {
+        justify-content: space-between;
+    }
+
     [tuiOption] {
         .button-clear();
         .transition(background);
@@ -82,7 +86,6 @@ tui-data-list {
         align-items: center;
         box-sizing: border-box;
         margin: var(--tui-data-list-margin) 0;
-        justify-content: space-between;
         text-align: start;
         color: var(--tui-text-primary);
         border-radius: var(--tui-radius-s);

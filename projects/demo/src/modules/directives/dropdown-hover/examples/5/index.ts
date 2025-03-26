@@ -8,7 +8,6 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
     standalone: true,
     imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownMobile],
     templateUrl: './index.html',
-    styles: ['[tuiOption] {justify-content: flex-start}'],
     encapsulation,
     changeDetection,
 })
