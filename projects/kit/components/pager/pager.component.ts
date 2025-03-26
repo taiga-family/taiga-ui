@@ -58,7 +58,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
     protected readonly maxWidth = toSignal(
         inject(MutationObserverService, {self: true}).pipe(
             delay(0),
-            map(() => this.calculateVisibleWidth()),
+            map(() => this.visibleWidth),
             tuiWatch(),
             takeUntilDestroyed(),
         ),
@@ -87,17 +87,8 @@ export class TuiPager implements OnChanges, AfterViewInit {
         this.move();
     }
 
-    private getVisibleRange(): [start: number, end: number] {
-        const start = Math.min(
-            Math.max(this.index - Math.floor(this.max / 2), 0),
-            this.length - this.max,
-        );
-
-        return [start, start + (this.max - 1)];
-    }
-
     private move(): void {
-        const [start, end] = this.getVisibleRange();
+        const [start, end] = this.visibleRange;
 
         this.start = start;
         this.end = end;
@@ -111,7 +102,16 @@ export class TuiPager implements OnChanges, AfterViewInit {
         this.left.set(-1 * left);
     }
 
-    private calculateVisibleWidth(): number {
+    private get visibleRange(): [start: number, end: number] {
+        const start = Math.min(
+            Math.max(this.index - Math.floor(this.max / 2), 0),
+            this.length - this.max,
+        );
+
+        return [start, start + (this.max - 1)];
+    }
+
+    private get visibleWidth(): number {
         return (
             (this.items?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
                 .slice(this.start, this.end + 1)

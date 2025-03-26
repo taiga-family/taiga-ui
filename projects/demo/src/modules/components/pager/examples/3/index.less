@@ -1,3 +1,12 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 .progress {
-    inline-size: 2.5rem;
+    .transition(~'color, inline-size');
+
+    inline-size: 1rem;
+
+    &:not(&_active) {
+        inline-size: 0.5rem;
+        color: transparent;
+    }
 }

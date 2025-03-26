@@ -49,12 +49,13 @@
 }
 
 [tuiProgressBar] {
-    @track-color: var(--tui-background-neutral-1);
+    @track-color: var(--tui-background-neutral-2);
     @progress-color: var(--tui-progress-color, currentColor);
 
     .clearProgress();
     .progressAnimation();
     .progressValue({ background: @progress-color; border-radius: inherit });
+    .transition(color);
 
     --t-height: 0.75rem;
 

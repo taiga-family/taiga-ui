@@ -1,22 +1,21 @@
 <tui-pager
-    [index]="index"
+    [index]="activeIndex()"
     [length]="length"
     [template]="template"
 />
 
 <ng-template
     #template
-    let-activeIndex
+    let-index
 >
-    <ng-container *ngIf="activeIndex === index">
-        <progress
-            max="100"
-            size="s"
-            tuiProgressBar
-            [style.width.px]="width$ | async"
-            [value]="value$ | async"
-        ></progress>
-    </ng-container>
+    <progress
+        max="100"
+        size="s"
+        tuiProgressBar
+        class="progress"
+        [class.progress_active]="activeIndex() === index"
+        [value]="activeIndex() === index | tuiMapper: toProgress | async"
+    ></progress>
 </ng-template>
 
 <div class="tui-space_top-3">
