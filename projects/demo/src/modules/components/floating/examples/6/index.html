@@ -54,7 +54,7 @@
             *ngIf="!action"
             tuiButton
             type="button"
-            @tuiCrossFadeIn
+            [@tuiCrossFadeIn]="{duration: 0.25, left: '1rem', right: '1rem'} | tuiAnimation"
         >
             Main action
         </button>
@@ -63,7 +63,7 @@
             appearance="primary-grayscale"
             tuiButton
             type="button"
-            @tuiCrossFadeIn
+            [@tuiCrossFadeIn]="{duration: 0.25, left: '1rem', right: '1rem'} | tuiAnimation"
         >
             Add to Apple Wallet
         </button>

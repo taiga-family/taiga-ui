@@ -125,7 +125,7 @@ export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
     transition(
         ':enter',
         [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
-        {params: {duration: 75}},
+        {params: {duration: 300}},
     ),
     transition(
         ':leave',
@@ -133,14 +133,22 @@ export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
             style({
                 opacity: 1,
                 position: 'absolute',
-                inlineSize: 'auto',
-                left: '1rem',
-                right: '1rem',
+                left: '{{left}}',
+                right: '{{right}}',
                 bottom: '{{bottom}}',
+                top: '{{top}}',
             }),
             animate(TRANSITION, style({opacity: 0})),
         ],
-        {params: {duration: 75, bottom: 'auto'}},
+        {
+            params: {
+                duration: 300,
+                left: 'auto',
+                right: 'auto',
+                bottom: 'auto',
+                top: 'auto',
+            },
+        },
     ),
 ]);
 

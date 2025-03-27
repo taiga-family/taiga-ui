@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiAnimationPipe, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     tuiCrossFadeIn,
@@ -20,6 +20,7 @@ import {TuiCell} from '@taiga-ui/layout';
     imports: [
         FormsModule,
         NgIf,
+        TuiAnimationPipe,
         TuiAvatar,
         TuiButton,
         TuiCell,
@@ -36,7 +37,7 @@ import {TuiCell} from '@taiga-ui/layout';
     animations: [tuiSlideInTop, tuiCrossFadeIn, tuiHeightCollapse],
 })
 export default class Example {
-    protected floating = false;
+    protected floating = true;
     protected action = false;
     protected secondAction = false;
 }

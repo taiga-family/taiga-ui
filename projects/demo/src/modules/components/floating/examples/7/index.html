@@ -51,7 +51,7 @@
             <span
                 *ngIf="additional"
                 class="clamp"
-                [@tuiCrossFadeIn]="{bottom: '1rem'} | tuiAnimation"
+                [@tuiCrossFadeIn]="{left: '1rem', right: '1rem', bottom: '1rem'} | tuiAnimation"
                 [style.margin-top.rem]="0.5"
                 [style.min-block-size.rem]="2"
             >
@@ -62,7 +62,7 @@
                 appearance="flat"
                 tuiButton
                 type="button"
-                [@tuiCrossFadeIn]="{bottom: '1rem'} | tuiAnimation"
+                [@tuiCrossFadeIn]="{left: '1rem', right: '1rem', bottom: '1rem'} | tuiAnimation"
             >
                 Secondary action
             </button>
