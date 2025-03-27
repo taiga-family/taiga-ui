@@ -142,4 +142,29 @@ test.describe('Dropdown', () => {
 
         await expect(page).toHaveScreenshot('12-dropdown-hidden-host.png');
     });
+
+    test('late init control binding', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        const example = new TuiDocumentationPagePO(page).getExample('#complex');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button[data-appearance="outline-grayscale"]').click();
+
+        await expect(page).toHaveScreenshot('13-dropdown.png');
+
+        await page.locator('tui-dropdown tui-data-list button').nth(0).click();
+        await page.locator('tui-dropdown tui-data-list button').nth(1).click();
+
+        await expect(page).toHaveScreenshot('14-dropdown.png');
+
+        await example.locator('button[tuiChevron]').click();
+
+        await expect(page).toHaveScreenshot('15-dropdown.png');
+
+        await example.locator('button[data-appearance="outline-grayscale"]').click();
+
+        await page.locator('tui-dropdown tui-data-list button').nth(2).click();
+
+        await expect(page).toHaveScreenshot('16-dropdown.png');
+    });
 });
