@@ -15,8 +15,7 @@
         <input
             tuiSwitch
             type="checkbox"
-            [ngModel]="secondAction()"
-            (ngModelChange)="secondAction.set($event)"
+            [(ngModel)]="secondAction"
         />
         Second action visibility
     </label>
@@ -44,7 +43,7 @@
     <footer
         *ngIf="floating"
         @tuiSlideInTop
-        [tuiFloating]="secondAction() ? '' : 'transparent'"
+        [tuiFloating]="secondAction ? '' : 'transparent'"
     >
         <button
             tuiButton
@@ -53,7 +52,7 @@
             Main action
         </button>
         <button
-            *ngIf="secondAction()"
+            *ngIf="secondAction"
             appearance="flat"
             tuiButton
             type="button"

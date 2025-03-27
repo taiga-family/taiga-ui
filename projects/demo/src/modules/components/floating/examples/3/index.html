@@ -11,7 +11,7 @@
 
 <div class="content">
     <div
-        *tuiRepeatTimes="let i of 30"
+        *ngFor="let i of 30 | tuiRepeatTimes"
         tuiCell
     >
         <tui-avatar

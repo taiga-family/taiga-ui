@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {Component, computed, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -37,11 +37,10 @@ import {TuiCell} from '@taiga-ui/layout';
 export default class Example {
     protected floating = false;
 
-    protected secondAction = signal(false);
-    protected substrate = computed(() => this.secondAction());
+    protected secondAction = false;
 
     protected onScroll(el: HTMLElement): void {
         this.floating = el.scrollTop > 100;
-        this.secondAction.set(el.scrollTop > 500);
+        this.secondAction = el.scrollTop > 500;
     }
 }

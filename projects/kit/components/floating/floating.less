@@ -39,6 +39,13 @@
         gap: 0.5rem;
     }
 
+    // elements with playing :leave animation are absolute positioning, therefore they need to be fullwidth stretched
+    & > *,
+    & > tui-elastic-container > .t-wrapper > * {
+        inline-size: 100%;
+    }
+
+    // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
     // TODO: use :has after safari support bumped to 15.4+
     > [tuiButton] {
         &:only-child,
@@ -58,9 +65,11 @@
 
         content: '';
         position: absolute;
+        left: -1rem;
+        right: -1rem;
         z-index: -1;
-        opacity: 0;
         background: linear-gradient(180deg, transparent, var(--t-background, var(--tui-background-elevation-1)) 2.5rem);
+        opacity: 0;
     }
 
     &._substrate::before {

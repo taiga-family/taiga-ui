@@ -31,8 +31,7 @@
         <input
             tuiSwitch
             type="checkbox"
-            [ngModel]="secondAction()"
-            (ngModelChange)="secondAction.set($event)"
+            [(ngModel)]="secondAction"
         />
         Second action visibility
     </label>
@@ -50,11 +49,7 @@
     [tuiSheetDialogOptions]="{label: template, fullscreen: true}"
     [(tuiSheetDialog)]="open"
 >
-    <div
-        #content
-        class="content"
-        (scroll)="onScroll(content)"
-    >
+    <div class="content">
         <section class="items">
             <div
                 *ngFor="let item of items | tuiFilter: filter : search"
@@ -84,7 +79,7 @@
                 Main action
             </button>
             <button
-                *ngIf="secondAction()"
+                *ngIf="secondAction"
                 appearance="flat"
                 tuiButton
                 type="button"

@@ -1,9 +1,9 @@
-import {NgIf} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     tuiHeightCollapse,
@@ -18,6 +18,7 @@ import {TuiCell} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
+        NgFor,
         NgIf,
         TuiAvatar,
         TuiButton,
@@ -25,7 +26,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiDemo,
         TuiFloating,
         TuiLabel,
-        TuiRepeatTimes,
+        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],

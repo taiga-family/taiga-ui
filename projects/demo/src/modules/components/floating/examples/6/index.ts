@@ -38,6 +38,7 @@ import {TuiCell} from '@taiga-ui/layout';
 })
 export default class Example {
     protected floating = true;
+
     protected action = false;
     protected secondAction = false;
 }

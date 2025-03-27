@@ -34,8 +34,6 @@ export default class Page {
 
     protected open = false;
 
-    protected substrate = false;
-
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     protected readonly labelVariants = [this.label, 'String label', 'Template'];
 

@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {Component, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -45,9 +45,9 @@ import {
 })
 export default class Example {
     protected floating = true;
-    protected substrate = true;
+    protected secondAction = false;
 
-    protected secondAction = signal(false);
+    protected substrate = true;
 
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected color = 'rgba(255, 221, 45, 0.8)';

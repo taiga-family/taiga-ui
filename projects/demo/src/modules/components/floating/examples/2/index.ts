@@ -1,5 +1,5 @@
 import {NgFor, NgIf} from '@angular/common';
-import {Component, computed, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -41,23 +41,17 @@ import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
     animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
-    protected floating = true;
-
-    protected search = '';
-
     protected open = false;
 
-    protected secondAction = signal(false);
-    protected substrate = computed(() => this.secondAction());
+    protected floating = true;
+    protected secondAction = false;
+
+    protected search = '';
 
     protected readonly items = new Array(15).fill(0).map((_, index) => ({
         title: `Title ${index + 1}`,
         description: `Description ${index + 1}`,
     }));
-
-    protected onScroll(el: HTMLElement): void {
-        this.floating = el.scrollTop > 30;
-    }
 
     protected readonly filter: TuiMatcher<[(typeof this.items)[0], string]> = (
         item,

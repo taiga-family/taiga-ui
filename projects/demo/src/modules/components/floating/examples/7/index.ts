@@ -1,9 +1,9 @@
-import {NgIf} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAnimationPipe, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiAnimationPipe, TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     tuiCrossFadeIn,
@@ -18,6 +18,7 @@ import {TuiCell} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
+        NgFor,
         NgIf,
         TuiAnimationPipe,
         TuiAvatar,
@@ -26,7 +27,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiElasticContainer,
         TuiFloating,
         TuiLabel,
-        TuiRepeatTimes,
+        TuiRepeatTimesPipe,
         TuiSwitch,
         TuiTitle,
     ],

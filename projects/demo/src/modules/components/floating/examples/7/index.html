@@ -22,7 +22,7 @@
 
 <div class="content">
     <div
-        *tuiRepeatTimes="let i of 30"
+        *ngFor="let i of 30 | tuiRepeatTimes"
         tuiCell
     >
         <tui-avatar
@@ -50,7 +50,7 @@
             <span
                 *ngIf="additional"
                 class="clamp"
-                [@tuiCrossFadeIn]="{left: '1rem', right: '1rem', bottom: '1rem'} | tuiAnimation"
+                [@tuiCrossFadeIn]="{bottom: '1rem'} | tuiAnimation"
                 [style.margin-top.rem]="0.5"
                 [style.min-block-size.rem]="2"
             >
@@ -61,7 +61,7 @@
                 appearance="flat"
                 tuiButton
                 type="button"
-                [@tuiCrossFadeIn]="{left: '1rem', right: '1rem', bottom: '1rem'} | tuiAnimation"
+                [@tuiCrossFadeIn]="{bottom: '1rem'} | tuiAnimation"
             >
                 Secondary action
             </button>

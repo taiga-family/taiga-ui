@@ -6,7 +6,7 @@
     <ng-template pageTab>
         <p>
             <code>Floating</code>
-            is a special container for creating sticky footers
+            is a special container for creating different animated sticky footers
         </p>
 
         <tui-doc-example
@@ -43,7 +43,7 @@
 
             <div class="content">
                 <div
-                    *tuiRepeatTimes="let i of 30"
+                    *ngFor="let i of 30 | tuiRepeatTimes"
                     tuiCell
                 >
                     <tui-avatar
