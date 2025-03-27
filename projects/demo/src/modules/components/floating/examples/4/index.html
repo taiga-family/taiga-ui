@@ -52,7 +52,7 @@
 
     <footer
         *ngIf="value === 'primary'"
-        tuiFloating
+        tuiFloating="transparent"
         @tuiSlideInTop
     >
         <button
@@ -95,7 +95,6 @@
         *ngIf="value === 'actions'"
         tuiFloating
         @tuiSlideInTop
-        [tuiSubstrate]="true"
     >
         <button
             tuiButton

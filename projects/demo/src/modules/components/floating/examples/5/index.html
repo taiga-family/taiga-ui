@@ -58,8 +58,7 @@
     <footer
         *ngIf="floating"
         @tuiSlideInTop
-        [tuiFloating]="color"
-        [tuiSubstrate]="substrate"
+        [tuiFloating]="substrate ? color : 'transparent'"
     >
         <button
             tuiButton

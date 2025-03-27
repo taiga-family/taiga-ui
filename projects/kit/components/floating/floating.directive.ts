@@ -2,13 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-
-import {TUI_FLOATING_OPTIONS} from './floating.options';
 
 @Component({
     standalone: true,
@@ -33,11 +30,17 @@ class TuiFloatingStyles {}
 })
 export class TuiFloating {
     protected readonly nothing = tuiWithStyles(TuiFloatingStyles);
-    protected readonly options = inject(TUI_FLOATING_OPTIONS);
 
-    @Input('tuiFloating')
-    public background = '';
+    protected background = '';
+    protected substrate = true;
 
-    @Input('tuiSubstrate')
-    public substrate = this.options.substrate;
+    @Input()
+    public set tuiFloating(color: string) {
+        if (color !== 'transparent') {
+            this.background = color;
+            this.substrate = true;
+        } else {
+            this.substrate = false;
+        }
+    }
 }

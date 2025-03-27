@@ -30,6 +30,16 @@
                     Floating visibility
                 </label>
             </p>
+            <p>
+                <label tuiLabel>
+                    <input
+                        tuiSwitch
+                        type="checkbox"
+                        [(ngModel)]="secondAction"
+                    />
+                    Second action visibility
+                </label>
+            </p>
 
             <div class="content">
                 <div
@@ -50,13 +60,21 @@
                     *ngIf="floating"
                     @tuiSlideInTop
                     [tuiFloating]="color"
-                    [tuiSubstrate]="substrate"
                 >
                     <button
                         tuiButton
                         type="button"
                     >
                         Main action
+                    </button>
+                    <button
+                        *ngIf="secondAction"
+                        appearance="flat"
+                        tuiButton
+                        type="button"
+                        @tuiHeightCollapse
+                    >
+                        Secondary action
                     </button>
                 </footer>
             </div>
@@ -70,14 +88,6 @@
                 [(value)]="color"
             >
                 Substrate color
-            </tr>
-            <tr
-                name="[tuiSubstrate]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="substrate"
-            >
-                Substrate visibility
             </tr>
         </table>
     </ng-template>

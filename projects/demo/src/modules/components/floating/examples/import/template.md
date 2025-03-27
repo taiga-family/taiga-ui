@@ -3,7 +3,6 @@
 
 <footer
   tuiFloating
-  [tuiSubstrate]="true"
 >
   <button
     tuiButton

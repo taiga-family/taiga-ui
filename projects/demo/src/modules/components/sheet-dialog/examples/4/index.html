@@ -38,10 +38,7 @@
             {{ user }}
         </button>
     </div>
-    <footer
-        tuiFloating
-        [tuiSubstrate]="true"
-    >
+    <footer tuiFloating>
         <button
             tuiButton
             type="button"
@@ -49,6 +46,11 @@
         >
             Invite more users
         </button>
-        <span tuiLegal>Opens a separate app</span>
+        <span
+            [style.margin-top.rem]="0.5"
+            [style.min-block-size.rem]="2"
+        >
+            Opens a separate app
+        </span>
     </footer>
 </ng-template>

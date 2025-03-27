@@ -4,7 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiLabel, tuiSlideInTop, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    tuiHeightCollapse,
+    TuiLabel,
+    tuiSlideInTop,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloating, TuiSwitch} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
@@ -26,9 +32,13 @@ import {TuiCell} from '@taiga-ui/layout';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
-    animations: [tuiSlideInTop],
+    animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
+    protected floating = true;
+
+    protected secondAction = false;
+
     protected readonly examples = [
         'Two actions',
         'Inside SheetDialog',
@@ -39,10 +49,9 @@ export default class Example {
         'With additional content',
     ];
 
-    protected floating = true;
-    protected substrate = false;
-
     protected readonly colors = [
+        '',
+        'transparent',
         'var(--tui-background-elevation-1)',
         'var(--tui-background-base-alt)',
         'red',

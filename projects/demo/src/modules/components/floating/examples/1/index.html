@@ -43,9 +43,8 @@
 
     <footer
         *ngIf="floating"
-        tuiFloating
         @tuiSlideInTop
-        [tuiSubstrate]="substrate()"
+        [tuiFloating]="secondAction() ? '' : 'transparent'"
     >
         <button
             tuiButton
