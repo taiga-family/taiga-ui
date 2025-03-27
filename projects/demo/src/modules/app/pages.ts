@@ -422,6 +422,14 @@ export const pages: DocRoutePages = [
         route: DemoRoute.Filter,
     },
     {
+        section: 'Components',
+        title: 'Floating',
+        keywords:
+            'floating, sticky, button, footer, плавающий, липкие, липкий, кнопки, футер',
+        route: DemoRoute.Floating,
+        meta: {},
+    },
+    {
         section: 'Layout',
         title: 'Form',
         keywords: 'форма, поле, кнопка, группировка, группа',

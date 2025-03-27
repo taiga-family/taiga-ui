@@ -36,10 +36,6 @@
         gap: 0.5rem;
     }
 
-    > tui-elastic-container > .t-wrapper > [tuiButton] {
-        inline-size: 100%;
-    }
-
     > [tuiLegal],
     > tui-elastic-container > .t-wrapper > [tuiLegal] {
         display: -webkit-box;
@@ -82,14 +78,5 @@
 
     &._substrate::before {
         opacity: 1;
-    }
-
-    &[tuiButton] {
-        bottom: max(
-            calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y) + 1.5rem),
-            calc(env(safe-area-inset-bottom) + 1.5rem)
-        );
-        inline-size: 100%;
-        padding: 0;
     }
 }

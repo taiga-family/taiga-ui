@@ -25,12 +25,6 @@ class TuiFloatingStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiFloating]',
-    hostDirectives: [
-        // {
-        //     directive: TuiElasticContainerDirective,
-        //     outputs: ['tuiElasticContainer'],
-        // },
-    ],
     host: {
         tuiFloating: '',
         '[style.--t-background]': 'background',
