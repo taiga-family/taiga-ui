@@ -28,27 +28,15 @@
     );
     z-index: 1;
     padding-bottom: 1rem;
+    text-align: center;
+    font: var(--tui-font-text-ui-s);
+    color: var(--tui-text-secondary);
 
     &,
     & > tui-elastic-container > .t-wrapper {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-    }
-
-    > [tuiLegal],
-    > tui-elastic-container > .t-wrapper > [tuiLegal] {
-        display: -webkit-box;
-        min-block-size: 2rem;
-        margin: 0.5rem 0 0;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        text-align: center;
-        font: var(--tui-font-text-ui-s);
-        color: var(--tui-text-secondary);
     }
 
     // TODO: use :has after safari support bumped to 15.4+
@@ -59,8 +47,7 @@
             margin-block-end: 0.5rem;
         }
 
-        &.ng-animating:not(:first-child) ~ [tuiButton],
-        &.ng-animating:not(:first-child) ~ [tuiLegal] {
+        &.ng-animating:not(:first-child) ~ * {
             margin-block-start: -0.5rem;
         }
     }

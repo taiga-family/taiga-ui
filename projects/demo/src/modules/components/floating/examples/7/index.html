@@ -50,8 +50,10 @@
             </button>
             <span
                 *ngIf="additional"
-                tuiLegal
+                class="clamp"
                 @tuiCrossFadeInBottom
+                [style.margin-top.rem]="0.5"
+                [style.min-block-size.rem]="2"
             >
                 Legal text, max 3 lines
             </span>
