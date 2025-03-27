@@ -18,6 +18,17 @@
         Substrate visibility
     </label>
 </p>
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [ngModel]="secondAction()"
+            (ngModelChange)="secondAction.set($event)"
+        />
+        Second action visibility
+    </label>
+</p>
 
 <p>
     <tui-input-color
@@ -55,6 +66,15 @@
             type="button"
         >
             Main action
+        </button>
+        <button
+            *ngIf="secondAction()"
+            appearance="flat"
+            tuiButton
+            type="button"
+            @tuiHeightCollapse
+        >
+            Secondary action
         </button>
     </footer>
 </div>

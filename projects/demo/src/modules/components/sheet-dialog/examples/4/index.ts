@@ -1,16 +1,11 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
-import {Component, inject, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MATCHER,
-    TUI_WINDOW_SIZE,
-    tuiControlValue,
-    TuiSwipe,
-} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiSwipe} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloating} from '@taiga-ui/kit';
 import {
@@ -64,8 +59,6 @@ export default class Example {
     @ViewChild(TuiInputComponent)
     private readonly input?: TuiInputComponent;
 
-    private readonly size$ = inject(TUI_WINDOW_SIZE);
-
     protected open = false;
 
     protected readonly offset = 16;
@@ -74,10 +67,6 @@ export default class Example {
 
     protected readonly users$ = tuiControlValue<string>(this.search).pipe(
         map((search) => USERS.filter((user) => TUI_DEFAULT_MATCHER(user, search))),
-    );
-
-    protected readonly height$ = this.size$.pipe(
-        map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
 
     protected toggle(open: boolean): void {

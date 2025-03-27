@@ -1,10 +1,13 @@
 .header {
+    position: sticky;
+    top: 1.5rem;
     z-index: 1;
     padding: 0.25rem 0 1rem;
     background: var(--tui-background-elevation-1);
 }
 
 .container {
+    flex-grow: 1;
     inline-size: 100%;
     overflow: auto;
     overscroll-behavior: contain;
@@ -19,5 +22,5 @@
 }
 
 footer {
-    margin: 1rem -1rem -1.5rem;
+    margin: 1rem 0 -1.5rem;
 }

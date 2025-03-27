@@ -8,7 +8,7 @@
 
 <ng-template
     [tuiSheetDialog]="open"
-    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset}"
+    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, fullscreen: true}"
     (tuiSheetDialogChange)="toggle($event)"
 >
     <header class="header">
@@ -22,7 +22,6 @@
     </header>
     <div
         class="container"
-        [style.height]="height$ | async"
         (tuiSwipe)="onSwipe($event.direction)"
     >
         <button

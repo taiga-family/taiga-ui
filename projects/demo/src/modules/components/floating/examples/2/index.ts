@@ -50,10 +50,10 @@ export default class Example {
     protected secondAction = signal(false);
     protected substrate = computed(() => this.secondAction());
 
-    protected readonly items = new Array(15).fill({
-        title: 'Title',
-        description: 'Description',
-    });
+    protected readonly items = new Array(15).fill(0).map((_, index) => ({
+        title: `Title ${index + 1}`,
+        description: `Description ${index + 1}`,
+    }));
 
     protected onScroll(el: HTMLElement): void {
         this.floating = el.scrollTop > 30;
