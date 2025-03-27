@@ -73,6 +73,10 @@ test.describe('Dropdown', () => {
             .locator("tui-dropdown [automation-id='tui-select__textfield']")
             .click();
 
+        await page
+            .locator("tui-dropdown [automation-id='tui-select__textfield'] input")
+            .focus();
+
         await expect(page).toHaveScreenshot('07-dropdown.png');
 
         await page.keyboard.press('Escape');
