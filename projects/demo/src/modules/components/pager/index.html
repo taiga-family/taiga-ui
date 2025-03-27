@@ -17,10 +17,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-pager
+                [count]="count"
                 [index]="index"
-                [length]="length"
                 [max]="max"
-                [template]="valueContent"
+                [size]="size"
+                [valueContent]="valueContent"
             />
 
             <ng-template #templateRef>
@@ -29,6 +30,15 @@
         </tui-doc-demo>
 
         <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="'m' | 's'"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Layout size
+            </tr>
             <tr
                 name="[index]"
                 tuiDocAPIItem
@@ -46,22 +56,22 @@
                 Max visible dots
             </tr>
             <tr
-                name="[length]"
+                name="[count]"
                 tuiDocAPIItem
                 type="number"
-                [items]="lengthVariants"
-                [(value)]="length"
+                [items]="countVariants"
+                [(value)]="count"
             >
-                Length of dots
+                Count of dots
             </tr>
             <tr
-                name="[template]"
+                name="[valueContent]"
                 tuiDocAPIItem
                 type="TemplateRef"
                 [items]="templateVariants"
                 [(value)]="selectedTemplate"
             >
-                Custom template for dot
+                A template for custom view
             </tr>
         </table>
     </ng-template>

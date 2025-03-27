@@ -1,11 +1,11 @@
 <tui-pager
+    [count]="count"
     [index]="activeIndex()"
-    [length]="length"
-    [template]="template"
+    [valueContent]="content"
 />
 
 <ng-template
-    #template
+    #content
     let-index
 >
     <progress

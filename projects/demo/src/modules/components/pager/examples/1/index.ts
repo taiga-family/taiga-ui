@@ -12,7 +12,7 @@ import {TuiPager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected length = 10;
+    protected count = 10;
     protected index = 0;
 
     protected prev(): void {
@@ -20,6 +20,6 @@ export default class Example {
     }
 
     protected next(): void {
-        this.index = Math.min(this.index + 1, this.length - 1);
+        this.index = Math.min(this.index + 1, this.count - 1);
     }
 }

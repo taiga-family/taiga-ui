@@ -18,7 +18,7 @@ import {map, of, takeWhile, tap, timer} from 'rxjs';
 })
 export default class Example {
     protected static = inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
-    protected length = 10;
+    protected count = 10;
     protected activeIndex = signal(0);
 
     protected readonly toProgress = (active: boolean): Observable<number> =>
@@ -35,6 +35,6 @@ export default class Example {
     }
 
     protected next(): void {
-        this.activeIndex.update((index) => Math.min(index + 1, this.length - 1));
+        this.activeIndex.update((index) => Math.min(index + 1, this.count - 1));
     }
 }

@@ -22,6 +22,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
+import type {TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({
@@ -44,6 +45,7 @@ import {delay, map} from 'rxjs';
         },
     ],
     host: {
+        '[attr.data-size]': 'size',
         '[style.--t-gap.px]': 'gap',
         '[style.max-width.px]': 'maxWidth()',
     },
@@ -68,13 +70,13 @@ export class TuiPager implements OnChanges, AfterViewInit {
     public max = 6;
 
     @Input()
-    public gap = 8;
+    public count = this.max;
 
     @Input()
-    public length = this.max;
+    public size: TuiSizeS = 'm';
 
     @Input()
-    public template?: TemplateRef<unknown>;
+    public valueContent?: TemplateRef<unknown>;
 
     @Input()
     public index = 0;
@@ -87,12 +89,16 @@ export class TuiPager implements OnChanges, AfterViewInit {
         this.move();
     }
 
+    protected get gap(): number {
+        return this.size === 'm' ? 9 : 7;
+    }
+
     private get visibleRange(): [start: number, end: number] {
-        const max = this.max > this.length ? this.length : this.max;
+        const max = this.max > this.count ? this.count : this.max;
 
         const start = Math.min(
             Math.max(this.index - Math.floor(max / 2), 0),
-            this.length - max,
+            this.count - max,
         );
 
         return [start, start + (max - 1)];

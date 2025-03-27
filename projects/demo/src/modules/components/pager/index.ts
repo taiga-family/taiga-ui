@@ -2,6 +2,7 @@ import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiPager} from '@taiga-ui/kit';
 
@@ -17,13 +18,17 @@ export default class Page {
 
     protected readonly examples = ['Basic', 'Icons', 'Dynamic width'];
 
-    protected max = 6;
-
     protected index = 0;
 
-    protected lengthVariants = [10, 5, 15, 3, 4, 6, 8, 100];
+    protected max = 6;
 
-    protected length = this.lengthVariants[0]!;
+    protected sizes: TuiSizeS[] = ['m', 's'];
+
+    protected size = this.sizes[0]!;
+
+    protected countVariants = [10, 15, 1, 2, 3, 4, 5, 6, 8, 100];
+
+    protected count = this.countVariants[0]!;
 
     protected templateVariants = ['', 'Template'];
     protected selectedTemplate = this.templateVariants[0]!;

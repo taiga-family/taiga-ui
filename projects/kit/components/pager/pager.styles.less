@@ -1,12 +1,37 @@
 :host {
     --t-size: 0.5rem;
 
-    display: block;
-    overflow: hidden;
-}
+    :host-context(tui-root._mobile) {
+        --t-size: 0.375rem;
+    }
 
-:host-context(tui-root._mobile) {
-    --t-size: 0.375rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &[data-size='m'] {
+        min-block-size: 1.25rem;
+
+        --t-small-dot: scale(0.75);
+        --t-super-small-dot: scale(0.5);
+        --t-icon-size: 1rem;
+
+        :host-context(tui-root._mobile) & {
+            --t-icon-size: 0.875rem;
+        }
+    }
+
+    &[data-size='s'] {
+        min-block-size: 1rem;
+
+        --t-small-dot: scale(0.5);
+        --t-super-small-dot: scale(0.25);
+        --t-icon-size: 0.875rem;
+
+        :host-context(tui-root._mobile) & {
+            --t-icon-size: 0.6875rem;
+        }
+    }
 }
 
 .t-items {
@@ -22,7 +47,6 @@
     align-items: center;
     justify-content: center;
     color: var(--tui-background-neutral-2);
-    transition: all var(--tui-duration-fast, 150ms) var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
 
     &._active {
         color: var(--tui-background-accent-1);
@@ -40,22 +64,35 @@
         }
 
         &:not(._visible)::before,
-        &:not(._visible) + .t-item:empty::before,
-        &:not(._last):nth-last-child(1 of ._visible)::before {
-            transform: scale(0.25) !important;
-
-            :host-context(tui-root._mobile) & {
-                transform: scale(0.333) !important;
-            }
+        &:not(._visible) + .t-item:not(._active):not(._pre-active):empty::before,
+        &:not(._last):not(._post-active):not(._active):nth-last-child(1 of ._visible)::before {
+            transform: var(--t-super-small-dot) !important;
         }
 
-        &:not(._visible) + .t-item:empty + .t-item:empty::before,
-        &:not(._pre-last):nth-last-child(2 of ._visible)::before {
-            transform: scale(0.5);
-
-            :host-context(tui-root._mobile) & {
-                transform: scale(0.666);
-            }
+        &:not(._last)._post-active:nth-last-child(1 of ._visible)::before,
+        &:not(._visible) + .t-item._pre-active:empty::before,
+        &:not(._visible) + .t-item:empty + .t-item:not(._active):empty::before,
+        &:not(._pre-last):nth-last-child(2 of ._visible):not(._active)::before {
+            transform: var(--t-small-dot);
         }
+
+        & + .t-item:not(:empty)._pre-last {
+            transform: scale(0.64);
+        }
+
+        & + .t-item:not(:empty)._pre-last:nth-last-child(2 of ._visible) {
+            transform: scale(1);
+        }
+    }
+
+    &::ng-deep > tui-icon {
+        inline-size: var(--t-icon-size);
+        block-size: var(--t-icon-size);
+    }
+
+    &,
+    &::ng-deep > tui-icon {
+        transition: all var(--tui-duration-fast, 150ms)
+            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
     }
 }

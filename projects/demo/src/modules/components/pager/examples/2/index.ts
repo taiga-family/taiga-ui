@@ -13,7 +13,7 @@ import {TuiPager} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected length = 8;
+    protected count = 8;
     protected activeIndex = 0;
 
     protected prev(): void {
@@ -21,6 +21,6 @@ export default class Example {
     }
 
     protected next(): void {
-        this.activeIndex = Math.min(this.activeIndex + 1, this.length - 1);
+        this.activeIndex = Math.min(this.activeIndex + 1, this.count - 1);
     }
 }

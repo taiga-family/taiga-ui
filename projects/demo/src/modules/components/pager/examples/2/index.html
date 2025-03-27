@@ -1,18 +1,18 @@
 <tui-pager
+    [count]="count"
     [index]="activeIndex"
-    [length]="length"
-    [template]="template"
+    [valueContent]="content"
 />
 
 <ng-template
-    #template
+    #content
     let-index
 >
-    <ng-container *ngIf="index === length - 2">
+    <ng-container *ngIf="index === count - 2">
         <tui-icon icon="@tui.view" />
     </ng-container>
 
-    <ng-container *ngIf="index === length - 1">
+    <ng-container *ngIf="index === count - 1">
         <tui-icon icon="@tui.square-plus" />
     </ng-container>
 </ng-template>

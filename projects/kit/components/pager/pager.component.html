@@ -3,15 +3,17 @@
     [style.transform]="'translateX(' + left() + 'px)'"
 >
     <div
-        *tuiRepeatTimes="let i of length"
+        *tuiRepeatTimes="let i of count"
         #item
         class="t-item"
         [attr.data-index]="i"
         [class._active]="i === index"
-        [class._last]="i === length - 1"
-        [class._pre-last]="i === length - 2"
+        [class._last]="i === count - 1"
+        [class._post-active]="i === index + 1"
+        [class._pre-active]="i === index - 1"
+        [class._pre-last]="i === count - 2"
         [class._visible]="i >= start && i <= end"
     >
-        <ng-container *ngTemplateOutlet="template || null; context: {$implicit: i}" />
+        <ng-container *ngTemplateOutlet="valueContent || null; context: {$implicit: i}" />
     </div>
 </div>
