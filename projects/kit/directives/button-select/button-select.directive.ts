@@ -1,5 +1,7 @@
 import {Directive} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TuiWithTextfieldDropdown} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownDirective,
@@ -7,8 +9,6 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
 
 @Directive({
     standalone: true,

@@ -16,8 +16,12 @@ import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
+import type {
+    TuiDataListAccessor,
+    TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {
+    TUI_DATA_LIST_HOST,
     tuiAsDataListAccessor,
     TuiDataList,
     tuiInjectDataListSize,
@@ -25,8 +29,6 @@ import {
     TuiOptionWithValue,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 import type {TuiValueContentContext} from '@taiga-ui/core/types';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';

@@ -20,14 +20,14 @@ import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATA_LIST_HOST, TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import type {TuiDataListAccessor} from './data-list.tokens';
-import {tuiAsDataListAccessor} from './data-list.tokens';
+import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
 import {TuiOptionWithValue} from './option/option.directive';
 import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option/option-content';
 import {TuiOption} from './option/option-legacy.component';

@@ -4,12 +4,15 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    TUI_DATA_LIST_HOST,
+    TuiOptionWithValue,
+} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {TUI_COMMON_ICONS, TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,

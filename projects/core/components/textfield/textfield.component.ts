@@ -26,7 +26,11 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {TuiWithOptionContent} from '@taiga-ui/core/components/data-list';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    TuiWithOptionContent,
+} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
@@ -35,8 +39,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {TUI_CLEAR_WORD, TUI_COMMON_ICONS, tuiAsDataListHost} from '@taiga-ui/core/tokens';
+import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

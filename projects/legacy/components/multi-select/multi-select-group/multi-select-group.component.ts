@@ -15,9 +15,8 @@ import {
     tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiOption} from '@taiga-ui/core/components/data-list';
-import type {TuiDataListHost} from '@taiga-ui/core/tokens';
-import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
+import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
+import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core/components/data-list';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
