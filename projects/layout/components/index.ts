@@ -9,3 +9,4 @@ export * from '@taiga-ui/layout/components/header';
 export * from '@taiga-ui/layout/components/input-search';
 export * from '@taiga-ui/layout/components/navigation';
 export * from '@taiga-ui/layout/components/search';
+export * from '@taiga-ui/layout/components/chip-group';

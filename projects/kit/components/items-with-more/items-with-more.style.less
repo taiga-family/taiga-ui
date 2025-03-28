@@ -21,7 +21,7 @@
     }
 
     :host._multiline & {
-        &_more {
+        &_more:not(:empty) {
             min-inline-size: var(--t-min-width, 0);
         }
     }

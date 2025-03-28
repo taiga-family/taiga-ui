@@ -1,0 +1,18 @@
+<tui-chip-group
+    tuiPlatform="ios"
+    [horizontal]="true"
+>
+    <label
+        *ngFor="let chip of chips; let i = index"
+        tuiChip
+        [appearance]="checked[i] ? 'accent' : 'neutral'"
+    >
+        {{ chip }}
+        <input
+            appearance=""
+            tuiChip
+            type="checkbox"
+            [(ngModel)]="checked[i]"
+        />
+    </label>
+</tui-chip-group>
