@@ -1,0 +1,30 @@
+<tui-textfield
+    tuiChevron
+    [content]="value && '*' + value.number.slice(-4)"
+>
+    <input
+        placeholder="Choose a card"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [itemContent]="dropdownOptionContent"
+        [items]="cards"
+    />
+</tui-textfield>
+
+<ng-template
+    #dropdownOptionContent
+    let-card
+>
+    <div class="card">
+        <tui-thumbnail-card [paymentSystem]="card.paymentSystem">
+            {{ card.number.slice(-4) }}
+        </tui-thumbnail-card>
+
+        {{ card.name }}
+    </div>
+</ng-template>

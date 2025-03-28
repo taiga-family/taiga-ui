@@ -1,0 +1,10 @@
+<tui-icon
+    *ngIf="selected(); else dummy"
+    class="t-checkmark"
+    [icon]="icon"
+    [tuiScrollIntoView]="true"
+/>
+
+<ng-template #dummy>
+    <span class="t-dummy"></span>
+</ng-template>

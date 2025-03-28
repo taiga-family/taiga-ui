@@ -20,6 +20,7 @@ export class TuiExamplePipe implements PipeTransform {
             | 'html,ts'
             | 'html'
             | 'ts' = 'html,ts,less',
+        additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
         return Object.fromEntries(
             formats
@@ -29,7 +30,8 @@ export class TuiExamplePipe implements PipeTransform {
                     import(
                         `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.${format}?raw`
                     ).catch(() => ({default: ''})),
-                ]),
+                ])
+                .concat(additionalFiles ? Object.entries(additionalFiles) : []),
         );
     }
 }

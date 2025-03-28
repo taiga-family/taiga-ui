@@ -1,4 +1,5 @@
 import type {Provider, TemplateRef, Type} from '@angular/core';
+import {ContentChild, Directive, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -20,4 +21,23 @@ export function tuiAsOptionContent(
         provide: TUI_OPTION_CONTENT,
         useValue,
     };
+}
+
+@Directive({
+    standalone: true,
+})
+export class TuiWithOptionContent {
+    @ContentChild(TUI_OPTION_CONTENT, {
+        static: true,
+        descendants: true,
+    })
+    protected readonly localContent: Type<any> | null = null;
+
+    protected readonly globalContent = inject<Type<any>>(TUI_OPTION_CONTENT, {
+        optional: true,
+    });
+
+    public get optionContent(): Type<any> | null {
+        return this.globalContent ?? this.localContent;
+    }
 }

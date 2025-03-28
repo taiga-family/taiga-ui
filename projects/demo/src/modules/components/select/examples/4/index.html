@@ -1,0 +1,28 @@
+<tui-textfield tuiChevron>
+    <input
+        placeholder="Country"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
+    <cdk-virtual-scroll-viewport
+        *tuiTextfieldDropdown
+        tuiScrollable
+        class="scroll"
+        [itemSize]="44"
+    >
+        <tui-data-list>
+            <button
+                *cdkVirtualFor="let item of countries | async"
+                new
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-data-list>
+    </cdk-virtual-scroll-viewport>
+
+    <tui-badge-notification>{{ optionsCount() }}</tui-badge-notification>
+</tui-textfield>
