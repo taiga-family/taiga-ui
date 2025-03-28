@@ -33,12 +33,10 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
         },
     ],
     host: {
-        '[class._dragged]': 'element()',
         '(pointerleave.zoneless)': 'rearrange()',
     },
 })
 export class TuiTilesComponent {
-    private readonly el = tuiInjectElement();
     private readonly el$ = new Subject<Element | undefined>();
     private readonly handler = inject(TUI_TILES_REORDER);
 
@@ -52,7 +50,8 @@ export class TuiTilesComponent {
         map((element) => this.reorder(element)),
     );
 
-    public element = signal<Element | null>(null);
+    public readonly element = signal<Element | null>(null);
+    public readonly el = tuiInjectElement();
 
     public readonly order$ = new BehaviorSubject(new Map<number, number>());
 

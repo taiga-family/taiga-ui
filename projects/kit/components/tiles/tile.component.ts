@@ -45,15 +45,16 @@ export class TuiTile implements OnDestroy, AfterViewInit {
     public onDrag(offset: readonly [number, number]): void {
         const dragged = !Number.isNaN(offset[0]);
 
-        /**
-         * TODO: should be this.dragged.set(this.dragged() || dragged);
-         * but transitionend doesn't work like that for some unknown reason
-         * due to a conflict with parent change detection
-         */
-        this.dragged.set(dragged);
+        this.dragged.set(this.dragged() || dragged);
 
         this.tiles.element.set(dragged ? this.element : null);
         this.service.setOffset(offset);
+
+        if (dragged) {
+            this.tiles.el.classList.add('_dragged');
+        } else {
+            this.tiles.el.classList.remove('_dragged');
+        }
     }
 
     public ngAfterViewInit(): void {

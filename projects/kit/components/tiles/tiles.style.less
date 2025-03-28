@@ -7,18 +7,11 @@ tui-tiles {
     grid-auto-flow: dense;
     justify-items: stretch;
 
-    &._dragged {
-        tui-tile > .t-wrapper {
-            pointer-events: none;
-        }
-
-        tui-tile:not(._dragged) > .t-wrapper {
-            .transition(all);
-            // To trigger transition event when duration is 0
-            transition-delay: 1ms;
-        }
+    &._dragged tui-tile > .t-wrapper {
+        pointer-events: none;
     }
 
+    &._dragged tui-tile:not(._dragged) > .t-wrapper,
     &:not(._dragged) tui-tile._dragged > .t-wrapper {
         .transition(all);
         // To trigger transition event when duration is 0
@@ -28,14 +21,14 @@ tui-tiles {
 
 tui-tile {
     & > .t-wrapper {
-        .fullsize(absolute);
-
+        // don't use ".fullsize(absolute)" because it will break transition
+        position: absolute;
         z-index: 0;
         border-radius: inherit;
     }
 
-    &._dragged > .t-wrapper {
+    &._dragged > .t-wrapper,
+    &:has(&._dragged) > .t-wrapper {
         z-index: 1;
-        transition: none;
     }
 }
