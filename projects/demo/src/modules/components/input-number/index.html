@@ -178,6 +178,28 @@
                 directive to adjusts font size for the textfield value to fit in the textfield box.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="value-transformer"
+            heading="Value transformer"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+            [description]="transformerDescription"
+        >
+            <ng-template #transformerDescription>
+                <code>TuiValueTransformer</code>
+                is a great opportunity to override default form control's value format without breaking component's
+                internal logic.
+
+                <p>
+                    This example demonstrates how to use
+                    <code>NaN</code>
+                    -value for empty textfield instead of default
+                    <code>null</code>
+                    -value to keep type strictly "number" .
+                </p>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

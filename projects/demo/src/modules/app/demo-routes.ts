@@ -90,6 +90,7 @@ export const DemoRoute = {
     InputRange: '/components/input-range',
     InputDateRange: '/components/input-date-range',
     InputSlider: '/components/input-slider',
+    InputSliderLegacy: '/legacy/input-slider',
     InputTag: '/components/input-tag',
     InputTime: '/components/input-time',
     InputPhoneInternational: '/components/input-phone-international',

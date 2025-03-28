@@ -5,14 +5,17 @@ import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    TUI_TEXTFIELD_OPTIONS,
     tuiInjectAuxiliary,
+    TuiSelectLike,
+    tuiTextfieldIconBinding,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_DROPDOWN_OPTIONS, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {
+    TuiDropdownAuto,
+    tuiDropdownEnabled,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
 import {TuiCalendarMonth} from '@taiga-ui/kit/components/calendar-month';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
@@ -22,35 +25,26 @@ import {TUI_INPUT_MONTH_OPTIONS} from './input-month.options';
     standalone: true,
     selector: 'input[tuiInputMonth]',
     providers: [tuiAsControl(TuiInputMonthDirective)],
-    hostDirectives: [TuiWithTextfield],
+    hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
     host: {
-        inputmode: 'none',
         '[disabled]': 'disabled()',
-        '(click)': 'toggleDropdown()',
         '(blur)': 'onTouched()',
-        '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
-    private readonly options = inject(TUI_INPUT_MONTH_OPTIONS);
-    private readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-
     private readonly open = tuiDropdownOpen();
-
     private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER), {
         initialValue: () => '',
     });
 
-    protected readonly textfieldValue = tuiValueBinding(
-        computed(() => this.formatter()(this.value())),
+    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_MONTH_OPTIONS);
+    protected readonly dropdownEnabled = tuiDropdownEnabled(
+        computed(() => !this.nativePickerEnabled && this.interactive()),
     );
 
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconEnd',
-        computed(() => this.options.icon(this.textfieldOptions.size())),
-        {},
+    protected readonly textfieldValue = tuiValueBinding(
+        computed(() => this.formatter()(this.value())),
     );
 
     protected readonly calendarSync = effect(() => {
@@ -73,32 +67,8 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     public readonly nativePickerEnabled =
         tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
 
-    constructor() {
-        super();
-
-        /**
-         * Update directive props with new defaults before inputs are processed
-         * TODO: find better way to override TuiDropdownFixed host directive from TuiTextfieldComponent
-         */
-        (inject(TUI_DROPDOWN_OPTIONS) as any).limitWidth = 'auto';
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open.set(false);
-    }
-
-    protected toggleDropdown(): void {
-        if (this.interactive() && !this.nativePickerEnabled) {
-            this.open.update((x) => !x);
-        }
-    }
-
     protected clear(): void {
         this.onChange(null);
-
-        if (!this.nativePickerEnabled) {
-            this.open.set(true);
-        }
+        this.open.set(true);
     }
 }

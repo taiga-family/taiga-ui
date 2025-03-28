@@ -3,8 +3,10 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    EventEmitter,
     inject,
     Input,
+    Output,
     ViewChildren,
 } from '@angular/core';
 import {TuiBarSet} from '@taiga-ui/addon-charts/components/bar-set';
@@ -51,6 +53,9 @@ export class TuiBarChart {
 
     @Input()
     public collapsed = false;
+
+    @Output()
+    public readonly tapColumn = new EventEmitter<number>();
 
     public get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);

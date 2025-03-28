@@ -147,8 +147,8 @@ function addProprietaryProviders(fileSystem: DevkitFileSystem): void {
                 '@taiga-ui/proprietary',
             );
         } else if (Node.isArrayLiteralExpression(parent)) {
-            const componentClass = getNgComponents(filePath)[0];
-            const moduleClass = getNgModules(filePath)[0];
+            const [componentClass] = getNgComponents(filePath);
+            const [moduleClass] = getNgModules(filePath);
             const provider =
                 'tuiEditorOptionsProvider({icons: TUI_PROPRIETARY_EDITOR_ICONS})';
 

@@ -18,13 +18,23 @@ describe('TuiDropdownDirective', () => {
         ],
         template: `
             <tui-root>
-                <button automation-id="tui-dropdown-directive__button"></button>
+                <button
+                    automation-id="tui-dropdown-directive__button"
+                    type="button"
+                >
+                    Element content
+                </button>
                 <div
                     [tuiDropdown]="dropdown"
                     [tuiDropdownManual]="open"
                 >
                     Hosty host
-                    <button automation-id="tui-dropdown-directive__host"></button>
+                    <button
+                        automation-id="tui-dropdown-directive__host"
+                        type="button"
+                    >
+                        Element content
+                    </button>
                 </div>
                 <ng-template
                     #dropdown="polymorpheus"

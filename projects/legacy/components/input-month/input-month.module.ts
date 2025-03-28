@@ -16,6 +16,10 @@ import {
 import {TuiInputMonthComponent} from './input-month.component';
 import {TuiInputMonthDirective} from './input-month.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-month TuiInputMonth} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

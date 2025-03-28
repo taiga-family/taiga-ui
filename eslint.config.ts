@@ -16,11 +16,4 @@ export default [
             '@typescript-eslint/max-params': ['error', {countVoidThis: true, max: 5}],
         },
     },
-    {
-        files: ['**/*'],
-        rules: {
-            '@angular-eslint/template/button-has-type': 'off',
-            '@angular-eslint/template/elements-content': 'off',
-        },
-    },
 ];

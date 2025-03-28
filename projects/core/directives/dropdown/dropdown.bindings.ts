@@ -15,6 +15,14 @@ export function tuiDropdown(value: C | Signal<C>): Signal<C> {
     return tuiDirectiveBinding(TuiDropdownDirective, 'tuiDropdown', value, {});
 }
 
+export function tuiDropdownEnabled(
+    value: WritableSignal<boolean> | boolean,
+): WritableSignal<boolean>;
+export function tuiDropdownEnabled(value: Signal<boolean>): Signal<boolean>;
+export function tuiDropdownEnabled(value: Signal<boolean> | boolean): Signal<boolean> {
+    return tuiDirectiveBinding(TuiDropdownOpen, 'tuiDropdownEnabled', value, {});
+}
+
 export function tuiDropdownOpen(): WritableSignal<boolean> {
     const open: WritableSignal<boolean> = tuiDirectiveBinding(
         TuiDropdownOpen,

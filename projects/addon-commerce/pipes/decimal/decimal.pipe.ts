@@ -22,7 +22,7 @@ export class TuiDecimalPipe implements PipeTransform {
             switchMap((format) =>
                 this.amountPipe.transform(value, currency).pipe(
                     map((value) => {
-                        const decimal = value.split(format.decimalSeparator)[1];
+                        const [, decimal] = value.split(format.decimalSeparator);
 
                         return decimal ? `${format.decimalSeparator}${decimal}` : '';
                     }),

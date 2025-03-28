@@ -37,7 +37,7 @@ describe('InputTag', () => {
         ],
         template: `
             <tui-root>
-                <button>Focus stealer</button>
+                <button type="button">Focus stealer</button>
                 <tui-input-tag
                     *ngIf="defaultInputs"
                     [formControl]="control"

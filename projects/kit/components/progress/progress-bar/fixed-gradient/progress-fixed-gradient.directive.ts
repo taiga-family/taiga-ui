@@ -31,7 +31,7 @@ export class TuiProgressFixedGradientDirective {
     protected readonly nothing = tuiWithStyles(TuiProgressFixedGradientStyles);
 
     protected get progressPercent(): number {
-        const value = this.nativeProgress.value;
+        const {value} = this.nativeProgress;
         const max = this.nativeProgress.max ?? 1;
 
         return Math.min((value / max) * 100, 100);

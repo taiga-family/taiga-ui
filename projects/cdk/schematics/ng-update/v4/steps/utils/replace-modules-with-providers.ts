@@ -68,13 +68,13 @@ function addImport(identifier: ProviderToReplace, filePath: string): void {
 function addProvider(identifier: ProviderToReplace, filePath: string): void {
     const provider = `${identifier.name}${identifier.isFunction ? '()' : ''}`;
 
-    const componentClass = getNgComponents(filePath)[0];
+    const [componentClass] = getNgComponents(filePath);
 
     if (componentClass) {
         addProviderToComponent(componentClass, provider);
     }
 
-    const moduleClass = getNgModules(filePath)[0];
+    const [moduleClass] = getNgModules(filePath);
 
     if (moduleClass) {
         addProviderToNgModule(moduleClass, provider);

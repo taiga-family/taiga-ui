@@ -15,6 +15,10 @@ import {
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 import {TuiInputMonthRangeDirective} from './input-month-range.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-month#range TuiInputMonth} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

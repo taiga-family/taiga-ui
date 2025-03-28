@@ -23,6 +23,10 @@ import {
     tuiAsFocusableItemAccessor,
 } from '@taiga-ui/legacy/tokens';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-month#range TuiInputMonth} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-month-range',

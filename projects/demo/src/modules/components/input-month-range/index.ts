@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler, TuiMonthRange} from '@taiga-ui/cdk';
 import {
@@ -33,6 +34,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiMonth(2019, 2),

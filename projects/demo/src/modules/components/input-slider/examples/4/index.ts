@@ -1,24 +1,33 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiIcon} from '@taiga-ui/core';
-import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import type {TuiKeySteps} from '@taiga-ui/kit';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        TuiHint,
-        TuiIcon,
-        TuiInputSliderModule,
-        TuiTextfieldControllerModule,
-    ],
+    imports: [FormsModule, NgForOf, TuiInputSlider, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected userAnswer = 2;
+    protected value = 10;
+    protected readonly min = 0;
+    protected readonly max = 1_000;
+    protected readonly step = 5; // 100% / 5% = 20 total steps
+    protected readonly ticksLabels = ['0', '10', '100', '500', '1000'];
+
+    protected readonly keySteps: TuiKeySteps = [
+        // [percent, value]
+        [0, this.min],
+        [25, 10],
+        [50, 100],
+        [75, 500],
+        [100, this.max],
+    ];
 }
