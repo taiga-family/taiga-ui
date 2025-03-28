@@ -46,18 +46,27 @@
     }
 
     // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
-    // TODO: use :has after safari support bumped to 15.4+
-    > [tuiButton] {
-        &:only-child,
-        &.ng-animating:not(:last-child),
-        &.ng-animating:first-child ~ .ng-animating:last-child {
-            margin-block-end: 0.5rem;
-        }
-
-        &.ng-animating:not(:first-child) ~ * {
-            margin-block-start: -0.5rem;
-        }
+    &:has(> *:only-child:not(tui-elastic-container)),
+    &:has(*.ng-animating:first-child ~ .ng-animating:last-child) {
+        padding-bottom: 1.5rem;
     }
+
+    // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
+    // TODO: use :has after safari support bumped to 15.4+
+    // > [tuiButton] {
+    //     &:only-child {
+    //         margin-block-end: 0.5rem;
+    //     }
+
+    //     &.ng-animating:not(:last-child),
+    //     &.ng-animating:first-child ~ .ng-animating:last-child {
+    //         margin-block-end: 0.5rem;
+    //     }
+
+    //     &.ng-animating:not(:first-child) ~ * {
+    //         margin-block-start: -0.5rem;
+    //     }
+    // }
 
     &::before {
         .fullsize(absolute, inset);
