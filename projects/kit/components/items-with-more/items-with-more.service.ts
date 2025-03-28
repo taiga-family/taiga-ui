@@ -21,8 +21,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
         debounceTime(0, tuiZonefreeScheduler()),
         map(() =>
             this.directive.linesLimit > 1
-                ? this.getMultilineOverflowIndex()
-                : this.getOverflowIndex(this.el.children),
+                ? this.getOverflowIndexMultiline()
+                : this.getOverflowIndex(Array.from(this.el.children)),
         ),
         distinctUntilChanged(),
         tuiZoneOptimized(),
@@ -33,7 +33,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
-    private getOverflowIndex(children: HTMLCollection | HTMLElement[]): number {
+    private getOverflowIndex(children: Element[]): number {
         const {side, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
@@ -94,18 +94,16 @@ export class TuiItemsWithMoreService extends Observable<number> {
         return -1;
     }
 
-    private getMultilineOverflowIndex(): number {
+    private getOverflowIndexMultiline(): number {
         const {children} = this.el;
-        const {linesLimit} = this.directive;
+        const {linesLimit, itemsLimit} = this.directive;
         const items = Array.from(children) as HTMLElement[];
         const rows = new Set(items.map((item) => item.offsetTop));
-        const lastRowOffset = Array.from(rows)[linesLimit - 1];
-
-        const firstItemLastRow = items.findIndex(
-            (item) => item.offsetTop === lastRowOffset,
-        );
+        const offset = Array.from(rows)[linesLimit - 1];
+        const firstItemLastRow = items.findIndex((i) => i.offsetTop === offset);
         const lastRow = items.slice(firstItemLastRow);
+        const index = firstItemLastRow + this.getOverflowIndex(lastRow);
 
-        return firstItemLastRow + this.getOverflowIndex(lastRow);
+        return Math.min(itemsLimit - 1, index);
     }
 }
