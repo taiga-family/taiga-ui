@@ -34,18 +34,18 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getOverflowIndex(children: Element[]): number {
-        const {side, itemsLimit} = this.directive;
+        const {computedSide, itemsLimit} = this.directive;
         const {clientWidth} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
-        const index = side === 'start' ? 0 : items.length - 1;
+        const index = computedSide === 'start' ? 0 : items.length - 1;
         const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
         const total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && itemsLimit >= items.length) {
-            return side === 'end' ? itemsLimit : 0;
+            return computedSide === 'end' ? itemsLimit : 0;
         }
 
-        return side === 'start'
+        return computedSide === 'start'
             ? this.getIndexStart(items, total, more)
             : this.getIndexEnd(items, total, more);
     }
