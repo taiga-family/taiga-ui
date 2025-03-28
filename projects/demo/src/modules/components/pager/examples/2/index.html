@@ -1,0 +1,38 @@
+<tui-pager
+    [count]="count"
+    [index]="activeIndex"
+    [valueContent]="content"
+/>
+
+<ng-template
+    #content
+    let-index
+>
+    <ng-container *ngIf="index === count - 2">
+        <tui-icon icon="@tui.view" />
+    </ng-container>
+
+    <ng-container *ngIf="index === count - 1">
+        <tui-icon icon="@tui.square-plus" />
+    </ng-container>
+</ng-template>
+
+<div class="tui-space_top-3">
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        (click)="prev()"
+    >
+        prev
+    </button>
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        class="tui-space_left-3"
+        (click)="next()"
+    >
+        next
+    </button>
+</div>

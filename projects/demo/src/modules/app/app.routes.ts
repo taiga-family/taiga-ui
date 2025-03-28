@@ -676,6 +676,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/pin'),
     }),
     route({
+        path: DemoRoute.Pager,
+        title: 'Pager',
+        loadComponent: async () => import('../components/pager'),
+    }),
+    route({
         path: DemoRoute.Compass,
         title: 'Compass',
         loadComponent: async () => import('../components/compass'),

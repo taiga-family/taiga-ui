@@ -1,0 +1,19 @@
+<div
+    class="t-items"
+    [style.transform]="'translateX(' + left() + 'px)'"
+>
+    <div
+        *tuiRepeatTimes="let i of count"
+        #item
+        class="t-item"
+        [attr.data-index]="i"
+        [class._active]="i === index"
+        [class._last]="i === count - 1"
+        [class._post-active]="i === index + 1"
+        [class._pre-active]="i === index - 1"
+        [class._pre-last]="i === count - 2"
+        [class._visible]="i >= start && i <= end"
+    >
+        <ng-container *ngTemplateOutlet="valueContent || null; context: {$implicit: i}" />
+    </div>
+</div>

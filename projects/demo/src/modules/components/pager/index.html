@@ -1,0 +1,80 @@
+<tui-doc-page
+    header="Pager"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [fullsize]="true"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pager
+                [count]="count"
+                [index]="index"
+                [max]="max"
+                [size]="size"
+                [valueContent]="valueContent"
+            />
+
+            <ng-template #templateRef>
+                <tui-icon icon="@tui.heart-filled" />
+            </ng-template>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="'m' | 's'"
+                [items]="sizes"
+                [(value)]="size"
+            >
+                Layout size
+            </tr>
+            <tr
+                name="[index]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="index"
+            >
+                Current active dot
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
+            >
+                Max visible dots
+            </tr>
+            <tr
+                name="[count]"
+                tuiDocAPIItem
+                type="number"
+                [items]="countVariants"
+                [(value)]="count"
+            >
+                Count of dots
+            </tr>
+            <tr
+                name="[valueContent]"
+                tuiDocAPIItem
+                type="TemplateRef"
+                [items]="templateVariants"
+                [(value)]="selectedTemplate"
+            >
+                A template for custom view
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
