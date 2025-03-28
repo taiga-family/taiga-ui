@@ -43,17 +43,69 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="option-content"
-            heading="Customize option content"
+            id="content-customization"
+            heading="Customize content"
             [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
-        />
+            [content]="2 | tuiExample"
+            [description]="contentDescription"
+        >
+            <ng-template #contentDescription>
+                <a
+                    tuiLink
+                    [routerLink]="routes.DataListWrapper"
+                >
+                    DataListWrapper
+                </a>
+                provides an opportunity to customize appearance of options inside dropdown by
+                <code>[itemContent]</code>
+                -property. Also,
+                <a
+                    tuiLink
+                    [routerLink]="routes.Textfield"
+                >
+                    Textfield
+                </a>
+                has
+                <code>[content]</code>
+                -property to customize appearance of selected option inside textbox.
+
+                <p>
+                    Both properties accept
+                    <code>PolymorpheusContent</code>
+                    – it empowers you with extremely large possibilities for customization.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="data-list"
+            heading="With DataList"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="datalistDescription"
+        >
+            <ng-template #datalistDescription>
+                <code>DataListWrapper</code>
+                is just a helper to solve most popular use cases. Use
+                <code>DataList</code>
+                for more complex cases when great flexibility is required.
+
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.DataList"
+                >
+                    <strong>DataList</strong>
+                </a>
+                documentation page for more customization options.
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="virtual-scroll"
             heading="Virtual scroll"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
             [description]="virtualScrollDescription"
         >
             <ng-template #virtualScrollDescription>
@@ -74,8 +126,8 @@
         <tui-doc-example
             id="native-picker-disabled-option"
             heading="Native picker with disabled option"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
             [description]="nativePickerDescription"
         >
             <ng-template #nativePickerDescription>
@@ -92,8 +144,15 @@
         <tui-doc-example
             id="native-picker-groups"
             heading="Native picker with grouping options"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="option-content"
+            heading="Customize option content"
+            [component]="99 | tuiComponent"
+            [content]="99 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
         />
     </ng-template>
 

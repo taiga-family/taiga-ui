@@ -28,7 +28,7 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
 
     protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/2/option.ts?raw'
+        './examples/99/option.ts?raw'
     );
 
     protected items = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];

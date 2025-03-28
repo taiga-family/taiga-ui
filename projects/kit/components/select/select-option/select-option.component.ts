@@ -22,6 +22,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     styleUrls: ['./select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[class._with-value]': 'option',
         '(click)': 'onClick()',
     },
 })
@@ -31,17 +32,20 @@ export class TuiSelectOption<T> {
         (x) => x instanceof TuiControl,
     );
 
-    private readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
     protected readonly icon = inject(TUI_COMMON_ICONS).check;
+    protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue, {
+        optional: true,
+    });
+
     protected selected = computed(
-        (controlValue = this.control()?.value(), optionValue = this.option.value()) =>
+        (controlValue = this.control()?.value(), optionValue = this.option?.value()) =>
             tuiIsPresent(optionValue) &&
             tuiIsPresent(controlValue) &&
             this.matcher(controlValue, optionValue),
     );
 
     protected onClick(): void {
-        const value = this.option.value();
+        const value = this.option?.value();
 
         if (this.host?.handleOption && value !== undefined) {
             this.host.handleOption(value);

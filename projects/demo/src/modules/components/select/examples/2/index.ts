@@ -1,34 +1,40 @@
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiTextfield} from '@taiga-ui/core';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
-import {Option} from './option';
+interface Card {
+    name: string;
+    number: string;
+    paymentSystem: TuiPaymentSystem;
+}
 
 @Component({
     standalone: true,
     imports: [
-        ReactiveFormsModule,
+        FormsModule,
         TuiChevron,
         TuiDataListWrapper,
         TuiSelect,
         TuiTextfield,
+        TuiThumbnailCard,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = [
-        'Option 1',
-        'Option 2',
-        'Option 3',
-        'Option 4',
-        'Option 5',
-    ] as const;
+    protected cards: Card[] = [
+        {name: 'Bitcoin', number: '5555555555554444', paymentSystem: 'mastercard'},
+        {name: 'Salary', number: '4242424242424242', paymentSystem: 'visa'},
+        {name: 'Charity', number: '2201382000000013', paymentSystem: 'mir'},
+        {name: 'Subscriptions', number: '6200000000000005', paymentSystem: 'unionpay'},
+    ];
 
-    protected readonly control = new FormControl<string | null>(this.items[2]);
+    protected value: Card | null = null;
 }

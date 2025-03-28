@@ -1,28 +1,40 @@
 <tui-textfield tuiChevron>
     <input
-        placeholder="Country"
+        placeholder="Install library"
         tuiSelect
         [(ngModel)]="value"
     />
 
-    <cdk-virtual-scroll-viewport
+    <tui-data-list
         *tuiTextfieldDropdown
-        tuiScrollable
-        class="scroll"
-        [itemSize]="44"
+        tuiDataListDropdownManager
     >
-        <tui-data-list>
-            <button
-                *cdkVirtualFor="let item of countries | async"
-                new
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
-        </tui-data-list>
-    </cdk-virtual-scroll-viewport>
+        <button
+            *ngFor="let group of taigaFamilyLibs"
+            iconEnd="@tui.chevron-right"
+            new
+            tuiDropdownAlign="right"
+            tuiDropdownManual
+            tuiDropdownSided
+            tuiOption
+            type="button"
+            [tuiDropdown]="options"
+        >
+            {{ group.name }}
 
-    <tui-badge-notification>{{optionsCount()}}</tui-badge-notification>
+            <ng-template #options>
+                <tui-data-list>
+                    <button
+                        *ngFor="let lib of group.libraries"
+                        new
+                        tuiOption
+                        type="button"
+                        [value]="lib"
+                    >
+                        {{ lib }}
+                    </button>
+                </tui-data-list>
+            </ng-template>
+        </button>
+    </tui-data-list>
 </tui-textfield>

@@ -1,28 +1,28 @@
-<tui-textfield
-    tuiChevron
-    [stringify]="stringify"
->
-    <select
-        *ngIf="isMobile; else desktopFallback"
-        placeholder="Choose your side"
+<tui-textfield tuiChevron>
+    <input
+        placeholder="Country"
         tuiSelect
-        [disabledItemHandler]="disabledItemHandler"
-        [formControl]="control"
-        [items]="items"
-    ></select>
+        [(ngModel)]="value"
+    />
 
-    <ng-template #desktopFallback>
-        <input
-            placeholder="Choose your side"
-            tuiSelect
-            [formControl]="control"
-        />
+    <cdk-virtual-scroll-viewport
+        *tuiTextfieldDropdown
+        tuiScrollable
+        class="scroll"
+        [itemSize]="44"
+    >
+        <tui-data-list>
+            <button
+                *cdkVirtualFor="let item of countries | async"
+                new
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-data-list>
+    </cdk-virtual-scroll-viewport>
 
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            [disabledItemHandler]="disabledItemHandler"
-            [items]="items"
-        />
-    </ng-template>
+    <tui-badge-notification>{{ optionsCount() }}</tui-badge-notification>
 </tui-textfield>

@@ -1,30 +1,20 @@
-import {
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    CdkVirtualScrollViewport,
-} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
-import type {QueryList} from '@angular/core';
-import {Component, inject, signal, ViewChildren} from '@angular/core';
+import {NgForOf} from '@angular/common';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiOptionNew, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
-import {TUI_COUNTRIES, TuiBadgeNotification, TuiChevron, TuiSelect} from '@taiga-ui/kit';
-import {map} from 'rxjs';
+import {TuiDataList, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListDropdownManager, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        AsyncPipe,
-        CdkFixedSizeVirtualScroll,
-        CdkVirtualForOf,
-        CdkVirtualScrollViewport,
         FormsModule,
-        TuiBadgeNotification,
+        NgForOf,
         TuiChevron,
         TuiDataList,
-        TuiScrollable,
+        TuiDataListDropdownManager,
+        TuiDropdown,
         TuiSelect,
         TuiTextfield,
     ],
@@ -34,12 +24,46 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries = inject(TUI_COUNTRIES).pipe(map(Object.values));
-    protected readonly optionsCount = signal(0);
-    protected value = null;
+    protected taigaFamilyLibs = [
+        {
+            name: 'Taiga UI',
+            libraries: [
+                '@taiga-ui/cdk',
+                '@taiga-ui/core',
+                '@taiga-ui/kit',
+                '@taiga-ui/addon-doc',
+                '@taiga-ui/addon-charts',
+                '@taiga-ui/addon-commerce',
+                '@taiga-ui/addon-table',
+                '@taiga-ui/addon-mobile',
+            ],
+        },
+        {
+            name: 'Maskito',
+            libraries: [
+                '@maskito/core',
+                '@maskito/kit',
+                '@maskito/phone',
+                '@maskito/react',
+                '@maskito/angular',
+                '@maskito/vue',
+            ],
+        },
+        {
+            name: 'Web APIs for Angular',
+            libraries: [
+                '@ng-web-apis/common',
+                '@ng-web-apis/platform',
+                '@ng-web-apis/intersection-observer',
+                '@ng-web-apis/resize-observer',
+                '@ng-web-apis/mutation-observer',
+                '@ng-web-apis/view-transition',
+                '@ng-web-apis/universal',
+                '@ng-web-apis/storage',
+                '@ng-web-apis/geolocation',
+            ],
+        },
+    ];
 
-    @ViewChildren(TuiOptionNew)
-    protected set calculateOptions(x: QueryList<unknown>) {
-        this.optionsCount.set(x.length);
-    }
+    protected value: string | null = null;
 }

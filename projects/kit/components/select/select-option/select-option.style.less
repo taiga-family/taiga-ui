@@ -1,7 +1,10 @@
 :host {
-    flex-direction: row-reverse;
     justify-content: space-between;
     gap: 0.25rem;
+}
+
+:host(._with-value) {
+    flex-direction: row-reverse;
 }
 
 .t-checkmark {
@@ -18,6 +21,6 @@
     }
 }
 
-.t-dummy {
+:host(._with-value) .t-dummy {
     inline-size: 1.75rem;
 }
