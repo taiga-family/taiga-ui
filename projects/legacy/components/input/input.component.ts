@@ -86,6 +86,7 @@ export class TuiInputComponent
 
     public onValueChange(value: string): void {
         this.value = value;
+        this.open = this.canOpen;
         setTimeout(() => {
             this.open = this.canOpen;
             this.cdr.detectChanges();
