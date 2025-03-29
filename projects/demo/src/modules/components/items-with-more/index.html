@@ -22,22 +22,23 @@
         <tui-doc-demo>
             <tui-items-with-more
                 [itemsLimit]="itemsLimit"
+                [linesLimit]="linesLimit"
                 [required]="required"
                 [side]="side"
             >
                 <ng-container *ngFor="let item of items">
                     <tui-chip
                         *tuiItem
-                        class="tui-space_right-2"
+                        class="tui-space_right-2 tui-space_vertical-1"
                     >
                         {{ item }}
                     </tui-chip>
                 </ng-container>
                 <span
                     *tuiMore
-                    class="tui-space_right-2"
+                    class="tui-space_right-2 tui-space_vertical-1"
                 >
-                    and now !
+                    <tui-chip appearance="secondary">and now!</tui-chip>
                 </span>
             </tui-items-with-more>
         </tui-doc-demo>
@@ -62,6 +63,15 @@
                 Artificial limit on visible items
             </tr>
             <tr
+                name="[linesLimit]"
+                tuiDocAPIItem
+                type="number"
+                [items]="linesLimitVariants"
+                [(value)]="linesLimit"
+            >
+                Limit on visible lines
+            </tr>
+            <tr
                 name="[required]"
                 tuiDocAPIItem
                 type="number"
@@ -77,7 +87,7 @@
                 [items]="sideVariants"
                 [(value)]="side"
             >
-                Side of the "See more" content
+                Side of the "See more" content (for one-line mode only)
             </tr>
         </table>
     </ng-template>

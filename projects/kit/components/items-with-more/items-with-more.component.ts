@@ -6,6 +6,7 @@ import {
     ContentChild,
     ContentChildren,
     inject,
+    Output,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -45,7 +46,7 @@ import {TuiMore} from './more.directive';
     hostDirectives: [
         {
             directive: TuiItemsWithMoreDirective,
-            inputs: ['itemsLimit', 'required', 'side'],
+            inputs: ['itemsLimit', 'required', 'side', 'linesLimit'],
         },
     ],
 })
@@ -57,25 +58,29 @@ export class TuiItemsWithMoreComponent {
     protected readonly more?: TemplateRef<TuiContext<number>>;
 
     protected readonly directive = inject(TuiItemsWithMoreDirective);
-    protected readonly lastIndex = toSignal(inject(TuiItemsWithMoreService), {
+
+    @Output()
+    public readonly lastIndexChange = inject(TuiItemsWithMoreService);
+
+    public readonly lastIndex = toSignal(this.lastIndexChange, {
         initialValue: 0,
     });
 
     protected get isMoreHidden(): boolean {
-        const {side} = this.directive;
+        const {computedSide} = this.directive;
 
         return (
-            (this.lastIndex() >= this.items.length - 1 && side === 'end') ||
-            (!this.lastIndex() && side === 'start')
+            (this.lastIndex() >= this.items.length - 1 && computedSide === 'end') ||
+            (!this.lastIndex() && computedSide === 'start')
         );
     }
 
     protected isHidden(index: number): boolean {
-        const {side, required} = this.directive;
+        const {computedSide, required} = this.directive;
 
         return (
-            (index > this.lastIndex() && index !== required && side === 'end') ||
-            (index < this.lastIndex() && index !== required && side === 'start')
+            (index > this.lastIndex() && index !== required && computedSide === 'end') ||
+            (index < this.lastIndex() && index !== required && computedSide === 'start')
         );
     }
 }

@@ -19,7 +19,7 @@
         vector-effect="non-scaling-stroke"
         class="t-value"
         [class.t-value_inactive]="isInactive(index)"
-        [style.stroke]="'var(--tui-chart-categorical-0' + index + ')'"
+        [style.stroke]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'"
         [style.strokeDasharray.em]="getLength(index)"
         [style.strokeDashoffset.em]="initialized() ? getOffset(index) : getLength(index)"
     />

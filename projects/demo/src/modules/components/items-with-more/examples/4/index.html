@@ -1,0 +1,35 @@
+<tui-items-with-more
+    class="container"
+    [class.container_expanded]="linesLimit === 100"
+    [linesLimit]="linesLimit"
+    (lastIndexChange)="lastIndex = $event"
+>
+    <ng-container *ngFor="let item of items; let i = index">
+        <tui-chip
+            *tuiItem
+            appearance="neutral"
+            size="s"
+            class="item"
+            [class.item_visible]="i <= lastIndex"
+        >
+            {{ item }} item
+        </tui-chip>
+    </ng-container>
+
+    <ng-template
+        let-index
+        tuiMore
+    >
+        <button
+            appearance="neutral"
+            iconEnd="@tui.chevron-down"
+            size="s"
+            tuiChip
+            type="button"
+            class="more"
+            (click)="linesLimit = 100"
+        >
+            More {{ getRemaining(index) }}
+        </button>
+    </ng-template>
+</tui-items-with-more>

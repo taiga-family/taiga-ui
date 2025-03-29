@@ -26,7 +26,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
             provide: TUI_DATA_LIST_HOST,
             useFactory: <T>(): TuiDataListHost<T> => {
                 const multiSelect = inject(TuiMultiSelectComponent, {optional: true});
-                const {control} = inject(NgControl);
+                const ngControl = inject(NgControl);
                 const host = inject(AbstractTuiControl, {optional: true});
 
                 return (
@@ -35,8 +35,8 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
                             if (host) {
                                 host.value = tuiArrayToggle(host.value, option);
                             } else {
-                                control?.setValue(
-                                    tuiArrayToggle(control.value || [], option),
+                                ngControl.control?.setValue(
+                                    tuiArrayToggle(ngControl.control.value || [], option),
                                 );
                             }
                         },

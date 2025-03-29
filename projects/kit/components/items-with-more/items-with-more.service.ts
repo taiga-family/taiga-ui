@@ -19,7 +19,11 @@ export class TuiItemsWithMoreService extends Observable<number> {
         inject(ResizeObserverService, {self: true}),
     ).pipe(
         debounceTime(0, tuiZonefreeScheduler()),
-        map(() => this.getOverflowIndex()),
+        map(() =>
+            this.directive.linesLimit > 1
+                ? this.getOverflowIndexMultiline()
+                : this.getOverflowIndex(Array.from(this.el.children)),
+        ),
         distinctUntilChanged(),
         tuiZoneOptimized(),
         share(),
@@ -29,19 +33,19 @@ export class TuiItemsWithMoreService extends Observable<number> {
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
-    private getOverflowIndex(): number {
-        const {side, itemsLimit} = this.directive;
-        const {clientWidth, children} = this.el;
+    private getOverflowIndex(children: Element[]): number {
+        const {computedSide, itemsLimit} = this.directive;
+        const {clientWidth} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
-        const index = side === 'start' ? 0 : items.length - 1;
+        const index = computedSide === 'start' ? 0 : items.length - 1;
         const more = children[index]?.tagName === 'SPAN' ? (items[index] ?? 0) : 0;
         const total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && itemsLimit >= items.length) {
-            return side === 'end' ? itemsLimit : 0;
+            return computedSide === 'end' ? itemsLimit : 0;
         }
 
-        return side === 'start'
+        return computedSide === 'start'
             ? this.getIndexStart(items, total, more)
             : this.getIndexEnd(items, total, more);
     }
@@ -88,5 +92,18 @@ export class TuiItemsWithMoreService extends Observable<number> {
         }
 
         return -1;
+    }
+
+    private getOverflowIndexMultiline(): number {
+        const {children} = this.el;
+        const {linesLimit, itemsLimit} = this.directive;
+        const items = Array.from(children) as HTMLElement[];
+        const rows = new Set(items.map((item) => item.offsetTop));
+        const offset = Array.from(rows)[linesLimit - 1];
+        const firstItemLastRow = items.findIndex((i) => i.offsetTop === offset);
+        const lastRow = items.slice(firstItemLastRow);
+        const index = firstItemLastRow + this.getOverflowIndex(lastRow);
+
+        return Math.min(itemsLimit - 1, index);
     }
 }

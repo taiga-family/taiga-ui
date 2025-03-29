@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
@@ -98,5 +99,22 @@ test.describe('LineClamp', () => {
                 await expect(page).toHaveScreenshot(`05-2-line-clamp-${index}.png`);
             });
         });
+    });
+
+    test('do not close after click in hint area', async ({page}) => {
+        await tuiGoto(page, DemoRoute.LineClamp);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('tui-line-clamp').nth(0).hover();
+        await page.waitForTimeout(100);
+
+        await expect(example).toHaveScreenshot('06-1-line-clamp-basic.png');
+
+        await page.locator('tui-hints .hint').click();
+        await page.waitForTimeout(100);
+
+        await expect(example).toHaveScreenshot('06-2-line-clamp-basic.png');
     });
 });

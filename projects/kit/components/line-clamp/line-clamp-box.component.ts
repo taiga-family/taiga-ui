@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    selector: 'tui-hint',
+    imports: [PolymorpheusOutlet],
     template: `
         <ng-container *polymorpheusOutlet="content() as text">{{ text }}</ng-container>
     `,

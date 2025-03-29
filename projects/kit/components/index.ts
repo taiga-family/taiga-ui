@@ -32,6 +32,7 @@ export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/like';
 export * from '@taiga-ui/kit/components/line-clamp';
 export * from '@taiga-ui/kit/components/message';
+export * from '@taiga-ui/kit/components/pager';
 export * from '@taiga-ui/kit/components/pagination';
 export * from '@taiga-ui/kit/components/pdf-viewer';
 export * from '@taiga-ui/kit/components/pin';
