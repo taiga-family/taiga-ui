@@ -43,6 +43,8 @@
                 name="[index]"
                 tuiDocAPIItem
                 type="number"
+                [max]="count - 1"
+                [min]="0"
                 [(value)]="index"
             >
                 Current active dot
@@ -51,6 +53,8 @@
                 name="[max]"
                 tuiDocAPIItem
                 type="number"
+                [max]="count - 1"
+                [min]="1"
                 [(value)]="max"
             >
                 Max visible dots

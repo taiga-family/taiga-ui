@@ -89,6 +89,8 @@
                 <input
                     tuiInputNumber
                     [id]="name"
+                    [max]="numberItem?.max ?? null"
+                    [min]="numberItem?.min ?? null"
                     [ngModel]="value"
                     [step]="1"
                     (ngModelChange)="onValueChange($event || 0)"
