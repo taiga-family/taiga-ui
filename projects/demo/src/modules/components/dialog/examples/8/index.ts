@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
@@ -13,7 +14,13 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [TuiConfirmService],
+    providers: [
+        TuiConfirmService,
+        {
+            provide: TuiDialogService,
+            useExisting: TuiResponsiveDialogService,
+        },
+    ],
 })
 export default class Example {
     private readonly confirm = inject(TuiConfirmService);
