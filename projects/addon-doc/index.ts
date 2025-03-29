@@ -1,6 +1,7 @@
 import {
     TuiDocAPI,
     TuiDocAPIItem,
+    TuiDocAPINumberItem,
     TuiDocCode,
     TuiDocCopy,
     TuiDocDemo,
@@ -20,6 +21,7 @@ import {TuiDocText} from '@taiga-ui/addon-doc/directives';
 export const TuiAddonDoc = [
     TuiDocAPI,
     TuiDocAPIItem,
+    TuiDocAPINumberItem,
     TuiDocCopy,
     TuiDocTab,
     TuiDocDemo,
