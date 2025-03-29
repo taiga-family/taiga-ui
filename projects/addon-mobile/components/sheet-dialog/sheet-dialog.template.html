@@ -11,6 +11,7 @@
     class="t-sheet"
     [class.t-sheet_small]="isSmall"
     (tuiClickOutside)="close()"
+    (tuiSheetDialogClose)="close()"
 >
     <div
         *ngIf="context.bar"
