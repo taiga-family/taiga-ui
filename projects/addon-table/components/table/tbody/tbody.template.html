@@ -1,25 +1,51 @@
-<tr *ngIf="heading">
-    <th
-        class="t-heading"
-        [colSpan]="table.columns.length"
-    >
-        <button
-            type="button"
-            class="t-expand"
-            (click)="onClick()"
+<ng-container *ngIf="heading; else newTemplate">
+    <tr>
+        <th
+            class="t-heading"
+            [colSpan]="table.columns.length"
         >
-            <span class="t-name">
-                <ng-container *polymorpheusOutlet="heading as text">
-                    {{ text }}
-                </ng-container>
-            </span>
-            <tui-icon
-                class="t-chevron"
-                [tuiChevron]="open"
-            />
-        </button>
-    </th>
-</tr>
-<ng-container *ngIf="open">
-    <ng-content />
+            <button
+                type="button"
+                class="t-expand"
+                (click)="onClick()"
+            >
+                <span class="t-name">
+                    <ng-container *polymorpheusOutlet="heading as text">
+                        {{ text }}
+                    </ng-container>
+                </span>
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="open"
+                />
+            </button>
+        </th>
+    </tr>
+    <ng-container *ngIf="open">
+        <ng-container *polymorpheusOutlet="content as text">
+            {{ text }}
+        </ng-container>
+    </ng-container>
 </ng-container>
+
+<ng-template #newTemplate>
+    <ng-content select="[tuiExpandableTableHeading]" />
+
+    <ng-container *ngIf="showExpandableContent$ | async">
+        <ng-container *polymorpheusOutlet="content as text">
+            {{ text }}
+        </ng-container>
+    </ng-container>
+
+    <ng-content select="tui-table-expand" />
+
+    <expandable-table-row-filler
+        *ngIf="showRowsFiller$ | async"
+        (onAnimationDone)="onExpandAnimationDone()"
+        (onAnimationStart)="onExpandAnimationStart()"
+    />
+</ng-template>
+
+<ng-template #content>
+    <ng-content />
+</ng-template>
