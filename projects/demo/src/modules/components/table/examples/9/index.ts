@@ -17,14 +17,14 @@ interface Item {
 @Component({
     standalone: true,
     imports: [
-        NgForOf,
-        TuiTable,
-        TuiFormatNumberPipe,
         AsyncPipe,
-        TuiIcon,
+        NgForOf,
         TuiChevron,
         TuiChip,
+        TuiFormatNumberPipe,
         TuiHint,
+        TuiIcon,
+        TuiTable,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -32,12 +32,6 @@ interface Item {
     changeDetection,
 })
 export default class Example {
-    manualOpen = false;
-
-    manualToggle(): void {
-        this.manualOpen = !this.manualOpen;
-    }
-
     protected readonly basicData: Item[] = [
         {
             firstName: 'Alex',
@@ -81,12 +75,18 @@ export default class Example {
 
     protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
 
+    protected manualOpen = false;
+
     @tuiPure
-    getSumBalance(people: Item[]): number {
+    public getSumBalance(people: Item[]): number {
         return people.reduce((res, item) => {
             res += item.balance;
 
             return res;
         }, 0);
+    }
+
+    protected manualToggle(): void {
+        this.manualOpen = !this.manualOpen;
     }
 }
