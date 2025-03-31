@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.31.0](https://github.com/taiga-family/taiga-ui/compare/v4.30.0...v4.31.0) (2025-03-31)
+
+### 🚀 Features
+
+- add `tui-pager` ([#10325](https://github.com/taiga-family/taiga-ui/issues/10325))
+  ([640fc05](https://github.com/taiga-family/taiga-ui/commit/640fc0511ad293d64beff834c9918bf3de708a3f))
+- **addon-doc:** add `TuiDocAPINumberItem` for configure input api option
+  ([#10693](https://github.com/taiga-family/taiga-ui/issues/10693))
+  ([d8aebbe](https://github.com/taiga-family/taiga-ui/commit/d8aebbe5afb6add3c18a913c334df8002873cfac))
+- **core:** new version of `TuiOption` ([#10660](https://github.com/taiga-family/taiga-ui/issues/10660))
+  ([2c89246](https://github.com/taiga-family/taiga-ui/commit/2c892463cbacee8dc73b47637e8609ec12db406e))
+- **kit:** `ItemsWithMore` add multiline mode ([#10641](https://github.com/taiga-family/taiga-ui/issues/10641))
+  ([d554c19](https://github.com/taiga-family/taiga-ui/commit/d554c19245a027f67fa5608aff7d316a516f6dee))
+- **kit:** add `shift` output event to `carousel` component
+  ([#10659](https://github.com/taiga-family/taiga-ui/issues/10659))
+  ([2368b41](https://github.com/taiga-family/taiga-ui/commit/2368b41240eb6456c7c2f976ae635c931967cd3c))
+- **layout:** `ChipGroup` add new component ([#10671](https://github.com/taiga-family/taiga-ui/issues/10671))
+  ([b02d3f2](https://github.com/taiga-family/taiga-ui/commit/b02d3f23dd8eb6b7d45ad56ba3e8719601b8fd40))
+
+### 🐞 Bug Fixes
+
+- `Filter` fix short items ([#10681](https://github.com/taiga-family/taiga-ui/issues/10681))
+  ([c3c744a](https://github.com/taiga-family/taiga-ui/commit/c3c744a4e64a072641c9d396b9327a76ceb9ac6f))
+- **addon-charts:** fix chart colors for 10+ items ([#10676](https://github.com/taiga-family/taiga-ui/issues/10676))
+  ([7827c27](https://github.com/taiga-family/taiga-ui/commit/7827c270314ee06f29a3bdc478945bf74c7fa03e))
+- **addon-mobile:** use `display: block` on sheet host ([#10700](https://github.com/taiga-family/taiga-ui/issues/10700))
+  ([c0be4d9](https://github.com/taiga-family/taiga-ui/commit/c0be4d9938e3b00942d5958c1a7d5eda68f100d2))
+- **cdk:** `tuiCreateToken` with no arguments should not create token with default `undefined`-value
+  ([#10682](https://github.com/taiga-family/taiga-ui/issues/10682))
+  ([feadfcd](https://github.com/taiga-family/taiga-ui/commit/feadfcdae2b04a30650e4a2369a84d4715854f28))
+- **core:** `Dialog` content section inherit border-radius
+  ([#10669](https://github.com/taiga-family/taiga-ui/issues/10669))
+  ([9a5a49d](https://github.com/taiga-family/taiga-ui/commit/9a5a49d247e54c0da04739dd8e64f80f661fbcc8))
+- **core:** add hint marker to custom components ([#10687](https://github.com/taiga-family/taiga-ui/issues/10687))
+  ([d74a2d2](https://github.com/taiga-family/taiga-ui/commit/d74a2d23b8e171e70f28dd9cfd40337903304d4f))
+- **experimental:** valid references for compilation step
+  ([#10702](https://github.com/taiga-family/taiga-ui/issues/10702))
+  ([44d53ac](https://github.com/taiga-family/taiga-ui/commit/44d53ac694ef859c09128ed94ea5f73d0a5ad71c))
+- **legacy:** late init control binding in `tuiMultiSelectGroup`
+  ([#10679](https://github.com/taiga-family/taiga-ui/issues/10679))
+  ([787bb60](https://github.com/taiga-family/taiga-ui/commit/787bb609207e9be2053ff760040b007aa5341928))
+
 ## [4.30.0](https://github.com/taiga-family/taiga-ui/compare/v4.29.0...v4.30.0) (2025-03-24)
 
 ### 🐞 Bug Fixes
