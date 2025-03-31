@@ -1,4 +1,6 @@
-import {animate, type AnimationMetadata, style} from '@angular/animations';
+import type {AnimationMetadata} from '@angular/animations';
+import {animate, style} from '@angular/animations';
+
 import type {TuiTableOptions} from '../../table.options';
 
 export const expandTableBodyCloseAnimationData = (
@@ -12,7 +14,7 @@ export const expandTableBodyCloseAnimationData = (
     animate(
         `${time}ms ease-in`,
         style({
-            height: `0`,
+            height: '0',
         }),
     ),
 ];
@@ -23,7 +25,7 @@ export const expandTableBodyOpenAnimationData = (
     time: number,
 ): AnimationMetadata[] => [
     style({
-        height: `0`,
+        height: '0',
     }),
     animate(
         `${time}ms ease-in`,
@@ -32,6 +34,6 @@ export const expandTableBodyOpenAnimationData = (
         }),
     ),
     style({
-        height: `0`,
+        height: '0',
     }),
 ];

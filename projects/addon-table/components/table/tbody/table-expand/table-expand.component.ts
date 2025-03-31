@@ -1,13 +1,14 @@
-import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
-import {TuiTableTbody} from '../tbody.component';
-import {TuiExpand} from '@taiga-ui/core';
-import {TuiTableDirective} from '../../directives/table.directive';
 import {AsyncPipe} from '@angular/common';
+import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
+
+import {TuiTableDirective} from '../../directives/table.directive';
+import {TuiTableTbody} from '../tbody.component';
 
 @Component({
     standalone: true,
     selector: 'tui-table-expand',
-    imports: [TuiExpand, AsyncPipe],
+    imports: [AsyncPipe, TuiExpand],
     templateUrl: './table-expand.component.html',
     styleUrls: ['./table-expand.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

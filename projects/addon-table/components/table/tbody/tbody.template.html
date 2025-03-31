@@ -41,8 +41,8 @@
 
     <expandable-table-row-filler
         *ngIf="showRowsFiller$ | async"
-        (onAnimationDone)="onExpandAnimationDone()"
-        (onAnimationStart)="onExpandAnimationStart()"
+        (animationDone)="onExpandAnimationDone()"
+        (animationStart)="onExpandAnimationStart()"
     />
 </ng-template>
 
