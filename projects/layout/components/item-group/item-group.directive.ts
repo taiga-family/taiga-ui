@@ -6,9 +6,9 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {take, timer} from 'rxjs';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
