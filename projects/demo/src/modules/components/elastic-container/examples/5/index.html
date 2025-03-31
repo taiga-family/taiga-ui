@@ -1,0 +1,14 @@
+<div
+    [style.transition]="'height 0.3s ease-in-out'"
+    [tuiElastic]="current"
+>
+    {{ current }}
+
+    <button
+        tuiLink
+        type="button"
+        (click)="toggle()"
+    >
+        Show {{ current === more ? 'less' : 'more' }}
+    </button>
+</div>
