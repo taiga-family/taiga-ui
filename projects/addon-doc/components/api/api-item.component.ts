@@ -24,6 +24,7 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
 import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
+import {TuiDocAPINumberItem} from './api-item-number.directive';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -55,6 +56,11 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly alerts = inject(TuiAlertService);
+
+    protected readonly numberItem = inject(TuiDocAPINumberItem, {
+        self: true,
+        optional: true,
+    });
 
     @Input()
     public name = '';
