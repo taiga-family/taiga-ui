@@ -85,6 +85,9 @@
     <loc>https://taiga-ui.dev/components/chip/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/item-group/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/message/</loc>
   </url>
   <url>
@@ -401,6 +404,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/pin/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/pager/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/compass/</loc>
@@ -728,6 +734,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/chip/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/item-group/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/item-group/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/message/API/</loc>
@@ -1358,6 +1370,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/pin/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/pager/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/pager/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/compass/API/</loc>

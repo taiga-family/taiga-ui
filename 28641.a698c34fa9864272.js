@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[28641],{28641:e=>{e.exports=".menu {\n    inline-size: 12.5rem;\n}\n\n[tuiOption] {\n    justify-content: space-between;\n}\n"}}]);
