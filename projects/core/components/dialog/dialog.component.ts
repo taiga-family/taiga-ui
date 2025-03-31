@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
+    HostListener,
     Inject,
     Self,
 } from '@angular/core';
@@ -26,6 +27,8 @@ import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
+
+export const TUI_DIALOG_CLOSE_BUTTON_DARK = 'tui-dialog-close-button-dark';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
@@ -65,6 +68,8 @@ export class TuiDialogComponent<O, I> {
 
     readonly close$ = new Subject();
 
+    darkCloseButton = false;
+
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
@@ -84,6 +89,11 @@ export class TuiDialogComponent<O, I> {
             .subscribe(() => {
                 this.close();
             });
+    }
+
+    @HostListener(TUI_DIALOG_CLOSE_BUTTON_DARK, ['$event.detail'])
+    onDark(value: boolean): void {
+        this.darkCloseButton = value;
     }
 
     @HostBinding('attr.data-size')
@@ -110,6 +120,14 @@ export class TuiDialogComponent<O, I> {
 
     get fullscreen(): boolean {
         return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
+    }
+
+    get appearance(): string {
+        if (this.mobile) {
+            return 'icon';
+        }
+
+        return this.darkCloseButton ? 'glass' : '';
     }
 
     private close(): void {
