@@ -24,6 +24,11 @@ tui-data-list {
         // StackBlitz changes "0rem" to "0" breaking calc
         --tui-data-list-margin: ~'0rem';
 
+        // TODO(v5): use `gap`
+        [tuiOption][new] > *:not(:first-child) {
+            margin-inline-start: 0.5rem;
+        }
+
         & > .t-empty,
         [tuiOption] {
             --t-option-padding-inline: 0.5rem;
@@ -40,20 +45,32 @@ tui-data-list {
         }
     }
 
-    &[data-size='m'] > .t-empty,
-    &[data-size='m'] [tuiOption] {
-        --t-option-padding-inline: 0.5rem;
+    &[data-size='m'] {
+        // TODO(v5): use `gap`
+        [tuiOption][new] > *:not(:first-child) {
+            margin-inline-start: 0.75rem;
+        }
 
-        font: var(--tui-font-text-s);
-        min-block-size: 2.5rem;
-        // TODO: use padding-block after Safari 14+
-        padding-top: 0.375rem;
-        padding-bottom: 0.375rem;
+        & > .t-empty,
+        [tuiOption] {
+            --t-option-padding-inline: 0.5rem;
+
+            font: var(--tui-font-text-s);
+            min-block-size: 2.5rem;
+            // TODO: use padding-block after Safari 14+
+            padding-top: 0.375rem;
+            padding-bottom: 0.375rem;
+        }
     }
 
     &[data-size='l'] {
         --tui-data-list-padding: 0.375rem;
         --tui-data-list-margin: 0.125rem;
+
+        // TODO(v5): use `gap`
+        [tuiOption][new] > *:not(:first-child) {
+            margin-inline-start: 1rem;
+        }
 
         & > .t-empty,
         [tuiOption] {
