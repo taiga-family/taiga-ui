@@ -1002,9 +1002,18 @@ export const pages: DocRoutePages = [
     {
         section: 'Components',
         title: 'Chip',
-        keywords: 'tag, тэг, badge',
+        keywords: 'chip, tag, тэг, badge',
         route: DemoRoute.Chip,
         meta: {},
+    },
+    {
+        section: 'Components',
+        title: 'ItemGroup',
+        keywords: 'item, chip, group, list, tag, тэг, badge',
+        route: DemoRoute.ItemGroup,
+        meta: {
+            name: 'tui-chip-group',
+        },
     },
     {
         section: 'Components',

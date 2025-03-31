@@ -1,0 +1,43 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiItemGroup] {
+    display: flex;
+    flex-wrap: wrap;
+
+    --tui-item-margin: 0.25rem;
+
+    & > *:not(tui-items-with-more) {
+        margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
+    }
+
+    &._horizontal {
+        .scrollbar-hidden();
+
+        flex-wrap: nowrap;
+        overflow: scroll;
+
+        & > *:not(tui-items-with-more) {
+            margin-bottom: 0;
+        }
+    }
+
+    &._initialized {
+        tui-items-with-more {
+            .t-item {
+                & > * {
+                    margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
+                }
+
+                .transition(~'transform, opacity');
+
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .t-item_hidden {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+    }
+}

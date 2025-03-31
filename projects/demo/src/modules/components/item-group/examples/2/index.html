@@ -1,0 +1,23 @@
+<div tuiPlatform="ios">
+    <div
+        tuiItemGroup
+        [autoscroll]="true"
+        [horizontal]="true"
+    >
+        <label
+            *ngFor="let chip of chips"
+            tuiChip
+            [appearance]="chip === selected ? 'accent' : 'neutral'"
+        >
+            {{ chip }}
+            <input
+                appearance=""
+                name="radio"
+                tuiChip
+                type="radio"
+                [value]="chip"
+                [(ngModel)]="selected"
+            />
+        </label>
+    </div>
+</div>

@@ -27,6 +27,7 @@ export const DemoRoute = {
     Appearances: '/appearances',
     FluidTypography: '/directives/fluid-typography',
     Chip: '/components/chip',
+    ItemGroup: '/components/item-group',
     Message: '/components/message',
     Title: '/components/title',
     CardMedium: '/layout/card-medium',
