@@ -14,7 +14,7 @@
         "@angular/router": "16.2.12",
         "@docsearch/css": "3.9.0",
         "@docsearch/js": "3.9.0",
-        "@ng-web-apis/universal": "4.11.1",
+        "@ng-web-apis/universal": "4.12.0",
         "@nguniversal/builders": "16.2.0",
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.11.0",
