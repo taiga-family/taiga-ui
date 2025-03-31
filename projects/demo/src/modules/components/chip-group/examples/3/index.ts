@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiChip} from '@taiga-ui/kit';
 import {NgForOf} from '@angular/common';
 import {TuiChipGroup} from '@taiga-ui/layout';
-import {TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiPlatform} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
@@ -33,5 +33,5 @@ export default class Example {
         'Smoking allowed',
     ];
 
-    protected checked = this.chips.map(() => false);
+    protected checked = this.chips.map(TUI_FALSE_HANDLER);
 }
