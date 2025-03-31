@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.110.0](https://github.com/taiga-family/taiga-ui/compare/v3.109.0...v3.110.0) (2025-03-31)
+
+### Features
+
+- **addon-mobile:** `SheetDialog` add `tuiResponsiveDialog` directive
+  ([#10673](https://github.com/taiga-family/taiga-ui/issues/10673))
+  ([41de721](https://github.com/taiga-family/taiga-ui/commit/41de721aed8269c6c12398bbfda2ff95fa669002))
+- **addon-mobile:** `SheetDialog` add close directive to listen close events
+  ([#10692](https://github.com/taiga-family/taiga-ui/issues/10692))
+  ([6892d2d](https://github.com/taiga-family/taiga-ui/commit/6892d2d418cfcc329eabef887f0462d57427aca9))
+- **addon-mobile:** `SheetDialog` add fullscreen option
+  ([#10667](https://github.com/taiga-family/taiga-ui/issues/10667))
+  ([d0aa4db](https://github.com/taiga-family/taiga-ui/commit/d0aa4db0cd1a4846f76bce74f0d616b27d123cf1))
+
+### Bug Fixes
+
+- **addon-mobile:** `Button` remove uppercase on Android
+  ([#10691](https://github.com/taiga-family/taiga-ui/issues/10691))
+  ([ade080e](https://github.com/taiga-family/taiga-ui/commit/ade080e684695a068b4bb7a1e51d4bb5829676c9))
+- **core:** `Dialog` content section inherit border-radius
+  ([#10668](https://github.com/taiga-family/taiga-ui/issues/10668))
+  ([f6193cb](https://github.com/taiga-family/taiga-ui/commit/f6193cb5201212d0cfb2ed95c9b6ac54c10169e5))
+
 ## [3.109.0](https://github.com/taiga-family/taiga-ui/compare/v3.108.0...v3.109.0) (2025-03-24)
 
 ## [3.108.0](https://github.com/taiga-family/taiga-ui/compare/v3.105.0...v3.108.0) (2025-03-18)
