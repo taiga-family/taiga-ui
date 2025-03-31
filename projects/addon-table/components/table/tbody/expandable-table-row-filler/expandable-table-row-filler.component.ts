@@ -1,4 +1,5 @@
 import {AnimationBuilder} from '@angular/animations';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,18 +9,17 @@ import {
     forwardRef,
     inject,
     Output,
-    type OnInit,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {skip} from 'rxjs';
 
+import {TuiTableDirective} from '../../directives/table.directive';
+import {TUI_TABLE_OPTIONS} from '../../table.options';
+import {TuiTableTbody} from '../tbody.component';
 import {
     expandTableBodyCloseAnimationData,
     expandTableBodyOpenAnimationData,
 } from './expand-table-body-animation-data';
-import {TuiTableTbody} from '../tbody.component';
-import {TuiTableDirective} from '../../directives/table.directive';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {skip} from 'rxjs';
-import {TUI_TABLE_OPTIONS} from '../../table.options';
 
 @Component({
     standalone: true,
@@ -30,9 +30,9 @@ import {TUI_TABLE_OPTIONS} from '../../table.options';
 })
 export class ExpandableTableRowFillerComponent<T> implements OnInit {
     private readonly options = inject(TUI_TABLE_OPTIONS);
-    readonly builder = inject(AnimationBuilder);
-    readonly el = inject(ElementRef);
-    readonly destroyRef = inject(DestroyRef);
+    private readonly builder = inject(AnimationBuilder);
+    private readonly el = inject(ElementRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     protected readonly parentBody = inject<TuiTableTbody<T>>(
         forwardRef(() => TuiTableTbody),
@@ -43,12 +43,12 @@ export class ExpandableTableRowFillerComponent<T> implements OnInit {
     );
 
     @Output()
-    public readonly onAnimationStart = new EventEmitter();
+    public readonly animationStart = new EventEmitter();
 
     @Output()
-    public readonly onAnimationDone = new EventEmitter();
+    public readonly animationDone = new EventEmitter();
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.parentBody.open$
             .pipe(skip(1), takeUntilDestroyed(this.destroyRef))
             .subscribe((opened) => {
@@ -69,8 +69,8 @@ export class ExpandableTableRowFillerComponent<T> implements OnInit {
                 const factory = this.builder.build(metadata);
                 const player = factory.create(this.el.nativeElement);
 
-                player.onStart(() => this.onAnimationStart.emit());
-                player.onDone(() => this.onAnimationDone.emit());
+                player.onStart(() => this.animationStart.emit());
+                player.onDone(() => this.animationDone.emit());
 
                 player.play();
             });
