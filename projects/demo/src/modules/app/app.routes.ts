@@ -150,9 +150,9 @@ export const ROUTES: Routes = [
         title: 'Chip',
     }),
     route({
-        path: DemoRoute.ChipGroup,
-        loadComponent: async () => import('../components/chip-group'),
-        title: 'ChipGroup',
+        path: DemoRoute.ItemGroup,
+        loadComponent: async () => import('../components/item-group'),
+        title: 'ItemGroup',
     }),
     route({
         path: DemoRoute.Message,

@@ -4,36 +4,35 @@ import {
     Component,
     Directive,
     Input,
-    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {take, timer} from 'rxjs';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./chip-group.styles.less'],
+    styleUrls: ['./item-group.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-chip-group',
+        class: 'tui-item-group',
     },
 })
-class TuiChipGroupStyles {}
+class TuiItemGroupStyles {}
 
 @Directive({
     standalone: true,
-    selector: 'tui-chip-group, [tuiChipGroup]',
+    selector: '[tuiItemGroup]',
     host: {
         '(click)': 'onClick($event.target)',
         '[class._horizontal]': 'horizontal',
-        '[class._initialized]': 'initialized()',
     },
 })
-export class TuiChipGroup implements AfterViewInit {
-    protected readonly nothing = tuiWithStyles(TuiChipGroupStyles);
-    protected readonly initialized = signal(false);
+export class TuiItemGroup implements AfterViewInit {
+    private readonly el = tuiInjectElement();
+    protected readonly nothing = tuiWithStyles(TuiItemGroupStyles);
 
     @Input()
     public horizontal = false;
@@ -42,7 +41,7 @@ export class TuiChipGroup implements AfterViewInit {
     public autoscroll = false;
 
     public ngAfterViewInit(): void {
-        this.initialized.set(true);
+        this.el.classList.add('_initialized');
     }
 
     protected onClick(target: HTMLElement): void {

@@ -1,5 +1,5 @@
 <tui-doc-page
-    header="ChipGroup"
+    header="ItemGroup"
     package="LAYOUT"
     type="components"
 >
@@ -16,7 +16,8 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-chip-group
+            <div
+                tuiItemGroup
                 [autoscroll]="autoscroll"
                 [horizontal]="horizontal"
             >
@@ -35,7 +36,7 @@
                         [(ngModel)]="selected"
                     />
                 </label>
-            </tui-chip-group>
+            </div>
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr

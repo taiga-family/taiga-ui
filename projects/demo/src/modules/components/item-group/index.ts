@@ -1,18 +1,25 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDemo} from '@demo/utils';
 import {TuiChip} from '@taiga-ui/kit';
-import {TuiChipGroup} from '@taiga-ui/layout';
+import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiChip, TuiChipGroup],
+    selector: 'example-chip',
+    imports: [FormsModule, TuiChip, TuiDemo, TuiItemGroup],
     templateUrl: './index.html',
-    encapsulation,
     changeDetection,
 })
 export default class Example {
+    protected readonly examples = [
+        'Basic',
+        'Single choice',
+        'Multiple choice',
+        'With more',
+    ];
+
     protected readonly chips = [
         'Indian cuisine',
         'Wi-Fi',
@@ -29,4 +36,8 @@ export default class Example {
         'Room service',
         'Smoking allowed',
     ];
+
+    protected selected = this.chips[7];
+    protected horizontal = false;
+    protected autoscroll = false;
 }

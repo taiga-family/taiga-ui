@@ -1,12 +1,12 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiChipGroup} from '@taiga-ui/layout';
+import {TuiItemGroup} from '@taiga-ui/layout';
 // ...
 
 @Component({
   imports: [
     // ...
-    TuiChipGroup,
+    TuiItemGroup,
   ],
 })
 export class Example {}

@@ -1,13 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-chip-group,
-[tuiChipGroup] {
+[tuiItemGroup] {
     display: flex;
     flex-wrap: wrap;
 
-    tui-chip,
-    [tuiChip] {
-        margin: 0 0.25rem 0.25rem 0;
+    --tui-item-margin: 0.25rem;
+
+    & > *:not(tui-items-with-more) {
+        margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
     }
 
     &._horizontal {
@@ -16,8 +16,7 @@ tui-chip-group,
         flex-wrap: nowrap;
         overflow: scroll;
 
-        tui-chip,
-        [tuiChip] {
+        & > *:not(tui-items-with-more) {
             margin-bottom: 0;
         }
     }
@@ -25,6 +24,10 @@ tui-chip-group,
     &._initialized {
         tui-items-with-more {
             .t-item {
+                & > * {
+                    margin: 0 var(--tui-item-margin) var(--tui-item-margin) 0;
+                }
+
                 .transition(~'transform, opacity');
 
                 opacity: 1;

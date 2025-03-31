@@ -1,5 +1,5 @@
 ```html
-<tui-chip-group>
+<div tuiItemGroup>
   <tui-chip appearance="primary">{{ value }}</tui-chip>
-</tui-chip-group>
+</div>
 ```

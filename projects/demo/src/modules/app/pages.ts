@@ -1008,9 +1008,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'ChipGroup',
-        keywords: 'chip, group, list, tag, тэг, badge',
-        route: DemoRoute.ChipGroup,
+        title: 'ItemGroup',
+        keywords: 'item, chip, group, list, tag, тэг, badge',
+        route: DemoRoute.ItemGroup,
         meta: {},
     },
     {
