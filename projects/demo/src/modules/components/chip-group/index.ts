@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiChip} from '@taiga-ui/kit';
 import {TuiChipGroup} from '@taiga-ui/layout';
-import {FormsModule} from '@angular/forms';
 
 @Component({
     standalone: true,
     selector: 'example-chip',
-    imports: [TuiChip, TuiChipGroup, TuiDemo, FormsModule],
+    imports: [FormsModule, TuiChip, TuiChipGroup, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

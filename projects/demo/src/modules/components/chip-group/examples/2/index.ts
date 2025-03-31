@@ -1,15 +1,15 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiChip} from '@taiga-ui/kit';
-import {NgForOf} from '@angular/common';
-import {TuiChipGroup} from '@taiga-ui/layout';
 import {TuiPlatform} from '@taiga-ui/cdk';
+import {TuiChip} from '@taiga-ui/kit';
+import {TuiChipGroup} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiChip, NgForOf, TuiChipGroup, TuiPlatform],
+    imports: [FormsModule, NgForOf, TuiChip, TuiChipGroup, TuiPlatform],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
