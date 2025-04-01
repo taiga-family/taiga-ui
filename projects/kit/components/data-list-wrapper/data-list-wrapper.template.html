@@ -15,11 +15,9 @@
             [value]="item"
             (click)="itemClick.emit(item)"
         >
-            <span class="t-content">
-                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                    {{ text }}
-                </ng-container>
-            </span>
+            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                {{ text }}
+            </ng-container>
         </button>
     </ng-container>
 
