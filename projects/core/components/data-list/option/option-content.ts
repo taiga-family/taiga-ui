@@ -27,10 +27,7 @@ export function tuiAsOptionContent(
     standalone: true,
 })
 export class TuiWithOptionContent {
-    @ContentChild(TUI_OPTION_CONTENT, {
-        static: true,
-        descendants: true,
-    })
+    @ContentChild(TUI_OPTION_CONTENT, {descendants: true})
     protected readonly localContent: Type<any> | null = null;
 
     protected readonly globalContent = inject<Type<any>>(TUI_OPTION_CONTENT, {

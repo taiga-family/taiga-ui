@@ -119,10 +119,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
 
-    @ContentChild(TUI_TEXTFIELD_ACCESSOR, {
-        static: false,
-        descendants: true,
-    })
+    @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {
