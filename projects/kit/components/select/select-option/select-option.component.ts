@@ -31,16 +31,13 @@ export class TuiSelectOption<T> {
         (x) => x instanceof TuiControl,
     );
 
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconEnd',
-        inject(TUI_COMMON_ICONS).check,
-        {},
-    );
-
     protected readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue, {
         optional: true,
     });
+
+    protected readonly icon =
+        this.option &&
+        tuiDirectiveBinding(TuiIcons, 'iconEnd', inject(TUI_COMMON_ICONS).check, {});
 
     protected readonly selected = computed(
         (controlValue = this.control()?.value(), optionValue = this.option?.value()) =>
