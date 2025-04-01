@@ -100,7 +100,7 @@ export class TuiHintComponent<C = any> {
 
     protected onClick(target: HTMLElement): void {
         if (
-            (!target.closest('tui-hint') && !this.hint.el.contains(target)) ||
+            (!target.closest(this.el.tagName) && !this.hint.el.contains(target)) ||
             tuiIsObscured(this.hint.el)
         ) {
             this.hover.toggle(false);
