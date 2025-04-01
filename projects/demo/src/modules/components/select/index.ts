@@ -32,13 +32,7 @@ export default class PageComponent {
     protected readonly control = new FormControl<string | null>(null);
     protected textfieldContent: PolymorpheusContent = '';
 
-    protected readonly items = [
-        'Option 1',
-        'Option 2',
-        'Option 3',
-        'Option 4',
-        'Option 5',
-    ];
+    protected readonly items = new Array(30).fill(null).map((_, i) => `Option ${i + 1}`);
 
     protected readonly textfieldContentVariants = computed(() => [
         '',
