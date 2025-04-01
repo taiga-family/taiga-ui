@@ -5,7 +5,7 @@ import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove, tuiInjectElement, tuiPure} from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, skip, startWith, tap} from 'rxjs';
+import {distinctUntilChanged, map, share, skip, startWith, tap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -40,6 +40,7 @@ export class TuiActiveZone implements OnDestroy {
             }
         }),
         tuiZoneOptimized(this.zone),
+        share(),
     );
 
     constructor() {

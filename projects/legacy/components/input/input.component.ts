@@ -86,7 +86,11 @@ export class TuiInputComponent
 
     public onValueChange(value: string): void {
         this.value = value;
-        this.open = true;
+        this.open = this.canOpen;
+        setTimeout(() => {
+            this.open = this.canOpen;
+            this.cdr.detectChanges();
+        });
     }
 
     protected get canOpen(): boolean {
