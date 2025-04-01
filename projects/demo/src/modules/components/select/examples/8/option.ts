@@ -7,8 +7,8 @@ import {TuiDropdownOpen, tuiInjectAuxiliary, TuiOptionWithValue} from '@taiga-ui
 @Component({
     standalone: true,
     selector: 'custom-option',
-    template: '{{selected() ? "←" : ""}}',
-    styles: [':host {flex-direction: row-reverse}'],
+    template: '<span>{{selected() ? "←" : ""}}</span>',
+    styles: [':host {flex-direction: row-reverse; justify-content: start}'],
     encapsulation,
     changeDetection,
     host: {
