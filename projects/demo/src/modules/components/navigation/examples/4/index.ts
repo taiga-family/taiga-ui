@@ -1,15 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiBeaverIconsProvider, TuiNavigation} from '@taiga-ui/beaver';
 import {tuiAsPortal, TuiPortals, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiDropdownService, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
-import {
-    TuiCardLarge,
-    TuiHeader,
-    tuiLayoutIconsProvider,
-    TuiNavigation,
-} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -29,7 +25,7 @@ import {
     encapsulation,
     changeDetection,
     providers: [
-        tuiLayoutIconsProvider({grid: '@tui.align-justify'}),
+        tuiBeaverIconsProvider({grid: '@tui.align-justify'}),
         // Ignore portal related code, it is only here to position drawer inside the example block
         TuiDropdownService,
         tuiAsPortal(TuiDropdownService),

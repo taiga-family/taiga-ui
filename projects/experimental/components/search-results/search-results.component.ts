@@ -27,6 +27,9 @@ import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'tui-search-results',

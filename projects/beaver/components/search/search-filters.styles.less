@@ -1,0 +1,51 @@
+:host {
+    display: flex;
+    flex: 1;
+    gap: inherit;
+    justify-content: flex-end;
+    min-inline-size: 0;
+}
+
+.t-rem {
+    position: absolute;
+    inline-size: 1rem;
+}
+
+.t-button {
+    overflow: visible;
+
+    &._active::after {
+        content: '';
+        position: absolute;
+        top: 0.25rem;
+        right: 0.25rem;
+        display: block;
+        inline-size: 0.625rem;
+        block-size: 0.625rem;
+        background: var(--tui-status-warning);
+        transform: translate(50%, -50%);
+        border-radius: 100%;
+        margin: 0;
+    }
+}
+
+.t-form {
+    display: flex;
+    min-inline-size: 25.5rem;
+    max-inline-size: 33rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1.5rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.t-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    margin: 0 0 0.5rem;
+    border: none;
+    box-shadow: inset 0 -1px var(--tui-border-normal);
+    font: var(--tui-font-text-ui-l);
+    font-weight: bold;
+}

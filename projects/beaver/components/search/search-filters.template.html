@@ -1,0 +1,38 @@
+<ng-container *ngFor="let template of templates; let i = index">
+    <ng-container
+        *ngIf="i < overflown()"
+        [ngTemplateOutlet]="template"
+    />
+</ng-container>
+<div
+    #rem
+    class="t-rem"
+></div>
+<button
+    *ngIf="overflown() < templates.length"
+    appearance="secondary"
+    tuiIconButton
+    tuiSearchFilter
+    type="button"
+    class="t-button"
+    [class._active]="enabled()"
+    [size]="size"
+>
+    <form
+        class="t-form"
+        (reset)="onReset()"
+    >
+        <fieldset
+            class="t-header"
+            [disabled]="!enabled()"
+        >
+            <ng-content />
+        </fieldset>
+        <ng-container *ngFor="let template of templates; let i = index">
+            <ng-container
+                *ngIf="i >= overflown()"
+                [ngTemplateOutlet]="template"
+            />
+        </ng-container>
+    </form>
+</button>

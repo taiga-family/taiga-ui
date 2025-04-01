@@ -9,6 +9,9 @@ import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiBlockOptionsProvider} from '@taiga-ui/kit/components/block';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'search[tuiSearch]',

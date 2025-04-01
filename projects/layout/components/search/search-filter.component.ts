@@ -15,6 +15,9 @@ import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'button[tuiSearchFilter]',

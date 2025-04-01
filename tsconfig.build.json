@@ -18,6 +18,8 @@
             "@taiga-ui/layout": ["./dist/layout/index"],
             "@taiga-ui/legacy/*": ["./dist/legacy/*"],
             "@taiga-ui/legacy": ["./dist/legacy/index"],
+            "@taiga-ui/beaver/*": ["./dist/beaver/*"],
+            "@taiga-ui/beaver": ["./dist/beaver/index"],
             "@taiga-ui/i18n/*": ["./dist/i18n/*"],
             "@taiga-ui/i18n": ["./dist/i18n/index"],
             "@taiga-ui/addon-charts/*": ["./dist/addon-charts/*"],

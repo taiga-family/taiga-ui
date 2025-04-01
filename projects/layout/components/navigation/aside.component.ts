@@ -10,6 +10,9 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'aside[tuiNavigationAside]',

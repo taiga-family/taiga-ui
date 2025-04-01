@@ -1,0 +1,16 @@
+<ng-template>
+    <div
+        tuiTheme="dark"
+        class="t-container"
+        (document:focusin)="onFocus($event)"
+        (keydown.esc)="close()"
+        (pointerdown.self)="close()"
+    >
+        <div
+            #container
+            class="t-content"
+        >
+            <ng-container *polymorpheusOutlet="tuiInputSearch" />
+        </div>
+    </div>
+</ng-template>

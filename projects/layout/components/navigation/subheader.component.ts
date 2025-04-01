@@ -19,6 +19,9 @@ const PROVIDERS = [
     tuiDropdownOptionsProvider({align: 'right'}),
 ];
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: '[tuiSubheader]:not([compact]),[tuiNavigationSubheader]:not([compact])',
@@ -39,6 +42,9 @@ const PROVIDERS = [
 })
 export class TuiSubheaderComponent {}
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: '[tuiSubheader][compact],[tuiNavigationSubheader][compact]',

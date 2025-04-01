@@ -1091,8 +1091,30 @@ export const pages: DocRoutePages = [
         route: DemoRoute.CardLarge,
         meta: {},
     },
+    // Beaver
     {
-        section: 'Layout',
+        section: 'Beaver',
+        title: ' Overview',
+        keywords:
+            'интерфейс, beaver, админ, панель, интерфейс, админка, admin, dashboard',
+        route: DemoRoute.Beaver,
+    },
+    {
+        section: 'Beaver',
+        title: 'Search',
+        keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
+        route: DemoRoute.Search,
+        meta: {scheme: 'beaver', name: 'filters'},
+    },
+    {
+        section: 'Beaver',
+        title: 'InputSearch',
+        keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
+        route: DemoRoute.InputSearch,
+        meta: {scheme: 'beaver', name: 'search'},
+    },
+    {
+        section: 'Beaver',
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация, beaver',
         route: DemoRoute.Navigation,
@@ -1111,20 +1133,6 @@ export const pages: DocRoutePages = [
                 qualifiedName: 'subheader-object',
             },
         ],
-    },
-    {
-        section: 'Layout',
-        title: 'Search',
-        keywords: 'шапка, header, filter, table, beaver, поиск, фильтр, таблица',
-        route: DemoRoute.Search,
-        meta: {scheme: 'beaver', name: 'filters'},
-    },
-    {
-        section: 'Layout',
-        title: 'InputSearch',
-        keywords: 'search, поиск, глобальный, beaver, бивер, finedog',
-        route: DemoRoute.InputSearch,
-        meta: {scheme: 'beaver', name: 'search'},
     },
     // Charts
     {

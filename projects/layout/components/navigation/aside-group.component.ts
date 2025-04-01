@@ -29,6 +29,9 @@ import {skip} from 'rxjs';
 
 import {TuiAsideComponent} from './aside.component';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'tui-aside-group',

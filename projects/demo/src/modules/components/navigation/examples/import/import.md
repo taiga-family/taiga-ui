@@ -1,5 +1,5 @@
 ```ts
-import {TuiNavigation} from '@taiga-ui/layout';
+import {TuiNavigation} from '@taiga-ui/beaver';
 
 // ...
 

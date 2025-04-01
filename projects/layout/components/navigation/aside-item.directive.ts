@@ -21,6 +21,9 @@ import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 import {TuiHintAsideDirective} from './hint-aside.directive';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Directive({
     standalone: true,
     selector: '[tuiAsideItem]',
