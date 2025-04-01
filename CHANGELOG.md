@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file. See
 - **kit:** add `shift` output event to `carousel` component
   ([#10659](https://github.com/taiga-family/taiga-ui/issues/10659))
   ([2368b41](https://github.com/taiga-family/taiga-ui/commit/2368b41240eb6456c7c2f976ae635c931967cd3c))
-- **layout:** `ChipGroup` add new component ([#10671](https://github.com/taiga-family/taiga-ui/issues/10671))
+- **layout:** `ItemGroup` add new directive ([#10671](https://github.com/taiga-family/taiga-ui/issues/10671))
   ([b02d3f2](https://github.com/taiga-family/taiga-ui/commit/b02d3f23dd8eb6b7d45ad56ba3e8719601b8fd40))
 
 ### 🐞 Bug Fixes
