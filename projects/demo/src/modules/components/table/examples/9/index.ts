@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiFormatNumberPipe, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiExpand, TuiFormatNumberPipe, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiChip} from '@taiga-ui/kit';
 
 interface Item {
@@ -21,9 +21,11 @@ interface Item {
         NgForOf,
         TuiChevron,
         TuiChip,
+        TuiExpand,
         TuiFormatNumberPipe,
         TuiHint,
         TuiIcon,
+        TuiMapperPipe,
         TuiTable,
     ],
     templateUrl: './index.html',
@@ -77,7 +79,6 @@ export default class Example {
 
     protected manualOpen = false;
 
-    @tuiPure
     public getSumBalance(people: Item[]): number {
         return people.reduce((res, item) => {
             res += item.balance;

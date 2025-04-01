@@ -49,7 +49,7 @@
         [data]="basicData"
     >
         <tr
-            tuiExpandableTableHeading
+            tuiTableExpandHeading
             tuiTr
             class="expand-heading-row"
         >
@@ -81,7 +81,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ getSumBalance(basicData) | tuiFormatNumber | async }}
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
             </td>
         </tr>
 
@@ -127,7 +127,7 @@
         [open]="manualOpen"
     >
         <tr
-            tuiExpandableTableHeading
+            tuiTableExpandHeading
             tuiTr
             class="expand-heading-row"
             (click)="manualToggle()"
@@ -160,7 +160,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ getSumBalance(manualOpenData) | tuiFormatNumber | async }}
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
             </td>
         </tr>
 
@@ -206,7 +206,7 @@
         [open]="true"
     >
         <tr
-            tuiExpandableTableHeading
+            tuiTableExpandHeading
             tuiTr
             class="expand-heading-row"
         >
@@ -237,22 +237,26 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ getSumBalance(customContentData) | tuiFormatNumber | async }}
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
             </td>
         </tr>
 
-        <tui-table-expand>
-            <div class="chips">
-                <tui-chip
-                    *ngFor="let item of customContentData"
-                    size="s"
-                    [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                    [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
-                >
-                    {{ item.firstName }}
-                    {{ item.lastName }}
-                </tui-chip>
-            </div>
-        </tui-table-expand>
+        <tr tuiTableExpandContent>
+            <th [colSpan]="columns.length">
+                <tui-expand [expanded]="customContentBody.open">
+                    <div class="chips">
+                        <tui-chip
+                            *ngFor="let item of customContentData"
+                            size="s"
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                            [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
+                        >
+                            {{ item.firstName }}
+                            {{ item.lastName }}
+                        </tui-chip>
+                    </div>
+                </tui-expand>
+            </th>
+        </tr>
     </tbody>
 </table>

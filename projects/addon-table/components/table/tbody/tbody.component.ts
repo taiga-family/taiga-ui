@@ -18,13 +18,13 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
-import {TuiExpandableTableHeading} from '../directives/expandable-table-heading.directive';
 import {TuiTableDirective} from '../directives/table.directive';
+import {TuiTableExpandContent} from '../directives/table-expand-content.directive';
+import {TuiTableExpandHeading} from '../directives/table-expand-heading.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 import {ExpandableTableRowFillerComponent} from './expandable-table-row-filler/expandable-table-row-filler.component';
-import {TuiTableExpandComponent} from './table-expand/table-expand.component';
 
 @Component({
     standalone: true,
@@ -47,11 +47,11 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>>
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
-    @ContentChild(forwardRef(() => TuiTableExpandComponent))
-    protected readonly customExpandContent: TuiTableExpandComponent<T> | null = null;
+    @ContentChild(forwardRef(() => TuiTableExpandContent))
+    protected readonly customExpandContent: TuiTableExpandContent | null = null;
 
-    @ContentChild(forwardRef(() => TuiExpandableTableHeading))
-    protected readonly expandHeading: TuiExpandableTableHeading<T> | null = null;
+    @ContentChild(forwardRef(() => TuiTableExpandHeading))
+    protected readonly expandHeading: TuiTableExpandHeading<T> | null = null;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
