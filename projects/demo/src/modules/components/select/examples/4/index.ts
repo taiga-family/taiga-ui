@@ -20,6 +20,7 @@ import {TuiChevron, TuiDataListDropdownManager, TuiSelect} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
