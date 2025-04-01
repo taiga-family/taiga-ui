@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiInjectElement, TuiPortals} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiHintDirection, TuiRectAccessor} from '@taiga-ui/core';
 import {tuiAsViewport, TuiButton, TuiHint, TuiLink} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
@@ -11,13 +11,11 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'portal-host',
-    template: `
-        <ng-content />
-    `,
+    template: '<ng-content />',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsViewport(PortalHost)],
 })
-class PortalHost extends TuiPortals implements TuiRectAccessor {
+class PortalHost implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
 
     public readonly type = 'viewport';
