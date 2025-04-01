@@ -4,12 +4,12 @@ import {TuiTableTbody} from '../tbody/tbody.component';
 
 @Directive({
     standalone: true,
-    selector: 'tr[tuiTr][tuiExpandableTableHeading]',
+    selector: 'tr[tuiTr][tuiTableExpandHeading]',
     host: {
         '(click)': 'onClick($event)',
     },
 })
-export class TuiExpandableTableHeading<T> {
+export class TuiTableExpandHeading<T> {
     protected readonly parentBody = inject<TuiTableTbody<T>>(
         forwardRef(() => TuiTableTbody),
     );

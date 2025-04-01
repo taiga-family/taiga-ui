@@ -49,7 +49,6 @@ export interface TuiTableOptions {
         readonly off: string;
     };
     readonly sticky: boolean;
-    readonly expandTime: number;
 }
 
 export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
@@ -64,7 +63,6 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
         desc: '@tui.chevron-down',
         off: '@tui.chevrons-up-down',
     },
-    expandTime: 150,
 };
 
 export const TUI_TABLE_OPTIONS = tuiCreateToken(TUI_TABLE_DEFAULT_OPTIONS);
