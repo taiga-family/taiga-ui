@@ -1,15 +1,15 @@
 import {TuiTableCaption} from './caption/caption.component';
 import {TuiTableCell} from './directives/cell.directive';
 import {TuiTableDirectionOrder} from './directives/direction-order.directive';
-import {TuiExpandableTableHeading} from './directives/expandable-table-heading.directive';
 import {TuiTableHead} from './directives/head.directive';
 import {TuiTableResized} from './directives/resized.directive';
 import {TuiTableSortBy} from './directives/sort-by.directive';
 import {TuiTableSortable} from './directives/sortable.directive';
 import {TuiTableDirective} from './directives/table.directive';
+import {TuiTableExpandContent} from './directives/table-expand-content.directive';
+import {TuiTableExpandHeading} from './directives/table-expand-heading.directive';
 import {TuiTableThead} from './directives/thead.directive';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
-import {TuiTableExpandComponent} from './tbody/table-expand/table-expand.component';
 import {TuiTableTbody} from './tbody/tbody.component';
 import {TuiTableTd} from './td/td.component';
 import {TuiTableTh} from './th/th.component';
@@ -32,6 +32,6 @@ export const TuiTable = [
     TuiTableResized,
     TuiTableSortPipe,
     TuiTableDirectionOrder,
-    TuiTableExpandComponent,
-    TuiExpandableTableHeading,
+    TuiTableExpandHeading,
+    TuiTableExpandContent,
 ] as const;

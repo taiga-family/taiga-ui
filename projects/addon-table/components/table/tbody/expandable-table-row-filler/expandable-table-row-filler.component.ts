@@ -11,10 +11,11 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {skip} from 'rxjs';
 
 import {TuiTableDirective} from '../../directives/table.directive';
-import {TUI_TABLE_OPTIONS} from '../../table.options';
 import {TuiTableTbody} from '../tbody.component';
 import {
     expandTableBodyCloseAnimationData,
@@ -29,7 +30,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpandableTableRowFillerComponent<T> implements OnInit {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
+    private readonly animationSpeed = inject(TUI_ANIMATIONS_SPEED);
     private readonly builder = inject(AnimationBuilder);
     private readonly el = inject(ElementRef);
     private readonly destroyRef = inject(DestroyRef);
@@ -49,6 +50,8 @@ export class ExpandableTableRowFillerComponent<T> implements OnInit {
     public readonly animationDone = new EventEmitter();
 
     public ngOnInit(): void {
+        const expandTime = tuiGetDuration(this.animationSpeed) / 2;
+
         this.parentBody.open$
             .pipe(skip(1), takeUntilDestroyed(this.destroyRef))
             .subscribe((opened) => {
@@ -58,12 +61,12 @@ export class ExpandableTableRowFillerComponent<T> implements OnInit {
                     ? expandTableBodyOpenAnimationData(
                           rowsCount,
                           this.table.size(),
-                          this.options.expandTime,
+                          expandTime,
                       )
                     : expandTableBodyCloseAnimationData(
                           rowsCount,
                           this.table.size(),
-                          this.options.expandTime,
+                          expandTime,
                       );
 
                 const factory = this.builder.build(metadata);

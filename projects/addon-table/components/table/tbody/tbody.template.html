@@ -29,7 +29,7 @@
 </ng-container>
 
 <ng-template #newTemplate>
-    <ng-content select="[tuiExpandableTableHeading]" />
+    <ng-content select="[tuiTableExpandHeading]" />
 
     <ng-container *ngIf="showExpandableContent$ | async">
         <ng-container *polymorpheusOutlet="content as text">
@@ -37,7 +37,7 @@
         </ng-container>
     </ng-container>
 
-    <ng-content select="tui-table-expand" />
+    <ng-content select="[tuiTableExpandContent]" />
 
     <expandable-table-row-filler
         *ngIf="showRowsFiller$ | async"
