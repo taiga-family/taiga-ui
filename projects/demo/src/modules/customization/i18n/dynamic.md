@@ -1,5 +1,5 @@
 ```ts
-import {tuiLanguageSwitcher, TuiLanguageName} from '@taiga-ui/i18';
+import {tuiLanguageSwitcher, TuiLanguageName} from '@taiga-ui/i18n';
 
 bootstrapApplication(App, {
   providers: [
