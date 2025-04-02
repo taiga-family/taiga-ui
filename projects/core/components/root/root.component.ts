@@ -56,7 +56,7 @@ import {map} from 'rxjs';
         '[class._mobile]': 'isMobileRes()',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
-        '(document:fullscreenchange)': 'top.set(isTopLayer())',
+        '(document:fullscreenchange)': 'top.set(isTopLayer)',
     },
 })
 export class TuiRoot {
@@ -104,7 +104,7 @@ export class TuiRoot {
             );
     }
 
-    protected isTopLayer(): boolean {
+    protected get isTopLayer(): boolean {
         return this.doc.fullscreenElement
             ? this.doc.fullscreenElement === this.el
             : !this.isChildRoot;
