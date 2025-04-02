@@ -87,6 +87,7 @@ export class TuiTileService implements OnDestroy {
     private setPosition(element: HTMLElement, [left]: readonly [number, number]): void {
         if (!Number.isNaN(left)) {
             element.style.setProperty('position', 'fixed');
+            element.style.setProperty('transition', 'none');
 
             return;
         }
@@ -96,6 +97,10 @@ export class TuiTileService implements OnDestroy {
         const host = this.el.getBoundingClientRect();
 
         style.removeProperty('position');
+        style.removeProperty('transition');
+        style.removeProperty('top');
+        style.removeProperty('left');
+
         style.top = tuiPx(rect.top - host.top + this.el.offsetTop);
         style.left = tuiPx(rect.left - host.left + this.el.offsetLeft);
     }
