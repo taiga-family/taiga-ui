@@ -51,11 +51,9 @@
 }
 
 [tuiCardLarge][data-space] {
-    --t-space: 0.75rem;
+    --t-space: 1.25rem;
     --t-radius: var(--tui-radius-l);
-    --t-comp: -0.25rem;
-    --t-padding: 0.75rem;
-    --t-dim: calc(var(--t-padding) + var(--t-comp));
+    --t-padding: 1.25rem 1.5rem 1.5rem 1.5rem;
 
     font: var(--tui-font-text-m);
     padding: var(--t-padding);
@@ -64,14 +62,14 @@
 
     &[data-space='normal'] {
         --t-radius: 1.5rem;
-        --t-padding: 1.5rem;
-        --t-space: 1.5rem;
+        --t-padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+        --t-space: 1.25rem;
     }
 
     &[data-space='compact'] {
         --t-radius: 1rem;
-        --t-padding: 1.25rem;
-        --t-space: 1.25rem;
+        --t-padding: 1rem 1.25rem 1.25rem 1.25rem;
+        --t-space: 1rem;
     }
 
     &:not([tuiCell], [tuiHeader], [tuiForm]) {
@@ -81,22 +79,6 @@
 
         > :last-child:not([tuiCell]) {
             margin-top: auto;
-        }
-    }
-
-    &[tuiHeader] {
-        padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
-
-        [tuiLink]:last-child {
-            margin-right: calc(-1 * var(--t-comp));
-        }
-    }
-
-    > [tuiHeader] {
-        margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
-
-        [tuiLink]:last-child {
-            margin-right: calc(-1 * var(--t-comp));
         }
     }
 
@@ -114,6 +96,6 @@
     > [tuiLink]:last-child {
         display: block;
         inline-size: fit-content;
-        margin-bottom: var(--t-comp);
+        margin-bottom: -0.25rem;
     }
 }
