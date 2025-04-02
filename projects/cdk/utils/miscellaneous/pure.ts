@@ -1,27 +1,27 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
+interface Cache {
+    args: readonly unknown[];
+    value: unknown;
+}
+
 function decorateMethod(
     originalMethod: (...args: unknown[]) => unknown,
 ): (this: object, ...args: unknown[]) => unknown {
-    let previousArgs: readonly unknown[] = [];
-    let originalFnWasCalledLeastAtOnce = false;
-    let pureValue: unknown;
+    let cache: Cache | null = null;
 
     return function tuiPureMethodPatched(this: object, ...args: unknown[]): unknown {
         const isPure =
-            originalFnWasCalledLeastAtOnce &&
-            previousArgs.length === args.length &&
-            args.every((arg, index) => arg === previousArgs[index]);
+            cache?.args.length === args.length &&
+            args.every((arg, index) => arg === cache?.args[index]);
 
         if (isPure) {
-            return pureValue;
+            return cache?.value;
         }
 
-        previousArgs = args;
-        pureValue = originalMethod.apply(this, args);
-        originalFnWasCalledLeastAtOnce = true;
+        cache = {args, value: originalMethod.apply(this, args)};
 
-        return pureValue;
+        return cache.value;
     };
 }
 
@@ -105,31 +105,26 @@ export function tuiPure(
         throw new TuiPureException();
     }
 
-    const original = value;
+    const originalMethod = value;
 
     return {
         configurable: true,
         enumerable,
         get(): unknown {
-            let previousArgs: readonly unknown[] = [];
-            let originalFnWasCalledLeastAtOnce = false;
-            let pureValue: unknown;
+            let cache: Cache | null = null;
 
             const patched = (...args: unknown[]): unknown => {
                 const isPure =
-                    originalFnWasCalledLeastAtOnce &&
-                    previousArgs.length === args.length &&
-                    args.every((arg, index) => arg === previousArgs[index]);
+                    cache?.args.length === args.length &&
+                    args.every((arg, index) => arg === cache?.args[index]);
 
                 if (isPure) {
-                    return pureValue;
+                    return cache?.value;
                 }
 
-                previousArgs = args;
-                pureValue = original.apply(this, args);
-                originalFnWasCalledLeastAtOnce = true;
+                cache = {args, value: originalMethod.apply(this, args)};
 
-                return pureValue;
+                return cache.value;
             };
 
             Object.defineProperty(this, propertyKey, {
