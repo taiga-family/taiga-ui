@@ -32,7 +32,10 @@
     </ng-container>
 </h3>
 
-<div class="t-example">
+<div
+    class="t-example"
+    [(tuiFullscreen)]="fullscreen"
+>
     <ng-container *ngIf="processor() | tuiDocExampleGetTabs: defaultTab as tabs">
         <div
             *ngIf="tabs.length > 1"
@@ -80,6 +83,17 @@
                     </button>
                 </ng-template>
             </tui-loader>
+
+            <button
+                appearance="flat"
+                size="xs"
+                tuiIconButton
+                type="button"
+                [iconStart]="fullscreen ? '@tui.shrink' : '@tui.expand'"
+                (click)="fullscreen = !fullscreen"
+            >
+                Fullscreen
+            </button>
         </div>
 
         <div
