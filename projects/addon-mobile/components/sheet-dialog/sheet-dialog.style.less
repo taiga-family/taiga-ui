@@ -26,7 +26,7 @@
         .t-sheet {
             display: flex;
             flex-direction: column;
-            block-size: calc(100% - 1rem);
+            block-size: 100%;
         }
 
         // TODO: make default in v5
@@ -35,6 +35,7 @@
             block-size: 100%;
             flex-direction: column;
             flex-grow: 1;
+            overflow-y: scroll;
         }
     }
 }
@@ -131,15 +132,21 @@
 .t-content {
     position: relative;
     isolation: isolate;
+    padding-block-end: calc(1rem + env(safe-area-inset-bottom));
+    border-radius: inherit;
 
     &:nth-child(3) {
         margin-top: 1rem;
     }
-}
 
-.t-footer {
-    height: 1rem;
-    scroll-snap-stop: always;
-    scroll-snap-align: end;
-    background: var(--tui-elevation-01);
+    &::after {
+        content: '';
+        position: relative;
+        top: calc(1rem + env(safe-area-inset-bottom));
+        z-index: -1;
+        display: block;
+        scroll-snap-stop: always;
+        scroll-snap-align: end;
+        border-image: conic-gradient(var(--tui-elevation-01) 0 0) fill 0/0/0 100vh 100vh;
+    }
 }
