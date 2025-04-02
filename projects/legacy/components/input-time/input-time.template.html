@@ -20,7 +20,7 @@
         [pseudoHover]="pseudoHover"
         [readOnly]="readOnly"
         [tuiTextfieldFiller]="(getFiller$(mode) | async) || ''"
-        [tuiTextfieldIcon]="iconContent"
+        [tuiTextfieldIcon]="icon && iconContent"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
     >
