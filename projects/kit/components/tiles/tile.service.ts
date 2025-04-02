@@ -98,8 +98,6 @@ export class TuiTileService implements OnDestroy {
 
         style.removeProperty('position');
         style.removeProperty('transition');
-
-        // caretaker note: I don't know why, but it's working now
         style.removeProperty('top');
         style.removeProperty('left');
 
