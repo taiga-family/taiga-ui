@@ -39,6 +39,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
         '[class._fullscreen]': 'context.fullscreen === true',
+        '[attr.data-appearance]': 'context.appearance',
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
