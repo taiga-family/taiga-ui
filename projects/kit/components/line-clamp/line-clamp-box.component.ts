@@ -5,7 +5,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    selector: 'tui-hint',
+    selector: 'tui-line-clamp-box',
     imports: [PolymorpheusOutlet],
     template: `
         <ng-container *polymorpheusOutlet="content() as text">{{ text }}</ng-container>
