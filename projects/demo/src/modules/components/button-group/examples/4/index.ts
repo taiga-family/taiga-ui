@@ -2,7 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {
     TuiBadge,
     TuiButtonGroup,
@@ -24,7 +24,6 @@ import {TuiCardMedium} from '@taiga-ui/layout';
         TuiElasticContainer,
         TuiIcon,
         TuiPagination,
-        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './index.html',

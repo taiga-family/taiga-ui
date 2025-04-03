@@ -17,6 +17,7 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        white-space: nowrap;
 
         &:has([tuiLink]) {
             align-items: baseline;
@@ -110,13 +111,14 @@
     }
 
     &[data-size='body-m'] {
-        [tuiTitle] {
-            gap: 0.125rem;
-        }
-
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-m);
+        }
+
+        [tuiTitle] {
+            gap: 0.125rem;
+            font-weight: bold;
         }
     }
 

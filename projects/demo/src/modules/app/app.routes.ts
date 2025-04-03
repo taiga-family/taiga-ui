@@ -175,6 +175,11 @@ export const ROUTES: Routes = [
         title: 'CardLarge',
     }),
     route({
+        path: DemoRoute.CardCollapsed,
+        loadComponent: async () => import('../components/card-collapsed'),
+        title: 'CardCollapsed',
+    }),
+    route({
         path: DemoRoute.BadgeNotification,
         loadComponent: async () => import('../components/badge-notification'),
         title: 'BadgeNotification',
