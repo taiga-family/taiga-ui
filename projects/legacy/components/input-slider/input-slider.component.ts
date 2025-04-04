@@ -77,7 +77,7 @@ export class TuiInputSliderComponent
     public steps = 0;
 
     @Input()
-    public segments = 1;
+    public segments: number[] | number = 1;
 
     @Input()
     public keySteps: TuiKeySteps | null = null;
