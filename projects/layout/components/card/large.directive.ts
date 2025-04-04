@@ -10,25 +10,14 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 @Component({
     standalone: true,
     template: '',
-    styleUrls: ['./card.styles.less'],
+    styleUrls: ['./card.style.less', './large.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-card',
+        class: 'tui-card-large',
     },
 })
-class TuiCardStyles {}
-
-@Directive({
-    standalone: true,
-    selector: '[tuiCardMedium]',
-    host: {
-        tuiCardMedium: '',
-    },
-})
-export class TuiCardMedium {
-    protected readonly nothing = tuiWithStyles(TuiCardStyles);
-}
+class TuiCardLargeStyles {}
 
 @Directive({
     standalone: true,
@@ -39,7 +28,7 @@ export class TuiCardMedium {
     },
 })
 export class TuiCardLarge {
-    protected readonly nothing = tuiWithStyles(TuiCardStyles);
+    protected readonly nothing = tuiWithStyles(TuiCardLargeStyles);
 
     @Input('tuiCardLarge')
     public space: '' | 'compact' | 'normal' = 'normal';

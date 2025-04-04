@@ -17,6 +17,7 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        white-space: nowrap;
 
         &:has([tuiLink]) {
             align-items: baseline;
@@ -100,6 +101,10 @@
         [tuiAccessories] {
             font: var(--tui-font-text-xl);
         }
+
+        [tuiTitle] {
+            font-weight: bold;
+        }
     }
 
     &[data-size='body-l'] {
@@ -107,16 +112,21 @@
         [tuiAccessories] {
             font: var(--tui-font-text-l);
         }
+
+        [tuiTitle] {
+            font-weight: bold;
+        }
     }
 
     &[data-size='body-m'] {
-        [tuiTitle] {
-            gap: 0.125rem;
-        }
-
         [tuiTitle],
         [tuiAccessories] {
             font: var(--tui-font-text-m);
+        }
+
+        [tuiTitle] {
+            gap: 0.125rem;
+            font-weight: bold;
         }
     }
 

@@ -1079,17 +1079,29 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Layout',
-        title: 'CardMedium',
-        keywords: 'card, card-medium, medium, block, карточка, блок',
-        route: DemoRoute.CardMedium,
-        meta: {},
-    },
-    {
-        section: 'Layout',
-        title: 'CardLarge',
-        keywords: 'card, card-large, large, block, карточка, блок',
-        route: DemoRoute.CardLarge,
-        meta: {},
+        title: 'Cards',
+        subPages: [
+            {
+                section: 'Layout',
+                title: 'Medium',
+                keywords: 'card, card-medium, medium, block, карточка, блок',
+                route: DemoRoute.CardMedium,
+                meta: {},
+            },
+            {
+                section: 'Layout',
+                title: 'Large',
+                keywords: 'card, card-large, large, block, карточка, блок',
+                route: DemoRoute.CardLarge,
+                meta: {},
+            },
+            {
+                section: 'Layout',
+                title: 'Collapsed',
+                keywords: 'collapsed, large, expand, карточка, beaver',
+                route: DemoRoute.CardCollapsed,
+            },
+        ],
     },
     {
         section: 'Layout',

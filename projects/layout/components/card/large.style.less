@@ -1,55 +1,3 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
-
-[tuiCardMedium],
-[tuiCardLarge] {
-    .button-clear();
-
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    flex-shrink: 0;
-    text-decoration: none;
-    overscroll-behavior: contain;
-    overflow: hidden;
-    background: var(--tui-background-elevation-2);
-
-    [tuiTitle],
-    [tuiSubtitle] {
-        max-inline-size: 100%;
-    }
-
-    > * {
-        .scrollbar-hidden();
-    }
-}
-
-[tuiCardMedium] {
-    inline-size: 8.75rem;
-    block-size: 8.75rem;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0.75rem;
-    border-radius: var(--tui-radius-l);
-    box-sizing: border-box;
-
-    &[tuiTitle] {
-        padding: 0.625rem 0.75rem;
-    }
-
-    [tuiTitle] {
-        margin: -0.125rem 0;
-    }
-
-    [tuiSubtitle] {
-        color: var(--tui-text-primary);
-    }
-
-    &[tuiTitle],
-    [tuiTitle]:not([tuiCell] *):not([tuiLabel] *) {
-        font-weight: bold;
-    }
-}
-
 [tuiCardLarge][data-space] {
     --t-space: 0.75rem;
     --t-radius: var(--tui-radius-l);
@@ -65,13 +13,13 @@
     &[data-space='normal'] {
         --t-radius: 1.5rem;
         --t-padding: 1.5rem;
-        --t-space: 1.5rem;
+        --t-space: 1.25rem;
     }
 
     &[data-space='compact'] {
         --t-radius: 1rem;
         --t-padding: 1.25rem;
-        --t-space: 1.25rem;
+        --t-space: 1rem;
     }
 
     &:not([tuiCell], [tuiHeader], [tuiForm]) {

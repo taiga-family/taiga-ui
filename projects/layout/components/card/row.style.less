@@ -1,0 +1,29 @@
+[tuiCardRow] {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    tui-icon {
+        font-size: 1rem;
+    }
+
+    [tuiTitle] {
+        font: var(--tui-font-text-s);
+
+        > :not([tuiSubtitle]) {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-secondary);
+        font: var(--tui-font-text-xs);
+    }
+
+    & > [tuiButton],
+    & > [tuiIconButton] {
+        margin-inline-start: auto;
+    }
+}
