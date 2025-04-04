@@ -354,4 +354,22 @@ test.describe('InputTime', () => {
             });
         });
     });
+
+    test('Do not match value until user is writing value', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputTime, {date: MOCK_DATE});
+
+        const documentationPage = new TuiDocumentationPagePO(page);
+        const example = documentationPage.getExample('#options');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('input[tuiTextfieldLegacy]').fill('18:30:00');
+        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__01.png');
+
+        await page.keyboard.press('Backspace');
+        await page.keyboard.press('Backspace');
+        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__02.png');
+
+        await page.keyboard.type('35');
+        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__03.png');
+    });
 });

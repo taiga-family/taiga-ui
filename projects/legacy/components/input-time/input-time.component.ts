@@ -9,7 +9,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_FALSE_HANDLER, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -145,17 +145,7 @@ export class TuiInputTimeComponent
     public onValueChange(value: string): void {
         this.open = !!this.items.length;
 
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
-
-        const match = this.getMatch(value);
-
-        if (match !== undefined) {
-            this.value = match;
-
-            return;
-        }
+        this.control?.updateValueAndValidity({emitEvent: false});
 
         if (value.length !== this.mode.length) {
             this.value = null;
@@ -248,7 +238,7 @@ export class TuiInputTimeComponent
 
         const options = maskitoTimeOptionsGenerator({
             mode,
-            step: readOnly ? 0 : 1,
+            step: readOnly || this.items.length > 0 ? 0 : 1,
             // TODO(v5): timeSegmentMaxValues: this.options.timeSegmentMaxValues
             timeSegmentMaxValues: {
                 hours: mode.includes('AA') ? 12 : HH,
@@ -287,10 +277,6 @@ export class TuiInputTimeComponent
                 ? current
                 : previous,
         );
-    }
-
-    private getMatch(value: string): TuiTime | undefined {
-        return this.items.find((item) => TUI_STRICT_MATCHER(item, value));
     }
 
     private focusInput(preventScroll = false): void {
