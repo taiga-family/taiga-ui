@@ -29,6 +29,7 @@ import {timer} from 'rxjs';
 import type {TuiDataListAccessor} from './data-list.tokens';
 import {TUI_DATA_LIST_HOST, tuiAsDataListAccessor} from './data-list.tokens';
 import {TuiOptionWithValue} from './option/option.directive';
+import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option/option-content';
 import {TuiOption} from './option/option-legacy.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
@@ -47,7 +48,15 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
+    providers: [
+        tuiAsDataListAccessor(TuiDataListComponent),
+        {
+            provide: TUI_OPTION_CONTENT,
+            useFactory: () =>
+                inject(TuiWithOptionContent, {optional: true})?.optionContent ??
+                inject(TUI_OPTION_CONTENT, {skipSelf: true, optional: true}),
+        },
+    ],
     host: {
         role: 'listbox',
         '[attr.data-size]': 'size',

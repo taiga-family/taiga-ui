@@ -31,9 +31,9 @@ import {
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiItemsHandlers} from '@taiga-ui/core/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiMultipleControl,
     tuiAsControl,
