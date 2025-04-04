@@ -37,14 +37,13 @@ import {
     TUI_PLATFORM,
 } from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    tuiEnableFontScaling,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -70,10 +69,9 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        NG_EVENT_PLUGINS,
-        tuiEnableFontScaling(),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(),
+        provideTaiga(),
         {
             provide: ViewportScroller,
             useClass: TuiViewportScroller,
