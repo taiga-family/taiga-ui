@@ -1,5 +1,8 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 export const [TUI_SEARCH_RESULTS_OPTIONS, tuiSearchResultsOptionsProvider] =
     tuiCreateOptions({
         key: 'taiga-search-history',

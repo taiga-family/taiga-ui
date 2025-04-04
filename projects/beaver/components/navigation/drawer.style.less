@@ -1,0 +1,26 @@
+:host {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--tui-theme-color, #000);
+    inline-size: 14.375rem;
+    color: var(--tui-text-primary);
+    pointer-events: auto;
+
+    ::ng-deep tui-data-list {
+        [tuiOption] {
+            justify-content: flex-start;
+            gap: 0.75rem;
+            margin: 0;
+            font: var(--tui-font-text-ui-s);
+            font-weight: bold;
+        }
+
+        tui-opt-group::before {
+            font: var(--tui-font-text-xs);
+            text-transform: uppercase;
+            color: var(--tui-text-tertiary);
+        }
+    }
+}

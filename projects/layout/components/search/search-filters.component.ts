@@ -32,6 +32,9 @@ import {TuiSearchFilterComponent} from './search-filter.component';
 
 const WIDTH = 12;
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'tui-search-filters',

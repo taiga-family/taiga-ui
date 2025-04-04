@@ -9,6 +9,9 @@ import {TuiMainComponent} from './main.component';
 import {TuiNavComponent} from './nav.component';
 import {TuiSubheaderCompactComponent, TuiSubheaderComponent} from './subheader.component';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 export const TuiNavigation = [
     TuiHeaderComponent,
     TuiLogoComponent,

@@ -88,6 +88,27 @@ export const ROUTES: Routes = [
         title: 'Viewport',
         loadComponent: async () => import('../customization/viewport'),
     }),
+    // Beaver
+    route({
+        path: DemoRoute.Beaver,
+        loadComponent: async () => import('../info/beaver'),
+        title: 'Beaver',
+    }),
+    route({
+        path: DemoRoute.Navigation,
+        loadComponent: async () => import('../components/navigation'),
+        title: 'Navigation',
+    }),
+    route({
+        path: DemoRoute.Search,
+        loadComponent: async () => import('../components/search'),
+        title: 'Search',
+    }),
+    route({
+        path: DemoRoute.InputSearch,
+        loadComponent: async () => import('../components/input-search'),
+        title: 'InputSearch',
+    }),
     // COMPONENTS
     route({
         path: DemoRoute.Accordion,
@@ -228,21 +249,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Textfield,
         loadComponent: async () => import('../components/textfield'),
         title: 'Textfield',
-    }),
-    route({
-        path: DemoRoute.Navigation,
-        loadComponent: async () => import('../components/navigation'),
-        title: 'Navigation',
-    }),
-    route({
-        path: DemoRoute.Search,
-        loadComponent: async () => import('../components/search'),
-        title: 'Search',
-    }),
-    route({
-        path: DemoRoute.InputSearch,
-        loadComponent: async () => import('../components/input-search'),
-        title: 'InputSearch',
     }),
     route({
         path: DemoRoute.Breadcrumbs,

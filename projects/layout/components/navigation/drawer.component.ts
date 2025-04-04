@@ -29,6 +29,9 @@ import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     imports: [PolymorpheusOutlet, TuiScrollbar],
@@ -58,6 +61,9 @@ class TuiDrawerComponent {
             : 0;
 }
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     // TODO: move to host directives

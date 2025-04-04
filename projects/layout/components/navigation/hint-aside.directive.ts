@@ -6,6 +6,9 @@ import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directive
 
 import {TuiAsideComponent} from './aside.component';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Directive({
     standalone: true,
     selector: '[tuiHintAside]',

@@ -1,0 +1,21 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.t-container {
+    .fullsize(fixed, inset);
+
+    display: grid;
+    gap: 0.25rem;
+    grid-template: min-content / minmax(auto, 50rem);
+    place-content: start center;
+    padding: 0.5rem;
+    background: var(--tui-service-backdrop);
+    box-shadow: 0 0 0 5rem var(--tui-service-backdrop);
+
+    ::ng-deep > tui-textfield {
+        background: var(--tui-background-base-alt);
+    }
+}
+
+.t-content {
+    overflow: hidden;
+}

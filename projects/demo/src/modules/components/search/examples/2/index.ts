@@ -4,6 +4,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSearch} from '@taiga-ui/beaver';
 import {tuiCountFilledControls} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -13,7 +14,6 @@ import {
     TuiSegmented,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiSearch} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 @Component({

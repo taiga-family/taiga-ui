@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInputSearch, TuiNavigation, TuiSearchResults} from '@taiga-ui/beaver';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiSearchResults} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCell, TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 import {filter, map, startWith, switchMap, timer} from 'rxjs';
 
 interface Result {

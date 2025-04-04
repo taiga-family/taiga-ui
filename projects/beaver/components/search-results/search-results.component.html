@@ -1,0 +1,60 @@
+<ng-content *ngIf="!textfield.directive?.value(); else a" />
+<ng-template #a>
+    <tui-loader
+        *ngIf="!results; else b"
+        class="t-loader"
+    />
+    <ng-template #b>
+        <tui-block-status
+            *ngIf="results && isEmpty(results); else c"
+            size="m"
+        >
+            <img
+                alt=""
+                tuiSlot="top"
+                class="t-empty"
+                [src]="options.empty | tuiIcon"
+            />
+            {{ i18n()?.empty }}
+        </tui-block-status>
+        <ng-template #c>
+            <ng-container *tuiLet="(results | keyvalue: asIs) || [] as items">
+                <tui-scrollbar class="t-scrollbar">
+                    <ng-container *ngFor="let group of items | tuiFilter: notEmpty; let index = index">
+                        <ng-container *ngIf="!active || active === index + 1">
+                            <label
+                                *ngIf="!active && items.length > 1"
+                                class="t-sr-label"
+                            >
+                                {{ group.key }}
+                            </label>
+                            <ng-container
+                                *ngFor="let item of group.value"
+                                [ngTemplateOutlet]="template || null"
+                                [ngTemplateOutletContext]="{$implicit: item}"
+                            />
+                        </ng-container>
+                    </ng-container>
+                </tui-scrollbar>
+                <tui-tabs
+                    *ngIf="items.length > 1"
+                    size="m"
+                    class="t-tabs"
+                    [(activeItemIndex)]="active"
+                    (document:keydown.shift.tab.prevent)="tab(-1)"
+                    (document:keydown.tab.prevent)="tab(1)"
+                >
+                    <button tuiTab>{{ i18n()?.all }}</button>
+                    <ng-container *ngFor="let group of items">
+                        <button
+                            *ngIf="group.value.length"
+                            tuiTab
+                        >
+                            {{ group.key }}
+                        </button>
+                    </ng-container>
+                </tui-tabs>
+            </ng-container>
+        </ng-template>
+    </ng-template>
+</ng-template>

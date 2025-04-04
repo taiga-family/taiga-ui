@@ -1,5 +1,5 @@
 ```ts
-import {TuiSearch} from '@taiga-ui/layout';
+import {TuiSearch} from '@taiga-ui/beaver';
 
 // ...
 

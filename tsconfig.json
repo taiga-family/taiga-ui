@@ -25,6 +25,8 @@
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@taiga-ui/addon-table": ["projects/addon-table/index"],
             "@taiga-ui/addon-table/*": ["projects/addon-table/*"],
+            "@taiga-ui/beaver": ["projects/beaver/index"],
+            "@taiga-ui/beaver/*": ["projects/beaver/*"],
             "@taiga-ui/cdk": ["projects/cdk/index"],
             "@taiga-ui/cdk/*": ["projects/cdk/*"],
             "@taiga-ui/core": ["projects/core/index"],

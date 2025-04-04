@@ -22,7 +22,8 @@
         "бивер",
         "finedog",
         "Kryal",
-        "Tureborg"
+        "Tureborg",
+        "Lumbermill"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

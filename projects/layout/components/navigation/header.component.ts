@@ -11,6 +11,9 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'header[tuiNavigationHeader]',

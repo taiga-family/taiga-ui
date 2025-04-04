@@ -3,6 +3,9 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
 
+/**
+ * @deprecated moved to @taiga-ui/beaver
+ */
 @Component({
     standalone: true,
     selector: 'nav[tuiNavigationNav]',

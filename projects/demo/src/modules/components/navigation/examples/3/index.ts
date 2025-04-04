@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiNavigation} from '@taiga-ui/beaver';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -14,7 +15,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiBadge, TuiBlock, TuiBreadcrumbs, TuiFade, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

@@ -1,0 +1,93 @@
+[tuiSubheader][compact] {
+    top: 3rem;
+    z-index: 1;
+    block-size: var(--tui-height-m);
+    padding-block-start: 0.25rem;
+
+    .t-nav-subheader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        block-size: inherit;
+        align-items: center;
+        gap: 0.5rem;
+        font: var(--tui-font-text-s);
+        white-space: nowrap;
+        overflow: hidden;
+        padding: inherit;
+        border-image: linear-gradient(0deg, var(--tui-border-normal) 1px, var(--tui-background-base) 0) fill 0/0/0 100vw;
+
+        tui-breadcrumbs {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        > tui-tabs,
+        > tui-tabs-with-more,
+        > [tuiTabs],
+        > [tuiTabsWithMore] {
+            margin-inline-start: auto;
+            margin-inline-end: 1.5rem;
+            border-inline-start: 3rem solid transparent;
+            box-shadow: none;
+        }
+
+        tui-tabs::before,
+        tui-tabs-with-more::before,
+        [tuiTabs]::before,
+        [tuiTabsWithMore]::before {
+            background: var(--tui-background-accent-opposite-pressed);
+        }
+    }
+}
+
+[tuiSubheader]:not([compact]) {
+    margin-block-start: 0.875rem;
+
+    [tuiHeader] {
+        margin: 1rem 0 0.5rem;
+
+        &:first-child {
+            margin-block-start: 0;
+        }
+
+        [tuiTitle] {
+            max-inline-size: 42rem;
+            margin-inline-end: auto;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-s);
+
+            tui-icon {
+                font-size: 1rem;
+            }
+        }
+
+        & + tui-textfield {
+            margin-block-start: 0.75rem;
+        }
+    }
+
+    tui-tabs,
+    [tuiTabs] {
+        margin-block-start: 0.5rem;
+
+        &::before {
+            background: var(--tui-background-accent-opposite-pressed);
+        }
+
+        [tuiButton],
+        [tuiIconButton] {
+            margin-inline-start: 0.5rem;
+            align-self: center;
+        }
+
+        [tuiTab] + [tuiButton],
+        [tuiTab] + [tuiIconButton] {
+            margin-inline-start: auto;
+        }
+    }
+}
