@@ -19,7 +19,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
-    TUI_STRICT_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -208,17 +207,7 @@ export class TuiInputTimeComponent
     onValueChange(value: string): void {
         this.open = !!this.items.length;
 
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
-
-        const match = this.getMatch(value);
-
-        if (match !== undefined) {
-            this.value = match;
-
-            return;
-        }
+        this.control?.updateValueAndValidity({emitEvent: false});
 
         if (value.length !== this.mode.length) {
             this.value = null;
@@ -326,10 +315,6 @@ export class TuiInputTimeComponent
                 ? current
                 : previous,
         );
-    }
-
-    private getMatch(value: string): TuiTime | undefined {
-        return this.items.find(item => TUI_STRICT_MATCHER(item, value));
     }
 
     private close(): void {
