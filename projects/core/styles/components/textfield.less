@@ -141,7 +141,7 @@ tui-textfield {
 
     &:has(label:not(:empty)) {
         .t-template,
-        input:first-of-type,
+        input:not([type='range']),
         select:defined {
             padding-top: calc(var(--t-height) / 3);
 
@@ -155,7 +155,7 @@ tui-textfield {
     // TODO: Fallback until Safari 15.4
     &._with-label {
         .t-template,
-        input:first-of-type,
+        input:not([type='range']),
         select:defined {
             padding-top: calc(var(--t-height) / 3);
 
@@ -174,10 +174,9 @@ tui-textfield {
         appearance: none;
         box-sizing: border-box;
         border-radius: inherit;
-        padding: inherit;
         border: none;
-        text-indent: var(--t-left, 0);
         // StackBlitz changes "0rem" to "0" breaking calc
+        padding-inline-start: calc(var(--t-left, ~'0rem') + var(--t-padding));
         padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side) + var(--t-padding));
     }
 
@@ -187,12 +186,12 @@ tui-textfield {
         color: var(--tui-text-primary);
     }
 
-    &._with-template input:first-of-type,
+    &._with-template input:not([type='range']),
     &._with-template select {
         color: transparent !important;
     }
 
-    input:first-of-type,
+    input:not([type='range']),
     select:defined {
         pointer-events: auto;
         background: transparent;
