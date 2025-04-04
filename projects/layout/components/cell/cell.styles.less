@@ -43,7 +43,8 @@
         align-self: stretch;
     }
 
-    [tuiCellActions] {
+    // Specificity artificially increased for disabled state
+    [tuiCellActions][tuiCellActions] {
         position: absolute;
         right: 0;
         z-index: 1;
