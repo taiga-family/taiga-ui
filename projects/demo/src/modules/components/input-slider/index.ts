@@ -37,10 +37,17 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = '';
     protected postfix = '';
-    protected segments = 1;
+    protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
     protected textfieldContent: PolymorpheusContent = '';
+    protected readonly segmentsVariants: Array<number[] | number> = [
+        1,
+        5,
+        3,
+        [1, 4],
+        [2.5, 3],
+    ];
 
     protected readonly keyStepsVariants: Signal<readonly TuiKeySteps[]> = computed(() => [
         [

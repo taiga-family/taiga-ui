@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
@@ -25,7 +26,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          */
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
-        '[style.--tui-slider-segment-width.%]': 'segmentWidth',
+        '[style.--tui-ticks-gradient]': 'ticksGradient',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
     },
@@ -39,7 +40,7 @@ export class TuiSliderComponent {
     public size: TuiSizeS = this.options.size;
 
     @Input()
-    public segments = 1;
+    public segments: number[] | number = 1;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly keySteps = inject(TuiSliderKeyStepsBase, {
@@ -104,7 +105,29 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    protected get segmentWidth(): number {
-        return 100 / Math.max(1, this.segments);
+    protected get ticksGradient(): string {
+        const segments = Array.isArray(this.segments)
+            ? this.segments.map((segment) => (segment / this.max) * 100)
+            : new Array(Math.max(1, this.segments))
+                  .fill(1)
+                  .map(
+                      (_, index) =>
+                          tuiIsNumber(this.segments) &&
+                          this.getSegmentWidth(this.segments) * (index + 1),
+                  );
+
+        return segments
+            .map((segment) => {
+                return `linear-gradient(
+                    to right,
+                    transparent ${segment}%, var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--tui-ticks-thickness)),
+                    transparent calc(${segment}% + var(--tui-ticks-thickness)) 100%
+                )`;
+            })
+            .join(', ');
+    }
+
+    private getSegmentWidth(segments: number): number {
+        return 100 / Math.max(1, segments);
     }
 }
