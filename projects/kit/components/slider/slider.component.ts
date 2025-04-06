@@ -120,8 +120,8 @@ export class TuiSliderComponent {
             .map((segment) => {
                 return `linear-gradient(
                     to right,
-                    transparent ${segment}%, var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--tui-ticks-thickness)),
-                    transparent calc(${segment}% + var(--tui-ticks-thickness)) 100%
+                    transparent calc(${segment}% - var(--tui-ticks-thickness)), var(--tui-text-tertiary) calc(${segment}% - var(--tui-ticks-thickness)) ${segment}%,
+                    transparent ${segment}% 100%
                 )`;
             })
             .join(', ');
