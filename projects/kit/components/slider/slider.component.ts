@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
@@ -112,16 +111,19 @@ export class TuiSliderComponent {
                   .fill(1)
                   .map(
                       (_, index) =>
-                          tuiIsNumber(this.segments) &&
-                          this.getSegmentWidth(this.segments) * (index + 1),
+                          this.getSegmentWidth(this.segments as number) * (index + 1),
                   );
 
         return segments
             .map((segment) => {
+                const tickStart = `${segment}%`;
+                const tickEnd = `calc(${segment}% + var(--tui-ticks-thickness))`;
+
                 return `linear-gradient(
                     to right,
-                    transparent calc(${segment}% - var(--tui-ticks-thickness)), var(--tui-text-tertiary) calc(${segment}% - var(--tui-ticks-thickness)) ${segment}%,
-                    transparent ${segment}% 100%
+                    transparent ${tickStart},
+                    var(--tui-text-tertiary) ${tickStart} ${tickEnd},
+                    transparent ${tickEnd} 100%
                 )`;
             })
             .join(', ');
