@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.32.0](https://github.com/taiga-family/taiga-ui/compare/v4.31.0...v4.32.0) (2025-04-07)
+
+### 🚀 Features
+
+- **cdk:** add `tuiFullscreen` ([#10672](https://github.com/taiga-family/taiga-ui/issues/10672))
+  ([03fe94e](https://github.com/taiga-family/taiga-ui/commit/03fe94ef2525ae4efeab129339bf8b361c341e43))
+- **core:** `Dialog`/`Dropdown` use `CloseWatcher` to close on Android native back button
+  ([#10300](https://github.com/taiga-family/taiga-ui/issues/10300))
+  ([e2ea300](https://github.com/taiga-family/taiga-ui/commit/e2ea300d74647e69715b561a3672ba42cb604fb0))
+- **core:** add `<tui-popups />` ([#10717](https://github.com/taiga-family/taiga-ui/issues/10717))
+  ([080cadf](https://github.com/taiga-family/taiga-ui/commit/080cadfa32a25ca1cda4b63e44eff7ff3c3bdd8a))
+- **layout:** `CardCollapsed` add new directive ([#10735](https://github.com/taiga-family/taiga-ui/issues/10735))
+  ([9cff79f](https://github.com/taiga-family/taiga-ui/commit/9cff79f76e0c1c016b640ff40b6297fd10b6a020))
+- **styles:** adjust gap sizes for status component based on data-siz…
+  ([#10740](https://github.com/taiga-family/taiga-ui/issues/10740))
+  ([4ae7bb5](https://github.com/taiga-family/taiga-ui/commit/4ae7bb5658ea075be62a1c9c0ec821fec29067c3))
+
+### 🐞 Bug Fixes
+
+- **core:** `Textfield` fix left padding with `iconStart`
+  ([#10742](https://github.com/taiga-family/taiga-ui/issues/10742))
+  ([7bc7cbd](https://github.com/taiga-family/taiga-ui/commit/7bc7cbdc3eee64ae450ecbb59a7d548217076c4f))
+- **core:** do not use hardcoded `tui-hint` selector ([#10715](https://github.com/taiga-family/taiga-ui/issues/10715))
+  ([79e8449](https://github.com/taiga-family/taiga-ui/commit/79e84499449908813282391a3d669a4019d9212f))
+- **kit:** `InputMonth` should have `cursor: pointer` ([#10712](https://github.com/taiga-family/taiga-ui/issues/10712))
+  ([33c0cca](https://github.com/taiga-family/taiga-ui/commit/33c0cca52e3530a64a63d142e4fecae4df8951c6))
+- **kit:** ignore transition directly on tile ([#10689](https://github.com/taiga-family/taiga-ui/issues/10689))
+  ([f252c6f](https://github.com/taiga-family/taiga-ui/commit/f252c6f0c192aec0c2348b7e0c7ee98c2f0dda5f))
+- **layout:** `Cell` increase `tuiCellActions` specificity
+  ([#10747](https://github.com/taiga-family/taiga-ui/issues/10747))
+  ([d4aa00e](https://github.com/taiga-family/taiga-ui/commit/d4aa00eac28d33f4241af16d24ab94ab8e2ce742))
+- **layout:** `TuiDynamicHeader` import as const ([#10750](https://github.com/taiga-family/taiga-ui/issues/10750))
+  ([dd8735e](https://github.com/taiga-family/taiga-ui/commit/dd8735ebfa224f8efcdb57c189811c4cd6518264))
+- **legacy:** `InputTime` should hide icon if it equals to empty string
+  ([#10719](https://github.com/taiga-family/taiga-ui/issues/10719))
+  ([d16e2ec](https://github.com/taiga-family/taiga-ui/commit/d16e2ec8c8e151e9e67e462aee74fc1aec2b8c48))
+- **legacy:** do not match value until user is writing value in `InputTime`
+  ([#10731](https://github.com/taiga-family/taiga-ui/issues/10731))
+  ([ededf5f](https://github.com/taiga-family/taiga-ui/commit/ededf5f04666343eb26cb8dd9b015d21aeeff633))
+
 ## [4.31.0](https://github.com/taiga-family/taiga-ui/compare/v4.30.0...v4.31.0) (2025-03-31)
 
 ### 🚀 Features
